@@ -9,6 +9,10 @@
 
 package apmsynthetics
 
+import (
+	"strings"
+)
+
 // RequestMethodsEnum Enum with underlying type: string
 type RequestMethodsEnum string
 
@@ -38,4 +42,15 @@ func GetRequestMethodsEnumStringValues() []string {
 		"GET",
 		"POST",
 	}
+}
+
+// GetMappingRequestMethodsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRequestMethodsEnum(val string) (RequestMethodsEnum, bool) {
+	mappingRequestMethodsEnumIgnoreCase := make(map[string]RequestMethodsEnum)
+	for k, v := range mappingRequestMethodsEnum {
+		mappingRequestMethodsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRequestMethodsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

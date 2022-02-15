@@ -75,16 +75,16 @@ func (m LaunchOptions) String() string {
 func (m LaunchOptions) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLaunchOptionsBootVolumeTypeEnum[string(m.BootVolumeType)]; !ok && m.BootVolumeType != "" {
+	if _, ok := GetMappingLaunchOptionsBootVolumeTypeEnum(string(m.BootVolumeType)); !ok && m.BootVolumeType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BootVolumeType: %s. Supported values are: %s.", m.BootVolumeType, strings.Join(GetLaunchOptionsBootVolumeTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLaunchOptionsFirmwareEnum[string(m.Firmware)]; !ok && m.Firmware != "" {
+	if _, ok := GetMappingLaunchOptionsFirmwareEnum(string(m.Firmware)); !ok && m.Firmware != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Firmware: %s. Supported values are: %s.", m.Firmware, strings.Join(GetLaunchOptionsFirmwareEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLaunchOptionsNetworkTypeEnum[string(m.NetworkType)]; !ok && m.NetworkType != "" {
+	if _, ok := GetMappingLaunchOptionsNetworkTypeEnum(string(m.NetworkType)); !ok && m.NetworkType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NetworkType: %s. Supported values are: %s.", m.NetworkType, strings.Join(GetLaunchOptionsNetworkTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLaunchOptionsRemoteDataVolumeTypeEnum[string(m.RemoteDataVolumeType)]; !ok && m.RemoteDataVolumeType != "" {
+	if _, ok := GetMappingLaunchOptionsRemoteDataVolumeTypeEnum(string(m.RemoteDataVolumeType)); !ok && m.RemoteDataVolumeType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RemoteDataVolumeType: %s. Supported values are: %s.", m.RemoteDataVolumeType, strings.Join(GetLaunchOptionsRemoteDataVolumeTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -133,6 +133,17 @@ func GetLaunchOptionsBootVolumeTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingLaunchOptionsBootVolumeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLaunchOptionsBootVolumeTypeEnum(val string) (LaunchOptionsBootVolumeTypeEnum, bool) {
+	mappingLaunchOptionsBootVolumeTypeEnumIgnoreCase := make(map[string]LaunchOptionsBootVolumeTypeEnum)
+	for k, v := range mappingLaunchOptionsBootVolumeTypeEnum {
+		mappingLaunchOptionsBootVolumeTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLaunchOptionsBootVolumeTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // LaunchOptionsFirmwareEnum Enum with underlying type: string
 type LaunchOptionsFirmwareEnum string
 
@@ -162,6 +173,17 @@ func GetLaunchOptionsFirmwareEnumStringValues() []string {
 		"BIOS",
 		"UEFI_64",
 	}
+}
+
+// GetMappingLaunchOptionsFirmwareEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLaunchOptionsFirmwareEnum(val string) (LaunchOptionsFirmwareEnum, bool) {
+	mappingLaunchOptionsFirmwareEnumIgnoreCase := make(map[string]LaunchOptionsFirmwareEnum)
+	for k, v := range mappingLaunchOptionsFirmwareEnum {
+		mappingLaunchOptionsFirmwareEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLaunchOptionsFirmwareEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // LaunchOptionsNetworkTypeEnum Enum with underlying type: string
@@ -196,6 +218,17 @@ func GetLaunchOptionsNetworkTypeEnumStringValues() []string {
 		"VFIO",
 		"PARAVIRTUALIZED",
 	}
+}
+
+// GetMappingLaunchOptionsNetworkTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLaunchOptionsNetworkTypeEnum(val string) (LaunchOptionsNetworkTypeEnum, bool) {
+	mappingLaunchOptionsNetworkTypeEnumIgnoreCase := make(map[string]LaunchOptionsNetworkTypeEnum)
+	for k, v := range mappingLaunchOptionsNetworkTypeEnum {
+		mappingLaunchOptionsNetworkTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLaunchOptionsNetworkTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // LaunchOptionsRemoteDataVolumeTypeEnum Enum with underlying type: string
@@ -236,4 +269,15 @@ func GetLaunchOptionsRemoteDataVolumeTypeEnumStringValues() []string {
 		"VFIO",
 		"PARAVIRTUALIZED",
 	}
+}
+
+// GetMappingLaunchOptionsRemoteDataVolumeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLaunchOptionsRemoteDataVolumeTypeEnum(val string) (LaunchOptionsRemoteDataVolumeTypeEnum, bool) {
+	mappingLaunchOptionsRemoteDataVolumeTypeEnumIgnoreCase := make(map[string]LaunchOptionsRemoteDataVolumeTypeEnum)
+	for k, v := range mappingLaunchOptionsRemoteDataVolumeTypeEnum {
+		mappingLaunchOptionsRemoteDataVolumeTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLaunchOptionsRemoteDataVolumeTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // ObjectTypeEnum Enum with underlying type: string
 type ObjectTypeEnum string
 
@@ -38,4 +42,15 @@ func GetObjectTypeEnumStringValues() []string {
 		"TABLE",
 		"EDITIONING_VIEW",
 	}
+}
+
+// GetMappingObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingObjectTypeEnum(val string) (ObjectTypeEnum, bool) {
+	mappingObjectTypeEnumIgnoreCase := make(map[string]ObjectTypeEnum)
+	for k, v := range mappingObjectTypeEnum {
+		mappingObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

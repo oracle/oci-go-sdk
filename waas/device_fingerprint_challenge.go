@@ -52,7 +52,7 @@ func (m DeviceFingerprintChallenge) String() string {
 func (m DeviceFingerprintChallenge) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDeviceFingerprintChallengeActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingDeviceFingerprintChallengeActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetDeviceFingerprintChallengeActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -90,4 +90,15 @@ func GetDeviceFingerprintChallengeActionEnumStringValues() []string {
 		"DETECT",
 		"BLOCK",
 	}
+}
+
+// GetMappingDeviceFingerprintChallengeActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeviceFingerprintChallengeActionEnum(val string) (DeviceFingerprintChallengeActionEnum, bool) {
+	mappingDeviceFingerprintChallengeActionEnumIgnoreCase := make(map[string]DeviceFingerprintChallengeActionEnum)
+	for k, v := range mappingDeviceFingerprintChallengeActionEnum {
+		mappingDeviceFingerprintChallengeActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeviceFingerprintChallengeActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

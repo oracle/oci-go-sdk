@@ -56,10 +56,10 @@ func (m UpdateDataGuardAssociationDetails) String() string {
 func (m UpdateDataGuardAssociationDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateDataGuardAssociationDetailsProtectionModeEnum[string(m.ProtectionMode)]; !ok && m.ProtectionMode != "" {
+	if _, ok := GetMappingUpdateDataGuardAssociationDetailsProtectionModeEnum(string(m.ProtectionMode)); !ok && m.ProtectionMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProtectionMode: %s. Supported values are: %s.", m.ProtectionMode, strings.Join(GetUpdateDataGuardAssociationDetailsProtectionModeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUpdateDataGuardAssociationDetailsTransportTypeEnum[string(m.TransportType)]; !ok && m.TransportType != "" {
+	if _, ok := GetMappingUpdateDataGuardAssociationDetailsTransportTypeEnum(string(m.TransportType)); !ok && m.TransportType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TransportType: %s. Supported values are: %s.", m.TransportType, strings.Join(GetUpdateDataGuardAssociationDetailsTransportTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -102,6 +102,17 @@ func GetUpdateDataGuardAssociationDetailsProtectionModeEnumStringValues() []stri
 	}
 }
 
+// GetMappingUpdateDataGuardAssociationDetailsProtectionModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateDataGuardAssociationDetailsProtectionModeEnum(val string) (UpdateDataGuardAssociationDetailsProtectionModeEnum, bool) {
+	mappingUpdateDataGuardAssociationDetailsProtectionModeEnumIgnoreCase := make(map[string]UpdateDataGuardAssociationDetailsProtectionModeEnum)
+	for k, v := range mappingUpdateDataGuardAssociationDetailsProtectionModeEnum {
+		mappingUpdateDataGuardAssociationDetailsProtectionModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateDataGuardAssociationDetailsProtectionModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UpdateDataGuardAssociationDetailsTransportTypeEnum Enum with underlying type: string
 type UpdateDataGuardAssociationDetailsTransportTypeEnum string
 
@@ -134,4 +145,15 @@ func GetUpdateDataGuardAssociationDetailsTransportTypeEnumStringValues() []strin
 		"ASYNC",
 		"FASTSYNC",
 	}
+}
+
+// GetMappingUpdateDataGuardAssociationDetailsTransportTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateDataGuardAssociationDetailsTransportTypeEnum(val string) (UpdateDataGuardAssociationDetailsTransportTypeEnum, bool) {
+	mappingUpdateDataGuardAssociationDetailsTransportTypeEnumIgnoreCase := make(map[string]UpdateDataGuardAssociationDetailsTransportTypeEnum)
+	for k, v := range mappingUpdateDataGuardAssociationDetailsTransportTypeEnum {
+		mappingUpdateDataGuardAssociationDetailsTransportTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateDataGuardAssociationDetailsTransportTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

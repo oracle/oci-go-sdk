@@ -37,7 +37,7 @@ func (m MetricThresholdRule) String() string {
 // Not recommended for calling this function directly
 func (m MetricThresholdRule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingMetricThresholdRuleOperatorEnum[string(m.Operator)]; !ok && m.Operator != "" {
+	if _, ok := GetMappingMetricThresholdRuleOperatorEnum(string(m.Operator)); !ok && m.Operator != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Operator: %s. Supported values are: %s.", m.Operator, strings.Join(GetMetricThresholdRuleOperatorEnumStringValues(), ",")))
 	}
 
@@ -76,4 +76,15 @@ func GetMetricThresholdRuleOperatorEnumStringValues() []string {
 		"GT",
 		"LT",
 	}
+}
+
+// GetMappingMetricThresholdRuleOperatorEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMetricThresholdRuleOperatorEnum(val string) (MetricThresholdRuleOperatorEnum, bool) {
+	mappingMetricThresholdRuleOperatorEnumIgnoreCase := make(map[string]MetricThresholdRuleOperatorEnum)
+	for k, v := range mappingMetricThresholdRuleOperatorEnum {
+		mappingMetricThresholdRuleOperatorEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMetricThresholdRuleOperatorEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

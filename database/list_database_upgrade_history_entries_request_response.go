@@ -78,16 +78,16 @@ func (request ListDatabaseUpgradeHistoryEntriesRequest) RetryPolicy() *common.Re
 // Not recommended for calling this function directly
 func (request ListDatabaseUpgradeHistoryEntriesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDatabaseUpgradeHistoryEntrySummaryActionEnum[string(request.UpgradeAction)]; !ok && request.UpgradeAction != "" {
+	if _, ok := GetMappingDatabaseUpgradeHistoryEntrySummaryActionEnum(string(request.UpgradeAction)); !ok && request.UpgradeAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpgradeAction: %s. Supported values are: %s.", request.UpgradeAction, strings.Join(GetDatabaseUpgradeHistoryEntrySummaryActionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatabaseUpgradeHistoryEntrySummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingDatabaseUpgradeHistoryEntrySummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetDatabaseUpgradeHistoryEntrySummaryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDatabaseUpgradeHistoryEntriesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDatabaseUpgradeHistoryEntriesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDatabaseUpgradeHistoryEntriesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDatabaseUpgradeHistoryEntriesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDatabaseUpgradeHistoryEntriesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDatabaseUpgradeHistoryEntriesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -153,6 +153,17 @@ func GetListDatabaseUpgradeHistoryEntriesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDatabaseUpgradeHistoryEntriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseUpgradeHistoryEntriesSortByEnum(val string) (ListDatabaseUpgradeHistoryEntriesSortByEnum, bool) {
+	mappingListDatabaseUpgradeHistoryEntriesSortByEnumIgnoreCase := make(map[string]ListDatabaseUpgradeHistoryEntriesSortByEnum)
+	for k, v := range mappingListDatabaseUpgradeHistoryEntriesSortByEnum {
+		mappingListDatabaseUpgradeHistoryEntriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseUpgradeHistoryEntriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDatabaseUpgradeHistoryEntriesSortOrderEnum Enum with underlying type: string
 type ListDatabaseUpgradeHistoryEntriesSortOrderEnum string
 
@@ -182,4 +193,15 @@ func GetListDatabaseUpgradeHistoryEntriesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListDatabaseUpgradeHistoryEntriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseUpgradeHistoryEntriesSortOrderEnum(val string) (ListDatabaseUpgradeHistoryEntriesSortOrderEnum, bool) {
+	mappingListDatabaseUpgradeHistoryEntriesSortOrderEnumIgnoreCase := make(map[string]ListDatabaseUpgradeHistoryEntriesSortOrderEnum)
+	for k, v := range mappingListDatabaseUpgradeHistoryEntriesSortOrderEnum {
+		mappingListDatabaseUpgradeHistoryEntriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseUpgradeHistoryEntriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

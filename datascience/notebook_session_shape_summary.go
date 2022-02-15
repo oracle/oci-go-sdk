@@ -40,7 +40,7 @@ func (m NotebookSessionShapeSummary) String() string {
 // Not recommended for calling this function directly
 func (m NotebookSessionShapeSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingNotebookSessionShapeSeriesEnum[string(m.ShapeSeries)]; !ok && m.ShapeSeries != "" {
+	if _, ok := GetMappingNotebookSessionShapeSeriesEnum(string(m.ShapeSeries)); !ok && m.ShapeSeries != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShapeSeries: %s. Supported values are: %s.", m.ShapeSeries, strings.Join(GetNotebookSessionShapeSeriesEnumStringValues(), ",")))
 	}
 

@@ -57,7 +57,7 @@ func (m ConnectHarness) String() string {
 // Not recommended for calling this function directly
 func (m ConnectHarness) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingConnectHarnessLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingConnectHarnessLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetConnectHarnessLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -108,4 +108,15 @@ func GetConnectHarnessLifecycleStateEnumStringValues() []string {
 		"FAILED",
 		"UPDATING",
 	}
+}
+
+// GetMappingConnectHarnessLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConnectHarnessLifecycleStateEnum(val string) (ConnectHarnessLifecycleStateEnum, bool) {
+	mappingConnectHarnessLifecycleStateEnumIgnoreCase := make(map[string]ConnectHarnessLifecycleStateEnum)
+	for k, v := range mappingConnectHarnessLifecycleStateEnum {
+		mappingConnectHarnessLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConnectHarnessLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

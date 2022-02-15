@@ -75,7 +75,7 @@ func (m LogAnalyticsLabelView) String() string {
 func (m LogAnalyticsLabelView) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLogAnalyticsLabelViewPriorityEnum[string(m.Priority)]; !ok && m.Priority != "" {
+	if _, ok := GetMappingLogAnalyticsLabelViewPriorityEnum(string(m.Priority)); !ok && m.Priority != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Priority: %s. Supported values are: %s.", m.Priority, strings.Join(GetLogAnalyticsLabelViewPriorityEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -119,4 +119,15 @@ func GetLogAnalyticsLabelViewPriorityEnumStringValues() []string {
 		"MEDIUM",
 		"HIGH",
 	}
+}
+
+// GetMappingLogAnalyticsLabelViewPriorityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogAnalyticsLabelViewPriorityEnum(val string) (LogAnalyticsLabelViewPriorityEnum, bool) {
+	mappingLogAnalyticsLabelViewPriorityEnumIgnoreCase := make(map[string]LogAnalyticsLabelViewPriorityEnum)
+	for k, v := range mappingLogAnalyticsLabelViewPriorityEnum {
+		mappingLogAnalyticsLabelViewPriorityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogAnalyticsLabelViewPriorityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

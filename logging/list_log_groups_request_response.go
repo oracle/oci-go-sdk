@@ -82,10 +82,10 @@ func (request ListLogGroupsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListLogGroupsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListLogGroupsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListLogGroupsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListLogGroupsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLogGroupsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListLogGroupsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListLogGroupsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -158,6 +158,17 @@ func GetListLogGroupsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListLogGroupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogGroupsSortByEnum(val string) (ListLogGroupsSortByEnum, bool) {
+	mappingListLogGroupsSortByEnumIgnoreCase := make(map[string]ListLogGroupsSortByEnum)
+	for k, v := range mappingListLogGroupsSortByEnum {
+		mappingListLogGroupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogGroupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLogGroupsSortOrderEnum Enum with underlying type: string
 type ListLogGroupsSortOrderEnum string
 
@@ -187,4 +198,15 @@ func GetListLogGroupsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListLogGroupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogGroupsSortOrderEnum(val string) (ListLogGroupsSortOrderEnum, bool) {
+	mappingListLogGroupsSortOrderEnumIgnoreCase := make(map[string]ListLogGroupsSortOrderEnum)
+	for k, v := range mappingListLogGroupsSortOrderEnum {
+		mappingListLogGroupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogGroupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -89,10 +89,10 @@ func (request ListSchedulesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListSchedulesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSchedulesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSchedulesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSchedulesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSchedulesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSchedulesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSchedulesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -164,6 +164,17 @@ func GetListSchedulesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSchedulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSchedulesSortByEnum(val string) (ListSchedulesSortByEnum, bool) {
+	mappingListSchedulesSortByEnumIgnoreCase := make(map[string]ListSchedulesSortByEnum)
+	for k, v := range mappingListSchedulesSortByEnum {
+		mappingListSchedulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSchedulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSchedulesSortOrderEnum Enum with underlying type: string
 type ListSchedulesSortOrderEnum string
 
@@ -193,4 +204,15 @@ func GetListSchedulesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListSchedulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSchedulesSortOrderEnum(val string) (ListSchedulesSortOrderEnum, bool) {
+	mappingListSchedulesSortOrderEnumIgnoreCase := make(map[string]ListSchedulesSortOrderEnum)
+	for k, v := range mappingListSchedulesSortOrderEnum {
+		mappingListSchedulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSchedulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

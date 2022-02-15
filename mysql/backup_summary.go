@@ -79,13 +79,13 @@ func (m BackupSummary) String() string {
 // Not recommended for calling this function directly
 func (m BackupSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBackupLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingBackupLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetBackupLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBackupBackupTypeEnum[string(m.BackupType)]; !ok && m.BackupType != "" {
+	if _, ok := GetMappingBackupBackupTypeEnum(string(m.BackupType)); !ok && m.BackupType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BackupType: %s. Supported values are: %s.", m.BackupType, strings.Join(GetBackupBackupTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBackupCreationTypeEnum[string(m.CreationType)]; !ok && m.CreationType != "" {
+	if _, ok := GetMappingBackupCreationTypeEnum(string(m.CreationType)); !ok && m.CreationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CreationType: %s. Supported values are: %s.", m.CreationType, strings.Join(GetBackupCreationTypeEnumStringValues(), ",")))
 	}
 

@@ -35,7 +35,7 @@ func (m AutonomousDatabaseBackupConfig) String() string {
 func (m AutonomousDatabaseBackupConfig) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAutonomousDatabaseBackupConfigManualBackupTypeEnum[string(m.ManualBackupType)]; !ok && m.ManualBackupType != "" {
+	if _, ok := GetMappingAutonomousDatabaseBackupConfigManualBackupTypeEnum(string(m.ManualBackupType)); !ok && m.ManualBackupType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ManualBackupType: %s. Supported values are: %s.", m.ManualBackupType, strings.Join(GetAutonomousDatabaseBackupConfigManualBackupTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -73,4 +73,15 @@ func GetAutonomousDatabaseBackupConfigManualBackupTypeEnumStringValues() []strin
 		"NONE",
 		"OBJECT_STORE",
 	}
+}
+
+// GetMappingAutonomousDatabaseBackupConfigManualBackupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseBackupConfigManualBackupTypeEnum(val string) (AutonomousDatabaseBackupConfigManualBackupTypeEnum, bool) {
+	mappingAutonomousDatabaseBackupConfigManualBackupTypeEnumIgnoreCase := make(map[string]AutonomousDatabaseBackupConfigManualBackupTypeEnum)
+	for k, v := range mappingAutonomousDatabaseBackupConfigManualBackupTypeEnum {
+		mappingAutonomousDatabaseBackupConfigManualBackupTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseBackupConfigManualBackupTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

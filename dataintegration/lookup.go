@@ -134,7 +134,7 @@ func (m Lookup) String() string {
 // Not recommended for calling this function directly
 func (m Lookup) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingLookupMultiMatchStrategyEnum[string(m.MultiMatchStrategy)]; !ok && m.MultiMatchStrategy != "" {
+	if _, ok := GetMappingLookupMultiMatchStrategyEnum(string(m.MultiMatchStrategy)); !ok && m.MultiMatchStrategy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MultiMatchStrategy: %s. Supported values are: %s.", m.MultiMatchStrategy, strings.Join(GetLookupMultiMatchStrategyEnumStringValues(), ",")))
 	}
 
@@ -196,4 +196,15 @@ func GetLookupMultiMatchStrategyEnumStringValues() []string {
 		"RETURN_ALL",
 		"RETURN_ERROR",
 	}
+}
+
+// GetMappingLookupMultiMatchStrategyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLookupMultiMatchStrategyEnum(val string) (LookupMultiMatchStrategyEnum, bool) {
+	mappingLookupMultiMatchStrategyEnumIgnoreCase := make(map[string]LookupMultiMatchStrategyEnum)
+	for k, v := range mappingLookupMultiMatchStrategyEnum {
+		mappingLookupMultiMatchStrategyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLookupMultiMatchStrategyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

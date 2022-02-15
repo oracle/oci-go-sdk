@@ -102,3 +102,14 @@ func GetDatabaseToolsUserPasswordDetailsValueTypeEnumStringValues() []string {
 		"SECRETID",
 	}
 }
+
+// GetMappingDatabaseToolsUserPasswordDetailsValueTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseToolsUserPasswordDetailsValueTypeEnum(val string) (DatabaseToolsUserPasswordDetailsValueTypeEnum, bool) {
+	mappingDatabaseToolsUserPasswordDetailsValueTypeEnumIgnoreCase := make(map[string]DatabaseToolsUserPasswordDetailsValueTypeEnum)
+	for k, v := range mappingDatabaseToolsUserPasswordDetailsValueTypeEnum {
+		mappingDatabaseToolsUserPasswordDetailsValueTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseToolsUserPasswordDetailsValueTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

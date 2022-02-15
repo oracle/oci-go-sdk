@@ -34,7 +34,7 @@ func (m AutoScalePolicy) String() string {
 // Not recommended for calling this function directly
 func (m AutoScalePolicy) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAutoScalePolicyPolicyTypeEnum[string(m.PolicyType)]; !ok && m.PolicyType != "" {
+	if _, ok := GetMappingAutoScalePolicyPolicyTypeEnum(string(m.PolicyType)); !ok && m.PolicyType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PolicyType: %s. Supported values are: %s.", m.PolicyType, strings.Join(GetAutoScalePolicyPolicyTypeEnumStringValues(), ",")))
 	}
 
@@ -73,4 +73,15 @@ func GetAutoScalePolicyPolicyTypeEnumStringValues() []string {
 		"THRESHOLD_BASED",
 		"SCHEDULE_BASED",
 	}
+}
+
+// GetMappingAutoScalePolicyPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutoScalePolicyPolicyTypeEnum(val string) (AutoScalePolicyPolicyTypeEnum, bool) {
+	mappingAutoScalePolicyPolicyTypeEnumIgnoreCase := make(map[string]AutoScalePolicyPolicyTypeEnum)
+	for k, v := range mappingAutoScalePolicyPolicyTypeEnum {
+		mappingAutoScalePolicyPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutoScalePolicyPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

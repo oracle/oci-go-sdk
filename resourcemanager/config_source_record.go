@@ -119,3 +119,14 @@ func GetConfigSourceRecordConfigSourceRecordTypeEnumStringValues() []string {
 		"OBJECT_STORAGE_CONFIG_SOURCE",
 	}
 }
+
+// GetMappingConfigSourceRecordConfigSourceRecordTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConfigSourceRecordConfigSourceRecordTypeEnum(val string) (ConfigSourceRecordConfigSourceRecordTypeEnum, bool) {
+	mappingConfigSourceRecordConfigSourceRecordTypeEnumIgnoreCase := make(map[string]ConfigSourceRecordConfigSourceRecordTypeEnum)
+	for k, v := range mappingConfigSourceRecordConfigSourceRecordTypeEnum {
+		mappingConfigSourceRecordConfigSourceRecordTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConfigSourceRecordConfigSourceRecordTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

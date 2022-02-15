@@ -116,3 +116,14 @@ func GetDrgAttachmentNetworkCreateDetailsTypeEnumStringValues() []string {
 		"VCN",
 	}
 }
+
+// GetMappingDrgAttachmentNetworkCreateDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDrgAttachmentNetworkCreateDetailsTypeEnum(val string) (DrgAttachmentNetworkCreateDetailsTypeEnum, bool) {
+	mappingDrgAttachmentNetworkCreateDetailsTypeEnumIgnoreCase := make(map[string]DrgAttachmentNetworkCreateDetailsTypeEnum)
+	for k, v := range mappingDrgAttachmentNetworkCreateDetailsTypeEnum {
+		mappingDrgAttachmentNetworkCreateDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDrgAttachmentNetworkCreateDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

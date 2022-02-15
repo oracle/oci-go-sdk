@@ -38,7 +38,7 @@ func (m DataKey) String() string {
 // Not recommended for calling this function directly
 func (m DataKey) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDataKeyTypesEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingDataKeyTypesEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetDataKeyTypesEnumStringValues(), ",")))
 	}
 

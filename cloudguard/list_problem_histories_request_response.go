@@ -75,10 +75,10 @@ func (request ListProblemHistoriesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListProblemHistoriesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListProblemHistoriesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListProblemHistoriesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListProblemHistoriesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListProblemHistoriesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListProblemHistoriesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListProblemHistoriesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -146,6 +146,17 @@ func GetListProblemHistoriesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListProblemHistoriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProblemHistoriesSortOrderEnum(val string) (ListProblemHistoriesSortOrderEnum, bool) {
+	mappingListProblemHistoriesSortOrderEnumIgnoreCase := make(map[string]ListProblemHistoriesSortOrderEnum)
+	for k, v := range mappingListProblemHistoriesSortOrderEnum {
+		mappingListProblemHistoriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProblemHistoriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListProblemHistoriesSortByEnum Enum with underlying type: string
 type ListProblemHistoriesSortByEnum string
 
@@ -172,4 +183,15 @@ func GetListProblemHistoriesSortByEnumStringValues() []string {
 	return []string{
 		"timeCreated",
 	}
+}
+
+// GetMappingListProblemHistoriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProblemHistoriesSortByEnum(val string) (ListProblemHistoriesSortByEnum, bool) {
+	mappingListProblemHistoriesSortByEnumIgnoreCase := make(map[string]ListProblemHistoriesSortByEnum)
+	for k, v := range mappingListProblemHistoriesSortByEnum {
+		mappingListProblemHistoriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProblemHistoriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

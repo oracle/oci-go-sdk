@@ -33,7 +33,7 @@ func (m AutoScalePolicyRule) String() string {
 // Not recommended for calling this function directly
 func (m AutoScalePolicyRule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAutoScalePolicyRuleActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingAutoScalePolicyRuleActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetAutoScalePolicyRuleActionEnumStringValues(), ",")))
 	}
 
@@ -72,4 +72,15 @@ func GetAutoScalePolicyRuleActionEnumStringValues() []string {
 		"CHANGE_SHAPE_SCALE_UP",
 		"CHANGE_SHAPE_SCALE_DOWN",
 	}
+}
+
+// GetMappingAutoScalePolicyRuleActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutoScalePolicyRuleActionEnum(val string) (AutoScalePolicyRuleActionEnum, bool) {
+	mappingAutoScalePolicyRuleActionEnumIgnoreCase := make(map[string]AutoScalePolicyRuleActionEnum)
+	for k, v := range mappingAutoScalePolicyRuleActionEnum {
+		mappingAutoScalePolicyRuleActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutoScalePolicyRuleActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

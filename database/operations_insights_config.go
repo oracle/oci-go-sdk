@@ -35,7 +35,7 @@ func (m OperationsInsightsConfig) String() string {
 // Not recommended for calling this function directly
 func (m OperationsInsightsConfig) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingOperationsInsightsConfigOperationsInsightsStatusEnum[string(m.OperationsInsightsStatus)]; !ok && m.OperationsInsightsStatus != "" {
+	if _, ok := GetMappingOperationsInsightsConfigOperationsInsightsStatusEnum(string(m.OperationsInsightsStatus)); !ok && m.OperationsInsightsStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OperationsInsightsStatus: %s. Supported values are: %s.", m.OperationsInsightsStatus, strings.Join(GetOperationsInsightsConfigOperationsInsightsStatusEnumStringValues(), ",")))
 	}
 
@@ -86,4 +86,15 @@ func GetOperationsInsightsConfigOperationsInsightsStatusEnumStringValues() []str
 		"FAILED_ENABLING",
 		"FAILED_DISABLING",
 	}
+}
+
+// GetMappingOperationsInsightsConfigOperationsInsightsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOperationsInsightsConfigOperationsInsightsStatusEnum(val string) (OperationsInsightsConfigOperationsInsightsStatusEnum, bool) {
+	mappingOperationsInsightsConfigOperationsInsightsStatusEnumIgnoreCase := make(map[string]OperationsInsightsConfigOperationsInsightsStatusEnum)
+	for k, v := range mappingOperationsInsightsConfigOperationsInsightsStatusEnum {
+		mappingOperationsInsightsConfigOperationsInsightsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOperationsInsightsConfigOperationsInsightsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

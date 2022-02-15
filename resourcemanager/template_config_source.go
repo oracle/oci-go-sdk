@@ -105,3 +105,14 @@ func GetTemplateConfigSourceTemplateConfigSourceTypeEnumStringValues() []string 
 		"ZIP_UPLOAD",
 	}
 }
+
+// GetMappingTemplateConfigSourceTemplateConfigSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTemplateConfigSourceTemplateConfigSourceTypeEnum(val string) (TemplateConfigSourceTemplateConfigSourceTypeEnum, bool) {
+	mappingTemplateConfigSourceTemplateConfigSourceTypeEnumIgnoreCase := make(map[string]TemplateConfigSourceTemplateConfigSourceTypeEnum)
+	for k, v := range mappingTemplateConfigSourceTemplateConfigSourceTypeEnum {
+		mappingTemplateConfigSourceTemplateConfigSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTemplateConfigSourceTemplateConfigSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

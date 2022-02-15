@@ -97,7 +97,7 @@ func (m FileSystem) String() string {
 // Not recommended for calling this function directly
 func (m FileSystem) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingFileSystemLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingFileSystemLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetFileSystemLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -142,4 +142,15 @@ func GetFileSystemLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingFileSystemLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFileSystemLifecycleStateEnum(val string) (FileSystemLifecycleStateEnum, bool) {
+	mappingFileSystemLifecycleStateEnumIgnoreCase := make(map[string]FileSystemLifecycleStateEnum)
+	for k, v := range mappingFileSystemLifecycleStateEnum {
+		mappingFileSystemLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFileSystemLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

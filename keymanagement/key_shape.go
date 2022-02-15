@@ -41,11 +41,11 @@ func (m KeyShape) String() string {
 // Not recommended for calling this function directly
 func (m KeyShape) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingKeyShapeAlgorithmEnum[string(m.Algorithm)]; !ok && m.Algorithm != "" {
+	if _, ok := GetMappingKeyShapeAlgorithmEnum(string(m.Algorithm)); !ok && m.Algorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Algorithm: %s. Supported values are: %s.", m.Algorithm, strings.Join(GetKeyShapeAlgorithmEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingKeyShapeCurveIdEnum[string(m.CurveId)]; !ok && m.CurveId != "" {
+	if _, ok := GetMappingKeyShapeCurveIdEnum(string(m.CurveId)); !ok && m.CurveId != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CurveId: %s. Supported values are: %s.", m.CurveId, strings.Join(GetKeyShapeCurveIdEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -88,6 +88,17 @@ func GetKeyShapeAlgorithmEnumStringValues() []string {
 	}
 }
 
+// GetMappingKeyShapeAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeyShapeAlgorithmEnum(val string) (KeyShapeAlgorithmEnum, bool) {
+	mappingKeyShapeAlgorithmEnumIgnoreCase := make(map[string]KeyShapeAlgorithmEnum)
+	for k, v := range mappingKeyShapeAlgorithmEnum {
+		mappingKeyShapeAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeyShapeAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // KeyShapeCurveIdEnum Enum with underlying type: string
 type KeyShapeCurveIdEnum string
 
@@ -120,4 +131,15 @@ func GetKeyShapeCurveIdEnumStringValues() []string {
 		"NIST_P384",
 		"NIST_P521",
 	}
+}
+
+// GetMappingKeyShapeCurveIdEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeyShapeCurveIdEnum(val string) (KeyShapeCurveIdEnum, bool) {
+	mappingKeyShapeCurveIdEnumIgnoreCase := make(map[string]KeyShapeCurveIdEnum)
+	for k, v := range mappingKeyShapeCurveIdEnum {
+		mappingKeyShapeCurveIdEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeyShapeCurveIdEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

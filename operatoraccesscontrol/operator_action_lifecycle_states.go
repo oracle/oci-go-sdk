@@ -11,6 +11,10 @@
 
 package operatoraccesscontrol
 
+import (
+	"strings"
+)
+
 // OperatorActionLifecycleStatesEnum Enum with underlying type: string
 type OperatorActionLifecycleStatesEnum string
 
@@ -40,4 +44,15 @@ func GetOperatorActionLifecycleStatesEnumStringValues() []string {
 		"ACTIVE",
 		"INACTIVE",
 	}
+}
+
+// GetMappingOperatorActionLifecycleStatesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOperatorActionLifecycleStatesEnum(val string) (OperatorActionLifecycleStatesEnum, bool) {
+	mappingOperatorActionLifecycleStatesEnumIgnoreCase := make(map[string]OperatorActionLifecycleStatesEnum)
+	for k, v := range mappingOperatorActionLifecycleStatesEnum {
+		mappingOperatorActionLifecycleStatesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOperatorActionLifecycleStatesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

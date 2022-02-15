@@ -108,19 +108,19 @@ func (m SensitiveColumn) String() string {
 // Not recommended for calling this function directly
 func (m SensitiveColumn) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSensitiveColumnLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingSensitiveColumnLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSensitiveColumnLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSensitiveColumnObjectTypeEnum[string(m.ObjectType)]; !ok && m.ObjectType != "" {
+	if _, ok := GetMappingSensitiveColumnObjectTypeEnum(string(m.ObjectType)); !ok && m.ObjectType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ObjectType: %s. Supported values are: %s.", m.ObjectType, strings.Join(GetSensitiveColumnObjectTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSensitiveColumnStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingSensitiveColumnStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetSensitiveColumnStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSensitiveColumnSourceEnum[string(m.Source)]; !ok && m.Source != "" {
+	if _, ok := GetMappingSensitiveColumnSourceEnum(string(m.Source)); !ok && m.Source != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Source: %s. Supported values are: %s.", m.Source, strings.Join(GetSensitiveColumnSourceEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSensitiveColumnRelationTypeEnum[string(m.RelationType)]; !ok && m.RelationType != "" {
+	if _, ok := GetMappingSensitiveColumnRelationTypeEnum(string(m.RelationType)); !ok && m.RelationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RelationType: %s. Supported values are: %s.", m.RelationType, strings.Join(GetSensitiveColumnRelationTypeEnumStringValues(), ",")))
 	}
 
@@ -161,6 +161,17 @@ func GetSensitiveColumnObjectTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingSensitiveColumnObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSensitiveColumnObjectTypeEnum(val string) (SensitiveColumnObjectTypeEnum, bool) {
+	mappingSensitiveColumnObjectTypeEnumIgnoreCase := make(map[string]SensitiveColumnObjectTypeEnum)
+	for k, v := range mappingSensitiveColumnObjectTypeEnum {
+		mappingSensitiveColumnObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSensitiveColumnObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SensitiveColumnStatusEnum Enum with underlying type: string
 type SensitiveColumnStatusEnum string
 
@@ -192,6 +203,17 @@ func GetSensitiveColumnStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingSensitiveColumnStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSensitiveColumnStatusEnum(val string) (SensitiveColumnStatusEnum, bool) {
+	mappingSensitiveColumnStatusEnumIgnoreCase := make(map[string]SensitiveColumnStatusEnum)
+	for k, v := range mappingSensitiveColumnStatusEnum {
+		mappingSensitiveColumnStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSensitiveColumnStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SensitiveColumnSourceEnum Enum with underlying type: string
 type SensitiveColumnSourceEnum string
 
@@ -221,6 +243,17 @@ func GetSensitiveColumnSourceEnumStringValues() []string {
 		"MANUAL",
 		"DISCOVERY",
 	}
+}
+
+// GetMappingSensitiveColumnSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSensitiveColumnSourceEnum(val string) (SensitiveColumnSourceEnum, bool) {
+	mappingSensitiveColumnSourceEnumIgnoreCase := make(map[string]SensitiveColumnSourceEnum)
+	for k, v := range mappingSensitiveColumnSourceEnum {
+		mappingSensitiveColumnSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSensitiveColumnSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // SensitiveColumnRelationTypeEnum Enum with underlying type: string
@@ -255,4 +288,15 @@ func GetSensitiveColumnRelationTypeEnumStringValues() []string {
 		"APP_DEFINED",
 		"DB_DEFINED",
 	}
+}
+
+// GetMappingSensitiveColumnRelationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSensitiveColumnRelationTypeEnum(val string) (SensitiveColumnRelationTypeEnum, bool) {
+	mappingSensitiveColumnRelationTypeEnumIgnoreCase := make(map[string]SensitiveColumnRelationTypeEnum)
+	for k, v := range mappingSensitiveColumnRelationTypeEnum {
+		mappingSensitiveColumnRelationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSensitiveColumnRelationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

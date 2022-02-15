@@ -173,23 +173,23 @@ func (m SqlJob) String() string {
 // Not recommended for calling this function directly
 func (m SqlJob) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSqlJobSqlTypeEnum[string(m.SqlType)]; !ok && m.SqlType != "" {
+	if _, ok := GetMappingSqlJobSqlTypeEnum(string(m.SqlType)); !ok && m.SqlType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SqlType: %s. Supported values are: %s.", m.SqlType, strings.Join(GetSqlJobSqlTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSqlJobOperationTypeEnum[string(m.OperationType)]; !ok && m.OperationType != "" {
+	if _, ok := GetMappingSqlJobOperationTypeEnum(string(m.OperationType)); !ok && m.OperationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OperationType: %s. Supported values are: %s.", m.OperationType, strings.Join(GetSqlJobOperationTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSqlJobRoleEnum[string(m.Role)]; !ok && m.Role != "" {
+	if _, ok := GetMappingSqlJobRoleEnum(string(m.Role)); !ok && m.Role != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Role: %s. Supported values are: %s.", m.Role, strings.Join(GetSqlJobRoleEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDatabaseSubTypeEnum[string(m.DatabaseSubType)]; !ok && m.DatabaseSubType != "" {
+	if _, ok := GetMappingDatabaseSubTypeEnum(string(m.DatabaseSubType)); !ok && m.DatabaseSubType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseSubType: %s. Supported values are: %s.", m.DatabaseSubType, strings.Join(GetDatabaseSubTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingJobScheduleTypeEnum[string(m.ScheduleType)]; !ok && m.ScheduleType != "" {
+	if _, ok := GetMappingJobScheduleTypeEnum(string(m.ScheduleType)); !ok && m.ScheduleType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ScheduleType: %s. Supported values are: %s.", m.ScheduleType, strings.Join(GetJobScheduleTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingJobLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingJobLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetJobLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -336,6 +336,17 @@ func GetSqlJobSqlTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingSqlJobSqlTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSqlJobSqlTypeEnum(val string) (SqlJobSqlTypeEnum, bool) {
+	mappingSqlJobSqlTypeEnumIgnoreCase := make(map[string]SqlJobSqlTypeEnum)
+	for k, v := range mappingSqlJobSqlTypeEnum {
+		mappingSqlJobSqlTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSqlJobSqlTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SqlJobOperationTypeEnum Enum with underlying type: string
 type SqlJobOperationTypeEnum string
 
@@ -362,6 +373,17 @@ func GetSqlJobOperationTypeEnumStringValues() []string {
 	return []string{
 		"EXECUTE_SQL",
 	}
+}
+
+// GetMappingSqlJobOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSqlJobOperationTypeEnum(val string) (SqlJobOperationTypeEnum, bool) {
+	mappingSqlJobOperationTypeEnumIgnoreCase := make(map[string]SqlJobOperationTypeEnum)
+	for k, v := range mappingSqlJobOperationTypeEnum {
+		mappingSqlJobOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSqlJobOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // SqlJobRoleEnum Enum with underlying type: string
@@ -393,4 +415,15 @@ func GetSqlJobRoleEnumStringValues() []string {
 		"NORMAL",
 		"SYSDBA",
 	}
+}
+
+// GetMappingSqlJobRoleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSqlJobRoleEnum(val string) (SqlJobRoleEnum, bool) {
+	mappingSqlJobRoleEnumIgnoreCase := make(map[string]SqlJobRoleEnum)
+	for k, v := range mappingSqlJobRoleEnum {
+		mappingSqlJobRoleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSqlJobRoleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

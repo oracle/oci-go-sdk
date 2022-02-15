@@ -92,13 +92,13 @@ func (request ListCrossConnectGroupsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListCrossConnectGroupsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListCrossConnectGroupsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListCrossConnectGroupsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListCrossConnectGroupsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListCrossConnectGroupsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListCrossConnectGroupsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListCrossConnectGroupsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCrossConnectGroupLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingCrossConnectGroupLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetCrossConnectGroupLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -166,6 +166,17 @@ func GetListCrossConnectGroupsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListCrossConnectGroupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCrossConnectGroupsSortByEnum(val string) (ListCrossConnectGroupsSortByEnum, bool) {
+	mappingListCrossConnectGroupsSortByEnumIgnoreCase := make(map[string]ListCrossConnectGroupsSortByEnum)
+	for k, v := range mappingListCrossConnectGroupsSortByEnum {
+		mappingListCrossConnectGroupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCrossConnectGroupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListCrossConnectGroupsSortOrderEnum Enum with underlying type: string
 type ListCrossConnectGroupsSortOrderEnum string
 
@@ -195,4 +206,15 @@ func GetListCrossConnectGroupsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListCrossConnectGroupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCrossConnectGroupsSortOrderEnum(val string) (ListCrossConnectGroupsSortOrderEnum, bool) {
+	mappingListCrossConnectGroupsSortOrderEnumIgnoreCase := make(map[string]ListCrossConnectGroupsSortOrderEnum)
+	for k, v := range mappingListCrossConnectGroupsSortOrderEnum {
+		mappingListCrossConnectGroupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCrossConnectGroupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

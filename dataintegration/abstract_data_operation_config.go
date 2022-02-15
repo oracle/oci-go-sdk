@@ -109,3 +109,14 @@ func GetAbstractDataOperationConfigModelTypeEnumStringValues() []string {
 		"WRITE_OPERATION_CONFIG",
 	}
 }
+
+// GetMappingAbstractDataOperationConfigModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAbstractDataOperationConfigModelTypeEnum(val string) (AbstractDataOperationConfigModelTypeEnum, bool) {
+	mappingAbstractDataOperationConfigModelTypeEnumIgnoreCase := make(map[string]AbstractDataOperationConfigModelTypeEnum)
+	for k, v := range mappingAbstractDataOperationConfigModelTypeEnum {
+		mappingAbstractDataOperationConfigModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAbstractDataOperationConfigModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

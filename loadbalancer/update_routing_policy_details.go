@@ -36,7 +36,7 @@ func (m UpdateRoutingPolicyDetails) String() string {
 func (m UpdateRoutingPolicyDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateRoutingPolicyDetailsConditionLanguageVersionEnum[string(m.ConditionLanguageVersion)]; !ok && m.ConditionLanguageVersion != "" {
+	if _, ok := GetMappingUpdateRoutingPolicyDetailsConditionLanguageVersionEnum(string(m.ConditionLanguageVersion)); !ok && m.ConditionLanguageVersion != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ConditionLanguageVersion: %s. Supported values are: %s.", m.ConditionLanguageVersion, strings.Join(GetUpdateRoutingPolicyDetailsConditionLanguageVersionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -71,4 +71,15 @@ func GetUpdateRoutingPolicyDetailsConditionLanguageVersionEnumStringValues() []s
 	return []string{
 		"V1",
 	}
+}
+
+// GetMappingUpdateRoutingPolicyDetailsConditionLanguageVersionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateRoutingPolicyDetailsConditionLanguageVersionEnum(val string) (UpdateRoutingPolicyDetailsConditionLanguageVersionEnum, bool) {
+	mappingUpdateRoutingPolicyDetailsConditionLanguageVersionEnumIgnoreCase := make(map[string]UpdateRoutingPolicyDetailsConditionLanguageVersionEnum)
+	for k, v := range mappingUpdateRoutingPolicyDetailsConditionLanguageVersionEnum {
+		mappingUpdateRoutingPolicyDetailsConditionLanguageVersionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateRoutingPolicyDetailsConditionLanguageVersionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

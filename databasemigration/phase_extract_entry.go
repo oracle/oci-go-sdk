@@ -34,7 +34,7 @@ func (m PhaseExtractEntry) String() string {
 // Not recommended for calling this function directly
 func (m PhaseExtractEntry) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPhaseExtractTypesEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingPhaseExtractTypesEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetPhaseExtractTypesEnumStringValues(), ",")))
 	}
 

@@ -71,7 +71,7 @@ func (m Drg) String() string {
 // Not recommended for calling this function directly
 func (m Drg) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDrgLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDrgLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDrgLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -116,4 +116,15 @@ func GetDrgLifecycleStateEnumStringValues() []string {
 		"TERMINATING",
 		"TERMINATED",
 	}
+}
+
+// GetMappingDrgLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDrgLifecycleStateEnum(val string) (DrgLifecycleStateEnum, bool) {
+	mappingDrgLifecycleStateEnumIgnoreCase := make(map[string]DrgLifecycleStateEnum)
+	for k, v := range mappingDrgLifecycleStateEnum {
+		mappingDrgLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDrgLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

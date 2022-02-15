@@ -86,7 +86,7 @@ func (m CloudExadataInfrastructureSummary) String() string {
 // Not recommended for calling this function directly
 func (m CloudExadataInfrastructureSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCloudExadataInfrastructureSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingCloudExadataInfrastructureSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetCloudExadataInfrastructureSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -140,4 +140,15 @@ func GetCloudExadataInfrastructureSummaryLifecycleStateEnumStringValues() []stri
 		"FAILED",
 		"MAINTENANCE_IN_PROGRESS",
 	}
+}
+
+// GetMappingCloudExadataInfrastructureSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCloudExadataInfrastructureSummaryLifecycleStateEnum(val string) (CloudExadataInfrastructureSummaryLifecycleStateEnum, bool) {
+	mappingCloudExadataInfrastructureSummaryLifecycleStateEnumIgnoreCase := make(map[string]CloudExadataInfrastructureSummaryLifecycleStateEnum)
+	for k, v := range mappingCloudExadataInfrastructureSummaryLifecycleStateEnum {
+		mappingCloudExadataInfrastructureSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCloudExadataInfrastructureSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

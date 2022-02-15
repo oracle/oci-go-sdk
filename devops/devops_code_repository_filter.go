@@ -34,7 +34,7 @@ func (m DevopsCodeRepositoryFilter) String() string {
 func (m DevopsCodeRepositoryFilter) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range m.Events {
-		if _, ok := mappingDevopsCodeRepositoryFilterEventsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingDevopsCodeRepositoryFilterEventsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Events: %s. Supported values are: %s.", val, strings.Join(GetDevopsCodeRepositoryFilterEventsEnumStringValues(), ",")))
 		}
 	}
@@ -85,4 +85,15 @@ func GetDevopsCodeRepositoryFilterEventsEnumStringValues() []string {
 	return []string{
 		"PUSH",
 	}
+}
+
+// GetMappingDevopsCodeRepositoryFilterEventsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDevopsCodeRepositoryFilterEventsEnum(val string) (DevopsCodeRepositoryFilterEventsEnum, bool) {
+	mappingDevopsCodeRepositoryFilterEventsEnumIgnoreCase := make(map[string]DevopsCodeRepositoryFilterEventsEnum)
+	for k, v := range mappingDevopsCodeRepositoryFilterEventsEnum {
+		mappingDevopsCodeRepositoryFilterEventsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDevopsCodeRepositoryFilterEventsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

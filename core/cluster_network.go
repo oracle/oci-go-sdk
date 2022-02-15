@@ -71,7 +71,7 @@ func (m ClusterNetwork) String() string {
 // Not recommended for calling this function directly
 func (m ClusterNetwork) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingClusterNetworkLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingClusterNetworkLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetClusterNetworkLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -128,4 +128,15 @@ func GetClusterNetworkLifecycleStateEnumStringValues() []string {
 		"TERMINATED",
 		"RUNNING",
 	}
+}
+
+// GetMappingClusterNetworkLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingClusterNetworkLifecycleStateEnum(val string) (ClusterNetworkLifecycleStateEnum, bool) {
+	mappingClusterNetworkLifecycleStateEnumIgnoreCase := make(map[string]ClusterNetworkLifecycleStateEnum)
+	for k, v := range mappingClusterNetworkLifecycleStateEnum {
+		mappingClusterNetworkLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingClusterNetworkLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

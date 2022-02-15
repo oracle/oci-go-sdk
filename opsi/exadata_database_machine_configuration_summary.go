@@ -104,10 +104,10 @@ func (m ExadataDatabaseMachineConfigurationSummary) String() string {
 func (m ExadataDatabaseMachineConfigurationSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingExadataTypeEnum[string(m.ExadataType)]; !ok && m.ExadataType != "" {
+	if _, ok := GetMappingExadataTypeEnum(string(m.ExadataType)); !ok && m.ExadataType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExadataType: %s. Supported values are: %s.", m.ExadataType, strings.Join(GetExadataTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingExadataRackTypeEnum[string(m.ExadataRackType)]; !ok && m.ExadataRackType != "" {
+	if _, ok := GetMappingExadataRackTypeEnum(string(m.ExadataRackType)); !ok && m.ExadataRackType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExadataRackType: %s. Supported values are: %s.", m.ExadataRackType, strings.Join(GetExadataRackTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

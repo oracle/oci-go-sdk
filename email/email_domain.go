@@ -77,7 +77,7 @@ func (m EmailDomain) String() string {
 func (m EmailDomain) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingEmailDomainLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingEmailDomainLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetEmailDomainLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -127,4 +127,15 @@ func GetEmailDomainLifecycleStateEnumStringValues() []string {
 		"FAILED",
 		"UPDATING",
 	}
+}
+
+// GetMappingEmailDomainLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEmailDomainLifecycleStateEnum(val string) (EmailDomainLifecycleStateEnum, bool) {
+	mappingEmailDomainLifecycleStateEnumIgnoreCase := make(map[string]EmailDomainLifecycleStateEnum)
+	for k, v := range mappingEmailDomainLifecycleStateEnum {
+		mappingEmailDomainLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEmailDomainLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

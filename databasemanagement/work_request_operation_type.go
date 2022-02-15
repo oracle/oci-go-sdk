@@ -11,6 +11,10 @@
 
 package databasemanagement
 
+import (
+	"strings"
+)
+
 // WorkRequestOperationTypeEnum Enum with underlying type: string
 type WorkRequestOperationTypeEnum string
 
@@ -40,4 +44,15 @@ func GetWorkRequestOperationTypeEnumStringValues() []string {
 		"CREATE_DB_MANAGEMENT_PRIVATE_ENDPOINT",
 		"DELETE_DB_MANAGEMENT_PRIVATE_ENDPOINT",
 	}
+}
+
+// GetMappingWorkRequestOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestOperationTypeEnum(val string) (WorkRequestOperationTypeEnum, bool) {
+	mappingWorkRequestOperationTypeEnumIgnoreCase := make(map[string]WorkRequestOperationTypeEnum)
+	for k, v := range mappingWorkRequestOperationTypeEnum {
+		mappingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

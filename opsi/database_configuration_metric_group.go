@@ -129,3 +129,14 @@ func GetDatabaseConfigurationMetricGroupMetricNameEnumStringValues() []string {
 		"DB_OS_CONFIG_INSTANCE",
 	}
 }
+
+// GetMappingDatabaseConfigurationMetricGroupMetricNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseConfigurationMetricGroupMetricNameEnum(val string) (DatabaseConfigurationMetricGroupMetricNameEnum, bool) {
+	mappingDatabaseConfigurationMetricGroupMetricNameEnumIgnoreCase := make(map[string]DatabaseConfigurationMetricGroupMetricNameEnum)
+	for k, v := range mappingDatabaseConfigurationMetricGroupMetricNameEnum {
+		mappingDatabaseConfigurationMetricGroupMetricNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseConfigurationMetricGroupMetricNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

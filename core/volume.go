@@ -110,7 +110,7 @@ func (m Volume) String() string {
 // Not recommended for calling this function directly
 func (m Volume) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVolumeLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingVolumeLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetVolumeLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -242,4 +242,15 @@ func GetVolumeLifecycleStateEnumStringValues() []string {
 		"TERMINATED",
 		"FAULTY",
 	}
+}
+
+// GetMappingVolumeLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVolumeLifecycleStateEnum(val string) (VolumeLifecycleStateEnum, bool) {
+	mappingVolumeLifecycleStateEnumIgnoreCase := make(map[string]VolumeLifecycleStateEnum)
+	for k, v := range mappingVolumeLifecycleStateEnum {
+		mappingVolumeLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVolumeLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

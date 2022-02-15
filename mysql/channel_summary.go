@@ -65,7 +65,7 @@ func (m ChannelSummary) String() string {
 // Not recommended for calling this function directly
 func (m ChannelSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingChannelLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingChannelLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetChannelLifecycleStateEnumStringValues(), ",")))
 	}
 

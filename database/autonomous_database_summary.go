@@ -312,47 +312,47 @@ func (m AutonomousDatabaseSummary) String() string {
 // Not recommended for calling this function directly
 func (m AutonomousDatabaseSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAutonomousDatabaseSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAutonomousDatabaseSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAutonomousDatabaseSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingAutonomousDatabaseSummaryInfrastructureTypeEnum[string(m.InfrastructureType)]; !ok && m.InfrastructureType != "" {
+	if _, ok := GetMappingAutonomousDatabaseSummaryInfrastructureTypeEnum(string(m.InfrastructureType)); !ok && m.InfrastructureType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InfrastructureType: %s. Supported values are: %s.", m.InfrastructureType, strings.Join(GetAutonomousDatabaseSummaryInfrastructureTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseSummaryLicenseModelEnum[string(m.LicenseModel)]; !ok && m.LicenseModel != "" {
+	if _, ok := GetMappingAutonomousDatabaseSummaryLicenseModelEnum(string(m.LicenseModel)); !ok && m.LicenseModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LicenseModel: %s. Supported values are: %s.", m.LicenseModel, strings.Join(GetAutonomousDatabaseSummaryLicenseModelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseSummaryDbWorkloadEnum[string(m.DbWorkload)]; !ok && m.DbWorkload != "" {
+	if _, ok := GetMappingAutonomousDatabaseSummaryDbWorkloadEnum(string(m.DbWorkload)); !ok && m.DbWorkload != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DbWorkload: %s. Supported values are: %s.", m.DbWorkload, strings.Join(GetAutonomousDatabaseSummaryDbWorkloadEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseSummaryDataSafeStatusEnum[string(m.DataSafeStatus)]; !ok && m.DataSafeStatus != "" {
+	if _, ok := GetMappingAutonomousDatabaseSummaryDataSafeStatusEnum(string(m.DataSafeStatus)); !ok && m.DataSafeStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataSafeStatus: %s. Supported values are: %s.", m.DataSafeStatus, strings.Join(GetAutonomousDatabaseSummaryDataSafeStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseSummaryOperationsInsightsStatusEnum[string(m.OperationsInsightsStatus)]; !ok && m.OperationsInsightsStatus != "" {
+	if _, ok := GetMappingAutonomousDatabaseSummaryOperationsInsightsStatusEnum(string(m.OperationsInsightsStatus)); !ok && m.OperationsInsightsStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OperationsInsightsStatus: %s. Supported values are: %s.", m.OperationsInsightsStatus, strings.Join(GetAutonomousDatabaseSummaryOperationsInsightsStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseSummaryDatabaseManagementStatusEnum[string(m.DatabaseManagementStatus)]; !ok && m.DatabaseManagementStatus != "" {
+	if _, ok := GetMappingAutonomousDatabaseSummaryDatabaseManagementStatusEnum(string(m.DatabaseManagementStatus)); !ok && m.DatabaseManagementStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseManagementStatus: %s. Supported values are: %s.", m.DatabaseManagementStatus, strings.Join(GetAutonomousDatabaseSummaryDatabaseManagementStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseSummaryOpenModeEnum[string(m.OpenMode)]; !ok && m.OpenMode != "" {
+	if _, ok := GetMappingAutonomousDatabaseSummaryOpenModeEnum(string(m.OpenMode)); !ok && m.OpenMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OpenMode: %s. Supported values are: %s.", m.OpenMode, strings.Join(GetAutonomousDatabaseSummaryOpenModeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseSummaryRefreshableStatusEnum[string(m.RefreshableStatus)]; !ok && m.RefreshableStatus != "" {
+	if _, ok := GetMappingAutonomousDatabaseSummaryRefreshableStatusEnum(string(m.RefreshableStatus)); !ok && m.RefreshableStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RefreshableStatus: %s. Supported values are: %s.", m.RefreshableStatus, strings.Join(GetAutonomousDatabaseSummaryRefreshableStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseSummaryRefreshableModeEnum[string(m.RefreshableMode)]; !ok && m.RefreshableMode != "" {
+	if _, ok := GetMappingAutonomousDatabaseSummaryRefreshableModeEnum(string(m.RefreshableMode)); !ok && m.RefreshableMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RefreshableMode: %s. Supported values are: %s.", m.RefreshableMode, strings.Join(GetAutonomousDatabaseSummaryRefreshableModeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseSummaryPermissionLevelEnum[string(m.PermissionLevel)]; !ok && m.PermissionLevel != "" {
+	if _, ok := GetMappingAutonomousDatabaseSummaryPermissionLevelEnum(string(m.PermissionLevel)); !ok && m.PermissionLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PermissionLevel: %s. Supported values are: %s.", m.PermissionLevel, strings.Join(GetAutonomousDatabaseSummaryPermissionLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseSummaryRoleEnum[string(m.Role)]; !ok && m.Role != "" {
+	if _, ok := GetMappingAutonomousDatabaseSummaryRoleEnum(string(m.Role)); !ok && m.Role != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Role: %s. Supported values are: %s.", m.Role, strings.Join(GetAutonomousDatabaseSummaryRoleEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseSummaryDataguardRegionTypeEnum[string(m.DataguardRegionType)]; !ok && m.DataguardRegionType != "" {
+	if _, ok := GetMappingAutonomousDatabaseSummaryDataguardRegionTypeEnum(string(m.DataguardRegionType)); !ok && m.DataguardRegionType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataguardRegionType: %s. Supported values are: %s.", m.DataguardRegionType, strings.Join(GetAutonomousDatabaseSummaryDataguardRegionTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseSummaryAutonomousMaintenanceScheduleTypeEnum[string(m.AutonomousMaintenanceScheduleType)]; !ok && m.AutonomousMaintenanceScheduleType != "" {
+	if _, ok := GetMappingAutonomousDatabaseSummaryAutonomousMaintenanceScheduleTypeEnum(string(m.AutonomousMaintenanceScheduleType)); !ok && m.AutonomousMaintenanceScheduleType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AutonomousMaintenanceScheduleType: %s. Supported values are: %s.", m.AutonomousMaintenanceScheduleType, strings.Join(GetAutonomousDatabaseSummaryAutonomousMaintenanceScheduleTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -446,6 +446,17 @@ func GetAutonomousDatabaseSummaryLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingAutonomousDatabaseSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseSummaryLifecycleStateEnum(val string) (AutonomousDatabaseSummaryLifecycleStateEnum, bool) {
+	mappingAutonomousDatabaseSummaryLifecycleStateEnumIgnoreCase := make(map[string]AutonomousDatabaseSummaryLifecycleStateEnum)
+	for k, v := range mappingAutonomousDatabaseSummaryLifecycleStateEnum {
+		mappingAutonomousDatabaseSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousDatabaseSummaryInfrastructureTypeEnum Enum with underlying type: string
 type AutonomousDatabaseSummaryInfrastructureTypeEnum string
 
@@ -477,6 +488,17 @@ func GetAutonomousDatabaseSummaryInfrastructureTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingAutonomousDatabaseSummaryInfrastructureTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseSummaryInfrastructureTypeEnum(val string) (AutonomousDatabaseSummaryInfrastructureTypeEnum, bool) {
+	mappingAutonomousDatabaseSummaryInfrastructureTypeEnumIgnoreCase := make(map[string]AutonomousDatabaseSummaryInfrastructureTypeEnum)
+	for k, v := range mappingAutonomousDatabaseSummaryInfrastructureTypeEnum {
+		mappingAutonomousDatabaseSummaryInfrastructureTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseSummaryInfrastructureTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousDatabaseSummaryLicenseModelEnum Enum with underlying type: string
 type AutonomousDatabaseSummaryLicenseModelEnum string
 
@@ -506,6 +528,17 @@ func GetAutonomousDatabaseSummaryLicenseModelEnumStringValues() []string {
 		"LICENSE_INCLUDED",
 		"BRING_YOUR_OWN_LICENSE",
 	}
+}
+
+// GetMappingAutonomousDatabaseSummaryLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseSummaryLicenseModelEnum(val string) (AutonomousDatabaseSummaryLicenseModelEnum, bool) {
+	mappingAutonomousDatabaseSummaryLicenseModelEnumIgnoreCase := make(map[string]AutonomousDatabaseSummaryLicenseModelEnum)
+	for k, v := range mappingAutonomousDatabaseSummaryLicenseModelEnum {
+		mappingAutonomousDatabaseSummaryLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseSummaryLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // AutonomousDatabaseSummaryDbWorkloadEnum Enum with underlying type: string
@@ -543,6 +576,17 @@ func GetAutonomousDatabaseSummaryDbWorkloadEnumStringValues() []string {
 		"AJD",
 		"APEX",
 	}
+}
+
+// GetMappingAutonomousDatabaseSummaryDbWorkloadEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseSummaryDbWorkloadEnum(val string) (AutonomousDatabaseSummaryDbWorkloadEnum, bool) {
+	mappingAutonomousDatabaseSummaryDbWorkloadEnumIgnoreCase := make(map[string]AutonomousDatabaseSummaryDbWorkloadEnum)
+	for k, v := range mappingAutonomousDatabaseSummaryDbWorkloadEnum {
+		mappingAutonomousDatabaseSummaryDbWorkloadEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseSummaryDbWorkloadEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // AutonomousDatabaseSummaryDataSafeStatusEnum Enum with underlying type: string
@@ -583,6 +627,17 @@ func GetAutonomousDatabaseSummaryDataSafeStatusEnumStringValues() []string {
 		"NOT_REGISTERED",
 		"FAILED",
 	}
+}
+
+// GetMappingAutonomousDatabaseSummaryDataSafeStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseSummaryDataSafeStatusEnum(val string) (AutonomousDatabaseSummaryDataSafeStatusEnum, bool) {
+	mappingAutonomousDatabaseSummaryDataSafeStatusEnumIgnoreCase := make(map[string]AutonomousDatabaseSummaryDataSafeStatusEnum)
+	for k, v := range mappingAutonomousDatabaseSummaryDataSafeStatusEnum {
+		mappingAutonomousDatabaseSummaryDataSafeStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseSummaryDataSafeStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // AutonomousDatabaseSummaryOperationsInsightsStatusEnum Enum with underlying type: string
@@ -628,6 +683,17 @@ func GetAutonomousDatabaseSummaryOperationsInsightsStatusEnumStringValues() []st
 	}
 }
 
+// GetMappingAutonomousDatabaseSummaryOperationsInsightsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseSummaryOperationsInsightsStatusEnum(val string) (AutonomousDatabaseSummaryOperationsInsightsStatusEnum, bool) {
+	mappingAutonomousDatabaseSummaryOperationsInsightsStatusEnumIgnoreCase := make(map[string]AutonomousDatabaseSummaryOperationsInsightsStatusEnum)
+	for k, v := range mappingAutonomousDatabaseSummaryOperationsInsightsStatusEnum {
+		mappingAutonomousDatabaseSummaryOperationsInsightsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseSummaryOperationsInsightsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousDatabaseSummaryDatabaseManagementStatusEnum Enum with underlying type: string
 type AutonomousDatabaseSummaryDatabaseManagementStatusEnum string
 
@@ -671,6 +737,17 @@ func GetAutonomousDatabaseSummaryDatabaseManagementStatusEnumStringValues() []st
 	}
 }
 
+// GetMappingAutonomousDatabaseSummaryDatabaseManagementStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseSummaryDatabaseManagementStatusEnum(val string) (AutonomousDatabaseSummaryDatabaseManagementStatusEnum, bool) {
+	mappingAutonomousDatabaseSummaryDatabaseManagementStatusEnumIgnoreCase := make(map[string]AutonomousDatabaseSummaryDatabaseManagementStatusEnum)
+	for k, v := range mappingAutonomousDatabaseSummaryDatabaseManagementStatusEnum {
+		mappingAutonomousDatabaseSummaryDatabaseManagementStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseSummaryDatabaseManagementStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousDatabaseSummaryOpenModeEnum Enum with underlying type: string
 type AutonomousDatabaseSummaryOpenModeEnum string
 
@@ -700,6 +777,17 @@ func GetAutonomousDatabaseSummaryOpenModeEnumStringValues() []string {
 		"READ_ONLY",
 		"READ_WRITE",
 	}
+}
+
+// GetMappingAutonomousDatabaseSummaryOpenModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseSummaryOpenModeEnum(val string) (AutonomousDatabaseSummaryOpenModeEnum, bool) {
+	mappingAutonomousDatabaseSummaryOpenModeEnumIgnoreCase := make(map[string]AutonomousDatabaseSummaryOpenModeEnum)
+	for k, v := range mappingAutonomousDatabaseSummaryOpenModeEnum {
+		mappingAutonomousDatabaseSummaryOpenModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseSummaryOpenModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // AutonomousDatabaseSummaryRefreshableStatusEnum Enum with underlying type: string
@@ -733,6 +821,17 @@ func GetAutonomousDatabaseSummaryRefreshableStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingAutonomousDatabaseSummaryRefreshableStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseSummaryRefreshableStatusEnum(val string) (AutonomousDatabaseSummaryRefreshableStatusEnum, bool) {
+	mappingAutonomousDatabaseSummaryRefreshableStatusEnumIgnoreCase := make(map[string]AutonomousDatabaseSummaryRefreshableStatusEnum)
+	for k, v := range mappingAutonomousDatabaseSummaryRefreshableStatusEnum {
+		mappingAutonomousDatabaseSummaryRefreshableStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseSummaryRefreshableStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousDatabaseSummaryRefreshableModeEnum Enum with underlying type: string
 type AutonomousDatabaseSummaryRefreshableModeEnum string
 
@@ -764,6 +863,17 @@ func GetAutonomousDatabaseSummaryRefreshableModeEnumStringValues() []string {
 	}
 }
 
+// GetMappingAutonomousDatabaseSummaryRefreshableModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseSummaryRefreshableModeEnum(val string) (AutonomousDatabaseSummaryRefreshableModeEnum, bool) {
+	mappingAutonomousDatabaseSummaryRefreshableModeEnumIgnoreCase := make(map[string]AutonomousDatabaseSummaryRefreshableModeEnum)
+	for k, v := range mappingAutonomousDatabaseSummaryRefreshableModeEnum {
+		mappingAutonomousDatabaseSummaryRefreshableModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseSummaryRefreshableModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousDatabaseSummaryPermissionLevelEnum Enum with underlying type: string
 type AutonomousDatabaseSummaryPermissionLevelEnum string
 
@@ -793,6 +903,17 @@ func GetAutonomousDatabaseSummaryPermissionLevelEnumStringValues() []string {
 		"RESTRICTED",
 		"UNRESTRICTED",
 	}
+}
+
+// GetMappingAutonomousDatabaseSummaryPermissionLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseSummaryPermissionLevelEnum(val string) (AutonomousDatabaseSummaryPermissionLevelEnum, bool) {
+	mappingAutonomousDatabaseSummaryPermissionLevelEnumIgnoreCase := make(map[string]AutonomousDatabaseSummaryPermissionLevelEnum)
+	for k, v := range mappingAutonomousDatabaseSummaryPermissionLevelEnum {
+		mappingAutonomousDatabaseSummaryPermissionLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseSummaryPermissionLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // AutonomousDatabaseSummaryRoleEnum Enum with underlying type: string
@@ -829,6 +950,17 @@ func GetAutonomousDatabaseSummaryRoleEnumStringValues() []string {
 	}
 }
 
+// GetMappingAutonomousDatabaseSummaryRoleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseSummaryRoleEnum(val string) (AutonomousDatabaseSummaryRoleEnum, bool) {
+	mappingAutonomousDatabaseSummaryRoleEnumIgnoreCase := make(map[string]AutonomousDatabaseSummaryRoleEnum)
+	for k, v := range mappingAutonomousDatabaseSummaryRoleEnum {
+		mappingAutonomousDatabaseSummaryRoleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseSummaryRoleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousDatabaseSummaryDataguardRegionTypeEnum Enum with underlying type: string
 type AutonomousDatabaseSummaryDataguardRegionTypeEnum string
 
@@ -860,6 +992,17 @@ func GetAutonomousDatabaseSummaryDataguardRegionTypeEnumStringValues() []string 
 	}
 }
 
+// GetMappingAutonomousDatabaseSummaryDataguardRegionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseSummaryDataguardRegionTypeEnum(val string) (AutonomousDatabaseSummaryDataguardRegionTypeEnum, bool) {
+	mappingAutonomousDatabaseSummaryDataguardRegionTypeEnumIgnoreCase := make(map[string]AutonomousDatabaseSummaryDataguardRegionTypeEnum)
+	for k, v := range mappingAutonomousDatabaseSummaryDataguardRegionTypeEnum {
+		mappingAutonomousDatabaseSummaryDataguardRegionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseSummaryDataguardRegionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousDatabaseSummaryAutonomousMaintenanceScheduleTypeEnum Enum with underlying type: string
 type AutonomousDatabaseSummaryAutonomousMaintenanceScheduleTypeEnum string
 
@@ -889,4 +1032,15 @@ func GetAutonomousDatabaseSummaryAutonomousMaintenanceScheduleTypeEnumStringValu
 		"EARLY",
 		"REGULAR",
 	}
+}
+
+// GetMappingAutonomousDatabaseSummaryAutonomousMaintenanceScheduleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseSummaryAutonomousMaintenanceScheduleTypeEnum(val string) (AutonomousDatabaseSummaryAutonomousMaintenanceScheduleTypeEnum, bool) {
+	mappingAutonomousDatabaseSummaryAutonomousMaintenanceScheduleTypeEnumIgnoreCase := make(map[string]AutonomousDatabaseSummaryAutonomousMaintenanceScheduleTypeEnum)
+	for k, v := range mappingAutonomousDatabaseSummaryAutonomousMaintenanceScheduleTypeEnum {
+		mappingAutonomousDatabaseSummaryAutonomousMaintenanceScheduleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseSummaryAutonomousMaintenanceScheduleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

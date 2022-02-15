@@ -116,3 +116,14 @@ func GetCreateDbSystemSourceDetailsSourceTypeEnumStringValues() []string {
 		"IMPORTURL",
 	}
 }
+
+// GetMappingCreateDbSystemSourceDetailsSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateDbSystemSourceDetailsSourceTypeEnum(val string) (CreateDbSystemSourceDetailsSourceTypeEnum, bool) {
+	mappingCreateDbSystemSourceDetailsSourceTypeEnumIgnoreCase := make(map[string]CreateDbSystemSourceDetailsSourceTypeEnum)
+	for k, v := range mappingCreateDbSystemSourceDetailsSourceTypeEnum {
+		mappingCreateDbSystemSourceDetailsSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateDbSystemSourceDetailsSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

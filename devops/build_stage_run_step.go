@@ -41,7 +41,7 @@ func (m BuildStageRunStep) String() string {
 func (m BuildStageRunStep) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBuildStageRunStepStateEnum[string(m.State)]; !ok && m.State != "" {
+	if _, ok := GetMappingBuildStageRunStepStateEnum(string(m.State)); !ok && m.State != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for State: %s. Supported values are: %s.", m.State, strings.Join(GetBuildStageRunStepStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -85,4 +85,15 @@ func GetBuildStageRunStepStateEnumStringValues() []string {
 		"FAILED",
 		"SUCCEEDED",
 	}
+}
+
+// GetMappingBuildStageRunStepStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBuildStageRunStepStateEnum(val string) (BuildStageRunStepStateEnum, bool) {
+	mappingBuildStageRunStepStateEnumIgnoreCase := make(map[string]BuildStageRunStepStateEnum)
+	for k, v := range mappingBuildStageRunStepStateEnum {
+		mappingBuildStageRunStepStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBuildStageRunStepStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

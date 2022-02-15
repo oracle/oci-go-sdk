@@ -9,6 +9,10 @@
 
 package analytics
 
+import (
+	"strings"
+)
+
 // LicenseTypeEnum Enum with underlying type: string
 type LicenseTypeEnum string
 
@@ -38,4 +42,15 @@ func GetLicenseTypeEnumStringValues() []string {
 		"LICENSE_INCLUDED",
 		"BRING_YOUR_OWN_LICENSE",
 	}
+}
+
+// GetMappingLicenseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLicenseTypeEnum(val string) (LicenseTypeEnum, bool) {
+	mappingLicenseTypeEnumIgnoreCase := make(map[string]LicenseTypeEnum)
+	for k, v := range mappingLicenseTypeEnum {
+		mappingLicenseTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLicenseTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

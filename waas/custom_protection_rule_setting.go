@@ -38,7 +38,7 @@ func (m CustomProtectionRuleSetting) String() string {
 func (m CustomProtectionRuleSetting) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCustomProtectionRuleSettingActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingCustomProtectionRuleSettingActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetCustomProtectionRuleSettingActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -76,4 +76,15 @@ func GetCustomProtectionRuleSettingActionEnumStringValues() []string {
 		"DETECT",
 		"BLOCK",
 	}
+}
+
+// GetMappingCustomProtectionRuleSettingActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCustomProtectionRuleSettingActionEnum(val string) (CustomProtectionRuleSettingActionEnum, bool) {
+	mappingCustomProtectionRuleSettingActionEnumIgnoreCase := make(map[string]CustomProtectionRuleSettingActionEnum)
+	for k, v := range mappingCustomProtectionRuleSettingActionEnum {
+		mappingCustomProtectionRuleSettingActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCustomProtectionRuleSettingActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

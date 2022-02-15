@@ -128,10 +128,10 @@ func (m HttpProbeResultSummary) String() string {
 func (m HttpProbeResultSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingHttpProbeResultSummaryErrorCategoryEnum[string(m.ErrorCategory)]; !ok && m.ErrorCategory != "" {
+	if _, ok := GetMappingHttpProbeResultSummaryErrorCategoryEnum(string(m.ErrorCategory)); !ok && m.ErrorCategory != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ErrorCategory: %s. Supported values are: %s.", m.ErrorCategory, strings.Join(GetHttpProbeResultSummaryErrorCategoryEnumStringValues(), ",")))
 	}
-	if _, ok := mappingHttpProbeProtocolEnum[string(m.Protocol)]; !ok && m.Protocol != "" {
+	if _, ok := GetMappingHttpProbeProtocolEnum(string(m.Protocol)); !ok && m.Protocol != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Protocol: %s. Supported values are: %s.", m.Protocol, strings.Join(GetHttpProbeProtocolEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -178,6 +178,17 @@ func GetHttpProbeResultSummaryErrorCategoryEnumStringValues() []string {
 		"NETWORK",
 		"SYSTEM",
 	}
+}
+
+// GetMappingHttpProbeResultSummaryErrorCategoryEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHttpProbeResultSummaryErrorCategoryEnum(val string) (HttpProbeResultSummaryErrorCategoryEnum, bool) {
+	mappingHttpProbeResultSummaryErrorCategoryEnumIgnoreCase := make(map[string]HttpProbeResultSummaryErrorCategoryEnum)
+	for k, v := range mappingHttpProbeResultSummaryErrorCategoryEnum {
+		mappingHttpProbeResultSummaryErrorCategoryEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHttpProbeResultSummaryErrorCategoryEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // HttpProbeResultSummaryProtocolEnum is an alias to type: HttpProbeProtocolEnum

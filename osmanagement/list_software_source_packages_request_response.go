@@ -79,10 +79,10 @@ func (request ListSoftwareSourcePackagesRequest) RetryPolicy() *common.RetryPoli
 // Not recommended for calling this function directly
 func (request ListSoftwareSourcePackagesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSoftwareSourcePackagesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSoftwareSourcePackagesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSoftwareSourcePackagesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSoftwareSourcePackagesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSoftwareSourcePackagesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSoftwareSourcePackagesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -151,6 +151,17 @@ func GetListSoftwareSourcePackagesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSoftwareSourcePackagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSoftwareSourcePackagesSortOrderEnum(val string) (ListSoftwareSourcePackagesSortOrderEnum, bool) {
+	mappingListSoftwareSourcePackagesSortOrderEnumIgnoreCase := make(map[string]ListSoftwareSourcePackagesSortOrderEnum)
+	for k, v := range mappingListSoftwareSourcePackagesSortOrderEnum {
+		mappingListSoftwareSourcePackagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSoftwareSourcePackagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSoftwareSourcePackagesSortByEnum Enum with underlying type: string
 type ListSoftwareSourcePackagesSortByEnum string
 
@@ -180,4 +191,15 @@ func GetListSoftwareSourcePackagesSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListSoftwareSourcePackagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSoftwareSourcePackagesSortByEnum(val string) (ListSoftwareSourcePackagesSortByEnum, bool) {
+	mappingListSoftwareSourcePackagesSortByEnumIgnoreCase := make(map[string]ListSoftwareSourcePackagesSortByEnum)
+	for k, v := range mappingListSoftwareSourcePackagesSortByEnum {
+		mappingListSoftwareSourcePackagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSoftwareSourcePackagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -68,10 +68,10 @@ func (request ListCertificateAuthorityBundleVersionsRequest) RetryPolicy() *comm
 // Not recommended for calling this function directly
 func (request ListCertificateAuthorityBundleVersionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListCertificateAuthorityBundleVersionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListCertificateAuthorityBundleVersionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListCertificateAuthorityBundleVersionsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListCertificateAuthorityBundleVersionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListCertificateAuthorityBundleVersionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListCertificateAuthorityBundleVersionsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -130,6 +130,17 @@ func GetListCertificateAuthorityBundleVersionsSortByEnumStringValues() []string 
 	}
 }
 
+// GetMappingListCertificateAuthorityBundleVersionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCertificateAuthorityBundleVersionsSortByEnum(val string) (ListCertificateAuthorityBundleVersionsSortByEnum, bool) {
+	mappingListCertificateAuthorityBundleVersionsSortByEnumIgnoreCase := make(map[string]ListCertificateAuthorityBundleVersionsSortByEnum)
+	for k, v := range mappingListCertificateAuthorityBundleVersionsSortByEnum {
+		mappingListCertificateAuthorityBundleVersionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCertificateAuthorityBundleVersionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListCertificateAuthorityBundleVersionsSortOrderEnum Enum with underlying type: string
 type ListCertificateAuthorityBundleVersionsSortOrderEnum string
 
@@ -159,4 +170,15 @@ func GetListCertificateAuthorityBundleVersionsSortOrderEnumStringValues() []stri
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListCertificateAuthorityBundleVersionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCertificateAuthorityBundleVersionsSortOrderEnum(val string) (ListCertificateAuthorityBundleVersionsSortOrderEnum, bool) {
+	mappingListCertificateAuthorityBundleVersionsSortOrderEnumIgnoreCase := make(map[string]ListCertificateAuthorityBundleVersionsSortOrderEnum)
+	for k, v := range mappingListCertificateAuthorityBundleVersionsSortOrderEnum {
+		mappingListCertificateAuthorityBundleVersionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCertificateAuthorityBundleVersionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

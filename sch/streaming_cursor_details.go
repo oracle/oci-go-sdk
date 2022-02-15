@@ -111,3 +111,14 @@ func GetStreamingCursorDetailsKindEnumStringValues() []string {
 		"TRIM_HORIZON",
 	}
 }
+
+// GetMappingStreamingCursorDetailsKindEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStreamingCursorDetailsKindEnum(val string) (StreamingCursorDetailsKindEnum, bool) {
+	mappingStreamingCursorDetailsKindEnumIgnoreCase := make(map[string]StreamingCursorDetailsKindEnum)
+	for k, v := range mappingStreamingCursorDetailsKindEnum {
+		mappingStreamingCursorDetailsKindEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStreamingCursorDetailsKindEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

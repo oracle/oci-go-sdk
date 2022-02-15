@@ -9,6 +9,10 @@
 
 package apmsynthetics
 
+import (
+	"strings"
+)
+
 // ProtocolEnum Enum with underlying type: string
 type ProtocolEnum string
 
@@ -38,4 +42,15 @@ func GetProtocolEnumStringValues() []string {
 		"ICMP",
 		"TCP",
 	}
+}
+
+// GetMappingProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingProtocolEnum(val string) (ProtocolEnum, bool) {
+	mappingProtocolEnumIgnoreCase := make(map[string]ProtocolEnum)
+	for k, v := range mappingProtocolEnum {
+		mappingProtocolEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingProtocolEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

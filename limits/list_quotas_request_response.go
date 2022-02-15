@@ -79,13 +79,13 @@ func (request ListQuotasRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListQuotasRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListQuotasLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListQuotasLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListQuotasLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListQuotasSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListQuotasSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListQuotasSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListQuotasSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListQuotasSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListQuotasSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -150,6 +150,17 @@ func GetListQuotasLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListQuotasLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListQuotasLifecycleStateEnum(val string) (ListQuotasLifecycleStateEnum, bool) {
+	mappingListQuotasLifecycleStateEnumIgnoreCase := make(map[string]ListQuotasLifecycleStateEnum)
+	for k, v := range mappingListQuotasLifecycleStateEnum {
+		mappingListQuotasLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListQuotasLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListQuotasSortOrderEnum Enum with underlying type: string
 type ListQuotasSortOrderEnum string
 
@@ -181,6 +192,17 @@ func GetListQuotasSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListQuotasSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListQuotasSortOrderEnum(val string) (ListQuotasSortOrderEnum, bool) {
+	mappingListQuotasSortOrderEnumIgnoreCase := make(map[string]ListQuotasSortOrderEnum)
+	for k, v := range mappingListQuotasSortOrderEnum {
+		mappingListQuotasSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListQuotasSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListQuotasSortByEnum Enum with underlying type: string
 type ListQuotasSortByEnum string
 
@@ -210,4 +232,15 @@ func GetListQuotasSortByEnumStringValues() []string {
 		"NAME",
 		"TIMECREATED",
 	}
+}
+
+// GetMappingListQuotasSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListQuotasSortByEnum(val string) (ListQuotasSortByEnum, bool) {
+	mappingListQuotasSortByEnumIgnoreCase := make(map[string]ListQuotasSortByEnum)
+	for k, v := range mappingListQuotasSortByEnum {
+		mappingListQuotasSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListQuotasSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

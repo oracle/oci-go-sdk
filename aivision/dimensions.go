@@ -37,7 +37,7 @@ func (m Dimensions) String() string {
 // Not recommended for calling this function directly
 func (m Dimensions) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDimensionsUnitEnum[string(m.Unit)]; !ok && m.Unit != "" {
+	if _, ok := GetMappingDimensionsUnitEnum(string(m.Unit)); !ok && m.Unit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Unit: %s. Supported values are: %s.", m.Unit, strings.Join(GetDimensionsUnitEnumStringValues(), ",")))
 	}
 
@@ -76,4 +76,15 @@ func GetDimensionsUnitEnumStringValues() []string {
 		"PIXEL",
 		"INCH",
 	}
+}
+
+// GetMappingDimensionsUnitEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDimensionsUnitEnum(val string) (DimensionsUnitEnum, bool) {
+	mappingDimensionsUnitEnumIgnoreCase := make(map[string]DimensionsUnitEnum)
+	for k, v := range mappingDimensionsUnitEnum {
+		mappingDimensionsUnitEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDimensionsUnitEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

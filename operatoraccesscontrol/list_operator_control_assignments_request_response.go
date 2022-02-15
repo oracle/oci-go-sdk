@@ -84,13 +84,13 @@ func (request ListOperatorControlAssignmentsRequest) RetryPolicy() *common.Retry
 // Not recommended for calling this function directly
 func (request ListOperatorControlAssignmentsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListOperatorControlAssignmentsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListOperatorControlAssignmentsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListOperatorControlAssignmentsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListOperatorControlAssignmentsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListOperatorControlAssignmentsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListOperatorControlAssignmentsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListOperatorControlAssignmentsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListOperatorControlAssignmentsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListOperatorControlAssignmentsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -173,6 +173,17 @@ func GetListOperatorControlAssignmentsLifecycleStateEnumStringValues() []string 
 	}
 }
 
+// GetMappingListOperatorControlAssignmentsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListOperatorControlAssignmentsLifecycleStateEnum(val string) (ListOperatorControlAssignmentsLifecycleStateEnum, bool) {
+	mappingListOperatorControlAssignmentsLifecycleStateEnumIgnoreCase := make(map[string]ListOperatorControlAssignmentsLifecycleStateEnum)
+	for k, v := range mappingListOperatorControlAssignmentsLifecycleStateEnum {
+		mappingListOperatorControlAssignmentsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListOperatorControlAssignmentsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListOperatorControlAssignmentsSortOrderEnum Enum with underlying type: string
 type ListOperatorControlAssignmentsSortOrderEnum string
 
@@ -204,6 +215,17 @@ func GetListOperatorControlAssignmentsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListOperatorControlAssignmentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListOperatorControlAssignmentsSortOrderEnum(val string) (ListOperatorControlAssignmentsSortOrderEnum, bool) {
+	mappingListOperatorControlAssignmentsSortOrderEnumIgnoreCase := make(map[string]ListOperatorControlAssignmentsSortOrderEnum)
+	for k, v := range mappingListOperatorControlAssignmentsSortOrderEnum {
+		mappingListOperatorControlAssignmentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListOperatorControlAssignmentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListOperatorControlAssignmentsSortByEnum Enum with underlying type: string
 type ListOperatorControlAssignmentsSortByEnum string
 
@@ -233,4 +255,15 @@ func GetListOperatorControlAssignmentsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListOperatorControlAssignmentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListOperatorControlAssignmentsSortByEnum(val string) (ListOperatorControlAssignmentsSortByEnum, bool) {
+	mappingListOperatorControlAssignmentsSortByEnumIgnoreCase := make(map[string]ListOperatorControlAssignmentsSortByEnum)
+	for k, v := range mappingListOperatorControlAssignmentsSortByEnum {
+		mappingListOperatorControlAssignmentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListOperatorControlAssignmentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

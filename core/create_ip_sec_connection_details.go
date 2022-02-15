@@ -89,7 +89,7 @@ func (m CreateIpSecConnectionDetails) String() string {
 func (m CreateIpSecConnectionDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum[string(m.CpeLocalIdentifierType)]; !ok && m.CpeLocalIdentifierType != "" {
+	if _, ok := GetMappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum(string(m.CpeLocalIdentifierType)); !ok && m.CpeLocalIdentifierType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CpeLocalIdentifierType: %s. Supported values are: %s.", m.CpeLocalIdentifierType, strings.Join(GetCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -127,4 +127,15 @@ func GetCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumStringValues() []s
 		"IP_ADDRESS",
 		"HOSTNAME",
 	}
+}
+
+// GetMappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum(val string) (CreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum, bool) {
+	mappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumIgnoreCase := make(map[string]CreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum)
+	for k, v := range mappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum {
+		mappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

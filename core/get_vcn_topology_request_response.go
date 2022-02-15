@@ -89,7 +89,7 @@ func (request GetVcnTopologyRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetVcnTopologyRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetVcnTopologyAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingGetVcnTopologyAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetGetVcnTopologyAccessLevelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -153,4 +153,15 @@ func GetGetVcnTopologyAccessLevelEnumStringValues() []string {
 		"ANY",
 		"ACCESSIBLE",
 	}
+}
+
+// GetMappingGetVcnTopologyAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetVcnTopologyAccessLevelEnum(val string) (GetVcnTopologyAccessLevelEnum, bool) {
+	mappingGetVcnTopologyAccessLevelEnumIgnoreCase := make(map[string]GetVcnTopologyAccessLevelEnum)
+	for k, v := range mappingGetVcnTopologyAccessLevelEnum {
+		mappingGetVcnTopologyAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetVcnTopologyAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

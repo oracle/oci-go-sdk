@@ -32,7 +32,7 @@ func (m GenerateMaskingPolicyForDownloadDetails) String() string {
 func (m GenerateMaskingPolicyForDownloadDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingPolicyFormatEnum[string(m.PolicyFormat)]; !ok && m.PolicyFormat != "" {
+	if _, ok := GetMappingPolicyFormatEnum(string(m.PolicyFormat)); !ok && m.PolicyFormat != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PolicyFormat: %s. Supported values are: %s.", m.PolicyFormat, strings.Join(GetPolicyFormatEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

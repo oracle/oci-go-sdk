@@ -36,7 +36,7 @@ func (m FacetedSearchSortRequest) String() string {
 func (m FacetedSearchSortRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingFacetedSearchSortRequestSortOrderEnum[string(m.SortOrder)]; !ok && m.SortOrder != "" {
+	if _, ok := GetMappingFacetedSearchSortRequestSortOrderEnum(string(m.SortOrder)); !ok && m.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", m.SortOrder, strings.Join(GetFacetedSearchSortRequestSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -74,4 +74,15 @@ func GetFacetedSearchSortRequestSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingFacetedSearchSortRequestSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFacetedSearchSortRequestSortOrderEnum(val string) (FacetedSearchSortRequestSortOrderEnum, bool) {
+	mappingFacetedSearchSortRequestSortOrderEnumIgnoreCase := make(map[string]FacetedSearchSortRequestSortOrderEnum)
+	for k, v := range mappingFacetedSearchSortRequestSortOrderEnum {
+		mappingFacetedSearchSortRequestSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFacetedSearchSortRequestSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -37,7 +37,7 @@ func (m ApproveDeploymentDetails) String() string {
 // Not recommended for calling this function directly
 func (m ApproveDeploymentDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingApproveDeploymentDetailsActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingApproveDeploymentDetailsActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetApproveDeploymentDetailsActionEnumStringValues(), ",")))
 	}
 
@@ -76,4 +76,15 @@ func GetApproveDeploymentDetailsActionEnumStringValues() []string {
 		"APPROVE",
 		"REJECT",
 	}
+}
+
+// GetMappingApproveDeploymentDetailsActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingApproveDeploymentDetailsActionEnum(val string) (ApproveDeploymentDetailsActionEnum, bool) {
+	mappingApproveDeploymentDetailsActionEnumIgnoreCase := make(map[string]ApproveDeploymentDetailsActionEnum)
+	for k, v := range mappingApproveDeploymentDetailsActionEnum {
+		mappingApproveDeploymentDetailsActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingApproveDeploymentDetailsActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

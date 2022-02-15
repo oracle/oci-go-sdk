@@ -9,6 +9,10 @@
 
 package threatintelligence
 
+import (
+	"strings"
+)
+
 // IndicatorTypeEnum Enum with underlying type: string
 type IndicatorTypeEnum string
 
@@ -53,4 +57,15 @@ func GetIndicatorTypeEnumStringValues() []string {
 		"IP_ADDRESS",
 		"URL",
 	}
+}
+
+// GetMappingIndicatorTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingIndicatorTypeEnum(val string) (IndicatorTypeEnum, bool) {
+	mappingIndicatorTypeEnumIgnoreCase := make(map[string]IndicatorTypeEnum)
+	for k, v := range mappingIndicatorTypeEnum {
+		mappingIndicatorTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingIndicatorTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

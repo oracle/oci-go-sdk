@@ -137,7 +137,7 @@ func (m Vnic) String() string {
 // Not recommended for calling this function directly
 func (m Vnic) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVnicLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingVnicLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetVnicLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -182,4 +182,15 @@ func GetVnicLifecycleStateEnumStringValues() []string {
 		"TERMINATING",
 		"TERMINATED",
 	}
+}
+
+// GetMappingVnicLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVnicLifecycleStateEnum(val string) (VnicLifecycleStateEnum, bool) {
+	mappingVnicLifecycleStateEnumIgnoreCase := make(map[string]VnicLifecycleStateEnum)
+	for k, v := range mappingVnicLifecycleStateEnum {
+		mappingVnicLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVnicLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -98,16 +98,16 @@ func (m SoftwareSource) String() string {
 func (m SoftwareSource) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingArchTypesEnum[string(m.ArchType)]; !ok && m.ArchType != "" {
+	if _, ok := GetMappingArchTypesEnum(string(m.ArchType)); !ok && m.ArchType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ArchType: %s. Supported values are: %s.", m.ArchType, strings.Join(GetArchTypesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingChecksumTypesEnum[string(m.ChecksumType)]; !ok && m.ChecksumType != "" {
+	if _, ok := GetMappingChecksumTypesEnum(string(m.ChecksumType)); !ok && m.ChecksumType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ChecksumType: %s. Supported values are: %s.", m.ChecksumType, strings.Join(GetChecksumTypesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSoftwareSourceStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingSoftwareSourceStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetSoftwareSourceStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLifecycleStatesEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStatesEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStatesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -151,4 +151,15 @@ func GetSoftwareSourceStatusEnumStringValues() []string {
 		"ERROR",
 		"WARNING",
 	}
+}
+
+// GetMappingSoftwareSourceStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSoftwareSourceStatusEnum(val string) (SoftwareSourceStatusEnum, bool) {
+	mappingSoftwareSourceStatusEnumIgnoreCase := make(map[string]SoftwareSourceStatusEnum)
+	for k, v := range mappingSoftwareSourceStatusEnum {
+		mappingSoftwareSourceStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSoftwareSourceStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

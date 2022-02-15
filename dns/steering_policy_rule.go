@@ -149,3 +149,14 @@ func GetSteeringPolicyRuleRuleTypeEnumStringValues() []string {
 		"LIMIT",
 	}
 }
+
+// GetMappingSteeringPolicyRuleRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSteeringPolicyRuleRuleTypeEnum(val string) (SteeringPolicyRuleRuleTypeEnum, bool) {
+	mappingSteeringPolicyRuleRuleTypeEnumIgnoreCase := make(map[string]SteeringPolicyRuleRuleTypeEnum)
+	for k, v := range mappingSteeringPolicyRuleRuleTypeEnum {
+		mappingSteeringPolicyRuleRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSteeringPolicyRuleRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

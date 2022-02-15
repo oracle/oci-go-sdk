@@ -47,7 +47,7 @@ func (m AddDrgRouteDistributionStatementDetails) String() string {
 // Not recommended for calling this function directly
 func (m AddDrgRouteDistributionStatementDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAddDrgRouteDistributionStatementDetailsActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingAddDrgRouteDistributionStatementDetailsActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetAddDrgRouteDistributionStatementDetailsActionEnumStringValues(), ",")))
 	}
 
@@ -116,4 +116,15 @@ func GetAddDrgRouteDistributionStatementDetailsActionEnumStringValues() []string
 	return []string{
 		"ACCEPT",
 	}
+}
+
+// GetMappingAddDrgRouteDistributionStatementDetailsActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAddDrgRouteDistributionStatementDetailsActionEnum(val string) (AddDrgRouteDistributionStatementDetailsActionEnum, bool) {
+	mappingAddDrgRouteDistributionStatementDetailsActionEnumIgnoreCase := make(map[string]AddDrgRouteDistributionStatementDetailsActionEnum)
+	for k, v := range mappingAddDrgRouteDistributionStatementDetailsActionEnum {
+		mappingAddDrgRouteDistributionStatementDetailsActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAddDrgRouteDistributionStatementDetailsActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

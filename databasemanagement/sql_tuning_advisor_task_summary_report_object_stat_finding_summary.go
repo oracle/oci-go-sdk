@@ -48,7 +48,7 @@ func (m SqlTuningAdvisorTaskSummaryReportObjectStatFindingSummary) String() stri
 // Not recommended for calling this function directly
 func (m SqlTuningAdvisorTaskSummaryReportObjectStatFindingSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum[string(m.ProblemType)]; !ok && m.ProblemType != "" {
+	if _, ok := GetMappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum(string(m.ProblemType)); !ok && m.ProblemType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProblemType: %s. Supported values are: %s.", m.ProblemType, strings.Join(GetSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnumStringValues(), ",")))
 	}
 
@@ -87,4 +87,15 @@ func GetSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum
 		"MISSING",
 		"STALE",
 	}
+}
+
+// GetMappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum(val string) (SqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum, bool) {
+	mappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnumIgnoreCase := make(map[string]SqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum)
+	for k, v := range mappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum {
+		mappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -79,7 +79,7 @@ func (m DbHomeFromAgentResourceId) String() string {
 // Not recommended for calling this function directly
 func (m DbHomeFromAgentResourceId) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDbHomeFromAgentResourceIdLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDbHomeFromAgentResourceIdLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDbHomeFromAgentResourceIdLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -130,4 +130,15 @@ func GetDbHomeFromAgentResourceIdLifecycleStateEnumStringValues() []string {
 		"TERMINATED",
 		"FAILED",
 	}
+}
+
+// GetMappingDbHomeFromAgentResourceIdLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbHomeFromAgentResourceIdLifecycleStateEnum(val string) (DbHomeFromAgentResourceIdLifecycleStateEnum, bool) {
+	mappingDbHomeFromAgentResourceIdLifecycleStateEnumIgnoreCase := make(map[string]DbHomeFromAgentResourceIdLifecycleStateEnum)
+	for k, v := range mappingDbHomeFromAgentResourceIdLifecycleStateEnum {
+		mappingDbHomeFromAgentResourceIdLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbHomeFromAgentResourceIdLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

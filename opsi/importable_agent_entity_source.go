@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // ImportableAgentEntitySourceEnum Enum with underlying type: string
 type ImportableAgentEntitySourceEnum string
 
@@ -37,4 +41,15 @@ func GetImportableAgentEntitySourceEnumStringValues() []string {
 	return []string{
 		"MACS_MANAGED_EXTERNAL_HOST",
 	}
+}
+
+// GetMappingImportableAgentEntitySourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingImportableAgentEntitySourceEnum(val string) (ImportableAgentEntitySourceEnum, bool) {
+	mappingImportableAgentEntitySourceEnumIgnoreCase := make(map[string]ImportableAgentEntitySourceEnum)
+	for k, v := range mappingImportableAgentEntitySourceEnum {
+		mappingImportableAgentEntitySourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingImportableAgentEntitySourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

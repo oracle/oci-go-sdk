@@ -36,7 +36,7 @@ func (m ApiValidationResult) String() string {
 // Not recommended for calling this function directly
 func (m ApiValidationResult) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingApiValidationResultResultEnum[string(m.Result)]; !ok && m.Result != "" {
+	if _, ok := GetMappingApiValidationResultResultEnum(string(m.Result)); !ok && m.Result != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Result: %s. Supported values are: %s.", m.Result, strings.Join(GetApiValidationResultResultEnumStringValues(), ",")))
 	}
 
@@ -81,4 +81,15 @@ func GetApiValidationResultResultEnumStringValues() []string {
 		"OK",
 		"FAILED",
 	}
+}
+
+// GetMappingApiValidationResultResultEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingApiValidationResultResultEnum(val string) (ApiValidationResultResultEnum, bool) {
+	mappingApiValidationResultResultEnumIgnoreCase := make(map[string]ApiValidationResultResultEnum)
+	for k, v := range mappingApiValidationResultResultEnum {
+		mappingApiValidationResultResultEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingApiValidationResultResultEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -41,7 +41,7 @@ func (m VcnDnsResolverAssociation) String() string {
 // Not recommended for calling this function directly
 func (m VcnDnsResolverAssociation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVcnDnsResolverAssociationLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingVcnDnsResolverAssociationLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetVcnDnsResolverAssociationLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -86,4 +86,15 @@ func GetVcnDnsResolverAssociationLifecycleStateEnumStringValues() []string {
 		"TERMINATING",
 		"TERMINATED",
 	}
+}
+
+// GetMappingVcnDnsResolverAssociationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVcnDnsResolverAssociationLifecycleStateEnum(val string) (VcnDnsResolverAssociationLifecycleStateEnum, bool) {
+	mappingVcnDnsResolverAssociationLifecycleStateEnumIgnoreCase := make(map[string]VcnDnsResolverAssociationLifecycleStateEnum)
+	for k, v := range mappingVcnDnsResolverAssociationLifecycleStateEnum {
+		mappingVcnDnsResolverAssociationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVcnDnsResolverAssociationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

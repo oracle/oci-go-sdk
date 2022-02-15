@@ -102,7 +102,7 @@ func (m ComputedUsage) String() string {
 func (m ComputedUsage) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingComputedUsageTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingComputedUsageTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetComputedUsageTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -179,4 +179,15 @@ func GetComputedUsageTypeEnumStringValues() []string {
 		"DONOT_BILL_USAGE_POST_TERMINATION",
 		"DELAYED_USAGE_POST_TERMINATION",
 	}
+}
+
+// GetMappingComputedUsageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingComputedUsageTypeEnum(val string) (ComputedUsageTypeEnum, bool) {
+	mappingComputedUsageTypeEnumIgnoreCase := make(map[string]ComputedUsageTypeEnum)
+	for k, v := range mappingComputedUsageTypeEnum {
+		mappingComputedUsageTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingComputedUsageTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

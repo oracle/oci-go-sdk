@@ -34,7 +34,7 @@ func (m ResourcePowerAction) String() string {
 // Not recommended for calling this function directly
 func (m ResourcePowerAction) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingResourcePowerActionActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingResourcePowerActionActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetResourcePowerActionActionEnumStringValues(), ",")))
 	}
 
@@ -93,4 +93,15 @@ func GetResourcePowerActionActionEnumStringValues() []string {
 		"SOFTRESET",
 		"RESET",
 	}
+}
+
+// GetMappingResourcePowerActionActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResourcePowerActionActionEnum(val string) (ResourcePowerActionActionEnum, bool) {
+	mappingResourcePowerActionActionEnumIgnoreCase := make(map[string]ResourcePowerActionActionEnum)
+	for k, v := range mappingResourcePowerActionActionEnum {
+		mappingResourcePowerActionActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResourcePowerActionActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

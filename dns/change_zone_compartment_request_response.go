@@ -83,7 +83,7 @@ func (request ChangeZoneCompartmentRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ChangeZoneCompartmentRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingChangeZoneCompartmentScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingChangeZoneCompartmentScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetChangeZoneCompartmentScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -145,4 +145,15 @@ func GetChangeZoneCompartmentScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingChangeZoneCompartmentScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingChangeZoneCompartmentScopeEnum(val string) (ChangeZoneCompartmentScopeEnum, bool) {
+	mappingChangeZoneCompartmentScopeEnumIgnoreCase := make(map[string]ChangeZoneCompartmentScopeEnum)
+	for k, v := range mappingChangeZoneCompartmentScopeEnum {
+		mappingChangeZoneCompartmentScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingChangeZoneCompartmentScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

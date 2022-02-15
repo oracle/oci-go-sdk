@@ -46,7 +46,7 @@ func (m TargetDetectorDetails) String() string {
 // Not recommended for calling this function directly
 func (m TargetDetectorDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRiskLevelEnum[string(m.RiskLevel)]; !ok && m.RiskLevel != "" {
+	if _, ok := GetMappingRiskLevelEnum(string(m.RiskLevel)); !ok && m.RiskLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RiskLevel: %s. Supported values are: %s.", m.RiskLevel, strings.Join(GetRiskLevelEnumStringValues(), ",")))
 	}
 

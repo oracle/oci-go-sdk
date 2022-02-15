@@ -60,11 +60,11 @@ func (m ReportSummary) String() string {
 // Not recommended for calling this function directly
 func (m ReportSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingReportLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingReportLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetReportLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingReportSummaryMimeTypeEnum[string(m.MimeType)]; !ok && m.MimeType != "" {
+	if _, ok := GetMappingReportSummaryMimeTypeEnum(string(m.MimeType)); !ok && m.MimeType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MimeType: %s. Supported values are: %s.", m.MimeType, strings.Join(GetReportSummaryMimeTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -102,4 +102,15 @@ func GetReportSummaryMimeTypeEnumStringValues() []string {
 		"PDF",
 		"XLS",
 	}
+}
+
+// GetMappingReportSummaryMimeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingReportSummaryMimeTypeEnum(val string) (ReportSummaryMimeTypeEnum, bool) {
+	mappingReportSummaryMimeTypeEnumIgnoreCase := make(map[string]ReportSummaryMimeTypeEnum)
+	for k, v := range mappingReportSummaryMimeTypeEnum {
+		mappingReportSummaryMimeTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingReportSummaryMimeTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

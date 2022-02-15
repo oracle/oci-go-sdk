@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // AuditArchiveRetrievalLifecycleStateEnum Enum with underlying type: string
 type AuditArchiveRetrievalLifecycleStateEnum string
 
@@ -50,4 +54,15 @@ func GetAuditArchiveRetrievalLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingAuditArchiveRetrievalLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAuditArchiveRetrievalLifecycleStateEnum(val string) (AuditArchiveRetrievalLifecycleStateEnum, bool) {
+	mappingAuditArchiveRetrievalLifecycleStateEnumIgnoreCase := make(map[string]AuditArchiveRetrievalLifecycleStateEnum)
+	for k, v := range mappingAuditArchiveRetrievalLifecycleStateEnum {
+		mappingAuditArchiveRetrievalLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAuditArchiveRetrievalLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

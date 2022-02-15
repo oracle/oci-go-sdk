@@ -35,7 +35,7 @@ func (m Link) String() string {
 func (m Link) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLinkEnumEnum[string(m.Rel)]; !ok && m.Rel != "" {
+	if _, ok := GetMappingLinkEnumEnum(string(m.Rel)); !ok && m.Rel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Rel: %s. Supported values are: %s.", m.Rel, strings.Join(GetLinkEnumEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

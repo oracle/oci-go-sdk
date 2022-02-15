@@ -166,7 +166,7 @@ func (m configurationsourceprovider) String() string {
 func (m configurationsourceprovider) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingConfigurationSourceProviderLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingConfigurationSourceProviderLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetConfigurationSourceProviderLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -203,6 +203,17 @@ func GetConfigurationSourceProviderLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingConfigurationSourceProviderLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConfigurationSourceProviderLifecycleStateEnum(val string) (ConfigurationSourceProviderLifecycleStateEnum, bool) {
+	mappingConfigurationSourceProviderLifecycleStateEnumIgnoreCase := make(map[string]ConfigurationSourceProviderLifecycleStateEnum)
+	for k, v := range mappingConfigurationSourceProviderLifecycleStateEnum {
+		mappingConfigurationSourceProviderLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConfigurationSourceProviderLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ConfigurationSourceProviderConfigSourceProviderTypeEnum Enum with underlying type: string
 type ConfigurationSourceProviderConfigSourceProviderTypeEnum string
 
@@ -232,4 +243,15 @@ func GetConfigurationSourceProviderConfigSourceProviderTypeEnumStringValues() []
 		"GITLAB_ACCESS_TOKEN",
 		"GITHUB_ACCESS_TOKEN",
 	}
+}
+
+// GetMappingConfigurationSourceProviderConfigSourceProviderTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConfigurationSourceProviderConfigSourceProviderTypeEnum(val string) (ConfigurationSourceProviderConfigSourceProviderTypeEnum, bool) {
+	mappingConfigurationSourceProviderConfigSourceProviderTypeEnumIgnoreCase := make(map[string]ConfigurationSourceProviderConfigSourceProviderTypeEnum)
+	for k, v := range mappingConfigurationSourceProviderConfigSourceProviderTypeEnum {
+		mappingConfigurationSourceProviderConfigSourceProviderTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConfigurationSourceProviderConfigSourceProviderTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

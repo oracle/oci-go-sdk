@@ -43,7 +43,7 @@ func (m ColumnFilter) String() string {
 // Not recommended for calling this function directly
 func (m ColumnFilter) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingColumnFilterOperatorEnum[string(m.Operator)]; !ok && m.Operator != "" {
+	if _, ok := GetMappingColumnFilterOperatorEnum(string(m.Operator)); !ok && m.Operator != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Operator: %s. Supported values are: %s.", m.Operator, strings.Join(GetColumnFilterOperatorEnumStringValues(), ",")))
 	}
 
@@ -112,4 +112,15 @@ func GetColumnFilterOperatorEnumStringValues() []string {
 		"NOT",
 		"NOT_IN",
 	}
+}
+
+// GetMappingColumnFilterOperatorEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingColumnFilterOperatorEnum(val string) (ColumnFilterOperatorEnum, bool) {
+	mappingColumnFilterOperatorEnumIgnoreCase := make(map[string]ColumnFilterOperatorEnum)
+	for k, v := range mappingColumnFilterOperatorEnum {
+		mappingColumnFilterOperatorEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingColumnFilterOperatorEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

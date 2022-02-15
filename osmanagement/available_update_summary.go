@@ -60,7 +60,7 @@ func (m AvailableUpdateSummary) String() string {
 func (m AvailableUpdateSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateTypesEnum[string(m.UpdateType)]; !ok && m.UpdateType != "" {
+	if _, ok := GetMappingUpdateTypesEnum(string(m.UpdateType)); !ok && m.UpdateType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateType: %s. Supported values are: %s.", m.UpdateType, strings.Join(GetUpdateTypesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

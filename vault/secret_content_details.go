@@ -93,7 +93,7 @@ func (m secretcontentdetails) String() string {
 func (m secretcontentdetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSecretContentDetailsStageEnum[string(m.Stage)]; !ok && m.Stage != "" {
+	if _, ok := GetMappingSecretContentDetailsStageEnum(string(m.Stage)); !ok && m.Stage != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stage: %s. Supported values are: %s.", m.Stage, strings.Join(GetSecretContentDetailsStageEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -133,6 +133,17 @@ func GetSecretContentDetailsStageEnumStringValues() []string {
 	}
 }
 
+// GetMappingSecretContentDetailsStageEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecretContentDetailsStageEnum(val string) (SecretContentDetailsStageEnum, bool) {
+	mappingSecretContentDetailsStageEnumIgnoreCase := make(map[string]SecretContentDetailsStageEnum)
+	for k, v := range mappingSecretContentDetailsStageEnum {
+		mappingSecretContentDetailsStageEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecretContentDetailsStageEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SecretContentDetailsContentTypeEnum Enum with underlying type: string
 type SecretContentDetailsContentTypeEnum string
 
@@ -159,4 +170,15 @@ func GetSecretContentDetailsContentTypeEnumStringValues() []string {
 	return []string{
 		"BASE64",
 	}
+}
+
+// GetMappingSecretContentDetailsContentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecretContentDetailsContentTypeEnum(val string) (SecretContentDetailsContentTypeEnum, bool) {
+	mappingSecretContentDetailsContentTypeEnumIgnoreCase := make(map[string]SecretContentDetailsContentTypeEnum)
+	for k, v := range mappingSecretContentDetailsContentTypeEnum {
+		mappingSecretContentDetailsContentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecretContentDetailsContentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

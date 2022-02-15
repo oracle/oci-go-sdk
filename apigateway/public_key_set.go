@@ -111,3 +111,14 @@ func GetPublicKeySetTypeEnumStringValues() []string {
 		"REMOTE_JWKS",
 	}
 }
+
+// GetMappingPublicKeySetTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPublicKeySetTypeEnum(val string) (PublicKeySetTypeEnum, bool) {
+	mappingPublicKeySetTypeEnumIgnoreCase := make(map[string]PublicKeySetTypeEnum)
+	for k, v := range mappingPublicKeySetTypeEnum {
+		mappingPublicKeySetTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPublicKeySetTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

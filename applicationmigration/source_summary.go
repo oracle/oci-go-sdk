@@ -64,10 +64,10 @@ func (m SourceSummary) String() string {
 func (m SourceSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSourceTypesEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingSourceTypesEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetSourceTypesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSourceLifecycleStatesEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingSourceLifecycleStatesEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSourceLifecycleStatesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

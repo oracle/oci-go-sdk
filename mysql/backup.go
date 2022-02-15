@@ -92,13 +92,13 @@ func (m Backup) String() string {
 // Not recommended for calling this function directly
 func (m Backup) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBackupLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingBackupLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetBackupLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBackupBackupTypeEnum[string(m.BackupType)]; !ok && m.BackupType != "" {
+	if _, ok := GetMappingBackupBackupTypeEnum(string(m.BackupType)); !ok && m.BackupType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BackupType: %s. Supported values are: %s.", m.BackupType, strings.Join(GetBackupBackupTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBackupCreationTypeEnum[string(m.CreationType)]; !ok && m.CreationType != "" {
+	if _, ok := GetMappingBackupCreationTypeEnum(string(m.CreationType)); !ok && m.CreationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CreationType: %s. Supported values are: %s.", m.CreationType, strings.Join(GetBackupCreationTypeEnumStringValues(), ",")))
 	}
 
@@ -154,6 +154,17 @@ func GetBackupLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingBackupLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackupLifecycleStateEnum(val string) (BackupLifecycleStateEnum, bool) {
+	mappingBackupLifecycleStateEnumIgnoreCase := make(map[string]BackupLifecycleStateEnum)
+	for k, v := range mappingBackupLifecycleStateEnum {
+		mappingBackupLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackupLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // BackupBackupTypeEnum Enum with underlying type: string
 type BackupBackupTypeEnum string
 
@@ -183,6 +194,17 @@ func GetBackupBackupTypeEnumStringValues() []string {
 		"FULL",
 		"INCREMENTAL",
 	}
+}
+
+// GetMappingBackupBackupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackupBackupTypeEnum(val string) (BackupBackupTypeEnum, bool) {
+	mappingBackupBackupTypeEnumIgnoreCase := make(map[string]BackupBackupTypeEnum)
+	for k, v := range mappingBackupBackupTypeEnum {
+		mappingBackupBackupTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackupBackupTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // BackupCreationTypeEnum Enum with underlying type: string
@@ -217,4 +239,15 @@ func GetBackupCreationTypeEnumStringValues() []string {
 		"AUTOMATIC",
 		"OPERATOR",
 	}
+}
+
+// GetMappingBackupCreationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackupCreationTypeEnum(val string) (BackupCreationTypeEnum, bool) {
+	mappingBackupCreationTypeEnumIgnoreCase := make(map[string]BackupCreationTypeEnum)
+	for k, v := range mappingBackupCreationTypeEnum {
+		mappingBackupCreationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackupCreationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

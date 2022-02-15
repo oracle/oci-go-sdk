@@ -61,7 +61,7 @@ func (m CustomerSecretKey) String() string {
 func (m CustomerSecretKey) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCustomerSecretKeyLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingCustomerSecretKeyLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetCustomerSecretKeyLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -108,4 +108,15 @@ func GetCustomerSecretKeyLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingCustomerSecretKeyLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCustomerSecretKeyLifecycleStateEnum(val string) (CustomerSecretKeyLifecycleStateEnum, bool) {
+	mappingCustomerSecretKeyLifecycleStateEnumIgnoreCase := make(map[string]CustomerSecretKeyLifecycleStateEnum)
+	for k, v := range mappingCustomerSecretKeyLifecycleStateEnum {
+		mappingCustomerSecretKeyLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCustomerSecretKeyLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -56,7 +56,7 @@ func (m LogAnalyticsAssociationParameter) String() string {
 func (m LogAnalyticsAssociationParameter) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLogAnalyticsAssociationParameterStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingLogAnalyticsAssociationParameterStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetLogAnalyticsAssociationParameterStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -94,4 +94,15 @@ func GetLogAnalyticsAssociationParameterStatusEnumStringValues() []string {
 		"SUCCEEDED",
 		"FAILED",
 	}
+}
+
+// GetMappingLogAnalyticsAssociationParameterStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogAnalyticsAssociationParameterStatusEnum(val string) (LogAnalyticsAssociationParameterStatusEnum, bool) {
+	mappingLogAnalyticsAssociationParameterStatusEnumIgnoreCase := make(map[string]LogAnalyticsAssociationParameterStatusEnum)
+	for k, v := range mappingLogAnalyticsAssociationParameterStatusEnum {
+		mappingLogAnalyticsAssociationParameterStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogAnalyticsAssociationParameterStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -75,7 +75,7 @@ func (m InstancePool) String() string {
 // Not recommended for calling this function directly
 func (m InstancePool) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingInstancePoolLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingInstancePoolLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetInstancePoolLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -132,4 +132,15 @@ func GetInstancePoolLifecycleStateEnumStringValues() []string {
 		"TERMINATED",
 		"RUNNING",
 	}
+}
+
+// GetMappingInstancePoolLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstancePoolLifecycleStateEnum(val string) (InstancePoolLifecycleStateEnum, bool) {
+	mappingInstancePoolLifecycleStateEnumIgnoreCase := make(map[string]InstancePoolLifecycleStateEnum)
+	for k, v := range mappingInstancePoolLifecycleStateEnum {
+		mappingInstancePoolLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstancePoolLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

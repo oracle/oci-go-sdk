@@ -49,7 +49,7 @@ func (m CronExecutionSchedule) String() string {
 func (m CronExecutionSchedule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingExecutionScheduleTimezoneEnum[string(m.Timezone)]; !ok && m.Timezone != "" {
+	if _, ok := GetMappingExecutionScheduleTimezoneEnum(string(m.Timezone)); !ok && m.Timezone != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Timezone: %s. Supported values are: %s.", m.Timezone, strings.Join(GetExecutionScheduleTimezoneEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

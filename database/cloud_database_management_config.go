@@ -34,10 +34,10 @@ func (m CloudDatabaseManagementConfig) String() string {
 // Not recommended for calling this function directly
 func (m CloudDatabaseManagementConfig) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCloudDatabaseManagementConfigManagementStatusEnum[string(m.ManagementStatus)]; !ok && m.ManagementStatus != "" {
+	if _, ok := GetMappingCloudDatabaseManagementConfigManagementStatusEnum(string(m.ManagementStatus)); !ok && m.ManagementStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ManagementStatus: %s. Supported values are: %s.", m.ManagementStatus, strings.Join(GetCloudDatabaseManagementConfigManagementStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCloudDatabaseManagementConfigManagementTypeEnum[string(m.ManagementType)]; !ok && m.ManagementType != "" {
+	if _, ok := GetMappingCloudDatabaseManagementConfigManagementTypeEnum(string(m.ManagementType)); !ok && m.ManagementType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ManagementType: %s. Supported values are: %s.", m.ManagementType, strings.Join(GetCloudDatabaseManagementConfigManagementTypeEnumStringValues(), ",")))
 	}
 
@@ -96,6 +96,17 @@ func GetCloudDatabaseManagementConfigManagementStatusEnumStringValues() []string
 	}
 }
 
+// GetMappingCloudDatabaseManagementConfigManagementStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCloudDatabaseManagementConfigManagementStatusEnum(val string) (CloudDatabaseManagementConfigManagementStatusEnum, bool) {
+	mappingCloudDatabaseManagementConfigManagementStatusEnumIgnoreCase := make(map[string]CloudDatabaseManagementConfigManagementStatusEnum)
+	for k, v := range mappingCloudDatabaseManagementConfigManagementStatusEnum {
+		mappingCloudDatabaseManagementConfigManagementStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCloudDatabaseManagementConfigManagementStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CloudDatabaseManagementConfigManagementTypeEnum Enum with underlying type: string
 type CloudDatabaseManagementConfigManagementTypeEnum string
 
@@ -125,4 +136,15 @@ func GetCloudDatabaseManagementConfigManagementTypeEnumStringValues() []string {
 		"BASIC",
 		"ADVANCED",
 	}
+}
+
+// GetMappingCloudDatabaseManagementConfigManagementTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCloudDatabaseManagementConfigManagementTypeEnum(val string) (CloudDatabaseManagementConfigManagementTypeEnum, bool) {
+	mappingCloudDatabaseManagementConfigManagementTypeEnumIgnoreCase := make(map[string]CloudDatabaseManagementConfigManagementTypeEnum)
+	for k, v := range mappingCloudDatabaseManagementConfigManagementTypeEnum {
+		mappingCloudDatabaseManagementConfigManagementTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCloudDatabaseManagementConfigManagementTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

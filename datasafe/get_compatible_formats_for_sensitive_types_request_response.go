@@ -76,7 +76,7 @@ func (request GetCompatibleFormatsForSensitiveTypesRequest) RetryPolicy() *commo
 // Not recommended for calling this function directly
 func (request GetCompatibleFormatsForSensitiveTypesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetGetCompatibleFormatsForSensitiveTypesAccessLevelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -144,4 +144,15 @@ func GetGetCompatibleFormatsForSensitiveTypesAccessLevelEnumStringValues() []str
 		"RESTRICTED",
 		"ACCESSIBLE",
 	}
+}
+
+// GetMappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnum(val string) (GetCompatibleFormatsForSensitiveTypesAccessLevelEnum, bool) {
+	mappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnumIgnoreCase := make(map[string]GetCompatibleFormatsForSensitiveTypesAccessLevelEnum)
+	for k, v := range mappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnum {
+		mappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

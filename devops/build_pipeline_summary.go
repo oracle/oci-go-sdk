@@ -64,7 +64,7 @@ func (m BuildPipelineSummary) String() string {
 func (m BuildPipelineSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBuildPipelineLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingBuildPipelineLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetBuildPipelineLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

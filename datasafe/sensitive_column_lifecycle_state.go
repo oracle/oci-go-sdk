@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // SensitiveColumnLifecycleStateEnum Enum with underlying type: string
 type SensitiveColumnLifecycleStateEnum string
 
@@ -47,4 +51,15 @@ func GetSensitiveColumnLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"FAILED",
 	}
+}
+
+// GetMappingSensitiveColumnLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSensitiveColumnLifecycleStateEnum(val string) (SensitiveColumnLifecycleStateEnum, bool) {
+	mappingSensitiveColumnLifecycleStateEnumIgnoreCase := make(map[string]SensitiveColumnLifecycleStateEnum)
+	for k, v := range mappingSensitiveColumnLifecycleStateEnum {
+		mappingSensitiveColumnLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSensitiveColumnLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

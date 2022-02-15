@@ -74,7 +74,7 @@ func (m UploadFileSummary) String() string {
 func (m UploadFileSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUploadFileSummaryStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingUploadFileSummaryStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetUploadFileSummaryStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -115,4 +115,15 @@ func GetUploadFileSummaryStatusEnumStringValues() []string {
 		"SUCCESSFUL",
 		"FAILED",
 	}
+}
+
+// GetMappingUploadFileSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUploadFileSummaryStatusEnum(val string) (UploadFileSummaryStatusEnum, bool) {
+	mappingUploadFileSummaryStatusEnumIgnoreCase := make(map[string]UploadFileSummaryStatusEnum)
+	for k, v := range mappingUploadFileSummaryStatusEnum {
+		mappingUploadFileSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUploadFileSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

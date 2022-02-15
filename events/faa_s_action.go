@@ -76,7 +76,7 @@ func (m FaaSAction) String() string {
 func (m FaaSAction) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingActionLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingActionLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetActionLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

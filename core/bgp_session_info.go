@@ -90,10 +90,10 @@ func (m BgpSessionInfo) String() string {
 func (m BgpSessionInfo) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBgpSessionInfoBgpStateEnum[string(m.BgpState)]; !ok && m.BgpState != "" {
+	if _, ok := GetMappingBgpSessionInfoBgpStateEnum(string(m.BgpState)); !ok && m.BgpState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BgpState: %s. Supported values are: %s.", m.BgpState, strings.Join(GetBgpSessionInfoBgpStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBgpSessionInfoBgpIpv6StateEnum[string(m.BgpIpv6State)]; !ok && m.BgpIpv6State != "" {
+	if _, ok := GetMappingBgpSessionInfoBgpIpv6StateEnum(string(m.BgpIpv6State)); !ok && m.BgpIpv6State != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BgpIpv6State: %s. Supported values are: %s.", m.BgpIpv6State, strings.Join(GetBgpSessionInfoBgpIpv6StateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -133,6 +133,17 @@ func GetBgpSessionInfoBgpStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingBgpSessionInfoBgpStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBgpSessionInfoBgpStateEnum(val string) (BgpSessionInfoBgpStateEnum, bool) {
+	mappingBgpSessionInfoBgpStateEnumIgnoreCase := make(map[string]BgpSessionInfoBgpStateEnum)
+	for k, v := range mappingBgpSessionInfoBgpStateEnum {
+		mappingBgpSessionInfoBgpStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBgpSessionInfoBgpStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // BgpSessionInfoBgpIpv6StateEnum Enum with underlying type: string
 type BgpSessionInfoBgpIpv6StateEnum string
 
@@ -162,4 +173,15 @@ func GetBgpSessionInfoBgpIpv6StateEnumStringValues() []string {
 		"UP",
 		"DOWN",
 	}
+}
+
+// GetMappingBgpSessionInfoBgpIpv6StateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBgpSessionInfoBgpIpv6StateEnum(val string) (BgpSessionInfoBgpIpv6StateEnum, bool) {
+	mappingBgpSessionInfoBgpIpv6StateEnumIgnoreCase := make(map[string]BgpSessionInfoBgpIpv6StateEnum)
+	for k, v := range mappingBgpSessionInfoBgpIpv6StateEnum {
+		mappingBgpSessionInfoBgpIpv6StateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBgpSessionInfoBgpIpv6StateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

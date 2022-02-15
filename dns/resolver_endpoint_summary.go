@@ -177,7 +177,7 @@ func (m resolverendpointsummary) String() string {
 // Not recommended for calling this function directly
 func (m resolverendpointsummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingResolverEndpointSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingResolverEndpointSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetResolverEndpointSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -230,6 +230,17 @@ func GetResolverEndpointSummaryLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingResolverEndpointSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResolverEndpointSummaryLifecycleStateEnum(val string) (ResolverEndpointSummaryLifecycleStateEnum, bool) {
+	mappingResolverEndpointSummaryLifecycleStateEnumIgnoreCase := make(map[string]ResolverEndpointSummaryLifecycleStateEnum)
+	for k, v := range mappingResolverEndpointSummaryLifecycleStateEnum {
+		mappingResolverEndpointSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResolverEndpointSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ResolverEndpointSummaryEndpointTypeEnum Enum with underlying type: string
 type ResolverEndpointSummaryEndpointTypeEnum string
 
@@ -256,4 +267,15 @@ func GetResolverEndpointSummaryEndpointTypeEnumStringValues() []string {
 	return []string{
 		"VNIC",
 	}
+}
+
+// GetMappingResolverEndpointSummaryEndpointTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResolverEndpointSummaryEndpointTypeEnum(val string) (ResolverEndpointSummaryEndpointTypeEnum, bool) {
+	mappingResolverEndpointSummaryEndpointTypeEnumIgnoreCase := make(map[string]ResolverEndpointSummaryEndpointTypeEnum)
+	for k, v := range mappingResolverEndpointSummaryEndpointTypeEnum {
+		mappingResolverEndpointSummaryEndpointTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResolverEndpointSummaryEndpointTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

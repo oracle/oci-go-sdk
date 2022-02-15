@@ -35,7 +35,7 @@ func (m EnableExternalNonContainerDatabaseDatabaseManagementDetails) String() st
 // Not recommended for calling this function directly
 func (m EnableExternalNonContainerDatabaseDatabaseManagementDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnum[string(m.LicenseModel)]; !ok && m.LicenseModel != "" {
+	if _, ok := GetMappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnum(string(m.LicenseModel)); !ok && m.LicenseModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LicenseModel: %s. Supported values are: %s.", m.LicenseModel, strings.Join(GetEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnumStringValues(), ",")))
 	}
 
@@ -74,4 +74,15 @@ func GetEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelE
 		"LICENSE_INCLUDED",
 		"BRING_YOUR_OWN_LICENSE",
 	}
+}
+
+// GetMappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnum(val string) (EnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnum, bool) {
+	mappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnumIgnoreCase := make(map[string]EnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnum)
+	for k, v := range mappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnum {
+		mappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

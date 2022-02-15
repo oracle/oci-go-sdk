@@ -84,7 +84,7 @@ func (request RequestSummarizedActivityProblemsRequest) RetryPolicy() *common.Re
 // Not recommended for calling this function directly
 func (request RequestSummarizedActivityProblemsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRequestSummarizedActivityProblemsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingRequestSummarizedActivityProblemsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetRequestSummarizedActivityProblemsAccessLevelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -150,4 +150,15 @@ func GetRequestSummarizedActivityProblemsAccessLevelEnumStringValues() []string 
 		"RESTRICTED",
 		"ACCESSIBLE",
 	}
+}
+
+// GetMappingRequestSummarizedActivityProblemsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRequestSummarizedActivityProblemsAccessLevelEnum(val string) (RequestSummarizedActivityProblemsAccessLevelEnum, bool) {
+	mappingRequestSummarizedActivityProblemsAccessLevelEnumIgnoreCase := make(map[string]RequestSummarizedActivityProblemsAccessLevelEnum)
+	for k, v := range mappingRequestSummarizedActivityProblemsAccessLevelEnum {
+		mappingRequestSummarizedActivityProblemsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRequestSummarizedActivityProblemsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -122,11 +122,11 @@ func (m AttributeSummary) String() string {
 func (m AttributeSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
 	for _, val := range m.AssociatedRuleTypes {
-		if _, ok := mappingRuleTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingRuleTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AssociatedRuleTypes: %s. Supported values are: %s.", val, strings.Join(GetRuleTypeEnumStringValues(), ",")))
 		}
 	}

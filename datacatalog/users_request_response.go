@@ -72,10 +72,10 @@ func (request UsersRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request UsersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUsersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingUsersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetUsersSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUsersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingUsersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetUsersSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -141,6 +141,17 @@ func GetUsersSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingUsersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUsersSortByEnum(val string) (UsersSortByEnum, bool) {
+	mappingUsersSortByEnumIgnoreCase := make(map[string]UsersSortByEnum)
+	for k, v := range mappingUsersSortByEnum {
+		mappingUsersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUsersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UsersSortOrderEnum Enum with underlying type: string
 type UsersSortOrderEnum string
 
@@ -170,4 +181,15 @@ func GetUsersSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingUsersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUsersSortOrderEnum(val string) (UsersSortOrderEnum, bool) {
+	mappingUsersSortOrderEnumIgnoreCase := make(map[string]UsersSortOrderEnum)
+	for k, v := range mappingUsersSortOrderEnum {
+		mappingUsersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUsersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

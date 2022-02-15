@@ -46,10 +46,10 @@ func (m FastLaunchJobConfigSummary) String() string {
 // Not recommended for calling this function directly
 func (m FastLaunchJobConfigSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingFastLaunchJobConfigSummaryShapeSeriesEnum[string(m.ShapeSeries)]; !ok && m.ShapeSeries != "" {
+	if _, ok := GetMappingFastLaunchJobConfigSummaryShapeSeriesEnum(string(m.ShapeSeries)); !ok && m.ShapeSeries != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShapeSeries: %s. Supported values are: %s.", m.ShapeSeries, strings.Join(GetFastLaunchJobConfigSummaryShapeSeriesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingFastLaunchJobConfigSummaryManagedEgressSupportEnum[string(m.ManagedEgressSupport)]; !ok && m.ManagedEgressSupport != "" {
+	if _, ok := GetMappingFastLaunchJobConfigSummaryManagedEgressSupportEnum(string(m.ManagedEgressSupport)); !ok && m.ManagedEgressSupport != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ManagedEgressSupport: %s. Supported values are: %s.", m.ManagedEgressSupport, strings.Join(GetFastLaunchJobConfigSummaryManagedEgressSupportEnumStringValues(), ",")))
 	}
 
@@ -96,6 +96,17 @@ func GetFastLaunchJobConfigSummaryShapeSeriesEnumStringValues() []string {
 	}
 }
 
+// GetMappingFastLaunchJobConfigSummaryShapeSeriesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFastLaunchJobConfigSummaryShapeSeriesEnum(val string) (FastLaunchJobConfigSummaryShapeSeriesEnum, bool) {
+	mappingFastLaunchJobConfigSummaryShapeSeriesEnumIgnoreCase := make(map[string]FastLaunchJobConfigSummaryShapeSeriesEnum)
+	for k, v := range mappingFastLaunchJobConfigSummaryShapeSeriesEnum {
+		mappingFastLaunchJobConfigSummaryShapeSeriesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFastLaunchJobConfigSummaryShapeSeriesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // FastLaunchJobConfigSummaryManagedEgressSupportEnum Enum with underlying type: string
 type FastLaunchJobConfigSummaryManagedEgressSupportEnum string
 
@@ -128,4 +139,15 @@ func GetFastLaunchJobConfigSummaryManagedEgressSupportEnumStringValues() []strin
 		"SUPPORTED",
 		"UNSUPPORTED",
 	}
+}
+
+// GetMappingFastLaunchJobConfigSummaryManagedEgressSupportEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFastLaunchJobConfigSummaryManagedEgressSupportEnum(val string) (FastLaunchJobConfigSummaryManagedEgressSupportEnum, bool) {
+	mappingFastLaunchJobConfigSummaryManagedEgressSupportEnumIgnoreCase := make(map[string]FastLaunchJobConfigSummaryManagedEgressSupportEnum)
+	for k, v := range mappingFastLaunchJobConfigSummaryManagedEgressSupportEnum {
+		mappingFastLaunchJobConfigSummaryManagedEgressSupportEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFastLaunchJobConfigSummaryManagedEgressSupportEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

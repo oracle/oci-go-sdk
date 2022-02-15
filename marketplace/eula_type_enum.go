@@ -9,6 +9,10 @@
 
 package marketplace
 
+import (
+	"strings"
+)
+
 // EulaTypeEnumEnum Enum with underlying type: string
 type EulaTypeEnumEnum string
 
@@ -35,4 +39,15 @@ func GetEulaTypeEnumEnumStringValues() []string {
 	return []string{
 		"TEXT",
 	}
+}
+
+// GetMappingEulaTypeEnumEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEulaTypeEnumEnum(val string) (EulaTypeEnumEnum, bool) {
+	mappingEulaTypeEnumEnumIgnoreCase := make(map[string]EulaTypeEnumEnum)
+	for k, v := range mappingEulaTypeEnumEnum {
+		mappingEulaTypeEnumEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEulaTypeEnumEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -10,6 +10,10 @@
 
 package waf
 
+import (
+	"strings"
+)
+
 // BackendTypeEnum Enum with underlying type: string
 type BackendTypeEnum string
 
@@ -36,4 +40,15 @@ func GetBackendTypeEnumStringValues() []string {
 	return []string{
 		"LOAD_BALANCER",
 	}
+}
+
+// GetMappingBackendTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackendTypeEnum(val string) (BackendTypeEnum, bool) {
+	mappingBackendTypeEnumIgnoreCase := make(map[string]BackendTypeEnum)
+	for k, v := range mappingBackendTypeEnum {
+		mappingBackendTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackendTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

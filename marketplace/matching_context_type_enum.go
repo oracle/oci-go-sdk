@@ -9,6 +9,10 @@
 
 package marketplace
 
+import (
+	"strings"
+)
+
 // MatchingContextTypeEnumEnum Enum with underlying type: string
 type MatchingContextTypeEnumEnum string
 
@@ -38,4 +42,15 @@ func GetMatchingContextTypeEnumEnumStringValues() []string {
 		"NONE",
 		"HIGHLIGHTS",
 	}
+}
+
+// GetMappingMatchingContextTypeEnumEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMatchingContextTypeEnumEnum(val string) (MatchingContextTypeEnumEnum, bool) {
+	mappingMatchingContextTypeEnumEnumIgnoreCase := make(map[string]MatchingContextTypeEnumEnum)
+	for k, v := range mappingMatchingContextTypeEnumEnum {
+		mappingMatchingContextTypeEnumEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMatchingContextTypeEnumEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

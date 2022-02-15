@@ -71,10 +71,10 @@ func (m UnifiedAgentConfiguration) String() string {
 // Not recommended for calling this function directly
 func (m UnifiedAgentConfiguration) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingLogLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLogLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLogLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUnifiedAgentServiceConfigurationStatesEnum[string(m.ConfigurationState)]; !ok && m.ConfigurationState != "" {
+	if _, ok := GetMappingUnifiedAgentServiceConfigurationStatesEnum(string(m.ConfigurationState)); !ok && m.ConfigurationState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ConfigurationState: %s. Supported values are: %s.", m.ConfigurationState, strings.Join(GetUnifiedAgentServiceConfigurationStatesEnumStringValues(), ",")))
 	}
 

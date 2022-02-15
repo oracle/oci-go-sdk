@@ -104,3 +104,14 @@ func GetJobExecutionResultDetailsTypeEnumStringValues() []string {
 		"OBJECT_STORAGE",
 	}
 }
+
+// GetMappingJobExecutionResultDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobExecutionResultDetailsTypeEnum(val string) (JobExecutionResultDetailsTypeEnum, bool) {
+	mappingJobExecutionResultDetailsTypeEnumIgnoreCase := make(map[string]JobExecutionResultDetailsTypeEnum)
+	for k, v := range mappingJobExecutionResultDetailsTypeEnum {
+		mappingJobExecutionResultDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobExecutionResultDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

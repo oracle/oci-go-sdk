@@ -121,15 +121,15 @@ func (request ListJobMetricsRequest) RetryPolicy() *common.RetryPolicy {
 func (request ListJobMetricsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingListJobMetricsFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListJobMetricsFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetListJobMetricsFieldsEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListJobMetricsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListJobMetricsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListJobMetricsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListJobMetricsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListJobMetricsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListJobMetricsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -225,6 +225,17 @@ func GetListJobMetricsFieldsEnumStringValues() []string {
 	}
 }
 
+// GetMappingListJobMetricsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobMetricsFieldsEnum(val string) (ListJobMetricsFieldsEnum, bool) {
+	mappingListJobMetricsFieldsEnumIgnoreCase := make(map[string]ListJobMetricsFieldsEnum)
+	for k, v := range mappingListJobMetricsFieldsEnum {
+		mappingListJobMetricsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobMetricsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListJobMetricsSortByEnum Enum with underlying type: string
 type ListJobMetricsSortByEnum string
 
@@ -256,6 +267,17 @@ func GetListJobMetricsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListJobMetricsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobMetricsSortByEnum(val string) (ListJobMetricsSortByEnum, bool) {
+	mappingListJobMetricsSortByEnumIgnoreCase := make(map[string]ListJobMetricsSortByEnum)
+	for k, v := range mappingListJobMetricsSortByEnum {
+		mappingListJobMetricsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobMetricsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListJobMetricsSortOrderEnum Enum with underlying type: string
 type ListJobMetricsSortOrderEnum string
 
@@ -285,4 +307,15 @@ func GetListJobMetricsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListJobMetricsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobMetricsSortOrderEnum(val string) (ListJobMetricsSortOrderEnum, bool) {
+	mappingListJobMetricsSortOrderEnumIgnoreCase := make(map[string]ListJobMetricsSortOrderEnum)
+	for k, v := range mappingListJobMetricsSortOrderEnum {
+		mappingListJobMetricsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobMetricsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

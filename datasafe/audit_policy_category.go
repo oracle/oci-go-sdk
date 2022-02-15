@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // AuditPolicyCategoryEnum Enum with underlying type: string
 type AuditPolicyCategoryEnum string
 
@@ -50,4 +54,15 @@ func GetAuditPolicyCategoryEnumStringValues() []string {
 		"COMPLIANCE_STANDARD",
 		"CUSTOM",
 	}
+}
+
+// GetMappingAuditPolicyCategoryEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAuditPolicyCategoryEnum(val string) (AuditPolicyCategoryEnum, bool) {
+	mappingAuditPolicyCategoryEnumIgnoreCase := make(map[string]AuditPolicyCategoryEnum)
+	for k, v := range mappingAuditPolicyCategoryEnum {
+		mappingAuditPolicyCategoryEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAuditPolicyCategoryEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

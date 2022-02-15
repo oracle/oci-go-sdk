@@ -114,3 +114,14 @@ func GetDrgRouteDistributionMatchCriteriaMatchTypeEnumStringValues() []string {
 		"DRG_ATTACHMENT_ID",
 	}
 }
+
+// GetMappingDrgRouteDistributionMatchCriteriaMatchTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDrgRouteDistributionMatchCriteriaMatchTypeEnum(val string) (DrgRouteDistributionMatchCriteriaMatchTypeEnum, bool) {
+	mappingDrgRouteDistributionMatchCriteriaMatchTypeEnumIgnoreCase := make(map[string]DrgRouteDistributionMatchCriteriaMatchTypeEnum)
+	for k, v := range mappingDrgRouteDistributionMatchCriteriaMatchTypeEnum {
+		mappingDrgRouteDistributionMatchCriteriaMatchTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDrgRouteDistributionMatchCriteriaMatchTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

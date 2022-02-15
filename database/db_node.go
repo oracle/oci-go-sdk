@@ -95,11 +95,11 @@ func (m DbNode) String() string {
 // Not recommended for calling this function directly
 func (m DbNode) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDbNodeLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDbNodeLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDbNodeLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDbNodeMaintenanceTypeEnum[string(m.MaintenanceType)]; !ok && m.MaintenanceType != "" {
+	if _, ok := GetMappingDbNodeMaintenanceTypeEnum(string(m.MaintenanceType)); !ok && m.MaintenanceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MaintenanceType: %s. Supported values are: %s.", m.MaintenanceType, strings.Join(GetDbNodeMaintenanceTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -160,6 +160,17 @@ func GetDbNodeLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingDbNodeLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbNodeLifecycleStateEnum(val string) (DbNodeLifecycleStateEnum, bool) {
+	mappingDbNodeLifecycleStateEnumIgnoreCase := make(map[string]DbNodeLifecycleStateEnum)
+	for k, v := range mappingDbNodeLifecycleStateEnum {
+		mappingDbNodeLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbNodeLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DbNodeMaintenanceTypeEnum Enum with underlying type: string
 type DbNodeMaintenanceTypeEnum string
 
@@ -186,4 +197,15 @@ func GetDbNodeMaintenanceTypeEnumStringValues() []string {
 	return []string{
 		"VMDB_REBOOT_MIGRATION",
 	}
+}
+
+// GetMappingDbNodeMaintenanceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbNodeMaintenanceTypeEnum(val string) (DbNodeMaintenanceTypeEnum, bool) {
+	mappingDbNodeMaintenanceTypeEnumIgnoreCase := make(map[string]DbNodeMaintenanceTypeEnum)
+	for k, v := range mappingDbNodeMaintenanceTypeEnum {
+		mappingDbNodeMaintenanceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbNodeMaintenanceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

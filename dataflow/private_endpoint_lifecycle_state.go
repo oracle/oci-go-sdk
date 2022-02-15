@@ -9,6 +9,10 @@
 
 package dataflow
 
+import (
+	"strings"
+)
+
 // PrivateEndpointLifecycleStateEnum Enum with underlying type: string
 type PrivateEndpointLifecycleStateEnum string
 
@@ -53,4 +57,15 @@ func GetPrivateEndpointLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingPrivateEndpointLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPrivateEndpointLifecycleStateEnum(val string) (PrivateEndpointLifecycleStateEnum, bool) {
+	mappingPrivateEndpointLifecycleStateEnumIgnoreCase := make(map[string]PrivateEndpointLifecycleStateEnum)
+	for k, v := range mappingPrivateEndpointLifecycleStateEnum {
+		mappingPrivateEndpointLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPrivateEndpointLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

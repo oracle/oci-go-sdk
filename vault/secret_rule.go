@@ -109,3 +109,14 @@ func GetSecretRuleRuleTypeEnumStringValues() []string {
 		"SECRET_REUSE_RULE",
 	}
 }
+
+// GetMappingSecretRuleRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecretRuleRuleTypeEnum(val string) (SecretRuleRuleTypeEnum, bool) {
+	mappingSecretRuleRuleTypeEnumIgnoreCase := make(map[string]SecretRuleRuleTypeEnum)
+	for k, v := range mappingSecretRuleRuleTypeEnum {
+		mappingSecretRuleRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecretRuleRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

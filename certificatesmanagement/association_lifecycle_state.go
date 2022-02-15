@@ -9,6 +9,10 @@
 
 package certificatesmanagement
 
+import (
+	"strings"
+)
+
 // AssociationLifecycleStateEnum Enum with underlying type: string
 type AssociationLifecycleStateEnum string
 
@@ -47,4 +51,15 @@ func GetAssociationLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"FAILED",
 	}
+}
+
+// GetMappingAssociationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAssociationLifecycleStateEnum(val string) (AssociationLifecycleStateEnum, bool) {
+	mappingAssociationLifecycleStateEnumIgnoreCase := make(map[string]AssociationLifecycleStateEnum)
+	for k, v := range mappingAssociationLifecycleStateEnum {
+		mappingAssociationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAssociationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

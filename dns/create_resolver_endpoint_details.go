@@ -156,3 +156,14 @@ func GetCreateResolverEndpointDetailsEndpointTypeEnumStringValues() []string {
 		"VNIC",
 	}
 }
+
+// GetMappingCreateResolverEndpointDetailsEndpointTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateResolverEndpointDetailsEndpointTypeEnum(val string) (CreateResolverEndpointDetailsEndpointTypeEnum, bool) {
+	mappingCreateResolverEndpointDetailsEndpointTypeEnumIgnoreCase := make(map[string]CreateResolverEndpointDetailsEndpointTypeEnum)
+	for k, v := range mappingCreateResolverEndpointDetailsEndpointTypeEnum {
+		mappingCreateResolverEndpointDetailsEndpointTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateResolverEndpointDetailsEndpointTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

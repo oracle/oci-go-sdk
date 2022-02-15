@@ -60,7 +60,7 @@ func (m TransferAppliance) String() string {
 func (m TransferAppliance) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTransferApplianceLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingTransferApplianceLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetTransferApplianceLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -152,4 +152,15 @@ func GetTransferApplianceLifecycleStateEnumStringValues() []string {
 		"REJECTED",
 		"ERROR",
 	}
+}
+
+// GetMappingTransferApplianceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTransferApplianceLifecycleStateEnum(val string) (TransferApplianceLifecycleStateEnum, bool) {
+	mappingTransferApplianceLifecycleStateEnumIgnoreCase := make(map[string]TransferApplianceLifecycleStateEnum)
+	for k, v := range mappingTransferApplianceLifecycleStateEnum {
+		mappingTransferApplianceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTransferApplianceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

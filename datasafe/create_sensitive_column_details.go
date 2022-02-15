@@ -81,13 +81,13 @@ func (m CreateSensitiveColumnDetails) String() string {
 func (m CreateSensitiveColumnDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateSensitiveColumnDetailsObjectTypeEnum[string(m.ObjectType)]; !ok && m.ObjectType != "" {
+	if _, ok := GetMappingCreateSensitiveColumnDetailsObjectTypeEnum(string(m.ObjectType)); !ok && m.ObjectType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ObjectType: %s. Supported values are: %s.", m.ObjectType, strings.Join(GetCreateSensitiveColumnDetailsObjectTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateSensitiveColumnDetailsStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingCreateSensitiveColumnDetailsStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetCreateSensitiveColumnDetailsStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateSensitiveColumnDetailsRelationTypeEnum[string(m.RelationType)]; !ok && m.RelationType != "" {
+	if _, ok := GetMappingCreateSensitiveColumnDetailsRelationTypeEnum(string(m.RelationType)); !ok && m.RelationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RelationType: %s. Supported values are: %s.", m.RelationType, strings.Join(GetCreateSensitiveColumnDetailsRelationTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -127,6 +127,17 @@ func GetCreateSensitiveColumnDetailsObjectTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingCreateSensitiveColumnDetailsObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateSensitiveColumnDetailsObjectTypeEnum(val string) (CreateSensitiveColumnDetailsObjectTypeEnum, bool) {
+	mappingCreateSensitiveColumnDetailsObjectTypeEnumIgnoreCase := make(map[string]CreateSensitiveColumnDetailsObjectTypeEnum)
+	for k, v := range mappingCreateSensitiveColumnDetailsObjectTypeEnum {
+		mappingCreateSensitiveColumnDetailsObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateSensitiveColumnDetailsObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CreateSensitiveColumnDetailsStatusEnum Enum with underlying type: string
 type CreateSensitiveColumnDetailsStatusEnum string
 
@@ -156,6 +167,17 @@ func GetCreateSensitiveColumnDetailsStatusEnumStringValues() []string {
 		"VALID",
 		"INVALID",
 	}
+}
+
+// GetMappingCreateSensitiveColumnDetailsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateSensitiveColumnDetailsStatusEnum(val string) (CreateSensitiveColumnDetailsStatusEnum, bool) {
+	mappingCreateSensitiveColumnDetailsStatusEnumIgnoreCase := make(map[string]CreateSensitiveColumnDetailsStatusEnum)
+	for k, v := range mappingCreateSensitiveColumnDetailsStatusEnum {
+		mappingCreateSensitiveColumnDetailsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateSensitiveColumnDetailsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // CreateSensitiveColumnDetailsRelationTypeEnum Enum with underlying type: string
@@ -190,4 +212,15 @@ func GetCreateSensitiveColumnDetailsRelationTypeEnumStringValues() []string {
 		"APP_DEFINED",
 		"DB_DEFINED",
 	}
+}
+
+// GetMappingCreateSensitiveColumnDetailsRelationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateSensitiveColumnDetailsRelationTypeEnum(val string) (CreateSensitiveColumnDetailsRelationTypeEnum, bool) {
+	mappingCreateSensitiveColumnDetailsRelationTypeEnumIgnoreCase := make(map[string]CreateSensitiveColumnDetailsRelationTypeEnum)
+	for k, v := range mappingCreateSensitiveColumnDetailsRelationTypeEnum {
+		mappingCreateSensitiveColumnDetailsRelationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateSensitiveColumnDetailsRelationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

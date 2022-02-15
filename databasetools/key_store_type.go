@@ -9,6 +9,10 @@
 
 package databasetools
 
+import (
+	"strings"
+)
+
 // KeyStoreTypeEnum Enum with underlying type: string
 type KeyStoreTypeEnum string
 
@@ -44,4 +48,15 @@ func GetKeyStoreTypeEnumStringValues() []string {
 		"PKCS12",
 		"SSO",
 	}
+}
+
+// GetMappingKeyStoreTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeyStoreTypeEnum(val string) (KeyStoreTypeEnum, bool) {
+	mappingKeyStoreTypeEnumIgnoreCase := make(map[string]KeyStoreTypeEnum)
+	for k, v := range mappingKeyStoreTypeEnum {
+		mappingKeyStoreTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeyStoreTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

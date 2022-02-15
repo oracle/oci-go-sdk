@@ -138,3 +138,14 @@ func GetConfigSourceConfigSourceTypeEnumStringValues() []string {
 		"OBJECT_STORAGE_CONFIG_SOURCE",
 	}
 }
+
+// GetMappingConfigSourceConfigSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConfigSourceConfigSourceTypeEnum(val string) (ConfigSourceConfigSourceTypeEnum, bool) {
+	mappingConfigSourceConfigSourceTypeEnumIgnoreCase := make(map[string]ConfigSourceConfigSourceTypeEnum)
+	for k, v := range mappingConfigSourceConfigSourceTypeEnum {
+		mappingConfigSourceConfigSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConfigSourceConfigSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

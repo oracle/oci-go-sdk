@@ -43,10 +43,10 @@ func (m ExadataIormConfig) String() string {
 func (m ExadataIormConfig) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingExadataIormConfigLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingExadataIormConfigLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetExadataIormConfigLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingExadataIormConfigObjectiveEnum[string(m.Objective)]; !ok && m.Objective != "" {
+	if _, ok := GetMappingExadataIormConfigObjectiveEnum(string(m.Objective)); !ok && m.Objective != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Objective: %s. Supported values are: %s.", m.Objective, strings.Join(GetExadataIormConfigObjectiveEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -95,6 +95,17 @@ func GetExadataIormConfigLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingExadataIormConfigLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExadataIormConfigLifecycleStateEnum(val string) (ExadataIormConfigLifecycleStateEnum, bool) {
+	mappingExadataIormConfigLifecycleStateEnumIgnoreCase := make(map[string]ExadataIormConfigLifecycleStateEnum)
+	for k, v := range mappingExadataIormConfigLifecycleStateEnum {
+		mappingExadataIormConfigLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExadataIormConfigLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ExadataIormConfigObjectiveEnum Enum with underlying type: string
 type ExadataIormConfigObjectiveEnum string
 
@@ -133,4 +144,15 @@ func GetExadataIormConfigObjectiveEnumStringValues() []string {
 		"AUTO",
 		"BASIC",
 	}
+}
+
+// GetMappingExadataIormConfigObjectiveEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExadataIormConfigObjectiveEnum(val string) (ExadataIormConfigObjectiveEnum, bool) {
+	mappingExadataIormConfigObjectiveEnumIgnoreCase := make(map[string]ExadataIormConfigObjectiveEnum)
+	for k, v := range mappingExadataIormConfigObjectiveEnum {
+		mappingExadataIormConfigObjectiveEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExadataIormConfigObjectiveEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

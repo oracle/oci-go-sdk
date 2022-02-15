@@ -58,14 +58,14 @@ func (m LogAnalyticsEntityType) String() string {
 // Not recommended for calling this function directly
 func (m LogAnalyticsEntityType) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingEntityCloudTypeEnum[string(m.CloudType)]; !ok && m.CloudType != "" {
+	if _, ok := GetMappingEntityCloudTypeEnum(string(m.CloudType)); !ok && m.CloudType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CloudType: %s. Supported values are: %s.", m.CloudType, strings.Join(GetEntityCloudTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingEntityLifecycleStatesEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingEntityLifecycleStatesEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetEntityLifecycleStatesEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum[string(m.ManagementAgentEligibilityStatus)]; !ok && m.ManagementAgentEligibilityStatus != "" {
+	if _, ok := GetMappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum(string(m.ManagementAgentEligibilityStatus)); !ok && m.ManagementAgentEligibilityStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ManagementAgentEligibilityStatus: %s. Supported values are: %s.", m.ManagementAgentEligibilityStatus, strings.Join(GetLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -106,4 +106,15 @@ func GetLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnumStringValues()
 		"INELIGIBLE",
 		"UNKNOWN",
 	}
+}
+
+// GetMappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum(val string) (LogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum, bool) {
+	mappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnumIgnoreCase := make(map[string]LogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum)
+	for k, v := range mappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum {
+		mappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

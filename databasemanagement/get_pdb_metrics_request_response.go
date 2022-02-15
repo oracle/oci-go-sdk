@@ -77,7 +77,7 @@ func (request GetPdbMetricsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetPdbMetricsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetPdbMetricsCompareTypeEnum[string(request.CompareType)]; !ok && request.CompareType != "" {
+	if _, ok := GetMappingGetPdbMetricsCompareTypeEnum(string(request.CompareType)); !ok && request.CompareType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CompareType: %s. Supported values are: %s.", request.CompareType, strings.Join(GetGetPdbMetricsCompareTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -138,4 +138,15 @@ func GetGetPdbMetricsCompareTypeEnumStringValues() []string {
 		"HOUR",
 		"DAY",
 	}
+}
+
+// GetMappingGetPdbMetricsCompareTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetPdbMetricsCompareTypeEnum(val string) (GetPdbMetricsCompareTypeEnum, bool) {
+	mappingGetPdbMetricsCompareTypeEnumIgnoreCase := make(map[string]GetPdbMetricsCompareTypeEnum)
+	for k, v := range mappingGetPdbMetricsCompareTypeEnum {
+		mappingGetPdbMetricsCompareTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetPdbMetricsCompareTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

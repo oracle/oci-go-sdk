@@ -89,7 +89,7 @@ func (m InputPort) String() string {
 // Not recommended for calling this function directly
 func (m InputPort) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingInputPortPortTypeEnum[string(m.PortType)]; !ok && m.PortType != "" {
+	if _, ok := GetMappingInputPortPortTypeEnum(string(m.PortType)); !ok && m.PortType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PortType: %s. Supported values are: %s.", m.PortType, strings.Join(GetInputPortPortTypeEnumStringValues(), ",")))
 	}
 
@@ -196,4 +196,15 @@ func GetInputPortPortTypeEnumStringValues() []string {
 		"CONTROL",
 		"MODEL",
 	}
+}
+
+// GetMappingInputPortPortTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInputPortPortTypeEnum(val string) (InputPortPortTypeEnum, bool) {
+	mappingInputPortPortTypeEnumIgnoreCase := make(map[string]InputPortPortTypeEnum)
+	for k, v := range mappingInputPortPortTypeEnum {
+		mappingInputPortPortTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInputPortPortTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

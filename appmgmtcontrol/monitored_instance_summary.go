@@ -48,10 +48,10 @@ func (m MonitoredInstanceSummary) String() string {
 func (m MonitoredInstanceSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingMonitoredInstanceLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingMonitoredInstanceLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetMonitoredInstanceLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingMonitoredInstanceMonitoringStateEnum[string(m.MonitoringState)]; !ok && m.MonitoringState != "" {
+	if _, ok := GetMappingMonitoredInstanceMonitoringStateEnum(string(m.MonitoringState)); !ok && m.MonitoringState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MonitoringState: %s. Supported values are: %s.", m.MonitoringState, strings.Join(GetMonitoredInstanceMonitoringStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

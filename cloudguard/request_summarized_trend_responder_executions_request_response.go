@@ -85,7 +85,7 @@ func (request RequestSummarizedTrendResponderExecutionsRequest) RetryPolicy() *c
 // Not recommended for calling this function directly
 func (request RequestSummarizedTrendResponderExecutionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRequestSummarizedTrendResponderExecutionsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingRequestSummarizedTrendResponderExecutionsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetRequestSummarizedTrendResponderExecutionsAccessLevelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -151,4 +151,15 @@ func GetRequestSummarizedTrendResponderExecutionsAccessLevelEnumStringValues() [
 		"RESTRICTED",
 		"ACCESSIBLE",
 	}
+}
+
+// GetMappingRequestSummarizedTrendResponderExecutionsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRequestSummarizedTrendResponderExecutionsAccessLevelEnum(val string) (RequestSummarizedTrendResponderExecutionsAccessLevelEnum, bool) {
+	mappingRequestSummarizedTrendResponderExecutionsAccessLevelEnumIgnoreCase := make(map[string]RequestSummarizedTrendResponderExecutionsAccessLevelEnum)
+	for k, v := range mappingRequestSummarizedTrendResponderExecutionsAccessLevelEnum {
+		mappingRequestSummarizedTrendResponderExecutionsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRequestSummarizedTrendResponderExecutionsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

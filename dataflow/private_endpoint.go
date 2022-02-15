@@ -86,7 +86,7 @@ func (m PrivateEndpoint) String() string {
 // Not recommended for calling this function directly
 func (m PrivateEndpoint) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPrivateEndpointLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingPrivateEndpointLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetPrivateEndpointLifecycleStateEnumStringValues(), ",")))
 	}
 

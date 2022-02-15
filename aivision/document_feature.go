@@ -130,3 +130,14 @@ func GetDocumentFeatureFeatureTypeEnumStringValues() []string {
 		"DOCUMENT_CLASSIFICATION",
 	}
 }
+
+// GetMappingDocumentFeatureFeatureTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDocumentFeatureFeatureTypeEnum(val string) (DocumentFeatureFeatureTypeEnum, bool) {
+	mappingDocumentFeatureFeatureTypeEnumIgnoreCase := make(map[string]DocumentFeatureFeatureTypeEnum)
+	for k, v := range mappingDocumentFeatureFeatureTypeEnum {
+		mappingDocumentFeatureFeatureTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDocumentFeatureFeatureTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

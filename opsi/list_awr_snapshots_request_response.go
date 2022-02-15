@@ -88,10 +88,10 @@ func (request ListAwrSnapshotsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAwrSnapshotsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAwrSnapshotsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAwrSnapshotsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAwrSnapshotsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAwrSnapshotsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAwrSnapshotsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAwrSnapshotsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -159,6 +159,17 @@ func GetListAwrSnapshotsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAwrSnapshotsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAwrSnapshotsSortOrderEnum(val string) (ListAwrSnapshotsSortOrderEnum, bool) {
+	mappingListAwrSnapshotsSortOrderEnumIgnoreCase := make(map[string]ListAwrSnapshotsSortOrderEnum)
+	for k, v := range mappingListAwrSnapshotsSortOrderEnum {
+		mappingListAwrSnapshotsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAwrSnapshotsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAwrSnapshotsSortByEnum Enum with underlying type: string
 type ListAwrSnapshotsSortByEnum string
 
@@ -188,4 +199,15 @@ func GetListAwrSnapshotsSortByEnumStringValues() []string {
 		"timeBegin",
 		"snapshotId",
 	}
+}
+
+// GetMappingListAwrSnapshotsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAwrSnapshotsSortByEnum(val string) (ListAwrSnapshotsSortByEnum, bool) {
+	mappingListAwrSnapshotsSortByEnumIgnoreCase := make(map[string]ListAwrSnapshotsSortByEnum)
+	for k, v := range mappingListAwrSnapshotsSortByEnum {
+		mappingListAwrSnapshotsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAwrSnapshotsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

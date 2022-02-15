@@ -55,7 +55,7 @@ func (m CreateManagedListDetails) String() string {
 func (m CreateManagedListDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingManagedListTypeEnum[string(m.ListType)]; !ok && m.ListType != "" {
+	if _, ok := GetMappingManagedListTypeEnum(string(m.ListType)); !ok && m.ListType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ListType: %s. Supported values are: %s.", m.ListType, strings.Join(GetManagedListTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // ReportDefinitionLifecycleStateEnum Enum with underlying type: string
 type ReportDefinitionLifecycleStateEnum string
 
@@ -47,4 +51,15 @@ func GetReportDefinitionLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingReportDefinitionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingReportDefinitionLifecycleStateEnum(val string) (ReportDefinitionLifecycleStateEnum, bool) {
+	mappingReportDefinitionLifecycleStateEnumIgnoreCase := make(map[string]ReportDefinitionLifecycleStateEnum)
+	for k, v := range mappingReportDefinitionLifecycleStateEnum {
+		mappingReportDefinitionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingReportDefinitionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

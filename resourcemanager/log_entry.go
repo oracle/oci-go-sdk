@@ -46,10 +46,10 @@ func (m LogEntry) String() string {
 func (m LogEntry) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLogEntryTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingLogEntryTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetLogEntryTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLogEntryLevelEnum[string(m.Level)]; !ok && m.Level != "" {
+	if _, ok := GetMappingLogEntryLevelEnum(string(m.Level)); !ok && m.Level != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Level: %s. Supported values are: %s.", m.Level, strings.Join(GetLogEntryLevelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -84,6 +84,17 @@ func GetLogEntryTypeEnumStringValues() []string {
 	return []string{
 		"TERRAFORM_CONSOLE",
 	}
+}
+
+// GetMappingLogEntryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogEntryTypeEnum(val string) (LogEntryTypeEnum, bool) {
+	mappingLogEntryTypeEnumIgnoreCase := make(map[string]LogEntryTypeEnum)
+	for k, v := range mappingLogEntryTypeEnum {
+		mappingLogEntryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogEntryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // LogEntryLevelEnum Enum with underlying type: string
@@ -127,4 +138,15 @@ func GetLogEntryLevelEnumStringValues() []string {
 		"ERROR",
 		"FATAL",
 	}
+}
+
+// GetMappingLogEntryLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogEntryLevelEnum(val string) (LogEntryLevelEnum, bool) {
+	mappingLogEntryLevelEnumIgnoreCase := make(map[string]LogEntryLevelEnum)
+	for k, v := range mappingLogEntryLevelEnum {
+		mappingLogEntryLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogEntryLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

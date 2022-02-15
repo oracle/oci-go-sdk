@@ -108,16 +108,16 @@ func (request ListSensitiveDataModelsRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListSensitiveDataModelsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSensitiveDataModelsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListSensitiveDataModelsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListSensitiveDataModelsAccessLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSensitiveDataModelsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSensitiveDataModelsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSensitiveDataModelsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSensitiveDataModelsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSensitiveDataModelsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSensitiveDataModelsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSensitiveDataModelsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListSensitiveDataModelsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListSensitiveDataModelsLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -187,6 +187,17 @@ func GetListSensitiveDataModelsAccessLevelEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSensitiveDataModelsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSensitiveDataModelsAccessLevelEnum(val string) (ListSensitiveDataModelsAccessLevelEnum, bool) {
+	mappingListSensitiveDataModelsAccessLevelEnumIgnoreCase := make(map[string]ListSensitiveDataModelsAccessLevelEnum)
+	for k, v := range mappingListSensitiveDataModelsAccessLevelEnum {
+		mappingListSensitiveDataModelsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSensitiveDataModelsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSensitiveDataModelsSortOrderEnum Enum with underlying type: string
 type ListSensitiveDataModelsSortOrderEnum string
 
@@ -218,6 +229,17 @@ func GetListSensitiveDataModelsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSensitiveDataModelsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSensitiveDataModelsSortOrderEnum(val string) (ListSensitiveDataModelsSortOrderEnum, bool) {
+	mappingListSensitiveDataModelsSortOrderEnumIgnoreCase := make(map[string]ListSensitiveDataModelsSortOrderEnum)
+	for k, v := range mappingListSensitiveDataModelsSortOrderEnum {
+		mappingListSensitiveDataModelsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSensitiveDataModelsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSensitiveDataModelsSortByEnum Enum with underlying type: string
 type ListSensitiveDataModelsSortByEnum string
 
@@ -247,6 +269,17 @@ func GetListSensitiveDataModelsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListSensitiveDataModelsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSensitiveDataModelsSortByEnum(val string) (ListSensitiveDataModelsSortByEnum, bool) {
+	mappingListSensitiveDataModelsSortByEnumIgnoreCase := make(map[string]ListSensitiveDataModelsSortByEnum)
+	for k, v := range mappingListSensitiveDataModelsSortByEnum {
+		mappingListSensitiveDataModelsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSensitiveDataModelsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListSensitiveDataModelsLifecycleStateEnum Enum with underlying type: string
@@ -290,4 +323,15 @@ func GetListSensitiveDataModelsLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingListSensitiveDataModelsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSensitiveDataModelsLifecycleStateEnum(val string) (ListSensitiveDataModelsLifecycleStateEnum, bool) {
+	mappingListSensitiveDataModelsLifecycleStateEnumIgnoreCase := make(map[string]ListSensitiveDataModelsLifecycleStateEnum)
+	for k, v := range mappingListSensitiveDataModelsLifecycleStateEnum {
+		mappingListSensitiveDataModelsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSensitiveDataModelsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

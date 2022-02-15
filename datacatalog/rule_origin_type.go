@@ -10,6 +10,10 @@
 
 package datacatalog
 
+import (
+	"strings"
+)
+
 // RuleOriginTypeEnum Enum with underlying type: string
 type RuleOriginTypeEnum string
 
@@ -42,4 +46,15 @@ func GetRuleOriginTypeEnumStringValues() []string {
 		"USER",
 		"PROFILING",
 	}
+}
+
+// GetMappingRuleOriginTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRuleOriginTypeEnum(val string) (RuleOriginTypeEnum, bool) {
+	mappingRuleOriginTypeEnumIgnoreCase := make(map[string]RuleOriginTypeEnum)
+	for k, v := range mappingRuleOriginTypeEnum {
+		mappingRuleOriginTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRuleOriginTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

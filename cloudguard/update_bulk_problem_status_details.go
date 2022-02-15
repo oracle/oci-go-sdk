@@ -37,7 +37,7 @@ func (m UpdateBulkProblemStatusDetails) String() string {
 // Not recommended for calling this function directly
 func (m UpdateBulkProblemStatusDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingProblemLifecycleDetailEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingProblemLifecycleDetailEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetProblemLifecycleDetailEnumStringValues(), ",")))
 	}
 

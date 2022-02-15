@@ -11,6 +11,10 @@
 
 package objectstorage
 
+import (
+	"strings"
+)
+
 // WorkRequestResourceMetadataKeyEnum Enum with underlying type: string
 type WorkRequestResourceMetadataKeyEnum string
 
@@ -46,4 +50,15 @@ func GetWorkRequestResourceMetadataKeyEnumStringValues() []string {
 		"BUCKET",
 		"OBJECT",
 	}
+}
+
+// GetMappingWorkRequestResourceMetadataKeyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestResourceMetadataKeyEnum(val string) (WorkRequestResourceMetadataKeyEnum, bool) {
+	mappingWorkRequestResourceMetadataKeyEnumIgnoreCase := make(map[string]WorkRequestResourceMetadataKeyEnum)
+	for k, v := range mappingWorkRequestResourceMetadataKeyEnum {
+		mappingWorkRequestResourceMetadataKeyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestResourceMetadataKeyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

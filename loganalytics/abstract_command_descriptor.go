@@ -460,3 +460,14 @@ func GetAbstractCommandDescriptorNameEnumStringValues() []string {
 		"COMPARE",
 	}
 }
+
+// GetMappingAbstractCommandDescriptorNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAbstractCommandDescriptorNameEnum(val string) (AbstractCommandDescriptorNameEnum, bool) {
+	mappingAbstractCommandDescriptorNameEnumIgnoreCase := make(map[string]AbstractCommandDescriptorNameEnum)
+	for k, v := range mappingAbstractCommandDescriptorNameEnum {
+		mappingAbstractCommandDescriptorNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAbstractCommandDescriptorNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

@@ -81,17 +81,17 @@ func (request ListManagementAgentPluginsRequest) RetryPolicy() *common.RetryPoli
 // Not recommended for calling this function directly
 func (request ListManagementAgentPluginsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListManagementAgentPluginsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListManagementAgentPluginsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListManagementAgentPluginsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagementAgentPluginsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListManagementAgentPluginsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListManagementAgentPluginsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagementAgentPluginsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListManagementAgentPluginsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListManagementAgentPluginsLifecycleStateEnumStringValues(), ",")))
 	}
 	for _, val := range request.PlatformType {
-		if _, ok := mappingPlatformTypesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingPlatformTypesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", val, strings.Join(GetPlatformTypesEnumStringValues(), ",")))
 		}
 	}
@@ -161,6 +161,17 @@ func GetListManagementAgentPluginsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListManagementAgentPluginsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementAgentPluginsSortOrderEnum(val string) (ListManagementAgentPluginsSortOrderEnum, bool) {
+	mappingListManagementAgentPluginsSortOrderEnumIgnoreCase := make(map[string]ListManagementAgentPluginsSortOrderEnum)
+	for k, v := range mappingListManagementAgentPluginsSortOrderEnum {
+		mappingListManagementAgentPluginsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementAgentPluginsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagementAgentPluginsSortByEnum Enum with underlying type: string
 type ListManagementAgentPluginsSortByEnum string
 
@@ -187,6 +198,17 @@ func GetListManagementAgentPluginsSortByEnumStringValues() []string {
 	return []string{
 		"displayName",
 	}
+}
+
+// GetMappingListManagementAgentPluginsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementAgentPluginsSortByEnum(val string) (ListManagementAgentPluginsSortByEnum, bool) {
+	mappingListManagementAgentPluginsSortByEnumIgnoreCase := make(map[string]ListManagementAgentPluginsSortByEnum)
+	for k, v := range mappingListManagementAgentPluginsSortByEnum {
+		mappingListManagementAgentPluginsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementAgentPluginsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListManagementAgentPluginsLifecycleStateEnum Enum with underlying type: string
@@ -236,4 +258,15 @@ func GetListManagementAgentPluginsLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingListManagementAgentPluginsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementAgentPluginsLifecycleStateEnum(val string) (ListManagementAgentPluginsLifecycleStateEnum, bool) {
+	mappingListManagementAgentPluginsLifecycleStateEnumIgnoreCase := make(map[string]ListManagementAgentPluginsLifecycleStateEnum)
+	for k, v := range mappingListManagementAgentPluginsLifecycleStateEnum {
+		mappingListManagementAgentPluginsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementAgentPluginsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

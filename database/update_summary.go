@@ -58,20 +58,20 @@ func (m UpdateSummary) String() string {
 // Not recommended for calling this function directly
 func (m UpdateSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUpdateSummaryUpdateTypeEnum[string(m.UpdateType)]; !ok && m.UpdateType != "" {
+	if _, ok := GetMappingUpdateSummaryUpdateTypeEnum(string(m.UpdateType)); !ok && m.UpdateType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateType: %s. Supported values are: %s.", m.UpdateType, strings.Join(GetUpdateSummaryUpdateTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingUpdateSummaryLastActionEnum[string(m.LastAction)]; !ok && m.LastAction != "" {
+	if _, ok := GetMappingUpdateSummaryLastActionEnum(string(m.LastAction)); !ok && m.LastAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LastAction: %s. Supported values are: %s.", m.LastAction, strings.Join(GetUpdateSummaryLastActionEnumStringValues(), ",")))
 	}
 	for _, val := range m.AvailableActions {
-		if _, ok := mappingUpdateSummaryAvailableActionsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingUpdateSummaryAvailableActionsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AvailableActions: %s. Supported values are: %s.", val, strings.Join(GetUpdateSummaryAvailableActionsEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingUpdateSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingUpdateSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetUpdateSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -117,6 +117,17 @@ func GetUpdateSummaryLastActionEnumStringValues() []string {
 	}
 }
 
+// GetMappingUpdateSummaryLastActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateSummaryLastActionEnum(val string) (UpdateSummaryLastActionEnum, bool) {
+	mappingUpdateSummaryLastActionEnumIgnoreCase := make(map[string]UpdateSummaryLastActionEnum)
+	for k, v := range mappingUpdateSummaryLastActionEnum {
+		mappingUpdateSummaryLastActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateSummaryLastActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UpdateSummaryAvailableActionsEnum Enum with underlying type: string
 type UpdateSummaryAvailableActionsEnum string
 
@@ -154,6 +165,17 @@ func GetUpdateSummaryAvailableActionsEnumStringValues() []string {
 	}
 }
 
+// GetMappingUpdateSummaryAvailableActionsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateSummaryAvailableActionsEnum(val string) (UpdateSummaryAvailableActionsEnum, bool) {
+	mappingUpdateSummaryAvailableActionsEnumIgnoreCase := make(map[string]UpdateSummaryAvailableActionsEnum)
+	for k, v := range mappingUpdateSummaryAvailableActionsEnum {
+		mappingUpdateSummaryAvailableActionsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateSummaryAvailableActionsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UpdateSummaryUpdateTypeEnum Enum with underlying type: string
 type UpdateSummaryUpdateTypeEnum string
 
@@ -186,6 +208,17 @@ func GetUpdateSummaryUpdateTypeEnumStringValues() []string {
 		"GI_PATCH",
 		"OS_UPDATE",
 	}
+}
+
+// GetMappingUpdateSummaryUpdateTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateSummaryUpdateTypeEnum(val string) (UpdateSummaryUpdateTypeEnum, bool) {
+	mappingUpdateSummaryUpdateTypeEnumIgnoreCase := make(map[string]UpdateSummaryUpdateTypeEnum)
+	for k, v := range mappingUpdateSummaryUpdateTypeEnum {
+		mappingUpdateSummaryUpdateTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateSummaryUpdateTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // UpdateSummaryLifecycleStateEnum Enum with underlying type: string
@@ -223,4 +256,15 @@ func GetUpdateSummaryLifecycleStateEnumStringValues() []string {
 		"IN_PROGRESS",
 		"FAILED",
 	}
+}
+
+// GetMappingUpdateSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateSummaryLifecycleStateEnum(val string) (UpdateSummaryLifecycleStateEnum, bool) {
+	mappingUpdateSummaryLifecycleStateEnumIgnoreCase := make(map[string]UpdateSummaryLifecycleStateEnum)
+	for k, v := range mappingUpdateSummaryLifecycleStateEnum {
+		mappingUpdateSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

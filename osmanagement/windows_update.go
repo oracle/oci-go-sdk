@@ -58,15 +58,15 @@ func (m WindowsUpdate) String() string {
 // Not recommended for calling this function directly
 func (m WindowsUpdate) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUpdateTypesEnum[string(m.UpdateType)]; !ok && m.UpdateType != "" {
+	if _, ok := GetMappingUpdateTypesEnum(string(m.UpdateType)); !ok && m.UpdateType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateType: %s. Supported values are: %s.", m.UpdateType, strings.Join(GetUpdateTypesEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingIsEligibleForInstallationEnum[string(m.IsEligibleForInstallation)]; !ok && m.IsEligibleForInstallation != "" {
+	if _, ok := GetMappingIsEligibleForInstallationEnum(string(m.IsEligibleForInstallation)); !ok && m.IsEligibleForInstallation != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IsEligibleForInstallation: %s. Supported values are: %s.", m.IsEligibleForInstallation, strings.Join(GetIsEligibleForInstallationEnumStringValues(), ",")))
 	}
 	for _, val := range m.InstallationRequirements {
-		if _, ok := mappingWindowsUpdateInstallationRequirementsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingWindowsUpdateInstallationRequirementsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InstallationRequirements: %s. Supported values are: %s.", val, strings.Join(GetWindowsUpdateInstallationRequirementsEnumStringValues(), ",")))
 		}
 	}
@@ -109,4 +109,15 @@ func GetWindowsUpdateInstallationRequirementsEnumStringValues() []string {
 		"SOFTWARE_MEDIA_REQUIRED",
 		"USER_INTERACTION_REQUIRED",
 	}
+}
+
+// GetMappingWindowsUpdateInstallationRequirementsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWindowsUpdateInstallationRequirementsEnum(val string) (WindowsUpdateInstallationRequirementsEnum, bool) {
+	mappingWindowsUpdateInstallationRequirementsEnumIgnoreCase := make(map[string]WindowsUpdateInstallationRequirementsEnum)
+	for k, v := range mappingWindowsUpdateInstallationRequirementsEnum {
+		mappingWindowsUpdateInstallationRequirementsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWindowsUpdateInstallationRequirementsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

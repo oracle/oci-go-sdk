@@ -60,7 +60,7 @@ func (m CreateDhcpDetails) String() string {
 func (m CreateDhcpDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateDhcpDetailsDomainNameTypeEnum[string(m.DomainNameType)]; !ok && m.DomainNameType != "" {
+	if _, ok := GetMappingCreateDhcpDetailsDomainNameTypeEnum(string(m.DomainNameType)); !ok && m.DomainNameType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DomainNameType: %s. Supported values are: %s.", m.DomainNameType, strings.Join(GetCreateDhcpDetailsDomainNameTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -146,4 +146,15 @@ func GetCreateDhcpDetailsDomainNameTypeEnumStringValues() []string {
 		"VCN_DOMAIN",
 		"CUSTOM_DOMAIN",
 	}
+}
+
+// GetMappingCreateDhcpDetailsDomainNameTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateDhcpDetailsDomainNameTypeEnum(val string) (CreateDhcpDetailsDomainNameTypeEnum, bool) {
+	mappingCreateDhcpDetailsDomainNameTypeEnumIgnoreCase := make(map[string]CreateDhcpDetailsDomainNameTypeEnum)
+	for k, v := range mappingCreateDhcpDetailsDomainNameTypeEnum {
+		mappingCreateDhcpDetailsDomainNameTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateDhcpDetailsDomainNameTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

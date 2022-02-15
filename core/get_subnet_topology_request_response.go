@@ -89,7 +89,7 @@ func (request GetSubnetTopologyRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetSubnetTopologyRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetSubnetTopologyAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingGetSubnetTopologyAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetGetSubnetTopologyAccessLevelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -153,4 +153,15 @@ func GetGetSubnetTopologyAccessLevelEnumStringValues() []string {
 		"ANY",
 		"ACCESSIBLE",
 	}
+}
+
+// GetMappingGetSubnetTopologyAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetSubnetTopologyAccessLevelEnum(val string) (GetSubnetTopologyAccessLevelEnum, bool) {
+	mappingGetSubnetTopologyAccessLevelEnumIgnoreCase := make(map[string]GetSubnetTopologyAccessLevelEnum)
+	for k, v := range mappingGetSubnetTopologyAccessLevelEnum {
+		mappingGetSubnetTopologyAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetSubnetTopologyAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

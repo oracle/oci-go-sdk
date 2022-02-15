@@ -278,3 +278,14 @@ func GetDataAssetModelTypeEnumStringValues() []string {
 		"AMAZON_S3_DATA_ASSET",
 	}
 }
+
+// GetMappingDataAssetModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataAssetModelTypeEnum(val string) (DataAssetModelTypeEnum, bool) {
+	mappingDataAssetModelTypeEnumIgnoreCase := make(map[string]DataAssetModelTypeEnum)
+	for k, v := range mappingDataAssetModelTypeEnum {
+		mappingDataAssetModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataAssetModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

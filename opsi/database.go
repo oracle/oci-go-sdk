@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // DatabaseEnum Enum with underlying type: string
 type DatabaseEnum string
 
@@ -46,4 +50,15 @@ func GetDatabaseEnumStringValues() []string {
 		"IO",
 		"MEMORY",
 	}
+}
+
+// GetMappingDatabaseEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseEnum(val string) (DatabaseEnum, bool) {
+	mappingDatabaseEnumIgnoreCase := make(map[string]DatabaseEnum)
+	for k, v := range mappingDatabaseEnum {
+		mappingDatabaseEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -36,7 +36,7 @@ func (m ClusterMigrateToNativeVcnStatus) String() string {
 // Not recommended for calling this function directly
 func (m ClusterMigrateToNativeVcnStatus) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingClusterMigrateToNativeVcnStatusStateEnum[string(m.State)]; !ok && m.State != "" {
+	if _, ok := GetMappingClusterMigrateToNativeVcnStatusStateEnum(string(m.State)); !ok && m.State != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for State: %s. Supported values are: %s.", m.State, strings.Join(GetClusterMigrateToNativeVcnStatusStateEnumStringValues(), ",")))
 	}
 
@@ -84,4 +84,15 @@ func GetClusterMigrateToNativeVcnStatusStateEnumStringValues() []string {
 		"PENDING_DECOMMISSION",
 		"COMPLETED",
 	}
+}
+
+// GetMappingClusterMigrateToNativeVcnStatusStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingClusterMigrateToNativeVcnStatusStateEnum(val string) (ClusterMigrateToNativeVcnStatusStateEnum, bool) {
+	mappingClusterMigrateToNativeVcnStatusStateEnumIgnoreCase := make(map[string]ClusterMigrateToNativeVcnStatusStateEnum)
+	for k, v := range mappingClusterMigrateToNativeVcnStatusStateEnum {
+		mappingClusterMigrateToNativeVcnStatusStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingClusterMigrateToNativeVcnStatusStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

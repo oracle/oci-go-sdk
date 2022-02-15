@@ -87,15 +87,15 @@ func (m PolicyConfig) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	for _, val := range m.TlsProtocols {
-		if _, ok := mappingPolicyConfigTlsProtocolsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingPolicyConfigTlsProtocolsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TlsProtocols: %s. Supported values are: %s.", val, strings.Join(GetPolicyConfigTlsProtocolsEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingPolicyConfigClientAddressHeaderEnum[string(m.ClientAddressHeader)]; !ok && m.ClientAddressHeader != "" {
+	if _, ok := GetMappingPolicyConfigClientAddressHeaderEnum(string(m.ClientAddressHeader)); !ok && m.ClientAddressHeader != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ClientAddressHeader: %s. Supported values are: %s.", m.ClientAddressHeader, strings.Join(GetPolicyConfigClientAddressHeaderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPolicyConfigCipherGroupEnum[string(m.CipherGroup)]; !ok && m.CipherGroup != "" {
+	if _, ok := GetMappingPolicyConfigCipherGroupEnum(string(m.CipherGroup)); !ok && m.CipherGroup != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CipherGroup: %s. Supported values are: %s.", m.CipherGroup, strings.Join(GetPolicyConfigCipherGroupEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -210,6 +210,17 @@ func GetPolicyConfigTlsProtocolsEnumStringValues() []string {
 	}
 }
 
+// GetMappingPolicyConfigTlsProtocolsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPolicyConfigTlsProtocolsEnum(val string) (PolicyConfigTlsProtocolsEnum, bool) {
+	mappingPolicyConfigTlsProtocolsEnumIgnoreCase := make(map[string]PolicyConfigTlsProtocolsEnum)
+	for k, v := range mappingPolicyConfigTlsProtocolsEnum {
+		mappingPolicyConfigTlsProtocolsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPolicyConfigTlsProtocolsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // PolicyConfigClientAddressHeaderEnum Enum with underlying type: string
 type PolicyConfigClientAddressHeaderEnum string
 
@@ -250,6 +261,17 @@ func GetPolicyConfigClientAddressHeaderEnumStringValues() []string {
 	}
 }
 
+// GetMappingPolicyConfigClientAddressHeaderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPolicyConfigClientAddressHeaderEnum(val string) (PolicyConfigClientAddressHeaderEnum, bool) {
+	mappingPolicyConfigClientAddressHeaderEnumIgnoreCase := make(map[string]PolicyConfigClientAddressHeaderEnum)
+	for k, v := range mappingPolicyConfigClientAddressHeaderEnum {
+		mappingPolicyConfigClientAddressHeaderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPolicyConfigClientAddressHeaderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // PolicyConfigCipherGroupEnum Enum with underlying type: string
 type PolicyConfigCipherGroupEnum string
 
@@ -276,4 +298,15 @@ func GetPolicyConfigCipherGroupEnumStringValues() []string {
 	return []string{
 		"DEFAULT",
 	}
+}
+
+// GetMappingPolicyConfigCipherGroupEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPolicyConfigCipherGroupEnum(val string) (PolicyConfigCipherGroupEnum, bool) {
+	mappingPolicyConfigCipherGroupEnumIgnoreCase := make(map[string]PolicyConfigCipherGroupEnum)
+	for k, v := range mappingPolicyConfigCipherGroupEnum {
+		mappingPolicyConfigCipherGroupEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPolicyConfigCipherGroupEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

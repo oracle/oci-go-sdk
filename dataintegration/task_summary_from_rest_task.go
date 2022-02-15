@@ -169,13 +169,13 @@ func (m TaskSummaryFromRestTask) String() string {
 // Not recommended for calling this function directly
 func (m TaskSummaryFromRestTask) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTaskSummaryFromRestTaskMethodTypeEnum[string(m.MethodType)]; !ok && m.MethodType != "" {
+	if _, ok := GetMappingTaskSummaryFromRestTaskMethodTypeEnum(string(m.MethodType)); !ok && m.MethodType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MethodType: %s. Supported values are: %s.", m.MethodType, strings.Join(GetTaskSummaryFromRestTaskMethodTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTaskSummaryFromRestTaskApiCallModeEnum[string(m.ApiCallMode)]; !ok && m.ApiCallMode != "" {
+	if _, ok := GetMappingTaskSummaryFromRestTaskApiCallModeEnum(string(m.ApiCallMode)); !ok && m.ApiCallMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ApiCallMode: %s. Supported values are: %s.", m.ApiCallMode, strings.Join(GetTaskSummaryFromRestTaskApiCallModeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTaskSummaryFromRestTaskCancelMethodTypeEnum[string(m.CancelMethodType)]; !ok && m.CancelMethodType != "" {
+	if _, ok := GetMappingTaskSummaryFromRestTaskCancelMethodTypeEnum(string(m.CancelMethodType)); !ok && m.CancelMethodType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CancelMethodType: %s. Supported values are: %s.", m.CancelMethodType, strings.Join(GetTaskSummaryFromRestTaskCancelMethodTypeEnumStringValues(), ",")))
 	}
 
@@ -239,6 +239,17 @@ func GetTaskSummaryFromRestTaskMethodTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingTaskSummaryFromRestTaskMethodTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskSummaryFromRestTaskMethodTypeEnum(val string) (TaskSummaryFromRestTaskMethodTypeEnum, bool) {
+	mappingTaskSummaryFromRestTaskMethodTypeEnumIgnoreCase := make(map[string]TaskSummaryFromRestTaskMethodTypeEnum)
+	for k, v := range mappingTaskSummaryFromRestTaskMethodTypeEnum {
+		mappingTaskSummaryFromRestTaskMethodTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskSummaryFromRestTaskMethodTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TaskSummaryFromRestTaskApiCallModeEnum Enum with underlying type: string
 type TaskSummaryFromRestTaskApiCallModeEnum string
 
@@ -271,6 +282,17 @@ func GetTaskSummaryFromRestTaskApiCallModeEnumStringValues() []string {
 		"ASYNC_OCI_WORKREQUEST",
 		"ASYNC_GENERIC",
 	}
+}
+
+// GetMappingTaskSummaryFromRestTaskApiCallModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskSummaryFromRestTaskApiCallModeEnum(val string) (TaskSummaryFromRestTaskApiCallModeEnum, bool) {
+	mappingTaskSummaryFromRestTaskApiCallModeEnumIgnoreCase := make(map[string]TaskSummaryFromRestTaskApiCallModeEnum)
+	for k, v := range mappingTaskSummaryFromRestTaskApiCallModeEnum {
+		mappingTaskSummaryFromRestTaskApiCallModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskSummaryFromRestTaskApiCallModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // TaskSummaryFromRestTaskCancelMethodTypeEnum Enum with underlying type: string
@@ -311,4 +333,15 @@ func GetTaskSummaryFromRestTaskCancelMethodTypeEnumStringValues() []string {
 		"DELETE",
 		"PUT",
 	}
+}
+
+// GetMappingTaskSummaryFromRestTaskCancelMethodTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskSummaryFromRestTaskCancelMethodTypeEnum(val string) (TaskSummaryFromRestTaskCancelMethodTypeEnum, bool) {
+	mappingTaskSummaryFromRestTaskCancelMethodTypeEnumIgnoreCase := make(map[string]TaskSummaryFromRestTaskCancelMethodTypeEnum)
+	for k, v := range mappingTaskSummaryFromRestTaskCancelMethodTypeEnum {
+		mappingTaskSummaryFromRestTaskCancelMethodTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskSummaryFromRestTaskCancelMethodTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

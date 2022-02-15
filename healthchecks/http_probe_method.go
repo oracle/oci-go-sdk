@@ -11,6 +11,10 @@
 
 package healthchecks
 
+import (
+	"strings"
+)
+
 // HttpProbeMethodEnum Enum with underlying type: string
 type HttpProbeMethodEnum string
 
@@ -40,4 +44,15 @@ func GetHttpProbeMethodEnumStringValues() []string {
 		"GET",
 		"HEAD",
 	}
+}
+
+// GetMappingHttpProbeMethodEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHttpProbeMethodEnum(val string) (HttpProbeMethodEnum, bool) {
+	mappingHttpProbeMethodEnumIgnoreCase := make(map[string]HttpProbeMethodEnum)
+	for k, v := range mappingHttpProbeMethodEnum {
+		mappingHttpProbeMethodEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHttpProbeMethodEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

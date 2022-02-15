@@ -11,6 +11,10 @@
 
 package databasemanagement
 
+import (
+	"strings"
+)
+
 // SqlTuningTaskCredentialTypesEnum Enum with underlying type: string
 type SqlTuningTaskCredentialTypesEnum string
 
@@ -40,4 +44,15 @@ func GetSqlTuningTaskCredentialTypesEnumStringValues() []string {
 		"SECRET",
 		"PASSWORD",
 	}
+}
+
+// GetMappingSqlTuningTaskCredentialTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSqlTuningTaskCredentialTypesEnum(val string) (SqlTuningTaskCredentialTypesEnum, bool) {
+	mappingSqlTuningTaskCredentialTypesEnumIgnoreCase := make(map[string]SqlTuningTaskCredentialTypesEnum)
+	for k, v := range mappingSqlTuningTaskCredentialTypesEnum {
+		mappingSqlTuningTaskCredentialTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSqlTuningTaskCredentialTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

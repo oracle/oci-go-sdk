@@ -48,7 +48,7 @@ func (m Agreement) String() string {
 func (m Agreement) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAgreementAuthorEnum[string(m.Author)]; !ok && m.Author != "" {
+	if _, ok := GetMappingAgreementAuthorEnum(string(m.Author)); !ok && m.Author != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Author: %s. Supported values are: %s.", m.Author, strings.Join(GetAgreementAuthorEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -86,4 +86,15 @@ func GetAgreementAuthorEnumStringValues() []string {
 		"ORACLE",
 		"PARTNER",
 	}
+}
+
+// GetMappingAgreementAuthorEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAgreementAuthorEnum(val string) (AgreementAuthorEnum, bool) {
+	mappingAgreementAuthorEnumIgnoreCase := make(map[string]AgreementAuthorEnum)
+	for k, v := range mappingAgreementAuthorEnum {
+		mappingAgreementAuthorEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAgreementAuthorEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

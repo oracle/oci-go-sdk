@@ -91,10 +91,10 @@ func (request ListByoipRangesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListByoipRangesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListByoipRangesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListByoipRangesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListByoipRangesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListByoipRangesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListByoipRangesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListByoipRangesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -162,6 +162,17 @@ func GetListByoipRangesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListByoipRangesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListByoipRangesSortByEnum(val string) (ListByoipRangesSortByEnum, bool) {
+	mappingListByoipRangesSortByEnumIgnoreCase := make(map[string]ListByoipRangesSortByEnum)
+	for k, v := range mappingListByoipRangesSortByEnum {
+		mappingListByoipRangesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListByoipRangesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListByoipRangesSortOrderEnum Enum with underlying type: string
 type ListByoipRangesSortOrderEnum string
 
@@ -191,4 +202,15 @@ func GetListByoipRangesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListByoipRangesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListByoipRangesSortOrderEnum(val string) (ListByoipRangesSortOrderEnum, bool) {
+	mappingListByoipRangesSortOrderEnumIgnoreCase := make(map[string]ListByoipRangesSortOrderEnum)
+	for k, v := range mappingListByoipRangesSortOrderEnum {
+		mappingListByoipRangesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListByoipRangesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

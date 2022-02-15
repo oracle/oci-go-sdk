@@ -43,7 +43,7 @@ func (m PostMetricDataDetails) String() string {
 func (m PostMetricDataDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingPostMetricDataDetailsBatchAtomicityEnum[string(m.BatchAtomicity)]; !ok && m.BatchAtomicity != "" {
+	if _, ok := GetMappingPostMetricDataDetailsBatchAtomicityEnum(string(m.BatchAtomicity)); !ok && m.BatchAtomicity != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BatchAtomicity: %s. Supported values are: %s.", m.BatchAtomicity, strings.Join(GetPostMetricDataDetailsBatchAtomicityEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -81,4 +81,15 @@ func GetPostMetricDataDetailsBatchAtomicityEnumStringValues() []string {
 		"ATOMIC",
 		"NON_ATOMIC",
 	}
+}
+
+// GetMappingPostMetricDataDetailsBatchAtomicityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPostMetricDataDetailsBatchAtomicityEnum(val string) (PostMetricDataDetailsBatchAtomicityEnum, bool) {
+	mappingPostMetricDataDetailsBatchAtomicityEnumIgnoreCase := make(map[string]PostMetricDataDetailsBatchAtomicityEnum)
+	for k, v := range mappingPostMetricDataDetailsBatchAtomicityEnum {
+		mappingPostMetricDataDetailsBatchAtomicityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPostMetricDataDetailsBatchAtomicityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

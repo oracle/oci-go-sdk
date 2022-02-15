@@ -62,7 +62,7 @@ func (m CreateBdsInstanceDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateBdsInstanceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBdsInstanceClusterVersionEnum[string(m.ClusterVersion)]; !ok && m.ClusterVersion != "" {
+	if _, ok := GetMappingBdsInstanceClusterVersionEnum(string(m.ClusterVersion)); !ok && m.ClusterVersion != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ClusterVersion: %s. Supported values are: %s.", m.ClusterVersion, strings.Join(GetBdsInstanceClusterVersionEnumStringValues(), ",")))
 	}
 

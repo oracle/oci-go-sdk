@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // RecommendationTypeEnum Enum with underlying type: string
 type RecommendationTypeEnum string
 
@@ -38,4 +42,15 @@ func GetRecommendationTypeEnumStringValues() []string {
 		"DETECTOR_PROBLEMS",
 		"RESOLVED_PROBLEMS",
 	}
+}
+
+// GetMappingRecommendationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRecommendationTypeEnum(val string) (RecommendationTypeEnum, bool) {
+	mappingRecommendationTypeEnumIgnoreCase := make(map[string]RecommendationTypeEnum)
+	for k, v := range mappingRecommendationTypeEnum {
+		mappingRecommendationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRecommendationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -72,10 +72,10 @@ func (request ListRecipientInvitationsRequest) RetryPolicy() *common.RetryPolicy
 // Not recommended for calling this function directly
 func (request ListRecipientInvitationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListRecipientInvitationsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListRecipientInvitationsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListRecipientInvitationsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListRecipientInvitationsStatusEnum[string(request.Status)]; !ok && request.Status != "" {
+	if _, ok := GetMappingListRecipientInvitationsStatusEnum(string(request.Status)); !ok && request.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", request.Status, strings.Join(GetListRecipientInvitationsStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -155,6 +155,17 @@ func GetListRecipientInvitationsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListRecipientInvitationsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRecipientInvitationsLifecycleStateEnum(val string) (ListRecipientInvitationsLifecycleStateEnum, bool) {
+	mappingListRecipientInvitationsLifecycleStateEnumIgnoreCase := make(map[string]ListRecipientInvitationsLifecycleStateEnum)
+	for k, v := range mappingListRecipientInvitationsLifecycleStateEnum {
+		mappingListRecipientInvitationsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRecipientInvitationsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListRecipientInvitationsStatusEnum Enum with underlying type: string
 type ListRecipientInvitationsStatusEnum string
 
@@ -196,4 +207,15 @@ func GetListRecipientInvitationsStatusEnumStringValues() []string {
 		"EXPIRED",
 		"FAILED",
 	}
+}
+
+// GetMappingListRecipientInvitationsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRecipientInvitationsStatusEnum(val string) (ListRecipientInvitationsStatusEnum, bool) {
+	mappingListRecipientInvitationsStatusEnumIgnoreCase := make(map[string]ListRecipientInvitationsStatusEnum)
+	for k, v := range mappingListRecipientInvitationsStatusEnum {
+		mappingListRecipientInvitationsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRecipientInvitationsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // DataModelFormatEnum Enum with underlying type: string
 type DataModelFormatEnum string
 
@@ -35,4 +39,15 @@ func GetDataModelFormatEnumStringValues() []string {
 	return []string{
 		"XML",
 	}
+}
+
+// GetMappingDataModelFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataModelFormatEnum(val string) (DataModelFormatEnum, bool) {
+	mappingDataModelFormatEnumIgnoreCase := make(map[string]DataModelFormatEnum)
+	for k, v := range mappingDataModelFormatEnum {
+		mappingDataModelFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataModelFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

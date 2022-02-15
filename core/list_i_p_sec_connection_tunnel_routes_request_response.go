@@ -80,7 +80,7 @@ func (request ListIPSecConnectionTunnelRoutesRequest) RetryPolicy() *common.Retr
 // Not recommended for calling this function directly
 func (request ListIPSecConnectionTunnelRoutesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTunnelRouteSummaryAdvertiserEnum[string(request.Advertiser)]; !ok && request.Advertiser != "" {
+	if _, ok := GetMappingTunnelRouteSummaryAdvertiserEnum(string(request.Advertiser)); !ok && request.Advertiser != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Advertiser: %s. Supported values are: %s.", request.Advertiser, strings.Join(GetTunnelRouteSummaryAdvertiserEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -75,10 +75,10 @@ func (request ListAutoAssociationsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAutoAssociationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAutoAssociationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAutoAssociationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAutoAssociationsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAutoAssociationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAutoAssociationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAutoAssociationsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -147,6 +147,17 @@ func GetListAutoAssociationsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAutoAssociationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAutoAssociationsSortByEnum(val string) (ListAutoAssociationsSortByEnum, bool) {
+	mappingListAutoAssociationsSortByEnumIgnoreCase := make(map[string]ListAutoAssociationsSortByEnum)
+	for k, v := range mappingListAutoAssociationsSortByEnum {
+		mappingListAutoAssociationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAutoAssociationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAutoAssociationsSortOrderEnum Enum with underlying type: string
 type ListAutoAssociationsSortOrderEnum string
 
@@ -176,4 +187,15 @@ func GetListAutoAssociationsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAutoAssociationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAutoAssociationsSortOrderEnum(val string) (ListAutoAssociationsSortOrderEnum, bool) {
+	mappingListAutoAssociationsSortOrderEnumIgnoreCase := make(map[string]ListAutoAssociationsSortOrderEnum)
+	for k, v := range mappingListAutoAssociationsSortOrderEnum {
+		mappingListAutoAssociationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAutoAssociationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

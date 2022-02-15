@@ -86,13 +86,13 @@ func (request ListNetworkSourcesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListNetworkSourcesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListNetworkSourcesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListNetworkSourcesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListNetworkSourcesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListNetworkSourcesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListNetworkSourcesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListNetworkSourcesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingNetworkSourcesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingNetworkSourcesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetNetworkSourcesLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -160,6 +160,17 @@ func GetListNetworkSourcesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListNetworkSourcesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNetworkSourcesSortByEnum(val string) (ListNetworkSourcesSortByEnum, bool) {
+	mappingListNetworkSourcesSortByEnumIgnoreCase := make(map[string]ListNetworkSourcesSortByEnum)
+	for k, v := range mappingListNetworkSourcesSortByEnum {
+		mappingListNetworkSourcesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNetworkSourcesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListNetworkSourcesSortOrderEnum Enum with underlying type: string
 type ListNetworkSourcesSortOrderEnum string
 
@@ -189,4 +200,15 @@ func GetListNetworkSourcesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListNetworkSourcesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNetworkSourcesSortOrderEnum(val string) (ListNetworkSourcesSortOrderEnum, bool) {
+	mappingListNetworkSourcesSortOrderEnumIgnoreCase := make(map[string]ListNetworkSourcesSortOrderEnum)
+	for k, v := range mappingListNetworkSourcesSortOrderEnum {
+		mappingListNetworkSourcesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNetworkSourcesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

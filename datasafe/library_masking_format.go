@@ -73,10 +73,10 @@ func (m LibraryMaskingFormat) String() string {
 // Not recommended for calling this function directly
 func (m LibraryMaskingFormat) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingMaskingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingMaskingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetMaskingLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLibraryMaskingFormatSourceEnum[string(m.Source)]; !ok && m.Source != "" {
+	if _, ok := GetMappingLibraryMaskingFormatSourceEnum(string(m.Source)); !ok && m.Source != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Source: %s. Supported values are: %s.", m.Source, strings.Join(GetLibraryMaskingFormatSourceEnumStringValues(), ",")))
 	}
 

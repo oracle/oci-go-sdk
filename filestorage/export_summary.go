@@ -50,7 +50,7 @@ func (m ExportSummary) String() string {
 // Not recommended for calling this function directly
 func (m ExportSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingExportSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingExportSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetExportSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -95,4 +95,15 @@ func GetExportSummaryLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingExportSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExportSummaryLifecycleStateEnum(val string) (ExportSummaryLifecycleStateEnum, bool) {
+	mappingExportSummaryLifecycleStateEnumIgnoreCase := make(map[string]ExportSummaryLifecycleStateEnum)
+	for k, v := range mappingExportSummaryLifecycleStateEnum {
+		mappingExportSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExportSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -128,7 +128,7 @@ func (m Joiner) String() string {
 // Not recommended for calling this function directly
 func (m Joiner) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingJoinerJoinTypeEnum[string(m.JoinType)]; !ok && m.JoinType != "" {
+	if _, ok := GetMappingJoinerJoinTypeEnum(string(m.JoinType)); !ok && m.JoinType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for JoinType: %s. Supported values are: %s.", m.JoinType, strings.Join(GetJoinerJoinTypeEnumStringValues(), ",")))
 	}
 
@@ -187,4 +187,15 @@ func GetJoinerJoinTypeEnumStringValues() []string {
 		"LEFT",
 		"RIGHT",
 	}
+}
+
+// GetMappingJoinerJoinTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJoinerJoinTypeEnum(val string) (JoinerJoinTypeEnum, bool) {
+	mappingJoinerJoinTypeEnumIgnoreCase := make(map[string]JoinerJoinTypeEnum)
+	for k, v := range mappingJoinerJoinTypeEnum {
+		mappingJoinerJoinTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJoinerJoinTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

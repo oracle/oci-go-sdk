@@ -113,11 +113,11 @@ func (m SortField) String() string {
 // Not recommended for calling this function directly
 func (m SortField) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSortFieldDirectionEnum[string(m.Direction)]; !ok && m.Direction != "" {
+	if _, ok := GetMappingSortFieldDirectionEnum(string(m.Direction)); !ok && m.Direction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Direction: %s. Supported values are: %s.", m.Direction, strings.Join(GetSortFieldDirectionEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingValueTypeEnum[string(m.ValueType)]; !ok && m.ValueType != "" {
+	if _, ok := GetMappingValueTypeEnum(string(m.ValueType)); !ok && m.ValueType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ValueType: %s. Supported values are: %s.", m.ValueType, strings.Join(GetValueTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -169,4 +169,15 @@ func GetSortFieldDirectionEnumStringValues() []string {
 		"ASCENDING",
 		"DESCENDING",
 	}
+}
+
+// GetMappingSortFieldDirectionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSortFieldDirectionEnum(val string) (SortFieldDirectionEnum, bool) {
+	mappingSortFieldDirectionEnumIgnoreCase := make(map[string]SortFieldDirectionEnum)
+	for k, v := range mappingSortFieldDirectionEnum {
+		mappingSortFieldDirectionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSortFieldDirectionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

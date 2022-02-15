@@ -58,7 +58,7 @@ func (m EventConfig) String() string {
 func (m EventConfig) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingEventConfigStatusEnum[string(m.EventConfigStatus)]; !ok && m.EventConfigStatus != "" {
+	if _, ok := GetMappingEventConfigStatusEnum(string(m.EventConfigStatus)); !ok && m.EventConfigStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EventConfigStatus: %s. Supported values are: %s.", m.EventConfigStatus, strings.Join(GetEventConfigStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -99,19 +99,19 @@ func (request ListAuditTrailsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAuditTrailsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAuditTrailsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListAuditTrailsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListAuditTrailsAccessLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAuditTrailsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListAuditTrailsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListAuditTrailsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAuditTrailsStatusEnum[string(request.Status)]; !ok && request.Status != "" {
+	if _, ok := GetMappingListAuditTrailsStatusEnum(string(request.Status)); !ok && request.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", request.Status, strings.Join(GetListAuditTrailsStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAuditTrailsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAuditTrailsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAuditTrailsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAuditTrailsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAuditTrailsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAuditTrailsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -181,6 +181,17 @@ func GetListAuditTrailsAccessLevelEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAuditTrailsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuditTrailsAccessLevelEnum(val string) (ListAuditTrailsAccessLevelEnum, bool) {
+	mappingListAuditTrailsAccessLevelEnumIgnoreCase := make(map[string]ListAuditTrailsAccessLevelEnum)
+	for k, v := range mappingListAuditTrailsAccessLevelEnum {
+		mappingListAuditTrailsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuditTrailsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAuditTrailsLifecycleStateEnum Enum with underlying type: string
 type ListAuditTrailsLifecycleStateEnum string
 
@@ -222,6 +233,17 @@ func GetListAuditTrailsLifecycleStateEnumStringValues() []string {
 		"FAILED",
 		"NEEDS_ATTENTION",
 	}
+}
+
+// GetMappingListAuditTrailsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuditTrailsLifecycleStateEnum(val string) (ListAuditTrailsLifecycleStateEnum, bool) {
+	mappingListAuditTrailsLifecycleStateEnumIgnoreCase := make(map[string]ListAuditTrailsLifecycleStateEnum)
+	for k, v := range mappingListAuditTrailsLifecycleStateEnum {
+		mappingListAuditTrailsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuditTrailsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListAuditTrailsStatusEnum Enum with underlying type: string
@@ -273,6 +295,17 @@ func GetListAuditTrailsStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAuditTrailsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuditTrailsStatusEnum(val string) (ListAuditTrailsStatusEnum, bool) {
+	mappingListAuditTrailsStatusEnumIgnoreCase := make(map[string]ListAuditTrailsStatusEnum)
+	for k, v := range mappingListAuditTrailsStatusEnum {
+		mappingListAuditTrailsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuditTrailsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAuditTrailsSortOrderEnum Enum with underlying type: string
 type ListAuditTrailsSortOrderEnum string
 
@@ -304,6 +337,17 @@ func GetListAuditTrailsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAuditTrailsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuditTrailsSortOrderEnum(val string) (ListAuditTrailsSortOrderEnum, bool) {
+	mappingListAuditTrailsSortOrderEnumIgnoreCase := make(map[string]ListAuditTrailsSortOrderEnum)
+	for k, v := range mappingListAuditTrailsSortOrderEnum {
+		mappingListAuditTrailsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuditTrailsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAuditTrailsSortByEnum Enum with underlying type: string
 type ListAuditTrailsSortByEnum string
 
@@ -333,4 +377,15 @@ func GetListAuditTrailsSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListAuditTrailsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuditTrailsSortByEnum(val string) (ListAuditTrailsSortByEnum, bool) {
+	mappingListAuditTrailsSortByEnumIgnoreCase := make(map[string]ListAuditTrailsSortByEnum)
+	for k, v := range mappingListAuditTrailsSortByEnum {
+		mappingListAuditTrailsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuditTrailsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

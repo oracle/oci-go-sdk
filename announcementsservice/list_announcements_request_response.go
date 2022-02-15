@@ -100,16 +100,16 @@ func (request ListAnnouncementsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAnnouncementsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAnnouncementsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListAnnouncementsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListAnnouncementsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAnnouncementsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAnnouncementsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAnnouncementsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAnnouncementsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAnnouncementsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAnnouncementsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAnnouncementsPlatformTypeEnum[string(request.PlatformType)]; !ok && request.PlatformType != "" {
+	if _, ok := GetMappingListAnnouncementsPlatformTypeEnum(string(request.PlatformType)); !ok && request.PlatformType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", request.PlatformType, strings.Join(GetListAnnouncementsPlatformTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -181,6 +181,17 @@ func GetListAnnouncementsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAnnouncementsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAnnouncementsLifecycleStateEnum(val string) (ListAnnouncementsLifecycleStateEnum, bool) {
+	mappingListAnnouncementsLifecycleStateEnumIgnoreCase := make(map[string]ListAnnouncementsLifecycleStateEnum)
+	for k, v := range mappingListAnnouncementsLifecycleStateEnum {
+		mappingListAnnouncementsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAnnouncementsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAnnouncementsSortByEnum Enum with underlying type: string
 type ListAnnouncementsSortByEnum string
 
@@ -224,6 +235,17 @@ func GetListAnnouncementsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAnnouncementsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAnnouncementsSortByEnum(val string) (ListAnnouncementsSortByEnum, bool) {
+	mappingListAnnouncementsSortByEnumIgnoreCase := make(map[string]ListAnnouncementsSortByEnum)
+	for k, v := range mappingListAnnouncementsSortByEnum {
+		mappingListAnnouncementsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAnnouncementsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAnnouncementsSortOrderEnum Enum with underlying type: string
 type ListAnnouncementsSortOrderEnum string
 
@@ -255,6 +277,17 @@ func GetListAnnouncementsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAnnouncementsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAnnouncementsSortOrderEnum(val string) (ListAnnouncementsSortOrderEnum, bool) {
+	mappingListAnnouncementsSortOrderEnumIgnoreCase := make(map[string]ListAnnouncementsSortOrderEnum)
+	for k, v := range mappingListAnnouncementsSortOrderEnum {
+		mappingListAnnouncementsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAnnouncementsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAnnouncementsPlatformTypeEnum Enum with underlying type: string
 type ListAnnouncementsPlatformTypeEnum string
 
@@ -284,4 +317,15 @@ func GetListAnnouncementsPlatformTypeEnumStringValues() []string {
 		"IAAS",
 		"SAAS",
 	}
+}
+
+// GetMappingListAnnouncementsPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAnnouncementsPlatformTypeEnum(val string) (ListAnnouncementsPlatformTypeEnum, bool) {
+	mappingListAnnouncementsPlatformTypeEnumIgnoreCase := make(map[string]ListAnnouncementsPlatformTypeEnum)
+	for k, v := range mappingListAnnouncementsPlatformTypeEnum {
+		mappingListAnnouncementsPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAnnouncementsPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

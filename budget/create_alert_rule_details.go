@@ -62,10 +62,10 @@ func (m CreateAlertRuleDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateAlertRuleDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAlertTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingAlertTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetAlertTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingThresholdTypeEnum[string(m.ThresholdType)]; !ok && m.ThresholdType != "" {
+	if _, ok := GetMappingThresholdTypeEnum(string(m.ThresholdType)); !ok && m.ThresholdType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ThresholdType: %s. Supported values are: %s.", m.ThresholdType, strings.Join(GetThresholdTypeEnumStringValues(), ",")))
 	}
 

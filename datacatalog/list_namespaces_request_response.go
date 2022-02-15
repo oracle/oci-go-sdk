@@ -98,17 +98,17 @@ func (request ListNamespacesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListNamespacesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListNamespacesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListNamespacesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListNamespacesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListNamespacesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListNamespacesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListNamespacesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListNamespacesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListNamespacesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListNamespacesSortOrderEnumStringValues(), ",")))
 	}
 	for _, val := range request.Fields {
-		if _, ok := mappingListNamespacesFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListNamespacesFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetListNamespacesFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -194,6 +194,17 @@ func GetListNamespacesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListNamespacesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNamespacesLifecycleStateEnum(val string) (ListNamespacesLifecycleStateEnum, bool) {
+	mappingListNamespacesLifecycleStateEnumIgnoreCase := make(map[string]ListNamespacesLifecycleStateEnum)
+	for k, v := range mappingListNamespacesLifecycleStateEnum {
+		mappingListNamespacesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNamespacesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListNamespacesSortByEnum Enum with underlying type: string
 type ListNamespacesSortByEnum string
 
@@ -225,6 +236,17 @@ func GetListNamespacesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListNamespacesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNamespacesSortByEnum(val string) (ListNamespacesSortByEnum, bool) {
+	mappingListNamespacesSortByEnumIgnoreCase := make(map[string]ListNamespacesSortByEnum)
+	for k, v := range mappingListNamespacesSortByEnum {
+		mappingListNamespacesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNamespacesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListNamespacesSortOrderEnum Enum with underlying type: string
 type ListNamespacesSortOrderEnum string
 
@@ -254,6 +276,17 @@ func GetListNamespacesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListNamespacesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNamespacesSortOrderEnum(val string) (ListNamespacesSortOrderEnum, bool) {
+	mappingListNamespacesSortOrderEnumIgnoreCase := make(map[string]ListNamespacesSortOrderEnum)
+	for k, v := range mappingListNamespacesSortOrderEnum {
+		mappingListNamespacesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNamespacesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListNamespacesFieldsEnum Enum with underlying type: string
@@ -294,4 +327,15 @@ func GetListNamespacesFieldsEnumStringValues() []string {
 		"lifecycleState",
 		"timeCreated",
 	}
+}
+
+// GetMappingListNamespacesFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNamespacesFieldsEnum(val string) (ListNamespacesFieldsEnum, bool) {
+	mappingListNamespacesFieldsEnumIgnoreCase := make(map[string]ListNamespacesFieldsEnum)
+	for k, v := range mappingListNamespacesFieldsEnum {
+		mappingListNamespacesFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNamespacesFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

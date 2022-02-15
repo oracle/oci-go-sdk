@@ -63,7 +63,7 @@ func (m CreateJobDefinitionDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateJobDefinitionDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingJobTypeEnum[string(m.JobType)]; !ok && m.JobType != "" {
+	if _, ok := GetMappingJobTypeEnum(string(m.JobType)); !ok && m.JobType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for JobType: %s. Supported values are: %s.", m.JobType, strings.Join(GetJobTypeEnumStringValues(), ",")))
 	}
 

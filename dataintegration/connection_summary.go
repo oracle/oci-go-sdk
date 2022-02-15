@@ -278,3 +278,14 @@ func GetConnectionSummaryModelTypeEnumStringValues() []string {
 		"AMAZON_S3_CONNECTION",
 	}
 }
+
+// GetMappingConnectionSummaryModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConnectionSummaryModelTypeEnum(val string) (ConnectionSummaryModelTypeEnum, bool) {
+	mappingConnectionSummaryModelTypeEnumIgnoreCase := make(map[string]ConnectionSummaryModelTypeEnum)
+	for k, v := range mappingConnectionSummaryModelTypeEnum {
+		mappingConnectionSummaryModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConnectionSummaryModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

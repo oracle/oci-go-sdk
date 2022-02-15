@@ -113,13 +113,13 @@ func (request ListWarningsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListWarningsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListWarningsWarningStateEnum[string(request.WarningState)]; !ok && request.WarningState != "" {
+	if _, ok := GetMappingListWarningsWarningStateEnum(string(request.WarningState)); !ok && request.WarningState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for WarningState: %s. Supported values are: %s.", request.WarningState, strings.Join(GetListWarningsWarningStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListWarningsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListWarningsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListWarningsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListWarningsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListWarningsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListWarningsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -194,6 +194,17 @@ func GetListWarningsWarningStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListWarningsWarningStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWarningsWarningStateEnum(val string) (ListWarningsWarningStateEnum, bool) {
+	mappingListWarningsWarningStateEnumIgnoreCase := make(map[string]ListWarningsWarningStateEnum)
+	for k, v := range mappingListWarningsWarningStateEnum {
+		mappingListWarningsWarningStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWarningsWarningStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListWarningsSortOrderEnum Enum with underlying type: string
 type ListWarningsSortOrderEnum string
 
@@ -223,6 +234,17 @@ func GetListWarningsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListWarningsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWarningsSortOrderEnum(val string) (ListWarningsSortOrderEnum, bool) {
+	mappingListWarningsSortOrderEnumIgnoreCase := make(map[string]ListWarningsSortOrderEnum)
+	for k, v := range mappingListWarningsSortOrderEnum {
+		mappingListWarningsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWarningsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListWarningsSortByEnum Enum with underlying type: string
@@ -272,4 +294,15 @@ func GetListWarningsSortByEnumStringValues() []string {
 		"EntityName",
 		"InitialWarningDate",
 	}
+}
+
+// GetMappingListWarningsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWarningsSortByEnum(val string) (ListWarningsSortByEnum, bool) {
+	mappingListWarningsSortByEnumIgnoreCase := make(map[string]ListWarningsSortByEnum)
+	for k, v := range mappingListWarningsSortByEnum {
+		mappingListWarningsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWarningsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

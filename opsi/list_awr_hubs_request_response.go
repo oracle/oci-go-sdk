@@ -92,15 +92,15 @@ func (request ListAwrHubsRequest) RetryPolicy() *common.RetryPolicy {
 func (request ListAwrHubsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.LifecycleState {
-		if _, ok := mappingAwrHubLifecycleStateEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingAwrHubLifecycleStateEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", val, strings.Join(GetAwrHubLifecycleStateEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListAwrHubsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAwrHubsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAwrHubsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAwrHubsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAwrHubsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAwrHubsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -168,6 +168,17 @@ func GetListAwrHubsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAwrHubsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAwrHubsSortOrderEnum(val string) (ListAwrHubsSortOrderEnum, bool) {
+	mappingListAwrHubsSortOrderEnumIgnoreCase := make(map[string]ListAwrHubsSortOrderEnum)
+	for k, v := range mappingListAwrHubsSortOrderEnum {
+		mappingListAwrHubsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAwrHubsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAwrHubsSortByEnum Enum with underlying type: string
 type ListAwrHubsSortByEnum string
 
@@ -197,4 +208,15 @@ func GetListAwrHubsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListAwrHubsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAwrHubsSortByEnum(val string) (ListAwrHubsSortByEnum, bool) {
+	mappingListAwrHubsSortByEnumIgnoreCase := make(map[string]ListAwrHubsSortByEnum)
+	for k, v := range mappingListAwrHubsSortByEnum {
+		mappingListAwrHubsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAwrHubsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -81,14 +81,14 @@ func (m DomainSummary) String() string {
 // Not recommended for calling this function directly
 func (m DomainSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDomainTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingDomainTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetDomainTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDomainLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDomainLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDomainLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDomainSummaryLifecycleDetailsEnum[string(m.LifecycleDetails)]; !ok && m.LifecycleDetails != "" {
+	if _, ok := GetMappingDomainSummaryLifecycleDetailsEnum(string(m.LifecycleDetails)); !ok && m.LifecycleDetails != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleDetails: %s. Supported values are: %s.", m.LifecycleDetails, strings.Join(GetDomainSummaryLifecycleDetailsEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -129,4 +129,15 @@ func GetDomainSummaryLifecycleDetailsEnumStringValues() []string {
 		"ACTIVATING",
 		"UPDATING",
 	}
+}
+
+// GetMappingDomainSummaryLifecycleDetailsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDomainSummaryLifecycleDetailsEnum(val string) (DomainSummaryLifecycleDetailsEnum, bool) {
+	mappingDomainSummaryLifecycleDetailsEnumIgnoreCase := make(map[string]DomainSummaryLifecycleDetailsEnum)
+	for k, v := range mappingDomainSummaryLifecycleDetailsEnum {
+		mappingDomainSummaryLifecycleDetailsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDomainSummaryLifecycleDetailsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -34,7 +34,7 @@ func (m GithubFilter) String() string {
 func (m GithubFilter) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range m.Events {
-		if _, ok := mappingGithubFilterEventsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGithubFilterEventsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Events: %s. Supported values are: %s.", val, strings.Join(GetGithubFilterEventsEnumStringValues(), ",")))
 		}
 	}
@@ -97,4 +97,15 @@ func GetGithubFilterEventsEnumStringValues() []string {
 		"PULL_REQUEST_REOPENED",
 		"PULL_REQUEST_MERGED",
 	}
+}
+
+// GetMappingGithubFilterEventsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGithubFilterEventsEnum(val string) (GithubFilterEventsEnum, bool) {
+	mappingGithubFilterEventsEnumIgnoreCase := make(map[string]GithubFilterEventsEnum)
+	for k, v := range mappingGithubFilterEventsEnum {
+		mappingGithubFilterEventsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGithubFilterEventsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

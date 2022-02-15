@@ -69,10 +69,10 @@ func (m LogAnalyticsLabel) String() string {
 func (m LogAnalyticsLabel) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLogAnalyticsLabelPriorityEnum[string(m.Priority)]; !ok && m.Priority != "" {
+	if _, ok := GetMappingLogAnalyticsLabelPriorityEnum(string(m.Priority)); !ok && m.Priority != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Priority: %s. Supported values are: %s.", m.Priority, strings.Join(GetLogAnalyticsLabelPriorityEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLogAnalyticsLabelTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingLogAnalyticsLabelTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetLogAnalyticsLabelTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -118,6 +118,17 @@ func GetLogAnalyticsLabelPriorityEnumStringValues() []string {
 	}
 }
 
+// GetMappingLogAnalyticsLabelPriorityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogAnalyticsLabelPriorityEnum(val string) (LogAnalyticsLabelPriorityEnum, bool) {
+	mappingLogAnalyticsLabelPriorityEnumIgnoreCase := make(map[string]LogAnalyticsLabelPriorityEnum)
+	for k, v := range mappingLogAnalyticsLabelPriorityEnum {
+		mappingLogAnalyticsLabelPriorityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogAnalyticsLabelPriorityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // LogAnalyticsLabelTypeEnum Enum with underlying type: string
 type LogAnalyticsLabelTypeEnum string
 
@@ -147,4 +158,15 @@ func GetLogAnalyticsLabelTypeEnumStringValues() []string {
 		"INFO",
 		"PROBLEM",
 	}
+}
+
+// GetMappingLogAnalyticsLabelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogAnalyticsLabelTypeEnum(val string) (LogAnalyticsLabelTypeEnum, bool) {
+	mappingLogAnalyticsLabelTypeEnumIgnoreCase := make(map[string]LogAnalyticsLabelTypeEnum)
+	for k, v := range mappingLogAnalyticsLabelTypeEnum {
+		mappingLogAnalyticsLabelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogAnalyticsLabelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

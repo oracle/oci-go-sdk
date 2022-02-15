@@ -50,7 +50,7 @@ func (m UpdateEsxiHostDetails) String() string {
 func (m UpdateEsxiHostDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSkuEnum[string(m.NextSku)]; !ok && m.NextSku != "" {
+	if _, ok := GetMappingSkuEnum(string(m.NextSku)); !ok && m.NextSku != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NextSku: %s. Supported values are: %s.", m.NextSku, strings.Join(GetSkuEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

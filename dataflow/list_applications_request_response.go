@@ -86,10 +86,10 @@ func (request ListApplicationsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListApplicationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListApplicationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListApplicationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListApplicationsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListApplicationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListApplicationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListApplicationsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -164,6 +164,17 @@ func GetListApplicationsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListApplicationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListApplicationsSortByEnum(val string) (ListApplicationsSortByEnum, bool) {
+	mappingListApplicationsSortByEnumIgnoreCase := make(map[string]ListApplicationsSortByEnum)
+	for k, v := range mappingListApplicationsSortByEnum {
+		mappingListApplicationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListApplicationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListApplicationsSortOrderEnum Enum with underlying type: string
 type ListApplicationsSortOrderEnum string
 
@@ -193,4 +204,15 @@ func GetListApplicationsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListApplicationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListApplicationsSortOrderEnum(val string) (ListApplicationsSortOrderEnum, bool) {
+	mappingListApplicationsSortOrderEnumIgnoreCase := make(map[string]ListApplicationsSortOrderEnum)
+	for k, v := range mappingListApplicationsSortOrderEnum {
+		mappingListApplicationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListApplicationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

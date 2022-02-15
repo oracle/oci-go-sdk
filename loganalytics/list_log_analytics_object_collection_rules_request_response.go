@@ -82,13 +82,13 @@ func (request ListLogAnalyticsObjectCollectionRulesRequest) RetryPolicy() *commo
 // Not recommended for calling this function directly
 func (request ListLogAnalyticsObjectCollectionRulesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListLogAnalyticsObjectCollectionRulesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLogAnalyticsObjectCollectionRulesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListLogAnalyticsObjectCollectionRulesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListLogAnalyticsObjectCollectionRulesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLogAnalyticsObjectCollectionRulesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListLogAnalyticsObjectCollectionRulesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListLogAnalyticsObjectCollectionRulesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -155,6 +155,17 @@ func GetListLogAnalyticsObjectCollectionRulesLifecycleStateEnumStringValues() []
 	}
 }
 
+// GetMappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnum(val string) (ListLogAnalyticsObjectCollectionRulesLifecycleStateEnum, bool) {
+	mappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnumIgnoreCase := make(map[string]ListLogAnalyticsObjectCollectionRulesLifecycleStateEnum)
+	for k, v := range mappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnum {
+		mappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLogAnalyticsObjectCollectionRulesSortOrderEnum Enum with underlying type: string
 type ListLogAnalyticsObjectCollectionRulesSortOrderEnum string
 
@@ -184,6 +195,17 @@ func GetListLogAnalyticsObjectCollectionRulesSortOrderEnumStringValues() []strin
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListLogAnalyticsObjectCollectionRulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogAnalyticsObjectCollectionRulesSortOrderEnum(val string) (ListLogAnalyticsObjectCollectionRulesSortOrderEnum, bool) {
+	mappingListLogAnalyticsObjectCollectionRulesSortOrderEnumIgnoreCase := make(map[string]ListLogAnalyticsObjectCollectionRulesSortOrderEnum)
+	for k, v := range mappingListLogAnalyticsObjectCollectionRulesSortOrderEnum {
+		mappingListLogAnalyticsObjectCollectionRulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogAnalyticsObjectCollectionRulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListLogAnalyticsObjectCollectionRulesSortByEnum Enum with underlying type: string
@@ -218,4 +240,15 @@ func GetListLogAnalyticsObjectCollectionRulesSortByEnumStringValues() []string {
 		"timeCreated",
 		"name",
 	}
+}
+
+// GetMappingListLogAnalyticsObjectCollectionRulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogAnalyticsObjectCollectionRulesSortByEnum(val string) (ListLogAnalyticsObjectCollectionRulesSortByEnum, bool) {
+	mappingListLogAnalyticsObjectCollectionRulesSortByEnumIgnoreCase := make(map[string]ListLogAnalyticsObjectCollectionRulesSortByEnum)
+	for k, v := range mappingListLogAnalyticsObjectCollectionRulesSortByEnum {
+		mappingListLogAnalyticsObjectCollectionRulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogAnalyticsObjectCollectionRulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

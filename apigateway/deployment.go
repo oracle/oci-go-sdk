@@ -85,7 +85,7 @@ func (m Deployment) String() string {
 func (m Deployment) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDeploymentLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDeploymentLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDeploymentLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -135,4 +135,15 @@ func GetDeploymentLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingDeploymentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeploymentLifecycleStateEnum(val string) (DeploymentLifecycleStateEnum, bool) {
+	mappingDeploymentLifecycleStateEnumIgnoreCase := make(map[string]DeploymentLifecycleStateEnum)
+	for k, v := range mappingDeploymentLifecycleStateEnum {
+		mappingDeploymentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeploymentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

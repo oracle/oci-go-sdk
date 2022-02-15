@@ -48,14 +48,14 @@ func (m Peer) String() string {
 // Not recommended for calling this function directly
 func (m Peer) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPeerRoleRoleEnum[string(m.Role)]; !ok && m.Role != "" {
+	if _, ok := GetMappingPeerRoleRoleEnum(string(m.Role)); !ok && m.Role != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Role: %s. Supported values are: %s.", m.Role, strings.Join(GetPeerRoleRoleEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAvailabilityDomainAdsEnum[string(m.Ad)]; !ok && m.Ad != "" {
+	if _, ok := GetMappingAvailabilityDomainAdsEnum(string(m.Ad)); !ok && m.Ad != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Ad: %s. Supported values are: %s.", m.Ad, strings.Join(GetAvailabilityDomainAdsEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingPeerLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingPeerLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetPeerLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -96,4 +96,15 @@ func GetPeerLifecycleStateEnumStringValues() []string {
 		"INACTIVE",
 		"FAILED",
 	}
+}
+
+// GetMappingPeerLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPeerLifecycleStateEnum(val string) (PeerLifecycleStateEnum, bool) {
+	mappingPeerLifecycleStateEnumIgnoreCase := make(map[string]PeerLifecycleStateEnum)
+	for k, v := range mappingPeerLifecycleStateEnum {
+		mappingPeerLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPeerLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

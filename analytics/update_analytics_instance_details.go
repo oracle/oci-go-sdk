@@ -49,7 +49,7 @@ func (m UpdateAnalyticsInstanceDetails) String() string {
 func (m UpdateAnalyticsInstanceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLicenseTypeEnum[string(m.LicenseType)]; !ok && m.LicenseType != "" {
+	if _, ok := GetMappingLicenseTypeEnum(string(m.LicenseType)); !ok && m.LicenseType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LicenseType: %s. Supported values are: %s.", m.LicenseType, strings.Join(GetLicenseTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

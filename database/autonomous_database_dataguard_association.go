@@ -85,20 +85,20 @@ func (m AutonomousDatabaseDataguardAssociation) String() string {
 // Not recommended for calling this function directly
 func (m AutonomousDatabaseDataguardAssociation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAutonomousDatabaseDataguardAssociationRoleEnum[string(m.Role)]; !ok && m.Role != "" {
+	if _, ok := GetMappingAutonomousDatabaseDataguardAssociationRoleEnum(string(m.Role)); !ok && m.Role != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Role: %s. Supported values are: %s.", m.Role, strings.Join(GetAutonomousDatabaseDataguardAssociationRoleEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseDataguardAssociationLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAutonomousDatabaseDataguardAssociationLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAutonomousDatabaseDataguardAssociationLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseDataguardAssociationPeerRoleEnum[string(m.PeerRole)]; !ok && m.PeerRole != "" {
+	if _, ok := GetMappingAutonomousDatabaseDataguardAssociationPeerRoleEnum(string(m.PeerRole)); !ok && m.PeerRole != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PeerRole: %s. Supported values are: %s.", m.PeerRole, strings.Join(GetAutonomousDatabaseDataguardAssociationPeerRoleEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingAutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnum[string(m.PeerAutonomousDatabaseLifeCycleState)]; !ok && m.PeerAutonomousDatabaseLifeCycleState != "" {
+	if _, ok := GetMappingAutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnum(string(m.PeerAutonomousDatabaseLifeCycleState)); !ok && m.PeerAutonomousDatabaseLifeCycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PeerAutonomousDatabaseLifeCycleState: %s. Supported values are: %s.", m.PeerAutonomousDatabaseLifeCycleState, strings.Join(GetAutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseDataguardAssociationProtectionModeEnum[string(m.ProtectionMode)]; !ok && m.ProtectionMode != "" {
+	if _, ok := GetMappingAutonomousDatabaseDataguardAssociationProtectionModeEnum(string(m.ProtectionMode)); !ok && m.ProtectionMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProtectionMode: %s. Supported values are: %s.", m.ProtectionMode, strings.Join(GetAutonomousDatabaseDataguardAssociationProtectionModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -139,6 +139,17 @@ func GetAutonomousDatabaseDataguardAssociationRoleEnumStringValues() []string {
 		"STANDBY",
 		"DISABLED_STANDBY",
 	}
+}
+
+// GetMappingAutonomousDatabaseDataguardAssociationRoleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseDataguardAssociationRoleEnum(val string) (AutonomousDatabaseDataguardAssociationRoleEnum, bool) {
+	mappingAutonomousDatabaseDataguardAssociationRoleEnumIgnoreCase := make(map[string]AutonomousDatabaseDataguardAssociationRoleEnum)
+	for k, v := range mappingAutonomousDatabaseDataguardAssociationRoleEnum {
+		mappingAutonomousDatabaseDataguardAssociationRoleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseDataguardAssociationRoleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // AutonomousDatabaseDataguardAssociationLifecycleStateEnum Enum with underlying type: string
@@ -187,6 +198,17 @@ func GetAutonomousDatabaseDataguardAssociationLifecycleStateEnumStringValues() [
 	}
 }
 
+// GetMappingAutonomousDatabaseDataguardAssociationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseDataguardAssociationLifecycleStateEnum(val string) (AutonomousDatabaseDataguardAssociationLifecycleStateEnum, bool) {
+	mappingAutonomousDatabaseDataguardAssociationLifecycleStateEnumIgnoreCase := make(map[string]AutonomousDatabaseDataguardAssociationLifecycleStateEnum)
+	for k, v := range mappingAutonomousDatabaseDataguardAssociationLifecycleStateEnum {
+		mappingAutonomousDatabaseDataguardAssociationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseDataguardAssociationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousDatabaseDataguardAssociationPeerRoleEnum Enum with underlying type: string
 type AutonomousDatabaseDataguardAssociationPeerRoleEnum string
 
@@ -219,6 +241,17 @@ func GetAutonomousDatabaseDataguardAssociationPeerRoleEnumStringValues() []strin
 		"STANDBY",
 		"DISABLED_STANDBY",
 	}
+}
+
+// GetMappingAutonomousDatabaseDataguardAssociationPeerRoleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseDataguardAssociationPeerRoleEnum(val string) (AutonomousDatabaseDataguardAssociationPeerRoleEnum, bool) {
+	mappingAutonomousDatabaseDataguardAssociationPeerRoleEnumIgnoreCase := make(map[string]AutonomousDatabaseDataguardAssociationPeerRoleEnum)
+	for k, v := range mappingAutonomousDatabaseDataguardAssociationPeerRoleEnum {
+		mappingAutonomousDatabaseDataguardAssociationPeerRoleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseDataguardAssociationPeerRoleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnum Enum with underlying type: string
@@ -267,6 +300,17 @@ func GetAutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleSta
 	}
 }
 
+// GetMappingAutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnum(val string) (AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnum, bool) {
+	mappingAutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnumIgnoreCase := make(map[string]AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnum)
+	for k, v := range mappingAutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnum {
+		mappingAutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousDatabaseDataguardAssociationProtectionModeEnum Enum with underlying type: string
 type AutonomousDatabaseDataguardAssociationProtectionModeEnum string
 
@@ -296,4 +340,15 @@ func GetAutonomousDatabaseDataguardAssociationProtectionModeEnumStringValues() [
 		"MAXIMUM_AVAILABILITY",
 		"MAXIMUM_PERFORMANCE",
 	}
+}
+
+// GetMappingAutonomousDatabaseDataguardAssociationProtectionModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseDataguardAssociationProtectionModeEnum(val string) (AutonomousDatabaseDataguardAssociationProtectionModeEnum, bool) {
+	mappingAutonomousDatabaseDataguardAssociationProtectionModeEnumIgnoreCase := make(map[string]AutonomousDatabaseDataguardAssociationProtectionModeEnum)
+	for k, v := range mappingAutonomousDatabaseDataguardAssociationProtectionModeEnum {
+		mappingAutonomousDatabaseDataguardAssociationProtectionModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseDataguardAssociationProtectionModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -46,10 +46,10 @@ func (m GrantSummary) String() string {
 func (m GrantSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingGrantSummaryPrivilegeTypeEnum[string(m.PrivilegeType)]; !ok && m.PrivilegeType != "" {
+	if _, ok := GetMappingGrantSummaryPrivilegeTypeEnum(string(m.PrivilegeType)); !ok && m.PrivilegeType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PrivilegeType: %s. Supported values are: %s.", m.PrivilegeType, strings.Join(GetGrantSummaryPrivilegeTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingGrantSummaryPrivilegeCategoryEnum[string(m.PrivilegeCategory)]; !ok && m.PrivilegeCategory != "" {
+	if _, ok := GetMappingGrantSummaryPrivilegeCategoryEnum(string(m.PrivilegeCategory)); !ok && m.PrivilegeCategory != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PrivilegeCategory: %s. Supported values are: %s.", m.PrivilegeCategory, strings.Join(GetGrantSummaryPrivilegeCategoryEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -95,6 +95,17 @@ func GetGrantSummaryPrivilegeTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingGrantSummaryPrivilegeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGrantSummaryPrivilegeTypeEnum(val string) (GrantSummaryPrivilegeTypeEnum, bool) {
+	mappingGrantSummaryPrivilegeTypeEnumIgnoreCase := make(map[string]GrantSummaryPrivilegeTypeEnum)
+	for k, v := range mappingGrantSummaryPrivilegeTypeEnum {
+		mappingGrantSummaryPrivilegeTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGrantSummaryPrivilegeTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // GrantSummaryPrivilegeCategoryEnum Enum with underlying type: string
 type GrantSummaryPrivilegeCategoryEnum string
 
@@ -130,4 +141,15 @@ func GetGrantSummaryPrivilegeCategoryEnumStringValues() []string {
 		"MEDIUM",
 		"LOW",
 	}
+}
+
+// GetMappingGrantSummaryPrivilegeCategoryEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGrantSummaryPrivilegeCategoryEnum(val string) (GrantSummaryPrivilegeCategoryEnum, bool) {
+	mappingGrantSummaryPrivilegeCategoryEnumIgnoreCase := make(map[string]GrantSummaryPrivilegeCategoryEnum)
+	for k, v := range mappingGrantSummaryPrivilegeCategoryEnum {
+		mappingGrantSummaryPrivilegeCategoryEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGrantSummaryPrivilegeCategoryEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

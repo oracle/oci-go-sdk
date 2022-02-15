@@ -53,7 +53,7 @@ func (m AssociableEntity) String() string {
 func (m AssociableEntity) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAssociableEntityEligibilityStatusEnum[string(m.EligibilityStatus)]; !ok && m.EligibilityStatus != "" {
+	if _, ok := GetMappingAssociableEntityEligibilityStatusEnum(string(m.EligibilityStatus)); !ok && m.EligibilityStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EligibilityStatus: %s. Supported values are: %s.", m.EligibilityStatus, strings.Join(GetAssociableEntityEligibilityStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -91,4 +91,15 @@ func GetAssociableEntityEligibilityStatusEnumStringValues() []string {
 		"ELIGIBLE",
 		"INELIGIBLE",
 	}
+}
+
+// GetMappingAssociableEntityEligibilityStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAssociableEntityEligibilityStatusEnum(val string) (AssociableEntityEligibilityStatusEnum, bool) {
+	mappingAssociableEntityEligibilityStatusEnumIgnoreCase := make(map[string]AssociableEntityEligibilityStatusEnum)
+	for k, v := range mappingAssociableEntityEligibilityStatusEnum {
+		mappingAssociableEntityEligibilityStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAssociableEntityEligibilityStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

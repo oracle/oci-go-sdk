@@ -78,13 +78,13 @@ func (request ListBdsInstancesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListBdsInstancesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBdsInstanceLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingBdsInstanceLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetBdsInstanceLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBdsInstancesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListBdsInstancesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListBdsInstancesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBdsInstancesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListBdsInstancesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListBdsInstancesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -152,6 +152,17 @@ func GetListBdsInstancesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListBdsInstancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBdsInstancesSortByEnum(val string) (ListBdsInstancesSortByEnum, bool) {
+	mappingListBdsInstancesSortByEnumIgnoreCase := make(map[string]ListBdsInstancesSortByEnum)
+	for k, v := range mappingListBdsInstancesSortByEnum {
+		mappingListBdsInstancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBdsInstancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListBdsInstancesSortOrderEnum Enum with underlying type: string
 type ListBdsInstancesSortOrderEnum string
 
@@ -181,4 +192,15 @@ func GetListBdsInstancesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListBdsInstancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBdsInstancesSortOrderEnum(val string) (ListBdsInstancesSortOrderEnum, bool) {
+	mappingListBdsInstancesSortOrderEnumIgnoreCase := make(map[string]ListBdsInstancesSortOrderEnum)
+	for k, v := range mappingListBdsInstancesSortOrderEnum {
+		mappingListBdsInstancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBdsInstancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

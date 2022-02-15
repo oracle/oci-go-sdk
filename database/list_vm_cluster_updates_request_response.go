@@ -72,10 +72,10 @@ func (request ListVmClusterUpdatesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListVmClusterUpdatesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListVmClusterUpdatesUpdateTypeEnum[string(request.UpdateType)]; !ok && request.UpdateType != "" {
+	if _, ok := GetMappingListVmClusterUpdatesUpdateTypeEnum(string(request.UpdateType)); !ok && request.UpdateType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateType: %s. Supported values are: %s.", request.UpdateType, strings.Join(GetListVmClusterUpdatesUpdateTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVmClusterUpdateSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingVmClusterUpdateSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetVmClusterUpdateSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -145,4 +145,15 @@ func GetListVmClusterUpdatesUpdateTypeEnumStringValues() []string {
 		"GI_PATCH",
 		"OS_UPDATE",
 	}
+}
+
+// GetMappingListVmClusterUpdatesUpdateTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListVmClusterUpdatesUpdateTypeEnum(val string) (ListVmClusterUpdatesUpdateTypeEnum, bool) {
+	mappingListVmClusterUpdatesUpdateTypeEnumIgnoreCase := make(map[string]ListVmClusterUpdatesUpdateTypeEnum)
+	for k, v := range mappingListVmClusterUpdatesUpdateTypeEnum {
+		mappingListVmClusterUpdatesUpdateTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListVmClusterUpdatesUpdateTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

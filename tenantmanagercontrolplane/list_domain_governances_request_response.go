@@ -87,13 +87,13 @@ func (request ListDomainGovernancesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDomainGovernancesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDomainGovernancesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListDomainGovernancesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListDomainGovernancesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDomainGovernancesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDomainGovernancesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDomainGovernancesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDomainGovernancesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDomainGovernancesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDomainGovernancesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -173,6 +173,17 @@ func GetListDomainGovernancesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDomainGovernancesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDomainGovernancesLifecycleStateEnum(val string) (ListDomainGovernancesLifecycleStateEnum, bool) {
+	mappingListDomainGovernancesLifecycleStateEnumIgnoreCase := make(map[string]ListDomainGovernancesLifecycleStateEnum)
+	for k, v := range mappingListDomainGovernancesLifecycleStateEnum {
+		mappingListDomainGovernancesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDomainGovernancesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDomainGovernancesSortByEnum Enum with underlying type: string
 type ListDomainGovernancesSortByEnum string
 
@@ -204,6 +215,17 @@ func GetListDomainGovernancesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDomainGovernancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDomainGovernancesSortByEnum(val string) (ListDomainGovernancesSortByEnum, bool) {
+	mappingListDomainGovernancesSortByEnumIgnoreCase := make(map[string]ListDomainGovernancesSortByEnum)
+	for k, v := range mappingListDomainGovernancesSortByEnum {
+		mappingListDomainGovernancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDomainGovernancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDomainGovernancesSortOrderEnum Enum with underlying type: string
 type ListDomainGovernancesSortOrderEnum string
 
@@ -233,4 +255,15 @@ func GetListDomainGovernancesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListDomainGovernancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDomainGovernancesSortOrderEnum(val string) (ListDomainGovernancesSortOrderEnum, bool) {
+	mappingListDomainGovernancesSortOrderEnumIgnoreCase := make(map[string]ListDomainGovernancesSortOrderEnum)
+	for k, v := range mappingListDomainGovernancesSortOrderEnum {
+		mappingListDomainGovernancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDomainGovernancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,11 +9,12 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"regexp"
+	"strings"
+
 	"github.com/oracle/oci-go-sdk/v58/artifacts"
 	"github.com/oracle/oci-go-sdk/v58/common"
 	"github.com/oracle/oci-go-sdk/v58/keymanagement"
-	"regexp"
-	"strings"
 )
 
 /*

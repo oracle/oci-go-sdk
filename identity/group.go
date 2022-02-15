@@ -74,7 +74,7 @@ func (m Group) String() string {
 // Not recommended for calling this function directly
 func (m Group) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGroupLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingGroupLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetGroupLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -122,4 +122,15 @@ func GetGroupLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingGroupLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGroupLifecycleStateEnum(val string) (GroupLifecycleStateEnum, bool) {
+	mappingGroupLifecycleStateEnumIgnoreCase := make(map[string]GroupLifecycleStateEnum)
+	for k, v := range mappingGroupLifecycleStateEnum {
+		mappingGroupLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGroupLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

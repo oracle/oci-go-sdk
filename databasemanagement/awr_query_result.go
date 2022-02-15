@@ -228,3 +228,14 @@ func GetAwrQueryResultAwrResultTypeEnumStringValues() []string {
 		"AWRDB_SQL_REPORT",
 	}
 }
+
+// GetMappingAwrQueryResultAwrResultTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAwrQueryResultAwrResultTypeEnum(val string) (AwrQueryResultAwrResultTypeEnum, bool) {
+	mappingAwrQueryResultAwrResultTypeEnumIgnoreCase := make(map[string]AwrQueryResultAwrResultTypeEnum)
+	for k, v := range mappingAwrQueryResultAwrResultTypeEnum {
+		mappingAwrQueryResultAwrResultTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAwrQueryResultAwrResultTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

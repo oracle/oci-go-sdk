@@ -54,7 +54,7 @@ func (m CreatePatchDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreatePatchDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreatePatchDetailsPatchTypeEnum[string(m.PatchType)]; !ok && m.PatchType != "" {
+	if _, ok := GetMappingCreatePatchDetailsPatchTypeEnum(string(m.PatchType)); !ok && m.PatchType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PatchType: %s. Supported values are: %s.", m.PatchType, strings.Join(GetCreatePatchDetailsPatchTypeEnumStringValues(), ",")))
 	}
 
@@ -96,4 +96,15 @@ func GetCreatePatchDetailsPatchTypeEnumStringValues() []string {
 		"REFRESH",
 		"UNPUBLISH",
 	}
+}
+
+// GetMappingCreatePatchDetailsPatchTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreatePatchDetailsPatchTypeEnum(val string) (CreatePatchDetailsPatchTypeEnum, bool) {
+	mappingCreatePatchDetailsPatchTypeEnumIgnoreCase := make(map[string]CreatePatchDetailsPatchTypeEnum)
+	for k, v := range mappingCreatePatchDetailsPatchTypeEnum {
+		mappingCreatePatchDetailsPatchTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreatePatchDetailsPatchTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -58,20 +58,20 @@ func (m VmClusterUpdateSummary) String() string {
 // Not recommended for calling this function directly
 func (m VmClusterUpdateSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVmClusterUpdateSummaryUpdateTypeEnum[string(m.UpdateType)]; !ok && m.UpdateType != "" {
+	if _, ok := GetMappingVmClusterUpdateSummaryUpdateTypeEnum(string(m.UpdateType)); !ok && m.UpdateType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateType: %s. Supported values are: %s.", m.UpdateType, strings.Join(GetVmClusterUpdateSummaryUpdateTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingVmClusterUpdateSummaryLastActionEnum[string(m.LastAction)]; !ok && m.LastAction != "" {
+	if _, ok := GetMappingVmClusterUpdateSummaryLastActionEnum(string(m.LastAction)); !ok && m.LastAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LastAction: %s. Supported values are: %s.", m.LastAction, strings.Join(GetVmClusterUpdateSummaryLastActionEnumStringValues(), ",")))
 	}
 	for _, val := range m.AvailableActions {
-		if _, ok := mappingVmClusterUpdateSummaryAvailableActionsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingVmClusterUpdateSummaryAvailableActionsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AvailableActions: %s. Supported values are: %s.", val, strings.Join(GetVmClusterUpdateSummaryAvailableActionsEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingVmClusterUpdateSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingVmClusterUpdateSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetVmClusterUpdateSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -114,6 +114,17 @@ func GetVmClusterUpdateSummaryLastActionEnumStringValues() []string {
 	}
 }
 
+// GetMappingVmClusterUpdateSummaryLastActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVmClusterUpdateSummaryLastActionEnum(val string) (VmClusterUpdateSummaryLastActionEnum, bool) {
+	mappingVmClusterUpdateSummaryLastActionEnumIgnoreCase := make(map[string]VmClusterUpdateSummaryLastActionEnum)
+	for k, v := range mappingVmClusterUpdateSummaryLastActionEnum {
+		mappingVmClusterUpdateSummaryLastActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVmClusterUpdateSummaryLastActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // VmClusterUpdateSummaryAvailableActionsEnum Enum with underlying type: string
 type VmClusterUpdateSummaryAvailableActionsEnum string
 
@@ -148,6 +159,17 @@ func GetVmClusterUpdateSummaryAvailableActionsEnumStringValues() []string {
 	}
 }
 
+// GetMappingVmClusterUpdateSummaryAvailableActionsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVmClusterUpdateSummaryAvailableActionsEnum(val string) (VmClusterUpdateSummaryAvailableActionsEnum, bool) {
+	mappingVmClusterUpdateSummaryAvailableActionsEnumIgnoreCase := make(map[string]VmClusterUpdateSummaryAvailableActionsEnum)
+	for k, v := range mappingVmClusterUpdateSummaryAvailableActionsEnum {
+		mappingVmClusterUpdateSummaryAvailableActionsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVmClusterUpdateSummaryAvailableActionsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // VmClusterUpdateSummaryUpdateTypeEnum Enum with underlying type: string
 type VmClusterUpdateSummaryUpdateTypeEnum string
 
@@ -180,6 +202,17 @@ func GetVmClusterUpdateSummaryUpdateTypeEnumStringValues() []string {
 		"GI_PATCH",
 		"OS_UPDATE",
 	}
+}
+
+// GetMappingVmClusterUpdateSummaryUpdateTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVmClusterUpdateSummaryUpdateTypeEnum(val string) (VmClusterUpdateSummaryUpdateTypeEnum, bool) {
+	mappingVmClusterUpdateSummaryUpdateTypeEnumIgnoreCase := make(map[string]VmClusterUpdateSummaryUpdateTypeEnum)
+	for k, v := range mappingVmClusterUpdateSummaryUpdateTypeEnum {
+		mappingVmClusterUpdateSummaryUpdateTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVmClusterUpdateSummaryUpdateTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // VmClusterUpdateSummaryLifecycleStateEnum Enum with underlying type: string
@@ -217,4 +250,15 @@ func GetVmClusterUpdateSummaryLifecycleStateEnumStringValues() []string {
 		"IN_PROGRESS",
 		"FAILED",
 	}
+}
+
+// GetMappingVmClusterUpdateSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVmClusterUpdateSummaryLifecycleStateEnum(val string) (VmClusterUpdateSummaryLifecycleStateEnum, bool) {
+	mappingVmClusterUpdateSummaryLifecycleStateEnumIgnoreCase := make(map[string]VmClusterUpdateSummaryLifecycleStateEnum)
+	for k, v := range mappingVmClusterUpdateSummaryLifecycleStateEnum {
+		mappingVmClusterUpdateSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVmClusterUpdateSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -132,23 +132,23 @@ func (request ListAlertAnalyticsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAlertAnalyticsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAlertAnalyticsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAlertAnalyticsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAlertAnalyticsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAlertAnalyticsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAlertAnalyticsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAlertAnalyticsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAlertAnalyticsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListAlertAnalyticsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListAlertAnalyticsAccessLevelEnumStringValues(), ",")))
 	}
 	for _, val := range request.SummaryField {
-		if _, ok := mappingListAlertAnalyticsSummaryFieldEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListAlertAnalyticsSummaryFieldEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SummaryField: %s. Supported values are: %s.", val, strings.Join(GetListAlertAnalyticsSummaryFieldEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range request.GroupBy {
-		if _, ok := mappingListAlertAnalyticsGroupByEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListAlertAnalyticsGroupByEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for GroupBy: %s. Supported values are: %s.", val, strings.Join(GetListAlertAnalyticsGroupByEnumStringValues(), ",")))
 		}
 	}
@@ -215,6 +215,17 @@ func GetListAlertAnalyticsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAlertAnalyticsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAlertAnalyticsSortOrderEnum(val string) (ListAlertAnalyticsSortOrderEnum, bool) {
+	mappingListAlertAnalyticsSortOrderEnumIgnoreCase := make(map[string]ListAlertAnalyticsSortOrderEnum)
+	for k, v := range mappingListAlertAnalyticsSortOrderEnum {
+		mappingListAlertAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAlertAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAlertAnalyticsSortByEnum Enum with underlying type: string
 type ListAlertAnalyticsSortByEnum string
 
@@ -246,6 +257,17 @@ func GetListAlertAnalyticsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAlertAnalyticsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAlertAnalyticsSortByEnum(val string) (ListAlertAnalyticsSortByEnum, bool) {
+	mappingListAlertAnalyticsSortByEnumIgnoreCase := make(map[string]ListAlertAnalyticsSortByEnum)
+	for k, v := range mappingListAlertAnalyticsSortByEnum {
+		mappingListAlertAnalyticsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAlertAnalyticsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAlertAnalyticsAccessLevelEnum Enum with underlying type: string
 type ListAlertAnalyticsAccessLevelEnum string
 
@@ -275,6 +297,17 @@ func GetListAlertAnalyticsAccessLevelEnumStringValues() []string {
 		"RESTRICTED",
 		"ACCESSIBLE",
 	}
+}
+
+// GetMappingListAlertAnalyticsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAlertAnalyticsAccessLevelEnum(val string) (ListAlertAnalyticsAccessLevelEnum, bool) {
+	mappingListAlertAnalyticsAccessLevelEnumIgnoreCase := make(map[string]ListAlertAnalyticsAccessLevelEnum)
+	for k, v := range mappingListAlertAnalyticsAccessLevelEnum {
+		mappingListAlertAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAlertAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListAlertAnalyticsSummaryFieldEnum Enum with underlying type: string
@@ -344,6 +377,17 @@ func GetListAlertAnalyticsSummaryFieldEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAlertAnalyticsSummaryFieldEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAlertAnalyticsSummaryFieldEnum(val string) (ListAlertAnalyticsSummaryFieldEnum, bool) {
+	mappingListAlertAnalyticsSummaryFieldEnumIgnoreCase := make(map[string]ListAlertAnalyticsSummaryFieldEnum)
+	for k, v := range mappingListAlertAnalyticsSummaryFieldEnum {
+		mappingListAlertAnalyticsSummaryFieldEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAlertAnalyticsSummaryFieldEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAlertAnalyticsGroupByEnum Enum with underlying type: string
 type ListAlertAnalyticsGroupByEnum string
 
@@ -388,4 +432,15 @@ func GetListAlertAnalyticsGroupByEnumStringValues() []string {
 		"timeCreated",
 		"policyId",
 	}
+}
+
+// GetMappingListAlertAnalyticsGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAlertAnalyticsGroupByEnum(val string) (ListAlertAnalyticsGroupByEnum, bool) {
+	mappingListAlertAnalyticsGroupByEnumIgnoreCase := make(map[string]ListAlertAnalyticsGroupByEnum)
+	for k, v := range mappingListAlertAnalyticsGroupByEnum {
+		mappingListAlertAnalyticsGroupByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAlertAnalyticsGroupByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

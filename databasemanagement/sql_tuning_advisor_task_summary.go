@@ -67,7 +67,7 @@ func (m SqlTuningAdvisorTaskSummary) String() string {
 func (m SqlTuningAdvisorTaskSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSqlTuningTaskStatusTypesEnum[string(m.TaskStatus)]; !ok && m.TaskStatus != "" {
+	if _, ok := GetMappingSqlTuningTaskStatusTypesEnum(string(m.TaskStatus)); !ok && m.TaskStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TaskStatus: %s. Supported values are: %s.", m.TaskStatus, strings.Join(GetSqlTuningTaskStatusTypesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

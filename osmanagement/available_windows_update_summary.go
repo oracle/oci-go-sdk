@@ -46,11 +46,11 @@ func (m AvailableWindowsUpdateSummary) String() string {
 // Not recommended for calling this function directly
 func (m AvailableWindowsUpdateSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUpdateTypesEnum[string(m.UpdateType)]; !ok && m.UpdateType != "" {
+	if _, ok := GetMappingUpdateTypesEnum(string(m.UpdateType)); !ok && m.UpdateType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateType: %s. Supported values are: %s.", m.UpdateType, strings.Join(GetUpdateTypesEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingIsEligibleForInstallationEnum[string(m.IsEligibleForInstallation)]; !ok && m.IsEligibleForInstallation != "" {
+	if _, ok := GetMappingIsEligibleForInstallationEnum(string(m.IsEligibleForInstallation)); !ok && m.IsEligibleForInstallation != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IsEligibleForInstallation: %s. Supported values are: %s.", m.IsEligibleForInstallation, strings.Join(GetIsEligibleForInstallationEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

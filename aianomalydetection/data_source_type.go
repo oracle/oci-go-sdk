@@ -11,6 +11,10 @@
 
 package aianomalydetection
 
+import (
+	"strings"
+)
+
 // DataSourceTypeEnum Enum with underlying type: string
 type DataSourceTypeEnum string
 
@@ -43,4 +47,15 @@ func GetDataSourceTypeEnumStringValues() []string {
 		"ORACLE_ATP",
 		"INFLUX",
 	}
+}
+
+// GetMappingDataSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataSourceTypeEnum(val string) (DataSourceTypeEnum, bool) {
+	mappingDataSourceTypeEnumIgnoreCase := make(map[string]DataSourceTypeEnum)
+	for k, v := range mappingDataSourceTypeEnum {
+		mappingDataSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

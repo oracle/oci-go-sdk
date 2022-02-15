@@ -121,16 +121,16 @@ func (m Bucket) String() string {
 func (m Bucket) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBucketPublicAccessTypeEnum[string(m.PublicAccessType)]; !ok && m.PublicAccessType != "" {
+	if _, ok := GetMappingBucketPublicAccessTypeEnum(string(m.PublicAccessType)); !ok && m.PublicAccessType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PublicAccessType: %s. Supported values are: %s.", m.PublicAccessType, strings.Join(GetBucketPublicAccessTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBucketStorageTierEnum[string(m.StorageTier)]; !ok && m.StorageTier != "" {
+	if _, ok := GetMappingBucketStorageTierEnum(string(m.StorageTier)); !ok && m.StorageTier != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for StorageTier: %s. Supported values are: %s.", m.StorageTier, strings.Join(GetBucketStorageTierEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBucketVersioningEnum[string(m.Versioning)]; !ok && m.Versioning != "" {
+	if _, ok := GetMappingBucketVersioningEnum(string(m.Versioning)); !ok && m.Versioning != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Versioning: %s. Supported values are: %s.", m.Versioning, strings.Join(GetBucketVersioningEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBucketAutoTieringEnum[string(m.AutoTiering)]; !ok && m.AutoTiering != "" {
+	if _, ok := GetMappingBucketAutoTieringEnum(string(m.AutoTiering)); !ok && m.AutoTiering != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AutoTiering: %s. Supported values are: %s.", m.AutoTiering, strings.Join(GetBucketAutoTieringEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -173,6 +173,17 @@ func GetBucketPublicAccessTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingBucketPublicAccessTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBucketPublicAccessTypeEnum(val string) (BucketPublicAccessTypeEnum, bool) {
+	mappingBucketPublicAccessTypeEnumIgnoreCase := make(map[string]BucketPublicAccessTypeEnum)
+	for k, v := range mappingBucketPublicAccessTypeEnum {
+		mappingBucketPublicAccessTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBucketPublicAccessTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // BucketStorageTierEnum Enum with underlying type: string
 type BucketStorageTierEnum string
 
@@ -202,6 +213,17 @@ func GetBucketStorageTierEnumStringValues() []string {
 		"Standard",
 		"Archive",
 	}
+}
+
+// GetMappingBucketStorageTierEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBucketStorageTierEnum(val string) (BucketStorageTierEnum, bool) {
+	mappingBucketStorageTierEnumIgnoreCase := make(map[string]BucketStorageTierEnum)
+	for k, v := range mappingBucketStorageTierEnum {
+		mappingBucketStorageTierEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBucketStorageTierEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // BucketVersioningEnum Enum with underlying type: string
@@ -238,6 +260,17 @@ func GetBucketVersioningEnumStringValues() []string {
 	}
 }
 
+// GetMappingBucketVersioningEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBucketVersioningEnum(val string) (BucketVersioningEnum, bool) {
+	mappingBucketVersioningEnumIgnoreCase := make(map[string]BucketVersioningEnum)
+	for k, v := range mappingBucketVersioningEnum {
+		mappingBucketVersioningEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBucketVersioningEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // BucketAutoTieringEnum Enum with underlying type: string
 type BucketAutoTieringEnum string
 
@@ -267,4 +300,15 @@ func GetBucketAutoTieringEnumStringValues() []string {
 		"Disabled",
 		"InfrequentAccess",
 	}
+}
+
+// GetMappingBucketAutoTieringEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBucketAutoTieringEnum(val string) (BucketAutoTieringEnum, bool) {
+	mappingBucketAutoTieringEnumIgnoreCase := make(map[string]BucketAutoTieringEnum)
+	for k, v := range mappingBucketAutoTieringEnum {
+		mappingBucketAutoTieringEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBucketAutoTieringEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

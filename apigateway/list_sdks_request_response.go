@@ -86,13 +86,13 @@ func (request ListSdksRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListSdksRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSdkLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingSdkLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetSdkLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSdksSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSdksSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSdksSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSdksSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSdksSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSdksSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -168,6 +168,17 @@ func GetListSdksSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSdksSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSdksSortOrderEnum(val string) (ListSdksSortOrderEnum, bool) {
+	mappingListSdksSortOrderEnumIgnoreCase := make(map[string]ListSdksSortOrderEnum)
+	for k, v := range mappingListSdksSortOrderEnum {
+		mappingListSdksSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSdksSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSdksSortByEnum Enum with underlying type: string
 type ListSdksSortByEnum string
 
@@ -197,4 +208,15 @@ func GetListSdksSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListSdksSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSdksSortByEnum(val string) (ListSdksSortByEnum, bool) {
+	mappingListSdksSortByEnumIgnoreCase := make(map[string]ListSdksSortByEnum)
+	for k, v := range mappingListSdksSortByEnum {
+		mappingListSdksSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSdksSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

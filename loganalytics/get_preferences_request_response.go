@@ -72,10 +72,10 @@ func (request GetPreferencesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetPreferencesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetPreferencesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingGetPreferencesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetGetPreferencesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingGetPreferencesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingGetPreferencesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetGetPreferencesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -147,6 +147,17 @@ func GetGetPreferencesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingGetPreferencesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetPreferencesSortOrderEnum(val string) (GetPreferencesSortOrderEnum, bool) {
+	mappingGetPreferencesSortOrderEnumIgnoreCase := make(map[string]GetPreferencesSortOrderEnum)
+	for k, v := range mappingGetPreferencesSortOrderEnum {
+		mappingGetPreferencesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetPreferencesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // GetPreferencesSortByEnum Enum with underlying type: string
 type GetPreferencesSortByEnum string
 
@@ -173,4 +184,15 @@ func GetGetPreferencesSortByEnumStringValues() []string {
 	return []string{
 		"name",
 	}
+}
+
+// GetMappingGetPreferencesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetPreferencesSortByEnum(val string) (GetPreferencesSortByEnum, bool) {
+	mappingGetPreferencesSortByEnumIgnoreCase := make(map[string]GetPreferencesSortByEnum)
+	for k, v := range mappingGetPreferencesSortByEnum {
+		mappingGetPreferencesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetPreferencesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

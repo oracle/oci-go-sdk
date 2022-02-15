@@ -81,7 +81,7 @@ func (request GetBucketRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetBucketRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetBucketFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetBucketFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetBucketFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -159,4 +159,15 @@ func GetGetBucketFieldsEnumStringValues() []string {
 		"approximateSize",
 		"autoTiering",
 	}
+}
+
+// GetMappingGetBucketFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetBucketFieldsEnum(val string) (GetBucketFieldsEnum, bool) {
+	mappingGetBucketFieldsEnumIgnoreCase := make(map[string]GetBucketFieldsEnum)
+	for k, v := range mappingGetBucketFieldsEnum {
+		mappingGetBucketFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetBucketFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

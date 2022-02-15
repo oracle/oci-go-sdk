@@ -78,16 +78,16 @@ func (request ListPdbConversionHistoryEntriesRequest) RetryPolicy() *common.Retr
 // Not recommended for calling this function directly
 func (request ListPdbConversionHistoryEntriesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPdbConversionHistoryEntrySummaryActionEnum[string(request.PdbConversionAction)]; !ok && request.PdbConversionAction != "" {
+	if _, ok := GetMappingPdbConversionHistoryEntrySummaryActionEnum(string(request.PdbConversionAction)); !ok && request.PdbConversionAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PdbConversionAction: %s. Supported values are: %s.", request.PdbConversionAction, strings.Join(GetPdbConversionHistoryEntrySummaryActionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPdbConversionHistoryEntrySummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingPdbConversionHistoryEntrySummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetPdbConversionHistoryEntrySummaryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPdbConversionHistoryEntriesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListPdbConversionHistoryEntriesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListPdbConversionHistoryEntriesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPdbConversionHistoryEntriesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListPdbConversionHistoryEntriesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListPdbConversionHistoryEntriesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -153,6 +153,17 @@ func GetListPdbConversionHistoryEntriesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListPdbConversionHistoryEntriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPdbConversionHistoryEntriesSortByEnum(val string) (ListPdbConversionHistoryEntriesSortByEnum, bool) {
+	mappingListPdbConversionHistoryEntriesSortByEnumIgnoreCase := make(map[string]ListPdbConversionHistoryEntriesSortByEnum)
+	for k, v := range mappingListPdbConversionHistoryEntriesSortByEnum {
+		mappingListPdbConversionHistoryEntriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPdbConversionHistoryEntriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListPdbConversionHistoryEntriesSortOrderEnum Enum with underlying type: string
 type ListPdbConversionHistoryEntriesSortOrderEnum string
 
@@ -182,4 +193,15 @@ func GetListPdbConversionHistoryEntriesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListPdbConversionHistoryEntriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPdbConversionHistoryEntriesSortOrderEnum(val string) (ListPdbConversionHistoryEntriesSortOrderEnum, bool) {
+	mappingListPdbConversionHistoryEntriesSortOrderEnumIgnoreCase := make(map[string]ListPdbConversionHistoryEntriesSortOrderEnum)
+	for k, v := range mappingListPdbConversionHistoryEntriesSortOrderEnum {
+		mappingListPdbConversionHistoryEntriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPdbConversionHistoryEntriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

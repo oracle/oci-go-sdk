@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // HostEntitySourceEnum Enum with underlying type: string
 type HostEntitySourceEnum string
 
@@ -40,4 +44,15 @@ func GetHostEntitySourceEnumStringValues() []string {
 		"MACS_MANAGED_EXTERNAL_HOST",
 		"EM_MANAGED_EXTERNAL_HOST",
 	}
+}
+
+// GetMappingHostEntitySourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHostEntitySourceEnum(val string) (HostEntitySourceEnum, bool) {
+	mappingHostEntitySourceEnumIgnoreCase := make(map[string]HostEntitySourceEnum)
+	for k, v := range mappingHostEntitySourceEnum {
+		mappingHostEntitySourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHostEntitySourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

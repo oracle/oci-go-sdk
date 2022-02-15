@@ -95,16 +95,16 @@ func (request ListHistoriesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListHistoriesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListHistoriesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListHistoriesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListHistoriesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListHistoriesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListHistoriesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListHistoriesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListHistoriesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListHistoriesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListHistoriesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListHistoriesStatusEnum[string(request.Status)]; !ok && request.Status != "" {
+	if _, ok := GetMappingListHistoriesStatusEnum(string(request.Status)); !ok && request.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", request.Status, strings.Join(GetListHistoriesStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -176,6 +176,17 @@ func GetListHistoriesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListHistoriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHistoriesSortOrderEnum(val string) (ListHistoriesSortOrderEnum, bool) {
+	mappingListHistoriesSortOrderEnumIgnoreCase := make(map[string]ListHistoriesSortOrderEnum)
+	for k, v := range mappingListHistoriesSortOrderEnum {
+		mappingListHistoriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHistoriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListHistoriesSortByEnum Enum with underlying type: string
 type ListHistoriesSortByEnum string
 
@@ -205,6 +216,17 @@ func GetListHistoriesSortByEnumStringValues() []string {
 		"NAME",
 		"TIMECREATED",
 	}
+}
+
+// GetMappingListHistoriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHistoriesSortByEnum(val string) (ListHistoriesSortByEnum, bool) {
+	mappingListHistoriesSortByEnumIgnoreCase := make(map[string]ListHistoriesSortByEnum)
+	for k, v := range mappingListHistoriesSortByEnum {
+		mappingListHistoriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHistoriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListHistoriesLifecycleStateEnum Enum with underlying type: string
@@ -259,6 +281,17 @@ func GetListHistoriesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListHistoriesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHistoriesLifecycleStateEnum(val string) (ListHistoriesLifecycleStateEnum, bool) {
+	mappingListHistoriesLifecycleStateEnumIgnoreCase := make(map[string]ListHistoriesLifecycleStateEnum)
+	for k, v := range mappingListHistoriesLifecycleStateEnum {
+		mappingListHistoriesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHistoriesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListHistoriesStatusEnum Enum with underlying type: string
 type ListHistoriesStatusEnum string
 
@@ -294,4 +327,15 @@ func GetListHistoriesStatusEnumStringValues() []string {
 		"POSTPONED",
 		"IMPLEMENTED",
 	}
+}
+
+// GetMappingListHistoriesStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHistoriesStatusEnum(val string) (ListHistoriesStatusEnum, bool) {
+	mappingListHistoriesStatusEnumIgnoreCase := make(map[string]ListHistoriesStatusEnum)
+	for k, v := range mappingListHistoriesStatusEnum {
+		mappingListHistoriesStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHistoriesStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

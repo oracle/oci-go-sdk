@@ -91,10 +91,10 @@ func (request ListPublicIpPoolsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListPublicIpPoolsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListPublicIpPoolsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListPublicIpPoolsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListPublicIpPoolsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPublicIpPoolsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListPublicIpPoolsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListPublicIpPoolsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -162,6 +162,17 @@ func GetListPublicIpPoolsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListPublicIpPoolsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPublicIpPoolsSortByEnum(val string) (ListPublicIpPoolsSortByEnum, bool) {
+	mappingListPublicIpPoolsSortByEnumIgnoreCase := make(map[string]ListPublicIpPoolsSortByEnum)
+	for k, v := range mappingListPublicIpPoolsSortByEnum {
+		mappingListPublicIpPoolsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPublicIpPoolsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListPublicIpPoolsSortOrderEnum Enum with underlying type: string
 type ListPublicIpPoolsSortOrderEnum string
 
@@ -191,4 +202,15 @@ func GetListPublicIpPoolsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListPublicIpPoolsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPublicIpPoolsSortOrderEnum(val string) (ListPublicIpPoolsSortOrderEnum, bool) {
+	mappingListPublicIpPoolsSortOrderEnumIgnoreCase := make(map[string]ListPublicIpPoolsSortOrderEnum)
+	for k, v := range mappingListPublicIpPoolsSortOrderEnum {
+		mappingListPublicIpPoolsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPublicIpPoolsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

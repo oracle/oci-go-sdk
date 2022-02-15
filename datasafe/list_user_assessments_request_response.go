@@ -119,22 +119,22 @@ func (request ListUserAssessmentsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListUserAssessmentsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListUserAssessmentsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListUserAssessmentsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListUserAssessmentsAccessLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUserAssessmentsTypeEnum[string(request.Type)]; !ok && request.Type != "" {
+	if _, ok := GetMappingListUserAssessmentsTypeEnum(string(request.Type)); !ok && request.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", request.Type, strings.Join(GetListUserAssessmentsTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUserAssessmentsTriggeredByEnum[string(request.TriggeredBy)]; !ok && request.TriggeredBy != "" {
+	if _, ok := GetMappingListUserAssessmentsTriggeredByEnum(string(request.TriggeredBy)); !ok && request.TriggeredBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TriggeredBy: %s. Supported values are: %s.", request.TriggeredBy, strings.Join(GetListUserAssessmentsTriggeredByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUserAssessmentsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListUserAssessmentsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListUserAssessmentsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUserAssessmentsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListUserAssessmentsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListUserAssessmentsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUserAssessmentsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListUserAssessmentsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListUserAssessmentsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -204,6 +204,17 @@ func GetListUserAssessmentsAccessLevelEnumStringValues() []string {
 	}
 }
 
+// GetMappingListUserAssessmentsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUserAssessmentsAccessLevelEnum(val string) (ListUserAssessmentsAccessLevelEnum, bool) {
+	mappingListUserAssessmentsAccessLevelEnumIgnoreCase := make(map[string]ListUserAssessmentsAccessLevelEnum)
+	for k, v := range mappingListUserAssessmentsAccessLevelEnum {
+		mappingListUserAssessmentsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUserAssessmentsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListUserAssessmentsTypeEnum Enum with underlying type: string
 type ListUserAssessmentsTypeEnum string
 
@@ -241,6 +252,17 @@ func GetListUserAssessmentsTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListUserAssessmentsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUserAssessmentsTypeEnum(val string) (ListUserAssessmentsTypeEnum, bool) {
+	mappingListUserAssessmentsTypeEnumIgnoreCase := make(map[string]ListUserAssessmentsTypeEnum)
+	for k, v := range mappingListUserAssessmentsTypeEnum {
+		mappingListUserAssessmentsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUserAssessmentsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListUserAssessmentsTriggeredByEnum Enum with underlying type: string
 type ListUserAssessmentsTriggeredByEnum string
 
@@ -270,6 +292,17 @@ func GetListUserAssessmentsTriggeredByEnumStringValues() []string {
 		"USER",
 		"SYSTEM",
 	}
+}
+
+// GetMappingListUserAssessmentsTriggeredByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUserAssessmentsTriggeredByEnum(val string) (ListUserAssessmentsTriggeredByEnum, bool) {
+	mappingListUserAssessmentsTriggeredByEnumIgnoreCase := make(map[string]ListUserAssessmentsTriggeredByEnum)
+	for k, v := range mappingListUserAssessmentsTriggeredByEnum {
+		mappingListUserAssessmentsTriggeredByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUserAssessmentsTriggeredByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListUserAssessmentsLifecycleStateEnum Enum with underlying type: string
@@ -312,6 +345,17 @@ func GetListUserAssessmentsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListUserAssessmentsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUserAssessmentsLifecycleStateEnum(val string) (ListUserAssessmentsLifecycleStateEnum, bool) {
+	mappingListUserAssessmentsLifecycleStateEnumIgnoreCase := make(map[string]ListUserAssessmentsLifecycleStateEnum)
+	for k, v := range mappingListUserAssessmentsLifecycleStateEnum {
+		mappingListUserAssessmentsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUserAssessmentsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListUserAssessmentsSortOrderEnum Enum with underlying type: string
 type ListUserAssessmentsSortOrderEnum string
 
@@ -343,6 +387,17 @@ func GetListUserAssessmentsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListUserAssessmentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUserAssessmentsSortOrderEnum(val string) (ListUserAssessmentsSortOrderEnum, bool) {
+	mappingListUserAssessmentsSortOrderEnumIgnoreCase := make(map[string]ListUserAssessmentsSortOrderEnum)
+	for k, v := range mappingListUserAssessmentsSortOrderEnum {
+		mappingListUserAssessmentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUserAssessmentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListUserAssessmentsSortByEnum Enum with underlying type: string
 type ListUserAssessmentsSortByEnum string
 
@@ -372,4 +427,15 @@ func GetListUserAssessmentsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListUserAssessmentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUserAssessmentsSortByEnum(val string) (ListUserAssessmentsSortByEnum, bool) {
+	mappingListUserAssessmentsSortByEnumIgnoreCase := make(map[string]ListUserAssessmentsSortByEnum)
+	for k, v := range mappingListUserAssessmentsSortByEnum {
+		mappingListUserAssessmentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUserAssessmentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

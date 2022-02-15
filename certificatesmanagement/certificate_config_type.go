@@ -9,6 +9,10 @@
 
 package certificatesmanagement
 
+import (
+	"strings"
+)
+
 // CertificateConfigTypeEnum Enum with underlying type: string
 type CertificateConfigTypeEnum string
 
@@ -41,4 +45,15 @@ func GetCertificateConfigTypeEnumStringValues() []string {
 		"MANAGED_EXTERNALLY_ISSUED_BY_INTERNAL_CA",
 		"IMPORTED",
 	}
+}
+
+// GetMappingCertificateConfigTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCertificateConfigTypeEnum(val string) (CertificateConfigTypeEnum, bool) {
+	mappingCertificateConfigTypeEnumIgnoreCase := make(map[string]CertificateConfigTypeEnum)
+	for k, v := range mappingCertificateConfigTypeEnum {
+		mappingCertificateConfigTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCertificateConfigTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -79,11 +79,11 @@ func (m DhcpOptions) String() string {
 // Not recommended for calling this function directly
 func (m DhcpOptions) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDhcpOptionsLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDhcpOptionsLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDhcpOptionsLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDhcpOptionsDomainNameTypeEnum[string(m.DomainNameType)]; !ok && m.DomainNameType != "" {
+	if _, ok := GetMappingDhcpOptionsDomainNameTypeEnum(string(m.DomainNameType)); !ok && m.DomainNameType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DomainNameType: %s. Supported values are: %s.", m.DomainNameType, strings.Join(GetDhcpOptionsDomainNameTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -183,6 +183,17 @@ func GetDhcpOptionsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingDhcpOptionsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDhcpOptionsLifecycleStateEnum(val string) (DhcpOptionsLifecycleStateEnum, bool) {
+	mappingDhcpOptionsLifecycleStateEnumIgnoreCase := make(map[string]DhcpOptionsLifecycleStateEnum)
+	for k, v := range mappingDhcpOptionsLifecycleStateEnum {
+		mappingDhcpOptionsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDhcpOptionsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DhcpOptionsDomainNameTypeEnum Enum with underlying type: string
 type DhcpOptionsDomainNameTypeEnum string
 
@@ -215,4 +226,15 @@ func GetDhcpOptionsDomainNameTypeEnumStringValues() []string {
 		"VCN_DOMAIN",
 		"CUSTOM_DOMAIN",
 	}
+}
+
+// GetMappingDhcpOptionsDomainNameTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDhcpOptionsDomainNameTypeEnum(val string) (DhcpOptionsDomainNameTypeEnum, bool) {
+	mappingDhcpOptionsDomainNameTypeEnumIgnoreCase := make(map[string]DhcpOptionsDomainNameTypeEnum)
+	for k, v := range mappingDhcpOptionsDomainNameTypeEnum {
+		mappingDhcpOptionsDomainNameTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDhcpOptionsDomainNameTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

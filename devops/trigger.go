@@ -207,7 +207,7 @@ func (m trigger) String() string {
 func (m trigger) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTriggerLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingTriggerLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetTriggerLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -244,6 +244,17 @@ func GetTriggerLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingTriggerLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTriggerLifecycleStateEnum(val string) (TriggerLifecycleStateEnum, bool) {
+	mappingTriggerLifecycleStateEnumIgnoreCase := make(map[string]TriggerLifecycleStateEnum)
+	for k, v := range mappingTriggerLifecycleStateEnum {
+		mappingTriggerLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTriggerLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TriggerTriggerSourceEnum Enum with underlying type: string
 type TriggerTriggerSourceEnum string
 
@@ -276,4 +287,15 @@ func GetTriggerTriggerSourceEnumStringValues() []string {
 		"GITLAB",
 		"DEVOPS_CODE_REPOSITORY",
 	}
+}
+
+// GetMappingTriggerTriggerSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTriggerTriggerSourceEnum(val string) (TriggerTriggerSourceEnum, bool) {
+	mappingTriggerTriggerSourceEnumIgnoreCase := make(map[string]TriggerTriggerSourceEnum)
+	for k, v := range mappingTriggerTriggerSourceEnum {
+		mappingTriggerTriggerSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTriggerTriggerSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

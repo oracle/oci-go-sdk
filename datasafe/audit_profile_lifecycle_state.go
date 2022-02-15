@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // AuditProfileLifecycleStateEnum Enum with underlying type: string
 type AuditProfileLifecycleStateEnum string
 
@@ -53,4 +57,15 @@ func GetAuditProfileLifecycleStateEnumStringValues() []string {
 		"NEEDS_ATTENTION",
 		"DELETED",
 	}
+}
+
+// GetMappingAuditProfileLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAuditProfileLifecycleStateEnum(val string) (AuditProfileLifecycleStateEnum, bool) {
+	mappingAuditProfileLifecycleStateEnumIgnoreCase := make(map[string]AuditProfileLifecycleStateEnum)
+	for k, v := range mappingAuditProfileLifecycleStateEnum {
+		mappingAuditProfileLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAuditProfileLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

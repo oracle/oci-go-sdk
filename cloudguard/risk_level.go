@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // RiskLevelEnum Enum with underlying type: string
 type RiskLevelEnum string
 
@@ -47,4 +51,15 @@ func GetRiskLevelEnumStringValues() []string {
 		"LOW",
 		"MINOR",
 	}
+}
+
+// GetMappingRiskLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRiskLevelEnum(val string) (RiskLevelEnum, bool) {
+	mappingRiskLevelEnumIgnoreCase := make(map[string]RiskLevelEnum)
+	for k, v := range mappingRiskLevelEnum {
+		mappingRiskLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRiskLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -108,19 +108,19 @@ func (request ListLibraryMaskingFormatsRequest) RetryPolicy() *common.RetryPolic
 // Not recommended for calling this function directly
 func (request ListLibraryMaskingFormatsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListLibraryMaskingFormatsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListLibraryMaskingFormatsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListLibraryMaskingFormatsAccessLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLibraryMaskingFormatsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListLibraryMaskingFormatsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListLibraryMaskingFormatsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum[string(request.LibraryMaskingFormatSource)]; !ok && request.LibraryMaskingFormatSource != "" {
+	if _, ok := GetMappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum(string(request.LibraryMaskingFormatSource)); !ok && request.LibraryMaskingFormatSource != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LibraryMaskingFormatSource: %s. Supported values are: %s.", request.LibraryMaskingFormatSource, strings.Join(GetListLibraryMaskingFormatsLibraryMaskingFormatSourceEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLibraryMaskingFormatsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListLibraryMaskingFormatsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListLibraryMaskingFormatsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLibraryMaskingFormatsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListLibraryMaskingFormatsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListLibraryMaskingFormatsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -190,6 +190,17 @@ func GetListLibraryMaskingFormatsAccessLevelEnumStringValues() []string {
 	}
 }
 
+// GetMappingListLibraryMaskingFormatsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLibraryMaskingFormatsAccessLevelEnum(val string) (ListLibraryMaskingFormatsAccessLevelEnum, bool) {
+	mappingListLibraryMaskingFormatsAccessLevelEnumIgnoreCase := make(map[string]ListLibraryMaskingFormatsAccessLevelEnum)
+	for k, v := range mappingListLibraryMaskingFormatsAccessLevelEnum {
+		mappingListLibraryMaskingFormatsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLibraryMaskingFormatsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLibraryMaskingFormatsLifecycleStateEnum Enum with underlying type: string
 type ListLibraryMaskingFormatsLifecycleStateEnum string
 
@@ -236,6 +247,17 @@ func GetListLibraryMaskingFormatsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListLibraryMaskingFormatsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLibraryMaskingFormatsLifecycleStateEnum(val string) (ListLibraryMaskingFormatsLifecycleStateEnum, bool) {
+	mappingListLibraryMaskingFormatsLifecycleStateEnumIgnoreCase := make(map[string]ListLibraryMaskingFormatsLifecycleStateEnum)
+	for k, v := range mappingListLibraryMaskingFormatsLifecycleStateEnum {
+		mappingListLibraryMaskingFormatsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLibraryMaskingFormatsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum Enum with underlying type: string
 type ListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum string
 
@@ -265,6 +287,17 @@ func GetListLibraryMaskingFormatsLibraryMaskingFormatSourceEnumStringValues() []
 		"ORACLE",
 		"USER",
 	}
+}
+
+// GetMappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum(val string) (ListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum, bool) {
+	mappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnumIgnoreCase := make(map[string]ListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum)
+	for k, v := range mappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum {
+		mappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListLibraryMaskingFormatsSortOrderEnum Enum with underlying type: string
@@ -298,6 +331,17 @@ func GetListLibraryMaskingFormatsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListLibraryMaskingFormatsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLibraryMaskingFormatsSortOrderEnum(val string) (ListLibraryMaskingFormatsSortOrderEnum, bool) {
+	mappingListLibraryMaskingFormatsSortOrderEnumIgnoreCase := make(map[string]ListLibraryMaskingFormatsSortOrderEnum)
+	for k, v := range mappingListLibraryMaskingFormatsSortOrderEnum {
+		mappingListLibraryMaskingFormatsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLibraryMaskingFormatsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLibraryMaskingFormatsSortByEnum Enum with underlying type: string
 type ListLibraryMaskingFormatsSortByEnum string
 
@@ -327,4 +371,15 @@ func GetListLibraryMaskingFormatsSortByEnumStringValues() []string {
 		"displayName",
 		"timeCreated",
 	}
+}
+
+// GetMappingListLibraryMaskingFormatsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLibraryMaskingFormatsSortByEnum(val string) (ListLibraryMaskingFormatsSortByEnum, bool) {
+	mappingListLibraryMaskingFormatsSortByEnumIgnoreCase := make(map[string]ListLibraryMaskingFormatsSortByEnum)
+	for k, v := range mappingListLibraryMaskingFormatsSortByEnum {
+		mappingListLibraryMaskingFormatsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLibraryMaskingFormatsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

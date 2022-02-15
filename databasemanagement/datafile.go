@@ -76,16 +76,16 @@ func (m Datafile) String() string {
 func (m Datafile) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDatafileStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingDatafileStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetDatafileStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatafileOnlineStatusEnum[string(m.OnlineStatus)]; !ok && m.OnlineStatus != "" {
+	if _, ok := GetMappingDatafileOnlineStatusEnum(string(m.OnlineStatus)); !ok && m.OnlineStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OnlineStatus: %s. Supported values are: %s.", m.OnlineStatus, strings.Join(GetDatafileOnlineStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatafileLostWriteProtectEnum[string(m.LostWriteProtect)]; !ok && m.LostWriteProtect != "" {
+	if _, ok := GetMappingDatafileLostWriteProtectEnum(string(m.LostWriteProtect)); !ok && m.LostWriteProtect != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LostWriteProtect: %s. Supported values are: %s.", m.LostWriteProtect, strings.Join(GetDatafileLostWriteProtectEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatafileSharedEnum[string(m.Shared)]; !ok && m.Shared != "" {
+	if _, ok := GetMappingDatafileSharedEnum(string(m.Shared)); !ok && m.Shared != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Shared: %s. Supported values are: %s.", m.Shared, strings.Join(GetDatafileSharedEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -134,6 +134,17 @@ func GetDatafileStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingDatafileStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatafileStatusEnum(val string) (DatafileStatusEnum, bool) {
+	mappingDatafileStatusEnumIgnoreCase := make(map[string]DatafileStatusEnum)
+	for k, v := range mappingDatafileStatusEnum {
+		mappingDatafileStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatafileStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DatafileOnlineStatusEnum Enum with underlying type: string
 type DatafileOnlineStatusEnum string
 
@@ -174,6 +185,17 @@ func GetDatafileOnlineStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingDatafileOnlineStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatafileOnlineStatusEnum(val string) (DatafileOnlineStatusEnum, bool) {
+	mappingDatafileOnlineStatusEnumIgnoreCase := make(map[string]DatafileOnlineStatusEnum)
+	for k, v := range mappingDatafileOnlineStatusEnum {
+		mappingDatafileOnlineStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatafileOnlineStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DatafileLostWriteProtectEnum Enum with underlying type: string
 type DatafileLostWriteProtectEnum string
 
@@ -208,6 +230,17 @@ func GetDatafileLostWriteProtectEnumStringValues() []string {
 	}
 }
 
+// GetMappingDatafileLostWriteProtectEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatafileLostWriteProtectEnum(val string) (DatafileLostWriteProtectEnum, bool) {
+	mappingDatafileLostWriteProtectEnumIgnoreCase := make(map[string]DatafileLostWriteProtectEnum)
+	for k, v := range mappingDatafileLostWriteProtectEnum {
+		mappingDatafileLostWriteProtectEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatafileLostWriteProtectEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DatafileSharedEnum Enum with underlying type: string
 type DatafileSharedEnum string
 
@@ -240,4 +273,15 @@ func GetDatafileSharedEnumStringValues() []string {
 		"LOCAL_FOR_RIM",
 		"LOCAL_FOR_ALL",
 	}
+}
+
+// GetMappingDatafileSharedEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatafileSharedEnum(val string) (DatafileSharedEnum, bool) {
+	mappingDatafileSharedEnumIgnoreCase := make(map[string]DatafileSharedEnum)
+	for k, v := range mappingDatafileSharedEnum {
+		mappingDatafileSharedEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatafileSharedEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

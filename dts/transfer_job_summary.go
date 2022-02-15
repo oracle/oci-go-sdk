@@ -52,10 +52,10 @@ func (m TransferJobSummary) String() string {
 func (m TransferJobSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTransferJobSummaryDeviceTypeEnum[string(m.DeviceType)]; !ok && m.DeviceType != "" {
+	if _, ok := GetMappingTransferJobSummaryDeviceTypeEnum(string(m.DeviceType)); !ok && m.DeviceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DeviceType: %s. Supported values are: %s.", m.DeviceType, strings.Join(GetTransferJobSummaryDeviceTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTransferJobSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingTransferJobSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetTransferJobSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -93,6 +93,17 @@ func GetTransferJobSummaryDeviceTypeEnumStringValues() []string {
 		"DISK",
 		"APPLIANCE",
 	}
+}
+
+// GetMappingTransferJobSummaryDeviceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTransferJobSummaryDeviceTypeEnum(val string) (TransferJobSummaryDeviceTypeEnum, bool) {
+	mappingTransferJobSummaryDeviceTypeEnumIgnoreCase := make(map[string]TransferJobSummaryDeviceTypeEnum)
+	for k, v := range mappingTransferJobSummaryDeviceTypeEnum {
+		mappingTransferJobSummaryDeviceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTransferJobSummaryDeviceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // TransferJobSummaryLifecycleStateEnum Enum with underlying type: string
@@ -133,4 +144,15 @@ func GetTransferJobSummaryLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"CLOSED",
 	}
+}
+
+// GetMappingTransferJobSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTransferJobSummaryLifecycleStateEnum(val string) (TransferJobSummaryLifecycleStateEnum, bool) {
+	mappingTransferJobSummaryLifecycleStateEnumIgnoreCase := make(map[string]TransferJobSummaryLifecycleStateEnum)
+	for k, v := range mappingTransferJobSummaryLifecycleStateEnum {
+		mappingTransferJobSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTransferJobSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

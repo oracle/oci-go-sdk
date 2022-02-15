@@ -119,7 +119,7 @@ func (m CertificateBundlePublicOnly) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	for _, val := range m.Stages {
-		if _, ok := mappingVersionStageEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingVersionStageEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stages: %s. Supported values are: %s.", val, strings.Join(GetVersionStageEnumStringValues(), ",")))
 		}
 	}

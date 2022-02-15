@@ -88,16 +88,16 @@ func (request ListManagementAgentImagesRequest) RetryPolicy() *common.RetryPolic
 // Not recommended for calling this function directly
 func (request ListManagementAgentImagesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListManagementAgentImagesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListManagementAgentImagesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListManagementAgentImagesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagementAgentImagesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListManagementAgentImagesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListManagementAgentImagesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagementAgentImagesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListManagementAgentImagesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListManagementAgentImagesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagementAgentImagesInstallTypeEnum[string(request.InstallType)]; !ok && request.InstallType != "" {
+	if _, ok := GetMappingListManagementAgentImagesInstallTypeEnum(string(request.InstallType)); !ok && request.InstallType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InstallType: %s. Supported values are: %s.", request.InstallType, strings.Join(GetListManagementAgentImagesInstallTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -165,6 +165,17 @@ func GetListManagementAgentImagesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListManagementAgentImagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementAgentImagesSortOrderEnum(val string) (ListManagementAgentImagesSortOrderEnum, bool) {
+	mappingListManagementAgentImagesSortOrderEnumIgnoreCase := make(map[string]ListManagementAgentImagesSortOrderEnum)
+	for k, v := range mappingListManagementAgentImagesSortOrderEnum {
+		mappingListManagementAgentImagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementAgentImagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagementAgentImagesSortByEnum Enum with underlying type: string
 type ListManagementAgentImagesSortByEnum string
 
@@ -194,6 +205,17 @@ func GetListManagementAgentImagesSortByEnumStringValues() []string {
 		"platformType",
 		"version",
 	}
+}
+
+// GetMappingListManagementAgentImagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementAgentImagesSortByEnum(val string) (ListManagementAgentImagesSortByEnum, bool) {
+	mappingListManagementAgentImagesSortByEnumIgnoreCase := make(map[string]ListManagementAgentImagesSortByEnum)
+	for k, v := range mappingListManagementAgentImagesSortByEnum {
+		mappingListManagementAgentImagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementAgentImagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListManagementAgentImagesLifecycleStateEnum Enum with underlying type: string
@@ -245,6 +267,17 @@ func GetListManagementAgentImagesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListManagementAgentImagesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementAgentImagesLifecycleStateEnum(val string) (ListManagementAgentImagesLifecycleStateEnum, bool) {
+	mappingListManagementAgentImagesLifecycleStateEnumIgnoreCase := make(map[string]ListManagementAgentImagesLifecycleStateEnum)
+	for k, v := range mappingListManagementAgentImagesLifecycleStateEnum {
+		mappingListManagementAgentImagesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementAgentImagesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagementAgentImagesInstallTypeEnum Enum with underlying type: string
 type ListManagementAgentImagesInstallTypeEnum string
 
@@ -274,4 +307,15 @@ func GetListManagementAgentImagesInstallTypeEnumStringValues() []string {
 		"AGENT",
 		"GATEWAY",
 	}
+}
+
+// GetMappingListManagementAgentImagesInstallTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementAgentImagesInstallTypeEnum(val string) (ListManagementAgentImagesInstallTypeEnum, bool) {
+	mappingListManagementAgentImagesInstallTypeEnumIgnoreCase := make(map[string]ListManagementAgentImagesInstallTypeEnum)
+	for k, v := range mappingListManagementAgentImagesInstallTypeEnum {
+		mappingListManagementAgentImagesInstallTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementAgentImagesInstallTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

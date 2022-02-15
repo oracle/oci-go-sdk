@@ -64,16 +64,16 @@ func (m TargetResponderRecipeResponderRuleSummary) String() string {
 func (m TargetResponderRecipeResponderRuleSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingResponderTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingResponderTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetResponderTypeEnumStringValues(), ",")))
 	}
 	for _, val := range m.SupportedModes {
-		if _, ok := mappingTargetResponderRecipeResponderRuleSummarySupportedModesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingTargetResponderRecipeResponderRuleSummarySupportedModesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SupportedModes: %s. Supported values are: %s.", val, strings.Join(GetTargetResponderRecipeResponderRuleSummarySupportedModesEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -111,4 +111,15 @@ func GetTargetResponderRecipeResponderRuleSummarySupportedModesEnumStringValues(
 		"AUTOACTION",
 		"USERACTION",
 	}
+}
+
+// GetMappingTargetResponderRecipeResponderRuleSummarySupportedModesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTargetResponderRecipeResponderRuleSummarySupportedModesEnum(val string) (TargetResponderRecipeResponderRuleSummarySupportedModesEnum, bool) {
+	mappingTargetResponderRecipeResponderRuleSummarySupportedModesEnumIgnoreCase := make(map[string]TargetResponderRecipeResponderRuleSummarySupportedModesEnum)
+	for k, v := range mappingTargetResponderRecipeResponderRuleSummarySupportedModesEnum {
+		mappingTargetResponderRecipeResponderRuleSummarySupportedModesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTargetResponderRecipeResponderRuleSummarySupportedModesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

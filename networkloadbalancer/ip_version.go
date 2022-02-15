@@ -9,6 +9,10 @@
 
 package networkloadbalancer
 
+import (
+	"strings"
+)
+
 // IpVersionEnum Enum with underlying type: string
 type IpVersionEnum string
 
@@ -38,4 +42,15 @@ func GetIpVersionEnumStringValues() []string {
 		"IPV4",
 		"IPV6",
 	}
+}
+
+// GetMappingIpVersionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingIpVersionEnum(val string) (IpVersionEnum, bool) {
+	mappingIpVersionEnumIgnoreCase := make(map[string]IpVersionEnum)
+	for k, v := range mappingIpVersionEnum {
+		mappingIpVersionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingIpVersionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

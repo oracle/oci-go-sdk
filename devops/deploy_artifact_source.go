@@ -116,3 +116,14 @@ func GetDeployArtifactSourceDeployArtifactSourceTypeEnumStringValues() []string 
 		"GENERIC_ARTIFACT",
 	}
 }
+
+// GetMappingDeployArtifactSourceDeployArtifactSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeployArtifactSourceDeployArtifactSourceTypeEnum(val string) (DeployArtifactSourceDeployArtifactSourceTypeEnum, bool) {
+	mappingDeployArtifactSourceDeployArtifactSourceTypeEnumIgnoreCase := make(map[string]DeployArtifactSourceDeployArtifactSourceTypeEnum)
+	for k, v := range mappingDeployArtifactSourceDeployArtifactSourceTypeEnum {
+		mappingDeployArtifactSourceDeployArtifactSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeployArtifactSourceDeployArtifactSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

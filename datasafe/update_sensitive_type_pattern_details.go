@@ -96,7 +96,7 @@ func (m UpdateSensitiveTypePatternDetails) String() string {
 func (m UpdateSensitiveTypePatternDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSensitiveTypePatternSearchTypeEnum[string(m.SearchType)]; !ok && m.SearchType != "" {
+	if _, ok := GetMappingSensitiveTypePatternSearchTypeEnum(string(m.SearchType)); !ok && m.SearchType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SearchType: %s. Supported values are: %s.", m.SearchType, strings.Join(GetSensitiveTypePatternSearchTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

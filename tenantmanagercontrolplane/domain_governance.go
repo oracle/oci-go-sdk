@@ -70,7 +70,7 @@ func (m DomainGovernance) String() string {
 // Not recommended for calling this function directly
 func (m DomainGovernance) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDomainGovernanceLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDomainGovernanceLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDomainGovernanceLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -109,4 +109,15 @@ func GetDomainGovernanceLifecycleStateEnumStringValues() []string {
 		"ACTIVE",
 		"INACTIVE",
 	}
+}
+
+// GetMappingDomainGovernanceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDomainGovernanceLifecycleStateEnum(val string) (DomainGovernanceLifecycleStateEnum, bool) {
+	mappingDomainGovernanceLifecycleStateEnumIgnoreCase := make(map[string]DomainGovernanceLifecycleStateEnum)
+	for k, v := range mappingDomainGovernanceLifecycleStateEnum {
+		mappingDomainGovernanceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDomainGovernanceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

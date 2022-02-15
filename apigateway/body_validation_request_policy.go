@@ -54,7 +54,7 @@ func (m BodyValidationRequestPolicy) String() string {
 func (m BodyValidationRequestPolicy) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBodyValidationRequestPolicyValidationModeEnum[string(m.ValidationMode)]; !ok && m.ValidationMode != "" {
+	if _, ok := GetMappingBodyValidationRequestPolicyValidationModeEnum(string(m.ValidationMode)); !ok && m.ValidationMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ValidationMode: %s. Supported values are: %s.", m.ValidationMode, strings.Join(GetBodyValidationRequestPolicyValidationModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -128,4 +128,15 @@ func GetBodyValidationRequestPolicyValidationModeEnumStringValues() []string {
 		"PERMISSIVE",
 		"DISABLED",
 	}
+}
+
+// GetMappingBodyValidationRequestPolicyValidationModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBodyValidationRequestPolicyValidationModeEnum(val string) (BodyValidationRequestPolicyValidationModeEnum, bool) {
+	mappingBodyValidationRequestPolicyValidationModeEnumIgnoreCase := make(map[string]BodyValidationRequestPolicyValidationModeEnum)
+	for k, v := range mappingBodyValidationRequestPolicyValidationModeEnum {
+		mappingBodyValidationRequestPolicyValidationModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBodyValidationRequestPolicyValidationModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

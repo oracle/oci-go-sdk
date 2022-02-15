@@ -109,3 +109,14 @@ func GetDocumentDetailsSourceEnumStringValues() []string {
 		"OBJECT_STORAGE",
 	}
 }
+
+// GetMappingDocumentDetailsSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDocumentDetailsSourceEnum(val string) (DocumentDetailsSourceEnum, bool) {
+	mappingDocumentDetailsSourceEnumIgnoreCase := make(map[string]DocumentDetailsSourceEnum)
+	for k, v := range mappingDocumentDetailsSourceEnum {
+		mappingDocumentDetailsSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDocumentDetailsSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

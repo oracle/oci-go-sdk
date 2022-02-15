@@ -37,7 +37,7 @@ func (m ContextVariable) String() string {
 // Not recommended for calling this function directly
 func (m ContextVariable) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingContextVariableTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingContextVariableTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetContextVariableTypeEnumStringValues(), ",")))
 	}
 
@@ -85,4 +85,15 @@ func GetContextVariableTypeEnumStringValues() []string {
 		"BOOLEAN",
 		"LIST",
 	}
+}
+
+// GetMappingContextVariableTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingContextVariableTypeEnum(val string) (ContextVariableTypeEnum, bool) {
+	mappingContextVariableTypeEnumIgnoreCase := make(map[string]ContextVariableTypeEnum)
+	for k, v := range mappingContextVariableTypeEnum {
+		mappingContextVariableTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingContextVariableTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

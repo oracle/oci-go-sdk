@@ -9,6 +9,10 @@
 
 package goldengate
 
+import (
+	"strings"
+)
+
 // LifecycleSubStateEnum Enum with underlying type: string
 type LifecycleSubStateEnum string
 
@@ -53,4 +57,15 @@ func GetLifecycleSubStateEnumStringValues() []string {
 		"RESTORING",
 		"BACKUP_IN_PROGRESS",
 	}
+}
+
+// GetMappingLifecycleSubStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLifecycleSubStateEnum(val string) (LifecycleSubStateEnum, bool) {
+	mappingLifecycleSubStateEnumIgnoreCase := make(map[string]LifecycleSubStateEnum)
+	for k, v := range mappingLifecycleSubStateEnum {
+		mappingLifecycleSubStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLifecycleSubStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -81,13 +81,13 @@ func (request ListIntegrationInstancesRequest) RetryPolicy() *common.RetryPolicy
 // Not recommended for calling this function directly
 func (request ListIntegrationInstancesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListIntegrationInstancesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListIntegrationInstancesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListIntegrationInstancesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListIntegrationInstancesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListIntegrationInstancesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListIntegrationInstancesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListIntegrationInstancesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListIntegrationInstancesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListIntegrationInstancesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -172,6 +172,17 @@ func GetListIntegrationInstancesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListIntegrationInstancesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListIntegrationInstancesLifecycleStateEnum(val string) (ListIntegrationInstancesLifecycleStateEnum, bool) {
+	mappingListIntegrationInstancesLifecycleStateEnumIgnoreCase := make(map[string]ListIntegrationInstancesLifecycleStateEnum)
+	for k, v := range mappingListIntegrationInstancesLifecycleStateEnum {
+		mappingListIntegrationInstancesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListIntegrationInstancesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListIntegrationInstancesSortOrderEnum Enum with underlying type: string
 type ListIntegrationInstancesSortOrderEnum string
 
@@ -203,6 +214,17 @@ func GetListIntegrationInstancesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListIntegrationInstancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListIntegrationInstancesSortOrderEnum(val string) (ListIntegrationInstancesSortOrderEnum, bool) {
+	mappingListIntegrationInstancesSortOrderEnumIgnoreCase := make(map[string]ListIntegrationInstancesSortOrderEnum)
+	for k, v := range mappingListIntegrationInstancesSortOrderEnum {
+		mappingListIntegrationInstancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListIntegrationInstancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListIntegrationInstancesSortByEnum Enum with underlying type: string
 type ListIntegrationInstancesSortByEnum string
 
@@ -232,4 +254,15 @@ func GetListIntegrationInstancesSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListIntegrationInstancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListIntegrationInstancesSortByEnum(val string) (ListIntegrationInstancesSortByEnum, bool) {
+	mappingListIntegrationInstancesSortByEnumIgnoreCase := make(map[string]ListIntegrationInstancesSortByEnum)
+	for k, v := range mappingListIntegrationInstancesSortByEnum {
+		mappingListIntegrationInstancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListIntegrationInstancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

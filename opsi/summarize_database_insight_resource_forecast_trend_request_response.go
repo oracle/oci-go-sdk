@@ -172,18 +172,18 @@ func (request SummarizeDatabaseInsightResourceForecastTrendRequest) RetryPolicy(
 func (request SummarizeDatabaseInsightResourceForecastTrendRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.DatabaseType {
-		if _, ok := mappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseType: %s. Supported values are: %s.", val, strings.Join(GetSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnum[string(request.Statistic)]; !ok && request.Statistic != "" {
+	if _, ok := GetMappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnum(string(request.Statistic)); !ok && request.Statistic != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Statistic: %s. Supported values are: %s.", request.Statistic, strings.Join(GetSummarizeDatabaseInsightResourceForecastTrendStatisticEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnum[string(request.ForecastModel)]; !ok && request.ForecastModel != "" {
+	if _, ok := GetMappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnum(string(request.ForecastModel)); !ok && request.ForecastModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ForecastModel: %s. Supported values are: %s.", request.ForecastModel, strings.Join(GetSummarizeDatabaseInsightResourceForecastTrendForecastModelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnum[string(request.UtilizationLevel)]; !ok && request.UtilizationLevel != "" {
+	if _, ok := GetMappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnum(string(request.UtilizationLevel)); !ok && request.UtilizationLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UtilizationLevel: %s. Supported values are: %s.", request.UtilizationLevel, strings.Join(GetSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -263,6 +263,17 @@ func GetSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnumStringValue
 	}
 }
 
+// GetMappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum(val string) (SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum, bool) {
+	mappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum)
+	for k, v := range mappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum {
+		mappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeDatabaseInsightResourceForecastTrendStatisticEnum Enum with underlying type: string
 type SummarizeDatabaseInsightResourceForecastTrendStatisticEnum string
 
@@ -292,6 +303,17 @@ func GetSummarizeDatabaseInsightResourceForecastTrendStatisticEnumStringValues()
 		"AVG",
 		"MAX",
 	}
+}
+
+// GetMappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnum(val string) (SummarizeDatabaseInsightResourceForecastTrendStatisticEnum, bool) {
+	mappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceForecastTrendStatisticEnum)
+	for k, v := range mappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnum {
+		mappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // SummarizeDatabaseInsightResourceForecastTrendForecastModelEnum Enum with underlying type: string
@@ -326,6 +348,17 @@ func GetSummarizeDatabaseInsightResourceForecastTrendForecastModelEnumStringValu
 		"ML_AUTO",
 		"ML_NO_AUTO",
 	}
+}
+
+// GetMappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnum(val string) (SummarizeDatabaseInsightResourceForecastTrendForecastModelEnum, bool) {
+	mappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceForecastTrendForecastModelEnum)
+	for k, v := range mappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnum {
+		mappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // SummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnum Enum with underlying type: string
@@ -363,4 +396,15 @@ func GetSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnumStringV
 		"MEDIUM_HIGH_UTILIZATION",
 		"MEDIUM_LOW_UTILIZATION",
 	}
+}
+
+// GetMappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnum(val string) (SummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnum, bool) {
+	mappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnum)
+	for k, v := range mappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnum {
+		mappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

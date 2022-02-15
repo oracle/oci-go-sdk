@@ -83,13 +83,13 @@ func (request ListOdaInstancesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListOdaInstancesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListOdaInstancesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListOdaInstancesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListOdaInstancesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListOdaInstancesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListOdaInstancesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListOdaInstancesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListOdaInstancesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListOdaInstancesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListOdaInstancesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -172,6 +172,17 @@ func GetListOdaInstancesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListOdaInstancesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListOdaInstancesLifecycleStateEnum(val string) (ListOdaInstancesLifecycleStateEnum, bool) {
+	mappingListOdaInstancesLifecycleStateEnumIgnoreCase := make(map[string]ListOdaInstancesLifecycleStateEnum)
+	for k, v := range mappingListOdaInstancesLifecycleStateEnum {
+		mappingListOdaInstancesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListOdaInstancesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListOdaInstancesSortOrderEnum Enum with underlying type: string
 type ListOdaInstancesSortOrderEnum string
 
@@ -203,6 +214,17 @@ func GetListOdaInstancesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListOdaInstancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListOdaInstancesSortOrderEnum(val string) (ListOdaInstancesSortOrderEnum, bool) {
+	mappingListOdaInstancesSortOrderEnumIgnoreCase := make(map[string]ListOdaInstancesSortOrderEnum)
+	for k, v := range mappingListOdaInstancesSortOrderEnum {
+		mappingListOdaInstancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListOdaInstancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListOdaInstancesSortByEnum Enum with underlying type: string
 type ListOdaInstancesSortByEnum string
 
@@ -232,4 +254,15 @@ func GetListOdaInstancesSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListOdaInstancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListOdaInstancesSortByEnum(val string) (ListOdaInstancesSortByEnum, bool) {
+	mappingListOdaInstancesSortByEnumIgnoreCase := make(map[string]ListOdaInstancesSortByEnum)
+	for k, v := range mappingListOdaInstancesSortByEnum {
+		mappingListOdaInstancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListOdaInstancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

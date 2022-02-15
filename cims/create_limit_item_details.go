@@ -69,7 +69,7 @@ func (m CreateLimitItemDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateLimitItemDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreateLimitItemDetailsLimitStatusEnum[string(m.LimitStatus)]; !ok && m.LimitStatus != "" {
+	if _, ok := GetMappingCreateLimitItemDetailsLimitStatusEnum(string(m.LimitStatus)); !ok && m.LimitStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LimitStatus: %s. Supported values are: %s.", m.LimitStatus, strings.Join(GetCreateLimitItemDetailsLimitStatusEnumStringValues(), ",")))
 	}
 
@@ -125,4 +125,15 @@ func GetCreateLimitItemDetailsLimitStatusEnumStringValues() []string {
 		"PARTIALLY_APPROVED",
 		"NOT_APPROVED",
 	}
+}
+
+// GetMappingCreateLimitItemDetailsLimitStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateLimitItemDetailsLimitStatusEnum(val string) (CreateLimitItemDetailsLimitStatusEnum, bool) {
+	mappingCreateLimitItemDetailsLimitStatusEnumIgnoreCase := make(map[string]CreateLimitItemDetailsLimitStatusEnum)
+	for k, v := range mappingCreateLimitItemDetailsLimitStatusEnum {
+		mappingCreateLimitItemDetailsLimitStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateLimitItemDetailsLimitStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

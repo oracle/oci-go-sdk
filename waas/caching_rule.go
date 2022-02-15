@@ -54,7 +54,7 @@ func (m CachingRule) String() string {
 // Not recommended for calling this function directly
 func (m CachingRule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCachingRuleActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingCachingRuleActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetCachingRuleActionEnumStringValues(), ",")))
 	}
 
@@ -93,4 +93,15 @@ func GetCachingRuleActionEnumStringValues() []string {
 		"CACHE",
 		"BYPASS_CACHE",
 	}
+}
+
+// GetMappingCachingRuleActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCachingRuleActionEnum(val string) (CachingRuleActionEnum, bool) {
+	mappingCachingRuleActionEnumIgnoreCase := make(map[string]CachingRuleActionEnum)
+	for k, v := range mappingCachingRuleActionEnum {
+		mappingCachingRuleActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCachingRuleActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

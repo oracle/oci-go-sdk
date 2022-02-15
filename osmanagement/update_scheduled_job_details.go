@@ -69,16 +69,16 @@ func (m UpdateScheduledJobDetails) String() string {
 func (m UpdateScheduledJobDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingScheduleTypesEnum[string(m.ScheduleType)]; !ok && m.ScheduleType != "" {
+	if _, ok := GetMappingScheduleTypesEnum(string(m.ScheduleType)); !ok && m.ScheduleType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ScheduleType: %s. Supported values are: %s.", m.ScheduleType, strings.Join(GetScheduleTypesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingIntervalTypesEnum[string(m.IntervalType)]; !ok && m.IntervalType != "" {
+	if _, ok := GetMappingIntervalTypesEnum(string(m.IntervalType)); !ok && m.IntervalType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IntervalType: %s. Supported values are: %s.", m.IntervalType, strings.Join(GetIntervalTypesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingOperationTypesEnum[string(m.OperationType)]; !ok && m.OperationType != "" {
+	if _, ok := GetMappingOperationTypesEnum(string(m.OperationType)); !ok && m.OperationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OperationType: %s. Supported values are: %s.", m.OperationType, strings.Join(GetOperationTypesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPackageUpdateTypesEnum[string(m.UpdateType)]; !ok && m.UpdateType != "" {
+	if _, ok := GetMappingPackageUpdateTypesEnum(string(m.UpdateType)); !ok && m.UpdateType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateType: %s. Supported values are: %s.", m.UpdateType, strings.Join(GetPackageUpdateTypesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

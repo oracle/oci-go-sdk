@@ -94,10 +94,10 @@ func (request ListDerivedLogicalEntitiesRequest) RetryPolicy() *common.RetryPoli
 // Not recommended for calling this function directly
 func (request ListDerivedLogicalEntitiesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDerivedLogicalEntitiesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDerivedLogicalEntitiesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDerivedLogicalEntitiesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDerivedLogicalEntitiesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDerivedLogicalEntitiesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDerivedLogicalEntitiesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -160,6 +160,17 @@ func GetListDerivedLogicalEntitiesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDerivedLogicalEntitiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDerivedLogicalEntitiesSortByEnum(val string) (ListDerivedLogicalEntitiesSortByEnum, bool) {
+	mappingListDerivedLogicalEntitiesSortByEnumIgnoreCase := make(map[string]ListDerivedLogicalEntitiesSortByEnum)
+	for k, v := range mappingListDerivedLogicalEntitiesSortByEnum {
+		mappingListDerivedLogicalEntitiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDerivedLogicalEntitiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDerivedLogicalEntitiesSortOrderEnum Enum with underlying type: string
 type ListDerivedLogicalEntitiesSortOrderEnum string
 
@@ -189,4 +200,15 @@ func GetListDerivedLogicalEntitiesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListDerivedLogicalEntitiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDerivedLogicalEntitiesSortOrderEnum(val string) (ListDerivedLogicalEntitiesSortOrderEnum, bool) {
+	mappingListDerivedLogicalEntitiesSortOrderEnumIgnoreCase := make(map[string]ListDerivedLogicalEntitiesSortOrderEnum)
+	for k, v := range mappingListDerivedLogicalEntitiesSortOrderEnum {
+		mappingListDerivedLogicalEntitiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDerivedLogicalEntitiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

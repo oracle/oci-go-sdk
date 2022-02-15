@@ -37,7 +37,7 @@ func (m ExadataIormConfigUpdateDetails) String() string {
 func (m ExadataIormConfigUpdateDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingExadataIormConfigUpdateDetailsObjectiveEnum[string(m.Objective)]; !ok && m.Objective != "" {
+	if _, ok := GetMappingExadataIormConfigUpdateDetailsObjectiveEnum(string(m.Objective)); !ok && m.Objective != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Objective: %s. Supported values are: %s.", m.Objective, strings.Join(GetExadataIormConfigUpdateDetailsObjectiveEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -84,4 +84,15 @@ func GetExadataIormConfigUpdateDetailsObjectiveEnumStringValues() []string {
 		"AUTO",
 		"BASIC",
 	}
+}
+
+// GetMappingExadataIormConfigUpdateDetailsObjectiveEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExadataIormConfigUpdateDetailsObjectiveEnum(val string) (ExadataIormConfigUpdateDetailsObjectiveEnum, bool) {
+	mappingExadataIormConfigUpdateDetailsObjectiveEnumIgnoreCase := make(map[string]ExadataIormConfigUpdateDetailsObjectiveEnum)
+	for k, v := range mappingExadataIormConfigUpdateDetailsObjectiveEnum {
+		mappingExadataIormConfigUpdateDetailsObjectiveEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExadataIormConfigUpdateDetailsObjectiveEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

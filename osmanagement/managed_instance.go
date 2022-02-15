@@ -109,10 +109,10 @@ func (m ManagedInstance) String() string {
 func (m ManagedInstance) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingManagedInstanceStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingManagedInstanceStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetManagedInstanceStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingOsFamiliesEnum[string(m.OsFamily)]; !ok && m.OsFamily != "" {
+	if _, ok := GetMappingOsFamiliesEnum(string(m.OsFamily)); !ok && m.OsFamily != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OsFamily: %s. Supported values are: %s.", m.OsFamily, strings.Join(GetOsFamiliesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -156,4 +156,15 @@ func GetManagedInstanceStatusEnumStringValues() []string {
 		"ERROR",
 		"WARNING",
 	}
+}
+
+// GetMappingManagedInstanceStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingManagedInstanceStatusEnum(val string) (ManagedInstanceStatusEnum, bool) {
+	mappingManagedInstanceStatusEnumIgnoreCase := make(map[string]ManagedInstanceStatusEnum)
+	for k, v := range mappingManagedInstanceStatusEnum {
+		mappingManagedInstanceStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingManagedInstanceStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -82,7 +82,7 @@ func (m ApiSummary) String() string {
 func (m ApiSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingApiSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingApiSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetApiSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -132,4 +132,15 @@ func GetApiSummaryLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingApiSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingApiSummaryLifecycleStateEnum(val string) (ApiSummaryLifecycleStateEnum, bool) {
+	mappingApiSummaryLifecycleStateEnumIgnoreCase := make(map[string]ApiSummaryLifecycleStateEnum)
+	for k, v := range mappingApiSummaryLifecycleStateEnum {
+		mappingApiSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingApiSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

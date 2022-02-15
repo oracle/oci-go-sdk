@@ -53,7 +53,7 @@ func (m UpdateCertificateManagedExternallyIssuedByInternalCaConfigDetails) Strin
 func (m UpdateCertificateManagedExternallyIssuedByInternalCaConfigDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateCertificateConfigDetailsStageEnum[string(m.Stage)]; !ok && m.Stage != "" {
+	if _, ok := GetMappingUpdateCertificateConfigDetailsStageEnum(string(m.Stage)); !ok && m.Stage != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stage: %s. Supported values are: %s.", m.Stage, strings.Join(GetUpdateCertificateConfigDetailsStageEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

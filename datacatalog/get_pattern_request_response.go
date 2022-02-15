@@ -67,7 +67,7 @@ func (request GetPatternRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetPatternRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetPatternFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetPatternFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetPatternFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -160,4 +160,15 @@ func GetGetPatternFieldsEnumStringValues() []string {
 		"updatedById",
 		"properties",
 	}
+}
+
+// GetMappingGetPatternFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetPatternFieldsEnum(val string) (GetPatternFieldsEnum, bool) {
+	mappingGetPatternFieldsEnumIgnoreCase := make(map[string]GetPatternFieldsEnum)
+	for k, v := range mappingGetPatternFieldsEnum {
+		mappingGetPatternFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetPatternFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

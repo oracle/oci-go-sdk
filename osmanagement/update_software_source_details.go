@@ -56,7 +56,7 @@ func (m UpdateSoftwareSourceDetails) String() string {
 func (m UpdateSoftwareSourceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingChecksumTypesEnum[string(m.ChecksumType)]; !ok && m.ChecksumType != "" {
+	if _, ok := GetMappingChecksumTypesEnum(string(m.ChecksumType)); !ok && m.ChecksumType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ChecksumType: %s. Supported values are: %s.", m.ChecksumType, strings.Join(GetChecksumTypesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

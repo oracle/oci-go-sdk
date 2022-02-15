@@ -57,7 +57,7 @@ func (m UpdateMaskingColumnDetails) String() string {
 func (m UpdateMaskingColumnDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingObjectTypeEnum[string(m.ObjectType)]; !ok && m.ObjectType != "" {
+	if _, ok := GetMappingObjectTypeEnum(string(m.ObjectType)); !ok && m.ObjectType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ObjectType: %s. Supported values are: %s.", m.ObjectType, strings.Join(GetObjectTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

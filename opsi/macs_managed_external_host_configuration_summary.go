@@ -194,7 +194,7 @@ func (m MacsManagedExternalHostConfigurationSummary) String() string {
 func (m MacsManagedExternalHostConfigurationSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingHostConfigurationSummaryPlatformTypeEnum[string(m.PlatformType)]; !ok && m.PlatformType != "" {
+	if _, ok := GetMappingHostConfigurationSummaryPlatformTypeEnum(string(m.PlatformType)); !ok && m.PlatformType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", m.PlatformType, strings.Join(GetHostConfigurationSummaryPlatformTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

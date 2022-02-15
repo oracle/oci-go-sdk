@@ -79,7 +79,7 @@ func (request ListMaskingAnalyticsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListMaskingAnalyticsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListMaskingAnalyticsGroupByEnum[string(request.GroupBy)]; !ok && request.GroupBy != "" {
+	if _, ok := GetMappingListMaskingAnalyticsGroupByEnum(string(request.GroupBy)); !ok && request.GroupBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for GroupBy: %s. Supported values are: %s.", request.GroupBy, strings.Join(GetListMaskingAnalyticsGroupByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -147,4 +147,15 @@ func GetListMaskingAnalyticsGroupByEnumStringValues() []string {
 		"targetId",
 		"policyId",
 	}
+}
+
+// GetMappingListMaskingAnalyticsGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMaskingAnalyticsGroupByEnum(val string) (ListMaskingAnalyticsGroupByEnum, bool) {
+	mappingListMaskingAnalyticsGroupByEnumIgnoreCase := make(map[string]ListMaskingAnalyticsGroupByEnum)
+	for k, v := range mappingListMaskingAnalyticsGroupByEnum {
+		mappingListMaskingAnalyticsGroupByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMaskingAnalyticsGroupByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

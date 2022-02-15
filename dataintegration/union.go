@@ -129,7 +129,7 @@ func (m Union) String() string {
 // Not recommended for calling this function directly
 func (m Union) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUnionUnionTypeEnum[string(m.UnionType)]; !ok && m.UnionType != "" {
+	if _, ok := GetMappingUnionUnionTypeEnum(string(m.UnionType)); !ok && m.UnionType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UnionType: %s. Supported values are: %s.", m.UnionType, strings.Join(GetUnionUnionTypeEnumStringValues(), ",")))
 	}
 
@@ -182,4 +182,15 @@ func GetUnionUnionTypeEnumStringValues() []string {
 		"NAME",
 		"POSITION",
 	}
+}
+
+// GetMappingUnionUnionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUnionUnionTypeEnum(val string) (UnionUnionTypeEnum, bool) {
+	mappingUnionUnionTypeEnumIgnoreCase := make(map[string]UnionUnionTypeEnum)
+	for k, v := range mappingUnionUnionTypeEnum {
+		mappingUnionUnionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUnionUnionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

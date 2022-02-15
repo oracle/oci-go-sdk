@@ -125,3 +125,14 @@ func GetResolverRuleActionEnumStringValues() []string {
 		"FORWARD",
 	}
 }
+
+// GetMappingResolverRuleActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResolverRuleActionEnum(val string) (ResolverRuleActionEnum, bool) {
+	mappingResolverRuleActionEnumIgnoreCase := make(map[string]ResolverRuleActionEnum)
+	for k, v := range mappingResolverRuleActionEnum {
+		mappingResolverRuleActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResolverRuleActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

@@ -103,10 +103,10 @@ func (m MaskingPolicy) String() string {
 // Not recommended for calling this function directly
 func (m MaskingPolicy) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingMaskingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingMaskingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetMaskingLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingMaskingPolicyRecompileEnum[string(m.Recompile)]; !ok && m.Recompile != "" {
+	if _, ok := GetMappingMaskingPolicyRecompileEnum(string(m.Recompile)); !ok && m.Recompile != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Recompile: %s. Supported values are: %s.", m.Recompile, strings.Join(GetMaskingPolicyRecompileEnumStringValues(), ",")))
 	}
 
@@ -220,4 +220,15 @@ func GetMaskingPolicyRecompileEnumStringValues() []string {
 		"PARALLEL",
 		"NONE",
 	}
+}
+
+// GetMappingMaskingPolicyRecompileEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMaskingPolicyRecompileEnum(val string) (MaskingPolicyRecompileEnum, bool) {
+	mappingMaskingPolicyRecompileEnumIgnoreCase := make(map[string]MaskingPolicyRecompileEnum)
+	for k, v := range mappingMaskingPolicyRecompileEnum {
+		mappingMaskingPolicyRecompileEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMaskingPolicyRecompileEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

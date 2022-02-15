@@ -169,3 +169,14 @@ func GetInstanceConfigurationLaunchInstancePlatformConfigTypeEnumStringValues() 
 		"INTEL_VM",
 	}
 }
+
+// GetMappingInstanceConfigurationLaunchInstancePlatformConfigTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstanceConfigurationLaunchInstancePlatformConfigTypeEnum(val string) (InstanceConfigurationLaunchInstancePlatformConfigTypeEnum, bool) {
+	mappingInstanceConfigurationLaunchInstancePlatformConfigTypeEnumIgnoreCase := make(map[string]InstanceConfigurationLaunchInstancePlatformConfigTypeEnum)
+	for k, v := range mappingInstanceConfigurationLaunchInstancePlatformConfigTypeEnum {
+		mappingInstanceConfigurationLaunchInstancePlatformConfigTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstanceConfigurationLaunchInstancePlatformConfigTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

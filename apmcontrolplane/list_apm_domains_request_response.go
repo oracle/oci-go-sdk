@@ -78,13 +78,13 @@ func (request ListApmDomainsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListApmDomainsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListApmDomainsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListApmDomainsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListApmDomainsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListApmDomainsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListApmDomainsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListApmDomainsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListApmDomainsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListApmDomainsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListApmDomainsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -164,6 +164,17 @@ func GetListApmDomainsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListApmDomainsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListApmDomainsLifecycleStateEnum(val string) (ListApmDomainsLifecycleStateEnum, bool) {
+	mappingListApmDomainsLifecycleStateEnumIgnoreCase := make(map[string]ListApmDomainsLifecycleStateEnum)
+	for k, v := range mappingListApmDomainsLifecycleStateEnum {
+		mappingListApmDomainsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListApmDomainsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListApmDomainsSortOrderEnum Enum with underlying type: string
 type ListApmDomainsSortOrderEnum string
 
@@ -195,6 +206,17 @@ func GetListApmDomainsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListApmDomainsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListApmDomainsSortOrderEnum(val string) (ListApmDomainsSortOrderEnum, bool) {
+	mappingListApmDomainsSortOrderEnumIgnoreCase := make(map[string]ListApmDomainsSortOrderEnum)
+	for k, v := range mappingListApmDomainsSortOrderEnum {
+		mappingListApmDomainsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListApmDomainsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListApmDomainsSortByEnum Enum with underlying type: string
 type ListApmDomainsSortByEnum string
 
@@ -224,4 +246,15 @@ func GetListApmDomainsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListApmDomainsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListApmDomainsSortByEnum(val string) (ListApmDomainsSortByEnum, bool) {
+	mappingListApmDomainsSortByEnumIgnoreCase := make(map[string]ListApmDomainsSortByEnum)
+	for k, v := range mappingListApmDomainsSortByEnum {
+		mappingListApmDomainsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListApmDomainsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

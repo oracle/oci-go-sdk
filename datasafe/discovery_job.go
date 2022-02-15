@@ -117,10 +117,10 @@ func (m DiscoveryJob) String() string {
 // Not recommended for calling this function directly
 func (m DiscoveryJob) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDiscoveryJobDiscoveryTypeEnum[string(m.DiscoveryType)]; !ok && m.DiscoveryType != "" {
+	if _, ok := GetMappingDiscoveryJobDiscoveryTypeEnum(string(m.DiscoveryType)); !ok && m.DiscoveryType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DiscoveryType: %s. Supported values are: %s.", m.DiscoveryType, strings.Join(GetDiscoveryJobDiscoveryTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDiscoveryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDiscoveryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDiscoveryLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -165,4 +165,15 @@ func GetDiscoveryJobDiscoveryTypeEnumStringValues() []string {
 		"MODIFIED",
 		"DELETED",
 	}
+}
+
+// GetMappingDiscoveryJobDiscoveryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDiscoveryJobDiscoveryTypeEnum(val string) (DiscoveryJobDiscoveryTypeEnum, bool) {
+	mappingDiscoveryJobDiscoveryTypeEnumIgnoreCase := make(map[string]DiscoveryJobDiscoveryTypeEnum)
+	for k, v := range mappingDiscoveryJobDiscoveryTypeEnum {
+		mappingDiscoveryJobDiscoveryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDiscoveryJobDiscoveryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

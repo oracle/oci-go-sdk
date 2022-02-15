@@ -67,7 +67,7 @@ func (request GetGlossaryRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetGlossaryRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetGlossaryFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetGlossaryFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetGlossaryFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -163,4 +163,15 @@ func GetGetGlossaryFieldsEnumStringValues() []string {
 		"workflowStatus",
 		"uri",
 	}
+}
+
+// GetMappingGetGlossaryFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetGlossaryFieldsEnum(val string) (GetGlossaryFieldsEnum, bool) {
+	mappingGetGlossaryFieldsEnumIgnoreCase := make(map[string]GetGlossaryFieldsEnum)
+	for k, v := range mappingGetGlossaryFieldsEnum {
+		mappingGetGlossaryFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetGlossaryFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

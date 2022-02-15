@@ -105,35 +105,35 @@ func (m User) String() string {
 // Not recommended for calling this function directly
 func (m User) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUserStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingUserStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetUserStatusEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingUserEditionsEnabledEnum[string(m.EditionsEnabled)]; !ok && m.EditionsEnabled != "" {
+	if _, ok := GetMappingUserEditionsEnabledEnum(string(m.EditionsEnabled)); !ok && m.EditionsEnabled != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EditionsEnabled: %s. Supported values are: %s.", m.EditionsEnabled, strings.Join(GetUserEditionsEnabledEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUserAuthenticationEnum[string(m.Authentication)]; !ok && m.Authentication != "" {
+	if _, ok := GetMappingUserAuthenticationEnum(string(m.Authentication)); !ok && m.Authentication != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Authentication: %s. Supported values are: %s.", m.Authentication, strings.Join(GetUserAuthenticationEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUserProxyConnectEnum[string(m.ProxyConnect)]; !ok && m.ProxyConnect != "" {
+	if _, ok := GetMappingUserProxyConnectEnum(string(m.ProxyConnect)); !ok && m.ProxyConnect != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProxyConnect: %s. Supported values are: %s.", m.ProxyConnect, strings.Join(GetUserProxyConnectEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUserCommonEnum[string(m.Common)]; !ok && m.Common != "" {
+	if _, ok := GetMappingUserCommonEnum(string(m.Common)); !ok && m.Common != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Common: %s. Supported values are: %s.", m.Common, strings.Join(GetUserCommonEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUserOracleMaintainedEnum[string(m.OracleMaintained)]; !ok && m.OracleMaintained != "" {
+	if _, ok := GetMappingUserOracleMaintainedEnum(string(m.OracleMaintained)); !ok && m.OracleMaintained != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OracleMaintained: %s. Supported values are: %s.", m.OracleMaintained, strings.Join(GetUserOracleMaintainedEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUserInheritedEnum[string(m.Inherited)]; !ok && m.Inherited != "" {
+	if _, ok := GetMappingUserInheritedEnum(string(m.Inherited)); !ok && m.Inherited != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Inherited: %s. Supported values are: %s.", m.Inherited, strings.Join(GetUserInheritedEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUserImplicitEnum[string(m.Implicit)]; !ok && m.Implicit != "" {
+	if _, ok := GetMappingUserImplicitEnum(string(m.Implicit)); !ok && m.Implicit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Implicit: %s. Supported values are: %s.", m.Implicit, strings.Join(GetUserImplicitEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUserAllSharedEnum[string(m.AllShared)]; !ok && m.AllShared != "" {
+	if _, ok := GetMappingUserAllSharedEnum(string(m.AllShared)); !ok && m.AllShared != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AllShared: %s. Supported values are: %s.", m.AllShared, strings.Join(GetUserAllSharedEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUserExternalSharedEnum[string(m.ExternalShared)]; !ok && m.ExternalShared != "" {
+	if _, ok := GetMappingUserExternalSharedEnum(string(m.ExternalShared)); !ok && m.ExternalShared != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExternalShared: %s. Supported values are: %s.", m.ExternalShared, strings.Join(GetUserExternalSharedEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -212,6 +212,17 @@ func GetUserStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingUserStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserStatusEnum(val string) (UserStatusEnum, bool) {
+	mappingUserStatusEnumIgnoreCase := make(map[string]UserStatusEnum)
+	for k, v := range mappingUserStatusEnum {
+		mappingUserStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UserEditionsEnabledEnum Enum with underlying type: string
 type UserEditionsEnabledEnum string
 
@@ -241,6 +252,17 @@ func GetUserEditionsEnabledEnumStringValues() []string {
 		"YES",
 		"NO",
 	}
+}
+
+// GetMappingUserEditionsEnabledEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserEditionsEnabledEnum(val string) (UserEditionsEnabledEnum, bool) {
+	mappingUserEditionsEnabledEnumIgnoreCase := make(map[string]UserEditionsEnabledEnum)
+	for k, v := range mappingUserEditionsEnabledEnum {
+		mappingUserEditionsEnabledEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserEditionsEnabledEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // UserAuthenticationEnum Enum with underlying type: string
@@ -280,6 +302,17 @@ func GetUserAuthenticationEnumStringValues() []string {
 	}
 }
 
+// GetMappingUserAuthenticationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserAuthenticationEnum(val string) (UserAuthenticationEnum, bool) {
+	mappingUserAuthenticationEnumIgnoreCase := make(map[string]UserAuthenticationEnum)
+	for k, v := range mappingUserAuthenticationEnum {
+		mappingUserAuthenticationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserAuthenticationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UserProxyConnectEnum Enum with underlying type: string
 type UserProxyConnectEnum string
 
@@ -309,6 +342,17 @@ func GetUserProxyConnectEnumStringValues() []string {
 		"YES",
 		"NO",
 	}
+}
+
+// GetMappingUserProxyConnectEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserProxyConnectEnum(val string) (UserProxyConnectEnum, bool) {
+	mappingUserProxyConnectEnumIgnoreCase := make(map[string]UserProxyConnectEnum)
+	for k, v := range mappingUserProxyConnectEnum {
+		mappingUserProxyConnectEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserProxyConnectEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // UserCommonEnum Enum with underlying type: string
@@ -342,6 +386,17 @@ func GetUserCommonEnumStringValues() []string {
 	}
 }
 
+// GetMappingUserCommonEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserCommonEnum(val string) (UserCommonEnum, bool) {
+	mappingUserCommonEnumIgnoreCase := make(map[string]UserCommonEnum)
+	for k, v := range mappingUserCommonEnum {
+		mappingUserCommonEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserCommonEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UserOracleMaintainedEnum Enum with underlying type: string
 type UserOracleMaintainedEnum string
 
@@ -371,6 +426,17 @@ func GetUserOracleMaintainedEnumStringValues() []string {
 		"YES",
 		"NO",
 	}
+}
+
+// GetMappingUserOracleMaintainedEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserOracleMaintainedEnum(val string) (UserOracleMaintainedEnum, bool) {
+	mappingUserOracleMaintainedEnumIgnoreCase := make(map[string]UserOracleMaintainedEnum)
+	for k, v := range mappingUserOracleMaintainedEnum {
+		mappingUserOracleMaintainedEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserOracleMaintainedEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // UserInheritedEnum Enum with underlying type: string
@@ -404,6 +470,17 @@ func GetUserInheritedEnumStringValues() []string {
 	}
 }
 
+// GetMappingUserInheritedEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserInheritedEnum(val string) (UserInheritedEnum, bool) {
+	mappingUserInheritedEnumIgnoreCase := make(map[string]UserInheritedEnum)
+	for k, v := range mappingUserInheritedEnum {
+		mappingUserInheritedEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserInheritedEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UserImplicitEnum Enum with underlying type: string
 type UserImplicitEnum string
 
@@ -433,6 +510,17 @@ func GetUserImplicitEnumStringValues() []string {
 		"YES",
 		"NO",
 	}
+}
+
+// GetMappingUserImplicitEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserImplicitEnum(val string) (UserImplicitEnum, bool) {
+	mappingUserImplicitEnumIgnoreCase := make(map[string]UserImplicitEnum)
+	for k, v := range mappingUserImplicitEnum {
+		mappingUserImplicitEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserImplicitEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // UserAllSharedEnum Enum with underlying type: string
@@ -466,6 +554,17 @@ func GetUserAllSharedEnumStringValues() []string {
 	}
 }
 
+// GetMappingUserAllSharedEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserAllSharedEnum(val string) (UserAllSharedEnum, bool) {
+	mappingUserAllSharedEnumIgnoreCase := make(map[string]UserAllSharedEnum)
+	for k, v := range mappingUserAllSharedEnum {
+		mappingUserAllSharedEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserAllSharedEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UserExternalSharedEnum Enum with underlying type: string
 type UserExternalSharedEnum string
 
@@ -495,4 +594,15 @@ func GetUserExternalSharedEnumStringValues() []string {
 		"YES",
 		"NO",
 	}
+}
+
+// GetMappingUserExternalSharedEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserExternalSharedEnum(val string) (UserExternalSharedEnum, bool) {
+	mappingUserExternalSharedEnumIgnoreCase := make(map[string]UserExternalSharedEnum)
+	for k, v := range mappingUserExternalSharedEnum {
+		mappingUserExternalSharedEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserExternalSharedEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

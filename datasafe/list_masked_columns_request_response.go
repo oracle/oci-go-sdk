@@ -90,14 +90,14 @@ func (request ListMaskedColumnsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListMaskedColumnsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListMaskedColumnsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListMaskedColumnsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListMaskedColumnsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListMaskedColumnsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListMaskedColumnsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListMaskedColumnsSortByEnumStringValues(), ",")))
 	}
 	for _, val := range request.ObjectType {
-		if _, ok := mappingListMaskedColumnsObjectTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListMaskedColumnsObjectTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ObjectType: %s. Supported values are: %s.", val, strings.Join(GetListMaskedColumnsObjectTypeEnumStringValues(), ",")))
 		}
 	}
@@ -169,6 +169,17 @@ func GetListMaskedColumnsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListMaskedColumnsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMaskedColumnsSortOrderEnum(val string) (ListMaskedColumnsSortOrderEnum, bool) {
+	mappingListMaskedColumnsSortOrderEnumIgnoreCase := make(map[string]ListMaskedColumnsSortOrderEnum)
+	for k, v := range mappingListMaskedColumnsSortOrderEnum {
+		mappingListMaskedColumnsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMaskedColumnsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListMaskedColumnsSortByEnum Enum with underlying type: string
 type ListMaskedColumnsSortByEnum string
 
@@ -198,6 +209,17 @@ func GetListMaskedColumnsSortByEnumStringValues() []string {
 		"schemaName",
 		"objectName",
 	}
+}
+
+// GetMappingListMaskedColumnsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMaskedColumnsSortByEnum(val string) (ListMaskedColumnsSortByEnum, bool) {
+	mappingListMaskedColumnsSortByEnumIgnoreCase := make(map[string]ListMaskedColumnsSortByEnum)
+	for k, v := range mappingListMaskedColumnsSortByEnum {
+		mappingListMaskedColumnsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMaskedColumnsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListMaskedColumnsObjectTypeEnum Enum with underlying type: string
@@ -232,4 +254,15 @@ func GetListMaskedColumnsObjectTypeEnumStringValues() []string {
 		"TABLE",
 		"EDITIONING_VIEW",
 	}
+}
+
+// GetMappingListMaskedColumnsObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMaskedColumnsObjectTypeEnum(val string) (ListMaskedColumnsObjectTypeEnum, bool) {
+	mappingListMaskedColumnsObjectTypeEnumIgnoreCase := make(map[string]ListMaskedColumnsObjectTypeEnum)
+	for k, v := range mappingListMaskedColumnsObjectTypeEnum {
+		mappingListMaskedColumnsObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMaskedColumnsObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -78,10 +78,10 @@ func (m LogAnalyticsObjectCollectionRuleSummary) String() string {
 // Not recommended for calling this function directly
 func (m LogAnalyticsObjectCollectionRuleSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingObjectCollectionRuleCollectionTypesEnum[string(m.CollectionType)]; !ok && m.CollectionType != "" {
+	if _, ok := GetMappingObjectCollectionRuleCollectionTypesEnum(string(m.CollectionType)); !ok && m.CollectionType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CollectionType: %s. Supported values are: %s.", m.CollectionType, strings.Join(GetObjectCollectionRuleCollectionTypesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingObjectCollectionRuleLifecycleStatesEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingObjectCollectionRuleLifecycleStatesEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetObjectCollectionRuleLifecycleStatesEnumStringValues(), ",")))
 	}
 

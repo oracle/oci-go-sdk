@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // ReportLifecycleStateEnum Enum with underlying type: string
 type ReportLifecycleStateEnum string
 
@@ -38,4 +42,15 @@ func GetReportLifecycleStateEnumStringValues() []string {
 		"UPDATING",
 		"ACTIVE",
 	}
+}
+
+// GetMappingReportLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingReportLifecycleStateEnum(val string) (ReportLifecycleStateEnum, bool) {
+	mappingReportLifecycleStateEnumIgnoreCase := make(map[string]ReportLifecycleStateEnum)
+	for k, v := range mappingReportLifecycleStateEnum {
+		mappingReportLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingReportLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

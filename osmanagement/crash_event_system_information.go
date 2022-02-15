@@ -51,10 +51,10 @@ func (m CrashEventSystemInformation) String() string {
 func (m CrashEventSystemInformation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingArchTypesEnum[string(m.Architecture)]; !ok && m.Architecture != "" {
+	if _, ok := GetMappingArchTypesEnum(string(m.Architecture)); !ok && m.Architecture != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Architecture: %s. Supported values are: %s.", m.Architecture, strings.Join(GetArchTypesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingOsFamiliesEnum[string(m.OsFamily)]; !ok && m.OsFamily != "" {
+	if _, ok := GetMappingOsFamiliesEnum(string(m.OsFamily)); !ok && m.OsFamily != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OsFamily: %s. Supported values are: %s.", m.OsFamily, strings.Join(GetOsFamiliesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

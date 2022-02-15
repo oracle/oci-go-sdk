@@ -55,7 +55,7 @@ func (m InstancePoolLoadBalancerAttachment) String() string {
 // Not recommended for calling this function directly
 func (m InstancePoolLoadBalancerAttachment) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingInstancePoolLoadBalancerAttachmentLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingInstancePoolLoadBalancerAttachmentLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetInstancePoolLoadBalancerAttachmentLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -100,4 +100,15 @@ func GetInstancePoolLoadBalancerAttachmentLifecycleStateEnumStringValues() []str
 		"DETACHING",
 		"DETACHED",
 	}
+}
+
+// GetMappingInstancePoolLoadBalancerAttachmentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstancePoolLoadBalancerAttachmentLifecycleStateEnum(val string) (InstancePoolLoadBalancerAttachmentLifecycleStateEnum, bool) {
+	mappingInstancePoolLoadBalancerAttachmentLifecycleStateEnumIgnoreCase := make(map[string]InstancePoolLoadBalancerAttachmentLifecycleStateEnum)
+	for k, v := range mappingInstancePoolLoadBalancerAttachmentLifecycleStateEnum {
+		mappingInstancePoolLoadBalancerAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstancePoolLoadBalancerAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

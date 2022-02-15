@@ -86,10 +86,10 @@ func (request ListProjectsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListProjectsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListProjectsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListProjectsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListProjectsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListProjectsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListProjectsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListProjectsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -161,6 +161,17 @@ func GetListProjectsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListProjectsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProjectsSortOrderEnum(val string) (ListProjectsSortOrderEnum, bool) {
+	mappingListProjectsSortOrderEnumIgnoreCase := make(map[string]ListProjectsSortOrderEnum)
+	for k, v := range mappingListProjectsSortOrderEnum {
+		mappingListProjectsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProjectsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListProjectsSortByEnum Enum with underlying type: string
 type ListProjectsSortByEnum string
 
@@ -190,4 +201,15 @@ func GetListProjectsSortByEnumStringValues() []string {
 		"TIME_CREATED",
 		"DISPLAY_NAME",
 	}
+}
+
+// GetMappingListProjectsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProjectsSortByEnum(val string) (ListProjectsSortByEnum, bool) {
+	mappingListProjectsSortByEnumIgnoreCase := make(map[string]ListProjectsSortByEnum)
+	for k, v := range mappingListProjectsSortByEnum {
+		mappingListProjectsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProjectsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -109,3 +109,14 @@ func GetConditionKindEnumStringValues() []string {
 		"SIMPLE",
 	}
 }
+
+// GetMappingConditionKindEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConditionKindEnum(val string) (ConditionKindEnum, bool) {
+	mappingConditionKindEnumIgnoreCase := make(map[string]ConditionKindEnum)
+	for k, v := range mappingConditionKindEnum {
+		mappingConditionKindEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConditionKindEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

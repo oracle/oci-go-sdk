@@ -9,6 +9,10 @@
 
 package loganalytics
 
+import (
+	"strings"
+)
+
 // ObjectCollectionRuleCollectionTypesEnum Enum with underlying type: string
 type ObjectCollectionRuleCollectionTypesEnum string
 
@@ -41,4 +45,15 @@ func GetObjectCollectionRuleCollectionTypesEnumStringValues() []string {
 		"HISTORIC",
 		"HISTORIC_LIVE",
 	}
+}
+
+// GetMappingObjectCollectionRuleCollectionTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingObjectCollectionRuleCollectionTypesEnum(val string) (ObjectCollectionRuleCollectionTypesEnum, bool) {
+	mappingObjectCollectionRuleCollectionTypesEnumIgnoreCase := make(map[string]ObjectCollectionRuleCollectionTypesEnum)
+	for k, v := range mappingObjectCollectionRuleCollectionTypesEnum {
+		mappingObjectCollectionRuleCollectionTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingObjectCollectionRuleCollectionTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

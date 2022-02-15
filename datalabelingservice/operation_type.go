@@ -9,6 +9,10 @@
 
 package datalabelingservice
 
+import (
+	"strings"
+)
+
 // OperationTypeEnum Enum with underlying type: string
 type OperationTypeEnum string
 
@@ -56,4 +60,15 @@ func GetOperationTypeEnumStringValues() []string {
 		"REMOVE_DATASET_LABELS",
 		"RENAME_DATASET_LABELS",
 	}
+}
+
+// GetMappingOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOperationTypeEnum(val string) (OperationTypeEnum, bool) {
+	mappingOperationTypeEnumIgnoreCase := make(map[string]OperationTypeEnum)
+	for k, v := range mappingOperationTypeEnum {
+		mappingOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

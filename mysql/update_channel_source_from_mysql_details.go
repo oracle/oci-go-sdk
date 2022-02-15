@@ -53,7 +53,7 @@ func (m UpdateChannelSourceFromMysqlDetails) String() string {
 func (m UpdateChannelSourceFromMysqlDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingChannelSourceMysqlSslModeEnum[string(m.SslMode)]; !ok && m.SslMode != "" {
+	if _, ok := GetMappingChannelSourceMysqlSslModeEnum(string(m.SslMode)); !ok && m.SslMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SslMode: %s. Supported values are: %s.", m.SslMode, strings.Join(GetChannelSourceMysqlSslModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

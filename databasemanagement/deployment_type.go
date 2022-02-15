@@ -11,6 +11,10 @@
 
 package databasemanagement
 
+import (
+	"strings"
+)
+
 // DeploymentTypeEnum Enum with underlying type: string
 type DeploymentTypeEnum string
 
@@ -52,4 +56,15 @@ func GetDeploymentTypeEnumStringValues() []string {
 		"EXADATA_CC",
 		"AUTONOMOUS",
 	}
+}
+
+// GetMappingDeploymentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeploymentTypeEnum(val string) (DeploymentTypeEnum, bool) {
+	mappingDeploymentTypeEnumIgnoreCase := make(map[string]DeploymentTypeEnum)
+	for k, v := range mappingDeploymentTypeEnum {
+		mappingDeploymentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeploymentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

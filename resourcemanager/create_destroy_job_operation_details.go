@@ -39,7 +39,7 @@ func (m CreateDestroyJobOperationDetails) String() string {
 func (m CreateDestroyJobOperationDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDestroyJobOperationDetailsExecutionPlanStrategyEnum[string(m.ExecutionPlanStrategy)]; !ok && m.ExecutionPlanStrategy != "" {
+	if _, ok := GetMappingDestroyJobOperationDetailsExecutionPlanStrategyEnum(string(m.ExecutionPlanStrategy)); !ok && m.ExecutionPlanStrategy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExecutionPlanStrategy: %s. Supported values are: %s.", m.ExecutionPlanStrategy, strings.Join(GetDestroyJobOperationDetailsExecutionPlanStrategyEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

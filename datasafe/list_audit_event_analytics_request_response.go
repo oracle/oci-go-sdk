@@ -122,25 +122,25 @@ func (request ListAuditEventAnalyticsRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListAuditEventAnalyticsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAuditEventAnalyticsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListAuditEventAnalyticsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListAuditEventAnalyticsAccessLevelEnumStringValues(), ",")))
 	}
 	for _, val := range request.SummaryField {
-		if _, ok := mappingListAuditEventAnalyticsSummaryFieldEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListAuditEventAnalyticsSummaryFieldEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SummaryField: %s. Supported values are: %s.", val, strings.Join(GetListAuditEventAnalyticsSummaryFieldEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range request.GroupBy {
-		if _, ok := mappingListAuditEventAnalyticsGroupByEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListAuditEventAnalyticsGroupByEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for GroupBy: %s. Supported values are: %s.", val, strings.Join(GetListAuditEventAnalyticsGroupByEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListAuditEventAnalyticsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAuditEventAnalyticsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAuditEventAnalyticsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAuditEventAnalyticsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAuditEventAnalyticsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAuditEventAnalyticsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -208,6 +208,17 @@ func GetListAuditEventAnalyticsAccessLevelEnumStringValues() []string {
 		"RESTRICTED",
 		"ACCESSIBLE",
 	}
+}
+
+// GetMappingListAuditEventAnalyticsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuditEventAnalyticsAccessLevelEnum(val string) (ListAuditEventAnalyticsAccessLevelEnum, bool) {
+	mappingListAuditEventAnalyticsAccessLevelEnumIgnoreCase := make(map[string]ListAuditEventAnalyticsAccessLevelEnum)
+	for k, v := range mappingListAuditEventAnalyticsAccessLevelEnum {
+		mappingListAuditEventAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuditEventAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListAuditEventAnalyticsSummaryFieldEnum Enum with underlying type: string
@@ -331,6 +342,17 @@ func GetListAuditEventAnalyticsSummaryFieldEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAuditEventAnalyticsSummaryFieldEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuditEventAnalyticsSummaryFieldEnum(val string) (ListAuditEventAnalyticsSummaryFieldEnum, bool) {
+	mappingListAuditEventAnalyticsSummaryFieldEnumIgnoreCase := make(map[string]ListAuditEventAnalyticsSummaryFieldEnum)
+	for k, v := range mappingListAuditEventAnalyticsSummaryFieldEnum {
+		mappingListAuditEventAnalyticsSummaryFieldEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuditEventAnalyticsSummaryFieldEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAuditEventAnalyticsGroupByEnum Enum with underlying type: string
 type ListAuditEventAnalyticsGroupByEnum string
 
@@ -389,6 +411,17 @@ func GetListAuditEventAnalyticsGroupByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAuditEventAnalyticsGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuditEventAnalyticsGroupByEnum(val string) (ListAuditEventAnalyticsGroupByEnum, bool) {
+	mappingListAuditEventAnalyticsGroupByEnumIgnoreCase := make(map[string]ListAuditEventAnalyticsGroupByEnum)
+	for k, v := range mappingListAuditEventAnalyticsGroupByEnum {
+		mappingListAuditEventAnalyticsGroupByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuditEventAnalyticsGroupByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAuditEventAnalyticsSortOrderEnum Enum with underlying type: string
 type ListAuditEventAnalyticsSortOrderEnum string
 
@@ -418,6 +451,17 @@ func GetListAuditEventAnalyticsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAuditEventAnalyticsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuditEventAnalyticsSortOrderEnum(val string) (ListAuditEventAnalyticsSortOrderEnum, bool) {
+	mappingListAuditEventAnalyticsSortOrderEnumIgnoreCase := make(map[string]ListAuditEventAnalyticsSortOrderEnum)
+	for k, v := range mappingListAuditEventAnalyticsSortOrderEnum {
+		mappingListAuditEventAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuditEventAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListAuditEventAnalyticsSortByEnum Enum with underlying type: string
@@ -476,4 +520,15 @@ func GetListAuditEventAnalyticsSortByEnumStringValues() []string {
 		"clientId",
 		"auditType",
 	}
+}
+
+// GetMappingListAuditEventAnalyticsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuditEventAnalyticsSortByEnum(val string) (ListAuditEventAnalyticsSortByEnum, bool) {
+	mappingListAuditEventAnalyticsSortByEnumIgnoreCase := make(map[string]ListAuditEventAnalyticsSortByEnum)
+	for k, v := range mappingListAuditEventAnalyticsSortByEnum {
+		mappingListAuditEventAnalyticsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuditEventAnalyticsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

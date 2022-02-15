@@ -33,7 +33,7 @@ func (m SortClause) String() string {
 func (m SortClause) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSortClauseOrderEnum[string(m.Order)]; !ok && m.Order != "" {
+	if _, ok := GetMappingSortClauseOrderEnum(string(m.Order)); !ok && m.Order != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Order: %s. Supported values are: %s.", m.Order, strings.Join(GetSortClauseOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -71,4 +71,15 @@ func GetSortClauseOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingSortClauseOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSortClauseOrderEnum(val string) (SortClauseOrderEnum, bool) {
+	mappingSortClauseOrderEnumIgnoreCase := make(map[string]SortClauseOrderEnum)
+	for k, v := range mappingSortClauseOrderEnum {
+		mappingSortClauseOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSortClauseOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

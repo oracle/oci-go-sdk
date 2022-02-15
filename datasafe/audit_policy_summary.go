@@ -80,7 +80,7 @@ func (m AuditPolicySummary) String() string {
 // Not recommended for calling this function directly
 func (m AuditPolicySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAuditPolicyLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAuditPolicyLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAuditPolicyLifecycleStateEnumStringValues(), ",")))
 	}
 

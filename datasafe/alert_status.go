@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // AlertStatusEnum Enum with underlying type: string
 type AlertStatusEnum string
 
@@ -38,4 +42,15 @@ func GetAlertStatusEnumStringValues() []string {
 		"OPEN",
 		"CLOSED",
 	}
+}
+
+// GetMappingAlertStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAlertStatusEnum(val string) (AlertStatusEnum, bool) {
+	mappingAlertStatusEnumIgnoreCase := make(map[string]AlertStatusEnum)
+	for k, v := range mappingAlertStatusEnum {
+		mappingAlertStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAlertStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

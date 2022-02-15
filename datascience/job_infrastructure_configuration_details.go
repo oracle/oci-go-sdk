@@ -102,3 +102,14 @@ func GetJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnumStringValu
 		"STANDALONE",
 	}
 }
+
+// GetMappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum(val string) (JobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum, bool) {
+	mappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnumIgnoreCase := make(map[string]JobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum)
+	for k, v := range mappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum {
+		mappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

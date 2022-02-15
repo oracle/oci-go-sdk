@@ -49,7 +49,7 @@ func (m Incident) String() string {
 func (m Incident) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingProblemTypeEnum[string(m.ProblemType)]; !ok && m.ProblemType != "" {
+	if _, ok := GetMappingProblemTypeEnum(string(m.ProblemType)); !ok && m.ProblemType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProblemType: %s. Supported values are: %s.", m.ProblemType, strings.Join(GetProblemTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

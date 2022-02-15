@@ -10,6 +10,10 @@
 
 package osmanagement
 
+import (
+	"strings"
+)
+
 // ScheduleTypesEnum Enum with underlying type: string
 type ScheduleTypesEnum string
 
@@ -39,4 +43,15 @@ func GetScheduleTypesEnumStringValues() []string {
 		"ONETIME",
 		"RECURRING",
 	}
+}
+
+// GetMappingScheduleTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingScheduleTypesEnum(val string) (ScheduleTypesEnum, bool) {
+	mappingScheduleTypesEnumIgnoreCase := make(map[string]ScheduleTypesEnum)
+	for k, v := range mappingScheduleTypesEnum {
+		mappingScheduleTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingScheduleTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

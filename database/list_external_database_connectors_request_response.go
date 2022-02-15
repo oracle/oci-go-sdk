@@ -84,13 +84,13 @@ func (request ListExternalDatabaseConnectorsRequest) RetryPolicy() *common.Retry
 // Not recommended for calling this function directly
 func (request ListExternalDatabaseConnectorsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListExternalDatabaseConnectorsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListExternalDatabaseConnectorsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListExternalDatabaseConnectorsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListExternalDatabaseConnectorsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListExternalDatabaseConnectorsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListExternalDatabaseConnectorsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingExternalDatabaseConnectorLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingExternalDatabaseConnectorLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetExternalDatabaseConnectorLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -159,6 +159,17 @@ func GetListExternalDatabaseConnectorsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListExternalDatabaseConnectorsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListExternalDatabaseConnectorsSortByEnum(val string) (ListExternalDatabaseConnectorsSortByEnum, bool) {
+	mappingListExternalDatabaseConnectorsSortByEnumIgnoreCase := make(map[string]ListExternalDatabaseConnectorsSortByEnum)
+	for k, v := range mappingListExternalDatabaseConnectorsSortByEnum {
+		mappingListExternalDatabaseConnectorsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListExternalDatabaseConnectorsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListExternalDatabaseConnectorsSortOrderEnum Enum with underlying type: string
 type ListExternalDatabaseConnectorsSortOrderEnum string
 
@@ -188,4 +199,15 @@ func GetListExternalDatabaseConnectorsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListExternalDatabaseConnectorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListExternalDatabaseConnectorsSortOrderEnum(val string) (ListExternalDatabaseConnectorsSortOrderEnum, bool) {
+	mappingListExternalDatabaseConnectorsSortOrderEnumIgnoreCase := make(map[string]ListExternalDatabaseConnectorsSortOrderEnum)
+	for k, v := range mappingListExternalDatabaseConnectorsSortOrderEnum {
+		mappingListExternalDatabaseConnectorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListExternalDatabaseConnectorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

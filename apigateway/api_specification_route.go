@@ -48,7 +48,7 @@ func (m ApiSpecificationRoute) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	for _, val := range m.Methods {
-		if _, ok := mappingApiSpecificationRouteMethodsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingApiSpecificationRouteMethodsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Methods: %s. Supported values are: %s.", val, strings.Join(GetApiSpecificationRouteMethodsEnumStringValues(), ",")))
 		}
 	}
@@ -148,4 +148,15 @@ func GetApiSpecificationRouteMethodsEnumStringValues() []string {
 		"DELETE",
 		"OPTIONS",
 	}
+}
+
+// GetMappingApiSpecificationRouteMethodsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingApiSpecificationRouteMethodsEnum(val string) (ApiSpecificationRouteMethodsEnum, bool) {
+	mappingApiSpecificationRouteMethodsEnumIgnoreCase := make(map[string]ApiSpecificationRouteMethodsEnum)
+	for k, v := range mappingApiSpecificationRouteMethodsEnum {
+		mappingApiSpecificationRouteMethodsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingApiSpecificationRouteMethodsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

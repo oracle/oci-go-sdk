@@ -38,7 +38,7 @@ func (m FilterHeaderPolicy) String() string {
 // Not recommended for calling this function directly
 func (m FilterHeaderPolicy) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingFilterHeaderPolicyTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingFilterHeaderPolicyTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetFilterHeaderPolicyTypeEnumStringValues(), ",")))
 	}
 
@@ -77,4 +77,15 @@ func GetFilterHeaderPolicyTypeEnumStringValues() []string {
 		"ALLOW",
 		"BLOCK",
 	}
+}
+
+// GetMappingFilterHeaderPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFilterHeaderPolicyTypeEnum(val string) (FilterHeaderPolicyTypeEnum, bool) {
+	mappingFilterHeaderPolicyTypeEnumIgnoreCase := make(map[string]FilterHeaderPolicyTypeEnum)
+	for k, v := range mappingFilterHeaderPolicyTypeEnum {
+		mappingFilterHeaderPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFilterHeaderPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

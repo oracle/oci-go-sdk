@@ -92,13 +92,13 @@ func (request ListInstanceAgentPluginsRequest) RetryPolicy() *common.RetryPolicy
 // Not recommended for calling this function directly
 func (request ListInstanceAgentPluginsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListInstanceAgentPluginsStatusEnum[string(request.Status)]; !ok && request.Status != "" {
+	if _, ok := GetMappingListInstanceAgentPluginsStatusEnum(string(request.Status)); !ok && request.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", request.Status, strings.Join(GetListInstanceAgentPluginsStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListInstanceAgentPluginsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListInstanceAgentPluginsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListInstanceAgentPluginsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListInstanceAgentPluginsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListInstanceAgentPluginsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListInstanceAgentPluginsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -172,6 +172,17 @@ func GetListInstanceAgentPluginsStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingListInstanceAgentPluginsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListInstanceAgentPluginsStatusEnum(val string) (ListInstanceAgentPluginsStatusEnum, bool) {
+	mappingListInstanceAgentPluginsStatusEnumIgnoreCase := make(map[string]ListInstanceAgentPluginsStatusEnum)
+	for k, v := range mappingListInstanceAgentPluginsStatusEnum {
+		mappingListInstanceAgentPluginsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListInstanceAgentPluginsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListInstanceAgentPluginsSortByEnum Enum with underlying type: string
 type ListInstanceAgentPluginsSortByEnum string
 
@@ -203,6 +214,17 @@ func GetListInstanceAgentPluginsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListInstanceAgentPluginsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListInstanceAgentPluginsSortByEnum(val string) (ListInstanceAgentPluginsSortByEnum, bool) {
+	mappingListInstanceAgentPluginsSortByEnumIgnoreCase := make(map[string]ListInstanceAgentPluginsSortByEnum)
+	for k, v := range mappingListInstanceAgentPluginsSortByEnum {
+		mappingListInstanceAgentPluginsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListInstanceAgentPluginsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListInstanceAgentPluginsSortOrderEnum Enum with underlying type: string
 type ListInstanceAgentPluginsSortOrderEnum string
 
@@ -232,4 +254,15 @@ func GetListInstanceAgentPluginsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListInstanceAgentPluginsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListInstanceAgentPluginsSortOrderEnum(val string) (ListInstanceAgentPluginsSortOrderEnum, bool) {
+	mappingListInstanceAgentPluginsSortOrderEnumIgnoreCase := make(map[string]ListInstanceAgentPluginsSortOrderEnum)
+	for k, v := range mappingListInstanceAgentPluginsSortOrderEnum {
+		mappingListInstanceAgentPluginsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListInstanceAgentPluginsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

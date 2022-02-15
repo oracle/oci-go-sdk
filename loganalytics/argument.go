@@ -109,3 +109,14 @@ func GetArgumentTypeEnumStringValues() []string {
 		"LITERAL",
 	}
 }
+
+// GetMappingArgumentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingArgumentTypeEnum(val string) (ArgumentTypeEnum, bool) {
+	mappingArgumentTypeEnumIgnoreCase := make(map[string]ArgumentTypeEnum)
+	for k, v := range mappingArgumentTypeEnum {
+		mappingArgumentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingArgumentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

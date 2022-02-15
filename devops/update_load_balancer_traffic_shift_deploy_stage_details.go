@@ -82,7 +82,7 @@ func (m UpdateLoadBalancerTrafficShiftDeployStageDetails) String() string {
 func (m UpdateLoadBalancerTrafficShiftDeployStageDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnum[string(m.TrafficShiftTarget)]; !ok && m.TrafficShiftTarget != "" {
+	if _, ok := GetMappingLoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnum(string(m.TrafficShiftTarget)); !ok && m.TrafficShiftTarget != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TrafficShiftTarget: %s. Supported values are: %s.", m.TrafficShiftTarget, strings.Join(GetLoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

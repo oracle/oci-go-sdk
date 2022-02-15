@@ -43,10 +43,10 @@ func (m WorkRequestResource) String() string {
 // Not recommended for calling this function directly
 func (m WorkRequestResource) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingWorkRequestActionResultEnum[string(m.ActionResult)]; !ok && m.ActionResult != "" {
+	if _, ok := GetMappingWorkRequestActionResultEnum(string(m.ActionResult)); !ok && m.ActionResult != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ActionResult: %s. Supported values are: %s.", m.ActionResult, strings.Join(GetWorkRequestActionResultEnumStringValues(), ",")))
 	}
-	if _, ok := mappingWorkRequestResourceTypeEnum[string(m.ResourceType)]; !ok && m.ResourceType != "" {
+	if _, ok := GetMappingWorkRequestResourceTypeEnum(string(m.ResourceType)); !ok && m.ResourceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResourceType: %s. Supported values are: %s.", m.ResourceType, strings.Join(GetWorkRequestResourceTypeEnumStringValues(), ",")))
 	}
 

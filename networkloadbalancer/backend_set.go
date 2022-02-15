@@ -55,10 +55,10 @@ func (m BackendSet) String() string {
 func (m BackendSet) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingNetworkLoadBalancingPolicyEnum[string(m.Policy)]; !ok && m.Policy != "" {
+	if _, ok := GetMappingNetworkLoadBalancingPolicyEnum(string(m.Policy)); !ok && m.Policy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Policy: %s. Supported values are: %s.", m.Policy, strings.Join(GetNetworkLoadBalancingPolicyEnumStringValues(), ",")))
 	}
-	if _, ok := mappingIpVersionEnum[string(m.IpVersion)]; !ok && m.IpVersion != "" {
+	if _, ok := GetMappingIpVersionEnum(string(m.IpVersion)); !ok && m.IpVersion != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IpVersion: %s. Supported values are: %s.", m.IpVersion, strings.Join(GetIpVersionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

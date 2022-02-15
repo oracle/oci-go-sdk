@@ -41,7 +41,7 @@ func (m AgreementSummary) String() string {
 func (m AgreementSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAgreementSummaryAuthorEnum[string(m.Author)]; !ok && m.Author != "" {
+	if _, ok := GetMappingAgreementSummaryAuthorEnum(string(m.Author)); !ok && m.Author != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Author: %s. Supported values are: %s.", m.Author, strings.Join(GetAgreementSummaryAuthorEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -82,4 +82,15 @@ func GetAgreementSummaryAuthorEnumStringValues() []string {
 		"PARTNER",
 		"PII",
 	}
+}
+
+// GetMappingAgreementSummaryAuthorEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAgreementSummaryAuthorEnum(val string) (AgreementSummaryAuthorEnum, bool) {
+	mappingAgreementSummaryAuthorEnumIgnoreCase := make(map[string]AgreementSummaryAuthorEnum)
+	for k, v := range mappingAgreementSummaryAuthorEnum {
+		mappingAgreementSummaryAuthorEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAgreementSummaryAuthorEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

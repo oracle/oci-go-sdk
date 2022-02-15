@@ -135,20 +135,20 @@ func (m AuditEventSummary) String() string {
 // Not recommended for calling this function directly
 func (m AuditEventSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAuditEventSummaryDatabaseTypeEnum[string(m.DatabaseType)]; !ok && m.DatabaseType != "" {
+	if _, ok := GetMappingAuditEventSummaryDatabaseTypeEnum(string(m.DatabaseType)); !ok && m.DatabaseType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseType: %s. Supported values are: %s.", m.DatabaseType, strings.Join(GetAuditEventSummaryDatabaseTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingAuditEventSummaryTargetClassEnum[string(m.TargetClass)]; !ok && m.TargetClass != "" {
+	if _, ok := GetMappingAuditEventSummaryTargetClassEnum(string(m.TargetClass)); !ok && m.TargetClass != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TargetClass: %s. Supported values are: %s.", m.TargetClass, strings.Join(GetAuditEventSummaryTargetClassEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAuditEventSummaryOperationStatusEnum[string(m.OperationStatus)]; !ok && m.OperationStatus != "" {
+	if _, ok := GetMappingAuditEventSummaryOperationStatusEnum(string(m.OperationStatus)); !ok && m.OperationStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OperationStatus: %s. Supported values are: %s.", m.OperationStatus, strings.Join(GetAuditEventSummaryOperationStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAuditEventSummaryAuditLocationEnum[string(m.AuditLocation)]; !ok && m.AuditLocation != "" {
+	if _, ok := GetMappingAuditEventSummaryAuditLocationEnum(string(m.AuditLocation)); !ok && m.AuditLocation != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AuditLocation: %s. Supported values are: %s.", m.AuditLocation, strings.Join(GetAuditEventSummaryAuditLocationEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAuditEventSummaryAuditTypeEnum[string(m.AuditType)]; !ok && m.AuditType != "" {
+	if _, ok := GetMappingAuditEventSummaryAuditTypeEnum(string(m.AuditType)); !ok && m.AuditType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AuditType: %s. Supported values are: %s.", m.AuditType, strings.Join(GetAuditEventSummaryAuditTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -191,6 +191,17 @@ func GetAuditEventSummaryDatabaseTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingAuditEventSummaryDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAuditEventSummaryDatabaseTypeEnum(val string) (AuditEventSummaryDatabaseTypeEnum, bool) {
+	mappingAuditEventSummaryDatabaseTypeEnumIgnoreCase := make(map[string]AuditEventSummaryDatabaseTypeEnum)
+	for k, v := range mappingAuditEventSummaryDatabaseTypeEnum {
+		mappingAuditEventSummaryDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAuditEventSummaryDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AuditEventSummaryTargetClassEnum Enum with underlying type: string
 type AuditEventSummaryTargetClassEnum string
 
@@ -217,6 +228,17 @@ func GetAuditEventSummaryTargetClassEnumStringValues() []string {
 	return []string{
 		"DATABASE",
 	}
+}
+
+// GetMappingAuditEventSummaryTargetClassEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAuditEventSummaryTargetClassEnum(val string) (AuditEventSummaryTargetClassEnum, bool) {
+	mappingAuditEventSummaryTargetClassEnumIgnoreCase := make(map[string]AuditEventSummaryTargetClassEnum)
+	for k, v := range mappingAuditEventSummaryTargetClassEnum {
+		mappingAuditEventSummaryTargetClassEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAuditEventSummaryTargetClassEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // AuditEventSummaryOperationStatusEnum Enum with underlying type: string
@@ -250,6 +272,17 @@ func GetAuditEventSummaryOperationStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingAuditEventSummaryOperationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAuditEventSummaryOperationStatusEnum(val string) (AuditEventSummaryOperationStatusEnum, bool) {
+	mappingAuditEventSummaryOperationStatusEnumIgnoreCase := make(map[string]AuditEventSummaryOperationStatusEnum)
+	for k, v := range mappingAuditEventSummaryOperationStatusEnum {
+		mappingAuditEventSummaryOperationStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAuditEventSummaryOperationStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AuditEventSummaryAuditLocationEnum Enum with underlying type: string
 type AuditEventSummaryAuditLocationEnum string
 
@@ -276,6 +309,17 @@ func GetAuditEventSummaryAuditLocationEnumStringValues() []string {
 	return []string{
 		"AUDIT_TABLE",
 	}
+}
+
+// GetMappingAuditEventSummaryAuditLocationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAuditEventSummaryAuditLocationEnum(val string) (AuditEventSummaryAuditLocationEnum, bool) {
+	mappingAuditEventSummaryAuditLocationEnumIgnoreCase := make(map[string]AuditEventSummaryAuditLocationEnum)
+	for k, v := range mappingAuditEventSummaryAuditLocationEnum {
+		mappingAuditEventSummaryAuditLocationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAuditEventSummaryAuditLocationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // AuditEventSummaryAuditTypeEnum Enum with underlying type: string
@@ -325,4 +369,15 @@ func GetAuditEventSummaryAuditTypeEnumStringValues() []string {
 		"DATAPUMP",
 		"DIRECT_PATH_API",
 	}
+}
+
+// GetMappingAuditEventSummaryAuditTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAuditEventSummaryAuditTypeEnum(val string) (AuditEventSummaryAuditTypeEnum, bool) {
+	mappingAuditEventSummaryAuditTypeEnumIgnoreCase := make(map[string]AuditEventSummaryAuditTypeEnum)
+	for k, v := range mappingAuditEventSummaryAuditTypeEnum {
+		mappingAuditEventSummaryAuditTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAuditEventSummaryAuditTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

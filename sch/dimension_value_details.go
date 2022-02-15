@@ -111,3 +111,14 @@ func GetDimensionValueDetailsKindEnumStringValues() []string {
 		"static",
 	}
 }
+
+// GetMappingDimensionValueDetailsKindEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDimensionValueDetailsKindEnum(val string) (DimensionValueDetailsKindEnum, bool) {
+	mappingDimensionValueDetailsKindEnumIgnoreCase := make(map[string]DimensionValueDetailsKindEnum)
+	for k, v := range mappingDimensionValueDetailsKindEnum {
+		mappingDimensionValueDetailsKindEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDimensionValueDetailsKindEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

@@ -33,7 +33,7 @@ func (m StartMigrationDetails) String() string {
 func (m StartMigrationDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingOdmsJobPhasesEnum[string(m.WaitAfter)]; !ok && m.WaitAfter != "" {
+	if _, ok := GetMappingOdmsJobPhasesEnum(string(m.WaitAfter)); !ok && m.WaitAfter != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for WaitAfter: %s. Supported values are: %s.", m.WaitAfter, strings.Join(GetOdmsJobPhasesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

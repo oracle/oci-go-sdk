@@ -86,16 +86,16 @@ func (request ListResolversRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListResolversRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListResolversSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListResolversSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListResolversSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListResolversSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListResolversSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListResolversSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingResolverSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingResolverSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetResolverSummaryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListResolversScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingListResolversScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetListResolversScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -163,6 +163,17 @@ func GetListResolversSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListResolversSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResolversSortOrderEnum(val string) (ListResolversSortOrderEnum, bool) {
+	mappingListResolversSortOrderEnumIgnoreCase := make(map[string]ListResolversSortOrderEnum)
+	for k, v := range mappingListResolversSortOrderEnum {
+		mappingListResolversSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResolversSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListResolversSortByEnum Enum with underlying type: string
 type ListResolversSortByEnum string
 
@@ -194,6 +205,17 @@ func GetListResolversSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListResolversSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResolversSortByEnum(val string) (ListResolversSortByEnum, bool) {
+	mappingListResolversSortByEnumIgnoreCase := make(map[string]ListResolversSortByEnum)
+	for k, v := range mappingListResolversSortByEnum {
+		mappingListResolversSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResolversSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListResolversScopeEnum Enum with underlying type: string
 type ListResolversScopeEnum string
 
@@ -223,4 +245,15 @@ func GetListResolversScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingListResolversScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResolversScopeEnum(val string) (ListResolversScopeEnum, bool) {
+	mappingListResolversScopeEnumIgnoreCase := make(map[string]ListResolversScopeEnum)
+	for k, v := range mappingListResolversScopeEnum {
+		mappingListResolversScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResolversScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

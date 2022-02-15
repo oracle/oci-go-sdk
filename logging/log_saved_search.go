@@ -64,7 +64,7 @@ func (m LogSavedSearch) String() string {
 func (m LogSavedSearch) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLogSavedSearchLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLogSavedSearchLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLogSavedSearchLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

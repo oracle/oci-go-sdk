@@ -76,7 +76,7 @@ func (m DedicatedVmHostSummary) String() string {
 // Not recommended for calling this function directly
 func (m DedicatedVmHostSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDedicatedVmHostSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDedicatedVmHostSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDedicatedVmHostSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -127,4 +127,15 @@ func GetDedicatedVmHostSummaryLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingDedicatedVmHostSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDedicatedVmHostSummaryLifecycleStateEnum(val string) (DedicatedVmHostSummaryLifecycleStateEnum, bool) {
+	mappingDedicatedVmHostSummaryLifecycleStateEnumIgnoreCase := make(map[string]DedicatedVmHostSummaryLifecycleStateEnum)
+	for k, v := range mappingDedicatedVmHostSummaryLifecycleStateEnum {
+		mappingDedicatedVmHostSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDedicatedVmHostSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

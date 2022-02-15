@@ -81,11 +81,11 @@ func (m BdsInstance) String() string {
 // Not recommended for calling this function directly
 func (m BdsInstance) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBdsInstanceLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingBdsInstanceLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetBdsInstanceLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingBdsInstanceClusterVersionEnum[string(m.ClusterVersion)]; !ok && m.ClusterVersion != "" {
+	if _, ok := GetMappingBdsInstanceClusterVersionEnum(string(m.ClusterVersion)); !ok && m.ClusterVersion != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ClusterVersion: %s. Supported values are: %s.", m.ClusterVersion, strings.Join(GetBdsInstanceClusterVersionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -146,6 +146,17 @@ func GetBdsInstanceLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingBdsInstanceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBdsInstanceLifecycleStateEnum(val string) (BdsInstanceLifecycleStateEnum, bool) {
+	mappingBdsInstanceLifecycleStateEnumIgnoreCase := make(map[string]BdsInstanceLifecycleStateEnum)
+	for k, v := range mappingBdsInstanceLifecycleStateEnum {
+		mappingBdsInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBdsInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // BdsInstanceClusterVersionEnum Enum with underlying type: string
 type BdsInstanceClusterVersionEnum string
 
@@ -178,4 +189,15 @@ func GetBdsInstanceClusterVersionEnumStringValues() []string {
 		"CDH6",
 		"ODH1",
 	}
+}
+
+// GetMappingBdsInstanceClusterVersionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBdsInstanceClusterVersionEnum(val string) (BdsInstanceClusterVersionEnum, bool) {
+	mappingBdsInstanceClusterVersionEnumIgnoreCase := make(map[string]BdsInstanceClusterVersionEnum)
+	for k, v := range mappingBdsInstanceClusterVersionEnum {
+		mappingBdsInstanceClusterVersionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBdsInstanceClusterVersionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

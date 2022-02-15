@@ -199,3 +199,14 @@ func GetBaseTypeModelTypeEnumStringValues() []string {
 		"DERIVED_TYPE",
 	}
 }
+
+// GetMappingBaseTypeModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBaseTypeModelTypeEnum(val string) (BaseTypeModelTypeEnum, bool) {
+	mappingBaseTypeModelTypeEnumIgnoreCase := make(map[string]BaseTypeModelTypeEnum)
+	for k, v := range mappingBaseTypeModelTypeEnum {
+		mappingBaseTypeModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBaseTypeModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

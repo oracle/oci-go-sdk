@@ -150,3 +150,14 @@ func GetTopologyTypeEnumStringValues() []string {
 		"SUBNET",
 	}
 }
+
+// GetMappingTopologyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTopologyTypeEnum(val string) (TopologyTypeEnum, bool) {
+	mappingTopologyTypeEnumIgnoreCase := make(map[string]TopologyTypeEnum)
+	for k, v := range mappingTopologyTypeEnum {
+		mappingTopologyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTopologyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

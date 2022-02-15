@@ -111,17 +111,17 @@ func (m DatabaseParameterSummary) String() string {
 // Not recommended for calling this function directly
 func (m DatabaseParameterSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDatabaseParameterSummaryTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingDatabaseParameterSummaryTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetDatabaseParameterSummaryTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDatabaseParameterSummaryIsSystemModifiableEnum[string(m.IsSystemModifiable)]; !ok && m.IsSystemModifiable != "" {
+	if _, ok := GetMappingDatabaseParameterSummaryIsSystemModifiableEnum(string(m.IsSystemModifiable)); !ok && m.IsSystemModifiable != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IsSystemModifiable: %s. Supported values are: %s.", m.IsSystemModifiable, strings.Join(GetDatabaseParameterSummaryIsSystemModifiableEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatabaseParameterSummaryIsModifiedEnum[string(m.IsModified)]; !ok && m.IsModified != "" {
+	if _, ok := GetMappingDatabaseParameterSummaryIsModifiedEnum(string(m.IsModified)); !ok && m.IsModified != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IsModified: %s. Supported values are: %s.", m.IsModified, strings.Join(GetDatabaseParameterSummaryIsModifiedEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatabaseParameterSummaryConstraintEnum[string(m.Constraint)]; !ok && m.Constraint != "" {
+	if _, ok := GetMappingDatabaseParameterSummaryConstraintEnum(string(m.Constraint)); !ok && m.Constraint != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Constraint: %s. Supported values are: %s.", m.Constraint, strings.Join(GetDatabaseParameterSummaryConstraintEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -173,6 +173,17 @@ func GetDatabaseParameterSummaryTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingDatabaseParameterSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseParameterSummaryTypeEnum(val string) (DatabaseParameterSummaryTypeEnum, bool) {
+	mappingDatabaseParameterSummaryTypeEnumIgnoreCase := make(map[string]DatabaseParameterSummaryTypeEnum)
+	for k, v := range mappingDatabaseParameterSummaryTypeEnum {
+		mappingDatabaseParameterSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseParameterSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DatabaseParameterSummaryIsSystemModifiableEnum Enum with underlying type: string
 type DatabaseParameterSummaryIsSystemModifiableEnum string
 
@@ -207,6 +218,17 @@ func GetDatabaseParameterSummaryIsSystemModifiableEnumStringValues() []string {
 	}
 }
 
+// GetMappingDatabaseParameterSummaryIsSystemModifiableEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseParameterSummaryIsSystemModifiableEnum(val string) (DatabaseParameterSummaryIsSystemModifiableEnum, bool) {
+	mappingDatabaseParameterSummaryIsSystemModifiableEnumIgnoreCase := make(map[string]DatabaseParameterSummaryIsSystemModifiableEnum)
+	for k, v := range mappingDatabaseParameterSummaryIsSystemModifiableEnum {
+		mappingDatabaseParameterSummaryIsSystemModifiableEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseParameterSummaryIsSystemModifiableEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DatabaseParameterSummaryIsModifiedEnum Enum with underlying type: string
 type DatabaseParameterSummaryIsModifiedEnum string
 
@@ -236,6 +258,17 @@ func GetDatabaseParameterSummaryIsModifiedEnumStringValues() []string {
 		"MODIFIED",
 		"FALSE",
 	}
+}
+
+// GetMappingDatabaseParameterSummaryIsModifiedEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseParameterSummaryIsModifiedEnum(val string) (DatabaseParameterSummaryIsModifiedEnum, bool) {
+	mappingDatabaseParameterSummaryIsModifiedEnumIgnoreCase := make(map[string]DatabaseParameterSummaryIsModifiedEnum)
+	for k, v := range mappingDatabaseParameterSummaryIsModifiedEnum {
+		mappingDatabaseParameterSummaryIsModifiedEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseParameterSummaryIsModifiedEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // DatabaseParameterSummaryConstraintEnum Enum with underlying type: string
@@ -270,4 +303,15 @@ func GetDatabaseParameterSummaryConstraintEnumStringValues() []string {
 		"IDENTICAL",
 		"NONE",
 	}
+}
+
+// GetMappingDatabaseParameterSummaryConstraintEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseParameterSummaryConstraintEnum(val string) (DatabaseParameterSummaryConstraintEnum, bool) {
+	mappingDatabaseParameterSummaryConstraintEnumIgnoreCase := make(map[string]DatabaseParameterSummaryConstraintEnum)
+	for k, v := range mappingDatabaseParameterSummaryConstraintEnum {
+		mappingDatabaseParameterSummaryConstraintEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseParameterSummaryConstraintEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

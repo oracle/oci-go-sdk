@@ -73,7 +73,7 @@ func (request GetFolderRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetFolderRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetFolderFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetFolderFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetFolderFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -184,4 +184,15 @@ func GetGetFolderFieldsEnumStringValues() []string {
 		"lastJobKey",
 		"uri",
 	}
+}
+
+// GetMappingGetFolderFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetFolderFieldsEnum(val string) (GetFolderFieldsEnum, bool) {
+	mappingGetFolderFieldsEnumIgnoreCase := make(map[string]GetFolderFieldsEnum)
+	for k, v := range mappingGetFolderFieldsEnum {
+		mappingGetFolderFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetFolderFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -52,7 +52,7 @@ func (m SubscriptionMapping) String() string {
 // Not recommended for calling this function directly
 func (m SubscriptionMapping) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSubscriptionMappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingSubscriptionMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSubscriptionMappingLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -106,4 +106,15 @@ func GetSubscriptionMappingLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingSubscriptionMappingLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSubscriptionMappingLifecycleStateEnum(val string) (SubscriptionMappingLifecycleStateEnum, bool) {
+	mappingSubscriptionMappingLifecycleStateEnumIgnoreCase := make(map[string]SubscriptionMappingLifecycleStateEnum)
+	for k, v := range mappingSubscriptionMappingLifecycleStateEnum {
+		mappingSubscriptionMappingLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSubscriptionMappingLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

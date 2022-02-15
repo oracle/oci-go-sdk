@@ -75,10 +75,10 @@ func (request ListWorkRequestLogsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListWorkRequestLogsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListWorkRequestLogsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListWorkRequestLogsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListWorkRequestLogsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListWorkRequestLogsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListWorkRequestLogsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListWorkRequestLogsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -154,6 +154,17 @@ func GetListWorkRequestLogsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListWorkRequestLogsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWorkRequestLogsSortOrderEnum(val string) (ListWorkRequestLogsSortOrderEnum, bool) {
+	mappingListWorkRequestLogsSortOrderEnumIgnoreCase := make(map[string]ListWorkRequestLogsSortOrderEnum)
+	for k, v := range mappingListWorkRequestLogsSortOrderEnum {
+		mappingListWorkRequestLogsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWorkRequestLogsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListWorkRequestLogsSortByEnum Enum with underlying type: string
 type ListWorkRequestLogsSortByEnum string
 
@@ -183,4 +194,15 @@ func GetListWorkRequestLogsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListWorkRequestLogsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWorkRequestLogsSortByEnum(val string) (ListWorkRequestLogsSortByEnum, bool) {
+	mappingListWorkRequestLogsSortByEnumIgnoreCase := make(map[string]ListWorkRequestLogsSortByEnum)
+	for k, v := range mappingListWorkRequestLogsSortByEnum {
+		mappingListWorkRequestLogsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWorkRequestLogsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

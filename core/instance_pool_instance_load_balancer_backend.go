@@ -44,7 +44,7 @@ func (m InstancePoolInstanceLoadBalancerBackend) String() string {
 // Not recommended for calling this function directly
 func (m InstancePoolInstanceLoadBalancerBackend) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum[string(m.BackendHealthStatus)]; !ok && m.BackendHealthStatus != "" {
+	if _, ok := GetMappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum(string(m.BackendHealthStatus)); !ok && m.BackendHealthStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BackendHealthStatus: %s. Supported values are: %s.", m.BackendHealthStatus, strings.Join(GetInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnumStringValues(), ",")))
 	}
 
@@ -89,4 +89,15 @@ func GetInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnumStringValu
 		"CRITICAL",
 		"UNKNOWN",
 	}
+}
+
+// GetMappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum(val string) (InstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum, bool) {
+	mappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnumIgnoreCase := make(map[string]InstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum)
+	for k, v := range mappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum {
+		mappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

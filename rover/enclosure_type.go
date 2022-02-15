@@ -9,6 +9,10 @@
 
 package rover
 
+import (
+	"strings"
+)
+
 // EnclosureTypeEnum Enum with underlying type: string
 type EnclosureTypeEnum string
 
@@ -38,4 +42,15 @@ func GetEnclosureTypeEnumStringValues() []string {
 		"RUGGADIZED",
 		"NON_RUGGADIZED",
 	}
+}
+
+// GetMappingEnclosureTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEnclosureTypeEnum(val string) (EnclosureTypeEnum, bool) {
+	mappingEnclosureTypeEnumIgnoreCase := make(map[string]EnclosureTypeEnum)
+	for k, v := range mappingEnclosureTypeEnum {
+		mappingEnclosureTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEnclosureTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

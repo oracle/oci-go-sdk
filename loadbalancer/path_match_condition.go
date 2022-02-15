@@ -45,7 +45,7 @@ func (m PathMatchCondition) String() string {
 // Not recommended for calling this function directly
 func (m PathMatchCondition) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPathMatchConditionOperatorEnum[string(m.Operator)]; !ok && m.Operator != "" {
+	if _, ok := GetMappingPathMatchConditionOperatorEnum(string(m.Operator)); !ok && m.Operator != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Operator: %s. Supported values are: %s.", m.Operator, strings.Join(GetPathMatchConditionOperatorEnumStringValues(), ",")))
 	}
 
@@ -104,4 +104,15 @@ func GetPathMatchConditionOperatorEnumStringValues() []string {
 		"PREFIX_MATCH",
 		"SUFFIX_MATCH",
 	}
+}
+
+// GetMappingPathMatchConditionOperatorEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPathMatchConditionOperatorEnum(val string) (PathMatchConditionOperatorEnum, bool) {
+	mappingPathMatchConditionOperatorEnumIgnoreCase := make(map[string]PathMatchConditionOperatorEnum)
+	for k, v := range mappingPathMatchConditionOperatorEnum {
+		mappingPathMatchConditionOperatorEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPathMatchConditionOperatorEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

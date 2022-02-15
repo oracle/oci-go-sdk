@@ -77,10 +77,10 @@ func (request ListNetworkLoadBalancerHealthsRequest) RetryPolicy() *common.Retry
 // Not recommended for calling this function directly
 func (request ListNetworkLoadBalancerHealthsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListNetworkLoadBalancerHealthsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListNetworkLoadBalancerHealthsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListNetworkLoadBalancerHealthsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListNetworkLoadBalancerHealthsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListNetworkLoadBalancerHealthsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListNetworkLoadBalancerHealthsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -148,6 +148,17 @@ func GetListNetworkLoadBalancerHealthsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListNetworkLoadBalancerHealthsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNetworkLoadBalancerHealthsSortOrderEnum(val string) (ListNetworkLoadBalancerHealthsSortOrderEnum, bool) {
+	mappingListNetworkLoadBalancerHealthsSortOrderEnumIgnoreCase := make(map[string]ListNetworkLoadBalancerHealthsSortOrderEnum)
+	for k, v := range mappingListNetworkLoadBalancerHealthsSortOrderEnum {
+		mappingListNetworkLoadBalancerHealthsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNetworkLoadBalancerHealthsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListNetworkLoadBalancerHealthsSortByEnum Enum with underlying type: string
 type ListNetworkLoadBalancerHealthsSortByEnum string
 
@@ -177,4 +188,15 @@ func GetListNetworkLoadBalancerHealthsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListNetworkLoadBalancerHealthsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNetworkLoadBalancerHealthsSortByEnum(val string) (ListNetworkLoadBalancerHealthsSortByEnum, bool) {
+	mappingListNetworkLoadBalancerHealthsSortByEnumIgnoreCase := make(map[string]ListNetworkLoadBalancerHealthsSortByEnum)
+	for k, v := range mappingListNetworkLoadBalancerHealthsSortByEnum {
+		mappingListNetworkLoadBalancerHealthsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNetworkLoadBalancerHealthsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

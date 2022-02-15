@@ -85,7 +85,7 @@ func (request DeleteZoneRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request DeleteZoneRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDeleteZoneScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingDeleteZoneScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetDeleteZoneScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -147,4 +147,15 @@ func GetDeleteZoneScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingDeleteZoneScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeleteZoneScopeEnum(val string) (DeleteZoneScopeEnum, bool) {
+	mappingDeleteZoneScopeEnumIgnoreCase := make(map[string]DeleteZoneScopeEnum)
+	for k, v := range mappingDeleteZoneScopeEnum {
+		mappingDeleteZoneScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeleteZoneScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

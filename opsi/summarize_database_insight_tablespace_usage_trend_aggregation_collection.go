@@ -45,7 +45,7 @@ func (m SummarizeDatabaseInsightTablespaceUsageTrendAggregationCollection) Strin
 // Not recommended for calling this function directly
 func (m SummarizeDatabaseInsightTablespaceUsageTrendAggregationCollection) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUsageUnitEnum[string(m.UsageUnit)]; !ok && m.UsageUnit != "" {
+	if _, ok := GetMappingUsageUnitEnum(string(m.UsageUnit)); !ok && m.UsageUnit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UsageUnit: %s. Supported values are: %s.", m.UsageUnit, strings.Join(GetUsageUnitEnumStringValues(), ",")))
 	}
 

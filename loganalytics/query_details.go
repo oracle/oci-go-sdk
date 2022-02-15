@@ -73,11 +73,11 @@ func (m QueryDetails) String() string {
 // Not recommended for calling this function directly
 func (m QueryDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSubSystemNameEnum[string(m.SubSystem)]; !ok && m.SubSystem != "" {
+	if _, ok := GetMappingSubSystemNameEnum(string(m.SubSystem)); !ok && m.SubSystem != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SubSystem: %s. Supported values are: %s.", m.SubSystem, strings.Join(GetSubSystemNameEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingJobModeEnum[string(m.AsyncMode)]; !ok && m.AsyncMode != "" {
+	if _, ok := GetMappingJobModeEnum(string(m.AsyncMode)); !ok && m.AsyncMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AsyncMode: %s. Supported values are: %s.", m.AsyncMode, strings.Join(GetJobModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

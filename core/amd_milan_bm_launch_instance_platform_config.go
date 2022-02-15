@@ -61,7 +61,7 @@ func (m AmdMilanBmLaunchInstancePlatformConfig) String() string {
 // Not recommended for calling this function directly
 func (m AmdMilanBmLaunchInstancePlatformConfig) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum[string(m.NumaNodesPerSocket)]; !ok && m.NumaNodesPerSocket != "" {
+	if _, ok := GetMappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum(string(m.NumaNodesPerSocket)); !ok && m.NumaNodesPerSocket != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NumaNodesPerSocket: %s. Supported values are: %s.", m.NumaNodesPerSocket, strings.Join(GetAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnumStringValues(), ",")))
 	}
 
@@ -120,4 +120,15 @@ func GetAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnumStringValues
 		"NPS2",
 		"NPS4",
 	}
+}
+
+// GetMappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum(val string) (AmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum, bool) {
+	mappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnumIgnoreCase := make(map[string]AmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum)
+	for k, v := range mappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum {
+		mappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

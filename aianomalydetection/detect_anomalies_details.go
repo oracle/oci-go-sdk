@@ -122,3 +122,14 @@ func GetDetectAnomaliesDetailsRequestTypeEnumStringValues() []string {
 		"BASE64_ENCODED",
 	}
 }
+
+// GetMappingDetectAnomaliesDetailsRequestTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDetectAnomaliesDetailsRequestTypeEnum(val string) (DetectAnomaliesDetailsRequestTypeEnum, bool) {
+	mappingDetectAnomaliesDetailsRequestTypeEnumIgnoreCase := make(map[string]DetectAnomaliesDetailsRequestTypeEnum)
+	for k, v := range mappingDetectAnomaliesDetailsRequestTypeEnum {
+		mappingDetectAnomaliesDetailsRequestTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDetectAnomaliesDetailsRequestTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

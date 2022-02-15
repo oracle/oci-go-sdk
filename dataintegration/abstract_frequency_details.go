@@ -99,7 +99,7 @@ func (m abstractfrequencydetails) String() string {
 func (m abstractfrequencydetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAbstractFrequencyDetailsFrequencyEnum[string(m.Frequency)]; !ok && m.Frequency != "" {
+	if _, ok := GetMappingAbstractFrequencyDetailsFrequencyEnum(string(m.Frequency)); !ok && m.Frequency != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Frequency: %s. Supported values are: %s.", m.Frequency, strings.Join(GetAbstractFrequencyDetailsFrequencyEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -148,6 +148,17 @@ func GetAbstractFrequencyDetailsFrequencyEnumStringValues() []string {
 	}
 }
 
+// GetMappingAbstractFrequencyDetailsFrequencyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAbstractFrequencyDetailsFrequencyEnum(val string) (AbstractFrequencyDetailsFrequencyEnum, bool) {
+	mappingAbstractFrequencyDetailsFrequencyEnumIgnoreCase := make(map[string]AbstractFrequencyDetailsFrequencyEnum)
+	for k, v := range mappingAbstractFrequencyDetailsFrequencyEnum {
+		mappingAbstractFrequencyDetailsFrequencyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAbstractFrequencyDetailsFrequencyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AbstractFrequencyDetailsModelTypeEnum Enum with underlying type: string
 type AbstractFrequencyDetailsModelTypeEnum string
 
@@ -189,4 +200,15 @@ func GetAbstractFrequencyDetailsModelTypeEnumStringValues() []string {
 		"MONTHLY_RULE",
 		"CUSTOM",
 	}
+}
+
+// GetMappingAbstractFrequencyDetailsModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAbstractFrequencyDetailsModelTypeEnum(val string) (AbstractFrequencyDetailsModelTypeEnum, bool) {
+	mappingAbstractFrequencyDetailsModelTypeEnumIgnoreCase := make(map[string]AbstractFrequencyDetailsModelTypeEnum)
+	for k, v := range mappingAbstractFrequencyDetailsModelTypeEnum {
+		mappingAbstractFrequencyDetailsModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAbstractFrequencyDetailsModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

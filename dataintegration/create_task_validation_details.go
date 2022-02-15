@@ -252,3 +252,14 @@ func GetCreateTaskValidationDetailsModelTypeEnumStringValues() []string {
 		"PIPELINE_TASK",
 	}
 }
+
+// GetMappingCreateTaskValidationDetailsModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateTaskValidationDetailsModelTypeEnum(val string) (CreateTaskValidationDetailsModelTypeEnum, bool) {
+	mappingCreateTaskValidationDetailsModelTypeEnumIgnoreCase := make(map[string]CreateTaskValidationDetailsModelTypeEnum)
+	for k, v := range mappingCreateTaskValidationDetailsModelTypeEnum {
+		mappingCreateTaskValidationDetailsModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateTaskValidationDetailsModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

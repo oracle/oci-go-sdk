@@ -58,10 +58,10 @@ func (m WorkRequest) String() string {
 // Not recommended for calling this function directly
 func (m WorkRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingWorkRequestOperationEnum[string(m.Operation)]; !ok && m.Operation != "" {
+	if _, ok := GetMappingWorkRequestOperationEnum(string(m.Operation)); !ok && m.Operation != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Operation: %s. Supported values are: %s.", m.Operation, strings.Join(GetWorkRequestOperationEnumStringValues(), ",")))
 	}
-	if _, ok := mappingWorkRequestStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingWorkRequestStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetWorkRequestStatusEnumStringValues(), ",")))
 	}
 

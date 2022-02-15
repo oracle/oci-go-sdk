@@ -117,3 +117,14 @@ func GetInstanceAgentCommandOutputDetailsOutputTypeEnumStringValues() []string {
 		"OBJECT_STORAGE_TUPLE",
 	}
 }
+
+// GetMappingInstanceAgentCommandOutputDetailsOutputTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstanceAgentCommandOutputDetailsOutputTypeEnum(val string) (InstanceAgentCommandOutputDetailsOutputTypeEnum, bool) {
+	mappingInstanceAgentCommandOutputDetailsOutputTypeEnumIgnoreCase := make(map[string]InstanceAgentCommandOutputDetailsOutputTypeEnum)
+	for k, v := range mappingInstanceAgentCommandOutputDetailsOutputTypeEnum {
+		mappingInstanceAgentCommandOutputDetailsOutputTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstanceAgentCommandOutputDetailsOutputTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

@@ -43,11 +43,11 @@ func (m TlsConfig) String() string {
 // Not recommended for calling this function directly
 func (m TlsConfig) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTlsConfigStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingTlsConfigStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetTlsConfigStatusEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingTlsConfigCertificateStoreTypeEnum[string(m.CertificateStoreType)]; !ok && m.CertificateStoreType != "" {
+	if _, ok := GetMappingTlsConfigCertificateStoreTypeEnum(string(m.CertificateStoreType)); !ok && m.CertificateStoreType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CertificateStoreType: %s. Supported values are: %s.", m.CertificateStoreType, strings.Join(GetTlsConfigCertificateStoreTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -87,6 +87,17 @@ func GetTlsConfigStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingTlsConfigStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTlsConfigStatusEnum(val string) (TlsConfigStatusEnum, bool) {
+	mappingTlsConfigStatusEnumIgnoreCase := make(map[string]TlsConfigStatusEnum)
+	for k, v := range mappingTlsConfigStatusEnum {
+		mappingTlsConfigStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTlsConfigStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TlsConfigCertificateStoreTypeEnum Enum with underlying type: string
 type TlsConfigCertificateStoreTypeEnum string
 
@@ -113,4 +124,15 @@ func GetTlsConfigCertificateStoreTypeEnumStringValues() []string {
 	return []string{
 		"JKS",
 	}
+}
+
+// GetMappingTlsConfigCertificateStoreTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTlsConfigCertificateStoreTypeEnum(val string) (TlsConfigCertificateStoreTypeEnum, bool) {
+	mappingTlsConfigCertificateStoreTypeEnumIgnoreCase := make(map[string]TlsConfigCertificateStoreTypeEnum)
+	for k, v := range mappingTlsConfigCertificateStoreTypeEnum {
+		mappingTlsConfigCertificateStoreTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTlsConfigCertificateStoreTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

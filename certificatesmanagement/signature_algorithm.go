@@ -9,6 +9,10 @@
 
 package certificatesmanagement
 
+import (
+	"strings"
+)
+
 // SignatureAlgorithmEnum Enum with underlying type: string
 type SignatureAlgorithmEnum string
 
@@ -50,4 +54,15 @@ func GetSignatureAlgorithmEnumStringValues() []string {
 		"SHA384_WITH_ECDSA",
 		"SHA512_WITH_ECDSA",
 	}
+}
+
+// GetMappingSignatureAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSignatureAlgorithmEnum(val string) (SignatureAlgorithmEnum, bool) {
+	mappingSignatureAlgorithmEnumIgnoreCase := make(map[string]SignatureAlgorithmEnum)
+	for k, v := range mappingSignatureAlgorithmEnum {
+		mappingSignatureAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSignatureAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

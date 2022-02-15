@@ -117,22 +117,22 @@ func (request ListSensitiveTypesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListSensitiveTypesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSensitiveTypesAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListSensitiveTypesAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListSensitiveTypesAccessLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSensitiveTypesSensitiveTypeSourceEnum[string(request.SensitiveTypeSource)]; !ok && request.SensitiveTypeSource != "" {
+	if _, ok := GetMappingListSensitiveTypesSensitiveTypeSourceEnum(string(request.SensitiveTypeSource)); !ok && request.SensitiveTypeSource != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SensitiveTypeSource: %s. Supported values are: %s.", request.SensitiveTypeSource, strings.Join(GetListSensitiveTypesSensitiveTypeSourceEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSensitiveTypesEntityTypeEnum[string(request.EntityType)]; !ok && request.EntityType != "" {
+	if _, ok := GetMappingListSensitiveTypesEntityTypeEnum(string(request.EntityType)); !ok && request.EntityType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EntityType: %s. Supported values are: %s.", request.EntityType, strings.Join(GetListSensitiveTypesEntityTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSensitiveTypesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSensitiveTypesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSensitiveTypesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSensitiveTypesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSensitiveTypesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSensitiveTypesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSensitiveTypesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListSensitiveTypesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListSensitiveTypesLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -202,6 +202,17 @@ func GetListSensitiveTypesAccessLevelEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSensitiveTypesAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSensitiveTypesAccessLevelEnum(val string) (ListSensitiveTypesAccessLevelEnum, bool) {
+	mappingListSensitiveTypesAccessLevelEnumIgnoreCase := make(map[string]ListSensitiveTypesAccessLevelEnum)
+	for k, v := range mappingListSensitiveTypesAccessLevelEnum {
+		mappingListSensitiveTypesAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSensitiveTypesAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSensitiveTypesSensitiveTypeSourceEnum Enum with underlying type: string
 type ListSensitiveTypesSensitiveTypeSourceEnum string
 
@@ -231,6 +242,17 @@ func GetListSensitiveTypesSensitiveTypeSourceEnumStringValues() []string {
 		"ORACLE",
 		"USER",
 	}
+}
+
+// GetMappingListSensitiveTypesSensitiveTypeSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSensitiveTypesSensitiveTypeSourceEnum(val string) (ListSensitiveTypesSensitiveTypeSourceEnum, bool) {
+	mappingListSensitiveTypesSensitiveTypeSourceEnumIgnoreCase := make(map[string]ListSensitiveTypesSensitiveTypeSourceEnum)
+	for k, v := range mappingListSensitiveTypesSensitiveTypeSourceEnum {
+		mappingListSensitiveTypesSensitiveTypeSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSensitiveTypesSensitiveTypeSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListSensitiveTypesEntityTypeEnum Enum with underlying type: string
@@ -264,6 +286,17 @@ func GetListSensitiveTypesEntityTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSensitiveTypesEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSensitiveTypesEntityTypeEnum(val string) (ListSensitiveTypesEntityTypeEnum, bool) {
+	mappingListSensitiveTypesEntityTypeEnumIgnoreCase := make(map[string]ListSensitiveTypesEntityTypeEnum)
+	for k, v := range mappingListSensitiveTypesEntityTypeEnum {
+		mappingListSensitiveTypesEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSensitiveTypesEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSensitiveTypesSortOrderEnum Enum with underlying type: string
 type ListSensitiveTypesSortOrderEnum string
 
@@ -295,6 +328,17 @@ func GetListSensitiveTypesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSensitiveTypesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSensitiveTypesSortOrderEnum(val string) (ListSensitiveTypesSortOrderEnum, bool) {
+	mappingListSensitiveTypesSortOrderEnumIgnoreCase := make(map[string]ListSensitiveTypesSortOrderEnum)
+	for k, v := range mappingListSensitiveTypesSortOrderEnum {
+		mappingListSensitiveTypesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSensitiveTypesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSensitiveTypesSortByEnum Enum with underlying type: string
 type ListSensitiveTypesSortByEnum string
 
@@ -324,6 +368,17 @@ func GetListSensitiveTypesSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListSensitiveTypesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSensitiveTypesSortByEnum(val string) (ListSensitiveTypesSortByEnum, bool) {
+	mappingListSensitiveTypesSortByEnumIgnoreCase := make(map[string]ListSensitiveTypesSortByEnum)
+	for k, v := range mappingListSensitiveTypesSortByEnum {
+		mappingListSensitiveTypesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSensitiveTypesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListSensitiveTypesLifecycleStateEnum Enum with underlying type: string
@@ -367,4 +422,15 @@ func GetListSensitiveTypesLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingListSensitiveTypesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSensitiveTypesLifecycleStateEnum(val string) (ListSensitiveTypesLifecycleStateEnum, bool) {
+	mappingListSensitiveTypesLifecycleStateEnumIgnoreCase := make(map[string]ListSensitiveTypesLifecycleStateEnum)
+	for k, v := range mappingListSensitiveTypesLifecycleStateEnum {
+		mappingListSensitiveTypesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSensitiveTypesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

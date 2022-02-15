@@ -204,3 +204,14 @@ func GetPublishedObjectModelTypeEnumStringValues() []string {
 		"REST_TASK",
 	}
 }
+
+// GetMappingPublishedObjectModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPublishedObjectModelTypeEnum(val string) (PublishedObjectModelTypeEnum, bool) {
+	mappingPublishedObjectModelTypeEnumIgnoreCase := make(map[string]PublishedObjectModelTypeEnum)
+	for k, v := range mappingPublishedObjectModelTypeEnum {
+		mappingPublishedObjectModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPublishedObjectModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

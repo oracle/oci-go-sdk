@@ -130,3 +130,14 @@ func GetPushDownOperationModelTypeEnumStringValues() []string {
 		"QUERY",
 	}
 }
+
+// GetMappingPushDownOperationModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPushDownOperationModelTypeEnum(val string) (PushDownOperationModelTypeEnum, bool) {
+	mappingPushDownOperationModelTypeEnumIgnoreCase := make(map[string]PushDownOperationModelTypeEnum)
+	for k, v := range mappingPushDownOperationModelTypeEnum {
+		mappingPushDownOperationModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPushDownOperationModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

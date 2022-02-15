@@ -80,10 +80,10 @@ func (request ListConsumerGroupPrivilegesRequest) RetryPolicy() *common.RetryPol
 // Not recommended for calling this function directly
 func (request ListConsumerGroupPrivilegesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListConsumerGroupPrivilegesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListConsumerGroupPrivilegesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListConsumerGroupPrivilegesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListConsumerGroupPrivilegesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListConsumerGroupPrivilegesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListConsumerGroupPrivilegesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -148,6 +148,17 @@ func GetListConsumerGroupPrivilegesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListConsumerGroupPrivilegesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListConsumerGroupPrivilegesSortByEnum(val string) (ListConsumerGroupPrivilegesSortByEnum, bool) {
+	mappingListConsumerGroupPrivilegesSortByEnumIgnoreCase := make(map[string]ListConsumerGroupPrivilegesSortByEnum)
+	for k, v := range mappingListConsumerGroupPrivilegesSortByEnum {
+		mappingListConsumerGroupPrivilegesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListConsumerGroupPrivilegesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListConsumerGroupPrivilegesSortOrderEnum Enum with underlying type: string
 type ListConsumerGroupPrivilegesSortOrderEnum string
 
@@ -177,4 +188,15 @@ func GetListConsumerGroupPrivilegesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListConsumerGroupPrivilegesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListConsumerGroupPrivilegesSortOrderEnum(val string) (ListConsumerGroupPrivilegesSortOrderEnum, bool) {
+	mappingListConsumerGroupPrivilegesSortOrderEnumIgnoreCase := make(map[string]ListConsumerGroupPrivilegesSortOrderEnum)
+	for k, v := range mappingListConsumerGroupPrivilegesSortOrderEnum {
+		mappingListConsumerGroupPrivilegesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListConsumerGroupPrivilegesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -102,10 +102,10 @@ func (m Invoice) String() string {
 func (m Invoice) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingInvoiceInvoiceTypeEnum[string(m.InvoiceType)]; !ok && m.InvoiceType != "" {
+	if _, ok := GetMappingInvoiceInvoiceTypeEnum(string(m.InvoiceType)); !ok && m.InvoiceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InvoiceType: %s. Supported values are: %s.", m.InvoiceType, strings.Join(GetInvoiceInvoiceTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingInvoiceInvoiceStatusEnum[string(m.InvoiceStatus)]; !ok && m.InvoiceStatus != "" {
+	if _, ok := GetMappingInvoiceInvoiceStatusEnum(string(m.InvoiceStatus)); !ok && m.InvoiceStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InvoiceStatus: %s. Supported values are: %s.", m.InvoiceStatus, strings.Join(GetInvoiceInvoiceStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -262,6 +262,17 @@ func GetInvoiceInvoiceTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingInvoiceInvoiceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInvoiceInvoiceTypeEnum(val string) (InvoiceInvoiceTypeEnum, bool) {
+	mappingInvoiceInvoiceTypeEnumIgnoreCase := make(map[string]InvoiceInvoiceTypeEnum)
+	for k, v := range mappingInvoiceInvoiceTypeEnum {
+		mappingInvoiceInvoiceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInvoiceInvoiceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // InvoiceInvoiceStatusEnum Enum with underlying type: string
 type InvoiceInvoiceStatusEnum string
 
@@ -297,4 +308,15 @@ func GetInvoiceInvoiceStatusEnumStringValues() []string {
 		"PAYMENT_SUBMITTED",
 		"CLOSED",
 	}
+}
+
+// GetMappingInvoiceInvoiceStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInvoiceInvoiceStatusEnum(val string) (InvoiceInvoiceStatusEnum, bool) {
+	mappingInvoiceInvoiceStatusEnumIgnoreCase := make(map[string]InvoiceInvoiceStatusEnum)
+	for k, v := range mappingInvoiceInvoiceStatusEnum {
+		mappingInvoiceInvoiceStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInvoiceInvoiceStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

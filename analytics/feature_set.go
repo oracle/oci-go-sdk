@@ -9,6 +9,10 @@
 
 package analytics
 
+import (
+	"strings"
+)
+
 // FeatureSetEnum Enum with underlying type: string
 type FeatureSetEnum string
 
@@ -38,4 +42,15 @@ func GetFeatureSetEnumStringValues() []string {
 		"SELF_SERVICE_ANALYTICS",
 		"ENTERPRISE_ANALYTICS",
 	}
+}
+
+// GetMappingFeatureSetEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFeatureSetEnum(val string) (FeatureSetEnum, bool) {
+	mappingFeatureSetEnumIgnoreCase := make(map[string]FeatureSetEnum)
+	for k, v := range mappingFeatureSetEnum {
+		mappingFeatureSetEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFeatureSetEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

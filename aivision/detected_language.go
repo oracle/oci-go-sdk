@@ -34,7 +34,7 @@ func (m DetectedLanguage) String() string {
 // Not recommended for calling this function directly
 func (m DetectedLanguage) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDocumentLanguageEnum[string(m.LanguageCode)]; !ok && m.LanguageCode != "" {
+	if _, ok := GetMappingDocumentLanguageEnum(string(m.LanguageCode)); !ok && m.LanguageCode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LanguageCode: %s. Supported values are: %s.", m.LanguageCode, strings.Join(GetDocumentLanguageEnumStringValues(), ",")))
 	}
 

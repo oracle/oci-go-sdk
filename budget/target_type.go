@@ -9,6 +9,10 @@
 
 package budget
 
+import (
+	"strings"
+)
+
 // TargetTypeEnum Enum with underlying type: string
 type TargetTypeEnum string
 
@@ -38,4 +42,15 @@ func GetTargetTypeEnumStringValues() []string {
 		"COMPARTMENT",
 		"TAG",
 	}
+}
+
+// GetMappingTargetTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTargetTypeEnum(val string) (TargetTypeEnum, bool) {
+	mappingTargetTypeEnumIgnoreCase := make(map[string]TargetTypeEnum)
+	for k, v := range mappingTargetTypeEnum {
+		mappingTargetTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTargetTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

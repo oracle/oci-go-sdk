@@ -53,11 +53,11 @@ func (m VerifyDataDetails) String() string {
 // Not recommended for calling this function directly
 func (m VerifyDataDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVerifyDataDetailsSigningAlgorithmEnum[string(m.SigningAlgorithm)]; !ok && m.SigningAlgorithm != "" {
+	if _, ok := GetMappingVerifyDataDetailsSigningAlgorithmEnum(string(m.SigningAlgorithm)); !ok && m.SigningAlgorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SigningAlgorithm: %s. Supported values are: %s.", m.SigningAlgorithm, strings.Join(GetVerifyDataDetailsSigningAlgorithmEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingVerifyDataDetailsMessageTypeEnum[string(m.MessageType)]; !ok && m.MessageType != "" {
+	if _, ok := GetMappingVerifyDataDetailsMessageTypeEnum(string(m.MessageType)); !ok && m.MessageType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MessageType: %s. Supported values are: %s.", m.MessageType, strings.Join(GetVerifyDataDetailsMessageTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -95,6 +95,17 @@ func GetVerifyDataDetailsMessageTypeEnumStringValues() []string {
 		"RAW",
 		"DIGEST",
 	}
+}
+
+// GetMappingVerifyDataDetailsMessageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVerifyDataDetailsMessageTypeEnum(val string) (VerifyDataDetailsMessageTypeEnum, bool) {
+	mappingVerifyDataDetailsMessageTypeEnumIgnoreCase := make(map[string]VerifyDataDetailsMessageTypeEnum)
+	for k, v := range mappingVerifyDataDetailsMessageTypeEnum {
+		mappingVerifyDataDetailsMessageTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVerifyDataDetailsMessageTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // VerifyDataDetailsSigningAlgorithmEnum Enum with underlying type: string
@@ -153,4 +164,15 @@ func GetVerifyDataDetailsSigningAlgorithmEnumStringValues() []string {
 		"ECDSA_SHA_384",
 		"ECDSA_SHA_512",
 	}
+}
+
+// GetMappingVerifyDataDetailsSigningAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVerifyDataDetailsSigningAlgorithmEnum(val string) (VerifyDataDetailsSigningAlgorithmEnum, bool) {
+	mappingVerifyDataDetailsSigningAlgorithmEnumIgnoreCase := make(map[string]VerifyDataDetailsSigningAlgorithmEnum)
+	for k, v := range mappingVerifyDataDetailsSigningAlgorithmEnum {
+		mappingVerifyDataDetailsSigningAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVerifyDataDetailsSigningAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -80,10 +80,10 @@ func (request ListDataAccessContainersRequest) RetryPolicy() *common.RetryPolicy
 // Not recommended for calling this function directly
 func (request ListDataAccessContainersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDataAccessContainersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDataAccessContainersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDataAccessContainersSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDataAccessContainersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDataAccessContainersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDataAccessContainersSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -148,6 +148,17 @@ func GetListDataAccessContainersSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDataAccessContainersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDataAccessContainersSortByEnum(val string) (ListDataAccessContainersSortByEnum, bool) {
+	mappingListDataAccessContainersSortByEnumIgnoreCase := make(map[string]ListDataAccessContainersSortByEnum)
+	for k, v := range mappingListDataAccessContainersSortByEnum {
+		mappingListDataAccessContainersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDataAccessContainersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDataAccessContainersSortOrderEnum Enum with underlying type: string
 type ListDataAccessContainersSortOrderEnum string
 
@@ -177,4 +188,15 @@ func GetListDataAccessContainersSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListDataAccessContainersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDataAccessContainersSortOrderEnum(val string) (ListDataAccessContainersSortOrderEnum, bool) {
+	mappingListDataAccessContainersSortOrderEnumIgnoreCase := make(map[string]ListDataAccessContainersSortOrderEnum)
+	for k, v := range mappingListDataAccessContainersSortOrderEnum {
+		mappingListDataAccessContainersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDataAccessContainersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

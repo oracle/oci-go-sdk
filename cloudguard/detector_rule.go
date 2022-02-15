@@ -69,17 +69,17 @@ func (m DetectorRule) String() string {
 // Not recommended for calling this function directly
 func (m DetectorRule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDetectorEnumEnum[string(m.Detector)]; !ok && m.Detector != "" {
+	if _, ok := GetMappingDetectorEnumEnum(string(m.Detector)); !ok && m.Detector != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Detector: %s. Supported values are: %s.", m.Detector, strings.Join(GetDetectorEnumEnumStringValues(), ",")))
 	}
 
 	for _, val := range m.ManagedListTypes {
-		if _, ok := mappingDetectorRuleManagedListTypesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingDetectorRuleManagedListTypesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ManagedListTypes: %s. Supported values are: %s.", val, strings.Join(GetDetectorRuleManagedListTypesEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -147,4 +147,15 @@ func GetDetectorRuleManagedListTypesEnumStringValues() []string {
 		"TAGS",
 		"GENERIC",
 	}
+}
+
+// GetMappingDetectorRuleManagedListTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDetectorRuleManagedListTypesEnum(val string) (DetectorRuleManagedListTypesEnum, bool) {
+	mappingDetectorRuleManagedListTypesEnumIgnoreCase := make(map[string]DetectorRuleManagedListTypesEnum)
+	for k, v := range mappingDetectorRuleManagedListTypesEnum {
+		mappingDetectorRuleManagedListTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDetectorRuleManagedListTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

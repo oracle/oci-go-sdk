@@ -98,10 +98,10 @@ func (request GetAwrDbReportRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetAwrDbReportRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetAwrDbReportReportTypeEnum[string(request.ReportType)]; !ok && request.ReportType != "" {
+	if _, ok := GetMappingGetAwrDbReportReportTypeEnum(string(request.ReportType)); !ok && request.ReportType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ReportType: %s. Supported values are: %s.", request.ReportType, strings.Join(GetGetAwrDbReportReportTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingGetAwrDbReportReportFormatEnum[string(request.ReportFormat)]; !ok && request.ReportFormat != "" {
+	if _, ok := GetMappingGetAwrDbReportReportFormatEnum(string(request.ReportFormat)); !ok && request.ReportFormat != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ReportFormat: %s. Supported values are: %s.", request.ReportFormat, strings.Join(GetGetAwrDbReportReportFormatEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -164,6 +164,17 @@ func GetGetAwrDbReportReportTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingGetAwrDbReportReportTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetAwrDbReportReportTypeEnum(val string) (GetAwrDbReportReportTypeEnum, bool) {
+	mappingGetAwrDbReportReportTypeEnumIgnoreCase := make(map[string]GetAwrDbReportReportTypeEnum)
+	for k, v := range mappingGetAwrDbReportReportTypeEnum {
+		mappingGetAwrDbReportReportTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetAwrDbReportReportTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // GetAwrDbReportReportFormatEnum Enum with underlying type: string
 type GetAwrDbReportReportFormatEnum string
 
@@ -193,4 +204,15 @@ func GetGetAwrDbReportReportFormatEnumStringValues() []string {
 		"HTML",
 		"TEXT",
 	}
+}
+
+// GetMappingGetAwrDbReportReportFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetAwrDbReportReportFormatEnum(val string) (GetAwrDbReportReportFormatEnum, bool) {
+	mappingGetAwrDbReportReportFormatEnumIgnoreCase := make(map[string]GetAwrDbReportReportFormatEnum)
+	for k, v := range mappingGetAwrDbReportReportFormatEnum {
+		mappingGetAwrDbReportReportFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetAwrDbReportReportFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

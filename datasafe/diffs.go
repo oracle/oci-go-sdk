@@ -44,7 +44,7 @@ func (m Diffs) String() string {
 func (m Diffs) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDiffsSeverityEnum[string(m.Severity)]; !ok && m.Severity != "" {
+	if _, ok := GetMappingDiffsSeverityEnum(string(m.Severity)); !ok && m.Severity != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Severity: %s. Supported values are: %s.", m.Severity, strings.Join(GetDiffsSeverityEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -94,4 +94,15 @@ func GetDiffsSeverityEnumStringValues() []string {
 		"ADVISORY",
 		"PASS",
 	}
+}
+
+// GetMappingDiffsSeverityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDiffsSeverityEnum(val string) (DiffsSeverityEnum, bool) {
+	mappingDiffsSeverityEnumIgnoreCase := make(map[string]DiffsSeverityEnum)
+	for k, v := range mappingDiffsSeverityEnum {
+		mappingDiffsSeverityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDiffsSeverityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

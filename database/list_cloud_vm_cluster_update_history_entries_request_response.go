@@ -69,7 +69,7 @@ func (request ListCloudVmClusterUpdateHistoryEntriesRequest) RetryPolicy() *comm
 // Not recommended for calling this function directly
 func (request ListCloudVmClusterUpdateHistoryEntriesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListCloudVmClusterUpdateHistoryEntriesUpdateTypeEnum[string(request.UpdateType)]; !ok && request.UpdateType != "" {
+	if _, ok := GetMappingListCloudVmClusterUpdateHistoryEntriesUpdateTypeEnum(string(request.UpdateType)); !ok && request.UpdateType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateType: %s. Supported values are: %s.", request.UpdateType, strings.Join(GetListCloudVmClusterUpdateHistoryEntriesUpdateTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -139,4 +139,15 @@ func GetListCloudVmClusterUpdateHistoryEntriesUpdateTypeEnumStringValues() []str
 		"GI_PATCH",
 		"OS_UPDATE",
 	}
+}
+
+// GetMappingListCloudVmClusterUpdateHistoryEntriesUpdateTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCloudVmClusterUpdateHistoryEntriesUpdateTypeEnum(val string) (ListCloudVmClusterUpdateHistoryEntriesUpdateTypeEnum, bool) {
+	mappingListCloudVmClusterUpdateHistoryEntriesUpdateTypeEnumIgnoreCase := make(map[string]ListCloudVmClusterUpdateHistoryEntriesUpdateTypeEnum)
+	for k, v := range mappingListCloudVmClusterUpdateHistoryEntriesUpdateTypeEnum {
+		mappingListCloudVmClusterUpdateHistoryEntriesUpdateTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCloudVmClusterUpdateHistoryEntriesUpdateTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

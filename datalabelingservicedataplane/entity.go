@@ -116,3 +116,14 @@ func GetEntityEntityTypeEnumStringValues() []string {
 		"TEXTSELECTION",
 	}
 }
+
+// GetMappingEntityEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEntityEntityTypeEnum(val string) (EntityEntityTypeEnum, bool) {
+	mappingEntityEntityTypeEnumIgnoreCase := make(map[string]EntityEntityTypeEnum)
+	for k, v := range mappingEntityEntityTypeEnum {
+		mappingEntityEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEntityEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

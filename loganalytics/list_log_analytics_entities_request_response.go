@@ -117,22 +117,22 @@ func (request ListLogAnalyticsEntitiesRequest) RetryPolicy() *common.RetryPolicy
 // Not recommended for calling this function directly
 func (request ListLogAnalyticsEntitiesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListLogAnalyticsEntitiesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListLogAnalyticsEntitiesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListLogAnalyticsEntitiesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLogAnalyticsEntitiesIsManagementAgentIdNullEnum[string(request.IsManagementAgentIdNull)]; !ok && request.IsManagementAgentIdNull != "" {
+	if _, ok := GetMappingListLogAnalyticsEntitiesIsManagementAgentIdNullEnum(string(request.IsManagementAgentIdNull)); !ok && request.IsManagementAgentIdNull != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IsManagementAgentIdNull: %s. Supported values are: %s.", request.IsManagementAgentIdNull, strings.Join(GetListLogAnalyticsEntitiesIsManagementAgentIdNullEnumStringValues(), ",")))
 	}
 	for _, val := range request.CreationSourceType {
-		if _, ok := mappingCreationSourceTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingCreationSourceTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CreationSourceType: %s. Supported values are: %s.", val, strings.Join(GetCreationSourceTypeEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListLogAnalyticsEntitiesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListLogAnalyticsEntitiesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListLogAnalyticsEntitiesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLogAnalyticsEntitiesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListLogAnalyticsEntitiesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListLogAnalyticsEntitiesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -199,6 +199,17 @@ func GetListLogAnalyticsEntitiesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListLogAnalyticsEntitiesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogAnalyticsEntitiesLifecycleStateEnum(val string) (ListLogAnalyticsEntitiesLifecycleStateEnum, bool) {
+	mappingListLogAnalyticsEntitiesLifecycleStateEnumIgnoreCase := make(map[string]ListLogAnalyticsEntitiesLifecycleStateEnum)
+	for k, v := range mappingListLogAnalyticsEntitiesLifecycleStateEnum {
+		mappingListLogAnalyticsEntitiesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogAnalyticsEntitiesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLogAnalyticsEntitiesIsManagementAgentIdNullEnum Enum with underlying type: string
 type ListLogAnalyticsEntitiesIsManagementAgentIdNullEnum string
 
@@ -230,6 +241,17 @@ func GetListLogAnalyticsEntitiesIsManagementAgentIdNullEnumStringValues() []stri
 	}
 }
 
+// GetMappingListLogAnalyticsEntitiesIsManagementAgentIdNullEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogAnalyticsEntitiesIsManagementAgentIdNullEnum(val string) (ListLogAnalyticsEntitiesIsManagementAgentIdNullEnum, bool) {
+	mappingListLogAnalyticsEntitiesIsManagementAgentIdNullEnumIgnoreCase := make(map[string]ListLogAnalyticsEntitiesIsManagementAgentIdNullEnum)
+	for k, v := range mappingListLogAnalyticsEntitiesIsManagementAgentIdNullEnum {
+		mappingListLogAnalyticsEntitiesIsManagementAgentIdNullEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogAnalyticsEntitiesIsManagementAgentIdNullEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLogAnalyticsEntitiesSortOrderEnum Enum with underlying type: string
 type ListLogAnalyticsEntitiesSortOrderEnum string
 
@@ -259,6 +281,17 @@ func GetListLogAnalyticsEntitiesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListLogAnalyticsEntitiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogAnalyticsEntitiesSortOrderEnum(val string) (ListLogAnalyticsEntitiesSortOrderEnum, bool) {
+	mappingListLogAnalyticsEntitiesSortOrderEnumIgnoreCase := make(map[string]ListLogAnalyticsEntitiesSortOrderEnum)
+	for k, v := range mappingListLogAnalyticsEntitiesSortOrderEnum {
+		mappingListLogAnalyticsEntitiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogAnalyticsEntitiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListLogAnalyticsEntitiesSortByEnum Enum with underlying type: string
@@ -293,4 +326,15 @@ func GetListLogAnalyticsEntitiesSortByEnumStringValues() []string {
 		"timeUpdated",
 		"name",
 	}
+}
+
+// GetMappingListLogAnalyticsEntitiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogAnalyticsEntitiesSortByEnum(val string) (ListLogAnalyticsEntitiesSortByEnum, bool) {
+	mappingListLogAnalyticsEntitiesSortByEnumIgnoreCase := make(map[string]ListLogAnalyticsEntitiesSortByEnum)
+	for k, v := range mappingListLogAnalyticsEntitiesSortByEnum {
+		mappingListLogAnalyticsEntitiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogAnalyticsEntitiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

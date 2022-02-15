@@ -83,10 +83,10 @@ func (request ListCommitmentsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListCommitmentsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListCommitmentsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListCommitmentsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListCommitmentsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListCommitmentsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListCommitmentsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListCommitmentsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -154,6 +154,17 @@ func GetListCommitmentsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListCommitmentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCommitmentsSortOrderEnum(val string) (ListCommitmentsSortOrderEnum, bool) {
+	mappingListCommitmentsSortOrderEnumIgnoreCase := make(map[string]ListCommitmentsSortOrderEnum)
+	for k, v := range mappingListCommitmentsSortOrderEnum {
+		mappingListCommitmentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCommitmentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListCommitmentsSortByEnum Enum with underlying type: string
 type ListCommitmentsSortByEnum string
 
@@ -183,4 +194,15 @@ func GetListCommitmentsSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"TIMESTART",
 	}
+}
+
+// GetMappingListCommitmentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCommitmentsSortByEnum(val string) (ListCommitmentsSortByEnum, bool) {
+	mappingListCommitmentsSortByEnumIgnoreCase := make(map[string]ListCommitmentsSortByEnum)
+	for k, v := range mappingListCommitmentsSortByEnum {
+		mappingListCommitmentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCommitmentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

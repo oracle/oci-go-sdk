@@ -72,23 +72,23 @@ func (m UserSummary) String() string {
 func (m UserSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUserSummaryUserCategoryEnum[string(m.UserCategory)]; !ok && m.UserCategory != "" {
+	if _, ok := GetMappingUserSummaryUserCategoryEnum(string(m.UserCategory)); !ok && m.UserCategory != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UserCategory: %s. Supported values are: %s.", m.UserCategory, strings.Join(GetUserSummaryUserCategoryEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUserSummaryAccountStatusEnum[string(m.AccountStatus)]; !ok && m.AccountStatus != "" {
+	if _, ok := GetMappingUserSummaryAccountStatusEnum(string(m.AccountStatus)); !ok && m.AccountStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccountStatus: %s. Supported values are: %s.", m.AccountStatus, strings.Join(GetUserSummaryAccountStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUserSummaryAuthenticationTypeEnum[string(m.AuthenticationType)]; !ok && m.AuthenticationType != "" {
+	if _, ok := GetMappingUserSummaryAuthenticationTypeEnum(string(m.AuthenticationType)); !ok && m.AuthenticationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AuthenticationType: %s. Supported values are: %s.", m.AuthenticationType, strings.Join(GetUserSummaryAuthenticationTypeEnumStringValues(), ",")))
 	}
 	for _, val := range m.UserTypes {
-		if _, ok := mappingUserSummaryUserTypesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingUserSummaryUserTypesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UserTypes: %s. Supported values are: %s.", val, strings.Join(GetUserSummaryUserTypesEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range m.AdminRoles {
-		if _, ok := mappingUserSummaryAdminRolesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingUserSummaryAdminRolesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AdminRoles: %s. Supported values are: %s.", val, strings.Join(GetUserSummaryAdminRolesEnumStringValues(), ",")))
 		}
 	}
@@ -136,6 +136,17 @@ func GetUserSummaryUserCategoryEnumStringValues() []string {
 	}
 }
 
+// GetMappingUserSummaryUserCategoryEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserSummaryUserCategoryEnum(val string) (UserSummaryUserCategoryEnum, bool) {
+	mappingUserSummaryUserCategoryEnumIgnoreCase := make(map[string]UserSummaryUserCategoryEnum)
+	for k, v := range mappingUserSummaryUserCategoryEnum {
+		mappingUserSummaryUserCategoryEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserSummaryUserCategoryEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UserSummaryAccountStatusEnum Enum with underlying type: string
 type UserSummaryAccountStatusEnum string
 
@@ -176,6 +187,17 @@ func GetUserSummaryAccountStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingUserSummaryAccountStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserSummaryAccountStatusEnum(val string) (UserSummaryAccountStatusEnum, bool) {
+	mappingUserSummaryAccountStatusEnumIgnoreCase := make(map[string]UserSummaryAccountStatusEnum)
+	for k, v := range mappingUserSummaryAccountStatusEnum {
+		mappingUserSummaryAccountStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserSummaryAccountStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UserSummaryAuthenticationTypeEnum Enum with underlying type: string
 type UserSummaryAuthenticationTypeEnum string
 
@@ -205,6 +227,17 @@ func GetUserSummaryAuthenticationTypeEnumStringValues() []string {
 		"PASSWORD",
 		"NONE",
 	}
+}
+
+// GetMappingUserSummaryAuthenticationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserSummaryAuthenticationTypeEnum(val string) (UserSummaryAuthenticationTypeEnum, bool) {
+	mappingUserSummaryAuthenticationTypeEnumIgnoreCase := make(map[string]UserSummaryAuthenticationTypeEnum)
+	for k, v := range mappingUserSummaryAuthenticationTypeEnum {
+		mappingUserSummaryAuthenticationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserSummaryAuthenticationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // UserSummaryUserTypesEnum Enum with underlying type: string
@@ -247,6 +280,17 @@ func GetUserSummaryUserTypesEnumStringValues() []string {
 	}
 }
 
+// GetMappingUserSummaryUserTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserSummaryUserTypesEnum(val string) (UserSummaryUserTypesEnum, bool) {
+	mappingUserSummaryUserTypesEnumIgnoreCase := make(map[string]UserSummaryUserTypesEnum)
+	for k, v := range mappingUserSummaryUserTypesEnum {
+		mappingUserSummaryUserTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserSummaryUserTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UserSummaryAdminRolesEnum Enum with underlying type: string
 type UserSummaryAdminRolesEnum string
 
@@ -282,4 +326,15 @@ func GetUserSummaryAdminRolesEnumStringValues() []string {
 		"DV_ADMIN",
 		"AUDIT_ADMIN",
 	}
+}
+
+// GetMappingUserSummaryAdminRolesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserSummaryAdminRolesEnum(val string) (UserSummaryAdminRolesEnum, bool) {
+	mappingUserSummaryAdminRolesEnumIgnoreCase := make(map[string]UserSummaryAdminRolesEnum)
+	for k, v := range mappingUserSummaryAdminRolesEnum {
+		mappingUserSummaryAdminRolesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserSummaryAdminRolesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

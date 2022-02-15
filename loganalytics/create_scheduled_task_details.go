@@ -154,3 +154,14 @@ func GetCreateScheduledTaskDetailsKindEnumStringValues() []string {
 		"STANDARD",
 	}
 }
+
+// GetMappingCreateScheduledTaskDetailsKindEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateScheduledTaskDetailsKindEnum(val string) (CreateScheduledTaskDetailsKindEnum, bool) {
+	mappingCreateScheduledTaskDetailsKindEnumIgnoreCase := make(map[string]CreateScheduledTaskDetailsKindEnum)
+	for k, v := range mappingCreateScheduledTaskDetailsKindEnum {
+		mappingCreateScheduledTaskDetailsKindEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateScheduledTaskDetailsKindEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

@@ -108,30 +108,30 @@ func (request ListCustomPropertiesRequest) RetryPolicy() *common.RetryPolicy {
 func (request ListCustomPropertiesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.DataTypes {
-		if _, ok := mappingCustomPropertyDataTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingCustomPropertyDataTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataTypes: %s. Supported values are: %s.", val, strings.Join(GetCustomPropertyDataTypeEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range request.TypeName {
-		if _, ok := mappingListCustomPropertiesTypeNameEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListCustomPropertiesTypeNameEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TypeName: %s. Supported values are: %s.", val, strings.Join(GetListCustomPropertiesTypeNameEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListCustomPropertiesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListCustomPropertiesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListCustomPropertiesLifecycleStateEnumStringValues(), ",")))
 	}
 	for _, val := range request.Fields {
-		if _, ok := mappingListCustomPropertiesFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListCustomPropertiesFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetListCustomPropertiesFieldsEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListCustomPropertiesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListCustomPropertiesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListCustomPropertiesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListCustomPropertiesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListCustomPropertiesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListCustomPropertiesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -320,6 +320,17 @@ func GetListCustomPropertiesTypeNameEnumStringValues() []string {
 	}
 }
 
+// GetMappingListCustomPropertiesTypeNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCustomPropertiesTypeNameEnum(val string) (ListCustomPropertiesTypeNameEnum, bool) {
+	mappingListCustomPropertiesTypeNameEnumIgnoreCase := make(map[string]ListCustomPropertiesTypeNameEnum)
+	for k, v := range mappingListCustomPropertiesTypeNameEnum {
+		mappingListCustomPropertiesTypeNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCustomPropertiesTypeNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListCustomPropertiesLifecycleStateEnum Enum with underlying type: string
 type ListCustomPropertiesLifecycleStateEnum string
 
@@ -369,6 +380,17 @@ func GetListCustomPropertiesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListCustomPropertiesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCustomPropertiesLifecycleStateEnum(val string) (ListCustomPropertiesLifecycleStateEnum, bool) {
+	mappingListCustomPropertiesLifecycleStateEnumIgnoreCase := make(map[string]ListCustomPropertiesLifecycleStateEnum)
+	for k, v := range mappingListCustomPropertiesLifecycleStateEnum {
+		mappingListCustomPropertiesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCustomPropertiesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListCustomPropertiesFieldsEnum Enum with underlying type: string
 type ListCustomPropertiesFieldsEnum string
 
@@ -415,6 +437,17 @@ func GetListCustomPropertiesFieldsEnumStringValues() []string {
 	}
 }
 
+// GetMappingListCustomPropertiesFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCustomPropertiesFieldsEnum(val string) (ListCustomPropertiesFieldsEnum, bool) {
+	mappingListCustomPropertiesFieldsEnumIgnoreCase := make(map[string]ListCustomPropertiesFieldsEnum)
+	for k, v := range mappingListCustomPropertiesFieldsEnum {
+		mappingListCustomPropertiesFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCustomPropertiesFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListCustomPropertiesSortOrderEnum Enum with underlying type: string
 type ListCustomPropertiesSortOrderEnum string
 
@@ -446,6 +479,17 @@ func GetListCustomPropertiesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListCustomPropertiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCustomPropertiesSortOrderEnum(val string) (ListCustomPropertiesSortOrderEnum, bool) {
+	mappingListCustomPropertiesSortOrderEnumIgnoreCase := make(map[string]ListCustomPropertiesSortOrderEnum)
+	for k, v := range mappingListCustomPropertiesSortOrderEnum {
+		mappingListCustomPropertiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCustomPropertiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListCustomPropertiesSortByEnum Enum with underlying type: string
 type ListCustomPropertiesSortByEnum string
 
@@ -475,4 +519,15 @@ func GetListCustomPropertiesSortByEnumStringValues() []string {
 		"DISPLAYNAME",
 		"USAGECOUNT",
 	}
+}
+
+// GetMappingListCustomPropertiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCustomPropertiesSortByEnum(val string) (ListCustomPropertiesSortByEnum, bool) {
+	mappingListCustomPropertiesSortByEnumIgnoreCase := make(map[string]ListCustomPropertiesSortByEnum)
+	for k, v := range mappingListCustomPropertiesSortByEnum {
+		mappingListCustomPropertiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCustomPropertiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

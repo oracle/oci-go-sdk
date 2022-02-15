@@ -100,13 +100,13 @@ func (m UpdateRoverClusterDetails) String() string {
 func (m UpdateRoverClusterDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingEnclosureTypeEnum[string(m.EnclosureType)]; !ok && m.EnclosureType != "" {
+	if _, ok := GetMappingEnclosureTypeEnum(string(m.EnclosureType)); !ok && m.EnclosureType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EnclosureType: %s. Supported values are: %s.", m.EnclosureType, strings.Join(GetEnclosureTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUpdateRoverClusterDetailsShippingPreferenceEnum[string(m.ShippingPreference)]; !ok && m.ShippingPreference != "" {
+	if _, ok := GetMappingUpdateRoverClusterDetailsShippingPreferenceEnum(string(m.ShippingPreference)); !ok && m.ShippingPreference != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShippingPreference: %s. Supported values are: %s.", m.ShippingPreference, strings.Join(GetUpdateRoverClusterDetailsShippingPreferenceEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -144,4 +144,15 @@ func GetUpdateRoverClusterDetailsShippingPreferenceEnumStringValues() []string {
 		"ORACLE_SHIPPED",
 		"CUSTOMER_PICKUP",
 	}
+}
+
+// GetMappingUpdateRoverClusterDetailsShippingPreferenceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateRoverClusterDetailsShippingPreferenceEnum(val string) (UpdateRoverClusterDetailsShippingPreferenceEnum, bool) {
+	mappingUpdateRoverClusterDetailsShippingPreferenceEnumIgnoreCase := make(map[string]UpdateRoverClusterDetailsShippingPreferenceEnum)
+	for k, v := range mappingUpdateRoverClusterDetailsShippingPreferenceEnum {
+		mappingUpdateRoverClusterDetailsShippingPreferenceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateRoverClusterDetailsShippingPreferenceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

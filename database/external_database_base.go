@@ -86,14 +86,14 @@ func (m ExternalDatabaseBase) String() string {
 // Not recommended for calling this function directly
 func (m ExternalDatabaseBase) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingExternalDatabaseBaseLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingExternalDatabaseBaseLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetExternalDatabaseBaseLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingExternalDatabaseBaseDatabaseEditionEnum[string(m.DatabaseEdition)]; !ok && m.DatabaseEdition != "" {
+	if _, ok := GetMappingExternalDatabaseBaseDatabaseEditionEnum(string(m.DatabaseEdition)); !ok && m.DatabaseEdition != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseEdition: %s. Supported values are: %s.", m.DatabaseEdition, strings.Join(GetExternalDatabaseBaseDatabaseEditionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingExternalDatabaseBaseDatabaseConfigurationEnum[string(m.DatabaseConfiguration)]; !ok && m.DatabaseConfiguration != "" {
+	if _, ok := GetMappingExternalDatabaseBaseDatabaseConfigurationEnum(string(m.DatabaseConfiguration)); !ok && m.DatabaseConfiguration != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseConfiguration: %s. Supported values are: %s.", m.DatabaseConfiguration, strings.Join(GetExternalDatabaseBaseDatabaseConfigurationEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -148,6 +148,17 @@ func GetExternalDatabaseBaseLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingExternalDatabaseBaseLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExternalDatabaseBaseLifecycleStateEnum(val string) (ExternalDatabaseBaseLifecycleStateEnum, bool) {
+	mappingExternalDatabaseBaseLifecycleStateEnumIgnoreCase := make(map[string]ExternalDatabaseBaseLifecycleStateEnum)
+	for k, v := range mappingExternalDatabaseBaseLifecycleStateEnum {
+		mappingExternalDatabaseBaseLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExternalDatabaseBaseLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ExternalDatabaseBaseDatabaseEditionEnum Enum with underlying type: string
 type ExternalDatabaseBaseDatabaseEditionEnum string
 
@@ -185,6 +196,17 @@ func GetExternalDatabaseBaseDatabaseEditionEnumStringValues() []string {
 	}
 }
 
+// GetMappingExternalDatabaseBaseDatabaseEditionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExternalDatabaseBaseDatabaseEditionEnum(val string) (ExternalDatabaseBaseDatabaseEditionEnum, bool) {
+	mappingExternalDatabaseBaseDatabaseEditionEnumIgnoreCase := make(map[string]ExternalDatabaseBaseDatabaseEditionEnum)
+	for k, v := range mappingExternalDatabaseBaseDatabaseEditionEnum {
+		mappingExternalDatabaseBaseDatabaseEditionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExternalDatabaseBaseDatabaseEditionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ExternalDatabaseBaseDatabaseConfigurationEnum Enum with underlying type: string
 type ExternalDatabaseBaseDatabaseConfigurationEnum string
 
@@ -214,4 +236,15 @@ func GetExternalDatabaseBaseDatabaseConfigurationEnumStringValues() []string {
 		"RAC",
 		"SINGLE_INSTANCE",
 	}
+}
+
+// GetMappingExternalDatabaseBaseDatabaseConfigurationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExternalDatabaseBaseDatabaseConfigurationEnum(val string) (ExternalDatabaseBaseDatabaseConfigurationEnum, bool) {
+	mappingExternalDatabaseBaseDatabaseConfigurationEnumIgnoreCase := make(map[string]ExternalDatabaseBaseDatabaseConfigurationEnum)
+	for k, v := range mappingExternalDatabaseBaseDatabaseConfigurationEnum {
+		mappingExternalDatabaseBaseDatabaseConfigurationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExternalDatabaseBaseDatabaseConfigurationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -52,7 +52,7 @@ func (m TablespaceAdminSecretCredentialDetails) String() string {
 func (m TablespaceAdminSecretCredentialDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTablespaceAdminCredentialDetailsRoleEnum[string(m.Role)]; !ok && m.Role != "" {
+	if _, ok := GetMappingTablespaceAdminCredentialDetailsRoleEnum(string(m.Role)); !ok && m.Role != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Role: %s. Supported values are: %s.", m.Role, strings.Join(GetTablespaceAdminCredentialDetailsRoleEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

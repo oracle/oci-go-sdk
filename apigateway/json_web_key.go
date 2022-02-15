@@ -60,14 +60,14 @@ func (m JsonWebKey) String() string {
 // Not recommended for calling this function directly
 func (m JsonWebKey) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingJsonWebKeyKtyEnum[string(m.Kty)]; !ok && m.Kty != "" {
+	if _, ok := GetMappingJsonWebKeyKtyEnum(string(m.Kty)); !ok && m.Kty != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Kty: %s. Supported values are: %s.", m.Kty, strings.Join(GetJsonWebKeyKtyEnumStringValues(), ",")))
 	}
-	if _, ok := mappingJsonWebKeyUseEnum[string(m.Use)]; !ok && m.Use != "" {
+	if _, ok := GetMappingJsonWebKeyUseEnum(string(m.Use)); !ok && m.Use != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Use: %s. Supported values are: %s.", m.Use, strings.Join(GetJsonWebKeyUseEnumStringValues(), ",")))
 	}
 	for _, val := range m.KeyOps {
-		if _, ok := mappingJsonWebKeyKeyOpsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingJsonWebKeyKeyOpsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for KeyOps: %s. Supported values are: %s.", val, strings.Join(GetJsonWebKeyKeyOpsEnumStringValues(), ",")))
 		}
 	}
@@ -120,6 +120,17 @@ func GetJsonWebKeyKtyEnumStringValues() []string {
 	}
 }
 
+// GetMappingJsonWebKeyKtyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJsonWebKeyKtyEnum(val string) (JsonWebKeyKtyEnum, bool) {
+	mappingJsonWebKeyKtyEnumIgnoreCase := make(map[string]JsonWebKeyKtyEnum)
+	for k, v := range mappingJsonWebKeyKtyEnum {
+		mappingJsonWebKeyKtyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJsonWebKeyKtyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // JsonWebKeyUseEnum Enum with underlying type: string
 type JsonWebKeyUseEnum string
 
@@ -148,6 +159,17 @@ func GetJsonWebKeyUseEnumStringValues() []string {
 	}
 }
 
+// GetMappingJsonWebKeyUseEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJsonWebKeyUseEnum(val string) (JsonWebKeyUseEnum, bool) {
+	mappingJsonWebKeyUseEnumIgnoreCase := make(map[string]JsonWebKeyUseEnum)
+	for k, v := range mappingJsonWebKeyUseEnum {
+		mappingJsonWebKeyUseEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJsonWebKeyUseEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // JsonWebKeyKeyOpsEnum Enum with underlying type: string
 type JsonWebKeyKeyOpsEnum string
 
@@ -174,4 +196,15 @@ func GetJsonWebKeyKeyOpsEnumStringValues() []string {
 	return []string{
 		"verify",
 	}
+}
+
+// GetMappingJsonWebKeyKeyOpsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJsonWebKeyKeyOpsEnum(val string) (JsonWebKeyKeyOpsEnum, bool) {
+	mappingJsonWebKeyKeyOpsEnumIgnoreCase := make(map[string]JsonWebKeyKeyOpsEnum)
+	for k, v := range mappingJsonWebKeyKeyOpsEnum {
+		mappingJsonWebKeyKeyOpsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJsonWebKeyKeyOpsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

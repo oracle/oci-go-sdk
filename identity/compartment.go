@@ -82,7 +82,7 @@ func (m Compartment) String() string {
 // Not recommended for calling this function directly
 func (m Compartment) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCompartmentLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingCompartmentLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetCompartmentLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -130,4 +130,15 @@ func GetCompartmentLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingCompartmentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCompartmentLifecycleStateEnum(val string) (CompartmentLifecycleStateEnum, bool) {
+	mappingCompartmentLifecycleStateEnumIgnoreCase := make(map[string]CompartmentLifecycleStateEnum)
+	for k, v := range mappingCompartmentLifecycleStateEnum {
+		mappingCompartmentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCompartmentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package tenantmanagercontrolplane
 
+import (
+	"strings"
+)
+
 // SenderInvitationStatusEnum Enum with underlying type: string
 type SenderInvitationStatusEnum string
 
@@ -47,4 +51,15 @@ func GetSenderInvitationStatusEnumStringValues() []string {
 		"EXPIRED",
 		"FAILED",
 	}
+}
+
+// GetMappingSenderInvitationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSenderInvitationStatusEnum(val string) (SenderInvitationStatusEnum, bool) {
+	mappingSenderInvitationStatusEnumIgnoreCase := make(map[string]SenderInvitationStatusEnum)
+	for k, v := range mappingSenderInvitationStatusEnum {
+		mappingSenderInvitationStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSenderInvitationStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

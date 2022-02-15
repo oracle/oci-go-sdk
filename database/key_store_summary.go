@@ -61,7 +61,7 @@ func (m KeyStoreSummary) String() string {
 // Not recommended for calling this function directly
 func (m KeyStoreSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingKeyStoreSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingKeyStoreSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetKeyStoreSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -154,4 +154,15 @@ func GetKeyStoreSummaryLifecycleStateEnumStringValues() []string {
 		"ACTIVE",
 		"DELETED",
 	}
+}
+
+// GetMappingKeyStoreSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeyStoreSummaryLifecycleStateEnum(val string) (KeyStoreSummaryLifecycleStateEnum, bool) {
+	mappingKeyStoreSummaryLifecycleStateEnumIgnoreCase := make(map[string]KeyStoreSummaryLifecycleStateEnum)
+	for k, v := range mappingKeyStoreSummaryLifecycleStateEnum {
+		mappingKeyStoreSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeyStoreSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

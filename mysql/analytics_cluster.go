@@ -55,7 +55,7 @@ func (m AnalyticsCluster) String() string {
 // Not recommended for calling this function directly
 func (m AnalyticsCluster) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAnalyticsClusterLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAnalyticsClusterLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAnalyticsClusterLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -109,4 +109,15 @@ func GetAnalyticsClusterLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingAnalyticsClusterLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAnalyticsClusterLifecycleStateEnum(val string) (AnalyticsClusterLifecycleStateEnum, bool) {
+	mappingAnalyticsClusterLifecycleStateEnumIgnoreCase := make(map[string]AnalyticsClusterLifecycleStateEnum)
+	for k, v := range mappingAnalyticsClusterLifecycleStateEnum {
+		mappingAnalyticsClusterLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAnalyticsClusterLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -57,7 +57,7 @@ func (m ImportKeyDetails) String() string {
 func (m ImportKeyDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingImportKeyDetailsProtectionModeEnum[string(m.ProtectionMode)]; !ok && m.ProtectionMode != "" {
+	if _, ok := GetMappingImportKeyDetailsProtectionModeEnum(string(m.ProtectionMode)); !ok && m.ProtectionMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProtectionMode: %s. Supported values are: %s.", m.ProtectionMode, strings.Join(GetImportKeyDetailsProtectionModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -95,4 +95,15 @@ func GetImportKeyDetailsProtectionModeEnumStringValues() []string {
 		"HSM",
 		"SOFTWARE",
 	}
+}
+
+// GetMappingImportKeyDetailsProtectionModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingImportKeyDetailsProtectionModeEnum(val string) (ImportKeyDetailsProtectionModeEnum, bool) {
+	mappingImportKeyDetailsProtectionModeEnumIgnoreCase := make(map[string]ImportKeyDetailsProtectionModeEnum)
+	for k, v := range mappingImportKeyDetailsProtectionModeEnum {
+		mappingImportKeyDetailsProtectionModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingImportKeyDetailsProtectionModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

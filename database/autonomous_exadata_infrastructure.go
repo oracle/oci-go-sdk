@@ -97,11 +97,11 @@ func (m AutonomousExadataInfrastructure) String() string {
 // Not recommended for calling this function directly
 func (m AutonomousExadataInfrastructure) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAutonomousExadataInfrastructureLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAutonomousExadataInfrastructureLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAutonomousExadataInfrastructureLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingAutonomousExadataInfrastructureLicenseModelEnum[string(m.LicenseModel)]; !ok && m.LicenseModel != "" {
+	if _, ok := GetMappingAutonomousExadataInfrastructureLicenseModelEnum(string(m.LicenseModel)); !ok && m.LicenseModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LicenseModel: %s. Supported values are: %s.", m.LicenseModel, strings.Join(GetAutonomousExadataInfrastructureLicenseModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -156,6 +156,17 @@ func GetAutonomousExadataInfrastructureLifecycleStateEnumStringValues() []string
 	}
 }
 
+// GetMappingAutonomousExadataInfrastructureLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousExadataInfrastructureLifecycleStateEnum(val string) (AutonomousExadataInfrastructureLifecycleStateEnum, bool) {
+	mappingAutonomousExadataInfrastructureLifecycleStateEnumIgnoreCase := make(map[string]AutonomousExadataInfrastructureLifecycleStateEnum)
+	for k, v := range mappingAutonomousExadataInfrastructureLifecycleStateEnum {
+		mappingAutonomousExadataInfrastructureLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousExadataInfrastructureLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousExadataInfrastructureLicenseModelEnum Enum with underlying type: string
 type AutonomousExadataInfrastructureLicenseModelEnum string
 
@@ -185,4 +196,15 @@ func GetAutonomousExadataInfrastructureLicenseModelEnumStringValues() []string {
 		"LICENSE_INCLUDED",
 		"BRING_YOUR_OWN_LICENSE",
 	}
+}
+
+// GetMappingAutonomousExadataInfrastructureLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousExadataInfrastructureLicenseModelEnum(val string) (AutonomousExadataInfrastructureLicenseModelEnum, bool) {
+	mappingAutonomousExadataInfrastructureLicenseModelEnumIgnoreCase := make(map[string]AutonomousExadataInfrastructureLicenseModelEnum)
+	for k, v := range mappingAutonomousExadataInfrastructureLicenseModelEnum {
+		mappingAutonomousExadataInfrastructureLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousExadataInfrastructureLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

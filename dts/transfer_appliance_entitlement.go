@@ -56,7 +56,7 @@ func (m TransferApplianceEntitlement) String() string {
 // Not recommended for calling this function directly
 func (m TransferApplianceEntitlement) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTransferApplianceEntitlementLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingTransferApplianceEntitlementLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetTransferApplianceEntitlementLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -101,4 +101,15 @@ func GetTransferApplianceEntitlementLifecycleStateEnumStringValues() []string {
 		"INACTIVE",
 		"DELETED",
 	}
+}
+
+// GetMappingTransferApplianceEntitlementLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTransferApplianceEntitlementLifecycleStateEnum(val string) (TransferApplianceEntitlementLifecycleStateEnum, bool) {
+	mappingTransferApplianceEntitlementLifecycleStateEnumIgnoreCase := make(map[string]TransferApplianceEntitlementLifecycleStateEnum)
+	for k, v := range mappingTransferApplianceEntitlementLifecycleStateEnum {
+		mappingTransferApplianceEntitlementLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTransferApplianceEntitlementLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

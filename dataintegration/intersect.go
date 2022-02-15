@@ -129,7 +129,7 @@ func (m Intersect) String() string {
 // Not recommended for calling this function directly
 func (m Intersect) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingIntersectIntersectTypeEnum[string(m.IntersectType)]; !ok && m.IntersectType != "" {
+	if _, ok := GetMappingIntersectIntersectTypeEnum(string(m.IntersectType)); !ok && m.IntersectType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IntersectType: %s. Supported values are: %s.", m.IntersectType, strings.Join(GetIntersectIntersectTypeEnumStringValues(), ",")))
 	}
 
@@ -182,4 +182,15 @@ func GetIntersectIntersectTypeEnumStringValues() []string {
 		"NAME",
 		"POSITION",
 	}
+}
+
+// GetMappingIntersectIntersectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingIntersectIntersectTypeEnum(val string) (IntersectIntersectTypeEnum, bool) {
+	mappingIntersectIntersectTypeEnumIgnoreCase := make(map[string]IntersectIntersectTypeEnum)
+	for k, v := range mappingIntersectIntersectTypeEnum {
+		mappingIntersectIntersectTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingIntersectIntersectTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

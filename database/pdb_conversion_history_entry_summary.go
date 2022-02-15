@@ -66,14 +66,14 @@ func (m PdbConversionHistoryEntrySummary) String() string {
 // Not recommended for calling this function directly
 func (m PdbConversionHistoryEntrySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPdbConversionHistoryEntrySummaryActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingPdbConversionHistoryEntrySummaryActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetPdbConversionHistoryEntrySummaryActionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPdbConversionHistoryEntrySummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingPdbConversionHistoryEntrySummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetPdbConversionHistoryEntrySummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingPdbConversionHistoryEntrySummaryTargetEnum[string(m.Target)]; !ok && m.Target != "" {
+	if _, ok := GetMappingPdbConversionHistoryEntrySummaryTargetEnum(string(m.Target)); !ok && m.Target != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Target: %s. Supported values are: %s.", m.Target, strings.Join(GetPdbConversionHistoryEntrySummaryTargetEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -119,6 +119,17 @@ func GetPdbConversionHistoryEntrySummaryActionEnumStringValues() []string {
 	}
 }
 
+// GetMappingPdbConversionHistoryEntrySummaryActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPdbConversionHistoryEntrySummaryActionEnum(val string) (PdbConversionHistoryEntrySummaryActionEnum, bool) {
+	mappingPdbConversionHistoryEntrySummaryActionEnumIgnoreCase := make(map[string]PdbConversionHistoryEntrySummaryActionEnum)
+	for k, v := range mappingPdbConversionHistoryEntrySummaryActionEnum {
+		mappingPdbConversionHistoryEntrySummaryActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPdbConversionHistoryEntrySummaryActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // PdbConversionHistoryEntrySummaryTargetEnum Enum with underlying type: string
 type PdbConversionHistoryEntrySummaryTargetEnum string
 
@@ -145,6 +156,17 @@ func GetPdbConversionHistoryEntrySummaryTargetEnumStringValues() []string {
 	return []string{
 		"NEW_DATABASE",
 	}
+}
+
+// GetMappingPdbConversionHistoryEntrySummaryTargetEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPdbConversionHistoryEntrySummaryTargetEnum(val string) (PdbConversionHistoryEntrySummaryTargetEnum, bool) {
+	mappingPdbConversionHistoryEntrySummaryTargetEnumIgnoreCase := make(map[string]PdbConversionHistoryEntrySummaryTargetEnum)
+	for k, v := range mappingPdbConversionHistoryEntrySummaryTargetEnum {
+		mappingPdbConversionHistoryEntrySummaryTargetEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPdbConversionHistoryEntrySummaryTargetEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // PdbConversionHistoryEntrySummaryLifecycleStateEnum Enum with underlying type: string
@@ -179,4 +201,15 @@ func GetPdbConversionHistoryEntrySummaryLifecycleStateEnumStringValues() []strin
 		"FAILED",
 		"IN_PROGRESS",
 	}
+}
+
+// GetMappingPdbConversionHistoryEntrySummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPdbConversionHistoryEntrySummaryLifecycleStateEnum(val string) (PdbConversionHistoryEntrySummaryLifecycleStateEnum, bool) {
+	mappingPdbConversionHistoryEntrySummaryLifecycleStateEnumIgnoreCase := make(map[string]PdbConversionHistoryEntrySummaryLifecycleStateEnum)
+	for k, v := range mappingPdbConversionHistoryEntrySummaryLifecycleStateEnum {
+		mappingPdbConversionHistoryEntrySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPdbConversionHistoryEntrySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -40,7 +40,7 @@ func (m CreateClusterKubeconfigContentDetails) String() string {
 func (m CreateClusterKubeconfigContentDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateClusterKubeconfigContentDetailsEndpointEnum[string(m.Endpoint)]; !ok && m.Endpoint != "" {
+	if _, ok := GetMappingCreateClusterKubeconfigContentDetailsEndpointEnum(string(m.Endpoint)); !ok && m.Endpoint != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Endpoint: %s. Supported values are: %s.", m.Endpoint, strings.Join(GetCreateClusterKubeconfigContentDetailsEndpointEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -81,4 +81,15 @@ func GetCreateClusterKubeconfigContentDetailsEndpointEnumStringValues() []string
 		"PUBLIC_ENDPOINT",
 		"PRIVATE_ENDPOINT",
 	}
+}
+
+// GetMappingCreateClusterKubeconfigContentDetailsEndpointEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateClusterKubeconfigContentDetailsEndpointEnum(val string) (CreateClusterKubeconfigContentDetailsEndpointEnum, bool) {
+	mappingCreateClusterKubeconfigContentDetailsEndpointEnumIgnoreCase := make(map[string]CreateClusterKubeconfigContentDetailsEndpointEnum)
+	for k, v := range mappingCreateClusterKubeconfigContentDetailsEndpointEnum {
+		mappingCreateClusterKubeconfigContentDetailsEndpointEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateClusterKubeconfigContentDetailsEndpointEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

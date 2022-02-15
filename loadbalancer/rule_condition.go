@@ -124,3 +124,14 @@ func GetRuleConditionAttributeNameEnumStringValues() []string {
 		"PATH",
 	}
 }
+
+// GetMappingRuleConditionAttributeNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRuleConditionAttributeNameEnum(val string) (RuleConditionAttributeNameEnum, bool) {
+	mappingRuleConditionAttributeNameEnumIgnoreCase := make(map[string]RuleConditionAttributeNameEnum)
+	for k, v := range mappingRuleConditionAttributeNameEnum {
+		mappingRuleConditionAttributeNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRuleConditionAttributeNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

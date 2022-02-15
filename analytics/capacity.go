@@ -35,7 +35,7 @@ func (m Capacity) String() string {
 // Not recommended for calling this function directly
 func (m Capacity) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCapacityTypeEnum[string(m.CapacityType)]; !ok && m.CapacityType != "" {
+	if _, ok := GetMappingCapacityTypeEnum(string(m.CapacityType)); !ok && m.CapacityType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CapacityType: %s. Supported values are: %s.", m.CapacityType, strings.Join(GetCapacityTypeEnumStringValues(), ",")))
 	}
 

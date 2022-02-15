@@ -164,7 +164,7 @@ func (m repository) String() string {
 // Not recommended for calling this function directly
 func (m repository) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRepositoryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingRepositoryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetRepositoryLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -208,6 +208,17 @@ func GetRepositoryLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingRepositoryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRepositoryLifecycleStateEnum(val string) (RepositoryLifecycleStateEnum, bool) {
+	mappingRepositoryLifecycleStateEnumIgnoreCase := make(map[string]RepositoryLifecycleStateEnum)
+	for k, v := range mappingRepositoryLifecycleStateEnum {
+		mappingRepositoryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRepositoryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // RepositoryRepositoryTypeEnum Enum with underlying type: string
 type RepositoryRepositoryTypeEnum string
 
@@ -234,4 +245,15 @@ func GetRepositoryRepositoryTypeEnumStringValues() []string {
 	return []string{
 		"GENERIC",
 	}
+}
+
+// GetMappingRepositoryRepositoryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRepositoryRepositoryTypeEnum(val string) (RepositoryRepositoryTypeEnum, bool) {
+	mappingRepositoryRepositoryTypeEnumIgnoreCase := make(map[string]RepositoryRepositoryTypeEnum)
+	for k, v := range mappingRepositoryRepositoryTypeEnum {
+		mappingRepositoryRepositoryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRepositoryRepositoryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

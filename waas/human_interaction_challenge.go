@@ -58,7 +58,7 @@ func (m HumanInteractionChallenge) String() string {
 func (m HumanInteractionChallenge) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingHumanInteractionChallengeActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingHumanInteractionChallengeActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetHumanInteractionChallengeActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -96,4 +96,15 @@ func GetHumanInteractionChallengeActionEnumStringValues() []string {
 		"DETECT",
 		"BLOCK",
 	}
+}
+
+// GetMappingHumanInteractionChallengeActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHumanInteractionChallengeActionEnum(val string) (HumanInteractionChallengeActionEnum, bool) {
+	mappingHumanInteractionChallengeActionEnumIgnoreCase := make(map[string]HumanInteractionChallengeActionEnum)
+	for k, v := range mappingHumanInteractionChallengeActionEnum {
+		mappingHumanInteractionChallengeActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHumanInteractionChallengeActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

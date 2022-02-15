@@ -129,3 +129,14 @@ func GetDeliveredArtifactArtifactTypeEnumStringValues() []string {
 		"OCIR",
 	}
 }
+
+// GetMappingDeliveredArtifactArtifactTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeliveredArtifactArtifactTypeEnum(val string) (DeliveredArtifactArtifactTypeEnum, bool) {
+	mappingDeliveredArtifactArtifactTypeEnumIgnoreCase := make(map[string]DeliveredArtifactArtifactTypeEnum)
+	for k, v := range mappingDeliveredArtifactArtifactTypeEnum {
+		mappingDeliveredArtifactArtifactTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeliveredArtifactArtifactTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

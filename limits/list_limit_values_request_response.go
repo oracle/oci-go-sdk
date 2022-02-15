@@ -85,13 +85,13 @@ func (request ListLimitValuesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListLimitValuesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListLimitValuesScopeTypeEnum[string(request.ScopeType)]; !ok && request.ScopeType != "" {
+	if _, ok := GetMappingListLimitValuesScopeTypeEnum(string(request.ScopeType)); !ok && request.ScopeType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ScopeType: %s. Supported values are: %s.", request.ScopeType, strings.Join(GetListLimitValuesScopeTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLimitValuesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListLimitValuesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListLimitValuesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLimitValuesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListLimitValuesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListLimitValuesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -162,6 +162,17 @@ func GetListLimitValuesScopeTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListLimitValuesScopeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLimitValuesScopeTypeEnum(val string) (ListLimitValuesScopeTypeEnum, bool) {
+	mappingListLimitValuesScopeTypeEnumIgnoreCase := make(map[string]ListLimitValuesScopeTypeEnum)
+	for k, v := range mappingListLimitValuesScopeTypeEnum {
+		mappingListLimitValuesScopeTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLimitValuesScopeTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLimitValuesSortByEnum Enum with underlying type: string
 type ListLimitValuesSortByEnum string
 
@@ -188,6 +199,17 @@ func GetListLimitValuesSortByEnumStringValues() []string {
 	return []string{
 		"name",
 	}
+}
+
+// GetMappingListLimitValuesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLimitValuesSortByEnum(val string) (ListLimitValuesSortByEnum, bool) {
+	mappingListLimitValuesSortByEnumIgnoreCase := make(map[string]ListLimitValuesSortByEnum)
+	for k, v := range mappingListLimitValuesSortByEnum {
+		mappingListLimitValuesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLimitValuesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListLimitValuesSortOrderEnum Enum with underlying type: string
@@ -219,4 +241,15 @@ func GetListLimitValuesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListLimitValuesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLimitValuesSortOrderEnum(val string) (ListLimitValuesSortOrderEnum, bool) {
+	mappingListLimitValuesSortOrderEnumIgnoreCase := make(map[string]ListLimitValuesSortOrderEnum)
+	for k, v := range mappingListLimitValuesSortOrderEnum {
+		mappingListLimitValuesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLimitValuesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

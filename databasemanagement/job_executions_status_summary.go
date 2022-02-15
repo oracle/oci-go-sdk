@@ -36,7 +36,7 @@ func (m JobExecutionsStatusSummary) String() string {
 // Not recommended for calling this function directly
 func (m JobExecutionsStatusSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingJobExecutionsStatusSummaryStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingJobExecutionsStatusSummaryStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetJobExecutionsStatusSummaryStatusEnumStringValues(), ",")))
 	}
 
@@ -78,4 +78,15 @@ func GetJobExecutionsStatusSummaryStatusEnumStringValues() []string {
 		"FAILED",
 		"IN_PROGRESS",
 	}
+}
+
+// GetMappingJobExecutionsStatusSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobExecutionsStatusSummaryStatusEnum(val string) (JobExecutionsStatusSummaryStatusEnum, bool) {
+	mappingJobExecutionsStatusSummaryStatusEnumIgnoreCase := make(map[string]JobExecutionsStatusSummaryStatusEnum)
+	for k, v := range mappingJobExecutionsStatusSummaryStatusEnum {
+		mappingJobExecutionsStatusSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobExecutionsStatusSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

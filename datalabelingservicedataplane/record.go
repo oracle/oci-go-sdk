@@ -68,7 +68,7 @@ func (m Record) String() string {
 // Not recommended for calling this function directly
 func (m Record) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRecordLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingRecordLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetRecordLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -175,4 +175,15 @@ func GetRecordLifecycleStateEnumStringValues() []string {
 		"INACTIVE",
 		"DELETED",
 	}
+}
+
+// GetMappingRecordLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRecordLifecycleStateEnum(val string) (RecordLifecycleStateEnum, bool) {
+	mappingRecordLifecycleStateEnumIgnoreCase := make(map[string]RecordLifecycleStateEnum)
+	for k, v := range mappingRecordLifecycleStateEnum {
+		mappingRecordLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRecordLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

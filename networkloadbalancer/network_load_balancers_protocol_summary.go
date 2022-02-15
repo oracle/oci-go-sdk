@@ -9,6 +9,10 @@
 
 package networkloadbalancer
 
+import (
+	"strings"
+)
+
 // NetworkLoadBalancersProtocolSummaryEnum Enum with underlying type: string
 type NetworkLoadBalancersProtocolSummaryEnum string
 
@@ -44,4 +48,15 @@ func GetNetworkLoadBalancersProtocolSummaryEnumStringValues() []string {
 		"UDP",
 		"TCP_AND_UDP",
 	}
+}
+
+// GetMappingNetworkLoadBalancersProtocolSummaryEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingNetworkLoadBalancersProtocolSummaryEnum(val string) (NetworkLoadBalancersProtocolSummaryEnum, bool) {
+	mappingNetworkLoadBalancersProtocolSummaryEnumIgnoreCase := make(map[string]NetworkLoadBalancersProtocolSummaryEnum)
+	for k, v := range mappingNetworkLoadBalancersProtocolSummaryEnum {
+		mappingNetworkLoadBalancersProtocolSummaryEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingNetworkLoadBalancersProtocolSummaryEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

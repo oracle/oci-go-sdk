@@ -58,14 +58,14 @@ func (m ProblemHistorySummary) String() string {
 // Not recommended for calling this function directly
 func (m ProblemHistorySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingActorTypeEnum[string(m.ActorType)]; !ok && m.ActorType != "" {
+	if _, ok := GetMappingActorTypeEnum(string(m.ActorType)); !ok && m.ActorType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ActorType: %s. Supported values are: %s.", m.ActorType, strings.Join(GetActorTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingProblemLifecycleDetailEnum[string(m.LifecycleDetail)]; !ok && m.LifecycleDetail != "" {
+	if _, ok := GetMappingProblemLifecycleDetailEnum(string(m.LifecycleDetail)); !ok && m.LifecycleDetail != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleDetail: %s. Supported values are: %s.", m.LifecycleDetail, strings.Join(GetProblemLifecycleDetailEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingEventStatusEnum[string(m.EventStatus)]; !ok && m.EventStatus != "" {
+	if _, ok := GetMappingEventStatusEnum(string(m.EventStatus)); !ok && m.EventStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EventStatus: %s. Supported values are: %s.", m.EventStatus, strings.Join(GetEventStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

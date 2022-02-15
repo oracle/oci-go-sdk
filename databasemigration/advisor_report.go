@@ -45,7 +45,7 @@ func (m AdvisorReport) String() string {
 // Not recommended for calling this function directly
 func (m AdvisorReport) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAdvisorResultsEnum[string(m.Result)]; !ok && m.Result != "" {
+	if _, ok := GetMappingAdvisorResultsEnum(string(m.Result)); !ok && m.Result != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Result: %s. Supported values are: %s.", m.Result, strings.Join(GetAdvisorResultsEnumStringValues(), ",")))
 	}
 

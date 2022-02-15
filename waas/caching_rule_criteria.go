@@ -39,7 +39,7 @@ func (m CachingRuleCriteria) String() string {
 // Not recommended for calling this function directly
 func (m CachingRuleCriteria) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCachingRuleCriteriaConditionEnum[string(m.Condition)]; !ok && m.Condition != "" {
+	if _, ok := GetMappingCachingRuleCriteriaConditionEnum(string(m.Condition)); !ok && m.Condition != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Condition: %s. Supported values are: %s.", m.Condition, strings.Join(GetCachingRuleCriteriaConditionEnumStringValues(), ",")))
 	}
 
@@ -84,4 +84,15 @@ func GetCachingRuleCriteriaConditionEnumStringValues() []string {
 		"URL_PART_ENDS_WITH",
 		"URL_PART_CONTAINS",
 	}
+}
+
+// GetMappingCachingRuleCriteriaConditionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCachingRuleCriteriaConditionEnum(val string) (CachingRuleCriteriaConditionEnum, bool) {
+	mappingCachingRuleCriteriaConditionEnumIgnoreCase := make(map[string]CachingRuleCriteriaConditionEnum)
+	for k, v := range mappingCachingRuleCriteriaConditionEnum {
+		mappingCachingRuleCriteriaConditionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCachingRuleCriteriaConditionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

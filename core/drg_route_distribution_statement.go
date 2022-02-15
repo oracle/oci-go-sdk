@@ -52,7 +52,7 @@ func (m DrgRouteDistributionStatement) String() string {
 // Not recommended for calling this function directly
 func (m DrgRouteDistributionStatement) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDrgRouteDistributionStatementActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingDrgRouteDistributionStatementActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetDrgRouteDistributionStatementActionEnumStringValues(), ",")))
 	}
 
@@ -124,4 +124,15 @@ func GetDrgRouteDistributionStatementActionEnumStringValues() []string {
 	return []string{
 		"ACCEPT",
 	}
+}
+
+// GetMappingDrgRouteDistributionStatementActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDrgRouteDistributionStatementActionEnum(val string) (DrgRouteDistributionStatementActionEnum, bool) {
+	mappingDrgRouteDistributionStatementActionEnumIgnoreCase := make(map[string]DrgRouteDistributionStatementActionEnum)
+	for k, v := range mappingDrgRouteDistributionStatementActionEnum {
+		mappingDrgRouteDistributionStatementActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDrgRouteDistributionStatementActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

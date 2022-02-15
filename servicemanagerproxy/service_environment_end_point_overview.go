@@ -38,7 +38,7 @@ func (m ServiceEnvironmentEndPointOverview) String() string {
 // Not recommended for calling this function directly
 func (m ServiceEnvironmentEndPointOverview) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnum[string(m.EnvironmentType)]; !ok && m.EnvironmentType != "" {
+	if _, ok := GetMappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnum(string(m.EnvironmentType)); !ok && m.EnvironmentType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EnvironmentType: %s. Supported values are: %s.", m.EnvironmentType, strings.Join(GetServiceEnvironmentEndPointOverviewEnvironmentTypeEnumStringValues(), ",")))
 	}
 
@@ -83,4 +83,15 @@ func GetServiceEnvironmentEndPointOverviewEnvironmentTypeEnumStringValues() []st
 		"INSTANCE_URL_DEV",
 		"OTHER",
 	}
+}
+
+// GetMappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnum(val string) (ServiceEnvironmentEndPointOverviewEnvironmentTypeEnum, bool) {
+	mappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnumIgnoreCase := make(map[string]ServiceEnvironmentEndPointOverviewEnvironmentTypeEnum)
+	for k, v := range mappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnum {
+		mappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

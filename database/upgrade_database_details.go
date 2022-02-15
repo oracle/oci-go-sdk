@@ -34,7 +34,7 @@ func (m UpgradeDatabaseDetails) String() string {
 // Not recommended for calling this function directly
 func (m UpgradeDatabaseDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUpgradeDatabaseDetailsActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingUpgradeDatabaseDetailsActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetUpgradeDatabaseDetailsActionEnumStringValues(), ",")))
 	}
 
@@ -103,4 +103,15 @@ func GetUpgradeDatabaseDetailsActionEnumStringValues() []string {
 		"UPGRADE",
 		"ROLLBACK",
 	}
+}
+
+// GetMappingUpgradeDatabaseDetailsActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpgradeDatabaseDetailsActionEnum(val string) (UpgradeDatabaseDetailsActionEnum, bool) {
+	mappingUpgradeDatabaseDetailsActionEnumIgnoreCase := make(map[string]UpgradeDatabaseDetailsActionEnum)
+	for k, v := range mappingUpgradeDatabaseDetailsActionEnum {
+		mappingUpgradeDatabaseDetailsActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpgradeDatabaseDetailsActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

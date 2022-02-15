@@ -127,3 +127,14 @@ func GetDatabaseUpgradeSourceBaseSourceEnumStringValues() []string {
 		"DB_SOFTWARE_IMAGE",
 	}
 }
+
+// GetMappingDatabaseUpgradeSourceBaseSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseUpgradeSourceBaseSourceEnum(val string) (DatabaseUpgradeSourceBaseSourceEnum, bool) {
+	mappingDatabaseUpgradeSourceBaseSourceEnumIgnoreCase := make(map[string]DatabaseUpgradeSourceBaseSourceEnum)
+	for k, v := range mappingDatabaseUpgradeSourceBaseSourceEnum {
+		mappingDatabaseUpgradeSourceBaseSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseUpgradeSourceBaseSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

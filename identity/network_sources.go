@@ -76,7 +76,7 @@ func (m NetworkSources) String() string {
 // Not recommended for calling this function directly
 func (m NetworkSources) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingNetworkSourcesLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingNetworkSourcesLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetNetworkSourcesLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -124,4 +124,15 @@ func GetNetworkSourcesLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingNetworkSourcesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingNetworkSourcesLifecycleStateEnum(val string) (NetworkSourcesLifecycleStateEnum, bool) {
+	mappingNetworkSourcesLifecycleStateEnumIgnoreCase := make(map[string]NetworkSourcesLifecycleStateEnum)
+	for k, v := range mappingNetworkSourcesLifecycleStateEnum {
+		mappingNetworkSourcesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingNetworkSourcesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

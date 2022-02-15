@@ -45,7 +45,7 @@ func (m DbBackupConfig) String() string {
 func (m DbBackupConfig) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDbBackupConfigAutoBackupWindowEnum[string(m.AutoBackupWindow)]; !ok && m.AutoBackupWindow != "" {
+	if _, ok := GetMappingDbBackupConfigAutoBackupWindowEnum(string(m.AutoBackupWindow)); !ok && m.AutoBackupWindow != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AutoBackupWindow: %s. Supported values are: %s.", m.AutoBackupWindow, strings.Join(GetDbBackupConfigAutoBackupWindowEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -113,4 +113,15 @@ func GetDbBackupConfigAutoBackupWindowEnumStringValues() []string {
 		"SLOT_ELEVEN",
 		"SLOT_TWELVE",
 	}
+}
+
+// GetMappingDbBackupConfigAutoBackupWindowEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbBackupConfigAutoBackupWindowEnum(val string) (DbBackupConfigAutoBackupWindowEnum, bool) {
+	mappingDbBackupConfigAutoBackupWindowEnumIgnoreCase := make(map[string]DbBackupConfigAutoBackupWindowEnum)
+	for k, v := range mappingDbBackupConfigAutoBackupWindowEnum {
+		mappingDbBackupConfigAutoBackupWindowEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbBackupConfigAutoBackupWindowEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

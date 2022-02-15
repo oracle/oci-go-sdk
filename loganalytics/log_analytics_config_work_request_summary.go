@@ -53,10 +53,10 @@ func (m LogAnalyticsConfigWorkRequestSummary) String() string {
 func (m LogAnalyticsConfigWorkRequestSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLogAnalyticsConfigWorkRequestSummaryOperationTypeEnum[string(m.OperationType)]; !ok && m.OperationType != "" {
+	if _, ok := GetMappingLogAnalyticsConfigWorkRequestSummaryOperationTypeEnum(string(m.OperationType)); !ok && m.OperationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OperationType: %s. Supported values are: %s.", m.OperationType, strings.Join(GetLogAnalyticsConfigWorkRequestSummaryOperationTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLogAnalyticsConfigWorkRequestSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLogAnalyticsConfigWorkRequestSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLogAnalyticsConfigWorkRequestSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -105,6 +105,17 @@ func GetLogAnalyticsConfigWorkRequestSummaryOperationTypeEnumStringValues() []st
 	}
 }
 
+// GetMappingLogAnalyticsConfigWorkRequestSummaryOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogAnalyticsConfigWorkRequestSummaryOperationTypeEnum(val string) (LogAnalyticsConfigWorkRequestSummaryOperationTypeEnum, bool) {
+	mappingLogAnalyticsConfigWorkRequestSummaryOperationTypeEnumIgnoreCase := make(map[string]LogAnalyticsConfigWorkRequestSummaryOperationTypeEnum)
+	for k, v := range mappingLogAnalyticsConfigWorkRequestSummaryOperationTypeEnum {
+		mappingLogAnalyticsConfigWorkRequestSummaryOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogAnalyticsConfigWorkRequestSummaryOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // LogAnalyticsConfigWorkRequestSummaryLifecycleStateEnum Enum with underlying type: string
 type LogAnalyticsConfigWorkRequestSummaryLifecycleStateEnum string
 
@@ -140,4 +151,15 @@ func GetLogAnalyticsConfigWorkRequestSummaryLifecycleStateEnumStringValues() []s
 		"SUCCEEDED",
 		"FAILED",
 	}
+}
+
+// GetMappingLogAnalyticsConfigWorkRequestSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogAnalyticsConfigWorkRequestSummaryLifecycleStateEnum(val string) (LogAnalyticsConfigWorkRequestSummaryLifecycleStateEnum, bool) {
+	mappingLogAnalyticsConfigWorkRequestSummaryLifecycleStateEnumIgnoreCase := make(map[string]LogAnalyticsConfigWorkRequestSummaryLifecycleStateEnum)
+	for k, v := range mappingLogAnalyticsConfigWorkRequestSummaryLifecycleStateEnum {
+		mappingLogAnalyticsConfigWorkRequestSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogAnalyticsConfigWorkRequestSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -79,16 +79,16 @@ func (request ListEnrollmentStatusesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListEnrollmentStatusesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListEnrollmentStatusesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListEnrollmentStatusesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListEnrollmentStatusesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListEnrollmentStatusesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListEnrollmentStatusesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListEnrollmentStatusesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListEnrollmentStatusesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListEnrollmentStatusesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListEnrollmentStatusesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListEnrollmentStatusesStatusEnum[string(request.Status)]; !ok && request.Status != "" {
+	if _, ok := GetMappingListEnrollmentStatusesStatusEnum(string(request.Status)); !ok && request.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", request.Status, strings.Join(GetListEnrollmentStatusesStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -160,6 +160,17 @@ func GetListEnrollmentStatusesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListEnrollmentStatusesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEnrollmentStatusesSortOrderEnum(val string) (ListEnrollmentStatusesSortOrderEnum, bool) {
+	mappingListEnrollmentStatusesSortOrderEnumIgnoreCase := make(map[string]ListEnrollmentStatusesSortOrderEnum)
+	for k, v := range mappingListEnrollmentStatusesSortOrderEnum {
+		mappingListEnrollmentStatusesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEnrollmentStatusesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListEnrollmentStatusesSortByEnum Enum with underlying type: string
 type ListEnrollmentStatusesSortByEnum string
 
@@ -189,6 +200,17 @@ func GetListEnrollmentStatusesSortByEnumStringValues() []string {
 		"NAME",
 		"TIMECREATED",
 	}
+}
+
+// GetMappingListEnrollmentStatusesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEnrollmentStatusesSortByEnum(val string) (ListEnrollmentStatusesSortByEnum, bool) {
+	mappingListEnrollmentStatusesSortByEnumIgnoreCase := make(map[string]ListEnrollmentStatusesSortByEnum)
+	for k, v := range mappingListEnrollmentStatusesSortByEnum {
+		mappingListEnrollmentStatusesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEnrollmentStatusesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListEnrollmentStatusesLifecycleStateEnum Enum with underlying type: string
@@ -243,6 +265,17 @@ func GetListEnrollmentStatusesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListEnrollmentStatusesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEnrollmentStatusesLifecycleStateEnum(val string) (ListEnrollmentStatusesLifecycleStateEnum, bool) {
+	mappingListEnrollmentStatusesLifecycleStateEnumIgnoreCase := make(map[string]ListEnrollmentStatusesLifecycleStateEnum)
+	for k, v := range mappingListEnrollmentStatusesLifecycleStateEnum {
+		mappingListEnrollmentStatusesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEnrollmentStatusesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListEnrollmentStatusesStatusEnum Enum with underlying type: string
 type ListEnrollmentStatusesStatusEnum string
 
@@ -272,4 +305,15 @@ func GetListEnrollmentStatusesStatusEnumStringValues() []string {
 		"ACTIVE",
 		"INACTIVE",
 	}
+}
+
+// GetMappingListEnrollmentStatusesStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEnrollmentStatusesStatusEnum(val string) (ListEnrollmentStatusesStatusEnum, bool) {
+	mappingListEnrollmentStatusesStatusEnumIgnoreCase := make(map[string]ListEnrollmentStatusesStatusEnum)
+	for k, v := range mappingListEnrollmentStatusesStatusEnum {
+		mappingListEnrollmentStatusesStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEnrollmentStatusesStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

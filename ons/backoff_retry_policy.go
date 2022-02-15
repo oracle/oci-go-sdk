@@ -36,7 +36,7 @@ func (m BackoffRetryPolicy) String() string {
 // Not recommended for calling this function directly
 func (m BackoffRetryPolicy) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBackoffRetryPolicyPolicyTypeEnum[string(m.PolicyType)]; !ok && m.PolicyType != "" {
+	if _, ok := GetMappingBackoffRetryPolicyPolicyTypeEnum(string(m.PolicyType)); !ok && m.PolicyType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PolicyType: %s. Supported values are: %s.", m.PolicyType, strings.Join(GetBackoffRetryPolicyPolicyTypeEnumStringValues(), ",")))
 	}
 
@@ -72,4 +72,15 @@ func GetBackoffRetryPolicyPolicyTypeEnumStringValues() []string {
 	return []string{
 		"EXPONENTIAL",
 	}
+}
+
+// GetMappingBackoffRetryPolicyPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackoffRetryPolicyPolicyTypeEnum(val string) (BackoffRetryPolicyPolicyTypeEnum, bool) {
+	mappingBackoffRetryPolicyPolicyTypeEnumIgnoreCase := make(map[string]BackoffRetryPolicyPolicyTypeEnum)
+	for k, v := range mappingBackoffRetryPolicyPolicyTypeEnum {
+		mappingBackoffRetryPolicyPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackoffRetryPolicyPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

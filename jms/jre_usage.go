@@ -86,7 +86,7 @@ func (m JreUsage) String() string {
 func (m JreUsage) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingJreSecurityStatusEnum[string(m.SecurityStatus)]; !ok && m.SecurityStatus != "" {
+	if _, ok := GetMappingJreSecurityStatusEnum(string(m.SecurityStatus)); !ok && m.SecurityStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SecurityStatus: %s. Supported values are: %s.", m.SecurityStatus, strings.Join(GetJreSecurityStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

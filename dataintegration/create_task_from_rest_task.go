@@ -153,13 +153,13 @@ func (m CreateTaskFromRestTask) String() string {
 // Not recommended for calling this function directly
 func (m CreateTaskFromRestTask) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreateTaskFromRestTaskMethodTypeEnum[string(m.MethodType)]; !ok && m.MethodType != "" {
+	if _, ok := GetMappingCreateTaskFromRestTaskMethodTypeEnum(string(m.MethodType)); !ok && m.MethodType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MethodType: %s. Supported values are: %s.", m.MethodType, strings.Join(GetCreateTaskFromRestTaskMethodTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateTaskFromRestTaskApiCallModeEnum[string(m.ApiCallMode)]; !ok && m.ApiCallMode != "" {
+	if _, ok := GetMappingCreateTaskFromRestTaskApiCallModeEnum(string(m.ApiCallMode)); !ok && m.ApiCallMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ApiCallMode: %s. Supported values are: %s.", m.ApiCallMode, strings.Join(GetCreateTaskFromRestTaskApiCallModeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateTaskFromRestTaskCancelMethodTypeEnum[string(m.CancelMethodType)]; !ok && m.CancelMethodType != "" {
+	if _, ok := GetMappingCreateTaskFromRestTaskCancelMethodTypeEnum(string(m.CancelMethodType)); !ok && m.CancelMethodType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CancelMethodType: %s. Supported values are: %s.", m.CancelMethodType, strings.Join(GetCreateTaskFromRestTaskCancelMethodTypeEnumStringValues(), ",")))
 	}
 
@@ -223,6 +223,17 @@ func GetCreateTaskFromRestTaskMethodTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingCreateTaskFromRestTaskMethodTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateTaskFromRestTaskMethodTypeEnum(val string) (CreateTaskFromRestTaskMethodTypeEnum, bool) {
+	mappingCreateTaskFromRestTaskMethodTypeEnumIgnoreCase := make(map[string]CreateTaskFromRestTaskMethodTypeEnum)
+	for k, v := range mappingCreateTaskFromRestTaskMethodTypeEnum {
+		mappingCreateTaskFromRestTaskMethodTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateTaskFromRestTaskMethodTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CreateTaskFromRestTaskApiCallModeEnum Enum with underlying type: string
 type CreateTaskFromRestTaskApiCallModeEnum string
 
@@ -255,6 +266,17 @@ func GetCreateTaskFromRestTaskApiCallModeEnumStringValues() []string {
 		"ASYNC_OCI_WORKREQUEST",
 		"ASYNC_GENERIC",
 	}
+}
+
+// GetMappingCreateTaskFromRestTaskApiCallModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateTaskFromRestTaskApiCallModeEnum(val string) (CreateTaskFromRestTaskApiCallModeEnum, bool) {
+	mappingCreateTaskFromRestTaskApiCallModeEnumIgnoreCase := make(map[string]CreateTaskFromRestTaskApiCallModeEnum)
+	for k, v := range mappingCreateTaskFromRestTaskApiCallModeEnum {
+		mappingCreateTaskFromRestTaskApiCallModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateTaskFromRestTaskApiCallModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // CreateTaskFromRestTaskCancelMethodTypeEnum Enum with underlying type: string
@@ -295,4 +317,15 @@ func GetCreateTaskFromRestTaskCancelMethodTypeEnumStringValues() []string {
 		"DELETE",
 		"PUT",
 	}
+}
+
+// GetMappingCreateTaskFromRestTaskCancelMethodTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateTaskFromRestTaskCancelMethodTypeEnum(val string) (CreateTaskFromRestTaskCancelMethodTypeEnum, bool) {
+	mappingCreateTaskFromRestTaskCancelMethodTypeEnumIgnoreCase := make(map[string]CreateTaskFromRestTaskCancelMethodTypeEnum)
+	for k, v := range mappingCreateTaskFromRestTaskCancelMethodTypeEnum {
+		mappingCreateTaskFromRestTaskCancelMethodTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateTaskFromRestTaskCancelMethodTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

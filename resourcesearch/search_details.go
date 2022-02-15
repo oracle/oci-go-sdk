@@ -83,7 +83,7 @@ func (m searchdetails) String() string {
 func (m searchdetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSearchDetailsMatchingContextTypeEnum[string(m.MatchingContextType)]; !ok && m.MatchingContextType != "" {
+	if _, ok := GetMappingSearchDetailsMatchingContextTypeEnum(string(m.MatchingContextType)); !ok && m.MatchingContextType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MatchingContextType: %s. Supported values are: %s.", m.MatchingContextType, strings.Join(GetSearchDetailsMatchingContextTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -121,4 +121,15 @@ func GetSearchDetailsMatchingContextTypeEnumStringValues() []string {
 		"NONE",
 		"HIGHLIGHTS",
 	}
+}
+
+// GetMappingSearchDetailsMatchingContextTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSearchDetailsMatchingContextTypeEnum(val string) (SearchDetailsMatchingContextTypeEnum, bool) {
+	mappingSearchDetailsMatchingContextTypeEnumIgnoreCase := make(map[string]SearchDetailsMatchingContextTypeEnum)
+	for k, v := range mappingSearchDetailsMatchingContextTypeEnum {
+		mappingSearchDetailsMatchingContextTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSearchDetailsMatchingContextTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

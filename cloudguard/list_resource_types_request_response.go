@@ -75,13 +75,13 @@ func (request ListResourceTypesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListResourceTypesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListResourceTypesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListResourceTypesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListResourceTypesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListResourceTypesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListResourceTypesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListResourceTypesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListResourceTypesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListResourceTypesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListResourceTypesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -164,6 +164,17 @@ func GetListResourceTypesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListResourceTypesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResourceTypesLifecycleStateEnum(val string) (ListResourceTypesLifecycleStateEnum, bool) {
+	mappingListResourceTypesLifecycleStateEnumIgnoreCase := make(map[string]ListResourceTypesLifecycleStateEnum)
+	for k, v := range mappingListResourceTypesLifecycleStateEnum {
+		mappingListResourceTypesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResourceTypesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListResourceTypesSortOrderEnum Enum with underlying type: string
 type ListResourceTypesSortOrderEnum string
 
@@ -195,6 +206,17 @@ func GetListResourceTypesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListResourceTypesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResourceTypesSortOrderEnum(val string) (ListResourceTypesSortOrderEnum, bool) {
+	mappingListResourceTypesSortOrderEnumIgnoreCase := make(map[string]ListResourceTypesSortOrderEnum)
+	for k, v := range mappingListResourceTypesSortOrderEnum {
+		mappingListResourceTypesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResourceTypesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListResourceTypesSortByEnum Enum with underlying type: string
 type ListResourceTypesSortByEnum string
 
@@ -224,4 +246,15 @@ func GetListResourceTypesSortByEnumStringValues() []string {
 		"displayName",
 		"riskLevel",
 	}
+}
+
+// GetMappingListResourceTypesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResourceTypesSortByEnum(val string) (ListResourceTypesSortByEnum, bool) {
+	mappingListResourceTypesSortByEnumIgnoreCase := make(map[string]ListResourceTypesSortByEnum)
+	for k, v := range mappingListResourceTypesSortByEnum {
+		mappingListResourceTypesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResourceTypesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

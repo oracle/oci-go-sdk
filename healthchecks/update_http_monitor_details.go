@@ -76,10 +76,10 @@ func (m UpdateHttpMonitorDetails) String() string {
 func (m UpdateHttpMonitorDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingHttpProbeProtocolEnum[string(m.Protocol)]; !ok && m.Protocol != "" {
+	if _, ok := GetMappingHttpProbeProtocolEnum(string(m.Protocol)); !ok && m.Protocol != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Protocol: %s. Supported values are: %s.", m.Protocol, strings.Join(GetHttpProbeProtocolEnumStringValues(), ",")))
 	}
-	if _, ok := mappingHttpProbeMethodEnum[string(m.Method)]; !ok && m.Method != "" {
+	if _, ok := GetMappingHttpProbeMethodEnum(string(m.Method)); !ok && m.Method != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Method: %s. Supported values are: %s.", m.Method, strings.Join(GetHttpProbeMethodEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

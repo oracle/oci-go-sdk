@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // FormatEntryTypeEnum Enum with underlying type: string
 type FormatEntryTypeEnum string
 
@@ -101,4 +105,15 @@ func GetFormatEntryTypeEnumStringValues() []string {
 		"TRUNCATE_TABLE",
 		"USER_DEFINED_FUNCTION",
 	}
+}
+
+// GetMappingFormatEntryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFormatEntryTypeEnum(val string) (FormatEntryTypeEnum, bool) {
+	mappingFormatEntryTypeEnumIgnoreCase := make(map[string]FormatEntryTypeEnum)
+	for k, v := range mappingFormatEntryTypeEnum {
+		mappingFormatEntryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFormatEntryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

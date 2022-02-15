@@ -41,7 +41,7 @@ func (m DiffLineDetails) String() string {
 func (m DiffLineDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDiffLineDetailsConflictMarkerEnum[string(m.ConflictMarker)]; !ok && m.ConflictMarker != "" {
+	if _, ok := GetMappingDiffLineDetailsConflictMarkerEnum(string(m.ConflictMarker)); !ok && m.ConflictMarker != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ConflictMarker: %s. Supported values are: %s.", m.ConflictMarker, strings.Join(GetDiffLineDetailsConflictMarkerEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -85,4 +85,15 @@ func GetDiffLineDetailsConflictMarkerEnumStringValues() []string {
 		"MARKER",
 		"NONE",
 	}
+}
+
+// GetMappingDiffLineDetailsConflictMarkerEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDiffLineDetailsConflictMarkerEnum(val string) (DiffLineDetailsConflictMarkerEnum, bool) {
+	mappingDiffLineDetailsConflictMarkerEnumIgnoreCase := make(map[string]DiffLineDetailsConflictMarkerEnum)
+	for k, v := range mappingDiffLineDetailsConflictMarkerEnum {
+		mappingDiffLineDetailsConflictMarkerEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDiffLineDetailsConflictMarkerEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

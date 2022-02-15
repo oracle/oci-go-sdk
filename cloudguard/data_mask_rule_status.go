@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // DataMaskRuleStatusEnum Enum with underlying type: string
 type DataMaskRuleStatusEnum string
 
@@ -38,4 +42,15 @@ func GetDataMaskRuleStatusEnumStringValues() []string {
 		"ENABLED",
 		"DISABLED",
 	}
+}
+
+// GetMappingDataMaskRuleStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataMaskRuleStatusEnum(val string) (DataMaskRuleStatusEnum, bool) {
+	mappingDataMaskRuleStatusEnumIgnoreCase := make(map[string]DataMaskRuleStatusEnum)
+	for k, v := range mappingDataMaskRuleStatusEnum {
+		mappingDataMaskRuleStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataMaskRuleStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

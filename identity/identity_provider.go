@@ -194,7 +194,7 @@ func (m identityprovider) String() string {
 // Not recommended for calling this function directly
 func (m identityprovider) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingIdentityProviderLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingIdentityProviderLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetIdentityProviderLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -242,4 +242,15 @@ func GetIdentityProviderLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingIdentityProviderLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingIdentityProviderLifecycleStateEnum(val string) (IdentityProviderLifecycleStateEnum, bool) {
+	mappingIdentityProviderLifecycleStateEnumIgnoreCase := make(map[string]IdentityProviderLifecycleStateEnum)
+	for k, v := range mappingIdentityProviderLifecycleStateEnum {
+		mappingIdentityProviderLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingIdentityProviderLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

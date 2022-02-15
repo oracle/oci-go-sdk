@@ -111,23 +111,23 @@ func (request SummarizeManagedInstanceUsageRequest) RetryPolicy() *common.RetryP
 // Not recommended for calling this function directly
 func (request SummarizeManagedInstanceUsageRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeManagedInstanceUsageManagedInstanceTypeEnum[string(request.ManagedInstanceType)]; !ok && request.ManagedInstanceType != "" {
+	if _, ok := GetMappingSummarizeManagedInstanceUsageManagedInstanceTypeEnum(string(request.ManagedInstanceType)); !ok && request.ManagedInstanceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ManagedInstanceType: %s. Supported values are: %s.", request.ManagedInstanceType, strings.Join(GetSummarizeManagedInstanceUsageManagedInstanceTypeEnumStringValues(), ",")))
 	}
 	for _, val := range request.Fields {
-		if _, ok := mappingSummarizeManagedInstanceUsageFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingSummarizeManagedInstanceUsageFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetSummarizeManagedInstanceUsageFieldsEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingSummarizeManagedInstanceUsageSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeManagedInstanceUsageSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeManagedInstanceUsageSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeManagedInstanceUsageSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeManagedInstanceUsageSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeManagedInstanceUsageSortByEnumStringValues(), ",")))
 	}
 	for _, val := range request.OsFamily {
-		if _, ok := mappingOsFamilyEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingOsFamilyEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OsFamily: %s. Supported values are: %s.", val, strings.Join(GetOsFamilyEnumStringValues(), ",")))
 		}
 	}
@@ -194,6 +194,17 @@ func GetSummarizeManagedInstanceUsageManagedInstanceTypeEnumStringValues() []str
 	}
 }
 
+// GetMappingSummarizeManagedInstanceUsageManagedInstanceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeManagedInstanceUsageManagedInstanceTypeEnum(val string) (SummarizeManagedInstanceUsageManagedInstanceTypeEnum, bool) {
+	mappingSummarizeManagedInstanceUsageManagedInstanceTypeEnumIgnoreCase := make(map[string]SummarizeManagedInstanceUsageManagedInstanceTypeEnum)
+	for k, v := range mappingSummarizeManagedInstanceUsageManagedInstanceTypeEnum {
+		mappingSummarizeManagedInstanceUsageManagedInstanceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeManagedInstanceUsageManagedInstanceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeManagedInstanceUsageSortOrderEnum Enum with underlying type: string
 type SummarizeManagedInstanceUsageSortOrderEnum string
 
@@ -223,6 +234,17 @@ func GetSummarizeManagedInstanceUsageSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingSummarizeManagedInstanceUsageSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeManagedInstanceUsageSortOrderEnum(val string) (SummarizeManagedInstanceUsageSortOrderEnum, bool) {
+	mappingSummarizeManagedInstanceUsageSortOrderEnumIgnoreCase := make(map[string]SummarizeManagedInstanceUsageSortOrderEnum)
+	for k, v := range mappingSummarizeManagedInstanceUsageSortOrderEnum {
+		mappingSummarizeManagedInstanceUsageSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeManagedInstanceUsageSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // SummarizeManagedInstanceUsageSortByEnum Enum with underlying type: string
@@ -266,4 +288,15 @@ func GetSummarizeManagedInstanceUsageSortByEnumStringValues() []string {
 		"approximateApplicationCount",
 		"osName",
 	}
+}
+
+// GetMappingSummarizeManagedInstanceUsageSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeManagedInstanceUsageSortByEnum(val string) (SummarizeManagedInstanceUsageSortByEnum, bool) {
+	mappingSummarizeManagedInstanceUsageSortByEnumIgnoreCase := make(map[string]SummarizeManagedInstanceUsageSortByEnum)
+	for k, v := range mappingSummarizeManagedInstanceUsageSortByEnum {
+		mappingSummarizeManagedInstanceUsageSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeManagedInstanceUsageSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

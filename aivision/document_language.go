@@ -9,6 +9,10 @@
 
 package aivision
 
+import (
+	"strings"
+)
+
 // DocumentLanguageEnum Enum with underlying type: string
 type DocumentLanguageEnum string
 
@@ -107,4 +111,15 @@ func GetDocumentLanguageEnumStringValues() []string {
 		"KOR",
 		"OTHERS",
 	}
+}
+
+// GetMappingDocumentLanguageEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDocumentLanguageEnum(val string) (DocumentLanguageEnum, bool) {
+	mappingDocumentLanguageEnumIgnoreCase := make(map[string]DocumentLanguageEnum)
+	for k, v := range mappingDocumentLanguageEnum {
+		mappingDocumentLanguageEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDocumentLanguageEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

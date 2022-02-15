@@ -86,10 +86,10 @@ func (request ListPipelineValidationsRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListPipelineValidationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListPipelineValidationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListPipelineValidationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListPipelineValidationsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPipelineValidationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListPipelineValidationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListPipelineValidationsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -161,6 +161,17 @@ func GetListPipelineValidationsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListPipelineValidationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPipelineValidationsSortByEnum(val string) (ListPipelineValidationsSortByEnum, bool) {
+	mappingListPipelineValidationsSortByEnumIgnoreCase := make(map[string]ListPipelineValidationsSortByEnum)
+	for k, v := range mappingListPipelineValidationsSortByEnum {
+		mappingListPipelineValidationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPipelineValidationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListPipelineValidationsSortOrderEnum Enum with underlying type: string
 type ListPipelineValidationsSortOrderEnum string
 
@@ -190,4 +201,15 @@ func GetListPipelineValidationsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListPipelineValidationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPipelineValidationsSortOrderEnum(val string) (ListPipelineValidationsSortOrderEnum, bool) {
+	mappingListPipelineValidationsSortOrderEnumIgnoreCase := make(map[string]ListPipelineValidationsSortOrderEnum)
+	for k, v := range mappingListPipelineValidationsSortOrderEnum {
+		mappingListPipelineValidationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPipelineValidationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -116,3 +116,14 @@ func GetDatasetFormatDetailsFormatTypeEnumStringValues() []string {
 		"TEXT",
 	}
 }
+
+// GetMappingDatasetFormatDetailsFormatTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatasetFormatDetailsFormatTypeEnum(val string) (DatasetFormatDetailsFormatTypeEnum, bool) {
+	mappingDatasetFormatDetailsFormatTypeEnumIgnoreCase := make(map[string]DatasetFormatDetailsFormatTypeEnum)
+	for k, v := range mappingDatasetFormatDetailsFormatTypeEnum {
+		mappingDatasetFormatDetailsFormatTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatasetFormatDetailsFormatTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

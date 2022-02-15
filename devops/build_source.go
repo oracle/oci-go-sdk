@@ -146,3 +146,14 @@ func GetBuildSourceConnectionTypeEnumStringValues() []string {
 		"DEVOPS_CODE_REPOSITORY",
 	}
 }
+
+// GetMappingBuildSourceConnectionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBuildSourceConnectionTypeEnum(val string) (BuildSourceConnectionTypeEnum, bool) {
+	mappingBuildSourceConnectionTypeEnumIgnoreCase := make(map[string]BuildSourceConnectionTypeEnum)
+	for k, v := range mappingBuildSourceConnectionTypeEnum {
+		mappingBuildSourceConnectionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBuildSourceConnectionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

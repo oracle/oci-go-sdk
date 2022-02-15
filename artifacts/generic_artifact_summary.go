@@ -73,7 +73,7 @@ func (m GenericArtifactSummary) String() string {
 // Not recommended for calling this function directly
 func (m GenericArtifactSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGenericArtifactLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingGenericArtifactLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetGenericArtifactLifecycleStateEnumStringValues(), ",")))
 	}
 

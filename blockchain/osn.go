@@ -39,11 +39,11 @@ func (m Osn) String() string {
 // Not recommended for calling this function directly
 func (m Osn) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAvailabilityDomainAdsEnum[string(m.Ad)]; !ok && m.Ad != "" {
+	if _, ok := GetMappingAvailabilityDomainAdsEnum(string(m.Ad)); !ok && m.Ad != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Ad: %s. Supported values are: %s.", m.Ad, strings.Join(GetAvailabilityDomainAdsEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingOsnLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingOsnLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetOsnLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -84,4 +84,15 @@ func GetOsnLifecycleStateEnumStringValues() []string {
 		"INACTIVE",
 		"FAILED",
 	}
+}
+
+// GetMappingOsnLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOsnLifecycleStateEnum(val string) (OsnLifecycleStateEnum, bool) {
+	mappingOsnLifecycleStateEnumIgnoreCase := make(map[string]OsnLifecycleStateEnum)
+	for k, v := range mappingOsnLifecycleStateEnum {
+		mappingOsnLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOsnLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

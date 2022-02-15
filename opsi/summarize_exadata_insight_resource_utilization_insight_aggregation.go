@@ -45,10 +45,10 @@ func (m SummarizeExadataInsightResourceUtilizationInsightAggregation) String() s
 // Not recommended for calling this function directly
 func (m SummarizeExadataInsightResourceUtilizationInsightAggregation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnum[string(m.ExadataResourceMetric)]; !ok && m.ExadataResourceMetric != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnum(string(m.ExadataResourceMetric)); !ok && m.ExadataResourceMetric != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExadataResourceMetric: %s. Supported values are: %s.", m.ExadataResourceMetric, strings.Join(GetSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnum[string(m.ExadataResourceType)]; !ok && m.ExadataResourceType != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnum(string(m.ExadataResourceType)); !ok && m.ExadataResourceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExadataResourceType: %s. Supported values are: %s.", m.ExadataResourceType, strings.Join(GetSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnumStringValues(), ",")))
 	}
 
@@ -101,6 +101,17 @@ func GetSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResou
 	}
 }
 
+// GetMappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnum(val string) (SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnum, bool) {
+	mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnum {
+		mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnum Enum with underlying type: string
 type SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnum string
 
@@ -136,4 +147,15 @@ func GetSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResou
 		"STORAGE_SERVER",
 		"DISKGROUP",
 	}
+}
+
+// GetMappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnum(val string) (SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnum, bool) {
+	mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnum {
+		mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // LibraryMaskingFormatSourceEnum Enum with underlying type: string
 type LibraryMaskingFormatSourceEnum string
 
@@ -38,4 +42,15 @@ func GetLibraryMaskingFormatSourceEnumStringValues() []string {
 		"ORACLE",
 		"USER",
 	}
+}
+
+// GetMappingLibraryMaskingFormatSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLibraryMaskingFormatSourceEnum(val string) (LibraryMaskingFormatSourceEnum, bool) {
+	mappingLibraryMaskingFormatSourceEnumIgnoreCase := make(map[string]LibraryMaskingFormatSourceEnum)
+	for k, v := range mappingLibraryMaskingFormatSourceEnum {
+		mappingLibraryMaskingFormatSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLibraryMaskingFormatSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

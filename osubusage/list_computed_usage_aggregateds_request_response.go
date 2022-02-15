@@ -86,7 +86,7 @@ func (request ListComputedUsageAggregatedsRequest) RetryPolicy() *common.RetryPo
 // Not recommended for calling this function directly
 func (request ListComputedUsageAggregatedsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListComputedUsageAggregatedsGroupingEnum[string(request.Grouping)]; !ok && request.Grouping != "" {
+	if _, ok := GetMappingListComputedUsageAggregatedsGroupingEnum(string(request.Grouping)); !ok && request.Grouping != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Grouping: %s. Supported values are: %s.", request.Grouping, strings.Join(GetListComputedUsageAggregatedsGroupingEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -158,4 +158,15 @@ func GetListComputedUsageAggregatedsGroupingEnumStringValues() []string {
 		"MONTHLY",
 		"NONE",
 	}
+}
+
+// GetMappingListComputedUsageAggregatedsGroupingEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListComputedUsageAggregatedsGroupingEnum(val string) (ListComputedUsageAggregatedsGroupingEnum, bool) {
+	mappingListComputedUsageAggregatedsGroupingEnumIgnoreCase := make(map[string]ListComputedUsageAggregatedsGroupingEnum)
+	for k, v := range mappingListComputedUsageAggregatedsGroupingEnum {
+		mappingListComputedUsageAggregatedsGroupingEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListComputedUsageAggregatedsGroupingEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -86,10 +86,10 @@ func (m Stack) String() string {
 func (m Stack) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingStackLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingStackLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetStackLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingStackStackDriftStatusEnum[string(m.StackDriftStatus)]; !ok && m.StackDriftStatus != "" {
+	if _, ok := GetMappingStackStackDriftStatusEnum(string(m.StackDriftStatus)); !ok && m.StackDriftStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for StackDriftStatus: %s. Supported values are: %s.", m.StackDriftStatus, strings.Join(GetStackStackDriftStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -198,6 +198,17 @@ func GetStackLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingStackLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStackLifecycleStateEnum(val string) (StackLifecycleStateEnum, bool) {
+	mappingStackLifecycleStateEnumIgnoreCase := make(map[string]StackLifecycleStateEnum)
+	for k, v := range mappingStackLifecycleStateEnum {
+		mappingStackLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStackLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // StackStackDriftStatusEnum Enum with underlying type: string
 type StackStackDriftStatusEnum string
 
@@ -230,4 +241,15 @@ func GetStackStackDriftStatusEnumStringValues() []string {
 		"IN_SYNC",
 		"DRIFTED",
 	}
+}
+
+// GetMappingStackStackDriftStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStackStackDriftStatusEnum(val string) (StackStackDriftStatusEnum, bool) {
+	mappingStackStackDriftStatusEnumIgnoreCase := make(map[string]StackStackDriftStatusEnum)
+	for k, v := range mappingStackStackDriftStatusEnum {
+		mappingStackStackDriftStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStackStackDriftStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

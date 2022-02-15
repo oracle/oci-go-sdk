@@ -44,7 +44,7 @@ func (m ShapePlatformConfigOptions) String() string {
 func (m ShapePlatformConfigOptions) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingShapePlatformConfigOptionsTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingShapePlatformConfigOptionsTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetShapePlatformConfigOptionsTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -91,4 +91,15 @@ func GetShapePlatformConfigOptionsTypeEnumStringValues() []string {
 		"AMD_VM",
 		"INTEL_VM",
 	}
+}
+
+// GetMappingShapePlatformConfigOptionsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingShapePlatformConfigOptionsTypeEnum(val string) (ShapePlatformConfigOptionsTypeEnum, bool) {
+	mappingShapePlatformConfigOptionsTypeEnumIgnoreCase := make(map[string]ShapePlatformConfigOptionsTypeEnum)
+	for k, v := range mappingShapePlatformConfigOptionsTypeEnum {
+		mappingShapePlatformConfigOptionsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingShapePlatformConfigOptionsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

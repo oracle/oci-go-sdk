@@ -88,7 +88,7 @@ func (m imagecapabilityschemadescriptor) String() string {
 // Not recommended for calling this function directly
 func (m imagecapabilityschemadescriptor) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingImageCapabilitySchemaDescriptorSourceEnum[string(m.Source)]; !ok && m.Source != "" {
+	if _, ok := GetMappingImageCapabilitySchemaDescriptorSourceEnum(string(m.Source)); !ok && m.Source != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Source: %s. Supported values are: %s.", m.Source, strings.Join(GetImageCapabilitySchemaDescriptorSourceEnumStringValues(), ",")))
 	}
 
@@ -127,4 +127,15 @@ func GetImageCapabilitySchemaDescriptorSourceEnumStringValues() []string {
 		"GLOBAL",
 		"IMAGE",
 	}
+}
+
+// GetMappingImageCapabilitySchemaDescriptorSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingImageCapabilitySchemaDescriptorSourceEnum(val string) (ImageCapabilitySchemaDescriptorSourceEnum, bool) {
+	mappingImageCapabilitySchemaDescriptorSourceEnumIgnoreCase := make(map[string]ImageCapabilitySchemaDescriptorSourceEnum)
+	for k, v := range mappingImageCapabilitySchemaDescriptorSourceEnum {
+		mappingImageCapabilitySchemaDescriptorSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingImageCapabilitySchemaDescriptorSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

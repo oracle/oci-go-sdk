@@ -92,10 +92,10 @@ func (request ListTaskSchedulesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListTaskSchedulesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListTaskSchedulesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListTaskSchedulesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListTaskSchedulesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTaskSchedulesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListTaskSchedulesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListTaskSchedulesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -167,6 +167,17 @@ func GetListTaskSchedulesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTaskSchedulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTaskSchedulesSortByEnum(val string) (ListTaskSchedulesSortByEnum, bool) {
+	mappingListTaskSchedulesSortByEnumIgnoreCase := make(map[string]ListTaskSchedulesSortByEnum)
+	for k, v := range mappingListTaskSchedulesSortByEnum {
+		mappingListTaskSchedulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTaskSchedulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTaskSchedulesSortOrderEnum Enum with underlying type: string
 type ListTaskSchedulesSortOrderEnum string
 
@@ -196,4 +207,15 @@ func GetListTaskSchedulesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListTaskSchedulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTaskSchedulesSortOrderEnum(val string) (ListTaskSchedulesSortOrderEnum, bool) {
+	mappingListTaskSchedulesSortOrderEnumIgnoreCase := make(map[string]ListTaskSchedulesSortOrderEnum)
+	for k, v := range mappingListTaskSchedulesSortOrderEnum {
+		mappingListTaskSchedulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTaskSchedulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

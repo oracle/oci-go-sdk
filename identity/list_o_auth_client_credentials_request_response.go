@@ -70,7 +70,7 @@ func (request ListOAuthClientCredentialsRequest) RetryPolicy() *common.RetryPoli
 // Not recommended for calling this function directly
 func (request ListOAuthClientCredentialsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingOAuth2ClientCredentialSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingOAuth2ClientCredentialSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetOAuth2ClientCredentialSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

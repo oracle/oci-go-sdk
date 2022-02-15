@@ -79,13 +79,13 @@ func (request ListProfilesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListProfilesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListProfilesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListProfilesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListProfilesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListProfilesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListProfilesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListProfilesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListProfilesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListProfilesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListProfilesLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -157,6 +157,17 @@ func GetListProfilesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListProfilesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProfilesSortOrderEnum(val string) (ListProfilesSortOrderEnum, bool) {
+	mappingListProfilesSortOrderEnumIgnoreCase := make(map[string]ListProfilesSortOrderEnum)
+	for k, v := range mappingListProfilesSortOrderEnum {
+		mappingListProfilesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProfilesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListProfilesSortByEnum Enum with underlying type: string
 type ListProfilesSortByEnum string
 
@@ -186,6 +197,17 @@ func GetListProfilesSortByEnumStringValues() []string {
 		"NAME",
 		"TIMECREATED",
 	}
+}
+
+// GetMappingListProfilesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProfilesSortByEnum(val string) (ListProfilesSortByEnum, bool) {
+	mappingListProfilesSortByEnumIgnoreCase := make(map[string]ListProfilesSortByEnum)
+	for k, v := range mappingListProfilesSortByEnum {
+		mappingListProfilesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProfilesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListProfilesLifecycleStateEnum Enum with underlying type: string
@@ -238,4 +260,15 @@ func GetListProfilesLifecycleStateEnumStringValues() []string {
 		"UPDATING",
 		"CREATING",
 	}
+}
+
+// GetMappingListProfilesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProfilesLifecycleStateEnum(val string) (ListProfilesLifecycleStateEnum, bool) {
+	mappingListProfilesLifecycleStateEnumIgnoreCase := make(map[string]ListProfilesLifecycleStateEnum)
+	for k, v := range mappingListProfilesLifecycleStateEnum {
+		mappingListProfilesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProfilesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // StorageServerEnum Enum with underlying type: string
 type StorageServerEnum string
 
@@ -43,4 +47,15 @@ func GetStorageServerEnumStringValues() []string {
 		"IOPS",
 		"THROUGHPUT",
 	}
+}
+
+// GetMappingStorageServerEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStorageServerEnum(val string) (StorageServerEnum, bool) {
+	mappingStorageServerEnumIgnoreCase := make(map[string]StorageServerEnum)
+	for k, v := range mappingStorageServerEnum {
+		mappingStorageServerEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStorageServerEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

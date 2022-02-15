@@ -11,6 +11,10 @@
 
 package databasemanagement
 
+import (
+	"strings"
+)
+
 // DatabaseSubTypeEnum Enum with underlying type: string
 type DatabaseSubTypeEnum string
 
@@ -49,4 +53,15 @@ func GetDatabaseSubTypeEnumStringValues() []string {
 		"ACD",
 		"ADB",
 	}
+}
+
+// GetMappingDatabaseSubTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseSubTypeEnum(val string) (DatabaseSubTypeEnum, bool) {
+	mappingDatabaseSubTypeEnumIgnoreCase := make(map[string]DatabaseSubTypeEnum)
+	for k, v := range mappingDatabaseSubTypeEnum {
+		mappingDatabaseSubTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseSubTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

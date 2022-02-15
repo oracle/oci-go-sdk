@@ -141,11 +141,11 @@ func (m ExadataInfrastructure) String() string {
 // Not recommended for calling this function directly
 func (m ExadataInfrastructure) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingExadataInfrastructureLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingExadataInfrastructureLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetExadataInfrastructureLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingExadataInfrastructureMaintenanceSLOStatusEnum[string(m.MaintenanceSLOStatus)]; !ok && m.MaintenanceSLOStatus != "" {
+	if _, ok := GetMappingExadataInfrastructureMaintenanceSLOStatusEnum(string(m.MaintenanceSLOStatus)); !ok && m.MaintenanceSLOStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MaintenanceSLOStatus: %s. Supported values are: %s.", m.MaintenanceSLOStatus, strings.Join(GetExadataInfrastructureMaintenanceSLOStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -212,6 +212,17 @@ func GetExadataInfrastructureLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingExadataInfrastructureLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExadataInfrastructureLifecycleStateEnum(val string) (ExadataInfrastructureLifecycleStateEnum, bool) {
+	mappingExadataInfrastructureLifecycleStateEnumIgnoreCase := make(map[string]ExadataInfrastructureLifecycleStateEnum)
+	for k, v := range mappingExadataInfrastructureLifecycleStateEnum {
+		mappingExadataInfrastructureLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExadataInfrastructureLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ExadataInfrastructureMaintenanceSLOStatusEnum Enum with underlying type: string
 type ExadataInfrastructureMaintenanceSLOStatusEnum string
 
@@ -241,4 +252,15 @@ func GetExadataInfrastructureMaintenanceSLOStatusEnumStringValues() []string {
 		"OK",
 		"DEGRADED",
 	}
+}
+
+// GetMappingExadataInfrastructureMaintenanceSLOStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExadataInfrastructureMaintenanceSLOStatusEnum(val string) (ExadataInfrastructureMaintenanceSLOStatusEnum, bool) {
+	mappingExadataInfrastructureMaintenanceSLOStatusEnumIgnoreCase := make(map[string]ExadataInfrastructureMaintenanceSLOStatusEnum)
+	for k, v := range mappingExadataInfrastructureMaintenanceSLOStatusEnum {
+		mappingExadataInfrastructureMaintenanceSLOStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExadataInfrastructureMaintenanceSLOStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

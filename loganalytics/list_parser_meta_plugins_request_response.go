@@ -72,10 +72,10 @@ func (request ListParserMetaPluginsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListParserMetaPluginsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListParserMetaPluginsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListParserMetaPluginsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListParserMetaPluginsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListParserMetaPluginsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListParserMetaPluginsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListParserMetaPluginsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -144,6 +144,17 @@ func GetListParserMetaPluginsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListParserMetaPluginsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListParserMetaPluginsSortByEnum(val string) (ListParserMetaPluginsSortByEnum, bool) {
+	mappingListParserMetaPluginsSortByEnumIgnoreCase := make(map[string]ListParserMetaPluginsSortByEnum)
+	for k, v := range mappingListParserMetaPluginsSortByEnum {
+		mappingListParserMetaPluginsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListParserMetaPluginsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListParserMetaPluginsSortOrderEnum Enum with underlying type: string
 type ListParserMetaPluginsSortOrderEnum string
 
@@ -173,4 +184,15 @@ func GetListParserMetaPluginsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListParserMetaPluginsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListParserMetaPluginsSortOrderEnum(val string) (ListParserMetaPluginsSortOrderEnum, bool) {
+	mappingListParserMetaPluginsSortOrderEnumIgnoreCase := make(map[string]ListParserMetaPluginsSortOrderEnum)
+	for k, v := range mappingListParserMetaPluginsSortOrderEnum {
+		mappingListParserMetaPluginsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListParserMetaPluginsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

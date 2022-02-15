@@ -50,11 +50,11 @@ func (m PatchHistoryEntrySummary) String() string {
 // Not recommended for calling this function directly
 func (m PatchHistoryEntrySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPatchHistoryEntrySummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingPatchHistoryEntrySummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetPatchHistoryEntrySummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingPatchHistoryEntrySummaryActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingPatchHistoryEntrySummaryActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetPatchHistoryEntrySummaryActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -94,6 +94,17 @@ func GetPatchHistoryEntrySummaryActionEnumStringValues() []string {
 	}
 }
 
+// GetMappingPatchHistoryEntrySummaryActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPatchHistoryEntrySummaryActionEnum(val string) (PatchHistoryEntrySummaryActionEnum, bool) {
+	mappingPatchHistoryEntrySummaryActionEnumIgnoreCase := make(map[string]PatchHistoryEntrySummaryActionEnum)
+	for k, v := range mappingPatchHistoryEntrySummaryActionEnum {
+		mappingPatchHistoryEntrySummaryActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPatchHistoryEntrySummaryActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // PatchHistoryEntrySummaryLifecycleStateEnum Enum with underlying type: string
 type PatchHistoryEntrySummaryLifecycleStateEnum string
 
@@ -126,4 +137,15 @@ func GetPatchHistoryEntrySummaryLifecycleStateEnumStringValues() []string {
 		"SUCCEEDED",
 		"FAILED",
 	}
+}
+
+// GetMappingPatchHistoryEntrySummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPatchHistoryEntrySummaryLifecycleStateEnum(val string) (PatchHistoryEntrySummaryLifecycleStateEnum, bool) {
+	mappingPatchHistoryEntrySummaryLifecycleStateEnumIgnoreCase := make(map[string]PatchHistoryEntrySummaryLifecycleStateEnum)
+	for k, v := range mappingPatchHistoryEntrySummaryLifecycleStateEnum {
+		mappingPatchHistoryEntrySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPatchHistoryEntrySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -96,13 +96,13 @@ func (request ListConsoleHistoriesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListConsoleHistoriesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListConsoleHistoriesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListConsoleHistoriesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListConsoleHistoriesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListConsoleHistoriesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListConsoleHistoriesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListConsoleHistoriesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingConsoleHistoryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingConsoleHistoryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetConsoleHistoryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -170,6 +170,17 @@ func GetListConsoleHistoriesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListConsoleHistoriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListConsoleHistoriesSortByEnum(val string) (ListConsoleHistoriesSortByEnum, bool) {
+	mappingListConsoleHistoriesSortByEnumIgnoreCase := make(map[string]ListConsoleHistoriesSortByEnum)
+	for k, v := range mappingListConsoleHistoriesSortByEnum {
+		mappingListConsoleHistoriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListConsoleHistoriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListConsoleHistoriesSortOrderEnum Enum with underlying type: string
 type ListConsoleHistoriesSortOrderEnum string
 
@@ -199,4 +210,15 @@ func GetListConsoleHistoriesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListConsoleHistoriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListConsoleHistoriesSortOrderEnum(val string) (ListConsoleHistoriesSortOrderEnum, bool) {
+	mappingListConsoleHistoriesSortOrderEnumIgnoreCase := make(map[string]ListConsoleHistoriesSortOrderEnum)
+	for k, v := range mappingListConsoleHistoriesSortOrderEnum {
+		mappingListConsoleHistoriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListConsoleHistoriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

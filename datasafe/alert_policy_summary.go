@@ -66,14 +66,14 @@ func (m AlertPolicySummary) String() string {
 // Not recommended for calling this function directly
 func (m AlertPolicySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAlertPolicyTypeEnum[string(m.AlertPolicyType)]; !ok && m.AlertPolicyType != "" {
+	if _, ok := GetMappingAlertPolicyTypeEnum(string(m.AlertPolicyType)); !ok && m.AlertPolicyType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AlertPolicyType: %s. Supported values are: %s.", m.AlertPolicyType, strings.Join(GetAlertPolicyTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAlertPolicyLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAlertPolicyLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAlertPolicyLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingAlertSeverityEnum[string(m.Severity)]; !ok && m.Severity != "" {
+	if _, ok := GetMappingAlertSeverityEnum(string(m.Severity)); !ok && m.Severity != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Severity: %s. Supported values are: %s.", m.Severity, strings.Join(GetAlertSeverityEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

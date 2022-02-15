@@ -43,7 +43,7 @@ func (m BiccReadAttributes) String() string {
 // Not recommended for calling this function directly
 func (m BiccReadAttributes) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBiccReadAttributesExtractStrategyEnum[string(m.ExtractStrategy)]; !ok && m.ExtractStrategy != "" {
+	if _, ok := GetMappingBiccReadAttributesExtractStrategyEnum(string(m.ExtractStrategy)); !ok && m.ExtractStrategy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExtractStrategy: %s. Supported values are: %s.", m.ExtractStrategy, strings.Join(GetBiccReadAttributesExtractStrategyEnumStringValues(), ",")))
 	}
 
@@ -96,4 +96,15 @@ func GetBiccReadAttributesExtractStrategyEnumStringValues() []string {
 		"FULL",
 		"INCREMENTAL",
 	}
+}
+
+// GetMappingBiccReadAttributesExtractStrategyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBiccReadAttributesExtractStrategyEnum(val string) (BiccReadAttributesExtractStrategyEnum, bool) {
+	mappingBiccReadAttributesExtractStrategyEnumIgnoreCase := make(map[string]BiccReadAttributesExtractStrategyEnum)
+	for k, v := range mappingBiccReadAttributesExtractStrategyEnum {
+		mappingBiccReadAttributesExtractStrategyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBiccReadAttributesExtractStrategyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

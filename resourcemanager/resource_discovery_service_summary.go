@@ -41,7 +41,7 @@ func (m ResourceDiscoveryServiceSummary) String() string {
 func (m ResourceDiscoveryServiceSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingResourceDiscoveryServiceSummaryDiscoveryScopeEnum[string(m.DiscoveryScope)]; !ok && m.DiscoveryScope != "" {
+	if _, ok := GetMappingResourceDiscoveryServiceSummaryDiscoveryScopeEnum(string(m.DiscoveryScope)); !ok && m.DiscoveryScope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DiscoveryScope: %s. Supported values are: %s.", m.DiscoveryScope, strings.Join(GetResourceDiscoveryServiceSummaryDiscoveryScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -79,4 +79,15 @@ func GetResourceDiscoveryServiceSummaryDiscoveryScopeEnumStringValues() []string
 		"TENANCY",
 		"COMPARTMENT",
 	}
+}
+
+// GetMappingResourceDiscoveryServiceSummaryDiscoveryScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResourceDiscoveryServiceSummaryDiscoveryScopeEnum(val string) (ResourceDiscoveryServiceSummaryDiscoveryScopeEnum, bool) {
+	mappingResourceDiscoveryServiceSummaryDiscoveryScopeEnumIgnoreCase := make(map[string]ResourceDiscoveryServiceSummaryDiscoveryScopeEnum)
+	for k, v := range mappingResourceDiscoveryServiceSummaryDiscoveryScopeEnum {
+		mappingResourceDiscoveryServiceSummaryDiscoveryScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResourceDiscoveryServiceSummaryDiscoveryScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -71,7 +71,7 @@ func (m InternetGateway) String() string {
 // Not recommended for calling this function directly
 func (m InternetGateway) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingInternetGatewayLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingInternetGatewayLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetInternetGatewayLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -116,4 +116,15 @@ func GetInternetGatewayLifecycleStateEnumStringValues() []string {
 		"TERMINATING",
 		"TERMINATED",
 	}
+}
+
+// GetMappingInternetGatewayLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInternetGatewayLifecycleStateEnum(val string) (InternetGatewayLifecycleStateEnum, bool) {
+	mappingInternetGatewayLifecycleStateEnumIgnoreCase := make(map[string]InternetGatewayLifecycleStateEnum)
+	for k, v := range mappingInternetGatewayLifecycleStateEnum {
+		mappingInternetGatewayLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInternetGatewayLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

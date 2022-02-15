@@ -83,10 +83,10 @@ func (request SummarizeExadataMembersRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request SummarizeExadataMembersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeExadataMembersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeExadataMembersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeExadataMembersSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeExadataMembersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeExadataMembersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeExadataMembersSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -157,6 +157,17 @@ func GetSummarizeExadataMembersSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeExadataMembersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataMembersSortOrderEnum(val string) (SummarizeExadataMembersSortOrderEnum, bool) {
+	mappingSummarizeExadataMembersSortOrderEnumIgnoreCase := make(map[string]SummarizeExadataMembersSortOrderEnum)
+	for k, v := range mappingSummarizeExadataMembersSortOrderEnum {
+		mappingSummarizeExadataMembersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataMembersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeExadataMembersSortByEnum Enum with underlying type: string
 type SummarizeExadataMembersSortByEnum string
 
@@ -189,4 +200,15 @@ func GetSummarizeExadataMembersSortByEnumStringValues() []string {
 		"displayName",
 		"entityType",
 	}
+}
+
+// GetMappingSummarizeExadataMembersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataMembersSortByEnum(val string) (SummarizeExadataMembersSortByEnum, bool) {
+	mappingSummarizeExadataMembersSortByEnumIgnoreCase := make(map[string]SummarizeExadataMembersSortByEnum)
+	for k, v := range mappingSummarizeExadataMembersSortByEnum {
+		mappingSummarizeExadataMembersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataMembersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

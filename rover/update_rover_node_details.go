@@ -109,13 +109,13 @@ func (m UpdateRoverNodeDetails) String() string {
 func (m UpdateRoverNodeDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateRoverNodeDetailsShippingPreferenceEnum[string(m.ShippingPreference)]; !ok && m.ShippingPreference != "" {
+	if _, ok := GetMappingUpdateRoverNodeDetailsShippingPreferenceEnum(string(m.ShippingPreference)); !ok && m.ShippingPreference != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShippingPreference: %s. Supported values are: %s.", m.ShippingPreference, strings.Join(GetUpdateRoverNodeDetailsShippingPreferenceEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingEnclosureTypeEnum[string(m.EnclosureType)]; !ok && m.EnclosureType != "" {
+	if _, ok := GetMappingEnclosureTypeEnum(string(m.EnclosureType)); !ok && m.EnclosureType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EnclosureType: %s. Supported values are: %s.", m.EnclosureType, strings.Join(GetEnclosureTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -153,4 +153,15 @@ func GetUpdateRoverNodeDetailsShippingPreferenceEnumStringValues() []string {
 		"ORACLE_SHIPPED",
 		"CUSTOMER_PICKUP",
 	}
+}
+
+// GetMappingUpdateRoverNodeDetailsShippingPreferenceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateRoverNodeDetailsShippingPreferenceEnum(val string) (UpdateRoverNodeDetailsShippingPreferenceEnum, bool) {
+	mappingUpdateRoverNodeDetailsShippingPreferenceEnumIgnoreCase := make(map[string]UpdateRoverNodeDetailsShippingPreferenceEnum)
+	for k, v := range mappingUpdateRoverNodeDetailsShippingPreferenceEnum {
+		mappingUpdateRoverNodeDetailsShippingPreferenceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateRoverNodeDetailsShippingPreferenceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

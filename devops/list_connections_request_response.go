@@ -87,16 +87,16 @@ func (request ListConnectionsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListConnectionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingConnectionLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingConnectionLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetConnectionLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingConnectionConnectionTypeEnum[string(request.ConnectionType)]; !ok && request.ConnectionType != "" {
+	if _, ok := GetMappingConnectionConnectionTypeEnum(string(request.ConnectionType)); !ok && request.ConnectionType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ConnectionType: %s. Supported values are: %s.", request.ConnectionType, strings.Join(GetConnectionConnectionTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListConnectionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListConnectionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListConnectionsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListConnectionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListConnectionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListConnectionsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -161,6 +161,17 @@ func GetListConnectionsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListConnectionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListConnectionsSortOrderEnum(val string) (ListConnectionsSortOrderEnum, bool) {
+	mappingListConnectionsSortOrderEnumIgnoreCase := make(map[string]ListConnectionsSortOrderEnum)
+	for k, v := range mappingListConnectionsSortOrderEnum {
+		mappingListConnectionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListConnectionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListConnectionsSortByEnum Enum with underlying type: string
 type ListConnectionsSortByEnum string
 
@@ -190,4 +201,15 @@ func GetListConnectionsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListConnectionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListConnectionsSortByEnum(val string) (ListConnectionsSortByEnum, bool) {
+	mappingListConnectionsSortByEnumIgnoreCase := make(map[string]ListConnectionsSortByEnum)
+	for k, v := range mappingListConnectionsSortByEnum {
+		mappingListConnectionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListConnectionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

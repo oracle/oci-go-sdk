@@ -113,11 +113,11 @@ func (m FieldsAddRemoveField) String() string {
 // Not recommended for calling this function directly
 func (m FieldsAddRemoveField) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingFieldsAddRemoveFieldOperationEnum[string(m.Operation)]; !ok && m.Operation != "" {
+	if _, ok := GetMappingFieldsAddRemoveFieldOperationEnum(string(m.Operation)); !ok && m.Operation != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Operation: %s. Supported values are: %s.", m.Operation, strings.Join(GetFieldsAddRemoveFieldOperationEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingValueTypeEnum[string(m.ValueType)]; !ok && m.ValueType != "" {
+	if _, ok := GetMappingValueTypeEnum(string(m.ValueType)); !ok && m.ValueType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ValueType: %s. Supported values are: %s.", m.ValueType, strings.Join(GetValueTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -169,4 +169,15 @@ func GetFieldsAddRemoveFieldOperationEnumStringValues() []string {
 		"ADD",
 		"REMOVE",
 	}
+}
+
+// GetMappingFieldsAddRemoveFieldOperationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFieldsAddRemoveFieldOperationEnum(val string) (FieldsAddRemoveFieldOperationEnum, bool) {
+	mappingFieldsAddRemoveFieldOperationEnumIgnoreCase := make(map[string]FieldsAddRemoveFieldOperationEnum)
+	for k, v := range mappingFieldsAddRemoveFieldOperationEnum {
+		mappingFieldsAddRemoveFieldOperationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFieldsAddRemoveFieldOperationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

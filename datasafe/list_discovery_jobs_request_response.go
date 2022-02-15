@@ -98,16 +98,16 @@ func (request ListDiscoveryJobsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDiscoveryJobsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDiscoveryJobsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListDiscoveryJobsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListDiscoveryJobsAccessLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDiscoveryJobsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListDiscoveryJobsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListDiscoveryJobsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDiscoveryJobsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDiscoveryJobsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDiscoveryJobsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDiscoveryJobsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDiscoveryJobsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDiscoveryJobsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -177,6 +177,17 @@ func GetListDiscoveryJobsAccessLevelEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDiscoveryJobsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDiscoveryJobsAccessLevelEnum(val string) (ListDiscoveryJobsAccessLevelEnum, bool) {
+	mappingListDiscoveryJobsAccessLevelEnumIgnoreCase := make(map[string]ListDiscoveryJobsAccessLevelEnum)
+	for k, v := range mappingListDiscoveryJobsAccessLevelEnum {
+		mappingListDiscoveryJobsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDiscoveryJobsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDiscoveryJobsLifecycleStateEnum Enum with underlying type: string
 type ListDiscoveryJobsLifecycleStateEnum string
 
@@ -220,6 +231,17 @@ func GetListDiscoveryJobsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDiscoveryJobsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDiscoveryJobsLifecycleStateEnum(val string) (ListDiscoveryJobsLifecycleStateEnum, bool) {
+	mappingListDiscoveryJobsLifecycleStateEnumIgnoreCase := make(map[string]ListDiscoveryJobsLifecycleStateEnum)
+	for k, v := range mappingListDiscoveryJobsLifecycleStateEnum {
+		mappingListDiscoveryJobsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDiscoveryJobsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDiscoveryJobsSortOrderEnum Enum with underlying type: string
 type ListDiscoveryJobsSortOrderEnum string
 
@@ -251,6 +273,17 @@ func GetListDiscoveryJobsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDiscoveryJobsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDiscoveryJobsSortOrderEnum(val string) (ListDiscoveryJobsSortOrderEnum, bool) {
+	mappingListDiscoveryJobsSortOrderEnumIgnoreCase := make(map[string]ListDiscoveryJobsSortOrderEnum)
+	for k, v := range mappingListDiscoveryJobsSortOrderEnum {
+		mappingListDiscoveryJobsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDiscoveryJobsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDiscoveryJobsSortByEnum Enum with underlying type: string
 type ListDiscoveryJobsSortByEnum string
 
@@ -280,4 +313,15 @@ func GetListDiscoveryJobsSortByEnumStringValues() []string {
 		"timeStarted",
 		"displayName",
 	}
+}
+
+// GetMappingListDiscoveryJobsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDiscoveryJobsSortByEnum(val string) (ListDiscoveryJobsSortByEnum, bool) {
+	mappingListDiscoveryJobsSortByEnumIgnoreCase := make(map[string]ListDiscoveryJobsSortByEnum)
+	for k, v := range mappingListDiscoveryJobsSortByEnum {
+		mappingListDiscoveryJobsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDiscoveryJobsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

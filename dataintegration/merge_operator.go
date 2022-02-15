@@ -131,7 +131,7 @@ func (m MergeOperator) String() string {
 // Not recommended for calling this function directly
 func (m MergeOperator) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingMergeOperatorTriggerRuleEnum[string(m.TriggerRule)]; !ok && m.TriggerRule != "" {
+	if _, ok := GetMappingMergeOperatorTriggerRuleEnum(string(m.TriggerRule)); !ok && m.TriggerRule != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TriggerRule: %s. Supported values are: %s.", m.TriggerRule, strings.Join(GetMergeOperatorTriggerRuleEnumStringValues(), ",")))
 	}
 
@@ -193,4 +193,15 @@ func GetMergeOperatorTriggerRuleEnumStringValues() []string {
 		"ONE_SUCCESS",
 		"ONE_FAILED",
 	}
+}
+
+// GetMappingMergeOperatorTriggerRuleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMergeOperatorTriggerRuleEnum(val string) (MergeOperatorTriggerRuleEnum, bool) {
+	mappingMergeOperatorTriggerRuleEnumIgnoreCase := make(map[string]MergeOperatorTriggerRuleEnum)
+	for k, v := range mappingMergeOperatorTriggerRuleEnum {
+		mappingMergeOperatorTriggerRuleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMergeOperatorTriggerRuleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

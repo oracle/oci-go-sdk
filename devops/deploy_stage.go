@@ -232,7 +232,7 @@ func (m deploystage) String() string {
 func (m deploystage) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDeployStageLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDeployStageLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDeployStageLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -284,6 +284,17 @@ func GetDeployStageLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingDeployStageLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeployStageLifecycleStateEnum(val string) (DeployStageLifecycleStateEnum, bool) {
+	mappingDeployStageLifecycleStateEnumIgnoreCase := make(map[string]DeployStageLifecycleStateEnum)
+	for k, v := range mappingDeployStageLifecycleStateEnum {
+		mappingDeployStageLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeployStageLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DeployStageDeployStageTypeEnum Enum with underlying type: string
 type DeployStageDeployStageTypeEnum string
 
@@ -328,4 +339,15 @@ func GetDeployStageDeployStageTypeEnumStringValues() []string {
 		"LOAD_BALANCER_TRAFFIC_SHIFT",
 		"MANUAL_APPROVAL",
 	}
+}
+
+// GetMappingDeployStageDeployStageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeployStageDeployStageTypeEnum(val string) (DeployStageDeployStageTypeEnum, bool) {
+	mappingDeployStageDeployStageTypeEnumIgnoreCase := make(map[string]DeployStageDeployStageTypeEnum)
+	for k, v := range mappingDeployStageDeployStageTypeEnum {
+		mappingDeployStageDeployStageTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeployStageDeployStageTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

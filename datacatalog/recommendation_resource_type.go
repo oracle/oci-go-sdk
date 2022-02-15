@@ -10,6 +10,10 @@
 
 package datacatalog
 
+import (
+	"strings"
+)
+
 // RecommendationResourceTypeEnum Enum with underlying type: string
 type RecommendationResourceTypeEnum string
 
@@ -45,4 +49,15 @@ func GetRecommendationResourceTypeEnumStringValues() []string {
 		"TERM",
 		"CATEGORY",
 	}
+}
+
+// GetMappingRecommendationResourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRecommendationResourceTypeEnum(val string) (RecommendationResourceTypeEnum, bool) {
+	mappingRecommendationResourceTypeEnumIgnoreCase := make(map[string]RecommendationResourceTypeEnum)
+	for k, v := range mappingRecommendationResourceTypeEnum {
+		mappingRecommendationResourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRecommendationResourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

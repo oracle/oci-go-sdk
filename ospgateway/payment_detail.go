@@ -146,3 +146,14 @@ func GetPaymentDetailPaymentMethodEnumStringValues() []string {
 		"OTHER",
 	}
 }
+
+// GetMappingPaymentDetailPaymentMethodEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPaymentDetailPaymentMethodEnum(val string) (PaymentDetailPaymentMethodEnum, bool) {
+	mappingPaymentDetailPaymentMethodEnumIgnoreCase := make(map[string]PaymentDetailPaymentMethodEnum)
+	for k, v := range mappingPaymentDetailPaymentMethodEnum {
+		mappingPaymentDetailPaymentMethodEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPaymentDetailPaymentMethodEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

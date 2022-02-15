@@ -34,7 +34,7 @@ func (m Filter) String() string {
 // Not recommended for calling this function directly
 func (m Filter) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingFilterTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingFilterTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetFilterTypeEnumStringValues(), ",")))
 	}
 
@@ -85,4 +85,15 @@ func GetFilterTypeEnumStringValues() []string {
 		"RESOURCE_ID",
 		"ANNOUNCEMENT_TYPE",
 	}
+}
+
+// GetMappingFilterTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFilterTypeEnum(val string) (FilterTypeEnum, bool) {
+	mappingFilterTypeEnumIgnoreCase := make(map[string]FilterTypeEnum)
+	for k, v := range mappingFilterTypeEnum {
+		mappingFilterTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFilterTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -69,7 +69,7 @@ func (request GetSecretBundleRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetSecretBundleRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetSecretBundleStageEnum[string(request.Stage)]; !ok && request.Stage != "" {
+	if _, ok := GetMappingGetSecretBundleStageEnum(string(request.Stage)); !ok && request.Stage != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stage: %s. Supported values are: %s.", request.Stage, strings.Join(GetGetSecretBundleStageEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -141,4 +141,15 @@ func GetGetSecretBundleStageEnumStringValues() []string {
 		"PREVIOUS",
 		"DEPRECATED",
 	}
+}
+
+// GetMappingGetSecretBundleStageEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetSecretBundleStageEnum(val string) (GetSecretBundleStageEnum, bool) {
+	mappingGetSecretBundleStageEnumIgnoreCase := make(map[string]GetSecretBundleStageEnum)
+	for k, v := range mappingGetSecretBundleStageEnum {
+		mappingGetSecretBundleStageEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetSecretBundleStageEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

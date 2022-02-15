@@ -73,14 +73,14 @@ func (m DeployArtifact) String() string {
 // Not recommended for calling this function directly
 func (m DeployArtifact) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDeployArtifactDeployArtifactTypeEnum[string(m.DeployArtifactType)]; !ok && m.DeployArtifactType != "" {
+	if _, ok := GetMappingDeployArtifactDeployArtifactTypeEnum(string(m.DeployArtifactType)); !ok && m.DeployArtifactType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DeployArtifactType: %s. Supported values are: %s.", m.DeployArtifactType, strings.Join(GetDeployArtifactDeployArtifactTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDeployArtifactArgumentSubstitutionModeEnum[string(m.ArgumentSubstitutionMode)]; !ok && m.ArgumentSubstitutionMode != "" {
+	if _, ok := GetMappingDeployArtifactArgumentSubstitutionModeEnum(string(m.ArgumentSubstitutionMode)); !ok && m.ArgumentSubstitutionMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ArgumentSubstitutionMode: %s. Supported values are: %s.", m.ArgumentSubstitutionMode, strings.Join(GetDeployArtifactArgumentSubstitutionModeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDeployArtifactLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDeployArtifactLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDeployArtifactLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -195,6 +195,17 @@ func GetDeployArtifactDeployArtifactTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingDeployArtifactDeployArtifactTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeployArtifactDeployArtifactTypeEnum(val string) (DeployArtifactDeployArtifactTypeEnum, bool) {
+	mappingDeployArtifactDeployArtifactTypeEnumIgnoreCase := make(map[string]DeployArtifactDeployArtifactTypeEnum)
+	for k, v := range mappingDeployArtifactDeployArtifactTypeEnum {
+		mappingDeployArtifactDeployArtifactTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeployArtifactDeployArtifactTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DeployArtifactArgumentSubstitutionModeEnum Enum with underlying type: string
 type DeployArtifactArgumentSubstitutionModeEnum string
 
@@ -224,6 +235,17 @@ func GetDeployArtifactArgumentSubstitutionModeEnumStringValues() []string {
 		"NONE",
 		"SUBSTITUTE_PLACEHOLDERS",
 	}
+}
+
+// GetMappingDeployArtifactArgumentSubstitutionModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeployArtifactArgumentSubstitutionModeEnum(val string) (DeployArtifactArgumentSubstitutionModeEnum, bool) {
+	mappingDeployArtifactArgumentSubstitutionModeEnumIgnoreCase := make(map[string]DeployArtifactArgumentSubstitutionModeEnum)
+	for k, v := range mappingDeployArtifactArgumentSubstitutionModeEnum {
+		mappingDeployArtifactArgumentSubstitutionModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeployArtifactArgumentSubstitutionModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // DeployArtifactLifecycleStateEnum Enum with underlying type: string
@@ -267,4 +289,15 @@ func GetDeployArtifactLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingDeployArtifactLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeployArtifactLifecycleStateEnum(val string) (DeployArtifactLifecycleStateEnum, bool) {
+	mappingDeployArtifactLifecycleStateEnumIgnoreCase := make(map[string]DeployArtifactLifecycleStateEnum)
+	for k, v := range mappingDeployArtifactLifecycleStateEnum {
+		mappingDeployArtifactLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeployArtifactLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

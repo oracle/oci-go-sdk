@@ -126,3 +126,14 @@ func GetPatchInstructionOperationEnumStringValues() []string {
 		"MERGE",
 	}
 }
+
+// GetMappingPatchInstructionOperationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPatchInstructionOperationEnum(val string) (PatchInstructionOperationEnum, bool) {
+	mappingPatchInstructionOperationEnumIgnoreCase := make(map[string]PatchInstructionOperationEnum)
+	for k, v := range mappingPatchInstructionOperationEnum {
+		mappingPatchInstructionOperationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPatchInstructionOperationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

@@ -41,7 +41,7 @@ func (m DeployStageExecutionStep) String() string {
 func (m DeployStageExecutionStep) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDeployStageExecutionStepStateEnum[string(m.State)]; !ok && m.State != "" {
+	if _, ok := GetMappingDeployStageExecutionStepStateEnum(string(m.State)); !ok && m.State != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for State: %s. Supported values are: %s.", m.State, strings.Join(GetDeployStageExecutionStepStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -88,4 +88,15 @@ func GetDeployStageExecutionStepStateEnumStringValues() []string {
 		"SUCCEEDED",
 		"CANCELED",
 	}
+}
+
+// GetMappingDeployStageExecutionStepStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeployStageExecutionStepStateEnum(val string) (DeployStageExecutionStepStateEnum, bool) {
+	mappingDeployStageExecutionStepStateEnumIgnoreCase := make(map[string]DeployStageExecutionStepStateEnum)
+	for k, v := range mappingDeployStageExecutionStepStateEnum {
+		mappingDeployStageExecutionStepStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeployStageExecutionStepStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

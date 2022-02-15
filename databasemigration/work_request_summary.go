@@ -55,7 +55,7 @@ func (m WorkRequestSummary) String() string {
 // Not recommended for calling this function directly
 func (m WorkRequestSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingWorkRequestSummaryStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingWorkRequestSummaryStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetWorkRequestSummaryStatusEnumStringValues(), ",")))
 	}
 
@@ -106,4 +106,15 @@ func GetWorkRequestSummaryStatusEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingWorkRequestSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestSummaryStatusEnum(val string) (WorkRequestSummaryStatusEnum, bool) {
+	mappingWorkRequestSummaryStatusEnumIgnoreCase := make(map[string]WorkRequestSummaryStatusEnum)
+	for k, v := range mappingWorkRequestSummaryStatusEnum {
+		mappingWorkRequestSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

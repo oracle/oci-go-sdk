@@ -58,7 +58,7 @@ func (m TargetResponderRecipe) String() string {
 // Not recommended for calling this function directly
 func (m TargetResponderRecipe) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingOwnerTypeEnum[string(m.Owner)]; !ok && m.Owner != "" {
+	if _, ok := GetMappingOwnerTypeEnum(string(m.Owner)); !ok && m.Owner != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Owner: %s. Supported values are: %s.", m.Owner, strings.Join(GetOwnerTypeEnumStringValues(), ",")))
 	}
 

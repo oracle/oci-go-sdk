@@ -51,7 +51,7 @@ func (m UpdateRootCaByGeneratingInternallyConfigDetails) String() string {
 func (m UpdateRootCaByGeneratingInternallyConfigDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateCertificateAuthorityConfigDetailsStageEnum[string(m.Stage)]; !ok && m.Stage != "" {
+	if _, ok := GetMappingUpdateCertificateAuthorityConfigDetailsStageEnum(string(m.Stage)); !ok && m.Stage != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stage: %s. Supported values are: %s.", m.Stage, strings.Join(GetUpdateCertificateAuthorityConfigDetailsStageEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

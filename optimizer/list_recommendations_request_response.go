@@ -89,16 +89,16 @@ func (request ListRecommendationsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListRecommendationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListRecommendationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListRecommendationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListRecommendationsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListRecommendationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListRecommendationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListRecommendationsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListRecommendationsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListRecommendationsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListRecommendationsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListRecommendationsStatusEnum[string(request.Status)]; !ok && request.Status != "" {
+	if _, ok := GetMappingListRecommendationsStatusEnum(string(request.Status)); !ok && request.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", request.Status, strings.Join(GetListRecommendationsStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -170,6 +170,17 @@ func GetListRecommendationsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListRecommendationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRecommendationsSortOrderEnum(val string) (ListRecommendationsSortOrderEnum, bool) {
+	mappingListRecommendationsSortOrderEnumIgnoreCase := make(map[string]ListRecommendationsSortOrderEnum)
+	for k, v := range mappingListRecommendationsSortOrderEnum {
+		mappingListRecommendationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRecommendationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListRecommendationsSortByEnum Enum with underlying type: string
 type ListRecommendationsSortByEnum string
 
@@ -199,6 +210,17 @@ func GetListRecommendationsSortByEnumStringValues() []string {
 		"NAME",
 		"TIMECREATED",
 	}
+}
+
+// GetMappingListRecommendationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRecommendationsSortByEnum(val string) (ListRecommendationsSortByEnum, bool) {
+	mappingListRecommendationsSortByEnumIgnoreCase := make(map[string]ListRecommendationsSortByEnum)
+	for k, v := range mappingListRecommendationsSortByEnum {
+		mappingListRecommendationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRecommendationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListRecommendationsLifecycleStateEnum Enum with underlying type: string
@@ -253,6 +275,17 @@ func GetListRecommendationsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListRecommendationsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRecommendationsLifecycleStateEnum(val string) (ListRecommendationsLifecycleStateEnum, bool) {
+	mappingListRecommendationsLifecycleStateEnumIgnoreCase := make(map[string]ListRecommendationsLifecycleStateEnum)
+	for k, v := range mappingListRecommendationsLifecycleStateEnum {
+		mappingListRecommendationsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRecommendationsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListRecommendationsStatusEnum Enum with underlying type: string
 type ListRecommendationsStatusEnum string
 
@@ -288,4 +321,15 @@ func GetListRecommendationsStatusEnumStringValues() []string {
 		"POSTPONED",
 		"IMPLEMENTED",
 	}
+}
+
+// GetMappingListRecommendationsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRecommendationsStatusEnum(val string) (ListRecommendationsStatusEnum, bool) {
+	mappingListRecommendationsStatusEnumIgnoreCase := make(map[string]ListRecommendationsStatusEnum)
+	for k, v := range mappingListRecommendationsStatusEnum {
+		mappingListRecommendationsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRecommendationsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

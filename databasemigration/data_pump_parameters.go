@@ -48,10 +48,10 @@ func (m DataPumpParameters) String() string {
 func (m DataPumpParameters) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDataPumpEstimateEnum[string(m.Estimate)]; !ok && m.Estimate != "" {
+	if _, ok := GetMappingDataPumpEstimateEnum(string(m.Estimate)); !ok && m.Estimate != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Estimate: %s. Supported values are: %s.", m.Estimate, strings.Join(GetDataPumpEstimateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDataPumpTableExistsActionEnum[string(m.TableExistsAction)]; !ok && m.TableExistsAction != "" {
+	if _, ok := GetMappingDataPumpTableExistsActionEnum(string(m.TableExistsAction)); !ok && m.TableExistsAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TableExistsAction: %s. Supported values are: %s.", m.TableExistsAction, strings.Join(GetDataPumpTableExistsActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -137,3 +137,14 @@ func GetDrgAttachmentNetworkDetailsTypeEnumStringValues() []string {
 		"REMOTE_PEERING_CONNECTION",
 	}
 }
+
+// GetMappingDrgAttachmentNetworkDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDrgAttachmentNetworkDetailsTypeEnum(val string) (DrgAttachmentNetworkDetailsTypeEnum, bool) {
+	mappingDrgAttachmentNetworkDetailsTypeEnumIgnoreCase := make(map[string]DrgAttachmentNetworkDetailsTypeEnum)
+	for k, v := range mappingDrgAttachmentNetworkDetailsTypeEnum {
+		mappingDrgAttachmentNetworkDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDrgAttachmentNetworkDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

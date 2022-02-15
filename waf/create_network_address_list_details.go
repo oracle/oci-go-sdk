@@ -163,3 +163,14 @@ func GetCreateNetworkAddressListDetailsTypeEnumStringValues() []string {
 		"VCN_ADDRESSES",
 	}
 }
+
+// GetMappingCreateNetworkAddressListDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateNetworkAddressListDetailsTypeEnum(val string) (CreateNetworkAddressListDetailsTypeEnum, bool) {
+	mappingCreateNetworkAddressListDetailsTypeEnumIgnoreCase := make(map[string]CreateNetworkAddressListDetailsTypeEnum)
+	for k, v := range mappingCreateNetworkAddressListDetailsTypeEnum {
+		mappingCreateNetworkAddressListDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateNetworkAddressListDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

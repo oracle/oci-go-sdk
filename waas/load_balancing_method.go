@@ -116,3 +116,14 @@ func GetLoadBalancingMethodMethodEnumStringValues() []string {
 		"STICKY_COOKIE",
 	}
 }
+
+// GetMappingLoadBalancingMethodMethodEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLoadBalancingMethodMethodEnum(val string) (LoadBalancingMethodMethodEnum, bool) {
+	mappingLoadBalancingMethodMethodEnumIgnoreCase := make(map[string]LoadBalancingMethodMethodEnum)
+	for k, v := range mappingLoadBalancingMethodMethodEnum {
+		mappingLoadBalancingMethodMethodEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLoadBalancingMethodMethodEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

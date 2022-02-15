@@ -268,7 +268,7 @@ func (m hostconfigurationsummary) String() string {
 // Not recommended for calling this function directly
 func (m hostconfigurationsummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingHostConfigurationSummaryPlatformTypeEnum[string(m.PlatformType)]; !ok && m.PlatformType != "" {
+	if _, ok := GetMappingHostConfigurationSummaryPlatformTypeEnum(string(m.PlatformType)); !ok && m.PlatformType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", m.PlatformType, strings.Join(GetHostConfigurationSummaryPlatformTypeEnumStringValues(), ",")))
 	}
 
@@ -310,4 +310,15 @@ func GetHostConfigurationSummaryPlatformTypeEnumStringValues() []string {
 		"SOLARIS",
 		"SUNOS",
 	}
+}
+
+// GetMappingHostConfigurationSummaryPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHostConfigurationSummaryPlatformTypeEnum(val string) (HostConfigurationSummaryPlatformTypeEnum, bool) {
+	mappingHostConfigurationSummaryPlatformTypeEnumIgnoreCase := make(map[string]HostConfigurationSummaryPlatformTypeEnum)
+	for k, v := range mappingHostConfigurationSummaryPlatformTypeEnum {
+		mappingHostConfigurationSummaryPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHostConfigurationSummaryPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

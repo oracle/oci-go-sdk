@@ -64,7 +64,7 @@ func (m AuthToken) String() string {
 func (m AuthToken) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAuthTokenLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAuthTokenLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAuthTokenLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -111,4 +111,15 @@ func GetAuthTokenLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingAuthTokenLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAuthTokenLifecycleStateEnum(val string) (AuthTokenLifecycleStateEnum, bool) {
+	mappingAuthTokenLifecycleStateEnumIgnoreCase := make(map[string]AuthTokenLifecycleStateEnum)
+	for k, v := range mappingAuthTokenLifecycleStateEnum {
+		mappingAuthTokenLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAuthTokenLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

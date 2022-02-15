@@ -36,7 +36,7 @@ func (m DiscoveryAnalyticsSummary) String() string {
 // Not recommended for calling this function directly
 func (m DiscoveryAnalyticsSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDiscoveryAnalyticsSummaryMetricNameEnum[string(m.MetricName)]; !ok && m.MetricName != "" {
+	if _, ok := GetMappingDiscoveryAnalyticsSummaryMetricNameEnum(string(m.MetricName)); !ok && m.MetricName != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MetricName: %s. Supported values are: %s.", m.MetricName, strings.Join(GetDiscoveryAnalyticsSummaryMetricNameEnumStringValues(), ",")))
 	}
 
@@ -87,4 +87,15 @@ func GetDiscoveryAnalyticsSummaryMetricNameEnumStringValues() []string {
 		"SENSITIVE_COLUMN",
 		"SENSITIVE_DATA_VALUE",
 	}
+}
+
+// GetMappingDiscoveryAnalyticsSummaryMetricNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDiscoveryAnalyticsSummaryMetricNameEnum(val string) (DiscoveryAnalyticsSummaryMetricNameEnum, bool) {
+	mappingDiscoveryAnalyticsSummaryMetricNameEnumIgnoreCase := make(map[string]DiscoveryAnalyticsSummaryMetricNameEnum)
+	for k, v := range mappingDiscoveryAnalyticsSummaryMetricNameEnum {
+		mappingDiscoveryAnalyticsSummaryMetricNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDiscoveryAnalyticsSummaryMetricNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

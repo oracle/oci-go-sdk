@@ -76,10 +76,10 @@ func (request ListAssociatedDatabasesRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListAssociatedDatabasesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAssociatedDatabasesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAssociatedDatabasesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAssociatedDatabasesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAssociatedDatabasesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAssociatedDatabasesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAssociatedDatabasesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -147,6 +147,17 @@ func GetListAssociatedDatabasesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAssociatedDatabasesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAssociatedDatabasesSortOrderEnum(val string) (ListAssociatedDatabasesSortOrderEnum, bool) {
+	mappingListAssociatedDatabasesSortOrderEnumIgnoreCase := make(map[string]ListAssociatedDatabasesSortOrderEnum)
+	for k, v := range mappingListAssociatedDatabasesSortOrderEnum {
+		mappingListAssociatedDatabasesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAssociatedDatabasesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAssociatedDatabasesSortByEnum Enum with underlying type: string
 type ListAssociatedDatabasesSortByEnum string
 
@@ -173,4 +184,15 @@ func GetListAssociatedDatabasesSortByEnumStringValues() []string {
 	return []string{
 		"timeRegistered",
 	}
+}
+
+// GetMappingListAssociatedDatabasesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAssociatedDatabasesSortByEnum(val string) (ListAssociatedDatabasesSortByEnum, bool) {
+	mappingListAssociatedDatabasesSortByEnumIgnoreCase := make(map[string]ListAssociatedDatabasesSortByEnum)
+	for k, v := range mappingListAssociatedDatabasesSortByEnum {
+		mappingListAssociatedDatabasesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAssociatedDatabasesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

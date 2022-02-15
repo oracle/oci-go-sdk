@@ -97,10 +97,10 @@ func (m CrossConnectMappingDetails) String() string {
 func (m CrossConnectMappingDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCrossConnectMappingDetailsIpv4BgpStatusEnum[string(m.Ipv4BgpStatus)]; !ok && m.Ipv4BgpStatus != "" {
+	if _, ok := GetMappingCrossConnectMappingDetailsIpv4BgpStatusEnum(string(m.Ipv4BgpStatus)); !ok && m.Ipv4BgpStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Ipv4BgpStatus: %s. Supported values are: %s.", m.Ipv4BgpStatus, strings.Join(GetCrossConnectMappingDetailsIpv4BgpStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCrossConnectMappingDetailsIpv6BgpStatusEnum[string(m.Ipv6BgpStatus)]; !ok && m.Ipv6BgpStatus != "" {
+	if _, ok := GetMappingCrossConnectMappingDetailsIpv6BgpStatusEnum(string(m.Ipv6BgpStatus)); !ok && m.Ipv6BgpStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Ipv6BgpStatus: %s. Supported values are: %s.", m.Ipv6BgpStatus, strings.Join(GetCrossConnectMappingDetailsIpv6BgpStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -140,6 +140,17 @@ func GetCrossConnectMappingDetailsIpv4BgpStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingCrossConnectMappingDetailsIpv4BgpStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCrossConnectMappingDetailsIpv4BgpStatusEnum(val string) (CrossConnectMappingDetailsIpv4BgpStatusEnum, bool) {
+	mappingCrossConnectMappingDetailsIpv4BgpStatusEnumIgnoreCase := make(map[string]CrossConnectMappingDetailsIpv4BgpStatusEnum)
+	for k, v := range mappingCrossConnectMappingDetailsIpv4BgpStatusEnum {
+		mappingCrossConnectMappingDetailsIpv4BgpStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCrossConnectMappingDetailsIpv4BgpStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CrossConnectMappingDetailsIpv6BgpStatusEnum Enum with underlying type: string
 type CrossConnectMappingDetailsIpv6BgpStatusEnum string
 
@@ -169,4 +180,15 @@ func GetCrossConnectMappingDetailsIpv6BgpStatusEnumStringValues() []string {
 		"UP",
 		"DOWN",
 	}
+}
+
+// GetMappingCrossConnectMappingDetailsIpv6BgpStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCrossConnectMappingDetailsIpv6BgpStatusEnum(val string) (CrossConnectMappingDetailsIpv6BgpStatusEnum, bool) {
+	mappingCrossConnectMappingDetailsIpv6BgpStatusEnumIgnoreCase := make(map[string]CrossConnectMappingDetailsIpv6BgpStatusEnum)
+	for k, v := range mappingCrossConnectMappingDetailsIpv6BgpStatusEnum {
+		mappingCrossConnectMappingDetailsIpv6BgpStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCrossConnectMappingDetailsIpv6BgpStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

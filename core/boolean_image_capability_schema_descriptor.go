@@ -44,7 +44,7 @@ func (m BooleanImageCapabilitySchemaDescriptor) String() string {
 func (m BooleanImageCapabilitySchemaDescriptor) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingImageCapabilitySchemaDescriptorSourceEnum[string(m.Source)]; !ok && m.Source != "" {
+	if _, ok := GetMappingImageCapabilitySchemaDescriptorSourceEnum(string(m.Source)); !ok && m.Source != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Source: %s. Supported values are: %s.", m.Source, strings.Join(GetImageCapabilitySchemaDescriptorSourceEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

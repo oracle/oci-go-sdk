@@ -37,7 +37,7 @@ func (m UpdateVolumeAttachmentDetails) String() string {
 func (m UpdateVolumeAttachmentDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnum[string(m.IscsiLoginState)]; !ok && m.IscsiLoginState != "" {
+	if _, ok := GetMappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnum(string(m.IscsiLoginState)); !ok && m.IscsiLoginState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IscsiLoginState: %s. Supported values are: %s.", m.IscsiLoginState, strings.Join(GetUpdateVolumeAttachmentDetailsIscsiLoginStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -90,4 +90,15 @@ func GetUpdateVolumeAttachmentDetailsIscsiLoginStateEnumStringValues() []string 
 		"LOGOUT_SUCCEEDED",
 		"LOGOUT_FAILED",
 	}
+}
+
+// GetMappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnum(val string) (UpdateVolumeAttachmentDetailsIscsiLoginStateEnum, bool) {
+	mappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnumIgnoreCase := make(map[string]UpdateVolumeAttachmentDetailsIscsiLoginStateEnum)
+	for k, v := range mappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnum {
+		mappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

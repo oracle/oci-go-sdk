@@ -80,13 +80,13 @@ func (request ListWorkspacesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListWorkspacesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingWorkspaceLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingWorkspaceLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetWorkspaceLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListWorkspacesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListWorkspacesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListWorkspacesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListWorkspacesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListWorkspacesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListWorkspacesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -152,6 +152,17 @@ func GetListWorkspacesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListWorkspacesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWorkspacesSortOrderEnum(val string) (ListWorkspacesSortOrderEnum, bool) {
+	mappingListWorkspacesSortOrderEnumIgnoreCase := make(map[string]ListWorkspacesSortOrderEnum)
+	for k, v := range mappingListWorkspacesSortOrderEnum {
+		mappingListWorkspacesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWorkspacesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListWorkspacesSortByEnum Enum with underlying type: string
 type ListWorkspacesSortByEnum string
 
@@ -181,4 +192,15 @@ func GetListWorkspacesSortByEnumStringValues() []string {
 		"TIME_CREATED",
 		"DISPLAY_NAME",
 	}
+}
+
+// GetMappingListWorkspacesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWorkspacesSortByEnum(val string) (ListWorkspacesSortByEnum, bool) {
+	mappingListWorkspacesSortByEnumIgnoreCase := make(map[string]ListWorkspacesSortByEnum)
+	for k, v := range mappingListWorkspacesSortByEnum {
+		mappingListWorkspacesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWorkspacesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

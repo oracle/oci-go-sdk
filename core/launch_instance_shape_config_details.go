@@ -52,7 +52,7 @@ func (m LaunchInstanceShapeConfigDetails) String() string {
 func (m LaunchInstanceShapeConfigDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum[string(m.BaselineOcpuUtilization)]; !ok && m.BaselineOcpuUtilization != "" {
+	if _, ok := GetMappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum(string(m.BaselineOcpuUtilization)); !ok && m.BaselineOcpuUtilization != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BaselineOcpuUtilization: %s. Supported values are: %s.", m.BaselineOcpuUtilization, strings.Join(GetLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -93,4 +93,15 @@ func GetLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumStringValues(
 		"BASELINE_1_2",
 		"BASELINE_1_1",
 	}
+}
+
+// GetMappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum(val string) (LaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum, bool) {
+	mappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumIgnoreCase := make(map[string]LaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum)
+	for k, v := range mappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum {
+		mappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

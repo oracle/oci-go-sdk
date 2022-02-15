@@ -75,14 +75,14 @@ func (m Publication) String() string {
 // Not recommended for calling this function directly
 func (m Publication) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListingTypeEnum[string(m.ListingType)]; !ok && m.ListingType != "" {
+	if _, ok := GetMappingListingTypeEnum(string(m.ListingType)); !ok && m.ListingType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ListingType: %s. Supported values are: %s.", m.ListingType, strings.Join(GetListingTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingPublicationLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingPublicationLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetPublicationLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPackageTypeEnumEnum[string(m.PackageType)]; !ok && m.PackageType != "" {
+	if _, ok := GetMappingPackageTypeEnumEnum(string(m.PackageType)); !ok && m.PackageType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PackageType: %s. Supported values are: %s.", m.PackageType, strings.Join(GetPackageTypeEnumEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -129,4 +129,15 @@ func GetPublicationLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingPublicationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPublicationLifecycleStateEnum(val string) (PublicationLifecycleStateEnum, bool) {
+	mappingPublicationLifecycleStateEnumIgnoreCase := make(map[string]PublicationLifecycleStateEnum)
+	for k, v := range mappingPublicationLifecycleStateEnum {
+		mappingPublicationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPublicationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

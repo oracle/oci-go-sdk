@@ -69,7 +69,7 @@ func (request ListWorkRequestErrorsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListWorkRequestErrorsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListWorkRequestErrorsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListWorkRequestErrorsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListWorkRequestErrorsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -135,4 +135,15 @@ func GetListWorkRequestErrorsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListWorkRequestErrorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWorkRequestErrorsSortOrderEnum(val string) (ListWorkRequestErrorsSortOrderEnum, bool) {
+	mappingListWorkRequestErrorsSortOrderEnumIgnoreCase := make(map[string]ListWorkRequestErrorsSortOrderEnum)
+	for k, v := range mappingListWorkRequestErrorsSortOrderEnum {
+		mappingListWorkRequestErrorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWorkRequestErrorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

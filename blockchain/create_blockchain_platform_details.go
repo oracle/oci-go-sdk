@@ -72,10 +72,10 @@ func (m CreateBlockchainPlatformDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateBlockchainPlatformDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBlockchainPlatformPlatformRoleEnum[string(m.PlatformRole)]; !ok && m.PlatformRole != "" {
+	if _, ok := GetMappingBlockchainPlatformPlatformRoleEnum(string(m.PlatformRole)); !ok && m.PlatformRole != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformRole: %s. Supported values are: %s.", m.PlatformRole, strings.Join(GetBlockchainPlatformPlatformRoleEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBlockchainPlatformComputeShapeEnum[string(m.ComputeShape)]; !ok && m.ComputeShape != "" {
+	if _, ok := GetMappingBlockchainPlatformComputeShapeEnum(string(m.ComputeShape)); !ok && m.ComputeShape != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ComputeShape: %s. Supported values are: %s.", m.ComputeShape, strings.Join(GetBlockchainPlatformComputeShapeEnumStringValues(), ",")))
 	}
 

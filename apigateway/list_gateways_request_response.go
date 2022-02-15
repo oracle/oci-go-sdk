@@ -86,13 +86,13 @@ func (request ListGatewaysRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListGatewaysRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGatewayLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingGatewayLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetGatewayLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListGatewaysSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListGatewaysSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListGatewaysSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListGatewaysSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListGatewaysSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListGatewaysSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -168,6 +168,17 @@ func GetListGatewaysSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListGatewaysSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListGatewaysSortOrderEnum(val string) (ListGatewaysSortOrderEnum, bool) {
+	mappingListGatewaysSortOrderEnumIgnoreCase := make(map[string]ListGatewaysSortOrderEnum)
+	for k, v := range mappingListGatewaysSortOrderEnum {
+		mappingListGatewaysSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListGatewaysSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListGatewaysSortByEnum Enum with underlying type: string
 type ListGatewaysSortByEnum string
 
@@ -197,4 +208,15 @@ func GetListGatewaysSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListGatewaysSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListGatewaysSortByEnum(val string) (ListGatewaysSortByEnum, bool) {
+	mappingListGatewaysSortByEnumIgnoreCase := make(map[string]ListGatewaysSortByEnum)
+	for k, v := range mappingListGatewaysSortByEnum {
+		mappingListGatewaysSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListGatewaysSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

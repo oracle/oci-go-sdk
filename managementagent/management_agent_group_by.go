@@ -9,6 +9,10 @@
 
 package managementagent
 
+import (
+	"strings"
+)
+
 // ManagementAgentGroupByEnum Enum with underlying type: string
 type ManagementAgentGroupByEnum string
 
@@ -41,4 +45,15 @@ func GetManagementAgentGroupByEnumStringValues() []string {
 		"platformType",
 		"version",
 	}
+}
+
+// GetMappingManagementAgentGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingManagementAgentGroupByEnum(val string) (ManagementAgentGroupByEnum, bool) {
+	mappingManagementAgentGroupByEnumIgnoreCase := make(map[string]ManagementAgentGroupByEnum)
+	for k, v := range mappingManagementAgentGroupByEnum {
+		mappingManagementAgentGroupByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingManagementAgentGroupByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

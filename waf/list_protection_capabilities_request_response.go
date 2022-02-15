@@ -92,13 +92,13 @@ func (request ListProtectionCapabilitiesRequest) RetryPolicy() *common.RetryPoli
 // Not recommended for calling this function directly
 func (request ListProtectionCapabilitiesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingProtectionCapabilitySummaryTypeEnum[string(request.Type)]; !ok && request.Type != "" {
+	if _, ok := GetMappingProtectionCapabilitySummaryTypeEnum(string(request.Type)); !ok && request.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", request.Type, strings.Join(GetProtectionCapabilitySummaryTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListProtectionCapabilitiesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListProtectionCapabilitiesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListProtectionCapabilitiesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListProtectionCapabilitiesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListProtectionCapabilitiesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListProtectionCapabilitiesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -166,6 +166,17 @@ func GetListProtectionCapabilitiesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListProtectionCapabilitiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProtectionCapabilitiesSortOrderEnum(val string) (ListProtectionCapabilitiesSortOrderEnum, bool) {
+	mappingListProtectionCapabilitiesSortOrderEnumIgnoreCase := make(map[string]ListProtectionCapabilitiesSortOrderEnum)
+	for k, v := range mappingListProtectionCapabilitiesSortOrderEnum {
+		mappingListProtectionCapabilitiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProtectionCapabilitiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListProtectionCapabilitiesSortByEnum Enum with underlying type: string
 type ListProtectionCapabilitiesSortByEnum string
 
@@ -198,4 +209,15 @@ func GetListProtectionCapabilitiesSortByEnumStringValues() []string {
 		"type",
 		"displayName",
 	}
+}
+
+// GetMappingListProtectionCapabilitiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProtectionCapabilitiesSortByEnum(val string) (ListProtectionCapabilitiesSortByEnum, bool) {
+	mappingListProtectionCapabilitiesSortByEnumIgnoreCase := make(map[string]ListProtectionCapabilitiesSortByEnum)
+	for k, v := range mappingListProtectionCapabilitiesSortByEnum {
+		mappingListProtectionCapabilitiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProtectionCapabilitiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

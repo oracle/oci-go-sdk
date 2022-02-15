@@ -152,14 +152,14 @@ func (m SensitiveTypePattern) String() string {
 // Not recommended for calling this function directly
 func (m SensitiveTypePattern) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSensitiveTypePatternSearchTypeEnum[string(m.SearchType)]; !ok && m.SearchType != "" {
+	if _, ok := GetMappingSensitiveTypePatternSearchTypeEnum(string(m.SearchType)); !ok && m.SearchType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SearchType: %s. Supported values are: %s.", m.SearchType, strings.Join(GetSensitiveTypePatternSearchTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDiscoveryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDiscoveryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDiscoveryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSensitiveTypeSourceEnum[string(m.Source)]; !ok && m.Source != "" {
+	if _, ok := GetMappingSensitiveTypeSourceEnum(string(m.Source)); !ok && m.Source != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Source: %s. Supported values are: %s.", m.Source, strings.Join(GetSensitiveTypeSourceEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -211,4 +211,15 @@ func GetSensitiveTypePatternSearchTypeEnumStringValues() []string {
 		"OR",
 		"AND",
 	}
+}
+
+// GetMappingSensitiveTypePatternSearchTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSensitiveTypePatternSearchTypeEnum(val string) (SensitiveTypePatternSearchTypeEnum, bool) {
+	mappingSensitiveTypePatternSearchTypeEnumIgnoreCase := make(map[string]SensitiveTypePatternSearchTypeEnum)
+	for k, v := range mappingSensitiveTypePatternSearchTypeEnum {
+		mappingSensitiveTypePatternSearchTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSensitiveTypePatternSearchTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

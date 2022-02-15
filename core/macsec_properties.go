@@ -40,11 +40,11 @@ func (m MacsecProperties) String() string {
 // Not recommended for calling this function directly
 func (m MacsecProperties) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingMacsecStateEnum[string(m.State)]; !ok && m.State != "" {
+	if _, ok := GetMappingMacsecStateEnum(string(m.State)); !ok && m.State != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for State: %s. Supported values are: %s.", m.State, strings.Join(GetMacsecStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingMacsecEncryptionCipherEnum[string(m.EncryptionCipher)]; !ok && m.EncryptionCipher != "" {
+	if _, ok := GetMappingMacsecEncryptionCipherEnum(string(m.EncryptionCipher)); !ok && m.EncryptionCipher != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EncryptionCipher: %s. Supported values are: %s.", m.EncryptionCipher, strings.Join(GetMacsecEncryptionCipherEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

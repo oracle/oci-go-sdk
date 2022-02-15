@@ -34,7 +34,7 @@ func (m DataVisibility) String() string {
 // Not recommended for calling this function directly
 func (m DataVisibility) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDataVisibilityTlpNameEnum[string(m.TlpName)]; !ok && m.TlpName != "" {
+	if _, ok := GetMappingDataVisibilityTlpNameEnum(string(m.TlpName)); !ok && m.TlpName != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TlpName: %s. Supported values are: %s.", m.TlpName, strings.Join(GetDataVisibilityTlpNameEnumStringValues(), ",")))
 	}
 
@@ -82,4 +82,15 @@ func GetDataVisibilityTlpNameEnumStringValues() []string {
 		"TLP_AMBER",
 		"TLP_RED",
 	}
+}
+
+// GetMappingDataVisibilityTlpNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataVisibilityTlpNameEnum(val string) (DataVisibilityTlpNameEnum, bool) {
+	mappingDataVisibilityTlpNameEnumIgnoreCase := make(map[string]DataVisibilityTlpNameEnum)
+	for k, v := range mappingDataVisibilityTlpNameEnum {
+		mappingDataVisibilityTlpNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataVisibilityTlpNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -79,10 +79,10 @@ func (request ListNetworkSecurityGroupVnicsRequest) RetryPolicy() *common.RetryP
 // Not recommended for calling this function directly
 func (request ListNetworkSecurityGroupVnicsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListNetworkSecurityGroupVnicsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListNetworkSecurityGroupVnicsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListNetworkSecurityGroupVnicsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListNetworkSecurityGroupVnicsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListNetworkSecurityGroupVnicsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListNetworkSecurityGroupVnicsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -147,6 +147,17 @@ func GetListNetworkSecurityGroupVnicsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListNetworkSecurityGroupVnicsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNetworkSecurityGroupVnicsSortByEnum(val string) (ListNetworkSecurityGroupVnicsSortByEnum, bool) {
+	mappingListNetworkSecurityGroupVnicsSortByEnumIgnoreCase := make(map[string]ListNetworkSecurityGroupVnicsSortByEnum)
+	for k, v := range mappingListNetworkSecurityGroupVnicsSortByEnum {
+		mappingListNetworkSecurityGroupVnicsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNetworkSecurityGroupVnicsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListNetworkSecurityGroupVnicsSortOrderEnum Enum with underlying type: string
 type ListNetworkSecurityGroupVnicsSortOrderEnum string
 
@@ -176,4 +187,15 @@ func GetListNetworkSecurityGroupVnicsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListNetworkSecurityGroupVnicsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNetworkSecurityGroupVnicsSortOrderEnum(val string) (ListNetworkSecurityGroupVnicsSortOrderEnum, bool) {
+	mappingListNetworkSecurityGroupVnicsSortOrderEnumIgnoreCase := make(map[string]ListNetworkSecurityGroupVnicsSortOrderEnum)
+	for k, v := range mappingListNetworkSecurityGroupVnicsSortOrderEnum {
+		mappingListNetworkSecurityGroupVnicsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNetworkSecurityGroupVnicsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

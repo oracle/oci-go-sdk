@@ -130,3 +130,14 @@ func GetDataEntityDetailsModelTypeEnumStringValues() []string {
 		"DATA_STORE_ENTITY",
 	}
 }
+
+// GetMappingDataEntityDetailsModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataEntityDetailsModelTypeEnum(val string) (DataEntityDetailsModelTypeEnum, bool) {
+	mappingDataEntityDetailsModelTypeEnumIgnoreCase := make(map[string]DataEntityDetailsModelTypeEnum)
+	for k, v := range mappingDataEntityDetailsModelTypeEnum {
+		mappingDataEntityDetailsModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataEntityDetailsModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

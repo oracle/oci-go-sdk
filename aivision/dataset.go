@@ -109,3 +109,14 @@ func GetDatasetDatasetTypeEnumStringValues() []string {
 		"OBJECT_STORAGE",
 	}
 }
+
+// GetMappingDatasetDatasetTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatasetDatasetTypeEnum(val string) (DatasetDatasetTypeEnum, bool) {
+	mappingDatasetDatasetTypeEnumIgnoreCase := make(map[string]DatasetDatasetTypeEnum)
+	for k, v := range mappingDatasetDatasetTypeEnum {
+		mappingDatasetDatasetTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatasetDatasetTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

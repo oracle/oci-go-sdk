@@ -37,7 +37,7 @@ func (m PdbStatusDetails) String() string {
 func (m PdbStatusDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDatabaseStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingDatabaseStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetDatabaseStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

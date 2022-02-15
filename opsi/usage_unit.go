@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // UsageUnitEnum Enum with underlying type: string
 type UsageUnitEnum string
 
@@ -49,4 +53,15 @@ func GetUsageUnitEnumStringValues() []string {
 		"IOPS",
 		"PERCENT",
 	}
+}
+
+// GetMappingUsageUnitEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUsageUnitEnum(val string) (UsageUnitEnum, bool) {
+	mappingUsageUnitEnumIgnoreCase := make(map[string]UsageUnitEnum)
+	for k, v := range mappingUsageUnitEnum {
+		mappingUsageUnitEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUsageUnitEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

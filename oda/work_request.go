@@ -65,10 +65,10 @@ func (m WorkRequest) String() string {
 // Not recommended for calling this function directly
 func (m WorkRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingWorkRequestRequestActionEnum[string(m.RequestAction)]; !ok && m.RequestAction != "" {
+	if _, ok := GetMappingWorkRequestRequestActionEnum(string(m.RequestAction)); !ok && m.RequestAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RequestAction: %s. Supported values are: %s.", m.RequestAction, strings.Join(GetWorkRequestRequestActionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingWorkRequestStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingWorkRequestStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetWorkRequestStatusEnumStringValues(), ",")))
 	}
 
@@ -139,6 +139,17 @@ func GetWorkRequestRequestActionEnumStringValues() []string {
 	}
 }
 
+// GetMappingWorkRequestRequestActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestRequestActionEnum(val string) (WorkRequestRequestActionEnum, bool) {
+	mappingWorkRequestRequestActionEnumIgnoreCase := make(map[string]WorkRequestRequestActionEnum)
+	for k, v := range mappingWorkRequestRequestActionEnum {
+		mappingWorkRequestRequestActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestRequestActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // WorkRequestStatusEnum Enum with underlying type: string
 type WorkRequestStatusEnum string
 
@@ -180,4 +191,15 @@ func GetWorkRequestStatusEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingWorkRequestStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestStatusEnum(val string) (WorkRequestStatusEnum, bool) {
+	mappingWorkRequestStatusEnumIgnoreCase := make(map[string]WorkRequestStatusEnum)
+	for k, v := range mappingWorkRequestStatusEnum {
+		mappingWorkRequestStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

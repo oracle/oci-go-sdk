@@ -168,3 +168,14 @@ func GetUniqueKeyModelTypeEnumStringValues() []string {
 		"UNIQUE_KEY",
 	}
 }
+
+// GetMappingUniqueKeyModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUniqueKeyModelTypeEnum(val string) (UniqueKeyModelTypeEnum, bool) {
+	mappingUniqueKeyModelTypeEnumIgnoreCase := make(map[string]UniqueKeyModelTypeEnum)
+	for k, v := range mappingUniqueKeyModelTypeEnum {
+		mappingUniqueKeyModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUniqueKeyModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

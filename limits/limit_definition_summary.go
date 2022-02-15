@@ -57,7 +57,7 @@ func (m LimitDefinitionSummary) String() string {
 func (m LimitDefinitionSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLimitDefinitionSummaryScopeTypeEnum[string(m.ScopeType)]; !ok && m.ScopeType != "" {
+	if _, ok := GetMappingLimitDefinitionSummaryScopeTypeEnum(string(m.ScopeType)); !ok && m.ScopeType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ScopeType: %s. Supported values are: %s.", m.ScopeType, strings.Join(GetLimitDefinitionSummaryScopeTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -98,4 +98,15 @@ func GetLimitDefinitionSummaryScopeTypeEnumStringValues() []string {
 		"REGION",
 		"AD",
 	}
+}
+
+// GetMappingLimitDefinitionSummaryScopeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLimitDefinitionSummaryScopeTypeEnum(val string) (LimitDefinitionSummaryScopeTypeEnum, bool) {
+	mappingLimitDefinitionSummaryScopeTypeEnumIgnoreCase := make(map[string]LimitDefinitionSummaryScopeTypeEnum)
+	for k, v := range mappingLimitDefinitionSummaryScopeTypeEnum {
+		mappingLimitDefinitionSummaryScopeTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLimitDefinitionSummaryScopeTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

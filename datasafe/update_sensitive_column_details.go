@@ -64,10 +64,10 @@ func (m UpdateSensitiveColumnDetails) String() string {
 func (m UpdateSensitiveColumnDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateSensitiveColumnDetailsStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingUpdateSensitiveColumnDetailsStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetUpdateSensitiveColumnDetailsStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUpdateSensitiveColumnDetailsRelationTypeEnum[string(m.RelationType)]; !ok && m.RelationType != "" {
+	if _, ok := GetMappingUpdateSensitiveColumnDetailsRelationTypeEnum(string(m.RelationType)); !ok && m.RelationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RelationType: %s. Supported values are: %s.", m.RelationType, strings.Join(GetUpdateSensitiveColumnDetailsRelationTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -107,6 +107,17 @@ func GetUpdateSensitiveColumnDetailsStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingUpdateSensitiveColumnDetailsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateSensitiveColumnDetailsStatusEnum(val string) (UpdateSensitiveColumnDetailsStatusEnum, bool) {
+	mappingUpdateSensitiveColumnDetailsStatusEnumIgnoreCase := make(map[string]UpdateSensitiveColumnDetailsStatusEnum)
+	for k, v := range mappingUpdateSensitiveColumnDetailsStatusEnum {
+		mappingUpdateSensitiveColumnDetailsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateSensitiveColumnDetailsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UpdateSensitiveColumnDetailsRelationTypeEnum Enum with underlying type: string
 type UpdateSensitiveColumnDetailsRelationTypeEnum string
 
@@ -139,4 +150,15 @@ func GetUpdateSensitiveColumnDetailsRelationTypeEnumStringValues() []string {
 		"APP_DEFINED",
 		"DB_DEFINED",
 	}
+}
+
+// GetMappingUpdateSensitiveColumnDetailsRelationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateSensitiveColumnDetailsRelationTypeEnum(val string) (UpdateSensitiveColumnDetailsRelationTypeEnum, bool) {
+	mappingUpdateSensitiveColumnDetailsRelationTypeEnumIgnoreCase := make(map[string]UpdateSensitiveColumnDetailsRelationTypeEnum)
+	for k, v := range mappingUpdateSensitiveColumnDetailsRelationTypeEnum {
+		mappingUpdateSensitiveColumnDetailsRelationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateSensitiveColumnDetailsRelationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

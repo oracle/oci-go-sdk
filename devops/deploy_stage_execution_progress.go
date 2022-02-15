@@ -162,7 +162,7 @@ func (m deploystageexecutionprogress) String() string {
 func (m deploystageexecutionprogress) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDeployStageExecutionProgressStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingDeployStageExecutionProgressStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetDeployStageExecutionProgressStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -221,4 +221,15 @@ func GetDeployStageExecutionProgressStatusEnumStringValues() []string {
 		"ROLLBACK_SUCCEEDED",
 		"ROLLBACK_FAILED",
 	}
+}
+
+// GetMappingDeployStageExecutionProgressStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeployStageExecutionProgressStatusEnum(val string) (DeployStageExecutionProgressStatusEnum, bool) {
+	mappingDeployStageExecutionProgressStatusEnumIgnoreCase := make(map[string]DeployStageExecutionProgressStatusEnum)
+	for k, v := range mappingDeployStageExecutionProgressStatusEnum {
+		mappingDeployStageExecutionProgressStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeployStageExecutionProgressStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

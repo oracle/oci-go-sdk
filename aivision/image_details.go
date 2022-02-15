@@ -109,3 +109,14 @@ func GetImageDetailsSourceEnumStringValues() []string {
 		"OBJECT_STORAGE",
 	}
 }
+
+// GetMappingImageDetailsSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingImageDetailsSourceEnum(val string) (ImageDetailsSourceEnum, bool) {
+	mappingImageDetailsSourceEnumIgnoreCase := make(map[string]ImageDetailsSourceEnum)
+	for k, v := range mappingImageDetailsSourceEnum {
+		mappingImageDetailsSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingImageDetailsSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

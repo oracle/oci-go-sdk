@@ -9,6 +9,10 @@
 
 package goldengate
 
+import (
+	"strings"
+)
+
 // DeploymentUpgradeLifecycleStateEnum Enum with underlying type: string
 type DeploymentUpgradeLifecycleStateEnum string
 
@@ -53,4 +57,15 @@ func GetDeploymentUpgradeLifecycleStateEnumStringValues() []string {
 		"CANCELED",
 		"NEEDS_ATTENTION",
 	}
+}
+
+// GetMappingDeploymentUpgradeLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeploymentUpgradeLifecycleStateEnum(val string) (DeploymentUpgradeLifecycleStateEnum, bool) {
+	mappingDeploymentUpgradeLifecycleStateEnumIgnoreCase := make(map[string]DeploymentUpgradeLifecycleStateEnum)
+	for k, v := range mappingDeploymentUpgradeLifecycleStateEnum {
+		mappingDeploymentUpgradeLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeploymentUpgradeLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

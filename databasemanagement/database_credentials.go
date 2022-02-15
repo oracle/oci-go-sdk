@@ -43,7 +43,7 @@ func (m DatabaseCredentials) String() string {
 func (m DatabaseCredentials) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDatabaseCredentialsRoleEnum[string(m.Role)]; !ok && m.Role != "" {
+	if _, ok := GetMappingDatabaseCredentialsRoleEnum(string(m.Role)); !ok && m.Role != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Role: %s. Supported values are: %s.", m.Role, strings.Join(GetDatabaseCredentialsRoleEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -81,4 +81,15 @@ func GetDatabaseCredentialsRoleEnumStringValues() []string {
 		"NORMAL",
 		"SYSDBA",
 	}
+}
+
+// GetMappingDatabaseCredentialsRoleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseCredentialsRoleEnum(val string) (DatabaseCredentialsRoleEnum, bool) {
+	mappingDatabaseCredentialsRoleEnumIgnoreCase := make(map[string]DatabaseCredentialsRoleEnum)
+	for k, v := range mappingDatabaseCredentialsRoleEnum {
+		mappingDatabaseCredentialsRoleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseCredentialsRoleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

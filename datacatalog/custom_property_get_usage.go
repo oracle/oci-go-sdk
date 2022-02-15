@@ -72,7 +72,7 @@ func (m CustomPropertyGetUsage) String() string {
 func (m CustomPropertyGetUsage) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCustomPropertyDataTypeEnum[string(m.DataType)]; !ok && m.DataType != "" {
+	if _, ok := GetMappingCustomPropertyDataTypeEnum(string(m.DataType)); !ok && m.DataType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataType: %s. Supported values are: %s.", m.DataType, strings.Join(GetCustomPropertyDataTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

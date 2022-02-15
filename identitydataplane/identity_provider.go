@@ -58,7 +58,7 @@ func (m IdentityProvider) String() string {
 // Not recommended for calling this function directly
 func (m IdentityProvider) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingIdentityProviderProtocolEnum[string(m.Protocol)]; !ok && m.Protocol != "" {
+	if _, ok := GetMappingIdentityProviderProtocolEnum(string(m.Protocol)); !ok && m.Protocol != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Protocol: %s. Supported values are: %s.", m.Protocol, strings.Join(GetIdentityProviderProtocolEnumStringValues(), ",")))
 	}
 
@@ -94,4 +94,15 @@ func GetIdentityProviderProtocolEnumStringValues() []string {
 	return []string{
 		"SAML2",
 	}
+}
+
+// GetMappingIdentityProviderProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingIdentityProviderProtocolEnum(val string) (IdentityProviderProtocolEnum, bool) {
+	mappingIdentityProviderProtocolEnumIgnoreCase := make(map[string]IdentityProviderProtocolEnum)
+	for k, v := range mappingIdentityProviderProtocolEnum {
+		mappingIdentityProviderProtocolEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingIdentityProviderProtocolEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

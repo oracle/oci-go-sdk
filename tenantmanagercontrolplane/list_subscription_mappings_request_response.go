@@ -84,13 +84,13 @@ func (request ListSubscriptionMappingsRequest) RetryPolicy() *common.RetryPolicy
 // Not recommended for calling this function directly
 func (request ListSubscriptionMappingsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSubscriptionMappingLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingSubscriptionMappingLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetSubscriptionMappingLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSubscriptionMappingsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSubscriptionMappingsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSubscriptionMappingsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSubscriptionMappingsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSubscriptionMappingsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSubscriptionMappingsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -158,6 +158,17 @@ func GetListSubscriptionMappingsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSubscriptionMappingsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSubscriptionMappingsSortOrderEnum(val string) (ListSubscriptionMappingsSortOrderEnum, bool) {
+	mappingListSubscriptionMappingsSortOrderEnumIgnoreCase := make(map[string]ListSubscriptionMappingsSortOrderEnum)
+	for k, v := range mappingListSubscriptionMappingsSortOrderEnum {
+		mappingListSubscriptionMappingsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSubscriptionMappingsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSubscriptionMappingsSortByEnum Enum with underlying type: string
 type ListSubscriptionMappingsSortByEnum string
 
@@ -187,4 +198,15 @@ func GetListSubscriptionMappingsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListSubscriptionMappingsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSubscriptionMappingsSortByEnum(val string) (ListSubscriptionMappingsSortByEnum, bool) {
+	mappingListSubscriptionMappingsSortByEnumIgnoreCase := make(map[string]ListSubscriptionMappingsSortByEnum)
+	for k, v := range mappingListSubscriptionMappingsSortByEnum {
+		mappingListSubscriptionMappingsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSubscriptionMappingsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

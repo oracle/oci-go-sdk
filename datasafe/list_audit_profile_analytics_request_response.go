@@ -79,11 +79,11 @@ func (request ListAuditProfileAnalyticsRequest) RetryPolicy() *common.RetryPolic
 // Not recommended for calling this function directly
 func (request ListAuditProfileAnalyticsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAuditProfileAnalyticsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListAuditProfileAnalyticsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListAuditProfileAnalyticsAccessLevelEnumStringValues(), ",")))
 	}
 	for _, val := range request.GroupBy {
-		if _, ok := mappingListAuditProfileAnalyticsGroupByEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListAuditProfileAnalyticsGroupByEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for GroupBy: %s. Supported values are: %s.", val, strings.Join(GetListAuditProfileAnalyticsGroupByEnumStringValues(), ",")))
 		}
 	}
@@ -155,6 +155,17 @@ func GetListAuditProfileAnalyticsAccessLevelEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAuditProfileAnalyticsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuditProfileAnalyticsAccessLevelEnum(val string) (ListAuditProfileAnalyticsAccessLevelEnum, bool) {
+	mappingListAuditProfileAnalyticsAccessLevelEnumIgnoreCase := make(map[string]ListAuditProfileAnalyticsAccessLevelEnum)
+	for k, v := range mappingListAuditProfileAnalyticsAccessLevelEnum {
+		mappingListAuditProfileAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuditProfileAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAuditProfileAnalyticsGroupByEnum Enum with underlying type: string
 type ListAuditProfileAnalyticsGroupByEnum string
 
@@ -181,4 +192,15 @@ func GetListAuditProfileAnalyticsGroupByEnumStringValues() []string {
 	return []string{
 		"isPaidUsageEnabled",
 	}
+}
+
+// GetMappingListAuditProfileAnalyticsGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuditProfileAnalyticsGroupByEnum(val string) (ListAuditProfileAnalyticsGroupByEnum, bool) {
+	mappingListAuditProfileAnalyticsGroupByEnumIgnoreCase := make(map[string]ListAuditProfileAnalyticsGroupByEnum)
+	for k, v := range mappingListAuditProfileAnalyticsGroupByEnum {
+		mappingListAuditProfileAnalyticsGroupByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuditProfileAnalyticsGroupByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

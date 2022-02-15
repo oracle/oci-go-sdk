@@ -89,7 +89,7 @@ func (m NetworkSecurityGroup) String() string {
 // Not recommended for calling this function directly
 func (m NetworkSecurityGroup) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingNetworkSecurityGroupLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingNetworkSecurityGroupLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetNetworkSecurityGroupLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -134,4 +134,15 @@ func GetNetworkSecurityGroupLifecycleStateEnumStringValues() []string {
 		"TERMINATING",
 		"TERMINATED",
 	}
+}
+
+// GetMappingNetworkSecurityGroupLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingNetworkSecurityGroupLifecycleStateEnum(val string) (NetworkSecurityGroupLifecycleStateEnum, bool) {
+	mappingNetworkSecurityGroupLifecycleStateEnumIgnoreCase := make(map[string]NetworkSecurityGroupLifecycleStateEnum)
+	for k, v := range mappingNetworkSecurityGroupLifecycleStateEnum {
+		mappingNetworkSecurityGroupLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingNetworkSecurityGroupLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

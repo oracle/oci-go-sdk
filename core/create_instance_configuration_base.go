@@ -159,3 +159,14 @@ func GetCreateInstanceConfigurationBaseSourceEnumStringValues() []string {
 		"INSTANCE",
 	}
 }
+
+// GetMappingCreateInstanceConfigurationBaseSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateInstanceConfigurationBaseSourceEnum(val string) (CreateInstanceConfigurationBaseSourceEnum, bool) {
+	mappingCreateInstanceConfigurationBaseSourceEnumIgnoreCase := make(map[string]CreateInstanceConfigurationBaseSourceEnum)
+	for k, v := range mappingCreateInstanceConfigurationBaseSourceEnum {
+		mappingCreateInstanceConfigurationBaseSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateInstanceConfigurationBaseSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

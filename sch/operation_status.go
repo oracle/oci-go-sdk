@@ -11,6 +11,10 @@
 
 package sch
 
+import (
+	"strings"
+)
+
 // OperationStatusEnum Enum with underlying type: string
 type OperationStatusEnum string
 
@@ -52,4 +56,15 @@ func GetOperationStatusEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingOperationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOperationStatusEnum(val string) (OperationStatusEnum, bool) {
+	mappingOperationStatusEnumIgnoreCase := make(map[string]OperationStatusEnum)
+	for k, v := range mappingOperationStatusEnum {
+		mappingOperationStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOperationStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

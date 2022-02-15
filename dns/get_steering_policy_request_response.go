@@ -77,7 +77,7 @@ func (request GetSteeringPolicyRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetSteeringPolicyRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetSteeringPolicyScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingGetSteeringPolicyScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetGetSteeringPolicyScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -149,4 +149,15 @@ func GetGetSteeringPolicyScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingGetSteeringPolicyScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetSteeringPolicyScopeEnum(val string) (GetSteeringPolicyScopeEnum, bool) {
+	mappingGetSteeringPolicyScopeEnumIgnoreCase := make(map[string]GetSteeringPolicyScopeEnum)
+	for k, v := range mappingGetSteeringPolicyScopeEnum {
+		mappingGetSteeringPolicyScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetSteeringPolicyScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

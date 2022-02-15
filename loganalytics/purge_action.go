@@ -50,7 +50,7 @@ func (m PurgeAction) String() string {
 func (m PurgeAction) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingStorageDataTypeEnum[string(m.DataType)]; !ok && m.DataType != "" {
+	if _, ok := GetMappingStorageDataTypeEnum(string(m.DataType)); !ok && m.DataType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataType: %s. Supported values are: %s.", m.DataType, strings.Join(GetStorageDataTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

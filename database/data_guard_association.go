@@ -84,20 +84,20 @@ func (m DataGuardAssociation) String() string {
 // Not recommended for calling this function directly
 func (m DataGuardAssociation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDataGuardAssociationRoleEnum[string(m.Role)]; !ok && m.Role != "" {
+	if _, ok := GetMappingDataGuardAssociationRoleEnum(string(m.Role)); !ok && m.Role != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Role: %s. Supported values are: %s.", m.Role, strings.Join(GetDataGuardAssociationRoleEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDataGuardAssociationLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDataGuardAssociationLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDataGuardAssociationLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDataGuardAssociationPeerRoleEnum[string(m.PeerRole)]; !ok && m.PeerRole != "" {
+	if _, ok := GetMappingDataGuardAssociationPeerRoleEnum(string(m.PeerRole)); !ok && m.PeerRole != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PeerRole: %s. Supported values are: %s.", m.PeerRole, strings.Join(GetDataGuardAssociationPeerRoleEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDataGuardAssociationProtectionModeEnum[string(m.ProtectionMode)]; !ok && m.ProtectionMode != "" {
+	if _, ok := GetMappingDataGuardAssociationProtectionModeEnum(string(m.ProtectionMode)); !ok && m.ProtectionMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProtectionMode: %s. Supported values are: %s.", m.ProtectionMode, strings.Join(GetDataGuardAssociationProtectionModeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDataGuardAssociationTransportTypeEnum[string(m.TransportType)]; !ok && m.TransportType != "" {
+	if _, ok := GetMappingDataGuardAssociationTransportTypeEnum(string(m.TransportType)); !ok && m.TransportType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TransportType: %s. Supported values are: %s.", m.TransportType, strings.Join(GetDataGuardAssociationTransportTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -138,6 +138,17 @@ func GetDataGuardAssociationRoleEnumStringValues() []string {
 		"STANDBY",
 		"DISABLED_STANDBY",
 	}
+}
+
+// GetMappingDataGuardAssociationRoleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataGuardAssociationRoleEnum(val string) (DataGuardAssociationRoleEnum, bool) {
+	mappingDataGuardAssociationRoleEnumIgnoreCase := make(map[string]DataGuardAssociationRoleEnum)
+	for k, v := range mappingDataGuardAssociationRoleEnum {
+		mappingDataGuardAssociationRoleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataGuardAssociationRoleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // DataGuardAssociationLifecycleStateEnum Enum with underlying type: string
@@ -183,6 +194,17 @@ func GetDataGuardAssociationLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingDataGuardAssociationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataGuardAssociationLifecycleStateEnum(val string) (DataGuardAssociationLifecycleStateEnum, bool) {
+	mappingDataGuardAssociationLifecycleStateEnumIgnoreCase := make(map[string]DataGuardAssociationLifecycleStateEnum)
+	for k, v := range mappingDataGuardAssociationLifecycleStateEnum {
+		mappingDataGuardAssociationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataGuardAssociationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DataGuardAssociationPeerRoleEnum Enum with underlying type: string
 type DataGuardAssociationPeerRoleEnum string
 
@@ -215,6 +237,17 @@ func GetDataGuardAssociationPeerRoleEnumStringValues() []string {
 		"STANDBY",
 		"DISABLED_STANDBY",
 	}
+}
+
+// GetMappingDataGuardAssociationPeerRoleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataGuardAssociationPeerRoleEnum(val string) (DataGuardAssociationPeerRoleEnum, bool) {
+	mappingDataGuardAssociationPeerRoleEnumIgnoreCase := make(map[string]DataGuardAssociationPeerRoleEnum)
+	for k, v := range mappingDataGuardAssociationPeerRoleEnum {
+		mappingDataGuardAssociationPeerRoleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataGuardAssociationPeerRoleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // DataGuardAssociationProtectionModeEnum Enum with underlying type: string
@@ -251,6 +284,17 @@ func GetDataGuardAssociationProtectionModeEnumStringValues() []string {
 	}
 }
 
+// GetMappingDataGuardAssociationProtectionModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataGuardAssociationProtectionModeEnum(val string) (DataGuardAssociationProtectionModeEnum, bool) {
+	mappingDataGuardAssociationProtectionModeEnumIgnoreCase := make(map[string]DataGuardAssociationProtectionModeEnum)
+	for k, v := range mappingDataGuardAssociationProtectionModeEnum {
+		mappingDataGuardAssociationProtectionModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataGuardAssociationProtectionModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DataGuardAssociationTransportTypeEnum Enum with underlying type: string
 type DataGuardAssociationTransportTypeEnum string
 
@@ -283,4 +327,15 @@ func GetDataGuardAssociationTransportTypeEnumStringValues() []string {
 		"ASYNC",
 		"FASTSYNC",
 	}
+}
+
+// GetMappingDataGuardAssociationTransportTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataGuardAssociationTransportTypeEnum(val string) (DataGuardAssociationTransportTypeEnum, bool) {
+	mappingDataGuardAssociationTransportTypeEnumIgnoreCase := make(map[string]DataGuardAssociationTransportTypeEnum)
+	for k, v := range mappingDataGuardAssociationTransportTypeEnum {
+		mappingDataGuardAssociationTransportTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataGuardAssociationTransportTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -60,7 +60,7 @@ func (m StartSqlTuningTaskDetails) String() string {
 // Not recommended for calling this function directly
 func (m StartSqlTuningTaskDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingStartSqlTuningTaskDetailsScopeEnum[string(m.Scope)]; !ok && m.Scope != "" {
+	if _, ok := GetMappingStartSqlTuningTaskDetailsScopeEnum(string(m.Scope)); !ok && m.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", m.Scope, strings.Join(GetStartSqlTuningTaskDetailsScopeEnumStringValues(), ",")))
 	}
 
@@ -150,4 +150,15 @@ func GetStartSqlTuningTaskDetailsScopeEnumStringValues() []string {
 		"LIMITED",
 		"COMPREHENSIVE",
 	}
+}
+
+// GetMappingStartSqlTuningTaskDetailsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStartSqlTuningTaskDetailsScopeEnum(val string) (StartSqlTuningTaskDetailsScopeEnum, bool) {
+	mappingStartSqlTuningTaskDetailsScopeEnumIgnoreCase := make(map[string]StartSqlTuningTaskDetailsScopeEnum)
+	for k, v := range mappingStartSqlTuningTaskDetailsScopeEnum {
+		mappingStartSqlTuningTaskDetailsScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStartSqlTuningTaskDetailsScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -74,7 +74,7 @@ func (m EgressSecurityRule) String() string {
 func (m EgressSecurityRule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingEgressSecurityRuleDestinationTypeEnum[string(m.DestinationType)]; !ok && m.DestinationType != "" {
+	if _, ok := GetMappingEgressSecurityRuleDestinationTypeEnum(string(m.DestinationType)); !ok && m.DestinationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DestinationType: %s. Supported values are: %s.", m.DestinationType, strings.Join(GetEgressSecurityRuleDestinationTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -112,4 +112,15 @@ func GetEgressSecurityRuleDestinationTypeEnumStringValues() []string {
 		"CIDR_BLOCK",
 		"SERVICE_CIDR_BLOCK",
 	}
+}
+
+// GetMappingEgressSecurityRuleDestinationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEgressSecurityRuleDestinationTypeEnum(val string) (EgressSecurityRuleDestinationTypeEnum, bool) {
+	mappingEgressSecurityRuleDestinationTypeEnumIgnoreCase := make(map[string]EgressSecurityRuleDestinationTypeEnum)
+	for k, v := range mappingEgressSecurityRuleDestinationTypeEnum {
+		mappingEgressSecurityRuleDestinationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEgressSecurityRuleDestinationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -168,14 +168,14 @@ func (m CloudVmClusterSummary) String() string {
 // Not recommended for calling this function directly
 func (m CloudVmClusterSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCloudVmClusterSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingCloudVmClusterSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetCloudVmClusterSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingCloudVmClusterSummaryLicenseModelEnum[string(m.LicenseModel)]; !ok && m.LicenseModel != "" {
+	if _, ok := GetMappingCloudVmClusterSummaryLicenseModelEnum(string(m.LicenseModel)); !ok && m.LicenseModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LicenseModel: %s. Supported values are: %s.", m.LicenseModel, strings.Join(GetCloudVmClusterSummaryLicenseModelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCloudVmClusterSummaryDiskRedundancyEnum[string(m.DiskRedundancy)]; !ok && m.DiskRedundancy != "" {
+	if _, ok := GetMappingCloudVmClusterSummaryDiskRedundancyEnum(string(m.DiskRedundancy)); !ok && m.DiskRedundancy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DiskRedundancy: %s. Supported values are: %s.", m.DiskRedundancy, strings.Join(GetCloudVmClusterSummaryDiskRedundancyEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -230,6 +230,17 @@ func GetCloudVmClusterSummaryLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingCloudVmClusterSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCloudVmClusterSummaryLifecycleStateEnum(val string) (CloudVmClusterSummaryLifecycleStateEnum, bool) {
+	mappingCloudVmClusterSummaryLifecycleStateEnumIgnoreCase := make(map[string]CloudVmClusterSummaryLifecycleStateEnum)
+	for k, v := range mappingCloudVmClusterSummaryLifecycleStateEnum {
+		mappingCloudVmClusterSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCloudVmClusterSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CloudVmClusterSummaryLicenseModelEnum Enum with underlying type: string
 type CloudVmClusterSummaryLicenseModelEnum string
 
@@ -261,6 +272,17 @@ func GetCloudVmClusterSummaryLicenseModelEnumStringValues() []string {
 	}
 }
 
+// GetMappingCloudVmClusterSummaryLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCloudVmClusterSummaryLicenseModelEnum(val string) (CloudVmClusterSummaryLicenseModelEnum, bool) {
+	mappingCloudVmClusterSummaryLicenseModelEnumIgnoreCase := make(map[string]CloudVmClusterSummaryLicenseModelEnum)
+	for k, v := range mappingCloudVmClusterSummaryLicenseModelEnum {
+		mappingCloudVmClusterSummaryLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCloudVmClusterSummaryLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CloudVmClusterSummaryDiskRedundancyEnum Enum with underlying type: string
 type CloudVmClusterSummaryDiskRedundancyEnum string
 
@@ -290,4 +312,15 @@ func GetCloudVmClusterSummaryDiskRedundancyEnumStringValues() []string {
 		"HIGH",
 		"NORMAL",
 	}
+}
+
+// GetMappingCloudVmClusterSummaryDiskRedundancyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCloudVmClusterSummaryDiskRedundancyEnum(val string) (CloudVmClusterSummaryDiskRedundancyEnum, bool) {
+	mappingCloudVmClusterSummaryDiskRedundancyEnumIgnoreCase := make(map[string]CloudVmClusterSummaryDiskRedundancyEnum)
+	for k, v := range mappingCloudVmClusterSummaryDiskRedundancyEnum {
+		mappingCloudVmClusterSummaryDiskRedundancyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCloudVmClusterSummaryDiskRedundancyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // ServiceListEnum Enum with underlying type: string
 type ServiceListEnum string
 
@@ -86,4 +90,15 @@ func GetServiceListEnumStringValues() []string {
 		"DataSafe-stest",
 		"DataSafe-stage",
 	}
+}
+
+// GetMappingServiceListEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingServiceListEnum(val string) (ServiceListEnum, bool) {
+	mappingServiceListEnumIgnoreCase := make(map[string]ServiceListEnum)
+	for k, v := range mappingServiceListEnum {
+		mappingServiceListEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingServiceListEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

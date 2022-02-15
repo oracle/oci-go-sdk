@@ -164,3 +164,14 @@ func GetPlatformConfigTypeEnumStringValues() []string {
 		"INTEL_VM",
 	}
 }
+
+// GetMappingPlatformConfigTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPlatformConfigTypeEnum(val string) (PlatformConfigTypeEnum, bool) {
+	mappingPlatformConfigTypeEnumIgnoreCase := make(map[string]PlatformConfigTypeEnum)
+	for k, v := range mappingPlatformConfigTypeEnum {
+		mappingPlatformConfigTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPlatformConfigTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

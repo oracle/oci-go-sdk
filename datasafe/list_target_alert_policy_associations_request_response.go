@@ -109,16 +109,16 @@ func (request ListTargetAlertPolicyAssociationsRequest) RetryPolicy() *common.Re
 // Not recommended for calling this function directly
 func (request ListTargetAlertPolicyAssociationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListTargetAlertPolicyAssociationsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListTargetAlertPolicyAssociationsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListTargetAlertPolicyAssociationsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTargetAlertPolicyAssociationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListTargetAlertPolicyAssociationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListTargetAlertPolicyAssociationsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTargetAlertPolicyAssociationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListTargetAlertPolicyAssociationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListTargetAlertPolicyAssociationsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTargetAlertPolicyAssociationsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListTargetAlertPolicyAssociationsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListTargetAlertPolicyAssociationsAccessLevelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -203,6 +203,17 @@ func GetListTargetAlertPolicyAssociationsLifecycleStateEnumStringValues() []stri
 	}
 }
 
+// GetMappingListTargetAlertPolicyAssociationsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetAlertPolicyAssociationsLifecycleStateEnum(val string) (ListTargetAlertPolicyAssociationsLifecycleStateEnum, bool) {
+	mappingListTargetAlertPolicyAssociationsLifecycleStateEnumIgnoreCase := make(map[string]ListTargetAlertPolicyAssociationsLifecycleStateEnum)
+	for k, v := range mappingListTargetAlertPolicyAssociationsLifecycleStateEnum {
+		mappingListTargetAlertPolicyAssociationsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetAlertPolicyAssociationsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTargetAlertPolicyAssociationsSortOrderEnum Enum with underlying type: string
 type ListTargetAlertPolicyAssociationsSortOrderEnum string
 
@@ -232,6 +243,17 @@ func GetListTargetAlertPolicyAssociationsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListTargetAlertPolicyAssociationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetAlertPolicyAssociationsSortOrderEnum(val string) (ListTargetAlertPolicyAssociationsSortOrderEnum, bool) {
+	mappingListTargetAlertPolicyAssociationsSortOrderEnumIgnoreCase := make(map[string]ListTargetAlertPolicyAssociationsSortOrderEnum)
+	for k, v := range mappingListTargetAlertPolicyAssociationsSortOrderEnum {
+		mappingListTargetAlertPolicyAssociationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetAlertPolicyAssociationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListTargetAlertPolicyAssociationsSortByEnum Enum with underlying type: string
@@ -265,6 +287,17 @@ func GetListTargetAlertPolicyAssociationsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTargetAlertPolicyAssociationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetAlertPolicyAssociationsSortByEnum(val string) (ListTargetAlertPolicyAssociationsSortByEnum, bool) {
+	mappingListTargetAlertPolicyAssociationsSortByEnumIgnoreCase := make(map[string]ListTargetAlertPolicyAssociationsSortByEnum)
+	for k, v := range mappingListTargetAlertPolicyAssociationsSortByEnum {
+		mappingListTargetAlertPolicyAssociationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetAlertPolicyAssociationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTargetAlertPolicyAssociationsAccessLevelEnum Enum with underlying type: string
 type ListTargetAlertPolicyAssociationsAccessLevelEnum string
 
@@ -294,4 +327,15 @@ func GetListTargetAlertPolicyAssociationsAccessLevelEnumStringValues() []string 
 		"RESTRICTED",
 		"ACCESSIBLE",
 	}
+}
+
+// GetMappingListTargetAlertPolicyAssociationsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetAlertPolicyAssociationsAccessLevelEnum(val string) (ListTargetAlertPolicyAssociationsAccessLevelEnum, bool) {
+	mappingListTargetAlertPolicyAssociationsAccessLevelEnumIgnoreCase := make(map[string]ListTargetAlertPolicyAssociationsAccessLevelEnum)
+	for k, v := range mappingListTargetAlertPolicyAssociationsAccessLevelEnum {
+		mappingListTargetAlertPolicyAssociationsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetAlertPolicyAssociationsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -82,10 +82,10 @@ func (request ListServiceCatalogAssociationsRequest) RetryPolicy() *common.Retry
 // Not recommended for calling this function directly
 func (request ListServiceCatalogAssociationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListServiceCatalogAssociationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListServiceCatalogAssociationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListServiceCatalogAssociationsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListServiceCatalogAssociationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListServiceCatalogAssociationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListServiceCatalogAssociationsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -153,6 +153,17 @@ func GetListServiceCatalogAssociationsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListServiceCatalogAssociationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListServiceCatalogAssociationsSortOrderEnum(val string) (ListServiceCatalogAssociationsSortOrderEnum, bool) {
+	mappingListServiceCatalogAssociationsSortOrderEnumIgnoreCase := make(map[string]ListServiceCatalogAssociationsSortOrderEnum)
+	for k, v := range mappingListServiceCatalogAssociationsSortOrderEnum {
+		mappingListServiceCatalogAssociationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListServiceCatalogAssociationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListServiceCatalogAssociationsSortByEnum Enum with underlying type: string
 type ListServiceCatalogAssociationsSortByEnum string
 
@@ -179,4 +190,15 @@ func GetListServiceCatalogAssociationsSortByEnumStringValues() []string {
 	return []string{
 		"TIMECREATED",
 	}
+}
+
+// GetMappingListServiceCatalogAssociationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListServiceCatalogAssociationsSortByEnum(val string) (ListServiceCatalogAssociationsSortByEnum, bool) {
+	mappingListServiceCatalogAssociationsSortByEnumIgnoreCase := make(map[string]ListServiceCatalogAssociationsSortByEnum)
+	for k, v := range mappingListServiceCatalogAssociationsSortByEnum {
+		mappingListServiceCatalogAssociationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListServiceCatalogAssociationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

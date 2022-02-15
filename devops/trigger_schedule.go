@@ -39,7 +39,7 @@ func (m TriggerSchedule) String() string {
 // Not recommended for calling this function directly
 func (m TriggerSchedule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTriggerScheduleScheduleTypeEnum[string(m.ScheduleType)]; !ok && m.ScheduleType != "" {
+	if _, ok := GetMappingTriggerScheduleScheduleTypeEnum(string(m.ScheduleType)); !ok && m.ScheduleType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ScheduleType: %s. Supported values are: %s.", m.ScheduleType, strings.Join(GetTriggerScheduleScheduleTypeEnumStringValues(), ",")))
 	}
 
@@ -81,4 +81,15 @@ func GetTriggerScheduleScheduleTypeEnumStringValues() []string {
 		"DEFAULT",
 		"CUSTOM",
 	}
+}
+
+// GetMappingTriggerScheduleScheduleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTriggerScheduleScheduleTypeEnum(val string) (TriggerScheduleScheduleTypeEnum, bool) {
+	mappingTriggerScheduleScheduleTypeEnumIgnoreCase := make(map[string]TriggerScheduleScheduleTypeEnum)
+	for k, v := range mappingTriggerScheduleScheduleTypeEnum {
+		mappingTriggerScheduleScheduleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTriggerScheduleScheduleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

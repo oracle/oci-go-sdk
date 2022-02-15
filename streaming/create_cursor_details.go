@@ -45,7 +45,7 @@ func (m CreateCursorDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateCursorDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreateCursorDetailsTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingCreateCursorDetailsTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetCreateCursorDetailsTypeEnumStringValues(), ",")))
 	}
 
@@ -93,4 +93,15 @@ func GetCreateCursorDetailsTypeEnumStringValues() []string {
 		"LATEST",
 		"TRIM_HORIZON",
 	}
+}
+
+// GetMappingCreateCursorDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateCursorDetailsTypeEnum(val string) (CreateCursorDetailsTypeEnum, bool) {
+	mappingCreateCursorDetailsTypeEnumIgnoreCase := make(map[string]CreateCursorDetailsTypeEnum)
+	for k, v := range mappingCreateCursorDetailsTypeEnum {
+		mappingCreateCursorDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateCursorDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

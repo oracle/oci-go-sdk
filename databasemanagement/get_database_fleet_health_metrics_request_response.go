@@ -87,7 +87,7 @@ func (request GetDatabaseFleetHealthMetricsRequest) RetryPolicy() *common.RetryP
 // Not recommended for calling this function directly
 func (request GetDatabaseFleetHealthMetricsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetDatabaseFleetHealthMetricsCompareTypeEnum[string(request.CompareType)]; !ok && request.CompareType != "" {
+	if _, ok := GetMappingGetDatabaseFleetHealthMetricsCompareTypeEnum(string(request.CompareType)); !ok && request.CompareType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CompareType: %s. Supported values are: %s.", request.CompareType, strings.Join(GetGetDatabaseFleetHealthMetricsCompareTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -148,4 +148,15 @@ func GetGetDatabaseFleetHealthMetricsCompareTypeEnumStringValues() []string {
 		"HOUR",
 		"DAY",
 	}
+}
+
+// GetMappingGetDatabaseFleetHealthMetricsCompareTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetDatabaseFleetHealthMetricsCompareTypeEnum(val string) (GetDatabaseFleetHealthMetricsCompareTypeEnum, bool) {
+	mappingGetDatabaseFleetHealthMetricsCompareTypeEnumIgnoreCase := make(map[string]GetDatabaseFleetHealthMetricsCompareTypeEnum)
+	for k, v := range mappingGetDatabaseFleetHealthMetricsCompareTypeEnum {
+		mappingGetDatabaseFleetHealthMetricsCompareTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetDatabaseFleetHealthMetricsCompareTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -59,16 +59,16 @@ func (m UpdateIpSecConnectionTunnelDetails) String() string {
 func (m UpdateIpSecConnectionTunnelDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateIpSecConnectionTunnelDetailsRoutingEnum[string(m.Routing)]; !ok && m.Routing != "" {
+	if _, ok := GetMappingUpdateIpSecConnectionTunnelDetailsRoutingEnum(string(m.Routing)); !ok && m.Routing != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Routing: %s. Supported values are: %s.", m.Routing, strings.Join(GetUpdateIpSecConnectionTunnelDetailsRoutingEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUpdateIpSecConnectionTunnelDetailsIkeVersionEnum[string(m.IkeVersion)]; !ok && m.IkeVersion != "" {
+	if _, ok := GetMappingUpdateIpSecConnectionTunnelDetailsIkeVersionEnum(string(m.IkeVersion)); !ok && m.IkeVersion != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IkeVersion: %s. Supported values are: %s.", m.IkeVersion, strings.Join(GetUpdateIpSecConnectionTunnelDetailsIkeVersionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUpdateIpSecConnectionTunnelDetailsOracleInitiationEnum[string(m.OracleInitiation)]; !ok && m.OracleInitiation != "" {
+	if _, ok := GetMappingUpdateIpSecConnectionTunnelDetailsOracleInitiationEnum(string(m.OracleInitiation)); !ok && m.OracleInitiation != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OracleInitiation: %s. Supported values are: %s.", m.OracleInitiation, strings.Join(GetUpdateIpSecConnectionTunnelDetailsOracleInitiationEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUpdateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum[string(m.NatTranslationEnabled)]; !ok && m.NatTranslationEnabled != "" {
+	if _, ok := GetMappingUpdateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum(string(m.NatTranslationEnabled)); !ok && m.NatTranslationEnabled != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NatTranslationEnabled: %s. Supported values are: %s.", m.NatTranslationEnabled, strings.Join(GetUpdateIpSecConnectionTunnelDetailsNatTranslationEnabledEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -111,6 +111,17 @@ func GetUpdateIpSecConnectionTunnelDetailsRoutingEnumStringValues() []string {
 	}
 }
 
+// GetMappingUpdateIpSecConnectionTunnelDetailsRoutingEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateIpSecConnectionTunnelDetailsRoutingEnum(val string) (UpdateIpSecConnectionTunnelDetailsRoutingEnum, bool) {
+	mappingUpdateIpSecConnectionTunnelDetailsRoutingEnumIgnoreCase := make(map[string]UpdateIpSecConnectionTunnelDetailsRoutingEnum)
+	for k, v := range mappingUpdateIpSecConnectionTunnelDetailsRoutingEnum {
+		mappingUpdateIpSecConnectionTunnelDetailsRoutingEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateIpSecConnectionTunnelDetailsRoutingEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UpdateIpSecConnectionTunnelDetailsIkeVersionEnum Enum with underlying type: string
 type UpdateIpSecConnectionTunnelDetailsIkeVersionEnum string
 
@@ -142,6 +153,17 @@ func GetUpdateIpSecConnectionTunnelDetailsIkeVersionEnumStringValues() []string 
 	}
 }
 
+// GetMappingUpdateIpSecConnectionTunnelDetailsIkeVersionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateIpSecConnectionTunnelDetailsIkeVersionEnum(val string) (UpdateIpSecConnectionTunnelDetailsIkeVersionEnum, bool) {
+	mappingUpdateIpSecConnectionTunnelDetailsIkeVersionEnumIgnoreCase := make(map[string]UpdateIpSecConnectionTunnelDetailsIkeVersionEnum)
+	for k, v := range mappingUpdateIpSecConnectionTunnelDetailsIkeVersionEnum {
+		mappingUpdateIpSecConnectionTunnelDetailsIkeVersionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateIpSecConnectionTunnelDetailsIkeVersionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UpdateIpSecConnectionTunnelDetailsOracleInitiationEnum Enum with underlying type: string
 type UpdateIpSecConnectionTunnelDetailsOracleInitiationEnum string
 
@@ -171,6 +193,17 @@ func GetUpdateIpSecConnectionTunnelDetailsOracleInitiationEnumStringValues() []s
 		"INITIATOR_OR_RESPONDER",
 		"RESPONDER_ONLY",
 	}
+}
+
+// GetMappingUpdateIpSecConnectionTunnelDetailsOracleInitiationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateIpSecConnectionTunnelDetailsOracleInitiationEnum(val string) (UpdateIpSecConnectionTunnelDetailsOracleInitiationEnum, bool) {
+	mappingUpdateIpSecConnectionTunnelDetailsOracleInitiationEnumIgnoreCase := make(map[string]UpdateIpSecConnectionTunnelDetailsOracleInitiationEnum)
+	for k, v := range mappingUpdateIpSecConnectionTunnelDetailsOracleInitiationEnum {
+		mappingUpdateIpSecConnectionTunnelDetailsOracleInitiationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateIpSecConnectionTunnelDetailsOracleInitiationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // UpdateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum Enum with underlying type: string
@@ -205,4 +238,15 @@ func GetUpdateIpSecConnectionTunnelDetailsNatTranslationEnabledEnumStringValues(
 		"DISABLED",
 		"AUTO",
 	}
+}
+
+// GetMappingUpdateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum(val string) (UpdateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum, bool) {
+	mappingUpdateIpSecConnectionTunnelDetailsNatTranslationEnabledEnumIgnoreCase := make(map[string]UpdateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum)
+	for k, v := range mappingUpdateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum {
+		mappingUpdateIpSecConnectionTunnelDetailsNatTranslationEnabledEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateIpSecConnectionTunnelDetailsNatTranslationEnabledEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

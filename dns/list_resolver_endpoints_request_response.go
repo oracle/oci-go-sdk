@@ -83,16 +83,16 @@ func (request ListResolverEndpointsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListResolverEndpointsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListResolverEndpointsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListResolverEndpointsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListResolverEndpointsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListResolverEndpointsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListResolverEndpointsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListResolverEndpointsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingResolverEndpointSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingResolverEndpointSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetResolverEndpointSummaryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListResolverEndpointsScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingListResolverEndpointsScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetListResolverEndpointsScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -160,6 +160,17 @@ func GetListResolverEndpointsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListResolverEndpointsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResolverEndpointsSortOrderEnum(val string) (ListResolverEndpointsSortOrderEnum, bool) {
+	mappingListResolverEndpointsSortOrderEnumIgnoreCase := make(map[string]ListResolverEndpointsSortOrderEnum)
+	for k, v := range mappingListResolverEndpointsSortOrderEnum {
+		mappingListResolverEndpointsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResolverEndpointsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListResolverEndpointsSortByEnum Enum with underlying type: string
 type ListResolverEndpointsSortByEnum string
 
@@ -191,6 +202,17 @@ func GetListResolverEndpointsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListResolverEndpointsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResolverEndpointsSortByEnum(val string) (ListResolverEndpointsSortByEnum, bool) {
+	mappingListResolverEndpointsSortByEnumIgnoreCase := make(map[string]ListResolverEndpointsSortByEnum)
+	for k, v := range mappingListResolverEndpointsSortByEnum {
+		mappingListResolverEndpointsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResolverEndpointsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListResolverEndpointsScopeEnum Enum with underlying type: string
 type ListResolverEndpointsScopeEnum string
 
@@ -220,4 +242,15 @@ func GetListResolverEndpointsScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingListResolverEndpointsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResolverEndpointsScopeEnum(val string) (ListResolverEndpointsScopeEnum, bool) {
+	mappingListResolverEndpointsScopeEnumIgnoreCase := make(map[string]ListResolverEndpointsScopeEnum)
+	for k, v := range mappingListResolverEndpointsScopeEnum {
+		mappingListResolverEndpointsScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResolverEndpointsScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

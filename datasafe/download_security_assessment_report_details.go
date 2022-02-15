@@ -31,7 +31,7 @@ func (m DownloadSecurityAssessmentReportDetails) String() string {
 // Not recommended for calling this function directly
 func (m DownloadSecurityAssessmentReportDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDownloadSecurityAssessmentReportDetailsFormatEnum[string(m.Format)]; !ok && m.Format != "" {
+	if _, ok := GetMappingDownloadSecurityAssessmentReportDetailsFormatEnum(string(m.Format)); !ok && m.Format != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Format: %s. Supported values are: %s.", m.Format, strings.Join(GetDownloadSecurityAssessmentReportDetailsFormatEnumStringValues(), ",")))
 	}
 
@@ -70,4 +70,15 @@ func GetDownloadSecurityAssessmentReportDetailsFormatEnumStringValues() []string
 		"PDF",
 		"XLS",
 	}
+}
+
+// GetMappingDownloadSecurityAssessmentReportDetailsFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDownloadSecurityAssessmentReportDetailsFormatEnum(val string) (DownloadSecurityAssessmentReportDetailsFormatEnum, bool) {
+	mappingDownloadSecurityAssessmentReportDetailsFormatEnumIgnoreCase := make(map[string]DownloadSecurityAssessmentReportDetailsFormatEnum)
+	for k, v := range mappingDownloadSecurityAssessmentReportDetailsFormatEnum {
+		mappingDownloadSecurityAssessmentReportDetailsFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDownloadSecurityAssessmentReportDetailsFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

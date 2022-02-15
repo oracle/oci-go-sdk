@@ -10,6 +10,10 @@
 
 package managementdashboard
 
+import (
+	"strings"
+)
+
 // SavedSearchTypesEnum Enum with underlying type: string
 type SavedSearchTypesEnum string
 
@@ -45,4 +49,15 @@ func GetSavedSearchTypesEnumStringValues() []string {
 		"WIDGET_SHOW_IN_DASHBOARD",
 		"WIDGET_DONT_SHOW_IN_DASHBOARD",
 	}
+}
+
+// GetMappingSavedSearchTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSavedSearchTypesEnum(val string) (SavedSearchTypesEnum, bool) {
+	mappingSavedSearchTypesEnumIgnoreCase := make(map[string]SavedSearchTypesEnum)
+	for k, v := range mappingSavedSearchTypesEnum {
+		mappingSavedSearchTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSavedSearchTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

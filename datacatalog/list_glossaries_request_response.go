@@ -98,19 +98,19 @@ func (request ListGlossariesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListGlossariesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListGlossariesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListGlossariesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListGlossariesLifecycleStateEnumStringValues(), ",")))
 	}
 	for _, val := range request.Fields {
-		if _, ok := mappingListGlossariesFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListGlossariesFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetListGlossariesFieldsEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListGlossariesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListGlossariesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListGlossariesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListGlossariesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListGlossariesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListGlossariesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -194,6 +194,17 @@ func GetListGlossariesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListGlossariesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListGlossariesLifecycleStateEnum(val string) (ListGlossariesLifecycleStateEnum, bool) {
+	mappingListGlossariesLifecycleStateEnumIgnoreCase := make(map[string]ListGlossariesLifecycleStateEnum)
+	for k, v := range mappingListGlossariesLifecycleStateEnum {
+		mappingListGlossariesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListGlossariesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListGlossariesFieldsEnum Enum with underlying type: string
 type ListGlossariesFieldsEnum string
 
@@ -243,6 +254,17 @@ func GetListGlossariesFieldsEnumStringValues() []string {
 	}
 }
 
+// GetMappingListGlossariesFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListGlossariesFieldsEnum(val string) (ListGlossariesFieldsEnum, bool) {
+	mappingListGlossariesFieldsEnumIgnoreCase := make(map[string]ListGlossariesFieldsEnum)
+	for k, v := range mappingListGlossariesFieldsEnum {
+		mappingListGlossariesFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListGlossariesFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListGlossariesSortByEnum Enum with underlying type: string
 type ListGlossariesSortByEnum string
 
@@ -274,6 +296,17 @@ func GetListGlossariesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListGlossariesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListGlossariesSortByEnum(val string) (ListGlossariesSortByEnum, bool) {
+	mappingListGlossariesSortByEnumIgnoreCase := make(map[string]ListGlossariesSortByEnum)
+	for k, v := range mappingListGlossariesSortByEnum {
+		mappingListGlossariesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListGlossariesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListGlossariesSortOrderEnum Enum with underlying type: string
 type ListGlossariesSortOrderEnum string
 
@@ -303,4 +336,15 @@ func GetListGlossariesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListGlossariesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListGlossariesSortOrderEnum(val string) (ListGlossariesSortOrderEnum, bool) {
+	mappingListGlossariesSortOrderEnumIgnoreCase := make(map[string]ListGlossariesSortOrderEnum)
+	for k, v := range mappingListGlossariesSortOrderEnum {
+		mappingListGlossariesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListGlossariesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

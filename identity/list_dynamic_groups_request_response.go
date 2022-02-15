@@ -86,13 +86,13 @@ func (request ListDynamicGroupsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDynamicGroupsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDynamicGroupsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDynamicGroupsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDynamicGroupsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDynamicGroupsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDynamicGroupsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDynamicGroupsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDynamicGroupLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingDynamicGroupLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetDynamicGroupLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -160,6 +160,17 @@ func GetListDynamicGroupsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDynamicGroupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDynamicGroupsSortByEnum(val string) (ListDynamicGroupsSortByEnum, bool) {
+	mappingListDynamicGroupsSortByEnumIgnoreCase := make(map[string]ListDynamicGroupsSortByEnum)
+	for k, v := range mappingListDynamicGroupsSortByEnum {
+		mappingListDynamicGroupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDynamicGroupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDynamicGroupsSortOrderEnum Enum with underlying type: string
 type ListDynamicGroupsSortOrderEnum string
 
@@ -189,4 +200,15 @@ func GetListDynamicGroupsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListDynamicGroupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDynamicGroupsSortOrderEnum(val string) (ListDynamicGroupsSortOrderEnum, bool) {
+	mappingListDynamicGroupsSortOrderEnumIgnoreCase := make(map[string]ListDynamicGroupsSortOrderEnum)
+	for k, v := range mappingListDynamicGroupsSortOrderEnum {
+		mappingListDynamicGroupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDynamicGroupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

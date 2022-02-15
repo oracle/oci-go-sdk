@@ -41,7 +41,7 @@ func (m AuditTrailDimensions) String() string {
 func (m AuditTrailDimensions) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAuditTrailLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAuditTrailLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAuditTrailLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

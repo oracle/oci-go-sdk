@@ -62,7 +62,7 @@ func (m TagNamespaceSummary) String() string {
 func (m TagNamespaceSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTagNamespaceLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingTagNamespaceLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetTagNamespaceLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

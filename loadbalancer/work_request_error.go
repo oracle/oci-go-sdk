@@ -33,7 +33,7 @@ func (m WorkRequestError) String() string {
 // Not recommended for calling this function directly
 func (m WorkRequestError) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingWorkRequestErrorErrorCodeEnum[string(m.ErrorCode)]; !ok && m.ErrorCode != "" {
+	if _, ok := GetMappingWorkRequestErrorErrorCodeEnum(string(m.ErrorCode)); !ok && m.ErrorCode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ErrorCode: %s. Supported values are: %s.", m.ErrorCode, strings.Join(GetWorkRequestErrorErrorCodeEnumStringValues(), ",")))
 	}
 
@@ -72,4 +72,15 @@ func GetWorkRequestErrorErrorCodeEnumStringValues() []string {
 		"BAD_INPUT",
 		"INTERNAL_ERROR",
 	}
+}
+
+// GetMappingWorkRequestErrorErrorCodeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestErrorErrorCodeEnum(val string) (WorkRequestErrorErrorCodeEnum, bool) {
+	mappingWorkRequestErrorErrorCodeEnumIgnoreCase := make(map[string]WorkRequestErrorErrorCodeEnum)
+	for k, v := range mappingWorkRequestErrorErrorCodeEnum {
+		mappingWorkRequestErrorErrorCodeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestErrorErrorCodeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -34,7 +34,7 @@ func (m ThreatFeedAction) String() string {
 // Not recommended for calling this function directly
 func (m ThreatFeedAction) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingThreatFeedActionActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingThreatFeedActionActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetThreatFeedActionActionEnumStringValues(), ",")))
 	}
 
@@ -76,4 +76,15 @@ func GetThreatFeedActionActionEnumStringValues() []string {
 		"DETECT",
 		"BLOCK",
 	}
+}
+
+// GetMappingThreatFeedActionActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingThreatFeedActionActionEnum(val string) (ThreatFeedActionActionEnum, bool) {
+	mappingThreatFeedActionActionEnumIgnoreCase := make(map[string]ThreatFeedActionActionEnum)
+	for k, v := range mappingThreatFeedActionActionEnum {
+		mappingThreatFeedActionActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingThreatFeedActionActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

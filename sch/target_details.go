@@ -144,3 +144,14 @@ func GetTargetDetailsKindEnumStringValues() []string {
 		"streaming",
 	}
 }
+
+// GetMappingTargetDetailsKindEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTargetDetailsKindEnum(val string) (TargetDetailsKindEnum, bool) {
+	mappingTargetDetailsKindEnumIgnoreCase := make(map[string]TargetDetailsKindEnum)
+	for k, v := range mappingTargetDetailsKindEnum {
+		mappingTargetDetailsKindEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTargetDetailsKindEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

@@ -49,7 +49,7 @@ func (m InfoForNetworkGenDetails) String() string {
 // Not recommended for calling this function directly
 func (m InfoForNetworkGenDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingInfoForNetworkGenDetailsNetworkTypeEnum[string(m.NetworkType)]; !ok && m.NetworkType != "" {
+	if _, ok := GetMappingInfoForNetworkGenDetailsNetworkTypeEnum(string(m.NetworkType)); !ok && m.NetworkType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NetworkType: %s. Supported values are: %s.", m.NetworkType, strings.Join(GetInfoForNetworkGenDetailsNetworkTypeEnumStringValues(), ",")))
 	}
 
@@ -88,4 +88,15 @@ func GetInfoForNetworkGenDetailsNetworkTypeEnumStringValues() []string {
 		"CLIENT",
 		"BACKUP",
 	}
+}
+
+// GetMappingInfoForNetworkGenDetailsNetworkTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInfoForNetworkGenDetailsNetworkTypeEnum(val string) (InfoForNetworkGenDetailsNetworkTypeEnum, bool) {
+	mappingInfoForNetworkGenDetailsNetworkTypeEnumIgnoreCase := make(map[string]InfoForNetworkGenDetailsNetworkTypeEnum)
+	for k, v := range mappingInfoForNetworkGenDetailsNetworkTypeEnum {
+		mappingInfoForNetworkGenDetailsNetworkTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInfoForNetworkGenDetailsNetworkTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

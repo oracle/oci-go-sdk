@@ -115,7 +115,7 @@ func (m UpdateApplicationDetails) String() string {
 func (m UpdateApplicationDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingApplicationLanguageEnum[string(m.Language)]; !ok && m.Language != "" {
+	if _, ok := GetMappingApplicationLanguageEnum(string(m.Language)); !ok && m.Language != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Language: %s. Supported values are: %s.", m.Language, strings.Join(GetApplicationLanguageEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -9,6 +9,10 @@
 
 package goldengate
 
+import (
+	"strings"
+)
+
 // DeploymentUpgradeTypeEnum Enum with underlying type: string
 type DeploymentUpgradeTypeEnum string
 
@@ -38,4 +42,15 @@ func GetDeploymentUpgradeTypeEnumStringValues() []string {
 		"MANUAL",
 		"AUTOMATIC",
 	}
+}
+
+// GetMappingDeploymentUpgradeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeploymentUpgradeTypeEnum(val string) (DeploymentUpgradeTypeEnum, bool) {
+	mappingDeploymentUpgradeTypeEnumIgnoreCase := make(map[string]DeploymentUpgradeTypeEnum)
+	for k, v := range mappingDeploymentUpgradeTypeEnum {
+		mappingDeploymentUpgradeTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeploymentUpgradeTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

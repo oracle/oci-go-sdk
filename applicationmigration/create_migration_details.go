@@ -82,7 +82,7 @@ func (m CreateMigrationDetails) String() string {
 func (m CreateMigrationDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTargetDatabaseTypesEnum[string(m.PreCreatedTargetDatabaseType)]; !ok && m.PreCreatedTargetDatabaseType != "" {
+	if _, ok := GetMappingTargetDatabaseTypesEnum(string(m.PreCreatedTargetDatabaseType)); !ok && m.PreCreatedTargetDatabaseType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PreCreatedTargetDatabaseType: %s. Supported values are: %s.", m.PreCreatedTargetDatabaseType, strings.Join(GetTargetDatabaseTypesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

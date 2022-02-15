@@ -76,10 +76,10 @@ func (request ListWindowsUpdatesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListWindowsUpdatesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListWindowsUpdatesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListWindowsUpdatesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListWindowsUpdatesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListWindowsUpdatesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListWindowsUpdatesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListWindowsUpdatesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -148,6 +148,17 @@ func GetListWindowsUpdatesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListWindowsUpdatesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWindowsUpdatesSortOrderEnum(val string) (ListWindowsUpdatesSortOrderEnum, bool) {
+	mappingListWindowsUpdatesSortOrderEnumIgnoreCase := make(map[string]ListWindowsUpdatesSortOrderEnum)
+	for k, v := range mappingListWindowsUpdatesSortOrderEnum {
+		mappingListWindowsUpdatesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWindowsUpdatesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListWindowsUpdatesSortByEnum Enum with underlying type: string
 type ListWindowsUpdatesSortByEnum string
 
@@ -177,4 +188,15 @@ func GetListWindowsUpdatesSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListWindowsUpdatesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWindowsUpdatesSortByEnum(val string) (ListWindowsUpdatesSortByEnum, bool) {
+	mappingListWindowsUpdatesSortByEnumIgnoreCase := make(map[string]ListWindowsUpdatesSortByEnum)
+	for k, v := range mappingListWindowsUpdatesSortByEnum {
+		mappingListWindowsUpdatesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWindowsUpdatesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

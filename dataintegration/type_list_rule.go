@@ -104,10 +104,10 @@ func (m TypeListRule) String() string {
 // Not recommended for calling this function directly
 func (m TypeListRule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTypeListRuleMatchingStrategyEnum[string(m.MatchingStrategy)]; !ok && m.MatchingStrategy != "" {
+	if _, ok := GetMappingTypeListRuleMatchingStrategyEnum(string(m.MatchingStrategy)); !ok && m.MatchingStrategy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MatchingStrategy: %s. Supported values are: %s.", m.MatchingStrategy, strings.Join(GetTypeListRuleMatchingStrategyEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTypeListRuleRuleTypeEnum[string(m.RuleType)]; !ok && m.RuleType != "" {
+	if _, ok := GetMappingTypeListRuleRuleTypeEnum(string(m.RuleType)); !ok && m.RuleType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RuleType: %s. Supported values are: %s.", m.RuleType, strings.Join(GetTypeListRuleRuleTypeEnumStringValues(), ",")))
 	}
 
@@ -165,6 +165,17 @@ func GetTypeListRuleMatchingStrategyEnumStringValues() []string {
 	}
 }
 
+// GetMappingTypeListRuleMatchingStrategyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTypeListRuleMatchingStrategyEnum(val string) (TypeListRuleMatchingStrategyEnum, bool) {
+	mappingTypeListRuleMatchingStrategyEnumIgnoreCase := make(map[string]TypeListRuleMatchingStrategyEnum)
+	for k, v := range mappingTypeListRuleMatchingStrategyEnum {
+		mappingTypeListRuleMatchingStrategyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTypeListRuleMatchingStrategyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TypeListRuleRuleTypeEnum Enum with underlying type: string
 type TypeListRuleRuleTypeEnum string
 
@@ -194,4 +205,15 @@ func GetTypeListRuleRuleTypeEnumStringValues() []string {
 		"INCLUDE",
 		"EXCLUDE",
 	}
+}
+
+// GetMappingTypeListRuleRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTypeListRuleRuleTypeEnum(val string) (TypeListRuleRuleTypeEnum, bool) {
+	mappingTypeListRuleRuleTypeEnumIgnoreCase := make(map[string]TypeListRuleRuleTypeEnum)
+	for k, v := range mappingTypeListRuleRuleTypeEnum {
+		mappingTypeListRuleRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTypeListRuleRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

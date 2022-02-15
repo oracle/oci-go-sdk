@@ -9,6 +9,10 @@
 
 package managementagent
 
+import (
+	"strings"
+)
+
 // DatatypesEnum Enum with underlying type: string
 type DatatypesEnum string
 
@@ -47,4 +51,15 @@ func GetDatatypesEnumStringValues() []string {
 		"STRING",
 		"BOOLEAN",
 	}
+}
+
+// GetMappingDatatypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatatypesEnum(val string) (DatatypesEnum, bool) {
+	mappingDatatypesEnumIgnoreCase := make(map[string]DatatypesEnum)
+	for k, v := range mappingDatatypesEnum {
+		mappingDatatypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatatypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

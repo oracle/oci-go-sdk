@@ -119,7 +119,7 @@ func (m webappfirewallpolicyrule) String() string {
 func (m webappfirewallpolicyrule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingWebAppFirewallPolicyRuleConditionLanguageEnum[string(m.ConditionLanguage)]; !ok && m.ConditionLanguage != "" {
+	if _, ok := GetMappingWebAppFirewallPolicyRuleConditionLanguageEnum(string(m.ConditionLanguage)); !ok && m.ConditionLanguage != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ConditionLanguage: %s. Supported values are: %s.", m.ConditionLanguage, strings.Join(GetWebAppFirewallPolicyRuleConditionLanguageEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -156,6 +156,17 @@ func GetWebAppFirewallPolicyRuleConditionLanguageEnumStringValues() []string {
 	}
 }
 
+// GetMappingWebAppFirewallPolicyRuleConditionLanguageEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWebAppFirewallPolicyRuleConditionLanguageEnum(val string) (WebAppFirewallPolicyRuleConditionLanguageEnum, bool) {
+	mappingWebAppFirewallPolicyRuleConditionLanguageEnumIgnoreCase := make(map[string]WebAppFirewallPolicyRuleConditionLanguageEnum)
+	for k, v := range mappingWebAppFirewallPolicyRuleConditionLanguageEnum {
+		mappingWebAppFirewallPolicyRuleConditionLanguageEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWebAppFirewallPolicyRuleConditionLanguageEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // WebAppFirewallPolicyRuleTypeEnum Enum with underlying type: string
 type WebAppFirewallPolicyRuleTypeEnum string
 
@@ -188,4 +199,15 @@ func GetWebAppFirewallPolicyRuleTypeEnumStringValues() []string {
 		"PROTECTION",
 		"REQUEST_RATE_LIMITING",
 	}
+}
+
+// GetMappingWebAppFirewallPolicyRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWebAppFirewallPolicyRuleTypeEnum(val string) (WebAppFirewallPolicyRuleTypeEnum, bool) {
+	mappingWebAppFirewallPolicyRuleTypeEnumIgnoreCase := make(map[string]WebAppFirewallPolicyRuleTypeEnum)
+	for k, v := range mappingWebAppFirewallPolicyRuleTypeEnum {
+		mappingWebAppFirewallPolicyRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWebAppFirewallPolicyRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

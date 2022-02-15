@@ -135,15 +135,15 @@ func (request SummarizeHostInsightResourceUsageTrendRequest) RetryPolicy() *comm
 func (request SummarizeHostInsightResourceUsageTrendRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.PlatformType {
-		if _, ok := mappingSummarizeHostInsightResourceUsageTrendPlatformTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingSummarizeHostInsightResourceUsageTrendPlatformTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", val, strings.Join(GetSummarizeHostInsightResourceUsageTrendPlatformTypeEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingSummarizeHostInsightResourceUsageTrendSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeHostInsightResourceUsageTrendSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeHostInsightResourceUsageTrendSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeHostInsightResourceUsageTrendSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeHostInsightResourceUsageTrendSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeHostInsightResourceUsageTrendSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -214,6 +214,17 @@ func GetSummarizeHostInsightResourceUsageTrendPlatformTypeEnumStringValues() []s
 	}
 }
 
+// GetMappingSummarizeHostInsightResourceUsageTrendPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeHostInsightResourceUsageTrendPlatformTypeEnum(val string) (SummarizeHostInsightResourceUsageTrendPlatformTypeEnum, bool) {
+	mappingSummarizeHostInsightResourceUsageTrendPlatformTypeEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceUsageTrendPlatformTypeEnum)
+	for k, v := range mappingSummarizeHostInsightResourceUsageTrendPlatformTypeEnum {
+		mappingSummarizeHostInsightResourceUsageTrendPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeHostInsightResourceUsageTrendPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeHostInsightResourceUsageTrendSortOrderEnum Enum with underlying type: string
 type SummarizeHostInsightResourceUsageTrendSortOrderEnum string
 
@@ -243,6 +254,17 @@ func GetSummarizeHostInsightResourceUsageTrendSortOrderEnumStringValues() []stri
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingSummarizeHostInsightResourceUsageTrendSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeHostInsightResourceUsageTrendSortOrderEnum(val string) (SummarizeHostInsightResourceUsageTrendSortOrderEnum, bool) {
+	mappingSummarizeHostInsightResourceUsageTrendSortOrderEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceUsageTrendSortOrderEnum)
+	for k, v := range mappingSummarizeHostInsightResourceUsageTrendSortOrderEnum {
+		mappingSummarizeHostInsightResourceUsageTrendSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeHostInsightResourceUsageTrendSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // SummarizeHostInsightResourceUsageTrendSortByEnum Enum with underlying type: string
@@ -277,4 +299,15 @@ func GetSummarizeHostInsightResourceUsageTrendSortByEnumStringValues() []string 
 		"usage",
 		"capacity",
 	}
+}
+
+// GetMappingSummarizeHostInsightResourceUsageTrendSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeHostInsightResourceUsageTrendSortByEnum(val string) (SummarizeHostInsightResourceUsageTrendSortByEnum, bool) {
+	mappingSummarizeHostInsightResourceUsageTrendSortByEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceUsageTrendSortByEnum)
+	for k, v := range mappingSummarizeHostInsightResourceUsageTrendSortByEnum {
+		mappingSummarizeHostInsightResourceUsageTrendSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeHostInsightResourceUsageTrendSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

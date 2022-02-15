@@ -85,13 +85,13 @@ func (request ListModelsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListModelsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingModelLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingModelLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetModelLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListModelsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListModelsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListModelsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListModelsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListModelsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListModelsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -159,6 +159,17 @@ func GetListModelsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListModelsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListModelsSortOrderEnum(val string) (ListModelsSortOrderEnum, bool) {
+	mappingListModelsSortOrderEnumIgnoreCase := make(map[string]ListModelsSortOrderEnum)
+	for k, v := range mappingListModelsSortOrderEnum {
+		mappingListModelsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListModelsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListModelsSortByEnum Enum with underlying type: string
 type ListModelsSortByEnum string
 
@@ -188,4 +199,15 @@ func GetListModelsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListModelsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListModelsSortByEnum(val string) (ListModelsSortByEnum, bool) {
+	mappingListModelsSortByEnumIgnoreCase := make(map[string]ListModelsSortByEnum)
+	for k, v := range mappingListModelsSortByEnum {
+		mappingListModelsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListModelsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

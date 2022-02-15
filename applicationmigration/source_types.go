@@ -12,6 +12,10 @@
 
 package applicationmigration
 
+import (
+	"strings"
+)
+
 // SourceTypesEnum Enum with underlying type: string
 type SourceTypesEnum string
 
@@ -50,4 +54,15 @@ func GetSourceTypesEnumStringValues() []string {
 		"OCIC_IDCS",
 		"IMPORT",
 	}
+}
+
+// GetMappingSourceTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSourceTypesEnum(val string) (SourceTypesEnum, bool) {
+	mappingSourceTypesEnumIgnoreCase := make(map[string]SourceTypesEnum)
+	for k, v := range mappingSourceTypesEnum {
+		mappingSourceTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSourceTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

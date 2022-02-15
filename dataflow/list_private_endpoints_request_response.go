@@ -86,13 +86,13 @@ func (request ListPrivateEndpointsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListPrivateEndpointsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListPrivateEndpointsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListPrivateEndpointsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListPrivateEndpointsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPrivateEndpointsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListPrivateEndpointsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListPrivateEndpointsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPrivateEndpointsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListPrivateEndpointsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListPrivateEndpointsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -179,6 +179,17 @@ func GetListPrivateEndpointsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListPrivateEndpointsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPrivateEndpointsLifecycleStateEnum(val string) (ListPrivateEndpointsLifecycleStateEnum, bool) {
+	mappingListPrivateEndpointsLifecycleStateEnumIgnoreCase := make(map[string]ListPrivateEndpointsLifecycleStateEnum)
+	for k, v := range mappingListPrivateEndpointsLifecycleStateEnum {
+		mappingListPrivateEndpointsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPrivateEndpointsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListPrivateEndpointsSortByEnum Enum with underlying type: string
 type ListPrivateEndpointsSortByEnum string
 
@@ -205,6 +216,17 @@ func GetListPrivateEndpointsSortByEnumStringValues() []string {
 	return []string{
 		"timeCreated",
 	}
+}
+
+// GetMappingListPrivateEndpointsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPrivateEndpointsSortByEnum(val string) (ListPrivateEndpointsSortByEnum, bool) {
+	mappingListPrivateEndpointsSortByEnumIgnoreCase := make(map[string]ListPrivateEndpointsSortByEnum)
+	for k, v := range mappingListPrivateEndpointsSortByEnum {
+		mappingListPrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListPrivateEndpointsSortOrderEnum Enum with underlying type: string
@@ -236,4 +258,15 @@ func GetListPrivateEndpointsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListPrivateEndpointsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPrivateEndpointsSortOrderEnum(val string) (ListPrivateEndpointsSortOrderEnum, bool) {
+	mappingListPrivateEndpointsSortOrderEnumIgnoreCase := make(map[string]ListPrivateEndpointsSortOrderEnum)
+	for k, v := range mappingListPrivateEndpointsSortOrderEnum {
+		mappingListPrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

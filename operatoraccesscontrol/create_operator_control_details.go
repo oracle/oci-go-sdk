@@ -70,7 +70,7 @@ func (m CreateOperatorControlDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateOperatorControlDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingResourceTypesEnum[string(m.ResourceType)]; !ok && m.ResourceType != "" {
+	if _, ok := GetMappingResourceTypesEnum(string(m.ResourceType)); !ok && m.ResourceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResourceType: %s. Supported values are: %s.", m.ResourceType, strings.Join(GetResourceTypesEnumStringValues(), ",")))
 	}
 

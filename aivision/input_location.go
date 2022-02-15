@@ -102,3 +102,14 @@ func GetInputLocationSourceTypeEnumStringValues() []string {
 		"OBJECT_LIST_INLINE_INPUT_LOCATION",
 	}
 }
+
+// GetMappingInputLocationSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInputLocationSourceTypeEnum(val string) (InputLocationSourceTypeEnum, bool) {
+	mappingInputLocationSourceTypeEnumIgnoreCase := make(map[string]InputLocationSourceTypeEnum)
+	for k, v := range mappingInputLocationSourceTypeEnum {
+		mappingInputLocationSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInputLocationSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

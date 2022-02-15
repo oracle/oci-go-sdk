@@ -67,7 +67,7 @@ func (m AccessRuleCriteria) String() string {
 // Not recommended for calling this function directly
 func (m AccessRuleCriteria) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAccessRuleCriteriaConditionEnum[string(m.Condition)]; !ok && m.Condition != "" {
+	if _, ok := GetMappingAccessRuleCriteriaConditionEnum(string(m.Condition)); !ok && m.Condition != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Condition: %s. Supported values are: %s.", m.Condition, strings.Join(GetAccessRuleCriteriaConditionEnumStringValues(), ",")))
 	}
 
@@ -163,4 +163,15 @@ func GetAccessRuleCriteriaConditionEnumStringValues() []string {
 		"USER_AGENT_IS",
 		"USER_AGENT_IS_NOT",
 	}
+}
+
+// GetMappingAccessRuleCriteriaConditionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAccessRuleCriteriaConditionEnum(val string) (AccessRuleCriteriaConditionEnum, bool) {
+	mappingAccessRuleCriteriaConditionEnumIgnoreCase := make(map[string]AccessRuleCriteriaConditionEnum)
+	for k, v := range mappingAccessRuleCriteriaConditionEnum {
+		mappingAccessRuleCriteriaConditionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAccessRuleCriteriaConditionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

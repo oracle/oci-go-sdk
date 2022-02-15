@@ -82,10 +82,10 @@ func (request ListNodePoolsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListNodePoolsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListNodePoolsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListNodePoolsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListNodePoolsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListNodePoolsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListNodePoolsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListNodePoolsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -152,6 +152,17 @@ func GetListNodePoolsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListNodePoolsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNodePoolsSortOrderEnum(val string) (ListNodePoolsSortOrderEnum, bool) {
+	mappingListNodePoolsSortOrderEnumIgnoreCase := make(map[string]ListNodePoolsSortOrderEnum)
+	for k, v := range mappingListNodePoolsSortOrderEnum {
+		mappingListNodePoolsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNodePoolsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListNodePoolsSortByEnum Enum with underlying type: string
 type ListNodePoolsSortByEnum string
 
@@ -184,4 +195,15 @@ func GetListNodePoolsSortByEnumStringValues() []string {
 		"NAME",
 		"TIME_CREATED",
 	}
+}
+
+// GetMappingListNodePoolsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNodePoolsSortByEnum(val string) (ListNodePoolsSortByEnum, bool) {
+	mappingListNodePoolsSortByEnumIgnoreCase := make(map[string]ListNodePoolsSortByEnum)
+	for k, v := range mappingListNodePoolsSortByEnum {
+		mappingListNodePoolsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNodePoolsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

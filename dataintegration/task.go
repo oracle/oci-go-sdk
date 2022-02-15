@@ -292,3 +292,14 @@ func GetTaskModelTypeEnumStringValues() []string {
 		"REST_TASK",
 	}
 }
+
+// GetMappingTaskModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskModelTypeEnum(val string) (TaskModelTypeEnum, bool) {
+	mappingTaskModelTypeEnumIgnoreCase := make(map[string]TaskModelTypeEnum)
+	for k, v := range mappingTaskModelTypeEnum {
+		mappingTaskModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

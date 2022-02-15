@@ -83,13 +83,13 @@ func (request ListNetworkLoadBalancersRequest) RetryPolicy() *common.RetryPolicy
 // Not recommended for calling this function directly
 func (request ListNetworkLoadBalancersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListNetworkLoadBalancersLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListNetworkLoadBalancersLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListNetworkLoadBalancersLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListNetworkLoadBalancersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListNetworkLoadBalancersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListNetworkLoadBalancersSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListNetworkLoadBalancersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListNetworkLoadBalancersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListNetworkLoadBalancersSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -169,6 +169,17 @@ func GetListNetworkLoadBalancersLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListNetworkLoadBalancersLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNetworkLoadBalancersLifecycleStateEnum(val string) (ListNetworkLoadBalancersLifecycleStateEnum, bool) {
+	mappingListNetworkLoadBalancersLifecycleStateEnumIgnoreCase := make(map[string]ListNetworkLoadBalancersLifecycleStateEnum)
+	for k, v := range mappingListNetworkLoadBalancersLifecycleStateEnum {
+		mappingListNetworkLoadBalancersLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNetworkLoadBalancersLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListNetworkLoadBalancersSortOrderEnum Enum with underlying type: string
 type ListNetworkLoadBalancersSortOrderEnum string
 
@@ -200,6 +211,17 @@ func GetListNetworkLoadBalancersSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListNetworkLoadBalancersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNetworkLoadBalancersSortOrderEnum(val string) (ListNetworkLoadBalancersSortOrderEnum, bool) {
+	mappingListNetworkLoadBalancersSortOrderEnumIgnoreCase := make(map[string]ListNetworkLoadBalancersSortOrderEnum)
+	for k, v := range mappingListNetworkLoadBalancersSortOrderEnum {
+		mappingListNetworkLoadBalancersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNetworkLoadBalancersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListNetworkLoadBalancersSortByEnum Enum with underlying type: string
 type ListNetworkLoadBalancersSortByEnum string
 
@@ -229,4 +251,15 @@ func GetListNetworkLoadBalancersSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListNetworkLoadBalancersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNetworkLoadBalancersSortByEnum(val string) (ListNetworkLoadBalancersSortByEnum, bool) {
+	mappingListNetworkLoadBalancersSortByEnumIgnoreCase := make(map[string]ListNetworkLoadBalancersSortByEnum)
+	for k, v := range mappingListNetworkLoadBalancersSortByEnum {
+		mappingListNetworkLoadBalancersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNetworkLoadBalancersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

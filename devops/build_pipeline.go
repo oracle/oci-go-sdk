@@ -67,7 +67,7 @@ func (m BuildPipeline) String() string {
 func (m BuildPipeline) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBuildPipelineLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingBuildPipelineLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetBuildPipelineLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -120,4 +120,15 @@ func GetBuildPipelineLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingBuildPipelineLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBuildPipelineLifecycleStateEnum(val string) (BuildPipelineLifecycleStateEnum, bool) {
+	mappingBuildPipelineLifecycleStateEnumIgnoreCase := make(map[string]BuildPipelineLifecycleStateEnum)
+	for k, v := range mappingBuildPipelineLifecycleStateEnum {
+		mappingBuildPipelineLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBuildPipelineLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

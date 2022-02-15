@@ -151,3 +151,14 @@ func GetAbstractWriteAttributeModelTypeEnumStringValues() []string {
 		"OBJECT_STORAGE_WRITE_ATTRIBUTE",
 	}
 }
+
+// GetMappingAbstractWriteAttributeModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAbstractWriteAttributeModelTypeEnum(val string) (AbstractWriteAttributeModelTypeEnum, bool) {
+	mappingAbstractWriteAttributeModelTypeEnumIgnoreCase := make(map[string]AbstractWriteAttributeModelTypeEnum)
+	for k, v := range mappingAbstractWriteAttributeModelTypeEnum {
+		mappingAbstractWriteAttributeModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAbstractWriteAttributeModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

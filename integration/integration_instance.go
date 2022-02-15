@@ -88,14 +88,14 @@ func (m IntegrationInstance) String() string {
 // Not recommended for calling this function directly
 func (m IntegrationInstance) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingIntegrationInstanceIntegrationInstanceTypeEnum[string(m.IntegrationInstanceType)]; !ok && m.IntegrationInstanceType != "" {
+	if _, ok := GetMappingIntegrationInstanceIntegrationInstanceTypeEnum(string(m.IntegrationInstanceType)); !ok && m.IntegrationInstanceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IntegrationInstanceType: %s. Supported values are: %s.", m.IntegrationInstanceType, strings.Join(GetIntegrationInstanceIntegrationInstanceTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingIntegrationInstanceLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingIntegrationInstanceLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetIntegrationInstanceLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingIntegrationInstanceConsumptionModelEnum[string(m.ConsumptionModel)]; !ok && m.ConsumptionModel != "" {
+	if _, ok := GetMappingIntegrationInstanceConsumptionModelEnum(string(m.ConsumptionModel)); !ok && m.ConsumptionModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ConsumptionModel: %s. Supported values are: %s.", m.ConsumptionModel, strings.Join(GetIntegrationInstanceConsumptionModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -216,6 +216,17 @@ func GetIntegrationInstanceIntegrationInstanceTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingIntegrationInstanceIntegrationInstanceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingIntegrationInstanceIntegrationInstanceTypeEnum(val string) (IntegrationInstanceIntegrationInstanceTypeEnum, bool) {
+	mappingIntegrationInstanceIntegrationInstanceTypeEnumIgnoreCase := make(map[string]IntegrationInstanceIntegrationInstanceTypeEnum)
+	for k, v := range mappingIntegrationInstanceIntegrationInstanceTypeEnum {
+		mappingIntegrationInstanceIntegrationInstanceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingIntegrationInstanceIntegrationInstanceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // IntegrationInstanceLifecycleStateEnum Enum with underlying type: string
 type IntegrationInstanceLifecycleStateEnum string
 
@@ -262,6 +273,17 @@ func GetIntegrationInstanceLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingIntegrationInstanceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingIntegrationInstanceLifecycleStateEnum(val string) (IntegrationInstanceLifecycleStateEnum, bool) {
+	mappingIntegrationInstanceLifecycleStateEnumIgnoreCase := make(map[string]IntegrationInstanceLifecycleStateEnum)
+	for k, v := range mappingIntegrationInstanceLifecycleStateEnum {
+		mappingIntegrationInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingIntegrationInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // IntegrationInstanceConsumptionModelEnum Enum with underlying type: string
 type IntegrationInstanceConsumptionModelEnum string
 
@@ -294,4 +316,15 @@ func GetIntegrationInstanceConsumptionModelEnumStringValues() []string {
 		"GOV",
 		"OIC4SAAS",
 	}
+}
+
+// GetMappingIntegrationInstanceConsumptionModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingIntegrationInstanceConsumptionModelEnum(val string) (IntegrationInstanceConsumptionModelEnum, bool) {
+	mappingIntegrationInstanceConsumptionModelEnumIgnoreCase := make(map[string]IntegrationInstanceConsumptionModelEnum)
+	for k, v := range mappingIntegrationInstanceConsumptionModelEnum {
+		mappingIntegrationInstanceConsumptionModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingIntegrationInstanceConsumptionModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

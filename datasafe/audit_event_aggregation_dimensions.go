@@ -63,13 +63,13 @@ func (m AuditEventAggregationDimensions) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	for _, val := range m.TargetClass {
-		if _, ok := mappingAuditEventAggregationDimensionsTargetClassEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingAuditEventAggregationDimensionsTargetClassEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TargetClass: %s. Supported values are: %s.", val, strings.Join(GetAuditEventAggregationDimensionsTargetClassEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range m.AuditType {
-		if _, ok := mappingAuditEventAggregationDimensionsAuditTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingAuditEventAggregationDimensionsAuditTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AuditType: %s. Supported values are: %s.", val, strings.Join(GetAuditEventAggregationDimensionsAuditTypeEnumStringValues(), ",")))
 		}
 	}
@@ -106,6 +106,17 @@ func GetAuditEventAggregationDimensionsTargetClassEnumStringValues() []string {
 	return []string{
 		"DATABASE",
 	}
+}
+
+// GetMappingAuditEventAggregationDimensionsTargetClassEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAuditEventAggregationDimensionsTargetClassEnum(val string) (AuditEventAggregationDimensionsTargetClassEnum, bool) {
+	mappingAuditEventAggregationDimensionsTargetClassEnumIgnoreCase := make(map[string]AuditEventAggregationDimensionsTargetClassEnum)
+	for k, v := range mappingAuditEventAggregationDimensionsTargetClassEnum {
+		mappingAuditEventAggregationDimensionsTargetClassEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAuditEventAggregationDimensionsTargetClassEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // AuditEventAggregationDimensionsAuditTypeEnum Enum with underlying type: string
@@ -155,4 +166,15 @@ func GetAuditEventAggregationDimensionsAuditTypeEnumStringValues() []string {
 		"DATAPUMP",
 		"DIRECT_PATH_API",
 	}
+}
+
+// GetMappingAuditEventAggregationDimensionsAuditTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAuditEventAggregationDimensionsAuditTypeEnum(val string) (AuditEventAggregationDimensionsAuditTypeEnum, bool) {
+	mappingAuditEventAggregationDimensionsAuditTypeEnumIgnoreCase := make(map[string]AuditEventAggregationDimensionsAuditTypeEnum)
+	for k, v := range mappingAuditEventAggregationDimensionsAuditTypeEnum {
+		mappingAuditEventAggregationDimensionsAuditTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAuditEventAggregationDimensionsAuditTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -33,7 +33,7 @@ func (m ImageTextDetectionFeature) String() string {
 func (m ImageTextDetectionFeature) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDocumentLanguageEnum[string(m.Language)]; !ok && m.Language != "" {
+	if _, ok := GetMappingDocumentLanguageEnum(string(m.Language)); !ok && m.Language != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Language: %s. Supported values are: %s.", m.Language, strings.Join(GetDocumentLanguageEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

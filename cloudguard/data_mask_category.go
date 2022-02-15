@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // DataMaskCategoryEnum Enum with underlying type: string
 type DataMaskCategoryEnum string
 
@@ -50,4 +54,15 @@ func GetDataMaskCategoryEnumStringValues() []string {
 		"LOCATION",
 		"CUSTOM",
 	}
+}
+
+// GetMappingDataMaskCategoryEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataMaskCategoryEnum(val string) (DataMaskCategoryEnum, bool) {
+	mappingDataMaskCategoryEnumIgnoreCase := make(map[string]DataMaskCategoryEnum)
+	for k, v := range mappingDataMaskCategoryEnum {
+		mappingDataMaskCategoryEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataMaskCategoryEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

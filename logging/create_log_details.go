@@ -53,7 +53,7 @@ func (m CreateLogDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateLogDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreateLogDetailsLogTypeEnum[string(m.LogType)]; !ok && m.LogType != "" {
+	if _, ok := GetMappingCreateLogDetailsLogTypeEnum(string(m.LogType)); !ok && m.LogType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LogType: %s. Supported values are: %s.", m.LogType, strings.Join(GetCreateLogDetailsLogTypeEnumStringValues(), ",")))
 	}
 
@@ -92,4 +92,15 @@ func GetCreateLogDetailsLogTypeEnumStringValues() []string {
 		"CUSTOM",
 		"SERVICE",
 	}
+}
+
+// GetMappingCreateLogDetailsLogTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateLogDetailsLogTypeEnum(val string) (CreateLogDetailsLogTypeEnum, bool) {
+	mappingCreateLogDetailsLogTypeEnumIgnoreCase := make(map[string]CreateLogDetailsLogTypeEnum)
+	for k, v := range mappingCreateLogDetailsLogTypeEnum {
+		mappingCreateLogDetailsLogTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateLogDetailsLogTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

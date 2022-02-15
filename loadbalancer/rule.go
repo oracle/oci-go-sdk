@@ -166,3 +166,14 @@ func GetRuleActionEnumStringValues() []string {
 		"HTTP_HEADER",
 	}
 }
+
+// GetMappingRuleActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRuleActionEnum(val string) (RuleActionEnum, bool) {
+	mappingRuleActionEnumIgnoreCase := make(map[string]RuleActionEnum)
+	for k, v := range mappingRuleActionEnum {
+		mappingRuleActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRuleActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

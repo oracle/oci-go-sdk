@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // AlertPolicyLifecycleStateEnum Enum with underlying type: string
 type AlertPolicyLifecycleStateEnum string
 
@@ -50,4 +54,15 @@ func GetAlertPolicyLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingAlertPolicyLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAlertPolicyLifecycleStateEnum(val string) (AlertPolicyLifecycleStateEnum, bool) {
+	mappingAlertPolicyLifecycleStateEnumIgnoreCase := make(map[string]AlertPolicyLifecycleStateEnum)
+	for k, v := range mappingAlertPolicyLifecycleStateEnum {
+		mappingAlertPolicyLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAlertPolicyLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

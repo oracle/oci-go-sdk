@@ -75,10 +75,10 @@ func (request ListManagementDashboardsRequest) RetryPolicy() *common.RetryPolicy
 // Not recommended for calling this function directly
 func (request ListManagementDashboardsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListManagementDashboardsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListManagementDashboardsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListManagementDashboardsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagementDashboardsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListManagementDashboardsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListManagementDashboardsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -146,6 +146,17 @@ func GetListManagementDashboardsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListManagementDashboardsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementDashboardsSortOrderEnum(val string) (ListManagementDashboardsSortOrderEnum, bool) {
+	mappingListManagementDashboardsSortOrderEnumIgnoreCase := make(map[string]ListManagementDashboardsSortOrderEnum)
+	for k, v := range mappingListManagementDashboardsSortOrderEnum {
+		mappingListManagementDashboardsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementDashboardsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagementDashboardsSortByEnum Enum with underlying type: string
 type ListManagementDashboardsSortByEnum string
 
@@ -175,4 +186,15 @@ func GetListManagementDashboardsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListManagementDashboardsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementDashboardsSortByEnum(val string) (ListManagementDashboardsSortByEnum, bool) {
+	mappingListManagementDashboardsSortByEnumIgnoreCase := make(map[string]ListManagementDashboardsSortByEnum)
+	for k, v := range mappingListManagementDashboardsSortByEnum {
+		mappingListManagementDashboardsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementDashboardsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -44,7 +44,7 @@ func (m FacetedSearchAggregation) String() string {
 func (m FacetedSearchAggregation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingFacetedSearchAggregationPropertyTypeEnum[string(m.PropertyType)]; !ok && m.PropertyType != "" {
+	if _, ok := GetMappingFacetedSearchAggregationPropertyTypeEnum(string(m.PropertyType)); !ok && m.PropertyType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PropertyType: %s. Supported values are: %s.", m.PropertyType, strings.Join(GetFacetedSearchAggregationPropertyTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -82,4 +82,15 @@ func GetFacetedSearchAggregationPropertyTypeEnumStringValues() []string {
 		"CUSTOM_PROPERTY",
 		"DEFAULT_PROPERTY",
 	}
+}
+
+// GetMappingFacetedSearchAggregationPropertyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFacetedSearchAggregationPropertyTypeEnum(val string) (FacetedSearchAggregationPropertyTypeEnum, bool) {
+	mappingFacetedSearchAggregationPropertyTypeEnumIgnoreCase := make(map[string]FacetedSearchAggregationPropertyTypeEnum)
+	for k, v := range mappingFacetedSearchAggregationPropertyTypeEnum {
+		mappingFacetedSearchAggregationPropertyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFacetedSearchAggregationPropertyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

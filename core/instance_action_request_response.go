@@ -76,7 +76,7 @@ func (request InstanceActionRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request InstanceActionRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingInstanceActionActionEnum[string(request.Action)]; !ok && request.Action != "" {
+	if _, ok := GetMappingInstanceActionActionEnum(string(request.Action)); !ok && request.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", request.Action, strings.Join(GetInstanceActionActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -152,4 +152,15 @@ func GetInstanceActionActionEnumStringValues() []string {
 		"SOFTSTOP",
 		"SENDDIAGNOSTICINTERRUPT",
 	}
+}
+
+// GetMappingInstanceActionActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstanceActionActionEnum(val string) (InstanceActionActionEnum, bool) {
+	mappingInstanceActionActionEnumIgnoreCase := make(map[string]InstanceActionActionEnum)
+	for k, v := range mappingInstanceActionActionEnum {
+		mappingInstanceActionActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstanceActionActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

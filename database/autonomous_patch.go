@@ -60,10 +60,10 @@ func (m AutonomousPatch) String() string {
 func (m AutonomousPatch) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAutonomousPatchLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAutonomousPatchLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAutonomousPatchLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousPatchPatchModelEnum[string(m.PatchModel)]; !ok && m.PatchModel != "" {
+	if _, ok := GetMappingAutonomousPatchPatchModelEnum(string(m.PatchModel)); !ok && m.PatchModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PatchModel: %s. Supported values are: %s.", m.PatchModel, strings.Join(GetAutonomousPatchPatchModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -109,6 +109,17 @@ func GetAutonomousPatchLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingAutonomousPatchLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousPatchLifecycleStateEnum(val string) (AutonomousPatchLifecycleStateEnum, bool) {
+	mappingAutonomousPatchLifecycleStateEnumIgnoreCase := make(map[string]AutonomousPatchLifecycleStateEnum)
+	for k, v := range mappingAutonomousPatchLifecycleStateEnum {
+		mappingAutonomousPatchLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousPatchLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousPatchPatchModelEnum Enum with underlying type: string
 type AutonomousPatchPatchModelEnum string
 
@@ -138,4 +149,15 @@ func GetAutonomousPatchPatchModelEnumStringValues() []string {
 		"RELEASE_UPDATES",
 		"RELEASE_UPDATE_REVISIONS",
 	}
+}
+
+// GetMappingAutonomousPatchPatchModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousPatchPatchModelEnum(val string) (AutonomousPatchPatchModelEnum, bool) {
+	mappingAutonomousPatchPatchModelEnumIgnoreCase := make(map[string]AutonomousPatchPatchModelEnum)
+	for k, v := range mappingAutonomousPatchPatchModelEnum {
+		mappingAutonomousPatchPatchModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousPatchPatchModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

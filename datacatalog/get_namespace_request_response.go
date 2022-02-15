@@ -67,7 +67,7 @@ func (request GetNamespaceRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetNamespaceRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetNamespaceFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetNamespaceFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetNamespaceFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -154,4 +154,15 @@ func GetGetNamespaceFieldsEnumStringValues() []string {
 		"updatedById",
 		"properties",
 	}
+}
+
+// GetMappingGetNamespaceFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetNamespaceFieldsEnum(val string) (GetNamespaceFieldsEnum, bool) {
+	mappingGetNamespaceFieldsEnumIgnoreCase := make(map[string]GetNamespaceFieldsEnum)
+	for k, v := range mappingGetNamespaceFieldsEnum {
+		mappingGetNamespaceFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetNamespaceFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

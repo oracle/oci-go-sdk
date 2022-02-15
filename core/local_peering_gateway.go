@@ -102,10 +102,10 @@ func (m LocalPeeringGateway) String() string {
 // Not recommended for calling this function directly
 func (m LocalPeeringGateway) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingLocalPeeringGatewayLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLocalPeeringGatewayLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLocalPeeringGatewayLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLocalPeeringGatewayPeeringStatusEnum[string(m.PeeringStatus)]; !ok && m.PeeringStatus != "" {
+	if _, ok := GetMappingLocalPeeringGatewayPeeringStatusEnum(string(m.PeeringStatus)); !ok && m.PeeringStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PeeringStatus: %s. Supported values are: %s.", m.PeeringStatus, strings.Join(GetLocalPeeringGatewayPeeringStatusEnumStringValues(), ",")))
 	}
 
@@ -152,6 +152,17 @@ func GetLocalPeeringGatewayLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingLocalPeeringGatewayLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLocalPeeringGatewayLifecycleStateEnum(val string) (LocalPeeringGatewayLifecycleStateEnum, bool) {
+	mappingLocalPeeringGatewayLifecycleStateEnumIgnoreCase := make(map[string]LocalPeeringGatewayLifecycleStateEnum)
+	for k, v := range mappingLocalPeeringGatewayLifecycleStateEnum {
+		mappingLocalPeeringGatewayLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLocalPeeringGatewayLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // LocalPeeringGatewayPeeringStatusEnum Enum with underlying type: string
 type LocalPeeringGatewayPeeringStatusEnum string
 
@@ -190,4 +201,15 @@ func GetLocalPeeringGatewayPeeringStatusEnumStringValues() []string {
 		"PENDING",
 		"REVOKED",
 	}
+}
+
+// GetMappingLocalPeeringGatewayPeeringStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLocalPeeringGatewayPeeringStatusEnum(val string) (LocalPeeringGatewayPeeringStatusEnum, bool) {
+	mappingLocalPeeringGatewayPeeringStatusEnumIgnoreCase := make(map[string]LocalPeeringGatewayPeeringStatusEnum)
+	for k, v := range mappingLocalPeeringGatewayPeeringStatusEnum {
+		mappingLocalPeeringGatewayPeeringStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLocalPeeringGatewayPeeringStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

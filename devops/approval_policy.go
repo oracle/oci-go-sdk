@@ -102,3 +102,14 @@ func GetApprovalPolicyApprovalPolicyTypeEnumStringValues() []string {
 		"COUNT_BASED_APPROVAL",
 	}
 }
+
+// GetMappingApprovalPolicyApprovalPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingApprovalPolicyApprovalPolicyTypeEnum(val string) (ApprovalPolicyApprovalPolicyTypeEnum, bool) {
+	mappingApprovalPolicyApprovalPolicyTypeEnumIgnoreCase := make(map[string]ApprovalPolicyApprovalPolicyTypeEnum)
+	for k, v := range mappingApprovalPolicyApprovalPolicyTypeEnum {
+		mappingApprovalPolicyApprovalPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingApprovalPolicyApprovalPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

@@ -69,7 +69,7 @@ func (request GetProjectRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetProjectRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Projection {
-		if _, ok := mappingGetProjectProjectionEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetProjectProjectionEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Projection: %s. Supported values are: %s.", val, strings.Join(GetGetProjectProjectionEnumStringValues(), ",")))
 		}
 	}
@@ -132,4 +132,15 @@ func GetGetProjectProjectionEnumStringValues() []string {
 	return []string{
 		"CHILD_COUNT_STATISTICS",
 	}
+}
+
+// GetMappingGetProjectProjectionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetProjectProjectionEnum(val string) (GetProjectProjectionEnum, bool) {
+	mappingGetProjectProjectionEnumIgnoreCase := make(map[string]GetProjectProjectionEnum)
+	for k, v := range mappingGetProjectProjectionEnum {
+		mappingGetProjectProjectionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetProjectProjectionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

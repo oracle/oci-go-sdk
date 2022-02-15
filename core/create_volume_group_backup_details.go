@@ -58,7 +58,7 @@ func (m CreateVolumeGroupBackupDetails) String() string {
 func (m CreateVolumeGroupBackupDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateVolumeGroupBackupDetailsTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingCreateVolumeGroupBackupDetailsTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetCreateVolumeGroupBackupDetailsTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -96,4 +96,15 @@ func GetCreateVolumeGroupBackupDetailsTypeEnumStringValues() []string {
 		"FULL",
 		"INCREMENTAL",
 	}
+}
+
+// GetMappingCreateVolumeGroupBackupDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateVolumeGroupBackupDetailsTypeEnum(val string) (CreateVolumeGroupBackupDetailsTypeEnum, bool) {
+	mappingCreateVolumeGroupBackupDetailsTypeEnumIgnoreCase := make(map[string]CreateVolumeGroupBackupDetailsTypeEnum)
+	for k, v := range mappingCreateVolumeGroupBackupDetailsTypeEnum {
+		mappingCreateVolumeGroupBackupDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateVolumeGroupBackupDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

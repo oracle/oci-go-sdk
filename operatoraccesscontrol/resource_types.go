@@ -11,6 +11,10 @@
 
 package operatoraccesscontrol
 
+import (
+	"strings"
+)
+
 // ResourceTypesEnum Enum with underlying type: string
 type ResourceTypesEnum string
 
@@ -43,4 +47,15 @@ func GetResourceTypesEnumStringValues() []string {
 		"EXADATAINFRASTRUCTURE",
 		"AUTONOMOUSVMCLUSTER",
 	}
+}
+
+// GetMappingResourceTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResourceTypesEnum(val string) (ResourceTypesEnum, bool) {
+	mappingResourceTypesEnumIgnoreCase := make(map[string]ResourceTypesEnum)
+	for k, v := range mappingResourceTypesEnum {
+		mappingResourceTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResourceTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

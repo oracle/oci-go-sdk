@@ -197,7 +197,7 @@ func (m deployenvironment) String() string {
 func (m deployenvironment) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDeployEnvironmentLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDeployEnvironmentLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDeployEnvironmentLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -249,6 +249,17 @@ func GetDeployEnvironmentLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingDeployEnvironmentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeployEnvironmentLifecycleStateEnum(val string) (DeployEnvironmentLifecycleStateEnum, bool) {
+	mappingDeployEnvironmentLifecycleStateEnumIgnoreCase := make(map[string]DeployEnvironmentLifecycleStateEnum)
+	for k, v := range mappingDeployEnvironmentLifecycleStateEnum {
+		mappingDeployEnvironmentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeployEnvironmentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DeployEnvironmentDeployEnvironmentTypeEnum Enum with underlying type: string
 type DeployEnvironmentDeployEnvironmentTypeEnum string
 
@@ -281,4 +292,15 @@ func GetDeployEnvironmentDeployEnvironmentTypeEnumStringValues() []string {
 		"COMPUTE_INSTANCE_GROUP",
 		"FUNCTION",
 	}
+}
+
+// GetMappingDeployEnvironmentDeployEnvironmentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeployEnvironmentDeployEnvironmentTypeEnum(val string) (DeployEnvironmentDeployEnvironmentTypeEnum, bool) {
+	mappingDeployEnvironmentDeployEnvironmentTypeEnumIgnoreCase := make(map[string]DeployEnvironmentDeployEnvironmentTypeEnum)
+	for k, v := range mappingDeployEnvironmentDeployEnvironmentTypeEnum {
+		mappingDeployEnvironmentDeployEnvironmentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeployEnvironmentDeployEnvironmentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

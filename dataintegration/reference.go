@@ -59,7 +59,7 @@ func (m Reference) String() string {
 func (m Reference) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingReferenceTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingReferenceTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetReferenceTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -109,4 +109,15 @@ func GetReferenceTypeEnumStringValues() []string {
 		"MYSQL_DATA_ASSET",
 		"GENERIC_JDBC_DATA_ASSET",
 	}
+}
+
+// GetMappingReferenceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingReferenceTypeEnum(val string) (ReferenceTypeEnum, bool) {
+	mappingReferenceTypeEnumIgnoreCase := make(map[string]ReferenceTypeEnum)
+	for k, v := range mappingReferenceTypeEnum {
+		mappingReferenceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingReferenceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

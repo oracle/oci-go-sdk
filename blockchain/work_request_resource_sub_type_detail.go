@@ -38,7 +38,7 @@ func (m WorkRequestResourceSubTypeDetail) String() string {
 // Not recommended for calling this function directly
 func (m WorkRequestResourceSubTypeDetail) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingWorkRequestResourceSubTypeDetailSubTypeStatusEnum[string(m.SubTypeStatus)]; !ok && m.SubTypeStatus != "" {
+	if _, ok := GetMappingWorkRequestResourceSubTypeDetailSubTypeStatusEnum(string(m.SubTypeStatus)); !ok && m.SubTypeStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SubTypeStatus: %s. Supported values are: %s.", m.SubTypeStatus, strings.Join(GetWorkRequestResourceSubTypeDetailSubTypeStatusEnumStringValues(), ",")))
 	}
 
@@ -80,4 +80,15 @@ func GetWorkRequestResourceSubTypeDetailSubTypeStatusEnumStringValues() []string
 		"UPDATED",
 		"DELETED",
 	}
+}
+
+// GetMappingWorkRequestResourceSubTypeDetailSubTypeStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestResourceSubTypeDetailSubTypeStatusEnum(val string) (WorkRequestResourceSubTypeDetailSubTypeStatusEnum, bool) {
+	mappingWorkRequestResourceSubTypeDetailSubTypeStatusEnumIgnoreCase := make(map[string]WorkRequestResourceSubTypeDetailSubTypeStatusEnum)
+	for k, v := range mappingWorkRequestResourceSubTypeDetailSubTypeStatusEnum {
+		mappingWorkRequestResourceSubTypeDetailSubTypeStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestResourceSubTypeDetailSubTypeStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

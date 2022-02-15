@@ -81,13 +81,13 @@ func (request ListBdsApiKeysRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListBdsApiKeysRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBdsApiKeyLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingBdsApiKeyLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetBdsApiKeyLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBdsApiKeysSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListBdsApiKeysSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListBdsApiKeysSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBdsApiKeysSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListBdsApiKeysSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListBdsApiKeysSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -155,6 +155,17 @@ func GetListBdsApiKeysSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListBdsApiKeysSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBdsApiKeysSortByEnum(val string) (ListBdsApiKeysSortByEnum, bool) {
+	mappingListBdsApiKeysSortByEnumIgnoreCase := make(map[string]ListBdsApiKeysSortByEnum)
+	for k, v := range mappingListBdsApiKeysSortByEnum {
+		mappingListBdsApiKeysSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBdsApiKeysSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListBdsApiKeysSortOrderEnum Enum with underlying type: string
 type ListBdsApiKeysSortOrderEnum string
 
@@ -184,4 +195,15 @@ func GetListBdsApiKeysSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListBdsApiKeysSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBdsApiKeysSortOrderEnum(val string) (ListBdsApiKeysSortOrderEnum, bool) {
+	mappingListBdsApiKeysSortOrderEnumIgnoreCase := make(map[string]ListBdsApiKeysSortOrderEnum)
+	for k, v := range mappingListBdsApiKeysSortOrderEnum {
+		mappingListBdsApiKeysSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBdsApiKeysSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

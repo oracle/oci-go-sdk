@@ -10,6 +10,10 @@
 
 package datacatalog
 
+import (
+	"strings"
+)
+
 // ConnectionResultEnum Enum with underlying type: string
 type ConnectionResultEnum string
 
@@ -39,4 +43,15 @@ func GetConnectionResultEnumStringValues() []string {
 		"SUCCEEDED",
 		"FAILED",
 	}
+}
+
+// GetMappingConnectionResultEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConnectionResultEnum(val string) (ConnectionResultEnum, bool) {
+	mappingConnectionResultEnumIgnoreCase := make(map[string]ConnectionResultEnum)
+	for k, v := range mappingConnectionResultEnum {
+		mappingConnectionResultEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConnectionResultEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -37,7 +37,7 @@ func (m TablespaceStorageSize) String() string {
 func (m TablespaceStorageSize) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTablespaceStorageSizeUnitEnum[string(m.Unit)]; !ok && m.Unit != "" {
+	if _, ok := GetMappingTablespaceStorageSizeUnitEnum(string(m.Unit)); !ok && m.Unit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Unit: %s. Supported values are: %s.", m.Unit, strings.Join(GetTablespaceStorageSizeUnitEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -84,4 +84,15 @@ func GetTablespaceStorageSizeUnitEnumStringValues() []string {
 		"GIGABYTES",
 		"TERABYTES",
 	}
+}
+
+// GetMappingTablespaceStorageSizeUnitEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceStorageSizeUnitEnum(val string) (TablespaceStorageSizeUnitEnum, bool) {
+	mappingTablespaceStorageSizeUnitEnumIgnoreCase := make(map[string]TablespaceStorageSizeUnitEnum)
+	for k, v := range mappingTablespaceStorageSizeUnitEnum {
+		mappingTablespaceStorageSizeUnitEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceStorageSizeUnitEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

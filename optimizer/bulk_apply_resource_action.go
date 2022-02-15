@@ -50,7 +50,7 @@ func (m BulkApplyResourceAction) String() string {
 func (m BulkApplyResourceAction) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

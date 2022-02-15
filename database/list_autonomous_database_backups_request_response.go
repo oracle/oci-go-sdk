@@ -82,13 +82,13 @@ func (request ListAutonomousDatabaseBackupsRequest) RetryPolicy() *common.RetryP
 // Not recommended for calling this function directly
 func (request ListAutonomousDatabaseBackupsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAutonomousDatabaseBackupsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAutonomousDatabaseBackupsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAutonomousDatabaseBackupsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAutonomousDatabaseBackupsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAutonomousDatabaseBackupsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAutonomousDatabaseBackupsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseBackupSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingAutonomousDatabaseBackupSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetAutonomousDatabaseBackupSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -157,6 +157,17 @@ func GetListAutonomousDatabaseBackupsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAutonomousDatabaseBackupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAutonomousDatabaseBackupsSortByEnum(val string) (ListAutonomousDatabaseBackupsSortByEnum, bool) {
+	mappingListAutonomousDatabaseBackupsSortByEnumIgnoreCase := make(map[string]ListAutonomousDatabaseBackupsSortByEnum)
+	for k, v := range mappingListAutonomousDatabaseBackupsSortByEnum {
+		mappingListAutonomousDatabaseBackupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAutonomousDatabaseBackupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAutonomousDatabaseBackupsSortOrderEnum Enum with underlying type: string
 type ListAutonomousDatabaseBackupsSortOrderEnum string
 
@@ -186,4 +197,15 @@ func GetListAutonomousDatabaseBackupsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAutonomousDatabaseBackupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAutonomousDatabaseBackupsSortOrderEnum(val string) (ListAutonomousDatabaseBackupsSortOrderEnum, bool) {
+	mappingListAutonomousDatabaseBackupsSortOrderEnumIgnoreCase := make(map[string]ListAutonomousDatabaseBackupsSortOrderEnum)
+	for k, v := range mappingListAutonomousDatabaseBackupsSortOrderEnum {
+		mappingListAutonomousDatabaseBackupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAutonomousDatabaseBackupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

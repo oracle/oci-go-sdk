@@ -122,3 +122,14 @@ func GetAuthenticationPolicyTypeEnumStringValues() []string {
 		"JWT_AUTHENTICATION",
 	}
 }
+
+// GetMappingAuthenticationPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAuthenticationPolicyTypeEnum(val string) (AuthenticationPolicyTypeEnum, bool) {
+	mappingAuthenticationPolicyTypeEnumIgnoreCase := make(map[string]AuthenticationPolicyTypeEnum)
+	for k, v := range mappingAuthenticationPolicyTypeEnum {
+		mappingAuthenticationPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAuthenticationPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

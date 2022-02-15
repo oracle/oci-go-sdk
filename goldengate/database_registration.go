@@ -104,10 +104,10 @@ func (m DatabaseRegistration) String() string {
 func (m DatabaseRegistration) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatabaseRegistrationSessionModeEnum[string(m.SessionMode)]; !ok && m.SessionMode != "" {
+	if _, ok := GetMappingDatabaseRegistrationSessionModeEnum(string(m.SessionMode)); !ok && m.SessionMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SessionMode: %s. Supported values are: %s.", m.SessionMode, strings.Join(GetDatabaseRegistrationSessionModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -145,4 +145,15 @@ func GetDatabaseRegistrationSessionModeEnumStringValues() []string {
 		"DIRECT",
 		"REDIRECT",
 	}
+}
+
+// GetMappingDatabaseRegistrationSessionModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseRegistrationSessionModeEnum(val string) (DatabaseRegistrationSessionModeEnum, bool) {
+	mappingDatabaseRegistrationSessionModeEnumIgnoreCase := make(map[string]DatabaseRegistrationSessionModeEnum)
+	for k, v := range mappingDatabaseRegistrationSessionModeEnum {
+		mappingDatabaseRegistrationSessionModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseRegistrationSessionModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

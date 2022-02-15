@@ -73,7 +73,7 @@ func (request GetTermRelationshipRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetTermRelationshipRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetTermRelationshipFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetTermRelationshipFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetTermRelationshipFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -163,4 +163,15 @@ func GetGetTermRelationshipFieldsEnumStringValues() []string {
 		"timeCreated",
 		"uri",
 	}
+}
+
+// GetMappingGetTermRelationshipFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetTermRelationshipFieldsEnum(val string) (GetTermRelationshipFieldsEnum, bool) {
+	mappingGetTermRelationshipFieldsEnumIgnoreCase := make(map[string]GetTermRelationshipFieldsEnum)
+	for k, v := range mappingGetTermRelationshipFieldsEnum {
+		mappingGetTermRelationshipFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetTermRelationshipFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -42,7 +42,7 @@ func (m StructuredSearchDetails) String() string {
 func (m StructuredSearchDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSearchDetailsMatchingContextTypeEnum[string(m.MatchingContextType)]; !ok && m.MatchingContextType != "" {
+	if _, ok := GetMappingSearchDetailsMatchingContextTypeEnum(string(m.MatchingContextType)); !ok && m.MatchingContextType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MatchingContextType: %s. Supported values are: %s.", m.MatchingContextType, strings.Join(GetSearchDetailsMatchingContextTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

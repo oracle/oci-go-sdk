@@ -99,21 +99,21 @@ func (request ListExadataInsightsRequest) RetryPolicy() *common.RetryPolicy {
 func (request ListExadataInsightsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Status {
-		if _, ok := mappingResourceStatusEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingResourceStatusEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", val, strings.Join(GetResourceStatusEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range request.LifecycleState {
-		if _, ok := mappingLifecycleStateEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingLifecycleStateEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", val, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListExadataInsightsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListExadataInsightsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListExadataInsightsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListExadataInsightsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListExadataInsightsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListExadataInsightsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -184,6 +184,17 @@ func GetListExadataInsightsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListExadataInsightsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListExadataInsightsSortOrderEnum(val string) (ListExadataInsightsSortOrderEnum, bool) {
+	mappingListExadataInsightsSortOrderEnumIgnoreCase := make(map[string]ListExadataInsightsSortOrderEnum)
+	for k, v := range mappingListExadataInsightsSortOrderEnum {
+		mappingListExadataInsightsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListExadataInsightsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListExadataInsightsSortByEnum Enum with underlying type: string
 type ListExadataInsightsSortByEnum string
 
@@ -213,4 +224,15 @@ func GetListExadataInsightsSortByEnumStringValues() []string {
 		"timeCreated",
 		"exadataName",
 	}
+}
+
+// GetMappingListExadataInsightsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListExadataInsightsSortByEnum(val string) (ListExadataInsightsSortByEnum, bool) {
+	mappingListExadataInsightsSortByEnumIgnoreCase := make(map[string]ListExadataInsightsSortByEnum)
+	for k, v := range mappingListExadataInsightsSortByEnum {
+		mappingListExadataInsightsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListExadataInsightsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

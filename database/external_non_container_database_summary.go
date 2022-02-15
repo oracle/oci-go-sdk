@@ -89,14 +89,14 @@ func (m ExternalNonContainerDatabaseSummary) String() string {
 // Not recommended for calling this function directly
 func (m ExternalNonContainerDatabaseSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingExternalNonContainerDatabaseSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingExternalNonContainerDatabaseSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetExternalNonContainerDatabaseSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingExternalNonContainerDatabaseSummaryDatabaseEditionEnum[string(m.DatabaseEdition)]; !ok && m.DatabaseEdition != "" {
+	if _, ok := GetMappingExternalNonContainerDatabaseSummaryDatabaseEditionEnum(string(m.DatabaseEdition)); !ok && m.DatabaseEdition != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseEdition: %s. Supported values are: %s.", m.DatabaseEdition, strings.Join(GetExternalNonContainerDatabaseSummaryDatabaseEditionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingExternalNonContainerDatabaseSummaryDatabaseConfigurationEnum[string(m.DatabaseConfiguration)]; !ok && m.DatabaseConfiguration != "" {
+	if _, ok := GetMappingExternalNonContainerDatabaseSummaryDatabaseConfigurationEnum(string(m.DatabaseConfiguration)); !ok && m.DatabaseConfiguration != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseConfiguration: %s. Supported values are: %s.", m.DatabaseConfiguration, strings.Join(GetExternalNonContainerDatabaseSummaryDatabaseConfigurationEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -151,6 +151,17 @@ func GetExternalNonContainerDatabaseSummaryLifecycleStateEnumStringValues() []st
 	}
 }
 
+// GetMappingExternalNonContainerDatabaseSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExternalNonContainerDatabaseSummaryLifecycleStateEnum(val string) (ExternalNonContainerDatabaseSummaryLifecycleStateEnum, bool) {
+	mappingExternalNonContainerDatabaseSummaryLifecycleStateEnumIgnoreCase := make(map[string]ExternalNonContainerDatabaseSummaryLifecycleStateEnum)
+	for k, v := range mappingExternalNonContainerDatabaseSummaryLifecycleStateEnum {
+		mappingExternalNonContainerDatabaseSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExternalNonContainerDatabaseSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ExternalNonContainerDatabaseSummaryDatabaseEditionEnum Enum with underlying type: string
 type ExternalNonContainerDatabaseSummaryDatabaseEditionEnum string
 
@@ -188,6 +199,17 @@ func GetExternalNonContainerDatabaseSummaryDatabaseEditionEnumStringValues() []s
 	}
 }
 
+// GetMappingExternalNonContainerDatabaseSummaryDatabaseEditionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExternalNonContainerDatabaseSummaryDatabaseEditionEnum(val string) (ExternalNonContainerDatabaseSummaryDatabaseEditionEnum, bool) {
+	mappingExternalNonContainerDatabaseSummaryDatabaseEditionEnumIgnoreCase := make(map[string]ExternalNonContainerDatabaseSummaryDatabaseEditionEnum)
+	for k, v := range mappingExternalNonContainerDatabaseSummaryDatabaseEditionEnum {
+		mappingExternalNonContainerDatabaseSummaryDatabaseEditionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExternalNonContainerDatabaseSummaryDatabaseEditionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ExternalNonContainerDatabaseSummaryDatabaseConfigurationEnum Enum with underlying type: string
 type ExternalNonContainerDatabaseSummaryDatabaseConfigurationEnum string
 
@@ -217,4 +239,15 @@ func GetExternalNonContainerDatabaseSummaryDatabaseConfigurationEnumStringValues
 		"RAC",
 		"SINGLE_INSTANCE",
 	}
+}
+
+// GetMappingExternalNonContainerDatabaseSummaryDatabaseConfigurationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExternalNonContainerDatabaseSummaryDatabaseConfigurationEnum(val string) (ExternalNonContainerDatabaseSummaryDatabaseConfigurationEnum, bool) {
+	mappingExternalNonContainerDatabaseSummaryDatabaseConfigurationEnumIgnoreCase := make(map[string]ExternalNonContainerDatabaseSummaryDatabaseConfigurationEnum)
+	for k, v := range mappingExternalNonContainerDatabaseSummaryDatabaseConfigurationEnum {
+		mappingExternalNonContainerDatabaseSummaryDatabaseConfigurationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExternalNonContainerDatabaseSummaryDatabaseConfigurationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

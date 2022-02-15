@@ -70,7 +70,7 @@ func (request GetConnectionRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetConnectionRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetConnectionFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetConnectionFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetConnectionFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -175,4 +175,15 @@ func GetGetConnectionFieldsEnumStringValues() []string {
 		"isDefault",
 		"uri",
 	}
+}
+
+// GetMappingGetConnectionFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetConnectionFieldsEnum(val string) (GetConnectionFieldsEnum, bool) {
+	mappingGetConnectionFieldsEnumIgnoreCase := make(map[string]GetConnectionFieldsEnum)
+	for k, v := range mappingGetConnectionFieldsEnum {
+		mappingGetConnectionFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetConnectionFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

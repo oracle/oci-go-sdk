@@ -66,7 +66,7 @@ func (request GetConditionMetadataTypeRequest) RetryPolicy() *common.RetryPolicy
 // Not recommended for calling this function directly
 func (request GetConditionMetadataTypeRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetConditionMetadataTypeConditionMetadataTypeIdEnum[string(request.ConditionMetadataTypeId)]; !ok && request.ConditionMetadataTypeId != "" {
+	if _, ok := GetMappingGetConditionMetadataTypeConditionMetadataTypeIdEnum(string(request.ConditionMetadataTypeId)); !ok && request.ConditionMetadataTypeId != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ConditionMetadataTypeId: %s. Supported values are: %s.", request.ConditionMetadataTypeId, strings.Join(GetGetConditionMetadataTypeConditionMetadataTypeIdEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -133,4 +133,15 @@ func GetGetConditionMetadataTypeConditionMetadataTypeIdEnumStringValues() []stri
 		"SecurityCondition",
 		"CloudGuardCondition",
 	}
+}
+
+// GetMappingGetConditionMetadataTypeConditionMetadataTypeIdEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetConditionMetadataTypeConditionMetadataTypeIdEnum(val string) (GetConditionMetadataTypeConditionMetadataTypeIdEnum, bool) {
+	mappingGetConditionMetadataTypeConditionMetadataTypeIdEnumIgnoreCase := make(map[string]GetConditionMetadataTypeConditionMetadataTypeIdEnum)
+	for k, v := range mappingGetConditionMetadataTypeConditionMetadataTypeIdEnum {
+		mappingGetConditionMetadataTypeConditionMetadataTypeIdEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetConditionMetadataTypeConditionMetadataTypeIdEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

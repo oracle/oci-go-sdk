@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // RecommendationLifecycleDetailEnum Enum with underlying type: string
 type RecommendationLifecycleDetailEnum string
 
@@ -41,4 +45,15 @@ func GetRecommendationLifecycleDetailEnumStringValues() []string {
 		"RESOLVED",
 		"DISMISSED",
 	}
+}
+
+// GetMappingRecommendationLifecycleDetailEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRecommendationLifecycleDetailEnum(val string) (RecommendationLifecycleDetailEnum, bool) {
+	mappingRecommendationLifecycleDetailEnumIgnoreCase := make(map[string]RecommendationLifecycleDetailEnum)
+	for k, v := range mappingRecommendationLifecycleDetailEnum {
+		mappingRecommendationLifecycleDetailEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRecommendationLifecycleDetailEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

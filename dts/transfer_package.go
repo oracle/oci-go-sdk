@@ -47,7 +47,7 @@ func (m TransferPackage) String() string {
 func (m TransferPackage) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTransferPackageLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingTransferPackageLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetTransferPackageLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -106,4 +106,15 @@ func GetTransferPackageLifecycleStateEnumStringValues() []string {
 		"CANCELLED",
 		"CANCELLED_RETURNED",
 	}
+}
+
+// GetMappingTransferPackageLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTransferPackageLifecycleStateEnum(val string) (TransferPackageLifecycleStateEnum, bool) {
+	mappingTransferPackageLifecycleStateEnumIgnoreCase := make(map[string]TransferPackageLifecycleStateEnum)
+	for k, v := range mappingTransferPackageLifecycleStateEnum {
+		mappingTransferPackageLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTransferPackageLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

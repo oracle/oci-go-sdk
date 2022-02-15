@@ -151,16 +151,16 @@ func (m TaskOperator) String() string {
 // Not recommended for calling this function directly
 func (m TaskOperator) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTaskOperatorRetryDelayUnitEnum[string(m.RetryDelayUnit)]; !ok && m.RetryDelayUnit != "" {
+	if _, ok := GetMappingTaskOperatorRetryDelayUnitEnum(string(m.RetryDelayUnit)); !ok && m.RetryDelayUnit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RetryDelayUnit: %s. Supported values are: %s.", m.RetryDelayUnit, strings.Join(GetTaskOperatorRetryDelayUnitEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTaskOperatorExpectedDurationUnitEnum[string(m.ExpectedDurationUnit)]; !ok && m.ExpectedDurationUnit != "" {
+	if _, ok := GetMappingTaskOperatorExpectedDurationUnitEnum(string(m.ExpectedDurationUnit)); !ok && m.ExpectedDurationUnit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExpectedDurationUnit: %s. Supported values are: %s.", m.ExpectedDurationUnit, strings.Join(GetTaskOperatorExpectedDurationUnitEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTaskOperatorTaskTypeEnum[string(m.TaskType)]; !ok && m.TaskType != "" {
+	if _, ok := GetMappingTaskOperatorTaskTypeEnum(string(m.TaskType)); !ok && m.TaskType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TaskType: %s. Supported values are: %s.", m.TaskType, strings.Join(GetTaskOperatorTaskTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTaskOperatorTriggerRuleEnum[string(m.TriggerRule)]; !ok && m.TriggerRule != "" {
+	if _, ok := GetMappingTaskOperatorTriggerRuleEnum(string(m.TriggerRule)); !ok && m.TriggerRule != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TriggerRule: %s. Supported values are: %s.", m.TriggerRule, strings.Join(GetTaskOperatorTriggerRuleEnumStringValues(), ",")))
 	}
 
@@ -314,6 +314,17 @@ func GetTaskOperatorRetryDelayUnitEnumStringValues() []string {
 	}
 }
 
+// GetMappingTaskOperatorRetryDelayUnitEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskOperatorRetryDelayUnitEnum(val string) (TaskOperatorRetryDelayUnitEnum, bool) {
+	mappingTaskOperatorRetryDelayUnitEnumIgnoreCase := make(map[string]TaskOperatorRetryDelayUnitEnum)
+	for k, v := range mappingTaskOperatorRetryDelayUnitEnum {
+		mappingTaskOperatorRetryDelayUnitEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskOperatorRetryDelayUnitEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TaskOperatorExpectedDurationUnitEnum Enum with underlying type: string
 type TaskOperatorExpectedDurationUnitEnum string
 
@@ -349,6 +360,17 @@ func GetTaskOperatorExpectedDurationUnitEnumStringValues() []string {
 		"HOURS",
 		"DAYS",
 	}
+}
+
+// GetMappingTaskOperatorExpectedDurationUnitEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskOperatorExpectedDurationUnitEnum(val string) (TaskOperatorExpectedDurationUnitEnum, bool) {
+	mappingTaskOperatorExpectedDurationUnitEnumIgnoreCase := make(map[string]TaskOperatorExpectedDurationUnitEnum)
+	for k, v := range mappingTaskOperatorExpectedDurationUnitEnum {
+		mappingTaskOperatorExpectedDurationUnitEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskOperatorExpectedDurationUnitEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // TaskOperatorTaskTypeEnum Enum with underlying type: string
@@ -394,6 +416,17 @@ func GetTaskOperatorTaskTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingTaskOperatorTaskTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskOperatorTaskTypeEnum(val string) (TaskOperatorTaskTypeEnum, bool) {
+	mappingTaskOperatorTaskTypeEnumIgnoreCase := make(map[string]TaskOperatorTaskTypeEnum)
+	for k, v := range mappingTaskOperatorTaskTypeEnum {
+		mappingTaskOperatorTaskTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskOperatorTaskTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TaskOperatorTriggerRuleEnum Enum with underlying type: string
 type TaskOperatorTriggerRuleEnum string
 
@@ -426,4 +459,15 @@ func GetTaskOperatorTriggerRuleEnumStringValues() []string {
 		"ALL_FAILED",
 		"ALL_COMPLETE",
 	}
+}
+
+// GetMappingTaskOperatorTriggerRuleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskOperatorTriggerRuleEnum(val string) (TaskOperatorTriggerRuleEnum, bool) {
+	mappingTaskOperatorTriggerRuleEnumIgnoreCase := make(map[string]TaskOperatorTriggerRuleEnum)
+	for k, v := range mappingTaskOperatorTriggerRuleEnum {
+		mappingTaskOperatorTriggerRuleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskOperatorTriggerRuleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

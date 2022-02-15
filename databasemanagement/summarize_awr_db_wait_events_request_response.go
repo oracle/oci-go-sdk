@@ -111,13 +111,13 @@ func (request SummarizeAwrDbWaitEventsRequest) RetryPolicy() *common.RetryPolicy
 // Not recommended for calling this function directly
 func (request SummarizeAwrDbWaitEventsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeAwrDbWaitEventsSessionTypeEnum[string(request.SessionType)]; !ok && request.SessionType != "" {
+	if _, ok := GetMappingSummarizeAwrDbWaitEventsSessionTypeEnum(string(request.SessionType)); !ok && request.SessionType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SessionType: %s. Supported values are: %s.", request.SessionType, strings.Join(GetSummarizeAwrDbWaitEventsSessionTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeAwrDbWaitEventsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeAwrDbWaitEventsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeAwrDbWaitEventsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeAwrDbWaitEventsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeAwrDbWaitEventsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeAwrDbWaitEventsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -188,6 +188,17 @@ func GetSummarizeAwrDbWaitEventsSessionTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeAwrDbWaitEventsSessionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeAwrDbWaitEventsSessionTypeEnum(val string) (SummarizeAwrDbWaitEventsSessionTypeEnum, bool) {
+	mappingSummarizeAwrDbWaitEventsSessionTypeEnumIgnoreCase := make(map[string]SummarizeAwrDbWaitEventsSessionTypeEnum)
+	for k, v := range mappingSummarizeAwrDbWaitEventsSessionTypeEnum {
+		mappingSummarizeAwrDbWaitEventsSessionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeAwrDbWaitEventsSessionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeAwrDbWaitEventsSortByEnum Enum with underlying type: string
 type SummarizeAwrDbWaitEventsSortByEnum string
 
@@ -219,6 +230,17 @@ func GetSummarizeAwrDbWaitEventsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeAwrDbWaitEventsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeAwrDbWaitEventsSortByEnum(val string) (SummarizeAwrDbWaitEventsSortByEnum, bool) {
+	mappingSummarizeAwrDbWaitEventsSortByEnumIgnoreCase := make(map[string]SummarizeAwrDbWaitEventsSortByEnum)
+	for k, v := range mappingSummarizeAwrDbWaitEventsSortByEnum {
+		mappingSummarizeAwrDbWaitEventsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeAwrDbWaitEventsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeAwrDbWaitEventsSortOrderEnum Enum with underlying type: string
 type SummarizeAwrDbWaitEventsSortOrderEnum string
 
@@ -248,4 +270,15 @@ func GetSummarizeAwrDbWaitEventsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingSummarizeAwrDbWaitEventsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeAwrDbWaitEventsSortOrderEnum(val string) (SummarizeAwrDbWaitEventsSortOrderEnum, bool) {
+	mappingSummarizeAwrDbWaitEventsSortOrderEnumIgnoreCase := make(map[string]SummarizeAwrDbWaitEventsSortOrderEnum)
+	for k, v := range mappingSummarizeAwrDbWaitEventsSortOrderEnum {
+		mappingSummarizeAwrDbWaitEventsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeAwrDbWaitEventsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

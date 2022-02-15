@@ -76,13 +76,13 @@ func (m BackupSummary) String() string {
 func (m BackupSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBackupSummaryTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingBackupSummaryTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetBackupSummaryTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBackupSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingBackupSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetBackupSummaryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBackupSummaryDatabaseEditionEnum[string(m.DatabaseEdition)]; !ok && m.DatabaseEdition != "" {
+	if _, ok := GetMappingBackupSummaryDatabaseEditionEnum(string(m.DatabaseEdition)); !ok && m.DatabaseEdition != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseEdition: %s. Supported values are: %s.", m.DatabaseEdition, strings.Join(GetBackupSummaryDatabaseEditionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -123,6 +123,17 @@ func GetBackupSummaryTypeEnumStringValues() []string {
 		"FULL",
 		"VIRTUAL_FULL",
 	}
+}
+
+// GetMappingBackupSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackupSummaryTypeEnum(val string) (BackupSummaryTypeEnum, bool) {
+	mappingBackupSummaryTypeEnumIgnoreCase := make(map[string]BackupSummaryTypeEnum)
+	for k, v := range mappingBackupSummaryTypeEnum {
+		mappingBackupSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackupSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // BackupSummaryLifecycleStateEnum Enum with underlying type: string
@@ -168,6 +179,17 @@ func GetBackupSummaryLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingBackupSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackupSummaryLifecycleStateEnum(val string) (BackupSummaryLifecycleStateEnum, bool) {
+	mappingBackupSummaryLifecycleStateEnumIgnoreCase := make(map[string]BackupSummaryLifecycleStateEnum)
+	for k, v := range mappingBackupSummaryLifecycleStateEnum {
+		mappingBackupSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackupSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // BackupSummaryDatabaseEditionEnum Enum with underlying type: string
 type BackupSummaryDatabaseEditionEnum string
 
@@ -203,4 +225,15 @@ func GetBackupSummaryDatabaseEditionEnumStringValues() []string {
 		"ENTERPRISE_EDITION_HIGH_PERFORMANCE",
 		"ENTERPRISE_EDITION_EXTREME_PERFORMANCE",
 	}
+}
+
+// GetMappingBackupSummaryDatabaseEditionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackupSummaryDatabaseEditionEnum(val string) (BackupSummaryDatabaseEditionEnum, bool) {
+	mappingBackupSummaryDatabaseEditionEnumIgnoreCase := make(map[string]BackupSummaryDatabaseEditionEnum)
+	for k, v := range mappingBackupSummaryDatabaseEditionEnum {
+		mappingBackupSummaryDatabaseEditionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackupSummaryDatabaseEditionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

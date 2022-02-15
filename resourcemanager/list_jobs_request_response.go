@@ -100,13 +100,13 @@ func (request ListJobsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListJobsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingJobLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingJobLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetJobLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListJobsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListJobsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListJobsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListJobsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListJobsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListJobsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -176,6 +176,17 @@ func GetListJobsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListJobsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobsSortByEnum(val string) (ListJobsSortByEnum, bool) {
+	mappingListJobsSortByEnumIgnoreCase := make(map[string]ListJobsSortByEnum)
+	for k, v := range mappingListJobsSortByEnum {
+		mappingListJobsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListJobsSortOrderEnum Enum with underlying type: string
 type ListJobsSortOrderEnum string
 
@@ -205,4 +216,15 @@ func GetListJobsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListJobsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobsSortOrderEnum(val string) (ListJobsSortOrderEnum, bool) {
+	mappingListJobsSortOrderEnumIgnoreCase := make(map[string]ListJobsSortOrderEnum)
+	for k, v := range mappingListJobsSortOrderEnum {
+		mappingListJobsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

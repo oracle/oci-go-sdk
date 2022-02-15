@@ -106,19 +106,19 @@ func (request ListZonesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListZonesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListZonesZoneTypeEnum[string(request.ZoneType)]; !ok && request.ZoneType != "" {
+	if _, ok := GetMappingListZonesZoneTypeEnum(string(request.ZoneType)); !ok && request.ZoneType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ZoneType: %s. Supported values are: %s.", request.ZoneType, strings.Join(GetListZonesZoneTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListZonesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListZonesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListZonesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListZonesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListZonesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListZonesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListZonesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListZonesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListZonesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListZonesScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingListZonesScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetListZonesScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -189,6 +189,17 @@ func GetListZonesZoneTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListZonesZoneTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListZonesZoneTypeEnum(val string) (ListZonesZoneTypeEnum, bool) {
+	mappingListZonesZoneTypeEnumIgnoreCase := make(map[string]ListZonesZoneTypeEnum)
+	for k, v := range mappingListZonesZoneTypeEnum {
+		mappingListZonesZoneTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListZonesZoneTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListZonesLifecycleStateEnum Enum with underlying type: string
 type ListZonesLifecycleStateEnum string
 
@@ -232,6 +243,17 @@ func GetListZonesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListZonesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListZonesLifecycleStateEnum(val string) (ListZonesLifecycleStateEnum, bool) {
+	mappingListZonesLifecycleStateEnumIgnoreCase := make(map[string]ListZonesLifecycleStateEnum)
+	for k, v := range mappingListZonesLifecycleStateEnum {
+		mappingListZonesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListZonesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListZonesSortByEnum Enum with underlying type: string
 type ListZonesSortByEnum string
 
@@ -266,6 +288,17 @@ func GetListZonesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListZonesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListZonesSortByEnum(val string) (ListZonesSortByEnum, bool) {
+	mappingListZonesSortByEnumIgnoreCase := make(map[string]ListZonesSortByEnum)
+	for k, v := range mappingListZonesSortByEnum {
+		mappingListZonesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListZonesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListZonesSortOrderEnum Enum with underlying type: string
 type ListZonesSortOrderEnum string
 
@@ -297,6 +330,17 @@ func GetListZonesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListZonesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListZonesSortOrderEnum(val string) (ListZonesSortOrderEnum, bool) {
+	mappingListZonesSortOrderEnumIgnoreCase := make(map[string]ListZonesSortOrderEnum)
+	for k, v := range mappingListZonesSortOrderEnum {
+		mappingListZonesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListZonesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListZonesScopeEnum Enum with underlying type: string
 type ListZonesScopeEnum string
 
@@ -326,4 +370,15 @@ func GetListZonesScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingListZonesScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListZonesScopeEnum(val string) (ListZonesScopeEnum, bool) {
+	mappingListZonesScopeEnumIgnoreCase := make(map[string]ListZonesScopeEnum)
+	for k, v := range mappingListZonesScopeEnum {
+		mappingListZonesScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListZonesScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

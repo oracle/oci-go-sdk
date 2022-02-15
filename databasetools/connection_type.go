@@ -9,6 +9,10 @@
 
 package databasetools
 
+import (
+	"strings"
+)
+
 // ConnectionTypeEnum Enum with underlying type: string
 type ConnectionTypeEnum string
 
@@ -35,4 +39,15 @@ func GetConnectionTypeEnumStringValues() []string {
 	return []string{
 		"ORACLE_DATABASE",
 	}
+}
+
+// GetMappingConnectionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConnectionTypeEnum(val string) (ConnectionTypeEnum, bool) {
+	mappingConnectionTypeEnumIgnoreCase := make(map[string]ConnectionTypeEnum)
+	for k, v := range mappingConnectionTypeEnum {
+		mappingConnectionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConnectionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -68,7 +68,7 @@ func (m Channel) String() string {
 // Not recommended for calling this function directly
 func (m Channel) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingChannelLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingChannelLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetChannelLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -193,4 +193,15 @@ func GetChannelLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingChannelLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingChannelLifecycleStateEnum(val string) (ChannelLifecycleStateEnum, bool) {
+	mappingChannelLifecycleStateEnumIgnoreCase := make(map[string]ChannelLifecycleStateEnum)
+	for k, v := range mappingChannelLifecycleStateEnum {
+		mappingChannelLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingChannelLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

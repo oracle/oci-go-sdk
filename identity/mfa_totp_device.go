@@ -66,7 +66,7 @@ func (m MfaTotpDevice) String() string {
 // Not recommended for calling this function directly
 func (m MfaTotpDevice) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingMfaTotpDeviceLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingMfaTotpDeviceLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetMfaTotpDeviceLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -114,4 +114,15 @@ func GetMfaTotpDeviceLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingMfaTotpDeviceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMfaTotpDeviceLifecycleStateEnum(val string) (MfaTotpDeviceLifecycleStateEnum, bool) {
+	mappingMfaTotpDeviceLifecycleStateEnumIgnoreCase := make(map[string]MfaTotpDeviceLifecycleStateEnum)
+	for k, v := range mappingMfaTotpDeviceLifecycleStateEnum {
+		mappingMfaTotpDeviceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMfaTotpDeviceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -35,7 +35,7 @@ func (m Metric) String() string {
 // Not recommended for calling this function directly
 func (m Metric) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingMetricMetricTypeEnum[string(m.MetricType)]; !ok && m.MetricType != "" {
+	if _, ok := GetMappingMetricMetricTypeEnum(string(m.MetricType)); !ok && m.MetricType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MetricType: %s. Supported values are: %s.", m.MetricType, strings.Join(GetMetricMetricTypeEnumStringValues(), ",")))
 	}
 
@@ -74,4 +74,15 @@ func GetMetricMetricTypeEnumStringValues() []string {
 		"CPU_UTILIZATION",
 		"MEMORY_UTILIZATION",
 	}
+}
+
+// GetMappingMetricMetricTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMetricMetricTypeEnum(val string) (MetricMetricTypeEnum, bool) {
+	mappingMetricMetricTypeEnumIgnoreCase := make(map[string]MetricMetricTypeEnum)
+	for k, v := range mappingMetricMetricTypeEnum {
+		mappingMetricMetricTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMetricMetricTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

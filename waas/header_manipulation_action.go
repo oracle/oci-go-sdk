@@ -116,3 +116,14 @@ func GetHeaderManipulationActionActionEnumStringValues() []string {
 		"REMOVE_HTTP_RESPONSE_HEADER",
 	}
 }
+
+// GetMappingHeaderManipulationActionActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHeaderManipulationActionActionEnum(val string) (HeaderManipulationActionActionEnum, bool) {
+	mappingHeaderManipulationActionActionEnumIgnoreCase := make(map[string]HeaderManipulationActionActionEnum)
+	for k, v := range mappingHeaderManipulationActionActionEnum {
+		mappingHeaderManipulationActionActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHeaderManipulationActionActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

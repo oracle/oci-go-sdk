@@ -72,7 +72,7 @@ func (m CreateGatewayDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateGatewayDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGatewayEndpointTypeEnum[string(m.EndpointType)]; !ok && m.EndpointType != "" {
+	if _, ok := GetMappingGatewayEndpointTypeEnum(string(m.EndpointType)); !ok && m.EndpointType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EndpointType: %s. Supported values are: %s.", m.EndpointType, strings.Join(GetGatewayEndpointTypeEnumStringValues(), ",")))
 	}
 

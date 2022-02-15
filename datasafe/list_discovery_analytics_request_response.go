@@ -79,7 +79,7 @@ func (request ListDiscoveryAnalyticsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDiscoveryAnalyticsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDiscoveryAnalyticsGroupByEnum[string(request.GroupBy)]; !ok && request.GroupBy != "" {
+	if _, ok := GetMappingListDiscoveryAnalyticsGroupByEnum(string(request.GroupBy)); !ok && request.GroupBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for GroupBy: %s. Supported values are: %s.", request.GroupBy, strings.Join(GetListDiscoveryAnalyticsGroupByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -147,4 +147,15 @@ func GetListDiscoveryAnalyticsGroupByEnumStringValues() []string {
 		"targetId",
 		"sensitiveDataModelId",
 	}
+}
+
+// GetMappingListDiscoveryAnalyticsGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDiscoveryAnalyticsGroupByEnum(val string) (ListDiscoveryAnalyticsGroupByEnum, bool) {
+	mappingListDiscoveryAnalyticsGroupByEnumIgnoreCase := make(map[string]ListDiscoveryAnalyticsGroupByEnum)
+	for k, v := range mappingListDiscoveryAnalyticsGroupByEnum {
+		mappingListDiscoveryAnalyticsGroupByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDiscoveryAnalyticsGroupByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

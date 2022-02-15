@@ -86,7 +86,7 @@ func (m CreateDiscoveryJobDetails) String() string {
 func (m CreateDiscoveryJobDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDiscoveryJobDiscoveryTypeEnum[string(m.DiscoveryType)]; !ok && m.DiscoveryType != "" {
+	if _, ok := GetMappingDiscoveryJobDiscoveryTypeEnum(string(m.DiscoveryType)); !ok && m.DiscoveryType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DiscoveryType: %s. Supported values are: %s.", m.DiscoveryType, strings.Join(GetDiscoveryJobDiscoveryTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

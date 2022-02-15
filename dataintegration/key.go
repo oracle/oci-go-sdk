@@ -102,3 +102,14 @@ func GetKeyModelTypeEnumStringValues() []string {
 		"FOREIGN_KEY",
 	}
 }
+
+// GetMappingKeyModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeyModelTypeEnum(val string) (KeyModelTypeEnum, bool) {
+	mappingKeyModelTypeEnumIgnoreCase := make(map[string]KeyModelTypeEnum)
+	for k, v := range mappingKeyModelTypeEnum {
+		mappingKeyModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeyModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

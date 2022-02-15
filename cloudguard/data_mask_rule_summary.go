@@ -80,15 +80,15 @@ func (m DataMaskRuleSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	for _, val := range m.DataMaskCategories {
-		if _, ok := mappingDataMaskCategoryEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingDataMaskCategoryEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataMaskCategories: %s. Supported values are: %s.", val, strings.Join(GetDataMaskCategoryEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingDataMaskRuleStatusEnum[string(m.DataMaskRuleStatus)]; !ok && m.DataMaskRuleStatus != "" {
+	if _, ok := GetMappingDataMaskRuleStatusEnum(string(m.DataMaskRuleStatus)); !ok && m.DataMaskRuleStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataMaskRuleStatus: %s. Supported values are: %s.", m.DataMaskRuleStatus, strings.Join(GetDataMaskRuleStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

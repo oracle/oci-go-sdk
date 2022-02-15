@@ -104,3 +104,14 @@ func GetResponseCacheStorePolicyTypeEnumStringValues() []string {
 		"FIXED_TTL_STORE_POLICY",
 	}
 }
+
+// GetMappingResponseCacheStorePolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResponseCacheStorePolicyTypeEnum(val string) (ResponseCacheStorePolicyTypeEnum, bool) {
+	mappingResponseCacheStorePolicyTypeEnumIgnoreCase := make(map[string]ResponseCacheStorePolicyTypeEnum)
+	for k, v := range mappingResponseCacheStorePolicyTypeEnum {
+		mappingResponseCacheStorePolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResponseCacheStorePolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

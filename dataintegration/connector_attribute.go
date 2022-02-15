@@ -102,3 +102,14 @@ func GetConnectorAttributeModelTypeEnumStringValues() []string {
 		"EXTERNAL_STORAGE",
 	}
 }
+
+// GetMappingConnectorAttributeModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConnectorAttributeModelTypeEnum(val string) (ConnectorAttributeModelTypeEnum, bool) {
+	mappingConnectorAttributeModelTypeEnumIgnoreCase := make(map[string]ConnectorAttributeModelTypeEnum)
+	for k, v := range mappingConnectorAttributeModelTypeEnum {
+		mappingConnectorAttributeModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConnectorAttributeModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

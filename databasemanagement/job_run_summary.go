@@ -60,7 +60,7 @@ func (m JobRunSummary) String() string {
 // Not recommended for calling this function directly
 func (m JobRunSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingJobRunRunStatusEnum[string(m.RunStatus)]; !ok && m.RunStatus != "" {
+	if _, ok := GetMappingJobRunRunStatusEnum(string(m.RunStatus)); !ok && m.RunStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RunStatus: %s. Supported values are: %s.", m.RunStatus, strings.Join(GetJobRunRunStatusEnumStringValues(), ",")))
 	}
 

@@ -97,11 +97,11 @@ func (m DbNodeSummary) String() string {
 // Not recommended for calling this function directly
 func (m DbNodeSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDbNodeSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDbNodeSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDbNodeSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDbNodeSummaryMaintenanceTypeEnum[string(m.MaintenanceType)]; !ok && m.MaintenanceType != "" {
+	if _, ok := GetMappingDbNodeSummaryMaintenanceTypeEnum(string(m.MaintenanceType)); !ok && m.MaintenanceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MaintenanceType: %s. Supported values are: %s.", m.MaintenanceType, strings.Join(GetDbNodeSummaryMaintenanceTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -162,6 +162,17 @@ func GetDbNodeSummaryLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingDbNodeSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbNodeSummaryLifecycleStateEnum(val string) (DbNodeSummaryLifecycleStateEnum, bool) {
+	mappingDbNodeSummaryLifecycleStateEnumIgnoreCase := make(map[string]DbNodeSummaryLifecycleStateEnum)
+	for k, v := range mappingDbNodeSummaryLifecycleStateEnum {
+		mappingDbNodeSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbNodeSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DbNodeSummaryMaintenanceTypeEnum Enum with underlying type: string
 type DbNodeSummaryMaintenanceTypeEnum string
 
@@ -188,4 +199,15 @@ func GetDbNodeSummaryMaintenanceTypeEnumStringValues() []string {
 	return []string{
 		"VMDB_REBOOT_MIGRATION",
 	}
+}
+
+// GetMappingDbNodeSummaryMaintenanceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbNodeSummaryMaintenanceTypeEnum(val string) (DbNodeSummaryMaintenanceTypeEnum, bool) {
+	mappingDbNodeSummaryMaintenanceTypeEnumIgnoreCase := make(map[string]DbNodeSummaryMaintenanceTypeEnum)
+	for k, v := range mappingDbNodeSummaryMaintenanceTypeEnum {
+		mappingDbNodeSummaryMaintenanceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbNodeSummaryMaintenanceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

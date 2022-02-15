@@ -110,10 +110,10 @@ func (m Model) String() string {
 // Not recommended for calling this function directly
 func (m Model) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingModelModelTypeEnum[string(m.ModelType)]; !ok && m.ModelType != "" {
+	if _, ok := GetMappingModelModelTypeEnum(string(m.ModelType)); !ok && m.ModelType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ModelType: %s. Supported values are: %s.", m.ModelType, strings.Join(GetModelModelTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingModelLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingModelLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetModelLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -272,6 +272,17 @@ func GetModelModelTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingModelModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingModelModelTypeEnum(val string) (ModelModelTypeEnum, bool) {
+	mappingModelModelTypeEnumIgnoreCase := make(map[string]ModelModelTypeEnum)
+	for k, v := range mappingModelModelTypeEnum {
+		mappingModelModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingModelModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ModelLifecycleStateEnum Enum with underlying type: string
 type ModelLifecycleStateEnum string
 
@@ -313,4 +324,15 @@ func GetModelLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingModelLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingModelLifecycleStateEnum(val string) (ModelLifecycleStateEnum, bool) {
+	mappingModelLifecycleStateEnumIgnoreCase := make(map[string]ModelLifecycleStateEnum)
+	for k, v := range mappingModelLifecycleStateEnum {
+		mappingModelLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingModelLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

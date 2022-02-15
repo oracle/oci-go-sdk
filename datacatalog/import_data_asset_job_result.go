@@ -45,7 +45,7 @@ func (m ImportDataAssetJobResult) String() string {
 func (m ImportDataAssetJobResult) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingJobExecutionStateEnum[string(m.ImportJobExecutionStatus)]; !ok && m.ImportJobExecutionStatus != "" {
+	if _, ok := GetMappingJobExecutionStateEnum(string(m.ImportJobExecutionStatus)); !ok && m.ImportJobExecutionStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ImportJobExecutionStatus: %s. Supported values are: %s.", m.ImportJobExecutionStatus, strings.Join(GetJobExecutionStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -67,7 +67,7 @@ func (request ListAgentImagesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAgentImagesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAgentImagesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAgentImagesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAgentImagesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -133,4 +133,15 @@ func GetListAgentImagesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAgentImagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAgentImagesSortOrderEnum(val string) (ListAgentImagesSortOrderEnum, bool) {
+	mappingListAgentImagesSortOrderEnumIgnoreCase := make(map[string]ListAgentImagesSortOrderEnum)
+	for k, v := range mappingListAgentImagesSortOrderEnum {
+		mappingListAgentImagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAgentImagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -109,3 +109,14 @@ func GetConnectionOptionConnectionTypeEnumStringValues() []string {
 		"ONPREM_CONNECTOR",
 	}
 }
+
+// GetMappingConnectionOptionConnectionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConnectionOptionConnectionTypeEnum(val string) (ConnectionOptionConnectionTypeEnum, bool) {
+	mappingConnectionOptionConnectionTypeEnumIgnoreCase := make(map[string]ConnectionOptionConnectionTypeEnum)
+	for k, v := range mappingConnectionOptionConnectionTypeEnum {
+		mappingConnectionOptionConnectionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConnectionOptionConnectionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

@@ -39,7 +39,7 @@ func (m BackendHealth) String() string {
 // Not recommended for calling this function directly
 func (m BackendHealth) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBackendHealthStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingBackendHealthStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetBackendHealthStatusEnumStringValues(), ",")))
 	}
 
@@ -84,4 +84,15 @@ func GetBackendHealthStatusEnumStringValues() []string {
 		"CRITICAL",
 		"UNKNOWN",
 	}
+}
+
+// GetMappingBackendHealthStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackendHealthStatusEnum(val string) (BackendHealthStatusEnum, bool) {
+	mappingBackendHealthStatusEnumIgnoreCase := make(map[string]BackendHealthStatusEnum)
+	for k, v := range mappingBackendHealthStatusEnum {
+		mappingBackendHealthStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackendHealthStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

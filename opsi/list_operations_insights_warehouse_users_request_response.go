@@ -92,15 +92,15 @@ func (request ListOperationsInsightsWarehouseUsersRequest) RetryPolicy() *common
 func (request ListOperationsInsightsWarehouseUsersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.LifecycleState {
-		if _, ok := mappingOperationsInsightsWarehouseUserLifecycleStateEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingOperationsInsightsWarehouseUserLifecycleStateEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", val, strings.Join(GetOperationsInsightsWarehouseUserLifecycleStateEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListOperationsInsightsWarehouseUsersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListOperationsInsightsWarehouseUsersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListOperationsInsightsWarehouseUsersSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListOperationsInsightsWarehouseUsersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListOperationsInsightsWarehouseUsersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListOperationsInsightsWarehouseUsersSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -168,6 +168,17 @@ func GetListOperationsInsightsWarehouseUsersSortOrderEnumStringValues() []string
 	}
 }
 
+// GetMappingListOperationsInsightsWarehouseUsersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListOperationsInsightsWarehouseUsersSortOrderEnum(val string) (ListOperationsInsightsWarehouseUsersSortOrderEnum, bool) {
+	mappingListOperationsInsightsWarehouseUsersSortOrderEnumIgnoreCase := make(map[string]ListOperationsInsightsWarehouseUsersSortOrderEnum)
+	for k, v := range mappingListOperationsInsightsWarehouseUsersSortOrderEnum {
+		mappingListOperationsInsightsWarehouseUsersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListOperationsInsightsWarehouseUsersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListOperationsInsightsWarehouseUsersSortByEnum Enum with underlying type: string
 type ListOperationsInsightsWarehouseUsersSortByEnum string
 
@@ -197,4 +208,15 @@ func GetListOperationsInsightsWarehouseUsersSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListOperationsInsightsWarehouseUsersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListOperationsInsightsWarehouseUsersSortByEnum(val string) (ListOperationsInsightsWarehouseUsersSortByEnum, bool) {
+	mappingListOperationsInsightsWarehouseUsersSortByEnumIgnoreCase := make(map[string]ListOperationsInsightsWarehouseUsersSortByEnum)
+	for k, v := range mappingListOperationsInsightsWarehouseUsersSortByEnum {
+		mappingListOperationsInsightsWarehouseUsersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListOperationsInsightsWarehouseUsersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

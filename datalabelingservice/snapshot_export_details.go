@@ -102,3 +102,14 @@ func GetSnapshotExportDetailsExportTypeEnumStringValues() []string {
 		"OBJECT_STORAGE",
 	}
 }
+
+// GetMappingSnapshotExportDetailsExportTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSnapshotExportDetailsExportTypeEnum(val string) (SnapshotExportDetailsExportTypeEnum, bool) {
+	mappingSnapshotExportDetailsExportTypeEnumIgnoreCase := make(map[string]SnapshotExportDetailsExportTypeEnum)
+	for k, v := range mappingSnapshotExportDetailsExportTypeEnum {
+		mappingSnapshotExportDetailsExportTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSnapshotExportDetailsExportTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

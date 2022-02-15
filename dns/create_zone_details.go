@@ -83,11 +83,11 @@ func (m CreateZoneDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateZoneDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreateZoneDetailsZoneTypeEnum[string(m.ZoneType)]; !ok && m.ZoneType != "" {
+	if _, ok := GetMappingCreateZoneDetailsZoneTypeEnum(string(m.ZoneType)); !ok && m.ZoneType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ZoneType: %s. Supported values are: %s.", m.ZoneType, strings.Join(GetCreateZoneDetailsZoneTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingScopeEnum[string(m.Scope)]; !ok && m.Scope != "" {
+	if _, ok := GetMappingScopeEnum(string(m.Scope)); !ok && m.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", m.Scope, strings.Join(GetScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -139,4 +139,15 @@ func GetCreateZoneDetailsZoneTypeEnumStringValues() []string {
 		"PRIMARY",
 		"SECONDARY",
 	}
+}
+
+// GetMappingCreateZoneDetailsZoneTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateZoneDetailsZoneTypeEnum(val string) (CreateZoneDetailsZoneTypeEnum, bool) {
+	mappingCreateZoneDetailsZoneTypeEnumIgnoreCase := make(map[string]CreateZoneDetailsZoneTypeEnum)
+	for k, v := range mappingCreateZoneDetailsZoneTypeEnum {
+		mappingCreateZoneDetailsZoneTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateZoneDetailsZoneTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -70,7 +70,7 @@ func (m StackResourceDriftSummary) String() string {
 func (m StackResourceDriftSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingStackResourceDriftSummaryResourceDriftStatusEnum[string(m.ResourceDriftStatus)]; !ok && m.ResourceDriftStatus != "" {
+	if _, ok := GetMappingStackResourceDriftSummaryResourceDriftStatusEnum(string(m.ResourceDriftStatus)); !ok && m.ResourceDriftStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResourceDriftStatus: %s. Supported values are: %s.", m.ResourceDriftStatus, strings.Join(GetStackResourceDriftSummaryResourceDriftStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -114,4 +114,15 @@ func GetStackResourceDriftSummaryResourceDriftStatusEnumStringValues() []string 
 		"MODIFIED",
 		"DELETED",
 	}
+}
+
+// GetMappingStackResourceDriftSummaryResourceDriftStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStackResourceDriftSummaryResourceDriftStatusEnum(val string) (StackResourceDriftSummaryResourceDriftStatusEnum, bool) {
+	mappingStackResourceDriftSummaryResourceDriftStatusEnumIgnoreCase := make(map[string]StackResourceDriftSummaryResourceDriftStatusEnum)
+	for k, v := range mappingStackResourceDriftSummaryResourceDriftStatusEnum {
+		mappingStackResourceDriftSummaryResourceDriftStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStackResourceDriftSummaryResourceDriftStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

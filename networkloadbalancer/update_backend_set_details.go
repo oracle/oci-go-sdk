@@ -50,7 +50,7 @@ func (m UpdateBackendSetDetails) String() string {
 func (m UpdateBackendSetDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingIpVersionEnum[string(m.IpVersion)]; !ok && m.IpVersion != "" {
+	if _, ok := GetMappingIpVersionEnum(string(m.IpVersion)); !ok && m.IpVersion != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IpVersion: %s. Supported values are: %s.", m.IpVersion, strings.Join(GetIpVersionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

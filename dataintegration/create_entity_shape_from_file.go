@@ -79,7 +79,7 @@ func (m CreateEntityShapeFromFile) String() string {
 // Not recommended for calling this function directly
 func (m CreateEntityShapeFromFile) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreateEntityShapeFromFileEntityTypeEnum[string(m.EntityType)]; !ok && m.EntityType != "" {
+	if _, ok := GetMappingCreateEntityShapeFromFileEntityTypeEnum(string(m.EntityType)); !ok && m.EntityType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EntityType: %s. Supported values are: %s.", m.EntityType, strings.Join(GetCreateEntityShapeFromFileEntityTypeEnumStringValues(), ",")))
 	}
 
@@ -225,4 +225,15 @@ func GetCreateEntityShapeFromFileEntityTypeEnumStringValues() []string {
 		"STREAM",
 		"OTHER",
 	}
+}
+
+// GetMappingCreateEntityShapeFromFileEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateEntityShapeFromFileEntityTypeEnum(val string) (CreateEntityShapeFromFileEntityTypeEnum, bool) {
+	mappingCreateEntityShapeFromFileEntityTypeEnumIgnoreCase := make(map[string]CreateEntityShapeFromFileEntityTypeEnum)
+	for k, v := range mappingCreateEntityShapeFromFileEntityTypeEnum {
+		mappingCreateEntityShapeFromFileEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateEntityShapeFromFileEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -48,7 +48,7 @@ func (m TunnelRouteSummary) String() string {
 func (m TunnelRouteSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTunnelRouteSummaryAdvertiserEnum[string(m.Advertiser)]; !ok && m.Advertiser != "" {
+	if _, ok := GetMappingTunnelRouteSummaryAdvertiserEnum(string(m.Advertiser)); !ok && m.Advertiser != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Advertiser: %s. Supported values are: %s.", m.Advertiser, strings.Join(GetTunnelRouteSummaryAdvertiserEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -86,4 +86,15 @@ func GetTunnelRouteSummaryAdvertiserEnumStringValues() []string {
 		"CUSTOMER",
 		"ORACLE",
 	}
+}
+
+// GetMappingTunnelRouteSummaryAdvertiserEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTunnelRouteSummaryAdvertiserEnum(val string) (TunnelRouteSummaryAdvertiserEnum, bool) {
+	mappingTunnelRouteSummaryAdvertiserEnumIgnoreCase := make(map[string]TunnelRouteSummaryAdvertiserEnum)
+	for k, v := range mappingTunnelRouteSummaryAdvertiserEnum {
+		mappingTunnelRouteSummaryAdvertiserEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTunnelRouteSummaryAdvertiserEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,6 +11,10 @@
 
 package databasemanagement
 
+import (
+	"strings"
+)
+
 // ManagementOptionEnum Enum with underlying type: string
 type ManagementOptionEnum string
 
@@ -40,4 +44,15 @@ func GetManagementOptionEnumStringValues() []string {
 		"BASIC",
 		"ADVANCED",
 	}
+}
+
+// GetMappingManagementOptionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingManagementOptionEnum(val string) (ManagementOptionEnum, bool) {
+	mappingManagementOptionEnumIgnoreCase := make(map[string]ManagementOptionEnum)
+	for k, v := range mappingManagementOptionEnum {
+		mappingManagementOptionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingManagementOptionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

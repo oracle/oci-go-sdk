@@ -79,14 +79,14 @@ func (m CertificateAuthoritySummary) String() string {
 // Not recommended for calling this function directly
 func (m CertificateAuthoritySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCertificateAuthorityLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingCertificateAuthorityLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetCertificateAuthorityLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCertificateAuthorityConfigTypeEnum[string(m.ConfigType)]; !ok && m.ConfigType != "" {
+	if _, ok := GetMappingCertificateAuthorityConfigTypeEnum(string(m.ConfigType)); !ok && m.ConfigType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ConfigType: %s. Supported values are: %s.", m.ConfigType, strings.Join(GetCertificateAuthorityConfigTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingSignatureAlgorithmEnum[string(m.SigningAlgorithm)]; !ok && m.SigningAlgorithm != "" {
+	if _, ok := GetMappingSignatureAlgorithmEnum(string(m.SigningAlgorithm)); !ok && m.SigningAlgorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SigningAlgorithm: %s. Supported values are: %s.", m.SigningAlgorithm, strings.Join(GetSignatureAlgorithmEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -41,7 +41,7 @@ func (m QueryParameterValidationRequestPolicy) String() string {
 func (m QueryParameterValidationRequestPolicy) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingQueryParameterValidationRequestPolicyValidationModeEnum[string(m.ValidationMode)]; !ok && m.ValidationMode != "" {
+	if _, ok := GetMappingQueryParameterValidationRequestPolicyValidationModeEnum(string(m.ValidationMode)); !ok && m.ValidationMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ValidationMode: %s. Supported values are: %s.", m.ValidationMode, strings.Join(GetQueryParameterValidationRequestPolicyValidationModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -82,4 +82,15 @@ func GetQueryParameterValidationRequestPolicyValidationModeEnumStringValues() []
 		"PERMISSIVE",
 		"DISABLED",
 	}
+}
+
+// GetMappingQueryParameterValidationRequestPolicyValidationModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingQueryParameterValidationRequestPolicyValidationModeEnum(val string) (QueryParameterValidationRequestPolicyValidationModeEnum, bool) {
+	mappingQueryParameterValidationRequestPolicyValidationModeEnumIgnoreCase := make(map[string]QueryParameterValidationRequestPolicyValidationModeEnum)
+	for k, v := range mappingQueryParameterValidationRequestPolicyValidationModeEnum {
+		mappingQueryParameterValidationRequestPolicyValidationModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingQueryParameterValidationRequestPolicyValidationModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

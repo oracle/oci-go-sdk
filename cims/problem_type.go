@@ -9,6 +9,10 @@
 
 package cims
 
+import (
+	"strings"
+)
+
 // ProblemTypeEnum Enum with underlying type: string
 type ProblemTypeEnum string
 
@@ -44,4 +48,15 @@ func GetProblemTypeEnumStringValues() []string {
 		"TECH",
 		"ACCOUNT",
 	}
+}
+
+// GetMappingProblemTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingProblemTypeEnum(val string) (ProblemTypeEnum, bool) {
+	mappingProblemTypeEnumIgnoreCase := make(map[string]ProblemTypeEnum)
+	for k, v := range mappingProblemTypeEnum {
+		mappingProblemTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingProblemTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

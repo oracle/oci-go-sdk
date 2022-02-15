@@ -118,3 +118,14 @@ func GetApiSpecificationRouteBackendTypeEnumStringValues() []string {
 		"STOCK_RESPONSE_BACKEND",
 	}
 }
+
+// GetMappingApiSpecificationRouteBackendTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingApiSpecificationRouteBackendTypeEnum(val string) (ApiSpecificationRouteBackendTypeEnum, bool) {
+	mappingApiSpecificationRouteBackendTypeEnumIgnoreCase := make(map[string]ApiSpecificationRouteBackendTypeEnum)
+	for k, v := range mappingApiSpecificationRouteBackendTypeEnum {
+		mappingApiSpecificationRouteBackendTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingApiSpecificationRouteBackendTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

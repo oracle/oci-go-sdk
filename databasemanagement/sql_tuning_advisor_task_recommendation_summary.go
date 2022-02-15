@@ -57,7 +57,7 @@ func (m SqlTuningAdvisorTaskRecommendationSummary) String() string {
 // Not recommended for calling this function directly
 func (m SqlTuningAdvisorTaskRecommendationSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum[string(m.RecommendationType)]; !ok && m.RecommendationType != "" {
+	if _, ok := GetMappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum(string(m.RecommendationType)); !ok && m.RecommendationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RecommendationType: %s. Supported values are: %s.", m.RecommendationType, strings.Join(GetSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnumStringValues(), ",")))
 	}
 
@@ -111,4 +111,15 @@ func GetSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnumStringVal
 		"ERROR",
 		"MISCELLANEOUS",
 	}
+}
+
+// GetMappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum(val string) (SqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum, bool) {
+	mappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnumIgnoreCase := make(map[string]SqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum)
+	for k, v := range mappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum {
+		mappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

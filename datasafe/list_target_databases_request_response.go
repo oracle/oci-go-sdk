@@ -102,22 +102,22 @@ func (request ListTargetDatabasesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListTargetDatabasesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListTargetDatabasesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListTargetDatabasesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListTargetDatabasesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTargetDatabasesDatabaseTypeEnum[string(request.DatabaseType)]; !ok && request.DatabaseType != "" {
+	if _, ok := GetMappingListTargetDatabasesDatabaseTypeEnum(string(request.DatabaseType)); !ok && request.DatabaseType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseType: %s. Supported values are: %s.", request.DatabaseType, strings.Join(GetListTargetDatabasesDatabaseTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTargetDatabasesInfrastructureTypeEnum[string(request.InfrastructureType)]; !ok && request.InfrastructureType != "" {
+	if _, ok := GetMappingListTargetDatabasesInfrastructureTypeEnum(string(request.InfrastructureType)); !ok && request.InfrastructureType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InfrastructureType: %s. Supported values are: %s.", request.InfrastructureType, strings.Join(GetListTargetDatabasesInfrastructureTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTargetDatabasesAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListTargetDatabasesAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListTargetDatabasesAccessLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTargetDatabasesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListTargetDatabasesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListTargetDatabasesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTargetDatabasesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListTargetDatabasesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListTargetDatabasesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -205,6 +205,17 @@ func GetListTargetDatabasesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTargetDatabasesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetDatabasesLifecycleStateEnum(val string) (ListTargetDatabasesLifecycleStateEnum, bool) {
+	mappingListTargetDatabasesLifecycleStateEnumIgnoreCase := make(map[string]ListTargetDatabasesLifecycleStateEnum)
+	for k, v := range mappingListTargetDatabasesLifecycleStateEnum {
+		mappingListTargetDatabasesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetDatabasesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTargetDatabasesDatabaseTypeEnum Enum with underlying type: string
 type ListTargetDatabasesDatabaseTypeEnum string
 
@@ -237,6 +248,17 @@ func GetListTargetDatabasesDatabaseTypeEnumStringValues() []string {
 		"AUTONOMOUS_DATABASE",
 		"INSTALLED_DATABASE",
 	}
+}
+
+// GetMappingListTargetDatabasesDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetDatabasesDatabaseTypeEnum(val string) (ListTargetDatabasesDatabaseTypeEnum, bool) {
+	mappingListTargetDatabasesDatabaseTypeEnumIgnoreCase := make(map[string]ListTargetDatabasesDatabaseTypeEnum)
+	for k, v := range mappingListTargetDatabasesDatabaseTypeEnum {
+		mappingListTargetDatabasesDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetDatabasesDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListTargetDatabasesInfrastructureTypeEnum Enum with underlying type: string
@@ -276,6 +298,17 @@ func GetListTargetDatabasesInfrastructureTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTargetDatabasesInfrastructureTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetDatabasesInfrastructureTypeEnum(val string) (ListTargetDatabasesInfrastructureTypeEnum, bool) {
+	mappingListTargetDatabasesInfrastructureTypeEnumIgnoreCase := make(map[string]ListTargetDatabasesInfrastructureTypeEnum)
+	for k, v := range mappingListTargetDatabasesInfrastructureTypeEnum {
+		mappingListTargetDatabasesInfrastructureTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetDatabasesInfrastructureTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTargetDatabasesAccessLevelEnum Enum with underlying type: string
 type ListTargetDatabasesAccessLevelEnum string
 
@@ -305,6 +338,17 @@ func GetListTargetDatabasesAccessLevelEnumStringValues() []string {
 		"RESTRICTED",
 		"ACCESSIBLE",
 	}
+}
+
+// GetMappingListTargetDatabasesAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetDatabasesAccessLevelEnum(val string) (ListTargetDatabasesAccessLevelEnum, bool) {
+	mappingListTargetDatabasesAccessLevelEnumIgnoreCase := make(map[string]ListTargetDatabasesAccessLevelEnum)
+	for k, v := range mappingListTargetDatabasesAccessLevelEnum {
+		mappingListTargetDatabasesAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetDatabasesAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListTargetDatabasesSortOrderEnum Enum with underlying type: string
@@ -338,6 +382,17 @@ func GetListTargetDatabasesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTargetDatabasesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetDatabasesSortOrderEnum(val string) (ListTargetDatabasesSortOrderEnum, bool) {
+	mappingListTargetDatabasesSortOrderEnumIgnoreCase := make(map[string]ListTargetDatabasesSortOrderEnum)
+	for k, v := range mappingListTargetDatabasesSortOrderEnum {
+		mappingListTargetDatabasesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetDatabasesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTargetDatabasesSortByEnum Enum with underlying type: string
 type ListTargetDatabasesSortByEnum string
 
@@ -367,4 +422,15 @@ func GetListTargetDatabasesSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListTargetDatabasesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetDatabasesSortByEnum(val string) (ListTargetDatabasesSortByEnum, bool) {
+	mappingListTargetDatabasesSortByEnumIgnoreCase := make(map[string]ListTargetDatabasesSortByEnum)
+	for k, v := range mappingListTargetDatabasesSortByEnum {
+		mappingListTargetDatabasesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetDatabasesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

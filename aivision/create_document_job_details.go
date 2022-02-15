@@ -51,10 +51,10 @@ func (m CreateDocumentJobDetails) String() string {
 func (m CreateDocumentJobDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDocumentLanguageEnum[string(m.Language)]; !ok && m.Language != "" {
+	if _, ok := GetMappingDocumentLanguageEnum(string(m.Language)); !ok && m.Language != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Language: %s. Supported values are: %s.", m.Language, strings.Join(GetDocumentLanguageEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDocumentTypeEnum[string(m.DocumentType)]; !ok && m.DocumentType != "" {
+	if _, ok := GetMappingDocumentTypeEnum(string(m.DocumentType)); !ok && m.DocumentType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DocumentType: %s. Supported values are: %s.", m.DocumentType, strings.Join(GetDocumentTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

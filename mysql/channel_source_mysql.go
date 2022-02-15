@@ -45,7 +45,7 @@ func (m ChannelSourceMysql) String() string {
 // Not recommended for calling this function directly
 func (m ChannelSourceMysql) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingChannelSourceMysqlSslModeEnum[string(m.SslMode)]; !ok && m.SslMode != "" {
+	if _, ok := GetMappingChannelSourceMysqlSslModeEnum(string(m.SslMode)); !ok && m.SslMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SslMode: %s. Supported values are: %s.", m.SslMode, strings.Join(GetChannelSourceMysqlSslModeEnumStringValues(), ",")))
 	}
 
@@ -140,4 +140,15 @@ func GetChannelSourceMysqlSslModeEnumStringValues() []string {
 		"REQUIRED",
 		"DISABLED",
 	}
+}
+
+// GetMappingChannelSourceMysqlSslModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingChannelSourceMysqlSslModeEnum(val string) (ChannelSourceMysqlSslModeEnum, bool) {
+	mappingChannelSourceMysqlSslModeEnumIgnoreCase := make(map[string]ChannelSourceMysqlSslModeEnum)
+	for k, v := range mappingChannelSourceMysqlSslModeEnum {
+		mappingChannelSourceMysqlSslModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingChannelSourceMysqlSslModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

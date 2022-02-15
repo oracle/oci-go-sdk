@@ -40,7 +40,7 @@ func (m SqlTuningTaskPlanStats) String() string {
 // Not recommended for calling this function directly
 func (m SqlTuningTaskPlanStats) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSqlTuningTaskPlanStatsPlanStatusEnum[string(m.PlanStatus)]; !ok && m.PlanStatus != "" {
+	if _, ok := GetMappingSqlTuningTaskPlanStatsPlanStatusEnum(string(m.PlanStatus)); !ok && m.PlanStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlanStatus: %s. Supported values are: %s.", m.PlanStatus, strings.Join(GetSqlTuningTaskPlanStatsPlanStatusEnumStringValues(), ",")))
 	}
 
@@ -79,4 +79,15 @@ func GetSqlTuningTaskPlanStatsPlanStatusEnumStringValues() []string {
 		"COMPLETE",
 		"PARTIAL",
 	}
+}
+
+// GetMappingSqlTuningTaskPlanStatsPlanStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSqlTuningTaskPlanStatsPlanStatusEnum(val string) (SqlTuningTaskPlanStatsPlanStatusEnum, bool) {
+	mappingSqlTuningTaskPlanStatsPlanStatusEnumIgnoreCase := make(map[string]SqlTuningTaskPlanStatsPlanStatusEnum)
+	for k, v := range mappingSqlTuningTaskPlanStatsPlanStatusEnum {
+		mappingSqlTuningTaskPlanStatsPlanStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSqlTuningTaskPlanStatsPlanStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

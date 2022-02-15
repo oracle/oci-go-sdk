@@ -140,7 +140,7 @@ func (m buildpipelinestagerunprogress) String() string {
 func (m buildpipelinestagerunprogress) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBuildPipelineStageRunProgressStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingBuildPipelineStageRunProgressStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetBuildPipelineStageRunProgressStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -190,4 +190,15 @@ func GetBuildPipelineStageRunProgressStatusEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingBuildPipelineStageRunProgressStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBuildPipelineStageRunProgressStatusEnum(val string) (BuildPipelineStageRunProgressStatusEnum, bool) {
+	mappingBuildPipelineStageRunProgressStatusEnumIgnoreCase := make(map[string]BuildPipelineStageRunProgressStatusEnum)
+	for k, v := range mappingBuildPipelineStageRunProgressStatusEnum {
+		mappingBuildPipelineStageRunProgressStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBuildPipelineStageRunProgressStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

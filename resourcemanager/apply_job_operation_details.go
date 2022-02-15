@@ -41,7 +41,7 @@ func (m ApplyJobOperationDetails) String() string {
 // Not recommended for calling this function directly
 func (m ApplyJobOperationDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingApplyJobOperationDetailsExecutionPlanStrategyEnum[string(m.ExecutionPlanStrategy)]; !ok && m.ExecutionPlanStrategy != "" {
+	if _, ok := GetMappingApplyJobOperationDetailsExecutionPlanStrategyEnum(string(m.ExecutionPlanStrategy)); !ok && m.ExecutionPlanStrategy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExecutionPlanStrategy: %s. Supported values are: %s.", m.ExecutionPlanStrategy, strings.Join(GetApplyJobOperationDetailsExecutionPlanStrategyEnumStringValues(), ",")))
 	}
 
@@ -97,4 +97,15 @@ func GetApplyJobOperationDetailsExecutionPlanStrategyEnumStringValues() []string
 		"FROM_LATEST_PLAN_JOB",
 		"AUTO_APPROVED",
 	}
+}
+
+// GetMappingApplyJobOperationDetailsExecutionPlanStrategyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingApplyJobOperationDetailsExecutionPlanStrategyEnum(val string) (ApplyJobOperationDetailsExecutionPlanStrategyEnum, bool) {
+	mappingApplyJobOperationDetailsExecutionPlanStrategyEnumIgnoreCase := make(map[string]ApplyJobOperationDetailsExecutionPlanStrategyEnum)
+	for k, v := range mappingApplyJobOperationDetailsExecutionPlanStrategyEnum {
+		mappingApplyJobOperationDetailsExecutionPlanStrategyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingApplyJobOperationDetailsExecutionPlanStrategyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

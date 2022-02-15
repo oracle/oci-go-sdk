@@ -89,15 +89,15 @@ func (request GetJobLogsRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetJobLogsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Type {
-		if _, ok := mappingLogEntryTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingLogEntryTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", val, strings.Join(GetLogEntryTypeEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingLogEntryLevelEnum[string(request.LevelGreaterThanOrEqualTo)]; !ok && request.LevelGreaterThanOrEqualTo != "" {
+	if _, ok := GetMappingLogEntryLevelEnum(string(request.LevelGreaterThanOrEqualTo)); !ok && request.LevelGreaterThanOrEqualTo != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LevelGreaterThanOrEqualTo: %s. Supported values are: %s.", request.LevelGreaterThanOrEqualTo, strings.Join(GetLogEntryLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingGetJobLogsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingGetJobLogsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetGetJobLogsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -165,4 +165,15 @@ func GetGetJobLogsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingGetJobLogsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetJobLogsSortOrderEnum(val string) (GetJobLogsSortOrderEnum, bool) {
+	mappingGetJobLogsSortOrderEnumIgnoreCase := make(map[string]GetJobLogsSortOrderEnum)
+	for k, v := range mappingGetJobLogsSortOrderEnum {
+		mappingGetJobLogsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetJobLogsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

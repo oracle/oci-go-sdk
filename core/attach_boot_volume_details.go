@@ -47,7 +47,7 @@ func (m AttachBootVolumeDetails) String() string {
 func (m AttachBootVolumeDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingEncryptionInTransitTypeEnum[string(m.EncryptionInTransitType)]; !ok && m.EncryptionInTransitType != "" {
+	if _, ok := GetMappingEncryptionInTransitTypeEnum(string(m.EncryptionInTransitType)); !ok && m.EncryptionInTransitType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EncryptionInTransitType: %s. Supported values are: %s.", m.EncryptionInTransitType, strings.Join(GetEncryptionInTransitTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

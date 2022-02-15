@@ -221,7 +221,7 @@ func (m buildpipelinestage) String() string {
 func (m buildpipelinestage) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBuildPipelineStageLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingBuildPipelineStageLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetBuildPipelineStageLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -273,6 +273,17 @@ func GetBuildPipelineStageLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingBuildPipelineStageLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBuildPipelineStageLifecycleStateEnum(val string) (BuildPipelineStageLifecycleStateEnum, bool) {
+	mappingBuildPipelineStageLifecycleStateEnumIgnoreCase := make(map[string]BuildPipelineStageLifecycleStateEnum)
+	for k, v := range mappingBuildPipelineStageLifecycleStateEnum {
+		mappingBuildPipelineStageLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBuildPipelineStageLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // BuildPipelineStageBuildPipelineStageTypeEnum Enum with underlying type: string
 type BuildPipelineStageBuildPipelineStageTypeEnum string
 
@@ -308,4 +319,15 @@ func GetBuildPipelineStageBuildPipelineStageTypeEnumStringValues() []string {
 		"DELIVER_ARTIFACT",
 		"TRIGGER_DEPLOYMENT_PIPELINE",
 	}
+}
+
+// GetMappingBuildPipelineStageBuildPipelineStageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBuildPipelineStageBuildPipelineStageTypeEnum(val string) (BuildPipelineStageBuildPipelineStageTypeEnum, bool) {
+	mappingBuildPipelineStageBuildPipelineStageTypeEnumIgnoreCase := make(map[string]BuildPipelineStageBuildPipelineStageTypeEnum)
+	for k, v := range mappingBuildPipelineStageBuildPipelineStageTypeEnum {
+		mappingBuildPipelineStageBuildPipelineStageTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBuildPipelineStageBuildPipelineStageTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

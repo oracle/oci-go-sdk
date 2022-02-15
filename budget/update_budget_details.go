@@ -54,7 +54,7 @@ func (m UpdateBudgetDetails) String() string {
 func (m UpdateBudgetDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingResetPeriodEnum[string(m.ResetPeriod)]; !ok && m.ResetPeriod != "" {
+	if _, ok := GetMappingResetPeriodEnum(string(m.ResetPeriod)); !ok && m.ResetPeriod != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResetPeriod: %s. Supported values are: %s.", m.ResetPeriod, strings.Join(GetResetPeriodEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

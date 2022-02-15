@@ -37,7 +37,7 @@ func (m RestCallConfig) String() string {
 func (m RestCallConfig) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingRestCallConfigMethodTypeEnum[string(m.MethodType)]; !ok && m.MethodType != "" {
+	if _, ok := GetMappingRestCallConfigMethodTypeEnum(string(m.MethodType)); !ok && m.MethodType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MethodType: %s. Supported values are: %s.", m.MethodType, strings.Join(GetRestCallConfigMethodTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -84,4 +84,15 @@ func GetRestCallConfigMethodTypeEnumStringValues() []string {
 		"DELETE",
 		"PUT",
 	}
+}
+
+// GetMappingRestCallConfigMethodTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRestCallConfigMethodTypeEnum(val string) (RestCallConfigMethodTypeEnum, bool) {
+	mappingRestCallConfigMethodTypeEnumIgnoreCase := make(map[string]RestCallConfigMethodTypeEnum)
+	for k, v := range mappingRestCallConfigMethodTypeEnum {
+		mappingRestCallConfigMethodTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRestCallConfigMethodTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

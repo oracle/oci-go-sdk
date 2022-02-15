@@ -136,7 +136,7 @@ func (request SummarizeSqlInsightsRequest) RetryPolicy() *common.RetryPolicy {
 func (request SummarizeSqlInsightsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.DatabaseType {
-		if _, ok := mappingSummarizeSqlInsightsDatabaseTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingSummarizeSqlInsightsDatabaseTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseType: %s. Supported values are: %s.", val, strings.Join(GetSummarizeSqlInsightsDatabaseTypeEnumStringValues(), ",")))
 		}
 	}
@@ -216,4 +216,15 @@ func GetSummarizeSqlInsightsDatabaseTypeEnumStringValues() []string {
 		"EXTERNAL-PDB",
 		"EXTERNAL-NONCDB",
 	}
+}
+
+// GetMappingSummarizeSqlInsightsDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeSqlInsightsDatabaseTypeEnum(val string) (SummarizeSqlInsightsDatabaseTypeEnum, bool) {
+	mappingSummarizeSqlInsightsDatabaseTypeEnumIgnoreCase := make(map[string]SummarizeSqlInsightsDatabaseTypeEnum)
+	for k, v := range mappingSummarizeSqlInsightsDatabaseTypeEnum {
+		mappingSummarizeSqlInsightsDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeSqlInsightsDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

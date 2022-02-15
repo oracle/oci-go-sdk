@@ -76,7 +76,7 @@ func (request CreateResolverEndpointRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request CreateResolverEndpointRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreateResolverEndpointScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingCreateResolverEndpointScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetCreateResolverEndpointScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -149,4 +149,15 @@ func GetCreateResolverEndpointScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingCreateResolverEndpointScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateResolverEndpointScopeEnum(val string) (CreateResolverEndpointScopeEnum, bool) {
+	mappingCreateResolverEndpointScopeEnumIgnoreCase := make(map[string]CreateResolverEndpointScopeEnum)
+	for k, v := range mappingCreateResolverEndpointScopeEnum {
+		mappingCreateResolverEndpointScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateResolverEndpointScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -59,7 +59,7 @@ func (m FunctionLibraryDetails) String() string {
 // Not recommended for calling this function directly
 func (m FunctionLibraryDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingFunctionLibraryDetailsModelTypeEnum[string(m.ModelType)]; !ok && m.ModelType != "" {
+	if _, ok := GetMappingFunctionLibraryDetailsModelTypeEnum(string(m.ModelType)); !ok && m.ModelType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ModelType: %s. Supported values are: %s.", m.ModelType, strings.Join(GetFunctionLibraryDetailsModelTypeEnumStringValues(), ",")))
 	}
 
@@ -95,4 +95,15 @@ func GetFunctionLibraryDetailsModelTypeEnumStringValues() []string {
 	return []string{
 		"FUNCTION_LIBRARY",
 	}
+}
+
+// GetMappingFunctionLibraryDetailsModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFunctionLibraryDetailsModelTypeEnum(val string) (FunctionLibraryDetailsModelTypeEnum, bool) {
+	mappingFunctionLibraryDetailsModelTypeEnumIgnoreCase := make(map[string]FunctionLibraryDetailsModelTypeEnum)
+	for k, v := range mappingFunctionLibraryDetailsModelTypeEnum {
+		mappingFunctionLibraryDetailsModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFunctionLibraryDetailsModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // AlertSeverityEnum Enum with underlying type: string
 type AlertSeverityEnum string
 
@@ -47,4 +51,15 @@ func GetAlertSeverityEnumStringValues() []string {
 		"LOW",
 		"EVALUATE",
 	}
+}
+
+// GetMappingAlertSeverityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAlertSeverityEnum(val string) (AlertSeverityEnum, bool) {
+	mappingAlertSeverityEnumIgnoreCase := make(map[string]AlertSeverityEnum)
+	for k, v := range mappingAlertSeverityEnum {
+		mappingAlertSeverityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAlertSeverityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

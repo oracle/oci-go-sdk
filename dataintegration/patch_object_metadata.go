@@ -50,10 +50,10 @@ func (m PatchObjectMetadata) String() string {
 func (m PatchObjectMetadata) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingPatchObjectMetadataTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingPatchObjectMetadataTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetPatchObjectMetadataTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPatchObjectMetadataActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingPatchObjectMetadataActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetPatchObjectMetadataActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -105,6 +105,17 @@ func GetPatchObjectMetadataTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingPatchObjectMetadataTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPatchObjectMetadataTypeEnum(val string) (PatchObjectMetadataTypeEnum, bool) {
+	mappingPatchObjectMetadataTypeEnumIgnoreCase := make(map[string]PatchObjectMetadataTypeEnum)
+	for k, v := range mappingPatchObjectMetadataTypeEnum {
+		mappingPatchObjectMetadataTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPatchObjectMetadataTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // PatchObjectMetadataActionEnum Enum with underlying type: string
 type PatchObjectMetadataActionEnum string
 
@@ -137,4 +148,15 @@ func GetPatchObjectMetadataActionEnumStringValues() []string {
 		"DELETED",
 		"UPDATED",
 	}
+}
+
+// GetMappingPatchObjectMetadataActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPatchObjectMetadataActionEnum(val string) (PatchObjectMetadataActionEnum, bool) {
+	mappingPatchObjectMetadataActionEnumIgnoreCase := make(map[string]PatchObjectMetadataActionEnum)
+	for k, v := range mappingPatchObjectMetadataActionEnum {
+		mappingPatchObjectMetadataActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPatchObjectMetadataActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

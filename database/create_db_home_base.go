@@ -204,3 +204,14 @@ func GetCreateDbHomeBaseSourceEnumStringValues() []string {
 		"VM_CLUSTER_NEW",
 	}
 }
+
+// GetMappingCreateDbHomeBaseSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateDbHomeBaseSourceEnum(val string) (CreateDbHomeBaseSourceEnum, bool) {
+	mappingCreateDbHomeBaseSourceEnumIgnoreCase := make(map[string]CreateDbHomeBaseSourceEnum)
+	for k, v := range mappingCreateDbHomeBaseSourceEnum {
+		mappingCreateDbHomeBaseSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateDbHomeBaseSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

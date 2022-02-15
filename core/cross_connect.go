@@ -91,7 +91,7 @@ func (m CrossConnect) String() string {
 func (m CrossConnect) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCrossConnectLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingCrossConnectLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetCrossConnectLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -141,4 +141,15 @@ func GetCrossConnectLifecycleStateEnumStringValues() []string {
 		"TERMINATING",
 		"TERMINATED",
 	}
+}
+
+// GetMappingCrossConnectLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCrossConnectLifecycleStateEnum(val string) (CrossConnectLifecycleStateEnum, bool) {
+	mappingCrossConnectLifecycleStateEnumIgnoreCase := make(map[string]CrossConnectLifecycleStateEnum)
+	for k, v := range mappingCrossConnectLifecycleStateEnum {
+		mappingCrossConnectLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCrossConnectLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

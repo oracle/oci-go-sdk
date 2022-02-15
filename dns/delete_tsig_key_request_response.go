@@ -79,7 +79,7 @@ func (request DeleteTsigKeyRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request DeleteTsigKeyRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDeleteTsigKeyScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingDeleteTsigKeyScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetDeleteTsigKeyScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -141,4 +141,15 @@ func GetDeleteTsigKeyScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingDeleteTsigKeyScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeleteTsigKeyScopeEnum(val string) (DeleteTsigKeyScopeEnum, bool) {
+	mappingDeleteTsigKeyScopeEnumIgnoreCase := make(map[string]DeleteTsigKeyScopeEnum)
+	for k, v := range mappingDeleteTsigKeyScopeEnum {
+		mappingDeleteTsigKeyScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeleteTsigKeyScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

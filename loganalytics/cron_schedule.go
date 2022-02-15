@@ -53,7 +53,7 @@ func (m CronSchedule) String() string {
 func (m CronSchedule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingScheduleMisfirePolicyEnum[string(m.MisfirePolicy)]; !ok && m.MisfirePolicy != "" {
+	if _, ok := GetMappingScheduleMisfirePolicyEnum(string(m.MisfirePolicy)); !ok && m.MisfirePolicy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MisfirePolicy: %s. Supported values are: %s.", m.MisfirePolicy, strings.Join(GetScheduleMisfirePolicyEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -103,20 +103,20 @@ func (m BlockchainPlatform) String() string {
 // Not recommended for calling this function directly
 func (m BlockchainPlatform) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBlockchainPlatformPlatformRoleEnum[string(m.PlatformRole)]; !ok && m.PlatformRole != "" {
+	if _, ok := GetMappingBlockchainPlatformPlatformRoleEnum(string(m.PlatformRole)); !ok && m.PlatformRole != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformRole: %s. Supported values are: %s.", m.PlatformRole, strings.Join(GetBlockchainPlatformPlatformRoleEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBlockchainPlatformComputeShapeEnum[string(m.ComputeShape)]; !ok && m.ComputeShape != "" {
+	if _, ok := GetMappingBlockchainPlatformComputeShapeEnum(string(m.ComputeShape)); !ok && m.ComputeShape != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ComputeShape: %s. Supported values are: %s.", m.ComputeShape, strings.Join(GetBlockchainPlatformComputeShapeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingBlockchainPlatformPlatformShapeTypeEnum[string(m.PlatformShapeType)]; !ok && m.PlatformShapeType != "" {
+	if _, ok := GetMappingBlockchainPlatformPlatformShapeTypeEnum(string(m.PlatformShapeType)); !ok && m.PlatformShapeType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformShapeType: %s. Supported values are: %s.", m.PlatformShapeType, strings.Join(GetBlockchainPlatformPlatformShapeTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBlockchainPlatformLoadBalancerShapeEnum[string(m.LoadBalancerShape)]; !ok && m.LoadBalancerShape != "" {
+	if _, ok := GetMappingBlockchainPlatformLoadBalancerShapeEnum(string(m.LoadBalancerShape)); !ok && m.LoadBalancerShape != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LoadBalancerShape: %s. Supported values are: %s.", m.LoadBalancerShape, strings.Join(GetBlockchainPlatformLoadBalancerShapeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBlockchainPlatformLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingBlockchainPlatformLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetBlockchainPlatformLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -154,6 +154,17 @@ func GetBlockchainPlatformPlatformRoleEnumStringValues() []string {
 		"FOUNDER",
 		"PARTICIPANT",
 	}
+}
+
+// GetMappingBlockchainPlatformPlatformRoleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBlockchainPlatformPlatformRoleEnum(val string) (BlockchainPlatformPlatformRoleEnum, bool) {
+	mappingBlockchainPlatformPlatformRoleEnumIgnoreCase := make(map[string]BlockchainPlatformPlatformRoleEnum)
+	for k, v := range mappingBlockchainPlatformPlatformRoleEnum {
+		mappingBlockchainPlatformPlatformRoleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBlockchainPlatformPlatformRoleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // BlockchainPlatformComputeShapeEnum Enum with underlying type: string
@@ -199,6 +210,17 @@ func GetBlockchainPlatformComputeShapeEnumStringValues() []string {
 	}
 }
 
+// GetMappingBlockchainPlatformComputeShapeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBlockchainPlatformComputeShapeEnum(val string) (BlockchainPlatformComputeShapeEnum, bool) {
+	mappingBlockchainPlatformComputeShapeEnumIgnoreCase := make(map[string]BlockchainPlatformComputeShapeEnum)
+	for k, v := range mappingBlockchainPlatformComputeShapeEnum {
+		mappingBlockchainPlatformComputeShapeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBlockchainPlatformComputeShapeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // BlockchainPlatformPlatformShapeTypeEnum Enum with underlying type: string
 type BlockchainPlatformPlatformShapeTypeEnum string
 
@@ -230,6 +252,17 @@ func GetBlockchainPlatformPlatformShapeTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingBlockchainPlatformPlatformShapeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBlockchainPlatformPlatformShapeTypeEnum(val string) (BlockchainPlatformPlatformShapeTypeEnum, bool) {
+	mappingBlockchainPlatformPlatformShapeTypeEnumIgnoreCase := make(map[string]BlockchainPlatformPlatformShapeTypeEnum)
+	for k, v := range mappingBlockchainPlatformPlatformShapeTypeEnum {
+		mappingBlockchainPlatformPlatformShapeTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBlockchainPlatformPlatformShapeTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // BlockchainPlatformLoadBalancerShapeEnum Enum with underlying type: string
 type BlockchainPlatformLoadBalancerShapeEnum string
 
@@ -259,6 +292,17 @@ func GetBlockchainPlatformLoadBalancerShapeEnumStringValues() []string {
 		"LB_100_MBPS",
 		"LB_400_MBPS",
 	}
+}
+
+// GetMappingBlockchainPlatformLoadBalancerShapeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBlockchainPlatformLoadBalancerShapeEnum(val string) (BlockchainPlatformLoadBalancerShapeEnum, bool) {
+	mappingBlockchainPlatformLoadBalancerShapeEnumIgnoreCase := make(map[string]BlockchainPlatformLoadBalancerShapeEnum)
+	for k, v := range mappingBlockchainPlatformLoadBalancerShapeEnum {
+		mappingBlockchainPlatformLoadBalancerShapeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBlockchainPlatformLoadBalancerShapeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // BlockchainPlatformLifecycleStateEnum Enum with underlying type: string
@@ -308,4 +352,15 @@ func GetBlockchainPlatformLifecycleStateEnumStringValues() []string {
 		"INACTIVE",
 		"FAILED",
 	}
+}
+
+// GetMappingBlockchainPlatformLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBlockchainPlatformLifecycleStateEnum(val string) (BlockchainPlatformLifecycleStateEnum, bool) {
+	mappingBlockchainPlatformLifecycleStateEnumIgnoreCase := make(map[string]BlockchainPlatformLifecycleStateEnum)
+	for k, v := range mappingBlockchainPlatformLifecycleStateEnum {
+		mappingBlockchainPlatformLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBlockchainPlatformLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

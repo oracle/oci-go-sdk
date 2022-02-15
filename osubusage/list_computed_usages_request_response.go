@@ -91,10 +91,10 @@ func (request ListComputedUsagesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListComputedUsagesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListComputedUsagesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListComputedUsagesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListComputedUsagesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListComputedUsagesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListComputedUsagesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListComputedUsagesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -162,6 +162,17 @@ func GetListComputedUsagesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListComputedUsagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListComputedUsagesSortOrderEnum(val string) (ListComputedUsagesSortOrderEnum, bool) {
+	mappingListComputedUsagesSortOrderEnumIgnoreCase := make(map[string]ListComputedUsagesSortOrderEnum)
+	for k, v := range mappingListComputedUsagesSortOrderEnum {
+		mappingListComputedUsagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListComputedUsagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListComputedUsagesSortByEnum Enum with underlying type: string
 type ListComputedUsagesSortByEnum string
 
@@ -194,4 +205,15 @@ func GetListComputedUsagesSortByEnumStringValues() []string {
 		"timeOfArrival",
 		"timeMeteredOn",
 	}
+}
+
+// GetMappingListComputedUsagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListComputedUsagesSortByEnum(val string) (ListComputedUsagesSortByEnum, bool) {
+	mappingListComputedUsagesSortByEnumIgnoreCase := make(map[string]ListComputedUsagesSortByEnum)
+	for k, v := range mappingListComputedUsagesSortByEnum {
+		mappingListComputedUsagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListComputedUsagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

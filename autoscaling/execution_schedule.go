@@ -82,7 +82,7 @@ func (m executionschedule) String() string {
 // Not recommended for calling this function directly
 func (m executionschedule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingExecutionScheduleTimezoneEnum[string(m.Timezone)]; !ok && m.Timezone != "" {
+	if _, ok := GetMappingExecutionScheduleTimezoneEnum(string(m.Timezone)); !ok && m.Timezone != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Timezone: %s. Supported values are: %s.", m.Timezone, strings.Join(GetExecutionScheduleTimezoneEnumStringValues(), ",")))
 	}
 
@@ -118,4 +118,15 @@ func GetExecutionScheduleTimezoneEnumStringValues() []string {
 	return []string{
 		"UTC",
 	}
+}
+
+// GetMappingExecutionScheduleTimezoneEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExecutionScheduleTimezoneEnum(val string) (ExecutionScheduleTimezoneEnum, bool) {
+	mappingExecutionScheduleTimezoneEnumIgnoreCase := make(map[string]ExecutionScheduleTimezoneEnum)
+	for k, v := range mappingExecutionScheduleTimezoneEnum {
+		mappingExecutionScheduleTimezoneEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExecutionScheduleTimezoneEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -78,10 +78,10 @@ func (request ListTablespacesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListTablespacesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListTablespacesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListTablespacesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListTablespacesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTablespacesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListTablespacesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListTablespacesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -149,6 +149,17 @@ func GetListTablespacesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTablespacesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTablespacesSortByEnum(val string) (ListTablespacesSortByEnum, bool) {
+	mappingListTablespacesSortByEnumIgnoreCase := make(map[string]ListTablespacesSortByEnum)
+	for k, v := range mappingListTablespacesSortByEnum {
+		mappingListTablespacesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTablespacesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTablespacesSortOrderEnum Enum with underlying type: string
 type ListTablespacesSortOrderEnum string
 
@@ -178,4 +189,15 @@ func GetListTablespacesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListTablespacesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTablespacesSortOrderEnum(val string) (ListTablespacesSortOrderEnum, bool) {
+	mappingListTablespacesSortOrderEnumIgnoreCase := make(map[string]ListTablespacesSortOrderEnum)
+	for k, v := range mappingListTablespacesSortOrderEnum {
+		mappingListTablespacesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTablespacesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

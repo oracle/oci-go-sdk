@@ -80,10 +80,10 @@ func (request ListRolesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListRolesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListRolesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListRolesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListRolesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListRolesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListRolesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListRolesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -148,6 +148,17 @@ func GetListRolesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListRolesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRolesSortByEnum(val string) (ListRolesSortByEnum, bool) {
+	mappingListRolesSortByEnumIgnoreCase := make(map[string]ListRolesSortByEnum)
+	for k, v := range mappingListRolesSortByEnum {
+		mappingListRolesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRolesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListRolesSortOrderEnum Enum with underlying type: string
 type ListRolesSortOrderEnum string
 
@@ -177,4 +188,15 @@ func GetListRolesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListRolesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRolesSortOrderEnum(val string) (ListRolesSortOrderEnum, bool) {
+	mappingListRolesSortOrderEnumIgnoreCase := make(map[string]ListRolesSortOrderEnum)
+	for k, v := range mappingListRolesSortOrderEnum {
+		mappingListRolesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRolesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

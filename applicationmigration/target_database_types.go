@@ -12,6 +12,10 @@
 
 package applicationmigration
 
+import (
+	"strings"
+)
+
 // TargetDatabaseTypesEnum Enum with underlying type: string
 type TargetDatabaseTypesEnum string
 
@@ -41,4 +45,15 @@ func GetTargetDatabaseTypesEnumStringValues() []string {
 		"DATABASE_SYSTEM",
 		"NOT_SET",
 	}
+}
+
+// GetMappingTargetDatabaseTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTargetDatabaseTypesEnum(val string) (TargetDatabaseTypesEnum, bool) {
+	mappingTargetDatabaseTypesEnumIgnoreCase := make(map[string]TargetDatabaseTypesEnum)
+	for k, v := range mappingTargetDatabaseTypesEnum {
+		mappingTargetDatabaseTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTargetDatabaseTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

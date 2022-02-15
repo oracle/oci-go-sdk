@@ -35,7 +35,7 @@ func (m CountStatisticSummary) String() string {
 func (m CountStatisticSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCountStatisticSummaryObjectTypeEnum[string(m.ObjectType)]; !ok && m.ObjectType != "" {
+	if _, ok := GetMappingCountStatisticSummaryObjectTypeEnum(string(m.ObjectType)); !ok && m.ObjectType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ObjectType: %s. Supported values are: %s.", m.ObjectType, strings.Join(GetCountStatisticSummaryObjectTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -94,4 +94,15 @@ func GetCountStatisticSummaryObjectTypeEnumStringValues() []string {
 		"FUNCTION_LIBRARY",
 		"USER_DEFINED_FUNCTION",
 	}
+}
+
+// GetMappingCountStatisticSummaryObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCountStatisticSummaryObjectTypeEnum(val string) (CountStatisticSummaryObjectTypeEnum, bool) {
+	mappingCountStatisticSummaryObjectTypeEnumIgnoreCase := make(map[string]CountStatisticSummaryObjectTypeEnum)
+	for k, v := range mappingCountStatisticSummaryObjectTypeEnum {
+		mappingCountStatisticSummaryObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCountStatisticSummaryObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

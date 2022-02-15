@@ -94,16 +94,16 @@ func (request ListStorageWorkRequestsRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListStorageWorkRequestsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListStorageWorkRequestsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListStorageWorkRequestsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListStorageWorkRequestsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListStorageWorkRequestsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListStorageWorkRequestsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListStorageWorkRequestsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListStorageWorkRequestsOperationTypeEnum[string(request.OperationType)]; !ok && request.OperationType != "" {
+	if _, ok := GetMappingListStorageWorkRequestsOperationTypeEnum(string(request.OperationType)); !ok && request.OperationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OperationType: %s. Supported values are: %s.", request.OperationType, strings.Join(GetListStorageWorkRequestsOperationTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListStorageWorkRequestsStatusEnum[string(request.Status)]; !ok && request.Status != "" {
+	if _, ok := GetMappingListStorageWorkRequestsStatusEnum(string(request.Status)); !ok && request.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", request.Status, strings.Join(GetListStorageWorkRequestsStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -175,6 +175,17 @@ func GetListStorageWorkRequestsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListStorageWorkRequestsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListStorageWorkRequestsSortOrderEnum(val string) (ListStorageWorkRequestsSortOrderEnum, bool) {
+	mappingListStorageWorkRequestsSortOrderEnumIgnoreCase := make(map[string]ListStorageWorkRequestsSortOrderEnum)
+	for k, v := range mappingListStorageWorkRequestsSortOrderEnum {
+		mappingListStorageWorkRequestsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListStorageWorkRequestsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListStorageWorkRequestsSortByEnum Enum with underlying type: string
 type ListStorageWorkRequestsSortByEnum string
 
@@ -207,6 +218,17 @@ func GetListStorageWorkRequestsSortByEnumStringValues() []string {
 		"timeExpires",
 		"timeFinished",
 	}
+}
+
+// GetMappingListStorageWorkRequestsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListStorageWorkRequestsSortByEnum(val string) (ListStorageWorkRequestsSortByEnum, bool) {
+	mappingListStorageWorkRequestsSortByEnumIgnoreCase := make(map[string]ListStorageWorkRequestsSortByEnum)
+	for k, v := range mappingListStorageWorkRequestsSortByEnum {
+		mappingListStorageWorkRequestsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListStorageWorkRequestsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListStorageWorkRequestsOperationTypeEnum Enum with underlying type: string
@@ -252,6 +274,17 @@ func GetListStorageWorkRequestsOperationTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListStorageWorkRequestsOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListStorageWorkRequestsOperationTypeEnum(val string) (ListStorageWorkRequestsOperationTypeEnum, bool) {
+	mappingListStorageWorkRequestsOperationTypeEnumIgnoreCase := make(map[string]ListStorageWorkRequestsOperationTypeEnum)
+	for k, v := range mappingListStorageWorkRequestsOperationTypeEnum {
+		mappingListStorageWorkRequestsOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListStorageWorkRequestsOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListStorageWorkRequestsStatusEnum Enum with underlying type: string
 type ListStorageWorkRequestsStatusEnum string
 
@@ -290,4 +323,15 @@ func GetListStorageWorkRequestsStatusEnumStringValues() []string {
 		"IN_PROGRESS",
 		"SUCCEEDED",
 	}
+}
+
+// GetMappingListStorageWorkRequestsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListStorageWorkRequestsStatusEnum(val string) (ListStorageWorkRequestsStatusEnum, bool) {
+	mappingListStorageWorkRequestsStatusEnumIgnoreCase := make(map[string]ListStorageWorkRequestsStatusEnum)
+	for k, v := range mappingListStorageWorkRequestsStatusEnum {
+		mappingListStorageWorkRequestsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListStorageWorkRequestsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

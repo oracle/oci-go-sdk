@@ -102,3 +102,14 @@ func GetEntityReferenceTypeEnumStringValues() []string {
 		"INDICATOR",
 	}
 }
+
+// GetMappingEntityReferenceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEntityReferenceTypeEnum(val string) (EntityReferenceTypeEnum, bool) {
+	mappingEntityReferenceTypeEnumIgnoreCase := make(map[string]EntityReferenceTypeEnum)
+	for k, v := range mappingEntityReferenceTypeEnum {
+		mappingEntityReferenceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEntityReferenceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

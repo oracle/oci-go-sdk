@@ -47,7 +47,7 @@ func (m RepositoryMirrorRecord) String() string {
 // Not recommended for calling this function directly
 func (m RepositoryMirrorRecord) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRepositoryMirrorRecordMirrorStatusEnum[string(m.MirrorStatus)]; !ok && m.MirrorStatus != "" {
+	if _, ok := GetMappingRepositoryMirrorRecordMirrorStatusEnum(string(m.MirrorStatus)); !ok && m.MirrorStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MirrorStatus: %s. Supported values are: %s.", m.MirrorStatus, strings.Join(GetRepositoryMirrorRecordMirrorStatusEnumStringValues(), ",")))
 	}
 
@@ -95,4 +95,15 @@ func GetRepositoryMirrorRecordMirrorStatusEnumStringValues() []string {
 		"PASSED",
 		"FAILED",
 	}
+}
+
+// GetMappingRepositoryMirrorRecordMirrorStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRepositoryMirrorRecordMirrorStatusEnum(val string) (RepositoryMirrorRecordMirrorStatusEnum, bool) {
+	mappingRepositoryMirrorRecordMirrorStatusEnumIgnoreCase := make(map[string]RepositoryMirrorRecordMirrorStatusEnum)
+	for k, v := range mappingRepositoryMirrorRecordMirrorStatusEnum {
+		mappingRepositoryMirrorRecordMirrorStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRepositoryMirrorRecordMirrorStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

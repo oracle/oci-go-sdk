@@ -124,19 +124,19 @@ func (request ListWafLogsRequest) RetryPolicy() *common.RetryPolicy {
 func (request ListWafLogsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Action {
-		if _, ok := mappingListWafLogsActionEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListWafLogsActionEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", val, strings.Join(GetListWafLogsActionEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range request.HttpMethod {
-		if _, ok := mappingListWafLogsHttpMethodEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListWafLogsHttpMethodEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for HttpMethod: %s. Supported values are: %s.", val, strings.Join(GetListWafLogsHttpMethodEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range request.LogType {
-		if _, ok := mappingListWafLogsLogTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListWafLogsLogTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LogType: %s. Supported values are: %s.", val, strings.Join(GetListWafLogsLogTypeEnumStringValues(), ",")))
 		}
 	}
@@ -212,6 +212,17 @@ func GetListWafLogsActionEnumStringValues() []string {
 	}
 }
 
+// GetMappingListWafLogsActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWafLogsActionEnum(val string) (ListWafLogsActionEnum, bool) {
+	mappingListWafLogsActionEnumIgnoreCase := make(map[string]ListWafLogsActionEnum)
+	for k, v := range mappingListWafLogsActionEnum {
+		mappingListWafLogsActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWafLogsActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListWafLogsHttpMethodEnum Enum with underlying type: string
 type ListWafLogsHttpMethodEnum string
 
@@ -259,6 +270,17 @@ func GetListWafLogsHttpMethodEnumStringValues() []string {
 		"TRACE",
 		"CONNECT",
 	}
+}
+
+// GetMappingListWafLogsHttpMethodEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWafLogsHttpMethodEnum(val string) (ListWafLogsHttpMethodEnum, bool) {
+	mappingListWafLogsHttpMethodEnumIgnoreCase := make(map[string]ListWafLogsHttpMethodEnum)
+	for k, v := range mappingListWafLogsHttpMethodEnum {
+		mappingListWafLogsHttpMethodEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWafLogsHttpMethodEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListWafLogsLogTypeEnum Enum with underlying type: string
@@ -311,4 +333,15 @@ func GetListWafLogsLogTypeEnumStringValues() []string {
 		"DEVICE_FINGERPRINT_CHALLENGE",
 		"ADDRESS_RATE_LIMITING",
 	}
+}
+
+// GetMappingListWafLogsLogTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWafLogsLogTypeEnum(val string) (ListWafLogsLogTypeEnum, bool) {
+	mappingListWafLogsLogTypeEnumIgnoreCase := make(map[string]ListWafLogsLogTypeEnum)
+	for k, v := range mappingListWafLogsLogTypeEnum {
+		mappingListWafLogsLogTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWafLogsLogTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

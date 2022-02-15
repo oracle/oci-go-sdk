@@ -35,7 +35,7 @@ func (m CustomEncryptionKey) String() string {
 func (m CustomEncryptionKey) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCustomEncryptionKeyKeyStateEnum[string(m.KeyState)]; !ok && m.KeyState != "" {
+	if _, ok := GetMappingCustomEncryptionKeyKeyStateEnum(string(m.KeyState)); !ok && m.KeyState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for KeyState: %s. Supported values are: %s.", m.KeyState, strings.Join(GetCustomEncryptionKeyKeyStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -85,4 +85,15 @@ func GetCustomEncryptionKeyKeyStateEnumStringValues() []string {
 		"FAILED",
 		"UPDATING",
 	}
+}
+
+// GetMappingCustomEncryptionKeyKeyStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCustomEncryptionKeyKeyStateEnum(val string) (CustomEncryptionKeyKeyStateEnum, bool) {
+	mappingCustomEncryptionKeyKeyStateEnumIgnoreCase := make(map[string]CustomEncryptionKeyKeyStateEnum)
+	for k, v := range mappingCustomEncryptionKeyKeyStateEnum {
+		mappingCustomEncryptionKeyKeyStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCustomEncryptionKeyKeyStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

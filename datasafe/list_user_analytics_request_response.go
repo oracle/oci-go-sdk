@@ -124,13 +124,13 @@ func (request ListUserAnalyticsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListUserAnalyticsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListUserAnalyticsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListUserAnalyticsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListUserAnalyticsAccessLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUserAnalyticsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListUserAnalyticsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListUserAnalyticsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUserAnalyticsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListUserAnalyticsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListUserAnalyticsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -195,6 +195,17 @@ func GetListUserAnalyticsAccessLevelEnumStringValues() []string {
 	}
 }
 
+// GetMappingListUserAnalyticsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUserAnalyticsAccessLevelEnum(val string) (ListUserAnalyticsAccessLevelEnum, bool) {
+	mappingListUserAnalyticsAccessLevelEnumIgnoreCase := make(map[string]ListUserAnalyticsAccessLevelEnum)
+	for k, v := range mappingListUserAnalyticsAccessLevelEnum {
+		mappingListUserAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUserAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListUserAnalyticsSortOrderEnum Enum with underlying type: string
 type ListUserAnalyticsSortOrderEnum string
 
@@ -224,6 +235,17 @@ func GetListUserAnalyticsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListUserAnalyticsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUserAnalyticsSortOrderEnum(val string) (ListUserAnalyticsSortOrderEnum, bool) {
+	mappingListUserAnalyticsSortOrderEnumIgnoreCase := make(map[string]ListUserAnalyticsSortOrderEnum)
+	for k, v := range mappingListUserAnalyticsSortOrderEnum {
+		mappingListUserAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUserAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListUserAnalyticsSortByEnum Enum with underlying type: string
@@ -273,4 +295,15 @@ func GetListUserAnalyticsSortByEnumStringValues() []string {
 		"authenticationType",
 		"timePasswordChanged",
 	}
+}
+
+// GetMappingListUserAnalyticsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUserAnalyticsSortByEnum(val string) (ListUserAnalyticsSortByEnum, bool) {
+	mappingListUserAnalyticsSortByEnumIgnoreCase := make(map[string]ListUserAnalyticsSortByEnum)
+	for k, v := range mappingListUserAnalyticsSortByEnum {
+		mappingListUserAnalyticsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUserAnalyticsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

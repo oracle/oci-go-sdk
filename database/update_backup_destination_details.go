@@ -57,7 +57,7 @@ func (m UpdateBackupDestinationDetails) String() string {
 func (m UpdateBackupDestinationDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateBackupDestinationDetailsNfsMountTypeEnum[string(m.NfsMountType)]; !ok && m.NfsMountType != "" {
+	if _, ok := GetMappingUpdateBackupDestinationDetailsNfsMountTypeEnum(string(m.NfsMountType)); !ok && m.NfsMountType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NfsMountType: %s. Supported values are: %s.", m.NfsMountType, strings.Join(GetUpdateBackupDestinationDetailsNfsMountTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -95,4 +95,15 @@ func GetUpdateBackupDestinationDetailsNfsMountTypeEnumStringValues() []string {
 		"SELF_MOUNT",
 		"AUTOMATED_MOUNT",
 	}
+}
+
+// GetMappingUpdateBackupDestinationDetailsNfsMountTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateBackupDestinationDetailsNfsMountTypeEnum(val string) (UpdateBackupDestinationDetailsNfsMountTypeEnum, bool) {
+	mappingUpdateBackupDestinationDetailsNfsMountTypeEnumIgnoreCase := make(map[string]UpdateBackupDestinationDetailsNfsMountTypeEnum)
+	for k, v := range mappingUpdateBackupDestinationDetailsNfsMountTypeEnum {
+		mappingUpdateBackupDestinationDetailsNfsMountTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateBackupDestinationDetailsNfsMountTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

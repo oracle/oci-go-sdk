@@ -81,13 +81,13 @@ func (request ListTargetResponderRecipesRequest) RetryPolicy() *common.RetryPoli
 // Not recommended for calling this function directly
 func (request ListTargetResponderRecipesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListTargetResponderRecipesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListTargetResponderRecipesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListTargetResponderRecipesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTargetResponderRecipesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListTargetResponderRecipesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListTargetResponderRecipesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTargetResponderRecipesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListTargetResponderRecipesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListTargetResponderRecipesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -170,6 +170,17 @@ func GetListTargetResponderRecipesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTargetResponderRecipesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetResponderRecipesLifecycleStateEnum(val string) (ListTargetResponderRecipesLifecycleStateEnum, bool) {
+	mappingListTargetResponderRecipesLifecycleStateEnumIgnoreCase := make(map[string]ListTargetResponderRecipesLifecycleStateEnum)
+	for k, v := range mappingListTargetResponderRecipesLifecycleStateEnum {
+		mappingListTargetResponderRecipesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetResponderRecipesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTargetResponderRecipesSortOrderEnum Enum with underlying type: string
 type ListTargetResponderRecipesSortOrderEnum string
 
@@ -201,6 +212,17 @@ func GetListTargetResponderRecipesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTargetResponderRecipesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetResponderRecipesSortOrderEnum(val string) (ListTargetResponderRecipesSortOrderEnum, bool) {
+	mappingListTargetResponderRecipesSortOrderEnumIgnoreCase := make(map[string]ListTargetResponderRecipesSortOrderEnum)
+	for k, v := range mappingListTargetResponderRecipesSortOrderEnum {
+		mappingListTargetResponderRecipesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetResponderRecipesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTargetResponderRecipesSortByEnum Enum with underlying type: string
 type ListTargetResponderRecipesSortByEnum string
 
@@ -230,4 +252,15 @@ func GetListTargetResponderRecipesSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListTargetResponderRecipesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetResponderRecipesSortByEnum(val string) (ListTargetResponderRecipesSortByEnum, bool) {
+	mappingListTargetResponderRecipesSortByEnumIgnoreCase := make(map[string]ListTargetResponderRecipesSortByEnum)
+	for k, v := range mappingListTargetResponderRecipesSortByEnum {
+		mappingListTargetResponderRecipesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetResponderRecipesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

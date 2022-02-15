@@ -102,3 +102,14 @@ func GetKeyStoreTypeDetailsTypeEnumStringValues() []string {
 		"ORACLE_KEY_VAULT",
 	}
 }
+
+// GetMappingKeyStoreTypeDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeyStoreTypeDetailsTypeEnum(val string) (KeyStoreTypeDetailsTypeEnum, bool) {
+	mappingKeyStoreTypeDetailsTypeEnumIgnoreCase := make(map[string]KeyStoreTypeDetailsTypeEnum)
+	for k, v := range mappingKeyStoreTypeDetailsTypeEnum {
+		mappingKeyStoreTypeDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeyStoreTypeDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

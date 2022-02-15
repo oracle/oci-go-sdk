@@ -46,7 +46,7 @@ func (m CreateTransferJobDetails) String() string {
 func (m CreateTransferJobDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateTransferJobDetailsDeviceTypeEnum[string(m.DeviceType)]; !ok && m.DeviceType != "" {
+	if _, ok := GetMappingCreateTransferJobDetailsDeviceTypeEnum(string(m.DeviceType)); !ok && m.DeviceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DeviceType: %s. Supported values are: %s.", m.DeviceType, strings.Join(GetCreateTransferJobDetailsDeviceTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -84,4 +84,15 @@ func GetCreateTransferJobDetailsDeviceTypeEnumStringValues() []string {
 		"DISK",
 		"APPLIANCE",
 	}
+}
+
+// GetMappingCreateTransferJobDetailsDeviceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateTransferJobDetailsDeviceTypeEnum(val string) (CreateTransferJobDetailsDeviceTypeEnum, bool) {
+	mappingCreateTransferJobDetailsDeviceTypeEnumIgnoreCase := make(map[string]CreateTransferJobDetailsDeviceTypeEnum)
+	for k, v := range mappingCreateTransferJobDetailsDeviceTypeEnum {
+		mappingCreateTransferJobDetailsDeviceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateTransferJobDetailsDeviceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

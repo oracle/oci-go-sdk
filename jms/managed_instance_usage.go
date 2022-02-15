@@ -72,7 +72,7 @@ func (m ManagedInstanceUsage) String() string {
 // Not recommended for calling this function directly
 func (m ManagedInstanceUsage) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingManagedInstanceTypeEnum[string(m.ManagedInstanceType)]; !ok && m.ManagedInstanceType != "" {
+	if _, ok := GetMappingManagedInstanceTypeEnum(string(m.ManagedInstanceType)); !ok && m.ManagedInstanceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ManagedInstanceType: %s. Supported values are: %s.", m.ManagedInstanceType, strings.Join(GetManagedInstanceTypeEnumStringValues(), ",")))
 	}
 

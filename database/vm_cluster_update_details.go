@@ -35,7 +35,7 @@ func (m VmClusterUpdateDetails) String() string {
 func (m VmClusterUpdateDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingVmClusterUpdateDetailsUpdateActionEnum[string(m.UpdateAction)]; !ok && m.UpdateAction != "" {
+	if _, ok := GetMappingVmClusterUpdateDetailsUpdateActionEnum(string(m.UpdateAction)); !ok && m.UpdateAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateAction: %s. Supported values are: %s.", m.UpdateAction, strings.Join(GetVmClusterUpdateDetailsUpdateActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -76,4 +76,15 @@ func GetVmClusterUpdateDetailsUpdateActionEnumStringValues() []string {
 		"PRECHECK",
 		"ROLLBACK",
 	}
+}
+
+// GetMappingVmClusterUpdateDetailsUpdateActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVmClusterUpdateDetailsUpdateActionEnum(val string) (VmClusterUpdateDetailsUpdateActionEnum, bool) {
+	mappingVmClusterUpdateDetailsUpdateActionEnumIgnoreCase := make(map[string]VmClusterUpdateDetailsUpdateActionEnum)
+	for k, v := range mappingVmClusterUpdateDetailsUpdateActionEnum {
+		mappingVmClusterUpdateDetailsUpdateActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVmClusterUpdateDetailsUpdateActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

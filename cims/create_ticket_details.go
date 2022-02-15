@@ -44,7 +44,7 @@ func (m CreateTicketDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateTicketDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreateTicketDetailsSeverityEnum[string(m.Severity)]; !ok && m.Severity != "" {
+	if _, ok := GetMappingCreateTicketDetailsSeverityEnum(string(m.Severity)); !ok && m.Severity != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Severity: %s. Supported values are: %s.", m.Severity, strings.Join(GetCreateTicketDetailsSeverityEnumStringValues(), ",")))
 	}
 
@@ -86,4 +86,15 @@ func GetCreateTicketDetailsSeverityEnumStringValues() []string {
 		"HIGH",
 		"MEDIUM",
 	}
+}
+
+// GetMappingCreateTicketDetailsSeverityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateTicketDetailsSeverityEnum(val string) (CreateTicketDetailsSeverityEnum, bool) {
+	mappingCreateTicketDetailsSeverityEnumIgnoreCase := make(map[string]CreateTicketDetailsSeverityEnum)
+	for k, v := range mappingCreateTicketDetailsSeverityEnum {
+		mappingCreateTicketDetailsSeverityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateTicketDetailsSeverityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

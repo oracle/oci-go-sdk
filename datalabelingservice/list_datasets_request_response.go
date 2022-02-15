@@ -84,13 +84,13 @@ func (request ListDatasetsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDatasetsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDatasetLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingDatasetLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetDatasetLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDatasetsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDatasetsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDatasetsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDatasetsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDatasetsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDatasetsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -158,6 +158,17 @@ func GetListDatasetsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDatasetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatasetsSortOrderEnum(val string) (ListDatasetsSortOrderEnum, bool) {
+	mappingListDatasetsSortOrderEnumIgnoreCase := make(map[string]ListDatasetsSortOrderEnum)
+	for k, v := range mappingListDatasetsSortOrderEnum {
+		mappingListDatasetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatasetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDatasetsSortByEnum Enum with underlying type: string
 type ListDatasetsSortByEnum string
 
@@ -187,4 +198,15 @@ func GetListDatasetsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListDatasetsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatasetsSortByEnum(val string) (ListDatasetsSortByEnum, bool) {
+	mappingListDatasetsSortByEnumIgnoreCase := make(map[string]ListDatasetsSortByEnum)
+	for k, v := range mappingListDatasetsSortByEnum {
+		mappingListDatasetsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatasetsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

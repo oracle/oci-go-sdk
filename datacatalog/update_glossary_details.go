@@ -46,7 +46,7 @@ func (m UpdateGlossaryDetails) String() string {
 func (m UpdateGlossaryDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTermWorkflowStatusEnum[string(m.WorkflowStatus)]; !ok && m.WorkflowStatus != "" {
+	if _, ok := GetMappingTermWorkflowStatusEnum(string(m.WorkflowStatus)); !ok && m.WorkflowStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for WorkflowStatus: %s. Supported values are: %s.", m.WorkflowStatus, strings.Join(GetTermWorkflowStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -9,6 +9,10 @@
 
 package networkloadbalancer
 
+import (
+	"strings"
+)
+
 // ListenerProtocolsEnum Enum with underlying type: string
 type ListenerProtocolsEnum string
 
@@ -44,4 +48,15 @@ func GetListenerProtocolsEnumStringValues() []string {
 		"UDP",
 		"TCP_AND_UDP",
 	}
+}
+
+// GetMappingListenerProtocolsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListenerProtocolsEnum(val string) (ListenerProtocolsEnum, bool) {
+	mappingListenerProtocolsEnumIgnoreCase := make(map[string]ListenerProtocolsEnum)
+	for k, v := range mappingListenerProtocolsEnum {
+		mappingListenerProtocolsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListenerProtocolsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

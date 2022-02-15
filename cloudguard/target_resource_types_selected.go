@@ -34,7 +34,7 @@ func (m TargetResourceTypesSelected) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	for _, val := range m.Values {
-		if _, ok := mappingTargetResourceTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingTargetResourceTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Values: %s. Supported values are: %s.", val, strings.Join(GetTargetResourceTypeEnumStringValues(), ",")))
 		}
 	}

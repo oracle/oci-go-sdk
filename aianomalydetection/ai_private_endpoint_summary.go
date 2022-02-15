@@ -71,7 +71,7 @@ func (m AiPrivateEndpointSummary) String() string {
 func (m AiPrivateEndpointSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAiPrivateEndpointLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAiPrivateEndpointLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAiPrivateEndpointLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

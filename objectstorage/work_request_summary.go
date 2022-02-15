@@ -64,10 +64,10 @@ func (m WorkRequestSummary) String() string {
 func (m WorkRequestSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingWorkRequestSummaryOperationTypeEnum[string(m.OperationType)]; !ok && m.OperationType != "" {
+	if _, ok := GetMappingWorkRequestSummaryOperationTypeEnum(string(m.OperationType)); !ok && m.OperationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OperationType: %s. Supported values are: %s.", m.OperationType, strings.Join(GetWorkRequestSummaryOperationTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingWorkRequestSummaryStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingWorkRequestSummaryStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetWorkRequestSummaryStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -105,6 +105,17 @@ func GetWorkRequestSummaryOperationTypeEnumStringValues() []string {
 		"COPY_OBJECT",
 		"REENCRYPT",
 	}
+}
+
+// GetMappingWorkRequestSummaryOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestSummaryOperationTypeEnum(val string) (WorkRequestSummaryOperationTypeEnum, bool) {
+	mappingWorkRequestSummaryOperationTypeEnumIgnoreCase := make(map[string]WorkRequestSummaryOperationTypeEnum)
+	for k, v := range mappingWorkRequestSummaryOperationTypeEnum {
+		mappingWorkRequestSummaryOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestSummaryOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // WorkRequestSummaryStatusEnum Enum with underlying type: string
@@ -148,4 +159,15 @@ func GetWorkRequestSummaryStatusEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingWorkRequestSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestSummaryStatusEnum(val string) (WorkRequestSummaryStatusEnum, bool) {
+	mappingWorkRequestSummaryStatusEnumIgnoreCase := make(map[string]WorkRequestSummaryStatusEnum)
+	for k, v := range mappingWorkRequestSummaryStatusEnum {
+		mappingWorkRequestSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

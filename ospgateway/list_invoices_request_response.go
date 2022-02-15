@@ -104,21 +104,21 @@ func (request ListInvoicesRequest) RetryPolicy() *common.RetryPolicy {
 func (request ListInvoicesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Type {
-		if _, ok := mappingListInvoicesTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListInvoicesTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", val, strings.Join(GetListInvoicesTypeEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range request.Status {
-		if _, ok := mappingListInvoicesStatusEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListInvoicesStatusEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", val, strings.Join(GetListInvoicesStatusEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListInvoicesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListInvoicesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListInvoicesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListInvoicesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListInvoicesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListInvoicesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -207,6 +207,17 @@ func GetListInvoicesTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListInvoicesTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListInvoicesTypeEnum(val string) (ListInvoicesTypeEnum, bool) {
+	mappingListInvoicesTypeEnumIgnoreCase := make(map[string]ListInvoicesTypeEnum)
+	for k, v := range mappingListInvoicesTypeEnum {
+		mappingListInvoicesTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListInvoicesTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListInvoicesStatusEnum Enum with underlying type: string
 type ListInvoicesStatusEnum string
 
@@ -242,6 +253,17 @@ func GetListInvoicesStatusEnumStringValues() []string {
 		"PAYMENT_SUBMITTED",
 		"CLOSED",
 	}
+}
+
+// GetMappingListInvoicesStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListInvoicesStatusEnum(val string) (ListInvoicesStatusEnum, bool) {
+	mappingListInvoicesStatusEnumIgnoreCase := make(map[string]ListInvoicesStatusEnum)
+	for k, v := range mappingListInvoicesStatusEnum {
+		mappingListInvoicesStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListInvoicesStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListInvoicesSortByEnum Enum with underlying type: string
@@ -296,6 +318,17 @@ func GetListInvoicesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListInvoicesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListInvoicesSortByEnum(val string) (ListInvoicesSortByEnum, bool) {
+	mappingListInvoicesSortByEnumIgnoreCase := make(map[string]ListInvoicesSortByEnum)
+	for k, v := range mappingListInvoicesSortByEnum {
+		mappingListInvoicesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListInvoicesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListInvoicesSortOrderEnum Enum with underlying type: string
 type ListInvoicesSortOrderEnum string
 
@@ -325,4 +358,15 @@ func GetListInvoicesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListInvoicesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListInvoicesSortOrderEnum(val string) (ListInvoicesSortOrderEnum, bool) {
+	mappingListInvoicesSortOrderEnumIgnoreCase := make(map[string]ListInvoicesSortOrderEnum)
+	for k, v := range mappingListInvoicesSortOrderEnum {
+		mappingListInvoicesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListInvoicesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

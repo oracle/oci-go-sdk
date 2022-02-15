@@ -9,6 +9,10 @@
 
 package aivision
 
+import (
+	"strings"
+)
+
 // DocumentTypeEnum Enum with underlying type: string
 type DocumentTypeEnum string
 
@@ -62,4 +66,15 @@ func GetDocumentTypeEnumStringValues() []string {
 		"PAYSLIP",
 		"OTHERS",
 	}
+}
+
+// GetMappingDocumentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDocumentTypeEnum(val string) (DocumentTypeEnum, bool) {
+	mappingDocumentTypeEnumIgnoreCase := make(map[string]DocumentTypeEnum)
+	for k, v := range mappingDocumentTypeEnum {
+		mappingDocumentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDocumentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

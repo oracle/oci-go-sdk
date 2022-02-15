@@ -119,3 +119,14 @@ func GetRouteAuthorizationPolicyTypeEnumStringValues() []string {
 		"AUTHENTICATION_ONLY",
 	}
 }
+
+// GetMappingRouteAuthorizationPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRouteAuthorizationPolicyTypeEnum(val string) (RouteAuthorizationPolicyTypeEnum, bool) {
+	mappingRouteAuthorizationPolicyTypeEnumIgnoreCase := make(map[string]RouteAuthorizationPolicyTypeEnum)
+	for k, v := range mappingRouteAuthorizationPolicyTypeEnum {
+		mappingRouteAuthorizationPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRouteAuthorizationPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

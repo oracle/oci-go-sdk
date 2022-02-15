@@ -123,3 +123,14 @@ func GetBuildRunSourceSourceTypeEnumStringValues() []string {
 		"DEVOPS_CODE_REPOSITORY",
 	}
 }
+
+// GetMappingBuildRunSourceSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBuildRunSourceSourceTypeEnum(val string) (BuildRunSourceSourceTypeEnum, bool) {
+	mappingBuildRunSourceSourceTypeEnumIgnoreCase := make(map[string]BuildRunSourceSourceTypeEnum)
+	for k, v := range mappingBuildRunSourceSourceTypeEnum {
+		mappingBuildRunSourceSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBuildRunSourceSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

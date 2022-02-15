@@ -72,11 +72,11 @@ func (m DataAssetSummary) String() string {
 // Not recommended for calling this function directly
 func (m DataAssetSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDataSourceTypeEnum[string(m.DataSourceType)]; !ok && m.DataSourceType != "" {
+	if _, ok := GetMappingDataSourceTypeEnum(string(m.DataSourceType)); !ok && m.DataSourceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataSourceType: %s. Supported values are: %s.", m.DataSourceType, strings.Join(GetDataSourceTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDataAssetLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDataAssetLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDataAssetLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

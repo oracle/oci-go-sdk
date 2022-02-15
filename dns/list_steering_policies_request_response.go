@@ -106,16 +106,16 @@ func (request ListSteeringPoliciesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListSteeringPoliciesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSteeringPolicySummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingSteeringPolicySummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetSteeringPolicySummaryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSteeringPoliciesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSteeringPoliciesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSteeringPoliciesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSteeringPoliciesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSteeringPoliciesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSteeringPoliciesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSteeringPoliciesScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingListSteeringPoliciesScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetListSteeringPoliciesScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -189,6 +189,17 @@ func GetListSteeringPoliciesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSteeringPoliciesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSteeringPoliciesSortByEnum(val string) (ListSteeringPoliciesSortByEnum, bool) {
+	mappingListSteeringPoliciesSortByEnumIgnoreCase := make(map[string]ListSteeringPoliciesSortByEnum)
+	for k, v := range mappingListSteeringPoliciesSortByEnum {
+		mappingListSteeringPoliciesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSteeringPoliciesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSteeringPoliciesSortOrderEnum Enum with underlying type: string
 type ListSteeringPoliciesSortOrderEnum string
 
@@ -220,6 +231,17 @@ func GetListSteeringPoliciesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSteeringPoliciesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSteeringPoliciesSortOrderEnum(val string) (ListSteeringPoliciesSortOrderEnum, bool) {
+	mappingListSteeringPoliciesSortOrderEnumIgnoreCase := make(map[string]ListSteeringPoliciesSortOrderEnum)
+	for k, v := range mappingListSteeringPoliciesSortOrderEnum {
+		mappingListSteeringPoliciesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSteeringPoliciesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSteeringPoliciesScopeEnum Enum with underlying type: string
 type ListSteeringPoliciesScopeEnum string
 
@@ -249,4 +271,15 @@ func GetListSteeringPoliciesScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingListSteeringPoliciesScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSteeringPoliciesScopeEnum(val string) (ListSteeringPoliciesScopeEnum, bool) {
+	mappingListSteeringPoliciesScopeEnumIgnoreCase := make(map[string]ListSteeringPoliciesScopeEnum)
+	for k, v := range mappingListSteeringPoliciesScopeEnum {
+		mappingListSteeringPoliciesScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSteeringPoliciesScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

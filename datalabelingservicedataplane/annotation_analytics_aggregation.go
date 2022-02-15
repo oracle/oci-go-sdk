@@ -46,7 +46,7 @@ func (m AnnotationAnalyticsAggregation) String() string {
 func (m AnnotationAnalyticsAggregation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAnnotationLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAnnotationLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAnnotationLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

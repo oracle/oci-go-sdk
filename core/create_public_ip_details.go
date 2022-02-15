@@ -66,7 +66,7 @@ func (m CreatePublicIpDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreatePublicIpDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreatePublicIpDetailsLifetimeEnum[string(m.Lifetime)]; !ok && m.Lifetime != "" {
+	if _, ok := GetMappingCreatePublicIpDetailsLifetimeEnum(string(m.Lifetime)); !ok && m.Lifetime != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Lifetime: %s. Supported values are: %s.", m.Lifetime, strings.Join(GetCreatePublicIpDetailsLifetimeEnumStringValues(), ",")))
 	}
 
@@ -105,4 +105,15 @@ func GetCreatePublicIpDetailsLifetimeEnumStringValues() []string {
 		"EPHEMERAL",
 		"RESERVED",
 	}
+}
+
+// GetMappingCreatePublicIpDetailsLifetimeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreatePublicIpDetailsLifetimeEnum(val string) (CreatePublicIpDetailsLifetimeEnum, bool) {
+	mappingCreatePublicIpDetailsLifetimeEnumIgnoreCase := make(map[string]CreatePublicIpDetailsLifetimeEnum)
+	for k, v := range mappingCreatePublicIpDetailsLifetimeEnum {
+		mappingCreatePublicIpDetailsLifetimeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreatePublicIpDetailsLifetimeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

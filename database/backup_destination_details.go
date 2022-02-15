@@ -43,7 +43,7 @@ func (m BackupDestinationDetails) String() string {
 // Not recommended for calling this function directly
 func (m BackupDestinationDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBackupDestinationDetailsTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingBackupDestinationDetailsTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetBackupDestinationDetailsTypeEnumStringValues(), ",")))
 	}
 
@@ -88,4 +88,15 @@ func GetBackupDestinationDetailsTypeEnumStringValues() []string {
 		"OBJECT_STORE",
 		"LOCAL",
 	}
+}
+
+// GetMappingBackupDestinationDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackupDestinationDetailsTypeEnum(val string) (BackupDestinationDetailsTypeEnum, bool) {
+	mappingBackupDestinationDetailsTypeEnumIgnoreCase := make(map[string]BackupDestinationDetailsTypeEnum)
+	for k, v := range mappingBackupDestinationDetailsTypeEnum {
+		mappingBackupDestinationDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackupDestinationDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -40,14 +40,14 @@ func (m PricingModel) String() string {
 // Not recommended for calling this function directly
 func (m PricingModel) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPricingTypeEnumEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingPricingTypeEnumEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetPricingTypeEnumEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingPricingStrategyEnumEnum[string(m.PayGoStrategy)]; !ok && m.PayGoStrategy != "" {
+	if _, ok := GetMappingPricingStrategyEnumEnum(string(m.PayGoStrategy)); !ok && m.PayGoStrategy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PayGoStrategy: %s. Supported values are: %s.", m.PayGoStrategy, strings.Join(GetPricingStrategyEnumEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPricingCurrencyEnumEnum[string(m.Currency)]; !ok && m.Currency != "" {
+	if _, ok := GetMappingPricingCurrencyEnumEnum(string(m.Currency)); !ok && m.Currency != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Currency: %s. Supported values are: %s.", m.Currency, strings.Join(GetPricingCurrencyEnumEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -93,10 +93,10 @@ func (request ListJobRunsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListJobRunsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListJobRunsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListJobRunsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListJobRunsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListJobRunsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListJobRunsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListJobRunsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -164,6 +164,17 @@ func GetListJobRunsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListJobRunsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobRunsSortByEnum(val string) (ListJobRunsSortByEnum, bool) {
+	mappingListJobRunsSortByEnumIgnoreCase := make(map[string]ListJobRunsSortByEnum)
+	for k, v := range mappingListJobRunsSortByEnum {
+		mappingListJobRunsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobRunsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListJobRunsSortOrderEnum Enum with underlying type: string
 type ListJobRunsSortOrderEnum string
 
@@ -193,4 +204,15 @@ func GetListJobRunsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListJobRunsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobRunsSortOrderEnum(val string) (ListJobRunsSortOrderEnum, bool) {
+	mappingListJobRunsSortOrderEnumIgnoreCase := make(map[string]ListJobRunsSortOrderEnum)
+	for k, v := range mappingListJobRunsSortOrderEnum {
+		mappingListJobRunsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobRunsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -135,14 +135,14 @@ func (m RoverCluster) String() string {
 // Not recommended for calling this function directly
 func (m RoverCluster) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingEnclosureTypeEnum[string(m.EnclosureType)]; !ok && m.EnclosureType != "" {
+	if _, ok := GetMappingEnclosureTypeEnum(string(m.EnclosureType)); !ok && m.EnclosureType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EnclosureType: %s. Supported values are: %s.", m.EnclosureType, strings.Join(GetEnclosureTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingRoverClusterShippingPreferenceEnum[string(m.ShippingPreference)]; !ok && m.ShippingPreference != "" {
+	if _, ok := GetMappingRoverClusterShippingPreferenceEnum(string(m.ShippingPreference)); !ok && m.ShippingPreference != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShippingPreference: %s. Supported values are: %s.", m.ShippingPreference, strings.Join(GetRoverClusterShippingPreferenceEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -180,4 +180,15 @@ func GetRoverClusterShippingPreferenceEnumStringValues() []string {
 		"ORACLE_SHIPPED",
 		"CUSTOMER_PICKUP",
 	}
+}
+
+// GetMappingRoverClusterShippingPreferenceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRoverClusterShippingPreferenceEnum(val string) (RoverClusterShippingPreferenceEnum, bool) {
+	mappingRoverClusterShippingPreferenceEnumIgnoreCase := make(map[string]RoverClusterShippingPreferenceEnum)
+	for k, v := range mappingRoverClusterShippingPreferenceEnum {
+		mappingRoverClusterShippingPreferenceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRoverClusterShippingPreferenceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

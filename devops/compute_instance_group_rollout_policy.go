@@ -119,3 +119,14 @@ func GetComputeInstanceGroupRolloutPolicyPolicyTypeEnumStringValues() []string {
 		"COMPUTE_INSTANCE_GROUP_LINEAR_ROLLOUT_POLICY_BY_PERCENTAGE",
 	}
 }
+
+// GetMappingComputeInstanceGroupRolloutPolicyPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingComputeInstanceGroupRolloutPolicyPolicyTypeEnum(val string) (ComputeInstanceGroupRolloutPolicyPolicyTypeEnum, bool) {
+	mappingComputeInstanceGroupRolloutPolicyPolicyTypeEnumIgnoreCase := make(map[string]ComputeInstanceGroupRolloutPolicyPolicyTypeEnum)
+	for k, v := range mappingComputeInstanceGroupRolloutPolicyPolicyTypeEnum {
+		mappingComputeInstanceGroupRolloutPolicyPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingComputeInstanceGroupRolloutPolicyPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

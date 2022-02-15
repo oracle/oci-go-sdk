@@ -35,7 +35,7 @@ func (m IndicatorCountDimensions) String() string {
 func (m IndicatorCountDimensions) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingIndicatorTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingIndicatorTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetIndicatorTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

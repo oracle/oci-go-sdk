@@ -40,7 +40,7 @@ func (m OperatingSystem) String() string {
 // Not recommended for calling this function directly
 func (m OperatingSystem) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingOsFamilyEnum[string(m.Family)]; !ok && m.Family != "" {
+	if _, ok := GetMappingOsFamilyEnum(string(m.Family)); !ok && m.Family != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Family: %s. Supported values are: %s.", m.Family, strings.Join(GetOsFamilyEnumStringValues(), ",")))
 	}
 

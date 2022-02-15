@@ -73,7 +73,7 @@ func (request GetEntityRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetEntityRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetEntityFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetEntityFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetEntityFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -199,4 +199,15 @@ func GetGetEntityFieldsEnumStringValues() []string {
 		"uri",
 		"properties",
 	}
+}
+
+// GetMappingGetEntityFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetEntityFieldsEnum(val string) (GetEntityFieldsEnum, bool) {
+	mappingGetEntityFieldsEnumIgnoreCase := make(map[string]GetEntityFieldsEnum)
+	for k, v := range mappingGetEntityFieldsEnum {
+		mappingGetEntityFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetEntityFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -58,7 +58,7 @@ func (m ExportImageViaObjectStorageTupleDetails) String() string {
 func (m ExportImageViaObjectStorageTupleDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingExportImageDetailsExportFormatEnum[string(m.ExportFormat)]; !ok && m.ExportFormat != "" {
+	if _, ok := GetMappingExportImageDetailsExportFormatEnum(string(m.ExportFormat)); !ok && m.ExportFormat != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExportFormat: %s. Supported values are: %s.", m.ExportFormat, strings.Join(GetExportImageDetailsExportFormatEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -76,7 +76,7 @@ func (request ListWafBlockedRequestsRequest) RetryPolicy() *common.RetryPolicy {
 func (request ListWafBlockedRequestsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.WafFeature {
-		if _, ok := mappingListWafBlockedRequestsWafFeatureEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListWafBlockedRequestsWafFeatureEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for WafFeature: %s. Supported values are: %s.", val, strings.Join(GetListWafBlockedRequestsWafFeatureEnumStringValues(), ",")))
 		}
 	}
@@ -159,4 +159,15 @@ func GetListWafBlockedRequestsWafFeatureEnumStringValues() []string {
 		"CAPTCHA",
 		"ADDRESS_RATE_LIMITING",
 	}
+}
+
+// GetMappingListWafBlockedRequestsWafFeatureEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWafBlockedRequestsWafFeatureEnum(val string) (ListWafBlockedRequestsWafFeatureEnum, bool) {
+	mappingListWafBlockedRequestsWafFeatureEnumIgnoreCase := make(map[string]ListWafBlockedRequestsWafFeatureEnum)
+	for k, v := range mappingListWafBlockedRequestsWafFeatureEnum {
+		mappingListWafBlockedRequestsWafFeatureEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWafBlockedRequestsWafFeatureEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

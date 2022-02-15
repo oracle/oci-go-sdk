@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // PolicyFormatEnum Enum with underlying type: string
 type PolicyFormatEnum string
 
@@ -35,4 +39,15 @@ func GetPolicyFormatEnumStringValues() []string {
 	return []string{
 		"XML",
 	}
+}
+
+// GetMappingPolicyFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPolicyFormatEnum(val string) (PolicyFormatEnum, bool) {
+	mappingPolicyFormatEnumIgnoreCase := make(map[string]PolicyFormatEnum)
+	for k, v := range mappingPolicyFormatEnum {
+		mappingPolicyFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPolicyFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

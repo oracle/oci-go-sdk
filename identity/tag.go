@@ -79,7 +79,7 @@ func (m Tag) String() string {
 func (m Tag) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTagLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingTagLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetTagLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -183,4 +183,15 @@ func GetTagLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingTagLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTagLifecycleStateEnum(val string) (TagLifecycleStateEnum, bool) {
+	mappingTagLifecycleStateEnumIgnoreCase := make(map[string]TagLifecycleStateEnum)
+	for k, v := range mappingTagLifecycleStateEnum {
+		mappingTagLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTagLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

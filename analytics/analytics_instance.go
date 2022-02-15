@@ -85,14 +85,14 @@ func (m AnalyticsInstance) String() string {
 // Not recommended for calling this function directly
 func (m AnalyticsInstance) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAnalyticsInstanceLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAnalyticsInstanceLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAnalyticsInstanceLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingFeatureSetEnum[string(m.FeatureSet)]; !ok && m.FeatureSet != "" {
+	if _, ok := GetMappingFeatureSetEnum(string(m.FeatureSet)); !ok && m.FeatureSet != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FeatureSet: %s. Supported values are: %s.", m.FeatureSet, strings.Join(GetFeatureSetEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingLicenseTypeEnum[string(m.LicenseType)]; !ok && m.LicenseType != "" {
+	if _, ok := GetMappingLicenseTypeEnum(string(m.LicenseType)); !ok && m.LicenseType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LicenseType: %s. Supported values are: %s.", m.LicenseType, strings.Join(GetLicenseTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -40,7 +40,7 @@ func (m ApiValidationDetail) String() string {
 func (m ApiValidationDetail) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingApiValidationDetailSeverityEnum[string(m.Severity)]; !ok && m.Severity != "" {
+	if _, ok := GetMappingApiValidationDetailSeverityEnum(string(m.Severity)); !ok && m.Severity != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Severity: %s. Supported values are: %s.", m.Severity, strings.Join(GetApiValidationDetailSeverityEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -81,4 +81,15 @@ func GetApiValidationDetailSeverityEnumStringValues() []string {
 		"WARNING",
 		"ERROR",
 	}
+}
+
+// GetMappingApiValidationDetailSeverityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingApiValidationDetailSeverityEnum(val string) (ApiValidationDetailSeverityEnum, bool) {
+	mappingApiValidationDetailSeverityEnumIgnoreCase := make(map[string]ApiValidationDetailSeverityEnum)
+	for k, v := range mappingApiValidationDetailSeverityEnum {
+		mappingApiValidationDetailSeverityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingApiValidationDetailSeverityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

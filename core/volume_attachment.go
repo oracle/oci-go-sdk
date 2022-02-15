@@ -233,11 +233,11 @@ func (m volumeattachment) String() string {
 // Not recommended for calling this function directly
 func (m volumeattachment) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVolumeAttachmentLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingVolumeAttachmentLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetVolumeAttachmentLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingVolumeAttachmentIscsiLoginStateEnum[string(m.IscsiLoginState)]; !ok && m.IscsiLoginState != "" {
+	if _, ok := GetMappingVolumeAttachmentIscsiLoginStateEnum(string(m.IscsiLoginState)); !ok && m.IscsiLoginState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IscsiLoginState: %s. Supported values are: %s.", m.IscsiLoginState, strings.Join(GetVolumeAttachmentIscsiLoginStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -281,6 +281,17 @@ func GetVolumeAttachmentLifecycleStateEnumStringValues() []string {
 		"DETACHING",
 		"DETACHED",
 	}
+}
+
+// GetMappingVolumeAttachmentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVolumeAttachmentLifecycleStateEnum(val string) (VolumeAttachmentLifecycleStateEnum, bool) {
+	mappingVolumeAttachmentLifecycleStateEnumIgnoreCase := make(map[string]VolumeAttachmentLifecycleStateEnum)
+	for k, v := range mappingVolumeAttachmentLifecycleStateEnum {
+		mappingVolumeAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVolumeAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // VolumeAttachmentIscsiLoginStateEnum Enum with underlying type: string
@@ -327,4 +338,15 @@ func GetVolumeAttachmentIscsiLoginStateEnumStringValues() []string {
 		"LOGOUT_SUCCEEDED",
 		"LOGOUT_FAILED",
 	}
+}
+
+// GetMappingVolumeAttachmentIscsiLoginStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVolumeAttachmentIscsiLoginStateEnum(val string) (VolumeAttachmentIscsiLoginStateEnum, bool) {
+	mappingVolumeAttachmentIscsiLoginStateEnumIgnoreCase := make(map[string]VolumeAttachmentIscsiLoginStateEnum)
+	for k, v := range mappingVolumeAttachmentIscsiLoginStateEnum {
+		mappingVolumeAttachmentIscsiLoginStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVolumeAttachmentIscsiLoginStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

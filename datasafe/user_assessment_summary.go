@@ -113,14 +113,14 @@ func (m UserAssessmentSummary) String() string {
 // Not recommended for calling this function directly
 func (m UserAssessmentSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUserAssessmentLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingUserAssessmentLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetUserAssessmentLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUserAssessmentSummaryTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingUserAssessmentSummaryTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetUserAssessmentSummaryTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingUserAssessmentSummaryTriggeredByEnum[string(m.TriggeredBy)]; !ok && m.TriggeredBy != "" {
+	if _, ok := GetMappingUserAssessmentSummaryTriggeredByEnum(string(m.TriggeredBy)); !ok && m.TriggeredBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TriggeredBy: %s. Supported values are: %s.", m.TriggeredBy, strings.Join(GetUserAssessmentSummaryTriggeredByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -160,6 +160,17 @@ func GetUserAssessmentSummaryTriggeredByEnumStringValues() []string {
 	}
 }
 
+// GetMappingUserAssessmentSummaryTriggeredByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserAssessmentSummaryTriggeredByEnum(val string) (UserAssessmentSummaryTriggeredByEnum, bool) {
+	mappingUserAssessmentSummaryTriggeredByEnumIgnoreCase := make(map[string]UserAssessmentSummaryTriggeredByEnum)
+	for k, v := range mappingUserAssessmentSummaryTriggeredByEnum {
+		mappingUserAssessmentSummaryTriggeredByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserAssessmentSummaryTriggeredByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UserAssessmentSummaryTypeEnum Enum with underlying type: string
 type UserAssessmentSummaryTypeEnum string
 
@@ -195,4 +206,15 @@ func GetUserAssessmentSummaryTypeEnumStringValues() []string {
 		"SAVE_SCHEDULE",
 		"COMPARTMENT",
 	}
+}
+
+// GetMappingUserAssessmentSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserAssessmentSummaryTypeEnum(val string) (UserAssessmentSummaryTypeEnum, bool) {
+	mappingUserAssessmentSummaryTypeEnumIgnoreCase := make(map[string]UserAssessmentSummaryTypeEnum)
+	for k, v := range mappingUserAssessmentSummaryTypeEnum {
+		mappingUserAssessmentSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserAssessmentSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

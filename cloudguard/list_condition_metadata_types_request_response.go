@@ -75,13 +75,13 @@ func (request ListConditionMetadataTypesRequest) RetryPolicy() *common.RetryPoli
 // Not recommended for calling this function directly
 func (request ListConditionMetadataTypesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListConditionMetadataTypesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListConditionMetadataTypesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListConditionMetadataTypesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListConditionMetadataTypesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListConditionMetadataTypesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListConditionMetadataTypesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListConditionMetadataTypesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListConditionMetadataTypesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListConditionMetadataTypesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -164,6 +164,17 @@ func GetListConditionMetadataTypesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListConditionMetadataTypesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListConditionMetadataTypesLifecycleStateEnum(val string) (ListConditionMetadataTypesLifecycleStateEnum, bool) {
+	mappingListConditionMetadataTypesLifecycleStateEnumIgnoreCase := make(map[string]ListConditionMetadataTypesLifecycleStateEnum)
+	for k, v := range mappingListConditionMetadataTypesLifecycleStateEnum {
+		mappingListConditionMetadataTypesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListConditionMetadataTypesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListConditionMetadataTypesSortOrderEnum Enum with underlying type: string
 type ListConditionMetadataTypesSortOrderEnum string
 
@@ -195,6 +206,17 @@ func GetListConditionMetadataTypesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListConditionMetadataTypesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListConditionMetadataTypesSortOrderEnum(val string) (ListConditionMetadataTypesSortOrderEnum, bool) {
+	mappingListConditionMetadataTypesSortOrderEnumIgnoreCase := make(map[string]ListConditionMetadataTypesSortOrderEnum)
+	for k, v := range mappingListConditionMetadataTypesSortOrderEnum {
+		mappingListConditionMetadataTypesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListConditionMetadataTypesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListConditionMetadataTypesSortByEnum Enum with underlying type: string
 type ListConditionMetadataTypesSortByEnum string
 
@@ -224,4 +246,15 @@ func GetListConditionMetadataTypesSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListConditionMetadataTypesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListConditionMetadataTypesSortByEnum(val string) (ListConditionMetadataTypesSortByEnum, bool) {
+	mappingListConditionMetadataTypesSortByEnumIgnoreCase := make(map[string]ListConditionMetadataTypesSortByEnum)
+	for k, v := range mappingListConditionMetadataTypesSortByEnum {
+		mappingListConditionMetadataTypesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListConditionMetadataTypesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

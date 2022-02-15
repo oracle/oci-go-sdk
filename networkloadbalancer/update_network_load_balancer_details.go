@@ -52,7 +52,7 @@ func (m UpdateNetworkLoadBalancerDetails) String() string {
 func (m UpdateNetworkLoadBalancerDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingNlbIpVersionEnum[string(m.NlbIpVersion)]; !ok && m.NlbIpVersion != "" {
+	if _, ok := GetMappingNlbIpVersionEnum(string(m.NlbIpVersion)); !ok && m.NlbIpVersion != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NlbIpVersion: %s. Supported values are: %s.", m.NlbIpVersion, strings.Join(GetNlbIpVersionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

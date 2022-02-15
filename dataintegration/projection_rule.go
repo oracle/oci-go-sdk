@@ -198,3 +198,14 @@ func GetProjectionRuleModelTypeEnumStringValues() []string {
 		"RENAME_RULE",
 	}
 }
+
+// GetMappingProjectionRuleModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingProjectionRuleModelTypeEnum(val string) (ProjectionRuleModelTypeEnum, bool) {
+	mappingProjectionRuleModelTypeEnumIgnoreCase := make(map[string]ProjectionRuleModelTypeEnum)
+	for k, v := range mappingProjectionRuleModelTypeEnum {
+		mappingProjectionRuleModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingProjectionRuleModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

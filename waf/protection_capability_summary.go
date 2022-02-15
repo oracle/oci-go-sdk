@@ -69,7 +69,7 @@ func (m ProtectionCapabilitySummary) String() string {
 // Not recommended for calling this function directly
 func (m ProtectionCapabilitySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingProtectionCapabilitySummaryTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingProtectionCapabilitySummaryTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetProtectionCapabilitySummaryTypeEnumStringValues(), ",")))
 	}
 
@@ -108,4 +108,15 @@ func GetProtectionCapabilitySummaryTypeEnumStringValues() []string {
 		"REQUEST_PROTECTION_CAPABILITY",
 		"RESPONSE_PROTECTION_CAPABILITY",
 	}
+}
+
+// GetMappingProtectionCapabilitySummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingProtectionCapabilitySummaryTypeEnum(val string) (ProtectionCapabilitySummaryTypeEnum, bool) {
+	mappingProtectionCapabilitySummaryTypeEnumIgnoreCase := make(map[string]ProtectionCapabilitySummaryTypeEnum)
+	for k, v := range mappingProtectionCapabilitySummaryTypeEnum {
+		mappingProtectionCapabilitySummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingProtectionCapabilitySummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

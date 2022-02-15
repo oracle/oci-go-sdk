@@ -41,7 +41,7 @@ func (m ResponderRuleDetails) String() string {
 func (m ResponderRuleDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingResponderModeTypesEnum[string(m.Mode)]; !ok && m.Mode != "" {
+	if _, ok := GetMappingResponderModeTypesEnum(string(m.Mode)); !ok && m.Mode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Mode: %s. Supported values are: %s.", m.Mode, strings.Join(GetResponderModeTypesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

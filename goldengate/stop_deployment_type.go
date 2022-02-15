@@ -9,6 +9,10 @@
 
 package goldengate
 
+import (
+	"strings"
+)
+
 // StopDeploymentTypeEnum Enum with underlying type: string
 type StopDeploymentTypeEnum string
 
@@ -35,4 +39,15 @@ func GetStopDeploymentTypeEnumStringValues() []string {
 	return []string{
 		"DEFAULT",
 	}
+}
+
+// GetMappingStopDeploymentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStopDeploymentTypeEnum(val string) (StopDeploymentTypeEnum, bool) {
+	mappingStopDeploymentTypeEnumIgnoreCase := make(map[string]StopDeploymentTypeEnum)
+	for k, v := range mappingStopDeploymentTypeEnum {
+		mappingStopDeploymentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStopDeploymentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package loganalytics
 
+import (
+	"strings"
+)
+
 // ValueTypeEnum Enum with underlying type: string
 type ValueTypeEnum string
 
@@ -56,4 +60,15 @@ func GetValueTypeEnumStringValues() []string {
 		"TIMESTAMP",
 		"FACET",
 	}
+}
+
+// GetMappingValueTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingValueTypeEnum(val string) (ValueTypeEnum, bool) {
+	mappingValueTypeEnumIgnoreCase := make(map[string]ValueTypeEnum)
+	for k, v := range mappingValueTypeEnum {
+		mappingValueTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingValueTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -90,15 +90,15 @@ func (request ListAggregatedPhysicalEntitiesRequest) RetryPolicy() *common.Retry
 func (request ListAggregatedPhysicalEntitiesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingListAggregatedPhysicalEntitiesFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListAggregatedPhysicalEntitiesFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetListAggregatedPhysicalEntitiesFieldsEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListAggregatedPhysicalEntitiesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAggregatedPhysicalEntitiesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAggregatedPhysicalEntitiesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAggregatedPhysicalEntitiesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAggregatedPhysicalEntitiesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAggregatedPhysicalEntitiesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -221,6 +221,17 @@ func GetListAggregatedPhysicalEntitiesFieldsEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAggregatedPhysicalEntitiesFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAggregatedPhysicalEntitiesFieldsEnum(val string) (ListAggregatedPhysicalEntitiesFieldsEnum, bool) {
+	mappingListAggregatedPhysicalEntitiesFieldsEnumIgnoreCase := make(map[string]ListAggregatedPhysicalEntitiesFieldsEnum)
+	for k, v := range mappingListAggregatedPhysicalEntitiesFieldsEnum {
+		mappingListAggregatedPhysicalEntitiesFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAggregatedPhysicalEntitiesFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAggregatedPhysicalEntitiesSortByEnum Enum with underlying type: string
 type ListAggregatedPhysicalEntitiesSortByEnum string
 
@@ -252,6 +263,17 @@ func GetListAggregatedPhysicalEntitiesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAggregatedPhysicalEntitiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAggregatedPhysicalEntitiesSortByEnum(val string) (ListAggregatedPhysicalEntitiesSortByEnum, bool) {
+	mappingListAggregatedPhysicalEntitiesSortByEnumIgnoreCase := make(map[string]ListAggregatedPhysicalEntitiesSortByEnum)
+	for k, v := range mappingListAggregatedPhysicalEntitiesSortByEnum {
+		mappingListAggregatedPhysicalEntitiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAggregatedPhysicalEntitiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAggregatedPhysicalEntitiesSortOrderEnum Enum with underlying type: string
 type ListAggregatedPhysicalEntitiesSortOrderEnum string
 
@@ -281,4 +303,15 @@ func GetListAggregatedPhysicalEntitiesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAggregatedPhysicalEntitiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAggregatedPhysicalEntitiesSortOrderEnum(val string) (ListAggregatedPhysicalEntitiesSortOrderEnum, bool) {
+	mappingListAggregatedPhysicalEntitiesSortOrderEnumIgnoreCase := make(map[string]ListAggregatedPhysicalEntitiesSortOrderEnum)
+	for k, v := range mappingListAggregatedPhysicalEntitiesSortOrderEnum {
+		mappingListAggregatedPhysicalEntitiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAggregatedPhysicalEntitiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -152,3 +152,14 @@ func GetCreateBackupDestinationDetailsTypeEnumStringValues() []string {
 		"RECOVERY_APPLIANCE",
 	}
 }
+
+// GetMappingCreateBackupDestinationDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateBackupDestinationDetailsTypeEnum(val string) (CreateBackupDestinationDetailsTypeEnum, bool) {
+	mappingCreateBackupDestinationDetailsTypeEnumIgnoreCase := make(map[string]CreateBackupDestinationDetailsTypeEnum)
+	for k, v := range mappingCreateBackupDestinationDetailsTypeEnum {
+		mappingCreateBackupDestinationDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateBackupDestinationDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

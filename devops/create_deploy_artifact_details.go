@@ -52,10 +52,10 @@ func (m CreateDeployArtifactDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateDeployArtifactDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDeployArtifactDeployArtifactTypeEnum[string(m.DeployArtifactType)]; !ok && m.DeployArtifactType != "" {
+	if _, ok := GetMappingDeployArtifactDeployArtifactTypeEnum(string(m.DeployArtifactType)); !ok && m.DeployArtifactType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DeployArtifactType: %s. Supported values are: %s.", m.DeployArtifactType, strings.Join(GetDeployArtifactDeployArtifactTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDeployArtifactArgumentSubstitutionModeEnum[string(m.ArgumentSubstitutionMode)]; !ok && m.ArgumentSubstitutionMode != "" {
+	if _, ok := GetMappingDeployArtifactArgumentSubstitutionModeEnum(string(m.ArgumentSubstitutionMode)); !ok && m.ArgumentSubstitutionMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ArgumentSubstitutionMode: %s. Supported values are: %s.", m.ArgumentSubstitutionMode, strings.Join(GetDeployArtifactArgumentSubstitutionModeEnumStringValues(), ",")))
 	}
 

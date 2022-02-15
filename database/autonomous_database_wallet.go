@@ -35,7 +35,7 @@ func (m AutonomousDatabaseWallet) String() string {
 func (m AutonomousDatabaseWallet) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAutonomousDatabaseWalletLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAutonomousDatabaseWalletLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAutonomousDatabaseWalletLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -73,4 +73,15 @@ func GetAutonomousDatabaseWalletLifecycleStateEnumStringValues() []string {
 		"ACTIVE",
 		"UPDATING",
 	}
+}
+
+// GetMappingAutonomousDatabaseWalletLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseWalletLifecycleStateEnum(val string) (AutonomousDatabaseWalletLifecycleStateEnum, bool) {
+	mappingAutonomousDatabaseWalletLifecycleStateEnumIgnoreCase := make(map[string]AutonomousDatabaseWalletLifecycleStateEnum)
+	for k, v := range mappingAutonomousDatabaseWalletLifecycleStateEnum {
+		mappingAutonomousDatabaseWalletLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseWalletLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

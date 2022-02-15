@@ -102,3 +102,14 @@ func GetCreateSourceDetailsSourceTypeEnumStringValues() []string {
 		"OBJECT_STORAGE",
 	}
 }
+
+// GetMappingCreateSourceDetailsSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateSourceDetailsSourceTypeEnum(val string) (CreateSourceDetailsSourceTypeEnum, bool) {
+	mappingCreateSourceDetailsSourceTypeEnumIgnoreCase := make(map[string]CreateSourceDetailsSourceTypeEnum)
+	for k, v := range mappingCreateSourceDetailsSourceTypeEnum {
+		mappingCreateSourceDetailsSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateSourceDetailsSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

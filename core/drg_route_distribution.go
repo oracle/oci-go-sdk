@@ -77,10 +77,10 @@ func (m DrgRouteDistribution) String() string {
 // Not recommended for calling this function directly
 func (m DrgRouteDistribution) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDrgRouteDistributionLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDrgRouteDistributionLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDrgRouteDistributionLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDrgRouteDistributionDistributionTypeEnum[string(m.DistributionType)]; !ok && m.DistributionType != "" {
+	if _, ok := GetMappingDrgRouteDistributionDistributionTypeEnum(string(m.DistributionType)); !ok && m.DistributionType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DistributionType: %s. Supported values are: %s.", m.DistributionType, strings.Join(GetDrgRouteDistributionDistributionTypeEnumStringValues(), ",")))
 	}
 
@@ -127,6 +127,17 @@ func GetDrgRouteDistributionLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingDrgRouteDistributionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDrgRouteDistributionLifecycleStateEnum(val string) (DrgRouteDistributionLifecycleStateEnum, bool) {
+	mappingDrgRouteDistributionLifecycleStateEnumIgnoreCase := make(map[string]DrgRouteDistributionLifecycleStateEnum)
+	for k, v := range mappingDrgRouteDistributionLifecycleStateEnum {
+		mappingDrgRouteDistributionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDrgRouteDistributionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DrgRouteDistributionDistributionTypeEnum Enum with underlying type: string
 type DrgRouteDistributionDistributionTypeEnum string
 
@@ -156,4 +167,15 @@ func GetDrgRouteDistributionDistributionTypeEnumStringValues() []string {
 		"IMPORT",
 		"EXPORT",
 	}
+}
+
+// GetMappingDrgRouteDistributionDistributionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDrgRouteDistributionDistributionTypeEnum(val string) (DrgRouteDistributionDistributionTypeEnum, bool) {
+	mappingDrgRouteDistributionDistributionTypeEnumIgnoreCase := make(map[string]DrgRouteDistributionDistributionTypeEnum)
+	for k, v := range mappingDrgRouteDistributionDistributionTypeEnum {
+		mappingDrgRouteDistributionDistributionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDrgRouteDistributionDistributionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

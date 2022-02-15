@@ -111,3 +111,14 @@ func GetResponseCacheDetailsTypeEnumStringValues() []string {
 		"NONE",
 	}
 }
+
+// GetMappingResponseCacheDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResponseCacheDetailsTypeEnum(val string) (ResponseCacheDetailsTypeEnum, bool) {
+	mappingResponseCacheDetailsTypeEnumIgnoreCase := make(map[string]ResponseCacheDetailsTypeEnum)
+	for k, v := range mappingResponseCacheDetailsTypeEnum {
+		mappingResponseCacheDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResponseCacheDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

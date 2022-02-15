@@ -108,13 +108,13 @@ func (request SummarizeAwrDbCpuUsagesRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request SummarizeAwrDbCpuUsagesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeAwrDbCpuUsagesSessionTypeEnum[string(request.SessionType)]; !ok && request.SessionType != "" {
+	if _, ok := GetMappingSummarizeAwrDbCpuUsagesSessionTypeEnum(string(request.SessionType)); !ok && request.SessionType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SessionType: %s. Supported values are: %s.", request.SessionType, strings.Join(GetSummarizeAwrDbCpuUsagesSessionTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeAwrDbCpuUsagesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeAwrDbCpuUsagesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeAwrDbCpuUsagesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeAwrDbCpuUsagesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeAwrDbCpuUsagesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeAwrDbCpuUsagesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -185,6 +185,17 @@ func GetSummarizeAwrDbCpuUsagesSessionTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeAwrDbCpuUsagesSessionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeAwrDbCpuUsagesSessionTypeEnum(val string) (SummarizeAwrDbCpuUsagesSessionTypeEnum, bool) {
+	mappingSummarizeAwrDbCpuUsagesSessionTypeEnumIgnoreCase := make(map[string]SummarizeAwrDbCpuUsagesSessionTypeEnum)
+	for k, v := range mappingSummarizeAwrDbCpuUsagesSessionTypeEnum {
+		mappingSummarizeAwrDbCpuUsagesSessionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeAwrDbCpuUsagesSessionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeAwrDbCpuUsagesSortByEnum Enum with underlying type: string
 type SummarizeAwrDbCpuUsagesSortByEnum string
 
@@ -216,6 +227,17 @@ func GetSummarizeAwrDbCpuUsagesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeAwrDbCpuUsagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeAwrDbCpuUsagesSortByEnum(val string) (SummarizeAwrDbCpuUsagesSortByEnum, bool) {
+	mappingSummarizeAwrDbCpuUsagesSortByEnumIgnoreCase := make(map[string]SummarizeAwrDbCpuUsagesSortByEnum)
+	for k, v := range mappingSummarizeAwrDbCpuUsagesSortByEnum {
+		mappingSummarizeAwrDbCpuUsagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeAwrDbCpuUsagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeAwrDbCpuUsagesSortOrderEnum Enum with underlying type: string
 type SummarizeAwrDbCpuUsagesSortOrderEnum string
 
@@ -245,4 +267,15 @@ func GetSummarizeAwrDbCpuUsagesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingSummarizeAwrDbCpuUsagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeAwrDbCpuUsagesSortOrderEnum(val string) (SummarizeAwrDbCpuUsagesSortOrderEnum, bool) {
+	mappingSummarizeAwrDbCpuUsagesSortOrderEnumIgnoreCase := make(map[string]SummarizeAwrDbCpuUsagesSortOrderEnum)
+	for k, v := range mappingSummarizeAwrDbCpuUsagesSortOrderEnum {
+		mappingSummarizeAwrDbCpuUsagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeAwrDbCpuUsagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

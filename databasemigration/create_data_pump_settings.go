@@ -43,7 +43,7 @@ func (m CreateDataPumpSettings) String() string {
 func (m CreateDataPumpSettings) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDataPumpJobModeEnum[string(m.JobMode)]; !ok && m.JobMode != "" {
+	if _, ok := GetMappingDataPumpJobModeEnum(string(m.JobMode)); !ok && m.JobMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for JobMode: %s. Supported values are: %s.", m.JobMode, strings.Join(GetDataPumpJobModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

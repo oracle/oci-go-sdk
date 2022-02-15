@@ -43,7 +43,7 @@ func (m SecurityScoreTrendAggregation) String() string {
 // Not recommended for calling this function directly
 func (m SecurityScoreTrendAggregation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSecurityRatingEnum[string(m.SecurityRating)]; !ok && m.SecurityRating != "" {
+	if _, ok := GetMappingSecurityRatingEnum(string(m.SecurityRating)); !ok && m.SecurityRating != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SecurityRating: %s. Supported values are: %s.", m.SecurityRating, strings.Join(GetSecurityRatingEnumStringValues(), ",")))
 	}
 

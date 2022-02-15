@@ -65,7 +65,7 @@ func (request GetMirrorRecordRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetMirrorRecordRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetMirrorRecordMirrorRecordTypeEnum[string(request.MirrorRecordType)]; !ok && request.MirrorRecordType != "" {
+	if _, ok := GetMappingGetMirrorRecordMirrorRecordTypeEnum(string(request.MirrorRecordType)); !ok && request.MirrorRecordType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MirrorRecordType: %s. Supported values are: %s.", request.MirrorRecordType, strings.Join(GetGetMirrorRecordMirrorRecordTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -128,4 +128,15 @@ func GetGetMirrorRecordMirrorRecordTypeEnumStringValues() []string {
 		"current",
 		"lastSuccessful",
 	}
+}
+
+// GetMappingGetMirrorRecordMirrorRecordTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetMirrorRecordMirrorRecordTypeEnum(val string) (GetMirrorRecordMirrorRecordTypeEnum, bool) {
+	mappingGetMirrorRecordMirrorRecordTypeEnumIgnoreCase := make(map[string]GetMirrorRecordMirrorRecordTypeEnum)
+	for k, v := range mappingGetMirrorRecordMirrorRecordTypeEnum {
+		mappingGetMirrorRecordMirrorRecordTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetMirrorRecordMirrorRecordTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

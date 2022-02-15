@@ -199,10 +199,10 @@ func (m abstractcolumn) String() string {
 func (m abstractcolumn) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSubSystemNameEnum[string(m.SubSystem)]; !ok && m.SubSystem != "" {
+	if _, ok := GetMappingSubSystemNameEnum(string(m.SubSystem)); !ok && m.SubSystem != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SubSystem: %s. Supported values are: %s.", m.SubSystem, strings.Join(GetSubSystemNameEnumStringValues(), ",")))
 	}
-	if _, ok := mappingValueTypeEnum[string(m.ValueType)]; !ok && m.ValueType != "" {
+	if _, ok := GetMappingValueTypeEnum(string(m.ValueType)); !ok && m.ValueType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ValueType: %s. Supported values are: %s.", m.ValueType, strings.Join(GetValueTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -252,4 +252,15 @@ func GetAbstractColumnTypeEnumStringValues() []string {
 		"TREND_COLUMN",
 		"CLASSIFY_COLUMN",
 	}
+}
+
+// GetMappingAbstractColumnTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAbstractColumnTypeEnum(val string) (AbstractColumnTypeEnum, bool) {
+	mappingAbstractColumnTypeEnumIgnoreCase := make(map[string]AbstractColumnTypeEnum)
+	for k, v := range mappingAbstractColumnTypeEnum {
+		mappingAbstractColumnTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAbstractColumnTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

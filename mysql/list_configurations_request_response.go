@@ -92,19 +92,19 @@ func (request ListConfigurationsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListConfigurationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingConfigurationLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingConfigurationLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetConfigurationLifecycleStateEnumStringValues(), ",")))
 	}
 	for _, val := range request.Type {
-		if _, ok := mappingListConfigurationsTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListConfigurationsTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", val, strings.Join(GetListConfigurationsTypeEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListConfigurationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListConfigurationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListConfigurationsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListConfigurationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListConfigurationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListConfigurationsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -172,6 +172,17 @@ func GetListConfigurationsTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListConfigurationsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListConfigurationsTypeEnum(val string) (ListConfigurationsTypeEnum, bool) {
+	mappingListConfigurationsTypeEnumIgnoreCase := make(map[string]ListConfigurationsTypeEnum)
+	for k, v := range mappingListConfigurationsTypeEnum {
+		mappingListConfigurationsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListConfigurationsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListConfigurationsSortByEnum Enum with underlying type: string
 type ListConfigurationsSortByEnum string
 
@@ -209,6 +220,17 @@ func GetListConfigurationsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListConfigurationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListConfigurationsSortByEnum(val string) (ListConfigurationsSortByEnum, bool) {
+	mappingListConfigurationsSortByEnumIgnoreCase := make(map[string]ListConfigurationsSortByEnum)
+	for k, v := range mappingListConfigurationsSortByEnum {
+		mappingListConfigurationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListConfigurationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListConfigurationsSortOrderEnum Enum with underlying type: string
 type ListConfigurationsSortOrderEnum string
 
@@ -238,4 +260,15 @@ func GetListConfigurationsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListConfigurationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListConfigurationsSortOrderEnum(val string) (ListConfigurationsSortOrderEnum, bool) {
+	mappingListConfigurationsSortOrderEnumIgnoreCase := make(map[string]ListConfigurationsSortOrderEnum)
+	for k, v := range mappingListConfigurationsSortOrderEnum {
+		mappingListConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -106,15 +106,15 @@ func (m UpdateVirtualCircuitDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	for _, val := range m.RoutingPolicy {
-		if _, ok := mappingUpdateVirtualCircuitDetailsRoutingPolicyEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingUpdateVirtualCircuitDetailsRoutingPolicyEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RoutingPolicy: %s. Supported values are: %s.", val, strings.Join(GetUpdateVirtualCircuitDetailsRoutingPolicyEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingUpdateVirtualCircuitDetailsProviderStateEnum[string(m.ProviderState)]; !ok && m.ProviderState != "" {
+	if _, ok := GetMappingUpdateVirtualCircuitDetailsProviderStateEnum(string(m.ProviderState)); !ok && m.ProviderState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProviderState: %s. Supported values are: %s.", m.ProviderState, strings.Join(GetUpdateVirtualCircuitDetailsProviderStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVirtualCircuitIpMtuEnum[string(m.IpMtu)]; !ok && m.IpMtu != "" {
+	if _, ok := GetMappingVirtualCircuitIpMtuEnum(string(m.IpMtu)); !ok && m.IpMtu != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IpMtu: %s. Supported values are: %s.", m.IpMtu, strings.Join(GetVirtualCircuitIpMtuEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -160,6 +160,17 @@ func GetUpdateVirtualCircuitDetailsRoutingPolicyEnumStringValues() []string {
 	}
 }
 
+// GetMappingUpdateVirtualCircuitDetailsRoutingPolicyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateVirtualCircuitDetailsRoutingPolicyEnum(val string) (UpdateVirtualCircuitDetailsRoutingPolicyEnum, bool) {
+	mappingUpdateVirtualCircuitDetailsRoutingPolicyEnumIgnoreCase := make(map[string]UpdateVirtualCircuitDetailsRoutingPolicyEnum)
+	for k, v := range mappingUpdateVirtualCircuitDetailsRoutingPolicyEnum {
+		mappingUpdateVirtualCircuitDetailsRoutingPolicyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateVirtualCircuitDetailsRoutingPolicyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UpdateVirtualCircuitDetailsProviderStateEnum Enum with underlying type: string
 type UpdateVirtualCircuitDetailsProviderStateEnum string
 
@@ -189,4 +200,15 @@ func GetUpdateVirtualCircuitDetailsProviderStateEnumStringValues() []string {
 		"ACTIVE",
 		"INACTIVE",
 	}
+}
+
+// GetMappingUpdateVirtualCircuitDetailsProviderStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateVirtualCircuitDetailsProviderStateEnum(val string) (UpdateVirtualCircuitDetailsProviderStateEnum, bool) {
+	mappingUpdateVirtualCircuitDetailsProviderStateEnumIgnoreCase := make(map[string]UpdateVirtualCircuitDetailsProviderStateEnum)
+	for k, v := range mappingUpdateVirtualCircuitDetailsProviderStateEnum {
+		mappingUpdateVirtualCircuitDetailsProviderStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateVirtualCircuitDetailsProviderStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -86,16 +86,16 @@ func (m DiscoveryJobResultSummary) String() string {
 // Not recommended for calling this function directly
 func (m DiscoveryJobResultSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDiscoveryJobResultDiscoveryTypeEnum[string(m.DiscoveryType)]; !ok && m.DiscoveryType != "" {
+	if _, ok := GetMappingDiscoveryJobResultDiscoveryTypeEnum(string(m.DiscoveryType)); !ok && m.DiscoveryType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DiscoveryType: %s. Supported values are: %s.", m.DiscoveryType, strings.Join(GetDiscoveryJobResultDiscoveryTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDiscoveryJobResultSummaryObjectTypeEnum[string(m.ObjectType)]; !ok && m.ObjectType != "" {
+	if _, ok := GetMappingDiscoveryJobResultSummaryObjectTypeEnum(string(m.ObjectType)); !ok && m.ObjectType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ObjectType: %s. Supported values are: %s.", m.ObjectType, strings.Join(GetDiscoveryJobResultSummaryObjectTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDiscoveryJobResultSummaryRelationTypeEnum[string(m.RelationType)]; !ok && m.RelationType != "" {
+	if _, ok := GetMappingDiscoveryJobResultSummaryRelationTypeEnum(string(m.RelationType)); !ok && m.RelationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RelationType: %s. Supported values are: %s.", m.RelationType, strings.Join(GetDiscoveryJobResultSummaryRelationTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDiscoveryJobResultPlannedActionEnum[string(m.PlannedAction)]; !ok && m.PlannedAction != "" {
+	if _, ok := GetMappingDiscoveryJobResultPlannedActionEnum(string(m.PlannedAction)); !ok && m.PlannedAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlannedAction: %s. Supported values are: %s.", m.PlannedAction, strings.Join(GetDiscoveryJobResultPlannedActionEnumStringValues(), ",")))
 	}
 
@@ -136,6 +136,17 @@ func GetDiscoveryJobResultSummaryObjectTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingDiscoveryJobResultSummaryObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDiscoveryJobResultSummaryObjectTypeEnum(val string) (DiscoveryJobResultSummaryObjectTypeEnum, bool) {
+	mappingDiscoveryJobResultSummaryObjectTypeEnumIgnoreCase := make(map[string]DiscoveryJobResultSummaryObjectTypeEnum)
+	for k, v := range mappingDiscoveryJobResultSummaryObjectTypeEnum {
+		mappingDiscoveryJobResultSummaryObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDiscoveryJobResultSummaryObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DiscoveryJobResultSummaryRelationTypeEnum Enum with underlying type: string
 type DiscoveryJobResultSummaryRelationTypeEnum string
 
@@ -168,4 +179,15 @@ func GetDiscoveryJobResultSummaryRelationTypeEnumStringValues() []string {
 		"APP_DEFINED",
 		"DB_DEFINED",
 	}
+}
+
+// GetMappingDiscoveryJobResultSummaryRelationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDiscoveryJobResultSummaryRelationTypeEnum(val string) (DiscoveryJobResultSummaryRelationTypeEnum, bool) {
+	mappingDiscoveryJobResultSummaryRelationTypeEnumIgnoreCase := make(map[string]DiscoveryJobResultSummaryRelationTypeEnum)
+	for k, v := range mappingDiscoveryJobResultSummaryRelationTypeEnum {
+		mappingDiscoveryJobResultSummaryRelationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDiscoveryJobResultSummaryRelationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

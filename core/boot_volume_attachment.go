@@ -68,11 +68,11 @@ func (m BootVolumeAttachment) String() string {
 // Not recommended for calling this function directly
 func (m BootVolumeAttachment) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBootVolumeAttachmentLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingBootVolumeAttachmentLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetBootVolumeAttachmentLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingEncryptionInTransitTypeEnum[string(m.EncryptionInTransitType)]; !ok && m.EncryptionInTransitType != "" {
+	if _, ok := GetMappingEncryptionInTransitTypeEnum(string(m.EncryptionInTransitType)); !ok && m.EncryptionInTransitType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EncryptionInTransitType: %s. Supported values are: %s.", m.EncryptionInTransitType, strings.Join(GetEncryptionInTransitTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -116,4 +116,15 @@ func GetBootVolumeAttachmentLifecycleStateEnumStringValues() []string {
 		"DETACHING",
 		"DETACHED",
 	}
+}
+
+// GetMappingBootVolumeAttachmentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBootVolumeAttachmentLifecycleStateEnum(val string) (BootVolumeAttachmentLifecycleStateEnum, bool) {
+	mappingBootVolumeAttachmentLifecycleStateEnumIgnoreCase := make(map[string]BootVolumeAttachmentLifecycleStateEnum)
+	for k, v := range mappingBootVolumeAttachmentLifecycleStateEnum {
+		mappingBootVolumeAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBootVolumeAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

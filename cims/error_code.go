@@ -9,6 +9,10 @@
 
 package cims
 
+import (
+	"strings"
+)
+
 // ErrorCodeEnum Enum with underlying type: string
 type ErrorCodeEnum string
 
@@ -101,4 +105,15 @@ func GetErrorCodeEnumStringValues() []string {
 		"DATA_ALREADY_EXISTS",
 		"AUTH_USER_NOT_MATCHING",
 	}
+}
+
+// GetMappingErrorCodeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingErrorCodeEnum(val string) (ErrorCodeEnum, bool) {
+	mappingErrorCodeEnumIgnoreCase := make(map[string]ErrorCodeEnum)
+	for k, v := range mappingErrorCodeEnum {
+		mappingErrorCodeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingErrorCodeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

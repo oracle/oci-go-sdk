@@ -96,19 +96,19 @@ func (m SensitiveColumnSummary) String() string {
 // Not recommended for calling this function directly
 func (m SensitiveColumnSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSensitiveColumnLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingSensitiveColumnLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSensitiveColumnLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSensitiveColumnSummaryObjectTypeEnum[string(m.ObjectType)]; !ok && m.ObjectType != "" {
+	if _, ok := GetMappingSensitiveColumnSummaryObjectTypeEnum(string(m.ObjectType)); !ok && m.ObjectType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ObjectType: %s. Supported values are: %s.", m.ObjectType, strings.Join(GetSensitiveColumnSummaryObjectTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSensitiveColumnSummaryStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingSensitiveColumnSummaryStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetSensitiveColumnSummaryStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSensitiveColumnSummarySourceEnum[string(m.Source)]; !ok && m.Source != "" {
+	if _, ok := GetMappingSensitiveColumnSummarySourceEnum(string(m.Source)); !ok && m.Source != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Source: %s. Supported values are: %s.", m.Source, strings.Join(GetSensitiveColumnSummarySourceEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSensitiveColumnSummaryRelationTypeEnum[string(m.RelationType)]; !ok && m.RelationType != "" {
+	if _, ok := GetMappingSensitiveColumnSummaryRelationTypeEnum(string(m.RelationType)); !ok && m.RelationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RelationType: %s. Supported values are: %s.", m.RelationType, strings.Join(GetSensitiveColumnSummaryRelationTypeEnumStringValues(), ",")))
 	}
 
@@ -149,6 +149,17 @@ func GetSensitiveColumnSummaryObjectTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingSensitiveColumnSummaryObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSensitiveColumnSummaryObjectTypeEnum(val string) (SensitiveColumnSummaryObjectTypeEnum, bool) {
+	mappingSensitiveColumnSummaryObjectTypeEnumIgnoreCase := make(map[string]SensitiveColumnSummaryObjectTypeEnum)
+	for k, v := range mappingSensitiveColumnSummaryObjectTypeEnum {
+		mappingSensitiveColumnSummaryObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSensitiveColumnSummaryObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SensitiveColumnSummaryStatusEnum Enum with underlying type: string
 type SensitiveColumnSummaryStatusEnum string
 
@@ -180,6 +191,17 @@ func GetSensitiveColumnSummaryStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingSensitiveColumnSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSensitiveColumnSummaryStatusEnum(val string) (SensitiveColumnSummaryStatusEnum, bool) {
+	mappingSensitiveColumnSummaryStatusEnumIgnoreCase := make(map[string]SensitiveColumnSummaryStatusEnum)
+	for k, v := range mappingSensitiveColumnSummaryStatusEnum {
+		mappingSensitiveColumnSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSensitiveColumnSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SensitiveColumnSummarySourceEnum Enum with underlying type: string
 type SensitiveColumnSummarySourceEnum string
 
@@ -209,6 +231,17 @@ func GetSensitiveColumnSummarySourceEnumStringValues() []string {
 		"MANUAL",
 		"DISCOVERY",
 	}
+}
+
+// GetMappingSensitiveColumnSummarySourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSensitiveColumnSummarySourceEnum(val string) (SensitiveColumnSummarySourceEnum, bool) {
+	mappingSensitiveColumnSummarySourceEnumIgnoreCase := make(map[string]SensitiveColumnSummarySourceEnum)
+	for k, v := range mappingSensitiveColumnSummarySourceEnum {
+		mappingSensitiveColumnSummarySourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSensitiveColumnSummarySourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // SensitiveColumnSummaryRelationTypeEnum Enum with underlying type: string
@@ -243,4 +276,15 @@ func GetSensitiveColumnSummaryRelationTypeEnumStringValues() []string {
 		"APP_DEFINED",
 		"DB_DEFINED",
 	}
+}
+
+// GetMappingSensitiveColumnSummaryRelationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSensitiveColumnSummaryRelationTypeEnum(val string) (SensitiveColumnSummaryRelationTypeEnum, bool) {
+	mappingSensitiveColumnSummaryRelationTypeEnumIgnoreCase := make(map[string]SensitiveColumnSummaryRelationTypeEnum)
+	for k, v := range mappingSensitiveColumnSummaryRelationTypeEnum {
+		mappingSensitiveColumnSummaryRelationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSensitiveColumnSummaryRelationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -73,13 +73,13 @@ func (m SensitiveTypeSummary) String() string {
 // Not recommended for calling this function directly
 func (m SensitiveTypeSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDiscoveryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDiscoveryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDiscoveryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSensitiveTypeSourceEnum[string(m.Source)]; !ok && m.Source != "" {
+	if _, ok := GetMappingSensitiveTypeSourceEnum(string(m.Source)); !ok && m.Source != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Source: %s. Supported values are: %s.", m.Source, strings.Join(GetSensitiveTypeSourceEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSensitiveTypeEntityEnum[string(m.EntityType)]; !ok && m.EntityType != "" {
+	if _, ok := GetMappingSensitiveTypeEntityEnum(string(m.EntityType)); !ok && m.EntityType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EntityType: %s. Supported values are: %s.", m.EntityType, strings.Join(GetSensitiveTypeEntityEnumStringValues(), ",")))
 	}
 

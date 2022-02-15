@@ -72,17 +72,17 @@ func (m DocumentJob) String() string {
 // Not recommended for calling this function directly
 func (m DocumentJob) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDocumentJobLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDocumentJobLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDocumentJobLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDocumentLanguageEnum[string(m.Language)]; !ok && m.Language != "" {
+	if _, ok := GetMappingDocumentLanguageEnum(string(m.Language)); !ok && m.Language != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Language: %s. Supported values are: %s.", m.Language, strings.Join(GetDocumentLanguageEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDocumentTypeEnum[string(m.DocumentType)]; !ok && m.DocumentType != "" {
+	if _, ok := GetMappingDocumentTypeEnum(string(m.DocumentType)); !ok && m.DocumentType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DocumentType: %s. Supported values are: %s.", m.DocumentType, strings.Join(GetDocumentTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDocumentJobLifecycleDetailsEnum[string(m.LifecycleDetails)]; !ok && m.LifecycleDetails != "" {
+	if _, ok := GetMappingDocumentJobLifecycleDetailsEnum(string(m.LifecycleDetails)); !ok && m.LifecycleDetails != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleDetails: %s. Supported values are: %s.", m.LifecycleDetails, strings.Join(GetDocumentJobLifecycleDetailsEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -211,6 +211,17 @@ func GetDocumentJobLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingDocumentJobLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDocumentJobLifecycleStateEnum(val string) (DocumentJobLifecycleStateEnum, bool) {
+	mappingDocumentJobLifecycleStateEnumIgnoreCase := make(map[string]DocumentJobLifecycleStateEnum)
+	for k, v := range mappingDocumentJobLifecycleStateEnum {
+		mappingDocumentJobLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDocumentJobLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DocumentJobLifecycleDetailsEnum Enum with underlying type: string
 type DocumentJobLifecycleDetailsEnum string
 
@@ -240,4 +251,15 @@ func GetDocumentJobLifecycleDetailsEnumStringValues() []string {
 		"PARTIALLY_SUCCEEDED",
 		"COMPLETELY_FAILED",
 	}
+}
+
+// GetMappingDocumentJobLifecycleDetailsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDocumentJobLifecycleDetailsEnum(val string) (DocumentJobLifecycleDetailsEnum, bool) {
+	mappingDocumentJobLifecycleDetailsEnumIgnoreCase := make(map[string]DocumentJobLifecycleDetailsEnum)
+	for k, v := range mappingDocumentJobLifecycleDetailsEnum {
+		mappingDocumentJobLifecycleDetailsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDocumentJobLifecycleDetailsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -111,3 +111,14 @@ func GetCaBundleTypeEnumStringValues() []string {
 		"CERTIFICATE_AUTHORITY",
 	}
 }
+
+// GetMappingCaBundleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCaBundleTypeEnum(val string) (CaBundleTypeEnum, bool) {
+	mappingCaBundleTypeEnumIgnoreCase := make(map[string]CaBundleTypeEnum)
+	for k, v := range mappingCaBundleTypeEnum {
+		mappingCaBundleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCaBundleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

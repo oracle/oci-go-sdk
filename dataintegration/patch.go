@@ -81,10 +81,10 @@ func (m Patch) String() string {
 func (m Patch) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingPatchPatchTypeEnum[string(m.PatchType)]; !ok && m.PatchType != "" {
+	if _, ok := GetMappingPatchPatchTypeEnum(string(m.PatchType)); !ok && m.PatchType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PatchType: %s. Supported values are: %s.", m.PatchType, strings.Join(GetPatchPatchTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPatchPatchStatusEnum[string(m.PatchStatus)]; !ok && m.PatchStatus != "" {
+	if _, ok := GetMappingPatchPatchStatusEnum(string(m.PatchStatus)); !ok && m.PatchStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PatchStatus: %s. Supported values are: %s.", m.PatchStatus, strings.Join(GetPatchPatchStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -127,6 +127,17 @@ func GetPatchPatchTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingPatchPatchTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPatchPatchTypeEnum(val string) (PatchPatchTypeEnum, bool) {
+	mappingPatchPatchTypeEnumIgnoreCase := make(map[string]PatchPatchTypeEnum)
+	for k, v := range mappingPatchPatchTypeEnum {
+		mappingPatchPatchTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPatchPatchTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // PatchPatchStatusEnum Enum with underlying type: string
 type PatchPatchStatusEnum string
 
@@ -162,4 +173,15 @@ func GetPatchPatchStatusEnumStringValues() []string {
 		"FAILED",
 		"IN_PROGRESS",
 	}
+}
+
+// GetMappingPatchPatchStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPatchPatchStatusEnum(val string) (PatchPatchStatusEnum, bool) {
+	mappingPatchPatchStatusEnumIgnoreCase := make(map[string]PatchPatchStatusEnum)
+	for k, v := range mappingPatchPatchStatusEnum {
+		mappingPatchPatchStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPatchPatchStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

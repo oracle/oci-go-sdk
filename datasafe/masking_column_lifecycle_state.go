@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // MaskingColumnLifecycleStateEnum Enum with underlying type: string
 type MaskingColumnLifecycleStateEnum string
 
@@ -50,4 +54,15 @@ func GetMaskingColumnLifecycleStateEnumStringValues() []string {
 		"NEEDS_ATTENTION",
 		"FAILED",
 	}
+}
+
+// GetMappingMaskingColumnLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMaskingColumnLifecycleStateEnum(val string) (MaskingColumnLifecycleStateEnum, bool) {
+	mappingMaskingColumnLifecycleStateEnumIgnoreCase := make(map[string]MaskingColumnLifecycleStateEnum)
+	for k, v := range mappingMaskingColumnLifecycleStateEnum {
+		mappingMaskingColumnLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMaskingColumnLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

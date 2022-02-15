@@ -43,7 +43,7 @@ func (m UpdateAlertDetails) String() string {
 func (m UpdateAlertDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAlertStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingAlertStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetAlertStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

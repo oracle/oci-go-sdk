@@ -44,10 +44,10 @@ func (m NetworkConfiguration) String() string {
 func (m NetworkConfiguration) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingProtocolEnum[string(m.Protocol)]; !ok && m.Protocol != "" {
+	if _, ok := GetMappingProtocolEnum(string(m.Protocol)); !ok && m.Protocol != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Protocol: %s. Supported values are: %s.", m.Protocol, strings.Join(GetProtocolEnumStringValues(), ",")))
 	}
-	if _, ok := mappingProbeModeEnum[string(m.ProbeMode)]; !ok && m.ProbeMode != "" {
+	if _, ok := GetMappingProbeModeEnum(string(m.ProbeMode)); !ok && m.ProbeMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProbeMode: %s. Supported values are: %s.", m.ProbeMode, strings.Join(GetProbeModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -84,7 +84,7 @@ func (request ListDbVersionsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDbVersionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDbSystemOptionsStorageManagementEnum[string(request.StorageManagement)]; !ok && request.StorageManagement != "" {
+	if _, ok := GetMappingDbSystemOptionsStorageManagementEnum(string(request.StorageManagement)); !ok && request.StorageManagement != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for StorageManagement: %s. Supported values are: %s.", request.StorageManagement, strings.Join(GetDbSystemOptionsStorageManagementEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

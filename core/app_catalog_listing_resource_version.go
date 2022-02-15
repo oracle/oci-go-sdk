@@ -64,7 +64,7 @@ func (m AppCatalogListingResourceVersion) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	for _, val := range m.AllowedActions {
-		if _, ok := mappingAppCatalogListingResourceVersionAllowedActionsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingAppCatalogListingResourceVersionAllowedActionsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AllowedActions: %s. Supported values are: %s.", val, strings.Join(GetAppCatalogListingResourceVersionAllowedActionsEnumStringValues(), ",")))
 		}
 	}
@@ -119,4 +119,15 @@ func GetAppCatalogListingResourceVersionAllowedActionsEnumStringValues() []strin
 		"BACKUP_BOOT_VOLUME",
 		"CAPTURE_CONSOLE_HISTORY",
 	}
+}
+
+// GetMappingAppCatalogListingResourceVersionAllowedActionsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAppCatalogListingResourceVersionAllowedActionsEnum(val string) (AppCatalogListingResourceVersionAllowedActionsEnum, bool) {
+	mappingAppCatalogListingResourceVersionAllowedActionsEnumIgnoreCase := make(map[string]AppCatalogListingResourceVersionAllowedActionsEnum)
+	for k, v := range mappingAppCatalogListingResourceVersionAllowedActionsEnum {
+		mappingAppCatalogListingResourceVersionAllowedActionsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAppCatalogListingResourceVersionAllowedActionsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

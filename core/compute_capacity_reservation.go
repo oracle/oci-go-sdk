@@ -89,7 +89,7 @@ func (m ComputeCapacityReservation) String() string {
 // Not recommended for calling this function directly
 func (m ComputeCapacityReservation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingComputeCapacityReservationLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingComputeCapacityReservationLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetComputeCapacityReservationLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -140,4 +140,15 @@ func GetComputeCapacityReservationLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"DELETING",
 	}
+}
+
+// GetMappingComputeCapacityReservationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingComputeCapacityReservationLifecycleStateEnum(val string) (ComputeCapacityReservationLifecycleStateEnum, bool) {
+	mappingComputeCapacityReservationLifecycleStateEnumIgnoreCase := make(map[string]ComputeCapacityReservationLifecycleStateEnum)
+	for k, v := range mappingComputeCapacityReservationLifecycleStateEnum {
+		mappingComputeCapacityReservationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingComputeCapacityReservationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

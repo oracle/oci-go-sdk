@@ -55,7 +55,7 @@ func (m DecryptDataDetails) String() string {
 func (m DecryptDataDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDecryptDataDetailsEncryptionAlgorithmEnum[string(m.EncryptionAlgorithm)]; !ok && m.EncryptionAlgorithm != "" {
+	if _, ok := GetMappingDecryptDataDetailsEncryptionAlgorithmEnum(string(m.EncryptionAlgorithm)); !ok && m.EncryptionAlgorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EncryptionAlgorithm: %s. Supported values are: %s.", m.EncryptionAlgorithm, strings.Join(GetDecryptDataDetailsEncryptionAlgorithmEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -96,4 +96,15 @@ func GetDecryptDataDetailsEncryptionAlgorithmEnumStringValues() []string {
 		"RSA_OAEP_SHA_1",
 		"RSA_OAEP_SHA_256",
 	}
+}
+
+// GetMappingDecryptDataDetailsEncryptionAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDecryptDataDetailsEncryptionAlgorithmEnum(val string) (DecryptDataDetailsEncryptionAlgorithmEnum, bool) {
+	mappingDecryptDataDetailsEncryptionAlgorithmEnumIgnoreCase := make(map[string]DecryptDataDetailsEncryptionAlgorithmEnum)
+	for k, v := range mappingDecryptDataDetailsEncryptionAlgorithmEnum {
+		mappingDecryptDataDetailsEncryptionAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDecryptDataDetailsEncryptionAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

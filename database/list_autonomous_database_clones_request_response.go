@@ -85,16 +85,16 @@ func (request ListAutonomousDatabaseClonesRequest) RetryPolicy() *common.RetryPo
 // Not recommended for calling this function directly
 func (request ListAutonomousDatabaseClonesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAutonomousDatabaseClonesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAutonomousDatabaseClonesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAutonomousDatabaseClonesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingAutonomousDatabaseSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetAutonomousDatabaseSummaryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAutonomousDatabaseClonesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAutonomousDatabaseClonesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAutonomousDatabaseClonesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAutonomousDatabaseClonesCloneTypeEnum[string(request.CloneType)]; !ok && request.CloneType != "" {
+	if _, ok := GetMappingListAutonomousDatabaseClonesCloneTypeEnum(string(request.CloneType)); !ok && request.CloneType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CloneType: %s. Supported values are: %s.", request.CloneType, strings.Join(GetListAutonomousDatabaseClonesCloneTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -163,6 +163,17 @@ func GetListAutonomousDatabaseClonesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAutonomousDatabaseClonesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAutonomousDatabaseClonesSortOrderEnum(val string) (ListAutonomousDatabaseClonesSortOrderEnum, bool) {
+	mappingListAutonomousDatabaseClonesSortOrderEnumIgnoreCase := make(map[string]ListAutonomousDatabaseClonesSortOrderEnum)
+	for k, v := range mappingListAutonomousDatabaseClonesSortOrderEnum {
+		mappingListAutonomousDatabaseClonesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAutonomousDatabaseClonesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAutonomousDatabaseClonesSortByEnum Enum with underlying type: string
 type ListAutonomousDatabaseClonesSortByEnum string
 
@@ -197,6 +208,17 @@ func GetListAutonomousDatabaseClonesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAutonomousDatabaseClonesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAutonomousDatabaseClonesSortByEnum(val string) (ListAutonomousDatabaseClonesSortByEnum, bool) {
+	mappingListAutonomousDatabaseClonesSortByEnumIgnoreCase := make(map[string]ListAutonomousDatabaseClonesSortByEnum)
+	for k, v := range mappingListAutonomousDatabaseClonesSortByEnum {
+		mappingListAutonomousDatabaseClonesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAutonomousDatabaseClonesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAutonomousDatabaseClonesCloneTypeEnum Enum with underlying type: string
 type ListAutonomousDatabaseClonesCloneTypeEnum string
 
@@ -223,4 +245,15 @@ func GetListAutonomousDatabaseClonesCloneTypeEnumStringValues() []string {
 	return []string{
 		"REFRESHABLE_CLONE",
 	}
+}
+
+// GetMappingListAutonomousDatabaseClonesCloneTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAutonomousDatabaseClonesCloneTypeEnum(val string) (ListAutonomousDatabaseClonesCloneTypeEnum, bool) {
+	mappingListAutonomousDatabaseClonesCloneTypeEnumIgnoreCase := make(map[string]ListAutonomousDatabaseClonesCloneTypeEnum)
+	for k, v := range mappingListAutonomousDatabaseClonesCloneTypeEnum {
+		mappingListAutonomousDatabaseClonesCloneTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAutonomousDatabaseClonesCloneTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

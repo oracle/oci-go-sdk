@@ -195,19 +195,19 @@ func (m Announcement) String() string {
 func (m Announcement) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBaseAnnouncementTimeOneTypeEnum[string(m.TimeOneType)]; !ok && m.TimeOneType != "" {
+	if _, ok := GetMappingBaseAnnouncementTimeOneTypeEnum(string(m.TimeOneType)); !ok && m.TimeOneType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TimeOneType: %s. Supported values are: %s.", m.TimeOneType, strings.Join(GetBaseAnnouncementTimeOneTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBaseAnnouncementTimeTwoTypeEnum[string(m.TimeTwoType)]; !ok && m.TimeTwoType != "" {
+	if _, ok := GetMappingBaseAnnouncementTimeTwoTypeEnum(string(m.TimeTwoType)); !ok && m.TimeTwoType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TimeTwoType: %s. Supported values are: %s.", m.TimeTwoType, strings.Join(GetBaseAnnouncementTimeTwoTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBaseAnnouncementAnnouncementTypeEnum[string(m.AnnouncementType)]; !ok && m.AnnouncementType != "" {
+	if _, ok := GetMappingBaseAnnouncementAnnouncementTypeEnum(string(m.AnnouncementType)); !ok && m.AnnouncementType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AnnouncementType: %s. Supported values are: %s.", m.AnnouncementType, strings.Join(GetBaseAnnouncementAnnouncementTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBaseAnnouncementLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingBaseAnnouncementLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetBaseAnnouncementLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBaseAnnouncementPlatformTypeEnum[string(m.PlatformType)]; !ok && m.PlatformType != "" {
+	if _, ok := GetMappingBaseAnnouncementPlatformTypeEnum(string(m.PlatformType)); !ok && m.PlatformType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", m.PlatformType, strings.Join(GetBaseAnnouncementPlatformTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

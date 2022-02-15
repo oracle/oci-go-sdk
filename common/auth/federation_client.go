@@ -12,13 +12,14 @@ import (
 	"encoding/pem"
 	"errors"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/oracle/oci-go-sdk/v58/common"
 )
 
 // federationClient is a client to retrieve the security token for an instance principal necessary to sign a request.

@@ -69,7 +69,7 @@ func (request ListRecommendationsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListRecommendationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListRecommendationsRecommendedActionEnum[string(request.RecommendedAction)]; !ok && request.RecommendedAction != "" {
+	if _, ok := GetMappingListRecommendationsRecommendedActionEnum(string(request.RecommendedAction)); !ok && request.RecommendedAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RecommendedAction: %s. Supported values are: %s.", request.RecommendedAction, strings.Join(GetListRecommendationsRecommendedActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -135,4 +135,15 @@ func GetListRecommendationsRecommendedActionEnumStringValues() []string {
 		"DETECT",
 		"BLOCK",
 	}
+}
+
+// GetMappingListRecommendationsRecommendedActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRecommendationsRecommendedActionEnum(val string) (ListRecommendationsRecommendedActionEnum, bool) {
+	mappingListRecommendationsRecommendedActionEnumIgnoreCase := make(map[string]ListRecommendationsRecommendedActionEnum)
+	for k, v := range mappingListRecommendationsRecommendedActionEnum {
+		mappingListRecommendationsRecommendedActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRecommendationsRecommendedActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -8,8 +8,9 @@ package example
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/core"
 	"strings"
+
+	"github.com/oracle/oci-go-sdk/v58/core"
 
 	"github.com/oracle/oci-go-sdk/v58/common"
 	"github.com/oracle/oci-go-sdk/v58/containerengine"

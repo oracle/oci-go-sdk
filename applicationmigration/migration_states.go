@@ -12,6 +12,10 @@
 
 package applicationmigration
 
+import (
+	"strings"
+)
+
 // MigrationStatesEnum Enum with underlying type: string
 type MigrationStatesEnum string
 
@@ -56,4 +60,15 @@ func GetMigrationStatesEnumStringValues() []string {
 		"MIGRATION_FAILED",
 		"MIGRATION_SUCCEEDED",
 	}
+}
+
+// GetMappingMigrationStatesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMigrationStatesEnum(val string) (MigrationStatesEnum, bool) {
+	mappingMigrationStatesEnumIgnoreCase := make(map[string]MigrationStatesEnum)
+	for k, v := range mappingMigrationStatesEnum {
+		mappingMigrationStatesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMigrationStatesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

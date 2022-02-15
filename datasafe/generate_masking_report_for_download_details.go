@@ -34,7 +34,7 @@ func (m GenerateMaskingReportForDownloadDetails) String() string {
 // Not recommended for calling this function directly
 func (m GenerateMaskingReportForDownloadDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGenerateMaskingReportForDownloadDetailsReportFormatEnum[string(m.ReportFormat)]; !ok && m.ReportFormat != "" {
+	if _, ok := GetMappingGenerateMaskingReportForDownloadDetailsReportFormatEnum(string(m.ReportFormat)); !ok && m.ReportFormat != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ReportFormat: %s. Supported values are: %s.", m.ReportFormat, strings.Join(GetGenerateMaskingReportForDownloadDetailsReportFormatEnumStringValues(), ",")))
 	}
 
@@ -73,4 +73,15 @@ func GetGenerateMaskingReportForDownloadDetailsReportFormatEnumStringValues() []
 		"PDF",
 		"XLS",
 	}
+}
+
+// GetMappingGenerateMaskingReportForDownloadDetailsReportFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGenerateMaskingReportForDownloadDetailsReportFormatEnum(val string) (GenerateMaskingReportForDownloadDetailsReportFormatEnum, bool) {
+	mappingGenerateMaskingReportForDownloadDetailsReportFormatEnumIgnoreCase := make(map[string]GenerateMaskingReportForDownloadDetailsReportFormatEnum)
+	for k, v := range mappingGenerateMaskingReportForDownloadDetailsReportFormatEnum {
+		mappingGenerateMaskingReportForDownloadDetailsReportFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGenerateMaskingReportForDownloadDetailsReportFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -60,10 +60,10 @@ func (m AlarmStatusSummary) String() string {
 // Not recommended for calling this function directly
 func (m AlarmStatusSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAlarmStatusSummarySeverityEnum[string(m.Severity)]; !ok && m.Severity != "" {
+	if _, ok := GetMappingAlarmStatusSummarySeverityEnum(string(m.Severity)); !ok && m.Severity != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Severity: %s. Supported values are: %s.", m.Severity, strings.Join(GetAlarmStatusSummarySeverityEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAlarmStatusSummaryStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingAlarmStatusSummaryStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetAlarmStatusSummaryStatusEnumStringValues(), ",")))
 	}
 
@@ -110,6 +110,17 @@ func GetAlarmStatusSummarySeverityEnumStringValues() []string {
 	}
 }
 
+// GetMappingAlarmStatusSummarySeverityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAlarmStatusSummarySeverityEnum(val string) (AlarmStatusSummarySeverityEnum, bool) {
+	mappingAlarmStatusSummarySeverityEnumIgnoreCase := make(map[string]AlarmStatusSummarySeverityEnum)
+	for k, v := range mappingAlarmStatusSummarySeverityEnum {
+		mappingAlarmStatusSummarySeverityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAlarmStatusSummarySeverityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AlarmStatusSummaryStatusEnum Enum with underlying type: string
 type AlarmStatusSummaryStatusEnum string
 
@@ -142,4 +153,15 @@ func GetAlarmStatusSummaryStatusEnumStringValues() []string {
 		"OK",
 		"SUSPENDED",
 	}
+}
+
+// GetMappingAlarmStatusSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAlarmStatusSummaryStatusEnum(val string) (AlarmStatusSummaryStatusEnum, bool) {
+	mappingAlarmStatusSummaryStatusEnumIgnoreCase := make(map[string]AlarmStatusSummaryStatusEnum)
+	for k, v := range mappingAlarmStatusSummaryStatusEnum {
+		mappingAlarmStatusSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAlarmStatusSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

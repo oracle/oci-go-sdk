@@ -88,20 +88,20 @@ func (m AlertSummary) String() string {
 // Not recommended for calling this function directly
 func (m AlertSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAlertStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingAlertStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetAlertStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAlertSeverityEnum[string(m.Severity)]; !ok && m.Severity != "" {
+	if _, ok := GetMappingAlertSeverityEnum(string(m.Severity)); !ok && m.Severity != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Severity: %s. Supported values are: %s.", m.Severity, strings.Join(GetAlertSeverityEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAlertLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAlertLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAlertLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingAlertSummaryOperationStatusEnum[string(m.OperationStatus)]; !ok && m.OperationStatus != "" {
+	if _, ok := GetMappingAlertSummaryOperationStatusEnum(string(m.OperationStatus)); !ok && m.OperationStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OperationStatus: %s. Supported values are: %s.", m.OperationStatus, strings.Join(GetAlertSummaryOperationStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAlertTypeEnum[string(m.AlertType)]; !ok && m.AlertType != "" {
+	if _, ok := GetMappingAlertTypeEnum(string(m.AlertType)); !ok && m.AlertType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AlertType: %s. Supported values are: %s.", m.AlertType, strings.Join(GetAlertTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -139,4 +139,15 @@ func GetAlertSummaryOperationStatusEnumStringValues() []string {
 		"SUCCEEDED",
 		"FAILED",
 	}
+}
+
+// GetMappingAlertSummaryOperationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAlertSummaryOperationStatusEnum(val string) (AlertSummaryOperationStatusEnum, bool) {
+	mappingAlertSummaryOperationStatusEnumIgnoreCase := make(map[string]AlertSummaryOperationStatusEnum)
+	for k, v := range mappingAlertSummaryOperationStatusEnum {
+		mappingAlertSummaryOperationStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAlertSummaryOperationStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

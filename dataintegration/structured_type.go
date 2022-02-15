@@ -59,11 +59,11 @@ func (m StructuredType) String() string {
 // Not recommended for calling this function directly
 func (m StructuredType) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingStructuredTypeModelTypeEnum[string(m.ModelType)]; !ok && m.ModelType != "" {
+	if _, ok := GetMappingStructuredTypeModelTypeEnum(string(m.ModelType)); !ok && m.ModelType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ModelType: %s. Supported values are: %s.", m.ModelType, strings.Join(GetStructuredTypeModelTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingStructuredTypeDtTypeEnum[string(m.DtType)]; !ok && m.DtType != "" {
+	if _, ok := GetMappingStructuredTypeDtTypeEnum(string(m.DtType)); !ok && m.DtType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DtType: %s. Supported values are: %s.", m.DtType, strings.Join(GetStructuredTypeDtTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -172,6 +172,17 @@ func GetStructuredTypeModelTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingStructuredTypeModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStructuredTypeModelTypeEnum(val string) (StructuredTypeModelTypeEnum, bool) {
+	mappingStructuredTypeModelTypeEnumIgnoreCase := make(map[string]StructuredTypeModelTypeEnum)
+	for k, v := range mappingStructuredTypeModelTypeEnum {
+		mappingStructuredTypeModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStructuredTypeModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // StructuredTypeDtTypeEnum Enum with underlying type: string
 type StructuredTypeDtTypeEnum string
 
@@ -201,4 +212,15 @@ func GetStructuredTypeDtTypeEnumStringValues() []string {
 		"PRIMITIVE",
 		"STRUCTURED",
 	}
+}
+
+// GetMappingStructuredTypeDtTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStructuredTypeDtTypeEnum(val string) (StructuredTypeDtTypeEnum, bool) {
+	mappingStructuredTypeDtTypeEnumIgnoreCase := make(map[string]StructuredTypeDtTypeEnum)
+	for k, v := range mappingStructuredTypeDtTypeEnum {
+		mappingStructuredTypeDtTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStructuredTypeDtTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

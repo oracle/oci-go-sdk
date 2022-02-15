@@ -89,19 +89,19 @@ func (request ListMaintenanceRunsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListMaintenanceRunsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingMaintenanceRunSummaryTargetResourceTypeEnum[string(request.TargetResourceType)]; !ok && request.TargetResourceType != "" {
+	if _, ok := GetMappingMaintenanceRunSummaryTargetResourceTypeEnum(string(request.TargetResourceType)); !ok && request.TargetResourceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TargetResourceType: %s. Supported values are: %s.", request.TargetResourceType, strings.Join(GetMaintenanceRunSummaryTargetResourceTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingMaintenanceRunSummaryMaintenanceTypeEnum[string(request.MaintenanceType)]; !ok && request.MaintenanceType != "" {
+	if _, ok := GetMappingMaintenanceRunSummaryMaintenanceTypeEnum(string(request.MaintenanceType)); !ok && request.MaintenanceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MaintenanceType: %s. Supported values are: %s.", request.MaintenanceType, strings.Join(GetMaintenanceRunSummaryMaintenanceTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListMaintenanceRunsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListMaintenanceRunsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListMaintenanceRunsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListMaintenanceRunsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListMaintenanceRunsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListMaintenanceRunsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingMaintenanceRunSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingMaintenanceRunSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetMaintenanceRunSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -173,6 +173,17 @@ func GetListMaintenanceRunsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListMaintenanceRunsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMaintenanceRunsSortByEnum(val string) (ListMaintenanceRunsSortByEnum, bool) {
+	mappingListMaintenanceRunsSortByEnumIgnoreCase := make(map[string]ListMaintenanceRunsSortByEnum)
+	for k, v := range mappingListMaintenanceRunsSortByEnum {
+		mappingListMaintenanceRunsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMaintenanceRunsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListMaintenanceRunsSortOrderEnum Enum with underlying type: string
 type ListMaintenanceRunsSortOrderEnum string
 
@@ -202,4 +213,15 @@ func GetListMaintenanceRunsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListMaintenanceRunsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMaintenanceRunsSortOrderEnum(val string) (ListMaintenanceRunsSortOrderEnum, bool) {
+	mappingListMaintenanceRunsSortOrderEnumIgnoreCase := make(map[string]ListMaintenanceRunsSortOrderEnum)
+	for k, v := range mappingListMaintenanceRunsSortOrderEnum {
+		mappingListMaintenanceRunsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMaintenanceRunsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

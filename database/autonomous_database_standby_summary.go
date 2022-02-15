@@ -41,7 +41,7 @@ func (m AutonomousDatabaseStandbySummary) String() string {
 func (m AutonomousDatabaseStandbySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAutonomousDatabaseStandbySummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAutonomousDatabaseStandbySummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAutonomousDatabaseStandbySummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -133,4 +133,15 @@ func GetAutonomousDatabaseStandbySummaryLifecycleStateEnumStringValues() []strin
 		"UPGRADING",
 		"INACCESSIBLE",
 	}
+}
+
+// GetMappingAutonomousDatabaseStandbySummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseStandbySummaryLifecycleStateEnum(val string) (AutonomousDatabaseStandbySummaryLifecycleStateEnum, bool) {
+	mappingAutonomousDatabaseStandbySummaryLifecycleStateEnumIgnoreCase := make(map[string]AutonomousDatabaseStandbySummaryLifecycleStateEnum)
+	for k, v := range mappingAutonomousDatabaseStandbySummaryLifecycleStateEnum {
+		mappingAutonomousDatabaseStandbySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseStandbySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

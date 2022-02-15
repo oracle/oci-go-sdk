@@ -78,13 +78,13 @@ func (request ListCatalogPrivateEndpointsRequest) RetryPolicy() *common.RetryPol
 // Not recommended for calling this function directly
 func (request ListCatalogPrivateEndpointsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListCatalogPrivateEndpointsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListCatalogPrivateEndpointsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListCatalogPrivateEndpointsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListCatalogPrivateEndpointsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListCatalogPrivateEndpointsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListCatalogPrivateEndpointsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListCatalogPrivateEndpointsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListCatalogPrivateEndpointsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListCatalogPrivateEndpointsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -168,6 +168,17 @@ func GetListCatalogPrivateEndpointsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListCatalogPrivateEndpointsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCatalogPrivateEndpointsLifecycleStateEnum(val string) (ListCatalogPrivateEndpointsLifecycleStateEnum, bool) {
+	mappingListCatalogPrivateEndpointsLifecycleStateEnumIgnoreCase := make(map[string]ListCatalogPrivateEndpointsLifecycleStateEnum)
+	for k, v := range mappingListCatalogPrivateEndpointsLifecycleStateEnum {
+		mappingListCatalogPrivateEndpointsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCatalogPrivateEndpointsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListCatalogPrivateEndpointsSortOrderEnum Enum with underlying type: string
 type ListCatalogPrivateEndpointsSortOrderEnum string
 
@@ -199,6 +210,17 @@ func GetListCatalogPrivateEndpointsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListCatalogPrivateEndpointsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCatalogPrivateEndpointsSortOrderEnum(val string) (ListCatalogPrivateEndpointsSortOrderEnum, bool) {
+	mappingListCatalogPrivateEndpointsSortOrderEnumIgnoreCase := make(map[string]ListCatalogPrivateEndpointsSortOrderEnum)
+	for k, v := range mappingListCatalogPrivateEndpointsSortOrderEnum {
+		mappingListCatalogPrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCatalogPrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListCatalogPrivateEndpointsSortByEnum Enum with underlying type: string
 type ListCatalogPrivateEndpointsSortByEnum string
 
@@ -228,4 +250,15 @@ func GetListCatalogPrivateEndpointsSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListCatalogPrivateEndpointsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCatalogPrivateEndpointsSortByEnum(val string) (ListCatalogPrivateEndpointsSortByEnum, bool) {
+	mappingListCatalogPrivateEndpointsSortByEnumIgnoreCase := make(map[string]ListCatalogPrivateEndpointsSortByEnum)
+	for k, v := range mappingListCatalogPrivateEndpointsSortByEnum {
+		mappingListCatalogPrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCatalogPrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

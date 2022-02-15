@@ -109,3 +109,14 @@ func GetColumnSourceDetailsColumnSourceEnumStringValues() []string {
 		"SENSITIVE_DATA_MODEL",
 	}
 }
+
+// GetMappingColumnSourceDetailsColumnSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingColumnSourceDetailsColumnSourceEnum(val string) (ColumnSourceDetailsColumnSourceEnum, bool) {
+	mappingColumnSourceDetailsColumnSourceEnumIgnoreCase := make(map[string]ColumnSourceDetailsColumnSourceEnum)
+	for k, v := range mappingColumnSourceDetailsColumnSourceEnum {
+		mappingColumnSourceDetailsColumnSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingColumnSourceDetailsColumnSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

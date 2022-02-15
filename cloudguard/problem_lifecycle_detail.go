@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // ProblemLifecycleDetailEnum Enum with underlying type: string
 type ProblemLifecycleDetailEnum string
 
@@ -44,4 +48,15 @@ func GetProblemLifecycleDetailEnumStringValues() []string {
 		"DISMISSED",
 		"DELETED",
 	}
+}
+
+// GetMappingProblemLifecycleDetailEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingProblemLifecycleDetailEnum(val string) (ProblemLifecycleDetailEnum, bool) {
+	mappingProblemLifecycleDetailEnumIgnoreCase := make(map[string]ProblemLifecycleDetailEnum)
+	for k, v := range mappingProblemLifecycleDetailEnum {
+		mappingProblemLifecycleDetailEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingProblemLifecycleDetailEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

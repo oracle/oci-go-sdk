@@ -48,7 +48,7 @@ func (m AutonomousDbPreviewVersionSummary) String() string {
 func (m AutonomousDbPreviewVersionSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAutonomousDbPreviewVersionSummaryDbWorkloadEnum[string(m.DbWorkload)]; !ok && m.DbWorkload != "" {
+	if _, ok := GetMappingAutonomousDbPreviewVersionSummaryDbWorkloadEnum(string(m.DbWorkload)); !ok && m.DbWorkload != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DbWorkload: %s. Supported values are: %s.", m.DbWorkload, strings.Join(GetAutonomousDbPreviewVersionSummaryDbWorkloadEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -92,4 +92,15 @@ func GetAutonomousDbPreviewVersionSummaryDbWorkloadEnumStringValues() []string {
 		"AJD",
 		"APEX",
 	}
+}
+
+// GetMappingAutonomousDbPreviewVersionSummaryDbWorkloadEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDbPreviewVersionSummaryDbWorkloadEnum(val string) (AutonomousDbPreviewVersionSummaryDbWorkloadEnum, bool) {
+	mappingAutonomousDbPreviewVersionSummaryDbWorkloadEnumIgnoreCase := make(map[string]AutonomousDbPreviewVersionSummaryDbWorkloadEnum)
+	for k, v := range mappingAutonomousDbPreviewVersionSummaryDbWorkloadEnum {
+		mappingAutonomousDbPreviewVersionSummaryDbWorkloadEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDbPreviewVersionSummaryDbWorkloadEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

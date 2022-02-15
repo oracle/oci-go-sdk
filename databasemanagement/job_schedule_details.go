@@ -43,7 +43,7 @@ func (m JobScheduleDetails) String() string {
 func (m JobScheduleDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingJobScheduleDetailsIntervalTypeEnum[string(m.IntervalType)]; !ok && m.IntervalType != "" {
+	if _, ok := GetMappingJobScheduleDetailsIntervalTypeEnum(string(m.IntervalType)); !ok && m.IntervalType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IntervalType: %s. Supported values are: %s.", m.IntervalType, strings.Join(GetJobScheduleDetailsIntervalTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -90,4 +90,15 @@ func GetJobScheduleDetailsIntervalTypeEnumStringValues() []string {
 		"MONTHLY",
 		"NEVER",
 	}
+}
+
+// GetMappingJobScheduleDetailsIntervalTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobScheduleDetailsIntervalTypeEnum(val string) (JobScheduleDetailsIntervalTypeEnum, bool) {
+	mappingJobScheduleDetailsIntervalTypeEnumIgnoreCase := make(map[string]JobScheduleDetailsIntervalTypeEnum)
+	for k, v := range mappingJobScheduleDetailsIntervalTypeEnum {
+		mappingJobScheduleDetailsIntervalTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobScheduleDetailsIntervalTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

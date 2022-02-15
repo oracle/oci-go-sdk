@@ -8,13 +8,14 @@ package example
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
-	"github.com/oracle/oci-go-sdk/v58/example/helpers"
-	"github.com/oracle/oci-go-sdk/v58/identity"
 	"log"
 	"os"
 	"os/user"
 	"path"
+
+	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v58/example/helpers"
+	"github.com/oracle/oci-go-sdk/v58/identity"
 )
 
 // This test requires that you have a specified profile setup for security-token based authentication, for the detail

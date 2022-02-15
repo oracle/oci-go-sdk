@@ -69,10 +69,10 @@ func (m VaultSummary) String() string {
 // Not recommended for calling this function directly
 func (m VaultSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVaultSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingVaultSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetVaultSummaryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVaultSummaryVaultTypeEnum[string(m.VaultType)]; !ok && m.VaultType != "" {
+	if _, ok := GetMappingVaultSummaryVaultTypeEnum(string(m.VaultType)); !ok && m.VaultType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for VaultType: %s. Supported values are: %s.", m.VaultType, strings.Join(GetVaultSummaryVaultTypeEnumStringValues(), ",")))
 	}
 
@@ -137,6 +137,17 @@ func GetVaultSummaryLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingVaultSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVaultSummaryLifecycleStateEnum(val string) (VaultSummaryLifecycleStateEnum, bool) {
+	mappingVaultSummaryLifecycleStateEnumIgnoreCase := make(map[string]VaultSummaryLifecycleStateEnum)
+	for k, v := range mappingVaultSummaryLifecycleStateEnum {
+		mappingVaultSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVaultSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // VaultSummaryVaultTypeEnum Enum with underlying type: string
 type VaultSummaryVaultTypeEnum string
 
@@ -166,4 +177,15 @@ func GetVaultSummaryVaultTypeEnumStringValues() []string {
 		"VIRTUAL_PRIVATE",
 		"DEFAULT",
 	}
+}
+
+// GetMappingVaultSummaryVaultTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVaultSummaryVaultTypeEnum(val string) (VaultSummaryVaultTypeEnum, bool) {
+	mappingVaultSummaryVaultTypeEnumIgnoreCase := make(map[string]VaultSummaryVaultTypeEnum)
+	for k, v := range mappingVaultSummaryVaultTypeEnum {
+		mappingVaultSummaryVaultTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVaultSummaryVaultTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

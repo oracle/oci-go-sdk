@@ -97,10 +97,10 @@ func (m UnifiedAgentSyslogParser) String() string {
 // Not recommended for calling this function directly
 func (m UnifiedAgentSyslogParser) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUnifiedAgentSyslogParserMessageFormatEnum[string(m.MessageFormat)]; !ok && m.MessageFormat != "" {
+	if _, ok := GetMappingUnifiedAgentSyslogParserMessageFormatEnum(string(m.MessageFormat)); !ok && m.MessageFormat != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MessageFormat: %s. Supported values are: %s.", m.MessageFormat, strings.Join(GetUnifiedAgentSyslogParserMessageFormatEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUnifiedAgentSyslogParserSyslogParserTypeEnum[string(m.SyslogParserType)]; !ok && m.SyslogParserType != "" {
+	if _, ok := GetMappingUnifiedAgentSyslogParserSyslogParserTypeEnum(string(m.SyslogParserType)); !ok && m.SyslogParserType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SyslogParserType: %s. Supported values are: %s.", m.SyslogParserType, strings.Join(GetUnifiedAgentSyslogParserSyslogParserTypeEnumStringValues(), ",")))
 	}
 
@@ -158,6 +158,17 @@ func GetUnifiedAgentSyslogParserMessageFormatEnumStringValues() []string {
 	}
 }
 
+// GetMappingUnifiedAgentSyslogParserMessageFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUnifiedAgentSyslogParserMessageFormatEnum(val string) (UnifiedAgentSyslogParserMessageFormatEnum, bool) {
+	mappingUnifiedAgentSyslogParserMessageFormatEnumIgnoreCase := make(map[string]UnifiedAgentSyslogParserMessageFormatEnum)
+	for k, v := range mappingUnifiedAgentSyslogParserMessageFormatEnum {
+		mappingUnifiedAgentSyslogParserMessageFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUnifiedAgentSyslogParserMessageFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UnifiedAgentSyslogParserSyslogParserTypeEnum Enum with underlying type: string
 type UnifiedAgentSyslogParserSyslogParserTypeEnum string
 
@@ -187,4 +198,15 @@ func GetUnifiedAgentSyslogParserSyslogParserTypeEnumStringValues() []string {
 		"STRING",
 		"REGEXP",
 	}
+}
+
+// GetMappingUnifiedAgentSyslogParserSyslogParserTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUnifiedAgentSyslogParserSyslogParserTypeEnum(val string) (UnifiedAgentSyslogParserSyslogParserTypeEnum, bool) {
+	mappingUnifiedAgentSyslogParserSyslogParserTypeEnumIgnoreCase := make(map[string]UnifiedAgentSyslogParserSyslogParserTypeEnum)
+	for k, v := range mappingUnifiedAgentSyslogParserSyslogParserTypeEnum {
+		mappingUnifiedAgentSyslogParserSyslogParserTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUnifiedAgentSyslogParserSyslogParserTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

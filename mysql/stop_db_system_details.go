@@ -32,7 +32,7 @@ func (m StopDbSystemDetails) String() string {
 // Not recommended for calling this function directly
 func (m StopDbSystemDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingInnoDbShutdownModeEnum[string(m.ShutdownType)]; !ok && m.ShutdownType != "" {
+	if _, ok := GetMappingInnoDbShutdownModeEnum(string(m.ShutdownType)); !ok && m.ShutdownType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShutdownType: %s. Supported values are: %s.", m.ShutdownType, strings.Join(GetInnoDbShutdownModeEnumStringValues(), ",")))
 	}
 

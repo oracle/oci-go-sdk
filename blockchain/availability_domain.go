@@ -32,7 +32,7 @@ func (m AvailabilityDomain) String() string {
 func (m AvailabilityDomain) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAvailabilityDomainAdsEnum[string(m.Ads)]; !ok && m.Ads != "" {
+	if _, ok := GetMappingAvailabilityDomainAdsEnum(string(m.Ads)); !ok && m.Ads != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Ads: %s. Supported values are: %s.", m.Ads, strings.Join(GetAvailabilityDomainAdsEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -73,4 +73,15 @@ func GetAvailabilityDomainAdsEnumStringValues() []string {
 		"AD2",
 		"AD3",
 	}
+}
+
+// GetMappingAvailabilityDomainAdsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAvailabilityDomainAdsEnum(val string) (AvailabilityDomainAdsEnum, bool) {
+	mappingAvailabilityDomainAdsEnumIgnoreCase := make(map[string]AvailabilityDomainAdsEnum)
+	for k, v := range mappingAvailabilityDomainAdsEnum {
+		mappingAvailabilityDomainAdsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAvailabilityDomainAdsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

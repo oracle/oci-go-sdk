@@ -50,7 +50,7 @@ func (m SuppressionSummary) String() string {
 func (m SuppressionSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSuppressionSummaryReasonEnum[string(m.Reason)]; !ok && m.Reason != "" {
+	if _, ok := GetMappingSuppressionSummaryReasonEnum(string(m.Reason)); !ok && m.Reason != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Reason: %s. Supported values are: %s.", m.Reason, strings.Join(GetSuppressionSummaryReasonEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -100,4 +100,15 @@ func GetSuppressionSummaryReasonEnumStringValues() []string {
 		"SOFTBOUNCE",
 		"UNSUBSCRIBE",
 	}
+}
+
+// GetMappingSuppressionSummaryReasonEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSuppressionSummaryReasonEnum(val string) (SuppressionSummaryReasonEnum, bool) {
+	mappingSuppressionSummaryReasonEnumIgnoreCase := make(map[string]SuppressionSummaryReasonEnum)
+	for k, v := range mappingSuppressionSummaryReasonEnum {
+		mappingSuppressionSummaryReasonEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSuppressionSummaryReasonEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

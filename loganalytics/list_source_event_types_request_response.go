@@ -87,13 +87,13 @@ func (request ListSourceEventTypesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListSourceEventTypesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSourceEventTypesIsSystemEnum[string(request.IsSystem)]; !ok && request.IsSystem != "" {
+	if _, ok := GetMappingListSourceEventTypesIsSystemEnum(string(request.IsSystem)); !ok && request.IsSystem != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IsSystem: %s. Supported values are: %s.", request.IsSystem, strings.Join(GetListSourceEventTypesIsSystemEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSourceEventTypesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSourceEventTypesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSourceEventTypesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSourceEventTypesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSourceEventTypesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSourceEventTypesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -168,6 +168,17 @@ func GetListSourceEventTypesIsSystemEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSourceEventTypesIsSystemEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSourceEventTypesIsSystemEnum(val string) (ListSourceEventTypesIsSystemEnum, bool) {
+	mappingListSourceEventTypesIsSystemEnumIgnoreCase := make(map[string]ListSourceEventTypesIsSystemEnum)
+	for k, v := range mappingListSourceEventTypesIsSystemEnum {
+		mappingListSourceEventTypesIsSystemEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSourceEventTypesIsSystemEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSourceEventTypesSortByEnum Enum with underlying type: string
 type ListSourceEventTypesSortByEnum string
 
@@ -199,6 +210,17 @@ func GetListSourceEventTypesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSourceEventTypesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSourceEventTypesSortByEnum(val string) (ListSourceEventTypesSortByEnum, bool) {
+	mappingListSourceEventTypesSortByEnumIgnoreCase := make(map[string]ListSourceEventTypesSortByEnum)
+	for k, v := range mappingListSourceEventTypesSortByEnum {
+		mappingListSourceEventTypesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSourceEventTypesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSourceEventTypesSortOrderEnum Enum with underlying type: string
 type ListSourceEventTypesSortOrderEnum string
 
@@ -228,4 +250,15 @@ func GetListSourceEventTypesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListSourceEventTypesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSourceEventTypesSortOrderEnum(val string) (ListSourceEventTypesSortOrderEnum, bool) {
+	mappingListSourceEventTypesSortOrderEnumIgnoreCase := make(map[string]ListSourceEventTypesSortOrderEnum)
+	for k, v := range mappingListSourceEventTypesSortOrderEnum {
+		mappingListSourceEventTypesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSourceEventTypesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

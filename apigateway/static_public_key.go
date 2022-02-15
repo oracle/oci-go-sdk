@@ -122,3 +122,14 @@ func GetStaticPublicKeyFormatEnumStringValues() []string {
 		"PEM",
 	}
 }
+
+// GetMappingStaticPublicKeyFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStaticPublicKeyFormatEnum(val string) (StaticPublicKeyFormatEnum, bool) {
+	mappingStaticPublicKeyFormatEnumIgnoreCase := make(map[string]StaticPublicKeyFormatEnum)
+	for k, v := range mappingStaticPublicKeyFormatEnum {
+		mappingStaticPublicKeyFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStaticPublicKeyFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

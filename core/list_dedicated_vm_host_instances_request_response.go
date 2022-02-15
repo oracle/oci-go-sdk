@@ -92,10 +92,10 @@ func (request ListDedicatedVmHostInstancesRequest) RetryPolicy() *common.RetryPo
 // Not recommended for calling this function directly
 func (request ListDedicatedVmHostInstancesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDedicatedVmHostInstancesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDedicatedVmHostInstancesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDedicatedVmHostInstancesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDedicatedVmHostInstancesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDedicatedVmHostInstancesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDedicatedVmHostInstancesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -163,6 +163,17 @@ func GetListDedicatedVmHostInstancesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDedicatedVmHostInstancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDedicatedVmHostInstancesSortByEnum(val string) (ListDedicatedVmHostInstancesSortByEnum, bool) {
+	mappingListDedicatedVmHostInstancesSortByEnumIgnoreCase := make(map[string]ListDedicatedVmHostInstancesSortByEnum)
+	for k, v := range mappingListDedicatedVmHostInstancesSortByEnum {
+		mappingListDedicatedVmHostInstancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDedicatedVmHostInstancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDedicatedVmHostInstancesSortOrderEnum Enum with underlying type: string
 type ListDedicatedVmHostInstancesSortOrderEnum string
 
@@ -192,4 +203,15 @@ func GetListDedicatedVmHostInstancesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListDedicatedVmHostInstancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDedicatedVmHostInstancesSortOrderEnum(val string) (ListDedicatedVmHostInstancesSortOrderEnum, bool) {
+	mappingListDedicatedVmHostInstancesSortOrderEnumIgnoreCase := make(map[string]ListDedicatedVmHostInstancesSortOrderEnum)
+	for k, v := range mappingListDedicatedVmHostInstancesSortOrderEnum {
+		mappingListDedicatedVmHostInstancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDedicatedVmHostInstancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

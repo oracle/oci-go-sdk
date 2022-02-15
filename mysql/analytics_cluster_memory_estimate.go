@@ -47,7 +47,7 @@ func (m AnalyticsClusterMemoryEstimate) String() string {
 // Not recommended for calling this function directly
 func (m AnalyticsClusterMemoryEstimate) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAnalyticsClusterMemoryEstimateStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingAnalyticsClusterMemoryEstimateStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetAnalyticsClusterMemoryEstimateStatusEnumStringValues(), ",")))
 	}
 

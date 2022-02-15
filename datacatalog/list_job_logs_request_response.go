@@ -99,19 +99,19 @@ func (request ListJobLogsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListJobLogsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListJobLogsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListJobLogsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListJobLogsLifecycleStateEnumStringValues(), ",")))
 	}
 	for _, val := range request.Fields {
-		if _, ok := mappingListJobLogsFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListJobLogsFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetListJobLogsFieldsEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListJobLogsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListJobLogsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListJobLogsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListJobLogsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListJobLogsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListJobLogsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -195,6 +195,17 @@ func GetListJobLogsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListJobLogsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobLogsLifecycleStateEnum(val string) (ListJobLogsLifecycleStateEnum, bool) {
+	mappingListJobLogsLifecycleStateEnumIgnoreCase := make(map[string]ListJobLogsLifecycleStateEnum)
+	for k, v := range mappingListJobLogsLifecycleStateEnum {
+		mappingListJobLogsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobLogsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListJobLogsFieldsEnum Enum with underlying type: string
 type ListJobLogsFieldsEnum string
 
@@ -238,6 +249,17 @@ func GetListJobLogsFieldsEnumStringValues() []string {
 	}
 }
 
+// GetMappingListJobLogsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobLogsFieldsEnum(val string) (ListJobLogsFieldsEnum, bool) {
+	mappingListJobLogsFieldsEnumIgnoreCase := make(map[string]ListJobLogsFieldsEnum)
+	for k, v := range mappingListJobLogsFieldsEnum {
+		mappingListJobLogsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobLogsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListJobLogsSortByEnum Enum with underlying type: string
 type ListJobLogsSortByEnum string
 
@@ -269,6 +291,17 @@ func GetListJobLogsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListJobLogsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobLogsSortByEnum(val string) (ListJobLogsSortByEnum, bool) {
+	mappingListJobLogsSortByEnumIgnoreCase := make(map[string]ListJobLogsSortByEnum)
+	for k, v := range mappingListJobLogsSortByEnum {
+		mappingListJobLogsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobLogsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListJobLogsSortOrderEnum Enum with underlying type: string
 type ListJobLogsSortOrderEnum string
 
@@ -298,4 +331,15 @@ func GetListJobLogsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListJobLogsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobLogsSortOrderEnum(val string) (ListJobLogsSortOrderEnum, bool) {
+	mappingListJobLogsSortOrderEnumIgnoreCase := make(map[string]ListJobLogsSortOrderEnum)
+	for k, v := range mappingListJobLogsSortOrderEnum {
+		mappingListJobLogsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobLogsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

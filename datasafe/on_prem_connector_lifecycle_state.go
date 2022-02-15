@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // OnPremConnectorLifecycleStateEnum Enum with underlying type: string
 type OnPremConnectorLifecycleStateEnum string
 
@@ -53,4 +57,15 @@ func GetOnPremConnectorLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingOnPremConnectorLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOnPremConnectorLifecycleStateEnum(val string) (OnPremConnectorLifecycleStateEnum, bool) {
+	mappingOnPremConnectorLifecycleStateEnumIgnoreCase := make(map[string]OnPremConnectorLifecycleStateEnum)
+	for k, v := range mappingOnPremConnectorLifecycleStateEnum {
+		mappingOnPremConnectorLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOnPremConnectorLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

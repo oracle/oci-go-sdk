@@ -81,13 +81,13 @@ func (request ListDeploymentUpgradesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDeploymentUpgradesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDeploymentUpgradesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListDeploymentUpgradesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListDeploymentUpgradesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDeploymentUpgradesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDeploymentUpgradesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDeploymentUpgradesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDeploymentUpgradesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDeploymentUpgradesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDeploymentUpgradesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -182,6 +182,17 @@ func GetListDeploymentUpgradesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDeploymentUpgradesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDeploymentUpgradesLifecycleStateEnum(val string) (ListDeploymentUpgradesLifecycleStateEnum, bool) {
+	mappingListDeploymentUpgradesLifecycleStateEnumIgnoreCase := make(map[string]ListDeploymentUpgradesLifecycleStateEnum)
+	for k, v := range mappingListDeploymentUpgradesLifecycleStateEnum {
+		mappingListDeploymentUpgradesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDeploymentUpgradesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDeploymentUpgradesSortOrderEnum Enum with underlying type: string
 type ListDeploymentUpgradesSortOrderEnum string
 
@@ -213,6 +224,17 @@ func GetListDeploymentUpgradesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDeploymentUpgradesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDeploymentUpgradesSortOrderEnum(val string) (ListDeploymentUpgradesSortOrderEnum, bool) {
+	mappingListDeploymentUpgradesSortOrderEnumIgnoreCase := make(map[string]ListDeploymentUpgradesSortOrderEnum)
+	for k, v := range mappingListDeploymentUpgradesSortOrderEnum {
+		mappingListDeploymentUpgradesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDeploymentUpgradesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDeploymentUpgradesSortByEnum Enum with underlying type: string
 type ListDeploymentUpgradesSortByEnum string
 
@@ -242,4 +264,15 @@ func GetListDeploymentUpgradesSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListDeploymentUpgradesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDeploymentUpgradesSortByEnum(val string) (ListDeploymentUpgradesSortByEnum, bool) {
+	mappingListDeploymentUpgradesSortByEnumIgnoreCase := make(map[string]ListDeploymentUpgradesSortByEnum)
+	for k, v := range mappingListDeploymentUpgradesSortByEnum {
+		mappingListDeploymentUpgradesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDeploymentUpgradesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

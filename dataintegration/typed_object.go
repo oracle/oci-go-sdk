@@ -255,3 +255,14 @@ func GetTypedObjectModelTypeEnumStringValues() []string {
 		"PARAMETER",
 	}
 }
+
+// GetMappingTypedObjectModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTypedObjectModelTypeEnum(val string) (TypedObjectModelTypeEnum, bool) {
+	mappingTypedObjectModelTypeEnumIgnoreCase := make(map[string]TypedObjectModelTypeEnum)
+	for k, v := range mappingTypedObjectModelTypeEnum {
+		mappingTypedObjectModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTypedObjectModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

@@ -78,10 +78,10 @@ func (request ListStorageWorkRequestErrorsRequest) RetryPolicy() *common.RetryPo
 // Not recommended for calling this function directly
 func (request ListStorageWorkRequestErrorsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListStorageWorkRequestErrorsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListStorageWorkRequestErrorsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListStorageWorkRequestErrorsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListStorageWorkRequestErrorsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListStorageWorkRequestErrorsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListStorageWorkRequestErrorsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -153,6 +153,17 @@ func GetListStorageWorkRequestErrorsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListStorageWorkRequestErrorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListStorageWorkRequestErrorsSortOrderEnum(val string) (ListStorageWorkRequestErrorsSortOrderEnum, bool) {
+	mappingListStorageWorkRequestErrorsSortOrderEnumIgnoreCase := make(map[string]ListStorageWorkRequestErrorsSortOrderEnum)
+	for k, v := range mappingListStorageWorkRequestErrorsSortOrderEnum {
+		mappingListStorageWorkRequestErrorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListStorageWorkRequestErrorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListStorageWorkRequestErrorsSortByEnum Enum with underlying type: string
 type ListStorageWorkRequestErrorsSortByEnum string
 
@@ -179,4 +190,15 @@ func GetListStorageWorkRequestErrorsSortByEnumStringValues() []string {
 	return []string{
 		"timeCreated",
 	}
+}
+
+// GetMappingListStorageWorkRequestErrorsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListStorageWorkRequestErrorsSortByEnum(val string) (ListStorageWorkRequestErrorsSortByEnum, bool) {
+	mappingListStorageWorkRequestErrorsSortByEnumIgnoreCase := make(map[string]ListStorageWorkRequestErrorsSortByEnum)
+	for k, v := range mappingListStorageWorkRequestErrorsSortByEnum {
+		mappingListStorageWorkRequestErrorsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListStorageWorkRequestErrorsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

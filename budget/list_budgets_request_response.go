@@ -87,16 +87,16 @@ func (request ListBudgetsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListBudgetsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListBudgetsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListBudgetsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListBudgetsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBudgetsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListBudgetsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListBudgetsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBudgetsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListBudgetsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListBudgetsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBudgetsTargetTypeEnum[string(request.TargetType)]; !ok && request.TargetType != "" {
+	if _, ok := GetMappingListBudgetsTargetTypeEnum(string(request.TargetType)); !ok && request.TargetType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TargetType: %s. Supported values are: %s.", request.TargetType, strings.Join(GetListBudgetsTargetTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -165,6 +165,17 @@ func GetListBudgetsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListBudgetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBudgetsSortOrderEnum(val string) (ListBudgetsSortOrderEnum, bool) {
+	mappingListBudgetsSortOrderEnumIgnoreCase := make(map[string]ListBudgetsSortOrderEnum)
+	for k, v := range mappingListBudgetsSortOrderEnum {
+		mappingListBudgetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBudgetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListBudgetsSortByEnum Enum with underlying type: string
 type ListBudgetsSortByEnum string
 
@@ -196,6 +207,17 @@ func GetListBudgetsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListBudgetsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBudgetsSortByEnum(val string) (ListBudgetsSortByEnum, bool) {
+	mappingListBudgetsSortByEnumIgnoreCase := make(map[string]ListBudgetsSortByEnum)
+	for k, v := range mappingListBudgetsSortByEnum {
+		mappingListBudgetsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBudgetsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListBudgetsLifecycleStateEnum Enum with underlying type: string
 type ListBudgetsLifecycleStateEnum string
 
@@ -225,6 +247,17 @@ func GetListBudgetsLifecycleStateEnumStringValues() []string {
 		"ACTIVE",
 		"INACTIVE",
 	}
+}
+
+// GetMappingListBudgetsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBudgetsLifecycleStateEnum(val string) (ListBudgetsLifecycleStateEnum, bool) {
+	mappingListBudgetsLifecycleStateEnumIgnoreCase := make(map[string]ListBudgetsLifecycleStateEnum)
+	for k, v := range mappingListBudgetsLifecycleStateEnum {
+		mappingListBudgetsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBudgetsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListBudgetsTargetTypeEnum Enum with underlying type: string
@@ -259,4 +292,15 @@ func GetListBudgetsTargetTypeEnumStringValues() []string {
 		"COMPARTMENT",
 		"TAG",
 	}
+}
+
+// GetMappingListBudgetsTargetTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBudgetsTargetTypeEnum(val string) (ListBudgetsTargetTypeEnum, bool) {
+	mappingListBudgetsTargetTypeEnumIgnoreCase := make(map[string]ListBudgetsTargetTypeEnum)
+	for k, v := range mappingListBudgetsTargetTypeEnum {
+		mappingListBudgetsTargetTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBudgetsTargetTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

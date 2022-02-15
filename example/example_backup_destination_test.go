@@ -10,11 +10,12 @@ package example
 import (
 	"context"
 	"fmt"
+	"os"
+	"strings"
+
 	"github.com/oracle/oci-go-sdk/v58/common"
 	"github.com/oracle/oci-go-sdk/v58/database"
 	"github.com/oracle/oci-go-sdk/v58/example/helpers"
-	"os"
-	"strings"
 )
 
 var (

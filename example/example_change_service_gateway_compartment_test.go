@@ -25,11 +25,12 @@ package example
 import (
 	"context"
 	"fmt"
+	"log"
+	"os"
+
 	"github.com/oracle/oci-go-sdk/v58/common"
 	"github.com/oracle/oci-go-sdk/v58/core"
 	"github.com/oracle/oci-go-sdk/v58/example/helpers"
-	"log"
-	"os"
 )
 
 const (

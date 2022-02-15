@@ -53,7 +53,7 @@ func (m ResizeDataFileDetails) String() string {
 // Not recommended for calling this function directly
 func (m ResizeDataFileDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingResizeDataFileDetailsFileTypeEnum[string(m.FileType)]; !ok && m.FileType != "" {
+	if _, ok := GetMappingResizeDataFileDetailsFileTypeEnum(string(m.FileType)); !ok && m.FileType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FileType: %s. Supported values are: %s.", m.FileType, strings.Join(GetResizeDataFileDetailsFileTypeEnumStringValues(), ",")))
 	}
 
@@ -137,4 +137,15 @@ func GetResizeDataFileDetailsFileTypeEnumStringValues() []string {
 		"DATAFILE",
 		"TEMPFILE",
 	}
+}
+
+// GetMappingResizeDataFileDetailsFileTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResizeDataFileDetailsFileTypeEnum(val string) (ResizeDataFileDetailsFileTypeEnum, bool) {
+	mappingResizeDataFileDetailsFileTypeEnumIgnoreCase := make(map[string]ResizeDataFileDetailsFileTypeEnum)
+	for k, v := range mappingResizeDataFileDetailsFileTypeEnum {
+		mappingResizeDataFileDetailsFileTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResizeDataFileDetailsFileTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

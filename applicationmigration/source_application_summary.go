@@ -48,7 +48,7 @@ func (m SourceApplicationSummary) String() string {
 func (m SourceApplicationSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingMigrationTypesEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingMigrationTypesEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetMigrationTypesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

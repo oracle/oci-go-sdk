@@ -71,10 +71,10 @@ func (request ListMigrationObjectTypesRequest) RetryPolicy() *common.RetryPolicy
 // Not recommended for calling this function directly
 func (request ListMigrationObjectTypesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListMigrationObjectTypesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListMigrationObjectTypesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListMigrationObjectTypesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListMigrationObjectTypesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListMigrationObjectTypesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListMigrationObjectTypesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -139,6 +139,17 @@ func GetListMigrationObjectTypesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListMigrationObjectTypesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMigrationObjectTypesSortByEnum(val string) (ListMigrationObjectTypesSortByEnum, bool) {
+	mappingListMigrationObjectTypesSortByEnumIgnoreCase := make(map[string]ListMigrationObjectTypesSortByEnum)
+	for k, v := range mappingListMigrationObjectTypesSortByEnum {
+		mappingListMigrationObjectTypesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMigrationObjectTypesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListMigrationObjectTypesSortOrderEnum Enum with underlying type: string
 type ListMigrationObjectTypesSortOrderEnum string
 
@@ -168,4 +179,15 @@ func GetListMigrationObjectTypesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListMigrationObjectTypesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMigrationObjectTypesSortOrderEnum(val string) (ListMigrationObjectTypesSortOrderEnum, bool) {
+	mappingListMigrationObjectTypesSortOrderEnumIgnoreCase := make(map[string]ListMigrationObjectTypesSortOrderEnum)
+	for k, v := range mappingListMigrationObjectTypesSortOrderEnum {
+		mappingListMigrationObjectTypesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMigrationObjectTypesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -35,7 +35,7 @@ func (m AuditPolicyDimensions) String() string {
 func (m AuditPolicyDimensions) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAuditPolicyCategoryEnum[string(m.AuditPolicyCategory)]; !ok && m.AuditPolicyCategory != "" {
+	if _, ok := GetMappingAuditPolicyCategoryEnum(string(m.AuditPolicyCategory)); !ok && m.AuditPolicyCategory != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AuditPolicyCategory: %s. Supported values are: %s.", m.AuditPolicyCategory, strings.Join(GetAuditPolicyCategoryEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -107,17 +107,17 @@ func (request ListAlertsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAlertsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAlertsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListAlertsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListAlertsAccessLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAlertsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAlertsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAlertsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAlertsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAlertsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAlertsSortByEnumStringValues(), ",")))
 	}
 	for _, val := range request.Field {
-		if _, ok := mappingListAlertsFieldEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListAlertsFieldEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Field: %s. Supported values are: %s.", val, strings.Join(GetListAlertsFieldEnumStringValues(), ",")))
 		}
 	}
@@ -189,6 +189,17 @@ func GetListAlertsAccessLevelEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAlertsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAlertsAccessLevelEnum(val string) (ListAlertsAccessLevelEnum, bool) {
+	mappingListAlertsAccessLevelEnumIgnoreCase := make(map[string]ListAlertsAccessLevelEnum)
+	for k, v := range mappingListAlertsAccessLevelEnum {
+		mappingListAlertsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAlertsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAlertsSortOrderEnum Enum with underlying type: string
 type ListAlertsSortOrderEnum string
 
@@ -220,6 +231,17 @@ func GetListAlertsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAlertsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAlertsSortOrderEnum(val string) (ListAlertsSortOrderEnum, bool) {
+	mappingListAlertsSortOrderEnumIgnoreCase := make(map[string]ListAlertsSortOrderEnum)
+	for k, v := range mappingListAlertsSortOrderEnum {
+		mappingListAlertsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAlertsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAlertsSortByEnum Enum with underlying type: string
 type ListAlertsSortByEnum string
 
@@ -249,6 +271,17 @@ func GetListAlertsSortByEnumStringValues() []string {
 		"displayName",
 		"timeCreated",
 	}
+}
+
+// GetMappingListAlertsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAlertsSortByEnum(val string) (ListAlertsSortByEnum, bool) {
+	mappingListAlertsSortByEnumIgnoreCase := make(map[string]ListAlertsSortByEnum)
+	for k, v := range mappingListAlertsSortByEnum {
+		mappingListAlertsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAlertsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListAlertsFieldEnum Enum with underlying type: string
@@ -316,4 +349,15 @@ func GetListAlertsFieldEnumStringValues() []string {
 		"policyId",
 		"lifecycleState",
 	}
+}
+
+// GetMappingListAlertsFieldEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAlertsFieldEnum(val string) (ListAlertsFieldEnum, bool) {
+	mappingListAlertsFieldEnumIgnoreCase := make(map[string]ListAlertsFieldEnum)
+	for k, v := range mappingListAlertsFieldEnum {
+		mappingListAlertsFieldEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAlertsFieldEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

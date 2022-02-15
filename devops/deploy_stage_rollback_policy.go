@@ -109,3 +109,14 @@ func GetDeployStageRollbackPolicyPolicyTypeEnumStringValues() []string {
 		"NO_STAGE_ROLLBACK_POLICY",
 	}
 }
+
+// GetMappingDeployStageRollbackPolicyPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeployStageRollbackPolicyPolicyTypeEnum(val string) (DeployStageRollbackPolicyPolicyTypeEnum, bool) {
+	mappingDeployStageRollbackPolicyPolicyTypeEnumIgnoreCase := make(map[string]DeployStageRollbackPolicyPolicyTypeEnum)
+	for k, v := range mappingDeployStageRollbackPolicyPolicyTypeEnum {
+		mappingDeployStageRollbackPolicyPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeployStageRollbackPolicyPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

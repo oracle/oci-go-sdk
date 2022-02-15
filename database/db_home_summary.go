@@ -85,7 +85,7 @@ func (m DbHomeSummary) String() string {
 // Not recommended for calling this function directly
 func (m DbHomeSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDbHomeSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDbHomeSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDbHomeSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -136,4 +136,15 @@ func GetDbHomeSummaryLifecycleStateEnumStringValues() []string {
 		"TERMINATED",
 		"FAILED",
 	}
+}
+
+// GetMappingDbHomeSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbHomeSummaryLifecycleStateEnum(val string) (DbHomeSummaryLifecycleStateEnum, bool) {
+	mappingDbHomeSummaryLifecycleStateEnumIgnoreCase := make(map[string]DbHomeSummaryLifecycleStateEnum)
+	for k, v := range mappingDbHomeSummaryLifecycleStateEnum {
+		mappingDbHomeSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbHomeSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

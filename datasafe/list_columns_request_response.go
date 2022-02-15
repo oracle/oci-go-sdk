@@ -93,10 +93,10 @@ func (request ListColumnsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListColumnsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListColumnsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListColumnsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListColumnsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListColumnsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListColumnsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListColumnsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -166,6 +166,17 @@ func GetListColumnsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListColumnsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListColumnsSortOrderEnum(val string) (ListColumnsSortOrderEnum, bool) {
+	mappingListColumnsSortOrderEnumIgnoreCase := make(map[string]ListColumnsSortOrderEnum)
+	for k, v := range mappingListColumnsSortOrderEnum {
+		mappingListColumnsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListColumnsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListColumnsSortByEnum Enum with underlying type: string
 type ListColumnsSortByEnum string
 
@@ -201,4 +212,15 @@ func GetListColumnsSortByEnumStringValues() []string {
 		"COLUMNNAME",
 		"DATATYPE",
 	}
+}
+
+// GetMappingListColumnsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListColumnsSortByEnum(val string) (ListColumnsSortByEnum, bool) {
+	mappingListColumnsSortByEnumIgnoreCase := make(map[string]ListColumnsSortByEnum)
+	for k, v := range mappingListColumnsSortByEnum {
+		mappingListColumnsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListColumnsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

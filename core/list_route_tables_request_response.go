@@ -95,13 +95,13 @@ func (request ListRouteTablesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListRouteTablesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListRouteTablesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListRouteTablesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListRouteTablesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListRouteTablesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListRouteTablesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListRouteTablesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingRouteTableLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingRouteTableLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetRouteTableLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -169,6 +169,17 @@ func GetListRouteTablesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListRouteTablesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRouteTablesSortByEnum(val string) (ListRouteTablesSortByEnum, bool) {
+	mappingListRouteTablesSortByEnumIgnoreCase := make(map[string]ListRouteTablesSortByEnum)
+	for k, v := range mappingListRouteTablesSortByEnum {
+		mappingListRouteTablesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRouteTablesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListRouteTablesSortOrderEnum Enum with underlying type: string
 type ListRouteTablesSortOrderEnum string
 
@@ -198,4 +209,15 @@ func GetListRouteTablesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListRouteTablesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRouteTablesSortOrderEnum(val string) (ListRouteTablesSortOrderEnum, bool) {
+	mappingListRouteTablesSortOrderEnumIgnoreCase := make(map[string]ListRouteTablesSortOrderEnum)
+	for k, v := range mappingListRouteTablesSortOrderEnum {
+		mappingListRouteTablesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRouteTablesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

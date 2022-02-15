@@ -116,3 +116,14 @@ func GetRecordMetadataRecordTypeEnumStringValues() []string {
 		"DOCUMENT_METADATA",
 	}
 }
+
+// GetMappingRecordMetadataRecordTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRecordMetadataRecordTypeEnum(val string) (RecordMetadataRecordTypeEnum, bool) {
+	mappingRecordMetadataRecordTypeEnumIgnoreCase := make(map[string]RecordMetadataRecordTypeEnum)
+	for k, v := range mappingRecordMetadataRecordTypeEnum {
+		mappingRecordMetadataRecordTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRecordMetadataRecordTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

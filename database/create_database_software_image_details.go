@@ -66,10 +66,10 @@ func (m CreateDatabaseSoftwareImageDetails) String() string {
 func (m CreateDatabaseSoftwareImageDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateDatabaseSoftwareImageDetailsImageShapeFamilyEnum[string(m.ImageShapeFamily)]; !ok && m.ImageShapeFamily != "" {
+	if _, ok := GetMappingCreateDatabaseSoftwareImageDetailsImageShapeFamilyEnum(string(m.ImageShapeFamily)); !ok && m.ImageShapeFamily != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ImageShapeFamily: %s. Supported values are: %s.", m.ImageShapeFamily, strings.Join(GetCreateDatabaseSoftwareImageDetailsImageShapeFamilyEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateDatabaseSoftwareImageDetailsImageTypeEnum[string(m.ImageType)]; !ok && m.ImageType != "" {
+	if _, ok := GetMappingCreateDatabaseSoftwareImageDetailsImageTypeEnum(string(m.ImageType)); !ok && m.ImageType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ImageType: %s. Supported values are: %s.", m.ImageType, strings.Join(GetCreateDatabaseSoftwareImageDetailsImageTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -112,6 +112,17 @@ func GetCreateDatabaseSoftwareImageDetailsImageShapeFamilyEnumStringValues() []s
 	}
 }
 
+// GetMappingCreateDatabaseSoftwareImageDetailsImageShapeFamilyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateDatabaseSoftwareImageDetailsImageShapeFamilyEnum(val string) (CreateDatabaseSoftwareImageDetailsImageShapeFamilyEnum, bool) {
+	mappingCreateDatabaseSoftwareImageDetailsImageShapeFamilyEnumIgnoreCase := make(map[string]CreateDatabaseSoftwareImageDetailsImageShapeFamilyEnum)
+	for k, v := range mappingCreateDatabaseSoftwareImageDetailsImageShapeFamilyEnum {
+		mappingCreateDatabaseSoftwareImageDetailsImageShapeFamilyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateDatabaseSoftwareImageDetailsImageShapeFamilyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CreateDatabaseSoftwareImageDetailsImageTypeEnum Enum with underlying type: string
 type CreateDatabaseSoftwareImageDetailsImageTypeEnum string
 
@@ -141,4 +152,15 @@ func GetCreateDatabaseSoftwareImageDetailsImageTypeEnumStringValues() []string {
 		"GRID_IMAGE",
 		"DATABASE_IMAGE",
 	}
+}
+
+// GetMappingCreateDatabaseSoftwareImageDetailsImageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateDatabaseSoftwareImageDetailsImageTypeEnum(val string) (CreateDatabaseSoftwareImageDetailsImageTypeEnum, bool) {
+	mappingCreateDatabaseSoftwareImageDetailsImageTypeEnumIgnoreCase := make(map[string]CreateDatabaseSoftwareImageDetailsImageTypeEnum)
+	for k, v := range mappingCreateDatabaseSoftwareImageDetailsImageTypeEnum {
+		mappingCreateDatabaseSoftwareImageDetailsImageTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateDatabaseSoftwareImageDetailsImageTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

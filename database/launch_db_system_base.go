@@ -420,3 +420,14 @@ func GetLaunchDbSystemBaseSourceEnumStringValues() []string {
 		"DB_SYSTEM",
 	}
 }
+
+// GetMappingLaunchDbSystemBaseSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLaunchDbSystemBaseSourceEnum(val string) (LaunchDbSystemBaseSourceEnum, bool) {
+	mappingLaunchDbSystemBaseSourceEnumIgnoreCase := make(map[string]LaunchDbSystemBaseSourceEnum)
+	for k, v := range mappingLaunchDbSystemBaseSourceEnum {
+		mappingLaunchDbSystemBaseSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLaunchDbSystemBaseSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

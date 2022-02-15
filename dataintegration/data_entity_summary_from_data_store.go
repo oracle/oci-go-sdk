@@ -98,7 +98,7 @@ func (m DataEntitySummaryFromDataStore) String() string {
 // Not recommended for calling this function directly
 func (m DataEntitySummaryFromDataStore) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDataEntitySummaryFromDataStoreEntityTypeEnum[string(m.EntityType)]; !ok && m.EntityType != "" {
+	if _, ok := GetMappingDataEntitySummaryFromDataStoreEntityTypeEnum(string(m.EntityType)); !ok && m.EntityType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EntityType: %s. Supported values are: %s.", m.EntityType, strings.Join(GetDataEntitySummaryFromDataStoreEntityTypeEnumStringValues(), ",")))
 	}
 
@@ -262,4 +262,15 @@ func GetDataEntitySummaryFromDataStoreEntityTypeEnumStringValues() []string {
 		"OTHER",
 		"DATA_STORE",
 	}
+}
+
+// GetMappingDataEntitySummaryFromDataStoreEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataEntitySummaryFromDataStoreEntityTypeEnum(val string) (DataEntitySummaryFromDataStoreEntityTypeEnum, bool) {
+	mappingDataEntitySummaryFromDataStoreEntityTypeEnumIgnoreCase := make(map[string]DataEntitySummaryFromDataStoreEntityTypeEnum)
+	for k, v := range mappingDataEntitySummaryFromDataStoreEntityTypeEnum {
+		mappingDataEntitySummaryFromDataStoreEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataEntitySummaryFromDataStoreEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

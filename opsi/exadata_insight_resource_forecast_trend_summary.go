@@ -48,7 +48,7 @@ func (m ExadataInsightResourceForecastTrendSummary) String() string {
 // Not recommended for calling this function directly
 func (m ExadataInsightResourceForecastTrendSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingExadataInsightResourceForecastTrendSummaryPatternEnum[string(m.Pattern)]; !ok && m.Pattern != "" {
+	if _, ok := GetMappingExadataInsightResourceForecastTrendSummaryPatternEnum(string(m.Pattern)); !ok && m.Pattern != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Pattern: %s. Supported values are: %s.", m.Pattern, strings.Join(GetExadataInsightResourceForecastTrendSummaryPatternEnumStringValues(), ",")))
 	}
 
@@ -105,4 +105,15 @@ func GetExadataInsightResourceForecastTrendSummaryPatternEnumStringValues() []st
 		"WEEKLY_AND_YEARLY_SEASONS",
 		"YEARLY_SEASONS",
 	}
+}
+
+// GetMappingExadataInsightResourceForecastTrendSummaryPatternEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExadataInsightResourceForecastTrendSummaryPatternEnum(val string) (ExadataInsightResourceForecastTrendSummaryPatternEnum, bool) {
+	mappingExadataInsightResourceForecastTrendSummaryPatternEnumIgnoreCase := make(map[string]ExadataInsightResourceForecastTrendSummaryPatternEnum)
+	for k, v := range mappingExadataInsightResourceForecastTrendSummaryPatternEnum {
+		mappingExadataInsightResourceForecastTrendSummaryPatternEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExadataInsightResourceForecastTrendSummaryPatternEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

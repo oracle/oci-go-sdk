@@ -62,7 +62,7 @@ func (m TagDefaultSummary) String() string {
 func (m TagDefaultSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTagDefaultSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingTagDefaultSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetTagDefaultSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -97,4 +97,15 @@ func GetTagDefaultSummaryLifecycleStateEnumStringValues() []string {
 	return []string{
 		"ACTIVE",
 	}
+}
+
+// GetMappingTagDefaultSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTagDefaultSummaryLifecycleStateEnum(val string) (TagDefaultSummaryLifecycleStateEnum, bool) {
+	mappingTagDefaultSummaryLifecycleStateEnumIgnoreCase := make(map[string]TagDefaultSummaryLifecycleStateEnum)
+	for k, v := range mappingTagDefaultSummaryLifecycleStateEnum {
+		mappingTagDefaultSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTagDefaultSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -78,10 +78,10 @@ func (request ListAsmPropertiesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAsmPropertiesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAsmPropertiesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAsmPropertiesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAsmPropertiesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAsmPropertiesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAsmPropertiesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAsmPropertiesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -149,6 +149,17 @@ func GetListAsmPropertiesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAsmPropertiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAsmPropertiesSortByEnum(val string) (ListAsmPropertiesSortByEnum, bool) {
+	mappingListAsmPropertiesSortByEnumIgnoreCase := make(map[string]ListAsmPropertiesSortByEnum)
+	for k, v := range mappingListAsmPropertiesSortByEnum {
+		mappingListAsmPropertiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAsmPropertiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAsmPropertiesSortOrderEnum Enum with underlying type: string
 type ListAsmPropertiesSortOrderEnum string
 
@@ -178,4 +189,15 @@ func GetListAsmPropertiesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAsmPropertiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAsmPropertiesSortOrderEnum(val string) (ListAsmPropertiesSortOrderEnum, bool) {
+	mappingListAsmPropertiesSortOrderEnumIgnoreCase := make(map[string]ListAsmPropertiesSortOrderEnum)
+	for k, v := range mappingListAsmPropertiesSortOrderEnum {
+		mappingListAsmPropertiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAsmPropertiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

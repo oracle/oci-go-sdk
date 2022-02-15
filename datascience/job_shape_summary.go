@@ -40,7 +40,7 @@ func (m JobShapeSummary) String() string {
 // Not recommended for calling this function directly
 func (m JobShapeSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingJobShapeSummaryShapeSeriesEnum[string(m.ShapeSeries)]; !ok && m.ShapeSeries != "" {
+	if _, ok := GetMappingJobShapeSummaryShapeSeriesEnum(string(m.ShapeSeries)); !ok && m.ShapeSeries != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShapeSeries: %s. Supported values are: %s.", m.ShapeSeries, strings.Join(GetJobShapeSummaryShapeSeriesEnumStringValues(), ",")))
 	}
 
@@ -85,4 +85,15 @@ func GetJobShapeSummaryShapeSeriesEnumStringValues() []string {
 		"NVIDIA_GPU",
 		"LEGACY",
 	}
+}
+
+// GetMappingJobShapeSummaryShapeSeriesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobShapeSummaryShapeSeriesEnum(val string) (JobShapeSummaryShapeSeriesEnum, bool) {
+	mappingJobShapeSummaryShapeSeriesEnumIgnoreCase := make(map[string]JobShapeSummaryShapeSeriesEnum)
+	for k, v := range mappingJobShapeSummaryShapeSeriesEnum {
+		mappingJobShapeSummaryShapeSeriesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobShapeSummaryShapeSeriesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

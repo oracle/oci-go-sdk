@@ -53,10 +53,10 @@ func (m ServiceCategory) String() string {
 func (m ServiceCategory) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingScopeEnum[string(m.Scope)]; !ok && m.Scope != "" {
+	if _, ok := GetMappingScopeEnum(string(m.Scope)); !ok && m.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", m.Scope, strings.Join(GetScopeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUnitEnum[string(m.Unit)]; !ok && m.Unit != "" {
+	if _, ok := GetMappingUnitEnum(string(m.Unit)); !ok && m.Unit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Unit: %s. Supported values are: %s.", m.Unit, strings.Join(GetUnitEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

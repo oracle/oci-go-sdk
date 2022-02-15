@@ -92,10 +92,10 @@ func (request ListAvailableAuditVolumesRequest) RetryPolicy() *common.RetryPolic
 // Not recommended for calling this function directly
 func (request ListAvailableAuditVolumesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAvailableAuditVolumesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAvailableAuditVolumesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAvailableAuditVolumesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAvailableAuditVolumesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAvailableAuditVolumesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAvailableAuditVolumesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -165,6 +165,17 @@ func GetListAvailableAuditVolumesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAvailableAuditVolumesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAvailableAuditVolumesSortOrderEnum(val string) (ListAvailableAuditVolumesSortOrderEnum, bool) {
+	mappingListAvailableAuditVolumesSortOrderEnumIgnoreCase := make(map[string]ListAvailableAuditVolumesSortOrderEnum)
+	for k, v := range mappingListAvailableAuditVolumesSortOrderEnum {
+		mappingListAvailableAuditVolumesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAvailableAuditVolumesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAvailableAuditVolumesSortByEnum Enum with underlying type: string
 type ListAvailableAuditVolumesSortByEnum string
 
@@ -197,4 +208,15 @@ func GetListAvailableAuditVolumesSortByEnumStringValues() []string {
 		"volume",
 		"trailLocation",
 	}
+}
+
+// GetMappingListAvailableAuditVolumesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAvailableAuditVolumesSortByEnum(val string) (ListAvailableAuditVolumesSortByEnum, bool) {
+	mappingListAvailableAuditVolumesSortByEnumIgnoreCase := make(map[string]ListAvailableAuditVolumesSortByEnum)
+	for k, v := range mappingListAvailableAuditVolumesSortByEnum {
+		mappingListAvailableAuditVolumesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAvailableAuditVolumesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

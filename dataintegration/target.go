@@ -143,7 +143,7 @@ func (m Target) String() string {
 // Not recommended for calling this function directly
 func (m Target) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTargetDataPropertyEnum[string(m.DataProperty)]; !ok && m.DataProperty != "" {
+	if _, ok := GetMappingTargetDataPropertyEnum(string(m.DataProperty)); !ok && m.DataProperty != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataProperty: %s. Supported values are: %s.", m.DataProperty, strings.Join(GetTargetDataPropertyEnumStringValues(), ",")))
 	}
 
@@ -298,4 +298,15 @@ func GetTargetDataPropertyEnumStringValues() []string {
 		"APPEND",
 		"IGNORE",
 	}
+}
+
+// GetMappingTargetDataPropertyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTargetDataPropertyEnum(val string) (TargetDataPropertyEnum, bool) {
+	mappingTargetDataPropertyEnumIgnoreCase := make(map[string]TargetDataPropertyEnum)
+	for k, v := range mappingTargetDataPropertyEnum {
+		mappingTargetDataPropertyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTargetDataPropertyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

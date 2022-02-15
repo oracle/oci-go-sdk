@@ -60,17 +60,17 @@ func (m ResponderRuleSummary) String() string {
 // Not recommended for calling this function directly
 func (m ResponderRuleSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingResponderTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingResponderTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetResponderTypeEnumStringValues(), ",")))
 	}
 
 	for _, val := range m.SupportedModes {
-		if _, ok := mappingResponderRuleSummarySupportedModesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingResponderRuleSummarySupportedModesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SupportedModes: %s. Supported values are: %s.", val, strings.Join(GetResponderRuleSummarySupportedModesEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -108,4 +108,15 @@ func GetResponderRuleSummarySupportedModesEnumStringValues() []string {
 		"AUTOACTION",
 		"USERACTION",
 	}
+}
+
+// GetMappingResponderRuleSummarySupportedModesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResponderRuleSummarySupportedModesEnum(val string) (ResponderRuleSummarySupportedModesEnum, bool) {
+	mappingResponderRuleSummarySupportedModesEnumIgnoreCase := make(map[string]ResponderRuleSummarySupportedModesEnum)
+	for k, v := range mappingResponderRuleSummarySupportedModesEnum {
+		mappingResponderRuleSummarySupportedModesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResponderRuleSummarySupportedModesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -83,13 +83,13 @@ func (request ListNetworkSecurityGroupSecurityRulesRequest) RetryPolicy() *commo
 // Not recommended for calling this function directly
 func (request ListNetworkSecurityGroupSecurityRulesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListNetworkSecurityGroupSecurityRulesDirectionEnum[string(request.Direction)]; !ok && request.Direction != "" {
+	if _, ok := GetMappingListNetworkSecurityGroupSecurityRulesDirectionEnum(string(request.Direction)); !ok && request.Direction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Direction: %s. Supported values are: %s.", request.Direction, strings.Join(GetListNetworkSecurityGroupSecurityRulesDirectionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListNetworkSecurityGroupSecurityRulesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListNetworkSecurityGroupSecurityRulesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListNetworkSecurityGroupSecurityRulesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListNetworkSecurityGroupSecurityRulesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListNetworkSecurityGroupSecurityRulesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListNetworkSecurityGroupSecurityRulesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -157,6 +157,17 @@ func GetListNetworkSecurityGroupSecurityRulesDirectionEnumStringValues() []strin
 	}
 }
 
+// GetMappingListNetworkSecurityGroupSecurityRulesDirectionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNetworkSecurityGroupSecurityRulesDirectionEnum(val string) (ListNetworkSecurityGroupSecurityRulesDirectionEnum, bool) {
+	mappingListNetworkSecurityGroupSecurityRulesDirectionEnumIgnoreCase := make(map[string]ListNetworkSecurityGroupSecurityRulesDirectionEnum)
+	for k, v := range mappingListNetworkSecurityGroupSecurityRulesDirectionEnum {
+		mappingListNetworkSecurityGroupSecurityRulesDirectionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNetworkSecurityGroupSecurityRulesDirectionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListNetworkSecurityGroupSecurityRulesSortByEnum Enum with underlying type: string
 type ListNetworkSecurityGroupSecurityRulesSortByEnum string
 
@@ -183,6 +194,17 @@ func GetListNetworkSecurityGroupSecurityRulesSortByEnumStringValues() []string {
 	return []string{
 		"TIMECREATED",
 	}
+}
+
+// GetMappingListNetworkSecurityGroupSecurityRulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNetworkSecurityGroupSecurityRulesSortByEnum(val string) (ListNetworkSecurityGroupSecurityRulesSortByEnum, bool) {
+	mappingListNetworkSecurityGroupSecurityRulesSortByEnumIgnoreCase := make(map[string]ListNetworkSecurityGroupSecurityRulesSortByEnum)
+	for k, v := range mappingListNetworkSecurityGroupSecurityRulesSortByEnum {
+		mappingListNetworkSecurityGroupSecurityRulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNetworkSecurityGroupSecurityRulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListNetworkSecurityGroupSecurityRulesSortOrderEnum Enum with underlying type: string
@@ -214,4 +236,15 @@ func GetListNetworkSecurityGroupSecurityRulesSortOrderEnumStringValues() []strin
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListNetworkSecurityGroupSecurityRulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNetworkSecurityGroupSecurityRulesSortOrderEnum(val string) (ListNetworkSecurityGroupSecurityRulesSortOrderEnum, bool) {
+	mappingListNetworkSecurityGroupSecurityRulesSortOrderEnumIgnoreCase := make(map[string]ListNetworkSecurityGroupSecurityRulesSortOrderEnum)
+	for k, v := range mappingListNetworkSecurityGroupSecurityRulesSortOrderEnum {
+		mappingListNetworkSecurityGroupSecurityRulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNetworkSecurityGroupSecurityRulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

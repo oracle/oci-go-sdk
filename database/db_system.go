@@ -183,17 +183,17 @@ func (m DbSystem) String() string {
 // Not recommended for calling this function directly
 func (m DbSystem) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDbSystemDatabaseEditionEnum[string(m.DatabaseEdition)]; !ok && m.DatabaseEdition != "" {
+	if _, ok := GetMappingDbSystemDatabaseEditionEnum(string(m.DatabaseEdition)); !ok && m.DatabaseEdition != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseEdition: %s. Supported values are: %s.", m.DatabaseEdition, strings.Join(GetDbSystemDatabaseEditionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDbSystemLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDbSystemLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDbSystemLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDbSystemDiskRedundancyEnum[string(m.DiskRedundancy)]; !ok && m.DiskRedundancy != "" {
+	if _, ok := GetMappingDbSystemDiskRedundancyEnum(string(m.DiskRedundancy)); !ok && m.DiskRedundancy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DiskRedundancy: %s. Supported values are: %s.", m.DiskRedundancy, strings.Join(GetDbSystemDiskRedundancyEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDbSystemLicenseModelEnum[string(m.LicenseModel)]; !ok && m.LicenseModel != "" {
+	if _, ok := GetMappingDbSystemLicenseModelEnum(string(m.LicenseModel)); !ok && m.LicenseModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LicenseModel: %s. Supported values are: %s.", m.LicenseModel, strings.Join(GetDbSystemLicenseModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -237,6 +237,17 @@ func GetDbSystemDatabaseEditionEnumStringValues() []string {
 		"ENTERPRISE_EDITION_HIGH_PERFORMANCE",
 		"ENTERPRISE_EDITION_EXTREME_PERFORMANCE",
 	}
+}
+
+// GetMappingDbSystemDatabaseEditionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbSystemDatabaseEditionEnum(val string) (DbSystemDatabaseEditionEnum, bool) {
+	mappingDbSystemDatabaseEditionEnumIgnoreCase := make(map[string]DbSystemDatabaseEditionEnum)
+	for k, v := range mappingDbSystemDatabaseEditionEnum {
+		mappingDbSystemDatabaseEditionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbSystemDatabaseEditionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // DbSystemLifecycleStateEnum Enum with underlying type: string
@@ -291,6 +302,17 @@ func GetDbSystemLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingDbSystemLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbSystemLifecycleStateEnum(val string) (DbSystemLifecycleStateEnum, bool) {
+	mappingDbSystemLifecycleStateEnumIgnoreCase := make(map[string]DbSystemLifecycleStateEnum)
+	for k, v := range mappingDbSystemLifecycleStateEnum {
+		mappingDbSystemLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbSystemLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DbSystemDiskRedundancyEnum Enum with underlying type: string
 type DbSystemDiskRedundancyEnum string
 
@@ -322,6 +344,17 @@ func GetDbSystemDiskRedundancyEnumStringValues() []string {
 	}
 }
 
+// GetMappingDbSystemDiskRedundancyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbSystemDiskRedundancyEnum(val string) (DbSystemDiskRedundancyEnum, bool) {
+	mappingDbSystemDiskRedundancyEnumIgnoreCase := make(map[string]DbSystemDiskRedundancyEnum)
+	for k, v := range mappingDbSystemDiskRedundancyEnum {
+		mappingDbSystemDiskRedundancyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbSystemDiskRedundancyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DbSystemLicenseModelEnum Enum with underlying type: string
 type DbSystemLicenseModelEnum string
 
@@ -351,4 +384,15 @@ func GetDbSystemLicenseModelEnumStringValues() []string {
 		"LICENSE_INCLUDED",
 		"BRING_YOUR_OWN_LICENSE",
 	}
+}
+
+// GetMappingDbSystemLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbSystemLicenseModelEnum(val string) (DbSystemLicenseModelEnum, bool) {
+	mappingDbSystemLicenseModelEnumIgnoreCase := make(map[string]DbSystemLicenseModelEnum)
+	for k, v := range mappingDbSystemLicenseModelEnum {
+		mappingDbSystemLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbSystemLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

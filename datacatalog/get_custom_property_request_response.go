@@ -70,7 +70,7 @@ func (request GetCustomPropertyRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetCustomPropertyRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetCustomPropertyFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetCustomPropertyFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetCustomPropertyFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -163,4 +163,15 @@ func GetGetCustomPropertyFieldsEnumStringValues() []string {
 		"updatedById",
 		"properties",
 	}
+}
+
+// GetMappingGetCustomPropertyFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetCustomPropertyFieldsEnum(val string) (GetCustomPropertyFieldsEnum, bool) {
+	mappingGetCustomPropertyFieldsEnumIgnoreCase := make(map[string]GetCustomPropertyFieldsEnum)
+	for k, v := range mappingGetCustomPropertyFieldsEnum {
+		mappingGetCustomPropertyFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetCustomPropertyFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

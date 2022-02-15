@@ -41,7 +41,7 @@ func (m Contact) String() string {
 func (m Contact) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingContactContactTypeEnum[string(m.ContactType)]; !ok && m.ContactType != "" {
+	if _, ok := GetMappingContactContactTypeEnum(string(m.ContactType)); !ok && m.ContactType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ContactType: %s. Supported values are: %s.", m.ContactType, strings.Join(GetContactContactTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -88,4 +88,15 @@ func GetContactContactTypeEnumStringValues() []string {
 		"ADMIN",
 		"MANAGER",
 	}
+}
+
+// GetMappingContactContactTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingContactContactTypeEnum(val string) (ContactContactTypeEnum, bool) {
+	mappingContactContactTypeEnumIgnoreCase := make(map[string]ContactContactTypeEnum)
+	for k, v := range mappingContactContactTypeEnum {
+		mappingContactContactTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingContactContactTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

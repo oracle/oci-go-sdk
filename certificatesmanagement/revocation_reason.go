@@ -9,6 +9,10 @@
 
 package certificatesmanagement
 
+import (
+	"strings"
+)
+
 // RevocationReasonEnum Enum with underlying type: string
 type RevocationReasonEnum string
 
@@ -56,4 +60,15 @@ func GetRevocationReasonEnumStringValues() []string {
 		"PRIVILEGE_WITHDRAWN",
 		"AA_COMPROMISE",
 	}
+}
+
+// GetMappingRevocationReasonEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRevocationReasonEnum(val string) (RevocationReasonEnum, bool) {
+	mappingRevocationReasonEnumIgnoreCase := make(map[string]RevocationReasonEnum)
+	for k, v := range mappingRevocationReasonEnum {
+		mappingRevocationReasonEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRevocationReasonEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

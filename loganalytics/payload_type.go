@@ -9,6 +9,10 @@
 
 package loganalytics
 
+import (
+	"strings"
+)
+
 // PayloadTypeEnum Enum with underlying type: string
 type PayloadTypeEnum string
 
@@ -41,4 +45,15 @@ func GetPayloadTypeEnumStringValues() []string {
 		"GZIP",
 		"ZIP",
 	}
+}
+
+// GetMappingPayloadTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPayloadTypeEnum(val string) (PayloadTypeEnum, bool) {
+	mappingPayloadTypeEnumIgnoreCase := make(map[string]PayloadTypeEnum)
+	for k, v := range mappingPayloadTypeEnum {
+		mappingPayloadTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPayloadTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

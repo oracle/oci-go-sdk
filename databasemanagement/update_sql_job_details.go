@@ -81,10 +81,10 @@ func (m UpdateSqlJobDetails) String() string {
 func (m UpdateSqlJobDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSqlJobSqlTypeEnum[string(m.SqlType)]; !ok && m.SqlType != "" {
+	if _, ok := GetMappingSqlJobSqlTypeEnum(string(m.SqlType)); !ok && m.SqlType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SqlType: %s. Supported values are: %s.", m.SqlType, strings.Join(GetSqlJobSqlTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSqlJobRoleEnum[string(m.Role)]; !ok && m.Role != "" {
+	if _, ok := GetMappingSqlJobRoleEnum(string(m.Role)); !ok && m.Role != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Role: %s. Supported values are: %s.", m.Role, strings.Join(GetSqlJobRoleEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

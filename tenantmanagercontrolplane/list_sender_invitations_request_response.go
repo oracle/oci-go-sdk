@@ -87,16 +87,16 @@ func (request ListSenderInvitationsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListSenderInvitationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSenderInvitationsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListSenderInvitationsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListSenderInvitationsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSenderInvitationsStatusEnum[string(request.Status)]; !ok && request.Status != "" {
+	if _, ok := GetMappingListSenderInvitationsStatusEnum(string(request.Status)); !ok && request.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", request.Status, strings.Join(GetListSenderInvitationsStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSenderInvitationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSenderInvitationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSenderInvitationsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSenderInvitationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSenderInvitationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSenderInvitationsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -176,6 +176,17 @@ func GetListSenderInvitationsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSenderInvitationsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSenderInvitationsLifecycleStateEnum(val string) (ListSenderInvitationsLifecycleStateEnum, bool) {
+	mappingListSenderInvitationsLifecycleStateEnumIgnoreCase := make(map[string]ListSenderInvitationsLifecycleStateEnum)
+	for k, v := range mappingListSenderInvitationsLifecycleStateEnum {
+		mappingListSenderInvitationsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSenderInvitationsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSenderInvitationsStatusEnum Enum with underlying type: string
 type ListSenderInvitationsStatusEnum string
 
@@ -216,6 +227,17 @@ func GetListSenderInvitationsStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSenderInvitationsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSenderInvitationsStatusEnum(val string) (ListSenderInvitationsStatusEnum, bool) {
+	mappingListSenderInvitationsStatusEnumIgnoreCase := make(map[string]ListSenderInvitationsStatusEnum)
+	for k, v := range mappingListSenderInvitationsStatusEnum {
+		mappingListSenderInvitationsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSenderInvitationsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSenderInvitationsSortByEnum Enum with underlying type: string
 type ListSenderInvitationsSortByEnum string
 
@@ -247,6 +269,17 @@ func GetListSenderInvitationsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSenderInvitationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSenderInvitationsSortByEnum(val string) (ListSenderInvitationsSortByEnum, bool) {
+	mappingListSenderInvitationsSortByEnumIgnoreCase := make(map[string]ListSenderInvitationsSortByEnum)
+	for k, v := range mappingListSenderInvitationsSortByEnum {
+		mappingListSenderInvitationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSenderInvitationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSenderInvitationsSortOrderEnum Enum with underlying type: string
 type ListSenderInvitationsSortOrderEnum string
 
@@ -276,4 +309,15 @@ func GetListSenderInvitationsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListSenderInvitationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSenderInvitationsSortOrderEnum(val string) (ListSenderInvitationsSortOrderEnum, bool) {
+	mappingListSenderInvitationsSortOrderEnumIgnoreCase := make(map[string]ListSenderInvitationsSortOrderEnum)
+	for k, v := range mappingListSenderInvitationsSortOrderEnum {
+		mappingListSenderInvitationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSenderInvitationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

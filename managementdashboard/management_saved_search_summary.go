@@ -103,10 +103,10 @@ func (m ManagementSavedSearchSummary) String() string {
 // Not recommended for calling this function directly
 func (m ManagementSavedSearchSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSavedSearchTypesEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingSavedSearchTypesEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetSavedSearchTypesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLifecycleStatesEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStatesEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStatesEnumStringValues(), ",")))
 	}
 

@@ -109,3 +109,14 @@ func GetCreateEntityShapeDetailsModelTypeEnumStringValues() []string {
 		"SQL_ENTITY",
 	}
 }
+
+// GetMappingCreateEntityShapeDetailsModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateEntityShapeDetailsModelTypeEnum(val string) (CreateEntityShapeDetailsModelTypeEnum, bool) {
+	mappingCreateEntityShapeDetailsModelTypeEnumIgnoreCase := make(map[string]CreateEntityShapeDetailsModelTypeEnum)
+	for k, v := range mappingCreateEntityShapeDetailsModelTypeEnum {
+		mappingCreateEntityShapeDetailsModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateEntityShapeDetailsModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

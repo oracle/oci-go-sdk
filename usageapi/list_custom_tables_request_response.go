@@ -77,10 +77,10 @@ func (request ListCustomTablesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListCustomTablesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListCustomTablesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListCustomTablesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListCustomTablesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListCustomTablesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListCustomTablesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListCustomTablesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -145,6 +145,17 @@ func GetListCustomTablesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListCustomTablesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCustomTablesSortByEnum(val string) (ListCustomTablesSortByEnum, bool) {
+	mappingListCustomTablesSortByEnumIgnoreCase := make(map[string]ListCustomTablesSortByEnum)
+	for k, v := range mappingListCustomTablesSortByEnum {
+		mappingListCustomTablesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCustomTablesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListCustomTablesSortOrderEnum Enum with underlying type: string
 type ListCustomTablesSortOrderEnum string
 
@@ -174,4 +185,15 @@ func GetListCustomTablesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListCustomTablesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCustomTablesSortOrderEnum(val string) (ListCustomTablesSortOrderEnum, bool) {
+	mappingListCustomTablesSortOrderEnumIgnoreCase := make(map[string]ListCustomTablesSortOrderEnum)
+	for k, v := range mappingListCustomTablesSortOrderEnum {
+		mappingListCustomTablesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCustomTablesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -50,10 +50,10 @@ func (m OrganizationTenancySummary) String() string {
 func (m OrganizationTenancySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingOrganizationTenancyLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingOrganizationTenancyLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetOrganizationTenancyLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingOrganizationTenancyRoleEnum[string(m.Role)]; !ok && m.Role != "" {
+	if _, ok := GetMappingOrganizationTenancyRoleEnum(string(m.Role)); !ok && m.Role != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Role: %s. Supported values are: %s.", m.Role, strings.Join(GetOrganizationTenancyRoleEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

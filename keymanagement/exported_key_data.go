@@ -53,7 +53,7 @@ func (m ExportedKeyData) String() string {
 // Not recommended for calling this function directly
 func (m ExportedKeyData) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingExportedKeyDataAlgorithmEnum[string(m.Algorithm)]; !ok && m.Algorithm != "" {
+	if _, ok := GetMappingExportedKeyDataAlgorithmEnum(string(m.Algorithm)); !ok && m.Algorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Algorithm: %s. Supported values are: %s.", m.Algorithm, strings.Join(GetExportedKeyDataAlgorithmEnumStringValues(), ",")))
 	}
 
@@ -92,4 +92,15 @@ func GetExportedKeyDataAlgorithmEnumStringValues() []string {
 		"RSA_OAEP_AES_SHA256",
 		"RSA_OAEP_SHA256",
 	}
+}
+
+// GetMappingExportedKeyDataAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExportedKeyDataAlgorithmEnum(val string) (ExportedKeyDataAlgorithmEnum, bool) {
+	mappingExportedKeyDataAlgorithmEnumIgnoreCase := make(map[string]ExportedKeyDataAlgorithmEnum)
+	for k, v := range mappingExportedKeyDataAlgorithmEnum {
+		mappingExportedKeyDataAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExportedKeyDataAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

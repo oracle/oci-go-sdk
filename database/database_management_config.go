@@ -38,11 +38,11 @@ func (m DatabaseManagementConfig) String() string {
 // Not recommended for calling this function directly
 func (m DatabaseManagementConfig) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDatabaseManagementConfigDatabaseManagementStatusEnum[string(m.DatabaseManagementStatus)]; !ok && m.DatabaseManagementStatus != "" {
+	if _, ok := GetMappingDatabaseManagementConfigDatabaseManagementStatusEnum(string(m.DatabaseManagementStatus)); !ok && m.DatabaseManagementStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseManagementStatus: %s. Supported values are: %s.", m.DatabaseManagementStatus, strings.Join(GetDatabaseManagementConfigDatabaseManagementStatusEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDatabaseManagementConfigLicenseModelEnum[string(m.LicenseModel)]; !ok && m.LicenseModel != "" {
+	if _, ok := GetMappingDatabaseManagementConfigLicenseModelEnum(string(m.LicenseModel)); !ok && m.LicenseModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LicenseModel: %s. Supported values are: %s.", m.LicenseModel, strings.Join(GetDatabaseManagementConfigLicenseModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -94,6 +94,17 @@ func GetDatabaseManagementConfigDatabaseManagementStatusEnumStringValues() []str
 	}
 }
 
+// GetMappingDatabaseManagementConfigDatabaseManagementStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseManagementConfigDatabaseManagementStatusEnum(val string) (DatabaseManagementConfigDatabaseManagementStatusEnum, bool) {
+	mappingDatabaseManagementConfigDatabaseManagementStatusEnumIgnoreCase := make(map[string]DatabaseManagementConfigDatabaseManagementStatusEnum)
+	for k, v := range mappingDatabaseManagementConfigDatabaseManagementStatusEnum {
+		mappingDatabaseManagementConfigDatabaseManagementStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseManagementConfigDatabaseManagementStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DatabaseManagementConfigLicenseModelEnum Enum with underlying type: string
 type DatabaseManagementConfigLicenseModelEnum string
 
@@ -123,4 +134,15 @@ func GetDatabaseManagementConfigLicenseModelEnumStringValues() []string {
 		"LICENSE_INCLUDED",
 		"BRING_YOUR_OWN_LICENSE",
 	}
+}
+
+// GetMappingDatabaseManagementConfigLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseManagementConfigLicenseModelEnum(val string) (DatabaseManagementConfigLicenseModelEnum, bool) {
+	mappingDatabaseManagementConfigLicenseModelEnumIgnoreCase := make(map[string]DatabaseManagementConfigLicenseModelEnum)
+	for k, v := range mappingDatabaseManagementConfigLicenseModelEnum {
+		mappingDatabaseManagementConfigLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseManagementConfigLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -44,7 +44,7 @@ func (m ExecutionLogPolicy) String() string {
 func (m ExecutionLogPolicy) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingExecutionLogPolicyLogLevelEnum[string(m.LogLevel)]; !ok && m.LogLevel != "" {
+	if _, ok := GetMappingExecutionLogPolicyLogLevelEnum(string(m.LogLevel)); !ok && m.LogLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LogLevel: %s. Supported values are: %s.", m.LogLevel, strings.Join(GetExecutionLogPolicyLogLevelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -85,4 +85,15 @@ func GetExecutionLogPolicyLogLevelEnumStringValues() []string {
 		"WARN",
 		"ERROR",
 	}
+}
+
+// GetMappingExecutionLogPolicyLogLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExecutionLogPolicyLogLevelEnum(val string) (ExecutionLogPolicyLogLevelEnum, bool) {
+	mappingExecutionLogPolicyLogLevelEnumIgnoreCase := make(map[string]ExecutionLogPolicyLogLevelEnum)
+	for k, v := range mappingExecutionLogPolicyLogLevelEnum {
+		mappingExecutionLogPolicyLogLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExecutionLogPolicyLogLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

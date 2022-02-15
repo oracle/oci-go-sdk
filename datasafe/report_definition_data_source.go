@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // ReportDefinitionDataSourceEnum Enum with underlying type: string
 type ReportDefinitionDataSourceEnum string
 
@@ -38,4 +42,15 @@ func GetReportDefinitionDataSourceEnumStringValues() []string {
 		"EVENTS",
 		"ALERTS",
 	}
+}
+
+// GetMappingReportDefinitionDataSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingReportDefinitionDataSourceEnum(val string) (ReportDefinitionDataSourceEnum, bool) {
+	mappingReportDefinitionDataSourceEnumIgnoreCase := make(map[string]ReportDefinitionDataSourceEnum)
+	for k, v := range mappingReportDefinitionDataSourceEnum {
+		mappingReportDefinitionDataSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingReportDefinitionDataSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

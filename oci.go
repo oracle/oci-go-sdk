@@ -289,12 +289,12 @@ The Retry behavior Precedence (Highest to lowest) is defined as below:-
 Default Retry Policy
 
 The OCI Go SDK defines a default retry policy that retries on the errors suitable for retries (see https://docs.oracle.com/en-us/iaas/Content/API/References/apierrors.htm),
-for a recommended period of time (up to 7 attempts spread out over at most approximately 1.5 minutes). The default retry policy is defined by : 
+for a recommended period of time (up to 7 attempts spread out over at most approximately 1.5 minutes). The default retry policy is defined by :
 
 Default Retry-able Errors
 Below is the list of default retry-able errors for which retry attempts should be made.
 
-The following errors should be retried (with backoff). 
+The following errors should be retried (with backoff).
 
 
 HTTP Code       Customer-facing Error Code
@@ -305,8 +305,8 @@ HTTP Code       Customer-facing Error Code
  502			Any Response Body
  503			Any Response Body
  504			Any Response Body
- 
-Apart from the above errors, retries should also be attempted in the following Client Side errors : 
+
+Apart from the above errors, retries should also be attempted in the following Client Side errors :
 
 1. HTTP Connection timeout
 2. Request Connection Errors
@@ -356,7 +356,7 @@ or setting default retry via environment varaible, which is a global switch for 
 
 	export OCI_SDK_DEFAULT_RETRY_ENABLED=TRUE
 
-Some services enable retry for operations by default, this can be overridden using any alternatives mentioned above.  To know which service operations have retries enabled by default, 
+Some services enable retry for operations by default, this can be overridden using any alternatives mentioned above.  To know which service operations have retries enabled by default,
 look at the operation's description in the SDK - it will say whether that it has retries enabled by default
 
 Eventual Consistency
@@ -418,7 +418,7 @@ Circuit Breaker Configuration Definitions
 
 Default Circuit Breaker Configuration
 
-1. Failure Rate Threshold - 80% - This means when 80% of the requests calculated for a time window of 120 seconds have failed then the circuit will transition from closed to open. 
+1. Failure Rate Threshold - 80% - This means when 80% of the requests calculated for a time window of 120 seconds have failed then the circuit will transition from closed to open.
 2. Minimum number of calls/ Volume threshold - A value of 10, for the above defined time window of 120 seconds.
 3. Reset Timeout - 30 seconds to wait before setting the breaker to halfOpen state, and trying the action again.
 4. Failure Exceptions - The failures for the circuit will only be recorded for the retryable/transient exceptions. This means only the following exceptions will be regarded as failure for the circuit.

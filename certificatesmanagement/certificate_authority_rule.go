@@ -102,3 +102,14 @@ func GetCertificateAuthorityRuleRuleTypeEnumStringValues() []string {
 		"CERTIFICATE_AUTHORITY_ISSUANCE_EXPIRY_RULE",
 	}
 }
+
+// GetMappingCertificateAuthorityRuleRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCertificateAuthorityRuleRuleTypeEnum(val string) (CertificateAuthorityRuleRuleTypeEnum, bool) {
+	mappingCertificateAuthorityRuleRuleTypeEnumIgnoreCase := make(map[string]CertificateAuthorityRuleRuleTypeEnum)
+	for k, v := range mappingCertificateAuthorityRuleRuleTypeEnum {
+		mappingCertificateAuthorityRuleRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCertificateAuthorityRuleRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

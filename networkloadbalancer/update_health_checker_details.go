@@ -70,7 +70,7 @@ func (m UpdateHealthCheckerDetails) String() string {
 func (m UpdateHealthCheckerDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingHealthCheckProtocolsEnum[string(m.Protocol)]; !ok && m.Protocol != "" {
+	if _, ok := GetMappingHealthCheckProtocolsEnum(string(m.Protocol)); !ok && m.Protocol != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Protocol: %s. Supported values are: %s.", m.Protocol, strings.Join(GetHealthCheckProtocolsEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

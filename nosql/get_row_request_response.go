@@ -75,7 +75,7 @@ func (request GetRowRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetRowRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetRowConsistencyEnum[string(request.Consistency)]; !ok && request.Consistency != "" {
+	if _, ok := GetMappingGetRowConsistencyEnum(string(request.Consistency)); !ok && request.Consistency != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Consistency: %s. Supported values are: %s.", request.Consistency, strings.Join(GetGetRowConsistencyEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -140,4 +140,15 @@ func GetGetRowConsistencyEnumStringValues() []string {
 		"EVENTUAL",
 		"ABSOLUTE",
 	}
+}
+
+// GetMappingGetRowConsistencyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetRowConsistencyEnum(val string) (GetRowConsistencyEnum, bool) {
+	mappingGetRowConsistencyEnumIgnoreCase := make(map[string]GetRowConsistencyEnum)
+	for k, v := range mappingGetRowConsistencyEnum {
+		mappingGetRowConsistencyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetRowConsistencyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -91,14 +91,14 @@ func (m ReportDefinition) String() string {
 // Not recommended for calling this function directly
 func (m ReportDefinition) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingReportDefinitionLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingReportDefinitionLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetReportDefinitionLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingReportDefinitionCategoryEnum[string(m.Category)]; !ok && m.Category != "" {
+	if _, ok := GetMappingReportDefinitionCategoryEnum(string(m.Category)); !ok && m.Category != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Category: %s. Supported values are: %s.", m.Category, strings.Join(GetReportDefinitionCategoryEnumStringValues(), ",")))
 	}
-	if _, ok := mappingReportDefinitionDataSourceEnum[string(m.DataSource)]; !ok && m.DataSource != "" {
+	if _, ok := GetMappingReportDefinitionDataSourceEnum(string(m.DataSource)); !ok && m.DataSource != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataSource: %s. Supported values are: %s.", m.DataSource, strings.Join(GetReportDefinitionDataSourceEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -139,4 +139,15 @@ func GetReportDefinitionCategoryEnumStringValues() []string {
 		"SUMMARY",
 		"ACTIVITY_AUDITING",
 	}
+}
+
+// GetMappingReportDefinitionCategoryEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingReportDefinitionCategoryEnum(val string) (ReportDefinitionCategoryEnum, bool) {
+	mappingReportDefinitionCategoryEnumIgnoreCase := make(map[string]ReportDefinitionCategoryEnum)
+	for k, v := range mappingReportDefinitionCategoryEnum {
+		mappingReportDefinitionCategoryEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingReportDefinitionCategoryEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

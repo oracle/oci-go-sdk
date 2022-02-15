@@ -9,6 +9,10 @@
 
 package databasemigration
 
+import (
+	"strings"
+)
+
 // ExtractPerformanceProfileEnum Enum with underlying type: string
 type ExtractPerformanceProfileEnum string
 
@@ -41,4 +45,15 @@ func GetExtractPerformanceProfileEnumStringValues() []string {
 		"MEDIUM",
 		"HIGH",
 	}
+}
+
+// GetMappingExtractPerformanceProfileEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExtractPerformanceProfileEnum(val string) (ExtractPerformanceProfileEnum, bool) {
+	mappingExtractPerformanceProfileEnumIgnoreCase := make(map[string]ExtractPerformanceProfileEnum)
+	for k, v := range mappingExtractPerformanceProfileEnum {
+		mappingExtractPerformanceProfileEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExtractPerformanceProfileEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

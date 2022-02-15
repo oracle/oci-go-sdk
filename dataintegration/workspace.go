@@ -87,7 +87,7 @@ func (m Workspace) String() string {
 func (m Workspace) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingWorkspaceLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingWorkspaceLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetWorkspaceLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -149,4 +149,15 @@ func GetWorkspaceLifecycleStateEnumStringValues() []string {
 		"STOPPING",
 		"STOPPED",
 	}
+}
+
+// GetMappingWorkspaceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkspaceLifecycleStateEnum(val string) (WorkspaceLifecycleStateEnum, bool) {
+	mappingWorkspaceLifecycleStateEnumIgnoreCase := make(map[string]WorkspaceLifecycleStateEnum)
+	for k, v := range mappingWorkspaceLifecycleStateEnum {
+		mappingWorkspaceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkspaceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

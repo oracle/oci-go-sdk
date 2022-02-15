@@ -101,7 +101,7 @@ func (m CreateMaskingPolicyDetails) String() string {
 func (m CreateMaskingPolicyDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingMaskingPolicyRecompileEnum[string(m.Recompile)]; !ok && m.Recompile != "" {
+	if _, ok := GetMappingMaskingPolicyRecompileEnum(string(m.Recompile)); !ok && m.Recompile != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Recompile: %s. Supported values are: %s.", m.Recompile, strings.Join(GetMaskingPolicyRecompileEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -119,3 +119,14 @@ func GetUnifiedAgentLoggingSourceSourceTypeEnumStringValues() []string {
 		"WINDOWS_EVENT_LOG",
 	}
 }
+
+// GetMappingUnifiedAgentLoggingSourceSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUnifiedAgentLoggingSourceSourceTypeEnum(val string) (UnifiedAgentLoggingSourceSourceTypeEnum, bool) {
+	mappingUnifiedAgentLoggingSourceSourceTypeEnumIgnoreCase := make(map[string]UnifiedAgentLoggingSourceSourceTypeEnum)
+	for k, v := range mappingUnifiedAgentLoggingSourceSourceTypeEnum {
+		mappingUnifiedAgentLoggingSourceSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUnifiedAgentLoggingSourceSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

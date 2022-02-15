@@ -85,7 +85,7 @@ func (m InvokeFunctionDeployStageExecutionProgress) String() string {
 func (m InvokeFunctionDeployStageExecutionProgress) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDeployStageExecutionProgressStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingDeployStageExecutionProgressStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetDeployStageExecutionProgressStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -38,7 +38,7 @@ func (m ConvertToPdbDetails) String() string {
 // Not recommended for calling this function directly
 func (m ConvertToPdbDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingConvertToPdbDetailsActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingConvertToPdbDetailsActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetConvertToPdbDetailsActionEnumStringValues(), ",")))
 	}
 
@@ -110,4 +110,15 @@ func GetConvertToPdbDetailsActionEnumStringValues() []string {
 		"SYNC",
 		"SYNC_ROLLBACK",
 	}
+}
+
+// GetMappingConvertToPdbDetailsActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConvertToPdbDetailsActionEnum(val string) (ConvertToPdbDetailsActionEnum, bool) {
+	mappingConvertToPdbDetailsActionEnumIgnoreCase := make(map[string]ConvertToPdbDetailsActionEnum)
+	for k, v := range mappingConvertToPdbDetailsActionEnum {
+		mappingConvertToPdbDetailsActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConvertToPdbDetailsActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

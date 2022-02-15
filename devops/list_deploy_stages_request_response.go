@@ -84,13 +84,13 @@ func (request ListDeployStagesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDeployStagesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDeployStageLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingDeployStageLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetDeployStageLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDeployStagesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDeployStagesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDeployStagesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDeployStagesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDeployStagesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDeployStagesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -155,6 +155,17 @@ func GetListDeployStagesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDeployStagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDeployStagesSortOrderEnum(val string) (ListDeployStagesSortOrderEnum, bool) {
+	mappingListDeployStagesSortOrderEnumIgnoreCase := make(map[string]ListDeployStagesSortOrderEnum)
+	for k, v := range mappingListDeployStagesSortOrderEnum {
+		mappingListDeployStagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDeployStagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDeployStagesSortByEnum Enum with underlying type: string
 type ListDeployStagesSortByEnum string
 
@@ -184,4 +195,15 @@ func GetListDeployStagesSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListDeployStagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDeployStagesSortByEnum(val string) (ListDeployStagesSortByEnum, bool) {
+	mappingListDeployStagesSortByEnumIgnoreCase := make(map[string]ListDeployStagesSortByEnum)
+	for k, v := range mappingListDeployStagesSortByEnum {
+		mappingListDeployStagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDeployStagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

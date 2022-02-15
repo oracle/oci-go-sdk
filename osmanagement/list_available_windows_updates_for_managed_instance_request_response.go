@@ -82,13 +82,13 @@ func (request ListAvailableWindowsUpdatesForManagedInstanceRequest) RetryPolicy(
 // Not recommended for calling this function directly
 func (request ListAvailableWindowsUpdatesForManagedInstanceRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAvailableWindowsUpdatesForManagedInstanceSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAvailableWindowsUpdatesForManagedInstanceSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAvailableWindowsUpdatesForManagedInstanceSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAvailableWindowsUpdatesForManagedInstanceSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAvailableWindowsUpdatesForManagedInstanceSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAvailableWindowsUpdatesForManagedInstanceSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAvailableWindowsUpdatesForManagedInstanceIsEligibleForInstallationEnum[string(request.IsEligibleForInstallation)]; !ok && request.IsEligibleForInstallation != "" {
+	if _, ok := GetMappingListAvailableWindowsUpdatesForManagedInstanceIsEligibleForInstallationEnum(string(request.IsEligibleForInstallation)); !ok && request.IsEligibleForInstallation != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IsEligibleForInstallation: %s. Supported values are: %s.", request.IsEligibleForInstallation, strings.Join(GetListAvailableWindowsUpdatesForManagedInstanceIsEligibleForInstallationEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -157,6 +157,17 @@ func GetListAvailableWindowsUpdatesForManagedInstanceSortOrderEnumStringValues()
 	}
 }
 
+// GetMappingListAvailableWindowsUpdatesForManagedInstanceSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAvailableWindowsUpdatesForManagedInstanceSortOrderEnum(val string) (ListAvailableWindowsUpdatesForManagedInstanceSortOrderEnum, bool) {
+	mappingListAvailableWindowsUpdatesForManagedInstanceSortOrderEnumIgnoreCase := make(map[string]ListAvailableWindowsUpdatesForManagedInstanceSortOrderEnum)
+	for k, v := range mappingListAvailableWindowsUpdatesForManagedInstanceSortOrderEnum {
+		mappingListAvailableWindowsUpdatesForManagedInstanceSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAvailableWindowsUpdatesForManagedInstanceSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAvailableWindowsUpdatesForManagedInstanceSortByEnum Enum with underlying type: string
 type ListAvailableWindowsUpdatesForManagedInstanceSortByEnum string
 
@@ -186,6 +197,17 @@ func GetListAvailableWindowsUpdatesForManagedInstanceSortByEnumStringValues() []
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListAvailableWindowsUpdatesForManagedInstanceSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAvailableWindowsUpdatesForManagedInstanceSortByEnum(val string) (ListAvailableWindowsUpdatesForManagedInstanceSortByEnum, bool) {
+	mappingListAvailableWindowsUpdatesForManagedInstanceSortByEnumIgnoreCase := make(map[string]ListAvailableWindowsUpdatesForManagedInstanceSortByEnum)
+	for k, v := range mappingListAvailableWindowsUpdatesForManagedInstanceSortByEnum {
+		mappingListAvailableWindowsUpdatesForManagedInstanceSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAvailableWindowsUpdatesForManagedInstanceSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListAvailableWindowsUpdatesForManagedInstanceIsEligibleForInstallationEnum Enum with underlying type: string
@@ -220,4 +242,15 @@ func GetListAvailableWindowsUpdatesForManagedInstanceIsEligibleForInstallationEn
 		"NOT_INSTALLABLE",
 		"UNKNOWN",
 	}
+}
+
+// GetMappingListAvailableWindowsUpdatesForManagedInstanceIsEligibleForInstallationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAvailableWindowsUpdatesForManagedInstanceIsEligibleForInstallationEnum(val string) (ListAvailableWindowsUpdatesForManagedInstanceIsEligibleForInstallationEnum, bool) {
+	mappingListAvailableWindowsUpdatesForManagedInstanceIsEligibleForInstallationEnumIgnoreCase := make(map[string]ListAvailableWindowsUpdatesForManagedInstanceIsEligibleForInstallationEnum)
+	for k, v := range mappingListAvailableWindowsUpdatesForManagedInstanceIsEligibleForInstallationEnum {
+		mappingListAvailableWindowsUpdatesForManagedInstanceIsEligibleForInstallationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAvailableWindowsUpdatesForManagedInstanceIsEligibleForInstallationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

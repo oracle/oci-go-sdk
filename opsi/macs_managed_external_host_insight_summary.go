@@ -154,14 +154,14 @@ func (m MacsManagedExternalHostInsightSummary) String() string {
 // Not recommended for calling this function directly
 func (m MacsManagedExternalHostInsightSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingMacsManagedExternalHostInsightSummaryPlatformTypeEnum[string(m.PlatformType)]; !ok && m.PlatformType != "" {
+	if _, ok := GetMappingMacsManagedExternalHostInsightSummaryPlatformTypeEnum(string(m.PlatformType)); !ok && m.PlatformType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", m.PlatformType, strings.Join(GetMacsManagedExternalHostInsightSummaryPlatformTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingResourceStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingResourceStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetResourceStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -216,4 +216,15 @@ func GetMacsManagedExternalHostInsightSummaryPlatformTypeEnumStringValues() []st
 		"SOLARIS",
 		"SUNOS",
 	}
+}
+
+// GetMappingMacsManagedExternalHostInsightSummaryPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMacsManagedExternalHostInsightSummaryPlatformTypeEnum(val string) (MacsManagedExternalHostInsightSummaryPlatformTypeEnum, bool) {
+	mappingMacsManagedExternalHostInsightSummaryPlatformTypeEnumIgnoreCase := make(map[string]MacsManagedExternalHostInsightSummaryPlatformTypeEnum)
+	for k, v := range mappingMacsManagedExternalHostInsightSummaryPlatformTypeEnum {
+		mappingMacsManagedExternalHostInsightSummaryPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMacsManagedExternalHostInsightSummaryPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package datascience
 
+import (
+	"strings"
+)
+
 // ModelDeploymentLifecycleStateEnum Enum with underlying type: string
 type ModelDeploymentLifecycleStateEnum string
 
@@ -56,4 +60,15 @@ func GetModelDeploymentLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"NEEDS_ATTENTION",
 	}
+}
+
+// GetMappingModelDeploymentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingModelDeploymentLifecycleStateEnum(val string) (ModelDeploymentLifecycleStateEnum, bool) {
+	mappingModelDeploymentLifecycleStateEnumIgnoreCase := make(map[string]ModelDeploymentLifecycleStateEnum)
+	for k, v := range mappingModelDeploymentLifecycleStateEnum {
+		mappingModelDeploymentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingModelDeploymentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -61,11 +61,11 @@ func (m SecretVersion) String() string {
 func (m SecretVersion) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSecretVersionContentTypeEnum[string(m.ContentType)]; !ok && m.ContentType != "" {
+	if _, ok := GetMappingSecretVersionContentTypeEnum(string(m.ContentType)); !ok && m.ContentType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ContentType: %s. Supported values are: %s.", m.ContentType, strings.Join(GetSecretVersionContentTypeEnumStringValues(), ",")))
 	}
 	for _, val := range m.Stages {
-		if _, ok := mappingSecretVersionStagesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingSecretVersionStagesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stages: %s. Supported values are: %s.", val, strings.Join(GetSecretVersionStagesEnumStringValues(), ",")))
 		}
 	}
@@ -102,6 +102,17 @@ func GetSecretVersionContentTypeEnumStringValues() []string {
 	return []string{
 		"BASE64",
 	}
+}
+
+// GetMappingSecretVersionContentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecretVersionContentTypeEnum(val string) (SecretVersionContentTypeEnum, bool) {
+	mappingSecretVersionContentTypeEnumIgnoreCase := make(map[string]SecretVersionContentTypeEnum)
+	for k, v := range mappingSecretVersionContentTypeEnum {
+		mappingSecretVersionContentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecretVersionContentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // SecretVersionStagesEnum Enum with underlying type: string
@@ -142,4 +153,15 @@ func GetSecretVersionStagesEnumStringValues() []string {
 		"PREVIOUS",
 		"DEPRECATED",
 	}
+}
+
+// GetMappingSecretVersionStagesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecretVersionStagesEnum(val string) (SecretVersionStagesEnum, bool) {
+	mappingSecretVersionStagesEnumIgnoreCase := make(map[string]SecretVersionStagesEnum)
+	for k, v := range mappingSecretVersionStagesEnum {
+		mappingSecretVersionStagesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecretVersionStagesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

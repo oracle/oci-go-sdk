@@ -93,19 +93,19 @@ func (request ListLookupsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListLookupsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListLookupsTypeEnum[string(request.Type)]; !ok && request.Type != "" {
+	if _, ok := GetMappingListLookupsTypeEnum(string(request.Type)); !ok && request.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", request.Type, strings.Join(GetListLookupsTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLookupsIsSystemEnum[string(request.IsSystem)]; !ok && request.IsSystem != "" {
+	if _, ok := GetMappingListLookupsIsSystemEnum(string(request.IsSystem)); !ok && request.IsSystem != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IsSystem: %s. Supported values are: %s.", request.IsSystem, strings.Join(GetListLookupsIsSystemEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLookupsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListLookupsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListLookupsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLookupsStatusEnum[string(request.Status)]; !ok && request.Status != "" {
+	if _, ok := GetMappingListLookupsStatusEnum(string(request.Status)); !ok && request.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", request.Status, strings.Join(GetListLookupsStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLookupsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListLookupsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListLookupsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -177,6 +177,17 @@ func GetListLookupsTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListLookupsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLookupsTypeEnum(val string) (ListLookupsTypeEnum, bool) {
+	mappingListLookupsTypeEnumIgnoreCase := make(map[string]ListLookupsTypeEnum)
+	for k, v := range mappingListLookupsTypeEnum {
+		mappingListLookupsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLookupsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLookupsIsSystemEnum Enum with underlying type: string
 type ListLookupsIsSystemEnum string
 
@@ -209,6 +220,17 @@ func GetListLookupsIsSystemEnumStringValues() []string {
 		"CUSTOM",
 		"BUILT_IN",
 	}
+}
+
+// GetMappingListLookupsIsSystemEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLookupsIsSystemEnum(val string) (ListLookupsIsSystemEnum, bool) {
+	mappingListLookupsIsSystemEnumIgnoreCase := make(map[string]ListLookupsIsSystemEnum)
+	for k, v := range mappingListLookupsIsSystemEnum {
+		mappingListLookupsIsSystemEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLookupsIsSystemEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListLookupsSortByEnum Enum with underlying type: string
@@ -251,6 +273,17 @@ func GetListLookupsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListLookupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLookupsSortByEnum(val string) (ListLookupsSortByEnum, bool) {
+	mappingListLookupsSortByEnumIgnoreCase := make(map[string]ListLookupsSortByEnum)
+	for k, v := range mappingListLookupsSortByEnum {
+		mappingListLookupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLookupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLookupsStatusEnum Enum with underlying type: string
 type ListLookupsStatusEnum string
 
@@ -288,6 +321,17 @@ func GetListLookupsStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingListLookupsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLookupsStatusEnum(val string) (ListLookupsStatusEnum, bool) {
+	mappingListLookupsStatusEnumIgnoreCase := make(map[string]ListLookupsStatusEnum)
+	for k, v := range mappingListLookupsStatusEnum {
+		mappingListLookupsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLookupsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLookupsSortOrderEnum Enum with underlying type: string
 type ListLookupsSortOrderEnum string
 
@@ -317,4 +361,15 @@ func GetListLookupsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListLookupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLookupsSortOrderEnum(val string) (ListLookupsSortOrderEnum, bool) {
+	mappingListLookupsSortOrderEnumIgnoreCase := make(map[string]ListLookupsSortOrderEnum)
+	for k, v := range mappingListLookupsSortOrderEnum {
+		mappingListLookupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLookupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

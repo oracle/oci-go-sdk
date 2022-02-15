@@ -129,7 +129,7 @@ func (m EndOperator) String() string {
 // Not recommended for calling this function directly
 func (m EndOperator) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingEndOperatorTriggerRuleEnum[string(m.TriggerRule)]; !ok && m.TriggerRule != "" {
+	if _, ok := GetMappingEndOperatorTriggerRuleEnum(string(m.TriggerRule)); !ok && m.TriggerRule != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TriggerRule: %s. Supported values are: %s.", m.TriggerRule, strings.Join(GetEndOperatorTriggerRuleEnumStringValues(), ",")))
 	}
 
@@ -185,4 +185,15 @@ func GetEndOperatorTriggerRuleEnumStringValues() []string {
 		"ALL_FAILED",
 		"ALL_COMPLETE",
 	}
+}
+
+// GetMappingEndOperatorTriggerRuleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEndOperatorTriggerRuleEnum(val string) (EndOperatorTriggerRuleEnum, bool) {
+	mappingEndOperatorTriggerRuleEnumIgnoreCase := make(map[string]EndOperatorTriggerRuleEnum)
+	for k, v := range mappingEndOperatorTriggerRuleEnum {
+		mappingEndOperatorTriggerRuleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEndOperatorTriggerRuleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

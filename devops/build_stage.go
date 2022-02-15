@@ -154,11 +154,11 @@ func (m BuildStage) String() string {
 // Not recommended for calling this function directly
 func (m BuildStage) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBuildStageImageEnum[string(m.Image)]; !ok && m.Image != "" {
+	if _, ok := GetMappingBuildStageImageEnum(string(m.Image)); !ok && m.Image != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Image: %s. Supported values are: %s.", m.Image, strings.Join(GetBuildStageImageEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingBuildPipelineStageLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingBuildPipelineStageLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetBuildPipelineStageLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -207,4 +207,15 @@ func GetBuildStageImageEnumStringValues() []string {
 	return []string{
 		"OL7_X86_64_STANDARD_10",
 	}
+}
+
+// GetMappingBuildStageImageEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBuildStageImageEnum(val string) (BuildStageImageEnum, bool) {
+	mappingBuildStageImageEnumIgnoreCase := make(map[string]BuildStageImageEnum)
+	for k, v := range mappingBuildStageImageEnum {
+		mappingBuildStageImageEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBuildStageImageEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

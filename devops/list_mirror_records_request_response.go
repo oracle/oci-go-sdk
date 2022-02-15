@@ -69,7 +69,7 @@ func (request ListMirrorRecordsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListMirrorRecordsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListMirrorRecordsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListMirrorRecordsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListMirrorRecordsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -132,4 +132,15 @@ func GetListMirrorRecordsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListMirrorRecordsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMirrorRecordsSortOrderEnum(val string) (ListMirrorRecordsSortOrderEnum, bool) {
+	mappingListMirrorRecordsSortOrderEnumIgnoreCase := make(map[string]ListMirrorRecordsSortOrderEnum)
+	for k, v := range mappingListMirrorRecordsSortOrderEnum {
+		mappingListMirrorRecordsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMirrorRecordsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

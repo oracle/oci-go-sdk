@@ -69,7 +69,7 @@ func (request GetFolderRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetFolderRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Projection {
-		if _, ok := mappingGetFolderProjectionEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetFolderProjectionEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Projection: %s. Supported values are: %s.", val, strings.Join(GetGetFolderProjectionEnumStringValues(), ",")))
 		}
 	}
@@ -132,4 +132,15 @@ func GetGetFolderProjectionEnumStringValues() []string {
 	return []string{
 		"CHILD_COUNT_STATISTICS",
 	}
+}
+
+// GetMappingGetFolderProjectionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetFolderProjectionEnum(val string) (GetFolderProjectionEnum, bool) {
+	mappingGetFolderProjectionEnumIgnoreCase := make(map[string]GetFolderProjectionEnum)
+	for k, v := range mappingGetFolderProjectionEnum {
+		mappingGetFolderProjectionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetFolderProjectionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -64,7 +64,7 @@ func (m CreateCloudAutonomousVmClusterDetails) String() string {
 func (m CreateCloudAutonomousVmClusterDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnum[string(m.LicenseModel)]; !ok && m.LicenseModel != "" {
+	if _, ok := GetMappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnum(string(m.LicenseModel)); !ok && m.LicenseModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LicenseModel: %s. Supported values are: %s.", m.LicenseModel, strings.Join(GetCreateCloudAutonomousVmClusterDetailsLicenseModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -102,4 +102,15 @@ func GetCreateCloudAutonomousVmClusterDetailsLicenseModelEnumStringValues() []st
 		"LICENSE_INCLUDED",
 		"BRING_YOUR_OWN_LICENSE",
 	}
+}
+
+// GetMappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnum(val string) (CreateCloudAutonomousVmClusterDetailsLicenseModelEnum, bool) {
+	mappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnumIgnoreCase := make(map[string]CreateCloudAutonomousVmClusterDetailsLicenseModelEnum)
+	for k, v := range mappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnum {
+		mappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

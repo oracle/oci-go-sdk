@@ -77,7 +77,7 @@ func (request GetTsigKeyRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetTsigKeyRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetTsigKeyScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingGetTsigKeyScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetGetTsigKeyScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -149,4 +149,15 @@ func GetGetTsigKeyScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingGetTsigKeyScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetTsigKeyScopeEnum(val string) (GetTsigKeyScopeEnum, bool) {
+	mappingGetTsigKeyScopeEnumIgnoreCase := make(map[string]GetTsigKeyScopeEnum)
+	for k, v := range mappingGetTsigKeyScopeEnum {
+		mappingGetTsigKeyScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetTsigKeyScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

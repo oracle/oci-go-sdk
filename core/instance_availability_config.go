@@ -44,7 +44,7 @@ func (m InstanceAvailabilityConfig) String() string {
 func (m InstanceAvailabilityConfig) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingInstanceAvailabilityConfigRecoveryActionEnum[string(m.RecoveryAction)]; !ok && m.RecoveryAction != "" {
+	if _, ok := GetMappingInstanceAvailabilityConfigRecoveryActionEnum(string(m.RecoveryAction)); !ok && m.RecoveryAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RecoveryAction: %s. Supported values are: %s.", m.RecoveryAction, strings.Join(GetInstanceAvailabilityConfigRecoveryActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -82,4 +82,15 @@ func GetInstanceAvailabilityConfigRecoveryActionEnumStringValues() []string {
 		"RESTORE_INSTANCE",
 		"STOP_INSTANCE",
 	}
+}
+
+// GetMappingInstanceAvailabilityConfigRecoveryActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstanceAvailabilityConfigRecoveryActionEnum(val string) (InstanceAvailabilityConfigRecoveryActionEnum, bool) {
+	mappingInstanceAvailabilityConfigRecoveryActionEnumIgnoreCase := make(map[string]InstanceAvailabilityConfigRecoveryActionEnum)
+	for k, v := range mappingInstanceAvailabilityConfigRecoveryActionEnum {
+		mappingInstanceAvailabilityConfigRecoveryActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstanceAvailabilityConfigRecoveryActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

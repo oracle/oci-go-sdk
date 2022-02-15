@@ -49,10 +49,10 @@ func (m UpdateOceInstanceDetails) String() string {
 func (m UpdateOceInstanceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLicenseTypeEnum[string(m.InstanceLicenseType)]; !ok && m.InstanceLicenseType != "" {
+	if _, ok := GetMappingLicenseTypeEnum(string(m.InstanceLicenseType)); !ok && m.InstanceLicenseType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InstanceLicenseType: %s. Supported values are: %s.", m.InstanceLicenseType, strings.Join(GetLicenseTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUpdateOceInstanceDetailsInstanceUsageTypeEnum[string(m.InstanceUsageType)]; !ok && m.InstanceUsageType != "" {
+	if _, ok := GetMappingUpdateOceInstanceDetailsInstanceUsageTypeEnum(string(m.InstanceUsageType)); !ok && m.InstanceUsageType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InstanceUsageType: %s. Supported values are: %s.", m.InstanceUsageType, strings.Join(GetUpdateOceInstanceDetailsInstanceUsageTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -90,4 +90,15 @@ func GetUpdateOceInstanceDetailsInstanceUsageTypeEnumStringValues() []string {
 		"PRIMARY",
 		"NONPRIMARY",
 	}
+}
+
+// GetMappingUpdateOceInstanceDetailsInstanceUsageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateOceInstanceDetailsInstanceUsageTypeEnum(val string) (UpdateOceInstanceDetailsInstanceUsageTypeEnum, bool) {
+	mappingUpdateOceInstanceDetailsInstanceUsageTypeEnumIgnoreCase := make(map[string]UpdateOceInstanceDetailsInstanceUsageTypeEnum)
+	for k, v := range mappingUpdateOceInstanceDetailsInstanceUsageTypeEnum {
+		mappingUpdateOceInstanceDetailsInstanceUsageTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateOceInstanceDetailsInstanceUsageTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

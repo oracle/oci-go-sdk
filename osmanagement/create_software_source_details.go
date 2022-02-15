@@ -64,11 +64,11 @@ func (m CreateSoftwareSourceDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateSoftwareSourceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingArchTypesEnum[string(m.ArchType)]; !ok && m.ArchType != "" {
+	if _, ok := GetMappingArchTypesEnum(string(m.ArchType)); !ok && m.ArchType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ArchType: %s. Supported values are: %s.", m.ArchType, strings.Join(GetArchTypesEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingChecksumTypesEnum[string(m.ChecksumType)]; !ok && m.ChecksumType != "" {
+	if _, ok := GetMappingChecksumTypesEnum(string(m.ChecksumType)); !ok && m.ChecksumType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ChecksumType: %s. Supported values are: %s.", m.ChecksumType, strings.Join(GetChecksumTypesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

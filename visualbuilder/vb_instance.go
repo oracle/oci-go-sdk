@@ -79,11 +79,11 @@ func (m VbInstance) String() string {
 // Not recommended for calling this function directly
 func (m VbInstance) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVbInstanceLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingVbInstanceLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetVbInstanceLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingVbInstanceConsumptionModelEnum[string(m.ConsumptionModel)]; !ok && m.ConsumptionModel != "" {
+	if _, ok := GetMappingVbInstanceConsumptionModelEnum(string(m.ConsumptionModel)); !ok && m.ConsumptionModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ConsumptionModel: %s. Supported values are: %s.", m.ConsumptionModel, strings.Join(GetVbInstanceConsumptionModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -138,6 +138,17 @@ func GetVbInstanceLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingVbInstanceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVbInstanceLifecycleStateEnum(val string) (VbInstanceLifecycleStateEnum, bool) {
+	mappingVbInstanceLifecycleStateEnumIgnoreCase := make(map[string]VbInstanceLifecycleStateEnum)
+	for k, v := range mappingVbInstanceLifecycleStateEnum {
+		mappingVbInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVbInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // VbInstanceConsumptionModelEnum Enum with underlying type: string
 type VbInstanceConsumptionModelEnum string
 
@@ -170,4 +181,15 @@ func GetVbInstanceConsumptionModelEnumStringValues() []string {
 		"GOV",
 		"VB4SAAS",
 	}
+}
+
+// GetMappingVbInstanceConsumptionModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVbInstanceConsumptionModelEnum(val string) (VbInstanceConsumptionModelEnum, bool) {
+	mappingVbInstanceConsumptionModelEnumIgnoreCase := make(map[string]VbInstanceConsumptionModelEnum)
+	for k, v := range mappingVbInstanceConsumptionModelEnum {
+		mappingVbInstanceConsumptionModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVbInstanceConsumptionModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

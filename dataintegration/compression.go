@@ -32,7 +32,7 @@ func (m Compression) String() string {
 func (m Compression) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCompressionCodecEnum[string(m.Codec)]; !ok && m.Codec != "" {
+	if _, ok := GetMappingCompressionCodecEnum(string(m.Codec)); !ok && m.Codec != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Codec: %s. Supported values are: %s.", m.Codec, strings.Join(GetCompressionCodecEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -85,4 +85,15 @@ func GetCompressionCodecEnumStringValues() []string {
 		"LZ4",
 		"SNAPPY",
 	}
+}
+
+// GetMappingCompressionCodecEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCompressionCodecEnum(val string) (CompressionCodecEnum, bool) {
+	mappingCompressionCodecEnumIgnoreCase := make(map[string]CompressionCodecEnum)
+	for k, v := range mappingCompressionCodecEnum {
+		mappingCompressionCodecEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCompressionCodecEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -90,7 +90,7 @@ func (m Resolver) String() string {
 // Not recommended for calling this function directly
 func (m Resolver) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingResolverLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingResolverLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetResolverLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -224,4 +224,15 @@ func GetResolverLifecycleStateEnumStringValues() []string {
 		"FAILED",
 		"UPDATING",
 	}
+}
+
+// GetMappingResolverLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResolverLifecycleStateEnum(val string) (ResolverLifecycleStateEnum, bool) {
+	mappingResolverLifecycleStateEnumIgnoreCase := make(map[string]ResolverLifecycleStateEnum)
+	for k, v := range mappingResolverLifecycleStateEnum {
+		mappingResolverLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResolverLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

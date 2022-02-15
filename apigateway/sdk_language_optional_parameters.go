@@ -57,7 +57,7 @@ func (m SdkLanguageOptionalParameters) String() string {
 func (m SdkLanguageOptionalParameters) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSdkLanguageOptionalParametersInputTypeEnum[string(m.InputType)]; !ok && m.InputType != "" {
+	if _, ok := GetMappingSdkLanguageOptionalParametersInputTypeEnum(string(m.InputType)); !ok && m.InputType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InputType: %s. Supported values are: %s.", m.InputType, strings.Join(GetSdkLanguageOptionalParametersInputTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -101,4 +101,15 @@ func GetSdkLanguageOptionalParametersInputTypeEnumStringValues() []string {
 		"URI",
 		"STRING",
 	}
+}
+
+// GetMappingSdkLanguageOptionalParametersInputTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSdkLanguageOptionalParametersInputTypeEnum(val string) (SdkLanguageOptionalParametersInputTypeEnum, bool) {
+	mappingSdkLanguageOptionalParametersInputTypeEnumIgnoreCase := make(map[string]SdkLanguageOptionalParametersInputTypeEnum)
+	for k, v := range mappingSdkLanguageOptionalParametersInputTypeEnum {
+		mappingSdkLanguageOptionalParametersInputTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSdkLanguageOptionalParametersInputTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

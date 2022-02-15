@@ -111,16 +111,16 @@ func (request ListMaskingPoliciesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListMaskingPoliciesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListMaskingPoliciesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListMaskingPoliciesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListMaskingPoliciesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListMaskingPoliciesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListMaskingPoliciesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListMaskingPoliciesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListMaskingPoliciesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListMaskingPoliciesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListMaskingPoliciesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListMaskingPoliciesAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListMaskingPoliciesAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListMaskingPoliciesAccessLevelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -205,6 +205,17 @@ func GetListMaskingPoliciesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListMaskingPoliciesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMaskingPoliciesLifecycleStateEnum(val string) (ListMaskingPoliciesLifecycleStateEnum, bool) {
+	mappingListMaskingPoliciesLifecycleStateEnumIgnoreCase := make(map[string]ListMaskingPoliciesLifecycleStateEnum)
+	for k, v := range mappingListMaskingPoliciesLifecycleStateEnum {
+		mappingListMaskingPoliciesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMaskingPoliciesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListMaskingPoliciesSortOrderEnum Enum with underlying type: string
 type ListMaskingPoliciesSortOrderEnum string
 
@@ -234,6 +245,17 @@ func GetListMaskingPoliciesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListMaskingPoliciesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMaskingPoliciesSortOrderEnum(val string) (ListMaskingPoliciesSortOrderEnum, bool) {
+	mappingListMaskingPoliciesSortOrderEnumIgnoreCase := make(map[string]ListMaskingPoliciesSortOrderEnum)
+	for k, v := range mappingListMaskingPoliciesSortOrderEnum {
+		mappingListMaskingPoliciesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMaskingPoliciesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListMaskingPoliciesSortByEnum Enum with underlying type: string
@@ -267,6 +289,17 @@ func GetListMaskingPoliciesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListMaskingPoliciesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMaskingPoliciesSortByEnum(val string) (ListMaskingPoliciesSortByEnum, bool) {
+	mappingListMaskingPoliciesSortByEnumIgnoreCase := make(map[string]ListMaskingPoliciesSortByEnum)
+	for k, v := range mappingListMaskingPoliciesSortByEnum {
+		mappingListMaskingPoliciesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMaskingPoliciesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListMaskingPoliciesAccessLevelEnum Enum with underlying type: string
 type ListMaskingPoliciesAccessLevelEnum string
 
@@ -296,4 +329,15 @@ func GetListMaskingPoliciesAccessLevelEnumStringValues() []string {
 		"RESTRICTED",
 		"ACCESSIBLE",
 	}
+}
+
+// GetMappingListMaskingPoliciesAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMaskingPoliciesAccessLevelEnum(val string) (ListMaskingPoliciesAccessLevelEnum, bool) {
+	mappingListMaskingPoliciesAccessLevelEnumIgnoreCase := make(map[string]ListMaskingPoliciesAccessLevelEnum)
+	for k, v := range mappingListMaskingPoliciesAccessLevelEnum {
+		mappingListMaskingPoliciesAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMaskingPoliciesAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

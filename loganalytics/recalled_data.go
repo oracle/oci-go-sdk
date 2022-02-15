@@ -47,7 +47,7 @@ func (m RecalledData) String() string {
 // Not recommended for calling this function directly
 func (m RecalledData) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRecalledDataStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingRecalledDataStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetRecalledDataStatusEnumStringValues(), ",")))
 	}
 
@@ -86,4 +86,15 @@ func GetRecalledDataStatusEnumStringValues() []string {
 		"RECALLED",
 		"PENDING",
 	}
+}
+
+// GetMappingRecalledDataStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRecalledDataStatusEnum(val string) (RecalledDataStatusEnum, bool) {
+	mappingRecalledDataStatusEnumIgnoreCase := make(map[string]RecalledDataStatusEnum)
+	for k, v := range mappingRecalledDataStatusEnum {
+		mappingRecalledDataStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRecalledDataStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

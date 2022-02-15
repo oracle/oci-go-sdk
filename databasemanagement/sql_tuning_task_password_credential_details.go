@@ -51,7 +51,7 @@ func (m SqlTuningTaskPasswordCredentialDetails) String() string {
 func (m SqlTuningTaskPasswordCredentialDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSqlTuningTaskCredentialDetailsRoleEnum[string(m.Role)]; !ok && m.Role != "" {
+	if _, ok := GetMappingSqlTuningTaskCredentialDetailsRoleEnum(string(m.Role)); !ok && m.Role != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Role: %s. Supported values are: %s.", m.Role, strings.Join(GetSqlTuningTaskCredentialDetailsRoleEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

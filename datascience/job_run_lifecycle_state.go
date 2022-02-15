@@ -9,6 +9,10 @@
 
 package datascience
 
+import (
+	"strings"
+)
+
 // JobRunLifecycleStateEnum Enum with underlying type: string
 type JobRunLifecycleStateEnum string
 
@@ -56,4 +60,15 @@ func GetJobRunLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"NEEDS_ATTENTION",
 	}
+}
+
+// GetMappingJobRunLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobRunLifecycleStateEnum(val string) (JobRunLifecycleStateEnum, bool) {
+	mappingJobRunLifecycleStateEnumIgnoreCase := make(map[string]JobRunLifecycleStateEnum)
+	for k, v := range mappingJobRunLifecycleStateEnum {
+		mappingJobRunLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobRunLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

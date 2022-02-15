@@ -102,3 +102,14 @@ func GetCaCertificateCertificateTypeEnumStringValues() []string {
 		"PEM",
 	}
 }
+
+// GetMappingCaCertificateCertificateTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCaCertificateCertificateTypeEnum(val string) (CaCertificateCertificateTypeEnum, bool) {
+	mappingCaCertificateCertificateTypeEnumIgnoreCase := make(map[string]CaCertificateCertificateTypeEnum)
+	for k, v := range mappingCaCertificateCertificateTypeEnum {
+		mappingCaCertificateCertificateTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCaCertificateCertificateTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

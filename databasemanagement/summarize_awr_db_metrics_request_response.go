@@ -108,10 +108,10 @@ func (request SummarizeAwrDbMetricsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request SummarizeAwrDbMetricsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeAwrDbMetricsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeAwrDbMetricsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeAwrDbMetricsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeAwrDbMetricsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeAwrDbMetricsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeAwrDbMetricsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -179,6 +179,17 @@ func GetSummarizeAwrDbMetricsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeAwrDbMetricsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeAwrDbMetricsSortByEnum(val string) (SummarizeAwrDbMetricsSortByEnum, bool) {
+	mappingSummarizeAwrDbMetricsSortByEnumIgnoreCase := make(map[string]SummarizeAwrDbMetricsSortByEnum)
+	for k, v := range mappingSummarizeAwrDbMetricsSortByEnum {
+		mappingSummarizeAwrDbMetricsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeAwrDbMetricsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeAwrDbMetricsSortOrderEnum Enum with underlying type: string
 type SummarizeAwrDbMetricsSortOrderEnum string
 
@@ -208,4 +219,15 @@ func GetSummarizeAwrDbMetricsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingSummarizeAwrDbMetricsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeAwrDbMetricsSortOrderEnum(val string) (SummarizeAwrDbMetricsSortOrderEnum, bool) {
+	mappingSummarizeAwrDbMetricsSortOrderEnumIgnoreCase := make(map[string]SummarizeAwrDbMetricsSortOrderEnum)
+	for k, v := range mappingSummarizeAwrDbMetricsSortOrderEnum {
+		mappingSummarizeAwrDbMetricsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeAwrDbMetricsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

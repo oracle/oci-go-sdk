@@ -116,3 +116,14 @@ func GetAbstractReadAttributeModelTypeEnumStringValues() []string {
 		"BICC_READ_ATTRIBUTE",
 	}
 }
+
+// GetMappingAbstractReadAttributeModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAbstractReadAttributeModelTypeEnum(val string) (AbstractReadAttributeModelTypeEnum, bool) {
+	mappingAbstractReadAttributeModelTypeEnumIgnoreCase := make(map[string]AbstractReadAttributeModelTypeEnum)
+	for k, v := range mappingAbstractReadAttributeModelTypeEnum {
+		mappingAbstractReadAttributeModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAbstractReadAttributeModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

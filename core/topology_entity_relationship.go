@@ -140,3 +140,14 @@ func GetTopologyEntityRelationshipTypeEnumStringValues() []string {
 		"ROUTES_TO",
 	}
 }
+
+// GetMappingTopologyEntityRelationshipTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTopologyEntityRelationshipTypeEnum(val string) (TopologyEntityRelationshipTypeEnum, bool) {
+	mappingTopologyEntityRelationshipTypeEnumIgnoreCase := make(map[string]TopologyEntityRelationshipTypeEnum)
+	for k, v := range mappingTopologyEntityRelationshipTypeEnum {
+		mappingTopologyEntityRelationshipTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTopologyEntityRelationshipTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

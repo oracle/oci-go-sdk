@@ -50,11 +50,11 @@ func (m PatchHistoryEntry) String() string {
 // Not recommended for calling this function directly
 func (m PatchHistoryEntry) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPatchHistoryEntryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingPatchHistoryEntryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetPatchHistoryEntryLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingPatchHistoryEntryActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingPatchHistoryEntryActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetPatchHistoryEntryActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -94,6 +94,17 @@ func GetPatchHistoryEntryActionEnumStringValues() []string {
 	}
 }
 
+// GetMappingPatchHistoryEntryActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPatchHistoryEntryActionEnum(val string) (PatchHistoryEntryActionEnum, bool) {
+	mappingPatchHistoryEntryActionEnumIgnoreCase := make(map[string]PatchHistoryEntryActionEnum)
+	for k, v := range mappingPatchHistoryEntryActionEnum {
+		mappingPatchHistoryEntryActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPatchHistoryEntryActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // PatchHistoryEntryLifecycleStateEnum Enum with underlying type: string
 type PatchHistoryEntryLifecycleStateEnum string
 
@@ -126,4 +137,15 @@ func GetPatchHistoryEntryLifecycleStateEnumStringValues() []string {
 		"SUCCEEDED",
 		"FAILED",
 	}
+}
+
+// GetMappingPatchHistoryEntryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPatchHistoryEntryLifecycleStateEnum(val string) (PatchHistoryEntryLifecycleStateEnum, bool) {
+	mappingPatchHistoryEntryLifecycleStateEnumIgnoreCase := make(map[string]PatchHistoryEntryLifecycleStateEnum)
+	for k, v := range mappingPatchHistoryEntryLifecycleStateEnum {
+		mappingPatchHistoryEntryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPatchHistoryEntryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -99,7 +99,7 @@ func (m updatecertificateconfigdetails) String() string {
 func (m updatecertificateconfigdetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateCertificateConfigDetailsStageEnum[string(m.Stage)]; !ok && m.Stage != "" {
+	if _, ok := GetMappingUpdateCertificateConfigDetailsStageEnum(string(m.Stage)); !ok && m.Stage != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stage: %s. Supported values are: %s.", m.Stage, strings.Join(GetUpdateCertificateConfigDetailsStageEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -137,4 +137,15 @@ func GetUpdateCertificateConfigDetailsStageEnumStringValues() []string {
 		"CURRENT",
 		"PENDING",
 	}
+}
+
+// GetMappingUpdateCertificateConfigDetailsStageEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateCertificateConfigDetailsStageEnum(val string) (UpdateCertificateConfigDetailsStageEnum, bool) {
+	mappingUpdateCertificateConfigDetailsStageEnumIgnoreCase := make(map[string]UpdateCertificateConfigDetailsStageEnum)
+	for k, v := range mappingUpdateCertificateConfigDetailsStageEnum {
+		mappingUpdateCertificateConfigDetailsStageEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateCertificateConfigDetailsStageEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,6 +12,10 @@
 
 package applicationmigration
 
+import (
+	"strings"
+)
+
 // MigrationTypesEnum Enum with underlying type: string
 type MigrationTypesEnum string
 
@@ -53,4 +57,15 @@ func GetMigrationTypesEnumStringValues() []string {
 		"ICS",
 		"PCS",
 	}
+}
+
+// GetMappingMigrationTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMigrationTypesEnum(val string) (MigrationTypesEnum, bool) {
+	mappingMigrationTypesEnumIgnoreCase := make(map[string]MigrationTypesEnum)
+	for k, v := range mappingMigrationTypesEnum {
+		mappingMigrationTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMigrationTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

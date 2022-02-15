@@ -53,7 +53,7 @@ func (m Index) String() string {
 func (m Index) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingIndexLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingIndexLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetIndexLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -103,4 +103,15 @@ func GetIndexLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingIndexLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingIndexLifecycleStateEnum(val string) (IndexLifecycleStateEnum, bool) {
+	mappingIndexLifecycleStateEnumIgnoreCase := make(map[string]IndexLifecycleStateEnum)
+	for k, v := range mappingIndexLifecycleStateEnum {
+		mappingIndexLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingIndexLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

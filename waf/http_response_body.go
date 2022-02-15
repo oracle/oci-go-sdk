@@ -103,3 +103,14 @@ func GetHttpResponseBodyTypeEnumStringValues() []string {
 		"STATIC_TEXT",
 	}
 }
+
+// GetMappingHttpResponseBodyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHttpResponseBodyTypeEnum(val string) (HttpResponseBodyTypeEnum, bool) {
+	mappingHttpResponseBodyTypeEnumIgnoreCase := make(map[string]HttpResponseBodyTypeEnum)
+	for k, v := range mappingHttpResponseBodyTypeEnum {
+		mappingHttpResponseBodyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHttpResponseBodyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

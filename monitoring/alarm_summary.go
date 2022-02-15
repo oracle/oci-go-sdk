@@ -104,10 +104,10 @@ func (m AlarmSummary) String() string {
 // Not recommended for calling this function directly
 func (m AlarmSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAlarmSummarySeverityEnum[string(m.Severity)]; !ok && m.Severity != "" {
+	if _, ok := GetMappingAlarmSummarySeverityEnum(string(m.Severity)); !ok && m.Severity != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Severity: %s. Supported values are: %s.", m.Severity, strings.Join(GetAlarmSummarySeverityEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAlarmLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAlarmLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAlarmLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -152,4 +152,15 @@ func GetAlarmSummarySeverityEnumStringValues() []string {
 		"WARNING",
 		"INFO",
 	}
+}
+
+// GetMappingAlarmSummarySeverityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAlarmSummarySeverityEnum(val string) (AlarmSummarySeverityEnum, bool) {
+	mappingAlarmSummarySeverityEnumIgnoreCase := make(map[string]AlarmSummarySeverityEnum)
+	for k, v := range mappingAlarmSummarySeverityEnum {
+		mappingAlarmSummarySeverityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAlarmSummarySeverityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -40,7 +40,7 @@ func (m PatchDetails) String() string {
 func (m PatchDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingPatchDetailsActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingPatchDetailsActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetPatchDetailsActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -78,4 +78,15 @@ func GetPatchDetailsActionEnumStringValues() []string {
 		"APPLY",
 		"PRECHECK",
 	}
+}
+
+// GetMappingPatchDetailsActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPatchDetailsActionEnum(val string) (PatchDetailsActionEnum, bool) {
+	mappingPatchDetailsActionEnumIgnoreCase := make(map[string]PatchDetailsActionEnum)
+	for k, v := range mappingPatchDetailsActionEnum {
+		mappingPatchDetailsActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPatchDetailsActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

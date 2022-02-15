@@ -116,3 +116,14 @@ func GetTargetSelectedKindEnumStringValues() []string {
 		"TARGETIDS",
 	}
 }
+
+// GetMappingTargetSelectedKindEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTargetSelectedKindEnum(val string) (TargetSelectedKindEnum, bool) {
+	mappingTargetSelectedKindEnumIgnoreCase := make(map[string]TargetSelectedKindEnum)
+	for k, v := range mappingTargetSelectedKindEnum {
+		mappingTargetSelectedKindEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTargetSelectedKindEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

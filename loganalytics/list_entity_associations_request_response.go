@@ -79,13 +79,13 @@ func (request ListEntityAssociationsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListEntityAssociationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListEntityAssociationsDirectOrAllAssociationsEnum[string(request.DirectOrAllAssociations)]; !ok && request.DirectOrAllAssociations != "" {
+	if _, ok := GetMappingListEntityAssociationsDirectOrAllAssociationsEnum(string(request.DirectOrAllAssociations)); !ok && request.DirectOrAllAssociations != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DirectOrAllAssociations: %s. Supported values are: %s.", request.DirectOrAllAssociations, strings.Join(GetListEntityAssociationsDirectOrAllAssociationsEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListEntityAssociationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListEntityAssociationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListEntityAssociationsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListEntityAssociationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListEntityAssociationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListEntityAssociationsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -152,6 +152,17 @@ func GetListEntityAssociationsDirectOrAllAssociationsEnumStringValues() []string
 	}
 }
 
+// GetMappingListEntityAssociationsDirectOrAllAssociationsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEntityAssociationsDirectOrAllAssociationsEnum(val string) (ListEntityAssociationsDirectOrAllAssociationsEnum, bool) {
+	mappingListEntityAssociationsDirectOrAllAssociationsEnumIgnoreCase := make(map[string]ListEntityAssociationsDirectOrAllAssociationsEnum)
+	for k, v := range mappingListEntityAssociationsDirectOrAllAssociationsEnum {
+		mappingListEntityAssociationsDirectOrAllAssociationsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEntityAssociationsDirectOrAllAssociationsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListEntityAssociationsSortOrderEnum Enum with underlying type: string
 type ListEntityAssociationsSortOrderEnum string
 
@@ -181,6 +192,17 @@ func GetListEntityAssociationsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListEntityAssociationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEntityAssociationsSortOrderEnum(val string) (ListEntityAssociationsSortOrderEnum, bool) {
+	mappingListEntityAssociationsSortOrderEnumIgnoreCase := make(map[string]ListEntityAssociationsSortOrderEnum)
+	for k, v := range mappingListEntityAssociationsSortOrderEnum {
+		mappingListEntityAssociationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEntityAssociationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListEntityAssociationsSortByEnum Enum with underlying type: string
@@ -215,4 +237,15 @@ func GetListEntityAssociationsSortByEnumStringValues() []string {
 		"timeUpdated",
 		"name",
 	}
+}
+
+// GetMappingListEntityAssociationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEntityAssociationsSortByEnum(val string) (ListEntityAssociationsSortByEnum, bool) {
+	mappingListEntityAssociationsSortByEnumIgnoreCase := make(map[string]ListEntityAssociationsSortByEnum)
+	for k, v := range mappingListEntityAssociationsSortByEnum {
+		mappingListEntityAssociationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEntityAssociationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

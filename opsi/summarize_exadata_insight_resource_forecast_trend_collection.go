@@ -51,13 +51,13 @@ func (m SummarizeExadataInsightResourceForecastTrendCollection) String() string 
 // Not recommended for calling this function directly
 func (m SummarizeExadataInsightResourceForecastTrendCollection) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceTypeEnum[string(m.ExadataResourceType)]; !ok && m.ExadataResourceType != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceTypeEnum(string(m.ExadataResourceType)); !ok && m.ExadataResourceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExadataResourceType: %s. Supported values are: %s.", m.ExadataResourceType, strings.Join(GetSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceMetricEnum[string(m.ExadataResourceMetric)]; !ok && m.ExadataResourceMetric != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceMetricEnum(string(m.ExadataResourceMetric)); !ok && m.ExadataResourceMetric != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExadataResourceMetric: %s. Supported values are: %s.", m.ExadataResourceMetric, strings.Join(GetSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceMetricEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUsageUnitEnum[string(m.UsageUnit)]; !ok && m.UsageUnit != "" {
+	if _, ok := GetMappingUsageUnitEnum(string(m.UsageUnit)); !ok && m.UsageUnit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UsageUnit: %s. Supported values are: %s.", m.UsageUnit, strings.Join(GetUsageUnitEnumStringValues(), ",")))
 	}
 
@@ -104,6 +104,17 @@ func GetSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceTyp
 	}
 }
 
+// GetMappingSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceTypeEnum(val string) (SummarizeExadataInsightResourceForecastTrendCollectionExadataResourceTypeEnum, bool) {
+	mappingSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceTypeEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceForecastTrendCollectionExadataResourceTypeEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceTypeEnum {
+		mappingSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeExadataInsightResourceForecastTrendCollectionExadataResourceMetricEnum Enum with underlying type: string
 type SummarizeExadataInsightResourceForecastTrendCollectionExadataResourceMetricEnum string
 
@@ -145,4 +156,15 @@ func GetSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceMet
 		"IOPS",
 		"THROUGHPUT",
 	}
+}
+
+// GetMappingSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceMetricEnum(val string) (SummarizeExadataInsightResourceForecastTrendCollectionExadataResourceMetricEnum, bool) {
+	mappingSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceMetricEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceForecastTrendCollectionExadataResourceMetricEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceMetricEnum {
+		mappingSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceForecastTrendCollectionExadataResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

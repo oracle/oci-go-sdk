@@ -46,7 +46,7 @@ func (m HeatWaveClusterMemoryEstimate) String() string {
 // Not recommended for calling this function directly
 func (m HeatWaveClusterMemoryEstimate) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingHeatWaveClusterMemoryEstimateStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingHeatWaveClusterMemoryEstimateStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetHeatWaveClusterMemoryEstimateStatusEnumStringValues(), ",")))
 	}
 

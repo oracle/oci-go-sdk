@@ -82,7 +82,7 @@ func (request GetAwrReportRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetAwrReportRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetAwrReportReportFormatEnum[string(request.ReportFormat)]; !ok && request.ReportFormat != "" {
+	if _, ok := GetMappingGetAwrReportReportFormatEnum(string(request.ReportFormat)); !ok && request.ReportFormat != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ReportFormat: %s. Supported values are: %s.", request.ReportFormat, strings.Join(GetGetAwrReportReportFormatEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -143,4 +143,15 @@ func GetGetAwrReportReportFormatEnumStringValues() []string {
 		"HTML",
 		"TEXT",
 	}
+}
+
+// GetMappingGetAwrReportReportFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetAwrReportReportFormatEnum(val string) (GetAwrReportReportFormatEnum, bool) {
+	mappingGetAwrReportReportFormatEnumIgnoreCase := make(map[string]GetAwrReportReportFormatEnum)
+	for k, v := range mappingGetAwrReportReportFormatEnum {
+		mappingGetAwrReportReportFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetAwrReportReportFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -41,7 +41,7 @@ func (m InstanceAgentPlugin) String() string {
 // Not recommended for calling this function directly
 func (m InstanceAgentPlugin) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingInstanceAgentPluginStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingInstanceAgentPluginStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetInstanceAgentPluginStatusEnumStringValues(), ",")))
 	}
 
@@ -86,4 +86,15 @@ func GetInstanceAgentPluginStatusEnumStringValues() []string {
 		"NOT_SUPPORTED",
 		"INVALID",
 	}
+}
+
+// GetMappingInstanceAgentPluginStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstanceAgentPluginStatusEnum(val string) (InstanceAgentPluginStatusEnum, bool) {
+	mappingInstanceAgentPluginStatusEnumIgnoreCase := make(map[string]InstanceAgentPluginStatusEnum)
+	for k, v := range mappingInstanceAgentPluginStatusEnum {
+		mappingInstanceAgentPluginStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstanceAgentPluginStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

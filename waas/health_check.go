@@ -68,11 +68,11 @@ func (m HealthCheck) String() string {
 func (m HealthCheck) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingHealthCheckMethodEnum[string(m.Method)]; !ok && m.Method != "" {
+	if _, ok := GetMappingHealthCheckMethodEnum(string(m.Method)); !ok && m.Method != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Method: %s. Supported values are: %s.", m.Method, strings.Join(GetHealthCheckMethodEnumStringValues(), ",")))
 	}
 	for _, val := range m.ExpectedResponseCodeGroup {
-		if _, ok := mappingHealthCheckExpectedResponseCodeGroupEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingHealthCheckExpectedResponseCodeGroupEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExpectedResponseCodeGroup: %s. Supported values are: %s.", val, strings.Join(GetHealthCheckExpectedResponseCodeGroupEnumStringValues(), ",")))
 		}
 	}
@@ -117,6 +117,17 @@ func GetHealthCheckMethodEnumStringValues() []string {
 	}
 }
 
+// GetMappingHealthCheckMethodEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHealthCheckMethodEnum(val string) (HealthCheckMethodEnum, bool) {
+	mappingHealthCheckMethodEnumIgnoreCase := make(map[string]HealthCheckMethodEnum)
+	for k, v := range mappingHealthCheckMethodEnum {
+		mappingHealthCheckMethodEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHealthCheckMethodEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // HealthCheckExpectedResponseCodeGroupEnum Enum with underlying type: string
 type HealthCheckExpectedResponseCodeGroupEnum string
 
@@ -152,4 +163,15 @@ func GetHealthCheckExpectedResponseCodeGroupEnumStringValues() []string {
 		"4XX",
 		"5XX",
 	}
+}
+
+// GetMappingHealthCheckExpectedResponseCodeGroupEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHealthCheckExpectedResponseCodeGroupEnum(val string) (HealthCheckExpectedResponseCodeGroupEnum, bool) {
+	mappingHealthCheckExpectedResponseCodeGroupEnumIgnoreCase := make(map[string]HealthCheckExpectedResponseCodeGroupEnum)
+	for k, v := range mappingHealthCheckExpectedResponseCodeGroupEnum {
+		mappingHealthCheckExpectedResponseCodeGroupEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHealthCheckExpectedResponseCodeGroupEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

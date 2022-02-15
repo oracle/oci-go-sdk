@@ -67,7 +67,7 @@ func (request DetectLanguageEntitiesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request DetectLanguageEntitiesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDetectLanguageEntitiesModelVersionEnum[string(request.ModelVersion)]; !ok && request.ModelVersion != "" {
+	if _, ok := GetMappingDetectLanguageEntitiesModelVersionEnum(string(request.ModelVersion)); !ok && request.ModelVersion != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ModelVersion: %s. Supported values are: %s.", request.ModelVersion, strings.Join(GetDetectLanguageEntitiesModelVersionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -128,4 +128,15 @@ func GetDetectLanguageEntitiesModelVersionEnumStringValues() []string {
 		"V2.1",
 		"V1.1",
 	}
+}
+
+// GetMappingDetectLanguageEntitiesModelVersionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDetectLanguageEntitiesModelVersionEnum(val string) (DetectLanguageEntitiesModelVersionEnum, bool) {
+	mappingDetectLanguageEntitiesModelVersionEnumIgnoreCase := make(map[string]DetectLanguageEntitiesModelVersionEnum)
+	for k, v := range mappingDetectLanguageEntitiesModelVersionEnum {
+		mappingDetectLanguageEntitiesModelVersionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDetectLanguageEntitiesModelVersionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

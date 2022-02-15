@@ -98,10 +98,10 @@ func (request ListTaskRunsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListTaskRunsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListTaskRunsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListTaskRunsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListTaskRunsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTaskRunsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListTaskRunsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListTaskRunsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -173,6 +173,17 @@ func GetListTaskRunsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTaskRunsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTaskRunsSortOrderEnum(val string) (ListTaskRunsSortOrderEnum, bool) {
+	mappingListTaskRunsSortOrderEnumIgnoreCase := make(map[string]ListTaskRunsSortOrderEnum)
+	for k, v := range mappingListTaskRunsSortOrderEnum {
+		mappingListTaskRunsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTaskRunsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTaskRunsSortByEnum Enum with underlying type: string
 type ListTaskRunsSortByEnum string
 
@@ -202,4 +213,15 @@ func GetListTaskRunsSortByEnumStringValues() []string {
 		"TIME_CREATED",
 		"DISPLAY_NAME",
 	}
+}
+
+// GetMappingListTaskRunsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTaskRunsSortByEnum(val string) (ListTaskRunsSortByEnum, bool) {
+	mappingListTaskRunsSortByEnumIgnoreCase := make(map[string]ListTaskRunsSortByEnum)
+	for k, v := range mappingListTaskRunsSortByEnum {
+		mappingListTaskRunsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTaskRunsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -130,3 +130,14 @@ func GetAbstractFormatAttributeModelTypeEnumStringValues() []string {
 		"AVRO_FORMAT",
 	}
 }
+
+// GetMappingAbstractFormatAttributeModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAbstractFormatAttributeModelTypeEnum(val string) (AbstractFormatAttributeModelTypeEnum, bool) {
+	mappingAbstractFormatAttributeModelTypeEnumIgnoreCase := make(map[string]AbstractFormatAttributeModelTypeEnum)
+	for k, v := range mappingAbstractFormatAttributeModelTypeEnum {
+		mappingAbstractFormatAttributeModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAbstractFormatAttributeModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

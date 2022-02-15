@@ -69,10 +69,10 @@ func (m UpdateLaunchOptions) String() string {
 func (m UpdateLaunchOptions) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateLaunchOptionsBootVolumeTypeEnum[string(m.BootVolumeType)]; !ok && m.BootVolumeType != "" {
+	if _, ok := GetMappingUpdateLaunchOptionsBootVolumeTypeEnum(string(m.BootVolumeType)); !ok && m.BootVolumeType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BootVolumeType: %s. Supported values are: %s.", m.BootVolumeType, strings.Join(GetUpdateLaunchOptionsBootVolumeTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUpdateLaunchOptionsNetworkTypeEnum[string(m.NetworkType)]; !ok && m.NetworkType != "" {
+	if _, ok := GetMappingUpdateLaunchOptionsNetworkTypeEnum(string(m.NetworkType)); !ok && m.NetworkType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NetworkType: %s. Supported values are: %s.", m.NetworkType, strings.Join(GetUpdateLaunchOptionsNetworkTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -112,6 +112,17 @@ func GetUpdateLaunchOptionsBootVolumeTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingUpdateLaunchOptionsBootVolumeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateLaunchOptionsBootVolumeTypeEnum(val string) (UpdateLaunchOptionsBootVolumeTypeEnum, bool) {
+	mappingUpdateLaunchOptionsBootVolumeTypeEnumIgnoreCase := make(map[string]UpdateLaunchOptionsBootVolumeTypeEnum)
+	for k, v := range mappingUpdateLaunchOptionsBootVolumeTypeEnum {
+		mappingUpdateLaunchOptionsBootVolumeTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateLaunchOptionsBootVolumeTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UpdateLaunchOptionsNetworkTypeEnum Enum with underlying type: string
 type UpdateLaunchOptionsNetworkTypeEnum string
 
@@ -141,4 +152,15 @@ func GetUpdateLaunchOptionsNetworkTypeEnumStringValues() []string {
 		"VFIO",
 		"PARAVIRTUALIZED",
 	}
+}
+
+// GetMappingUpdateLaunchOptionsNetworkTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateLaunchOptionsNetworkTypeEnum(val string) (UpdateLaunchOptionsNetworkTypeEnum, bool) {
+	mappingUpdateLaunchOptionsNetworkTypeEnumIgnoreCase := make(map[string]UpdateLaunchOptionsNetworkTypeEnum)
+	for k, v := range mappingUpdateLaunchOptionsNetworkTypeEnum {
+		mappingUpdateLaunchOptionsNetworkTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateLaunchOptionsNetworkTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

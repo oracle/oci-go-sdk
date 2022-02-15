@@ -83,7 +83,7 @@ func (m NatGateway) String() string {
 // Not recommended for calling this function directly
 func (m NatGateway) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingNatGatewayLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingNatGatewayLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetNatGatewayLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -128,4 +128,15 @@ func GetNatGatewayLifecycleStateEnumStringValues() []string {
 		"TERMINATING",
 		"TERMINATED",
 	}
+}
+
+// GetMappingNatGatewayLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingNatGatewayLifecycleStateEnum(val string) (NatGatewayLifecycleStateEnum, bool) {
+	mappingNatGatewayLifecycleStateEnumIgnoreCase := make(map[string]NatGatewayLifecycleStateEnum)
+	for k, v := range mappingNatGatewayLifecycleStateEnum {
+		mappingNatGatewayLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingNatGatewayLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package loganalytics
 
+import (
+	"strings"
+)
+
 // EmBridgeLatestImportProcessingStatusEnum Enum with underlying type: string
 type EmBridgeLatestImportProcessingStatusEnum string
 
@@ -47,4 +51,15 @@ func GetEmBridgeLatestImportProcessingStatusEnumStringValues() []string {
 		"FAILED",
 		"PARTIAL_SUCCESS",
 	}
+}
+
+// GetMappingEmBridgeLatestImportProcessingStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEmBridgeLatestImportProcessingStatusEnum(val string) (EmBridgeLatestImportProcessingStatusEnum, bool) {
+	mappingEmBridgeLatestImportProcessingStatusEnumIgnoreCase := make(map[string]EmBridgeLatestImportProcessingStatusEnum)
+	for k, v := range mappingEmBridgeLatestImportProcessingStatusEnum {
+		mappingEmBridgeLatestImportProcessingStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEmBridgeLatestImportProcessingStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package certificatesmanagement
 
+import (
+	"strings"
+)
+
 // CertificateAuthorityLifecycleStateEnum Enum with underlying type: string
 type CertificateAuthorityLifecycleStateEnum string
 
@@ -59,4 +63,15 @@ func GetCertificateAuthorityLifecycleStateEnumStringValues() []string {
 		"CANCELLING_DELETION",
 		"FAILED",
 	}
+}
+
+// GetMappingCertificateAuthorityLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCertificateAuthorityLifecycleStateEnum(val string) (CertificateAuthorityLifecycleStateEnum, bool) {
+	mappingCertificateAuthorityLifecycleStateEnumIgnoreCase := make(map[string]CertificateAuthorityLifecycleStateEnum)
+	for k, v := range mappingCertificateAuthorityLifecycleStateEnum {
+		mappingCertificateAuthorityLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCertificateAuthorityLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

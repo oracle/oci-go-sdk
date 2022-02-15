@@ -160,7 +160,7 @@ func (m TaskFromSqlTaskDetails) String() string {
 // Not recommended for calling this function directly
 func (m TaskFromSqlTaskDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTaskFromSqlTaskDetailsSqlScriptTypeEnum[string(m.SqlScriptType)]; !ok && m.SqlScriptType != "" {
+	if _, ok := GetMappingTaskFromSqlTaskDetailsSqlScriptTypeEnum(string(m.SqlScriptType)); !ok && m.SqlScriptType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SqlScriptType: %s. Supported values are: %s.", m.SqlScriptType, strings.Join(GetTaskFromSqlTaskDetailsSqlScriptTypeEnumStringValues(), ",")))
 	}
 
@@ -213,4 +213,15 @@ func GetTaskFromSqlTaskDetailsSqlScriptTypeEnumStringValues() []string {
 		"STORED_PROCEDURE",
 		"SQL_CODE",
 	}
+}
+
+// GetMappingTaskFromSqlTaskDetailsSqlScriptTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskFromSqlTaskDetailsSqlScriptTypeEnum(val string) (TaskFromSqlTaskDetailsSqlScriptTypeEnum, bool) {
+	mappingTaskFromSqlTaskDetailsSqlScriptTypeEnumIgnoreCase := make(map[string]TaskFromSqlTaskDetailsSqlScriptTypeEnum)
+	for k, v := range mappingTaskFromSqlTaskDetailsSqlScriptTypeEnum {
+		mappingTaskFromSqlTaskDetailsSqlScriptTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskFromSqlTaskDetailsSqlScriptTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

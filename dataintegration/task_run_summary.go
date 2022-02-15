@@ -87,13 +87,13 @@ func (m TaskRunSummary) String() string {
 func (m TaskRunSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTaskRunSummaryStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingTaskRunSummaryStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetTaskRunSummaryStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTaskRunSummaryTaskTypeEnum[string(m.TaskType)]; !ok && m.TaskType != "" {
+	if _, ok := GetMappingTaskRunSummaryTaskTypeEnum(string(m.TaskType)); !ok && m.TaskType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TaskType: %s. Supported values are: %s.", m.TaskType, strings.Join(GetTaskRunSummaryTaskTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTaskRunSummaryReRunTypeEnum[string(m.ReRunType)]; !ok && m.ReRunType != "" {
+	if _, ok := GetMappingTaskRunSummaryReRunTypeEnum(string(m.ReRunType)); !ok && m.ReRunType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ReRunType: %s. Supported values are: %s.", m.ReRunType, strings.Join(GetTaskRunSummaryReRunTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -148,6 +148,17 @@ func GetTaskRunSummaryStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingTaskRunSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskRunSummaryStatusEnum(val string) (TaskRunSummaryStatusEnum, bool) {
+	mappingTaskRunSummaryStatusEnumIgnoreCase := make(map[string]TaskRunSummaryStatusEnum)
+	for k, v := range mappingTaskRunSummaryStatusEnum {
+		mappingTaskRunSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskRunSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TaskRunSummaryTaskTypeEnum Enum with underlying type: string
 type TaskRunSummaryTaskTypeEnum string
 
@@ -191,6 +202,17 @@ func GetTaskRunSummaryTaskTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingTaskRunSummaryTaskTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskRunSummaryTaskTypeEnum(val string) (TaskRunSummaryTaskTypeEnum, bool) {
+	mappingTaskRunSummaryTaskTypeEnumIgnoreCase := make(map[string]TaskRunSummaryTaskTypeEnum)
+	for k, v := range mappingTaskRunSummaryTaskTypeEnum {
+		mappingTaskRunSummaryTaskTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskRunSummaryTaskTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TaskRunSummaryReRunTypeEnum Enum with underlying type: string
 type TaskRunSummaryReRunTypeEnum string
 
@@ -223,4 +245,15 @@ func GetTaskRunSummaryReRunTypeEnumStringValues() []string {
 		"FAILED",
 		"STEP",
 	}
+}
+
+// GetMappingTaskRunSummaryReRunTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskRunSummaryReRunTypeEnum(val string) (TaskRunSummaryReRunTypeEnum, bool) {
+	mappingTaskRunSummaryReRunTypeEnumIgnoreCase := make(map[string]TaskRunSummaryReRunTypeEnum)
+	for k, v := range mappingTaskRunSummaryReRunTypeEnum {
+		mappingTaskRunSummaryReRunTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskRunSummaryReRunTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

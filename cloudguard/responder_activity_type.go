@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // ResponderActivityTypeEnum Enum with underlying type: string
 type ResponderActivityTypeEnum string
 
@@ -38,4 +42,15 @@ func GetResponderActivityTypeEnumStringValues() []string {
 		"STARTED",
 		"COMPLETED",
 	}
+}
+
+// GetMappingResponderActivityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResponderActivityTypeEnum(val string) (ResponderActivityTypeEnum, bool) {
+	mappingResponderActivityTypeEnumIgnoreCase := make(map[string]ResponderActivityTypeEnum)
+	for k, v := range mappingResponderActivityTypeEnum {
+		mappingResponderActivityTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResponderActivityTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

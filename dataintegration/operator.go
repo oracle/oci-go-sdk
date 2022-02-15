@@ -335,3 +335,14 @@ func GetOperatorModelTypeEnumStringValues() []string {
 		"LOOKUP_OPERATOR",
 	}
 }
+
+// GetMappingOperatorModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOperatorModelTypeEnum(val string) (OperatorModelTypeEnum, bool) {
+	mappingOperatorModelTypeEnumIgnoreCase := make(map[string]OperatorModelTypeEnum)
+	for k, v := range mappingOperatorModelTypeEnum {
+		mappingOperatorModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOperatorModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

@@ -65,10 +65,10 @@ func (m CreateExternalBackupJobDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateExternalBackupJobDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreateExternalBackupJobDetailsDatabaseModeEnum[string(m.DatabaseMode)]; !ok && m.DatabaseMode != "" {
+	if _, ok := GetMappingCreateExternalBackupJobDetailsDatabaseModeEnum(string(m.DatabaseMode)); !ok && m.DatabaseMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseMode: %s. Supported values are: %s.", m.DatabaseMode, strings.Join(GetCreateExternalBackupJobDetailsDatabaseModeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateExternalBackupJobDetailsDatabaseEditionEnum[string(m.DatabaseEdition)]; !ok && m.DatabaseEdition != "" {
+	if _, ok := GetMappingCreateExternalBackupJobDetailsDatabaseEditionEnum(string(m.DatabaseEdition)); !ok && m.DatabaseEdition != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseEdition: %s. Supported values are: %s.", m.DatabaseEdition, strings.Join(GetCreateExternalBackupJobDetailsDatabaseEditionEnumStringValues(), ",")))
 	}
 
@@ -109,6 +109,17 @@ func GetCreateExternalBackupJobDetailsDatabaseModeEnumStringValues() []string {
 	}
 }
 
+// GetMappingCreateExternalBackupJobDetailsDatabaseModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateExternalBackupJobDetailsDatabaseModeEnum(val string) (CreateExternalBackupJobDetailsDatabaseModeEnum, bool) {
+	mappingCreateExternalBackupJobDetailsDatabaseModeEnumIgnoreCase := make(map[string]CreateExternalBackupJobDetailsDatabaseModeEnum)
+	for k, v := range mappingCreateExternalBackupJobDetailsDatabaseModeEnum {
+		mappingCreateExternalBackupJobDetailsDatabaseModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateExternalBackupJobDetailsDatabaseModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CreateExternalBackupJobDetailsDatabaseEditionEnum Enum with underlying type: string
 type CreateExternalBackupJobDetailsDatabaseEditionEnum string
 
@@ -144,4 +155,15 @@ func GetCreateExternalBackupJobDetailsDatabaseEditionEnumStringValues() []string
 		"ENTERPRISE_EDITION_HIGH_PERFORMANCE",
 		"ENTERPRISE_EDITION_EXTREME_PERFORMANCE",
 	}
+}
+
+// GetMappingCreateExternalBackupJobDetailsDatabaseEditionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateExternalBackupJobDetailsDatabaseEditionEnum(val string) (CreateExternalBackupJobDetailsDatabaseEditionEnum, bool) {
+	mappingCreateExternalBackupJobDetailsDatabaseEditionEnumIgnoreCase := make(map[string]CreateExternalBackupJobDetailsDatabaseEditionEnum)
+	for k, v := range mappingCreateExternalBackupJobDetailsDatabaseEditionEnum {
+		mappingCreateExternalBackupJobDetailsDatabaseEditionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateExternalBackupJobDetailsDatabaseEditionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

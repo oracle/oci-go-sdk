@@ -110,24 +110,24 @@ func (request SummarizeJreUsageRequest) RetryPolicy() *common.RetryPolicy {
 func (request SummarizeJreUsageRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingSummarizeJreUsageFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingSummarizeJreUsageFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetSummarizeJreUsageFieldsEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingSummarizeJreUsageSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeJreUsageSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeJreUsageSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeJreUsageSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeJreUsageSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeJreUsageSortByEnumStringValues(), ",")))
 	}
 	for _, val := range request.OsFamily {
-		if _, ok := mappingOsFamilyEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingOsFamilyEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OsFamily: %s. Supported values are: %s.", val, strings.Join(GetOsFamilyEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingSummarizeJreUsageJreSecurityStatusEnum[string(request.JreSecurityStatus)]; !ok && request.JreSecurityStatus != "" {
+	if _, ok := GetMappingSummarizeJreUsageJreSecurityStatusEnum(string(request.JreSecurityStatus)); !ok && request.JreSecurityStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for JreSecurityStatus: %s. Supported values are: %s.", request.JreSecurityStatus, strings.Join(GetSummarizeJreUsageJreSecurityStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -195,6 +195,17 @@ func GetSummarizeJreUsageSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeJreUsageSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeJreUsageSortOrderEnum(val string) (SummarizeJreUsageSortOrderEnum, bool) {
+	mappingSummarizeJreUsageSortOrderEnumIgnoreCase := make(map[string]SummarizeJreUsageSortOrderEnum)
+	for k, v := range mappingSummarizeJreUsageSortOrderEnum {
+		mappingSummarizeJreUsageSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeJreUsageSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeJreUsageSortByEnum Enum with underlying type: string
 type SummarizeJreUsageSortByEnum string
 
@@ -250,6 +261,17 @@ func GetSummarizeJreUsageSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeJreUsageSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeJreUsageSortByEnum(val string) (SummarizeJreUsageSortByEnum, bool) {
+	mappingSummarizeJreUsageSortByEnumIgnoreCase := make(map[string]SummarizeJreUsageSortByEnum)
+	for k, v := range mappingSummarizeJreUsageSortByEnum {
+		mappingSummarizeJreUsageSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeJreUsageSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeJreUsageJreSecurityStatusEnum Enum with underlying type: string
 type SummarizeJreUsageJreSecurityStatusEnum string
 
@@ -285,4 +307,15 @@ func GetSummarizeJreUsageJreSecurityStatusEnumStringValues() []string {
 		"UPDATE_REQUIRED",
 		"UPGRADE_REQUIRED",
 	}
+}
+
+// GetMappingSummarizeJreUsageJreSecurityStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeJreUsageJreSecurityStatusEnum(val string) (SummarizeJreUsageJreSecurityStatusEnum, bool) {
+	mappingSummarizeJreUsageJreSecurityStatusEnumIgnoreCase := make(map[string]SummarizeJreUsageJreSecurityStatusEnum)
+	for k, v := range mappingSummarizeJreUsageJreSecurityStatusEnum {
+		mappingSummarizeJreUsageJreSecurityStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeJreUsageJreSecurityStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

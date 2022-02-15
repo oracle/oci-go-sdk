@@ -153,15 +153,15 @@ func (request SummarizeHostInsightResourceStatisticsRequest) RetryPolicy() *comm
 func (request SummarizeHostInsightResourceStatisticsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.PlatformType {
-		if _, ok := mappingSummarizeHostInsightResourceStatisticsPlatformTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingSummarizeHostInsightResourceStatisticsPlatformTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", val, strings.Join(GetSummarizeHostInsightResourceStatisticsPlatformTypeEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingSummarizeHostInsightResourceStatisticsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeHostInsightResourceStatisticsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeHostInsightResourceStatisticsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeHostInsightResourceStatisticsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeHostInsightResourceStatisticsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeHostInsightResourceStatisticsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -232,6 +232,17 @@ func GetSummarizeHostInsightResourceStatisticsPlatformTypeEnumStringValues() []s
 	}
 }
 
+// GetMappingSummarizeHostInsightResourceStatisticsPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeHostInsightResourceStatisticsPlatformTypeEnum(val string) (SummarizeHostInsightResourceStatisticsPlatformTypeEnum, bool) {
+	mappingSummarizeHostInsightResourceStatisticsPlatformTypeEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceStatisticsPlatformTypeEnum)
+	for k, v := range mappingSummarizeHostInsightResourceStatisticsPlatformTypeEnum {
+		mappingSummarizeHostInsightResourceStatisticsPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeHostInsightResourceStatisticsPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeHostInsightResourceStatisticsSortOrderEnum Enum with underlying type: string
 type SummarizeHostInsightResourceStatisticsSortOrderEnum string
 
@@ -261,6 +272,17 @@ func GetSummarizeHostInsightResourceStatisticsSortOrderEnumStringValues() []stri
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingSummarizeHostInsightResourceStatisticsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeHostInsightResourceStatisticsSortOrderEnum(val string) (SummarizeHostInsightResourceStatisticsSortOrderEnum, bool) {
+	mappingSummarizeHostInsightResourceStatisticsSortOrderEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceStatisticsSortOrderEnum)
+	for k, v := range mappingSummarizeHostInsightResourceStatisticsSortOrderEnum {
+		mappingSummarizeHostInsightResourceStatisticsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeHostInsightResourceStatisticsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // SummarizeHostInsightResourceStatisticsSortByEnum Enum with underlying type: string
@@ -301,4 +323,15 @@ func GetSummarizeHostInsightResourceStatisticsSortByEnumStringValues() []string 
 		"hostName",
 		"platformType",
 	}
+}
+
+// GetMappingSummarizeHostInsightResourceStatisticsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeHostInsightResourceStatisticsSortByEnum(val string) (SummarizeHostInsightResourceStatisticsSortByEnum, bool) {
+	mappingSummarizeHostInsightResourceStatisticsSortByEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceStatisticsSortByEnum)
+	for k, v := range mappingSummarizeHostInsightResourceStatisticsSortByEnum {
+		mappingSummarizeHostInsightResourceStatisticsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeHostInsightResourceStatisticsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

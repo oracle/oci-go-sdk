@@ -102,3 +102,14 @@ func GetPartitionConfigModelTypeEnumStringValues() []string {
 		"KEYRANGEPARTITIONCONFIG",
 	}
 }
+
+// GetMappingPartitionConfigModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPartitionConfigModelTypeEnum(val string) (PartitionConfigModelTypeEnum, bool) {
+	mappingPartitionConfigModelTypeEnumIgnoreCase := make(map[string]PartitionConfigModelTypeEnum)
+	for k, v := range mappingPartitionConfigModelTypeEnum {
+		mappingPartitionConfigModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPartitionConfigModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

@@ -40,10 +40,10 @@ func (m ConsumerGroupPrivilegeSummary) String() string {
 func (m ConsumerGroupPrivilegeSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingConsumerGroupPrivilegeSummaryGrantOptionEnum[string(m.GrantOption)]; !ok && m.GrantOption != "" {
+	if _, ok := GetMappingConsumerGroupPrivilegeSummaryGrantOptionEnum(string(m.GrantOption)); !ok && m.GrantOption != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for GrantOption: %s. Supported values are: %s.", m.GrantOption, strings.Join(GetConsumerGroupPrivilegeSummaryGrantOptionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingConsumerGroupPrivilegeSummaryInitialGroupEnum[string(m.InitialGroup)]; !ok && m.InitialGroup != "" {
+	if _, ok := GetMappingConsumerGroupPrivilegeSummaryInitialGroupEnum(string(m.InitialGroup)); !ok && m.InitialGroup != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InitialGroup: %s. Supported values are: %s.", m.InitialGroup, strings.Join(GetConsumerGroupPrivilegeSummaryInitialGroupEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -83,6 +83,17 @@ func GetConsumerGroupPrivilegeSummaryGrantOptionEnumStringValues() []string {
 	}
 }
 
+// GetMappingConsumerGroupPrivilegeSummaryGrantOptionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConsumerGroupPrivilegeSummaryGrantOptionEnum(val string) (ConsumerGroupPrivilegeSummaryGrantOptionEnum, bool) {
+	mappingConsumerGroupPrivilegeSummaryGrantOptionEnumIgnoreCase := make(map[string]ConsumerGroupPrivilegeSummaryGrantOptionEnum)
+	for k, v := range mappingConsumerGroupPrivilegeSummaryGrantOptionEnum {
+		mappingConsumerGroupPrivilegeSummaryGrantOptionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConsumerGroupPrivilegeSummaryGrantOptionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ConsumerGroupPrivilegeSummaryInitialGroupEnum Enum with underlying type: string
 type ConsumerGroupPrivilegeSummaryInitialGroupEnum string
 
@@ -112,4 +123,15 @@ func GetConsumerGroupPrivilegeSummaryInitialGroupEnumStringValues() []string {
 		"YES",
 		"NO",
 	}
+}
+
+// GetMappingConsumerGroupPrivilegeSummaryInitialGroupEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConsumerGroupPrivilegeSummaryInitialGroupEnum(val string) (ConsumerGroupPrivilegeSummaryInitialGroupEnum, bool) {
+	mappingConsumerGroupPrivilegeSummaryInitialGroupEnumIgnoreCase := make(map[string]ConsumerGroupPrivilegeSummaryInitialGroupEnum)
+	for k, v := range mappingConsumerGroupPrivilegeSummaryInitialGroupEnum {
+		mappingConsumerGroupPrivilegeSummaryInitialGroupEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConsumerGroupPrivilegeSummaryInitialGroupEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

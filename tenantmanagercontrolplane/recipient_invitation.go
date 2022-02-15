@@ -70,10 +70,10 @@ func (m RecipientInvitation) String() string {
 // Not recommended for calling this function directly
 func (m RecipientInvitation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingRecipientInvitationStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingRecipientInvitationStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetRecipientInvitationStatusEnumStringValues(), ",")))
 	}
 

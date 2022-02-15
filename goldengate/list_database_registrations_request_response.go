@@ -78,13 +78,13 @@ func (request ListDatabaseRegistrationsRequest) RetryPolicy() *common.RetryPolic
 // Not recommended for calling this function directly
 func (request ListDatabaseRegistrationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDatabaseRegistrationsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListDatabaseRegistrationsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListDatabaseRegistrationsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDatabaseRegistrationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDatabaseRegistrationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDatabaseRegistrationsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDatabaseRegistrationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDatabaseRegistrationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDatabaseRegistrationsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -179,6 +179,17 @@ func GetListDatabaseRegistrationsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDatabaseRegistrationsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseRegistrationsLifecycleStateEnum(val string) (ListDatabaseRegistrationsLifecycleStateEnum, bool) {
+	mappingListDatabaseRegistrationsLifecycleStateEnumIgnoreCase := make(map[string]ListDatabaseRegistrationsLifecycleStateEnum)
+	for k, v := range mappingListDatabaseRegistrationsLifecycleStateEnum {
+		mappingListDatabaseRegistrationsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseRegistrationsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDatabaseRegistrationsSortOrderEnum Enum with underlying type: string
 type ListDatabaseRegistrationsSortOrderEnum string
 
@@ -210,6 +221,17 @@ func GetListDatabaseRegistrationsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDatabaseRegistrationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseRegistrationsSortOrderEnum(val string) (ListDatabaseRegistrationsSortOrderEnum, bool) {
+	mappingListDatabaseRegistrationsSortOrderEnumIgnoreCase := make(map[string]ListDatabaseRegistrationsSortOrderEnum)
+	for k, v := range mappingListDatabaseRegistrationsSortOrderEnum {
+		mappingListDatabaseRegistrationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseRegistrationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDatabaseRegistrationsSortByEnum Enum with underlying type: string
 type ListDatabaseRegistrationsSortByEnum string
 
@@ -239,4 +261,15 @@ func GetListDatabaseRegistrationsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListDatabaseRegistrationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseRegistrationsSortByEnum(val string) (ListDatabaseRegistrationsSortByEnum, bool) {
+	mappingListDatabaseRegistrationsSortByEnumIgnoreCase := make(map[string]ListDatabaseRegistrationsSortByEnum)
+	for k, v := range mappingListDatabaseRegistrationsSortByEnum {
+		mappingListDatabaseRegistrationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseRegistrationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,10 +6,11 @@ package example
 import (
 	"context"
 	"fmt"
+	"time"
+
 	"github.com/oracle/oci-go-sdk/v58/common"
 	"github.com/oracle/oci-go-sdk/v58/example/helpers"
 	"github.com/oracle/oci-go-sdk/v58/identity"
-	"time"
 )
 
 // Example shows how to configure circuit breaker

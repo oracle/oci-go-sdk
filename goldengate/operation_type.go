@@ -9,6 +9,10 @@
 
 package goldengate
 
+import (
+	"strings"
+)
+
 // OperationTypeEnum Enum with underlying type: string
 type OperationTypeEnum string
 
@@ -80,4 +84,15 @@ func GetOperationTypeEnumStringValues() []string {
 		"GOLDENGATE_DEPLOYMENT_BACKUP_DELETE",
 		"GOLDENGATE_DEPLOYMENT_BACKUP_CANCEL",
 	}
+}
+
+// GetMappingOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOperationTypeEnum(val string) (OperationTypeEnum, bool) {
+	mappingOperationTypeEnumIgnoreCase := make(map[string]OperationTypeEnum)
+	for k, v := range mappingOperationTypeEnum {
+		mappingOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

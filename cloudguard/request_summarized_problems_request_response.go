@@ -83,12 +83,12 @@ func (request RequestSummarizedProblemsRequest) RetryPolicy() *common.RetryPolic
 func (request RequestSummarizedProblemsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.ListDimensions {
-		if _, ok := mappingProblemDimensionEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingProblemDimensionEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ListDimensions: %s. Supported values are: %s.", val, strings.Join(GetProblemDimensionEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingRequestSummarizedProblemsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingRequestSummarizedProblemsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetRequestSummarizedProblemsAccessLevelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -154,4 +154,15 @@ func GetRequestSummarizedProblemsAccessLevelEnumStringValues() []string {
 		"RESTRICTED",
 		"ACCESSIBLE",
 	}
+}
+
+// GetMappingRequestSummarizedProblemsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRequestSummarizedProblemsAccessLevelEnum(val string) (RequestSummarizedProblemsAccessLevelEnum, bool) {
+	mappingRequestSummarizedProblemsAccessLevelEnumIgnoreCase := make(map[string]RequestSummarizedProblemsAccessLevelEnum)
+	for k, v := range mappingRequestSummarizedProblemsAccessLevelEnum {
+		mappingRequestSummarizedProblemsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRequestSummarizedProblemsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

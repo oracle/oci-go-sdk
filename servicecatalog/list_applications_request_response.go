@@ -97,18 +97,18 @@ func (request ListApplicationsRequest) RetryPolicy() *common.RetryPolicy {
 func (request ListApplicationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.PackageType {
-		if _, ok := mappingPackageTypeEnumEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingPackageTypeEnumEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PackageType: %s. Supported values are: %s.", val, strings.Join(GetPackageTypeEnumEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range request.Pricing {
-		if _, ok := mappingPricingTypeEnumEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingPricingTypeEnumEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Pricing: %s. Supported values are: %s.", val, strings.Join(GetPricingTypeEnumEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListApplicationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListApplicationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListApplicationsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -174,4 +174,15 @@ func GetListApplicationsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListApplicationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListApplicationsSortOrderEnum(val string) (ListApplicationsSortOrderEnum, bool) {
+	mappingListApplicationsSortOrderEnumIgnoreCase := make(map[string]ListApplicationsSortOrderEnum)
+	for k, v := range mappingListApplicationsSortOrderEnum {
+		mappingListApplicationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListApplicationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

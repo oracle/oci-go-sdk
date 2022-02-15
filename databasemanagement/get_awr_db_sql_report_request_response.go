@@ -98,7 +98,7 @@ func (request GetAwrDbSqlReportRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetAwrDbSqlReportRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetAwrDbSqlReportReportFormatEnum[string(request.ReportFormat)]; !ok && request.ReportFormat != "" {
+	if _, ok := GetMappingGetAwrDbSqlReportReportFormatEnum(string(request.ReportFormat)); !ok && request.ReportFormat != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ReportFormat: %s. Supported values are: %s.", request.ReportFormat, strings.Join(GetGetAwrDbSqlReportReportFormatEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -159,4 +159,15 @@ func GetGetAwrDbSqlReportReportFormatEnumStringValues() []string {
 		"HTML",
 		"TEXT",
 	}
+}
+
+// GetMappingGetAwrDbSqlReportReportFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetAwrDbSqlReportReportFormatEnum(val string) (GetAwrDbSqlReportReportFormatEnum, bool) {
+	mappingGetAwrDbSqlReportReportFormatEnumIgnoreCase := make(map[string]GetAwrDbSqlReportReportFormatEnum)
+	for k, v := range mappingGetAwrDbSqlReportReportFormatEnum {
+		mappingGetAwrDbSqlReportReportFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetAwrDbSqlReportReportFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -45,7 +45,7 @@ func (m LoadBalancerHealthSummary) String() string {
 // Not recommended for calling this function directly
 func (m LoadBalancerHealthSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingLoadBalancerHealthSummaryStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingLoadBalancerHealthSummaryStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetLoadBalancerHealthSummaryStatusEnumStringValues(), ",")))
 	}
 
@@ -90,4 +90,15 @@ func GetLoadBalancerHealthSummaryStatusEnumStringValues() []string {
 		"CRITICAL",
 		"UNKNOWN",
 	}
+}
+
+// GetMappingLoadBalancerHealthSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLoadBalancerHealthSummaryStatusEnum(val string) (LoadBalancerHealthSummaryStatusEnum, bool) {
+	mappingLoadBalancerHealthSummaryStatusEnumIgnoreCase := make(map[string]LoadBalancerHealthSummaryStatusEnum)
+	for k, v := range mappingLoadBalancerHealthSummaryStatusEnum {
+		mappingLoadBalancerHealthSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLoadBalancerHealthSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

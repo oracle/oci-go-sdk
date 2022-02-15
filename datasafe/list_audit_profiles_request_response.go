@@ -108,16 +108,16 @@ func (request ListAuditProfilesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAuditProfilesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAuditProfilesAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListAuditProfilesAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListAuditProfilesAccessLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAuditProfilesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListAuditProfilesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListAuditProfilesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAuditProfilesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAuditProfilesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAuditProfilesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAuditProfilesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAuditProfilesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAuditProfilesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -187,6 +187,17 @@ func GetListAuditProfilesAccessLevelEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAuditProfilesAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuditProfilesAccessLevelEnum(val string) (ListAuditProfilesAccessLevelEnum, bool) {
+	mappingListAuditProfilesAccessLevelEnumIgnoreCase := make(map[string]ListAuditProfilesAccessLevelEnum)
+	for k, v := range mappingListAuditProfilesAccessLevelEnum {
+		mappingListAuditProfilesAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuditProfilesAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAuditProfilesLifecycleStateEnum Enum with underlying type: string
 type ListAuditProfilesLifecycleStateEnum string
 
@@ -233,6 +244,17 @@ func GetListAuditProfilesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAuditProfilesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuditProfilesLifecycleStateEnum(val string) (ListAuditProfilesLifecycleStateEnum, bool) {
+	mappingListAuditProfilesLifecycleStateEnumIgnoreCase := make(map[string]ListAuditProfilesLifecycleStateEnum)
+	for k, v := range mappingListAuditProfilesLifecycleStateEnum {
+		mappingListAuditProfilesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuditProfilesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAuditProfilesSortOrderEnum Enum with underlying type: string
 type ListAuditProfilesSortOrderEnum string
 
@@ -264,6 +286,17 @@ func GetListAuditProfilesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAuditProfilesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuditProfilesSortOrderEnum(val string) (ListAuditProfilesSortOrderEnum, bool) {
+	mappingListAuditProfilesSortOrderEnumIgnoreCase := make(map[string]ListAuditProfilesSortOrderEnum)
+	for k, v := range mappingListAuditProfilesSortOrderEnum {
+		mappingListAuditProfilesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuditProfilesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAuditProfilesSortByEnum Enum with underlying type: string
 type ListAuditProfilesSortByEnum string
 
@@ -293,4 +326,15 @@ func GetListAuditProfilesSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListAuditProfilesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuditProfilesSortByEnum(val string) (ListAuditProfilesSortByEnum, bool) {
+	mappingListAuditProfilesSortByEnumIgnoreCase := make(map[string]ListAuditProfilesSortByEnum)
+	for k, v := range mappingListAuditProfilesSortByEnum {
+		mappingListAuditProfilesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuditProfilesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -133,3 +133,14 @@ func GetFieldMapModelTypeEnumStringValues() []string {
 		"RULE_BASED_FIELD_MAP",
 	}
 }
+
+// GetMappingFieldMapModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFieldMapModelTypeEnum(val string) (FieldMapModelTypeEnum, bool) {
+	mappingFieldMapModelTypeEnumIgnoreCase := make(map[string]FieldMapModelTypeEnum)
+	for k, v := range mappingFieldMapModelTypeEnum {
+		mappingFieldMapModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFieldMapModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

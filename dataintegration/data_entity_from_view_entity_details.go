@@ -77,7 +77,7 @@ func (m DataEntityFromViewEntityDetails) String() string {
 // Not recommended for calling this function directly
 func (m DataEntityFromViewEntityDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDataEntityFromViewEntityDetailsEntityTypeEnum[string(m.EntityType)]; !ok && m.EntityType != "" {
+	if _, ok := GetMappingDataEntityFromViewEntityDetailsEntityTypeEnum(string(m.EntityType)); !ok && m.EntityType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EntityType: %s. Supported values are: %s.", m.EntityType, strings.Join(GetDataEntityFromViewEntityDetailsEntityTypeEnumStringValues(), ",")))
 	}
 
@@ -220,4 +220,15 @@ func GetDataEntityFromViewEntityDetailsEntityTypeEnumStringValues() []string {
 		"STREAM",
 		"OTHER",
 	}
+}
+
+// GetMappingDataEntityFromViewEntityDetailsEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataEntityFromViewEntityDetailsEntityTypeEnum(val string) (DataEntityFromViewEntityDetailsEntityTypeEnum, bool) {
+	mappingDataEntityFromViewEntityDetailsEntityTypeEnumIgnoreCase := make(map[string]DataEntityFromViewEntityDetailsEntityTypeEnum)
+	for k, v := range mappingDataEntityFromViewEntityDetailsEntityTypeEnum {
+		mappingDataEntityFromViewEntityDetailsEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataEntityFromViewEntityDetailsEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

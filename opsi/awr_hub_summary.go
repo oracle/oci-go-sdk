@@ -72,7 +72,7 @@ func (m AwrHubSummary) String() string {
 // Not recommended for calling this function directly
 func (m AwrHubSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAwrHubLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAwrHubLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAwrHubLifecycleStateEnumStringValues(), ",")))
 	}
 

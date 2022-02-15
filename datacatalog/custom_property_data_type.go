@@ -10,6 +10,10 @@
 
 package datacatalog
 
+import (
+	"strings"
+)
+
 // CustomPropertyDataTypeEnum Enum with underlying type: string
 type CustomPropertyDataTypeEnum string
 
@@ -48,4 +52,15 @@ func GetCustomPropertyDataTypeEnumStringValues() []string {
 		"NUMBER",
 		"DATE",
 	}
+}
+
+// GetMappingCustomPropertyDataTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCustomPropertyDataTypeEnum(val string) (CustomPropertyDataTypeEnum, bool) {
+	mappingCustomPropertyDataTypeEnumIgnoreCase := make(map[string]CustomPropertyDataTypeEnum)
+	for k, v := range mappingCustomPropertyDataTypeEnum {
+		mappingCustomPropertyDataTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCustomPropertyDataTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

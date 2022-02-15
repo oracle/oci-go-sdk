@@ -74,10 +74,10 @@ func (request ListQueriesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListQueriesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListQueriesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListQueriesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListQueriesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListQueriesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListQueriesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListQueriesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -142,6 +142,17 @@ func GetListQueriesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListQueriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListQueriesSortByEnum(val string) (ListQueriesSortByEnum, bool) {
+	mappingListQueriesSortByEnumIgnoreCase := make(map[string]ListQueriesSortByEnum)
+	for k, v := range mappingListQueriesSortByEnum {
+		mappingListQueriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListQueriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListQueriesSortOrderEnum Enum with underlying type: string
 type ListQueriesSortOrderEnum string
 
@@ -171,4 +182,15 @@ func GetListQueriesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListQueriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListQueriesSortOrderEnum(val string) (ListQueriesSortOrderEnum, bool) {
+	mappingListQueriesSortOrderEnumIgnoreCase := make(map[string]ListQueriesSortOrderEnum)
+	for k, v := range mappingListQueriesSortOrderEnum {
+		mappingListQueriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListQueriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

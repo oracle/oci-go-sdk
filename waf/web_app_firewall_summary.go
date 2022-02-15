@@ -183,7 +183,7 @@ func (m webappfirewallsummary) String() string {
 // Not recommended for calling this function directly
 func (m webappfirewallsummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingWebAppFirewallLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingWebAppFirewallLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetWebAppFirewallLifecycleStateEnumStringValues(), ",")))
 	}
 

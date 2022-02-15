@@ -72,10 +72,10 @@ func (request ListSourceLabelOperatorsRequest) RetryPolicy() *common.RetryPolicy
 // Not recommended for calling this function directly
 func (request ListSourceLabelOperatorsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSourceLabelOperatorsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSourceLabelOperatorsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSourceLabelOperatorsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSourceLabelOperatorsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSourceLabelOperatorsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSourceLabelOperatorsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -144,6 +144,17 @@ func GetListSourceLabelOperatorsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSourceLabelOperatorsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSourceLabelOperatorsSortByEnum(val string) (ListSourceLabelOperatorsSortByEnum, bool) {
+	mappingListSourceLabelOperatorsSortByEnumIgnoreCase := make(map[string]ListSourceLabelOperatorsSortByEnum)
+	for k, v := range mappingListSourceLabelOperatorsSortByEnum {
+		mappingListSourceLabelOperatorsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSourceLabelOperatorsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSourceLabelOperatorsSortOrderEnum Enum with underlying type: string
 type ListSourceLabelOperatorsSortOrderEnum string
 
@@ -173,4 +184,15 @@ func GetListSourceLabelOperatorsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListSourceLabelOperatorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSourceLabelOperatorsSortOrderEnum(val string) (ListSourceLabelOperatorsSortOrderEnum, bool) {
+	mappingListSourceLabelOperatorsSortOrderEnumIgnoreCase := make(map[string]ListSourceLabelOperatorsSortOrderEnum)
+	for k, v := range mappingListSourceLabelOperatorsSortOrderEnum {
+		mappingListSourceLabelOperatorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSourceLabelOperatorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -109,3 +109,14 @@ func GetDatabaseConnectionCredentialsCredentialTypeEnumStringValues() []string {
 		"DETAILS",
 	}
 }
+
+// GetMappingDatabaseConnectionCredentialsCredentialTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseConnectionCredentialsCredentialTypeEnum(val string) (DatabaseConnectionCredentialsCredentialTypeEnum, bool) {
+	mappingDatabaseConnectionCredentialsCredentialTypeEnumIgnoreCase := make(map[string]DatabaseConnectionCredentialsCredentialTypeEnum)
+	for k, v := range mappingDatabaseConnectionCredentialsCredentialTypeEnum {
+		mappingDatabaseConnectionCredentialsCredentialTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseConnectionCredentialsCredentialTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

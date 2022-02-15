@@ -89,10 +89,10 @@ func (request ListAwrDbsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAwrDbsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAwrDbsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAwrDbsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAwrDbsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAwrDbsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAwrDbsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAwrDbsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -160,6 +160,17 @@ func GetListAwrDbsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAwrDbsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAwrDbsSortByEnum(val string) (ListAwrDbsSortByEnum, bool) {
+	mappingListAwrDbsSortByEnumIgnoreCase := make(map[string]ListAwrDbsSortByEnum)
+	for k, v := range mappingListAwrDbsSortByEnum {
+		mappingListAwrDbsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAwrDbsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAwrDbsSortOrderEnum Enum with underlying type: string
 type ListAwrDbsSortOrderEnum string
 
@@ -189,4 +200,15 @@ func GetListAwrDbsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAwrDbsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAwrDbsSortOrderEnum(val string) (ListAwrDbsSortOrderEnum, bool) {
+	mappingListAwrDbsSortOrderEnumIgnoreCase := make(map[string]ListAwrDbsSortOrderEnum)
+	for k, v := range mappingListAwrDbsSortOrderEnum {
+		mappingListAwrDbsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAwrDbsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -53,7 +53,7 @@ func (m SecretBundleVersionSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	for _, val := range m.Stages {
-		if _, ok := mappingSecretBundleVersionSummaryStagesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingSecretBundleVersionSummaryStagesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stages: %s. Supported values are: %s.", val, strings.Join(GetSecretBundleVersionSummaryStagesEnumStringValues(), ",")))
 		}
 	}
@@ -102,4 +102,15 @@ func GetSecretBundleVersionSummaryStagesEnumStringValues() []string {
 		"PREVIOUS",
 		"DEPRECATED",
 	}
+}
+
+// GetMappingSecretBundleVersionSummaryStagesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecretBundleVersionSummaryStagesEnum(val string) (SecretBundleVersionSummaryStagesEnum, bool) {
+	mappingSecretBundleVersionSummaryStagesEnumIgnoreCase := make(map[string]SecretBundleVersionSummaryStagesEnum)
+	for k, v := range mappingSecretBundleVersionSummaryStagesEnum {
+		mappingSecretBundleVersionSummaryStagesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecretBundleVersionSummaryStagesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -50,7 +50,7 @@ func (m StatementSummary) String() string {
 func (m StatementSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingStatementSummaryOperationEnum[string(m.Operation)]; !ok && m.Operation != "" {
+	if _, ok := GetMappingStatementSummaryOperationEnum(string(m.Operation)); !ok && m.Operation != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Operation: %s. Supported values are: %s.", m.Operation, strings.Join(GetStatementSummaryOperationEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -109,4 +109,15 @@ func GetStatementSummaryOperationEnumStringValues() []string {
 		"INSERT",
 		"DELETE",
 	}
+}
+
+// GetMappingStatementSummaryOperationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStatementSummaryOperationEnum(val string) (StatementSummaryOperationEnum, bool) {
+	mappingStatementSummaryOperationEnumIgnoreCase := make(map[string]StatementSummaryOperationEnum)
+	for k, v := range mappingStatementSummaryOperationEnum {
+		mappingStatementSummaryOperationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStatementSummaryOperationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

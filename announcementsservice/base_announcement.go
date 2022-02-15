@@ -261,20 +261,20 @@ func (m baseannouncement) String() string {
 // Not recommended for calling this function directly
 func (m baseannouncement) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBaseAnnouncementAnnouncementTypeEnum[string(m.AnnouncementType)]; !ok && m.AnnouncementType != "" {
+	if _, ok := GetMappingBaseAnnouncementAnnouncementTypeEnum(string(m.AnnouncementType)); !ok && m.AnnouncementType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AnnouncementType: %s. Supported values are: %s.", m.AnnouncementType, strings.Join(GetBaseAnnouncementAnnouncementTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBaseAnnouncementLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingBaseAnnouncementLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetBaseAnnouncementLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingBaseAnnouncementTimeOneTypeEnum[string(m.TimeOneType)]; !ok && m.TimeOneType != "" {
+	if _, ok := GetMappingBaseAnnouncementTimeOneTypeEnum(string(m.TimeOneType)); !ok && m.TimeOneType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TimeOneType: %s. Supported values are: %s.", m.TimeOneType, strings.Join(GetBaseAnnouncementTimeOneTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBaseAnnouncementTimeTwoTypeEnum[string(m.TimeTwoType)]; !ok && m.TimeTwoType != "" {
+	if _, ok := GetMappingBaseAnnouncementTimeTwoTypeEnum(string(m.TimeTwoType)); !ok && m.TimeTwoType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TimeTwoType: %s. Supported values are: %s.", m.TimeTwoType, strings.Join(GetBaseAnnouncementTimeTwoTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBaseAnnouncementPlatformTypeEnum[string(m.PlatformType)]; !ok && m.PlatformType != "" {
+	if _, ok := GetMappingBaseAnnouncementPlatformTypeEnum(string(m.PlatformType)); !ok && m.PlatformType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", m.PlatformType, strings.Join(GetBaseAnnouncementPlatformTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -326,6 +326,17 @@ func GetBaseAnnouncementTimeOneTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingBaseAnnouncementTimeOneTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBaseAnnouncementTimeOneTypeEnum(val string) (BaseAnnouncementTimeOneTypeEnum, bool) {
+	mappingBaseAnnouncementTimeOneTypeEnumIgnoreCase := make(map[string]BaseAnnouncementTimeOneTypeEnum)
+	for k, v := range mappingBaseAnnouncementTimeOneTypeEnum {
+		mappingBaseAnnouncementTimeOneTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBaseAnnouncementTimeOneTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // BaseAnnouncementTimeTwoTypeEnum Enum with underlying type: string
 type BaseAnnouncementTimeTwoTypeEnum string
 
@@ -355,6 +366,17 @@ func GetBaseAnnouncementTimeTwoTypeEnumStringValues() []string {
 		"END_TIME",
 		"NEW_END_TIME",
 	}
+}
+
+// GetMappingBaseAnnouncementTimeTwoTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBaseAnnouncementTimeTwoTypeEnum(val string) (BaseAnnouncementTimeTwoTypeEnum, bool) {
+	mappingBaseAnnouncementTimeTwoTypeEnumIgnoreCase := make(map[string]BaseAnnouncementTimeTwoTypeEnum)
+	for k, v := range mappingBaseAnnouncementTimeTwoTypeEnum {
+		mappingBaseAnnouncementTimeTwoTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBaseAnnouncementTimeTwoTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // BaseAnnouncementAnnouncementTypeEnum Enum with underlying type: string
@@ -424,6 +446,17 @@ func GetBaseAnnouncementAnnouncementTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingBaseAnnouncementAnnouncementTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBaseAnnouncementAnnouncementTypeEnum(val string) (BaseAnnouncementAnnouncementTypeEnum, bool) {
+	mappingBaseAnnouncementAnnouncementTypeEnumIgnoreCase := make(map[string]BaseAnnouncementAnnouncementTypeEnum)
+	for k, v := range mappingBaseAnnouncementAnnouncementTypeEnum {
+		mappingBaseAnnouncementAnnouncementTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBaseAnnouncementAnnouncementTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // BaseAnnouncementLifecycleStateEnum Enum with underlying type: string
 type BaseAnnouncementLifecycleStateEnum string
 
@@ -455,6 +488,17 @@ func GetBaseAnnouncementLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingBaseAnnouncementLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBaseAnnouncementLifecycleStateEnum(val string) (BaseAnnouncementLifecycleStateEnum, bool) {
+	mappingBaseAnnouncementLifecycleStateEnumIgnoreCase := make(map[string]BaseAnnouncementLifecycleStateEnum)
+	for k, v := range mappingBaseAnnouncementLifecycleStateEnum {
+		mappingBaseAnnouncementLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBaseAnnouncementLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // BaseAnnouncementPlatformTypeEnum Enum with underlying type: string
 type BaseAnnouncementPlatformTypeEnum string
 
@@ -484,4 +528,15 @@ func GetBaseAnnouncementPlatformTypeEnumStringValues() []string {
 		"IAAS",
 		"SAAS",
 	}
+}
+
+// GetMappingBaseAnnouncementPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBaseAnnouncementPlatformTypeEnum(val string) (BaseAnnouncementPlatformTypeEnum, bool) {
+	mappingBaseAnnouncementPlatformTypeEnumIgnoreCase := make(map[string]BaseAnnouncementPlatformTypeEnum)
+	for k, v := range mappingBaseAnnouncementPlatformTypeEnum {
+		mappingBaseAnnouncementPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBaseAnnouncementPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

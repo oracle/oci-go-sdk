@@ -78,7 +78,7 @@ func (m JobRun) String() string {
 // Not recommended for calling this function directly
 func (m JobRun) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingJobRunLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingJobRunLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetJobRunLifecycleStateEnumStringValues(), ",")))
 	}
 

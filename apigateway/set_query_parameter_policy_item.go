@@ -43,7 +43,7 @@ func (m SetQueryParameterPolicyItem) String() string {
 func (m SetQueryParameterPolicyItem) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSetQueryParameterPolicyItemIfExistsEnum[string(m.IfExists)]; !ok && m.IfExists != "" {
+	if _, ok := GetMappingSetQueryParameterPolicyItemIfExistsEnum(string(m.IfExists)); !ok && m.IfExists != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IfExists: %s. Supported values are: %s.", m.IfExists, strings.Join(GetSetQueryParameterPolicyItemIfExistsEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -84,4 +84,15 @@ func GetSetQueryParameterPolicyItemIfExistsEnumStringValues() []string {
 		"APPEND",
 		"SKIP",
 	}
+}
+
+// GetMappingSetQueryParameterPolicyItemIfExistsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSetQueryParameterPolicyItemIfExistsEnum(val string) (SetQueryParameterPolicyItemIfExistsEnum, bool) {
+	mappingSetQueryParameterPolicyItemIfExistsEnumIgnoreCase := make(map[string]SetQueryParameterPolicyItemIfExistsEnum)
+	for k, v := range mappingSetQueryParameterPolicyItemIfExistsEnum {
+		mappingSetQueryParameterPolicyItemIfExistsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSetQueryParameterPolicyItemIfExistsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

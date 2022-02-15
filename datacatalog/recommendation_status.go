@@ -10,6 +10,10 @@
 
 package datacatalog
 
+import (
+	"strings"
+)
+
 // RecommendationStatusEnum Enum with underlying type: string
 type RecommendationStatusEnum string
 
@@ -42,4 +46,15 @@ func GetRecommendationStatusEnumStringValues() []string {
 		"REJECTED",
 		"INFERRED",
 	}
+}
+
+// GetMappingRecommendationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRecommendationStatusEnum(val string) (RecommendationStatusEnum, bool) {
+	mappingRecommendationStatusEnumIgnoreCase := make(map[string]RecommendationStatusEnum)
+	for k, v := range mappingRecommendationStatusEnum {
+		mappingRecommendationStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRecommendationStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

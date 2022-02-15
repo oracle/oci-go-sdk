@@ -81,10 +81,10 @@ func (m AutonomousDatabaseBackupSummary) String() string {
 // Not recommended for calling this function directly
 func (m AutonomousDatabaseBackupSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAutonomousDatabaseBackupSummaryTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingAutonomousDatabaseBackupSummaryTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetAutonomousDatabaseBackupSummaryTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseBackupSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAutonomousDatabaseBackupSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAutonomousDatabaseBackupSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -125,6 +125,17 @@ func GetAutonomousDatabaseBackupSummaryTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingAutonomousDatabaseBackupSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseBackupSummaryTypeEnum(val string) (AutonomousDatabaseBackupSummaryTypeEnum, bool) {
+	mappingAutonomousDatabaseBackupSummaryTypeEnumIgnoreCase := make(map[string]AutonomousDatabaseBackupSummaryTypeEnum)
+	for k, v := range mappingAutonomousDatabaseBackupSummaryTypeEnum {
+		mappingAutonomousDatabaseBackupSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseBackupSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousDatabaseBackupSummaryLifecycleStateEnum Enum with underlying type: string
 type AutonomousDatabaseBackupSummaryLifecycleStateEnum string
 
@@ -163,4 +174,15 @@ func GetAutonomousDatabaseBackupSummaryLifecycleStateEnumStringValues() []string
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingAutonomousDatabaseBackupSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseBackupSummaryLifecycleStateEnum(val string) (AutonomousDatabaseBackupSummaryLifecycleStateEnum, bool) {
+	mappingAutonomousDatabaseBackupSummaryLifecycleStateEnumIgnoreCase := make(map[string]AutonomousDatabaseBackupSummaryLifecycleStateEnum)
+	for k, v := range mappingAutonomousDatabaseBackupSummaryLifecycleStateEnum {
+		mappingAutonomousDatabaseBackupSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseBackupSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

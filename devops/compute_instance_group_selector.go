@@ -109,3 +109,14 @@ func GetComputeInstanceGroupSelectorSelectorTypeEnumStringValues() []string {
 		"INSTANCE_QUERY",
 	}
 }
+
+// GetMappingComputeInstanceGroupSelectorSelectorTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingComputeInstanceGroupSelectorSelectorTypeEnum(val string) (ComputeInstanceGroupSelectorSelectorTypeEnum, bool) {
+	mappingComputeInstanceGroupSelectorSelectorTypeEnumIgnoreCase := make(map[string]ComputeInstanceGroupSelectorSelectorTypeEnum)
+	for k, v := range mappingComputeInstanceGroupSelectorSelectorTypeEnum {
+		mappingComputeInstanceGroupSelectorSelectorTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingComputeInstanceGroupSelectorSelectorTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

@@ -63,7 +63,7 @@ func (request ListIndicatorCountsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListIndicatorCountsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListIndicatorCountsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListIndicatorCountsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListIndicatorCountsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -124,4 +124,15 @@ func GetListIndicatorCountsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListIndicatorCountsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListIndicatorCountsSortOrderEnum(val string) (ListIndicatorCountsSortOrderEnum, bool) {
+	mappingListIndicatorCountsSortOrderEnumIgnoreCase := make(map[string]ListIndicatorCountsSortOrderEnum)
+	for k, v := range mappingListIndicatorCountsSortOrderEnum {
+		mappingListIndicatorCountsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListIndicatorCountsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

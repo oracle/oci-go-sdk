@@ -9,6 +9,10 @@
 
 package cims
 
+import (
+	"strings"
+)
+
 // LifecycleDetailsEnum Enum with underlying type: string
 type LifecycleDetailsEnum string
 
@@ -44,4 +48,15 @@ func GetLifecycleDetailsEnumStringValues() []string {
 		"CLOSE_REQUESTED",
 		"CLOSED",
 	}
+}
+
+// GetMappingLifecycleDetailsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLifecycleDetailsEnum(val string) (LifecycleDetailsEnum, bool) {
+	mappingLifecycleDetailsEnumIgnoreCase := make(map[string]LifecycleDetailsEnum)
+	for k, v := range mappingLifecycleDetailsEnum {
+		mappingLifecycleDetailsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLifecycleDetailsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

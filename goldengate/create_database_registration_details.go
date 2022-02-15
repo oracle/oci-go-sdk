@@ -85,7 +85,7 @@ func (m CreateDatabaseRegistrationDetails) String() string {
 func (m CreateDatabaseRegistrationDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateDatabaseRegistrationDetailsSessionModeEnum[string(m.SessionMode)]; !ok && m.SessionMode != "" {
+	if _, ok := GetMappingCreateDatabaseRegistrationDetailsSessionModeEnum(string(m.SessionMode)); !ok && m.SessionMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SessionMode: %s. Supported values are: %s.", m.SessionMode, strings.Join(GetCreateDatabaseRegistrationDetailsSessionModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -123,4 +123,15 @@ func GetCreateDatabaseRegistrationDetailsSessionModeEnumStringValues() []string 
 		"DIRECT",
 		"REDIRECT",
 	}
+}
+
+// GetMappingCreateDatabaseRegistrationDetailsSessionModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateDatabaseRegistrationDetailsSessionModeEnum(val string) (CreateDatabaseRegistrationDetailsSessionModeEnum, bool) {
+	mappingCreateDatabaseRegistrationDetailsSessionModeEnumIgnoreCase := make(map[string]CreateDatabaseRegistrationDetailsSessionModeEnum)
+	for k, v := range mappingCreateDatabaseRegistrationDetailsSessionModeEnum {
+		mappingCreateDatabaseRegistrationDetailsSessionModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateDatabaseRegistrationDetailsSessionModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

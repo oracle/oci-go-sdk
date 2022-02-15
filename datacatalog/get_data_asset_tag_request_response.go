@@ -70,7 +70,7 @@ func (request GetDataAssetTagRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetDataAssetTagRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetDataAssetTagFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetDataAssetTagFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetDataAssetTagFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -160,4 +160,15 @@ func GetGetDataAssetTagFieldsEnumStringValues() []string {
 		"uri",
 		"dataAssetKey",
 	}
+}
+
+// GetMappingGetDataAssetTagFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetDataAssetTagFieldsEnum(val string) (GetDataAssetTagFieldsEnum, bool) {
+	mappingGetDataAssetTagFieldsEnumIgnoreCase := make(map[string]GetDataAssetTagFieldsEnum)
+	for k, v := range mappingGetDataAssetTagFieldsEnum {
+		mappingGetDataAssetTagFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetDataAssetTagFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

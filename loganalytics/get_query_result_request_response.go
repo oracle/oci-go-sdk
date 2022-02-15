@@ -78,7 +78,7 @@ func (request GetQueryResultRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetQueryResultRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetQueryResultOutputModeEnum[string(request.OutputMode)]; !ok && request.OutputMode != "" {
+	if _, ok := GetMappingGetQueryResultOutputModeEnum(string(request.OutputMode)); !ok && request.OutputMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OutputMode: %s. Supported values are: %s.", request.OutputMode, strings.Join(GetGetQueryResultOutputModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -148,4 +148,15 @@ func GetGetQueryResultOutputModeEnumStringValues() []string {
 	return []string{
 		"JSON_ROWS",
 	}
+}
+
+// GetMappingGetQueryResultOutputModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetQueryResultOutputModeEnum(val string) (GetQueryResultOutputModeEnum, bool) {
+	mappingGetQueryResultOutputModeEnumIgnoreCase := make(map[string]GetQueryResultOutputModeEnum)
+	for k, v := range mappingGetQueryResultOutputModeEnum {
+		mappingGetQueryResultOutputModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetQueryResultOutputModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -46,7 +46,7 @@ func (m TableLimits) String() string {
 func (m TableLimits) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTableLimitsCapacityModeEnum[string(m.CapacityMode)]; !ok && m.CapacityMode != "" {
+	if _, ok := GetMappingTableLimitsCapacityModeEnum(string(m.CapacityMode)); !ok && m.CapacityMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CapacityMode: %s. Supported values are: %s.", m.CapacityMode, strings.Join(GetTableLimitsCapacityModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -84,4 +84,15 @@ func GetTableLimitsCapacityModeEnumStringValues() []string {
 		"PROVISIONED",
 		"ON_DEMAND",
 	}
+}
+
+// GetMappingTableLimitsCapacityModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTableLimitsCapacityModeEnum(val string) (TableLimitsCapacityModeEnum, bool) {
+	mappingTableLimitsCapacityModeEnumIgnoreCase := make(map[string]TableLimitsCapacityModeEnum)
+	for k, v := range mappingTableLimitsCapacityModeEnum {
+		mappingTableLimitsCapacityModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTableLimitsCapacityModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

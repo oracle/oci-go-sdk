@@ -76,7 +76,7 @@ func (m RecordOperation) String() string {
 func (m RecordOperation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingRecordOperationOperationEnum[string(m.Operation)]; !ok && m.Operation != "" {
+	if _, ok := GetMappingRecordOperationOperationEnum(string(m.Operation)); !ok && m.Operation != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Operation: %s. Supported values are: %s.", m.Operation, strings.Join(GetRecordOperationOperationEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -120,4 +120,15 @@ func GetRecordOperationOperationEnumStringValues() []string {
 		"ADD",
 		"REMOVE",
 	}
+}
+
+// GetMappingRecordOperationOperationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRecordOperationOperationEnum(val string) (RecordOperationOperationEnum, bool) {
+	mappingRecordOperationOperationEnumIgnoreCase := make(map[string]RecordOperationOperationEnum)
+	for k, v := range mappingRecordOperationOperationEnum {
+		mappingRecordOperationOperationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRecordOperationOperationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

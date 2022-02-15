@@ -51,7 +51,7 @@ func (m UpdateDrgRouteRuleDetails) String() string {
 func (m UpdateDrgRouteRuleDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateDrgRouteRuleDetailsDestinationTypeEnum[string(m.DestinationType)]; !ok && m.DestinationType != "" {
+	if _, ok := GetMappingUpdateDrgRouteRuleDetailsDestinationTypeEnum(string(m.DestinationType)); !ok && m.DestinationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DestinationType: %s. Supported values are: %s.", m.DestinationType, strings.Join(GetUpdateDrgRouteRuleDetailsDestinationTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -86,4 +86,15 @@ func GetUpdateDrgRouteRuleDetailsDestinationTypeEnumStringValues() []string {
 	return []string{
 		"CIDR_BLOCK",
 	}
+}
+
+// GetMappingUpdateDrgRouteRuleDetailsDestinationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateDrgRouteRuleDetailsDestinationTypeEnum(val string) (UpdateDrgRouteRuleDetailsDestinationTypeEnum, bool) {
+	mappingUpdateDrgRouteRuleDetailsDestinationTypeEnumIgnoreCase := make(map[string]UpdateDrgRouteRuleDetailsDestinationTypeEnum)
+	for k, v := range mappingUpdateDrgRouteRuleDetailsDestinationTypeEnum {
+		mappingUpdateDrgRouteRuleDetailsDestinationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateDrgRouteRuleDetailsDestinationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -88,7 +88,7 @@ func (request UpdateZoneRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request UpdateZoneRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUpdateZoneScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingUpdateZoneScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetUpdateZoneScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -158,4 +158,15 @@ func GetUpdateZoneScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingUpdateZoneScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateZoneScopeEnum(val string) (UpdateZoneScopeEnum, bool) {
+	mappingUpdateZoneScopeEnumIgnoreCase := make(map[string]UpdateZoneScopeEnum)
+	for k, v := range mappingUpdateZoneScopeEnum {
+		mappingUpdateZoneScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateZoneScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

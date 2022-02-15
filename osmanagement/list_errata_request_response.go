@@ -87,10 +87,10 @@ func (request ListErrataRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListErrataRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListErrataSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListErrataSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListErrataSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListErrataSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListErrataSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListErrataSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -159,6 +159,17 @@ func GetListErrataSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListErrataSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListErrataSortOrderEnum(val string) (ListErrataSortOrderEnum, bool) {
+	mappingListErrataSortOrderEnumIgnoreCase := make(map[string]ListErrataSortOrderEnum)
+	for k, v := range mappingListErrataSortOrderEnum {
+		mappingListErrataSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListErrataSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListErrataSortByEnum Enum with underlying type: string
 type ListErrataSortByEnum string
 
@@ -188,4 +199,15 @@ func GetListErrataSortByEnumStringValues() []string {
 		"ISSUEDATE",
 		"ADVISORYNAME",
 	}
+}
+
+// GetMappingListErrataSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListErrataSortByEnum(val string) (ListErrataSortByEnum, bool) {
+	mappingListErrataSortByEnumIgnoreCase := make(map[string]ListErrataSortByEnum)
+	for k, v := range mappingListErrataSortByEnum {
+		mappingListErrataSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListErrataSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

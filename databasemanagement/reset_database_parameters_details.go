@@ -44,7 +44,7 @@ func (m ResetDatabaseParametersDetails) String() string {
 // Not recommended for calling this function directly
 func (m ResetDatabaseParametersDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingParameterScopeEnum[string(m.Scope)]; !ok && m.Scope != "" {
+	if _, ok := GetMappingParameterScopeEnum(string(m.Scope)); !ok && m.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", m.Scope, strings.Join(GetParameterScopeEnumStringValues(), ",")))
 	}
 

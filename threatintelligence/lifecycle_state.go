@@ -9,6 +9,10 @@
 
 package threatintelligence
 
+import (
+	"strings"
+)
+
 // LifecycleStateEnum Enum with underlying type: string
 type LifecycleStateEnum string
 
@@ -38,4 +42,15 @@ func GetLifecycleStateEnumStringValues() []string {
 		"ACTIVE",
 		"DELETED",
 	}
+}
+
+// GetMappingLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLifecycleStateEnum(val string) (LifecycleStateEnum, bool) {
+	mappingLifecycleStateEnumIgnoreCase := make(map[string]LifecycleStateEnum)
+	for k, v := range mappingLifecycleStateEnum {
+		mappingLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

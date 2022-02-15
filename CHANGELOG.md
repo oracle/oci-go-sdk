@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 - Support for auditing and alerts in the Data Safe service
 - Support for data discovery and data masking in the Data Safe service
 - Support for customized subscriptions and delivery of announcements by email and SMS in the Announcements service
-
+- Support for case insensitive validation for enum values
 ### Breaking Changes
 - API `QueryOld` is removed from QueryClient in APM Traces service
 

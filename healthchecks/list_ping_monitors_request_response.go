@@ -80,10 +80,10 @@ func (request ListPingMonitorsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListPingMonitorsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListPingMonitorsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListPingMonitorsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListPingMonitorsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPingMonitorsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListPingMonitorsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListPingMonitorsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -156,6 +156,17 @@ func GetListPingMonitorsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListPingMonitorsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPingMonitorsSortByEnum(val string) (ListPingMonitorsSortByEnum, bool) {
+	mappingListPingMonitorsSortByEnumIgnoreCase := make(map[string]ListPingMonitorsSortByEnum)
+	for k, v := range mappingListPingMonitorsSortByEnum {
+		mappingListPingMonitorsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPingMonitorsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListPingMonitorsSortOrderEnum Enum with underlying type: string
 type ListPingMonitorsSortOrderEnum string
 
@@ -185,4 +196,15 @@ func GetListPingMonitorsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListPingMonitorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPingMonitorsSortOrderEnum(val string) (ListPingMonitorsSortOrderEnum, bool) {
+	mappingListPingMonitorsSortOrderEnumIgnoreCase := make(map[string]ListPingMonitorsSortOrderEnum)
+	for k, v := range mappingListPingMonitorsSortOrderEnum {
+		mappingListPingMonitorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPingMonitorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

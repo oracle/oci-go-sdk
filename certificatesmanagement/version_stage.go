@@ -9,6 +9,10 @@
 
 package certificatesmanagement
 
+import (
+	"strings"
+)
+
 // VersionStageEnum Enum with underlying type: string
 type VersionStageEnum string
 
@@ -50,4 +54,15 @@ func GetVersionStageEnumStringValues() []string {
 		"DEPRECATED",
 		"FAILED",
 	}
+}
+
+// GetMappingVersionStageEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVersionStageEnum(val string) (VersionStageEnum, bool) {
+	mappingVersionStageEnumIgnoreCase := make(map[string]VersionStageEnum)
+	for k, v := range mappingVersionStageEnum {
+		mappingVersionStageEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVersionStageEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

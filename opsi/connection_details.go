@@ -42,7 +42,7 @@ func (m ConnectionDetails) String() string {
 // Not recommended for calling this function directly
 func (m ConnectionDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingConnectionDetailsProtocolEnum[string(m.Protocol)]; !ok && m.Protocol != "" {
+	if _, ok := GetMappingConnectionDetailsProtocolEnum(string(m.Protocol)); !ok && m.Protocol != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Protocol: %s. Supported values are: %s.", m.Protocol, strings.Join(GetConnectionDetailsProtocolEnumStringValues(), ",")))
 	}
 
@@ -81,4 +81,15 @@ func GetConnectionDetailsProtocolEnumStringValues() []string {
 		"TCP",
 		"TCPS",
 	}
+}
+
+// GetMappingConnectionDetailsProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConnectionDetailsProtocolEnum(val string) (ConnectionDetailsProtocolEnum, bool) {
+	mappingConnectionDetailsProtocolEnumIgnoreCase := make(map[string]ConnectionDetailsProtocolEnum)
+	for k, v := range mappingConnectionDetailsProtocolEnum {
+		mappingConnectionDetailsProtocolEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConnectionDetailsProtocolEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

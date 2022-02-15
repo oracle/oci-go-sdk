@@ -91,7 +91,7 @@ func (m Sdk) String() string {
 func (m Sdk) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSdkLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingSdkLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSdkLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -138,4 +138,15 @@ func GetSdkLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingSdkLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSdkLifecycleStateEnum(val string) (SdkLifecycleStateEnum, bool) {
+	mappingSdkLifecycleStateEnumIgnoreCase := make(map[string]SdkLifecycleStateEnum)
+	for k, v := range mappingSdkLifecycleStateEnum {
+		mappingSdkLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSdkLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

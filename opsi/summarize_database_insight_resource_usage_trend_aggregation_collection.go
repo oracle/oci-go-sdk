@@ -48,10 +48,10 @@ func (m SummarizeDatabaseInsightResourceUsageTrendAggregationCollection) String(
 // Not recommended for calling this function directly
 func (m SummarizeDatabaseInsightResourceUsageTrendAggregationCollection) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeDatabaseInsightResourceUsageTrendAggregationCollectionResourceMetricEnum[string(m.ResourceMetric)]; !ok && m.ResourceMetric != "" {
+	if _, ok := GetMappingSummarizeDatabaseInsightResourceUsageTrendAggregationCollectionResourceMetricEnum(string(m.ResourceMetric)); !ok && m.ResourceMetric != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResourceMetric: %s. Supported values are: %s.", m.ResourceMetric, strings.Join(GetSummarizeDatabaseInsightResourceUsageTrendAggregationCollectionResourceMetricEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUsageUnitEnum[string(m.UsageUnit)]; !ok && m.UsageUnit != "" {
+	if _, ok := GetMappingUsageUnitEnum(string(m.UsageUnit)); !ok && m.UsageUnit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UsageUnit: %s. Supported values are: %s.", m.UsageUnit, strings.Join(GetUsageUnitEnumStringValues(), ",")))
 	}
 
@@ -102,4 +102,15 @@ func GetSummarizeDatabaseInsightResourceUsageTrendAggregationCollectionResourceM
 		"MEMORY_PGA",
 		"MEMORY_SGA",
 	}
+}
+
+// GetMappingSummarizeDatabaseInsightResourceUsageTrendAggregationCollectionResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeDatabaseInsightResourceUsageTrendAggregationCollectionResourceMetricEnum(val string) (SummarizeDatabaseInsightResourceUsageTrendAggregationCollectionResourceMetricEnum, bool) {
+	mappingSummarizeDatabaseInsightResourceUsageTrendAggregationCollectionResourceMetricEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceUsageTrendAggregationCollectionResourceMetricEnum)
+	for k, v := range mappingSummarizeDatabaseInsightResourceUsageTrendAggregationCollectionResourceMetricEnum {
+		mappingSummarizeDatabaseInsightResourceUsageTrendAggregationCollectionResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeDatabaseInsightResourceUsageTrendAggregationCollectionResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

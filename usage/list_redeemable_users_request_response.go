@@ -75,10 +75,10 @@ func (request ListRedeemableUsersRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListRedeemableUsersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListRedeemableUsersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListRedeemableUsersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListRedeemableUsersSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListRedeemableUsersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListRedeemableUsersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListRedeemableUsersSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -149,6 +149,17 @@ func GetListRedeemableUsersSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListRedeemableUsersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRedeemableUsersSortOrderEnum(val string) (ListRedeemableUsersSortOrderEnum, bool) {
+	mappingListRedeemableUsersSortOrderEnumIgnoreCase := make(map[string]ListRedeemableUsersSortOrderEnum)
+	for k, v := range mappingListRedeemableUsersSortOrderEnum {
+		mappingListRedeemableUsersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRedeemableUsersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListRedeemableUsersSortByEnum Enum with underlying type: string
 type ListRedeemableUsersSortByEnum string
 
@@ -178,4 +189,15 @@ func GetListRedeemableUsersSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"TIMESTART",
 	}
+}
+
+// GetMappingListRedeemableUsersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRedeemableUsersSortByEnum(val string) (ListRedeemableUsersSortByEnum, bool) {
+	mappingListRedeemableUsersSortByEnumIgnoreCase := make(map[string]ListRedeemableUsersSortByEnum)
+	for k, v := range mappingListRedeemableUsersSortByEnum {
+		mappingListRedeemableUsersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRedeemableUsersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

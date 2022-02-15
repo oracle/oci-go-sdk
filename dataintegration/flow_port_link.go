@@ -175,3 +175,14 @@ func GetFlowPortLinkModelTypeEnumStringValues() []string {
 		"INPUT_LINK",
 	}
 }
+
+// GetMappingFlowPortLinkModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFlowPortLinkModelTypeEnum(val string) (FlowPortLinkModelTypeEnum, bool) {
+	mappingFlowPortLinkModelTypeEnumIgnoreCase := make(map[string]FlowPortLinkModelTypeEnum)
+	for k, v := range mappingFlowPortLinkModelTypeEnum {
+		mappingFlowPortLinkModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFlowPortLinkModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

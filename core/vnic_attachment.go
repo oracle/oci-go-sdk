@@ -87,7 +87,7 @@ func (m VnicAttachment) String() string {
 // Not recommended for calling this function directly
 func (m VnicAttachment) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVnicAttachmentLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingVnicAttachmentLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetVnicAttachmentLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -132,4 +132,15 @@ func GetVnicAttachmentLifecycleStateEnumStringValues() []string {
 		"DETACHING",
 		"DETACHED",
 	}
+}
+
+// GetMappingVnicAttachmentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVnicAttachmentLifecycleStateEnum(val string) (VnicAttachmentLifecycleStateEnum, bool) {
+	mappingVnicAttachmentLifecycleStateEnumIgnoreCase := make(map[string]VnicAttachmentLifecycleStateEnum)
+	for k, v := range mappingVnicAttachmentLifecycleStateEnum {
+		mappingVnicAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVnicAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

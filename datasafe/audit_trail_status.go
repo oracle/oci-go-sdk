@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // AuditTrailStatusEnum Enum with underlying type: string
 type AuditTrailStatusEnum string
 
@@ -56,4 +60,15 @@ func GetAuditTrailStatusEnumStringValues() []string {
 		"RESUMING",
 		"RETRYING",
 	}
+}
+
+// GetMappingAuditTrailStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAuditTrailStatusEnum(val string) (AuditTrailStatusEnum, bool) {
+	mappingAuditTrailStatusEnumIgnoreCase := make(map[string]AuditTrailStatusEnum)
+	for k, v := range mappingAuditTrailStatusEnum {
+		mappingAuditTrailStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAuditTrailStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

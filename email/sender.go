@@ -66,7 +66,7 @@ func (m Sender) String() string {
 func (m Sender) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSenderLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingSenderLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSenderLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -110,4 +110,15 @@ func GetSenderLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingSenderLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSenderLifecycleStateEnum(val string) (SenderLifecycleStateEnum, bool) {
+	mappingSenderLifecycleStateEnumIgnoreCase := make(map[string]SenderLifecycleStateEnum)
+	for k, v := range mappingSenderLifecycleStateEnum {
+		mappingSenderLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSenderLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

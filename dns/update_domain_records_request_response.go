@@ -91,7 +91,7 @@ func (request UpdateDomainRecordsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request UpdateDomainRecordsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUpdateDomainRecordsScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingUpdateDomainRecordsScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetUpdateDomainRecordsScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -165,4 +165,15 @@ func GetUpdateDomainRecordsScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingUpdateDomainRecordsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateDomainRecordsScopeEnum(val string) (UpdateDomainRecordsScopeEnum, bool) {
+	mappingUpdateDomainRecordsScopeEnumIgnoreCase := make(map[string]UpdateDomainRecordsScopeEnum)
+	for k, v := range mappingUpdateDomainRecordsScopeEnum {
+		mappingUpdateDomainRecordsScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateDomainRecordsScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

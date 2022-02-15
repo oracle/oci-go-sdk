@@ -91,7 +91,7 @@ func (m Rule) String() string {
 // Not recommended for calling this function directly
 func (m Rule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRuleLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingRuleLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetRuleLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -145,4 +145,15 @@ func GetRuleLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingRuleLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRuleLifecycleStateEnum(val string) (RuleLifecycleStateEnum, bool) {
+	mappingRuleLifecycleStateEnumIgnoreCase := make(map[string]RuleLifecycleStateEnum)
+	for k, v := range mappingRuleLifecycleStateEnum {
+		mappingRuleLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRuleLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

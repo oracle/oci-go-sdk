@@ -97,19 +97,19 @@ func (request ListDataMaskRulesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDataMaskRulesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDataMaskRulesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListDataMaskRulesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListDataMaskRulesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDataMaskRulesAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListDataMaskRulesAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListDataMaskRulesAccessLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDataMaskRulesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDataMaskRulesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDataMaskRulesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDataMaskRulesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDataMaskRulesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDataMaskRulesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDataMaskRulesDataMaskRuleStatusEnum[string(request.DataMaskRuleStatus)]; !ok && request.DataMaskRuleStatus != "" {
+	if _, ok := GetMappingListDataMaskRulesDataMaskRuleStatusEnum(string(request.DataMaskRuleStatus)); !ok && request.DataMaskRuleStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataMaskRuleStatus: %s. Supported values are: %s.", request.DataMaskRuleStatus, strings.Join(GetListDataMaskRulesDataMaskRuleStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -192,6 +192,17 @@ func GetListDataMaskRulesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDataMaskRulesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDataMaskRulesLifecycleStateEnum(val string) (ListDataMaskRulesLifecycleStateEnum, bool) {
+	mappingListDataMaskRulesLifecycleStateEnumIgnoreCase := make(map[string]ListDataMaskRulesLifecycleStateEnum)
+	for k, v := range mappingListDataMaskRulesLifecycleStateEnum {
+		mappingListDataMaskRulesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDataMaskRulesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDataMaskRulesAccessLevelEnum Enum with underlying type: string
 type ListDataMaskRulesAccessLevelEnum string
 
@@ -221,6 +232,17 @@ func GetListDataMaskRulesAccessLevelEnumStringValues() []string {
 		"RESTRICTED",
 		"ACCESSIBLE",
 	}
+}
+
+// GetMappingListDataMaskRulesAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDataMaskRulesAccessLevelEnum(val string) (ListDataMaskRulesAccessLevelEnum, bool) {
+	mappingListDataMaskRulesAccessLevelEnumIgnoreCase := make(map[string]ListDataMaskRulesAccessLevelEnum)
+	for k, v := range mappingListDataMaskRulesAccessLevelEnum {
+		mappingListDataMaskRulesAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDataMaskRulesAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListDataMaskRulesSortOrderEnum Enum with underlying type: string
@@ -254,6 +276,17 @@ func GetListDataMaskRulesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDataMaskRulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDataMaskRulesSortOrderEnum(val string) (ListDataMaskRulesSortOrderEnum, bool) {
+	mappingListDataMaskRulesSortOrderEnumIgnoreCase := make(map[string]ListDataMaskRulesSortOrderEnum)
+	for k, v := range mappingListDataMaskRulesSortOrderEnum {
+		mappingListDataMaskRulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDataMaskRulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDataMaskRulesSortByEnum Enum with underlying type: string
 type ListDataMaskRulesSortByEnum string
 
@@ -285,6 +318,17 @@ func GetListDataMaskRulesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDataMaskRulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDataMaskRulesSortByEnum(val string) (ListDataMaskRulesSortByEnum, bool) {
+	mappingListDataMaskRulesSortByEnumIgnoreCase := make(map[string]ListDataMaskRulesSortByEnum)
+	for k, v := range mappingListDataMaskRulesSortByEnum {
+		mappingListDataMaskRulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDataMaskRulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDataMaskRulesDataMaskRuleStatusEnum Enum with underlying type: string
 type ListDataMaskRulesDataMaskRuleStatusEnum string
 
@@ -314,4 +358,15 @@ func GetListDataMaskRulesDataMaskRuleStatusEnumStringValues() []string {
 		"ENABLED",
 		"DISABLED",
 	}
+}
+
+// GetMappingListDataMaskRulesDataMaskRuleStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDataMaskRulesDataMaskRuleStatusEnum(val string) (ListDataMaskRulesDataMaskRuleStatusEnum, bool) {
+	mappingListDataMaskRulesDataMaskRuleStatusEnumIgnoreCase := make(map[string]ListDataMaskRulesDataMaskRuleStatusEnum)
+	for k, v := range mappingListDataMaskRulesDataMaskRuleStatusEnum {
+		mappingListDataMaskRulesDataMaskRuleStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDataMaskRulesDataMaskRuleStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

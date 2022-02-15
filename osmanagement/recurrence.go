@@ -35,7 +35,7 @@ func (m Recurrence) String() string {
 // Not recommended for calling this function directly
 func (m Recurrence) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRecurrenceIntervalTypeEnum[string(m.IntervalType)]; !ok && m.IntervalType != "" {
+	if _, ok := GetMappingRecurrenceIntervalTypeEnum(string(m.IntervalType)); !ok && m.IntervalType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IntervalType: %s. Supported values are: %s.", m.IntervalType, strings.Join(GetRecurrenceIntervalTypeEnumStringValues(), ",")))
 	}
 
@@ -80,4 +80,15 @@ func GetRecurrenceIntervalTypeEnumStringValues() []string {
 		"DAYS",
 		"WEEKS",
 	}
+}
+
+// GetMappingRecurrenceIntervalTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRecurrenceIntervalTypeEnum(val string) (RecurrenceIntervalTypeEnum, bool) {
+	mappingRecurrenceIntervalTypeEnumIgnoreCase := make(map[string]RecurrenceIntervalTypeEnum)
+	for k, v := range mappingRecurrenceIntervalTypeEnum {
+		mappingRecurrenceIntervalTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRecurrenceIntervalTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

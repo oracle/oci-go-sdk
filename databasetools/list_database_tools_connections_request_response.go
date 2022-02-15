@@ -81,19 +81,19 @@ func (request ListDatabaseToolsConnectionsRequest) RetryPolicy() *common.RetryPo
 // Not recommended for calling this function directly
 func (request ListDatabaseToolsConnectionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDatabaseToolsConnectionsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListDatabaseToolsConnectionsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListDatabaseToolsConnectionsLifecycleStateEnumStringValues(), ",")))
 	}
 	for _, val := range request.Type {
-		if _, ok := mappingConnectionTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingConnectionTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", val, strings.Join(GetConnectionTypeEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListDatabaseToolsConnectionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDatabaseToolsConnectionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDatabaseToolsConnectionsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDatabaseToolsConnectionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDatabaseToolsConnectionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDatabaseToolsConnectionsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -173,6 +173,17 @@ func GetListDatabaseToolsConnectionsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDatabaseToolsConnectionsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseToolsConnectionsLifecycleStateEnum(val string) (ListDatabaseToolsConnectionsLifecycleStateEnum, bool) {
+	mappingListDatabaseToolsConnectionsLifecycleStateEnumIgnoreCase := make(map[string]ListDatabaseToolsConnectionsLifecycleStateEnum)
+	for k, v := range mappingListDatabaseToolsConnectionsLifecycleStateEnum {
+		mappingListDatabaseToolsConnectionsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseToolsConnectionsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDatabaseToolsConnectionsSortOrderEnum Enum with underlying type: string
 type ListDatabaseToolsConnectionsSortOrderEnum string
 
@@ -204,6 +215,17 @@ func GetListDatabaseToolsConnectionsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDatabaseToolsConnectionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseToolsConnectionsSortOrderEnum(val string) (ListDatabaseToolsConnectionsSortOrderEnum, bool) {
+	mappingListDatabaseToolsConnectionsSortOrderEnumIgnoreCase := make(map[string]ListDatabaseToolsConnectionsSortOrderEnum)
+	for k, v := range mappingListDatabaseToolsConnectionsSortOrderEnum {
+		mappingListDatabaseToolsConnectionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseToolsConnectionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDatabaseToolsConnectionsSortByEnum Enum with underlying type: string
 type ListDatabaseToolsConnectionsSortByEnum string
 
@@ -233,4 +255,15 @@ func GetListDatabaseToolsConnectionsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListDatabaseToolsConnectionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseToolsConnectionsSortByEnum(val string) (ListDatabaseToolsConnectionsSortByEnum, bool) {
+	mappingListDatabaseToolsConnectionsSortByEnumIgnoreCase := make(map[string]ListDatabaseToolsConnectionsSortByEnum)
+	for k, v := range mappingListDatabaseToolsConnectionsSortByEnum {
+		mappingListDatabaseToolsConnectionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseToolsConnectionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -73,7 +73,7 @@ func (request ListIdentityProviderGroupsRequest) RetryPolicy() *common.RetryPoli
 // Not recommended for calling this function directly
 func (request ListIdentityProviderGroupsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingIdentityProviderLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingIdentityProviderLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetIdentityProviderLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

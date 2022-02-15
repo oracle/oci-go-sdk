@@ -43,7 +43,7 @@ func (m SetHeaderPolicyItem) String() string {
 func (m SetHeaderPolicyItem) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSetHeaderPolicyItemIfExistsEnum[string(m.IfExists)]; !ok && m.IfExists != "" {
+	if _, ok := GetMappingSetHeaderPolicyItemIfExistsEnum(string(m.IfExists)); !ok && m.IfExists != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IfExists: %s. Supported values are: %s.", m.IfExists, strings.Join(GetSetHeaderPolicyItemIfExistsEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -84,4 +84,15 @@ func GetSetHeaderPolicyItemIfExistsEnumStringValues() []string {
 		"APPEND",
 		"SKIP",
 	}
+}
+
+// GetMappingSetHeaderPolicyItemIfExistsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSetHeaderPolicyItemIfExistsEnum(val string) (SetHeaderPolicyItemIfExistsEnum, bool) {
+	mappingSetHeaderPolicyItemIfExistsEnumIgnoreCase := make(map[string]SetHeaderPolicyItemIfExistsEnum)
+	for k, v := range mappingSetHeaderPolicyItemIfExistsEnum {
+		mappingSetHeaderPolicyItemIfExistsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSetHeaderPolicyItemIfExistsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

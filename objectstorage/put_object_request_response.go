@@ -154,7 +154,7 @@ func (request PutObjectRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request PutObjectRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPutObjectStorageTierEnum[string(request.StorageTier)]; !ok && request.StorageTier != "" {
+	if _, ok := GetMappingPutObjectStorageTierEnum(string(request.StorageTier)); !ok && request.StorageTier != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for StorageTier: %s. Supported values are: %s.", request.StorageTier, strings.Join(GetPutObjectStorageTierEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -230,4 +230,15 @@ func GetPutObjectStorageTierEnumStringValues() []string {
 		"InfrequentAccess",
 		"Archive",
 	}
+}
+
+// GetMappingPutObjectStorageTierEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPutObjectStorageTierEnum(val string) (PutObjectStorageTierEnum, bool) {
+	mappingPutObjectStorageTierEnumIgnoreCase := make(map[string]PutObjectStorageTierEnum)
+	for k, v := range mappingPutObjectStorageTierEnum {
+		mappingPutObjectStorageTierEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPutObjectStorageTierEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

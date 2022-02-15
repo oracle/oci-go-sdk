@@ -11,6 +11,10 @@
 
 package operatoraccesscontrol
 
+import (
+	"strings"
+)
+
 // AccessRequestSeveritiesEnum Enum with underlying type: string
 type AccessRequestSeveritiesEnum string
 
@@ -46,4 +50,15 @@ func GetAccessRequestSeveritiesEnumStringValues() []string {
 		"S3",
 		"S4",
 	}
+}
+
+// GetMappingAccessRequestSeveritiesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAccessRequestSeveritiesEnum(val string) (AccessRequestSeveritiesEnum, bool) {
+	mappingAccessRequestSeveritiesEnumIgnoreCase := make(map[string]AccessRequestSeveritiesEnum)
+	for k, v := range mappingAccessRequestSeveritiesEnum {
+		mappingAccessRequestSeveritiesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAccessRequestSeveritiesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

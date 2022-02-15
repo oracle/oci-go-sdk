@@ -9,6 +9,10 @@
 
 package managementagent
 
+import (
+	"strings"
+)
+
 // AvailabilityStatusEnum Enum with underlying type: string
 type AvailabilityStatusEnum string
 
@@ -41,4 +45,15 @@ func GetAvailabilityStatusEnumStringValues() []string {
 		"SILENT",
 		"NOT_AVAILABLE",
 	}
+}
+
+// GetMappingAvailabilityStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAvailabilityStatusEnum(val string) (AvailabilityStatusEnum, bool) {
+	mappingAvailabilityStatusEnumIgnoreCase := make(map[string]AvailabilityStatusEnum)
+	for k, v := range mappingAvailabilityStatusEnum {
+		mappingAvailabilityStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAvailabilityStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

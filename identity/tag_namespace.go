@@ -65,7 +65,7 @@ func (m TagNamespace) String() string {
 func (m TagNamespace) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTagNamespaceLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingTagNamespaceLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetTagNamespaceLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -109,4 +109,15 @@ func GetTagNamespaceLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingTagNamespaceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTagNamespaceLifecycleStateEnum(val string) (TagNamespaceLifecycleStateEnum, bool) {
+	mappingTagNamespaceLifecycleStateEnumIgnoreCase := make(map[string]TagNamespaceLifecycleStateEnum)
+	for k, v := range mappingTagNamespaceLifecycleStateEnum {
+		mappingTagNamespaceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTagNamespaceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

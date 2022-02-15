@@ -109,3 +109,14 @@ func GetUpdateHostDumpTransferDetailsKindEnumStringValues() []string {
 		"OCI_CLI",
 	}
 }
+
+// GetMappingUpdateHostDumpTransferDetailsKindEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateHostDumpTransferDetailsKindEnum(val string) (UpdateHostDumpTransferDetailsKindEnum, bool) {
+	mappingUpdateHostDumpTransferDetailsKindEnumIgnoreCase := make(map[string]UpdateHostDumpTransferDetailsKindEnum)
+	for k, v := range mappingUpdateHostDumpTransferDetailsKindEnum {
+		mappingUpdateHostDumpTransferDetailsKindEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateHostDumpTransferDetailsKindEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

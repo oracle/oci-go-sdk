@@ -83,10 +83,10 @@ func (request ListPeersRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListPeersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListPeersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListPeersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListPeersSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPeersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListPeersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListPeersSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -154,6 +154,17 @@ func GetListPeersSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListPeersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPeersSortOrderEnum(val string) (ListPeersSortOrderEnum, bool) {
+	mappingListPeersSortOrderEnumIgnoreCase := make(map[string]ListPeersSortOrderEnum)
+	for k, v := range mappingListPeersSortOrderEnum {
+		mappingListPeersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPeersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListPeersSortByEnum Enum with underlying type: string
 type ListPeersSortByEnum string
 
@@ -183,4 +194,15 @@ func GetListPeersSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListPeersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPeersSortByEnum(val string) (ListPeersSortByEnum, bool) {
+	mappingListPeersSortByEnumIgnoreCase := make(map[string]ListPeersSortByEnum)
+	for k, v := range mappingListPeersSortByEnum {
+		mappingListPeersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPeersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

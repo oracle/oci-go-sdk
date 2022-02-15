@@ -36,7 +36,7 @@ func (m Extract) String() string {
 func (m Extract) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingExtractPerformanceProfileEnum[string(m.PerformanceProfile)]; !ok && m.PerformanceProfile != "" {
+	if _, ok := GetMappingExtractPerformanceProfileEnum(string(m.PerformanceProfile)); !ok && m.PerformanceProfile != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PerformanceProfile: %s. Supported values are: %s.", m.PerformanceProfile, strings.Join(GetExtractPerformanceProfileEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

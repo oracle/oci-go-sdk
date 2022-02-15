@@ -92,13 +92,13 @@ func (request ListInstancePoolsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListInstancePoolsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListInstancePoolsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListInstancePoolsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListInstancePoolsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListInstancePoolsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListInstancePoolsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListInstancePoolsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingInstancePoolSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingInstancePoolSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetInstancePoolSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -166,6 +166,17 @@ func GetListInstancePoolsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListInstancePoolsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListInstancePoolsSortByEnum(val string) (ListInstancePoolsSortByEnum, bool) {
+	mappingListInstancePoolsSortByEnumIgnoreCase := make(map[string]ListInstancePoolsSortByEnum)
+	for k, v := range mappingListInstancePoolsSortByEnum {
+		mappingListInstancePoolsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListInstancePoolsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListInstancePoolsSortOrderEnum Enum with underlying type: string
 type ListInstancePoolsSortOrderEnum string
 
@@ -195,4 +206,15 @@ func GetListInstancePoolsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListInstancePoolsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListInstancePoolsSortOrderEnum(val string) (ListInstancePoolsSortOrderEnum, bool) {
+	mappingListInstancePoolsSortOrderEnumIgnoreCase := make(map[string]ListInstancePoolsSortOrderEnum)
+	for k, v := range mappingListInstancePoolsSortOrderEnum {
+		mappingListInstancePoolsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListInstancePoolsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

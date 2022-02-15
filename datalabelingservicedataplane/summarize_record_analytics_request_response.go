@@ -81,16 +81,16 @@ func (request SummarizeRecordAnalyticsRequest) RetryPolicy() *common.RetryPolicy
 // Not recommended for calling this function directly
 func (request SummarizeRecordAnalyticsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRecordLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingRecordLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetRecordLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeRecordAnalyticsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeRecordAnalyticsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeRecordAnalyticsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeRecordAnalyticsRecordGroupByEnum[string(request.RecordGroupBy)]; !ok && request.RecordGroupBy != "" {
+	if _, ok := GetMappingSummarizeRecordAnalyticsRecordGroupByEnum(string(request.RecordGroupBy)); !ok && request.RecordGroupBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RecordGroupBy: %s. Supported values are: %s.", request.RecordGroupBy, strings.Join(GetSummarizeRecordAnalyticsRecordGroupByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeRecordAnalyticsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeRecordAnalyticsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeRecordAnalyticsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -158,6 +158,17 @@ func GetSummarizeRecordAnalyticsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeRecordAnalyticsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeRecordAnalyticsSortOrderEnum(val string) (SummarizeRecordAnalyticsSortOrderEnum, bool) {
+	mappingSummarizeRecordAnalyticsSortOrderEnumIgnoreCase := make(map[string]SummarizeRecordAnalyticsSortOrderEnum)
+	for k, v := range mappingSummarizeRecordAnalyticsSortOrderEnum {
+		mappingSummarizeRecordAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeRecordAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeRecordAnalyticsRecordGroupByEnum Enum with underlying type: string
 type SummarizeRecordAnalyticsRecordGroupByEnum string
 
@@ -189,6 +200,17 @@ func GetSummarizeRecordAnalyticsRecordGroupByEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeRecordAnalyticsRecordGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeRecordAnalyticsRecordGroupByEnum(val string) (SummarizeRecordAnalyticsRecordGroupByEnum, bool) {
+	mappingSummarizeRecordAnalyticsRecordGroupByEnumIgnoreCase := make(map[string]SummarizeRecordAnalyticsRecordGroupByEnum)
+	for k, v := range mappingSummarizeRecordAnalyticsRecordGroupByEnum {
+		mappingSummarizeRecordAnalyticsRecordGroupByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeRecordAnalyticsRecordGroupByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeRecordAnalyticsSortByEnum Enum with underlying type: string
 type SummarizeRecordAnalyticsSortByEnum string
 
@@ -218,4 +240,15 @@ func GetSummarizeRecordAnalyticsSortByEnumStringValues() []string {
 		"count",
 		"isLabeled",
 	}
+}
+
+// GetMappingSummarizeRecordAnalyticsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeRecordAnalyticsSortByEnum(val string) (SummarizeRecordAnalyticsSortByEnum, bool) {
+	mappingSummarizeRecordAnalyticsSortByEnumIgnoreCase := make(map[string]SummarizeRecordAnalyticsSortByEnum)
+	for k, v := range mappingSummarizeRecordAnalyticsSortByEnum {
+		mappingSummarizeRecordAnalyticsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeRecordAnalyticsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

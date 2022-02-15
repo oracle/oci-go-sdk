@@ -81,13 +81,13 @@ func (request ListOperatorControlsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListOperatorControlsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListOperatorControlsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListOperatorControlsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListOperatorControlsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListOperatorControlsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListOperatorControlsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListOperatorControlsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListOperatorControlsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListOperatorControlsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListOperatorControlsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -161,6 +161,17 @@ func GetListOperatorControlsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListOperatorControlsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListOperatorControlsLifecycleStateEnum(val string) (ListOperatorControlsLifecycleStateEnum, bool) {
+	mappingListOperatorControlsLifecycleStateEnumIgnoreCase := make(map[string]ListOperatorControlsLifecycleStateEnum)
+	for k, v := range mappingListOperatorControlsLifecycleStateEnum {
+		mappingListOperatorControlsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListOperatorControlsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListOperatorControlsSortOrderEnum Enum with underlying type: string
 type ListOperatorControlsSortOrderEnum string
 
@@ -192,6 +203,17 @@ func GetListOperatorControlsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListOperatorControlsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListOperatorControlsSortOrderEnum(val string) (ListOperatorControlsSortOrderEnum, bool) {
+	mappingListOperatorControlsSortOrderEnumIgnoreCase := make(map[string]ListOperatorControlsSortOrderEnum)
+	for k, v := range mappingListOperatorControlsSortOrderEnum {
+		mappingListOperatorControlsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListOperatorControlsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListOperatorControlsSortByEnum Enum with underlying type: string
 type ListOperatorControlsSortByEnum string
 
@@ -221,4 +243,15 @@ func GetListOperatorControlsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListOperatorControlsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListOperatorControlsSortByEnum(val string) (ListOperatorControlsSortByEnum, bool) {
+	mappingListOperatorControlsSortByEnumIgnoreCase := make(map[string]ListOperatorControlsSortByEnum)
+	for k, v := range mappingListOperatorControlsSortByEnum {
+		mappingListOperatorControlsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListOperatorControlsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -42,7 +42,7 @@ func (m UiPasswordInformation) String() string {
 func (m UiPasswordInformation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUiPasswordInformationLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingUiPasswordInformationLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetUiPasswordInformationLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -89,4 +89,15 @@ func GetUiPasswordInformationLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingUiPasswordInformationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUiPasswordInformationLifecycleStateEnum(val string) (UiPasswordInformationLifecycleStateEnum, bool) {
+	mappingUiPasswordInformationLifecycleStateEnumIgnoreCase := make(map[string]UiPasswordInformationLifecycleStateEnum)
+	for k, v := range mappingUiPasswordInformationLifecycleStateEnum {
+		mappingUiPasswordInformationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUiPasswordInformationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

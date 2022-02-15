@@ -95,13 +95,13 @@ func (request ListNatGatewaysRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListNatGatewaysRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListNatGatewaysSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListNatGatewaysSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListNatGatewaysSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListNatGatewaysSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListNatGatewaysSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListNatGatewaysSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingNatGatewayLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingNatGatewayLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetNatGatewayLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -169,6 +169,17 @@ func GetListNatGatewaysSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListNatGatewaysSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNatGatewaysSortByEnum(val string) (ListNatGatewaysSortByEnum, bool) {
+	mappingListNatGatewaysSortByEnumIgnoreCase := make(map[string]ListNatGatewaysSortByEnum)
+	for k, v := range mappingListNatGatewaysSortByEnum {
+		mappingListNatGatewaysSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNatGatewaysSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListNatGatewaysSortOrderEnum Enum with underlying type: string
 type ListNatGatewaysSortOrderEnum string
 
@@ -198,4 +209,15 @@ func GetListNatGatewaysSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListNatGatewaysSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNatGatewaysSortOrderEnum(val string) (ListNatGatewaysSortOrderEnum, bool) {
+	mappingListNatGatewaysSortOrderEnumIgnoreCase := make(map[string]ListNatGatewaysSortOrderEnum)
+	for k, v := range mappingListNatGatewaysSortOrderEnum {
+		mappingListNatGatewaysSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNatGatewaysSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

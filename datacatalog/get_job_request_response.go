@@ -67,7 +67,7 @@ func (request GetJobRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetJobRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetJobFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetJobFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetJobFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -199,4 +199,15 @@ func GetGetJobFieldsEnumStringValues() []string {
 		"errorCode",
 		"errorMessage",
 	}
+}
+
+// GetMappingGetJobFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetJobFieldsEnum(val string) (GetJobFieldsEnum, bool) {
+	mappingGetJobFieldsEnumIgnoreCase := make(map[string]GetJobFieldsEnum)
+	for k, v := range mappingGetJobFieldsEnum {
+		mappingGetJobFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetJobFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

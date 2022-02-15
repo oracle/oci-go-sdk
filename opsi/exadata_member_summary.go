@@ -39,7 +39,7 @@ func (m ExadataMemberSummary) String() string {
 // Not recommended for calling this function directly
 func (m ExadataMemberSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingExadataMemberSummaryEntityTypeEnum[string(m.EntityType)]; !ok && m.EntityType != "" {
+	if _, ok := GetMappingExadataMemberSummaryEntityTypeEnum(string(m.EntityType)); !ok && m.EntityType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EntityType: %s. Supported values are: %s.", m.EntityType, strings.Join(GetExadataMemberSummaryEntityTypeEnumStringValues(), ",")))
 	}
 
@@ -93,4 +93,15 @@ func GetExadataMemberSummaryEntityTypeEnumStringValues() []string {
 		"INFINIBAND_SWITCH",
 		"ETHERNET_SWITCH",
 	}
+}
+
+// GetMappingExadataMemberSummaryEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExadataMemberSummaryEntityTypeEnum(val string) (ExadataMemberSummaryEntityTypeEnum, bool) {
+	mappingExadataMemberSummaryEntityTypeEnumIgnoreCase := make(map[string]ExadataMemberSummaryEntityTypeEnum)
+	for k, v := range mappingExadataMemberSummaryEntityTypeEnum {
+		mappingExadataMemberSummaryEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExadataMemberSummaryEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

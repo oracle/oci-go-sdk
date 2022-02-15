@@ -9,6 +9,10 @@
 
 package analytics
 
+import (
+	"strings"
+)
+
 // WorkRequestActionResultEnum Enum with underlying type: string
 type WorkRequestActionResultEnum string
 
@@ -74,4 +78,15 @@ func GetWorkRequestActionResultEnumStringValues() []string {
 		"PRIVATE_ACCESS_CHANNEL_DELETED",
 		"NONE",
 	}
+}
+
+// GetMappingWorkRequestActionResultEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestActionResultEnum(val string) (WorkRequestActionResultEnum, bool) {
+	mappingWorkRequestActionResultEnumIgnoreCase := make(map[string]WorkRequestActionResultEnum)
+	for k, v := range mappingWorkRequestActionResultEnum {
+		mappingWorkRequestActionResultEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestActionResultEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

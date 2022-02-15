@@ -72,10 +72,10 @@ func (request ListImpactedResourcesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListImpactedResourcesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListImpactedResourcesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListImpactedResourcesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListImpactedResourcesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListImpactedResourcesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListImpactedResourcesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListImpactedResourcesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -143,6 +143,17 @@ func GetListImpactedResourcesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListImpactedResourcesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListImpactedResourcesSortOrderEnum(val string) (ListImpactedResourcesSortOrderEnum, bool) {
+	mappingListImpactedResourcesSortOrderEnumIgnoreCase := make(map[string]ListImpactedResourcesSortOrderEnum)
+	for k, v := range mappingListImpactedResourcesSortOrderEnum {
+		mappingListImpactedResourcesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListImpactedResourcesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListImpactedResourcesSortByEnum Enum with underlying type: string
 type ListImpactedResourcesSortByEnum string
 
@@ -169,4 +180,15 @@ func GetListImpactedResourcesSortByEnumStringValues() []string {
 	return []string{
 		"timeCreated",
 	}
+}
+
+// GetMappingListImpactedResourcesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListImpactedResourcesSortByEnum(val string) (ListImpactedResourcesSortByEnum, bool) {
+	mappingListImpactedResourcesSortByEnumIgnoreCase := make(map[string]ListImpactedResourcesSortByEnum)
+	for k, v := range mappingListImpactedResourcesSortByEnum {
+		mappingListImpactedResourcesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListImpactedResourcesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

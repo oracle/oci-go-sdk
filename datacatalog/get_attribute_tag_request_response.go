@@ -76,7 +76,7 @@ func (request GetAttributeTagRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetAttributeTagRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetAttributeTagFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetAttributeTagFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetAttributeTagFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -166,4 +166,15 @@ func GetGetAttributeTagFieldsEnumStringValues() []string {
 		"uri",
 		"attributeKey",
 	}
+}
+
+// GetMappingGetAttributeTagFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetAttributeTagFieldsEnum(val string) (GetAttributeTagFieldsEnum, bool) {
+	mappingGetAttributeTagFieldsEnumIgnoreCase := make(map[string]GetAttributeTagFieldsEnum)
+	for k, v := range mappingGetAttributeTagFieldsEnum {
+		mappingGetAttributeTagFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetAttributeTagFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -56,7 +56,7 @@ func (m LetterOfAuthority) String() string {
 func (m LetterOfAuthority) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLetterOfAuthorityCircuitTypeEnum[string(m.CircuitType)]; !ok && m.CircuitType != "" {
+	if _, ok := GetMappingLetterOfAuthorityCircuitTypeEnum(string(m.CircuitType)); !ok && m.CircuitType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CircuitType: %s. Supported values are: %s.", m.CircuitType, strings.Join(GetLetterOfAuthorityCircuitTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -94,4 +94,15 @@ func GetLetterOfAuthorityCircuitTypeEnumStringValues() []string {
 		"Single_mode_LC",
 		"Single_mode_SC",
 	}
+}
+
+// GetMappingLetterOfAuthorityCircuitTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLetterOfAuthorityCircuitTypeEnum(val string) (LetterOfAuthorityCircuitTypeEnum, bool) {
+	mappingLetterOfAuthorityCircuitTypeEnumIgnoreCase := make(map[string]LetterOfAuthorityCircuitTypeEnum)
+	for k, v := range mappingLetterOfAuthorityCircuitTypeEnum {
+		mappingLetterOfAuthorityCircuitTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLetterOfAuthorityCircuitTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

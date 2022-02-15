@@ -102,3 +102,14 @@ func GetDynamicTypeHandlerModelTypeEnumStringValues() []string {
 		"RULE_TYPE_CONFIGS",
 	}
 }
+
+// GetMappingDynamicTypeHandlerModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDynamicTypeHandlerModelTypeEnum(val string) (DynamicTypeHandlerModelTypeEnum, bool) {
+	mappingDynamicTypeHandlerModelTypeEnumIgnoreCase := make(map[string]DynamicTypeHandlerModelTypeEnum)
+	for k, v := range mappingDynamicTypeHandlerModelTypeEnum {
+		mappingDynamicTypeHandlerModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDynamicTypeHandlerModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

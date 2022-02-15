@@ -92,15 +92,15 @@ func (request ListEnterpriseManagerBridgesRequest) RetryPolicy() *common.RetryPo
 func (request ListEnterpriseManagerBridgesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.LifecycleState {
-		if _, ok := mappingLifecycleStateEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingLifecycleStateEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", val, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListEnterpriseManagerBridgesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListEnterpriseManagerBridgesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListEnterpriseManagerBridgesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListEnterpriseManagerBridgesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListEnterpriseManagerBridgesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListEnterpriseManagerBridgesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -168,6 +168,17 @@ func GetListEnterpriseManagerBridgesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListEnterpriseManagerBridgesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEnterpriseManagerBridgesSortOrderEnum(val string) (ListEnterpriseManagerBridgesSortOrderEnum, bool) {
+	mappingListEnterpriseManagerBridgesSortOrderEnumIgnoreCase := make(map[string]ListEnterpriseManagerBridgesSortOrderEnum)
+	for k, v := range mappingListEnterpriseManagerBridgesSortOrderEnum {
+		mappingListEnterpriseManagerBridgesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEnterpriseManagerBridgesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListEnterpriseManagerBridgesSortByEnum Enum with underlying type: string
 type ListEnterpriseManagerBridgesSortByEnum string
 
@@ -197,4 +208,15 @@ func GetListEnterpriseManagerBridgesSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListEnterpriseManagerBridgesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEnterpriseManagerBridgesSortByEnum(val string) (ListEnterpriseManagerBridgesSortByEnum, bool) {
+	mappingListEnterpriseManagerBridgesSortByEnumIgnoreCase := make(map[string]ListEnterpriseManagerBridgesSortByEnum)
+	for k, v := range mappingListEnterpriseManagerBridgesSortByEnum {
+		mappingListEnterpriseManagerBridgesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEnterpriseManagerBridgesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

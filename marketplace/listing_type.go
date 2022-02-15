@@ -9,6 +9,10 @@
 
 package marketplace
 
+import (
+	"strings"
+)
+
 // ListingTypeEnum Enum with underlying type: string
 type ListingTypeEnum string
 
@@ -41,4 +45,15 @@ func GetListingTypeEnumStringValues() []string {
 		"PARTNER",
 		"PRIVATE",
 	}
+}
+
+// GetMappingListingTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListingTypeEnum(val string) (ListingTypeEnum, bool) {
+	mappingListingTypeEnumIgnoreCase := make(map[string]ListingTypeEnum)
+	for k, v := range mappingListingTypeEnum {
+		mappingListingTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListingTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

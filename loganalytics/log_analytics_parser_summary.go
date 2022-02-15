@@ -125,7 +125,7 @@ func (m LogAnalyticsParserSummary) String() string {
 func (m LogAnalyticsParserSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLogAnalyticsParserSummaryTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingLogAnalyticsParserSummaryTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetLogAnalyticsParserSummaryTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -172,4 +172,15 @@ func GetLogAnalyticsParserSummaryTypeEnumStringValues() []string {
 		"ODL",
 		"DELIMITED",
 	}
+}
+
+// GetMappingLogAnalyticsParserSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogAnalyticsParserSummaryTypeEnum(val string) (LogAnalyticsParserSummaryTypeEnum, bool) {
+	mappingLogAnalyticsParserSummaryTypeEnumIgnoreCase := make(map[string]LogAnalyticsParserSummaryTypeEnum)
+	for k, v := range mappingLogAnalyticsParserSummaryTypeEnum {
+		mappingLogAnalyticsParserSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogAnalyticsParserSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

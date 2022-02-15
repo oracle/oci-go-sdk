@@ -141,17 +141,17 @@ func (m RoverNode) String() string {
 // Not recommended for calling this function directly
 func (m RoverNode) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingNodeTypeEnum[string(m.NodeType)]; !ok && m.NodeType != "" {
+	if _, ok := GetMappingNodeTypeEnum(string(m.NodeType)); !ok && m.NodeType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NodeType: %s. Supported values are: %s.", m.NodeType, strings.Join(GetNodeTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingEnclosureTypeEnum[string(m.EnclosureType)]; !ok && m.EnclosureType != "" {
+	if _, ok := GetMappingEnclosureTypeEnum(string(m.EnclosureType)); !ok && m.EnclosureType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EnclosureType: %s. Supported values are: %s.", m.EnclosureType, strings.Join(GetEnclosureTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingRoverNodeShippingPreferenceEnum[string(m.ShippingPreference)]; !ok && m.ShippingPreference != "" {
+	if _, ok := GetMappingRoverNodeShippingPreferenceEnum(string(m.ShippingPreference)); !ok && m.ShippingPreference != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShippingPreference: %s. Supported values are: %s.", m.ShippingPreference, strings.Join(GetRoverNodeShippingPreferenceEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -189,4 +189,15 @@ func GetRoverNodeShippingPreferenceEnumStringValues() []string {
 		"ORACLE_SHIPPED",
 		"CUSTOMER_PICKUP",
 	}
+}
+
+// GetMappingRoverNodeShippingPreferenceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRoverNodeShippingPreferenceEnum(val string) (RoverNodeShippingPreferenceEnum, bool) {
+	mappingRoverNodeShippingPreferenceEnumIgnoreCase := make(map[string]RoverNodeShippingPreferenceEnum)
+	for k, v := range mappingRoverNodeShippingPreferenceEnum {
+		mappingRoverNodeShippingPreferenceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRoverNodeShippingPreferenceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

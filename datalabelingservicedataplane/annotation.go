@@ -67,7 +67,7 @@ func (m Annotation) String() string {
 // Not recommended for calling this function directly
 func (m Annotation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAnnotationLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAnnotationLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAnnotationLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -166,4 +166,15 @@ func GetAnnotationLifecycleStateEnumStringValues() []string {
 		"INACTIVE",
 		"DELETED",
 	}
+}
+
+// GetMappingAnnotationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAnnotationLifecycleStateEnum(val string) (AnnotationLifecycleStateEnum, bool) {
+	mappingAnnotationLifecycleStateEnumIgnoreCase := make(map[string]AnnotationLifecycleStateEnum)
+	for k, v := range mappingAnnotationLifecycleStateEnum {
+		mappingAnnotationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAnnotationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

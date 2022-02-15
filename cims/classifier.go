@@ -50,10 +50,10 @@ func (m Classifier) String() string {
 func (m Classifier) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingClassifierScopeEnum[string(m.Scope)]; !ok && m.Scope != "" {
+	if _, ok := GetMappingClassifierScopeEnum(string(m.Scope)); !ok && m.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", m.Scope, strings.Join(GetClassifierScopeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingClassifierUnitEnum[string(m.Unit)]; !ok && m.Unit != "" {
+	if _, ok := GetMappingClassifierUnitEnum(string(m.Unit)); !ok && m.Unit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Unit: %s. Supported values are: %s.", m.Unit, strings.Join(GetClassifierUnitEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -99,6 +99,17 @@ func GetClassifierScopeEnumStringValues() []string {
 	}
 }
 
+// GetMappingClassifierScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingClassifierScopeEnum(val string) (ClassifierScopeEnum, bool) {
+	mappingClassifierScopeEnumIgnoreCase := make(map[string]ClassifierScopeEnum)
+	for k, v := range mappingClassifierScopeEnum {
+		mappingClassifierScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingClassifierScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ClassifierUnitEnum Enum with underlying type: string
 type ClassifierUnitEnum string
 
@@ -131,4 +142,15 @@ func GetClassifierUnitEnumStringValues() []string {
 		"GB",
 		"NONE",
 	}
+}
+
+// GetMappingClassifierUnitEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingClassifierUnitEnum(val string) (ClassifierUnitEnum, bool) {
+	mappingClassifierUnitEnumIgnoreCase := make(map[string]ClassifierUnitEnum)
+	for k, v := range mappingClassifierUnitEnum {
+		mappingClassifierUnitEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingClassifierUnitEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

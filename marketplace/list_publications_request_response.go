@@ -87,13 +87,13 @@ func (request ListPublicationsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListPublicationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListPublicationsListingTypeEnum[string(request.ListingType)]; !ok && request.ListingType != "" {
+	if _, ok := GetMappingListPublicationsListingTypeEnum(string(request.ListingType)); !ok && request.ListingType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ListingType: %s. Supported values are: %s.", request.ListingType, strings.Join(GetListPublicationsListingTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPublicationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListPublicationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListPublicationsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPublicationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListPublicationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListPublicationsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -164,6 +164,17 @@ func GetListPublicationsListingTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListPublicationsListingTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPublicationsListingTypeEnum(val string) (ListPublicationsListingTypeEnum, bool) {
+	mappingListPublicationsListingTypeEnumIgnoreCase := make(map[string]ListPublicationsListingTypeEnum)
+	for k, v := range mappingListPublicationsListingTypeEnum {
+		mappingListPublicationsListingTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPublicationsListingTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListPublicationsSortByEnum Enum with underlying type: string
 type ListPublicationsSortByEnum string
 
@@ -190,6 +201,17 @@ func GetListPublicationsSortByEnumStringValues() []string {
 	return []string{
 		"TIMERELEASED",
 	}
+}
+
+// GetMappingListPublicationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPublicationsSortByEnum(val string) (ListPublicationsSortByEnum, bool) {
+	mappingListPublicationsSortByEnumIgnoreCase := make(map[string]ListPublicationsSortByEnum)
+	for k, v := range mappingListPublicationsSortByEnum {
+		mappingListPublicationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPublicationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListPublicationsSortOrderEnum Enum with underlying type: string
@@ -221,4 +243,15 @@ func GetListPublicationsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListPublicationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPublicationsSortOrderEnum(val string) (ListPublicationsSortOrderEnum, bool) {
+	mappingListPublicationsSortOrderEnumIgnoreCase := make(map[string]ListPublicationsSortOrderEnum)
+	for k, v := range mappingListPublicationsSortOrderEnum {
+		mappingListPublicationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPublicationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

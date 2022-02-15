@@ -137,10 +137,10 @@ func (request SummarizeExadataInsightResourceCapacityTrendAggregatedRequest) Ret
 // Not recommended for calling this function directly
 func (request SummarizeExadataInsightResourceCapacityTrendAggregatedRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -208,6 +208,17 @@ func GetSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnumStrin
 	}
 }
 
+// GetMappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum(val string) (SummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum, bool) {
+	mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum {
+		mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum Enum with underlying type: string
 type SummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum string
 
@@ -237,4 +248,15 @@ func GetSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnumStringVa
 		"endTimestamp",
 		"capacity",
 	}
+}
+
+// GetMappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum(val string) (SummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum, bool) {
+	mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum {
+		mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

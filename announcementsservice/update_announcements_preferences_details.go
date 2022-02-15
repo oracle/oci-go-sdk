@@ -56,7 +56,7 @@ func (m UpdateAnnouncementsPreferencesDetails) String() string {
 func (m UpdateAnnouncementsPreferencesDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum[string(m.PreferenceType)]; !ok && m.PreferenceType != "" {
+	if _, ok := GetMappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum(string(m.PreferenceType)); !ok && m.PreferenceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PreferenceType: %s. Supported values are: %s.", m.PreferenceType, strings.Join(GetBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

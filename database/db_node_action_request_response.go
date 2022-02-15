@@ -76,7 +76,7 @@ func (request DbNodeActionRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request DbNodeActionRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDbNodeActionActionEnum[string(request.Action)]; !ok && request.Action != "" {
+	if _, ok := GetMappingDbNodeActionActionEnum(string(request.Action)); !ok && request.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", request.Action, strings.Join(GetDbNodeActionActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -149,4 +149,15 @@ func GetDbNodeActionActionEnumStringValues() []string {
 		"SOFTRESET",
 		"RESET",
 	}
+}
+
+// GetMappingDbNodeActionActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbNodeActionActionEnum(val string) (DbNodeActionActionEnum, bool) {
+	mappingDbNodeActionActionEnumIgnoreCase := make(map[string]DbNodeActionActionEnum)
+	for k, v := range mappingDbNodeActionActionEnum {
+		mappingDbNodeActionActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbNodeActionActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

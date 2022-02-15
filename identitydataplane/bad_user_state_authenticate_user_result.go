@@ -43,7 +43,7 @@ func (m BadUserStateAuthenticateUserResult) String() string {
 // Not recommended for calling this function directly
 func (m BadUserStateAuthenticateUserResult) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBadUserStateAuthenticateUserResultUserStateEnum[string(m.UserState)]; !ok && m.UserState != "" {
+	if _, ok := GetMappingBadUserStateAuthenticateUserResultUserStateEnum(string(m.UserState)); !ok && m.UserState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UserState: %s. Supported values are: %s.", m.UserState, strings.Join(GetBadUserStateAuthenticateUserResultUserStateEnumStringValues(), ",")))
 	}
 
@@ -88,4 +88,15 @@ func GetBadUserStateAuthenticateUserResultUserStateEnumStringValues() []string {
 		"ONE_TIME_PASSWORD_EXPIRED",
 		"PASSWORD_INVALID",
 	}
+}
+
+// GetMappingBadUserStateAuthenticateUserResultUserStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBadUserStateAuthenticateUserResultUserStateEnum(val string) (BadUserStateAuthenticateUserResultUserStateEnum, bool) {
+	mappingBadUserStateAuthenticateUserResultUserStateEnumIgnoreCase := make(map[string]BadUserStateAuthenticateUserResultUserStateEnum)
+	for k, v := range mappingBadUserStateAuthenticateUserResultUserStateEnum {
+		mappingBadUserStateAuthenticateUserResultUserStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBadUserStateAuthenticateUserResultUserStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -79,7 +79,7 @@ func (m ExternalPublication) String() string {
 func (m ExternalPublication) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingExternalPublicationStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingExternalPublicationStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetExternalPublicationStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -120,4 +120,15 @@ func GetExternalPublicationStatusEnumStringValues() []string {
 		"FAILED",
 		"PUBLISHING",
 	}
+}
+
+// GetMappingExternalPublicationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExternalPublicationStatusEnum(val string) (ExternalPublicationStatusEnum, bool) {
+	mappingExternalPublicationStatusEnumIgnoreCase := make(map[string]ExternalPublicationStatusEnum)
+	for k, v := range mappingExternalPublicationStatusEnum {
+		mappingExternalPublicationStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExternalPublicationStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

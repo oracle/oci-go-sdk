@@ -81,13 +81,13 @@ func (request ListDatabaseToolsEndpointServicesRequest) RetryPolicy() *common.Re
 // Not recommended for calling this function directly
 func (request ListDatabaseToolsEndpointServicesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDatabaseToolsEndpointServicesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDatabaseToolsEndpointServicesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDatabaseToolsEndpointServicesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDatabaseToolsEndpointServicesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDatabaseToolsEndpointServicesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDatabaseToolsEndpointServicesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDatabaseToolsEndpointServicesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListDatabaseToolsEndpointServicesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListDatabaseToolsEndpointServicesLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -155,6 +155,17 @@ func GetListDatabaseToolsEndpointServicesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDatabaseToolsEndpointServicesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseToolsEndpointServicesSortOrderEnum(val string) (ListDatabaseToolsEndpointServicesSortOrderEnum, bool) {
+	mappingListDatabaseToolsEndpointServicesSortOrderEnumIgnoreCase := make(map[string]ListDatabaseToolsEndpointServicesSortOrderEnum)
+	for k, v := range mappingListDatabaseToolsEndpointServicesSortOrderEnum {
+		mappingListDatabaseToolsEndpointServicesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseToolsEndpointServicesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDatabaseToolsEndpointServicesSortByEnum Enum with underlying type: string
 type ListDatabaseToolsEndpointServicesSortByEnum string
 
@@ -184,6 +195,17 @@ func GetListDatabaseToolsEndpointServicesSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListDatabaseToolsEndpointServicesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseToolsEndpointServicesSortByEnum(val string) (ListDatabaseToolsEndpointServicesSortByEnum, bool) {
+	mappingListDatabaseToolsEndpointServicesSortByEnumIgnoreCase := make(map[string]ListDatabaseToolsEndpointServicesSortByEnum)
+	for k, v := range mappingListDatabaseToolsEndpointServicesSortByEnum {
+		mappingListDatabaseToolsEndpointServicesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseToolsEndpointServicesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListDatabaseToolsEndpointServicesLifecycleStateEnum Enum with underlying type: string
@@ -227,4 +249,15 @@ func GetListDatabaseToolsEndpointServicesLifecycleStateEnumStringValues() []stri
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingListDatabaseToolsEndpointServicesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseToolsEndpointServicesLifecycleStateEnum(val string) (ListDatabaseToolsEndpointServicesLifecycleStateEnum, bool) {
+	mappingListDatabaseToolsEndpointServicesLifecycleStateEnumIgnoreCase := make(map[string]ListDatabaseToolsEndpointServicesLifecycleStateEnum)
+	for k, v := range mappingListDatabaseToolsEndpointServicesLifecycleStateEnum {
+		mappingListDatabaseToolsEndpointServicesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseToolsEndpointServicesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

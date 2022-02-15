@@ -183,3 +183,14 @@ func GetFieldValueValueTypeEnumStringValues() []string {
 		"ARRAY",
 	}
 }
+
+// GetMappingFieldValueValueTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFieldValueValueTypeEnum(val string) (FieldValueValueTypeEnum, bool) {
+	mappingFieldValueValueTypeEnumIgnoreCase := make(map[string]FieldValueValueTypeEnum)
+	for k, v := range mappingFieldValueValueTypeEnum {
+		mappingFieldValueValueTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFieldValueValueTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

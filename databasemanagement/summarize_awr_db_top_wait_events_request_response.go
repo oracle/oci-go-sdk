@@ -104,13 +104,13 @@ func (request SummarizeAwrDbTopWaitEventsRequest) RetryPolicy() *common.RetryPol
 // Not recommended for calling this function directly
 func (request SummarizeAwrDbTopWaitEventsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeAwrDbTopWaitEventsSessionTypeEnum[string(request.SessionType)]; !ok && request.SessionType != "" {
+	if _, ok := GetMappingSummarizeAwrDbTopWaitEventsSessionTypeEnum(string(request.SessionType)); !ok && request.SessionType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SessionType: %s. Supported values are: %s.", request.SessionType, strings.Join(GetSummarizeAwrDbTopWaitEventsSessionTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeAwrDbTopWaitEventsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeAwrDbTopWaitEventsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeAwrDbTopWaitEventsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeAwrDbTopWaitEventsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeAwrDbTopWaitEventsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeAwrDbTopWaitEventsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -181,6 +181,17 @@ func GetSummarizeAwrDbTopWaitEventsSessionTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeAwrDbTopWaitEventsSessionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeAwrDbTopWaitEventsSessionTypeEnum(val string) (SummarizeAwrDbTopWaitEventsSessionTypeEnum, bool) {
+	mappingSummarizeAwrDbTopWaitEventsSessionTypeEnumIgnoreCase := make(map[string]SummarizeAwrDbTopWaitEventsSessionTypeEnum)
+	for k, v := range mappingSummarizeAwrDbTopWaitEventsSessionTypeEnum {
+		mappingSummarizeAwrDbTopWaitEventsSessionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeAwrDbTopWaitEventsSessionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeAwrDbTopWaitEventsSortByEnum Enum with underlying type: string
 type SummarizeAwrDbTopWaitEventsSortByEnum string
 
@@ -212,6 +223,17 @@ func GetSummarizeAwrDbTopWaitEventsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeAwrDbTopWaitEventsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeAwrDbTopWaitEventsSortByEnum(val string) (SummarizeAwrDbTopWaitEventsSortByEnum, bool) {
+	mappingSummarizeAwrDbTopWaitEventsSortByEnumIgnoreCase := make(map[string]SummarizeAwrDbTopWaitEventsSortByEnum)
+	for k, v := range mappingSummarizeAwrDbTopWaitEventsSortByEnum {
+		mappingSummarizeAwrDbTopWaitEventsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeAwrDbTopWaitEventsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeAwrDbTopWaitEventsSortOrderEnum Enum with underlying type: string
 type SummarizeAwrDbTopWaitEventsSortOrderEnum string
 
@@ -241,4 +263,15 @@ func GetSummarizeAwrDbTopWaitEventsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingSummarizeAwrDbTopWaitEventsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeAwrDbTopWaitEventsSortOrderEnum(val string) (SummarizeAwrDbTopWaitEventsSortOrderEnum, bool) {
+	mappingSummarizeAwrDbTopWaitEventsSortOrderEnumIgnoreCase := make(map[string]SummarizeAwrDbTopWaitEventsSortOrderEnum)
+	for k, v := range mappingSummarizeAwrDbTopWaitEventsSortOrderEnum {
+		mappingSummarizeAwrDbTopWaitEventsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeAwrDbTopWaitEventsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

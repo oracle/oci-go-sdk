@@ -45,10 +45,10 @@ func (m SummarizeHostInsightResourceStatisticsAggregationCollection) String() st
 // Not recommended for calling this function directly
 func (m SummarizeHostInsightResourceStatisticsAggregationCollection) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnum[string(m.ResourceMetric)]; !ok && m.ResourceMetric != "" {
+	if _, ok := GetMappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnum(string(m.ResourceMetric)); !ok && m.ResourceMetric != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResourceMetric: %s. Supported values are: %s.", m.ResourceMetric, strings.Join(GetSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUsageUnitEnum[string(m.UsageUnit)]; !ok && m.UsageUnit != "" {
+	if _, ok := GetMappingUsageUnitEnum(string(m.UsageUnit)); !ok && m.UsageUnit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UsageUnit: %s. Supported values are: %s.", m.UsageUnit, strings.Join(GetUsageUnitEnumStringValues(), ",")))
 	}
 
@@ -90,4 +90,15 @@ func GetSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetri
 		"MEMORY",
 		"LOGICAL_MEMORY",
 	}
+}
+
+// GetMappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnum(val string) (SummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnum, bool) {
+	mappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnum)
+	for k, v := range mappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnum {
+		mappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

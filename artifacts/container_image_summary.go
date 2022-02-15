@@ -60,7 +60,7 @@ func (m ContainerImageSummary) String() string {
 // Not recommended for calling this function directly
 func (m ContainerImageSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingContainerImageLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingContainerImageLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetContainerImageLifecycleStateEnumStringValues(), ",")))
 	}
 

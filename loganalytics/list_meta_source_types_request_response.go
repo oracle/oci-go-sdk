@@ -72,10 +72,10 @@ func (request ListMetaSourceTypesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListMetaSourceTypesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListMetaSourceTypesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListMetaSourceTypesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListMetaSourceTypesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListMetaSourceTypesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListMetaSourceTypesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListMetaSourceTypesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -144,6 +144,17 @@ func GetListMetaSourceTypesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListMetaSourceTypesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMetaSourceTypesSortByEnum(val string) (ListMetaSourceTypesSortByEnum, bool) {
+	mappingListMetaSourceTypesSortByEnumIgnoreCase := make(map[string]ListMetaSourceTypesSortByEnum)
+	for k, v := range mappingListMetaSourceTypesSortByEnum {
+		mappingListMetaSourceTypesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMetaSourceTypesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListMetaSourceTypesSortOrderEnum Enum with underlying type: string
 type ListMetaSourceTypesSortOrderEnum string
 
@@ -173,4 +184,15 @@ func GetListMetaSourceTypesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListMetaSourceTypesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMetaSourceTypesSortOrderEnum(val string) (ListMetaSourceTypesSortOrderEnum, bool) {
+	mappingListMetaSourceTypesSortOrderEnumIgnoreCase := make(map[string]ListMetaSourceTypesSortOrderEnum)
+	for k, v := range mappingListMetaSourceTypesSortOrderEnum {
+		mappingListMetaSourceTypesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMetaSourceTypesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

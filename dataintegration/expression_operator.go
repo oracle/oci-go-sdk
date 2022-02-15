@@ -131,7 +131,7 @@ func (m ExpressionOperator) String() string {
 // Not recommended for calling this function directly
 func (m ExpressionOperator) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingExpressionOperatorTriggerRuleEnum[string(m.TriggerRule)]; !ok && m.TriggerRule != "" {
+	if _, ok := GetMappingExpressionOperatorTriggerRuleEnum(string(m.TriggerRule)); !ok && m.TriggerRule != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TriggerRule: %s. Supported values are: %s.", m.TriggerRule, strings.Join(GetExpressionOperatorTriggerRuleEnumStringValues(), ",")))
 	}
 
@@ -187,4 +187,15 @@ func GetExpressionOperatorTriggerRuleEnumStringValues() []string {
 		"ALL_FAILED",
 		"ALL_COMPLETE",
 	}
+}
+
+// GetMappingExpressionOperatorTriggerRuleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExpressionOperatorTriggerRuleEnum(val string) (ExpressionOperatorTriggerRuleEnum, bool) {
+	mappingExpressionOperatorTriggerRuleEnumIgnoreCase := make(map[string]ExpressionOperatorTriggerRuleEnum)
+	for k, v := range mappingExpressionOperatorTriggerRuleEnum {
+		mappingExpressionOperatorTriggerRuleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExpressionOperatorTriggerRuleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -53,10 +53,10 @@ func (m AssociationSummary) String() string {
 // Not recommended for calling this function directly
 func (m AssociationSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAssociationLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAssociationLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAssociationLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAssociationTypeEnum[string(m.AssociationType)]; !ok && m.AssociationType != "" {
+	if _, ok := GetMappingAssociationTypeEnum(string(m.AssociationType)); !ok && m.AssociationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AssociationType: %s. Supported values are: %s.", m.AssociationType, strings.Join(GetAssociationTypeEnumStringValues(), ",")))
 	}
 

@@ -147,3 +147,14 @@ func GetCreateExternalDatabaseConnectorDetailsConnectorTypeEnumStringValues() []
 		"MACS",
 	}
 }
+
+// GetMappingCreateExternalDatabaseConnectorDetailsConnectorTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateExternalDatabaseConnectorDetailsConnectorTypeEnum(val string) (CreateExternalDatabaseConnectorDetailsConnectorTypeEnum, bool) {
+	mappingCreateExternalDatabaseConnectorDetailsConnectorTypeEnumIgnoreCase := make(map[string]CreateExternalDatabaseConnectorDetailsConnectorTypeEnum)
+	for k, v := range mappingCreateExternalDatabaseConnectorDetailsConnectorTypeEnum {
+		mappingCreateExternalDatabaseConnectorDetailsConnectorTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateExternalDatabaseConnectorDetailsConnectorTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

@@ -65,7 +65,7 @@ func (m CreateUserDefinedFunctionValidationDetails) String() string {
 func (m CreateUserDefinedFunctionValidationDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateUserDefinedFunctionValidationDetailsModelTypeEnum[string(m.ModelType)]; !ok && m.ModelType != "" {
+	if _, ok := GetMappingCreateUserDefinedFunctionValidationDetailsModelTypeEnum(string(m.ModelType)); !ok && m.ModelType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ModelType: %s. Supported values are: %s.", m.ModelType, strings.Join(GetCreateUserDefinedFunctionValidationDetailsModelTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -100,4 +100,15 @@ func GetCreateUserDefinedFunctionValidationDetailsModelTypeEnumStringValues() []
 	return []string{
 		"DIS_USER_DEFINED_FUNCTION",
 	}
+}
+
+// GetMappingCreateUserDefinedFunctionValidationDetailsModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateUserDefinedFunctionValidationDetailsModelTypeEnum(val string) (CreateUserDefinedFunctionValidationDetailsModelTypeEnum, bool) {
+	mappingCreateUserDefinedFunctionValidationDetailsModelTypeEnumIgnoreCase := make(map[string]CreateUserDefinedFunctionValidationDetailsModelTypeEnum)
+	for k, v := range mappingCreateUserDefinedFunctionValidationDetailsModelTypeEnum {
+		mappingCreateUserDefinedFunctionValidationDetailsModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateUserDefinedFunctionValidationDetailsModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

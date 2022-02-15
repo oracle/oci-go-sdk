@@ -36,7 +36,7 @@ func (m MaskingAnalyticsSummary) String() string {
 // Not recommended for calling this function directly
 func (m MaskingAnalyticsSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingMaskingAnalyticsSummaryMetricNameEnum[string(m.MetricName)]; !ok && m.MetricName != "" {
+	if _, ok := GetMappingMaskingAnalyticsSummaryMetricNameEnum(string(m.MetricName)); !ok && m.MetricName != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MetricName: %s. Supported values are: %s.", m.MetricName, strings.Join(GetMaskingAnalyticsSummaryMetricNameEnumStringValues(), ",")))
 	}
 
@@ -93,4 +93,15 @@ func GetMaskingAnalyticsSummaryMetricNameEnumStringValues() []string {
 		"MASKED_COLUMN",
 		"MASKED_DATA_VALUE",
 	}
+}
+
+// GetMappingMaskingAnalyticsSummaryMetricNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMaskingAnalyticsSummaryMetricNameEnum(val string) (MaskingAnalyticsSummaryMetricNameEnum, bool) {
+	mappingMaskingAnalyticsSummaryMetricNameEnumIgnoreCase := make(map[string]MaskingAnalyticsSummaryMetricNameEnum)
+	for k, v := range mappingMaskingAnalyticsSummaryMetricNameEnum {
+		mappingMaskingAnalyticsSummaryMetricNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMaskingAnalyticsSummaryMetricNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

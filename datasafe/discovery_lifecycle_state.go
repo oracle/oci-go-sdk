@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // DiscoveryLifecycleStateEnum Enum with underlying type: string
 type DiscoveryLifecycleStateEnum string
 
@@ -50,4 +54,15 @@ func GetDiscoveryLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingDiscoveryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDiscoveryLifecycleStateEnum(val string) (DiscoveryLifecycleStateEnum, bool) {
+	mappingDiscoveryLifecycleStateEnumIgnoreCase := make(map[string]DiscoveryLifecycleStateEnum)
+	for k, v := range mappingDiscoveryLifecycleStateEnum {
+		mappingDiscoveryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDiscoveryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

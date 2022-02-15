@@ -53,7 +53,7 @@ func (m GenerateReportDetails) String() string {
 // Not recommended for calling this function directly
 func (m GenerateReportDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGenerateReportDetailsMimeTypeEnum[string(m.MimeType)]; !ok && m.MimeType != "" {
+	if _, ok := GetMappingGenerateReportDetailsMimeTypeEnum(string(m.MimeType)); !ok && m.MimeType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MimeType: %s. Supported values are: %s.", m.MimeType, strings.Join(GetGenerateReportDetailsMimeTypeEnumStringValues(), ",")))
 	}
 
@@ -92,4 +92,15 @@ func GetGenerateReportDetailsMimeTypeEnumStringValues() []string {
 		"PDF",
 		"XLS",
 	}
+}
+
+// GetMappingGenerateReportDetailsMimeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGenerateReportDetailsMimeTypeEnum(val string) (GenerateReportDetailsMimeTypeEnum, bool) {
+	mappingGenerateReportDetailsMimeTypeEnumIgnoreCase := make(map[string]GenerateReportDetailsMimeTypeEnum)
+	for k, v := range mappingGenerateReportDetailsMimeTypeEnum {
+		mappingGenerateReportDetailsMimeTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGenerateReportDetailsMimeTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

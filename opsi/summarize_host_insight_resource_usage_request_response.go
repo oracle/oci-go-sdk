@@ -132,7 +132,7 @@ func (request SummarizeHostInsightResourceUsageRequest) RetryPolicy() *common.Re
 func (request SummarizeHostInsightResourceUsageRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.PlatformType {
-		if _, ok := mappingSummarizeHostInsightResourceUsagePlatformTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingSummarizeHostInsightResourceUsagePlatformTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", val, strings.Join(GetSummarizeHostInsightResourceUsagePlatformTypeEnumStringValues(), ",")))
 		}
 	}
@@ -198,4 +198,15 @@ func GetSummarizeHostInsightResourceUsagePlatformTypeEnumStringValues() []string
 		"SOLARIS",
 		"SUNOS",
 	}
+}
+
+// GetMappingSummarizeHostInsightResourceUsagePlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeHostInsightResourceUsagePlatformTypeEnum(val string) (SummarizeHostInsightResourceUsagePlatformTypeEnum, bool) {
+	mappingSummarizeHostInsightResourceUsagePlatformTypeEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceUsagePlatformTypeEnum)
+	for k, v := range mappingSummarizeHostInsightResourceUsagePlatformTypeEnum {
+		mappingSummarizeHostInsightResourceUsagePlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeHostInsightResourceUsagePlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

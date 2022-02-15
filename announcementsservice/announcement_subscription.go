@@ -70,7 +70,7 @@ func (m AnnouncementSubscription) String() string {
 // Not recommended for calling this function directly
 func (m AnnouncementSubscription) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAnnouncementSubscriptionLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAnnouncementSubscriptionLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAnnouncementSubscriptionLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -112,4 +112,15 @@ func GetAnnouncementSubscriptionLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingAnnouncementSubscriptionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAnnouncementSubscriptionLifecycleStateEnum(val string) (AnnouncementSubscriptionLifecycleStateEnum, bool) {
+	mappingAnnouncementSubscriptionLifecycleStateEnumIgnoreCase := make(map[string]AnnouncementSubscriptionLifecycleStateEnum)
+	for k, v := range mappingAnnouncementSubscriptionLifecycleStateEnum {
+		mappingAnnouncementSubscriptionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAnnouncementSubscriptionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

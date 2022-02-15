@@ -49,7 +49,7 @@ func (m MaintenanceWindow) String() string {
 // Not recommended for calling this function directly
 func (m MaintenanceWindow) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingMaintenanceWindowPreferenceEnum[string(m.Preference)]; !ok && m.Preference != "" {
+	if _, ok := GetMappingMaintenanceWindowPreferenceEnum(string(m.Preference)); !ok && m.Preference != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Preference: %s. Supported values are: %s.", m.Preference, strings.Join(GetMaintenanceWindowPreferenceEnumStringValues(), ",")))
 	}
 
@@ -88,4 +88,15 @@ func GetMaintenanceWindowPreferenceEnumStringValues() []string {
 		"NO_PREFERENCE",
 		"CUSTOM_PREFERENCE",
 	}
+}
+
+// GetMappingMaintenanceWindowPreferenceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMaintenanceWindowPreferenceEnum(val string) (MaintenanceWindowPreferenceEnum, bool) {
+	mappingMaintenanceWindowPreferenceEnumIgnoreCase := make(map[string]MaintenanceWindowPreferenceEnum)
+	for k, v := range mappingMaintenanceWindowPreferenceEnum {
+		mappingMaintenanceWindowPreferenceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMaintenanceWindowPreferenceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

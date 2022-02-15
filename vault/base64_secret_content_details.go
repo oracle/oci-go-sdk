@@ -53,7 +53,7 @@ func (m Base64SecretContentDetails) String() string {
 func (m Base64SecretContentDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSecretContentDetailsStageEnum[string(m.Stage)]; !ok && m.Stage != "" {
+	if _, ok := GetMappingSecretContentDetailsStageEnum(string(m.Stage)); !ok && m.Stage != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stage: %s. Supported values are: %s.", m.Stage, strings.Join(GetSecretContentDetailsStageEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

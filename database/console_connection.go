@@ -46,7 +46,7 @@ func (m ConsoleConnection) String() string {
 // Not recommended for calling this function directly
 func (m ConsoleConnection) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingConsoleConnectionLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingConsoleConnectionLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetConsoleConnectionLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -94,4 +94,15 @@ func GetConsoleConnectionLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"FAILED",
 	}
+}
+
+// GetMappingConsoleConnectionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConsoleConnectionLifecycleStateEnum(val string) (ConsoleConnectionLifecycleStateEnum, bool) {
+	mappingConsoleConnectionLifecycleStateEnumIgnoreCase := make(map[string]ConsoleConnectionLifecycleStateEnum)
+	for k, v := range mappingConsoleConnectionLifecycleStateEnum {
+		mappingConsoleConnectionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConsoleConnectionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

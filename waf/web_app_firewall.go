@@ -183,7 +183,7 @@ func (m webappfirewall) String() string {
 // Not recommended for calling this function directly
 func (m webappfirewall) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingWebAppFirewallLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingWebAppFirewallLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetWebAppFirewallLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -234,4 +234,15 @@ func GetWebAppFirewallLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingWebAppFirewallLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWebAppFirewallLifecycleStateEnum(val string) (WebAppFirewallLifecycleStateEnum, bool) {
+	mappingWebAppFirewallLifecycleStateEnumIgnoreCase := make(map[string]WebAppFirewallLifecycleStateEnum)
+	for k, v := range mappingWebAppFirewallLifecycleStateEnum {
+		mappingWebAppFirewallLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWebAppFirewallLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

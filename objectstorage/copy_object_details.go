@@ -75,7 +75,7 @@ func (m CopyObjectDetails) String() string {
 func (m CopyObjectDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingStorageTierEnum[string(m.DestinationObjectStorageTier)]; !ok && m.DestinationObjectStorageTier != "" {
+	if _, ok := GetMappingStorageTierEnum(string(m.DestinationObjectStorageTier)); !ok && m.DestinationObjectStorageTier != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DestinationObjectStorageTier: %s. Supported values are: %s.", m.DestinationObjectStorageTier, strings.Join(GetStorageTierEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

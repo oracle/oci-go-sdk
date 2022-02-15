@@ -52,14 +52,14 @@ func (m VmClusterUpdateHistoryEntry) String() string {
 // Not recommended for calling this function directly
 func (m VmClusterUpdateHistoryEntry) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVmClusterUpdateHistoryEntryUpdateTypeEnum[string(m.UpdateType)]; !ok && m.UpdateType != "" {
+	if _, ok := GetMappingVmClusterUpdateHistoryEntryUpdateTypeEnum(string(m.UpdateType)); !ok && m.UpdateType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateType: %s. Supported values are: %s.", m.UpdateType, strings.Join(GetVmClusterUpdateHistoryEntryUpdateTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVmClusterUpdateHistoryEntryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingVmClusterUpdateHistoryEntryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetVmClusterUpdateHistoryEntryLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingVmClusterUpdateHistoryEntryUpdateActionEnum[string(m.UpdateAction)]; !ok && m.UpdateAction != "" {
+	if _, ok := GetMappingVmClusterUpdateHistoryEntryUpdateActionEnum(string(m.UpdateAction)); !ok && m.UpdateAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateAction: %s. Supported values are: %s.", m.UpdateAction, strings.Join(GetVmClusterUpdateHistoryEntryUpdateActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -102,6 +102,17 @@ func GetVmClusterUpdateHistoryEntryUpdateActionEnumStringValues() []string {
 	}
 }
 
+// GetMappingVmClusterUpdateHistoryEntryUpdateActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVmClusterUpdateHistoryEntryUpdateActionEnum(val string) (VmClusterUpdateHistoryEntryUpdateActionEnum, bool) {
+	mappingVmClusterUpdateHistoryEntryUpdateActionEnumIgnoreCase := make(map[string]VmClusterUpdateHistoryEntryUpdateActionEnum)
+	for k, v := range mappingVmClusterUpdateHistoryEntryUpdateActionEnum {
+		mappingVmClusterUpdateHistoryEntryUpdateActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVmClusterUpdateHistoryEntryUpdateActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // VmClusterUpdateHistoryEntryUpdateTypeEnum Enum with underlying type: string
 type VmClusterUpdateHistoryEntryUpdateTypeEnum string
 
@@ -136,6 +147,17 @@ func GetVmClusterUpdateHistoryEntryUpdateTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingVmClusterUpdateHistoryEntryUpdateTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVmClusterUpdateHistoryEntryUpdateTypeEnum(val string) (VmClusterUpdateHistoryEntryUpdateTypeEnum, bool) {
+	mappingVmClusterUpdateHistoryEntryUpdateTypeEnumIgnoreCase := make(map[string]VmClusterUpdateHistoryEntryUpdateTypeEnum)
+	for k, v := range mappingVmClusterUpdateHistoryEntryUpdateTypeEnum {
+		mappingVmClusterUpdateHistoryEntryUpdateTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVmClusterUpdateHistoryEntryUpdateTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // VmClusterUpdateHistoryEntryLifecycleStateEnum Enum with underlying type: string
 type VmClusterUpdateHistoryEntryLifecycleStateEnum string
 
@@ -168,4 +190,15 @@ func GetVmClusterUpdateHistoryEntryLifecycleStateEnumStringValues() []string {
 		"SUCCEEDED",
 		"FAILED",
 	}
+}
+
+// GetMappingVmClusterUpdateHistoryEntryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVmClusterUpdateHistoryEntryLifecycleStateEnum(val string) (VmClusterUpdateHistoryEntryLifecycleStateEnum, bool) {
+	mappingVmClusterUpdateHistoryEntryLifecycleStateEnumIgnoreCase := make(map[string]VmClusterUpdateHistoryEntryLifecycleStateEnum)
+	for k, v := range mappingVmClusterUpdateHistoryEntryLifecycleStateEnum {
+		mappingVmClusterUpdateHistoryEntryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVmClusterUpdateHistoryEntryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

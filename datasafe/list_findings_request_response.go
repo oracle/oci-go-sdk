@@ -82,10 +82,10 @@ func (request ListFindingsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListFindingsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListFindingsSeverityEnum[string(request.Severity)]; !ok && request.Severity != "" {
+	if _, ok := GetMappingListFindingsSeverityEnum(string(request.Severity)); !ok && request.Severity != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Severity: %s. Supported values are: %s.", request.Severity, strings.Join(GetListFindingsSeverityEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListFindingsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListFindingsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListFindingsAccessLevelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -167,6 +167,17 @@ func GetListFindingsSeverityEnumStringValues() []string {
 	}
 }
 
+// GetMappingListFindingsSeverityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFindingsSeverityEnum(val string) (ListFindingsSeverityEnum, bool) {
+	mappingListFindingsSeverityEnumIgnoreCase := make(map[string]ListFindingsSeverityEnum)
+	for k, v := range mappingListFindingsSeverityEnum {
+		mappingListFindingsSeverityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFindingsSeverityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListFindingsAccessLevelEnum Enum with underlying type: string
 type ListFindingsAccessLevelEnum string
 
@@ -196,4 +207,15 @@ func GetListFindingsAccessLevelEnumStringValues() []string {
 		"RESTRICTED",
 		"ACCESSIBLE",
 	}
+}
+
+// GetMappingListFindingsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFindingsAccessLevelEnum(val string) (ListFindingsAccessLevelEnum, bool) {
+	mappingListFindingsAccessLevelEnumIgnoreCase := make(map[string]ListFindingsAccessLevelEnum)
+	for k, v := range mappingListFindingsAccessLevelEnum {
+		mappingListFindingsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFindingsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

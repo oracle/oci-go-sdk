@@ -41,7 +41,7 @@ func (m BulkEditOperationDetails) String() string {
 // Not recommended for calling this function directly
 func (m BulkEditOperationDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBulkEditOperationDetailsOperationTypeEnum[string(m.OperationType)]; !ok && m.OperationType != "" {
+	if _, ok := GetMappingBulkEditOperationDetailsOperationTypeEnum(string(m.OperationType)); !ok && m.OperationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OperationType: %s. Supported values are: %s.", m.OperationType, strings.Join(GetBulkEditOperationDetailsOperationTypeEnumStringValues(), ",")))
 	}
 
@@ -86,4 +86,15 @@ func GetBulkEditOperationDetailsOperationTypeEnumStringValues() []string {
 		"ADD_OR_SET",
 		"REMOVE",
 	}
+}
+
+// GetMappingBulkEditOperationDetailsOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBulkEditOperationDetailsOperationTypeEnum(val string) (BulkEditOperationDetailsOperationTypeEnum, bool) {
+	mappingBulkEditOperationDetailsOperationTypeEnumIgnoreCase := make(map[string]BulkEditOperationDetailsOperationTypeEnum)
+	for k, v := range mappingBulkEditOperationDetailsOperationTypeEnum {
+		mappingBulkEditOperationDetailsOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBulkEditOperationDetailsOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -110,3 +110,14 @@ func GetBackupLocationDestinationEnumStringValues() []string {
 		"PRE_AUTHENTICATED_REQUEST_URI",
 	}
 }
+
+// GetMappingBackupLocationDestinationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackupLocationDestinationEnum(val string) (BackupLocationDestinationEnum, bool) {
+	mappingBackupLocationDestinationEnumIgnoreCase := make(map[string]BackupLocationDestinationEnum)
+	for k, v := range mappingBackupLocationDestinationEnum {
+		mappingBackupLocationDestinationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackupLocationDestinationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

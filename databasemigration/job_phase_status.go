@@ -9,6 +9,10 @@
 
 package databasemigration
 
+import (
+	"strings"
+)
+
 // JobPhaseStatusEnum Enum with underlying type: string
 type JobPhaseStatusEnum string
 
@@ -44,4 +48,15 @@ func GetJobPhaseStatusEnumStringValues() []string {
 		"COMPLETED",
 		"FAILED",
 	}
+}
+
+// GetMappingJobPhaseStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobPhaseStatusEnum(val string) (JobPhaseStatusEnum, bool) {
+	mappingJobPhaseStatusEnumIgnoreCase := make(map[string]JobPhaseStatusEnum)
+	for k, v := range mappingJobPhaseStatusEnum {
+		mappingJobPhaseStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobPhaseStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

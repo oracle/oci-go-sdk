@@ -86,13 +86,13 @@ func (request ListServiceConnectorsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListServiceConnectorsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListServiceConnectorsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListServiceConnectorsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListServiceConnectorsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListServiceConnectorsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListServiceConnectorsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListServiceConnectorsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListServiceConnectorsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListServiceConnectorsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListServiceConnectorsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -182,6 +182,17 @@ func GetListServiceConnectorsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListServiceConnectorsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListServiceConnectorsLifecycleStateEnum(val string) (ListServiceConnectorsLifecycleStateEnum, bool) {
+	mappingListServiceConnectorsLifecycleStateEnumIgnoreCase := make(map[string]ListServiceConnectorsLifecycleStateEnum)
+	for k, v := range mappingListServiceConnectorsLifecycleStateEnum {
+		mappingListServiceConnectorsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListServiceConnectorsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListServiceConnectorsSortOrderEnum Enum with underlying type: string
 type ListServiceConnectorsSortOrderEnum string
 
@@ -213,6 +224,17 @@ func GetListServiceConnectorsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListServiceConnectorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListServiceConnectorsSortOrderEnum(val string) (ListServiceConnectorsSortOrderEnum, bool) {
+	mappingListServiceConnectorsSortOrderEnumIgnoreCase := make(map[string]ListServiceConnectorsSortOrderEnum)
+	for k, v := range mappingListServiceConnectorsSortOrderEnum {
+		mappingListServiceConnectorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListServiceConnectorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListServiceConnectorsSortByEnum Enum with underlying type: string
 type ListServiceConnectorsSortByEnum string
 
@@ -242,4 +264,15 @@ func GetListServiceConnectorsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListServiceConnectorsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListServiceConnectorsSortByEnum(val string) (ListServiceConnectorsSortByEnum, bool) {
+	mappingListServiceConnectorsSortByEnumIgnoreCase := make(map[string]ListServiceConnectorsSortByEnum)
+	for k, v := range mappingListServiceConnectorsSortByEnum {
+		mappingListServiceConnectorsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListServiceConnectorsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

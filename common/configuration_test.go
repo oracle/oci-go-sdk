@@ -9,9 +9,10 @@ import (
 	"os"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
 	"path"
 	"strings"
+
+	"github.com/stretchr/testify/assert"
 )
 
 var (

@@ -68,7 +68,7 @@ func (m Quota) String() string {
 func (m Quota) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingQuotaLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingQuotaLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetQuotaLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -103,4 +103,15 @@ func GetQuotaLifecycleStateEnumStringValues() []string {
 	return []string{
 		"ACTIVE",
 	}
+}
+
+// GetMappingQuotaLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingQuotaLifecycleStateEnum(val string) (QuotaLifecycleStateEnum, bool) {
+	mappingQuotaLifecycleStateEnumIgnoreCase := make(map[string]QuotaLifecycleStateEnum)
+	for k, v := range mappingQuotaLifecycleStateEnum {
+		mappingQuotaLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingQuotaLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -69,10 +69,10 @@ func (m KeyVersion) String() string {
 func (m KeyVersion) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingKeyVersionLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingKeyVersionLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetKeyVersionLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingKeyVersionOriginEnum[string(m.Origin)]; !ok && m.Origin != "" {
+	if _, ok := GetMappingKeyVersionOriginEnum(string(m.Origin)); !ok && m.Origin != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Origin: %s. Supported values are: %s.", m.Origin, strings.Join(GetKeyVersionOriginEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -136,6 +136,17 @@ func GetKeyVersionLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingKeyVersionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeyVersionLifecycleStateEnum(val string) (KeyVersionLifecycleStateEnum, bool) {
+	mappingKeyVersionLifecycleStateEnumIgnoreCase := make(map[string]KeyVersionLifecycleStateEnum)
+	for k, v := range mappingKeyVersionLifecycleStateEnum {
+		mappingKeyVersionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeyVersionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // KeyVersionOriginEnum Enum with underlying type: string
 type KeyVersionOriginEnum string
 
@@ -165,4 +176,15 @@ func GetKeyVersionOriginEnumStringValues() []string {
 		"INTERNAL",
 		"EXTERNAL",
 	}
+}
+
+// GetMappingKeyVersionOriginEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeyVersionOriginEnum(val string) (KeyVersionOriginEnum, bool) {
+	mappingKeyVersionOriginEnumIgnoreCase := make(map[string]KeyVersionOriginEnum)
+	for k, v := range mappingKeyVersionOriginEnum {
+		mappingKeyVersionOriginEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeyVersionOriginEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

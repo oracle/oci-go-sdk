@@ -94,7 +94,7 @@ func (request UpdateRRSetRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request UpdateRRSetRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUpdateRRSetScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingUpdateRRSetScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetUpdateRRSetScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -168,4 +168,15 @@ func GetUpdateRRSetScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingUpdateRRSetScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateRRSetScopeEnum(val string) (UpdateRRSetScopeEnum, bool) {
+	mappingUpdateRRSetScopeEnumIgnoreCase := make(map[string]UpdateRRSetScopeEnum)
+	for k, v := range mappingUpdateRRSetScopeEnum {
+		mappingUpdateRRSetScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateRRSetScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

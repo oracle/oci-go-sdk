@@ -137,3 +137,14 @@ func GetUpdateIdentityProviderDetailsProtocolEnumStringValues() []string {
 		"SAML2",
 	}
 }
+
+// GetMappingUpdateIdentityProviderDetailsProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateIdentityProviderDetailsProtocolEnum(val string) (UpdateIdentityProviderDetailsProtocolEnum, bool) {
+	mappingUpdateIdentityProviderDetailsProtocolEnumIgnoreCase := make(map[string]UpdateIdentityProviderDetailsProtocolEnum)
+	for k, v := range mappingUpdateIdentityProviderDetailsProtocolEnum {
+		mappingUpdateIdentityProviderDetailsProtocolEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateIdentityProviderDetailsProtocolEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

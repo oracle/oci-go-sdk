@@ -102,3 +102,14 @@ func GetChannelTargetTargetTypeEnumStringValues() []string {
 		"DBSYSTEM",
 	}
 }
+
+// GetMappingChannelTargetTargetTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingChannelTargetTargetTypeEnum(val string) (ChannelTargetTargetTypeEnum, bool) {
+	mappingChannelTargetTargetTypeEnumIgnoreCase := make(map[string]ChannelTargetTargetTypeEnum)
+	for k, v := range mappingChannelTargetTargetTypeEnum {
+		mappingChannelTargetTargetTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingChannelTargetTargetTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

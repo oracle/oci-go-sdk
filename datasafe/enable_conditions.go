@@ -40,13 +40,13 @@ func (m EnableConditions) String() string {
 // Not recommended for calling this function directly
 func (m EnableConditions) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingEnableConditionsEntitySelectionEnum[string(m.EntitySelection)]; !ok && m.EntitySelection != "" {
+	if _, ok := GetMappingEnableConditionsEntitySelectionEnum(string(m.EntitySelection)); !ok && m.EntitySelection != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EntitySelection: %s. Supported values are: %s.", m.EntitySelection, strings.Join(GetEnableConditionsEntitySelectionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingEnableConditionsEntityTypeEnum[string(m.EntityType)]; !ok && m.EntityType != "" {
+	if _, ok := GetMappingEnableConditionsEntityTypeEnum(string(m.EntityType)); !ok && m.EntityType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EntityType: %s. Supported values are: %s.", m.EntityType, strings.Join(GetEnableConditionsEntityTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingEnableConditionsOperationStatusEnum[string(m.OperationStatus)]; !ok && m.OperationStatus != "" {
+	if _, ok := GetMappingEnableConditionsOperationStatusEnum(string(m.OperationStatus)); !ok && m.OperationStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OperationStatus: %s. Supported values are: %s.", m.OperationStatus, strings.Join(GetEnableConditionsOperationStatusEnumStringValues(), ",")))
 	}
 
@@ -87,6 +87,17 @@ func GetEnableConditionsEntitySelectionEnumStringValues() []string {
 	}
 }
 
+// GetMappingEnableConditionsEntitySelectionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEnableConditionsEntitySelectionEnum(val string) (EnableConditionsEntitySelectionEnum, bool) {
+	mappingEnableConditionsEntitySelectionEnumIgnoreCase := make(map[string]EnableConditionsEntitySelectionEnum)
+	for k, v := range mappingEnableConditionsEntitySelectionEnum {
+		mappingEnableConditionsEntitySelectionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEnableConditionsEntitySelectionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // EnableConditionsEntityTypeEnum Enum with underlying type: string
 type EnableConditionsEntityTypeEnum string
 
@@ -121,6 +132,17 @@ func GetEnableConditionsEntityTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingEnableConditionsEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEnableConditionsEntityTypeEnum(val string) (EnableConditionsEntityTypeEnum, bool) {
+	mappingEnableConditionsEntityTypeEnumIgnoreCase := make(map[string]EnableConditionsEntityTypeEnum)
+	for k, v := range mappingEnableConditionsEntityTypeEnum {
+		mappingEnableConditionsEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEnableConditionsEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // EnableConditionsOperationStatusEnum Enum with underlying type: string
 type EnableConditionsOperationStatusEnum string
 
@@ -153,4 +175,15 @@ func GetEnableConditionsOperationStatusEnumStringValues() []string {
 		"FAILURE",
 		"BOTH",
 	}
+}
+
+// GetMappingEnableConditionsOperationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEnableConditionsOperationStatusEnum(val string) (EnableConditionsOperationStatusEnum, bool) {
+	mappingEnableConditionsOperationStatusEnumIgnoreCase := make(map[string]EnableConditionsOperationStatusEnum)
+	for k, v := range mappingEnableConditionsOperationStatusEnum {
+		mappingEnableConditionsOperationStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEnableConditionsOperationStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -79,10 +79,10 @@ func (request ListPackagesInstalledOnManagedInstanceRequest) RetryPolicy() *comm
 // Not recommended for calling this function directly
 func (request ListPackagesInstalledOnManagedInstanceRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListPackagesInstalledOnManagedInstanceSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListPackagesInstalledOnManagedInstanceSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListPackagesInstalledOnManagedInstanceSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPackagesInstalledOnManagedInstanceSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListPackagesInstalledOnManagedInstanceSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListPackagesInstalledOnManagedInstanceSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -151,6 +151,17 @@ func GetListPackagesInstalledOnManagedInstanceSortOrderEnumStringValues() []stri
 	}
 }
 
+// GetMappingListPackagesInstalledOnManagedInstanceSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPackagesInstalledOnManagedInstanceSortOrderEnum(val string) (ListPackagesInstalledOnManagedInstanceSortOrderEnum, bool) {
+	mappingListPackagesInstalledOnManagedInstanceSortOrderEnumIgnoreCase := make(map[string]ListPackagesInstalledOnManagedInstanceSortOrderEnum)
+	for k, v := range mappingListPackagesInstalledOnManagedInstanceSortOrderEnum {
+		mappingListPackagesInstalledOnManagedInstanceSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPackagesInstalledOnManagedInstanceSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListPackagesInstalledOnManagedInstanceSortByEnum Enum with underlying type: string
 type ListPackagesInstalledOnManagedInstanceSortByEnum string
 
@@ -180,4 +191,15 @@ func GetListPackagesInstalledOnManagedInstanceSortByEnumStringValues() []string 
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListPackagesInstalledOnManagedInstanceSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPackagesInstalledOnManagedInstanceSortByEnum(val string) (ListPackagesInstalledOnManagedInstanceSortByEnum, bool) {
+	mappingListPackagesInstalledOnManagedInstanceSortByEnumIgnoreCase := make(map[string]ListPackagesInstalledOnManagedInstanceSortByEnum)
+	for k, v := range mappingListPackagesInstalledOnManagedInstanceSortByEnum {
+		mappingListPackagesInstalledOnManagedInstanceSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPackagesInstalledOnManagedInstanceSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

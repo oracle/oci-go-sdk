@@ -77,10 +77,10 @@ func (m CreateJobExecutionDetails) String() string {
 func (m CreateJobExecutionDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingJobTypeEnum[string(m.JobType)]; !ok && m.JobType != "" {
+	if _, ok := GetMappingJobTypeEnum(string(m.JobType)); !ok && m.JobType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for JobType: %s. Supported values are: %s.", m.JobType, strings.Join(GetJobTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingJobExecutionStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingJobExecutionStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetJobExecutionStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -88,19 +88,19 @@ func (request ListDatabaseSoftwareImagesRequest) RetryPolicy() *common.RetryPoli
 // Not recommended for calling this function directly
 func (request ListDatabaseSoftwareImagesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDatabaseSoftwareImagesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDatabaseSoftwareImagesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDatabaseSoftwareImagesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDatabaseSoftwareImagesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDatabaseSoftwareImagesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDatabaseSoftwareImagesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatabaseSoftwareImageSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingDatabaseSoftwareImageSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetDatabaseSoftwareImageSummaryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatabaseSoftwareImageSummaryImageTypeEnum[string(request.ImageType)]; !ok && request.ImageType != "" {
+	if _, ok := GetMappingDatabaseSoftwareImageSummaryImageTypeEnum(string(request.ImageType)); !ok && request.ImageType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ImageType: %s. Supported values are: %s.", request.ImageType, strings.Join(GetDatabaseSoftwareImageSummaryImageTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatabaseSoftwareImageSummaryImageShapeFamilyEnum[string(request.ImageShapeFamily)]; !ok && request.ImageShapeFamily != "" {
+	if _, ok := GetMappingDatabaseSoftwareImageSummaryImageShapeFamilyEnum(string(request.ImageShapeFamily)); !ok && request.ImageShapeFamily != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ImageShapeFamily: %s. Supported values are: %s.", request.ImageShapeFamily, strings.Join(GetDatabaseSoftwareImageSummaryImageShapeFamilyEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -169,6 +169,17 @@ func GetListDatabaseSoftwareImagesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDatabaseSoftwareImagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseSoftwareImagesSortByEnum(val string) (ListDatabaseSoftwareImagesSortByEnum, bool) {
+	mappingListDatabaseSoftwareImagesSortByEnumIgnoreCase := make(map[string]ListDatabaseSoftwareImagesSortByEnum)
+	for k, v := range mappingListDatabaseSoftwareImagesSortByEnum {
+		mappingListDatabaseSoftwareImagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseSoftwareImagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDatabaseSoftwareImagesSortOrderEnum Enum with underlying type: string
 type ListDatabaseSoftwareImagesSortOrderEnum string
 
@@ -198,4 +209,15 @@ func GetListDatabaseSoftwareImagesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListDatabaseSoftwareImagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseSoftwareImagesSortOrderEnum(val string) (ListDatabaseSoftwareImagesSortOrderEnum, bool) {
+	mappingListDatabaseSoftwareImagesSortOrderEnumIgnoreCase := make(map[string]ListDatabaseSoftwareImagesSortOrderEnum)
+	for k, v := range mappingListDatabaseSoftwareImagesSortOrderEnum {
+		mappingListDatabaseSoftwareImagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseSoftwareImagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

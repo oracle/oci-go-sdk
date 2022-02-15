@@ -129,3 +129,14 @@ func GetHostPerformanceMetricGroupMetricNameEnumStringValues() []string {
 		"HOST_NETWORK_ACTIVITY_SUMMARY",
 	}
 }
+
+// GetMappingHostPerformanceMetricGroupMetricNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHostPerformanceMetricGroupMetricNameEnum(val string) (HostPerformanceMetricGroupMetricNameEnum, bool) {
+	mappingHostPerformanceMetricGroupMetricNameEnumIgnoreCase := make(map[string]HostPerformanceMetricGroupMetricNameEnum)
+	for k, v := range mappingHostPerformanceMetricGroupMetricNameEnum {
+		mappingHostPerformanceMetricGroupMetricNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHostPerformanceMetricGroupMetricNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

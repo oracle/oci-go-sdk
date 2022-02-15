@@ -71,7 +71,7 @@ func (m DashboardGroupSummary) String() string {
 // Not recommended for calling this function directly
 func (m DashboardGroupSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDashboardGroupLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDashboardGroupLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDashboardGroupLifecycleStateEnumStringValues(), ",")))
 	}
 

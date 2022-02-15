@@ -86,7 +86,7 @@ func (m Secret) String() string {
 // Not recommended for calling this function directly
 func (m Secret) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSecretLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingSecretLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSecretLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -218,4 +218,15 @@ func GetSecretLifecycleStateEnumStringValues() []string {
 		"CANCELLING_DELETION",
 		"FAILED",
 	}
+}
+
+// GetMappingSecretLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecretLifecycleStateEnum(val string) (SecretLifecycleStateEnum, bool) {
+	mappingSecretLifecycleStateEnumIgnoreCase := make(map[string]SecretLifecycleStateEnum)
+	for k, v := range mappingSecretLifecycleStateEnum {
+		mappingSecretLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecretLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

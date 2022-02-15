@@ -39,7 +39,7 @@ func (m DpdConfig) String() string {
 func (m DpdConfig) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDpdConfigDpdModeEnum[string(m.DpdMode)]; !ok && m.DpdMode != "" {
+	if _, ok := GetMappingDpdConfigDpdModeEnum(string(m.DpdMode)); !ok && m.DpdMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DpdMode: %s. Supported values are: %s.", m.DpdMode, strings.Join(GetDpdConfigDpdModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -77,4 +77,15 @@ func GetDpdConfigDpdModeEnumStringValues() []string {
 		"INITIATE_AND_RESPOND",
 		"RESPOND_ONLY",
 	}
+}
+
+// GetMappingDpdConfigDpdModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDpdConfigDpdModeEnum(val string) (DpdConfigDpdModeEnum, bool) {
+	mappingDpdConfigDpdModeEnumIgnoreCase := make(map[string]DpdConfigDpdModeEnum)
+	for k, v := range mappingDpdConfigDpdModeEnum {
+		mappingDpdConfigDpdModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDpdConfigDpdModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

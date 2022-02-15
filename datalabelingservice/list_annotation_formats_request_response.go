@@ -69,7 +69,7 @@ func (request ListAnnotationFormatsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAnnotationFormatsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAnnotationFormatsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAnnotationFormatsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAnnotationFormatsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -135,4 +135,15 @@ func GetListAnnotationFormatsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAnnotationFormatsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAnnotationFormatsSortOrderEnum(val string) (ListAnnotationFormatsSortOrderEnum, bool) {
+	mappingListAnnotationFormatsSortOrderEnumIgnoreCase := make(map[string]ListAnnotationFormatsSortOrderEnum)
+	for k, v := range mappingListAnnotationFormatsSortOrderEnum {
+		mappingListAnnotationFormatsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAnnotationFormatsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

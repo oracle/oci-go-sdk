@@ -87,13 +87,13 @@ func (request ListIndicatorsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListIndicatorsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListIndicatorsTypeEnum[string(request.Type)]; !ok && request.Type != "" {
+	if _, ok := GetMappingListIndicatorsTypeEnum(string(request.Type)); !ok && request.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", request.Type, strings.Join(GetListIndicatorsTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListIndicatorsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListIndicatorsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListIndicatorsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListIndicatorsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListIndicatorsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListIndicatorsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -176,6 +176,17 @@ func GetListIndicatorsTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListIndicatorsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListIndicatorsTypeEnum(val string) (ListIndicatorsTypeEnum, bool) {
+	mappingListIndicatorsTypeEnumIgnoreCase := make(map[string]ListIndicatorsTypeEnum)
+	for k, v := range mappingListIndicatorsTypeEnum {
+		mappingListIndicatorsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListIndicatorsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListIndicatorsSortOrderEnum Enum with underlying type: string
 type ListIndicatorsSortOrderEnum string
 
@@ -207,6 +218,17 @@ func GetListIndicatorsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListIndicatorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListIndicatorsSortOrderEnum(val string) (ListIndicatorsSortOrderEnum, bool) {
+	mappingListIndicatorsSortOrderEnumIgnoreCase := make(map[string]ListIndicatorsSortOrderEnum)
+	for k, v := range mappingListIndicatorsSortOrderEnum {
+		mappingListIndicatorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListIndicatorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListIndicatorsSortByEnum Enum with underlying type: string
 type ListIndicatorsSortByEnum string
 
@@ -236,4 +258,15 @@ func GetListIndicatorsSortByEnumStringValues() []string {
 		"confidence",
 		"timeUpdated",
 	}
+}
+
+// GetMappingListIndicatorsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListIndicatorsSortByEnum(val string) (ListIndicatorsSortByEnum, bool) {
+	mappingListIndicatorsSortByEnumIgnoreCase := make(map[string]ListIndicatorsSortByEnum)
+	for k, v := range mappingListIndicatorsSortByEnum {
+		mappingListIndicatorsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListIndicatorsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -109,3 +109,14 @@ func GetPutRepositoryRefDetailsRefTypeEnumStringValues() []string {
 		"TAG",
 	}
 }
+
+// GetMappingPutRepositoryRefDetailsRefTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPutRepositoryRefDetailsRefTypeEnum(val string) (PutRepositoryRefDetailsRefTypeEnum, bool) {
+	mappingPutRepositoryRefDetailsRefTypeEnumIgnoreCase := make(map[string]PutRepositoryRefDetailsRefTypeEnum)
+	for k, v := range mappingPutRepositoryRefDetailsRefTypeEnum {
+		mappingPutRepositoryRefDetailsRefTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPutRepositoryRefDetailsRefTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

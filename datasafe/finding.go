@@ -50,7 +50,7 @@ func (m Finding) String() string {
 func (m Finding) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingFindingSeverityEnum[string(m.Severity)]; !ok && m.Severity != "" {
+	if _, ok := GetMappingFindingSeverityEnum(string(m.Severity)); !ok && m.Severity != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Severity: %s. Supported values are: %s.", m.Severity, strings.Join(GetFindingSeverityEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -100,4 +100,15 @@ func GetFindingSeverityEnumStringValues() []string {
 		"ADVISORY",
 		"PASS",
 	}
+}
+
+// GetMappingFindingSeverityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFindingSeverityEnum(val string) (FindingSeverityEnum, bool) {
+	mappingFindingSeverityEnumIgnoreCase := make(map[string]FindingSeverityEnum)
+	for k, v := range mappingFindingSeverityEnum {
+		mappingFindingSeverityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFindingSeverityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

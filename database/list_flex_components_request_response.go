@@ -76,10 +76,10 @@ func (request ListFlexComponentsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListFlexComponentsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListFlexComponentsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListFlexComponentsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListFlexComponentsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListFlexComponentsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListFlexComponentsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListFlexComponentsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -148,6 +148,17 @@ func GetListFlexComponentsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListFlexComponentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFlexComponentsSortOrderEnum(val string) (ListFlexComponentsSortOrderEnum, bool) {
+	mappingListFlexComponentsSortOrderEnumIgnoreCase := make(map[string]ListFlexComponentsSortOrderEnum)
+	for k, v := range mappingListFlexComponentsSortOrderEnum {
+		mappingListFlexComponentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFlexComponentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListFlexComponentsSortByEnum Enum with underlying type: string
 type ListFlexComponentsSortByEnum string
 
@@ -174,4 +185,15 @@ func GetListFlexComponentsSortByEnumStringValues() []string {
 	return []string{
 		"NAME",
 	}
+}
+
+// GetMappingListFlexComponentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFlexComponentsSortByEnum(val string) (ListFlexComponentsSortByEnum, bool) {
+	mappingListFlexComponentsSortByEnumIgnoreCase := make(map[string]ListFlexComponentsSortByEnum)
+	for k, v := range mappingListFlexComponentsSortByEnum {
+		mappingListFlexComponentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFlexComponentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

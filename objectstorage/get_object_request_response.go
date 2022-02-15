@@ -247,6 +247,17 @@ func GetGetObjectStorageTierEnumStringValues() []string {
 	}
 }
 
+// GetMappingGetObjectStorageTierEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetObjectStorageTierEnum(val string) (GetObjectStorageTierEnum, bool) {
+	mappingGetObjectStorageTierEnumIgnoreCase := make(map[string]GetObjectStorageTierEnum)
+	for k, v := range mappingGetObjectStorageTierEnum {
+		mappingGetObjectStorageTierEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetObjectStorageTierEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // GetObjectArchivalStateEnum Enum with underlying type: string
 type GetObjectArchivalStateEnum string
 
@@ -279,4 +290,15 @@ func GetGetObjectArchivalStateEnumStringValues() []string {
 		"Restoring",
 		"Restored",
 	}
+}
+
+// GetMappingGetObjectArchivalStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetObjectArchivalStateEnum(val string) (GetObjectArchivalStateEnum, bool) {
+	mappingGetObjectArchivalStateEnumIgnoreCase := make(map[string]GetObjectArchivalStateEnum)
+	for k, v := range mappingGetObjectArchivalStateEnum {
+		mappingGetObjectArchivalStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetObjectArchivalStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

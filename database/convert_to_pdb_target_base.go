@@ -102,3 +102,14 @@ func GetConvertToPdbTargetBaseTargetEnumStringValues() []string {
 		"NEW_DATABASE",
 	}
 }
+
+// GetMappingConvertToPdbTargetBaseTargetEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConvertToPdbTargetBaseTargetEnum(val string) (ConvertToPdbTargetBaseTargetEnum, bool) {
+	mappingConvertToPdbTargetBaseTargetEnumIgnoreCase := make(map[string]ConvertToPdbTargetBaseTargetEnum)
+	for k, v := range mappingConvertToPdbTargetBaseTargetEnum {
+		mappingConvertToPdbTargetBaseTargetEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConvertToPdbTargetBaseTargetEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

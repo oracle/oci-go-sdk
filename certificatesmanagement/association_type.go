@@ -9,6 +9,10 @@
 
 package certificatesmanagement
 
+import (
+	"strings"
+)
+
 // AssociationTypeEnum Enum with underlying type: string
 type AssociationTypeEnum string
 
@@ -41,4 +45,15 @@ func GetAssociationTypeEnumStringValues() []string {
 		"CERTIFICATE_AUTHORITY",
 		"CA_BUNDLE",
 	}
+}
+
+// GetMappingAssociationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAssociationTypeEnum(val string) (AssociationTypeEnum, bool) {
+	mappingAssociationTypeEnumIgnoreCase := make(map[string]AssociationTypeEnum)
+	for k, v := range mappingAssociationTypeEnum {
+		mappingAssociationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAssociationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

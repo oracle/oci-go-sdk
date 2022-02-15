@@ -41,7 +41,7 @@ func (m UpgradeStatus) String() string {
 // Not recommended for calling this function directly
 func (m UpgradeStatus) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUpgradeStatusStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingUpgradeStatusStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetUpgradeStatusStatusEnumStringValues(), ",")))
 	}
 
@@ -83,4 +83,15 @@ func GetUpgradeStatusStatusEnumStringValues() []string {
 		"IN_PROGRESS",
 		"UPGRADED",
 	}
+}
+
+// GetMappingUpgradeStatusStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpgradeStatusStatusEnum(val string) (UpgradeStatusStatusEnum, bool) {
+	mappingUpgradeStatusStatusEnumIgnoreCase := make(map[string]UpgradeStatusStatusEnum)
+	for k, v := range mappingUpgradeStatusStatusEnum {
+		mappingUpgradeStatusStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpgradeStatusStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

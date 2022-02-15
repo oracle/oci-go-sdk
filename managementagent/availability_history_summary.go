@@ -40,7 +40,7 @@ func (m AvailabilityHistorySummary) String() string {
 // Not recommended for calling this function directly
 func (m AvailabilityHistorySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAvailabilityStatusEnum[string(m.AvailabilityStatus)]; !ok && m.AvailabilityStatus != "" {
+	if _, ok := GetMappingAvailabilityStatusEnum(string(m.AvailabilityStatus)); !ok && m.AvailabilityStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AvailabilityStatus: %s. Supported values are: %s.", m.AvailabilityStatus, strings.Join(GetAvailabilityStatusEnumStringValues(), ",")))
 	}
 

@@ -78,7 +78,7 @@ func (request GetSqlTuningAdvisorTaskSummaryReportRequest) RetryPolicy() *common
 // Not recommended for calling this function directly
 func (request GetSqlTuningAdvisorTaskSummaryReportRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum[string(request.SearchPeriod)]; !ok && request.SearchPeriod != "" {
+	if _, ok := GetMappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum(string(request.SearchPeriod)); !ok && request.SearchPeriod != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SearchPeriod: %s. Supported values are: %s.", request.SearchPeriod, strings.Join(GetGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -148,4 +148,15 @@ func GetGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnumStringValues() []str
 		"SINCE_LAST",
 		"ALL",
 	}
+}
+
+// GetMappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum(val string) (GetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum, bool) {
+	mappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnumIgnoreCase := make(map[string]GetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum)
+	for k, v := range mappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum {
+		mappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

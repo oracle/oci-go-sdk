@@ -9,6 +9,10 @@
 
 package certificatesmanagement
 
+import (
+	"strings"
+)
+
 // CertificateAuthorityConfigTypeEnum Enum with underlying type: string
 type CertificateAuthorityConfigTypeEnum string
 
@@ -38,4 +42,15 @@ func GetCertificateAuthorityConfigTypeEnumStringValues() []string {
 		"ROOT_CA_GENERATED_INTERNALLY",
 		"SUBORDINATE_CA_ISSUED_BY_INTERNAL_CA",
 	}
+}
+
+// GetMappingCertificateAuthorityConfigTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCertificateAuthorityConfigTypeEnum(val string) (CertificateAuthorityConfigTypeEnum, bool) {
+	mappingCertificateAuthorityConfigTypeEnumIgnoreCase := make(map[string]CertificateAuthorityConfigTypeEnum)
+	for k, v := range mappingCertificateAuthorityConfigTypeEnum {
+		mappingCertificateAuthorityConfigTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCertificateAuthorityConfigTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -72,7 +72,7 @@ func (request ListLogSetsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListLogSetsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListLogSetsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListLogSetsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListLogSetsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -137,4 +137,15 @@ func GetListLogSetsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListLogSetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogSetsSortOrderEnum(val string) (ListLogSetsSortOrderEnum, bool) {
+	mappingListLogSetsSortOrderEnumIgnoreCase := make(map[string]ListLogSetsSortOrderEnum)
+	for k, v := range mappingListLogSetsSortOrderEnum {
+		mappingListLogSetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogSetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -60,10 +60,10 @@ func (m UpdateTablespaceDetails) String() string {
 func (m UpdateTablespaceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateTablespaceDetailsTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingUpdateTablespaceDetailsTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetUpdateTablespaceDetailsTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUpdateTablespaceDetailsStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingUpdateTablespaceDetailsStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetUpdateTablespaceDetailsStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -154,6 +154,17 @@ func GetUpdateTablespaceDetailsTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingUpdateTablespaceDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateTablespaceDetailsTypeEnum(val string) (UpdateTablespaceDetailsTypeEnum, bool) {
+	mappingUpdateTablespaceDetailsTypeEnumIgnoreCase := make(map[string]UpdateTablespaceDetailsTypeEnum)
+	for k, v := range mappingUpdateTablespaceDetailsTypeEnum {
+		mappingUpdateTablespaceDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateTablespaceDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UpdateTablespaceDetailsStatusEnum Enum with underlying type: string
 type UpdateTablespaceDetailsStatusEnum string
 
@@ -183,4 +194,15 @@ func GetUpdateTablespaceDetailsStatusEnumStringValues() []string {
 		"READ_ONLY",
 		"READ_WRITE",
 	}
+}
+
+// GetMappingUpdateTablespaceDetailsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateTablespaceDetailsStatusEnum(val string) (UpdateTablespaceDetailsStatusEnum, bool) {
+	mappingUpdateTablespaceDetailsStatusEnumIgnoreCase := make(map[string]UpdateTablespaceDetailsStatusEnum)
+	for k, v := range mappingUpdateTablespaceDetailsStatusEnum {
+		mappingUpdateTablespaceDetailsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateTablespaceDetailsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

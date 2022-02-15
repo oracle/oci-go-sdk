@@ -116,3 +116,14 @@ func GetImageFeatureFeatureTypeEnumStringValues() []string {
 		"TEXT_DETECTION",
 	}
 }
+
+// GetMappingImageFeatureFeatureTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingImageFeatureFeatureTypeEnum(val string) (ImageFeatureFeatureTypeEnum, bool) {
+	mappingImageFeatureFeatureTypeEnumIgnoreCase := make(map[string]ImageFeatureFeatureTypeEnum)
+	for k, v := range mappingImageFeatureFeatureTypeEnum {
+		mappingImageFeatureFeatureTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingImageFeatureFeatureTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

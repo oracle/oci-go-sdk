@@ -63,7 +63,7 @@ func (m UpdateIntegrationInstanceDetails) String() string {
 func (m UpdateIntegrationInstanceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum[string(m.IntegrationInstanceType)]; !ok && m.IntegrationInstanceType != "" {
+	if _, ok := GetMappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum(string(m.IntegrationInstanceType)); !ok && m.IntegrationInstanceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IntegrationInstanceType: %s. Supported values are: %s.", m.IntegrationInstanceType, strings.Join(GetUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -101,4 +101,15 @@ func GetUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnumStringValues(
 		"STANDARD",
 		"ENTERPRISE",
 	}
+}
+
+// GetMappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum(val string) (UpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum, bool) {
+	mappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnumIgnoreCase := make(map[string]UpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum)
+	for k, v := range mappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum {
+		mappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

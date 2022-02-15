@@ -150,3 +150,14 @@ func GetCreateDatabaseBaseSourceEnumStringValues() []string {
 		"DB_BACKUP",
 	}
 }
+
+// GetMappingCreateDatabaseBaseSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateDatabaseBaseSourceEnum(val string) (CreateDatabaseBaseSourceEnum, bool) {
+	mappingCreateDatabaseBaseSourceEnumIgnoreCase := make(map[string]CreateDatabaseBaseSourceEnum)
+	for k, v := range mappingCreateDatabaseBaseSourceEnum {
+		mappingCreateDatabaseBaseSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateDatabaseBaseSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

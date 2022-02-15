@@ -100,7 +100,7 @@ func (m SslConfigurationDetails) String() string {
 func (m SslConfigurationDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSslConfigurationDetailsServerOrderPreferenceEnum[string(m.ServerOrderPreference)]; !ok && m.ServerOrderPreference != "" {
+	if _, ok := GetMappingSslConfigurationDetailsServerOrderPreferenceEnum(string(m.ServerOrderPreference)); !ok && m.ServerOrderPreference != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ServerOrderPreference: %s. Supported values are: %s.", m.ServerOrderPreference, strings.Join(GetSslConfigurationDetailsServerOrderPreferenceEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -138,4 +138,15 @@ func GetSslConfigurationDetailsServerOrderPreferenceEnumStringValues() []string 
 		"ENABLED",
 		"DISABLED",
 	}
+}
+
+// GetMappingSslConfigurationDetailsServerOrderPreferenceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSslConfigurationDetailsServerOrderPreferenceEnum(val string) (SslConfigurationDetailsServerOrderPreferenceEnum, bool) {
+	mappingSslConfigurationDetailsServerOrderPreferenceEnumIgnoreCase := make(map[string]SslConfigurationDetailsServerOrderPreferenceEnum)
+	for k, v := range mappingSslConfigurationDetailsServerOrderPreferenceEnum {
+		mappingSslConfigurationDetailsServerOrderPreferenceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSslConfigurationDetailsServerOrderPreferenceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

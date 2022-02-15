@@ -82,10 +82,10 @@ func (request ListLogIncludedSearchesRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListLogIncludedSearchesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListLogIncludedSearchesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListLogIncludedSearchesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListLogIncludedSearchesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLogIncludedSearchesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListLogIncludedSearchesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListLogIncludedSearchesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -158,6 +158,17 @@ func GetListLogIncludedSearchesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListLogIncludedSearchesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogIncludedSearchesSortByEnum(val string) (ListLogIncludedSearchesSortByEnum, bool) {
+	mappingListLogIncludedSearchesSortByEnumIgnoreCase := make(map[string]ListLogIncludedSearchesSortByEnum)
+	for k, v := range mappingListLogIncludedSearchesSortByEnum {
+		mappingListLogIncludedSearchesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogIncludedSearchesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLogIncludedSearchesSortOrderEnum Enum with underlying type: string
 type ListLogIncludedSearchesSortOrderEnum string
 
@@ -187,4 +198,15 @@ func GetListLogIncludedSearchesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListLogIncludedSearchesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogIncludedSearchesSortOrderEnum(val string) (ListLogIncludedSearchesSortOrderEnum, bool) {
+	mappingListLogIncludedSearchesSortOrderEnumIgnoreCase := make(map[string]ListLogIncludedSearchesSortOrderEnum)
+	for k, v := range mappingListLogIncludedSearchesSortOrderEnum {
+		mappingListLogIncludedSearchesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogIncludedSearchesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

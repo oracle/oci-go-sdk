@@ -65,13 +65,13 @@ func (m AuditSpecification) String() string {
 // Not recommended for calling this function directly
 func (m AuditSpecification) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAuditPolicyCategoryEnum[string(m.AuditPolicyCategory)]; !ok && m.AuditPolicyCategory != "" {
+	if _, ok := GetMappingAuditPolicyCategoryEnum(string(m.AuditPolicyCategory)); !ok && m.AuditPolicyCategory != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AuditPolicyCategory: %s. Supported values are: %s.", m.AuditPolicyCategory, strings.Join(GetAuditPolicyCategoryEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAuditSpecificationEnableStatusEnum[string(m.EnableStatus)]; !ok && m.EnableStatus != "" {
+	if _, ok := GetMappingAuditSpecificationEnableStatusEnum(string(m.EnableStatus)); !ok && m.EnableStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EnableStatus: %s. Supported values are: %s.", m.EnableStatus, strings.Join(GetAuditSpecificationEnableStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAuditSpecificationEnabledEntitiesEnum[string(m.EnabledEntities)]; !ok && m.EnabledEntities != "" {
+	if _, ok := GetMappingAuditSpecificationEnabledEntitiesEnum(string(m.EnabledEntities)); !ok && m.EnabledEntities != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EnabledEntities: %s. Supported values are: %s.", m.EnabledEntities, strings.Join(GetAuditSpecificationEnabledEntitiesEnumStringValues(), ",")))
 	}
 
@@ -115,6 +115,17 @@ func GetAuditSpecificationEnableStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingAuditSpecificationEnableStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAuditSpecificationEnableStatusEnum(val string) (AuditSpecificationEnableStatusEnum, bool) {
+	mappingAuditSpecificationEnableStatusEnumIgnoreCase := make(map[string]AuditSpecificationEnableStatusEnum)
+	for k, v := range mappingAuditSpecificationEnableStatusEnum {
+		mappingAuditSpecificationEnableStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAuditSpecificationEnableStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AuditSpecificationEnabledEntitiesEnum Enum with underlying type: string
 type AuditSpecificationEnabledEntitiesEnum string
 
@@ -156,4 +167,15 @@ func GetAuditSpecificationEnabledEntitiesEnumStringValues() []string {
 		"INCLUDE_USERS_ROLES",
 		"DISABLED",
 	}
+}
+
+// GetMappingAuditSpecificationEnabledEntitiesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAuditSpecificationEnabledEntitiesEnum(val string) (AuditSpecificationEnabledEntitiesEnum, bool) {
+	mappingAuditSpecificationEnabledEntitiesEnumIgnoreCase := make(map[string]AuditSpecificationEnabledEntitiesEnum)
+	for k, v := range mappingAuditSpecificationEnabledEntitiesEnum {
+		mappingAuditSpecificationEnabledEntitiesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAuditSpecificationEnabledEntitiesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

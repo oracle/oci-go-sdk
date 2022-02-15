@@ -92,10 +92,10 @@ func (request ListPublicIpsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListPublicIpsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListPublicIpsScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingListPublicIpsScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetListPublicIpsScopeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPublicIpsLifetimeEnum[string(request.Lifetime)]; !ok && request.Lifetime != "" {
+	if _, ok := GetMappingListPublicIpsLifetimeEnum(string(request.Lifetime)); !ok && request.Lifetime != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Lifetime: %s. Supported values are: %s.", request.Lifetime, strings.Join(GetListPublicIpsLifetimeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -163,6 +163,17 @@ func GetListPublicIpsScopeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListPublicIpsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPublicIpsScopeEnum(val string) (ListPublicIpsScopeEnum, bool) {
+	mappingListPublicIpsScopeEnumIgnoreCase := make(map[string]ListPublicIpsScopeEnum)
+	for k, v := range mappingListPublicIpsScopeEnum {
+		mappingListPublicIpsScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPublicIpsScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListPublicIpsLifetimeEnum Enum with underlying type: string
 type ListPublicIpsLifetimeEnum string
 
@@ -192,4 +203,15 @@ func GetListPublicIpsLifetimeEnumStringValues() []string {
 		"EPHEMERAL",
 		"RESERVED",
 	}
+}
+
+// GetMappingListPublicIpsLifetimeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPublicIpsLifetimeEnum(val string) (ListPublicIpsLifetimeEnum, bool) {
+	mappingListPublicIpsLifetimeEnumIgnoreCase := make(map[string]ListPublicIpsLifetimeEnum)
+	for k, v := range mappingListPublicIpsLifetimeEnum {
+		mappingListPublicIpsLifetimeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPublicIpsLifetimeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

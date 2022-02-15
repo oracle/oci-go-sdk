@@ -108,13 +108,13 @@ func (request ListFileSystemsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListFileSystemsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListFileSystemsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListFileSystemsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListFileSystemsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListFileSystemsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListFileSystemsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListFileSystemsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListFileSystemsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListFileSystemsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListFileSystemsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -193,6 +193,17 @@ func GetListFileSystemsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListFileSystemsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFileSystemsLifecycleStateEnum(val string) (ListFileSystemsLifecycleStateEnum, bool) {
+	mappingListFileSystemsLifecycleStateEnumIgnoreCase := make(map[string]ListFileSystemsLifecycleStateEnum)
+	for k, v := range mappingListFileSystemsLifecycleStateEnum {
+		mappingListFileSystemsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFileSystemsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListFileSystemsSortByEnum Enum with underlying type: string
 type ListFileSystemsSortByEnum string
 
@@ -224,6 +235,17 @@ func GetListFileSystemsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListFileSystemsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFileSystemsSortByEnum(val string) (ListFileSystemsSortByEnum, bool) {
+	mappingListFileSystemsSortByEnumIgnoreCase := make(map[string]ListFileSystemsSortByEnum)
+	for k, v := range mappingListFileSystemsSortByEnum {
+		mappingListFileSystemsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFileSystemsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListFileSystemsSortOrderEnum Enum with underlying type: string
 type ListFileSystemsSortOrderEnum string
 
@@ -253,4 +275,15 @@ func GetListFileSystemsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListFileSystemsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFileSystemsSortOrderEnum(val string) (ListFileSystemsSortOrderEnum, bool) {
+	mappingListFileSystemsSortOrderEnumIgnoreCase := make(map[string]ListFileSystemsSortOrderEnum)
+	for k, v := range mappingListFileSystemsSortOrderEnum {
+		mappingListFileSystemsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFileSystemsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

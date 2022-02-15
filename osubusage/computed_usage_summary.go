@@ -102,7 +102,7 @@ func (m ComputedUsageSummary) String() string {
 func (m ComputedUsageSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingComputedUsageSummaryTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingComputedUsageSummaryTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetComputedUsageSummaryTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -179,4 +179,15 @@ func GetComputedUsageSummaryTypeEnumStringValues() []string {
 		"DONOT_BILL_USAGE_POST_TERMINATION",
 		"DELAYED_USAGE_POST_TERMINATION",
 	}
+}
+
+// GetMappingComputedUsageSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingComputedUsageSummaryTypeEnum(val string) (ComputedUsageSummaryTypeEnum, bool) {
+	mappingComputedUsageSummaryTypeEnumIgnoreCase := make(map[string]ComputedUsageSummaryTypeEnum)
+	for k, v := range mappingComputedUsageSummaryTypeEnum {
+		mappingComputedUsageSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingComputedUsageSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

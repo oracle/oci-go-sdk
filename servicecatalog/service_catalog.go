@@ -58,7 +58,7 @@ func (m ServiceCatalog) String() string {
 // Not recommended for calling this function directly
 func (m ServiceCatalog) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingServiceCatalogLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingServiceCatalogLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetServiceCatalogLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -97,4 +97,15 @@ func GetServiceCatalogLifecycleStateEnumStringValues() []string {
 		"ACTIVE",
 		"DELETED",
 	}
+}
+
+// GetMappingServiceCatalogLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingServiceCatalogLifecycleStateEnum(val string) (ServiceCatalogLifecycleStateEnum, bool) {
+	mappingServiceCatalogLifecycleStateEnumIgnoreCase := make(map[string]ServiceCatalogLifecycleStateEnum)
+	for k, v := range mappingServiceCatalogLifecycleStateEnum {
+		mappingServiceCatalogLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingServiceCatalogLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

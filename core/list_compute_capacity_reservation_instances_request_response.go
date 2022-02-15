@@ -92,10 +92,10 @@ func (request ListComputeCapacityReservationInstancesRequest) RetryPolicy() *com
 // Not recommended for calling this function directly
 func (request ListComputeCapacityReservationInstancesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListComputeCapacityReservationInstancesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListComputeCapacityReservationInstancesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListComputeCapacityReservationInstancesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListComputeCapacityReservationInstancesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListComputeCapacityReservationInstancesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListComputeCapacityReservationInstancesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -163,6 +163,17 @@ func GetListComputeCapacityReservationInstancesSortByEnumStringValues() []string
 	}
 }
 
+// GetMappingListComputeCapacityReservationInstancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListComputeCapacityReservationInstancesSortByEnum(val string) (ListComputeCapacityReservationInstancesSortByEnum, bool) {
+	mappingListComputeCapacityReservationInstancesSortByEnumIgnoreCase := make(map[string]ListComputeCapacityReservationInstancesSortByEnum)
+	for k, v := range mappingListComputeCapacityReservationInstancesSortByEnum {
+		mappingListComputeCapacityReservationInstancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListComputeCapacityReservationInstancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListComputeCapacityReservationInstancesSortOrderEnum Enum with underlying type: string
 type ListComputeCapacityReservationInstancesSortOrderEnum string
 
@@ -192,4 +203,15 @@ func GetListComputeCapacityReservationInstancesSortOrderEnumStringValues() []str
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListComputeCapacityReservationInstancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListComputeCapacityReservationInstancesSortOrderEnum(val string) (ListComputeCapacityReservationInstancesSortOrderEnum, bool) {
+	mappingListComputeCapacityReservationInstancesSortOrderEnumIgnoreCase := make(map[string]ListComputeCapacityReservationInstancesSortOrderEnum)
+	for k, v := range mappingListComputeCapacityReservationInstancesSortOrderEnum {
+		mappingListComputeCapacityReservationInstancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListComputeCapacityReservationInstancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

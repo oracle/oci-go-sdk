@@ -105,13 +105,13 @@ func (request GetDomainRecordsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetDomainRecordsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetDomainRecordsScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingGetDomainRecordsScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetGetDomainRecordsScopeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingGetDomainRecordsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingGetDomainRecordsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetGetDomainRecordsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingGetDomainRecordsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingGetDomainRecordsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetGetDomainRecordsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -187,6 +187,17 @@ func GetGetDomainRecordsScopeEnumStringValues() []string {
 	}
 }
 
+// GetMappingGetDomainRecordsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetDomainRecordsScopeEnum(val string) (GetDomainRecordsScopeEnum, bool) {
+	mappingGetDomainRecordsScopeEnumIgnoreCase := make(map[string]GetDomainRecordsScopeEnum)
+	for k, v := range mappingGetDomainRecordsScopeEnum {
+		mappingGetDomainRecordsScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetDomainRecordsScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // GetDomainRecordsSortByEnum Enum with underlying type: string
 type GetDomainRecordsSortByEnum string
 
@@ -218,6 +229,17 @@ func GetGetDomainRecordsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingGetDomainRecordsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetDomainRecordsSortByEnum(val string) (GetDomainRecordsSortByEnum, bool) {
+	mappingGetDomainRecordsSortByEnumIgnoreCase := make(map[string]GetDomainRecordsSortByEnum)
+	for k, v := range mappingGetDomainRecordsSortByEnum {
+		mappingGetDomainRecordsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetDomainRecordsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // GetDomainRecordsSortOrderEnum Enum with underlying type: string
 type GetDomainRecordsSortOrderEnum string
 
@@ -247,4 +269,15 @@ func GetGetDomainRecordsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingGetDomainRecordsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetDomainRecordsSortOrderEnum(val string) (GetDomainRecordsSortOrderEnum, bool) {
+	mappingGetDomainRecordsSortOrderEnumIgnoreCase := make(map[string]GetDomainRecordsSortOrderEnum)
+	for k, v := range mappingGetDomainRecordsSortOrderEnum {
+		mappingGetDomainRecordsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetDomainRecordsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

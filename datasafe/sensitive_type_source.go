@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // SensitiveTypeSourceEnum Enum with underlying type: string
 type SensitiveTypeSourceEnum string
 
@@ -38,4 +42,15 @@ func GetSensitiveTypeSourceEnumStringValues() []string {
 		"ORACLE",
 		"USER",
 	}
+}
+
+// GetMappingSensitiveTypeSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSensitiveTypeSourceEnum(val string) (SensitiveTypeSourceEnum, bool) {
+	mappingSensitiveTypeSourceEnumIgnoreCase := make(map[string]SensitiveTypeSourceEnum)
+	for k, v := range mappingSensitiveTypeSourceEnum {
+		mappingSensitiveTypeSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSensitiveTypeSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

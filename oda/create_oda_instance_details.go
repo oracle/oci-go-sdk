@@ -49,7 +49,7 @@ func (m CreateOdaInstanceDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateOdaInstanceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreateOdaInstanceDetailsShapeNameEnum[string(m.ShapeName)]; !ok && m.ShapeName != "" {
+	if _, ok := GetMappingCreateOdaInstanceDetailsShapeNameEnum(string(m.ShapeName)); !ok && m.ShapeName != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShapeName: %s. Supported values are: %s.", m.ShapeName, strings.Join(GetCreateOdaInstanceDetailsShapeNameEnumStringValues(), ",")))
 	}
 
@@ -88,4 +88,15 @@ func GetCreateOdaInstanceDetailsShapeNameEnumStringValues() []string {
 		"DEVELOPMENT",
 		"PRODUCTION",
 	}
+}
+
+// GetMappingCreateOdaInstanceDetailsShapeNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateOdaInstanceDetailsShapeNameEnum(val string) (CreateOdaInstanceDetailsShapeNameEnum, bool) {
+	mappingCreateOdaInstanceDetailsShapeNameEnumIgnoreCase := make(map[string]CreateOdaInstanceDetailsShapeNameEnum)
+	for k, v := range mappingCreateOdaInstanceDetailsShapeNameEnum {
+		mappingCreateOdaInstanceDetailsShapeNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateOdaInstanceDetailsShapeNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

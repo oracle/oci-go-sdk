@@ -82,7 +82,7 @@ func (m SecurityList) String() string {
 // Not recommended for calling this function directly
 func (m SecurityList) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSecurityListLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingSecurityListLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSecurityListLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -127,4 +127,15 @@ func GetSecurityListLifecycleStateEnumStringValues() []string {
 		"TERMINATING",
 		"TERMINATED",
 	}
+}
+
+// GetMappingSecurityListLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecurityListLifecycleStateEnum(val string) (SecurityListLifecycleStateEnum, bool) {
+	mappingSecurityListLifecycleStateEnumIgnoreCase := make(map[string]SecurityListLifecycleStateEnum)
+	for k, v := range mappingSecurityListLifecycleStateEnum {
+		mappingSecurityListLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecurityListLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

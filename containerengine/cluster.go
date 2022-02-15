@@ -87,7 +87,7 @@ func (m Cluster) String() string {
 func (m Cluster) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingClusterLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingClusterLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetClusterLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

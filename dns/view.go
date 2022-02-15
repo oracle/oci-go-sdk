@@ -70,7 +70,7 @@ func (m View) String() string {
 // Not recommended for calling this function directly
 func (m View) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingViewLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingViewLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetViewLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -115,4 +115,15 @@ func GetViewLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"UPDATING",
 	}
+}
+
+// GetMappingViewLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingViewLifecycleStateEnum(val string) (ViewLifecycleStateEnum, bool) {
+	mappingViewLifecycleStateEnumIgnoreCase := make(map[string]ViewLifecycleStateEnum)
+	for k, v := range mappingViewLifecycleStateEnum {
+		mappingViewLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingViewLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -36,7 +36,7 @@ func (m RateLimitingPolicy) String() string {
 // Not recommended for calling this function directly
 func (m RateLimitingPolicy) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRateLimitingPolicyRateKeyEnum[string(m.RateKey)]; !ok && m.RateKey != "" {
+	if _, ok := GetMappingRateLimitingPolicyRateKeyEnum(string(m.RateKey)); !ok && m.RateKey != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RateKey: %s. Supported values are: %s.", m.RateKey, strings.Join(GetRateLimitingPolicyRateKeyEnumStringValues(), ",")))
 	}
 
@@ -75,4 +75,15 @@ func GetRateLimitingPolicyRateKeyEnumStringValues() []string {
 		"CLIENT_IP",
 		"TOTAL",
 	}
+}
+
+// GetMappingRateLimitingPolicyRateKeyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRateLimitingPolicyRateKeyEnum(val string) (RateLimitingPolicyRateKeyEnum, bool) {
+	mappingRateLimitingPolicyRateKeyEnumIgnoreCase := make(map[string]RateLimitingPolicyRateKeyEnum)
+	for k, v := range mappingRateLimitingPolicyRateKeyEnum {
+		mappingRateLimitingPolicyRateKeyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRateLimitingPolicyRateKeyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

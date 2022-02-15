@@ -77,10 +77,10 @@ func (request ListHealthChecksVantagePointsRequest) RetryPolicy() *common.RetryP
 // Not recommended for calling this function directly
 func (request ListHealthChecksVantagePointsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListHealthChecksVantagePointsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListHealthChecksVantagePointsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListHealthChecksVantagePointsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListHealthChecksVantagePointsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListHealthChecksVantagePointsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListHealthChecksVantagePointsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -151,6 +151,17 @@ func GetListHealthChecksVantagePointsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListHealthChecksVantagePointsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHealthChecksVantagePointsSortByEnum(val string) (ListHealthChecksVantagePointsSortByEnum, bool) {
+	mappingListHealthChecksVantagePointsSortByEnumIgnoreCase := make(map[string]ListHealthChecksVantagePointsSortByEnum)
+	for k, v := range mappingListHealthChecksVantagePointsSortByEnum {
+		mappingListHealthChecksVantagePointsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHealthChecksVantagePointsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListHealthChecksVantagePointsSortOrderEnum Enum with underlying type: string
 type ListHealthChecksVantagePointsSortOrderEnum string
 
@@ -180,4 +191,15 @@ func GetListHealthChecksVantagePointsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListHealthChecksVantagePointsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHealthChecksVantagePointsSortOrderEnum(val string) (ListHealthChecksVantagePointsSortOrderEnum, bool) {
+	mappingListHealthChecksVantagePointsSortOrderEnumIgnoreCase := make(map[string]ListHealthChecksVantagePointsSortOrderEnum)
+	for k, v := range mappingListHealthChecksVantagePointsSortOrderEnum {
+		mappingListHealthChecksVantagePointsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHealthChecksVantagePointsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

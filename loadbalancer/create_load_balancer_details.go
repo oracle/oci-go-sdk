@@ -102,7 +102,7 @@ func (m CreateLoadBalancerDetails) String() string {
 func (m CreateLoadBalancerDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateLoadBalancerDetailsIpModeEnum[string(m.IpMode)]; !ok && m.IpMode != "" {
+	if _, ok := GetMappingCreateLoadBalancerDetailsIpModeEnum(string(m.IpMode)); !ok && m.IpMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IpMode: %s. Supported values are: %s.", m.IpMode, strings.Join(GetCreateLoadBalancerDetailsIpModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -140,4 +140,15 @@ func GetCreateLoadBalancerDetailsIpModeEnumStringValues() []string {
 		"IPV4",
 		"IPV6",
 	}
+}
+
+// GetMappingCreateLoadBalancerDetailsIpModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateLoadBalancerDetailsIpModeEnum(val string) (CreateLoadBalancerDetailsIpModeEnum, bool) {
+	mappingCreateLoadBalancerDetailsIpModeEnumIgnoreCase := make(map[string]CreateLoadBalancerDetailsIpModeEnum)
+	for k, v := range mappingCreateLoadBalancerDetailsIpModeEnum {
+		mappingCreateLoadBalancerDetailsIpModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateLoadBalancerDetailsIpModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -102,3 +102,14 @@ func GetUpdateWaitCriteriaDetailsWaitTypeEnumStringValues() []string {
 		"ABSOLUTE_WAIT",
 	}
 }
+
+// GetMappingUpdateWaitCriteriaDetailsWaitTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateWaitCriteriaDetailsWaitTypeEnum(val string) (UpdateWaitCriteriaDetailsWaitTypeEnum, bool) {
+	mappingUpdateWaitCriteriaDetailsWaitTypeEnumIgnoreCase := make(map[string]UpdateWaitCriteriaDetailsWaitTypeEnum)
+	for k, v := range mappingUpdateWaitCriteriaDetailsWaitTypeEnum {
+		mappingUpdateWaitCriteriaDetailsWaitTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateWaitCriteriaDetailsWaitTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

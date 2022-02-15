@@ -58,10 +58,10 @@ func (m MonitoredInstance) String() string {
 func (m MonitoredInstance) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingMonitoredInstanceMonitoringStateEnum[string(m.MonitoringState)]; !ok && m.MonitoringState != "" {
+	if _, ok := GetMappingMonitoredInstanceMonitoringStateEnum(string(m.MonitoringState)); !ok && m.MonitoringState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MonitoringState: %s. Supported values are: %s.", m.MonitoringState, strings.Join(GetMonitoredInstanceMonitoringStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingMonitoredInstanceLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingMonitoredInstanceLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetMonitoredInstanceLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -99,6 +99,17 @@ func GetMonitoredInstanceMonitoringStateEnumStringValues() []string {
 		"ENABLED",
 		"DISABLED",
 	}
+}
+
+// GetMappingMonitoredInstanceMonitoringStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMonitoredInstanceMonitoringStateEnum(val string) (MonitoredInstanceMonitoringStateEnum, bool) {
+	mappingMonitoredInstanceMonitoringStateEnumIgnoreCase := make(map[string]MonitoredInstanceMonitoringStateEnum)
+	for k, v := range mappingMonitoredInstanceMonitoringStateEnum {
+		mappingMonitoredInstanceMonitoringStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMonitoredInstanceMonitoringStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // MonitoredInstanceLifecycleStateEnum Enum with underlying type: string
@@ -145,4 +156,15 @@ func GetMonitoredInstanceLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingMonitoredInstanceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMonitoredInstanceLifecycleStateEnum(val string) (MonitoredInstanceLifecycleStateEnum, bool) {
+	mappingMonitoredInstanceLifecycleStateEnumIgnoreCase := make(map[string]MonitoredInstanceLifecycleStateEnum)
+	for k, v := range mappingMonitoredInstanceLifecycleStateEnum {
+		mappingMonitoredInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMonitoredInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

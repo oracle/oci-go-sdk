@@ -67,10 +67,10 @@ func (m ListMetricsDetails) String() string {
 func (m ListMetricsDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingListMetricsDetailsSortByEnum[string(m.SortBy)]; !ok && m.SortBy != "" {
+	if _, ok := GetMappingListMetricsDetailsSortByEnum(string(m.SortBy)); !ok && m.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", m.SortBy, strings.Join(GetListMetricsDetailsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListMetricsDetailsSortOrderEnum[string(m.SortOrder)]; !ok && m.SortOrder != "" {
+	if _, ok := GetMappingListMetricsDetailsSortOrderEnum(string(m.SortOrder)); !ok && m.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", m.SortOrder, strings.Join(GetListMetricsDetailsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -113,6 +113,17 @@ func GetListMetricsDetailsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListMetricsDetailsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMetricsDetailsSortByEnum(val string) (ListMetricsDetailsSortByEnum, bool) {
+	mappingListMetricsDetailsSortByEnumIgnoreCase := make(map[string]ListMetricsDetailsSortByEnum)
+	for k, v := range mappingListMetricsDetailsSortByEnum {
+		mappingListMetricsDetailsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMetricsDetailsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListMetricsDetailsSortOrderEnum Enum with underlying type: string
 type ListMetricsDetailsSortOrderEnum string
 
@@ -142,4 +153,15 @@ func GetListMetricsDetailsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListMetricsDetailsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMetricsDetailsSortOrderEnum(val string) (ListMetricsDetailsSortOrderEnum, bool) {
+	mappingListMetricsDetailsSortOrderEnumIgnoreCase := make(map[string]ListMetricsDetailsSortOrderEnum)
+	for k, v := range mappingListMetricsDetailsSortOrderEnum {
+		mappingListMetricsDetailsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMetricsDetailsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

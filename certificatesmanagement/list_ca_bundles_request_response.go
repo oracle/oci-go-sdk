@@ -85,13 +85,13 @@ func (request ListCaBundlesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListCaBundlesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListCaBundlesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListCaBundlesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListCaBundlesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListCaBundlesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListCaBundlesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListCaBundlesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListCaBundlesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListCaBundlesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListCaBundlesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -172,6 +172,17 @@ func GetListCaBundlesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListCaBundlesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCaBundlesLifecycleStateEnum(val string) (ListCaBundlesLifecycleStateEnum, bool) {
+	mappingListCaBundlesLifecycleStateEnumIgnoreCase := make(map[string]ListCaBundlesLifecycleStateEnum)
+	for k, v := range mappingListCaBundlesLifecycleStateEnum {
+		mappingListCaBundlesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCaBundlesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListCaBundlesSortByEnum Enum with underlying type: string
 type ListCaBundlesSortByEnum string
 
@@ -203,6 +214,17 @@ func GetListCaBundlesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListCaBundlesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCaBundlesSortByEnum(val string) (ListCaBundlesSortByEnum, bool) {
+	mappingListCaBundlesSortByEnumIgnoreCase := make(map[string]ListCaBundlesSortByEnum)
+	for k, v := range mappingListCaBundlesSortByEnum {
+		mappingListCaBundlesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCaBundlesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListCaBundlesSortOrderEnum Enum with underlying type: string
 type ListCaBundlesSortOrderEnum string
 
@@ -232,4 +254,15 @@ func GetListCaBundlesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListCaBundlesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCaBundlesSortOrderEnum(val string) (ListCaBundlesSortOrderEnum, bool) {
+	mappingListCaBundlesSortOrderEnumIgnoreCase := make(map[string]ListCaBundlesSortOrderEnum)
+	for k, v := range mappingListCaBundlesSortOrderEnum {
+		mappingListCaBundlesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCaBundlesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

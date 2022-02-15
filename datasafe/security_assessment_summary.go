@@ -114,14 +114,14 @@ func (m SecurityAssessmentSummary) String() string {
 // Not recommended for calling this function directly
 func (m SecurityAssessmentSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSecurityAssessmentLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingSecurityAssessmentLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSecurityAssessmentLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSecurityAssessmentSummaryTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingSecurityAssessmentSummaryTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetSecurityAssessmentSummaryTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingSecurityAssessmentSummaryTriggeredByEnum[string(m.TriggeredBy)]; !ok && m.TriggeredBy != "" {
+	if _, ok := GetMappingSecurityAssessmentSummaryTriggeredByEnum(string(m.TriggeredBy)); !ok && m.TriggeredBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TriggeredBy: %s. Supported values are: %s.", m.TriggeredBy, strings.Join(GetSecurityAssessmentSummaryTriggeredByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -161,6 +161,17 @@ func GetSecurityAssessmentSummaryTriggeredByEnumStringValues() []string {
 	}
 }
 
+// GetMappingSecurityAssessmentSummaryTriggeredByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecurityAssessmentSummaryTriggeredByEnum(val string) (SecurityAssessmentSummaryTriggeredByEnum, bool) {
+	mappingSecurityAssessmentSummaryTriggeredByEnumIgnoreCase := make(map[string]SecurityAssessmentSummaryTriggeredByEnum)
+	for k, v := range mappingSecurityAssessmentSummaryTriggeredByEnum {
+		mappingSecurityAssessmentSummaryTriggeredByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecurityAssessmentSummaryTriggeredByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SecurityAssessmentSummaryTypeEnum Enum with underlying type: string
 type SecurityAssessmentSummaryTypeEnum string
 
@@ -196,4 +207,15 @@ func GetSecurityAssessmentSummaryTypeEnumStringValues() []string {
 		"SAVE_SCHEDULE",
 		"COMPARTMENT",
 	}
+}
+
+// GetMappingSecurityAssessmentSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecurityAssessmentSummaryTypeEnum(val string) (SecurityAssessmentSummaryTypeEnum, bool) {
+	mappingSecurityAssessmentSummaryTypeEnumIgnoreCase := make(map[string]SecurityAssessmentSummaryTypeEnum)
+	for k, v := range mappingSecurityAssessmentSummaryTypeEnum {
+		mappingSecurityAssessmentSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecurityAssessmentSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

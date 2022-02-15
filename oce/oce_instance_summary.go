@@ -103,19 +103,19 @@ func (m OceInstanceSummary) String() string {
 func (m OceInstanceSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingOceInstanceSummaryInstanceUsageTypeEnum[string(m.InstanceUsageType)]; !ok && m.InstanceUsageType != "" {
+	if _, ok := GetMappingOceInstanceSummaryInstanceUsageTypeEnum(string(m.InstanceUsageType)); !ok && m.InstanceUsageType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InstanceUsageType: %s. Supported values are: %s.", m.InstanceUsageType, strings.Join(GetOceInstanceSummaryInstanceUsageTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingOceInstanceUpgradeScheduleEnum[string(m.UpgradeSchedule)]; !ok && m.UpgradeSchedule != "" {
+	if _, ok := GetMappingOceInstanceUpgradeScheduleEnum(string(m.UpgradeSchedule)); !ok && m.UpgradeSchedule != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpgradeSchedule: %s. Supported values are: %s.", m.UpgradeSchedule, strings.Join(GetOceInstanceUpgradeScheduleEnumStringValues(), ",")))
 	}
-	if _, ok := mappingOceInstanceSummaryInstanceAccessTypeEnum[string(m.InstanceAccessType)]; !ok && m.InstanceAccessType != "" {
+	if _, ok := GetMappingOceInstanceSummaryInstanceAccessTypeEnum(string(m.InstanceAccessType)); !ok && m.InstanceAccessType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InstanceAccessType: %s. Supported values are: %s.", m.InstanceAccessType, strings.Join(GetOceInstanceSummaryInstanceAccessTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLicenseTypeEnum[string(m.InstanceLicenseType)]; !ok && m.InstanceLicenseType != "" {
+	if _, ok := GetMappingLicenseTypeEnum(string(m.InstanceLicenseType)); !ok && m.InstanceLicenseType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InstanceLicenseType: %s. Supported values are: %s.", m.InstanceLicenseType, strings.Join(GetLicenseTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingOceInstanceSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingOceInstanceSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetOceInstanceSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -155,6 +155,17 @@ func GetOceInstanceSummaryInstanceUsageTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingOceInstanceSummaryInstanceUsageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOceInstanceSummaryInstanceUsageTypeEnum(val string) (OceInstanceSummaryInstanceUsageTypeEnum, bool) {
+	mappingOceInstanceSummaryInstanceUsageTypeEnumIgnoreCase := make(map[string]OceInstanceSummaryInstanceUsageTypeEnum)
+	for k, v := range mappingOceInstanceSummaryInstanceUsageTypeEnum {
+		mappingOceInstanceSummaryInstanceUsageTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOceInstanceSummaryInstanceUsageTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // OceInstanceSummaryInstanceAccessTypeEnum Enum with underlying type: string
 type OceInstanceSummaryInstanceAccessTypeEnum string
 
@@ -184,6 +195,17 @@ func GetOceInstanceSummaryInstanceAccessTypeEnumStringValues() []string {
 		"PUBLIC",
 		"PRIVATE",
 	}
+}
+
+// GetMappingOceInstanceSummaryInstanceAccessTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOceInstanceSummaryInstanceAccessTypeEnum(val string) (OceInstanceSummaryInstanceAccessTypeEnum, bool) {
+	mappingOceInstanceSummaryInstanceAccessTypeEnumIgnoreCase := make(map[string]OceInstanceSummaryInstanceAccessTypeEnum)
+	for k, v := range mappingOceInstanceSummaryInstanceAccessTypeEnum {
+		mappingOceInstanceSummaryInstanceAccessTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOceInstanceSummaryInstanceAccessTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // OceInstanceSummaryLifecycleStateEnum Enum with underlying type: string
@@ -227,4 +249,15 @@ func GetOceInstanceSummaryLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingOceInstanceSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOceInstanceSummaryLifecycleStateEnum(val string) (OceInstanceSummaryLifecycleStateEnum, bool) {
+	mappingOceInstanceSummaryLifecycleStateEnumIgnoreCase := make(map[string]OceInstanceSummaryLifecycleStateEnum)
+	for k, v := range mappingOceInstanceSummaryLifecycleStateEnum {
+		mappingOceInstanceSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOceInstanceSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

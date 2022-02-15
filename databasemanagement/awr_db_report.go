@@ -69,7 +69,7 @@ func (m AwrDbReport) String() string {
 // Not recommended for calling this function directly
 func (m AwrDbReport) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAwrDbReportFormatEnum[string(m.Format)]; !ok && m.Format != "" {
+	if _, ok := GetMappingAwrDbReportFormatEnum(string(m.Format)); !ok && m.Format != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Format: %s. Supported values are: %s.", m.Format, strings.Join(GetAwrDbReportFormatEnumStringValues(), ",")))
 	}
 
@@ -125,4 +125,15 @@ func GetAwrDbReportFormatEnumStringValues() []string {
 		"TEXT",
 		"XML",
 	}
+}
+
+// GetMappingAwrDbReportFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAwrDbReportFormatEnum(val string) (AwrDbReportFormatEnum, bool) {
+	mappingAwrDbReportFormatEnumIgnoreCase := make(map[string]AwrDbReportFormatEnum)
+	for k, v := range mappingAwrDbReportFormatEnum {
+		mappingAwrDbReportFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAwrDbReportFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

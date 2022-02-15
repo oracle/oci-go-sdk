@@ -37,7 +37,7 @@ func (m DomainReplicationStates) String() string {
 // Not recommended for calling this function directly
 func (m DomainReplicationStates) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingReplicatedRegionDetailsStateEnum[string(m.State)]; !ok && m.State != "" {
+	if _, ok := GetMappingReplicatedRegionDetailsStateEnum(string(m.State)); !ok && m.State != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for State: %s. Supported values are: %s.", m.State, strings.Join(GetReplicatedRegionDetailsStateEnumStringValues(), ",")))
 	}
 

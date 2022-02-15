@@ -95,16 +95,16 @@ func (request ListLabelsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListLabelsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListLabelsIsSystemEnum[string(request.IsSystem)]; !ok && request.IsSystem != "" {
+	if _, ok := GetMappingListLabelsIsSystemEnum(string(request.IsSystem)); !ok && request.IsSystem != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IsSystem: %s. Supported values are: %s.", request.IsSystem, strings.Join(GetListLabelsIsSystemEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLabelsLabelPriorityEnum[string(request.LabelPriority)]; !ok && request.LabelPriority != "" {
+	if _, ok := GetMappingListLabelsLabelPriorityEnum(string(request.LabelPriority)); !ok && request.LabelPriority != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LabelPriority: %s. Supported values are: %s.", request.LabelPriority, strings.Join(GetListLabelsLabelPriorityEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLabelsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListLabelsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListLabelsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLabelsLabelSortByEnum[string(request.LabelSortBy)]; !ok && request.LabelSortBy != "" {
+	if _, ok := GetMappingListLabelsLabelSortByEnum(string(request.LabelSortBy)); !ok && request.LabelSortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LabelSortBy: %s. Supported values are: %s.", request.LabelSortBy, strings.Join(GetListLabelsLabelSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -179,6 +179,17 @@ func GetListLabelsIsSystemEnumStringValues() []string {
 	}
 }
 
+// GetMappingListLabelsIsSystemEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLabelsIsSystemEnum(val string) (ListLabelsIsSystemEnum, bool) {
+	mappingListLabelsIsSystemEnumIgnoreCase := make(map[string]ListLabelsIsSystemEnum)
+	for k, v := range mappingListLabelsIsSystemEnum {
+		mappingListLabelsIsSystemEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLabelsIsSystemEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLabelsLabelPriorityEnum Enum with underlying type: string
 type ListLabelsLabelPriorityEnum string
 
@@ -216,6 +227,17 @@ func GetListLabelsLabelPriorityEnumStringValues() []string {
 	}
 }
 
+// GetMappingListLabelsLabelPriorityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLabelsLabelPriorityEnum(val string) (ListLabelsLabelPriorityEnum, bool) {
+	mappingListLabelsLabelPriorityEnumIgnoreCase := make(map[string]ListLabelsLabelPriorityEnum)
+	for k, v := range mappingListLabelsLabelPriorityEnum {
+		mappingListLabelsLabelPriorityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLabelsLabelPriorityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLabelsSortOrderEnum Enum with underlying type: string
 type ListLabelsSortOrderEnum string
 
@@ -245,6 +267,17 @@ func GetListLabelsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListLabelsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLabelsSortOrderEnum(val string) (ListLabelsSortOrderEnum, bool) {
+	mappingListLabelsSortOrderEnumIgnoreCase := make(map[string]ListLabelsSortOrderEnum)
+	for k, v := range mappingListLabelsSortOrderEnum {
+		mappingListLabelsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLabelsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListLabelsLabelSortByEnum Enum with underlying type: string
@@ -279,4 +312,15 @@ func GetListLabelsLabelSortByEnumStringValues() []string {
 		"priority",
 		"sourceUsing",
 	}
+}
+
+// GetMappingListLabelsLabelSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLabelsLabelSortByEnum(val string) (ListLabelsLabelSortByEnum, bool) {
+	mappingListLabelsLabelSortByEnumIgnoreCase := make(map[string]ListLabelsLabelSortByEnum)
+	for k, v := range mappingListLabelsLabelSortByEnum {
+		mappingListLabelsLabelSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLabelsLabelSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

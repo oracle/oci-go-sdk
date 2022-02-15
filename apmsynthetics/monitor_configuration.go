@@ -133,3 +133,14 @@ func GetMonitorConfigurationConfigTypeEnumStringValues() []string {
 		"SCRIPTED_REST_CONFIG",
 	}
 }
+
+// GetMappingMonitorConfigurationConfigTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMonitorConfigurationConfigTypeEnum(val string) (MonitorConfigurationConfigTypeEnum, bool) {
+	mappingMonitorConfigurationConfigTypeEnumIgnoreCase := make(map[string]MonitorConfigurationConfigTypeEnum)
+	for k, v := range mappingMonitorConfigurationConfigTypeEnum {
+		mappingMonitorConfigurationConfigTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMonitorConfigurationConfigTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

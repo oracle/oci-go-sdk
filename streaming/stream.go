@@ -70,7 +70,7 @@ func (m Stream) String() string {
 // Not recommended for calling this function directly
 func (m Stream) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingStreamLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingStreamLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetStreamLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -121,4 +121,15 @@ func GetStreamLifecycleStateEnumStringValues() []string {
 		"FAILED",
 		"UPDATING",
 	}
+}
+
+// GetMappingStreamLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStreamLifecycleStateEnum(val string) (StreamLifecycleStateEnum, bool) {
+	mappingStreamLifecycleStateEnumIgnoreCase := make(map[string]StreamLifecycleStateEnum)
+	for k, v := range mappingStreamLifecycleStateEnum {
+		mappingStreamLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStreamLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

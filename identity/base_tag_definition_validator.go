@@ -117,3 +117,14 @@ func GetBaseTagDefinitionValidatorValidatorTypeEnumStringValues() []string {
 		"DEFAULT",
 	}
 }
+
+// GetMappingBaseTagDefinitionValidatorValidatorTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBaseTagDefinitionValidatorValidatorTypeEnum(val string) (BaseTagDefinitionValidatorValidatorTypeEnum, bool) {
+	mappingBaseTagDefinitionValidatorValidatorTypeEnumIgnoreCase := make(map[string]BaseTagDefinitionValidatorValidatorTypeEnum)
+	for k, v := range mappingBaseTagDefinitionValidatorValidatorTypeEnum {
+		mappingBaseTagDefinitionValidatorValidatorTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBaseTagDefinitionValidatorValidatorTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

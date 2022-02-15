@@ -32,7 +32,7 @@ func (m GenerateSensitiveDataModelForDownloadDetails) String() string {
 func (m GenerateSensitiveDataModelForDownloadDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDataModelFormatEnum[string(m.DataModelFormat)]; !ok && m.DataModelFormat != "" {
+	if _, ok := GetMappingDataModelFormatEnum(string(m.DataModelFormat)); !ok && m.DataModelFormat != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataModelFormat: %s. Supported values are: %s.", m.DataModelFormat, strings.Join(GetDataModelFormatEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

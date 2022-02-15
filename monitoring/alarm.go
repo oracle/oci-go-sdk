@@ -161,14 +161,14 @@ func (m Alarm) String() string {
 // Not recommended for calling this function directly
 func (m Alarm) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAlarmSeverityEnum[string(m.Severity)]; !ok && m.Severity != "" {
+	if _, ok := GetMappingAlarmSeverityEnum(string(m.Severity)); !ok && m.Severity != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Severity: %s. Supported values are: %s.", m.Severity, strings.Join(GetAlarmSeverityEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAlarmLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAlarmLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAlarmLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingAlarmMessageFormatEnum[string(m.MessageFormat)]; !ok && m.MessageFormat != "" {
+	if _, ok := GetMappingAlarmMessageFormatEnum(string(m.MessageFormat)); !ok && m.MessageFormat != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MessageFormat: %s. Supported values are: %s.", m.MessageFormat, strings.Join(GetAlarmMessageFormatEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -214,6 +214,17 @@ func GetAlarmSeverityEnumStringValues() []string {
 	}
 }
 
+// GetMappingAlarmSeverityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAlarmSeverityEnum(val string) (AlarmSeverityEnum, bool) {
+	mappingAlarmSeverityEnumIgnoreCase := make(map[string]AlarmSeverityEnum)
+	for k, v := range mappingAlarmSeverityEnum {
+		mappingAlarmSeverityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAlarmSeverityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AlarmMessageFormatEnum Enum with underlying type: string
 type AlarmMessageFormatEnum string
 
@@ -248,6 +259,17 @@ func GetAlarmMessageFormatEnumStringValues() []string {
 	}
 }
 
+// GetMappingAlarmMessageFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAlarmMessageFormatEnum(val string) (AlarmMessageFormatEnum, bool) {
+	mappingAlarmMessageFormatEnumIgnoreCase := make(map[string]AlarmMessageFormatEnum)
+	for k, v := range mappingAlarmMessageFormatEnum {
+		mappingAlarmMessageFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAlarmMessageFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AlarmLifecycleStateEnum Enum with underlying type: string
 type AlarmLifecycleStateEnum string
 
@@ -280,4 +302,15 @@ func GetAlarmLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingAlarmLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAlarmLifecycleStateEnum(val string) (AlarmLifecycleStateEnum, bool) {
+	mappingAlarmLifecycleStateEnumIgnoreCase := make(map[string]AlarmLifecycleStateEnum)
+	for k, v := range mappingAlarmLifecycleStateEnum {
+		mappingAlarmLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAlarmLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

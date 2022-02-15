@@ -139,3 +139,14 @@ func GetActionDetailsActionTypeEnumStringValues() []string {
 		"FAAS",
 	}
 }
+
+// GetMappingActionDetailsActionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingActionDetailsActionTypeEnum(val string) (ActionDetailsActionTypeEnum, bool) {
+	mappingActionDetailsActionTypeEnumIgnoreCase := make(map[string]ActionDetailsActionTypeEnum)
+	for k, v := range mappingActionDetailsActionTypeEnum {
+		mappingActionDetailsActionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingActionDetailsActionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

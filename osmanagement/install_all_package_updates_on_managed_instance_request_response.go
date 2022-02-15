@@ -70,7 +70,7 @@ func (request InstallAllPackageUpdatesOnManagedInstanceRequest) RetryPolicy() *c
 // Not recommended for calling this function directly
 func (request InstallAllPackageUpdatesOnManagedInstanceRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum[string(request.UpdateType)]; !ok && request.UpdateType != "" {
+	if _, ok := GetMappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum(string(request.UpdateType)); !ok && request.UpdateType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateType: %s. Supported values are: %s.", request.UpdateType, strings.Join(GetInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -144,4 +144,15 @@ func GetInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnumStringValues() []
 		"KSPLICE",
 		"ALL",
 	}
+}
+
+// GetMappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum(val string) (InstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum, bool) {
+	mappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnumIgnoreCase := make(map[string]InstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum)
+	for k, v := range mappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum {
+		mappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

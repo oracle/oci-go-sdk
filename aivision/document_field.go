@@ -38,7 +38,7 @@ func (m DocumentField) String() string {
 // Not recommended for calling this function directly
 func (m DocumentField) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDocumentFieldFieldTypeEnum[string(m.FieldType)]; !ok && m.FieldType != "" {
+	if _, ok := GetMappingDocumentFieldFieldTypeEnum(string(m.FieldType)); !ok && m.FieldType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FieldType: %s. Supported values are: %s.", m.FieldType, strings.Join(GetDocumentFieldFieldTypeEnumStringValues(), ",")))
 	}
 
@@ -116,4 +116,15 @@ func GetDocumentFieldFieldTypeEnumStringValues() []string {
 		"LINE_ITEM_FIELD",
 		"KEY_VALUE",
 	}
+}
+
+// GetMappingDocumentFieldFieldTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDocumentFieldFieldTypeEnum(val string) (DocumentFieldFieldTypeEnum, bool) {
+	mappingDocumentFieldFieldTypeEnumIgnoreCase := make(map[string]DocumentFieldFieldTypeEnum)
+	for k, v := range mappingDocumentFieldFieldTypeEnum {
+		mappingDocumentFieldFieldTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDocumentFieldFieldTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

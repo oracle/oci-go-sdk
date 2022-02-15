@@ -93,7 +93,7 @@ func (m Shape) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	for _, val := range m.BaselineOcpuUtilizations {
-		if _, ok := mappingShapeBaselineOcpuUtilizationsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingShapeBaselineOcpuUtilizationsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BaselineOcpuUtilizations: %s. Supported values are: %s.", val, strings.Join(GetShapeBaselineOcpuUtilizationsEnumStringValues(), ",")))
 		}
 	}
@@ -136,4 +136,15 @@ func GetShapeBaselineOcpuUtilizationsEnumStringValues() []string {
 		"BASELINE_1_2",
 		"BASELINE_1_1",
 	}
+}
+
+// GetMappingShapeBaselineOcpuUtilizationsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingShapeBaselineOcpuUtilizationsEnum(val string) (ShapeBaselineOcpuUtilizationsEnum, bool) {
+	mappingShapeBaselineOcpuUtilizationsEnumIgnoreCase := make(map[string]ShapeBaselineOcpuUtilizationsEnum)
+	for k, v := range mappingShapeBaselineOcpuUtilizationsEnum {
+		mappingShapeBaselineOcpuUtilizationsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingShapeBaselineOcpuUtilizationsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -81,10 +81,10 @@ func (request ListPublicationPackagesRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListPublicationPackagesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListPublicationPackagesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListPublicationPackagesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListPublicationPackagesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPublicationPackagesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListPublicationPackagesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListPublicationPackagesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -149,6 +149,17 @@ func GetListPublicationPackagesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListPublicationPackagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPublicationPackagesSortByEnum(val string) (ListPublicationPackagesSortByEnum, bool) {
+	mappingListPublicationPackagesSortByEnumIgnoreCase := make(map[string]ListPublicationPackagesSortByEnum)
+	for k, v := range mappingListPublicationPackagesSortByEnum {
+		mappingListPublicationPackagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPublicationPackagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListPublicationPackagesSortOrderEnum Enum with underlying type: string
 type ListPublicationPackagesSortOrderEnum string
 
@@ -178,4 +189,15 @@ func GetListPublicationPackagesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListPublicationPackagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPublicationPackagesSortOrderEnum(val string) (ListPublicationPackagesSortOrderEnum, bool) {
+	mappingListPublicationPackagesSortOrderEnumIgnoreCase := make(map[string]ListPublicationPackagesSortOrderEnum)
+	for k, v := range mappingListPublicationPackagesSortOrderEnum {
+		mappingListPublicationPackagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPublicationPackagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

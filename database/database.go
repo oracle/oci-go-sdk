@@ -104,7 +104,7 @@ func (m Database) String() string {
 // Not recommended for calling this function directly
 func (m Database) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDatabaseLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDatabaseLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDatabaseLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -167,4 +167,15 @@ func GetDatabaseLifecycleStateEnumStringValues() []string {
 		"RESTORE_FAILED",
 		"FAILED",
 	}
+}
+
+// GetMappingDatabaseLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseLifecycleStateEnum(val string) (DatabaseLifecycleStateEnum, bool) {
+	mappingDatabaseLifecycleStateEnumIgnoreCase := make(map[string]DatabaseLifecycleStateEnum)
+	for k, v := range mappingDatabaseLifecycleStateEnum {
+		mappingDatabaseLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

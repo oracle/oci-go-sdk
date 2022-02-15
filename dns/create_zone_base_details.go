@@ -158,3 +158,14 @@ func GetCreateZoneBaseDetailsMigrationSourceEnumStringValues() []string {
 		"DYNECT",
 	}
 }
+
+// GetMappingCreateZoneBaseDetailsMigrationSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateZoneBaseDetailsMigrationSourceEnum(val string) (CreateZoneBaseDetailsMigrationSourceEnum, bool) {
+	mappingCreateZoneBaseDetailsMigrationSourceEnumIgnoreCase := make(map[string]CreateZoneBaseDetailsMigrationSourceEnum)
+	for k, v := range mappingCreateZoneBaseDetailsMigrationSourceEnum {
+		mappingCreateZoneBaseDetailsMigrationSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateZoneBaseDetailsMigrationSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

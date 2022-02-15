@@ -82,14 +82,14 @@ func (request ListUploadFilesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListUploadFilesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListUploadFilesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListUploadFilesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListUploadFilesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUploadFilesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListUploadFilesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListUploadFilesSortByEnumStringValues(), ",")))
 	}
 	for _, val := range request.Status {
-		if _, ok := mappingListUploadFilesStatusEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListUploadFilesStatusEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", val, strings.Join(GetListUploadFilesStatusEnumStringValues(), ",")))
 		}
 	}
@@ -158,6 +158,17 @@ func GetListUploadFilesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListUploadFilesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUploadFilesSortOrderEnum(val string) (ListUploadFilesSortOrderEnum, bool) {
+	mappingListUploadFilesSortOrderEnumIgnoreCase := make(map[string]ListUploadFilesSortOrderEnum)
+	for k, v := range mappingListUploadFilesSortOrderEnum {
+		mappingListUploadFilesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUploadFilesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListUploadFilesSortByEnum Enum with underlying type: string
 type ListUploadFilesSortByEnum string
 
@@ -207,6 +218,17 @@ func GetListUploadFilesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListUploadFilesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUploadFilesSortByEnum(val string) (ListUploadFilesSortByEnum, bool) {
+	mappingListUploadFilesSortByEnumIgnoreCase := make(map[string]ListUploadFilesSortByEnum)
+	for k, v := range mappingListUploadFilesSortByEnum {
+		mappingListUploadFilesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUploadFilesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListUploadFilesStatusEnum Enum with underlying type: string
 type ListUploadFilesStatusEnum string
 
@@ -239,4 +261,15 @@ func GetListUploadFilesStatusEnumStringValues() []string {
 		"SUCCESSFUL",
 		"FAILED",
 	}
+}
+
+// GetMappingListUploadFilesStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUploadFilesStatusEnum(val string) (ListUploadFilesStatusEnum, bool) {
+	mappingListUploadFilesStatusEnumIgnoreCase := make(map[string]ListUploadFilesStatusEnum)
+	for k, v := range mappingListUploadFilesStatusEnum {
+		mappingListUploadFilesStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUploadFilesStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

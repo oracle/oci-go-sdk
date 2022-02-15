@@ -83,10 +83,10 @@ func (request ListRelatedEventsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListRelatedEventsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListRelatedEventsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListRelatedEventsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListRelatedEventsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListRelatedEventsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListRelatedEventsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListRelatedEventsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -155,6 +155,17 @@ func GetListRelatedEventsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListRelatedEventsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRelatedEventsSortOrderEnum(val string) (ListRelatedEventsSortOrderEnum, bool) {
+	mappingListRelatedEventsSortOrderEnumIgnoreCase := make(map[string]ListRelatedEventsSortOrderEnum)
+	for k, v := range mappingListRelatedEventsSortOrderEnum {
+		mappingListRelatedEventsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRelatedEventsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListRelatedEventsSortByEnum Enum with underlying type: string
 type ListRelatedEventsSortByEnum string
 
@@ -187,4 +198,15 @@ func GetListRelatedEventsSortByEnumStringValues() []string {
 		"id",
 		"eventFingerprint",
 	}
+}
+
+// GetMappingListRelatedEventsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRelatedEventsSortByEnum(val string) (ListRelatedEventsSortByEnum, bool) {
+	mappingListRelatedEventsSortByEnumIgnoreCase := make(map[string]ListRelatedEventsSortByEnum)
+	for k, v := range mappingListRelatedEventsSortByEnum {
+		mappingListRelatedEventsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRelatedEventsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

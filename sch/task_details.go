@@ -116,3 +116,14 @@ func GetTaskDetailsKindEnumStringValues() []string {
 		"logRule",
 	}
 }
+
+// GetMappingTaskDetailsKindEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskDetailsKindEnum(val string) (TaskDetailsKindEnum, bool) {
+	mappingTaskDetailsKindEnumIgnoreCase := make(map[string]TaskDetailsKindEnum)
+	for k, v := range mappingTaskDetailsKindEnum {
+		mappingTaskDetailsKindEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskDetailsKindEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

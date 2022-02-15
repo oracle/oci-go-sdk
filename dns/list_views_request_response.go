@@ -86,16 +86,16 @@ func (request ListViewsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListViewsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListViewsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListViewsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListViewsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListViewsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListViewsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListViewsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingViewSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingViewSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetViewSummaryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListViewsScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingListViewsScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetListViewsScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -163,6 +163,17 @@ func GetListViewsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListViewsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListViewsSortOrderEnum(val string) (ListViewsSortOrderEnum, bool) {
+	mappingListViewsSortOrderEnumIgnoreCase := make(map[string]ListViewsSortOrderEnum)
+	for k, v := range mappingListViewsSortOrderEnum {
+		mappingListViewsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListViewsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListViewsSortByEnum Enum with underlying type: string
 type ListViewsSortByEnum string
 
@@ -194,6 +205,17 @@ func GetListViewsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListViewsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListViewsSortByEnum(val string) (ListViewsSortByEnum, bool) {
+	mappingListViewsSortByEnumIgnoreCase := make(map[string]ListViewsSortByEnum)
+	for k, v := range mappingListViewsSortByEnum {
+		mappingListViewsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListViewsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListViewsScopeEnum Enum with underlying type: string
 type ListViewsScopeEnum string
 
@@ -223,4 +245,15 @@ func GetListViewsScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingListViewsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListViewsScopeEnum(val string) (ListViewsScopeEnum, bool) {
+	mappingListViewsScopeEnumIgnoreCase := make(map[string]ListViewsScopeEnum)
+	for k, v := range mappingListViewsScopeEnum {
+		mappingListViewsScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListViewsScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

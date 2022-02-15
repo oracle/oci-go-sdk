@@ -124,22 +124,22 @@ func (request ListFoldersRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListFoldersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListFoldersLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListFoldersLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListFoldersLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListFoldersHarvestStatusEnum[string(request.HarvestStatus)]; !ok && request.HarvestStatus != "" {
+	if _, ok := GetMappingListFoldersHarvestStatusEnum(string(request.HarvestStatus)); !ok && request.HarvestStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for HarvestStatus: %s. Supported values are: %s.", request.HarvestStatus, strings.Join(GetListFoldersHarvestStatusEnumStringValues(), ",")))
 	}
 	for _, val := range request.Fields {
-		if _, ok := mappingListFoldersFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListFoldersFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetListFoldersFieldsEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListFoldersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListFoldersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListFoldersSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListFoldersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListFoldersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListFoldersSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -223,6 +223,17 @@ func GetListFoldersLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListFoldersLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFoldersLifecycleStateEnum(val string) (ListFoldersLifecycleStateEnum, bool) {
+	mappingListFoldersLifecycleStateEnumIgnoreCase := make(map[string]ListFoldersLifecycleStateEnum)
+	for k, v := range mappingListFoldersLifecycleStateEnum {
+		mappingListFoldersLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFoldersLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListFoldersHarvestStatusEnum Enum with underlying type: string
 type ListFoldersHarvestStatusEnum string
 
@@ -258,6 +269,17 @@ func GetListFoldersHarvestStatusEnumStringValues() []string {
 		"IN_PROGRESS",
 		"DEFERRED",
 	}
+}
+
+// GetMappingListFoldersHarvestStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFoldersHarvestStatusEnum(val string) (ListFoldersHarvestStatusEnum, bool) {
+	mappingListFoldersHarvestStatusEnumIgnoreCase := make(map[string]ListFoldersHarvestStatusEnum)
+	for k, v := range mappingListFoldersHarvestStatusEnum {
+		mappingListFoldersHarvestStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFoldersHarvestStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListFoldersFieldsEnum Enum with underlying type: string
@@ -318,6 +340,17 @@ func GetListFoldersFieldsEnumStringValues() []string {
 	}
 }
 
+// GetMappingListFoldersFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFoldersFieldsEnum(val string) (ListFoldersFieldsEnum, bool) {
+	mappingListFoldersFieldsEnumIgnoreCase := make(map[string]ListFoldersFieldsEnum)
+	for k, v := range mappingListFoldersFieldsEnum {
+		mappingListFoldersFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFoldersFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListFoldersSortByEnum Enum with underlying type: string
 type ListFoldersSortByEnum string
 
@@ -349,6 +382,17 @@ func GetListFoldersSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListFoldersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFoldersSortByEnum(val string) (ListFoldersSortByEnum, bool) {
+	mappingListFoldersSortByEnumIgnoreCase := make(map[string]ListFoldersSortByEnum)
+	for k, v := range mappingListFoldersSortByEnum {
+		mappingListFoldersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFoldersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListFoldersSortOrderEnum Enum with underlying type: string
 type ListFoldersSortOrderEnum string
 
@@ -378,4 +422,15 @@ func GetListFoldersSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListFoldersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFoldersSortOrderEnum(val string) (ListFoldersSortOrderEnum, bool) {
+	mappingListFoldersSortOrderEnumIgnoreCase := make(map[string]ListFoldersSortOrderEnum)
+	for k, v := range mappingListFoldersSortOrderEnum {
+		mappingListFoldersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFoldersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -66,11 +66,11 @@ func (m ImageJob) String() string {
 // Not recommended for calling this function directly
 func (m ImageJob) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingImageJobLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingImageJobLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetImageJobLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingImageJobLifecycleDetailsEnum[string(m.LifecycleDetails)]; !ok && m.LifecycleDetails != "" {
+	if _, ok := GetMappingImageJobLifecycleDetailsEnum(string(m.LifecycleDetails)); !ok && m.LifecycleDetails != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleDetails: %s. Supported values are: %s.", m.LifecycleDetails, strings.Join(GetImageJobLifecycleDetailsEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -193,6 +193,17 @@ func GetImageJobLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingImageJobLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingImageJobLifecycleStateEnum(val string) (ImageJobLifecycleStateEnum, bool) {
+	mappingImageJobLifecycleStateEnumIgnoreCase := make(map[string]ImageJobLifecycleStateEnum)
+	for k, v := range mappingImageJobLifecycleStateEnum {
+		mappingImageJobLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingImageJobLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ImageJobLifecycleDetailsEnum Enum with underlying type: string
 type ImageJobLifecycleDetailsEnum string
 
@@ -222,4 +233,15 @@ func GetImageJobLifecycleDetailsEnumStringValues() []string {
 		"PARTIALLY_SUCCEEDED",
 		"COMPLETELY_FAILED",
 	}
+}
+
+// GetMappingImageJobLifecycleDetailsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingImageJobLifecycleDetailsEnum(val string) (ImageJobLifecycleDetailsEnum, bool) {
+	mappingImageJobLifecycleDetailsEnumIgnoreCase := make(map[string]ImageJobLifecycleDetailsEnum)
+	for k, v := range mappingImageJobLifecycleDetailsEnum {
+		mappingImageJobLifecycleDetailsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingImageJobLifecycleDetailsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

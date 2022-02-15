@@ -114,3 +114,14 @@ func GetCredentialDetailsCredentialTypeEnumStringValues() []string {
 		"CREDENTIALS_BY_SOURCE",
 	}
 }
+
+// GetMappingCredentialDetailsCredentialTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCredentialDetailsCredentialTypeEnum(val string) (CredentialDetailsCredentialTypeEnum, bool) {
+	mappingCredentialDetailsCredentialTypeEnumIgnoreCase := make(map[string]CredentialDetailsCredentialTypeEnum)
+	for k, v := range mappingCredentialDetailsCredentialTypeEnum {
+		mappingCredentialDetailsCredentialTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCredentialDetailsCredentialTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}

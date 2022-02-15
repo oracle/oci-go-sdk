@@ -37,7 +37,7 @@ func (m ThirdPartyPaidListingEligibility) String() string {
 // Not recommended for calling this function directly
 func (m ThirdPartyPaidListingEligibility) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingThirdPartyPaidListingEligibilityEligibilityReasonEnum[string(m.EligibilityReason)]; !ok && m.EligibilityReason != "" {
+	if _, ok := GetMappingThirdPartyPaidListingEligibilityEligibilityReasonEnum(string(m.EligibilityReason)); !ok && m.EligibilityReason != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EligibilityReason: %s. Supported values are: %s.", m.EligibilityReason, strings.Join(GetThirdPartyPaidListingEligibilityEligibilityReasonEnumStringValues(), ",")))
 	}
 
@@ -100,4 +100,15 @@ func GetThirdPartyPaidListingEligibilityEligibilityReasonEnumStringValues() []st
 		"INELIGIBLE_ACCOUNT_GOV_SUBSCRIPTION",
 		"NOT_AUTHORIZED",
 	}
+}
+
+// GetMappingThirdPartyPaidListingEligibilityEligibilityReasonEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingThirdPartyPaidListingEligibilityEligibilityReasonEnum(val string) (ThirdPartyPaidListingEligibilityEligibilityReasonEnum, bool) {
+	mappingThirdPartyPaidListingEligibilityEligibilityReasonEnumIgnoreCase := make(map[string]ThirdPartyPaidListingEligibilityEligibilityReasonEnum)
+	for k, v := range mappingThirdPartyPaidListingEligibilityEligibilityReasonEnum {
+		mappingThirdPartyPaidListingEligibilityEligibilityReasonEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingThirdPartyPaidListingEligibilityEligibilityReasonEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

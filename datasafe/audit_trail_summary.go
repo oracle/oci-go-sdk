@@ -79,10 +79,10 @@ func (m AuditTrailSummary) String() string {
 // Not recommended for calling this function directly
 func (m AuditTrailSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAuditTrailStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingAuditTrailStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetAuditTrailStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAuditTrailLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAuditTrailLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAuditTrailLifecycleStateEnumStringValues(), ",")))
 	}
 

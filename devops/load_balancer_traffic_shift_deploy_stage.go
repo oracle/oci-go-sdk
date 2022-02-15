@@ -153,11 +153,11 @@ func (m LoadBalancerTrafficShiftDeployStage) String() string {
 // Not recommended for calling this function directly
 func (m LoadBalancerTrafficShiftDeployStage) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingLoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnum[string(m.TrafficShiftTarget)]; !ok && m.TrafficShiftTarget != "" {
+	if _, ok := GetMappingLoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnum(string(m.TrafficShiftTarget)); !ok && m.TrafficShiftTarget != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TrafficShiftTarget: %s. Supported values are: %s.", m.TrafficShiftTarget, strings.Join(GetLoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDeployStageLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDeployStageLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDeployStageLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -293,4 +293,15 @@ func GetLoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnumStringValues() 
 		"BLUE",
 		"GREEN",
 	}
+}
+
+// GetMappingLoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnum(val string) (LoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnum, bool) {
+	mappingLoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnumIgnoreCase := make(map[string]LoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnum)
+	for k, v := range mappingLoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnum {
+		mappingLoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

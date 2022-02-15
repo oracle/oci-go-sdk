@@ -32,7 +32,7 @@ func (m RevokeCertificateVersionDetails) String() string {
 func (m RevokeCertificateVersionDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingRevocationReasonEnum[string(m.RevocationReason)]; !ok && m.RevocationReason != "" {
+	if _, ok := GetMappingRevocationReasonEnum(string(m.RevocationReason)); !ok && m.RevocationReason != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RevocationReason: %s. Supported values are: %s.", m.RevocationReason, strings.Join(GetRevocationReasonEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
