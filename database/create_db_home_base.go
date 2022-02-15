@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -203,4 +203,15 @@ func GetCreateDbHomeBaseSourceEnumStringValues() []string {
 		"VM_CLUSTER_BACKUP",
 		"VM_CLUSTER_NEW",
 	}
+}
+
+// GetMappingCreateDbHomeBaseSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateDbHomeBaseSourceEnum(val string) (CreateDbHomeBaseSourceEnum, bool) {
+	mappingCreateDbHomeBaseSourceEnumIgnoreCase := make(map[string]CreateDbHomeBaseSourceEnum)
+	for k, v := range mappingCreateDbHomeBaseSourceEnum {
+		mappingCreateDbHomeBaseSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateDbHomeBaseSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -70,10 +70,10 @@ func (m Configuration) String() string {
 // Not recommended for calling this function directly
 func (m Configuration) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingConfigurationTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingConfigurationTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetConfigurationTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingConfigurationLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingConfigurationLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetConfigurationLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -114,6 +114,17 @@ func GetConfigurationTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingConfigurationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConfigurationTypeEnum(val string) (ConfigurationTypeEnum, bool) {
+	mappingConfigurationTypeEnumIgnoreCase := make(map[string]ConfigurationTypeEnum)
+	for k, v := range mappingConfigurationTypeEnum {
+		mappingConfigurationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConfigurationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ConfigurationLifecycleStateEnum Enum with underlying type: string
 type ConfigurationLifecycleStateEnum string
 
@@ -143,4 +154,15 @@ func GetConfigurationLifecycleStateEnumStringValues() []string {
 		"ACTIVE",
 		"DELETED",
 	}
+}
+
+// GetMappingConfigurationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConfigurationLifecycleStateEnum(val string) (ConfigurationLifecycleStateEnum, bool) {
+	mappingConfigurationLifecycleStateEnumIgnoreCase := make(map[string]ConfigurationLifecycleStateEnum)
+	for k, v := range mappingConfigurationLifecycleStateEnum {
+		mappingConfigurationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConfigurationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

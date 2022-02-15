@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -52,14 +52,14 @@ func (m LogAnalyticsEntityTypeSummary) String() string {
 // Not recommended for calling this function directly
 func (m LogAnalyticsEntityTypeSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingEntityCloudTypeEnum[string(m.CloudType)]; !ok && m.CloudType != "" {
+	if _, ok := GetMappingEntityCloudTypeEnum(string(m.CloudType)); !ok && m.CloudType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CloudType: %s. Supported values are: %s.", m.CloudType, strings.Join(GetEntityCloudTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingEntityLifecycleStatesEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingEntityLifecycleStatesEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetEntityLifecycleStatesEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum[string(m.ManagementAgentEligibilityStatus)]; !ok && m.ManagementAgentEligibilityStatus != "" {
+	if _, ok := GetMappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum(string(m.ManagementAgentEligibilityStatus)); !ok && m.ManagementAgentEligibilityStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ManagementAgentEligibilityStatus: %s. Supported values are: %s.", m.ManagementAgentEligibilityStatus, strings.Join(GetLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -100,4 +100,15 @@ func GetLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnumStringV
 		"INELIGIBLE",
 		"UNKNOWN",
 	}
+}
+
+// GetMappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum(val string) (LogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum, bool) {
+	mappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnumIgnoreCase := make(map[string]LogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum)
+	for k, v := range mappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum {
+		mappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

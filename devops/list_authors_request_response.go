@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -72,7 +72,7 @@ func (request ListAuthorsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAuthorsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAuthorsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAuthorsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAuthorsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -135,4 +135,15 @@ func GetListAuthorsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAuthorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAuthorsSortOrderEnum(val string) (ListAuthorsSortOrderEnum, bool) {
+	mappingListAuthorsSortOrderEnumIgnoreCase := make(map[string]ListAuthorsSortOrderEnum)
+	for k, v := range mappingListAuthorsSortOrderEnum {
+		mappingListAuthorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAuthorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

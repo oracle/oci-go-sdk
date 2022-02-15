@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -78,7 +78,7 @@ func (m LogAnalyticsLookup) String() string {
 func (m LogAnalyticsLookup) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLogAnalyticsLookupTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingLogAnalyticsLookupTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetLogAnalyticsLookupTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -116,4 +116,15 @@ func GetLogAnalyticsLookupTypeEnumStringValues() []string {
 		"Lookup",
 		"Dictionary",
 	}
+}
+
+// GetMappingLogAnalyticsLookupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogAnalyticsLookupTypeEnum(val string) (LogAnalyticsLookupTypeEnum, bool) {
+	mappingLogAnalyticsLookupTypeEnumIgnoreCase := make(map[string]LogAnalyticsLookupTypeEnum)
+	for k, v := range mappingLogAnalyticsLookupTypeEnum {
+		mappingLogAnalyticsLookupTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogAnalyticsLookupTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

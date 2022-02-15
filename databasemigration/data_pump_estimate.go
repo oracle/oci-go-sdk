@@ -9,6 +9,10 @@
 
 package databasemigration
 
+import (
+	"strings"
+)
+
 // DataPumpEstimateEnum Enum with underlying type: string
 type DataPumpEstimateEnum string
 
@@ -38,4 +42,15 @@ func GetDataPumpEstimateEnumStringValues() []string {
 		"BLOCKS",
 		"STATISTICS",
 	}
+}
+
+// GetMappingDataPumpEstimateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataPumpEstimateEnum(val string) (DataPumpEstimateEnum, bool) {
+	mappingDataPumpEstimateEnumIgnoreCase := make(map[string]DataPumpEstimateEnum)
+	for k, v := range mappingDataPumpEstimateEnum {
+		mappingDataPumpEstimateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataPumpEstimateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

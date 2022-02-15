@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -66,14 +66,14 @@ func (m PdbConversionHistoryEntry) String() string {
 // Not recommended for calling this function directly
 func (m PdbConversionHistoryEntry) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPdbConversionHistoryEntryActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingPdbConversionHistoryEntryActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetPdbConversionHistoryEntryActionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPdbConversionHistoryEntryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingPdbConversionHistoryEntryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetPdbConversionHistoryEntryLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingPdbConversionHistoryEntryTargetEnum[string(m.Target)]; !ok && m.Target != "" {
+	if _, ok := GetMappingPdbConversionHistoryEntryTargetEnum(string(m.Target)); !ok && m.Target != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Target: %s. Supported values are: %s.", m.Target, strings.Join(GetPdbConversionHistoryEntryTargetEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -119,6 +119,17 @@ func GetPdbConversionHistoryEntryActionEnumStringValues() []string {
 	}
 }
 
+// GetMappingPdbConversionHistoryEntryActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPdbConversionHistoryEntryActionEnum(val string) (PdbConversionHistoryEntryActionEnum, bool) {
+	mappingPdbConversionHistoryEntryActionEnumIgnoreCase := make(map[string]PdbConversionHistoryEntryActionEnum)
+	for k, v := range mappingPdbConversionHistoryEntryActionEnum {
+		mappingPdbConversionHistoryEntryActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPdbConversionHistoryEntryActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // PdbConversionHistoryEntryTargetEnum Enum with underlying type: string
 type PdbConversionHistoryEntryTargetEnum string
 
@@ -145,6 +156,17 @@ func GetPdbConversionHistoryEntryTargetEnumStringValues() []string {
 	return []string{
 		"NEW_DATABASE",
 	}
+}
+
+// GetMappingPdbConversionHistoryEntryTargetEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPdbConversionHistoryEntryTargetEnum(val string) (PdbConversionHistoryEntryTargetEnum, bool) {
+	mappingPdbConversionHistoryEntryTargetEnumIgnoreCase := make(map[string]PdbConversionHistoryEntryTargetEnum)
+	for k, v := range mappingPdbConversionHistoryEntryTargetEnum {
+		mappingPdbConversionHistoryEntryTargetEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPdbConversionHistoryEntryTargetEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // PdbConversionHistoryEntryLifecycleStateEnum Enum with underlying type: string
@@ -179,4 +201,15 @@ func GetPdbConversionHistoryEntryLifecycleStateEnumStringValues() []string {
 		"FAILED",
 		"IN_PROGRESS",
 	}
+}
+
+// GetMappingPdbConversionHistoryEntryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPdbConversionHistoryEntryLifecycleStateEnum(val string) (PdbConversionHistoryEntryLifecycleStateEnum, bool) {
+	mappingPdbConversionHistoryEntryLifecycleStateEnumIgnoreCase := make(map[string]PdbConversionHistoryEntryLifecycleStateEnum)
+	for k, v := range mappingPdbConversionHistoryEntryLifecycleStateEnum {
+		mappingPdbConversionHistoryEntryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPdbConversionHistoryEntryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

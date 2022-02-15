@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -95,19 +95,19 @@ func (m CreateTablespaceDetails) String() string {
 func (m CreateTablespaceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateTablespaceDetailsTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingCreateTablespaceDetailsTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetCreateTablespaceDetailsTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateTablespaceDetailsDefaultCompressEnum[string(m.DefaultCompress)]; !ok && m.DefaultCompress != "" {
+	if _, ok := GetMappingCreateTablespaceDetailsDefaultCompressEnum(string(m.DefaultCompress)); !ok && m.DefaultCompress != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DefaultCompress: %s. Supported values are: %s.", m.DefaultCompress, strings.Join(GetCreateTablespaceDetailsDefaultCompressEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateTablespaceDetailsStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingCreateTablespaceDetailsStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetCreateTablespaceDetailsStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateTablespaceDetailsExtentManagementEnum[string(m.ExtentManagement)]; !ok && m.ExtentManagement != "" {
+	if _, ok := GetMappingCreateTablespaceDetailsExtentManagementEnum(string(m.ExtentManagement)); !ok && m.ExtentManagement != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExtentManagement: %s. Supported values are: %s.", m.ExtentManagement, strings.Join(GetCreateTablespaceDetailsExtentManagementEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateTablespaceDetailsSegmentManagementEnum[string(m.SegmentManagement)]; !ok && m.SegmentManagement != "" {
+	if _, ok := GetMappingCreateTablespaceDetailsSegmentManagementEnum(string(m.SegmentManagement)); !ok && m.SegmentManagement != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SegmentManagement: %s. Supported values are: %s.", m.SegmentManagement, strings.Join(GetCreateTablespaceDetailsSegmentManagementEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -234,6 +234,17 @@ func GetCreateTablespaceDetailsTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingCreateTablespaceDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateTablespaceDetailsTypeEnum(val string) (CreateTablespaceDetailsTypeEnum, bool) {
+	mappingCreateTablespaceDetailsTypeEnumIgnoreCase := make(map[string]CreateTablespaceDetailsTypeEnum)
+	for k, v := range mappingCreateTablespaceDetailsTypeEnum {
+		mappingCreateTablespaceDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateTablespaceDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CreateTablespaceDetailsDefaultCompressEnum Enum with underlying type: string
 type CreateTablespaceDetailsDefaultCompressEnum string
 
@@ -263,6 +274,17 @@ func GetCreateTablespaceDetailsDefaultCompressEnumStringValues() []string {
 		"NO_COMPRESS",
 		"BASIC_COMPRESS",
 	}
+}
+
+// GetMappingCreateTablespaceDetailsDefaultCompressEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateTablespaceDetailsDefaultCompressEnum(val string) (CreateTablespaceDetailsDefaultCompressEnum, bool) {
+	mappingCreateTablespaceDetailsDefaultCompressEnumIgnoreCase := make(map[string]CreateTablespaceDetailsDefaultCompressEnum)
+	for k, v := range mappingCreateTablespaceDetailsDefaultCompressEnum {
+		mappingCreateTablespaceDetailsDefaultCompressEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateTablespaceDetailsDefaultCompressEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // CreateTablespaceDetailsStatusEnum Enum with underlying type: string
@@ -296,6 +318,17 @@ func GetCreateTablespaceDetailsStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingCreateTablespaceDetailsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateTablespaceDetailsStatusEnum(val string) (CreateTablespaceDetailsStatusEnum, bool) {
+	mappingCreateTablespaceDetailsStatusEnumIgnoreCase := make(map[string]CreateTablespaceDetailsStatusEnum)
+	for k, v := range mappingCreateTablespaceDetailsStatusEnum {
+		mappingCreateTablespaceDetailsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateTablespaceDetailsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CreateTablespaceDetailsExtentManagementEnum Enum with underlying type: string
 type CreateTablespaceDetailsExtentManagementEnum string
 
@@ -327,6 +360,17 @@ func GetCreateTablespaceDetailsExtentManagementEnumStringValues() []string {
 	}
 }
 
+// GetMappingCreateTablespaceDetailsExtentManagementEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateTablespaceDetailsExtentManagementEnum(val string) (CreateTablespaceDetailsExtentManagementEnum, bool) {
+	mappingCreateTablespaceDetailsExtentManagementEnumIgnoreCase := make(map[string]CreateTablespaceDetailsExtentManagementEnum)
+	for k, v := range mappingCreateTablespaceDetailsExtentManagementEnum {
+		mappingCreateTablespaceDetailsExtentManagementEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateTablespaceDetailsExtentManagementEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CreateTablespaceDetailsSegmentManagementEnum Enum with underlying type: string
 type CreateTablespaceDetailsSegmentManagementEnum string
 
@@ -356,4 +400,15 @@ func GetCreateTablespaceDetailsSegmentManagementEnumStringValues() []string {
 		"AUTO",
 		"MANUAL",
 	}
+}
+
+// GetMappingCreateTablespaceDetailsSegmentManagementEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateTablespaceDetailsSegmentManagementEnum(val string) (CreateTablespaceDetailsSegmentManagementEnum, bool) {
+	mappingCreateTablespaceDetailsSegmentManagementEnumIgnoreCase := make(map[string]CreateTablespaceDetailsSegmentManagementEnum)
+	for k, v := range mappingCreateTablespaceDetailsSegmentManagementEnum {
+		mappingCreateTablespaceDetailsSegmentManagementEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateTablespaceDetailsSegmentManagementEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

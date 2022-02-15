@@ -14,7 +14,7 @@ package nosql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -68,7 +68,7 @@ func (m UpdateRowDetails) String() string {
 func (m UpdateRowDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateRowDetailsOptionEnum[string(m.Option)]; !ok && m.Option != "" {
+	if _, ok := GetMappingUpdateRowDetailsOptionEnum(string(m.Option)); !ok && m.Option != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Option: %s. Supported values are: %s.", m.Option, strings.Join(GetUpdateRowDetailsOptionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -106,4 +106,15 @@ func GetUpdateRowDetailsOptionEnumStringValues() []string {
 		"IF_ABSENT",
 		"IF_PRESENT",
 	}
+}
+
+// GetMappingUpdateRowDetailsOptionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateRowDetailsOptionEnum(val string) (UpdateRowDetailsOptionEnum, bool) {
+	mappingUpdateRowDetailsOptionEnumIgnoreCase := make(map[string]UpdateRowDetailsOptionEnum)
+	for k, v := range mappingUpdateRowDetailsOptionEnum {
+		mappingUpdateRowDetailsOptionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateRowDetailsOptionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

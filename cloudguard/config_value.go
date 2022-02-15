@@ -11,7 +11,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -37,7 +37,7 @@ func (m ConfigValue) String() string {
 // Not recommended for calling this function directly
 func (m ConfigValue) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingConfigurationListItemTypeEnum[string(m.ListType)]; !ok && m.ListType != "" {
+	if _, ok := GetMappingConfigurationListItemTypeEnum(string(m.ListType)); !ok && m.ListType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ListType: %s. Supported values are: %s.", m.ListType, strings.Join(GetConfigurationListItemTypeEnumStringValues(), ",")))
 	}
 

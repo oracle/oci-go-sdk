@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -56,7 +56,7 @@ func (m ChildReference) String() string {
 func (m ChildReference) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingChildReferenceTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingChildReferenceTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetChildReferenceTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -106,4 +106,15 @@ func GetChildReferenceTypeEnumStringValues() []string {
 		"MYSQL_CONNECTION",
 		"GENERIC_JDBC_CONNECTION",
 	}
+}
+
+// GetMappingChildReferenceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingChildReferenceTypeEnum(val string) (ChildReferenceTypeEnum, bool) {
+	mappingChildReferenceTypeEnumIgnoreCase := make(map[string]ChildReferenceTypeEnum)
+	for k, v := range mappingChildReferenceTypeEnum {
+		mappingChildReferenceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingChildReferenceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

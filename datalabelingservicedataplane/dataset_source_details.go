@@ -12,7 +12,7 @@ package datalabelingservicedataplane
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -101,4 +101,15 @@ func GetDatasetSourceDetailsSourceTypeEnumStringValues() []string {
 	return []string{
 		"OBJECT_STORAGE",
 	}
+}
+
+// GetMappingDatasetSourceDetailsSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatasetSourceDetailsSourceTypeEnum(val string) (DatasetSourceDetailsSourceTypeEnum, bool) {
+	mappingDatasetSourceDetailsSourceTypeEnumIgnoreCase := make(map[string]DatasetSourceDetailsSourceTypeEnum)
+	for k, v := range mappingDatasetSourceDetailsSourceTypeEnum {
+		mappingDatasetSourceDetailsSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatasetSourceDetailsSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

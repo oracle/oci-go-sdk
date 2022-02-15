@@ -11,6 +11,10 @@
 
 package databasemanagement
 
+import (
+	"strings"
+)
+
 // DatabaseStatusEnum Enum with underlying type: string
 type DatabaseStatusEnum string
 
@@ -43,4 +47,15 @@ func GetDatabaseStatusEnumStringValues() []string {
 		"DOWN",
 		"UNKNOWN",
 	}
+}
+
+// GetMappingDatabaseStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseStatusEnum(val string) (DatabaseStatusEnum, bool) {
+	mappingDatabaseStatusEnumIgnoreCase := make(map[string]DatabaseStatusEnum)
+	for k, v := range mappingDatabaseStatusEnum {
+		mappingDatabaseStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

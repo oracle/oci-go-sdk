@@ -9,6 +9,10 @@
 
 package certificatesmanagement
 
+import (
+	"strings"
+)
+
 // KeyAlgorithmEnum Enum with underlying type: string
 type KeyAlgorithmEnum string
 
@@ -44,4 +48,15 @@ func GetKeyAlgorithmEnumStringValues() []string {
 		"ECDSA_P256",
 		"ECDSA_P384",
 	}
+}
+
+// GetMappingKeyAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeyAlgorithmEnum(val string) (KeyAlgorithmEnum, bool) {
+	mappingKeyAlgorithmEnumIgnoreCase := make(map[string]KeyAlgorithmEnum)
+	for k, v := range mappingKeyAlgorithmEnum {
+		mappingKeyAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeyAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

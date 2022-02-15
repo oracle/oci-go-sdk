@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -84,7 +84,7 @@ func (m Certificate) String() string {
 func (m Certificate) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCertificateLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingCertificateLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetCertificateLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -134,4 +134,15 @@ func GetCertificateLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingCertificateLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCertificateLifecycleStateEnum(val string) (CertificateLifecycleStateEnum, bool) {
+	mappingCertificateLifecycleStateEnumIgnoreCase := make(map[string]CertificateLifecycleStateEnum)
+	for k, v := range mappingCertificateLifecycleStateEnum {
+		mappingCertificateLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCertificateLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

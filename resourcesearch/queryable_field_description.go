@@ -11,7 +11,7 @@ package resourcesearch
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -41,7 +41,7 @@ func (m QueryableFieldDescription) String() string {
 // Not recommended for calling this function directly
 func (m QueryableFieldDescription) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingQueryableFieldDescriptionFieldTypeEnum[string(m.FieldType)]; !ok && m.FieldType != "" {
+	if _, ok := GetMappingQueryableFieldDescriptionFieldTypeEnum(string(m.FieldType)); !ok && m.FieldType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FieldType: %s. Supported values are: %s.", m.FieldType, strings.Join(GetQueryableFieldDescriptionFieldTypeEnumStringValues(), ",")))
 	}
 
@@ -98,4 +98,15 @@ func GetQueryableFieldDescriptionFieldTypeEnumStringValues() []string {
 		"IP",
 		"OBJECT",
 	}
+}
+
+// GetMappingQueryableFieldDescriptionFieldTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingQueryableFieldDescriptionFieldTypeEnum(val string) (QueryableFieldDescriptionFieldTypeEnum, bool) {
+	mappingQueryableFieldDescriptionFieldTypeEnumIgnoreCase := make(map[string]QueryableFieldDescriptionFieldTypeEnum)
+	for k, v := range mappingQueryableFieldDescriptionFieldTypeEnum {
+		mappingQueryableFieldDescriptionFieldTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingQueryableFieldDescriptionFieldTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

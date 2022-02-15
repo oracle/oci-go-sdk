@@ -6,7 +6,7 @@ package managementagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -66,7 +66,7 @@ func (request SummarizeManagementAgentPluginCountsRequest) RetryPolicy() *common
 // Not recommended for calling this function directly
 func (request SummarizeManagementAgentPluginCountsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeManagementAgentPluginCountsGroupByEnum[string(request.GroupBy)]; !ok && request.GroupBy != "" {
+	if _, ok := GetMappingSummarizeManagementAgentPluginCountsGroupByEnum(string(request.GroupBy)); !ok && request.GroupBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for GroupBy: %s. Supported values are: %s.", request.GroupBy, strings.Join(GetSummarizeManagementAgentPluginCountsGroupByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -129,4 +129,15 @@ func GetSummarizeManagementAgentPluginCountsGroupByEnumStringValues() []string {
 	return []string{
 		"pluginName",
 	}
+}
+
+// GetMappingSummarizeManagementAgentPluginCountsGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeManagementAgentPluginCountsGroupByEnum(val string) (SummarizeManagementAgentPluginCountsGroupByEnum, bool) {
+	mappingSummarizeManagementAgentPluginCountsGroupByEnumIgnoreCase := make(map[string]SummarizeManagementAgentPluginCountsGroupByEnum)
+	for k, v := range mappingSummarizeManagementAgentPluginCountsGroupByEnum {
+		mappingSummarizeManagementAgentPluginCountsGroupByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeManagementAgentPluginCountsGroupByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

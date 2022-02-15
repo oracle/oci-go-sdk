@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // ResponderTypeEnum Enum with underlying type: string
 type ResponderTypeEnum string
 
@@ -38,4 +42,15 @@ func GetResponderTypeEnumStringValues() []string {
 		"REMEDIATION",
 		"NOTIFICATION",
 	}
+}
+
+// GetMappingResponderTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResponderTypeEnum(val string) (ResponderTypeEnum, bool) {
+	mappingResponderTypeEnumIgnoreCase := make(map[string]ResponderTypeEnum)
+	for k, v := range mappingResponderTypeEnum {
+		mappingResponderTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResponderTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

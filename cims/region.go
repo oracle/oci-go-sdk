@@ -9,6 +9,10 @@
 
 package cims
 
+import (
+	"strings"
+)
+
 // RegionEnum Enum with underlying type: string
 type RegionEnum string
 
@@ -101,4 +105,15 @@ func GetRegionEnumStringValues() []string {
 		"HYD",
 		"YNY",
 	}
+}
+
+// GetMappingRegionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRegionEnum(val string) (RegionEnum, bool) {
+	mappingRegionEnumIgnoreCase := make(map[string]RegionEnum)
+	for k, v := range mappingRegionEnum {
+		mappingRegionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRegionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package monitoring
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -96,13 +96,13 @@ func (request ListAlarmsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAlarmsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAlarmLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingAlarmLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetAlarmLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAlarmsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAlarmsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAlarmsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAlarmsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAlarmsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAlarmsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -169,6 +169,17 @@ func GetListAlarmsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAlarmsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAlarmsSortByEnum(val string) (ListAlarmsSortByEnum, bool) {
+	mappingListAlarmsSortByEnumIgnoreCase := make(map[string]ListAlarmsSortByEnum)
+	for k, v := range mappingListAlarmsSortByEnum {
+		mappingListAlarmsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAlarmsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAlarmsSortOrderEnum Enum with underlying type: string
 type ListAlarmsSortOrderEnum string
 
@@ -198,4 +209,15 @@ func GetListAlarmsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAlarmsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAlarmsSortOrderEnum(val string) (ListAlarmsSortOrderEnum, bool) {
+	mappingListAlarmsSortOrderEnumIgnoreCase := make(map[string]ListAlarmsSortOrderEnum)
+	for k, v := range mappingListAlarmsSortOrderEnum {
+		mappingListAlarmsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAlarmsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

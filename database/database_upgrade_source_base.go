@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -126,4 +126,15 @@ func GetDatabaseUpgradeSourceBaseSourceEnumStringValues() []string {
 		"DB_VERSION",
 		"DB_SOFTWARE_IMAGE",
 	}
+}
+
+// GetMappingDatabaseUpgradeSourceBaseSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseUpgradeSourceBaseSourceEnum(val string) (DatabaseUpgradeSourceBaseSourceEnum, bool) {
+	mappingDatabaseUpgradeSourceBaseSourceEnumIgnoreCase := make(map[string]DatabaseUpgradeSourceBaseSourceEnum)
+	for k, v := range mappingDatabaseUpgradeSourceBaseSourceEnum {
+		mappingDatabaseUpgradeSourceBaseSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseUpgradeSourceBaseSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

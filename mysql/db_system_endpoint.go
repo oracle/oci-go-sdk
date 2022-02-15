@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -52,12 +52,12 @@ func (m DbSystemEndpoint) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	for _, val := range m.Modes {
-		if _, ok := mappingDbSystemEndpointModesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingDbSystemEndpointModesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Modes: %s. Supported values are: %s.", val, strings.Join(GetDbSystemEndpointModesEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingDbSystemEndpointStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingDbSystemEndpointStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetDbSystemEndpointStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -97,6 +97,17 @@ func GetDbSystemEndpointModesEnumStringValues() []string {
 	}
 }
 
+// GetMappingDbSystemEndpointModesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbSystemEndpointModesEnum(val string) (DbSystemEndpointModesEnum, bool) {
+	mappingDbSystemEndpointModesEnumIgnoreCase := make(map[string]DbSystemEndpointModesEnum)
+	for k, v := range mappingDbSystemEndpointModesEnum {
+		mappingDbSystemEndpointModesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbSystemEndpointModesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DbSystemEndpointStatusEnum Enum with underlying type: string
 type DbSystemEndpointStatusEnum string
 
@@ -129,4 +140,15 @@ func GetDbSystemEndpointStatusEnumStringValues() []string {
 		"INACTIVE",
 		"UPDATING",
 	}
+}
+
+// GetMappingDbSystemEndpointStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbSystemEndpointStatusEnum(val string) (DbSystemEndpointStatusEnum, bool) {
+	mappingDbSystemEndpointStatusEnumIgnoreCase := make(map[string]DbSystemEndpointStatusEnum)
+	for k, v := range mappingDbSystemEndpointStatusEnum {
+		mappingDbSystemEndpointStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbSystemEndpointStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

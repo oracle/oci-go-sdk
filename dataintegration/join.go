@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -35,7 +35,7 @@ func (m Join) String() string {
 // Not recommended for calling this function directly
 func (m Join) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingJoinPolicyEnum[string(m.Policy)]; !ok && m.Policy != "" {
+	if _, ok := GetMappingJoinPolicyEnum(string(m.Policy)); !ok && m.Policy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Policy: %s. Supported values are: %s.", m.Policy, strings.Join(GetJoinPolicyEnumStringValues(), ",")))
 	}
 
@@ -94,4 +94,15 @@ func GetJoinPolicyEnumStringValues() []string {
 		"RIGHT_JOIN",
 		"FULL_JOIN",
 	}
+}
+
+// GetMappingJoinPolicyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJoinPolicyEnum(val string) (JoinPolicyEnum, bool) {
+	mappingJoinPolicyEnumIgnoreCase := make(map[string]JoinPolicyEnum)
+	for k, v := range mappingJoinPolicyEnum {
+		mappingJoinPolicyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJoinPolicyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,10 +6,11 @@ package common
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/sony/gobreaker"
 	"io/ioutil"
 	"net"
 	"net/http"
+
+	"github.com/sony/gobreaker"
 )
 
 // ServiceError models all potential errors generated the service call

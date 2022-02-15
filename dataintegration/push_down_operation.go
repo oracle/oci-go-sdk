@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -129,4 +129,15 @@ func GetPushDownOperationModelTypeEnumStringValues() []string {
 		"SORT",
 		"QUERY",
 	}
+}
+
+// GetMappingPushDownOperationModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPushDownOperationModelTypeEnum(val string) (PushDownOperationModelTypeEnum, bool) {
+	mappingPushDownOperationModelTypeEnumIgnoreCase := make(map[string]PushDownOperationModelTypeEnum)
+	for k, v := range mappingPushDownOperationModelTypeEnum {
+		mappingPushDownOperationModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPushDownOperationModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

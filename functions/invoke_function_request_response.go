@@ -6,7 +6,7 @@ package functions
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"io"
 	"net/http"
 	"strings"
@@ -75,10 +75,10 @@ func (request InvokeFunctionRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request InvokeFunctionRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingInvokeFunctionFnIntentEnum[string(request.FnIntent)]; !ok && request.FnIntent != "" {
+	if _, ok := GetMappingInvokeFunctionFnIntentEnum(string(request.FnIntent)); !ok && request.FnIntent != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FnIntent: %s. Supported values are: %s.", request.FnIntent, strings.Join(GetInvokeFunctionFnIntentEnumStringValues(), ",")))
 	}
-	if _, ok := mappingInvokeFunctionFnInvokeTypeEnum[string(request.FnInvokeType)]; !ok && request.FnInvokeType != "" {
+	if _, ok := GetMappingInvokeFunctionFnInvokeTypeEnum(string(request.FnInvokeType)); !ok && request.FnInvokeType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FnInvokeType: %s. Supported values are: %s.", request.FnInvokeType, strings.Join(GetInvokeFunctionFnInvokeTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -141,6 +141,17 @@ func GetInvokeFunctionFnIntentEnumStringValues() []string {
 	}
 }
 
+// GetMappingInvokeFunctionFnIntentEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInvokeFunctionFnIntentEnum(val string) (InvokeFunctionFnIntentEnum, bool) {
+	mappingInvokeFunctionFnIntentEnumIgnoreCase := make(map[string]InvokeFunctionFnIntentEnum)
+	for k, v := range mappingInvokeFunctionFnIntentEnum {
+		mappingInvokeFunctionFnIntentEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInvokeFunctionFnIntentEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // InvokeFunctionFnInvokeTypeEnum Enum with underlying type: string
 type InvokeFunctionFnInvokeTypeEnum string
 
@@ -170,4 +181,15 @@ func GetInvokeFunctionFnInvokeTypeEnumStringValues() []string {
 		"detached",
 		"sync",
 	}
+}
+
+// GetMappingInvokeFunctionFnInvokeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInvokeFunctionFnInvokeTypeEnum(val string) (InvokeFunctionFnInvokeTypeEnum, bool) {
+	mappingInvokeFunctionFnInvokeTypeEnumIgnoreCase := make(map[string]InvokeFunctionFnInvokeTypeEnum)
+	for k, v := range mappingInvokeFunctionFnInvokeTypeEnum {
+		mappingInvokeFunctionFnInvokeTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInvokeFunctionFnInvokeTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -91,24 +91,24 @@ func (request RequestSummarizedResponderExecutionsRequest) RetryPolicy() *common
 func (request RequestSummarizedResponderExecutionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.ResponderExecutionsDimensions {
-		if _, ok := mappingResponderDimensionEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingResponderDimensionEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResponderExecutionsDimensions: %s. Supported values are: %s.", val, strings.Join(GetResponderDimensionEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range request.ResponderTypeFilter {
-		if _, ok := mappingResponderTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingResponderTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResponderTypeFilter: %s. Supported values are: %s.", val, strings.Join(GetResponderTypeEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range request.ResponderExecutionStatusFilter {
-		if _, ok := mappingResponderExecutionStatusEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingResponderExecutionStatusEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResponderExecutionStatusFilter: %s. Supported values are: %s.", val, strings.Join(GetResponderExecutionStatusEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingRequestSummarizedResponderExecutionsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingRequestSummarizedResponderExecutionsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetRequestSummarizedResponderExecutionsAccessLevelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -174,4 +174,15 @@ func GetRequestSummarizedResponderExecutionsAccessLevelEnumStringValues() []stri
 		"RESTRICTED",
 		"ACCESSIBLE",
 	}
+}
+
+// GetMappingRequestSummarizedResponderExecutionsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRequestSummarizedResponderExecutionsAccessLevelEnum(val string) (RequestSummarizedResponderExecutionsAccessLevelEnum, bool) {
+	mappingRequestSummarizedResponderExecutionsAccessLevelEnumIgnoreCase := make(map[string]RequestSummarizedResponderExecutionsAccessLevelEnum)
+	for k, v := range mappingRequestSummarizedResponderExecutionsAccessLevelEnum {
+		mappingRequestSummarizedResponderExecutionsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRequestSummarizedResponderExecutionsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

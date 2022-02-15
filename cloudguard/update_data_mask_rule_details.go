@@ -12,7 +12,7 @@ package cloudguard
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -56,12 +56,12 @@ func (m UpdateDataMaskRuleDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	for _, val := range m.DataMaskCategories {
-		if _, ok := mappingDataMaskCategoryEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingDataMaskCategoryEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataMaskCategories: %s. Supported values are: %s.", val, strings.Join(GetDataMaskCategoryEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingDataMaskRuleStatusEnum[string(m.DataMaskRuleStatus)]; !ok && m.DataMaskRuleStatus != "" {
+	if _, ok := GetMappingDataMaskRuleStatusEnum(string(m.DataMaskRuleStatus)); !ok && m.DataMaskRuleStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataMaskRuleStatus: %s. Supported values are: %s.", m.DataMaskRuleStatus, strings.Join(GetDataMaskRuleStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

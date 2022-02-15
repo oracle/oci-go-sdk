@@ -13,7 +13,7 @@ package dns
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -108,7 +108,7 @@ func (m UpdateSteeringPolicyDetails) String() string {
 func (m UpdateSteeringPolicyDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateSteeringPolicyDetailsTemplateEnum[string(m.Template)]; !ok && m.Template != "" {
+	if _, ok := GetMappingUpdateSteeringPolicyDetailsTemplateEnum(string(m.Template)); !ok && m.Template != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Template: %s. Supported values are: %s.", m.Template, strings.Join(GetUpdateSteeringPolicyDetailsTemplateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -209,4 +209,15 @@ func GetUpdateSteeringPolicyDetailsTemplateEnumStringValues() []string {
 		"ROUTE_BY_IP",
 		"CUSTOM",
 	}
+}
+
+// GetMappingUpdateSteeringPolicyDetailsTemplateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateSteeringPolicyDetailsTemplateEnum(val string) (UpdateSteeringPolicyDetailsTemplateEnum, bool) {
+	mappingUpdateSteeringPolicyDetailsTemplateEnumIgnoreCase := make(map[string]UpdateSteeringPolicyDetailsTemplateEnum)
+	for k, v := range mappingUpdateSteeringPolicyDetailsTemplateEnum {
+		mappingUpdateSteeringPolicyDetailsTemplateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateSteeringPolicyDetailsTemplateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

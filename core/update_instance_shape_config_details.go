@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -53,7 +53,7 @@ func (m UpdateInstanceShapeConfigDetails) String() string {
 func (m UpdateInstanceShapeConfigDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum[string(m.BaselineOcpuUtilization)]; !ok && m.BaselineOcpuUtilization != "" {
+	if _, ok := GetMappingUpdateInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum(string(m.BaselineOcpuUtilization)); !ok && m.BaselineOcpuUtilization != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BaselineOcpuUtilization: %s. Supported values are: %s.", m.BaselineOcpuUtilization, strings.Join(GetUpdateInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -94,4 +94,15 @@ func GetUpdateInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumStringValues(
 		"BASELINE_1_2",
 		"BASELINE_1_1",
 	}
+}
+
+// GetMappingUpdateInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum(val string) (UpdateInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum, bool) {
+	mappingUpdateInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumIgnoreCase := make(map[string]UpdateInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum)
+	for k, v := range mappingUpdateInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum {
+		mappingUpdateInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,7 +11,7 @@ package filestorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -86,7 +86,7 @@ func (m MountTarget) String() string {
 // Not recommended for calling this function directly
 func (m MountTarget) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingMountTargetLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingMountTargetLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetMountTargetLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -134,4 +134,15 @@ func GetMountTargetLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingMountTargetLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMountTargetLifecycleStateEnum(val string) (MountTargetLifecycleStateEnum, bool) {
+	mappingMountTargetLifecycleStateEnumIgnoreCase := make(map[string]MountTargetLifecycleStateEnum)
+	for k, v := range mappingMountTargetLifecycleStateEnum {
+		mappingMountTargetLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMountTargetLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

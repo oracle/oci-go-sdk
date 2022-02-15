@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -97,14 +97,14 @@ func (m ExternalPluggableDatabase) String() string {
 // Not recommended for calling this function directly
 func (m ExternalPluggableDatabase) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingExternalPluggableDatabaseLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingExternalPluggableDatabaseLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetExternalPluggableDatabaseLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingExternalPluggableDatabaseDatabaseEditionEnum[string(m.DatabaseEdition)]; !ok && m.DatabaseEdition != "" {
+	if _, ok := GetMappingExternalPluggableDatabaseDatabaseEditionEnum(string(m.DatabaseEdition)); !ok && m.DatabaseEdition != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseEdition: %s. Supported values are: %s.", m.DatabaseEdition, strings.Join(GetExternalPluggableDatabaseDatabaseEditionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingExternalPluggableDatabaseDatabaseConfigurationEnum[string(m.DatabaseConfiguration)]; !ok && m.DatabaseConfiguration != "" {
+	if _, ok := GetMappingExternalPluggableDatabaseDatabaseConfigurationEnum(string(m.DatabaseConfiguration)); !ok && m.DatabaseConfiguration != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseConfiguration: %s. Supported values are: %s.", m.DatabaseConfiguration, strings.Join(GetExternalPluggableDatabaseDatabaseConfigurationEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -159,6 +159,17 @@ func GetExternalPluggableDatabaseLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingExternalPluggableDatabaseLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExternalPluggableDatabaseLifecycleStateEnum(val string) (ExternalPluggableDatabaseLifecycleStateEnum, bool) {
+	mappingExternalPluggableDatabaseLifecycleStateEnumIgnoreCase := make(map[string]ExternalPluggableDatabaseLifecycleStateEnum)
+	for k, v := range mappingExternalPluggableDatabaseLifecycleStateEnum {
+		mappingExternalPluggableDatabaseLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExternalPluggableDatabaseLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ExternalPluggableDatabaseDatabaseEditionEnum Enum with underlying type: string
 type ExternalPluggableDatabaseDatabaseEditionEnum string
 
@@ -196,6 +207,17 @@ func GetExternalPluggableDatabaseDatabaseEditionEnumStringValues() []string {
 	}
 }
 
+// GetMappingExternalPluggableDatabaseDatabaseEditionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExternalPluggableDatabaseDatabaseEditionEnum(val string) (ExternalPluggableDatabaseDatabaseEditionEnum, bool) {
+	mappingExternalPluggableDatabaseDatabaseEditionEnumIgnoreCase := make(map[string]ExternalPluggableDatabaseDatabaseEditionEnum)
+	for k, v := range mappingExternalPluggableDatabaseDatabaseEditionEnum {
+		mappingExternalPluggableDatabaseDatabaseEditionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExternalPluggableDatabaseDatabaseEditionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ExternalPluggableDatabaseDatabaseConfigurationEnum Enum with underlying type: string
 type ExternalPluggableDatabaseDatabaseConfigurationEnum string
 
@@ -225,4 +247,15 @@ func GetExternalPluggableDatabaseDatabaseConfigurationEnumStringValues() []strin
 		"RAC",
 		"SINGLE_INSTANCE",
 	}
+}
+
+// GetMappingExternalPluggableDatabaseDatabaseConfigurationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExternalPluggableDatabaseDatabaseConfigurationEnum(val string) (ExternalPluggableDatabaseDatabaseConfigurationEnum, bool) {
+	mappingExternalPluggableDatabaseDatabaseConfigurationEnumIgnoreCase := make(map[string]ExternalPluggableDatabaseDatabaseConfigurationEnum)
+	for k, v := range mappingExternalPluggableDatabaseDatabaseConfigurationEnum {
+		mappingExternalPluggableDatabaseDatabaseConfigurationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExternalPluggableDatabaseDatabaseConfigurationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

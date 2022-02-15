@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -55,7 +55,7 @@ func (m JsChallenge) String() string {
 func (m JsChallenge) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingJsChallengeActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingJsChallengeActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetJsChallengeActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -93,4 +93,15 @@ func GetJsChallengeActionEnumStringValues() []string {
 		"DETECT",
 		"BLOCK",
 	}
+}
+
+// GetMappingJsChallengeActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJsChallengeActionEnum(val string) (JsChallengeActionEnum, bool) {
+	mappingJsChallengeActionEnumIgnoreCase := make(map[string]JsChallengeActionEnum)
+	for k, v := range mappingJsChallengeActionEnum {
+		mappingJsChallengeActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJsChallengeActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

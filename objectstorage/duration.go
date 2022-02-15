@@ -13,7 +13,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -39,7 +39,7 @@ func (m Duration) String() string {
 // Not recommended for calling this function directly
 func (m Duration) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDurationTimeUnitEnum[string(m.TimeUnit)]; !ok && m.TimeUnit != "" {
+	if _, ok := GetMappingDurationTimeUnitEnum(string(m.TimeUnit)); !ok && m.TimeUnit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TimeUnit: %s. Supported values are: %s.", m.TimeUnit, strings.Join(GetDurationTimeUnitEnumStringValues(), ",")))
 	}
 
@@ -78,4 +78,15 @@ func GetDurationTimeUnitEnumStringValues() []string {
 		"YEARS",
 		"DAYS",
 	}
+}
+
+// GetMappingDurationTimeUnitEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDurationTimeUnitEnum(val string) (DurationTimeUnitEnum, bool) {
+	mappingDurationTimeUnitEnumIgnoreCase := make(map[string]DurationTimeUnitEnum)
+	for k, v := range mappingDurationTimeUnitEnum {
+		mappingDurationTimeUnitEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDurationTimeUnitEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

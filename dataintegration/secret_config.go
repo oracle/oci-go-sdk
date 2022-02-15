@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -101,4 +101,15 @@ func GetSecretConfigModelTypeEnumStringValues() []string {
 	return []string{
 		"OCI_VAULT_SECRET_CONFIG",
 	}
+}
+
+// GetMappingSecretConfigModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecretConfigModelTypeEnum(val string) (SecretConfigModelTypeEnum, bool) {
+	mappingSecretConfigModelTypeEnumIgnoreCase := make(map[string]SecretConfigModelTypeEnum)
+	for k, v := range mappingSecretConfigModelTypeEnum {
+		mappingSecretConfigModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecretConfigModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package resourcemanager
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -90,10 +90,10 @@ func (request ListTemplatesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListTemplatesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListTemplatesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListTemplatesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListTemplatesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTemplatesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListTemplatesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListTemplatesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -163,6 +163,17 @@ func GetListTemplatesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTemplatesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTemplatesSortByEnum(val string) (ListTemplatesSortByEnum, bool) {
+	mappingListTemplatesSortByEnumIgnoreCase := make(map[string]ListTemplatesSortByEnum)
+	for k, v := range mappingListTemplatesSortByEnum {
+		mappingListTemplatesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTemplatesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTemplatesSortOrderEnum Enum with underlying type: string
 type ListTemplatesSortOrderEnum string
 
@@ -192,4 +203,15 @@ func GetListTemplatesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListTemplatesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTemplatesSortOrderEnum(val string) (ListTemplatesSortOrderEnum, bool) {
+	mappingListTemplatesSortOrderEnumIgnoreCase := make(map[string]ListTemplatesSortOrderEnum)
+	for k, v := range mappingListTemplatesSortOrderEnum {
+		mappingListTemplatesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTemplatesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

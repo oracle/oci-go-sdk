@@ -9,6 +9,10 @@
 
 package loganalytics
 
+import (
+	"strings"
+)
+
 // ObjectCollectionRuleLifecycleStatesEnum Enum with underlying type: string
 type ObjectCollectionRuleLifecycleStatesEnum string
 
@@ -41,4 +45,15 @@ func GetObjectCollectionRuleLifecycleStatesEnumStringValues() []string {
 		"DELETED",
 		"INACTIVE",
 	}
+}
+
+// GetMappingObjectCollectionRuleLifecycleStatesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingObjectCollectionRuleLifecycleStatesEnum(val string) (ObjectCollectionRuleLifecycleStatesEnum, bool) {
+	mappingObjectCollectionRuleLifecycleStatesEnumIgnoreCase := make(map[string]ObjectCollectionRuleLifecycleStatesEnum)
+	for k, v := range mappingObjectCollectionRuleLifecycleStatesEnum {
+		mappingObjectCollectionRuleLifecycleStatesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingObjectCollectionRuleLifecycleStatesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

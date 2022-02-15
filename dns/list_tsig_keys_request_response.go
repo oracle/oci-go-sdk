@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -86,16 +86,16 @@ func (request ListTsigKeysRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListTsigKeysRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTsigKeySummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingTsigKeySummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetTsigKeySummaryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTsigKeysSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListTsigKeysSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListTsigKeysSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTsigKeysSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListTsigKeysSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListTsigKeysSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTsigKeysScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingListTsigKeysScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetListTsigKeysScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -163,6 +163,17 @@ func GetListTsigKeysSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTsigKeysSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTsigKeysSortByEnum(val string) (ListTsigKeysSortByEnum, bool) {
+	mappingListTsigKeysSortByEnumIgnoreCase := make(map[string]ListTsigKeysSortByEnum)
+	for k, v := range mappingListTsigKeysSortByEnum {
+		mappingListTsigKeysSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTsigKeysSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTsigKeysSortOrderEnum Enum with underlying type: string
 type ListTsigKeysSortOrderEnum string
 
@@ -194,6 +205,17 @@ func GetListTsigKeysSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTsigKeysSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTsigKeysSortOrderEnum(val string) (ListTsigKeysSortOrderEnum, bool) {
+	mappingListTsigKeysSortOrderEnumIgnoreCase := make(map[string]ListTsigKeysSortOrderEnum)
+	for k, v := range mappingListTsigKeysSortOrderEnum {
+		mappingListTsigKeysSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTsigKeysSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTsigKeysScopeEnum Enum with underlying type: string
 type ListTsigKeysScopeEnum string
 
@@ -223,4 +245,15 @@ func GetListTsigKeysScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingListTsigKeysScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTsigKeysScopeEnum(val string) (ListTsigKeysScopeEnum, bool) {
+	mappingListTsigKeysScopeEnumIgnoreCase := make(map[string]ListTsigKeysScopeEnum)
+	for k, v := range mappingListTsigKeysScopeEnum {
+		mappingListTsigKeysScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTsigKeysScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

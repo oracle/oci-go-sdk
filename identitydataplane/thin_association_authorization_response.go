@@ -11,7 +11,7 @@ package identitydataplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -37,7 +37,7 @@ func (m ThinAssociationAuthorizationResponse) String() string {
 // Not recommended for calling this function directly
 func (m ThinAssociationAuthorizationResponse) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingThinAssociationAuthorizationResponseAssociationResultEnum[string(m.AssociationResult)]; !ok && m.AssociationResult != "" {
+	if _, ok := GetMappingThinAssociationAuthorizationResponseAssociationResultEnum(string(m.AssociationResult)); !ok && m.AssociationResult != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AssociationResult: %s. Supported values are: %s.", m.AssociationResult, strings.Join(GetThinAssociationAuthorizationResponseAssociationResultEnumStringValues(), ",")))
 	}
 
@@ -85,4 +85,15 @@ func GetThinAssociationAuthorizationResponseAssociationResultEnumStringValues() 
 		"FAIL_MISSING_ADMIT",
 		"SUCCESS",
 	}
+}
+
+// GetMappingThinAssociationAuthorizationResponseAssociationResultEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingThinAssociationAuthorizationResponseAssociationResultEnum(val string) (ThinAssociationAuthorizationResponseAssociationResultEnum, bool) {
+	mappingThinAssociationAuthorizationResponseAssociationResultEnumIgnoreCase := make(map[string]ThinAssociationAuthorizationResponseAssociationResultEnum)
+	for k, v := range mappingThinAssociationAuthorizationResponseAssociationResultEnum {
+		mappingThinAssociationAuthorizationResponseAssociationResultEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingThinAssociationAuthorizationResponseAssociationResultEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -14,7 +14,7 @@ package apigateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -126,4 +126,15 @@ func GetResponseCacheLookupPolicyTypeEnumStringValues() []string {
 	return []string{
 		"SIMPLE_LOOKUP_POLICY",
 	}
+}
+
+// GetMappingResponseCacheLookupPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResponseCacheLookupPolicyTypeEnum(val string) (ResponseCacheLookupPolicyTypeEnum, bool) {
+	mappingResponseCacheLookupPolicyTypeEnumIgnoreCase := make(map[string]ResponseCacheLookupPolicyTypeEnum)
+	for k, v := range mappingResponseCacheLookupPolicyTypeEnum {
+		mappingResponseCacheLookupPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResponseCacheLookupPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

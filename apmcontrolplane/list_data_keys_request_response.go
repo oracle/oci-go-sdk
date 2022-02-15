@@ -6,7 +6,7 @@ package apmcontrolplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -63,7 +63,7 @@ func (request ListDataKeysRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDataKeysRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDataKeysDataKeyTypeEnum[string(request.DataKeyType)]; !ok && request.DataKeyType != "" {
+	if _, ok := GetMappingListDataKeysDataKeyTypeEnum(string(request.DataKeyType)); !ok && request.DataKeyType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataKeyType: %s. Supported values are: %s.", request.DataKeyType, strings.Join(GetListDataKeysDataKeyTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -124,4 +124,15 @@ func GetListDataKeysDataKeyTypeEnumStringValues() []string {
 		"PRIVATE",
 		"PUBLIC",
 	}
+}
+
+// GetMappingListDataKeysDataKeyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDataKeysDataKeyTypeEnum(val string) (ListDataKeysDataKeyTypeEnum, bool) {
+	mappingListDataKeysDataKeyTypeEnumIgnoreCase := make(map[string]ListDataKeysDataKeyTypeEnum)
+	for k, v := range mappingListDataKeysDataKeyTypeEnum {
+		mappingListDataKeysDataKeyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDataKeysDataKeyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

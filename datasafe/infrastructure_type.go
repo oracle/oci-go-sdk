@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // InfrastructureTypeEnum Enum with underlying type: string
 type InfrastructureTypeEnum string
 
@@ -44,4 +48,15 @@ func GetInfrastructureTypeEnumStringValues() []string {
 		"ON_PREMISES",
 		"NON_ORACLE_CLOUD",
 	}
+}
+
+// GetMappingInfrastructureTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInfrastructureTypeEnum(val string) (InfrastructureTypeEnum, bool) {
+	mappingInfrastructureTypeEnumIgnoreCase := make(map[string]InfrastructureTypeEnum)
+	for k, v := range mappingInfrastructureTypeEnum {
+		mappingInfrastructureTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInfrastructureTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package loganalytics
 
+import (
+	"strings"
+)
+
 // SubSystemNameEnum Enum with underlying type: string
 type SubSystemNameEnum string
 
@@ -35,4 +39,15 @@ func GetSubSystemNameEnumStringValues() []string {
 	return []string{
 		"LOG",
 	}
+}
+
+// GetMappingSubSystemNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSubSystemNameEnum(val string) (SubSystemNameEnum, bool) {
+	mappingSubSystemNameEnumIgnoreCase := make(map[string]SubSystemNameEnum)
+	for k, v := range mappingSubSystemNameEnum {
+		mappingSubSystemNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSubSystemNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

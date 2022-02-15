@@ -6,7 +6,7 @@ package osubsubscription
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -88,10 +88,10 @@ func (request ListRateCardsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListRateCardsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListRateCardsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListRateCardsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListRateCardsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListRateCardsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListRateCardsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListRateCardsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -156,6 +156,17 @@ func GetListRateCardsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListRateCardsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRateCardsSortOrderEnum(val string) (ListRateCardsSortOrderEnum, bool) {
+	mappingListRateCardsSortOrderEnumIgnoreCase := make(map[string]ListRateCardsSortOrderEnum)
+	for k, v := range mappingListRateCardsSortOrderEnum {
+		mappingListRateCardsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRateCardsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListRateCardsSortByEnum Enum with underlying type: string
 type ListRateCardsSortByEnum string
 
@@ -185,4 +196,15 @@ func GetListRateCardsSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"TIMESTART",
 	}
+}
+
+// GetMappingListRateCardsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRateCardsSortByEnum(val string) (ListRateCardsSortByEnum, bool) {
+	mappingListRateCardsSortByEnumIgnoreCase := make(map[string]ListRateCardsSortByEnum)
+	for k, v := range mappingListRateCardsSortByEnum {
+		mappingListRateCardsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRateCardsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

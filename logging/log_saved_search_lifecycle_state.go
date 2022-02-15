@@ -9,6 +9,10 @@
 
 package logging
 
+import (
+	"strings"
+)
+
 // LogSavedSearchLifecycleStateEnum Enum with underlying type: string
 type LogSavedSearchLifecycleStateEnum string
 
@@ -50,4 +54,15 @@ func GetLogSavedSearchLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"FAILED",
 	}
+}
+
+// GetMappingLogSavedSearchLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogSavedSearchLifecycleStateEnum(val string) (LogSavedSearchLifecycleStateEnum, bool) {
+	mappingLogSavedSearchLifecycleStateEnumIgnoreCase := make(map[string]LogSavedSearchLifecycleStateEnum)
+	for k, v := range mappingLogSavedSearchLifecycleStateEnum {
+		mappingLogSavedSearchLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogSavedSearchLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

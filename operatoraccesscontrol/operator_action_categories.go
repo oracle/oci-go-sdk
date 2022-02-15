@@ -11,6 +11,10 @@
 
 package operatoraccesscontrol
 
+import (
+	"strings"
+)
+
 // OperatorActionCategoriesEnum Enum with underlying type: string
 type OperatorActionCategoriesEnum string
 
@@ -49,4 +53,15 @@ func GetOperatorActionCategoriesEnumStringValues() []string {
 		"FULLADMINISTRATION",
 		"CELLMANAGEMENT",
 	}
+}
+
+// GetMappingOperatorActionCategoriesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOperatorActionCategoriesEnum(val string) (OperatorActionCategoriesEnum, bool) {
+	mappingOperatorActionCategoriesEnumIgnoreCase := make(map[string]OperatorActionCategoriesEnum)
+	for k, v := range mappingOperatorActionCategoriesEnum {
+		mappingOperatorActionCategoriesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOperatorActionCategoriesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -4,11 +4,12 @@
 package auth
 
 import (
-	"github.com/oracle/oci-go-sdk/v57/common"
-	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"os"
 	"testing"
+
+	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/stretchr/testify/assert"
 )
 
 var (

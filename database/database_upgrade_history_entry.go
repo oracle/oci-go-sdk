@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -72,14 +72,14 @@ func (m DatabaseUpgradeHistoryEntry) String() string {
 // Not recommended for calling this function directly
 func (m DatabaseUpgradeHistoryEntry) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDatabaseUpgradeHistoryEntryActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingDatabaseUpgradeHistoryEntryActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetDatabaseUpgradeHistoryEntryActionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatabaseUpgradeHistoryEntryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDatabaseUpgradeHistoryEntryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDatabaseUpgradeHistoryEntryLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDatabaseUpgradeHistoryEntrySourceEnum[string(m.Source)]; !ok && m.Source != "" {
+	if _, ok := GetMappingDatabaseUpgradeHistoryEntrySourceEnum(string(m.Source)); !ok && m.Source != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Source: %s. Supported values are: %s.", m.Source, strings.Join(GetDatabaseUpgradeHistoryEntrySourceEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -122,6 +122,17 @@ func GetDatabaseUpgradeHistoryEntryActionEnumStringValues() []string {
 	}
 }
 
+// GetMappingDatabaseUpgradeHistoryEntryActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseUpgradeHistoryEntryActionEnum(val string) (DatabaseUpgradeHistoryEntryActionEnum, bool) {
+	mappingDatabaseUpgradeHistoryEntryActionEnumIgnoreCase := make(map[string]DatabaseUpgradeHistoryEntryActionEnum)
+	for k, v := range mappingDatabaseUpgradeHistoryEntryActionEnum {
+		mappingDatabaseUpgradeHistoryEntryActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseUpgradeHistoryEntryActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DatabaseUpgradeHistoryEntrySourceEnum Enum with underlying type: string
 type DatabaseUpgradeHistoryEntrySourceEnum string
 
@@ -156,6 +167,17 @@ func GetDatabaseUpgradeHistoryEntrySourceEnumStringValues() []string {
 	}
 }
 
+// GetMappingDatabaseUpgradeHistoryEntrySourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseUpgradeHistoryEntrySourceEnum(val string) (DatabaseUpgradeHistoryEntrySourceEnum, bool) {
+	mappingDatabaseUpgradeHistoryEntrySourceEnumIgnoreCase := make(map[string]DatabaseUpgradeHistoryEntrySourceEnum)
+	for k, v := range mappingDatabaseUpgradeHistoryEntrySourceEnum {
+		mappingDatabaseUpgradeHistoryEntrySourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseUpgradeHistoryEntrySourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DatabaseUpgradeHistoryEntryLifecycleStateEnum Enum with underlying type: string
 type DatabaseUpgradeHistoryEntryLifecycleStateEnum string
 
@@ -188,4 +210,15 @@ func GetDatabaseUpgradeHistoryEntryLifecycleStateEnumStringValues() []string {
 		"FAILED",
 		"IN_PROGRESS",
 	}
+}
+
+// GetMappingDatabaseUpgradeHistoryEntryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseUpgradeHistoryEntryLifecycleStateEnum(val string) (DatabaseUpgradeHistoryEntryLifecycleStateEnum, bool) {
+	mappingDatabaseUpgradeHistoryEntryLifecycleStateEnumIgnoreCase := make(map[string]DatabaseUpgradeHistoryEntryLifecycleStateEnum)
+	for k, v := range mappingDatabaseUpgradeHistoryEntryLifecycleStateEnum {
+		mappingDatabaseUpgradeHistoryEntryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseUpgradeHistoryEntryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

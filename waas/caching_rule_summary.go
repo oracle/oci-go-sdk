@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -54,7 +54,7 @@ func (m CachingRuleSummary) String() string {
 // Not recommended for calling this function directly
 func (m CachingRuleSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCachingRuleSummaryActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingCachingRuleSummaryActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetCachingRuleSummaryActionEnumStringValues(), ",")))
 	}
 
@@ -93,4 +93,15 @@ func GetCachingRuleSummaryActionEnumStringValues() []string {
 		"CACHE",
 		"BYPASS_CACHE",
 	}
+}
+
+// GetMappingCachingRuleSummaryActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCachingRuleSummaryActionEnum(val string) (CachingRuleSummaryActionEnum, bool) {
+	mappingCachingRuleSummaryActionEnumIgnoreCase := make(map[string]CachingRuleSummaryActionEnum)
+	for k, v := range mappingCachingRuleSummaryActionEnum {
+		mappingCachingRuleSummaryActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCachingRuleSummaryActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

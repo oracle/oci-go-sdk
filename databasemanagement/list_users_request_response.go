@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -78,10 +78,10 @@ func (request ListUsersRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListUsersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListUsersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListUsersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListUsersSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUsersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListUsersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListUsersSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -149,6 +149,17 @@ func GetListUsersSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListUsersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUsersSortByEnum(val string) (ListUsersSortByEnum, bool) {
+	mappingListUsersSortByEnumIgnoreCase := make(map[string]ListUsersSortByEnum)
+	for k, v := range mappingListUsersSortByEnum {
+		mappingListUsersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUsersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListUsersSortOrderEnum Enum with underlying type: string
 type ListUsersSortOrderEnum string
 
@@ -178,4 +189,15 @@ func GetListUsersSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListUsersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUsersSortOrderEnum(val string) (ListUsersSortOrderEnum, bool) {
+	mappingListUsersSortOrderEnumIgnoreCase := make(map[string]ListUsersSortOrderEnum)
+	for k, v := range mappingListUsersSortOrderEnum {
+		mappingListUsersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUsersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

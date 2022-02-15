@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -46,7 +46,7 @@ type ListSecurityAssessmentsRequest struct {
 	// A filter to return only security asessments that were created by either user or system.
 	TriggeredBy ListSecurityAssessmentsTriggeredByEnum `mandatory:"false" contributesTo:"query" name:"triggeredBy" omitEmpty:"true"`
 
-	// A filter to return only items that match the specified target.
+	// A filter to return only items related to a specific target OCID.
 	TargetId *string `mandatory:"false" contributesTo:"query" name:"targetId"`
 
 	// The sort order to use, either ascending (ASC) or descending (DESC).
@@ -58,14 +58,14 @@ type ListSecurityAssessmentsRequest struct {
 	// The field to sort by. You can specify only one sort order(sortOrder). The default order for timeCreated is descending.
 	SortBy ListSecurityAssessmentsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
-	// A filter to return only security assessments that were created after the specified date and time, as defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
-	// Using TimeCreatedGreaterThanOrEqualToQueryParam parameter retrieves all assessments created after that date.
+	// A filter to return only the resources that were created after the specified date and time, as defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
+	// Using TimeCreatedGreaterThanOrEqualToQueryParam parameter retrieves all resources created after that date.
 	// **Example:** 2016-12-19T16:39:57.600Z
 	TimeCreatedGreaterThanOrEqualTo *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeCreatedGreaterThanOrEqualTo"`
 
-	// Search for items that were created before a specific date.
+	// Search for resources that were created before a specific date.
 	// Specifying this parameter corresponding `timeCreatedLessThan`
-	// parameter will retrieve all items created before the
+	// parameter will retrieve all resources created before the
 	// specified created date, in "YYYY-MM-ddThh:mmZ" format with a Z offset, as
 	// defined by RFC 3339.
 	// **Example:** 2016-12-19T16:39:57.600Z
@@ -119,22 +119,22 @@ func (request ListSecurityAssessmentsRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListSecurityAssessmentsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSecurityAssessmentsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListSecurityAssessmentsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListSecurityAssessmentsAccessLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSecurityAssessmentsTypeEnum[string(request.Type)]; !ok && request.Type != "" {
+	if _, ok := GetMappingListSecurityAssessmentsTypeEnum(string(request.Type)); !ok && request.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", request.Type, strings.Join(GetListSecurityAssessmentsTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSecurityAssessmentsTriggeredByEnum[string(request.TriggeredBy)]; !ok && request.TriggeredBy != "" {
+	if _, ok := GetMappingListSecurityAssessmentsTriggeredByEnum(string(request.TriggeredBy)); !ok && request.TriggeredBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TriggeredBy: %s. Supported values are: %s.", request.TriggeredBy, strings.Join(GetListSecurityAssessmentsTriggeredByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSecurityAssessmentsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSecurityAssessmentsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSecurityAssessmentsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSecurityAssessmentsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSecurityAssessmentsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSecurityAssessmentsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSecurityAssessmentsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListSecurityAssessmentsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListSecurityAssessmentsLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -204,6 +204,17 @@ func GetListSecurityAssessmentsAccessLevelEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSecurityAssessmentsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSecurityAssessmentsAccessLevelEnum(val string) (ListSecurityAssessmentsAccessLevelEnum, bool) {
+	mappingListSecurityAssessmentsAccessLevelEnumIgnoreCase := make(map[string]ListSecurityAssessmentsAccessLevelEnum)
+	for k, v := range mappingListSecurityAssessmentsAccessLevelEnum {
+		mappingListSecurityAssessmentsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSecurityAssessmentsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSecurityAssessmentsTypeEnum Enum with underlying type: string
 type ListSecurityAssessmentsTypeEnum string
 
@@ -241,6 +252,17 @@ func GetListSecurityAssessmentsTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSecurityAssessmentsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSecurityAssessmentsTypeEnum(val string) (ListSecurityAssessmentsTypeEnum, bool) {
+	mappingListSecurityAssessmentsTypeEnumIgnoreCase := make(map[string]ListSecurityAssessmentsTypeEnum)
+	for k, v := range mappingListSecurityAssessmentsTypeEnum {
+		mappingListSecurityAssessmentsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSecurityAssessmentsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSecurityAssessmentsTriggeredByEnum Enum with underlying type: string
 type ListSecurityAssessmentsTriggeredByEnum string
 
@@ -270,6 +292,17 @@ func GetListSecurityAssessmentsTriggeredByEnumStringValues() []string {
 		"USER",
 		"SYSTEM",
 	}
+}
+
+// GetMappingListSecurityAssessmentsTriggeredByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSecurityAssessmentsTriggeredByEnum(val string) (ListSecurityAssessmentsTriggeredByEnum, bool) {
+	mappingListSecurityAssessmentsTriggeredByEnumIgnoreCase := make(map[string]ListSecurityAssessmentsTriggeredByEnum)
+	for k, v := range mappingListSecurityAssessmentsTriggeredByEnum {
+		mappingListSecurityAssessmentsTriggeredByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSecurityAssessmentsTriggeredByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListSecurityAssessmentsSortOrderEnum Enum with underlying type: string
@@ -303,6 +336,17 @@ func GetListSecurityAssessmentsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSecurityAssessmentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSecurityAssessmentsSortOrderEnum(val string) (ListSecurityAssessmentsSortOrderEnum, bool) {
+	mappingListSecurityAssessmentsSortOrderEnumIgnoreCase := make(map[string]ListSecurityAssessmentsSortOrderEnum)
+	for k, v := range mappingListSecurityAssessmentsSortOrderEnum {
+		mappingListSecurityAssessmentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSecurityAssessmentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSecurityAssessmentsSortByEnum Enum with underlying type: string
 type ListSecurityAssessmentsSortByEnum string
 
@@ -332,6 +376,17 @@ func GetListSecurityAssessmentsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListSecurityAssessmentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSecurityAssessmentsSortByEnum(val string) (ListSecurityAssessmentsSortByEnum, bool) {
+	mappingListSecurityAssessmentsSortByEnumIgnoreCase := make(map[string]ListSecurityAssessmentsSortByEnum)
+	for k, v := range mappingListSecurityAssessmentsSortByEnum {
+		mappingListSecurityAssessmentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSecurityAssessmentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListSecurityAssessmentsLifecycleStateEnum Enum with underlying type: string
@@ -372,4 +427,15 @@ func GetListSecurityAssessmentsLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"FAILED",
 	}
+}
+
+// GetMappingListSecurityAssessmentsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSecurityAssessmentsLifecycleStateEnum(val string) (ListSecurityAssessmentsLifecycleStateEnum, bool) {
+	mappingListSecurityAssessmentsLifecycleStateEnumIgnoreCase := make(map[string]ListSecurityAssessmentsLifecycleStateEnum)
+	for k, v := range mappingListSecurityAssessmentsLifecycleStateEnum {
+		mappingListSecurityAssessmentsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSecurityAssessmentsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -145,15 +145,15 @@ func (request SummarizeDatabaseInsightResourceUsageTrendRequest) RetryPolicy() *
 func (request SummarizeDatabaseInsightResourceUsageTrendRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.DatabaseType {
-		if _, ok := mappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseType: %s. Supported values are: %s.", val, strings.Join(GetSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeDatabaseInsightResourceUsageTrendSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeDatabaseInsightResourceUsageTrendSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeDatabaseInsightResourceUsageTrendSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeDatabaseInsightResourceUsageTrendSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -233,6 +233,17 @@ func GetSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnumStringValues()
 	}
 }
 
+// GetMappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum(val string) (SummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum, bool) {
+	mappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum)
+	for k, v := range mappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum {
+		mappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeDatabaseInsightResourceUsageTrendSortOrderEnum Enum with underlying type: string
 type SummarizeDatabaseInsightResourceUsageTrendSortOrderEnum string
 
@@ -262,6 +273,17 @@ func GetSummarizeDatabaseInsightResourceUsageTrendSortOrderEnumStringValues() []
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnum(val string) (SummarizeDatabaseInsightResourceUsageTrendSortOrderEnum, bool) {
+	mappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceUsageTrendSortOrderEnum)
+	for k, v := range mappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnum {
+		mappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // SummarizeDatabaseInsightResourceUsageTrendSortByEnum Enum with underlying type: string
@@ -296,4 +318,15 @@ func GetSummarizeDatabaseInsightResourceUsageTrendSortByEnumStringValues() []str
 		"usage",
 		"capacity",
 	}
+}
+
+// GetMappingSummarizeDatabaseInsightResourceUsageTrendSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeDatabaseInsightResourceUsageTrendSortByEnum(val string) (SummarizeDatabaseInsightResourceUsageTrendSortByEnum, bool) {
+	mappingSummarizeDatabaseInsightResourceUsageTrendSortByEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceUsageTrendSortByEnum)
+	for k, v := range mappingSummarizeDatabaseInsightResourceUsageTrendSortByEnum {
+		mappingSummarizeDatabaseInsightResourceUsageTrendSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeDatabaseInsightResourceUsageTrendSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

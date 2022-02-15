@@ -12,7 +12,7 @@ package ospgateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -84,13 +84,13 @@ func (m Subscription) String() string {
 func (m Subscription) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSubscriptionPlanTypeEnum[string(m.PlanType)]; !ok && m.PlanType != "" {
+	if _, ok := GetMappingSubscriptionPlanTypeEnum(string(m.PlanType)); !ok && m.PlanType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlanType: %s. Supported values are: %s.", m.PlanType, strings.Join(GetSubscriptionPlanTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSubscriptionUpgradeStateEnum[string(m.UpgradeState)]; !ok && m.UpgradeState != "" {
+	if _, ok := GetMappingSubscriptionUpgradeStateEnum(string(m.UpgradeState)); !ok && m.UpgradeState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpgradeState: %s. Supported values are: %s.", m.UpgradeState, strings.Join(GetSubscriptionUpgradeStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSubscriptionUpgradeStateDetailsEnum[string(m.UpgradeStateDetails)]; !ok && m.UpgradeStateDetails != "" {
+	if _, ok := GetMappingSubscriptionUpgradeStateDetailsEnum(string(m.UpgradeStateDetails)); !ok && m.UpgradeStateDetails != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpgradeStateDetails: %s. Supported values are: %s.", m.UpgradeStateDetails, strings.Join(GetSubscriptionUpgradeStateDetailsEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -211,6 +211,17 @@ func GetSubscriptionPlanTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingSubscriptionPlanTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSubscriptionPlanTypeEnum(val string) (SubscriptionPlanTypeEnum, bool) {
+	mappingSubscriptionPlanTypeEnumIgnoreCase := make(map[string]SubscriptionPlanTypeEnum)
+	for k, v := range mappingSubscriptionPlanTypeEnum {
+		mappingSubscriptionPlanTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSubscriptionPlanTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SubscriptionUpgradeStateEnum Enum with underlying type: string
 type SubscriptionUpgradeStateEnum string
 
@@ -248,6 +259,17 @@ func GetSubscriptionUpgradeStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingSubscriptionUpgradeStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSubscriptionUpgradeStateEnum(val string) (SubscriptionUpgradeStateEnum, bool) {
+	mappingSubscriptionUpgradeStateEnumIgnoreCase := make(map[string]SubscriptionUpgradeStateEnum)
+	for k, v := range mappingSubscriptionUpgradeStateEnum {
+		mappingSubscriptionUpgradeStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSubscriptionUpgradeStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SubscriptionUpgradeStateDetailsEnum Enum with underlying type: string
 type SubscriptionUpgradeStateDetailsEnum string
 
@@ -277,4 +299,15 @@ func GetSubscriptionUpgradeStateDetailsEnumStringValues() []string {
 		"TAX_ERROR",
 		"UPGRADE_ERROR",
 	}
+}
+
+// GetMappingSubscriptionUpgradeStateDetailsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSubscriptionUpgradeStateDetailsEnum(val string) (SubscriptionUpgradeStateDetailsEnum, bool) {
+	mappingSubscriptionUpgradeStateDetailsEnumIgnoreCase := make(map[string]SubscriptionUpgradeStateDetailsEnum)
+	for k, v := range mappingSubscriptionUpgradeStateDetailsEnum {
+		mappingSubscriptionUpgradeStateDetailsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSubscriptionUpgradeStateDetailsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

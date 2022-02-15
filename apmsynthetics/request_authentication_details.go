@@ -11,7 +11,7 @@ package apmsynthetics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -53,10 +53,10 @@ func (m RequestAuthenticationDetails) String() string {
 func (m RequestAuthenticationDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingOAuthSchemesEnum[string(m.OauthScheme)]; !ok && m.OauthScheme != "" {
+	if _, ok := GetMappingOAuthSchemesEnum(string(m.OauthScheme)); !ok && m.OauthScheme != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OauthScheme: %s. Supported values are: %s.", m.OauthScheme, strings.Join(GetOAuthSchemesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingRequestMethodsEnum[string(m.AuthRequestMethod)]; !ok && m.AuthRequestMethod != "" {
+	if _, ok := GetMappingRequestMethodsEnum(string(m.AuthRequestMethod)); !ok && m.AuthRequestMethod != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AuthRequestMethod: %s. Supported values are: %s.", m.AuthRequestMethod, strings.Join(GetRequestMethodsEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

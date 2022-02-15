@@ -12,7 +12,7 @@ package cloudguard
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -115,4 +115,15 @@ func GetTargetSelectedKindEnumStringValues() []string {
 		"TARGETTYPES",
 		"TARGETIDS",
 	}
+}
+
+// GetMappingTargetSelectedKindEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTargetSelectedKindEnum(val string) (TargetSelectedKindEnum, bool) {
+	mappingTargetSelectedKindEnumIgnoreCase := make(map[string]TargetSelectedKindEnum)
+	for k, v := range mappingTargetSelectedKindEnum {
+		mappingTargetSelectedKindEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTargetSelectedKindEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

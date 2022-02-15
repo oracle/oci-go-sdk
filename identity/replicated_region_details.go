@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -40,7 +40,7 @@ func (m ReplicatedRegionDetails) String() string {
 func (m ReplicatedRegionDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingReplicatedRegionDetailsStateEnum[string(m.State)]; !ok && m.State != "" {
+	if _, ok := GetMappingReplicatedRegionDetailsStateEnum(string(m.State)); !ok && m.State != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for State: %s. Supported values are: %s.", m.State, strings.Join(GetReplicatedRegionDetailsStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -87,4 +87,15 @@ func GetReplicatedRegionDetailsStateEnumStringValues() []string {
 		"REPLICATION_DISABLED",
 		"DELETED",
 	}
+}
+
+// GetMappingReplicatedRegionDetailsStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingReplicatedRegionDetailsStateEnum(val string) (ReplicatedRegionDetailsStateEnum, bool) {
+	mappingReplicatedRegionDetailsStateEnumIgnoreCase := make(map[string]ReplicatedRegionDetailsStateEnum)
+	for k, v := range mappingReplicatedRegionDetailsStateEnum {
+		mappingReplicatedRegionDetailsStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingReplicatedRegionDetailsStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

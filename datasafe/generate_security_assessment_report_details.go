@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -31,7 +31,7 @@ func (m GenerateSecurityAssessmentReportDetails) String() string {
 // Not recommended for calling this function directly
 func (m GenerateSecurityAssessmentReportDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGenerateSecurityAssessmentReportDetailsFormatEnum[string(m.Format)]; !ok && m.Format != "" {
+	if _, ok := GetMappingGenerateSecurityAssessmentReportDetailsFormatEnum(string(m.Format)); !ok && m.Format != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Format: %s. Supported values are: %s.", m.Format, strings.Join(GetGenerateSecurityAssessmentReportDetailsFormatEnumStringValues(), ",")))
 	}
 
@@ -70,4 +70,15 @@ func GetGenerateSecurityAssessmentReportDetailsFormatEnumStringValues() []string
 		"PDF",
 		"XLS",
 	}
+}
+
+// GetMappingGenerateSecurityAssessmentReportDetailsFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGenerateSecurityAssessmentReportDetailsFormatEnum(val string) (GenerateSecurityAssessmentReportDetailsFormatEnum, bool) {
+	mappingGenerateSecurityAssessmentReportDetailsFormatEnumIgnoreCase := make(map[string]GenerateSecurityAssessmentReportDetailsFormatEnum)
+	for k, v := range mappingGenerateSecurityAssessmentReportDetailsFormatEnum {
+		mappingGenerateSecurityAssessmentReportDetailsFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGenerateSecurityAssessmentReportDetailsFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

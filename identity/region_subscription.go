@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -48,7 +48,7 @@ func (m RegionSubscription) String() string {
 // Not recommended for calling this function directly
 func (m RegionSubscription) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRegionSubscriptionStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingRegionSubscriptionStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetRegionSubscriptionStatusEnumStringValues(), ",")))
 	}
 
@@ -87,4 +87,15 @@ func GetRegionSubscriptionStatusEnumStringValues() []string {
 		"READY",
 		"IN_PROGRESS",
 	}
+}
+
+// GetMappingRegionSubscriptionStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRegionSubscriptionStatusEnum(val string) (RegionSubscriptionStatusEnum, bool) {
+	mappingRegionSubscriptionStatusEnumIgnoreCase := make(map[string]RegionSubscriptionStatusEnum)
+	for k, v := range mappingRegionSubscriptionStatusEnum {
+		mappingRegionSubscriptionStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRegionSubscriptionStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

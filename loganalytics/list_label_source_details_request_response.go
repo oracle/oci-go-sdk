@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -76,10 +76,10 @@ func (request ListLabelSourceDetailsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListLabelSourceDetailsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListLabelSourceDetailsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListLabelSourceDetailsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListLabelSourceDetailsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLabelSourceDetailsLabelSourceSortByEnum[string(request.LabelSourceSortBy)]; !ok && request.LabelSourceSortBy != "" {
+	if _, ok := GetMappingListLabelSourceDetailsLabelSourceSortByEnum(string(request.LabelSourceSortBy)); !ok && request.LabelSourceSortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LabelSourceSortBy: %s. Supported values are: %s.", request.LabelSourceSortBy, strings.Join(GetListLabelSourceDetailsLabelSourceSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -151,6 +151,17 @@ func GetListLabelSourceDetailsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListLabelSourceDetailsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLabelSourceDetailsSortOrderEnum(val string) (ListLabelSourceDetailsSortOrderEnum, bool) {
+	mappingListLabelSourceDetailsSortOrderEnumIgnoreCase := make(map[string]ListLabelSourceDetailsSortOrderEnum)
+	for k, v := range mappingListLabelSourceDetailsSortOrderEnum {
+		mappingListLabelSourceDetailsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLabelSourceDetailsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLabelSourceDetailsLabelSourceSortByEnum Enum with underlying type: string
 type ListLabelSourceDetailsLabelSourceSortByEnum string
 
@@ -180,4 +191,15 @@ func GetListLabelSourceDetailsLabelSourceSortByEnumStringValues() []string {
 		"sourceDisplayName",
 		"labelFieldDisplayName",
 	}
+}
+
+// GetMappingListLabelSourceDetailsLabelSourceSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLabelSourceDetailsLabelSourceSortByEnum(val string) (ListLabelSourceDetailsLabelSourceSortByEnum, bool) {
+	mappingListLabelSourceDetailsLabelSourceSortByEnumIgnoreCase := make(map[string]ListLabelSourceDetailsLabelSourceSortByEnum)
+	for k, v := range mappingListLabelSourceDetailsLabelSourceSortByEnum {
+		mappingListLabelSourceDetailsLabelSourceSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLabelSourceDetailsLabelSourceSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

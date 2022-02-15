@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // DiskGroupEnum Enum with underlying type: string
 type DiskGroupEnum string
 
@@ -37,4 +41,15 @@ func GetDiskGroupEnumStringValues() []string {
 	return []string{
 		"STORAGE",
 	}
+}
+
+// GetMappingDiskGroupEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDiskGroupEnum(val string) (DiskGroupEnum, bool) {
+	mappingDiskGroupEnumIgnoreCase := make(map[string]DiskGroupEnum)
+	for k, v := range mappingDiskGroupEnum {
+		mappingDiskGroupEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDiskGroupEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

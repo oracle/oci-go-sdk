@@ -11,6 +11,10 @@
 
 package databasemanagement
 
+import (
+	"strings"
+)
+
 // ParameterScopeEnum Enum with underlying type: string
 type ParameterScopeEnum string
 
@@ -43,4 +47,15 @@ func GetParameterScopeEnumStringValues() []string {
 		"SPFILE",
 		"BOTH",
 	}
+}
+
+// GetMappingParameterScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingParameterScopeEnum(val string) (ParameterScopeEnum, bool) {
+	mappingParameterScopeEnumIgnoreCase := make(map[string]ParameterScopeEnum)
+	for k, v := range mappingParameterScopeEnum {
+		mappingParameterScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingParameterScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

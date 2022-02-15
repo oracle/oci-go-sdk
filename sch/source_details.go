@@ -14,7 +14,7 @@ package sch
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -115,4 +115,15 @@ func GetSourceDetailsKindEnumStringValues() []string {
 		"logging",
 		"streaming",
 	}
+}
+
+// GetMappingSourceDetailsKindEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSourceDetailsKindEnum(val string) (SourceDetailsKindEnum, bool) {
+	mappingSourceDetailsKindEnumIgnoreCase := make(map[string]SourceDetailsKindEnum)
+	for k, v := range mappingSourceDetailsKindEnum {
+		mappingSourceDetailsKindEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSourceDetailsKindEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

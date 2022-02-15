@@ -11,7 +11,7 @@ package usageapi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -38,7 +38,7 @@ func (m Forecast) String() string {
 func (m Forecast) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingForecastForecastTypeEnum[string(m.ForecastType)]; !ok && m.ForecastType != "" {
+	if _, ok := GetMappingForecastForecastTypeEnum(string(m.ForecastType)); !ok && m.ForecastType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ForecastType: %s. Supported values are: %s.", m.ForecastType, strings.Join(GetForecastForecastTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -73,4 +73,15 @@ func GetForecastForecastTypeEnumStringValues() []string {
 	return []string{
 		"BASIC",
 	}
+}
+
+// GetMappingForecastForecastTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingForecastForecastTypeEnum(val string) (ForecastForecastTypeEnum, bool) {
+	mappingForecastForecastTypeEnumIgnoreCase := make(map[string]ForecastForecastTypeEnum)
+	for k, v := range mappingForecastForecastTypeEnum {
+		mappingForecastForecastTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingForecastForecastTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package loganalytics
 
+import (
+	"strings"
+)
+
 // EntityCloudTypeEnum Enum with underlying type: string
 type EntityCloudTypeEnum string
 
@@ -41,4 +45,15 @@ func GetEntityCloudTypeEnumStringValues() []string {
 		"NON_CLOUD",
 		"ALL",
 	}
+}
+
+// GetMappingEntityCloudTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEntityCloudTypeEnum(val string) (EntityCloudTypeEnum, bool) {
+	mappingEntityCloudTypeEnumIgnoreCase := make(map[string]EntityCloudTypeEnum)
+	for k, v := range mappingEntityCloudTypeEnum {
+		mappingEntityCloudTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEntityCloudTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

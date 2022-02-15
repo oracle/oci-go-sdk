@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -51,13 +51,13 @@ func (m SummarizeHostInsightResourceForecastTrendAggregation) String() string {
 // Not recommended for calling this function directly
 func (m SummarizeHostInsightResourceForecastTrendAggregation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnum[string(m.ResourceMetric)]; !ok && m.ResourceMetric != "" {
+	if _, ok := GetMappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnum(string(m.ResourceMetric)); !ok && m.ResourceMetric != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResourceMetric: %s. Supported values are: %s.", m.ResourceMetric, strings.Join(GetSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUsageUnitEnum[string(m.UsageUnit)]; !ok && m.UsageUnit != "" {
+	if _, ok := GetMappingUsageUnitEnum(string(m.UsageUnit)); !ok && m.UsageUnit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UsageUnit: %s. Supported values are: %s.", m.UsageUnit, strings.Join(GetUsageUnitEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnum[string(m.Pattern)]; !ok && m.Pattern != "" {
+	if _, ok := GetMappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnum(string(m.Pattern)); !ok && m.Pattern != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Pattern: %s. Supported values are: %s.", m.Pattern, strings.Join(GetSummarizeHostInsightResourceForecastTrendAggregationPatternEnumStringValues(), ",")))
 	}
 
@@ -99,6 +99,17 @@ func GetSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnumSt
 		"MEMORY",
 		"LOGICAL_MEMORY",
 	}
+}
+
+// GetMappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnum(val string) (SummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnum, bool) {
+	mappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnum)
+	for k, v := range mappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnum {
+		mappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // SummarizeHostInsightResourceForecastTrendAggregationPatternEnum Enum with underlying type: string
@@ -148,4 +159,15 @@ func GetSummarizeHostInsightResourceForecastTrendAggregationPatternEnumStringVal
 		"WEEKLY_AND_YEARLY_SEASONS",
 		"YEARLY_SEASONS",
 	}
+}
+
+// GetMappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnum(val string) (SummarizeHostInsightResourceForecastTrendAggregationPatternEnum, bool) {
+	mappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceForecastTrendAggregationPatternEnum)
+	for k, v := range mappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnum {
+		mappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

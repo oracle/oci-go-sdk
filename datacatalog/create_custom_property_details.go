@@ -12,7 +12,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -77,7 +77,7 @@ func (m CreateCustomPropertyDetails) String() string {
 func (m CreateCustomPropertyDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCustomPropertyDataTypeEnum[string(m.DataType)]; !ok && m.DataType != "" {
+	if _, ok := GetMappingCustomPropertyDataTypeEnum(string(m.DataType)); !ok && m.DataType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataType: %s. Supported values are: %s.", m.DataType, strings.Join(GetCustomPropertyDataTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -69,7 +69,7 @@ func (m AwrDbSqlReport) String() string {
 // Not recommended for calling this function directly
 func (m AwrDbSqlReport) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAwrDbSqlReportFormatEnum[string(m.Format)]; !ok && m.Format != "" {
+	if _, ok := GetMappingAwrDbSqlReportFormatEnum(string(m.Format)); !ok && m.Format != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Format: %s. Supported values are: %s.", m.Format, strings.Join(GetAwrDbSqlReportFormatEnumStringValues(), ",")))
 	}
 
@@ -122,4 +122,15 @@ func GetAwrDbSqlReportFormatEnumStringValues() []string {
 		"HTML",
 		"TEXT",
 	}
+}
+
+// GetMappingAwrDbSqlReportFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAwrDbSqlReportFormatEnum(val string) (AwrDbSqlReportFormatEnum, bool) {
+	mappingAwrDbSqlReportFormatEnumIgnoreCase := make(map[string]AwrDbSqlReportFormatEnum)
+	for k, v := range mappingAwrDbSqlReportFormatEnum {
+		mappingAwrDbSqlReportFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAwrDbSqlReportFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

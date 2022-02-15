@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -142,18 +142,18 @@ func (request SummarizeHostInsightResourceCapacityTrendRequest) RetryPolicy() *c
 func (request SummarizeHostInsightResourceCapacityTrendRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.PlatformType {
-		if _, ok := mappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", val, strings.Join(GetSummarizeHostInsightResourceCapacityTrendPlatformTypeEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum[string(request.UtilizationLevel)]; !ok && request.UtilizationLevel != "" {
+	if _, ok := GetMappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum(string(request.UtilizationLevel)); !ok && request.UtilizationLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UtilizationLevel: %s. Supported values are: %s.", request.UtilizationLevel, strings.Join(GetSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeHostInsightResourceCapacityTrendSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeHostInsightResourceCapacityTrendSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeHostInsightResourceCapacityTrendSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeHostInsightResourceCapacityTrendSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeHostInsightResourceCapacityTrendSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeHostInsightResourceCapacityTrendSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -224,6 +224,17 @@ func GetSummarizeHostInsightResourceCapacityTrendPlatformTypeEnumStringValues() 
 	}
 }
 
+// GetMappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnum(val string) (SummarizeHostInsightResourceCapacityTrendPlatformTypeEnum, bool) {
+	mappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceCapacityTrendPlatformTypeEnum)
+	for k, v := range mappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnum {
+		mappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum Enum with underlying type: string
 type SummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum string
 
@@ -261,6 +272,17 @@ func GetSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnumStringValue
 	}
 }
 
+// GetMappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum(val string) (SummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum, bool) {
+	mappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum)
+	for k, v := range mappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum {
+		mappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeHostInsightResourceCapacityTrendSortOrderEnum Enum with underlying type: string
 type SummarizeHostInsightResourceCapacityTrendSortOrderEnum string
 
@@ -292,6 +314,17 @@ func GetSummarizeHostInsightResourceCapacityTrendSortOrderEnumStringValues() []s
 	}
 }
 
+// GetMappingSummarizeHostInsightResourceCapacityTrendSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeHostInsightResourceCapacityTrendSortOrderEnum(val string) (SummarizeHostInsightResourceCapacityTrendSortOrderEnum, bool) {
+	mappingSummarizeHostInsightResourceCapacityTrendSortOrderEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceCapacityTrendSortOrderEnum)
+	for k, v := range mappingSummarizeHostInsightResourceCapacityTrendSortOrderEnum {
+		mappingSummarizeHostInsightResourceCapacityTrendSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeHostInsightResourceCapacityTrendSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeHostInsightResourceCapacityTrendSortByEnum Enum with underlying type: string
 type SummarizeHostInsightResourceCapacityTrendSortByEnum string
 
@@ -321,4 +354,15 @@ func GetSummarizeHostInsightResourceCapacityTrendSortByEnumStringValues() []stri
 		"endTimestamp",
 		"capacity",
 	}
+}
+
+// GetMappingSummarizeHostInsightResourceCapacityTrendSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeHostInsightResourceCapacityTrendSortByEnum(val string) (SummarizeHostInsightResourceCapacityTrendSortByEnum, bool) {
+	mappingSummarizeHostInsightResourceCapacityTrendSortByEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceCapacityTrendSortByEnum)
+	for k, v := range mappingSummarizeHostInsightResourceCapacityTrendSortByEnum {
+		mappingSummarizeHostInsightResourceCapacityTrendSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeHostInsightResourceCapacityTrendSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,7 +11,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -64,16 +64,16 @@ func (m TargetResponderRecipeResponderRule) String() string {
 func (m TargetResponderRecipeResponderRule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingResponderTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingResponderTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetResponderTypeEnumStringValues(), ",")))
 	}
 	for _, val := range m.SupportedModes {
-		if _, ok := mappingTargetResponderRecipeResponderRuleSupportedModesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingTargetResponderRecipeResponderRuleSupportedModesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SupportedModes: %s. Supported values are: %s.", val, strings.Join(GetTargetResponderRecipeResponderRuleSupportedModesEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -111,4 +111,15 @@ func GetTargetResponderRecipeResponderRuleSupportedModesEnumStringValues() []str
 		"AUTOACTION",
 		"USERACTION",
 	}
+}
+
+// GetMappingTargetResponderRecipeResponderRuleSupportedModesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTargetResponderRecipeResponderRuleSupportedModesEnum(val string) (TargetResponderRecipeResponderRuleSupportedModesEnum, bool) {
+	mappingTargetResponderRecipeResponderRuleSupportedModesEnumIgnoreCase := make(map[string]TargetResponderRecipeResponderRuleSupportedModesEnum)
+	for k, v := range mappingTargetResponderRecipeResponderRuleSupportedModesEnum {
+		mappingTargetResponderRecipeResponderRuleSupportedModesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTargetResponderRecipeResponderRuleSupportedModesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

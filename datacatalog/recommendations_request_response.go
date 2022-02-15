@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -73,15 +73,15 @@ func (request RecommendationsRequest) RetryPolicy() *common.RetryPolicy {
 func (request RecommendationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.RecommendationType {
-		if _, ok := mappingRecommendationTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingRecommendationTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RecommendationType: %s. Supported values are: %s.", val, strings.Join(GetRecommendationTypeEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingRecommendationsSourceObjectTypeEnum[string(request.SourceObjectType)]; !ok && request.SourceObjectType != "" {
+	if _, ok := GetMappingRecommendationsSourceObjectTypeEnum(string(request.SourceObjectType)); !ok && request.SourceObjectType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SourceObjectType: %s. Supported values are: %s.", request.SourceObjectType, strings.Join(GetRecommendationsSourceObjectTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingRecommendationsRecommendationStatusEnum[string(request.RecommendationStatus)]; !ok && request.RecommendationStatus != "" {
+	if _, ok := GetMappingRecommendationsRecommendationStatusEnum(string(request.RecommendationStatus)); !ok && request.RecommendationStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RecommendationStatus: %s. Supported values are: %s.", request.RecommendationStatus, strings.Join(GetRecommendationsRecommendationStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -150,6 +150,17 @@ func GetRecommendationsSourceObjectTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingRecommendationsSourceObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRecommendationsSourceObjectTypeEnum(val string) (RecommendationsSourceObjectTypeEnum, bool) {
+	mappingRecommendationsSourceObjectTypeEnumIgnoreCase := make(map[string]RecommendationsSourceObjectTypeEnum)
+	for k, v := range mappingRecommendationsSourceObjectTypeEnum {
+		mappingRecommendationsSourceObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRecommendationsSourceObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // RecommendationsRecommendationStatusEnum Enum with underlying type: string
 type RecommendationsRecommendationStatusEnum string
 
@@ -182,4 +193,15 @@ func GetRecommendationsRecommendationStatusEnumStringValues() []string {
 		"REJECTED",
 		"INFERRED",
 	}
+}
+
+// GetMappingRecommendationsRecommendationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRecommendationsRecommendationStatusEnum(val string) (RecommendationsRecommendationStatusEnum, bool) {
+	mappingRecommendationsRecommendationStatusEnumIgnoreCase := make(map[string]RecommendationsRecommendationStatusEnum)
+	for k, v := range mappingRecommendationsRecommendationStatusEnum {
+		mappingRecommendationsRecommendationStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRecommendationsRecommendationStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

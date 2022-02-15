@@ -13,7 +13,7 @@ package dns
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -177,7 +177,7 @@ func (m resolverendpoint) String() string {
 // Not recommended for calling this function directly
 func (m resolverendpoint) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingResolverEndpointLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingResolverEndpointLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetResolverEndpointLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -230,6 +230,17 @@ func GetResolverEndpointLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingResolverEndpointLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResolverEndpointLifecycleStateEnum(val string) (ResolverEndpointLifecycleStateEnum, bool) {
+	mappingResolverEndpointLifecycleStateEnumIgnoreCase := make(map[string]ResolverEndpointLifecycleStateEnum)
+	for k, v := range mappingResolverEndpointLifecycleStateEnum {
+		mappingResolverEndpointLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResolverEndpointLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ResolverEndpointEndpointTypeEnum Enum with underlying type: string
 type ResolverEndpointEndpointTypeEnum string
 
@@ -256,4 +267,15 @@ func GetResolverEndpointEndpointTypeEnumStringValues() []string {
 	return []string{
 		"VNIC",
 	}
+}
+
+// GetMappingResolverEndpointEndpointTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResolverEndpointEndpointTypeEnum(val string) (ResolverEndpointEndpointTypeEnum, bool) {
+	mappingResolverEndpointEndpointTypeEnumIgnoreCase := make(map[string]ResolverEndpointEndpointTypeEnum)
+	for k, v := range mappingResolverEndpointEndpointTypeEnum {
+		mappingResolverEndpointEndpointTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResolverEndpointEndpointTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

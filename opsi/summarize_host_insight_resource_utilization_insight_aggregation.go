@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -43,7 +43,7 @@ func (m SummarizeHostInsightResourceUtilizationInsightAggregation) String() stri
 // Not recommended for calling this function directly
 func (m SummarizeHostInsightResourceUtilizationInsightAggregation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeHostInsightResourceUtilizationInsightAggregationResourceMetricEnum[string(m.ResourceMetric)]; !ok && m.ResourceMetric != "" {
+	if _, ok := GetMappingSummarizeHostInsightResourceUtilizationInsightAggregationResourceMetricEnum(string(m.ResourceMetric)); !ok && m.ResourceMetric != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResourceMetric: %s. Supported values are: %s.", m.ResourceMetric, strings.Join(GetSummarizeHostInsightResourceUtilizationInsightAggregationResourceMetricEnumStringValues(), ",")))
 	}
 
@@ -85,4 +85,15 @@ func GetSummarizeHostInsightResourceUtilizationInsightAggregationResourceMetricE
 		"MEMORY",
 		"LOGICAL_MEMORY",
 	}
+}
+
+// GetMappingSummarizeHostInsightResourceUtilizationInsightAggregationResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeHostInsightResourceUtilizationInsightAggregationResourceMetricEnum(val string) (SummarizeHostInsightResourceUtilizationInsightAggregationResourceMetricEnum, bool) {
+	mappingSummarizeHostInsightResourceUtilizationInsightAggregationResourceMetricEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceUtilizationInsightAggregationResourceMetricEnum)
+	for k, v := range mappingSummarizeHostInsightResourceUtilizationInsightAggregationResourceMetricEnum {
+		mappingSummarizeHostInsightResourceUtilizationInsightAggregationResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeHostInsightResourceUtilizationInsightAggregationResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

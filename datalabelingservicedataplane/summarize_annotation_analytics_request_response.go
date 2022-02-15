@@ -6,7 +6,7 @@ package datalabelingservicedataplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -84,16 +84,16 @@ func (request SummarizeAnnotationAnalyticsRequest) RetryPolicy() *common.RetryPo
 // Not recommended for calling this function directly
 func (request SummarizeAnnotationAnalyticsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAnnotationLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingAnnotationLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetAnnotationLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeAnnotationAnalyticsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeAnnotationAnalyticsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeAnnotationAnalyticsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeAnnotationAnalyticsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeAnnotationAnalyticsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeAnnotationAnalyticsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeAnnotationAnalyticsAnnotationGroupByEnum[string(request.AnnotationGroupBy)]; !ok && request.AnnotationGroupBy != "" {
+	if _, ok := GetMappingSummarizeAnnotationAnalyticsAnnotationGroupByEnum(string(request.AnnotationGroupBy)); !ok && request.AnnotationGroupBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AnnotationGroupBy: %s. Supported values are: %s.", request.AnnotationGroupBy, strings.Join(GetSummarizeAnnotationAnalyticsAnnotationGroupByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -161,6 +161,17 @@ func GetSummarizeAnnotationAnalyticsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeAnnotationAnalyticsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeAnnotationAnalyticsSortOrderEnum(val string) (SummarizeAnnotationAnalyticsSortOrderEnum, bool) {
+	mappingSummarizeAnnotationAnalyticsSortOrderEnumIgnoreCase := make(map[string]SummarizeAnnotationAnalyticsSortOrderEnum)
+	for k, v := range mappingSummarizeAnnotationAnalyticsSortOrderEnum {
+		mappingSummarizeAnnotationAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeAnnotationAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeAnnotationAnalyticsSortByEnum Enum with underlying type: string
 type SummarizeAnnotationAnalyticsSortByEnum string
 
@@ -195,6 +206,17 @@ func GetSummarizeAnnotationAnalyticsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeAnnotationAnalyticsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeAnnotationAnalyticsSortByEnum(val string) (SummarizeAnnotationAnalyticsSortByEnum, bool) {
+	mappingSummarizeAnnotationAnalyticsSortByEnumIgnoreCase := make(map[string]SummarizeAnnotationAnalyticsSortByEnum)
+	for k, v := range mappingSummarizeAnnotationAnalyticsSortByEnum {
+		mappingSummarizeAnnotationAnalyticsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeAnnotationAnalyticsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeAnnotationAnalyticsAnnotationGroupByEnum Enum with underlying type: string
 type SummarizeAnnotationAnalyticsAnnotationGroupByEnum string
 
@@ -224,4 +246,15 @@ func GetSummarizeAnnotationAnalyticsAnnotationGroupByEnumStringValues() []string
 		"updatedBy",
 		"label",
 	}
+}
+
+// GetMappingSummarizeAnnotationAnalyticsAnnotationGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeAnnotationAnalyticsAnnotationGroupByEnum(val string) (SummarizeAnnotationAnalyticsAnnotationGroupByEnum, bool) {
+	mappingSummarizeAnnotationAnalyticsAnnotationGroupByEnumIgnoreCase := make(map[string]SummarizeAnnotationAnalyticsAnnotationGroupByEnum)
+	for k, v := range mappingSummarizeAnnotationAnalyticsAnnotationGroupByEnum {
+		mappingSummarizeAnnotationAnalyticsAnnotationGroupByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeAnnotationAnalyticsAnnotationGroupByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

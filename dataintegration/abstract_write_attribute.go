@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -150,4 +150,15 @@ func GetAbstractWriteAttributeModelTypeEnumStringValues() []string {
 		"ORACLE_ADWC_WRITE_ATTRIBUTE",
 		"OBJECT_STORAGE_WRITE_ATTRIBUTE",
 	}
+}
+
+// GetMappingAbstractWriteAttributeModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAbstractWriteAttributeModelTypeEnum(val string) (AbstractWriteAttributeModelTypeEnum, bool) {
+	mappingAbstractWriteAttributeModelTypeEnumIgnoreCase := make(map[string]AbstractWriteAttributeModelTypeEnum)
+	for k, v := range mappingAbstractWriteAttributeModelTypeEnum {
+		mappingAbstractWriteAttributeModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAbstractWriteAttributeModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

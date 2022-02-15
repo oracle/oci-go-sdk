@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -52,14 +52,14 @@ func (m UpdateHistoryEntrySummary) String() string {
 // Not recommended for calling this function directly
 func (m UpdateHistoryEntrySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUpdateHistoryEntrySummaryUpdateTypeEnum[string(m.UpdateType)]; !ok && m.UpdateType != "" {
+	if _, ok := GetMappingUpdateHistoryEntrySummaryUpdateTypeEnum(string(m.UpdateType)); !ok && m.UpdateType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateType: %s. Supported values are: %s.", m.UpdateType, strings.Join(GetUpdateHistoryEntrySummaryUpdateTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUpdateHistoryEntrySummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingUpdateHistoryEntrySummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetUpdateHistoryEntrySummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingUpdateHistoryEntrySummaryUpdateActionEnum[string(m.UpdateAction)]; !ok && m.UpdateAction != "" {
+	if _, ok := GetMappingUpdateHistoryEntrySummaryUpdateActionEnum(string(m.UpdateAction)); !ok && m.UpdateAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateAction: %s. Supported values are: %s.", m.UpdateAction, strings.Join(GetUpdateHistoryEntrySummaryUpdateActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -105,6 +105,17 @@ func GetUpdateHistoryEntrySummaryUpdateActionEnumStringValues() []string {
 	}
 }
 
+// GetMappingUpdateHistoryEntrySummaryUpdateActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateHistoryEntrySummaryUpdateActionEnum(val string) (UpdateHistoryEntrySummaryUpdateActionEnum, bool) {
+	mappingUpdateHistoryEntrySummaryUpdateActionEnumIgnoreCase := make(map[string]UpdateHistoryEntrySummaryUpdateActionEnum)
+	for k, v := range mappingUpdateHistoryEntrySummaryUpdateActionEnum {
+		mappingUpdateHistoryEntrySummaryUpdateActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateHistoryEntrySummaryUpdateActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UpdateHistoryEntrySummaryUpdateTypeEnum Enum with underlying type: string
 type UpdateHistoryEntrySummaryUpdateTypeEnum string
 
@@ -139,6 +150,17 @@ func GetUpdateHistoryEntrySummaryUpdateTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingUpdateHistoryEntrySummaryUpdateTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateHistoryEntrySummaryUpdateTypeEnum(val string) (UpdateHistoryEntrySummaryUpdateTypeEnum, bool) {
+	mappingUpdateHistoryEntrySummaryUpdateTypeEnumIgnoreCase := make(map[string]UpdateHistoryEntrySummaryUpdateTypeEnum)
+	for k, v := range mappingUpdateHistoryEntrySummaryUpdateTypeEnum {
+		mappingUpdateHistoryEntrySummaryUpdateTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateHistoryEntrySummaryUpdateTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UpdateHistoryEntrySummaryLifecycleStateEnum Enum with underlying type: string
 type UpdateHistoryEntrySummaryLifecycleStateEnum string
 
@@ -171,4 +193,15 @@ func GetUpdateHistoryEntrySummaryLifecycleStateEnumStringValues() []string {
 		"SUCCEEDED",
 		"FAILED",
 	}
+}
+
+// GetMappingUpdateHistoryEntrySummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateHistoryEntrySummaryLifecycleStateEnum(val string) (UpdateHistoryEntrySummaryLifecycleStateEnum, bool) {
+	mappingUpdateHistoryEntrySummaryLifecycleStateEnumIgnoreCase := make(map[string]UpdateHistoryEntrySummaryLifecycleStateEnum)
+	for k, v := range mappingUpdateHistoryEntrySummaryLifecycleStateEnum {
+		mappingUpdateHistoryEntrySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateHistoryEntrySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

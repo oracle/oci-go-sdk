@@ -14,7 +14,7 @@ package sch
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -143,4 +143,15 @@ func GetTargetDetailsKindEnumStringValues() []string {
 		"objectStorage",
 		"streaming",
 	}
+}
+
+// GetMappingTargetDetailsKindEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTargetDetailsKindEnum(val string) (TargetDetailsKindEnum, bool) {
+	mappingTargetDetailsKindEnumIgnoreCase := make(map[string]TargetDetailsKindEnum)
+	for k, v := range mappingTargetDetailsKindEnum {
+		mappingTargetDetailsKindEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTargetDetailsKindEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

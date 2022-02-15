@@ -11,7 +11,7 @@ package rover
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -103,13 +103,13 @@ func (m CreateRoverClusterDetails) String() string {
 func (m CreateRoverClusterDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingEnclosureTypeEnum[string(m.EnclosureType)]; !ok && m.EnclosureType != "" {
+	if _, ok := GetMappingEnclosureTypeEnum(string(m.EnclosureType)); !ok && m.EnclosureType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EnclosureType: %s. Supported values are: %s.", m.EnclosureType, strings.Join(GetEnclosureTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateRoverClusterDetailsShippingPreferenceEnum[string(m.ShippingPreference)]; !ok && m.ShippingPreference != "" {
+	if _, ok := GetMappingCreateRoverClusterDetailsShippingPreferenceEnum(string(m.ShippingPreference)); !ok && m.ShippingPreference != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShippingPreference: %s. Supported values are: %s.", m.ShippingPreference, strings.Join(GetCreateRoverClusterDetailsShippingPreferenceEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -147,4 +147,15 @@ func GetCreateRoverClusterDetailsShippingPreferenceEnumStringValues() []string {
 		"ORACLE_SHIPPED",
 		"CUSTOMER_PICKUP",
 	}
+}
+
+// GetMappingCreateRoverClusterDetailsShippingPreferenceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateRoverClusterDetailsShippingPreferenceEnum(val string) (CreateRoverClusterDetailsShippingPreferenceEnum, bool) {
+	mappingCreateRoverClusterDetailsShippingPreferenceEnumIgnoreCase := make(map[string]CreateRoverClusterDetailsShippingPreferenceEnum)
+	for k, v := range mappingCreateRoverClusterDetailsShippingPreferenceEnum {
+		mappingCreateRoverClusterDetailsShippingPreferenceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateRoverClusterDetailsShippingPreferenceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package databasemigration
 
+import (
+	"strings"
+)
+
 // MigrationLifecycleStatesEnum Enum with underlying type: string
 type MigrationLifecycleStatesEnum string
 
@@ -71,4 +75,15 @@ func GetMigrationLifecycleStatesEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingMigrationLifecycleStatesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMigrationLifecycleStatesEnum(val string) (MigrationLifecycleStatesEnum, bool) {
+	mappingMigrationLifecycleStatesEnumIgnoreCase := make(map[string]MigrationLifecycleStatesEnum)
+	for k, v := range mappingMigrationLifecycleStatesEnum {
+		mappingMigrationLifecycleStatesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMigrationLifecycleStatesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

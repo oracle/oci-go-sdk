@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -94,7 +94,7 @@ func (m CreateLogAnalyticsObjectCollectionRuleDetails) String() string {
 func (m CreateLogAnalyticsObjectCollectionRuleDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingObjectCollectionRuleCollectionTypesEnum[string(m.CollectionType)]; !ok && m.CollectionType != "" {
+	if _, ok := GetMappingObjectCollectionRuleCollectionTypesEnum(string(m.CollectionType)); !ok && m.CollectionType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CollectionType: %s. Supported values are: %s.", m.CollectionType, strings.Join(GetObjectCollectionRuleCollectionTypesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

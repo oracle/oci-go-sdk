@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // ExadataTypeEnum Enum with underlying type: string
 type ExadataTypeEnum string
 
@@ -43,4 +47,15 @@ func GetExadataTypeEnumStringValues() []string {
 		"EXACS",
 		"EXACC",
 	}
+}
+
+// GetMappingExadataTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExadataTypeEnum(val string) (ExadataTypeEnum, bool) {
+	mappingExadataTypeEnumIgnoreCase := make(map[string]ExadataTypeEnum)
+	for k, v := range mappingExadataTypeEnum {
+		mappingExadataTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExadataTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

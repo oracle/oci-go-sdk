@@ -6,7 +6,7 @@ package computeinstanceagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -89,13 +89,13 @@ func (request ListInstanceAgentCommandExecutionsRequest) RetryPolicy() *common.R
 // Not recommended for calling this function directly
 func (request ListInstanceAgentCommandExecutionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListInstanceAgentCommandExecutionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListInstanceAgentCommandExecutionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListInstanceAgentCommandExecutionsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListInstanceAgentCommandExecutionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListInstanceAgentCommandExecutionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListInstanceAgentCommandExecutionsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingInstanceAgentCommandExecutionSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingInstanceAgentCommandExecutionSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetInstanceAgentCommandExecutionSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -163,6 +163,17 @@ func GetListInstanceAgentCommandExecutionsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListInstanceAgentCommandExecutionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListInstanceAgentCommandExecutionsSortByEnum(val string) (ListInstanceAgentCommandExecutionsSortByEnum, bool) {
+	mappingListInstanceAgentCommandExecutionsSortByEnumIgnoreCase := make(map[string]ListInstanceAgentCommandExecutionsSortByEnum)
+	for k, v := range mappingListInstanceAgentCommandExecutionsSortByEnum {
+		mappingListInstanceAgentCommandExecutionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListInstanceAgentCommandExecutionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListInstanceAgentCommandExecutionsSortOrderEnum Enum with underlying type: string
 type ListInstanceAgentCommandExecutionsSortOrderEnum string
 
@@ -192,4 +203,15 @@ func GetListInstanceAgentCommandExecutionsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListInstanceAgentCommandExecutionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListInstanceAgentCommandExecutionsSortOrderEnum(val string) (ListInstanceAgentCommandExecutionsSortOrderEnum, bool) {
+	mappingListInstanceAgentCommandExecutionsSortOrderEnumIgnoreCase := make(map[string]ListInstanceAgentCommandExecutionsSortOrderEnum)
+	for k, v := range mappingListInstanceAgentCommandExecutionsSortOrderEnum {
+		mappingListInstanceAgentCommandExecutionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListInstanceAgentCommandExecutionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

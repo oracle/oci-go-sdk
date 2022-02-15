@@ -11,6 +11,10 @@
 
 package databasemanagement
 
+import (
+	"strings"
+)
+
 // SqlTuningTaskStatusTypesEnum Enum with underlying type: string
 type SqlTuningTaskStatusTypesEnum string
 
@@ -49,4 +53,15 @@ func GetSqlTuningTaskStatusTypesEnumStringValues() []string {
 		"INTERRUPTED",
 		"ERROR",
 	}
+}
+
+// GetMappingSqlTuningTaskStatusTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSqlTuningTaskStatusTypesEnum(val string) (SqlTuningTaskStatusTypesEnum, bool) {
+	mappingSqlTuningTaskStatusTypesEnumIgnoreCase := make(map[string]SqlTuningTaskStatusTypesEnum)
+	for k, v := range mappingSqlTuningTaskStatusTypesEnum {
+		mappingSqlTuningTaskStatusTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSqlTuningTaskStatusTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package managementdashboard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -91,7 +91,7 @@ func (m ManagementSavedSearchForImportDetails) String() string {
 // Not recommended for calling this function directly
 func (m ManagementSavedSearchForImportDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSavedSearchTypesEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingSavedSearchTypesEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetSavedSearchTypesEnumStringValues(), ",")))
 	}
 

@@ -6,7 +6,7 @@ package networkloadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -83,10 +83,10 @@ func (request ListBackendSetsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListBackendSetsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListBackendSetsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListBackendSetsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListBackendSetsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBackendSetsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListBackendSetsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListBackendSetsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -154,6 +154,17 @@ func GetListBackendSetsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListBackendSetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBackendSetsSortOrderEnum(val string) (ListBackendSetsSortOrderEnum, bool) {
+	mappingListBackendSetsSortOrderEnumIgnoreCase := make(map[string]ListBackendSetsSortOrderEnum)
+	for k, v := range mappingListBackendSetsSortOrderEnum {
+		mappingListBackendSetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBackendSetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListBackendSetsSortByEnum Enum with underlying type: string
 type ListBackendSetsSortByEnum string
 
@@ -183,4 +194,15 @@ func GetListBackendSetsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListBackendSetsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBackendSetsSortByEnum(val string) (ListBackendSetsSortByEnum, bool) {
+	mappingListBackendSetsSortByEnumIgnoreCase := make(map[string]ListBackendSetsSortByEnum)
+	for k, v := range mappingListBackendSetsSortByEnum {
+		mappingListBackendSetsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBackendSetsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

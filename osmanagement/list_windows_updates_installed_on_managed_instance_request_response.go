@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -79,10 +79,10 @@ func (request ListWindowsUpdatesInstalledOnManagedInstanceRequest) RetryPolicy()
 // Not recommended for calling this function directly
 func (request ListWindowsUpdatesInstalledOnManagedInstanceRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListWindowsUpdatesInstalledOnManagedInstanceSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListWindowsUpdatesInstalledOnManagedInstanceSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListWindowsUpdatesInstalledOnManagedInstanceSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListWindowsUpdatesInstalledOnManagedInstanceSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListWindowsUpdatesInstalledOnManagedInstanceSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListWindowsUpdatesInstalledOnManagedInstanceSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -151,6 +151,17 @@ func GetListWindowsUpdatesInstalledOnManagedInstanceSortOrderEnumStringValues() 
 	}
 }
 
+// GetMappingListWindowsUpdatesInstalledOnManagedInstanceSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWindowsUpdatesInstalledOnManagedInstanceSortOrderEnum(val string) (ListWindowsUpdatesInstalledOnManagedInstanceSortOrderEnum, bool) {
+	mappingListWindowsUpdatesInstalledOnManagedInstanceSortOrderEnumIgnoreCase := make(map[string]ListWindowsUpdatesInstalledOnManagedInstanceSortOrderEnum)
+	for k, v := range mappingListWindowsUpdatesInstalledOnManagedInstanceSortOrderEnum {
+		mappingListWindowsUpdatesInstalledOnManagedInstanceSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWindowsUpdatesInstalledOnManagedInstanceSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListWindowsUpdatesInstalledOnManagedInstanceSortByEnum Enum with underlying type: string
 type ListWindowsUpdatesInstalledOnManagedInstanceSortByEnum string
 
@@ -180,4 +191,15 @@ func GetListWindowsUpdatesInstalledOnManagedInstanceSortByEnumStringValues() []s
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListWindowsUpdatesInstalledOnManagedInstanceSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWindowsUpdatesInstalledOnManagedInstanceSortByEnum(val string) (ListWindowsUpdatesInstalledOnManagedInstanceSortByEnum, bool) {
+	mappingListWindowsUpdatesInstalledOnManagedInstanceSortByEnumIgnoreCase := make(map[string]ListWindowsUpdatesInstalledOnManagedInstanceSortByEnum)
+	for k, v := range mappingListWindowsUpdatesInstalledOnManagedInstanceSortByEnum {
+		mappingListWindowsUpdatesInstalledOnManagedInstanceSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWindowsUpdatesInstalledOnManagedInstanceSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

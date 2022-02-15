@@ -9,6 +9,10 @@
 
 package dataflow
 
+import (
+	"strings"
+)
+
 // WorkRequestOperationEnum Enum with underlying type: string
 type WorkRequestOperationEnum string
 
@@ -44,4 +48,15 @@ func GetWorkRequestOperationEnumStringValues() []string {
 		"DELETE_PRIVATE_ENDPOINT",
 		"MOVE_PRIVATE_ENDPOINT",
 	}
+}
+
+// GetMappingWorkRequestOperationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestOperationEnum(val string) (WorkRequestOperationEnum, bool) {
+	mappingWorkRequestOperationEnumIgnoreCase := make(map[string]WorkRequestOperationEnum)
+	for k, v := range mappingWorkRequestOperationEnum {
+		mappingWorkRequestOperationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestOperationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

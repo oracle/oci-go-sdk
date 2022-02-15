@@ -10,6 +10,10 @@
 
 package osmanagement
 
+import (
+	"strings"
+)
+
 // ContentAvailabilityEnum Enum with underlying type: string
 type ContentAvailabilityEnum string
 
@@ -48,4 +52,15 @@ func GetContentAvailabilityEnumStringValues() []string {
 		"AVAILABLE_ON_INSTANCE_AND_SERVICE",
 		"AVAILABLE_ON_INSTANCE_UPLOAD_IN_PROGRESS",
 	}
+}
+
+// GetMappingContentAvailabilityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingContentAvailabilityEnum(val string) (ContentAvailabilityEnum, bool) {
+	mappingContentAvailabilityEnumIgnoreCase := make(map[string]ContentAvailabilityEnum)
+	for k, v := range mappingContentAvailabilityEnum {
+		mappingContentAvailabilityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingContentAvailabilityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -41,7 +41,7 @@ func (m VaultReplicaSummary) String() string {
 func (m VaultReplicaSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingVaultReplicaSummaryStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingVaultReplicaSummaryStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetVaultReplicaSummaryStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -85,4 +85,15 @@ func GetVaultReplicaSummaryStatusEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingVaultReplicaSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVaultReplicaSummaryStatusEnum(val string) (VaultReplicaSummaryStatusEnum, bool) {
+	mappingVaultReplicaSummaryStatusEnumIgnoreCase := make(map[string]VaultReplicaSummaryStatusEnum)
+	for k, v := range mappingVaultReplicaSummaryStatusEnum {
+		mappingVaultReplicaSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVaultReplicaSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

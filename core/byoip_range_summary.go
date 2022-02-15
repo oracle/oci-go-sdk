@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -66,10 +66,10 @@ func (m ByoipRangeSummary) String() string {
 func (m ByoipRangeSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingByoipRangeLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingByoipRangeLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetByoipRangeLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingByoipRangeLifecycleDetailsEnum[string(m.LifecycleDetails)]; !ok && m.LifecycleDetails != "" {
+	if _, ok := GetMappingByoipRangeLifecycleDetailsEnum(string(m.LifecycleDetails)); !ok && m.LifecycleDetails != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleDetails: %s. Supported values are: %s.", m.LifecycleDetails, strings.Join(GetByoipRangeLifecycleDetailsEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

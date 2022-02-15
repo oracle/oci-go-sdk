@@ -6,7 +6,7 @@ package optimizer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -83,10 +83,10 @@ func (request ListProfileLevelsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListProfileLevelsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListProfileLevelsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListProfileLevelsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListProfileLevelsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListProfileLevelsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListProfileLevelsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListProfileLevelsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -158,6 +158,17 @@ func GetListProfileLevelsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListProfileLevelsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProfileLevelsSortOrderEnum(val string) (ListProfileLevelsSortOrderEnum, bool) {
+	mappingListProfileLevelsSortOrderEnumIgnoreCase := make(map[string]ListProfileLevelsSortOrderEnum)
+	for k, v := range mappingListProfileLevelsSortOrderEnum {
+		mappingListProfileLevelsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProfileLevelsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListProfileLevelsSortByEnum Enum with underlying type: string
 type ListProfileLevelsSortByEnum string
 
@@ -187,4 +198,15 @@ func GetListProfileLevelsSortByEnumStringValues() []string {
 		"NAME",
 		"TIMECREATED",
 	}
+}
+
+// GetMappingListProfileLevelsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProfileLevelsSortByEnum(val string) (ListProfileLevelsSortByEnum, bool) {
+	mappingListProfileLevelsSortByEnumIgnoreCase := make(map[string]ListProfileLevelsSortByEnum)
+	for k, v := range mappingListProfileLevelsSortByEnum {
+		mappingListProfileLevelsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProfileLevelsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

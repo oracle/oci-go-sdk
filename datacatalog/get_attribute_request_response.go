@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -76,7 +76,7 @@ func (request GetAttributeRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetAttributeRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetAttributeFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetAttributeFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetAttributeFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -220,4 +220,15 @@ func GetGetAttributeFieldsEnumStringValues() []string {
 		"externalParentAttributeKey",
 		"typeKey",
 	}
+}
+
+// GetMappingGetAttributeFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetAttributeFieldsEnum(val string) (GetAttributeFieldsEnum, bool) {
+	mappingGetAttributeFieldsEnumIgnoreCase := make(map[string]GetAttributeFieldsEnum)
+	for k, v := range mappingGetAttributeFieldsEnum {
+		mappingGetAttributeFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetAttributeFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

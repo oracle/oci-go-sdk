@@ -6,7 +6,7 @@ package healthchecks
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -80,10 +80,10 @@ func (request ListHttpMonitorsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListHttpMonitorsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListHttpMonitorsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListHttpMonitorsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListHttpMonitorsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListHttpMonitorsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListHttpMonitorsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListHttpMonitorsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -156,6 +156,17 @@ func GetListHttpMonitorsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListHttpMonitorsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHttpMonitorsSortByEnum(val string) (ListHttpMonitorsSortByEnum, bool) {
+	mappingListHttpMonitorsSortByEnumIgnoreCase := make(map[string]ListHttpMonitorsSortByEnum)
+	for k, v := range mappingListHttpMonitorsSortByEnum {
+		mappingListHttpMonitorsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHttpMonitorsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListHttpMonitorsSortOrderEnum Enum with underlying type: string
 type ListHttpMonitorsSortOrderEnum string
 
@@ -185,4 +196,15 @@ func GetListHttpMonitorsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListHttpMonitorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHttpMonitorsSortOrderEnum(val string) (ListHttpMonitorsSortOrderEnum, bool) {
+	mappingListHttpMonitorsSortOrderEnumIgnoreCase := make(map[string]ListHttpMonitorsSortOrderEnum)
+	for k, v := range mappingListHttpMonitorsSortOrderEnum {
+		mappingListHttpMonitorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHttpMonitorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,6 +11,10 @@
 
 package databasemanagement
 
+import (
+	"strings"
+)
+
 // WorkloadTypeEnum Enum with underlying type: string
 type WorkloadTypeEnum string
 
@@ -46,4 +50,15 @@ func GetWorkloadTypeEnumStringValues() []string {
 		"AJD",
 		"APEX",
 	}
+}
+
+// GetMappingWorkloadTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkloadTypeEnum(val string) (WorkloadTypeEnum, bool) {
+	mappingWorkloadTypeEnumIgnoreCase := make(map[string]WorkloadTypeEnum)
+	for k, v := range mappingWorkloadTypeEnum {
+		mappingWorkloadTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkloadTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

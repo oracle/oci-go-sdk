@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -36,7 +36,7 @@ func (m DataFormat) String() string {
 func (m DataFormat) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDataFormatTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingDataFormatTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetDataFormatTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -116,4 +116,15 @@ func GetDataFormatTypeEnumStringValues() []string {
 		"PARQUET",
 		"AVRO",
 	}
+}
+
+// GetMappingDataFormatTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataFormatTypeEnum(val string) (DataFormatTypeEnum, bool) {
+	mappingDataFormatTypeEnumIgnoreCase := make(map[string]DataFormatTypeEnum)
+	for k, v := range mappingDataFormatTypeEnum {
+		mappingDataFormatTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataFormatTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

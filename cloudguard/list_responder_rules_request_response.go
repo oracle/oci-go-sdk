@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -78,13 +78,13 @@ func (request ListResponderRulesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListResponderRulesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListResponderRulesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListResponderRulesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListResponderRulesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListResponderRulesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListResponderRulesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListResponderRulesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListResponderRulesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListResponderRulesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListResponderRulesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -167,6 +167,17 @@ func GetListResponderRulesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListResponderRulesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResponderRulesLifecycleStateEnum(val string) (ListResponderRulesLifecycleStateEnum, bool) {
+	mappingListResponderRulesLifecycleStateEnumIgnoreCase := make(map[string]ListResponderRulesLifecycleStateEnum)
+	for k, v := range mappingListResponderRulesLifecycleStateEnum {
+		mappingListResponderRulesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResponderRulesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListResponderRulesSortOrderEnum Enum with underlying type: string
 type ListResponderRulesSortOrderEnum string
 
@@ -198,6 +209,17 @@ func GetListResponderRulesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListResponderRulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResponderRulesSortOrderEnum(val string) (ListResponderRulesSortOrderEnum, bool) {
+	mappingListResponderRulesSortOrderEnumIgnoreCase := make(map[string]ListResponderRulesSortOrderEnum)
+	for k, v := range mappingListResponderRulesSortOrderEnum {
+		mappingListResponderRulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResponderRulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListResponderRulesSortByEnum Enum with underlying type: string
 type ListResponderRulesSortByEnum string
 
@@ -227,4 +249,15 @@ func GetListResponderRulesSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListResponderRulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResponderRulesSortByEnum(val string) (ListResponderRulesSortByEnum, bool) {
+	mappingListResponderRulesSortByEnumIgnoreCase := make(map[string]ListResponderRulesSortByEnum)
+	for k, v := range mappingListResponderRulesSortByEnum {
+		mappingListResponderRulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResponderRulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

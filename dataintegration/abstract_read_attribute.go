@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -115,4 +115,15 @@ func GetAbstractReadAttributeModelTypeEnumStringValues() []string {
 		"ORACLE_READ_ATTRIBUTE",
 		"BICC_READ_ATTRIBUTE",
 	}
+}
+
+// GetMappingAbstractReadAttributeModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAbstractReadAttributeModelTypeEnum(val string) (AbstractReadAttributeModelTypeEnum, bool) {
+	mappingAbstractReadAttributeModelTypeEnumIgnoreCase := make(map[string]AbstractReadAttributeModelTypeEnum)
+	for k, v := range mappingAbstractReadAttributeModelTypeEnum {
+		mappingAbstractReadAttributeModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAbstractReadAttributeModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

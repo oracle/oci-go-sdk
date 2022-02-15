@@ -6,7 +6,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -87,14 +87,14 @@ func (request ListHttpRedirectsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListHttpRedirectsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListHttpRedirectsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListHttpRedirectsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListHttpRedirectsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListHttpRedirectsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListHttpRedirectsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListHttpRedirectsSortByEnumStringValues(), ",")))
 	}
 	for _, val := range request.LifecycleState {
-		if _, ok := mappingLifecycleStatesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingLifecycleStatesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", val, strings.Join(GetLifecycleStatesEnumStringValues(), ",")))
 		}
 	}
@@ -161,6 +161,17 @@ func GetListHttpRedirectsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListHttpRedirectsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHttpRedirectsSortOrderEnum(val string) (ListHttpRedirectsSortOrderEnum, bool) {
+	mappingListHttpRedirectsSortOrderEnumIgnoreCase := make(map[string]ListHttpRedirectsSortOrderEnum)
+	for k, v := range mappingListHttpRedirectsSortOrderEnum {
+		mappingListHttpRedirectsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHttpRedirectsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListHttpRedirectsSortByEnum Enum with underlying type: string
 type ListHttpRedirectsSortByEnum string
 
@@ -196,4 +207,15 @@ func GetListHttpRedirectsSortByEnumStringValues() []string {
 		"target",
 		"displayName",
 	}
+}
+
+// GetMappingListHttpRedirectsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHttpRedirectsSortByEnum(val string) (ListHttpRedirectsSortByEnum, bool) {
+	mappingListHttpRedirectsSortByEnumIgnoreCase := make(map[string]ListHttpRedirectsSortByEnum)
+	for k, v := range mappingListHttpRedirectsSortByEnum {
+		mappingListHttpRedirectsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHttpRedirectsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

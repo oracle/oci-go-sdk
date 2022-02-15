@@ -11,7 +11,7 @@ package databasemigration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -48,10 +48,10 @@ func (m PhaseStatus) String() string {
 // Not recommended for calling this function directly
 func (m PhaseStatus) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingOdmsJobPhasesEnum[string(m.Name)]; !ok && m.Name != "" {
+	if _, ok := GetMappingOdmsJobPhasesEnum(string(m.Name)); !ok && m.Name != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Name: %s. Supported values are: %s.", m.Name, strings.Join(GetOdmsJobPhasesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingJobPhaseStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingJobPhaseStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetJobPhaseStatusEnumStringValues(), ",")))
 	}
 

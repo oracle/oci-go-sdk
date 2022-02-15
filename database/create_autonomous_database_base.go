@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -466,13 +466,13 @@ func (m createautonomousdatabasebase) String() string {
 func (m createautonomousdatabasebase) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateAutonomousDatabaseBaseDbWorkloadEnum[string(m.DbWorkload)]; !ok && m.DbWorkload != "" {
+	if _, ok := GetMappingCreateAutonomousDatabaseBaseDbWorkloadEnum(string(m.DbWorkload)); !ok && m.DbWorkload != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DbWorkload: %s. Supported values are: %s.", m.DbWorkload, strings.Join(GetCreateAutonomousDatabaseBaseDbWorkloadEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateAutonomousDatabaseBaseLicenseModelEnum[string(m.LicenseModel)]; !ok && m.LicenseModel != "" {
+	if _, ok := GetMappingCreateAutonomousDatabaseBaseLicenseModelEnum(string(m.LicenseModel)); !ok && m.LicenseModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LicenseModel: %s. Supported values are: %s.", m.LicenseModel, strings.Join(GetCreateAutonomousDatabaseBaseLicenseModelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnum[string(m.AutonomousMaintenanceScheduleType)]; !ok && m.AutonomousMaintenanceScheduleType != "" {
+	if _, ok := GetMappingCreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnum(string(m.AutonomousMaintenanceScheduleType)); !ok && m.AutonomousMaintenanceScheduleType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AutonomousMaintenanceScheduleType: %s. Supported values are: %s.", m.AutonomousMaintenanceScheduleType, strings.Join(GetCreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -518,6 +518,17 @@ func GetCreateAutonomousDatabaseBaseDbWorkloadEnumStringValues() []string {
 	}
 }
 
+// GetMappingCreateAutonomousDatabaseBaseDbWorkloadEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateAutonomousDatabaseBaseDbWorkloadEnum(val string) (CreateAutonomousDatabaseBaseDbWorkloadEnum, bool) {
+	mappingCreateAutonomousDatabaseBaseDbWorkloadEnumIgnoreCase := make(map[string]CreateAutonomousDatabaseBaseDbWorkloadEnum)
+	for k, v := range mappingCreateAutonomousDatabaseBaseDbWorkloadEnum {
+		mappingCreateAutonomousDatabaseBaseDbWorkloadEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateAutonomousDatabaseBaseDbWorkloadEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CreateAutonomousDatabaseBaseLicenseModelEnum Enum with underlying type: string
 type CreateAutonomousDatabaseBaseLicenseModelEnum string
 
@@ -549,6 +560,17 @@ func GetCreateAutonomousDatabaseBaseLicenseModelEnumStringValues() []string {
 	}
 }
 
+// GetMappingCreateAutonomousDatabaseBaseLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateAutonomousDatabaseBaseLicenseModelEnum(val string) (CreateAutonomousDatabaseBaseLicenseModelEnum, bool) {
+	mappingCreateAutonomousDatabaseBaseLicenseModelEnumIgnoreCase := make(map[string]CreateAutonomousDatabaseBaseLicenseModelEnum)
+	for k, v := range mappingCreateAutonomousDatabaseBaseLicenseModelEnum {
+		mappingCreateAutonomousDatabaseBaseLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateAutonomousDatabaseBaseLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnum Enum with underlying type: string
 type CreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnum string
 
@@ -578,6 +600,17 @@ func GetCreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnumStringV
 		"EARLY",
 		"REGULAR",
 	}
+}
+
+// GetMappingCreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnum(val string) (CreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnum, bool) {
+	mappingCreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnumIgnoreCase := make(map[string]CreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnum)
+	for k, v := range mappingCreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnum {
+		mappingCreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // CreateAutonomousDatabaseBaseSourceEnum Enum with underlying type: string
@@ -621,4 +654,15 @@ func GetCreateAutonomousDatabaseBaseSourceEnumStringValues() []string {
 		"CLONE_TO_REFRESHABLE",
 		"CROSS_REGION_DATAGUARD",
 	}
+}
+
+// GetMappingCreateAutonomousDatabaseBaseSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateAutonomousDatabaseBaseSourceEnum(val string) (CreateAutonomousDatabaseBaseSourceEnum, bool) {
+	mappingCreateAutonomousDatabaseBaseSourceEnumIgnoreCase := make(map[string]CreateAutonomousDatabaseBaseSourceEnum)
+	for k, v := range mappingCreateAutonomousDatabaseBaseSourceEnum {
+		mappingCreateAutonomousDatabaseBaseSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateAutonomousDatabaseBaseSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

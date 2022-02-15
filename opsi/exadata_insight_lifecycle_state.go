@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // ExadataInsightLifecycleStateEnum Enum with underlying type: string
 type ExadataInsightLifecycleStateEnum string
 
@@ -52,4 +56,15 @@ func GetExadataInsightLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingExadataInsightLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExadataInsightLifecycleStateEnum(val string) (ExadataInsightLifecycleStateEnum, bool) {
+	mappingExadataInsightLifecycleStateEnumIgnoreCase := make(map[string]ExadataInsightLifecycleStateEnum)
+	for k, v := range mappingExadataInsightLifecycleStateEnum {
+		mappingExadataInsightLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExadataInsightLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -83,13 +83,13 @@ func (request ListUploadsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListUploadsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListUploadsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListUploadsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListUploadsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUploadsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListUploadsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListUploadsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUploadsWarningsFilterEnum[string(request.WarningsFilter)]; !ok && request.WarningsFilter != "" {
+	if _, ok := GetMappingListUploadsWarningsFilterEnum(string(request.WarningsFilter)); !ok && request.WarningsFilter != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for WarningsFilter: %s. Supported values are: %s.", request.WarningsFilter, strings.Join(GetListUploadsWarningsFilterEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -159,6 +159,17 @@ func GetListUploadsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListUploadsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUploadsSortOrderEnum(val string) (ListUploadsSortOrderEnum, bool) {
+	mappingListUploadsSortOrderEnumIgnoreCase := make(map[string]ListUploadsSortOrderEnum)
+	for k, v := range mappingListUploadsSortOrderEnum {
+		mappingListUploadsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUploadsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListUploadsSortByEnum Enum with underlying type: string
 type ListUploadsSortByEnum string
 
@@ -193,6 +204,17 @@ func GetListUploadsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListUploadsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUploadsSortByEnum(val string) (ListUploadsSortByEnum, bool) {
+	mappingListUploadsSortByEnumIgnoreCase := make(map[string]ListUploadsSortByEnum)
+	for k, v := range mappingListUploadsSortByEnum {
+		mappingListUploadsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUploadsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListUploadsWarningsFilterEnum Enum with underlying type: string
 type ListUploadsWarningsFilterEnum string
 
@@ -225,4 +247,15 @@ func GetListUploadsWarningsFilterEnumStringValues() []string {
 		"WITHOUT_WARNINGS",
 		"ALL",
 	}
+}
+
+// GetMappingListUploadsWarningsFilterEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUploadsWarningsFilterEnum(val string) (ListUploadsWarningsFilterEnum, bool) {
+	mappingListUploadsWarningsFilterEnumIgnoreCase := make(map[string]ListUploadsWarningsFilterEnum)
+	for k, v := range mappingListUploadsWarningsFilterEnum {
+		mappingListUploadsWarningsFilterEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUploadsWarningsFilterEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

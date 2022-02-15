@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -73,27 +73,27 @@ func (m FastConnectProviderService) String() string {
 // Not recommended for calling this function directly
 func (m FastConnectProviderService) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingFastConnectProviderServicePrivatePeeringBgpManagementEnum[string(m.PrivatePeeringBgpManagement)]; !ok && m.PrivatePeeringBgpManagement != "" {
+	if _, ok := GetMappingFastConnectProviderServicePrivatePeeringBgpManagementEnum(string(m.PrivatePeeringBgpManagement)); !ok && m.PrivatePeeringBgpManagement != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PrivatePeeringBgpManagement: %s. Supported values are: %s.", m.PrivatePeeringBgpManagement, strings.Join(GetFastConnectProviderServicePrivatePeeringBgpManagementEnumStringValues(), ",")))
 	}
-	if _, ok := mappingFastConnectProviderServicePublicPeeringBgpManagementEnum[string(m.PublicPeeringBgpManagement)]; !ok && m.PublicPeeringBgpManagement != "" {
+	if _, ok := GetMappingFastConnectProviderServicePublicPeeringBgpManagementEnum(string(m.PublicPeeringBgpManagement)); !ok && m.PublicPeeringBgpManagement != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PublicPeeringBgpManagement: %s. Supported values are: %s.", m.PublicPeeringBgpManagement, strings.Join(GetFastConnectProviderServicePublicPeeringBgpManagementEnumStringValues(), ",")))
 	}
-	if _, ok := mappingFastConnectProviderServiceCustomerAsnManagementEnum[string(m.CustomerAsnManagement)]; !ok && m.CustomerAsnManagement != "" {
+	if _, ok := GetMappingFastConnectProviderServiceCustomerAsnManagementEnum(string(m.CustomerAsnManagement)); !ok && m.CustomerAsnManagement != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CustomerAsnManagement: %s. Supported values are: %s.", m.CustomerAsnManagement, strings.Join(GetFastConnectProviderServiceCustomerAsnManagementEnumStringValues(), ",")))
 	}
-	if _, ok := mappingFastConnectProviderServiceProviderServiceKeyManagementEnum[string(m.ProviderServiceKeyManagement)]; !ok && m.ProviderServiceKeyManagement != "" {
+	if _, ok := GetMappingFastConnectProviderServiceProviderServiceKeyManagementEnum(string(m.ProviderServiceKeyManagement)); !ok && m.ProviderServiceKeyManagement != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProviderServiceKeyManagement: %s. Supported values are: %s.", m.ProviderServiceKeyManagement, strings.Join(GetFastConnectProviderServiceProviderServiceKeyManagementEnumStringValues(), ",")))
 	}
-	if _, ok := mappingFastConnectProviderServiceBandwithShapeManagementEnum[string(m.BandwithShapeManagement)]; !ok && m.BandwithShapeManagement != "" {
+	if _, ok := GetMappingFastConnectProviderServiceBandwithShapeManagementEnum(string(m.BandwithShapeManagement)); !ok && m.BandwithShapeManagement != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BandwithShapeManagement: %s. Supported values are: %s.", m.BandwithShapeManagement, strings.Join(GetFastConnectProviderServiceBandwithShapeManagementEnumStringValues(), ",")))
 	}
-	if _, ok := mappingFastConnectProviderServiceTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingFastConnectProviderServiceTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetFastConnectProviderServiceTypeEnumStringValues(), ",")))
 	}
 
 	for _, val := range m.SupportedVirtualCircuitTypes {
-		if _, ok := mappingFastConnectProviderServiceSupportedVirtualCircuitTypesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingFastConnectProviderServiceSupportedVirtualCircuitTypesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SupportedVirtualCircuitTypes: %s. Supported values are: %s.", val, strings.Join(GetFastConnectProviderServiceSupportedVirtualCircuitTypesEnumStringValues(), ",")))
 		}
 	}
@@ -138,6 +138,17 @@ func GetFastConnectProviderServicePrivatePeeringBgpManagementEnumStringValues() 
 	}
 }
 
+// GetMappingFastConnectProviderServicePrivatePeeringBgpManagementEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFastConnectProviderServicePrivatePeeringBgpManagementEnum(val string) (FastConnectProviderServicePrivatePeeringBgpManagementEnum, bool) {
+	mappingFastConnectProviderServicePrivatePeeringBgpManagementEnumIgnoreCase := make(map[string]FastConnectProviderServicePrivatePeeringBgpManagementEnum)
+	for k, v := range mappingFastConnectProviderServicePrivatePeeringBgpManagementEnum {
+		mappingFastConnectProviderServicePrivatePeeringBgpManagementEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFastConnectProviderServicePrivatePeeringBgpManagementEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // FastConnectProviderServicePublicPeeringBgpManagementEnum Enum with underlying type: string
 type FastConnectProviderServicePublicPeeringBgpManagementEnum string
 
@@ -172,6 +183,17 @@ func GetFastConnectProviderServicePublicPeeringBgpManagementEnumStringValues() [
 	}
 }
 
+// GetMappingFastConnectProviderServicePublicPeeringBgpManagementEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFastConnectProviderServicePublicPeeringBgpManagementEnum(val string) (FastConnectProviderServicePublicPeeringBgpManagementEnum, bool) {
+	mappingFastConnectProviderServicePublicPeeringBgpManagementEnumIgnoreCase := make(map[string]FastConnectProviderServicePublicPeeringBgpManagementEnum)
+	for k, v := range mappingFastConnectProviderServicePublicPeeringBgpManagementEnum {
+		mappingFastConnectProviderServicePublicPeeringBgpManagementEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFastConnectProviderServicePublicPeeringBgpManagementEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // FastConnectProviderServiceSupportedVirtualCircuitTypesEnum Enum with underlying type: string
 type FastConnectProviderServiceSupportedVirtualCircuitTypesEnum string
 
@@ -201,6 +223,17 @@ func GetFastConnectProviderServiceSupportedVirtualCircuitTypesEnumStringValues()
 		"PUBLIC",
 		"PRIVATE",
 	}
+}
+
+// GetMappingFastConnectProviderServiceSupportedVirtualCircuitTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFastConnectProviderServiceSupportedVirtualCircuitTypesEnum(val string) (FastConnectProviderServiceSupportedVirtualCircuitTypesEnum, bool) {
+	mappingFastConnectProviderServiceSupportedVirtualCircuitTypesEnumIgnoreCase := make(map[string]FastConnectProviderServiceSupportedVirtualCircuitTypesEnum)
+	for k, v := range mappingFastConnectProviderServiceSupportedVirtualCircuitTypesEnum {
+		mappingFastConnectProviderServiceSupportedVirtualCircuitTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFastConnectProviderServiceSupportedVirtualCircuitTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // FastConnectProviderServiceCustomerAsnManagementEnum Enum with underlying type: string
@@ -237,6 +270,17 @@ func GetFastConnectProviderServiceCustomerAsnManagementEnumStringValues() []stri
 	}
 }
 
+// GetMappingFastConnectProviderServiceCustomerAsnManagementEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFastConnectProviderServiceCustomerAsnManagementEnum(val string) (FastConnectProviderServiceCustomerAsnManagementEnum, bool) {
+	mappingFastConnectProviderServiceCustomerAsnManagementEnumIgnoreCase := make(map[string]FastConnectProviderServiceCustomerAsnManagementEnum)
+	for k, v := range mappingFastConnectProviderServiceCustomerAsnManagementEnum {
+		mappingFastConnectProviderServiceCustomerAsnManagementEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFastConnectProviderServiceCustomerAsnManagementEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // FastConnectProviderServiceProviderServiceKeyManagementEnum Enum with underlying type: string
 type FastConnectProviderServiceProviderServiceKeyManagementEnum string
 
@@ -269,6 +313,17 @@ func GetFastConnectProviderServiceProviderServiceKeyManagementEnumStringValues()
 		"PROVIDER_MANAGED",
 		"ORACLE_MANAGED",
 	}
+}
+
+// GetMappingFastConnectProviderServiceProviderServiceKeyManagementEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFastConnectProviderServiceProviderServiceKeyManagementEnum(val string) (FastConnectProviderServiceProviderServiceKeyManagementEnum, bool) {
+	mappingFastConnectProviderServiceProviderServiceKeyManagementEnumIgnoreCase := make(map[string]FastConnectProviderServiceProviderServiceKeyManagementEnum)
+	for k, v := range mappingFastConnectProviderServiceProviderServiceKeyManagementEnum {
+		mappingFastConnectProviderServiceProviderServiceKeyManagementEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFastConnectProviderServiceProviderServiceKeyManagementEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // FastConnectProviderServiceBandwithShapeManagementEnum Enum with underlying type: string
@@ -305,6 +360,17 @@ func GetFastConnectProviderServiceBandwithShapeManagementEnumStringValues() []st
 	}
 }
 
+// GetMappingFastConnectProviderServiceBandwithShapeManagementEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFastConnectProviderServiceBandwithShapeManagementEnum(val string) (FastConnectProviderServiceBandwithShapeManagementEnum, bool) {
+	mappingFastConnectProviderServiceBandwithShapeManagementEnumIgnoreCase := make(map[string]FastConnectProviderServiceBandwithShapeManagementEnum)
+	for k, v := range mappingFastConnectProviderServiceBandwithShapeManagementEnum {
+		mappingFastConnectProviderServiceBandwithShapeManagementEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFastConnectProviderServiceBandwithShapeManagementEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // FastConnectProviderServiceTypeEnum Enum with underlying type: string
 type FastConnectProviderServiceTypeEnum string
 
@@ -334,4 +400,15 @@ func GetFastConnectProviderServiceTypeEnumStringValues() []string {
 		"LAYER2",
 		"LAYER3",
 	}
+}
+
+// GetMappingFastConnectProviderServiceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFastConnectProviderServiceTypeEnum(val string) (FastConnectProviderServiceTypeEnum, bool) {
+	mappingFastConnectProviderServiceTypeEnumIgnoreCase := make(map[string]FastConnectProviderServiceTypeEnum)
+	for k, v := range mappingFastConnectProviderServiceTypeEnum {
+		mappingFastConnectProviderServiceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFastConnectProviderServiceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -68,7 +68,7 @@ func (request ListZoneTransferServersRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListZoneTransferServersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListZoneTransferServersScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingListZoneTransferServersScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetListZoneTransferServersScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -134,4 +134,15 @@ func GetListZoneTransferServersScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingListZoneTransferServersScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListZoneTransferServersScopeEnum(val string) (ListZoneTransferServersScopeEnum, bool) {
+	mappingListZoneTransferServersScopeEnumIgnoreCase := make(map[string]ListZoneTransferServersScopeEnum)
+	for k, v := range mappingListZoneTransferServersScopeEnum {
+		mappingListZoneTransferServersScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListZoneTransferServersScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

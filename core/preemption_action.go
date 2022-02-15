@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -105,4 +105,15 @@ func GetPreemptionActionTypeEnumStringValues() []string {
 	return []string{
 		"TERMINATE",
 	}
+}
+
+// GetMappingPreemptionActionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPreemptionActionTypeEnum(val string) (PreemptionActionTypeEnum, bool) {
+	mappingPreemptionActionTypeEnumIgnoreCase := make(map[string]PreemptionActionTypeEnum)
+	for k, v := range mappingPreemptionActionTypeEnum {
+		mappingPreemptionActionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPreemptionActionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

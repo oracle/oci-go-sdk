@@ -11,7 +11,7 @@ package osubbillingschedule
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -64,7 +64,7 @@ func (m BillingScheduleSummary) String() string {
 func (m BillingScheduleSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBillingScheduleSummaryInvoiceStatusEnum[string(m.InvoiceStatus)]; !ok && m.InvoiceStatus != "" {
+	if _, ok := GetMappingBillingScheduleSummaryInvoiceStatusEnum(string(m.InvoiceStatus)); !ok && m.InvoiceStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InvoiceStatus: %s. Supported values are: %s.", m.InvoiceStatus, strings.Join(GetBillingScheduleSummaryInvoiceStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -102,4 +102,15 @@ func GetBillingScheduleSummaryInvoiceStatusEnumStringValues() []string {
 		"INVOICED",
 		"NOT_INVOICED",
 	}
+}
+
+// GetMappingBillingScheduleSummaryInvoiceStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBillingScheduleSummaryInvoiceStatusEnum(val string) (BillingScheduleSummaryInvoiceStatusEnum, bool) {
+	mappingBillingScheduleSummaryInvoiceStatusEnumIgnoreCase := make(map[string]BillingScheduleSummaryInvoiceStatusEnum)
+	for k, v := range mappingBillingScheduleSummaryInvoiceStatusEnum {
+		mappingBillingScheduleSummaryInvoiceStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBillingScheduleSummaryInvoiceStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

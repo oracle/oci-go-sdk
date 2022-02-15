@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -52,7 +52,7 @@ func (m CreateBackupDetails) String() string {
 func (m CreateBackupDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateBackupDetailsBackupTypeEnum[string(m.BackupType)]; !ok && m.BackupType != "" {
+	if _, ok := GetMappingCreateBackupDetailsBackupTypeEnum(string(m.BackupType)); !ok && m.BackupType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BackupType: %s. Supported values are: %s.", m.BackupType, strings.Join(GetCreateBackupDetailsBackupTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -90,4 +90,15 @@ func GetCreateBackupDetailsBackupTypeEnumStringValues() []string {
 		"FULL",
 		"INCREMENTAL",
 	}
+}
+
+// GetMappingCreateBackupDetailsBackupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateBackupDetailsBackupTypeEnum(val string) (CreateBackupDetailsBackupTypeEnum, bool) {
+	mappingCreateBackupDetailsBackupTypeEnumIgnoreCase := make(map[string]CreateBackupDetailsBackupTypeEnum)
+	for k, v := range mappingCreateBackupDetailsBackupTypeEnum {
+		mappingCreateBackupDetailsBackupTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateBackupDetailsBackupTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

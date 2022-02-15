@@ -11,7 +11,7 @@ package certificatesmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -34,7 +34,7 @@ func (m CertificateSubjectAlternativeName) String() string {
 // Not recommended for calling this function directly
 func (m CertificateSubjectAlternativeName) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCertificateSubjectAlternativeNameTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingCertificateSubjectAlternativeNameTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetCertificateSubjectAlternativeNameTypeEnumStringValues(), ",")))
 	}
 
@@ -73,4 +73,15 @@ func GetCertificateSubjectAlternativeNameTypeEnumStringValues() []string {
 		"DNS",
 		"IP",
 	}
+}
+
+// GetMappingCertificateSubjectAlternativeNameTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCertificateSubjectAlternativeNameTypeEnum(val string) (CertificateSubjectAlternativeNameTypeEnum, bool) {
+	mappingCertificateSubjectAlternativeNameTypeEnumIgnoreCase := make(map[string]CertificateSubjectAlternativeNameTypeEnum)
+	for k, v := range mappingCertificateSubjectAlternativeNameTypeEnum {
+		mappingCertificateSubjectAlternativeNameTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCertificateSubjectAlternativeNameTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

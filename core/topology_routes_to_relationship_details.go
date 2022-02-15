@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -47,7 +47,7 @@ func (m TopologyRoutesToRelationshipDetails) String() string {
 func (m TopologyRoutesToRelationshipDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTopologyRoutesToRelationshipDetailsRouteTypeEnum[string(m.RouteType)]; !ok && m.RouteType != "" {
+	if _, ok := GetMappingTopologyRoutesToRelationshipDetailsRouteTypeEnum(string(m.RouteType)); !ok && m.RouteType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RouteType: %s. Supported values are: %s.", m.RouteType, strings.Join(GetTopologyRoutesToRelationshipDetailsRouteTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -85,4 +85,15 @@ func GetTopologyRoutesToRelationshipDetailsRouteTypeEnumStringValues() []string 
 		"STATIC",
 		"DYNAMIC",
 	}
+}
+
+// GetMappingTopologyRoutesToRelationshipDetailsRouteTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTopologyRoutesToRelationshipDetailsRouteTypeEnum(val string) (TopologyRoutesToRelationshipDetailsRouteTypeEnum, bool) {
+	mappingTopologyRoutesToRelationshipDetailsRouteTypeEnumIgnoreCase := make(map[string]TopologyRoutesToRelationshipDetailsRouteTypeEnum)
+	for k, v := range mappingTopologyRoutesToRelationshipDetailsRouteTypeEnum {
+		mappingTopologyRoutesToRelationshipDetailsRouteTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTopologyRoutesToRelationshipDetailsRouteTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

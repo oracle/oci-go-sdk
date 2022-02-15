@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -31,7 +31,7 @@ func (m Month) String() string {
 // Not recommended for calling this function directly
 func (m Month) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingMonthNameEnum[string(m.Name)]; !ok && m.Name != "" {
+	if _, ok := GetMappingMonthNameEnum(string(m.Name)); !ok && m.Name != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Name: %s. Supported values are: %s.", m.Name, strings.Join(GetMonthNameEnumStringValues(), ",")))
 	}
 
@@ -100,4 +100,15 @@ func GetMonthNameEnumStringValues() []string {
 		"NOVEMBER",
 		"DECEMBER",
 	}
+}
+
+// GetMappingMonthNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMonthNameEnum(val string) (MonthNameEnum, bool) {
+	mappingMonthNameEnumIgnoreCase := make(map[string]MonthNameEnum)
+	for k, v := range mappingMonthNameEnum {
+		mappingMonthNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMonthNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

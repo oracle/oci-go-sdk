@@ -13,7 +13,7 @@ package optimizer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -48,7 +48,7 @@ func (m TargetTag) String() string {
 // Not recommended for calling this function directly
 func (m TargetTag) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTagValueTypeEnum[string(m.TagValueType)]; !ok && m.TagValueType != "" {
+	if _, ok := GetMappingTagValueTypeEnum(string(m.TagValueType)); !ok && m.TagValueType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TagValueType: %s. Supported values are: %s.", m.TagValueType, strings.Join(GetTagValueTypeEnumStringValues(), ",")))
 	}
 

@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -92,13 +92,13 @@ func (request ListVirtualCircuitsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListVirtualCircuitsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListVirtualCircuitsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListVirtualCircuitsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListVirtualCircuitsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListVirtualCircuitsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListVirtualCircuitsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListVirtualCircuitsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVirtualCircuitLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingVirtualCircuitLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetVirtualCircuitLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -166,6 +166,17 @@ func GetListVirtualCircuitsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListVirtualCircuitsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListVirtualCircuitsSortByEnum(val string) (ListVirtualCircuitsSortByEnum, bool) {
+	mappingListVirtualCircuitsSortByEnumIgnoreCase := make(map[string]ListVirtualCircuitsSortByEnum)
+	for k, v := range mappingListVirtualCircuitsSortByEnum {
+		mappingListVirtualCircuitsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListVirtualCircuitsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListVirtualCircuitsSortOrderEnum Enum with underlying type: string
 type ListVirtualCircuitsSortOrderEnum string
 
@@ -195,4 +206,15 @@ func GetListVirtualCircuitsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListVirtualCircuitsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListVirtualCircuitsSortOrderEnum(val string) (ListVirtualCircuitsSortOrderEnum, bool) {
+	mappingListVirtualCircuitsSortOrderEnumIgnoreCase := make(map[string]ListVirtualCircuitsSortOrderEnum)
+	for k, v := range mappingListVirtualCircuitsSortOrderEnum {
+		mappingListVirtualCircuitsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListVirtualCircuitsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

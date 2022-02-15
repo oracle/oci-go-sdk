@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -136,22 +136,22 @@ func (request ListProblemsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListProblemsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListProblemsLifecycleDetailEnum[string(request.LifecycleDetail)]; !ok && request.LifecycleDetail != "" {
+	if _, ok := GetMappingListProblemsLifecycleDetailEnum(string(request.LifecycleDetail)); !ok && request.LifecycleDetail != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleDetail: %s. Supported values are: %s.", request.LifecycleDetail, strings.Join(GetListProblemsLifecycleDetailEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListProblemsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListProblemsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListProblemsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListProblemsDetectorTypeEnum[string(request.DetectorType)]; !ok && request.DetectorType != "" {
+	if _, ok := GetMappingListProblemsDetectorTypeEnum(string(request.DetectorType)); !ok && request.DetectorType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DetectorType: %s. Supported values are: %s.", request.DetectorType, strings.Join(GetListProblemsDetectorTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListProblemsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListProblemsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListProblemsAccessLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListProblemsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListProblemsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListProblemsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListProblemsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListProblemsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListProblemsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -225,6 +225,17 @@ func GetListProblemsLifecycleDetailEnumStringValues() []string {
 	}
 }
 
+// GetMappingListProblemsLifecycleDetailEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProblemsLifecycleDetailEnum(val string) (ListProblemsLifecycleDetailEnum, bool) {
+	mappingListProblemsLifecycleDetailEnumIgnoreCase := make(map[string]ListProblemsLifecycleDetailEnum)
+	for k, v := range mappingListProblemsLifecycleDetailEnum {
+		mappingListProblemsLifecycleDetailEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProblemsLifecycleDetailEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListProblemsLifecycleStateEnum Enum with underlying type: string
 type ListProblemsLifecycleStateEnum string
 
@@ -254,6 +265,17 @@ func GetListProblemsLifecycleStateEnumStringValues() []string {
 		"ACTIVE",
 		"INACTIVE",
 	}
+}
+
+// GetMappingListProblemsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProblemsLifecycleStateEnum(val string) (ListProblemsLifecycleStateEnum, bool) {
+	mappingListProblemsLifecycleStateEnumIgnoreCase := make(map[string]ListProblemsLifecycleStateEnum)
+	for k, v := range mappingListProblemsLifecycleStateEnum {
+		mappingListProblemsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProblemsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListProblemsDetectorTypeEnum Enum with underlying type: string
@@ -287,6 +309,17 @@ func GetListProblemsDetectorTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListProblemsDetectorTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProblemsDetectorTypeEnum(val string) (ListProblemsDetectorTypeEnum, bool) {
+	mappingListProblemsDetectorTypeEnumIgnoreCase := make(map[string]ListProblemsDetectorTypeEnum)
+	for k, v := range mappingListProblemsDetectorTypeEnum {
+		mappingListProblemsDetectorTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProblemsDetectorTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListProblemsAccessLevelEnum Enum with underlying type: string
 type ListProblemsAccessLevelEnum string
 
@@ -318,6 +351,17 @@ func GetListProblemsAccessLevelEnumStringValues() []string {
 	}
 }
 
+// GetMappingListProblemsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProblemsAccessLevelEnum(val string) (ListProblemsAccessLevelEnum, bool) {
+	mappingListProblemsAccessLevelEnumIgnoreCase := make(map[string]ListProblemsAccessLevelEnum)
+	for k, v := range mappingListProblemsAccessLevelEnum {
+		mappingListProblemsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProblemsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListProblemsSortOrderEnum Enum with underlying type: string
 type ListProblemsSortOrderEnum string
 
@@ -347,6 +391,17 @@ func GetListProblemsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListProblemsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProblemsSortOrderEnum(val string) (ListProblemsSortOrderEnum, bool) {
+	mappingListProblemsSortOrderEnumIgnoreCase := make(map[string]ListProblemsSortOrderEnum)
+	for k, v := range mappingListProblemsSortOrderEnum {
+		mappingListProblemsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProblemsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListProblemsSortByEnum Enum with underlying type: string
@@ -381,4 +436,15 @@ func GetListProblemsSortByEnumStringValues() []string {
 		"timeLastDetected",
 		"resourceName",
 	}
+}
+
+// GetMappingListProblemsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProblemsSortByEnum(val string) (ListProblemsSortByEnum, bool) {
+	mappingListProblemsSortByEnumIgnoreCase := make(map[string]ListProblemsSortByEnum)
+	for k, v := range mappingListProblemsSortByEnum {
+		mappingListProblemsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProblemsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

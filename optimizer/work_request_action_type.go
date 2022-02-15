@@ -11,6 +11,10 @@
 
 package optimizer
 
+import (
+	"strings"
+)
+
 // WorkRequestActionTypeEnum Enum with underlying type: string
 type WorkRequestActionTypeEnum string
 
@@ -49,4 +53,15 @@ func GetWorkRequestActionTypeEnumStringValues() []string {
 		"IN_PROGRESS",
 		"RELATED",
 	}
+}
+
+// GetMappingWorkRequestActionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestActionTypeEnum(val string) (WorkRequestActionTypeEnum, bool) {
+	mappingWorkRequestActionTypeEnumIgnoreCase := make(map[string]WorkRequestActionTypeEnum)
+	for k, v := range mappingWorkRequestActionTypeEnum {
+		mappingWorkRequestActionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestActionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

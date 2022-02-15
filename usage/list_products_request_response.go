@@ -6,7 +6,7 @@ package usage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -81,13 +81,13 @@ func (request ListProductsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListProductsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListProductsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListProductsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListProductsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListProductsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListProductsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListProductsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListProductsProducttypeEnum[string(request.Producttype)]; !ok && request.Producttype != "" {
+	if _, ok := GetMappingListProductsProducttypeEnum(string(request.Producttype)); !ok && request.Producttype != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Producttype: %s. Supported values are: %s.", request.Producttype, strings.Join(GetListProductsProducttypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -155,6 +155,17 @@ func GetListProductsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListProductsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProductsSortOrderEnum(val string) (ListProductsSortOrderEnum, bool) {
+	mappingListProductsSortOrderEnumIgnoreCase := make(map[string]ListProductsSortOrderEnum)
+	for k, v := range mappingListProductsSortOrderEnum {
+		mappingListProductsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProductsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListProductsSortByEnum Enum with underlying type: string
 type ListProductsSortByEnum string
 
@@ -184,6 +195,17 @@ func GetListProductsSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"TIMESTART",
 	}
+}
+
+// GetMappingListProductsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProductsSortByEnum(val string) (ListProductsSortByEnum, bool) {
+	mappingListProductsSortByEnumIgnoreCase := make(map[string]ListProductsSortByEnum)
+	for k, v := range mappingListProductsSortByEnum {
+		mappingListProductsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProductsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListProductsProducttypeEnum Enum with underlying type: string
@@ -218,4 +240,15 @@ func GetListProductsProducttypeEnumStringValues() []string {
 		"ELIGIBLE",
 		"INELIGIBLE",
 	}
+}
+
+// GetMappingListProductsProducttypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProductsProducttypeEnum(val string) (ListProductsProducttypeEnum, bool) {
+	mappingListProductsProducttypeEnumIgnoreCase := make(map[string]ListProductsProducttypeEnum)
+	for k, v := range mappingListProductsProducttypeEnum {
+		mappingListProductsProducttypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProductsProducttypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

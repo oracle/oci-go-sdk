@@ -9,6 +9,10 @@
 
 package servicecatalog
 
+import (
+	"strings"
+)
+
 // PackageTypeEnumEnum Enum with underlying type: string
 type PackageTypeEnumEnum string
 
@@ -35,4 +39,15 @@ func GetPackageTypeEnumEnumStringValues() []string {
 	return []string{
 		"STACK",
 	}
+}
+
+// GetMappingPackageTypeEnumEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPackageTypeEnumEnum(val string) (PackageTypeEnumEnum, bool) {
+	mappingPackageTypeEnumEnumIgnoreCase := make(map[string]PackageTypeEnumEnum)
+	for k, v := range mappingPackageTypeEnumEnum {
+		mappingPackageTypeEnumEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPackageTypeEnumEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

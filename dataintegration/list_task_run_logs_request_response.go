@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -80,10 +80,10 @@ func (request ListTaskRunLogsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListTaskRunLogsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListTaskRunLogsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListTaskRunLogsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListTaskRunLogsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTaskRunLogsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListTaskRunLogsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListTaskRunLogsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -155,6 +155,17 @@ func GetListTaskRunLogsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTaskRunLogsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTaskRunLogsSortOrderEnum(val string) (ListTaskRunLogsSortOrderEnum, bool) {
+	mappingListTaskRunLogsSortOrderEnumIgnoreCase := make(map[string]ListTaskRunLogsSortOrderEnum)
+	for k, v := range mappingListTaskRunLogsSortOrderEnum {
+		mappingListTaskRunLogsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTaskRunLogsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTaskRunLogsSortByEnum Enum with underlying type: string
 type ListTaskRunLogsSortByEnum string
 
@@ -184,4 +195,15 @@ func GetListTaskRunLogsSortByEnumStringValues() []string {
 		"TIME_CREATED",
 		"DISPLAY_NAME",
 	}
+}
+
+// GetMappingListTaskRunLogsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTaskRunLogsSortByEnum(val string) (ListTaskRunLogsSortByEnum, bool) {
+	mappingListTaskRunLogsSortByEnumIgnoreCase := make(map[string]ListTaskRunLogsSortByEnum)
+	for k, v := range mappingListTaskRunLogsSortByEnum {
+		mappingListTaskRunLogsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTaskRunLogsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

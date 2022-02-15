@@ -9,6 +9,10 @@
 
 package tenantmanagercontrolplane
 
+import (
+	"strings"
+)
+
 // OrganizationTenancyLifecycleStateEnum Enum with underlying type: string
 type OrganizationTenancyLifecycleStateEnum string
 
@@ -50,4 +54,15 @@ func GetOrganizationTenancyLifecycleStateEnumStringValues() []string {
 		"FAILED",
 		"DELETING",
 	}
+}
+
+// GetMappingOrganizationTenancyLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOrganizationTenancyLifecycleStateEnum(val string) (OrganizationTenancyLifecycleStateEnum, bool) {
+	mappingOrganizationTenancyLifecycleStateEnumIgnoreCase := make(map[string]OrganizationTenancyLifecycleStateEnum)
+	for k, v := range mappingOrganizationTenancyLifecycleStateEnum {
+		mappingOrganizationTenancyLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOrganizationTenancyLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

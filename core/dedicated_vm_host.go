@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -88,7 +88,7 @@ func (m DedicatedVmHost) String() string {
 // Not recommended for calling this function directly
 func (m DedicatedVmHost) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDedicatedVmHostLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDedicatedVmHostLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDedicatedVmHostLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -139,4 +139,15 @@ func GetDedicatedVmHostLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingDedicatedVmHostLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDedicatedVmHostLifecycleStateEnum(val string) (DedicatedVmHostLifecycleStateEnum, bool) {
+	mappingDedicatedVmHostLifecycleStateEnumIgnoreCase := make(map[string]DedicatedVmHostLifecycleStateEnum)
+	for k, v := range mappingDedicatedVmHostLifecycleStateEnum {
+		mappingDedicatedVmHostLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDedicatedVmHostLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

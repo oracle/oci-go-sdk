@@ -10,6 +10,10 @@
 
 package osmanagement
 
+import (
+	"strings"
+)
+
 // ArchTypesEnum Enum with underlying type: string
 type ArchTypesEnum string
 
@@ -48,4 +52,15 @@ func GetArchTypesEnumStringValues() []string {
 		"SPARC",
 		"AMD64_DEBIAN",
 	}
+}
+
+// GetMappingArchTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingArchTypesEnum(val string) (ArchTypesEnum, bool) {
+	mappingArchTypesEnumIgnoreCase := make(map[string]ArchTypesEnum)
+	for k, v := range mappingArchTypesEnum {
+		mappingArchTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingArchTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

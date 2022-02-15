@@ -6,7 +6,7 @@ package email
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -89,13 +89,13 @@ func (request ListDkimsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDkimsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDkimsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDkimsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDkimsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDkimLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingDkimLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetDkimLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDkimsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDkimsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDkimsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -162,6 +162,17 @@ func GetListDkimsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDkimsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDkimsSortOrderEnum(val string) (ListDkimsSortOrderEnum, bool) {
+	mappingListDkimsSortOrderEnumIgnoreCase := make(map[string]ListDkimsSortOrderEnum)
+	for k, v := range mappingListDkimsSortOrderEnum {
+		mappingListDkimsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDkimsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDkimsSortByEnum Enum with underlying type: string
 type ListDkimsSortByEnum string
 
@@ -194,4 +205,15 @@ func GetListDkimsSortByEnumStringValues() []string {
 		"ID",
 		"NAME",
 	}
+}
+
+// GetMappingListDkimsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDkimsSortByEnum(val string) (ListDkimsSortByEnum, bool) {
+	mappingListDkimsSortByEnumIgnoreCase := make(map[string]ListDkimsSortByEnum)
+	for k, v := range mappingListDkimsSortByEnum {
+		mappingListDkimsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDkimsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

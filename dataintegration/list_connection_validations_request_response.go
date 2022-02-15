@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -86,10 +86,10 @@ func (request ListConnectionValidationsRequest) RetryPolicy() *common.RetryPolic
 // Not recommended for calling this function directly
 func (request ListConnectionValidationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListConnectionValidationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListConnectionValidationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListConnectionValidationsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListConnectionValidationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListConnectionValidationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListConnectionValidationsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -161,6 +161,17 @@ func GetListConnectionValidationsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListConnectionValidationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListConnectionValidationsSortByEnum(val string) (ListConnectionValidationsSortByEnum, bool) {
+	mappingListConnectionValidationsSortByEnumIgnoreCase := make(map[string]ListConnectionValidationsSortByEnum)
+	for k, v := range mappingListConnectionValidationsSortByEnum {
+		mappingListConnectionValidationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListConnectionValidationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListConnectionValidationsSortOrderEnum Enum with underlying type: string
 type ListConnectionValidationsSortOrderEnum string
 
@@ -190,4 +201,15 @@ func GetListConnectionValidationsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListConnectionValidationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListConnectionValidationsSortOrderEnum(val string) (ListConnectionValidationsSortOrderEnum, bool) {
+	mappingListConnectionValidationsSortOrderEnumIgnoreCase := make(map[string]ListConnectionValidationsSortOrderEnum)
+	for k, v := range mappingListConnectionValidationsSortOrderEnum {
+		mappingListConnectionValidationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListConnectionValidationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

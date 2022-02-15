@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -81,11 +81,11 @@ func (m ByoipRange) String() string {
 // Not recommended for calling this function directly
 func (m ByoipRange) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingByoipRangeLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingByoipRangeLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetByoipRangeLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingByoipRangeLifecycleDetailsEnum[string(m.LifecycleDetails)]; !ok && m.LifecycleDetails != "" {
+	if _, ok := GetMappingByoipRangeLifecycleDetailsEnum(string(m.LifecycleDetails)); !ok && m.LifecycleDetails != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleDetails: %s. Supported values are: %s.", m.LifecycleDetails, strings.Join(GetByoipRangeLifecycleDetailsEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -146,6 +146,17 @@ func GetByoipRangeLifecycleDetailsEnumStringValues() []string {
 	}
 }
 
+// GetMappingByoipRangeLifecycleDetailsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingByoipRangeLifecycleDetailsEnum(val string) (ByoipRangeLifecycleDetailsEnum, bool) {
+	mappingByoipRangeLifecycleDetailsEnumIgnoreCase := make(map[string]ByoipRangeLifecycleDetailsEnum)
+	for k, v := range mappingByoipRangeLifecycleDetailsEnum {
+		mappingByoipRangeLifecycleDetailsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingByoipRangeLifecycleDetailsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ByoipRangeLifecycleStateEnum Enum with underlying type: string
 type ByoipRangeLifecycleStateEnum string
 
@@ -184,4 +195,15 @@ func GetByoipRangeLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingByoipRangeLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingByoipRangeLifecycleStateEnum(val string) (ByoipRangeLifecycleStateEnum, bool) {
+	mappingByoipRangeLifecycleStateEnumIgnoreCase := make(map[string]ByoipRangeLifecycleStateEnum)
+	for k, v := range mappingByoipRangeLifecycleStateEnum {
+		mappingByoipRangeLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingByoipRangeLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

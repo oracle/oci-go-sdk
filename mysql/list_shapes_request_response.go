@@ -6,7 +6,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -72,7 +72,7 @@ func (request ListShapesRequest) RetryPolicy() *common.RetryPolicy {
 func (request ListShapesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.IsSupportedFor {
-		if _, ok := mappingListShapesIsSupportedForEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListShapesIsSupportedForEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IsSupportedFor: %s. Supported values are: %s.", val, strings.Join(GetListShapesIsSupportedForEnumStringValues(), ",")))
 		}
 	}
@@ -138,4 +138,15 @@ func GetListShapesIsSupportedForEnumStringValues() []string {
 		"ANALYTICSCLUSTER",
 		"HEATWAVECLUSTER",
 	}
+}
+
+// GetMappingListShapesIsSupportedForEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListShapesIsSupportedForEnum(val string) (ListShapesIsSupportedForEnum, bool) {
+	mappingListShapesIsSupportedForEnumIgnoreCase := make(map[string]ListShapesIsSupportedForEnum)
+	for k, v := range mappingListShapesIsSupportedForEnum {
+		mappingListShapesIsSupportedForEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListShapesIsSupportedForEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

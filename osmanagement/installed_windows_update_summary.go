@@ -12,7 +12,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -40,7 +40,7 @@ func (m InstalledWindowsUpdateSummary) String() string {
 // Not recommended for calling this function directly
 func (m InstalledWindowsUpdateSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUpdateTypesEnum[string(m.UpdateType)]; !ok && m.UpdateType != "" {
+	if _, ok := GetMappingUpdateTypesEnum(string(m.UpdateType)); !ok && m.UpdateType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateType: %s. Supported values are: %s.", m.UpdateType, strings.Join(GetUpdateTypesEnumStringValues(), ",")))
 	}
 

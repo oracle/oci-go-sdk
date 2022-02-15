@@ -11,7 +11,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -55,13 +55,13 @@ func (m ResponderActivitySummary) String() string {
 // Not recommended for calling this function directly
 func (m ResponderActivitySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingResponderTypeEnum[string(m.ResponderType)]; !ok && m.ResponderType != "" {
+	if _, ok := GetMappingResponderTypeEnum(string(m.ResponderType)); !ok && m.ResponderType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResponderType: %s. Supported values are: %s.", m.ResponderType, strings.Join(GetResponderTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingResponderActivityTypeEnum[string(m.ResponderActivityType)]; !ok && m.ResponderActivityType != "" {
+	if _, ok := GetMappingResponderActivityTypeEnum(string(m.ResponderActivityType)); !ok && m.ResponderActivityType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResponderActivityType: %s. Supported values are: %s.", m.ResponderActivityType, strings.Join(GetResponderActivityTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingResponderExecutionStatesEnum[string(m.ResponderExecutionStatus)]; !ok && m.ResponderExecutionStatus != "" {
+	if _, ok := GetMappingResponderExecutionStatesEnum(string(m.ResponderExecutionStatus)); !ok && m.ResponderExecutionStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResponderExecutionStatus: %s. Supported values are: %s.", m.ResponderExecutionStatus, strings.Join(GetResponderExecutionStatesEnumStringValues(), ",")))
 	}
 

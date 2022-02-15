@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -65,7 +65,7 @@ func (m UserDefinedFunctionSummary) String() string {
 func (m UserDefinedFunctionSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUserDefinedFunctionSummaryModelTypeEnum[string(m.ModelType)]; !ok && m.ModelType != "" {
+	if _, ok := GetMappingUserDefinedFunctionSummaryModelTypeEnum(string(m.ModelType)); !ok && m.ModelType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ModelType: %s. Supported values are: %s.", m.ModelType, strings.Join(GetUserDefinedFunctionSummaryModelTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -100,4 +100,15 @@ func GetUserDefinedFunctionSummaryModelTypeEnumStringValues() []string {
 	return []string{
 		"DIS_USER_DEFINED_FUNCTION",
 	}
+}
+
+// GetMappingUserDefinedFunctionSummaryModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserDefinedFunctionSummaryModelTypeEnum(val string) (UserDefinedFunctionSummaryModelTypeEnum, bool) {
+	mappingUserDefinedFunctionSummaryModelTypeEnumIgnoreCase := make(map[string]UserDefinedFunctionSummaryModelTypeEnum)
+	for k, v := range mappingUserDefinedFunctionSummaryModelTypeEnum {
+		mappingUserDefinedFunctionSummaryModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserDefinedFunctionSummaryModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

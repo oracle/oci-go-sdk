@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -69,11 +69,11 @@ func (m ExportDetails) String() string {
 // Not recommended for calling this function directly
 func (m ExportDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSubSystemNameEnum[string(m.SubSystem)]; !ok && m.SubSystem != "" {
+	if _, ok := GetMappingSubSystemNameEnum(string(m.SubSystem)); !ok && m.SubSystem != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SubSystem: %s. Supported values are: %s.", m.SubSystem, strings.Join(GetSubSystemNameEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingExportDetailsOutputFormatEnum[string(m.OutputFormat)]; !ok && m.OutputFormat != "" {
+	if _, ok := GetMappingExportDetailsOutputFormatEnum(string(m.OutputFormat)); !ok && m.OutputFormat != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OutputFormat: %s. Supported values are: %s.", m.OutputFormat, strings.Join(GetExportDetailsOutputFormatEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -111,4 +111,15 @@ func GetExportDetailsOutputFormatEnumStringValues() []string {
 		"CSV",
 		"JSON",
 	}
+}
+
+// GetMappingExportDetailsOutputFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExportDetailsOutputFormatEnum(val string) (ExportDetailsOutputFormatEnum, bool) {
+	mappingExportDetailsOutputFormatEnumIgnoreCase := make(map[string]ExportDetailsOutputFormatEnum)
+	for k, v := range mappingExportDetailsOutputFormatEnum {
+		mappingExportDetailsOutputFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExportDetailsOutputFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

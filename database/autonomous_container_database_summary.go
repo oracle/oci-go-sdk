@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -120,20 +120,20 @@ func (m AutonomousContainerDatabaseSummary) String() string {
 // Not recommended for calling this function directly
 func (m AutonomousContainerDatabaseSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAutonomousContainerDatabaseSummaryServiceLevelAgreementTypeEnum[string(m.ServiceLevelAgreementType)]; !ok && m.ServiceLevelAgreementType != "" {
+	if _, ok := GetMappingAutonomousContainerDatabaseSummaryServiceLevelAgreementTypeEnum(string(m.ServiceLevelAgreementType)); !ok && m.ServiceLevelAgreementType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ServiceLevelAgreementType: %s. Supported values are: %s.", m.ServiceLevelAgreementType, strings.Join(GetAutonomousContainerDatabaseSummaryServiceLevelAgreementTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousContainerDatabaseSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAutonomousContainerDatabaseSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAutonomousContainerDatabaseSummaryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousContainerDatabaseSummaryPatchModelEnum[string(m.PatchModel)]; !ok && m.PatchModel != "" {
+	if _, ok := GetMappingAutonomousContainerDatabaseSummaryPatchModelEnum(string(m.PatchModel)); !ok && m.PatchModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PatchModel: %s. Supported values are: %s.", m.PatchModel, strings.Join(GetAutonomousContainerDatabaseSummaryPatchModelEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingAutonomousContainerDatabaseSummaryInfrastructureTypeEnum[string(m.InfrastructureType)]; !ok && m.InfrastructureType != "" {
+	if _, ok := GetMappingAutonomousContainerDatabaseSummaryInfrastructureTypeEnum(string(m.InfrastructureType)); !ok && m.InfrastructureType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InfrastructureType: %s. Supported values are: %s.", m.InfrastructureType, strings.Join(GetAutonomousContainerDatabaseSummaryInfrastructureTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousContainerDatabaseSummaryRoleEnum[string(m.Role)]; !ok && m.Role != "" {
+	if _, ok := GetMappingAutonomousContainerDatabaseSummaryRoleEnum(string(m.Role)); !ok && m.Role != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Role: %s. Supported values are: %s.", m.Role, strings.Join(GetAutonomousContainerDatabaseSummaryRoleEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -176,6 +176,17 @@ func GetAutonomousContainerDatabaseSummaryServiceLevelAgreementTypeEnumStringVal
 	}
 }
 
+// GetMappingAutonomousContainerDatabaseSummaryServiceLevelAgreementTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousContainerDatabaseSummaryServiceLevelAgreementTypeEnum(val string) (AutonomousContainerDatabaseSummaryServiceLevelAgreementTypeEnum, bool) {
+	mappingAutonomousContainerDatabaseSummaryServiceLevelAgreementTypeEnumIgnoreCase := make(map[string]AutonomousContainerDatabaseSummaryServiceLevelAgreementTypeEnum)
+	for k, v := range mappingAutonomousContainerDatabaseSummaryServiceLevelAgreementTypeEnum {
+		mappingAutonomousContainerDatabaseSummaryServiceLevelAgreementTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousContainerDatabaseSummaryServiceLevelAgreementTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousContainerDatabaseSummaryInfrastructureTypeEnum Enum with underlying type: string
 type AutonomousContainerDatabaseSummaryInfrastructureTypeEnum string
 
@@ -205,6 +216,17 @@ func GetAutonomousContainerDatabaseSummaryInfrastructureTypeEnumStringValues() [
 		"CLOUD",
 		"CLOUD_AT_CUSTOMER",
 	}
+}
+
+// GetMappingAutonomousContainerDatabaseSummaryInfrastructureTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousContainerDatabaseSummaryInfrastructureTypeEnum(val string) (AutonomousContainerDatabaseSummaryInfrastructureTypeEnum, bool) {
+	mappingAutonomousContainerDatabaseSummaryInfrastructureTypeEnumIgnoreCase := make(map[string]AutonomousContainerDatabaseSummaryInfrastructureTypeEnum)
+	for k, v := range mappingAutonomousContainerDatabaseSummaryInfrastructureTypeEnum {
+		mappingAutonomousContainerDatabaseSummaryInfrastructureTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousContainerDatabaseSummaryInfrastructureTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // AutonomousContainerDatabaseSummaryLifecycleStateEnum Enum with underlying type: string
@@ -271,6 +293,17 @@ func GetAutonomousContainerDatabaseSummaryLifecycleStateEnumStringValues() []str
 	}
 }
 
+// GetMappingAutonomousContainerDatabaseSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousContainerDatabaseSummaryLifecycleStateEnum(val string) (AutonomousContainerDatabaseSummaryLifecycleStateEnum, bool) {
+	mappingAutonomousContainerDatabaseSummaryLifecycleStateEnumIgnoreCase := make(map[string]AutonomousContainerDatabaseSummaryLifecycleStateEnum)
+	for k, v := range mappingAutonomousContainerDatabaseSummaryLifecycleStateEnum {
+		mappingAutonomousContainerDatabaseSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousContainerDatabaseSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousContainerDatabaseSummaryPatchModelEnum Enum with underlying type: string
 type AutonomousContainerDatabaseSummaryPatchModelEnum string
 
@@ -300,6 +333,17 @@ func GetAutonomousContainerDatabaseSummaryPatchModelEnumStringValues() []string 
 		"RELEASE_UPDATES",
 		"RELEASE_UPDATE_REVISIONS",
 	}
+}
+
+// GetMappingAutonomousContainerDatabaseSummaryPatchModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousContainerDatabaseSummaryPatchModelEnum(val string) (AutonomousContainerDatabaseSummaryPatchModelEnum, bool) {
+	mappingAutonomousContainerDatabaseSummaryPatchModelEnumIgnoreCase := make(map[string]AutonomousContainerDatabaseSummaryPatchModelEnum)
+	for k, v := range mappingAutonomousContainerDatabaseSummaryPatchModelEnum {
+		mappingAutonomousContainerDatabaseSummaryPatchModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousContainerDatabaseSummaryPatchModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // AutonomousContainerDatabaseSummaryRoleEnum Enum with underlying type: string
@@ -334,4 +378,15 @@ func GetAutonomousContainerDatabaseSummaryRoleEnumStringValues() []string {
 		"STANDBY",
 		"DISABLED_STANDBY",
 	}
+}
+
+// GetMappingAutonomousContainerDatabaseSummaryRoleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousContainerDatabaseSummaryRoleEnum(val string) (AutonomousContainerDatabaseSummaryRoleEnum, bool) {
+	mappingAutonomousContainerDatabaseSummaryRoleEnumIgnoreCase := make(map[string]AutonomousContainerDatabaseSummaryRoleEnum)
+	for k, v := range mappingAutonomousContainerDatabaseSummaryRoleEnum {
+		mappingAutonomousContainerDatabaseSummaryRoleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousContainerDatabaseSummaryRoleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -13,7 +13,7 @@ package healthchecks
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -95,10 +95,10 @@ func (m PingProbeResultSummary) String() string {
 func (m PingProbeResultSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingPingProbeResultSummaryErrorCategoryEnum[string(m.ErrorCategory)]; !ok && m.ErrorCategory != "" {
+	if _, ok := GetMappingPingProbeResultSummaryErrorCategoryEnum(string(m.ErrorCategory)); !ok && m.ErrorCategory != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ErrorCategory: %s. Supported values are: %s.", m.ErrorCategory, strings.Join(GetPingProbeResultSummaryErrorCategoryEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPingProbeProtocolEnum[string(m.Protocol)]; !ok && m.Protocol != "" {
+	if _, ok := GetMappingPingProbeProtocolEnum(string(m.Protocol)); !ok && m.Protocol != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Protocol: %s. Supported values are: %s.", m.Protocol, strings.Join(GetPingProbeProtocolEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -145,6 +145,17 @@ func GetPingProbeResultSummaryErrorCategoryEnumStringValues() []string {
 		"NETWORK",
 		"SYSTEM",
 	}
+}
+
+// GetMappingPingProbeResultSummaryErrorCategoryEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPingProbeResultSummaryErrorCategoryEnum(val string) (PingProbeResultSummaryErrorCategoryEnum, bool) {
+	mappingPingProbeResultSummaryErrorCategoryEnumIgnoreCase := make(map[string]PingProbeResultSummaryErrorCategoryEnum)
+	for k, v := range mappingPingProbeResultSummaryErrorCategoryEnum {
+		mappingPingProbeResultSummaryErrorCategoryEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPingProbeResultSummaryErrorCategoryEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // PingProbeResultSummaryProtocolEnum is an alias to type: PingProbeProtocolEnum

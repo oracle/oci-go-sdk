@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"io"
 	"net/http"
 	"strings"
@@ -78,7 +78,7 @@ func (request SynchronousExportDataAssetRequest) RetryPolicy() *common.RetryPoli
 func (request SynchronousExportDataAssetRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.ExportType {
-		if _, ok := mappingDataAssetImportExportTypeFilterEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingDataAssetImportExportTypeFilterEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExportType: %s. Supported values are: %s.", val, strings.Join(GetDataAssetImportExportTypeFilterEnumStringValues(), ",")))
 		}
 	}

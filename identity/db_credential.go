@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -52,7 +52,7 @@ func (m DbCredential) String() string {
 func (m DbCredential) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDbCredentialLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDbCredentialLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDbCredentialLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -96,4 +96,15 @@ func GetDbCredentialLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingDbCredentialLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbCredentialLifecycleStateEnum(val string) (DbCredentialLifecycleStateEnum, bool) {
+	mappingDbCredentialLifecycleStateEnumIgnoreCase := make(map[string]DbCredentialLifecycleStateEnum)
+	for k, v := range mappingDbCredentialLifecycleStateEnum {
+		mappingDbCredentialLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbCredentialLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

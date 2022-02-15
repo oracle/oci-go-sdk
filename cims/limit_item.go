@@ -12,7 +12,7 @@ package cims
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -78,7 +78,7 @@ func (m LimitItem) String() string {
 // Not recommended for calling this function directly
 func (m LimitItem) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingLimitItemLimitStatusEnum[string(m.LimitStatus)]; !ok && m.LimitStatus != "" {
+	if _, ok := GetMappingLimitItemLimitStatusEnum(string(m.LimitStatus)); !ok && m.LimitStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LimitStatus: %s. Supported values are: %s.", m.LimitStatus, strings.Join(GetLimitItemLimitStatusEnumStringValues(), ",")))
 	}
 
@@ -134,4 +134,15 @@ func GetLimitItemLimitStatusEnumStringValues() []string {
 		"PARTIALLY_APPROVED",
 		"NOT_APPROVED",
 	}
+}
+
+// GetMappingLimitItemLimitStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLimitItemLimitStatusEnum(val string) (LimitItemLimitStatusEnum, bool) {
+	mappingLimitItemLimitStatusEnumIgnoreCase := make(map[string]LimitItemLimitStatusEnum)
+	for k, v := range mappingLimitItemLimitStatusEnum {
+		mappingLimitItemLimitStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLimitItemLimitStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

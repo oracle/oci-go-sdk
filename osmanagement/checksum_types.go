@@ -10,6 +10,10 @@
 
 package osmanagement
 
+import (
+	"strings"
+)
+
 // ChecksumTypesEnum Enum with underlying type: string
 type ChecksumTypesEnum string
 
@@ -45,4 +49,15 @@ func GetChecksumTypesEnumStringValues() []string {
 		"SHA384",
 		"SHA512",
 	}
+}
+
+// GetMappingChecksumTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingChecksumTypesEnum(val string) (ChecksumTypesEnum, bool) {
+	mappingChecksumTypesEnumIgnoreCase := make(map[string]ChecksumTypesEnum)
+	for k, v := range mappingChecksumTypesEnum {
+		mappingChecksumTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingChecksumTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

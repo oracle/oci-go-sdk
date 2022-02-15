@@ -6,7 +6,7 @@ package rover
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -78,13 +78,13 @@ func (request ListRoverNodesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListRoverNodesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListRoverNodesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListRoverNodesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListRoverNodesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListRoverNodesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListRoverNodesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListRoverNodesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListRoverNodesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListRoverNodesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListRoverNodesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -169,6 +169,17 @@ func GetListRoverNodesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListRoverNodesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRoverNodesLifecycleStateEnum(val string) (ListRoverNodesLifecycleStateEnum, bool) {
+	mappingListRoverNodesLifecycleStateEnumIgnoreCase := make(map[string]ListRoverNodesLifecycleStateEnum)
+	for k, v := range mappingListRoverNodesLifecycleStateEnum {
+		mappingListRoverNodesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRoverNodesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListRoverNodesSortOrderEnum Enum with underlying type: string
 type ListRoverNodesSortOrderEnum string
 
@@ -200,6 +211,17 @@ func GetListRoverNodesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListRoverNodesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRoverNodesSortOrderEnum(val string) (ListRoverNodesSortOrderEnum, bool) {
+	mappingListRoverNodesSortOrderEnumIgnoreCase := make(map[string]ListRoverNodesSortOrderEnum)
+	for k, v := range mappingListRoverNodesSortOrderEnum {
+		mappingListRoverNodesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRoverNodesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListRoverNodesSortByEnum Enum with underlying type: string
 type ListRoverNodesSortByEnum string
 
@@ -229,4 +251,15 @@ func GetListRoverNodesSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListRoverNodesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRoverNodesSortByEnum(val string) (ListRoverNodesSortByEnum, bool) {
+	mappingListRoverNodesSortByEnumIgnoreCase := make(map[string]ListRoverNodesSortByEnum)
+	for k, v := range mappingListRoverNodesSortByEnum {
+		mappingListRoverNodesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRoverNodesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

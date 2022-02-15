@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -238,4 +238,15 @@ func GetCreateConnectionDetailsModelTypeEnumStringValues() []string {
 		"BICC_CONNECTION",
 		"AMAZON_S3_CONNECTION",
 	}
+}
+
+// GetMappingCreateConnectionDetailsModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateConnectionDetailsModelTypeEnum(val string) (CreateConnectionDetailsModelTypeEnum, bool) {
+	mappingCreateConnectionDetailsModelTypeEnumIgnoreCase := make(map[string]CreateConnectionDetailsModelTypeEnum)
+	for k, v := range mappingCreateConnectionDetailsModelTypeEnum {
+		mappingCreateConnectionDetailsModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateConnectionDetailsModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

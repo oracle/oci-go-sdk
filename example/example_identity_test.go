@@ -10,10 +10,11 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/oracle/oci-go-sdk/v57/common"
-	"github.com/oracle/oci-go-sdk/v57/example/helpers"
-	"github.com/oracle/oci-go-sdk/v57/identity"
 	"net/http"
+
+	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v58/example/helpers"
+	"github.com/oracle/oci-go-sdk/v58/identity"
 )
 
 // ExampleListAvailabilityDomains Lists the Availability Domains in your tenancy.

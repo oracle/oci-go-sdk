@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -186,7 +186,7 @@ func (m externaldatabaseconnector) String() string {
 // Not recommended for calling this function directly
 func (m externaldatabaseconnector) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingExternalDatabaseConnectorLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingExternalDatabaseConnectorLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetExternalDatabaseConnectorLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -239,6 +239,17 @@ func GetExternalDatabaseConnectorLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingExternalDatabaseConnectorLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExternalDatabaseConnectorLifecycleStateEnum(val string) (ExternalDatabaseConnectorLifecycleStateEnum, bool) {
+	mappingExternalDatabaseConnectorLifecycleStateEnumIgnoreCase := make(map[string]ExternalDatabaseConnectorLifecycleStateEnum)
+	for k, v := range mappingExternalDatabaseConnectorLifecycleStateEnum {
+		mappingExternalDatabaseConnectorLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExternalDatabaseConnectorLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ExternalDatabaseConnectorConnectorTypeEnum Enum with underlying type: string
 type ExternalDatabaseConnectorConnectorTypeEnum string
 
@@ -265,4 +276,15 @@ func GetExternalDatabaseConnectorConnectorTypeEnumStringValues() []string {
 	return []string{
 		"MACS",
 	}
+}
+
+// GetMappingExternalDatabaseConnectorConnectorTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExternalDatabaseConnectorConnectorTypeEnum(val string) (ExternalDatabaseConnectorConnectorTypeEnum, bool) {
+	mappingExternalDatabaseConnectorConnectorTypeEnumIgnoreCase := make(map[string]ExternalDatabaseConnectorConnectorTypeEnum)
+	for k, v := range mappingExternalDatabaseConnectorConnectorTypeEnum {
+		mappingExternalDatabaseConnectorConnectorTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExternalDatabaseConnectorConnectorTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

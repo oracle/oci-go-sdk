@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -56,11 +56,11 @@ func (m KeyVersionSummary) String() string {
 // Not recommended for calling this function directly
 func (m KeyVersionSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingKeyVersionSummaryOriginEnum[string(m.Origin)]; !ok && m.Origin != "" {
+	if _, ok := GetMappingKeyVersionSummaryOriginEnum(string(m.Origin)); !ok && m.Origin != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Origin: %s. Supported values are: %s.", m.Origin, strings.Join(GetKeyVersionSummaryOriginEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingKeyVersionSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingKeyVersionSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetKeyVersionSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -124,6 +124,17 @@ func GetKeyVersionSummaryLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingKeyVersionSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeyVersionSummaryLifecycleStateEnum(val string) (KeyVersionSummaryLifecycleStateEnum, bool) {
+	mappingKeyVersionSummaryLifecycleStateEnumIgnoreCase := make(map[string]KeyVersionSummaryLifecycleStateEnum)
+	for k, v := range mappingKeyVersionSummaryLifecycleStateEnum {
+		mappingKeyVersionSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeyVersionSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // KeyVersionSummaryOriginEnum Enum with underlying type: string
 type KeyVersionSummaryOriginEnum string
 
@@ -153,4 +164,15 @@ func GetKeyVersionSummaryOriginEnumStringValues() []string {
 		"INTERNAL",
 		"EXTERNAL",
 	}
+}
+
+// GetMappingKeyVersionSummaryOriginEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeyVersionSummaryOriginEnum(val string) (KeyVersionSummaryOriginEnum, bool) {
+	mappingKeyVersionSummaryOriginEnumIgnoreCase := make(map[string]KeyVersionSummaryOriginEnum)
+	for k, v := range mappingKeyVersionSummaryOriginEnum {
+		mappingKeyVersionSummaryOriginEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeyVersionSummaryOriginEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

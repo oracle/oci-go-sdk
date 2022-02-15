@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -84,13 +84,13 @@ func (request ListDeployArtifactsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDeployArtifactsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDeployArtifactLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingDeployArtifactLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetDeployArtifactLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDeployArtifactsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDeployArtifactsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDeployArtifactsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDeployArtifactsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDeployArtifactsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDeployArtifactsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -155,6 +155,17 @@ func GetListDeployArtifactsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDeployArtifactsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDeployArtifactsSortOrderEnum(val string) (ListDeployArtifactsSortOrderEnum, bool) {
+	mappingListDeployArtifactsSortOrderEnumIgnoreCase := make(map[string]ListDeployArtifactsSortOrderEnum)
+	for k, v := range mappingListDeployArtifactsSortOrderEnum {
+		mappingListDeployArtifactsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDeployArtifactsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDeployArtifactsSortByEnum Enum with underlying type: string
 type ListDeployArtifactsSortByEnum string
 
@@ -184,4 +195,15 @@ func GetListDeployArtifactsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListDeployArtifactsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDeployArtifactsSortByEnum(val string) (ListDeployArtifactsSortByEnum, bool) {
+	mappingListDeployArtifactsSortByEnumIgnoreCase := make(map[string]ListDeployArtifactsSortByEnum)
+	for k, v := range mappingListDeployArtifactsSortByEnum {
+		mappingListDeployArtifactsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDeployArtifactsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

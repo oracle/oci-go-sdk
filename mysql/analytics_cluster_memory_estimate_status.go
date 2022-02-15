@@ -9,6 +9,10 @@
 
 package mysql
 
+import (
+	"strings"
+)
+
 // AnalyticsClusterMemoryEstimateStatusEnum Enum with underlying type: string
 type AnalyticsClusterMemoryEstimateStatusEnum string
 
@@ -50,4 +54,15 @@ func GetAnalyticsClusterMemoryEstimateStatusEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingAnalyticsClusterMemoryEstimateStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAnalyticsClusterMemoryEstimateStatusEnum(val string) (AnalyticsClusterMemoryEstimateStatusEnum, bool) {
+	mappingAnalyticsClusterMemoryEstimateStatusEnumIgnoreCase := make(map[string]AnalyticsClusterMemoryEstimateStatusEnum)
+	for k, v := range mappingAnalyticsClusterMemoryEstimateStatusEnum {
+		mappingAnalyticsClusterMemoryEstimateStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAnalyticsClusterMemoryEstimateStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

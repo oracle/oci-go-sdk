@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -37,7 +37,7 @@ func (m FailureDetails) String() string {
 // Not recommended for calling this function directly
 func (m FailureDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingFailureDetailsCodeEnum[string(m.Code)]; !ok && m.Code != "" {
+	if _, ok := GetMappingFailureDetailsCodeEnum(string(m.Code)); !ok && m.Code != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Code: %s. Supported values are: %s.", m.Code, strings.Join(GetFailureDetailsCodeEnumStringValues(), ",")))
 	}
 
@@ -103,4 +103,15 @@ func GetFailureDetailsCodeEnumStringValues() []string {
 		"TERRAFORM_OBJECT_STORAGE_CONFIG_SOURCE_NO_TF_FILE_PRESENT",
 		"TERRAFORM_OBJECT_STORAGE_CONFIG_SOURCE_UNSUPPORTED_OBJECT_SIZE",
 	}
+}
+
+// GetMappingFailureDetailsCodeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFailureDetailsCodeEnum(val string) (FailureDetailsCodeEnum, bool) {
+	mappingFailureDetailsCodeEnumIgnoreCase := make(map[string]FailureDetailsCodeEnum)
+	for k, v := range mappingFailureDetailsCodeEnum {
+		mappingFailureDetailsCodeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFailureDetailsCodeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

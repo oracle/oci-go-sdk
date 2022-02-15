@@ -9,6 +9,10 @@
 
 package databasemigration
 
+import (
+	"strings"
+)
+
 // DataPumpJobModeEnum Enum with underlying type: string
 type DataPumpJobModeEnum string
 
@@ -47,4 +51,15 @@ func GetDataPumpJobModeEnumStringValues() []string {
 		"TABLESPACE",
 		"TRANSPORTABLE",
 	}
+}
+
+// GetMappingDataPumpJobModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataPumpJobModeEnum(val string) (DataPumpJobModeEnum, bool) {
+	mappingDataPumpJobModeEnumIgnoreCase := make(map[string]DataPumpJobModeEnum)
+	for k, v := range mappingDataPumpJobModeEnum {
+		mappingDataPumpJobModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataPumpJobModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

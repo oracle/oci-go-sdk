@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -103,4 +103,15 @@ func GetJobExecutionResultLocationTypeEnumStringValues() []string {
 	return []string{
 		"OBJECT_STORAGE",
 	}
+}
+
+// GetMappingJobExecutionResultLocationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobExecutionResultLocationTypeEnum(val string) (JobExecutionResultLocationTypeEnum, bool) {
+	mappingJobExecutionResultLocationTypeEnumIgnoreCase := make(map[string]JobExecutionResultLocationTypeEnum)
+	for k, v := range mappingJobExecutionResultLocationTypeEnum {
+		mappingJobExecutionResultLocationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobExecutionResultLocationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

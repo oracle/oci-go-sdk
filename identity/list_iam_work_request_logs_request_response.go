@@ -6,7 +6,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -71,7 +71,7 @@ func (request ListIamWorkRequestLogsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListIamWorkRequestLogsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListIamWorkRequestLogsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListIamWorkRequestLogsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListIamWorkRequestLogsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -140,4 +140,15 @@ func GetListIamWorkRequestLogsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListIamWorkRequestLogsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListIamWorkRequestLogsSortOrderEnum(val string) (ListIamWorkRequestLogsSortOrderEnum, bool) {
+	mappingListIamWorkRequestLogsSortOrderEnumIgnoreCase := make(map[string]ListIamWorkRequestLogsSortOrderEnum)
+	for k, v := range mappingListIamWorkRequestLogsSortOrderEnum {
+		mappingListIamWorkRequestLogsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListIamWorkRequestLogsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

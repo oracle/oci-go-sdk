@@ -13,7 +13,7 @@ package waf
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -71,7 +71,7 @@ func (m RequestRateLimitingRule) String() string {
 func (m RequestRateLimitingRule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingWebAppFirewallPolicyRuleConditionLanguageEnum[string(m.ConditionLanguage)]; !ok && m.ConditionLanguage != "" {
+	if _, ok := GetMappingWebAppFirewallPolicyRuleConditionLanguageEnum(string(m.ConditionLanguage)); !ok && m.ConditionLanguage != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ConditionLanguage: %s. Supported values are: %s.", m.ConditionLanguage, strings.Join(GetWebAppFirewallPolicyRuleConditionLanguageEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -10,6 +10,10 @@
 
 package osmanagement
 
+import (
+	"strings"
+)
+
 // EventTypeEnum Enum with underlying type: string
 type EventTypeEnum string
 
@@ -63,4 +67,15 @@ func GetEventTypeEnumStringValues() []string {
 		"ERROR",
 		"WARNING",
 	}
+}
+
+// GetMappingEventTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEventTypeEnum(val string) (EventTypeEnum, bool) {
+	mappingEventTypeEnumIgnoreCase := make(map[string]EventTypeEnum)
+	for k, v := range mappingEventTypeEnum {
+		mappingEventTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEventTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

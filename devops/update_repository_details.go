@@ -11,7 +11,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -49,7 +49,7 @@ func (m UpdateRepositoryDetails) String() string {
 func (m UpdateRepositoryDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingRepositoryRepositoryTypeEnum[string(m.RepositoryType)]; !ok && m.RepositoryType != "" {
+	if _, ok := GetMappingRepositoryRepositoryTypeEnum(string(m.RepositoryType)); !ok && m.RepositoryType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RepositoryType: %s. Supported values are: %s.", m.RepositoryType, strings.Join(GetRepositoryRepositoryTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

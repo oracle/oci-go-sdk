@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -36,7 +36,7 @@ func (m AwrReport) String() string {
 // Not recommended for calling this function directly
 func (m AwrReport) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAwrReportFormatTypeEnum[string(m.Format)]; !ok && m.Format != "" {
+	if _, ok := GetMappingAwrReportFormatTypeEnum(string(m.Format)); !ok && m.Format != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Format: %s. Supported values are: %s.", m.Format, strings.Join(GetAwrReportFormatTypeEnumStringValues(), ",")))
 	}
 

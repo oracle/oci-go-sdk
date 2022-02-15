@@ -9,6 +9,10 @@
 
 package apmsynthetics
 
+import (
+	"strings"
+)
+
 // MonitorTypesEnum Enum with underlying type: string
 type MonitorTypesEnum string
 
@@ -44,4 +48,15 @@ func GetMonitorTypesEnumStringValues() []string {
 		"SCRIPTED_REST",
 		"REST",
 	}
+}
+
+// GetMappingMonitorTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMonitorTypesEnum(val string) (MonitorTypesEnum, bool) {
+	mappingMonitorTypesEnumIgnoreCase := make(map[string]MonitorTypesEnum)
+	for k, v := range mappingMonitorTypesEnum {
+		mappingMonitorTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMonitorTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

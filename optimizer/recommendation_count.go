@@ -13,7 +13,7 @@ package optimizer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -36,7 +36,7 @@ func (m RecommendationCount) String() string {
 // Not recommended for calling this function directly
 func (m RecommendationCount) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingImportanceEnum[string(m.Importance)]; !ok && m.Importance != "" {
+	if _, ok := GetMappingImportanceEnum(string(m.Importance)); !ok && m.Importance != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Importance: %s. Supported values are: %s.", m.Importance, strings.Join(GetImportanceEnumStringValues(), ",")))
 	}
 

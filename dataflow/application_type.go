@@ -9,6 +9,10 @@
 
 package dataflow
 
+import (
+	"strings"
+)
+
 // ApplicationTypeEnum Enum with underlying type: string
 type ApplicationTypeEnum string
 
@@ -38,4 +42,15 @@ func GetApplicationTypeEnumStringValues() []string {
 		"BATCH",
 		"STREAMING",
 	}
+}
+
+// GetMappingApplicationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingApplicationTypeEnum(val string) (ApplicationTypeEnum, bool) {
+	mappingApplicationTypeEnumIgnoreCase := make(map[string]ApplicationTypeEnum)
+	for k, v := range mappingApplicationTypeEnum {
+		mappingApplicationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingApplicationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

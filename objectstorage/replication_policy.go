@@ -13,7 +13,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -56,7 +56,7 @@ func (m ReplicationPolicy) String() string {
 // Not recommended for calling this function directly
 func (m ReplicationPolicy) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingReplicationPolicyStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingReplicationPolicyStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetReplicationPolicyStatusEnumStringValues(), ",")))
 	}
 
@@ -95,4 +95,15 @@ func GetReplicationPolicyStatusEnumStringValues() []string {
 		"ACTIVE",
 		"CLIENT_ERROR",
 	}
+}
+
+// GetMappingReplicationPolicyStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingReplicationPolicyStatusEnum(val string) (ReplicationPolicyStatusEnum, bool) {
+	mappingReplicationPolicyStatusEnumIgnoreCase := make(map[string]ReplicationPolicyStatusEnum)
+	for k, v := range mappingReplicationPolicyStatusEnum {
+		mappingReplicationPolicyStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingReplicationPolicyStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

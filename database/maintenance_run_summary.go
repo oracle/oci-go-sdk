@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -80,20 +80,20 @@ func (m MaintenanceRunSummary) String() string {
 // Not recommended for calling this function directly
 func (m MaintenanceRunSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingMaintenanceRunSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingMaintenanceRunSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetMaintenanceRunSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingMaintenanceRunSummaryTargetResourceTypeEnum[string(m.TargetResourceType)]; !ok && m.TargetResourceType != "" {
+	if _, ok := GetMappingMaintenanceRunSummaryTargetResourceTypeEnum(string(m.TargetResourceType)); !ok && m.TargetResourceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TargetResourceType: %s. Supported values are: %s.", m.TargetResourceType, strings.Join(GetMaintenanceRunSummaryTargetResourceTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingMaintenanceRunSummaryMaintenanceTypeEnum[string(m.MaintenanceType)]; !ok && m.MaintenanceType != "" {
+	if _, ok := GetMappingMaintenanceRunSummaryMaintenanceTypeEnum(string(m.MaintenanceType)); !ok && m.MaintenanceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MaintenanceType: %s. Supported values are: %s.", m.MaintenanceType, strings.Join(GetMaintenanceRunSummaryMaintenanceTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingMaintenanceRunSummaryMaintenanceSubtypeEnum[string(m.MaintenanceSubtype)]; !ok && m.MaintenanceSubtype != "" {
+	if _, ok := GetMappingMaintenanceRunSummaryMaintenanceSubtypeEnum(string(m.MaintenanceSubtype)); !ok && m.MaintenanceSubtype != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MaintenanceSubtype: %s. Supported values are: %s.", m.MaintenanceSubtype, strings.Join(GetMaintenanceRunSummaryMaintenanceSubtypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingMaintenanceRunSummaryPatchingModeEnum[string(m.PatchingMode)]; !ok && m.PatchingMode != "" {
+	if _, ok := GetMappingMaintenanceRunSummaryPatchingModeEnum(string(m.PatchingMode)); !ok && m.PatchingMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PatchingMode: %s. Supported values are: %s.", m.PatchingMode, strings.Join(GetMaintenanceRunSummaryPatchingModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -154,6 +154,17 @@ func GetMaintenanceRunSummaryLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingMaintenanceRunSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMaintenanceRunSummaryLifecycleStateEnum(val string) (MaintenanceRunSummaryLifecycleStateEnum, bool) {
+	mappingMaintenanceRunSummaryLifecycleStateEnumIgnoreCase := make(map[string]MaintenanceRunSummaryLifecycleStateEnum)
+	for k, v := range mappingMaintenanceRunSummaryLifecycleStateEnum {
+		mappingMaintenanceRunSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMaintenanceRunSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // MaintenanceRunSummaryTargetResourceTypeEnum Enum with underlying type: string
 type MaintenanceRunSummaryTargetResourceTypeEnum string
 
@@ -197,6 +208,17 @@ func GetMaintenanceRunSummaryTargetResourceTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingMaintenanceRunSummaryTargetResourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMaintenanceRunSummaryTargetResourceTypeEnum(val string) (MaintenanceRunSummaryTargetResourceTypeEnum, bool) {
+	mappingMaintenanceRunSummaryTargetResourceTypeEnumIgnoreCase := make(map[string]MaintenanceRunSummaryTargetResourceTypeEnum)
+	for k, v := range mappingMaintenanceRunSummaryTargetResourceTypeEnum {
+		mappingMaintenanceRunSummaryTargetResourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMaintenanceRunSummaryTargetResourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // MaintenanceRunSummaryMaintenanceTypeEnum Enum with underlying type: string
 type MaintenanceRunSummaryMaintenanceTypeEnum string
 
@@ -226,6 +248,17 @@ func GetMaintenanceRunSummaryMaintenanceTypeEnumStringValues() []string {
 		"PLANNED",
 		"UNPLANNED",
 	}
+}
+
+// GetMappingMaintenanceRunSummaryMaintenanceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMaintenanceRunSummaryMaintenanceTypeEnum(val string) (MaintenanceRunSummaryMaintenanceTypeEnum, bool) {
+	mappingMaintenanceRunSummaryMaintenanceTypeEnumIgnoreCase := make(map[string]MaintenanceRunSummaryMaintenanceTypeEnum)
+	for k, v := range mappingMaintenanceRunSummaryMaintenanceTypeEnum {
+		mappingMaintenanceRunSummaryMaintenanceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMaintenanceRunSummaryMaintenanceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // MaintenanceRunSummaryMaintenanceSubtypeEnum Enum with underlying type: string
@@ -271,6 +304,17 @@ func GetMaintenanceRunSummaryMaintenanceSubtypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingMaintenanceRunSummaryMaintenanceSubtypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMaintenanceRunSummaryMaintenanceSubtypeEnum(val string) (MaintenanceRunSummaryMaintenanceSubtypeEnum, bool) {
+	mappingMaintenanceRunSummaryMaintenanceSubtypeEnumIgnoreCase := make(map[string]MaintenanceRunSummaryMaintenanceSubtypeEnum)
+	for k, v := range mappingMaintenanceRunSummaryMaintenanceSubtypeEnum {
+		mappingMaintenanceRunSummaryMaintenanceSubtypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMaintenanceRunSummaryMaintenanceSubtypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // MaintenanceRunSummaryPatchingModeEnum Enum with underlying type: string
 type MaintenanceRunSummaryPatchingModeEnum string
 
@@ -300,4 +344,15 @@ func GetMaintenanceRunSummaryPatchingModeEnumStringValues() []string {
 		"ROLLING",
 		"NONROLLING",
 	}
+}
+
+// GetMappingMaintenanceRunSummaryPatchingModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMaintenanceRunSummaryPatchingModeEnum(val string) (MaintenanceRunSummaryPatchingModeEnum, bool) {
+	mappingMaintenanceRunSummaryPatchingModeEnumIgnoreCase := make(map[string]MaintenanceRunSummaryPatchingModeEnum)
+	for k, v := range mappingMaintenanceRunSummaryPatchingModeEnum {
+		mappingMaintenanceRunSummaryPatchingModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMaintenanceRunSummaryPatchingModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package apmsynthetics
 
+import (
+	"strings"
+)
+
 // ProbeModeEnum Enum with underlying type: string
 type ProbeModeEnum string
 
@@ -38,4 +42,15 @@ func GetProbeModeEnumStringValues() []string {
 		"SACK",
 		"SYN",
 	}
+}
+
+// GetMappingProbeModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingProbeModeEnum(val string) (ProbeModeEnum, bool) {
+	mappingProbeModeEnumIgnoreCase := make(map[string]ProbeModeEnum)
+	for k, v := range mappingProbeModeEnum {
+		mappingProbeModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingProbeModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

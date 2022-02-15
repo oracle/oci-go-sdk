@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -84,13 +84,13 @@ func (request ListTriggersRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListTriggersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTriggerLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingTriggerLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetTriggerLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTriggersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListTriggersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListTriggersSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTriggersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListTriggersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListTriggersSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -155,6 +155,17 @@ func GetListTriggersSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTriggersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTriggersSortOrderEnum(val string) (ListTriggersSortOrderEnum, bool) {
+	mappingListTriggersSortOrderEnumIgnoreCase := make(map[string]ListTriggersSortOrderEnum)
+	for k, v := range mappingListTriggersSortOrderEnum {
+		mappingListTriggersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTriggersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTriggersSortByEnum Enum with underlying type: string
 type ListTriggersSortByEnum string
 
@@ -184,4 +195,15 @@ func GetListTriggersSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListTriggersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTriggersSortByEnum(val string) (ListTriggersSortByEnum, bool) {
+	mappingListTriggersSortByEnumIgnoreCase := make(map[string]ListTriggersSortByEnum)
+	for k, v := range mappingListTriggersSortByEnum {
+		mappingListTriggersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTriggersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -73,7 +73,7 @@ func (m CreateDatabaseDetails) String() string {
 func (m CreateDatabaseDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateDatabaseDetailsDbWorkloadEnum[string(m.DbWorkload)]; !ok && m.DbWorkload != "" {
+	if _, ok := GetMappingCreateDatabaseDetailsDbWorkloadEnum(string(m.DbWorkload)); !ok && m.DbWorkload != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DbWorkload: %s. Supported values are: %s.", m.DbWorkload, strings.Join(GetCreateDatabaseDetailsDbWorkloadEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -111,4 +111,15 @@ func GetCreateDatabaseDetailsDbWorkloadEnumStringValues() []string {
 		"OLTP",
 		"DSS",
 	}
+}
+
+// GetMappingCreateDatabaseDetailsDbWorkloadEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateDatabaseDetailsDbWorkloadEnum(val string) (CreateDatabaseDetailsDbWorkloadEnum, bool) {
+	mappingCreateDatabaseDetailsDbWorkloadEnumIgnoreCase := make(map[string]CreateDatabaseDetailsDbWorkloadEnum)
+	for k, v := range mappingCreateDatabaseDetailsDbWorkloadEnum {
+		mappingCreateDatabaseDetailsDbWorkloadEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateDatabaseDetailsDbWorkloadEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -77,7 +77,7 @@ func (request TestParserRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request TestParserRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTestParserScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingTestParserScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetTestParserScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -140,4 +140,15 @@ func GetTestParserScopeEnumStringValues() []string {
 		"LOG_ENTRIES",
 		"LOG_LINES_LOG_ENTRIES",
 	}
+}
+
+// GetMappingTestParserScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTestParserScopeEnum(val string) (TestParserScopeEnum, bool) {
+	mappingTestParserScopeEnumIgnoreCase := make(map[string]TestParserScopeEnum)
+	for k, v := range mappingTestParserScopeEnum {
+		mappingTestParserScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTestParserScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -10,6 +10,10 @@
 
 package dns
 
+import (
+	"strings"
+)
+
 // ScopeEnum Enum with underlying type: string
 type ScopeEnum string
 
@@ -39,4 +43,15 @@ func GetScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingScopeEnum(val string) (ScopeEnum, bool) {
+	mappingScopeEnumIgnoreCase := make(map[string]ScopeEnum)
+	for k, v := range mappingScopeEnum {
+		mappingScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

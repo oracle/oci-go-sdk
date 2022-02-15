@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -88,13 +88,13 @@ func (request ListScheduledTasksRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListScheduledTasksRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListScheduledTasksTaskTypeEnum[string(request.TaskType)]; !ok && request.TaskType != "" {
+	if _, ok := GetMappingListScheduledTasksTaskTypeEnum(string(request.TaskType)); !ok && request.TaskType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TaskType: %s. Supported values are: %s.", request.TaskType, strings.Join(GetListScheduledTasksTaskTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListScheduledTasksSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListScheduledTasksSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListScheduledTasksSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListScheduledTasksSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListScheduledTasksSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListScheduledTasksSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -172,6 +172,17 @@ func GetListScheduledTasksTaskTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListScheduledTasksTaskTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListScheduledTasksTaskTypeEnum(val string) (ListScheduledTasksTaskTypeEnum, bool) {
+	mappingListScheduledTasksTaskTypeEnumIgnoreCase := make(map[string]ListScheduledTasksTaskTypeEnum)
+	for k, v := range mappingListScheduledTasksTaskTypeEnum {
+		mappingListScheduledTasksTaskTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListScheduledTasksTaskTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListScheduledTasksSortOrderEnum Enum with underlying type: string
 type ListScheduledTasksSortOrderEnum string
 
@@ -201,6 +212,17 @@ func GetListScheduledTasksSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListScheduledTasksSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListScheduledTasksSortOrderEnum(val string) (ListScheduledTasksSortOrderEnum, bool) {
+	mappingListScheduledTasksSortOrderEnumIgnoreCase := make(map[string]ListScheduledTasksSortOrderEnum)
+	for k, v := range mappingListScheduledTasksSortOrderEnum {
+		mappingListScheduledTasksSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListScheduledTasksSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListScheduledTasksSortByEnum Enum with underlying type: string
@@ -235,4 +257,15 @@ func GetListScheduledTasksSortByEnumStringValues() []string {
 		"timeUpdated",
 		"displayName",
 	}
+}
+
+// GetMappingListScheduledTasksSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListScheduledTasksSortByEnum(val string) (ListScheduledTasksSortByEnum, bool) {
+	mappingListScheduledTasksSortByEnumIgnoreCase := make(map[string]ListScheduledTasksSortByEnum)
+	for k, v := range mappingListScheduledTasksSortByEnum {
+		mappingListScheduledTasksSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListScheduledTasksSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

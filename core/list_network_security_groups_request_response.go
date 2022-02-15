@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -98,13 +98,13 @@ func (request ListNetworkSecurityGroupsRequest) RetryPolicy() *common.RetryPolic
 // Not recommended for calling this function directly
 func (request ListNetworkSecurityGroupsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListNetworkSecurityGroupsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListNetworkSecurityGroupsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListNetworkSecurityGroupsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListNetworkSecurityGroupsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListNetworkSecurityGroupsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListNetworkSecurityGroupsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingNetworkSecurityGroupLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingNetworkSecurityGroupLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetNetworkSecurityGroupLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -172,6 +172,17 @@ func GetListNetworkSecurityGroupsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListNetworkSecurityGroupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNetworkSecurityGroupsSortByEnum(val string) (ListNetworkSecurityGroupsSortByEnum, bool) {
+	mappingListNetworkSecurityGroupsSortByEnumIgnoreCase := make(map[string]ListNetworkSecurityGroupsSortByEnum)
+	for k, v := range mappingListNetworkSecurityGroupsSortByEnum {
+		mappingListNetworkSecurityGroupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNetworkSecurityGroupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListNetworkSecurityGroupsSortOrderEnum Enum with underlying type: string
 type ListNetworkSecurityGroupsSortOrderEnum string
 
@@ -201,4 +212,15 @@ func GetListNetworkSecurityGroupsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListNetworkSecurityGroupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNetworkSecurityGroupsSortOrderEnum(val string) (ListNetworkSecurityGroupsSortOrderEnum, bool) {
+	mappingListNetworkSecurityGroupsSortOrderEnumIgnoreCase := make(map[string]ListNetworkSecurityGroupsSortOrderEnum)
+	for k, v := range mappingListNetworkSecurityGroupsSortOrderEnum {
+		mappingListNetworkSecurityGroupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNetworkSecurityGroupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -137,4 +137,15 @@ func GetDataEntitySummaryModelTypeEnumStringValues() []string {
 		"SQL_ENTITY",
 		"DATA_STORE_ENTITY",
 	}
+}
+
+// GetMappingDataEntitySummaryModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataEntitySummaryModelTypeEnum(val string) (DataEntitySummaryModelTypeEnum, bool) {
+	mappingDataEntitySummaryModelTypeEnumIgnoreCase := make(map[string]DataEntitySummaryModelTypeEnum)
+	for k, v := range mappingDataEntitySummaryModelTypeEnum {
+		mappingDataEntitySummaryModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataEntitySummaryModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

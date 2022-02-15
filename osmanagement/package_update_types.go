@@ -10,6 +10,10 @@
 
 package osmanagement
 
+import (
+	"strings"
+)
+
 // PackageUpdateTypesEnum Enum with underlying type: string
 type PackageUpdateTypesEnum string
 
@@ -51,4 +55,15 @@ func GetPackageUpdateTypesEnumStringValues() []string {
 		"KSPLICE",
 		"ALL",
 	}
+}
+
+// GetMappingPackageUpdateTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPackageUpdateTypesEnum(val string) (PackageUpdateTypesEnum, bool) {
+	mappingPackageUpdateTypesEnumIgnoreCase := make(map[string]PackageUpdateTypesEnum)
+	for k, v := range mappingPackageUpdateTypesEnum {
+		mappingPackageUpdateTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPackageUpdateTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

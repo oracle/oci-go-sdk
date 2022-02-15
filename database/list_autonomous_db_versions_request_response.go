@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -72,10 +72,10 @@ func (request ListAutonomousDbVersionsRequest) RetryPolicy() *common.RetryPolicy
 // Not recommended for calling this function directly
 func (request ListAutonomousDbVersionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAutonomousDatabaseSummaryDbWorkloadEnum[string(request.DbWorkload)]; !ok && request.DbWorkload != "" {
+	if _, ok := GetMappingAutonomousDatabaseSummaryDbWorkloadEnum(string(request.DbWorkload)); !ok && request.DbWorkload != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DbWorkload: %s. Supported values are: %s.", request.DbWorkload, strings.Join(GetAutonomousDatabaseSummaryDbWorkloadEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAutonomousDbVersionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAutonomousDbVersionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAutonomousDbVersionsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -142,4 +142,15 @@ func GetListAutonomousDbVersionsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAutonomousDbVersionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAutonomousDbVersionsSortOrderEnum(val string) (ListAutonomousDbVersionsSortOrderEnum, bool) {
+	mappingListAutonomousDbVersionsSortOrderEnumIgnoreCase := make(map[string]ListAutonomousDbVersionsSortOrderEnum)
+	for k, v := range mappingListAutonomousDbVersionsSortOrderEnum {
+		mappingListAutonomousDbVersionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAutonomousDbVersionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

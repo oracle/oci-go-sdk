@@ -9,6 +9,10 @@
 
 package managementagent
 
+import (
+	"strings"
+)
+
 // EditModesEnum Enum with underlying type: string
 type EditModesEnum string
 
@@ -41,4 +45,15 @@ func GetEditModesEnumStringValues() []string {
 		"WRITABLE",
 		"EXTENSIBLE",
 	}
+}
+
+// GetMappingEditModesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEditModesEnum(val string) (EditModesEnum, bool) {
+	mappingEditModesEnumIgnoreCase := make(map[string]EditModesEnum)
+	for k, v := range mappingEditModesEnum {
+		mappingEditModesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEditModesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

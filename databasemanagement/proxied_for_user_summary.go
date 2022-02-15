@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -40,10 +40,10 @@ func (m ProxiedForUserSummary) String() string {
 func (m ProxiedForUserSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingProxiedForUserSummaryAuthenticationEnum[string(m.Authentication)]; !ok && m.Authentication != "" {
+	if _, ok := GetMappingProxiedForUserSummaryAuthenticationEnum(string(m.Authentication)); !ok && m.Authentication != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Authentication: %s. Supported values are: %s.", m.Authentication, strings.Join(GetProxiedForUserSummaryAuthenticationEnumStringValues(), ",")))
 	}
-	if _, ok := mappingProxiedForUserSummaryFlagsEnum[string(m.Flags)]; !ok && m.Flags != "" {
+	if _, ok := GetMappingProxiedForUserSummaryFlagsEnum(string(m.Flags)); !ok && m.Flags != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Flags: %s. Supported values are: %s.", m.Flags, strings.Join(GetProxiedForUserSummaryFlagsEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -83,6 +83,17 @@ func GetProxiedForUserSummaryAuthenticationEnumStringValues() []string {
 	}
 }
 
+// GetMappingProxiedForUserSummaryAuthenticationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingProxiedForUserSummaryAuthenticationEnum(val string) (ProxiedForUserSummaryAuthenticationEnum, bool) {
+	mappingProxiedForUserSummaryAuthenticationEnumIgnoreCase := make(map[string]ProxiedForUserSummaryAuthenticationEnum)
+	for k, v := range mappingProxiedForUserSummaryAuthenticationEnum {
+		mappingProxiedForUserSummaryAuthenticationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingProxiedForUserSummaryAuthenticationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ProxiedForUserSummaryFlagsEnum Enum with underlying type: string
 type ProxiedForUserSummaryFlagsEnum string
 
@@ -118,4 +129,15 @@ func GetProxiedForUserSummaryFlagsEnumStringValues() []string {
 		"PROXY_MAY_ACTIVATE_ROLE",
 		"PROXY_MAY_NOT_ACTIVATE_ROLE",
 	}
+}
+
+// GetMappingProxiedForUserSummaryFlagsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingProxiedForUserSummaryFlagsEnum(val string) (ProxiedForUserSummaryFlagsEnum, bool) {
+	mappingProxiedForUserSummaryFlagsEnumIgnoreCase := make(map[string]ProxiedForUserSummaryFlagsEnum)
+	for k, v := range mappingProxiedForUserSummaryFlagsEnum {
+		mappingProxiedForUserSummaryFlagsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingProxiedForUserSummaryFlagsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

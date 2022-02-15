@@ -11,7 +11,7 @@ package blockchain
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -51,7 +51,7 @@ func (m UpdateBlockchainPlatformDetails) String() string {
 func (m UpdateBlockchainPlatformDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBlockchainPlatformLoadBalancerShapeEnum[string(m.LoadBalancerShape)]; !ok && m.LoadBalancerShape != "" {
+	if _, ok := GetMappingBlockchainPlatformLoadBalancerShapeEnum(string(m.LoadBalancerShape)); !ok && m.LoadBalancerShape != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LoadBalancerShape: %s. Supported values are: %s.", m.LoadBalancerShape, strings.Join(GetBlockchainPlatformLoadBalancerShapeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

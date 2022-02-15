@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // OperatorTypeEnum Enum with underlying type: string
 type OperatorTypeEnum string
 
@@ -44,4 +48,15 @@ func GetOperatorTypeEnumStringValues() []string {
 		"EQUALS",
 		"NOT_EQUALS",
 	}
+}
+
+// GetMappingOperatorTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOperatorTypeEnum(val string) (OperatorTypeEnum, bool) {
+	mappingOperatorTypeEnumIgnoreCase := make(map[string]OperatorTypeEnum)
+	for k, v := range mappingOperatorTypeEnum {
+		mappingOperatorTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOperatorTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

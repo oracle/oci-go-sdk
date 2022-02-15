@@ -11,6 +11,10 @@
 
 package healthchecks
 
+import (
+	"strings"
+)
+
 // PingProbeProtocolEnum Enum with underlying type: string
 type PingProbeProtocolEnum string
 
@@ -40,4 +44,15 @@ func GetPingProbeProtocolEnumStringValues() []string {
 		"ICMP",
 		"TCP",
 	}
+}
+
+// GetMappingPingProbeProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPingProbeProtocolEnum(val string) (PingProbeProtocolEnum, bool) {
+	mappingPingProbeProtocolEnumIgnoreCase := make(map[string]PingProbeProtocolEnum)
+	for k, v := range mappingPingProbeProtocolEnum {
+		mappingPingProbeProtocolEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPingProbeProtocolEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

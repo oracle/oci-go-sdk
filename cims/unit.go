@@ -9,6 +9,10 @@
 
 package cims
 
+import (
+	"strings"
+)
+
 // UnitEnum Enum with underlying type: string
 type UnitEnum string
 
@@ -41,4 +45,15 @@ func GetUnitEnumStringValues() []string {
 		"GB",
 		"NONE",
 	}
+}
+
+// GetMappingUnitEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUnitEnum(val string) (UnitEnum, bool) {
+	mappingUnitEnumIgnoreCase := make(map[string]UnitEnum)
+	for k, v := range mappingUnitEnum {
+		mappingUnitEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUnitEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

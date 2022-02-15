@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -85,11 +85,11 @@ func (m Key) String() string {
 // Not recommended for calling this function directly
 func (m Key) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingKeyLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingKeyLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetKeyLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingKeyProtectionModeEnum[string(m.ProtectionMode)]; !ok && m.ProtectionMode != "" {
+	if _, ok := GetMappingKeyProtectionModeEnum(string(m.ProtectionMode)); !ok && m.ProtectionMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProtectionMode: %s. Supported values are: %s.", m.ProtectionMode, strings.Join(GetKeyProtectionModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -127,6 +127,17 @@ func GetKeyProtectionModeEnumStringValues() []string {
 		"HSM",
 		"SOFTWARE",
 	}
+}
+
+// GetMappingKeyProtectionModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeyProtectionModeEnum(val string) (KeyProtectionModeEnum, bool) {
+	mappingKeyProtectionModeEnumIgnoreCase := make(map[string]KeyProtectionModeEnum)
+	for k, v := range mappingKeyProtectionModeEnum {
+		mappingKeyProtectionModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeyProtectionModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // KeyLifecycleStateEnum Enum with underlying type: string
@@ -191,4 +202,15 @@ func GetKeyLifecycleStateEnumStringValues() []string {
 		"BACKUP_IN_PROGRESS",
 		"RESTORING",
 	}
+}
+
+// GetMappingKeyLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeyLifecycleStateEnum(val string) (KeyLifecycleStateEnum, bool) {
+	mappingKeyLifecycleStateEnumIgnoreCase := make(map[string]KeyLifecycleStateEnum)
+	for k, v := range mappingKeyLifecycleStateEnum {
+		mappingKeyLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeyLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

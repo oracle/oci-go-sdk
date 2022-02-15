@@ -9,6 +9,10 @@
 
 package logging
 
+import (
+	"strings"
+)
+
 // UnifiedAgentServiceConfigurationTypesEnum Enum with underlying type: string
 type UnifiedAgentServiceConfigurationTypesEnum string
 
@@ -35,4 +39,15 @@ func GetUnifiedAgentServiceConfigurationTypesEnumStringValues() []string {
 	return []string{
 		"LOGGING",
 	}
+}
+
+// GetMappingUnifiedAgentServiceConfigurationTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUnifiedAgentServiceConfigurationTypesEnum(val string) (UnifiedAgentServiceConfigurationTypesEnum, bool) {
+	mappingUnifiedAgentServiceConfigurationTypesEnumIgnoreCase := make(map[string]UnifiedAgentServiceConfigurationTypesEnum)
+	for k, v := range mappingUnifiedAgentServiceConfigurationTypesEnum {
+		mappingUnifiedAgentServiceConfigurationTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUnifiedAgentServiceConfigurationTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

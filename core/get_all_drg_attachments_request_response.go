@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -78,7 +78,7 @@ func (request GetAllDrgAttachmentsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetAllDrgAttachmentsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetAllDrgAttachmentsAttachmentTypeEnum[string(request.AttachmentType)]; !ok && request.AttachmentType != "" {
+	if _, ok := GetMappingGetAllDrgAttachmentsAttachmentTypeEnum(string(request.AttachmentType)); !ok && request.AttachmentType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AttachmentType: %s. Supported values are: %s.", request.AttachmentType, strings.Join(GetGetAllDrgAttachmentsAttachmentTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -153,4 +153,15 @@ func GetGetAllDrgAttachmentsAttachmentTypeEnumStringValues() []string {
 		"IPSEC_TUNNEL",
 		"ALL",
 	}
+}
+
+// GetMappingGetAllDrgAttachmentsAttachmentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetAllDrgAttachmentsAttachmentTypeEnum(val string) (GetAllDrgAttachmentsAttachmentTypeEnum, bool) {
+	mappingGetAllDrgAttachmentsAttachmentTypeEnumIgnoreCase := make(map[string]GetAllDrgAttachmentsAttachmentTypeEnum)
+	for k, v := range mappingGetAllDrgAttachmentsAttachmentTypeEnum {
+		mappingGetAllDrgAttachmentsAttachmentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetAllDrgAttachmentsAttachmentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

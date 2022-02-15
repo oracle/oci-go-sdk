@@ -9,6 +9,10 @@
 
 package databasetools
 
+import (
+	"strings"
+)
+
 // ServiceCapabilityEnum Enum with underlying type: string
 type ServiceCapabilityEnum string
 
@@ -35,4 +39,15 @@ func GetServiceCapabilityEnumStringValues() []string {
 	return []string{
 		"PRIVATE_ENDPOINT_SUPPORTED",
 	}
+}
+
+// GetMappingServiceCapabilityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingServiceCapabilityEnum(val string) (ServiceCapabilityEnum, bool) {
+	mappingServiceCapabilityEnumIgnoreCase := make(map[string]ServiceCapabilityEnum)
+	for k, v := range mappingServiceCapabilityEnum {
+		mappingServiceCapabilityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingServiceCapabilityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // ActorTypeEnum Enum with underlying type: string
 type ActorTypeEnum string
 
@@ -44,4 +48,15 @@ func GetActorTypeEnumStringValues() []string {
 		"RESPONDER",
 		"USER",
 	}
+}
+
+// GetMappingActorTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingActorTypeEnum(val string) (ActorTypeEnum, bool) {
+	mappingActorTypeEnumIgnoreCase := make(map[string]ActorTypeEnum)
+	for k, v := range mappingActorTypeEnum {
+		mappingActorTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingActorTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

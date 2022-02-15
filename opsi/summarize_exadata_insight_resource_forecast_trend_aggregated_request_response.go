@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -154,10 +154,10 @@ func (request SummarizeExadataInsightResourceForecastTrendAggregatedRequest) Ret
 // Not recommended for calling this function directly
 func (request SummarizeExadataInsightResourceForecastTrendAggregatedRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeExadataInsightResourceForecastTrendAggregatedStatisticEnum[string(request.Statistic)]; !ok && request.Statistic != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceForecastTrendAggregatedStatisticEnum(string(request.Statistic)); !ok && request.Statistic != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Statistic: %s. Supported values are: %s.", request.Statistic, strings.Join(GetSummarizeExadataInsightResourceForecastTrendAggregatedStatisticEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeExadataInsightResourceForecastTrendAggregatedForecastModelEnum[string(request.ForecastModel)]; !ok && request.ForecastModel != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceForecastTrendAggregatedForecastModelEnum(string(request.ForecastModel)); !ok && request.ForecastModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ForecastModel: %s. Supported values are: %s.", request.ForecastModel, strings.Join(GetSummarizeExadataInsightResourceForecastTrendAggregatedForecastModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -225,6 +225,17 @@ func GetSummarizeExadataInsightResourceForecastTrendAggregatedStatisticEnumStrin
 	}
 }
 
+// GetMappingSummarizeExadataInsightResourceForecastTrendAggregatedStatisticEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceForecastTrendAggregatedStatisticEnum(val string) (SummarizeExadataInsightResourceForecastTrendAggregatedStatisticEnum, bool) {
+	mappingSummarizeExadataInsightResourceForecastTrendAggregatedStatisticEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceForecastTrendAggregatedStatisticEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceForecastTrendAggregatedStatisticEnum {
+		mappingSummarizeExadataInsightResourceForecastTrendAggregatedStatisticEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceForecastTrendAggregatedStatisticEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeExadataInsightResourceForecastTrendAggregatedForecastModelEnum Enum with underlying type: string
 type SummarizeExadataInsightResourceForecastTrendAggregatedForecastModelEnum string
 
@@ -257,4 +268,15 @@ func GetSummarizeExadataInsightResourceForecastTrendAggregatedForecastModelEnumS
 		"ML_AUTO",
 		"ML_NO_AUTO",
 	}
+}
+
+// GetMappingSummarizeExadataInsightResourceForecastTrendAggregatedForecastModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceForecastTrendAggregatedForecastModelEnum(val string) (SummarizeExadataInsightResourceForecastTrendAggregatedForecastModelEnum, bool) {
+	mappingSummarizeExadataInsightResourceForecastTrendAggregatedForecastModelEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceForecastTrendAggregatedForecastModelEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceForecastTrendAggregatedForecastModelEnum {
+		mappingSummarizeExadataInsightResourceForecastTrendAggregatedForecastModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceForecastTrendAggregatedForecastModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

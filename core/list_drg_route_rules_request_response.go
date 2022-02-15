@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -76,7 +76,7 @@ func (request ListDrgRouteRulesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDrgRouteRulesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDrgRouteRulesRouteTypeEnum[string(request.RouteType)]; !ok && request.RouteType != "" {
+	if _, ok := GetMappingListDrgRouteRulesRouteTypeEnum(string(request.RouteType)); !ok && request.RouteType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RouteType: %s. Supported values are: %s.", request.RouteType, strings.Join(GetListDrgRouteRulesRouteTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -142,4 +142,15 @@ func GetListDrgRouteRulesRouteTypeEnumStringValues() []string {
 		"STATIC",
 		"DYNAMIC",
 	}
+}
+
+// GetMappingListDrgRouteRulesRouteTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDrgRouteRulesRouteTypeEnum(val string) (ListDrgRouteRulesRouteTypeEnum, bool) {
+	mappingListDrgRouteRulesRouteTypeEnumIgnoreCase := make(map[string]ListDrgRouteRulesRouteTypeEnum)
+	for k, v := range mappingListDrgRouteRulesRouteTypeEnum {
+		mappingListDrgRouteRulesRouteTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDrgRouteRulesRouteTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package bastion
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -81,13 +81,13 @@ func (request ListSessionsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListSessionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSessionsSessionLifecycleStateEnum[string(request.SessionLifecycleState)]; !ok && request.SessionLifecycleState != "" {
+	if _, ok := GetMappingListSessionsSessionLifecycleStateEnum(string(request.SessionLifecycleState)); !ok && request.SessionLifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SessionLifecycleState: %s. Supported values are: %s.", request.SessionLifecycleState, strings.Join(GetListSessionsSessionLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSessionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSessionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSessionsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSessionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSessionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSessionsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -164,6 +164,17 @@ func GetListSessionsSessionLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSessionsSessionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSessionsSessionLifecycleStateEnum(val string) (ListSessionsSessionLifecycleStateEnum, bool) {
+	mappingListSessionsSessionLifecycleStateEnumIgnoreCase := make(map[string]ListSessionsSessionLifecycleStateEnum)
+	for k, v := range mappingListSessionsSessionLifecycleStateEnum {
+		mappingListSessionsSessionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSessionsSessionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSessionsSortOrderEnum Enum with underlying type: string
 type ListSessionsSortOrderEnum string
 
@@ -195,6 +206,17 @@ func GetListSessionsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSessionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSessionsSortOrderEnum(val string) (ListSessionsSortOrderEnum, bool) {
+	mappingListSessionsSortOrderEnumIgnoreCase := make(map[string]ListSessionsSortOrderEnum)
+	for k, v := range mappingListSessionsSortOrderEnum {
+		mappingListSessionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSessionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSessionsSortByEnum Enum with underlying type: string
 type ListSessionsSortByEnum string
 
@@ -224,4 +246,15 @@ func GetListSessionsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListSessionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSessionsSortByEnum(val string) (ListSessionsSortByEnum, bool) {
+	mappingListSessionsSortByEnumIgnoreCase := make(map[string]ListSessionsSortByEnum)
+	for k, v := range mappingListSessionsSortByEnum {
+		mappingListSessionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSessionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

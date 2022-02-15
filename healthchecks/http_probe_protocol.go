@@ -11,6 +11,10 @@
 
 package healthchecks
 
+import (
+	"strings"
+)
+
 // HttpProbeProtocolEnum Enum with underlying type: string
 type HttpProbeProtocolEnum string
 
@@ -40,4 +44,15 @@ func GetHttpProbeProtocolEnumStringValues() []string {
 		"HTTP",
 		"HTTPS",
 	}
+}
+
+// GetMappingHttpProbeProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHttpProbeProtocolEnum(val string) (HttpProbeProtocolEnum, bool) {
+	mappingHttpProbeProtocolEnumIgnoreCase := make(map[string]HttpProbeProtocolEnum)
+	for k, v := range mappingHttpProbeProtocolEnum {
+		mappingHttpProbeProtocolEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHttpProbeProtocolEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

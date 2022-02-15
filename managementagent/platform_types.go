@@ -9,6 +9,10 @@
 
 package managementagent
 
+import (
+	"strings"
+)
+
 // PlatformTypesEnum Enum with underlying type: string
 type PlatformTypesEnum string
 
@@ -41,4 +45,15 @@ func GetPlatformTypesEnumStringValues() []string {
 		"WINDOWS",
 		"SOLARIS",
 	}
+}
+
+// GetMappingPlatformTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPlatformTypesEnum(val string) (PlatformTypesEnum, bool) {
+	mappingPlatformTypesEnumIgnoreCase := make(map[string]PlatformTypesEnum)
+	for k, v := range mappingPlatformTypesEnum {
+		mappingPlatformTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPlatformTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

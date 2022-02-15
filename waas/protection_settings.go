@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -92,11 +92,11 @@ func (m ProtectionSettings) String() string {
 func (m ProtectionSettings) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingProtectionSettingsBlockActionEnum[string(m.BlockAction)]; !ok && m.BlockAction != "" {
+	if _, ok := GetMappingProtectionSettingsBlockActionEnum(string(m.BlockAction)); !ok && m.BlockAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BlockAction: %s. Supported values are: %s.", m.BlockAction, strings.Join(GetProtectionSettingsBlockActionEnumStringValues(), ",")))
 	}
 	for _, val := range m.AllowedHttpMethods {
-		if _, ok := mappingProtectionSettingsAllowedHttpMethodsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingProtectionSettingsAllowedHttpMethodsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AllowedHttpMethods: %s. Supported values are: %s.", val, strings.Join(GetProtectionSettingsAllowedHttpMethodsEnumStringValues(), ",")))
 		}
 	}
@@ -136,6 +136,17 @@ func GetProtectionSettingsBlockActionEnumStringValues() []string {
 		"SHOW_ERROR_PAGE",
 		"SET_RESPONSE_CODE",
 	}
+}
+
+// GetMappingProtectionSettingsBlockActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingProtectionSettingsBlockActionEnum(val string) (ProtectionSettingsBlockActionEnum, bool) {
+	mappingProtectionSettingsBlockActionEnumIgnoreCase := make(map[string]ProtectionSettingsBlockActionEnum)
+	for k, v := range mappingProtectionSettingsBlockActionEnum {
+		mappingProtectionSettingsBlockActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingProtectionSettingsBlockActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ProtectionSettingsAllowedHttpMethodsEnum Enum with underlying type: string
@@ -191,4 +202,15 @@ func GetProtectionSettingsAllowedHttpMethodsEnumStringValues() []string {
 		"PATCH",
 		"PROPFIND",
 	}
+}
+
+// GetMappingProtectionSettingsAllowedHttpMethodsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingProtectionSettingsAllowedHttpMethodsEnum(val string) (ProtectionSettingsAllowedHttpMethodsEnum, bool) {
+	mappingProtectionSettingsAllowedHttpMethodsEnumIgnoreCase := make(map[string]ProtectionSettingsAllowedHttpMethodsEnum)
+	for k, v := range mappingProtectionSettingsAllowedHttpMethodsEnum {
+		mappingProtectionSettingsAllowedHttpMethodsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingProtectionSettingsAllowedHttpMethodsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

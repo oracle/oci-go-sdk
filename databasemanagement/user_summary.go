@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -51,7 +51,7 @@ func (m UserSummary) String() string {
 // Not recommended for calling this function directly
 func (m UserSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUserSummaryStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingUserSummaryStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetUserSummaryStatusEnumStringValues(), ",")))
 	}
 
@@ -129,4 +129,15 @@ func GetUserSummaryStatusEnumStringValues() []string {
 		"LOCKED_TIMED_AND_IN_ROLLOVER",
 		"EXPIRED_AND_LOCKED_TIMED_AND_IN_ROL",
 	}
+}
+
+// GetMappingUserSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserSummaryStatusEnum(val string) (UserSummaryStatusEnum, bool) {
+	mappingUserSummaryStatusEnumIgnoreCase := make(map[string]UserSummaryStatusEnum)
+	for k, v := range mappingUserSummaryStatusEnum {
+		mappingUserSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

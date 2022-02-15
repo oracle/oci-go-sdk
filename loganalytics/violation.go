@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -44,7 +44,7 @@ func (m Violation) String() string {
 func (m Violation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingViolationRuleTypeEnum[string(m.RuleType)]; !ok && m.RuleType != "" {
+	if _, ok := GetMappingViolationRuleTypeEnum(string(m.RuleType)); !ok && m.RuleType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RuleType: %s. Supported values are: %s.", m.RuleType, strings.Join(GetViolationRuleTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -82,4 +82,15 @@ func GetViolationRuleTypeEnumStringValues() []string {
 		"WARN",
 		"ERROR",
 	}
+}
+
+// GetMappingViolationRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingViolationRuleTypeEnum(val string) (ViolationRuleTypeEnum, bool) {
+	mappingViolationRuleTypeEnumIgnoreCase := make(map[string]ViolationRuleTypeEnum)
+	for k, v := range mappingViolationRuleTypeEnum {
+		mappingViolationRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingViolationRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

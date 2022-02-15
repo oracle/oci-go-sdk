@@ -9,6 +9,10 @@
 
 package ospgateway
 
+import (
+	"strings"
+)
+
 // CreditCardTypeEnum Enum with underlying type: string
 type CreditCardTypeEnum string
 
@@ -53,4 +57,15 @@ func GetCreditCardTypeEnumStringValues() []string {
 		"DINER",
 		"ELO",
 	}
+}
+
+// GetMappingCreditCardTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreditCardTypeEnum(val string) (CreditCardTypeEnum, bool) {
+	mappingCreditCardTypeEnumIgnoreCase := make(map[string]CreditCardTypeEnum)
+	for k, v := range mappingCreditCardTypeEnum {
+		mappingCreditCardTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreditCardTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

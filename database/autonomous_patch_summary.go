@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -63,10 +63,10 @@ func (m AutonomousPatchSummary) String() string {
 func (m AutonomousPatchSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAutonomousPatchSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAutonomousPatchSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAutonomousPatchSummaryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousPatchSummaryPatchModelEnum[string(m.PatchModel)]; !ok && m.PatchModel != "" {
+	if _, ok := GetMappingAutonomousPatchSummaryPatchModelEnum(string(m.PatchModel)); !ok && m.PatchModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PatchModel: %s. Supported values are: %s.", m.PatchModel, strings.Join(GetAutonomousPatchSummaryPatchModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -112,6 +112,17 @@ func GetAutonomousPatchSummaryLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingAutonomousPatchSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousPatchSummaryLifecycleStateEnum(val string) (AutonomousPatchSummaryLifecycleStateEnum, bool) {
+	mappingAutonomousPatchSummaryLifecycleStateEnumIgnoreCase := make(map[string]AutonomousPatchSummaryLifecycleStateEnum)
+	for k, v := range mappingAutonomousPatchSummaryLifecycleStateEnum {
+		mappingAutonomousPatchSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousPatchSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousPatchSummaryPatchModelEnum Enum with underlying type: string
 type AutonomousPatchSummaryPatchModelEnum string
 
@@ -141,4 +152,15 @@ func GetAutonomousPatchSummaryPatchModelEnumStringValues() []string {
 		"RELEASE_UPDATES",
 		"RELEASE_UPDATE_REVISIONS",
 	}
+}
+
+// GetMappingAutonomousPatchSummaryPatchModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousPatchSummaryPatchModelEnum(val string) (AutonomousPatchSummaryPatchModelEnum, bool) {
+	mappingAutonomousPatchSummaryPatchModelEnumIgnoreCase := make(map[string]AutonomousPatchSummaryPatchModelEnum)
+	for k, v := range mappingAutonomousPatchSummaryPatchModelEnum {
+		mappingAutonomousPatchSummaryPatchModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousPatchSummaryPatchModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

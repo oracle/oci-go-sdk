@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -64,7 +64,7 @@ func (request GetRepositoryRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetRepositoryRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetRepositoryFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetRepositoryFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetRepositoryFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -132,4 +132,15 @@ func GetGetRepositoryFieldsEnumStringValues() []string {
 		"commitCount",
 		"sizeInBytes",
 	}
+}
+
+// GetMappingGetRepositoryFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetRepositoryFieldsEnum(val string) (GetRepositoryFieldsEnum, bool) {
+	mappingGetRepositoryFieldsEnumIgnoreCase := make(map[string]GetRepositoryFieldsEnum)
+	for k, v := range mappingGetRepositoryFieldsEnum {
+		mappingGetRepositoryFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetRepositoryFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

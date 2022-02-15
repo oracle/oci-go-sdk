@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -45,7 +45,7 @@ func (m UpdateMaintenanceRunDetails) String() string {
 func (m UpdateMaintenanceRunDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateMaintenanceRunDetailsPatchingModeEnum[string(m.PatchingMode)]; !ok && m.PatchingMode != "" {
+	if _, ok := GetMappingUpdateMaintenanceRunDetailsPatchingModeEnum(string(m.PatchingMode)); !ok && m.PatchingMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PatchingMode: %s. Supported values are: %s.", m.PatchingMode, strings.Join(GetUpdateMaintenanceRunDetailsPatchingModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -83,4 +83,15 @@ func GetUpdateMaintenanceRunDetailsPatchingModeEnumStringValues() []string {
 		"ROLLING",
 		"NONROLLING",
 	}
+}
+
+// GetMappingUpdateMaintenanceRunDetailsPatchingModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateMaintenanceRunDetailsPatchingModeEnum(val string) (UpdateMaintenanceRunDetailsPatchingModeEnum, bool) {
+	mappingUpdateMaintenanceRunDetailsPatchingModeEnumIgnoreCase := make(map[string]UpdateMaintenanceRunDetailsPatchingModeEnum)
+	for k, v := range mappingUpdateMaintenanceRunDetailsPatchingModeEnum {
+		mappingUpdateMaintenanceRunDetailsPatchingModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateMaintenanceRunDetailsPatchingModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

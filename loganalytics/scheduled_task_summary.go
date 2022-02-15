@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -75,20 +75,20 @@ func (m ScheduledTaskSummary) String() string {
 // Not recommended for calling this function directly
 func (m ScheduledTaskSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTaskTypeEnum[string(m.TaskType)]; !ok && m.TaskType != "" {
+	if _, ok := GetMappingTaskTypeEnum(string(m.TaskType)); !ok && m.TaskType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TaskType: %s. Supported values are: %s.", m.TaskType, strings.Join(GetTaskTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingScheduledTaskLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingScheduledTaskLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetScheduledTaskLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingScheduledTaskSummaryTaskStatusEnum[string(m.TaskStatus)]; !ok && m.TaskStatus != "" {
+	if _, ok := GetMappingScheduledTaskSummaryTaskStatusEnum(string(m.TaskStatus)); !ok && m.TaskStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TaskStatus: %s. Supported values are: %s.", m.TaskStatus, strings.Join(GetScheduledTaskSummaryTaskStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingScheduledTaskPauseReasonEnum[string(m.PauseReason)]; !ok && m.PauseReason != "" {
+	if _, ok := GetMappingScheduledTaskPauseReasonEnum(string(m.PauseReason)); !ok && m.PauseReason != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PauseReason: %s. Supported values are: %s.", m.PauseReason, strings.Join(GetScheduledTaskPauseReasonEnumStringValues(), ",")))
 	}
-	if _, ok := mappingScheduledTaskSummaryLastExecutionStatusEnum[string(m.LastExecutionStatus)]; !ok && m.LastExecutionStatus != "" {
+	if _, ok := GetMappingScheduledTaskSummaryLastExecutionStatusEnum(string(m.LastExecutionStatus)); !ok && m.LastExecutionStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LastExecutionStatus: %s. Supported values are: %s.", m.LastExecutionStatus, strings.Join(GetScheduledTaskSummaryLastExecutionStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -134,6 +134,17 @@ func GetScheduledTaskSummaryTaskStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingScheduledTaskSummaryTaskStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingScheduledTaskSummaryTaskStatusEnum(val string) (ScheduledTaskSummaryTaskStatusEnum, bool) {
+	mappingScheduledTaskSummaryTaskStatusEnumIgnoreCase := make(map[string]ScheduledTaskSummaryTaskStatusEnum)
+	for k, v := range mappingScheduledTaskSummaryTaskStatusEnum {
+		mappingScheduledTaskSummaryTaskStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingScheduledTaskSummaryTaskStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ScheduledTaskSummaryLastExecutionStatusEnum Enum with underlying type: string
 type ScheduledTaskSummaryLastExecutionStatusEnum string
 
@@ -163,4 +174,15 @@ func GetScheduledTaskSummaryLastExecutionStatusEnumStringValues() []string {
 		"FAILED",
 		"SUCCEEDED",
 	}
+}
+
+// GetMappingScheduledTaskSummaryLastExecutionStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingScheduledTaskSummaryLastExecutionStatusEnum(val string) (ScheduledTaskSummaryLastExecutionStatusEnum, bool) {
+	mappingScheduledTaskSummaryLastExecutionStatusEnumIgnoreCase := make(map[string]ScheduledTaskSummaryLastExecutionStatusEnum)
+	for k, v := range mappingScheduledTaskSummaryLastExecutionStatusEnum {
+		mappingScheduledTaskSummaryLastExecutionStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingScheduledTaskSummaryLastExecutionStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

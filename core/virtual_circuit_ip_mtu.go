@@ -13,6 +13,10 @@
 
 package core
 
+import (
+	"strings"
+)
+
 // VirtualCircuitIpMtuEnum Enum with underlying type: string
 type VirtualCircuitIpMtuEnum string
 
@@ -42,4 +46,15 @@ func GetVirtualCircuitIpMtuEnumStringValues() []string {
 		"MTU_1500",
 		"MTU_9000",
 	}
+}
+
+// GetMappingVirtualCircuitIpMtuEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVirtualCircuitIpMtuEnum(val string) (VirtualCircuitIpMtuEnum, bool) {
+	mappingVirtualCircuitIpMtuEnumIgnoreCase := make(map[string]VirtualCircuitIpMtuEnum)
+	for k, v := range mappingVirtualCircuitIpMtuEnum {
+		mappingVirtualCircuitIpMtuEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVirtualCircuitIpMtuEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

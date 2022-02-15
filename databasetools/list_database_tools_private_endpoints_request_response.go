@@ -6,7 +6,7 @@ package databasetools
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -84,13 +84,13 @@ func (request ListDatabaseToolsPrivateEndpointsRequest) RetryPolicy() *common.Re
 // Not recommended for calling this function directly
 func (request ListDatabaseToolsPrivateEndpointsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDatabaseToolsPrivateEndpointsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDatabaseToolsPrivateEndpointsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDatabaseToolsPrivateEndpointsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDatabaseToolsPrivateEndpointsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDatabaseToolsPrivateEndpointsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDatabaseToolsPrivateEndpointsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDatabaseToolsPrivateEndpointsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListDatabaseToolsPrivateEndpointsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListDatabaseToolsPrivateEndpointsLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -158,6 +158,17 @@ func GetListDatabaseToolsPrivateEndpointsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDatabaseToolsPrivateEndpointsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseToolsPrivateEndpointsSortOrderEnum(val string) (ListDatabaseToolsPrivateEndpointsSortOrderEnum, bool) {
+	mappingListDatabaseToolsPrivateEndpointsSortOrderEnumIgnoreCase := make(map[string]ListDatabaseToolsPrivateEndpointsSortOrderEnum)
+	for k, v := range mappingListDatabaseToolsPrivateEndpointsSortOrderEnum {
+		mappingListDatabaseToolsPrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseToolsPrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDatabaseToolsPrivateEndpointsSortByEnum Enum with underlying type: string
 type ListDatabaseToolsPrivateEndpointsSortByEnum string
 
@@ -187,6 +198,17 @@ func GetListDatabaseToolsPrivateEndpointsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListDatabaseToolsPrivateEndpointsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseToolsPrivateEndpointsSortByEnum(val string) (ListDatabaseToolsPrivateEndpointsSortByEnum, bool) {
+	mappingListDatabaseToolsPrivateEndpointsSortByEnumIgnoreCase := make(map[string]ListDatabaseToolsPrivateEndpointsSortByEnum)
+	for k, v := range mappingListDatabaseToolsPrivateEndpointsSortByEnum {
+		mappingListDatabaseToolsPrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseToolsPrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListDatabaseToolsPrivateEndpointsLifecycleStateEnum Enum with underlying type: string
@@ -230,4 +252,15 @@ func GetListDatabaseToolsPrivateEndpointsLifecycleStateEnumStringValues() []stri
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingListDatabaseToolsPrivateEndpointsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseToolsPrivateEndpointsLifecycleStateEnum(val string) (ListDatabaseToolsPrivateEndpointsLifecycleStateEnum, bool) {
+	mappingListDatabaseToolsPrivateEndpointsLifecycleStateEnumIgnoreCase := make(map[string]ListDatabaseToolsPrivateEndpointsLifecycleStateEnum)
+	for k, v := range mappingListDatabaseToolsPrivateEndpointsLifecycleStateEnum {
+		mappingListDatabaseToolsPrivateEndpointsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseToolsPrivateEndpointsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

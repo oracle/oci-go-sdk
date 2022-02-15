@@ -9,6 +9,10 @@
 
 package datascience
 
+import (
+	"strings"
+)
+
 // NotebookSessionLifecycleStateEnum Enum with underlying type: string
 type NotebookSessionLifecycleStateEnum string
 
@@ -53,4 +57,15 @@ func GetNotebookSessionLifecycleStateEnumStringValues() []string {
 		"INACTIVE",
 		"UPDATING",
 	}
+}
+
+// GetMappingNotebookSessionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingNotebookSessionLifecycleStateEnum(val string) (NotebookSessionLifecycleStateEnum, bool) {
+	mappingNotebookSessionLifecycleStateEnumIgnoreCase := make(map[string]NotebookSessionLifecycleStateEnum)
+	for k, v := range mappingNotebookSessionLifecycleStateEnum {
+		mappingNotebookSessionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingNotebookSessionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -13,7 +13,7 @@ package healthchecks
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -49,7 +49,7 @@ func (m CreateOnDemandPingProbeDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateOnDemandPingProbeDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPingProbeProtocolEnum[string(m.Protocol)]; !ok && m.Protocol != "" {
+	if _, ok := GetMappingPingProbeProtocolEnum(string(m.Protocol)); !ok && m.Protocol != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Protocol: %s. Supported values are: %s.", m.Protocol, strings.Join(GetPingProbeProtocolEnumStringValues(), ",")))
 	}
 

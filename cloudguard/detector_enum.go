@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // DetectorEnumEnum Enum with underlying type: string
 type DetectorEnumEnum string
 
@@ -38,4 +42,15 @@ func GetDetectorEnumEnumStringValues() []string {
 		"IAAS_ACTIVITY_DETECTOR",
 		"IAAS_CONFIGURATION_DETECTOR",
 	}
+}
+
+// GetMappingDetectorEnumEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDetectorEnumEnum(val string) (DetectorEnumEnum, bool) {
+	mappingDetectorEnumEnumIgnoreCase := make(map[string]DetectorEnumEnum)
+	for k, v := range mappingDetectorEnumEnum {
+		mappingDetectorEnumEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDetectorEnumEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

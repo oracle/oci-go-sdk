@@ -11,7 +11,7 @@ package identitydataplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -34,7 +34,7 @@ func (m CompartmentMetadata) String() string {
 // Not recommended for calling this function directly
 func (m CompartmentMetadata) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCompartmentMetadataAccessLevelEnum[string(m.AccessLevel)]; !ok && m.AccessLevel != "" {
+	if _, ok := GetMappingCompartmentMetadataAccessLevelEnum(string(m.AccessLevel)); !ok && m.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", m.AccessLevel, strings.Join(GetCompartmentMetadataAccessLevelEnumStringValues(), ",")))
 	}
 
@@ -76,4 +76,15 @@ func GetCompartmentMetadataAccessLevelEnumStringValues() []string {
 		"visible",
 		"inaccessible",
 	}
+}
+
+// GetMappingCompartmentMetadataAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCompartmentMetadataAccessLevelEnum(val string) (CompartmentMetadataAccessLevelEnum, bool) {
+	mappingCompartmentMetadataAccessLevelEnumIgnoreCase := make(map[string]CompartmentMetadataAccessLevelEnum)
+	for k, v := range mappingCompartmentMetadataAccessLevelEnum {
+		mappingCompartmentMetadataAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCompartmentMetadataAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

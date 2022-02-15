@@ -11,7 +11,7 @@ package certificates
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -60,7 +60,7 @@ func (m CertificateAuthorityBundleVersionSummary) String() string {
 func (m CertificateAuthorityBundleVersionSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range m.Stages {
-		if _, ok := mappingVersionStageEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingVersionStageEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stages: %s. Supported values are: %s.", val, strings.Join(GetVersionStageEnumStringValues(), ",")))
 		}
 	}

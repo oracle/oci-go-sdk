@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -149,4 +149,15 @@ func GetTopologyTypeEnumStringValues() []string {
 		"VCN",
 		"SUBNET",
 	}
+}
+
+// GetMappingTopologyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTopologyTypeEnum(val string) (TopologyTypeEnum, bool) {
+	mappingTopologyTypeEnumIgnoreCase := make(map[string]TopologyTypeEnum)
+	for k, v := range mappingTopologyTypeEnum {
+		mappingTopologyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTopologyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

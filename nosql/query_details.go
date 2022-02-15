@@ -14,7 +14,7 @@ package nosql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -55,7 +55,7 @@ func (m QueryDetails) String() string {
 func (m QueryDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingQueryDetailsConsistencyEnum[string(m.Consistency)]; !ok && m.Consistency != "" {
+	if _, ok := GetMappingQueryDetailsConsistencyEnum(string(m.Consistency)); !ok && m.Consistency != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Consistency: %s. Supported values are: %s.", m.Consistency, strings.Join(GetQueryDetailsConsistencyEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -93,4 +93,15 @@ func GetQueryDetailsConsistencyEnumStringValues() []string {
 		"EVENTUAL",
 		"ABSOLUTE",
 	}
+}
+
+// GetMappingQueryDetailsConsistencyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingQueryDetailsConsistencyEnum(val string) (QueryDetailsConsistencyEnum, bool) {
+	mappingQueryDetailsConsistencyEnumIgnoreCase := make(map[string]QueryDetailsConsistencyEnum)
+	for k, v := range mappingQueryDetailsConsistencyEnum {
+		mappingQueryDetailsConsistencyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingQueryDetailsConsistencyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

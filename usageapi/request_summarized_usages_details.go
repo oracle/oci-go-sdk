@@ -11,7 +11,7 @@ package usageapi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -74,11 +74,11 @@ func (m RequestSummarizedUsagesDetails) String() string {
 // Not recommended for calling this function directly
 func (m RequestSummarizedUsagesDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRequestSummarizedUsagesDetailsGranularityEnum[string(m.Granularity)]; !ok && m.Granularity != "" {
+	if _, ok := GetMappingRequestSummarizedUsagesDetailsGranularityEnum(string(m.Granularity)); !ok && m.Granularity != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Granularity: %s. Supported values are: %s.", m.Granularity, strings.Join(GetRequestSummarizedUsagesDetailsGranularityEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingRequestSummarizedUsagesDetailsQueryTypeEnum[string(m.QueryType)]; !ok && m.QueryType != "" {
+	if _, ok := GetMappingRequestSummarizedUsagesDetailsQueryTypeEnum(string(m.QueryType)); !ok && m.QueryType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for QueryType: %s. Supported values are: %s.", m.QueryType, strings.Join(GetRequestSummarizedUsagesDetailsQueryTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -124,6 +124,17 @@ func GetRequestSummarizedUsagesDetailsGranularityEnumStringValues() []string {
 	}
 }
 
+// GetMappingRequestSummarizedUsagesDetailsGranularityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRequestSummarizedUsagesDetailsGranularityEnum(val string) (RequestSummarizedUsagesDetailsGranularityEnum, bool) {
+	mappingRequestSummarizedUsagesDetailsGranularityEnumIgnoreCase := make(map[string]RequestSummarizedUsagesDetailsGranularityEnum)
+	for k, v := range mappingRequestSummarizedUsagesDetailsGranularityEnum {
+		mappingRequestSummarizedUsagesDetailsGranularityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRequestSummarizedUsagesDetailsGranularityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // RequestSummarizedUsagesDetailsQueryTypeEnum Enum with underlying type: string
 type RequestSummarizedUsagesDetailsQueryTypeEnum string
 
@@ -162,4 +173,15 @@ func GetRequestSummarizedUsagesDetailsQueryTypeEnumStringValues() []string {
 		"EXPIREDCREDIT",
 		"ALLCREDIT",
 	}
+}
+
+// GetMappingRequestSummarizedUsagesDetailsQueryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRequestSummarizedUsagesDetailsQueryTypeEnum(val string) (RequestSummarizedUsagesDetailsQueryTypeEnum, bool) {
+	mappingRequestSummarizedUsagesDetailsQueryTypeEnumIgnoreCase := make(map[string]RequestSummarizedUsagesDetailsQueryTypeEnum)
+	for k, v := range mappingRequestSummarizedUsagesDetailsQueryTypeEnum {
+		mappingRequestSummarizedUsagesDetailsQueryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRequestSummarizedUsagesDetailsQueryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

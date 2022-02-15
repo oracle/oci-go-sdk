@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -79,10 +79,10 @@ func (request ListDrgRouteDistributionStatementsRequest) RetryPolicy() *common.R
 // Not recommended for calling this function directly
 func (request ListDrgRouteDistributionStatementsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDrgRouteDistributionStatementsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDrgRouteDistributionStatementsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDrgRouteDistributionStatementsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDrgRouteDistributionStatementsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDrgRouteDistributionStatementsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDrgRouteDistributionStatementsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -147,6 +147,17 @@ func GetListDrgRouteDistributionStatementsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDrgRouteDistributionStatementsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDrgRouteDistributionStatementsSortByEnum(val string) (ListDrgRouteDistributionStatementsSortByEnum, bool) {
+	mappingListDrgRouteDistributionStatementsSortByEnumIgnoreCase := make(map[string]ListDrgRouteDistributionStatementsSortByEnum)
+	for k, v := range mappingListDrgRouteDistributionStatementsSortByEnum {
+		mappingListDrgRouteDistributionStatementsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDrgRouteDistributionStatementsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDrgRouteDistributionStatementsSortOrderEnum Enum with underlying type: string
 type ListDrgRouteDistributionStatementsSortOrderEnum string
 
@@ -176,4 +187,15 @@ func GetListDrgRouteDistributionStatementsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListDrgRouteDistributionStatementsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDrgRouteDistributionStatementsSortOrderEnum(val string) (ListDrgRouteDistributionStatementsSortOrderEnum, bool) {
+	mappingListDrgRouteDistributionStatementsSortOrderEnumIgnoreCase := make(map[string]ListDrgRouteDistributionStatementsSortOrderEnum)
+	for k, v := range mappingListDrgRouteDistributionStatementsSortOrderEnum {
+		mappingListDrgRouteDistributionStatementsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDrgRouteDistributionStatementsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

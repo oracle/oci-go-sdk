@@ -12,7 +12,7 @@ package certificatesmanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -84,20 +84,20 @@ func (m CertificateSummary) String() string {
 // Not recommended for calling this function directly
 func (m CertificateSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCertificateLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingCertificateLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetCertificateLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCertificateConfigTypeEnum[string(m.ConfigType)]; !ok && m.ConfigType != "" {
+	if _, ok := GetMappingCertificateConfigTypeEnum(string(m.ConfigType)); !ok && m.ConfigType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ConfigType: %s. Supported values are: %s.", m.ConfigType, strings.Join(GetCertificateConfigTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingKeyAlgorithmEnum[string(m.KeyAlgorithm)]; !ok && m.KeyAlgorithm != "" {
+	if _, ok := GetMappingKeyAlgorithmEnum(string(m.KeyAlgorithm)); !ok && m.KeyAlgorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for KeyAlgorithm: %s. Supported values are: %s.", m.KeyAlgorithm, strings.Join(GetKeyAlgorithmEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSignatureAlgorithmEnum[string(m.SignatureAlgorithm)]; !ok && m.SignatureAlgorithm != "" {
+	if _, ok := GetMappingSignatureAlgorithmEnum(string(m.SignatureAlgorithm)); !ok && m.SignatureAlgorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SignatureAlgorithm: %s. Supported values are: %s.", m.SignatureAlgorithm, strings.Join(GetSignatureAlgorithmEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCertificateProfileTypeEnum[string(m.CertificateProfileType)]; !ok && m.CertificateProfileType != "" {
+	if _, ok := GetMappingCertificateProfileTypeEnum(string(m.CertificateProfileType)); !ok && m.CertificateProfileType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CertificateProfileType: %s. Supported values are: %s.", m.CertificateProfileType, strings.Join(GetCertificateProfileTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

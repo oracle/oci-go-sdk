@@ -6,7 +6,7 @@ package resourcemanager
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -81,7 +81,7 @@ func (request ListStackResourceDriftDetailsRequest) RetryPolicy() *common.RetryP
 func (request ListStackResourceDriftDetailsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.ResourceDriftStatus {
-		if _, ok := mappingStackResourceDriftSummaryResourceDriftStatusEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingStackResourceDriftSummaryResourceDriftStatusEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResourceDriftStatus: %s. Supported values are: %s.", val, strings.Join(GetStackResourceDriftSummaryResourceDriftStatusEnumStringValues(), ",")))
 		}
 	}

@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -132,7 +132,7 @@ func (request SummarizeHostInsightResourceUtilizationInsightRequest) RetryPolicy
 func (request SummarizeHostInsightResourceUtilizationInsightRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.PlatformType {
-		if _, ok := mappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", val, strings.Join(GetSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnumStringValues(), ",")))
 		}
 	}
@@ -198,4 +198,15 @@ func GetSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnumStringValu
 		"SOLARIS",
 		"SUNOS",
 	}
+}
+
+// GetMappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum(val string) (SummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum, bool) {
+	mappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum)
+	for k, v := range mappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum {
+		mappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -82,10 +82,10 @@ func (request ValidateAssociationParametersRequest) RetryPolicy() *common.RetryP
 // Not recommended for calling this function directly
 func (request ValidateAssociationParametersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingValidateAssociationParametersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingValidateAssociationParametersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetValidateAssociationParametersSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingValidateAssociationParametersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingValidateAssociationParametersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetValidateAssociationParametersSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -150,6 +150,17 @@ func GetValidateAssociationParametersSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingValidateAssociationParametersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingValidateAssociationParametersSortOrderEnum(val string) (ValidateAssociationParametersSortOrderEnum, bool) {
+	mappingValidateAssociationParametersSortOrderEnumIgnoreCase := make(map[string]ValidateAssociationParametersSortOrderEnum)
+	for k, v := range mappingValidateAssociationParametersSortOrderEnum {
+		mappingValidateAssociationParametersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingValidateAssociationParametersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ValidateAssociationParametersSortByEnum Enum with underlying type: string
 type ValidateAssociationParametersSortByEnum string
 
@@ -179,4 +190,15 @@ func GetValidateAssociationParametersSortByEnumStringValues() []string {
 		"sourceDisplayName",
 		"status",
 	}
+}
+
+// GetMappingValidateAssociationParametersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingValidateAssociationParametersSortByEnum(val string) (ValidateAssociationParametersSortByEnum, bool) {
+	mappingValidateAssociationParametersSortByEnumIgnoreCase := make(map[string]ValidateAssociationParametersSortByEnum)
+	for k, v := range mappingValidateAssociationParametersSortByEnum {
+		mappingValidateAssociationParametersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingValidateAssociationParametersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -73,7 +73,7 @@ func (request CreateSteeringPolicyAttachmentRequest) RetryPolicy() *common.Retry
 // Not recommended for calling this function directly
 func (request CreateSteeringPolicyAttachmentRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreateSteeringPolicyAttachmentScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingCreateSteeringPolicyAttachmentScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetCreateSteeringPolicyAttachmentScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -142,4 +142,15 @@ func GetCreateSteeringPolicyAttachmentScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingCreateSteeringPolicyAttachmentScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateSteeringPolicyAttachmentScopeEnum(val string) (CreateSteeringPolicyAttachmentScopeEnum, bool) {
+	mappingCreateSteeringPolicyAttachmentScopeEnumIgnoreCase := make(map[string]CreateSteeringPolicyAttachmentScopeEnum)
+	for k, v := range mappingCreateSteeringPolicyAttachmentScopeEnum {
+		mappingCreateSteeringPolicyAttachmentScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateSteeringPolicyAttachmentScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

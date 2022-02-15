@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -343,17 +343,17 @@ func (m CreateAutonomousDatabaseFromBackupDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateAutonomousDatabaseFromBackupDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum[string(m.CloneType)]; !ok && m.CloneType != "" {
+	if _, ok := GetMappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum(string(m.CloneType)); !ok && m.CloneType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CloneType: %s. Supported values are: %s.", m.CloneType, strings.Join(GetCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingCreateAutonomousDatabaseBaseDbWorkloadEnum[string(m.DbWorkload)]; !ok && m.DbWorkload != "" {
+	if _, ok := GetMappingCreateAutonomousDatabaseBaseDbWorkloadEnum(string(m.DbWorkload)); !ok && m.DbWorkload != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DbWorkload: %s. Supported values are: %s.", m.DbWorkload, strings.Join(GetCreateAutonomousDatabaseBaseDbWorkloadEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateAutonomousDatabaseBaseLicenseModelEnum[string(m.LicenseModel)]; !ok && m.LicenseModel != "" {
+	if _, ok := GetMappingCreateAutonomousDatabaseBaseLicenseModelEnum(string(m.LicenseModel)); !ok && m.LicenseModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LicenseModel: %s. Supported values are: %s.", m.LicenseModel, strings.Join(GetCreateAutonomousDatabaseBaseLicenseModelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnum[string(m.AutonomousMaintenanceScheduleType)]; !ok && m.AutonomousMaintenanceScheduleType != "" {
+	if _, ok := GetMappingCreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnum(string(m.AutonomousMaintenanceScheduleType)); !ok && m.AutonomousMaintenanceScheduleType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AutonomousMaintenanceScheduleType: %s. Supported values are: %s.", m.AutonomousMaintenanceScheduleType, strings.Join(GetCreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -405,4 +405,15 @@ func GetCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnumStringValues() []s
 		"FULL",
 		"METADATA",
 	}
+}
+
+// GetMappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum(val string) (CreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum, bool) {
+	mappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnumIgnoreCase := make(map[string]CreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum)
+	for k, v := range mappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum {
+		mappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

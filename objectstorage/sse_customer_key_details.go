@@ -13,7 +13,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -40,7 +40,7 @@ func (m SseCustomerKeyDetails) String() string {
 // Not recommended for calling this function directly
 func (m SseCustomerKeyDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSseCustomerKeyDetailsAlgorithmEnum[string(m.Algorithm)]; !ok && m.Algorithm != "" {
+	if _, ok := GetMappingSseCustomerKeyDetailsAlgorithmEnum(string(m.Algorithm)); !ok && m.Algorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Algorithm: %s. Supported values are: %s.", m.Algorithm, strings.Join(GetSseCustomerKeyDetailsAlgorithmEnumStringValues(), ",")))
 	}
 
@@ -76,4 +76,15 @@ func GetSseCustomerKeyDetailsAlgorithmEnumStringValues() []string {
 	return []string{
 		"AES256",
 	}
+}
+
+// GetMappingSseCustomerKeyDetailsAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSseCustomerKeyDetailsAlgorithmEnum(val string) (SseCustomerKeyDetailsAlgorithmEnum, bool) {
+	mappingSseCustomerKeyDetailsAlgorithmEnumIgnoreCase := make(map[string]SseCustomerKeyDetailsAlgorithmEnum)
+	for k, v := range mappingSseCustomerKeyDetailsAlgorithmEnum {
+		mappingSseCustomerKeyDetailsAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSseCustomerKeyDetailsAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

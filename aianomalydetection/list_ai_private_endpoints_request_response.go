@@ -6,7 +6,7 @@ package aianomalydetection
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -82,13 +82,13 @@ func (request ListAiPrivateEndpointsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAiPrivateEndpointsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAiPrivateEndpointLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingAiPrivateEndpointLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetAiPrivateEndpointLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAiPrivateEndpointsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAiPrivateEndpointsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAiPrivateEndpointsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAiPrivateEndpointsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAiPrivateEndpointsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAiPrivateEndpointsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -156,6 +156,17 @@ func GetListAiPrivateEndpointsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAiPrivateEndpointsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAiPrivateEndpointsSortOrderEnum(val string) (ListAiPrivateEndpointsSortOrderEnum, bool) {
+	mappingListAiPrivateEndpointsSortOrderEnumIgnoreCase := make(map[string]ListAiPrivateEndpointsSortOrderEnum)
+	for k, v := range mappingListAiPrivateEndpointsSortOrderEnum {
+		mappingListAiPrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAiPrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAiPrivateEndpointsSortByEnum Enum with underlying type: string
 type ListAiPrivateEndpointsSortByEnum string
 
@@ -185,4 +196,15 @@ func GetListAiPrivateEndpointsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListAiPrivateEndpointsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAiPrivateEndpointsSortByEnum(val string) (ListAiPrivateEndpointsSortByEnum, bool) {
+	mappingListAiPrivateEndpointsSortByEnumIgnoreCase := make(map[string]ListAiPrivateEndpointsSortByEnum)
+	for k, v := range mappingListAiPrivateEndpointsSortByEnum {
+		mappingListAiPrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAiPrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

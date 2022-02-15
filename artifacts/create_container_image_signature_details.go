@@ -12,7 +12,7 @@ package artifacts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -53,7 +53,7 @@ func (m CreateContainerImageSignatureDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateContainerImageSignatureDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreateContainerImageSignatureDetailsSigningAlgorithmEnum[string(m.SigningAlgorithm)]; !ok && m.SigningAlgorithm != "" {
+	if _, ok := GetMappingCreateContainerImageSignatureDetailsSigningAlgorithmEnum(string(m.SigningAlgorithm)); !ok && m.SigningAlgorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SigningAlgorithm: %s. Supported values are: %s.", m.SigningAlgorithm, strings.Join(GetCreateContainerImageSignatureDetailsSigningAlgorithmEnumStringValues(), ",")))
 	}
 
@@ -98,4 +98,15 @@ func GetCreateContainerImageSignatureDetailsSigningAlgorithmEnumStringValues() [
 		"SHA_384_RSA_PKCS_PSS",
 		"SHA_512_RSA_PKCS_PSS",
 	}
+}
+
+// GetMappingCreateContainerImageSignatureDetailsSigningAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateContainerImageSignatureDetailsSigningAlgorithmEnum(val string) (CreateContainerImageSignatureDetailsSigningAlgorithmEnum, bool) {
+	mappingCreateContainerImageSignatureDetailsSigningAlgorithmEnumIgnoreCase := make(map[string]CreateContainerImageSignatureDetailsSigningAlgorithmEnum)
+	for k, v := range mappingCreateContainerImageSignatureDetailsSigningAlgorithmEnum {
+		mappingCreateContainerImageSignatureDetailsSigningAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateContainerImageSignatureDetailsSigningAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

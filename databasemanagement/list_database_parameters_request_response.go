@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -79,13 +79,13 @@ func (request ListDatabaseParametersRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDatabaseParametersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDatabaseParametersSourceEnum[string(request.Source)]; !ok && request.Source != "" {
+	if _, ok := GetMappingListDatabaseParametersSourceEnum(string(request.Source)); !ok && request.Source != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Source: %s. Supported values are: %s.", request.Source, strings.Join(GetListDatabaseParametersSourceEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDatabaseParametersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDatabaseParametersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDatabaseParametersSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDatabaseParametersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDatabaseParametersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDatabaseParametersSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -148,6 +148,17 @@ func GetListDatabaseParametersSourceEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDatabaseParametersSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseParametersSourceEnum(val string) (ListDatabaseParametersSourceEnum, bool) {
+	mappingListDatabaseParametersSourceEnumIgnoreCase := make(map[string]ListDatabaseParametersSourceEnum)
+	for k, v := range mappingListDatabaseParametersSourceEnum {
+		mappingListDatabaseParametersSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseParametersSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDatabaseParametersSortByEnum Enum with underlying type: string
 type ListDatabaseParametersSortByEnum string
 
@@ -174,6 +185,17 @@ func GetListDatabaseParametersSortByEnumStringValues() []string {
 	return []string{
 		"NAME",
 	}
+}
+
+// GetMappingListDatabaseParametersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseParametersSortByEnum(val string) (ListDatabaseParametersSortByEnum, bool) {
+	mappingListDatabaseParametersSortByEnumIgnoreCase := make(map[string]ListDatabaseParametersSortByEnum)
+	for k, v := range mappingListDatabaseParametersSortByEnum {
+		mappingListDatabaseParametersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseParametersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListDatabaseParametersSortOrderEnum Enum with underlying type: string
@@ -205,4 +227,15 @@ func GetListDatabaseParametersSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListDatabaseParametersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseParametersSortOrderEnum(val string) (ListDatabaseParametersSortOrderEnum, bool) {
+	mappingListDatabaseParametersSortOrderEnumIgnoreCase := make(map[string]ListDatabaseParametersSortOrderEnum)
+	for k, v := range mappingListDatabaseParametersSortOrderEnum {
+		mappingListDatabaseParametersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseParametersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

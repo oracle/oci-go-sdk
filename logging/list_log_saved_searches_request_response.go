@@ -6,7 +6,7 @@ package logging
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -82,10 +82,10 @@ func (request ListLogSavedSearchesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListLogSavedSearchesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListLogSavedSearchesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListLogSavedSearchesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListLogSavedSearchesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLogSavedSearchesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListLogSavedSearchesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListLogSavedSearchesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -158,6 +158,17 @@ func GetListLogSavedSearchesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListLogSavedSearchesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogSavedSearchesSortByEnum(val string) (ListLogSavedSearchesSortByEnum, bool) {
+	mappingListLogSavedSearchesSortByEnumIgnoreCase := make(map[string]ListLogSavedSearchesSortByEnum)
+	for k, v := range mappingListLogSavedSearchesSortByEnum {
+		mappingListLogSavedSearchesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogSavedSearchesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLogSavedSearchesSortOrderEnum Enum with underlying type: string
 type ListLogSavedSearchesSortOrderEnum string
 
@@ -187,4 +198,15 @@ func GetListLogSavedSearchesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListLogSavedSearchesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogSavedSearchesSortOrderEnum(val string) (ListLogSavedSearchesSortOrderEnum, bool) {
+	mappingListLogSavedSearchesSortOrderEnumIgnoreCase := make(map[string]ListLogSavedSearchesSortOrderEnum)
+	for k, v := range mappingListLogSavedSearchesSortOrderEnum {
+		mappingListLogSavedSearchesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogSavedSearchesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

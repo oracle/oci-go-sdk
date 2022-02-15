@@ -6,7 +6,7 @@ package managementagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -81,13 +81,13 @@ func (request ListManagementAgentInstallKeysRequest) RetryPolicy() *common.Retry
 // Not recommended for calling this function directly
 func (request ListManagementAgentInstallKeysRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListManagementAgentInstallKeysLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListManagementAgentInstallKeysLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListManagementAgentInstallKeysLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagementAgentInstallKeysSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListManagementAgentInstallKeysSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListManagementAgentInstallKeysSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagementAgentInstallKeysSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListManagementAgentInstallKeysSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListManagementAgentInstallKeysSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -173,6 +173,17 @@ func GetListManagementAgentInstallKeysLifecycleStateEnumStringValues() []string 
 	}
 }
 
+// GetMappingListManagementAgentInstallKeysLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementAgentInstallKeysLifecycleStateEnum(val string) (ListManagementAgentInstallKeysLifecycleStateEnum, bool) {
+	mappingListManagementAgentInstallKeysLifecycleStateEnumIgnoreCase := make(map[string]ListManagementAgentInstallKeysLifecycleStateEnum)
+	for k, v := range mappingListManagementAgentInstallKeysLifecycleStateEnum {
+		mappingListManagementAgentInstallKeysLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementAgentInstallKeysLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagementAgentInstallKeysSortOrderEnum Enum with underlying type: string
 type ListManagementAgentInstallKeysSortOrderEnum string
 
@@ -204,6 +215,17 @@ func GetListManagementAgentInstallKeysSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListManagementAgentInstallKeysSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementAgentInstallKeysSortOrderEnum(val string) (ListManagementAgentInstallKeysSortOrderEnum, bool) {
+	mappingListManagementAgentInstallKeysSortOrderEnumIgnoreCase := make(map[string]ListManagementAgentInstallKeysSortOrderEnum)
+	for k, v := range mappingListManagementAgentInstallKeysSortOrderEnum {
+		mappingListManagementAgentInstallKeysSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementAgentInstallKeysSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagementAgentInstallKeysSortByEnum Enum with underlying type: string
 type ListManagementAgentInstallKeysSortByEnum string
 
@@ -233,4 +255,15 @@ func GetListManagementAgentInstallKeysSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListManagementAgentInstallKeysSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementAgentInstallKeysSortByEnum(val string) (ListManagementAgentInstallKeysSortByEnum, bool) {
+	mappingListManagementAgentInstallKeysSortByEnumIgnoreCase := make(map[string]ListManagementAgentInstallKeysSortByEnum)
+	for k, v := range mappingListManagementAgentInstallKeysSortByEnum {
+		mappingListManagementAgentInstallKeysSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementAgentInstallKeysSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -38,7 +38,7 @@ func (m UserAssessmentComparison) String() string {
 // Not recommended for calling this function directly
 func (m UserAssessmentComparison) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUserAssessmentComparisonLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingUserAssessmentComparisonLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetUserAssessmentComparisonLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -80,4 +80,15 @@ func GetUserAssessmentComparisonLifecycleStateEnumStringValues() []string {
 		"SUCCEEDED",
 		"FAILED",
 	}
+}
+
+// GetMappingUserAssessmentComparisonLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserAssessmentComparisonLifecycleStateEnum(val string) (UserAssessmentComparisonLifecycleStateEnum, bool) {
+	mappingUserAssessmentComparisonLifecycleStateEnumIgnoreCase := make(map[string]UserAssessmentComparisonLifecycleStateEnum)
+	for k, v := range mappingUserAssessmentComparisonLifecycleStateEnum {
+		mappingUserAssessmentComparisonLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserAssessmentComparisonLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

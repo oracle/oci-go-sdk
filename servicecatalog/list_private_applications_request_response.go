@@ -6,7 +6,7 @@ package servicecatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -80,10 +80,10 @@ func (request ListPrivateApplicationsRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListPrivateApplicationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListPrivateApplicationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListPrivateApplicationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListPrivateApplicationsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPrivateApplicationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListPrivateApplicationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListPrivateApplicationsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -151,6 +151,17 @@ func GetListPrivateApplicationsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListPrivateApplicationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPrivateApplicationsSortByEnum(val string) (ListPrivateApplicationsSortByEnum, bool) {
+	mappingListPrivateApplicationsSortByEnumIgnoreCase := make(map[string]ListPrivateApplicationsSortByEnum)
+	for k, v := range mappingListPrivateApplicationsSortByEnum {
+		mappingListPrivateApplicationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPrivateApplicationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListPrivateApplicationsSortOrderEnum Enum with underlying type: string
 type ListPrivateApplicationsSortOrderEnum string
 
@@ -180,4 +191,15 @@ func GetListPrivateApplicationsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListPrivateApplicationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPrivateApplicationsSortOrderEnum(val string) (ListPrivateApplicationsSortOrderEnum, bool) {
+	mappingListPrivateApplicationsSortOrderEnumIgnoreCase := make(map[string]ListPrivateApplicationsSortOrderEnum)
+	for k, v := range mappingListPrivateApplicationsSortOrderEnum {
+		mappingListPrivateApplicationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPrivateApplicationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

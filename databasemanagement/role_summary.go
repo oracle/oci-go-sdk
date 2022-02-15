@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -51,19 +51,19 @@ func (m RoleSummary) String() string {
 func (m RoleSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingRoleSummaryAdminOptionEnum[string(m.AdminOption)]; !ok && m.AdminOption != "" {
+	if _, ok := GetMappingRoleSummaryAdminOptionEnum(string(m.AdminOption)); !ok && m.AdminOption != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AdminOption: %s. Supported values are: %s.", m.AdminOption, strings.Join(GetRoleSummaryAdminOptionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingRoleSummaryDelegateOptionEnum[string(m.DelegateOption)]; !ok && m.DelegateOption != "" {
+	if _, ok := GetMappingRoleSummaryDelegateOptionEnum(string(m.DelegateOption)); !ok && m.DelegateOption != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DelegateOption: %s. Supported values are: %s.", m.DelegateOption, strings.Join(GetRoleSummaryDelegateOptionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingRoleSummaryDefaultRoleEnum[string(m.DefaultRole)]; !ok && m.DefaultRole != "" {
+	if _, ok := GetMappingRoleSummaryDefaultRoleEnum(string(m.DefaultRole)); !ok && m.DefaultRole != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DefaultRole: %s. Supported values are: %s.", m.DefaultRole, strings.Join(GetRoleSummaryDefaultRoleEnumStringValues(), ",")))
 	}
-	if _, ok := mappingRoleSummaryCommonEnum[string(m.Common)]; !ok && m.Common != "" {
+	if _, ok := GetMappingRoleSummaryCommonEnum(string(m.Common)); !ok && m.Common != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Common: %s. Supported values are: %s.", m.Common, strings.Join(GetRoleSummaryCommonEnumStringValues(), ",")))
 	}
-	if _, ok := mappingRoleSummaryInheritedEnum[string(m.Inherited)]; !ok && m.Inherited != "" {
+	if _, ok := GetMappingRoleSummaryInheritedEnum(string(m.Inherited)); !ok && m.Inherited != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Inherited: %s. Supported values are: %s.", m.Inherited, strings.Join(GetRoleSummaryInheritedEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -103,6 +103,17 @@ func GetRoleSummaryAdminOptionEnumStringValues() []string {
 	}
 }
 
+// GetMappingRoleSummaryAdminOptionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRoleSummaryAdminOptionEnum(val string) (RoleSummaryAdminOptionEnum, bool) {
+	mappingRoleSummaryAdminOptionEnumIgnoreCase := make(map[string]RoleSummaryAdminOptionEnum)
+	for k, v := range mappingRoleSummaryAdminOptionEnum {
+		mappingRoleSummaryAdminOptionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRoleSummaryAdminOptionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // RoleSummaryDelegateOptionEnum Enum with underlying type: string
 type RoleSummaryDelegateOptionEnum string
 
@@ -132,6 +143,17 @@ func GetRoleSummaryDelegateOptionEnumStringValues() []string {
 		"YES",
 		"NO",
 	}
+}
+
+// GetMappingRoleSummaryDelegateOptionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRoleSummaryDelegateOptionEnum(val string) (RoleSummaryDelegateOptionEnum, bool) {
+	mappingRoleSummaryDelegateOptionEnumIgnoreCase := make(map[string]RoleSummaryDelegateOptionEnum)
+	for k, v := range mappingRoleSummaryDelegateOptionEnum {
+		mappingRoleSummaryDelegateOptionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRoleSummaryDelegateOptionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // RoleSummaryDefaultRoleEnum Enum with underlying type: string
@@ -165,6 +187,17 @@ func GetRoleSummaryDefaultRoleEnumStringValues() []string {
 	}
 }
 
+// GetMappingRoleSummaryDefaultRoleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRoleSummaryDefaultRoleEnum(val string) (RoleSummaryDefaultRoleEnum, bool) {
+	mappingRoleSummaryDefaultRoleEnumIgnoreCase := make(map[string]RoleSummaryDefaultRoleEnum)
+	for k, v := range mappingRoleSummaryDefaultRoleEnum {
+		mappingRoleSummaryDefaultRoleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRoleSummaryDefaultRoleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // RoleSummaryCommonEnum Enum with underlying type: string
 type RoleSummaryCommonEnum string
 
@@ -196,6 +229,17 @@ func GetRoleSummaryCommonEnumStringValues() []string {
 	}
 }
 
+// GetMappingRoleSummaryCommonEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRoleSummaryCommonEnum(val string) (RoleSummaryCommonEnum, bool) {
+	mappingRoleSummaryCommonEnumIgnoreCase := make(map[string]RoleSummaryCommonEnum)
+	for k, v := range mappingRoleSummaryCommonEnum {
+		mappingRoleSummaryCommonEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRoleSummaryCommonEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // RoleSummaryInheritedEnum Enum with underlying type: string
 type RoleSummaryInheritedEnum string
 
@@ -225,4 +269,15 @@ func GetRoleSummaryInheritedEnumStringValues() []string {
 		"YES",
 		"NO",
 	}
+}
+
+// GetMappingRoleSummaryInheritedEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRoleSummaryInheritedEnum(val string) (RoleSummaryInheritedEnum, bool) {
+	mappingRoleSummaryInheritedEnumIgnoreCase := make(map[string]RoleSummaryInheritedEnum)
+	for k, v := range mappingRoleSummaryInheritedEnum {
+		mappingRoleSummaryInheritedEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRoleSummaryInheritedEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

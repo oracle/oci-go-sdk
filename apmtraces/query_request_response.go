@@ -6,7 +6,7 @@ package apmtraces
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -18,16 +18,17 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmtraces/Query.go.html to see an example of how to use QueryRequest.
 type QueryRequest struct {
 
-	// The APM Domain Id the request is intended for.
+	// The APM Domain ID the request is intended for.
 	ApmDomainId *string `mandatory:"true" contributesTo:"query" name:"apmDomainId"`
 
-	// Include spans that have a `spanStartTime` equal to or greater this value.
+	// Include spans that have a `spanStartTime` equal to or greater than this value.
 	TimeSpanStartedGreaterThanOrEqualTo *common.SDKTime `mandatory:"true" contributesTo:"query" name:"timeSpanStartedGreaterThanOrEqualTo"`
 
 	// Include spans that have a `spanStartTime`less than this value.
 	TimeSpanStartedLessThan *common.SDKTime `mandatory:"true" contributesTo:"query" name:"timeSpanStartedLessThan"`
 
-	// Request body containing the query to be run against our repository.
+	// Request body containing the query to be run against the trace data and to filter and
+	// retrieve trace data results.
 	QueryDetails `contributesTo:"body"`
 
 	// Unique Oracle-assigned identifier for the request.  If you need to contact Oracle about a

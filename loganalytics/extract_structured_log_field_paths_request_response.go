@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -73,7 +73,7 @@ func (request ExtractStructuredLogFieldPathsRequest) RetryPolicy() *common.Retry
 // Not recommended for calling this function directly
 func (request ExtractStructuredLogFieldPathsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingExtractStructuredLogFieldPathsParserTypeEnum[string(request.ParserType)]; !ok && request.ParserType != "" {
+	if _, ok := GetMappingExtractStructuredLogFieldPathsParserTypeEnum(string(request.ParserType)); !ok && request.ParserType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ParserType: %s. Supported values are: %s.", request.ParserType, strings.Join(GetExtractStructuredLogFieldPathsParserTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -136,4 +136,15 @@ func GetExtractStructuredLogFieldPathsParserTypeEnumStringValues() []string {
 		"JSON",
 		"DELIMITED",
 	}
+}
+
+// GetMappingExtractStructuredLogFieldPathsParserTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExtractStructuredLogFieldPathsParserTypeEnum(val string) (ExtractStructuredLogFieldPathsParserTypeEnum, bool) {
+	mappingExtractStructuredLogFieldPathsParserTypeEnumIgnoreCase := make(map[string]ExtractStructuredLogFieldPathsParserTypeEnum)
+	for k, v := range mappingExtractStructuredLogFieldPathsParserTypeEnum {
+		mappingExtractStructuredLogFieldPathsParserTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExtractStructuredLogFieldPathsParserTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

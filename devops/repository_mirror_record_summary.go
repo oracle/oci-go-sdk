@@ -11,7 +11,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -53,7 +53,7 @@ func (m RepositoryMirrorRecordSummary) String() string {
 // Not recommended for calling this function directly
 func (m RepositoryMirrorRecordSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRepositoryMirrorRecordSummaryMirrorStatusEnum[string(m.MirrorStatus)]; !ok && m.MirrorStatus != "" {
+	if _, ok := GetMappingRepositoryMirrorRecordSummaryMirrorStatusEnum(string(m.MirrorStatus)); !ok && m.MirrorStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MirrorStatus: %s. Supported values are: %s.", m.MirrorStatus, strings.Join(GetRepositoryMirrorRecordSummaryMirrorStatusEnumStringValues(), ",")))
 	}
 
@@ -101,4 +101,15 @@ func GetRepositoryMirrorRecordSummaryMirrorStatusEnumStringValues() []string {
 		"PASSED",
 		"FAILED",
 	}
+}
+
+// GetMappingRepositoryMirrorRecordSummaryMirrorStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRepositoryMirrorRecordSummaryMirrorStatusEnum(val string) (RepositoryMirrorRecordSummaryMirrorStatusEnum, bool) {
+	mappingRepositoryMirrorRecordSummaryMirrorStatusEnumIgnoreCase := make(map[string]RepositoryMirrorRecordSummaryMirrorStatusEnum)
+	for k, v := range mappingRepositoryMirrorRecordSummaryMirrorStatusEnum {
+		mappingRepositoryMirrorRecordSummaryMirrorStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRepositoryMirrorRecordSummaryMirrorStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

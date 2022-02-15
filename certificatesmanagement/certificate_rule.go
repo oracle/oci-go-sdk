@@ -12,7 +12,7 @@ package certificatesmanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -101,4 +101,15 @@ func GetCertificateRuleRuleTypeEnumStringValues() []string {
 	return []string{
 		"CERTIFICATE_RENEWAL_RULE",
 	}
+}
+
+// GetMappingCertificateRuleRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCertificateRuleRuleTypeEnum(val string) (CertificateRuleRuleTypeEnum, bool) {
+	mappingCertificateRuleRuleTypeEnumIgnoreCase := make(map[string]CertificateRuleRuleTypeEnum)
+	for k, v := range mappingCertificateRuleRuleTypeEnum {
+		mappingCertificateRuleRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCertificateRuleRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

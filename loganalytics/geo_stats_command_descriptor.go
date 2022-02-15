@@ -12,7 +12,7 @@ package loganalytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -78,7 +78,7 @@ func (m GeoStatsCommandDescriptor) String() string {
 // Not recommended for calling this function directly
 func (m GeoStatsCommandDescriptor) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGeoStatsCommandDescriptorIncludeEnum[string(m.Include)]; !ok && m.Include != "" {
+	if _, ok := GetMappingGeoStatsCommandDescriptorIncludeEnum(string(m.Include)); !ok && m.Include != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Include: %s. Supported values are: %s.", m.Include, strings.Join(GetGeoStatsCommandDescriptorIncludeEnumStringValues(), ",")))
 	}
 
@@ -207,4 +207,15 @@ func GetGeoStatsCommandDescriptorIncludeEnumStringValues() []string {
 		"SERVER",
 		"CLIENT_AND_SERVER",
 	}
+}
+
+// GetMappingGeoStatsCommandDescriptorIncludeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGeoStatsCommandDescriptorIncludeEnum(val string) (GeoStatsCommandDescriptorIncludeEnum, bool) {
+	mappingGeoStatsCommandDescriptorIncludeEnumIgnoreCase := make(map[string]GeoStatsCommandDescriptorIncludeEnum)
+	for k, v := range mappingGeoStatsCommandDescriptorIncludeEnum {
+		mappingGeoStatsCommandDescriptorIncludeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGeoStatsCommandDescriptorIncludeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package managementagent
 
+import (
+	"strings"
+)
+
 // WorkDeliveryStatusEnum Enum with underlying type: string
 type WorkDeliveryStatusEnum string
 
@@ -50,4 +54,15 @@ func GetWorkDeliveryStatusEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingWorkDeliveryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkDeliveryStatusEnum(val string) (WorkDeliveryStatusEnum, bool) {
+	mappingWorkDeliveryStatusEnumIgnoreCase := make(map[string]WorkDeliveryStatusEnum)
+	for k, v := range mappingWorkDeliveryStatusEnum {
+		mappingWorkDeliveryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkDeliveryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

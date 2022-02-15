@@ -18,7 +18,7 @@ package dashboardservice
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -192,7 +192,7 @@ func (m dashboard) String() string {
 // Not recommended for calling this function directly
 func (m dashboard) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDashboardLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDashboardLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDashboardLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -245,6 +245,17 @@ func GetDashboardLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingDashboardLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDashboardLifecycleStateEnum(val string) (DashboardLifecycleStateEnum, bool) {
+	mappingDashboardLifecycleStateEnumIgnoreCase := make(map[string]DashboardLifecycleStateEnum)
+	for k, v := range mappingDashboardLifecycleStateEnum {
+		mappingDashboardLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDashboardLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DashboardSchemaVersionEnum Enum with underlying type: string
 type DashboardSchemaVersionEnum string
 
@@ -271,4 +282,15 @@ func GetDashboardSchemaVersionEnumStringValues() []string {
 	return []string{
 		"V1",
 	}
+}
+
+// GetMappingDashboardSchemaVersionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDashboardSchemaVersionEnum(val string) (DashboardSchemaVersionEnum, bool) {
+	mappingDashboardSchemaVersionEnumIgnoreCase := make(map[string]DashboardSchemaVersionEnum)
+	for k, v := range mappingDashboardSchemaVersionEnum {
+		mappingDashboardSchemaVersionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDashboardSchemaVersionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

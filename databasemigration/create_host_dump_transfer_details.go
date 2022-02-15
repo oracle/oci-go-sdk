@@ -12,7 +12,7 @@ package databasemigration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -108,4 +108,15 @@ func GetCreateHostDumpTransferDetailsKindEnumStringValues() []string {
 		"CURL",
 		"OCI_CLI",
 	}
+}
+
+// GetMappingCreateHostDumpTransferDetailsKindEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateHostDumpTransferDetailsKindEnum(val string) (CreateHostDumpTransferDetailsKindEnum, bool) {
+	mappingCreateHostDumpTransferDetailsKindEnumIgnoreCase := make(map[string]CreateHostDumpTransferDetailsKindEnum)
+	for k, v := range mappingCreateHostDumpTransferDetailsKindEnum {
+		mappingCreateHostDumpTransferDetailsKindEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateHostDumpTransferDetailsKindEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

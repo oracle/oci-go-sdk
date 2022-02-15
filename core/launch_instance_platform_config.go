@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -168,4 +168,15 @@ func GetLaunchInstancePlatformConfigTypeEnumStringValues() []string {
 		"AMD_VM",
 		"INTEL_VM",
 	}
+}
+
+// GetMappingLaunchInstancePlatformConfigTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLaunchInstancePlatformConfigTypeEnum(val string) (LaunchInstancePlatformConfigTypeEnum, bool) {
+	mappingLaunchInstancePlatformConfigTypeEnumIgnoreCase := make(map[string]LaunchInstancePlatformConfigTypeEnum)
+	for k, v := range mappingLaunchInstancePlatformConfigTypeEnum {
+		mappingLaunchInstancePlatformConfigTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLaunchInstancePlatformConfigTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

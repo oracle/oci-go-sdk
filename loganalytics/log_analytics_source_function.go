@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -77,7 +77,7 @@ func (m LogAnalyticsSourceFunction) String() string {
 func (m LogAnalyticsSourceFunction) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLogAnalyticsSourceFunctionFunctionNameEnum[string(m.FunctionName)]; !ok && m.FunctionName != "" {
+	if _, ok := GetMappingLogAnalyticsSourceFunctionFunctionNameEnum(string(m.FunctionName)); !ok && m.FunctionName != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FunctionName: %s. Supported values are: %s.", m.FunctionName, strings.Join(GetLogAnalyticsSourceFunctionFunctionNameEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -115,4 +115,15 @@ func GetLogAnalyticsSourceFunctionFunctionNameEnumStringValues() []string {
 		"GEOLOCATION",
 		"LOOKUP",
 	}
+}
+
+// GetMappingLogAnalyticsSourceFunctionFunctionNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogAnalyticsSourceFunctionFunctionNameEnum(val string) (LogAnalyticsSourceFunctionFunctionNameEnum, bool) {
+	mappingLogAnalyticsSourceFunctionFunctionNameEnumIgnoreCase := make(map[string]LogAnalyticsSourceFunctionFunctionNameEnum)
+	for k, v := range mappingLogAnalyticsSourceFunctionFunctionNameEnum {
+		mappingLogAnalyticsSourceFunctionFunctionNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogAnalyticsSourceFunctionFunctionNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

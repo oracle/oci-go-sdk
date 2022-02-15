@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -48,13 +48,13 @@ func (m SummarizeExadataInsightResourceUsageCollection) String() string {
 // Not recommended for calling this function directly
 func (m SummarizeExadataInsightResourceUsageCollection) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeExadataInsightResourceUsageCollectionExadataResourceMetricEnum[string(m.ExadataResourceMetric)]; !ok && m.ExadataResourceMetric != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceUsageCollectionExadataResourceMetricEnum(string(m.ExadataResourceMetric)); !ok && m.ExadataResourceMetric != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExadataResourceMetric: %s. Supported values are: %s.", m.ExadataResourceMetric, strings.Join(GetSummarizeExadataInsightResourceUsageCollectionExadataResourceMetricEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeExadataInsightResourceUsageCollectionExadataResourceTypeEnum[string(m.ExadataResourceType)]; !ok && m.ExadataResourceType != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceUsageCollectionExadataResourceTypeEnum(string(m.ExadataResourceType)); !ok && m.ExadataResourceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExadataResourceType: %s. Supported values are: %s.", m.ExadataResourceType, strings.Join(GetSummarizeExadataInsightResourceUsageCollectionExadataResourceTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUsageUnitEnum[string(m.UsageUnit)]; !ok && m.UsageUnit != "" {
+	if _, ok := GetMappingUsageUnitEnum(string(m.UsageUnit)); !ok && m.UsageUnit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UsageUnit: %s. Supported values are: %s.", m.UsageUnit, strings.Join(GetUsageUnitEnumStringValues(), ",")))
 	}
 
@@ -107,6 +107,17 @@ func GetSummarizeExadataInsightResourceUsageCollectionExadataResourceMetricEnumS
 	}
 }
 
+// GetMappingSummarizeExadataInsightResourceUsageCollectionExadataResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceUsageCollectionExadataResourceMetricEnum(val string) (SummarizeExadataInsightResourceUsageCollectionExadataResourceMetricEnum, bool) {
+	mappingSummarizeExadataInsightResourceUsageCollectionExadataResourceMetricEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceUsageCollectionExadataResourceMetricEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceUsageCollectionExadataResourceMetricEnum {
+		mappingSummarizeExadataInsightResourceUsageCollectionExadataResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceUsageCollectionExadataResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeExadataInsightResourceUsageCollectionExadataResourceTypeEnum Enum with underlying type: string
 type SummarizeExadataInsightResourceUsageCollectionExadataResourceTypeEnum string
 
@@ -142,4 +153,15 @@ func GetSummarizeExadataInsightResourceUsageCollectionExadataResourceTypeEnumStr
 		"STORAGE_SERVER",
 		"DISKGROUP",
 	}
+}
+
+// GetMappingSummarizeExadataInsightResourceUsageCollectionExadataResourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceUsageCollectionExadataResourceTypeEnum(val string) (SummarizeExadataInsightResourceUsageCollectionExadataResourceTypeEnum, bool) {
+	mappingSummarizeExadataInsightResourceUsageCollectionExadataResourceTypeEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceUsageCollectionExadataResourceTypeEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceUsageCollectionExadataResourceTypeEnum {
+		mappingSummarizeExadataInsightResourceUsageCollectionExadataResourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceUsageCollectionExadataResourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,7 +11,7 @@ package oda
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -48,10 +48,10 @@ func (m WorkRequestResource) String() string {
 // Not recommended for calling this function directly
 func (m WorkRequestResource) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingWorkRequestResourceResourceActionEnum[string(m.ResourceAction)]; !ok && m.ResourceAction != "" {
+	if _, ok := GetMappingWorkRequestResourceResourceActionEnum(string(m.ResourceAction)); !ok && m.ResourceAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResourceAction: %s. Supported values are: %s.", m.ResourceAction, strings.Join(GetWorkRequestResourceResourceActionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingWorkRequestResourceStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingWorkRequestResourceStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetWorkRequestResourceStatusEnumStringValues(), ",")))
 	}
 
@@ -116,6 +116,17 @@ func GetWorkRequestResourceResourceActionEnumStringValues() []string {
 	}
 }
 
+// GetMappingWorkRequestResourceResourceActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestResourceResourceActionEnum(val string) (WorkRequestResourceResourceActionEnum, bool) {
+	mappingWorkRequestResourceResourceActionEnumIgnoreCase := make(map[string]WorkRequestResourceResourceActionEnum)
+	for k, v := range mappingWorkRequestResourceResourceActionEnum {
+		mappingWorkRequestResourceResourceActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestResourceResourceActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // WorkRequestResourceStatusEnum Enum with underlying type: string
 type WorkRequestResourceStatusEnum string
 
@@ -157,4 +168,15 @@ func GetWorkRequestResourceStatusEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingWorkRequestResourceStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestResourceStatusEnum(val string) (WorkRequestResourceStatusEnum, bool) {
+	mappingWorkRequestResourceStatusEnumIgnoreCase := make(map[string]WorkRequestResourceStatusEnum)
+	for k, v := range mappingWorkRequestResourceStatusEnum {
+		mappingWorkRequestResourceStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestResourceStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

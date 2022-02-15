@@ -9,6 +9,10 @@
 
 package databasemigration
 
+import (
+	"strings"
+)
+
 // OdmsJobPhasesEnum Enum with underlying type: string
 type OdmsJobPhasesEnum string
 
@@ -89,4 +93,15 @@ func GetOdmsJobPhasesEnumStringValues() []string {
 		"ODMS_SWITCHOVER",
 		"ODMS_CLEANUP",
 	}
+}
+
+// GetMappingOdmsJobPhasesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOdmsJobPhasesEnum(val string) (OdmsJobPhasesEnum, bool) {
+	mappingOdmsJobPhasesEnumIgnoreCase := make(map[string]OdmsJobPhasesEnum)
+	for k, v := range mappingOdmsJobPhasesEnum {
+		mappingOdmsJobPhasesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOdmsJobPhasesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

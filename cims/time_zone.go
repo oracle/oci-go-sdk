@@ -9,6 +9,10 @@
 
 package cims
 
+import (
+	"strings"
+)
+
 // TimeZoneEnum Enum with underlying type: string
 type TimeZoneEnum string
 
@@ -116,4 +120,15 @@ func GetTimeZoneEnumStringValues() []string {
 		"MID_ATLANTIC_TIME",
 		"CENTRAL_AFRICAN_TIME",
 	}
+}
+
+// GetMappingTimeZoneEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTimeZoneEnum(val string) (TimeZoneEnum, bool) {
+	mappingTimeZoneEnumIgnoreCase := make(map[string]TimeZoneEnum)
+	for k, v := range mappingTimeZoneEnum {
+		mappingTimeZoneEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTimeZoneEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

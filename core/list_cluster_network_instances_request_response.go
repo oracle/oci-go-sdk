@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -91,10 +91,10 @@ func (request ListClusterNetworkInstancesRequest) RetryPolicy() *common.RetryPol
 // Not recommended for calling this function directly
 func (request ListClusterNetworkInstancesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListClusterNetworkInstancesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListClusterNetworkInstancesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListClusterNetworkInstancesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListClusterNetworkInstancesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListClusterNetworkInstancesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListClusterNetworkInstancesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -162,6 +162,17 @@ func GetListClusterNetworkInstancesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListClusterNetworkInstancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListClusterNetworkInstancesSortByEnum(val string) (ListClusterNetworkInstancesSortByEnum, bool) {
+	mappingListClusterNetworkInstancesSortByEnumIgnoreCase := make(map[string]ListClusterNetworkInstancesSortByEnum)
+	for k, v := range mappingListClusterNetworkInstancesSortByEnum {
+		mappingListClusterNetworkInstancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListClusterNetworkInstancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListClusterNetworkInstancesSortOrderEnum Enum with underlying type: string
 type ListClusterNetworkInstancesSortOrderEnum string
 
@@ -191,4 +202,15 @@ func GetListClusterNetworkInstancesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListClusterNetworkInstancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListClusterNetworkInstancesSortOrderEnum(val string) (ListClusterNetworkInstancesSortOrderEnum, bool) {
+	mappingListClusterNetworkInstancesSortOrderEnumIgnoreCase := make(map[string]ListClusterNetworkInstancesSortOrderEnum)
+	for k, v := range mappingListClusterNetworkInstancesSortOrderEnum {
+		mappingListClusterNetworkInstancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListClusterNetworkInstancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

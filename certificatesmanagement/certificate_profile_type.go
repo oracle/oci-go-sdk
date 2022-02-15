@@ -9,6 +9,10 @@
 
 package certificatesmanagement
 
+import (
+	"strings"
+)
+
 // CertificateProfileTypeEnum Enum with underlying type: string
 type CertificateProfileTypeEnum string
 
@@ -44,4 +48,15 @@ func GetCertificateProfileTypeEnumStringValues() []string {
 		"TLS_CLIENT",
 		"TLS_CODE_SIGN",
 	}
+}
+
+// GetMappingCertificateProfileTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCertificateProfileTypeEnum(val string) (CertificateProfileTypeEnum, bool) {
+	mappingCertificateProfileTypeEnumIgnoreCase := make(map[string]CertificateProfileTypeEnum)
+	for k, v := range mappingCertificateProfileTypeEnum {
+		mappingCertificateProfileTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCertificateProfileTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

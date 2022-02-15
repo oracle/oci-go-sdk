@@ -9,6 +9,10 @@
 
 package apmsynthetics
 
+import (
+	"strings"
+)
+
 // MonitorStatusEnum Enum with underlying type: string
 type MonitorStatusEnum string
 
@@ -41,4 +45,15 @@ func GetMonitorStatusEnumStringValues() []string {
 		"DISABLED",
 		"INVALID",
 	}
+}
+
+// GetMappingMonitorStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMonitorStatusEnum(val string) (MonitorStatusEnum, bool) {
+	mappingMonitorStatusEnumIgnoreCase := make(map[string]MonitorStatusEnum)
+	for k, v := range mappingMonitorStatusEnum {
+		mappingMonitorStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMonitorStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

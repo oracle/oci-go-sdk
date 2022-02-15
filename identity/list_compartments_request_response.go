@@ -6,7 +6,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -101,16 +101,16 @@ func (request ListCompartmentsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListCompartmentsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListCompartmentsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListCompartmentsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListCompartmentsAccessLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListCompartmentsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListCompartmentsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListCompartmentsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListCompartmentsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListCompartmentsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListCompartmentsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCompartmentLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingCompartmentLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetCompartmentLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -178,6 +178,17 @@ func GetListCompartmentsAccessLevelEnumStringValues() []string {
 	}
 }
 
+// GetMappingListCompartmentsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCompartmentsAccessLevelEnum(val string) (ListCompartmentsAccessLevelEnum, bool) {
+	mappingListCompartmentsAccessLevelEnumIgnoreCase := make(map[string]ListCompartmentsAccessLevelEnum)
+	for k, v := range mappingListCompartmentsAccessLevelEnum {
+		mappingListCompartmentsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCompartmentsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListCompartmentsSortByEnum Enum with underlying type: string
 type ListCompartmentsSortByEnum string
 
@@ -209,6 +220,17 @@ func GetListCompartmentsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListCompartmentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCompartmentsSortByEnum(val string) (ListCompartmentsSortByEnum, bool) {
+	mappingListCompartmentsSortByEnumIgnoreCase := make(map[string]ListCompartmentsSortByEnum)
+	for k, v := range mappingListCompartmentsSortByEnum {
+		mappingListCompartmentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCompartmentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListCompartmentsSortOrderEnum Enum with underlying type: string
 type ListCompartmentsSortOrderEnum string
 
@@ -238,4 +260,15 @@ func GetListCompartmentsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListCompartmentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCompartmentsSortOrderEnum(val string) (ListCompartmentsSortOrderEnum, bool) {
+	mappingListCompartmentsSortOrderEnumIgnoreCase := make(map[string]ListCompartmentsSortOrderEnum)
+	for k, v := range mappingListCompartmentsSortOrderEnum {
+		mappingListCompartmentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCompartmentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

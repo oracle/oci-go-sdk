@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -66,7 +66,7 @@ func (m RuleBasedFieldMap) String() string {
 // Not recommended for calling this function directly
 func (m RuleBasedFieldMap) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRuleBasedFieldMapMapTypeEnum[string(m.MapType)]; !ok && m.MapType != "" {
+	if _, ok := GetMappingRuleBasedFieldMapMapTypeEnum(string(m.MapType)); !ok && m.MapType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MapType: %s. Supported values are: %s.", m.MapType, strings.Join(GetRuleBasedFieldMapMapTypeEnumStringValues(), ",")))
 	}
 
@@ -122,4 +122,15 @@ func GetRuleBasedFieldMapMapTypeEnumStringValues() []string {
 		"MAPBYPOSITION",
 		"MAPBYPATTERN",
 	}
+}
+
+// GetMappingRuleBasedFieldMapMapTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRuleBasedFieldMapMapTypeEnum(val string) (RuleBasedFieldMapMapTypeEnum, bool) {
+	mappingRuleBasedFieldMapMapTypeEnumIgnoreCase := make(map[string]RuleBasedFieldMapMapTypeEnum)
+	for k, v := range mappingRuleBasedFieldMapMapTypeEnum {
+		mappingRuleBasedFieldMapMapTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRuleBasedFieldMapMapTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

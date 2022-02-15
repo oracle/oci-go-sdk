@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -63,7 +63,7 @@ func (m CreateTaskRunDetails) String() string {
 func (m CreateTaskRunDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateTaskRunDetailsReRunTypeEnum[string(m.ReRunType)]; !ok && m.ReRunType != "" {
+	if _, ok := GetMappingCreateTaskRunDetailsReRunTypeEnum(string(m.ReRunType)); !ok && m.ReRunType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ReRunType: %s. Supported values are: %s.", m.ReRunType, strings.Join(GetCreateTaskRunDetailsReRunTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -104,4 +104,15 @@ func GetCreateTaskRunDetailsReRunTypeEnumStringValues() []string {
 		"FAILED",
 		"STEP",
 	}
+}
+
+// GetMappingCreateTaskRunDetailsReRunTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateTaskRunDetailsReRunTypeEnum(val string) (CreateTaskRunDetailsReRunTypeEnum, bool) {
+	mappingCreateTaskRunDetailsReRunTypeEnumIgnoreCase := make(map[string]CreateTaskRunDetailsReRunTypeEnum)
+	for k, v := range mappingCreateTaskRunDetailsReRunTypeEnum {
+		mappingCreateTaskRunDetailsReRunTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateTaskRunDetailsReRunTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

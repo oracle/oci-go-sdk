@@ -9,6 +9,10 @@
 
 package jms
 
+import (
+	"strings"
+)
+
 // ManagedInstanceTypeEnum Enum with underlying type: string
 type ManagedInstanceTypeEnum string
 
@@ -35,4 +39,15 @@ func GetManagedInstanceTypeEnumStringValues() []string {
 	return []string{
 		"ORACLE_MANAGEMENT_AGENT",
 	}
+}
+
+// GetMappingManagedInstanceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingManagedInstanceTypeEnum(val string) (ManagedInstanceTypeEnum, bool) {
+	mappingManagedInstanceTypeEnumIgnoreCase := make(map[string]ManagedInstanceTypeEnum)
+	for k, v := range mappingManagedInstanceTypeEnum {
+		mappingManagedInstanceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingManagedInstanceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

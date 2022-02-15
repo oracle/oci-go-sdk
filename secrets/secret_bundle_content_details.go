@@ -12,7 +12,7 @@ package secrets
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -101,4 +101,15 @@ func GetSecretBundleContentDetailsContentTypeEnumStringValues() []string {
 	return []string{
 		"BASE64",
 	}
+}
+
+// GetMappingSecretBundleContentDetailsContentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecretBundleContentDetailsContentTypeEnum(val string) (SecretBundleContentDetailsContentTypeEnum, bool) {
+	mappingSecretBundleContentDetailsContentTypeEnumIgnoreCase := make(map[string]SecretBundleContentDetailsContentTypeEnum)
+	for k, v := range mappingSecretBundleContentDetailsContentTypeEnum {
+		mappingSecretBundleContentDetailsContentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecretBundleContentDetailsContentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

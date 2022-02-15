@@ -14,7 +14,7 @@ package apigateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -110,4 +110,15 @@ func GetResponseCacheDetailsTypeEnumStringValues() []string {
 		"EXTERNAL_RESP_CACHE",
 		"NONE",
 	}
+}
+
+// GetMappingResponseCacheDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResponseCacheDetailsTypeEnum(val string) (ResponseCacheDetailsTypeEnum, bool) {
+	mappingResponseCacheDetailsTypeEnumIgnoreCase := make(map[string]ResponseCacheDetailsTypeEnum)
+	for k, v := range mappingResponseCacheDetailsTypeEnum {
+		mappingResponseCacheDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResponseCacheDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

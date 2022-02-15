@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -85,10 +85,10 @@ func (m Vault) String() string {
 // Not recommended for calling this function directly
 func (m Vault) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVaultLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingVaultLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetVaultLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVaultVaultTypeEnum[string(m.VaultType)]; !ok && m.VaultType != "" {
+	if _, ok := GetMappingVaultVaultTypeEnum(string(m.VaultType)); !ok && m.VaultType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for VaultType: %s. Supported values are: %s.", m.VaultType, strings.Join(GetVaultVaultTypeEnumStringValues(), ",")))
 	}
 
@@ -153,6 +153,17 @@ func GetVaultLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingVaultLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVaultLifecycleStateEnum(val string) (VaultLifecycleStateEnum, bool) {
+	mappingVaultLifecycleStateEnumIgnoreCase := make(map[string]VaultLifecycleStateEnum)
+	for k, v := range mappingVaultLifecycleStateEnum {
+		mappingVaultLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVaultLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // VaultVaultTypeEnum Enum with underlying type: string
 type VaultVaultTypeEnum string
 
@@ -182,4 +193,15 @@ func GetVaultVaultTypeEnumStringValues() []string {
 		"VIRTUAL_PRIVATE",
 		"DEFAULT",
 	}
+}
+
+// GetMappingVaultVaultTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVaultVaultTypeEnum(val string) (VaultVaultTypeEnum, bool) {
+	mappingVaultVaultTypeEnumIgnoreCase := make(map[string]VaultVaultTypeEnum)
+	for k, v := range mappingVaultVaultTypeEnum {
+		mappingVaultVaultTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVaultVaultTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

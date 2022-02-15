@@ -11,6 +11,10 @@
 
 package optimizer
 
+import (
+	"strings"
+)
+
 // OptimizerEnrollmentStatusEnum Enum with underlying type: string
 type OptimizerEnrollmentStatusEnum string
 
@@ -40,4 +44,15 @@ func GetOptimizerEnrollmentStatusEnumStringValues() []string {
 		"ACTIVE",
 		"INACTIVE",
 	}
+}
+
+// GetMappingOptimizerEnrollmentStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOptimizerEnrollmentStatusEnum(val string) (OptimizerEnrollmentStatusEnum, bool) {
+	mappingOptimizerEnrollmentStatusEnumIgnoreCase := make(map[string]OptimizerEnrollmentStatusEnum)
+	for k, v := range mappingOptimizerEnrollmentStatusEnum {
+		mappingOptimizerEnrollmentStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOptimizerEnrollmentStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

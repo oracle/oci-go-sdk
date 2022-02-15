@@ -12,7 +12,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -86,13 +86,13 @@ func (m RuleSummary) String() string {
 func (m RuleSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingRuleTypeEnum[string(m.RuleType)]; !ok && m.RuleType != "" {
+	if _, ok := GetMappingRuleTypeEnum(string(m.RuleType)); !ok && m.RuleType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RuleType: %s. Supported values are: %s.", m.RuleType, strings.Join(GetRuleTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingRuleOriginTypeEnum[string(m.OriginType)]; !ok && m.OriginType != "" {
+	if _, ok := GetMappingRuleOriginTypeEnum(string(m.OriginType)); !ok && m.OriginType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OriginType: %s. Supported values are: %s.", m.OriginType, strings.Join(GetRuleOriginTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -11,7 +11,7 @@ package limits
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -61,7 +61,7 @@ func (m QuotaSummary) String() string {
 func (m QuotaSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingQuotaSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingQuotaSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetQuotaSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -96,4 +96,15 @@ func GetQuotaSummaryLifecycleStateEnumStringValues() []string {
 	return []string{
 		"ACTIVE",
 	}
+}
+
+// GetMappingQuotaSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingQuotaSummaryLifecycleStateEnum(val string) (QuotaSummaryLifecycleStateEnum, bool) {
+	mappingQuotaSummaryLifecycleStateEnumIgnoreCase := make(map[string]QuotaSummaryLifecycleStateEnum)
+	for k, v := range mappingQuotaSummaryLifecycleStateEnum {
+		mappingQuotaSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingQuotaSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

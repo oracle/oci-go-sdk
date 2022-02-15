@@ -9,6 +9,10 @@
 
 package loganalytics
 
+import (
+	"strings"
+)
+
 // StorageDataTypeEnum Enum with underlying type: string
 type StorageDataTypeEnum string
 
@@ -38,4 +42,15 @@ func GetStorageDataTypeEnumStringValues() []string {
 		"LOG",
 		"LOOKUP",
 	}
+}
+
+// GetMappingStorageDataTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStorageDataTypeEnum(val string) (StorageDataTypeEnum, bool) {
+	mappingStorageDataTypeEnumIgnoreCase := make(map[string]StorageDataTypeEnum)
+	for k, v := range mappingStorageDataTypeEnum {
+		mappingStorageDataTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStorageDataTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

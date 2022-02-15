@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -148,16 +148,16 @@ func (request SummarizeExadataInsightResourceForecastTrendRequest) RetryPolicy()
 // Not recommended for calling this function directly
 func (request SummarizeExadataInsightResourceForecastTrendRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeExadataInsightResourceForecastTrendStatisticEnum[string(request.Statistic)]; !ok && request.Statistic != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceForecastTrendStatisticEnum(string(request.Statistic)); !ok && request.Statistic != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Statistic: %s. Supported values are: %s.", request.Statistic, strings.Join(GetSummarizeExadataInsightResourceForecastTrendStatisticEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeExadataInsightResourceForecastTrendForecastModelEnum[string(request.ForecastModel)]; !ok && request.ForecastModel != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceForecastTrendForecastModelEnum(string(request.ForecastModel)); !ok && request.ForecastModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ForecastModel: %s. Supported values are: %s.", request.ForecastModel, strings.Join(GetSummarizeExadataInsightResourceForecastTrendForecastModelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeExadataInsightResourceForecastTrendSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceForecastTrendSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeExadataInsightResourceForecastTrendSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeExadataInsightResourceForecastTrendSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceForecastTrendSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeExadataInsightResourceForecastTrendSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -225,6 +225,17 @@ func GetSummarizeExadataInsightResourceForecastTrendStatisticEnumStringValues() 
 	}
 }
 
+// GetMappingSummarizeExadataInsightResourceForecastTrendStatisticEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceForecastTrendStatisticEnum(val string) (SummarizeExadataInsightResourceForecastTrendStatisticEnum, bool) {
+	mappingSummarizeExadataInsightResourceForecastTrendStatisticEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceForecastTrendStatisticEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceForecastTrendStatisticEnum {
+		mappingSummarizeExadataInsightResourceForecastTrendStatisticEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceForecastTrendStatisticEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeExadataInsightResourceForecastTrendForecastModelEnum Enum with underlying type: string
 type SummarizeExadataInsightResourceForecastTrendForecastModelEnum string
 
@@ -259,6 +270,17 @@ func GetSummarizeExadataInsightResourceForecastTrendForecastModelEnumStringValue
 	}
 }
 
+// GetMappingSummarizeExadataInsightResourceForecastTrendForecastModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceForecastTrendForecastModelEnum(val string) (SummarizeExadataInsightResourceForecastTrendForecastModelEnum, bool) {
+	mappingSummarizeExadataInsightResourceForecastTrendForecastModelEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceForecastTrendForecastModelEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceForecastTrendForecastModelEnum {
+		mappingSummarizeExadataInsightResourceForecastTrendForecastModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceForecastTrendForecastModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeExadataInsightResourceForecastTrendSortOrderEnum Enum with underlying type: string
 type SummarizeExadataInsightResourceForecastTrendSortOrderEnum string
 
@@ -288,6 +310,17 @@ func GetSummarizeExadataInsightResourceForecastTrendSortOrderEnumStringValues() 
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingSummarizeExadataInsightResourceForecastTrendSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceForecastTrendSortOrderEnum(val string) (SummarizeExadataInsightResourceForecastTrendSortOrderEnum, bool) {
+	mappingSummarizeExadataInsightResourceForecastTrendSortOrderEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceForecastTrendSortOrderEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceForecastTrendSortOrderEnum {
+		mappingSummarizeExadataInsightResourceForecastTrendSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceForecastTrendSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // SummarizeExadataInsightResourceForecastTrendSortByEnum Enum with underlying type: string
@@ -322,4 +355,15 @@ func GetSummarizeExadataInsightResourceForecastTrendSortByEnumStringValues() []s
 		"name",
 		"daysToReachCapacity",
 	}
+}
+
+// GetMappingSummarizeExadataInsightResourceForecastTrendSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceForecastTrendSortByEnum(val string) (SummarizeExadataInsightResourceForecastTrendSortByEnum, bool) {
+	mappingSummarizeExadataInsightResourceForecastTrendSortByEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceForecastTrendSortByEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceForecastTrendSortByEnum {
+		mappingSummarizeExadataInsightResourceForecastTrendSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceForecastTrendSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package loganalytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -233,17 +233,17 @@ func (m scheduledtask) String() string {
 // Not recommended for calling this function directly
 func (m scheduledtask) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTaskTypeEnum[string(m.TaskType)]; !ok && m.TaskType != "" {
+	if _, ok := GetMappingTaskTypeEnum(string(m.TaskType)); !ok && m.TaskType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TaskType: %s. Supported values are: %s.", m.TaskType, strings.Join(GetTaskTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingScheduledTaskLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingScheduledTaskLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetScheduledTaskLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingScheduledTaskTaskStatusEnum[string(m.TaskStatus)]; !ok && m.TaskStatus != "" {
+	if _, ok := GetMappingScheduledTaskTaskStatusEnum(string(m.TaskStatus)); !ok && m.TaskStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TaskStatus: %s. Supported values are: %s.", m.TaskStatus, strings.Join(GetScheduledTaskTaskStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingScheduledTaskPauseReasonEnum[string(m.PauseReason)]; !ok && m.PauseReason != "" {
+	if _, ok := GetMappingScheduledTaskPauseReasonEnum(string(m.PauseReason)); !ok && m.PauseReason != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PauseReason: %s. Supported values are: %s.", m.PauseReason, strings.Join(GetScheduledTaskPauseReasonEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -287,6 +287,17 @@ func GetScheduledTaskTaskStatusEnumStringValues() []string {
 		"COMPLETED",
 		"BLOCKED",
 	}
+}
+
+// GetMappingScheduledTaskTaskStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingScheduledTaskTaskStatusEnum(val string) (ScheduledTaskTaskStatusEnum, bool) {
+	mappingScheduledTaskTaskStatusEnumIgnoreCase := make(map[string]ScheduledTaskTaskStatusEnum)
+	for k, v := range mappingScheduledTaskTaskStatusEnum {
+		mappingScheduledTaskTaskStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingScheduledTaskTaskStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ScheduledTaskPauseReasonEnum Enum with underlying type: string
@@ -335,6 +346,17 @@ func GetScheduledTaskPauseReasonEnumStringValues() []string {
 	}
 }
 
+// GetMappingScheduledTaskPauseReasonEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingScheduledTaskPauseReasonEnum(val string) (ScheduledTaskPauseReasonEnum, bool) {
+	mappingScheduledTaskPauseReasonEnumIgnoreCase := make(map[string]ScheduledTaskPauseReasonEnum)
+	for k, v := range mappingScheduledTaskPauseReasonEnum {
+		mappingScheduledTaskPauseReasonEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingScheduledTaskPauseReasonEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ScheduledTaskLifecycleStateEnum Enum with underlying type: string
 type ScheduledTaskLifecycleStateEnum string
 
@@ -366,6 +388,17 @@ func GetScheduledTaskLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingScheduledTaskLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingScheduledTaskLifecycleStateEnum(val string) (ScheduledTaskLifecycleStateEnum, bool) {
+	mappingScheduledTaskLifecycleStateEnumIgnoreCase := make(map[string]ScheduledTaskLifecycleStateEnum)
+	for k, v := range mappingScheduledTaskLifecycleStateEnum {
+		mappingScheduledTaskLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingScheduledTaskLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ScheduledTaskKindEnum Enum with underlying type: string
 type ScheduledTaskKindEnum string
 
@@ -395,4 +428,15 @@ func GetScheduledTaskKindEnumStringValues() []string {
 		"ACCELERATION",
 		"STANDARD",
 	}
+}
+
+// GetMappingScheduledTaskKindEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingScheduledTaskKindEnum(val string) (ScheduledTaskKindEnum, bool) {
+	mappingScheduledTaskKindEnumIgnoreCase := make(map[string]ScheduledTaskKindEnum)
+	for k, v := range mappingScheduledTaskKindEnum {
+		mappingScheduledTaskKindEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingScheduledTaskKindEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

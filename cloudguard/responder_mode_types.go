@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // ResponderModeTypesEnum Enum with underlying type: string
 type ResponderModeTypesEnum string
 
@@ -38,4 +42,15 @@ func GetResponderModeTypesEnumStringValues() []string {
 		"AUTOACTION",
 		"USERACTION",
 	}
+}
+
+// GetMappingResponderModeTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResponderModeTypesEnum(val string) (ResponderModeTypesEnum, bool) {
+	mappingResponderModeTypesEnumIgnoreCase := make(map[string]ResponderModeTypesEnum)
+	for k, v := range mappingResponderModeTypesEnum {
+		mappingResponderModeTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResponderModeTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

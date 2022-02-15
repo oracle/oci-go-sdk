@@ -11,7 +11,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -67,7 +67,7 @@ func (m Project) String() string {
 func (m Project) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingProjectLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingProjectLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetProjectLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -117,4 +117,15 @@ func GetProjectLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingProjectLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingProjectLifecycleStateEnum(val string) (ProjectLifecycleStateEnum, bool) {
+	mappingProjectLifecycleStateEnumIgnoreCase := make(map[string]ProjectLifecycleStateEnum)
+	for k, v := range mappingProjectLifecycleStateEnum {
+		mappingProjectLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingProjectLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

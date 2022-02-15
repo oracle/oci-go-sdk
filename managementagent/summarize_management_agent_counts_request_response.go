@@ -6,7 +6,7 @@ package managementagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -73,12 +73,12 @@ func (request SummarizeManagementAgentCountsRequest) RetryPolicy() *common.Retry
 func (request SummarizeManagementAgentCountsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.GroupBy {
-		if _, ok := mappingManagementAgentGroupByEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingManagementAgentGroupByEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for GroupBy: %s. Supported values are: %s.", val, strings.Join(GetManagementAgentGroupByEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingSummarizeManagementAgentCountsInstallTypeEnum[string(request.InstallType)]; !ok && request.InstallType != "" {
+	if _, ok := GetMappingSummarizeManagementAgentCountsInstallTypeEnum(string(request.InstallType)); !ok && request.InstallType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InstallType: %s. Supported values are: %s.", request.InstallType, strings.Join(GetSummarizeManagementAgentCountsInstallTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -144,4 +144,15 @@ func GetSummarizeManagementAgentCountsInstallTypeEnumStringValues() []string {
 		"AGENT",
 		"GATEWAY",
 	}
+}
+
+// GetMappingSummarizeManagementAgentCountsInstallTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeManagementAgentCountsInstallTypeEnum(val string) (SummarizeManagementAgentCountsInstallTypeEnum, bool) {
+	mappingSummarizeManagementAgentCountsInstallTypeEnumIgnoreCase := make(map[string]SummarizeManagementAgentCountsInstallTypeEnum)
+	for k, v := range mappingSummarizeManagementAgentCountsInstallTypeEnum {
+		mappingSummarizeManagementAgentCountsInstallTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeManagementAgentCountsInstallTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

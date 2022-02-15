@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -84,13 +84,13 @@ func (request ListBuildPipelineStagesRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListBuildPipelineStagesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBuildPipelineStageLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingBuildPipelineStageLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetBuildPipelineStageLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBuildPipelineStagesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListBuildPipelineStagesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListBuildPipelineStagesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBuildPipelineStagesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListBuildPipelineStagesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListBuildPipelineStagesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -155,6 +155,17 @@ func GetListBuildPipelineStagesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListBuildPipelineStagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBuildPipelineStagesSortOrderEnum(val string) (ListBuildPipelineStagesSortOrderEnum, bool) {
+	mappingListBuildPipelineStagesSortOrderEnumIgnoreCase := make(map[string]ListBuildPipelineStagesSortOrderEnum)
+	for k, v := range mappingListBuildPipelineStagesSortOrderEnum {
+		mappingListBuildPipelineStagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBuildPipelineStagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListBuildPipelineStagesSortByEnum Enum with underlying type: string
 type ListBuildPipelineStagesSortByEnum string
 
@@ -184,4 +195,15 @@ func GetListBuildPipelineStagesSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListBuildPipelineStagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBuildPipelineStagesSortByEnum(val string) (ListBuildPipelineStagesSortByEnum, bool) {
+	mappingListBuildPipelineStagesSortByEnumIgnoreCase := make(map[string]ListBuildPipelineStagesSortByEnum)
+	for k, v := range mappingListBuildPipelineStagesSortByEnum {
+		mappingListBuildPipelineStagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBuildPipelineStagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

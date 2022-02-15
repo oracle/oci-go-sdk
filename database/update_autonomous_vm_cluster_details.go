@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -41,7 +41,7 @@ func (m UpdateAutonomousVmClusterDetails) String() string {
 func (m UpdateAutonomousVmClusterDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateAutonomousVmClusterDetailsLicenseModelEnum[string(m.LicenseModel)]; !ok && m.LicenseModel != "" {
+	if _, ok := GetMappingUpdateAutonomousVmClusterDetailsLicenseModelEnum(string(m.LicenseModel)); !ok && m.LicenseModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LicenseModel: %s. Supported values are: %s.", m.LicenseModel, strings.Join(GetUpdateAutonomousVmClusterDetailsLicenseModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -79,4 +79,15 @@ func GetUpdateAutonomousVmClusterDetailsLicenseModelEnumStringValues() []string 
 		"LICENSE_INCLUDED",
 		"BRING_YOUR_OWN_LICENSE",
 	}
+}
+
+// GetMappingUpdateAutonomousVmClusterDetailsLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateAutonomousVmClusterDetailsLicenseModelEnum(val string) (UpdateAutonomousVmClusterDetailsLicenseModelEnum, bool) {
+	mappingUpdateAutonomousVmClusterDetailsLicenseModelEnumIgnoreCase := make(map[string]UpdateAutonomousVmClusterDetailsLicenseModelEnum)
+	for k, v := range mappingUpdateAutonomousVmClusterDetailsLicenseModelEnum {
+		mappingUpdateAutonomousVmClusterDetailsLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateAutonomousVmClusterDetailsLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

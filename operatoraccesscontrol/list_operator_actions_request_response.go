@@ -6,7 +6,7 @@ package operatoraccesscontrol
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -81,13 +81,13 @@ func (request ListOperatorActionsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListOperatorActionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListOperatorActionsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListOperatorActionsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListOperatorActionsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListOperatorActionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListOperatorActionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListOperatorActionsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListOperatorActionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListOperatorActionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListOperatorActionsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -155,6 +155,17 @@ func GetListOperatorActionsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListOperatorActionsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListOperatorActionsLifecycleStateEnum(val string) (ListOperatorActionsLifecycleStateEnum, bool) {
+	mappingListOperatorActionsLifecycleStateEnumIgnoreCase := make(map[string]ListOperatorActionsLifecycleStateEnum)
+	for k, v := range mappingListOperatorActionsLifecycleStateEnum {
+		mappingListOperatorActionsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListOperatorActionsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListOperatorActionsSortOrderEnum Enum with underlying type: string
 type ListOperatorActionsSortOrderEnum string
 
@@ -186,6 +197,17 @@ func GetListOperatorActionsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListOperatorActionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListOperatorActionsSortOrderEnum(val string) (ListOperatorActionsSortOrderEnum, bool) {
+	mappingListOperatorActionsSortOrderEnumIgnoreCase := make(map[string]ListOperatorActionsSortOrderEnum)
+	for k, v := range mappingListOperatorActionsSortOrderEnum {
+		mappingListOperatorActionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListOperatorActionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListOperatorActionsSortByEnum Enum with underlying type: string
 type ListOperatorActionsSortByEnum string
 
@@ -215,4 +237,15 @@ func GetListOperatorActionsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListOperatorActionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListOperatorActionsSortByEnum(val string) (ListOperatorActionsSortByEnum, bool) {
+	mappingListOperatorActionsSortByEnumIgnoreCase := make(map[string]ListOperatorActionsSortByEnum)
+	for k, v := range mappingListOperatorActionsSortByEnum {
+		mappingListOperatorActionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListOperatorActionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

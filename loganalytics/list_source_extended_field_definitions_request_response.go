@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -75,10 +75,10 @@ func (request ListSourceExtendedFieldDefinitionsRequest) RetryPolicy() *common.R
 // Not recommended for calling this function directly
 func (request ListSourceExtendedFieldDefinitionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSourceExtendedFieldDefinitionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSourceExtendedFieldDefinitionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSourceExtendedFieldDefinitionsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSourceExtendedFieldDefinitionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSourceExtendedFieldDefinitionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSourceExtendedFieldDefinitionsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -150,6 +150,17 @@ func GetListSourceExtendedFieldDefinitionsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSourceExtendedFieldDefinitionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSourceExtendedFieldDefinitionsSortByEnum(val string) (ListSourceExtendedFieldDefinitionsSortByEnum, bool) {
+	mappingListSourceExtendedFieldDefinitionsSortByEnumIgnoreCase := make(map[string]ListSourceExtendedFieldDefinitionsSortByEnum)
+	for k, v := range mappingListSourceExtendedFieldDefinitionsSortByEnum {
+		mappingListSourceExtendedFieldDefinitionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSourceExtendedFieldDefinitionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSourceExtendedFieldDefinitionsSortOrderEnum Enum with underlying type: string
 type ListSourceExtendedFieldDefinitionsSortOrderEnum string
 
@@ -179,4 +190,15 @@ func GetListSourceExtendedFieldDefinitionsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListSourceExtendedFieldDefinitionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSourceExtendedFieldDefinitionsSortOrderEnum(val string) (ListSourceExtendedFieldDefinitionsSortOrderEnum, bool) {
+	mappingListSourceExtendedFieldDefinitionsSortOrderEnumIgnoreCase := make(map[string]ListSourceExtendedFieldDefinitionsSortOrderEnum)
+	for k, v := range mappingListSourceExtendedFieldDefinitionsSortOrderEnum {
+		mappingListSourceExtendedFieldDefinitionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSourceExtendedFieldDefinitionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

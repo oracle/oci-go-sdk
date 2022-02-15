@@ -6,7 +6,7 @@ package certificatesmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -91,13 +91,13 @@ func (request ListAssociationsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAssociationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAssociationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAssociationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAssociationsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAssociationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAssociationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAssociationsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAssociationsAssociationTypeEnum[string(request.AssociationType)]; !ok && request.AssociationType != "" {
+	if _, ok := GetMappingListAssociationsAssociationTypeEnum(string(request.AssociationType)); !ok && request.AssociationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AssociationType: %s. Supported values are: %s.", request.AssociationType, strings.Join(GetListAssociationsAssociationTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -165,6 +165,17 @@ func GetListAssociationsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAssociationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAssociationsSortByEnum(val string) (ListAssociationsSortByEnum, bool) {
+	mappingListAssociationsSortByEnumIgnoreCase := make(map[string]ListAssociationsSortByEnum)
+	for k, v := range mappingListAssociationsSortByEnum {
+		mappingListAssociationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAssociationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAssociationsSortOrderEnum Enum with underlying type: string
 type ListAssociationsSortOrderEnum string
 
@@ -194,6 +205,17 @@ func GetListAssociationsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAssociationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAssociationsSortOrderEnum(val string) (ListAssociationsSortOrderEnum, bool) {
+	mappingListAssociationsSortOrderEnumIgnoreCase := make(map[string]ListAssociationsSortOrderEnum)
+	for k, v := range mappingListAssociationsSortOrderEnum {
+		mappingListAssociationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAssociationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListAssociationsAssociationTypeEnum Enum with underlying type: string
@@ -228,4 +250,15 @@ func GetListAssociationsAssociationTypeEnumStringValues() []string {
 		"CERTIFICATE_AUTHORITY",
 		"CA_BUNDLE",
 	}
+}
+
+// GetMappingListAssociationsAssociationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAssociationsAssociationTypeEnum(val string) (ListAssociationsAssociationTypeEnum, bool) {
+	mappingListAssociationsAssociationTypeEnumIgnoreCase := make(map[string]ListAssociationsAssociationTypeEnum)
+	for k, v := range mappingListAssociationsAssociationTypeEnum {
+		mappingListAssociationsAssociationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAssociationsAssociationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

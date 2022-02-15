@@ -9,6 +9,10 @@
 
 package tenantmanagercontrolplane
 
+import (
+	"strings"
+)
+
 // OrganizationTenancyRoleEnum Enum with underlying type: string
 type OrganizationTenancyRoleEnum string
 
@@ -41,4 +45,15 @@ func GetOrganizationTenancyRoleEnumStringValues() []string {
 		"CHILD",
 		"NONE",
 	}
+}
+
+// GetMappingOrganizationTenancyRoleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOrganizationTenancyRoleEnum(val string) (OrganizationTenancyRoleEnum, bool) {
+	mappingOrganizationTenancyRoleEnumIgnoreCase := make(map[string]OrganizationTenancyRoleEnum)
+	for k, v := range mappingOrganizationTenancyRoleEnum {
+		mappingOrganizationTenancyRoleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOrganizationTenancyRoleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

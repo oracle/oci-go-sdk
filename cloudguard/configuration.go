@@ -11,7 +11,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -38,7 +38,7 @@ func (m Configuration) String() string {
 func (m Configuration) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCloudGuardStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingCloudGuardStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetCloudGuardStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

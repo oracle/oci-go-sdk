@@ -12,7 +12,7 @@ package waas
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -115,4 +115,15 @@ func GetLoadBalancingMethodMethodEnumStringValues() []string {
 		"ROUND_ROBIN",
 		"STICKY_COOKIE",
 	}
+}
+
+// GetMappingLoadBalancingMethodMethodEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLoadBalancingMethodMethodEnum(val string) (LoadBalancingMethodMethodEnum, bool) {
+	mappingLoadBalancingMethodMethodEnumIgnoreCase := make(map[string]LoadBalancingMethodMethodEnum)
+	for k, v := range mappingLoadBalancingMethodMethodEnum {
+		mappingLoadBalancingMethodMethodEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLoadBalancingMethodMethodEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

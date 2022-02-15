@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -91,10 +91,10 @@ func (request ListInstanceDevicesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListInstanceDevicesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListInstanceDevicesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListInstanceDevicesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListInstanceDevicesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListInstanceDevicesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListInstanceDevicesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListInstanceDevicesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -162,6 +162,17 @@ func GetListInstanceDevicesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListInstanceDevicesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListInstanceDevicesSortByEnum(val string) (ListInstanceDevicesSortByEnum, bool) {
+	mappingListInstanceDevicesSortByEnumIgnoreCase := make(map[string]ListInstanceDevicesSortByEnum)
+	for k, v := range mappingListInstanceDevicesSortByEnum {
+		mappingListInstanceDevicesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListInstanceDevicesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListInstanceDevicesSortOrderEnum Enum with underlying type: string
 type ListInstanceDevicesSortOrderEnum string
 
@@ -191,4 +202,15 @@ func GetListInstanceDevicesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListInstanceDevicesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListInstanceDevicesSortOrderEnum(val string) (ListInstanceDevicesSortOrderEnum, bool) {
+	mappingListInstanceDevicesSortOrderEnumIgnoreCase := make(map[string]ListInstanceDevicesSortOrderEnum)
+	for k, v := range mappingListInstanceDevicesSortOrderEnum {
+		mappingListInstanceDevicesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListInstanceDevicesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

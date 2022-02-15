@@ -6,7 +6,7 @@ package managementagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -82,10 +82,10 @@ func (request ListAvailabilityHistoriesRequest) RetryPolicy() *common.RetryPolic
 // Not recommended for calling this function directly
 func (request ListAvailabilityHistoriesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAvailabilityHistoriesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAvailabilityHistoriesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAvailabilityHistoriesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAvailabilityHistoriesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAvailabilityHistoriesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAvailabilityHistoriesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -153,6 +153,17 @@ func GetListAvailabilityHistoriesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAvailabilityHistoriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAvailabilityHistoriesSortOrderEnum(val string) (ListAvailabilityHistoriesSortOrderEnum, bool) {
+	mappingListAvailabilityHistoriesSortOrderEnumIgnoreCase := make(map[string]ListAvailabilityHistoriesSortOrderEnum)
+	for k, v := range mappingListAvailabilityHistoriesSortOrderEnum {
+		mappingListAvailabilityHistoriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAvailabilityHistoriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAvailabilityHistoriesSortByEnum Enum with underlying type: string
 type ListAvailabilityHistoriesSortByEnum string
 
@@ -179,4 +190,15 @@ func GetListAvailabilityHistoriesSortByEnumStringValues() []string {
 	return []string{
 		"timeAvailabilityStatusStarted",
 	}
+}
+
+// GetMappingListAvailabilityHistoriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAvailabilityHistoriesSortByEnum(val string) (ListAvailabilityHistoriesSortByEnum, bool) {
+	mappingListAvailabilityHistoriesSortByEnumIgnoreCase := make(map[string]ListAvailabilityHistoriesSortByEnum)
+	for k, v := range mappingListAvailabilityHistoriesSortByEnum {
+		mappingListAvailabilityHistoriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAvailabilityHistoriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

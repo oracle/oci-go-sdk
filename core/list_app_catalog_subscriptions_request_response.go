@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -88,10 +88,10 @@ func (request ListAppCatalogSubscriptionsRequest) RetryPolicy() *common.RetryPol
 // Not recommended for calling this function directly
 func (request ListAppCatalogSubscriptionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAppCatalogSubscriptionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAppCatalogSubscriptionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAppCatalogSubscriptionsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAppCatalogSubscriptionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAppCatalogSubscriptionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAppCatalogSubscriptionsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -159,6 +159,17 @@ func GetListAppCatalogSubscriptionsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAppCatalogSubscriptionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAppCatalogSubscriptionsSortByEnum(val string) (ListAppCatalogSubscriptionsSortByEnum, bool) {
+	mappingListAppCatalogSubscriptionsSortByEnumIgnoreCase := make(map[string]ListAppCatalogSubscriptionsSortByEnum)
+	for k, v := range mappingListAppCatalogSubscriptionsSortByEnum {
+		mappingListAppCatalogSubscriptionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAppCatalogSubscriptionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAppCatalogSubscriptionsSortOrderEnum Enum with underlying type: string
 type ListAppCatalogSubscriptionsSortOrderEnum string
 
@@ -188,4 +199,15 @@ func GetListAppCatalogSubscriptionsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAppCatalogSubscriptionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAppCatalogSubscriptionsSortOrderEnum(val string) (ListAppCatalogSubscriptionsSortOrderEnum, bool) {
+	mappingListAppCatalogSubscriptionsSortOrderEnumIgnoreCase := make(map[string]ListAppCatalogSubscriptionsSortOrderEnum)
+	for k, v := range mappingListAppCatalogSubscriptionsSortOrderEnum {
+		mappingListAppCatalogSubscriptionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAppCatalogSubscriptionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

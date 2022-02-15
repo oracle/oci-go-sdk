@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -197,4 +197,15 @@ func GetProjectionRuleModelTypeEnumStringValues() []string {
 		"TYPED_NAME_PATTERN_RULE",
 		"RENAME_RULE",
 	}
+}
+
+// GetMappingProjectionRuleModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingProjectionRuleModelTypeEnum(val string) (ProjectionRuleModelTypeEnum, bool) {
+	mappingProjectionRuleModelTypeEnumIgnoreCase := make(map[string]ProjectionRuleModelTypeEnum)
+	for k, v := range mappingProjectionRuleModelTypeEnum {
+		mappingProjectionRuleModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingProjectionRuleModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

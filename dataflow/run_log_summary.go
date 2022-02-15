@@ -11,7 +11,7 @@ package dataflow
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -47,10 +47,10 @@ func (m RunLogSummary) String() string {
 // Not recommended for calling this function directly
 func (m RunLogSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRunLogSummarySourceEnum[string(m.Source)]; !ok && m.Source != "" {
+	if _, ok := GetMappingRunLogSummarySourceEnum(string(m.Source)); !ok && m.Source != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Source: %s. Supported values are: %s.", m.Source, strings.Join(GetRunLogSummarySourceEnumStringValues(), ",")))
 	}
-	if _, ok := mappingRunLogSummaryTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingRunLogSummaryTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetRunLogSummaryTypeEnumStringValues(), ",")))
 	}
 
@@ -94,6 +94,17 @@ func GetRunLogSummarySourceEnumStringValues() []string {
 	}
 }
 
+// GetMappingRunLogSummarySourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRunLogSummarySourceEnum(val string) (RunLogSummarySourceEnum, bool) {
+	mappingRunLogSummarySourceEnumIgnoreCase := make(map[string]RunLogSummarySourceEnum)
+	for k, v := range mappingRunLogSummarySourceEnum {
+		mappingRunLogSummarySourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRunLogSummarySourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // RunLogSummaryTypeEnum Enum with underlying type: string
 type RunLogSummaryTypeEnum string
 
@@ -123,4 +134,15 @@ func GetRunLogSummaryTypeEnumStringValues() []string {
 		"STDERR",
 		"STDOUT",
 	}
+}
+
+// GetMappingRunLogSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRunLogSummaryTypeEnum(val string) (RunLogSummaryTypeEnum, bool) {
+	mappingRunLogSummaryTypeEnumIgnoreCase := make(map[string]RunLogSummaryTypeEnum)
+	for k, v := range mappingRunLogSummaryTypeEnum {
+		mappingRunLogSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRunLogSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

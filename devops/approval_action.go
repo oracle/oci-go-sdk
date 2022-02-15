@@ -11,7 +11,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -34,7 +34,7 @@ func (m ApprovalAction) String() string {
 // Not recommended for calling this function directly
 func (m ApprovalAction) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingApprovalActionActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingApprovalActionActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetApprovalActionActionEnumStringValues(), ",")))
 	}
 
@@ -73,4 +73,15 @@ func GetApprovalActionActionEnumStringValues() []string {
 		"APPROVE",
 		"REJECT",
 	}
+}
+
+// GetMappingApprovalActionActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingApprovalActionActionEnum(val string) (ApprovalActionActionEnum, bool) {
+	mappingApprovalActionActionEnumIgnoreCase := make(map[string]ApprovalActionActionEnum)
+	for k, v := range mappingApprovalActionActionEnum {
+		mappingApprovalActionActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingApprovalActionActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

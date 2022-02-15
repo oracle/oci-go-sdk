@@ -6,7 +6,7 @@ package jms
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -92,10 +92,10 @@ func (request ListJreUsageRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListJreUsageRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListJreUsageSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListJreUsageSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListJreUsageSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListJreUsageSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListJreUsageSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListJreUsageSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -163,6 +163,17 @@ func GetListJreUsageSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListJreUsageSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJreUsageSortOrderEnum(val string) (ListJreUsageSortOrderEnum, bool) {
+	mappingListJreUsageSortOrderEnumIgnoreCase := make(map[string]ListJreUsageSortOrderEnum)
+	for k, v := range mappingListJreUsageSortOrderEnum {
+		mappingListJreUsageSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJreUsageSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListJreUsageSortByEnum Enum with underlying type: string
 type ListJreUsageSortByEnum string
 
@@ -216,4 +227,15 @@ func GetListJreUsageSortByEnumStringValues() []string {
 		"osName",
 		"securityStatus",
 	}
+}
+
+// GetMappingListJreUsageSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJreUsageSortByEnum(val string) (ListJreUsageSortByEnum, bool) {
+	mappingListJreUsageSortByEnumIgnoreCase := make(map[string]ListJreUsageSortByEnum)
+	for k, v := range mappingListJreUsageSortByEnum {
+		mappingListJreUsageSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJreUsageSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

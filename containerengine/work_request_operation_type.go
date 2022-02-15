@@ -11,6 +11,10 @@
 
 package containerengine
 
+import (
+	"strings"
+)
+
 // WorkRequestOperationTypeEnum Enum with underlying type: string
 type WorkRequestOperationTypeEnum string
 
@@ -58,4 +62,15 @@ func GetWorkRequestOperationTypeEnumStringValues() []string {
 		"NODEPOOL_RECONCILE",
 		"WORKREQUEST_CANCEL",
 	}
+}
+
+// GetMappingWorkRequestOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestOperationTypeEnum(val string) (WorkRequestOperationTypeEnum, bool) {
+	mappingWorkRequestOperationTypeEnumIgnoreCase := make(map[string]WorkRequestOperationTypeEnum)
+	for k, v := range mappingWorkRequestOperationTypeEnum {
+		mappingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

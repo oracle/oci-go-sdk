@@ -10,6 +10,10 @@
 
 package osmanagement
 
+import (
+	"strings"
+)
+
 // UpdateTypesEnum Enum with underlying type: string
 type UpdateTypesEnum string
 
@@ -45,4 +49,15 @@ func GetUpdateTypesEnumStringValues() []string {
 		"ENHANCEMENT",
 		"OTHER",
 	}
+}
+
+// GetMappingUpdateTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateTypesEnum(val string) (UpdateTypesEnum, bool) {
+	mappingUpdateTypesEnumIgnoreCase := make(map[string]UpdateTypesEnum)
+	for k, v := range mappingUpdateTypesEnum {
+		mappingUpdateTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

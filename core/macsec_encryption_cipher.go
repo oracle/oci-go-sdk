@@ -13,6 +13,10 @@
 
 package core
 
+import (
+	"strings"
+)
+
 // MacsecEncryptionCipherEnum Enum with underlying type: string
 type MacsecEncryptionCipherEnum string
 
@@ -48,4 +52,15 @@ func GetMacsecEncryptionCipherEnumStringValues() []string {
 		"AES256_GCM",
 		"AES256_GCM_XPN",
 	}
+}
+
+// GetMappingMacsecEncryptionCipherEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMacsecEncryptionCipherEnum(val string) (MacsecEncryptionCipherEnum, bool) {
+	mappingMacsecEncryptionCipherEnumIgnoreCase := make(map[string]MacsecEncryptionCipherEnum)
+	for k, v := range mappingMacsecEncryptionCipherEnum {
+		mappingMacsecEncryptionCipherEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMacsecEncryptionCipherEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

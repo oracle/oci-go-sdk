@@ -12,7 +12,7 @@ package apmsynthetics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -70,10 +70,10 @@ func (m RestMonitorConfiguration) String() string {
 func (m RestMonitorConfiguration) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingRequestMethodsEnum[string(m.RequestMethod)]; !ok && m.RequestMethod != "" {
+	if _, ok := GetMappingRequestMethodsEnum(string(m.RequestMethod)); !ok && m.RequestMethod != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RequestMethod: %s. Supported values are: %s.", m.RequestMethod, strings.Join(GetRequestMethodsEnumStringValues(), ",")))
 	}
-	if _, ok := mappingRequestAuthenticationSchemesEnum[string(m.ReqAuthenticationScheme)]; !ok && m.ReqAuthenticationScheme != "" {
+	if _, ok := GetMappingRequestAuthenticationSchemesEnum(string(m.ReqAuthenticationScheme)); !ok && m.ReqAuthenticationScheme != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ReqAuthenticationScheme: %s. Supported values are: %s.", m.ReqAuthenticationScheme, strings.Join(GetRequestAuthenticationSchemesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

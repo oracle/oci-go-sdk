@@ -12,7 +12,7 @@ package ons
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -64,7 +64,7 @@ func (m NotificationTopicSummary) String() string {
 // Not recommended for calling this function directly
 func (m NotificationTopicSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingNotificationTopicSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingNotificationTopicSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetNotificationTopicSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -106,4 +106,15 @@ func GetNotificationTopicSummaryLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"CREATING",
 	}
+}
+
+// GetMappingNotificationTopicSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingNotificationTopicSummaryLifecycleStateEnum(val string) (NotificationTopicSummaryLifecycleStateEnum, bool) {
+	mappingNotificationTopicSummaryLifecycleStateEnumIgnoreCase := make(map[string]NotificationTopicSummaryLifecycleStateEnum)
+	for k, v := range mappingNotificationTopicSummaryLifecycleStateEnum {
+		mappingNotificationTopicSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingNotificationTopicSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

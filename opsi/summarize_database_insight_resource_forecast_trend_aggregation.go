@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -54,13 +54,13 @@ func (m SummarizeDatabaseInsightResourceForecastTrendAggregation) String() strin
 // Not recommended for calling this function directly
 func (m SummarizeDatabaseInsightResourceForecastTrendAggregation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeDatabaseInsightResourceForecastTrendAggregationResourceMetricEnum[string(m.ResourceMetric)]; !ok && m.ResourceMetric != "" {
+	if _, ok := GetMappingSummarizeDatabaseInsightResourceForecastTrendAggregationResourceMetricEnum(string(m.ResourceMetric)); !ok && m.ResourceMetric != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResourceMetric: %s. Supported values are: %s.", m.ResourceMetric, strings.Join(GetSummarizeDatabaseInsightResourceForecastTrendAggregationResourceMetricEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUsageUnitEnum[string(m.UsageUnit)]; !ok && m.UsageUnit != "" {
+	if _, ok := GetMappingUsageUnitEnum(string(m.UsageUnit)); !ok && m.UsageUnit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UsageUnit: %s. Supported values are: %s.", m.UsageUnit, strings.Join(GetUsageUnitEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeDatabaseInsightResourceForecastTrendAggregationPatternEnum[string(m.Pattern)]; !ok && m.Pattern != "" {
+	if _, ok := GetMappingSummarizeDatabaseInsightResourceForecastTrendAggregationPatternEnum(string(m.Pattern)); !ok && m.Pattern != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Pattern: %s. Supported values are: %s.", m.Pattern, strings.Join(GetSummarizeDatabaseInsightResourceForecastTrendAggregationPatternEnumStringValues(), ",")))
 	}
 
@@ -113,6 +113,17 @@ func GetSummarizeDatabaseInsightResourceForecastTrendAggregationResourceMetricEn
 	}
 }
 
+// GetMappingSummarizeDatabaseInsightResourceForecastTrendAggregationResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeDatabaseInsightResourceForecastTrendAggregationResourceMetricEnum(val string) (SummarizeDatabaseInsightResourceForecastTrendAggregationResourceMetricEnum, bool) {
+	mappingSummarizeDatabaseInsightResourceForecastTrendAggregationResourceMetricEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceForecastTrendAggregationResourceMetricEnum)
+	for k, v := range mappingSummarizeDatabaseInsightResourceForecastTrendAggregationResourceMetricEnum {
+		mappingSummarizeDatabaseInsightResourceForecastTrendAggregationResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeDatabaseInsightResourceForecastTrendAggregationResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeDatabaseInsightResourceForecastTrendAggregationPatternEnum Enum with underlying type: string
 type SummarizeDatabaseInsightResourceForecastTrendAggregationPatternEnum string
 
@@ -160,4 +171,15 @@ func GetSummarizeDatabaseInsightResourceForecastTrendAggregationPatternEnumStrin
 		"WEEKLY_AND_YEARLY_SEASONS",
 		"YEARLY_SEASONS",
 	}
+}
+
+// GetMappingSummarizeDatabaseInsightResourceForecastTrendAggregationPatternEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeDatabaseInsightResourceForecastTrendAggregationPatternEnum(val string) (SummarizeDatabaseInsightResourceForecastTrendAggregationPatternEnum, bool) {
+	mappingSummarizeDatabaseInsightResourceForecastTrendAggregationPatternEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceForecastTrendAggregationPatternEnum)
+	for k, v := range mappingSummarizeDatabaseInsightResourceForecastTrendAggregationPatternEnum {
+		mappingSummarizeDatabaseInsightResourceForecastTrendAggregationPatternEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeDatabaseInsightResourceForecastTrendAggregationPatternEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -13,7 +13,7 @@ package loadbalancer
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -102,4 +102,15 @@ func GetActionNameEnumStringValues() []string {
 	return []string{
 		"FORWARD_TO_BACKENDSET",
 	}
+}
+
+// GetMappingActionNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingActionNameEnum(val string) (ActionNameEnum, bool) {
+	mappingActionNameEnumIgnoreCase := make(map[string]ActionNameEnum)
+	for k, v := range mappingActionNameEnum {
+		mappingActionNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingActionNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

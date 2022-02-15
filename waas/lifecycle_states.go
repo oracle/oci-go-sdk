@@ -9,6 +9,10 @@
 
 package waas
 
+import (
+	"strings"
+)
+
 // LifecycleStatesEnum Enum with underlying type: string
 type LifecycleStatesEnum string
 
@@ -50,4 +54,15 @@ func GetLifecycleStatesEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingLifecycleStatesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLifecycleStatesEnum(val string) (LifecycleStatesEnum, bool) {
+	mappingLifecycleStatesEnumIgnoreCase := make(map[string]LifecycleStatesEnum)
+	for k, v := range mappingLifecycleStatesEnum {
+		mappingLifecycleStatesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLifecycleStatesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

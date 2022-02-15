@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -108,33 +108,33 @@ func (request ListDatabaseInsightsRequest) RetryPolicy() *common.RetryPolicy {
 func (request ListDatabaseInsightsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Status {
-		if _, ok := mappingResourceStatusEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingResourceStatusEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", val, strings.Join(GetResourceStatusEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range request.LifecycleState {
-		if _, ok := mappingLifecycleStateEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingLifecycleStateEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", val, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range request.DatabaseType {
-		if _, ok := mappingListDatabaseInsightsDatabaseTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListDatabaseInsightsDatabaseTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseType: %s. Supported values are: %s.", val, strings.Join(GetListDatabaseInsightsDatabaseTypeEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range request.Fields {
-		if _, ok := mappingListDatabaseInsightsFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListDatabaseInsightsFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetListDatabaseInsightsFieldsEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListDatabaseInsightsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDatabaseInsightsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDatabaseInsightsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDatabaseInsightsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDatabaseInsightsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDatabaseInsightsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -217,6 +217,17 @@ func GetListDatabaseInsightsDatabaseTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDatabaseInsightsDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseInsightsDatabaseTypeEnum(val string) (ListDatabaseInsightsDatabaseTypeEnum, bool) {
+	mappingListDatabaseInsightsDatabaseTypeEnumIgnoreCase := make(map[string]ListDatabaseInsightsDatabaseTypeEnum)
+	for k, v := range mappingListDatabaseInsightsDatabaseTypeEnum {
+		mappingListDatabaseInsightsDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseInsightsDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDatabaseInsightsFieldsEnum Enum with underlying type: string
 type ListDatabaseInsightsFieldsEnum string
 
@@ -266,6 +277,17 @@ func GetListDatabaseInsightsFieldsEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDatabaseInsightsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseInsightsFieldsEnum(val string) (ListDatabaseInsightsFieldsEnum, bool) {
+	mappingListDatabaseInsightsFieldsEnumIgnoreCase := make(map[string]ListDatabaseInsightsFieldsEnum)
+	for k, v := range mappingListDatabaseInsightsFieldsEnum {
+		mappingListDatabaseInsightsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseInsightsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDatabaseInsightsSortOrderEnum Enum with underlying type: string
 type ListDatabaseInsightsSortOrderEnum string
 
@@ -295,6 +317,17 @@ func GetListDatabaseInsightsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListDatabaseInsightsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseInsightsSortOrderEnum(val string) (ListDatabaseInsightsSortOrderEnum, bool) {
+	mappingListDatabaseInsightsSortOrderEnumIgnoreCase := make(map[string]ListDatabaseInsightsSortOrderEnum)
+	for k, v := range mappingListDatabaseInsightsSortOrderEnum {
+		mappingListDatabaseInsightsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseInsightsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListDatabaseInsightsSortByEnum Enum with underlying type: string
@@ -329,4 +362,15 @@ func GetListDatabaseInsightsSortByEnumStringValues() []string {
 		"databaseDisplayName",
 		"databaseType",
 	}
+}
+
+// GetMappingListDatabaseInsightsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseInsightsSortByEnum(val string) (ListDatabaseInsightsSortByEnum, bool) {
+	mappingListDatabaseInsightsSortByEnumIgnoreCase := make(map[string]ListDatabaseInsightsSortByEnum)
+	for k, v := range mappingListDatabaseInsightsSortByEnum {
+		mappingListDatabaseInsightsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseInsightsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

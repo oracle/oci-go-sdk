@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -124,14 +124,14 @@ func (m SecurityAssessment) String() string {
 // Not recommended for calling this function directly
 func (m SecurityAssessment) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSecurityAssessmentLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingSecurityAssessmentLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSecurityAssessmentLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSecurityAssessmentTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingSecurityAssessmentTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetSecurityAssessmentTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingSecurityAssessmentTriggeredByEnum[string(m.TriggeredBy)]; !ok && m.TriggeredBy != "" {
+	if _, ok := GetMappingSecurityAssessmentTriggeredByEnum(string(m.TriggeredBy)); !ok && m.TriggeredBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TriggeredBy: %s. Supported values are: %s.", m.TriggeredBy, strings.Join(GetSecurityAssessmentTriggeredByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -171,6 +171,17 @@ func GetSecurityAssessmentTriggeredByEnumStringValues() []string {
 	}
 }
 
+// GetMappingSecurityAssessmentTriggeredByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecurityAssessmentTriggeredByEnum(val string) (SecurityAssessmentTriggeredByEnum, bool) {
+	mappingSecurityAssessmentTriggeredByEnumIgnoreCase := make(map[string]SecurityAssessmentTriggeredByEnum)
+	for k, v := range mappingSecurityAssessmentTriggeredByEnum {
+		mappingSecurityAssessmentTriggeredByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecurityAssessmentTriggeredByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SecurityAssessmentTypeEnum Enum with underlying type: string
 type SecurityAssessmentTypeEnum string
 
@@ -206,4 +217,15 @@ func GetSecurityAssessmentTypeEnumStringValues() []string {
 		"SAVE_SCHEDULE",
 		"COMPARTMENT",
 	}
+}
+
+// GetMappingSecurityAssessmentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecurityAssessmentTypeEnum(val string) (SecurityAssessmentTypeEnum, bool) {
+	mappingSecurityAssessmentTypeEnumIgnoreCase := make(map[string]SecurityAssessmentTypeEnum)
+	for k, v := range mappingSecurityAssessmentTypeEnum {
+		mappingSecurityAssessmentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecurityAssessmentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

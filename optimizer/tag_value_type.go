@@ -11,6 +11,10 @@
 
 package optimizer
 
+import (
+	"strings"
+)
+
 // TagValueTypeEnum Enum with underlying type: string
 type TagValueTypeEnum string
 
@@ -40,4 +44,15 @@ func GetTagValueTypeEnumStringValues() []string {
 		"VALUE",
 		"ANY",
 	}
+}
+
+// GetMappingTagValueTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTagValueTypeEnum(val string) (TagValueTypeEnum, bool) {
+	mappingTagValueTypeEnumIgnoreCase := make(map[string]TagValueTypeEnum)
+	for k, v := range mappingTagValueTypeEnum {
+		mappingTagValueTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTagValueTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

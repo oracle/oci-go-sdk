@@ -9,6 +9,10 @@
 
 package jms
 
+import (
+	"strings"
+)
+
 // JreSortByEnum Enum with underlying type: string
 type JreSortByEnum string
 
@@ -62,4 +66,15 @@ func GetJreSortByEnumStringValues() []string {
 		"osName",
 		"securityStatus",
 	}
+}
+
+// GetMappingJreSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJreSortByEnum(val string) (JreSortByEnum, bool) {
+	mappingJreSortByEnumIgnoreCase := make(map[string]JreSortByEnum)
+	for k, v := range mappingJreSortByEnum {
+		mappingJreSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJreSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

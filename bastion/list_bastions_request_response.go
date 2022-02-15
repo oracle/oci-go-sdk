@@ -6,7 +6,7 @@ package bastion
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -81,13 +81,13 @@ func (request ListBastionsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListBastionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListBastionsBastionLifecycleStateEnum[string(request.BastionLifecycleState)]; !ok && request.BastionLifecycleState != "" {
+	if _, ok := GetMappingListBastionsBastionLifecycleStateEnum(string(request.BastionLifecycleState)); !ok && request.BastionLifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BastionLifecycleState: %s. Supported values are: %s.", request.BastionLifecycleState, strings.Join(GetListBastionsBastionLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBastionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListBastionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListBastionsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBastionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListBastionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListBastionsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -167,6 +167,17 @@ func GetListBastionsBastionLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListBastionsBastionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBastionsBastionLifecycleStateEnum(val string) (ListBastionsBastionLifecycleStateEnum, bool) {
+	mappingListBastionsBastionLifecycleStateEnumIgnoreCase := make(map[string]ListBastionsBastionLifecycleStateEnum)
+	for k, v := range mappingListBastionsBastionLifecycleStateEnum {
+		mappingListBastionsBastionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBastionsBastionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListBastionsSortOrderEnum Enum with underlying type: string
 type ListBastionsSortOrderEnum string
 
@@ -198,6 +209,17 @@ func GetListBastionsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListBastionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBastionsSortOrderEnum(val string) (ListBastionsSortOrderEnum, bool) {
+	mappingListBastionsSortOrderEnumIgnoreCase := make(map[string]ListBastionsSortOrderEnum)
+	for k, v := range mappingListBastionsSortOrderEnum {
+		mappingListBastionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBastionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListBastionsSortByEnum Enum with underlying type: string
 type ListBastionsSortByEnum string
 
@@ -227,4 +249,15 @@ func GetListBastionsSortByEnumStringValues() []string {
 		"timeCreated",
 		"name",
 	}
+}
+
+// GetMappingListBastionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBastionsSortByEnum(val string) (ListBastionsSortByEnum, bool) {
+	mappingListBastionsSortByEnumIgnoreCase := make(map[string]ListBastionsSortByEnum)
+	for k, v := range mappingListBastionsSortByEnum {
+		mappingListBastionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBastionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

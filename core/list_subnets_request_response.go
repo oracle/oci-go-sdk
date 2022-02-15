@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -95,13 +95,13 @@ func (request ListSubnetsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListSubnetsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSubnetsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSubnetsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSubnetsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSubnetsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSubnetsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSubnetsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSubnetLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingSubnetLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetSubnetLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -169,6 +169,17 @@ func GetListSubnetsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSubnetsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSubnetsSortByEnum(val string) (ListSubnetsSortByEnum, bool) {
+	mappingListSubnetsSortByEnumIgnoreCase := make(map[string]ListSubnetsSortByEnum)
+	for k, v := range mappingListSubnetsSortByEnum {
+		mappingListSubnetsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSubnetsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSubnetsSortOrderEnum Enum with underlying type: string
 type ListSubnetsSortOrderEnum string
 
@@ -198,4 +209,15 @@ func GetListSubnetsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListSubnetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSubnetsSortOrderEnum(val string) (ListSubnetsSortOrderEnum, bool) {
+	mappingListSubnetsSortOrderEnumIgnoreCase := make(map[string]ListSubnetsSortOrderEnum)
+	for k, v := range mappingListSubnetsSortOrderEnum {
+		mappingListSubnetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSubnetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

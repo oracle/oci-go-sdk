@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -95,13 +95,13 @@ func (request ListVolumeGroupReplicasRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListVolumeGroupReplicasRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListVolumeGroupReplicasSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListVolumeGroupReplicasSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListVolumeGroupReplicasSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListVolumeGroupReplicasSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListVolumeGroupReplicasSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListVolumeGroupReplicasSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVolumeGroupReplicaLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingVolumeGroupReplicaLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetVolumeGroupReplicaLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -169,6 +169,17 @@ func GetListVolumeGroupReplicasSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListVolumeGroupReplicasSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListVolumeGroupReplicasSortByEnum(val string) (ListVolumeGroupReplicasSortByEnum, bool) {
+	mappingListVolumeGroupReplicasSortByEnumIgnoreCase := make(map[string]ListVolumeGroupReplicasSortByEnum)
+	for k, v := range mappingListVolumeGroupReplicasSortByEnum {
+		mappingListVolumeGroupReplicasSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListVolumeGroupReplicasSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListVolumeGroupReplicasSortOrderEnum Enum with underlying type: string
 type ListVolumeGroupReplicasSortOrderEnum string
 
@@ -198,4 +209,15 @@ func GetListVolumeGroupReplicasSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListVolumeGroupReplicasSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListVolumeGroupReplicasSortOrderEnum(val string) (ListVolumeGroupReplicasSortOrderEnum, bool) {
+	mappingListVolumeGroupReplicasSortOrderEnumIgnoreCase := make(map[string]ListVolumeGroupReplicasSortOrderEnum)
+	for k, v := range mappingListVolumeGroupReplicasSortOrderEnum {
+		mappingListVolumeGroupReplicasSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListVolumeGroupReplicasSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

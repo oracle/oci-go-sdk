@@ -11,7 +11,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -34,7 +34,7 @@ func (m ConditionOperator) String() string {
 // Not recommended for calling this function directly
 func (m ConditionOperator) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingConditionOperatorNameEnum[string(m.Name)]; !ok && m.Name != "" {
+	if _, ok := GetMappingConditionOperatorNameEnum(string(m.Name)); !ok && m.Name != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Name: %s. Supported values are: %s.", m.Name, strings.Join(GetConditionOperatorNameEnumStringValues(), ",")))
 	}
 

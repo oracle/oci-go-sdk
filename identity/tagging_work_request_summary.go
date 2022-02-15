@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -58,10 +58,10 @@ func (m TaggingWorkRequestSummary) String() string {
 // Not recommended for calling this function directly
 func (m TaggingWorkRequestSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTaggingWorkRequestSummaryOperationTypeEnum[string(m.OperationType)]; !ok && m.OperationType != "" {
+	if _, ok := GetMappingTaggingWorkRequestSummaryOperationTypeEnum(string(m.OperationType)); !ok && m.OperationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OperationType: %s. Supported values are: %s.", m.OperationType, strings.Join(GetTaggingWorkRequestSummaryOperationTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTaggingWorkRequestSummaryStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingTaggingWorkRequestSummaryStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetTaggingWorkRequestSummaryStatusEnumStringValues(), ",")))
 	}
 
@@ -111,6 +111,17 @@ func GetTaggingWorkRequestSummaryOperationTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingTaggingWorkRequestSummaryOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaggingWorkRequestSummaryOperationTypeEnum(val string) (TaggingWorkRequestSummaryOperationTypeEnum, bool) {
+	mappingTaggingWorkRequestSummaryOperationTypeEnumIgnoreCase := make(map[string]TaggingWorkRequestSummaryOperationTypeEnum)
+	for k, v := range mappingTaggingWorkRequestSummaryOperationTypeEnum {
+		mappingTaggingWorkRequestSummaryOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaggingWorkRequestSummaryOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TaggingWorkRequestSummaryStatusEnum Enum with underlying type: string
 type TaggingWorkRequestSummaryStatusEnum string
 
@@ -155,4 +166,15 @@ func GetTaggingWorkRequestSummaryStatusEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingTaggingWorkRequestSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaggingWorkRequestSummaryStatusEnum(val string) (TaggingWorkRequestSummaryStatusEnum, bool) {
+	mappingTaggingWorkRequestSummaryStatusEnumIgnoreCase := make(map[string]TaggingWorkRequestSummaryStatusEnum)
+	for k, v := range mappingTaggingWorkRequestSummaryStatusEnum {
+		mappingTaggingWorkRequestSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaggingWorkRequestSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -78,10 +78,10 @@ func (request BatchGetBasicInfoRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request BatchGetBasicInfoRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBatchGetBasicInfoSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingBatchGetBasicInfoSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetBatchGetBasicInfoSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBatchGetBasicInfoBasicLabelSortByEnum[string(request.BasicLabelSortBy)]; !ok && request.BasicLabelSortBy != "" {
+	if _, ok := GetMappingBatchGetBasicInfoBasicLabelSortByEnum(string(request.BasicLabelSortBy)); !ok && request.BasicLabelSortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BasicLabelSortBy: %s. Supported values are: %s.", request.BasicLabelSortBy, strings.Join(GetBatchGetBasicInfoBasicLabelSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -153,6 +153,17 @@ func GetBatchGetBasicInfoSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingBatchGetBasicInfoSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBatchGetBasicInfoSortOrderEnum(val string) (BatchGetBasicInfoSortOrderEnum, bool) {
+	mappingBatchGetBasicInfoSortOrderEnumIgnoreCase := make(map[string]BatchGetBasicInfoSortOrderEnum)
+	for k, v := range mappingBatchGetBasicInfoSortOrderEnum {
+		mappingBatchGetBasicInfoSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBatchGetBasicInfoSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // BatchGetBasicInfoBasicLabelSortByEnum Enum with underlying type: string
 type BatchGetBasicInfoBasicLabelSortByEnum string
 
@@ -182,4 +193,15 @@ func GetBatchGetBasicInfoBasicLabelSortByEnumStringValues() []string {
 		"name",
 		"priority",
 	}
+}
+
+// GetMappingBatchGetBasicInfoBasicLabelSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBatchGetBasicInfoBasicLabelSortByEnum(val string) (BatchGetBasicInfoBasicLabelSortByEnum, bool) {
+	mappingBatchGetBasicInfoBasicLabelSortByEnumIgnoreCase := make(map[string]BatchGetBasicInfoBasicLabelSortByEnum)
+	for k, v := range mappingBatchGetBasicInfoBasicLabelSortByEnum {
+		mappingBatchGetBasicInfoBasicLabelSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBatchGetBasicInfoBasicLabelSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

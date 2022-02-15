@@ -12,7 +12,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -66,7 +66,7 @@ func (m TsigKeySummary) String() string {
 // Not recommended for calling this function directly
 func (m TsigKeySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTsigKeySummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingTsigKeySummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetTsigKeySummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -117,4 +117,15 @@ func GetTsigKeySummaryLifecycleStateEnumStringValues() []string {
 		"FAILED",
 		"UPDATING",
 	}
+}
+
+// GetMappingTsigKeySummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTsigKeySummaryLifecycleStateEnum(val string) (TsigKeySummaryLifecycleStateEnum, bool) {
+	mappingTsigKeySummaryLifecycleStateEnumIgnoreCase := make(map[string]TsigKeySummaryLifecycleStateEnum)
+	for k, v := range mappingTsigKeySummaryLifecycleStateEnum {
+		mappingTsigKeySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTsigKeySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // ActionTypeEnum Enum with underlying type: string
 type ActionTypeEnum string
 
@@ -52,4 +56,15 @@ func GetActionTypeEnumStringValues() []string {
 		"RELATED",
 		"FAILED",
 	}
+}
+
+// GetMappingActionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingActionTypeEnum(val string) (ActionTypeEnum, bool) {
+	mappingActionTypeEnumIgnoreCase := make(map[string]ActionTypeEnum)
+	for k, v := range mappingActionTypeEnum {
+		mappingActionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingActionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,7 +11,7 @@ package datalabelingservice
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -35,10 +35,10 @@ func (m ExportFormat) String() string {
 func (m ExportFormat) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingExportFormatNameEnum[string(m.Name)]; !ok && m.Name != "" {
+	if _, ok := GetMappingExportFormatNameEnum(string(m.Name)); !ok && m.Name != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Name: %s. Supported values are: %s.", m.Name, strings.Join(GetExportFormatNameEnumStringValues(), ",")))
 	}
-	if _, ok := mappingExportFormatVersionEnum[string(m.Version)]; !ok && m.Version != "" {
+	if _, ok := GetMappingExportFormatVersionEnum(string(m.Version)); !ok && m.Version != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Version: %s. Supported values are: %s.", m.Version, strings.Join(GetExportFormatVersionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -93,6 +93,17 @@ func GetExportFormatNameEnumStringValues() []string {
 	}
 }
 
+// GetMappingExportFormatNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExportFormatNameEnum(val string) (ExportFormatNameEnum, bool) {
+	mappingExportFormatNameEnumIgnoreCase := make(map[string]ExportFormatNameEnum)
+	for k, v := range mappingExportFormatNameEnum {
+		mappingExportFormatNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExportFormatNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ExportFormatVersionEnum Enum with underlying type: string
 type ExportFormatVersionEnum string
 
@@ -122,4 +133,15 @@ func GetExportFormatVersionEnumStringValues() []string {
 		"V2003",
 		"V5",
 	}
+}
+
+// GetMappingExportFormatVersionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExportFormatVersionEnum(val string) (ExportFormatVersionEnum, bool) {
+	mappingExportFormatVersionEnumIgnoreCase := make(map[string]ExportFormatVersionEnum)
+	for k, v := range mappingExportFormatVersionEnum {
+		mappingExportFormatVersionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExportFormatVersionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

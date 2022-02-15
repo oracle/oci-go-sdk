@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -78,13 +78,13 @@ func (request ListCloudExadataInfrastructuresRequest) RetryPolicy() *common.Retr
 // Not recommended for calling this function directly
 func (request ListCloudExadataInfrastructuresRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListCloudExadataInfrastructuresSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListCloudExadataInfrastructuresSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListCloudExadataInfrastructuresSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListCloudExadataInfrastructuresSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListCloudExadataInfrastructuresSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListCloudExadataInfrastructuresSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCloudExadataInfrastructureSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingCloudExadataInfrastructureSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetCloudExadataInfrastructureSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -153,6 +153,17 @@ func GetListCloudExadataInfrastructuresSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListCloudExadataInfrastructuresSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCloudExadataInfrastructuresSortByEnum(val string) (ListCloudExadataInfrastructuresSortByEnum, bool) {
+	mappingListCloudExadataInfrastructuresSortByEnumIgnoreCase := make(map[string]ListCloudExadataInfrastructuresSortByEnum)
+	for k, v := range mappingListCloudExadataInfrastructuresSortByEnum {
+		mappingListCloudExadataInfrastructuresSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCloudExadataInfrastructuresSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListCloudExadataInfrastructuresSortOrderEnum Enum with underlying type: string
 type ListCloudExadataInfrastructuresSortOrderEnum string
 
@@ -182,4 +193,15 @@ func GetListCloudExadataInfrastructuresSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListCloudExadataInfrastructuresSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCloudExadataInfrastructuresSortOrderEnum(val string) (ListCloudExadataInfrastructuresSortOrderEnum, bool) {
+	mappingListCloudExadataInfrastructuresSortOrderEnumIgnoreCase := make(map[string]ListCloudExadataInfrastructuresSortOrderEnum)
+	for k, v := range mappingListCloudExadataInfrastructuresSortOrderEnum {
+		mappingListCloudExadataInfrastructuresSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCloudExadataInfrastructuresSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

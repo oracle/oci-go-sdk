@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -61,10 +61,10 @@ func (m WorkRequest) String() string {
 // Not recommended for calling this function directly
 func (m WorkRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingWorkRequestOperationTypesEnum[string(m.OperationType)]; !ok && m.OperationType != "" {
+	if _, ok := GetMappingWorkRequestOperationTypesEnum(string(m.OperationType)); !ok && m.OperationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OperationType: %s. Supported values are: %s.", m.OperationType, strings.Join(GetWorkRequestOperationTypesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingWorkRequestStatusValuesEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingWorkRequestStatusValuesEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetWorkRequestStatusValuesEnumStringValues(), ",")))
 	}
 

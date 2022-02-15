@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // HostEnum Enum with underlying type: string
 type HostEnum string
 
@@ -40,4 +44,15 @@ func GetHostEnumStringValues() []string {
 		"CPU",
 		"MEMORY",
 	}
+}
+
+// GetMappingHostEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHostEnum(val string) (HostEnum, bool) {
+	mappingHostEnumIgnoreCase := make(map[string]HostEnum)
+	for k, v := range mappingHostEnum {
+		mappingHostEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHostEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

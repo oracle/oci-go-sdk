@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -80,13 +80,13 @@ func (request ListWorkRequestsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListWorkRequestsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListWorkRequestsWorkRequestStatusEnum[string(request.WorkRequestStatus)]; !ok && request.WorkRequestStatus != "" {
+	if _, ok := GetMappingListWorkRequestsWorkRequestStatusEnum(string(request.WorkRequestStatus)); !ok && request.WorkRequestStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for WorkRequestStatus: %s. Supported values are: %s.", request.WorkRequestStatus, strings.Join(GetListWorkRequestsWorkRequestStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListWorkRequestsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListWorkRequestsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListWorkRequestsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListWorkRequestsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListWorkRequestsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListWorkRequestsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -164,6 +164,17 @@ func GetListWorkRequestsWorkRequestStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingListWorkRequestsWorkRequestStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWorkRequestsWorkRequestStatusEnum(val string) (ListWorkRequestsWorkRequestStatusEnum, bool) {
+	mappingListWorkRequestsWorkRequestStatusEnumIgnoreCase := make(map[string]ListWorkRequestsWorkRequestStatusEnum)
+	for k, v := range mappingListWorkRequestsWorkRequestStatusEnum {
+		mappingListWorkRequestsWorkRequestStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWorkRequestsWorkRequestStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListWorkRequestsSortOrderEnum Enum with underlying type: string
 type ListWorkRequestsSortOrderEnum string
 
@@ -195,6 +206,17 @@ func GetListWorkRequestsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListWorkRequestsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWorkRequestsSortOrderEnum(val string) (ListWorkRequestsSortOrderEnum, bool) {
+	mappingListWorkRequestsSortOrderEnumIgnoreCase := make(map[string]ListWorkRequestsSortOrderEnum)
+	for k, v := range mappingListWorkRequestsSortOrderEnum {
+		mappingListWorkRequestsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWorkRequestsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListWorkRequestsSortByEnum Enum with underlying type: string
 type ListWorkRequestsSortByEnum string
 
@@ -224,4 +246,15 @@ func GetListWorkRequestsSortByEnumStringValues() []string {
 		"TIME_CREATED",
 		"DISPLAY_NAME",
 	}
+}
+
+// GetMappingListWorkRequestsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWorkRequestsSortByEnum(val string) (ListWorkRequestsSortByEnum, bool) {
+	mappingListWorkRequestsSortByEnumIgnoreCase := make(map[string]ListWorkRequestsSortByEnum)
+	for k, v := range mappingListWorkRequestsSortByEnum {
+		mappingListWorkRequestsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWorkRequestsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

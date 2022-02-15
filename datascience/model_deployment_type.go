@@ -9,6 +9,10 @@
 
 package datascience
 
+import (
+	"strings"
+)
+
 // ModelDeploymentTypeEnum Enum with underlying type: string
 type ModelDeploymentTypeEnum string
 
@@ -35,4 +39,15 @@ func GetModelDeploymentTypeEnumStringValues() []string {
 	return []string{
 		"SINGLE_MODEL",
 	}
+}
+
+// GetMappingModelDeploymentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingModelDeploymentTypeEnum(val string) (ModelDeploymentTypeEnum, bool) {
+	mappingModelDeploymentTypeEnumIgnoreCase := make(map[string]ModelDeploymentTypeEnum)
+	for k, v := range mappingModelDeploymentTypeEnum {
+		mappingModelDeploymentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingModelDeploymentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -15,7 +15,7 @@ package autoscaling
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -39,7 +39,7 @@ func (m Action) String() string {
 // Not recommended for calling this function directly
 func (m Action) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingActionTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingActionTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetActionTypeEnumStringValues(), ",")))
 	}
 
@@ -75,4 +75,15 @@ func GetActionTypeEnumStringValues() []string {
 	return []string{
 		"CHANGE_COUNT_BY",
 	}
+}
+
+// GetMappingActionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingActionTypeEnum(val string) (ActionTypeEnum, bool) {
+	mappingActionTypeEnumIgnoreCase := make(map[string]ActionTypeEnum)
+	for k, v := range mappingActionTypeEnum {
+		mappingActionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingActionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

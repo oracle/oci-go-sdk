@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -115,22 +115,22 @@ func (request ListResponderExecutionsRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListResponderExecutionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListResponderExecutionsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListResponderExecutionsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListResponderExecutionsAccessLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListResponderExecutionsResponderTypeEnum[string(request.ResponderType)]; !ok && request.ResponderType != "" {
+	if _, ok := GetMappingListResponderExecutionsResponderTypeEnum(string(request.ResponderType)); !ok && request.ResponderType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResponderType: %s. Supported values are: %s.", request.ResponderType, strings.Join(GetListResponderExecutionsResponderTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListResponderExecutionsResponderExecutionStatusEnum[string(request.ResponderExecutionStatus)]; !ok && request.ResponderExecutionStatus != "" {
+	if _, ok := GetMappingListResponderExecutionsResponderExecutionStatusEnum(string(request.ResponderExecutionStatus)); !ok && request.ResponderExecutionStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResponderExecutionStatus: %s. Supported values are: %s.", request.ResponderExecutionStatus, strings.Join(GetListResponderExecutionsResponderExecutionStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListResponderExecutionsResponderExecutionModeEnum[string(request.ResponderExecutionMode)]; !ok && request.ResponderExecutionMode != "" {
+	if _, ok := GetMappingListResponderExecutionsResponderExecutionModeEnum(string(request.ResponderExecutionMode)); !ok && request.ResponderExecutionMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResponderExecutionMode: %s. Supported values are: %s.", request.ResponderExecutionMode, strings.Join(GetListResponderExecutionsResponderExecutionModeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListResponderExecutionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListResponderExecutionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListResponderExecutionsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListResponderExecutionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListResponderExecutionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListResponderExecutionsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -198,6 +198,17 @@ func GetListResponderExecutionsAccessLevelEnumStringValues() []string {
 	}
 }
 
+// GetMappingListResponderExecutionsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResponderExecutionsAccessLevelEnum(val string) (ListResponderExecutionsAccessLevelEnum, bool) {
+	mappingListResponderExecutionsAccessLevelEnumIgnoreCase := make(map[string]ListResponderExecutionsAccessLevelEnum)
+	for k, v := range mappingListResponderExecutionsAccessLevelEnum {
+		mappingListResponderExecutionsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResponderExecutionsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListResponderExecutionsResponderTypeEnum Enum with underlying type: string
 type ListResponderExecutionsResponderTypeEnum string
 
@@ -227,6 +238,17 @@ func GetListResponderExecutionsResponderTypeEnumStringValues() []string {
 		"REMEDIATION",
 		"NOTIFICATION",
 	}
+}
+
+// GetMappingListResponderExecutionsResponderTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResponderExecutionsResponderTypeEnum(val string) (ListResponderExecutionsResponderTypeEnum, bool) {
+	mappingListResponderExecutionsResponderTypeEnumIgnoreCase := make(map[string]ListResponderExecutionsResponderTypeEnum)
+	for k, v := range mappingListResponderExecutionsResponderTypeEnum {
+		mappingListResponderExecutionsResponderTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResponderExecutionsResponderTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListResponderExecutionsResponderExecutionStatusEnum Enum with underlying type: string
@@ -275,6 +297,17 @@ func GetListResponderExecutionsResponderExecutionStatusEnumStringValues() []stri
 	}
 }
 
+// GetMappingListResponderExecutionsResponderExecutionStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResponderExecutionsResponderExecutionStatusEnum(val string) (ListResponderExecutionsResponderExecutionStatusEnum, bool) {
+	mappingListResponderExecutionsResponderExecutionStatusEnumIgnoreCase := make(map[string]ListResponderExecutionsResponderExecutionStatusEnum)
+	for k, v := range mappingListResponderExecutionsResponderExecutionStatusEnum {
+		mappingListResponderExecutionsResponderExecutionStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResponderExecutionsResponderExecutionStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListResponderExecutionsResponderExecutionModeEnum Enum with underlying type: string
 type ListResponderExecutionsResponderExecutionModeEnum string
 
@@ -309,6 +342,17 @@ func GetListResponderExecutionsResponderExecutionModeEnumStringValues() []string
 	}
 }
 
+// GetMappingListResponderExecutionsResponderExecutionModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResponderExecutionsResponderExecutionModeEnum(val string) (ListResponderExecutionsResponderExecutionModeEnum, bool) {
+	mappingListResponderExecutionsResponderExecutionModeEnumIgnoreCase := make(map[string]ListResponderExecutionsResponderExecutionModeEnum)
+	for k, v := range mappingListResponderExecutionsResponderExecutionModeEnum {
+		mappingListResponderExecutionsResponderExecutionModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResponderExecutionsResponderExecutionModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListResponderExecutionsSortOrderEnum Enum with underlying type: string
 type ListResponderExecutionsSortOrderEnum string
 
@@ -338,6 +382,17 @@ func GetListResponderExecutionsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListResponderExecutionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResponderExecutionsSortOrderEnum(val string) (ListResponderExecutionsSortOrderEnum, bool) {
+	mappingListResponderExecutionsSortOrderEnumIgnoreCase := make(map[string]ListResponderExecutionsSortOrderEnum)
+	for k, v := range mappingListResponderExecutionsSortOrderEnum {
+		mappingListResponderExecutionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResponderExecutionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListResponderExecutionsSortByEnum Enum with underlying type: string
@@ -375,4 +430,15 @@ func GetListResponderExecutionsSortByEnumStringValues() []string {
 		"resourceName",
 		"timeCompleted",
 	}
+}
+
+// GetMappingListResponderExecutionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResponderExecutionsSortByEnum(val string) (ListResponderExecutionsSortByEnum, bool) {
+	mappingListResponderExecutionsSortByEnumIgnoreCase := make(map[string]ListResponderExecutionsSortByEnum)
+	for k, v := range mappingListResponderExecutionsSortByEnum {
+		mappingListResponderExecutionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResponderExecutionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

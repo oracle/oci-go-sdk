@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -51,13 +51,13 @@ func (m PhaseTwoConfigDetails) String() string {
 func (m PhaseTwoConfigDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnum[string(m.AuthenticationAlgorithm)]; !ok && m.AuthenticationAlgorithm != "" {
+	if _, ok := GetMappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnum(string(m.AuthenticationAlgorithm)); !ok && m.AuthenticationAlgorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AuthenticationAlgorithm: %s. Supported values are: %s.", m.AuthenticationAlgorithm, strings.Join(GetPhaseTwoConfigDetailsAuthenticationAlgorithmEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPhaseTwoConfigDetailsEncryptionAlgorithmEnum[string(m.EncryptionAlgorithm)]; !ok && m.EncryptionAlgorithm != "" {
+	if _, ok := GetMappingPhaseTwoConfigDetailsEncryptionAlgorithmEnum(string(m.EncryptionAlgorithm)); !ok && m.EncryptionAlgorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EncryptionAlgorithm: %s. Supported values are: %s.", m.EncryptionAlgorithm, strings.Join(GetPhaseTwoConfigDetailsEncryptionAlgorithmEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPhaseTwoConfigDetailsPfsDhGroupEnum[string(m.PfsDhGroup)]; !ok && m.PfsDhGroup != "" {
+	if _, ok := GetMappingPhaseTwoConfigDetailsPfsDhGroupEnum(string(m.PfsDhGroup)); !ok && m.PfsDhGroup != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PfsDhGroup: %s. Supported values are: %s.", m.PfsDhGroup, strings.Join(GetPhaseTwoConfigDetailsPfsDhGroupEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -95,6 +95,17 @@ func GetPhaseTwoConfigDetailsAuthenticationAlgorithmEnumStringValues() []string 
 		"HMAC_SHA2_256_128",
 		"HMAC_SHA1_128",
 	}
+}
+
+// GetMappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnum(val string) (PhaseTwoConfigDetailsAuthenticationAlgorithmEnum, bool) {
+	mappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnumIgnoreCase := make(map[string]PhaseTwoConfigDetailsAuthenticationAlgorithmEnum)
+	for k, v := range mappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnum {
+		mappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // PhaseTwoConfigDetailsEncryptionAlgorithmEnum Enum with underlying type: string
@@ -140,6 +151,17 @@ func GetPhaseTwoConfigDetailsEncryptionAlgorithmEnumStringValues() []string {
 	}
 }
 
+// GetMappingPhaseTwoConfigDetailsEncryptionAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPhaseTwoConfigDetailsEncryptionAlgorithmEnum(val string) (PhaseTwoConfigDetailsEncryptionAlgorithmEnum, bool) {
+	mappingPhaseTwoConfigDetailsEncryptionAlgorithmEnumIgnoreCase := make(map[string]PhaseTwoConfigDetailsEncryptionAlgorithmEnum)
+	for k, v := range mappingPhaseTwoConfigDetailsEncryptionAlgorithmEnum {
+		mappingPhaseTwoConfigDetailsEncryptionAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPhaseTwoConfigDetailsEncryptionAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // PhaseTwoConfigDetailsPfsDhGroupEnum Enum with underlying type: string
 type PhaseTwoConfigDetailsPfsDhGroupEnum string
 
@@ -181,4 +203,15 @@ func GetPhaseTwoConfigDetailsPfsDhGroupEnumStringValues() []string {
 		"GROUP20",
 		"GROUP24",
 	}
+}
+
+// GetMappingPhaseTwoConfigDetailsPfsDhGroupEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPhaseTwoConfigDetailsPfsDhGroupEnum(val string) (PhaseTwoConfigDetailsPfsDhGroupEnum, bool) {
+	mappingPhaseTwoConfigDetailsPfsDhGroupEnumIgnoreCase := make(map[string]PhaseTwoConfigDetailsPfsDhGroupEnum)
+	for k, v := range mappingPhaseTwoConfigDetailsPfsDhGroupEnum {
+		mappingPhaseTwoConfigDetailsPfsDhGroupEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPhaseTwoConfigDetailsPfsDhGroupEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

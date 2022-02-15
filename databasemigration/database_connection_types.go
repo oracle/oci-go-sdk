@@ -9,6 +9,10 @@
 
 package databasemigration
 
+import (
+	"strings"
+)
+
 // DatabaseConnectionTypesEnum Enum with underlying type: string
 type DatabaseConnectionTypesEnum string
 
@@ -41,4 +45,15 @@ func GetDatabaseConnectionTypesEnumStringValues() []string {
 		"AUTONOMOUS",
 		"USER_MANAGED_OCI",
 	}
+}
+
+// GetMappingDatabaseConnectionTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseConnectionTypesEnum(val string) (DatabaseConnectionTypesEnum, bool) {
+	mappingDatabaseConnectionTypesEnumIgnoreCase := make(map[string]DatabaseConnectionTypesEnum)
+	for k, v := range mappingDatabaseConnectionTypesEnum {
+		mappingDatabaseConnectionTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseConnectionTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

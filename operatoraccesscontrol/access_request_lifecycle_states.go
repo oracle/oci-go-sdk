@@ -11,6 +11,10 @@
 
 package operatoraccesscontrol
 
+import (
+	"strings"
+)
+
 // AccessRequestLifecycleStatesEnum Enum with underlying type: string
 type AccessRequestLifecycleStatesEnum string
 
@@ -100,4 +104,15 @@ func GetAccessRequestLifecycleStatesEnumStringValues() []string {
 		"APPROVEDFORFUTURE",
 		"INREVIEW",
 	}
+}
+
+// GetMappingAccessRequestLifecycleStatesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAccessRequestLifecycleStatesEnum(val string) (AccessRequestLifecycleStatesEnum, bool) {
+	mappingAccessRequestLifecycleStatesEnumIgnoreCase := make(map[string]AccessRequestLifecycleStatesEnum)
+	for k, v := range mappingAccessRequestLifecycleStatesEnum {
+		mappingAccessRequestLifecycleStatesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAccessRequestLifecycleStatesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

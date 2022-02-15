@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -102,19 +102,19 @@ func (request ListParsersRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListParsersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListParsersSourceTypeEnum[string(request.SourceType)]; !ok && request.SourceType != "" {
+	if _, ok := GetMappingListParsersSourceTypeEnum(string(request.SourceType)); !ok && request.SourceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SourceType: %s. Supported values are: %s.", request.SourceType, strings.Join(GetListParsersSourceTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListParsersParserTypeEnum[string(request.ParserType)]; !ok && request.ParserType != "" {
+	if _, ok := GetMappingListParsersParserTypeEnum(string(request.ParserType)); !ok && request.ParserType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ParserType: %s. Supported values are: %s.", request.ParserType, strings.Join(GetListParsersParserTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListParsersIsSystemEnum[string(request.IsSystem)]; !ok && request.IsSystem != "" {
+	if _, ok := GetMappingListParsersIsSystemEnum(string(request.IsSystem)); !ok && request.IsSystem != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IsSystem: %s. Supported values are: %s.", request.IsSystem, strings.Join(GetListParsersIsSystemEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListParsersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListParsersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListParsersSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListParsersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListParsersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListParsersSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -192,6 +192,17 @@ func GetListParsersSourceTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListParsersSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListParsersSourceTypeEnum(val string) (ListParsersSourceTypeEnum, bool) {
+	mappingListParsersSourceTypeEnumIgnoreCase := make(map[string]ListParsersSourceTypeEnum)
+	for k, v := range mappingListParsersSourceTypeEnum {
+		mappingListParsersSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListParsersSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListParsersParserTypeEnum Enum with underlying type: string
 type ListParsersParserTypeEnum string
 
@@ -235,6 +246,17 @@ func GetListParsersParserTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListParsersParserTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListParsersParserTypeEnum(val string) (ListParsersParserTypeEnum, bool) {
+	mappingListParsersParserTypeEnumIgnoreCase := make(map[string]ListParsersParserTypeEnum)
+	for k, v := range mappingListParsersParserTypeEnum {
+		mappingListParsersParserTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListParsersParserTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListParsersIsSystemEnum Enum with underlying type: string
 type ListParsersIsSystemEnum string
 
@@ -269,6 +291,17 @@ func GetListParsersIsSystemEnumStringValues() []string {
 	}
 }
 
+// GetMappingListParsersIsSystemEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListParsersIsSystemEnum(val string) (ListParsersIsSystemEnum, bool) {
+	mappingListParsersIsSystemEnumIgnoreCase := make(map[string]ListParsersIsSystemEnum)
+	for k, v := range mappingListParsersIsSystemEnum {
+		mappingListParsersIsSystemEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListParsersIsSystemEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListParsersSortOrderEnum Enum with underlying type: string
 type ListParsersSortOrderEnum string
 
@@ -298,6 +331,17 @@ func GetListParsersSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListParsersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListParsersSortOrderEnum(val string) (ListParsersSortOrderEnum, bool) {
+	mappingListParsersSortOrderEnumIgnoreCase := make(map[string]ListParsersSortOrderEnum)
+	for k, v := range mappingListParsersSortOrderEnum {
+		mappingListParsersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListParsersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListParsersSortByEnum Enum with underlying type: string
@@ -335,4 +379,15 @@ func GetListParsersSortByEnumStringValues() []string {
 		"sourcesCount",
 		"timeUpdated",
 	}
+}
+
+// GetMappingListParsersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListParsersSortByEnum(val string) (ListParsersSortByEnum, bool) {
+	mappingListParsersSortByEnumIgnoreCase := make(map[string]ListParsersSortByEnum)
+	for k, v := range mappingListParsersSortByEnum {
+		mappingListParsersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListParsersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

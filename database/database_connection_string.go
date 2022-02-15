@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -40,7 +40,7 @@ func (m DatabaseConnectionString) String() string {
 // Not recommended for calling this function directly
 func (m DatabaseConnectionString) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDatabaseConnectionStringProtocolEnum[string(m.Protocol)]; !ok && m.Protocol != "" {
+	if _, ok := GetMappingDatabaseConnectionStringProtocolEnum(string(m.Protocol)); !ok && m.Protocol != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Protocol: %s. Supported values are: %s.", m.Protocol, strings.Join(GetDatabaseConnectionStringProtocolEnumStringValues(), ",")))
 	}
 
@@ -76,4 +76,15 @@ func GetDatabaseConnectionStringProtocolEnumStringValues() []string {
 	return []string{
 		"TCP",
 	}
+}
+
+// GetMappingDatabaseConnectionStringProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseConnectionStringProtocolEnum(val string) (DatabaseConnectionStringProtocolEnum, bool) {
+	mappingDatabaseConnectionStringProtocolEnumIgnoreCase := make(map[string]DatabaseConnectionStringProtocolEnum)
+	for k, v := range mappingDatabaseConnectionStringProtocolEnum {
+		mappingDatabaseConnectionStringProtocolEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseConnectionStringProtocolEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package filestorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -88,10 +88,10 @@ func (request ListSnapshotsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListSnapshotsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSnapshotsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListSnapshotsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListSnapshotsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSnapshotsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSnapshotsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSnapshotsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -170,6 +170,17 @@ func GetListSnapshotsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSnapshotsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSnapshotsLifecycleStateEnum(val string) (ListSnapshotsLifecycleStateEnum, bool) {
+	mappingListSnapshotsLifecycleStateEnumIgnoreCase := make(map[string]ListSnapshotsLifecycleStateEnum)
+	for k, v := range mappingListSnapshotsLifecycleStateEnum {
+		mappingListSnapshotsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSnapshotsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSnapshotsSortOrderEnum Enum with underlying type: string
 type ListSnapshotsSortOrderEnum string
 
@@ -199,4 +210,15 @@ func GetListSnapshotsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListSnapshotsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSnapshotsSortOrderEnum(val string) (ListSnapshotsSortOrderEnum, bool) {
+	mappingListSnapshotsSortOrderEnumIgnoreCase := make(map[string]ListSnapshotsSortOrderEnum)
+	for k, v := range mappingListSnapshotsSortOrderEnum {
+		mappingListSnapshotsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSnapshotsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

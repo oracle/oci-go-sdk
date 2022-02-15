@@ -6,7 +6,7 @@ package apmsynthetics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -83,10 +83,10 @@ func (request ListPublicVantagePointsRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListPublicVantagePointsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListPublicVantagePointsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListPublicVantagePointsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListPublicVantagePointsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPublicVantagePointsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListPublicVantagePointsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListPublicVantagePointsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -154,6 +154,17 @@ func GetListPublicVantagePointsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListPublicVantagePointsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPublicVantagePointsSortOrderEnum(val string) (ListPublicVantagePointsSortOrderEnum, bool) {
+	mappingListPublicVantagePointsSortOrderEnumIgnoreCase := make(map[string]ListPublicVantagePointsSortOrderEnum)
+	for k, v := range mappingListPublicVantagePointsSortOrderEnum {
+		mappingListPublicVantagePointsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPublicVantagePointsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListPublicVantagePointsSortByEnum Enum with underlying type: string
 type ListPublicVantagePointsSortByEnum string
 
@@ -183,4 +194,15 @@ func GetListPublicVantagePointsSortByEnumStringValues() []string {
 		"name",
 		"displayName",
 	}
+}
+
+// GetMappingListPublicVantagePointsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPublicVantagePointsSortByEnum(val string) (ListPublicVantagePointsSortByEnum, bool) {
+	mappingListPublicVantagePointsSortByEnumIgnoreCase := make(map[string]ListPublicVantagePointsSortByEnum)
+	for k, v := range mappingListPublicVantagePointsSortByEnum {
+		mappingListPublicVantagePointsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPublicVantagePointsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

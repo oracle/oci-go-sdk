@@ -9,6 +9,10 @@
 
 package databasemigration
 
+import (
+	"strings"
+)
+
 // PhaseExtractTypesEnum Enum with underlying type: string
 type PhaseExtractTypesEnum string
 
@@ -35,4 +39,15 @@ func GetPhaseExtractTypesEnumStringValues() []string {
 	return []string{
 		"ERROR",
 	}
+}
+
+// GetMappingPhaseExtractTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPhaseExtractTypesEnum(val string) (PhaseExtractTypesEnum, bool) {
+	mappingPhaseExtractTypesEnumIgnoreCase := make(map[string]PhaseExtractTypesEnum)
+	for k, v := range mappingPhaseExtractTypesEnum {
+		mappingPhaseExtractTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPhaseExtractTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

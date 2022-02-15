@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -63,7 +63,7 @@ func (m SwiftPassword) String() string {
 func (m SwiftPassword) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSwiftPasswordLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingSwiftPasswordLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSwiftPasswordLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -110,4 +110,15 @@ func GetSwiftPasswordLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingSwiftPasswordLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSwiftPasswordLifecycleStateEnum(val string) (SwiftPasswordLifecycleStateEnum, bool) {
+	mappingSwiftPasswordLifecycleStateEnumIgnoreCase := make(map[string]SwiftPasswordLifecycleStateEnum)
+	for k, v := range mappingSwiftPasswordLifecycleStateEnum {
+		mappingSwiftPasswordLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSwiftPasswordLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,7 +11,7 @@ package networkloadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -43,7 +43,7 @@ func (m IpAddress) String() string {
 func (m IpAddress) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingIpVersionEnum[string(m.IpVersion)]; !ok && m.IpVersion != "" {
+	if _, ok := GetMappingIpVersionEnum(string(m.IpVersion)); !ok && m.IpVersion != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IpVersion: %s. Supported values are: %s.", m.IpVersion, strings.Join(GetIpVersionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

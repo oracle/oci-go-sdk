@@ -11,7 +11,7 @@ package databasemigration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -38,7 +38,7 @@ func (m MetadataRemap) String() string {
 // Not recommended for calling this function directly
 func (m MetadataRemap) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingMetadataRemapTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingMetadataRemapTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetMetadataRemapTypeEnumStringValues(), ",")))
 	}
 
@@ -83,4 +83,15 @@ func GetMetadataRemapTypeEnumStringValues() []string {
 		"DATAFILE",
 		"TABLE",
 	}
+}
+
+// GetMappingMetadataRemapTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMetadataRemapTypeEnum(val string) (MetadataRemapTypeEnum, bool) {
+	mappingMetadataRemapTypeEnumIgnoreCase := make(map[string]MetadataRemapTypeEnum)
+	for k, v := range mappingMetadataRemapTypeEnum {
+		mappingMetadataRemapTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMetadataRemapTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

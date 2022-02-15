@@ -11,6 +11,10 @@
 
 package containerengine
 
+import (
+	"strings"
+)
+
 // NodeSourceTypeEnum Enum with underlying type: string
 type NodeSourceTypeEnum string
 
@@ -37,4 +41,15 @@ func GetNodeSourceTypeEnumStringValues() []string {
 	return []string{
 		"IMAGE",
 	}
+}
+
+// GetMappingNodeSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingNodeSourceTypeEnum(val string) (NodeSourceTypeEnum, bool) {
+	mappingNodeSourceTypeEnumIgnoreCase := make(map[string]NodeSourceTypeEnum)
+	for k, v := range mappingNodeSourceTypeEnum {
+		mappingNodeSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingNodeSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

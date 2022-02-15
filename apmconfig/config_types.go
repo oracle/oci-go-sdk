@@ -10,6 +10,10 @@
 
 package apmconfig
 
+import (
+	"strings"
+)
+
 // ConfigTypesEnum Enum with underlying type: string
 type ConfigTypesEnum string
 
@@ -42,4 +46,15 @@ func GetConfigTypesEnumStringValues() []string {
 		"METRIC_GROUP",
 		"APDEX",
 	}
+}
+
+// GetMappingConfigTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConfigTypesEnum(val string) (ConfigTypesEnum, bool) {
+	mappingConfigTypesEnumIgnoreCase := make(map[string]ConfigTypesEnum)
+	for k, v := range mappingConfigTypesEnum {
+		mappingConfigTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConfigTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

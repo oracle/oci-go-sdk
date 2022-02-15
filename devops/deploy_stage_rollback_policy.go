@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -108,4 +108,15 @@ func GetDeployStageRollbackPolicyPolicyTypeEnumStringValues() []string {
 		"AUTOMATED_STAGE_ROLLBACK_POLICY",
 		"NO_STAGE_ROLLBACK_POLICY",
 	}
+}
+
+// GetMappingDeployStageRollbackPolicyPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeployStageRollbackPolicyPolicyTypeEnum(val string) (DeployStageRollbackPolicyPolicyTypeEnum, bool) {
+	mappingDeployStageRollbackPolicyPolicyTypeEnumIgnoreCase := make(map[string]DeployStageRollbackPolicyPolicyTypeEnum)
+	for k, v := range mappingDeployStageRollbackPolicyPolicyTypeEnum {
+		mappingDeployStageRollbackPolicyPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeployStageRollbackPolicyPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

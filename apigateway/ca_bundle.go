@@ -14,7 +14,7 @@ package apigateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -110,4 +110,15 @@ func GetCaBundleTypeEnumStringValues() []string {
 		"CA_BUNDLE",
 		"CERTIFICATE_AUTHORITY",
 	}
+}
+
+// GetMappingCaBundleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCaBundleTypeEnum(val string) (CaBundleTypeEnum, bool) {
+	mappingCaBundleTypeEnumIgnoreCase := make(map[string]CaBundleTypeEnum)
+	for k, v := range mappingCaBundleTypeEnum {
+		mappingCaBundleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCaBundleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

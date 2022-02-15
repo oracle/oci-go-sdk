@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -81,13 +81,13 @@ func (request ListExternalNonContainerDatabasesRequest) RetryPolicy() *common.Re
 // Not recommended for calling this function directly
 func (request ListExternalNonContainerDatabasesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListExternalNonContainerDatabasesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListExternalNonContainerDatabasesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListExternalNonContainerDatabasesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListExternalNonContainerDatabasesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListExternalNonContainerDatabasesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListExternalNonContainerDatabasesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingExternalDatabaseBaseLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingExternalDatabaseBaseLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetExternalDatabaseBaseLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -156,6 +156,17 @@ func GetListExternalNonContainerDatabasesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListExternalNonContainerDatabasesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListExternalNonContainerDatabasesSortByEnum(val string) (ListExternalNonContainerDatabasesSortByEnum, bool) {
+	mappingListExternalNonContainerDatabasesSortByEnumIgnoreCase := make(map[string]ListExternalNonContainerDatabasesSortByEnum)
+	for k, v := range mappingListExternalNonContainerDatabasesSortByEnum {
+		mappingListExternalNonContainerDatabasesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListExternalNonContainerDatabasesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListExternalNonContainerDatabasesSortOrderEnum Enum with underlying type: string
 type ListExternalNonContainerDatabasesSortOrderEnum string
 
@@ -185,4 +196,15 @@ func GetListExternalNonContainerDatabasesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListExternalNonContainerDatabasesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListExternalNonContainerDatabasesSortOrderEnum(val string) (ListExternalNonContainerDatabasesSortOrderEnum, bool) {
+	mappingListExternalNonContainerDatabasesSortOrderEnumIgnoreCase := make(map[string]ListExternalNonContainerDatabasesSortOrderEnum)
+	for k, v := range mappingListExternalNonContainerDatabasesSortOrderEnum {
+		mappingListExternalNonContainerDatabasesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListExternalNonContainerDatabasesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

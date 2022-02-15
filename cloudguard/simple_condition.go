@@ -12,7 +12,7 @@ package cloudguard
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -42,10 +42,10 @@ func (m SimpleCondition) String() string {
 func (m SimpleCondition) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingOperatorTypeEnum[string(m.Operator)]; !ok && m.Operator != "" {
+	if _, ok := GetMappingOperatorTypeEnum(string(m.Operator)); !ok && m.Operator != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Operator: %s. Supported values are: %s.", m.Operator, strings.Join(GetOperatorTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingConditionValueTypeEnum[string(m.ValueType)]; !ok && m.ValueType != "" {
+	if _, ok := GetMappingConditionValueTypeEnum(string(m.ValueType)); !ok && m.ValueType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ValueType: %s. Supported values are: %s.", m.ValueType, strings.Join(GetConditionValueTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

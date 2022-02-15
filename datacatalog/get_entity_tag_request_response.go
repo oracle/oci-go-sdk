@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -73,7 +73,7 @@ func (request GetEntityTagRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetEntityTagRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetEntityTagFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetEntityTagFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetEntityTagFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -163,4 +163,15 @@ func GetGetEntityTagFieldsEnumStringValues() []string {
 		"uri",
 		"entityKey",
 	}
+}
+
+// GetMappingGetEntityTagFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetEntityTagFieldsEnum(val string) (GetEntityTagFieldsEnum, bool) {
+	mappingGetEntityTagFieldsEnumIgnoreCase := make(map[string]GetEntityTagFieldsEnum)
+	for k, v := range mappingGetEntityTagFieldsEnum {
+		mappingGetEntityTagFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetEntityTagFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

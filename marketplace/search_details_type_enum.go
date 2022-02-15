@@ -9,6 +9,10 @@
 
 package marketplace
 
+import (
+	"strings"
+)
+
 // SearchDetailsTypeEnumEnum Enum with underlying type: string
 type SearchDetailsTypeEnumEnum string
 
@@ -38,4 +42,15 @@ func GetSearchDetailsTypeEnumEnumStringValues() []string {
 		"FreeText",
 		"Structured",
 	}
+}
+
+// GetMappingSearchDetailsTypeEnumEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSearchDetailsTypeEnumEnum(val string) (SearchDetailsTypeEnumEnum, bool) {
+	mappingSearchDetailsTypeEnumEnumIgnoreCase := make(map[string]SearchDetailsTypeEnumEnum)
+	for k, v := range mappingSearchDetailsTypeEnumEnum {
+		mappingSearchDetailsTypeEnumEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSearchDetailsTypeEnumEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -92,7 +92,7 @@ func (m Vlan) String() string {
 // Not recommended for calling this function directly
 func (m Vlan) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVlanLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingVlanLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetVlanLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -140,4 +140,15 @@ func GetVlanLifecycleStateEnumStringValues() []string {
 		"TERMINATED",
 		"UPDATING",
 	}
+}
+
+// GetMappingVlanLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVlanLifecycleStateEnum(val string) (VlanLifecycleStateEnum, bool) {
+	mappingVlanLifecycleStateEnumIgnoreCase := make(map[string]VlanLifecycleStateEnum)
+	for k, v := range mappingVlanLifecycleStateEnum {
+		mappingVlanLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVlanLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

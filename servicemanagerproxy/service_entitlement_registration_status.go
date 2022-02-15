@@ -10,6 +10,10 @@
 
 package servicemanagerproxy
 
+import (
+	"strings"
+)
+
 // ServiceEntitlementRegistrationStatusEnum Enum with underlying type: string
 type ServiceEntitlementRegistrationStatusEnum string
 
@@ -117,4 +121,15 @@ func GetServiceEntitlementRegistrationStatusEnumStringValues() []string {
 		"BEGIN_ENABLING_ACCESS",
 		"TRA_UNKNOWN",
 	}
+}
+
+// GetMappingServiceEntitlementRegistrationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingServiceEntitlementRegistrationStatusEnum(val string) (ServiceEntitlementRegistrationStatusEnum, bool) {
+	mappingServiceEntitlementRegistrationStatusEnumIgnoreCase := make(map[string]ServiceEntitlementRegistrationStatusEnum)
+	for k, v := range mappingServiceEntitlementRegistrationStatusEnum {
+		mappingServiceEntitlementRegistrationStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingServiceEntitlementRegistrationStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

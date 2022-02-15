@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -108,4 +108,15 @@ func GetComputeInstanceGroupFailurePolicyPolicyTypeEnumStringValues() []string {
 		"COMPUTE_INSTANCE_GROUP_FAILURE_POLICY_BY_COUNT",
 		"COMPUTE_INSTANCE_GROUP_FAILURE_POLICY_BY_PERCENTAGE",
 	}
+}
+
+// GetMappingComputeInstanceGroupFailurePolicyPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingComputeInstanceGroupFailurePolicyPolicyTypeEnum(val string) (ComputeInstanceGroupFailurePolicyPolicyTypeEnum, bool) {
+	mappingComputeInstanceGroupFailurePolicyPolicyTypeEnumIgnoreCase := make(map[string]ComputeInstanceGroupFailurePolicyPolicyTypeEnum)
+	for k, v := range mappingComputeInstanceGroupFailurePolicyPolicyTypeEnum {
+		mappingComputeInstanceGroupFailurePolicyPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingComputeInstanceGroupFailurePolicyPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

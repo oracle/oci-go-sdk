@@ -15,7 +15,7 @@ package workrequests
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -62,7 +62,7 @@ func (m WorkRequest) String() string {
 // Not recommended for calling this function directly
 func (m WorkRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingWorkRequestStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingWorkRequestStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetWorkRequestStatusEnumStringValues(), ",")))
 	}
 
@@ -113,4 +113,15 @@ func GetWorkRequestStatusEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingWorkRequestStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestStatusEnum(val string) (WorkRequestStatusEnum, bool) {
+	mappingWorkRequestStatusEnumIgnoreCase := make(map[string]WorkRequestStatusEnum)
+	for k, v := range mappingWorkRequestStatusEnum {
+		mappingWorkRequestStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

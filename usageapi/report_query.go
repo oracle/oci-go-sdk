@@ -11,7 +11,7 @@ package usageapi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -77,14 +77,14 @@ func (m ReportQuery) String() string {
 // Not recommended for calling this function directly
 func (m ReportQuery) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingReportQueryGranularityEnum[string(m.Granularity)]; !ok && m.Granularity != "" {
+	if _, ok := GetMappingReportQueryGranularityEnum(string(m.Granularity)); !ok && m.Granularity != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Granularity: %s. Supported values are: %s.", m.Granularity, strings.Join(GetReportQueryGranularityEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingReportQueryQueryTypeEnum[string(m.QueryType)]; !ok && m.QueryType != "" {
+	if _, ok := GetMappingReportQueryQueryTypeEnum(string(m.QueryType)); !ok && m.QueryType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for QueryType: %s. Supported values are: %s.", m.QueryType, strings.Join(GetReportQueryQueryTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingReportQueryDateRangeNameEnum[string(m.DateRangeName)]; !ok && m.DateRangeName != "" {
+	if _, ok := GetMappingReportQueryDateRangeNameEnum(string(m.DateRangeName)); !ok && m.DateRangeName != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DateRangeName: %s. Supported values are: %s.", m.DateRangeName, strings.Join(GetReportQueryDateRangeNameEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -130,6 +130,17 @@ func GetReportQueryGranularityEnumStringValues() []string {
 	}
 }
 
+// GetMappingReportQueryGranularityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingReportQueryGranularityEnum(val string) (ReportQueryGranularityEnum, bool) {
+	mappingReportQueryGranularityEnumIgnoreCase := make(map[string]ReportQueryGranularityEnum)
+	for k, v := range mappingReportQueryGranularityEnum {
+		mappingReportQueryGranularityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingReportQueryGranularityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ReportQueryQueryTypeEnum Enum with underlying type: string
 type ReportQueryQueryTypeEnum string
 
@@ -168,6 +179,17 @@ func GetReportQueryQueryTypeEnumStringValues() []string {
 		"EXPIREDCREDIT",
 		"ALLCREDIT",
 	}
+}
+
+// GetMappingReportQueryQueryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingReportQueryQueryTypeEnum(val string) (ReportQueryQueryTypeEnum, bool) {
+	mappingReportQueryQueryTypeEnumIgnoreCase := make(map[string]ReportQueryQueryTypeEnum)
+	for k, v := range mappingReportQueryQueryTypeEnum {
+		mappingReportQueryQueryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingReportQueryQueryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ReportQueryDateRangeNameEnum Enum with underlying type: string
@@ -223,4 +245,15 @@ func GetReportQueryDateRangeNameEnumStringValues() []string {
 		"YTD",
 		"CUSTOM",
 	}
+}
+
+// GetMappingReportQueryDateRangeNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingReportQueryDateRangeNameEnum(val string) (ReportQueryDateRangeNameEnum, bool) {
+	mappingReportQueryDateRangeNameEnumIgnoreCase := make(map[string]ReportQueryDateRangeNameEnum)
+	for k, v := range mappingReportQueryDateRangeNameEnum {
+		mappingReportQueryDateRangeNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingReportQueryDateRangeNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

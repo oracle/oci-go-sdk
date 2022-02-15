@@ -12,7 +12,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -68,7 +68,7 @@ func (m SteeringPolicyAttachment) String() string {
 // Not recommended for calling this function directly
 func (m SteeringPolicyAttachment) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSteeringPolicyAttachmentLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingSteeringPolicyAttachmentLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSteeringPolicyAttachmentLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -110,4 +110,15 @@ func GetSteeringPolicyAttachmentLifecycleStateEnumStringValues() []string {
 		"ACTIVE",
 		"DELETING",
 	}
+}
+
+// GetMappingSteeringPolicyAttachmentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSteeringPolicyAttachmentLifecycleStateEnum(val string) (SteeringPolicyAttachmentLifecycleStateEnum, bool) {
+	mappingSteeringPolicyAttachmentLifecycleStateEnumIgnoreCase := make(map[string]SteeringPolicyAttachmentLifecycleStateEnum)
+	for k, v := range mappingSteeringPolicyAttachmentLifecycleStateEnum {
+		mappingSteeringPolicyAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSteeringPolicyAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

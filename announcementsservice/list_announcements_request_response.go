@@ -6,7 +6,7 @@ package announcementsservice
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -18,8 +18,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/announcementsservice/ListAnnouncements.go.html to see an example of how to use ListAnnouncementsRequest.
 type ListAnnouncementsRequest struct {
 
-	// The OCID of the compartment. Because announcements are specific to a tenancy, this is the
-	// OCID of the root compartment.
+	// The OCID of the compartment.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The maximum number of items to return in a paginated "List" call.
@@ -48,6 +47,18 @@ type ListAnnouncementsRequest struct {
 
 	// The boundary for the latest `timeOneValue` date on announcements that you want to see.
 	TimeOneLatestTime *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeOneLatestTime"`
+
+	// A filter to return only announcements that match a specific environment name.
+	EnvironmentName *string `mandatory:"false" contributesTo:"query" name:"environmentName"`
+
+	// A filter to return only announcements affecting a specific service.
+	Service *string `mandatory:"false" contributesTo:"query" name:"service"`
+
+	// A filter to return only announcements affecting a specific platform.
+	PlatformType ListAnnouncementsPlatformTypeEnum `mandatory:"false" contributesTo:"query" name:"platformType" omitEmpty:"true"`
+
+	// Exclude The type of announcement.
+	ExcludeAnnouncementTypes []string `contributesTo:"query" name:"excludeAnnouncementTypes" collectionFormat:"multi"`
 
 	// The unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the complete request ID.
@@ -89,14 +100,17 @@ func (request ListAnnouncementsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAnnouncementsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAnnouncementsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListAnnouncementsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListAnnouncementsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAnnouncementsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAnnouncementsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAnnouncementsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAnnouncementsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAnnouncementsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAnnouncementsSortOrderEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingListAnnouncementsPlatformTypeEnum(string(request.PlatformType)); !ok && request.PlatformType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", request.PlatformType, strings.Join(GetListAnnouncementsPlatformTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
@@ -113,10 +127,17 @@ type ListAnnouncementsResponse struct {
 	// A list of AnnouncementsCollection instances
 	AnnouncementsCollection `presentIn:"body"`
 
-	// For pagination of a list of items. When paging through a list, if this header appears in the response, then there are additional items still to get. Include this value as the `page` parameter for the subsequent GET request. For information about pagination, see List Pagination (https://docs.cloud.oracle.com/Content/API/Concepts/usingapi.htm#List_Pagination).
+	// For pagination of a list of items. When paging through a list, if this header appears in the response,
+	// then a partial list might have been returned. Include this value as the `page` parameter for the
+	// subsequent GET request to get the next batch of items.
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
 
-	// The unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular request, please provide the complete request ID.
+	// For pagination of a list of items. Include this value as the `page` parameter for the
+	// subsequent GET request to get the previous batch of items.
+	OpcPreviousPage *string `presentIn:"header" name:"opc-previous-page"`
+
+	// Unique Oracle-assigned identifier for the request. If you need to contact
+	// Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
@@ -158,6 +179,17 @@ func GetListAnnouncementsLifecycleStateEnumStringValues() []string {
 		"ACTIVE",
 		"INACTIVE",
 	}
+}
+
+// GetMappingListAnnouncementsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAnnouncementsLifecycleStateEnum(val string) (ListAnnouncementsLifecycleStateEnum, bool) {
+	mappingListAnnouncementsLifecycleStateEnumIgnoreCase := make(map[string]ListAnnouncementsLifecycleStateEnum)
+	for k, v := range mappingListAnnouncementsLifecycleStateEnum {
+		mappingListAnnouncementsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAnnouncementsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListAnnouncementsSortByEnum Enum with underlying type: string
@@ -203,6 +235,17 @@ func GetListAnnouncementsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAnnouncementsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAnnouncementsSortByEnum(val string) (ListAnnouncementsSortByEnum, bool) {
+	mappingListAnnouncementsSortByEnumIgnoreCase := make(map[string]ListAnnouncementsSortByEnum)
+	for k, v := range mappingListAnnouncementsSortByEnum {
+		mappingListAnnouncementsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAnnouncementsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAnnouncementsSortOrderEnum Enum with underlying type: string
 type ListAnnouncementsSortOrderEnum string
 
@@ -232,4 +275,57 @@ func GetListAnnouncementsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAnnouncementsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAnnouncementsSortOrderEnum(val string) (ListAnnouncementsSortOrderEnum, bool) {
+	mappingListAnnouncementsSortOrderEnumIgnoreCase := make(map[string]ListAnnouncementsSortOrderEnum)
+	for k, v := range mappingListAnnouncementsSortOrderEnum {
+		mappingListAnnouncementsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAnnouncementsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
+// ListAnnouncementsPlatformTypeEnum Enum with underlying type: string
+type ListAnnouncementsPlatformTypeEnum string
+
+// Set of constants representing the allowable values for ListAnnouncementsPlatformTypeEnum
+const (
+	ListAnnouncementsPlatformTypeIaas ListAnnouncementsPlatformTypeEnum = "IAAS"
+	ListAnnouncementsPlatformTypeSaas ListAnnouncementsPlatformTypeEnum = "SAAS"
+)
+
+var mappingListAnnouncementsPlatformTypeEnum = map[string]ListAnnouncementsPlatformTypeEnum{
+	"IAAS": ListAnnouncementsPlatformTypeIaas,
+	"SAAS": ListAnnouncementsPlatformTypeSaas,
+}
+
+// GetListAnnouncementsPlatformTypeEnumValues Enumerates the set of values for ListAnnouncementsPlatformTypeEnum
+func GetListAnnouncementsPlatformTypeEnumValues() []ListAnnouncementsPlatformTypeEnum {
+	values := make([]ListAnnouncementsPlatformTypeEnum, 0)
+	for _, v := range mappingListAnnouncementsPlatformTypeEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetListAnnouncementsPlatformTypeEnumStringValues Enumerates the set of values in String for ListAnnouncementsPlatformTypeEnum
+func GetListAnnouncementsPlatformTypeEnumStringValues() []string {
+	return []string{
+		"IAAS",
+		"SAAS",
+	}
+}
+
+// GetMappingListAnnouncementsPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAnnouncementsPlatformTypeEnum(val string) (ListAnnouncementsPlatformTypeEnum, bool) {
+	mappingListAnnouncementsPlatformTypeEnumIgnoreCase := make(map[string]ListAnnouncementsPlatformTypeEnum)
+	for k, v := range mappingListAnnouncementsPlatformTypeEnum {
+		mappingListAnnouncementsPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAnnouncementsPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

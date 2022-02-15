@@ -12,7 +12,7 @@ package visualbuilder
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -79,11 +79,11 @@ func (m VbInstanceSummary) String() string {
 // Not recommended for calling this function directly
 func (m VbInstanceSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVbInstanceSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingVbInstanceSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetVbInstanceSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingVbInstanceSummaryConsumptionModelEnum[string(m.ConsumptionModel)]; !ok && m.ConsumptionModel != "" {
+	if _, ok := GetMappingVbInstanceSummaryConsumptionModelEnum(string(m.ConsumptionModel)); !ok && m.ConsumptionModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ConsumptionModel: %s. Supported values are: %s.", m.ConsumptionModel, strings.Join(GetVbInstanceSummaryConsumptionModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -138,6 +138,17 @@ func GetVbInstanceSummaryLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingVbInstanceSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVbInstanceSummaryLifecycleStateEnum(val string) (VbInstanceSummaryLifecycleStateEnum, bool) {
+	mappingVbInstanceSummaryLifecycleStateEnumIgnoreCase := make(map[string]VbInstanceSummaryLifecycleStateEnum)
+	for k, v := range mappingVbInstanceSummaryLifecycleStateEnum {
+		mappingVbInstanceSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVbInstanceSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // VbInstanceSummaryConsumptionModelEnum Enum with underlying type: string
 type VbInstanceSummaryConsumptionModelEnum string
 
@@ -170,4 +181,15 @@ func GetVbInstanceSummaryConsumptionModelEnumStringValues() []string {
 		"GOV",
 		"VB4SAAS",
 	}
+}
+
+// GetMappingVbInstanceSummaryConsumptionModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVbInstanceSummaryConsumptionModelEnum(val string) (VbInstanceSummaryConsumptionModelEnum, bool) {
+	mappingVbInstanceSummaryConsumptionModelEnumIgnoreCase := make(map[string]VbInstanceSummaryConsumptionModelEnum)
+	for k, v := range mappingVbInstanceSummaryConsumptionModelEnum {
+		mappingVbInstanceSummaryConsumptionModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVbInstanceSummaryConsumptionModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

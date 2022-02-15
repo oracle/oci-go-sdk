@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -136,4 +136,15 @@ func GetUpdateExternalDatabaseConnectorDetailsConnectorTypeEnumStringValues() []
 	return []string{
 		"MACS",
 	}
+}
+
+// GetMappingUpdateExternalDatabaseConnectorDetailsConnectorTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateExternalDatabaseConnectorDetailsConnectorTypeEnum(val string) (UpdateExternalDatabaseConnectorDetailsConnectorTypeEnum, bool) {
+	mappingUpdateExternalDatabaseConnectorDetailsConnectorTypeEnumIgnoreCase := make(map[string]UpdateExternalDatabaseConnectorDetailsConnectorTypeEnum)
+	for k, v := range mappingUpdateExternalDatabaseConnectorDetailsConnectorTypeEnum {
+		mappingUpdateExternalDatabaseConnectorDetailsConnectorTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateExternalDatabaseConnectorDetailsConnectorTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

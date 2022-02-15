@@ -6,7 +6,7 @@ package marketplace
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -87,10 +87,10 @@ func (request ListAcceptedAgreementsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAcceptedAgreementsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAcceptedAgreementsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAcceptedAgreementsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAcceptedAgreementsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAcceptedAgreementsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAcceptedAgreementsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAcceptedAgreementsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -155,6 +155,17 @@ func GetListAcceptedAgreementsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAcceptedAgreementsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAcceptedAgreementsSortByEnum(val string) (ListAcceptedAgreementsSortByEnum, bool) {
+	mappingListAcceptedAgreementsSortByEnumIgnoreCase := make(map[string]ListAcceptedAgreementsSortByEnum)
+	for k, v := range mappingListAcceptedAgreementsSortByEnum {
+		mappingListAcceptedAgreementsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAcceptedAgreementsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAcceptedAgreementsSortOrderEnum Enum with underlying type: string
 type ListAcceptedAgreementsSortOrderEnum string
 
@@ -184,4 +195,15 @@ func GetListAcceptedAgreementsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAcceptedAgreementsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAcceptedAgreementsSortOrderEnum(val string) (ListAcceptedAgreementsSortOrderEnum, bool) {
+	mappingListAcceptedAgreementsSortOrderEnumIgnoreCase := make(map[string]ListAcceptedAgreementsSortOrderEnum)
+	for k, v := range mappingListAcceptedAgreementsSortOrderEnum {
+		mappingListAcceptedAgreementsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAcceptedAgreementsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

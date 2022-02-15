@@ -11,7 +11,7 @@ package loggingsearch
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -38,7 +38,7 @@ func (m FieldInfo) String() string {
 // Not recommended for calling this function directly
 func (m FieldInfo) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingFieldInfoFieldTypeEnum[string(m.FieldType)]; !ok && m.FieldType != "" {
+	if _, ok := GetMappingFieldInfoFieldTypeEnum(string(m.FieldType)); !ok && m.FieldType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FieldType: %s. Supported values are: %s.", m.FieldType, strings.Join(GetFieldInfoFieldTypeEnumStringValues(), ",")))
 	}
 
@@ -83,4 +83,15 @@ func GetFieldInfoFieldTypeEnumStringValues() []string {
 		"BOOLEAN",
 		"ARRAY",
 	}
+}
+
+// GetMappingFieldInfoFieldTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFieldInfoFieldTypeEnum(val string) (FieldInfoFieldTypeEnum, bool) {
+	mappingFieldInfoFieldTypeEnumIgnoreCase := make(map[string]FieldInfoFieldTypeEnum)
+	for k, v := range mappingFieldInfoFieldTypeEnum {
+		mappingFieldInfoFieldTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFieldInfoFieldTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

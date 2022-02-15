@@ -11,7 +11,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -81,14 +81,14 @@ func (m ManagedList) String() string {
 // Not recommended for calling this function directly
 func (m ManagedList) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingManagedListTypeEnum[string(m.ListType)]; !ok && m.ListType != "" {
+	if _, ok := GetMappingManagedListTypeEnum(string(m.ListType)); !ok && m.ListType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ListType: %s. Supported values are: %s.", m.ListType, strings.Join(GetManagedListTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingFeedProviderTypeEnum[string(m.FeedProvider)]; !ok && m.FeedProvider != "" {
+	if _, ok := GetMappingFeedProviderTypeEnum(string(m.FeedProvider)); !ok && m.FeedProvider != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FeedProvider: %s. Supported values are: %s.", m.FeedProvider, strings.Join(GetFeedProviderTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

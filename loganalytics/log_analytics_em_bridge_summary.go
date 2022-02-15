@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -79,10 +79,10 @@ func (m LogAnalyticsEmBridgeSummary) String() string {
 // Not recommended for calling this function directly
 func (m LogAnalyticsEmBridgeSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingEmBridgeLifecycleStatesEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingEmBridgeLifecycleStatesEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetEmBridgeLifecycleStatesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingEmBridgeLatestImportProcessingStatusEnum[string(m.LastImportProcessingStatus)]; !ok && m.LastImportProcessingStatus != "" {
+	if _, ok := GetMappingEmBridgeLatestImportProcessingStatusEnum(string(m.LastImportProcessingStatus)); !ok && m.LastImportProcessingStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LastImportProcessingStatus: %s. Supported values are: %s.", m.LastImportProcessingStatus, strings.Join(GetEmBridgeLatestImportProcessingStatusEnumStringValues(), ",")))
 	}
 

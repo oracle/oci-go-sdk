@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -50,10 +50,10 @@ func (m UpdateDeployArtifactDetails) String() string {
 func (m UpdateDeployArtifactDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDeployArtifactDeployArtifactTypeEnum[string(m.DeployArtifactType)]; !ok && m.DeployArtifactType != "" {
+	if _, ok := GetMappingDeployArtifactDeployArtifactTypeEnum(string(m.DeployArtifactType)); !ok && m.DeployArtifactType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DeployArtifactType: %s. Supported values are: %s.", m.DeployArtifactType, strings.Join(GetDeployArtifactDeployArtifactTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDeployArtifactArgumentSubstitutionModeEnum[string(m.ArgumentSubstitutionMode)]; !ok && m.ArgumentSubstitutionMode != "" {
+	if _, ok := GetMappingDeployArtifactArgumentSubstitutionModeEnum(string(m.ArgumentSubstitutionMode)); !ok && m.ArgumentSubstitutionMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ArgumentSubstitutionMode: %s. Supported values are: %s.", m.ArgumentSubstitutionMode, strings.Join(GetDeployArtifactArgumentSubstitutionModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

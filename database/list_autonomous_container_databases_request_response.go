@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -98,16 +98,16 @@ func (request ListAutonomousContainerDatabasesRequest) RetryPolicy() *common.Ret
 // Not recommended for calling this function directly
 func (request ListAutonomousContainerDatabasesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAutonomousContainerDatabaseSummaryInfrastructureTypeEnum[string(request.InfrastructureType)]; !ok && request.InfrastructureType != "" {
+	if _, ok := GetMappingAutonomousContainerDatabaseSummaryInfrastructureTypeEnum(string(request.InfrastructureType)); !ok && request.InfrastructureType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InfrastructureType: %s. Supported values are: %s.", request.InfrastructureType, strings.Join(GetAutonomousContainerDatabaseSummaryInfrastructureTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAutonomousContainerDatabasesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAutonomousContainerDatabasesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAutonomousContainerDatabasesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAutonomousContainerDatabasesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAutonomousContainerDatabasesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAutonomousContainerDatabasesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousContainerDatabaseSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingAutonomousContainerDatabaseSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetAutonomousContainerDatabaseSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -176,6 +176,17 @@ func GetListAutonomousContainerDatabasesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAutonomousContainerDatabasesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAutonomousContainerDatabasesSortByEnum(val string) (ListAutonomousContainerDatabasesSortByEnum, bool) {
+	mappingListAutonomousContainerDatabasesSortByEnumIgnoreCase := make(map[string]ListAutonomousContainerDatabasesSortByEnum)
+	for k, v := range mappingListAutonomousContainerDatabasesSortByEnum {
+		mappingListAutonomousContainerDatabasesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAutonomousContainerDatabasesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAutonomousContainerDatabasesSortOrderEnum Enum with underlying type: string
 type ListAutonomousContainerDatabasesSortOrderEnum string
 
@@ -205,4 +216,15 @@ func GetListAutonomousContainerDatabasesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAutonomousContainerDatabasesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAutonomousContainerDatabasesSortOrderEnum(val string) (ListAutonomousContainerDatabasesSortOrderEnum, bool) {
+	mappingListAutonomousContainerDatabasesSortOrderEnumIgnoreCase := make(map[string]ListAutonomousContainerDatabasesSortOrderEnum)
+	for k, v := range mappingListAutonomousContainerDatabasesSortOrderEnum {
+		mappingListAutonomousContainerDatabasesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAutonomousContainerDatabasesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

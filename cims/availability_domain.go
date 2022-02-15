@@ -9,6 +9,10 @@
 
 package cims
 
+import (
+	"strings"
+)
+
 // AvailabilityDomainEnum Enum with underlying type: string
 type AvailabilityDomainEnum string
 
@@ -140,4 +144,15 @@ func GetAvailabilityDomainEnumStringValues() []string {
 		"AP_CHUNCHEON_1_AD_1",
 		"NO_AD",
 	}
+}
+
+// GetMappingAvailabilityDomainEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAvailabilityDomainEnum(val string) (AvailabilityDomainEnum, bool) {
+	mappingAvailabilityDomainEnumIgnoreCase := make(map[string]AvailabilityDomainEnum)
+	for k, v := range mappingAvailabilityDomainEnum {
+		mappingAvailabilityDomainEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAvailabilityDomainEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

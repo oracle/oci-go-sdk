@@ -6,7 +6,7 @@ package waf
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -86,15 +86,15 @@ func (request ListNetworkAddressListsRequest) RetryPolicy() *common.RetryPolicy 
 func (request ListNetworkAddressListsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.LifecycleState {
-		if _, ok := mappingNetworkAddressListLifecycleStateEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingNetworkAddressListLifecycleStateEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", val, strings.Join(GetNetworkAddressListLifecycleStateEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListNetworkAddressListsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListNetworkAddressListsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListNetworkAddressListsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListNetworkAddressListsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListNetworkAddressListsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListNetworkAddressListsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -162,6 +162,17 @@ func GetListNetworkAddressListsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListNetworkAddressListsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNetworkAddressListsSortOrderEnum(val string) (ListNetworkAddressListsSortOrderEnum, bool) {
+	mappingListNetworkAddressListsSortOrderEnumIgnoreCase := make(map[string]ListNetworkAddressListsSortOrderEnum)
+	for k, v := range mappingListNetworkAddressListsSortOrderEnum {
+		mappingListNetworkAddressListsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNetworkAddressListsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListNetworkAddressListsSortByEnum Enum with underlying type: string
 type ListNetworkAddressListsSortByEnum string
 
@@ -191,4 +202,15 @@ func GetListNetworkAddressListsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListNetworkAddressListsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNetworkAddressListsSortByEnum(val string) (ListNetworkAddressListsSortByEnum, bool) {
+	mappingListNetworkAddressListsSortByEnumIgnoreCase := make(map[string]ListNetworkAddressListsSortByEnum)
+	for k, v := range mappingListNetworkAddressListsSortByEnum {
+		mappingListNetworkAddressListsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNetworkAddressListsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

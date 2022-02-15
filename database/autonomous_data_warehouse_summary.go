@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -77,11 +77,11 @@ func (m AutonomousDataWarehouseSummary) String() string {
 // Not recommended for calling this function directly
 func (m AutonomousDataWarehouseSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAutonomousDataWarehouseSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAutonomousDataWarehouseSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAutonomousDataWarehouseSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingAutonomousDataWarehouseSummaryLicenseModelEnum[string(m.LicenseModel)]; !ok && m.LicenseModel != "" {
+	if _, ok := GetMappingAutonomousDataWarehouseSummaryLicenseModelEnum(string(m.LicenseModel)); !ok && m.LicenseModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LicenseModel: %s. Supported values are: %s.", m.LicenseModel, strings.Join(GetAutonomousDataWarehouseSummaryLicenseModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -154,6 +154,17 @@ func GetAutonomousDataWarehouseSummaryLifecycleStateEnumStringValues() []string 
 	}
 }
 
+// GetMappingAutonomousDataWarehouseSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDataWarehouseSummaryLifecycleStateEnum(val string) (AutonomousDataWarehouseSummaryLifecycleStateEnum, bool) {
+	mappingAutonomousDataWarehouseSummaryLifecycleStateEnumIgnoreCase := make(map[string]AutonomousDataWarehouseSummaryLifecycleStateEnum)
+	for k, v := range mappingAutonomousDataWarehouseSummaryLifecycleStateEnum {
+		mappingAutonomousDataWarehouseSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDataWarehouseSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousDataWarehouseSummaryLicenseModelEnum Enum with underlying type: string
 type AutonomousDataWarehouseSummaryLicenseModelEnum string
 
@@ -183,4 +194,15 @@ func GetAutonomousDataWarehouseSummaryLicenseModelEnumStringValues() []string {
 		"LICENSE_INCLUDED",
 		"BRING_YOUR_OWN_LICENSE",
 	}
+}
+
+// GetMappingAutonomousDataWarehouseSummaryLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDataWarehouseSummaryLicenseModelEnum(val string) (AutonomousDataWarehouseSummaryLicenseModelEnum, bool) {
+	mappingAutonomousDataWarehouseSummaryLicenseModelEnumIgnoreCase := make(map[string]AutonomousDataWarehouseSummaryLicenseModelEnum)
+	for k, v := range mappingAutonomousDataWarehouseSummaryLicenseModelEnum {
+		mappingAutonomousDataWarehouseSummaryLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDataWarehouseSummaryLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

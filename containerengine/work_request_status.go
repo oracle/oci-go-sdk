@@ -11,6 +11,10 @@
 
 package containerengine
 
+import (
+	"strings"
+)
+
 // WorkRequestStatusEnum Enum with underlying type: string
 type WorkRequestStatusEnum string
 
@@ -52,4 +56,15 @@ func GetWorkRequestStatusEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingWorkRequestStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestStatusEnum(val string) (WorkRequestStatusEnum, bool) {
+	mappingWorkRequestStatusEnumIgnoreCase := make(map[string]WorkRequestStatusEnum)
+	for k, v := range mappingWorkRequestStatusEnum {
+		mappingWorkRequestStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

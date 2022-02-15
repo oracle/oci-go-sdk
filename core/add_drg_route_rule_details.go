@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -48,7 +48,7 @@ func (m AddDrgRouteRuleDetails) String() string {
 // Not recommended for calling this function directly
 func (m AddDrgRouteRuleDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAddDrgRouteRuleDetailsDestinationTypeEnum[string(m.DestinationType)]; !ok && m.DestinationType != "" {
+	if _, ok := GetMappingAddDrgRouteRuleDetailsDestinationTypeEnum(string(m.DestinationType)); !ok && m.DestinationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DestinationType: %s. Supported values are: %s.", m.DestinationType, strings.Join(GetAddDrgRouteRuleDetailsDestinationTypeEnumStringValues(), ",")))
 	}
 
@@ -84,4 +84,15 @@ func GetAddDrgRouteRuleDetailsDestinationTypeEnumStringValues() []string {
 	return []string{
 		"CIDR_BLOCK",
 	}
+}
+
+// GetMappingAddDrgRouteRuleDetailsDestinationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAddDrgRouteRuleDetailsDestinationTypeEnum(val string) (AddDrgRouteRuleDetailsDestinationTypeEnum, bool) {
+	mappingAddDrgRouteRuleDetailsDestinationTypeEnumIgnoreCase := make(map[string]AddDrgRouteRuleDetailsDestinationTypeEnum)
+	for k, v := range mappingAddDrgRouteRuleDetailsDestinationTypeEnum {
+		mappingAddDrgRouteRuleDetailsDestinationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAddDrgRouteRuleDetailsDestinationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -10,6 +10,10 @@
 
 package apmcontrolplane
 
+import (
+	"strings"
+)
+
 // DataKeyTypesEnum Enum with underlying type: string
 type DataKeyTypesEnum string
 
@@ -39,4 +43,15 @@ func GetDataKeyTypesEnumStringValues() []string {
 		"PRIVATE",
 		"PUBLIC",
 	}
+}
+
+// GetMappingDataKeyTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataKeyTypesEnum(val string) (DataKeyTypesEnum, bool) {
+	mappingDataKeyTypesEnumIgnoreCase := make(map[string]DataKeyTypesEnum)
+	for k, v := range mappingDataKeyTypesEnum {
+		mappingDataKeyTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataKeyTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

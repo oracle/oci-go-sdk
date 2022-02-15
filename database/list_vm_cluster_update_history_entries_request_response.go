@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -72,10 +72,10 @@ func (request ListVmClusterUpdateHistoryEntriesRequest) RetryPolicy() *common.Re
 // Not recommended for calling this function directly
 func (request ListVmClusterUpdateHistoryEntriesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListVmClusterUpdateHistoryEntriesUpdateTypeEnum[string(request.UpdateType)]; !ok && request.UpdateType != "" {
+	if _, ok := GetMappingListVmClusterUpdateHistoryEntriesUpdateTypeEnum(string(request.UpdateType)); !ok && request.UpdateType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateType: %s. Supported values are: %s.", request.UpdateType, strings.Join(GetListVmClusterUpdateHistoryEntriesUpdateTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVmClusterUpdateHistoryEntrySummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingVmClusterUpdateHistoryEntrySummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetVmClusterUpdateHistoryEntrySummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -145,4 +145,15 @@ func GetListVmClusterUpdateHistoryEntriesUpdateTypeEnumStringValues() []string {
 		"GI_PATCH",
 		"OS_UPDATE",
 	}
+}
+
+// GetMappingListVmClusterUpdateHistoryEntriesUpdateTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListVmClusterUpdateHistoryEntriesUpdateTypeEnum(val string) (ListVmClusterUpdateHistoryEntriesUpdateTypeEnum, bool) {
+	mappingListVmClusterUpdateHistoryEntriesUpdateTypeEnumIgnoreCase := make(map[string]ListVmClusterUpdateHistoryEntriesUpdateTypeEnum)
+	for k, v := range mappingListVmClusterUpdateHistoryEntriesUpdateTypeEnum {
+		mappingListVmClusterUpdateHistoryEntriesUpdateTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListVmClusterUpdateHistoryEntriesUpdateTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

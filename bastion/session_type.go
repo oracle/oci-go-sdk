@@ -9,6 +9,10 @@
 
 package bastion
 
+import (
+	"strings"
+)
+
 // SessionTypeEnum Enum with underlying type: string
 type SessionTypeEnum string
 
@@ -38,4 +42,15 @@ func GetSessionTypeEnumStringValues() []string {
 		"MANAGED_SSH",
 		"PORT_FORWARDING",
 	}
+}
+
+// GetMappingSessionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSessionTypeEnum(val string) (SessionTypeEnum, bool) {
+	mappingSessionTypeEnumIgnoreCase := make(map[string]SessionTypeEnum)
+	for k, v := range mappingSessionTypeEnum {
+		mappingSessionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSessionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

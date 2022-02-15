@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -31,7 +31,7 @@ func (m DayOfWeek) String() string {
 // Not recommended for calling this function directly
 func (m DayOfWeek) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDayOfWeekNameEnum[string(m.Name)]; !ok && m.Name != "" {
+	if _, ok := GetMappingDayOfWeekNameEnum(string(m.Name)); !ok && m.Name != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Name: %s. Supported values are: %s.", m.Name, strings.Join(GetDayOfWeekNameEnumStringValues(), ",")))
 	}
 
@@ -85,4 +85,15 @@ func GetDayOfWeekNameEnumStringValues() []string {
 		"SATURDAY",
 		"SUNDAY",
 	}
+}
+
+// GetMappingDayOfWeekNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDayOfWeekNameEnum(val string) (DayOfWeekNameEnum, bool) {
+	mappingDayOfWeekNameEnumIgnoreCase := make(map[string]DayOfWeekNameEnum)
+	for k, v := range mappingDayOfWeekNameEnum {
+		mappingDayOfWeekNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDayOfWeekNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

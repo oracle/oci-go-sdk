@@ -11,7 +11,7 @@ package apmsynthetics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -58,7 +58,7 @@ func (m CreateScriptDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateScriptDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingContentTypesEnum[string(m.ContentType)]; !ok && m.ContentType != "" {
+	if _, ok := GetMappingContentTypesEnum(string(m.ContentType)); !ok && m.ContentType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ContentType: %s. Supported values are: %s.", m.ContentType, strings.Join(GetContentTypesEnumStringValues(), ",")))
 	}
 

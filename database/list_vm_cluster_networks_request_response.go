@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -81,13 +81,13 @@ func (request ListVmClusterNetworksRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListVmClusterNetworksRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListVmClusterNetworksSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListVmClusterNetworksSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListVmClusterNetworksSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListVmClusterNetworksSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListVmClusterNetworksSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListVmClusterNetworksSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVmClusterNetworkSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingVmClusterNetworkSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetVmClusterNetworkSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -156,6 +156,17 @@ func GetListVmClusterNetworksSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListVmClusterNetworksSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListVmClusterNetworksSortByEnum(val string) (ListVmClusterNetworksSortByEnum, bool) {
+	mappingListVmClusterNetworksSortByEnumIgnoreCase := make(map[string]ListVmClusterNetworksSortByEnum)
+	for k, v := range mappingListVmClusterNetworksSortByEnum {
+		mappingListVmClusterNetworksSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListVmClusterNetworksSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListVmClusterNetworksSortOrderEnum Enum with underlying type: string
 type ListVmClusterNetworksSortOrderEnum string
 
@@ -185,4 +196,15 @@ func GetListVmClusterNetworksSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListVmClusterNetworksSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListVmClusterNetworksSortOrderEnum(val string) (ListVmClusterNetworksSortOrderEnum, bool) {
+	mappingListVmClusterNetworksSortOrderEnumIgnoreCase := make(map[string]ListVmClusterNetworksSortOrderEnum)
+	for k, v := range mappingListVmClusterNetworksSortOrderEnum {
+		mappingListVmClusterNetworksSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListVmClusterNetworksSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

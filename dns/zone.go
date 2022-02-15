@@ -12,7 +12,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -94,13 +94,13 @@ func (m Zone) String() string {
 // Not recommended for calling this function directly
 func (m Zone) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingZoneZoneTypeEnum[string(m.ZoneType)]; !ok && m.ZoneType != "" {
+	if _, ok := GetMappingZoneZoneTypeEnum(string(m.ZoneType)); !ok && m.ZoneType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ZoneType: %s. Supported values are: %s.", m.ZoneType, strings.Join(GetZoneZoneTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingScopeEnum[string(m.Scope)]; !ok && m.Scope != "" {
+	if _, ok := GetMappingScopeEnum(string(m.Scope)); !ok && m.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", m.Scope, strings.Join(GetScopeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingZoneLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingZoneLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetZoneLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -139,6 +139,17 @@ func GetZoneZoneTypeEnumStringValues() []string {
 		"PRIMARY",
 		"SECONDARY",
 	}
+}
+
+// GetMappingZoneZoneTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingZoneZoneTypeEnum(val string) (ZoneZoneTypeEnum, bool) {
+	mappingZoneZoneTypeEnumIgnoreCase := make(map[string]ZoneZoneTypeEnum)
+	for k, v := range mappingZoneZoneTypeEnum {
+		mappingZoneZoneTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingZoneZoneTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ZoneLifecycleStateEnum Enum with underlying type: string
@@ -182,4 +193,15 @@ func GetZoneLifecycleStateEnumStringValues() []string {
 		"FAILED",
 		"UPDATING",
 	}
+}
+
+// GetMappingZoneLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingZoneLifecycleStateEnum(val string) (ZoneLifecycleStateEnum, bool) {
+	mappingZoneLifecycleStateEnumIgnoreCase := make(map[string]ZoneLifecycleStateEnum)
+	for k, v := range mappingZoneLifecycleStateEnum {
+		mappingZoneLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingZoneLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

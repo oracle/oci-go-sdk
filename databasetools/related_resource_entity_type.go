@@ -9,6 +9,10 @@
 
 package databasetools
 
+import (
+	"strings"
+)
+
 // RelatedResourceEntityTypeEnum Enum with underlying type: string
 type RelatedResourceEntityTypeEnum string
 
@@ -41,4 +45,15 @@ func GetRelatedResourceEntityTypeEnumStringValues() []string {
 		"DATABASE",
 		"PLUGGABLEDATABASE",
 	}
+}
+
+// GetMappingRelatedResourceEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRelatedResourceEntityTypeEnum(val string) (RelatedResourceEntityTypeEnum, bool) {
+	mappingRelatedResourceEntityTypeEnumIgnoreCase := make(map[string]RelatedResourceEntityTypeEnum)
+	for k, v := range mappingRelatedResourceEntityTypeEnum {
+		mappingRelatedResourceEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRelatedResourceEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

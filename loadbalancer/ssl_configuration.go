@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -101,7 +101,7 @@ func (m SslConfiguration) String() string {
 func (m SslConfiguration) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSslConfigurationServerOrderPreferenceEnum[string(m.ServerOrderPreference)]; !ok && m.ServerOrderPreference != "" {
+	if _, ok := GetMappingSslConfigurationServerOrderPreferenceEnum(string(m.ServerOrderPreference)); !ok && m.ServerOrderPreference != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ServerOrderPreference: %s. Supported values are: %s.", m.ServerOrderPreference, strings.Join(GetSslConfigurationServerOrderPreferenceEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -139,4 +139,15 @@ func GetSslConfigurationServerOrderPreferenceEnumStringValues() []string {
 		"ENABLED",
 		"DISABLED",
 	}
+}
+
+// GetMappingSslConfigurationServerOrderPreferenceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSslConfigurationServerOrderPreferenceEnum(val string) (SslConfigurationServerOrderPreferenceEnum, bool) {
+	mappingSslConfigurationServerOrderPreferenceEnumIgnoreCase := make(map[string]SslConfigurationServerOrderPreferenceEnum)
+	for k, v := range mappingSslConfigurationServerOrderPreferenceEnum {
+		mappingSslConfigurationServerOrderPreferenceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSslConfigurationServerOrderPreferenceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

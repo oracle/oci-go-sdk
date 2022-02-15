@@ -9,6 +9,10 @@
 
 package goldengate
 
+import (
+	"strings"
+)
+
 // LicenseModelEnum Enum with underlying type: string
 type LicenseModelEnum string
 
@@ -38,4 +42,15 @@ func GetLicenseModelEnumStringValues() []string {
 		"LICENSE_INCLUDED",
 		"BRING_YOUR_OWN_LICENSE",
 	}
+}
+
+// GetMappingLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLicenseModelEnum(val string) (LicenseModelEnum, bool) {
+	mappingLicenseModelEnumIgnoreCase := make(map[string]LicenseModelEnum)
+	for k, v := range mappingLicenseModelEnum {
+		mappingLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // OperationsInsightsWarehouseUserLifecycleStateEnum Enum with underlying type: string
 type OperationsInsightsWarehouseUserLifecycleStateEnum string
 
@@ -52,4 +56,15 @@ func GetOperationsInsightsWarehouseUserLifecycleStateEnumStringValues() []string
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingOperationsInsightsWarehouseUserLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOperationsInsightsWarehouseUserLifecycleStateEnum(val string) (OperationsInsightsWarehouseUserLifecycleStateEnum, bool) {
+	mappingOperationsInsightsWarehouseUserLifecycleStateEnumIgnoreCase := make(map[string]OperationsInsightsWarehouseUserLifecycleStateEnum)
+	for k, v := range mappingOperationsInsightsWarehouseUserLifecycleStateEnum {
+		mappingOperationsInsightsWarehouseUserLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOperationsInsightsWarehouseUserLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

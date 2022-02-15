@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -56,7 +56,7 @@ func (m BlockChallengeSettings) String() string {
 func (m BlockChallengeSettings) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBlockChallengeSettingsBlockActionEnum[string(m.BlockAction)]; !ok && m.BlockAction != "" {
+	if _, ok := GetMappingBlockChallengeSettingsBlockActionEnum(string(m.BlockAction)); !ok && m.BlockAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BlockAction: %s. Supported values are: %s.", m.BlockAction, strings.Join(GetBlockChallengeSettingsBlockActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -97,4 +97,15 @@ func GetBlockChallengeSettingsBlockActionEnumStringValues() []string {
 		"SHOW_ERROR_PAGE",
 		"SHOW_CAPTCHA",
 	}
+}
+
+// GetMappingBlockChallengeSettingsBlockActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBlockChallengeSettingsBlockActionEnum(val string) (BlockChallengeSettingsBlockActionEnum, bool) {
+	mappingBlockChallengeSettingsBlockActionEnumIgnoreCase := make(map[string]BlockChallengeSettingsBlockActionEnum)
+	for k, v := range mappingBlockChallengeSettingsBlockActionEnum {
+		mappingBlockChallengeSettingsBlockActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBlockChallengeSettingsBlockActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -71,17 +71,17 @@ func (m RecommendationDetails) String() string {
 // Not recommended for calling this function directly
 func (m RecommendationDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRecommendationTypeEnum[string(m.RecommendationType)]; !ok && m.RecommendationType != "" {
+	if _, ok := GetMappingRecommendationTypeEnum(string(m.RecommendationType)); !ok && m.RecommendationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RecommendationType: %s. Supported values are: %s.", m.RecommendationType, strings.Join(GetRecommendationTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingRecommendationStatusEnum[string(m.RecommendationStatus)]; !ok && m.RecommendationStatus != "" {
+	if _, ok := GetMappingRecommendationStatusEnum(string(m.RecommendationStatus)); !ok && m.RecommendationStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RecommendationStatus: %s. Supported values are: %s.", m.RecommendationStatus, strings.Join(GetRecommendationStatusEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingRecommendationResourceTypeEnum[string(m.SourceObjectType)]; !ok && m.SourceObjectType != "" {
+	if _, ok := GetMappingRecommendationResourceTypeEnum(string(m.SourceObjectType)); !ok && m.SourceObjectType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SourceObjectType: %s. Supported values are: %s.", m.SourceObjectType, strings.Join(GetRecommendationResourceTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingRecommendationResourceTypeEnum[string(m.TargetObjectType)]; !ok && m.TargetObjectType != "" {
+	if _, ok := GetMappingRecommendationResourceTypeEnum(string(m.TargetObjectType)); !ok && m.TargetObjectType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TargetObjectType: %s. Supported values are: %s.", m.TargetObjectType, strings.Join(GetRecommendationResourceTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

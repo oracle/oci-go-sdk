@@ -13,7 +13,7 @@ package computeinstanceagent
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -70,10 +70,10 @@ func (m InstanceAgentCommandExecutionSummary) String() string {
 // Not recommended for calling this function directly
 func (m InstanceAgentCommandExecutionSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingInstanceAgentCommandExecutionSummaryDeliveryStateEnum[string(m.DeliveryState)]; !ok && m.DeliveryState != "" {
+	if _, ok := GetMappingInstanceAgentCommandExecutionSummaryDeliveryStateEnum(string(m.DeliveryState)); !ok && m.DeliveryState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DeliveryState: %s. Supported values are: %s.", m.DeliveryState, strings.Join(GetInstanceAgentCommandExecutionSummaryDeliveryStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingInstanceAgentCommandExecutionSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingInstanceAgentCommandExecutionSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetInstanceAgentCommandExecutionSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -171,6 +171,17 @@ func GetInstanceAgentCommandExecutionSummaryDeliveryStateEnumStringValues() []st
 	}
 }
 
+// GetMappingInstanceAgentCommandExecutionSummaryDeliveryStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstanceAgentCommandExecutionSummaryDeliveryStateEnum(val string) (InstanceAgentCommandExecutionSummaryDeliveryStateEnum, bool) {
+	mappingInstanceAgentCommandExecutionSummaryDeliveryStateEnumIgnoreCase := make(map[string]InstanceAgentCommandExecutionSummaryDeliveryStateEnum)
+	for k, v := range mappingInstanceAgentCommandExecutionSummaryDeliveryStateEnum {
+		mappingInstanceAgentCommandExecutionSummaryDeliveryStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstanceAgentCommandExecutionSummaryDeliveryStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // InstanceAgentCommandExecutionSummaryLifecycleStateEnum Enum with underlying type: string
 type InstanceAgentCommandExecutionSummaryLifecycleStateEnum string
 
@@ -212,4 +223,15 @@ func GetInstanceAgentCommandExecutionSummaryLifecycleStateEnumStringValues() []s
 		"TIMED_OUT",
 		"CANCELED",
 	}
+}
+
+// GetMappingInstanceAgentCommandExecutionSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstanceAgentCommandExecutionSummaryLifecycleStateEnum(val string) (InstanceAgentCommandExecutionSummaryLifecycleStateEnum, bool) {
+	mappingInstanceAgentCommandExecutionSummaryLifecycleStateEnumIgnoreCase := make(map[string]InstanceAgentCommandExecutionSummaryLifecycleStateEnum)
+	for k, v := range mappingInstanceAgentCommandExecutionSummaryLifecycleStateEnum {
+		mappingInstanceAgentCommandExecutionSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstanceAgentCommandExecutionSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

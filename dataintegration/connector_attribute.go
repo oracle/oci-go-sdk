@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -101,4 +101,15 @@ func GetConnectorAttributeModelTypeEnumStringValues() []string {
 	return []string{
 		"EXTERNAL_STORAGE",
 	}
+}
+
+// GetMappingConnectorAttributeModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConnectorAttributeModelTypeEnum(val string) (ConnectorAttributeModelTypeEnum, bool) {
+	mappingConnectorAttributeModelTypeEnumIgnoreCase := make(map[string]ConnectorAttributeModelTypeEnum)
+	for k, v := range mappingConnectorAttributeModelTypeEnum {
+		mappingConnectorAttributeModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConnectorAttributeModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

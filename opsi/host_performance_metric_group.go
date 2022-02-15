@@ -14,7 +14,7 @@ package opsi
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -128,4 +128,15 @@ func GetHostPerformanceMetricGroupMetricNameEnumStringValues() []string {
 		"HOST_MEMORY_USAGE",
 		"HOST_NETWORK_ACTIVITY_SUMMARY",
 	}
+}
+
+// GetMappingHostPerformanceMetricGroupMetricNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHostPerformanceMetricGroupMetricNameEnum(val string) (HostPerformanceMetricGroupMetricNameEnum, bool) {
+	mappingHostPerformanceMetricGroupMetricNameEnumIgnoreCase := make(map[string]HostPerformanceMetricGroupMetricNameEnum)
+	for k, v := range mappingHostPerformanceMetricGroupMetricNameEnum {
+		mappingHostPerformanceMetricGroupMetricNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHostPerformanceMetricGroupMetricNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

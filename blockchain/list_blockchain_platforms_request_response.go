@@ -6,7 +6,7 @@ package blockchain
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -80,13 +80,13 @@ func (request ListBlockchainPlatformsRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListBlockchainPlatformsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListBlockchainPlatformsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListBlockchainPlatformsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListBlockchainPlatformsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBlockchainPlatformsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListBlockchainPlatformsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListBlockchainPlatformsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBlockchainPlatformLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingBlockchainPlatformLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetBlockchainPlatformLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -154,6 +154,17 @@ func GetListBlockchainPlatformsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListBlockchainPlatformsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBlockchainPlatformsSortOrderEnum(val string) (ListBlockchainPlatformsSortOrderEnum, bool) {
+	mappingListBlockchainPlatformsSortOrderEnumIgnoreCase := make(map[string]ListBlockchainPlatformsSortOrderEnum)
+	for k, v := range mappingListBlockchainPlatformsSortOrderEnum {
+		mappingListBlockchainPlatformsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBlockchainPlatformsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListBlockchainPlatformsSortByEnum Enum with underlying type: string
 type ListBlockchainPlatformsSortByEnum string
 
@@ -183,4 +194,15 @@ func GetListBlockchainPlatformsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListBlockchainPlatformsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBlockchainPlatformsSortByEnum(val string) (ListBlockchainPlatformsSortByEnum, bool) {
+	mappingListBlockchainPlatformsSortByEnumIgnoreCase := make(map[string]ListBlockchainPlatformsSortByEnum)
+	for k, v := range mappingListBlockchainPlatformsSortByEnum {
+		mappingListBlockchainPlatformsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBlockchainPlatformsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

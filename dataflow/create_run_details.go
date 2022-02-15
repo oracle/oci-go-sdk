@@ -11,7 +11,7 @@ package dataflow
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -138,7 +138,7 @@ func (m CreateRunDetails) String() string {
 func (m CreateRunDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingApplicationTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingApplicationTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetApplicationTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

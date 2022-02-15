@@ -15,7 +15,7 @@ package autoscaling
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -38,7 +38,7 @@ func (m Threshold) String() string {
 // Not recommended for calling this function directly
 func (m Threshold) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingThresholdOperatorEnum[string(m.Operator)]; !ok && m.Operator != "" {
+	if _, ok := GetMappingThresholdOperatorEnum(string(m.Operator)); !ok && m.Operator != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Operator: %s. Supported values are: %s.", m.Operator, strings.Join(GetThresholdOperatorEnumStringValues(), ",")))
 	}
 
@@ -83,4 +83,15 @@ func GetThresholdOperatorEnumStringValues() []string {
 		"LT",
 		"LTE",
 	}
+}
+
+// GetMappingThresholdOperatorEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingThresholdOperatorEnum(val string) (ThresholdOperatorEnum, bool) {
+	mappingThresholdOperatorEnumIgnoreCase := make(map[string]ThresholdOperatorEnum)
+	for k, v := range mappingThresholdOperatorEnum {
+		mappingThresholdOperatorEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingThresholdOperatorEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -122,15 +122,15 @@ func (request ListHostConfigurationsRequest) RetryPolicy() *common.RetryPolicy {
 func (request ListHostConfigurationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.PlatformType {
-		if _, ok := mappingListHostConfigurationsPlatformTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListHostConfigurationsPlatformTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", val, strings.Join(GetListHostConfigurationsPlatformTypeEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListHostConfigurationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListHostConfigurationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListHostConfigurationsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListHostConfigurationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListHostConfigurationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListHostConfigurationsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -204,6 +204,17 @@ func GetListHostConfigurationsPlatformTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListHostConfigurationsPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHostConfigurationsPlatformTypeEnum(val string) (ListHostConfigurationsPlatformTypeEnum, bool) {
+	mappingListHostConfigurationsPlatformTypeEnumIgnoreCase := make(map[string]ListHostConfigurationsPlatformTypeEnum)
+	for k, v := range mappingListHostConfigurationsPlatformTypeEnum {
+		mappingListHostConfigurationsPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHostConfigurationsPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListHostConfigurationsSortOrderEnum Enum with underlying type: string
 type ListHostConfigurationsSortOrderEnum string
 
@@ -235,6 +246,17 @@ func GetListHostConfigurationsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListHostConfigurationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHostConfigurationsSortOrderEnum(val string) (ListHostConfigurationsSortOrderEnum, bool) {
+	mappingListHostConfigurationsSortOrderEnumIgnoreCase := make(map[string]ListHostConfigurationsSortOrderEnum)
+	for k, v := range mappingListHostConfigurationsSortOrderEnum {
+		mappingListHostConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHostConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListHostConfigurationsSortByEnum Enum with underlying type: string
 type ListHostConfigurationsSortByEnum string
 
@@ -264,4 +286,15 @@ func GetListHostConfigurationsSortByEnumStringValues() []string {
 		"hostName",
 		"platformType",
 	}
+}
+
+// GetMappingListHostConfigurationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHostConfigurationsSortByEnum(val string) (ListHostConfigurationsSortByEnum, bool) {
+	mappingListHostConfigurationsSortByEnumIgnoreCase := make(map[string]ListHostConfigurationsSortByEnum)
+	for k, v := range mappingListHostConfigurationsSortByEnum {
+		mappingListHostConfigurationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHostConfigurationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

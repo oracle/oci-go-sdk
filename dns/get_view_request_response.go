@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -77,7 +77,7 @@ func (request GetViewRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetViewRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetViewScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingGetViewScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetGetViewScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -149,4 +149,15 @@ func GetGetViewScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingGetViewScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetViewScopeEnum(val string) (GetViewScopeEnum, bool) {
+	mappingGetViewScopeEnumIgnoreCase := make(map[string]GetViewScopeEnum)
+	for k, v := range mappingGetViewScopeEnum {
+		mappingGetViewScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetViewScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

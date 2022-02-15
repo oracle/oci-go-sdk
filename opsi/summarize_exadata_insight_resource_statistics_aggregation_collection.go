@@ -14,7 +14,7 @@ package opsi
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -49,10 +49,10 @@ func (m SummarizeExadataInsightResourceStatisticsAggregationCollection) String()
 // Not recommended for calling this function directly
 func (m SummarizeExadataInsightResourceStatisticsAggregationCollection) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUsageUnitEnum[string(m.UsageUnit)]; !ok && m.UsageUnit != "" {
+	if _, ok := GetMappingUsageUnitEnum(string(m.UsageUnit)); !ok && m.UsageUnit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UsageUnit: %s. Supported values are: %s.", m.UsageUnit, strings.Join(GetUsageUnitEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnum[string(m.ExadataResourceMetric)]; !ok && m.ExadataResourceMetric != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnum(string(m.ExadataResourceMetric)); !ok && m.ExadataResourceMetric != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExadataResourceMetric: %s. Supported values are: %s.", m.ExadataResourceMetric, strings.Join(GetSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnumStringValues(), ",")))
 	}
 
@@ -145,4 +145,15 @@ func GetSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataRes
 		"IOPS",
 		"THROUGHPUT",
 	}
+}
+
+// GetMappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnum(val string) (SummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnum, bool) {
+	mappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnum {
+		mappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

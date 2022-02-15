@@ -9,6 +9,10 @@
 
 package analytics
 
+import (
+	"strings"
+)
+
 // AnalyticsInstanceLifecycleStateEnum Enum with underlying type: string
 type AnalyticsInstanceLifecycleStateEnum string
 
@@ -53,4 +57,15 @@ func GetAnalyticsInstanceLifecycleStateEnumStringValues() []string {
 		"INACTIVE",
 		"UPDATING",
 	}
+}
+
+// GetMappingAnalyticsInstanceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAnalyticsInstanceLifecycleStateEnum(val string) (AnalyticsInstanceLifecycleStateEnum, bool) {
+	mappingAnalyticsInstanceLifecycleStateEnumIgnoreCase := make(map[string]AnalyticsInstanceLifecycleStateEnum)
+	for k, v := range mappingAnalyticsInstanceLifecycleStateEnum {
+		mappingAnalyticsInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAnalyticsInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

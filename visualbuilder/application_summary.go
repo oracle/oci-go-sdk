@@ -12,7 +12,7 @@ package visualbuilder
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -41,7 +41,7 @@ func (m ApplicationSummary) String() string {
 // Not recommended for calling this function directly
 func (m ApplicationSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingApplicationSummaryStateEnum[string(m.State)]; !ok && m.State != "" {
+	if _, ok := GetMappingApplicationSummaryStateEnum(string(m.State)); !ok && m.State != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for State: %s. Supported values are: %s.", m.State, strings.Join(GetApplicationSummaryStateEnumStringValues(), ",")))
 	}
 
@@ -80,4 +80,15 @@ func GetApplicationSummaryStateEnumStringValues() []string {
 		"STAGE",
 		"LIVE",
 	}
+}
+
+// GetMappingApplicationSummaryStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingApplicationSummaryStateEnum(val string) (ApplicationSummaryStateEnum, bool) {
+	mappingApplicationSummaryStateEnumIgnoreCase := make(map[string]ApplicationSummaryStateEnum)
+	for k, v := range mappingApplicationSummaryStateEnum {
+		mappingApplicationSummaryStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingApplicationSummaryStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

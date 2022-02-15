@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -53,23 +53,23 @@ func (m DatabaseConnectionStringProfile) String() string {
 // Not recommended for calling this function directly
 func (m DatabaseConnectionStringProfile) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDatabaseConnectionStringProfileProtocolEnum[string(m.Protocol)]; !ok && m.Protocol != "" {
+	if _, ok := GetMappingDatabaseConnectionStringProfileProtocolEnum(string(m.Protocol)); !ok && m.Protocol != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Protocol: %s. Supported values are: %s.", m.Protocol, strings.Join(GetDatabaseConnectionStringProfileProtocolEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatabaseConnectionStringProfileHostFormatEnum[string(m.HostFormat)]; !ok && m.HostFormat != "" {
+	if _, ok := GetMappingDatabaseConnectionStringProfileHostFormatEnum(string(m.HostFormat)); !ok && m.HostFormat != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for HostFormat: %s. Supported values are: %s.", m.HostFormat, strings.Join(GetDatabaseConnectionStringProfileHostFormatEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatabaseConnectionStringProfileSessionModeEnum[string(m.SessionMode)]; !ok && m.SessionMode != "" {
+	if _, ok := GetMappingDatabaseConnectionStringProfileSessionModeEnum(string(m.SessionMode)); !ok && m.SessionMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SessionMode: %s. Supported values are: %s.", m.SessionMode, strings.Join(GetDatabaseConnectionStringProfileSessionModeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatabaseConnectionStringProfileSyntaxFormatEnum[string(m.SyntaxFormat)]; !ok && m.SyntaxFormat != "" {
+	if _, ok := GetMappingDatabaseConnectionStringProfileSyntaxFormatEnum(string(m.SyntaxFormat)); !ok && m.SyntaxFormat != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SyntaxFormat: %s. Supported values are: %s.", m.SyntaxFormat, strings.Join(GetDatabaseConnectionStringProfileSyntaxFormatEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDatabaseConnectionStringProfileConsumerGroupEnum[string(m.ConsumerGroup)]; !ok && m.ConsumerGroup != "" {
+	if _, ok := GetMappingDatabaseConnectionStringProfileConsumerGroupEnum(string(m.ConsumerGroup)); !ok && m.ConsumerGroup != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ConsumerGroup: %s. Supported values are: %s.", m.ConsumerGroup, strings.Join(GetDatabaseConnectionStringProfileConsumerGroupEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatabaseConnectionStringProfileTlsAuthenticationEnum[string(m.TlsAuthentication)]; !ok && m.TlsAuthentication != "" {
+	if _, ok := GetMappingDatabaseConnectionStringProfileTlsAuthenticationEnum(string(m.TlsAuthentication)); !ok && m.TlsAuthentication != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TlsAuthentication: %s. Supported values are: %s.", m.TlsAuthentication, strings.Join(GetDatabaseConnectionStringProfileTlsAuthenticationEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -118,6 +118,17 @@ func GetDatabaseConnectionStringProfileConsumerGroupEnumStringValues() []string 
 	}
 }
 
+// GetMappingDatabaseConnectionStringProfileConsumerGroupEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseConnectionStringProfileConsumerGroupEnum(val string) (DatabaseConnectionStringProfileConsumerGroupEnum, bool) {
+	mappingDatabaseConnectionStringProfileConsumerGroupEnumIgnoreCase := make(map[string]DatabaseConnectionStringProfileConsumerGroupEnum)
+	for k, v := range mappingDatabaseConnectionStringProfileConsumerGroupEnum {
+		mappingDatabaseConnectionStringProfileConsumerGroupEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseConnectionStringProfileConsumerGroupEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DatabaseConnectionStringProfileProtocolEnum Enum with underlying type: string
 type DatabaseConnectionStringProfileProtocolEnum string
 
@@ -147,6 +158,17 @@ func GetDatabaseConnectionStringProfileProtocolEnumStringValues() []string {
 		"TCP",
 		"TCPS",
 	}
+}
+
+// GetMappingDatabaseConnectionStringProfileProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseConnectionStringProfileProtocolEnum(val string) (DatabaseConnectionStringProfileProtocolEnum, bool) {
+	mappingDatabaseConnectionStringProfileProtocolEnumIgnoreCase := make(map[string]DatabaseConnectionStringProfileProtocolEnum)
+	for k, v := range mappingDatabaseConnectionStringProfileProtocolEnum {
+		mappingDatabaseConnectionStringProfileProtocolEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseConnectionStringProfileProtocolEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // DatabaseConnectionStringProfileTlsAuthenticationEnum Enum with underlying type: string
@@ -180,6 +202,17 @@ func GetDatabaseConnectionStringProfileTlsAuthenticationEnumStringValues() []str
 	}
 }
 
+// GetMappingDatabaseConnectionStringProfileTlsAuthenticationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseConnectionStringProfileTlsAuthenticationEnum(val string) (DatabaseConnectionStringProfileTlsAuthenticationEnum, bool) {
+	mappingDatabaseConnectionStringProfileTlsAuthenticationEnumIgnoreCase := make(map[string]DatabaseConnectionStringProfileTlsAuthenticationEnum)
+	for k, v := range mappingDatabaseConnectionStringProfileTlsAuthenticationEnum {
+		mappingDatabaseConnectionStringProfileTlsAuthenticationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseConnectionStringProfileTlsAuthenticationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DatabaseConnectionStringProfileHostFormatEnum Enum with underlying type: string
 type DatabaseConnectionStringProfileHostFormatEnum string
 
@@ -211,6 +244,17 @@ func GetDatabaseConnectionStringProfileHostFormatEnumStringValues() []string {
 	}
 }
 
+// GetMappingDatabaseConnectionStringProfileHostFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseConnectionStringProfileHostFormatEnum(val string) (DatabaseConnectionStringProfileHostFormatEnum, bool) {
+	mappingDatabaseConnectionStringProfileHostFormatEnumIgnoreCase := make(map[string]DatabaseConnectionStringProfileHostFormatEnum)
+	for k, v := range mappingDatabaseConnectionStringProfileHostFormatEnum {
+		mappingDatabaseConnectionStringProfileHostFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseConnectionStringProfileHostFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DatabaseConnectionStringProfileSessionModeEnum Enum with underlying type: string
 type DatabaseConnectionStringProfileSessionModeEnum string
 
@@ -240,6 +284,17 @@ func GetDatabaseConnectionStringProfileSessionModeEnumStringValues() []string {
 		"DIRECT",
 		"REDIRECT",
 	}
+}
+
+// GetMappingDatabaseConnectionStringProfileSessionModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseConnectionStringProfileSessionModeEnum(val string) (DatabaseConnectionStringProfileSessionModeEnum, bool) {
+	mappingDatabaseConnectionStringProfileSessionModeEnumIgnoreCase := make(map[string]DatabaseConnectionStringProfileSessionModeEnum)
+	for k, v := range mappingDatabaseConnectionStringProfileSessionModeEnum {
+		mappingDatabaseConnectionStringProfileSessionModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseConnectionStringProfileSessionModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // DatabaseConnectionStringProfileSyntaxFormatEnum Enum with underlying type: string
@@ -274,4 +329,15 @@ func GetDatabaseConnectionStringProfileSyntaxFormatEnumStringValues() []string {
 		"EZCONNECT",
 		"EZCONNECTPLUS",
 	}
+}
+
+// GetMappingDatabaseConnectionStringProfileSyntaxFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseConnectionStringProfileSyntaxFormatEnum(val string) (DatabaseConnectionStringProfileSyntaxFormatEnum, bool) {
+	mappingDatabaseConnectionStringProfileSyntaxFormatEnumIgnoreCase := make(map[string]DatabaseConnectionStringProfileSyntaxFormatEnum)
+	for k, v := range mappingDatabaseConnectionStringProfileSyntaxFormatEnum {
+		mappingDatabaseConnectionStringProfileSyntaxFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseConnectionStringProfileSyntaxFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

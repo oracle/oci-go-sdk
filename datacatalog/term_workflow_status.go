@@ -10,6 +10,10 @@
 
 package datacatalog
 
+import (
+	"strings"
+)
+
 // TermWorkflowStatusEnum Enum with underlying type: string
 type TermWorkflowStatusEnum string
 
@@ -45,4 +49,15 @@ func GetTermWorkflowStatusEnumStringValues() []string {
 		"UNDER_REVIEW",
 		"ESCALATED",
 	}
+}
+
+// GetMappingTermWorkflowStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTermWorkflowStatusEnum(val string) (TermWorkflowStatusEnum, bool) {
+	mappingTermWorkflowStatusEnumIgnoreCase := make(map[string]TermWorkflowStatusEnum)
+	for k, v := range mappingTermWorkflowStatusEnum {
+		mappingTermWorkflowStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTermWorkflowStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

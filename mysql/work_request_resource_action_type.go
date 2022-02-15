@@ -9,6 +9,10 @@
 
 package mysql
 
+import (
+	"strings"
+)
+
 // WorkRequestResourceActionTypeEnum Enum with underlying type: string
 type WorkRequestResourceActionTypeEnum string
 
@@ -47,4 +51,15 @@ func GetWorkRequestResourceActionTypeEnumStringValues() []string {
 		"IN_PROGRESS",
 		"RELATED",
 	}
+}
+
+// GetMappingWorkRequestResourceActionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestResourceActionTypeEnum(val string) (WorkRequestResourceActionTypeEnum, bool) {
+	mappingWorkRequestResourceActionTypeEnumIgnoreCase := make(map[string]WorkRequestResourceActionTypeEnum)
+	for k, v := range mappingWorkRequestResourceActionTypeEnum {
+		mappingWorkRequestResourceActionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestResourceActionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

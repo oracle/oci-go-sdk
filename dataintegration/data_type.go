@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -84,7 +84,7 @@ func (m DataType) String() string {
 // Not recommended for calling this function directly
 func (m DataType) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDataTypeDtTypeEnum[string(m.DtType)]; !ok && m.DtType != "" {
+	if _, ok := GetMappingDataTypeDtTypeEnum(string(m.DtType)); !ok && m.DtType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DtType: %s. Supported values are: %s.", m.DtType, strings.Join(GetDataTypeDtTypeEnumStringValues(), ",")))
 	}
 
@@ -137,4 +137,15 @@ func GetDataTypeDtTypeEnumStringValues() []string {
 		"PRIMITIVE",
 		"STRUCTURED",
 	}
+}
+
+// GetMappingDataTypeDtTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataTypeDtTypeEnum(val string) (DataTypeDtTypeEnum, bool) {
+	mappingDataTypeDtTypeEnumIgnoreCase := make(map[string]DataTypeDtTypeEnum)
+	for k, v := range mappingDataTypeDtTypeEnum {
+		mappingDataTypeDtTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataTypeDtTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

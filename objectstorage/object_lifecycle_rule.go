@@ -13,7 +13,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -68,7 +68,7 @@ func (m ObjectLifecycleRule) String() string {
 // Not recommended for calling this function directly
 func (m ObjectLifecycleRule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingObjectLifecycleRuleTimeUnitEnum[string(m.TimeUnit)]; !ok && m.TimeUnit != "" {
+	if _, ok := GetMappingObjectLifecycleRuleTimeUnitEnum(string(m.TimeUnit)); !ok && m.TimeUnit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TimeUnit: %s. Supported values are: %s.", m.TimeUnit, strings.Join(GetObjectLifecycleRuleTimeUnitEnumStringValues(), ",")))
 	}
 
@@ -107,4 +107,15 @@ func GetObjectLifecycleRuleTimeUnitEnumStringValues() []string {
 		"DAYS",
 		"YEARS",
 	}
+}
+
+// GetMappingObjectLifecycleRuleTimeUnitEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingObjectLifecycleRuleTimeUnitEnum(val string) (ObjectLifecycleRuleTimeUnitEnum, bool) {
+	mappingObjectLifecycleRuleTimeUnitEnumIgnoreCase := make(map[string]ObjectLifecycleRuleTimeUnitEnum)
+	for k, v := range mappingObjectLifecycleRuleTimeUnitEnum {
+		mappingObjectLifecycleRuleTimeUnitEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingObjectLifecycleRuleTimeUnitEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

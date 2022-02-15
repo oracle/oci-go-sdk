@@ -13,7 +13,7 @@ package optimizer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -33,7 +33,7 @@ func (m UpdateEnrollmentStatusDetails) String() string {
 // Not recommended for calling this function directly
 func (m UpdateEnrollmentStatusDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingOptimizerEnrollmentStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingOptimizerEnrollmentStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetOptimizerEnrollmentStatusEnumStringValues(), ",")))
 	}
 

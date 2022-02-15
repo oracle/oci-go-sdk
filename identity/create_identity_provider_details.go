@@ -12,7 +12,7 @@ package identity
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -138,7 +138,7 @@ func (m createidentityproviderdetails) String() string {
 // Not recommended for calling this function directly
 func (m createidentityproviderdetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreateIdentityProviderDetailsProductTypeEnum[string(m.ProductType)]; !ok && m.ProductType != "" {
+	if _, ok := GetMappingCreateIdentityProviderDetailsProductTypeEnum(string(m.ProductType)); !ok && m.ProductType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProductType: %s. Supported values are: %s.", m.ProductType, strings.Join(GetCreateIdentityProviderDetailsProductTypeEnumStringValues(), ",")))
 	}
 
@@ -179,6 +179,17 @@ func GetCreateIdentityProviderDetailsProductTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingCreateIdentityProviderDetailsProductTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateIdentityProviderDetailsProductTypeEnum(val string) (CreateIdentityProviderDetailsProductTypeEnum, bool) {
+	mappingCreateIdentityProviderDetailsProductTypeEnumIgnoreCase := make(map[string]CreateIdentityProviderDetailsProductTypeEnum)
+	for k, v := range mappingCreateIdentityProviderDetailsProductTypeEnum {
+		mappingCreateIdentityProviderDetailsProductTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateIdentityProviderDetailsProductTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CreateIdentityProviderDetailsProtocolEnum Enum with underlying type: string
 type CreateIdentityProviderDetailsProtocolEnum string
 
@@ -208,4 +219,15 @@ func GetCreateIdentityProviderDetailsProtocolEnumStringValues() []string {
 		"SAML2",
 		"ADFS",
 	}
+}
+
+// GetMappingCreateIdentityProviderDetailsProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateIdentityProviderDetailsProtocolEnum(val string) (CreateIdentityProviderDetailsProtocolEnum, bool) {
+	mappingCreateIdentityProviderDetailsProtocolEnumIgnoreCase := make(map[string]CreateIdentityProviderDetailsProtocolEnum)
+	for k, v := range mappingCreateIdentityProviderDetailsProtocolEnum {
+		mappingCreateIdentityProviderDetailsProtocolEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateIdentityProviderDetailsProtocolEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

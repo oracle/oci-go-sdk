@@ -11,7 +11,7 @@ package cims
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -55,14 +55,14 @@ func (m Ticket) String() string {
 // Not recommended for calling this function directly
 func (m Ticket) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTicketSeverityEnum[string(m.Severity)]; !ok && m.Severity != "" {
+	if _, ok := GetMappingTicketSeverityEnum(string(m.Severity)); !ok && m.Severity != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Severity: %s. Supported values are: %s.", m.Severity, strings.Join(GetTicketSeverityEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLifecycleDetailsEnum[string(m.LifecycleDetails)]; !ok && m.LifecycleDetails != "" {
+	if _, ok := GetMappingLifecycleDetailsEnum(string(m.LifecycleDetails)); !ok && m.LifecycleDetails != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleDetails: %s. Supported values are: %s.", m.LifecycleDetails, strings.Join(GetLifecycleDetailsEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -103,4 +103,15 @@ func GetTicketSeverityEnumStringValues() []string {
 		"HIGH",
 		"MEDIUM",
 	}
+}
+
+// GetMappingTicketSeverityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTicketSeverityEnum(val string) (TicketSeverityEnum, bool) {
+	mappingTicketSeverityEnumIgnoreCase := make(map[string]TicketSeverityEnum)
+	for k, v := range mappingTicketSeverityEnum {
+		mappingTicketSeverityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTicketSeverityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

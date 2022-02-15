@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -142,7 +142,7 @@ func (request SummarizeDatabaseInsightResourceUtilizationInsightRequest) RetryPo
 func (request SummarizeDatabaseInsightResourceUtilizationInsightRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.DatabaseType {
-		if _, ok := mappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseType: %s. Supported values are: %s.", val, strings.Join(GetSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnumStringValues(), ",")))
 		}
 	}
@@ -222,4 +222,15 @@ func GetSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnumString
 		"EXTERNAL-PDB",
 		"EXTERNAL-NONCDB",
 	}
+}
+
+// GetMappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum(val string) (SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum, bool) {
+	mappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum)
+	for k, v := range mappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum {
+		mappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

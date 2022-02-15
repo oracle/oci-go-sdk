@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -50,7 +50,7 @@ func (m ProtectionRule) String() string {
 func (m ProtectionRule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingProtectionRuleActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingProtectionRuleActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetProtectionRuleActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -91,4 +91,15 @@ func GetProtectionRuleActionEnumStringValues() []string {
 		"DETECT",
 		"BLOCK",
 	}
+}
+
+// GetMappingProtectionRuleActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingProtectionRuleActionEnum(val string) (ProtectionRuleActionEnum, bool) {
+	mappingProtectionRuleActionEnumIgnoreCase := make(map[string]ProtectionRuleActionEnum)
+	for k, v := range mappingProtectionRuleActionEnum {
+		mappingProtectionRuleActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingProtectionRuleActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package analytics
 
+import (
+	"strings"
+)
+
 // WorkRequestSortByEnum Enum with underlying type: string
 type WorkRequestSortByEnum string
 
@@ -50,4 +54,15 @@ func GetWorkRequestSortByEnumStringValues() []string {
 		"timeStarted",
 		"timeFinished",
 	}
+}
+
+// GetMappingWorkRequestSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestSortByEnum(val string) (WorkRequestSortByEnum, bool) {
+	mappingWorkRequestSortByEnumIgnoreCase := make(map[string]WorkRequestSortByEnum)
+	for k, v := range mappingWorkRequestSortByEnum {
+		mappingWorkRequestSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -83,7 +83,7 @@ func (m UpdateBuildStageDetails) String() string {
 func (m UpdateBuildStageDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBuildStageImageEnum[string(m.Image)]; !ok && m.Image != "" {
+	if _, ok := GetMappingBuildStageImageEnum(string(m.Image)); !ok && m.Image != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Image: %s. Supported values are: %s.", m.Image, strings.Join(GetBuildStageImageEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

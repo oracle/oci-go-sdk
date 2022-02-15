@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -78,7 +78,7 @@ func (m OperationsInsightsWarehouseUser) String() string {
 // Not recommended for calling this function directly
 func (m OperationsInsightsWarehouseUser) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingOperationsInsightsWarehouseUserLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingOperationsInsightsWarehouseUserLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetOperationsInsightsWarehouseUserLifecycleStateEnumStringValues(), ",")))
 	}
 

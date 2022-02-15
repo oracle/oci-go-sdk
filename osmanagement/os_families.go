@@ -10,6 +10,10 @@
 
 package osmanagement
 
+import (
+	"strings"
+)
+
 // OsFamiliesEnum Enum with underlying type: string
 type OsFamiliesEnum string
 
@@ -42,4 +46,15 @@ func GetOsFamiliesEnumStringValues() []string {
 		"WINDOWS",
 		"ALL",
 	}
+}
+
+// GetMappingOsFamiliesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOsFamiliesEnum(val string) (OsFamiliesEnum, bool) {
+	mappingOsFamiliesEnumIgnoreCase := make(map[string]OsFamiliesEnum)
+	for k, v := range mappingOsFamiliesEnum {
+		mappingOsFamiliesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOsFamiliesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

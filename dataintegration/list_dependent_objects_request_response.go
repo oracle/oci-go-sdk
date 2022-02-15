@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -99,10 +99,10 @@ func (request ListDependentObjectsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDependentObjectsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDependentObjectsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDependentObjectsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDependentObjectsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDependentObjectsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDependentObjectsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDependentObjectsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -174,6 +174,17 @@ func GetListDependentObjectsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDependentObjectsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDependentObjectsSortOrderEnum(val string) (ListDependentObjectsSortOrderEnum, bool) {
+	mappingListDependentObjectsSortOrderEnumIgnoreCase := make(map[string]ListDependentObjectsSortOrderEnum)
+	for k, v := range mappingListDependentObjectsSortOrderEnum {
+		mappingListDependentObjectsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDependentObjectsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDependentObjectsSortByEnum Enum with underlying type: string
 type ListDependentObjectsSortByEnum string
 
@@ -203,4 +214,15 @@ func GetListDependentObjectsSortByEnumStringValues() []string {
 		"TIME_CREATED",
 		"DISPLAY_NAME",
 	}
+}
+
+// GetMappingListDependentObjectsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDependentObjectsSortByEnum(val string) (ListDependentObjectsSortByEnum, bool) {
+	mappingListDependentObjectsSortByEnumIgnoreCase := make(map[string]ListDependentObjectsSortByEnum)
+	for k, v := range mappingListDependentObjectsSortByEnum {
+		mappingListDependentObjectsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDependentObjectsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

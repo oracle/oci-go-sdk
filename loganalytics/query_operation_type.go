@@ -9,6 +9,10 @@
 
 package loganalytics
 
+import (
+	"strings"
+)
+
 // QueryOperationTypeEnum Enum with underlying type: string
 type QueryOperationTypeEnum string
 
@@ -38,4 +42,15 @@ func GetQueryOperationTypeEnumStringValues() []string {
 		"EXECUTE_QUERY_JOB",
 		"EXECUTE_PURGE_JOB",
 	}
+}
+
+// GetMappingQueryOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingQueryOperationTypeEnum(val string) (QueryOperationTypeEnum, bool) {
+	mappingQueryOperationTypeEnumIgnoreCase := make(map[string]QueryOperationTypeEnum)
+	for k, v := range mappingQueryOperationTypeEnum {
+		mappingQueryOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingQueryOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

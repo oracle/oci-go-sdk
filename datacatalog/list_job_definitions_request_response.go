@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -116,25 +116,25 @@ func (request ListJobDefinitionsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListJobDefinitionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListJobDefinitionsJobExecutionStateEnum[string(request.JobExecutionState)]; !ok && request.JobExecutionState != "" {
+	if _, ok := GetMappingListJobDefinitionsJobExecutionStateEnum(string(request.JobExecutionState)); !ok && request.JobExecutionState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for JobExecutionState: %s. Supported values are: %s.", request.JobExecutionState, strings.Join(GetListJobDefinitionsJobExecutionStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListJobDefinitionsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListJobDefinitionsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListJobDefinitionsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListJobDefinitionsJobTypeEnum[string(request.JobType)]; !ok && request.JobType != "" {
+	if _, ok := GetMappingListJobDefinitionsJobTypeEnum(string(request.JobType)); !ok && request.JobType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for JobType: %s. Supported values are: %s.", request.JobType, strings.Join(GetListJobDefinitionsJobTypeEnumStringValues(), ",")))
 	}
 	for _, val := range request.Fields {
-		if _, ok := mappingListJobDefinitionsFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListJobDefinitionsFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetListJobDefinitionsFieldsEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListJobDefinitionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListJobDefinitionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListJobDefinitionsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListJobDefinitionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListJobDefinitionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListJobDefinitionsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -215,6 +215,17 @@ func GetListJobDefinitionsJobExecutionStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListJobDefinitionsJobExecutionStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobDefinitionsJobExecutionStateEnum(val string) (ListJobDefinitionsJobExecutionStateEnum, bool) {
+	mappingListJobDefinitionsJobExecutionStateEnumIgnoreCase := make(map[string]ListJobDefinitionsJobExecutionStateEnum)
+	for k, v := range mappingListJobDefinitionsJobExecutionStateEnum {
+		mappingListJobDefinitionsJobExecutionStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobDefinitionsJobExecutionStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListJobDefinitionsLifecycleStateEnum Enum with underlying type: string
 type ListJobDefinitionsLifecycleStateEnum string
 
@@ -262,6 +273,17 @@ func GetListJobDefinitionsLifecycleStateEnumStringValues() []string {
 		"FAILED",
 		"MOVING",
 	}
+}
+
+// GetMappingListJobDefinitionsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobDefinitionsLifecycleStateEnum(val string) (ListJobDefinitionsLifecycleStateEnum, bool) {
+	mappingListJobDefinitionsLifecycleStateEnumIgnoreCase := make(map[string]ListJobDefinitionsLifecycleStateEnum)
+	for k, v := range mappingListJobDefinitionsLifecycleStateEnum {
+		mappingListJobDefinitionsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobDefinitionsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListJobDefinitionsJobTypeEnum Enum with underlying type: string
@@ -340,6 +362,17 @@ func GetListJobDefinitionsJobTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListJobDefinitionsJobTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobDefinitionsJobTypeEnum(val string) (ListJobDefinitionsJobTypeEnum, bool) {
+	mappingListJobDefinitionsJobTypeEnumIgnoreCase := make(map[string]ListJobDefinitionsJobTypeEnum)
+	for k, v := range mappingListJobDefinitionsJobTypeEnum {
+		mappingListJobDefinitionsJobTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobDefinitionsJobTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListJobDefinitionsFieldsEnum Enum with underlying type: string
 type ListJobDefinitionsFieldsEnum string
 
@@ -407,6 +440,17 @@ func GetListJobDefinitionsFieldsEnumStringValues() []string {
 	}
 }
 
+// GetMappingListJobDefinitionsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobDefinitionsFieldsEnum(val string) (ListJobDefinitionsFieldsEnum, bool) {
+	mappingListJobDefinitionsFieldsEnumIgnoreCase := make(map[string]ListJobDefinitionsFieldsEnum)
+	for k, v := range mappingListJobDefinitionsFieldsEnum {
+		mappingListJobDefinitionsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobDefinitionsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListJobDefinitionsSortByEnum Enum with underlying type: string
 type ListJobDefinitionsSortByEnum string
 
@@ -441,6 +485,17 @@ func GetListJobDefinitionsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListJobDefinitionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobDefinitionsSortByEnum(val string) (ListJobDefinitionsSortByEnum, bool) {
+	mappingListJobDefinitionsSortByEnumIgnoreCase := make(map[string]ListJobDefinitionsSortByEnum)
+	for k, v := range mappingListJobDefinitionsSortByEnum {
+		mappingListJobDefinitionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobDefinitionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListJobDefinitionsSortOrderEnum Enum with underlying type: string
 type ListJobDefinitionsSortOrderEnum string
 
@@ -470,4 +525,15 @@ func GetListJobDefinitionsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListJobDefinitionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListJobDefinitionsSortOrderEnum(val string) (ListJobDefinitionsSortOrderEnum, bool) {
+	mappingListJobDefinitionsSortOrderEnumIgnoreCase := make(map[string]ListJobDefinitionsSortOrderEnum)
+	for k, v := range mappingListJobDefinitionsSortOrderEnum {
+		mappingListJobDefinitionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListJobDefinitionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -82,7 +82,7 @@ func (request UpdateTsigKeyRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request UpdateTsigKeyRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUpdateTsigKeyScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingUpdateTsigKeyScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetUpdateTsigKeyScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -152,4 +152,15 @@ func GetUpdateTsigKeyScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingUpdateTsigKeyScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateTsigKeyScopeEnum(val string) (UpdateTsigKeyScopeEnum, bool) {
+	mappingUpdateTsigKeyScopeEnumIgnoreCase := make(map[string]UpdateTsigKeyScopeEnum)
+	for k, v := range mappingUpdateTsigKeyScopeEnum {
+		mappingUpdateTsigKeyScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateTsigKeyScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package ospgateway
 
+import (
+	"strings"
+)
+
 // PaymentMethodEnum Enum with underlying type: string
 type PaymentMethodEnum string
 
@@ -38,4 +42,15 @@ func GetPaymentMethodEnumStringValues() []string {
 		"CREDIT_CARD",
 		"PAYPAL",
 	}
+}
+
+// GetMappingPaymentMethodEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPaymentMethodEnum(val string) (PaymentMethodEnum, bool) {
+	mappingPaymentMethodEnumIgnoreCase := make(map[string]PaymentMethodEnum)
+	for k, v := range mappingPaymentMethodEnum {
+		mappingPaymentMethodEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPaymentMethodEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

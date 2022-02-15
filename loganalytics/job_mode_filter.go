@@ -9,6 +9,10 @@
 
 package loganalytics
 
+import (
+	"strings"
+)
+
 // JobModeFilterEnum Enum with underlying type: string
 type JobModeFilterEnum string
 
@@ -41,4 +45,15 @@ func GetJobModeFilterEnumStringValues() []string {
 		"FOREGROUND",
 		"BACKGROUND",
 	}
+}
+
+// GetMappingJobModeFilterEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobModeFilterEnum(val string) (JobModeFilterEnum, bool) {
+	mappingJobModeFilterEnumIgnoreCase := make(map[string]JobModeFilterEnum)
+	for k, v := range mappingJobModeFilterEnum {
+		mappingJobModeFilterEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobModeFilterEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

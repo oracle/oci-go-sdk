@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -37,7 +37,7 @@ func (m ExecuteRestCallConfig) String() string {
 func (m ExecuteRestCallConfig) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingExecuteRestCallConfigMethodTypeEnum[string(m.MethodType)]; !ok && m.MethodType != "" {
+	if _, ok := GetMappingExecuteRestCallConfigMethodTypeEnum(string(m.MethodType)); !ok && m.MethodType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MethodType: %s. Supported values are: %s.", m.MethodType, strings.Join(GetExecuteRestCallConfigMethodTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -84,4 +84,15 @@ func GetExecuteRestCallConfigMethodTypeEnumStringValues() []string {
 		"DELETE",
 		"PUT",
 	}
+}
+
+// GetMappingExecuteRestCallConfigMethodTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExecuteRestCallConfigMethodTypeEnum(val string) (ExecuteRestCallConfigMethodTypeEnum, bool) {
+	mappingExecuteRestCallConfigMethodTypeEnumIgnoreCase := make(map[string]ExecuteRestCallConfigMethodTypeEnum)
+	for k, v := range mappingExecuteRestCallConfigMethodTypeEnum {
+		mappingExecuteRestCallConfigMethodTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExecuteRestCallConfigMethodTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

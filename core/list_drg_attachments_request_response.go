@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -107,16 +107,16 @@ func (request ListDrgAttachmentsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDrgAttachmentsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDrgAttachmentsAttachmentTypeEnum[string(request.AttachmentType)]; !ok && request.AttachmentType != "" {
+	if _, ok := GetMappingListDrgAttachmentsAttachmentTypeEnum(string(request.AttachmentType)); !ok && request.AttachmentType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AttachmentType: %s. Supported values are: %s.", request.AttachmentType, strings.Join(GetListDrgAttachmentsAttachmentTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDrgAttachmentsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDrgAttachmentsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDrgAttachmentsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDrgAttachmentsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDrgAttachmentsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDrgAttachmentsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDrgAttachmentLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingDrgAttachmentLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetDrgAttachmentLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -193,6 +193,17 @@ func GetListDrgAttachmentsAttachmentTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDrgAttachmentsAttachmentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDrgAttachmentsAttachmentTypeEnum(val string) (ListDrgAttachmentsAttachmentTypeEnum, bool) {
+	mappingListDrgAttachmentsAttachmentTypeEnumIgnoreCase := make(map[string]ListDrgAttachmentsAttachmentTypeEnum)
+	for k, v := range mappingListDrgAttachmentsAttachmentTypeEnum {
+		mappingListDrgAttachmentsAttachmentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDrgAttachmentsAttachmentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDrgAttachmentsSortByEnum Enum with underlying type: string
 type ListDrgAttachmentsSortByEnum string
 
@@ -224,6 +235,17 @@ func GetListDrgAttachmentsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDrgAttachmentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDrgAttachmentsSortByEnum(val string) (ListDrgAttachmentsSortByEnum, bool) {
+	mappingListDrgAttachmentsSortByEnumIgnoreCase := make(map[string]ListDrgAttachmentsSortByEnum)
+	for k, v := range mappingListDrgAttachmentsSortByEnum {
+		mappingListDrgAttachmentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDrgAttachmentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDrgAttachmentsSortOrderEnum Enum with underlying type: string
 type ListDrgAttachmentsSortOrderEnum string
 
@@ -253,4 +275,15 @@ func GetListDrgAttachmentsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListDrgAttachmentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDrgAttachmentsSortOrderEnum(val string) (ListDrgAttachmentsSortOrderEnum, bool) {
+	mappingListDrgAttachmentsSortOrderEnumIgnoreCase := make(map[string]ListDrgAttachmentsSortOrderEnum)
+	for k, v := range mappingListDrgAttachmentsSortOrderEnum {
+		mappingListDrgAttachmentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDrgAttachmentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

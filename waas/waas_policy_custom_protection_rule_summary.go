@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -44,7 +44,7 @@ func (m WaasPolicyCustomProtectionRuleSummary) String() string {
 func (m WaasPolicyCustomProtectionRuleSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingWaasPolicyCustomProtectionRuleSummaryActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingWaasPolicyCustomProtectionRuleSummaryActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetWaasPolicyCustomProtectionRuleSummaryActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -82,4 +82,15 @@ func GetWaasPolicyCustomProtectionRuleSummaryActionEnumStringValues() []string {
 		"DETECT",
 		"BLOCK",
 	}
+}
+
+// GetMappingWaasPolicyCustomProtectionRuleSummaryActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWaasPolicyCustomProtectionRuleSummaryActionEnum(val string) (WaasPolicyCustomProtectionRuleSummaryActionEnum, bool) {
+	mappingWaasPolicyCustomProtectionRuleSummaryActionEnumIgnoreCase := make(map[string]WaasPolicyCustomProtectionRuleSummaryActionEnum)
+	for k, v := range mappingWaasPolicyCustomProtectionRuleSummaryActionEnum {
+		mappingWaasPolicyCustomProtectionRuleSummaryActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWaasPolicyCustomProtectionRuleSummaryActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

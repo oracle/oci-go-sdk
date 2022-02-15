@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -69,7 +69,7 @@ func (m UpdateIpSecConnectionDetails) String() string {
 func (m UpdateIpSecConnectionDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum[string(m.CpeLocalIdentifierType)]; !ok && m.CpeLocalIdentifierType != "" {
+	if _, ok := GetMappingUpdateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum(string(m.CpeLocalIdentifierType)); !ok && m.CpeLocalIdentifierType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CpeLocalIdentifierType: %s. Supported values are: %s.", m.CpeLocalIdentifierType, strings.Join(GetUpdateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -107,4 +107,15 @@ func GetUpdateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumStringValues() []s
 		"IP_ADDRESS",
 		"HOSTNAME",
 	}
+}
+
+// GetMappingUpdateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum(val string) (UpdateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum, bool) {
+	mappingUpdateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumIgnoreCase := make(map[string]UpdateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum)
+	for k, v := range mappingUpdateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum {
+		mappingUpdateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package ospgateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -106,10 +106,10 @@ func (m InvoiceSummary) String() string {
 func (m InvoiceSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingInvoiceSummaryInvoiceStatusEnum[string(m.InvoiceStatus)]; !ok && m.InvoiceStatus != "" {
+	if _, ok := GetMappingInvoiceSummaryInvoiceStatusEnum(string(m.InvoiceStatus)); !ok && m.InvoiceStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InvoiceStatus: %s. Supported values are: %s.", m.InvoiceStatus, strings.Join(GetInvoiceSummaryInvoiceStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingInvoiceSummaryInvoiceTypeEnum[string(m.InvoiceType)]; !ok && m.InvoiceType != "" {
+	if _, ok := GetMappingInvoiceSummaryInvoiceTypeEnum(string(m.InvoiceType)); !ok && m.InvoiceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InvoiceType: %s. Supported values are: %s.", m.InvoiceType, strings.Join(GetInvoiceSummaryInvoiceTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -257,6 +257,17 @@ func GetInvoiceSummaryInvoiceStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingInvoiceSummaryInvoiceStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInvoiceSummaryInvoiceStatusEnum(val string) (InvoiceSummaryInvoiceStatusEnum, bool) {
+	mappingInvoiceSummaryInvoiceStatusEnumIgnoreCase := make(map[string]InvoiceSummaryInvoiceStatusEnum)
+	for k, v := range mappingInvoiceSummaryInvoiceStatusEnum {
+		mappingInvoiceSummaryInvoiceStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInvoiceSummaryInvoiceStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // InvoiceSummaryInvoiceTypeEnum Enum with underlying type: string
 type InvoiceSummaryInvoiceTypeEnum string
 
@@ -304,4 +315,15 @@ func GetInvoiceSummaryInvoiceTypeEnumStringValues() []string {
 		"SERVICE",
 		"USAGE",
 	}
+}
+
+// GetMappingInvoiceSummaryInvoiceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInvoiceSummaryInvoiceTypeEnum(val string) (InvoiceSummaryInvoiceTypeEnum, bool) {
+	mappingInvoiceSummaryInvoiceTypeEnumIgnoreCase := make(map[string]InvoiceSummaryInvoiceTypeEnum)
+	for k, v := range mappingInvoiceSummaryInvoiceTypeEnum {
+		mappingInvoiceSummaryInvoiceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInvoiceSummaryInvoiceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

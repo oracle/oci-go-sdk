@@ -11,7 +11,7 @@ package blockchain
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -33,7 +33,7 @@ func (m CreateOsnDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateOsnDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAvailabilityDomainAdsEnum[string(m.Ad)]; !ok && m.Ad != "" {
+	if _, ok := GetMappingAvailabilityDomainAdsEnum(string(m.Ad)); !ok && m.Ad != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Ad: %s. Supported values are: %s.", m.Ad, strings.Join(GetAvailabilityDomainAdsEnumStringValues(), ",")))
 	}
 

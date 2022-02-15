@@ -11,6 +11,10 @@
 
 package containerengine
 
+import (
+	"strings"
+)
+
 // ClusterLifecycleStateEnum Enum with underlying type: string
 type ClusterLifecycleStateEnum string
 
@@ -52,4 +56,15 @@ func GetClusterLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"UPDATING",
 	}
+}
+
+// GetMappingClusterLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingClusterLifecycleStateEnum(val string) (ClusterLifecycleStateEnum, bool) {
+	mappingClusterLifecycleStateEnumIgnoreCase := make(map[string]ClusterLifecycleStateEnum)
+	for k, v := range mappingClusterLifecycleStateEnum {
+		mappingClusterLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingClusterLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

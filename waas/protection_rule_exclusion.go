@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -47,7 +47,7 @@ func (m ProtectionRuleExclusion) String() string {
 func (m ProtectionRuleExclusion) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingProtectionRuleExclusionTargetEnum[string(m.Target)]; !ok && m.Target != "" {
+	if _, ok := GetMappingProtectionRuleExclusionTargetEnum(string(m.Target)); !ok && m.Target != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Target: %s. Supported values are: %s.", m.Target, strings.Join(GetProtectionRuleExclusionTargetEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -91,4 +91,15 @@ func GetProtectionRuleExclusionTargetEnumStringValues() []string {
 		"ARGS",
 		"ARGS_NAMES",
 	}
+}
+
+// GetMappingProtectionRuleExclusionTargetEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingProtectionRuleExclusionTargetEnum(val string) (ProtectionRuleExclusionTargetEnum, bool) {
+	mappingProtectionRuleExclusionTargetEnumIgnoreCase := make(map[string]ProtectionRuleExclusionTargetEnum)
+	for k, v := range mappingProtectionRuleExclusionTargetEnum {
+		mappingProtectionRuleExclusionTargetEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingProtectionRuleExclusionTargetEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

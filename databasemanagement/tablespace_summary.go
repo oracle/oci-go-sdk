@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -147,65 +147,65 @@ func (m TablespaceSummary) String() string {
 // Not recommended for calling this function directly
 func (m TablespaceSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTablespaceSummaryTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingTablespaceSummaryTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetTablespaceSummaryTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingTablespaceSummaryStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingTablespaceSummaryStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetTablespaceSummaryStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummaryLoggingEnum[string(m.Logging)]; !ok && m.Logging != "" {
+	if _, ok := GetMappingTablespaceSummaryLoggingEnum(string(m.Logging)); !ok && m.Logging != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Logging: %s. Supported values are: %s.", m.Logging, strings.Join(GetTablespaceSummaryLoggingEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummaryExtentManagementEnum[string(m.ExtentManagement)]; !ok && m.ExtentManagement != "" {
+	if _, ok := GetMappingTablespaceSummaryExtentManagementEnum(string(m.ExtentManagement)); !ok && m.ExtentManagement != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExtentManagement: %s. Supported values are: %s.", m.ExtentManagement, strings.Join(GetTablespaceSummaryExtentManagementEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummaryAllocationTypeEnum[string(m.AllocationType)]; !ok && m.AllocationType != "" {
+	if _, ok := GetMappingTablespaceSummaryAllocationTypeEnum(string(m.AllocationType)); !ok && m.AllocationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AllocationType: %s. Supported values are: %s.", m.AllocationType, strings.Join(GetTablespaceSummaryAllocationTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummarySegmentSpaceManagementEnum[string(m.SegmentSpaceManagement)]; !ok && m.SegmentSpaceManagement != "" {
+	if _, ok := GetMappingTablespaceSummarySegmentSpaceManagementEnum(string(m.SegmentSpaceManagement)); !ok && m.SegmentSpaceManagement != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SegmentSpaceManagement: %s. Supported values are: %s.", m.SegmentSpaceManagement, strings.Join(GetTablespaceSummarySegmentSpaceManagementEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummaryDefaultTableCompressionEnum[string(m.DefaultTableCompression)]; !ok && m.DefaultTableCompression != "" {
+	if _, ok := GetMappingTablespaceSummaryDefaultTableCompressionEnum(string(m.DefaultTableCompression)); !ok && m.DefaultTableCompression != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DefaultTableCompression: %s. Supported values are: %s.", m.DefaultTableCompression, strings.Join(GetTablespaceSummaryDefaultTableCompressionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummaryRetentionEnum[string(m.Retention)]; !ok && m.Retention != "" {
+	if _, ok := GetMappingTablespaceSummaryRetentionEnum(string(m.Retention)); !ok && m.Retention != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Retention: %s. Supported values are: %s.", m.Retention, strings.Join(GetTablespaceSummaryRetentionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummaryPredicateEvaluationEnum[string(m.PredicateEvaluation)]; !ok && m.PredicateEvaluation != "" {
+	if _, ok := GetMappingTablespaceSummaryPredicateEvaluationEnum(string(m.PredicateEvaluation)); !ok && m.PredicateEvaluation != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PredicateEvaluation: %s. Supported values are: %s.", m.PredicateEvaluation, strings.Join(GetTablespaceSummaryPredicateEvaluationEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummaryCompressForEnum[string(m.CompressFor)]; !ok && m.CompressFor != "" {
+	if _, ok := GetMappingTablespaceSummaryCompressForEnum(string(m.CompressFor)); !ok && m.CompressFor != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CompressFor: %s. Supported values are: %s.", m.CompressFor, strings.Join(GetTablespaceSummaryCompressForEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummaryDefaultInMemoryEnum[string(m.DefaultInMemory)]; !ok && m.DefaultInMemory != "" {
+	if _, ok := GetMappingTablespaceSummaryDefaultInMemoryEnum(string(m.DefaultInMemory)); !ok && m.DefaultInMemory != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DefaultInMemory: %s. Supported values are: %s.", m.DefaultInMemory, strings.Join(GetTablespaceSummaryDefaultInMemoryEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummaryDefaultInMemoryPriorityEnum[string(m.DefaultInMemoryPriority)]; !ok && m.DefaultInMemoryPriority != "" {
+	if _, ok := GetMappingTablespaceSummaryDefaultInMemoryPriorityEnum(string(m.DefaultInMemoryPriority)); !ok && m.DefaultInMemoryPriority != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DefaultInMemoryPriority: %s. Supported values are: %s.", m.DefaultInMemoryPriority, strings.Join(GetTablespaceSummaryDefaultInMemoryPriorityEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummaryDefaultInMemoryDistributeEnum[string(m.DefaultInMemoryDistribute)]; !ok && m.DefaultInMemoryDistribute != "" {
+	if _, ok := GetMappingTablespaceSummaryDefaultInMemoryDistributeEnum(string(m.DefaultInMemoryDistribute)); !ok && m.DefaultInMemoryDistribute != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DefaultInMemoryDistribute: %s. Supported values are: %s.", m.DefaultInMemoryDistribute, strings.Join(GetTablespaceSummaryDefaultInMemoryDistributeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummaryDefaultInMemoryCompressionEnum[string(m.DefaultInMemoryCompression)]; !ok && m.DefaultInMemoryCompression != "" {
+	if _, ok := GetMappingTablespaceSummaryDefaultInMemoryCompressionEnum(string(m.DefaultInMemoryCompression)); !ok && m.DefaultInMemoryCompression != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DefaultInMemoryCompression: %s. Supported values are: %s.", m.DefaultInMemoryCompression, strings.Join(GetTablespaceSummaryDefaultInMemoryCompressionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummaryDefaultInMemoryDuplicateEnum[string(m.DefaultInMemoryDuplicate)]; !ok && m.DefaultInMemoryDuplicate != "" {
+	if _, ok := GetMappingTablespaceSummaryDefaultInMemoryDuplicateEnum(string(m.DefaultInMemoryDuplicate)); !ok && m.DefaultInMemoryDuplicate != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DefaultInMemoryDuplicate: %s. Supported values are: %s.", m.DefaultInMemoryDuplicate, strings.Join(GetTablespaceSummaryDefaultInMemoryDuplicateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummarySharedEnum[string(m.Shared)]; !ok && m.Shared != "" {
+	if _, ok := GetMappingTablespaceSummarySharedEnum(string(m.Shared)); !ok && m.Shared != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Shared: %s. Supported values are: %s.", m.Shared, strings.Join(GetTablespaceSummarySharedEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummaryDefaultIndexCompressionEnum[string(m.DefaultIndexCompression)]; !ok && m.DefaultIndexCompression != "" {
+	if _, ok := GetMappingTablespaceSummaryDefaultIndexCompressionEnum(string(m.DefaultIndexCompression)); !ok && m.DefaultIndexCompression != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DefaultIndexCompression: %s. Supported values are: %s.", m.DefaultIndexCompression, strings.Join(GetTablespaceSummaryDefaultIndexCompressionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummaryIndexCompressForEnum[string(m.IndexCompressFor)]; !ok && m.IndexCompressFor != "" {
+	if _, ok := GetMappingTablespaceSummaryIndexCompressForEnum(string(m.IndexCompressFor)); !ok && m.IndexCompressFor != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IndexCompressFor: %s. Supported values are: %s.", m.IndexCompressFor, strings.Join(GetTablespaceSummaryIndexCompressForEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummaryDefaultInMemoryServiceEnum[string(m.DefaultInMemoryService)]; !ok && m.DefaultInMemoryService != "" {
+	if _, ok := GetMappingTablespaceSummaryDefaultInMemoryServiceEnum(string(m.DefaultInMemoryService)); !ok && m.DefaultInMemoryService != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DefaultInMemoryService: %s. Supported values are: %s.", m.DefaultInMemoryService, strings.Join(GetTablespaceSummaryDefaultInMemoryServiceEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTablespaceSummaryLostWriteProtectEnum[string(m.LostWriteProtect)]; !ok && m.LostWriteProtect != "" {
+	if _, ok := GetMappingTablespaceSummaryLostWriteProtectEnum(string(m.LostWriteProtect)); !ok && m.LostWriteProtect != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LostWriteProtect: %s. Supported values are: %s.", m.LostWriteProtect, strings.Join(GetTablespaceSummaryLostWriteProtectEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -251,6 +251,17 @@ func GetTablespaceSummaryTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingTablespaceSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryTypeEnum(val string) (TablespaceSummaryTypeEnum, bool) {
+	mappingTablespaceSummaryTypeEnumIgnoreCase := make(map[string]TablespaceSummaryTypeEnum)
+	for k, v := range mappingTablespaceSummaryTypeEnum {
+		mappingTablespaceSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TablespaceSummaryStatusEnum Enum with underlying type: string
 type TablespaceSummaryStatusEnum string
 
@@ -285,6 +296,17 @@ func GetTablespaceSummaryStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingTablespaceSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryStatusEnum(val string) (TablespaceSummaryStatusEnum, bool) {
+	mappingTablespaceSummaryStatusEnumIgnoreCase := make(map[string]TablespaceSummaryStatusEnum)
+	for k, v := range mappingTablespaceSummaryStatusEnum {
+		mappingTablespaceSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TablespaceSummaryLoggingEnum Enum with underlying type: string
 type TablespaceSummaryLoggingEnum string
 
@@ -316,6 +338,17 @@ func GetTablespaceSummaryLoggingEnumStringValues() []string {
 	}
 }
 
+// GetMappingTablespaceSummaryLoggingEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryLoggingEnum(val string) (TablespaceSummaryLoggingEnum, bool) {
+	mappingTablespaceSummaryLoggingEnumIgnoreCase := make(map[string]TablespaceSummaryLoggingEnum)
+	for k, v := range mappingTablespaceSummaryLoggingEnum {
+		mappingTablespaceSummaryLoggingEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryLoggingEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TablespaceSummaryExtentManagementEnum Enum with underlying type: string
 type TablespaceSummaryExtentManagementEnum string
 
@@ -345,6 +378,17 @@ func GetTablespaceSummaryExtentManagementEnumStringValues() []string {
 		"LOCAL",
 		"DICTIONARY",
 	}
+}
+
+// GetMappingTablespaceSummaryExtentManagementEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryExtentManagementEnum(val string) (TablespaceSummaryExtentManagementEnum, bool) {
+	mappingTablespaceSummaryExtentManagementEnumIgnoreCase := make(map[string]TablespaceSummaryExtentManagementEnum)
+	for k, v := range mappingTablespaceSummaryExtentManagementEnum {
+		mappingTablespaceSummaryExtentManagementEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryExtentManagementEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // TablespaceSummaryAllocationTypeEnum Enum with underlying type: string
@@ -381,6 +425,17 @@ func GetTablespaceSummaryAllocationTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingTablespaceSummaryAllocationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryAllocationTypeEnum(val string) (TablespaceSummaryAllocationTypeEnum, bool) {
+	mappingTablespaceSummaryAllocationTypeEnumIgnoreCase := make(map[string]TablespaceSummaryAllocationTypeEnum)
+	for k, v := range mappingTablespaceSummaryAllocationTypeEnum {
+		mappingTablespaceSummaryAllocationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryAllocationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TablespaceSummarySegmentSpaceManagementEnum Enum with underlying type: string
 type TablespaceSummarySegmentSpaceManagementEnum string
 
@@ -412,6 +467,17 @@ func GetTablespaceSummarySegmentSpaceManagementEnumStringValues() []string {
 	}
 }
 
+// GetMappingTablespaceSummarySegmentSpaceManagementEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummarySegmentSpaceManagementEnum(val string) (TablespaceSummarySegmentSpaceManagementEnum, bool) {
+	mappingTablespaceSummarySegmentSpaceManagementEnumIgnoreCase := make(map[string]TablespaceSummarySegmentSpaceManagementEnum)
+	for k, v := range mappingTablespaceSummarySegmentSpaceManagementEnum {
+		mappingTablespaceSummarySegmentSpaceManagementEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummarySegmentSpaceManagementEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TablespaceSummaryDefaultTableCompressionEnum Enum with underlying type: string
 type TablespaceSummaryDefaultTableCompressionEnum string
 
@@ -441,6 +507,17 @@ func GetTablespaceSummaryDefaultTableCompressionEnumStringValues() []string {
 		"ENABLED",
 		"DISABLED",
 	}
+}
+
+// GetMappingTablespaceSummaryDefaultTableCompressionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryDefaultTableCompressionEnum(val string) (TablespaceSummaryDefaultTableCompressionEnum, bool) {
+	mappingTablespaceSummaryDefaultTableCompressionEnumIgnoreCase := make(map[string]TablespaceSummaryDefaultTableCompressionEnum)
+	for k, v := range mappingTablespaceSummaryDefaultTableCompressionEnum {
+		mappingTablespaceSummaryDefaultTableCompressionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryDefaultTableCompressionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // TablespaceSummaryRetentionEnum Enum with underlying type: string
@@ -477,6 +554,17 @@ func GetTablespaceSummaryRetentionEnumStringValues() []string {
 	}
 }
 
+// GetMappingTablespaceSummaryRetentionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryRetentionEnum(val string) (TablespaceSummaryRetentionEnum, bool) {
+	mappingTablespaceSummaryRetentionEnumIgnoreCase := make(map[string]TablespaceSummaryRetentionEnum)
+	for k, v := range mappingTablespaceSummaryRetentionEnum {
+		mappingTablespaceSummaryRetentionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryRetentionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TablespaceSummaryPredicateEvaluationEnum Enum with underlying type: string
 type TablespaceSummaryPredicateEvaluationEnum string
 
@@ -506,6 +594,17 @@ func GetTablespaceSummaryPredicateEvaluationEnumStringValues() []string {
 		"HOST",
 		"STORAGE",
 	}
+}
+
+// GetMappingTablespaceSummaryPredicateEvaluationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryPredicateEvaluationEnum(val string) (TablespaceSummaryPredicateEvaluationEnum, bool) {
+	mappingTablespaceSummaryPredicateEvaluationEnumIgnoreCase := make(map[string]TablespaceSummaryPredicateEvaluationEnum)
+	for k, v := range mappingTablespaceSummaryPredicateEvaluationEnum {
+		mappingTablespaceSummaryPredicateEvaluationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryPredicateEvaluationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // TablespaceSummaryCompressForEnum Enum with underlying type: string
@@ -557,6 +656,17 @@ func GetTablespaceSummaryCompressForEnumStringValues() []string {
 	}
 }
 
+// GetMappingTablespaceSummaryCompressForEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryCompressForEnum(val string) (TablespaceSummaryCompressForEnum, bool) {
+	mappingTablespaceSummaryCompressForEnumIgnoreCase := make(map[string]TablespaceSummaryCompressForEnum)
+	for k, v := range mappingTablespaceSummaryCompressForEnum {
+		mappingTablespaceSummaryCompressForEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryCompressForEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TablespaceSummaryDefaultInMemoryEnum Enum with underlying type: string
 type TablespaceSummaryDefaultInMemoryEnum string
 
@@ -586,6 +696,17 @@ func GetTablespaceSummaryDefaultInMemoryEnumStringValues() []string {
 		"ENABLED",
 		"DISABLED",
 	}
+}
+
+// GetMappingTablespaceSummaryDefaultInMemoryEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryDefaultInMemoryEnum(val string) (TablespaceSummaryDefaultInMemoryEnum, bool) {
+	mappingTablespaceSummaryDefaultInMemoryEnumIgnoreCase := make(map[string]TablespaceSummaryDefaultInMemoryEnum)
+	for k, v := range mappingTablespaceSummaryDefaultInMemoryEnum {
+		mappingTablespaceSummaryDefaultInMemoryEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryDefaultInMemoryEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // TablespaceSummaryDefaultInMemoryPriorityEnum Enum with underlying type: string
@@ -628,6 +749,17 @@ func GetTablespaceSummaryDefaultInMemoryPriorityEnumStringValues() []string {
 	}
 }
 
+// GetMappingTablespaceSummaryDefaultInMemoryPriorityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryDefaultInMemoryPriorityEnum(val string) (TablespaceSummaryDefaultInMemoryPriorityEnum, bool) {
+	mappingTablespaceSummaryDefaultInMemoryPriorityEnumIgnoreCase := make(map[string]TablespaceSummaryDefaultInMemoryPriorityEnum)
+	for k, v := range mappingTablespaceSummaryDefaultInMemoryPriorityEnum {
+		mappingTablespaceSummaryDefaultInMemoryPriorityEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryDefaultInMemoryPriorityEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TablespaceSummaryDefaultInMemoryDistributeEnum Enum with underlying type: string
 type TablespaceSummaryDefaultInMemoryDistributeEnum string
 
@@ -663,6 +795,17 @@ func GetTablespaceSummaryDefaultInMemoryDistributeEnumStringValues() []string {
 		"BY_PARTITION",
 		"BY_SUBPARTITION",
 	}
+}
+
+// GetMappingTablespaceSummaryDefaultInMemoryDistributeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryDefaultInMemoryDistributeEnum(val string) (TablespaceSummaryDefaultInMemoryDistributeEnum, bool) {
+	mappingTablespaceSummaryDefaultInMemoryDistributeEnumIgnoreCase := make(map[string]TablespaceSummaryDefaultInMemoryDistributeEnum)
+	for k, v := range mappingTablespaceSummaryDefaultInMemoryDistributeEnum {
+		mappingTablespaceSummaryDefaultInMemoryDistributeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryDefaultInMemoryDistributeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // TablespaceSummaryDefaultInMemoryCompressionEnum Enum with underlying type: string
@@ -708,6 +851,17 @@ func GetTablespaceSummaryDefaultInMemoryCompressionEnumStringValues() []string {
 	}
 }
 
+// GetMappingTablespaceSummaryDefaultInMemoryCompressionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryDefaultInMemoryCompressionEnum(val string) (TablespaceSummaryDefaultInMemoryCompressionEnum, bool) {
+	mappingTablespaceSummaryDefaultInMemoryCompressionEnumIgnoreCase := make(map[string]TablespaceSummaryDefaultInMemoryCompressionEnum)
+	for k, v := range mappingTablespaceSummaryDefaultInMemoryCompressionEnum {
+		mappingTablespaceSummaryDefaultInMemoryCompressionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryDefaultInMemoryCompressionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TablespaceSummaryDefaultInMemoryDuplicateEnum Enum with underlying type: string
 type TablespaceSummaryDefaultInMemoryDuplicateEnum string
 
@@ -740,6 +894,17 @@ func GetTablespaceSummaryDefaultInMemoryDuplicateEnumStringValues() []string {
 		"DUPLICATE",
 		"DUPLICATE_ALL",
 	}
+}
+
+// GetMappingTablespaceSummaryDefaultInMemoryDuplicateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryDefaultInMemoryDuplicateEnum(val string) (TablespaceSummaryDefaultInMemoryDuplicateEnum, bool) {
+	mappingTablespaceSummaryDefaultInMemoryDuplicateEnumIgnoreCase := make(map[string]TablespaceSummaryDefaultInMemoryDuplicateEnum)
+	for k, v := range mappingTablespaceSummaryDefaultInMemoryDuplicateEnum {
+		mappingTablespaceSummaryDefaultInMemoryDuplicateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryDefaultInMemoryDuplicateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // TablespaceSummarySharedEnum Enum with underlying type: string
@@ -776,6 +941,17 @@ func GetTablespaceSummarySharedEnumStringValues() []string {
 	}
 }
 
+// GetMappingTablespaceSummarySharedEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummarySharedEnum(val string) (TablespaceSummarySharedEnum, bool) {
+	mappingTablespaceSummarySharedEnumIgnoreCase := make(map[string]TablespaceSummarySharedEnum)
+	for k, v := range mappingTablespaceSummarySharedEnum {
+		mappingTablespaceSummarySharedEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummarySharedEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TablespaceSummaryDefaultIndexCompressionEnum Enum with underlying type: string
 type TablespaceSummaryDefaultIndexCompressionEnum string
 
@@ -805,6 +981,17 @@ func GetTablespaceSummaryDefaultIndexCompressionEnumStringValues() []string {
 		"ENABLED",
 		"DISABLED",
 	}
+}
+
+// GetMappingTablespaceSummaryDefaultIndexCompressionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryDefaultIndexCompressionEnum(val string) (TablespaceSummaryDefaultIndexCompressionEnum, bool) {
+	mappingTablespaceSummaryDefaultIndexCompressionEnumIgnoreCase := make(map[string]TablespaceSummaryDefaultIndexCompressionEnum)
+	for k, v := range mappingTablespaceSummaryDefaultIndexCompressionEnum {
+		mappingTablespaceSummaryDefaultIndexCompressionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryDefaultIndexCompressionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // TablespaceSummaryIndexCompressForEnum Enum with underlying type: string
@@ -839,6 +1026,17 @@ func GetTablespaceSummaryIndexCompressForEnumStringValues() []string {
 		"ADVANCED_HIGH",
 		"NONE",
 	}
+}
+
+// GetMappingTablespaceSummaryIndexCompressForEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryIndexCompressForEnum(val string) (TablespaceSummaryIndexCompressForEnum, bool) {
+	mappingTablespaceSummaryIndexCompressForEnumIgnoreCase := make(map[string]TablespaceSummaryIndexCompressForEnum)
+	for k, v := range mappingTablespaceSummaryIndexCompressForEnum {
+		mappingTablespaceSummaryIndexCompressForEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryIndexCompressForEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // TablespaceSummaryDefaultInMemoryServiceEnum Enum with underlying type: string
@@ -878,6 +1076,17 @@ func GetTablespaceSummaryDefaultInMemoryServiceEnumStringValues() []string {
 	}
 }
 
+// GetMappingTablespaceSummaryDefaultInMemoryServiceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryDefaultInMemoryServiceEnum(val string) (TablespaceSummaryDefaultInMemoryServiceEnum, bool) {
+	mappingTablespaceSummaryDefaultInMemoryServiceEnumIgnoreCase := make(map[string]TablespaceSummaryDefaultInMemoryServiceEnum)
+	for k, v := range mappingTablespaceSummaryDefaultInMemoryServiceEnum {
+		mappingTablespaceSummaryDefaultInMemoryServiceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryDefaultInMemoryServiceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TablespaceSummaryLostWriteProtectEnum Enum with underlying type: string
 type TablespaceSummaryLostWriteProtectEnum string
 
@@ -910,4 +1119,15 @@ func GetTablespaceSummaryLostWriteProtectEnumStringValues() []string {
 		"PROTECT_OFF",
 		"SUSPEND",
 	}
+}
+
+// GetMappingTablespaceSummaryLostWriteProtectEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceSummaryLostWriteProtectEnum(val string) (TablespaceSummaryLostWriteProtectEnum, bool) {
+	mappingTablespaceSummaryLostWriteProtectEnumIgnoreCase := make(map[string]TablespaceSummaryLostWriteProtectEnum)
+	for k, v := range mappingTablespaceSummaryLostWriteProtectEnum {
+		mappingTablespaceSummaryLostWriteProtectEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceSummaryLostWriteProtectEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

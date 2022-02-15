@@ -11,7 +11,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -101,14 +101,14 @@ func (m Repository) String() string {
 func (m Repository) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingRepositoryRepositoryTypeEnum[string(m.RepositoryType)]; !ok && m.RepositoryType != "" {
+	if _, ok := GetMappingRepositoryRepositoryTypeEnum(string(m.RepositoryType)); !ok && m.RepositoryType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RepositoryType: %s. Supported values are: %s.", m.RepositoryType, strings.Join(GetRepositoryRepositoryTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingRepositoryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingRepositoryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetRepositoryLifecycleStateEnumStringValues(), ",")))
 	}
 	for _, val := range m.TriggerBuildEvents {
-		if _, ok := mappingRepositoryTriggerBuildEventsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingRepositoryTriggerBuildEventsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TriggerBuildEvents: %s. Supported values are: %s.", val, strings.Join(GetRepositoryTriggerBuildEventsEnumStringValues(), ",")))
 		}
 	}
@@ -150,6 +150,17 @@ func GetRepositoryRepositoryTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingRepositoryRepositoryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRepositoryRepositoryTypeEnum(val string) (RepositoryRepositoryTypeEnum, bool) {
+	mappingRepositoryRepositoryTypeEnumIgnoreCase := make(map[string]RepositoryRepositoryTypeEnum)
+	for k, v := range mappingRepositoryRepositoryTypeEnum {
+		mappingRepositoryRepositoryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRepositoryRepositoryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // RepositoryLifecycleStateEnum Enum with underlying type: string
 type RepositoryLifecycleStateEnum string
 
@@ -184,6 +195,17 @@ func GetRepositoryLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingRepositoryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRepositoryLifecycleStateEnum(val string) (RepositoryLifecycleStateEnum, bool) {
+	mappingRepositoryLifecycleStateEnumIgnoreCase := make(map[string]RepositoryLifecycleStateEnum)
+	for k, v := range mappingRepositoryLifecycleStateEnum {
+		mappingRepositoryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRepositoryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // RepositoryTriggerBuildEventsEnum Enum with underlying type: string
 type RepositoryTriggerBuildEventsEnum string
 
@@ -213,4 +235,15 @@ func GetRepositoryTriggerBuildEventsEnumStringValues() []string {
 		"PUSH",
 		"COMMIT_UPDATES",
 	}
+}
+
+// GetMappingRepositoryTriggerBuildEventsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRepositoryTriggerBuildEventsEnum(val string) (RepositoryTriggerBuildEventsEnum, bool) {
+	mappingRepositoryTriggerBuildEventsEnumIgnoreCase := make(map[string]RepositoryTriggerBuildEventsEnum)
+	for k, v := range mappingRepositoryTriggerBuildEventsEnum {
+		mappingRepositoryTriggerBuildEventsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRepositoryTriggerBuildEventsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

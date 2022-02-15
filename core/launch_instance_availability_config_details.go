@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -45,7 +45,7 @@ func (m LaunchInstanceAvailabilityConfigDetails) String() string {
 func (m LaunchInstanceAvailabilityConfigDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLaunchInstanceAvailabilityConfigDetailsRecoveryActionEnum[string(m.RecoveryAction)]; !ok && m.RecoveryAction != "" {
+	if _, ok := GetMappingLaunchInstanceAvailabilityConfigDetailsRecoveryActionEnum(string(m.RecoveryAction)); !ok && m.RecoveryAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RecoveryAction: %s. Supported values are: %s.", m.RecoveryAction, strings.Join(GetLaunchInstanceAvailabilityConfigDetailsRecoveryActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -83,4 +83,15 @@ func GetLaunchInstanceAvailabilityConfigDetailsRecoveryActionEnumStringValues() 
 		"RESTORE_INSTANCE",
 		"STOP_INSTANCE",
 	}
+}
+
+// GetMappingLaunchInstanceAvailabilityConfigDetailsRecoveryActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLaunchInstanceAvailabilityConfigDetailsRecoveryActionEnum(val string) (LaunchInstanceAvailabilityConfigDetailsRecoveryActionEnum, bool) {
+	mappingLaunchInstanceAvailabilityConfigDetailsRecoveryActionEnumIgnoreCase := make(map[string]LaunchInstanceAvailabilityConfigDetailsRecoveryActionEnum)
+	for k, v := range mappingLaunchInstanceAvailabilityConfigDetailsRecoveryActionEnum {
+		mappingLaunchInstanceAvailabilityConfigDetailsRecoveryActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLaunchInstanceAvailabilityConfigDetailsRecoveryActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

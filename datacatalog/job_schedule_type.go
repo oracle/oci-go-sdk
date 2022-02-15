@@ -10,6 +10,10 @@
 
 package datacatalog
 
+import (
+	"strings"
+)
+
 // JobScheduleTypeEnum Enum with underlying type: string
 type JobScheduleTypeEnum string
 
@@ -39,4 +43,15 @@ func GetJobScheduleTypeEnumStringValues() []string {
 		"SCHEDULED",
 		"IMMEDIATE",
 	}
+}
+
+// GetMappingJobScheduleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobScheduleTypeEnum(val string) (JobScheduleTypeEnum, bool) {
+	mappingJobScheduleTypeEnumIgnoreCase := make(map[string]JobScheduleTypeEnum)
+	for k, v := range mappingJobScheduleTypeEnum {
+		mappingJobScheduleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobScheduleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
