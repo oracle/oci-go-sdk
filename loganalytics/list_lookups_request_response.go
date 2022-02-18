@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -160,6 +160,11 @@ var mappingListLookupsTypeEnum = map[string]ListLookupsTypeEnum{
 	"Dictionary": ListLookupsTypeDictionary,
 }
 
+var mappingListLookupsTypeEnumLowerCase = map[string]ListLookupsTypeEnum{
+	"lookup":     ListLookupsTypeLookup,
+	"dictionary": ListLookupsTypeDictionary,
+}
+
 // GetListLookupsTypeEnumValues Enumerates the set of values for ListLookupsTypeEnum
 func GetListLookupsTypeEnumValues() []ListLookupsTypeEnum {
 	values := make([]ListLookupsTypeEnum, 0)
@@ -179,12 +184,7 @@ func GetListLookupsTypeEnumStringValues() []string {
 
 // GetMappingListLookupsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLookupsTypeEnum(val string) (ListLookupsTypeEnum, bool) {
-	mappingListLookupsTypeEnumIgnoreCase := make(map[string]ListLookupsTypeEnum)
-	for k, v := range mappingListLookupsTypeEnum {
-		mappingListLookupsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLookupsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLookupsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -202,6 +202,12 @@ var mappingListLookupsIsSystemEnum = map[string]ListLookupsIsSystemEnum{
 	"ALL":      ListLookupsIsSystemAll,
 	"CUSTOM":   ListLookupsIsSystemCustom,
 	"BUILT_IN": ListLookupsIsSystemBuiltIn,
+}
+
+var mappingListLookupsIsSystemEnumLowerCase = map[string]ListLookupsIsSystemEnum{
+	"all":      ListLookupsIsSystemAll,
+	"custom":   ListLookupsIsSystemCustom,
+	"built_in": ListLookupsIsSystemBuiltIn,
 }
 
 // GetListLookupsIsSystemEnumValues Enumerates the set of values for ListLookupsIsSystemEnum
@@ -224,12 +230,7 @@ func GetListLookupsIsSystemEnumStringValues() []string {
 
 // GetMappingListLookupsIsSystemEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLookupsIsSystemEnum(val string) (ListLookupsIsSystemEnum, bool) {
-	mappingListLookupsIsSystemEnumIgnoreCase := make(map[string]ListLookupsIsSystemEnum)
-	for k, v := range mappingListLookupsIsSystemEnum {
-		mappingListLookupsIsSystemEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLookupsIsSystemEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLookupsIsSystemEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -251,6 +252,14 @@ var mappingListLookupsSortByEnum = map[string]ListLookupsSortByEnum{
 	"type":         ListLookupsSortByType,
 	"updatedTime":  ListLookupsSortByUpdatedtime,
 	"creationType": ListLookupsSortByCreationtype,
+}
+
+var mappingListLookupsSortByEnumLowerCase = map[string]ListLookupsSortByEnum{
+	"displayname":  ListLookupsSortByDisplayname,
+	"status":       ListLookupsSortByStatus,
+	"type":         ListLookupsSortByType,
+	"updatedtime":  ListLookupsSortByUpdatedtime,
+	"creationtype": ListLookupsSortByCreationtype,
 }
 
 // GetListLookupsSortByEnumValues Enumerates the set of values for ListLookupsSortByEnum
@@ -275,12 +284,7 @@ func GetListLookupsSortByEnumStringValues() []string {
 
 // GetMappingListLookupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLookupsSortByEnum(val string) (ListLookupsSortByEnum, bool) {
-	mappingListLookupsSortByEnumIgnoreCase := make(map[string]ListLookupsSortByEnum)
-	for k, v := range mappingListLookupsSortByEnum {
-		mappingListLookupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLookupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLookupsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -300,6 +304,13 @@ var mappingListLookupsStatusEnum = map[string]ListLookupsStatusEnum{
 	"SUCCESSFUL": ListLookupsStatusSuccessful,
 	"FAILED":     ListLookupsStatusFailed,
 	"INPROGRESS": ListLookupsStatusInprogress,
+}
+
+var mappingListLookupsStatusEnumLowerCase = map[string]ListLookupsStatusEnum{
+	"all":        ListLookupsStatusAll,
+	"successful": ListLookupsStatusSuccessful,
+	"failed":     ListLookupsStatusFailed,
+	"inprogress": ListLookupsStatusInprogress,
 }
 
 // GetListLookupsStatusEnumValues Enumerates the set of values for ListLookupsStatusEnum
@@ -323,12 +334,7 @@ func GetListLookupsStatusEnumStringValues() []string {
 
 // GetMappingListLookupsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLookupsStatusEnum(val string) (ListLookupsStatusEnum, bool) {
-	mappingListLookupsStatusEnumIgnoreCase := make(map[string]ListLookupsStatusEnum)
-	for k, v := range mappingListLookupsStatusEnum {
-		mappingListLookupsStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLookupsStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLookupsStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -344,6 +350,11 @@ const (
 var mappingListLookupsSortOrderEnum = map[string]ListLookupsSortOrderEnum{
 	"ASC":  ListLookupsSortOrderAsc,
 	"DESC": ListLookupsSortOrderDesc,
+}
+
+var mappingListLookupsSortOrderEnumLowerCase = map[string]ListLookupsSortOrderEnum{
+	"asc":  ListLookupsSortOrderAsc,
+	"desc": ListLookupsSortOrderDesc,
 }
 
 // GetListLookupsSortOrderEnumValues Enumerates the set of values for ListLookupsSortOrderEnum
@@ -365,11 +376,6 @@ func GetListLookupsSortOrderEnumStringValues() []string {
 
 // GetMappingListLookupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLookupsSortOrderEnum(val string) (ListLookupsSortOrderEnum, bool) {
-	mappingListLookupsSortOrderEnumIgnoreCase := make(map[string]ListLookupsSortOrderEnum)
-	for k, v := range mappingListLookupsSortOrderEnum {
-		mappingListLookupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLookupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLookupsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

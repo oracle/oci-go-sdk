@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -147,6 +147,11 @@ var mappingListJobRunsSortByEnum = map[string]ListJobRunsSortByEnum{
 	"NAME":        ListJobRunsSortByName,
 }
 
+var mappingListJobRunsSortByEnumLowerCase = map[string]ListJobRunsSortByEnum{
+	"timecreated": ListJobRunsSortByTimecreated,
+	"name":        ListJobRunsSortByName,
+}
+
 // GetListJobRunsSortByEnumValues Enumerates the set of values for ListJobRunsSortByEnum
 func GetListJobRunsSortByEnumValues() []ListJobRunsSortByEnum {
 	values := make([]ListJobRunsSortByEnum, 0)
@@ -166,12 +171,7 @@ func GetListJobRunsSortByEnumStringValues() []string {
 
 // GetMappingListJobRunsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJobRunsSortByEnum(val string) (ListJobRunsSortByEnum, bool) {
-	mappingListJobRunsSortByEnumIgnoreCase := make(map[string]ListJobRunsSortByEnum)
-	for k, v := range mappingListJobRunsSortByEnum {
-		mappingListJobRunsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJobRunsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJobRunsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +187,11 @@ const (
 var mappingListJobRunsSortOrderEnum = map[string]ListJobRunsSortOrderEnum{
 	"ASC":  ListJobRunsSortOrderAsc,
 	"DESC": ListJobRunsSortOrderDesc,
+}
+
+var mappingListJobRunsSortOrderEnumLowerCase = map[string]ListJobRunsSortOrderEnum{
+	"asc":  ListJobRunsSortOrderAsc,
+	"desc": ListJobRunsSortOrderDesc,
 }
 
 // GetListJobRunsSortOrderEnumValues Enumerates the set of values for ListJobRunsSortOrderEnum
@@ -208,11 +213,6 @@ func GetListJobRunsSortOrderEnumStringValues() []string {
 
 // GetMappingListJobRunsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJobRunsSortOrderEnum(val string) (ListJobRunsSortOrderEnum, bool) {
-	mappingListJobRunsSortOrderEnumIgnoreCase := make(map[string]ListJobRunsSortOrderEnum)
-	for k, v := range mappingListJobRunsSortOrderEnum {
-		mappingListJobRunsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJobRunsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJobRunsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

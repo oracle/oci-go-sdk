@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -167,6 +167,11 @@ var mappingMinusMinusTypeEnum = map[string]MinusMinusTypeEnum{
 	"POSITION": MinusMinusTypePosition,
 }
 
+var mappingMinusMinusTypeEnumLowerCase = map[string]MinusMinusTypeEnum{
+	"name":     MinusMinusTypeName,
+	"position": MinusMinusTypePosition,
+}
+
 // GetMinusMinusTypeEnumValues Enumerates the set of values for MinusMinusTypeEnum
 func GetMinusMinusTypeEnumValues() []MinusMinusTypeEnum {
 	values := make([]MinusMinusTypeEnum, 0)
@@ -186,11 +191,6 @@ func GetMinusMinusTypeEnumStringValues() []string {
 
 // GetMappingMinusMinusTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMinusMinusTypeEnum(val string) (MinusMinusTypeEnum, bool) {
-	mappingMinusMinusTypeEnumIgnoreCase := make(map[string]MinusMinusTypeEnum)
-	for k, v := range mappingMinusMinusTypeEnum {
-		mappingMinusMinusTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMinusMinusTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMinusMinusTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

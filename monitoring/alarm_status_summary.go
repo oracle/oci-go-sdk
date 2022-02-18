@@ -13,7 +13,7 @@ package monitoring
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -91,6 +91,13 @@ var mappingAlarmStatusSummarySeverityEnum = map[string]AlarmStatusSummarySeverit
 	"INFO":     AlarmStatusSummarySeverityInfo,
 }
 
+var mappingAlarmStatusSummarySeverityEnumLowerCase = map[string]AlarmStatusSummarySeverityEnum{
+	"critical": AlarmStatusSummarySeverityCritical,
+	"error":    AlarmStatusSummarySeverityError,
+	"warning":  AlarmStatusSummarySeverityWarning,
+	"info":     AlarmStatusSummarySeverityInfo,
+}
+
 // GetAlarmStatusSummarySeverityEnumValues Enumerates the set of values for AlarmStatusSummarySeverityEnum
 func GetAlarmStatusSummarySeverityEnumValues() []AlarmStatusSummarySeverityEnum {
 	values := make([]AlarmStatusSummarySeverityEnum, 0)
@@ -112,12 +119,7 @@ func GetAlarmStatusSummarySeverityEnumStringValues() []string {
 
 // GetMappingAlarmStatusSummarySeverityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAlarmStatusSummarySeverityEnum(val string) (AlarmStatusSummarySeverityEnum, bool) {
-	mappingAlarmStatusSummarySeverityEnumIgnoreCase := make(map[string]AlarmStatusSummarySeverityEnum)
-	for k, v := range mappingAlarmStatusSummarySeverityEnum {
-		mappingAlarmStatusSummarySeverityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAlarmStatusSummarySeverityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAlarmStatusSummarySeverityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -135,6 +137,12 @@ var mappingAlarmStatusSummaryStatusEnum = map[string]AlarmStatusSummaryStatusEnu
 	"FIRING":    AlarmStatusSummaryStatusFiring,
 	"OK":        AlarmStatusSummaryStatusOk,
 	"SUSPENDED": AlarmStatusSummaryStatusSuspended,
+}
+
+var mappingAlarmStatusSummaryStatusEnumLowerCase = map[string]AlarmStatusSummaryStatusEnum{
+	"firing":    AlarmStatusSummaryStatusFiring,
+	"ok":        AlarmStatusSummaryStatusOk,
+	"suspended": AlarmStatusSummaryStatusSuspended,
 }
 
 // GetAlarmStatusSummaryStatusEnumValues Enumerates the set of values for AlarmStatusSummaryStatusEnum
@@ -157,11 +165,6 @@ func GetAlarmStatusSummaryStatusEnumStringValues() []string {
 
 // GetMappingAlarmStatusSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAlarmStatusSummaryStatusEnum(val string) (AlarmStatusSummaryStatusEnum, bool) {
-	mappingAlarmStatusSummaryStatusEnumIgnoreCase := make(map[string]AlarmStatusSummaryStatusEnum)
-	for k, v := range mappingAlarmStatusSummaryStatusEnum {
-		mappingAlarmStatusSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAlarmStatusSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAlarmStatusSummaryStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

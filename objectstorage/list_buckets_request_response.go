@@ -6,7 +6,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -135,6 +135,10 @@ var mappingListBucketsFieldsEnum = map[string]ListBucketsFieldsEnum{
 	"tags": ListBucketsFieldsTags,
 }
 
+var mappingListBucketsFieldsEnumLowerCase = map[string]ListBucketsFieldsEnum{
+	"tags": ListBucketsFieldsTags,
+}
+
 // GetListBucketsFieldsEnumValues Enumerates the set of values for ListBucketsFieldsEnum
 func GetListBucketsFieldsEnumValues() []ListBucketsFieldsEnum {
 	values := make([]ListBucketsFieldsEnum, 0)
@@ -153,11 +157,6 @@ func GetListBucketsFieldsEnumStringValues() []string {
 
 // GetMappingListBucketsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBucketsFieldsEnum(val string) (ListBucketsFieldsEnum, bool) {
-	mappingListBucketsFieldsEnumIgnoreCase := make(map[string]ListBucketsFieldsEnum)
-	for k, v := range mappingListBucketsFieldsEnum {
-		mappingListBucketsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBucketsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBucketsFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

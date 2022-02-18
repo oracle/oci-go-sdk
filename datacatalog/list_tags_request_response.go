@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -159,6 +159,17 @@ var mappingListTagsLifecycleStateEnum = map[string]ListTagsLifecycleStateEnum{
 	"MOVING":   ListTagsLifecycleStateMoving,
 }
 
+var mappingListTagsLifecycleStateEnumLowerCase = map[string]ListTagsLifecycleStateEnum{
+	"creating": ListTagsLifecycleStateCreating,
+	"active":   ListTagsLifecycleStateActive,
+	"inactive": ListTagsLifecycleStateInactive,
+	"updating": ListTagsLifecycleStateUpdating,
+	"deleting": ListTagsLifecycleStateDeleting,
+	"deleted":  ListTagsLifecycleStateDeleted,
+	"failed":   ListTagsLifecycleStateFailed,
+	"moving":   ListTagsLifecycleStateMoving,
+}
+
 // GetListTagsLifecycleStateEnumValues Enumerates the set of values for ListTagsLifecycleStateEnum
 func GetListTagsLifecycleStateEnumValues() []ListTagsLifecycleStateEnum {
 	values := make([]ListTagsLifecycleStateEnum, 0)
@@ -184,12 +195,7 @@ func GetListTagsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListTagsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTagsLifecycleStateEnum(val string) (ListTagsLifecycleStateEnum, bool) {
-	mappingListTagsLifecycleStateEnumIgnoreCase := make(map[string]ListTagsLifecycleStateEnum)
-	for k, v := range mappingListTagsLifecycleStateEnum {
-		mappingListTagsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTagsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTagsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -227,6 +233,21 @@ var mappingListTagsFieldsEnum = map[string]ListTagsFieldsEnum{
 	"uri":                       ListTagsFieldsUri,
 }
 
+var mappingListTagsFieldsEnumLowerCase = map[string]ListTagsFieldsEnum{
+	"key":                       ListTagsFieldsKey,
+	"displayname":               ListTagsFieldsDisplayname,
+	"description":               ListTagsFieldsDescription,
+	"glossarykey":               ListTagsFieldsGlossarykey,
+	"parenttermkey":             ListTagsFieldsParenttermkey,
+	"isallowedtohavechildterms": ListTagsFieldsIsallowedtohavechildterms,
+	"path":                      ListTagsFieldsPath,
+	"lifecyclestate":            ListTagsFieldsLifecyclestate,
+	"timecreated":               ListTagsFieldsTimecreated,
+	"workflowstatus":            ListTagsFieldsWorkflowstatus,
+	"associatedobjectcount":     ListTagsFieldsAssociatedobjectcount,
+	"uri":                       ListTagsFieldsUri,
+}
+
 // GetListTagsFieldsEnumValues Enumerates the set of values for ListTagsFieldsEnum
 func GetListTagsFieldsEnumValues() []ListTagsFieldsEnum {
 	values := make([]ListTagsFieldsEnum, 0)
@@ -256,12 +277,7 @@ func GetListTagsFieldsEnumStringValues() []string {
 
 // GetMappingListTagsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTagsFieldsEnum(val string) (ListTagsFieldsEnum, bool) {
-	mappingListTagsFieldsEnumIgnoreCase := make(map[string]ListTagsFieldsEnum)
-	for k, v := range mappingListTagsFieldsEnum {
-		mappingListTagsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTagsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTagsFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -277,6 +293,11 @@ const (
 var mappingListTagsSortByEnum = map[string]ListTagsSortByEnum{
 	"TIMECREATED": ListTagsSortByTimecreated,
 	"DISPLAYNAME": ListTagsSortByDisplayname,
+}
+
+var mappingListTagsSortByEnumLowerCase = map[string]ListTagsSortByEnum{
+	"timecreated": ListTagsSortByTimecreated,
+	"displayname": ListTagsSortByDisplayname,
 }
 
 // GetListTagsSortByEnumValues Enumerates the set of values for ListTagsSortByEnum
@@ -298,12 +319,7 @@ func GetListTagsSortByEnumStringValues() []string {
 
 // GetMappingListTagsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTagsSortByEnum(val string) (ListTagsSortByEnum, bool) {
-	mappingListTagsSortByEnumIgnoreCase := make(map[string]ListTagsSortByEnum)
-	for k, v := range mappingListTagsSortByEnum {
-		mappingListTagsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTagsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTagsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -319,6 +335,11 @@ const (
 var mappingListTagsSortOrderEnum = map[string]ListTagsSortOrderEnum{
 	"ASC":  ListTagsSortOrderAsc,
 	"DESC": ListTagsSortOrderDesc,
+}
+
+var mappingListTagsSortOrderEnumLowerCase = map[string]ListTagsSortOrderEnum{
+	"asc":  ListTagsSortOrderAsc,
+	"desc": ListTagsSortOrderDesc,
 }
 
 // GetListTagsSortOrderEnumValues Enumerates the set of values for ListTagsSortOrderEnum
@@ -340,11 +361,6 @@ func GetListTagsSortOrderEnumStringValues() []string {
 
 // GetMappingListTagsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTagsSortOrderEnum(val string) (ListTagsSortOrderEnum, bool) {
-	mappingListTagsSortOrderEnumIgnoreCase := make(map[string]ListTagsSortOrderEnum)
-	for k, v := range mappingListTagsSortOrderEnum {
-		mappingListTagsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTagsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTagsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

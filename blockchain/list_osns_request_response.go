@@ -6,7 +6,7 @@ package blockchain
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -137,6 +137,11 @@ var mappingListOsnsSortOrderEnum = map[string]ListOsnsSortOrderEnum{
 	"DESC": ListOsnsSortOrderDesc,
 }
 
+var mappingListOsnsSortOrderEnumLowerCase = map[string]ListOsnsSortOrderEnum{
+	"asc":  ListOsnsSortOrderAsc,
+	"desc": ListOsnsSortOrderDesc,
+}
+
 // GetListOsnsSortOrderEnumValues Enumerates the set of values for ListOsnsSortOrderEnum
 func GetListOsnsSortOrderEnumValues() []ListOsnsSortOrderEnum {
 	values := make([]ListOsnsSortOrderEnum, 0)
@@ -156,12 +161,7 @@ func GetListOsnsSortOrderEnumStringValues() []string {
 
 // GetMappingListOsnsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOsnsSortOrderEnum(val string) (ListOsnsSortOrderEnum, bool) {
-	mappingListOsnsSortOrderEnumIgnoreCase := make(map[string]ListOsnsSortOrderEnum)
-	for k, v := range mappingListOsnsSortOrderEnum {
-		mappingListOsnsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOsnsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOsnsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -177,6 +177,11 @@ const (
 var mappingListOsnsSortByEnum = map[string]ListOsnsSortByEnum{
 	"timeCreated": ListOsnsSortByTimecreated,
 	"displayName": ListOsnsSortByDisplayname,
+}
+
+var mappingListOsnsSortByEnumLowerCase = map[string]ListOsnsSortByEnum{
+	"timecreated": ListOsnsSortByTimecreated,
+	"displayname": ListOsnsSortByDisplayname,
 }
 
 // GetListOsnsSortByEnumValues Enumerates the set of values for ListOsnsSortByEnum
@@ -198,11 +203,6 @@ func GetListOsnsSortByEnumStringValues() []string {
 
 // GetMappingListOsnsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOsnsSortByEnum(val string) (ListOsnsSortByEnum, bool) {
-	mappingListOsnsSortByEnumIgnoreCase := make(map[string]ListOsnsSortByEnum)
-	for k, v := range mappingListOsnsSortByEnum {
-		mappingListOsnsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOsnsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOsnsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

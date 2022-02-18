@@ -15,7 +15,7 @@ package workrequests
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -91,6 +91,15 @@ var mappingWorkRequestSummaryStatusEnum = map[string]WorkRequestSummaryStatusEnu
 	"CANCELED":    WorkRequestSummaryStatusCanceled,
 }
 
+var mappingWorkRequestSummaryStatusEnumLowerCase = map[string]WorkRequestSummaryStatusEnum{
+	"accepted":    WorkRequestSummaryStatusAccepted,
+	"in_progress": WorkRequestSummaryStatusInProgress,
+	"failed":      WorkRequestSummaryStatusFailed,
+	"succeeded":   WorkRequestSummaryStatusSucceeded,
+	"canceling":   WorkRequestSummaryStatusCanceling,
+	"canceled":    WorkRequestSummaryStatusCanceled,
+}
+
 // GetWorkRequestSummaryStatusEnumValues Enumerates the set of values for WorkRequestSummaryStatusEnum
 func GetWorkRequestSummaryStatusEnumValues() []WorkRequestSummaryStatusEnum {
 	values := make([]WorkRequestSummaryStatusEnum, 0)
@@ -114,11 +123,6 @@ func GetWorkRequestSummaryStatusEnumStringValues() []string {
 
 // GetMappingWorkRequestSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestSummaryStatusEnum(val string) (WorkRequestSummaryStatusEnum, bool) {
-	mappingWorkRequestSummaryStatusEnumIgnoreCase := make(map[string]WorkRequestSummaryStatusEnum)
-	for k, v := range mappingWorkRequestSummaryStatusEnum {
-		mappingWorkRequestSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestSummaryStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -94,6 +94,11 @@ var mappingUpdateDbSystemDetailsLicenseModelEnum = map[string]UpdateDbSystemDeta
 	"BRING_YOUR_OWN_LICENSE": UpdateDbSystemDetailsLicenseModelBringYourOwnLicense,
 }
 
+var mappingUpdateDbSystemDetailsLicenseModelEnumLowerCase = map[string]UpdateDbSystemDetailsLicenseModelEnum{
+	"license_included":       UpdateDbSystemDetailsLicenseModelLicenseIncluded,
+	"bring_your_own_license": UpdateDbSystemDetailsLicenseModelBringYourOwnLicense,
+}
+
 // GetUpdateDbSystemDetailsLicenseModelEnumValues Enumerates the set of values for UpdateDbSystemDetailsLicenseModelEnum
 func GetUpdateDbSystemDetailsLicenseModelEnumValues() []UpdateDbSystemDetailsLicenseModelEnum {
 	values := make([]UpdateDbSystemDetailsLicenseModelEnum, 0)
@@ -113,11 +118,6 @@ func GetUpdateDbSystemDetailsLicenseModelEnumStringValues() []string {
 
 // GetMappingUpdateDbSystemDetailsLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateDbSystemDetailsLicenseModelEnum(val string) (UpdateDbSystemDetailsLicenseModelEnum, bool) {
-	mappingUpdateDbSystemDetailsLicenseModelEnumIgnoreCase := make(map[string]UpdateDbSystemDetailsLicenseModelEnum)
-	for k, v := range mappingUpdateDbSystemDetailsLicenseModelEnum {
-		mappingUpdateDbSystemDetailsLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateDbSystemDetailsLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateDbSystemDetailsLicenseModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

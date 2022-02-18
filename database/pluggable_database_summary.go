@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -104,6 +104,15 @@ var mappingPluggableDatabaseSummaryLifecycleStateEnum = map[string]PluggableData
 	"FAILED":       PluggableDatabaseSummaryLifecycleStateFailed,
 }
 
+var mappingPluggableDatabaseSummaryLifecycleStateEnumLowerCase = map[string]PluggableDatabaseSummaryLifecycleStateEnum{
+	"provisioning": PluggableDatabaseSummaryLifecycleStateProvisioning,
+	"available":    PluggableDatabaseSummaryLifecycleStateAvailable,
+	"terminating":  PluggableDatabaseSummaryLifecycleStateTerminating,
+	"terminated":   PluggableDatabaseSummaryLifecycleStateTerminated,
+	"updating":     PluggableDatabaseSummaryLifecycleStateUpdating,
+	"failed":       PluggableDatabaseSummaryLifecycleStateFailed,
+}
+
 // GetPluggableDatabaseSummaryLifecycleStateEnumValues Enumerates the set of values for PluggableDatabaseSummaryLifecycleStateEnum
 func GetPluggableDatabaseSummaryLifecycleStateEnumValues() []PluggableDatabaseSummaryLifecycleStateEnum {
 	values := make([]PluggableDatabaseSummaryLifecycleStateEnum, 0)
@@ -127,12 +136,7 @@ func GetPluggableDatabaseSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingPluggableDatabaseSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPluggableDatabaseSummaryLifecycleStateEnum(val string) (PluggableDatabaseSummaryLifecycleStateEnum, bool) {
-	mappingPluggableDatabaseSummaryLifecycleStateEnumIgnoreCase := make(map[string]PluggableDatabaseSummaryLifecycleStateEnum)
-	for k, v := range mappingPluggableDatabaseSummaryLifecycleStateEnum {
-		mappingPluggableDatabaseSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPluggableDatabaseSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPluggableDatabaseSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -152,6 +156,13 @@ var mappingPluggableDatabaseSummaryOpenModeEnum = map[string]PluggableDatabaseSu
 	"READ_WRITE": PluggableDatabaseSummaryOpenModeReadWrite,
 	"MOUNTED":    PluggableDatabaseSummaryOpenModeMounted,
 	"MIGRATE":    PluggableDatabaseSummaryOpenModeMigrate,
+}
+
+var mappingPluggableDatabaseSummaryOpenModeEnumLowerCase = map[string]PluggableDatabaseSummaryOpenModeEnum{
+	"read_only":  PluggableDatabaseSummaryOpenModeReadOnly,
+	"read_write": PluggableDatabaseSummaryOpenModeReadWrite,
+	"mounted":    PluggableDatabaseSummaryOpenModeMounted,
+	"migrate":    PluggableDatabaseSummaryOpenModeMigrate,
 }
 
 // GetPluggableDatabaseSummaryOpenModeEnumValues Enumerates the set of values for PluggableDatabaseSummaryOpenModeEnum
@@ -175,11 +186,6 @@ func GetPluggableDatabaseSummaryOpenModeEnumStringValues() []string {
 
 // GetMappingPluggableDatabaseSummaryOpenModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPluggableDatabaseSummaryOpenModeEnum(val string) (PluggableDatabaseSummaryOpenModeEnum, bool) {
-	mappingPluggableDatabaseSummaryOpenModeEnumIgnoreCase := make(map[string]PluggableDatabaseSummaryOpenModeEnum)
-	for k, v := range mappingPluggableDatabaseSummaryOpenModeEnum {
-		mappingPluggableDatabaseSummaryOpenModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPluggableDatabaseSummaryOpenModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPluggableDatabaseSummaryOpenModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

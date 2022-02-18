@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -107,6 +107,17 @@ var mappingClusterNetworkLifecycleStateEnum = map[string]ClusterNetworkLifecycle
 	"RUNNING":      ClusterNetworkLifecycleStateRunning,
 }
 
+var mappingClusterNetworkLifecycleStateEnumLowerCase = map[string]ClusterNetworkLifecycleStateEnum{
+	"provisioning": ClusterNetworkLifecycleStateProvisioning,
+	"scaling":      ClusterNetworkLifecycleStateScaling,
+	"starting":     ClusterNetworkLifecycleStateStarting,
+	"stopping":     ClusterNetworkLifecycleStateStopping,
+	"terminating":  ClusterNetworkLifecycleStateTerminating,
+	"stopped":      ClusterNetworkLifecycleStateStopped,
+	"terminated":   ClusterNetworkLifecycleStateTerminated,
+	"running":      ClusterNetworkLifecycleStateRunning,
+}
+
 // GetClusterNetworkLifecycleStateEnumValues Enumerates the set of values for ClusterNetworkLifecycleStateEnum
 func GetClusterNetworkLifecycleStateEnumValues() []ClusterNetworkLifecycleStateEnum {
 	values := make([]ClusterNetworkLifecycleStateEnum, 0)
@@ -132,11 +143,6 @@ func GetClusterNetworkLifecycleStateEnumStringValues() []string {
 
 // GetMappingClusterNetworkLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingClusterNetworkLifecycleStateEnum(val string) (ClusterNetworkLifecycleStateEnum, bool) {
-	mappingClusterNetworkLifecycleStateEnumIgnoreCase := make(map[string]ClusterNetworkLifecycleStateEnum)
-	for k, v := range mappingClusterNetworkLifecycleStateEnum {
-		mappingClusterNetworkLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingClusterNetworkLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingClusterNetworkLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

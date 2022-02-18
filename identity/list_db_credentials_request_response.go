@@ -6,7 +6,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -143,6 +143,11 @@ var mappingListDbCredentialsSortByEnum = map[string]ListDbCredentialsSortByEnum{
 	"NAME":        ListDbCredentialsSortByName,
 }
 
+var mappingListDbCredentialsSortByEnumLowerCase = map[string]ListDbCredentialsSortByEnum{
+	"timecreated": ListDbCredentialsSortByTimecreated,
+	"name":        ListDbCredentialsSortByName,
+}
+
 // GetListDbCredentialsSortByEnumValues Enumerates the set of values for ListDbCredentialsSortByEnum
 func GetListDbCredentialsSortByEnumValues() []ListDbCredentialsSortByEnum {
 	values := make([]ListDbCredentialsSortByEnum, 0)
@@ -162,12 +167,7 @@ func GetListDbCredentialsSortByEnumStringValues() []string {
 
 // GetMappingListDbCredentialsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDbCredentialsSortByEnum(val string) (ListDbCredentialsSortByEnum, bool) {
-	mappingListDbCredentialsSortByEnumIgnoreCase := make(map[string]ListDbCredentialsSortByEnum)
-	for k, v := range mappingListDbCredentialsSortByEnum {
-		mappingListDbCredentialsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDbCredentialsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDbCredentialsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +183,11 @@ const (
 var mappingListDbCredentialsSortOrderEnum = map[string]ListDbCredentialsSortOrderEnum{
 	"ASC":  ListDbCredentialsSortOrderAsc,
 	"DESC": ListDbCredentialsSortOrderDesc,
+}
+
+var mappingListDbCredentialsSortOrderEnumLowerCase = map[string]ListDbCredentialsSortOrderEnum{
+	"asc":  ListDbCredentialsSortOrderAsc,
+	"desc": ListDbCredentialsSortOrderDesc,
 }
 
 // GetListDbCredentialsSortOrderEnumValues Enumerates the set of values for ListDbCredentialsSortOrderEnum
@@ -204,11 +209,6 @@ func GetListDbCredentialsSortOrderEnumStringValues() []string {
 
 // GetMappingListDbCredentialsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDbCredentialsSortOrderEnum(val string) (ListDbCredentialsSortOrderEnum, bool) {
-	mappingListDbCredentialsSortOrderEnumIgnoreCase := make(map[string]ListDbCredentialsSortOrderEnum)
-	for k, v := range mappingListDbCredentialsSortOrderEnum {
-		mappingListDbCredentialsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDbCredentialsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDbCredentialsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

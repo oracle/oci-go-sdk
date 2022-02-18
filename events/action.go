@@ -13,7 +13,7 @@ package events
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -163,6 +163,16 @@ var mappingActionLifecycleStateEnum = map[string]ActionLifecycleStateEnum{
 	"FAILED":   ActionLifecycleStateFailed,
 }
 
+var mappingActionLifecycleStateEnumLowerCase = map[string]ActionLifecycleStateEnum{
+	"creating": ActionLifecycleStateCreating,
+	"active":   ActionLifecycleStateActive,
+	"inactive": ActionLifecycleStateInactive,
+	"updating": ActionLifecycleStateUpdating,
+	"deleting": ActionLifecycleStateDeleting,
+	"deleted":  ActionLifecycleStateDeleted,
+	"failed":   ActionLifecycleStateFailed,
+}
+
 // GetActionLifecycleStateEnumValues Enumerates the set of values for ActionLifecycleStateEnum
 func GetActionLifecycleStateEnumValues() []ActionLifecycleStateEnum {
 	values := make([]ActionLifecycleStateEnum, 0)
@@ -187,12 +197,7 @@ func GetActionLifecycleStateEnumStringValues() []string {
 
 // GetMappingActionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingActionLifecycleStateEnum(val string) (ActionLifecycleStateEnum, bool) {
-	mappingActionLifecycleStateEnumIgnoreCase := make(map[string]ActionLifecycleStateEnum)
-	for k, v := range mappingActionLifecycleStateEnum {
-		mappingActionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingActionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingActionLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -210,6 +215,12 @@ var mappingActionActionTypeEnum = map[string]ActionActionTypeEnum{
 	"ONS":  ActionActionTypeOns,
 	"OSS":  ActionActionTypeOss,
 	"FAAS": ActionActionTypeFaas,
+}
+
+var mappingActionActionTypeEnumLowerCase = map[string]ActionActionTypeEnum{
+	"ons":  ActionActionTypeOns,
+	"oss":  ActionActionTypeOss,
+	"faas": ActionActionTypeFaas,
 }
 
 // GetActionActionTypeEnumValues Enumerates the set of values for ActionActionTypeEnum
@@ -232,11 +243,6 @@ func GetActionActionTypeEnumStringValues() []string {
 
 // GetMappingActionActionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingActionActionTypeEnum(val string) (ActionActionTypeEnum, bool) {
-	mappingActionActionTypeEnumIgnoreCase := make(map[string]ActionActionTypeEnum)
-	for k, v := range mappingActionActionTypeEnum {
-		mappingActionActionTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingActionActionTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingActionActionTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

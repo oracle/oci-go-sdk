@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -155,6 +155,12 @@ var mappingListMaintenanceRunsSortByEnum = map[string]ListMaintenanceRunsSortByE
 	"DISPLAYNAME":    ListMaintenanceRunsSortByDisplayname,
 }
 
+var mappingListMaintenanceRunsSortByEnumLowerCase = map[string]ListMaintenanceRunsSortByEnum{
+	"time_scheduled": ListMaintenanceRunsSortByTimeScheduled,
+	"time_ended":     ListMaintenanceRunsSortByTimeEnded,
+	"displayname":    ListMaintenanceRunsSortByDisplayname,
+}
+
 // GetListMaintenanceRunsSortByEnumValues Enumerates the set of values for ListMaintenanceRunsSortByEnum
 func GetListMaintenanceRunsSortByEnumValues() []ListMaintenanceRunsSortByEnum {
 	values := make([]ListMaintenanceRunsSortByEnum, 0)
@@ -175,12 +181,7 @@ func GetListMaintenanceRunsSortByEnumStringValues() []string {
 
 // GetMappingListMaintenanceRunsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMaintenanceRunsSortByEnum(val string) (ListMaintenanceRunsSortByEnum, bool) {
-	mappingListMaintenanceRunsSortByEnumIgnoreCase := make(map[string]ListMaintenanceRunsSortByEnum)
-	for k, v := range mappingListMaintenanceRunsSortByEnum {
-		mappingListMaintenanceRunsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMaintenanceRunsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMaintenanceRunsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -196,6 +197,11 @@ const (
 var mappingListMaintenanceRunsSortOrderEnum = map[string]ListMaintenanceRunsSortOrderEnum{
 	"ASC":  ListMaintenanceRunsSortOrderAsc,
 	"DESC": ListMaintenanceRunsSortOrderDesc,
+}
+
+var mappingListMaintenanceRunsSortOrderEnumLowerCase = map[string]ListMaintenanceRunsSortOrderEnum{
+	"asc":  ListMaintenanceRunsSortOrderAsc,
+	"desc": ListMaintenanceRunsSortOrderDesc,
 }
 
 // GetListMaintenanceRunsSortOrderEnumValues Enumerates the set of values for ListMaintenanceRunsSortOrderEnum
@@ -217,11 +223,6 @@ func GetListMaintenanceRunsSortOrderEnumStringValues() []string {
 
 // GetMappingListMaintenanceRunsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMaintenanceRunsSortOrderEnum(val string) (ListMaintenanceRunsSortOrderEnum, bool) {
-	mappingListMaintenanceRunsSortOrderEnumIgnoreCase := make(map[string]ListMaintenanceRunsSortOrderEnum)
-	for k, v := range mappingListMaintenanceRunsSortOrderEnum {
-		mappingListMaintenanceRunsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMaintenanceRunsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMaintenanceRunsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

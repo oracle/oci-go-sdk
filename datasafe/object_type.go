@@ -27,6 +27,11 @@ var mappingObjectTypeEnum = map[string]ObjectTypeEnum{
 	"EDITIONING_VIEW": ObjectTypeEditioningView,
 }
 
+var mappingObjectTypeEnumLowerCase = map[string]ObjectTypeEnum{
+	"table":           ObjectTypeTable,
+	"editioning_view": ObjectTypeEditioningView,
+}
+
 // GetObjectTypeEnumValues Enumerates the set of values for ObjectTypeEnum
 func GetObjectTypeEnumValues() []ObjectTypeEnum {
 	values := make([]ObjectTypeEnum, 0)
@@ -46,11 +51,6 @@ func GetObjectTypeEnumStringValues() []string {
 
 // GetMappingObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingObjectTypeEnum(val string) (ObjectTypeEnum, bool) {
-	mappingObjectTypeEnumIgnoreCase := make(map[string]ObjectTypeEnum)
-	for k, v := range mappingObjectTypeEnum {
-		mappingObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingObjectTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

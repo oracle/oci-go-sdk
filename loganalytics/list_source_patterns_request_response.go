@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -134,6 +134,10 @@ var mappingListSourcePatternsSortByEnum = map[string]ListSourcePatternsSortByEnu
 	"patternText": ListSourcePatternsSortByPatterntext,
 }
 
+var mappingListSourcePatternsSortByEnumLowerCase = map[string]ListSourcePatternsSortByEnum{
+	"patterntext": ListSourcePatternsSortByPatterntext,
+}
+
 // GetListSourcePatternsSortByEnumValues Enumerates the set of values for ListSourcePatternsSortByEnum
 func GetListSourcePatternsSortByEnumValues() []ListSourcePatternsSortByEnum {
 	values := make([]ListSourcePatternsSortByEnum, 0)
@@ -152,12 +156,7 @@ func GetListSourcePatternsSortByEnumStringValues() []string {
 
 // GetMappingListSourcePatternsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSourcePatternsSortByEnum(val string) (ListSourcePatternsSortByEnum, bool) {
-	mappingListSourcePatternsSortByEnumIgnoreCase := make(map[string]ListSourcePatternsSortByEnum)
-	for k, v := range mappingListSourcePatternsSortByEnum {
-		mappingListSourcePatternsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSourcePatternsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSourcePatternsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -173,6 +172,11 @@ const (
 var mappingListSourcePatternsSortOrderEnum = map[string]ListSourcePatternsSortOrderEnum{
 	"ASC":  ListSourcePatternsSortOrderAsc,
 	"DESC": ListSourcePatternsSortOrderDesc,
+}
+
+var mappingListSourcePatternsSortOrderEnumLowerCase = map[string]ListSourcePatternsSortOrderEnum{
+	"asc":  ListSourcePatternsSortOrderAsc,
+	"desc": ListSourcePatternsSortOrderDesc,
 }
 
 // GetListSourcePatternsSortOrderEnumValues Enumerates the set of values for ListSourcePatternsSortOrderEnum
@@ -194,11 +198,6 @@ func GetListSourcePatternsSortOrderEnumStringValues() []string {
 
 // GetMappingListSourcePatternsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSourcePatternsSortOrderEnum(val string) (ListSourcePatternsSortOrderEnum, bool) {
-	mappingListSourcePatternsSortOrderEnumIgnoreCase := make(map[string]ListSourcePatternsSortOrderEnum)
-	for k, v := range mappingListSourcePatternsSortOrderEnum {
-		mappingListSourcePatternsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSourcePatternsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSourcePatternsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

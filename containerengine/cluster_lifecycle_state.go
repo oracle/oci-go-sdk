@@ -37,6 +37,15 @@ var mappingClusterLifecycleStateEnum = map[string]ClusterLifecycleStateEnum{
 	"UPDATING": ClusterLifecycleStateUpdating,
 }
 
+var mappingClusterLifecycleStateEnumLowerCase = map[string]ClusterLifecycleStateEnum{
+	"creating": ClusterLifecycleStateCreating,
+	"active":   ClusterLifecycleStateActive,
+	"failed":   ClusterLifecycleStateFailed,
+	"deleting": ClusterLifecycleStateDeleting,
+	"deleted":  ClusterLifecycleStateDeleted,
+	"updating": ClusterLifecycleStateUpdating,
+}
+
 // GetClusterLifecycleStateEnumValues Enumerates the set of values for ClusterLifecycleStateEnum
 func GetClusterLifecycleStateEnumValues() []ClusterLifecycleStateEnum {
 	values := make([]ClusterLifecycleStateEnum, 0)
@@ -60,11 +69,6 @@ func GetClusterLifecycleStateEnumStringValues() []string {
 
 // GetMappingClusterLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingClusterLifecycleStateEnum(val string) (ClusterLifecycleStateEnum, bool) {
-	mappingClusterLifecycleStateEnumIgnoreCase := make(map[string]ClusterLifecycleStateEnum)
-	for k, v := range mappingClusterLifecycleStateEnum {
-		mappingClusterLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingClusterLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingClusterLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

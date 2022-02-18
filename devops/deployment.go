@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -273,6 +273,15 @@ var mappingDeploymentLifecycleStateEnum = map[string]DeploymentLifecycleStateEnu
 	"CANCELED":    DeploymentLifecycleStateCanceled,
 }
 
+var mappingDeploymentLifecycleStateEnumLowerCase = map[string]DeploymentLifecycleStateEnum{
+	"accepted":    DeploymentLifecycleStateAccepted,
+	"in_progress": DeploymentLifecycleStateInProgress,
+	"failed":      DeploymentLifecycleStateFailed,
+	"succeeded":   DeploymentLifecycleStateSucceeded,
+	"canceling":   DeploymentLifecycleStateCanceling,
+	"canceled":    DeploymentLifecycleStateCanceled,
+}
+
 // GetDeploymentLifecycleStateEnumValues Enumerates the set of values for DeploymentLifecycleStateEnum
 func GetDeploymentLifecycleStateEnumValues() []DeploymentLifecycleStateEnum {
 	values := make([]DeploymentLifecycleStateEnum, 0)
@@ -296,12 +305,7 @@ func GetDeploymentLifecycleStateEnumStringValues() []string {
 
 // GetMappingDeploymentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeploymentLifecycleStateEnum(val string) (DeploymentLifecycleStateEnum, bool) {
-	mappingDeploymentLifecycleStateEnumIgnoreCase := make(map[string]DeploymentLifecycleStateEnum)
-	for k, v := range mappingDeploymentLifecycleStateEnum {
-		mappingDeploymentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeploymentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeploymentLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -319,6 +323,12 @@ var mappingDeploymentDeploymentTypeEnum = map[string]DeploymentDeploymentTypeEnu
 	"PIPELINE_DEPLOYMENT":     DeploymentDeploymentTypePipelineDeployment,
 	"PIPELINE_REDEPLOYMENT":   DeploymentDeploymentTypePipelineRedeployment,
 	"SINGLE_STAGE_DEPLOYMENT": DeploymentDeploymentTypeSingleStageDeployment,
+}
+
+var mappingDeploymentDeploymentTypeEnumLowerCase = map[string]DeploymentDeploymentTypeEnum{
+	"pipeline_deployment":     DeploymentDeploymentTypePipelineDeployment,
+	"pipeline_redeployment":   DeploymentDeploymentTypePipelineRedeployment,
+	"single_stage_deployment": DeploymentDeploymentTypeSingleStageDeployment,
 }
 
 // GetDeploymentDeploymentTypeEnumValues Enumerates the set of values for DeploymentDeploymentTypeEnum
@@ -341,11 +351,6 @@ func GetDeploymentDeploymentTypeEnumStringValues() []string {
 
 // GetMappingDeploymentDeploymentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeploymentDeploymentTypeEnum(val string) (DeploymentDeploymentTypeEnum, bool) {
-	mappingDeploymentDeploymentTypeEnumIgnoreCase := make(map[string]DeploymentDeploymentTypeEnum)
-	for k, v := range mappingDeploymentDeploymentTypeEnum {
-		mappingDeploymentDeploymentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeploymentDeploymentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeploymentDeploymentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

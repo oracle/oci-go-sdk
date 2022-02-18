@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -171,6 +171,15 @@ var mappingBuildPipelineStageRunProgressStatusEnum = map[string]BuildPipelineSta
 	"CANCELED":    BuildPipelineStageRunProgressStatusCanceled,
 }
 
+var mappingBuildPipelineStageRunProgressStatusEnumLowerCase = map[string]BuildPipelineStageRunProgressStatusEnum{
+	"accepted":    BuildPipelineStageRunProgressStatusAccepted,
+	"in_progress": BuildPipelineStageRunProgressStatusInProgress,
+	"failed":      BuildPipelineStageRunProgressStatusFailed,
+	"succeeded":   BuildPipelineStageRunProgressStatusSucceeded,
+	"canceling":   BuildPipelineStageRunProgressStatusCanceling,
+	"canceled":    BuildPipelineStageRunProgressStatusCanceled,
+}
+
 // GetBuildPipelineStageRunProgressStatusEnumValues Enumerates the set of values for BuildPipelineStageRunProgressStatusEnum
 func GetBuildPipelineStageRunProgressStatusEnumValues() []BuildPipelineStageRunProgressStatusEnum {
 	values := make([]BuildPipelineStageRunProgressStatusEnum, 0)
@@ -194,11 +203,6 @@ func GetBuildPipelineStageRunProgressStatusEnumStringValues() []string {
 
 // GetMappingBuildPipelineStageRunProgressStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBuildPipelineStageRunProgressStatusEnum(val string) (BuildPipelineStageRunProgressStatusEnum, bool) {
-	mappingBuildPipelineStageRunProgressStatusEnumIgnoreCase := make(map[string]BuildPipelineStageRunProgressStatusEnum)
-	for k, v := range mappingBuildPipelineStageRunProgressStatusEnum {
-		mappingBuildPipelineStageRunProgressStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBuildPipelineStageRunProgressStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBuildPipelineStageRunProgressStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

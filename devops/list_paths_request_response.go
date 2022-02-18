@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -136,6 +136,11 @@ var mappingListPathsSortOrderEnum = map[string]ListPathsSortOrderEnum{
 	"DESC": ListPathsSortOrderDesc,
 }
 
+var mappingListPathsSortOrderEnumLowerCase = map[string]ListPathsSortOrderEnum{
+	"asc":  ListPathsSortOrderAsc,
+	"desc": ListPathsSortOrderDesc,
+}
+
 // GetListPathsSortOrderEnumValues Enumerates the set of values for ListPathsSortOrderEnum
 func GetListPathsSortOrderEnumValues() []ListPathsSortOrderEnum {
 	values := make([]ListPathsSortOrderEnum, 0)
@@ -155,12 +160,7 @@ func GetListPathsSortOrderEnumStringValues() []string {
 
 // GetMappingListPathsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPathsSortOrderEnum(val string) (ListPathsSortOrderEnum, bool) {
-	mappingListPathsSortOrderEnumIgnoreCase := make(map[string]ListPathsSortOrderEnum)
-	for k, v := range mappingListPathsSortOrderEnum {
-		mappingListPathsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPathsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPathsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -177,6 +177,12 @@ const (
 var mappingListPathsSortByEnum = map[string]ListPathsSortByEnum{
 	"type":        ListPathsSortByType,
 	"sizeInBytes": ListPathsSortBySizeinbytes,
+	"name":        ListPathsSortByName,
+}
+
+var mappingListPathsSortByEnumLowerCase = map[string]ListPathsSortByEnum{
+	"type":        ListPathsSortByType,
+	"sizeinbytes": ListPathsSortBySizeinbytes,
 	"name":        ListPathsSortByName,
 }
 
@@ -200,11 +206,6 @@ func GetListPathsSortByEnumStringValues() []string {
 
 // GetMappingListPathsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPathsSortByEnum(val string) (ListPathsSortByEnum, bool) {
-	mappingListPathsSortByEnumIgnoreCase := make(map[string]ListPathsSortByEnum)
-	for k, v := range mappingListPathsSortByEnum {
-		mappingListPathsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPathsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPathsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

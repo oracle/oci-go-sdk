@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -146,6 +146,11 @@ var mappingListDedicatedVmHostInstancesSortByEnum = map[string]ListDedicatedVmHo
 	"DISPLAYNAME": ListDedicatedVmHostInstancesSortByDisplayname,
 }
 
+var mappingListDedicatedVmHostInstancesSortByEnumLowerCase = map[string]ListDedicatedVmHostInstancesSortByEnum{
+	"timecreated": ListDedicatedVmHostInstancesSortByTimecreated,
+	"displayname": ListDedicatedVmHostInstancesSortByDisplayname,
+}
+
 // GetListDedicatedVmHostInstancesSortByEnumValues Enumerates the set of values for ListDedicatedVmHostInstancesSortByEnum
 func GetListDedicatedVmHostInstancesSortByEnumValues() []ListDedicatedVmHostInstancesSortByEnum {
 	values := make([]ListDedicatedVmHostInstancesSortByEnum, 0)
@@ -165,12 +170,7 @@ func GetListDedicatedVmHostInstancesSortByEnumStringValues() []string {
 
 // GetMappingListDedicatedVmHostInstancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDedicatedVmHostInstancesSortByEnum(val string) (ListDedicatedVmHostInstancesSortByEnum, bool) {
-	mappingListDedicatedVmHostInstancesSortByEnumIgnoreCase := make(map[string]ListDedicatedVmHostInstancesSortByEnum)
-	for k, v := range mappingListDedicatedVmHostInstancesSortByEnum {
-		mappingListDedicatedVmHostInstancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDedicatedVmHostInstancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDedicatedVmHostInstancesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -186,6 +186,11 @@ const (
 var mappingListDedicatedVmHostInstancesSortOrderEnum = map[string]ListDedicatedVmHostInstancesSortOrderEnum{
 	"ASC":  ListDedicatedVmHostInstancesSortOrderAsc,
 	"DESC": ListDedicatedVmHostInstancesSortOrderDesc,
+}
+
+var mappingListDedicatedVmHostInstancesSortOrderEnumLowerCase = map[string]ListDedicatedVmHostInstancesSortOrderEnum{
+	"asc":  ListDedicatedVmHostInstancesSortOrderAsc,
+	"desc": ListDedicatedVmHostInstancesSortOrderDesc,
 }
 
 // GetListDedicatedVmHostInstancesSortOrderEnumValues Enumerates the set of values for ListDedicatedVmHostInstancesSortOrderEnum
@@ -207,11 +212,6 @@ func GetListDedicatedVmHostInstancesSortOrderEnumStringValues() []string {
 
 // GetMappingListDedicatedVmHostInstancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDedicatedVmHostInstancesSortOrderEnum(val string) (ListDedicatedVmHostInstancesSortOrderEnum, bool) {
-	mappingListDedicatedVmHostInstancesSortOrderEnumIgnoreCase := make(map[string]ListDedicatedVmHostInstancesSortOrderEnum)
-	for k, v := range mappingListDedicatedVmHostInstancesSortOrderEnum {
-		mappingListDedicatedVmHostInstancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDedicatedVmHostInstancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDedicatedVmHostInstancesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

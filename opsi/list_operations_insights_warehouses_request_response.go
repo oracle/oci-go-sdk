@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -148,6 +148,11 @@ var mappingListOperationsInsightsWarehousesSortOrderEnum = map[string]ListOperat
 	"DESC": ListOperationsInsightsWarehousesSortOrderDesc,
 }
 
+var mappingListOperationsInsightsWarehousesSortOrderEnumLowerCase = map[string]ListOperationsInsightsWarehousesSortOrderEnum{
+	"asc":  ListOperationsInsightsWarehousesSortOrderAsc,
+	"desc": ListOperationsInsightsWarehousesSortOrderDesc,
+}
+
 // GetListOperationsInsightsWarehousesSortOrderEnumValues Enumerates the set of values for ListOperationsInsightsWarehousesSortOrderEnum
 func GetListOperationsInsightsWarehousesSortOrderEnumValues() []ListOperationsInsightsWarehousesSortOrderEnum {
 	values := make([]ListOperationsInsightsWarehousesSortOrderEnum, 0)
@@ -167,12 +172,7 @@ func GetListOperationsInsightsWarehousesSortOrderEnumStringValues() []string {
 
 // GetMappingListOperationsInsightsWarehousesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOperationsInsightsWarehousesSortOrderEnum(val string) (ListOperationsInsightsWarehousesSortOrderEnum, bool) {
-	mappingListOperationsInsightsWarehousesSortOrderEnumIgnoreCase := make(map[string]ListOperationsInsightsWarehousesSortOrderEnum)
-	for k, v := range mappingListOperationsInsightsWarehousesSortOrderEnum {
-		mappingListOperationsInsightsWarehousesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOperationsInsightsWarehousesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOperationsInsightsWarehousesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -188,6 +188,11 @@ const (
 var mappingListOperationsInsightsWarehousesSortByEnum = map[string]ListOperationsInsightsWarehousesSortByEnum{
 	"timeCreated": ListOperationsInsightsWarehousesSortByTimecreated,
 	"displayName": ListOperationsInsightsWarehousesSortByDisplayname,
+}
+
+var mappingListOperationsInsightsWarehousesSortByEnumLowerCase = map[string]ListOperationsInsightsWarehousesSortByEnum{
+	"timecreated": ListOperationsInsightsWarehousesSortByTimecreated,
+	"displayname": ListOperationsInsightsWarehousesSortByDisplayname,
 }
 
 // GetListOperationsInsightsWarehousesSortByEnumValues Enumerates the set of values for ListOperationsInsightsWarehousesSortByEnum
@@ -209,11 +214,6 @@ func GetListOperationsInsightsWarehousesSortByEnumStringValues() []string {
 
 // GetMappingListOperationsInsightsWarehousesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOperationsInsightsWarehousesSortByEnum(val string) (ListOperationsInsightsWarehousesSortByEnum, bool) {
-	mappingListOperationsInsightsWarehousesSortByEnumIgnoreCase := make(map[string]ListOperationsInsightsWarehousesSortByEnum)
-	for k, v := range mappingListOperationsInsightsWarehousesSortByEnum {
-		mappingListOperationsInsightsWarehousesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOperationsInsightsWarehousesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOperationsInsightsWarehousesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

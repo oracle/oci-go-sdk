@@ -12,7 +12,7 @@ package aivision
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,11 @@ var mappingImageDetailsSourceEnum = map[string]ImageDetailsSourceEnum{
 	"OBJECT_STORAGE": ImageDetailsSourceObjectStorage,
 }
 
+var mappingImageDetailsSourceEnumLowerCase = map[string]ImageDetailsSourceEnum{
+	"inline":         ImageDetailsSourceInline,
+	"object_storage": ImageDetailsSourceObjectStorage,
+}
+
 // GetImageDetailsSourceEnumValues Enumerates the set of values for ImageDetailsSourceEnum
 func GetImageDetailsSourceEnumValues() []ImageDetailsSourceEnum {
 	values := make([]ImageDetailsSourceEnum, 0)
@@ -112,11 +117,6 @@ func GetImageDetailsSourceEnumStringValues() []string {
 
 // GetMappingImageDetailsSourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingImageDetailsSourceEnum(val string) (ImageDetailsSourceEnum, bool) {
-	mappingImageDetailsSourceEnumIgnoreCase := make(map[string]ImageDetailsSourceEnum)
-	for k, v := range mappingImageDetailsSourceEnum {
-		mappingImageDetailsSourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingImageDetailsSourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingImageDetailsSourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

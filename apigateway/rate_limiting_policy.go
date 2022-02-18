@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -60,6 +60,11 @@ var mappingRateLimitingPolicyRateKeyEnum = map[string]RateLimitingPolicyRateKeyE
 	"TOTAL":     RateLimitingPolicyRateKeyTotal,
 }
 
+var mappingRateLimitingPolicyRateKeyEnumLowerCase = map[string]RateLimitingPolicyRateKeyEnum{
+	"client_ip": RateLimitingPolicyRateKeyClientIp,
+	"total":     RateLimitingPolicyRateKeyTotal,
+}
+
 // GetRateLimitingPolicyRateKeyEnumValues Enumerates the set of values for RateLimitingPolicyRateKeyEnum
 func GetRateLimitingPolicyRateKeyEnumValues() []RateLimitingPolicyRateKeyEnum {
 	values := make([]RateLimitingPolicyRateKeyEnum, 0)
@@ -79,11 +84,6 @@ func GetRateLimitingPolicyRateKeyEnumStringValues() []string {
 
 // GetMappingRateLimitingPolicyRateKeyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRateLimitingPolicyRateKeyEnum(val string) (RateLimitingPolicyRateKeyEnum, bool) {
-	mappingRateLimitingPolicyRateKeyEnumIgnoreCase := make(map[string]RateLimitingPolicyRateKeyEnum)
-	for k, v := range mappingRateLimitingPolicyRateKeyEnum {
-		mappingRateLimitingPolicyRateKeyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRateLimitingPolicyRateKeyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRateLimitingPolicyRateKeyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

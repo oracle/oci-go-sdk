@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -175,6 +175,14 @@ var mappingDeployArtifactDeployArtifactTypeEnum = map[string]DeployArtifactDeplo
 	"DOCKER_IMAGE":        DeployArtifactDeployArtifactTypeDockerImage,
 }
 
+var mappingDeployArtifactDeployArtifactTypeEnumLowerCase = map[string]DeployArtifactDeployArtifactTypeEnum{
+	"deployment_spec":     DeployArtifactDeployArtifactTypeDeploymentSpec,
+	"job_spec":            DeployArtifactDeployArtifactTypeJobSpec,
+	"kubernetes_manifest": DeployArtifactDeployArtifactTypeKubernetesManifest,
+	"generic_file":        DeployArtifactDeployArtifactTypeGenericFile,
+	"docker_image":        DeployArtifactDeployArtifactTypeDockerImage,
+}
+
 // GetDeployArtifactDeployArtifactTypeEnumValues Enumerates the set of values for DeployArtifactDeployArtifactTypeEnum
 func GetDeployArtifactDeployArtifactTypeEnumValues() []DeployArtifactDeployArtifactTypeEnum {
 	values := make([]DeployArtifactDeployArtifactTypeEnum, 0)
@@ -197,12 +205,7 @@ func GetDeployArtifactDeployArtifactTypeEnumStringValues() []string {
 
 // GetMappingDeployArtifactDeployArtifactTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeployArtifactDeployArtifactTypeEnum(val string) (DeployArtifactDeployArtifactTypeEnum, bool) {
-	mappingDeployArtifactDeployArtifactTypeEnumIgnoreCase := make(map[string]DeployArtifactDeployArtifactTypeEnum)
-	for k, v := range mappingDeployArtifactDeployArtifactTypeEnum {
-		mappingDeployArtifactDeployArtifactTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeployArtifactDeployArtifactTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeployArtifactDeployArtifactTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -218,6 +221,11 @@ const (
 var mappingDeployArtifactArgumentSubstitutionModeEnum = map[string]DeployArtifactArgumentSubstitutionModeEnum{
 	"NONE":                    DeployArtifactArgumentSubstitutionModeNone,
 	"SUBSTITUTE_PLACEHOLDERS": DeployArtifactArgumentSubstitutionModeSubstitutePlaceholders,
+}
+
+var mappingDeployArtifactArgumentSubstitutionModeEnumLowerCase = map[string]DeployArtifactArgumentSubstitutionModeEnum{
+	"none":                    DeployArtifactArgumentSubstitutionModeNone,
+	"substitute_placeholders": DeployArtifactArgumentSubstitutionModeSubstitutePlaceholders,
 }
 
 // GetDeployArtifactArgumentSubstitutionModeEnumValues Enumerates the set of values for DeployArtifactArgumentSubstitutionModeEnum
@@ -239,12 +247,7 @@ func GetDeployArtifactArgumentSubstitutionModeEnumStringValues() []string {
 
 // GetMappingDeployArtifactArgumentSubstitutionModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeployArtifactArgumentSubstitutionModeEnum(val string) (DeployArtifactArgumentSubstitutionModeEnum, bool) {
-	mappingDeployArtifactArgumentSubstitutionModeEnumIgnoreCase := make(map[string]DeployArtifactArgumentSubstitutionModeEnum)
-	for k, v := range mappingDeployArtifactArgumentSubstitutionModeEnum {
-		mappingDeployArtifactArgumentSubstitutionModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeployArtifactArgumentSubstitutionModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeployArtifactArgumentSubstitutionModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -270,6 +273,15 @@ var mappingDeployArtifactLifecycleStateEnum = map[string]DeployArtifactLifecycle
 	"FAILED":   DeployArtifactLifecycleStateFailed,
 }
 
+var mappingDeployArtifactLifecycleStateEnumLowerCase = map[string]DeployArtifactLifecycleStateEnum{
+	"creating": DeployArtifactLifecycleStateCreating,
+	"updating": DeployArtifactLifecycleStateUpdating,
+	"active":   DeployArtifactLifecycleStateActive,
+	"deleting": DeployArtifactLifecycleStateDeleting,
+	"deleted":  DeployArtifactLifecycleStateDeleted,
+	"failed":   DeployArtifactLifecycleStateFailed,
+}
+
 // GetDeployArtifactLifecycleStateEnumValues Enumerates the set of values for DeployArtifactLifecycleStateEnum
 func GetDeployArtifactLifecycleStateEnumValues() []DeployArtifactLifecycleStateEnum {
 	values := make([]DeployArtifactLifecycleStateEnum, 0)
@@ -293,11 +305,6 @@ func GetDeployArtifactLifecycleStateEnumStringValues() []string {
 
 // GetMappingDeployArtifactLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeployArtifactLifecycleStateEnum(val string) (DeployArtifactLifecycleStateEnum, bool) {
-	mappingDeployArtifactLifecycleStateEnumIgnoreCase := make(map[string]DeployArtifactLifecycleStateEnum)
-	for k, v := range mappingDeployArtifactLifecycleStateEnum {
-		mappingDeployArtifactLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeployArtifactLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeployArtifactLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

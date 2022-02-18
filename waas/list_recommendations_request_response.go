@@ -6,7 +6,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -120,6 +120,11 @@ var mappingListRecommendationsRecommendedActionEnum = map[string]ListRecommendat
 	"BLOCK":  ListRecommendationsRecommendedActionBlock,
 }
 
+var mappingListRecommendationsRecommendedActionEnumLowerCase = map[string]ListRecommendationsRecommendedActionEnum{
+	"detect": ListRecommendationsRecommendedActionDetect,
+	"block":  ListRecommendationsRecommendedActionBlock,
+}
+
 // GetListRecommendationsRecommendedActionEnumValues Enumerates the set of values for ListRecommendationsRecommendedActionEnum
 func GetListRecommendationsRecommendedActionEnumValues() []ListRecommendationsRecommendedActionEnum {
 	values := make([]ListRecommendationsRecommendedActionEnum, 0)
@@ -139,11 +144,6 @@ func GetListRecommendationsRecommendedActionEnumStringValues() []string {
 
 // GetMappingListRecommendationsRecommendedActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRecommendationsRecommendedActionEnum(val string) (ListRecommendationsRecommendedActionEnum, bool) {
-	mappingListRecommendationsRecommendedActionEnumIgnoreCase := make(map[string]ListRecommendationsRecommendedActionEnum)
-	for k, v := range mappingListRecommendationsRecommendedActionEnum {
-		mappingListRecommendationsRecommendedActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRecommendationsRecommendedActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRecommendationsRecommendedActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -204,6 +204,10 @@ var mappingConnectionLifecycleStateEnum = map[string]ConnectionLifecycleStateEnu
 	"ACTIVE": ConnectionLifecycleStateActive,
 }
 
+var mappingConnectionLifecycleStateEnumLowerCase = map[string]ConnectionLifecycleStateEnum{
+	"active": ConnectionLifecycleStateActive,
+}
+
 // GetConnectionLifecycleStateEnumValues Enumerates the set of values for ConnectionLifecycleStateEnum
 func GetConnectionLifecycleStateEnumValues() []ConnectionLifecycleStateEnum {
 	values := make([]ConnectionLifecycleStateEnum, 0)
@@ -222,12 +226,7 @@ func GetConnectionLifecycleStateEnumStringValues() []string {
 
 // GetMappingConnectionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConnectionLifecycleStateEnum(val string) (ConnectionLifecycleStateEnum, bool) {
-	mappingConnectionLifecycleStateEnumIgnoreCase := make(map[string]ConnectionLifecycleStateEnum)
-	for k, v := range mappingConnectionLifecycleStateEnum {
-		mappingConnectionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConnectionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConnectionLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -243,6 +242,11 @@ const (
 var mappingConnectionConnectionTypeEnum = map[string]ConnectionConnectionTypeEnum{
 	"GITHUB_ACCESS_TOKEN": ConnectionConnectionTypeGithubAccessToken,
 	"GITLAB_ACCESS_TOKEN": ConnectionConnectionTypeGitlabAccessToken,
+}
+
+var mappingConnectionConnectionTypeEnumLowerCase = map[string]ConnectionConnectionTypeEnum{
+	"github_access_token": ConnectionConnectionTypeGithubAccessToken,
+	"gitlab_access_token": ConnectionConnectionTypeGitlabAccessToken,
 }
 
 // GetConnectionConnectionTypeEnumValues Enumerates the set of values for ConnectionConnectionTypeEnum
@@ -264,11 +268,6 @@ func GetConnectionConnectionTypeEnumStringValues() []string {
 
 // GetMappingConnectionConnectionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConnectionConnectionTypeEnum(val string) (ConnectionConnectionTypeEnum, bool) {
-	mappingConnectionConnectionTypeEnumIgnoreCase := make(map[string]ConnectionConnectionTypeEnum)
-	for k, v := range mappingConnectionConnectionTypeEnum {
-		mappingConnectionConnectionTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConnectionConnectionTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConnectionConnectionTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

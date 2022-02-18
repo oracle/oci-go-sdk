@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -150,6 +150,24 @@ var mappingGetJobMetricsFieldsEnum = map[string]GetJobMetricsFieldsEnum{
 	"uri":             GetJobMetricsFieldsUri,
 }
 
+var mappingGetJobMetricsFieldsEnumLowerCase = map[string]GetJobMetricsFieldsEnum{
+	"key":             GetJobMetricsFieldsKey,
+	"description":     GetJobMetricsFieldsDescription,
+	"displayname":     GetJobMetricsFieldsDisplayname,
+	"timeinserted":    GetJobMetricsFieldsTimeinserted,
+	"category":        GetJobMetricsFieldsCategory,
+	"subcategory":     GetJobMetricsFieldsSubcategory,
+	"unit":            GetJobMetricsFieldsUnit,
+	"value":           GetJobMetricsFieldsValue,
+	"batchkey":        GetJobMetricsFieldsBatchkey,
+	"jobexecutionkey": GetJobMetricsFieldsJobexecutionkey,
+	"createdbyid":     GetJobMetricsFieldsCreatedbyid,
+	"updatedbyid":     GetJobMetricsFieldsUpdatedbyid,
+	"timeupdated":     GetJobMetricsFieldsTimeupdated,
+	"timecreated":     GetJobMetricsFieldsTimecreated,
+	"uri":             GetJobMetricsFieldsUri,
+}
+
 // GetGetJobMetricsFieldsEnumValues Enumerates the set of values for GetJobMetricsFieldsEnum
 func GetGetJobMetricsFieldsEnumValues() []GetJobMetricsFieldsEnum {
 	values := make([]GetJobMetricsFieldsEnum, 0)
@@ -182,11 +200,6 @@ func GetGetJobMetricsFieldsEnumStringValues() []string {
 
 // GetMappingGetJobMetricsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetJobMetricsFieldsEnum(val string) (GetJobMetricsFieldsEnum, bool) {
-	mappingGetJobMetricsFieldsEnumIgnoreCase := make(map[string]GetJobMetricsFieldsEnum)
-	for k, v := range mappingGetJobMetricsFieldsEnum {
-		mappingGetJobMetricsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetJobMetricsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetJobMetricsFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

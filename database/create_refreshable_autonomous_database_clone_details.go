@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -390,6 +390,11 @@ var mappingCreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnum = 
 	"MANUAL":    CreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeManual,
 }
 
+var mappingCreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnumLowerCase = map[string]CreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnum{
+	"automatic": CreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeAutomatic,
+	"manual":    CreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeManual,
+}
+
 // GetCreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnumValues Enumerates the set of values for CreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnum
 func GetCreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnumValues() []CreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnum {
 	values := make([]CreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnum, 0)
@@ -409,11 +414,6 @@ func GetCreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnumString
 
 // GetMappingCreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnum(val string) (CreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnum, bool) {
-	mappingCreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnumIgnoreCase := make(map[string]CreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnum)
-	for k, v := range mappingCreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnum {
-		mappingCreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

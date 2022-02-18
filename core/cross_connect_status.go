@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,11 @@ var mappingCrossConnectStatusInterfaceStateEnum = map[string]CrossConnectStatusI
 	"DOWN": CrossConnectStatusInterfaceStateDown,
 }
 
+var mappingCrossConnectStatusInterfaceStateEnumLowerCase = map[string]CrossConnectStatusInterfaceStateEnum{
+	"up":   CrossConnectStatusInterfaceStateUp,
+	"down": CrossConnectStatusInterfaceStateDown,
+}
+
 // GetCrossConnectStatusInterfaceStateEnumValues Enumerates the set of values for CrossConnectStatusInterfaceStateEnum
 func GetCrossConnectStatusInterfaceStateEnumValues() []CrossConnectStatusInterfaceStateEnum {
 	values := make([]CrossConnectStatusInterfaceStateEnum, 0)
@@ -112,12 +117,7 @@ func GetCrossConnectStatusInterfaceStateEnumStringValues() []string {
 
 // GetMappingCrossConnectStatusInterfaceStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCrossConnectStatusInterfaceStateEnum(val string) (CrossConnectStatusInterfaceStateEnum, bool) {
-	mappingCrossConnectStatusInterfaceStateEnumIgnoreCase := make(map[string]CrossConnectStatusInterfaceStateEnum)
-	for k, v := range mappingCrossConnectStatusInterfaceStateEnum {
-		mappingCrossConnectStatusInterfaceStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCrossConnectStatusInterfaceStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCrossConnectStatusInterfaceStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -139,6 +139,14 @@ var mappingCrossConnectStatusLightLevelIndicatorEnum = map[string]CrossConnectSt
 	"HIGH_WARN": CrossConnectStatusLightLevelIndicatorHighWarn,
 	"BAD":       CrossConnectStatusLightLevelIndicatorBad,
 	"GOOD":      CrossConnectStatusLightLevelIndicatorGood,
+}
+
+var mappingCrossConnectStatusLightLevelIndicatorEnumLowerCase = map[string]CrossConnectStatusLightLevelIndicatorEnum{
+	"no_light":  CrossConnectStatusLightLevelIndicatorNoLight,
+	"low_warn":  CrossConnectStatusLightLevelIndicatorLowWarn,
+	"high_warn": CrossConnectStatusLightLevelIndicatorHighWarn,
+	"bad":       CrossConnectStatusLightLevelIndicatorBad,
+	"good":      CrossConnectStatusLightLevelIndicatorGood,
 }
 
 // GetCrossConnectStatusLightLevelIndicatorEnumValues Enumerates the set of values for CrossConnectStatusLightLevelIndicatorEnum
@@ -163,12 +171,7 @@ func GetCrossConnectStatusLightLevelIndicatorEnumStringValues() []string {
 
 // GetMappingCrossConnectStatusLightLevelIndicatorEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCrossConnectStatusLightLevelIndicatorEnum(val string) (CrossConnectStatusLightLevelIndicatorEnum, bool) {
-	mappingCrossConnectStatusLightLevelIndicatorEnumIgnoreCase := make(map[string]CrossConnectStatusLightLevelIndicatorEnum)
-	for k, v := range mappingCrossConnectStatusLightLevelIndicatorEnum {
-		mappingCrossConnectStatusLightLevelIndicatorEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCrossConnectStatusLightLevelIndicatorEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCrossConnectStatusLightLevelIndicatorEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -190,6 +193,14 @@ var mappingCrossConnectStatusEncryptionStatusEnum = map[string]CrossConnectStatu
 	"CIPHER_MISMATCH": CrossConnectStatusEncryptionStatusCipherMismatch,
 	"CKN_MISMATCH":    CrossConnectStatusEncryptionStatusCknMismatch,
 	"CAK_MISMATCH":    CrossConnectStatusEncryptionStatusCakMismatch,
+}
+
+var mappingCrossConnectStatusEncryptionStatusEnumLowerCase = map[string]CrossConnectStatusEncryptionStatusEnum{
+	"up":              CrossConnectStatusEncryptionStatusUp,
+	"down":            CrossConnectStatusEncryptionStatusDown,
+	"cipher_mismatch": CrossConnectStatusEncryptionStatusCipherMismatch,
+	"ckn_mismatch":    CrossConnectStatusEncryptionStatusCknMismatch,
+	"cak_mismatch":    CrossConnectStatusEncryptionStatusCakMismatch,
 }
 
 // GetCrossConnectStatusEncryptionStatusEnumValues Enumerates the set of values for CrossConnectStatusEncryptionStatusEnum
@@ -214,11 +225,6 @@ func GetCrossConnectStatusEncryptionStatusEnumStringValues() []string {
 
 // GetMappingCrossConnectStatusEncryptionStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCrossConnectStatusEncryptionStatusEnum(val string) (CrossConnectStatusEncryptionStatusEnum, bool) {
-	mappingCrossConnectStatusEncryptionStatusEnumIgnoreCase := make(map[string]CrossConnectStatusEncryptionStatusEnum)
-	for k, v := range mappingCrossConnectStatusEncryptionStatusEnum {
-		mappingCrossConnectStatusEncryptionStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCrossConnectStatusEncryptionStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCrossConnectStatusEncryptionStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

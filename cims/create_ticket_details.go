@@ -11,7 +11,7 @@ package cims
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -70,6 +70,12 @@ var mappingCreateTicketDetailsSeverityEnum = map[string]CreateTicketDetailsSever
 	"MEDIUM":  CreateTicketDetailsSeverityMedium,
 }
 
+var mappingCreateTicketDetailsSeverityEnumLowerCase = map[string]CreateTicketDetailsSeverityEnum{
+	"highest": CreateTicketDetailsSeverityHighest,
+	"high":    CreateTicketDetailsSeverityHigh,
+	"medium":  CreateTicketDetailsSeverityMedium,
+}
+
 // GetCreateTicketDetailsSeverityEnumValues Enumerates the set of values for CreateTicketDetailsSeverityEnum
 func GetCreateTicketDetailsSeverityEnumValues() []CreateTicketDetailsSeverityEnum {
 	values := make([]CreateTicketDetailsSeverityEnum, 0)
@@ -90,11 +96,6 @@ func GetCreateTicketDetailsSeverityEnumStringValues() []string {
 
 // GetMappingCreateTicketDetailsSeverityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateTicketDetailsSeverityEnum(val string) (CreateTicketDetailsSeverityEnum, bool) {
-	mappingCreateTicketDetailsSeverityEnumIgnoreCase := make(map[string]CreateTicketDetailsSeverityEnum)
-	for k, v := range mappingCreateTicketDetailsSeverityEnum {
-		mappingCreateTicketDetailsSeverityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateTicketDetailsSeverityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateTicketDetailsSeverityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

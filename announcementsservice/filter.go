@@ -11,7 +11,7 @@ package announcementsservice
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,15 @@ var mappingFilterTypeEnum = map[string]FilterTypeEnum{
 	"ANNOUNCEMENT_TYPE": FilterTypeAnnouncementType,
 }
 
+var mappingFilterTypeEnumLowerCase = map[string]FilterTypeEnum{
+	"compartment_id":    FilterTypeCompartmentId,
+	"platform_type":     FilterTypePlatformType,
+	"region":            FilterTypeRegion,
+	"service":           FilterTypeService,
+	"resource_id":       FilterTypeResourceId,
+	"announcement_type": FilterTypeAnnouncementType,
+}
+
 // GetFilterTypeEnumValues Enumerates the set of values for FilterTypeEnum
 func GetFilterTypeEnumValues() []FilterTypeEnum {
 	values := make([]FilterTypeEnum, 0)
@@ -89,11 +98,6 @@ func GetFilterTypeEnumStringValues() []string {
 
 // GetMappingFilterTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFilterTypeEnum(val string) (FilterTypeEnum, bool) {
-	mappingFilterTypeEnumIgnoreCase := make(map[string]FilterTypeEnum)
-	for k, v := range mappingFilterTypeEnum {
-		mappingFilterTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFilterTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFilterTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

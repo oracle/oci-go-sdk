@@ -6,7 +6,7 @@ package jms
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -178,6 +178,11 @@ var mappingSummarizeJreUsageSortOrderEnum = map[string]SummarizeJreUsageSortOrde
 	"DESC": SummarizeJreUsageSortOrderDesc,
 }
 
+var mappingSummarizeJreUsageSortOrderEnumLowerCase = map[string]SummarizeJreUsageSortOrderEnum{
+	"asc":  SummarizeJreUsageSortOrderAsc,
+	"desc": SummarizeJreUsageSortOrderDesc,
+}
+
 // GetSummarizeJreUsageSortOrderEnumValues Enumerates the set of values for SummarizeJreUsageSortOrderEnum
 func GetSummarizeJreUsageSortOrderEnumValues() []SummarizeJreUsageSortOrderEnum {
 	values := make([]SummarizeJreUsageSortOrderEnum, 0)
@@ -197,12 +202,7 @@ func GetSummarizeJreUsageSortOrderEnumStringValues() []string {
 
 // GetMappingSummarizeJreUsageSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeJreUsageSortOrderEnum(val string) (SummarizeJreUsageSortOrderEnum, bool) {
-	mappingSummarizeJreUsageSortOrderEnumIgnoreCase := make(map[string]SummarizeJreUsageSortOrderEnum)
-	for k, v := range mappingSummarizeJreUsageSortOrderEnum {
-		mappingSummarizeJreUsageSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeJreUsageSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeJreUsageSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -236,6 +236,19 @@ var mappingSummarizeJreUsageSortByEnum = map[string]SummarizeJreUsageSortByEnum{
 	"securityStatus":                  SummarizeJreUsageSortBySecuritystatus,
 }
 
+var mappingSummarizeJreUsageSortByEnumLowerCase = map[string]SummarizeJreUsageSortByEnum{
+	"distribution":                    SummarizeJreUsageSortByDistribution,
+	"timefirstseen":                   SummarizeJreUsageSortByTimefirstseen,
+	"timelastseen":                    SummarizeJreUsageSortByTimelastseen,
+	"vendor":                          SummarizeJreUsageSortByVendor,
+	"version":                         SummarizeJreUsageSortByVersion,
+	"approximateinstallationcount":    SummarizeJreUsageSortByApproximateinstallationcount,
+	"approximateapplicationcount":     SummarizeJreUsageSortByApproximateapplicationcount,
+	"approximatemanagedinstancecount": SummarizeJreUsageSortByApproximatemanagedinstancecount,
+	"osname":                          SummarizeJreUsageSortByOsname,
+	"securitystatus":                  SummarizeJreUsageSortBySecuritystatus,
+}
+
 // GetSummarizeJreUsageSortByEnumValues Enumerates the set of values for SummarizeJreUsageSortByEnum
 func GetSummarizeJreUsageSortByEnumValues() []SummarizeJreUsageSortByEnum {
 	values := make([]SummarizeJreUsageSortByEnum, 0)
@@ -263,12 +276,7 @@ func GetSummarizeJreUsageSortByEnumStringValues() []string {
 
 // GetMappingSummarizeJreUsageSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeJreUsageSortByEnum(val string) (SummarizeJreUsageSortByEnum, bool) {
-	mappingSummarizeJreUsageSortByEnumIgnoreCase := make(map[string]SummarizeJreUsageSortByEnum)
-	for k, v := range mappingSummarizeJreUsageSortByEnum {
-		mappingSummarizeJreUsageSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeJreUsageSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeJreUsageSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -288,6 +296,13 @@ var mappingSummarizeJreUsageJreSecurityStatusEnum = map[string]SummarizeJreUsage
 	"UP_TO_DATE":       SummarizeJreUsageJreSecurityStatusUpToDate,
 	"UPDATE_REQUIRED":  SummarizeJreUsageJreSecurityStatusUpdateRequired,
 	"UPGRADE_REQUIRED": SummarizeJreUsageJreSecurityStatusUpgradeRequired,
+}
+
+var mappingSummarizeJreUsageJreSecurityStatusEnumLowerCase = map[string]SummarizeJreUsageJreSecurityStatusEnum{
+	"unknown":          SummarizeJreUsageJreSecurityStatusUnknown,
+	"up_to_date":       SummarizeJreUsageJreSecurityStatusUpToDate,
+	"update_required":  SummarizeJreUsageJreSecurityStatusUpdateRequired,
+	"upgrade_required": SummarizeJreUsageJreSecurityStatusUpgradeRequired,
 }
 
 // GetSummarizeJreUsageJreSecurityStatusEnumValues Enumerates the set of values for SummarizeJreUsageJreSecurityStatusEnum
@@ -311,11 +326,6 @@ func GetSummarizeJreUsageJreSecurityStatusEnumStringValues() []string {
 
 // GetMappingSummarizeJreUsageJreSecurityStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeJreUsageJreSecurityStatusEnum(val string) (SummarizeJreUsageJreSecurityStatusEnum, bool) {
-	mappingSummarizeJreUsageJreSecurityStatusEnumIgnoreCase := make(map[string]SummarizeJreUsageJreSecurityStatusEnum)
-	for k, v := range mappingSummarizeJreUsageJreSecurityStatusEnum {
-		mappingSummarizeJreUsageJreSecurityStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeJreUsageJreSecurityStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeJreUsageJreSecurityStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

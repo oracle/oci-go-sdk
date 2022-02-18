@@ -6,7 +6,7 @@ package oda
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -150,6 +150,16 @@ var mappingListOdaInstancesLifecycleStateEnum = map[string]ListOdaInstancesLifec
 	"FAILED":   ListOdaInstancesLifecycleStateFailed,
 }
 
+var mappingListOdaInstancesLifecycleStateEnumLowerCase = map[string]ListOdaInstancesLifecycleStateEnum{
+	"creating": ListOdaInstancesLifecycleStateCreating,
+	"updating": ListOdaInstancesLifecycleStateUpdating,
+	"active":   ListOdaInstancesLifecycleStateActive,
+	"inactive": ListOdaInstancesLifecycleStateInactive,
+	"deleting": ListOdaInstancesLifecycleStateDeleting,
+	"deleted":  ListOdaInstancesLifecycleStateDeleted,
+	"failed":   ListOdaInstancesLifecycleStateFailed,
+}
+
 // GetListOdaInstancesLifecycleStateEnumValues Enumerates the set of values for ListOdaInstancesLifecycleStateEnum
 func GetListOdaInstancesLifecycleStateEnumValues() []ListOdaInstancesLifecycleStateEnum {
 	values := make([]ListOdaInstancesLifecycleStateEnum, 0)
@@ -174,12 +184,7 @@ func GetListOdaInstancesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListOdaInstancesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOdaInstancesLifecycleStateEnum(val string) (ListOdaInstancesLifecycleStateEnum, bool) {
-	mappingListOdaInstancesLifecycleStateEnumIgnoreCase := make(map[string]ListOdaInstancesLifecycleStateEnum)
-	for k, v := range mappingListOdaInstancesLifecycleStateEnum {
-		mappingListOdaInstancesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOdaInstancesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOdaInstancesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -195,6 +200,11 @@ const (
 var mappingListOdaInstancesSortOrderEnum = map[string]ListOdaInstancesSortOrderEnum{
 	"ASC":  ListOdaInstancesSortOrderAsc,
 	"DESC": ListOdaInstancesSortOrderDesc,
+}
+
+var mappingListOdaInstancesSortOrderEnumLowerCase = map[string]ListOdaInstancesSortOrderEnum{
+	"asc":  ListOdaInstancesSortOrderAsc,
+	"desc": ListOdaInstancesSortOrderDesc,
 }
 
 // GetListOdaInstancesSortOrderEnumValues Enumerates the set of values for ListOdaInstancesSortOrderEnum
@@ -216,12 +226,7 @@ func GetListOdaInstancesSortOrderEnumStringValues() []string {
 
 // GetMappingListOdaInstancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOdaInstancesSortOrderEnum(val string) (ListOdaInstancesSortOrderEnum, bool) {
-	mappingListOdaInstancesSortOrderEnumIgnoreCase := make(map[string]ListOdaInstancesSortOrderEnum)
-	for k, v := range mappingListOdaInstancesSortOrderEnum {
-		mappingListOdaInstancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOdaInstancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOdaInstancesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -237,6 +242,11 @@ const (
 var mappingListOdaInstancesSortByEnum = map[string]ListOdaInstancesSortByEnum{
 	"TIMECREATED": ListOdaInstancesSortByTimecreated,
 	"DISPLAYNAME": ListOdaInstancesSortByDisplayname,
+}
+
+var mappingListOdaInstancesSortByEnumLowerCase = map[string]ListOdaInstancesSortByEnum{
+	"timecreated": ListOdaInstancesSortByTimecreated,
+	"displayname": ListOdaInstancesSortByDisplayname,
 }
 
 // GetListOdaInstancesSortByEnumValues Enumerates the set of values for ListOdaInstancesSortByEnum
@@ -258,11 +268,6 @@ func GetListOdaInstancesSortByEnumStringValues() []string {
 
 // GetMappingListOdaInstancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOdaInstancesSortByEnum(val string) (ListOdaInstancesSortByEnum, bool) {
-	mappingListOdaInstancesSortByEnumIgnoreCase := make(map[string]ListOdaInstancesSortByEnum)
-	for k, v := range mappingListOdaInstancesSortByEnum {
-		mappingListOdaInstancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOdaInstancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOdaInstancesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"io"
 	"net/http"
 	"strings"
@@ -144,6 +144,12 @@ var mappingUploadLogEventsFilePayloadTypeEnum = map[string]UploadLogEventsFilePa
 	"ZIP":  UploadLogEventsFilePayloadTypeZip,
 }
 
+var mappingUploadLogEventsFilePayloadTypeEnumLowerCase = map[string]UploadLogEventsFilePayloadTypeEnum{
+	"json": UploadLogEventsFilePayloadTypeJson,
+	"gzip": UploadLogEventsFilePayloadTypeGzip,
+	"zip":  UploadLogEventsFilePayloadTypeZip,
+}
+
 // GetUploadLogEventsFilePayloadTypeEnumValues Enumerates the set of values for UploadLogEventsFilePayloadTypeEnum
 func GetUploadLogEventsFilePayloadTypeEnumValues() []UploadLogEventsFilePayloadTypeEnum {
 	values := make([]UploadLogEventsFilePayloadTypeEnum, 0)
@@ -164,11 +170,6 @@ func GetUploadLogEventsFilePayloadTypeEnumStringValues() []string {
 
 // GetMappingUploadLogEventsFilePayloadTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUploadLogEventsFilePayloadTypeEnum(val string) (UploadLogEventsFilePayloadTypeEnum, bool) {
-	mappingUploadLogEventsFilePayloadTypeEnumIgnoreCase := make(map[string]UploadLogEventsFilePayloadTypeEnum)
-	for k, v := range mappingUploadLogEventsFilePayloadTypeEnum {
-		mappingUploadLogEventsFilePayloadTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUploadLogEventsFilePayloadTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUploadLogEventsFilePayloadTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package resourcesearch
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -106,6 +106,11 @@ var mappingSearchDetailsMatchingContextTypeEnum = map[string]SearchDetailsMatchi
 	"HIGHLIGHTS": SearchDetailsMatchingContextTypeHighlights,
 }
 
+var mappingSearchDetailsMatchingContextTypeEnumLowerCase = map[string]SearchDetailsMatchingContextTypeEnum{
+	"none":       SearchDetailsMatchingContextTypeNone,
+	"highlights": SearchDetailsMatchingContextTypeHighlights,
+}
+
 // GetSearchDetailsMatchingContextTypeEnumValues Enumerates the set of values for SearchDetailsMatchingContextTypeEnum
 func GetSearchDetailsMatchingContextTypeEnumValues() []SearchDetailsMatchingContextTypeEnum {
 	values := make([]SearchDetailsMatchingContextTypeEnum, 0)
@@ -125,11 +130,6 @@ func GetSearchDetailsMatchingContextTypeEnumStringValues() []string {
 
 // GetMappingSearchDetailsMatchingContextTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSearchDetailsMatchingContextTypeEnum(val string) (SearchDetailsMatchingContextTypeEnum, bool) {
-	mappingSearchDetailsMatchingContextTypeEnumIgnoreCase := make(map[string]SearchDetailsMatchingContextTypeEnum)
-	for k, v := range mappingSearchDetailsMatchingContextTypeEnum {
-		mappingSearchDetailsMatchingContextTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSearchDetailsMatchingContextTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSearchDetailsMatchingContextTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

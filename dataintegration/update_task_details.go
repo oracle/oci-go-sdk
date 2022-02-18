@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -253,6 +253,15 @@ var mappingUpdateTaskDetailsModelTypeEnum = map[string]UpdateTaskDetailsModelTyp
 	"REST_TASK":         UpdateTaskDetailsModelTypeRestTask,
 }
 
+var mappingUpdateTaskDetailsModelTypeEnumLowerCase = map[string]UpdateTaskDetailsModelTypeEnum{
+	"integration_task":  UpdateTaskDetailsModelTypeIntegrationTask,
+	"data_loader_task":  UpdateTaskDetailsModelTypeDataLoaderTask,
+	"pipeline_task":     UpdateTaskDetailsModelTypePipelineTask,
+	"sql_task":          UpdateTaskDetailsModelTypeSqlTask,
+	"oci_dataflow_task": UpdateTaskDetailsModelTypeOciDataflowTask,
+	"rest_task":         UpdateTaskDetailsModelTypeRestTask,
+}
+
 // GetUpdateTaskDetailsModelTypeEnumValues Enumerates the set of values for UpdateTaskDetailsModelTypeEnum
 func GetUpdateTaskDetailsModelTypeEnumValues() []UpdateTaskDetailsModelTypeEnum {
 	values := make([]UpdateTaskDetailsModelTypeEnum, 0)
@@ -276,11 +285,6 @@ func GetUpdateTaskDetailsModelTypeEnumStringValues() []string {
 
 // GetMappingUpdateTaskDetailsModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateTaskDetailsModelTypeEnum(val string) (UpdateTaskDetailsModelTypeEnum, bool) {
-	mappingUpdateTaskDetailsModelTypeEnumIgnoreCase := make(map[string]UpdateTaskDetailsModelTypeEnum)
-	for k, v := range mappingUpdateTaskDetailsModelTypeEnum {
-		mappingUpdateTaskDetailsModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateTaskDetailsModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateTaskDetailsModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

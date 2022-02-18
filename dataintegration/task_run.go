@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -163,6 +163,16 @@ var mappingTaskRunStatusEnum = map[string]TaskRunStatusEnum{
 	"ERROR":       TaskRunStatusError,
 }
 
+var mappingTaskRunStatusEnumLowerCase = map[string]TaskRunStatusEnum{
+	"not_started": TaskRunStatusNotStarted,
+	"queued":      TaskRunStatusQueued,
+	"running":     TaskRunStatusRunning,
+	"terminating": TaskRunStatusTerminating,
+	"terminated":  TaskRunStatusTerminated,
+	"success":     TaskRunStatusSuccess,
+	"error":       TaskRunStatusError,
+}
+
 // GetTaskRunStatusEnumValues Enumerates the set of values for TaskRunStatusEnum
 func GetTaskRunStatusEnumValues() []TaskRunStatusEnum {
 	values := make([]TaskRunStatusEnum, 0)
@@ -187,12 +197,7 @@ func GetTaskRunStatusEnumStringValues() []string {
 
 // GetMappingTaskRunStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskRunStatusEnum(val string) (TaskRunStatusEnum, bool) {
-	mappingTaskRunStatusEnumIgnoreCase := make(map[string]TaskRunStatusEnum)
-	for k, v := range mappingTaskRunStatusEnum {
-		mappingTaskRunStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskRunStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskRunStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -212,6 +217,13 @@ var mappingTaskRunExpectedDurationUnitEnum = map[string]TaskRunExpectedDurationU
 	"MINUTES": TaskRunExpectedDurationUnitMinutes,
 	"HOURS":   TaskRunExpectedDurationUnitHours,
 	"DAYS":    TaskRunExpectedDurationUnitDays,
+}
+
+var mappingTaskRunExpectedDurationUnitEnumLowerCase = map[string]TaskRunExpectedDurationUnitEnum{
+	"seconds": TaskRunExpectedDurationUnitSeconds,
+	"minutes": TaskRunExpectedDurationUnitMinutes,
+	"hours":   TaskRunExpectedDurationUnitHours,
+	"days":    TaskRunExpectedDurationUnitDays,
 }
 
 // GetTaskRunExpectedDurationUnitEnumValues Enumerates the set of values for TaskRunExpectedDurationUnitEnum
@@ -235,12 +247,7 @@ func GetTaskRunExpectedDurationUnitEnumStringValues() []string {
 
 // GetMappingTaskRunExpectedDurationUnitEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskRunExpectedDurationUnitEnum(val string) (TaskRunExpectedDurationUnitEnum, bool) {
-	mappingTaskRunExpectedDurationUnitEnumIgnoreCase := make(map[string]TaskRunExpectedDurationUnitEnum)
-	for k, v := range mappingTaskRunExpectedDurationUnitEnum {
-		mappingTaskRunExpectedDurationUnitEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskRunExpectedDurationUnitEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskRunExpectedDurationUnitEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -258,6 +265,12 @@ var mappingTaskRunAuthModeEnum = map[string]TaskRunAuthModeEnum{
 	"OBO":                TaskRunAuthModeObo,
 	"RESOURCE_PRINCIPAL": TaskRunAuthModeResourcePrincipal,
 	"USER_CERTIFICATE":   TaskRunAuthModeUserCertificate,
+}
+
+var mappingTaskRunAuthModeEnumLowerCase = map[string]TaskRunAuthModeEnum{
+	"obo":                TaskRunAuthModeObo,
+	"resource_principal": TaskRunAuthModeResourcePrincipal,
+	"user_certificate":   TaskRunAuthModeUserCertificate,
 }
 
 // GetTaskRunAuthModeEnumValues Enumerates the set of values for TaskRunAuthModeEnum
@@ -280,12 +293,7 @@ func GetTaskRunAuthModeEnumStringValues() []string {
 
 // GetMappingTaskRunAuthModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskRunAuthModeEnum(val string) (TaskRunAuthModeEnum, bool) {
-	mappingTaskRunAuthModeEnumIgnoreCase := make(map[string]TaskRunAuthModeEnum)
-	for k, v := range mappingTaskRunAuthModeEnum {
-		mappingTaskRunAuthModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskRunAuthModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskRunAuthModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -311,6 +319,15 @@ var mappingTaskRunTaskTypeEnum = map[string]TaskRunTaskTypeEnum{
 	"REST_TASK":         TaskRunTaskTypeRestTask,
 }
 
+var mappingTaskRunTaskTypeEnumLowerCase = map[string]TaskRunTaskTypeEnum{
+	"integration_task":  TaskRunTaskTypeIntegrationTask,
+	"data_loader_task":  TaskRunTaskTypeDataLoaderTask,
+	"pipeline_task":     TaskRunTaskTypePipelineTask,
+	"sql_task":          TaskRunTaskTypeSqlTask,
+	"oci_dataflow_task": TaskRunTaskTypeOciDataflowTask,
+	"rest_task":         TaskRunTaskTypeRestTask,
+}
+
 // GetTaskRunTaskTypeEnumValues Enumerates the set of values for TaskRunTaskTypeEnum
 func GetTaskRunTaskTypeEnumValues() []TaskRunTaskTypeEnum {
 	values := make([]TaskRunTaskTypeEnum, 0)
@@ -334,11 +351,6 @@ func GetTaskRunTaskTypeEnumStringValues() []string {
 
 // GetMappingTaskRunTaskTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskRunTaskTypeEnum(val string) (TaskRunTaskTypeEnum, bool) {
-	mappingTaskRunTaskTypeEnumIgnoreCase := make(map[string]TaskRunTaskTypeEnum)
-	for k, v := range mappingTaskRunTaskTypeEnum {
-		mappingTaskRunTaskTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskRunTaskTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskRunTaskTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

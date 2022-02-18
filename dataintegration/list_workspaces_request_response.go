@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -135,6 +135,11 @@ var mappingListWorkspacesSortOrderEnum = map[string]ListWorkspacesSortOrderEnum{
 	"DESC": ListWorkspacesSortOrderDesc,
 }
 
+var mappingListWorkspacesSortOrderEnumLowerCase = map[string]ListWorkspacesSortOrderEnum{
+	"asc":  ListWorkspacesSortOrderAsc,
+	"desc": ListWorkspacesSortOrderDesc,
+}
+
 // GetListWorkspacesSortOrderEnumValues Enumerates the set of values for ListWorkspacesSortOrderEnum
 func GetListWorkspacesSortOrderEnumValues() []ListWorkspacesSortOrderEnum {
 	values := make([]ListWorkspacesSortOrderEnum, 0)
@@ -154,12 +159,7 @@ func GetListWorkspacesSortOrderEnumStringValues() []string {
 
 // GetMappingListWorkspacesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWorkspacesSortOrderEnum(val string) (ListWorkspacesSortOrderEnum, bool) {
-	mappingListWorkspacesSortOrderEnumIgnoreCase := make(map[string]ListWorkspacesSortOrderEnum)
-	for k, v := range mappingListWorkspacesSortOrderEnum {
-		mappingListWorkspacesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWorkspacesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWorkspacesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -175,6 +175,11 @@ const (
 var mappingListWorkspacesSortByEnum = map[string]ListWorkspacesSortByEnum{
 	"TIME_CREATED": ListWorkspacesSortByTimeCreated,
 	"DISPLAY_NAME": ListWorkspacesSortByDisplayName,
+}
+
+var mappingListWorkspacesSortByEnumLowerCase = map[string]ListWorkspacesSortByEnum{
+	"time_created": ListWorkspacesSortByTimeCreated,
+	"display_name": ListWorkspacesSortByDisplayName,
 }
 
 // GetListWorkspacesSortByEnumValues Enumerates the set of values for ListWorkspacesSortByEnum
@@ -196,11 +201,6 @@ func GetListWorkspacesSortByEnumStringValues() []string {
 
 // GetMappingListWorkspacesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWorkspacesSortByEnum(val string) (ListWorkspacesSortByEnum, bool) {
-	mappingListWorkspacesSortByEnumIgnoreCase := make(map[string]ListWorkspacesSortByEnum)
-	for k, v := range mappingListWorkspacesSortByEnum {
-		mappingListWorkspacesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWorkspacesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWorkspacesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

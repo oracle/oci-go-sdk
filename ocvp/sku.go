@@ -32,6 +32,13 @@ var mappingSkuEnum = map[string]SkuEnum{
 	"THREE_YEARS": SkuThreeYears,
 }
 
+var mappingSkuEnumLowerCase = map[string]SkuEnum{
+	"hour":        SkuHour,
+	"month":       SkuMonth,
+	"one_year":    SkuOneYear,
+	"three_years": SkuThreeYears,
+}
+
 // GetSkuEnumValues Enumerates the set of values for SkuEnum
 func GetSkuEnumValues() []SkuEnum {
 	values := make([]SkuEnum, 0)
@@ -53,11 +60,6 @@ func GetSkuEnumStringValues() []string {
 
 // GetMappingSkuEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSkuEnum(val string) (SkuEnum, bool) {
-	mappingSkuEnumIgnoreCase := make(map[string]SkuEnum)
-	for k, v := range mappingSkuEnum {
-		mappingSkuEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSkuEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSkuEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -128,6 +128,16 @@ var mappingExternalNonContainerDatabaseLifecycleStateEnum = map[string]ExternalN
 	"FAILED":        ExternalNonContainerDatabaseLifecycleStateFailed,
 }
 
+var mappingExternalNonContainerDatabaseLifecycleStateEnumLowerCase = map[string]ExternalNonContainerDatabaseLifecycleStateEnum{
+	"provisioning":  ExternalNonContainerDatabaseLifecycleStateProvisioning,
+	"not_connected": ExternalNonContainerDatabaseLifecycleStateNotConnected,
+	"available":     ExternalNonContainerDatabaseLifecycleStateAvailable,
+	"updating":      ExternalNonContainerDatabaseLifecycleStateUpdating,
+	"terminating":   ExternalNonContainerDatabaseLifecycleStateTerminating,
+	"terminated":    ExternalNonContainerDatabaseLifecycleStateTerminated,
+	"failed":        ExternalNonContainerDatabaseLifecycleStateFailed,
+}
+
 // GetExternalNonContainerDatabaseLifecycleStateEnumValues Enumerates the set of values for ExternalNonContainerDatabaseLifecycleStateEnum
 func GetExternalNonContainerDatabaseLifecycleStateEnumValues() []ExternalNonContainerDatabaseLifecycleStateEnum {
 	values := make([]ExternalNonContainerDatabaseLifecycleStateEnum, 0)
@@ -152,12 +162,7 @@ func GetExternalNonContainerDatabaseLifecycleStateEnumStringValues() []string {
 
 // GetMappingExternalNonContainerDatabaseLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExternalNonContainerDatabaseLifecycleStateEnum(val string) (ExternalNonContainerDatabaseLifecycleStateEnum, bool) {
-	mappingExternalNonContainerDatabaseLifecycleStateEnumIgnoreCase := make(map[string]ExternalNonContainerDatabaseLifecycleStateEnum)
-	for k, v := range mappingExternalNonContainerDatabaseLifecycleStateEnum {
-		mappingExternalNonContainerDatabaseLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExternalNonContainerDatabaseLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExternalNonContainerDatabaseLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -177,6 +182,13 @@ var mappingExternalNonContainerDatabaseDatabaseEditionEnum = map[string]External
 	"ENTERPRISE_EDITION":                     ExternalNonContainerDatabaseDatabaseEditionEnterpriseEdition,
 	"ENTERPRISE_EDITION_HIGH_PERFORMANCE":    ExternalNonContainerDatabaseDatabaseEditionEnterpriseEditionHighPerformance,
 	"ENTERPRISE_EDITION_EXTREME_PERFORMANCE": ExternalNonContainerDatabaseDatabaseEditionEnterpriseEditionExtremePerformance,
+}
+
+var mappingExternalNonContainerDatabaseDatabaseEditionEnumLowerCase = map[string]ExternalNonContainerDatabaseDatabaseEditionEnum{
+	"standard_edition":                       ExternalNonContainerDatabaseDatabaseEditionStandardEdition,
+	"enterprise_edition":                     ExternalNonContainerDatabaseDatabaseEditionEnterpriseEdition,
+	"enterprise_edition_high_performance":    ExternalNonContainerDatabaseDatabaseEditionEnterpriseEditionHighPerformance,
+	"enterprise_edition_extreme_performance": ExternalNonContainerDatabaseDatabaseEditionEnterpriseEditionExtremePerformance,
 }
 
 // GetExternalNonContainerDatabaseDatabaseEditionEnumValues Enumerates the set of values for ExternalNonContainerDatabaseDatabaseEditionEnum
@@ -200,12 +212,7 @@ func GetExternalNonContainerDatabaseDatabaseEditionEnumStringValues() []string {
 
 // GetMappingExternalNonContainerDatabaseDatabaseEditionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExternalNonContainerDatabaseDatabaseEditionEnum(val string) (ExternalNonContainerDatabaseDatabaseEditionEnum, bool) {
-	mappingExternalNonContainerDatabaseDatabaseEditionEnumIgnoreCase := make(map[string]ExternalNonContainerDatabaseDatabaseEditionEnum)
-	for k, v := range mappingExternalNonContainerDatabaseDatabaseEditionEnum {
-		mappingExternalNonContainerDatabaseDatabaseEditionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExternalNonContainerDatabaseDatabaseEditionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExternalNonContainerDatabaseDatabaseEditionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -221,6 +228,11 @@ const (
 var mappingExternalNonContainerDatabaseDatabaseConfigurationEnum = map[string]ExternalNonContainerDatabaseDatabaseConfigurationEnum{
 	"RAC":             ExternalNonContainerDatabaseDatabaseConfigurationRac,
 	"SINGLE_INSTANCE": ExternalNonContainerDatabaseDatabaseConfigurationSingleInstance,
+}
+
+var mappingExternalNonContainerDatabaseDatabaseConfigurationEnumLowerCase = map[string]ExternalNonContainerDatabaseDatabaseConfigurationEnum{
+	"rac":             ExternalNonContainerDatabaseDatabaseConfigurationRac,
+	"single_instance": ExternalNonContainerDatabaseDatabaseConfigurationSingleInstance,
 }
 
 // GetExternalNonContainerDatabaseDatabaseConfigurationEnumValues Enumerates the set of values for ExternalNonContainerDatabaseDatabaseConfigurationEnum
@@ -242,11 +254,6 @@ func GetExternalNonContainerDatabaseDatabaseConfigurationEnumStringValues() []st
 
 // GetMappingExternalNonContainerDatabaseDatabaseConfigurationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExternalNonContainerDatabaseDatabaseConfigurationEnum(val string) (ExternalNonContainerDatabaseDatabaseConfigurationEnum, bool) {
-	mappingExternalNonContainerDatabaseDatabaseConfigurationEnumIgnoreCase := make(map[string]ExternalNonContainerDatabaseDatabaseConfigurationEnum)
-	for k, v := range mappingExternalNonContainerDatabaseDatabaseConfigurationEnum {
-		mappingExternalNonContainerDatabaseDatabaseConfigurationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExternalNonContainerDatabaseDatabaseConfigurationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExternalNonContainerDatabaseDatabaseConfigurationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

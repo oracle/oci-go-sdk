@@ -38,6 +38,16 @@ var mappingJobExecutionStateEnum = map[string]JobExecutionStateEnum{
 	"SUCCEEDED_WITH_WARNINGS": JobExecutionStateSucceededWithWarnings,
 }
 
+var mappingJobExecutionStateEnumLowerCase = map[string]JobExecutionStateEnum{
+	"created":                 JobExecutionStateCreated,
+	"in_progress":             JobExecutionStateInProgress,
+	"inactive":                JobExecutionStateInactive,
+	"failed":                  JobExecutionStateFailed,
+	"succeeded":               JobExecutionStateSucceeded,
+	"canceled":                JobExecutionStateCanceled,
+	"succeeded_with_warnings": JobExecutionStateSucceededWithWarnings,
+}
+
 // GetJobExecutionStateEnumValues Enumerates the set of values for JobExecutionStateEnum
 func GetJobExecutionStateEnumValues() []JobExecutionStateEnum {
 	values := make([]JobExecutionStateEnum, 0)
@@ -62,11 +72,6 @@ func GetJobExecutionStateEnumStringValues() []string {
 
 // GetMappingJobExecutionStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJobExecutionStateEnum(val string) (JobExecutionStateEnum, bool) {
-	mappingJobExecutionStateEnumIgnoreCase := make(map[string]JobExecutionStateEnum)
-	for k, v := range mappingJobExecutionStateEnum {
-		mappingJobExecutionStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJobExecutionStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJobExecutionStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -29,6 +29,12 @@ var mappingExtractPerformanceProfileEnum = map[string]ExtractPerformanceProfileE
 	"HIGH":   ExtractPerformanceProfileHigh,
 }
 
+var mappingExtractPerformanceProfileEnumLowerCase = map[string]ExtractPerformanceProfileEnum{
+	"low":    ExtractPerformanceProfileLow,
+	"medium": ExtractPerformanceProfileMedium,
+	"high":   ExtractPerformanceProfileHigh,
+}
+
 // GetExtractPerformanceProfileEnumValues Enumerates the set of values for ExtractPerformanceProfileEnum
 func GetExtractPerformanceProfileEnumValues() []ExtractPerformanceProfileEnum {
 	values := make([]ExtractPerformanceProfileEnum, 0)
@@ -49,11 +55,6 @@ func GetExtractPerformanceProfileEnumStringValues() []string {
 
 // GetMappingExtractPerformanceProfileEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExtractPerformanceProfileEnum(val string) (ExtractPerformanceProfileEnum, bool) {
-	mappingExtractPerformanceProfileEnumIgnoreCase := make(map[string]ExtractPerformanceProfileEnum)
-	for k, v := range mappingExtractPerformanceProfileEnum {
-		mappingExtractPerformanceProfileEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExtractPerformanceProfileEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExtractPerformanceProfileEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package apmsynthetics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -139,6 +139,11 @@ var mappingListScriptsSortOrderEnum = map[string]ListScriptsSortOrderEnum{
 	"DESC": ListScriptsSortOrderDesc,
 }
 
+var mappingListScriptsSortOrderEnumLowerCase = map[string]ListScriptsSortOrderEnum{
+	"asc":  ListScriptsSortOrderAsc,
+	"desc": ListScriptsSortOrderDesc,
+}
+
 // GetListScriptsSortOrderEnumValues Enumerates the set of values for ListScriptsSortOrderEnum
 func GetListScriptsSortOrderEnumValues() []ListScriptsSortOrderEnum {
 	values := make([]ListScriptsSortOrderEnum, 0)
@@ -158,12 +163,7 @@ func GetListScriptsSortOrderEnumStringValues() []string {
 
 // GetMappingListScriptsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListScriptsSortOrderEnum(val string) (ListScriptsSortOrderEnum, bool) {
-	mappingListScriptsSortOrderEnumIgnoreCase := make(map[string]ListScriptsSortOrderEnum)
-	for k, v := range mappingListScriptsSortOrderEnum {
-		mappingListScriptsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListScriptsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListScriptsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +183,13 @@ var mappingListScriptsSortByEnum = map[string]ListScriptsSortByEnum{
 	"timeCreated": ListScriptsSortByTimecreated,
 	"timeUpdated": ListScriptsSortByTimeupdated,
 	"contentType": ListScriptsSortByContenttype,
+}
+
+var mappingListScriptsSortByEnumLowerCase = map[string]ListScriptsSortByEnum{
+	"displayname": ListScriptsSortByDisplayname,
+	"timecreated": ListScriptsSortByTimecreated,
+	"timeupdated": ListScriptsSortByTimeupdated,
+	"contenttype": ListScriptsSortByContenttype,
 }
 
 // GetListScriptsSortByEnumValues Enumerates the set of values for ListScriptsSortByEnum
@@ -206,11 +213,6 @@ func GetListScriptsSortByEnumStringValues() []string {
 
 // GetMappingListScriptsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListScriptsSortByEnum(val string) (ListScriptsSortByEnum, bool) {
-	mappingListScriptsSortByEnumIgnoreCase := make(map[string]ListScriptsSortByEnum)
-	for k, v := range mappingListScriptsSortByEnum {
-		mappingListScriptsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListScriptsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListScriptsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -37,6 +37,16 @@ var mappingPrivateEndpointLifecycleStateEnum = map[string]PrivateEndpointLifecyc
 	"FAILED":   PrivateEndpointLifecycleStateFailed,
 }
 
+var mappingPrivateEndpointLifecycleStateEnumLowerCase = map[string]PrivateEndpointLifecycleStateEnum{
+	"creating": PrivateEndpointLifecycleStateCreating,
+	"active":   PrivateEndpointLifecycleStateActive,
+	"inactive": PrivateEndpointLifecycleStateInactive,
+	"updating": PrivateEndpointLifecycleStateUpdating,
+	"deleting": PrivateEndpointLifecycleStateDeleting,
+	"deleted":  PrivateEndpointLifecycleStateDeleted,
+	"failed":   PrivateEndpointLifecycleStateFailed,
+}
+
 // GetPrivateEndpointLifecycleStateEnumValues Enumerates the set of values for PrivateEndpointLifecycleStateEnum
 func GetPrivateEndpointLifecycleStateEnumValues() []PrivateEndpointLifecycleStateEnum {
 	values := make([]PrivateEndpointLifecycleStateEnum, 0)
@@ -61,11 +71,6 @@ func GetPrivateEndpointLifecycleStateEnumStringValues() []string {
 
 // GetMappingPrivateEndpointLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPrivateEndpointLifecycleStateEnum(val string) (PrivateEndpointLifecycleStateEnum, bool) {
-	mappingPrivateEndpointLifecycleStateEnumIgnoreCase := make(map[string]PrivateEndpointLifecycleStateEnum)
-	for k, v := range mappingPrivateEndpointLifecycleStateEnum {
-		mappingPrivateEndpointLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPrivateEndpointLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPrivateEndpointLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

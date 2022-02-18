@@ -12,7 +12,7 @@ package mysql
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -123,6 +123,13 @@ var mappingChannelSourceMysqlSslModeEnum = map[string]ChannelSourceMysqlSslModeE
 	"DISABLED":        ChannelSourceMysqlSslModeDisabled,
 }
 
+var mappingChannelSourceMysqlSslModeEnumLowerCase = map[string]ChannelSourceMysqlSslModeEnum{
+	"verify_identity": ChannelSourceMysqlSslModeVerifyIdentity,
+	"verify_ca":       ChannelSourceMysqlSslModeVerifyCa,
+	"required":        ChannelSourceMysqlSslModeRequired,
+	"disabled":        ChannelSourceMysqlSslModeDisabled,
+}
+
 // GetChannelSourceMysqlSslModeEnumValues Enumerates the set of values for ChannelSourceMysqlSslModeEnum
 func GetChannelSourceMysqlSslModeEnumValues() []ChannelSourceMysqlSslModeEnum {
 	values := make([]ChannelSourceMysqlSslModeEnum, 0)
@@ -144,11 +151,6 @@ func GetChannelSourceMysqlSslModeEnumStringValues() []string {
 
 // GetMappingChannelSourceMysqlSslModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingChannelSourceMysqlSslModeEnum(val string) (ChannelSourceMysqlSslModeEnum, bool) {
-	mappingChannelSourceMysqlSslModeEnumIgnoreCase := make(map[string]ChannelSourceMysqlSslModeEnum)
-	for k, v := range mappingChannelSourceMysqlSslModeEnum {
-		mappingChannelSourceMysqlSslModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingChannelSourceMysqlSslModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingChannelSourceMysqlSslModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -108,6 +108,15 @@ var mappingDedicatedVmHostSummaryLifecycleStateEnum = map[string]DedicatedVmHost
 	"FAILED":   DedicatedVmHostSummaryLifecycleStateFailed,
 }
 
+var mappingDedicatedVmHostSummaryLifecycleStateEnumLowerCase = map[string]DedicatedVmHostSummaryLifecycleStateEnum{
+	"creating": DedicatedVmHostSummaryLifecycleStateCreating,
+	"active":   DedicatedVmHostSummaryLifecycleStateActive,
+	"updating": DedicatedVmHostSummaryLifecycleStateUpdating,
+	"deleting": DedicatedVmHostSummaryLifecycleStateDeleting,
+	"deleted":  DedicatedVmHostSummaryLifecycleStateDeleted,
+	"failed":   DedicatedVmHostSummaryLifecycleStateFailed,
+}
+
 // GetDedicatedVmHostSummaryLifecycleStateEnumValues Enumerates the set of values for DedicatedVmHostSummaryLifecycleStateEnum
 func GetDedicatedVmHostSummaryLifecycleStateEnumValues() []DedicatedVmHostSummaryLifecycleStateEnum {
 	values := make([]DedicatedVmHostSummaryLifecycleStateEnum, 0)
@@ -131,11 +140,6 @@ func GetDedicatedVmHostSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingDedicatedVmHostSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDedicatedVmHostSummaryLifecycleStateEnum(val string) (DedicatedVmHostSummaryLifecycleStateEnum, bool) {
-	mappingDedicatedVmHostSummaryLifecycleStateEnumIgnoreCase := make(map[string]DedicatedVmHostSummaryLifecycleStateEnum)
-	for k, v := range mappingDedicatedVmHostSummaryLifecycleStateEnum {
-		mappingDedicatedVmHostSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDedicatedVmHostSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDedicatedVmHostSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

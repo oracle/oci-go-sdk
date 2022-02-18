@@ -15,11 +15,11 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
-// ByoipRange Oracle offers the ability to Bring Your Own IP (BYOIP), importing public IP addresses that you currently own to Oracle Cloud Infrastructure. A `ByoipRange` resource is a record of the imported address block (a BYOIP CIDR block) and also some associated metadata.
+// ByoipRange Oracle offers the ability to Bring Your Own IP (BYOIP), importing public IP addresses  that you currently own to Oracle Cloud Infrastructure. A `ByoipRange` resource is a record of the imported address block (a BYOIP CIDR block) and also some associated metadata.
 // The process used to Bring Your Own IP (https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/BYOIP.htm) is explained in the documentation.
 type ByoipRange struct {
 
@@ -122,6 +122,18 @@ var mappingByoipRangeLifecycleDetailsEnum = map[string]ByoipRangeLifecycleDetail
 	"WITHDRAWING": ByoipRangeLifecycleDetailsWithdrawing,
 }
 
+var mappingByoipRangeLifecycleDetailsEnumLowerCase = map[string]ByoipRangeLifecycleDetailsEnum{
+	"creating":    ByoipRangeLifecycleDetailsCreating,
+	"validating":  ByoipRangeLifecycleDetailsValidating,
+	"provisioned": ByoipRangeLifecycleDetailsProvisioned,
+	"active":      ByoipRangeLifecycleDetailsActive,
+	"failed":      ByoipRangeLifecycleDetailsFailed,
+	"deleting":    ByoipRangeLifecycleDetailsDeleting,
+	"deleted":     ByoipRangeLifecycleDetailsDeleted,
+	"advertising": ByoipRangeLifecycleDetailsAdvertising,
+	"withdrawing": ByoipRangeLifecycleDetailsWithdrawing,
+}
+
 // GetByoipRangeLifecycleDetailsEnumValues Enumerates the set of values for ByoipRangeLifecycleDetailsEnum
 func GetByoipRangeLifecycleDetailsEnumValues() []ByoipRangeLifecycleDetailsEnum {
 	values := make([]ByoipRangeLifecycleDetailsEnum, 0)
@@ -148,12 +160,7 @@ func GetByoipRangeLifecycleDetailsEnumStringValues() []string {
 
 // GetMappingByoipRangeLifecycleDetailsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingByoipRangeLifecycleDetailsEnum(val string) (ByoipRangeLifecycleDetailsEnum, bool) {
-	mappingByoipRangeLifecycleDetailsEnumIgnoreCase := make(map[string]ByoipRangeLifecycleDetailsEnum)
-	for k, v := range mappingByoipRangeLifecycleDetailsEnum {
-		mappingByoipRangeLifecycleDetailsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingByoipRangeLifecycleDetailsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingByoipRangeLifecycleDetailsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -175,6 +182,14 @@ var mappingByoipRangeLifecycleStateEnum = map[string]ByoipRangeLifecycleStateEnu
 	"ACTIVE":   ByoipRangeLifecycleStateActive,
 	"DELETING": ByoipRangeLifecycleStateDeleting,
 	"DELETED":  ByoipRangeLifecycleStateDeleted,
+}
+
+var mappingByoipRangeLifecycleStateEnumLowerCase = map[string]ByoipRangeLifecycleStateEnum{
+	"inactive": ByoipRangeLifecycleStateInactive,
+	"updating": ByoipRangeLifecycleStateUpdating,
+	"active":   ByoipRangeLifecycleStateActive,
+	"deleting": ByoipRangeLifecycleStateDeleting,
+	"deleted":  ByoipRangeLifecycleStateDeleted,
 }
 
 // GetByoipRangeLifecycleStateEnumValues Enumerates the set of values for ByoipRangeLifecycleStateEnum
@@ -199,11 +214,6 @@ func GetByoipRangeLifecycleStateEnumStringValues() []string {
 
 // GetMappingByoipRangeLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingByoipRangeLifecycleStateEnum(val string) (ByoipRangeLifecycleStateEnum, bool) {
-	mappingByoipRangeLifecycleStateEnumIgnoreCase := make(map[string]ByoipRangeLifecycleStateEnum)
-	for k, v := range mappingByoipRangeLifecycleStateEnum {
-		mappingByoipRangeLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingByoipRangeLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingByoipRangeLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

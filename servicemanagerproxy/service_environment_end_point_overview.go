@@ -12,7 +12,7 @@ package servicemanagerproxy
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,13 @@ var mappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnum = map[string]Se
 	"OTHER":             ServiceEnvironmentEndPointOverviewEnvironmentTypeOther,
 }
 
+var mappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnumLowerCase = map[string]ServiceEnvironmentEndPointOverviewEnvironmentTypeEnum{
+	"instance_url_prod": ServiceEnvironmentEndPointOverviewEnvironmentTypeInstanceUrlProd,
+	"instance_url_test": ServiceEnvironmentEndPointOverviewEnvironmentTypeInstanceUrlTest,
+	"instance_url_dev":  ServiceEnvironmentEndPointOverviewEnvironmentTypeInstanceUrlDev,
+	"other":             ServiceEnvironmentEndPointOverviewEnvironmentTypeOther,
+}
+
 // GetServiceEnvironmentEndPointOverviewEnvironmentTypeEnumValues Enumerates the set of values for ServiceEnvironmentEndPointOverviewEnvironmentTypeEnum
 func GetServiceEnvironmentEndPointOverviewEnvironmentTypeEnumValues() []ServiceEnvironmentEndPointOverviewEnvironmentTypeEnum {
 	values := make([]ServiceEnvironmentEndPointOverviewEnvironmentTypeEnum, 0)
@@ -87,11 +94,6 @@ func GetServiceEnvironmentEndPointOverviewEnvironmentTypeEnumStringValues() []st
 
 // GetMappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnum(val string) (ServiceEnvironmentEndPointOverviewEnvironmentTypeEnum, bool) {
-	mappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnumIgnoreCase := make(map[string]ServiceEnvironmentEndPointOverviewEnvironmentTypeEnum)
-	for k, v := range mappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnum {
-		mappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingServiceEnvironmentEndPointOverviewEnvironmentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

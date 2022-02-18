@@ -11,7 +11,7 @@ package filestorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -115,6 +115,13 @@ var mappingFileSystemSummaryLifecycleStateEnum = map[string]FileSystemSummaryLif
 	"DELETED":  FileSystemSummaryLifecycleStateDeleted,
 }
 
+var mappingFileSystemSummaryLifecycleStateEnumLowerCase = map[string]FileSystemSummaryLifecycleStateEnum{
+	"creating": FileSystemSummaryLifecycleStateCreating,
+	"active":   FileSystemSummaryLifecycleStateActive,
+	"deleting": FileSystemSummaryLifecycleStateDeleting,
+	"deleted":  FileSystemSummaryLifecycleStateDeleted,
+}
+
 // GetFileSystemSummaryLifecycleStateEnumValues Enumerates the set of values for FileSystemSummaryLifecycleStateEnum
 func GetFileSystemSummaryLifecycleStateEnumValues() []FileSystemSummaryLifecycleStateEnum {
 	values := make([]FileSystemSummaryLifecycleStateEnum, 0)
@@ -136,11 +143,6 @@ func GetFileSystemSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingFileSystemSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFileSystemSummaryLifecycleStateEnum(val string) (FileSystemSummaryLifecycleStateEnum, bool) {
-	mappingFileSystemSummaryLifecycleStateEnumIgnoreCase := make(map[string]FileSystemSummaryLifecycleStateEnum)
-	for k, v := range mappingFileSystemSummaryLifecycleStateEnum {
-		mappingFileSystemSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFileSystemSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFileSystemSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

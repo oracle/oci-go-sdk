@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -104,6 +104,17 @@ var mappingInstancePoolSummaryLifecycleStateEnum = map[string]InstancePoolSummar
 	"RUNNING":      InstancePoolSummaryLifecycleStateRunning,
 }
 
+var mappingInstancePoolSummaryLifecycleStateEnumLowerCase = map[string]InstancePoolSummaryLifecycleStateEnum{
+	"provisioning": InstancePoolSummaryLifecycleStateProvisioning,
+	"scaling":      InstancePoolSummaryLifecycleStateScaling,
+	"starting":     InstancePoolSummaryLifecycleStateStarting,
+	"stopping":     InstancePoolSummaryLifecycleStateStopping,
+	"terminating":  InstancePoolSummaryLifecycleStateTerminating,
+	"stopped":      InstancePoolSummaryLifecycleStateStopped,
+	"terminated":   InstancePoolSummaryLifecycleStateTerminated,
+	"running":      InstancePoolSummaryLifecycleStateRunning,
+}
+
 // GetInstancePoolSummaryLifecycleStateEnumValues Enumerates the set of values for InstancePoolSummaryLifecycleStateEnum
 func GetInstancePoolSummaryLifecycleStateEnumValues() []InstancePoolSummaryLifecycleStateEnum {
 	values := make([]InstancePoolSummaryLifecycleStateEnum, 0)
@@ -129,11 +140,6 @@ func GetInstancePoolSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingInstancePoolSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstancePoolSummaryLifecycleStateEnum(val string) (InstancePoolSummaryLifecycleStateEnum, bool) {
-	mappingInstancePoolSummaryLifecycleStateEnumIgnoreCase := make(map[string]InstancePoolSummaryLifecycleStateEnum)
-	for k, v := range mappingInstancePoolSummaryLifecycleStateEnum {
-		mappingInstancePoolSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstancePoolSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstancePoolSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

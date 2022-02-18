@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -126,6 +126,16 @@ var mappingExternalContainerDatabaseSummaryLifecycleStateEnum = map[string]Exter
 	"FAILED":        ExternalContainerDatabaseSummaryLifecycleStateFailed,
 }
 
+var mappingExternalContainerDatabaseSummaryLifecycleStateEnumLowerCase = map[string]ExternalContainerDatabaseSummaryLifecycleStateEnum{
+	"provisioning":  ExternalContainerDatabaseSummaryLifecycleStateProvisioning,
+	"not_connected": ExternalContainerDatabaseSummaryLifecycleStateNotConnected,
+	"available":     ExternalContainerDatabaseSummaryLifecycleStateAvailable,
+	"updating":      ExternalContainerDatabaseSummaryLifecycleStateUpdating,
+	"terminating":   ExternalContainerDatabaseSummaryLifecycleStateTerminating,
+	"terminated":    ExternalContainerDatabaseSummaryLifecycleStateTerminated,
+	"failed":        ExternalContainerDatabaseSummaryLifecycleStateFailed,
+}
+
 // GetExternalContainerDatabaseSummaryLifecycleStateEnumValues Enumerates the set of values for ExternalContainerDatabaseSummaryLifecycleStateEnum
 func GetExternalContainerDatabaseSummaryLifecycleStateEnumValues() []ExternalContainerDatabaseSummaryLifecycleStateEnum {
 	values := make([]ExternalContainerDatabaseSummaryLifecycleStateEnum, 0)
@@ -150,12 +160,7 @@ func GetExternalContainerDatabaseSummaryLifecycleStateEnumStringValues() []strin
 
 // GetMappingExternalContainerDatabaseSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExternalContainerDatabaseSummaryLifecycleStateEnum(val string) (ExternalContainerDatabaseSummaryLifecycleStateEnum, bool) {
-	mappingExternalContainerDatabaseSummaryLifecycleStateEnumIgnoreCase := make(map[string]ExternalContainerDatabaseSummaryLifecycleStateEnum)
-	for k, v := range mappingExternalContainerDatabaseSummaryLifecycleStateEnum {
-		mappingExternalContainerDatabaseSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExternalContainerDatabaseSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExternalContainerDatabaseSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -175,6 +180,13 @@ var mappingExternalContainerDatabaseSummaryDatabaseEditionEnum = map[string]Exte
 	"ENTERPRISE_EDITION":                     ExternalContainerDatabaseSummaryDatabaseEditionEnterpriseEdition,
 	"ENTERPRISE_EDITION_HIGH_PERFORMANCE":    ExternalContainerDatabaseSummaryDatabaseEditionEnterpriseEditionHighPerformance,
 	"ENTERPRISE_EDITION_EXTREME_PERFORMANCE": ExternalContainerDatabaseSummaryDatabaseEditionEnterpriseEditionExtremePerformance,
+}
+
+var mappingExternalContainerDatabaseSummaryDatabaseEditionEnumLowerCase = map[string]ExternalContainerDatabaseSummaryDatabaseEditionEnum{
+	"standard_edition":                       ExternalContainerDatabaseSummaryDatabaseEditionStandardEdition,
+	"enterprise_edition":                     ExternalContainerDatabaseSummaryDatabaseEditionEnterpriseEdition,
+	"enterprise_edition_high_performance":    ExternalContainerDatabaseSummaryDatabaseEditionEnterpriseEditionHighPerformance,
+	"enterprise_edition_extreme_performance": ExternalContainerDatabaseSummaryDatabaseEditionEnterpriseEditionExtremePerformance,
 }
 
 // GetExternalContainerDatabaseSummaryDatabaseEditionEnumValues Enumerates the set of values for ExternalContainerDatabaseSummaryDatabaseEditionEnum
@@ -198,12 +210,7 @@ func GetExternalContainerDatabaseSummaryDatabaseEditionEnumStringValues() []stri
 
 // GetMappingExternalContainerDatabaseSummaryDatabaseEditionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExternalContainerDatabaseSummaryDatabaseEditionEnum(val string) (ExternalContainerDatabaseSummaryDatabaseEditionEnum, bool) {
-	mappingExternalContainerDatabaseSummaryDatabaseEditionEnumIgnoreCase := make(map[string]ExternalContainerDatabaseSummaryDatabaseEditionEnum)
-	for k, v := range mappingExternalContainerDatabaseSummaryDatabaseEditionEnum {
-		mappingExternalContainerDatabaseSummaryDatabaseEditionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExternalContainerDatabaseSummaryDatabaseEditionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExternalContainerDatabaseSummaryDatabaseEditionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -219,6 +226,11 @@ const (
 var mappingExternalContainerDatabaseSummaryDatabaseConfigurationEnum = map[string]ExternalContainerDatabaseSummaryDatabaseConfigurationEnum{
 	"RAC":             ExternalContainerDatabaseSummaryDatabaseConfigurationRac,
 	"SINGLE_INSTANCE": ExternalContainerDatabaseSummaryDatabaseConfigurationSingleInstance,
+}
+
+var mappingExternalContainerDatabaseSummaryDatabaseConfigurationEnumLowerCase = map[string]ExternalContainerDatabaseSummaryDatabaseConfigurationEnum{
+	"rac":             ExternalContainerDatabaseSummaryDatabaseConfigurationRac,
+	"single_instance": ExternalContainerDatabaseSummaryDatabaseConfigurationSingleInstance,
 }
 
 // GetExternalContainerDatabaseSummaryDatabaseConfigurationEnumValues Enumerates the set of values for ExternalContainerDatabaseSummaryDatabaseConfigurationEnum
@@ -240,11 +252,6 @@ func GetExternalContainerDatabaseSummaryDatabaseConfigurationEnumStringValues() 
 
 // GetMappingExternalContainerDatabaseSummaryDatabaseConfigurationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExternalContainerDatabaseSummaryDatabaseConfigurationEnum(val string) (ExternalContainerDatabaseSummaryDatabaseConfigurationEnum, bool) {
-	mappingExternalContainerDatabaseSummaryDatabaseConfigurationEnumIgnoreCase := make(map[string]ExternalContainerDatabaseSummaryDatabaseConfigurationEnum)
-	for k, v := range mappingExternalContainerDatabaseSummaryDatabaseConfigurationEnum {
-		mappingExternalContainerDatabaseSummaryDatabaseConfigurationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExternalContainerDatabaseSummaryDatabaseConfigurationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExternalContainerDatabaseSummaryDatabaseConfigurationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

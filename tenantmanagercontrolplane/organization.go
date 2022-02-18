@@ -11,7 +11,7 @@ package tenantmanagercontrolplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -84,6 +84,15 @@ var mappingOrganizationLifecycleStateEnum = map[string]OrganizationLifecycleStat
 	"FAILED":   OrganizationLifecycleStateFailed,
 }
 
+var mappingOrganizationLifecycleStateEnumLowerCase = map[string]OrganizationLifecycleStateEnum{
+	"creating": OrganizationLifecycleStateCreating,
+	"active":   OrganizationLifecycleStateActive,
+	"updating": OrganizationLifecycleStateUpdating,
+	"deleting": OrganizationLifecycleStateDeleting,
+	"deleted":  OrganizationLifecycleStateDeleted,
+	"failed":   OrganizationLifecycleStateFailed,
+}
+
 // GetOrganizationLifecycleStateEnumValues Enumerates the set of values for OrganizationLifecycleStateEnum
 func GetOrganizationLifecycleStateEnumValues() []OrganizationLifecycleStateEnum {
 	values := make([]OrganizationLifecycleStateEnum, 0)
@@ -107,11 +116,6 @@ func GetOrganizationLifecycleStateEnumStringValues() []string {
 
 // GetMappingOrganizationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOrganizationLifecycleStateEnum(val string) (OrganizationLifecycleStateEnum, bool) {
-	mappingOrganizationLifecycleStateEnumIgnoreCase := make(map[string]OrganizationLifecycleStateEnum)
-	for k, v := range mappingOrganizationLifecycleStateEnum {
-		mappingOrganizationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOrganizationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOrganizationLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

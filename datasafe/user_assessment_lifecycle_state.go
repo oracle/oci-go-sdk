@@ -33,6 +33,14 @@ var mappingUserAssessmentLifecycleStateEnum = map[string]UserAssessmentLifecycle
 	"FAILED":    UserAssessmentLifecycleStateFailed,
 }
 
+var mappingUserAssessmentLifecycleStateEnumLowerCase = map[string]UserAssessmentLifecycleStateEnum{
+	"creating":  UserAssessmentLifecycleStateCreating,
+	"succeeded": UserAssessmentLifecycleStateSucceeded,
+	"updating":  UserAssessmentLifecycleStateUpdating,
+	"deleting":  UserAssessmentLifecycleStateDeleting,
+	"failed":    UserAssessmentLifecycleStateFailed,
+}
+
 // GetUserAssessmentLifecycleStateEnumValues Enumerates the set of values for UserAssessmentLifecycleStateEnum
 func GetUserAssessmentLifecycleStateEnumValues() []UserAssessmentLifecycleStateEnum {
 	values := make([]UserAssessmentLifecycleStateEnum, 0)
@@ -55,11 +63,6 @@ func GetUserAssessmentLifecycleStateEnumStringValues() []string {
 
 // GetMappingUserAssessmentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserAssessmentLifecycleStateEnum(val string) (UserAssessmentLifecycleStateEnum, bool) {
-	mappingUserAssessmentLifecycleStateEnumIgnoreCase := make(map[string]UserAssessmentLifecycleStateEnum)
-	for k, v := range mappingUserAssessmentLifecycleStateEnum {
-		mappingUserAssessmentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserAssessmentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserAssessmentLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

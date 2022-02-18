@@ -225,6 +225,54 @@ func TestEndpointForTemplate(t *testing.T) {
 	}
 }
 
+func TestEndpointForDotInRegion(t *testing.T) {
+	//dot in region with service name and endpoint template
+	region := StringToRegion("some.customerdomain.com")
+	service := "test"
+	endpointTemplate := "https://{region}.bar.com"
+	serviceName := "iaas"
+	endpoint, err := region.EndpointForTemplateDottedRegion(service, endpointTemplate, serviceName)
+	assert.NoError(t, err)
+	assert.Equal(t, "https://iaas.some.customerdomain.com", endpoint)
+
+	service = "identity"
+	region = StringToRegion("broom6.us.oracle.com")
+	serviceName = "iam"
+	endpointTemplate = "https://identity.{region}.oci.{secondLevelDomain}"
+	endpoint, err = region.EndpointForTemplateDottedRegion(service, endpointTemplate, serviceName)
+	assert.NoError(t, err)
+	assert.Equal(t, "https://iam.broom6.us.oracle.com", endpoint)
+
+	//dot in region with service name and without endpoint template
+	region = StringToRegion("some.customerdomain.com")
+	service = "analytics"
+	serviceName = "test"
+	endpoint, err = region.EndpointForTemplateDottedRegion(service, "", serviceName)
+	assert.NoError(t, err)
+	assert.Equal(t, "https://test.some.customerdomain.com", endpoint)
+
+	region = StringToRegion("broom6.us.oracle.com")
+	service = "compute"
+	serviceName = "iaas"
+	endpoint, err = region.EndpointForTemplateDottedRegion(service, "", serviceName)
+	assert.NoError(t, err)
+	assert.Equal(t, "https://iaas.broom6.us.oracle.com", endpoint)
+
+	//dot in region without service name and with endpoint template
+	service = "identity"
+	region = StringToRegion("broom6.us.oracle.com")
+	endpointTemplate = "https://iaas.{region}.{secondLevelDomain}"
+	endpoint, err = region.EndpointForTemplateDottedRegion(service, endpointTemplate, "")
+	assert.NoError(t, err)
+	assert.Equal(t, "https://iaas.broom6.us.oracle.com", endpoint)
+
+	//dot in region without service name and without endpoint template
+	service = "analytics"
+	region = StringToRegion("broom6.us.oracle.com")
+	endpoint, err = region.EndpointForTemplateDottedRegion(service, "", "")
+	assert.Error(t, err)
+}
+
 func TestStringToRegion(t *testing.T) {
 	region := StringToRegion("yyz")
 	assert.Equal(t, RegionCAToronto1, region)

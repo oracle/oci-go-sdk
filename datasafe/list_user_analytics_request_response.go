@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -178,6 +178,11 @@ var mappingListUserAnalyticsAccessLevelEnum = map[string]ListUserAnalyticsAccess
 	"ACCESSIBLE": ListUserAnalyticsAccessLevelAccessible,
 }
 
+var mappingListUserAnalyticsAccessLevelEnumLowerCase = map[string]ListUserAnalyticsAccessLevelEnum{
+	"restricted": ListUserAnalyticsAccessLevelRestricted,
+	"accessible": ListUserAnalyticsAccessLevelAccessible,
+}
+
 // GetListUserAnalyticsAccessLevelEnumValues Enumerates the set of values for ListUserAnalyticsAccessLevelEnum
 func GetListUserAnalyticsAccessLevelEnumValues() []ListUserAnalyticsAccessLevelEnum {
 	values := make([]ListUserAnalyticsAccessLevelEnum, 0)
@@ -197,12 +202,7 @@ func GetListUserAnalyticsAccessLevelEnumStringValues() []string {
 
 // GetMappingListUserAnalyticsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUserAnalyticsAccessLevelEnum(val string) (ListUserAnalyticsAccessLevelEnum, bool) {
-	mappingListUserAnalyticsAccessLevelEnumIgnoreCase := make(map[string]ListUserAnalyticsAccessLevelEnum)
-	for k, v := range mappingListUserAnalyticsAccessLevelEnum {
-		mappingListUserAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUserAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUserAnalyticsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -218,6 +218,11 @@ const (
 var mappingListUserAnalyticsSortOrderEnum = map[string]ListUserAnalyticsSortOrderEnum{
 	"ASC":  ListUserAnalyticsSortOrderAsc,
 	"DESC": ListUserAnalyticsSortOrderDesc,
+}
+
+var mappingListUserAnalyticsSortOrderEnumLowerCase = map[string]ListUserAnalyticsSortOrderEnum{
+	"asc":  ListUserAnalyticsSortOrderAsc,
+	"desc": ListUserAnalyticsSortOrderDesc,
 }
 
 // GetListUserAnalyticsSortOrderEnumValues Enumerates the set of values for ListUserAnalyticsSortOrderEnum
@@ -239,12 +244,7 @@ func GetListUserAnalyticsSortOrderEnumStringValues() []string {
 
 // GetMappingListUserAnalyticsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUserAnalyticsSortOrderEnum(val string) (ListUserAnalyticsSortOrderEnum, bool) {
-	mappingListUserAnalyticsSortOrderEnumIgnoreCase := make(map[string]ListUserAnalyticsSortOrderEnum)
-	for k, v := range mappingListUserAnalyticsSortOrderEnum {
-		mappingListUserAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUserAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUserAnalyticsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -274,6 +274,17 @@ var mappingListUserAnalyticsSortByEnum = map[string]ListUserAnalyticsSortByEnum{
 	"timePasswordChanged": ListUserAnalyticsSortByTimepasswordchanged,
 }
 
+var mappingListUserAnalyticsSortByEnumLowerCase = map[string]ListUserAnalyticsSortByEnum{
+	"username":            ListUserAnalyticsSortByUsername,
+	"usercategory":        ListUserAnalyticsSortByUsercategory,
+	"accountstatus":       ListUserAnalyticsSortByAccountstatus,
+	"timelastlogin":       ListUserAnalyticsSortByTimelastlogin,
+	"targetid":            ListUserAnalyticsSortByTargetid,
+	"timeusercreated":     ListUserAnalyticsSortByTimeusercreated,
+	"authenticationtype":  ListUserAnalyticsSortByAuthenticationtype,
+	"timepasswordchanged": ListUserAnalyticsSortByTimepasswordchanged,
+}
+
 // GetListUserAnalyticsSortByEnumValues Enumerates the set of values for ListUserAnalyticsSortByEnum
 func GetListUserAnalyticsSortByEnumValues() []ListUserAnalyticsSortByEnum {
 	values := make([]ListUserAnalyticsSortByEnum, 0)
@@ -299,11 +310,6 @@ func GetListUserAnalyticsSortByEnumStringValues() []string {
 
 // GetMappingListUserAnalyticsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUserAnalyticsSortByEnum(val string) (ListUserAnalyticsSortByEnum, bool) {
-	mappingListUserAnalyticsSortByEnumIgnoreCase := make(map[string]ListUserAnalyticsSortByEnum)
-	for k, v := range mappingListUserAnalyticsSortByEnum {
-		mappingListUserAnalyticsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUserAnalyticsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUserAnalyticsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

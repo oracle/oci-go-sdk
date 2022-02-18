@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -145,6 +145,17 @@ var mappingListMetastoresLifecycleStateEnum = map[string]ListMetastoresLifecycle
 	"MOVING":   ListMetastoresLifecycleStateMoving,
 }
 
+var mappingListMetastoresLifecycleStateEnumLowerCase = map[string]ListMetastoresLifecycleStateEnum{
+	"creating": ListMetastoresLifecycleStateCreating,
+	"active":   ListMetastoresLifecycleStateActive,
+	"inactive": ListMetastoresLifecycleStateInactive,
+	"updating": ListMetastoresLifecycleStateUpdating,
+	"deleting": ListMetastoresLifecycleStateDeleting,
+	"deleted":  ListMetastoresLifecycleStateDeleted,
+	"failed":   ListMetastoresLifecycleStateFailed,
+	"moving":   ListMetastoresLifecycleStateMoving,
+}
+
 // GetListMetastoresLifecycleStateEnumValues Enumerates the set of values for ListMetastoresLifecycleStateEnum
 func GetListMetastoresLifecycleStateEnumValues() []ListMetastoresLifecycleStateEnum {
 	values := make([]ListMetastoresLifecycleStateEnum, 0)
@@ -170,12 +181,7 @@ func GetListMetastoresLifecycleStateEnumStringValues() []string {
 
 // GetMappingListMetastoresLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMetastoresLifecycleStateEnum(val string) (ListMetastoresLifecycleStateEnum, bool) {
-	mappingListMetastoresLifecycleStateEnumIgnoreCase := make(map[string]ListMetastoresLifecycleStateEnum)
-	for k, v := range mappingListMetastoresLifecycleStateEnum {
-		mappingListMetastoresLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMetastoresLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMetastoresLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -191,6 +197,11 @@ const (
 var mappingListMetastoresSortOrderEnum = map[string]ListMetastoresSortOrderEnum{
 	"ASC":  ListMetastoresSortOrderAsc,
 	"DESC": ListMetastoresSortOrderDesc,
+}
+
+var mappingListMetastoresSortOrderEnumLowerCase = map[string]ListMetastoresSortOrderEnum{
+	"asc":  ListMetastoresSortOrderAsc,
+	"desc": ListMetastoresSortOrderDesc,
 }
 
 // GetListMetastoresSortOrderEnumValues Enumerates the set of values for ListMetastoresSortOrderEnum
@@ -212,12 +223,7 @@ func GetListMetastoresSortOrderEnumStringValues() []string {
 
 // GetMappingListMetastoresSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMetastoresSortOrderEnum(val string) (ListMetastoresSortOrderEnum, bool) {
-	mappingListMetastoresSortOrderEnumIgnoreCase := make(map[string]ListMetastoresSortOrderEnum)
-	for k, v := range mappingListMetastoresSortOrderEnum {
-		mappingListMetastoresSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMetastoresSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMetastoresSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -233,6 +239,11 @@ const (
 var mappingListMetastoresSortByEnum = map[string]ListMetastoresSortByEnum{
 	"TIMECREATED": ListMetastoresSortByTimecreated,
 	"DISPLAYNAME": ListMetastoresSortByDisplayname,
+}
+
+var mappingListMetastoresSortByEnumLowerCase = map[string]ListMetastoresSortByEnum{
+	"timecreated": ListMetastoresSortByTimecreated,
+	"displayname": ListMetastoresSortByDisplayname,
 }
 
 // GetListMetastoresSortByEnumValues Enumerates the set of values for ListMetastoresSortByEnum
@@ -254,11 +265,6 @@ func GetListMetastoresSortByEnumStringValues() []string {
 
 // GetMappingListMetastoresSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMetastoresSortByEnum(val string) (ListMetastoresSortByEnum, bool) {
-	mappingListMetastoresSortByEnumIgnoreCase := make(map[string]ListMetastoresSortByEnum)
-	for k, v := range mappingListMetastoresSortByEnum {
-		mappingListMetastoresSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMetastoresSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMetastoresSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

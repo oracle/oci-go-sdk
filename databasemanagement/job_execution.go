@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -221,6 +221,12 @@ var mappingJobExecutionStatusEnum = map[string]JobExecutionStatusEnum{
 	"IN_PROGRESS": JobExecutionStatusInProgress,
 }
 
+var mappingJobExecutionStatusEnumLowerCase = map[string]JobExecutionStatusEnum{
+	"succeeded":   JobExecutionStatusSucceeded,
+	"failed":      JobExecutionStatusFailed,
+	"in_progress": JobExecutionStatusInProgress,
+}
+
 // GetJobExecutionStatusEnumValues Enumerates the set of values for JobExecutionStatusEnum
 func GetJobExecutionStatusEnumValues() []JobExecutionStatusEnum {
 	values := make([]JobExecutionStatusEnum, 0)
@@ -241,11 +247,6 @@ func GetJobExecutionStatusEnumStringValues() []string {
 
 // GetMappingJobExecutionStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJobExecutionStatusEnum(val string) (JobExecutionStatusEnum, bool) {
-	mappingJobExecutionStatusEnumIgnoreCase := make(map[string]JobExecutionStatusEnum)
-	for k, v := range mappingJobExecutionStatusEnum {
-		mappingJobExecutionStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJobExecutionStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJobExecutionStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

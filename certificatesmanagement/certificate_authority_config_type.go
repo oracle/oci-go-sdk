@@ -27,6 +27,11 @@ var mappingCertificateAuthorityConfigTypeEnum = map[string]CertificateAuthorityC
 	"SUBORDINATE_CA_ISSUED_BY_INTERNAL_CA": CertificateAuthorityConfigTypeSubordinateCaIssuedByInternalCa,
 }
 
+var mappingCertificateAuthorityConfigTypeEnumLowerCase = map[string]CertificateAuthorityConfigTypeEnum{
+	"root_ca_generated_internally":         CertificateAuthorityConfigTypeRootCaGeneratedInternally,
+	"subordinate_ca_issued_by_internal_ca": CertificateAuthorityConfigTypeSubordinateCaIssuedByInternalCa,
+}
+
 // GetCertificateAuthorityConfigTypeEnumValues Enumerates the set of values for CertificateAuthorityConfigTypeEnum
 func GetCertificateAuthorityConfigTypeEnumValues() []CertificateAuthorityConfigTypeEnum {
 	values := make([]CertificateAuthorityConfigTypeEnum, 0)
@@ -46,11 +51,6 @@ func GetCertificateAuthorityConfigTypeEnumStringValues() []string {
 
 // GetMappingCertificateAuthorityConfigTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCertificateAuthorityConfigTypeEnum(val string) (CertificateAuthorityConfigTypeEnum, bool) {
-	mappingCertificateAuthorityConfigTypeEnumIgnoreCase := make(map[string]CertificateAuthorityConfigTypeEnum)
-	for k, v := range mappingCertificateAuthorityConfigTypeEnum {
-		mappingCertificateAuthorityConfigTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCertificateAuthorityConfigTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCertificateAuthorityConfigTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

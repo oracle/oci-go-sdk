@@ -11,7 +11,7 @@ package streaming
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -102,6 +102,15 @@ var mappingStreamLifecycleStateEnum = map[string]StreamLifecycleStateEnum{
 	"UPDATING": StreamLifecycleStateUpdating,
 }
 
+var mappingStreamLifecycleStateEnumLowerCase = map[string]StreamLifecycleStateEnum{
+	"creating": StreamLifecycleStateCreating,
+	"active":   StreamLifecycleStateActive,
+	"deleting": StreamLifecycleStateDeleting,
+	"deleted":  StreamLifecycleStateDeleted,
+	"failed":   StreamLifecycleStateFailed,
+	"updating": StreamLifecycleStateUpdating,
+}
+
 // GetStreamLifecycleStateEnumValues Enumerates the set of values for StreamLifecycleStateEnum
 func GetStreamLifecycleStateEnumValues() []StreamLifecycleStateEnum {
 	values := make([]StreamLifecycleStateEnum, 0)
@@ -125,11 +134,6 @@ func GetStreamLifecycleStateEnumStringValues() []string {
 
 // GetMappingStreamLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStreamLifecycleStateEnum(val string) (StreamLifecycleStateEnum, bool) {
-	mappingStreamLifecycleStateEnumIgnoreCase := make(map[string]StreamLifecycleStateEnum)
-	for k, v := range mappingStreamLifecycleStateEnum {
-		mappingStreamLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStreamLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStreamLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

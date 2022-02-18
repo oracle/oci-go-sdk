@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -139,6 +139,20 @@ var mappingGetCustomPropertyFieldsEnum = map[string]GetCustomPropertyFieldsEnum{
 	"properties":     GetCustomPropertyFieldsProperties,
 }
 
+var mappingGetCustomPropertyFieldsEnumLowerCase = map[string]GetCustomPropertyFieldsEnum{
+	"key":            GetCustomPropertyFieldsKey,
+	"displayname":    GetCustomPropertyFieldsDisplayname,
+	"description":    GetCustomPropertyFieldsDescription,
+	"datatype":       GetCustomPropertyFieldsDatatype,
+	"namespacename":  GetCustomPropertyFieldsNamespacename,
+	"lifecyclestate": GetCustomPropertyFieldsLifecyclestate,
+	"timecreated":    GetCustomPropertyFieldsTimecreated,
+	"timeupdated":    GetCustomPropertyFieldsTimeupdated,
+	"createdbyid":    GetCustomPropertyFieldsCreatedbyid,
+	"updatedbyid":    GetCustomPropertyFieldsUpdatedbyid,
+	"properties":     GetCustomPropertyFieldsProperties,
+}
+
 // GetGetCustomPropertyFieldsEnumValues Enumerates the set of values for GetCustomPropertyFieldsEnum
 func GetGetCustomPropertyFieldsEnumValues() []GetCustomPropertyFieldsEnum {
 	values := make([]GetCustomPropertyFieldsEnum, 0)
@@ -167,11 +181,6 @@ func GetGetCustomPropertyFieldsEnumStringValues() []string {
 
 // GetMappingGetCustomPropertyFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetCustomPropertyFieldsEnum(val string) (GetCustomPropertyFieldsEnum, bool) {
-	mappingGetCustomPropertyFieldsEnumIgnoreCase := make(map[string]GetCustomPropertyFieldsEnum)
-	for k, v := range mappingGetCustomPropertyFieldsEnum {
-		mappingGetCustomPropertyFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetCustomPropertyFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetCustomPropertyFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

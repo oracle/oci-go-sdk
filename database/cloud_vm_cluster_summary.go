@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -208,6 +208,16 @@ var mappingCloudVmClusterSummaryLifecycleStateEnum = map[string]CloudVmClusterSu
 	"MAINTENANCE_IN_PROGRESS": CloudVmClusterSummaryLifecycleStateMaintenanceInProgress,
 }
 
+var mappingCloudVmClusterSummaryLifecycleStateEnumLowerCase = map[string]CloudVmClusterSummaryLifecycleStateEnum{
+	"provisioning":            CloudVmClusterSummaryLifecycleStateProvisioning,
+	"available":               CloudVmClusterSummaryLifecycleStateAvailable,
+	"updating":                CloudVmClusterSummaryLifecycleStateUpdating,
+	"terminating":             CloudVmClusterSummaryLifecycleStateTerminating,
+	"terminated":              CloudVmClusterSummaryLifecycleStateTerminated,
+	"failed":                  CloudVmClusterSummaryLifecycleStateFailed,
+	"maintenance_in_progress": CloudVmClusterSummaryLifecycleStateMaintenanceInProgress,
+}
+
 // GetCloudVmClusterSummaryLifecycleStateEnumValues Enumerates the set of values for CloudVmClusterSummaryLifecycleStateEnum
 func GetCloudVmClusterSummaryLifecycleStateEnumValues() []CloudVmClusterSummaryLifecycleStateEnum {
 	values := make([]CloudVmClusterSummaryLifecycleStateEnum, 0)
@@ -232,12 +242,7 @@ func GetCloudVmClusterSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingCloudVmClusterSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCloudVmClusterSummaryLifecycleStateEnum(val string) (CloudVmClusterSummaryLifecycleStateEnum, bool) {
-	mappingCloudVmClusterSummaryLifecycleStateEnumIgnoreCase := make(map[string]CloudVmClusterSummaryLifecycleStateEnum)
-	for k, v := range mappingCloudVmClusterSummaryLifecycleStateEnum {
-		mappingCloudVmClusterSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCloudVmClusterSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCloudVmClusterSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -253,6 +258,11 @@ const (
 var mappingCloudVmClusterSummaryLicenseModelEnum = map[string]CloudVmClusterSummaryLicenseModelEnum{
 	"LICENSE_INCLUDED":       CloudVmClusterSummaryLicenseModelLicenseIncluded,
 	"BRING_YOUR_OWN_LICENSE": CloudVmClusterSummaryLicenseModelBringYourOwnLicense,
+}
+
+var mappingCloudVmClusterSummaryLicenseModelEnumLowerCase = map[string]CloudVmClusterSummaryLicenseModelEnum{
+	"license_included":       CloudVmClusterSummaryLicenseModelLicenseIncluded,
+	"bring_your_own_license": CloudVmClusterSummaryLicenseModelBringYourOwnLicense,
 }
 
 // GetCloudVmClusterSummaryLicenseModelEnumValues Enumerates the set of values for CloudVmClusterSummaryLicenseModelEnum
@@ -274,12 +284,7 @@ func GetCloudVmClusterSummaryLicenseModelEnumStringValues() []string {
 
 // GetMappingCloudVmClusterSummaryLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCloudVmClusterSummaryLicenseModelEnum(val string) (CloudVmClusterSummaryLicenseModelEnum, bool) {
-	mappingCloudVmClusterSummaryLicenseModelEnumIgnoreCase := make(map[string]CloudVmClusterSummaryLicenseModelEnum)
-	for k, v := range mappingCloudVmClusterSummaryLicenseModelEnum {
-		mappingCloudVmClusterSummaryLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCloudVmClusterSummaryLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCloudVmClusterSummaryLicenseModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -295,6 +300,11 @@ const (
 var mappingCloudVmClusterSummaryDiskRedundancyEnum = map[string]CloudVmClusterSummaryDiskRedundancyEnum{
 	"HIGH":   CloudVmClusterSummaryDiskRedundancyHigh,
 	"NORMAL": CloudVmClusterSummaryDiskRedundancyNormal,
+}
+
+var mappingCloudVmClusterSummaryDiskRedundancyEnumLowerCase = map[string]CloudVmClusterSummaryDiskRedundancyEnum{
+	"high":   CloudVmClusterSummaryDiskRedundancyHigh,
+	"normal": CloudVmClusterSummaryDiskRedundancyNormal,
 }
 
 // GetCloudVmClusterSummaryDiskRedundancyEnumValues Enumerates the set of values for CloudVmClusterSummaryDiskRedundancyEnum
@@ -316,11 +326,6 @@ func GetCloudVmClusterSummaryDiskRedundancyEnumStringValues() []string {
 
 // GetMappingCloudVmClusterSummaryDiskRedundancyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCloudVmClusterSummaryDiskRedundancyEnum(val string) (CloudVmClusterSummaryDiskRedundancyEnum, bool) {
-	mappingCloudVmClusterSummaryDiskRedundancyEnumIgnoreCase := make(map[string]CloudVmClusterSummaryDiskRedundancyEnum)
-	for k, v := range mappingCloudVmClusterSummaryDiskRedundancyEnum {
-		mappingCloudVmClusterSummaryDiskRedundancyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCloudVmClusterSummaryDiskRedundancyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCloudVmClusterSummaryDiskRedundancyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

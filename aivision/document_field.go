@@ -12,7 +12,7 @@ package aivision
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,13 @@ var mappingDocumentFieldFieldTypeEnum = map[string]DocumentFieldFieldTypeEnum{
 	"KEY_VALUE":       DocumentFieldFieldTypeKeyValue,
 }
 
+var mappingDocumentFieldFieldTypeEnumLowerCase = map[string]DocumentFieldFieldTypeEnum{
+	"line_item_group": DocumentFieldFieldTypeLineItemGroup,
+	"line_item":       DocumentFieldFieldTypeLineItem,
+	"line_item_field": DocumentFieldFieldTypeLineItemField,
+	"key_value":       DocumentFieldFieldTypeKeyValue,
+}
+
 // GetDocumentFieldFieldTypeEnumValues Enumerates the set of values for DocumentFieldFieldTypeEnum
 func GetDocumentFieldFieldTypeEnumValues() []DocumentFieldFieldTypeEnum {
 	values := make([]DocumentFieldFieldTypeEnum, 0)
@@ -120,11 +127,6 @@ func GetDocumentFieldFieldTypeEnumStringValues() []string {
 
 // GetMappingDocumentFieldFieldTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDocumentFieldFieldTypeEnum(val string) (DocumentFieldFieldTypeEnum, bool) {
-	mappingDocumentFieldFieldTypeEnumIgnoreCase := make(map[string]DocumentFieldFieldTypeEnum)
-	for k, v := range mappingDocumentFieldFieldTypeEnum {
-		mappingDocumentFieldFieldTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDocumentFieldFieldTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDocumentFieldFieldTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

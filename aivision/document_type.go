@@ -43,6 +43,19 @@ var mappingDocumentTypeEnum = map[string]DocumentTypeEnum{
 	"OTHERS":         DocumentTypeOthers,
 }
 
+var mappingDocumentTypeEnumLowerCase = map[string]DocumentTypeEnum{
+	"invoice":        DocumentTypeInvoice,
+	"receipt":        DocumentTypeReceipt,
+	"resume":         DocumentTypeResume,
+	"tax_form":       DocumentTypeTaxForm,
+	"driver_license": DocumentTypeDriverLicense,
+	"passport":       DocumentTypePassport,
+	"bank_statement": DocumentTypeBankStatement,
+	"check":          DocumentTypeCheck,
+	"payslip":        DocumentTypePayslip,
+	"others":         DocumentTypeOthers,
+}
+
 // GetDocumentTypeEnumValues Enumerates the set of values for DocumentTypeEnum
 func GetDocumentTypeEnumValues() []DocumentTypeEnum {
 	values := make([]DocumentTypeEnum, 0)
@@ -70,11 +83,6 @@ func GetDocumentTypeEnumStringValues() []string {
 
 // GetMappingDocumentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDocumentTypeEnum(val string) (DocumentTypeEnum, bool) {
-	mappingDocumentTypeEnumIgnoreCase := make(map[string]DocumentTypeEnum)
-	for k, v := range mappingDocumentTypeEnum {
-		mappingDocumentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDocumentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDocumentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

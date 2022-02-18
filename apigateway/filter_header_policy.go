@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -62,6 +62,11 @@ var mappingFilterHeaderPolicyTypeEnum = map[string]FilterHeaderPolicyTypeEnum{
 	"BLOCK": FilterHeaderPolicyTypeBlock,
 }
 
+var mappingFilterHeaderPolicyTypeEnumLowerCase = map[string]FilterHeaderPolicyTypeEnum{
+	"allow": FilterHeaderPolicyTypeAllow,
+	"block": FilterHeaderPolicyTypeBlock,
+}
+
 // GetFilterHeaderPolicyTypeEnumValues Enumerates the set of values for FilterHeaderPolicyTypeEnum
 func GetFilterHeaderPolicyTypeEnumValues() []FilterHeaderPolicyTypeEnum {
 	values := make([]FilterHeaderPolicyTypeEnum, 0)
@@ -81,11 +86,6 @@ func GetFilterHeaderPolicyTypeEnumStringValues() []string {
 
 // GetMappingFilterHeaderPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFilterHeaderPolicyTypeEnum(val string) (FilterHeaderPolicyTypeEnum, bool) {
-	mappingFilterHeaderPolicyTypeEnumIgnoreCase := make(map[string]FilterHeaderPolicyTypeEnum)
-	for k, v := range mappingFilterHeaderPolicyTypeEnum {
-		mappingFilterHeaderPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFilterHeaderPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFilterHeaderPolicyTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

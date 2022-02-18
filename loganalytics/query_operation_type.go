@@ -27,6 +27,11 @@ var mappingQueryOperationTypeEnum = map[string]QueryOperationTypeEnum{
 	"EXECUTE_PURGE_JOB": QueryOperationTypeExecutePurgeJob,
 }
 
+var mappingQueryOperationTypeEnumLowerCase = map[string]QueryOperationTypeEnum{
+	"execute_query_job": QueryOperationTypeExecuteQueryJob,
+	"execute_purge_job": QueryOperationTypeExecutePurgeJob,
+}
+
 // GetQueryOperationTypeEnumValues Enumerates the set of values for QueryOperationTypeEnum
 func GetQueryOperationTypeEnumValues() []QueryOperationTypeEnum {
 	values := make([]QueryOperationTypeEnum, 0)
@@ -46,11 +51,6 @@ func GetQueryOperationTypeEnumStringValues() []string {
 
 // GetMappingQueryOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingQueryOperationTypeEnum(val string) (QueryOperationTypeEnum, bool) {
-	mappingQueryOperationTypeEnumIgnoreCase := make(map[string]QueryOperationTypeEnum)
-	for k, v := range mappingQueryOperationTypeEnum {
-		mappingQueryOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingQueryOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingQueryOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

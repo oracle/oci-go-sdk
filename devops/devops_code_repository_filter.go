@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -71,6 +71,10 @@ var mappingDevopsCodeRepositoryFilterEventsEnum = map[string]DevopsCodeRepositor
 	"PUSH": DevopsCodeRepositoryFilterEventsPush,
 }
 
+var mappingDevopsCodeRepositoryFilterEventsEnumLowerCase = map[string]DevopsCodeRepositoryFilterEventsEnum{
+	"push": DevopsCodeRepositoryFilterEventsPush,
+}
+
 // GetDevopsCodeRepositoryFilterEventsEnumValues Enumerates the set of values for DevopsCodeRepositoryFilterEventsEnum
 func GetDevopsCodeRepositoryFilterEventsEnumValues() []DevopsCodeRepositoryFilterEventsEnum {
 	values := make([]DevopsCodeRepositoryFilterEventsEnum, 0)
@@ -89,11 +93,6 @@ func GetDevopsCodeRepositoryFilterEventsEnumStringValues() []string {
 
 // GetMappingDevopsCodeRepositoryFilterEventsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDevopsCodeRepositoryFilterEventsEnum(val string) (DevopsCodeRepositoryFilterEventsEnum, bool) {
-	mappingDevopsCodeRepositoryFilterEventsEnumIgnoreCase := make(map[string]DevopsCodeRepositoryFilterEventsEnum)
-	for k, v := range mappingDevopsCodeRepositoryFilterEventsEnum {
-		mappingDevopsCodeRepositoryFilterEventsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDevopsCodeRepositoryFilterEventsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDevopsCodeRepositoryFilterEventsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

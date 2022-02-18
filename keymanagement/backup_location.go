@@ -13,7 +13,7 @@ package keymanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -94,6 +94,11 @@ var mappingBackupLocationDestinationEnum = map[string]BackupLocationDestinationE
 	"PRE_AUTHENTICATED_REQUEST_URI": BackupLocationDestinationPreAuthenticatedRequestUri,
 }
 
+var mappingBackupLocationDestinationEnumLowerCase = map[string]BackupLocationDestinationEnum{
+	"bucket":                        BackupLocationDestinationBucket,
+	"pre_authenticated_request_uri": BackupLocationDestinationPreAuthenticatedRequestUri,
+}
+
 // GetBackupLocationDestinationEnumValues Enumerates the set of values for BackupLocationDestinationEnum
 func GetBackupLocationDestinationEnumValues() []BackupLocationDestinationEnum {
 	values := make([]BackupLocationDestinationEnum, 0)
@@ -113,11 +118,6 @@ func GetBackupLocationDestinationEnumStringValues() []string {
 
 // GetMappingBackupLocationDestinationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBackupLocationDestinationEnum(val string) (BackupLocationDestinationEnum, bool) {
-	mappingBackupLocationDestinationEnumIgnoreCase := make(map[string]BackupLocationDestinationEnum)
-	for k, v := range mappingBackupLocationDestinationEnum {
-		mappingBackupLocationDestinationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBackupLocationDestinationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBackupLocationDestinationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

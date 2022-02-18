@@ -6,7 +6,7 @@ package waf
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -145,6 +145,11 @@ var mappingListWebAppFirewallPoliciesSortOrderEnum = map[string]ListWebAppFirewa
 	"DESC": ListWebAppFirewallPoliciesSortOrderDesc,
 }
 
+var mappingListWebAppFirewallPoliciesSortOrderEnumLowerCase = map[string]ListWebAppFirewallPoliciesSortOrderEnum{
+	"asc":  ListWebAppFirewallPoliciesSortOrderAsc,
+	"desc": ListWebAppFirewallPoliciesSortOrderDesc,
+}
+
 // GetListWebAppFirewallPoliciesSortOrderEnumValues Enumerates the set of values for ListWebAppFirewallPoliciesSortOrderEnum
 func GetListWebAppFirewallPoliciesSortOrderEnumValues() []ListWebAppFirewallPoliciesSortOrderEnum {
 	values := make([]ListWebAppFirewallPoliciesSortOrderEnum, 0)
@@ -164,12 +169,7 @@ func GetListWebAppFirewallPoliciesSortOrderEnumStringValues() []string {
 
 // GetMappingListWebAppFirewallPoliciesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWebAppFirewallPoliciesSortOrderEnum(val string) (ListWebAppFirewallPoliciesSortOrderEnum, bool) {
-	mappingListWebAppFirewallPoliciesSortOrderEnumIgnoreCase := make(map[string]ListWebAppFirewallPoliciesSortOrderEnum)
-	for k, v := range mappingListWebAppFirewallPoliciesSortOrderEnum {
-		mappingListWebAppFirewallPoliciesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWebAppFirewallPoliciesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWebAppFirewallPoliciesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -185,6 +185,11 @@ const (
 var mappingListWebAppFirewallPoliciesSortByEnum = map[string]ListWebAppFirewallPoliciesSortByEnum{
 	"timeCreated": ListWebAppFirewallPoliciesSortByTimecreated,
 	"displayName": ListWebAppFirewallPoliciesSortByDisplayname,
+}
+
+var mappingListWebAppFirewallPoliciesSortByEnumLowerCase = map[string]ListWebAppFirewallPoliciesSortByEnum{
+	"timecreated": ListWebAppFirewallPoliciesSortByTimecreated,
+	"displayname": ListWebAppFirewallPoliciesSortByDisplayname,
 }
 
 // GetListWebAppFirewallPoliciesSortByEnumValues Enumerates the set of values for ListWebAppFirewallPoliciesSortByEnum
@@ -206,11 +211,6 @@ func GetListWebAppFirewallPoliciesSortByEnumStringValues() []string {
 
 // GetMappingListWebAppFirewallPoliciesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWebAppFirewallPoliciesSortByEnum(val string) (ListWebAppFirewallPoliciesSortByEnum, bool) {
-	mappingListWebAppFirewallPoliciesSortByEnumIgnoreCase := make(map[string]ListWebAppFirewallPoliciesSortByEnum)
-	for k, v := range mappingListWebAppFirewallPoliciesSortByEnum {
-		mappingListWebAppFirewallPoliciesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWebAppFirewallPoliciesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWebAppFirewallPoliciesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

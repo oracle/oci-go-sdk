@@ -31,6 +31,12 @@ var mappingStorageServerEnum = map[string]StorageServerEnum{
 	"THROUGHPUT": StorageServerThroughput,
 }
 
+var mappingStorageServerEnumLowerCase = map[string]StorageServerEnum{
+	"storage":    StorageServerStorage,
+	"iops":       StorageServerIops,
+	"throughput": StorageServerThroughput,
+}
+
 // GetStorageServerEnumValues Enumerates the set of values for StorageServerEnum
 func GetStorageServerEnumValues() []StorageServerEnum {
 	values := make([]StorageServerEnum, 0)
@@ -51,11 +57,6 @@ func GetStorageServerEnumStringValues() []string {
 
 // GetMappingStorageServerEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStorageServerEnum(val string) (StorageServerEnum, bool) {
-	mappingStorageServerEnumIgnoreCase := make(map[string]StorageServerEnum)
-	for k, v := range mappingStorageServerEnum {
-		mappingStorageServerEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStorageServerEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStorageServerEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

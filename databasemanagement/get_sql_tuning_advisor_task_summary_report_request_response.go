@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -130,6 +130,14 @@ var mappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum = map[string]Get
 	"ALL":        GetSqlTuningAdvisorTaskSummaryReportSearchPeriodAll,
 }
 
+var mappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnumLowerCase = map[string]GetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum{
+	"last_24hr":  GetSqlTuningAdvisorTaskSummaryReportSearchPeriodLast24hr,
+	"last_7day":  GetSqlTuningAdvisorTaskSummaryReportSearchPeriodLast7day,
+	"last_31day": GetSqlTuningAdvisorTaskSummaryReportSearchPeriodLast31day,
+	"since_last": GetSqlTuningAdvisorTaskSummaryReportSearchPeriodSinceLast,
+	"all":        GetSqlTuningAdvisorTaskSummaryReportSearchPeriodAll,
+}
+
 // GetGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnumValues Enumerates the set of values for GetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum
 func GetGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnumValues() []GetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum {
 	values := make([]GetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum, 0)
@@ -152,11 +160,6 @@ func GetGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnumStringValues() []str
 
 // GetMappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum(val string) (GetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum, bool) {
-	mappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnumIgnoreCase := make(map[string]GetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum)
-	for k, v := range mappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnum {
-		mappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetSqlTuningAdvisorTaskSummaryReportSearchPeriodEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

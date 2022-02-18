@@ -13,7 +13,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -90,6 +90,11 @@ var mappingWorkRequestOperationTypeEnum = map[string]WorkRequestOperationTypeEnu
 	"REENCRYPT":   WorkRequestOperationTypeReencrypt,
 }
 
+var mappingWorkRequestOperationTypeEnumLowerCase = map[string]WorkRequestOperationTypeEnum{
+	"copy_object": WorkRequestOperationTypeCopyObject,
+	"reencrypt":   WorkRequestOperationTypeReencrypt,
+}
+
 // GetWorkRequestOperationTypeEnumValues Enumerates the set of values for WorkRequestOperationTypeEnum
 func GetWorkRequestOperationTypeEnumValues() []WorkRequestOperationTypeEnum {
 	values := make([]WorkRequestOperationTypeEnum, 0)
@@ -109,12 +114,7 @@ func GetWorkRequestOperationTypeEnumStringValues() []string {
 
 // GetMappingWorkRequestOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestOperationTypeEnum(val string) (WorkRequestOperationTypeEnum, bool) {
-	mappingWorkRequestOperationTypeEnumIgnoreCase := make(map[string]WorkRequestOperationTypeEnum)
-	for k, v := range mappingWorkRequestOperationTypeEnum {
-		mappingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -140,6 +140,15 @@ var mappingWorkRequestStatusEnum = map[string]WorkRequestStatusEnum{
 	"CANCELED":    WorkRequestStatusCanceled,
 }
 
+var mappingWorkRequestStatusEnumLowerCase = map[string]WorkRequestStatusEnum{
+	"accepted":    WorkRequestStatusAccepted,
+	"in_progress": WorkRequestStatusInProgress,
+	"failed":      WorkRequestStatusFailed,
+	"completed":   WorkRequestStatusCompleted,
+	"canceling":   WorkRequestStatusCanceling,
+	"canceled":    WorkRequestStatusCanceled,
+}
+
 // GetWorkRequestStatusEnumValues Enumerates the set of values for WorkRequestStatusEnum
 func GetWorkRequestStatusEnumValues() []WorkRequestStatusEnum {
 	values := make([]WorkRequestStatusEnum, 0)
@@ -163,11 +172,6 @@ func GetWorkRequestStatusEnumStringValues() []string {
 
 // GetMappingWorkRequestStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestStatusEnum(val string) (WorkRequestStatusEnum, bool) {
-	mappingWorkRequestStatusEnumIgnoreCase := make(map[string]WorkRequestStatusEnum)
-	for k, v := range mappingWorkRequestStatusEnum {
-		mappingWorkRequestStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

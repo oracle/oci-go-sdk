@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -91,6 +91,16 @@ var mappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum = map
 	"MISCELLANEOUS":     SqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeMiscellaneous,
 }
 
+var mappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnumLowerCase = map[string]SqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum{
+	"statistics":        SqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeStatistics,
+	"index":             SqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeIndex,
+	"sql_profile":       SqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeSqlProfile,
+	"restructure_sql":   SqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeRestructureSql,
+	"alternative_plans": SqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeAlternativePlans,
+	"error":             SqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeError,
+	"miscellaneous":     SqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeMiscellaneous,
+}
+
 // GetSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnumValues Enumerates the set of values for SqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum
 func GetSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnumValues() []SqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum {
 	values := make([]SqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum, 0)
@@ -115,11 +125,6 @@ func GetSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnumStringVal
 
 // GetMappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum(val string) (SqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum, bool) {
-	mappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnumIgnoreCase := make(map[string]SqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum)
-	for k, v := range mappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnum {
-		mappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSqlTuningAdvisorTaskRecommendationSummaryRecommendationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

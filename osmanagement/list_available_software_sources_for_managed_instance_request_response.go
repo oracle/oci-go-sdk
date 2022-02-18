@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -134,6 +134,11 @@ var mappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum = map[str
 	"DESC": ListAvailableSoftwareSourcesForManagedInstanceSortOrderDesc,
 }
 
+var mappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnumLowerCase = map[string]ListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum{
+	"asc":  ListAvailableSoftwareSourcesForManagedInstanceSortOrderAsc,
+	"desc": ListAvailableSoftwareSourcesForManagedInstanceSortOrderDesc,
+}
+
 // GetListAvailableSoftwareSourcesForManagedInstanceSortOrderEnumValues Enumerates the set of values for ListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum
 func GetListAvailableSoftwareSourcesForManagedInstanceSortOrderEnumValues() []ListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum {
 	values := make([]ListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum, 0)
@@ -153,12 +158,7 @@ func GetListAvailableSoftwareSourcesForManagedInstanceSortOrderEnumStringValues(
 
 // GetMappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum(val string) (ListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum, bool) {
-	mappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnumIgnoreCase := make(map[string]ListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum)
-	for k, v := range mappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum {
-		mappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -174,6 +174,11 @@ const (
 var mappingListAvailableSoftwareSourcesForManagedInstanceSortByEnum = map[string]ListAvailableSoftwareSourcesForManagedInstanceSortByEnum{
 	"TIMECREATED": ListAvailableSoftwareSourcesForManagedInstanceSortByTimecreated,
 	"DISPLAYNAME": ListAvailableSoftwareSourcesForManagedInstanceSortByDisplayname,
+}
+
+var mappingListAvailableSoftwareSourcesForManagedInstanceSortByEnumLowerCase = map[string]ListAvailableSoftwareSourcesForManagedInstanceSortByEnum{
+	"timecreated": ListAvailableSoftwareSourcesForManagedInstanceSortByTimecreated,
+	"displayname": ListAvailableSoftwareSourcesForManagedInstanceSortByDisplayname,
 }
 
 // GetListAvailableSoftwareSourcesForManagedInstanceSortByEnumValues Enumerates the set of values for ListAvailableSoftwareSourcesForManagedInstanceSortByEnum
@@ -195,11 +200,6 @@ func GetListAvailableSoftwareSourcesForManagedInstanceSortByEnumStringValues() [
 
 // GetMappingListAvailableSoftwareSourcesForManagedInstanceSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAvailableSoftwareSourcesForManagedInstanceSortByEnum(val string) (ListAvailableSoftwareSourcesForManagedInstanceSortByEnum, bool) {
-	mappingListAvailableSoftwareSourcesForManagedInstanceSortByEnumIgnoreCase := make(map[string]ListAvailableSoftwareSourcesForManagedInstanceSortByEnum)
-	for k, v := range mappingListAvailableSoftwareSourcesForManagedInstanceSortByEnum {
-		mappingListAvailableSoftwareSourcesForManagedInstanceSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAvailableSoftwareSourcesForManagedInstanceSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAvailableSoftwareSourcesForManagedInstanceSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

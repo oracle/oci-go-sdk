@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -100,6 +100,29 @@ var mappingAutonomousDatabaseStandbySummaryLifecycleStateEnum = map[string]Auton
 	"INACCESSIBLE":              AutonomousDatabaseStandbySummaryLifecycleStateInaccessible,
 }
 
+var mappingAutonomousDatabaseStandbySummaryLifecycleStateEnumLowerCase = map[string]AutonomousDatabaseStandbySummaryLifecycleStateEnum{
+	"provisioning":              AutonomousDatabaseStandbySummaryLifecycleStateProvisioning,
+	"available":                 AutonomousDatabaseStandbySummaryLifecycleStateAvailable,
+	"stopping":                  AutonomousDatabaseStandbySummaryLifecycleStateStopping,
+	"stopped":                   AutonomousDatabaseStandbySummaryLifecycleStateStopped,
+	"starting":                  AutonomousDatabaseStandbySummaryLifecycleStateStarting,
+	"terminating":               AutonomousDatabaseStandbySummaryLifecycleStateTerminating,
+	"terminated":                AutonomousDatabaseStandbySummaryLifecycleStateTerminated,
+	"unavailable":               AutonomousDatabaseStandbySummaryLifecycleStateUnavailable,
+	"restore_in_progress":       AutonomousDatabaseStandbySummaryLifecycleStateRestoreInProgress,
+	"restore_failed":            AutonomousDatabaseStandbySummaryLifecycleStateRestoreFailed,
+	"backup_in_progress":        AutonomousDatabaseStandbySummaryLifecycleStateBackupInProgress,
+	"scale_in_progress":         AutonomousDatabaseStandbySummaryLifecycleStateScaleInProgress,
+	"available_needs_attention": AutonomousDatabaseStandbySummaryLifecycleStateAvailableNeedsAttention,
+	"updating":                  AutonomousDatabaseStandbySummaryLifecycleStateUpdating,
+	"maintenance_in_progress":   AutonomousDatabaseStandbySummaryLifecycleStateMaintenanceInProgress,
+	"restarting":                AutonomousDatabaseStandbySummaryLifecycleStateRestarting,
+	"recreating":                AutonomousDatabaseStandbySummaryLifecycleStateRecreating,
+	"role_change_in_progress":   AutonomousDatabaseStandbySummaryLifecycleStateRoleChangeInProgress,
+	"upgrading":                 AutonomousDatabaseStandbySummaryLifecycleStateUpgrading,
+	"inaccessible":              AutonomousDatabaseStandbySummaryLifecycleStateInaccessible,
+}
+
 // GetAutonomousDatabaseStandbySummaryLifecycleStateEnumValues Enumerates the set of values for AutonomousDatabaseStandbySummaryLifecycleStateEnum
 func GetAutonomousDatabaseStandbySummaryLifecycleStateEnumValues() []AutonomousDatabaseStandbySummaryLifecycleStateEnum {
 	values := make([]AutonomousDatabaseStandbySummaryLifecycleStateEnum, 0)
@@ -137,11 +160,6 @@ func GetAutonomousDatabaseStandbySummaryLifecycleStateEnumStringValues() []strin
 
 // GetMappingAutonomousDatabaseStandbySummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAutonomousDatabaseStandbySummaryLifecycleStateEnum(val string) (AutonomousDatabaseStandbySummaryLifecycleStateEnum, bool) {
-	mappingAutonomousDatabaseStandbySummaryLifecycleStateEnumIgnoreCase := make(map[string]AutonomousDatabaseStandbySummaryLifecycleStateEnum)
-	for k, v := range mappingAutonomousDatabaseStandbySummaryLifecycleStateEnum {
-		mappingAutonomousDatabaseStandbySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAutonomousDatabaseStandbySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAutonomousDatabaseStandbySummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

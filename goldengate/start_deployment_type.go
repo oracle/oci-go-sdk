@@ -25,6 +25,10 @@ var mappingStartDeploymentTypeEnum = map[string]StartDeploymentTypeEnum{
 	"DEFAULT": StartDeploymentTypeDefault,
 }
 
+var mappingStartDeploymentTypeEnumLowerCase = map[string]StartDeploymentTypeEnum{
+	"default": StartDeploymentTypeDefault,
+}
+
 // GetStartDeploymentTypeEnumValues Enumerates the set of values for StartDeploymentTypeEnum
 func GetStartDeploymentTypeEnumValues() []StartDeploymentTypeEnum {
 	values := make([]StartDeploymentTypeEnum, 0)
@@ -43,11 +47,6 @@ func GetStartDeploymentTypeEnumStringValues() []string {
 
 // GetMappingStartDeploymentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStartDeploymentTypeEnum(val string) (StartDeploymentTypeEnum, bool) {
-	mappingStartDeploymentTypeEnumIgnoreCase := make(map[string]StartDeploymentTypeEnum)
-	for k, v := range mappingStartDeploymentTypeEnum {
-		mappingStartDeploymentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStartDeploymentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStartDeploymentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

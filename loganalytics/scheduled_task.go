@@ -12,7 +12,7 @@ package loganalytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -270,6 +270,13 @@ var mappingScheduledTaskTaskStatusEnum = map[string]ScheduledTaskTaskStatusEnum{
 	"BLOCKED":   ScheduledTaskTaskStatusBlocked,
 }
 
+var mappingScheduledTaskTaskStatusEnumLowerCase = map[string]ScheduledTaskTaskStatusEnum{
+	"ready":     ScheduledTaskTaskStatusReady,
+	"paused":    ScheduledTaskTaskStatusPaused,
+	"completed": ScheduledTaskTaskStatusCompleted,
+	"blocked":   ScheduledTaskTaskStatusBlocked,
+}
+
 // GetScheduledTaskTaskStatusEnumValues Enumerates the set of values for ScheduledTaskTaskStatusEnum
 func GetScheduledTaskTaskStatusEnumValues() []ScheduledTaskTaskStatusEnum {
 	values := make([]ScheduledTaskTaskStatusEnum, 0)
@@ -291,12 +298,7 @@ func GetScheduledTaskTaskStatusEnumStringValues() []string {
 
 // GetMappingScheduledTaskTaskStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingScheduledTaskTaskStatusEnum(val string) (ScheduledTaskTaskStatusEnum, bool) {
-	mappingScheduledTaskTaskStatusEnumIgnoreCase := make(map[string]ScheduledTaskTaskStatusEnum)
-	for k, v := range mappingScheduledTaskTaskStatusEnum {
-		mappingScheduledTaskTaskStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingScheduledTaskTaskStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingScheduledTaskTaskStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -324,6 +326,16 @@ var mappingScheduledTaskPauseReasonEnum = map[string]ScheduledTaskPauseReasonEnu
 	"PURGE_RESOURCE_NOT_FOUND":    ScheduledTaskPauseReasonPurgeResourceNotFound,
 }
 
+var mappingScheduledTaskPauseReasonEnumLowerCase = map[string]ScheduledTaskPauseReasonEnum{
+	"metric_extraction_not_valid": ScheduledTaskPauseReasonMetricExtractionNotValid,
+	"saved_search_not_valid":      ScheduledTaskPauseReasonSavedSearchNotValid,
+	"saved_search_not_found":      ScheduledTaskPauseReasonSavedSearchNotFound,
+	"query_string_not_valid":      ScheduledTaskPauseReasonQueryStringNotValid,
+	"user_action":                 ScheduledTaskPauseReasonUserAction,
+	"tenancy_lifecycle":           ScheduledTaskPauseReasonTenancyLifecycle,
+	"purge_resource_not_found":    ScheduledTaskPauseReasonPurgeResourceNotFound,
+}
+
 // GetScheduledTaskPauseReasonEnumValues Enumerates the set of values for ScheduledTaskPauseReasonEnum
 func GetScheduledTaskPauseReasonEnumValues() []ScheduledTaskPauseReasonEnum {
 	values := make([]ScheduledTaskPauseReasonEnum, 0)
@@ -348,12 +360,7 @@ func GetScheduledTaskPauseReasonEnumStringValues() []string {
 
 // GetMappingScheduledTaskPauseReasonEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingScheduledTaskPauseReasonEnum(val string) (ScheduledTaskPauseReasonEnum, bool) {
-	mappingScheduledTaskPauseReasonEnumIgnoreCase := make(map[string]ScheduledTaskPauseReasonEnum)
-	for k, v := range mappingScheduledTaskPauseReasonEnum {
-		mappingScheduledTaskPauseReasonEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingScheduledTaskPauseReasonEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingScheduledTaskPauseReasonEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -369,6 +376,11 @@ const (
 var mappingScheduledTaskLifecycleStateEnum = map[string]ScheduledTaskLifecycleStateEnum{
 	"ACTIVE":  ScheduledTaskLifecycleStateActive,
 	"DELETED": ScheduledTaskLifecycleStateDeleted,
+}
+
+var mappingScheduledTaskLifecycleStateEnumLowerCase = map[string]ScheduledTaskLifecycleStateEnum{
+	"active":  ScheduledTaskLifecycleStateActive,
+	"deleted": ScheduledTaskLifecycleStateDeleted,
 }
 
 // GetScheduledTaskLifecycleStateEnumValues Enumerates the set of values for ScheduledTaskLifecycleStateEnum
@@ -390,12 +402,7 @@ func GetScheduledTaskLifecycleStateEnumStringValues() []string {
 
 // GetMappingScheduledTaskLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingScheduledTaskLifecycleStateEnum(val string) (ScheduledTaskLifecycleStateEnum, bool) {
-	mappingScheduledTaskLifecycleStateEnumIgnoreCase := make(map[string]ScheduledTaskLifecycleStateEnum)
-	for k, v := range mappingScheduledTaskLifecycleStateEnum {
-		mappingScheduledTaskLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingScheduledTaskLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingScheduledTaskLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -411,6 +418,11 @@ const (
 var mappingScheduledTaskKindEnum = map[string]ScheduledTaskKindEnum{
 	"ACCELERATION": ScheduledTaskKindAcceleration,
 	"STANDARD":     ScheduledTaskKindStandard,
+}
+
+var mappingScheduledTaskKindEnumLowerCase = map[string]ScheduledTaskKindEnum{
+	"acceleration": ScheduledTaskKindAcceleration,
+	"standard":     ScheduledTaskKindStandard,
 }
 
 // GetScheduledTaskKindEnumValues Enumerates the set of values for ScheduledTaskKindEnum
@@ -432,11 +444,6 @@ func GetScheduledTaskKindEnumStringValues() []string {
 
 // GetMappingScheduledTaskKindEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingScheduledTaskKindEnum(val string) (ScheduledTaskKindEnum, bool) {
-	mappingScheduledTaskKindEnumIgnoreCase := make(map[string]ScheduledTaskKindEnum)
-	for k, v := range mappingScheduledTaskKindEnum {
-		mappingScheduledTaskKindEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingScheduledTaskKindEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingScheduledTaskKindEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

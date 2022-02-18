@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -115,6 +115,13 @@ var mappingFieldMapModelTypeEnum = map[string]FieldMapModelTypeEnum{
 	"RULE_BASED_FIELD_MAP":   FieldMapModelTypeRuleBasedFieldMap,
 }
 
+var mappingFieldMapModelTypeEnumLowerCase = map[string]FieldMapModelTypeEnum{
+	"direct_named_field_map": FieldMapModelTypeDirectNamedFieldMap,
+	"composite_field_map":    FieldMapModelTypeCompositeFieldMap,
+	"direct_field_map":       FieldMapModelTypeDirectFieldMap,
+	"rule_based_field_map":   FieldMapModelTypeRuleBasedFieldMap,
+}
+
 // GetFieldMapModelTypeEnumValues Enumerates the set of values for FieldMapModelTypeEnum
 func GetFieldMapModelTypeEnumValues() []FieldMapModelTypeEnum {
 	values := make([]FieldMapModelTypeEnum, 0)
@@ -136,11 +143,6 @@ func GetFieldMapModelTypeEnumStringValues() []string {
 
 // GetMappingFieldMapModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFieldMapModelTypeEnum(val string) (FieldMapModelTypeEnum, bool) {
-	mappingFieldMapModelTypeEnumIgnoreCase := make(map[string]FieldMapModelTypeEnum)
-	for k, v := range mappingFieldMapModelTypeEnum {
-		mappingFieldMapModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFieldMapModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFieldMapModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

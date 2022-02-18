@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -137,6 +137,19 @@ var mappingGetDataAssetTagFieldsEnum = map[string]GetDataAssetTagFieldsEnum{
 	"dataAssetKey":    GetDataAssetTagFieldsDataassetkey,
 }
 
+var mappingGetDataAssetTagFieldsEnumLowerCase = map[string]GetDataAssetTagFieldsEnum{
+	"key":             GetDataAssetTagFieldsKey,
+	"name":            GetDataAssetTagFieldsName,
+	"termkey":         GetDataAssetTagFieldsTermkey,
+	"termpath":        GetDataAssetTagFieldsTermpath,
+	"termdescription": GetDataAssetTagFieldsTermdescription,
+	"lifecyclestate":  GetDataAssetTagFieldsLifecyclestate,
+	"timecreated":     GetDataAssetTagFieldsTimecreated,
+	"createdbyid":     GetDataAssetTagFieldsCreatedbyid,
+	"uri":             GetDataAssetTagFieldsUri,
+	"dataassetkey":    GetDataAssetTagFieldsDataassetkey,
+}
+
 // GetGetDataAssetTagFieldsEnumValues Enumerates the set of values for GetDataAssetTagFieldsEnum
 func GetGetDataAssetTagFieldsEnumValues() []GetDataAssetTagFieldsEnum {
 	values := make([]GetDataAssetTagFieldsEnum, 0)
@@ -164,11 +177,6 @@ func GetGetDataAssetTagFieldsEnumStringValues() []string {
 
 // GetMappingGetDataAssetTagFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetDataAssetTagFieldsEnum(val string) (GetDataAssetTagFieldsEnum, bool) {
-	mappingGetDataAssetTagFieldsEnumIgnoreCase := make(map[string]GetDataAssetTagFieldsEnum)
-	for k, v := range mappingGetDataAssetTagFieldsEnum {
-		mappingGetDataAssetTagFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetDataAssetTagFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetDataAssetTagFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

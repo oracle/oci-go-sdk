@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -139,6 +139,11 @@ var mappingSummarizeAwrSourcesSummariesSortByEnum = map[string]SummarizeAwrSourc
 	"name":              SummarizeAwrSourcesSummariesSortByName,
 }
 
+var mappingSummarizeAwrSourcesSummariesSortByEnumLowerCase = map[string]SummarizeAwrSourcesSummariesSortByEnum{
+	"snapshotsuploaded": SummarizeAwrSourcesSummariesSortBySnapshotsuploaded,
+	"name":              SummarizeAwrSourcesSummariesSortByName,
+}
+
 // GetSummarizeAwrSourcesSummariesSortByEnumValues Enumerates the set of values for SummarizeAwrSourcesSummariesSortByEnum
 func GetSummarizeAwrSourcesSummariesSortByEnumValues() []SummarizeAwrSourcesSummariesSortByEnum {
 	values := make([]SummarizeAwrSourcesSummariesSortByEnum, 0)
@@ -158,12 +163,7 @@ func GetSummarizeAwrSourcesSummariesSortByEnumStringValues() []string {
 
 // GetMappingSummarizeAwrSourcesSummariesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAwrSourcesSummariesSortByEnum(val string) (SummarizeAwrSourcesSummariesSortByEnum, bool) {
-	mappingSummarizeAwrSourcesSummariesSortByEnumIgnoreCase := make(map[string]SummarizeAwrSourcesSummariesSortByEnum)
-	for k, v := range mappingSummarizeAwrSourcesSummariesSortByEnum {
-		mappingSummarizeAwrSourcesSummariesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAwrSourcesSummariesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAwrSourcesSummariesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -179,6 +179,11 @@ const (
 var mappingSummarizeAwrSourcesSummariesSortOrderEnum = map[string]SummarizeAwrSourcesSummariesSortOrderEnum{
 	"ASC":  SummarizeAwrSourcesSummariesSortOrderAsc,
 	"DESC": SummarizeAwrSourcesSummariesSortOrderDesc,
+}
+
+var mappingSummarizeAwrSourcesSummariesSortOrderEnumLowerCase = map[string]SummarizeAwrSourcesSummariesSortOrderEnum{
+	"asc":  SummarizeAwrSourcesSummariesSortOrderAsc,
+	"desc": SummarizeAwrSourcesSummariesSortOrderDesc,
 }
 
 // GetSummarizeAwrSourcesSummariesSortOrderEnumValues Enumerates the set of values for SummarizeAwrSourcesSummariesSortOrderEnum
@@ -200,11 +205,6 @@ func GetSummarizeAwrSourcesSummariesSortOrderEnumStringValues() []string {
 
 // GetMappingSummarizeAwrSourcesSummariesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAwrSourcesSummariesSortOrderEnum(val string) (SummarizeAwrSourcesSummariesSortOrderEnum, bool) {
-	mappingSummarizeAwrSourcesSummariesSortOrderEnumIgnoreCase := make(map[string]SummarizeAwrSourcesSummariesSortOrderEnum)
-	for k, v := range mappingSummarizeAwrSourcesSummariesSortOrderEnum {
-		mappingSummarizeAwrSourcesSummariesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAwrSourcesSummariesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAwrSourcesSummariesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

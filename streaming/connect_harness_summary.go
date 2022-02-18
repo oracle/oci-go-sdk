@@ -11,7 +11,7 @@ package streaming
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -86,6 +86,15 @@ var mappingConnectHarnessSummaryLifecycleStateEnum = map[string]ConnectHarnessSu
 	"UPDATING": ConnectHarnessSummaryLifecycleStateUpdating,
 }
 
+var mappingConnectHarnessSummaryLifecycleStateEnumLowerCase = map[string]ConnectHarnessSummaryLifecycleStateEnum{
+	"creating": ConnectHarnessSummaryLifecycleStateCreating,
+	"active":   ConnectHarnessSummaryLifecycleStateActive,
+	"deleting": ConnectHarnessSummaryLifecycleStateDeleting,
+	"deleted":  ConnectHarnessSummaryLifecycleStateDeleted,
+	"failed":   ConnectHarnessSummaryLifecycleStateFailed,
+	"updating": ConnectHarnessSummaryLifecycleStateUpdating,
+}
+
 // GetConnectHarnessSummaryLifecycleStateEnumValues Enumerates the set of values for ConnectHarnessSummaryLifecycleStateEnum
 func GetConnectHarnessSummaryLifecycleStateEnumValues() []ConnectHarnessSummaryLifecycleStateEnum {
 	values := make([]ConnectHarnessSummaryLifecycleStateEnum, 0)
@@ -109,11 +118,6 @@ func GetConnectHarnessSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingConnectHarnessSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConnectHarnessSummaryLifecycleStateEnum(val string) (ConnectHarnessSummaryLifecycleStateEnum, bool) {
-	mappingConnectHarnessSummaryLifecycleStateEnumIgnoreCase := make(map[string]ConnectHarnessSummaryLifecycleStateEnum)
-	for k, v := range mappingConnectHarnessSummaryLifecycleStateEnum {
-		mappingConnectHarnessSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConnectHarnessSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConnectHarnessSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

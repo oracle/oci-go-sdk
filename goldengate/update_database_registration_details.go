@@ -11,7 +11,7 @@ package goldengate
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,11 @@ var mappingUpdateDatabaseRegistrationDetailsSessionModeEnum = map[string]UpdateD
 	"REDIRECT": UpdateDatabaseRegistrationDetailsSessionModeRedirect,
 }
 
+var mappingUpdateDatabaseRegistrationDetailsSessionModeEnumLowerCase = map[string]UpdateDatabaseRegistrationDetailsSessionModeEnum{
+	"direct":   UpdateDatabaseRegistrationDetailsSessionModeDirect,
+	"redirect": UpdateDatabaseRegistrationDetailsSessionModeRedirect,
+}
+
 // GetUpdateDatabaseRegistrationDetailsSessionModeEnumValues Enumerates the set of values for UpdateDatabaseRegistrationDetailsSessionModeEnum
 func GetUpdateDatabaseRegistrationDetailsSessionModeEnumValues() []UpdateDatabaseRegistrationDetailsSessionModeEnum {
 	values := make([]UpdateDatabaseRegistrationDetailsSessionModeEnum, 0)
@@ -106,11 +111,6 @@ func GetUpdateDatabaseRegistrationDetailsSessionModeEnumStringValues() []string 
 
 // GetMappingUpdateDatabaseRegistrationDetailsSessionModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateDatabaseRegistrationDetailsSessionModeEnum(val string) (UpdateDatabaseRegistrationDetailsSessionModeEnum, bool) {
-	mappingUpdateDatabaseRegistrationDetailsSessionModeEnumIgnoreCase := make(map[string]UpdateDatabaseRegistrationDetailsSessionModeEnum)
-	for k, v := range mappingUpdateDatabaseRegistrationDetailsSessionModeEnum {
-		mappingUpdateDatabaseRegistrationDetailsSessionModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateDatabaseRegistrationDetailsSessionModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateDatabaseRegistrationDetailsSessionModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -63,6 +63,11 @@ var mappingPatchDetailsActionEnum = map[string]PatchDetailsActionEnum{
 	"PRECHECK": PatchDetailsActionPrecheck,
 }
 
+var mappingPatchDetailsActionEnumLowerCase = map[string]PatchDetailsActionEnum{
+	"apply":    PatchDetailsActionApply,
+	"precheck": PatchDetailsActionPrecheck,
+}
+
 // GetPatchDetailsActionEnumValues Enumerates the set of values for PatchDetailsActionEnum
 func GetPatchDetailsActionEnumValues() []PatchDetailsActionEnum {
 	values := make([]PatchDetailsActionEnum, 0)
@@ -82,11 +87,6 @@ func GetPatchDetailsActionEnumStringValues() []string {
 
 // GetMappingPatchDetailsActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchDetailsActionEnum(val string) (PatchDetailsActionEnum, bool) {
-	mappingPatchDetailsActionEnumIgnoreCase := make(map[string]PatchDetailsActionEnum)
-	for k, v := range mappingPatchDetailsActionEnum {
-		mappingPatchDetailsActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchDetailsActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchDetailsActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

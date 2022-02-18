@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -90,6 +90,15 @@ var mappingReferenceTypeEnum = map[string]ReferenceTypeEnum{
 	"GENERIC_JDBC_DATA_ASSET":          ReferenceTypeGenericJdbcDataAsset,
 }
 
+var mappingReferenceTypeEnumLowerCase = map[string]ReferenceTypeEnum{
+	"oracle_data_asset":                ReferenceTypeOracleDataAsset,
+	"oracle_object_storage_data_asset": ReferenceTypeOracleObjectStorageDataAsset,
+	"oracle_atp_data_asset":            ReferenceTypeOracleAtpDataAsset,
+	"oracle_adwc_data_asset":           ReferenceTypeOracleAdwcDataAsset,
+	"mysql_data_asset":                 ReferenceTypeMysqlDataAsset,
+	"generic_jdbc_data_asset":          ReferenceTypeGenericJdbcDataAsset,
+}
+
 // GetReferenceTypeEnumValues Enumerates the set of values for ReferenceTypeEnum
 func GetReferenceTypeEnumValues() []ReferenceTypeEnum {
 	values := make([]ReferenceTypeEnum, 0)
@@ -113,11 +122,6 @@ func GetReferenceTypeEnumStringValues() []string {
 
 // GetMappingReferenceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingReferenceTypeEnum(val string) (ReferenceTypeEnum, bool) {
-	mappingReferenceTypeEnumIgnoreCase := make(map[string]ReferenceTypeEnum)
-	for k, v := range mappingReferenceTypeEnum {
-		mappingReferenceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingReferenceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingReferenceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

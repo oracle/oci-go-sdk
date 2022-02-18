@@ -25,6 +25,10 @@ var mappingUnifiedAgentServiceConfigurationTypesEnum = map[string]UnifiedAgentSe
 	"LOGGING": UnifiedAgentServiceConfigurationTypesLogging,
 }
 
+var mappingUnifiedAgentServiceConfigurationTypesEnumLowerCase = map[string]UnifiedAgentServiceConfigurationTypesEnum{
+	"logging": UnifiedAgentServiceConfigurationTypesLogging,
+}
+
 // GetUnifiedAgentServiceConfigurationTypesEnumValues Enumerates the set of values for UnifiedAgentServiceConfigurationTypesEnum
 func GetUnifiedAgentServiceConfigurationTypesEnumValues() []UnifiedAgentServiceConfigurationTypesEnum {
 	values := make([]UnifiedAgentServiceConfigurationTypesEnum, 0)
@@ -43,11 +47,6 @@ func GetUnifiedAgentServiceConfigurationTypesEnumStringValues() []string {
 
 // GetMappingUnifiedAgentServiceConfigurationTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUnifiedAgentServiceConfigurationTypesEnum(val string) (UnifiedAgentServiceConfigurationTypesEnum, bool) {
-	mappingUnifiedAgentServiceConfigurationTypesEnumIgnoreCase := make(map[string]UnifiedAgentServiceConfigurationTypesEnum)
-	for k, v := range mappingUnifiedAgentServiceConfigurationTypesEnum {
-		mappingUnifiedAgentServiceConfigurationTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUnifiedAgentServiceConfigurationTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUnifiedAgentServiceConfigurationTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

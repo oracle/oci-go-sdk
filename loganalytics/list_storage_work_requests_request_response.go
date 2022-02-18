@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -158,6 +158,11 @@ var mappingListStorageWorkRequestsSortOrderEnum = map[string]ListStorageWorkRequ
 	"DESC": ListStorageWorkRequestsSortOrderDesc,
 }
 
+var mappingListStorageWorkRequestsSortOrderEnumLowerCase = map[string]ListStorageWorkRequestsSortOrderEnum{
+	"asc":  ListStorageWorkRequestsSortOrderAsc,
+	"desc": ListStorageWorkRequestsSortOrderDesc,
+}
+
 // GetListStorageWorkRequestsSortOrderEnumValues Enumerates the set of values for ListStorageWorkRequestsSortOrderEnum
 func GetListStorageWorkRequestsSortOrderEnumValues() []ListStorageWorkRequestsSortOrderEnum {
 	values := make([]ListStorageWorkRequestsSortOrderEnum, 0)
@@ -177,12 +182,7 @@ func GetListStorageWorkRequestsSortOrderEnumStringValues() []string {
 
 // GetMappingListStorageWorkRequestsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListStorageWorkRequestsSortOrderEnum(val string) (ListStorageWorkRequestsSortOrderEnum, bool) {
-	mappingListStorageWorkRequestsSortOrderEnumIgnoreCase := make(map[string]ListStorageWorkRequestsSortOrderEnum)
-	for k, v := range mappingListStorageWorkRequestsSortOrderEnum {
-		mappingListStorageWorkRequestsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListStorageWorkRequestsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListStorageWorkRequestsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -200,6 +200,12 @@ var mappingListStorageWorkRequestsSortByEnum = map[string]ListStorageWorkRequest
 	"timeAccepted": ListStorageWorkRequestsSortByTimeaccepted,
 	"timeExpires":  ListStorageWorkRequestsSortByTimeexpires,
 	"timeFinished": ListStorageWorkRequestsSortByTimefinished,
+}
+
+var mappingListStorageWorkRequestsSortByEnumLowerCase = map[string]ListStorageWorkRequestsSortByEnum{
+	"timeaccepted": ListStorageWorkRequestsSortByTimeaccepted,
+	"timeexpires":  ListStorageWorkRequestsSortByTimeexpires,
+	"timefinished": ListStorageWorkRequestsSortByTimefinished,
 }
 
 // GetListStorageWorkRequestsSortByEnumValues Enumerates the set of values for ListStorageWorkRequestsSortByEnum
@@ -222,12 +228,7 @@ func GetListStorageWorkRequestsSortByEnumStringValues() []string {
 
 // GetMappingListStorageWorkRequestsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListStorageWorkRequestsSortByEnum(val string) (ListStorageWorkRequestsSortByEnum, bool) {
-	mappingListStorageWorkRequestsSortByEnumIgnoreCase := make(map[string]ListStorageWorkRequestsSortByEnum)
-	for k, v := range mappingListStorageWorkRequestsSortByEnum {
-		mappingListStorageWorkRequestsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListStorageWorkRequestsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListStorageWorkRequestsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -253,6 +254,15 @@ var mappingListStorageWorkRequestsOperationTypeEnum = map[string]ListStorageWork
 	"CLEANUP_ARCHIVAL_STORAGE_DATA": ListStorageWorkRequestsOperationTypeCleanupArchivalStorageData,
 }
 
+var mappingListStorageWorkRequestsOperationTypeEnumLowerCase = map[string]ListStorageWorkRequestsOperationTypeEnum{
+	"offboard_tenancy":              ListStorageWorkRequestsOperationTypeOffboardTenancy,
+	"purge_storage_data":            ListStorageWorkRequestsOperationTypePurgeStorageData,
+	"recall_archived_storage_data":  ListStorageWorkRequestsOperationTypeRecallArchivedStorageData,
+	"release_recalled_storage_data": ListStorageWorkRequestsOperationTypeReleaseRecalledStorageData,
+	"archive_storage_data":          ListStorageWorkRequestsOperationTypeArchiveStorageData,
+	"cleanup_archival_storage_data": ListStorageWorkRequestsOperationTypeCleanupArchivalStorageData,
+}
+
 // GetListStorageWorkRequestsOperationTypeEnumValues Enumerates the set of values for ListStorageWorkRequestsOperationTypeEnum
 func GetListStorageWorkRequestsOperationTypeEnumValues() []ListStorageWorkRequestsOperationTypeEnum {
 	values := make([]ListStorageWorkRequestsOperationTypeEnum, 0)
@@ -276,12 +286,7 @@ func GetListStorageWorkRequestsOperationTypeEnumStringValues() []string {
 
 // GetMappingListStorageWorkRequestsOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListStorageWorkRequestsOperationTypeEnum(val string) (ListStorageWorkRequestsOperationTypeEnum, bool) {
-	mappingListStorageWorkRequestsOperationTypeEnumIgnoreCase := make(map[string]ListStorageWorkRequestsOperationTypeEnum)
-	for k, v := range mappingListStorageWorkRequestsOperationTypeEnum {
-		mappingListStorageWorkRequestsOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListStorageWorkRequestsOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListStorageWorkRequestsOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -303,6 +308,14 @@ var mappingListStorageWorkRequestsStatusEnum = map[string]ListStorageWorkRequest
 	"FAILED":      ListStorageWorkRequestsStatusFailed,
 	"IN_PROGRESS": ListStorageWorkRequestsStatusInProgress,
 	"SUCCEEDED":   ListStorageWorkRequestsStatusSucceeded,
+}
+
+var mappingListStorageWorkRequestsStatusEnumLowerCase = map[string]ListStorageWorkRequestsStatusEnum{
+	"accepted":    ListStorageWorkRequestsStatusAccepted,
+	"canceled":    ListStorageWorkRequestsStatusCanceled,
+	"failed":      ListStorageWorkRequestsStatusFailed,
+	"in_progress": ListStorageWorkRequestsStatusInProgress,
+	"succeeded":   ListStorageWorkRequestsStatusSucceeded,
 }
 
 // GetListStorageWorkRequestsStatusEnumValues Enumerates the set of values for ListStorageWorkRequestsStatusEnum
@@ -327,11 +340,6 @@ func GetListStorageWorkRequestsStatusEnumStringValues() []string {
 
 // GetMappingListStorageWorkRequestsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListStorageWorkRequestsStatusEnum(val string) (ListStorageWorkRequestsStatusEnum, bool) {
-	mappingListStorageWorkRequestsStatusEnumIgnoreCase := make(map[string]ListStorageWorkRequestsStatusEnum)
-	for k, v := range mappingListStorageWorkRequestsStatusEnum {
-		mappingListStorageWorkRequestsStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListStorageWorkRequestsStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListStorageWorkRequestsStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"io"
 	"net/http"
 	"strings"
@@ -214,6 +214,12 @@ var mappingPutObjectStorageTierEnum = map[string]PutObjectStorageTierEnum{
 	"Archive":          PutObjectStorageTierArchive,
 }
 
+var mappingPutObjectStorageTierEnumLowerCase = map[string]PutObjectStorageTierEnum{
+	"standard":         PutObjectStorageTierStandard,
+	"infrequentaccess": PutObjectStorageTierInfrequentaccess,
+	"archive":          PutObjectStorageTierArchive,
+}
+
 // GetPutObjectStorageTierEnumValues Enumerates the set of values for PutObjectStorageTierEnum
 func GetPutObjectStorageTierEnumValues() []PutObjectStorageTierEnum {
 	values := make([]PutObjectStorageTierEnum, 0)
@@ -234,11 +240,6 @@ func GetPutObjectStorageTierEnumStringValues() []string {
 
 // GetMappingPutObjectStorageTierEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPutObjectStorageTierEnum(val string) (PutObjectStorageTierEnum, bool) {
-	mappingPutObjectStorageTierEnumIgnoreCase := make(map[string]PutObjectStorageTierEnum)
-	for k, v := range mappingPutObjectStorageTierEnum {
-		mappingPutObjectStorageTierEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPutObjectStorageTierEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPutObjectStorageTierEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -81,6 +81,12 @@ var mappingEncryptDataDetailsEncryptionAlgorithmEnum = map[string]EncryptDataDet
 	"RSA_OAEP_SHA_256": EncryptDataDetailsEncryptionAlgorithmRsaOaepSha256,
 }
 
+var mappingEncryptDataDetailsEncryptionAlgorithmEnumLowerCase = map[string]EncryptDataDetailsEncryptionAlgorithmEnum{
+	"aes_256_gcm":      EncryptDataDetailsEncryptionAlgorithmAes256Gcm,
+	"rsa_oaep_sha_1":   EncryptDataDetailsEncryptionAlgorithmRsaOaepSha1,
+	"rsa_oaep_sha_256": EncryptDataDetailsEncryptionAlgorithmRsaOaepSha256,
+}
+
 // GetEncryptDataDetailsEncryptionAlgorithmEnumValues Enumerates the set of values for EncryptDataDetailsEncryptionAlgorithmEnum
 func GetEncryptDataDetailsEncryptionAlgorithmEnumValues() []EncryptDataDetailsEncryptionAlgorithmEnum {
 	values := make([]EncryptDataDetailsEncryptionAlgorithmEnum, 0)
@@ -101,11 +107,6 @@ func GetEncryptDataDetailsEncryptionAlgorithmEnumStringValues() []string {
 
 // GetMappingEncryptDataDetailsEncryptionAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEncryptDataDetailsEncryptionAlgorithmEnum(val string) (EncryptDataDetailsEncryptionAlgorithmEnum, bool) {
-	mappingEncryptDataDetailsEncryptionAlgorithmEnumIgnoreCase := make(map[string]EncryptDataDetailsEncryptionAlgorithmEnum)
-	for k, v := range mappingEncryptDataDetailsEncryptionAlgorithmEnum {
-		mappingEncryptDataDetailsEncryptionAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEncryptDataDetailsEncryptionAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEncryptDataDetailsEncryptionAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

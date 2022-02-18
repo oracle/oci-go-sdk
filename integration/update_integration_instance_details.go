@@ -11,7 +11,7 @@ package integration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -86,6 +86,11 @@ var mappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum = map[str
 	"ENTERPRISE": UpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnterprise,
 }
 
+var mappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnumLowerCase = map[string]UpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum{
+	"standard":   UpdateIntegrationInstanceDetailsIntegrationInstanceTypeStandard,
+	"enterprise": UpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnterprise,
+}
+
 // GetUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnumValues Enumerates the set of values for UpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum
 func GetUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnumValues() []UpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum {
 	values := make([]UpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum, 0)
@@ -105,11 +110,6 @@ func GetUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnumStringValues(
 
 // GetMappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum(val string) (UpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum, bool) {
-	mappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnumIgnoreCase := make(map[string]UpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum)
-	for k, v := range mappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnum {
-		mappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateIntegrationInstanceDetailsIntegrationInstanceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

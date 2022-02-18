@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -134,6 +134,11 @@ var mappingGetSteeringPolicyScopeEnum = map[string]GetSteeringPolicyScopeEnum{
 	"PRIVATE": GetSteeringPolicyScopePrivate,
 }
 
+var mappingGetSteeringPolicyScopeEnumLowerCase = map[string]GetSteeringPolicyScopeEnum{
+	"global":  GetSteeringPolicyScopeGlobal,
+	"private": GetSteeringPolicyScopePrivate,
+}
+
 // GetGetSteeringPolicyScopeEnumValues Enumerates the set of values for GetSteeringPolicyScopeEnum
 func GetGetSteeringPolicyScopeEnumValues() []GetSteeringPolicyScopeEnum {
 	values := make([]GetSteeringPolicyScopeEnum, 0)
@@ -153,11 +158,6 @@ func GetGetSteeringPolicyScopeEnumStringValues() []string {
 
 // GetMappingGetSteeringPolicyScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetSteeringPolicyScopeEnum(val string) (GetSteeringPolicyScopeEnum, bool) {
-	mappingGetSteeringPolicyScopeEnumIgnoreCase := make(map[string]GetSteeringPolicyScopeEnum)
-	for k, v := range mappingGetSteeringPolicyScopeEnum {
-		mappingGetSteeringPolicyScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetSteeringPolicyScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetSteeringPolicyScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

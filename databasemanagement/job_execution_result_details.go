@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -89,6 +89,10 @@ var mappingJobExecutionResultDetailsTypeEnum = map[string]JobExecutionResultDeta
 	"OBJECT_STORAGE": JobExecutionResultDetailsTypeObjectStorage,
 }
 
+var mappingJobExecutionResultDetailsTypeEnumLowerCase = map[string]JobExecutionResultDetailsTypeEnum{
+	"object_storage": JobExecutionResultDetailsTypeObjectStorage,
+}
+
 // GetJobExecutionResultDetailsTypeEnumValues Enumerates the set of values for JobExecutionResultDetailsTypeEnum
 func GetJobExecutionResultDetailsTypeEnumValues() []JobExecutionResultDetailsTypeEnum {
 	values := make([]JobExecutionResultDetailsTypeEnum, 0)
@@ -107,11 +111,6 @@ func GetJobExecutionResultDetailsTypeEnumStringValues() []string {
 
 // GetMappingJobExecutionResultDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJobExecutionResultDetailsTypeEnum(val string) (JobExecutionResultDetailsTypeEnum, bool) {
-	mappingJobExecutionResultDetailsTypeEnumIgnoreCase := make(map[string]JobExecutionResultDetailsTypeEnum)
-	for k, v := range mappingJobExecutionResultDetailsTypeEnum {
-		mappingJobExecutionResultDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJobExecutionResultDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJobExecutionResultDetailsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -16,12 +16,12 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
 // DrgRouteDistributionMatchCriteria The match criteria in a route distribution statement. The match criteria outlines which routes
-// should be imported or exported. Leaving the match criteria empty implies match ALL.
+// should be imported or exported.
 type DrgRouteDistributionMatchCriteria interface {
 }
 
@@ -98,6 +98,11 @@ var mappingDrgRouteDistributionMatchCriteriaMatchTypeEnum = map[string]DrgRouteD
 	"DRG_ATTACHMENT_ID":   DrgRouteDistributionMatchCriteriaMatchTypeId,
 }
 
+var mappingDrgRouteDistributionMatchCriteriaMatchTypeEnumLowerCase = map[string]DrgRouteDistributionMatchCriteriaMatchTypeEnum{
+	"drg_attachment_type": DrgRouteDistributionMatchCriteriaMatchTypeType,
+	"drg_attachment_id":   DrgRouteDistributionMatchCriteriaMatchTypeId,
+}
+
 // GetDrgRouteDistributionMatchCriteriaMatchTypeEnumValues Enumerates the set of values for DrgRouteDistributionMatchCriteriaMatchTypeEnum
 func GetDrgRouteDistributionMatchCriteriaMatchTypeEnumValues() []DrgRouteDistributionMatchCriteriaMatchTypeEnum {
 	values := make([]DrgRouteDistributionMatchCriteriaMatchTypeEnum, 0)
@@ -117,11 +122,6 @@ func GetDrgRouteDistributionMatchCriteriaMatchTypeEnumStringValues() []string {
 
 // GetMappingDrgRouteDistributionMatchCriteriaMatchTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDrgRouteDistributionMatchCriteriaMatchTypeEnum(val string) (DrgRouteDistributionMatchCriteriaMatchTypeEnum, bool) {
-	mappingDrgRouteDistributionMatchCriteriaMatchTypeEnumIgnoreCase := make(map[string]DrgRouteDistributionMatchCriteriaMatchTypeEnum)
-	for k, v := range mappingDrgRouteDistributionMatchCriteriaMatchTypeEnum {
-		mappingDrgRouteDistributionMatchCriteriaMatchTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDrgRouteDistributionMatchCriteriaMatchTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDrgRouteDistributionMatchCriteriaMatchTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

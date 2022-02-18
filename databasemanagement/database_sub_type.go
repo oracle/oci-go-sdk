@@ -35,6 +35,14 @@ var mappingDatabaseSubTypeEnum = map[string]DatabaseSubTypeEnum{
 	"ADB":     DatabaseSubTypeAdb,
 }
 
+var mappingDatabaseSubTypeEnumLowerCase = map[string]DatabaseSubTypeEnum{
+	"cdb":     DatabaseSubTypeCdb,
+	"pdb":     DatabaseSubTypePdb,
+	"non_cdb": DatabaseSubTypeNonCdb,
+	"acd":     DatabaseSubTypeAcd,
+	"adb":     DatabaseSubTypeAdb,
+}
+
 // GetDatabaseSubTypeEnumValues Enumerates the set of values for DatabaseSubTypeEnum
 func GetDatabaseSubTypeEnumValues() []DatabaseSubTypeEnum {
 	values := make([]DatabaseSubTypeEnum, 0)
@@ -57,11 +65,6 @@ func GetDatabaseSubTypeEnumStringValues() []string {
 
 // GetMappingDatabaseSubTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseSubTypeEnum(val string) (DatabaseSubTypeEnum, bool) {
-	mappingDatabaseSubTypeEnumIgnoreCase := make(map[string]DatabaseSubTypeEnum)
-	for k, v := range mappingDatabaseSubTypeEnum {
-		mappingDatabaseSubTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseSubTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseSubTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

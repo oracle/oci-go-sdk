@@ -6,7 +6,7 @@ package optimizer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,11 @@ var mappingListProfileLevelsSortOrderEnum = map[string]ListProfileLevelsSortOrde
 	"DESC": ListProfileLevelsSortOrderDesc,
 }
 
+var mappingListProfileLevelsSortOrderEnumLowerCase = map[string]ListProfileLevelsSortOrderEnum{
+	"asc":  ListProfileLevelsSortOrderAsc,
+	"desc": ListProfileLevelsSortOrderDesc,
+}
+
 // GetListProfileLevelsSortOrderEnumValues Enumerates the set of values for ListProfileLevelsSortOrderEnum
 func GetListProfileLevelsSortOrderEnumValues() []ListProfileLevelsSortOrderEnum {
 	values := make([]ListProfileLevelsSortOrderEnum, 0)
@@ -160,12 +165,7 @@ func GetListProfileLevelsSortOrderEnumStringValues() []string {
 
 // GetMappingListProfileLevelsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProfileLevelsSortOrderEnum(val string) (ListProfileLevelsSortOrderEnum, bool) {
-	mappingListProfileLevelsSortOrderEnumIgnoreCase := make(map[string]ListProfileLevelsSortOrderEnum)
-	for k, v := range mappingListProfileLevelsSortOrderEnum {
-		mappingListProfileLevelsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProfileLevelsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProfileLevelsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +181,11 @@ const (
 var mappingListProfileLevelsSortByEnum = map[string]ListProfileLevelsSortByEnum{
 	"NAME":        ListProfileLevelsSortByName,
 	"TIMECREATED": ListProfileLevelsSortByTimecreated,
+}
+
+var mappingListProfileLevelsSortByEnumLowerCase = map[string]ListProfileLevelsSortByEnum{
+	"name":        ListProfileLevelsSortByName,
+	"timecreated": ListProfileLevelsSortByTimecreated,
 }
 
 // GetListProfileLevelsSortByEnumValues Enumerates the set of values for ListProfileLevelsSortByEnum
@@ -202,11 +207,6 @@ func GetListProfileLevelsSortByEnumStringValues() []string {
 
 // GetMappingListProfileLevelsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProfileLevelsSortByEnum(val string) (ListProfileLevelsSortByEnum, bool) {
-	mappingListProfileLevelsSortByEnumIgnoreCase := make(map[string]ListProfileLevelsSortByEnum)
-	for k, v := range mappingListProfileLevelsSortByEnum {
-		mappingListProfileLevelsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProfileLevelsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProfileLevelsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

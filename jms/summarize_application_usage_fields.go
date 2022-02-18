@@ -29,6 +29,12 @@ var mappingSummarizeApplicationUsageFieldsEnum = map[string]SummarizeApplication
 	"approximateManagedInstanceCount": SummarizeApplicationUsageFieldsApproximateManagedInstanceCount,
 }
 
+var mappingSummarizeApplicationUsageFieldsEnumLowerCase = map[string]SummarizeApplicationUsageFieldsEnum{
+	"approximatejrecount":             SummarizeApplicationUsageFieldsApproximateJreCount,
+	"approximateinstallationcount":    SummarizeApplicationUsageFieldsApproximateInstallationCount,
+	"approximatemanagedinstancecount": SummarizeApplicationUsageFieldsApproximateManagedInstanceCount,
+}
+
 // GetSummarizeApplicationUsageFieldsEnumValues Enumerates the set of values for SummarizeApplicationUsageFieldsEnum
 func GetSummarizeApplicationUsageFieldsEnumValues() []SummarizeApplicationUsageFieldsEnum {
 	values := make([]SummarizeApplicationUsageFieldsEnum, 0)
@@ -49,11 +55,6 @@ func GetSummarizeApplicationUsageFieldsEnumStringValues() []string {
 
 // GetMappingSummarizeApplicationUsageFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeApplicationUsageFieldsEnum(val string) (SummarizeApplicationUsageFieldsEnum, bool) {
-	mappingSummarizeApplicationUsageFieldsEnumIgnoreCase := make(map[string]SummarizeApplicationUsageFieldsEnum)
-	for k, v := range mappingSummarizeApplicationUsageFieldsEnum {
-		mappingSummarizeApplicationUsageFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeApplicationUsageFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeApplicationUsageFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

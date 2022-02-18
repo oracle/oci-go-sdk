@@ -27,6 +27,11 @@ var mappingProbeModeEnum = map[string]ProbeModeEnum{
 	"SYN":  ProbeModeSyn,
 }
 
+var mappingProbeModeEnumLowerCase = map[string]ProbeModeEnum{
+	"sack": ProbeModeSack,
+	"syn":  ProbeModeSyn,
+}
+
 // GetProbeModeEnumValues Enumerates the set of values for ProbeModeEnum
 func GetProbeModeEnumValues() []ProbeModeEnum {
 	values := make([]ProbeModeEnum, 0)
@@ -46,11 +51,6 @@ func GetProbeModeEnumStringValues() []string {
 
 // GetMappingProbeModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingProbeModeEnum(val string) (ProbeModeEnum, bool) {
-	mappingProbeModeEnumIgnoreCase := make(map[string]ProbeModeEnum)
-	for k, v := range mappingProbeModeEnum {
-		mappingProbeModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingProbeModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingProbeModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

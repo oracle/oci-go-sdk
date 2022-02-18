@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -109,6 +109,12 @@ var mappingPatchPatchTypeEnum = map[string]PatchPatchTypeEnum{
 	"UNPUBLISH": PatchPatchTypeUnpublish,
 }
 
+var mappingPatchPatchTypeEnumLowerCase = map[string]PatchPatchTypeEnum{
+	"publish":   PatchPatchTypePublish,
+	"refresh":   PatchPatchTypeRefresh,
+	"unpublish": PatchPatchTypeUnpublish,
+}
+
 // GetPatchPatchTypeEnumValues Enumerates the set of values for PatchPatchTypeEnum
 func GetPatchPatchTypeEnumValues() []PatchPatchTypeEnum {
 	values := make([]PatchPatchTypeEnum, 0)
@@ -129,12 +135,7 @@ func GetPatchPatchTypeEnumStringValues() []string {
 
 // GetMappingPatchPatchTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchPatchTypeEnum(val string) (PatchPatchTypeEnum, bool) {
-	mappingPatchPatchTypeEnumIgnoreCase := make(map[string]PatchPatchTypeEnum)
-	for k, v := range mappingPatchPatchTypeEnum {
-		mappingPatchPatchTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchPatchTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchPatchTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -154,6 +155,13 @@ var mappingPatchPatchStatusEnum = map[string]PatchPatchStatusEnum{
 	"SUCCESSFUL":  PatchPatchStatusSuccessful,
 	"FAILED":      PatchPatchStatusFailed,
 	"IN_PROGRESS": PatchPatchStatusInProgress,
+}
+
+var mappingPatchPatchStatusEnumLowerCase = map[string]PatchPatchStatusEnum{
+	"queued":      PatchPatchStatusQueued,
+	"successful":  PatchPatchStatusSuccessful,
+	"failed":      PatchPatchStatusFailed,
+	"in_progress": PatchPatchStatusInProgress,
 }
 
 // GetPatchPatchStatusEnumValues Enumerates the set of values for PatchPatchStatusEnum
@@ -177,11 +185,6 @@ func GetPatchPatchStatusEnumStringValues() []string {
 
 // GetMappingPatchPatchStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchPatchStatusEnum(val string) (PatchPatchStatusEnum, bool) {
-	mappingPatchPatchStatusEnumIgnoreCase := make(map[string]PatchPatchStatusEnum)
-	for k, v := range mappingPatchPatchStatusEnum {
-		mappingPatchPatchStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchPatchStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchPatchStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

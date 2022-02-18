@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -104,6 +104,14 @@ var mappingGroupLifecycleStateEnum = map[string]GroupLifecycleStateEnum{
 	"DELETED":  GroupLifecycleStateDeleted,
 }
 
+var mappingGroupLifecycleStateEnumLowerCase = map[string]GroupLifecycleStateEnum{
+	"creating": GroupLifecycleStateCreating,
+	"active":   GroupLifecycleStateActive,
+	"inactive": GroupLifecycleStateInactive,
+	"deleting": GroupLifecycleStateDeleting,
+	"deleted":  GroupLifecycleStateDeleted,
+}
+
 // GetGroupLifecycleStateEnumValues Enumerates the set of values for GroupLifecycleStateEnum
 func GetGroupLifecycleStateEnumValues() []GroupLifecycleStateEnum {
 	values := make([]GroupLifecycleStateEnum, 0)
@@ -126,11 +134,6 @@ func GetGroupLifecycleStateEnumStringValues() []string {
 
 // GetMappingGroupLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGroupLifecycleStateEnum(val string) (GroupLifecycleStateEnum, bool) {
-	mappingGroupLifecycleStateEnumIgnoreCase := make(map[string]GroupLifecycleStateEnum)
-	for k, v := range mappingGroupLifecycleStateEnum {
-		mappingGroupLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGroupLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGroupLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

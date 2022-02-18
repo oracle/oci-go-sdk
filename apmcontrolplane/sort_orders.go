@@ -5,7 +5,7 @@
 // Application Performance Monitoring Control Plane API
 //
 // Use the Application Performance Monitoring Control Plane API to perform operations such as creating, updating,
-// deleting and listing APM domains and monitoring the progress of these operations using the work request APIs.
+// deleting and listing APM domains and monitoring the progress of these operations using the work request APIs. For more information, see Application Performance Monitoring (https://docs.cloud.oracle.com/iaas/application-performance-monitoring/index.html).
 //
 
 package apmcontrolplane
@@ -28,6 +28,11 @@ var mappingSortOrdersEnum = map[string]SortOrdersEnum{
 	"DESC": SortOrdersDesc,
 }
 
+var mappingSortOrdersEnumLowerCase = map[string]SortOrdersEnum{
+	"asc":  SortOrdersAsc,
+	"desc": SortOrdersDesc,
+}
+
 // GetSortOrdersEnumValues Enumerates the set of values for SortOrdersEnum
 func GetSortOrdersEnumValues() []SortOrdersEnum {
 	values := make([]SortOrdersEnum, 0)
@@ -47,11 +52,6 @@ func GetSortOrdersEnumStringValues() []string {
 
 // GetMappingSortOrdersEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSortOrdersEnum(val string) (SortOrdersEnum, bool) {
-	mappingSortOrdersEnumIgnoreCase := make(map[string]SortOrdersEnum)
-	for k, v := range mappingSortOrdersEnum {
-		mappingSortOrdersEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSortOrdersEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSortOrdersEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -35,6 +35,15 @@ var mappingBastionLifecycleStateEnum = map[string]BastionLifecycleStateEnum{
 	"FAILED":   BastionLifecycleStateFailed,
 }
 
+var mappingBastionLifecycleStateEnumLowerCase = map[string]BastionLifecycleStateEnum{
+	"creating": BastionLifecycleStateCreating,
+	"updating": BastionLifecycleStateUpdating,
+	"active":   BastionLifecycleStateActive,
+	"deleting": BastionLifecycleStateDeleting,
+	"deleted":  BastionLifecycleStateDeleted,
+	"failed":   BastionLifecycleStateFailed,
+}
+
 // GetBastionLifecycleStateEnumValues Enumerates the set of values for BastionLifecycleStateEnum
 func GetBastionLifecycleStateEnumValues() []BastionLifecycleStateEnum {
 	values := make([]BastionLifecycleStateEnum, 0)
@@ -58,11 +67,6 @@ func GetBastionLifecycleStateEnumStringValues() []string {
 
 // GetMappingBastionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBastionLifecycleStateEnum(val string) (BastionLifecycleStateEnum, bool) {
-	mappingBastionLifecycleStateEnumIgnoreCase := make(map[string]BastionLifecycleStateEnum)
-	for k, v := range mappingBastionLifecycleStateEnum {
-		mappingBastionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBastionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBastionLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

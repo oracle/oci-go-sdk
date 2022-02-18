@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -198,6 +198,21 @@ var mappingListJobMetricsFieldsEnum = map[string]ListJobMetricsFieldsEnum{
 	"uri":             ListJobMetricsFieldsUri,
 }
 
+var mappingListJobMetricsFieldsEnumLowerCase = map[string]ListJobMetricsFieldsEnum{
+	"key":             ListJobMetricsFieldsKey,
+	"description":     ListJobMetricsFieldsDescription,
+	"displayname":     ListJobMetricsFieldsDisplayname,
+	"timeinserted":    ListJobMetricsFieldsTimeinserted,
+	"category":        ListJobMetricsFieldsCategory,
+	"subcategory":     ListJobMetricsFieldsSubcategory,
+	"unit":            ListJobMetricsFieldsUnit,
+	"value":           ListJobMetricsFieldsValue,
+	"batchkey":        ListJobMetricsFieldsBatchkey,
+	"jobexecutionkey": ListJobMetricsFieldsJobexecutionkey,
+	"timecreated":     ListJobMetricsFieldsTimecreated,
+	"uri":             ListJobMetricsFieldsUri,
+}
+
 // GetListJobMetricsFieldsEnumValues Enumerates the set of values for ListJobMetricsFieldsEnum
 func GetListJobMetricsFieldsEnumValues() []ListJobMetricsFieldsEnum {
 	values := make([]ListJobMetricsFieldsEnum, 0)
@@ -227,12 +242,7 @@ func GetListJobMetricsFieldsEnumStringValues() []string {
 
 // GetMappingListJobMetricsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJobMetricsFieldsEnum(val string) (ListJobMetricsFieldsEnum, bool) {
-	mappingListJobMetricsFieldsEnumIgnoreCase := make(map[string]ListJobMetricsFieldsEnum)
-	for k, v := range mappingListJobMetricsFieldsEnum {
-		mappingListJobMetricsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJobMetricsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJobMetricsFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -248,6 +258,11 @@ const (
 var mappingListJobMetricsSortByEnum = map[string]ListJobMetricsSortByEnum{
 	"TIMECREATED": ListJobMetricsSortByTimecreated,
 	"DISPLAYNAME": ListJobMetricsSortByDisplayname,
+}
+
+var mappingListJobMetricsSortByEnumLowerCase = map[string]ListJobMetricsSortByEnum{
+	"timecreated": ListJobMetricsSortByTimecreated,
+	"displayname": ListJobMetricsSortByDisplayname,
 }
 
 // GetListJobMetricsSortByEnumValues Enumerates the set of values for ListJobMetricsSortByEnum
@@ -269,12 +284,7 @@ func GetListJobMetricsSortByEnumStringValues() []string {
 
 // GetMappingListJobMetricsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJobMetricsSortByEnum(val string) (ListJobMetricsSortByEnum, bool) {
-	mappingListJobMetricsSortByEnumIgnoreCase := make(map[string]ListJobMetricsSortByEnum)
-	for k, v := range mappingListJobMetricsSortByEnum {
-		mappingListJobMetricsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJobMetricsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJobMetricsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -290,6 +300,11 @@ const (
 var mappingListJobMetricsSortOrderEnum = map[string]ListJobMetricsSortOrderEnum{
 	"ASC":  ListJobMetricsSortOrderAsc,
 	"DESC": ListJobMetricsSortOrderDesc,
+}
+
+var mappingListJobMetricsSortOrderEnumLowerCase = map[string]ListJobMetricsSortOrderEnum{
+	"asc":  ListJobMetricsSortOrderAsc,
+	"desc": ListJobMetricsSortOrderDesc,
 }
 
 // GetListJobMetricsSortOrderEnumValues Enumerates the set of values for ListJobMetricsSortOrderEnum
@@ -311,11 +326,6 @@ func GetListJobMetricsSortOrderEnumStringValues() []string {
 
 // GetMappingListJobMetricsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJobMetricsSortOrderEnum(val string) (ListJobMetricsSortOrderEnum, bool) {
-	mappingListJobMetricsSortOrderEnumIgnoreCase := make(map[string]ListJobMetricsSortOrderEnum)
-	for k, v := range mappingListJobMetricsSortOrderEnum {
-		mappingListJobMetricsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJobMetricsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJobMetricsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -122,6 +122,11 @@ var mappingListLogSetsSortOrderEnum = map[string]ListLogSetsSortOrderEnum{
 	"DESC": ListLogSetsSortOrderDesc,
 }
 
+var mappingListLogSetsSortOrderEnumLowerCase = map[string]ListLogSetsSortOrderEnum{
+	"asc":  ListLogSetsSortOrderAsc,
+	"desc": ListLogSetsSortOrderDesc,
+}
+
 // GetListLogSetsSortOrderEnumValues Enumerates the set of values for ListLogSetsSortOrderEnum
 func GetListLogSetsSortOrderEnumValues() []ListLogSetsSortOrderEnum {
 	values := make([]ListLogSetsSortOrderEnum, 0)
@@ -141,11 +146,6 @@ func GetListLogSetsSortOrderEnumStringValues() []string {
 
 // GetMappingListLogSetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLogSetsSortOrderEnum(val string) (ListLogSetsSortOrderEnum, bool) {
-	mappingListLogSetsSortOrderEnumIgnoreCase := make(map[string]ListLogSetsSortOrderEnum)
-	for k, v := range mappingListLogSetsSortOrderEnum {
-		mappingListLogSetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLogSetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLogSetsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

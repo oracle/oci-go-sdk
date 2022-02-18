@@ -31,6 +31,13 @@ var mappingScopeEnum = map[string]ScopeEnum{
 	"NONE":    ScopeNone,
 }
 
+var mappingScopeEnumLowerCase = map[string]ScopeEnum{
+	"ad":      ScopeAd,
+	"region":  ScopeRegion,
+	"tenancy": ScopeTenancy,
+	"none":    ScopeNone,
+}
+
 // GetScopeEnumValues Enumerates the set of values for ScopeEnum
 func GetScopeEnumValues() []ScopeEnum {
 	values := make([]ScopeEnum, 0)
@@ -52,11 +59,6 @@ func GetScopeEnumStringValues() []string {
 
 // GetMappingScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingScopeEnum(val string) (ScopeEnum, bool) {
-	mappingScopeEnumIgnoreCase := make(map[string]ScopeEnum)
-	for k, v := range mappingScopeEnum {
-		mappingScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

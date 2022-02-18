@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -68,6 +68,11 @@ var mappingUpdateInstanceAvailabilityConfigDetailsRecoveryActionEnum = map[strin
 	"STOP_INSTANCE":    UpdateInstanceAvailabilityConfigDetailsRecoveryActionStopInstance,
 }
 
+var mappingUpdateInstanceAvailabilityConfigDetailsRecoveryActionEnumLowerCase = map[string]UpdateInstanceAvailabilityConfigDetailsRecoveryActionEnum{
+	"restore_instance": UpdateInstanceAvailabilityConfigDetailsRecoveryActionRestoreInstance,
+	"stop_instance":    UpdateInstanceAvailabilityConfigDetailsRecoveryActionStopInstance,
+}
+
 // GetUpdateInstanceAvailabilityConfigDetailsRecoveryActionEnumValues Enumerates the set of values for UpdateInstanceAvailabilityConfigDetailsRecoveryActionEnum
 func GetUpdateInstanceAvailabilityConfigDetailsRecoveryActionEnumValues() []UpdateInstanceAvailabilityConfigDetailsRecoveryActionEnum {
 	values := make([]UpdateInstanceAvailabilityConfigDetailsRecoveryActionEnum, 0)
@@ -87,11 +92,6 @@ func GetUpdateInstanceAvailabilityConfigDetailsRecoveryActionEnumStringValues() 
 
 // GetMappingUpdateInstanceAvailabilityConfigDetailsRecoveryActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateInstanceAvailabilityConfigDetailsRecoveryActionEnum(val string) (UpdateInstanceAvailabilityConfigDetailsRecoveryActionEnum, bool) {
-	mappingUpdateInstanceAvailabilityConfigDetailsRecoveryActionEnumIgnoreCase := make(map[string]UpdateInstanceAvailabilityConfigDetailsRecoveryActionEnum)
-	for k, v := range mappingUpdateInstanceAvailabilityConfigDetailsRecoveryActionEnum {
-		mappingUpdateInstanceAvailabilityConfigDetailsRecoveryActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateInstanceAvailabilityConfigDetailsRecoveryActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateInstanceAvailabilityConfigDetailsRecoveryActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

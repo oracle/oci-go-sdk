@@ -2,9 +2,10 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Cloud Guard APIs
+// Cloud Guard API
 //
-// A description of the Cloud Guard APIs
+// Use the Cloud Guard API to automate processes that you would otherwise perform through the Cloud Guard Console.
+// **Note:** You can perform Create, Update, and Delete operations only from the reporting region of your Cloud Guard tenancy. You can perform Read operations from any region.
 //
 
 package cloudguard
@@ -12,7 +13,7 @@ package cloudguard
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +100,12 @@ var mappingTargetSelectedKindEnum = map[string]TargetSelectedKindEnum{
 	"TARGETIDS":   TargetSelectedKindTargetids,
 }
 
+var mappingTargetSelectedKindEnumLowerCase = map[string]TargetSelectedKindEnum{
+	"all":         TargetSelectedKindAll,
+	"targettypes": TargetSelectedKindTargettypes,
+	"targetids":   TargetSelectedKindTargetids,
+}
+
 // GetTargetSelectedKindEnumValues Enumerates the set of values for TargetSelectedKindEnum
 func GetTargetSelectedKindEnumValues() []TargetSelectedKindEnum {
 	values := make([]TargetSelectedKindEnum, 0)
@@ -119,11 +126,6 @@ func GetTargetSelectedKindEnumStringValues() []string {
 
 // GetMappingTargetSelectedKindEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTargetSelectedKindEnum(val string) (TargetSelectedKindEnum, bool) {
-	mappingTargetSelectedKindEnumIgnoreCase := make(map[string]TargetSelectedKindEnum)
-	for k, v := range mappingTargetSelectedKindEnum {
-		mappingTargetSelectedKindEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTargetSelectedKindEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTargetSelectedKindEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

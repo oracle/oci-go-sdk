@@ -12,7 +12,7 @@ package loganalytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -304,6 +304,11 @@ var mappingStandardTaskLastExecutionStatusEnum = map[string]StandardTaskLastExec
 	"SUCCEEDED": StandardTaskLastExecutionStatusSucceeded,
 }
 
+var mappingStandardTaskLastExecutionStatusEnumLowerCase = map[string]StandardTaskLastExecutionStatusEnum{
+	"failed":    StandardTaskLastExecutionStatusFailed,
+	"succeeded": StandardTaskLastExecutionStatusSucceeded,
+}
+
 // GetStandardTaskLastExecutionStatusEnumValues Enumerates the set of values for StandardTaskLastExecutionStatusEnum
 func GetStandardTaskLastExecutionStatusEnumValues() []StandardTaskLastExecutionStatusEnum {
 	values := make([]StandardTaskLastExecutionStatusEnum, 0)
@@ -323,11 +328,6 @@ func GetStandardTaskLastExecutionStatusEnumStringValues() []string {
 
 // GetMappingStandardTaskLastExecutionStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStandardTaskLastExecutionStatusEnum(val string) (StandardTaskLastExecutionStatusEnum, bool) {
-	mappingStandardTaskLastExecutionStatusEnumIgnoreCase := make(map[string]StandardTaskLastExecutionStatusEnum)
-	for k, v := range mappingStandardTaskLastExecutionStatusEnum {
-		mappingStandardTaskLastExecutionStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStandardTaskLastExecutionStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStandardTaskLastExecutionStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

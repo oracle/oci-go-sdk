@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -59,6 +59,11 @@ var mappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseMod
 	"BRING_YOUR_OWN_LICENSE": EnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelBringYourOwnLicense,
 }
 
+var mappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnumLowerCase = map[string]EnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnum{
+	"license_included":       EnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelLicenseIncluded,
+	"bring_your_own_license": EnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelBringYourOwnLicense,
+}
+
 // GetEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnumValues Enumerates the set of values for EnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnum
 func GetEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnumValues() []EnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnum {
 	values := make([]EnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnum, 0)
@@ -78,11 +83,6 @@ func GetEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelE
 
 // GetMappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnum(val string) (EnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnum, bool) {
-	mappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnumIgnoreCase := make(map[string]EnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnum)
-	for k, v := range mappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnum {
-		mappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEnableExternalNonContainerDatabaseDatabaseManagementDetailsLicenseModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

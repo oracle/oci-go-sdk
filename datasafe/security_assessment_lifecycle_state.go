@@ -33,6 +33,14 @@ var mappingSecurityAssessmentLifecycleStateEnum = map[string]SecurityAssessmentL
 	"FAILED":    SecurityAssessmentLifecycleStateFailed,
 }
 
+var mappingSecurityAssessmentLifecycleStateEnumLowerCase = map[string]SecurityAssessmentLifecycleStateEnum{
+	"creating":  SecurityAssessmentLifecycleStateCreating,
+	"succeeded": SecurityAssessmentLifecycleStateSucceeded,
+	"updating":  SecurityAssessmentLifecycleStateUpdating,
+	"deleting":  SecurityAssessmentLifecycleStateDeleting,
+	"failed":    SecurityAssessmentLifecycleStateFailed,
+}
+
 // GetSecurityAssessmentLifecycleStateEnumValues Enumerates the set of values for SecurityAssessmentLifecycleStateEnum
 func GetSecurityAssessmentLifecycleStateEnumValues() []SecurityAssessmentLifecycleStateEnum {
 	values := make([]SecurityAssessmentLifecycleStateEnum, 0)
@@ -55,11 +63,6 @@ func GetSecurityAssessmentLifecycleStateEnumStringValues() []string {
 
 // GetMappingSecurityAssessmentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSecurityAssessmentLifecycleStateEnum(val string) (SecurityAssessmentLifecycleStateEnum, bool) {
-	mappingSecurityAssessmentLifecycleStateEnumIgnoreCase := make(map[string]SecurityAssessmentLifecycleStateEnum)
-	for k, v := range mappingSecurityAssessmentLifecycleStateEnum {
-		mappingSecurityAssessmentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSecurityAssessmentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSecurityAssessmentLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

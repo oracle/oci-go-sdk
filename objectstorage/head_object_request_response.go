@@ -6,7 +6,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -196,6 +196,12 @@ var mappingHeadObjectStorageTierEnum = map[string]HeadObjectStorageTierEnum{
 	"Archive":          HeadObjectStorageTierArchive,
 }
 
+var mappingHeadObjectStorageTierEnumLowerCase = map[string]HeadObjectStorageTierEnum{
+	"standard":         HeadObjectStorageTierStandard,
+	"infrequentaccess": HeadObjectStorageTierInfrequentaccess,
+	"archive":          HeadObjectStorageTierArchive,
+}
+
 // GetHeadObjectStorageTierEnumValues Enumerates the set of values for HeadObjectStorageTierEnum
 func GetHeadObjectStorageTierEnumValues() []HeadObjectStorageTierEnum {
 	values := make([]HeadObjectStorageTierEnum, 0)
@@ -216,12 +222,7 @@ func GetHeadObjectStorageTierEnumStringValues() []string {
 
 // GetMappingHeadObjectStorageTierEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHeadObjectStorageTierEnum(val string) (HeadObjectStorageTierEnum, bool) {
-	mappingHeadObjectStorageTierEnumIgnoreCase := make(map[string]HeadObjectStorageTierEnum)
-	for k, v := range mappingHeadObjectStorageTierEnum {
-		mappingHeadObjectStorageTierEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHeadObjectStorageTierEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHeadObjectStorageTierEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -239,6 +240,12 @@ var mappingHeadObjectArchivalStateEnum = map[string]HeadObjectArchivalStateEnum{
 	"Archived":  HeadObjectArchivalStateArchived,
 	"Restoring": HeadObjectArchivalStateRestoring,
 	"Restored":  HeadObjectArchivalStateRestored,
+}
+
+var mappingHeadObjectArchivalStateEnumLowerCase = map[string]HeadObjectArchivalStateEnum{
+	"archived":  HeadObjectArchivalStateArchived,
+	"restoring": HeadObjectArchivalStateRestoring,
+	"restored":  HeadObjectArchivalStateRestored,
 }
 
 // GetHeadObjectArchivalStateEnumValues Enumerates the set of values for HeadObjectArchivalStateEnum
@@ -261,11 +268,6 @@ func GetHeadObjectArchivalStateEnumStringValues() []string {
 
 // GetMappingHeadObjectArchivalStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHeadObjectArchivalStateEnum(val string) (HeadObjectArchivalStateEnum, bool) {
-	mappingHeadObjectArchivalStateEnumIgnoreCase := make(map[string]HeadObjectArchivalStateEnum)
-	for k, v := range mappingHeadObjectArchivalStateEnum {
-		mappingHeadObjectArchivalStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHeadObjectArchivalStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHeadObjectArchivalStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

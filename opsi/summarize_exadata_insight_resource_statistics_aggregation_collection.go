@@ -14,7 +14,7 @@ package opsi
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -126,6 +126,15 @@ var mappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadata
 	"THROUGHPUT": SummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricThroughput,
 }
 
+var mappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnumLowerCase = map[string]SummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnum{
+	"cpu":        SummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricCpu,
+	"storage":    SummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricStorage,
+	"io":         SummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricIo,
+	"memory":     SummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricMemory,
+	"iops":       SummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricIops,
+	"throughput": SummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricThroughput,
+}
+
 // GetSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnumValues Enumerates the set of values for SummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnum
 func GetSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnumValues() []SummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnum {
 	values := make([]SummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnum, 0)
@@ -149,11 +158,6 @@ func GetSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataRes
 
 // GetMappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnum(val string) (SummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnum, bool) {
-	mappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnum)
-	for k, v := range mappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnum {
-		mappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeExadataInsightResourceStatisticsAggregationCollectionExadataResourceMetricEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

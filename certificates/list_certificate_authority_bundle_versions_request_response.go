@@ -6,7 +6,7 @@ package certificates
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -114,6 +114,10 @@ var mappingListCertificateAuthorityBundleVersionsSortByEnum = map[string]ListCer
 	"VERSION_NUMBER": ListCertificateAuthorityBundleVersionsSortByVersionNumber,
 }
 
+var mappingListCertificateAuthorityBundleVersionsSortByEnumLowerCase = map[string]ListCertificateAuthorityBundleVersionsSortByEnum{
+	"version_number": ListCertificateAuthorityBundleVersionsSortByVersionNumber,
+}
+
 // GetListCertificateAuthorityBundleVersionsSortByEnumValues Enumerates the set of values for ListCertificateAuthorityBundleVersionsSortByEnum
 func GetListCertificateAuthorityBundleVersionsSortByEnumValues() []ListCertificateAuthorityBundleVersionsSortByEnum {
 	values := make([]ListCertificateAuthorityBundleVersionsSortByEnum, 0)
@@ -132,12 +136,7 @@ func GetListCertificateAuthorityBundleVersionsSortByEnumStringValues() []string 
 
 // GetMappingListCertificateAuthorityBundleVersionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCertificateAuthorityBundleVersionsSortByEnum(val string) (ListCertificateAuthorityBundleVersionsSortByEnum, bool) {
-	mappingListCertificateAuthorityBundleVersionsSortByEnumIgnoreCase := make(map[string]ListCertificateAuthorityBundleVersionsSortByEnum)
-	for k, v := range mappingListCertificateAuthorityBundleVersionsSortByEnum {
-		mappingListCertificateAuthorityBundleVersionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCertificateAuthorityBundleVersionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCertificateAuthorityBundleVersionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -153,6 +152,11 @@ const (
 var mappingListCertificateAuthorityBundleVersionsSortOrderEnum = map[string]ListCertificateAuthorityBundleVersionsSortOrderEnum{
 	"ASC":  ListCertificateAuthorityBundleVersionsSortOrderAsc,
 	"DESC": ListCertificateAuthorityBundleVersionsSortOrderDesc,
+}
+
+var mappingListCertificateAuthorityBundleVersionsSortOrderEnumLowerCase = map[string]ListCertificateAuthorityBundleVersionsSortOrderEnum{
+	"asc":  ListCertificateAuthorityBundleVersionsSortOrderAsc,
+	"desc": ListCertificateAuthorityBundleVersionsSortOrderDesc,
 }
 
 // GetListCertificateAuthorityBundleVersionsSortOrderEnumValues Enumerates the set of values for ListCertificateAuthorityBundleVersionsSortOrderEnum
@@ -174,11 +178,6 @@ func GetListCertificateAuthorityBundleVersionsSortOrderEnumStringValues() []stri
 
 // GetMappingListCertificateAuthorityBundleVersionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCertificateAuthorityBundleVersionsSortOrderEnum(val string) (ListCertificateAuthorityBundleVersionsSortOrderEnum, bool) {
-	mappingListCertificateAuthorityBundleVersionsSortOrderEnumIgnoreCase := make(map[string]ListCertificateAuthorityBundleVersionsSortOrderEnum)
-	for k, v := range mappingListCertificateAuthorityBundleVersionsSortOrderEnum {
-		mappingListCertificateAuthorityBundleVersionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCertificateAuthorityBundleVersionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCertificateAuthorityBundleVersionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

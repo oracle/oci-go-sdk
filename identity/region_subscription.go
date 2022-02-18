@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -72,6 +72,11 @@ var mappingRegionSubscriptionStatusEnum = map[string]RegionSubscriptionStatusEnu
 	"IN_PROGRESS": RegionSubscriptionStatusInProgress,
 }
 
+var mappingRegionSubscriptionStatusEnumLowerCase = map[string]RegionSubscriptionStatusEnum{
+	"ready":       RegionSubscriptionStatusReady,
+	"in_progress": RegionSubscriptionStatusInProgress,
+}
+
 // GetRegionSubscriptionStatusEnumValues Enumerates the set of values for RegionSubscriptionStatusEnum
 func GetRegionSubscriptionStatusEnumValues() []RegionSubscriptionStatusEnum {
 	values := make([]RegionSubscriptionStatusEnum, 0)
@@ -91,11 +96,6 @@ func GetRegionSubscriptionStatusEnumStringValues() []string {
 
 // GetMappingRegionSubscriptionStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRegionSubscriptionStatusEnum(val string) (RegionSubscriptionStatusEnum, bool) {
-	mappingRegionSubscriptionStatusEnumIgnoreCase := make(map[string]RegionSubscriptionStatusEnum)
-	for k, v := range mappingRegionSubscriptionStatusEnum {
-		mappingRegionSubscriptionStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRegionSubscriptionStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRegionSubscriptionStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

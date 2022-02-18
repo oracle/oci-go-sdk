@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingConvertToPdbTargetBaseTargetEnum = map[string]ConvertToPdbTargetBaseT
 	"NEW_DATABASE": ConvertToPdbTargetBaseTargetNewDatabase,
 }
 
+var mappingConvertToPdbTargetBaseTargetEnumLowerCase = map[string]ConvertToPdbTargetBaseTargetEnum{
+	"new_database": ConvertToPdbTargetBaseTargetNewDatabase,
+}
+
 // GetConvertToPdbTargetBaseTargetEnumValues Enumerates the set of values for ConvertToPdbTargetBaseTargetEnum
 func GetConvertToPdbTargetBaseTargetEnumValues() []ConvertToPdbTargetBaseTargetEnum {
 	values := make([]ConvertToPdbTargetBaseTargetEnum, 0)
@@ -105,11 +109,6 @@ func GetConvertToPdbTargetBaseTargetEnumStringValues() []string {
 
 // GetMappingConvertToPdbTargetBaseTargetEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConvertToPdbTargetBaseTargetEnum(val string) (ConvertToPdbTargetBaseTargetEnum, bool) {
-	mappingConvertToPdbTargetBaseTargetEnumIgnoreCase := make(map[string]ConvertToPdbTargetBaseTargetEnum)
-	for k, v := range mappingConvertToPdbTargetBaseTargetEnum {
-		mappingConvertToPdbTargetBaseTargetEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConvertToPdbTargetBaseTargetEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConvertToPdbTargetBaseTargetEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

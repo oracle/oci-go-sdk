@@ -31,6 +31,12 @@ var mappingInfrastrcutureLayersEnum = map[string]InfrastrcutureLayersEnum{
 	"CPS":        InfrastrcutureLayersCps,
 }
 
+var mappingInfrastrcutureLayersEnumLowerCase = map[string]InfrastrcutureLayersEnum{
+	"dom0":       InfrastrcutureLayersDom0,
+	"cellserver": InfrastrcutureLayersCellserver,
+	"cps":        InfrastrcutureLayersCps,
+}
+
 // GetInfrastrcutureLayersEnumValues Enumerates the set of values for InfrastrcutureLayersEnum
 func GetInfrastrcutureLayersEnumValues() []InfrastrcutureLayersEnum {
 	values := make([]InfrastrcutureLayersEnum, 0)
@@ -51,11 +57,6 @@ func GetInfrastrcutureLayersEnumStringValues() []string {
 
 // GetMappingInfrastrcutureLayersEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInfrastrcutureLayersEnum(val string) (InfrastrcutureLayersEnum, bool) {
-	mappingInfrastrcutureLayersEnumIgnoreCase := make(map[string]InfrastrcutureLayersEnum)
-	for k, v := range mappingInfrastrcutureLayersEnum {
-		mappingInfrastrcutureLayersEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInfrastrcutureLayersEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInfrastrcutureLayersEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

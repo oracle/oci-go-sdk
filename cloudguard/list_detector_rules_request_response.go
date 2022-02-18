@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -148,6 +148,16 @@ var mappingListDetectorRulesLifecycleStateEnum = map[string]ListDetectorRulesLif
 	"FAILED":   ListDetectorRulesLifecycleStateFailed,
 }
 
+var mappingListDetectorRulesLifecycleStateEnumLowerCase = map[string]ListDetectorRulesLifecycleStateEnum{
+	"creating": ListDetectorRulesLifecycleStateCreating,
+	"updating": ListDetectorRulesLifecycleStateUpdating,
+	"active":   ListDetectorRulesLifecycleStateActive,
+	"inactive": ListDetectorRulesLifecycleStateInactive,
+	"deleting": ListDetectorRulesLifecycleStateDeleting,
+	"deleted":  ListDetectorRulesLifecycleStateDeleted,
+	"failed":   ListDetectorRulesLifecycleStateFailed,
+}
+
 // GetListDetectorRulesLifecycleStateEnumValues Enumerates the set of values for ListDetectorRulesLifecycleStateEnum
 func GetListDetectorRulesLifecycleStateEnumValues() []ListDetectorRulesLifecycleStateEnum {
 	values := make([]ListDetectorRulesLifecycleStateEnum, 0)
@@ -172,12 +182,7 @@ func GetListDetectorRulesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListDetectorRulesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDetectorRulesLifecycleStateEnum(val string) (ListDetectorRulesLifecycleStateEnum, bool) {
-	mappingListDetectorRulesLifecycleStateEnumIgnoreCase := make(map[string]ListDetectorRulesLifecycleStateEnum)
-	for k, v := range mappingListDetectorRulesLifecycleStateEnum {
-		mappingListDetectorRulesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDetectorRulesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDetectorRulesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -193,6 +198,11 @@ const (
 var mappingListDetectorRulesSortOrderEnum = map[string]ListDetectorRulesSortOrderEnum{
 	"ASC":  ListDetectorRulesSortOrderAsc,
 	"DESC": ListDetectorRulesSortOrderDesc,
+}
+
+var mappingListDetectorRulesSortOrderEnumLowerCase = map[string]ListDetectorRulesSortOrderEnum{
+	"asc":  ListDetectorRulesSortOrderAsc,
+	"desc": ListDetectorRulesSortOrderDesc,
 }
 
 // GetListDetectorRulesSortOrderEnumValues Enumerates the set of values for ListDetectorRulesSortOrderEnum
@@ -214,12 +224,7 @@ func GetListDetectorRulesSortOrderEnumStringValues() []string {
 
 // GetMappingListDetectorRulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDetectorRulesSortOrderEnum(val string) (ListDetectorRulesSortOrderEnum, bool) {
-	mappingListDetectorRulesSortOrderEnumIgnoreCase := make(map[string]ListDetectorRulesSortOrderEnum)
-	for k, v := range mappingListDetectorRulesSortOrderEnum {
-		mappingListDetectorRulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDetectorRulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDetectorRulesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -235,6 +240,11 @@ const (
 var mappingListDetectorRulesSortByEnum = map[string]ListDetectorRulesSortByEnum{
 	"timeCreated": ListDetectorRulesSortByTimecreated,
 	"displayName": ListDetectorRulesSortByDisplayname,
+}
+
+var mappingListDetectorRulesSortByEnumLowerCase = map[string]ListDetectorRulesSortByEnum{
+	"timecreated": ListDetectorRulesSortByTimecreated,
+	"displayname": ListDetectorRulesSortByDisplayname,
 }
 
 // GetListDetectorRulesSortByEnumValues Enumerates the set of values for ListDetectorRulesSortByEnum
@@ -256,11 +266,6 @@ func GetListDetectorRulesSortByEnumStringValues() []string {
 
 // GetMappingListDetectorRulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDetectorRulesSortByEnum(val string) (ListDetectorRulesSortByEnum, bool) {
-	mappingListDetectorRulesSortByEnumIgnoreCase := make(map[string]ListDetectorRulesSortByEnum)
-	for k, v := range mappingListDetectorRulesSortByEnum {
-		mappingListDetectorRulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDetectorRulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDetectorRulesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

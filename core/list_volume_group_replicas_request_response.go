@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -152,6 +152,11 @@ var mappingListVolumeGroupReplicasSortByEnum = map[string]ListVolumeGroupReplica
 	"DISPLAYNAME": ListVolumeGroupReplicasSortByDisplayname,
 }
 
+var mappingListVolumeGroupReplicasSortByEnumLowerCase = map[string]ListVolumeGroupReplicasSortByEnum{
+	"timecreated": ListVolumeGroupReplicasSortByTimecreated,
+	"displayname": ListVolumeGroupReplicasSortByDisplayname,
+}
+
 // GetListVolumeGroupReplicasSortByEnumValues Enumerates the set of values for ListVolumeGroupReplicasSortByEnum
 func GetListVolumeGroupReplicasSortByEnumValues() []ListVolumeGroupReplicasSortByEnum {
 	values := make([]ListVolumeGroupReplicasSortByEnum, 0)
@@ -171,12 +176,7 @@ func GetListVolumeGroupReplicasSortByEnumStringValues() []string {
 
 // GetMappingListVolumeGroupReplicasSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListVolumeGroupReplicasSortByEnum(val string) (ListVolumeGroupReplicasSortByEnum, bool) {
-	mappingListVolumeGroupReplicasSortByEnumIgnoreCase := make(map[string]ListVolumeGroupReplicasSortByEnum)
-	for k, v := range mappingListVolumeGroupReplicasSortByEnum {
-		mappingListVolumeGroupReplicasSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListVolumeGroupReplicasSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListVolumeGroupReplicasSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -192,6 +192,11 @@ const (
 var mappingListVolumeGroupReplicasSortOrderEnum = map[string]ListVolumeGroupReplicasSortOrderEnum{
 	"ASC":  ListVolumeGroupReplicasSortOrderAsc,
 	"DESC": ListVolumeGroupReplicasSortOrderDesc,
+}
+
+var mappingListVolumeGroupReplicasSortOrderEnumLowerCase = map[string]ListVolumeGroupReplicasSortOrderEnum{
+	"asc":  ListVolumeGroupReplicasSortOrderAsc,
+	"desc": ListVolumeGroupReplicasSortOrderDesc,
 }
 
 // GetListVolumeGroupReplicasSortOrderEnumValues Enumerates the set of values for ListVolumeGroupReplicasSortOrderEnum
@@ -213,11 +218,6 @@ func GetListVolumeGroupReplicasSortOrderEnumStringValues() []string {
 
 // GetMappingListVolumeGroupReplicasSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListVolumeGroupReplicasSortOrderEnum(val string) (ListVolumeGroupReplicasSortOrderEnum, bool) {
-	mappingListVolumeGroupReplicasSortOrderEnumIgnoreCase := make(map[string]ListVolumeGroupReplicasSortOrderEnum)
-	for k, v := range mappingListVolumeGroupReplicasSortOrderEnum {
-		mappingListVolumeGroupReplicasSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListVolumeGroupReplicasSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListVolumeGroupReplicasSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

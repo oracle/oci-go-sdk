@@ -6,7 +6,7 @@ package tenantmanagercontrolplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -134,6 +134,15 @@ var mappingListRecipientInvitationsLifecycleStateEnum = map[string]ListRecipient
 	"TERMINATED": ListRecipientInvitationsLifecycleStateTerminated,
 }
 
+var mappingListRecipientInvitationsLifecycleStateEnumLowerCase = map[string]ListRecipientInvitationsLifecycleStateEnum{
+	"creating":   ListRecipientInvitationsLifecycleStateCreating,
+	"active":     ListRecipientInvitationsLifecycleStateActive,
+	"inactive":   ListRecipientInvitationsLifecycleStateInactive,
+	"updating":   ListRecipientInvitationsLifecycleStateUpdating,
+	"failed":     ListRecipientInvitationsLifecycleStateFailed,
+	"terminated": ListRecipientInvitationsLifecycleStateTerminated,
+}
+
 // GetListRecipientInvitationsLifecycleStateEnumValues Enumerates the set of values for ListRecipientInvitationsLifecycleStateEnum
 func GetListRecipientInvitationsLifecycleStateEnumValues() []ListRecipientInvitationsLifecycleStateEnum {
 	values := make([]ListRecipientInvitationsLifecycleStateEnum, 0)
@@ -157,12 +166,7 @@ func GetListRecipientInvitationsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListRecipientInvitationsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRecipientInvitationsLifecycleStateEnum(val string) (ListRecipientInvitationsLifecycleStateEnum, bool) {
-	mappingListRecipientInvitationsLifecycleStateEnumIgnoreCase := make(map[string]ListRecipientInvitationsLifecycleStateEnum)
-	for k, v := range mappingListRecipientInvitationsLifecycleStateEnum {
-		mappingListRecipientInvitationsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRecipientInvitationsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRecipientInvitationsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -188,6 +192,15 @@ var mappingListRecipientInvitationsStatusEnum = map[string]ListRecipientInvitati
 	"FAILED":   ListRecipientInvitationsStatusFailed,
 }
 
+var mappingListRecipientInvitationsStatusEnumLowerCase = map[string]ListRecipientInvitationsStatusEnum{
+	"pending":  ListRecipientInvitationsStatusPending,
+	"canceled": ListRecipientInvitationsStatusCanceled,
+	"accepted": ListRecipientInvitationsStatusAccepted,
+	"ignored":  ListRecipientInvitationsStatusIgnored,
+	"expired":  ListRecipientInvitationsStatusExpired,
+	"failed":   ListRecipientInvitationsStatusFailed,
+}
+
 // GetListRecipientInvitationsStatusEnumValues Enumerates the set of values for ListRecipientInvitationsStatusEnum
 func GetListRecipientInvitationsStatusEnumValues() []ListRecipientInvitationsStatusEnum {
 	values := make([]ListRecipientInvitationsStatusEnum, 0)
@@ -211,11 +224,6 @@ func GetListRecipientInvitationsStatusEnumStringValues() []string {
 
 // GetMappingListRecipientInvitationsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRecipientInvitationsStatusEnum(val string) (ListRecipientInvitationsStatusEnum, bool) {
-	mappingListRecipientInvitationsStatusEnumIgnoreCase := make(map[string]ListRecipientInvitationsStatusEnum)
-	for k, v := range mappingListRecipientInvitationsStatusEnum {
-		mappingListRecipientInvitationsStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRecipientInvitationsStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRecipientInvitationsStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

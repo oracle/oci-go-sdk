@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -29,6 +29,10 @@ type TerminateInstanceRequest struct {
 	// Specifies whether to delete or preserve the boot volume when terminating an instance.
 	// When set to `true`, the boot volume is preserved. The default value is `false`.
 	PreserveBootVolume *bool `mandatory:"false" contributesTo:"query" name:"preserveBootVolume"`
+
+	// Specifies whether to delete or preserve the data volumes when terminating an instance.
+	// When set to `true`, the boot volume is preserved. The default value is `false`.
+	PreserveDataVolumes *bool `mandatory:"false" contributesTo:"query" name:"preserveDataVolumes"`
 
 	// Unique Oracle-assigned identifier for the request.
 	// If you need to contact Oracle about a particular request, please provide the request ID.

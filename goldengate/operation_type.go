@@ -55,6 +55,25 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"GOLDENGATE_DEPLOYMENT_BACKUP_CANCEL":     OperationTypeGoldengateDeploymentBackupCancel,
 }
 
+var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
+	"goldengate_database_registration_create": OperationTypeGoldengateDatabaseRegistrationCreate,
+	"goldengate_database_registration_update": OperationTypeGoldengateDatabaseRegistrationUpdate,
+	"goldengate_database_registration_delete": OperationTypeGoldengateDatabaseRegistrationDelete,
+	"goldengate_database_registration_move":   OperationTypeGoldengateDatabaseRegistrationMove,
+	"goldengate_deployment_create":            OperationTypeGoldengateDeploymentCreate,
+	"goldengate_deployment_update":            OperationTypeGoldengateDeploymentUpdate,
+	"goldengate_deployment_delete":            OperationTypeGoldengateDeploymentDelete,
+	"goldengate_deployment_move":              OperationTypeGoldengateDeploymentMove,
+	"goldengate_deployment_restore":           OperationTypeGoldengateDeploymentRestore,
+	"goldengate_deployment_start":             OperationTypeGoldengateDeploymentStart,
+	"goldengate_deployment_stop":              OperationTypeGoldengateDeploymentStop,
+	"goldengate_deployment_patch":             OperationTypeGoldengateDeploymentPatch,
+	"goldengate_deployment_upgrade":           OperationTypeGoldengateDeploymentUpgrade,
+	"goldengate_deployment_backup_create":     OperationTypeGoldengateDeploymentBackupCreate,
+	"goldengate_deployment_backup_delete":     OperationTypeGoldengateDeploymentBackupDelete,
+	"goldengate_deployment_backup_cancel":     OperationTypeGoldengateDeploymentBackupCancel,
+}
+
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum
 func GetOperationTypeEnumValues() []OperationTypeEnum {
 	values := make([]OperationTypeEnum, 0)
@@ -88,11 +107,6 @@ func GetOperationTypeEnumStringValues() []string {
 
 // GetMappingOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperationTypeEnum(val string) (OperationTypeEnum, bool) {
-	mappingOperationTypeEnumIgnoreCase := make(map[string]OperationTypeEnum)
-	for k, v := range mappingOperationTypeEnum {
-		mappingOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

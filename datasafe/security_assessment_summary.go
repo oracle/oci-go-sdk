@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -144,6 +144,11 @@ var mappingSecurityAssessmentSummaryTriggeredByEnum = map[string]SecurityAssessm
 	"SYSTEM": SecurityAssessmentSummaryTriggeredBySystem,
 }
 
+var mappingSecurityAssessmentSummaryTriggeredByEnumLowerCase = map[string]SecurityAssessmentSummaryTriggeredByEnum{
+	"user":   SecurityAssessmentSummaryTriggeredByUser,
+	"system": SecurityAssessmentSummaryTriggeredBySystem,
+}
+
 // GetSecurityAssessmentSummaryTriggeredByEnumValues Enumerates the set of values for SecurityAssessmentSummaryTriggeredByEnum
 func GetSecurityAssessmentSummaryTriggeredByEnumValues() []SecurityAssessmentSummaryTriggeredByEnum {
 	values := make([]SecurityAssessmentSummaryTriggeredByEnum, 0)
@@ -163,12 +168,7 @@ func GetSecurityAssessmentSummaryTriggeredByEnumStringValues() []string {
 
 // GetMappingSecurityAssessmentSummaryTriggeredByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSecurityAssessmentSummaryTriggeredByEnum(val string) (SecurityAssessmentSummaryTriggeredByEnum, bool) {
-	mappingSecurityAssessmentSummaryTriggeredByEnumIgnoreCase := make(map[string]SecurityAssessmentSummaryTriggeredByEnum)
-	for k, v := range mappingSecurityAssessmentSummaryTriggeredByEnum {
-		mappingSecurityAssessmentSummaryTriggeredByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSecurityAssessmentSummaryTriggeredByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSecurityAssessmentSummaryTriggeredByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -188,6 +188,13 @@ var mappingSecurityAssessmentSummaryTypeEnum = map[string]SecurityAssessmentSumm
 	"SAVED":         SecurityAssessmentSummaryTypeSaved,
 	"SAVE_SCHEDULE": SecurityAssessmentSummaryTypeSaveSchedule,
 	"COMPARTMENT":   SecurityAssessmentSummaryTypeCompartment,
+}
+
+var mappingSecurityAssessmentSummaryTypeEnumLowerCase = map[string]SecurityAssessmentSummaryTypeEnum{
+	"latest":        SecurityAssessmentSummaryTypeLatest,
+	"saved":         SecurityAssessmentSummaryTypeSaved,
+	"save_schedule": SecurityAssessmentSummaryTypeSaveSchedule,
+	"compartment":   SecurityAssessmentSummaryTypeCompartment,
 }
 
 // GetSecurityAssessmentSummaryTypeEnumValues Enumerates the set of values for SecurityAssessmentSummaryTypeEnum
@@ -211,11 +218,6 @@ func GetSecurityAssessmentSummaryTypeEnumStringValues() []string {
 
 // GetMappingSecurityAssessmentSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSecurityAssessmentSummaryTypeEnum(val string) (SecurityAssessmentSummaryTypeEnum, bool) {
-	mappingSecurityAssessmentSummaryTypeEnumIgnoreCase := make(map[string]SecurityAssessmentSummaryTypeEnum)
-	for k, v := range mappingSecurityAssessmentSummaryTypeEnum {
-		mappingSecurityAssessmentSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSecurityAssessmentSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSecurityAssessmentSummaryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

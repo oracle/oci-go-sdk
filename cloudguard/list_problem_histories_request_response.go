@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -129,6 +129,11 @@ var mappingListProblemHistoriesSortOrderEnum = map[string]ListProblemHistoriesSo
 	"DESC": ListProblemHistoriesSortOrderDesc,
 }
 
+var mappingListProblemHistoriesSortOrderEnumLowerCase = map[string]ListProblemHistoriesSortOrderEnum{
+	"asc":  ListProblemHistoriesSortOrderAsc,
+	"desc": ListProblemHistoriesSortOrderDesc,
+}
+
 // GetListProblemHistoriesSortOrderEnumValues Enumerates the set of values for ListProblemHistoriesSortOrderEnum
 func GetListProblemHistoriesSortOrderEnumValues() []ListProblemHistoriesSortOrderEnum {
 	values := make([]ListProblemHistoriesSortOrderEnum, 0)
@@ -148,12 +153,7 @@ func GetListProblemHistoriesSortOrderEnumStringValues() []string {
 
 // GetMappingListProblemHistoriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProblemHistoriesSortOrderEnum(val string) (ListProblemHistoriesSortOrderEnum, bool) {
-	mappingListProblemHistoriesSortOrderEnumIgnoreCase := make(map[string]ListProblemHistoriesSortOrderEnum)
-	for k, v := range mappingListProblemHistoriesSortOrderEnum {
-		mappingListProblemHistoriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProblemHistoriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProblemHistoriesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -167,6 +167,10 @@ const (
 
 var mappingListProblemHistoriesSortByEnum = map[string]ListProblemHistoriesSortByEnum{
 	"timeCreated": ListProblemHistoriesSortByTimecreated,
+}
+
+var mappingListProblemHistoriesSortByEnumLowerCase = map[string]ListProblemHistoriesSortByEnum{
+	"timecreated": ListProblemHistoriesSortByTimecreated,
 }
 
 // GetListProblemHistoriesSortByEnumValues Enumerates the set of values for ListProblemHistoriesSortByEnum
@@ -187,11 +191,6 @@ func GetListProblemHistoriesSortByEnumStringValues() []string {
 
 // GetMappingListProblemHistoriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProblemHistoriesSortByEnum(val string) (ListProblemHistoriesSortByEnum, bool) {
-	mappingListProblemHistoriesSortByEnumIgnoreCase := make(map[string]ListProblemHistoriesSortByEnum)
-	for k, v := range mappingListProblemHistoriesSortByEnum {
-		mappingListProblemHistoriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProblemHistoriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProblemHistoriesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

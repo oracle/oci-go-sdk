@@ -6,7 +6,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -161,6 +161,11 @@ var mappingListCompartmentsAccessLevelEnum = map[string]ListCompartmentsAccessLe
 	"ACCESSIBLE": ListCompartmentsAccessLevelAccessible,
 }
 
+var mappingListCompartmentsAccessLevelEnumLowerCase = map[string]ListCompartmentsAccessLevelEnum{
+	"any":        ListCompartmentsAccessLevelAny,
+	"accessible": ListCompartmentsAccessLevelAccessible,
+}
+
 // GetListCompartmentsAccessLevelEnumValues Enumerates the set of values for ListCompartmentsAccessLevelEnum
 func GetListCompartmentsAccessLevelEnumValues() []ListCompartmentsAccessLevelEnum {
 	values := make([]ListCompartmentsAccessLevelEnum, 0)
@@ -180,12 +185,7 @@ func GetListCompartmentsAccessLevelEnumStringValues() []string {
 
 // GetMappingListCompartmentsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCompartmentsAccessLevelEnum(val string) (ListCompartmentsAccessLevelEnum, bool) {
-	mappingListCompartmentsAccessLevelEnumIgnoreCase := make(map[string]ListCompartmentsAccessLevelEnum)
-	for k, v := range mappingListCompartmentsAccessLevelEnum {
-		mappingListCompartmentsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCompartmentsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCompartmentsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -201,6 +201,11 @@ const (
 var mappingListCompartmentsSortByEnum = map[string]ListCompartmentsSortByEnum{
 	"TIMECREATED": ListCompartmentsSortByTimecreated,
 	"NAME":        ListCompartmentsSortByName,
+}
+
+var mappingListCompartmentsSortByEnumLowerCase = map[string]ListCompartmentsSortByEnum{
+	"timecreated": ListCompartmentsSortByTimecreated,
+	"name":        ListCompartmentsSortByName,
 }
 
 // GetListCompartmentsSortByEnumValues Enumerates the set of values for ListCompartmentsSortByEnum
@@ -222,12 +227,7 @@ func GetListCompartmentsSortByEnumStringValues() []string {
 
 // GetMappingListCompartmentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCompartmentsSortByEnum(val string) (ListCompartmentsSortByEnum, bool) {
-	mappingListCompartmentsSortByEnumIgnoreCase := make(map[string]ListCompartmentsSortByEnum)
-	for k, v := range mappingListCompartmentsSortByEnum {
-		mappingListCompartmentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCompartmentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCompartmentsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -243,6 +243,11 @@ const (
 var mappingListCompartmentsSortOrderEnum = map[string]ListCompartmentsSortOrderEnum{
 	"ASC":  ListCompartmentsSortOrderAsc,
 	"DESC": ListCompartmentsSortOrderDesc,
+}
+
+var mappingListCompartmentsSortOrderEnumLowerCase = map[string]ListCompartmentsSortOrderEnum{
+	"asc":  ListCompartmentsSortOrderAsc,
+	"desc": ListCompartmentsSortOrderDesc,
 }
 
 // GetListCompartmentsSortOrderEnumValues Enumerates the set of values for ListCompartmentsSortOrderEnum
@@ -264,11 +269,6 @@ func GetListCompartmentsSortOrderEnumStringValues() []string {
 
 // GetMappingListCompartmentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCompartmentsSortOrderEnum(val string) (ListCompartmentsSortOrderEnum, bool) {
-	mappingListCompartmentsSortOrderEnumIgnoreCase := make(map[string]ListCompartmentsSortOrderEnum)
-	for k, v := range mappingListCompartmentsSortOrderEnum {
-		mappingListCompartmentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCompartmentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCompartmentsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

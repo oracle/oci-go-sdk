@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -140,6 +140,11 @@ var mappingListAutonomousDatabaseBackupsSortByEnum = map[string]ListAutonomousDa
 	"DISPLAYNAME": ListAutonomousDatabaseBackupsSortByDisplayname,
 }
 
+var mappingListAutonomousDatabaseBackupsSortByEnumLowerCase = map[string]ListAutonomousDatabaseBackupsSortByEnum{
+	"timecreated": ListAutonomousDatabaseBackupsSortByTimecreated,
+	"displayname": ListAutonomousDatabaseBackupsSortByDisplayname,
+}
+
 // GetListAutonomousDatabaseBackupsSortByEnumValues Enumerates the set of values for ListAutonomousDatabaseBackupsSortByEnum
 func GetListAutonomousDatabaseBackupsSortByEnumValues() []ListAutonomousDatabaseBackupsSortByEnum {
 	values := make([]ListAutonomousDatabaseBackupsSortByEnum, 0)
@@ -159,12 +164,7 @@ func GetListAutonomousDatabaseBackupsSortByEnumStringValues() []string {
 
 // GetMappingListAutonomousDatabaseBackupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAutonomousDatabaseBackupsSortByEnum(val string) (ListAutonomousDatabaseBackupsSortByEnum, bool) {
-	mappingListAutonomousDatabaseBackupsSortByEnumIgnoreCase := make(map[string]ListAutonomousDatabaseBackupsSortByEnum)
-	for k, v := range mappingListAutonomousDatabaseBackupsSortByEnum {
-		mappingListAutonomousDatabaseBackupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAutonomousDatabaseBackupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAutonomousDatabaseBackupsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -180,6 +180,11 @@ const (
 var mappingListAutonomousDatabaseBackupsSortOrderEnum = map[string]ListAutonomousDatabaseBackupsSortOrderEnum{
 	"ASC":  ListAutonomousDatabaseBackupsSortOrderAsc,
 	"DESC": ListAutonomousDatabaseBackupsSortOrderDesc,
+}
+
+var mappingListAutonomousDatabaseBackupsSortOrderEnumLowerCase = map[string]ListAutonomousDatabaseBackupsSortOrderEnum{
+	"asc":  ListAutonomousDatabaseBackupsSortOrderAsc,
+	"desc": ListAutonomousDatabaseBackupsSortOrderDesc,
 }
 
 // GetListAutonomousDatabaseBackupsSortOrderEnumValues Enumerates the set of values for ListAutonomousDatabaseBackupsSortOrderEnum
@@ -201,11 +206,6 @@ func GetListAutonomousDatabaseBackupsSortOrderEnumStringValues() []string {
 
 // GetMappingListAutonomousDatabaseBackupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAutonomousDatabaseBackupsSortOrderEnum(val string) (ListAutonomousDatabaseBackupsSortOrderEnum, bool) {
-	mappingListAutonomousDatabaseBackupsSortOrderEnumIgnoreCase := make(map[string]ListAutonomousDatabaseBackupsSortOrderEnum)
-	for k, v := range mappingListAutonomousDatabaseBackupsSortOrderEnum {
-		mappingListAutonomousDatabaseBackupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAutonomousDatabaseBackupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAutonomousDatabaseBackupsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

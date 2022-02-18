@@ -31,6 +31,13 @@ var mappingApplicationLanguageEnum = map[string]ApplicationLanguageEnum{
 	"SQL":    ApplicationLanguageSql,
 }
 
+var mappingApplicationLanguageEnumLowerCase = map[string]ApplicationLanguageEnum{
+	"scala":  ApplicationLanguageScala,
+	"java":   ApplicationLanguageJava,
+	"python": ApplicationLanguagePython,
+	"sql":    ApplicationLanguageSql,
+}
+
 // GetApplicationLanguageEnumValues Enumerates the set of values for ApplicationLanguageEnum
 func GetApplicationLanguageEnumValues() []ApplicationLanguageEnum {
 	values := make([]ApplicationLanguageEnum, 0)
@@ -52,11 +59,6 @@ func GetApplicationLanguageEnumStringValues() []string {
 
 // GetMappingApplicationLanguageEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingApplicationLanguageEnum(val string) (ApplicationLanguageEnum, bool) {
-	mappingApplicationLanguageEnumIgnoreCase := make(map[string]ApplicationLanguageEnum)
-	for k, v := range mappingApplicationLanguageEnum {
-		mappingApplicationLanguageEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingApplicationLanguageEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingApplicationLanguageEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

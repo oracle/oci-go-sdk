@@ -31,6 +31,13 @@ var mappingMonitorTypesEnum = map[string]MonitorTypesEnum{
 	"REST":             MonitorTypesRest,
 }
 
+var mappingMonitorTypesEnumLowerCase = map[string]MonitorTypesEnum{
+	"scripted_browser": MonitorTypesScriptedBrowser,
+	"browser":          MonitorTypesBrowser,
+	"scripted_rest":    MonitorTypesScriptedRest,
+	"rest":             MonitorTypesRest,
+}
+
 // GetMonitorTypesEnumValues Enumerates the set of values for MonitorTypesEnum
 func GetMonitorTypesEnumValues() []MonitorTypesEnum {
 	values := make([]MonitorTypesEnum, 0)
@@ -52,11 +59,6 @@ func GetMonitorTypesEnumStringValues() []string {
 
 // GetMappingMonitorTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMonitorTypesEnum(val string) (MonitorTypesEnum, bool) {
-	mappingMonitorTypesEnumIgnoreCase := make(map[string]MonitorTypesEnum)
-	for k, v := range mappingMonitorTypesEnum {
-		mappingMonitorTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMonitorTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMonitorTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

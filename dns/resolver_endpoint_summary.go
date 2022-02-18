@@ -13,7 +13,7 @@ package dns
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -209,6 +209,15 @@ var mappingResolverEndpointSummaryLifecycleStateEnum = map[string]ResolverEndpoi
 	"UPDATING": ResolverEndpointSummaryLifecycleStateUpdating,
 }
 
+var mappingResolverEndpointSummaryLifecycleStateEnumLowerCase = map[string]ResolverEndpointSummaryLifecycleStateEnum{
+	"active":   ResolverEndpointSummaryLifecycleStateActive,
+	"creating": ResolverEndpointSummaryLifecycleStateCreating,
+	"deleted":  ResolverEndpointSummaryLifecycleStateDeleted,
+	"deleting": ResolverEndpointSummaryLifecycleStateDeleting,
+	"failed":   ResolverEndpointSummaryLifecycleStateFailed,
+	"updating": ResolverEndpointSummaryLifecycleStateUpdating,
+}
+
 // GetResolverEndpointSummaryLifecycleStateEnumValues Enumerates the set of values for ResolverEndpointSummaryLifecycleStateEnum
 func GetResolverEndpointSummaryLifecycleStateEnumValues() []ResolverEndpointSummaryLifecycleStateEnum {
 	values := make([]ResolverEndpointSummaryLifecycleStateEnum, 0)
@@ -232,12 +241,7 @@ func GetResolverEndpointSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingResolverEndpointSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingResolverEndpointSummaryLifecycleStateEnum(val string) (ResolverEndpointSummaryLifecycleStateEnum, bool) {
-	mappingResolverEndpointSummaryLifecycleStateEnumIgnoreCase := make(map[string]ResolverEndpointSummaryLifecycleStateEnum)
-	for k, v := range mappingResolverEndpointSummaryLifecycleStateEnum {
-		mappingResolverEndpointSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingResolverEndpointSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingResolverEndpointSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -251,6 +255,10 @@ const (
 
 var mappingResolverEndpointSummaryEndpointTypeEnum = map[string]ResolverEndpointSummaryEndpointTypeEnum{
 	"VNIC": ResolverEndpointSummaryEndpointTypeVnic,
+}
+
+var mappingResolverEndpointSummaryEndpointTypeEnumLowerCase = map[string]ResolverEndpointSummaryEndpointTypeEnum{
+	"vnic": ResolverEndpointSummaryEndpointTypeVnic,
 }
 
 // GetResolverEndpointSummaryEndpointTypeEnumValues Enumerates the set of values for ResolverEndpointSummaryEndpointTypeEnum
@@ -271,11 +279,6 @@ func GetResolverEndpointSummaryEndpointTypeEnumStringValues() []string {
 
 // GetMappingResolverEndpointSummaryEndpointTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingResolverEndpointSummaryEndpointTypeEnum(val string) (ResolverEndpointSummaryEndpointTypeEnum, bool) {
-	mappingResolverEndpointSummaryEndpointTypeEnumIgnoreCase := make(map[string]ResolverEndpointSummaryEndpointTypeEnum)
-	for k, v := range mappingResolverEndpointSummaryEndpointTypeEnum {
-		mappingResolverEndpointSummaryEndpointTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingResolverEndpointSummaryEndpointTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingResolverEndpointSummaryEndpointTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

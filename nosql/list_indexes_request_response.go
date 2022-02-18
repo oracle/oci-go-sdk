@@ -6,7 +6,7 @@ package nosql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -160,6 +160,17 @@ var mappingListIndexesLifecycleStateEnum = map[string]ListIndexesLifecycleStateE
 	"INACTIVE": ListIndexesLifecycleStateInactive,
 }
 
+var mappingListIndexesLifecycleStateEnumLowerCase = map[string]ListIndexesLifecycleStateEnum{
+	"all":      ListIndexesLifecycleStateAll,
+	"creating": ListIndexesLifecycleStateCreating,
+	"updating": ListIndexesLifecycleStateUpdating,
+	"active":   ListIndexesLifecycleStateActive,
+	"deleting": ListIndexesLifecycleStateDeleting,
+	"deleted":  ListIndexesLifecycleStateDeleted,
+	"failed":   ListIndexesLifecycleStateFailed,
+	"inactive": ListIndexesLifecycleStateInactive,
+}
+
 // GetListIndexesLifecycleStateEnumValues Enumerates the set of values for ListIndexesLifecycleStateEnum
 func GetListIndexesLifecycleStateEnumValues() []ListIndexesLifecycleStateEnum {
 	values := make([]ListIndexesLifecycleStateEnum, 0)
@@ -185,12 +196,7 @@ func GetListIndexesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListIndexesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListIndexesLifecycleStateEnum(val string) (ListIndexesLifecycleStateEnum, bool) {
-	mappingListIndexesLifecycleStateEnumIgnoreCase := make(map[string]ListIndexesLifecycleStateEnum)
-	for k, v := range mappingListIndexesLifecycleStateEnum {
-		mappingListIndexesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListIndexesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListIndexesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -206,6 +212,11 @@ const (
 var mappingListIndexesSortOrderEnum = map[string]ListIndexesSortOrderEnum{
 	"ASC":  ListIndexesSortOrderAsc,
 	"DESC": ListIndexesSortOrderDesc,
+}
+
+var mappingListIndexesSortOrderEnumLowerCase = map[string]ListIndexesSortOrderEnum{
+	"asc":  ListIndexesSortOrderAsc,
+	"desc": ListIndexesSortOrderDesc,
 }
 
 // GetListIndexesSortOrderEnumValues Enumerates the set of values for ListIndexesSortOrderEnum
@@ -227,12 +238,7 @@ func GetListIndexesSortOrderEnumStringValues() []string {
 
 // GetMappingListIndexesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListIndexesSortOrderEnum(val string) (ListIndexesSortOrderEnum, bool) {
-	mappingListIndexesSortOrderEnumIgnoreCase := make(map[string]ListIndexesSortOrderEnum)
-	for k, v := range mappingListIndexesSortOrderEnum {
-		mappingListIndexesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListIndexesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListIndexesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -247,6 +253,11 @@ const (
 
 var mappingListIndexesSortByEnum = map[string]ListIndexesSortByEnum{
 	"timeCreated": ListIndexesSortByTimecreated,
+	"name":        ListIndexesSortByName,
+}
+
+var mappingListIndexesSortByEnumLowerCase = map[string]ListIndexesSortByEnum{
+	"timecreated": ListIndexesSortByTimecreated,
 	"name":        ListIndexesSortByName,
 }
 
@@ -269,11 +280,6 @@ func GetListIndexesSortByEnumStringValues() []string {
 
 // GetMappingListIndexesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListIndexesSortByEnum(val string) (ListIndexesSortByEnum, bool) {
-	mappingListIndexesSortByEnumIgnoreCase := make(map[string]ListIndexesSortByEnum)
-	for k, v := range mappingListIndexesSortByEnum {
-		mappingListIndexesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListIndexesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListIndexesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -133,6 +133,11 @@ var mappingListImportableAgentEntitiesSortOrderEnum = map[string]ListImportableA
 	"DESC": ListImportableAgentEntitiesSortOrderDesc,
 }
 
+var mappingListImportableAgentEntitiesSortOrderEnumLowerCase = map[string]ListImportableAgentEntitiesSortOrderEnum{
+	"asc":  ListImportableAgentEntitiesSortOrderAsc,
+	"desc": ListImportableAgentEntitiesSortOrderDesc,
+}
+
 // GetListImportableAgentEntitiesSortOrderEnumValues Enumerates the set of values for ListImportableAgentEntitiesSortOrderEnum
 func GetListImportableAgentEntitiesSortOrderEnumValues() []ListImportableAgentEntitiesSortOrderEnum {
 	values := make([]ListImportableAgentEntitiesSortOrderEnum, 0)
@@ -152,12 +157,7 @@ func GetListImportableAgentEntitiesSortOrderEnumStringValues() []string {
 
 // GetMappingListImportableAgentEntitiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListImportableAgentEntitiesSortOrderEnum(val string) (ListImportableAgentEntitiesSortOrderEnum, bool) {
-	mappingListImportableAgentEntitiesSortOrderEnumIgnoreCase := make(map[string]ListImportableAgentEntitiesSortOrderEnum)
-	for k, v := range mappingListImportableAgentEntitiesSortOrderEnum {
-		mappingListImportableAgentEntitiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListImportableAgentEntitiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListImportableAgentEntitiesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -173,6 +173,11 @@ const (
 var mappingListImportableAgentEntitiesSortByEnum = map[string]ListImportableAgentEntitiesSortByEnum{
 	"entityName": ListImportableAgentEntitiesSortByEntityname,
 	"entityType": ListImportableAgentEntitiesSortByEntitytype,
+}
+
+var mappingListImportableAgentEntitiesSortByEnumLowerCase = map[string]ListImportableAgentEntitiesSortByEnum{
+	"entityname": ListImportableAgentEntitiesSortByEntityname,
+	"entitytype": ListImportableAgentEntitiesSortByEntitytype,
 }
 
 // GetListImportableAgentEntitiesSortByEnumValues Enumerates the set of values for ListImportableAgentEntitiesSortByEnum
@@ -194,11 +199,6 @@ func GetListImportableAgentEntitiesSortByEnumStringValues() []string {
 
 // GetMappingListImportableAgentEntitiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListImportableAgentEntitiesSortByEnum(val string) (ListImportableAgentEntitiesSortByEnum, bool) {
-	mappingListImportableAgentEntitiesSortByEnumIgnoreCase := make(map[string]ListImportableAgentEntitiesSortByEnum)
-	for k, v := range mappingListImportableAgentEntitiesSortByEnum {
-		mappingListImportableAgentEntitiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListImportableAgentEntitiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListImportableAgentEntitiesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -182,6 +182,14 @@ var mappingVolumeGroupLifecycleStateEnum = map[string]VolumeGroupLifecycleStateE
 	"FAULTY":       VolumeGroupLifecycleStateFaulty,
 }
 
+var mappingVolumeGroupLifecycleStateEnumLowerCase = map[string]VolumeGroupLifecycleStateEnum{
+	"provisioning": VolumeGroupLifecycleStateProvisioning,
+	"available":    VolumeGroupLifecycleStateAvailable,
+	"terminating":  VolumeGroupLifecycleStateTerminating,
+	"terminated":   VolumeGroupLifecycleStateTerminated,
+	"faulty":       VolumeGroupLifecycleStateFaulty,
+}
+
 // GetVolumeGroupLifecycleStateEnumValues Enumerates the set of values for VolumeGroupLifecycleStateEnum
 func GetVolumeGroupLifecycleStateEnumValues() []VolumeGroupLifecycleStateEnum {
 	values := make([]VolumeGroupLifecycleStateEnum, 0)
@@ -204,11 +212,6 @@ func GetVolumeGroupLifecycleStateEnumStringValues() []string {
 
 // GetMappingVolumeGroupLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVolumeGroupLifecycleStateEnum(val string) (VolumeGroupLifecycleStateEnum, bool) {
-	mappingVolumeGroupLifecycleStateEnumIgnoreCase := make(map[string]VolumeGroupLifecycleStateEnum)
-	for k, v := range mappingVolumeGroupLifecycleStateEnum {
-		mappingVolumeGroupLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVolumeGroupLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVolumeGroupLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

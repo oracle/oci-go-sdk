@@ -11,7 +11,7 @@ package oda
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,21 @@ var mappingWorkRequestSummaryRequestActionEnum = map[string]WorkRequestSummaryRe
 	"LOOKUP_ODA_INSTANCES_FOR_CACCT":  WorkRequestSummaryRequestActionLookupOdaInstancesForCacct,
 }
 
+var mappingWorkRequestSummaryRequestActionEnumLowerCase = map[string]WorkRequestSummaryRequestActionEnum{
+	"create_oda_instance":             WorkRequestSummaryRequestActionCreateOdaInstance,
+	"upgrade_oda_instance":            WorkRequestSummaryRequestActionUpgradeOdaInstance,
+	"delete_oda_instance":             WorkRequestSummaryRequestActionDeleteOdaInstance,
+	"purge_oda_instance":              WorkRequestSummaryRequestActionPurgeOdaInstance,
+	"recover_oda_instance":            WorkRequestSummaryRequestActionRecoverOdaInstance,
+	"stop_oda_instance":               WorkRequestSummaryRequestActionStopOdaInstance,
+	"start_oda_instance":              WorkRequestSummaryRequestActionStartOdaInstance,
+	"change_oda_instance_compartment": WorkRequestSummaryRequestActionChangeOdaInstanceCompartment,
+	"create_association":              WorkRequestSummaryRequestActionCreateAssociation,
+	"delete_association":              WorkRequestSummaryRequestActionDeleteAssociation,
+	"update_entitlements_for_cacct":   WorkRequestSummaryRequestActionUpdateEntitlementsForCacct,
+	"lookup_oda_instances_for_cacct":  WorkRequestSummaryRequestActionLookupOdaInstancesForCacct,
+}
+
 // GetWorkRequestSummaryRequestActionEnumValues Enumerates the set of values for WorkRequestSummaryRequestActionEnum
 func GetWorkRequestSummaryRequestActionEnumValues() []WorkRequestSummaryRequestActionEnum {
 	values := make([]WorkRequestSummaryRequestActionEnum, 0)
@@ -122,12 +137,7 @@ func GetWorkRequestSummaryRequestActionEnumStringValues() []string {
 
 // GetMappingWorkRequestSummaryRequestActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestSummaryRequestActionEnum(val string) (WorkRequestSummaryRequestActionEnum, bool) {
-	mappingWorkRequestSummaryRequestActionEnumIgnoreCase := make(map[string]WorkRequestSummaryRequestActionEnum)
-	for k, v := range mappingWorkRequestSummaryRequestActionEnum {
-		mappingWorkRequestSummaryRequestActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestSummaryRequestActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestSummaryRequestActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -153,6 +163,15 @@ var mappingWorkRequestSummaryStatusEnum = map[string]WorkRequestSummaryStatusEnu
 	"CANCELED":    WorkRequestSummaryStatusCanceled,
 }
 
+var mappingWorkRequestSummaryStatusEnumLowerCase = map[string]WorkRequestSummaryStatusEnum{
+	"accepted":    WorkRequestSummaryStatusAccepted,
+	"in_progress": WorkRequestSummaryStatusInProgress,
+	"succeeded":   WorkRequestSummaryStatusSucceeded,
+	"failed":      WorkRequestSummaryStatusFailed,
+	"canceling":   WorkRequestSummaryStatusCanceling,
+	"canceled":    WorkRequestSummaryStatusCanceled,
+}
+
 // GetWorkRequestSummaryStatusEnumValues Enumerates the set of values for WorkRequestSummaryStatusEnum
 func GetWorkRequestSummaryStatusEnumValues() []WorkRequestSummaryStatusEnum {
 	values := make([]WorkRequestSummaryStatusEnum, 0)
@@ -176,11 +195,6 @@ func GetWorkRequestSummaryStatusEnumStringValues() []string {
 
 // GetMappingWorkRequestSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestSummaryStatusEnum(val string) (WorkRequestSummaryStatusEnum, bool) {
-	mappingWorkRequestSummaryStatusEnumIgnoreCase := make(map[string]WorkRequestSummaryStatusEnum)
-	for k, v := range mappingWorkRequestSummaryStatusEnum {
-		mappingWorkRequestSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestSummaryStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -132,6 +132,11 @@ var mappingListKeyVersionsSortByEnum = map[string]ListKeyVersionsSortByEnum{
 	"DISPLAYNAME": ListKeyVersionsSortByDisplayname,
 }
 
+var mappingListKeyVersionsSortByEnumLowerCase = map[string]ListKeyVersionsSortByEnum{
+	"timecreated": ListKeyVersionsSortByTimecreated,
+	"displayname": ListKeyVersionsSortByDisplayname,
+}
+
 // GetListKeyVersionsSortByEnumValues Enumerates the set of values for ListKeyVersionsSortByEnum
 func GetListKeyVersionsSortByEnumValues() []ListKeyVersionsSortByEnum {
 	values := make([]ListKeyVersionsSortByEnum, 0)
@@ -151,12 +156,7 @@ func GetListKeyVersionsSortByEnumStringValues() []string {
 
 // GetMappingListKeyVersionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListKeyVersionsSortByEnum(val string) (ListKeyVersionsSortByEnum, bool) {
-	mappingListKeyVersionsSortByEnumIgnoreCase := make(map[string]ListKeyVersionsSortByEnum)
-	for k, v := range mappingListKeyVersionsSortByEnum {
-		mappingListKeyVersionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListKeyVersionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListKeyVersionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -172,6 +172,11 @@ const (
 var mappingListKeyVersionsSortOrderEnum = map[string]ListKeyVersionsSortOrderEnum{
 	"ASC":  ListKeyVersionsSortOrderAsc,
 	"DESC": ListKeyVersionsSortOrderDesc,
+}
+
+var mappingListKeyVersionsSortOrderEnumLowerCase = map[string]ListKeyVersionsSortOrderEnum{
+	"asc":  ListKeyVersionsSortOrderAsc,
+	"desc": ListKeyVersionsSortOrderDesc,
 }
 
 // GetListKeyVersionsSortOrderEnumValues Enumerates the set of values for ListKeyVersionsSortOrderEnum
@@ -193,11 +198,6 @@ func GetListKeyVersionsSortOrderEnumStringValues() []string {
 
 // GetMappingListKeyVersionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListKeyVersionsSortOrderEnum(val string) (ListKeyVersionsSortOrderEnum, bool) {
-	mappingListKeyVersionsSortOrderEnumIgnoreCase := make(map[string]ListKeyVersionsSortOrderEnum)
-	for k, v := range mappingListKeyVersionsSortOrderEnum {
-		mappingListKeyVersionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListKeyVersionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListKeyVersionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

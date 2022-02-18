@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -150,6 +150,14 @@ var mappingInstanceConfigurationLaunchInstancePlatformConfigTypeEnum = map[strin
 	"INTEL_VM":         InstanceConfigurationLaunchInstancePlatformConfigTypeIntelVm,
 }
 
+var mappingInstanceConfigurationLaunchInstancePlatformConfigTypeEnumLowerCase = map[string]InstanceConfigurationLaunchInstancePlatformConfigTypeEnum{
+	"amd_milan_bm":     InstanceConfigurationLaunchInstancePlatformConfigTypeAmdMilanBm,
+	"amd_rome_bm":      InstanceConfigurationLaunchInstancePlatformConfigTypeAmdRomeBm,
+	"intel_skylake_bm": InstanceConfigurationLaunchInstancePlatformConfigTypeIntelSkylakeBm,
+	"amd_vm":           InstanceConfigurationLaunchInstancePlatformConfigTypeAmdVm,
+	"intel_vm":         InstanceConfigurationLaunchInstancePlatformConfigTypeIntelVm,
+}
+
 // GetInstanceConfigurationLaunchInstancePlatformConfigTypeEnumValues Enumerates the set of values for InstanceConfigurationLaunchInstancePlatformConfigTypeEnum
 func GetInstanceConfigurationLaunchInstancePlatformConfigTypeEnumValues() []InstanceConfigurationLaunchInstancePlatformConfigTypeEnum {
 	values := make([]InstanceConfigurationLaunchInstancePlatformConfigTypeEnum, 0)
@@ -172,11 +180,6 @@ func GetInstanceConfigurationLaunchInstancePlatformConfigTypeEnumStringValues() 
 
 // GetMappingInstanceConfigurationLaunchInstancePlatformConfigTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceConfigurationLaunchInstancePlatformConfigTypeEnum(val string) (InstanceConfigurationLaunchInstancePlatformConfigTypeEnum, bool) {
-	mappingInstanceConfigurationLaunchInstancePlatformConfigTypeEnumIgnoreCase := make(map[string]InstanceConfigurationLaunchInstancePlatformConfigTypeEnum)
-	for k, v := range mappingInstanceConfigurationLaunchInstancePlatformConfigTypeEnum {
-		mappingInstanceConfigurationLaunchInstancePlatformConfigTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceConfigurationLaunchInstancePlatformConfigTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceConfigurationLaunchInstancePlatformConfigTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

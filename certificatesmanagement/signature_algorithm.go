@@ -35,6 +35,15 @@ var mappingSignatureAlgorithmEnum = map[string]SignatureAlgorithmEnum{
 	"SHA512_WITH_ECDSA": SignatureAlgorithmSha512WithEcdsa,
 }
 
+var mappingSignatureAlgorithmEnumLowerCase = map[string]SignatureAlgorithmEnum{
+	"sha256_with_rsa":   SignatureAlgorithmSha256WithRsa,
+	"sha384_with_rsa":   SignatureAlgorithmSha384WithRsa,
+	"sha512_with_rsa":   SignatureAlgorithmSha512WithRsa,
+	"sha256_with_ecdsa": SignatureAlgorithmSha256WithEcdsa,
+	"sha384_with_ecdsa": SignatureAlgorithmSha384WithEcdsa,
+	"sha512_with_ecdsa": SignatureAlgorithmSha512WithEcdsa,
+}
+
 // GetSignatureAlgorithmEnumValues Enumerates the set of values for SignatureAlgorithmEnum
 func GetSignatureAlgorithmEnumValues() []SignatureAlgorithmEnum {
 	values := make([]SignatureAlgorithmEnum, 0)
@@ -58,11 +67,6 @@ func GetSignatureAlgorithmEnumStringValues() []string {
 
 // GetMappingSignatureAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSignatureAlgorithmEnum(val string) (SignatureAlgorithmEnum, bool) {
-	mappingSignatureAlgorithmEnumIgnoreCase := make(map[string]SignatureAlgorithmEnum)
-	for k, v := range mappingSignatureAlgorithmEnum {
-		mappingSignatureAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSignatureAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSignatureAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

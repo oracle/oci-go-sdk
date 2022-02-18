@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -75,6 +75,13 @@ var mappingAutonomousDbPreviewVersionSummaryDbWorkloadEnum = map[string]Autonomo
 	"APEX": AutonomousDbPreviewVersionSummaryDbWorkloadApex,
 }
 
+var mappingAutonomousDbPreviewVersionSummaryDbWorkloadEnumLowerCase = map[string]AutonomousDbPreviewVersionSummaryDbWorkloadEnum{
+	"oltp": AutonomousDbPreviewVersionSummaryDbWorkloadOltp,
+	"dw":   AutonomousDbPreviewVersionSummaryDbWorkloadDw,
+	"ajd":  AutonomousDbPreviewVersionSummaryDbWorkloadAjd,
+	"apex": AutonomousDbPreviewVersionSummaryDbWorkloadApex,
+}
+
 // GetAutonomousDbPreviewVersionSummaryDbWorkloadEnumValues Enumerates the set of values for AutonomousDbPreviewVersionSummaryDbWorkloadEnum
 func GetAutonomousDbPreviewVersionSummaryDbWorkloadEnumValues() []AutonomousDbPreviewVersionSummaryDbWorkloadEnum {
 	values := make([]AutonomousDbPreviewVersionSummaryDbWorkloadEnum, 0)
@@ -96,11 +103,6 @@ func GetAutonomousDbPreviewVersionSummaryDbWorkloadEnumStringValues() []string {
 
 // GetMappingAutonomousDbPreviewVersionSummaryDbWorkloadEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAutonomousDbPreviewVersionSummaryDbWorkloadEnum(val string) (AutonomousDbPreviewVersionSummaryDbWorkloadEnum, bool) {
-	mappingAutonomousDbPreviewVersionSummaryDbWorkloadEnumIgnoreCase := make(map[string]AutonomousDbPreviewVersionSummaryDbWorkloadEnum)
-	for k, v := range mappingAutonomousDbPreviewVersionSummaryDbWorkloadEnum {
-		mappingAutonomousDbPreviewVersionSummaryDbWorkloadEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAutonomousDbPreviewVersionSummaryDbWorkloadEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAutonomousDbPreviewVersionSummaryDbWorkloadEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

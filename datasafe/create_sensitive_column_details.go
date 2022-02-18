@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -110,6 +110,11 @@ var mappingCreateSensitiveColumnDetailsObjectTypeEnum = map[string]CreateSensiti
 	"EDITIONING_VIEW": CreateSensitiveColumnDetailsObjectTypeEditioningView,
 }
 
+var mappingCreateSensitiveColumnDetailsObjectTypeEnumLowerCase = map[string]CreateSensitiveColumnDetailsObjectTypeEnum{
+	"table":           CreateSensitiveColumnDetailsObjectTypeTable,
+	"editioning_view": CreateSensitiveColumnDetailsObjectTypeEditioningView,
+}
+
 // GetCreateSensitiveColumnDetailsObjectTypeEnumValues Enumerates the set of values for CreateSensitiveColumnDetailsObjectTypeEnum
 func GetCreateSensitiveColumnDetailsObjectTypeEnumValues() []CreateSensitiveColumnDetailsObjectTypeEnum {
 	values := make([]CreateSensitiveColumnDetailsObjectTypeEnum, 0)
@@ -129,12 +134,7 @@ func GetCreateSensitiveColumnDetailsObjectTypeEnumStringValues() []string {
 
 // GetMappingCreateSensitiveColumnDetailsObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateSensitiveColumnDetailsObjectTypeEnum(val string) (CreateSensitiveColumnDetailsObjectTypeEnum, bool) {
-	mappingCreateSensitiveColumnDetailsObjectTypeEnumIgnoreCase := make(map[string]CreateSensitiveColumnDetailsObjectTypeEnum)
-	for k, v := range mappingCreateSensitiveColumnDetailsObjectTypeEnum {
-		mappingCreateSensitiveColumnDetailsObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateSensitiveColumnDetailsObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateSensitiveColumnDetailsObjectTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -150,6 +150,11 @@ const (
 var mappingCreateSensitiveColumnDetailsStatusEnum = map[string]CreateSensitiveColumnDetailsStatusEnum{
 	"VALID":   CreateSensitiveColumnDetailsStatusValid,
 	"INVALID": CreateSensitiveColumnDetailsStatusInvalid,
+}
+
+var mappingCreateSensitiveColumnDetailsStatusEnumLowerCase = map[string]CreateSensitiveColumnDetailsStatusEnum{
+	"valid":   CreateSensitiveColumnDetailsStatusValid,
+	"invalid": CreateSensitiveColumnDetailsStatusInvalid,
 }
 
 // GetCreateSensitiveColumnDetailsStatusEnumValues Enumerates the set of values for CreateSensitiveColumnDetailsStatusEnum
@@ -171,12 +176,7 @@ func GetCreateSensitiveColumnDetailsStatusEnumStringValues() []string {
 
 // GetMappingCreateSensitiveColumnDetailsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateSensitiveColumnDetailsStatusEnum(val string) (CreateSensitiveColumnDetailsStatusEnum, bool) {
-	mappingCreateSensitiveColumnDetailsStatusEnumIgnoreCase := make(map[string]CreateSensitiveColumnDetailsStatusEnum)
-	for k, v := range mappingCreateSensitiveColumnDetailsStatusEnum {
-		mappingCreateSensitiveColumnDetailsStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateSensitiveColumnDetailsStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateSensitiveColumnDetailsStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -194,6 +194,12 @@ var mappingCreateSensitiveColumnDetailsRelationTypeEnum = map[string]CreateSensi
 	"NONE":        CreateSensitiveColumnDetailsRelationTypeNone,
 	"APP_DEFINED": CreateSensitiveColumnDetailsRelationTypeAppDefined,
 	"DB_DEFINED":  CreateSensitiveColumnDetailsRelationTypeDbDefined,
+}
+
+var mappingCreateSensitiveColumnDetailsRelationTypeEnumLowerCase = map[string]CreateSensitiveColumnDetailsRelationTypeEnum{
+	"none":        CreateSensitiveColumnDetailsRelationTypeNone,
+	"app_defined": CreateSensitiveColumnDetailsRelationTypeAppDefined,
+	"db_defined":  CreateSensitiveColumnDetailsRelationTypeDbDefined,
 }
 
 // GetCreateSensitiveColumnDetailsRelationTypeEnumValues Enumerates the set of values for CreateSensitiveColumnDetailsRelationTypeEnum
@@ -216,11 +222,6 @@ func GetCreateSensitiveColumnDetailsRelationTypeEnumStringValues() []string {
 
 // GetMappingCreateSensitiveColumnDetailsRelationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateSensitiveColumnDetailsRelationTypeEnum(val string) (CreateSensitiveColumnDetailsRelationTypeEnum, bool) {
-	mappingCreateSensitiveColumnDetailsRelationTypeEnumIgnoreCase := make(map[string]CreateSensitiveColumnDetailsRelationTypeEnum)
-	for k, v := range mappingCreateSensitiveColumnDetailsRelationTypeEnum {
-		mappingCreateSensitiveColumnDetailsRelationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateSensitiveColumnDetailsRelationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateSensitiveColumnDetailsRelationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,11 @@ var mappingListBuildRunsSortOrderEnum = map[string]ListBuildRunsSortOrderEnum{
 	"DESC": ListBuildRunsSortOrderDesc,
 }
 
+var mappingListBuildRunsSortOrderEnumLowerCase = map[string]ListBuildRunsSortOrderEnum{
+	"asc":  ListBuildRunsSortOrderAsc,
+	"desc": ListBuildRunsSortOrderDesc,
+}
+
 // GetListBuildRunsSortOrderEnumValues Enumerates the set of values for ListBuildRunsSortOrderEnum
 func GetListBuildRunsSortOrderEnumValues() []ListBuildRunsSortOrderEnum {
 	values := make([]ListBuildRunsSortOrderEnum, 0)
@@ -160,12 +165,7 @@ func GetListBuildRunsSortOrderEnumStringValues() []string {
 
 // GetMappingListBuildRunsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBuildRunsSortOrderEnum(val string) (ListBuildRunsSortOrderEnum, bool) {
-	mappingListBuildRunsSortOrderEnumIgnoreCase := make(map[string]ListBuildRunsSortOrderEnum)
-	for k, v := range mappingListBuildRunsSortOrderEnum {
-		mappingListBuildRunsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBuildRunsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBuildRunsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +181,11 @@ const (
 var mappingListBuildRunsSortByEnum = map[string]ListBuildRunsSortByEnum{
 	"timeCreated": ListBuildRunsSortByTimecreated,
 	"displayName": ListBuildRunsSortByDisplayname,
+}
+
+var mappingListBuildRunsSortByEnumLowerCase = map[string]ListBuildRunsSortByEnum{
+	"timecreated": ListBuildRunsSortByTimecreated,
+	"displayname": ListBuildRunsSortByDisplayname,
 }
 
 // GetListBuildRunsSortByEnumValues Enumerates the set of values for ListBuildRunsSortByEnum
@@ -202,11 +207,6 @@ func GetListBuildRunsSortByEnumStringValues() []string {
 
 // GetMappingListBuildRunsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBuildRunsSortByEnum(val string) (ListBuildRunsSortByEnum, bool) {
-	mappingListBuildRunsSortByEnumIgnoreCase := make(map[string]ListBuildRunsSortByEnum)
-	for k, v := range mappingListBuildRunsSortByEnum {
-		mappingListBuildRunsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBuildRunsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBuildRunsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

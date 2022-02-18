@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -90,6 +90,13 @@ var mappingAutonomousPatchLifecycleStateEnum = map[string]AutonomousPatchLifecyc
 	"FAILED":      AutonomousPatchLifecycleStateFailed,
 }
 
+var mappingAutonomousPatchLifecycleStateEnumLowerCase = map[string]AutonomousPatchLifecycleStateEnum{
+	"available":   AutonomousPatchLifecycleStateAvailable,
+	"success":     AutonomousPatchLifecycleStateSuccess,
+	"in_progress": AutonomousPatchLifecycleStateInProgress,
+	"failed":      AutonomousPatchLifecycleStateFailed,
+}
+
 // GetAutonomousPatchLifecycleStateEnumValues Enumerates the set of values for AutonomousPatchLifecycleStateEnum
 func GetAutonomousPatchLifecycleStateEnumValues() []AutonomousPatchLifecycleStateEnum {
 	values := make([]AutonomousPatchLifecycleStateEnum, 0)
@@ -111,12 +118,7 @@ func GetAutonomousPatchLifecycleStateEnumStringValues() []string {
 
 // GetMappingAutonomousPatchLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAutonomousPatchLifecycleStateEnum(val string) (AutonomousPatchLifecycleStateEnum, bool) {
-	mappingAutonomousPatchLifecycleStateEnumIgnoreCase := make(map[string]AutonomousPatchLifecycleStateEnum)
-	for k, v := range mappingAutonomousPatchLifecycleStateEnum {
-		mappingAutonomousPatchLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAutonomousPatchLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAutonomousPatchLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -132,6 +134,11 @@ const (
 var mappingAutonomousPatchPatchModelEnum = map[string]AutonomousPatchPatchModelEnum{
 	"RELEASE_UPDATES":          AutonomousPatchPatchModelUpdates,
 	"RELEASE_UPDATE_REVISIONS": AutonomousPatchPatchModelUpdateRevisions,
+}
+
+var mappingAutonomousPatchPatchModelEnumLowerCase = map[string]AutonomousPatchPatchModelEnum{
+	"release_updates":          AutonomousPatchPatchModelUpdates,
+	"release_update_revisions": AutonomousPatchPatchModelUpdateRevisions,
 }
 
 // GetAutonomousPatchPatchModelEnumValues Enumerates the set of values for AutonomousPatchPatchModelEnum
@@ -153,11 +160,6 @@ func GetAutonomousPatchPatchModelEnumStringValues() []string {
 
 // GetMappingAutonomousPatchPatchModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAutonomousPatchPatchModelEnum(val string) (AutonomousPatchPatchModelEnum, bool) {
-	mappingAutonomousPatchPatchModelEnumIgnoreCase := make(map[string]AutonomousPatchPatchModelEnum)
-	for k, v := range mappingAutonomousPatchPatchModelEnum {
-		mappingAutonomousPatchPatchModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAutonomousPatchPatchModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAutonomousPatchPatchModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

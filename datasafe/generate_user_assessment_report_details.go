@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -55,6 +55,11 @@ var mappingGenerateUserAssessmentReportDetailsFormatEnum = map[string]GenerateUs
 	"XLS": GenerateUserAssessmentReportDetailsFormatXls,
 }
 
+var mappingGenerateUserAssessmentReportDetailsFormatEnumLowerCase = map[string]GenerateUserAssessmentReportDetailsFormatEnum{
+	"pdf": GenerateUserAssessmentReportDetailsFormatPdf,
+	"xls": GenerateUserAssessmentReportDetailsFormatXls,
+}
+
 // GetGenerateUserAssessmentReportDetailsFormatEnumValues Enumerates the set of values for GenerateUserAssessmentReportDetailsFormatEnum
 func GetGenerateUserAssessmentReportDetailsFormatEnumValues() []GenerateUserAssessmentReportDetailsFormatEnum {
 	values := make([]GenerateUserAssessmentReportDetailsFormatEnum, 0)
@@ -74,11 +79,6 @@ func GetGenerateUserAssessmentReportDetailsFormatEnumStringValues() []string {
 
 // GetMappingGenerateUserAssessmentReportDetailsFormatEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGenerateUserAssessmentReportDetailsFormatEnum(val string) (GenerateUserAssessmentReportDetailsFormatEnum, bool) {
-	mappingGenerateUserAssessmentReportDetailsFormatEnumIgnoreCase := make(map[string]GenerateUserAssessmentReportDetailsFormatEnum)
-	for k, v := range mappingGenerateUserAssessmentReportDetailsFormatEnum {
-		mappingGenerateUserAssessmentReportDetailsFormatEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGenerateUserAssessmentReportDetailsFormatEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGenerateUserAssessmentReportDetailsFormatEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

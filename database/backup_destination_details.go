@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -71,6 +71,13 @@ var mappingBackupDestinationDetailsTypeEnum = map[string]BackupDestinationDetail
 	"LOCAL":              BackupDestinationDetailsTypeLocal,
 }
 
+var mappingBackupDestinationDetailsTypeEnumLowerCase = map[string]BackupDestinationDetailsTypeEnum{
+	"nfs":                BackupDestinationDetailsTypeNfs,
+	"recovery_appliance": BackupDestinationDetailsTypeRecoveryAppliance,
+	"object_store":       BackupDestinationDetailsTypeObjectStore,
+	"local":              BackupDestinationDetailsTypeLocal,
+}
+
 // GetBackupDestinationDetailsTypeEnumValues Enumerates the set of values for BackupDestinationDetailsTypeEnum
 func GetBackupDestinationDetailsTypeEnumValues() []BackupDestinationDetailsTypeEnum {
 	values := make([]BackupDestinationDetailsTypeEnum, 0)
@@ -92,11 +99,6 @@ func GetBackupDestinationDetailsTypeEnumStringValues() []string {
 
 // GetMappingBackupDestinationDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBackupDestinationDetailsTypeEnum(val string) (BackupDestinationDetailsTypeEnum, bool) {
-	mappingBackupDestinationDetailsTypeEnumIgnoreCase := make(map[string]BackupDestinationDetailsTypeEnum)
-	for k, v := range mappingBackupDestinationDetailsTypeEnum {
-		mappingBackupDestinationDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBackupDestinationDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBackupDestinationDetailsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

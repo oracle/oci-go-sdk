@@ -13,7 +13,7 @@ package waf
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -209,6 +209,15 @@ var mappingNetworkAddressListLifecycleStateEnum = map[string]NetworkAddressListL
 	"FAILED":   NetworkAddressListLifecycleStateFailed,
 }
 
+var mappingNetworkAddressListLifecycleStateEnumLowerCase = map[string]NetworkAddressListLifecycleStateEnum{
+	"creating": NetworkAddressListLifecycleStateCreating,
+	"updating": NetworkAddressListLifecycleStateUpdating,
+	"active":   NetworkAddressListLifecycleStateActive,
+	"deleting": NetworkAddressListLifecycleStateDeleting,
+	"deleted":  NetworkAddressListLifecycleStateDeleted,
+	"failed":   NetworkAddressListLifecycleStateFailed,
+}
+
 // GetNetworkAddressListLifecycleStateEnumValues Enumerates the set of values for NetworkAddressListLifecycleStateEnum
 func GetNetworkAddressListLifecycleStateEnumValues() []NetworkAddressListLifecycleStateEnum {
 	values := make([]NetworkAddressListLifecycleStateEnum, 0)
@@ -232,12 +241,7 @@ func GetNetworkAddressListLifecycleStateEnumStringValues() []string {
 
 // GetMappingNetworkAddressListLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNetworkAddressListLifecycleStateEnum(val string) (NetworkAddressListLifecycleStateEnum, bool) {
-	mappingNetworkAddressListLifecycleStateEnumIgnoreCase := make(map[string]NetworkAddressListLifecycleStateEnum)
-	for k, v := range mappingNetworkAddressListLifecycleStateEnum {
-		mappingNetworkAddressListLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNetworkAddressListLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNetworkAddressListLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -253,6 +257,11 @@ const (
 var mappingNetworkAddressListTypeEnum = map[string]NetworkAddressListTypeEnum{
 	"ADDRESSES":     NetworkAddressListTypeAddresses,
 	"VCN_ADDRESSES": NetworkAddressListTypeVcnAddresses,
+}
+
+var mappingNetworkAddressListTypeEnumLowerCase = map[string]NetworkAddressListTypeEnum{
+	"addresses":     NetworkAddressListTypeAddresses,
+	"vcn_addresses": NetworkAddressListTypeVcnAddresses,
 }
 
 // GetNetworkAddressListTypeEnumValues Enumerates the set of values for NetworkAddressListTypeEnum
@@ -274,11 +283,6 @@ func GetNetworkAddressListTypeEnumStringValues() []string {
 
 // GetMappingNetworkAddressListTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNetworkAddressListTypeEnum(val string) (NetworkAddressListTypeEnum, bool) {
-	mappingNetworkAddressListTypeEnumIgnoreCase := make(map[string]NetworkAddressListTypeEnum)
-	for k, v := range mappingNetworkAddressListTypeEnum {
-		mappingNetworkAddressListTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNetworkAddressListTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNetworkAddressListTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

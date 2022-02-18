@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -229,6 +229,21 @@ var mappingTypedObjectModelTypeEnum = map[string]TypedObjectModelTypeEnum{
 	"PARAMETER":           TypedObjectModelTypeParameter,
 }
 
+var mappingTypedObjectModelTypeEnumLowerCase = map[string]TypedObjectModelTypeEnum{
+	"shape":               TypedObjectModelTypeShape,
+	"input_port":          TypedObjectModelTypeInputPort,
+	"shape_field":         TypedObjectModelTypeShapeField,
+	"input_field":         TypedObjectModelTypeInputField,
+	"derived_field":       TypedObjectModelTypeDerivedField,
+	"macro_field":         TypedObjectModelTypeMacroField,
+	"output_field":        TypedObjectModelTypeOutputField,
+	"dynamic_proxy_field": TypedObjectModelTypeDynamicProxyField,
+	"output_port":         TypedObjectModelTypeOutputPort,
+	"dynamic_input_field": TypedObjectModelTypeDynamicInputField,
+	"proxy_field":         TypedObjectModelTypeProxyField,
+	"parameter":           TypedObjectModelTypeParameter,
+}
+
 // GetTypedObjectModelTypeEnumValues Enumerates the set of values for TypedObjectModelTypeEnum
 func GetTypedObjectModelTypeEnumValues() []TypedObjectModelTypeEnum {
 	values := make([]TypedObjectModelTypeEnum, 0)
@@ -258,11 +273,6 @@ func GetTypedObjectModelTypeEnumStringValues() []string {
 
 // GetMappingTypedObjectModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTypedObjectModelTypeEnum(val string) (TypedObjectModelTypeEnum, bool) {
-	mappingTypedObjectModelTypeEnumIgnoreCase := make(map[string]TypedObjectModelTypeEnum)
-	for k, v := range mappingTypedObjectModelTypeEnum {
-		mappingTypedObjectModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTypedObjectModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTypedObjectModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

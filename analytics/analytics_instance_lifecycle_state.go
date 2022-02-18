@@ -37,6 +37,16 @@ var mappingAnalyticsInstanceLifecycleStateEnum = map[string]AnalyticsInstanceLif
 	"UPDATING": AnalyticsInstanceLifecycleStateUpdating,
 }
 
+var mappingAnalyticsInstanceLifecycleStateEnumLowerCase = map[string]AnalyticsInstanceLifecycleStateEnum{
+	"active":   AnalyticsInstanceLifecycleStateActive,
+	"creating": AnalyticsInstanceLifecycleStateCreating,
+	"deleted":  AnalyticsInstanceLifecycleStateDeleted,
+	"deleting": AnalyticsInstanceLifecycleStateDeleting,
+	"failed":   AnalyticsInstanceLifecycleStateFailed,
+	"inactive": AnalyticsInstanceLifecycleStateInactive,
+	"updating": AnalyticsInstanceLifecycleStateUpdating,
+}
+
 // GetAnalyticsInstanceLifecycleStateEnumValues Enumerates the set of values for AnalyticsInstanceLifecycleStateEnum
 func GetAnalyticsInstanceLifecycleStateEnumValues() []AnalyticsInstanceLifecycleStateEnum {
 	values := make([]AnalyticsInstanceLifecycleStateEnum, 0)
@@ -61,11 +71,6 @@ func GetAnalyticsInstanceLifecycleStateEnumStringValues() []string {
 
 // GetMappingAnalyticsInstanceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAnalyticsInstanceLifecycleStateEnum(val string) (AnalyticsInstanceLifecycleStateEnum, bool) {
-	mappingAnalyticsInstanceLifecycleStateEnumIgnoreCase := make(map[string]AnalyticsInstanceLifecycleStateEnum)
-	for k, v := range mappingAnalyticsInstanceLifecycleStateEnum {
-		mappingAnalyticsInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAnalyticsInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAnalyticsInstanceLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

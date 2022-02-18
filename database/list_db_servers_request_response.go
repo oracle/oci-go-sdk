@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -139,6 +139,11 @@ var mappingListDbServersSortOrderEnum = map[string]ListDbServersSortOrderEnum{
 	"DESC": ListDbServersSortOrderDesc,
 }
 
+var mappingListDbServersSortOrderEnumLowerCase = map[string]ListDbServersSortOrderEnum{
+	"asc":  ListDbServersSortOrderAsc,
+	"desc": ListDbServersSortOrderDesc,
+}
+
 // GetListDbServersSortOrderEnumValues Enumerates the set of values for ListDbServersSortOrderEnum
 func GetListDbServersSortOrderEnumValues() []ListDbServersSortOrderEnum {
 	values := make([]ListDbServersSortOrderEnum, 0)
@@ -158,12 +163,7 @@ func GetListDbServersSortOrderEnumStringValues() []string {
 
 // GetMappingListDbServersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDbServersSortOrderEnum(val string) (ListDbServersSortOrderEnum, bool) {
-	mappingListDbServersSortOrderEnumIgnoreCase := make(map[string]ListDbServersSortOrderEnum)
-	for k, v := range mappingListDbServersSortOrderEnum {
-		mappingListDbServersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDbServersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDbServersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -177,6 +177,10 @@ const (
 
 var mappingListDbServersSortByEnum = map[string]ListDbServersSortByEnum{
 	"TIMECREATED": ListDbServersSortByTimecreated,
+}
+
+var mappingListDbServersSortByEnumLowerCase = map[string]ListDbServersSortByEnum{
+	"timecreated": ListDbServersSortByTimecreated,
 }
 
 // GetListDbServersSortByEnumValues Enumerates the set of values for ListDbServersSortByEnum
@@ -197,11 +201,6 @@ func GetListDbServersSortByEnumStringValues() []string {
 
 // GetMappingListDbServersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDbServersSortByEnum(val string) (ListDbServersSortByEnum, bool) {
-	mappingListDbServersSortByEnumIgnoreCase := make(map[string]ListDbServersSortByEnum)
-	for k, v := range mappingListDbServersSortByEnum {
-		mappingListDbServersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDbServersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDbServersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

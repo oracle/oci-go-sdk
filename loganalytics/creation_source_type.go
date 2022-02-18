@@ -29,6 +29,12 @@ var mappingCreationSourceTypeEnum = map[string]CreationSourceTypeEnum{
 	"NONE":                  CreationSourceTypeNone,
 }
 
+var mappingCreationSourceTypeEnumLowerCase = map[string]CreationSourceTypeEnum{
+	"em_bridge":             CreationSourceTypeEmBridge,
+	"service_connector_hub": CreationSourceTypeServiceConnectorHub,
+	"none":                  CreationSourceTypeNone,
+}
+
 // GetCreationSourceTypeEnumValues Enumerates the set of values for CreationSourceTypeEnum
 func GetCreationSourceTypeEnumValues() []CreationSourceTypeEnum {
 	values := make([]CreationSourceTypeEnum, 0)
@@ -49,11 +55,6 @@ func GetCreationSourceTypeEnumStringValues() []string {
 
 // GetMappingCreationSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreationSourceTypeEnum(val string) (CreationSourceTypeEnum, bool) {
-	mappingCreationSourceTypeEnumIgnoreCase := make(map[string]CreationSourceTypeEnum)
-	for k, v := range mappingCreationSourceTypeEnum {
-		mappingCreationSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreationSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreationSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

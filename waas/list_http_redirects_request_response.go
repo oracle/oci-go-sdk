@@ -6,7 +6,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,11 @@ var mappingListHttpRedirectsSortOrderEnum = map[string]ListHttpRedirectsSortOrde
 	"DESC": ListHttpRedirectsSortOrderDesc,
 }
 
+var mappingListHttpRedirectsSortOrderEnumLowerCase = map[string]ListHttpRedirectsSortOrderEnum{
+	"asc":  ListHttpRedirectsSortOrderAsc,
+	"desc": ListHttpRedirectsSortOrderDesc,
+}
+
 // GetListHttpRedirectsSortOrderEnumValues Enumerates the set of values for ListHttpRedirectsSortOrderEnum
 func GetListHttpRedirectsSortOrderEnumValues() []ListHttpRedirectsSortOrderEnum {
 	values := make([]ListHttpRedirectsSortOrderEnum, 0)
@@ -163,12 +168,7 @@ func GetListHttpRedirectsSortOrderEnumStringValues() []string {
 
 // GetMappingListHttpRedirectsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHttpRedirectsSortOrderEnum(val string) (ListHttpRedirectsSortOrderEnum, bool) {
-	mappingListHttpRedirectsSortOrderEnumIgnoreCase := make(map[string]ListHttpRedirectsSortOrderEnum)
-	for k, v := range mappingListHttpRedirectsSortOrderEnum {
-		mappingListHttpRedirectsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHttpRedirectsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHttpRedirectsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -188,6 +188,13 @@ var mappingListHttpRedirectsSortByEnum = map[string]ListHttpRedirectsSortByEnum{
 	"domain":      ListHttpRedirectsSortByDomain,
 	"target":      ListHttpRedirectsSortByTarget,
 	"displayName": ListHttpRedirectsSortByDisplayname,
+}
+
+var mappingListHttpRedirectsSortByEnumLowerCase = map[string]ListHttpRedirectsSortByEnum{
+	"id":          ListHttpRedirectsSortById,
+	"domain":      ListHttpRedirectsSortByDomain,
+	"target":      ListHttpRedirectsSortByTarget,
+	"displayname": ListHttpRedirectsSortByDisplayname,
 }
 
 // GetListHttpRedirectsSortByEnumValues Enumerates the set of values for ListHttpRedirectsSortByEnum
@@ -211,11 +218,6 @@ func GetListHttpRedirectsSortByEnumStringValues() []string {
 
 // GetMappingListHttpRedirectsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHttpRedirectsSortByEnum(val string) (ListHttpRedirectsSortByEnum, bool) {
-	mappingListHttpRedirectsSortByEnumIgnoreCase := make(map[string]ListHttpRedirectsSortByEnum)
-	for k, v := range mappingListHttpRedirectsSortByEnum {
-		mappingListHttpRedirectsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHttpRedirectsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHttpRedirectsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -35,6 +35,13 @@ var mappingMacsecEncryptionCipherEnum = map[string]MacsecEncryptionCipherEnum{
 	"AES256_GCM_XPN": MacsecEncryptionCipherAes256GcmXpn,
 }
 
+var mappingMacsecEncryptionCipherEnumLowerCase = map[string]MacsecEncryptionCipherEnum{
+	"aes128_gcm":     MacsecEncryptionCipherAes128Gcm,
+	"aes128_gcm_xpn": MacsecEncryptionCipherAes128GcmXpn,
+	"aes256_gcm":     MacsecEncryptionCipherAes256Gcm,
+	"aes256_gcm_xpn": MacsecEncryptionCipherAes256GcmXpn,
+}
+
 // GetMacsecEncryptionCipherEnumValues Enumerates the set of values for MacsecEncryptionCipherEnum
 func GetMacsecEncryptionCipherEnumValues() []MacsecEncryptionCipherEnum {
 	values := make([]MacsecEncryptionCipherEnum, 0)
@@ -56,11 +63,6 @@ func GetMacsecEncryptionCipherEnumStringValues() []string {
 
 // GetMappingMacsecEncryptionCipherEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMacsecEncryptionCipherEnum(val string) (MacsecEncryptionCipherEnum, bool) {
-	mappingMacsecEncryptionCipherEnumIgnoreCase := make(map[string]MacsecEncryptionCipherEnum)
-	for k, v := range mappingMacsecEncryptionCipherEnum {
-		mappingMacsecEncryptionCipherEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMacsecEncryptionCipherEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMacsecEncryptionCipherEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

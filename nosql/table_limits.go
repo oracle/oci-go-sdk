@@ -14,7 +14,7 @@ package nosql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -69,6 +69,11 @@ var mappingTableLimitsCapacityModeEnum = map[string]TableLimitsCapacityModeEnum{
 	"ON_DEMAND":   TableLimitsCapacityModeOnDemand,
 }
 
+var mappingTableLimitsCapacityModeEnumLowerCase = map[string]TableLimitsCapacityModeEnum{
+	"provisioned": TableLimitsCapacityModeProvisioned,
+	"on_demand":   TableLimitsCapacityModeOnDemand,
+}
+
 // GetTableLimitsCapacityModeEnumValues Enumerates the set of values for TableLimitsCapacityModeEnum
 func GetTableLimitsCapacityModeEnumValues() []TableLimitsCapacityModeEnum {
 	values := make([]TableLimitsCapacityModeEnum, 0)
@@ -88,11 +93,6 @@ func GetTableLimitsCapacityModeEnumStringValues() []string {
 
 // GetMappingTableLimitsCapacityModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTableLimitsCapacityModeEnum(val string) (TableLimitsCapacityModeEnum, bool) {
-	mappingTableLimitsCapacityModeEnumIgnoreCase := make(map[string]TableLimitsCapacityModeEnum)
-	for k, v := range mappingTableLimitsCapacityModeEnum {
-		mappingTableLimitsCapacityModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTableLimitsCapacityModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTableLimitsCapacityModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package threatintelligence
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -109,6 +109,11 @@ var mappingListIndicatorCountsSortOrderEnum = map[string]ListIndicatorCountsSort
 	"DESC": ListIndicatorCountsSortOrderDesc,
 }
 
+var mappingListIndicatorCountsSortOrderEnumLowerCase = map[string]ListIndicatorCountsSortOrderEnum{
+	"asc":  ListIndicatorCountsSortOrderAsc,
+	"desc": ListIndicatorCountsSortOrderDesc,
+}
+
 // GetListIndicatorCountsSortOrderEnumValues Enumerates the set of values for ListIndicatorCountsSortOrderEnum
 func GetListIndicatorCountsSortOrderEnumValues() []ListIndicatorCountsSortOrderEnum {
 	values := make([]ListIndicatorCountsSortOrderEnum, 0)
@@ -128,11 +133,6 @@ func GetListIndicatorCountsSortOrderEnumStringValues() []string {
 
 // GetMappingListIndicatorCountsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListIndicatorCountsSortOrderEnum(val string) (ListIndicatorCountsSortOrderEnum, bool) {
-	mappingListIndicatorCountsSortOrderEnumIgnoreCase := make(map[string]ListIndicatorCountsSortOrderEnum)
-	for k, v := range mappingListIndicatorCountsSortOrderEnum {
-		mappingListIndicatorCountsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListIndicatorCountsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListIndicatorCountsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

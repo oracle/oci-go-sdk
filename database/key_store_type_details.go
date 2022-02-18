@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingKeyStoreTypeDetailsTypeEnum = map[string]KeyStoreTypeDetailsTypeEnum{
 	"ORACLE_KEY_VAULT": KeyStoreTypeDetailsTypeOracleKeyVault,
 }
 
+var mappingKeyStoreTypeDetailsTypeEnumLowerCase = map[string]KeyStoreTypeDetailsTypeEnum{
+	"oracle_key_vault": KeyStoreTypeDetailsTypeOracleKeyVault,
+}
+
 // GetKeyStoreTypeDetailsTypeEnumValues Enumerates the set of values for KeyStoreTypeDetailsTypeEnum
 func GetKeyStoreTypeDetailsTypeEnumValues() []KeyStoreTypeDetailsTypeEnum {
 	values := make([]KeyStoreTypeDetailsTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetKeyStoreTypeDetailsTypeEnumStringValues() []string {
 
 // GetMappingKeyStoreTypeDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingKeyStoreTypeDetailsTypeEnum(val string) (KeyStoreTypeDetailsTypeEnum, bool) {
-	mappingKeyStoreTypeDetailsTypeEnumIgnoreCase := make(map[string]KeyStoreTypeDetailsTypeEnum)
-	for k, v := range mappingKeyStoreTypeDetailsTypeEnum {
-		mappingKeyStoreTypeDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingKeyStoreTypeDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingKeyStoreTypeDetailsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

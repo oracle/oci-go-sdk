@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -148,6 +148,13 @@ var mappingDiscoveryJobDiscoveryTypeEnum = map[string]DiscoveryJobDiscoveryTypeE
 	"DELETED":  DiscoveryJobDiscoveryTypeDeleted,
 }
 
+var mappingDiscoveryJobDiscoveryTypeEnumLowerCase = map[string]DiscoveryJobDiscoveryTypeEnum{
+	"all":      DiscoveryJobDiscoveryTypeAll,
+	"new":      DiscoveryJobDiscoveryTypeNew,
+	"modified": DiscoveryJobDiscoveryTypeModified,
+	"deleted":  DiscoveryJobDiscoveryTypeDeleted,
+}
+
 // GetDiscoveryJobDiscoveryTypeEnumValues Enumerates the set of values for DiscoveryJobDiscoveryTypeEnum
 func GetDiscoveryJobDiscoveryTypeEnumValues() []DiscoveryJobDiscoveryTypeEnum {
 	values := make([]DiscoveryJobDiscoveryTypeEnum, 0)
@@ -169,11 +176,6 @@ func GetDiscoveryJobDiscoveryTypeEnumStringValues() []string {
 
 // GetMappingDiscoveryJobDiscoveryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDiscoveryJobDiscoveryTypeEnum(val string) (DiscoveryJobDiscoveryTypeEnum, bool) {
-	mappingDiscoveryJobDiscoveryTypeEnumIgnoreCase := make(map[string]DiscoveryJobDiscoveryTypeEnum)
-	for k, v := range mappingDiscoveryJobDiscoveryTypeEnum {
-		mappingDiscoveryJobDiscoveryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDiscoveryJobDiscoveryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDiscoveryJobDiscoveryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -29,6 +29,11 @@ var mappingManagementOptionEnum = map[string]ManagementOptionEnum{
 	"ADVANCED": ManagementOptionAdvanced,
 }
 
+var mappingManagementOptionEnumLowerCase = map[string]ManagementOptionEnum{
+	"basic":    ManagementOptionBasic,
+	"advanced": ManagementOptionAdvanced,
+}
+
 // GetManagementOptionEnumValues Enumerates the set of values for ManagementOptionEnum
 func GetManagementOptionEnumValues() []ManagementOptionEnum {
 	values := make([]ManagementOptionEnum, 0)
@@ -48,11 +53,6 @@ func GetManagementOptionEnumStringValues() []string {
 
 // GetMappingManagementOptionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingManagementOptionEnum(val string) (ManagementOptionEnum, bool) {
-	mappingManagementOptionEnumIgnoreCase := make(map[string]ManagementOptionEnum)
-	for k, v := range mappingManagementOptionEnum {
-		mappingManagementOptionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingManagementOptionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingManagementOptionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

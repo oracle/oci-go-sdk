@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -136,6 +136,20 @@ var mappingGetPatternFieldsEnum = map[string]GetPatternFieldsEnum{
 	"properties":     GetPatternFieldsProperties,
 }
 
+var mappingGetPatternFieldsEnumLowerCase = map[string]GetPatternFieldsEnum{
+	"key":            GetPatternFieldsKey,
+	"displayname":    GetPatternFieldsDisplayname,
+	"description":    GetPatternFieldsDescription,
+	"catalogid":      GetPatternFieldsCatalogid,
+	"expression":     GetPatternFieldsExpression,
+	"lifecyclestate": GetPatternFieldsLifecyclestate,
+	"timecreated":    GetPatternFieldsTimecreated,
+	"timeupdated":    GetPatternFieldsTimeupdated,
+	"createdbyid":    GetPatternFieldsCreatedbyid,
+	"updatedbyid":    GetPatternFieldsUpdatedbyid,
+	"properties":     GetPatternFieldsProperties,
+}
+
 // GetGetPatternFieldsEnumValues Enumerates the set of values for GetPatternFieldsEnum
 func GetGetPatternFieldsEnumValues() []GetPatternFieldsEnum {
 	values := make([]GetPatternFieldsEnum, 0)
@@ -164,11 +178,6 @@ func GetGetPatternFieldsEnumStringValues() []string {
 
 // GetMappingGetPatternFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetPatternFieldsEnum(val string) (GetPatternFieldsEnum, bool) {
-	mappingGetPatternFieldsEnumIgnoreCase := make(map[string]GetPatternFieldsEnum)
-	for k, v := range mappingGetPatternFieldsEnum {
-		mappingGetPatternFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetPatternFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetPatternFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

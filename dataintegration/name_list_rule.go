@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -147,6 +147,12 @@ var mappingNameListRuleMatchingStrategyEnum = map[string]NameListRuleMatchingStr
 	"NAME_ONLY":    NameListRuleMatchingStrategyNameOnly,
 }
 
+var mappingNameListRuleMatchingStrategyEnumLowerCase = map[string]NameListRuleMatchingStrategyEnum{
+	"name_or_tags": NameListRuleMatchingStrategyNameOrTags,
+	"tags_only":    NameListRuleMatchingStrategyTagsOnly,
+	"name_only":    NameListRuleMatchingStrategyNameOnly,
+}
+
 // GetNameListRuleMatchingStrategyEnumValues Enumerates the set of values for NameListRuleMatchingStrategyEnum
 func GetNameListRuleMatchingStrategyEnumValues() []NameListRuleMatchingStrategyEnum {
 	values := make([]NameListRuleMatchingStrategyEnum, 0)
@@ -167,12 +173,7 @@ func GetNameListRuleMatchingStrategyEnumStringValues() []string {
 
 // GetMappingNameListRuleMatchingStrategyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNameListRuleMatchingStrategyEnum(val string) (NameListRuleMatchingStrategyEnum, bool) {
-	mappingNameListRuleMatchingStrategyEnumIgnoreCase := make(map[string]NameListRuleMatchingStrategyEnum)
-	for k, v := range mappingNameListRuleMatchingStrategyEnum {
-		mappingNameListRuleMatchingStrategyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNameListRuleMatchingStrategyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNameListRuleMatchingStrategyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -188,6 +189,11 @@ const (
 var mappingNameListRuleRuleTypeEnum = map[string]NameListRuleRuleTypeEnum{
 	"INCLUDE": NameListRuleRuleTypeInclude,
 	"EXCLUDE": NameListRuleRuleTypeExclude,
+}
+
+var mappingNameListRuleRuleTypeEnumLowerCase = map[string]NameListRuleRuleTypeEnum{
+	"include": NameListRuleRuleTypeInclude,
+	"exclude": NameListRuleRuleTypeExclude,
 }
 
 // GetNameListRuleRuleTypeEnumValues Enumerates the set of values for NameListRuleRuleTypeEnum
@@ -209,11 +215,6 @@ func GetNameListRuleRuleTypeEnumStringValues() []string {
 
 // GetMappingNameListRuleRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNameListRuleRuleTypeEnum(val string) (NameListRuleRuleTypeEnum, bool) {
-	mappingNameListRuleRuleTypeEnumIgnoreCase := make(map[string]NameListRuleRuleTypeEnum)
-	for k, v := range mappingNameListRuleRuleTypeEnum {
-		mappingNameListRuleRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNameListRuleRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNameListRuleRuleTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

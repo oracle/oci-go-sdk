@@ -39,6 +39,17 @@ var mappingValueTypeEnum = map[string]ValueTypeEnum{
 	"FACET":     ValueTypeFacet,
 }
 
+var mappingValueTypeEnumLowerCase = map[string]ValueTypeEnum{
+	"boolean":   ValueTypeBoolean,
+	"string":    ValueTypeString,
+	"double":    ValueTypeDouble,
+	"float":     ValueTypeFloat,
+	"long":      ValueTypeLong,
+	"integer":   ValueTypeInteger,
+	"timestamp": ValueTypeTimestamp,
+	"facet":     ValueTypeFacet,
+}
+
 // GetValueTypeEnumValues Enumerates the set of values for ValueTypeEnum
 func GetValueTypeEnumValues() []ValueTypeEnum {
 	values := make([]ValueTypeEnum, 0)
@@ -64,11 +75,6 @@ func GetValueTypeEnumStringValues() []string {
 
 // GetMappingValueTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingValueTypeEnum(val string) (ValueTypeEnum, bool) {
-	mappingValueTypeEnumIgnoreCase := make(map[string]ValueTypeEnum)
-	for k, v := range mappingValueTypeEnum {
-		mappingValueTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingValueTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingValueTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

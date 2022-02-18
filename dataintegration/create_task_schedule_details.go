@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -124,6 +124,13 @@ var mappingCreateTaskScheduleDetailsRetryDelayUnitEnum = map[string]CreateTaskSc
 	"DAYS":    CreateTaskScheduleDetailsRetryDelayUnitDays,
 }
 
+var mappingCreateTaskScheduleDetailsRetryDelayUnitEnumLowerCase = map[string]CreateTaskScheduleDetailsRetryDelayUnitEnum{
+	"seconds": CreateTaskScheduleDetailsRetryDelayUnitSeconds,
+	"minutes": CreateTaskScheduleDetailsRetryDelayUnitMinutes,
+	"hours":   CreateTaskScheduleDetailsRetryDelayUnitHours,
+	"days":    CreateTaskScheduleDetailsRetryDelayUnitDays,
+}
+
 // GetCreateTaskScheduleDetailsRetryDelayUnitEnumValues Enumerates the set of values for CreateTaskScheduleDetailsRetryDelayUnitEnum
 func GetCreateTaskScheduleDetailsRetryDelayUnitEnumValues() []CreateTaskScheduleDetailsRetryDelayUnitEnum {
 	values := make([]CreateTaskScheduleDetailsRetryDelayUnitEnum, 0)
@@ -145,12 +152,7 @@ func GetCreateTaskScheduleDetailsRetryDelayUnitEnumStringValues() []string {
 
 // GetMappingCreateTaskScheduleDetailsRetryDelayUnitEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateTaskScheduleDetailsRetryDelayUnitEnum(val string) (CreateTaskScheduleDetailsRetryDelayUnitEnum, bool) {
-	mappingCreateTaskScheduleDetailsRetryDelayUnitEnumIgnoreCase := make(map[string]CreateTaskScheduleDetailsRetryDelayUnitEnum)
-	for k, v := range mappingCreateTaskScheduleDetailsRetryDelayUnitEnum {
-		mappingCreateTaskScheduleDetailsRetryDelayUnitEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateTaskScheduleDetailsRetryDelayUnitEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateTaskScheduleDetailsRetryDelayUnitEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -168,6 +170,12 @@ var mappingCreateTaskScheduleDetailsAuthModeEnum = map[string]CreateTaskSchedule
 	"OBO":                CreateTaskScheduleDetailsAuthModeObo,
 	"RESOURCE_PRINCIPAL": CreateTaskScheduleDetailsAuthModeResourcePrincipal,
 	"USER_CERTIFICATE":   CreateTaskScheduleDetailsAuthModeUserCertificate,
+}
+
+var mappingCreateTaskScheduleDetailsAuthModeEnumLowerCase = map[string]CreateTaskScheduleDetailsAuthModeEnum{
+	"obo":                CreateTaskScheduleDetailsAuthModeObo,
+	"resource_principal": CreateTaskScheduleDetailsAuthModeResourcePrincipal,
+	"user_certificate":   CreateTaskScheduleDetailsAuthModeUserCertificate,
 }
 
 // GetCreateTaskScheduleDetailsAuthModeEnumValues Enumerates the set of values for CreateTaskScheduleDetailsAuthModeEnum
@@ -190,12 +198,7 @@ func GetCreateTaskScheduleDetailsAuthModeEnumStringValues() []string {
 
 // GetMappingCreateTaskScheduleDetailsAuthModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateTaskScheduleDetailsAuthModeEnum(val string) (CreateTaskScheduleDetailsAuthModeEnum, bool) {
-	mappingCreateTaskScheduleDetailsAuthModeEnumIgnoreCase := make(map[string]CreateTaskScheduleDetailsAuthModeEnum)
-	for k, v := range mappingCreateTaskScheduleDetailsAuthModeEnum {
-		mappingCreateTaskScheduleDetailsAuthModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateTaskScheduleDetailsAuthModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateTaskScheduleDetailsAuthModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -215,6 +218,13 @@ var mappingCreateTaskScheduleDetailsExpectedDurationUnitEnum = map[string]Create
 	"MINUTES": CreateTaskScheduleDetailsExpectedDurationUnitMinutes,
 	"HOURS":   CreateTaskScheduleDetailsExpectedDurationUnitHours,
 	"DAYS":    CreateTaskScheduleDetailsExpectedDurationUnitDays,
+}
+
+var mappingCreateTaskScheduleDetailsExpectedDurationUnitEnumLowerCase = map[string]CreateTaskScheduleDetailsExpectedDurationUnitEnum{
+	"seconds": CreateTaskScheduleDetailsExpectedDurationUnitSeconds,
+	"minutes": CreateTaskScheduleDetailsExpectedDurationUnitMinutes,
+	"hours":   CreateTaskScheduleDetailsExpectedDurationUnitHours,
+	"days":    CreateTaskScheduleDetailsExpectedDurationUnitDays,
 }
 
 // GetCreateTaskScheduleDetailsExpectedDurationUnitEnumValues Enumerates the set of values for CreateTaskScheduleDetailsExpectedDurationUnitEnum
@@ -238,11 +248,6 @@ func GetCreateTaskScheduleDetailsExpectedDurationUnitEnumStringValues() []string
 
 // GetMappingCreateTaskScheduleDetailsExpectedDurationUnitEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateTaskScheduleDetailsExpectedDurationUnitEnum(val string) (CreateTaskScheduleDetailsExpectedDurationUnitEnum, bool) {
-	mappingCreateTaskScheduleDetailsExpectedDurationUnitEnumIgnoreCase := make(map[string]CreateTaskScheduleDetailsExpectedDurationUnitEnum)
-	for k, v := range mappingCreateTaskScheduleDetailsExpectedDurationUnitEnum {
-		mappingCreateTaskScheduleDetailsExpectedDurationUnitEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateTaskScheduleDetailsExpectedDurationUnitEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateTaskScheduleDetailsExpectedDurationUnitEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

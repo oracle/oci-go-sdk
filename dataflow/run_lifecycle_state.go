@@ -39,6 +39,17 @@ var mappingRunLifecycleStateEnum = map[string]RunLifecycleStateEnum{
 	"STOPPED":     RunLifecycleStateStopped,
 }
 
+var mappingRunLifecycleStateEnumLowerCase = map[string]RunLifecycleStateEnum{
+	"accepted":    RunLifecycleStateAccepted,
+	"in_progress": RunLifecycleStateInProgress,
+	"canceling":   RunLifecycleStateCanceling,
+	"canceled":    RunLifecycleStateCanceled,
+	"failed":      RunLifecycleStateFailed,
+	"succeeded":   RunLifecycleStateSucceeded,
+	"stopping":    RunLifecycleStateStopping,
+	"stopped":     RunLifecycleStateStopped,
+}
+
 // GetRunLifecycleStateEnumValues Enumerates the set of values for RunLifecycleStateEnum
 func GetRunLifecycleStateEnumValues() []RunLifecycleStateEnum {
 	values := make([]RunLifecycleStateEnum, 0)
@@ -64,11 +75,6 @@ func GetRunLifecycleStateEnumStringValues() []string {
 
 // GetMappingRunLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRunLifecycleStateEnum(val string) (RunLifecycleStateEnum, bool) {
-	mappingRunLifecycleStateEnumIgnoreCase := make(map[string]RunLifecycleStateEnum)
-	for k, v := range mappingRunLifecycleStateEnum {
-		mappingRunLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRunLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRunLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

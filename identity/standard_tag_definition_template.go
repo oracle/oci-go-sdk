@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -73,6 +73,11 @@ var mappingStandardTagDefinitionTemplateTypeEnum = map[string]StandardTagDefinit
 	"STRING": StandardTagDefinitionTemplateTypeString,
 }
 
+var mappingStandardTagDefinitionTemplateTypeEnumLowerCase = map[string]StandardTagDefinitionTemplateTypeEnum{
+	"enum":   StandardTagDefinitionTemplateTypeEnumvalue,
+	"string": StandardTagDefinitionTemplateTypeString,
+}
+
 // GetStandardTagDefinitionTemplateTypeEnumValues Enumerates the set of values for StandardTagDefinitionTemplateTypeEnum
 func GetStandardTagDefinitionTemplateTypeEnumValues() []StandardTagDefinitionTemplateTypeEnum {
 	values := make([]StandardTagDefinitionTemplateTypeEnum, 0)
@@ -92,12 +97,7 @@ func GetStandardTagDefinitionTemplateTypeEnumStringValues() []string {
 
 // GetMappingStandardTagDefinitionTemplateTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStandardTagDefinitionTemplateTypeEnum(val string) (StandardTagDefinitionTemplateTypeEnum, bool) {
-	mappingStandardTagDefinitionTemplateTypeEnumIgnoreCase := make(map[string]StandardTagDefinitionTemplateTypeEnum)
-	for k, v := range mappingStandardTagDefinitionTemplateTypeEnum {
-		mappingStandardTagDefinitionTemplateTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStandardTagDefinitionTemplateTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStandardTagDefinitionTemplateTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -115,6 +115,12 @@ var mappingStandardTagDefinitionTemplateEnumMutabilityEnum = map[string]Standard
 	"IMMUTABLE":  StandardTagDefinitionTemplateEnumMutabilityImmutable,
 	"MUTABLE":    StandardTagDefinitionTemplateEnumMutabilityMutable,
 	"APPENDABLE": StandardTagDefinitionTemplateEnumMutabilityAppendable,
+}
+
+var mappingStandardTagDefinitionTemplateEnumMutabilityEnumLowerCase = map[string]StandardTagDefinitionTemplateEnumMutabilityEnum{
+	"immutable":  StandardTagDefinitionTemplateEnumMutabilityImmutable,
+	"mutable":    StandardTagDefinitionTemplateEnumMutabilityMutable,
+	"appendable": StandardTagDefinitionTemplateEnumMutabilityAppendable,
 }
 
 // GetStandardTagDefinitionTemplateEnumMutabilityEnumValues Enumerates the set of values for StandardTagDefinitionTemplateEnumMutabilityEnum
@@ -137,11 +143,6 @@ func GetStandardTagDefinitionTemplateEnumMutabilityEnumStringValues() []string {
 
 // GetMappingStandardTagDefinitionTemplateEnumMutabilityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStandardTagDefinitionTemplateEnumMutabilityEnum(val string) (StandardTagDefinitionTemplateEnumMutabilityEnum, bool) {
-	mappingStandardTagDefinitionTemplateEnumMutabilityEnumIgnoreCase := make(map[string]StandardTagDefinitionTemplateEnumMutabilityEnum)
-	for k, v := range mappingStandardTagDefinitionTemplateEnumMutabilityEnum {
-		mappingStandardTagDefinitionTemplateEnumMutabilityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStandardTagDefinitionTemplateEnumMutabilityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStandardTagDefinitionTemplateEnumMutabilityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

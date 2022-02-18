@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -140,6 +140,13 @@ var mappingIpSecConnectionLifecycleStateEnum = map[string]IpSecConnectionLifecyc
 	"TERMINATED":   IpSecConnectionLifecycleStateTerminated,
 }
 
+var mappingIpSecConnectionLifecycleStateEnumLowerCase = map[string]IpSecConnectionLifecycleStateEnum{
+	"provisioning": IpSecConnectionLifecycleStateProvisioning,
+	"available":    IpSecConnectionLifecycleStateAvailable,
+	"terminating":  IpSecConnectionLifecycleStateTerminating,
+	"terminated":   IpSecConnectionLifecycleStateTerminated,
+}
+
 // GetIpSecConnectionLifecycleStateEnumValues Enumerates the set of values for IpSecConnectionLifecycleStateEnum
 func GetIpSecConnectionLifecycleStateEnumValues() []IpSecConnectionLifecycleStateEnum {
 	values := make([]IpSecConnectionLifecycleStateEnum, 0)
@@ -161,12 +168,7 @@ func GetIpSecConnectionLifecycleStateEnumStringValues() []string {
 
 // GetMappingIpSecConnectionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIpSecConnectionLifecycleStateEnum(val string) (IpSecConnectionLifecycleStateEnum, bool) {
-	mappingIpSecConnectionLifecycleStateEnumIgnoreCase := make(map[string]IpSecConnectionLifecycleStateEnum)
-	for k, v := range mappingIpSecConnectionLifecycleStateEnum {
-		mappingIpSecConnectionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIpSecConnectionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIpSecConnectionLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -182,6 +184,11 @@ const (
 var mappingIpSecConnectionCpeLocalIdentifierTypeEnum = map[string]IpSecConnectionCpeLocalIdentifierTypeEnum{
 	"IP_ADDRESS": IpSecConnectionCpeLocalIdentifierTypeIpAddress,
 	"HOSTNAME":   IpSecConnectionCpeLocalIdentifierTypeHostname,
+}
+
+var mappingIpSecConnectionCpeLocalIdentifierTypeEnumLowerCase = map[string]IpSecConnectionCpeLocalIdentifierTypeEnum{
+	"ip_address": IpSecConnectionCpeLocalIdentifierTypeIpAddress,
+	"hostname":   IpSecConnectionCpeLocalIdentifierTypeHostname,
 }
 
 // GetIpSecConnectionCpeLocalIdentifierTypeEnumValues Enumerates the set of values for IpSecConnectionCpeLocalIdentifierTypeEnum
@@ -203,11 +210,6 @@ func GetIpSecConnectionCpeLocalIdentifierTypeEnumStringValues() []string {
 
 // GetMappingIpSecConnectionCpeLocalIdentifierTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIpSecConnectionCpeLocalIdentifierTypeEnum(val string) (IpSecConnectionCpeLocalIdentifierTypeEnum, bool) {
-	mappingIpSecConnectionCpeLocalIdentifierTypeEnumIgnoreCase := make(map[string]IpSecConnectionCpeLocalIdentifierTypeEnum)
-	for k, v := range mappingIpSecConnectionCpeLocalIdentifierTypeEnum {
-		mappingIpSecConnectionCpeLocalIdentifierTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIpSecConnectionCpeLocalIdentifierTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIpSecConnectionCpeLocalIdentifierTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

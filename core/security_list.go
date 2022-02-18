@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -110,6 +110,13 @@ var mappingSecurityListLifecycleStateEnum = map[string]SecurityListLifecycleStat
 	"TERMINATED":   SecurityListLifecycleStateTerminated,
 }
 
+var mappingSecurityListLifecycleStateEnumLowerCase = map[string]SecurityListLifecycleStateEnum{
+	"provisioning": SecurityListLifecycleStateProvisioning,
+	"available":    SecurityListLifecycleStateAvailable,
+	"terminating":  SecurityListLifecycleStateTerminating,
+	"terminated":   SecurityListLifecycleStateTerminated,
+}
+
 // GetSecurityListLifecycleStateEnumValues Enumerates the set of values for SecurityListLifecycleStateEnum
 func GetSecurityListLifecycleStateEnumValues() []SecurityListLifecycleStateEnum {
 	values := make([]SecurityListLifecycleStateEnum, 0)
@@ -131,11 +138,6 @@ func GetSecurityListLifecycleStateEnumStringValues() []string {
 
 // GetMappingSecurityListLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSecurityListLifecycleStateEnum(val string) (SecurityListLifecycleStateEnum, bool) {
-	mappingSecurityListLifecycleStateEnumIgnoreCase := make(map[string]SecurityListLifecycleStateEnum)
-	for k, v := range mappingSecurityListLifecycleStateEnum {
-		mappingSecurityListLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSecurityListLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSecurityListLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

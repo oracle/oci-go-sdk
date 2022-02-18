@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,11 @@ var mappingDeployStageRollbackPolicyPolicyTypeEnum = map[string]DeployStageRollb
 	"NO_STAGE_ROLLBACK_POLICY":        DeployStageRollbackPolicyPolicyTypeNoStageRollbackPolicy,
 }
 
+var mappingDeployStageRollbackPolicyPolicyTypeEnumLowerCase = map[string]DeployStageRollbackPolicyPolicyTypeEnum{
+	"automated_stage_rollback_policy": DeployStageRollbackPolicyPolicyTypeAutomatedStageRollbackPolicy,
+	"no_stage_rollback_policy":        DeployStageRollbackPolicyPolicyTypeNoStageRollbackPolicy,
+}
+
 // GetDeployStageRollbackPolicyPolicyTypeEnumValues Enumerates the set of values for DeployStageRollbackPolicyPolicyTypeEnum
 func GetDeployStageRollbackPolicyPolicyTypeEnumValues() []DeployStageRollbackPolicyPolicyTypeEnum {
 	values := make([]DeployStageRollbackPolicyPolicyTypeEnum, 0)
@@ -112,11 +117,6 @@ func GetDeployStageRollbackPolicyPolicyTypeEnumStringValues() []string {
 
 // GetMappingDeployStageRollbackPolicyPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeployStageRollbackPolicyPolicyTypeEnum(val string) (DeployStageRollbackPolicyPolicyTypeEnum, bool) {
-	mappingDeployStageRollbackPolicyPolicyTypeEnumIgnoreCase := make(map[string]DeployStageRollbackPolicyPolicyTypeEnum)
-	for k, v := range mappingDeployStageRollbackPolicyPolicyTypeEnum {
-		mappingDeployStageRollbackPolicyPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeployStageRollbackPolicyPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeployStageRollbackPolicyPolicyTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

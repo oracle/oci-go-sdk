@@ -6,7 +6,7 @@ package servicecatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -134,6 +134,11 @@ var mappingListPrivateApplicationsSortByEnum = map[string]ListPrivateApplication
 	"LIFECYCLESTATE": ListPrivateApplicationsSortByLifecyclestate,
 }
 
+var mappingListPrivateApplicationsSortByEnumLowerCase = map[string]ListPrivateApplicationsSortByEnum{
+	"timecreated":    ListPrivateApplicationsSortByTimecreated,
+	"lifecyclestate": ListPrivateApplicationsSortByLifecyclestate,
+}
+
 // GetListPrivateApplicationsSortByEnumValues Enumerates the set of values for ListPrivateApplicationsSortByEnum
 func GetListPrivateApplicationsSortByEnumValues() []ListPrivateApplicationsSortByEnum {
 	values := make([]ListPrivateApplicationsSortByEnum, 0)
@@ -153,12 +158,7 @@ func GetListPrivateApplicationsSortByEnumStringValues() []string {
 
 // GetMappingListPrivateApplicationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPrivateApplicationsSortByEnum(val string) (ListPrivateApplicationsSortByEnum, bool) {
-	mappingListPrivateApplicationsSortByEnumIgnoreCase := make(map[string]ListPrivateApplicationsSortByEnum)
-	for k, v := range mappingListPrivateApplicationsSortByEnum {
-		mappingListPrivateApplicationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPrivateApplicationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPrivateApplicationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -174,6 +174,11 @@ const (
 var mappingListPrivateApplicationsSortOrderEnum = map[string]ListPrivateApplicationsSortOrderEnum{
 	"ASC":  ListPrivateApplicationsSortOrderAsc,
 	"DESC": ListPrivateApplicationsSortOrderDesc,
+}
+
+var mappingListPrivateApplicationsSortOrderEnumLowerCase = map[string]ListPrivateApplicationsSortOrderEnum{
+	"asc":  ListPrivateApplicationsSortOrderAsc,
+	"desc": ListPrivateApplicationsSortOrderDesc,
 }
 
 // GetListPrivateApplicationsSortOrderEnumValues Enumerates the set of values for ListPrivateApplicationsSortOrderEnum
@@ -195,11 +200,6 @@ func GetListPrivateApplicationsSortOrderEnumStringValues() []string {
 
 // GetMappingListPrivateApplicationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPrivateApplicationsSortOrderEnum(val string) (ListPrivateApplicationsSortOrderEnum, bool) {
-	mappingListPrivateApplicationsSortOrderEnumIgnoreCase := make(map[string]ListPrivateApplicationsSortOrderEnum)
-	for k, v := range mappingListPrivateApplicationsSortOrderEnum {
-		mappingListPrivateApplicationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPrivateApplicationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPrivateApplicationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

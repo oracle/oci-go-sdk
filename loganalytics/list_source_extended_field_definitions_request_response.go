@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -133,6 +133,11 @@ var mappingListSourceExtendedFieldDefinitionsSortByEnum = map[string]ListSourceE
 	"regularExpression": ListSourceExtendedFieldDefinitionsSortByRegularexpression,
 }
 
+var mappingListSourceExtendedFieldDefinitionsSortByEnumLowerCase = map[string]ListSourceExtendedFieldDefinitionsSortByEnum{
+	"basefieldname":     ListSourceExtendedFieldDefinitionsSortByBasefieldname,
+	"regularexpression": ListSourceExtendedFieldDefinitionsSortByRegularexpression,
+}
+
 // GetListSourceExtendedFieldDefinitionsSortByEnumValues Enumerates the set of values for ListSourceExtendedFieldDefinitionsSortByEnum
 func GetListSourceExtendedFieldDefinitionsSortByEnumValues() []ListSourceExtendedFieldDefinitionsSortByEnum {
 	values := make([]ListSourceExtendedFieldDefinitionsSortByEnum, 0)
@@ -152,12 +157,7 @@ func GetListSourceExtendedFieldDefinitionsSortByEnumStringValues() []string {
 
 // GetMappingListSourceExtendedFieldDefinitionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSourceExtendedFieldDefinitionsSortByEnum(val string) (ListSourceExtendedFieldDefinitionsSortByEnum, bool) {
-	mappingListSourceExtendedFieldDefinitionsSortByEnumIgnoreCase := make(map[string]ListSourceExtendedFieldDefinitionsSortByEnum)
-	for k, v := range mappingListSourceExtendedFieldDefinitionsSortByEnum {
-		mappingListSourceExtendedFieldDefinitionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSourceExtendedFieldDefinitionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSourceExtendedFieldDefinitionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -173,6 +173,11 @@ const (
 var mappingListSourceExtendedFieldDefinitionsSortOrderEnum = map[string]ListSourceExtendedFieldDefinitionsSortOrderEnum{
 	"ASC":  ListSourceExtendedFieldDefinitionsSortOrderAsc,
 	"DESC": ListSourceExtendedFieldDefinitionsSortOrderDesc,
+}
+
+var mappingListSourceExtendedFieldDefinitionsSortOrderEnumLowerCase = map[string]ListSourceExtendedFieldDefinitionsSortOrderEnum{
+	"asc":  ListSourceExtendedFieldDefinitionsSortOrderAsc,
+	"desc": ListSourceExtendedFieldDefinitionsSortOrderDesc,
 }
 
 // GetListSourceExtendedFieldDefinitionsSortOrderEnumValues Enumerates the set of values for ListSourceExtendedFieldDefinitionsSortOrderEnum
@@ -194,11 +199,6 @@ func GetListSourceExtendedFieldDefinitionsSortOrderEnumStringValues() []string {
 
 // GetMappingListSourceExtendedFieldDefinitionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSourceExtendedFieldDefinitionsSortOrderEnum(val string) (ListSourceExtendedFieldDefinitionsSortOrderEnum, bool) {
-	mappingListSourceExtendedFieldDefinitionsSortOrderEnumIgnoreCase := make(map[string]ListSourceExtendedFieldDefinitionsSortOrderEnum)
-	for k, v := range mappingListSourceExtendedFieldDefinitionsSortOrderEnum {
-		mappingListSourceExtendedFieldDefinitionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSourceExtendedFieldDefinitionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSourceExtendedFieldDefinitionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

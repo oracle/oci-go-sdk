@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -260,6 +260,100 @@ var mappingWorkRequestSummaryOperationTypeEnum = map[string]WorkRequestSummaryOp
 	"MASKING_JOB":                                WorkRequestSummaryOperationTypeMaskingJob,
 }
 
+var mappingWorkRequestSummaryOperationTypeEnumLowerCase = map[string]WorkRequestSummaryOperationTypeEnum{
+	"enable_data_safe_configuration":             WorkRequestSummaryOperationTypeEnableDataSafeConfiguration,
+	"create_private_endpoint":                    WorkRequestSummaryOperationTypeCreatePrivateEndpoint,
+	"update_private_endpoint":                    WorkRequestSummaryOperationTypeUpdatePrivateEndpoint,
+	"delete_private_endpoint":                    WorkRequestSummaryOperationTypeDeletePrivateEndpoint,
+	"change_private_endpoint_compartment":        WorkRequestSummaryOperationTypeChangePrivateEndpointCompartment,
+	"create_onprem_connector":                    WorkRequestSummaryOperationTypeCreateOnpremConnector,
+	"update_onprem_connector":                    WorkRequestSummaryOperationTypeUpdateOnpremConnector,
+	"delete_onprem_connector":                    WorkRequestSummaryOperationTypeDeleteOnpremConnector,
+	"update_onprem_connector_wallet":             WorkRequestSummaryOperationTypeUpdateOnpremConnectorWallet,
+	"change_onprem_connector_compartment":        WorkRequestSummaryOperationTypeChangeOnpremConnectorCompartment,
+	"provision_policy":                           WorkRequestSummaryOperationTypeProvisionPolicy,
+	"retrieve_policy":                            WorkRequestSummaryOperationTypeRetrievePolicy,
+	"update_policy":                              WorkRequestSummaryOperationTypeUpdatePolicy,
+	"change_policy_compartment":                  WorkRequestSummaryOperationTypeChangePolicyCompartment,
+	"create_target_database":                     WorkRequestSummaryOperationTypeCreateTargetDatabase,
+	"update_target_database":                     WorkRequestSummaryOperationTypeUpdateTargetDatabase,
+	"activate_target_database":                   WorkRequestSummaryOperationTypeActivateTargetDatabase,
+	"deactivate_target_database":                 WorkRequestSummaryOperationTypeDeactivateTargetDatabase,
+	"delete_target_database":                     WorkRequestSummaryOperationTypeDeleteTargetDatabase,
+	"change_target_database_compartment":         WorkRequestSummaryOperationTypeChangeTargetDatabaseCompartment,
+	"create_user_assessment":                     WorkRequestSummaryOperationTypeCreateUserAssessment,
+	"assess_user_assessment":                     WorkRequestSummaryOperationTypeAssessUserAssessment,
+	"create_snapshot_user_assessment":            WorkRequestSummaryOperationTypeCreateSnapshotUserAssessment,
+	"create_schedule_user_assessment":            WorkRequestSummaryOperationTypeCreateScheduleUserAssessment,
+	"compare_with_baseline_user_assessment":      WorkRequestSummaryOperationTypeCompareWithBaselineUserAssessment,
+	"delete_user_assessment":                     WorkRequestSummaryOperationTypeDeleteUserAssessment,
+	"update_user_assessment":                     WorkRequestSummaryOperationTypeUpdateUserAssessment,
+	"change_user_assessment_compartment":         WorkRequestSummaryOperationTypeChangeUserAssessmentCompartment,
+	"set_user_assessment_baseline":               WorkRequestSummaryOperationTypeSetUserAssessmentBaseline,
+	"unset_user_assessment_baseline":             WorkRequestSummaryOperationTypeUnsetUserAssessmentBaseline,
+	"generate_user_assessment_report":            WorkRequestSummaryOperationTypeGenerateUserAssessmentReport,
+	"create_security_assessment":                 WorkRequestSummaryOperationTypeCreateSecurityAssessment,
+	"create_security_assessment_now":             WorkRequestSummaryOperationTypeCreateSecurityAssessmentNow,
+	"assess_security_assessment":                 WorkRequestSummaryOperationTypeAssessSecurityAssessment,
+	"create_snapshot_security_assessment":        WorkRequestSummaryOperationTypeCreateSnapshotSecurityAssessment,
+	"create_schedule_security_assessment":        WorkRequestSummaryOperationTypeCreateScheduleSecurityAssessment,
+	"compare_with_baseline_security_assessment":  WorkRequestSummaryOperationTypeCompareWithBaselineSecurityAssessment,
+	"delete_security_assessment":                 WorkRequestSummaryOperationTypeDeleteSecurityAssessment,
+	"update_security_assessment":                 WorkRequestSummaryOperationTypeUpdateSecurityAssessment,
+	"change_security_assessment_compartment":     WorkRequestSummaryOperationTypeChangeSecurityAssessmentCompartment,
+	"set_security_assessment_baseline":           WorkRequestSummaryOperationTypeSetSecurityAssessmentBaseline,
+	"unset_security_assessment_baseline":         WorkRequestSummaryOperationTypeUnsetSecurityAssessmentBaseline,
+	"generate_security_assessment_report":        WorkRequestSummaryOperationTypeGenerateSecurityAssessmentReport,
+	"calculate_volume":                           WorkRequestSummaryOperationTypeCalculateVolume,
+	"calculate_collected_volume":                 WorkRequestSummaryOperationTypeCalculateCollectedVolume,
+	"audit_trail":                                WorkRequestSummaryOperationTypeAuditTrail,
+	"delete_audit_trail":                         WorkRequestSummaryOperationTypeDeleteAuditTrail,
+	"discover_audit_trails":                      WorkRequestSummaryOperationTypeDiscoverAuditTrails,
+	"update_audit_trail":                         WorkRequestSummaryOperationTypeUpdateAuditTrail,
+	"update_audit_profile":                       WorkRequestSummaryOperationTypeUpdateAuditProfile,
+	"audit_change_compartment":                   WorkRequestSummaryOperationTypeAuditChangeCompartment,
+	"create_report_definition":                   WorkRequestSummaryOperationTypeCreateReportDefinition,
+	"update_report_definition":                   WorkRequestSummaryOperationTypeUpdateReportDefinition,
+	"change_report_definition_compartment":       WorkRequestSummaryOperationTypeChangeReportDefinitionCompartment,
+	"delete_report_definition":                   WorkRequestSummaryOperationTypeDeleteReportDefinition,
+	"generate_report":                            WorkRequestSummaryOperationTypeGenerateReport,
+	"change_report_compartment":                  WorkRequestSummaryOperationTypeChangeReportCompartment,
+	"delete_archive_retrieval":                   WorkRequestSummaryOperationTypeDeleteArchiveRetrieval,
+	"create_archive_retrieval":                   WorkRequestSummaryOperationTypeCreateArchiveRetrieval,
+	"update_archive_retrieval":                   WorkRequestSummaryOperationTypeUpdateArchiveRetrieval,
+	"change_archive_retrieval_compartment":       WorkRequestSummaryOperationTypeChangeArchiveRetrievalCompartment,
+	"update_alert":                               WorkRequestSummaryOperationTypeUpdateAlert,
+	"target_alert_policy_association":            WorkRequestSummaryOperationTypeTargetAlertPolicyAssociation,
+	"create_sensitive_data_model":                WorkRequestSummaryOperationTypeCreateSensitiveDataModel,
+	"update_sensitive_data_model":                WorkRequestSummaryOperationTypeUpdateSensitiveDataModel,
+	"delete_sensitive_data_model":                WorkRequestSummaryOperationTypeDeleteSensitiveDataModel,
+	"upload_sensitive_data_model":                WorkRequestSummaryOperationTypeUploadSensitiveDataModel,
+	"generate_sensitive_data_model_for_download": WorkRequestSummaryOperationTypeGenerateSensitiveDataModelForDownload,
+	"create_sensitive_column":                    WorkRequestSummaryOperationTypeCreateSensitiveColumn,
+	"update_sensitive_column":                    WorkRequestSummaryOperationTypeUpdateSensitiveColumn,
+	"patch_sensitive_columns":                    WorkRequestSummaryOperationTypePatchSensitiveColumns,
+	"create_discovery_job":                       WorkRequestSummaryOperationTypeCreateDiscoveryJob,
+	"delete_discovery_job":                       WorkRequestSummaryOperationTypeDeleteDiscoveryJob,
+	"patch_discovery_job_result":                 WorkRequestSummaryOperationTypePatchDiscoveryJobResult,
+	"apply_discovery_job_result":                 WorkRequestSummaryOperationTypeApplyDiscoveryJobResult,
+	"generate_discovery_report":                  WorkRequestSummaryOperationTypeGenerateDiscoveryReport,
+	"create_sensitive_type":                      WorkRequestSummaryOperationTypeCreateSensitiveType,
+	"update_sensitive_type":                      WorkRequestSummaryOperationTypeUpdateSensitiveType,
+	"create_masking_policy":                      WorkRequestSummaryOperationTypeCreateMaskingPolicy,
+	"update_masking_policy":                      WorkRequestSummaryOperationTypeUpdateMaskingPolicy,
+	"delete_masking_policy":                      WorkRequestSummaryOperationTypeDeleteMaskingPolicy,
+	"upload_masking_policy":                      WorkRequestSummaryOperationTypeUploadMaskingPolicy,
+	"generate_masking_policy_for_download":       WorkRequestSummaryOperationTypeGenerateMaskingPolicyForDownload,
+	"create_masking_column":                      WorkRequestSummaryOperationTypeCreateMaskingColumn,
+	"update_masking_column":                      WorkRequestSummaryOperationTypeUpdateMaskingColumn,
+	"patch_masking_columns":                      WorkRequestSummaryOperationTypePatchMaskingColumns,
+	"generate_masking_report":                    WorkRequestSummaryOperationTypeGenerateMaskingReport,
+	"create_library_masking_format":              WorkRequestSummaryOperationTypeCreateLibraryMaskingFormat,
+	"update_library_masking_format":              WorkRequestSummaryOperationTypeUpdateLibraryMaskingFormat,
+	"add_columns_from_sdm":                       WorkRequestSummaryOperationTypeAddColumnsFromSdm,
+	"masking_job":                                WorkRequestSummaryOperationTypeMaskingJob,
+}
+
 // GetWorkRequestSummaryOperationTypeEnumValues Enumerates the set of values for WorkRequestSummaryOperationTypeEnum
 func GetWorkRequestSummaryOperationTypeEnumValues() []WorkRequestSummaryOperationTypeEnum {
 	values := make([]WorkRequestSummaryOperationTypeEnum, 0)
@@ -368,12 +462,7 @@ func GetWorkRequestSummaryOperationTypeEnumStringValues() []string {
 
 // GetMappingWorkRequestSummaryOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestSummaryOperationTypeEnum(val string) (WorkRequestSummaryOperationTypeEnum, bool) {
-	mappingWorkRequestSummaryOperationTypeEnumIgnoreCase := make(map[string]WorkRequestSummaryOperationTypeEnum)
-	for k, v := range mappingWorkRequestSummaryOperationTypeEnum {
-		mappingWorkRequestSummaryOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestSummaryOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestSummaryOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -403,6 +492,17 @@ var mappingWorkRequestSummaryStatusEnum = map[string]WorkRequestSummaryStatusEnu
 	"SUSPENDED":   WorkRequestSummaryStatusSuspended,
 }
 
+var mappingWorkRequestSummaryStatusEnumLowerCase = map[string]WorkRequestSummaryStatusEnum{
+	"accepted":    WorkRequestSummaryStatusAccepted,
+	"in_progress": WorkRequestSummaryStatusInProgress,
+	"failed":      WorkRequestSummaryStatusFailed,
+	"succeeded":   WorkRequestSummaryStatusSucceeded,
+	"canceling":   WorkRequestSummaryStatusCanceling,
+	"canceled":    WorkRequestSummaryStatusCanceled,
+	"suspending":  WorkRequestSummaryStatusSuspending,
+	"suspended":   WorkRequestSummaryStatusSuspended,
+}
+
 // GetWorkRequestSummaryStatusEnumValues Enumerates the set of values for WorkRequestSummaryStatusEnum
 func GetWorkRequestSummaryStatusEnumValues() []WorkRequestSummaryStatusEnum {
 	values := make([]WorkRequestSummaryStatusEnum, 0)
@@ -428,11 +528,6 @@ func GetWorkRequestSummaryStatusEnumStringValues() []string {
 
 // GetMappingWorkRequestSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestSummaryStatusEnum(val string) (WorkRequestSummaryStatusEnum, bool) {
-	mappingWorkRequestSummaryStatusEnumIgnoreCase := make(map[string]WorkRequestSummaryStatusEnum)
-	for k, v := range mappingWorkRequestSummaryStatusEnum {
-		mappingWorkRequestSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestSummaryStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

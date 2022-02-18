@@ -6,7 +6,7 @@ package ailanguage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -113,6 +113,11 @@ var mappingDetectLanguageEntitiesModelVersionEnum = map[string]DetectLanguageEnt
 	"V1.1": DetectLanguageEntitiesModelVersionV11,
 }
 
+var mappingDetectLanguageEntitiesModelVersionEnumLowerCase = map[string]DetectLanguageEntitiesModelVersionEnum{
+	"v2.1": DetectLanguageEntitiesModelVersionV21,
+	"v1.1": DetectLanguageEntitiesModelVersionV11,
+}
+
 // GetDetectLanguageEntitiesModelVersionEnumValues Enumerates the set of values for DetectLanguageEntitiesModelVersionEnum
 func GetDetectLanguageEntitiesModelVersionEnumValues() []DetectLanguageEntitiesModelVersionEnum {
 	values := make([]DetectLanguageEntitiesModelVersionEnum, 0)
@@ -132,11 +137,6 @@ func GetDetectLanguageEntitiesModelVersionEnumStringValues() []string {
 
 // GetMappingDetectLanguageEntitiesModelVersionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDetectLanguageEntitiesModelVersionEnum(val string) (DetectLanguageEntitiesModelVersionEnum, bool) {
-	mappingDetectLanguageEntitiesModelVersionEnumIgnoreCase := make(map[string]DetectLanguageEntitiesModelVersionEnum)
-	for k, v := range mappingDetectLanguageEntitiesModelVersionEnum {
-		mappingDetectLanguageEntitiesModelVersionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDetectLanguageEntitiesModelVersionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDetectLanguageEntitiesModelVersionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

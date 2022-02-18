@@ -6,7 +6,7 @@ package filestorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -165,6 +165,14 @@ var mappingListExportsLifecycleStateEnum = map[string]ListExportsLifecycleStateE
 	"FAILED":   ListExportsLifecycleStateFailed,
 }
 
+var mappingListExportsLifecycleStateEnumLowerCase = map[string]ListExportsLifecycleStateEnum{
+	"creating": ListExportsLifecycleStateCreating,
+	"active":   ListExportsLifecycleStateActive,
+	"deleting": ListExportsLifecycleStateDeleting,
+	"deleted":  ListExportsLifecycleStateDeleted,
+	"failed":   ListExportsLifecycleStateFailed,
+}
+
 // GetListExportsLifecycleStateEnumValues Enumerates the set of values for ListExportsLifecycleStateEnum
 func GetListExportsLifecycleStateEnumValues() []ListExportsLifecycleStateEnum {
 	values := make([]ListExportsLifecycleStateEnum, 0)
@@ -187,12 +195,7 @@ func GetListExportsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListExportsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListExportsLifecycleStateEnum(val string) (ListExportsLifecycleStateEnum, bool) {
-	mappingListExportsLifecycleStateEnumIgnoreCase := make(map[string]ListExportsLifecycleStateEnum)
-	for k, v := range mappingListExportsLifecycleStateEnum {
-		mappingListExportsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListExportsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListExportsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -208,6 +211,11 @@ const (
 var mappingListExportsSortByEnum = map[string]ListExportsSortByEnum{
 	"TIMECREATED": ListExportsSortByTimecreated,
 	"PATH":        ListExportsSortByPath,
+}
+
+var mappingListExportsSortByEnumLowerCase = map[string]ListExportsSortByEnum{
+	"timecreated": ListExportsSortByTimecreated,
+	"path":        ListExportsSortByPath,
 }
 
 // GetListExportsSortByEnumValues Enumerates the set of values for ListExportsSortByEnum
@@ -229,12 +237,7 @@ func GetListExportsSortByEnumStringValues() []string {
 
 // GetMappingListExportsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListExportsSortByEnum(val string) (ListExportsSortByEnum, bool) {
-	mappingListExportsSortByEnumIgnoreCase := make(map[string]ListExportsSortByEnum)
-	for k, v := range mappingListExportsSortByEnum {
-		mappingListExportsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListExportsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListExportsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -250,6 +253,11 @@ const (
 var mappingListExportsSortOrderEnum = map[string]ListExportsSortOrderEnum{
 	"ASC":  ListExportsSortOrderAsc,
 	"DESC": ListExportsSortOrderDesc,
+}
+
+var mappingListExportsSortOrderEnumLowerCase = map[string]ListExportsSortOrderEnum{
+	"asc":  ListExportsSortOrderAsc,
+	"desc": ListExportsSortOrderDesc,
 }
 
 // GetListExportsSortOrderEnumValues Enumerates the set of values for ListExportsSortOrderEnum
@@ -271,11 +279,6 @@ func GetListExportsSortOrderEnumStringValues() []string {
 
 // GetMappingListExportsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListExportsSortOrderEnum(val string) (ListExportsSortOrderEnum, bool) {
-	mappingListExportsSortOrderEnumIgnoreCase := make(map[string]ListExportsSortOrderEnum)
-	for k, v := range mappingListExportsSortOrderEnum {
-		mappingListExportsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListExportsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListExportsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

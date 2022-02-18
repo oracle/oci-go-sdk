@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -143,6 +143,11 @@ var mappingUserAssessmentSummaryTriggeredByEnum = map[string]UserAssessmentSumma
 	"SYSTEM": UserAssessmentSummaryTriggeredBySystem,
 }
 
+var mappingUserAssessmentSummaryTriggeredByEnumLowerCase = map[string]UserAssessmentSummaryTriggeredByEnum{
+	"user":   UserAssessmentSummaryTriggeredByUser,
+	"system": UserAssessmentSummaryTriggeredBySystem,
+}
+
 // GetUserAssessmentSummaryTriggeredByEnumValues Enumerates the set of values for UserAssessmentSummaryTriggeredByEnum
 func GetUserAssessmentSummaryTriggeredByEnumValues() []UserAssessmentSummaryTriggeredByEnum {
 	values := make([]UserAssessmentSummaryTriggeredByEnum, 0)
@@ -162,12 +167,7 @@ func GetUserAssessmentSummaryTriggeredByEnumStringValues() []string {
 
 // GetMappingUserAssessmentSummaryTriggeredByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserAssessmentSummaryTriggeredByEnum(val string) (UserAssessmentSummaryTriggeredByEnum, bool) {
-	mappingUserAssessmentSummaryTriggeredByEnumIgnoreCase := make(map[string]UserAssessmentSummaryTriggeredByEnum)
-	for k, v := range mappingUserAssessmentSummaryTriggeredByEnum {
-		mappingUserAssessmentSummaryTriggeredByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserAssessmentSummaryTriggeredByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserAssessmentSummaryTriggeredByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +187,13 @@ var mappingUserAssessmentSummaryTypeEnum = map[string]UserAssessmentSummaryTypeE
 	"SAVED":         UserAssessmentSummaryTypeSaved,
 	"SAVE_SCHEDULE": UserAssessmentSummaryTypeSaveSchedule,
 	"COMPARTMENT":   UserAssessmentSummaryTypeCompartment,
+}
+
+var mappingUserAssessmentSummaryTypeEnumLowerCase = map[string]UserAssessmentSummaryTypeEnum{
+	"latest":        UserAssessmentSummaryTypeLatest,
+	"saved":         UserAssessmentSummaryTypeSaved,
+	"save_schedule": UserAssessmentSummaryTypeSaveSchedule,
+	"compartment":   UserAssessmentSummaryTypeCompartment,
 }
 
 // GetUserAssessmentSummaryTypeEnumValues Enumerates the set of values for UserAssessmentSummaryTypeEnum
@@ -210,11 +217,6 @@ func GetUserAssessmentSummaryTypeEnumStringValues() []string {
 
 // GetMappingUserAssessmentSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserAssessmentSummaryTypeEnum(val string) (UserAssessmentSummaryTypeEnum, bool) {
-	mappingUserAssessmentSummaryTypeEnumIgnoreCase := make(map[string]UserAssessmentSummaryTypeEnum)
-	for k, v := range mappingUserAssessmentSummaryTypeEnum {
-		mappingUserAssessmentSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserAssessmentSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserAssessmentSummaryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

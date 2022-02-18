@@ -32,6 +32,13 @@ var mappingUpdateTypesEnum = map[string]UpdateTypesEnum{
 	"OTHER":       UpdateTypesOther,
 }
 
+var mappingUpdateTypesEnumLowerCase = map[string]UpdateTypesEnum{
+	"security":    UpdateTypesSecurity,
+	"bug":         UpdateTypesBug,
+	"enhancement": UpdateTypesEnhancement,
+	"other":       UpdateTypesOther,
+}
+
 // GetUpdateTypesEnumValues Enumerates the set of values for UpdateTypesEnum
 func GetUpdateTypesEnumValues() []UpdateTypesEnum {
 	values := make([]UpdateTypesEnum, 0)
@@ -53,11 +60,6 @@ func GetUpdateTypesEnumStringValues() []string {
 
 // GetMappingUpdateTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateTypesEnum(val string) (UpdateTypesEnum, bool) {
-	mappingUpdateTypesEnumIgnoreCase := make(map[string]UpdateTypesEnum)
-	for k, v := range mappingUpdateTypesEnum {
-		mappingUpdateTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -13,7 +13,7 @@ package loadbalancer
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -106,6 +106,13 @@ var mappingRuleConditionAttributeNameEnum = map[string]RuleConditionAttributeNam
 	"PATH":                  RuleConditionAttributeNamePath,
 }
 
+var mappingRuleConditionAttributeNameEnumLowerCase = map[string]RuleConditionAttributeNameEnum{
+	"source_ip_address":     RuleConditionAttributeNameSourceIpAddress,
+	"source_vcn_id":         RuleConditionAttributeNameSourceVcnId,
+	"source_vcn_ip_address": RuleConditionAttributeNameSourceVcnIpAddress,
+	"path":                  RuleConditionAttributeNamePath,
+}
+
 // GetRuleConditionAttributeNameEnumValues Enumerates the set of values for RuleConditionAttributeNameEnum
 func GetRuleConditionAttributeNameEnumValues() []RuleConditionAttributeNameEnum {
 	values := make([]RuleConditionAttributeNameEnum, 0)
@@ -127,11 +134,6 @@ func GetRuleConditionAttributeNameEnumStringValues() []string {
 
 // GetMappingRuleConditionAttributeNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRuleConditionAttributeNameEnum(val string) (RuleConditionAttributeNameEnum, bool) {
-	mappingRuleConditionAttributeNameEnumIgnoreCase := make(map[string]RuleConditionAttributeNameEnum)
-	for k, v := range mappingRuleConditionAttributeNameEnum {
-		mappingRuleConditionAttributeNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRuleConditionAttributeNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRuleConditionAttributeNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

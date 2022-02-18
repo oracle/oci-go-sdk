@@ -31,6 +31,13 @@ var mappingCertificateProfileTypeEnum = map[string]CertificateProfileTypeEnum{
 	"TLS_CODE_SIGN":        CertificateProfileTypeTlsCodeSign,
 }
 
+var mappingCertificateProfileTypeEnumLowerCase = map[string]CertificateProfileTypeEnum{
+	"tls_server_or_client": CertificateProfileTypeTlsServerOrClient,
+	"tls_server":           CertificateProfileTypeTlsServer,
+	"tls_client":           CertificateProfileTypeTlsClient,
+	"tls_code_sign":        CertificateProfileTypeTlsCodeSign,
+}
+
 // GetCertificateProfileTypeEnumValues Enumerates the set of values for CertificateProfileTypeEnum
 func GetCertificateProfileTypeEnumValues() []CertificateProfileTypeEnum {
 	values := make([]CertificateProfileTypeEnum, 0)
@@ -52,11 +59,6 @@ func GetCertificateProfileTypeEnumStringValues() []string {
 
 // GetMappingCertificateProfileTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCertificateProfileTypeEnum(val string) (CertificateProfileTypeEnum, bool) {
-	mappingCertificateProfileTypeEnumIgnoreCase := make(map[string]CertificateProfileTypeEnum)
-	for k, v := range mappingCertificateProfileTypeEnum {
-		mappingCertificateProfileTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCertificateProfileTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCertificateProfileTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

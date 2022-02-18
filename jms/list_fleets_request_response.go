@@ -6,7 +6,7 @@ package jms
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -150,6 +150,15 @@ var mappingListFleetsLifecycleStateEnum = map[string]ListFleetsLifecycleStateEnu
 	"UPDATING": ListFleetsLifecycleStateUpdating,
 }
 
+var mappingListFleetsLifecycleStateEnumLowerCase = map[string]ListFleetsLifecycleStateEnum{
+	"active":   ListFleetsLifecycleStateActive,
+	"creating": ListFleetsLifecycleStateCreating,
+	"deleted":  ListFleetsLifecycleStateDeleted,
+	"deleting": ListFleetsLifecycleStateDeleting,
+	"failed":   ListFleetsLifecycleStateFailed,
+	"updating": ListFleetsLifecycleStateUpdating,
+}
+
 // GetListFleetsLifecycleStateEnumValues Enumerates the set of values for ListFleetsLifecycleStateEnum
 func GetListFleetsLifecycleStateEnumValues() []ListFleetsLifecycleStateEnum {
 	values := make([]ListFleetsLifecycleStateEnum, 0)
@@ -173,12 +182,7 @@ func GetListFleetsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListFleetsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFleetsLifecycleStateEnum(val string) (ListFleetsLifecycleStateEnum, bool) {
-	mappingListFleetsLifecycleStateEnumIgnoreCase := make(map[string]ListFleetsLifecycleStateEnum)
-	for k, v := range mappingListFleetsLifecycleStateEnum {
-		mappingListFleetsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFleetsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFleetsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -194,6 +198,11 @@ const (
 var mappingListFleetsSortOrderEnum = map[string]ListFleetsSortOrderEnum{
 	"ASC":  ListFleetsSortOrderAsc,
 	"DESC": ListFleetsSortOrderDesc,
+}
+
+var mappingListFleetsSortOrderEnumLowerCase = map[string]ListFleetsSortOrderEnum{
+	"asc":  ListFleetsSortOrderAsc,
+	"desc": ListFleetsSortOrderDesc,
 }
 
 // GetListFleetsSortOrderEnumValues Enumerates the set of values for ListFleetsSortOrderEnum
@@ -215,12 +224,7 @@ func GetListFleetsSortOrderEnumStringValues() []string {
 
 // GetMappingListFleetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFleetsSortOrderEnum(val string) (ListFleetsSortOrderEnum, bool) {
-	mappingListFleetsSortOrderEnumIgnoreCase := make(map[string]ListFleetsSortOrderEnum)
-	for k, v := range mappingListFleetsSortOrderEnum {
-		mappingListFleetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFleetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFleetsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -236,6 +240,11 @@ const (
 var mappingListFleetsSortByEnum = map[string]ListFleetsSortByEnum{
 	"displayName": ListFleetsSortByDisplayname,
 	"timeCreated": ListFleetsSortByTimecreated,
+}
+
+var mappingListFleetsSortByEnumLowerCase = map[string]ListFleetsSortByEnum{
+	"displayname": ListFleetsSortByDisplayname,
+	"timecreated": ListFleetsSortByTimecreated,
 }
 
 // GetListFleetsSortByEnumValues Enumerates the set of values for ListFleetsSortByEnum
@@ -257,11 +266,6 @@ func GetListFleetsSortByEnumStringValues() []string {
 
 // GetMappingListFleetsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFleetsSortByEnum(val string) (ListFleetsSortByEnum, bool) {
-	mappingListFleetsSortByEnumIgnoreCase := make(map[string]ListFleetsSortByEnum)
-	for k, v := range mappingListFleetsSortByEnum {
-		mappingListFleetsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFleetsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFleetsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

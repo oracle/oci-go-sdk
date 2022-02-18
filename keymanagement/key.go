@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -112,6 +112,11 @@ var mappingKeyProtectionModeEnum = map[string]KeyProtectionModeEnum{
 	"SOFTWARE": KeyProtectionModeSoftware,
 }
 
+var mappingKeyProtectionModeEnumLowerCase = map[string]KeyProtectionModeEnum{
+	"hsm":      KeyProtectionModeHsm,
+	"software": KeyProtectionModeSoftware,
+}
+
 // GetKeyProtectionModeEnumValues Enumerates the set of values for KeyProtectionModeEnum
 func GetKeyProtectionModeEnumValues() []KeyProtectionModeEnum {
 	values := make([]KeyProtectionModeEnum, 0)
@@ -131,12 +136,7 @@ func GetKeyProtectionModeEnumStringValues() []string {
 
 // GetMappingKeyProtectionModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingKeyProtectionModeEnum(val string) (KeyProtectionModeEnum, bool) {
-	mappingKeyProtectionModeEnumIgnoreCase := make(map[string]KeyProtectionModeEnum)
-	for k, v := range mappingKeyProtectionModeEnum {
-		mappingKeyProtectionModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingKeyProtectionModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingKeyProtectionModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -176,6 +176,22 @@ var mappingKeyLifecycleStateEnum = map[string]KeyLifecycleStateEnum{
 	"RESTORING":           KeyLifecycleStateRestoring,
 }
 
+var mappingKeyLifecycleStateEnumLowerCase = map[string]KeyLifecycleStateEnum{
+	"creating":            KeyLifecycleStateCreating,
+	"enabling":            KeyLifecycleStateEnabling,
+	"enabled":             KeyLifecycleStateEnabled,
+	"disabling":           KeyLifecycleStateDisabling,
+	"disabled":            KeyLifecycleStateDisabled,
+	"deleting":            KeyLifecycleStateDeleting,
+	"deleted":             KeyLifecycleStateDeleted,
+	"pending_deletion":    KeyLifecycleStatePendingDeletion,
+	"scheduling_deletion": KeyLifecycleStateSchedulingDeletion,
+	"cancelling_deletion": KeyLifecycleStateCancellingDeletion,
+	"updating":            KeyLifecycleStateUpdating,
+	"backup_in_progress":  KeyLifecycleStateBackupInProgress,
+	"restoring":           KeyLifecycleStateRestoring,
+}
+
 // GetKeyLifecycleStateEnumValues Enumerates the set of values for KeyLifecycleStateEnum
 func GetKeyLifecycleStateEnumValues() []KeyLifecycleStateEnum {
 	values := make([]KeyLifecycleStateEnum, 0)
@@ -206,11 +222,6 @@ func GetKeyLifecycleStateEnumStringValues() []string {
 
 // GetMappingKeyLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingKeyLifecycleStateEnum(val string) (KeyLifecycleStateEnum, bool) {
-	mappingKeyLifecycleStateEnumIgnoreCase := make(map[string]KeyLifecycleStateEnum)
-	for k, v := range mappingKeyLifecycleStateEnum {
-		mappingKeyLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingKeyLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingKeyLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

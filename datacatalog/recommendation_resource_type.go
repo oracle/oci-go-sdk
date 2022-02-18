@@ -32,6 +32,13 @@ var mappingRecommendationResourceTypeEnum = map[string]RecommendationResourceTyp
 	"CATEGORY":    RecommendationResourceTypeCategory,
 }
 
+var mappingRecommendationResourceTypeEnumLowerCase = map[string]RecommendationResourceTypeEnum{
+	"data_entity": RecommendationResourceTypeDataEntity,
+	"attribute":   RecommendationResourceTypeAttribute,
+	"term":        RecommendationResourceTypeTerm,
+	"category":    RecommendationResourceTypeCategory,
+}
+
 // GetRecommendationResourceTypeEnumValues Enumerates the set of values for RecommendationResourceTypeEnum
 func GetRecommendationResourceTypeEnumValues() []RecommendationResourceTypeEnum {
 	values := make([]RecommendationResourceTypeEnum, 0)
@@ -53,11 +60,6 @@ func GetRecommendationResourceTypeEnumStringValues() []string {
 
 // GetMappingRecommendationResourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRecommendationResourceTypeEnum(val string) (RecommendationResourceTypeEnum, bool) {
-	mappingRecommendationResourceTypeEnumIgnoreCase := make(map[string]RecommendationResourceTypeEnum)
-	for k, v := range mappingRecommendationResourceTypeEnum {
-		mappingRecommendationResourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRecommendationResourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRecommendationResourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

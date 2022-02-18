@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -145,6 +145,11 @@ var mappingListByoipRangesSortByEnum = map[string]ListByoipRangesSortByEnum{
 	"DISPLAYNAME": ListByoipRangesSortByDisplayname,
 }
 
+var mappingListByoipRangesSortByEnumLowerCase = map[string]ListByoipRangesSortByEnum{
+	"timecreated": ListByoipRangesSortByTimecreated,
+	"displayname": ListByoipRangesSortByDisplayname,
+}
+
 // GetListByoipRangesSortByEnumValues Enumerates the set of values for ListByoipRangesSortByEnum
 func GetListByoipRangesSortByEnumValues() []ListByoipRangesSortByEnum {
 	values := make([]ListByoipRangesSortByEnum, 0)
@@ -164,12 +169,7 @@ func GetListByoipRangesSortByEnumStringValues() []string {
 
 // GetMappingListByoipRangesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListByoipRangesSortByEnum(val string) (ListByoipRangesSortByEnum, bool) {
-	mappingListByoipRangesSortByEnumIgnoreCase := make(map[string]ListByoipRangesSortByEnum)
-	for k, v := range mappingListByoipRangesSortByEnum {
-		mappingListByoipRangesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListByoipRangesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListByoipRangesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -185,6 +185,11 @@ const (
 var mappingListByoipRangesSortOrderEnum = map[string]ListByoipRangesSortOrderEnum{
 	"ASC":  ListByoipRangesSortOrderAsc,
 	"DESC": ListByoipRangesSortOrderDesc,
+}
+
+var mappingListByoipRangesSortOrderEnumLowerCase = map[string]ListByoipRangesSortOrderEnum{
+	"asc":  ListByoipRangesSortOrderAsc,
+	"desc": ListByoipRangesSortOrderDesc,
 }
 
 // GetListByoipRangesSortOrderEnumValues Enumerates the set of values for ListByoipRangesSortOrderEnum
@@ -206,11 +211,6 @@ func GetListByoipRangesSortOrderEnumStringValues() []string {
 
 // GetMappingListByoipRangesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListByoipRangesSortOrderEnum(val string) (ListByoipRangesSortOrderEnum, bool) {
-	mappingListByoipRangesSortOrderEnumIgnoreCase := make(map[string]ListByoipRangesSortOrderEnum)
-	for k, v := range mappingListByoipRangesSortOrderEnum {
-		mappingListByoipRangesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListByoipRangesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListByoipRangesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -80,6 +80,15 @@ var mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataRe
 	"THROUGHPUT": SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricThroughput,
 }
 
+var mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnumLowerCase = map[string]SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnum{
+	"cpu":        SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricCpu,
+	"storage":    SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricStorage,
+	"io":         SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricIo,
+	"memory":     SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricMemory,
+	"iops":       SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricIops,
+	"throughput": SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricThroughput,
+}
+
 // GetSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnumValues Enumerates the set of values for SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnum
 func GetSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnumValues() []SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnum {
 	values := make([]SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnum, 0)
@@ -103,12 +112,7 @@ func GetSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResou
 
 // GetMappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnum(val string) (SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnum, bool) {
-	mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnum)
-	for k, v := range mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnum {
-		mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceMetricEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -128,6 +132,13 @@ var mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataRe
 	"HOST":           SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeHost,
 	"STORAGE_SERVER": SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeStorageServer,
 	"DISKGROUP":      SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeDiskgroup,
+}
+
+var mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnumLowerCase = map[string]SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnum{
+	"database":       SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeDatabase,
+	"host":           SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeHost,
+	"storage_server": SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeStorageServer,
+	"diskgroup":      SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeDiskgroup,
 }
 
 // GetSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnumValues Enumerates the set of values for SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnum
@@ -151,11 +162,6 @@ func GetSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResou
 
 // GetMappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnum(val string) (SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnum, bool) {
-	mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnum)
-	for k, v := range mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnum {
-		mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeExadataInsightResourceUtilizationInsightAggregationExadataResourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

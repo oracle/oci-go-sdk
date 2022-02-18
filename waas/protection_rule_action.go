@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -63,6 +63,12 @@ var mappingProtectionRuleActionActionEnum = map[string]ProtectionRuleActionActio
 	"BLOCK":  ProtectionRuleActionActionBlock,
 }
 
+var mappingProtectionRuleActionActionEnumLowerCase = map[string]ProtectionRuleActionActionEnum{
+	"off":    ProtectionRuleActionActionOff,
+	"detect": ProtectionRuleActionActionDetect,
+	"block":  ProtectionRuleActionActionBlock,
+}
+
 // GetProtectionRuleActionActionEnumValues Enumerates the set of values for ProtectionRuleActionActionEnum
 func GetProtectionRuleActionActionEnumValues() []ProtectionRuleActionActionEnum {
 	values := make([]ProtectionRuleActionActionEnum, 0)
@@ -83,11 +89,6 @@ func GetProtectionRuleActionActionEnumStringValues() []string {
 
 // GetMappingProtectionRuleActionActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingProtectionRuleActionActionEnum(val string) (ProtectionRuleActionActionEnum, bool) {
-	mappingProtectionRuleActionActionEnumIgnoreCase := make(map[string]ProtectionRuleActionActionEnum)
-	for k, v := range mappingProtectionRuleActionActionEnum {
-		mappingProtectionRuleActionActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingProtectionRuleActionActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingProtectionRuleActionActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

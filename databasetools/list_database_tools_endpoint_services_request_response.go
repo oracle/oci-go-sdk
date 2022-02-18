@@ -6,7 +6,7 @@ package databasetools
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,11 @@ var mappingListDatabaseToolsEndpointServicesSortOrderEnum = map[string]ListDatab
 	"DESC": ListDatabaseToolsEndpointServicesSortOrderDesc,
 }
 
+var mappingListDatabaseToolsEndpointServicesSortOrderEnumLowerCase = map[string]ListDatabaseToolsEndpointServicesSortOrderEnum{
+	"asc":  ListDatabaseToolsEndpointServicesSortOrderAsc,
+	"desc": ListDatabaseToolsEndpointServicesSortOrderDesc,
+}
+
 // GetListDatabaseToolsEndpointServicesSortOrderEnumValues Enumerates the set of values for ListDatabaseToolsEndpointServicesSortOrderEnum
 func GetListDatabaseToolsEndpointServicesSortOrderEnumValues() []ListDatabaseToolsEndpointServicesSortOrderEnum {
 	values := make([]ListDatabaseToolsEndpointServicesSortOrderEnum, 0)
@@ -157,12 +162,7 @@ func GetListDatabaseToolsEndpointServicesSortOrderEnumStringValues() []string {
 
 // GetMappingListDatabaseToolsEndpointServicesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseToolsEndpointServicesSortOrderEnum(val string) (ListDatabaseToolsEndpointServicesSortOrderEnum, bool) {
-	mappingListDatabaseToolsEndpointServicesSortOrderEnumIgnoreCase := make(map[string]ListDatabaseToolsEndpointServicesSortOrderEnum)
-	for k, v := range mappingListDatabaseToolsEndpointServicesSortOrderEnum {
-		mappingListDatabaseToolsEndpointServicesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseToolsEndpointServicesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseToolsEndpointServicesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -178,6 +178,11 @@ const (
 var mappingListDatabaseToolsEndpointServicesSortByEnum = map[string]ListDatabaseToolsEndpointServicesSortByEnum{
 	"timeCreated": ListDatabaseToolsEndpointServicesSortByTimecreated,
 	"displayName": ListDatabaseToolsEndpointServicesSortByDisplayname,
+}
+
+var mappingListDatabaseToolsEndpointServicesSortByEnumLowerCase = map[string]ListDatabaseToolsEndpointServicesSortByEnum{
+	"timecreated": ListDatabaseToolsEndpointServicesSortByTimecreated,
+	"displayname": ListDatabaseToolsEndpointServicesSortByDisplayname,
 }
 
 // GetListDatabaseToolsEndpointServicesSortByEnumValues Enumerates the set of values for ListDatabaseToolsEndpointServicesSortByEnum
@@ -199,12 +204,7 @@ func GetListDatabaseToolsEndpointServicesSortByEnumStringValues() []string {
 
 // GetMappingListDatabaseToolsEndpointServicesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseToolsEndpointServicesSortByEnum(val string) (ListDatabaseToolsEndpointServicesSortByEnum, bool) {
-	mappingListDatabaseToolsEndpointServicesSortByEnumIgnoreCase := make(map[string]ListDatabaseToolsEndpointServicesSortByEnum)
-	for k, v := range mappingListDatabaseToolsEndpointServicesSortByEnum {
-		mappingListDatabaseToolsEndpointServicesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseToolsEndpointServicesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseToolsEndpointServicesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -230,6 +230,15 @@ var mappingListDatabaseToolsEndpointServicesLifecycleStateEnum = map[string]List
 	"FAILED":   ListDatabaseToolsEndpointServicesLifecycleStateFailed,
 }
 
+var mappingListDatabaseToolsEndpointServicesLifecycleStateEnumLowerCase = map[string]ListDatabaseToolsEndpointServicesLifecycleStateEnum{
+	"creating": ListDatabaseToolsEndpointServicesLifecycleStateCreating,
+	"updating": ListDatabaseToolsEndpointServicesLifecycleStateUpdating,
+	"active":   ListDatabaseToolsEndpointServicesLifecycleStateActive,
+	"deleting": ListDatabaseToolsEndpointServicesLifecycleStateDeleting,
+	"deleted":  ListDatabaseToolsEndpointServicesLifecycleStateDeleted,
+	"failed":   ListDatabaseToolsEndpointServicesLifecycleStateFailed,
+}
+
 // GetListDatabaseToolsEndpointServicesLifecycleStateEnumValues Enumerates the set of values for ListDatabaseToolsEndpointServicesLifecycleStateEnum
 func GetListDatabaseToolsEndpointServicesLifecycleStateEnumValues() []ListDatabaseToolsEndpointServicesLifecycleStateEnum {
 	values := make([]ListDatabaseToolsEndpointServicesLifecycleStateEnum, 0)
@@ -253,11 +262,6 @@ func GetListDatabaseToolsEndpointServicesLifecycleStateEnumStringValues() []stri
 
 // GetMappingListDatabaseToolsEndpointServicesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseToolsEndpointServicesLifecycleStateEnum(val string) (ListDatabaseToolsEndpointServicesLifecycleStateEnum, bool) {
-	mappingListDatabaseToolsEndpointServicesLifecycleStateEnumIgnoreCase := make(map[string]ListDatabaseToolsEndpointServicesLifecycleStateEnum)
-	for k, v := range mappingListDatabaseToolsEndpointServicesLifecycleStateEnum {
-		mappingListDatabaseToolsEndpointServicesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseToolsEndpointServicesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseToolsEndpointServicesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

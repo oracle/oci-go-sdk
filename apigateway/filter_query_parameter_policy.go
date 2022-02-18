@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -62,6 +62,11 @@ var mappingFilterQueryParameterPolicyTypeEnum = map[string]FilterQueryParameterP
 	"BLOCK": FilterQueryParameterPolicyTypeBlock,
 }
 
+var mappingFilterQueryParameterPolicyTypeEnumLowerCase = map[string]FilterQueryParameterPolicyTypeEnum{
+	"allow": FilterQueryParameterPolicyTypeAllow,
+	"block": FilterQueryParameterPolicyTypeBlock,
+}
+
 // GetFilterQueryParameterPolicyTypeEnumValues Enumerates the set of values for FilterQueryParameterPolicyTypeEnum
 func GetFilterQueryParameterPolicyTypeEnumValues() []FilterQueryParameterPolicyTypeEnum {
 	values := make([]FilterQueryParameterPolicyTypeEnum, 0)
@@ -81,11 +86,6 @@ func GetFilterQueryParameterPolicyTypeEnumStringValues() []string {
 
 // GetMappingFilterQueryParameterPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFilterQueryParameterPolicyTypeEnum(val string) (FilterQueryParameterPolicyTypeEnum, bool) {
-	mappingFilterQueryParameterPolicyTypeEnumIgnoreCase := make(map[string]FilterQueryParameterPolicyTypeEnum)
-	for k, v := range mappingFilterQueryParameterPolicyTypeEnum {
-		mappingFilterQueryParameterPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFilterQueryParameterPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFilterQueryParameterPolicyTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

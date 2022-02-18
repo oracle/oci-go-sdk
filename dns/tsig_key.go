@@ -12,7 +12,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -106,6 +106,15 @@ var mappingTsigKeyLifecycleStateEnum = map[string]TsigKeyLifecycleStateEnum{
 	"UPDATING": TsigKeyLifecycleStateUpdating,
 }
 
+var mappingTsigKeyLifecycleStateEnumLowerCase = map[string]TsigKeyLifecycleStateEnum{
+	"active":   TsigKeyLifecycleStateActive,
+	"creating": TsigKeyLifecycleStateCreating,
+	"deleted":  TsigKeyLifecycleStateDeleted,
+	"deleting": TsigKeyLifecycleStateDeleting,
+	"failed":   TsigKeyLifecycleStateFailed,
+	"updating": TsigKeyLifecycleStateUpdating,
+}
+
 // GetTsigKeyLifecycleStateEnumValues Enumerates the set of values for TsigKeyLifecycleStateEnum
 func GetTsigKeyLifecycleStateEnumValues() []TsigKeyLifecycleStateEnum {
 	values := make([]TsigKeyLifecycleStateEnum, 0)
@@ -129,11 +138,6 @@ func GetTsigKeyLifecycleStateEnumStringValues() []string {
 
 // GetMappingTsigKeyLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTsigKeyLifecycleStateEnum(val string) (TsigKeyLifecycleStateEnum, bool) {
-	mappingTsigKeyLifecycleStateEnumIgnoreCase := make(map[string]TsigKeyLifecycleStateEnum)
-	for k, v := range mappingTsigKeyLifecycleStateEnum {
-		mappingTsigKeyLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTsigKeyLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTsigKeyLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

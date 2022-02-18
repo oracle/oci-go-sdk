@@ -43,6 +43,18 @@ var mappingLifecycleStateEnum = map[string]LifecycleStateEnum{
 	"CREATING":  LifecycleStateCreating,
 }
 
+var mappingLifecycleStateEnumLowerCase = map[string]LifecycleStateEnum{
+	"active":    LifecycleStateActive,
+	"failed":    LifecycleStateFailed,
+	"inactive":  LifecycleStateInactive,
+	"attaching": LifecycleStateAttaching,
+	"detaching": LifecycleStateDetaching,
+	"deleting":  LifecycleStateDeleting,
+	"deleted":   LifecycleStateDeleted,
+	"updating":  LifecycleStateUpdating,
+	"creating":  LifecycleStateCreating,
+}
+
 // GetLifecycleStateEnumValues Enumerates the set of values for LifecycleStateEnum
 func GetLifecycleStateEnumValues() []LifecycleStateEnum {
 	values := make([]LifecycleStateEnum, 0)
@@ -69,11 +81,6 @@ func GetLifecycleStateEnumStringValues() []string {
 
 // GetMappingLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLifecycleStateEnum(val string) (LifecycleStateEnum, bool) {
-	mappingLifecycleStateEnumIgnoreCase := make(map[string]LifecycleStateEnum)
-	for k, v := range mappingLifecycleStateEnum {
-		mappingLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

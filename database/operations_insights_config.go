@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -67,6 +67,15 @@ var mappingOperationsInsightsConfigOperationsInsightsStatusEnum = map[string]Ope
 	"FAILED_DISABLING": OperationsInsightsConfigOperationsInsightsStatusFailedDisabling,
 }
 
+var mappingOperationsInsightsConfigOperationsInsightsStatusEnumLowerCase = map[string]OperationsInsightsConfigOperationsInsightsStatusEnum{
+	"enabling":         OperationsInsightsConfigOperationsInsightsStatusEnabling,
+	"enabled":          OperationsInsightsConfigOperationsInsightsStatusEnabled,
+	"disabling":        OperationsInsightsConfigOperationsInsightsStatusDisabling,
+	"not_enabled":      OperationsInsightsConfigOperationsInsightsStatusNotEnabled,
+	"failed_enabling":  OperationsInsightsConfigOperationsInsightsStatusFailedEnabling,
+	"failed_disabling": OperationsInsightsConfigOperationsInsightsStatusFailedDisabling,
+}
+
 // GetOperationsInsightsConfigOperationsInsightsStatusEnumValues Enumerates the set of values for OperationsInsightsConfigOperationsInsightsStatusEnum
 func GetOperationsInsightsConfigOperationsInsightsStatusEnumValues() []OperationsInsightsConfigOperationsInsightsStatusEnum {
 	values := make([]OperationsInsightsConfigOperationsInsightsStatusEnum, 0)
@@ -90,11 +99,6 @@ func GetOperationsInsightsConfigOperationsInsightsStatusEnumStringValues() []str
 
 // GetMappingOperationsInsightsConfigOperationsInsightsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperationsInsightsConfigOperationsInsightsStatusEnum(val string) (OperationsInsightsConfigOperationsInsightsStatusEnum, bool) {
-	mappingOperationsInsightsConfigOperationsInsightsStatusEnumIgnoreCase := make(map[string]OperationsInsightsConfigOperationsInsightsStatusEnum)
-	for k, v := range mappingOperationsInsightsConfigOperationsInsightsStatusEnum {
-		mappingOperationsInsightsConfigOperationsInsightsStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperationsInsightsConfigOperationsInsightsStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperationsInsightsConfigOperationsInsightsStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

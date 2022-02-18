@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -160,6 +160,16 @@ var mappingListOnPremConnectorsOnPremConnectorLifecycleStateEnum = map[string]Li
 	"FAILED":   ListOnPremConnectorsOnPremConnectorLifecycleStateFailed,
 }
 
+var mappingListOnPremConnectorsOnPremConnectorLifecycleStateEnumLowerCase = map[string]ListOnPremConnectorsOnPremConnectorLifecycleStateEnum{
+	"creating": ListOnPremConnectorsOnPremConnectorLifecycleStateCreating,
+	"updating": ListOnPremConnectorsOnPremConnectorLifecycleStateUpdating,
+	"active":   ListOnPremConnectorsOnPremConnectorLifecycleStateActive,
+	"inactive": ListOnPremConnectorsOnPremConnectorLifecycleStateInactive,
+	"deleting": ListOnPremConnectorsOnPremConnectorLifecycleStateDeleting,
+	"deleted":  ListOnPremConnectorsOnPremConnectorLifecycleStateDeleted,
+	"failed":   ListOnPremConnectorsOnPremConnectorLifecycleStateFailed,
+}
+
 // GetListOnPremConnectorsOnPremConnectorLifecycleStateEnumValues Enumerates the set of values for ListOnPremConnectorsOnPremConnectorLifecycleStateEnum
 func GetListOnPremConnectorsOnPremConnectorLifecycleStateEnumValues() []ListOnPremConnectorsOnPremConnectorLifecycleStateEnum {
 	values := make([]ListOnPremConnectorsOnPremConnectorLifecycleStateEnum, 0)
@@ -184,12 +194,7 @@ func GetListOnPremConnectorsOnPremConnectorLifecycleStateEnumStringValues() []st
 
 // GetMappingListOnPremConnectorsOnPremConnectorLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOnPremConnectorsOnPremConnectorLifecycleStateEnum(val string) (ListOnPremConnectorsOnPremConnectorLifecycleStateEnum, bool) {
-	mappingListOnPremConnectorsOnPremConnectorLifecycleStateEnumIgnoreCase := make(map[string]ListOnPremConnectorsOnPremConnectorLifecycleStateEnum)
-	for k, v := range mappingListOnPremConnectorsOnPremConnectorLifecycleStateEnum {
-		mappingListOnPremConnectorsOnPremConnectorLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOnPremConnectorsOnPremConnectorLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOnPremConnectorsOnPremConnectorLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -205,6 +210,11 @@ const (
 var mappingListOnPremConnectorsSortOrderEnum = map[string]ListOnPremConnectorsSortOrderEnum{
 	"ASC":  ListOnPremConnectorsSortOrderAsc,
 	"DESC": ListOnPremConnectorsSortOrderDesc,
+}
+
+var mappingListOnPremConnectorsSortOrderEnumLowerCase = map[string]ListOnPremConnectorsSortOrderEnum{
+	"asc":  ListOnPremConnectorsSortOrderAsc,
+	"desc": ListOnPremConnectorsSortOrderDesc,
 }
 
 // GetListOnPremConnectorsSortOrderEnumValues Enumerates the set of values for ListOnPremConnectorsSortOrderEnum
@@ -226,12 +236,7 @@ func GetListOnPremConnectorsSortOrderEnumStringValues() []string {
 
 // GetMappingListOnPremConnectorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOnPremConnectorsSortOrderEnum(val string) (ListOnPremConnectorsSortOrderEnum, bool) {
-	mappingListOnPremConnectorsSortOrderEnumIgnoreCase := make(map[string]ListOnPremConnectorsSortOrderEnum)
-	for k, v := range mappingListOnPremConnectorsSortOrderEnum {
-		mappingListOnPremConnectorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOnPremConnectorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOnPremConnectorsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -247,6 +252,11 @@ const (
 var mappingListOnPremConnectorsSortByEnum = map[string]ListOnPremConnectorsSortByEnum{
 	"TIMECREATED": ListOnPremConnectorsSortByTimecreated,
 	"DISPLAYNAME": ListOnPremConnectorsSortByDisplayname,
+}
+
+var mappingListOnPremConnectorsSortByEnumLowerCase = map[string]ListOnPremConnectorsSortByEnum{
+	"timecreated": ListOnPremConnectorsSortByTimecreated,
+	"displayname": ListOnPremConnectorsSortByDisplayname,
 }
 
 // GetListOnPremConnectorsSortByEnumValues Enumerates the set of values for ListOnPremConnectorsSortByEnum
@@ -268,12 +278,7 @@ func GetListOnPremConnectorsSortByEnumStringValues() []string {
 
 // GetMappingListOnPremConnectorsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOnPremConnectorsSortByEnum(val string) (ListOnPremConnectorsSortByEnum, bool) {
-	mappingListOnPremConnectorsSortByEnumIgnoreCase := make(map[string]ListOnPremConnectorsSortByEnum)
-	for k, v := range mappingListOnPremConnectorsSortByEnum {
-		mappingListOnPremConnectorsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOnPremConnectorsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOnPremConnectorsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -289,6 +294,11 @@ const (
 var mappingListOnPremConnectorsAccessLevelEnum = map[string]ListOnPremConnectorsAccessLevelEnum{
 	"RESTRICTED": ListOnPremConnectorsAccessLevelRestricted,
 	"ACCESSIBLE": ListOnPremConnectorsAccessLevelAccessible,
+}
+
+var mappingListOnPremConnectorsAccessLevelEnumLowerCase = map[string]ListOnPremConnectorsAccessLevelEnum{
+	"restricted": ListOnPremConnectorsAccessLevelRestricted,
+	"accessible": ListOnPremConnectorsAccessLevelAccessible,
 }
 
 // GetListOnPremConnectorsAccessLevelEnumValues Enumerates the set of values for ListOnPremConnectorsAccessLevelEnum
@@ -310,11 +320,6 @@ func GetListOnPremConnectorsAccessLevelEnumStringValues() []string {
 
 // GetMappingListOnPremConnectorsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOnPremConnectorsAccessLevelEnum(val string) (ListOnPremConnectorsAccessLevelEnum, bool) {
-	mappingListOnPremConnectorsAccessLevelEnumIgnoreCase := make(map[string]ListOnPremConnectorsAccessLevelEnum)
-	for k, v := range mappingListOnPremConnectorsAccessLevelEnum {
-		mappingListOnPremConnectorsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOnPremConnectorsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOnPremConnectorsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

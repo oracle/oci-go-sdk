@@ -12,7 +12,7 @@ package artifacts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -97,6 +97,12 @@ var mappingContainerRepositoryLifecycleStateEnum = map[string]ContainerRepositor
 	"DELETED":   ContainerRepositoryLifecycleStateDeleted,
 }
 
+var mappingContainerRepositoryLifecycleStateEnumLowerCase = map[string]ContainerRepositoryLifecycleStateEnum{
+	"available": ContainerRepositoryLifecycleStateAvailable,
+	"deleting":  ContainerRepositoryLifecycleStateDeleting,
+	"deleted":   ContainerRepositoryLifecycleStateDeleted,
+}
+
 // GetContainerRepositoryLifecycleStateEnumValues Enumerates the set of values for ContainerRepositoryLifecycleStateEnum
 func GetContainerRepositoryLifecycleStateEnumValues() []ContainerRepositoryLifecycleStateEnum {
 	values := make([]ContainerRepositoryLifecycleStateEnum, 0)
@@ -117,11 +123,6 @@ func GetContainerRepositoryLifecycleStateEnumStringValues() []string {
 
 // GetMappingContainerRepositoryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingContainerRepositoryLifecycleStateEnum(val string) (ContainerRepositoryLifecycleStateEnum, bool) {
-	mappingContainerRepositoryLifecycleStateEnumIgnoreCase := make(map[string]ContainerRepositoryLifecycleStateEnum)
-	for k, v := range mappingContainerRepositoryLifecycleStateEnum {
-		mappingContainerRepositoryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingContainerRepositoryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingContainerRepositoryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

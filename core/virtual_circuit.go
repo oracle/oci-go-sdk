@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -217,6 +217,12 @@ var mappingVirtualCircuitBgpManagementEnum = map[string]VirtualCircuitBgpManagem
 	"ORACLE_MANAGED":   VirtualCircuitBgpManagementOracleManaged,
 }
 
+var mappingVirtualCircuitBgpManagementEnumLowerCase = map[string]VirtualCircuitBgpManagementEnum{
+	"customer_managed": VirtualCircuitBgpManagementCustomerManaged,
+	"provider_managed": VirtualCircuitBgpManagementProviderManaged,
+	"oracle_managed":   VirtualCircuitBgpManagementOracleManaged,
+}
+
 // GetVirtualCircuitBgpManagementEnumValues Enumerates the set of values for VirtualCircuitBgpManagementEnum
 func GetVirtualCircuitBgpManagementEnumValues() []VirtualCircuitBgpManagementEnum {
 	values := make([]VirtualCircuitBgpManagementEnum, 0)
@@ -237,12 +243,7 @@ func GetVirtualCircuitBgpManagementEnumStringValues() []string {
 
 // GetMappingVirtualCircuitBgpManagementEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVirtualCircuitBgpManagementEnum(val string) (VirtualCircuitBgpManagementEnum, bool) {
-	mappingVirtualCircuitBgpManagementEnumIgnoreCase := make(map[string]VirtualCircuitBgpManagementEnum)
-	for k, v := range mappingVirtualCircuitBgpManagementEnum {
-		mappingVirtualCircuitBgpManagementEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVirtualCircuitBgpManagementEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVirtualCircuitBgpManagementEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -258,6 +259,11 @@ const (
 var mappingVirtualCircuitBgpSessionStateEnum = map[string]VirtualCircuitBgpSessionStateEnum{
 	"UP":   VirtualCircuitBgpSessionStateUp,
 	"DOWN": VirtualCircuitBgpSessionStateDown,
+}
+
+var mappingVirtualCircuitBgpSessionStateEnumLowerCase = map[string]VirtualCircuitBgpSessionStateEnum{
+	"up":   VirtualCircuitBgpSessionStateUp,
+	"down": VirtualCircuitBgpSessionStateDown,
 }
 
 // GetVirtualCircuitBgpSessionStateEnumValues Enumerates the set of values for VirtualCircuitBgpSessionStateEnum
@@ -279,12 +285,7 @@ func GetVirtualCircuitBgpSessionStateEnumStringValues() []string {
 
 // GetMappingVirtualCircuitBgpSessionStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVirtualCircuitBgpSessionStateEnum(val string) (VirtualCircuitBgpSessionStateEnum, bool) {
-	mappingVirtualCircuitBgpSessionStateEnumIgnoreCase := make(map[string]VirtualCircuitBgpSessionStateEnum)
-	for k, v := range mappingVirtualCircuitBgpSessionStateEnum {
-		mappingVirtualCircuitBgpSessionStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVirtualCircuitBgpSessionStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVirtualCircuitBgpSessionStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -300,6 +301,11 @@ const (
 var mappingVirtualCircuitBgpIpv6SessionStateEnum = map[string]VirtualCircuitBgpIpv6SessionStateEnum{
 	"UP":   VirtualCircuitBgpIpv6SessionStateUp,
 	"DOWN": VirtualCircuitBgpIpv6SessionStateDown,
+}
+
+var mappingVirtualCircuitBgpIpv6SessionStateEnumLowerCase = map[string]VirtualCircuitBgpIpv6SessionStateEnum{
+	"up":   VirtualCircuitBgpIpv6SessionStateUp,
+	"down": VirtualCircuitBgpIpv6SessionStateDown,
 }
 
 // GetVirtualCircuitBgpIpv6SessionStateEnumValues Enumerates the set of values for VirtualCircuitBgpIpv6SessionStateEnum
@@ -321,12 +327,7 @@ func GetVirtualCircuitBgpIpv6SessionStateEnumStringValues() []string {
 
 // GetMappingVirtualCircuitBgpIpv6SessionStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVirtualCircuitBgpIpv6SessionStateEnum(val string) (VirtualCircuitBgpIpv6SessionStateEnum, bool) {
-	mappingVirtualCircuitBgpIpv6SessionStateEnumIgnoreCase := make(map[string]VirtualCircuitBgpIpv6SessionStateEnum)
-	for k, v := range mappingVirtualCircuitBgpIpv6SessionStateEnum {
-		mappingVirtualCircuitBgpIpv6SessionStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVirtualCircuitBgpIpv6SessionStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVirtualCircuitBgpIpv6SessionStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -346,6 +347,13 @@ var mappingVirtualCircuitRoutingPolicyEnum = map[string]VirtualCircuitRoutingPol
 	"REGIONAL":               VirtualCircuitRoutingPolicyRegional,
 	"MARKET_LEVEL":           VirtualCircuitRoutingPolicyMarketLevel,
 	"GLOBAL":                 VirtualCircuitRoutingPolicyGlobal,
+}
+
+var mappingVirtualCircuitRoutingPolicyEnumLowerCase = map[string]VirtualCircuitRoutingPolicyEnum{
+	"oracle_service_network": VirtualCircuitRoutingPolicyOracleServiceNetwork,
+	"regional":               VirtualCircuitRoutingPolicyRegional,
+	"market_level":           VirtualCircuitRoutingPolicyMarketLevel,
+	"global":                 VirtualCircuitRoutingPolicyGlobal,
 }
 
 // GetVirtualCircuitRoutingPolicyEnumValues Enumerates the set of values for VirtualCircuitRoutingPolicyEnum
@@ -369,12 +377,7 @@ func GetVirtualCircuitRoutingPolicyEnumStringValues() []string {
 
 // GetMappingVirtualCircuitRoutingPolicyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVirtualCircuitRoutingPolicyEnum(val string) (VirtualCircuitRoutingPolicyEnum, bool) {
-	mappingVirtualCircuitRoutingPolicyEnumIgnoreCase := make(map[string]VirtualCircuitRoutingPolicyEnum)
-	for k, v := range mappingVirtualCircuitRoutingPolicyEnum {
-		mappingVirtualCircuitRoutingPolicyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVirtualCircuitRoutingPolicyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVirtualCircuitRoutingPolicyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -404,6 +407,17 @@ var mappingVirtualCircuitLifecycleStateEnum = map[string]VirtualCircuitLifecycle
 	"TERMINATED":       VirtualCircuitLifecycleStateTerminated,
 }
 
+var mappingVirtualCircuitLifecycleStateEnumLowerCase = map[string]VirtualCircuitLifecycleStateEnum{
+	"pending_provider": VirtualCircuitLifecycleStatePendingProvider,
+	"verifying":        VirtualCircuitLifecycleStateVerifying,
+	"provisioning":     VirtualCircuitLifecycleStateProvisioning,
+	"provisioned":      VirtualCircuitLifecycleStateProvisioned,
+	"failed":           VirtualCircuitLifecycleStateFailed,
+	"inactive":         VirtualCircuitLifecycleStateInactive,
+	"terminating":      VirtualCircuitLifecycleStateTerminating,
+	"terminated":       VirtualCircuitLifecycleStateTerminated,
+}
+
 // GetVirtualCircuitLifecycleStateEnumValues Enumerates the set of values for VirtualCircuitLifecycleStateEnum
 func GetVirtualCircuitLifecycleStateEnumValues() []VirtualCircuitLifecycleStateEnum {
 	values := make([]VirtualCircuitLifecycleStateEnum, 0)
@@ -429,12 +443,7 @@ func GetVirtualCircuitLifecycleStateEnumStringValues() []string {
 
 // GetMappingVirtualCircuitLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVirtualCircuitLifecycleStateEnum(val string) (VirtualCircuitLifecycleStateEnum, bool) {
-	mappingVirtualCircuitLifecycleStateEnumIgnoreCase := make(map[string]VirtualCircuitLifecycleStateEnum)
-	for k, v := range mappingVirtualCircuitLifecycleStateEnum {
-		mappingVirtualCircuitLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVirtualCircuitLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVirtualCircuitLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -450,6 +459,11 @@ const (
 var mappingVirtualCircuitProviderStateEnum = map[string]VirtualCircuitProviderStateEnum{
 	"ACTIVE":   VirtualCircuitProviderStateActive,
 	"INACTIVE": VirtualCircuitProviderStateInactive,
+}
+
+var mappingVirtualCircuitProviderStateEnumLowerCase = map[string]VirtualCircuitProviderStateEnum{
+	"active":   VirtualCircuitProviderStateActive,
+	"inactive": VirtualCircuitProviderStateInactive,
 }
 
 // GetVirtualCircuitProviderStateEnumValues Enumerates the set of values for VirtualCircuitProviderStateEnum
@@ -471,12 +485,7 @@ func GetVirtualCircuitProviderStateEnumStringValues() []string {
 
 // GetMappingVirtualCircuitProviderStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVirtualCircuitProviderStateEnum(val string) (VirtualCircuitProviderStateEnum, bool) {
-	mappingVirtualCircuitProviderStateEnumIgnoreCase := make(map[string]VirtualCircuitProviderStateEnum)
-	for k, v := range mappingVirtualCircuitProviderStateEnum {
-		mappingVirtualCircuitProviderStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVirtualCircuitProviderStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVirtualCircuitProviderStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -494,6 +503,12 @@ var mappingVirtualCircuitServiceTypeEnum = map[string]VirtualCircuitServiceTypeE
 	"COLOCATED": VirtualCircuitServiceTypeColocated,
 	"LAYER2":    VirtualCircuitServiceTypeLayer2,
 	"LAYER3":    VirtualCircuitServiceTypeLayer3,
+}
+
+var mappingVirtualCircuitServiceTypeEnumLowerCase = map[string]VirtualCircuitServiceTypeEnum{
+	"colocated": VirtualCircuitServiceTypeColocated,
+	"layer2":    VirtualCircuitServiceTypeLayer2,
+	"layer3":    VirtualCircuitServiceTypeLayer3,
 }
 
 // GetVirtualCircuitServiceTypeEnumValues Enumerates the set of values for VirtualCircuitServiceTypeEnum
@@ -516,12 +531,7 @@ func GetVirtualCircuitServiceTypeEnumStringValues() []string {
 
 // GetMappingVirtualCircuitServiceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVirtualCircuitServiceTypeEnum(val string) (VirtualCircuitServiceTypeEnum, bool) {
-	mappingVirtualCircuitServiceTypeEnumIgnoreCase := make(map[string]VirtualCircuitServiceTypeEnum)
-	for k, v := range mappingVirtualCircuitServiceTypeEnum {
-		mappingVirtualCircuitServiceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVirtualCircuitServiceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVirtualCircuitServiceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -537,6 +547,11 @@ const (
 var mappingVirtualCircuitTypeEnum = map[string]VirtualCircuitTypeEnum{
 	"PUBLIC":  VirtualCircuitTypePublic,
 	"PRIVATE": VirtualCircuitTypePrivate,
+}
+
+var mappingVirtualCircuitTypeEnumLowerCase = map[string]VirtualCircuitTypeEnum{
+	"public":  VirtualCircuitTypePublic,
+	"private": VirtualCircuitTypePrivate,
 }
 
 // GetVirtualCircuitTypeEnumValues Enumerates the set of values for VirtualCircuitTypeEnum
@@ -558,11 +573,6 @@ func GetVirtualCircuitTypeEnumStringValues() []string {
 
 // GetMappingVirtualCircuitTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVirtualCircuitTypeEnum(val string) (VirtualCircuitTypeEnum, bool) {
-	mappingVirtualCircuitTypeEnumIgnoreCase := make(map[string]VirtualCircuitTypeEnum)
-	for k, v := range mappingVirtualCircuitTypeEnum {
-		mappingVirtualCircuitTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVirtualCircuitTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVirtualCircuitTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

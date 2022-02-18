@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -75,6 +75,15 @@ var mappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResource
 	"MEMORY_SGA": SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricMemorySga,
 }
 
+var mappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnumLowerCase = map[string]SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum{
+	"cpu":        SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricCpu,
+	"storage":    SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricStorage,
+	"io":         SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricIo,
+	"memory":     SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricMemory,
+	"memory_pga": SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricMemoryPga,
+	"memory_sga": SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricMemorySga,
+}
+
 // GetSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum
 func GetSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnumValues() []SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum {
 	values := make([]SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum, 0)
@@ -98,11 +107,6 @@ func GetSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMet
 
 // GetMappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum(val string) (SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum, bool) {
-	mappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum)
-	for k, v := range mappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum {
-		mappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

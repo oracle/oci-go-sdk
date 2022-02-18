@@ -31,6 +31,13 @@ var mappingEmBridgeLifecycleStatesEnum = map[string]EmBridgeLifecycleStatesEnum{
 	"NEEDS_ATTENTION": EmBridgeLifecycleStatesNeedsAttention,
 }
 
+var mappingEmBridgeLifecycleStatesEnumLowerCase = map[string]EmBridgeLifecycleStatesEnum{
+	"creating":        EmBridgeLifecycleStatesCreating,
+	"active":          EmBridgeLifecycleStatesActive,
+	"deleted":         EmBridgeLifecycleStatesDeleted,
+	"needs_attention": EmBridgeLifecycleStatesNeedsAttention,
+}
+
 // GetEmBridgeLifecycleStatesEnumValues Enumerates the set of values for EmBridgeLifecycleStatesEnum
 func GetEmBridgeLifecycleStatesEnumValues() []EmBridgeLifecycleStatesEnum {
 	values := make([]EmBridgeLifecycleStatesEnum, 0)
@@ -52,11 +59,6 @@ func GetEmBridgeLifecycleStatesEnumStringValues() []string {
 
 // GetMappingEmBridgeLifecycleStatesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEmBridgeLifecycleStatesEnum(val string) (EmBridgeLifecycleStatesEnum, bool) {
-	mappingEmBridgeLifecycleStatesEnumIgnoreCase := make(map[string]EmBridgeLifecycleStatesEnum)
-	for k, v := range mappingEmBridgeLifecycleStatesEnum {
-		mappingEmBridgeLifecycleStatesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEmBridgeLifecycleStatesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEmBridgeLifecycleStatesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

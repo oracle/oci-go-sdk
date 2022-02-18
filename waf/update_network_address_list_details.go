@@ -13,7 +13,7 @@ package waf
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -137,6 +137,11 @@ var mappingUpdateNetworkAddressListDetailsTypeEnum = map[string]UpdateNetworkAdd
 	"VCN_ADDRESSES": UpdateNetworkAddressListDetailsTypeVcnAddresses,
 }
 
+var mappingUpdateNetworkAddressListDetailsTypeEnumLowerCase = map[string]UpdateNetworkAddressListDetailsTypeEnum{
+	"addresses":     UpdateNetworkAddressListDetailsTypeAddresses,
+	"vcn_addresses": UpdateNetworkAddressListDetailsTypeVcnAddresses,
+}
+
 // GetUpdateNetworkAddressListDetailsTypeEnumValues Enumerates the set of values for UpdateNetworkAddressListDetailsTypeEnum
 func GetUpdateNetworkAddressListDetailsTypeEnumValues() []UpdateNetworkAddressListDetailsTypeEnum {
 	values := make([]UpdateNetworkAddressListDetailsTypeEnum, 0)
@@ -156,11 +161,6 @@ func GetUpdateNetworkAddressListDetailsTypeEnumStringValues() []string {
 
 // GetMappingUpdateNetworkAddressListDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateNetworkAddressListDetailsTypeEnum(val string) (UpdateNetworkAddressListDetailsTypeEnum, bool) {
-	mappingUpdateNetworkAddressListDetailsTypeEnumIgnoreCase := make(map[string]UpdateNetworkAddressListDetailsTypeEnum)
-	for k, v := range mappingUpdateNetworkAddressListDetailsTypeEnum {
-		mappingUpdateNetworkAddressListDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateNetworkAddressListDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateNetworkAddressListDetailsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

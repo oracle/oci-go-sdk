@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -147,6 +147,15 @@ var mappingBootVolumeBackupLifecycleStateEnum = map[string]BootVolumeBackupLifec
 	"REQUEST_RECEIVED": BootVolumeBackupLifecycleStateRequestReceived,
 }
 
+var mappingBootVolumeBackupLifecycleStateEnumLowerCase = map[string]BootVolumeBackupLifecycleStateEnum{
+	"creating":         BootVolumeBackupLifecycleStateCreating,
+	"available":        BootVolumeBackupLifecycleStateAvailable,
+	"terminating":      BootVolumeBackupLifecycleStateTerminating,
+	"terminated":       BootVolumeBackupLifecycleStateTerminated,
+	"faulty":           BootVolumeBackupLifecycleStateFaulty,
+	"request_received": BootVolumeBackupLifecycleStateRequestReceived,
+}
+
 // GetBootVolumeBackupLifecycleStateEnumValues Enumerates the set of values for BootVolumeBackupLifecycleStateEnum
 func GetBootVolumeBackupLifecycleStateEnumValues() []BootVolumeBackupLifecycleStateEnum {
 	values := make([]BootVolumeBackupLifecycleStateEnum, 0)
@@ -170,12 +179,7 @@ func GetBootVolumeBackupLifecycleStateEnumStringValues() []string {
 
 // GetMappingBootVolumeBackupLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBootVolumeBackupLifecycleStateEnum(val string) (BootVolumeBackupLifecycleStateEnum, bool) {
-	mappingBootVolumeBackupLifecycleStateEnumIgnoreCase := make(map[string]BootVolumeBackupLifecycleStateEnum)
-	for k, v := range mappingBootVolumeBackupLifecycleStateEnum {
-		mappingBootVolumeBackupLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBootVolumeBackupLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBootVolumeBackupLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -191,6 +195,11 @@ const (
 var mappingBootVolumeBackupSourceTypeEnum = map[string]BootVolumeBackupSourceTypeEnum{
 	"MANUAL":    BootVolumeBackupSourceTypeManual,
 	"SCHEDULED": BootVolumeBackupSourceTypeScheduled,
+}
+
+var mappingBootVolumeBackupSourceTypeEnumLowerCase = map[string]BootVolumeBackupSourceTypeEnum{
+	"manual":    BootVolumeBackupSourceTypeManual,
+	"scheduled": BootVolumeBackupSourceTypeScheduled,
 }
 
 // GetBootVolumeBackupSourceTypeEnumValues Enumerates the set of values for BootVolumeBackupSourceTypeEnum
@@ -212,12 +221,7 @@ func GetBootVolumeBackupSourceTypeEnumStringValues() []string {
 
 // GetMappingBootVolumeBackupSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBootVolumeBackupSourceTypeEnum(val string) (BootVolumeBackupSourceTypeEnum, bool) {
-	mappingBootVolumeBackupSourceTypeEnumIgnoreCase := make(map[string]BootVolumeBackupSourceTypeEnum)
-	for k, v := range mappingBootVolumeBackupSourceTypeEnum {
-		mappingBootVolumeBackupSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBootVolumeBackupSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBootVolumeBackupSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -233,6 +237,11 @@ const (
 var mappingBootVolumeBackupTypeEnum = map[string]BootVolumeBackupTypeEnum{
 	"FULL":        BootVolumeBackupTypeFull,
 	"INCREMENTAL": BootVolumeBackupTypeIncremental,
+}
+
+var mappingBootVolumeBackupTypeEnumLowerCase = map[string]BootVolumeBackupTypeEnum{
+	"full":        BootVolumeBackupTypeFull,
+	"incremental": BootVolumeBackupTypeIncremental,
 }
 
 // GetBootVolumeBackupTypeEnumValues Enumerates the set of values for BootVolumeBackupTypeEnum
@@ -254,11 +263,6 @@ func GetBootVolumeBackupTypeEnumStringValues() []string {
 
 // GetMappingBootVolumeBackupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBootVolumeBackupTypeEnum(val string) (BootVolumeBackupTypeEnum, bool) {
-	mappingBootVolumeBackupTypeEnumIgnoreCase := make(map[string]BootVolumeBackupTypeEnum)
-	for k, v := range mappingBootVolumeBackupTypeEnum {
-		mappingBootVolumeBackupTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBootVolumeBackupTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBootVolumeBackupTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

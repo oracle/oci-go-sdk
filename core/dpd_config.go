@@ -15,17 +15,17 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
-// DpdConfig DPD Configuration Details
+// DpdConfig These configuration details are used for dead peer detection (DPD). DPD periodically checks the stability of the connection to the customer premises (CPE), and may be used to detect that the link to the CPE has gone down.
 type DpdConfig struct {
 
-	// dpd mode
+	// This option defines whether DPD can be initiated from the Oracle side of the connection.
 	DpdMode DpdConfigDpdModeEnum `mandatory:"false" json:"dpdMode,omitempty"`
 
-	// DPD Timeout in seconds.
+	// DPD timeout in seconds. This sets the longest interval between CPE device health messages before the IPSec connection indicates it has lost contact with the CPE. The default is 20 seconds.
 	DpdTimeoutInSec *int `mandatory:"false" json:"dpdTimeoutInSec"`
 }
 
@@ -62,6 +62,11 @@ var mappingDpdConfigDpdModeEnum = map[string]DpdConfigDpdModeEnum{
 	"RESPOND_ONLY":         DpdConfigDpdModeRespondOnly,
 }
 
+var mappingDpdConfigDpdModeEnumLowerCase = map[string]DpdConfigDpdModeEnum{
+	"initiate_and_respond": DpdConfigDpdModeInitiateAndRespond,
+	"respond_only":         DpdConfigDpdModeRespondOnly,
+}
+
 // GetDpdConfigDpdModeEnumValues Enumerates the set of values for DpdConfigDpdModeEnum
 func GetDpdConfigDpdModeEnumValues() []DpdConfigDpdModeEnum {
 	values := make([]DpdConfigDpdModeEnum, 0)
@@ -81,11 +86,6 @@ func GetDpdConfigDpdModeEnumStringValues() []string {
 
 // GetMappingDpdConfigDpdModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDpdConfigDpdModeEnum(val string) (DpdConfigDpdModeEnum, bool) {
-	mappingDpdConfigDpdModeEnumIgnoreCase := make(map[string]DpdConfigDpdModeEnum)
-	for k, v := range mappingDpdConfigDpdModeEnum {
-		mappingDpdConfigDpdModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDpdConfigDpdModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDpdConfigDpdModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,11 @@ var mappingListAssociatedEntitiesSortOrderEnum = map[string]ListAssociatedEntiti
 	"DESC": ListAssociatedEntitiesSortOrderDesc,
 }
 
+var mappingListAssociatedEntitiesSortOrderEnumLowerCase = map[string]ListAssociatedEntitiesSortOrderEnum{
+	"asc":  ListAssociatedEntitiesSortOrderAsc,
+	"desc": ListAssociatedEntitiesSortOrderDesc,
+}
+
 // GetListAssociatedEntitiesSortOrderEnumValues Enumerates the set of values for ListAssociatedEntitiesSortOrderEnum
 func GetListAssociatedEntitiesSortOrderEnumValues() []ListAssociatedEntitiesSortOrderEnum {
 	values := make([]ListAssociatedEntitiesSortOrderEnum, 0)
@@ -163,12 +168,7 @@ func GetListAssociatedEntitiesSortOrderEnumStringValues() []string {
 
 // GetMappingListAssociatedEntitiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAssociatedEntitiesSortOrderEnum(val string) (ListAssociatedEntitiesSortOrderEnum, bool) {
-	mappingListAssociatedEntitiesSortOrderEnumIgnoreCase := make(map[string]ListAssociatedEntitiesSortOrderEnum)
-	for k, v := range mappingListAssociatedEntitiesSortOrderEnum {
-		mappingListAssociatedEntitiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAssociatedEntitiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAssociatedEntitiesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -186,6 +186,12 @@ var mappingListAssociatedEntitiesSortByEnum = map[string]ListAssociatedEntitiesS
 	"entityName":            ListAssociatedEntitiesSortByEntityname,
 	"entityTypeDisplayName": ListAssociatedEntitiesSortByEntitytypedisplayname,
 	"associationCount":      ListAssociatedEntitiesSortByAssociationcount,
+}
+
+var mappingListAssociatedEntitiesSortByEnumLowerCase = map[string]ListAssociatedEntitiesSortByEnum{
+	"entityname":            ListAssociatedEntitiesSortByEntityname,
+	"entitytypedisplayname": ListAssociatedEntitiesSortByEntitytypedisplayname,
+	"associationcount":      ListAssociatedEntitiesSortByAssociationcount,
 }
 
 // GetListAssociatedEntitiesSortByEnumValues Enumerates the set of values for ListAssociatedEntitiesSortByEnum
@@ -208,11 +214,6 @@ func GetListAssociatedEntitiesSortByEnumStringValues() []string {
 
 // GetMappingListAssociatedEntitiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAssociatedEntitiesSortByEnum(val string) (ListAssociatedEntitiesSortByEnum, bool) {
-	mappingListAssociatedEntitiesSortByEnumIgnoreCase := make(map[string]ListAssociatedEntitiesSortByEnum)
-	for k, v := range mappingListAssociatedEntitiesSortByEnum {
-		mappingListAssociatedEntitiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAssociatedEntitiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAssociatedEntitiesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

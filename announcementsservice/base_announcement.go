@@ -12,7 +12,7 @@ package announcementsservice
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -305,6 +305,15 @@ var mappingBaseAnnouncementTimeOneTypeEnum = map[string]BaseAnnouncementTimeOneT
 	"TIME_DETECTED":      BaseAnnouncementTimeOneTypeTimeDetected,
 }
 
+var mappingBaseAnnouncementTimeOneTypeEnumLowerCase = map[string]BaseAnnouncementTimeOneTypeEnum{
+	"action_required_by": BaseAnnouncementTimeOneTypeActionRequiredBy,
+	"new_start_time":     BaseAnnouncementTimeOneTypeNewStartTime,
+	"original_end_time":  BaseAnnouncementTimeOneTypeOriginalEndTime,
+	"report_date":        BaseAnnouncementTimeOneTypeReportDate,
+	"start_time":         BaseAnnouncementTimeOneTypeStartTime,
+	"time_detected":      BaseAnnouncementTimeOneTypeTimeDetected,
+}
+
 // GetBaseAnnouncementTimeOneTypeEnumValues Enumerates the set of values for BaseAnnouncementTimeOneTypeEnum
 func GetBaseAnnouncementTimeOneTypeEnumValues() []BaseAnnouncementTimeOneTypeEnum {
 	values := make([]BaseAnnouncementTimeOneTypeEnum, 0)
@@ -328,12 +337,7 @@ func GetBaseAnnouncementTimeOneTypeEnumStringValues() []string {
 
 // GetMappingBaseAnnouncementTimeOneTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBaseAnnouncementTimeOneTypeEnum(val string) (BaseAnnouncementTimeOneTypeEnum, bool) {
-	mappingBaseAnnouncementTimeOneTypeEnumIgnoreCase := make(map[string]BaseAnnouncementTimeOneTypeEnum)
-	for k, v := range mappingBaseAnnouncementTimeOneTypeEnum {
-		mappingBaseAnnouncementTimeOneTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBaseAnnouncementTimeOneTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBaseAnnouncementTimeOneTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -349,6 +353,11 @@ const (
 var mappingBaseAnnouncementTimeTwoTypeEnum = map[string]BaseAnnouncementTimeTwoTypeEnum{
 	"END_TIME":     BaseAnnouncementTimeTwoTypeEndTime,
 	"NEW_END_TIME": BaseAnnouncementTimeTwoTypeNewEndTime,
+}
+
+var mappingBaseAnnouncementTimeTwoTypeEnumLowerCase = map[string]BaseAnnouncementTimeTwoTypeEnum{
+	"end_time":     BaseAnnouncementTimeTwoTypeEndTime,
+	"new_end_time": BaseAnnouncementTimeTwoTypeNewEndTime,
 }
 
 // GetBaseAnnouncementTimeTwoTypeEnumValues Enumerates the set of values for BaseAnnouncementTimeTwoTypeEnum
@@ -370,12 +379,7 @@ func GetBaseAnnouncementTimeTwoTypeEnumStringValues() []string {
 
 // GetMappingBaseAnnouncementTimeTwoTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBaseAnnouncementTimeTwoTypeEnum(val string) (BaseAnnouncementTimeTwoTypeEnum, bool) {
-	mappingBaseAnnouncementTimeTwoTypeEnumIgnoreCase := make(map[string]BaseAnnouncementTimeTwoTypeEnum)
-	for k, v := range mappingBaseAnnouncementTimeTwoTypeEnum {
-		mappingBaseAnnouncementTimeTwoTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBaseAnnouncementTimeTwoTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBaseAnnouncementTimeTwoTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -417,6 +421,23 @@ var mappingBaseAnnouncementAnnouncementTypeEnum = map[string]BaseAnnouncementAnn
 	"SCHEDULED_MAINTENANCE":             BaseAnnouncementAnnouncementTypeScheduledMaintenance,
 }
 
+var mappingBaseAnnouncementAnnouncementTypeEnumLowerCase = map[string]BaseAnnouncementAnnouncementTypeEnum{
+	"action_recommended":                BaseAnnouncementAnnouncementTypeActionRecommended,
+	"action_required":                   BaseAnnouncementAnnouncementTypeActionRequired,
+	"emergency_change":                  BaseAnnouncementAnnouncementTypeEmergencyChange,
+	"emergency_maintenance":             BaseAnnouncementAnnouncementTypeEmergencyMaintenance,
+	"emergency_maintenance_complete":    BaseAnnouncementAnnouncementTypeEmergencyMaintenanceComplete,
+	"emergency_maintenance_extended":    BaseAnnouncementAnnouncementTypeEmergencyMaintenanceExtended,
+	"emergency_maintenance_rescheduled": BaseAnnouncementAnnouncementTypeEmergencyMaintenanceRescheduled,
+	"information":                       BaseAnnouncementAnnouncementTypeInformation,
+	"planned_change":                    BaseAnnouncementAnnouncementTypePlannedChange,
+	"planned_change_complete":           BaseAnnouncementAnnouncementTypePlannedChangeComplete,
+	"planned_change_extended":           BaseAnnouncementAnnouncementTypePlannedChangeExtended,
+	"planned_change_rescheduled":        BaseAnnouncementAnnouncementTypePlannedChangeRescheduled,
+	"production_event_notification":     BaseAnnouncementAnnouncementTypeProductionEventNotification,
+	"scheduled_maintenance":             BaseAnnouncementAnnouncementTypeScheduledMaintenance,
+}
+
 // GetBaseAnnouncementAnnouncementTypeEnumValues Enumerates the set of values for BaseAnnouncementAnnouncementTypeEnum
 func GetBaseAnnouncementAnnouncementTypeEnumValues() []BaseAnnouncementAnnouncementTypeEnum {
 	values := make([]BaseAnnouncementAnnouncementTypeEnum, 0)
@@ -448,12 +469,7 @@ func GetBaseAnnouncementAnnouncementTypeEnumStringValues() []string {
 
 // GetMappingBaseAnnouncementAnnouncementTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBaseAnnouncementAnnouncementTypeEnum(val string) (BaseAnnouncementAnnouncementTypeEnum, bool) {
-	mappingBaseAnnouncementAnnouncementTypeEnumIgnoreCase := make(map[string]BaseAnnouncementAnnouncementTypeEnum)
-	for k, v := range mappingBaseAnnouncementAnnouncementTypeEnum {
-		mappingBaseAnnouncementAnnouncementTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBaseAnnouncementAnnouncementTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBaseAnnouncementAnnouncementTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -469,6 +485,11 @@ const (
 var mappingBaseAnnouncementLifecycleStateEnum = map[string]BaseAnnouncementLifecycleStateEnum{
 	"ACTIVE":   BaseAnnouncementLifecycleStateActive,
 	"INACTIVE": BaseAnnouncementLifecycleStateInactive,
+}
+
+var mappingBaseAnnouncementLifecycleStateEnumLowerCase = map[string]BaseAnnouncementLifecycleStateEnum{
+	"active":   BaseAnnouncementLifecycleStateActive,
+	"inactive": BaseAnnouncementLifecycleStateInactive,
 }
 
 // GetBaseAnnouncementLifecycleStateEnumValues Enumerates the set of values for BaseAnnouncementLifecycleStateEnum
@@ -490,12 +511,7 @@ func GetBaseAnnouncementLifecycleStateEnumStringValues() []string {
 
 // GetMappingBaseAnnouncementLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBaseAnnouncementLifecycleStateEnum(val string) (BaseAnnouncementLifecycleStateEnum, bool) {
-	mappingBaseAnnouncementLifecycleStateEnumIgnoreCase := make(map[string]BaseAnnouncementLifecycleStateEnum)
-	for k, v := range mappingBaseAnnouncementLifecycleStateEnum {
-		mappingBaseAnnouncementLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBaseAnnouncementLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBaseAnnouncementLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -511,6 +527,11 @@ const (
 var mappingBaseAnnouncementPlatformTypeEnum = map[string]BaseAnnouncementPlatformTypeEnum{
 	"IAAS": BaseAnnouncementPlatformTypeIaas,
 	"SAAS": BaseAnnouncementPlatformTypeSaas,
+}
+
+var mappingBaseAnnouncementPlatformTypeEnumLowerCase = map[string]BaseAnnouncementPlatformTypeEnum{
+	"iaas": BaseAnnouncementPlatformTypeIaas,
+	"saas": BaseAnnouncementPlatformTypeSaas,
 }
 
 // GetBaseAnnouncementPlatformTypeEnumValues Enumerates the set of values for BaseAnnouncementPlatformTypeEnum
@@ -532,11 +553,6 @@ func GetBaseAnnouncementPlatformTypeEnumStringValues() []string {
 
 // GetMappingBaseAnnouncementPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBaseAnnouncementPlatformTypeEnum(val string) (BaseAnnouncementPlatformTypeEnum, bool) {
-	mappingBaseAnnouncementPlatformTypeEnumIgnoreCase := make(map[string]BaseAnnouncementPlatformTypeEnum)
-	for k, v := range mappingBaseAnnouncementPlatformTypeEnum {
-		mappingBaseAnnouncementPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBaseAnnouncementPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBaseAnnouncementPlatformTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

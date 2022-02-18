@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,13 @@ var mappingLogAnalyticsLabelPriorityEnum = map[string]LogAnalyticsLabelPriorityE
 	"HIGH":   LogAnalyticsLabelPriorityHigh,
 }
 
+var mappingLogAnalyticsLabelPriorityEnumLowerCase = map[string]LogAnalyticsLabelPriorityEnum{
+	"none":   LogAnalyticsLabelPriorityNone,
+	"low":    LogAnalyticsLabelPriorityLow,
+	"medium": LogAnalyticsLabelPriorityMedium,
+	"high":   LogAnalyticsLabelPriorityHigh,
+}
+
 // GetLogAnalyticsLabelPriorityEnumValues Enumerates the set of values for LogAnalyticsLabelPriorityEnum
 func GetLogAnalyticsLabelPriorityEnumValues() []LogAnalyticsLabelPriorityEnum {
 	values := make([]LogAnalyticsLabelPriorityEnum, 0)
@@ -120,12 +127,7 @@ func GetLogAnalyticsLabelPriorityEnumStringValues() []string {
 
 // GetMappingLogAnalyticsLabelPriorityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogAnalyticsLabelPriorityEnum(val string) (LogAnalyticsLabelPriorityEnum, bool) {
-	mappingLogAnalyticsLabelPriorityEnumIgnoreCase := make(map[string]LogAnalyticsLabelPriorityEnum)
-	for k, v := range mappingLogAnalyticsLabelPriorityEnum {
-		mappingLogAnalyticsLabelPriorityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogAnalyticsLabelPriorityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogAnalyticsLabelPriorityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -141,6 +143,11 @@ const (
 var mappingLogAnalyticsLabelTypeEnum = map[string]LogAnalyticsLabelTypeEnum{
 	"INFO":    LogAnalyticsLabelTypeInfo,
 	"PROBLEM": LogAnalyticsLabelTypeProblem,
+}
+
+var mappingLogAnalyticsLabelTypeEnumLowerCase = map[string]LogAnalyticsLabelTypeEnum{
+	"info":    LogAnalyticsLabelTypeInfo,
+	"problem": LogAnalyticsLabelTypeProblem,
 }
 
 // GetLogAnalyticsLabelTypeEnumValues Enumerates the set of values for LogAnalyticsLabelTypeEnum
@@ -162,11 +169,6 @@ func GetLogAnalyticsLabelTypeEnumStringValues() []string {
 
 // GetMappingLogAnalyticsLabelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogAnalyticsLabelTypeEnum(val string) (LogAnalyticsLabelTypeEnum, bool) {
-	mappingLogAnalyticsLabelTypeEnumIgnoreCase := make(map[string]LogAnalyticsLabelTypeEnum)
-	for k, v := range mappingLogAnalyticsLabelTypeEnum {
-		mappingLogAnalyticsLabelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogAnalyticsLabelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogAnalyticsLabelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

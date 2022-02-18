@@ -6,7 +6,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -151,6 +151,11 @@ var mappingListSdksSortOrderEnum = map[string]ListSdksSortOrderEnum{
 	"DESC": ListSdksSortOrderDesc,
 }
 
+var mappingListSdksSortOrderEnumLowerCase = map[string]ListSdksSortOrderEnum{
+	"asc":  ListSdksSortOrderAsc,
+	"desc": ListSdksSortOrderDesc,
+}
+
 // GetListSdksSortOrderEnumValues Enumerates the set of values for ListSdksSortOrderEnum
 func GetListSdksSortOrderEnumValues() []ListSdksSortOrderEnum {
 	values := make([]ListSdksSortOrderEnum, 0)
@@ -170,12 +175,7 @@ func GetListSdksSortOrderEnumStringValues() []string {
 
 // GetMappingListSdksSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSdksSortOrderEnum(val string) (ListSdksSortOrderEnum, bool) {
-	mappingListSdksSortOrderEnumIgnoreCase := make(map[string]ListSdksSortOrderEnum)
-	for k, v := range mappingListSdksSortOrderEnum {
-		mappingListSdksSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSdksSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSdksSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -191,6 +191,11 @@ const (
 var mappingListSdksSortByEnum = map[string]ListSdksSortByEnum{
 	"timeCreated": ListSdksSortByTimecreated,
 	"displayName": ListSdksSortByDisplayname,
+}
+
+var mappingListSdksSortByEnumLowerCase = map[string]ListSdksSortByEnum{
+	"timecreated": ListSdksSortByTimecreated,
+	"displayname": ListSdksSortByDisplayname,
 }
 
 // GetListSdksSortByEnumValues Enumerates the set of values for ListSdksSortByEnum
@@ -212,11 +217,6 @@ func GetListSdksSortByEnumStringValues() []string {
 
 // GetMappingListSdksSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSdksSortByEnum(val string) (ListSdksSortByEnum, bool) {
-	mappingListSdksSortByEnumIgnoreCase := make(map[string]ListSdksSortByEnum)
-	for k, v := range mappingListSdksSortByEnum {
-		mappingListSdksSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSdksSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSdksSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

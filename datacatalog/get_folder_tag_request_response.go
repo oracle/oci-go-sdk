@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -140,6 +140,19 @@ var mappingGetFolderTagFieldsEnum = map[string]GetFolderTagFieldsEnum{
 	"folderKey":       GetFolderTagFieldsFolderkey,
 }
 
+var mappingGetFolderTagFieldsEnumLowerCase = map[string]GetFolderTagFieldsEnum{
+	"key":             GetFolderTagFieldsKey,
+	"name":            GetFolderTagFieldsName,
+	"termkey":         GetFolderTagFieldsTermkey,
+	"termpath":        GetFolderTagFieldsTermpath,
+	"termdescription": GetFolderTagFieldsTermdescription,
+	"lifecyclestate":  GetFolderTagFieldsLifecyclestate,
+	"timecreated":     GetFolderTagFieldsTimecreated,
+	"createdbyid":     GetFolderTagFieldsCreatedbyid,
+	"uri":             GetFolderTagFieldsUri,
+	"folderkey":       GetFolderTagFieldsFolderkey,
+}
+
 // GetGetFolderTagFieldsEnumValues Enumerates the set of values for GetFolderTagFieldsEnum
 func GetGetFolderTagFieldsEnumValues() []GetFolderTagFieldsEnum {
 	values := make([]GetFolderTagFieldsEnum, 0)
@@ -167,11 +180,6 @@ func GetGetFolderTagFieldsEnumStringValues() []string {
 
 // GetMappingGetFolderTagFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetFolderTagFieldsEnum(val string) (GetFolderTagFieldsEnum, bool) {
-	mappingGetFolderTagFieldsEnumIgnoreCase := make(map[string]GetFolderTagFieldsEnum)
-	for k, v := range mappingGetFolderTagFieldsEnum {
-		mappingGetFolderTagFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetFolderTagFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetFolderTagFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

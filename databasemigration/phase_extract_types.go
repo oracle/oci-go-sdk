@@ -25,6 +25,10 @@ var mappingPhaseExtractTypesEnum = map[string]PhaseExtractTypesEnum{
 	"ERROR": PhaseExtractTypesError,
 }
 
+var mappingPhaseExtractTypesEnumLowerCase = map[string]PhaseExtractTypesEnum{
+	"error": PhaseExtractTypesError,
+}
+
 // GetPhaseExtractTypesEnumValues Enumerates the set of values for PhaseExtractTypesEnum
 func GetPhaseExtractTypesEnumValues() []PhaseExtractTypesEnum {
 	values := make([]PhaseExtractTypesEnum, 0)
@@ -43,11 +47,6 @@ func GetPhaseExtractTypesEnumStringValues() []string {
 
 // GetMappingPhaseExtractTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPhaseExtractTypesEnum(val string) (PhaseExtractTypesEnum, bool) {
-	mappingPhaseExtractTypesEnumIgnoreCase := make(map[string]PhaseExtractTypesEnum)
-	for k, v := range mappingPhaseExtractTypesEnum {
-		mappingPhaseExtractTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPhaseExtractTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPhaseExtractTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -90,6 +90,14 @@ var mappingCustomerSecretKeyLifecycleStateEnum = map[string]CustomerSecretKeyLif
 	"DELETED":  CustomerSecretKeyLifecycleStateDeleted,
 }
 
+var mappingCustomerSecretKeyLifecycleStateEnumLowerCase = map[string]CustomerSecretKeyLifecycleStateEnum{
+	"creating": CustomerSecretKeyLifecycleStateCreating,
+	"active":   CustomerSecretKeyLifecycleStateActive,
+	"inactive": CustomerSecretKeyLifecycleStateInactive,
+	"deleting": CustomerSecretKeyLifecycleStateDeleting,
+	"deleted":  CustomerSecretKeyLifecycleStateDeleted,
+}
+
 // GetCustomerSecretKeyLifecycleStateEnumValues Enumerates the set of values for CustomerSecretKeyLifecycleStateEnum
 func GetCustomerSecretKeyLifecycleStateEnumValues() []CustomerSecretKeyLifecycleStateEnum {
 	values := make([]CustomerSecretKeyLifecycleStateEnum, 0)
@@ -112,11 +120,6 @@ func GetCustomerSecretKeyLifecycleStateEnumStringValues() []string {
 
 // GetMappingCustomerSecretKeyLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCustomerSecretKeyLifecycleStateEnum(val string) (CustomerSecretKeyLifecycleStateEnum, bool) {
-	mappingCustomerSecretKeyLifecycleStateEnumIgnoreCase := make(map[string]CustomerSecretKeyLifecycleStateEnum)
-	for k, v := range mappingCustomerSecretKeyLifecycleStateEnum {
-		mappingCustomerSecretKeyLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCustomerSecretKeyLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCustomerSecretKeyLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

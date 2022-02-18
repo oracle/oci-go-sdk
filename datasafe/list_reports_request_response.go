@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -148,6 +148,11 @@ var mappingListReportsAccessLevelEnum = map[string]ListReportsAccessLevelEnum{
 	"ACCESSIBLE": ListReportsAccessLevelAccessible,
 }
 
+var mappingListReportsAccessLevelEnumLowerCase = map[string]ListReportsAccessLevelEnum{
+	"restricted": ListReportsAccessLevelRestricted,
+	"accessible": ListReportsAccessLevelAccessible,
+}
+
 // GetListReportsAccessLevelEnumValues Enumerates the set of values for ListReportsAccessLevelEnum
 func GetListReportsAccessLevelEnumValues() []ListReportsAccessLevelEnum {
 	values := make([]ListReportsAccessLevelEnum, 0)
@@ -167,12 +172,7 @@ func GetListReportsAccessLevelEnumStringValues() []string {
 
 // GetMappingListReportsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListReportsAccessLevelEnum(val string) (ListReportsAccessLevelEnum, bool) {
-	mappingListReportsAccessLevelEnumIgnoreCase := make(map[string]ListReportsAccessLevelEnum)
-	for k, v := range mappingListReportsAccessLevelEnum {
-		mappingListReportsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListReportsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListReportsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -188,6 +188,11 @@ const (
 var mappingListReportsSortOrderEnum = map[string]ListReportsSortOrderEnum{
 	"ASC":  ListReportsSortOrderAsc,
 	"DESC": ListReportsSortOrderDesc,
+}
+
+var mappingListReportsSortOrderEnumLowerCase = map[string]ListReportsSortOrderEnum{
+	"asc":  ListReportsSortOrderAsc,
+	"desc": ListReportsSortOrderDesc,
 }
 
 // GetListReportsSortOrderEnumValues Enumerates the set of values for ListReportsSortOrderEnum
@@ -209,12 +214,7 @@ func GetListReportsSortOrderEnumStringValues() []string {
 
 // GetMappingListReportsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListReportsSortOrderEnum(val string) (ListReportsSortOrderEnum, bool) {
-	mappingListReportsSortOrderEnumIgnoreCase := make(map[string]ListReportsSortOrderEnum)
-	for k, v := range mappingListReportsSortOrderEnum {
-		mappingListReportsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListReportsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListReportsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -230,6 +230,11 @@ const (
 var mappingListReportsSortByEnum = map[string]ListReportsSortByEnum{
 	"timeGenerated": ListReportsSortByTimegenerated,
 	"displayName":   ListReportsSortByDisplayname,
+}
+
+var mappingListReportsSortByEnumLowerCase = map[string]ListReportsSortByEnum{
+	"timegenerated": ListReportsSortByTimegenerated,
+	"displayname":   ListReportsSortByDisplayname,
 }
 
 // GetListReportsSortByEnumValues Enumerates the set of values for ListReportsSortByEnum
@@ -251,12 +256,7 @@ func GetListReportsSortByEnumStringValues() []string {
 
 // GetMappingListReportsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListReportsSortByEnum(val string) (ListReportsSortByEnum, bool) {
-	mappingListReportsSortByEnumIgnoreCase := make(map[string]ListReportsSortByEnum)
-	for k, v := range mappingListReportsSortByEnum {
-		mappingListReportsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListReportsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListReportsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -272,6 +272,11 @@ const (
 var mappingListReportsLifecycleStateEnum = map[string]ListReportsLifecycleStateEnum{
 	"UPDATING": ListReportsLifecycleStateUpdating,
 	"ACTIVE":   ListReportsLifecycleStateActive,
+}
+
+var mappingListReportsLifecycleStateEnumLowerCase = map[string]ListReportsLifecycleStateEnum{
+	"updating": ListReportsLifecycleStateUpdating,
+	"active":   ListReportsLifecycleStateActive,
 }
 
 // GetListReportsLifecycleStateEnumValues Enumerates the set of values for ListReportsLifecycleStateEnum
@@ -293,11 +298,6 @@ func GetListReportsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListReportsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListReportsLifecycleStateEnum(val string) (ListReportsLifecycleStateEnum, bool) {
-	mappingListReportsLifecycleStateEnumIgnoreCase := make(map[string]ListReportsLifecycleStateEnum)
-	for k, v := range mappingListReportsLifecycleStateEnum {
-		mappingListReportsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListReportsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListReportsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

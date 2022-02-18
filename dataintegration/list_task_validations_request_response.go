@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,11 @@ var mappingListTaskValidationsSortByEnum = map[string]ListTaskValidationsSortByE
 	"DISPLAY_NAME": ListTaskValidationsSortByDisplayName,
 }
 
+var mappingListTaskValidationsSortByEnumLowerCase = map[string]ListTaskValidationsSortByEnum{
+	"time_created": ListTaskValidationsSortByTimeCreated,
+	"display_name": ListTaskValidationsSortByDisplayName,
+}
+
 // GetListTaskValidationsSortByEnumValues Enumerates the set of values for ListTaskValidationsSortByEnum
 func GetListTaskValidationsSortByEnumValues() []ListTaskValidationsSortByEnum {
 	values := make([]ListTaskValidationsSortByEnum, 0)
@@ -163,12 +168,7 @@ func GetListTaskValidationsSortByEnumStringValues() []string {
 
 // GetMappingListTaskValidationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTaskValidationsSortByEnum(val string) (ListTaskValidationsSortByEnum, bool) {
-	mappingListTaskValidationsSortByEnumIgnoreCase := make(map[string]ListTaskValidationsSortByEnum)
-	for k, v := range mappingListTaskValidationsSortByEnum {
-		mappingListTaskValidationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTaskValidationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTaskValidationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -184,6 +184,11 @@ const (
 var mappingListTaskValidationsSortOrderEnum = map[string]ListTaskValidationsSortOrderEnum{
 	"ASC":  ListTaskValidationsSortOrderAsc,
 	"DESC": ListTaskValidationsSortOrderDesc,
+}
+
+var mappingListTaskValidationsSortOrderEnumLowerCase = map[string]ListTaskValidationsSortOrderEnum{
+	"asc":  ListTaskValidationsSortOrderAsc,
+	"desc": ListTaskValidationsSortOrderDesc,
 }
 
 // GetListTaskValidationsSortOrderEnumValues Enumerates the set of values for ListTaskValidationsSortOrderEnum
@@ -205,11 +210,6 @@ func GetListTaskValidationsSortOrderEnumStringValues() []string {
 
 // GetMappingListTaskValidationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTaskValidationsSortOrderEnum(val string) (ListTaskValidationsSortOrderEnum, bool) {
-	mappingListTaskValidationsSortOrderEnumIgnoreCase := make(map[string]ListTaskValidationsSortOrderEnum)
-	for k, v := range mappingListTaskValidationsSortOrderEnum {
-		mappingListTaskValidationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTaskValidationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTaskValidationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -242,6 +242,16 @@ var mappingDataEntityFromDataStoreEntityTypeEnum = map[string]DataEntityFromData
 	"DATA_STORE": DataEntityFromDataStoreEntityTypeDataStore,
 }
 
+var mappingDataEntityFromDataStoreEntityTypeEnumLowerCase = map[string]DataEntityFromDataStoreEntityTypeEnum{
+	"table":      DataEntityFromDataStoreEntityTypeTable,
+	"view":       DataEntityFromDataStoreEntityTypeView,
+	"file":       DataEntityFromDataStoreEntityTypeFile,
+	"queue":      DataEntityFromDataStoreEntityTypeQueue,
+	"stream":     DataEntityFromDataStoreEntityTypeStream,
+	"other":      DataEntityFromDataStoreEntityTypeOther,
+	"data_store": DataEntityFromDataStoreEntityTypeDataStore,
+}
+
 // GetDataEntityFromDataStoreEntityTypeEnumValues Enumerates the set of values for DataEntityFromDataStoreEntityTypeEnum
 func GetDataEntityFromDataStoreEntityTypeEnumValues() []DataEntityFromDataStoreEntityTypeEnum {
 	values := make([]DataEntityFromDataStoreEntityTypeEnum, 0)
@@ -266,11 +276,6 @@ func GetDataEntityFromDataStoreEntityTypeEnumStringValues() []string {
 
 // GetMappingDataEntityFromDataStoreEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataEntityFromDataStoreEntityTypeEnum(val string) (DataEntityFromDataStoreEntityTypeEnum, bool) {
-	mappingDataEntityFromDataStoreEntityTypeEnumIgnoreCase := make(map[string]DataEntityFromDataStoreEntityTypeEnum)
-	for k, v := range mappingDataEntityFromDataStoreEntityTypeEnum {
-		mappingDataEntityFromDataStoreEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataEntityFromDataStoreEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataEntityFromDataStoreEntityTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

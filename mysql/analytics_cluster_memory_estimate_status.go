@@ -35,6 +35,15 @@ var mappingAnalyticsClusterMemoryEstimateStatusEnum = map[string]AnalyticsCluste
 	"CANCELED":    AnalyticsClusterMemoryEstimateStatusCanceled,
 }
 
+var mappingAnalyticsClusterMemoryEstimateStatusEnumLowerCase = map[string]AnalyticsClusterMemoryEstimateStatusEnum{
+	"accepted":    AnalyticsClusterMemoryEstimateStatusAccepted,
+	"in_progress": AnalyticsClusterMemoryEstimateStatusInProgress,
+	"failed":      AnalyticsClusterMemoryEstimateStatusFailed,
+	"succeeded":   AnalyticsClusterMemoryEstimateStatusSucceeded,
+	"canceling":   AnalyticsClusterMemoryEstimateStatusCanceling,
+	"canceled":    AnalyticsClusterMemoryEstimateStatusCanceled,
+}
+
 // GetAnalyticsClusterMemoryEstimateStatusEnumValues Enumerates the set of values for AnalyticsClusterMemoryEstimateStatusEnum
 func GetAnalyticsClusterMemoryEstimateStatusEnumValues() []AnalyticsClusterMemoryEstimateStatusEnum {
 	values := make([]AnalyticsClusterMemoryEstimateStatusEnum, 0)
@@ -58,11 +67,6 @@ func GetAnalyticsClusterMemoryEstimateStatusEnumStringValues() []string {
 
 // GetMappingAnalyticsClusterMemoryEstimateStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAnalyticsClusterMemoryEstimateStatusEnum(val string) (AnalyticsClusterMemoryEstimateStatusEnum, bool) {
-	mappingAnalyticsClusterMemoryEstimateStatusEnumIgnoreCase := make(map[string]AnalyticsClusterMemoryEstimateStatusEnum)
-	for k, v := range mappingAnalyticsClusterMemoryEstimateStatusEnum {
-		mappingAnalyticsClusterMemoryEstimateStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAnalyticsClusterMemoryEstimateStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAnalyticsClusterMemoryEstimateStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

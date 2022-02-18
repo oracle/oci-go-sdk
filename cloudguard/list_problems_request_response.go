@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -206,6 +206,13 @@ var mappingListProblemsLifecycleDetailEnum = map[string]ListProblemsLifecycleDet
 	"DELETED":   ListProblemsLifecycleDetailDeleted,
 }
 
+var mappingListProblemsLifecycleDetailEnumLowerCase = map[string]ListProblemsLifecycleDetailEnum{
+	"open":      ListProblemsLifecycleDetailOpen,
+	"resolved":  ListProblemsLifecycleDetailResolved,
+	"dismissed": ListProblemsLifecycleDetailDismissed,
+	"deleted":   ListProblemsLifecycleDetailDeleted,
+}
+
 // GetListProblemsLifecycleDetailEnumValues Enumerates the set of values for ListProblemsLifecycleDetailEnum
 func GetListProblemsLifecycleDetailEnumValues() []ListProblemsLifecycleDetailEnum {
 	values := make([]ListProblemsLifecycleDetailEnum, 0)
@@ -227,12 +234,7 @@ func GetListProblemsLifecycleDetailEnumStringValues() []string {
 
 // GetMappingListProblemsLifecycleDetailEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProblemsLifecycleDetailEnum(val string) (ListProblemsLifecycleDetailEnum, bool) {
-	mappingListProblemsLifecycleDetailEnumIgnoreCase := make(map[string]ListProblemsLifecycleDetailEnum)
-	for k, v := range mappingListProblemsLifecycleDetailEnum {
-		mappingListProblemsLifecycleDetailEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProblemsLifecycleDetailEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProblemsLifecycleDetailEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -248,6 +250,11 @@ const (
 var mappingListProblemsLifecycleStateEnum = map[string]ListProblemsLifecycleStateEnum{
 	"ACTIVE":   ListProblemsLifecycleStateActive,
 	"INACTIVE": ListProblemsLifecycleStateInactive,
+}
+
+var mappingListProblemsLifecycleStateEnumLowerCase = map[string]ListProblemsLifecycleStateEnum{
+	"active":   ListProblemsLifecycleStateActive,
+	"inactive": ListProblemsLifecycleStateInactive,
 }
 
 // GetListProblemsLifecycleStateEnumValues Enumerates the set of values for ListProblemsLifecycleStateEnum
@@ -269,12 +276,7 @@ func GetListProblemsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListProblemsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProblemsLifecycleStateEnum(val string) (ListProblemsLifecycleStateEnum, bool) {
-	mappingListProblemsLifecycleStateEnumIgnoreCase := make(map[string]ListProblemsLifecycleStateEnum)
-	for k, v := range mappingListProblemsLifecycleStateEnum {
-		mappingListProblemsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProblemsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProblemsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -285,11 +287,19 @@ type ListProblemsDetectorTypeEnum string
 const (
 	ListProblemsDetectorTypeActivityDetector      ListProblemsDetectorTypeEnum = "IAAS_ACTIVITY_DETECTOR"
 	ListProblemsDetectorTypeConfigurationDetector ListProblemsDetectorTypeEnum = "IAAS_CONFIGURATION_DETECTOR"
+	ListProblemsDetectorTypeThreatDetector        ListProblemsDetectorTypeEnum = "IAAS_THREAT_DETECTOR"
 )
 
 var mappingListProblemsDetectorTypeEnum = map[string]ListProblemsDetectorTypeEnum{
 	"IAAS_ACTIVITY_DETECTOR":      ListProblemsDetectorTypeActivityDetector,
 	"IAAS_CONFIGURATION_DETECTOR": ListProblemsDetectorTypeConfigurationDetector,
+	"IAAS_THREAT_DETECTOR":        ListProblemsDetectorTypeThreatDetector,
+}
+
+var mappingListProblemsDetectorTypeEnumLowerCase = map[string]ListProblemsDetectorTypeEnum{
+	"iaas_activity_detector":      ListProblemsDetectorTypeActivityDetector,
+	"iaas_configuration_detector": ListProblemsDetectorTypeConfigurationDetector,
+	"iaas_threat_detector":        ListProblemsDetectorTypeThreatDetector,
 }
 
 // GetListProblemsDetectorTypeEnumValues Enumerates the set of values for ListProblemsDetectorTypeEnum
@@ -306,17 +316,13 @@ func GetListProblemsDetectorTypeEnumStringValues() []string {
 	return []string{
 		"IAAS_ACTIVITY_DETECTOR",
 		"IAAS_CONFIGURATION_DETECTOR",
+		"IAAS_THREAT_DETECTOR",
 	}
 }
 
 // GetMappingListProblemsDetectorTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProblemsDetectorTypeEnum(val string) (ListProblemsDetectorTypeEnum, bool) {
-	mappingListProblemsDetectorTypeEnumIgnoreCase := make(map[string]ListProblemsDetectorTypeEnum)
-	for k, v := range mappingListProblemsDetectorTypeEnum {
-		mappingListProblemsDetectorTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProblemsDetectorTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProblemsDetectorTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -332,6 +338,11 @@ const (
 var mappingListProblemsAccessLevelEnum = map[string]ListProblemsAccessLevelEnum{
 	"RESTRICTED": ListProblemsAccessLevelRestricted,
 	"ACCESSIBLE": ListProblemsAccessLevelAccessible,
+}
+
+var mappingListProblemsAccessLevelEnumLowerCase = map[string]ListProblemsAccessLevelEnum{
+	"restricted": ListProblemsAccessLevelRestricted,
+	"accessible": ListProblemsAccessLevelAccessible,
 }
 
 // GetListProblemsAccessLevelEnumValues Enumerates the set of values for ListProblemsAccessLevelEnum
@@ -353,12 +364,7 @@ func GetListProblemsAccessLevelEnumStringValues() []string {
 
 // GetMappingListProblemsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProblemsAccessLevelEnum(val string) (ListProblemsAccessLevelEnum, bool) {
-	mappingListProblemsAccessLevelEnumIgnoreCase := make(map[string]ListProblemsAccessLevelEnum)
-	for k, v := range mappingListProblemsAccessLevelEnum {
-		mappingListProblemsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProblemsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProblemsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -374,6 +380,11 @@ const (
 var mappingListProblemsSortOrderEnum = map[string]ListProblemsSortOrderEnum{
 	"ASC":  ListProblemsSortOrderAsc,
 	"DESC": ListProblemsSortOrderDesc,
+}
+
+var mappingListProblemsSortOrderEnumLowerCase = map[string]ListProblemsSortOrderEnum{
+	"asc":  ListProblemsSortOrderAsc,
+	"desc": ListProblemsSortOrderDesc,
 }
 
 // GetListProblemsSortOrderEnumValues Enumerates the set of values for ListProblemsSortOrderEnum
@@ -395,12 +406,7 @@ func GetListProblemsSortOrderEnumStringValues() []string {
 
 // GetMappingListProblemsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProblemsSortOrderEnum(val string) (ListProblemsSortOrderEnum, bool) {
-	mappingListProblemsSortOrderEnumIgnoreCase := make(map[string]ListProblemsSortOrderEnum)
-	for k, v := range mappingListProblemsSortOrderEnum {
-		mappingListProblemsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProblemsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProblemsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -418,6 +424,12 @@ var mappingListProblemsSortByEnum = map[string]ListProblemsSortByEnum{
 	"riskLevel":        ListProblemsSortByRisklevel,
 	"timeLastDetected": ListProblemsSortByTimelastdetected,
 	"resourceName":     ListProblemsSortByResourcename,
+}
+
+var mappingListProblemsSortByEnumLowerCase = map[string]ListProblemsSortByEnum{
+	"risklevel":        ListProblemsSortByRisklevel,
+	"timelastdetected": ListProblemsSortByTimelastdetected,
+	"resourcename":     ListProblemsSortByResourcename,
 }
 
 // GetListProblemsSortByEnumValues Enumerates the set of values for ListProblemsSortByEnum
@@ -440,11 +452,6 @@ func GetListProblemsSortByEnumStringValues() []string {
 
 // GetMappingListProblemsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProblemsSortByEnum(val string) (ListProblemsSortByEnum, bool) {
-	mappingListProblemsSortByEnumIgnoreCase := make(map[string]ListProblemsSortByEnum)
-	for k, v := range mappingListProblemsSortByEnum {
-		mappingListProblemsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProblemsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProblemsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,11 @@ var mappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnum = map[string]
 	"DELETED": ListLogAnalyticsObjectCollectionRulesLifecycleStateDeleted,
 }
 
+var mappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnumLowerCase = map[string]ListLogAnalyticsObjectCollectionRulesLifecycleStateEnum{
+	"active":  ListLogAnalyticsObjectCollectionRulesLifecycleStateActive,
+	"deleted": ListLogAnalyticsObjectCollectionRulesLifecycleStateDeleted,
+}
+
 // GetListLogAnalyticsObjectCollectionRulesLifecycleStateEnumValues Enumerates the set of values for ListLogAnalyticsObjectCollectionRulesLifecycleStateEnum
 func GetListLogAnalyticsObjectCollectionRulesLifecycleStateEnumValues() []ListLogAnalyticsObjectCollectionRulesLifecycleStateEnum {
 	values := make([]ListLogAnalyticsObjectCollectionRulesLifecycleStateEnum, 0)
@@ -157,12 +162,7 @@ func GetListLogAnalyticsObjectCollectionRulesLifecycleStateEnumStringValues() []
 
 // GetMappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnum(val string) (ListLogAnalyticsObjectCollectionRulesLifecycleStateEnum, bool) {
-	mappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnumIgnoreCase := make(map[string]ListLogAnalyticsObjectCollectionRulesLifecycleStateEnum)
-	for k, v := range mappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnum {
-		mappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLogAnalyticsObjectCollectionRulesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -178,6 +178,11 @@ const (
 var mappingListLogAnalyticsObjectCollectionRulesSortOrderEnum = map[string]ListLogAnalyticsObjectCollectionRulesSortOrderEnum{
 	"ASC":  ListLogAnalyticsObjectCollectionRulesSortOrderAsc,
 	"DESC": ListLogAnalyticsObjectCollectionRulesSortOrderDesc,
+}
+
+var mappingListLogAnalyticsObjectCollectionRulesSortOrderEnumLowerCase = map[string]ListLogAnalyticsObjectCollectionRulesSortOrderEnum{
+	"asc":  ListLogAnalyticsObjectCollectionRulesSortOrderAsc,
+	"desc": ListLogAnalyticsObjectCollectionRulesSortOrderDesc,
 }
 
 // GetListLogAnalyticsObjectCollectionRulesSortOrderEnumValues Enumerates the set of values for ListLogAnalyticsObjectCollectionRulesSortOrderEnum
@@ -199,12 +204,7 @@ func GetListLogAnalyticsObjectCollectionRulesSortOrderEnumStringValues() []strin
 
 // GetMappingListLogAnalyticsObjectCollectionRulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLogAnalyticsObjectCollectionRulesSortOrderEnum(val string) (ListLogAnalyticsObjectCollectionRulesSortOrderEnum, bool) {
-	mappingListLogAnalyticsObjectCollectionRulesSortOrderEnumIgnoreCase := make(map[string]ListLogAnalyticsObjectCollectionRulesSortOrderEnum)
-	for k, v := range mappingListLogAnalyticsObjectCollectionRulesSortOrderEnum {
-		mappingListLogAnalyticsObjectCollectionRulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLogAnalyticsObjectCollectionRulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLogAnalyticsObjectCollectionRulesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -221,6 +221,12 @@ const (
 var mappingListLogAnalyticsObjectCollectionRulesSortByEnum = map[string]ListLogAnalyticsObjectCollectionRulesSortByEnum{
 	"timeUpdated": ListLogAnalyticsObjectCollectionRulesSortByTimeupdated,
 	"timeCreated": ListLogAnalyticsObjectCollectionRulesSortByTimecreated,
+	"name":        ListLogAnalyticsObjectCollectionRulesSortByName,
+}
+
+var mappingListLogAnalyticsObjectCollectionRulesSortByEnumLowerCase = map[string]ListLogAnalyticsObjectCollectionRulesSortByEnum{
+	"timeupdated": ListLogAnalyticsObjectCollectionRulesSortByTimeupdated,
+	"timecreated": ListLogAnalyticsObjectCollectionRulesSortByTimecreated,
 	"name":        ListLogAnalyticsObjectCollectionRulesSortByName,
 }
 
@@ -244,11 +250,6 @@ func GetListLogAnalyticsObjectCollectionRulesSortByEnumStringValues() []string {
 
 // GetMappingListLogAnalyticsObjectCollectionRulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLogAnalyticsObjectCollectionRulesSortByEnum(val string) (ListLogAnalyticsObjectCollectionRulesSortByEnum, bool) {
-	mappingListLogAnalyticsObjectCollectionRulesSortByEnumIgnoreCase := make(map[string]ListLogAnalyticsObjectCollectionRulesSortByEnum)
-	for k, v := range mappingListLogAnalyticsObjectCollectionRulesSortByEnum {
-		mappingListLogAnalyticsObjectCollectionRulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLogAnalyticsObjectCollectionRulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLogAnalyticsObjectCollectionRulesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

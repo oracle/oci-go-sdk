@@ -13,7 +13,7 @@ package monitoring
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -195,6 +195,13 @@ var mappingAlarmSeverityEnum = map[string]AlarmSeverityEnum{
 	"INFO":     AlarmSeverityInfo,
 }
 
+var mappingAlarmSeverityEnumLowerCase = map[string]AlarmSeverityEnum{
+	"critical": AlarmSeverityCritical,
+	"error":    AlarmSeverityError,
+	"warning":  AlarmSeverityWarning,
+	"info":     AlarmSeverityInfo,
+}
+
 // GetAlarmSeverityEnumValues Enumerates the set of values for AlarmSeverityEnum
 func GetAlarmSeverityEnumValues() []AlarmSeverityEnum {
 	values := make([]AlarmSeverityEnum, 0)
@@ -216,12 +223,7 @@ func GetAlarmSeverityEnumStringValues() []string {
 
 // GetMappingAlarmSeverityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAlarmSeverityEnum(val string) (AlarmSeverityEnum, bool) {
-	mappingAlarmSeverityEnumIgnoreCase := make(map[string]AlarmSeverityEnum)
-	for k, v := range mappingAlarmSeverityEnum {
-		mappingAlarmSeverityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAlarmSeverityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAlarmSeverityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -239,6 +241,12 @@ var mappingAlarmMessageFormatEnum = map[string]AlarmMessageFormatEnum{
 	"RAW":           AlarmMessageFormatRaw,
 	"PRETTY_JSON":   AlarmMessageFormatPrettyJson,
 	"ONS_OPTIMIZED": AlarmMessageFormatOnsOptimized,
+}
+
+var mappingAlarmMessageFormatEnumLowerCase = map[string]AlarmMessageFormatEnum{
+	"raw":           AlarmMessageFormatRaw,
+	"pretty_json":   AlarmMessageFormatPrettyJson,
+	"ons_optimized": AlarmMessageFormatOnsOptimized,
 }
 
 // GetAlarmMessageFormatEnumValues Enumerates the set of values for AlarmMessageFormatEnum
@@ -261,12 +269,7 @@ func GetAlarmMessageFormatEnumStringValues() []string {
 
 // GetMappingAlarmMessageFormatEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAlarmMessageFormatEnum(val string) (AlarmMessageFormatEnum, bool) {
-	mappingAlarmMessageFormatEnumIgnoreCase := make(map[string]AlarmMessageFormatEnum)
-	for k, v := range mappingAlarmMessageFormatEnum {
-		mappingAlarmMessageFormatEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAlarmMessageFormatEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAlarmMessageFormatEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -284,6 +287,12 @@ var mappingAlarmLifecycleStateEnum = map[string]AlarmLifecycleStateEnum{
 	"ACTIVE":   AlarmLifecycleStateActive,
 	"DELETING": AlarmLifecycleStateDeleting,
 	"DELETED":  AlarmLifecycleStateDeleted,
+}
+
+var mappingAlarmLifecycleStateEnumLowerCase = map[string]AlarmLifecycleStateEnum{
+	"active":   AlarmLifecycleStateActive,
+	"deleting": AlarmLifecycleStateDeleting,
+	"deleted":  AlarmLifecycleStateDeleted,
 }
 
 // GetAlarmLifecycleStateEnumValues Enumerates the set of values for AlarmLifecycleStateEnum
@@ -306,11 +315,6 @@ func GetAlarmLifecycleStateEnumStringValues() []string {
 
 // GetMappingAlarmLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAlarmLifecycleStateEnum(val string) (AlarmLifecycleStateEnum, bool) {
-	mappingAlarmLifecycleStateEnumIgnoreCase := make(map[string]AlarmLifecycleStateEnum)
-	for k, v := range mappingAlarmLifecycleStateEnum {
-		mappingAlarmLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAlarmLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAlarmLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

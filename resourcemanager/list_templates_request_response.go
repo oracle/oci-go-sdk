@@ -6,7 +6,7 @@ package resourcemanager
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -146,6 +146,11 @@ var mappingListTemplatesSortByEnum = map[string]ListTemplatesSortByEnum{
 	"DISPLAYNAME": ListTemplatesSortByDisplayname,
 }
 
+var mappingListTemplatesSortByEnumLowerCase = map[string]ListTemplatesSortByEnum{
+	"timecreated": ListTemplatesSortByTimecreated,
+	"displayname": ListTemplatesSortByDisplayname,
+}
+
 // GetListTemplatesSortByEnumValues Enumerates the set of values for ListTemplatesSortByEnum
 func GetListTemplatesSortByEnumValues() []ListTemplatesSortByEnum {
 	values := make([]ListTemplatesSortByEnum, 0)
@@ -165,12 +170,7 @@ func GetListTemplatesSortByEnumStringValues() []string {
 
 // GetMappingListTemplatesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTemplatesSortByEnum(val string) (ListTemplatesSortByEnum, bool) {
-	mappingListTemplatesSortByEnumIgnoreCase := make(map[string]ListTemplatesSortByEnum)
-	for k, v := range mappingListTemplatesSortByEnum {
-		mappingListTemplatesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTemplatesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTemplatesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -186,6 +186,11 @@ const (
 var mappingListTemplatesSortOrderEnum = map[string]ListTemplatesSortOrderEnum{
 	"ASC":  ListTemplatesSortOrderAsc,
 	"DESC": ListTemplatesSortOrderDesc,
+}
+
+var mappingListTemplatesSortOrderEnumLowerCase = map[string]ListTemplatesSortOrderEnum{
+	"asc":  ListTemplatesSortOrderAsc,
+	"desc": ListTemplatesSortOrderDesc,
 }
 
 // GetListTemplatesSortOrderEnumValues Enumerates the set of values for ListTemplatesSortOrderEnum
@@ -207,11 +212,6 @@ func GetListTemplatesSortOrderEnumStringValues() []string {
 
 // GetMappingListTemplatesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTemplatesSortOrderEnum(val string) (ListTemplatesSortOrderEnum, bool) {
-	mappingListTemplatesSortOrderEnumIgnoreCase := make(map[string]ListTemplatesSortOrderEnum)
-	for k, v := range mappingListTemplatesSortOrderEnum {
-		mappingListTemplatesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTemplatesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTemplatesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

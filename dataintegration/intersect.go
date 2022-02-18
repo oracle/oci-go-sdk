@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -167,6 +167,11 @@ var mappingIntersectIntersectTypeEnum = map[string]IntersectIntersectTypeEnum{
 	"POSITION": IntersectIntersectTypePosition,
 }
 
+var mappingIntersectIntersectTypeEnumLowerCase = map[string]IntersectIntersectTypeEnum{
+	"name":     IntersectIntersectTypeName,
+	"position": IntersectIntersectTypePosition,
+}
+
 // GetIntersectIntersectTypeEnumValues Enumerates the set of values for IntersectIntersectTypeEnum
 func GetIntersectIntersectTypeEnumValues() []IntersectIntersectTypeEnum {
 	values := make([]IntersectIntersectTypeEnum, 0)
@@ -186,11 +191,6 @@ func GetIntersectIntersectTypeEnumStringValues() []string {
 
 // GetMappingIntersectIntersectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIntersectIntersectTypeEnum(val string) (IntersectIntersectTypeEnum, bool) {
-	mappingIntersectIntersectTypeEnumIgnoreCase := make(map[string]IntersectIntersectTypeEnum)
-	for k, v := range mappingIntersectIntersectTypeEnum {
-		mappingIntersectIntersectTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIntersectIntersectTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIntersectIntersectTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

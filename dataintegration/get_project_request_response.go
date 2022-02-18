@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -118,6 +118,10 @@ var mappingGetProjectProjectionEnum = map[string]GetProjectProjectionEnum{
 	"CHILD_COUNT_STATISTICS": GetProjectProjectionChildCountStatistics,
 }
 
+var mappingGetProjectProjectionEnumLowerCase = map[string]GetProjectProjectionEnum{
+	"child_count_statistics": GetProjectProjectionChildCountStatistics,
+}
+
 // GetGetProjectProjectionEnumValues Enumerates the set of values for GetProjectProjectionEnum
 func GetGetProjectProjectionEnumValues() []GetProjectProjectionEnum {
 	values := make([]GetProjectProjectionEnum, 0)
@@ -136,11 +140,6 @@ func GetGetProjectProjectionEnumStringValues() []string {
 
 // GetMappingGetProjectProjectionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetProjectProjectionEnum(val string) (GetProjectProjectionEnum, bool) {
-	mappingGetProjectProjectionEnumIgnoreCase := make(map[string]GetProjectProjectionEnum)
-	for k, v := range mappingGetProjectProjectionEnum {
-		mappingGetProjectProjectionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetProjectProjectionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetProjectProjectionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

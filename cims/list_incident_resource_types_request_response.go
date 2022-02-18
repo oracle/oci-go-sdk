@@ -6,7 +6,7 @@ package cims
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,11 @@ var mappingListIncidentResourceTypesSortByEnum = map[string]ListIncidentResource
 	"severity":    ListIncidentResourceTypesSortBySeverity,
 }
 
+var mappingListIncidentResourceTypesSortByEnumLowerCase = map[string]ListIncidentResourceTypesSortByEnum{
+	"dateupdated": ListIncidentResourceTypesSortByDateupdated,
+	"severity":    ListIncidentResourceTypesSortBySeverity,
+}
+
 // GetListIncidentResourceTypesSortByEnumValues Enumerates the set of values for ListIncidentResourceTypesSortByEnum
 func GetListIncidentResourceTypesSortByEnumValues() []ListIncidentResourceTypesSortByEnum {
 	values := make([]ListIncidentResourceTypesSortByEnum, 0)
@@ -157,12 +162,7 @@ func GetListIncidentResourceTypesSortByEnumStringValues() []string {
 
 // GetMappingListIncidentResourceTypesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListIncidentResourceTypesSortByEnum(val string) (ListIncidentResourceTypesSortByEnum, bool) {
-	mappingListIncidentResourceTypesSortByEnumIgnoreCase := make(map[string]ListIncidentResourceTypesSortByEnum)
-	for k, v := range mappingListIncidentResourceTypesSortByEnum {
-		mappingListIncidentResourceTypesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListIncidentResourceTypesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListIncidentResourceTypesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -178,6 +178,11 @@ const (
 var mappingListIncidentResourceTypesSortOrderEnum = map[string]ListIncidentResourceTypesSortOrderEnum{
 	"ASC":  ListIncidentResourceTypesSortOrderAsc,
 	"DESC": ListIncidentResourceTypesSortOrderDesc,
+}
+
+var mappingListIncidentResourceTypesSortOrderEnumLowerCase = map[string]ListIncidentResourceTypesSortOrderEnum{
+	"asc":  ListIncidentResourceTypesSortOrderAsc,
+	"desc": ListIncidentResourceTypesSortOrderDesc,
 }
 
 // GetListIncidentResourceTypesSortOrderEnumValues Enumerates the set of values for ListIncidentResourceTypesSortOrderEnum
@@ -199,11 +204,6 @@ func GetListIncidentResourceTypesSortOrderEnumStringValues() []string {
 
 // GetMappingListIncidentResourceTypesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListIncidentResourceTypesSortOrderEnum(val string) (ListIncidentResourceTypesSortOrderEnum, bool) {
-	mappingListIncidentResourceTypesSortOrderEnumIgnoreCase := make(map[string]ListIncidentResourceTypesSortOrderEnum)
-	for k, v := range mappingListIncidentResourceTypesSortOrderEnum {
-		mappingListIncidentResourceTypesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListIncidentResourceTypesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListIncidentResourceTypesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

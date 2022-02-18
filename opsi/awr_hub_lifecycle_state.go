@@ -37,6 +37,15 @@ var mappingAwrHubLifecycleStateEnum = map[string]AwrHubLifecycleStateEnum{
 	"FAILED":   AwrHubLifecycleStateFailed,
 }
 
+var mappingAwrHubLifecycleStateEnumLowerCase = map[string]AwrHubLifecycleStateEnum{
+	"creating": AwrHubLifecycleStateCreating,
+	"updating": AwrHubLifecycleStateUpdating,
+	"active":   AwrHubLifecycleStateActive,
+	"deleting": AwrHubLifecycleStateDeleting,
+	"deleted":  AwrHubLifecycleStateDeleted,
+	"failed":   AwrHubLifecycleStateFailed,
+}
+
 // GetAwrHubLifecycleStateEnumValues Enumerates the set of values for AwrHubLifecycleStateEnum
 func GetAwrHubLifecycleStateEnumValues() []AwrHubLifecycleStateEnum {
 	values := make([]AwrHubLifecycleStateEnum, 0)
@@ -60,11 +69,6 @@ func GetAwrHubLifecycleStateEnumStringValues() []string {
 
 // GetMappingAwrHubLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAwrHubLifecycleStateEnum(val string) (AwrHubLifecycleStateEnum, bool) {
-	mappingAwrHubLifecycleStateEnumIgnoreCase := make(map[string]AwrHubLifecycleStateEnum)
-	for k, v := range mappingAwrHubLifecycleStateEnum {
-		mappingAwrHubLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAwrHubLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAwrHubLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

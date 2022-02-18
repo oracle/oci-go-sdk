@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,14 @@ var mappingTablespaceStorageSizeUnitEnum = map[string]TablespaceStorageSizeUnitE
 	"TERABYTES": TablespaceStorageSizeUnitTerabytes,
 }
 
+var mappingTablespaceStorageSizeUnitEnumLowerCase = map[string]TablespaceStorageSizeUnitEnum{
+	"bytes":     TablespaceStorageSizeUnitBytes,
+	"kilobytes": TablespaceStorageSizeUnitKilobytes,
+	"megabytes": TablespaceStorageSizeUnitMegabytes,
+	"gigabytes": TablespaceStorageSizeUnitGigabytes,
+	"terabytes": TablespaceStorageSizeUnitTerabytes,
+}
+
 // GetTablespaceStorageSizeUnitEnumValues Enumerates the set of values for TablespaceStorageSizeUnitEnum
 func GetTablespaceStorageSizeUnitEnumValues() []TablespaceStorageSizeUnitEnum {
 	values := make([]TablespaceStorageSizeUnitEnum, 0)
@@ -88,11 +96,6 @@ func GetTablespaceStorageSizeUnitEnumStringValues() []string {
 
 // GetMappingTablespaceStorageSizeUnitEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTablespaceStorageSizeUnitEnum(val string) (TablespaceStorageSizeUnitEnum, bool) {
-	mappingTablespaceStorageSizeUnitEnumIgnoreCase := make(map[string]TablespaceStorageSizeUnitEnum)
-	for k, v := range mappingTablespaceStorageSizeUnitEnum {
-		mappingTablespaceStorageSizeUnitEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTablespaceStorageSizeUnitEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTablespaceStorageSizeUnitEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

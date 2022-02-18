@@ -2,9 +2,10 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Cloud Guard APIs
+// Cloud Guard API
 //
-// A description of the Cloud Guard APIs
+// Use the Cloud Guard API to automate processes that you would otherwise perform through the Cloud Guard Console.
+// **Note:** You can perform Create, Update, and Delete operations only from the reporting region of your Cloud Guard tenancy. You can perform Read operations from any region.
 //
 
 package cloudguard
@@ -31,6 +32,13 @@ var mappingActorTypeEnum = map[string]ActorTypeEnum{
 	"USER":                ActorTypeUser,
 }
 
+var mappingActorTypeEnumLowerCase = map[string]ActorTypeEnum{
+	"cloud_guard_service": ActorTypeCloudGuardService,
+	"correlation":         ActorTypeCorrelation,
+	"responder":           ActorTypeResponder,
+	"user":                ActorTypeUser,
+}
+
 // GetActorTypeEnumValues Enumerates the set of values for ActorTypeEnum
 func GetActorTypeEnumValues() []ActorTypeEnum {
 	values := make([]ActorTypeEnum, 0)
@@ -52,11 +60,6 @@ func GetActorTypeEnumStringValues() []string {
 
 // GetMappingActorTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingActorTypeEnum(val string) (ActorTypeEnum, bool) {
-	mappingActorTypeEnumIgnoreCase := make(map[string]ActorTypeEnum)
-	for k, v := range mappingActorTypeEnum {
-		mappingActorTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingActorTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingActorTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

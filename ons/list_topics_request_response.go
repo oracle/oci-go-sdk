@@ -6,7 +6,7 @@ package ons
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,11 @@ var mappingListTopicsSortByEnum = map[string]ListTopicsSortByEnum{
 	"LIFECYCLESTATE": ListTopicsSortByLifecyclestate,
 }
 
+var mappingListTopicsSortByEnumLowerCase = map[string]ListTopicsSortByEnum{
+	"timecreated":    ListTopicsSortByTimecreated,
+	"lifecyclestate": ListTopicsSortByLifecyclestate,
+}
+
 // GetListTopicsSortByEnumValues Enumerates the set of values for ListTopicsSortByEnum
 func GetListTopicsSortByEnumValues() []ListTopicsSortByEnum {
 	values := make([]ListTopicsSortByEnum, 0)
@@ -163,12 +168,7 @@ func GetListTopicsSortByEnumStringValues() []string {
 
 // GetMappingListTopicsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTopicsSortByEnum(val string) (ListTopicsSortByEnum, bool) {
-	mappingListTopicsSortByEnumIgnoreCase := make(map[string]ListTopicsSortByEnum)
-	for k, v := range mappingListTopicsSortByEnum {
-		mappingListTopicsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTopicsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTopicsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -184,6 +184,11 @@ const (
 var mappingListTopicsSortOrderEnum = map[string]ListTopicsSortOrderEnum{
 	"ASC":  ListTopicsSortOrderAsc,
 	"DESC": ListTopicsSortOrderDesc,
+}
+
+var mappingListTopicsSortOrderEnumLowerCase = map[string]ListTopicsSortOrderEnum{
+	"asc":  ListTopicsSortOrderAsc,
+	"desc": ListTopicsSortOrderDesc,
 }
 
 // GetListTopicsSortOrderEnumValues Enumerates the set of values for ListTopicsSortOrderEnum
@@ -205,11 +210,6 @@ func GetListTopicsSortOrderEnumStringValues() []string {
 
 // GetMappingListTopicsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTopicsSortOrderEnum(val string) (ListTopicsSortOrderEnum, bool) {
-	mappingListTopicsSortOrderEnumIgnoreCase := make(map[string]ListTopicsSortOrderEnum)
-	for k, v := range mappingListTopicsSortOrderEnum {
-		mappingListTopicsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTopicsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTopicsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

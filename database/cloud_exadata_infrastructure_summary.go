@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -120,6 +120,16 @@ var mappingCloudExadataInfrastructureSummaryLifecycleStateEnum = map[string]Clou
 	"MAINTENANCE_IN_PROGRESS": CloudExadataInfrastructureSummaryLifecycleStateMaintenanceInProgress,
 }
 
+var mappingCloudExadataInfrastructureSummaryLifecycleStateEnumLowerCase = map[string]CloudExadataInfrastructureSummaryLifecycleStateEnum{
+	"provisioning":            CloudExadataInfrastructureSummaryLifecycleStateProvisioning,
+	"available":               CloudExadataInfrastructureSummaryLifecycleStateAvailable,
+	"updating":                CloudExadataInfrastructureSummaryLifecycleStateUpdating,
+	"terminating":             CloudExadataInfrastructureSummaryLifecycleStateTerminating,
+	"terminated":              CloudExadataInfrastructureSummaryLifecycleStateTerminated,
+	"failed":                  CloudExadataInfrastructureSummaryLifecycleStateFailed,
+	"maintenance_in_progress": CloudExadataInfrastructureSummaryLifecycleStateMaintenanceInProgress,
+}
+
 // GetCloudExadataInfrastructureSummaryLifecycleStateEnumValues Enumerates the set of values for CloudExadataInfrastructureSummaryLifecycleStateEnum
 func GetCloudExadataInfrastructureSummaryLifecycleStateEnumValues() []CloudExadataInfrastructureSummaryLifecycleStateEnum {
 	values := make([]CloudExadataInfrastructureSummaryLifecycleStateEnum, 0)
@@ -144,11 +154,6 @@ func GetCloudExadataInfrastructureSummaryLifecycleStateEnumStringValues() []stri
 
 // GetMappingCloudExadataInfrastructureSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCloudExadataInfrastructureSummaryLifecycleStateEnum(val string) (CloudExadataInfrastructureSummaryLifecycleStateEnum, bool) {
-	mappingCloudExadataInfrastructureSummaryLifecycleStateEnumIgnoreCase := make(map[string]CloudExadataInfrastructureSummaryLifecycleStateEnum)
-	for k, v := range mappingCloudExadataInfrastructureSummaryLifecycleStateEnum {
-		mappingCloudExadataInfrastructureSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCloudExadataInfrastructureSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCloudExadataInfrastructureSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

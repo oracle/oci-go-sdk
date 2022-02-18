@@ -12,7 +12,7 @@ package visualbuilder
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -98,6 +98,14 @@ var mappingWorkRequestSummaryOperationTypeEnum = map[string]WorkRequestSummaryOp
 	"DELETE_VB_INSTANCE": WorkRequestSummaryOperationTypeDeleteVbInstance,
 }
 
+var mappingWorkRequestSummaryOperationTypeEnumLowerCase = map[string]WorkRequestSummaryOperationTypeEnum{
+	"create_vb_instance": WorkRequestSummaryOperationTypeCreateVbInstance,
+	"update_vb_instance": WorkRequestSummaryOperationTypeUpdateVbInstance,
+	"stop_vb_instance":   WorkRequestSummaryOperationTypeStopVbInstance,
+	"start_vb_instance":  WorkRequestSummaryOperationTypeStartVbInstance,
+	"delete_vb_instance": WorkRequestSummaryOperationTypeDeleteVbInstance,
+}
+
 // GetWorkRequestSummaryOperationTypeEnumValues Enumerates the set of values for WorkRequestSummaryOperationTypeEnum
 func GetWorkRequestSummaryOperationTypeEnumValues() []WorkRequestSummaryOperationTypeEnum {
 	values := make([]WorkRequestSummaryOperationTypeEnum, 0)
@@ -120,12 +128,7 @@ func GetWorkRequestSummaryOperationTypeEnumStringValues() []string {
 
 // GetMappingWorkRequestSummaryOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestSummaryOperationTypeEnum(val string) (WorkRequestSummaryOperationTypeEnum, bool) {
-	mappingWorkRequestSummaryOperationTypeEnumIgnoreCase := make(map[string]WorkRequestSummaryOperationTypeEnum)
-	for k, v := range mappingWorkRequestSummaryOperationTypeEnum {
-		mappingWorkRequestSummaryOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestSummaryOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestSummaryOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -151,6 +154,15 @@ var mappingWorkRequestSummaryStatusEnum = map[string]WorkRequestSummaryStatusEnu
 	"CANCELED":    WorkRequestSummaryStatusCanceled,
 }
 
+var mappingWorkRequestSummaryStatusEnumLowerCase = map[string]WorkRequestSummaryStatusEnum{
+	"accepted":    WorkRequestSummaryStatusAccepted,
+	"in_progress": WorkRequestSummaryStatusInProgress,
+	"failed":      WorkRequestSummaryStatusFailed,
+	"succeeded":   WorkRequestSummaryStatusSucceeded,
+	"canceling":   WorkRequestSummaryStatusCanceling,
+	"canceled":    WorkRequestSummaryStatusCanceled,
+}
+
 // GetWorkRequestSummaryStatusEnumValues Enumerates the set of values for WorkRequestSummaryStatusEnum
 func GetWorkRequestSummaryStatusEnumValues() []WorkRequestSummaryStatusEnum {
 	values := make([]WorkRequestSummaryStatusEnum, 0)
@@ -174,11 +186,6 @@ func GetWorkRequestSummaryStatusEnumStringValues() []string {
 
 // GetMappingWorkRequestSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestSummaryStatusEnum(val string) (WorkRequestSummaryStatusEnum, bool) {
-	mappingWorkRequestSummaryStatusEnumIgnoreCase := make(map[string]WorkRequestSummaryStatusEnum)
-	for k, v := range mappingWorkRequestSummaryStatusEnum {
-		mappingWorkRequestSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestSummaryStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package usage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -132,6 +132,11 @@ var mappingListRedeemableUsersSortOrderEnum = map[string]ListRedeemableUsersSort
 	"DESC": ListRedeemableUsersSortOrderDesc,
 }
 
+var mappingListRedeemableUsersSortOrderEnumLowerCase = map[string]ListRedeemableUsersSortOrderEnum{
+	"asc":  ListRedeemableUsersSortOrderAsc,
+	"desc": ListRedeemableUsersSortOrderDesc,
+}
+
 // GetListRedeemableUsersSortOrderEnumValues Enumerates the set of values for ListRedeemableUsersSortOrderEnum
 func GetListRedeemableUsersSortOrderEnumValues() []ListRedeemableUsersSortOrderEnum {
 	values := make([]ListRedeemableUsersSortOrderEnum, 0)
@@ -151,12 +156,7 @@ func GetListRedeemableUsersSortOrderEnumStringValues() []string {
 
 // GetMappingListRedeemableUsersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRedeemableUsersSortOrderEnum(val string) (ListRedeemableUsersSortOrderEnum, bool) {
-	mappingListRedeemableUsersSortOrderEnumIgnoreCase := make(map[string]ListRedeemableUsersSortOrderEnum)
-	for k, v := range mappingListRedeemableUsersSortOrderEnum {
-		mappingListRedeemableUsersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRedeemableUsersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRedeemableUsersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -172,6 +172,11 @@ const (
 var mappingListRedeemableUsersSortByEnum = map[string]ListRedeemableUsersSortByEnum{
 	"TIMECREATED": ListRedeemableUsersSortByTimecreated,
 	"TIMESTART":   ListRedeemableUsersSortByTimestart,
+}
+
+var mappingListRedeemableUsersSortByEnumLowerCase = map[string]ListRedeemableUsersSortByEnum{
+	"timecreated": ListRedeemableUsersSortByTimecreated,
+	"timestart":   ListRedeemableUsersSortByTimestart,
 }
 
 // GetListRedeemableUsersSortByEnumValues Enumerates the set of values for ListRedeemableUsersSortByEnum
@@ -193,11 +198,6 @@ func GetListRedeemableUsersSortByEnumStringValues() []string {
 
 // GetMappingListRedeemableUsersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRedeemableUsersSortByEnum(val string) (ListRedeemableUsersSortByEnum, bool) {
-	mappingListRedeemableUsersSortByEnumIgnoreCase := make(map[string]ListRedeemableUsersSortByEnum)
-	for k, v := range mappingListRedeemableUsersSortByEnum {
-		mappingListRedeemableUsersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRedeemableUsersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRedeemableUsersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

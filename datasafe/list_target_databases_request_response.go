@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -182,6 +182,17 @@ var mappingListTargetDatabasesLifecycleStateEnum = map[string]ListTargetDatabase
 	"FAILED":          ListTargetDatabasesLifecycleStateFailed,
 }
 
+var mappingListTargetDatabasesLifecycleStateEnumLowerCase = map[string]ListTargetDatabasesLifecycleStateEnum{
+	"creating":        ListTargetDatabasesLifecycleStateCreating,
+	"updating":        ListTargetDatabasesLifecycleStateUpdating,
+	"active":          ListTargetDatabasesLifecycleStateActive,
+	"inactive":        ListTargetDatabasesLifecycleStateInactive,
+	"deleting":        ListTargetDatabasesLifecycleStateDeleting,
+	"deleted":         ListTargetDatabasesLifecycleStateDeleted,
+	"needs_attention": ListTargetDatabasesLifecycleStateNeedsAttention,
+	"failed":          ListTargetDatabasesLifecycleStateFailed,
+}
+
 // GetListTargetDatabasesLifecycleStateEnumValues Enumerates the set of values for ListTargetDatabasesLifecycleStateEnum
 func GetListTargetDatabasesLifecycleStateEnumValues() []ListTargetDatabasesLifecycleStateEnum {
 	values := make([]ListTargetDatabasesLifecycleStateEnum, 0)
@@ -207,12 +218,7 @@ func GetListTargetDatabasesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListTargetDatabasesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTargetDatabasesLifecycleStateEnum(val string) (ListTargetDatabasesLifecycleStateEnum, bool) {
-	mappingListTargetDatabasesLifecycleStateEnumIgnoreCase := make(map[string]ListTargetDatabasesLifecycleStateEnum)
-	for k, v := range mappingListTargetDatabasesLifecycleStateEnum {
-		mappingListTargetDatabasesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTargetDatabasesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTargetDatabasesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -230,6 +236,12 @@ var mappingListTargetDatabasesDatabaseTypeEnum = map[string]ListTargetDatabasesD
 	"DATABASE_CLOUD_SERVICE": ListTargetDatabasesDatabaseTypeDatabaseCloudService,
 	"AUTONOMOUS_DATABASE":    ListTargetDatabasesDatabaseTypeAutonomousDatabase,
 	"INSTALLED_DATABASE":     ListTargetDatabasesDatabaseTypeInstalledDatabase,
+}
+
+var mappingListTargetDatabasesDatabaseTypeEnumLowerCase = map[string]ListTargetDatabasesDatabaseTypeEnum{
+	"database_cloud_service": ListTargetDatabasesDatabaseTypeDatabaseCloudService,
+	"autonomous_database":    ListTargetDatabasesDatabaseTypeAutonomousDatabase,
+	"installed_database":     ListTargetDatabasesDatabaseTypeInstalledDatabase,
 }
 
 // GetListTargetDatabasesDatabaseTypeEnumValues Enumerates the set of values for ListTargetDatabasesDatabaseTypeEnum
@@ -252,12 +264,7 @@ func GetListTargetDatabasesDatabaseTypeEnumStringValues() []string {
 
 // GetMappingListTargetDatabasesDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTargetDatabasesDatabaseTypeEnum(val string) (ListTargetDatabasesDatabaseTypeEnum, bool) {
-	mappingListTargetDatabasesDatabaseTypeEnumIgnoreCase := make(map[string]ListTargetDatabasesDatabaseTypeEnum)
-	for k, v := range mappingListTargetDatabasesDatabaseTypeEnum {
-		mappingListTargetDatabasesDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTargetDatabasesDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTargetDatabasesDatabaseTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -277,6 +284,13 @@ var mappingListTargetDatabasesInfrastructureTypeEnum = map[string]ListTargetData
 	"CLOUD_AT_CUSTOMER": ListTargetDatabasesInfrastructureTypeCloudAtCustomer,
 	"ON_PREMISES":       ListTargetDatabasesInfrastructureTypeOnPremises,
 	"NON_ORACLE_CLOUD":  ListTargetDatabasesInfrastructureTypeNonOracleCloud,
+}
+
+var mappingListTargetDatabasesInfrastructureTypeEnumLowerCase = map[string]ListTargetDatabasesInfrastructureTypeEnum{
+	"oracle_cloud":      ListTargetDatabasesInfrastructureTypeOracleCloud,
+	"cloud_at_customer": ListTargetDatabasesInfrastructureTypeCloudAtCustomer,
+	"on_premises":       ListTargetDatabasesInfrastructureTypeOnPremises,
+	"non_oracle_cloud":  ListTargetDatabasesInfrastructureTypeNonOracleCloud,
 }
 
 // GetListTargetDatabasesInfrastructureTypeEnumValues Enumerates the set of values for ListTargetDatabasesInfrastructureTypeEnum
@@ -300,12 +314,7 @@ func GetListTargetDatabasesInfrastructureTypeEnumStringValues() []string {
 
 // GetMappingListTargetDatabasesInfrastructureTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTargetDatabasesInfrastructureTypeEnum(val string) (ListTargetDatabasesInfrastructureTypeEnum, bool) {
-	mappingListTargetDatabasesInfrastructureTypeEnumIgnoreCase := make(map[string]ListTargetDatabasesInfrastructureTypeEnum)
-	for k, v := range mappingListTargetDatabasesInfrastructureTypeEnum {
-		mappingListTargetDatabasesInfrastructureTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTargetDatabasesInfrastructureTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTargetDatabasesInfrastructureTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -321,6 +330,11 @@ const (
 var mappingListTargetDatabasesAccessLevelEnum = map[string]ListTargetDatabasesAccessLevelEnum{
 	"RESTRICTED": ListTargetDatabasesAccessLevelRestricted,
 	"ACCESSIBLE": ListTargetDatabasesAccessLevelAccessible,
+}
+
+var mappingListTargetDatabasesAccessLevelEnumLowerCase = map[string]ListTargetDatabasesAccessLevelEnum{
+	"restricted": ListTargetDatabasesAccessLevelRestricted,
+	"accessible": ListTargetDatabasesAccessLevelAccessible,
 }
 
 // GetListTargetDatabasesAccessLevelEnumValues Enumerates the set of values for ListTargetDatabasesAccessLevelEnum
@@ -342,12 +356,7 @@ func GetListTargetDatabasesAccessLevelEnumStringValues() []string {
 
 // GetMappingListTargetDatabasesAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTargetDatabasesAccessLevelEnum(val string) (ListTargetDatabasesAccessLevelEnum, bool) {
-	mappingListTargetDatabasesAccessLevelEnumIgnoreCase := make(map[string]ListTargetDatabasesAccessLevelEnum)
-	for k, v := range mappingListTargetDatabasesAccessLevelEnum {
-		mappingListTargetDatabasesAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTargetDatabasesAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTargetDatabasesAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -363,6 +372,11 @@ const (
 var mappingListTargetDatabasesSortOrderEnum = map[string]ListTargetDatabasesSortOrderEnum{
 	"ASC":  ListTargetDatabasesSortOrderAsc,
 	"DESC": ListTargetDatabasesSortOrderDesc,
+}
+
+var mappingListTargetDatabasesSortOrderEnumLowerCase = map[string]ListTargetDatabasesSortOrderEnum{
+	"asc":  ListTargetDatabasesSortOrderAsc,
+	"desc": ListTargetDatabasesSortOrderDesc,
 }
 
 // GetListTargetDatabasesSortOrderEnumValues Enumerates the set of values for ListTargetDatabasesSortOrderEnum
@@ -384,12 +398,7 @@ func GetListTargetDatabasesSortOrderEnumStringValues() []string {
 
 // GetMappingListTargetDatabasesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTargetDatabasesSortOrderEnum(val string) (ListTargetDatabasesSortOrderEnum, bool) {
-	mappingListTargetDatabasesSortOrderEnumIgnoreCase := make(map[string]ListTargetDatabasesSortOrderEnum)
-	for k, v := range mappingListTargetDatabasesSortOrderEnum {
-		mappingListTargetDatabasesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTargetDatabasesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTargetDatabasesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -405,6 +414,11 @@ const (
 var mappingListTargetDatabasesSortByEnum = map[string]ListTargetDatabasesSortByEnum{
 	"TIMECREATED": ListTargetDatabasesSortByTimecreated,
 	"DISPLAYNAME": ListTargetDatabasesSortByDisplayname,
+}
+
+var mappingListTargetDatabasesSortByEnumLowerCase = map[string]ListTargetDatabasesSortByEnum{
+	"timecreated": ListTargetDatabasesSortByTimecreated,
+	"displayname": ListTargetDatabasesSortByDisplayname,
 }
 
 // GetListTargetDatabasesSortByEnumValues Enumerates the set of values for ListTargetDatabasesSortByEnum
@@ -426,11 +440,6 @@ func GetListTargetDatabasesSortByEnumStringValues() []string {
 
 // GetMappingListTargetDatabasesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTargetDatabasesSortByEnum(val string) (ListTargetDatabasesSortByEnum, bool) {
-	mappingListTargetDatabasesSortByEnumIgnoreCase := make(map[string]ListTargetDatabasesSortByEnum)
-	for k, v := range mappingListTargetDatabasesSortByEnum {
-		mappingListTargetDatabasesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTargetDatabasesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTargetDatabasesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

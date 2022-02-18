@@ -20,8 +20,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/oracle/oci-go-sdk/v58/common"
-	"github.com/oracle/oci-go-sdk/v58/objectstorage"
+	"github.com/oracle/oci-go-sdk/v59/common"
+	"github.com/oracle/oci-go-sdk/v59/objectstorage"
 )
 
 // UploadManager is the interface that groups the upload methods

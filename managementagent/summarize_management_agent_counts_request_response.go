@@ -6,7 +6,7 @@ package managementagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -129,6 +129,11 @@ var mappingSummarizeManagementAgentCountsInstallTypeEnum = map[string]SummarizeM
 	"GATEWAY": SummarizeManagementAgentCountsInstallTypeGateway,
 }
 
+var mappingSummarizeManagementAgentCountsInstallTypeEnumLowerCase = map[string]SummarizeManagementAgentCountsInstallTypeEnum{
+	"agent":   SummarizeManagementAgentCountsInstallTypeAgent,
+	"gateway": SummarizeManagementAgentCountsInstallTypeGateway,
+}
+
 // GetSummarizeManagementAgentCountsInstallTypeEnumValues Enumerates the set of values for SummarizeManagementAgentCountsInstallTypeEnum
 func GetSummarizeManagementAgentCountsInstallTypeEnumValues() []SummarizeManagementAgentCountsInstallTypeEnum {
 	values := make([]SummarizeManagementAgentCountsInstallTypeEnum, 0)
@@ -148,11 +153,6 @@ func GetSummarizeManagementAgentCountsInstallTypeEnumStringValues() []string {
 
 // GetMappingSummarizeManagementAgentCountsInstallTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeManagementAgentCountsInstallTypeEnum(val string) (SummarizeManagementAgentCountsInstallTypeEnum, bool) {
-	mappingSummarizeManagementAgentCountsInstallTypeEnumIgnoreCase := make(map[string]SummarizeManagementAgentCountsInstallTypeEnum)
-	for k, v := range mappingSummarizeManagementAgentCountsInstallTypeEnum {
-		mappingSummarizeManagementAgentCountsInstallTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeManagementAgentCountsInstallTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeManagementAgentCountsInstallTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -152,6 +152,11 @@ var mappingListMaskedColumnsSortOrderEnum = map[string]ListMaskedColumnsSortOrde
 	"DESC": ListMaskedColumnsSortOrderDesc,
 }
 
+var mappingListMaskedColumnsSortOrderEnumLowerCase = map[string]ListMaskedColumnsSortOrderEnum{
+	"asc":  ListMaskedColumnsSortOrderAsc,
+	"desc": ListMaskedColumnsSortOrderDesc,
+}
+
 // GetListMaskedColumnsSortOrderEnumValues Enumerates the set of values for ListMaskedColumnsSortOrderEnum
 func GetListMaskedColumnsSortOrderEnumValues() []ListMaskedColumnsSortOrderEnum {
 	values := make([]ListMaskedColumnsSortOrderEnum, 0)
@@ -171,12 +176,7 @@ func GetListMaskedColumnsSortOrderEnumStringValues() []string {
 
 // GetMappingListMaskedColumnsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMaskedColumnsSortOrderEnum(val string) (ListMaskedColumnsSortOrderEnum, bool) {
-	mappingListMaskedColumnsSortOrderEnumIgnoreCase := make(map[string]ListMaskedColumnsSortOrderEnum)
-	for k, v := range mappingListMaskedColumnsSortOrderEnum {
-		mappingListMaskedColumnsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMaskedColumnsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMaskedColumnsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -192,6 +192,11 @@ const (
 var mappingListMaskedColumnsSortByEnum = map[string]ListMaskedColumnsSortByEnum{
 	"schemaName": ListMaskedColumnsSortBySchemaname,
 	"objectName": ListMaskedColumnsSortByObjectname,
+}
+
+var mappingListMaskedColumnsSortByEnumLowerCase = map[string]ListMaskedColumnsSortByEnum{
+	"schemaname": ListMaskedColumnsSortBySchemaname,
+	"objectname": ListMaskedColumnsSortByObjectname,
 }
 
 // GetListMaskedColumnsSortByEnumValues Enumerates the set of values for ListMaskedColumnsSortByEnum
@@ -213,12 +218,7 @@ func GetListMaskedColumnsSortByEnumStringValues() []string {
 
 // GetMappingListMaskedColumnsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMaskedColumnsSortByEnum(val string) (ListMaskedColumnsSortByEnum, bool) {
-	mappingListMaskedColumnsSortByEnumIgnoreCase := make(map[string]ListMaskedColumnsSortByEnum)
-	for k, v := range mappingListMaskedColumnsSortByEnum {
-		mappingListMaskedColumnsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMaskedColumnsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMaskedColumnsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -236,6 +236,12 @@ var mappingListMaskedColumnsObjectTypeEnum = map[string]ListMaskedColumnsObjectT
 	"ALL":             ListMaskedColumnsObjectTypeAll,
 	"TABLE":           ListMaskedColumnsObjectTypeTable,
 	"EDITIONING_VIEW": ListMaskedColumnsObjectTypeEditioningView,
+}
+
+var mappingListMaskedColumnsObjectTypeEnumLowerCase = map[string]ListMaskedColumnsObjectTypeEnum{
+	"all":             ListMaskedColumnsObjectTypeAll,
+	"table":           ListMaskedColumnsObjectTypeTable,
+	"editioning_view": ListMaskedColumnsObjectTypeEditioningView,
 }
 
 // GetListMaskedColumnsObjectTypeEnumValues Enumerates the set of values for ListMaskedColumnsObjectTypeEnum
@@ -258,11 +264,6 @@ func GetListMaskedColumnsObjectTypeEnumStringValues() []string {
 
 // GetMappingListMaskedColumnsObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMaskedColumnsObjectTypeEnum(val string) (ListMaskedColumnsObjectTypeEnum, bool) {
-	mappingListMaskedColumnsObjectTypeEnumIgnoreCase := make(map[string]ListMaskedColumnsObjectTypeEnum)
-	for k, v := range mappingListMaskedColumnsObjectTypeEnum {
-		mappingListMaskedColumnsObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMaskedColumnsObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMaskedColumnsObjectTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

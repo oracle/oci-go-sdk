@@ -11,7 +11,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -112,6 +112,16 @@ var mappingUpdateApplianceExportJobDetailsLifecycleStateEnum = map[string]Update
 	"DELETED":    UpdateApplianceExportJobDetailsLifecycleStateDeleted,
 }
 
+var mappingUpdateApplianceExportJobDetailsLifecycleStateEnumLowerCase = map[string]UpdateApplianceExportJobDetailsLifecycleStateEnum{
+	"creating":   UpdateApplianceExportJobDetailsLifecycleStateCreating,
+	"active":     UpdateApplianceExportJobDetailsLifecycleStateActive,
+	"inprogress": UpdateApplianceExportJobDetailsLifecycleStateInprogress,
+	"succeeded":  UpdateApplianceExportJobDetailsLifecycleStateSucceeded,
+	"failed":     UpdateApplianceExportJobDetailsLifecycleStateFailed,
+	"cancelled":  UpdateApplianceExportJobDetailsLifecycleStateCancelled,
+	"deleted":    UpdateApplianceExportJobDetailsLifecycleStateDeleted,
+}
+
 // GetUpdateApplianceExportJobDetailsLifecycleStateEnumValues Enumerates the set of values for UpdateApplianceExportJobDetailsLifecycleStateEnum
 func GetUpdateApplianceExportJobDetailsLifecycleStateEnumValues() []UpdateApplianceExportJobDetailsLifecycleStateEnum {
 	values := make([]UpdateApplianceExportJobDetailsLifecycleStateEnum, 0)
@@ -136,11 +146,6 @@ func GetUpdateApplianceExportJobDetailsLifecycleStateEnumStringValues() []string
 
 // GetMappingUpdateApplianceExportJobDetailsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateApplianceExportJobDetailsLifecycleStateEnum(val string) (UpdateApplianceExportJobDetailsLifecycleStateEnum, bool) {
-	mappingUpdateApplianceExportJobDetailsLifecycleStateEnumIgnoreCase := make(map[string]UpdateApplianceExportJobDetailsLifecycleStateEnum)
-	for k, v := range mappingUpdateApplianceExportJobDetailsLifecycleStateEnum {
-		mappingUpdateApplianceExportJobDetailsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateApplianceExportJobDetailsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateApplianceExportJobDetailsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

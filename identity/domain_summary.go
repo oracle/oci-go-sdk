@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -113,6 +113,12 @@ var mappingDomainSummaryLifecycleDetailsEnum = map[string]DomainSummaryLifecycle
 	"UPDATING":     DomainSummaryLifecycleDetailsUpdating,
 }
 
+var mappingDomainSummaryLifecycleDetailsEnumLowerCase = map[string]DomainSummaryLifecycleDetailsEnum{
+	"deactivating": DomainSummaryLifecycleDetailsDeactivating,
+	"activating":   DomainSummaryLifecycleDetailsActivating,
+	"updating":     DomainSummaryLifecycleDetailsUpdating,
+}
+
 // GetDomainSummaryLifecycleDetailsEnumValues Enumerates the set of values for DomainSummaryLifecycleDetailsEnum
 func GetDomainSummaryLifecycleDetailsEnumValues() []DomainSummaryLifecycleDetailsEnum {
 	values := make([]DomainSummaryLifecycleDetailsEnum, 0)
@@ -133,11 +139,6 @@ func GetDomainSummaryLifecycleDetailsEnumStringValues() []string {
 
 // GetMappingDomainSummaryLifecycleDetailsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDomainSummaryLifecycleDetailsEnum(val string) (DomainSummaryLifecycleDetailsEnum, bool) {
-	mappingDomainSummaryLifecycleDetailsEnumIgnoreCase := make(map[string]DomainSummaryLifecycleDetailsEnum)
-	for k, v := range mappingDomainSummaryLifecycleDetailsEnum {
-		mappingDomainSummaryLifecycleDetailsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDomainSummaryLifecycleDetailsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDomainSummaryLifecycleDetailsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

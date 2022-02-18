@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -152,6 +152,11 @@ var mappingListGrantsSortOrderEnum = map[string]ListGrantsSortOrderEnum{
 	"DESC": ListGrantsSortOrderDesc,
 }
 
+var mappingListGrantsSortOrderEnumLowerCase = map[string]ListGrantsSortOrderEnum{
+	"asc":  ListGrantsSortOrderAsc,
+	"desc": ListGrantsSortOrderDesc,
+}
+
 // GetListGrantsSortOrderEnumValues Enumerates the set of values for ListGrantsSortOrderEnum
 func GetListGrantsSortOrderEnumValues() []ListGrantsSortOrderEnum {
 	values := make([]ListGrantsSortOrderEnum, 0)
@@ -171,12 +176,7 @@ func GetListGrantsSortOrderEnumStringValues() []string {
 
 // GetMappingListGrantsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListGrantsSortOrderEnum(val string) (ListGrantsSortOrderEnum, bool) {
-	mappingListGrantsSortOrderEnumIgnoreCase := make(map[string]ListGrantsSortOrderEnum)
-	for k, v := range mappingListGrantsSortOrderEnum {
-		mappingListGrantsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListGrantsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListGrantsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -197,6 +197,14 @@ var mappingListGrantsSortByEnum = map[string]ListGrantsSortByEnum{
 	"grantType":         ListGrantsSortByGranttype,
 	"privilegeCategory": ListGrantsSortByPrivilegecategory,
 	"depthLevel":        ListGrantsSortByDepthlevel,
+	"key":               ListGrantsSortByKey,
+}
+
+var mappingListGrantsSortByEnumLowerCase = map[string]ListGrantsSortByEnum{
+	"grantname":         ListGrantsSortByGrantname,
+	"granttype":         ListGrantsSortByGranttype,
+	"privilegecategory": ListGrantsSortByPrivilegecategory,
+	"depthlevel":        ListGrantsSortByDepthlevel,
 	"key":               ListGrantsSortByKey,
 }
 
@@ -222,11 +230,6 @@ func GetListGrantsSortByEnumStringValues() []string {
 
 // GetMappingListGrantsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListGrantsSortByEnum(val string) (ListGrantsSortByEnum, bool) {
-	mappingListGrantsSortByEnumIgnoreCase := make(map[string]ListGrantsSortByEnum)
-	for k, v := range mappingListGrantsSortByEnum {
-		mappingListGrantsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListGrantsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListGrantsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

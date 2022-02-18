@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,27 @@ var mappingFilterOperatorEnum = map[string]FilterOperatorEnum{
 	"CLEAR_SUBQUERY":              FilterOperatorClearSubquery,
 }
 
+var mappingFilterOperatorEnumLowerCase = map[string]FilterOperatorEnum{
+	"clear":                       FilterOperatorClear,
+	"replace":                     FilterOperatorReplace,
+	"equals":                      FilterOperatorEquals,
+	"not_equals":                  FilterOperatorNotEquals,
+	"starts_with":                 FilterOperatorStartsWith,
+	"does_not_start_with":         FilterOperatorDoesNotStartWith,
+	"ends_with":                   FilterOperatorEndsWith,
+	"does_not_end_with":           FilterOperatorDoesNotEndWith,
+	"contains":                    FilterOperatorContains,
+	"does_not_contain":            FilterOperatorDoesNotContain,
+	"is_less_than":                FilterOperatorIsLessThan,
+	"is_less_than_or_equal_to":    FilterOperatorIsLessThanOrEqualTo,
+	"is_greater_than":             FilterOperatorIsGreaterThan,
+	"is_greater_than_or_equal_to": FilterOperatorIsGreaterThanOrEqualTo,
+	"is_between":                  FilterOperatorIsBetween,
+	"is_not_between":              FilterOperatorIsNotBetween,
+	"add_subquery":                FilterOperatorAddSubquery,
+	"clear_subquery":              FilterOperatorClearSubquery,
+}
+
 // GetFilterOperatorEnumValues Enumerates the set of values for FilterOperatorEnum
 func GetFilterOperatorEnumValues() []FilterOperatorEnum {
 	values := make([]FilterOperatorEnum, 0)
@@ -128,11 +149,6 @@ func GetFilterOperatorEnumStringValues() []string {
 
 // GetMappingFilterOperatorEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFilterOperatorEnum(val string) (FilterOperatorEnum, bool) {
-	mappingFilterOperatorEnumIgnoreCase := make(map[string]FilterOperatorEnum)
-	for k, v := range mappingFilterOperatorEnum {
-		mappingFilterOperatorEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFilterOperatorEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFilterOperatorEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

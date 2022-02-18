@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,12 @@ var mappingDeployArtifactSourceDeployArtifactSourceTypeEnum = map[string]DeployA
 	"GENERIC_ARTIFACT": DeployArtifactSourceDeployArtifactSourceTypeGenericArtifact,
 }
 
+var mappingDeployArtifactSourceDeployArtifactSourceTypeEnumLowerCase = map[string]DeployArtifactSourceDeployArtifactSourceTypeEnum{
+	"inline":           DeployArtifactSourceDeployArtifactSourceTypeInline,
+	"ocir":             DeployArtifactSourceDeployArtifactSourceTypeOcir,
+	"generic_artifact": DeployArtifactSourceDeployArtifactSourceTypeGenericArtifact,
+}
+
 // GetDeployArtifactSourceDeployArtifactSourceTypeEnumValues Enumerates the set of values for DeployArtifactSourceDeployArtifactSourceTypeEnum
 func GetDeployArtifactSourceDeployArtifactSourceTypeEnumValues() []DeployArtifactSourceDeployArtifactSourceTypeEnum {
 	values := make([]DeployArtifactSourceDeployArtifactSourceTypeEnum, 0)
@@ -119,11 +125,6 @@ func GetDeployArtifactSourceDeployArtifactSourceTypeEnumStringValues() []string 
 
 // GetMappingDeployArtifactSourceDeployArtifactSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeployArtifactSourceDeployArtifactSourceTypeEnum(val string) (DeployArtifactSourceDeployArtifactSourceTypeEnum, bool) {
-	mappingDeployArtifactSourceDeployArtifactSourceTypeEnumIgnoreCase := make(map[string]DeployArtifactSourceDeployArtifactSourceTypeEnum)
-	for k, v := range mappingDeployArtifactSourceDeployArtifactSourceTypeEnum {
-		mappingDeployArtifactSourceDeployArtifactSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeployArtifactSourceDeployArtifactSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeployArtifactSourceDeployArtifactSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

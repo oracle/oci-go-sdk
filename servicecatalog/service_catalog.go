@@ -11,7 +11,7 @@ package servicecatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -82,6 +82,11 @@ var mappingServiceCatalogLifecycleStateEnum = map[string]ServiceCatalogLifecycle
 	"DELETED": ServiceCatalogLifecycleStateDeleted,
 }
 
+var mappingServiceCatalogLifecycleStateEnumLowerCase = map[string]ServiceCatalogLifecycleStateEnum{
+	"active":  ServiceCatalogLifecycleStateActive,
+	"deleted": ServiceCatalogLifecycleStateDeleted,
+}
+
 // GetServiceCatalogLifecycleStateEnumValues Enumerates the set of values for ServiceCatalogLifecycleStateEnum
 func GetServiceCatalogLifecycleStateEnumValues() []ServiceCatalogLifecycleStateEnum {
 	values := make([]ServiceCatalogLifecycleStateEnum, 0)
@@ -101,11 +106,6 @@ func GetServiceCatalogLifecycleStateEnumStringValues() []string {
 
 // GetMappingServiceCatalogLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingServiceCatalogLifecycleStateEnum(val string) (ServiceCatalogLifecycleStateEnum, bool) {
-	mappingServiceCatalogLifecycleStateEnumIgnoreCase := make(map[string]ServiceCatalogLifecycleStateEnum)
-	for k, v := range mappingServiceCatalogLifecycleStateEnum {
-		mappingServiceCatalogLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingServiceCatalogLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingServiceCatalogLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

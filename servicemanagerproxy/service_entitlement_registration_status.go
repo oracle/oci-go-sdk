@@ -80,6 +80,37 @@ var mappingServiceEntitlementRegistrationStatusEnum = map[string]ServiceEntitlem
 	"TRA_UNKNOWN":             ServiceEntitlementRegistrationStatusTraUnknown,
 }
 
+var mappingServiceEntitlementRegistrationStatusEnumLowerCase = map[string]ServiceEntitlementRegistrationStatusEnum{
+	"initialized":             ServiceEntitlementRegistrationStatusInitialized,
+	"begin_activation":        ServiceEntitlementRegistrationStatusBeginActivation,
+	"active":                  ServiceEntitlementRegistrationStatusActive,
+	"begin_soft_termination":  ServiceEntitlementRegistrationStatusBeginSoftTermination,
+	"soft_terminated":         ServiceEntitlementRegistrationStatusSoftTerminated,
+	"begin_termination":       ServiceEntitlementRegistrationStatusBeginTermination,
+	"canceled":                ServiceEntitlementRegistrationStatusCanceled,
+	"terminated":              ServiceEntitlementRegistrationStatusTerminated,
+	"begin_disabling":         ServiceEntitlementRegistrationStatusBeginDisabling,
+	"begin_enabling":          ServiceEntitlementRegistrationStatusBeginEnabling,
+	"begin_migration":         ServiceEntitlementRegistrationStatusBeginMigration,
+	"disabled":                ServiceEntitlementRegistrationStatusDisabled,
+	"begin_suspension":        ServiceEntitlementRegistrationStatusBeginSuspension,
+	"begin_resumption":        ServiceEntitlementRegistrationStatusBeginResumption,
+	"suspended":               ServiceEntitlementRegistrationStatusSuspended,
+	"begin_lock_relocation":   ServiceEntitlementRegistrationStatusBeginLockRelocation,
+	"locked_relocation":       ServiceEntitlementRegistrationStatusLockedRelocation,
+	"begin_relocation":        ServiceEntitlementRegistrationStatusBeginRelocation,
+	"relocated":               ServiceEntitlementRegistrationStatusRelocated,
+	"begin_unlock_relocation": ServiceEntitlementRegistrationStatusBeginUnlockRelocation,
+	"unlocked_relocation":     ServiceEntitlementRegistrationStatusUnlockedRelocation,
+	"failed_lock_relocation":  ServiceEntitlementRegistrationStatusFailedLockRelocation,
+	"failed_activation":       ServiceEntitlementRegistrationStatusFailedActivation,
+	"failed_migration":        ServiceEntitlementRegistrationStatusFailedMigration,
+	"access_disabled":         ServiceEntitlementRegistrationStatusAccessDisabled,
+	"begin_disabling_access":  ServiceEntitlementRegistrationStatusBeginDisablingAccess,
+	"begin_enabling_access":   ServiceEntitlementRegistrationStatusBeginEnablingAccess,
+	"tra_unknown":             ServiceEntitlementRegistrationStatusTraUnknown,
+}
+
 // GetServiceEntitlementRegistrationStatusEnumValues Enumerates the set of values for ServiceEntitlementRegistrationStatusEnum
 func GetServiceEntitlementRegistrationStatusEnumValues() []ServiceEntitlementRegistrationStatusEnum {
 	values := make([]ServiceEntitlementRegistrationStatusEnum, 0)
@@ -125,11 +156,6 @@ func GetServiceEntitlementRegistrationStatusEnumStringValues() []string {
 
 // GetMappingServiceEntitlementRegistrationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingServiceEntitlementRegistrationStatusEnum(val string) (ServiceEntitlementRegistrationStatusEnum, bool) {
-	mappingServiceEntitlementRegistrationStatusEnumIgnoreCase := make(map[string]ServiceEntitlementRegistrationStatusEnum)
-	for k, v := range mappingServiceEntitlementRegistrationStatusEnum {
-		mappingServiceEntitlementRegistrationStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingServiceEntitlementRegistrationStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingServiceEntitlementRegistrationStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

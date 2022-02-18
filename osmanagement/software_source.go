@@ -12,7 +12,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -134,6 +134,13 @@ var mappingSoftwareSourceStatusEnum = map[string]SoftwareSourceStatusEnum{
 	"WARNING":     SoftwareSourceStatusWarning,
 }
 
+var mappingSoftwareSourceStatusEnumLowerCase = map[string]SoftwareSourceStatusEnum{
+	"normal":      SoftwareSourceStatusNormal,
+	"unreachable": SoftwareSourceStatusUnreachable,
+	"error":       SoftwareSourceStatusError,
+	"warning":     SoftwareSourceStatusWarning,
+}
+
 // GetSoftwareSourceStatusEnumValues Enumerates the set of values for SoftwareSourceStatusEnum
 func GetSoftwareSourceStatusEnumValues() []SoftwareSourceStatusEnum {
 	values := make([]SoftwareSourceStatusEnum, 0)
@@ -155,11 +162,6 @@ func GetSoftwareSourceStatusEnumStringValues() []string {
 
 // GetMappingSoftwareSourceStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSoftwareSourceStatusEnum(val string) (SoftwareSourceStatusEnum, bool) {
-	mappingSoftwareSourceStatusEnumIgnoreCase := make(map[string]SoftwareSourceStatusEnum)
-	for k, v := range mappingSoftwareSourceStatusEnum {
-		mappingSoftwareSourceStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSoftwareSourceStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSoftwareSourceStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

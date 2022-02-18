@@ -6,7 +6,7 @@ package optimizer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,11 @@ var mappingListRecommendationStrategiesSortOrderEnum = map[string]ListRecommenda
 	"DESC": ListRecommendationStrategiesSortOrderDesc,
 }
 
+var mappingListRecommendationStrategiesSortOrderEnumLowerCase = map[string]ListRecommendationStrategiesSortOrderEnum{
+	"asc":  ListRecommendationStrategiesSortOrderAsc,
+	"desc": ListRecommendationStrategiesSortOrderDesc,
+}
+
 // GetListRecommendationStrategiesSortOrderEnumValues Enumerates the set of values for ListRecommendationStrategiesSortOrderEnum
 func GetListRecommendationStrategiesSortOrderEnumValues() []ListRecommendationStrategiesSortOrderEnum {
 	values := make([]ListRecommendationStrategiesSortOrderEnum, 0)
@@ -160,12 +165,7 @@ func GetListRecommendationStrategiesSortOrderEnumStringValues() []string {
 
 // GetMappingListRecommendationStrategiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRecommendationStrategiesSortOrderEnum(val string) (ListRecommendationStrategiesSortOrderEnum, bool) {
-	mappingListRecommendationStrategiesSortOrderEnumIgnoreCase := make(map[string]ListRecommendationStrategiesSortOrderEnum)
-	for k, v := range mappingListRecommendationStrategiesSortOrderEnum {
-		mappingListRecommendationStrategiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRecommendationStrategiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRecommendationStrategiesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +181,11 @@ const (
 var mappingListRecommendationStrategiesSortByEnum = map[string]ListRecommendationStrategiesSortByEnum{
 	"NAME":        ListRecommendationStrategiesSortByName,
 	"TIMECREATED": ListRecommendationStrategiesSortByTimecreated,
+}
+
+var mappingListRecommendationStrategiesSortByEnumLowerCase = map[string]ListRecommendationStrategiesSortByEnum{
+	"name":        ListRecommendationStrategiesSortByName,
+	"timecreated": ListRecommendationStrategiesSortByTimecreated,
 }
 
 // GetListRecommendationStrategiesSortByEnumValues Enumerates the set of values for ListRecommendationStrategiesSortByEnum
@@ -202,11 +207,6 @@ func GetListRecommendationStrategiesSortByEnumStringValues() []string {
 
 // GetMappingListRecommendationStrategiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRecommendationStrategiesSortByEnum(val string) (ListRecommendationStrategiesSortByEnum, bool) {
-	mappingListRecommendationStrategiesSortByEnumIgnoreCase := make(map[string]ListRecommendationStrategiesSortByEnum)
-	for k, v := range mappingListRecommendationStrategiesSortByEnum {
-		mappingListRecommendationStrategiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRecommendationStrategiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRecommendationStrategiesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

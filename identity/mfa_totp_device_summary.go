@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,14 @@ var mappingMfaTotpDeviceSummaryLifecycleStateEnum = map[string]MfaTotpDeviceSumm
 	"DELETED":  MfaTotpDeviceSummaryLifecycleStateDeleted,
 }
 
+var mappingMfaTotpDeviceSummaryLifecycleStateEnumLowerCase = map[string]MfaTotpDeviceSummaryLifecycleStateEnum{
+	"creating": MfaTotpDeviceSummaryLifecycleStateCreating,
+	"active":   MfaTotpDeviceSummaryLifecycleStateActive,
+	"inactive": MfaTotpDeviceSummaryLifecycleStateInactive,
+	"deleting": MfaTotpDeviceSummaryLifecycleStateDeleting,
+	"deleted":  MfaTotpDeviceSummaryLifecycleStateDeleted,
+}
+
 // GetMfaTotpDeviceSummaryLifecycleStateEnumValues Enumerates the set of values for MfaTotpDeviceSummaryLifecycleStateEnum
 func GetMfaTotpDeviceSummaryLifecycleStateEnumValues() []MfaTotpDeviceSummaryLifecycleStateEnum {
 	values := make([]MfaTotpDeviceSummaryLifecycleStateEnum, 0)
@@ -109,11 +117,6 @@ func GetMfaTotpDeviceSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingMfaTotpDeviceSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMfaTotpDeviceSummaryLifecycleStateEnum(val string) (MfaTotpDeviceSummaryLifecycleStateEnum, bool) {
-	mappingMfaTotpDeviceSummaryLifecycleStateEnumIgnoreCase := make(map[string]MfaTotpDeviceSummaryLifecycleStateEnum)
-	for k, v := range mappingMfaTotpDeviceSummaryLifecycleStateEnum {
-		mappingMfaTotpDeviceSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMfaTotpDeviceSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMfaTotpDeviceSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

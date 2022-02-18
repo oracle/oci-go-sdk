@@ -14,7 +14,7 @@ package opsi
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -107,6 +107,13 @@ var mappingExadataInsightResourceStatisticsAggregationExadataResourceTypeEnum = 
 	"DISKGROUP":      ExadataInsightResourceStatisticsAggregationExadataResourceTypeDiskgroup,
 }
 
+var mappingExadataInsightResourceStatisticsAggregationExadataResourceTypeEnumLowerCase = map[string]ExadataInsightResourceStatisticsAggregationExadataResourceTypeEnum{
+	"database":       ExadataInsightResourceStatisticsAggregationExadataResourceTypeDatabase,
+	"host":           ExadataInsightResourceStatisticsAggregationExadataResourceTypeHost,
+	"storage_server": ExadataInsightResourceStatisticsAggregationExadataResourceTypeStorageServer,
+	"diskgroup":      ExadataInsightResourceStatisticsAggregationExadataResourceTypeDiskgroup,
+}
+
 // GetExadataInsightResourceStatisticsAggregationExadataResourceTypeEnumValues Enumerates the set of values for ExadataInsightResourceStatisticsAggregationExadataResourceTypeEnum
 func GetExadataInsightResourceStatisticsAggregationExadataResourceTypeEnumValues() []ExadataInsightResourceStatisticsAggregationExadataResourceTypeEnum {
 	values := make([]ExadataInsightResourceStatisticsAggregationExadataResourceTypeEnum, 0)
@@ -128,11 +135,6 @@ func GetExadataInsightResourceStatisticsAggregationExadataResourceTypeEnumString
 
 // GetMappingExadataInsightResourceStatisticsAggregationExadataResourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExadataInsightResourceStatisticsAggregationExadataResourceTypeEnum(val string) (ExadataInsightResourceStatisticsAggregationExadataResourceTypeEnum, bool) {
-	mappingExadataInsightResourceStatisticsAggregationExadataResourceTypeEnumIgnoreCase := make(map[string]ExadataInsightResourceStatisticsAggregationExadataResourceTypeEnum)
-	for k, v := range mappingExadataInsightResourceStatisticsAggregationExadataResourceTypeEnum {
-		mappingExadataInsightResourceStatisticsAggregationExadataResourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExadataInsightResourceStatisticsAggregationExadataResourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExadataInsightResourceStatisticsAggregationExadataResourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

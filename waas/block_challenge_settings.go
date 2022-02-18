@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -81,6 +81,12 @@ var mappingBlockChallengeSettingsBlockActionEnum = map[string]BlockChallengeSett
 	"SHOW_CAPTCHA":      BlockChallengeSettingsBlockActionShowCaptcha,
 }
 
+var mappingBlockChallengeSettingsBlockActionEnumLowerCase = map[string]BlockChallengeSettingsBlockActionEnum{
+	"set_response_code": BlockChallengeSettingsBlockActionSetResponseCode,
+	"show_error_page":   BlockChallengeSettingsBlockActionShowErrorPage,
+	"show_captcha":      BlockChallengeSettingsBlockActionShowCaptcha,
+}
+
 // GetBlockChallengeSettingsBlockActionEnumValues Enumerates the set of values for BlockChallengeSettingsBlockActionEnum
 func GetBlockChallengeSettingsBlockActionEnumValues() []BlockChallengeSettingsBlockActionEnum {
 	values := make([]BlockChallengeSettingsBlockActionEnum, 0)
@@ -101,11 +107,6 @@ func GetBlockChallengeSettingsBlockActionEnumStringValues() []string {
 
 // GetMappingBlockChallengeSettingsBlockActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBlockChallengeSettingsBlockActionEnum(val string) (BlockChallengeSettingsBlockActionEnum, bool) {
-	mappingBlockChallengeSettingsBlockActionEnumIgnoreCase := make(map[string]BlockChallengeSettingsBlockActionEnum)
-	for k, v := range mappingBlockChallengeSettingsBlockActionEnum {
-		mappingBlockChallengeSettingsBlockActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBlockChallengeSettingsBlockActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBlockChallengeSettingsBlockActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -29,6 +29,12 @@ var mappingPricingTypeEnumEnum = map[string]PricingTypeEnumEnum{
 	"PAYGO": PricingTypeEnumPaygo,
 }
 
+var mappingPricingTypeEnumEnumLowerCase = map[string]PricingTypeEnumEnum{
+	"free":  PricingTypeEnumFree,
+	"byol":  PricingTypeEnumByol,
+	"paygo": PricingTypeEnumPaygo,
+}
+
 // GetPricingTypeEnumEnumValues Enumerates the set of values for PricingTypeEnumEnum
 func GetPricingTypeEnumEnumValues() []PricingTypeEnumEnum {
 	values := make([]PricingTypeEnumEnum, 0)
@@ -49,11 +55,6 @@ func GetPricingTypeEnumEnumStringValues() []string {
 
 // GetMappingPricingTypeEnumEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPricingTypeEnumEnum(val string) (PricingTypeEnumEnum, bool) {
-	mappingPricingTypeEnumEnumIgnoreCase := make(map[string]PricingTypeEnumEnum)
-	for k, v := range mappingPricingTypeEnumEnum {
-		mappingPricingTypeEnumEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPricingTypeEnumEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPricingTypeEnumEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

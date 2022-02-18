@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -76,6 +76,12 @@ var mappingHostDetailsPlatformTypeEnum = map[string]HostDetailsPlatformTypeEnum{
 	"SUNOS":   HostDetailsPlatformTypeSunos,
 }
 
+var mappingHostDetailsPlatformTypeEnumLowerCase = map[string]HostDetailsPlatformTypeEnum{
+	"linux":   HostDetailsPlatformTypeLinux,
+	"solaris": HostDetailsPlatformTypeSolaris,
+	"sunos":   HostDetailsPlatformTypeSunos,
+}
+
 // GetHostDetailsPlatformTypeEnumValues Enumerates the set of values for HostDetailsPlatformTypeEnum
 func GetHostDetailsPlatformTypeEnumValues() []HostDetailsPlatformTypeEnum {
 	values := make([]HostDetailsPlatformTypeEnum, 0)
@@ -96,11 +102,6 @@ func GetHostDetailsPlatformTypeEnumStringValues() []string {
 
 // GetMappingHostDetailsPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHostDetailsPlatformTypeEnum(val string) (HostDetailsPlatformTypeEnum, bool) {
-	mappingHostDetailsPlatformTypeEnumIgnoreCase := make(map[string]HostDetailsPlatformTypeEnum)
-	for k, v := range mappingHostDetailsPlatformTypeEnum {
-		mappingHostDetailsPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHostDetailsPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHostDetailsPlatformTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

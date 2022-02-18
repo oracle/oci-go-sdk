@@ -15,7 +15,7 @@ package autoscaling
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -59,6 +59,11 @@ var mappingMetricMetricTypeEnum = map[string]MetricMetricTypeEnum{
 	"MEMORY_UTILIZATION": MetricMetricTypeMemoryUtilization,
 }
 
+var mappingMetricMetricTypeEnumLowerCase = map[string]MetricMetricTypeEnum{
+	"cpu_utilization":    MetricMetricTypeCpuUtilization,
+	"memory_utilization": MetricMetricTypeMemoryUtilization,
+}
+
 // GetMetricMetricTypeEnumValues Enumerates the set of values for MetricMetricTypeEnum
 func GetMetricMetricTypeEnumValues() []MetricMetricTypeEnum {
 	values := make([]MetricMetricTypeEnum, 0)
@@ -78,11 +83,6 @@ func GetMetricMetricTypeEnumStringValues() []string {
 
 // GetMappingMetricMetricTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMetricMetricTypeEnum(val string) (MetricMetricTypeEnum, bool) {
-	mappingMetricMetricTypeEnumIgnoreCase := make(map[string]MetricMetricTypeEnum)
-	for k, v := range mappingMetricMetricTypeEnum {
-		mappingMetricMetricTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMetricMetricTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMetricMetricTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

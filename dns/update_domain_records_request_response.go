@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -150,6 +150,11 @@ var mappingUpdateDomainRecordsScopeEnum = map[string]UpdateDomainRecordsScopeEnu
 	"PRIVATE": UpdateDomainRecordsScopePrivate,
 }
 
+var mappingUpdateDomainRecordsScopeEnumLowerCase = map[string]UpdateDomainRecordsScopeEnum{
+	"global":  UpdateDomainRecordsScopeGlobal,
+	"private": UpdateDomainRecordsScopePrivate,
+}
+
 // GetUpdateDomainRecordsScopeEnumValues Enumerates the set of values for UpdateDomainRecordsScopeEnum
 func GetUpdateDomainRecordsScopeEnumValues() []UpdateDomainRecordsScopeEnum {
 	values := make([]UpdateDomainRecordsScopeEnum, 0)
@@ -169,11 +174,6 @@ func GetUpdateDomainRecordsScopeEnumStringValues() []string {
 
 // GetMappingUpdateDomainRecordsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateDomainRecordsScopeEnum(val string) (UpdateDomainRecordsScopeEnum, bool) {
-	mappingUpdateDomainRecordsScopeEnumIgnoreCase := make(map[string]UpdateDomainRecordsScopeEnum)
-	for k, v := range mappingUpdateDomainRecordsScopeEnum {
-		mappingUpdateDomainRecordsScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateDomainRecordsScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateDomainRecordsScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

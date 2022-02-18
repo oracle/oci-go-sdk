@@ -12,7 +12,7 @@ package datasafe
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -196,6 +196,11 @@ var mappingSensitiveTypePatternSearchTypeEnum = map[string]SensitiveTypePatternS
 	"AND": SensitiveTypePatternSearchTypeAnd,
 }
 
+var mappingSensitiveTypePatternSearchTypeEnumLowerCase = map[string]SensitiveTypePatternSearchTypeEnum{
+	"or":  SensitiveTypePatternSearchTypeOr,
+	"and": SensitiveTypePatternSearchTypeAnd,
+}
+
 // GetSensitiveTypePatternSearchTypeEnumValues Enumerates the set of values for SensitiveTypePatternSearchTypeEnum
 func GetSensitiveTypePatternSearchTypeEnumValues() []SensitiveTypePatternSearchTypeEnum {
 	values := make([]SensitiveTypePatternSearchTypeEnum, 0)
@@ -215,11 +220,6 @@ func GetSensitiveTypePatternSearchTypeEnumStringValues() []string {
 
 // GetMappingSensitiveTypePatternSearchTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSensitiveTypePatternSearchTypeEnum(val string) (SensitiveTypePatternSearchTypeEnum, bool) {
-	mappingSensitiveTypePatternSearchTypeEnumIgnoreCase := make(map[string]SensitiveTypePatternSearchTypeEnum)
-	for k, v := range mappingSensitiveTypePatternSearchTypeEnum {
-		mappingSensitiveTypePatternSearchTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSensitiveTypePatternSearchTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSensitiveTypePatternSearchTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -16,7 +16,7 @@ package autoscaling
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -104,6 +104,10 @@ var mappingExecutionScheduleTimezoneEnum = map[string]ExecutionScheduleTimezoneE
 	"UTC": ExecutionScheduleTimezoneUtc,
 }
 
+var mappingExecutionScheduleTimezoneEnumLowerCase = map[string]ExecutionScheduleTimezoneEnum{
+	"utc": ExecutionScheduleTimezoneUtc,
+}
+
 // GetExecutionScheduleTimezoneEnumValues Enumerates the set of values for ExecutionScheduleTimezoneEnum
 func GetExecutionScheduleTimezoneEnumValues() []ExecutionScheduleTimezoneEnum {
 	values := make([]ExecutionScheduleTimezoneEnum, 0)
@@ -122,11 +126,6 @@ func GetExecutionScheduleTimezoneEnumStringValues() []string {
 
 // GetMappingExecutionScheduleTimezoneEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExecutionScheduleTimezoneEnum(val string) (ExecutionScheduleTimezoneEnum, bool) {
-	mappingExecutionScheduleTimezoneEnumIgnoreCase := make(map[string]ExecutionScheduleTimezoneEnum)
-	for k, v := range mappingExecutionScheduleTimezoneEnum {
-		mappingExecutionScheduleTimezoneEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExecutionScheduleTimezoneEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExecutionScheduleTimezoneEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

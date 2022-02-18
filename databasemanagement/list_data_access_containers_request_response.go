@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -132,6 +132,10 @@ var mappingListDataAccessContainersSortByEnum = map[string]ListDataAccessContain
 	"NAME": ListDataAccessContainersSortByName,
 }
 
+var mappingListDataAccessContainersSortByEnumLowerCase = map[string]ListDataAccessContainersSortByEnum{
+	"name": ListDataAccessContainersSortByName,
+}
+
 // GetListDataAccessContainersSortByEnumValues Enumerates the set of values for ListDataAccessContainersSortByEnum
 func GetListDataAccessContainersSortByEnumValues() []ListDataAccessContainersSortByEnum {
 	values := make([]ListDataAccessContainersSortByEnum, 0)
@@ -150,12 +154,7 @@ func GetListDataAccessContainersSortByEnumStringValues() []string {
 
 // GetMappingListDataAccessContainersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataAccessContainersSortByEnum(val string) (ListDataAccessContainersSortByEnum, bool) {
-	mappingListDataAccessContainersSortByEnumIgnoreCase := make(map[string]ListDataAccessContainersSortByEnum)
-	for k, v := range mappingListDataAccessContainersSortByEnum {
-		mappingListDataAccessContainersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataAccessContainersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataAccessContainersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -171,6 +170,11 @@ const (
 var mappingListDataAccessContainersSortOrderEnum = map[string]ListDataAccessContainersSortOrderEnum{
 	"ASC":  ListDataAccessContainersSortOrderAsc,
 	"DESC": ListDataAccessContainersSortOrderDesc,
+}
+
+var mappingListDataAccessContainersSortOrderEnumLowerCase = map[string]ListDataAccessContainersSortOrderEnum{
+	"asc":  ListDataAccessContainersSortOrderAsc,
+	"desc": ListDataAccessContainersSortOrderDesc,
 }
 
 // GetListDataAccessContainersSortOrderEnumValues Enumerates the set of values for ListDataAccessContainersSortOrderEnum
@@ -192,11 +196,6 @@ func GetListDataAccessContainersSortOrderEnumStringValues() []string {
 
 // GetMappingListDataAccessContainersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataAccessContainersSortOrderEnum(val string) (ListDataAccessContainersSortOrderEnum, bool) {
-	mappingListDataAccessContainersSortOrderEnumIgnoreCase := make(map[string]ListDataAccessContainersSortOrderEnum)
-	for k, v := range mappingListDataAccessContainersSortOrderEnum {
-		mappingListDataAccessContainersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataAccessContainersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataAccessContainersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

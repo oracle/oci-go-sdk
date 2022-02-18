@@ -13,7 +13,7 @@ package dns
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -190,6 +190,15 @@ var mappingUpdateSteeringPolicyDetailsTemplateEnum = map[string]UpdateSteeringPo
 	"CUSTOM":       UpdateSteeringPolicyDetailsTemplateCustom,
 }
 
+var mappingUpdateSteeringPolicyDetailsTemplateEnumLowerCase = map[string]UpdateSteeringPolicyDetailsTemplateEnum{
+	"failover":     UpdateSteeringPolicyDetailsTemplateFailover,
+	"load_balance": UpdateSteeringPolicyDetailsTemplateLoadBalance,
+	"route_by_geo": UpdateSteeringPolicyDetailsTemplateRouteByGeo,
+	"route_by_asn": UpdateSteeringPolicyDetailsTemplateRouteByAsn,
+	"route_by_ip":  UpdateSteeringPolicyDetailsTemplateRouteByIp,
+	"custom":       UpdateSteeringPolicyDetailsTemplateCustom,
+}
+
 // GetUpdateSteeringPolicyDetailsTemplateEnumValues Enumerates the set of values for UpdateSteeringPolicyDetailsTemplateEnum
 func GetUpdateSteeringPolicyDetailsTemplateEnumValues() []UpdateSteeringPolicyDetailsTemplateEnum {
 	values := make([]UpdateSteeringPolicyDetailsTemplateEnum, 0)
@@ -213,11 +222,6 @@ func GetUpdateSteeringPolicyDetailsTemplateEnumStringValues() []string {
 
 // GetMappingUpdateSteeringPolicyDetailsTemplateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateSteeringPolicyDetailsTemplateEnum(val string) (UpdateSteeringPolicyDetailsTemplateEnum, bool) {
-	mappingUpdateSteeringPolicyDetailsTemplateEnumIgnoreCase := make(map[string]UpdateSteeringPolicyDetailsTemplateEnum)
-	for k, v := range mappingUpdateSteeringPolicyDetailsTemplateEnum {
-		mappingUpdateSteeringPolicyDetailsTemplateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateSteeringPolicyDetailsTemplateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateSteeringPolicyDetailsTemplateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

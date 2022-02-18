@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -69,6 +69,13 @@ var mappingVcnDnsResolverAssociationLifecycleStateEnum = map[string]VcnDnsResolv
 	"TERMINATED":   VcnDnsResolverAssociationLifecycleStateTerminated,
 }
 
+var mappingVcnDnsResolverAssociationLifecycleStateEnumLowerCase = map[string]VcnDnsResolverAssociationLifecycleStateEnum{
+	"provisioning": VcnDnsResolverAssociationLifecycleStateProvisioning,
+	"available":    VcnDnsResolverAssociationLifecycleStateAvailable,
+	"terminating":  VcnDnsResolverAssociationLifecycleStateTerminating,
+	"terminated":   VcnDnsResolverAssociationLifecycleStateTerminated,
+}
+
 // GetVcnDnsResolverAssociationLifecycleStateEnumValues Enumerates the set of values for VcnDnsResolverAssociationLifecycleStateEnum
 func GetVcnDnsResolverAssociationLifecycleStateEnumValues() []VcnDnsResolverAssociationLifecycleStateEnum {
 	values := make([]VcnDnsResolverAssociationLifecycleStateEnum, 0)
@@ -90,11 +97,6 @@ func GetVcnDnsResolverAssociationLifecycleStateEnumStringValues() []string {
 
 // GetMappingVcnDnsResolverAssociationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVcnDnsResolverAssociationLifecycleStateEnum(val string) (VcnDnsResolverAssociationLifecycleStateEnum, bool) {
-	mappingVcnDnsResolverAssociationLifecycleStateEnumIgnoreCase := make(map[string]VcnDnsResolverAssociationLifecycleStateEnum)
-	for k, v := range mappingVcnDnsResolverAssociationLifecycleStateEnum {
-		mappingVcnDnsResolverAssociationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVcnDnsResolverAssociationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVcnDnsResolverAssociationLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

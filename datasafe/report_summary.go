@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,11 @@ var mappingReportSummaryMimeTypeEnum = map[string]ReportSummaryMimeTypeEnum{
 	"XLS": ReportSummaryMimeTypeXls,
 }
 
+var mappingReportSummaryMimeTypeEnumLowerCase = map[string]ReportSummaryMimeTypeEnum{
+	"pdf": ReportSummaryMimeTypePdf,
+	"xls": ReportSummaryMimeTypeXls,
+}
+
 // GetReportSummaryMimeTypeEnumValues Enumerates the set of values for ReportSummaryMimeTypeEnum
 func GetReportSummaryMimeTypeEnumValues() []ReportSummaryMimeTypeEnum {
 	values := make([]ReportSummaryMimeTypeEnum, 0)
@@ -106,11 +111,6 @@ func GetReportSummaryMimeTypeEnumStringValues() []string {
 
 // GetMappingReportSummaryMimeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingReportSummaryMimeTypeEnum(val string) (ReportSummaryMimeTypeEnum, bool) {
-	mappingReportSummaryMimeTypeEnumIgnoreCase := make(map[string]ReportSummaryMimeTypeEnum)
-	for k, v := range mappingReportSummaryMimeTypeEnum {
-		mappingReportSummaryMimeTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingReportSummaryMimeTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingReportSummaryMimeTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

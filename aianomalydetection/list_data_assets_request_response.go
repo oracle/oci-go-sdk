@@ -6,7 +6,7 @@ package aianomalydetection
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -139,6 +139,11 @@ var mappingListDataAssetsSortOrderEnum = map[string]ListDataAssetsSortOrderEnum{
 	"DESC": ListDataAssetsSortOrderDesc,
 }
 
+var mappingListDataAssetsSortOrderEnumLowerCase = map[string]ListDataAssetsSortOrderEnum{
+	"asc":  ListDataAssetsSortOrderAsc,
+	"desc": ListDataAssetsSortOrderDesc,
+}
+
 // GetListDataAssetsSortOrderEnumValues Enumerates the set of values for ListDataAssetsSortOrderEnum
 func GetListDataAssetsSortOrderEnumValues() []ListDataAssetsSortOrderEnum {
 	values := make([]ListDataAssetsSortOrderEnum, 0)
@@ -158,12 +163,7 @@ func GetListDataAssetsSortOrderEnumStringValues() []string {
 
 // GetMappingListDataAssetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataAssetsSortOrderEnum(val string) (ListDataAssetsSortOrderEnum, bool) {
-	mappingListDataAssetsSortOrderEnumIgnoreCase := make(map[string]ListDataAssetsSortOrderEnum)
-	for k, v := range mappingListDataAssetsSortOrderEnum {
-		mappingListDataAssetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataAssetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataAssetsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -179,6 +179,11 @@ const (
 var mappingListDataAssetsSortByEnum = map[string]ListDataAssetsSortByEnum{
 	"timeCreated": ListDataAssetsSortByTimecreated,
 	"displayName": ListDataAssetsSortByDisplayname,
+}
+
+var mappingListDataAssetsSortByEnumLowerCase = map[string]ListDataAssetsSortByEnum{
+	"timecreated": ListDataAssetsSortByTimecreated,
+	"displayname": ListDataAssetsSortByDisplayname,
 }
 
 // GetListDataAssetsSortByEnumValues Enumerates the set of values for ListDataAssetsSortByEnum
@@ -200,11 +205,6 @@ func GetListDataAssetsSortByEnumStringValues() []string {
 
 // GetMappingListDataAssetsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataAssetsSortByEnum(val string) (ListDataAssetsSortByEnum, bool) {
-	mappingListDataAssetsSortByEnumIgnoreCase := make(map[string]ListDataAssetsSortByEnum)
-	for k, v := range mappingListDataAssetsSortByEnum {
-		mappingListDataAssetsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataAssetsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataAssetsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

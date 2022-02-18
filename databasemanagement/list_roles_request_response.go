@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -132,6 +132,10 @@ var mappingListRolesSortByEnum = map[string]ListRolesSortByEnum{
 	"NAME": ListRolesSortByName,
 }
 
+var mappingListRolesSortByEnumLowerCase = map[string]ListRolesSortByEnum{
+	"name": ListRolesSortByName,
+}
+
 // GetListRolesSortByEnumValues Enumerates the set of values for ListRolesSortByEnum
 func GetListRolesSortByEnumValues() []ListRolesSortByEnum {
 	values := make([]ListRolesSortByEnum, 0)
@@ -150,12 +154,7 @@ func GetListRolesSortByEnumStringValues() []string {
 
 // GetMappingListRolesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRolesSortByEnum(val string) (ListRolesSortByEnum, bool) {
-	mappingListRolesSortByEnumIgnoreCase := make(map[string]ListRolesSortByEnum)
-	for k, v := range mappingListRolesSortByEnum {
-		mappingListRolesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRolesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRolesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -171,6 +170,11 @@ const (
 var mappingListRolesSortOrderEnum = map[string]ListRolesSortOrderEnum{
 	"ASC":  ListRolesSortOrderAsc,
 	"DESC": ListRolesSortOrderDesc,
+}
+
+var mappingListRolesSortOrderEnumLowerCase = map[string]ListRolesSortOrderEnum{
+	"asc":  ListRolesSortOrderAsc,
+	"desc": ListRolesSortOrderDesc,
 }
 
 // GetListRolesSortOrderEnumValues Enumerates the set of values for ListRolesSortOrderEnum
@@ -192,11 +196,6 @@ func GetListRolesSortOrderEnumStringValues() []string {
 
 // GetMappingListRolesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRolesSortOrderEnum(val string) (ListRolesSortOrderEnum, bool) {
-	mappingListRolesSortOrderEnumIgnoreCase := make(map[string]ListRolesSortOrderEnum)
-	for k, v := range mappingListRolesSortOrderEnum {
-		mappingListRolesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRolesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRolesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

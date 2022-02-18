@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -67,6 +67,11 @@ var mappingInstanceAvailabilityConfigRecoveryActionEnum = map[string]InstanceAva
 	"STOP_INSTANCE":    InstanceAvailabilityConfigRecoveryActionStopInstance,
 }
 
+var mappingInstanceAvailabilityConfigRecoveryActionEnumLowerCase = map[string]InstanceAvailabilityConfigRecoveryActionEnum{
+	"restore_instance": InstanceAvailabilityConfigRecoveryActionRestoreInstance,
+	"stop_instance":    InstanceAvailabilityConfigRecoveryActionStopInstance,
+}
+
 // GetInstanceAvailabilityConfigRecoveryActionEnumValues Enumerates the set of values for InstanceAvailabilityConfigRecoveryActionEnum
 func GetInstanceAvailabilityConfigRecoveryActionEnumValues() []InstanceAvailabilityConfigRecoveryActionEnum {
 	values := make([]InstanceAvailabilityConfigRecoveryActionEnum, 0)
@@ -86,11 +91,6 @@ func GetInstanceAvailabilityConfigRecoveryActionEnumStringValues() []string {
 
 // GetMappingInstanceAvailabilityConfigRecoveryActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceAvailabilityConfigRecoveryActionEnum(val string) (InstanceAvailabilityConfigRecoveryActionEnum, bool) {
-	mappingInstanceAvailabilityConfigRecoveryActionEnumIgnoreCase := make(map[string]InstanceAvailabilityConfigRecoveryActionEnum)
-	for k, v := range mappingInstanceAvailabilityConfigRecoveryActionEnum {
-		mappingInstanceAvailabilityConfigRecoveryActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceAvailabilityConfigRecoveryActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceAvailabilityConfigRecoveryActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

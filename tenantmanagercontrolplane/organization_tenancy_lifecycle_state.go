@@ -35,6 +35,15 @@ var mappingOrganizationTenancyLifecycleStateEnum = map[string]OrganizationTenanc
 	"DELETING": OrganizationTenancyLifecycleStateDeleting,
 }
 
+var mappingOrganizationTenancyLifecycleStateEnumLowerCase = map[string]OrganizationTenancyLifecycleStateEnum{
+	"creating": OrganizationTenancyLifecycleStateCreating,
+	"active":   OrganizationTenancyLifecycleStateActive,
+	"inactive": OrganizationTenancyLifecycleStateInactive,
+	"deleted":  OrganizationTenancyLifecycleStateDeleted,
+	"failed":   OrganizationTenancyLifecycleStateFailed,
+	"deleting": OrganizationTenancyLifecycleStateDeleting,
+}
+
 // GetOrganizationTenancyLifecycleStateEnumValues Enumerates the set of values for OrganizationTenancyLifecycleStateEnum
 func GetOrganizationTenancyLifecycleStateEnumValues() []OrganizationTenancyLifecycleStateEnum {
 	values := make([]OrganizationTenancyLifecycleStateEnum, 0)
@@ -58,11 +67,6 @@ func GetOrganizationTenancyLifecycleStateEnumStringValues() []string {
 
 // GetMappingOrganizationTenancyLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOrganizationTenancyLifecycleStateEnum(val string) (OrganizationTenancyLifecycleStateEnum, bool) {
-	mappingOrganizationTenancyLifecycleStateEnumIgnoreCase := make(map[string]OrganizationTenancyLifecycleStateEnum)
-	for k, v := range mappingOrganizationTenancyLifecycleStateEnum {
-		mappingOrganizationTenancyLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOrganizationTenancyLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOrganizationTenancyLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

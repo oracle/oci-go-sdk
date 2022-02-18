@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,13 @@ var mappingBootVolumeAttachmentLifecycleStateEnum = map[string]BootVolumeAttachm
 	"DETACHED":  BootVolumeAttachmentLifecycleStateDetached,
 }
 
+var mappingBootVolumeAttachmentLifecycleStateEnumLowerCase = map[string]BootVolumeAttachmentLifecycleStateEnum{
+	"attaching": BootVolumeAttachmentLifecycleStateAttaching,
+	"attached":  BootVolumeAttachmentLifecycleStateAttached,
+	"detaching": BootVolumeAttachmentLifecycleStateDetaching,
+	"detached":  BootVolumeAttachmentLifecycleStateDetached,
+}
+
 // GetBootVolumeAttachmentLifecycleStateEnumValues Enumerates the set of values for BootVolumeAttachmentLifecycleStateEnum
 func GetBootVolumeAttachmentLifecycleStateEnumValues() []BootVolumeAttachmentLifecycleStateEnum {
 	values := make([]BootVolumeAttachmentLifecycleStateEnum, 0)
@@ -120,11 +127,6 @@ func GetBootVolumeAttachmentLifecycleStateEnumStringValues() []string {
 
 // GetMappingBootVolumeAttachmentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBootVolumeAttachmentLifecycleStateEnum(val string) (BootVolumeAttachmentLifecycleStateEnum, bool) {
-	mappingBootVolumeAttachmentLifecycleStateEnumIgnoreCase := make(map[string]BootVolumeAttachmentLifecycleStateEnum)
-	for k, v := range mappingBootVolumeAttachmentLifecycleStateEnum {
-		mappingBootVolumeAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBootVolumeAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBootVolumeAttachmentLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

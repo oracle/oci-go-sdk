@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -173,6 +173,14 @@ var mappingListDrgAttachmentsAttachmentTypeEnum = map[string]ListDrgAttachmentsA
 	"ALL":                       ListDrgAttachmentsAttachmentTypeAll,
 }
 
+var mappingListDrgAttachmentsAttachmentTypeEnumLowerCase = map[string]ListDrgAttachmentsAttachmentTypeEnum{
+	"vcn":                       ListDrgAttachmentsAttachmentTypeVcn,
+	"virtual_circuit":           ListDrgAttachmentsAttachmentTypeVirtualCircuit,
+	"remote_peering_connection": ListDrgAttachmentsAttachmentTypeRemotePeeringConnection,
+	"ipsec_tunnel":              ListDrgAttachmentsAttachmentTypeIpsecTunnel,
+	"all":                       ListDrgAttachmentsAttachmentTypeAll,
+}
+
 // GetListDrgAttachmentsAttachmentTypeEnumValues Enumerates the set of values for ListDrgAttachmentsAttachmentTypeEnum
 func GetListDrgAttachmentsAttachmentTypeEnumValues() []ListDrgAttachmentsAttachmentTypeEnum {
 	values := make([]ListDrgAttachmentsAttachmentTypeEnum, 0)
@@ -195,12 +203,7 @@ func GetListDrgAttachmentsAttachmentTypeEnumStringValues() []string {
 
 // GetMappingListDrgAttachmentsAttachmentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDrgAttachmentsAttachmentTypeEnum(val string) (ListDrgAttachmentsAttachmentTypeEnum, bool) {
-	mappingListDrgAttachmentsAttachmentTypeEnumIgnoreCase := make(map[string]ListDrgAttachmentsAttachmentTypeEnum)
-	for k, v := range mappingListDrgAttachmentsAttachmentTypeEnum {
-		mappingListDrgAttachmentsAttachmentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDrgAttachmentsAttachmentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDrgAttachmentsAttachmentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -216,6 +219,11 @@ const (
 var mappingListDrgAttachmentsSortByEnum = map[string]ListDrgAttachmentsSortByEnum{
 	"TIMECREATED": ListDrgAttachmentsSortByTimecreated,
 	"DISPLAYNAME": ListDrgAttachmentsSortByDisplayname,
+}
+
+var mappingListDrgAttachmentsSortByEnumLowerCase = map[string]ListDrgAttachmentsSortByEnum{
+	"timecreated": ListDrgAttachmentsSortByTimecreated,
+	"displayname": ListDrgAttachmentsSortByDisplayname,
 }
 
 // GetListDrgAttachmentsSortByEnumValues Enumerates the set of values for ListDrgAttachmentsSortByEnum
@@ -237,12 +245,7 @@ func GetListDrgAttachmentsSortByEnumStringValues() []string {
 
 // GetMappingListDrgAttachmentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDrgAttachmentsSortByEnum(val string) (ListDrgAttachmentsSortByEnum, bool) {
-	mappingListDrgAttachmentsSortByEnumIgnoreCase := make(map[string]ListDrgAttachmentsSortByEnum)
-	for k, v := range mappingListDrgAttachmentsSortByEnum {
-		mappingListDrgAttachmentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDrgAttachmentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDrgAttachmentsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -258,6 +261,11 @@ const (
 var mappingListDrgAttachmentsSortOrderEnum = map[string]ListDrgAttachmentsSortOrderEnum{
 	"ASC":  ListDrgAttachmentsSortOrderAsc,
 	"DESC": ListDrgAttachmentsSortOrderDesc,
+}
+
+var mappingListDrgAttachmentsSortOrderEnumLowerCase = map[string]ListDrgAttachmentsSortOrderEnum{
+	"asc":  ListDrgAttachmentsSortOrderAsc,
+	"desc": ListDrgAttachmentsSortOrderDesc,
 }
 
 // GetListDrgAttachmentsSortOrderEnumValues Enumerates the set of values for ListDrgAttachmentsSortOrderEnum
@@ -279,11 +287,6 @@ func GetListDrgAttachmentsSortOrderEnumStringValues() []string {
 
 // GetMappingListDrgAttachmentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDrgAttachmentsSortOrderEnum(val string) (ListDrgAttachmentsSortOrderEnum, bool) {
-	mappingListDrgAttachmentsSortOrderEnumIgnoreCase := make(map[string]ListDrgAttachmentsSortOrderEnum)
-	for k, v := range mappingListDrgAttachmentsSortOrderEnum {
-		mappingListDrgAttachmentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDrgAttachmentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDrgAttachmentsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

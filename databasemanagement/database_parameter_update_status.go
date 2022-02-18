@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -65,6 +65,11 @@ var mappingDatabaseParameterUpdateStatusStatusEnum = map[string]DatabaseParamete
 	"FAILED":    DatabaseParameterUpdateStatusStatusFailed,
 }
 
+var mappingDatabaseParameterUpdateStatusStatusEnumLowerCase = map[string]DatabaseParameterUpdateStatusStatusEnum{
+	"succeeded": DatabaseParameterUpdateStatusStatusSucceeded,
+	"failed":    DatabaseParameterUpdateStatusStatusFailed,
+}
+
 // GetDatabaseParameterUpdateStatusStatusEnumValues Enumerates the set of values for DatabaseParameterUpdateStatusStatusEnum
 func GetDatabaseParameterUpdateStatusStatusEnumValues() []DatabaseParameterUpdateStatusStatusEnum {
 	values := make([]DatabaseParameterUpdateStatusStatusEnum, 0)
@@ -84,11 +89,6 @@ func GetDatabaseParameterUpdateStatusStatusEnumStringValues() []string {
 
 // GetMappingDatabaseParameterUpdateStatusStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseParameterUpdateStatusStatusEnum(val string) (DatabaseParameterUpdateStatusStatusEnum, bool) {
-	mappingDatabaseParameterUpdateStatusStatusEnumIgnoreCase := make(map[string]DatabaseParameterUpdateStatusStatusEnum)
-	for k, v := range mappingDatabaseParameterUpdateStatusStatusEnum {
-		mappingDatabaseParameterUpdateStatusStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseParameterUpdateStatusStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseParameterUpdateStatusStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

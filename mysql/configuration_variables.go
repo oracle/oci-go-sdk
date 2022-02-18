@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -260,6 +260,12 @@ var mappingConfigurationVariablesCompletionTypeEnum = map[string]ConfigurationVa
 	"RELEASE":  ConfigurationVariablesCompletionTypeRelease,
 }
 
+var mappingConfigurationVariablesCompletionTypeEnumLowerCase = map[string]ConfigurationVariablesCompletionTypeEnum{
+	"no_chain": ConfigurationVariablesCompletionTypeNoChain,
+	"chain":    ConfigurationVariablesCompletionTypeChain,
+	"release":  ConfigurationVariablesCompletionTypeRelease,
+}
+
 // GetConfigurationVariablesCompletionTypeEnumValues Enumerates the set of values for ConfigurationVariablesCompletionTypeEnum
 func GetConfigurationVariablesCompletionTypeEnumValues() []ConfigurationVariablesCompletionTypeEnum {
 	values := make([]ConfigurationVariablesCompletionTypeEnum, 0)
@@ -280,12 +286,7 @@ func GetConfigurationVariablesCompletionTypeEnumStringValues() []string {
 
 // GetMappingConfigurationVariablesCompletionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConfigurationVariablesCompletionTypeEnum(val string) (ConfigurationVariablesCompletionTypeEnum, bool) {
-	mappingConfigurationVariablesCompletionTypeEnumIgnoreCase := make(map[string]ConfigurationVariablesCompletionTypeEnum)
-	for k, v := range mappingConfigurationVariablesCompletionTypeEnum {
-		mappingConfigurationVariablesCompletionTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConfigurationVariablesCompletionTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConfigurationVariablesCompletionTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -300,6 +301,12 @@ const (
 )
 
 var mappingConfigurationVariablesDefaultAuthenticationPluginEnum = map[string]ConfigurationVariablesDefaultAuthenticationPluginEnum{
+	"mysql_native_password": ConfigurationVariablesDefaultAuthenticationPluginMysqlNativePassword,
+	"sha256_password":       ConfigurationVariablesDefaultAuthenticationPluginSha256Password,
+	"caching_sha2_password": ConfigurationVariablesDefaultAuthenticationPluginCachingSha2Password,
+}
+
+var mappingConfigurationVariablesDefaultAuthenticationPluginEnumLowerCase = map[string]ConfigurationVariablesDefaultAuthenticationPluginEnum{
 	"mysql_native_password": ConfigurationVariablesDefaultAuthenticationPluginMysqlNativePassword,
 	"sha256_password":       ConfigurationVariablesDefaultAuthenticationPluginSha256Password,
 	"caching_sha2_password": ConfigurationVariablesDefaultAuthenticationPluginCachingSha2Password,
@@ -325,12 +332,7 @@ func GetConfigurationVariablesDefaultAuthenticationPluginEnumStringValues() []st
 
 // GetMappingConfigurationVariablesDefaultAuthenticationPluginEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConfigurationVariablesDefaultAuthenticationPluginEnum(val string) (ConfigurationVariablesDefaultAuthenticationPluginEnum, bool) {
-	mappingConfigurationVariablesDefaultAuthenticationPluginEnumIgnoreCase := make(map[string]ConfigurationVariablesDefaultAuthenticationPluginEnum)
-	for k, v := range mappingConfigurationVariablesDefaultAuthenticationPluginEnum {
-		mappingConfigurationVariablesDefaultAuthenticationPluginEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConfigurationVariablesDefaultAuthenticationPluginEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConfigurationVariablesDefaultAuthenticationPluginEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -352,6 +354,14 @@ var mappingConfigurationVariablesTransactionIsolationEnum = map[string]Configura
 	"READ-COMMITTED":   ConfigurationVariablesTransactionIsolationReadCommitted,
 	"REPEATABLE-READ":  ConfigurationVariablesTransactionIsolationRepeatableRead,
 	"SERIALIZABLE":     ConfigurationVariablesTransactionIsolationSerializable,
+}
+
+var mappingConfigurationVariablesTransactionIsolationEnumLowerCase = map[string]ConfigurationVariablesTransactionIsolationEnum{
+	"read-uncommitted": ConfigurationVariablesTransactionIsolationReadUncommitted,
+	"read-commited":    ConfigurationVariablesTransactionIsolationReadCommited,
+	"read-committed":   ConfigurationVariablesTransactionIsolationReadCommitted,
+	"repeatable-read":  ConfigurationVariablesTransactionIsolationRepeatableRead,
+	"serializable":     ConfigurationVariablesTransactionIsolationSerializable,
 }
 
 // GetConfigurationVariablesTransactionIsolationEnumValues Enumerates the set of values for ConfigurationVariablesTransactionIsolationEnum
@@ -376,12 +386,7 @@ func GetConfigurationVariablesTransactionIsolationEnumStringValues() []string {
 
 // GetMappingConfigurationVariablesTransactionIsolationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConfigurationVariablesTransactionIsolationEnum(val string) (ConfigurationVariablesTransactionIsolationEnum, bool) {
-	mappingConfigurationVariablesTransactionIsolationEnumIgnoreCase := make(map[string]ConfigurationVariablesTransactionIsolationEnum)
-	for k, v := range mappingConfigurationVariablesTransactionIsolationEnum {
-		mappingConfigurationVariablesTransactionIsolationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConfigurationVariablesTransactionIsolationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConfigurationVariablesTransactionIsolationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -403,6 +408,14 @@ var mappingConfigurationVariablesGroupReplicationConsistencyEnum = map[string]Co
 	"BEFORE":                     ConfigurationVariablesGroupReplicationConsistencyBefore,
 	"AFTER":                      ConfigurationVariablesGroupReplicationConsistencyAfter,
 	"BEFORE_AND_AFTER":           ConfigurationVariablesGroupReplicationConsistencyBeforeAndAfter,
+}
+
+var mappingConfigurationVariablesGroupReplicationConsistencyEnumLowerCase = map[string]ConfigurationVariablesGroupReplicationConsistencyEnum{
+	"eventual":                   ConfigurationVariablesGroupReplicationConsistencyEventual,
+	"before_on_primary_failover": ConfigurationVariablesGroupReplicationConsistencyBeforeOnPrimaryFailover,
+	"before":                     ConfigurationVariablesGroupReplicationConsistencyBefore,
+	"after":                      ConfigurationVariablesGroupReplicationConsistencyAfter,
+	"before_and_after":           ConfigurationVariablesGroupReplicationConsistencyBeforeAndAfter,
 }
 
 // GetConfigurationVariablesGroupReplicationConsistencyEnumValues Enumerates the set of values for ConfigurationVariablesGroupReplicationConsistencyEnum
@@ -427,12 +440,7 @@ func GetConfigurationVariablesGroupReplicationConsistencyEnumStringValues() []st
 
 // GetMappingConfigurationVariablesGroupReplicationConsistencyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConfigurationVariablesGroupReplicationConsistencyEnum(val string) (ConfigurationVariablesGroupReplicationConsistencyEnum, bool) {
-	mappingConfigurationVariablesGroupReplicationConsistencyEnumIgnoreCase := make(map[string]ConfigurationVariablesGroupReplicationConsistencyEnum)
-	for k, v := range mappingConfigurationVariablesGroupReplicationConsistencyEnum {
-		mappingConfigurationVariablesGroupReplicationConsistencyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConfigurationVariablesGroupReplicationConsistencyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConfigurationVariablesGroupReplicationConsistencyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -448,6 +456,11 @@ const (
 var mappingConfigurationVariablesBinlogRowMetadataEnum = map[string]ConfigurationVariablesBinlogRowMetadataEnum{
 	"FULL":    ConfigurationVariablesBinlogRowMetadataFull,
 	"MINIMAL": ConfigurationVariablesBinlogRowMetadataMinimal,
+}
+
+var mappingConfigurationVariablesBinlogRowMetadataEnumLowerCase = map[string]ConfigurationVariablesBinlogRowMetadataEnum{
+	"full":    ConfigurationVariablesBinlogRowMetadataFull,
+	"minimal": ConfigurationVariablesBinlogRowMetadataMinimal,
 }
 
 // GetConfigurationVariablesBinlogRowMetadataEnumValues Enumerates the set of values for ConfigurationVariablesBinlogRowMetadataEnum
@@ -469,11 +482,6 @@ func GetConfigurationVariablesBinlogRowMetadataEnumStringValues() []string {
 
 // GetMappingConfigurationVariablesBinlogRowMetadataEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConfigurationVariablesBinlogRowMetadataEnum(val string) (ConfigurationVariablesBinlogRowMetadataEnum, bool) {
-	mappingConfigurationVariablesBinlogRowMetadataEnumIgnoreCase := make(map[string]ConfigurationVariablesBinlogRowMetadataEnum)
-	for k, v := range mappingConfigurationVariablesBinlogRowMetadataEnum {
-		mappingConfigurationVariablesBinlogRowMetadataEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConfigurationVariablesBinlogRowMetadataEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConfigurationVariablesBinlogRowMetadataEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

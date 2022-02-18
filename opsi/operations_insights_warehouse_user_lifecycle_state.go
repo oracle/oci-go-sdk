@@ -37,6 +37,15 @@ var mappingOperationsInsightsWarehouseUserLifecycleStateEnum = map[string]Operat
 	"FAILED":   OperationsInsightsWarehouseUserLifecycleStateFailed,
 }
 
+var mappingOperationsInsightsWarehouseUserLifecycleStateEnumLowerCase = map[string]OperationsInsightsWarehouseUserLifecycleStateEnum{
+	"creating": OperationsInsightsWarehouseUserLifecycleStateCreating,
+	"updating": OperationsInsightsWarehouseUserLifecycleStateUpdating,
+	"active":   OperationsInsightsWarehouseUserLifecycleStateActive,
+	"deleting": OperationsInsightsWarehouseUserLifecycleStateDeleting,
+	"deleted":  OperationsInsightsWarehouseUserLifecycleStateDeleted,
+	"failed":   OperationsInsightsWarehouseUserLifecycleStateFailed,
+}
+
 // GetOperationsInsightsWarehouseUserLifecycleStateEnumValues Enumerates the set of values for OperationsInsightsWarehouseUserLifecycleStateEnum
 func GetOperationsInsightsWarehouseUserLifecycleStateEnumValues() []OperationsInsightsWarehouseUserLifecycleStateEnum {
 	values := make([]OperationsInsightsWarehouseUserLifecycleStateEnum, 0)
@@ -60,11 +69,6 @@ func GetOperationsInsightsWarehouseUserLifecycleStateEnumStringValues() []string
 
 // GetMappingOperationsInsightsWarehouseUserLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperationsInsightsWarehouseUserLifecycleStateEnum(val string) (OperationsInsightsWarehouseUserLifecycleStateEnum, bool) {
-	mappingOperationsInsightsWarehouseUserLifecycleStateEnumIgnoreCase := make(map[string]OperationsInsightsWarehouseUserLifecycleStateEnum)
-	for k, v := range mappingOperationsInsightsWarehouseUserLifecycleStateEnum {
-		mappingOperationsInsightsWarehouseUserLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperationsInsightsWarehouseUserLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperationsInsightsWarehouseUserLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

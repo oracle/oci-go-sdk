@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -129,6 +129,12 @@ var mappingBuildSourceConnectionTypeEnum = map[string]BuildSourceConnectionTypeE
 	"DEVOPS_CODE_REPOSITORY": BuildSourceConnectionTypeDevopsCodeRepository,
 }
 
+var mappingBuildSourceConnectionTypeEnumLowerCase = map[string]BuildSourceConnectionTypeEnum{
+	"github":                 BuildSourceConnectionTypeGithub,
+	"gitlab":                 BuildSourceConnectionTypeGitlab,
+	"devops_code_repository": BuildSourceConnectionTypeDevopsCodeRepository,
+}
+
 // GetBuildSourceConnectionTypeEnumValues Enumerates the set of values for BuildSourceConnectionTypeEnum
 func GetBuildSourceConnectionTypeEnumValues() []BuildSourceConnectionTypeEnum {
 	values := make([]BuildSourceConnectionTypeEnum, 0)
@@ -149,11 +155,6 @@ func GetBuildSourceConnectionTypeEnumStringValues() []string {
 
 // GetMappingBuildSourceConnectionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBuildSourceConnectionTypeEnum(val string) (BuildSourceConnectionTypeEnum, bool) {
-	mappingBuildSourceConnectionTypeEnumIgnoreCase := make(map[string]BuildSourceConnectionTypeEnum)
-	for k, v := range mappingBuildSourceConnectionTypeEnum {
-		mappingBuildSourceConnectionTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBuildSourceConnectionTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBuildSourceConnectionTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -146,6 +146,11 @@ var mappingListAutonomousDatabaseClonesSortOrderEnum = map[string]ListAutonomous
 	"DESC": ListAutonomousDatabaseClonesSortOrderDesc,
 }
 
+var mappingListAutonomousDatabaseClonesSortOrderEnumLowerCase = map[string]ListAutonomousDatabaseClonesSortOrderEnum{
+	"asc":  ListAutonomousDatabaseClonesSortOrderAsc,
+	"desc": ListAutonomousDatabaseClonesSortOrderDesc,
+}
+
 // GetListAutonomousDatabaseClonesSortOrderEnumValues Enumerates the set of values for ListAutonomousDatabaseClonesSortOrderEnum
 func GetListAutonomousDatabaseClonesSortOrderEnumValues() []ListAutonomousDatabaseClonesSortOrderEnum {
 	values := make([]ListAutonomousDatabaseClonesSortOrderEnum, 0)
@@ -165,12 +170,7 @@ func GetListAutonomousDatabaseClonesSortOrderEnumStringValues() []string {
 
 // GetMappingListAutonomousDatabaseClonesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAutonomousDatabaseClonesSortOrderEnum(val string) (ListAutonomousDatabaseClonesSortOrderEnum, bool) {
-	mappingListAutonomousDatabaseClonesSortOrderEnumIgnoreCase := make(map[string]ListAutonomousDatabaseClonesSortOrderEnum)
-	for k, v := range mappingListAutonomousDatabaseClonesSortOrderEnum {
-		mappingListAutonomousDatabaseClonesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAutonomousDatabaseClonesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAutonomousDatabaseClonesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -188,6 +188,12 @@ var mappingListAutonomousDatabaseClonesSortByEnum = map[string]ListAutonomousDat
 	"NONE":        ListAutonomousDatabaseClonesSortByNone,
 	"TIMECREATED": ListAutonomousDatabaseClonesSortByTimecreated,
 	"DISPLAYNAME": ListAutonomousDatabaseClonesSortByDisplayname,
+}
+
+var mappingListAutonomousDatabaseClonesSortByEnumLowerCase = map[string]ListAutonomousDatabaseClonesSortByEnum{
+	"none":        ListAutonomousDatabaseClonesSortByNone,
+	"timecreated": ListAutonomousDatabaseClonesSortByTimecreated,
+	"displayname": ListAutonomousDatabaseClonesSortByDisplayname,
 }
 
 // GetListAutonomousDatabaseClonesSortByEnumValues Enumerates the set of values for ListAutonomousDatabaseClonesSortByEnum
@@ -210,12 +216,7 @@ func GetListAutonomousDatabaseClonesSortByEnumStringValues() []string {
 
 // GetMappingListAutonomousDatabaseClonesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAutonomousDatabaseClonesSortByEnum(val string) (ListAutonomousDatabaseClonesSortByEnum, bool) {
-	mappingListAutonomousDatabaseClonesSortByEnumIgnoreCase := make(map[string]ListAutonomousDatabaseClonesSortByEnum)
-	for k, v := range mappingListAutonomousDatabaseClonesSortByEnum {
-		mappingListAutonomousDatabaseClonesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAutonomousDatabaseClonesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAutonomousDatabaseClonesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -229,6 +230,10 @@ const (
 
 var mappingListAutonomousDatabaseClonesCloneTypeEnum = map[string]ListAutonomousDatabaseClonesCloneTypeEnum{
 	"REFRESHABLE_CLONE": ListAutonomousDatabaseClonesCloneTypeRefreshableClone,
+}
+
+var mappingListAutonomousDatabaseClonesCloneTypeEnumLowerCase = map[string]ListAutonomousDatabaseClonesCloneTypeEnum{
+	"refreshable_clone": ListAutonomousDatabaseClonesCloneTypeRefreshableClone,
 }
 
 // GetListAutonomousDatabaseClonesCloneTypeEnumValues Enumerates the set of values for ListAutonomousDatabaseClonesCloneTypeEnum
@@ -249,11 +254,6 @@ func GetListAutonomousDatabaseClonesCloneTypeEnumStringValues() []string {
 
 // GetMappingListAutonomousDatabaseClonesCloneTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAutonomousDatabaseClonesCloneTypeEnum(val string) (ListAutonomousDatabaseClonesCloneTypeEnum, bool) {
-	mappingListAutonomousDatabaseClonesCloneTypeEnumIgnoreCase := make(map[string]ListAutonomousDatabaseClonesCloneTypeEnum)
-	for k, v := range mappingListAutonomousDatabaseClonesCloneTypeEnum {
-		mappingListAutonomousDatabaseClonesCloneTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAutonomousDatabaseClonesCloneTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAutonomousDatabaseClonesCloneTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

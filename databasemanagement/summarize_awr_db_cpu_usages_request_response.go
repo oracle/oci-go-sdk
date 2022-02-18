@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -167,6 +167,12 @@ var mappingSummarizeAwrDbCpuUsagesSessionTypeEnum = map[string]SummarizeAwrDbCpu
 	"ALL":        SummarizeAwrDbCpuUsagesSessionTypeAll,
 }
 
+var mappingSummarizeAwrDbCpuUsagesSessionTypeEnumLowerCase = map[string]SummarizeAwrDbCpuUsagesSessionTypeEnum{
+	"foreground": SummarizeAwrDbCpuUsagesSessionTypeForeground,
+	"background": SummarizeAwrDbCpuUsagesSessionTypeBackground,
+	"all":        SummarizeAwrDbCpuUsagesSessionTypeAll,
+}
+
 // GetSummarizeAwrDbCpuUsagesSessionTypeEnumValues Enumerates the set of values for SummarizeAwrDbCpuUsagesSessionTypeEnum
 func GetSummarizeAwrDbCpuUsagesSessionTypeEnumValues() []SummarizeAwrDbCpuUsagesSessionTypeEnum {
 	values := make([]SummarizeAwrDbCpuUsagesSessionTypeEnum, 0)
@@ -187,12 +193,7 @@ func GetSummarizeAwrDbCpuUsagesSessionTypeEnumStringValues() []string {
 
 // GetMappingSummarizeAwrDbCpuUsagesSessionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAwrDbCpuUsagesSessionTypeEnum(val string) (SummarizeAwrDbCpuUsagesSessionTypeEnum, bool) {
-	mappingSummarizeAwrDbCpuUsagesSessionTypeEnumIgnoreCase := make(map[string]SummarizeAwrDbCpuUsagesSessionTypeEnum)
-	for k, v := range mappingSummarizeAwrDbCpuUsagesSessionTypeEnum {
-		mappingSummarizeAwrDbCpuUsagesSessionTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAwrDbCpuUsagesSessionTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAwrDbCpuUsagesSessionTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -208,6 +209,11 @@ const (
 var mappingSummarizeAwrDbCpuUsagesSortByEnum = map[string]SummarizeAwrDbCpuUsagesSortByEnum{
 	"TIME_SAMPLED": SummarizeAwrDbCpuUsagesSortByTimeSampled,
 	"AVG_VALUE":    SummarizeAwrDbCpuUsagesSortByAvgValue,
+}
+
+var mappingSummarizeAwrDbCpuUsagesSortByEnumLowerCase = map[string]SummarizeAwrDbCpuUsagesSortByEnum{
+	"time_sampled": SummarizeAwrDbCpuUsagesSortByTimeSampled,
+	"avg_value":    SummarizeAwrDbCpuUsagesSortByAvgValue,
 }
 
 // GetSummarizeAwrDbCpuUsagesSortByEnumValues Enumerates the set of values for SummarizeAwrDbCpuUsagesSortByEnum
@@ -229,12 +235,7 @@ func GetSummarizeAwrDbCpuUsagesSortByEnumStringValues() []string {
 
 // GetMappingSummarizeAwrDbCpuUsagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAwrDbCpuUsagesSortByEnum(val string) (SummarizeAwrDbCpuUsagesSortByEnum, bool) {
-	mappingSummarizeAwrDbCpuUsagesSortByEnumIgnoreCase := make(map[string]SummarizeAwrDbCpuUsagesSortByEnum)
-	for k, v := range mappingSummarizeAwrDbCpuUsagesSortByEnum {
-		mappingSummarizeAwrDbCpuUsagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAwrDbCpuUsagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAwrDbCpuUsagesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -250,6 +251,11 @@ const (
 var mappingSummarizeAwrDbCpuUsagesSortOrderEnum = map[string]SummarizeAwrDbCpuUsagesSortOrderEnum{
 	"ASC":  SummarizeAwrDbCpuUsagesSortOrderAsc,
 	"DESC": SummarizeAwrDbCpuUsagesSortOrderDesc,
+}
+
+var mappingSummarizeAwrDbCpuUsagesSortOrderEnumLowerCase = map[string]SummarizeAwrDbCpuUsagesSortOrderEnum{
+	"asc":  SummarizeAwrDbCpuUsagesSortOrderAsc,
+	"desc": SummarizeAwrDbCpuUsagesSortOrderDesc,
 }
 
 // GetSummarizeAwrDbCpuUsagesSortOrderEnumValues Enumerates the set of values for SummarizeAwrDbCpuUsagesSortOrderEnum
@@ -271,11 +277,6 @@ func GetSummarizeAwrDbCpuUsagesSortOrderEnumStringValues() []string {
 
 // GetMappingSummarizeAwrDbCpuUsagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAwrDbCpuUsagesSortOrderEnum(val string) (SummarizeAwrDbCpuUsagesSortOrderEnum, bool) {
-	mappingSummarizeAwrDbCpuUsagesSortOrderEnumIgnoreCase := make(map[string]SummarizeAwrDbCpuUsagesSortOrderEnum)
-	for k, v := range mappingSummarizeAwrDbCpuUsagesSortOrderEnum {
-		mappingSummarizeAwrDbCpuUsagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAwrDbCpuUsagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAwrDbCpuUsagesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

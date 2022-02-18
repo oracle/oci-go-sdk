@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -143,6 +143,11 @@ var mappingListDerivedLogicalEntitiesSortByEnum = map[string]ListDerivedLogicalE
 	"DISPLAYNAME": ListDerivedLogicalEntitiesSortByDisplayname,
 }
 
+var mappingListDerivedLogicalEntitiesSortByEnumLowerCase = map[string]ListDerivedLogicalEntitiesSortByEnum{
+	"timecreated": ListDerivedLogicalEntitiesSortByTimecreated,
+	"displayname": ListDerivedLogicalEntitiesSortByDisplayname,
+}
+
 // GetListDerivedLogicalEntitiesSortByEnumValues Enumerates the set of values for ListDerivedLogicalEntitiesSortByEnum
 func GetListDerivedLogicalEntitiesSortByEnumValues() []ListDerivedLogicalEntitiesSortByEnum {
 	values := make([]ListDerivedLogicalEntitiesSortByEnum, 0)
@@ -162,12 +167,7 @@ func GetListDerivedLogicalEntitiesSortByEnumStringValues() []string {
 
 // GetMappingListDerivedLogicalEntitiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDerivedLogicalEntitiesSortByEnum(val string) (ListDerivedLogicalEntitiesSortByEnum, bool) {
-	mappingListDerivedLogicalEntitiesSortByEnumIgnoreCase := make(map[string]ListDerivedLogicalEntitiesSortByEnum)
-	for k, v := range mappingListDerivedLogicalEntitiesSortByEnum {
-		mappingListDerivedLogicalEntitiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDerivedLogicalEntitiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDerivedLogicalEntitiesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +183,11 @@ const (
 var mappingListDerivedLogicalEntitiesSortOrderEnum = map[string]ListDerivedLogicalEntitiesSortOrderEnum{
 	"ASC":  ListDerivedLogicalEntitiesSortOrderAsc,
 	"DESC": ListDerivedLogicalEntitiesSortOrderDesc,
+}
+
+var mappingListDerivedLogicalEntitiesSortOrderEnumLowerCase = map[string]ListDerivedLogicalEntitiesSortOrderEnum{
+	"asc":  ListDerivedLogicalEntitiesSortOrderAsc,
+	"desc": ListDerivedLogicalEntitiesSortOrderDesc,
 }
 
 // GetListDerivedLogicalEntitiesSortOrderEnumValues Enumerates the set of values for ListDerivedLogicalEntitiesSortOrderEnum
@@ -204,11 +209,6 @@ func GetListDerivedLogicalEntitiesSortOrderEnumStringValues() []string {
 
 // GetMappingListDerivedLogicalEntitiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDerivedLogicalEntitiesSortOrderEnum(val string) (ListDerivedLogicalEntitiesSortOrderEnum, bool) {
-	mappingListDerivedLogicalEntitiesSortOrderEnumIgnoreCase := make(map[string]ListDerivedLogicalEntitiesSortOrderEnum)
-	for k, v := range mappingListDerivedLogicalEntitiesSortOrderEnum {
-		mappingListDerivedLogicalEntitiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDerivedLogicalEntitiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDerivedLogicalEntitiesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

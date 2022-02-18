@@ -6,7 +6,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -148,6 +148,11 @@ var mappingListApisSortOrderEnum = map[string]ListApisSortOrderEnum{
 	"DESC": ListApisSortOrderDesc,
 }
 
+var mappingListApisSortOrderEnumLowerCase = map[string]ListApisSortOrderEnum{
+	"asc":  ListApisSortOrderAsc,
+	"desc": ListApisSortOrderDesc,
+}
+
 // GetListApisSortOrderEnumValues Enumerates the set of values for ListApisSortOrderEnum
 func GetListApisSortOrderEnumValues() []ListApisSortOrderEnum {
 	values := make([]ListApisSortOrderEnum, 0)
@@ -167,12 +172,7 @@ func GetListApisSortOrderEnumStringValues() []string {
 
 // GetMappingListApisSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListApisSortOrderEnum(val string) (ListApisSortOrderEnum, bool) {
-	mappingListApisSortOrderEnumIgnoreCase := make(map[string]ListApisSortOrderEnum)
-	for k, v := range mappingListApisSortOrderEnum {
-		mappingListApisSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListApisSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListApisSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -188,6 +188,11 @@ const (
 var mappingListApisSortByEnum = map[string]ListApisSortByEnum{
 	"timeCreated": ListApisSortByTimecreated,
 	"displayName": ListApisSortByDisplayname,
+}
+
+var mappingListApisSortByEnumLowerCase = map[string]ListApisSortByEnum{
+	"timecreated": ListApisSortByTimecreated,
+	"displayname": ListApisSortByDisplayname,
 }
 
 // GetListApisSortByEnumValues Enumerates the set of values for ListApisSortByEnum
@@ -209,11 +214,6 @@ func GetListApisSortByEnumStringValues() []string {
 
 // GetMappingListApisSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListApisSortByEnum(val string) (ListApisSortByEnum, bool) {
-	mappingListApisSortByEnumIgnoreCase := make(map[string]ListApisSortByEnum)
-	for k, v := range mappingListApisSortByEnum {
-		mappingListApisSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListApisSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListApisSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

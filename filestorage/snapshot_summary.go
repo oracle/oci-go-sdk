@@ -11,7 +11,7 @@ package filestorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,13 @@ var mappingSnapshotSummaryLifecycleStateEnum = map[string]SnapshotSummaryLifecyc
 	"DELETED":  SnapshotSummaryLifecycleStateDeleted,
 }
 
+var mappingSnapshotSummaryLifecycleStateEnumLowerCase = map[string]SnapshotSummaryLifecycleStateEnum{
+	"creating": SnapshotSummaryLifecycleStateCreating,
+	"active":   SnapshotSummaryLifecycleStateActive,
+	"deleting": SnapshotSummaryLifecycleStateDeleting,
+	"deleted":  SnapshotSummaryLifecycleStateDeleted,
+}
+
 // GetSnapshotSummaryLifecycleStateEnumValues Enumerates the set of values for SnapshotSummaryLifecycleStateEnum
 func GetSnapshotSummaryLifecycleStateEnumValues() []SnapshotSummaryLifecycleStateEnum {
 	values := make([]SnapshotSummaryLifecycleStateEnum, 0)
@@ -120,11 +127,6 @@ func GetSnapshotSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingSnapshotSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSnapshotSummaryLifecycleStateEnum(val string) (SnapshotSummaryLifecycleStateEnum, bool) {
-	mappingSnapshotSummaryLifecycleStateEnumIgnoreCase := make(map[string]SnapshotSummaryLifecycleStateEnum)
-	for k, v := range mappingSnapshotSummaryLifecycleStateEnum {
-		mappingSnapshotSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSnapshotSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSnapshotSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

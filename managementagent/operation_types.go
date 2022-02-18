@@ -29,6 +29,12 @@ var mappingOperationTypesEnum = map[string]OperationTypesEnum{
 	"AGENTIMAGE_UPGRADE":     OperationTypesAgentimageUpgrade,
 }
 
+var mappingOperationTypesEnumLowerCase = map[string]OperationTypesEnum{
+	"upgrade_plugin":         OperationTypesUpgradePlugin,
+	"create_upgrade_plugins": OperationTypesCreateUpgradePlugins,
+	"agentimage_upgrade":     OperationTypesAgentimageUpgrade,
+}
+
 // GetOperationTypesEnumValues Enumerates the set of values for OperationTypesEnum
 func GetOperationTypesEnumValues() []OperationTypesEnum {
 	values := make([]OperationTypesEnum, 0)
@@ -49,11 +55,6 @@ func GetOperationTypesEnumStringValues() []string {
 
 // GetMappingOperationTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperationTypesEnum(val string) (OperationTypesEnum, bool) {
-	mappingOperationTypesEnumIgnoreCase := make(map[string]OperationTypesEnum)
-	for k, v := range mappingOperationTypesEnum {
-		mappingOperationTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperationTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperationTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package dataflow
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -157,6 +157,16 @@ var mappingListPrivateEndpointsLifecycleStateEnum = map[string]ListPrivateEndpoi
 	"FAILED":   ListPrivateEndpointsLifecycleStateFailed,
 }
 
+var mappingListPrivateEndpointsLifecycleStateEnumLowerCase = map[string]ListPrivateEndpointsLifecycleStateEnum{
+	"creating": ListPrivateEndpointsLifecycleStateCreating,
+	"active":   ListPrivateEndpointsLifecycleStateActive,
+	"inactive": ListPrivateEndpointsLifecycleStateInactive,
+	"updating": ListPrivateEndpointsLifecycleStateUpdating,
+	"deleting": ListPrivateEndpointsLifecycleStateDeleting,
+	"deleted":  ListPrivateEndpointsLifecycleStateDeleted,
+	"failed":   ListPrivateEndpointsLifecycleStateFailed,
+}
+
 // GetListPrivateEndpointsLifecycleStateEnumValues Enumerates the set of values for ListPrivateEndpointsLifecycleStateEnum
 func GetListPrivateEndpointsLifecycleStateEnumValues() []ListPrivateEndpointsLifecycleStateEnum {
 	values := make([]ListPrivateEndpointsLifecycleStateEnum, 0)
@@ -181,12 +191,7 @@ func GetListPrivateEndpointsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListPrivateEndpointsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPrivateEndpointsLifecycleStateEnum(val string) (ListPrivateEndpointsLifecycleStateEnum, bool) {
-	mappingListPrivateEndpointsLifecycleStateEnumIgnoreCase := make(map[string]ListPrivateEndpointsLifecycleStateEnum)
-	for k, v := range mappingListPrivateEndpointsLifecycleStateEnum {
-		mappingListPrivateEndpointsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPrivateEndpointsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPrivateEndpointsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -200,6 +205,10 @@ const (
 
 var mappingListPrivateEndpointsSortByEnum = map[string]ListPrivateEndpointsSortByEnum{
 	"timeCreated": ListPrivateEndpointsSortByTimecreated,
+}
+
+var mappingListPrivateEndpointsSortByEnumLowerCase = map[string]ListPrivateEndpointsSortByEnum{
+	"timecreated": ListPrivateEndpointsSortByTimecreated,
 }
 
 // GetListPrivateEndpointsSortByEnumValues Enumerates the set of values for ListPrivateEndpointsSortByEnum
@@ -220,12 +229,7 @@ func GetListPrivateEndpointsSortByEnumStringValues() []string {
 
 // GetMappingListPrivateEndpointsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPrivateEndpointsSortByEnum(val string) (ListPrivateEndpointsSortByEnum, bool) {
-	mappingListPrivateEndpointsSortByEnumIgnoreCase := make(map[string]ListPrivateEndpointsSortByEnum)
-	for k, v := range mappingListPrivateEndpointsSortByEnum {
-		mappingListPrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPrivateEndpointsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -241,6 +245,11 @@ const (
 var mappingListPrivateEndpointsSortOrderEnum = map[string]ListPrivateEndpointsSortOrderEnum{
 	"ASC":  ListPrivateEndpointsSortOrderAsc,
 	"DESC": ListPrivateEndpointsSortOrderDesc,
+}
+
+var mappingListPrivateEndpointsSortOrderEnumLowerCase = map[string]ListPrivateEndpointsSortOrderEnum{
+	"asc":  ListPrivateEndpointsSortOrderAsc,
+	"desc": ListPrivateEndpointsSortOrderDesc,
 }
 
 // GetListPrivateEndpointsSortOrderEnumValues Enumerates the set of values for ListPrivateEndpointsSortOrderEnum
@@ -262,11 +271,6 @@ func GetListPrivateEndpointsSortOrderEnumStringValues() []string {
 
 // GetMappingListPrivateEndpointsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPrivateEndpointsSortOrderEnum(val string) (ListPrivateEndpointsSortOrderEnum, bool) {
-	mappingListPrivateEndpointsSortOrderEnumIgnoreCase := make(map[string]ListPrivateEndpointsSortOrderEnum)
-	for k, v := range mappingListPrivateEndpointsSortOrderEnum {
-		mappingListPrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPrivateEndpointsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

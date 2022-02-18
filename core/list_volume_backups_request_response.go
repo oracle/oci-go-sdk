@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -155,6 +155,11 @@ var mappingListVolumeBackupsSortByEnum = map[string]ListVolumeBackupsSortByEnum{
 	"DISPLAYNAME": ListVolumeBackupsSortByDisplayname,
 }
 
+var mappingListVolumeBackupsSortByEnumLowerCase = map[string]ListVolumeBackupsSortByEnum{
+	"timecreated": ListVolumeBackupsSortByTimecreated,
+	"displayname": ListVolumeBackupsSortByDisplayname,
+}
+
 // GetListVolumeBackupsSortByEnumValues Enumerates the set of values for ListVolumeBackupsSortByEnum
 func GetListVolumeBackupsSortByEnumValues() []ListVolumeBackupsSortByEnum {
 	values := make([]ListVolumeBackupsSortByEnum, 0)
@@ -174,12 +179,7 @@ func GetListVolumeBackupsSortByEnumStringValues() []string {
 
 // GetMappingListVolumeBackupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListVolumeBackupsSortByEnum(val string) (ListVolumeBackupsSortByEnum, bool) {
-	mappingListVolumeBackupsSortByEnumIgnoreCase := make(map[string]ListVolumeBackupsSortByEnum)
-	for k, v := range mappingListVolumeBackupsSortByEnum {
-		mappingListVolumeBackupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListVolumeBackupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListVolumeBackupsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -195,6 +195,11 @@ const (
 var mappingListVolumeBackupsSortOrderEnum = map[string]ListVolumeBackupsSortOrderEnum{
 	"ASC":  ListVolumeBackupsSortOrderAsc,
 	"DESC": ListVolumeBackupsSortOrderDesc,
+}
+
+var mappingListVolumeBackupsSortOrderEnumLowerCase = map[string]ListVolumeBackupsSortOrderEnum{
+	"asc":  ListVolumeBackupsSortOrderAsc,
+	"desc": ListVolumeBackupsSortOrderDesc,
 }
 
 // GetListVolumeBackupsSortOrderEnumValues Enumerates the set of values for ListVolumeBackupsSortOrderEnum
@@ -216,11 +221,6 @@ func GetListVolumeBackupsSortOrderEnumStringValues() []string {
 
 // GetMappingListVolumeBackupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListVolumeBackupsSortOrderEnum(val string) (ListVolumeBackupsSortOrderEnum, bool) {
-	mappingListVolumeBackupsSortOrderEnumIgnoreCase := make(map[string]ListVolumeBackupsSortOrderEnum)
-	for k, v := range mappingListVolumeBackupsSortOrderEnum {
-		mappingListVolumeBackupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListVolumeBackupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListVolumeBackupsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

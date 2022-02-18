@@ -16,11 +16,11 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
-// AmdMilanBmPlatformConfig The platform configuration of a bare metal instance that uses an E4 shape
+// AmdMilanBmPlatformConfig The platform configuration of a bare metal instance that uses an E4 shape.
 // (the AMD Milan platform).
 type AmdMilanBmPlatformConfig struct {
 
@@ -103,6 +103,13 @@ var mappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnum = map[string]AmdMilanB
 	"NPS4": AmdMilanBmPlatformConfigNumaNodesPerSocketNps4,
 }
 
+var mappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnumLowerCase = map[string]AmdMilanBmPlatformConfigNumaNodesPerSocketEnum{
+	"nps0": AmdMilanBmPlatformConfigNumaNodesPerSocketNps0,
+	"nps1": AmdMilanBmPlatformConfigNumaNodesPerSocketNps1,
+	"nps2": AmdMilanBmPlatformConfigNumaNodesPerSocketNps2,
+	"nps4": AmdMilanBmPlatformConfigNumaNodesPerSocketNps4,
+}
+
 // GetAmdMilanBmPlatformConfigNumaNodesPerSocketEnumValues Enumerates the set of values for AmdMilanBmPlatformConfigNumaNodesPerSocketEnum
 func GetAmdMilanBmPlatformConfigNumaNodesPerSocketEnumValues() []AmdMilanBmPlatformConfigNumaNodesPerSocketEnum {
 	values := make([]AmdMilanBmPlatformConfigNumaNodesPerSocketEnum, 0)
@@ -124,11 +131,6 @@ func GetAmdMilanBmPlatformConfigNumaNodesPerSocketEnumStringValues() []string {
 
 // GetMappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnum(val string) (AmdMilanBmPlatformConfigNumaNodesPerSocketEnum, bool) {
-	mappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnumIgnoreCase := make(map[string]AmdMilanBmPlatformConfigNumaNodesPerSocketEnum)
-	for k, v := range mappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnum {
-		mappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

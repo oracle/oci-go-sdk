@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -179,6 +179,37 @@ var mappingGetAttributeFieldsEnum = map[string]GetAttributeFieldsEnum{
 	"typeKey":                    GetAttributeFieldsTypekey,
 }
 
+var mappingGetAttributeFieldsEnumLowerCase = map[string]GetAttributeFieldsEnum{
+	"key":                        GetAttributeFieldsKey,
+	"displayname":                GetAttributeFieldsDisplayname,
+	"description":                GetAttributeFieldsDescription,
+	"entitykey":                  GetAttributeFieldsEntitykey,
+	"lifecyclestate":             GetAttributeFieldsLifecyclestate,
+	"timecreated":                GetAttributeFieldsTimecreated,
+	"timeupdated":                GetAttributeFieldsTimeupdated,
+	"createdbyid":                GetAttributeFieldsCreatedbyid,
+	"updatedbyid":                GetAttributeFieldsUpdatedbyid,
+	"externaldatatype":           GetAttributeFieldsExternaldatatype,
+	"externalkey":                GetAttributeFieldsExternalkey,
+	"isincrementaldata":          GetAttributeFieldsIsincrementaldata,
+	"isnullable":                 GetAttributeFieldsIsnullable,
+	"length":                     GetAttributeFieldsLength,
+	"position":                   GetAttributeFieldsPosition,
+	"precision":                  GetAttributeFieldsPrecision,
+	"scale":                      GetAttributeFieldsScale,
+	"timeexternal":               GetAttributeFieldsTimeexternal,
+	"uri":                        GetAttributeFieldsUri,
+	"properties":                 GetAttributeFieldsProperties,
+	"path":                       GetAttributeFieldsPath,
+	"mincollectioncount":         GetAttributeFieldsMincollectioncount,
+	"maxcollectioncount":         GetAttributeFieldsMaxcollectioncount,
+	"datatypeentitykey":          GetAttributeFieldsDatatypeentitykey,
+	"externaldatatypeentitykey":  GetAttributeFieldsExternaldatatypeentitykey,
+	"parentattributekey":         GetAttributeFieldsParentattributekey,
+	"externalparentattributekey": GetAttributeFieldsExternalparentattributekey,
+	"typekey":                    GetAttributeFieldsTypekey,
+}
+
 // GetGetAttributeFieldsEnumValues Enumerates the set of values for GetAttributeFieldsEnum
 func GetGetAttributeFieldsEnumValues() []GetAttributeFieldsEnum {
 	values := make([]GetAttributeFieldsEnum, 0)
@@ -224,11 +255,6 @@ func GetGetAttributeFieldsEnumStringValues() []string {
 
 // GetMappingGetAttributeFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetAttributeFieldsEnum(val string) (GetAttributeFieldsEnum, bool) {
-	mappingGetAttributeFieldsEnumIgnoreCase := make(map[string]GetAttributeFieldsEnum)
-	for k, v := range mappingGetAttributeFieldsEnum {
-		mappingGetAttributeFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetAttributeFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetAttributeFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

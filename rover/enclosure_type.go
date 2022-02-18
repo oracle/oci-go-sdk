@@ -27,6 +27,11 @@ var mappingEnclosureTypeEnum = map[string]EnclosureTypeEnum{
 	"NON_RUGGADIZED": EnclosureTypeNonRuggadized,
 }
 
+var mappingEnclosureTypeEnumLowerCase = map[string]EnclosureTypeEnum{
+	"ruggadized":     EnclosureTypeRuggadized,
+	"non_ruggadized": EnclosureTypeNonRuggadized,
+}
+
 // GetEnclosureTypeEnumValues Enumerates the set of values for EnclosureTypeEnum
 func GetEnclosureTypeEnumValues() []EnclosureTypeEnum {
 	values := make([]EnclosureTypeEnum, 0)
@@ -46,11 +51,6 @@ func GetEnclosureTypeEnumStringValues() []string {
 
 // GetMappingEnclosureTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEnclosureTypeEnum(val string) (EnclosureTypeEnum, bool) {
-	mappingEnclosureTypeEnumIgnoreCase := make(map[string]EnclosureTypeEnum)
-	for k, v := range mappingEnclosureTypeEnum {
-		mappingEnclosureTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEnclosureTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEnclosureTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package operatoraccesscontrol
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -188,6 +188,31 @@ var mappingListAccessRequestsLifecycleStateEnum = map[string]ListAccessRequestsL
 	"INREVIEW":          ListAccessRequestsLifecycleStateInreview,
 }
 
+var mappingListAccessRequestsLifecycleStateEnumLowerCase = map[string]ListAccessRequestsLifecycleStateEnum{
+	"created":           ListAccessRequestsLifecycleStateCreated,
+	"approvalwaiting":   ListAccessRequestsLifecycleStateApprovalwaiting,
+	"preapproved":       ListAccessRequestsLifecycleStatePreapproved,
+	"approved":          ListAccessRequestsLifecycleStateApproved,
+	"rejected":          ListAccessRequestsLifecycleStateRejected,
+	"deployed":          ListAccessRequestsLifecycleStateDeployed,
+	"deployfailed":      ListAccessRequestsLifecycleStateDeployfailed,
+	"undeployed":        ListAccessRequestsLifecycleStateUndeployed,
+	"undeployfailed":    ListAccessRequestsLifecycleStateUndeployfailed,
+	"closefailed":       ListAccessRequestsLifecycleStateClosefailed,
+	"revokefailed":      ListAccessRequestsLifecycleStateRevokefailed,
+	"expiryfailed":      ListAccessRequestsLifecycleStateExpiryfailed,
+	"revoking":          ListAccessRequestsLifecycleStateRevoking,
+	"revoked":           ListAccessRequestsLifecycleStateRevoked,
+	"extending":         ListAccessRequestsLifecycleStateExtending,
+	"extended":          ListAccessRequestsLifecycleStateExtended,
+	"extensionrejected": ListAccessRequestsLifecycleStateExtensionrejected,
+	"completing":        ListAccessRequestsLifecycleStateCompleting,
+	"completed":         ListAccessRequestsLifecycleStateCompleted,
+	"expired":           ListAccessRequestsLifecycleStateExpired,
+	"approvedforfuture": ListAccessRequestsLifecycleStateApprovedforfuture,
+	"inreview":          ListAccessRequestsLifecycleStateInreview,
+}
+
 // GetListAccessRequestsLifecycleStateEnumValues Enumerates the set of values for ListAccessRequestsLifecycleStateEnum
 func GetListAccessRequestsLifecycleStateEnumValues() []ListAccessRequestsLifecycleStateEnum {
 	values := make([]ListAccessRequestsLifecycleStateEnum, 0)
@@ -227,12 +252,7 @@ func GetListAccessRequestsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListAccessRequestsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAccessRequestsLifecycleStateEnum(val string) (ListAccessRequestsLifecycleStateEnum, bool) {
-	mappingListAccessRequestsLifecycleStateEnumIgnoreCase := make(map[string]ListAccessRequestsLifecycleStateEnum)
-	for k, v := range mappingListAccessRequestsLifecycleStateEnum {
-		mappingListAccessRequestsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAccessRequestsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAccessRequestsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -248,6 +268,11 @@ const (
 var mappingListAccessRequestsSortOrderEnum = map[string]ListAccessRequestsSortOrderEnum{
 	"ASC":  ListAccessRequestsSortOrderAsc,
 	"DESC": ListAccessRequestsSortOrderDesc,
+}
+
+var mappingListAccessRequestsSortOrderEnumLowerCase = map[string]ListAccessRequestsSortOrderEnum{
+	"asc":  ListAccessRequestsSortOrderAsc,
+	"desc": ListAccessRequestsSortOrderDesc,
 }
 
 // GetListAccessRequestsSortOrderEnumValues Enumerates the set of values for ListAccessRequestsSortOrderEnum
@@ -269,12 +294,7 @@ func GetListAccessRequestsSortOrderEnumStringValues() []string {
 
 // GetMappingListAccessRequestsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAccessRequestsSortOrderEnum(val string) (ListAccessRequestsSortOrderEnum, bool) {
-	mappingListAccessRequestsSortOrderEnumIgnoreCase := make(map[string]ListAccessRequestsSortOrderEnum)
-	for k, v := range mappingListAccessRequestsSortOrderEnum {
-		mappingListAccessRequestsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAccessRequestsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAccessRequestsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -290,6 +310,11 @@ const (
 var mappingListAccessRequestsSortByEnum = map[string]ListAccessRequestsSortByEnum{
 	"timeCreated": ListAccessRequestsSortByTimecreated,
 	"displayName": ListAccessRequestsSortByDisplayname,
+}
+
+var mappingListAccessRequestsSortByEnumLowerCase = map[string]ListAccessRequestsSortByEnum{
+	"timecreated": ListAccessRequestsSortByTimecreated,
+	"displayname": ListAccessRequestsSortByDisplayname,
 }
 
 // GetListAccessRequestsSortByEnumValues Enumerates the set of values for ListAccessRequestsSortByEnum
@@ -311,11 +336,6 @@ func GetListAccessRequestsSortByEnumStringValues() []string {
 
 // GetMappingListAccessRequestsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAccessRequestsSortByEnum(val string) (ListAccessRequestsSortByEnum, bool) {
-	mappingListAccessRequestsSortByEnumIgnoreCase := make(map[string]ListAccessRequestsSortByEnum)
-	for k, v := range mappingListAccessRequestsSortByEnum {
-		mappingListAccessRequestsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAccessRequestsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAccessRequestsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

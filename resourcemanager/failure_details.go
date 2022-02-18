@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -79,6 +79,20 @@ var mappingFailureDetailsCodeEnum = map[string]FailureDetailsCodeEnum{
 	"TERRAFORM_OBJECT_STORAGE_CONFIG_SOURCE_UNSUPPORTED_OBJECT_SIZE": FailureDetailsCodeTerraformObjectStorageConfigSourceUnsupportedObjectSize,
 }
 
+var mappingFailureDetailsCodeEnumLowerCase = map[string]FailureDetailsCodeEnum{
+	"internal_service_error":                                         FailureDetailsCodeInternalServiceError,
+	"terraform_execution_error":                                      FailureDetailsCodeTerraformExecutionError,
+	"terraform_config_unzip_failed":                                  FailureDetailsCodeTerraformConfigUnzipFailed,
+	"invalid_working_directory":                                      FailureDetailsCodeInvalidWorkingDirectory,
+	"job_timeout":                                                    FailureDetailsCodeJobTimeout,
+	"terraform_config_virus_found":                                   FailureDetailsCodeTerraformConfigVirusFound,
+	"terraform_git_clone_failure":                                    FailureDetailsCodeTerraformGitCloneFailure,
+	"terraform_git_checkout_failure":                                 FailureDetailsCodeTerraformGitCheckoutFailure,
+	"terraform_object_storage_config_source_empty_bucket":            FailureDetailsCodeTerraformObjectStorageConfigSourceEmptyBucket,
+	"terraform_object_storage_config_source_no_tf_file_present":      FailureDetailsCodeTerraformObjectStorageConfigSourceNoTfFilePresent,
+	"terraform_object_storage_config_source_unsupported_object_size": FailureDetailsCodeTerraformObjectStorageConfigSourceUnsupportedObjectSize,
+}
+
 // GetFailureDetailsCodeEnumValues Enumerates the set of values for FailureDetailsCodeEnum
 func GetFailureDetailsCodeEnumValues() []FailureDetailsCodeEnum {
 	values := make([]FailureDetailsCodeEnum, 0)
@@ -107,11 +121,6 @@ func GetFailureDetailsCodeEnumStringValues() []string {
 
 // GetMappingFailureDetailsCodeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFailureDetailsCodeEnum(val string) (FailureDetailsCodeEnum, bool) {
-	mappingFailureDetailsCodeEnumIgnoreCase := make(map[string]FailureDetailsCodeEnum)
-	for k, v := range mappingFailureDetailsCodeEnum {
-		mappingFailureDetailsCodeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFailureDetailsCodeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFailureDetailsCodeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

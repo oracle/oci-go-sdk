@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -122,6 +122,12 @@ var mappingDataGuardAssociationRoleEnum = map[string]DataGuardAssociationRoleEnu
 	"DISABLED_STANDBY": DataGuardAssociationRoleDisabledStandby,
 }
 
+var mappingDataGuardAssociationRoleEnumLowerCase = map[string]DataGuardAssociationRoleEnum{
+	"primary":          DataGuardAssociationRolePrimary,
+	"standby":          DataGuardAssociationRoleStandby,
+	"disabled_standby": DataGuardAssociationRoleDisabledStandby,
+}
+
 // GetDataGuardAssociationRoleEnumValues Enumerates the set of values for DataGuardAssociationRoleEnum
 func GetDataGuardAssociationRoleEnumValues() []DataGuardAssociationRoleEnum {
 	values := make([]DataGuardAssociationRoleEnum, 0)
@@ -142,12 +148,7 @@ func GetDataGuardAssociationRoleEnumStringValues() []string {
 
 // GetMappingDataGuardAssociationRoleEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataGuardAssociationRoleEnum(val string) (DataGuardAssociationRoleEnum, bool) {
-	mappingDataGuardAssociationRoleEnumIgnoreCase := make(map[string]DataGuardAssociationRoleEnum)
-	for k, v := range mappingDataGuardAssociationRoleEnum {
-		mappingDataGuardAssociationRoleEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataGuardAssociationRoleEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataGuardAssociationRoleEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -173,6 +174,15 @@ var mappingDataGuardAssociationLifecycleStateEnum = map[string]DataGuardAssociat
 	"FAILED":       DataGuardAssociationLifecycleStateFailed,
 }
 
+var mappingDataGuardAssociationLifecycleStateEnumLowerCase = map[string]DataGuardAssociationLifecycleStateEnum{
+	"provisioning": DataGuardAssociationLifecycleStateProvisioning,
+	"available":    DataGuardAssociationLifecycleStateAvailable,
+	"updating":     DataGuardAssociationLifecycleStateUpdating,
+	"terminating":  DataGuardAssociationLifecycleStateTerminating,
+	"terminated":   DataGuardAssociationLifecycleStateTerminated,
+	"failed":       DataGuardAssociationLifecycleStateFailed,
+}
+
 // GetDataGuardAssociationLifecycleStateEnumValues Enumerates the set of values for DataGuardAssociationLifecycleStateEnum
 func GetDataGuardAssociationLifecycleStateEnumValues() []DataGuardAssociationLifecycleStateEnum {
 	values := make([]DataGuardAssociationLifecycleStateEnum, 0)
@@ -196,12 +206,7 @@ func GetDataGuardAssociationLifecycleStateEnumStringValues() []string {
 
 // GetMappingDataGuardAssociationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataGuardAssociationLifecycleStateEnum(val string) (DataGuardAssociationLifecycleStateEnum, bool) {
-	mappingDataGuardAssociationLifecycleStateEnumIgnoreCase := make(map[string]DataGuardAssociationLifecycleStateEnum)
-	for k, v := range mappingDataGuardAssociationLifecycleStateEnum {
-		mappingDataGuardAssociationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataGuardAssociationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataGuardAssociationLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -219,6 +224,12 @@ var mappingDataGuardAssociationPeerRoleEnum = map[string]DataGuardAssociationPee
 	"PRIMARY":          DataGuardAssociationPeerRolePrimary,
 	"STANDBY":          DataGuardAssociationPeerRoleStandby,
 	"DISABLED_STANDBY": DataGuardAssociationPeerRoleDisabledStandby,
+}
+
+var mappingDataGuardAssociationPeerRoleEnumLowerCase = map[string]DataGuardAssociationPeerRoleEnum{
+	"primary":          DataGuardAssociationPeerRolePrimary,
+	"standby":          DataGuardAssociationPeerRoleStandby,
+	"disabled_standby": DataGuardAssociationPeerRoleDisabledStandby,
 }
 
 // GetDataGuardAssociationPeerRoleEnumValues Enumerates the set of values for DataGuardAssociationPeerRoleEnum
@@ -241,12 +252,7 @@ func GetDataGuardAssociationPeerRoleEnumStringValues() []string {
 
 // GetMappingDataGuardAssociationPeerRoleEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataGuardAssociationPeerRoleEnum(val string) (DataGuardAssociationPeerRoleEnum, bool) {
-	mappingDataGuardAssociationPeerRoleEnumIgnoreCase := make(map[string]DataGuardAssociationPeerRoleEnum)
-	for k, v := range mappingDataGuardAssociationPeerRoleEnum {
-		mappingDataGuardAssociationPeerRoleEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataGuardAssociationPeerRoleEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataGuardAssociationPeerRoleEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -264,6 +270,12 @@ var mappingDataGuardAssociationProtectionModeEnum = map[string]DataGuardAssociat
 	"MAXIMUM_AVAILABILITY": DataGuardAssociationProtectionModeAvailability,
 	"MAXIMUM_PERFORMANCE":  DataGuardAssociationProtectionModePerformance,
 	"MAXIMUM_PROTECTION":   DataGuardAssociationProtectionModeProtection,
+}
+
+var mappingDataGuardAssociationProtectionModeEnumLowerCase = map[string]DataGuardAssociationProtectionModeEnum{
+	"maximum_availability": DataGuardAssociationProtectionModeAvailability,
+	"maximum_performance":  DataGuardAssociationProtectionModePerformance,
+	"maximum_protection":   DataGuardAssociationProtectionModeProtection,
 }
 
 // GetDataGuardAssociationProtectionModeEnumValues Enumerates the set of values for DataGuardAssociationProtectionModeEnum
@@ -286,12 +298,7 @@ func GetDataGuardAssociationProtectionModeEnumStringValues() []string {
 
 // GetMappingDataGuardAssociationProtectionModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataGuardAssociationProtectionModeEnum(val string) (DataGuardAssociationProtectionModeEnum, bool) {
-	mappingDataGuardAssociationProtectionModeEnumIgnoreCase := make(map[string]DataGuardAssociationProtectionModeEnum)
-	for k, v := range mappingDataGuardAssociationProtectionModeEnum {
-		mappingDataGuardAssociationProtectionModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataGuardAssociationProtectionModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataGuardAssociationProtectionModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -309,6 +316,12 @@ var mappingDataGuardAssociationTransportTypeEnum = map[string]DataGuardAssociati
 	"SYNC":     DataGuardAssociationTransportTypeSync,
 	"ASYNC":    DataGuardAssociationTransportTypeAsync,
 	"FASTSYNC": DataGuardAssociationTransportTypeFastsync,
+}
+
+var mappingDataGuardAssociationTransportTypeEnumLowerCase = map[string]DataGuardAssociationTransportTypeEnum{
+	"sync":     DataGuardAssociationTransportTypeSync,
+	"async":    DataGuardAssociationTransportTypeAsync,
+	"fastsync": DataGuardAssociationTransportTypeFastsync,
 }
 
 // GetDataGuardAssociationTransportTypeEnumValues Enumerates the set of values for DataGuardAssociationTransportTypeEnum
@@ -331,11 +344,6 @@ func GetDataGuardAssociationTransportTypeEnumStringValues() []string {
 
 // GetMappingDataGuardAssociationTransportTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataGuardAssociationTransportTypeEnum(val string) (DataGuardAssociationTransportTypeEnum, bool) {
-	mappingDataGuardAssociationTransportTypeEnumIgnoreCase := make(map[string]DataGuardAssociationTransportTypeEnum)
-	for k, v := range mappingDataGuardAssociationTransportTypeEnum {
-		mappingDataGuardAssociationTransportTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataGuardAssociationTransportTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataGuardAssociationTransportTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

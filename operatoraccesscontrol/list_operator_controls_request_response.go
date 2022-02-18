@@ -6,7 +6,7 @@ package operatoraccesscontrol
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -142,6 +142,13 @@ var mappingListOperatorControlsLifecycleStateEnum = map[string]ListOperatorContr
 	"DELETED":    ListOperatorControlsLifecycleStateDeleted,
 }
 
+var mappingListOperatorControlsLifecycleStateEnumLowerCase = map[string]ListOperatorControlsLifecycleStateEnum{
+	"created":    ListOperatorControlsLifecycleStateCreated,
+	"assigned":   ListOperatorControlsLifecycleStateAssigned,
+	"unassigned": ListOperatorControlsLifecycleStateUnassigned,
+	"deleted":    ListOperatorControlsLifecycleStateDeleted,
+}
+
 // GetListOperatorControlsLifecycleStateEnumValues Enumerates the set of values for ListOperatorControlsLifecycleStateEnum
 func GetListOperatorControlsLifecycleStateEnumValues() []ListOperatorControlsLifecycleStateEnum {
 	values := make([]ListOperatorControlsLifecycleStateEnum, 0)
@@ -163,12 +170,7 @@ func GetListOperatorControlsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListOperatorControlsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOperatorControlsLifecycleStateEnum(val string) (ListOperatorControlsLifecycleStateEnum, bool) {
-	mappingListOperatorControlsLifecycleStateEnumIgnoreCase := make(map[string]ListOperatorControlsLifecycleStateEnum)
-	for k, v := range mappingListOperatorControlsLifecycleStateEnum {
-		mappingListOperatorControlsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOperatorControlsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOperatorControlsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -184,6 +186,11 @@ const (
 var mappingListOperatorControlsSortOrderEnum = map[string]ListOperatorControlsSortOrderEnum{
 	"ASC":  ListOperatorControlsSortOrderAsc,
 	"DESC": ListOperatorControlsSortOrderDesc,
+}
+
+var mappingListOperatorControlsSortOrderEnumLowerCase = map[string]ListOperatorControlsSortOrderEnum{
+	"asc":  ListOperatorControlsSortOrderAsc,
+	"desc": ListOperatorControlsSortOrderDesc,
 }
 
 // GetListOperatorControlsSortOrderEnumValues Enumerates the set of values for ListOperatorControlsSortOrderEnum
@@ -205,12 +212,7 @@ func GetListOperatorControlsSortOrderEnumStringValues() []string {
 
 // GetMappingListOperatorControlsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOperatorControlsSortOrderEnum(val string) (ListOperatorControlsSortOrderEnum, bool) {
-	mappingListOperatorControlsSortOrderEnumIgnoreCase := make(map[string]ListOperatorControlsSortOrderEnum)
-	for k, v := range mappingListOperatorControlsSortOrderEnum {
-		mappingListOperatorControlsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOperatorControlsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOperatorControlsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -226,6 +228,11 @@ const (
 var mappingListOperatorControlsSortByEnum = map[string]ListOperatorControlsSortByEnum{
 	"timeCreated": ListOperatorControlsSortByTimecreated,
 	"displayName": ListOperatorControlsSortByDisplayname,
+}
+
+var mappingListOperatorControlsSortByEnumLowerCase = map[string]ListOperatorControlsSortByEnum{
+	"timecreated": ListOperatorControlsSortByTimecreated,
+	"displayname": ListOperatorControlsSortByDisplayname,
 }
 
 // GetListOperatorControlsSortByEnumValues Enumerates the set of values for ListOperatorControlsSortByEnum
@@ -247,11 +254,6 @@ func GetListOperatorControlsSortByEnumStringValues() []string {
 
 // GetMappingListOperatorControlsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOperatorControlsSortByEnum(val string) (ListOperatorControlsSortByEnum, bool) {
-	mappingListOperatorControlsSortByEnumIgnoreCase := make(map[string]ListOperatorControlsSortByEnum)
-	for k, v := range mappingListOperatorControlsSortByEnum {
-		mappingListOperatorControlsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOperatorControlsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOperatorControlsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

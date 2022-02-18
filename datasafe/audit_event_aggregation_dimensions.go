@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -92,6 +92,10 @@ var mappingAuditEventAggregationDimensionsTargetClassEnum = map[string]AuditEven
 	"DATABASE": AuditEventAggregationDimensionsTargetClassDatabase,
 }
 
+var mappingAuditEventAggregationDimensionsTargetClassEnumLowerCase = map[string]AuditEventAggregationDimensionsTargetClassEnum{
+	"database": AuditEventAggregationDimensionsTargetClassDatabase,
+}
+
 // GetAuditEventAggregationDimensionsTargetClassEnumValues Enumerates the set of values for AuditEventAggregationDimensionsTargetClassEnum
 func GetAuditEventAggregationDimensionsTargetClassEnumValues() []AuditEventAggregationDimensionsTargetClassEnum {
 	values := make([]AuditEventAggregationDimensionsTargetClassEnum, 0)
@@ -110,12 +114,7 @@ func GetAuditEventAggregationDimensionsTargetClassEnumStringValues() []string {
 
 // GetMappingAuditEventAggregationDimensionsTargetClassEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAuditEventAggregationDimensionsTargetClassEnum(val string) (AuditEventAggregationDimensionsTargetClassEnum, bool) {
-	mappingAuditEventAggregationDimensionsTargetClassEnumIgnoreCase := make(map[string]AuditEventAggregationDimensionsTargetClassEnum)
-	for k, v := range mappingAuditEventAggregationDimensionsTargetClassEnum {
-		mappingAuditEventAggregationDimensionsTargetClassEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAuditEventAggregationDimensionsTargetClassEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAuditEventAggregationDimensionsTargetClassEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -145,6 +144,17 @@ var mappingAuditEventAggregationDimensionsAuditTypeEnum = map[string]AuditEventA
 	"DIRECT_PATH_API": AuditEventAggregationDimensionsAuditTypeDirectPathApi,
 }
 
+var mappingAuditEventAggregationDimensionsAuditTypeEnumLowerCase = map[string]AuditEventAggregationDimensionsAuditTypeEnum{
+	"standard":        AuditEventAggregationDimensionsAuditTypeStandard,
+	"fine_grained":    AuditEventAggregationDimensionsAuditTypeFineGrained,
+	"xs":              AuditEventAggregationDimensionsAuditTypeXs,
+	"database_vault":  AuditEventAggregationDimensionsAuditTypeDatabaseVault,
+	"label_security":  AuditEventAggregationDimensionsAuditTypeLabelSecurity,
+	"rman":            AuditEventAggregationDimensionsAuditTypeRman,
+	"datapump":        AuditEventAggregationDimensionsAuditTypeDatapump,
+	"direct_path_api": AuditEventAggregationDimensionsAuditTypeDirectPathApi,
+}
+
 // GetAuditEventAggregationDimensionsAuditTypeEnumValues Enumerates the set of values for AuditEventAggregationDimensionsAuditTypeEnum
 func GetAuditEventAggregationDimensionsAuditTypeEnumValues() []AuditEventAggregationDimensionsAuditTypeEnum {
 	values := make([]AuditEventAggregationDimensionsAuditTypeEnum, 0)
@@ -170,11 +180,6 @@ func GetAuditEventAggregationDimensionsAuditTypeEnumStringValues() []string {
 
 // GetMappingAuditEventAggregationDimensionsAuditTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAuditEventAggregationDimensionsAuditTypeEnum(val string) (AuditEventAggregationDimensionsAuditTypeEnum, bool) {
-	mappingAuditEventAggregationDimensionsAuditTypeEnumIgnoreCase := make(map[string]AuditEventAggregationDimensionsAuditTypeEnum)
-	for k, v := range mappingAuditEventAggregationDimensionsAuditTypeEnum {
-		mappingAuditEventAggregationDimensionsAuditTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAuditEventAggregationDimensionsAuditTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAuditEventAggregationDimensionsAuditTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

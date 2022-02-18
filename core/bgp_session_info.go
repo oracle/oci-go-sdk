@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -116,6 +116,11 @@ var mappingBgpSessionInfoBgpStateEnum = map[string]BgpSessionInfoBgpStateEnum{
 	"DOWN": BgpSessionInfoBgpStateDown,
 }
 
+var mappingBgpSessionInfoBgpStateEnumLowerCase = map[string]BgpSessionInfoBgpStateEnum{
+	"up":   BgpSessionInfoBgpStateUp,
+	"down": BgpSessionInfoBgpStateDown,
+}
+
 // GetBgpSessionInfoBgpStateEnumValues Enumerates the set of values for BgpSessionInfoBgpStateEnum
 func GetBgpSessionInfoBgpStateEnumValues() []BgpSessionInfoBgpStateEnum {
 	values := make([]BgpSessionInfoBgpStateEnum, 0)
@@ -135,12 +140,7 @@ func GetBgpSessionInfoBgpStateEnumStringValues() []string {
 
 // GetMappingBgpSessionInfoBgpStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBgpSessionInfoBgpStateEnum(val string) (BgpSessionInfoBgpStateEnum, bool) {
-	mappingBgpSessionInfoBgpStateEnumIgnoreCase := make(map[string]BgpSessionInfoBgpStateEnum)
-	for k, v := range mappingBgpSessionInfoBgpStateEnum {
-		mappingBgpSessionInfoBgpStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBgpSessionInfoBgpStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBgpSessionInfoBgpStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -156,6 +156,11 @@ const (
 var mappingBgpSessionInfoBgpIpv6StateEnum = map[string]BgpSessionInfoBgpIpv6StateEnum{
 	"UP":   BgpSessionInfoBgpIpv6StateUp,
 	"DOWN": BgpSessionInfoBgpIpv6StateDown,
+}
+
+var mappingBgpSessionInfoBgpIpv6StateEnumLowerCase = map[string]BgpSessionInfoBgpIpv6StateEnum{
+	"up":   BgpSessionInfoBgpIpv6StateUp,
+	"down": BgpSessionInfoBgpIpv6StateDown,
 }
 
 // GetBgpSessionInfoBgpIpv6StateEnumValues Enumerates the set of values for BgpSessionInfoBgpIpv6StateEnum
@@ -177,11 +182,6 @@ func GetBgpSessionInfoBgpIpv6StateEnumStringValues() []string {
 
 // GetMappingBgpSessionInfoBgpIpv6StateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBgpSessionInfoBgpIpv6StateEnum(val string) (BgpSessionInfoBgpIpv6StateEnum, bool) {
-	mappingBgpSessionInfoBgpIpv6StateEnumIgnoreCase := make(map[string]BgpSessionInfoBgpIpv6StateEnum)
-	for k, v := range mappingBgpSessionInfoBgpIpv6StateEnum {
-		mappingBgpSessionInfoBgpIpv6StateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBgpSessionInfoBgpIpv6StateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBgpSessionInfoBgpIpv6StateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package ospgateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -129,6 +129,12 @@ var mappingPaymentDetailPaymentMethodEnum = map[string]PaymentDetailPaymentMetho
 	"OTHER":       PaymentDetailPaymentMethodOther,
 }
 
+var mappingPaymentDetailPaymentMethodEnumLowerCase = map[string]PaymentDetailPaymentMethodEnum{
+	"credit_card": PaymentDetailPaymentMethodCreditCard,
+	"paypal":      PaymentDetailPaymentMethodPaypal,
+	"other":       PaymentDetailPaymentMethodOther,
+}
+
 // GetPaymentDetailPaymentMethodEnumValues Enumerates the set of values for PaymentDetailPaymentMethodEnum
 func GetPaymentDetailPaymentMethodEnumValues() []PaymentDetailPaymentMethodEnum {
 	values := make([]PaymentDetailPaymentMethodEnum, 0)
@@ -149,11 +155,6 @@ func GetPaymentDetailPaymentMethodEnumStringValues() []string {
 
 // GetMappingPaymentDetailPaymentMethodEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPaymentDetailPaymentMethodEnum(val string) (PaymentDetailPaymentMethodEnum, bool) {
-	mappingPaymentDetailPaymentMethodEnumIgnoreCase := make(map[string]PaymentDetailPaymentMethodEnum)
-	for k, v := range mappingPaymentDetailPaymentMethodEnum {
-		mappingPaymentDetailPaymentMethodEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPaymentDetailPaymentMethodEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPaymentDetailPaymentMethodEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

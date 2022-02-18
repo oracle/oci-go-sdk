@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -126,6 +126,19 @@ var mappingWorkspaceLifecycleStateEnum = map[string]WorkspaceLifecycleStateEnum{
 	"STOPPED":  WorkspaceLifecycleStateStopped,
 }
 
+var mappingWorkspaceLifecycleStateEnumLowerCase = map[string]WorkspaceLifecycleStateEnum{
+	"creating": WorkspaceLifecycleStateCreating,
+	"active":   WorkspaceLifecycleStateActive,
+	"inactive": WorkspaceLifecycleStateInactive,
+	"updating": WorkspaceLifecycleStateUpdating,
+	"deleting": WorkspaceLifecycleStateDeleting,
+	"deleted":  WorkspaceLifecycleStateDeleted,
+	"failed":   WorkspaceLifecycleStateFailed,
+	"starting": WorkspaceLifecycleStateStarting,
+	"stopping": WorkspaceLifecycleStateStopping,
+	"stopped":  WorkspaceLifecycleStateStopped,
+}
+
 // GetWorkspaceLifecycleStateEnumValues Enumerates the set of values for WorkspaceLifecycleStateEnum
 func GetWorkspaceLifecycleStateEnumValues() []WorkspaceLifecycleStateEnum {
 	values := make([]WorkspaceLifecycleStateEnum, 0)
@@ -153,11 +166,6 @@ func GetWorkspaceLifecycleStateEnumStringValues() []string {
 
 // GetMappingWorkspaceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkspaceLifecycleStateEnum(val string) (WorkspaceLifecycleStateEnum, bool) {
-	mappingWorkspaceLifecycleStateEnumIgnoreCase := make(map[string]WorkspaceLifecycleStateEnum)
-	for k, v := range mappingWorkspaceLifecycleStateEnum {
-		mappingWorkspaceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkspaceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkspaceLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

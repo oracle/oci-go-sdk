@@ -15,7 +15,7 @@ package resourcemanager
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -219,6 +219,13 @@ var mappingJobOperationEnum = map[string]JobOperationEnum{
 	"IMPORT_TF_STATE": JobOperationImportTfState,
 }
 
+var mappingJobOperationEnumLowerCase = map[string]JobOperationEnum{
+	"plan":            JobOperationPlan,
+	"apply":           JobOperationApply,
+	"destroy":         JobOperationDestroy,
+	"import_tf_state": JobOperationImportTfState,
+}
+
 // GetJobOperationEnumValues Enumerates the set of values for JobOperationEnum
 func GetJobOperationEnumValues() []JobOperationEnum {
 	values := make([]JobOperationEnum, 0)
@@ -240,12 +247,7 @@ func GetJobOperationEnumStringValues() []string {
 
 // GetMappingJobOperationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJobOperationEnum(val string) (JobOperationEnum, bool) {
-	mappingJobOperationEnumIgnoreCase := make(map[string]JobOperationEnum)
-	for k, v := range mappingJobOperationEnum {
-		mappingJobOperationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJobOperationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJobOperationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -271,6 +273,15 @@ var mappingJobLifecycleStateEnum = map[string]JobLifecycleStateEnum{
 	"CANCELED":    JobLifecycleStateCanceled,
 }
 
+var mappingJobLifecycleStateEnumLowerCase = map[string]JobLifecycleStateEnum{
+	"accepted":    JobLifecycleStateAccepted,
+	"in_progress": JobLifecycleStateInProgress,
+	"failed":      JobLifecycleStateFailed,
+	"succeeded":   JobLifecycleStateSucceeded,
+	"canceling":   JobLifecycleStateCanceling,
+	"canceled":    JobLifecycleStateCanceled,
+}
+
 // GetJobLifecycleStateEnumValues Enumerates the set of values for JobLifecycleStateEnum
 func GetJobLifecycleStateEnumValues() []JobLifecycleStateEnum {
 	values := make([]JobLifecycleStateEnum, 0)
@@ -294,11 +305,6 @@ func GetJobLifecycleStateEnumStringValues() []string {
 
 // GetMappingJobLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJobLifecycleStateEnum(val string) (JobLifecycleStateEnum, bool) {
-	mappingJobLifecycleStateEnumIgnoreCase := make(map[string]JobLifecycleStateEnum)
-	for k, v := range mappingJobLifecycleStateEnum {
-		mappingJobLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJobLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJobLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

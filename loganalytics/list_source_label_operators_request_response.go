@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -128,6 +128,10 @@ var mappingListSourceLabelOperatorsSortByEnum = map[string]ListSourceLabelOperat
 	"name": ListSourceLabelOperatorsSortByName,
 }
 
+var mappingListSourceLabelOperatorsSortByEnumLowerCase = map[string]ListSourceLabelOperatorsSortByEnum{
+	"name": ListSourceLabelOperatorsSortByName,
+}
+
 // GetListSourceLabelOperatorsSortByEnumValues Enumerates the set of values for ListSourceLabelOperatorsSortByEnum
 func GetListSourceLabelOperatorsSortByEnumValues() []ListSourceLabelOperatorsSortByEnum {
 	values := make([]ListSourceLabelOperatorsSortByEnum, 0)
@@ -146,12 +150,7 @@ func GetListSourceLabelOperatorsSortByEnumStringValues() []string {
 
 // GetMappingListSourceLabelOperatorsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSourceLabelOperatorsSortByEnum(val string) (ListSourceLabelOperatorsSortByEnum, bool) {
-	mappingListSourceLabelOperatorsSortByEnumIgnoreCase := make(map[string]ListSourceLabelOperatorsSortByEnum)
-	for k, v := range mappingListSourceLabelOperatorsSortByEnum {
-		mappingListSourceLabelOperatorsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSourceLabelOperatorsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSourceLabelOperatorsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -167,6 +166,11 @@ const (
 var mappingListSourceLabelOperatorsSortOrderEnum = map[string]ListSourceLabelOperatorsSortOrderEnum{
 	"ASC":  ListSourceLabelOperatorsSortOrderAsc,
 	"DESC": ListSourceLabelOperatorsSortOrderDesc,
+}
+
+var mappingListSourceLabelOperatorsSortOrderEnumLowerCase = map[string]ListSourceLabelOperatorsSortOrderEnum{
+	"asc":  ListSourceLabelOperatorsSortOrderAsc,
+	"desc": ListSourceLabelOperatorsSortOrderDesc,
 }
 
 // GetListSourceLabelOperatorsSortOrderEnumValues Enumerates the set of values for ListSourceLabelOperatorsSortOrderEnum
@@ -188,11 +192,6 @@ func GetListSourceLabelOperatorsSortOrderEnumStringValues() []string {
 
 // GetMappingListSourceLabelOperatorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSourceLabelOperatorsSortOrderEnum(val string) (ListSourceLabelOperatorsSortOrderEnum, bool) {
-	mappingListSourceLabelOperatorsSortOrderEnumIgnoreCase := make(map[string]ListSourceLabelOperatorsSortOrderEnum)
-	for k, v := range mappingListSourceLabelOperatorsSortOrderEnum {
-		mappingListSourceLabelOperatorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSourceLabelOperatorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSourceLabelOperatorsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

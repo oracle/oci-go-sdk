@@ -13,7 +13,7 @@ package dns
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -110,6 +110,10 @@ var mappingResolverRuleActionEnum = map[string]ResolverRuleActionEnum{
 	"FORWARD": ResolverRuleActionForward,
 }
 
+var mappingResolverRuleActionEnumLowerCase = map[string]ResolverRuleActionEnum{
+	"forward": ResolverRuleActionForward,
+}
+
 // GetResolverRuleActionEnumValues Enumerates the set of values for ResolverRuleActionEnum
 func GetResolverRuleActionEnumValues() []ResolverRuleActionEnum {
 	values := make([]ResolverRuleActionEnum, 0)
@@ -128,11 +132,6 @@ func GetResolverRuleActionEnumStringValues() []string {
 
 // GetMappingResolverRuleActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingResolverRuleActionEnum(val string) (ResolverRuleActionEnum, bool) {
-	mappingResolverRuleActionEnumIgnoreCase := make(map[string]ResolverRuleActionEnum)
-	for k, v := range mappingResolverRuleActionEnum {
-		mappingResolverRuleActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingResolverRuleActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingResolverRuleActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

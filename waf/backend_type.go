@@ -26,6 +26,10 @@ var mappingBackendTypeEnum = map[string]BackendTypeEnum{
 	"LOAD_BALANCER": BackendTypeLoadBalancer,
 }
 
+var mappingBackendTypeEnumLowerCase = map[string]BackendTypeEnum{
+	"load_balancer": BackendTypeLoadBalancer,
+}
+
 // GetBackendTypeEnumValues Enumerates the set of values for BackendTypeEnum
 func GetBackendTypeEnumValues() []BackendTypeEnum {
 	values := make([]BackendTypeEnum, 0)
@@ -44,11 +48,6 @@ func GetBackendTypeEnumStringValues() []string {
 
 // GetMappingBackendTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBackendTypeEnum(val string) (BackendTypeEnum, bool) {
-	mappingBackendTypeEnumIgnoreCase := make(map[string]BackendTypeEnum)
-	for k, v := range mappingBackendTypeEnum {
-		mappingBackendTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBackendTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBackendTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

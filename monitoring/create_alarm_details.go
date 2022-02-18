@@ -13,7 +13,7 @@ package monitoring
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -170,6 +170,12 @@ var mappingCreateAlarmDetailsMessageFormatEnum = map[string]CreateAlarmDetailsMe
 	"ONS_OPTIMIZED": CreateAlarmDetailsMessageFormatOnsOptimized,
 }
 
+var mappingCreateAlarmDetailsMessageFormatEnumLowerCase = map[string]CreateAlarmDetailsMessageFormatEnum{
+	"raw":           CreateAlarmDetailsMessageFormatRaw,
+	"pretty_json":   CreateAlarmDetailsMessageFormatPrettyJson,
+	"ons_optimized": CreateAlarmDetailsMessageFormatOnsOptimized,
+}
+
 // GetCreateAlarmDetailsMessageFormatEnumValues Enumerates the set of values for CreateAlarmDetailsMessageFormatEnum
 func GetCreateAlarmDetailsMessageFormatEnumValues() []CreateAlarmDetailsMessageFormatEnum {
 	values := make([]CreateAlarmDetailsMessageFormatEnum, 0)
@@ -190,11 +196,6 @@ func GetCreateAlarmDetailsMessageFormatEnumStringValues() []string {
 
 // GetMappingCreateAlarmDetailsMessageFormatEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateAlarmDetailsMessageFormatEnum(val string) (CreateAlarmDetailsMessageFormatEnum, bool) {
-	mappingCreateAlarmDetailsMessageFormatEnumIgnoreCase := make(map[string]CreateAlarmDetailsMessageFormatEnum)
-	for k, v := range mappingCreateAlarmDetailsMessageFormatEnum {
-		mappingCreateAlarmDetailsMessageFormatEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateAlarmDetailsMessageFormatEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateAlarmDetailsMessageFormatEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -142,6 +142,11 @@ var mappingListAppCatalogSubscriptionsSortByEnum = map[string]ListAppCatalogSubs
 	"DISPLAYNAME": ListAppCatalogSubscriptionsSortByDisplayname,
 }
 
+var mappingListAppCatalogSubscriptionsSortByEnumLowerCase = map[string]ListAppCatalogSubscriptionsSortByEnum{
+	"timecreated": ListAppCatalogSubscriptionsSortByTimecreated,
+	"displayname": ListAppCatalogSubscriptionsSortByDisplayname,
+}
+
 // GetListAppCatalogSubscriptionsSortByEnumValues Enumerates the set of values for ListAppCatalogSubscriptionsSortByEnum
 func GetListAppCatalogSubscriptionsSortByEnumValues() []ListAppCatalogSubscriptionsSortByEnum {
 	values := make([]ListAppCatalogSubscriptionsSortByEnum, 0)
@@ -161,12 +166,7 @@ func GetListAppCatalogSubscriptionsSortByEnumStringValues() []string {
 
 // GetMappingListAppCatalogSubscriptionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAppCatalogSubscriptionsSortByEnum(val string) (ListAppCatalogSubscriptionsSortByEnum, bool) {
-	mappingListAppCatalogSubscriptionsSortByEnumIgnoreCase := make(map[string]ListAppCatalogSubscriptionsSortByEnum)
-	for k, v := range mappingListAppCatalogSubscriptionsSortByEnum {
-		mappingListAppCatalogSubscriptionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAppCatalogSubscriptionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAppCatalogSubscriptionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -182,6 +182,11 @@ const (
 var mappingListAppCatalogSubscriptionsSortOrderEnum = map[string]ListAppCatalogSubscriptionsSortOrderEnum{
 	"ASC":  ListAppCatalogSubscriptionsSortOrderAsc,
 	"DESC": ListAppCatalogSubscriptionsSortOrderDesc,
+}
+
+var mappingListAppCatalogSubscriptionsSortOrderEnumLowerCase = map[string]ListAppCatalogSubscriptionsSortOrderEnum{
+	"asc":  ListAppCatalogSubscriptionsSortOrderAsc,
+	"desc": ListAppCatalogSubscriptionsSortOrderDesc,
 }
 
 // GetListAppCatalogSubscriptionsSortOrderEnumValues Enumerates the set of values for ListAppCatalogSubscriptionsSortOrderEnum
@@ -203,11 +208,6 @@ func GetListAppCatalogSubscriptionsSortOrderEnumStringValues() []string {
 
 // GetMappingListAppCatalogSubscriptionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAppCatalogSubscriptionsSortOrderEnum(val string) (ListAppCatalogSubscriptionsSortOrderEnum, bool) {
-	mappingListAppCatalogSubscriptionsSortOrderEnumIgnoreCase := make(map[string]ListAppCatalogSubscriptionsSortOrderEnum)
-	for k, v := range mappingListAppCatalogSubscriptionsSortOrderEnum {
-		mappingListAppCatalogSubscriptionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAppCatalogSubscriptionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAppCatalogSubscriptionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

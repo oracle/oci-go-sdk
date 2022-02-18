@@ -15,7 +15,7 @@ package resourcemanager
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -81,6 +81,12 @@ var mappingApplyJobOperationDetailsExecutionPlanStrategyEnum = map[string]ApplyJ
 	"AUTO_APPROVED":        ApplyJobOperationDetailsExecutionPlanStrategyAutoApproved,
 }
 
+var mappingApplyJobOperationDetailsExecutionPlanStrategyEnumLowerCase = map[string]ApplyJobOperationDetailsExecutionPlanStrategyEnum{
+	"from_plan_job_id":     ApplyJobOperationDetailsExecutionPlanStrategyFromPlanJobId,
+	"from_latest_plan_job": ApplyJobOperationDetailsExecutionPlanStrategyFromLatestPlanJob,
+	"auto_approved":        ApplyJobOperationDetailsExecutionPlanStrategyAutoApproved,
+}
+
 // GetApplyJobOperationDetailsExecutionPlanStrategyEnumValues Enumerates the set of values for ApplyJobOperationDetailsExecutionPlanStrategyEnum
 func GetApplyJobOperationDetailsExecutionPlanStrategyEnumValues() []ApplyJobOperationDetailsExecutionPlanStrategyEnum {
 	values := make([]ApplyJobOperationDetailsExecutionPlanStrategyEnum, 0)
@@ -101,11 +107,6 @@ func GetApplyJobOperationDetailsExecutionPlanStrategyEnumStringValues() []string
 
 // GetMappingApplyJobOperationDetailsExecutionPlanStrategyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingApplyJobOperationDetailsExecutionPlanStrategyEnum(val string) (ApplyJobOperationDetailsExecutionPlanStrategyEnum, bool) {
-	mappingApplyJobOperationDetailsExecutionPlanStrategyEnumIgnoreCase := make(map[string]ApplyJobOperationDetailsExecutionPlanStrategyEnum)
-	for k, v := range mappingApplyJobOperationDetailsExecutionPlanStrategyEnum {
-		mappingApplyJobOperationDetailsExecutionPlanStrategyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingApplyJobOperationDetailsExecutionPlanStrategyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingApplyJobOperationDetailsExecutionPlanStrategyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

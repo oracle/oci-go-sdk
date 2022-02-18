@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -147,6 +147,11 @@ var mappingListFoldersSortOrderEnum = map[string]ListFoldersSortOrderEnum{
 	"DESC": ListFoldersSortOrderDesc,
 }
 
+var mappingListFoldersSortOrderEnumLowerCase = map[string]ListFoldersSortOrderEnum{
+	"asc":  ListFoldersSortOrderAsc,
+	"desc": ListFoldersSortOrderDesc,
+}
+
 // GetListFoldersSortOrderEnumValues Enumerates the set of values for ListFoldersSortOrderEnum
 func GetListFoldersSortOrderEnumValues() []ListFoldersSortOrderEnum {
 	values := make([]ListFoldersSortOrderEnum, 0)
@@ -166,12 +171,7 @@ func GetListFoldersSortOrderEnumStringValues() []string {
 
 // GetMappingListFoldersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFoldersSortOrderEnum(val string) (ListFoldersSortOrderEnum, bool) {
-	mappingListFoldersSortOrderEnumIgnoreCase := make(map[string]ListFoldersSortOrderEnum)
-	for k, v := range mappingListFoldersSortOrderEnum {
-		mappingListFoldersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFoldersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFoldersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +187,11 @@ const (
 var mappingListFoldersSortByEnum = map[string]ListFoldersSortByEnum{
 	"TIME_CREATED": ListFoldersSortByTimeCreated,
 	"DISPLAY_NAME": ListFoldersSortByDisplayName,
+}
+
+var mappingListFoldersSortByEnumLowerCase = map[string]ListFoldersSortByEnum{
+	"time_created": ListFoldersSortByTimeCreated,
+	"display_name": ListFoldersSortByDisplayName,
 }
 
 // GetListFoldersSortByEnumValues Enumerates the set of values for ListFoldersSortByEnum
@@ -208,11 +213,6 @@ func GetListFoldersSortByEnumStringValues() []string {
 
 // GetMappingListFoldersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFoldersSortByEnum(val string) (ListFoldersSortByEnum, bool) {
-	mappingListFoldersSortByEnumIgnoreCase := make(map[string]ListFoldersSortByEnum)
-	for k, v := range mappingListFoldersSortByEnum {
-		mappingListFoldersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFoldersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFoldersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -41,6 +41,17 @@ var mappingWorkRequestOperationTypeEnum = map[string]WorkRequestOperationTypeEnu
 	"WORKREQUEST_CANCEL": WorkRequestOperationTypeWorkrequestCancel,
 }
 
+var mappingWorkRequestOperationTypeEnumLowerCase = map[string]WorkRequestOperationTypeEnum{
+	"cluster_create":     WorkRequestOperationTypeClusterCreate,
+	"cluster_update":     WorkRequestOperationTypeClusterUpdate,
+	"cluster_delete":     WorkRequestOperationTypeClusterDelete,
+	"nodepool_create":    WorkRequestOperationTypeNodepoolCreate,
+	"nodepool_update":    WorkRequestOperationTypeNodepoolUpdate,
+	"nodepool_delete":    WorkRequestOperationTypeNodepoolDelete,
+	"nodepool_reconcile": WorkRequestOperationTypeNodepoolReconcile,
+	"workrequest_cancel": WorkRequestOperationTypeWorkrequestCancel,
+}
+
 // GetWorkRequestOperationTypeEnumValues Enumerates the set of values for WorkRequestOperationTypeEnum
 func GetWorkRequestOperationTypeEnumValues() []WorkRequestOperationTypeEnum {
 	values := make([]WorkRequestOperationTypeEnum, 0)
@@ -66,11 +77,6 @@ func GetWorkRequestOperationTypeEnumStringValues() []string {
 
 // GetMappingWorkRequestOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestOperationTypeEnum(val string) (WorkRequestOperationTypeEnum, bool) {
-	mappingWorkRequestOperationTypeEnumIgnoreCase := make(map[string]WorkRequestOperationTypeEnum)
-	for k, v := range mappingWorkRequestOperationTypeEnum {
-		mappingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

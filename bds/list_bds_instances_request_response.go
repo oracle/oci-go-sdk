@@ -6,7 +6,7 @@ package bds
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -135,6 +135,11 @@ var mappingListBdsInstancesSortByEnum = map[string]ListBdsInstancesSortByEnum{
 	"displayName": ListBdsInstancesSortByDisplayname,
 }
 
+var mappingListBdsInstancesSortByEnumLowerCase = map[string]ListBdsInstancesSortByEnum{
+	"timecreated": ListBdsInstancesSortByTimecreated,
+	"displayname": ListBdsInstancesSortByDisplayname,
+}
+
 // GetListBdsInstancesSortByEnumValues Enumerates the set of values for ListBdsInstancesSortByEnum
 func GetListBdsInstancesSortByEnumValues() []ListBdsInstancesSortByEnum {
 	values := make([]ListBdsInstancesSortByEnum, 0)
@@ -154,12 +159,7 @@ func GetListBdsInstancesSortByEnumStringValues() []string {
 
 // GetMappingListBdsInstancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBdsInstancesSortByEnum(val string) (ListBdsInstancesSortByEnum, bool) {
-	mappingListBdsInstancesSortByEnumIgnoreCase := make(map[string]ListBdsInstancesSortByEnum)
-	for k, v := range mappingListBdsInstancesSortByEnum {
-		mappingListBdsInstancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBdsInstancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBdsInstancesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -175,6 +175,11 @@ const (
 var mappingListBdsInstancesSortOrderEnum = map[string]ListBdsInstancesSortOrderEnum{
 	"ASC":  ListBdsInstancesSortOrderAsc,
 	"DESC": ListBdsInstancesSortOrderDesc,
+}
+
+var mappingListBdsInstancesSortOrderEnumLowerCase = map[string]ListBdsInstancesSortOrderEnum{
+	"asc":  ListBdsInstancesSortOrderAsc,
+	"desc": ListBdsInstancesSortOrderDesc,
 }
 
 // GetListBdsInstancesSortOrderEnumValues Enumerates the set of values for ListBdsInstancesSortOrderEnum
@@ -196,11 +201,6 @@ func GetListBdsInstancesSortOrderEnumStringValues() []string {
 
 // GetMappingListBdsInstancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBdsInstancesSortOrderEnum(val string) (ListBdsInstancesSortOrderEnum, bool) {
-	mappingListBdsInstancesSortOrderEnumIgnoreCase := make(map[string]ListBdsInstancesSortOrderEnum)
-	for k, v := range mappingListBdsInstancesSortOrderEnum {
-		mappingListBdsInstancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBdsInstancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBdsInstancesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,11 @@ var mappingListUploadFilesSortOrderEnum = map[string]ListUploadFilesSortOrderEnu
 	"DESC": ListUploadFilesSortOrderDesc,
 }
 
+var mappingListUploadFilesSortOrderEnumLowerCase = map[string]ListUploadFilesSortOrderEnum{
+	"asc":  ListUploadFilesSortOrderAsc,
+	"desc": ListUploadFilesSortOrderDesc,
+}
+
 // GetListUploadFilesSortOrderEnumValues Enumerates the set of values for ListUploadFilesSortOrderEnum
 func GetListUploadFilesSortOrderEnumValues() []ListUploadFilesSortOrderEnum {
 	values := make([]ListUploadFilesSortOrderEnum, 0)
@@ -160,12 +165,7 @@ func GetListUploadFilesSortOrderEnumStringValues() []string {
 
 // GetMappingListUploadFilesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUploadFilesSortOrderEnum(val string) (ListUploadFilesSortOrderEnum, bool) {
-	mappingListUploadFilesSortOrderEnumIgnoreCase := make(map[string]ListUploadFilesSortOrderEnum)
-	for k, v := range mappingListUploadFilesSortOrderEnum {
-		mappingListUploadFilesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUploadFilesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUploadFilesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -195,6 +195,17 @@ var mappingListUploadFilesSortByEnum = map[string]ListUploadFilesSortByEnum{
 	"logGroup":     ListUploadFilesSortByLoggroup,
 }
 
+var mappingListUploadFilesSortByEnumLowerCase = map[string]ListUploadFilesSortByEnum{
+	"timestarted":  ListUploadFilesSortByTimestarted,
+	"name":         ListUploadFilesSortByName,
+	"loggroupname": ListUploadFilesSortByLoggroupname,
+	"sourcename":   ListUploadFilesSortBySourcename,
+	"status":       ListUploadFilesSortByStatus,
+	"timecreated":  ListUploadFilesSortByTimecreated,
+	"filename":     ListUploadFilesSortByFilename,
+	"loggroup":     ListUploadFilesSortByLoggroup,
+}
+
 // GetListUploadFilesSortByEnumValues Enumerates the set of values for ListUploadFilesSortByEnum
 func GetListUploadFilesSortByEnumValues() []ListUploadFilesSortByEnum {
 	values := make([]ListUploadFilesSortByEnum, 0)
@@ -220,12 +231,7 @@ func GetListUploadFilesSortByEnumStringValues() []string {
 
 // GetMappingListUploadFilesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUploadFilesSortByEnum(val string) (ListUploadFilesSortByEnum, bool) {
-	mappingListUploadFilesSortByEnumIgnoreCase := make(map[string]ListUploadFilesSortByEnum)
-	for k, v := range mappingListUploadFilesSortByEnum {
-		mappingListUploadFilesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUploadFilesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUploadFilesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -243,6 +249,12 @@ var mappingListUploadFilesStatusEnum = map[string]ListUploadFilesStatusEnum{
 	"IN_PROGRESS": ListUploadFilesStatusInProgress,
 	"SUCCESSFUL":  ListUploadFilesStatusSuccessful,
 	"FAILED":      ListUploadFilesStatusFailed,
+}
+
+var mappingListUploadFilesStatusEnumLowerCase = map[string]ListUploadFilesStatusEnum{
+	"in_progress": ListUploadFilesStatusInProgress,
+	"successful":  ListUploadFilesStatusSuccessful,
+	"failed":      ListUploadFilesStatusFailed,
 }
 
 // GetListUploadFilesStatusEnumValues Enumerates the set of values for ListUploadFilesStatusEnum
@@ -265,11 +277,6 @@ func GetListUploadFilesStatusEnumStringValues() []string {
 
 // GetMappingListUploadFilesStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUploadFilesStatusEnum(val string) (ListUploadFilesStatusEnum, bool) {
-	mappingListUploadFilesStatusEnumIgnoreCase := make(map[string]ListUploadFilesStatusEnum)
-	for k, v := range mappingListUploadFilesStatusEnum {
-		mappingListUploadFilesStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUploadFilesStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUploadFilesStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

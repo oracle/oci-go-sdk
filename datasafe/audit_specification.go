@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -97,6 +97,12 @@ var mappingAuditSpecificationEnableStatusEnum = map[string]AuditSpecificationEna
 	"PARTIALLY_ENABLED": AuditSpecificationEnableStatusPartiallyEnabled,
 }
 
+var mappingAuditSpecificationEnableStatusEnumLowerCase = map[string]AuditSpecificationEnableStatusEnum{
+	"enabled":           AuditSpecificationEnableStatusEnabled,
+	"disabled":          AuditSpecificationEnableStatusDisabled,
+	"partially_enabled": AuditSpecificationEnableStatusPartiallyEnabled,
+}
+
 // GetAuditSpecificationEnableStatusEnumValues Enumerates the set of values for AuditSpecificationEnableStatusEnum
 func GetAuditSpecificationEnableStatusEnumValues() []AuditSpecificationEnableStatusEnum {
 	values := make([]AuditSpecificationEnableStatusEnum, 0)
@@ -117,12 +123,7 @@ func GetAuditSpecificationEnableStatusEnumStringValues() []string {
 
 // GetMappingAuditSpecificationEnableStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAuditSpecificationEnableStatusEnum(val string) (AuditSpecificationEnableStatusEnum, bool) {
-	mappingAuditSpecificationEnableStatusEnumIgnoreCase := make(map[string]AuditSpecificationEnableStatusEnum)
-	for k, v := range mappingAuditSpecificationEnableStatusEnum {
-		mappingAuditSpecificationEnableStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAuditSpecificationEnableStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAuditSpecificationEnableStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -148,6 +149,15 @@ var mappingAuditSpecificationEnabledEntitiesEnum = map[string]AuditSpecification
 	"DISABLED":            AuditSpecificationEnabledEntitiesDisabled,
 }
 
+var mappingAuditSpecificationEnabledEntitiesEnumLowerCase = map[string]AuditSpecificationEnabledEntitiesEnum{
+	"all_users":           AuditSpecificationEnabledEntitiesAllUsers,
+	"include_users":       AuditSpecificationEnabledEntitiesIncludeUsers,
+	"include_roles":       AuditSpecificationEnabledEntitiesIncludeRoles,
+	"exclude_users":       AuditSpecificationEnabledEntitiesExcludeUsers,
+	"include_users_roles": AuditSpecificationEnabledEntitiesIncludeUsersRoles,
+	"disabled":            AuditSpecificationEnabledEntitiesDisabled,
+}
+
 // GetAuditSpecificationEnabledEntitiesEnumValues Enumerates the set of values for AuditSpecificationEnabledEntitiesEnum
 func GetAuditSpecificationEnabledEntitiesEnumValues() []AuditSpecificationEnabledEntitiesEnum {
 	values := make([]AuditSpecificationEnabledEntitiesEnum, 0)
@@ -171,11 +181,6 @@ func GetAuditSpecificationEnabledEntitiesEnumStringValues() []string {
 
 // GetMappingAuditSpecificationEnabledEntitiesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAuditSpecificationEnabledEntitiesEnum(val string) (AuditSpecificationEnabledEntitiesEnum, bool) {
-	mappingAuditSpecificationEnabledEntitiesEnumIgnoreCase := make(map[string]AuditSpecificationEnabledEntitiesEnum)
-	for k, v := range mappingAuditSpecificationEnabledEntitiesEnum {
-		mappingAuditSpecificationEnabledEntitiesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAuditSpecificationEnabledEntitiesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAuditSpecificationEnabledEntitiesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

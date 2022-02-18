@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -122,6 +122,10 @@ var mappingUpdateExternalDatabaseConnectorDetailsConnectorTypeEnum = map[string]
 	"MACS": UpdateExternalDatabaseConnectorDetailsConnectorTypeMacs,
 }
 
+var mappingUpdateExternalDatabaseConnectorDetailsConnectorTypeEnumLowerCase = map[string]UpdateExternalDatabaseConnectorDetailsConnectorTypeEnum{
+	"macs": UpdateExternalDatabaseConnectorDetailsConnectorTypeMacs,
+}
+
 // GetUpdateExternalDatabaseConnectorDetailsConnectorTypeEnumValues Enumerates the set of values for UpdateExternalDatabaseConnectorDetailsConnectorTypeEnum
 func GetUpdateExternalDatabaseConnectorDetailsConnectorTypeEnumValues() []UpdateExternalDatabaseConnectorDetailsConnectorTypeEnum {
 	values := make([]UpdateExternalDatabaseConnectorDetailsConnectorTypeEnum, 0)
@@ -140,11 +144,6 @@ func GetUpdateExternalDatabaseConnectorDetailsConnectorTypeEnumStringValues() []
 
 // GetMappingUpdateExternalDatabaseConnectorDetailsConnectorTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateExternalDatabaseConnectorDetailsConnectorTypeEnum(val string) (UpdateExternalDatabaseConnectorDetailsConnectorTypeEnum, bool) {
-	mappingUpdateExternalDatabaseConnectorDetailsConnectorTypeEnumIgnoreCase := make(map[string]UpdateExternalDatabaseConnectorDetailsConnectorTypeEnum)
-	for k, v := range mappingUpdateExternalDatabaseConnectorDetailsConnectorTypeEnum {
-		mappingUpdateExternalDatabaseConnectorDetailsConnectorTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateExternalDatabaseConnectorDetailsConnectorTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateExternalDatabaseConnectorDetailsConnectorTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

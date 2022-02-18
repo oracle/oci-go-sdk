@@ -12,7 +12,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -63,6 +63,13 @@ var mappingRecurrenceIntervalTypeEnum = map[string]RecurrenceIntervalTypeEnum{
 	"WEEKS":   RecurrenceIntervalTypeWeeks,
 }
 
+var mappingRecurrenceIntervalTypeEnumLowerCase = map[string]RecurrenceIntervalTypeEnum{
+	"minutes": RecurrenceIntervalTypeMinutes,
+	"hours":   RecurrenceIntervalTypeHours,
+	"days":    RecurrenceIntervalTypeDays,
+	"weeks":   RecurrenceIntervalTypeWeeks,
+}
+
 // GetRecurrenceIntervalTypeEnumValues Enumerates the set of values for RecurrenceIntervalTypeEnum
 func GetRecurrenceIntervalTypeEnumValues() []RecurrenceIntervalTypeEnum {
 	values := make([]RecurrenceIntervalTypeEnum, 0)
@@ -84,11 +91,6 @@ func GetRecurrenceIntervalTypeEnumStringValues() []string {
 
 // GetMappingRecurrenceIntervalTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRecurrenceIntervalTypeEnum(val string) (RecurrenceIntervalTypeEnum, bool) {
-	mappingRecurrenceIntervalTypeEnumIgnoreCase := make(map[string]RecurrenceIntervalTypeEnum)
-	for k, v := range mappingRecurrenceIntervalTypeEnum {
-		mappingRecurrenceIntervalTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRecurrenceIntervalTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRecurrenceIntervalTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

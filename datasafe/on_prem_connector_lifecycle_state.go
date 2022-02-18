@@ -37,6 +37,16 @@ var mappingOnPremConnectorLifecycleStateEnum = map[string]OnPremConnectorLifecyc
 	"FAILED":   OnPremConnectorLifecycleStateFailed,
 }
 
+var mappingOnPremConnectorLifecycleStateEnumLowerCase = map[string]OnPremConnectorLifecycleStateEnum{
+	"creating": OnPremConnectorLifecycleStateCreating,
+	"updating": OnPremConnectorLifecycleStateUpdating,
+	"active":   OnPremConnectorLifecycleStateActive,
+	"inactive": OnPremConnectorLifecycleStateInactive,
+	"deleting": OnPremConnectorLifecycleStateDeleting,
+	"deleted":  OnPremConnectorLifecycleStateDeleted,
+	"failed":   OnPremConnectorLifecycleStateFailed,
+}
+
 // GetOnPremConnectorLifecycleStateEnumValues Enumerates the set of values for OnPremConnectorLifecycleStateEnum
 func GetOnPremConnectorLifecycleStateEnumValues() []OnPremConnectorLifecycleStateEnum {
 	values := make([]OnPremConnectorLifecycleStateEnum, 0)
@@ -61,11 +71,6 @@ func GetOnPremConnectorLifecycleStateEnumStringValues() []string {
 
 // GetMappingOnPremConnectorLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOnPremConnectorLifecycleStateEnum(val string) (OnPremConnectorLifecycleStateEnum, bool) {
-	mappingOnPremConnectorLifecycleStateEnumIgnoreCase := make(map[string]OnPremConnectorLifecycleStateEnum)
-	for k, v := range mappingOnPremConnectorLifecycleStateEnum {
-		mappingOnPremConnectorLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOnPremConnectorLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOnPremConnectorLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

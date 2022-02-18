@@ -6,7 +6,7 @@ package limits
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -134,6 +134,10 @@ var mappingListQuotasLifecycleStateEnum = map[string]ListQuotasLifecycleStateEnu
 	"ACTIVE": ListQuotasLifecycleStateActive,
 }
 
+var mappingListQuotasLifecycleStateEnumLowerCase = map[string]ListQuotasLifecycleStateEnum{
+	"active": ListQuotasLifecycleStateActive,
+}
+
 // GetListQuotasLifecycleStateEnumValues Enumerates the set of values for ListQuotasLifecycleStateEnum
 func GetListQuotasLifecycleStateEnumValues() []ListQuotasLifecycleStateEnum {
 	values := make([]ListQuotasLifecycleStateEnum, 0)
@@ -152,12 +156,7 @@ func GetListQuotasLifecycleStateEnumStringValues() []string {
 
 // GetMappingListQuotasLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListQuotasLifecycleStateEnum(val string) (ListQuotasLifecycleStateEnum, bool) {
-	mappingListQuotasLifecycleStateEnumIgnoreCase := make(map[string]ListQuotasLifecycleStateEnum)
-	for k, v := range mappingListQuotasLifecycleStateEnum {
-		mappingListQuotasLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListQuotasLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListQuotasLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -173,6 +172,11 @@ const (
 var mappingListQuotasSortOrderEnum = map[string]ListQuotasSortOrderEnum{
 	"ASC":  ListQuotasSortOrderAsc,
 	"DESC": ListQuotasSortOrderDesc,
+}
+
+var mappingListQuotasSortOrderEnumLowerCase = map[string]ListQuotasSortOrderEnum{
+	"asc":  ListQuotasSortOrderAsc,
+	"desc": ListQuotasSortOrderDesc,
 }
 
 // GetListQuotasSortOrderEnumValues Enumerates the set of values for ListQuotasSortOrderEnum
@@ -194,12 +198,7 @@ func GetListQuotasSortOrderEnumStringValues() []string {
 
 // GetMappingListQuotasSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListQuotasSortOrderEnum(val string) (ListQuotasSortOrderEnum, bool) {
-	mappingListQuotasSortOrderEnumIgnoreCase := make(map[string]ListQuotasSortOrderEnum)
-	for k, v := range mappingListQuotasSortOrderEnum {
-		mappingListQuotasSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListQuotasSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListQuotasSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -215,6 +214,11 @@ const (
 var mappingListQuotasSortByEnum = map[string]ListQuotasSortByEnum{
 	"NAME":        ListQuotasSortByName,
 	"TIMECREATED": ListQuotasSortByTimecreated,
+}
+
+var mappingListQuotasSortByEnumLowerCase = map[string]ListQuotasSortByEnum{
+	"name":        ListQuotasSortByName,
+	"timecreated": ListQuotasSortByTimecreated,
 }
 
 // GetListQuotasSortByEnumValues Enumerates the set of values for ListQuotasSortByEnum
@@ -236,11 +240,6 @@ func GetListQuotasSortByEnumStringValues() []string {
 
 // GetMappingListQuotasSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListQuotasSortByEnum(val string) (ListQuotasSortByEnum, bool) {
-	mappingListQuotasSortByEnumIgnoreCase := make(map[string]ListQuotasSortByEnum)
-	for k, v := range mappingListQuotasSortByEnum {
-		mappingListQuotasSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListQuotasSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListQuotasSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

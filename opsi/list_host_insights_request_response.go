@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -183,6 +183,12 @@ var mappingListHostInsightsPlatformTypeEnum = map[string]ListHostInsightsPlatfor
 	"SUNOS":   ListHostInsightsPlatformTypeSunos,
 }
 
+var mappingListHostInsightsPlatformTypeEnumLowerCase = map[string]ListHostInsightsPlatformTypeEnum{
+	"linux":   ListHostInsightsPlatformTypeLinux,
+	"solaris": ListHostInsightsPlatformTypeSolaris,
+	"sunos":   ListHostInsightsPlatformTypeSunos,
+}
+
 // GetListHostInsightsPlatformTypeEnumValues Enumerates the set of values for ListHostInsightsPlatformTypeEnum
 func GetListHostInsightsPlatformTypeEnumValues() []ListHostInsightsPlatformTypeEnum {
 	values := make([]ListHostInsightsPlatformTypeEnum, 0)
@@ -203,12 +209,7 @@ func GetListHostInsightsPlatformTypeEnumStringValues() []string {
 
 // GetMappingListHostInsightsPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHostInsightsPlatformTypeEnum(val string) (ListHostInsightsPlatformTypeEnum, bool) {
-	mappingListHostInsightsPlatformTypeEnumIgnoreCase := make(map[string]ListHostInsightsPlatformTypeEnum)
-	for k, v := range mappingListHostInsightsPlatformTypeEnum {
-		mappingListHostInsightsPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHostInsightsPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHostInsightsPlatformTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -224,6 +225,11 @@ const (
 var mappingListHostInsightsSortOrderEnum = map[string]ListHostInsightsSortOrderEnum{
 	"ASC":  ListHostInsightsSortOrderAsc,
 	"DESC": ListHostInsightsSortOrderDesc,
+}
+
+var mappingListHostInsightsSortOrderEnumLowerCase = map[string]ListHostInsightsSortOrderEnum{
+	"asc":  ListHostInsightsSortOrderAsc,
+	"desc": ListHostInsightsSortOrderDesc,
 }
 
 // GetListHostInsightsSortOrderEnumValues Enumerates the set of values for ListHostInsightsSortOrderEnum
@@ -245,12 +251,7 @@ func GetListHostInsightsSortOrderEnumStringValues() []string {
 
 // GetMappingListHostInsightsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHostInsightsSortOrderEnum(val string) (ListHostInsightsSortOrderEnum, bool) {
-	mappingListHostInsightsSortOrderEnumIgnoreCase := make(map[string]ListHostInsightsSortOrderEnum)
-	for k, v := range mappingListHostInsightsSortOrderEnum {
-		mappingListHostInsightsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHostInsightsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHostInsightsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -266,6 +267,11 @@ const (
 var mappingListHostInsightsSortByEnum = map[string]ListHostInsightsSortByEnum{
 	"hostName": ListHostInsightsSortByHostname,
 	"hostType": ListHostInsightsSortByHosttype,
+}
+
+var mappingListHostInsightsSortByEnumLowerCase = map[string]ListHostInsightsSortByEnum{
+	"hostname": ListHostInsightsSortByHostname,
+	"hosttype": ListHostInsightsSortByHosttype,
 }
 
 // GetListHostInsightsSortByEnumValues Enumerates the set of values for ListHostInsightsSortByEnum
@@ -287,11 +293,6 @@ func GetListHostInsightsSortByEnumStringValues() []string {
 
 // GetMappingListHostInsightsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHostInsightsSortByEnum(val string) (ListHostInsightsSortByEnum, bool) {
-	mappingListHostInsightsSortByEnumIgnoreCase := make(map[string]ListHostInsightsSortByEnum)
-	for k, v := range mappingListHostInsightsSortByEnum {
-		mappingListHostInsightsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHostInsightsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHostInsightsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

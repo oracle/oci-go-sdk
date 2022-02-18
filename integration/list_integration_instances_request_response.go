@@ -6,7 +6,7 @@ package integration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -150,6 +150,16 @@ var mappingListIntegrationInstancesLifecycleStateEnum = map[string]ListIntegrati
 	"FAILED":   ListIntegrationInstancesLifecycleStateFailed,
 }
 
+var mappingListIntegrationInstancesLifecycleStateEnumLowerCase = map[string]ListIntegrationInstancesLifecycleStateEnum{
+	"creating": ListIntegrationInstancesLifecycleStateCreating,
+	"updating": ListIntegrationInstancesLifecycleStateUpdating,
+	"active":   ListIntegrationInstancesLifecycleStateActive,
+	"inactive": ListIntegrationInstancesLifecycleStateInactive,
+	"deleting": ListIntegrationInstancesLifecycleStateDeleting,
+	"deleted":  ListIntegrationInstancesLifecycleStateDeleted,
+	"failed":   ListIntegrationInstancesLifecycleStateFailed,
+}
+
 // GetListIntegrationInstancesLifecycleStateEnumValues Enumerates the set of values for ListIntegrationInstancesLifecycleStateEnum
 func GetListIntegrationInstancesLifecycleStateEnumValues() []ListIntegrationInstancesLifecycleStateEnum {
 	values := make([]ListIntegrationInstancesLifecycleStateEnum, 0)
@@ -174,12 +184,7 @@ func GetListIntegrationInstancesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListIntegrationInstancesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListIntegrationInstancesLifecycleStateEnum(val string) (ListIntegrationInstancesLifecycleStateEnum, bool) {
-	mappingListIntegrationInstancesLifecycleStateEnumIgnoreCase := make(map[string]ListIntegrationInstancesLifecycleStateEnum)
-	for k, v := range mappingListIntegrationInstancesLifecycleStateEnum {
-		mappingListIntegrationInstancesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListIntegrationInstancesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListIntegrationInstancesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -195,6 +200,11 @@ const (
 var mappingListIntegrationInstancesSortOrderEnum = map[string]ListIntegrationInstancesSortOrderEnum{
 	"ASC":  ListIntegrationInstancesSortOrderAsc,
 	"DESC": ListIntegrationInstancesSortOrderDesc,
+}
+
+var mappingListIntegrationInstancesSortOrderEnumLowerCase = map[string]ListIntegrationInstancesSortOrderEnum{
+	"asc":  ListIntegrationInstancesSortOrderAsc,
+	"desc": ListIntegrationInstancesSortOrderDesc,
 }
 
 // GetListIntegrationInstancesSortOrderEnumValues Enumerates the set of values for ListIntegrationInstancesSortOrderEnum
@@ -216,12 +226,7 @@ func GetListIntegrationInstancesSortOrderEnumStringValues() []string {
 
 // GetMappingListIntegrationInstancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListIntegrationInstancesSortOrderEnum(val string) (ListIntegrationInstancesSortOrderEnum, bool) {
-	mappingListIntegrationInstancesSortOrderEnumIgnoreCase := make(map[string]ListIntegrationInstancesSortOrderEnum)
-	for k, v := range mappingListIntegrationInstancesSortOrderEnum {
-		mappingListIntegrationInstancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListIntegrationInstancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListIntegrationInstancesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -237,6 +242,11 @@ const (
 var mappingListIntegrationInstancesSortByEnum = map[string]ListIntegrationInstancesSortByEnum{
 	"TIMECREATED": ListIntegrationInstancesSortByTimecreated,
 	"DISPLAYNAME": ListIntegrationInstancesSortByDisplayname,
+}
+
+var mappingListIntegrationInstancesSortByEnumLowerCase = map[string]ListIntegrationInstancesSortByEnum{
+	"timecreated": ListIntegrationInstancesSortByTimecreated,
+	"displayname": ListIntegrationInstancesSortByDisplayname,
 }
 
 // GetListIntegrationInstancesSortByEnumValues Enumerates the set of values for ListIntegrationInstancesSortByEnum
@@ -258,11 +268,6 @@ func GetListIntegrationInstancesSortByEnumStringValues() []string {
 
 // GetMappingListIntegrationInstancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListIntegrationInstancesSortByEnum(val string) (ListIntegrationInstancesSortByEnum, bool) {
-	mappingListIntegrationInstancesSortByEnumIgnoreCase := make(map[string]ListIntegrationInstancesSortByEnum)
-	for k, v := range mappingListIntegrationInstancesSortByEnum {
-		mappingListIntegrationInstancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListIntegrationInstancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListIntegrationInstancesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

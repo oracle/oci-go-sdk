@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -137,6 +137,11 @@ var mappingListSoftwareSourcesSortOrderEnum = map[string]ListSoftwareSourcesSort
 	"DESC": ListSoftwareSourcesSortOrderDesc,
 }
 
+var mappingListSoftwareSourcesSortOrderEnumLowerCase = map[string]ListSoftwareSourcesSortOrderEnum{
+	"asc":  ListSoftwareSourcesSortOrderAsc,
+	"desc": ListSoftwareSourcesSortOrderDesc,
+}
+
 // GetListSoftwareSourcesSortOrderEnumValues Enumerates the set of values for ListSoftwareSourcesSortOrderEnum
 func GetListSoftwareSourcesSortOrderEnumValues() []ListSoftwareSourcesSortOrderEnum {
 	values := make([]ListSoftwareSourcesSortOrderEnum, 0)
@@ -156,12 +161,7 @@ func GetListSoftwareSourcesSortOrderEnumStringValues() []string {
 
 // GetMappingListSoftwareSourcesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSoftwareSourcesSortOrderEnum(val string) (ListSoftwareSourcesSortOrderEnum, bool) {
-	mappingListSoftwareSourcesSortOrderEnumIgnoreCase := make(map[string]ListSoftwareSourcesSortOrderEnum)
-	for k, v := range mappingListSoftwareSourcesSortOrderEnum {
-		mappingListSoftwareSourcesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSoftwareSourcesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSoftwareSourcesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -177,6 +177,11 @@ const (
 var mappingListSoftwareSourcesSortByEnum = map[string]ListSoftwareSourcesSortByEnum{
 	"TIMECREATED": ListSoftwareSourcesSortByTimecreated,
 	"DISPLAYNAME": ListSoftwareSourcesSortByDisplayname,
+}
+
+var mappingListSoftwareSourcesSortByEnumLowerCase = map[string]ListSoftwareSourcesSortByEnum{
+	"timecreated": ListSoftwareSourcesSortByTimecreated,
+	"displayname": ListSoftwareSourcesSortByDisplayname,
 }
 
 // GetListSoftwareSourcesSortByEnumValues Enumerates the set of values for ListSoftwareSourcesSortByEnum
@@ -198,12 +203,7 @@ func GetListSoftwareSourcesSortByEnumStringValues() []string {
 
 // GetMappingListSoftwareSourcesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSoftwareSourcesSortByEnum(val string) (ListSoftwareSourcesSortByEnum, bool) {
-	mappingListSoftwareSourcesSortByEnumIgnoreCase := make(map[string]ListSoftwareSourcesSortByEnum)
-	for k, v := range mappingListSoftwareSourcesSortByEnum {
-		mappingListSoftwareSourcesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSoftwareSourcesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSoftwareSourcesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -229,6 +229,15 @@ var mappingListSoftwareSourcesLifecycleStateEnum = map[string]ListSoftwareSource
 	"FAILED":   ListSoftwareSourcesLifecycleStateFailed,
 }
 
+var mappingListSoftwareSourcesLifecycleStateEnumLowerCase = map[string]ListSoftwareSourcesLifecycleStateEnum{
+	"creating": ListSoftwareSourcesLifecycleStateCreating,
+	"updating": ListSoftwareSourcesLifecycleStateUpdating,
+	"active":   ListSoftwareSourcesLifecycleStateActive,
+	"deleting": ListSoftwareSourcesLifecycleStateDeleting,
+	"deleted":  ListSoftwareSourcesLifecycleStateDeleted,
+	"failed":   ListSoftwareSourcesLifecycleStateFailed,
+}
+
 // GetListSoftwareSourcesLifecycleStateEnumValues Enumerates the set of values for ListSoftwareSourcesLifecycleStateEnum
 func GetListSoftwareSourcesLifecycleStateEnumValues() []ListSoftwareSourcesLifecycleStateEnum {
 	values := make([]ListSoftwareSourcesLifecycleStateEnum, 0)
@@ -252,11 +261,6 @@ func GetListSoftwareSourcesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListSoftwareSourcesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSoftwareSourcesLifecycleStateEnum(val string) (ListSoftwareSourcesLifecycleStateEnum, bool) {
-	mappingListSoftwareSourcesLifecycleStateEnumIgnoreCase := make(map[string]ListSoftwareSourcesLifecycleStateEnum)
-	for k, v := range mappingListSoftwareSourcesLifecycleStateEnum {
-		mappingListSoftwareSourcesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSoftwareSourcesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSoftwareSourcesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

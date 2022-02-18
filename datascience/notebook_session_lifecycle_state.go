@@ -37,6 +37,16 @@ var mappingNotebookSessionLifecycleStateEnum = map[string]NotebookSessionLifecyc
 	"UPDATING": NotebookSessionLifecycleStateUpdating,
 }
 
+var mappingNotebookSessionLifecycleStateEnumLowerCase = map[string]NotebookSessionLifecycleStateEnum{
+	"creating": NotebookSessionLifecycleStateCreating,
+	"active":   NotebookSessionLifecycleStateActive,
+	"deleting": NotebookSessionLifecycleStateDeleting,
+	"deleted":  NotebookSessionLifecycleStateDeleted,
+	"failed":   NotebookSessionLifecycleStateFailed,
+	"inactive": NotebookSessionLifecycleStateInactive,
+	"updating": NotebookSessionLifecycleStateUpdating,
+}
+
 // GetNotebookSessionLifecycleStateEnumValues Enumerates the set of values for NotebookSessionLifecycleStateEnum
 func GetNotebookSessionLifecycleStateEnumValues() []NotebookSessionLifecycleStateEnum {
 	values := make([]NotebookSessionLifecycleStateEnum, 0)
@@ -61,11 +71,6 @@ func GetNotebookSessionLifecycleStateEnumStringValues() []string {
 
 // GetMappingNotebookSessionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNotebookSessionLifecycleStateEnum(val string) (NotebookSessionLifecycleStateEnum, bool) {
-	mappingNotebookSessionLifecycleStateEnumIgnoreCase := make(map[string]NotebookSessionLifecycleStateEnum)
-	for k, v := range mappingNotebookSessionLifecycleStateEnum {
-		mappingNotebookSessionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNotebookSessionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNotebookSessionLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

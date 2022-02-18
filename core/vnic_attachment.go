@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -115,6 +115,13 @@ var mappingVnicAttachmentLifecycleStateEnum = map[string]VnicAttachmentLifecycle
 	"DETACHED":  VnicAttachmentLifecycleStateDetached,
 }
 
+var mappingVnicAttachmentLifecycleStateEnumLowerCase = map[string]VnicAttachmentLifecycleStateEnum{
+	"attaching": VnicAttachmentLifecycleStateAttaching,
+	"attached":  VnicAttachmentLifecycleStateAttached,
+	"detaching": VnicAttachmentLifecycleStateDetaching,
+	"detached":  VnicAttachmentLifecycleStateDetached,
+}
+
 // GetVnicAttachmentLifecycleStateEnumValues Enumerates the set of values for VnicAttachmentLifecycleStateEnum
 func GetVnicAttachmentLifecycleStateEnumValues() []VnicAttachmentLifecycleStateEnum {
 	values := make([]VnicAttachmentLifecycleStateEnum, 0)
@@ -136,11 +143,6 @@ func GetVnicAttachmentLifecycleStateEnumStringValues() []string {
 
 // GetMappingVnicAttachmentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVnicAttachmentLifecycleStateEnum(val string) (VnicAttachmentLifecycleStateEnum, bool) {
-	mappingVnicAttachmentLifecycleStateEnumIgnoreCase := make(map[string]VnicAttachmentLifecycleStateEnum)
-	for k, v := range mappingVnicAttachmentLifecycleStateEnum {
-		mappingVnicAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVnicAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVnicAttachmentLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

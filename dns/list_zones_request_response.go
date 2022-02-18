@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -172,6 +172,11 @@ var mappingListZonesZoneTypeEnum = map[string]ListZonesZoneTypeEnum{
 	"SECONDARY": ListZonesZoneTypeSecondary,
 }
 
+var mappingListZonesZoneTypeEnumLowerCase = map[string]ListZonesZoneTypeEnum{
+	"primary":   ListZonesZoneTypePrimary,
+	"secondary": ListZonesZoneTypeSecondary,
+}
+
 // GetListZonesZoneTypeEnumValues Enumerates the set of values for ListZonesZoneTypeEnum
 func GetListZonesZoneTypeEnumValues() []ListZonesZoneTypeEnum {
 	values := make([]ListZonesZoneTypeEnum, 0)
@@ -191,12 +196,7 @@ func GetListZonesZoneTypeEnumStringValues() []string {
 
 // GetMappingListZonesZoneTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListZonesZoneTypeEnum(val string) (ListZonesZoneTypeEnum, bool) {
-	mappingListZonesZoneTypeEnumIgnoreCase := make(map[string]ListZonesZoneTypeEnum)
-	for k, v := range mappingListZonesZoneTypeEnum {
-		mappingListZonesZoneTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListZonesZoneTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListZonesZoneTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -222,6 +222,15 @@ var mappingListZonesLifecycleStateEnum = map[string]ListZonesLifecycleStateEnum{
 	"UPDATING": ListZonesLifecycleStateUpdating,
 }
 
+var mappingListZonesLifecycleStateEnumLowerCase = map[string]ListZonesLifecycleStateEnum{
+	"active":   ListZonesLifecycleStateActive,
+	"creating": ListZonesLifecycleStateCreating,
+	"deleted":  ListZonesLifecycleStateDeleted,
+	"deleting": ListZonesLifecycleStateDeleting,
+	"failed":   ListZonesLifecycleStateFailed,
+	"updating": ListZonesLifecycleStateUpdating,
+}
+
 // GetListZonesLifecycleStateEnumValues Enumerates the set of values for ListZonesLifecycleStateEnum
 func GetListZonesLifecycleStateEnumValues() []ListZonesLifecycleStateEnum {
 	values := make([]ListZonesLifecycleStateEnum, 0)
@@ -245,12 +254,7 @@ func GetListZonesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListZonesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListZonesLifecycleStateEnum(val string) (ListZonesLifecycleStateEnum, bool) {
-	mappingListZonesLifecycleStateEnumIgnoreCase := make(map[string]ListZonesLifecycleStateEnum)
-	for k, v := range mappingListZonesLifecycleStateEnum {
-		mappingListZonesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListZonesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListZonesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -268,6 +272,12 @@ var mappingListZonesSortByEnum = map[string]ListZonesSortByEnum{
 	"name":        ListZonesSortByName,
 	"zoneType":    ListZonesSortByZonetype,
 	"timeCreated": ListZonesSortByTimecreated,
+}
+
+var mappingListZonesSortByEnumLowerCase = map[string]ListZonesSortByEnum{
+	"name":        ListZonesSortByName,
+	"zonetype":    ListZonesSortByZonetype,
+	"timecreated": ListZonesSortByTimecreated,
 }
 
 // GetListZonesSortByEnumValues Enumerates the set of values for ListZonesSortByEnum
@@ -290,12 +300,7 @@ func GetListZonesSortByEnumStringValues() []string {
 
 // GetMappingListZonesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListZonesSortByEnum(val string) (ListZonesSortByEnum, bool) {
-	mappingListZonesSortByEnumIgnoreCase := make(map[string]ListZonesSortByEnum)
-	for k, v := range mappingListZonesSortByEnum {
-		mappingListZonesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListZonesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListZonesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -311,6 +316,11 @@ const (
 var mappingListZonesSortOrderEnum = map[string]ListZonesSortOrderEnum{
 	"ASC":  ListZonesSortOrderAsc,
 	"DESC": ListZonesSortOrderDesc,
+}
+
+var mappingListZonesSortOrderEnumLowerCase = map[string]ListZonesSortOrderEnum{
+	"asc":  ListZonesSortOrderAsc,
+	"desc": ListZonesSortOrderDesc,
 }
 
 // GetListZonesSortOrderEnumValues Enumerates the set of values for ListZonesSortOrderEnum
@@ -332,12 +342,7 @@ func GetListZonesSortOrderEnumStringValues() []string {
 
 // GetMappingListZonesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListZonesSortOrderEnum(val string) (ListZonesSortOrderEnum, bool) {
-	mappingListZonesSortOrderEnumIgnoreCase := make(map[string]ListZonesSortOrderEnum)
-	for k, v := range mappingListZonesSortOrderEnum {
-		mappingListZonesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListZonesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListZonesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -353,6 +358,11 @@ const (
 var mappingListZonesScopeEnum = map[string]ListZonesScopeEnum{
 	"GLOBAL":  ListZonesScopeGlobal,
 	"PRIVATE": ListZonesScopePrivate,
+}
+
+var mappingListZonesScopeEnumLowerCase = map[string]ListZonesScopeEnum{
+	"global":  ListZonesScopeGlobal,
+	"private": ListZonesScopePrivate,
 }
 
 // GetListZonesScopeEnumValues Enumerates the set of values for ListZonesScopeEnum
@@ -374,11 +384,6 @@ func GetListZonesScopeEnumStringValues() []string {
 
 // GetMappingListZonesScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListZonesScopeEnum(val string) (ListZonesScopeEnum, bool) {
-	mappingListZonesScopeEnumIgnoreCase := make(map[string]ListZonesScopeEnum)
-	for k, v := range mappingListZonesScopeEnum {
-		mappingListZonesScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListZonesScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListZonesScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

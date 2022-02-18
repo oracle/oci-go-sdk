@@ -6,7 +6,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -150,6 +150,14 @@ var mappingListCustomProtectionRulesSortByEnum = map[string]ListCustomProtection
 	"timeCreated":       ListCustomProtectionRulesSortByTimecreated,
 }
 
+var mappingListCustomProtectionRulesSortByEnumLowerCase = map[string]ListCustomProtectionRulesSortByEnum{
+	"id":                ListCustomProtectionRulesSortById,
+	"compartmentid":     ListCustomProtectionRulesSortByCompartmentid,
+	"displayname":       ListCustomProtectionRulesSortByDisplayname,
+	"modsecurityruleid": ListCustomProtectionRulesSortByModsecurityruleid,
+	"timecreated":       ListCustomProtectionRulesSortByTimecreated,
+}
+
 // GetListCustomProtectionRulesSortByEnumValues Enumerates the set of values for ListCustomProtectionRulesSortByEnum
 func GetListCustomProtectionRulesSortByEnumValues() []ListCustomProtectionRulesSortByEnum {
 	values := make([]ListCustomProtectionRulesSortByEnum, 0)
@@ -172,12 +180,7 @@ func GetListCustomProtectionRulesSortByEnumStringValues() []string {
 
 // GetMappingListCustomProtectionRulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCustomProtectionRulesSortByEnum(val string) (ListCustomProtectionRulesSortByEnum, bool) {
-	mappingListCustomProtectionRulesSortByEnumIgnoreCase := make(map[string]ListCustomProtectionRulesSortByEnum)
-	for k, v := range mappingListCustomProtectionRulesSortByEnum {
-		mappingListCustomProtectionRulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCustomProtectionRulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCustomProtectionRulesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -193,6 +196,11 @@ const (
 var mappingListCustomProtectionRulesSortOrderEnum = map[string]ListCustomProtectionRulesSortOrderEnum{
 	"ASC":  ListCustomProtectionRulesSortOrderAsc,
 	"DESC": ListCustomProtectionRulesSortOrderDesc,
+}
+
+var mappingListCustomProtectionRulesSortOrderEnumLowerCase = map[string]ListCustomProtectionRulesSortOrderEnum{
+	"asc":  ListCustomProtectionRulesSortOrderAsc,
+	"desc": ListCustomProtectionRulesSortOrderDesc,
 }
 
 // GetListCustomProtectionRulesSortOrderEnumValues Enumerates the set of values for ListCustomProtectionRulesSortOrderEnum
@@ -214,11 +222,6 @@ func GetListCustomProtectionRulesSortOrderEnumStringValues() []string {
 
 // GetMappingListCustomProtectionRulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCustomProtectionRulesSortOrderEnum(val string) (ListCustomProtectionRulesSortOrderEnum, bool) {
-	mappingListCustomProtectionRulesSortOrderEnumIgnoreCase := make(map[string]ListCustomProtectionRulesSortOrderEnum)
-	for k, v := range mappingListCustomProtectionRulesSortOrderEnum {
-		mappingListCustomProtectionRulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCustomProtectionRulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCustomProtectionRulesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -15,20 +15,20 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
-// DefaultPhaseTwoParameters Phase Two Parameters
+// DefaultPhaseTwoParameters Default phase two parameters.
 type DefaultPhaseTwoParameters struct {
 
-	// Default Phase Two Encryption Algorithms
+	// Default phase two encryption algorithms.
 	DefaultEncryptionAlgorithms []string `mandatory:"false" json:"defaultEncryptionAlgorithms"`
 
-	// Default Phase Two Authentication Algorithms
+	// Default phase two authentication algorithms.
 	DefaultAuthenticationAlgorithms []string `mandatory:"false" json:"defaultAuthenticationAlgorithms"`
 
-	// Default PFS DH Group
+	// Default perfect forward secrecy Diffie-Hellman groups.
 	DefaultPfsDhGroup *string `mandatory:"false" json:"defaultPfsDhGroup"`
 }
 

@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -101,6 +101,12 @@ var mappingReportDefinitionSummaryCategoryEnum = map[string]ReportDefinitionSumm
 	"ACTIVITY_AUDITING": ReportDefinitionSummaryCategoryActivityAuditing,
 }
 
+var mappingReportDefinitionSummaryCategoryEnumLowerCase = map[string]ReportDefinitionSummaryCategoryEnum{
+	"custom_reports":    ReportDefinitionSummaryCategoryCustomReports,
+	"summary":           ReportDefinitionSummaryCategorySummary,
+	"activity_auditing": ReportDefinitionSummaryCategoryActivityAuditing,
+}
+
 // GetReportDefinitionSummaryCategoryEnumValues Enumerates the set of values for ReportDefinitionSummaryCategoryEnum
 func GetReportDefinitionSummaryCategoryEnumValues() []ReportDefinitionSummaryCategoryEnum {
 	values := make([]ReportDefinitionSummaryCategoryEnum, 0)
@@ -121,11 +127,6 @@ func GetReportDefinitionSummaryCategoryEnumStringValues() []string {
 
 // GetMappingReportDefinitionSummaryCategoryEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingReportDefinitionSummaryCategoryEnum(val string) (ReportDefinitionSummaryCategoryEnum, bool) {
-	mappingReportDefinitionSummaryCategoryEnumIgnoreCase := make(map[string]ReportDefinitionSummaryCategoryEnum)
-	for k, v := range mappingReportDefinitionSummaryCategoryEnum {
-		mappingReportDefinitionSummaryCategoryEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingReportDefinitionSummaryCategoryEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingReportDefinitionSummaryCategoryEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

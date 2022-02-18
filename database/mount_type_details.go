@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,11 @@ var mappingMountTypeDetailsMountTypeEnum = map[string]MountTypeDetailsMountTypeE
 	"AUTOMATED_MOUNT": MountTypeDetailsMountTypeAutomatedMount,
 }
 
+var mappingMountTypeDetailsMountTypeEnumLowerCase = map[string]MountTypeDetailsMountTypeEnum{
+	"self_mount":      MountTypeDetailsMountTypeSelfMount,
+	"automated_mount": MountTypeDetailsMountTypeAutomatedMount,
+}
+
 // GetMountTypeDetailsMountTypeEnumValues Enumerates the set of values for MountTypeDetailsMountTypeEnum
 func GetMountTypeDetailsMountTypeEnumValues() []MountTypeDetailsMountTypeEnum {
 	values := make([]MountTypeDetailsMountTypeEnum, 0)
@@ -112,11 +117,6 @@ func GetMountTypeDetailsMountTypeEnumStringValues() []string {
 
 // GetMappingMountTypeDetailsMountTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMountTypeDetailsMountTypeEnum(val string) (MountTypeDetailsMountTypeEnum, bool) {
-	mappingMountTypeDetailsMountTypeEnumIgnoreCase := make(map[string]MountTypeDetailsMountTypeEnum)
-	for k, v := range mappingMountTypeDetailsMountTypeEnum {
-		mappingMountTypeDetailsMountTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMountTypeDetailsMountTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMountTypeDetailsMountTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

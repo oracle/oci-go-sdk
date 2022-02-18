@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -151,6 +151,11 @@ var mappingListEnterpriseManagerBridgesSortOrderEnum = map[string]ListEnterprise
 	"DESC": ListEnterpriseManagerBridgesSortOrderDesc,
 }
 
+var mappingListEnterpriseManagerBridgesSortOrderEnumLowerCase = map[string]ListEnterpriseManagerBridgesSortOrderEnum{
+	"asc":  ListEnterpriseManagerBridgesSortOrderAsc,
+	"desc": ListEnterpriseManagerBridgesSortOrderDesc,
+}
+
 // GetListEnterpriseManagerBridgesSortOrderEnumValues Enumerates the set of values for ListEnterpriseManagerBridgesSortOrderEnum
 func GetListEnterpriseManagerBridgesSortOrderEnumValues() []ListEnterpriseManagerBridgesSortOrderEnum {
 	values := make([]ListEnterpriseManagerBridgesSortOrderEnum, 0)
@@ -170,12 +175,7 @@ func GetListEnterpriseManagerBridgesSortOrderEnumStringValues() []string {
 
 // GetMappingListEnterpriseManagerBridgesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListEnterpriseManagerBridgesSortOrderEnum(val string) (ListEnterpriseManagerBridgesSortOrderEnum, bool) {
-	mappingListEnterpriseManagerBridgesSortOrderEnumIgnoreCase := make(map[string]ListEnterpriseManagerBridgesSortOrderEnum)
-	for k, v := range mappingListEnterpriseManagerBridgesSortOrderEnum {
-		mappingListEnterpriseManagerBridgesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListEnterpriseManagerBridgesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListEnterpriseManagerBridgesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -191,6 +191,11 @@ const (
 var mappingListEnterpriseManagerBridgesSortByEnum = map[string]ListEnterpriseManagerBridgesSortByEnum{
 	"timeCreated": ListEnterpriseManagerBridgesSortByTimecreated,
 	"displayName": ListEnterpriseManagerBridgesSortByDisplayname,
+}
+
+var mappingListEnterpriseManagerBridgesSortByEnumLowerCase = map[string]ListEnterpriseManagerBridgesSortByEnum{
+	"timecreated": ListEnterpriseManagerBridgesSortByTimecreated,
+	"displayname": ListEnterpriseManagerBridgesSortByDisplayname,
 }
 
 // GetListEnterpriseManagerBridgesSortByEnumValues Enumerates the set of values for ListEnterpriseManagerBridgesSortByEnum
@@ -212,11 +217,6 @@ func GetListEnterpriseManagerBridgesSortByEnumStringValues() []string {
 
 // GetMappingListEnterpriseManagerBridgesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListEnterpriseManagerBridgesSortByEnum(val string) (ListEnterpriseManagerBridgesSortByEnum, bool) {
-	mappingListEnterpriseManagerBridgesSortByEnumIgnoreCase := make(map[string]ListEnterpriseManagerBridgesSortByEnum)
-	for k, v := range mappingListEnterpriseManagerBridgesSortByEnum {
-		mappingListEnterpriseManagerBridgesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListEnterpriseManagerBridgesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListEnterpriseManagerBridgesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

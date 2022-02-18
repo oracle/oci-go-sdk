@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,14 @@ var mappingCancelRestCallConfigMethodTypeEnum = map[string]CancelRestCallConfigM
 	"PUT":    CancelRestCallConfigMethodTypePut,
 }
 
+var mappingCancelRestCallConfigMethodTypeEnumLowerCase = map[string]CancelRestCallConfigMethodTypeEnum{
+	"get":    CancelRestCallConfigMethodTypeGet,
+	"post":   CancelRestCallConfigMethodTypePost,
+	"patch":  CancelRestCallConfigMethodTypePatch,
+	"delete": CancelRestCallConfigMethodTypeDelete,
+	"put":    CancelRestCallConfigMethodTypePut,
+}
+
 // GetCancelRestCallConfigMethodTypeEnumValues Enumerates the set of values for CancelRestCallConfigMethodTypeEnum
 func GetCancelRestCallConfigMethodTypeEnumValues() []CancelRestCallConfigMethodTypeEnum {
 	values := make([]CancelRestCallConfigMethodTypeEnum, 0)
@@ -88,11 +96,6 @@ func GetCancelRestCallConfigMethodTypeEnumStringValues() []string {
 
 // GetMappingCancelRestCallConfigMethodTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCancelRestCallConfigMethodTypeEnum(val string) (CancelRestCallConfigMethodTypeEnum, bool) {
-	mappingCancelRestCallConfigMethodTypeEnumIgnoreCase := make(map[string]CancelRestCallConfigMethodTypeEnum)
-	for k, v := range mappingCancelRestCallConfigMethodTypeEnum {
-		mappingCancelRestCallConfigMethodTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCancelRestCallConfigMethodTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCancelRestCallConfigMethodTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

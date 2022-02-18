@@ -30,6 +30,12 @@ var mappingRuleTypeEnum = map[string]RuleTypeEnum{
 	"UNIQUEKEY":  RuleTypeUniquekey,
 }
 
+var mappingRuleTypeEnumLowerCase = map[string]RuleTypeEnum{
+	"primarykey": RuleTypePrimarykey,
+	"foreignkey": RuleTypeForeignkey,
+	"uniquekey":  RuleTypeUniquekey,
+}
+
 // GetRuleTypeEnumValues Enumerates the set of values for RuleTypeEnum
 func GetRuleTypeEnumValues() []RuleTypeEnum {
 	values := make([]RuleTypeEnum, 0)
@@ -50,11 +56,6 @@ func GetRuleTypeEnumStringValues() []string {
 
 // GetMappingRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRuleTypeEnum(val string) (RuleTypeEnum, bool) {
-	mappingRuleTypeEnumIgnoreCase := make(map[string]RuleTypeEnum)
-	for k, v := range mappingRuleTypeEnum {
-		mappingRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRuleTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

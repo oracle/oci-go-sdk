@@ -34,6 +34,14 @@ var mappingArchTypesEnum = map[string]ArchTypesEnum{
 	"AMD64_DEBIAN": ArchTypesAmd64Debian,
 }
 
+var mappingArchTypesEnumLowerCase = map[string]ArchTypesEnum{
+	"ia_32":        ArchTypesIa32,
+	"x86_64":       ArchTypesX8664,
+	"aarch64":      ArchTypesAarch64,
+	"sparc":        ArchTypesSparc,
+	"amd64_debian": ArchTypesAmd64Debian,
+}
+
 // GetArchTypesEnumValues Enumerates the set of values for ArchTypesEnum
 func GetArchTypesEnumValues() []ArchTypesEnum {
 	values := make([]ArchTypesEnum, 0)
@@ -56,11 +64,6 @@ func GetArchTypesEnumStringValues() []string {
 
 // GetMappingArchTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingArchTypesEnum(val string) (ArchTypesEnum, bool) {
-	mappingArchTypesEnumIgnoreCase := make(map[string]ArchTypesEnum)
-	for k, v := range mappingArchTypesEnum {
-		mappingArchTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingArchTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingArchTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

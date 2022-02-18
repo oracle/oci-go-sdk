@@ -6,7 +6,7 @@ package blockchain
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -137,6 +137,11 @@ var mappingListBlockchainPlatformsSortOrderEnum = map[string]ListBlockchainPlatf
 	"DESC": ListBlockchainPlatformsSortOrderDesc,
 }
 
+var mappingListBlockchainPlatformsSortOrderEnumLowerCase = map[string]ListBlockchainPlatformsSortOrderEnum{
+	"asc":  ListBlockchainPlatformsSortOrderAsc,
+	"desc": ListBlockchainPlatformsSortOrderDesc,
+}
+
 // GetListBlockchainPlatformsSortOrderEnumValues Enumerates the set of values for ListBlockchainPlatformsSortOrderEnum
 func GetListBlockchainPlatformsSortOrderEnumValues() []ListBlockchainPlatformsSortOrderEnum {
 	values := make([]ListBlockchainPlatformsSortOrderEnum, 0)
@@ -156,12 +161,7 @@ func GetListBlockchainPlatformsSortOrderEnumStringValues() []string {
 
 // GetMappingListBlockchainPlatformsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBlockchainPlatformsSortOrderEnum(val string) (ListBlockchainPlatformsSortOrderEnum, bool) {
-	mappingListBlockchainPlatformsSortOrderEnumIgnoreCase := make(map[string]ListBlockchainPlatformsSortOrderEnum)
-	for k, v := range mappingListBlockchainPlatformsSortOrderEnum {
-		mappingListBlockchainPlatformsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBlockchainPlatformsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBlockchainPlatformsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -177,6 +177,11 @@ const (
 var mappingListBlockchainPlatformsSortByEnum = map[string]ListBlockchainPlatformsSortByEnum{
 	"timeCreated": ListBlockchainPlatformsSortByTimecreated,
 	"displayName": ListBlockchainPlatformsSortByDisplayname,
+}
+
+var mappingListBlockchainPlatformsSortByEnumLowerCase = map[string]ListBlockchainPlatformsSortByEnum{
+	"timecreated": ListBlockchainPlatformsSortByTimecreated,
+	"displayname": ListBlockchainPlatformsSortByDisplayname,
 }
 
 // GetListBlockchainPlatformsSortByEnumValues Enumerates the set of values for ListBlockchainPlatformsSortByEnum
@@ -198,11 +203,6 @@ func GetListBlockchainPlatformsSortByEnumStringValues() []string {
 
 // GetMappingListBlockchainPlatformsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBlockchainPlatformsSortByEnum(val string) (ListBlockchainPlatformsSortByEnum, bool) {
-	mappingListBlockchainPlatformsSortByEnumIgnoreCase := make(map[string]ListBlockchainPlatformsSortByEnum)
-	for k, v := range mappingListBlockchainPlatformsSortByEnum {
-		mappingListBlockchainPlatformsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBlockchainPlatformsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBlockchainPlatformsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

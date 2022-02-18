@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -147,6 +147,11 @@ var mappingGetAwrDbReportReportTypeEnum = map[string]GetAwrDbReportReportTypeEnu
 	"ASH": GetAwrDbReportReportTypeAsh,
 }
 
+var mappingGetAwrDbReportReportTypeEnumLowerCase = map[string]GetAwrDbReportReportTypeEnum{
+	"awr": GetAwrDbReportReportTypeAwr,
+	"ash": GetAwrDbReportReportTypeAsh,
+}
+
 // GetGetAwrDbReportReportTypeEnumValues Enumerates the set of values for GetAwrDbReportReportTypeEnum
 func GetGetAwrDbReportReportTypeEnumValues() []GetAwrDbReportReportTypeEnum {
 	values := make([]GetAwrDbReportReportTypeEnum, 0)
@@ -166,12 +171,7 @@ func GetGetAwrDbReportReportTypeEnumStringValues() []string {
 
 // GetMappingGetAwrDbReportReportTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetAwrDbReportReportTypeEnum(val string) (GetAwrDbReportReportTypeEnum, bool) {
-	mappingGetAwrDbReportReportTypeEnumIgnoreCase := make(map[string]GetAwrDbReportReportTypeEnum)
-	for k, v := range mappingGetAwrDbReportReportTypeEnum {
-		mappingGetAwrDbReportReportTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetAwrDbReportReportTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetAwrDbReportReportTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +187,11 @@ const (
 var mappingGetAwrDbReportReportFormatEnum = map[string]GetAwrDbReportReportFormatEnum{
 	"HTML": GetAwrDbReportReportFormatHtml,
 	"TEXT": GetAwrDbReportReportFormatText,
+}
+
+var mappingGetAwrDbReportReportFormatEnumLowerCase = map[string]GetAwrDbReportReportFormatEnum{
+	"html": GetAwrDbReportReportFormatHtml,
+	"text": GetAwrDbReportReportFormatText,
 }
 
 // GetGetAwrDbReportReportFormatEnumValues Enumerates the set of values for GetAwrDbReportReportFormatEnum
@@ -208,11 +213,6 @@ func GetGetAwrDbReportReportFormatEnumStringValues() []string {
 
 // GetMappingGetAwrDbReportReportFormatEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetAwrDbReportReportFormatEnum(val string) (GetAwrDbReportReportFormatEnum, bool) {
-	mappingGetAwrDbReportReportFormatEnumIgnoreCase := make(map[string]GetAwrDbReportReportFormatEnum)
-	for k, v := range mappingGetAwrDbReportReportFormatEnum {
-		mappingGetAwrDbReportReportFormatEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetAwrDbReportReportFormatEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetAwrDbReportReportFormatEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

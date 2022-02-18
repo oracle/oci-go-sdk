@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -74,6 +74,13 @@ var mappingProtectionRuleExclusionTargetEnum = map[string]ProtectionRuleExclusio
 	"ARGS_NAMES":           ProtectionRuleExclusionTargetArgsNames,
 }
 
+var mappingProtectionRuleExclusionTargetEnumLowerCase = map[string]ProtectionRuleExclusionTargetEnum{
+	"request_cookies":      ProtectionRuleExclusionTargetRequestCookies,
+	"request_cookie_names": ProtectionRuleExclusionTargetRequestCookieNames,
+	"args":                 ProtectionRuleExclusionTargetArgs,
+	"args_names":           ProtectionRuleExclusionTargetArgsNames,
+}
+
 // GetProtectionRuleExclusionTargetEnumValues Enumerates the set of values for ProtectionRuleExclusionTargetEnum
 func GetProtectionRuleExclusionTargetEnumValues() []ProtectionRuleExclusionTargetEnum {
 	values := make([]ProtectionRuleExclusionTargetEnum, 0)
@@ -95,11 +102,6 @@ func GetProtectionRuleExclusionTargetEnumStringValues() []string {
 
 // GetMappingProtectionRuleExclusionTargetEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingProtectionRuleExclusionTargetEnum(val string) (ProtectionRuleExclusionTargetEnum, bool) {
-	mappingProtectionRuleExclusionTargetEnumIgnoreCase := make(map[string]ProtectionRuleExclusionTargetEnum)
-	for k, v := range mappingProtectionRuleExclusionTargetEnum {
-		mappingProtectionRuleExclusionTargetEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingProtectionRuleExclusionTargetEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingProtectionRuleExclusionTargetEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

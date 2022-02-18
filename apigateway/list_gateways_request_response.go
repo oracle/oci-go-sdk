@@ -6,7 +6,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -151,6 +151,11 @@ var mappingListGatewaysSortOrderEnum = map[string]ListGatewaysSortOrderEnum{
 	"DESC": ListGatewaysSortOrderDesc,
 }
 
+var mappingListGatewaysSortOrderEnumLowerCase = map[string]ListGatewaysSortOrderEnum{
+	"asc":  ListGatewaysSortOrderAsc,
+	"desc": ListGatewaysSortOrderDesc,
+}
+
 // GetListGatewaysSortOrderEnumValues Enumerates the set of values for ListGatewaysSortOrderEnum
 func GetListGatewaysSortOrderEnumValues() []ListGatewaysSortOrderEnum {
 	values := make([]ListGatewaysSortOrderEnum, 0)
@@ -170,12 +175,7 @@ func GetListGatewaysSortOrderEnumStringValues() []string {
 
 // GetMappingListGatewaysSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListGatewaysSortOrderEnum(val string) (ListGatewaysSortOrderEnum, bool) {
-	mappingListGatewaysSortOrderEnumIgnoreCase := make(map[string]ListGatewaysSortOrderEnum)
-	for k, v := range mappingListGatewaysSortOrderEnum {
-		mappingListGatewaysSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListGatewaysSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListGatewaysSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -191,6 +191,11 @@ const (
 var mappingListGatewaysSortByEnum = map[string]ListGatewaysSortByEnum{
 	"timeCreated": ListGatewaysSortByTimecreated,
 	"displayName": ListGatewaysSortByDisplayname,
+}
+
+var mappingListGatewaysSortByEnumLowerCase = map[string]ListGatewaysSortByEnum{
+	"timecreated": ListGatewaysSortByTimecreated,
+	"displayname": ListGatewaysSortByDisplayname,
 }
 
 // GetListGatewaysSortByEnumValues Enumerates the set of values for ListGatewaysSortByEnum
@@ -212,11 +217,6 @@ func GetListGatewaysSortByEnumStringValues() []string {
 
 // GetMappingListGatewaysSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListGatewaysSortByEnum(val string) (ListGatewaysSortByEnum, bool) {
-	mappingListGatewaysSortByEnumIgnoreCase := make(map[string]ListGatewaysSortByEnum)
-	for k, v := range mappingListGatewaysSortByEnum {
-		mappingListGatewaysSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListGatewaysSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListGatewaysSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

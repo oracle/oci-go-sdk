@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -127,6 +127,11 @@ var mappingListAppCatalogListingResourceVersionsSortOrderEnum = map[string]ListA
 	"DESC": ListAppCatalogListingResourceVersionsSortOrderDesc,
 }
 
+var mappingListAppCatalogListingResourceVersionsSortOrderEnumLowerCase = map[string]ListAppCatalogListingResourceVersionsSortOrderEnum{
+	"asc":  ListAppCatalogListingResourceVersionsSortOrderAsc,
+	"desc": ListAppCatalogListingResourceVersionsSortOrderDesc,
+}
+
 // GetListAppCatalogListingResourceVersionsSortOrderEnumValues Enumerates the set of values for ListAppCatalogListingResourceVersionsSortOrderEnum
 func GetListAppCatalogListingResourceVersionsSortOrderEnumValues() []ListAppCatalogListingResourceVersionsSortOrderEnum {
 	values := make([]ListAppCatalogListingResourceVersionsSortOrderEnum, 0)
@@ -146,11 +151,6 @@ func GetListAppCatalogListingResourceVersionsSortOrderEnumStringValues() []strin
 
 // GetMappingListAppCatalogListingResourceVersionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAppCatalogListingResourceVersionsSortOrderEnum(val string) (ListAppCatalogListingResourceVersionsSortOrderEnum, bool) {
-	mappingListAppCatalogListingResourceVersionsSortOrderEnumIgnoreCase := make(map[string]ListAppCatalogListingResourceVersionsSortOrderEnum)
-	for k, v := range mappingListAppCatalogListingResourceVersionsSortOrderEnum {
-		mappingListAppCatalogListingResourceVersionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAppCatalogListingResourceVersionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAppCatalogListingResourceVersionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

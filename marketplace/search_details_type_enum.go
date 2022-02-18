@@ -27,6 +27,11 @@ var mappingSearchDetailsTypeEnumEnum = map[string]SearchDetailsTypeEnumEnum{
 	"Structured": SearchDetailsTypeEnumStructured,
 }
 
+var mappingSearchDetailsTypeEnumEnumLowerCase = map[string]SearchDetailsTypeEnumEnum{
+	"freetext":   SearchDetailsTypeEnumFreeText,
+	"structured": SearchDetailsTypeEnumStructured,
+}
+
 // GetSearchDetailsTypeEnumEnumValues Enumerates the set of values for SearchDetailsTypeEnumEnum
 func GetSearchDetailsTypeEnumEnumValues() []SearchDetailsTypeEnumEnum {
 	values := make([]SearchDetailsTypeEnumEnum, 0)
@@ -46,11 +51,6 @@ func GetSearchDetailsTypeEnumEnumStringValues() []string {
 
 // GetMappingSearchDetailsTypeEnumEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSearchDetailsTypeEnumEnum(val string) (SearchDetailsTypeEnumEnum, bool) {
-	mappingSearchDetailsTypeEnumEnumIgnoreCase := make(map[string]SearchDetailsTypeEnumEnum)
-	for k, v := range mappingSearchDetailsTypeEnumEnum {
-		mappingSearchDetailsTypeEnumEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSearchDetailsTypeEnumEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSearchDetailsTypeEnumEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

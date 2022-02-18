@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -171,6 +171,11 @@ var mappingSummarizeAwrDbWaitEventBucketsSortByEnum = map[string]SummarizeAwrDbW
 	"PERCENTAGE": SummarizeAwrDbWaitEventBucketsSortByPercentage,
 }
 
+var mappingSummarizeAwrDbWaitEventBucketsSortByEnumLowerCase = map[string]SummarizeAwrDbWaitEventBucketsSortByEnum{
+	"category":   SummarizeAwrDbWaitEventBucketsSortByCategory,
+	"percentage": SummarizeAwrDbWaitEventBucketsSortByPercentage,
+}
+
 // GetSummarizeAwrDbWaitEventBucketsSortByEnumValues Enumerates the set of values for SummarizeAwrDbWaitEventBucketsSortByEnum
 func GetSummarizeAwrDbWaitEventBucketsSortByEnumValues() []SummarizeAwrDbWaitEventBucketsSortByEnum {
 	values := make([]SummarizeAwrDbWaitEventBucketsSortByEnum, 0)
@@ -190,12 +195,7 @@ func GetSummarizeAwrDbWaitEventBucketsSortByEnumStringValues() []string {
 
 // GetMappingSummarizeAwrDbWaitEventBucketsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAwrDbWaitEventBucketsSortByEnum(val string) (SummarizeAwrDbWaitEventBucketsSortByEnum, bool) {
-	mappingSummarizeAwrDbWaitEventBucketsSortByEnumIgnoreCase := make(map[string]SummarizeAwrDbWaitEventBucketsSortByEnum)
-	for k, v := range mappingSummarizeAwrDbWaitEventBucketsSortByEnum {
-		mappingSummarizeAwrDbWaitEventBucketsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAwrDbWaitEventBucketsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAwrDbWaitEventBucketsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -211,6 +211,11 @@ const (
 var mappingSummarizeAwrDbWaitEventBucketsSortOrderEnum = map[string]SummarizeAwrDbWaitEventBucketsSortOrderEnum{
 	"ASC":  SummarizeAwrDbWaitEventBucketsSortOrderAsc,
 	"DESC": SummarizeAwrDbWaitEventBucketsSortOrderDesc,
+}
+
+var mappingSummarizeAwrDbWaitEventBucketsSortOrderEnumLowerCase = map[string]SummarizeAwrDbWaitEventBucketsSortOrderEnum{
+	"asc":  SummarizeAwrDbWaitEventBucketsSortOrderAsc,
+	"desc": SummarizeAwrDbWaitEventBucketsSortOrderDesc,
 }
 
 // GetSummarizeAwrDbWaitEventBucketsSortOrderEnumValues Enumerates the set of values for SummarizeAwrDbWaitEventBucketsSortOrderEnum
@@ -232,11 +237,6 @@ func GetSummarizeAwrDbWaitEventBucketsSortOrderEnumStringValues() []string {
 
 // GetMappingSummarizeAwrDbWaitEventBucketsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAwrDbWaitEventBucketsSortOrderEnum(val string) (SummarizeAwrDbWaitEventBucketsSortOrderEnum, bool) {
-	mappingSummarizeAwrDbWaitEventBucketsSortOrderEnumIgnoreCase := make(map[string]SummarizeAwrDbWaitEventBucketsSortOrderEnum)
-	for k, v := range mappingSummarizeAwrDbWaitEventBucketsSortOrderEnum {
-		mappingSummarizeAwrDbWaitEventBucketsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAwrDbWaitEventBucketsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAwrDbWaitEventBucketsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

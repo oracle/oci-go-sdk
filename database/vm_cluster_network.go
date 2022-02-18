@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -113,6 +113,19 @@ var mappingVmClusterNetworkLifecycleStateEnum = map[string]VmClusterNetworkLifec
 	"FAILED":              VmClusterNetworkLifecycleStateFailed,
 }
 
+var mappingVmClusterNetworkLifecycleStateEnumLowerCase = map[string]VmClusterNetworkLifecycleStateEnum{
+	"creating":            VmClusterNetworkLifecycleStateCreating,
+	"requires_validation": VmClusterNetworkLifecycleStateRequiresValidation,
+	"validating":          VmClusterNetworkLifecycleStateValidating,
+	"validated":           VmClusterNetworkLifecycleStateValidated,
+	"validation_failed":   VmClusterNetworkLifecycleStateValidationFailed,
+	"updating":            VmClusterNetworkLifecycleStateUpdating,
+	"allocated":           VmClusterNetworkLifecycleStateAllocated,
+	"terminating":         VmClusterNetworkLifecycleStateTerminating,
+	"terminated":          VmClusterNetworkLifecycleStateTerminated,
+	"failed":              VmClusterNetworkLifecycleStateFailed,
+}
+
 // GetVmClusterNetworkLifecycleStateEnumValues Enumerates the set of values for VmClusterNetworkLifecycleStateEnum
 func GetVmClusterNetworkLifecycleStateEnumValues() []VmClusterNetworkLifecycleStateEnum {
 	values := make([]VmClusterNetworkLifecycleStateEnum, 0)
@@ -140,11 +153,6 @@ func GetVmClusterNetworkLifecycleStateEnumStringValues() []string {
 
 // GetMappingVmClusterNetworkLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVmClusterNetworkLifecycleStateEnum(val string) (VmClusterNetworkLifecycleStateEnum, bool) {
-	mappingVmClusterNetworkLifecycleStateEnumIgnoreCase := make(map[string]VmClusterNetworkLifecycleStateEnum)
-	for k, v := range mappingVmClusterNetworkLifecycleStateEnum {
-		mappingVmClusterNetworkLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVmClusterNetworkLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVmClusterNetworkLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

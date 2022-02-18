@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -157,6 +157,11 @@ var mappingGetRRSetScopeEnum = map[string]GetRRSetScopeEnum{
 	"PRIVATE": GetRRSetScopePrivate,
 }
 
+var mappingGetRRSetScopeEnumLowerCase = map[string]GetRRSetScopeEnum{
+	"global":  GetRRSetScopeGlobal,
+	"private": GetRRSetScopePrivate,
+}
+
 // GetGetRRSetScopeEnumValues Enumerates the set of values for GetRRSetScopeEnum
 func GetGetRRSetScopeEnumValues() []GetRRSetScopeEnum {
 	values := make([]GetRRSetScopeEnum, 0)
@@ -176,11 +181,6 @@ func GetGetRRSetScopeEnumStringValues() []string {
 
 // GetMappingGetRRSetScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetRRSetScopeEnum(val string) (GetRRSetScopeEnum, bool) {
-	mappingGetRRSetScopeEnumIgnoreCase := make(map[string]GetRRSetScopeEnum)
-	for k, v := range mappingGetRRSetScopeEnum {
-		mappingGetRRSetScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetRRSetScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetRRSetScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

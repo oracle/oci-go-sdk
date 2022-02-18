@@ -29,6 +29,12 @@ var mappingManagementAgentGroupByEnum = map[string]ManagementAgentGroupByEnum{
 	"version":            ManagementAgentGroupByVersion,
 }
 
+var mappingManagementAgentGroupByEnumLowerCase = map[string]ManagementAgentGroupByEnum{
+	"availabilitystatus": ManagementAgentGroupByAvailabilityStatus,
+	"platformtype":       ManagementAgentGroupByPlatformType,
+	"version":            ManagementAgentGroupByVersion,
+}
+
 // GetManagementAgentGroupByEnumValues Enumerates the set of values for ManagementAgentGroupByEnum
 func GetManagementAgentGroupByEnumValues() []ManagementAgentGroupByEnum {
 	values := make([]ManagementAgentGroupByEnum, 0)
@@ -49,11 +55,6 @@ func GetManagementAgentGroupByEnumStringValues() []string {
 
 // GetMappingManagementAgentGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingManagementAgentGroupByEnum(val string) (ManagementAgentGroupByEnum, bool) {
-	mappingManagementAgentGroupByEnumIgnoreCase := make(map[string]ManagementAgentGroupByEnum)
-	for k, v := range mappingManagementAgentGroupByEnum {
-		mappingManagementAgentGroupByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingManagementAgentGroupByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingManagementAgentGroupByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

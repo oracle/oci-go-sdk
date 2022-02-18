@@ -25,6 +25,10 @@ var mappingModelDeploymentTypeEnum = map[string]ModelDeploymentTypeEnum{
 	"SINGLE_MODEL": ModelDeploymentTypeSingleModel,
 }
 
+var mappingModelDeploymentTypeEnumLowerCase = map[string]ModelDeploymentTypeEnum{
+	"single_model": ModelDeploymentTypeSingleModel,
+}
+
 // GetModelDeploymentTypeEnumValues Enumerates the set of values for ModelDeploymentTypeEnum
 func GetModelDeploymentTypeEnumValues() []ModelDeploymentTypeEnum {
 	values := make([]ModelDeploymentTypeEnum, 0)
@@ -43,11 +47,6 @@ func GetModelDeploymentTypeEnumStringValues() []string {
 
 // GetMappingModelDeploymentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingModelDeploymentTypeEnum(val string) (ModelDeploymentTypeEnum, bool) {
-	mappingModelDeploymentTypeEnumIgnoreCase := make(map[string]ModelDeploymentTypeEnum)
-	for k, v := range mappingModelDeploymentTypeEnum {
-		mappingModelDeploymentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingModelDeploymentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingModelDeploymentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -123,6 +123,11 @@ var mappingRepositoryRefRefTypeEnum = map[string]RepositoryRefRefTypeEnum{
 	"TAG":    RepositoryRefRefTypeTag,
 }
 
+var mappingRepositoryRefRefTypeEnumLowerCase = map[string]RepositoryRefRefTypeEnum{
+	"branch": RepositoryRefRefTypeBranch,
+	"tag":    RepositoryRefRefTypeTag,
+}
+
 // GetRepositoryRefRefTypeEnumValues Enumerates the set of values for RepositoryRefRefTypeEnum
 func GetRepositoryRefRefTypeEnumValues() []RepositoryRefRefTypeEnum {
 	values := make([]RepositoryRefRefTypeEnum, 0)
@@ -142,11 +147,6 @@ func GetRepositoryRefRefTypeEnumStringValues() []string {
 
 // GetMappingRepositoryRefRefTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRepositoryRefRefTypeEnum(val string) (RepositoryRefRefTypeEnum, bool) {
-	mappingRepositoryRefRefTypeEnumIgnoreCase := make(map[string]RepositoryRefRefTypeEnum)
-	for k, v := range mappingRepositoryRefRefTypeEnum {
-		mappingRepositoryRefRefTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRepositoryRefRefTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRepositoryRefRefTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

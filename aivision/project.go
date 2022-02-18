@@ -11,7 +11,7 @@ package aivision
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -96,6 +96,15 @@ var mappingProjectLifecycleStateEnum = map[string]ProjectLifecycleStateEnum{
 	"FAILED":   ProjectLifecycleStateFailed,
 }
 
+var mappingProjectLifecycleStateEnumLowerCase = map[string]ProjectLifecycleStateEnum{
+	"creating": ProjectLifecycleStateCreating,
+	"updating": ProjectLifecycleStateUpdating,
+	"active":   ProjectLifecycleStateActive,
+	"deleting": ProjectLifecycleStateDeleting,
+	"deleted":  ProjectLifecycleStateDeleted,
+	"failed":   ProjectLifecycleStateFailed,
+}
+
 // GetProjectLifecycleStateEnumValues Enumerates the set of values for ProjectLifecycleStateEnum
 func GetProjectLifecycleStateEnumValues() []ProjectLifecycleStateEnum {
 	values := make([]ProjectLifecycleStateEnum, 0)
@@ -119,11 +128,6 @@ func GetProjectLifecycleStateEnumStringValues() []string {
 
 // GetMappingProjectLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingProjectLifecycleStateEnum(val string) (ProjectLifecycleStateEnum, bool) {
-	mappingProjectLifecycleStateEnumIgnoreCase := make(map[string]ProjectLifecycleStateEnum)
-	for k, v := range mappingProjectLifecycleStateEnum {
-		mappingProjectLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingProjectLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingProjectLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

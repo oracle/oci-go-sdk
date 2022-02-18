@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -106,6 +106,14 @@ var mappingNetworkSourcesLifecycleStateEnum = map[string]NetworkSourcesLifecycle
 	"DELETED":  NetworkSourcesLifecycleStateDeleted,
 }
 
+var mappingNetworkSourcesLifecycleStateEnumLowerCase = map[string]NetworkSourcesLifecycleStateEnum{
+	"creating": NetworkSourcesLifecycleStateCreating,
+	"active":   NetworkSourcesLifecycleStateActive,
+	"inactive": NetworkSourcesLifecycleStateInactive,
+	"deleting": NetworkSourcesLifecycleStateDeleting,
+	"deleted":  NetworkSourcesLifecycleStateDeleted,
+}
+
 // GetNetworkSourcesLifecycleStateEnumValues Enumerates the set of values for NetworkSourcesLifecycleStateEnum
 func GetNetworkSourcesLifecycleStateEnumValues() []NetworkSourcesLifecycleStateEnum {
 	values := make([]NetworkSourcesLifecycleStateEnum, 0)
@@ -128,11 +136,6 @@ func GetNetworkSourcesLifecycleStateEnumStringValues() []string {
 
 // GetMappingNetworkSourcesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNetworkSourcesLifecycleStateEnum(val string) (NetworkSourcesLifecycleStateEnum, bool) {
-	mappingNetworkSourcesLifecycleStateEnumIgnoreCase := make(map[string]NetworkSourcesLifecycleStateEnum)
-	for k, v := range mappingNetworkSourcesLifecycleStateEnum {
-		mappingNetworkSourcesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNetworkSourcesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNetworkSourcesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

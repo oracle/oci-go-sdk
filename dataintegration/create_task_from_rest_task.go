@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -203,6 +203,14 @@ var mappingCreateTaskFromRestTaskMethodTypeEnum = map[string]CreateTaskFromRestT
 	"PUT":    CreateTaskFromRestTaskMethodTypePut,
 }
 
+var mappingCreateTaskFromRestTaskMethodTypeEnumLowerCase = map[string]CreateTaskFromRestTaskMethodTypeEnum{
+	"get":    CreateTaskFromRestTaskMethodTypeGet,
+	"post":   CreateTaskFromRestTaskMethodTypePost,
+	"patch":  CreateTaskFromRestTaskMethodTypePatch,
+	"delete": CreateTaskFromRestTaskMethodTypeDelete,
+	"put":    CreateTaskFromRestTaskMethodTypePut,
+}
+
 // GetCreateTaskFromRestTaskMethodTypeEnumValues Enumerates the set of values for CreateTaskFromRestTaskMethodTypeEnum
 func GetCreateTaskFromRestTaskMethodTypeEnumValues() []CreateTaskFromRestTaskMethodTypeEnum {
 	values := make([]CreateTaskFromRestTaskMethodTypeEnum, 0)
@@ -225,12 +233,7 @@ func GetCreateTaskFromRestTaskMethodTypeEnumStringValues() []string {
 
 // GetMappingCreateTaskFromRestTaskMethodTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateTaskFromRestTaskMethodTypeEnum(val string) (CreateTaskFromRestTaskMethodTypeEnum, bool) {
-	mappingCreateTaskFromRestTaskMethodTypeEnumIgnoreCase := make(map[string]CreateTaskFromRestTaskMethodTypeEnum)
-	for k, v := range mappingCreateTaskFromRestTaskMethodTypeEnum {
-		mappingCreateTaskFromRestTaskMethodTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateTaskFromRestTaskMethodTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateTaskFromRestTaskMethodTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -248,6 +251,12 @@ var mappingCreateTaskFromRestTaskApiCallModeEnum = map[string]CreateTaskFromRest
 	"SYNCHRONOUS":           CreateTaskFromRestTaskApiCallModeSynchronous,
 	"ASYNC_OCI_WORKREQUEST": CreateTaskFromRestTaskApiCallModeAsyncOciWorkrequest,
 	"ASYNC_GENERIC":         CreateTaskFromRestTaskApiCallModeAsyncGeneric,
+}
+
+var mappingCreateTaskFromRestTaskApiCallModeEnumLowerCase = map[string]CreateTaskFromRestTaskApiCallModeEnum{
+	"synchronous":           CreateTaskFromRestTaskApiCallModeSynchronous,
+	"async_oci_workrequest": CreateTaskFromRestTaskApiCallModeAsyncOciWorkrequest,
+	"async_generic":         CreateTaskFromRestTaskApiCallModeAsyncGeneric,
 }
 
 // GetCreateTaskFromRestTaskApiCallModeEnumValues Enumerates the set of values for CreateTaskFromRestTaskApiCallModeEnum
@@ -270,12 +279,7 @@ func GetCreateTaskFromRestTaskApiCallModeEnumStringValues() []string {
 
 // GetMappingCreateTaskFromRestTaskApiCallModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateTaskFromRestTaskApiCallModeEnum(val string) (CreateTaskFromRestTaskApiCallModeEnum, bool) {
-	mappingCreateTaskFromRestTaskApiCallModeEnumIgnoreCase := make(map[string]CreateTaskFromRestTaskApiCallModeEnum)
-	for k, v := range mappingCreateTaskFromRestTaskApiCallModeEnum {
-		mappingCreateTaskFromRestTaskApiCallModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateTaskFromRestTaskApiCallModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateTaskFromRestTaskApiCallModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -297,6 +301,14 @@ var mappingCreateTaskFromRestTaskCancelMethodTypeEnum = map[string]CreateTaskFro
 	"PATCH":  CreateTaskFromRestTaskCancelMethodTypePatch,
 	"DELETE": CreateTaskFromRestTaskCancelMethodTypeDelete,
 	"PUT":    CreateTaskFromRestTaskCancelMethodTypePut,
+}
+
+var mappingCreateTaskFromRestTaskCancelMethodTypeEnumLowerCase = map[string]CreateTaskFromRestTaskCancelMethodTypeEnum{
+	"get":    CreateTaskFromRestTaskCancelMethodTypeGet,
+	"post":   CreateTaskFromRestTaskCancelMethodTypePost,
+	"patch":  CreateTaskFromRestTaskCancelMethodTypePatch,
+	"delete": CreateTaskFromRestTaskCancelMethodTypeDelete,
+	"put":    CreateTaskFromRestTaskCancelMethodTypePut,
 }
 
 // GetCreateTaskFromRestTaskCancelMethodTypeEnumValues Enumerates the set of values for CreateTaskFromRestTaskCancelMethodTypeEnum
@@ -321,11 +333,6 @@ func GetCreateTaskFromRestTaskCancelMethodTypeEnumStringValues() []string {
 
 // GetMappingCreateTaskFromRestTaskCancelMethodTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateTaskFromRestTaskCancelMethodTypeEnum(val string) (CreateTaskFromRestTaskCancelMethodTypeEnum, bool) {
-	mappingCreateTaskFromRestTaskCancelMethodTypeEnumIgnoreCase := make(map[string]CreateTaskFromRestTaskCancelMethodTypeEnum)
-	for k, v := range mappingCreateTaskFromRestTaskCancelMethodTypeEnum {
-		mappingCreateTaskFromRestTaskCancelMethodTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateTaskFromRestTaskCancelMethodTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateTaskFromRestTaskCancelMethodTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

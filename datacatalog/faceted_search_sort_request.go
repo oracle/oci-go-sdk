@@ -12,7 +12,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -59,6 +59,11 @@ var mappingFacetedSearchSortRequestSortOrderEnum = map[string]FacetedSearchSortR
 	"DESC": FacetedSearchSortRequestSortOrderDesc,
 }
 
+var mappingFacetedSearchSortRequestSortOrderEnumLowerCase = map[string]FacetedSearchSortRequestSortOrderEnum{
+	"asc":  FacetedSearchSortRequestSortOrderAsc,
+	"desc": FacetedSearchSortRequestSortOrderDesc,
+}
+
 // GetFacetedSearchSortRequestSortOrderEnumValues Enumerates the set of values for FacetedSearchSortRequestSortOrderEnum
 func GetFacetedSearchSortRequestSortOrderEnumValues() []FacetedSearchSortRequestSortOrderEnum {
 	values := make([]FacetedSearchSortRequestSortOrderEnum, 0)
@@ -78,11 +83,6 @@ func GetFacetedSearchSortRequestSortOrderEnumStringValues() []string {
 
 // GetMappingFacetedSearchSortRequestSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFacetedSearchSortRequestSortOrderEnum(val string) (FacetedSearchSortRequestSortOrderEnum, bool) {
-	mappingFacetedSearchSortRequestSortOrderEnumIgnoreCase := make(map[string]FacetedSearchSortRequestSortOrderEnum)
-	for k, v := range mappingFacetedSearchSortRequestSortOrderEnum {
-		mappingFacetedSearchSortRequestSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFacetedSearchSortRequestSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFacetedSearchSortRequestSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

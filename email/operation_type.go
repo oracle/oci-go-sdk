@@ -43,6 +43,17 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"UPDATE_EMAIL_DOMAIN": OperationTypeUpdateEmailDomain,
 }
 
+var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
+	"create_dkim":         OperationTypeCreateDkim,
+	"delete_dkim":         OperationTypeDeleteDkim,
+	"move_dkim":           OperationTypeMoveDkim,
+	"update_dkim":         OperationTypeUpdateDkim,
+	"create_email_domain": OperationTypeCreateEmailDomain,
+	"delete_email_domain": OperationTypeDeleteEmailDomain,
+	"move_email_domain":   OperationTypeMoveEmailDomain,
+	"update_email_domain": OperationTypeUpdateEmailDomain,
+}
+
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum
 func GetOperationTypeEnumValues() []OperationTypeEnum {
 	values := make([]OperationTypeEnum, 0)
@@ -68,11 +79,6 @@ func GetOperationTypeEnumStringValues() []string {
 
 // GetMappingOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperationTypeEnum(val string) (OperationTypeEnum, bool) {
-	mappingOperationTypeEnumIgnoreCase := make(map[string]OperationTypeEnum)
-	for k, v := range mappingOperationTypeEnum {
-		mappingOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

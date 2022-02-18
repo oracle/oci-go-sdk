@@ -27,6 +27,10 @@ var mappingExadataEntitySourceEnum = map[string]ExadataEntitySourceEnum{
 	"EM_MANAGED_EXTERNAL_EXADATA": ExadataEntitySourceEmManagedExternalExadata,
 }
 
+var mappingExadataEntitySourceEnumLowerCase = map[string]ExadataEntitySourceEnum{
+	"em_managed_external_exadata": ExadataEntitySourceEmManagedExternalExadata,
+}
+
 // GetExadataEntitySourceEnumValues Enumerates the set of values for ExadataEntitySourceEnum
 func GetExadataEntitySourceEnumValues() []ExadataEntitySourceEnum {
 	values := make([]ExadataEntitySourceEnum, 0)
@@ -45,11 +49,6 @@ func GetExadataEntitySourceEnumStringValues() []string {
 
 // GetMappingExadataEntitySourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExadataEntitySourceEnum(val string) (ExadataEntitySourceEnum, bool) {
-	mappingExadataEntitySourceEnumIgnoreCase := make(map[string]ExadataEntitySourceEnum)
-	for k, v := range mappingExadataEntitySourceEnum {
-		mappingExadataEntitySourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExadataEntitySourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExadataEntitySourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

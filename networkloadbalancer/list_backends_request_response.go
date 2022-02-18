@@ -6,7 +6,7 @@ package networkloadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,11 @@ var mappingListBackendsSortOrderEnum = map[string]ListBackendsSortOrderEnum{
 	"DESC": ListBackendsSortOrderDesc,
 }
 
+var mappingListBackendsSortOrderEnumLowerCase = map[string]ListBackendsSortOrderEnum{
+	"asc":  ListBackendsSortOrderAsc,
+	"desc": ListBackendsSortOrderDesc,
+}
+
 // GetListBackendsSortOrderEnumValues Enumerates the set of values for ListBackendsSortOrderEnum
 func GetListBackendsSortOrderEnumValues() []ListBackendsSortOrderEnum {
 	values := make([]ListBackendsSortOrderEnum, 0)
@@ -160,12 +165,7 @@ func GetListBackendsSortOrderEnumStringValues() []string {
 
 // GetMappingListBackendsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBackendsSortOrderEnum(val string) (ListBackendsSortOrderEnum, bool) {
-	mappingListBackendsSortOrderEnumIgnoreCase := make(map[string]ListBackendsSortOrderEnum)
-	for k, v := range mappingListBackendsSortOrderEnum {
-		mappingListBackendsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBackendsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBackendsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +181,11 @@ const (
 var mappingListBackendsSortByEnum = map[string]ListBackendsSortByEnum{
 	"timeCreated": ListBackendsSortByTimecreated,
 	"displayName": ListBackendsSortByDisplayname,
+}
+
+var mappingListBackendsSortByEnumLowerCase = map[string]ListBackendsSortByEnum{
+	"timecreated": ListBackendsSortByTimecreated,
+	"displayname": ListBackendsSortByDisplayname,
 }
 
 // GetListBackendsSortByEnumValues Enumerates the set of values for ListBackendsSortByEnum
@@ -202,11 +207,6 @@ func GetListBackendsSortByEnumStringValues() []string {
 
 // GetMappingListBackendsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBackendsSortByEnum(val string) (ListBackendsSortByEnum, bool) {
-	mappingListBackendsSortByEnumIgnoreCase := make(map[string]ListBackendsSortByEnum)
-	for k, v := range mappingListBackendsSortByEnum {
-		mappingListBackendsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBackendsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBackendsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -131,6 +131,10 @@ var mappingListAutoAssociationsSortByEnum = map[string]ListAutoAssociationsSortB
 	"isEnabled": ListAutoAssociationsSortByIsenabled,
 }
 
+var mappingListAutoAssociationsSortByEnumLowerCase = map[string]ListAutoAssociationsSortByEnum{
+	"isenabled": ListAutoAssociationsSortByIsenabled,
+}
+
 // GetListAutoAssociationsSortByEnumValues Enumerates the set of values for ListAutoAssociationsSortByEnum
 func GetListAutoAssociationsSortByEnumValues() []ListAutoAssociationsSortByEnum {
 	values := make([]ListAutoAssociationsSortByEnum, 0)
@@ -149,12 +153,7 @@ func GetListAutoAssociationsSortByEnumStringValues() []string {
 
 // GetMappingListAutoAssociationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAutoAssociationsSortByEnum(val string) (ListAutoAssociationsSortByEnum, bool) {
-	mappingListAutoAssociationsSortByEnumIgnoreCase := make(map[string]ListAutoAssociationsSortByEnum)
-	for k, v := range mappingListAutoAssociationsSortByEnum {
-		mappingListAutoAssociationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAutoAssociationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAutoAssociationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -170,6 +169,11 @@ const (
 var mappingListAutoAssociationsSortOrderEnum = map[string]ListAutoAssociationsSortOrderEnum{
 	"ASC":  ListAutoAssociationsSortOrderAsc,
 	"DESC": ListAutoAssociationsSortOrderDesc,
+}
+
+var mappingListAutoAssociationsSortOrderEnumLowerCase = map[string]ListAutoAssociationsSortOrderEnum{
+	"asc":  ListAutoAssociationsSortOrderAsc,
+	"desc": ListAutoAssociationsSortOrderDesc,
 }
 
 // GetListAutoAssociationsSortOrderEnumValues Enumerates the set of values for ListAutoAssociationsSortOrderEnum
@@ -191,11 +195,6 @@ func GetListAutoAssociationsSortOrderEnumStringValues() []string {
 
 // GetMappingListAutoAssociationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAutoAssociationsSortOrderEnum(val string) (ListAutoAssociationsSortOrderEnum, bool) {
-	mappingListAutoAssociationsSortOrderEnumIgnoreCase := make(map[string]ListAutoAssociationsSortOrderEnum)
-	for k, v := range mappingListAutoAssociationsSortOrderEnum {
-		mappingListAutoAssociationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAutoAssociationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAutoAssociationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package identitydataplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -67,6 +67,14 @@ var mappingContextVariableTypeEnum = map[string]ContextVariableTypeEnum{
 	"LIST":    ContextVariableTypeList,
 }
 
+var mappingContextVariableTypeEnumLowerCase = map[string]ContextVariableTypeEnum{
+	"string":  ContextVariableTypeString,
+	"number":  ContextVariableTypeNumber,
+	"entity":  ContextVariableTypeEntity,
+	"boolean": ContextVariableTypeBoolean,
+	"list":    ContextVariableTypeList,
+}
+
 // GetContextVariableTypeEnumValues Enumerates the set of values for ContextVariableTypeEnum
 func GetContextVariableTypeEnumValues() []ContextVariableTypeEnum {
 	values := make([]ContextVariableTypeEnum, 0)
@@ -89,11 +97,6 @@ func GetContextVariableTypeEnumStringValues() []string {
 
 // GetMappingContextVariableTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingContextVariableTypeEnum(val string) (ContextVariableTypeEnum, bool) {
-	mappingContextVariableTypeEnumIgnoreCase := make(map[string]ContextVariableTypeEnum)
-	for k, v := range mappingContextVariableTypeEnum {
-		mappingContextVariableTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingContextVariableTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingContextVariableTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

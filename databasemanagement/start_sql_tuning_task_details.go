@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -135,6 +135,11 @@ var mappingStartSqlTuningTaskDetailsScopeEnum = map[string]StartSqlTuningTaskDet
 	"COMPREHENSIVE": StartSqlTuningTaskDetailsScopeComprehensive,
 }
 
+var mappingStartSqlTuningTaskDetailsScopeEnumLowerCase = map[string]StartSqlTuningTaskDetailsScopeEnum{
+	"limited":       StartSqlTuningTaskDetailsScopeLimited,
+	"comprehensive": StartSqlTuningTaskDetailsScopeComprehensive,
+}
+
 // GetStartSqlTuningTaskDetailsScopeEnumValues Enumerates the set of values for StartSqlTuningTaskDetailsScopeEnum
 func GetStartSqlTuningTaskDetailsScopeEnumValues() []StartSqlTuningTaskDetailsScopeEnum {
 	values := make([]StartSqlTuningTaskDetailsScopeEnum, 0)
@@ -154,11 +159,6 @@ func GetStartSqlTuningTaskDetailsScopeEnumStringValues() []string {
 
 // GetMappingStartSqlTuningTaskDetailsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStartSqlTuningTaskDetailsScopeEnum(val string) (StartSqlTuningTaskDetailsScopeEnum, bool) {
-	mappingStartSqlTuningTaskDetailsScopeEnumIgnoreCase := make(map[string]StartSqlTuningTaskDetailsScopeEnum)
-	for k, v := range mappingStartSqlTuningTaskDetailsScopeEnum {
-		mappingStartSqlTuningTaskDetailsScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStartSqlTuningTaskDetailsScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStartSqlTuningTaskDetailsScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

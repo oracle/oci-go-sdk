@@ -13,7 +13,7 @@ package waf
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -215,6 +215,15 @@ var mappingWebAppFirewallLifecycleStateEnum = map[string]WebAppFirewallLifecycle
 	"FAILED":   WebAppFirewallLifecycleStateFailed,
 }
 
+var mappingWebAppFirewallLifecycleStateEnumLowerCase = map[string]WebAppFirewallLifecycleStateEnum{
+	"creating": WebAppFirewallLifecycleStateCreating,
+	"updating": WebAppFirewallLifecycleStateUpdating,
+	"active":   WebAppFirewallLifecycleStateActive,
+	"deleting": WebAppFirewallLifecycleStateDeleting,
+	"deleted":  WebAppFirewallLifecycleStateDeleted,
+	"failed":   WebAppFirewallLifecycleStateFailed,
+}
+
 // GetWebAppFirewallLifecycleStateEnumValues Enumerates the set of values for WebAppFirewallLifecycleStateEnum
 func GetWebAppFirewallLifecycleStateEnumValues() []WebAppFirewallLifecycleStateEnum {
 	values := make([]WebAppFirewallLifecycleStateEnum, 0)
@@ -238,11 +247,6 @@ func GetWebAppFirewallLifecycleStateEnumStringValues() []string {
 
 // GetMappingWebAppFirewallLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWebAppFirewallLifecycleStateEnum(val string) (WebAppFirewallLifecycleStateEnum, bool) {
-	mappingWebAppFirewallLifecycleStateEnumIgnoreCase := make(map[string]WebAppFirewallLifecycleStateEnum)
-	for k, v := range mappingWebAppFirewallLifecycleStateEnum {
-		mappingWebAppFirewallLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWebAppFirewallLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWebAppFirewallLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

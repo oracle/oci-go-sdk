@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -124,6 +124,12 @@ var mappingTestParserScopeEnum = map[string]TestParserScopeEnum{
 	"LOG_LINES_LOG_ENTRIES": TestParserScopeLinesLogEntries,
 }
 
+var mappingTestParserScopeEnumLowerCase = map[string]TestParserScopeEnum{
+	"log_lines":             TestParserScopeLines,
+	"log_entries":           TestParserScopeEntries,
+	"log_lines_log_entries": TestParserScopeLinesLogEntries,
+}
+
 // GetTestParserScopeEnumValues Enumerates the set of values for TestParserScopeEnum
 func GetTestParserScopeEnumValues() []TestParserScopeEnum {
 	values := make([]TestParserScopeEnum, 0)
@@ -144,11 +150,6 @@ func GetTestParserScopeEnumStringValues() []string {
 
 // GetMappingTestParserScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTestParserScopeEnum(val string) (TestParserScopeEnum, bool) {
-	mappingTestParserScopeEnumIgnoreCase := make(map[string]TestParserScopeEnum)
-	for k, v := range mappingTestParserScopeEnum {
-		mappingTestParserScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTestParserScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTestParserScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

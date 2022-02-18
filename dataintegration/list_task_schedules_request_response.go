@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -150,6 +150,11 @@ var mappingListTaskSchedulesSortByEnum = map[string]ListTaskSchedulesSortByEnum{
 	"DISPLAY_NAME": ListTaskSchedulesSortByDisplayName,
 }
 
+var mappingListTaskSchedulesSortByEnumLowerCase = map[string]ListTaskSchedulesSortByEnum{
+	"time_created": ListTaskSchedulesSortByTimeCreated,
+	"display_name": ListTaskSchedulesSortByDisplayName,
+}
+
 // GetListTaskSchedulesSortByEnumValues Enumerates the set of values for ListTaskSchedulesSortByEnum
 func GetListTaskSchedulesSortByEnumValues() []ListTaskSchedulesSortByEnum {
 	values := make([]ListTaskSchedulesSortByEnum, 0)
@@ -169,12 +174,7 @@ func GetListTaskSchedulesSortByEnumStringValues() []string {
 
 // GetMappingListTaskSchedulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTaskSchedulesSortByEnum(val string) (ListTaskSchedulesSortByEnum, bool) {
-	mappingListTaskSchedulesSortByEnumIgnoreCase := make(map[string]ListTaskSchedulesSortByEnum)
-	for k, v := range mappingListTaskSchedulesSortByEnum {
-		mappingListTaskSchedulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTaskSchedulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTaskSchedulesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -190,6 +190,11 @@ const (
 var mappingListTaskSchedulesSortOrderEnum = map[string]ListTaskSchedulesSortOrderEnum{
 	"ASC":  ListTaskSchedulesSortOrderAsc,
 	"DESC": ListTaskSchedulesSortOrderDesc,
+}
+
+var mappingListTaskSchedulesSortOrderEnumLowerCase = map[string]ListTaskSchedulesSortOrderEnum{
+	"asc":  ListTaskSchedulesSortOrderAsc,
+	"desc": ListTaskSchedulesSortOrderDesc,
 }
 
 // GetListTaskSchedulesSortOrderEnumValues Enumerates the set of values for ListTaskSchedulesSortOrderEnum
@@ -211,11 +216,6 @@ func GetListTaskSchedulesSortOrderEnumStringValues() []string {
 
 // GetMappingListTaskSchedulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTaskSchedulesSortOrderEnum(val string) (ListTaskSchedulesSortOrderEnum, bool) {
-	mappingListTaskSchedulesSortOrderEnumIgnoreCase := make(map[string]ListTaskSchedulesSortOrderEnum)
-	for k, v := range mappingListTaskSchedulesSortOrderEnum {
-		mappingListTaskSchedulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTaskSchedulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTaskSchedulesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

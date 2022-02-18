@@ -15,29 +15,29 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
-// PhaseTwoConfigDetails Phase 2 Configuration Details
+// PhaseTwoConfigDetails Configuration details for IPSec phase two configuration parameters.
 type PhaseTwoConfigDetails struct {
 
-	// Indicates whether custom phase two configuration is enabled.
+	// Indicates whether custom configuration is enabled for phase two options.
 	IsCustomPhaseTwoConfig *bool `mandatory:"false" json:"isCustomPhaseTwoConfig"`
 
-	// Phase two authentication algorithm supported during tunnel negotiation.
+	// The authentication algorithm proposed during phase two tunnel negotiation.
 	AuthenticationAlgorithm PhaseTwoConfigDetailsAuthenticationAlgorithmEnum `mandatory:"false" json:"authenticationAlgorithm,omitempty"`
 
-	// Phase two encryption algorithm supported during tunnel negotiation.
+	// The encryption algorithm proposed during phase two tunnel negotiation.
 	EncryptionAlgorithm PhaseTwoConfigDetailsEncryptionAlgorithmEnum `mandatory:"false" json:"encryptionAlgorithm,omitempty"`
 
-	// Lifetime in seconds for IPSec phase two.
+	// Lifetime in seconds for the IPSec session key set in phase two. The default is 3600 which is equivalent to 1 hour.
 	LifetimeInSeconds *int `mandatory:"false" json:"lifetimeInSeconds"`
 
 	// Indicates whether perfect forward secrecy (PFS) is enabled.
 	IsPfsEnabled *bool `mandatory:"false" json:"isPfsEnabled"`
 
-	// Diffie-Hellman group used for PFS.
+	// The Diffie-Hellman group used for PFS, if PFS is enabled.
 	PfsDhGroup PhaseTwoConfigDetailsPfsDhGroupEnum `mandatory:"false" json:"pfsDhGroup,omitempty"`
 }
 
@@ -80,6 +80,11 @@ var mappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnum = map[string]PhaseTw
 	"HMAC_SHA1_128":     PhaseTwoConfigDetailsAuthenticationAlgorithmSha1128,
 }
 
+var mappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnumLowerCase = map[string]PhaseTwoConfigDetailsAuthenticationAlgorithmEnum{
+	"hmac_sha2_256_128": PhaseTwoConfigDetailsAuthenticationAlgorithmSha2256128,
+	"hmac_sha1_128":     PhaseTwoConfigDetailsAuthenticationAlgorithmSha1128,
+}
+
 // GetPhaseTwoConfigDetailsAuthenticationAlgorithmEnumValues Enumerates the set of values for PhaseTwoConfigDetailsAuthenticationAlgorithmEnum
 func GetPhaseTwoConfigDetailsAuthenticationAlgorithmEnumValues() []PhaseTwoConfigDetailsAuthenticationAlgorithmEnum {
 	values := make([]PhaseTwoConfigDetailsAuthenticationAlgorithmEnum, 0)
@@ -99,12 +104,7 @@ func GetPhaseTwoConfigDetailsAuthenticationAlgorithmEnumStringValues() []string 
 
 // GetMappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnum(val string) (PhaseTwoConfigDetailsAuthenticationAlgorithmEnum, bool) {
-	mappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnumIgnoreCase := make(map[string]PhaseTwoConfigDetailsAuthenticationAlgorithmEnum)
-	for k, v := range mappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnum {
-		mappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPhaseTwoConfigDetailsAuthenticationAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -130,6 +130,15 @@ var mappingPhaseTwoConfigDetailsEncryptionAlgorithmEnum = map[string]PhaseTwoCon
 	"AES_128_CBC": PhaseTwoConfigDetailsEncryptionAlgorithm128Cbc,
 }
 
+var mappingPhaseTwoConfigDetailsEncryptionAlgorithmEnumLowerCase = map[string]PhaseTwoConfigDetailsEncryptionAlgorithmEnum{
+	"aes_256_gcm": PhaseTwoConfigDetailsEncryptionAlgorithm256Gcm,
+	"aes_192_gcm": PhaseTwoConfigDetailsEncryptionAlgorithm192Gcm,
+	"aes_128_gcm": PhaseTwoConfigDetailsEncryptionAlgorithm128Gcm,
+	"aes_256_cbc": PhaseTwoConfigDetailsEncryptionAlgorithm256Cbc,
+	"aes_192_cbc": PhaseTwoConfigDetailsEncryptionAlgorithm192Cbc,
+	"aes_128_cbc": PhaseTwoConfigDetailsEncryptionAlgorithm128Cbc,
+}
+
 // GetPhaseTwoConfigDetailsEncryptionAlgorithmEnumValues Enumerates the set of values for PhaseTwoConfigDetailsEncryptionAlgorithmEnum
 func GetPhaseTwoConfigDetailsEncryptionAlgorithmEnumValues() []PhaseTwoConfigDetailsEncryptionAlgorithmEnum {
 	values := make([]PhaseTwoConfigDetailsEncryptionAlgorithmEnum, 0)
@@ -153,12 +162,7 @@ func GetPhaseTwoConfigDetailsEncryptionAlgorithmEnumStringValues() []string {
 
 // GetMappingPhaseTwoConfigDetailsEncryptionAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPhaseTwoConfigDetailsEncryptionAlgorithmEnum(val string) (PhaseTwoConfigDetailsEncryptionAlgorithmEnum, bool) {
-	mappingPhaseTwoConfigDetailsEncryptionAlgorithmEnumIgnoreCase := make(map[string]PhaseTwoConfigDetailsEncryptionAlgorithmEnum)
-	for k, v := range mappingPhaseTwoConfigDetailsEncryptionAlgorithmEnum {
-		mappingPhaseTwoConfigDetailsEncryptionAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPhaseTwoConfigDetailsEncryptionAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPhaseTwoConfigDetailsEncryptionAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -184,6 +188,15 @@ var mappingPhaseTwoConfigDetailsPfsDhGroupEnum = map[string]PhaseTwoConfigDetail
 	"GROUP24": PhaseTwoConfigDetailsPfsDhGroupGroup24,
 }
 
+var mappingPhaseTwoConfigDetailsPfsDhGroupEnumLowerCase = map[string]PhaseTwoConfigDetailsPfsDhGroupEnum{
+	"group2":  PhaseTwoConfigDetailsPfsDhGroupGroup2,
+	"group5":  PhaseTwoConfigDetailsPfsDhGroupGroup5,
+	"group14": PhaseTwoConfigDetailsPfsDhGroupGroup14,
+	"group19": PhaseTwoConfigDetailsPfsDhGroupGroup19,
+	"group20": PhaseTwoConfigDetailsPfsDhGroupGroup20,
+	"group24": PhaseTwoConfigDetailsPfsDhGroupGroup24,
+}
+
 // GetPhaseTwoConfigDetailsPfsDhGroupEnumValues Enumerates the set of values for PhaseTwoConfigDetailsPfsDhGroupEnum
 func GetPhaseTwoConfigDetailsPfsDhGroupEnumValues() []PhaseTwoConfigDetailsPfsDhGroupEnum {
 	values := make([]PhaseTwoConfigDetailsPfsDhGroupEnum, 0)
@@ -207,11 +220,6 @@ func GetPhaseTwoConfigDetailsPfsDhGroupEnumStringValues() []string {
 
 // GetMappingPhaseTwoConfigDetailsPfsDhGroupEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPhaseTwoConfigDetailsPfsDhGroupEnum(val string) (PhaseTwoConfigDetailsPfsDhGroupEnum, bool) {
-	mappingPhaseTwoConfigDetailsPfsDhGroupEnumIgnoreCase := make(map[string]PhaseTwoConfigDetailsPfsDhGroupEnum)
-	for k, v := range mappingPhaseTwoConfigDetailsPfsDhGroupEnum {
-		mappingPhaseTwoConfigDetailsPfsDhGroupEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPhaseTwoConfigDetailsPfsDhGroupEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPhaseTwoConfigDetailsPfsDhGroupEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

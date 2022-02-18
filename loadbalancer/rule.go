@@ -13,7 +13,7 @@ package loadbalancer
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -142,6 +142,19 @@ var mappingRuleActionEnum = map[string]RuleActionEnum{
 	"HTTP_HEADER":                       RuleActionHttpHeader,
 }
 
+var mappingRuleActionEnumLowerCase = map[string]RuleActionEnum{
+	"add_http_request_header":           RuleActionAddHttpRequestHeader,
+	"extend_http_request_header_value":  RuleActionExtendHttpRequestHeaderValue,
+	"remove_http_request_header":        RuleActionRemoveHttpRequestHeader,
+	"add_http_response_header":          RuleActionAddHttpResponseHeader,
+	"extend_http_response_header_value": RuleActionExtendHttpResponseHeaderValue,
+	"remove_http_response_header":       RuleActionRemoveHttpResponseHeader,
+	"allow":                             RuleActionAllow,
+	"control_access_using_http_methods": RuleActionControlAccessUsingHttpMethods,
+	"redirect":                          RuleActionRedirect,
+	"http_header":                       RuleActionHttpHeader,
+}
+
 // GetRuleActionEnumValues Enumerates the set of values for RuleActionEnum
 func GetRuleActionEnumValues() []RuleActionEnum {
 	values := make([]RuleActionEnum, 0)
@@ -169,11 +182,6 @@ func GetRuleActionEnumStringValues() []string {
 
 // GetMappingRuleActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRuleActionEnum(val string) (RuleActionEnum, bool) {
-	mappingRuleActionEnumIgnoreCase := make(map[string]RuleActionEnum)
-	for k, v := range mappingRuleActionEnum {
-		mappingRuleActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRuleActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRuleActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

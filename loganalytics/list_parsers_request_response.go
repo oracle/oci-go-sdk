@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -173,6 +173,13 @@ var mappingListParsersSourceTypeEnum = map[string]ListParsersSourceTypeEnum{
 	"OS_WINDOWS_SYS": ListParsersSourceTypeOsWindowsSys,
 }
 
+var mappingListParsersSourceTypeEnumLowerCase = map[string]ListParsersSourceTypeEnum{
+	"os_file":        ListParsersSourceTypeOsFile,
+	"syslog":         ListParsersSourceTypeSyslog,
+	"odl":            ListParsersSourceTypeOdl,
+	"os_windows_sys": ListParsersSourceTypeOsWindowsSys,
+}
+
 // GetListParsersSourceTypeEnumValues Enumerates the set of values for ListParsersSourceTypeEnum
 func GetListParsersSourceTypeEnumValues() []ListParsersSourceTypeEnum {
 	values := make([]ListParsersSourceTypeEnum, 0)
@@ -194,12 +201,7 @@ func GetListParsersSourceTypeEnumStringValues() []string {
 
 // GetMappingListParsersSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListParsersSourceTypeEnum(val string) (ListParsersSourceTypeEnum, bool) {
-	mappingListParsersSourceTypeEnumIgnoreCase := make(map[string]ListParsersSourceTypeEnum)
-	for k, v := range mappingListParsersSourceTypeEnum {
-		mappingListParsersSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListParsersSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListParsersSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -225,6 +227,15 @@ var mappingListParsersParserTypeEnum = map[string]ListParsersParserTypeEnum{
 	"DELIMITED": ListParsersParserTypeDelimited,
 }
 
+var mappingListParsersParserTypeEnumLowerCase = map[string]ListParsersParserTypeEnum{
+	"all":       ListParsersParserTypeAll,
+	"regex":     ListParsersParserTypeRegex,
+	"xml":       ListParsersParserTypeXml,
+	"json":      ListParsersParserTypeJson,
+	"odl":       ListParsersParserTypeOdl,
+	"delimited": ListParsersParserTypeDelimited,
+}
+
 // GetListParsersParserTypeEnumValues Enumerates the set of values for ListParsersParserTypeEnum
 func GetListParsersParserTypeEnumValues() []ListParsersParserTypeEnum {
 	values := make([]ListParsersParserTypeEnum, 0)
@@ -248,12 +259,7 @@ func GetListParsersParserTypeEnumStringValues() []string {
 
 // GetMappingListParsersParserTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListParsersParserTypeEnum(val string) (ListParsersParserTypeEnum, bool) {
-	mappingListParsersParserTypeEnumIgnoreCase := make(map[string]ListParsersParserTypeEnum)
-	for k, v := range mappingListParsersParserTypeEnum {
-		mappingListParsersParserTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListParsersParserTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListParsersParserTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -271,6 +277,12 @@ var mappingListParsersIsSystemEnum = map[string]ListParsersIsSystemEnum{
 	"ALL":      ListParsersIsSystemAll,
 	"CUSTOM":   ListParsersIsSystemCustom,
 	"BUILT_IN": ListParsersIsSystemBuiltIn,
+}
+
+var mappingListParsersIsSystemEnumLowerCase = map[string]ListParsersIsSystemEnum{
+	"all":      ListParsersIsSystemAll,
+	"custom":   ListParsersIsSystemCustom,
+	"built_in": ListParsersIsSystemBuiltIn,
 }
 
 // GetListParsersIsSystemEnumValues Enumerates the set of values for ListParsersIsSystemEnum
@@ -293,12 +305,7 @@ func GetListParsersIsSystemEnumStringValues() []string {
 
 // GetMappingListParsersIsSystemEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListParsersIsSystemEnum(val string) (ListParsersIsSystemEnum, bool) {
-	mappingListParsersIsSystemEnumIgnoreCase := make(map[string]ListParsersIsSystemEnum)
-	for k, v := range mappingListParsersIsSystemEnum {
-		mappingListParsersIsSystemEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListParsersIsSystemEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListParsersIsSystemEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -314,6 +321,11 @@ const (
 var mappingListParsersSortOrderEnum = map[string]ListParsersSortOrderEnum{
 	"ASC":  ListParsersSortOrderAsc,
 	"DESC": ListParsersSortOrderDesc,
+}
+
+var mappingListParsersSortOrderEnumLowerCase = map[string]ListParsersSortOrderEnum{
+	"asc":  ListParsersSortOrderAsc,
+	"desc": ListParsersSortOrderDesc,
 }
 
 // GetListParsersSortOrderEnumValues Enumerates the set of values for ListParsersSortOrderEnum
@@ -335,12 +347,7 @@ func GetListParsersSortOrderEnumStringValues() []string {
 
 // GetMappingListParsersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListParsersSortOrderEnum(val string) (ListParsersSortOrderEnum, bool) {
-	mappingListParsersSortOrderEnumIgnoreCase := make(map[string]ListParsersSortOrderEnum)
-	for k, v := range mappingListParsersSortOrderEnum {
-		mappingListParsersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListParsersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListParsersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -360,6 +367,13 @@ var mappingListParsersSortByEnum = map[string]ListParsersSortByEnum{
 	"type":         ListParsersSortByType,
 	"sourcesCount": ListParsersSortBySourcescount,
 	"timeUpdated":  ListParsersSortByTimeupdated,
+}
+
+var mappingListParsersSortByEnumLowerCase = map[string]ListParsersSortByEnum{
+	"name":         ListParsersSortByName,
+	"type":         ListParsersSortByType,
+	"sourcescount": ListParsersSortBySourcescount,
+	"timeupdated":  ListParsersSortByTimeupdated,
 }
 
 // GetListParsersSortByEnumValues Enumerates the set of values for ListParsersSortByEnum
@@ -383,11 +397,6 @@ func GetListParsersSortByEnumStringValues() []string {
 
 // GetMappingListParsersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListParsersSortByEnum(val string) (ListParsersSortByEnum, bool) {
-	mappingListParsersSortByEnumIgnoreCase := make(map[string]ListParsersSortByEnum)
-	for k, v := range mappingListParsersSortByEnum {
-		mappingListParsersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListParsersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListParsersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

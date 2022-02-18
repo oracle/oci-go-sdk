@@ -6,7 +6,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -150,6 +150,11 @@ var mappingListVaultReplicasSortByEnum = map[string]ListVaultReplicasSortByEnum{
 	"DISPLAYNAME": ListVaultReplicasSortByDisplayname,
 }
 
+var mappingListVaultReplicasSortByEnumLowerCase = map[string]ListVaultReplicasSortByEnum{
+	"timecreated": ListVaultReplicasSortByTimecreated,
+	"displayname": ListVaultReplicasSortByDisplayname,
+}
+
 // GetListVaultReplicasSortByEnumValues Enumerates the set of values for ListVaultReplicasSortByEnum
 func GetListVaultReplicasSortByEnumValues() []ListVaultReplicasSortByEnum {
 	values := make([]ListVaultReplicasSortByEnum, 0)
@@ -169,12 +174,7 @@ func GetListVaultReplicasSortByEnumStringValues() []string {
 
 // GetMappingListVaultReplicasSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListVaultReplicasSortByEnum(val string) (ListVaultReplicasSortByEnum, bool) {
-	mappingListVaultReplicasSortByEnumIgnoreCase := make(map[string]ListVaultReplicasSortByEnum)
-	for k, v := range mappingListVaultReplicasSortByEnum {
-		mappingListVaultReplicasSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListVaultReplicasSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListVaultReplicasSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -190,6 +190,11 @@ const (
 var mappingListVaultReplicasSortOrderEnum = map[string]ListVaultReplicasSortOrderEnum{
 	"ASC":  ListVaultReplicasSortOrderAsc,
 	"DESC": ListVaultReplicasSortOrderDesc,
+}
+
+var mappingListVaultReplicasSortOrderEnumLowerCase = map[string]ListVaultReplicasSortOrderEnum{
+	"asc":  ListVaultReplicasSortOrderAsc,
+	"desc": ListVaultReplicasSortOrderDesc,
 }
 
 // GetListVaultReplicasSortOrderEnumValues Enumerates the set of values for ListVaultReplicasSortOrderEnum
@@ -211,11 +216,6 @@ func GetListVaultReplicasSortOrderEnumStringValues() []string {
 
 // GetMappingListVaultReplicasSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListVaultReplicasSortOrderEnum(val string) (ListVaultReplicasSortOrderEnum, bool) {
-	mappingListVaultReplicasSortOrderEnumIgnoreCase := make(map[string]ListVaultReplicasSortOrderEnum)
-	for k, v := range mappingListVaultReplicasSortOrderEnum {
-		mappingListVaultReplicasSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListVaultReplicasSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListVaultReplicasSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

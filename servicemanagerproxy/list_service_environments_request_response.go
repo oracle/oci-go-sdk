@@ -6,7 +6,7 @@ package servicemanagerproxy
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -136,6 +136,10 @@ var mappingListServiceEnvironmentsSortByEnum = map[string]ListServiceEnvironment
 	"ID": ListServiceEnvironmentsSortById,
 }
 
+var mappingListServiceEnvironmentsSortByEnumLowerCase = map[string]ListServiceEnvironmentsSortByEnum{
+	"id": ListServiceEnvironmentsSortById,
+}
+
 // GetListServiceEnvironmentsSortByEnumValues Enumerates the set of values for ListServiceEnvironmentsSortByEnum
 func GetListServiceEnvironmentsSortByEnumValues() []ListServiceEnvironmentsSortByEnum {
 	values := make([]ListServiceEnvironmentsSortByEnum, 0)
@@ -154,12 +158,7 @@ func GetListServiceEnvironmentsSortByEnumStringValues() []string {
 
 // GetMappingListServiceEnvironmentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListServiceEnvironmentsSortByEnum(val string) (ListServiceEnvironmentsSortByEnum, bool) {
-	mappingListServiceEnvironmentsSortByEnumIgnoreCase := make(map[string]ListServiceEnvironmentsSortByEnum)
-	for k, v := range mappingListServiceEnvironmentsSortByEnum {
-		mappingListServiceEnvironmentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListServiceEnvironmentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListServiceEnvironmentsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -175,6 +174,11 @@ const (
 var mappingListServiceEnvironmentsSortOrderEnum = map[string]ListServiceEnvironmentsSortOrderEnum{
 	"ASC":  ListServiceEnvironmentsSortOrderAsc,
 	"DESC": ListServiceEnvironmentsSortOrderDesc,
+}
+
+var mappingListServiceEnvironmentsSortOrderEnumLowerCase = map[string]ListServiceEnvironmentsSortOrderEnum{
+	"asc":  ListServiceEnvironmentsSortOrderAsc,
+	"desc": ListServiceEnvironmentsSortOrderDesc,
 }
 
 // GetListServiceEnvironmentsSortOrderEnumValues Enumerates the set of values for ListServiceEnvironmentsSortOrderEnum
@@ -196,11 +200,6 @@ func GetListServiceEnvironmentsSortOrderEnumStringValues() []string {
 
 // GetMappingListServiceEnvironmentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListServiceEnvironmentsSortOrderEnum(val string) (ListServiceEnvironmentsSortOrderEnum, bool) {
-	mappingListServiceEnvironmentsSortOrderEnumIgnoreCase := make(map[string]ListServiceEnvironmentsSortOrderEnum)
-	for k, v := range mappingListServiceEnvironmentsSortOrderEnum {
-		mappingListServiceEnvironmentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListServiceEnvironmentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListServiceEnvironmentsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

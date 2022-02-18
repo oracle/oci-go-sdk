@@ -25,6 +25,10 @@ var mappingServiceCapabilityEnum = map[string]ServiceCapabilityEnum{
 	"PRIVATE_ENDPOINT_SUPPORTED": ServiceCapabilityPrivateEndpointSupported,
 }
 
+var mappingServiceCapabilityEnumLowerCase = map[string]ServiceCapabilityEnum{
+	"private_endpoint_supported": ServiceCapabilityPrivateEndpointSupported,
+}
+
 // GetServiceCapabilityEnumValues Enumerates the set of values for ServiceCapabilityEnum
 func GetServiceCapabilityEnumValues() []ServiceCapabilityEnum {
 	values := make([]ServiceCapabilityEnum, 0)
@@ -43,11 +47,6 @@ func GetServiceCapabilityEnumStringValues() []string {
 
 // GetMappingServiceCapabilityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingServiceCapabilityEnum(val string) (ServiceCapabilityEnum, bool) {
-	mappingServiceCapabilityEnumIgnoreCase := make(map[string]ServiceCapabilityEnum)
-	for k, v := range mappingServiceCapabilityEnum {
-		mappingServiceCapabilityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingServiceCapabilityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingServiceCapabilityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

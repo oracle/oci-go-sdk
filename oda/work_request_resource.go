@@ -11,7 +11,7 @@ package oda
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -91,6 +91,19 @@ var mappingWorkRequestResourceResourceActionEnum = map[string]WorkRequestResourc
 	"UPDATE_ENTITLEMENTS_FOR_CACCT": WorkRequestResourceResourceActionUpdateEntitlementsForCacct,
 }
 
+var mappingWorkRequestResourceResourceActionEnumLowerCase = map[string]WorkRequestResourceResourceActionEnum{
+	"create":                        WorkRequestResourceResourceActionCreate,
+	"delete":                        WorkRequestResourceResourceActionDelete,
+	"purge":                         WorkRequestResourceResourceActionPurge,
+	"recover":                       WorkRequestResourceResourceActionRecover,
+	"stop":                          WorkRequestResourceResourceActionStop,
+	"start":                         WorkRequestResourceResourceActionStart,
+	"change_compartment":            WorkRequestResourceResourceActionChangeCompartment,
+	"create_association":            WorkRequestResourceResourceActionCreateAssociation,
+	"delete_association":            WorkRequestResourceResourceActionDeleteAssociation,
+	"update_entitlements_for_cacct": WorkRequestResourceResourceActionUpdateEntitlementsForCacct,
+}
+
 // GetWorkRequestResourceResourceActionEnumValues Enumerates the set of values for WorkRequestResourceResourceActionEnum
 func GetWorkRequestResourceResourceActionEnumValues() []WorkRequestResourceResourceActionEnum {
 	values := make([]WorkRequestResourceResourceActionEnum, 0)
@@ -118,12 +131,7 @@ func GetWorkRequestResourceResourceActionEnumStringValues() []string {
 
 // GetMappingWorkRequestResourceResourceActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestResourceResourceActionEnum(val string) (WorkRequestResourceResourceActionEnum, bool) {
-	mappingWorkRequestResourceResourceActionEnumIgnoreCase := make(map[string]WorkRequestResourceResourceActionEnum)
-	for k, v := range mappingWorkRequestResourceResourceActionEnum {
-		mappingWorkRequestResourceResourceActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestResourceResourceActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestResourceResourceActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -149,6 +157,15 @@ var mappingWorkRequestResourceStatusEnum = map[string]WorkRequestResourceStatusE
 	"CANCELED":    WorkRequestResourceStatusCanceled,
 }
 
+var mappingWorkRequestResourceStatusEnumLowerCase = map[string]WorkRequestResourceStatusEnum{
+	"accepted":    WorkRequestResourceStatusAccepted,
+	"in_progress": WorkRequestResourceStatusInProgress,
+	"succeeded":   WorkRequestResourceStatusSucceeded,
+	"failed":      WorkRequestResourceStatusFailed,
+	"canceling":   WorkRequestResourceStatusCanceling,
+	"canceled":    WorkRequestResourceStatusCanceled,
+}
+
 // GetWorkRequestResourceStatusEnumValues Enumerates the set of values for WorkRequestResourceStatusEnum
 func GetWorkRequestResourceStatusEnumValues() []WorkRequestResourceStatusEnum {
 	values := make([]WorkRequestResourceStatusEnum, 0)
@@ -172,11 +189,6 @@ func GetWorkRequestResourceStatusEnumStringValues() []string {
 
 // GetMappingWorkRequestResourceStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestResourceStatusEnum(val string) (WorkRequestResourceStatusEnum, bool) {
-	mappingWorkRequestResourceStatusEnumIgnoreCase := make(map[string]WorkRequestResourceStatusEnum)
-	for k, v := range mappingWorkRequestResourceStatusEnum {
-		mappingWorkRequestResourceStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestResourceStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestResourceStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

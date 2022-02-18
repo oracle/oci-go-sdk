@@ -6,7 +6,7 @@ package vault
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -143,6 +143,11 @@ var mappingListSecretsSortByEnum = map[string]ListSecretsSortByEnum{
 	"NAME":        ListSecretsSortByName,
 }
 
+var mappingListSecretsSortByEnumLowerCase = map[string]ListSecretsSortByEnum{
+	"timecreated": ListSecretsSortByTimecreated,
+	"name":        ListSecretsSortByName,
+}
+
 // GetListSecretsSortByEnumValues Enumerates the set of values for ListSecretsSortByEnum
 func GetListSecretsSortByEnumValues() []ListSecretsSortByEnum {
 	values := make([]ListSecretsSortByEnum, 0)
@@ -162,12 +167,7 @@ func GetListSecretsSortByEnumStringValues() []string {
 
 // GetMappingListSecretsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSecretsSortByEnum(val string) (ListSecretsSortByEnum, bool) {
-	mappingListSecretsSortByEnumIgnoreCase := make(map[string]ListSecretsSortByEnum)
-	for k, v := range mappingListSecretsSortByEnum {
-		mappingListSecretsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSecretsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSecretsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +183,11 @@ const (
 var mappingListSecretsSortOrderEnum = map[string]ListSecretsSortOrderEnum{
 	"ASC":  ListSecretsSortOrderAsc,
 	"DESC": ListSecretsSortOrderDesc,
+}
+
+var mappingListSecretsSortOrderEnumLowerCase = map[string]ListSecretsSortOrderEnum{
+	"asc":  ListSecretsSortOrderAsc,
+	"desc": ListSecretsSortOrderDesc,
 }
 
 // GetListSecretsSortOrderEnumValues Enumerates the set of values for ListSecretsSortOrderEnum
@@ -204,11 +209,6 @@ func GetListSecretsSortOrderEnumStringValues() []string {
 
 // GetMappingListSecretsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSecretsSortOrderEnum(val string) (ListSecretsSortOrderEnum, bool) {
-	mappingListSecretsSortOrderEnumIgnoreCase := make(map[string]ListSecretsSortOrderEnum)
-	for k, v := range mappingListSecretsSortOrderEnum {
-		mappingListSecretsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSecretsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSecretsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

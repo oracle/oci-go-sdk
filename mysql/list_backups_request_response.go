@@ -6,7 +6,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -154,6 +154,12 @@ var mappingListBackupsSortByEnum = map[string]ListBackupsSortByEnum{
 	"displayName": ListBackupsSortByDisplayname,
 }
 
+var mappingListBackupsSortByEnumLowerCase = map[string]ListBackupsSortByEnum{
+	"timecreated": ListBackupsSortByTimecreated,
+	"timeupdated": ListBackupsSortByTimeupdated,
+	"displayname": ListBackupsSortByDisplayname,
+}
+
 // GetListBackupsSortByEnumValues Enumerates the set of values for ListBackupsSortByEnum
 func GetListBackupsSortByEnumValues() []ListBackupsSortByEnum {
 	values := make([]ListBackupsSortByEnum, 0)
@@ -174,12 +180,7 @@ func GetListBackupsSortByEnumStringValues() []string {
 
 // GetMappingListBackupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBackupsSortByEnum(val string) (ListBackupsSortByEnum, bool) {
-	mappingListBackupsSortByEnumIgnoreCase := make(map[string]ListBackupsSortByEnum)
-	for k, v := range mappingListBackupsSortByEnum {
-		mappingListBackupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBackupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBackupsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -195,6 +196,11 @@ const (
 var mappingListBackupsSortOrderEnum = map[string]ListBackupsSortOrderEnum{
 	"ASC":  ListBackupsSortOrderAsc,
 	"DESC": ListBackupsSortOrderDesc,
+}
+
+var mappingListBackupsSortOrderEnumLowerCase = map[string]ListBackupsSortOrderEnum{
+	"asc":  ListBackupsSortOrderAsc,
+	"desc": ListBackupsSortOrderDesc,
 }
 
 // GetListBackupsSortOrderEnumValues Enumerates the set of values for ListBackupsSortOrderEnum
@@ -216,11 +222,6 @@ func GetListBackupsSortOrderEnumStringValues() []string {
 
 // GetMappingListBackupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBackupsSortOrderEnum(val string) (ListBackupsSortOrderEnum, bool) {
-	mappingListBackupsSortOrderEnumIgnoreCase := make(map[string]ListBackupsSortOrderEnum)
-	for k, v := range mappingListBackupsSortOrderEnum {
-		mappingListBackupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBackupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBackupsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

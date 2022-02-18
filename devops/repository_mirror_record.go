@@ -11,7 +11,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -77,6 +77,14 @@ var mappingRepositoryMirrorRecordMirrorStatusEnum = map[string]RepositoryMirrorR
 	"FAILED":  RepositoryMirrorRecordMirrorStatusFailed,
 }
 
+var mappingRepositoryMirrorRecordMirrorStatusEnumLowerCase = map[string]RepositoryMirrorRecordMirrorStatusEnum{
+	"none":    RepositoryMirrorRecordMirrorStatusNone,
+	"queued":  RepositoryMirrorRecordMirrorStatusQueued,
+	"running": RepositoryMirrorRecordMirrorStatusRunning,
+	"passed":  RepositoryMirrorRecordMirrorStatusPassed,
+	"failed":  RepositoryMirrorRecordMirrorStatusFailed,
+}
+
 // GetRepositoryMirrorRecordMirrorStatusEnumValues Enumerates the set of values for RepositoryMirrorRecordMirrorStatusEnum
 func GetRepositoryMirrorRecordMirrorStatusEnumValues() []RepositoryMirrorRecordMirrorStatusEnum {
 	values := make([]RepositoryMirrorRecordMirrorStatusEnum, 0)
@@ -99,11 +107,6 @@ func GetRepositoryMirrorRecordMirrorStatusEnumStringValues() []string {
 
 // GetMappingRepositoryMirrorRecordMirrorStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRepositoryMirrorRecordMirrorStatusEnum(val string) (RepositoryMirrorRecordMirrorStatusEnum, bool) {
-	mappingRepositoryMirrorRecordMirrorStatusEnumIgnoreCase := make(map[string]RepositoryMirrorRecordMirrorStatusEnum)
-	for k, v := range mappingRepositoryMirrorRecordMirrorStatusEnum {
-		mappingRepositoryMirrorRecordMirrorStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRepositoryMirrorRecordMirrorStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRepositoryMirrorRecordMirrorStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

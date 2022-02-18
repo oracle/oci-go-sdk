@@ -31,6 +31,13 @@ var mappingNotebookSessionShapeSeriesEnum = map[string]NotebookSessionShapeSerie
 	"LEGACY":        NotebookSessionShapeSeriesLegacy,
 }
 
+var mappingNotebookSessionShapeSeriesEnumLowerCase = map[string]NotebookSessionShapeSeriesEnum{
+	"amd_rome":      NotebookSessionShapeSeriesAmdRome,
+	"intel_skylake": NotebookSessionShapeSeriesIntelSkylake,
+	"nvidia_gpu":    NotebookSessionShapeSeriesNvidiaGpu,
+	"legacy":        NotebookSessionShapeSeriesLegacy,
+}
+
 // GetNotebookSessionShapeSeriesEnumValues Enumerates the set of values for NotebookSessionShapeSeriesEnum
 func GetNotebookSessionShapeSeriesEnumValues() []NotebookSessionShapeSeriesEnum {
 	values := make([]NotebookSessionShapeSeriesEnum, 0)
@@ -52,11 +59,6 @@ func GetNotebookSessionShapeSeriesEnumStringValues() []string {
 
 // GetMappingNotebookSessionShapeSeriesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNotebookSessionShapeSeriesEnum(val string) (NotebookSessionShapeSeriesEnum, bool) {
-	mappingNotebookSessionShapeSeriesEnumIgnoreCase := make(map[string]NotebookSessionShapeSeriesEnum)
-	for k, v := range mappingNotebookSessionShapeSeriesEnum {
-		mappingNotebookSessionShapeSeriesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNotebookSessionShapeSeriesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNotebookSessionShapeSeriesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

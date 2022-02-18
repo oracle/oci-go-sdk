@@ -15,11 +15,11 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
-// AllowedIkeIpSecParameters Allowed IKE IPSec Parameters
+// AllowedIkeIpSecParameters Lists the current allowed and default IPSec tunnel parameters.
 type AllowedIkeIpSecParameters struct {
 	AllowedPhaseOneParameters *AllowedPhaseOneParameters `mandatory:"true" json:"allowedPhaseOneParameters"`
 

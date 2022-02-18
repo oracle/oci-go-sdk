@@ -11,7 +11,7 @@ package certificatesmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -58,6 +58,11 @@ var mappingCertificateSubjectAlternativeNameTypeEnum = map[string]CertificateSub
 	"IP":  CertificateSubjectAlternativeNameTypeIp,
 }
 
+var mappingCertificateSubjectAlternativeNameTypeEnumLowerCase = map[string]CertificateSubjectAlternativeNameTypeEnum{
+	"dns": CertificateSubjectAlternativeNameTypeDns,
+	"ip":  CertificateSubjectAlternativeNameTypeIp,
+}
+
 // GetCertificateSubjectAlternativeNameTypeEnumValues Enumerates the set of values for CertificateSubjectAlternativeNameTypeEnum
 func GetCertificateSubjectAlternativeNameTypeEnumValues() []CertificateSubjectAlternativeNameTypeEnum {
 	values := make([]CertificateSubjectAlternativeNameTypeEnum, 0)
@@ -77,11 +82,6 @@ func GetCertificateSubjectAlternativeNameTypeEnumStringValues() []string {
 
 // GetMappingCertificateSubjectAlternativeNameTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCertificateSubjectAlternativeNameTypeEnum(val string) (CertificateSubjectAlternativeNameTypeEnum, bool) {
-	mappingCertificateSubjectAlternativeNameTypeEnumIgnoreCase := make(map[string]CertificateSubjectAlternativeNameTypeEnum)
-	for k, v := range mappingCertificateSubjectAlternativeNameTypeEnum {
-		mappingCertificateSubjectAlternativeNameTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCertificateSubjectAlternativeNameTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCertificateSubjectAlternativeNameTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

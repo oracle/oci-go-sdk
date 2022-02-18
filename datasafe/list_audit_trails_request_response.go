@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -164,6 +164,11 @@ var mappingListAuditTrailsAccessLevelEnum = map[string]ListAuditTrailsAccessLeve
 	"ACCESSIBLE": ListAuditTrailsAccessLevelAccessible,
 }
 
+var mappingListAuditTrailsAccessLevelEnumLowerCase = map[string]ListAuditTrailsAccessLevelEnum{
+	"restricted": ListAuditTrailsAccessLevelRestricted,
+	"accessible": ListAuditTrailsAccessLevelAccessible,
+}
+
 // GetListAuditTrailsAccessLevelEnumValues Enumerates the set of values for ListAuditTrailsAccessLevelEnum
 func GetListAuditTrailsAccessLevelEnumValues() []ListAuditTrailsAccessLevelEnum {
 	values := make([]ListAuditTrailsAccessLevelEnum, 0)
@@ -183,12 +188,7 @@ func GetListAuditTrailsAccessLevelEnumStringValues() []string {
 
 // GetMappingListAuditTrailsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditTrailsAccessLevelEnum(val string) (ListAuditTrailsAccessLevelEnum, bool) {
-	mappingListAuditTrailsAccessLevelEnumIgnoreCase := make(map[string]ListAuditTrailsAccessLevelEnum)
-	for k, v := range mappingListAuditTrailsAccessLevelEnum {
-		mappingListAuditTrailsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditTrailsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditTrailsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -214,6 +214,15 @@ var mappingListAuditTrailsLifecycleStateEnum = map[string]ListAuditTrailsLifecyc
 	"NEEDS_ATTENTION": ListAuditTrailsLifecycleStateNeedsAttention,
 }
 
+var mappingListAuditTrailsLifecycleStateEnumLowerCase = map[string]ListAuditTrailsLifecycleStateEnum{
+	"inactive":        ListAuditTrailsLifecycleStateInactive,
+	"updating":        ListAuditTrailsLifecycleStateUpdating,
+	"active":          ListAuditTrailsLifecycleStateActive,
+	"deleting":        ListAuditTrailsLifecycleStateDeleting,
+	"failed":          ListAuditTrailsLifecycleStateFailed,
+	"needs_attention": ListAuditTrailsLifecycleStateNeedsAttention,
+}
+
 // GetListAuditTrailsLifecycleStateEnumValues Enumerates the set of values for ListAuditTrailsLifecycleStateEnum
 func GetListAuditTrailsLifecycleStateEnumValues() []ListAuditTrailsLifecycleStateEnum {
 	values := make([]ListAuditTrailsLifecycleStateEnum, 0)
@@ -237,12 +246,7 @@ func GetListAuditTrailsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListAuditTrailsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditTrailsLifecycleStateEnum(val string) (ListAuditTrailsLifecycleStateEnum, bool) {
-	mappingListAuditTrailsLifecycleStateEnumIgnoreCase := make(map[string]ListAuditTrailsLifecycleStateEnum)
-	for k, v := range mappingListAuditTrailsLifecycleStateEnum {
-		mappingListAuditTrailsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditTrailsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditTrailsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -272,6 +276,17 @@ var mappingListAuditTrailsStatusEnum = map[string]ListAuditTrailsStatusEnum{
 	"RETRYING":   ListAuditTrailsStatusRetrying,
 }
 
+var mappingListAuditTrailsStatusEnumLowerCase = map[string]ListAuditTrailsStatusEnum{
+	"starting":   ListAuditTrailsStatusStarting,
+	"collecting": ListAuditTrailsStatusCollecting,
+	"recovering": ListAuditTrailsStatusRecovering,
+	"idle":       ListAuditTrailsStatusIdle,
+	"stopping":   ListAuditTrailsStatusStopping,
+	"stopped":    ListAuditTrailsStatusStopped,
+	"resuming":   ListAuditTrailsStatusResuming,
+	"retrying":   ListAuditTrailsStatusRetrying,
+}
+
 // GetListAuditTrailsStatusEnumValues Enumerates the set of values for ListAuditTrailsStatusEnum
 func GetListAuditTrailsStatusEnumValues() []ListAuditTrailsStatusEnum {
 	values := make([]ListAuditTrailsStatusEnum, 0)
@@ -297,12 +312,7 @@ func GetListAuditTrailsStatusEnumStringValues() []string {
 
 // GetMappingListAuditTrailsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditTrailsStatusEnum(val string) (ListAuditTrailsStatusEnum, bool) {
-	mappingListAuditTrailsStatusEnumIgnoreCase := make(map[string]ListAuditTrailsStatusEnum)
-	for k, v := range mappingListAuditTrailsStatusEnum {
-		mappingListAuditTrailsStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditTrailsStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditTrailsStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -318,6 +328,11 @@ const (
 var mappingListAuditTrailsSortOrderEnum = map[string]ListAuditTrailsSortOrderEnum{
 	"ASC":  ListAuditTrailsSortOrderAsc,
 	"DESC": ListAuditTrailsSortOrderDesc,
+}
+
+var mappingListAuditTrailsSortOrderEnumLowerCase = map[string]ListAuditTrailsSortOrderEnum{
+	"asc":  ListAuditTrailsSortOrderAsc,
+	"desc": ListAuditTrailsSortOrderDesc,
 }
 
 // GetListAuditTrailsSortOrderEnumValues Enumerates the set of values for ListAuditTrailsSortOrderEnum
@@ -339,12 +354,7 @@ func GetListAuditTrailsSortOrderEnumStringValues() []string {
 
 // GetMappingListAuditTrailsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditTrailsSortOrderEnum(val string) (ListAuditTrailsSortOrderEnum, bool) {
-	mappingListAuditTrailsSortOrderEnumIgnoreCase := make(map[string]ListAuditTrailsSortOrderEnum)
-	for k, v := range mappingListAuditTrailsSortOrderEnum {
-		mappingListAuditTrailsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditTrailsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditTrailsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -360,6 +370,11 @@ const (
 var mappingListAuditTrailsSortByEnum = map[string]ListAuditTrailsSortByEnum{
 	"TIMECREATED": ListAuditTrailsSortByTimecreated,
 	"DISPLAYNAME": ListAuditTrailsSortByDisplayname,
+}
+
+var mappingListAuditTrailsSortByEnumLowerCase = map[string]ListAuditTrailsSortByEnum{
+	"timecreated": ListAuditTrailsSortByTimecreated,
+	"displayname": ListAuditTrailsSortByDisplayname,
 }
 
 // GetListAuditTrailsSortByEnumValues Enumerates the set of values for ListAuditTrailsSortByEnum
@@ -381,11 +396,6 @@ func GetListAuditTrailsSortByEnumStringValues() []string {
 
 // GetMappingListAuditTrailsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditTrailsSortByEnum(val string) (ListAuditTrailsSortByEnum, bool) {
-	mappingListAuditTrailsSortByEnumIgnoreCase := make(map[string]ListAuditTrailsSortByEnum)
-	for k, v := range mappingListAuditTrailsSortByEnum {
-		mappingListAuditTrailsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditTrailsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditTrailsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

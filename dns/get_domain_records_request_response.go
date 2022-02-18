@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -170,6 +170,11 @@ var mappingGetDomainRecordsScopeEnum = map[string]GetDomainRecordsScopeEnum{
 	"PRIVATE": GetDomainRecordsScopePrivate,
 }
 
+var mappingGetDomainRecordsScopeEnumLowerCase = map[string]GetDomainRecordsScopeEnum{
+	"global":  GetDomainRecordsScopeGlobal,
+	"private": GetDomainRecordsScopePrivate,
+}
+
 // GetGetDomainRecordsScopeEnumValues Enumerates the set of values for GetDomainRecordsScopeEnum
 func GetGetDomainRecordsScopeEnumValues() []GetDomainRecordsScopeEnum {
 	values := make([]GetDomainRecordsScopeEnum, 0)
@@ -189,12 +194,7 @@ func GetGetDomainRecordsScopeEnumStringValues() []string {
 
 // GetMappingGetDomainRecordsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetDomainRecordsScopeEnum(val string) (GetDomainRecordsScopeEnum, bool) {
-	mappingGetDomainRecordsScopeEnumIgnoreCase := make(map[string]GetDomainRecordsScopeEnum)
-	for k, v := range mappingGetDomainRecordsScopeEnum {
-		mappingGetDomainRecordsScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetDomainRecordsScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetDomainRecordsScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -208,6 +208,11 @@ const (
 )
 
 var mappingGetDomainRecordsSortByEnum = map[string]GetDomainRecordsSortByEnum{
+	"rtype": GetDomainRecordsSortByRtype,
+	"ttl":   GetDomainRecordsSortByTtl,
+}
+
+var mappingGetDomainRecordsSortByEnumLowerCase = map[string]GetDomainRecordsSortByEnum{
 	"rtype": GetDomainRecordsSortByRtype,
 	"ttl":   GetDomainRecordsSortByTtl,
 }
@@ -231,12 +236,7 @@ func GetGetDomainRecordsSortByEnumStringValues() []string {
 
 // GetMappingGetDomainRecordsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetDomainRecordsSortByEnum(val string) (GetDomainRecordsSortByEnum, bool) {
-	mappingGetDomainRecordsSortByEnumIgnoreCase := make(map[string]GetDomainRecordsSortByEnum)
-	for k, v := range mappingGetDomainRecordsSortByEnum {
-		mappingGetDomainRecordsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetDomainRecordsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetDomainRecordsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -252,6 +252,11 @@ const (
 var mappingGetDomainRecordsSortOrderEnum = map[string]GetDomainRecordsSortOrderEnum{
 	"ASC":  GetDomainRecordsSortOrderAsc,
 	"DESC": GetDomainRecordsSortOrderDesc,
+}
+
+var mappingGetDomainRecordsSortOrderEnumLowerCase = map[string]GetDomainRecordsSortOrderEnum{
+	"asc":  GetDomainRecordsSortOrderAsc,
+	"desc": GetDomainRecordsSortOrderDesc,
 }
 
 // GetGetDomainRecordsSortOrderEnumValues Enumerates the set of values for GetDomainRecordsSortOrderEnum
@@ -273,11 +278,6 @@ func GetGetDomainRecordsSortOrderEnumStringValues() []string {
 
 // GetMappingGetDomainRecordsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetDomainRecordsSortOrderEnum(val string) (GetDomainRecordsSortOrderEnum, bool) {
-	mappingGetDomainRecordsSortOrderEnumIgnoreCase := make(map[string]GetDomainRecordsSortOrderEnum)
-	for k, v := range mappingGetDomainRecordsSortOrderEnum {
-		mappingGetDomainRecordsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetDomainRecordsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetDomainRecordsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

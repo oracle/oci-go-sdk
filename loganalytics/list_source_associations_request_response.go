@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -155,6 +155,14 @@ var mappingListSourceAssociationsLifeCycleStateEnum = map[string]ListSourceAssoc
 	"FAILED":      ListSourceAssociationsLifeCycleStateFailed,
 }
 
+var mappingListSourceAssociationsLifeCycleStateEnumLowerCase = map[string]ListSourceAssociationsLifeCycleStateEnum{
+	"all":         ListSourceAssociationsLifeCycleStateAll,
+	"accepted":    ListSourceAssociationsLifeCycleStateAccepted,
+	"in_progress": ListSourceAssociationsLifeCycleStateInProgress,
+	"succeeded":   ListSourceAssociationsLifeCycleStateSucceeded,
+	"failed":      ListSourceAssociationsLifeCycleStateFailed,
+}
+
 // GetListSourceAssociationsLifeCycleStateEnumValues Enumerates the set of values for ListSourceAssociationsLifeCycleStateEnum
 func GetListSourceAssociationsLifeCycleStateEnumValues() []ListSourceAssociationsLifeCycleStateEnum {
 	values := make([]ListSourceAssociationsLifeCycleStateEnum, 0)
@@ -177,12 +185,7 @@ func GetListSourceAssociationsLifeCycleStateEnumStringValues() []string {
 
 // GetMappingListSourceAssociationsLifeCycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSourceAssociationsLifeCycleStateEnum(val string) (ListSourceAssociationsLifeCycleStateEnum, bool) {
-	mappingListSourceAssociationsLifeCycleStateEnumIgnoreCase := make(map[string]ListSourceAssociationsLifeCycleStateEnum)
-	for k, v := range mappingListSourceAssociationsLifeCycleStateEnum {
-		mappingListSourceAssociationsLifeCycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSourceAssociationsLifeCycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSourceAssociationsLifeCycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -198,6 +201,11 @@ const (
 var mappingListSourceAssociationsSortOrderEnum = map[string]ListSourceAssociationsSortOrderEnum{
 	"ASC":  ListSourceAssociationsSortOrderAsc,
 	"DESC": ListSourceAssociationsSortOrderDesc,
+}
+
+var mappingListSourceAssociationsSortOrderEnumLowerCase = map[string]ListSourceAssociationsSortOrderEnum{
+	"asc":  ListSourceAssociationsSortOrderAsc,
+	"desc": ListSourceAssociationsSortOrderDesc,
 }
 
 // GetListSourceAssociationsSortOrderEnumValues Enumerates the set of values for ListSourceAssociationsSortOrderEnum
@@ -219,12 +227,7 @@ func GetListSourceAssociationsSortOrderEnumStringValues() []string {
 
 // GetMappingListSourceAssociationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSourceAssociationsSortOrderEnum(val string) (ListSourceAssociationsSortOrderEnum, bool) {
-	mappingListSourceAssociationsSortOrderEnumIgnoreCase := make(map[string]ListSourceAssociationsSortOrderEnum)
-	for k, v := range mappingListSourceAssociationsSortOrderEnum {
-		mappingListSourceAssociationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSourceAssociationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSourceAssociationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -241,6 +244,12 @@ const (
 var mappingListSourceAssociationsSortByEnum = map[string]ListSourceAssociationsSortByEnum{
 	"entityName":        ListSourceAssociationsSortByEntityname,
 	"timeLastAttempted": ListSourceAssociationsSortByTimelastattempted,
+	"status":            ListSourceAssociationsSortByStatus,
+}
+
+var mappingListSourceAssociationsSortByEnumLowerCase = map[string]ListSourceAssociationsSortByEnum{
+	"entityname":        ListSourceAssociationsSortByEntityname,
+	"timelastattempted": ListSourceAssociationsSortByTimelastattempted,
 	"status":            ListSourceAssociationsSortByStatus,
 }
 
@@ -264,11 +273,6 @@ func GetListSourceAssociationsSortByEnumStringValues() []string {
 
 // GetMappingListSourceAssociationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSourceAssociationsSortByEnum(val string) (ListSourceAssociationsSortByEnum, bool) {
-	mappingListSourceAssociationsSortByEnumIgnoreCase := make(map[string]ListSourceAssociationsSortByEnum)
-	for k, v := range mappingListSourceAssociationsSortByEnum {
-		mappingListSourceAssociationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSourceAssociationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSourceAssociationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

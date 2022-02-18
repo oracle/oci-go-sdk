@@ -11,7 +11,7 @@ package oce
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -111,6 +111,11 @@ var mappingCreateOceInstanceDetailsInstanceUsageTypeEnum = map[string]CreateOceI
 	"NONPRIMARY": CreateOceInstanceDetailsInstanceUsageTypeNonprimary,
 }
 
+var mappingCreateOceInstanceDetailsInstanceUsageTypeEnumLowerCase = map[string]CreateOceInstanceDetailsInstanceUsageTypeEnum{
+	"primary":    CreateOceInstanceDetailsInstanceUsageTypePrimary,
+	"nonprimary": CreateOceInstanceDetailsInstanceUsageTypeNonprimary,
+}
+
 // GetCreateOceInstanceDetailsInstanceUsageTypeEnumValues Enumerates the set of values for CreateOceInstanceDetailsInstanceUsageTypeEnum
 func GetCreateOceInstanceDetailsInstanceUsageTypeEnumValues() []CreateOceInstanceDetailsInstanceUsageTypeEnum {
 	values := make([]CreateOceInstanceDetailsInstanceUsageTypeEnum, 0)
@@ -130,12 +135,7 @@ func GetCreateOceInstanceDetailsInstanceUsageTypeEnumStringValues() []string {
 
 // GetMappingCreateOceInstanceDetailsInstanceUsageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateOceInstanceDetailsInstanceUsageTypeEnum(val string) (CreateOceInstanceDetailsInstanceUsageTypeEnum, bool) {
-	mappingCreateOceInstanceDetailsInstanceUsageTypeEnumIgnoreCase := make(map[string]CreateOceInstanceDetailsInstanceUsageTypeEnum)
-	for k, v := range mappingCreateOceInstanceDetailsInstanceUsageTypeEnum {
-		mappingCreateOceInstanceDetailsInstanceUsageTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateOceInstanceDetailsInstanceUsageTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateOceInstanceDetailsInstanceUsageTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -151,6 +151,11 @@ const (
 var mappingCreateOceInstanceDetailsInstanceAccessTypeEnum = map[string]CreateOceInstanceDetailsInstanceAccessTypeEnum{
 	"PUBLIC":  CreateOceInstanceDetailsInstanceAccessTypePublic,
 	"PRIVATE": CreateOceInstanceDetailsInstanceAccessTypePrivate,
+}
+
+var mappingCreateOceInstanceDetailsInstanceAccessTypeEnumLowerCase = map[string]CreateOceInstanceDetailsInstanceAccessTypeEnum{
+	"public":  CreateOceInstanceDetailsInstanceAccessTypePublic,
+	"private": CreateOceInstanceDetailsInstanceAccessTypePrivate,
 }
 
 // GetCreateOceInstanceDetailsInstanceAccessTypeEnumValues Enumerates the set of values for CreateOceInstanceDetailsInstanceAccessTypeEnum
@@ -172,11 +177,6 @@ func GetCreateOceInstanceDetailsInstanceAccessTypeEnumStringValues() []string {
 
 // GetMappingCreateOceInstanceDetailsInstanceAccessTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateOceInstanceDetailsInstanceAccessTypeEnum(val string) (CreateOceInstanceDetailsInstanceAccessTypeEnum, bool) {
-	mappingCreateOceInstanceDetailsInstanceAccessTypeEnumIgnoreCase := make(map[string]CreateOceInstanceDetailsInstanceAccessTypeEnum)
-	for k, v := range mappingCreateOceInstanceDetailsInstanceAccessTypeEnum {
-		mappingCreateOceInstanceDetailsInstanceAccessTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateOceInstanceDetailsInstanceAccessTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateOceInstanceDetailsInstanceAccessTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

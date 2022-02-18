@@ -13,7 +13,7 @@ package computeinstanceagent
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -100,6 +100,12 @@ var mappingInstanceAgentCommandSourceDetailsSourceTypeEnum = map[string]Instance
 	"OBJECT_STORAGE_TUPLE": InstanceAgentCommandSourceDetailsSourceTypeObjectStorageTuple,
 }
 
+var mappingInstanceAgentCommandSourceDetailsSourceTypeEnumLowerCase = map[string]InstanceAgentCommandSourceDetailsSourceTypeEnum{
+	"text":                 InstanceAgentCommandSourceDetailsSourceTypeText,
+	"object_storage_uri":   InstanceAgentCommandSourceDetailsSourceTypeObjectStorageUri,
+	"object_storage_tuple": InstanceAgentCommandSourceDetailsSourceTypeObjectStorageTuple,
+}
+
 // GetInstanceAgentCommandSourceDetailsSourceTypeEnumValues Enumerates the set of values for InstanceAgentCommandSourceDetailsSourceTypeEnum
 func GetInstanceAgentCommandSourceDetailsSourceTypeEnumValues() []InstanceAgentCommandSourceDetailsSourceTypeEnum {
 	values := make([]InstanceAgentCommandSourceDetailsSourceTypeEnum, 0)
@@ -120,11 +126,6 @@ func GetInstanceAgentCommandSourceDetailsSourceTypeEnumStringValues() []string {
 
 // GetMappingInstanceAgentCommandSourceDetailsSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceAgentCommandSourceDetailsSourceTypeEnum(val string) (InstanceAgentCommandSourceDetailsSourceTypeEnum, bool) {
-	mappingInstanceAgentCommandSourceDetailsSourceTypeEnumIgnoreCase := make(map[string]InstanceAgentCommandSourceDetailsSourceTypeEnum)
-	for k, v := range mappingInstanceAgentCommandSourceDetailsSourceTypeEnum {
-		mappingInstanceAgentCommandSourceDetailsSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceAgentCommandSourceDetailsSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceAgentCommandSourceDetailsSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

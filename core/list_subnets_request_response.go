@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -152,6 +152,11 @@ var mappingListSubnetsSortByEnum = map[string]ListSubnetsSortByEnum{
 	"DISPLAYNAME": ListSubnetsSortByDisplayname,
 }
 
+var mappingListSubnetsSortByEnumLowerCase = map[string]ListSubnetsSortByEnum{
+	"timecreated": ListSubnetsSortByTimecreated,
+	"displayname": ListSubnetsSortByDisplayname,
+}
+
 // GetListSubnetsSortByEnumValues Enumerates the set of values for ListSubnetsSortByEnum
 func GetListSubnetsSortByEnumValues() []ListSubnetsSortByEnum {
 	values := make([]ListSubnetsSortByEnum, 0)
@@ -171,12 +176,7 @@ func GetListSubnetsSortByEnumStringValues() []string {
 
 // GetMappingListSubnetsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSubnetsSortByEnum(val string) (ListSubnetsSortByEnum, bool) {
-	mappingListSubnetsSortByEnumIgnoreCase := make(map[string]ListSubnetsSortByEnum)
-	for k, v := range mappingListSubnetsSortByEnum {
-		mappingListSubnetsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSubnetsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSubnetsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -192,6 +192,11 @@ const (
 var mappingListSubnetsSortOrderEnum = map[string]ListSubnetsSortOrderEnum{
 	"ASC":  ListSubnetsSortOrderAsc,
 	"DESC": ListSubnetsSortOrderDesc,
+}
+
+var mappingListSubnetsSortOrderEnumLowerCase = map[string]ListSubnetsSortOrderEnum{
+	"asc":  ListSubnetsSortOrderAsc,
+	"desc": ListSubnetsSortOrderDesc,
 }
 
 // GetListSubnetsSortOrderEnumValues Enumerates the set of values for ListSubnetsSortOrderEnum
@@ -213,11 +218,6 @@ func GetListSubnetsSortOrderEnumStringValues() []string {
 
 // GetMappingListSubnetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSubnetsSortOrderEnum(val string) (ListSubnetsSortOrderEnum, bool) {
-	mappingListSubnetsSortOrderEnumIgnoreCase := make(map[string]ListSubnetsSortOrderEnum)
-	for k, v := range mappingListSubnetsSortOrderEnum {
-		mappingListSubnetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSubnetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSubnetsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

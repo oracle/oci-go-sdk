@@ -12,7 +12,7 @@ package mysql
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingChannelTargetTargetTypeEnum = map[string]ChannelTargetTargetTypeEnum{
 	"DBSYSTEM": ChannelTargetTargetTypeDbsystem,
 }
 
+var mappingChannelTargetTargetTypeEnumLowerCase = map[string]ChannelTargetTargetTypeEnum{
+	"dbsystem": ChannelTargetTargetTypeDbsystem,
+}
+
 // GetChannelTargetTargetTypeEnumValues Enumerates the set of values for ChannelTargetTargetTypeEnum
 func GetChannelTargetTargetTypeEnumValues() []ChannelTargetTargetTypeEnum {
 	values := make([]ChannelTargetTargetTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetChannelTargetTargetTypeEnumStringValues() []string {
 
 // GetMappingChannelTargetTargetTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingChannelTargetTargetTypeEnum(val string) (ChannelTargetTargetTypeEnum, bool) {
-	mappingChannelTargetTargetTypeEnumIgnoreCase := make(map[string]ChannelTargetTargetTypeEnum)
-	for k, v := range mappingChannelTargetTargetTypeEnum {
-		mappingChannelTargetTargetTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingChannelTargetTargetTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingChannelTargetTargetTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

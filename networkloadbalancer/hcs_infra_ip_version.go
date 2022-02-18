@@ -27,6 +27,11 @@ var mappingHcsInfraIpVersionEnum = map[string]HcsInfraIpVersionEnum{
 	"IPV4_AND_IPV6": HcsInfraIpVersionIpv4AndIpv6,
 }
 
+var mappingHcsInfraIpVersionEnumLowerCase = map[string]HcsInfraIpVersionEnum{
+	"ipv4":          HcsInfraIpVersionIpv4,
+	"ipv4_and_ipv6": HcsInfraIpVersionIpv4AndIpv6,
+}
+
 // GetHcsInfraIpVersionEnumValues Enumerates the set of values for HcsInfraIpVersionEnum
 func GetHcsInfraIpVersionEnumValues() []HcsInfraIpVersionEnum {
 	values := make([]HcsInfraIpVersionEnum, 0)
@@ -46,11 +51,6 @@ func GetHcsInfraIpVersionEnumStringValues() []string {
 
 // GetMappingHcsInfraIpVersionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHcsInfraIpVersionEnum(val string) (HcsInfraIpVersionEnum, bool) {
-	mappingHcsInfraIpVersionEnumIgnoreCase := make(map[string]HcsInfraIpVersionEnum)
-	for k, v := range mappingHcsInfraIpVersionEnum {
-		mappingHcsInfraIpVersionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHcsInfraIpVersionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHcsInfraIpVersionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

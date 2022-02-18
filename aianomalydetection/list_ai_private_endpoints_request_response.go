@@ -6,7 +6,7 @@ package aianomalydetection
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -139,6 +139,11 @@ var mappingListAiPrivateEndpointsSortOrderEnum = map[string]ListAiPrivateEndpoin
 	"DESC": ListAiPrivateEndpointsSortOrderDesc,
 }
 
+var mappingListAiPrivateEndpointsSortOrderEnumLowerCase = map[string]ListAiPrivateEndpointsSortOrderEnum{
+	"asc":  ListAiPrivateEndpointsSortOrderAsc,
+	"desc": ListAiPrivateEndpointsSortOrderDesc,
+}
+
 // GetListAiPrivateEndpointsSortOrderEnumValues Enumerates the set of values for ListAiPrivateEndpointsSortOrderEnum
 func GetListAiPrivateEndpointsSortOrderEnumValues() []ListAiPrivateEndpointsSortOrderEnum {
 	values := make([]ListAiPrivateEndpointsSortOrderEnum, 0)
@@ -158,12 +163,7 @@ func GetListAiPrivateEndpointsSortOrderEnumStringValues() []string {
 
 // GetMappingListAiPrivateEndpointsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAiPrivateEndpointsSortOrderEnum(val string) (ListAiPrivateEndpointsSortOrderEnum, bool) {
-	mappingListAiPrivateEndpointsSortOrderEnumIgnoreCase := make(map[string]ListAiPrivateEndpointsSortOrderEnum)
-	for k, v := range mappingListAiPrivateEndpointsSortOrderEnum {
-		mappingListAiPrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAiPrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAiPrivateEndpointsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -179,6 +179,11 @@ const (
 var mappingListAiPrivateEndpointsSortByEnum = map[string]ListAiPrivateEndpointsSortByEnum{
 	"timeCreated": ListAiPrivateEndpointsSortByTimecreated,
 	"displayName": ListAiPrivateEndpointsSortByDisplayname,
+}
+
+var mappingListAiPrivateEndpointsSortByEnumLowerCase = map[string]ListAiPrivateEndpointsSortByEnum{
+	"timecreated": ListAiPrivateEndpointsSortByTimecreated,
+	"displayname": ListAiPrivateEndpointsSortByDisplayname,
 }
 
 // GetListAiPrivateEndpointsSortByEnumValues Enumerates the set of values for ListAiPrivateEndpointsSortByEnum
@@ -200,11 +205,6 @@ func GetListAiPrivateEndpointsSortByEnumStringValues() []string {
 
 // GetMappingListAiPrivateEndpointsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAiPrivateEndpointsSortByEnum(val string) (ListAiPrivateEndpointsSortByEnum, bool) {
-	mappingListAiPrivateEndpointsSortByEnumIgnoreCase := make(map[string]ListAiPrivateEndpointsSortByEnum)
-	for k, v := range mappingListAiPrivateEndpointsSortByEnum {
-		mappingListAiPrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAiPrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAiPrivateEndpointsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

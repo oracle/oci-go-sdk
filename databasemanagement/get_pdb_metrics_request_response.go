@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -123,6 +123,11 @@ var mappingGetPdbMetricsCompareTypeEnum = map[string]GetPdbMetricsCompareTypeEnu
 	"DAY":  GetPdbMetricsCompareTypeDay,
 }
 
+var mappingGetPdbMetricsCompareTypeEnumLowerCase = map[string]GetPdbMetricsCompareTypeEnum{
+	"hour": GetPdbMetricsCompareTypeHour,
+	"day":  GetPdbMetricsCompareTypeDay,
+}
+
 // GetGetPdbMetricsCompareTypeEnumValues Enumerates the set of values for GetPdbMetricsCompareTypeEnum
 func GetGetPdbMetricsCompareTypeEnumValues() []GetPdbMetricsCompareTypeEnum {
 	values := make([]GetPdbMetricsCompareTypeEnum, 0)
@@ -142,11 +147,6 @@ func GetGetPdbMetricsCompareTypeEnumStringValues() []string {
 
 // GetMappingGetPdbMetricsCompareTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetPdbMetricsCompareTypeEnum(val string) (GetPdbMetricsCompareTypeEnum, bool) {
-	mappingGetPdbMetricsCompareTypeEnumIgnoreCase := make(map[string]GetPdbMetricsCompareTypeEnum)
-	for k, v := range mappingGetPdbMetricsCompareTypeEnum {
-		mappingGetPdbMetricsCompareTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetPdbMetricsCompareTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetPdbMetricsCompareTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

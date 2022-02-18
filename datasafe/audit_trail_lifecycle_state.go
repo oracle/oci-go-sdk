@@ -35,6 +35,15 @@ var mappingAuditTrailLifecycleStateEnum = map[string]AuditTrailLifecycleStateEnu
 	"NEEDS_ATTENTION": AuditTrailLifecycleStateNeedsAttention,
 }
 
+var mappingAuditTrailLifecycleStateEnumLowerCase = map[string]AuditTrailLifecycleStateEnum{
+	"inactive":        AuditTrailLifecycleStateInactive,
+	"updating":        AuditTrailLifecycleStateUpdating,
+	"active":          AuditTrailLifecycleStateActive,
+	"deleting":        AuditTrailLifecycleStateDeleting,
+	"failed":          AuditTrailLifecycleStateFailed,
+	"needs_attention": AuditTrailLifecycleStateNeedsAttention,
+}
+
 // GetAuditTrailLifecycleStateEnumValues Enumerates the set of values for AuditTrailLifecycleStateEnum
 func GetAuditTrailLifecycleStateEnumValues() []AuditTrailLifecycleStateEnum {
 	values := make([]AuditTrailLifecycleStateEnum, 0)
@@ -58,11 +67,6 @@ func GetAuditTrailLifecycleStateEnumStringValues() []string {
 
 // GetMappingAuditTrailLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAuditTrailLifecycleStateEnum(val string) (AuditTrailLifecycleStateEnum, bool) {
-	mappingAuditTrailLifecycleStateEnumIgnoreCase := make(map[string]AuditTrailLifecycleStateEnum)
-	for k, v := range mappingAuditTrailLifecycleStateEnum {
-		mappingAuditTrailLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAuditTrailLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAuditTrailLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

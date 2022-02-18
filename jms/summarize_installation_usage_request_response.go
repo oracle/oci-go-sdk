@@ -6,7 +6,7 @@ package jms
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -173,6 +173,11 @@ var mappingSummarizeInstallationUsageSortOrderEnum = map[string]SummarizeInstall
 	"DESC": SummarizeInstallationUsageSortOrderDesc,
 }
 
+var mappingSummarizeInstallationUsageSortOrderEnumLowerCase = map[string]SummarizeInstallationUsageSortOrderEnum{
+	"asc":  SummarizeInstallationUsageSortOrderAsc,
+	"desc": SummarizeInstallationUsageSortOrderDesc,
+}
+
 // GetSummarizeInstallationUsageSortOrderEnumValues Enumerates the set of values for SummarizeInstallationUsageSortOrderEnum
 func GetSummarizeInstallationUsageSortOrderEnumValues() []SummarizeInstallationUsageSortOrderEnum {
 	values := make([]SummarizeInstallationUsageSortOrderEnum, 0)
@@ -192,12 +197,7 @@ func GetSummarizeInstallationUsageSortOrderEnumStringValues() []string {
 
 // GetMappingSummarizeInstallationUsageSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeInstallationUsageSortOrderEnum(val string) (SummarizeInstallationUsageSortOrderEnum, bool) {
-	mappingSummarizeInstallationUsageSortOrderEnumIgnoreCase := make(map[string]SummarizeInstallationUsageSortOrderEnum)
-	for k, v := range mappingSummarizeInstallationUsageSortOrderEnum {
-		mappingSummarizeInstallationUsageSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeInstallationUsageSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeInstallationUsageSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -229,6 +229,18 @@ var mappingSummarizeInstallationUsageSortByEnum = map[string]SummarizeInstallati
 	"osName":                          SummarizeInstallationUsageSortByOsname,
 }
 
+var mappingSummarizeInstallationUsageSortByEnumLowerCase = map[string]SummarizeInstallationUsageSortByEnum{
+	"jredistribution":                 SummarizeInstallationUsageSortByJredistribution,
+	"jrevendor":                       SummarizeInstallationUsageSortByJrevendor,
+	"jreversion":                      SummarizeInstallationUsageSortByJreversion,
+	"path":                            SummarizeInstallationUsageSortByPath,
+	"timefirstseen":                   SummarizeInstallationUsageSortByTimefirstseen,
+	"timelastseen":                    SummarizeInstallationUsageSortByTimelastseen,
+	"approximateapplicationcount":     SummarizeInstallationUsageSortByApproximateapplicationcount,
+	"approximatemanagedinstancecount": SummarizeInstallationUsageSortByApproximatemanagedinstancecount,
+	"osname":                          SummarizeInstallationUsageSortByOsname,
+}
+
 // GetSummarizeInstallationUsageSortByEnumValues Enumerates the set of values for SummarizeInstallationUsageSortByEnum
 func GetSummarizeInstallationUsageSortByEnumValues() []SummarizeInstallationUsageSortByEnum {
 	values := make([]SummarizeInstallationUsageSortByEnum, 0)
@@ -255,11 +267,6 @@ func GetSummarizeInstallationUsageSortByEnumStringValues() []string {
 
 // GetMappingSummarizeInstallationUsageSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeInstallationUsageSortByEnum(val string) (SummarizeInstallationUsageSortByEnum, bool) {
-	mappingSummarizeInstallationUsageSortByEnumIgnoreCase := make(map[string]SummarizeInstallationUsageSortByEnum)
-	for k, v := range mappingSummarizeInstallationUsageSortByEnum {
-		mappingSummarizeInstallationUsageSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeInstallationUsageSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeInstallationUsageSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -90,6 +90,12 @@ var mappingSteeringPolicyAttachmentSummaryLifecycleStateEnum = map[string]Steeri
 	"DELETING": SteeringPolicyAttachmentSummaryLifecycleStateDeleting,
 }
 
+var mappingSteeringPolicyAttachmentSummaryLifecycleStateEnumLowerCase = map[string]SteeringPolicyAttachmentSummaryLifecycleStateEnum{
+	"creating": SteeringPolicyAttachmentSummaryLifecycleStateCreating,
+	"active":   SteeringPolicyAttachmentSummaryLifecycleStateActive,
+	"deleting": SteeringPolicyAttachmentSummaryLifecycleStateDeleting,
+}
+
 // GetSteeringPolicyAttachmentSummaryLifecycleStateEnumValues Enumerates the set of values for SteeringPolicyAttachmentSummaryLifecycleStateEnum
 func GetSteeringPolicyAttachmentSummaryLifecycleStateEnumValues() []SteeringPolicyAttachmentSummaryLifecycleStateEnum {
 	values := make([]SteeringPolicyAttachmentSummaryLifecycleStateEnum, 0)
@@ -110,11 +116,6 @@ func GetSteeringPolicyAttachmentSummaryLifecycleStateEnumStringValues() []string
 
 // GetMappingSteeringPolicyAttachmentSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSteeringPolicyAttachmentSummaryLifecycleStateEnum(val string) (SteeringPolicyAttachmentSummaryLifecycleStateEnum, bool) {
-	mappingSteeringPolicyAttachmentSummaryLifecycleStateEnumIgnoreCase := make(map[string]SteeringPolicyAttachmentSummaryLifecycleStateEnum)
-	for k, v := range mappingSteeringPolicyAttachmentSummaryLifecycleStateEnum {
-		mappingSteeringPolicyAttachmentSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSteeringPolicyAttachmentSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSteeringPolicyAttachmentSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

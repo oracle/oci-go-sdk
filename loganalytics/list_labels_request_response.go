@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -161,6 +161,12 @@ var mappingListLabelsIsSystemEnum = map[string]ListLabelsIsSystemEnum{
 	"BUILT_IN": ListLabelsIsSystemBuiltIn,
 }
 
+var mappingListLabelsIsSystemEnumLowerCase = map[string]ListLabelsIsSystemEnum{
+	"all":      ListLabelsIsSystemAll,
+	"custom":   ListLabelsIsSystemCustom,
+	"built_in": ListLabelsIsSystemBuiltIn,
+}
+
 // GetListLabelsIsSystemEnumValues Enumerates the set of values for ListLabelsIsSystemEnum
 func GetListLabelsIsSystemEnumValues() []ListLabelsIsSystemEnum {
 	values := make([]ListLabelsIsSystemEnum, 0)
@@ -181,12 +187,7 @@ func GetListLabelsIsSystemEnumStringValues() []string {
 
 // GetMappingListLabelsIsSystemEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLabelsIsSystemEnum(val string) (ListLabelsIsSystemEnum, bool) {
-	mappingListLabelsIsSystemEnumIgnoreCase := make(map[string]ListLabelsIsSystemEnum)
-	for k, v := range mappingListLabelsIsSystemEnum {
-		mappingListLabelsIsSystemEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLabelsIsSystemEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLabelsIsSystemEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -206,6 +207,13 @@ var mappingListLabelsLabelPriorityEnum = map[string]ListLabelsLabelPriorityEnum{
 	"LOW":    ListLabelsLabelPriorityLow,
 	"MEDIUM": ListLabelsLabelPriorityMedium,
 	"HIGH":   ListLabelsLabelPriorityHigh,
+}
+
+var mappingListLabelsLabelPriorityEnumLowerCase = map[string]ListLabelsLabelPriorityEnum{
+	"none":   ListLabelsLabelPriorityNone,
+	"low":    ListLabelsLabelPriorityLow,
+	"medium": ListLabelsLabelPriorityMedium,
+	"high":   ListLabelsLabelPriorityHigh,
 }
 
 // GetListLabelsLabelPriorityEnumValues Enumerates the set of values for ListLabelsLabelPriorityEnum
@@ -229,12 +237,7 @@ func GetListLabelsLabelPriorityEnumStringValues() []string {
 
 // GetMappingListLabelsLabelPriorityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLabelsLabelPriorityEnum(val string) (ListLabelsLabelPriorityEnum, bool) {
-	mappingListLabelsLabelPriorityEnumIgnoreCase := make(map[string]ListLabelsLabelPriorityEnum)
-	for k, v := range mappingListLabelsLabelPriorityEnum {
-		mappingListLabelsLabelPriorityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLabelsLabelPriorityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLabelsLabelPriorityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -250,6 +253,11 @@ const (
 var mappingListLabelsSortOrderEnum = map[string]ListLabelsSortOrderEnum{
 	"ASC":  ListLabelsSortOrderAsc,
 	"DESC": ListLabelsSortOrderDesc,
+}
+
+var mappingListLabelsSortOrderEnumLowerCase = map[string]ListLabelsSortOrderEnum{
+	"asc":  ListLabelsSortOrderAsc,
+	"desc": ListLabelsSortOrderDesc,
 }
 
 // GetListLabelsSortOrderEnumValues Enumerates the set of values for ListLabelsSortOrderEnum
@@ -271,12 +279,7 @@ func GetListLabelsSortOrderEnumStringValues() []string {
 
 // GetMappingListLabelsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLabelsSortOrderEnum(val string) (ListLabelsSortOrderEnum, bool) {
-	mappingListLabelsSortOrderEnumIgnoreCase := make(map[string]ListLabelsSortOrderEnum)
-	for k, v := range mappingListLabelsSortOrderEnum {
-		mappingListLabelsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLabelsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLabelsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -294,6 +297,12 @@ var mappingListLabelsLabelSortByEnum = map[string]ListLabelsLabelSortByEnum{
 	"name":        ListLabelsLabelSortByName,
 	"priority":    ListLabelsLabelSortByPriority,
 	"sourceUsing": ListLabelsLabelSortBySourceusing,
+}
+
+var mappingListLabelsLabelSortByEnumLowerCase = map[string]ListLabelsLabelSortByEnum{
+	"name":        ListLabelsLabelSortByName,
+	"priority":    ListLabelsLabelSortByPriority,
+	"sourceusing": ListLabelsLabelSortBySourceusing,
 }
 
 // GetListLabelsLabelSortByEnumValues Enumerates the set of values for ListLabelsLabelSortByEnum
@@ -316,11 +325,6 @@ func GetListLabelsLabelSortByEnumStringValues() []string {
 
 // GetMappingListLabelsLabelSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLabelsLabelSortByEnum(val string) (ListLabelsLabelSortByEnum, bool) {
-	mappingListLabelsLabelSortByEnumIgnoreCase := make(map[string]ListLabelsLabelSortByEnum)
-	for k, v := range mappingListLabelsLabelSortByEnum {
-		mappingListLabelsLabelSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLabelsLabelSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLabelsLabelSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package blockchain
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -64,6 +64,12 @@ var mappingWorkRequestResourceSubTypeDetailSubTypeStatusEnum = map[string]WorkRe
 	"DELETED": WorkRequestResourceSubTypeDetailSubTypeStatusDeleted,
 }
 
+var mappingWorkRequestResourceSubTypeDetailSubTypeStatusEnumLowerCase = map[string]WorkRequestResourceSubTypeDetailSubTypeStatusEnum{
+	"created": WorkRequestResourceSubTypeDetailSubTypeStatusCreated,
+	"updated": WorkRequestResourceSubTypeDetailSubTypeStatusUpdated,
+	"deleted": WorkRequestResourceSubTypeDetailSubTypeStatusDeleted,
+}
+
 // GetWorkRequestResourceSubTypeDetailSubTypeStatusEnumValues Enumerates the set of values for WorkRequestResourceSubTypeDetailSubTypeStatusEnum
 func GetWorkRequestResourceSubTypeDetailSubTypeStatusEnumValues() []WorkRequestResourceSubTypeDetailSubTypeStatusEnum {
 	values := make([]WorkRequestResourceSubTypeDetailSubTypeStatusEnum, 0)
@@ -84,11 +90,6 @@ func GetWorkRequestResourceSubTypeDetailSubTypeStatusEnumStringValues() []string
 
 // GetMappingWorkRequestResourceSubTypeDetailSubTypeStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestResourceSubTypeDetailSubTypeStatusEnum(val string) (WorkRequestResourceSubTypeDetailSubTypeStatusEnum, bool) {
-	mappingWorkRequestResourceSubTypeDetailSubTypeStatusEnumIgnoreCase := make(map[string]WorkRequestResourceSubTypeDetailSubTypeStatusEnum)
-	for k, v := range mappingWorkRequestResourceSubTypeDetailSubTypeStatusEnum {
-		mappingWorkRequestResourceSubTypeDetailSubTypeStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestResourceSubTypeDetailSubTypeStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestResourceSubTypeDetailSubTypeStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

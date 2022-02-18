@@ -33,6 +33,14 @@ var mappingWorkRequestResourceActionTypeEnum = map[string]WorkRequestResourceAct
 	"RELATED":     WorkRequestResourceActionTypeRelated,
 }
 
+var mappingWorkRequestResourceActionTypeEnumLowerCase = map[string]WorkRequestResourceActionTypeEnum{
+	"created":     WorkRequestResourceActionTypeCreated,
+	"updated":     WorkRequestResourceActionTypeUpdated,
+	"deleted":     WorkRequestResourceActionTypeDeleted,
+	"in_progress": WorkRequestResourceActionTypeInProgress,
+	"related":     WorkRequestResourceActionTypeRelated,
+}
+
 // GetWorkRequestResourceActionTypeEnumValues Enumerates the set of values for WorkRequestResourceActionTypeEnum
 func GetWorkRequestResourceActionTypeEnumValues() []WorkRequestResourceActionTypeEnum {
 	values := make([]WorkRequestResourceActionTypeEnum, 0)
@@ -55,11 +63,6 @@ func GetWorkRequestResourceActionTypeEnumStringValues() []string {
 
 // GetMappingWorkRequestResourceActionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestResourceActionTypeEnum(val string) (WorkRequestResourceActionTypeEnum, bool) {
-	mappingWorkRequestResourceActionTypeEnumIgnoreCase := make(map[string]WorkRequestResourceActionTypeEnum)
-	for k, v := range mappingWorkRequestResourceActionTypeEnum {
-		mappingWorkRequestResourceActionTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestResourceActionTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestResourceActionTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

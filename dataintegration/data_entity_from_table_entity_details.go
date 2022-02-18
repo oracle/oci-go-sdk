@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -201,6 +201,15 @@ var mappingDataEntityFromTableEntityDetailsEntityTypeEnum = map[string]DataEntit
 	"OTHER":  DataEntityFromTableEntityDetailsEntityTypeOther,
 }
 
+var mappingDataEntityFromTableEntityDetailsEntityTypeEnumLowerCase = map[string]DataEntityFromTableEntityDetailsEntityTypeEnum{
+	"table":  DataEntityFromTableEntityDetailsEntityTypeTable,
+	"view":   DataEntityFromTableEntityDetailsEntityTypeView,
+	"file":   DataEntityFromTableEntityDetailsEntityTypeFile,
+	"queue":  DataEntityFromTableEntityDetailsEntityTypeQueue,
+	"stream": DataEntityFromTableEntityDetailsEntityTypeStream,
+	"other":  DataEntityFromTableEntityDetailsEntityTypeOther,
+}
+
 // GetDataEntityFromTableEntityDetailsEntityTypeEnumValues Enumerates the set of values for DataEntityFromTableEntityDetailsEntityTypeEnum
 func GetDataEntityFromTableEntityDetailsEntityTypeEnumValues() []DataEntityFromTableEntityDetailsEntityTypeEnum {
 	values := make([]DataEntityFromTableEntityDetailsEntityTypeEnum, 0)
@@ -224,11 +233,6 @@ func GetDataEntityFromTableEntityDetailsEntityTypeEnumStringValues() []string {
 
 // GetMappingDataEntityFromTableEntityDetailsEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataEntityFromTableEntityDetailsEntityTypeEnum(val string) (DataEntityFromTableEntityDetailsEntityTypeEnum, bool) {
-	mappingDataEntityFromTableEntityDetailsEntityTypeEnumIgnoreCase := make(map[string]DataEntityFromTableEntityDetailsEntityTypeEnum)
-	for k, v := range mappingDataEntityFromTableEntityDetailsEntityTypeEnum {
-		mappingDataEntityFromTableEntityDetailsEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataEntityFromTableEntityDetailsEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataEntityFromTableEntityDetailsEntityTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

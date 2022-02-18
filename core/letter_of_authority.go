@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -79,6 +79,11 @@ var mappingLetterOfAuthorityCircuitTypeEnum = map[string]LetterOfAuthorityCircui
 	"Single_mode_SC": LetterOfAuthorityCircuitTypeSc,
 }
 
+var mappingLetterOfAuthorityCircuitTypeEnumLowerCase = map[string]LetterOfAuthorityCircuitTypeEnum{
+	"single_mode_lc": LetterOfAuthorityCircuitTypeLc,
+	"single_mode_sc": LetterOfAuthorityCircuitTypeSc,
+}
+
 // GetLetterOfAuthorityCircuitTypeEnumValues Enumerates the set of values for LetterOfAuthorityCircuitTypeEnum
 func GetLetterOfAuthorityCircuitTypeEnumValues() []LetterOfAuthorityCircuitTypeEnum {
 	values := make([]LetterOfAuthorityCircuitTypeEnum, 0)
@@ -98,11 +103,6 @@ func GetLetterOfAuthorityCircuitTypeEnumStringValues() []string {
 
 // GetMappingLetterOfAuthorityCircuitTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLetterOfAuthorityCircuitTypeEnum(val string) (LetterOfAuthorityCircuitTypeEnum, bool) {
-	mappingLetterOfAuthorityCircuitTypeEnumIgnoreCase := make(map[string]LetterOfAuthorityCircuitTypeEnum)
-	for k, v := range mappingLetterOfAuthorityCircuitTypeEnum {
-		mappingLetterOfAuthorityCircuitTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLetterOfAuthorityCircuitTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLetterOfAuthorityCircuitTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

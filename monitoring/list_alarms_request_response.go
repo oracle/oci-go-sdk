@@ -6,7 +6,7 @@ package monitoring
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -152,6 +152,11 @@ var mappingListAlarmsSortByEnum = map[string]ListAlarmsSortByEnum{
 	"severity":    ListAlarmsSortBySeverity,
 }
 
+var mappingListAlarmsSortByEnumLowerCase = map[string]ListAlarmsSortByEnum{
+	"displayname": ListAlarmsSortByDisplayname,
+	"severity":    ListAlarmsSortBySeverity,
+}
+
 // GetListAlarmsSortByEnumValues Enumerates the set of values for ListAlarmsSortByEnum
 func GetListAlarmsSortByEnumValues() []ListAlarmsSortByEnum {
 	values := make([]ListAlarmsSortByEnum, 0)
@@ -171,12 +176,7 @@ func GetListAlarmsSortByEnumStringValues() []string {
 
 // GetMappingListAlarmsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAlarmsSortByEnum(val string) (ListAlarmsSortByEnum, bool) {
-	mappingListAlarmsSortByEnumIgnoreCase := make(map[string]ListAlarmsSortByEnum)
-	for k, v := range mappingListAlarmsSortByEnum {
-		mappingListAlarmsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAlarmsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAlarmsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -192,6 +192,11 @@ const (
 var mappingListAlarmsSortOrderEnum = map[string]ListAlarmsSortOrderEnum{
 	"ASC":  ListAlarmsSortOrderAsc,
 	"DESC": ListAlarmsSortOrderDesc,
+}
+
+var mappingListAlarmsSortOrderEnumLowerCase = map[string]ListAlarmsSortOrderEnum{
+	"asc":  ListAlarmsSortOrderAsc,
+	"desc": ListAlarmsSortOrderDesc,
 }
 
 // GetListAlarmsSortOrderEnumValues Enumerates the set of values for ListAlarmsSortOrderEnum
@@ -213,11 +218,6 @@ func GetListAlarmsSortOrderEnumStringValues() []string {
 
 // GetMappingListAlarmsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAlarmsSortOrderEnum(val string) (ListAlarmsSortOrderEnum, bool) {
-	mappingListAlarmsSortOrderEnumIgnoreCase := make(map[string]ListAlarmsSortOrderEnum)
-	for k, v := range mappingListAlarmsSortOrderEnum {
-		mappingListAlarmsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAlarmsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAlarmsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

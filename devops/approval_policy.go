@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingApprovalPolicyApprovalPolicyTypeEnum = map[string]ApprovalPolicyAppro
 	"COUNT_BASED_APPROVAL": ApprovalPolicyApprovalPolicyTypeCountBasedApproval,
 }
 
+var mappingApprovalPolicyApprovalPolicyTypeEnumLowerCase = map[string]ApprovalPolicyApprovalPolicyTypeEnum{
+	"count_based_approval": ApprovalPolicyApprovalPolicyTypeCountBasedApproval,
+}
+
 // GetApprovalPolicyApprovalPolicyTypeEnumValues Enumerates the set of values for ApprovalPolicyApprovalPolicyTypeEnum
 func GetApprovalPolicyApprovalPolicyTypeEnumValues() []ApprovalPolicyApprovalPolicyTypeEnum {
 	values := make([]ApprovalPolicyApprovalPolicyTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetApprovalPolicyApprovalPolicyTypeEnumStringValues() []string {
 
 // GetMappingApprovalPolicyApprovalPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingApprovalPolicyApprovalPolicyTypeEnum(val string) (ApprovalPolicyApprovalPolicyTypeEnum, bool) {
-	mappingApprovalPolicyApprovalPolicyTypeEnumIgnoreCase := make(map[string]ApprovalPolicyApprovalPolicyTypeEnum)
-	for k, v := range mappingApprovalPolicyApprovalPolicyTypeEnum {
-		mappingApprovalPolicyApprovalPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingApprovalPolicyApprovalPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingApprovalPolicyApprovalPolicyTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

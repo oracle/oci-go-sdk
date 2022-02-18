@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,11 @@ var mappingListPipelineValidationsSortByEnum = map[string]ListPipelineValidation
 	"DISPLAY_NAME": ListPipelineValidationsSortByDisplayName,
 }
 
+var mappingListPipelineValidationsSortByEnumLowerCase = map[string]ListPipelineValidationsSortByEnum{
+	"time_created": ListPipelineValidationsSortByTimeCreated,
+	"display_name": ListPipelineValidationsSortByDisplayName,
+}
+
 // GetListPipelineValidationsSortByEnumValues Enumerates the set of values for ListPipelineValidationsSortByEnum
 func GetListPipelineValidationsSortByEnumValues() []ListPipelineValidationsSortByEnum {
 	values := make([]ListPipelineValidationsSortByEnum, 0)
@@ -163,12 +168,7 @@ func GetListPipelineValidationsSortByEnumStringValues() []string {
 
 // GetMappingListPipelineValidationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPipelineValidationsSortByEnum(val string) (ListPipelineValidationsSortByEnum, bool) {
-	mappingListPipelineValidationsSortByEnumIgnoreCase := make(map[string]ListPipelineValidationsSortByEnum)
-	for k, v := range mappingListPipelineValidationsSortByEnum {
-		mappingListPipelineValidationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPipelineValidationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPipelineValidationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -184,6 +184,11 @@ const (
 var mappingListPipelineValidationsSortOrderEnum = map[string]ListPipelineValidationsSortOrderEnum{
 	"ASC":  ListPipelineValidationsSortOrderAsc,
 	"DESC": ListPipelineValidationsSortOrderDesc,
+}
+
+var mappingListPipelineValidationsSortOrderEnumLowerCase = map[string]ListPipelineValidationsSortOrderEnum{
+	"asc":  ListPipelineValidationsSortOrderAsc,
+	"desc": ListPipelineValidationsSortOrderDesc,
 }
 
 // GetListPipelineValidationsSortOrderEnumValues Enumerates the set of values for ListPipelineValidationsSortOrderEnum
@@ -205,11 +210,6 @@ func GetListPipelineValidationsSortOrderEnumStringValues() []string {
 
 // GetMappingListPipelineValidationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPipelineValidationsSortOrderEnum(val string) (ListPipelineValidationsSortOrderEnum, bool) {
-	mappingListPipelineValidationsSortOrderEnumIgnoreCase := make(map[string]ListPipelineValidationsSortOrderEnum)
-	for k, v := range mappingListPipelineValidationsSortOrderEnum {
-		mappingListPipelineValidationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPipelineValidationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPipelineValidationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

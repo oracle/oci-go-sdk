@@ -12,7 +12,7 @@ package datascience
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingScalingPolicyPolicyTypeEnum = map[string]ScalingPolicyPolicyTypeEnum{
 	"FIXED_SIZE": ScalingPolicyPolicyTypeFixedSize,
 }
 
+var mappingScalingPolicyPolicyTypeEnumLowerCase = map[string]ScalingPolicyPolicyTypeEnum{
+	"fixed_size": ScalingPolicyPolicyTypeFixedSize,
+}
+
 // GetScalingPolicyPolicyTypeEnumValues Enumerates the set of values for ScalingPolicyPolicyTypeEnum
 func GetScalingPolicyPolicyTypeEnumValues() []ScalingPolicyPolicyTypeEnum {
 	values := make([]ScalingPolicyPolicyTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetScalingPolicyPolicyTypeEnumStringValues() []string {
 
 // GetMappingScalingPolicyPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingScalingPolicyPolicyTypeEnum(val string) (ScalingPolicyPolicyTypeEnum, bool) {
-	mappingScalingPolicyPolicyTypeEnumIgnoreCase := make(map[string]ScalingPolicyPolicyTypeEnum)
-	for k, v := range mappingScalingPolicyPolicyTypeEnum {
-		mappingScalingPolicyPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingScalingPolicyPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingScalingPolicyPolicyTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

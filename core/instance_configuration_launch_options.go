@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -113,6 +113,14 @@ var mappingInstanceConfigurationLaunchOptionsBootVolumeTypeEnum = map[string]Ins
 	"PARAVIRTUALIZED": InstanceConfigurationLaunchOptionsBootVolumeTypeParavirtualized,
 }
 
+var mappingInstanceConfigurationLaunchOptionsBootVolumeTypeEnumLowerCase = map[string]InstanceConfigurationLaunchOptionsBootVolumeTypeEnum{
+	"iscsi":           InstanceConfigurationLaunchOptionsBootVolumeTypeIscsi,
+	"scsi":            InstanceConfigurationLaunchOptionsBootVolumeTypeScsi,
+	"ide":             InstanceConfigurationLaunchOptionsBootVolumeTypeIde,
+	"vfio":            InstanceConfigurationLaunchOptionsBootVolumeTypeVfio,
+	"paravirtualized": InstanceConfigurationLaunchOptionsBootVolumeTypeParavirtualized,
+}
+
 // GetInstanceConfigurationLaunchOptionsBootVolumeTypeEnumValues Enumerates the set of values for InstanceConfigurationLaunchOptionsBootVolumeTypeEnum
 func GetInstanceConfigurationLaunchOptionsBootVolumeTypeEnumValues() []InstanceConfigurationLaunchOptionsBootVolumeTypeEnum {
 	values := make([]InstanceConfigurationLaunchOptionsBootVolumeTypeEnum, 0)
@@ -135,12 +143,7 @@ func GetInstanceConfigurationLaunchOptionsBootVolumeTypeEnumStringValues() []str
 
 // GetMappingInstanceConfigurationLaunchOptionsBootVolumeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceConfigurationLaunchOptionsBootVolumeTypeEnum(val string) (InstanceConfigurationLaunchOptionsBootVolumeTypeEnum, bool) {
-	mappingInstanceConfigurationLaunchOptionsBootVolumeTypeEnumIgnoreCase := make(map[string]InstanceConfigurationLaunchOptionsBootVolumeTypeEnum)
-	for k, v := range mappingInstanceConfigurationLaunchOptionsBootVolumeTypeEnum {
-		mappingInstanceConfigurationLaunchOptionsBootVolumeTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceConfigurationLaunchOptionsBootVolumeTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceConfigurationLaunchOptionsBootVolumeTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -156,6 +159,11 @@ const (
 var mappingInstanceConfigurationLaunchOptionsFirmwareEnum = map[string]InstanceConfigurationLaunchOptionsFirmwareEnum{
 	"BIOS":    InstanceConfigurationLaunchOptionsFirmwareBios,
 	"UEFI_64": InstanceConfigurationLaunchOptionsFirmwareUefi64,
+}
+
+var mappingInstanceConfigurationLaunchOptionsFirmwareEnumLowerCase = map[string]InstanceConfigurationLaunchOptionsFirmwareEnum{
+	"bios":    InstanceConfigurationLaunchOptionsFirmwareBios,
+	"uefi_64": InstanceConfigurationLaunchOptionsFirmwareUefi64,
 }
 
 // GetInstanceConfigurationLaunchOptionsFirmwareEnumValues Enumerates the set of values for InstanceConfigurationLaunchOptionsFirmwareEnum
@@ -177,12 +185,7 @@ func GetInstanceConfigurationLaunchOptionsFirmwareEnumStringValues() []string {
 
 // GetMappingInstanceConfigurationLaunchOptionsFirmwareEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceConfigurationLaunchOptionsFirmwareEnum(val string) (InstanceConfigurationLaunchOptionsFirmwareEnum, bool) {
-	mappingInstanceConfigurationLaunchOptionsFirmwareEnumIgnoreCase := make(map[string]InstanceConfigurationLaunchOptionsFirmwareEnum)
-	for k, v := range mappingInstanceConfigurationLaunchOptionsFirmwareEnum {
-		mappingInstanceConfigurationLaunchOptionsFirmwareEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceConfigurationLaunchOptionsFirmwareEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceConfigurationLaunchOptionsFirmwareEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -200,6 +203,12 @@ var mappingInstanceConfigurationLaunchOptionsNetworkTypeEnum = map[string]Instan
 	"E1000":           InstanceConfigurationLaunchOptionsNetworkTypeE1000,
 	"VFIO":            InstanceConfigurationLaunchOptionsNetworkTypeVfio,
 	"PARAVIRTUALIZED": InstanceConfigurationLaunchOptionsNetworkTypeParavirtualized,
+}
+
+var mappingInstanceConfigurationLaunchOptionsNetworkTypeEnumLowerCase = map[string]InstanceConfigurationLaunchOptionsNetworkTypeEnum{
+	"e1000":           InstanceConfigurationLaunchOptionsNetworkTypeE1000,
+	"vfio":            InstanceConfigurationLaunchOptionsNetworkTypeVfio,
+	"paravirtualized": InstanceConfigurationLaunchOptionsNetworkTypeParavirtualized,
 }
 
 // GetInstanceConfigurationLaunchOptionsNetworkTypeEnumValues Enumerates the set of values for InstanceConfigurationLaunchOptionsNetworkTypeEnum
@@ -222,12 +231,7 @@ func GetInstanceConfigurationLaunchOptionsNetworkTypeEnumStringValues() []string
 
 // GetMappingInstanceConfigurationLaunchOptionsNetworkTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceConfigurationLaunchOptionsNetworkTypeEnum(val string) (InstanceConfigurationLaunchOptionsNetworkTypeEnum, bool) {
-	mappingInstanceConfigurationLaunchOptionsNetworkTypeEnumIgnoreCase := make(map[string]InstanceConfigurationLaunchOptionsNetworkTypeEnum)
-	for k, v := range mappingInstanceConfigurationLaunchOptionsNetworkTypeEnum {
-		mappingInstanceConfigurationLaunchOptionsNetworkTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceConfigurationLaunchOptionsNetworkTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceConfigurationLaunchOptionsNetworkTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -249,6 +253,14 @@ var mappingInstanceConfigurationLaunchOptionsRemoteDataVolumeTypeEnum = map[stri
 	"IDE":             InstanceConfigurationLaunchOptionsRemoteDataVolumeTypeIde,
 	"VFIO":            InstanceConfigurationLaunchOptionsRemoteDataVolumeTypeVfio,
 	"PARAVIRTUALIZED": InstanceConfigurationLaunchOptionsRemoteDataVolumeTypeParavirtualized,
+}
+
+var mappingInstanceConfigurationLaunchOptionsRemoteDataVolumeTypeEnumLowerCase = map[string]InstanceConfigurationLaunchOptionsRemoteDataVolumeTypeEnum{
+	"iscsi":           InstanceConfigurationLaunchOptionsRemoteDataVolumeTypeIscsi,
+	"scsi":            InstanceConfigurationLaunchOptionsRemoteDataVolumeTypeScsi,
+	"ide":             InstanceConfigurationLaunchOptionsRemoteDataVolumeTypeIde,
+	"vfio":            InstanceConfigurationLaunchOptionsRemoteDataVolumeTypeVfio,
+	"paravirtualized": InstanceConfigurationLaunchOptionsRemoteDataVolumeTypeParavirtualized,
 }
 
 // GetInstanceConfigurationLaunchOptionsRemoteDataVolumeTypeEnumValues Enumerates the set of values for InstanceConfigurationLaunchOptionsRemoteDataVolumeTypeEnum
@@ -273,11 +285,6 @@ func GetInstanceConfigurationLaunchOptionsRemoteDataVolumeTypeEnumStringValues()
 
 // GetMappingInstanceConfigurationLaunchOptionsRemoteDataVolumeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceConfigurationLaunchOptionsRemoteDataVolumeTypeEnum(val string) (InstanceConfigurationLaunchOptionsRemoteDataVolumeTypeEnum, bool) {
-	mappingInstanceConfigurationLaunchOptionsRemoteDataVolumeTypeEnumIgnoreCase := make(map[string]InstanceConfigurationLaunchOptionsRemoteDataVolumeTypeEnum)
-	for k, v := range mappingInstanceConfigurationLaunchOptionsRemoteDataVolumeTypeEnum {
-		mappingInstanceConfigurationLaunchOptionsRemoteDataVolumeTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceConfigurationLaunchOptionsRemoteDataVolumeTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceConfigurationLaunchOptionsRemoteDataVolumeTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

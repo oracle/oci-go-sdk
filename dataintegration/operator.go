@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -303,6 +303,27 @@ var mappingOperatorModelTypeEnum = map[string]OperatorModelTypeEnum{
 	"LOOKUP_OPERATOR":     OperatorModelTypeLookupOperator,
 }
 
+var mappingOperatorModelTypeEnumLowerCase = map[string]OperatorModelTypeEnum{
+	"source_operator":     OperatorModelTypeSourceOperator,
+	"filter_operator":     OperatorModelTypeFilterOperator,
+	"joiner_operator":     OperatorModelTypeJoinerOperator,
+	"aggregator_operator": OperatorModelTypeAggregatorOperator,
+	"projection_operator": OperatorModelTypeProjectionOperator,
+	"target_operator":     OperatorModelTypeTargetOperator,
+	"distinct_operator":   OperatorModelTypeDistinctOperator,
+	"sort_operator":       OperatorModelTypeSortOperator,
+	"union_operator":      OperatorModelTypeUnionOperator,
+	"intersect_operator":  OperatorModelTypeIntersectOperator,
+	"minus_operator":      OperatorModelTypeMinusOperator,
+	"merge_operator":      OperatorModelTypeMergeOperator,
+	"start_operator":      OperatorModelTypeStartOperator,
+	"end_operator":        OperatorModelTypeEndOperator,
+	"pipeline_operator":   OperatorModelTypePipelineOperator,
+	"task_operator":       OperatorModelTypeTaskOperator,
+	"expression_operator": OperatorModelTypeExpressionOperator,
+	"lookup_operator":     OperatorModelTypeLookupOperator,
+}
+
 // GetOperatorModelTypeEnumValues Enumerates the set of values for OperatorModelTypeEnum
 func GetOperatorModelTypeEnumValues() []OperatorModelTypeEnum {
 	values := make([]OperatorModelTypeEnum, 0)
@@ -338,11 +359,6 @@ func GetOperatorModelTypeEnumStringValues() []string {
 
 // GetMappingOperatorModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperatorModelTypeEnum(val string) (OperatorModelTypeEnum, bool) {
-	mappingOperatorModelTypeEnumIgnoreCase := make(map[string]OperatorModelTypeEnum)
-	for k, v := range mappingOperatorModelTypeEnum {
-		mappingOperatorModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperatorModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperatorModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

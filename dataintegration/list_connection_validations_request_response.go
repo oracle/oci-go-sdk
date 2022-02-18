@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,11 @@ var mappingListConnectionValidationsSortByEnum = map[string]ListConnectionValida
 	"DISPLAY_NAME": ListConnectionValidationsSortByDisplayName,
 }
 
+var mappingListConnectionValidationsSortByEnumLowerCase = map[string]ListConnectionValidationsSortByEnum{
+	"time_created": ListConnectionValidationsSortByTimeCreated,
+	"display_name": ListConnectionValidationsSortByDisplayName,
+}
+
 // GetListConnectionValidationsSortByEnumValues Enumerates the set of values for ListConnectionValidationsSortByEnum
 func GetListConnectionValidationsSortByEnumValues() []ListConnectionValidationsSortByEnum {
 	values := make([]ListConnectionValidationsSortByEnum, 0)
@@ -163,12 +168,7 @@ func GetListConnectionValidationsSortByEnumStringValues() []string {
 
 // GetMappingListConnectionValidationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConnectionValidationsSortByEnum(val string) (ListConnectionValidationsSortByEnum, bool) {
-	mappingListConnectionValidationsSortByEnumIgnoreCase := make(map[string]ListConnectionValidationsSortByEnum)
-	for k, v := range mappingListConnectionValidationsSortByEnum {
-		mappingListConnectionValidationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConnectionValidationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConnectionValidationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -184,6 +184,11 @@ const (
 var mappingListConnectionValidationsSortOrderEnum = map[string]ListConnectionValidationsSortOrderEnum{
 	"ASC":  ListConnectionValidationsSortOrderAsc,
 	"DESC": ListConnectionValidationsSortOrderDesc,
+}
+
+var mappingListConnectionValidationsSortOrderEnumLowerCase = map[string]ListConnectionValidationsSortOrderEnum{
+	"asc":  ListConnectionValidationsSortOrderAsc,
+	"desc": ListConnectionValidationsSortOrderDesc,
 }
 
 // GetListConnectionValidationsSortOrderEnumValues Enumerates the set of values for ListConnectionValidationsSortOrderEnum
@@ -205,11 +210,6 @@ func GetListConnectionValidationsSortOrderEnumStringValues() []string {
 
 // GetMappingListConnectionValidationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConnectionValidationsSortOrderEnum(val string) (ListConnectionValidationsSortOrderEnum, bool) {
-	mappingListConnectionValidationsSortOrderEnumIgnoreCase := make(map[string]ListConnectionValidationsSortOrderEnum)
-	for k, v := range mappingListConnectionValidationsSortOrderEnum {
-		mappingListConnectionValidationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConnectionValidationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConnectionValidationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

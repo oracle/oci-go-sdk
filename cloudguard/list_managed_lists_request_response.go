@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -172,6 +172,16 @@ var mappingListManagedListsLifecycleStateEnum = map[string]ListManagedListsLifec
 	"FAILED":   ListManagedListsLifecycleStateFailed,
 }
 
+var mappingListManagedListsLifecycleStateEnumLowerCase = map[string]ListManagedListsLifecycleStateEnum{
+	"creating": ListManagedListsLifecycleStateCreating,
+	"updating": ListManagedListsLifecycleStateUpdating,
+	"active":   ListManagedListsLifecycleStateActive,
+	"inactive": ListManagedListsLifecycleStateInactive,
+	"deleting": ListManagedListsLifecycleStateDeleting,
+	"deleted":  ListManagedListsLifecycleStateDeleted,
+	"failed":   ListManagedListsLifecycleStateFailed,
+}
+
 // GetListManagedListsLifecycleStateEnumValues Enumerates the set of values for ListManagedListsLifecycleStateEnum
 func GetListManagedListsLifecycleStateEnumValues() []ListManagedListsLifecycleStateEnum {
 	values := make([]ListManagedListsLifecycleStateEnum, 0)
@@ -196,12 +206,7 @@ func GetListManagedListsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListManagedListsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedListsLifecycleStateEnum(val string) (ListManagedListsLifecycleStateEnum, bool) {
-	mappingListManagedListsLifecycleStateEnumIgnoreCase := make(map[string]ListManagedListsLifecycleStateEnum)
-	for k, v := range mappingListManagedListsLifecycleStateEnum {
-		mappingListManagedListsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedListsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedListsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -239,6 +244,21 @@ var mappingListManagedListsListTypeEnum = map[string]ListManagedListsListTypeEnu
 	"GENERIC":       ListManagedListsListTypeGeneric,
 }
 
+var mappingListManagedListsListTypeEnumLowerCase = map[string]ListManagedListsListTypeEnum{
+	"cidr_block":    ListManagedListsListTypeCidrBlock,
+	"users":         ListManagedListsListTypeUsers,
+	"groups":        ListManagedListsListTypeGroups,
+	"ipv4address":   ListManagedListsListTypeIpv4address,
+	"ipv6address":   ListManagedListsListTypeIpv6address,
+	"resource_ocid": ListManagedListsListTypeResourceOcid,
+	"region":        ListManagedListsListTypeRegion,
+	"country":       ListManagedListsListTypeCountry,
+	"state":         ListManagedListsListTypeState,
+	"city":          ListManagedListsListTypeCity,
+	"tags":          ListManagedListsListTypeTags,
+	"generic":       ListManagedListsListTypeGeneric,
+}
+
 // GetListManagedListsListTypeEnumValues Enumerates the set of values for ListManagedListsListTypeEnum
 func GetListManagedListsListTypeEnumValues() []ListManagedListsListTypeEnum {
 	values := make([]ListManagedListsListTypeEnum, 0)
@@ -268,12 +288,7 @@ func GetListManagedListsListTypeEnumStringValues() []string {
 
 // GetMappingListManagedListsListTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedListsListTypeEnum(val string) (ListManagedListsListTypeEnum, bool) {
-	mappingListManagedListsListTypeEnumIgnoreCase := make(map[string]ListManagedListsListTypeEnum)
-	for k, v := range mappingListManagedListsListTypeEnum {
-		mappingListManagedListsListTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedListsListTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedListsListTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -289,6 +304,11 @@ const (
 var mappingListManagedListsAccessLevelEnum = map[string]ListManagedListsAccessLevelEnum{
 	"RESTRICTED": ListManagedListsAccessLevelRestricted,
 	"ACCESSIBLE": ListManagedListsAccessLevelAccessible,
+}
+
+var mappingListManagedListsAccessLevelEnumLowerCase = map[string]ListManagedListsAccessLevelEnum{
+	"restricted": ListManagedListsAccessLevelRestricted,
+	"accessible": ListManagedListsAccessLevelAccessible,
 }
 
 // GetListManagedListsAccessLevelEnumValues Enumerates the set of values for ListManagedListsAccessLevelEnum
@@ -310,12 +330,7 @@ func GetListManagedListsAccessLevelEnumStringValues() []string {
 
 // GetMappingListManagedListsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedListsAccessLevelEnum(val string) (ListManagedListsAccessLevelEnum, bool) {
-	mappingListManagedListsAccessLevelEnumIgnoreCase := make(map[string]ListManagedListsAccessLevelEnum)
-	for k, v := range mappingListManagedListsAccessLevelEnum {
-		mappingListManagedListsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedListsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedListsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -331,6 +346,11 @@ const (
 var mappingListManagedListsSortOrderEnum = map[string]ListManagedListsSortOrderEnum{
 	"ASC":  ListManagedListsSortOrderAsc,
 	"DESC": ListManagedListsSortOrderDesc,
+}
+
+var mappingListManagedListsSortOrderEnumLowerCase = map[string]ListManagedListsSortOrderEnum{
+	"asc":  ListManagedListsSortOrderAsc,
+	"desc": ListManagedListsSortOrderDesc,
 }
 
 // GetListManagedListsSortOrderEnumValues Enumerates the set of values for ListManagedListsSortOrderEnum
@@ -352,12 +372,7 @@ func GetListManagedListsSortOrderEnumStringValues() []string {
 
 // GetMappingListManagedListsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedListsSortOrderEnum(val string) (ListManagedListsSortOrderEnum, bool) {
-	mappingListManagedListsSortOrderEnumIgnoreCase := make(map[string]ListManagedListsSortOrderEnum)
-	for k, v := range mappingListManagedListsSortOrderEnum {
-		mappingListManagedListsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedListsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedListsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -373,6 +388,11 @@ const (
 var mappingListManagedListsSortByEnum = map[string]ListManagedListsSortByEnum{
 	"timeCreated": ListManagedListsSortByTimecreated,
 	"displayName": ListManagedListsSortByDisplayname,
+}
+
+var mappingListManagedListsSortByEnumLowerCase = map[string]ListManagedListsSortByEnum{
+	"timecreated": ListManagedListsSortByTimecreated,
+	"displayname": ListManagedListsSortByDisplayname,
 }
 
 // GetListManagedListsSortByEnumValues Enumerates the set of values for ListManagedListsSortByEnum
@@ -394,11 +414,6 @@ func GetListManagedListsSortByEnumStringValues() []string {
 
 // GetMappingListManagedListsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedListsSortByEnum(val string) (ListManagedListsSortByEnum, bool) {
-	mappingListManagedListsSortByEnumIgnoreCase := make(map[string]ListManagedListsSortByEnum)
-	for k, v := range mappingListManagedListsSortByEnum {
-		mappingListManagedListsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedListsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedListsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

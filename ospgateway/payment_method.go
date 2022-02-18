@@ -27,6 +27,11 @@ var mappingPaymentMethodEnum = map[string]PaymentMethodEnum{
 	"PAYPAL":      PaymentMethodPaypal,
 }
 
+var mappingPaymentMethodEnumLowerCase = map[string]PaymentMethodEnum{
+	"credit_card": PaymentMethodCreditCard,
+	"paypal":      PaymentMethodPaypal,
+}
+
 // GetPaymentMethodEnumValues Enumerates the set of values for PaymentMethodEnum
 func GetPaymentMethodEnumValues() []PaymentMethodEnum {
 	values := make([]PaymentMethodEnum, 0)
@@ -46,11 +51,6 @@ func GetPaymentMethodEnumStringValues() []string {
 
 // GetMappingPaymentMethodEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPaymentMethodEnum(val string) (PaymentMethodEnum, bool) {
-	mappingPaymentMethodEnumIgnoreCase := make(map[string]PaymentMethodEnum)
-	for k, v := range mappingPaymentMethodEnum {
-		mappingPaymentMethodEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPaymentMethodEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPaymentMethodEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

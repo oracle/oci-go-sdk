@@ -12,7 +12,7 @@ package aivision
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -190,6 +190,15 @@ var mappingDocumentJobLifecycleStateEnum = map[string]DocumentJobLifecycleStateE
 	"CANCELING":   DocumentJobLifecycleStateCanceling,
 }
 
+var mappingDocumentJobLifecycleStateEnumLowerCase = map[string]DocumentJobLifecycleStateEnum{
+	"succeeded":   DocumentJobLifecycleStateSucceeded,
+	"failed":      DocumentJobLifecycleStateFailed,
+	"accepted":    DocumentJobLifecycleStateAccepted,
+	"canceled":    DocumentJobLifecycleStateCanceled,
+	"in_progress": DocumentJobLifecycleStateInProgress,
+	"canceling":   DocumentJobLifecycleStateCanceling,
+}
+
 // GetDocumentJobLifecycleStateEnumValues Enumerates the set of values for DocumentJobLifecycleStateEnum
 func GetDocumentJobLifecycleStateEnumValues() []DocumentJobLifecycleStateEnum {
 	values := make([]DocumentJobLifecycleStateEnum, 0)
@@ -213,12 +222,7 @@ func GetDocumentJobLifecycleStateEnumStringValues() []string {
 
 // GetMappingDocumentJobLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDocumentJobLifecycleStateEnum(val string) (DocumentJobLifecycleStateEnum, bool) {
-	mappingDocumentJobLifecycleStateEnumIgnoreCase := make(map[string]DocumentJobLifecycleStateEnum)
-	for k, v := range mappingDocumentJobLifecycleStateEnum {
-		mappingDocumentJobLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDocumentJobLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDocumentJobLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -234,6 +238,11 @@ const (
 var mappingDocumentJobLifecycleDetailsEnum = map[string]DocumentJobLifecycleDetailsEnum{
 	"PARTIALLY_SUCCEEDED": DocumentJobLifecycleDetailsPartiallySucceeded,
 	"COMPLETELY_FAILED":   DocumentJobLifecycleDetailsCompletelyFailed,
+}
+
+var mappingDocumentJobLifecycleDetailsEnumLowerCase = map[string]DocumentJobLifecycleDetailsEnum{
+	"partially_succeeded": DocumentJobLifecycleDetailsPartiallySucceeded,
+	"completely_failed":   DocumentJobLifecycleDetailsCompletelyFailed,
 }
 
 // GetDocumentJobLifecycleDetailsEnumValues Enumerates the set of values for DocumentJobLifecycleDetailsEnum
@@ -255,11 +264,6 @@ func GetDocumentJobLifecycleDetailsEnumStringValues() []string {
 
 // GetMappingDocumentJobLifecycleDetailsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDocumentJobLifecycleDetailsEnum(val string) (DocumentJobLifecycleDetailsEnum, bool) {
-	mappingDocumentJobLifecycleDetailsEnumIgnoreCase := make(map[string]DocumentJobLifecycleDetailsEnum)
-	for k, v := range mappingDocumentJobLifecycleDetailsEnum {
-		mappingDocumentJobLifecycleDetailsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDocumentJobLifecycleDetailsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDocumentJobLifecycleDetailsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

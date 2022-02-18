@@ -6,7 +6,7 @@ package databasetools
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -129,6 +129,11 @@ var mappingListWorkRequestsSortOrderEnum = map[string]ListWorkRequestsSortOrderE
 	"DESC": ListWorkRequestsSortOrderDesc,
 }
 
+var mappingListWorkRequestsSortOrderEnumLowerCase = map[string]ListWorkRequestsSortOrderEnum{
+	"asc":  ListWorkRequestsSortOrderAsc,
+	"desc": ListWorkRequestsSortOrderDesc,
+}
+
 // GetListWorkRequestsSortOrderEnumValues Enumerates the set of values for ListWorkRequestsSortOrderEnum
 func GetListWorkRequestsSortOrderEnumValues() []ListWorkRequestsSortOrderEnum {
 	values := make([]ListWorkRequestsSortOrderEnum, 0)
@@ -148,12 +153,7 @@ func GetListWorkRequestsSortOrderEnumStringValues() []string {
 
 // GetMappingListWorkRequestsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWorkRequestsSortOrderEnum(val string) (ListWorkRequestsSortOrderEnum, bool) {
-	mappingListWorkRequestsSortOrderEnumIgnoreCase := make(map[string]ListWorkRequestsSortOrderEnum)
-	for k, v := range mappingListWorkRequestsSortOrderEnum {
-		mappingListWorkRequestsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWorkRequestsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWorkRequestsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -167,6 +167,10 @@ const (
 
 var mappingListWorkRequestsSortByEnum = map[string]ListWorkRequestsSortByEnum{
 	"timeAccepted": ListWorkRequestsSortByTimeaccepted,
+}
+
+var mappingListWorkRequestsSortByEnumLowerCase = map[string]ListWorkRequestsSortByEnum{
+	"timeaccepted": ListWorkRequestsSortByTimeaccepted,
 }
 
 // GetListWorkRequestsSortByEnumValues Enumerates the set of values for ListWorkRequestsSortByEnum
@@ -187,11 +191,6 @@ func GetListWorkRequestsSortByEnumStringValues() []string {
 
 // GetMappingListWorkRequestsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWorkRequestsSortByEnum(val string) (ListWorkRequestsSortByEnum, bool) {
-	mappingListWorkRequestsSortByEnumIgnoreCase := make(map[string]ListWorkRequestsSortByEnum)
-	for k, v := range mappingListWorkRequestsSortByEnum {
-		mappingListWorkRequestsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWorkRequestsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWorkRequestsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

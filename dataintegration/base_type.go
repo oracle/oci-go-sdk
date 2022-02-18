@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -178,6 +178,16 @@ var mappingBaseTypeModelTypeEnum = map[string]BaseTypeModelTypeEnum{
 	"DERIVED_TYPE":    BaseTypeModelTypeDerivedType,
 }
 
+var mappingBaseTypeModelTypeEnumLowerCase = map[string]BaseTypeModelTypeEnum{
+	"dynamic_type":    BaseTypeModelTypeDynamicType,
+	"structured_type": BaseTypeModelTypeStructuredType,
+	"data_type":       BaseTypeModelTypeDataType,
+	"java_type":       BaseTypeModelTypeJavaType,
+	"configured_type": BaseTypeModelTypeConfiguredType,
+	"composite_type":  BaseTypeModelTypeCompositeType,
+	"derived_type":    BaseTypeModelTypeDerivedType,
+}
+
 // GetBaseTypeModelTypeEnumValues Enumerates the set of values for BaseTypeModelTypeEnum
 func GetBaseTypeModelTypeEnumValues() []BaseTypeModelTypeEnum {
 	values := make([]BaseTypeModelTypeEnum, 0)
@@ -202,11 +212,6 @@ func GetBaseTypeModelTypeEnumStringValues() []string {
 
 // GetMappingBaseTypeModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBaseTypeModelTypeEnum(val string) (BaseTypeModelTypeEnum, bool) {
-	mappingBaseTypeModelTypeEnumIgnoreCase := make(map[string]BaseTypeModelTypeEnum)
-	for k, v := range mappingBaseTypeModelTypeEnum {
-		mappingBaseTypeModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBaseTypeModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBaseTypeModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

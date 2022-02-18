@@ -12,7 +12,7 @@ package loganalytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -135,6 +135,11 @@ var mappingUpdateScheduledTaskDetailsKindEnum = map[string]UpdateScheduledTaskDe
 	"STANDARD":     UpdateScheduledTaskDetailsKindStandard,
 }
 
+var mappingUpdateScheduledTaskDetailsKindEnumLowerCase = map[string]UpdateScheduledTaskDetailsKindEnum{
+	"acceleration": UpdateScheduledTaskDetailsKindAcceleration,
+	"standard":     UpdateScheduledTaskDetailsKindStandard,
+}
+
 // GetUpdateScheduledTaskDetailsKindEnumValues Enumerates the set of values for UpdateScheduledTaskDetailsKindEnum
 func GetUpdateScheduledTaskDetailsKindEnumValues() []UpdateScheduledTaskDetailsKindEnum {
 	values := make([]UpdateScheduledTaskDetailsKindEnum, 0)
@@ -154,11 +159,6 @@ func GetUpdateScheduledTaskDetailsKindEnumStringValues() []string {
 
 // GetMappingUpdateScheduledTaskDetailsKindEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateScheduledTaskDetailsKindEnum(val string) (UpdateScheduledTaskDetailsKindEnum, bool) {
-	mappingUpdateScheduledTaskDetailsKindEnumIgnoreCase := make(map[string]UpdateScheduledTaskDetailsKindEnum)
-	for k, v := range mappingUpdateScheduledTaskDetailsKindEnum {
-		mappingUpdateScheduledTaskDetailsKindEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateScheduledTaskDetailsKindEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateScheduledTaskDetailsKindEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

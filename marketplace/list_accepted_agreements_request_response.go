@@ -6,7 +6,7 @@ package marketplace
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -139,6 +139,10 @@ var mappingListAcceptedAgreementsSortByEnum = map[string]ListAcceptedAgreementsS
 	"TIMEACCEPTED": ListAcceptedAgreementsSortByTimeaccepted,
 }
 
+var mappingListAcceptedAgreementsSortByEnumLowerCase = map[string]ListAcceptedAgreementsSortByEnum{
+	"timeaccepted": ListAcceptedAgreementsSortByTimeaccepted,
+}
+
 // GetListAcceptedAgreementsSortByEnumValues Enumerates the set of values for ListAcceptedAgreementsSortByEnum
 func GetListAcceptedAgreementsSortByEnumValues() []ListAcceptedAgreementsSortByEnum {
 	values := make([]ListAcceptedAgreementsSortByEnum, 0)
@@ -157,12 +161,7 @@ func GetListAcceptedAgreementsSortByEnumStringValues() []string {
 
 // GetMappingListAcceptedAgreementsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAcceptedAgreementsSortByEnum(val string) (ListAcceptedAgreementsSortByEnum, bool) {
-	mappingListAcceptedAgreementsSortByEnumIgnoreCase := make(map[string]ListAcceptedAgreementsSortByEnum)
-	for k, v := range mappingListAcceptedAgreementsSortByEnum {
-		mappingListAcceptedAgreementsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAcceptedAgreementsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAcceptedAgreementsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -178,6 +177,11 @@ const (
 var mappingListAcceptedAgreementsSortOrderEnum = map[string]ListAcceptedAgreementsSortOrderEnum{
 	"ASC":  ListAcceptedAgreementsSortOrderAsc,
 	"DESC": ListAcceptedAgreementsSortOrderDesc,
+}
+
+var mappingListAcceptedAgreementsSortOrderEnumLowerCase = map[string]ListAcceptedAgreementsSortOrderEnum{
+	"asc":  ListAcceptedAgreementsSortOrderAsc,
+	"desc": ListAcceptedAgreementsSortOrderDesc,
 }
 
 // GetListAcceptedAgreementsSortOrderEnumValues Enumerates the set of values for ListAcceptedAgreementsSortOrderEnum
@@ -199,11 +203,6 @@ func GetListAcceptedAgreementsSortOrderEnumStringValues() []string {
 
 // GetMappingListAcceptedAgreementsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAcceptedAgreementsSortOrderEnum(val string) (ListAcceptedAgreementsSortOrderEnum, bool) {
-	mappingListAcceptedAgreementsSortOrderEnumIgnoreCase := make(map[string]ListAcceptedAgreementsSortOrderEnum)
-	for k, v := range mappingListAcceptedAgreementsSortOrderEnum {
-		mappingListAcceptedAgreementsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAcceptedAgreementsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAcceptedAgreementsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

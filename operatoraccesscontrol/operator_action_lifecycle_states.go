@@ -29,6 +29,11 @@ var mappingOperatorActionLifecycleStatesEnum = map[string]OperatorActionLifecycl
 	"INACTIVE": OperatorActionLifecycleStatesInactive,
 }
 
+var mappingOperatorActionLifecycleStatesEnumLowerCase = map[string]OperatorActionLifecycleStatesEnum{
+	"active":   OperatorActionLifecycleStatesActive,
+	"inactive": OperatorActionLifecycleStatesInactive,
+}
+
 // GetOperatorActionLifecycleStatesEnumValues Enumerates the set of values for OperatorActionLifecycleStatesEnum
 func GetOperatorActionLifecycleStatesEnumValues() []OperatorActionLifecycleStatesEnum {
 	values := make([]OperatorActionLifecycleStatesEnum, 0)
@@ -48,11 +53,6 @@ func GetOperatorActionLifecycleStatesEnumStringValues() []string {
 
 // GetMappingOperatorActionLifecycleStatesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperatorActionLifecycleStatesEnum(val string) (OperatorActionLifecycleStatesEnum, bool) {
-	mappingOperatorActionLifecycleStatesEnumIgnoreCase := make(map[string]OperatorActionLifecycleStatesEnum)
-	for k, v := range mappingOperatorActionLifecycleStatesEnum {
-		mappingOperatorActionLifecycleStatesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperatorActionLifecycleStatesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperatorActionLifecycleStatesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -134,6 +134,11 @@ var mappingAlertOperationStatusEnum = map[string]AlertOperationStatusEnum{
 	"FAILED":    AlertOperationStatusFailed,
 }
 
+var mappingAlertOperationStatusEnumLowerCase = map[string]AlertOperationStatusEnum{
+	"succeeded": AlertOperationStatusSucceeded,
+	"failed":    AlertOperationStatusFailed,
+}
+
 // GetAlertOperationStatusEnumValues Enumerates the set of values for AlertOperationStatusEnum
 func GetAlertOperationStatusEnumValues() []AlertOperationStatusEnum {
 	values := make([]AlertOperationStatusEnum, 0)
@@ -153,11 +158,6 @@ func GetAlertOperationStatusEnumStringValues() []string {
 
 // GetMappingAlertOperationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAlertOperationStatusEnum(val string) (AlertOperationStatusEnum, bool) {
-	mappingAlertOperationStatusEnumIgnoreCase := make(map[string]AlertOperationStatusEnum)
-	for k, v := range mappingAlertOperationStatusEnum {
-		mappingAlertOperationStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAlertOperationStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAlertOperationStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

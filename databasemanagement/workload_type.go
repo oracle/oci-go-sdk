@@ -33,6 +33,13 @@ var mappingWorkloadTypeEnum = map[string]WorkloadTypeEnum{
 	"APEX": WorkloadTypeApex,
 }
 
+var mappingWorkloadTypeEnumLowerCase = map[string]WorkloadTypeEnum{
+	"oltp": WorkloadTypeOltp,
+	"dw":   WorkloadTypeDw,
+	"ajd":  WorkloadTypeAjd,
+	"apex": WorkloadTypeApex,
+}
+
 // GetWorkloadTypeEnumValues Enumerates the set of values for WorkloadTypeEnum
 func GetWorkloadTypeEnumValues() []WorkloadTypeEnum {
 	values := make([]WorkloadTypeEnum, 0)
@@ -54,11 +61,6 @@ func GetWorkloadTypeEnumStringValues() []string {
 
 // GetMappingWorkloadTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkloadTypeEnum(val string) (WorkloadTypeEnum, bool) {
-	mappingWorkloadTypeEnumIgnoreCase := make(map[string]WorkloadTypeEnum)
-	for k, v := range mappingWorkloadTypeEnum {
-		mappingWorkloadTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkloadTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkloadTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

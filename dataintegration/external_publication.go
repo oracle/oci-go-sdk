@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -104,6 +104,12 @@ var mappingExternalPublicationStatusEnum = map[string]ExternalPublicationStatusE
 	"PUBLISHING": ExternalPublicationStatusPublishing,
 }
 
+var mappingExternalPublicationStatusEnumLowerCase = map[string]ExternalPublicationStatusEnum{
+	"successful": ExternalPublicationStatusSuccessful,
+	"failed":     ExternalPublicationStatusFailed,
+	"publishing": ExternalPublicationStatusPublishing,
+}
+
 // GetExternalPublicationStatusEnumValues Enumerates the set of values for ExternalPublicationStatusEnum
 func GetExternalPublicationStatusEnumValues() []ExternalPublicationStatusEnum {
 	values := make([]ExternalPublicationStatusEnum, 0)
@@ -124,11 +130,6 @@ func GetExternalPublicationStatusEnumStringValues() []string {
 
 // GetMappingExternalPublicationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExternalPublicationStatusEnum(val string) (ExternalPublicationStatusEnum, bool) {
-	mappingExternalPublicationStatusEnumIgnoreCase := make(map[string]ExternalPublicationStatusEnum)
-	for k, v := range mappingExternalPublicationStatusEnum {
-		mappingExternalPublicationStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExternalPublicationStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExternalPublicationStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

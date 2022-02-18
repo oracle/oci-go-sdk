@@ -33,6 +33,13 @@ var mappingAccessRequestSeveritiesEnum = map[string]AccessRequestSeveritiesEnum{
 	"S4": AccessRequestSeveritiesS4,
 }
 
+var mappingAccessRequestSeveritiesEnumLowerCase = map[string]AccessRequestSeveritiesEnum{
+	"s1": AccessRequestSeveritiesS1,
+	"s2": AccessRequestSeveritiesS2,
+	"s3": AccessRequestSeveritiesS3,
+	"s4": AccessRequestSeveritiesS4,
+}
+
 // GetAccessRequestSeveritiesEnumValues Enumerates the set of values for AccessRequestSeveritiesEnum
 func GetAccessRequestSeveritiesEnumValues() []AccessRequestSeveritiesEnum {
 	values := make([]AccessRequestSeveritiesEnum, 0)
@@ -54,11 +61,6 @@ func GetAccessRequestSeveritiesEnumStringValues() []string {
 
 // GetMappingAccessRequestSeveritiesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAccessRequestSeveritiesEnum(val string) (AccessRequestSeveritiesEnum, bool) {
-	mappingAccessRequestSeveritiesEnumIgnoreCase := make(map[string]AccessRequestSeveritiesEnum)
-	for k, v := range mappingAccessRequestSeveritiesEnum {
-		mappingAccessRequestSeveritiesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAccessRequestSeveritiesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAccessRequestSeveritiesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

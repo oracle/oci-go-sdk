@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -83,6 +83,10 @@ var mappingUserDefinedFunctionDetailsModelTypeEnum = map[string]UserDefinedFunct
 	"DIS_USER_DEFINED_FUNCTION": UserDefinedFunctionDetailsModelTypeDisUserDefinedFunction,
 }
 
+var mappingUserDefinedFunctionDetailsModelTypeEnumLowerCase = map[string]UserDefinedFunctionDetailsModelTypeEnum{
+	"dis_user_defined_function": UserDefinedFunctionDetailsModelTypeDisUserDefinedFunction,
+}
+
 // GetUserDefinedFunctionDetailsModelTypeEnumValues Enumerates the set of values for UserDefinedFunctionDetailsModelTypeEnum
 func GetUserDefinedFunctionDetailsModelTypeEnumValues() []UserDefinedFunctionDetailsModelTypeEnum {
 	values := make([]UserDefinedFunctionDetailsModelTypeEnum, 0)
@@ -101,11 +105,6 @@ func GetUserDefinedFunctionDetailsModelTypeEnumStringValues() []string {
 
 // GetMappingUserDefinedFunctionDetailsModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserDefinedFunctionDetailsModelTypeEnum(val string) (UserDefinedFunctionDetailsModelTypeEnum, bool) {
-	mappingUserDefinedFunctionDetailsModelTypeEnumIgnoreCase := make(map[string]UserDefinedFunctionDetailsModelTypeEnum)
-	for k, v := range mappingUserDefinedFunctionDetailsModelTypeEnum {
-		mappingUserDefinedFunctionDetailsModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserDefinedFunctionDetailsModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserDefinedFunctionDetailsModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

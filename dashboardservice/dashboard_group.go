@@ -17,7 +17,7 @@ package dashboardservice
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -103,6 +103,15 @@ var mappingDashboardGroupLifecycleStateEnum = map[string]DashboardGroupLifecycle
 	"FAILED":   DashboardGroupLifecycleStateFailed,
 }
 
+var mappingDashboardGroupLifecycleStateEnumLowerCase = map[string]DashboardGroupLifecycleStateEnum{
+	"creating": DashboardGroupLifecycleStateCreating,
+	"updating": DashboardGroupLifecycleStateUpdating,
+	"active":   DashboardGroupLifecycleStateActive,
+	"deleting": DashboardGroupLifecycleStateDeleting,
+	"deleted":  DashboardGroupLifecycleStateDeleted,
+	"failed":   DashboardGroupLifecycleStateFailed,
+}
+
 // GetDashboardGroupLifecycleStateEnumValues Enumerates the set of values for DashboardGroupLifecycleStateEnum
 func GetDashboardGroupLifecycleStateEnumValues() []DashboardGroupLifecycleStateEnum {
 	values := make([]DashboardGroupLifecycleStateEnum, 0)
@@ -126,11 +135,6 @@ func GetDashboardGroupLifecycleStateEnumStringValues() []string {
 
 // GetMappingDashboardGroupLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDashboardGroupLifecycleStateEnum(val string) (DashboardGroupLifecycleStateEnum, bool) {
-	mappingDashboardGroupLifecycleStateEnumIgnoreCase := make(map[string]DashboardGroupLifecycleStateEnum)
-	for k, v := range mappingDashboardGroupLifecycleStateEnum {
-		mappingDashboardGroupLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDashboardGroupLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDashboardGroupLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

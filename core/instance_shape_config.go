@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -100,6 +100,12 @@ var mappingInstanceShapeConfigBaselineOcpuUtilizationEnum = map[string]InstanceS
 	"BASELINE_1_1": InstanceShapeConfigBaselineOcpuUtilization1,
 }
 
+var mappingInstanceShapeConfigBaselineOcpuUtilizationEnumLowerCase = map[string]InstanceShapeConfigBaselineOcpuUtilizationEnum{
+	"baseline_1_8": InstanceShapeConfigBaselineOcpuUtilization8,
+	"baseline_1_2": InstanceShapeConfigBaselineOcpuUtilization2,
+	"baseline_1_1": InstanceShapeConfigBaselineOcpuUtilization1,
+}
+
 // GetInstanceShapeConfigBaselineOcpuUtilizationEnumValues Enumerates the set of values for InstanceShapeConfigBaselineOcpuUtilizationEnum
 func GetInstanceShapeConfigBaselineOcpuUtilizationEnumValues() []InstanceShapeConfigBaselineOcpuUtilizationEnum {
 	values := make([]InstanceShapeConfigBaselineOcpuUtilizationEnum, 0)
@@ -120,11 +126,6 @@ func GetInstanceShapeConfigBaselineOcpuUtilizationEnumStringValues() []string {
 
 // GetMappingInstanceShapeConfigBaselineOcpuUtilizationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceShapeConfigBaselineOcpuUtilizationEnum(val string) (InstanceShapeConfigBaselineOcpuUtilizationEnum, bool) {
-	mappingInstanceShapeConfigBaselineOcpuUtilizationEnumIgnoreCase := make(map[string]InstanceShapeConfigBaselineOcpuUtilizationEnum)
-	for k, v := range mappingInstanceShapeConfigBaselineOcpuUtilizationEnum {
-		mappingInstanceShapeConfigBaselineOcpuUtilizationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceShapeConfigBaselineOcpuUtilizationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceShapeConfigBaselineOcpuUtilizationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

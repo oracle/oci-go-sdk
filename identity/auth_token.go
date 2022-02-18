@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,14 @@ var mappingAuthTokenLifecycleStateEnum = map[string]AuthTokenLifecycleStateEnum{
 	"DELETED":  AuthTokenLifecycleStateDeleted,
 }
 
+var mappingAuthTokenLifecycleStateEnumLowerCase = map[string]AuthTokenLifecycleStateEnum{
+	"creating": AuthTokenLifecycleStateCreating,
+	"active":   AuthTokenLifecycleStateActive,
+	"inactive": AuthTokenLifecycleStateInactive,
+	"deleting": AuthTokenLifecycleStateDeleting,
+	"deleted":  AuthTokenLifecycleStateDeleted,
+}
+
 // GetAuthTokenLifecycleStateEnumValues Enumerates the set of values for AuthTokenLifecycleStateEnum
 func GetAuthTokenLifecycleStateEnumValues() []AuthTokenLifecycleStateEnum {
 	values := make([]AuthTokenLifecycleStateEnum, 0)
@@ -115,11 +123,6 @@ func GetAuthTokenLifecycleStateEnumStringValues() []string {
 
 // GetMappingAuthTokenLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAuthTokenLifecycleStateEnum(val string) (AuthTokenLifecycleStateEnum, bool) {
-	mappingAuthTokenLifecycleStateEnumIgnoreCase := make(map[string]AuthTokenLifecycleStateEnum)
-	for k, v := range mappingAuthTokenLifecycleStateEnum {
-		mappingAuthTokenLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAuthTokenLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAuthTokenLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

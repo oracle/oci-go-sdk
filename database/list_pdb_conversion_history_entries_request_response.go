@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -137,6 +137,10 @@ var mappingListPdbConversionHistoryEntriesSortByEnum = map[string]ListPdbConvers
 	"TIMESTARTED": ListPdbConversionHistoryEntriesSortByTimestarted,
 }
 
+var mappingListPdbConversionHistoryEntriesSortByEnumLowerCase = map[string]ListPdbConversionHistoryEntriesSortByEnum{
+	"timestarted": ListPdbConversionHistoryEntriesSortByTimestarted,
+}
+
 // GetListPdbConversionHistoryEntriesSortByEnumValues Enumerates the set of values for ListPdbConversionHistoryEntriesSortByEnum
 func GetListPdbConversionHistoryEntriesSortByEnumValues() []ListPdbConversionHistoryEntriesSortByEnum {
 	values := make([]ListPdbConversionHistoryEntriesSortByEnum, 0)
@@ -155,12 +159,7 @@ func GetListPdbConversionHistoryEntriesSortByEnumStringValues() []string {
 
 // GetMappingListPdbConversionHistoryEntriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPdbConversionHistoryEntriesSortByEnum(val string) (ListPdbConversionHistoryEntriesSortByEnum, bool) {
-	mappingListPdbConversionHistoryEntriesSortByEnumIgnoreCase := make(map[string]ListPdbConversionHistoryEntriesSortByEnum)
-	for k, v := range mappingListPdbConversionHistoryEntriesSortByEnum {
-		mappingListPdbConversionHistoryEntriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPdbConversionHistoryEntriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPdbConversionHistoryEntriesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -176,6 +175,11 @@ const (
 var mappingListPdbConversionHistoryEntriesSortOrderEnum = map[string]ListPdbConversionHistoryEntriesSortOrderEnum{
 	"ASC":  ListPdbConversionHistoryEntriesSortOrderAsc,
 	"DESC": ListPdbConversionHistoryEntriesSortOrderDesc,
+}
+
+var mappingListPdbConversionHistoryEntriesSortOrderEnumLowerCase = map[string]ListPdbConversionHistoryEntriesSortOrderEnum{
+	"asc":  ListPdbConversionHistoryEntriesSortOrderAsc,
+	"desc": ListPdbConversionHistoryEntriesSortOrderDesc,
 }
 
 // GetListPdbConversionHistoryEntriesSortOrderEnumValues Enumerates the set of values for ListPdbConversionHistoryEntriesSortOrderEnum
@@ -197,11 +201,6 @@ func GetListPdbConversionHistoryEntriesSortOrderEnumStringValues() []string {
 
 // GetMappingListPdbConversionHistoryEntriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPdbConversionHistoryEntriesSortOrderEnum(val string) (ListPdbConversionHistoryEntriesSortOrderEnum, bool) {
-	mappingListPdbConversionHistoryEntriesSortOrderEnumIgnoreCase := make(map[string]ListPdbConversionHistoryEntriesSortOrderEnum)
-	for k, v := range mappingListPdbConversionHistoryEntriesSortOrderEnum {
-		mappingListPdbConversionHistoryEntriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPdbConversionHistoryEntriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPdbConversionHistoryEntriesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

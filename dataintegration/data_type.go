@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -122,6 +122,11 @@ var mappingDataTypeDtTypeEnum = map[string]DataTypeDtTypeEnum{
 	"STRUCTURED": DataTypeDtTypeStructured,
 }
 
+var mappingDataTypeDtTypeEnumLowerCase = map[string]DataTypeDtTypeEnum{
+	"primitive":  DataTypeDtTypePrimitive,
+	"structured": DataTypeDtTypeStructured,
+}
+
 // GetDataTypeDtTypeEnumValues Enumerates the set of values for DataTypeDtTypeEnum
 func GetDataTypeDtTypeEnumValues() []DataTypeDtTypeEnum {
 	values := make([]DataTypeDtTypeEnum, 0)
@@ -141,11 +146,6 @@ func GetDataTypeDtTypeEnumStringValues() []string {
 
 // GetMappingDataTypeDtTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataTypeDtTypeEnum(val string) (DataTypeDtTypeEnum, bool) {
-	mappingDataTypeDtTypeEnumIgnoreCase := make(map[string]DataTypeDtTypeEnum)
-	for k, v := range mappingDataTypeDtTypeEnum {
-		mappingDataTypeDtTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataTypeDtTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataTypeDtTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

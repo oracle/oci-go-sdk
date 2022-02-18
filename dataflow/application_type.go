@@ -27,6 +27,11 @@ var mappingApplicationTypeEnum = map[string]ApplicationTypeEnum{
 	"STREAMING": ApplicationTypeStreaming,
 }
 
+var mappingApplicationTypeEnumLowerCase = map[string]ApplicationTypeEnum{
+	"batch":     ApplicationTypeBatch,
+	"streaming": ApplicationTypeStreaming,
+}
+
 // GetApplicationTypeEnumValues Enumerates the set of values for ApplicationTypeEnum
 func GetApplicationTypeEnumValues() []ApplicationTypeEnum {
 	values := make([]ApplicationTypeEnum, 0)
@@ -46,11 +51,6 @@ func GetApplicationTypeEnumStringValues() []string {
 
 // GetMappingApplicationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingApplicationTypeEnum(val string) (ApplicationTypeEnum, bool) {
-	mappingApplicationTypeEnumIgnoreCase := make(map[string]ApplicationTypeEnum)
-	for k, v := range mappingApplicationTypeEnum {
-		mappingApplicationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingApplicationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingApplicationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

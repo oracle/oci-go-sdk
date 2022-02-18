@@ -6,7 +6,7 @@ package rover
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -148,6 +148,15 @@ var mappingListRoverClustersLifecycleStateEnum = map[string]ListRoverClustersLif
 	"FAILED":   ListRoverClustersLifecycleStateFailed,
 }
 
+var mappingListRoverClustersLifecycleStateEnumLowerCase = map[string]ListRoverClustersLifecycleStateEnum{
+	"creating": ListRoverClustersLifecycleStateCreating,
+	"updating": ListRoverClustersLifecycleStateUpdating,
+	"active":   ListRoverClustersLifecycleStateActive,
+	"deleting": ListRoverClustersLifecycleStateDeleting,
+	"deleted":  ListRoverClustersLifecycleStateDeleted,
+	"failed":   ListRoverClustersLifecycleStateFailed,
+}
+
 // GetListRoverClustersLifecycleStateEnumValues Enumerates the set of values for ListRoverClustersLifecycleStateEnum
 func GetListRoverClustersLifecycleStateEnumValues() []ListRoverClustersLifecycleStateEnum {
 	values := make([]ListRoverClustersLifecycleStateEnum, 0)
@@ -171,12 +180,7 @@ func GetListRoverClustersLifecycleStateEnumStringValues() []string {
 
 // GetMappingListRoverClustersLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRoverClustersLifecycleStateEnum(val string) (ListRoverClustersLifecycleStateEnum, bool) {
-	mappingListRoverClustersLifecycleStateEnumIgnoreCase := make(map[string]ListRoverClustersLifecycleStateEnum)
-	for k, v := range mappingListRoverClustersLifecycleStateEnum {
-		mappingListRoverClustersLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRoverClustersLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRoverClustersLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -192,6 +196,11 @@ const (
 var mappingListRoverClustersSortOrderEnum = map[string]ListRoverClustersSortOrderEnum{
 	"ASC":  ListRoverClustersSortOrderAsc,
 	"DESC": ListRoverClustersSortOrderDesc,
+}
+
+var mappingListRoverClustersSortOrderEnumLowerCase = map[string]ListRoverClustersSortOrderEnum{
+	"asc":  ListRoverClustersSortOrderAsc,
+	"desc": ListRoverClustersSortOrderDesc,
 }
 
 // GetListRoverClustersSortOrderEnumValues Enumerates the set of values for ListRoverClustersSortOrderEnum
@@ -213,12 +222,7 @@ func GetListRoverClustersSortOrderEnumStringValues() []string {
 
 // GetMappingListRoverClustersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRoverClustersSortOrderEnum(val string) (ListRoverClustersSortOrderEnum, bool) {
-	mappingListRoverClustersSortOrderEnumIgnoreCase := make(map[string]ListRoverClustersSortOrderEnum)
-	for k, v := range mappingListRoverClustersSortOrderEnum {
-		mappingListRoverClustersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRoverClustersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRoverClustersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -234,6 +238,11 @@ const (
 var mappingListRoverClustersSortByEnum = map[string]ListRoverClustersSortByEnum{
 	"timeCreated": ListRoverClustersSortByTimecreated,
 	"displayName": ListRoverClustersSortByDisplayname,
+}
+
+var mappingListRoverClustersSortByEnumLowerCase = map[string]ListRoverClustersSortByEnum{
+	"timecreated": ListRoverClustersSortByTimecreated,
+	"displayname": ListRoverClustersSortByDisplayname,
 }
 
 // GetListRoverClustersSortByEnumValues Enumerates the set of values for ListRoverClustersSortByEnum
@@ -255,11 +264,6 @@ func GetListRoverClustersSortByEnumStringValues() []string {
 
 // GetMappingListRoverClustersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRoverClustersSortByEnum(val string) (ListRoverClustersSortByEnum, bool) {
-	mappingListRoverClustersSortByEnumIgnoreCase := make(map[string]ListRoverClustersSortByEnum)
-	for k, v := range mappingListRoverClustersSortByEnum {
-		mappingListRoverClustersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRoverClustersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRoverClustersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

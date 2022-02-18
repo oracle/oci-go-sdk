@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -64,6 +64,12 @@ var mappingValidationRequestPolicyValidationModeEnum = map[string]ValidationRequ
 	"DISABLED":   ValidationRequestPolicyValidationModeDisabled,
 }
 
+var mappingValidationRequestPolicyValidationModeEnumLowerCase = map[string]ValidationRequestPolicyValidationModeEnum{
+	"enforcing":  ValidationRequestPolicyValidationModeEnforcing,
+	"permissive": ValidationRequestPolicyValidationModePermissive,
+	"disabled":   ValidationRequestPolicyValidationModeDisabled,
+}
+
 // GetValidationRequestPolicyValidationModeEnumValues Enumerates the set of values for ValidationRequestPolicyValidationModeEnum
 func GetValidationRequestPolicyValidationModeEnumValues() []ValidationRequestPolicyValidationModeEnum {
 	values := make([]ValidationRequestPolicyValidationModeEnum, 0)
@@ -84,11 +90,6 @@ func GetValidationRequestPolicyValidationModeEnumStringValues() []string {
 
 // GetMappingValidationRequestPolicyValidationModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingValidationRequestPolicyValidationModeEnum(val string) (ValidationRequestPolicyValidationModeEnum, bool) {
-	mappingValidationRequestPolicyValidationModeEnumIgnoreCase := make(map[string]ValidationRequestPolicyValidationModeEnum)
-	for k, v := range mappingValidationRequestPolicyValidationModeEnum {
-		mappingValidationRequestPolicyValidationModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingValidationRequestPolicyValidationModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingValidationRequestPolicyValidationModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -76,6 +76,11 @@ var mappingAssociableEntityEligibilityStatusEnum = map[string]AssociableEntityEl
 	"INELIGIBLE": AssociableEntityEligibilityStatusIneligible,
 }
 
+var mappingAssociableEntityEligibilityStatusEnumLowerCase = map[string]AssociableEntityEligibilityStatusEnum{
+	"eligible":   AssociableEntityEligibilityStatusEligible,
+	"ineligible": AssociableEntityEligibilityStatusIneligible,
+}
+
 // GetAssociableEntityEligibilityStatusEnumValues Enumerates the set of values for AssociableEntityEligibilityStatusEnum
 func GetAssociableEntityEligibilityStatusEnumValues() []AssociableEntityEligibilityStatusEnum {
 	values := make([]AssociableEntityEligibilityStatusEnum, 0)
@@ -95,11 +100,6 @@ func GetAssociableEntityEligibilityStatusEnumStringValues() []string {
 
 // GetMappingAssociableEntityEligibilityStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAssociableEntityEligibilityStatusEnum(val string) (AssociableEntityEligibilityStatusEnum, bool) {
-	mappingAssociableEntityEligibilityStatusEnumIgnoreCase := make(map[string]AssociableEntityEligibilityStatusEnum)
-	for k, v := range mappingAssociableEntityEligibilityStatusEnum {
-		mappingAssociableEntityEligibilityStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAssociableEntityEligibilityStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAssociableEntityEligibilityStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

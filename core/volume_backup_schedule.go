@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -119,6 +119,11 @@ var mappingVolumeBackupScheduleBackupTypeEnum = map[string]VolumeBackupScheduleB
 	"INCREMENTAL": VolumeBackupScheduleBackupTypeIncremental,
 }
 
+var mappingVolumeBackupScheduleBackupTypeEnumLowerCase = map[string]VolumeBackupScheduleBackupTypeEnum{
+	"full":        VolumeBackupScheduleBackupTypeFull,
+	"incremental": VolumeBackupScheduleBackupTypeIncremental,
+}
+
 // GetVolumeBackupScheduleBackupTypeEnumValues Enumerates the set of values for VolumeBackupScheduleBackupTypeEnum
 func GetVolumeBackupScheduleBackupTypeEnumValues() []VolumeBackupScheduleBackupTypeEnum {
 	values := make([]VolumeBackupScheduleBackupTypeEnum, 0)
@@ -138,12 +143,7 @@ func GetVolumeBackupScheduleBackupTypeEnumStringValues() []string {
 
 // GetMappingVolumeBackupScheduleBackupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVolumeBackupScheduleBackupTypeEnum(val string) (VolumeBackupScheduleBackupTypeEnum, bool) {
-	mappingVolumeBackupScheduleBackupTypeEnumIgnoreCase := make(map[string]VolumeBackupScheduleBackupTypeEnum)
-	for k, v := range mappingVolumeBackupScheduleBackupTypeEnum {
-		mappingVolumeBackupScheduleBackupTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVolumeBackupScheduleBackupTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVolumeBackupScheduleBackupTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -165,6 +165,14 @@ var mappingVolumeBackupSchedulePeriodEnum = map[string]VolumeBackupSchedulePerio
 	"ONE_WEEK":  VolumeBackupSchedulePeriodWeek,
 	"ONE_MONTH": VolumeBackupSchedulePeriodMonth,
 	"ONE_YEAR":  VolumeBackupSchedulePeriodYear,
+}
+
+var mappingVolumeBackupSchedulePeriodEnumLowerCase = map[string]VolumeBackupSchedulePeriodEnum{
+	"one_hour":  VolumeBackupSchedulePeriodHour,
+	"one_day":   VolumeBackupSchedulePeriodDay,
+	"one_week":  VolumeBackupSchedulePeriodWeek,
+	"one_month": VolumeBackupSchedulePeriodMonth,
+	"one_year":  VolumeBackupSchedulePeriodYear,
 }
 
 // GetVolumeBackupSchedulePeriodEnumValues Enumerates the set of values for VolumeBackupSchedulePeriodEnum
@@ -189,12 +197,7 @@ func GetVolumeBackupSchedulePeriodEnumStringValues() []string {
 
 // GetMappingVolumeBackupSchedulePeriodEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVolumeBackupSchedulePeriodEnum(val string) (VolumeBackupSchedulePeriodEnum, bool) {
-	mappingVolumeBackupSchedulePeriodEnumIgnoreCase := make(map[string]VolumeBackupSchedulePeriodEnum)
-	for k, v := range mappingVolumeBackupSchedulePeriodEnum {
-		mappingVolumeBackupSchedulePeriodEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVolumeBackupSchedulePeriodEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVolumeBackupSchedulePeriodEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -210,6 +213,11 @@ const (
 var mappingVolumeBackupScheduleOffsetTypeEnum = map[string]VolumeBackupScheduleOffsetTypeEnum{
 	"STRUCTURED":      VolumeBackupScheduleOffsetTypeStructured,
 	"NUMERIC_SECONDS": VolumeBackupScheduleOffsetTypeNumericSeconds,
+}
+
+var mappingVolumeBackupScheduleOffsetTypeEnumLowerCase = map[string]VolumeBackupScheduleOffsetTypeEnum{
+	"structured":      VolumeBackupScheduleOffsetTypeStructured,
+	"numeric_seconds": VolumeBackupScheduleOffsetTypeNumericSeconds,
 }
 
 // GetVolumeBackupScheduleOffsetTypeEnumValues Enumerates the set of values for VolumeBackupScheduleOffsetTypeEnum
@@ -231,12 +239,7 @@ func GetVolumeBackupScheduleOffsetTypeEnumStringValues() []string {
 
 // GetMappingVolumeBackupScheduleOffsetTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVolumeBackupScheduleOffsetTypeEnum(val string) (VolumeBackupScheduleOffsetTypeEnum, bool) {
-	mappingVolumeBackupScheduleOffsetTypeEnumIgnoreCase := make(map[string]VolumeBackupScheduleOffsetTypeEnum)
-	for k, v := range mappingVolumeBackupScheduleOffsetTypeEnum {
-		mappingVolumeBackupScheduleOffsetTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVolumeBackupScheduleOffsetTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVolumeBackupScheduleOffsetTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -264,6 +267,16 @@ var mappingVolumeBackupScheduleDayOfWeekEnum = map[string]VolumeBackupScheduleDa
 	"SUNDAY":    VolumeBackupScheduleDayOfWeekSunday,
 }
 
+var mappingVolumeBackupScheduleDayOfWeekEnumLowerCase = map[string]VolumeBackupScheduleDayOfWeekEnum{
+	"monday":    VolumeBackupScheduleDayOfWeekMonday,
+	"tuesday":   VolumeBackupScheduleDayOfWeekTuesday,
+	"wednesday": VolumeBackupScheduleDayOfWeekWednesday,
+	"thursday":  VolumeBackupScheduleDayOfWeekThursday,
+	"friday":    VolumeBackupScheduleDayOfWeekFriday,
+	"saturday":  VolumeBackupScheduleDayOfWeekSaturday,
+	"sunday":    VolumeBackupScheduleDayOfWeekSunday,
+}
+
 // GetVolumeBackupScheduleDayOfWeekEnumValues Enumerates the set of values for VolumeBackupScheduleDayOfWeekEnum
 func GetVolumeBackupScheduleDayOfWeekEnumValues() []VolumeBackupScheduleDayOfWeekEnum {
 	values := make([]VolumeBackupScheduleDayOfWeekEnum, 0)
@@ -288,12 +301,7 @@ func GetVolumeBackupScheduleDayOfWeekEnumStringValues() []string {
 
 // GetMappingVolumeBackupScheduleDayOfWeekEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVolumeBackupScheduleDayOfWeekEnum(val string) (VolumeBackupScheduleDayOfWeekEnum, bool) {
-	mappingVolumeBackupScheduleDayOfWeekEnumIgnoreCase := make(map[string]VolumeBackupScheduleDayOfWeekEnum)
-	for k, v := range mappingVolumeBackupScheduleDayOfWeekEnum {
-		mappingVolumeBackupScheduleDayOfWeekEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVolumeBackupScheduleDayOfWeekEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVolumeBackupScheduleDayOfWeekEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -331,6 +339,21 @@ var mappingVolumeBackupScheduleMonthEnum = map[string]VolumeBackupScheduleMonthE
 	"DECEMBER":  VolumeBackupScheduleMonthDecember,
 }
 
+var mappingVolumeBackupScheduleMonthEnumLowerCase = map[string]VolumeBackupScheduleMonthEnum{
+	"january":   VolumeBackupScheduleMonthJanuary,
+	"february":  VolumeBackupScheduleMonthFebruary,
+	"march":     VolumeBackupScheduleMonthMarch,
+	"april":     VolumeBackupScheduleMonthApril,
+	"may":       VolumeBackupScheduleMonthMay,
+	"june":      VolumeBackupScheduleMonthJune,
+	"july":      VolumeBackupScheduleMonthJuly,
+	"august":    VolumeBackupScheduleMonthAugust,
+	"september": VolumeBackupScheduleMonthSeptember,
+	"october":   VolumeBackupScheduleMonthOctober,
+	"november":  VolumeBackupScheduleMonthNovember,
+	"december":  VolumeBackupScheduleMonthDecember,
+}
+
 // GetVolumeBackupScheduleMonthEnumValues Enumerates the set of values for VolumeBackupScheduleMonthEnum
 func GetVolumeBackupScheduleMonthEnumValues() []VolumeBackupScheduleMonthEnum {
 	values := make([]VolumeBackupScheduleMonthEnum, 0)
@@ -360,12 +383,7 @@ func GetVolumeBackupScheduleMonthEnumStringValues() []string {
 
 // GetMappingVolumeBackupScheduleMonthEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVolumeBackupScheduleMonthEnum(val string) (VolumeBackupScheduleMonthEnum, bool) {
-	mappingVolumeBackupScheduleMonthEnumIgnoreCase := make(map[string]VolumeBackupScheduleMonthEnum)
-	for k, v := range mappingVolumeBackupScheduleMonthEnum {
-		mappingVolumeBackupScheduleMonthEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVolumeBackupScheduleMonthEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVolumeBackupScheduleMonthEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -381,6 +399,11 @@ const (
 var mappingVolumeBackupScheduleTimeZoneEnum = map[string]VolumeBackupScheduleTimeZoneEnum{
 	"UTC":                       VolumeBackupScheduleTimeZoneUtc,
 	"REGIONAL_DATA_CENTER_TIME": VolumeBackupScheduleTimeZoneRegionalDataCenterTime,
+}
+
+var mappingVolumeBackupScheduleTimeZoneEnumLowerCase = map[string]VolumeBackupScheduleTimeZoneEnum{
+	"utc":                       VolumeBackupScheduleTimeZoneUtc,
+	"regional_data_center_time": VolumeBackupScheduleTimeZoneRegionalDataCenterTime,
 }
 
 // GetVolumeBackupScheduleTimeZoneEnumValues Enumerates the set of values for VolumeBackupScheduleTimeZoneEnum
@@ -402,11 +425,6 @@ func GetVolumeBackupScheduleTimeZoneEnumStringValues() []string {
 
 // GetMappingVolumeBackupScheduleTimeZoneEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVolumeBackupScheduleTimeZoneEnum(val string) (VolumeBackupScheduleTimeZoneEnum, bool) {
-	mappingVolumeBackupScheduleTimeZoneEnumIgnoreCase := make(map[string]VolumeBackupScheduleTimeZoneEnum)
-	for k, v := range mappingVolumeBackupScheduleTimeZoneEnum {
-		mappingVolumeBackupScheduleTimeZoneEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVolumeBackupScheduleTimeZoneEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVolumeBackupScheduleTimeZoneEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

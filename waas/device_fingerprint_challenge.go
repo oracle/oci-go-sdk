@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -75,6 +75,11 @@ var mappingDeviceFingerprintChallengeActionEnum = map[string]DeviceFingerprintCh
 	"BLOCK":  DeviceFingerprintChallengeActionBlock,
 }
 
+var mappingDeviceFingerprintChallengeActionEnumLowerCase = map[string]DeviceFingerprintChallengeActionEnum{
+	"detect": DeviceFingerprintChallengeActionDetect,
+	"block":  DeviceFingerprintChallengeActionBlock,
+}
+
 // GetDeviceFingerprintChallengeActionEnumValues Enumerates the set of values for DeviceFingerprintChallengeActionEnum
 func GetDeviceFingerprintChallengeActionEnumValues() []DeviceFingerprintChallengeActionEnum {
 	values := make([]DeviceFingerprintChallengeActionEnum, 0)
@@ -94,11 +99,6 @@ func GetDeviceFingerprintChallengeActionEnumStringValues() []string {
 
 // GetMappingDeviceFingerprintChallengeActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeviceFingerprintChallengeActionEnum(val string) (DeviceFingerprintChallengeActionEnum, bool) {
-	mappingDeviceFingerprintChallengeActionEnumIgnoreCase := make(map[string]DeviceFingerprintChallengeActionEnum)
-	for k, v := range mappingDeviceFingerprintChallengeActionEnum {
-		mappingDeviceFingerprintChallengeActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeviceFingerprintChallengeActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeviceFingerprintChallengeActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

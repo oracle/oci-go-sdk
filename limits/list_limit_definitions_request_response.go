@@ -6,7 +6,7 @@ package limits
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -133,6 +133,11 @@ var mappingListLimitDefinitionsSortByEnum = map[string]ListLimitDefinitionsSortB
 	"description": ListLimitDefinitionsSortByDescription,
 }
 
+var mappingListLimitDefinitionsSortByEnumLowerCase = map[string]ListLimitDefinitionsSortByEnum{
+	"name":        ListLimitDefinitionsSortByName,
+	"description": ListLimitDefinitionsSortByDescription,
+}
+
 // GetListLimitDefinitionsSortByEnumValues Enumerates the set of values for ListLimitDefinitionsSortByEnum
 func GetListLimitDefinitionsSortByEnumValues() []ListLimitDefinitionsSortByEnum {
 	values := make([]ListLimitDefinitionsSortByEnum, 0)
@@ -152,12 +157,7 @@ func GetListLimitDefinitionsSortByEnumStringValues() []string {
 
 // GetMappingListLimitDefinitionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLimitDefinitionsSortByEnum(val string) (ListLimitDefinitionsSortByEnum, bool) {
-	mappingListLimitDefinitionsSortByEnumIgnoreCase := make(map[string]ListLimitDefinitionsSortByEnum)
-	for k, v := range mappingListLimitDefinitionsSortByEnum {
-		mappingListLimitDefinitionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLimitDefinitionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLimitDefinitionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -173,6 +173,11 @@ const (
 var mappingListLimitDefinitionsSortOrderEnum = map[string]ListLimitDefinitionsSortOrderEnum{
 	"ASC":  ListLimitDefinitionsSortOrderAsc,
 	"DESC": ListLimitDefinitionsSortOrderDesc,
+}
+
+var mappingListLimitDefinitionsSortOrderEnumLowerCase = map[string]ListLimitDefinitionsSortOrderEnum{
+	"asc":  ListLimitDefinitionsSortOrderAsc,
+	"desc": ListLimitDefinitionsSortOrderDesc,
 }
 
 // GetListLimitDefinitionsSortOrderEnumValues Enumerates the set of values for ListLimitDefinitionsSortOrderEnum
@@ -194,11 +199,6 @@ func GetListLimitDefinitionsSortOrderEnumStringValues() []string {
 
 // GetMappingListLimitDefinitionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLimitDefinitionsSortOrderEnum(val string) (ListLimitDefinitionsSortOrderEnum, bool) {
-	mappingListLimitDefinitionsSortOrderEnumIgnoreCase := make(map[string]ListLimitDefinitionsSortOrderEnum)
-	for k, v := range mappingListLimitDefinitionsSortOrderEnum {
-		mappingListLimitDefinitionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLimitDefinitionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLimitDefinitionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

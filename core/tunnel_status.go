@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -75,6 +75,13 @@ var mappingTunnelStatusLifecycleStateEnum = map[string]TunnelStatusLifecycleStat
 	"PARTIAL_UP":           TunnelStatusLifecycleStatePartialUp,
 }
 
+var mappingTunnelStatusLifecycleStateEnumLowerCase = map[string]TunnelStatusLifecycleStateEnum{
+	"up":                   TunnelStatusLifecycleStateUp,
+	"down":                 TunnelStatusLifecycleStateDown,
+	"down_for_maintenance": TunnelStatusLifecycleStateDownForMaintenance,
+	"partial_up":           TunnelStatusLifecycleStatePartialUp,
+}
+
 // GetTunnelStatusLifecycleStateEnumValues Enumerates the set of values for TunnelStatusLifecycleStateEnum
 func GetTunnelStatusLifecycleStateEnumValues() []TunnelStatusLifecycleStateEnum {
 	values := make([]TunnelStatusLifecycleStateEnum, 0)
@@ -96,11 +103,6 @@ func GetTunnelStatusLifecycleStateEnumStringValues() []string {
 
 // GetMappingTunnelStatusLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTunnelStatusLifecycleStateEnum(val string) (TunnelStatusLifecycleStateEnum, bool) {
-	mappingTunnelStatusLifecycleStateEnumIgnoreCase := make(map[string]TunnelStatusLifecycleStateEnum)
-	for k, v := range mappingTunnelStatusLifecycleStateEnum {
-		mappingTunnelStatusLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTunnelStatusLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTunnelStatusLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

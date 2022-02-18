@@ -30,6 +30,11 @@ var mappingTargetDatabaseTypesEnum = map[string]TargetDatabaseTypesEnum{
 	"NOT_SET":         TargetDatabaseTypesNotSet,
 }
 
+var mappingTargetDatabaseTypesEnumLowerCase = map[string]TargetDatabaseTypesEnum{
+	"database_system": TargetDatabaseTypesDatabaseSystem,
+	"not_set":         TargetDatabaseTypesNotSet,
+}
+
 // GetTargetDatabaseTypesEnumValues Enumerates the set of values for TargetDatabaseTypesEnum
 func GetTargetDatabaseTypesEnumValues() []TargetDatabaseTypesEnum {
 	values := make([]TargetDatabaseTypesEnum, 0)
@@ -49,11 +54,6 @@ func GetTargetDatabaseTypesEnumStringValues() []string {
 
 // GetMappingTargetDatabaseTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTargetDatabaseTypesEnum(val string) (TargetDatabaseTypesEnum, bool) {
-	mappingTargetDatabaseTypesEnumIgnoreCase := make(map[string]TargetDatabaseTypesEnum)
-	for k, v := range mappingTargetDatabaseTypesEnum {
-		mappingTargetDatabaseTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTargetDatabaseTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTargetDatabaseTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

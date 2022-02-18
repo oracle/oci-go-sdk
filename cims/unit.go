@@ -29,6 +29,12 @@ var mappingUnitEnum = map[string]UnitEnum{
 	"NONE":  UnitNone,
 }
 
+var mappingUnitEnumLowerCase = map[string]UnitEnum{
+	"count": UnitCount,
+	"gb":    UnitGb,
+	"none":  UnitNone,
+}
+
 // GetUnitEnumValues Enumerates the set of values for UnitEnum
 func GetUnitEnumValues() []UnitEnum {
 	values := make([]UnitEnum, 0)
@@ -49,11 +55,6 @@ func GetUnitEnumStringValues() []string {
 
 // GetMappingUnitEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUnitEnum(val string) (UnitEnum, bool) {
-	mappingUnitEnumIgnoreCase := make(map[string]UnitEnum)
-	for k, v := range mappingUnitEnum {
-		mappingUnitEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUnitEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUnitEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

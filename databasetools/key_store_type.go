@@ -31,6 +31,13 @@ var mappingKeyStoreTypeEnum = map[string]KeyStoreTypeEnum{
 	"SSO":              KeyStoreTypeSso,
 }
 
+var mappingKeyStoreTypeEnumLowerCase = map[string]KeyStoreTypeEnum{
+	"java_key_store":   KeyStoreTypeJavaKeyStore,
+	"java_trust_store": KeyStoreTypeJavaTrustStore,
+	"pkcs12":           KeyStoreTypePkcs12,
+	"sso":              KeyStoreTypeSso,
+}
+
 // GetKeyStoreTypeEnumValues Enumerates the set of values for KeyStoreTypeEnum
 func GetKeyStoreTypeEnumValues() []KeyStoreTypeEnum {
 	values := make([]KeyStoreTypeEnum, 0)
@@ -52,11 +59,6 @@ func GetKeyStoreTypeEnumStringValues() []string {
 
 // GetMappingKeyStoreTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingKeyStoreTypeEnum(val string) (KeyStoreTypeEnum, bool) {
-	mappingKeyStoreTypeEnumIgnoreCase := make(map[string]KeyStoreTypeEnum)
-	for k, v := range mappingKeyStoreTypeEnum {
-		mappingKeyStoreTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingKeyStoreTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingKeyStoreTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

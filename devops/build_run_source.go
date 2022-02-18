@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -105,6 +105,13 @@ var mappingBuildRunSourceSourceTypeEnum = map[string]BuildRunSourceSourceTypeEnu
 	"DEVOPS_CODE_REPOSITORY": BuildRunSourceSourceTypeDevopsCodeRepository,
 }
 
+var mappingBuildRunSourceSourceTypeEnumLowerCase = map[string]BuildRunSourceSourceTypeEnum{
+	"manual":                 BuildRunSourceSourceTypeManual,
+	"github":                 BuildRunSourceSourceTypeGithub,
+	"gitlab":                 BuildRunSourceSourceTypeGitlab,
+	"devops_code_repository": BuildRunSourceSourceTypeDevopsCodeRepository,
+}
+
 // GetBuildRunSourceSourceTypeEnumValues Enumerates the set of values for BuildRunSourceSourceTypeEnum
 func GetBuildRunSourceSourceTypeEnumValues() []BuildRunSourceSourceTypeEnum {
 	values := make([]BuildRunSourceSourceTypeEnum, 0)
@@ -126,11 +133,6 @@ func GetBuildRunSourceSourceTypeEnumStringValues() []string {
 
 // GetMappingBuildRunSourceSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBuildRunSourceSourceTypeEnum(val string) (BuildRunSourceSourceTypeEnum, bool) {
-	mappingBuildRunSourceSourceTypeEnumIgnoreCase := make(map[string]BuildRunSourceSourceTypeEnum)
-	for k, v := range mappingBuildRunSourceSourceTypeEnum {
-		mappingBuildRunSourceSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBuildRunSourceSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBuildRunSourceSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

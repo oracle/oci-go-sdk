@@ -13,7 +13,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -115,6 +115,12 @@ var mappingUpdateBucketDetailsPublicAccessTypeEnum = map[string]UpdateBucketDeta
 	"ObjectReadWithoutList": UpdateBucketDetailsPublicAccessTypeObjectreadwithoutlist,
 }
 
+var mappingUpdateBucketDetailsPublicAccessTypeEnumLowerCase = map[string]UpdateBucketDetailsPublicAccessTypeEnum{
+	"nopublicaccess":        UpdateBucketDetailsPublicAccessTypeNopublicaccess,
+	"objectread":            UpdateBucketDetailsPublicAccessTypeObjectread,
+	"objectreadwithoutlist": UpdateBucketDetailsPublicAccessTypeObjectreadwithoutlist,
+}
+
 // GetUpdateBucketDetailsPublicAccessTypeEnumValues Enumerates the set of values for UpdateBucketDetailsPublicAccessTypeEnum
 func GetUpdateBucketDetailsPublicAccessTypeEnumValues() []UpdateBucketDetailsPublicAccessTypeEnum {
 	values := make([]UpdateBucketDetailsPublicAccessTypeEnum, 0)
@@ -135,12 +141,7 @@ func GetUpdateBucketDetailsPublicAccessTypeEnumStringValues() []string {
 
 // GetMappingUpdateBucketDetailsPublicAccessTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateBucketDetailsPublicAccessTypeEnum(val string) (UpdateBucketDetailsPublicAccessTypeEnum, bool) {
-	mappingUpdateBucketDetailsPublicAccessTypeEnumIgnoreCase := make(map[string]UpdateBucketDetailsPublicAccessTypeEnum)
-	for k, v := range mappingUpdateBucketDetailsPublicAccessTypeEnum {
-		mappingUpdateBucketDetailsPublicAccessTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateBucketDetailsPublicAccessTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateBucketDetailsPublicAccessTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -156,6 +157,11 @@ const (
 var mappingUpdateBucketDetailsVersioningEnum = map[string]UpdateBucketDetailsVersioningEnum{
 	"Enabled":   UpdateBucketDetailsVersioningEnabled,
 	"Suspended": UpdateBucketDetailsVersioningSuspended,
+}
+
+var mappingUpdateBucketDetailsVersioningEnumLowerCase = map[string]UpdateBucketDetailsVersioningEnum{
+	"enabled":   UpdateBucketDetailsVersioningEnabled,
+	"suspended": UpdateBucketDetailsVersioningSuspended,
 }
 
 // GetUpdateBucketDetailsVersioningEnumValues Enumerates the set of values for UpdateBucketDetailsVersioningEnum
@@ -177,11 +183,6 @@ func GetUpdateBucketDetailsVersioningEnumStringValues() []string {
 
 // GetMappingUpdateBucketDetailsVersioningEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateBucketDetailsVersioningEnum(val string) (UpdateBucketDetailsVersioningEnum, bool) {
-	mappingUpdateBucketDetailsVersioningEnumIgnoreCase := make(map[string]UpdateBucketDetailsVersioningEnum)
-	for k, v := range mappingUpdateBucketDetailsVersioningEnum {
-		mappingUpdateBucketDetailsVersioningEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateBucketDetailsVersioningEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateBucketDetailsVersioningEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

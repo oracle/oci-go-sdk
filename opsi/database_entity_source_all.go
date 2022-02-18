@@ -31,6 +31,12 @@ var mappingDatabaseEntitySourceAllEnum = map[string]DatabaseEntitySourceAllEnum{
 	"MACS_MANAGED_EXTERNAL_DATABASE": DatabaseEntitySourceAllMacsManagedExternalDatabase,
 }
 
+var mappingDatabaseEntitySourceAllEnumLowerCase = map[string]DatabaseEntitySourceAllEnum{
+	"autonomous_database":            DatabaseEntitySourceAllAutonomousDatabase,
+	"em_managed_external_database":   DatabaseEntitySourceAllEmManagedExternalDatabase,
+	"macs_managed_external_database": DatabaseEntitySourceAllMacsManagedExternalDatabase,
+}
+
 // GetDatabaseEntitySourceAllEnumValues Enumerates the set of values for DatabaseEntitySourceAllEnum
 func GetDatabaseEntitySourceAllEnumValues() []DatabaseEntitySourceAllEnum {
 	values := make([]DatabaseEntitySourceAllEnum, 0)
@@ -51,11 +57,6 @@ func GetDatabaseEntitySourceAllEnumStringValues() []string {
 
 // GetMappingDatabaseEntitySourceAllEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseEntitySourceAllEnum(val string) (DatabaseEntitySourceAllEnum, bool) {
-	mappingDatabaseEntitySourceAllEnumIgnoreCase := make(map[string]DatabaseEntitySourceAllEnum)
-	for k, v := range mappingDatabaseEntitySourceAllEnum {
-		mappingDatabaseEntitySourceAllEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseEntitySourceAllEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseEntitySourceAllEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

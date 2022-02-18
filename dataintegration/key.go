@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingKeyModelTypeEnum = map[string]KeyModelTypeEnum{
 	"FOREIGN_KEY": KeyModelTypeForeignKey,
 }
 
+var mappingKeyModelTypeEnumLowerCase = map[string]KeyModelTypeEnum{
+	"foreign_key": KeyModelTypeForeignKey,
+}
+
 // GetKeyModelTypeEnumValues Enumerates the set of values for KeyModelTypeEnum
 func GetKeyModelTypeEnumValues() []KeyModelTypeEnum {
 	values := make([]KeyModelTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetKeyModelTypeEnumStringValues() []string {
 
 // GetMappingKeyModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingKeyModelTypeEnum(val string) (KeyModelTypeEnum, bool) {
-	mappingKeyModelTypeEnumIgnoreCase := make(map[string]KeyModelTypeEnum)
-	for k, v := range mappingKeyModelTypeEnum {
-		mappingKeyModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingKeyModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingKeyModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

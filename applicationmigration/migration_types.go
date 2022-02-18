@@ -38,6 +38,15 @@ var mappingMigrationTypesEnum = map[string]MigrationTypesEnum{
 	"PCS":   MigrationTypesPcs,
 }
 
+var mappingMigrationTypesEnumLowerCase = map[string]MigrationTypesEnum{
+	"jcs":   MigrationTypesJcs,
+	"soacs": MigrationTypesSoacs,
+	"oic":   MigrationTypesOic,
+	"oac":   MigrationTypesOac,
+	"ics":   MigrationTypesIcs,
+	"pcs":   MigrationTypesPcs,
+}
+
 // GetMigrationTypesEnumValues Enumerates the set of values for MigrationTypesEnum
 func GetMigrationTypesEnumValues() []MigrationTypesEnum {
 	values := make([]MigrationTypesEnum, 0)
@@ -61,11 +70,6 @@ func GetMigrationTypesEnumStringValues() []string {
 
 // GetMappingMigrationTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMigrationTypesEnum(val string) (MigrationTypesEnum, bool) {
-	mappingMigrationTypesEnumIgnoreCase := make(map[string]MigrationTypesEnum)
-	for k, v := range mappingMigrationTypesEnum {
-		mappingMigrationTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMigrationTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMigrationTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

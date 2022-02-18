@@ -15,7 +15,7 @@ package email
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -81,6 +81,15 @@ var mappingSuppressionSummaryReasonEnum = map[string]SuppressionSummaryReasonEnu
 	"UNSUBSCRIBE": SuppressionSummaryReasonUnsubscribe,
 }
 
+var mappingSuppressionSummaryReasonEnumLowerCase = map[string]SuppressionSummaryReasonEnum{
+	"unknown":     SuppressionSummaryReasonUnknown,
+	"hardbounce":  SuppressionSummaryReasonHardbounce,
+	"complaint":   SuppressionSummaryReasonComplaint,
+	"manual":      SuppressionSummaryReasonManual,
+	"softbounce":  SuppressionSummaryReasonSoftbounce,
+	"unsubscribe": SuppressionSummaryReasonUnsubscribe,
+}
+
 // GetSuppressionSummaryReasonEnumValues Enumerates the set of values for SuppressionSummaryReasonEnum
 func GetSuppressionSummaryReasonEnumValues() []SuppressionSummaryReasonEnum {
 	values := make([]SuppressionSummaryReasonEnum, 0)
@@ -104,11 +113,6 @@ func GetSuppressionSummaryReasonEnumStringValues() []string {
 
 // GetMappingSuppressionSummaryReasonEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSuppressionSummaryReasonEnum(val string) (SuppressionSummaryReasonEnum, bool) {
-	mappingSuppressionSummaryReasonEnumIgnoreCase := make(map[string]SuppressionSummaryReasonEnum)
-	for k, v := range mappingSuppressionSummaryReasonEnum {
-		mappingSuppressionSummaryReasonEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSuppressionSummaryReasonEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSuppressionSummaryReasonEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

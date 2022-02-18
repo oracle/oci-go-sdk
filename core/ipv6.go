@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -105,6 +105,13 @@ var mappingIpv6LifecycleStateEnum = map[string]Ipv6LifecycleStateEnum{
 	"TERMINATED":   Ipv6LifecycleStateTerminated,
 }
 
+var mappingIpv6LifecycleStateEnumLowerCase = map[string]Ipv6LifecycleStateEnum{
+	"provisioning": Ipv6LifecycleStateProvisioning,
+	"available":    Ipv6LifecycleStateAvailable,
+	"terminating":  Ipv6LifecycleStateTerminating,
+	"terminated":   Ipv6LifecycleStateTerminated,
+}
+
 // GetIpv6LifecycleStateEnumValues Enumerates the set of values for Ipv6LifecycleStateEnum
 func GetIpv6LifecycleStateEnumValues() []Ipv6LifecycleStateEnum {
 	values := make([]Ipv6LifecycleStateEnum, 0)
@@ -126,11 +133,6 @@ func GetIpv6LifecycleStateEnumStringValues() []string {
 
 // GetMappingIpv6LifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIpv6LifecycleStateEnum(val string) (Ipv6LifecycleStateEnum, bool) {
-	mappingIpv6LifecycleStateEnumIgnoreCase := make(map[string]Ipv6LifecycleStateEnum)
-	for k, v := range mappingIpv6LifecycleStateEnum {
-		mappingIpv6LifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIpv6LifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIpv6LifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

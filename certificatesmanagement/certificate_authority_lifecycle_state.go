@@ -41,6 +41,18 @@ var mappingCertificateAuthorityLifecycleStateEnum = map[string]CertificateAuthor
 	"FAILED":              CertificateAuthorityLifecycleStateFailed,
 }
 
+var mappingCertificateAuthorityLifecycleStateEnumLowerCase = map[string]CertificateAuthorityLifecycleStateEnum{
+	"creating":            CertificateAuthorityLifecycleStateCreating,
+	"active":              CertificateAuthorityLifecycleStateActive,
+	"updating":            CertificateAuthorityLifecycleStateUpdating,
+	"deleting":            CertificateAuthorityLifecycleStateDeleting,
+	"deleted":             CertificateAuthorityLifecycleStateDeleted,
+	"scheduling_deletion": CertificateAuthorityLifecycleStateSchedulingDeletion,
+	"pending_deletion":    CertificateAuthorityLifecycleStatePendingDeletion,
+	"cancelling_deletion": CertificateAuthorityLifecycleStateCancellingDeletion,
+	"failed":              CertificateAuthorityLifecycleStateFailed,
+}
+
 // GetCertificateAuthorityLifecycleStateEnumValues Enumerates the set of values for CertificateAuthorityLifecycleStateEnum
 func GetCertificateAuthorityLifecycleStateEnumValues() []CertificateAuthorityLifecycleStateEnum {
 	values := make([]CertificateAuthorityLifecycleStateEnum, 0)
@@ -67,11 +79,6 @@ func GetCertificateAuthorityLifecycleStateEnumStringValues() []string {
 
 // GetMappingCertificateAuthorityLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCertificateAuthorityLifecycleStateEnum(val string) (CertificateAuthorityLifecycleStateEnum, bool) {
-	mappingCertificateAuthorityLifecycleStateEnumIgnoreCase := make(map[string]CertificateAuthorityLifecycleStateEnum)
-	for k, v := range mappingCertificateAuthorityLifecycleStateEnum {
-		mappingCertificateAuthorityLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCertificateAuthorityLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCertificateAuthorityLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

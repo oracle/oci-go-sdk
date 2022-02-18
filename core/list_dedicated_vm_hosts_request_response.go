@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -169,6 +169,15 @@ var mappingListDedicatedVmHostsLifecycleStateEnum = map[string]ListDedicatedVmHo
 	"FAILED":   ListDedicatedVmHostsLifecycleStateFailed,
 }
 
+var mappingListDedicatedVmHostsLifecycleStateEnumLowerCase = map[string]ListDedicatedVmHostsLifecycleStateEnum{
+	"creating": ListDedicatedVmHostsLifecycleStateCreating,
+	"active":   ListDedicatedVmHostsLifecycleStateActive,
+	"updating": ListDedicatedVmHostsLifecycleStateUpdating,
+	"deleting": ListDedicatedVmHostsLifecycleStateDeleting,
+	"deleted":  ListDedicatedVmHostsLifecycleStateDeleted,
+	"failed":   ListDedicatedVmHostsLifecycleStateFailed,
+}
+
 // GetListDedicatedVmHostsLifecycleStateEnumValues Enumerates the set of values for ListDedicatedVmHostsLifecycleStateEnum
 func GetListDedicatedVmHostsLifecycleStateEnumValues() []ListDedicatedVmHostsLifecycleStateEnum {
 	values := make([]ListDedicatedVmHostsLifecycleStateEnum, 0)
@@ -192,12 +201,7 @@ func GetListDedicatedVmHostsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListDedicatedVmHostsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDedicatedVmHostsLifecycleStateEnum(val string) (ListDedicatedVmHostsLifecycleStateEnum, bool) {
-	mappingListDedicatedVmHostsLifecycleStateEnumIgnoreCase := make(map[string]ListDedicatedVmHostsLifecycleStateEnum)
-	for k, v := range mappingListDedicatedVmHostsLifecycleStateEnum {
-		mappingListDedicatedVmHostsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDedicatedVmHostsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDedicatedVmHostsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -213,6 +217,11 @@ const (
 var mappingListDedicatedVmHostsSortByEnum = map[string]ListDedicatedVmHostsSortByEnum{
 	"TIMECREATED": ListDedicatedVmHostsSortByTimecreated,
 	"DISPLAYNAME": ListDedicatedVmHostsSortByDisplayname,
+}
+
+var mappingListDedicatedVmHostsSortByEnumLowerCase = map[string]ListDedicatedVmHostsSortByEnum{
+	"timecreated": ListDedicatedVmHostsSortByTimecreated,
+	"displayname": ListDedicatedVmHostsSortByDisplayname,
 }
 
 // GetListDedicatedVmHostsSortByEnumValues Enumerates the set of values for ListDedicatedVmHostsSortByEnum
@@ -234,12 +243,7 @@ func GetListDedicatedVmHostsSortByEnumStringValues() []string {
 
 // GetMappingListDedicatedVmHostsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDedicatedVmHostsSortByEnum(val string) (ListDedicatedVmHostsSortByEnum, bool) {
-	mappingListDedicatedVmHostsSortByEnumIgnoreCase := make(map[string]ListDedicatedVmHostsSortByEnum)
-	for k, v := range mappingListDedicatedVmHostsSortByEnum {
-		mappingListDedicatedVmHostsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDedicatedVmHostsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDedicatedVmHostsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -255,6 +259,11 @@ const (
 var mappingListDedicatedVmHostsSortOrderEnum = map[string]ListDedicatedVmHostsSortOrderEnum{
 	"ASC":  ListDedicatedVmHostsSortOrderAsc,
 	"DESC": ListDedicatedVmHostsSortOrderDesc,
+}
+
+var mappingListDedicatedVmHostsSortOrderEnumLowerCase = map[string]ListDedicatedVmHostsSortOrderEnum{
+	"asc":  ListDedicatedVmHostsSortOrderAsc,
+	"desc": ListDedicatedVmHostsSortOrderDesc,
 }
 
 // GetListDedicatedVmHostsSortOrderEnumValues Enumerates the set of values for ListDedicatedVmHostsSortOrderEnum
@@ -276,11 +285,6 @@ func GetListDedicatedVmHostsSortOrderEnumStringValues() []string {
 
 // GetMappingListDedicatedVmHostsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDedicatedVmHostsSortOrderEnum(val string) (ListDedicatedVmHostsSortOrderEnum, bool) {
-	mappingListDedicatedVmHostsSortOrderEnumIgnoreCase := make(map[string]ListDedicatedVmHostsSortOrderEnum)
-	for k, v := range mappingListDedicatedVmHostsSortOrderEnum {
-		mappingListDedicatedVmHostsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDedicatedVmHostsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDedicatedVmHostsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

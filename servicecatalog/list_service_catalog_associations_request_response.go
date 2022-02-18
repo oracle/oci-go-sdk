@@ -6,7 +6,7 @@ package servicecatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -136,6 +136,11 @@ var mappingListServiceCatalogAssociationsSortOrderEnum = map[string]ListServiceC
 	"DESC": ListServiceCatalogAssociationsSortOrderDesc,
 }
 
+var mappingListServiceCatalogAssociationsSortOrderEnumLowerCase = map[string]ListServiceCatalogAssociationsSortOrderEnum{
+	"asc":  ListServiceCatalogAssociationsSortOrderAsc,
+	"desc": ListServiceCatalogAssociationsSortOrderDesc,
+}
+
 // GetListServiceCatalogAssociationsSortOrderEnumValues Enumerates the set of values for ListServiceCatalogAssociationsSortOrderEnum
 func GetListServiceCatalogAssociationsSortOrderEnumValues() []ListServiceCatalogAssociationsSortOrderEnum {
 	values := make([]ListServiceCatalogAssociationsSortOrderEnum, 0)
@@ -155,12 +160,7 @@ func GetListServiceCatalogAssociationsSortOrderEnumStringValues() []string {
 
 // GetMappingListServiceCatalogAssociationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListServiceCatalogAssociationsSortOrderEnum(val string) (ListServiceCatalogAssociationsSortOrderEnum, bool) {
-	mappingListServiceCatalogAssociationsSortOrderEnumIgnoreCase := make(map[string]ListServiceCatalogAssociationsSortOrderEnum)
-	for k, v := range mappingListServiceCatalogAssociationsSortOrderEnum {
-		mappingListServiceCatalogAssociationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListServiceCatalogAssociationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListServiceCatalogAssociationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -174,6 +174,10 @@ const (
 
 var mappingListServiceCatalogAssociationsSortByEnum = map[string]ListServiceCatalogAssociationsSortByEnum{
 	"TIMECREATED": ListServiceCatalogAssociationsSortByTimecreated,
+}
+
+var mappingListServiceCatalogAssociationsSortByEnumLowerCase = map[string]ListServiceCatalogAssociationsSortByEnum{
+	"timecreated": ListServiceCatalogAssociationsSortByTimecreated,
 }
 
 // GetListServiceCatalogAssociationsSortByEnumValues Enumerates the set of values for ListServiceCatalogAssociationsSortByEnum
@@ -194,11 +198,6 @@ func GetListServiceCatalogAssociationsSortByEnumStringValues() []string {
 
 // GetMappingListServiceCatalogAssociationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListServiceCatalogAssociationsSortByEnum(val string) (ListServiceCatalogAssociationsSortByEnum, bool) {
-	mappingListServiceCatalogAssociationsSortByEnumIgnoreCase := make(map[string]ListServiceCatalogAssociationsSortByEnum)
-	for k, v := range mappingListServiceCatalogAssociationsSortByEnum {
-		mappingListServiceCatalogAssociationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListServiceCatalogAssociationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListServiceCatalogAssociationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

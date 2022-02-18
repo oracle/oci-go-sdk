@@ -11,7 +11,7 @@ package oda
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -97,6 +97,11 @@ var mappingOdaInstanceSummaryShapeNameEnum = map[string]OdaInstanceSummaryShapeN
 	"PRODUCTION":  OdaInstanceSummaryShapeNameProduction,
 }
 
+var mappingOdaInstanceSummaryShapeNameEnumLowerCase = map[string]OdaInstanceSummaryShapeNameEnum{
+	"development": OdaInstanceSummaryShapeNameDevelopment,
+	"production":  OdaInstanceSummaryShapeNameProduction,
+}
+
 // GetOdaInstanceSummaryShapeNameEnumValues Enumerates the set of values for OdaInstanceSummaryShapeNameEnum
 func GetOdaInstanceSummaryShapeNameEnumValues() []OdaInstanceSummaryShapeNameEnum {
 	values := make([]OdaInstanceSummaryShapeNameEnum, 0)
@@ -116,12 +121,7 @@ func GetOdaInstanceSummaryShapeNameEnumStringValues() []string {
 
 // GetMappingOdaInstanceSummaryShapeNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOdaInstanceSummaryShapeNameEnum(val string) (OdaInstanceSummaryShapeNameEnum, bool) {
-	mappingOdaInstanceSummaryShapeNameEnumIgnoreCase := make(map[string]OdaInstanceSummaryShapeNameEnum)
-	for k, v := range mappingOdaInstanceSummaryShapeNameEnum {
-		mappingOdaInstanceSummaryShapeNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOdaInstanceSummaryShapeNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOdaInstanceSummaryShapeNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -149,6 +149,16 @@ var mappingOdaInstanceSummaryLifecycleStateEnum = map[string]OdaInstanceSummaryL
 	"FAILED":   OdaInstanceSummaryLifecycleStateFailed,
 }
 
+var mappingOdaInstanceSummaryLifecycleStateEnumLowerCase = map[string]OdaInstanceSummaryLifecycleStateEnum{
+	"creating": OdaInstanceSummaryLifecycleStateCreating,
+	"updating": OdaInstanceSummaryLifecycleStateUpdating,
+	"active":   OdaInstanceSummaryLifecycleStateActive,
+	"inactive": OdaInstanceSummaryLifecycleStateInactive,
+	"deleting": OdaInstanceSummaryLifecycleStateDeleting,
+	"deleted":  OdaInstanceSummaryLifecycleStateDeleted,
+	"failed":   OdaInstanceSummaryLifecycleStateFailed,
+}
+
 // GetOdaInstanceSummaryLifecycleStateEnumValues Enumerates the set of values for OdaInstanceSummaryLifecycleStateEnum
 func GetOdaInstanceSummaryLifecycleStateEnumValues() []OdaInstanceSummaryLifecycleStateEnum {
 	values := make([]OdaInstanceSummaryLifecycleStateEnum, 0)
@@ -173,12 +183,7 @@ func GetOdaInstanceSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingOdaInstanceSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOdaInstanceSummaryLifecycleStateEnum(val string) (OdaInstanceSummaryLifecycleStateEnum, bool) {
-	mappingOdaInstanceSummaryLifecycleStateEnumIgnoreCase := make(map[string]OdaInstanceSummaryLifecycleStateEnum)
-	for k, v := range mappingOdaInstanceSummaryLifecycleStateEnum {
-		mappingOdaInstanceSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOdaInstanceSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOdaInstanceSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -210,6 +215,18 @@ var mappingOdaInstanceSummaryLifecycleSubStateEnum = map[string]OdaInstanceSumma
 	"QUEUED":               OdaInstanceSummaryLifecycleSubStateQueued,
 }
 
+var mappingOdaInstanceSummaryLifecycleSubStateEnumLowerCase = map[string]OdaInstanceSummaryLifecycleSubStateEnum{
+	"creating":             OdaInstanceSummaryLifecycleSubStateCreating,
+	"starting":             OdaInstanceSummaryLifecycleSubStateStarting,
+	"stopping":             OdaInstanceSummaryLifecycleSubStateStopping,
+	"changing_compartment": OdaInstanceSummaryLifecycleSubStateChangingCompartment,
+	"deleting":             OdaInstanceSummaryLifecycleSubStateDeleting,
+	"delete_pending":       OdaInstanceSummaryLifecycleSubStateDeletePending,
+	"recovering":           OdaInstanceSummaryLifecycleSubStateRecovering,
+	"purging":              OdaInstanceSummaryLifecycleSubStatePurging,
+	"queued":               OdaInstanceSummaryLifecycleSubStateQueued,
+}
+
 // GetOdaInstanceSummaryLifecycleSubStateEnumValues Enumerates the set of values for OdaInstanceSummaryLifecycleSubStateEnum
 func GetOdaInstanceSummaryLifecycleSubStateEnumValues() []OdaInstanceSummaryLifecycleSubStateEnum {
 	values := make([]OdaInstanceSummaryLifecycleSubStateEnum, 0)
@@ -236,11 +253,6 @@ func GetOdaInstanceSummaryLifecycleSubStateEnumStringValues() []string {
 
 // GetMappingOdaInstanceSummaryLifecycleSubStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOdaInstanceSummaryLifecycleSubStateEnum(val string) (OdaInstanceSummaryLifecycleSubStateEnum, bool) {
-	mappingOdaInstanceSummaryLifecycleSubStateEnumIgnoreCase := make(map[string]OdaInstanceSummaryLifecycleSubStateEnum)
-	for k, v := range mappingOdaInstanceSummaryLifecycleSubStateEnum {
-		mappingOdaInstanceSummaryLifecycleSubStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOdaInstanceSummaryLifecycleSubStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOdaInstanceSummaryLifecycleSubStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package datalabelingservicedataplane
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,12 @@ var mappingRecordMetadataRecordTypeEnum = map[string]RecordMetadataRecordTypeEnu
 	"DOCUMENT_METADATA": RecordMetadataRecordTypeDocumentMetadata,
 }
 
+var mappingRecordMetadataRecordTypeEnumLowerCase = map[string]RecordMetadataRecordTypeEnum{
+	"image_metadata":    RecordMetadataRecordTypeImageMetadata,
+	"text_metadata":     RecordMetadataRecordTypeTextMetadata,
+	"document_metadata": RecordMetadataRecordTypeDocumentMetadata,
+}
+
 // GetRecordMetadataRecordTypeEnumValues Enumerates the set of values for RecordMetadataRecordTypeEnum
 func GetRecordMetadataRecordTypeEnumValues() []RecordMetadataRecordTypeEnum {
 	values := make([]RecordMetadataRecordTypeEnum, 0)
@@ -119,11 +125,6 @@ func GetRecordMetadataRecordTypeEnumStringValues() []string {
 
 // GetMappingRecordMetadataRecordTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRecordMetadataRecordTypeEnum(val string) (RecordMetadataRecordTypeEnum, bool) {
-	mappingRecordMetadataRecordTypeEnumIgnoreCase := make(map[string]RecordMetadataRecordTypeEnum)
-	for k, v := range mappingRecordMetadataRecordTypeEnum {
-		mappingRecordMetadataRecordTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRecordMetadataRecordTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRecordMetadataRecordTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

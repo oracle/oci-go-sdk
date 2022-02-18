@@ -12,7 +12,7 @@ package identity
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -224,6 +224,14 @@ var mappingIdentityProviderLifecycleStateEnum = map[string]IdentityProviderLifec
 	"DELETED":  IdentityProviderLifecycleStateDeleted,
 }
 
+var mappingIdentityProviderLifecycleStateEnumLowerCase = map[string]IdentityProviderLifecycleStateEnum{
+	"creating": IdentityProviderLifecycleStateCreating,
+	"active":   IdentityProviderLifecycleStateActive,
+	"inactive": IdentityProviderLifecycleStateInactive,
+	"deleting": IdentityProviderLifecycleStateDeleting,
+	"deleted":  IdentityProviderLifecycleStateDeleted,
+}
+
 // GetIdentityProviderLifecycleStateEnumValues Enumerates the set of values for IdentityProviderLifecycleStateEnum
 func GetIdentityProviderLifecycleStateEnumValues() []IdentityProviderLifecycleStateEnum {
 	values := make([]IdentityProviderLifecycleStateEnum, 0)
@@ -246,11 +254,6 @@ func GetIdentityProviderLifecycleStateEnumStringValues() []string {
 
 // GetMappingIdentityProviderLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIdentityProviderLifecycleStateEnum(val string) (IdentityProviderLifecycleStateEnum, bool) {
-	mappingIdentityProviderLifecycleStateEnumIgnoreCase := make(map[string]IdentityProviderLifecycleStateEnum)
-	for k, v := range mappingIdentityProviderLifecycleStateEnum {
-		mappingIdentityProviderLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIdentityProviderLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIdentityProviderLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

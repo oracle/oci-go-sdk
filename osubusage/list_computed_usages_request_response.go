@@ -6,7 +6,7 @@ package osubusage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -145,6 +145,11 @@ var mappingListComputedUsagesSortOrderEnum = map[string]ListComputedUsagesSortOr
 	"DESC": ListComputedUsagesSortOrderDesc,
 }
 
+var mappingListComputedUsagesSortOrderEnumLowerCase = map[string]ListComputedUsagesSortOrderEnum{
+	"asc":  ListComputedUsagesSortOrderAsc,
+	"desc": ListComputedUsagesSortOrderDesc,
+}
+
 // GetListComputedUsagesSortOrderEnumValues Enumerates the set of values for ListComputedUsagesSortOrderEnum
 func GetListComputedUsagesSortOrderEnumValues() []ListComputedUsagesSortOrderEnum {
 	values := make([]ListComputedUsagesSortOrderEnum, 0)
@@ -164,12 +169,7 @@ func GetListComputedUsagesSortOrderEnumStringValues() []string {
 
 // GetMappingListComputedUsagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListComputedUsagesSortOrderEnum(val string) (ListComputedUsagesSortOrderEnum, bool) {
-	mappingListComputedUsagesSortOrderEnumIgnoreCase := make(map[string]ListComputedUsagesSortOrderEnum)
-	for k, v := range mappingListComputedUsagesSortOrderEnum {
-		mappingListComputedUsagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListComputedUsagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListComputedUsagesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +187,12 @@ var mappingListComputedUsagesSortByEnum = map[string]ListComputedUsagesSortByEnu
 	"timeCreated":   ListComputedUsagesSortByTimecreated,
 	"timeOfArrival": ListComputedUsagesSortByTimeofarrival,
 	"timeMeteredOn": ListComputedUsagesSortByTimemeteredon,
+}
+
+var mappingListComputedUsagesSortByEnumLowerCase = map[string]ListComputedUsagesSortByEnum{
+	"timecreated":   ListComputedUsagesSortByTimecreated,
+	"timeofarrival": ListComputedUsagesSortByTimeofarrival,
+	"timemeteredon": ListComputedUsagesSortByTimemeteredon,
 }
 
 // GetListComputedUsagesSortByEnumValues Enumerates the set of values for ListComputedUsagesSortByEnum
@@ -209,11 +215,6 @@ func GetListComputedUsagesSortByEnumStringValues() []string {
 
 // GetMappingListComputedUsagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListComputedUsagesSortByEnum(val string) (ListComputedUsagesSortByEnum, bool) {
-	mappingListComputedUsagesSortByEnumIgnoreCase := make(map[string]ListComputedUsagesSortByEnum)
-	for k, v := range mappingListComputedUsagesSortByEnum {
-		mappingListComputedUsagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListComputedUsagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListComputedUsagesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

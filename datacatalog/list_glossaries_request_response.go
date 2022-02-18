@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -171,6 +171,17 @@ var mappingListGlossariesLifecycleStateEnum = map[string]ListGlossariesLifecycle
 	"MOVING":   ListGlossariesLifecycleStateMoving,
 }
 
+var mappingListGlossariesLifecycleStateEnumLowerCase = map[string]ListGlossariesLifecycleStateEnum{
+	"creating": ListGlossariesLifecycleStateCreating,
+	"active":   ListGlossariesLifecycleStateActive,
+	"inactive": ListGlossariesLifecycleStateInactive,
+	"updating": ListGlossariesLifecycleStateUpdating,
+	"deleting": ListGlossariesLifecycleStateDeleting,
+	"deleted":  ListGlossariesLifecycleStateDeleted,
+	"failed":   ListGlossariesLifecycleStateFailed,
+	"moving":   ListGlossariesLifecycleStateMoving,
+}
+
 // GetListGlossariesLifecycleStateEnumValues Enumerates the set of values for ListGlossariesLifecycleStateEnum
 func GetListGlossariesLifecycleStateEnumValues() []ListGlossariesLifecycleStateEnum {
 	values := make([]ListGlossariesLifecycleStateEnum, 0)
@@ -196,12 +207,7 @@ func GetListGlossariesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListGlossariesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListGlossariesLifecycleStateEnum(val string) (ListGlossariesLifecycleStateEnum, bool) {
-	mappingListGlossariesLifecycleStateEnumIgnoreCase := make(map[string]ListGlossariesLifecycleStateEnum)
-	for k, v := range mappingListGlossariesLifecycleStateEnum {
-		mappingListGlossariesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListGlossariesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListGlossariesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -231,6 +237,17 @@ var mappingListGlossariesFieldsEnum = map[string]ListGlossariesFieldsEnum{
 	"workflowStatus": ListGlossariesFieldsWorkflowstatus,
 }
 
+var mappingListGlossariesFieldsEnumLowerCase = map[string]ListGlossariesFieldsEnum{
+	"key":            ListGlossariesFieldsKey,
+	"displayname":    ListGlossariesFieldsDisplayname,
+	"description":    ListGlossariesFieldsDescription,
+	"catalogid":      ListGlossariesFieldsCatalogid,
+	"lifecyclestate": ListGlossariesFieldsLifecyclestate,
+	"timecreated":    ListGlossariesFieldsTimecreated,
+	"uri":            ListGlossariesFieldsUri,
+	"workflowstatus": ListGlossariesFieldsWorkflowstatus,
+}
+
 // GetListGlossariesFieldsEnumValues Enumerates the set of values for ListGlossariesFieldsEnum
 func GetListGlossariesFieldsEnumValues() []ListGlossariesFieldsEnum {
 	values := make([]ListGlossariesFieldsEnum, 0)
@@ -256,12 +273,7 @@ func GetListGlossariesFieldsEnumStringValues() []string {
 
 // GetMappingListGlossariesFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListGlossariesFieldsEnum(val string) (ListGlossariesFieldsEnum, bool) {
-	mappingListGlossariesFieldsEnumIgnoreCase := make(map[string]ListGlossariesFieldsEnum)
-	for k, v := range mappingListGlossariesFieldsEnum {
-		mappingListGlossariesFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListGlossariesFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListGlossariesFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -277,6 +289,11 @@ const (
 var mappingListGlossariesSortByEnum = map[string]ListGlossariesSortByEnum{
 	"TIMECREATED": ListGlossariesSortByTimecreated,
 	"DISPLAYNAME": ListGlossariesSortByDisplayname,
+}
+
+var mappingListGlossariesSortByEnumLowerCase = map[string]ListGlossariesSortByEnum{
+	"timecreated": ListGlossariesSortByTimecreated,
+	"displayname": ListGlossariesSortByDisplayname,
 }
 
 // GetListGlossariesSortByEnumValues Enumerates the set of values for ListGlossariesSortByEnum
@@ -298,12 +315,7 @@ func GetListGlossariesSortByEnumStringValues() []string {
 
 // GetMappingListGlossariesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListGlossariesSortByEnum(val string) (ListGlossariesSortByEnum, bool) {
-	mappingListGlossariesSortByEnumIgnoreCase := make(map[string]ListGlossariesSortByEnum)
-	for k, v := range mappingListGlossariesSortByEnum {
-		mappingListGlossariesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListGlossariesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListGlossariesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -319,6 +331,11 @@ const (
 var mappingListGlossariesSortOrderEnum = map[string]ListGlossariesSortOrderEnum{
 	"ASC":  ListGlossariesSortOrderAsc,
 	"DESC": ListGlossariesSortOrderDesc,
+}
+
+var mappingListGlossariesSortOrderEnumLowerCase = map[string]ListGlossariesSortOrderEnum{
+	"asc":  ListGlossariesSortOrderAsc,
+	"desc": ListGlossariesSortOrderDesc,
 }
 
 // GetListGlossariesSortOrderEnumValues Enumerates the set of values for ListGlossariesSortOrderEnum
@@ -340,11 +357,6 @@ func GetListGlossariesSortOrderEnumStringValues() []string {
 
 // GetMappingListGlossariesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListGlossariesSortOrderEnum(val string) (ListGlossariesSortOrderEnum, bool) {
-	mappingListGlossariesSortOrderEnumIgnoreCase := make(map[string]ListGlossariesSortOrderEnum)
-	for k, v := range mappingListGlossariesSortOrderEnum {
-		mappingListGlossariesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListGlossariesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListGlossariesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

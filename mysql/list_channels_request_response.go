@@ -6,7 +6,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -150,6 +150,11 @@ var mappingListChannelsSortByEnum = map[string]ListChannelsSortByEnum{
 	"timeCreated": ListChannelsSortByTimecreated,
 }
 
+var mappingListChannelsSortByEnumLowerCase = map[string]ListChannelsSortByEnum{
+	"displayname": ListChannelsSortByDisplayname,
+	"timecreated": ListChannelsSortByTimecreated,
+}
+
 // GetListChannelsSortByEnumValues Enumerates the set of values for ListChannelsSortByEnum
 func GetListChannelsSortByEnumValues() []ListChannelsSortByEnum {
 	values := make([]ListChannelsSortByEnum, 0)
@@ -169,12 +174,7 @@ func GetListChannelsSortByEnumStringValues() []string {
 
 // GetMappingListChannelsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListChannelsSortByEnum(val string) (ListChannelsSortByEnum, bool) {
-	mappingListChannelsSortByEnumIgnoreCase := make(map[string]ListChannelsSortByEnum)
-	for k, v := range mappingListChannelsSortByEnum {
-		mappingListChannelsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListChannelsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListChannelsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -190,6 +190,11 @@ const (
 var mappingListChannelsSortOrderEnum = map[string]ListChannelsSortOrderEnum{
 	"ASC":  ListChannelsSortOrderAsc,
 	"DESC": ListChannelsSortOrderDesc,
+}
+
+var mappingListChannelsSortOrderEnumLowerCase = map[string]ListChannelsSortOrderEnum{
+	"asc":  ListChannelsSortOrderAsc,
+	"desc": ListChannelsSortOrderDesc,
 }
 
 // GetListChannelsSortOrderEnumValues Enumerates the set of values for ListChannelsSortOrderEnum
@@ -211,11 +216,6 @@ func GetListChannelsSortOrderEnumStringValues() []string {
 
 // GetMappingListChannelsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListChannelsSortOrderEnum(val string) (ListChannelsSortOrderEnum, bool) {
-	mappingListChannelsSortOrderEnumIgnoreCase := make(map[string]ListChannelsSortOrderEnum)
-	for k, v := range mappingListChannelsSortOrderEnum {
-		mappingListChannelsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListChannelsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListChannelsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

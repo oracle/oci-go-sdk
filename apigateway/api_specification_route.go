@@ -14,7 +14,7 @@ package apigateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -127,6 +127,17 @@ var mappingApiSpecificationRouteMethodsEnum = map[string]ApiSpecificationRouteMe
 	"OPTIONS": ApiSpecificationRouteMethodsOptions,
 }
 
+var mappingApiSpecificationRouteMethodsEnumLowerCase = map[string]ApiSpecificationRouteMethodsEnum{
+	"any":     ApiSpecificationRouteMethodsAny,
+	"head":    ApiSpecificationRouteMethodsHead,
+	"get":     ApiSpecificationRouteMethodsGet,
+	"post":    ApiSpecificationRouteMethodsPost,
+	"put":     ApiSpecificationRouteMethodsPut,
+	"patch":   ApiSpecificationRouteMethodsPatch,
+	"delete":  ApiSpecificationRouteMethodsDelete,
+	"options": ApiSpecificationRouteMethodsOptions,
+}
+
 // GetApiSpecificationRouteMethodsEnumValues Enumerates the set of values for ApiSpecificationRouteMethodsEnum
 func GetApiSpecificationRouteMethodsEnumValues() []ApiSpecificationRouteMethodsEnum {
 	values := make([]ApiSpecificationRouteMethodsEnum, 0)
@@ -152,11 +163,6 @@ func GetApiSpecificationRouteMethodsEnumStringValues() []string {
 
 // GetMappingApiSpecificationRouteMethodsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingApiSpecificationRouteMethodsEnum(val string) (ApiSpecificationRouteMethodsEnum, bool) {
-	mappingApiSpecificationRouteMethodsEnumIgnoreCase := make(map[string]ApiSpecificationRouteMethodsEnum)
-	for k, v := range mappingApiSpecificationRouteMethodsEnum {
-		mappingApiSpecificationRouteMethodsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingApiSpecificationRouteMethodsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingApiSpecificationRouteMethodsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

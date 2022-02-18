@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -153,6 +153,12 @@ var mappingTypedNamePatternRuleMatchingStrategyEnum = map[string]TypedNamePatter
 	"NAME_ONLY":    TypedNamePatternRuleMatchingStrategyNameOnly,
 }
 
+var mappingTypedNamePatternRuleMatchingStrategyEnumLowerCase = map[string]TypedNamePatternRuleMatchingStrategyEnum{
+	"name_or_tags": TypedNamePatternRuleMatchingStrategyNameOrTags,
+	"tags_only":    TypedNamePatternRuleMatchingStrategyTagsOnly,
+	"name_only":    TypedNamePatternRuleMatchingStrategyNameOnly,
+}
+
 // GetTypedNamePatternRuleMatchingStrategyEnumValues Enumerates the set of values for TypedNamePatternRuleMatchingStrategyEnum
 func GetTypedNamePatternRuleMatchingStrategyEnumValues() []TypedNamePatternRuleMatchingStrategyEnum {
 	values := make([]TypedNamePatternRuleMatchingStrategyEnum, 0)
@@ -173,12 +179,7 @@ func GetTypedNamePatternRuleMatchingStrategyEnumStringValues() []string {
 
 // GetMappingTypedNamePatternRuleMatchingStrategyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTypedNamePatternRuleMatchingStrategyEnum(val string) (TypedNamePatternRuleMatchingStrategyEnum, bool) {
-	mappingTypedNamePatternRuleMatchingStrategyEnumIgnoreCase := make(map[string]TypedNamePatternRuleMatchingStrategyEnum)
-	for k, v := range mappingTypedNamePatternRuleMatchingStrategyEnum {
-		mappingTypedNamePatternRuleMatchingStrategyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTypedNamePatternRuleMatchingStrategyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTypedNamePatternRuleMatchingStrategyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -194,6 +195,11 @@ const (
 var mappingTypedNamePatternRuleRuleTypeEnum = map[string]TypedNamePatternRuleRuleTypeEnum{
 	"INCLUDE": TypedNamePatternRuleRuleTypeInclude,
 	"EXCLUDE": TypedNamePatternRuleRuleTypeExclude,
+}
+
+var mappingTypedNamePatternRuleRuleTypeEnumLowerCase = map[string]TypedNamePatternRuleRuleTypeEnum{
+	"include": TypedNamePatternRuleRuleTypeInclude,
+	"exclude": TypedNamePatternRuleRuleTypeExclude,
 }
 
 // GetTypedNamePatternRuleRuleTypeEnumValues Enumerates the set of values for TypedNamePatternRuleRuleTypeEnum
@@ -215,11 +221,6 @@ func GetTypedNamePatternRuleRuleTypeEnumStringValues() []string {
 
 // GetMappingTypedNamePatternRuleRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTypedNamePatternRuleRuleTypeEnum(val string) (TypedNamePatternRuleRuleTypeEnum, bool) {
-	mappingTypedNamePatternRuleRuleTypeEnumIgnoreCase := make(map[string]TypedNamePatternRuleRuleTypeEnum)
-	for k, v := range mappingTypedNamePatternRuleRuleTypeEnum {
-		mappingTypedNamePatternRuleRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTypedNamePatternRuleRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTypedNamePatternRuleRuleTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

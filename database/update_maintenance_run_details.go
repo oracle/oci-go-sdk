@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -68,6 +68,11 @@ var mappingUpdateMaintenanceRunDetailsPatchingModeEnum = map[string]UpdateMainte
 	"NONROLLING": UpdateMaintenanceRunDetailsPatchingModeNonrolling,
 }
 
+var mappingUpdateMaintenanceRunDetailsPatchingModeEnumLowerCase = map[string]UpdateMaintenanceRunDetailsPatchingModeEnum{
+	"rolling":    UpdateMaintenanceRunDetailsPatchingModeRolling,
+	"nonrolling": UpdateMaintenanceRunDetailsPatchingModeNonrolling,
+}
+
 // GetUpdateMaintenanceRunDetailsPatchingModeEnumValues Enumerates the set of values for UpdateMaintenanceRunDetailsPatchingModeEnum
 func GetUpdateMaintenanceRunDetailsPatchingModeEnumValues() []UpdateMaintenanceRunDetailsPatchingModeEnum {
 	values := make([]UpdateMaintenanceRunDetailsPatchingModeEnum, 0)
@@ -87,11 +92,6 @@ func GetUpdateMaintenanceRunDetailsPatchingModeEnumStringValues() []string {
 
 // GetMappingUpdateMaintenanceRunDetailsPatchingModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateMaintenanceRunDetailsPatchingModeEnum(val string) (UpdateMaintenanceRunDetailsPatchingModeEnum, bool) {
-	mappingUpdateMaintenanceRunDetailsPatchingModeEnumIgnoreCase := make(map[string]UpdateMaintenanceRunDetailsPatchingModeEnum)
-	for k, v := range mappingUpdateMaintenanceRunDetailsPatchingModeEnum {
-		mappingUpdateMaintenanceRunDetailsPatchingModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateMaintenanceRunDetailsPatchingModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateMaintenanceRunDetailsPatchingModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

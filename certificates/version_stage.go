@@ -35,6 +35,15 @@ var mappingVersionStageEnum = map[string]VersionStageEnum{
 	"FAILED":     VersionStageFailed,
 }
 
+var mappingVersionStageEnumLowerCase = map[string]VersionStageEnum{
+	"current":    VersionStageCurrent,
+	"pending":    VersionStagePending,
+	"latest":     VersionStageLatest,
+	"previous":   VersionStagePrevious,
+	"deprecated": VersionStageDeprecated,
+	"failed":     VersionStageFailed,
+}
+
 // GetVersionStageEnumValues Enumerates the set of values for VersionStageEnum
 func GetVersionStageEnumValues() []VersionStageEnum {
 	values := make([]VersionStageEnum, 0)
@@ -58,11 +67,6 @@ func GetVersionStageEnumStringValues() []string {
 
 // GetMappingVersionStageEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVersionStageEnum(val string) (VersionStageEnum, bool) {
-	mappingVersionStageEnumIgnoreCase := make(map[string]VersionStageEnum)
-	for k, v := range mappingVersionStageEnum {
-		mappingVersionStageEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVersionStageEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVersionStageEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

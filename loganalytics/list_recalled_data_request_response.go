@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -137,6 +137,11 @@ var mappingListRecalledDataSortByEnum = map[string]ListRecalledDataSortByEnum{
 	"timeDataStarted": ListRecalledDataSortByTimedatastarted,
 }
 
+var mappingListRecalledDataSortByEnumLowerCase = map[string]ListRecalledDataSortByEnum{
+	"timestarted":     ListRecalledDataSortByTimestarted,
+	"timedatastarted": ListRecalledDataSortByTimedatastarted,
+}
+
 // GetListRecalledDataSortByEnumValues Enumerates the set of values for ListRecalledDataSortByEnum
 func GetListRecalledDataSortByEnumValues() []ListRecalledDataSortByEnum {
 	values := make([]ListRecalledDataSortByEnum, 0)
@@ -156,12 +161,7 @@ func GetListRecalledDataSortByEnumStringValues() []string {
 
 // GetMappingListRecalledDataSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRecalledDataSortByEnum(val string) (ListRecalledDataSortByEnum, bool) {
-	mappingListRecalledDataSortByEnumIgnoreCase := make(map[string]ListRecalledDataSortByEnum)
-	for k, v := range mappingListRecalledDataSortByEnum {
-		mappingListRecalledDataSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRecalledDataSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRecalledDataSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -177,6 +177,11 @@ const (
 var mappingListRecalledDataSortOrderEnum = map[string]ListRecalledDataSortOrderEnum{
 	"ASC":  ListRecalledDataSortOrderAsc,
 	"DESC": ListRecalledDataSortOrderDesc,
+}
+
+var mappingListRecalledDataSortOrderEnumLowerCase = map[string]ListRecalledDataSortOrderEnum{
+	"asc":  ListRecalledDataSortOrderAsc,
+	"desc": ListRecalledDataSortOrderDesc,
 }
 
 // GetListRecalledDataSortOrderEnumValues Enumerates the set of values for ListRecalledDataSortOrderEnum
@@ -198,11 +203,6 @@ func GetListRecalledDataSortOrderEnumStringValues() []string {
 
 // GetMappingListRecalledDataSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRecalledDataSortOrderEnum(val string) (ListRecalledDataSortOrderEnum, bool) {
-	mappingListRecalledDataSortOrderEnumIgnoreCase := make(map[string]ListRecalledDataSortOrderEnum)
-	for k, v := range mappingListRecalledDataSortOrderEnum {
-		mappingListRecalledDataSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRecalledDataSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRecalledDataSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

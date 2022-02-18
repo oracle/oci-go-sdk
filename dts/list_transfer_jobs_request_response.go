@@ -6,7 +6,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -135,6 +135,14 @@ var mappingListTransferJobsLifecycleStateEnum = map[string]ListTransferJobsLifec
 	"CLOSED":    ListTransferJobsLifecycleStateClosed,
 }
 
+var mappingListTransferJobsLifecycleStateEnumLowerCase = map[string]ListTransferJobsLifecycleStateEnum{
+	"initiated": ListTransferJobsLifecycleStateInitiated,
+	"preparing": ListTransferJobsLifecycleStatePreparing,
+	"active":    ListTransferJobsLifecycleStateActive,
+	"deleted":   ListTransferJobsLifecycleStateDeleted,
+	"closed":    ListTransferJobsLifecycleStateClosed,
+}
+
 // GetListTransferJobsLifecycleStateEnumValues Enumerates the set of values for ListTransferJobsLifecycleStateEnum
 func GetListTransferJobsLifecycleStateEnumValues() []ListTransferJobsLifecycleStateEnum {
 	values := make([]ListTransferJobsLifecycleStateEnum, 0)
@@ -157,11 +165,6 @@ func GetListTransferJobsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListTransferJobsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTransferJobsLifecycleStateEnum(val string) (ListTransferJobsLifecycleStateEnum, bool) {
-	mappingListTransferJobsLifecycleStateEnumIgnoreCase := make(map[string]ListTransferJobsLifecycleStateEnum)
-	for k, v := range mappingListTransferJobsLifecycleStateEnum {
-		mappingListTransferJobsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTransferJobsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTransferJobsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

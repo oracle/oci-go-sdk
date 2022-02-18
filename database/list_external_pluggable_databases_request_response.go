@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -142,6 +142,11 @@ var mappingListExternalPluggableDatabasesSortByEnum = map[string]ListExternalPlu
 	"TIMECREATED": ListExternalPluggableDatabasesSortByTimecreated,
 }
 
+var mappingListExternalPluggableDatabasesSortByEnumLowerCase = map[string]ListExternalPluggableDatabasesSortByEnum{
+	"displayname": ListExternalPluggableDatabasesSortByDisplayname,
+	"timecreated": ListExternalPluggableDatabasesSortByTimecreated,
+}
+
 // GetListExternalPluggableDatabasesSortByEnumValues Enumerates the set of values for ListExternalPluggableDatabasesSortByEnum
 func GetListExternalPluggableDatabasesSortByEnumValues() []ListExternalPluggableDatabasesSortByEnum {
 	values := make([]ListExternalPluggableDatabasesSortByEnum, 0)
@@ -161,12 +166,7 @@ func GetListExternalPluggableDatabasesSortByEnumStringValues() []string {
 
 // GetMappingListExternalPluggableDatabasesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListExternalPluggableDatabasesSortByEnum(val string) (ListExternalPluggableDatabasesSortByEnum, bool) {
-	mappingListExternalPluggableDatabasesSortByEnumIgnoreCase := make(map[string]ListExternalPluggableDatabasesSortByEnum)
-	for k, v := range mappingListExternalPluggableDatabasesSortByEnum {
-		mappingListExternalPluggableDatabasesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListExternalPluggableDatabasesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListExternalPluggableDatabasesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -182,6 +182,11 @@ const (
 var mappingListExternalPluggableDatabasesSortOrderEnum = map[string]ListExternalPluggableDatabasesSortOrderEnum{
 	"ASC":  ListExternalPluggableDatabasesSortOrderAsc,
 	"DESC": ListExternalPluggableDatabasesSortOrderDesc,
+}
+
+var mappingListExternalPluggableDatabasesSortOrderEnumLowerCase = map[string]ListExternalPluggableDatabasesSortOrderEnum{
+	"asc":  ListExternalPluggableDatabasesSortOrderAsc,
+	"desc": ListExternalPluggableDatabasesSortOrderDesc,
 }
 
 // GetListExternalPluggableDatabasesSortOrderEnumValues Enumerates the set of values for ListExternalPluggableDatabasesSortOrderEnum
@@ -203,11 +208,6 @@ func GetListExternalPluggableDatabasesSortOrderEnumStringValues() []string {
 
 // GetMappingListExternalPluggableDatabasesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListExternalPluggableDatabasesSortOrderEnum(val string) (ListExternalPluggableDatabasesSortOrderEnum, bool) {
-	mappingListExternalPluggableDatabasesSortOrderEnumIgnoreCase := make(map[string]ListExternalPluggableDatabasesSortOrderEnum)
-	for k, v := range mappingListExternalPluggableDatabasesSortOrderEnum {
-		mappingListExternalPluggableDatabasesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListExternalPluggableDatabasesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListExternalPluggableDatabasesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

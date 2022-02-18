@@ -58,6 +58,26 @@ var mappingJobTypeEnum = map[string]JobTypeEnum{
 	"IMPORT_DATA_ASSET":            JobTypeImportDataAsset,
 }
 
+var mappingJobTypeEnumLowerCase = map[string]JobTypeEnum{
+	"harvest":                      JobTypeHarvest,
+	"profiling":                    JobTypeProfiling,
+	"sampling":                     JobTypeSampling,
+	"preview":                      JobTypePreview,
+	"import":                       JobTypeImport,
+	"export":                       JobTypeExport,
+	"import_glossary":              JobTypeImportGlossary,
+	"export_glossary":              JobTypeExportGlossary,
+	"internal":                     JobTypeInternal,
+	"purge":                        JobTypePurge,
+	"immediate":                    JobTypeImmediate,
+	"scheduled":                    JobTypeScheduled,
+	"immediate_execution":          JobTypeImmediateExecution,
+	"scheduled_execution":          JobTypeScheduledExecution,
+	"scheduled_execution_instance": JobTypeScheduledExecutionInstance,
+	"async_delete":                 JobTypeAsyncDelete,
+	"import_data_asset":            JobTypeImportDataAsset,
+}
+
 // GetJobTypeEnumValues Enumerates the set of values for JobTypeEnum
 func GetJobTypeEnumValues() []JobTypeEnum {
 	values := make([]JobTypeEnum, 0)
@@ -92,11 +112,6 @@ func GetJobTypeEnumStringValues() []string {
 
 // GetMappingJobTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJobTypeEnum(val string) (JobTypeEnum, bool) {
-	mappingJobTypeEnumIgnoreCase := make(map[string]JobTypeEnum)
-	for k, v := range mappingJobTypeEnum {
-		mappingJobTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJobTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJobTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

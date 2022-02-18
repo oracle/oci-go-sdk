@@ -6,7 +6,7 @@ package managementagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -148,6 +148,11 @@ var mappingListManagementAgentImagesSortOrderEnum = map[string]ListManagementAge
 	"DESC": ListManagementAgentImagesSortOrderDesc,
 }
 
+var mappingListManagementAgentImagesSortOrderEnumLowerCase = map[string]ListManagementAgentImagesSortOrderEnum{
+	"asc":  ListManagementAgentImagesSortOrderAsc,
+	"desc": ListManagementAgentImagesSortOrderDesc,
+}
+
 // GetListManagementAgentImagesSortOrderEnumValues Enumerates the set of values for ListManagementAgentImagesSortOrderEnum
 func GetListManagementAgentImagesSortOrderEnumValues() []ListManagementAgentImagesSortOrderEnum {
 	values := make([]ListManagementAgentImagesSortOrderEnum, 0)
@@ -167,12 +172,7 @@ func GetListManagementAgentImagesSortOrderEnumStringValues() []string {
 
 // GetMappingListManagementAgentImagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagementAgentImagesSortOrderEnum(val string) (ListManagementAgentImagesSortOrderEnum, bool) {
-	mappingListManagementAgentImagesSortOrderEnumIgnoreCase := make(map[string]ListManagementAgentImagesSortOrderEnum)
-	for k, v := range mappingListManagementAgentImagesSortOrderEnum {
-		mappingListManagementAgentImagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagementAgentImagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagementAgentImagesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +187,11 @@ const (
 
 var mappingListManagementAgentImagesSortByEnum = map[string]ListManagementAgentImagesSortByEnum{
 	"platformType": ListManagementAgentImagesSortByPlatformtype,
+	"version":      ListManagementAgentImagesSortByVersion,
+}
+
+var mappingListManagementAgentImagesSortByEnumLowerCase = map[string]ListManagementAgentImagesSortByEnum{
+	"platformtype": ListManagementAgentImagesSortByPlatformtype,
 	"version":      ListManagementAgentImagesSortByVersion,
 }
 
@@ -209,12 +214,7 @@ func GetListManagementAgentImagesSortByEnumStringValues() []string {
 
 // GetMappingListManagementAgentImagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagementAgentImagesSortByEnum(val string) (ListManagementAgentImagesSortByEnum, bool) {
-	mappingListManagementAgentImagesSortByEnumIgnoreCase := make(map[string]ListManagementAgentImagesSortByEnum)
-	for k, v := range mappingListManagementAgentImagesSortByEnum {
-		mappingListManagementAgentImagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagementAgentImagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagementAgentImagesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -244,6 +244,17 @@ var mappingListManagementAgentImagesLifecycleStateEnum = map[string]ListManageme
 	"FAILED":     ListManagementAgentImagesLifecycleStateFailed,
 }
 
+var mappingListManagementAgentImagesLifecycleStateEnumLowerCase = map[string]ListManagementAgentImagesLifecycleStateEnum{
+	"creating":   ListManagementAgentImagesLifecycleStateCreating,
+	"updating":   ListManagementAgentImagesLifecycleStateUpdating,
+	"active":     ListManagementAgentImagesLifecycleStateActive,
+	"inactive":   ListManagementAgentImagesLifecycleStateInactive,
+	"terminated": ListManagementAgentImagesLifecycleStateTerminated,
+	"deleting":   ListManagementAgentImagesLifecycleStateDeleting,
+	"deleted":    ListManagementAgentImagesLifecycleStateDeleted,
+	"failed":     ListManagementAgentImagesLifecycleStateFailed,
+}
+
 // GetListManagementAgentImagesLifecycleStateEnumValues Enumerates the set of values for ListManagementAgentImagesLifecycleStateEnum
 func GetListManagementAgentImagesLifecycleStateEnumValues() []ListManagementAgentImagesLifecycleStateEnum {
 	values := make([]ListManagementAgentImagesLifecycleStateEnum, 0)
@@ -269,12 +280,7 @@ func GetListManagementAgentImagesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListManagementAgentImagesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagementAgentImagesLifecycleStateEnum(val string) (ListManagementAgentImagesLifecycleStateEnum, bool) {
-	mappingListManagementAgentImagesLifecycleStateEnumIgnoreCase := make(map[string]ListManagementAgentImagesLifecycleStateEnum)
-	for k, v := range mappingListManagementAgentImagesLifecycleStateEnum {
-		mappingListManagementAgentImagesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagementAgentImagesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagementAgentImagesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -290,6 +296,11 @@ const (
 var mappingListManagementAgentImagesInstallTypeEnum = map[string]ListManagementAgentImagesInstallTypeEnum{
 	"AGENT":   ListManagementAgentImagesInstallTypeAgent,
 	"GATEWAY": ListManagementAgentImagesInstallTypeGateway,
+}
+
+var mappingListManagementAgentImagesInstallTypeEnumLowerCase = map[string]ListManagementAgentImagesInstallTypeEnum{
+	"agent":   ListManagementAgentImagesInstallTypeAgent,
+	"gateway": ListManagementAgentImagesInstallTypeGateway,
 }
 
 // GetListManagementAgentImagesInstallTypeEnumValues Enumerates the set of values for ListManagementAgentImagesInstallTypeEnum
@@ -311,11 +322,6 @@ func GetListManagementAgentImagesInstallTypeEnumStringValues() []string {
 
 // GetMappingListManagementAgentImagesInstallTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagementAgentImagesInstallTypeEnum(val string) (ListManagementAgentImagesInstallTypeEnum, bool) {
-	mappingListManagementAgentImagesInstallTypeEnumIgnoreCase := make(map[string]ListManagementAgentImagesInstallTypeEnum)
-	for k, v := range mappingListManagementAgentImagesInstallTypeEnum {
-		mappingListManagementAgentImagesInstallTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagementAgentImagesInstallTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagementAgentImagesInstallTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

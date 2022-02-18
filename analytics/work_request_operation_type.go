@@ -31,6 +31,7 @@ const (
 	WorkRequestOperationTypeCreatePrivateAccessChannel             WorkRequestOperationTypeEnum = "CREATE_PRIVATE_ACCESS_CHANNEL"
 	WorkRequestOperationTypeUpdatePrivateAccessChannel             WorkRequestOperationTypeEnum = "UPDATE_PRIVATE_ACCESS_CHANNEL"
 	WorkRequestOperationTypeDeletePrivateAccessChannel             WorkRequestOperationTypeEnum = "DELETE_PRIVATE_ACCESS_CHANNEL"
+	WorkRequestOperationTypeUpdateInstanceEncryptionKey            WorkRequestOperationTypeEnum = "UPDATE_INSTANCE_ENCRYPTION_KEY"
 )
 
 var mappingWorkRequestOperationTypeEnum = map[string]WorkRequestOperationTypeEnum{
@@ -47,6 +48,24 @@ var mappingWorkRequestOperationTypeEnum = map[string]WorkRequestOperationTypeEnu
 	"CREATE_PRIVATE_ACCESS_CHANNEL":              WorkRequestOperationTypeCreatePrivateAccessChannel,
 	"UPDATE_PRIVATE_ACCESS_CHANNEL":              WorkRequestOperationTypeUpdatePrivateAccessChannel,
 	"DELETE_PRIVATE_ACCESS_CHANNEL":              WorkRequestOperationTypeDeletePrivateAccessChannel,
+	"UPDATE_INSTANCE_ENCRYPTION_KEY":             WorkRequestOperationTypeUpdateInstanceEncryptionKey,
+}
+
+var mappingWorkRequestOperationTypeEnumLowerCase = map[string]WorkRequestOperationTypeEnum{
+	"create_analytics_instance":                  WorkRequestOperationTypeCreateAnalyticsInstance,
+	"delete_analytics_instance":                  WorkRequestOperationTypeDeleteAnalyticsInstance,
+	"start_analytics_instance":                   WorkRequestOperationTypeStartAnalyticsInstance,
+	"stop_analytics_instance":                    WorkRequestOperationTypeStopAnalyticsInstance,
+	"scale_analytics_instance":                   WorkRequestOperationTypeScaleAnalyticsInstance,
+	"change_analytics_instance_compartment":      WorkRequestOperationTypeChangeAnalyticsInstanceCompartment,
+	"change_analytics_instance_network_endpoint": WorkRequestOperationTypeChangeAnalyticsInstanceNetworkEndpoint,
+	"create_vanity_url":                          WorkRequestOperationTypeCreateVanityUrl,
+	"update_vanity_url":                          WorkRequestOperationTypeUpdateVanityUrl,
+	"delete_vanity_url":                          WorkRequestOperationTypeDeleteVanityUrl,
+	"create_private_access_channel":              WorkRequestOperationTypeCreatePrivateAccessChannel,
+	"update_private_access_channel":              WorkRequestOperationTypeUpdatePrivateAccessChannel,
+	"delete_private_access_channel":              WorkRequestOperationTypeDeletePrivateAccessChannel,
+	"update_instance_encryption_key":             WorkRequestOperationTypeUpdateInstanceEncryptionKey,
 }
 
 // GetWorkRequestOperationTypeEnumValues Enumerates the set of values for WorkRequestOperationTypeEnum
@@ -74,16 +93,12 @@ func GetWorkRequestOperationTypeEnumStringValues() []string {
 		"CREATE_PRIVATE_ACCESS_CHANNEL",
 		"UPDATE_PRIVATE_ACCESS_CHANNEL",
 		"DELETE_PRIVATE_ACCESS_CHANNEL",
+		"UPDATE_INSTANCE_ENCRYPTION_KEY",
 	}
 }
 
 // GetMappingWorkRequestOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestOperationTypeEnum(val string) (WorkRequestOperationTypeEnum, bool) {
-	mappingWorkRequestOperationTypeEnumIgnoreCase := make(map[string]WorkRequestOperationTypeEnum)
-	for k, v := range mappingWorkRequestOperationTypeEnum {
-		mappingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

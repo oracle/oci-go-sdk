@@ -27,6 +27,11 @@ var mappingContentTypesEnum = map[string]ContentTypesEnum{
 	"JS":   ContentTypesJs,
 }
 
+var mappingContentTypesEnumLowerCase = map[string]ContentTypesEnum{
+	"side": ContentTypesSide,
+	"js":   ContentTypesJs,
+}
+
 // GetContentTypesEnumValues Enumerates the set of values for ContentTypesEnum
 func GetContentTypesEnumValues() []ContentTypesEnum {
 	values := make([]ContentTypesEnum, 0)
@@ -46,11 +51,6 @@ func GetContentTypesEnumStringValues() []string {
 
 // GetMappingContentTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingContentTypesEnum(val string) (ContentTypesEnum, bool) {
-	mappingContentTypesEnumIgnoreCase := make(map[string]ContentTypesEnum)
-	for k, v := range mappingContentTypesEnum {
-		mappingContentTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingContentTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingContentTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

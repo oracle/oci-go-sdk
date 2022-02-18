@@ -11,7 +11,7 @@ package bds
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -122,6 +122,18 @@ var mappingBdsInstanceLifecycleStateEnum = map[string]BdsInstanceLifecycleStateE
 	"FAILED":     BdsInstanceLifecycleStateFailed,
 }
 
+var mappingBdsInstanceLifecycleStateEnumLowerCase = map[string]BdsInstanceLifecycleStateEnum{
+	"creating":   BdsInstanceLifecycleStateCreating,
+	"active":     BdsInstanceLifecycleStateActive,
+	"updating":   BdsInstanceLifecycleStateUpdating,
+	"suspending": BdsInstanceLifecycleStateSuspending,
+	"suspended":  BdsInstanceLifecycleStateSuspended,
+	"resuming":   BdsInstanceLifecycleStateResuming,
+	"deleting":   BdsInstanceLifecycleStateDeleting,
+	"deleted":    BdsInstanceLifecycleStateDeleted,
+	"failed":     BdsInstanceLifecycleStateFailed,
+}
+
 // GetBdsInstanceLifecycleStateEnumValues Enumerates the set of values for BdsInstanceLifecycleStateEnum
 func GetBdsInstanceLifecycleStateEnumValues() []BdsInstanceLifecycleStateEnum {
 	values := make([]BdsInstanceLifecycleStateEnum, 0)
@@ -148,12 +160,7 @@ func GetBdsInstanceLifecycleStateEnumStringValues() []string {
 
 // GetMappingBdsInstanceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBdsInstanceLifecycleStateEnum(val string) (BdsInstanceLifecycleStateEnum, bool) {
-	mappingBdsInstanceLifecycleStateEnumIgnoreCase := make(map[string]BdsInstanceLifecycleStateEnum)
-	for k, v := range mappingBdsInstanceLifecycleStateEnum {
-		mappingBdsInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBdsInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBdsInstanceLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -171,6 +178,12 @@ var mappingBdsInstanceClusterVersionEnum = map[string]BdsInstanceClusterVersionE
 	"CDH5": BdsInstanceClusterVersionCdh5,
 	"CDH6": BdsInstanceClusterVersionCdh6,
 	"ODH1": BdsInstanceClusterVersionOdh1,
+}
+
+var mappingBdsInstanceClusterVersionEnumLowerCase = map[string]BdsInstanceClusterVersionEnum{
+	"cdh5": BdsInstanceClusterVersionCdh5,
+	"cdh6": BdsInstanceClusterVersionCdh6,
+	"odh1": BdsInstanceClusterVersionOdh1,
 }
 
 // GetBdsInstanceClusterVersionEnumValues Enumerates the set of values for BdsInstanceClusterVersionEnum
@@ -193,11 +206,6 @@ func GetBdsInstanceClusterVersionEnumStringValues() []string {
 
 // GetMappingBdsInstanceClusterVersionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBdsInstanceClusterVersionEnum(val string) (BdsInstanceClusterVersionEnum, bool) {
-	mappingBdsInstanceClusterVersionEnumIgnoreCase := make(map[string]BdsInstanceClusterVersionEnum)
-	for k, v := range mappingBdsInstanceClusterVersionEnum {
-		mappingBdsInstanceClusterVersionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBdsInstanceClusterVersionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBdsInstanceClusterVersionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

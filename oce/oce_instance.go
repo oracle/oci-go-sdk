@@ -11,7 +11,7 @@ package oce
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -140,6 +140,11 @@ var mappingOceInstanceUpgradeScheduleEnum = map[string]OceInstanceUpgradeSchedul
 	"DELAYED_UPGRADE":     OceInstanceUpgradeScheduleDelayedUpgrade,
 }
 
+var mappingOceInstanceUpgradeScheduleEnumLowerCase = map[string]OceInstanceUpgradeScheduleEnum{
+	"upgrade_immediately": OceInstanceUpgradeScheduleUpgradeImmediately,
+	"delayed_upgrade":     OceInstanceUpgradeScheduleDelayedUpgrade,
+}
+
 // GetOceInstanceUpgradeScheduleEnumValues Enumerates the set of values for OceInstanceUpgradeScheduleEnum
 func GetOceInstanceUpgradeScheduleEnumValues() []OceInstanceUpgradeScheduleEnum {
 	values := make([]OceInstanceUpgradeScheduleEnum, 0)
@@ -159,12 +164,7 @@ func GetOceInstanceUpgradeScheduleEnumStringValues() []string {
 
 // GetMappingOceInstanceUpgradeScheduleEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOceInstanceUpgradeScheduleEnum(val string) (OceInstanceUpgradeScheduleEnum, bool) {
-	mappingOceInstanceUpgradeScheduleEnumIgnoreCase := make(map[string]OceInstanceUpgradeScheduleEnum)
-	for k, v := range mappingOceInstanceUpgradeScheduleEnum {
-		mappingOceInstanceUpgradeScheduleEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOceInstanceUpgradeScheduleEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOceInstanceUpgradeScheduleEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -180,6 +180,11 @@ const (
 var mappingOceInstanceInstanceUsageTypeEnum = map[string]OceInstanceInstanceUsageTypeEnum{
 	"PRIMARY":    OceInstanceInstanceUsageTypePrimary,
 	"NONPRIMARY": OceInstanceInstanceUsageTypeNonprimary,
+}
+
+var mappingOceInstanceInstanceUsageTypeEnumLowerCase = map[string]OceInstanceInstanceUsageTypeEnum{
+	"primary":    OceInstanceInstanceUsageTypePrimary,
+	"nonprimary": OceInstanceInstanceUsageTypeNonprimary,
 }
 
 // GetOceInstanceInstanceUsageTypeEnumValues Enumerates the set of values for OceInstanceInstanceUsageTypeEnum
@@ -201,12 +206,7 @@ func GetOceInstanceInstanceUsageTypeEnumStringValues() []string {
 
 // GetMappingOceInstanceInstanceUsageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOceInstanceInstanceUsageTypeEnum(val string) (OceInstanceInstanceUsageTypeEnum, bool) {
-	mappingOceInstanceInstanceUsageTypeEnumIgnoreCase := make(map[string]OceInstanceInstanceUsageTypeEnum)
-	for k, v := range mappingOceInstanceInstanceUsageTypeEnum {
-		mappingOceInstanceInstanceUsageTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOceInstanceInstanceUsageTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOceInstanceInstanceUsageTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -222,6 +222,11 @@ const (
 var mappingOceInstanceInstanceAccessTypeEnum = map[string]OceInstanceInstanceAccessTypeEnum{
 	"PUBLIC":  OceInstanceInstanceAccessTypePublic,
 	"PRIVATE": OceInstanceInstanceAccessTypePrivate,
+}
+
+var mappingOceInstanceInstanceAccessTypeEnumLowerCase = map[string]OceInstanceInstanceAccessTypeEnum{
+	"public":  OceInstanceInstanceAccessTypePublic,
+	"private": OceInstanceInstanceAccessTypePrivate,
 }
 
 // GetOceInstanceInstanceAccessTypeEnumValues Enumerates the set of values for OceInstanceInstanceAccessTypeEnum
@@ -243,12 +248,7 @@ func GetOceInstanceInstanceAccessTypeEnumStringValues() []string {
 
 // GetMappingOceInstanceInstanceAccessTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOceInstanceInstanceAccessTypeEnum(val string) (OceInstanceInstanceAccessTypeEnum, bool) {
-	mappingOceInstanceInstanceAccessTypeEnumIgnoreCase := make(map[string]OceInstanceInstanceAccessTypeEnum)
-	for k, v := range mappingOceInstanceInstanceAccessTypeEnum {
-		mappingOceInstanceInstanceAccessTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOceInstanceInstanceAccessTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOceInstanceInstanceAccessTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -274,6 +274,15 @@ var mappingOceInstanceLifecycleStateEnum = map[string]OceInstanceLifecycleStateE
 	"FAILED":   OceInstanceLifecycleStateFailed,
 }
 
+var mappingOceInstanceLifecycleStateEnumLowerCase = map[string]OceInstanceLifecycleStateEnum{
+	"creating": OceInstanceLifecycleStateCreating,
+	"updating": OceInstanceLifecycleStateUpdating,
+	"active":   OceInstanceLifecycleStateActive,
+	"deleting": OceInstanceLifecycleStateDeleting,
+	"deleted":  OceInstanceLifecycleStateDeleted,
+	"failed":   OceInstanceLifecycleStateFailed,
+}
+
 // GetOceInstanceLifecycleStateEnumValues Enumerates the set of values for OceInstanceLifecycleStateEnum
 func GetOceInstanceLifecycleStateEnumValues() []OceInstanceLifecycleStateEnum {
 	values := make([]OceInstanceLifecycleStateEnum, 0)
@@ -297,11 +306,6 @@ func GetOceInstanceLifecycleStateEnumStringValues() []string {
 
 // GetMappingOceInstanceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOceInstanceLifecycleStateEnum(val string) (OceInstanceLifecycleStateEnum, bool) {
-	mappingOceInstanceLifecycleStateEnumIgnoreCase := make(map[string]OceInstanceLifecycleStateEnum)
-	for k, v := range mappingOceInstanceLifecycleStateEnum {
-		mappingOceInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOceInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOceInstanceLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

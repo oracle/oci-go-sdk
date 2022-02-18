@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,12 @@ var mappingThreatFeedActionEnum = map[string]ThreatFeedActionEnum{
 	"BLOCK":  ThreatFeedActionBlock,
 }
 
+var mappingThreatFeedActionEnumLowerCase = map[string]ThreatFeedActionEnum{
+	"off":    ThreatFeedActionOff,
+	"detect": ThreatFeedActionDetect,
+	"block":  ThreatFeedActionBlock,
+}
+
 // GetThreatFeedActionEnumValues Enumerates the set of values for ThreatFeedActionEnum
 func GetThreatFeedActionEnumValues() []ThreatFeedActionEnum {
 	values := make([]ThreatFeedActionEnum, 0)
@@ -86,11 +92,6 @@ func GetThreatFeedActionEnumStringValues() []string {
 
 // GetMappingThreatFeedActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingThreatFeedActionEnum(val string) (ThreatFeedActionEnum, bool) {
-	mappingThreatFeedActionEnumIgnoreCase := make(map[string]ThreatFeedActionEnum)
-	for k, v := range mappingThreatFeedActionEnum {
-		mappingThreatFeedActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingThreatFeedActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingThreatFeedActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

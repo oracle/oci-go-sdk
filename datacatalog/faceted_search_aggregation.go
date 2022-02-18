@@ -12,7 +12,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -67,6 +67,11 @@ var mappingFacetedSearchAggregationPropertyTypeEnum = map[string]FacetedSearchAg
 	"DEFAULT_PROPERTY": FacetedSearchAggregationPropertyTypeDefaultProperty,
 }
 
+var mappingFacetedSearchAggregationPropertyTypeEnumLowerCase = map[string]FacetedSearchAggregationPropertyTypeEnum{
+	"custom_property":  FacetedSearchAggregationPropertyTypeCustomProperty,
+	"default_property": FacetedSearchAggregationPropertyTypeDefaultProperty,
+}
+
 // GetFacetedSearchAggregationPropertyTypeEnumValues Enumerates the set of values for FacetedSearchAggregationPropertyTypeEnum
 func GetFacetedSearchAggregationPropertyTypeEnumValues() []FacetedSearchAggregationPropertyTypeEnum {
 	values := make([]FacetedSearchAggregationPropertyTypeEnum, 0)
@@ -86,11 +91,6 @@ func GetFacetedSearchAggregationPropertyTypeEnumStringValues() []string {
 
 // GetMappingFacetedSearchAggregationPropertyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFacetedSearchAggregationPropertyTypeEnum(val string) (FacetedSearchAggregationPropertyTypeEnum, bool) {
-	mappingFacetedSearchAggregationPropertyTypeEnumIgnoreCase := make(map[string]FacetedSearchAggregationPropertyTypeEnum)
-	for k, v := range mappingFacetedSearchAggregationPropertyTypeEnum {
-		mappingFacetedSearchAggregationPropertyTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFacetedSearchAggregationPropertyTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFacetedSearchAggregationPropertyTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

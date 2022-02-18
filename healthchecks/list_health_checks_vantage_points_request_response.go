@@ -6,7 +6,7 @@ package healthchecks
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -134,6 +134,11 @@ var mappingListHealthChecksVantagePointsSortByEnum = map[string]ListHealthChecks
 	"displayName": ListHealthChecksVantagePointsSortByDisplayname,
 }
 
+var mappingListHealthChecksVantagePointsSortByEnumLowerCase = map[string]ListHealthChecksVantagePointsSortByEnum{
+	"name":        ListHealthChecksVantagePointsSortByName,
+	"displayname": ListHealthChecksVantagePointsSortByDisplayname,
+}
+
 // GetListHealthChecksVantagePointsSortByEnumValues Enumerates the set of values for ListHealthChecksVantagePointsSortByEnum
 func GetListHealthChecksVantagePointsSortByEnumValues() []ListHealthChecksVantagePointsSortByEnum {
 	values := make([]ListHealthChecksVantagePointsSortByEnum, 0)
@@ -153,12 +158,7 @@ func GetListHealthChecksVantagePointsSortByEnumStringValues() []string {
 
 // GetMappingListHealthChecksVantagePointsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHealthChecksVantagePointsSortByEnum(val string) (ListHealthChecksVantagePointsSortByEnum, bool) {
-	mappingListHealthChecksVantagePointsSortByEnumIgnoreCase := make(map[string]ListHealthChecksVantagePointsSortByEnum)
-	for k, v := range mappingListHealthChecksVantagePointsSortByEnum {
-		mappingListHealthChecksVantagePointsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHealthChecksVantagePointsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHealthChecksVantagePointsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -174,6 +174,11 @@ const (
 var mappingListHealthChecksVantagePointsSortOrderEnum = map[string]ListHealthChecksVantagePointsSortOrderEnum{
 	"ASC":  ListHealthChecksVantagePointsSortOrderAsc,
 	"DESC": ListHealthChecksVantagePointsSortOrderDesc,
+}
+
+var mappingListHealthChecksVantagePointsSortOrderEnumLowerCase = map[string]ListHealthChecksVantagePointsSortOrderEnum{
+	"asc":  ListHealthChecksVantagePointsSortOrderAsc,
+	"desc": ListHealthChecksVantagePointsSortOrderDesc,
 }
 
 // GetListHealthChecksVantagePointsSortOrderEnumValues Enumerates the set of values for ListHealthChecksVantagePointsSortOrderEnum
@@ -195,11 +200,6 @@ func GetListHealthChecksVantagePointsSortOrderEnumStringValues() []string {
 
 // GetMappingListHealthChecksVantagePointsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHealthChecksVantagePointsSortOrderEnum(val string) (ListHealthChecksVantagePointsSortOrderEnum, bool) {
-	mappingListHealthChecksVantagePointsSortOrderEnumIgnoreCase := make(map[string]ListHealthChecksVantagePointsSortOrderEnum)
-	for k, v := range mappingListHealthChecksVantagePointsSortOrderEnum {
-		mappingListHealthChecksVantagePointsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHealthChecksVantagePointsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHealthChecksVantagePointsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

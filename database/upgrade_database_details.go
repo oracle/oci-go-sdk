@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,12 @@ var mappingUpgradeDatabaseDetailsActionEnum = map[string]UpgradeDatabaseDetailsA
 	"ROLLBACK": UpgradeDatabaseDetailsActionRollback,
 }
 
+var mappingUpgradeDatabaseDetailsActionEnumLowerCase = map[string]UpgradeDatabaseDetailsActionEnum{
+	"precheck": UpgradeDatabaseDetailsActionPrecheck,
+	"upgrade":  UpgradeDatabaseDetailsActionUpgrade,
+	"rollback": UpgradeDatabaseDetailsActionRollback,
+}
+
 // GetUpgradeDatabaseDetailsActionEnumValues Enumerates the set of values for UpgradeDatabaseDetailsActionEnum
 func GetUpgradeDatabaseDetailsActionEnumValues() []UpgradeDatabaseDetailsActionEnum {
 	values := make([]UpgradeDatabaseDetailsActionEnum, 0)
@@ -107,11 +113,6 @@ func GetUpgradeDatabaseDetailsActionEnumStringValues() []string {
 
 // GetMappingUpgradeDatabaseDetailsActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpgradeDatabaseDetailsActionEnum(val string) (UpgradeDatabaseDetailsActionEnum, bool) {
-	mappingUpgradeDatabaseDetailsActionEnumIgnoreCase := make(map[string]UpgradeDatabaseDetailsActionEnum)
-	for k, v := range mappingUpgradeDatabaseDetailsActionEnum {
-		mappingUpgradeDatabaseDetailsActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpgradeDatabaseDetailsActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpgradeDatabaseDetailsActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

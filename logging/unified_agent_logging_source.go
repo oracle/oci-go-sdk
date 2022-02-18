@@ -12,7 +12,7 @@ package logging
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -103,6 +103,11 @@ var mappingUnifiedAgentLoggingSourceSourceTypeEnum = map[string]UnifiedAgentLogg
 	"WINDOWS_EVENT_LOG": UnifiedAgentLoggingSourceSourceTypeWindowsEventLog,
 }
 
+var mappingUnifiedAgentLoggingSourceSourceTypeEnumLowerCase = map[string]UnifiedAgentLoggingSourceSourceTypeEnum{
+	"log_tail":          UnifiedAgentLoggingSourceSourceTypeLogTail,
+	"windows_event_log": UnifiedAgentLoggingSourceSourceTypeWindowsEventLog,
+}
+
 // GetUnifiedAgentLoggingSourceSourceTypeEnumValues Enumerates the set of values for UnifiedAgentLoggingSourceSourceTypeEnum
 func GetUnifiedAgentLoggingSourceSourceTypeEnumValues() []UnifiedAgentLoggingSourceSourceTypeEnum {
 	values := make([]UnifiedAgentLoggingSourceSourceTypeEnum, 0)
@@ -122,11 +127,6 @@ func GetUnifiedAgentLoggingSourceSourceTypeEnumStringValues() []string {
 
 // GetMappingUnifiedAgentLoggingSourceSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUnifiedAgentLoggingSourceSourceTypeEnum(val string) (UnifiedAgentLoggingSourceSourceTypeEnum, bool) {
-	mappingUnifiedAgentLoggingSourceSourceTypeEnumIgnoreCase := make(map[string]UnifiedAgentLoggingSourceSourceTypeEnum)
-	for k, v := range mappingUnifiedAgentLoggingSourceSourceTypeEnum {
-		mappingUnifiedAgentLoggingSourceSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUnifiedAgentLoggingSourceSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUnifiedAgentLoggingSourceSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

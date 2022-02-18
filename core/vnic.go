@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -165,6 +165,13 @@ var mappingVnicLifecycleStateEnum = map[string]VnicLifecycleStateEnum{
 	"TERMINATED":   VnicLifecycleStateTerminated,
 }
 
+var mappingVnicLifecycleStateEnumLowerCase = map[string]VnicLifecycleStateEnum{
+	"provisioning": VnicLifecycleStateProvisioning,
+	"available":    VnicLifecycleStateAvailable,
+	"terminating":  VnicLifecycleStateTerminating,
+	"terminated":   VnicLifecycleStateTerminated,
+}
+
 // GetVnicLifecycleStateEnumValues Enumerates the set of values for VnicLifecycleStateEnum
 func GetVnicLifecycleStateEnumValues() []VnicLifecycleStateEnum {
 	values := make([]VnicLifecycleStateEnum, 0)
@@ -186,11 +193,6 @@ func GetVnicLifecycleStateEnumStringValues() []string {
 
 // GetMappingVnicLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVnicLifecycleStateEnum(val string) (VnicLifecycleStateEnum, bool) {
-	mappingVnicLifecycleStateEnumIgnoreCase := make(map[string]VnicLifecycleStateEnum)
-	for k, v := range mappingVnicLifecycleStateEnum {
-		mappingVnicLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVnicLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVnicLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

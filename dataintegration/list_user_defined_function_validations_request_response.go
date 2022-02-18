@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,11 @@ var mappingListUserDefinedFunctionValidationsSortByEnum = map[string]ListUserDef
 	"DISPLAY_NAME": ListUserDefinedFunctionValidationsSortByDisplayName,
 }
 
+var mappingListUserDefinedFunctionValidationsSortByEnumLowerCase = map[string]ListUserDefinedFunctionValidationsSortByEnum{
+	"time_created": ListUserDefinedFunctionValidationsSortByTimeCreated,
+	"display_name": ListUserDefinedFunctionValidationsSortByDisplayName,
+}
+
 // GetListUserDefinedFunctionValidationsSortByEnumValues Enumerates the set of values for ListUserDefinedFunctionValidationsSortByEnum
 func GetListUserDefinedFunctionValidationsSortByEnumValues() []ListUserDefinedFunctionValidationsSortByEnum {
 	values := make([]ListUserDefinedFunctionValidationsSortByEnum, 0)
@@ -163,12 +168,7 @@ func GetListUserDefinedFunctionValidationsSortByEnumStringValues() []string {
 
 // GetMappingListUserDefinedFunctionValidationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUserDefinedFunctionValidationsSortByEnum(val string) (ListUserDefinedFunctionValidationsSortByEnum, bool) {
-	mappingListUserDefinedFunctionValidationsSortByEnumIgnoreCase := make(map[string]ListUserDefinedFunctionValidationsSortByEnum)
-	for k, v := range mappingListUserDefinedFunctionValidationsSortByEnum {
-		mappingListUserDefinedFunctionValidationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUserDefinedFunctionValidationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUserDefinedFunctionValidationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -184,6 +184,11 @@ const (
 var mappingListUserDefinedFunctionValidationsSortOrderEnum = map[string]ListUserDefinedFunctionValidationsSortOrderEnum{
 	"ASC":  ListUserDefinedFunctionValidationsSortOrderAsc,
 	"DESC": ListUserDefinedFunctionValidationsSortOrderDesc,
+}
+
+var mappingListUserDefinedFunctionValidationsSortOrderEnumLowerCase = map[string]ListUserDefinedFunctionValidationsSortOrderEnum{
+	"asc":  ListUserDefinedFunctionValidationsSortOrderAsc,
+	"desc": ListUserDefinedFunctionValidationsSortOrderDesc,
 }
 
 // GetListUserDefinedFunctionValidationsSortOrderEnumValues Enumerates the set of values for ListUserDefinedFunctionValidationsSortOrderEnum
@@ -205,11 +210,6 @@ func GetListUserDefinedFunctionValidationsSortOrderEnumStringValues() []string {
 
 // GetMappingListUserDefinedFunctionValidationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUserDefinedFunctionValidationsSortOrderEnum(val string) (ListUserDefinedFunctionValidationsSortOrderEnum, bool) {
-	mappingListUserDefinedFunctionValidationsSortOrderEnumIgnoreCase := make(map[string]ListUserDefinedFunctionValidationsSortOrderEnum)
-	for k, v := range mappingListUserDefinedFunctionValidationsSortOrderEnum {
-		mappingListUserDefinedFunctionValidationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUserDefinedFunctionValidationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUserDefinedFunctionValidationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -15,7 +15,7 @@ package resourcemanager
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -90,6 +90,10 @@ var mappingTemplateConfigSourceTemplateConfigSourceTypeEnum = map[string]Templat
 	"ZIP_UPLOAD": TemplateConfigSourceTemplateConfigSourceTypeZipUpload,
 }
 
+var mappingTemplateConfigSourceTemplateConfigSourceTypeEnumLowerCase = map[string]TemplateConfigSourceTemplateConfigSourceTypeEnum{
+	"zip_upload": TemplateConfigSourceTemplateConfigSourceTypeZipUpload,
+}
+
 // GetTemplateConfigSourceTemplateConfigSourceTypeEnumValues Enumerates the set of values for TemplateConfigSourceTemplateConfigSourceTypeEnum
 func GetTemplateConfigSourceTemplateConfigSourceTypeEnumValues() []TemplateConfigSourceTemplateConfigSourceTypeEnum {
 	values := make([]TemplateConfigSourceTemplateConfigSourceTypeEnum, 0)
@@ -108,11 +112,6 @@ func GetTemplateConfigSourceTemplateConfigSourceTypeEnumStringValues() []string 
 
 // GetMappingTemplateConfigSourceTemplateConfigSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTemplateConfigSourceTemplateConfigSourceTypeEnum(val string) (TemplateConfigSourceTemplateConfigSourceTypeEnum, bool) {
-	mappingTemplateConfigSourceTemplateConfigSourceTypeEnumIgnoreCase := make(map[string]TemplateConfigSourceTemplateConfigSourceTypeEnum)
-	for k, v := range mappingTemplateConfigSourceTemplateConfigSourceTypeEnum {
-		mappingTemplateConfigSourceTemplateConfigSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTemplateConfigSourceTemplateConfigSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTemplateConfigSourceTemplateConfigSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

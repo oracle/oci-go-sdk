@@ -15,26 +15,26 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
-// PhaseOneConfigDetails Phase 1 Configuration Details
+// PhaseOneConfigDetails Configuration details for IKE phase one (ISAKMP) configuration parameters.
 type PhaseOneConfigDetails struct {
 
-	// Indicates whether custom phase one configuration is enabled.
+	// Indicates whether custom configuration is enabled for phase one options.
 	IsCustomPhaseOneConfig *bool `mandatory:"false" json:"isCustomPhaseOneConfig"`
 
-	// Phase one authentication algorithm supported during tunnel negotiation.
+	// The custom authentication algorithm proposed during phase one tunnel negotiation.
 	AuthenticationAlgorithm PhaseOneConfigDetailsAuthenticationAlgorithmEnum `mandatory:"false" json:"authenticationAlgorithm,omitempty"`
 
-	// Phase one encryption algorithm supported during tunnel negotiation.
+	// The custom encryption algorithm proposed during phase one tunnel negotiation.
 	EncryptionAlgorithm PhaseOneConfigDetailsEncryptionAlgorithmEnum `mandatory:"false" json:"encryptionAlgorithm,omitempty"`
 
-	// Phase One Diffie Hellman group supported during tunnel negotiation.
+	// The custom Diffie-Hellman group proposed during phase one tunnel negotiation.
 	DiffieHelmanGroup PhaseOneConfigDetailsDiffieHelmanGroupEnum `mandatory:"false" json:"diffieHelmanGroup,omitempty"`
 
-	// IKE session key lifetime in seconds for IPSec phase one.
+	// Internet key association (IKE) session key lifetime in seconds for IPSec phase one. The default is 28800 which is equivalent to 8 hours.
 	LifetimeInSeconds *int `mandatory:"false" json:"lifetimeInSeconds"`
 }
 
@@ -79,6 +79,12 @@ var mappingPhaseOneConfigDetailsAuthenticationAlgorithmEnum = map[string]PhaseOn
 	"SHA1_96":  PhaseOneConfigDetailsAuthenticationAlgorithmSha196,
 }
 
+var mappingPhaseOneConfigDetailsAuthenticationAlgorithmEnumLowerCase = map[string]PhaseOneConfigDetailsAuthenticationAlgorithmEnum{
+	"sha2_384": PhaseOneConfigDetailsAuthenticationAlgorithmSha2384,
+	"sha2_256": PhaseOneConfigDetailsAuthenticationAlgorithmSha2256,
+	"sha1_96":  PhaseOneConfigDetailsAuthenticationAlgorithmSha196,
+}
+
 // GetPhaseOneConfigDetailsAuthenticationAlgorithmEnumValues Enumerates the set of values for PhaseOneConfigDetailsAuthenticationAlgorithmEnum
 func GetPhaseOneConfigDetailsAuthenticationAlgorithmEnumValues() []PhaseOneConfigDetailsAuthenticationAlgorithmEnum {
 	values := make([]PhaseOneConfigDetailsAuthenticationAlgorithmEnum, 0)
@@ -99,12 +105,7 @@ func GetPhaseOneConfigDetailsAuthenticationAlgorithmEnumStringValues() []string 
 
 // GetMappingPhaseOneConfigDetailsAuthenticationAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPhaseOneConfigDetailsAuthenticationAlgorithmEnum(val string) (PhaseOneConfigDetailsAuthenticationAlgorithmEnum, bool) {
-	mappingPhaseOneConfigDetailsAuthenticationAlgorithmEnumIgnoreCase := make(map[string]PhaseOneConfigDetailsAuthenticationAlgorithmEnum)
-	for k, v := range mappingPhaseOneConfigDetailsAuthenticationAlgorithmEnum {
-		mappingPhaseOneConfigDetailsAuthenticationAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPhaseOneConfigDetailsAuthenticationAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPhaseOneConfigDetailsAuthenticationAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -122,6 +123,12 @@ var mappingPhaseOneConfigDetailsEncryptionAlgorithmEnum = map[string]PhaseOneCon
 	"AES_256_CBC": PhaseOneConfigDetailsEncryptionAlgorithm256Cbc,
 	"AES_192_CBC": PhaseOneConfigDetailsEncryptionAlgorithm192Cbc,
 	"AES_128_CBC": PhaseOneConfigDetailsEncryptionAlgorithm128Cbc,
+}
+
+var mappingPhaseOneConfigDetailsEncryptionAlgorithmEnumLowerCase = map[string]PhaseOneConfigDetailsEncryptionAlgorithmEnum{
+	"aes_256_cbc": PhaseOneConfigDetailsEncryptionAlgorithm256Cbc,
+	"aes_192_cbc": PhaseOneConfigDetailsEncryptionAlgorithm192Cbc,
+	"aes_128_cbc": PhaseOneConfigDetailsEncryptionAlgorithm128Cbc,
 }
 
 // GetPhaseOneConfigDetailsEncryptionAlgorithmEnumValues Enumerates the set of values for PhaseOneConfigDetailsEncryptionAlgorithmEnum
@@ -144,12 +151,7 @@ func GetPhaseOneConfigDetailsEncryptionAlgorithmEnumStringValues() []string {
 
 // GetMappingPhaseOneConfigDetailsEncryptionAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPhaseOneConfigDetailsEncryptionAlgorithmEnum(val string) (PhaseOneConfigDetailsEncryptionAlgorithmEnum, bool) {
-	mappingPhaseOneConfigDetailsEncryptionAlgorithmEnumIgnoreCase := make(map[string]PhaseOneConfigDetailsEncryptionAlgorithmEnum)
-	for k, v := range mappingPhaseOneConfigDetailsEncryptionAlgorithmEnum {
-		mappingPhaseOneConfigDetailsEncryptionAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPhaseOneConfigDetailsEncryptionAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPhaseOneConfigDetailsEncryptionAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -175,6 +177,15 @@ var mappingPhaseOneConfigDetailsDiffieHelmanGroupEnum = map[string]PhaseOneConfi
 	"GROUP24": PhaseOneConfigDetailsDiffieHelmanGroupGroup24,
 }
 
+var mappingPhaseOneConfigDetailsDiffieHelmanGroupEnumLowerCase = map[string]PhaseOneConfigDetailsDiffieHelmanGroupEnum{
+	"group2":  PhaseOneConfigDetailsDiffieHelmanGroupGroup2,
+	"group5":  PhaseOneConfigDetailsDiffieHelmanGroupGroup5,
+	"group14": PhaseOneConfigDetailsDiffieHelmanGroupGroup14,
+	"group19": PhaseOneConfigDetailsDiffieHelmanGroupGroup19,
+	"group20": PhaseOneConfigDetailsDiffieHelmanGroupGroup20,
+	"group24": PhaseOneConfigDetailsDiffieHelmanGroupGroup24,
+}
+
 // GetPhaseOneConfigDetailsDiffieHelmanGroupEnumValues Enumerates the set of values for PhaseOneConfigDetailsDiffieHelmanGroupEnum
 func GetPhaseOneConfigDetailsDiffieHelmanGroupEnumValues() []PhaseOneConfigDetailsDiffieHelmanGroupEnum {
 	values := make([]PhaseOneConfigDetailsDiffieHelmanGroupEnum, 0)
@@ -198,11 +209,6 @@ func GetPhaseOneConfigDetailsDiffieHelmanGroupEnumStringValues() []string {
 
 // GetMappingPhaseOneConfigDetailsDiffieHelmanGroupEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPhaseOneConfigDetailsDiffieHelmanGroupEnum(val string) (PhaseOneConfigDetailsDiffieHelmanGroupEnum, bool) {
-	mappingPhaseOneConfigDetailsDiffieHelmanGroupEnumIgnoreCase := make(map[string]PhaseOneConfigDetailsDiffieHelmanGroupEnum)
-	for k, v := range mappingPhaseOneConfigDetailsDiffieHelmanGroupEnum {
-		mappingPhaseOneConfigDetailsDiffieHelmanGroupEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPhaseOneConfigDetailsDiffieHelmanGroupEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPhaseOneConfigDetailsDiffieHelmanGroupEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

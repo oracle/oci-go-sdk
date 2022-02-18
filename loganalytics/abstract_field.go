@@ -12,7 +12,7 @@ package loganalytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -209,6 +209,13 @@ var mappingAbstractFieldNameEnum = map[string]AbstractFieldNameEnum{
 	"SORT":     AbstractFieldNameSort,
 }
 
+var mappingAbstractFieldNameEnumLowerCase = map[string]AbstractFieldNameEnum{
+	"field":    AbstractFieldNameField,
+	"fields":   AbstractFieldNameFields,
+	"function": AbstractFieldNameFunction,
+	"sort":     AbstractFieldNameSort,
+}
+
 // GetAbstractFieldNameEnumValues Enumerates the set of values for AbstractFieldNameEnum
 func GetAbstractFieldNameEnumValues() []AbstractFieldNameEnum {
 	values := make([]AbstractFieldNameEnum, 0)
@@ -230,11 +237,6 @@ func GetAbstractFieldNameEnumStringValues() []string {
 
 // GetMappingAbstractFieldNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAbstractFieldNameEnum(val string) (AbstractFieldNameEnum, bool) {
-	mappingAbstractFieldNameEnumIgnoreCase := make(map[string]AbstractFieldNameEnum)
-	for k, v := range mappingAbstractFieldNameEnum {
-		mappingAbstractFieldNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAbstractFieldNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAbstractFieldNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -97,6 +97,11 @@ var mappingEgressSecurityRuleDestinationTypeEnum = map[string]EgressSecurityRule
 	"SERVICE_CIDR_BLOCK": EgressSecurityRuleDestinationTypeServiceCidrBlock,
 }
 
+var mappingEgressSecurityRuleDestinationTypeEnumLowerCase = map[string]EgressSecurityRuleDestinationTypeEnum{
+	"cidr_block":         EgressSecurityRuleDestinationTypeCidrBlock,
+	"service_cidr_block": EgressSecurityRuleDestinationTypeServiceCidrBlock,
+}
+
 // GetEgressSecurityRuleDestinationTypeEnumValues Enumerates the set of values for EgressSecurityRuleDestinationTypeEnum
 func GetEgressSecurityRuleDestinationTypeEnumValues() []EgressSecurityRuleDestinationTypeEnum {
 	values := make([]EgressSecurityRuleDestinationTypeEnum, 0)
@@ -116,11 +121,6 @@ func GetEgressSecurityRuleDestinationTypeEnumStringValues() []string {
 
 // GetMappingEgressSecurityRuleDestinationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEgressSecurityRuleDestinationTypeEnum(val string) (EgressSecurityRuleDestinationTypeEnum, bool) {
-	mappingEgressSecurityRuleDestinationTypeEnumIgnoreCase := make(map[string]EgressSecurityRuleDestinationTypeEnum)
-	for k, v := range mappingEgressSecurityRuleDestinationTypeEnum {
-		mappingEgressSecurityRuleDestinationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEgressSecurityRuleDestinationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEgressSecurityRuleDestinationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

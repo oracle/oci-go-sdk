@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -134,6 +134,13 @@ var mappingCreateImageDetailsLaunchModeEnum = map[string]CreateImageDetailsLaunc
 	"CUSTOM":          CreateImageDetailsLaunchModeCustom,
 }
 
+var mappingCreateImageDetailsLaunchModeEnumLowerCase = map[string]CreateImageDetailsLaunchModeEnum{
+	"native":          CreateImageDetailsLaunchModeNative,
+	"emulated":        CreateImageDetailsLaunchModeEmulated,
+	"paravirtualized": CreateImageDetailsLaunchModeParavirtualized,
+	"custom":          CreateImageDetailsLaunchModeCustom,
+}
+
 // GetCreateImageDetailsLaunchModeEnumValues Enumerates the set of values for CreateImageDetailsLaunchModeEnum
 func GetCreateImageDetailsLaunchModeEnumValues() []CreateImageDetailsLaunchModeEnum {
 	values := make([]CreateImageDetailsLaunchModeEnum, 0)
@@ -155,11 +162,6 @@ func GetCreateImageDetailsLaunchModeEnumStringValues() []string {
 
 // GetMappingCreateImageDetailsLaunchModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateImageDetailsLaunchModeEnum(val string) (CreateImageDetailsLaunchModeEnum, bool) {
-	mappingCreateImageDetailsLaunchModeEnumIgnoreCase := make(map[string]CreateImageDetailsLaunchModeEnum)
-	for k, v := range mappingCreateImageDetailsLaunchModeEnum {
-		mappingCreateImageDetailsLaunchModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateImageDetailsLaunchModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateImageDetailsLaunchModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

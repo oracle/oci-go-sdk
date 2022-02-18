@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -129,6 +129,30 @@ var mappingAccessRuleCriteriaConditionEnum = map[string]AccessRuleCriteriaCondit
 	"USER_AGENT_IS_NOT":          AccessRuleCriteriaConditionUserAgentIsNot,
 }
 
+var mappingAccessRuleCriteriaConditionEnumLowerCase = map[string]AccessRuleCriteriaConditionEnum{
+	"url_is":                     AccessRuleCriteriaConditionUrlIs,
+	"url_is_not":                 AccessRuleCriteriaConditionUrlIsNot,
+	"url_starts_with":            AccessRuleCriteriaConditionUrlStartsWith,
+	"url_part_ends_with":         AccessRuleCriteriaConditionUrlPartEndsWith,
+	"url_part_contains":          AccessRuleCriteriaConditionUrlPartContains,
+	"url_regex":                  AccessRuleCriteriaConditionUrlRegex,
+	"url_does_not_match_regex":   AccessRuleCriteriaConditionUrlDoesNotMatchRegex,
+	"url_does_not_start_with":    AccessRuleCriteriaConditionUrlDoesNotStartWith,
+	"url_part_does_not_contain":  AccessRuleCriteriaConditionUrlPartDoesNotContain,
+	"url_part_does_not_end_with": AccessRuleCriteriaConditionUrlPartDoesNotEndWith,
+	"ip_is":                      AccessRuleCriteriaConditionIpIs,
+	"ip_is_not":                  AccessRuleCriteriaConditionIpIsNot,
+	"ip_in_list":                 AccessRuleCriteriaConditionIpInList,
+	"ip_not_in_list":             AccessRuleCriteriaConditionIpNotInList,
+	"http_header_contains":       AccessRuleCriteriaConditionHttpHeaderContains,
+	"http_method_is":             AccessRuleCriteriaConditionHttpMethodIs,
+	"http_method_is_not":         AccessRuleCriteriaConditionHttpMethodIsNot,
+	"country_is":                 AccessRuleCriteriaConditionCountryIs,
+	"country_is_not":             AccessRuleCriteriaConditionCountryIsNot,
+	"user_agent_is":              AccessRuleCriteriaConditionUserAgentIs,
+	"user_agent_is_not":          AccessRuleCriteriaConditionUserAgentIsNot,
+}
+
 // GetAccessRuleCriteriaConditionEnumValues Enumerates the set of values for AccessRuleCriteriaConditionEnum
 func GetAccessRuleCriteriaConditionEnumValues() []AccessRuleCriteriaConditionEnum {
 	values := make([]AccessRuleCriteriaConditionEnum, 0)
@@ -167,11 +191,6 @@ func GetAccessRuleCriteriaConditionEnumStringValues() []string {
 
 // GetMappingAccessRuleCriteriaConditionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAccessRuleCriteriaConditionEnum(val string) (AccessRuleCriteriaConditionEnum, bool) {
-	mappingAccessRuleCriteriaConditionEnumIgnoreCase := make(map[string]AccessRuleCriteriaConditionEnum)
-	for k, v := range mappingAccessRuleCriteriaConditionEnum {
-		mappingAccessRuleCriteriaConditionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAccessRuleCriteriaConditionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAccessRuleCriteriaConditionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

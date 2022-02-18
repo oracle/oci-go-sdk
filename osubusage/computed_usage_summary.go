@@ -11,7 +11,7 @@ package osubusage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -151,6 +151,24 @@ var mappingComputedUsageSummaryTypeEnum = map[string]ComputedUsageSummaryTypeEnu
 	"DELAYED_USAGE_POST_TERMINATION":    ComputedUsageSummaryTypeDelayedUsagePostTermination,
 }
 
+var mappingComputedUsageSummaryTypeEnumLowerCase = map[string]ComputedUsageSummaryTypeEnum{
+	"promotion":                         ComputedUsageSummaryTypePromotion,
+	"do_not_bill":                       ComputedUsageSummaryTypeDoNotBill,
+	"usage":                             ComputedUsageSummaryTypeUsage,
+	"commit":                            ComputedUsageSummaryTypeCommit,
+	"overage":                           ComputedUsageSummaryTypeOverage,
+	"pay_as_you_go":                     ComputedUsageSummaryTypePayAsYouGo,
+	"monthly_minimum":                   ComputedUsageSummaryTypeMonthlyMinimum,
+	"delayed_usage_invoice_timing":      ComputedUsageSummaryTypeDelayedUsageInvoiceTiming,
+	"delayed_usage_commitment_exp":      ComputedUsageSummaryTypeDelayedUsageCommitmentExp,
+	"on_account_credit":                 ComputedUsageSummaryTypeOnAccountCredit,
+	"service_credit":                    ComputedUsageSummaryTypeServiceCredit,
+	"commitment_expiration":             ComputedUsageSummaryTypeCommitmentExpiration,
+	"funded_allocation":                 ComputedUsageSummaryTypeFundedAllocation,
+	"donot_bill_usage_post_termination": ComputedUsageSummaryTypeDonotBillUsagePostTermination,
+	"delayed_usage_post_termination":    ComputedUsageSummaryTypeDelayedUsagePostTermination,
+}
+
 // GetComputedUsageSummaryTypeEnumValues Enumerates the set of values for ComputedUsageSummaryTypeEnum
 func GetComputedUsageSummaryTypeEnumValues() []ComputedUsageSummaryTypeEnum {
 	values := make([]ComputedUsageSummaryTypeEnum, 0)
@@ -183,11 +201,6 @@ func GetComputedUsageSummaryTypeEnumStringValues() []string {
 
 // GetMappingComputedUsageSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingComputedUsageSummaryTypeEnum(val string) (ComputedUsageSummaryTypeEnum, bool) {
-	mappingComputedUsageSummaryTypeEnumIgnoreCase := make(map[string]ComputedUsageSummaryTypeEnum)
-	for k, v := range mappingComputedUsageSummaryTypeEnum {
-		mappingComputedUsageSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingComputedUsageSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingComputedUsageSummaryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package blockchain
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -68,6 +68,12 @@ var mappingOsnLifecycleStateEnum = map[string]OsnLifecycleStateEnum{
 	"FAILED":   OsnLifecycleStateFailed,
 }
 
+var mappingOsnLifecycleStateEnumLowerCase = map[string]OsnLifecycleStateEnum{
+	"active":   OsnLifecycleStateActive,
+	"inactive": OsnLifecycleStateInactive,
+	"failed":   OsnLifecycleStateFailed,
+}
+
 // GetOsnLifecycleStateEnumValues Enumerates the set of values for OsnLifecycleStateEnum
 func GetOsnLifecycleStateEnumValues() []OsnLifecycleStateEnum {
 	values := make([]OsnLifecycleStateEnum, 0)
@@ -88,11 +94,6 @@ func GetOsnLifecycleStateEnumStringValues() []string {
 
 // GetMappingOsnLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOsnLifecycleStateEnum(val string) (OsnLifecycleStateEnum, bool) {
-	mappingOsnLifecycleStateEnumIgnoreCase := make(map[string]OsnLifecycleStateEnum)
-	for k, v := range mappingOsnLifecycleStateEnum {
-		mappingOsnLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOsnLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOsnLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

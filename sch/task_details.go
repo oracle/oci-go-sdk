@@ -14,7 +14,7 @@ package sch
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -100,6 +100,11 @@ var mappingTaskDetailsKindEnum = map[string]TaskDetailsKindEnum{
 	"logRule":  TaskDetailsKindLogrule,
 }
 
+var mappingTaskDetailsKindEnumLowerCase = map[string]TaskDetailsKindEnum{
+	"function": TaskDetailsKindFunction,
+	"logrule":  TaskDetailsKindLogrule,
+}
+
 // GetTaskDetailsKindEnumValues Enumerates the set of values for TaskDetailsKindEnum
 func GetTaskDetailsKindEnumValues() []TaskDetailsKindEnum {
 	values := make([]TaskDetailsKindEnum, 0)
@@ -119,11 +124,6 @@ func GetTaskDetailsKindEnumStringValues() []string {
 
 // GetMappingTaskDetailsKindEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskDetailsKindEnum(val string) (TaskDetailsKindEnum, bool) {
-	mappingTaskDetailsKindEnumIgnoreCase := make(map[string]TaskDetailsKindEnum)
-	for k, v := range mappingTaskDetailsKindEnum {
-		mappingTaskDetailsKindEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskDetailsKindEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskDetailsKindEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

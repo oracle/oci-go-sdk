@@ -11,7 +11,7 @@ package limits
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -89,6 +89,10 @@ var mappingQuotaLifecycleStateEnum = map[string]QuotaLifecycleStateEnum{
 	"ACTIVE": QuotaLifecycleStateActive,
 }
 
+var mappingQuotaLifecycleStateEnumLowerCase = map[string]QuotaLifecycleStateEnum{
+	"active": QuotaLifecycleStateActive,
+}
+
 // GetQuotaLifecycleStateEnumValues Enumerates the set of values for QuotaLifecycleStateEnum
 func GetQuotaLifecycleStateEnumValues() []QuotaLifecycleStateEnum {
 	values := make([]QuotaLifecycleStateEnum, 0)
@@ -107,11 +111,6 @@ func GetQuotaLifecycleStateEnumStringValues() []string {
 
 // GetMappingQuotaLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingQuotaLifecycleStateEnum(val string) (QuotaLifecycleStateEnum, bool) {
-	mappingQuotaLifecycleStateEnumIgnoreCase := make(map[string]QuotaLifecycleStateEnum)
-	for k, v := range mappingQuotaLifecycleStateEnum {
-		mappingQuotaLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingQuotaLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingQuotaLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

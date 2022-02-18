@@ -69,6 +69,32 @@ var mappingErrorCodeEnum = map[string]ErrorCodeEnum{
 	"AUTH_USER_NOT_MATCHING":                ErrorCodeAuthUserNotMatching,
 }
 
+var mappingErrorCodeEnumLowerCase = map[string]ErrorCodeEnum{
+	"content_empty":                         ErrorCodeContentEmpty,
+	"client_exception":                      ErrorCodeClientException,
+	"invalid_format":                        ErrorCodeInvalidFormat,
+	"invalid_json_input":                    ErrorCodeInvalidJsonInput,
+	"ssl_authorization":                     ErrorCodeSslAuthorization,
+	"auth_failed":                           ErrorCodeAuthFailed,
+	"csi_not_authorized":                    ErrorCodeCsiNotAuthorized,
+	"user_policy_not_authorized":            ErrorCodeUserPolicyNotAuthorized,
+	"email_not_verified":                    ErrorCodeEmailNotVerified,
+	"email_not_found":                       ErrorCodeEmailNotFound,
+	"idcs_email_not_valid":                  ErrorCodeIdcsEmailNotValid,
+	"invalid_path":                          ErrorCodeInvalidPath,
+	"method_not_allowed":                    ErrorCodeMethodNotAllowed,
+	"json_processing":                       ErrorCodeJsonProcessing,
+	"generic_exception":                     ErrorCodeGenericException,
+	"external_service_provider_unavailable": ErrorCodeExternalServiceProviderUnavailable,
+	"external_service_provider_timeout":     ErrorCodeExternalServiceProviderTimeout,
+	"too_many_requests":                     ErrorCodeTooManyRequests,
+	"idp_scim_not_setup":                    ErrorCodeIdpScimNotSetup,
+	"incident_not_found":                    ErrorCodeIncidentNotFound,
+	"invalid_user_csi":                      ErrorCodeInvalidUserCsi,
+	"data_already_exists":                   ErrorCodeDataAlreadyExists,
+	"auth_user_not_matching":                ErrorCodeAuthUserNotMatching,
+}
+
 // GetErrorCodeEnumValues Enumerates the set of values for ErrorCodeEnum
 func GetErrorCodeEnumValues() []ErrorCodeEnum {
 	values := make([]ErrorCodeEnum, 0)
@@ -109,11 +135,6 @@ func GetErrorCodeEnumStringValues() []string {
 
 // GetMappingErrorCodeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingErrorCodeEnum(val string) (ErrorCodeEnum, bool) {
-	mappingErrorCodeEnumIgnoreCase := make(map[string]ErrorCodeEnum)
-	for k, v := range mappingErrorCodeEnum {
-		mappingErrorCodeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingErrorCodeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingErrorCodeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

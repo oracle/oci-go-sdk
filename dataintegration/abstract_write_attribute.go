@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -129,6 +129,17 @@ var mappingAbstractWriteAttributeModelTypeEnum = map[string]AbstractWriteAttribu
 	"OBJECT_STORAGE_WRITE_ATTRIBUTE": AbstractWriteAttributeModelTypeObjectStorageWriteAttribute,
 }
 
+var mappingAbstractWriteAttributeModelTypeEnumLowerCase = map[string]AbstractWriteAttributeModelTypeEnum{
+	"oraclewriteattribute":           AbstractWriteAttributeModelTypeOraclewriteattribute,
+	"oracleatpwriteattribute":        AbstractWriteAttributeModelTypeOracleatpwriteattribute,
+	"oracleadwcwriteattribute":       AbstractWriteAttributeModelTypeOracleadwcwriteattribute,
+	"objectstoragewriteattribute":    AbstractWriteAttributeModelTypeObjectstoragewriteattribute,
+	"oracle_write_attribute":         AbstractWriteAttributeModelTypeOracleWriteAttribute,
+	"oracle_atp_write_attribute":     AbstractWriteAttributeModelTypeOracleAtpWriteAttribute,
+	"oracle_adwc_write_attribute":    AbstractWriteAttributeModelTypeOracleAdwcWriteAttribute,
+	"object_storage_write_attribute": AbstractWriteAttributeModelTypeObjectStorageWriteAttribute,
+}
+
 // GetAbstractWriteAttributeModelTypeEnumValues Enumerates the set of values for AbstractWriteAttributeModelTypeEnum
 func GetAbstractWriteAttributeModelTypeEnumValues() []AbstractWriteAttributeModelTypeEnum {
 	values := make([]AbstractWriteAttributeModelTypeEnum, 0)
@@ -154,11 +165,6 @@ func GetAbstractWriteAttributeModelTypeEnumStringValues() []string {
 
 // GetMappingAbstractWriteAttributeModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAbstractWriteAttributeModelTypeEnum(val string) (AbstractWriteAttributeModelTypeEnum, bool) {
-	mappingAbstractWriteAttributeModelTypeEnumIgnoreCase := make(map[string]AbstractWriteAttributeModelTypeEnum)
-	for k, v := range mappingAbstractWriteAttributeModelTypeEnum {
-		mappingAbstractWriteAttributeModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAbstractWriteAttributeModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAbstractWriteAttributeModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

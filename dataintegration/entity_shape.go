@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -101,6 +101,11 @@ var mappingEntityShapeModelTypeEnum = map[string]EntityShapeModelTypeEnum{
 	"SQL_ENTITY":  EntityShapeModelTypeSqlEntity,
 }
 
+var mappingEntityShapeModelTypeEnumLowerCase = map[string]EntityShapeModelTypeEnum{
+	"file_entity": EntityShapeModelTypeFileEntity,
+	"sql_entity":  EntityShapeModelTypeSqlEntity,
+}
+
 // GetEntityShapeModelTypeEnumValues Enumerates the set of values for EntityShapeModelTypeEnum
 func GetEntityShapeModelTypeEnumValues() []EntityShapeModelTypeEnum {
 	values := make([]EntityShapeModelTypeEnum, 0)
@@ -120,11 +125,6 @@ func GetEntityShapeModelTypeEnumStringValues() []string {
 
 // GetMappingEntityShapeModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEntityShapeModelTypeEnum(val string) (EntityShapeModelTypeEnum, bool) {
-	mappingEntityShapeModelTypeEnumIgnoreCase := make(map[string]EntityShapeModelTypeEnum)
-	for k, v := range mappingEntityShapeModelTypeEnum {
-		mappingEntityShapeModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEntityShapeModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEntityShapeModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

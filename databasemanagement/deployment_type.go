@@ -37,6 +37,15 @@ var mappingDeploymentTypeEnum = map[string]DeploymentTypeEnum{
 	"AUTONOMOUS": DeploymentTypeAutonomous,
 }
 
+var mappingDeploymentTypeEnumLowerCase = map[string]DeploymentTypeEnum{
+	"onpremise":  DeploymentTypeOnpremise,
+	"bm":         DeploymentTypeBm,
+	"vm":         DeploymentTypeVm,
+	"exadata":    DeploymentTypeExadata,
+	"exadata_cc": DeploymentTypeExadataCc,
+	"autonomous": DeploymentTypeAutonomous,
+}
+
 // GetDeploymentTypeEnumValues Enumerates the set of values for DeploymentTypeEnum
 func GetDeploymentTypeEnumValues() []DeploymentTypeEnum {
 	values := make([]DeploymentTypeEnum, 0)
@@ -60,11 +69,6 @@ func GetDeploymentTypeEnumStringValues() []string {
 
 // GetMappingDeploymentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeploymentTypeEnum(val string) (DeploymentTypeEnum, bool) {
-	mappingDeploymentTypeEnumIgnoreCase := make(map[string]DeploymentTypeEnum)
-	for k, v := range mappingDeploymentTypeEnum {
-		mappingDeploymentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeploymentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeploymentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

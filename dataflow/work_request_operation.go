@@ -31,6 +31,13 @@ var mappingWorkRequestOperationEnum = map[string]WorkRequestOperationEnum{
 	"MOVE_PRIVATE_ENDPOINT":   WorkRequestOperationMovePrivateEndpoint,
 }
 
+var mappingWorkRequestOperationEnumLowerCase = map[string]WorkRequestOperationEnum{
+	"create_private_endpoint": WorkRequestOperationCreatePrivateEndpoint,
+	"update_private_endpoint": WorkRequestOperationUpdatePrivateEndpoint,
+	"delete_private_endpoint": WorkRequestOperationDeletePrivateEndpoint,
+	"move_private_endpoint":   WorkRequestOperationMovePrivateEndpoint,
+}
+
 // GetWorkRequestOperationEnumValues Enumerates the set of values for WorkRequestOperationEnum
 func GetWorkRequestOperationEnumValues() []WorkRequestOperationEnum {
 	values := make([]WorkRequestOperationEnum, 0)
@@ -52,11 +59,6 @@ func GetWorkRequestOperationEnumStringValues() []string {
 
 // GetMappingWorkRequestOperationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestOperationEnum(val string) (WorkRequestOperationEnum, bool) {
-	mappingWorkRequestOperationEnumIgnoreCase := make(map[string]WorkRequestOperationEnum)
-	for k, v := range mappingWorkRequestOperationEnum {
-		mappingWorkRequestOperationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestOperationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestOperationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

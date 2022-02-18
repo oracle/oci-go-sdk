@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -122,6 +122,22 @@ var mappingKeySummaryLifecycleStateEnum = map[string]KeySummaryLifecycleStateEnu
 	"RESTORING":           KeySummaryLifecycleStateRestoring,
 }
 
+var mappingKeySummaryLifecycleStateEnumLowerCase = map[string]KeySummaryLifecycleStateEnum{
+	"creating":            KeySummaryLifecycleStateCreating,
+	"enabling":            KeySummaryLifecycleStateEnabling,
+	"enabled":             KeySummaryLifecycleStateEnabled,
+	"disabling":           KeySummaryLifecycleStateDisabling,
+	"disabled":            KeySummaryLifecycleStateDisabled,
+	"deleting":            KeySummaryLifecycleStateDeleting,
+	"deleted":             KeySummaryLifecycleStateDeleted,
+	"pending_deletion":    KeySummaryLifecycleStatePendingDeletion,
+	"scheduling_deletion": KeySummaryLifecycleStateSchedulingDeletion,
+	"cancelling_deletion": KeySummaryLifecycleStateCancellingDeletion,
+	"updating":            KeySummaryLifecycleStateUpdating,
+	"backup_in_progress":  KeySummaryLifecycleStateBackupInProgress,
+	"restoring":           KeySummaryLifecycleStateRestoring,
+}
+
 // GetKeySummaryLifecycleStateEnumValues Enumerates the set of values for KeySummaryLifecycleStateEnum
 func GetKeySummaryLifecycleStateEnumValues() []KeySummaryLifecycleStateEnum {
 	values := make([]KeySummaryLifecycleStateEnum, 0)
@@ -152,12 +168,7 @@ func GetKeySummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingKeySummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingKeySummaryLifecycleStateEnum(val string) (KeySummaryLifecycleStateEnum, bool) {
-	mappingKeySummaryLifecycleStateEnumIgnoreCase := make(map[string]KeySummaryLifecycleStateEnum)
-	for k, v := range mappingKeySummaryLifecycleStateEnum {
-		mappingKeySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingKeySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingKeySummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -173,6 +184,11 @@ const (
 var mappingKeySummaryProtectionModeEnum = map[string]KeySummaryProtectionModeEnum{
 	"HSM":      KeySummaryProtectionModeHsm,
 	"SOFTWARE": KeySummaryProtectionModeSoftware,
+}
+
+var mappingKeySummaryProtectionModeEnumLowerCase = map[string]KeySummaryProtectionModeEnum{
+	"hsm":      KeySummaryProtectionModeHsm,
+	"software": KeySummaryProtectionModeSoftware,
 }
 
 // GetKeySummaryProtectionModeEnumValues Enumerates the set of values for KeySummaryProtectionModeEnum
@@ -194,12 +210,7 @@ func GetKeySummaryProtectionModeEnumStringValues() []string {
 
 // GetMappingKeySummaryProtectionModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingKeySummaryProtectionModeEnum(val string) (KeySummaryProtectionModeEnum, bool) {
-	mappingKeySummaryProtectionModeEnumIgnoreCase := make(map[string]KeySummaryProtectionModeEnum)
-	for k, v := range mappingKeySummaryProtectionModeEnum {
-		mappingKeySummaryProtectionModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingKeySummaryProtectionModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingKeySummaryProtectionModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -217,6 +228,12 @@ var mappingKeySummaryAlgorithmEnum = map[string]KeySummaryAlgorithmEnum{
 	"AES":   KeySummaryAlgorithmAes,
 	"RSA":   KeySummaryAlgorithmRsa,
 	"ECDSA": KeySummaryAlgorithmEcdsa,
+}
+
+var mappingKeySummaryAlgorithmEnumLowerCase = map[string]KeySummaryAlgorithmEnum{
+	"aes":   KeySummaryAlgorithmAes,
+	"rsa":   KeySummaryAlgorithmRsa,
+	"ecdsa": KeySummaryAlgorithmEcdsa,
 }
 
 // GetKeySummaryAlgorithmEnumValues Enumerates the set of values for KeySummaryAlgorithmEnum
@@ -239,11 +256,6 @@ func GetKeySummaryAlgorithmEnumStringValues() []string {
 
 // GetMappingKeySummaryAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingKeySummaryAlgorithmEnum(val string) (KeySummaryAlgorithmEnum, bool) {
-	mappingKeySummaryAlgorithmEnumIgnoreCase := make(map[string]KeySummaryAlgorithmEnum)
-	for k, v := range mappingKeySummaryAlgorithmEnum {
-		mappingKeySummaryAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingKeySummaryAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingKeySummaryAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

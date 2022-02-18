@@ -31,6 +31,12 @@ var mappingStorageTierEnum = map[string]StorageTierEnum{
 	"Archive":          StorageTierArchive,
 }
 
+var mappingStorageTierEnumLowerCase = map[string]StorageTierEnum{
+	"standard":         StorageTierStandard,
+	"infrequentaccess": StorageTierInfrequentAccess,
+	"archive":          StorageTierArchive,
+}
+
 // GetStorageTierEnumValues Enumerates the set of values for StorageTierEnum
 func GetStorageTierEnumValues() []StorageTierEnum {
 	values := make([]StorageTierEnum, 0)
@@ -51,11 +57,6 @@ func GetStorageTierEnumStringValues() []string {
 
 // GetMappingStorageTierEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStorageTierEnum(val string) (StorageTierEnum, bool) {
-	mappingStorageTierEnumIgnoreCase := make(map[string]StorageTierEnum)
-	for k, v := range mappingStorageTierEnum {
-		mappingStorageTierEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStorageTierEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStorageTierEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

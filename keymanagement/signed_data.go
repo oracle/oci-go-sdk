@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -88,6 +88,20 @@ var mappingSignedDataSigningAlgorithmEnum = map[string]SignedDataSigningAlgorith
 	"ECDSA_SHA_512":          SignedDataSigningAlgorithmEcdsaSha512,
 }
 
+var mappingSignedDataSigningAlgorithmEnumLowerCase = map[string]SignedDataSigningAlgorithmEnum{
+	"sha_224_rsa_pkcs_pss":   SignedDataSigningAlgorithmSha224RsaPkcsPss,
+	"sha_256_rsa_pkcs_pss":   SignedDataSigningAlgorithmSha256RsaPkcsPss,
+	"sha_384_rsa_pkcs_pss":   SignedDataSigningAlgorithmSha384RsaPkcsPss,
+	"sha_512_rsa_pkcs_pss":   SignedDataSigningAlgorithmSha512RsaPkcsPss,
+	"sha_224_rsa_pkcs1_v1_5": SignedDataSigningAlgorithmSha224RsaPkcs1V15,
+	"sha_256_rsa_pkcs1_v1_5": SignedDataSigningAlgorithmSha256RsaPkcs1V15,
+	"sha_384_rsa_pkcs1_v1_5": SignedDataSigningAlgorithmSha384RsaPkcs1V15,
+	"sha_512_rsa_pkcs1_v1_5": SignedDataSigningAlgorithmSha512RsaPkcs1V15,
+	"ecdsa_sha_256":          SignedDataSigningAlgorithmEcdsaSha256,
+	"ecdsa_sha_384":          SignedDataSigningAlgorithmEcdsaSha384,
+	"ecdsa_sha_512":          SignedDataSigningAlgorithmEcdsaSha512,
+}
+
 // GetSignedDataSigningAlgorithmEnumValues Enumerates the set of values for SignedDataSigningAlgorithmEnum
 func GetSignedDataSigningAlgorithmEnumValues() []SignedDataSigningAlgorithmEnum {
 	values := make([]SignedDataSigningAlgorithmEnum, 0)
@@ -116,11 +130,6 @@ func GetSignedDataSigningAlgorithmEnumStringValues() []string {
 
 // GetMappingSignedDataSigningAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSignedDataSigningAlgorithmEnum(val string) (SignedDataSigningAlgorithmEnum, bool) {
-	mappingSignedDataSigningAlgorithmEnumIgnoreCase := make(map[string]SignedDataSigningAlgorithmEnum)
-	for k, v := range mappingSignedDataSigningAlgorithmEnum {
-		mappingSignedDataSigningAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSignedDataSigningAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSignedDataSigningAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

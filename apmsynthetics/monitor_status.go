@@ -29,6 +29,12 @@ var mappingMonitorStatusEnum = map[string]MonitorStatusEnum{
 	"INVALID":  MonitorStatusInvalid,
 }
 
+var mappingMonitorStatusEnumLowerCase = map[string]MonitorStatusEnum{
+	"enabled":  MonitorStatusEnabled,
+	"disabled": MonitorStatusDisabled,
+	"invalid":  MonitorStatusInvalid,
+}
+
 // GetMonitorStatusEnumValues Enumerates the set of values for MonitorStatusEnum
 func GetMonitorStatusEnumValues() []MonitorStatusEnum {
 	values := make([]MonitorStatusEnum, 0)
@@ -49,11 +55,6 @@ func GetMonitorStatusEnumStringValues() []string {
 
 // GetMappingMonitorStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMonitorStatusEnum(val string) (MonitorStatusEnum, bool) {
-	mappingMonitorStatusEnumIgnoreCase := make(map[string]MonitorStatusEnum)
-	for k, v := range mappingMonitorStatusEnum {
-		mappingMonitorStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMonitorStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMonitorStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

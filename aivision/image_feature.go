@@ -12,7 +12,7 @@ package aivision
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,12 @@ var mappingImageFeatureFeatureTypeEnum = map[string]ImageFeatureFeatureTypeEnum{
 	"TEXT_DETECTION":       ImageFeatureFeatureTypeTextDetection,
 }
 
+var mappingImageFeatureFeatureTypeEnumLowerCase = map[string]ImageFeatureFeatureTypeEnum{
+	"image_classification": ImageFeatureFeatureTypeImageClassification,
+	"object_detection":     ImageFeatureFeatureTypeObjectDetection,
+	"text_detection":       ImageFeatureFeatureTypeTextDetection,
+}
+
 // GetImageFeatureFeatureTypeEnumValues Enumerates the set of values for ImageFeatureFeatureTypeEnum
 func GetImageFeatureFeatureTypeEnumValues() []ImageFeatureFeatureTypeEnum {
 	values := make([]ImageFeatureFeatureTypeEnum, 0)
@@ -119,11 +125,6 @@ func GetImageFeatureFeatureTypeEnumStringValues() []string {
 
 // GetMappingImageFeatureFeatureTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingImageFeatureFeatureTypeEnum(val string) (ImageFeatureFeatureTypeEnum, bool) {
-	mappingImageFeatureFeatureTypeEnumIgnoreCase := make(map[string]ImageFeatureFeatureTypeEnum)
-	for k, v := range mappingImageFeatureFeatureTypeEnum {
-		mappingImageFeatureFeatureTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingImageFeatureFeatureTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingImageFeatureFeatureTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -56,6 +56,11 @@ var mappingSortClauseOrderEnum = map[string]SortClauseOrderEnum{
 	"DESC": SortClauseOrderDesc,
 }
 
+var mappingSortClauseOrderEnumLowerCase = map[string]SortClauseOrderEnum{
+	"asc":  SortClauseOrderAsc,
+	"desc": SortClauseOrderDesc,
+}
+
 // GetSortClauseOrderEnumValues Enumerates the set of values for SortClauseOrderEnum
 func GetSortClauseOrderEnumValues() []SortClauseOrderEnum {
 	values := make([]SortClauseOrderEnum, 0)
@@ -75,11 +80,6 @@ func GetSortClauseOrderEnumStringValues() []string {
 
 // GetMappingSortClauseOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSortClauseOrderEnum(val string) (SortClauseOrderEnum, bool) {
-	mappingSortClauseOrderEnumIgnoreCase := make(map[string]SortClauseOrderEnum)
-	for k, v := range mappingSortClauseOrderEnum {
-		mappingSortClauseOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSortClauseOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSortClauseOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

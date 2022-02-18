@@ -12,7 +12,7 @@ package analytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -70,6 +70,9 @@ type AnalyticsInstance struct {
 	// Example: `{"Department": "Finance"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
 
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the OCI Vault Key encrypting the customer data stored in this Analytics instance. A null value indicates Oracle managed default encryption.
+	KmsKeyId *string `mandatory:"false" json:"kmsKeyId"`
+
 	// The date and time the instance was last updated (in the format defined by RFC3339).
 	// This timestamp represents updates made through this API. External events do not
 	// influence it.
@@ -112,6 +115,7 @@ func (m *AnalyticsInstance) UnmarshalJSON(data []byte) (e error) {
 		ServiceUrl             *string                             `json:"serviceUrl"`
 		DefinedTags            map[string]map[string]interface{}   `json:"definedTags"`
 		FreeformTags           map[string]string                   `json:"freeformTags"`
+		KmsKeyId               *string                             `json:"kmsKeyId"`
 		TimeUpdated            *common.SDKTime                     `json:"timeUpdated"`
 		Id                     *string                             `json:"id"`
 		Name                   *string                             `json:"name"`
@@ -143,6 +147,8 @@ func (m *AnalyticsInstance) UnmarshalJSON(data []byte) (e error) {
 	m.DefinedTags = model.DefinedTags
 
 	m.FreeformTags = model.FreeformTags
+
+	m.KmsKeyId = model.KmsKeyId
 
 	m.TimeUpdated = model.TimeUpdated
 

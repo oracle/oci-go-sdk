@@ -24,8 +24,6 @@ import (
 	"sync"
 	"sync/atomic"
 	"time"
-
-	"github.com/sony/gobreaker"
 )
 
 const (
@@ -112,7 +110,7 @@ type HTTPRequestDispatcher interface {
 // CustomClientConfiguration contains configurations set at client level, currently it only includes RetryPolicy
 type CustomClientConfiguration struct {
 	RetryPolicy    *RetryPolicy
-	CircuitBreaker *gobreaker.CircuitBreaker
+	CircuitBreaker *OciCircuitBreaker
 }
 
 // BaseClient struct implements all basic operations to call oci web services.
@@ -564,18 +562,15 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request) (respo
 func (client BaseClient) CallWithDetails(ctx context.Context, request *http.Request, details ClientCallDetails) (response *http.Response, err error) {
 	Debugln("Attempting to call downstream service")
 	request = request.WithContext(ctx)
-
 	err = client.prepareRequest(request)
 	if err != nil {
 		return
 	}
-
 	//Intercept
 	err = client.intercept(request)
 	if err != nil {
 		return
 	}
-
 	//Sign the request
 	err = details.Signer.Sign(request)
 	if err != nil {
@@ -583,10 +578,13 @@ func (client BaseClient) CallWithDetails(ctx context.Context, request *http.Requ
 	}
 
 	//Execute the http request
-	if goBreaker := client.Configuration.CircuitBreaker; goBreaker != nil {
-		resp, cbErr := goBreaker.Execute(func() (interface{}, error) {
+	if ociGoBreaker := client.Configuration.CircuitBreaker; ociGoBreaker != nil {
+		resp, cbErr := ociGoBreaker.Cb.Execute(func() (interface{}, error) {
 			return client.httpDo(request)
 		})
+		if cbErr != nil && IsCircuitBreakerError(cbErr) {
+			cbErr = getCircuitBreakerError(request, cbErr, ociGoBreaker)
+		}
 		if _, ok := resp.(*http.Response); !ok {
 			return nil, cbErr
 		}

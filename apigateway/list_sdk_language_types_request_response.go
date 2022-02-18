@@ -6,7 +6,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,11 @@ var mappingListSdkLanguageTypesSortOrderEnum = map[string]ListSdkLanguageTypesSo
 	"DESC": ListSdkLanguageTypesSortOrderDesc,
 }
 
+var mappingListSdkLanguageTypesSortOrderEnumLowerCase = map[string]ListSdkLanguageTypesSortOrderEnum{
+	"asc":  ListSdkLanguageTypesSortOrderAsc,
+	"desc": ListSdkLanguageTypesSortOrderDesc,
+}
+
 // GetListSdkLanguageTypesSortOrderEnumValues Enumerates the set of values for ListSdkLanguageTypesSortOrderEnum
 func GetListSdkLanguageTypesSortOrderEnumValues() []ListSdkLanguageTypesSortOrderEnum {
 	values := make([]ListSdkLanguageTypesSortOrderEnum, 0)
@@ -160,12 +165,7 @@ func GetListSdkLanguageTypesSortOrderEnumStringValues() []string {
 
 // GetMappingListSdkLanguageTypesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSdkLanguageTypesSortOrderEnum(val string) (ListSdkLanguageTypesSortOrderEnum, bool) {
-	mappingListSdkLanguageTypesSortOrderEnumIgnoreCase := make(map[string]ListSdkLanguageTypesSortOrderEnum)
-	for k, v := range mappingListSdkLanguageTypesSortOrderEnum {
-		mappingListSdkLanguageTypesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSdkLanguageTypesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSdkLanguageTypesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +181,11 @@ const (
 var mappingListSdkLanguageTypesSortByEnum = map[string]ListSdkLanguageTypesSortByEnum{
 	"timeCreated": ListSdkLanguageTypesSortByTimecreated,
 	"displayName": ListSdkLanguageTypesSortByDisplayname,
+}
+
+var mappingListSdkLanguageTypesSortByEnumLowerCase = map[string]ListSdkLanguageTypesSortByEnum{
+	"timecreated": ListSdkLanguageTypesSortByTimecreated,
+	"displayname": ListSdkLanguageTypesSortByDisplayname,
 }
 
 // GetListSdkLanguageTypesSortByEnumValues Enumerates the set of values for ListSdkLanguageTypesSortByEnum
@@ -202,11 +207,6 @@ func GetListSdkLanguageTypesSortByEnumStringValues() []string {
 
 // GetMappingListSdkLanguageTypesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSdkLanguageTypesSortByEnum(val string) (ListSdkLanguageTypesSortByEnum, bool) {
-	mappingListSdkLanguageTypesSortByEnumIgnoreCase := make(map[string]ListSdkLanguageTypesSortByEnum)
-	for k, v := range mappingListSdkLanguageTypesSortByEnum {
-		mappingListSdkLanguageTypesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSdkLanguageTypesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSdkLanguageTypesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

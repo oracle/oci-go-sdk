@@ -6,7 +6,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -148,6 +148,11 @@ var mappingListCertificatesSortOrderEnum = map[string]ListCertificatesSortOrderE
 	"DESC": ListCertificatesSortOrderDesc,
 }
 
+var mappingListCertificatesSortOrderEnumLowerCase = map[string]ListCertificatesSortOrderEnum{
+	"asc":  ListCertificatesSortOrderAsc,
+	"desc": ListCertificatesSortOrderDesc,
+}
+
 // GetListCertificatesSortOrderEnumValues Enumerates the set of values for ListCertificatesSortOrderEnum
 func GetListCertificatesSortOrderEnumValues() []ListCertificatesSortOrderEnum {
 	values := make([]ListCertificatesSortOrderEnum, 0)
@@ -167,12 +172,7 @@ func GetListCertificatesSortOrderEnumStringValues() []string {
 
 // GetMappingListCertificatesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCertificatesSortOrderEnum(val string) (ListCertificatesSortOrderEnum, bool) {
-	mappingListCertificatesSortOrderEnumIgnoreCase := make(map[string]ListCertificatesSortOrderEnum)
-	for k, v := range mappingListCertificatesSortOrderEnum {
-		mappingListCertificatesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCertificatesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCertificatesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -188,6 +188,11 @@ const (
 var mappingListCertificatesSortByEnum = map[string]ListCertificatesSortByEnum{
 	"timeCreated": ListCertificatesSortByTimecreated,
 	"displayName": ListCertificatesSortByDisplayname,
+}
+
+var mappingListCertificatesSortByEnumLowerCase = map[string]ListCertificatesSortByEnum{
+	"timecreated": ListCertificatesSortByTimecreated,
+	"displayname": ListCertificatesSortByDisplayname,
 }
 
 // GetListCertificatesSortByEnumValues Enumerates the set of values for ListCertificatesSortByEnum
@@ -209,11 +214,6 @@ func GetListCertificatesSortByEnumStringValues() []string {
 
 // GetMappingListCertificatesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCertificatesSortByEnum(val string) (ListCertificatesSortByEnum, bool) {
-	mappingListCertificatesSortByEnumIgnoreCase := make(map[string]ListCertificatesSortByEnum)
-	for k, v := range mappingListCertificatesSortByEnum {
-		mappingListCertificatesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCertificatesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCertificatesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

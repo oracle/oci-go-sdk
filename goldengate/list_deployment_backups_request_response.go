@@ -6,7 +6,7 @@ package goldengate
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -155,6 +155,21 @@ var mappingListDeploymentBackupsLifecycleStateEnum = map[string]ListDeploymentBa
 	"SUCCEEDED":       ListDeploymentBackupsLifecycleStateSucceeded,
 }
 
+var mappingListDeploymentBackupsLifecycleStateEnumLowerCase = map[string]ListDeploymentBackupsLifecycleStateEnum{
+	"creating":        ListDeploymentBackupsLifecycleStateCreating,
+	"updating":        ListDeploymentBackupsLifecycleStateUpdating,
+	"active":          ListDeploymentBackupsLifecycleStateActive,
+	"inactive":        ListDeploymentBackupsLifecycleStateInactive,
+	"deleting":        ListDeploymentBackupsLifecycleStateDeleting,
+	"deleted":         ListDeploymentBackupsLifecycleStateDeleted,
+	"failed":          ListDeploymentBackupsLifecycleStateFailed,
+	"needs_attention": ListDeploymentBackupsLifecycleStateNeedsAttention,
+	"in_progress":     ListDeploymentBackupsLifecycleStateInProgress,
+	"canceling":       ListDeploymentBackupsLifecycleStateCanceling,
+	"canceled":        ListDeploymentBackupsLifecycleStateCanceled,
+	"succeeded":       ListDeploymentBackupsLifecycleStateSucceeded,
+}
+
 // GetListDeploymentBackupsLifecycleStateEnumValues Enumerates the set of values for ListDeploymentBackupsLifecycleStateEnum
 func GetListDeploymentBackupsLifecycleStateEnumValues() []ListDeploymentBackupsLifecycleStateEnum {
 	values := make([]ListDeploymentBackupsLifecycleStateEnum, 0)
@@ -184,12 +199,7 @@ func GetListDeploymentBackupsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListDeploymentBackupsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDeploymentBackupsLifecycleStateEnum(val string) (ListDeploymentBackupsLifecycleStateEnum, bool) {
-	mappingListDeploymentBackupsLifecycleStateEnumIgnoreCase := make(map[string]ListDeploymentBackupsLifecycleStateEnum)
-	for k, v := range mappingListDeploymentBackupsLifecycleStateEnum {
-		mappingListDeploymentBackupsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDeploymentBackupsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDeploymentBackupsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -205,6 +215,11 @@ const (
 var mappingListDeploymentBackupsSortOrderEnum = map[string]ListDeploymentBackupsSortOrderEnum{
 	"ASC":  ListDeploymentBackupsSortOrderAsc,
 	"DESC": ListDeploymentBackupsSortOrderDesc,
+}
+
+var mappingListDeploymentBackupsSortOrderEnumLowerCase = map[string]ListDeploymentBackupsSortOrderEnum{
+	"asc":  ListDeploymentBackupsSortOrderAsc,
+	"desc": ListDeploymentBackupsSortOrderDesc,
 }
 
 // GetListDeploymentBackupsSortOrderEnumValues Enumerates the set of values for ListDeploymentBackupsSortOrderEnum
@@ -226,12 +241,7 @@ func GetListDeploymentBackupsSortOrderEnumStringValues() []string {
 
 // GetMappingListDeploymentBackupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDeploymentBackupsSortOrderEnum(val string) (ListDeploymentBackupsSortOrderEnum, bool) {
-	mappingListDeploymentBackupsSortOrderEnumIgnoreCase := make(map[string]ListDeploymentBackupsSortOrderEnum)
-	for k, v := range mappingListDeploymentBackupsSortOrderEnum {
-		mappingListDeploymentBackupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDeploymentBackupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDeploymentBackupsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -247,6 +257,11 @@ const (
 var mappingListDeploymentBackupsSortByEnum = map[string]ListDeploymentBackupsSortByEnum{
 	"timeCreated": ListDeploymentBackupsSortByTimecreated,
 	"displayName": ListDeploymentBackupsSortByDisplayname,
+}
+
+var mappingListDeploymentBackupsSortByEnumLowerCase = map[string]ListDeploymentBackupsSortByEnum{
+	"timecreated": ListDeploymentBackupsSortByTimecreated,
+	"displayname": ListDeploymentBackupsSortByDisplayname,
 }
 
 // GetListDeploymentBackupsSortByEnumValues Enumerates the set of values for ListDeploymentBackupsSortByEnum
@@ -268,11 +283,6 @@ func GetListDeploymentBackupsSortByEnumStringValues() []string {
 
 // GetMappingListDeploymentBackupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDeploymentBackupsSortByEnum(val string) (ListDeploymentBackupsSortByEnum, bool) {
-	mappingListDeploymentBackupsSortByEnumIgnoreCase := make(map[string]ListDeploymentBackupsSortByEnum)
-	for k, v := range mappingListDeploymentBackupsSortByEnum {
-		mappingListDeploymentBackupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDeploymentBackupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDeploymentBackupsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -150,6 +150,16 @@ var mappingStructuredTypeModelTypeEnum = map[string]StructuredTypeModelTypeEnum{
 	"DERIVED_TYPE":    StructuredTypeModelTypeDerivedType,
 }
 
+var mappingStructuredTypeModelTypeEnumLowerCase = map[string]StructuredTypeModelTypeEnum{
+	"dynamic_type":    StructuredTypeModelTypeDynamicType,
+	"structured_type": StructuredTypeModelTypeStructuredType,
+	"data_type":       StructuredTypeModelTypeDataType,
+	"java_type":       StructuredTypeModelTypeJavaType,
+	"configured_type": StructuredTypeModelTypeConfiguredType,
+	"composite_type":  StructuredTypeModelTypeCompositeType,
+	"derived_type":    StructuredTypeModelTypeDerivedType,
+}
+
 // GetStructuredTypeModelTypeEnumValues Enumerates the set of values for StructuredTypeModelTypeEnum
 func GetStructuredTypeModelTypeEnumValues() []StructuredTypeModelTypeEnum {
 	values := make([]StructuredTypeModelTypeEnum, 0)
@@ -174,12 +184,7 @@ func GetStructuredTypeModelTypeEnumStringValues() []string {
 
 // GetMappingStructuredTypeModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStructuredTypeModelTypeEnum(val string) (StructuredTypeModelTypeEnum, bool) {
-	mappingStructuredTypeModelTypeEnumIgnoreCase := make(map[string]StructuredTypeModelTypeEnum)
-	for k, v := range mappingStructuredTypeModelTypeEnum {
-		mappingStructuredTypeModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStructuredTypeModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStructuredTypeModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -195,6 +200,11 @@ const (
 var mappingStructuredTypeDtTypeEnum = map[string]StructuredTypeDtTypeEnum{
 	"PRIMITIVE":  StructuredTypeDtTypePrimitive,
 	"STRUCTURED": StructuredTypeDtTypeStructured,
+}
+
+var mappingStructuredTypeDtTypeEnumLowerCase = map[string]StructuredTypeDtTypeEnum{
+	"primitive":  StructuredTypeDtTypePrimitive,
+	"structured": StructuredTypeDtTypeStructured,
 }
 
 // GetStructuredTypeDtTypeEnumValues Enumerates the set of values for StructuredTypeDtTypeEnum
@@ -216,11 +226,6 @@ func GetStructuredTypeDtTypeEnumStringValues() []string {
 
 // GetMappingStructuredTypeDtTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStructuredTypeDtTypeEnum(val string) (StructuredTypeDtTypeEnum, bool) {
-	mappingStructuredTypeDtTypeEnumIgnoreCase := make(map[string]StructuredTypeDtTypeEnum)
-	for k, v := range mappingStructuredTypeDtTypeEnum {
-		mappingStructuredTypeDtTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStructuredTypeDtTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStructuredTypeDtTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

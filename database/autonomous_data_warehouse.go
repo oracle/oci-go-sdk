@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -125,6 +125,22 @@ var mappingAutonomousDataWarehouseLifecycleStateEnum = map[string]AutonomousData
 	"UPDATING":                  AutonomousDataWarehouseLifecycleStateUpdating,
 }
 
+var mappingAutonomousDataWarehouseLifecycleStateEnumLowerCase = map[string]AutonomousDataWarehouseLifecycleStateEnum{
+	"provisioning":              AutonomousDataWarehouseLifecycleStateProvisioning,
+	"available":                 AutonomousDataWarehouseLifecycleStateAvailable,
+	"stopping":                  AutonomousDataWarehouseLifecycleStateStopping,
+	"stopped":                   AutonomousDataWarehouseLifecycleStateStopped,
+	"starting":                  AutonomousDataWarehouseLifecycleStateStarting,
+	"terminating":               AutonomousDataWarehouseLifecycleStateTerminating,
+	"terminated":                AutonomousDataWarehouseLifecycleStateTerminated,
+	"unavailable":               AutonomousDataWarehouseLifecycleStateUnavailable,
+	"restore_in_progress":       AutonomousDataWarehouseLifecycleStateRestoreInProgress,
+	"backup_in_progress":        AutonomousDataWarehouseLifecycleStateBackupInProgress,
+	"scale_in_progress":         AutonomousDataWarehouseLifecycleStateScaleInProgress,
+	"available_needs_attention": AutonomousDataWarehouseLifecycleStateAvailableNeedsAttention,
+	"updating":                  AutonomousDataWarehouseLifecycleStateUpdating,
+}
+
 // GetAutonomousDataWarehouseLifecycleStateEnumValues Enumerates the set of values for AutonomousDataWarehouseLifecycleStateEnum
 func GetAutonomousDataWarehouseLifecycleStateEnumValues() []AutonomousDataWarehouseLifecycleStateEnum {
 	values := make([]AutonomousDataWarehouseLifecycleStateEnum, 0)
@@ -155,12 +171,7 @@ func GetAutonomousDataWarehouseLifecycleStateEnumStringValues() []string {
 
 // GetMappingAutonomousDataWarehouseLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAutonomousDataWarehouseLifecycleStateEnum(val string) (AutonomousDataWarehouseLifecycleStateEnum, bool) {
-	mappingAutonomousDataWarehouseLifecycleStateEnumIgnoreCase := make(map[string]AutonomousDataWarehouseLifecycleStateEnum)
-	for k, v := range mappingAutonomousDataWarehouseLifecycleStateEnum {
-		mappingAutonomousDataWarehouseLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAutonomousDataWarehouseLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAutonomousDataWarehouseLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -176,6 +187,11 @@ const (
 var mappingAutonomousDataWarehouseLicenseModelEnum = map[string]AutonomousDataWarehouseLicenseModelEnum{
 	"LICENSE_INCLUDED":       AutonomousDataWarehouseLicenseModelLicenseIncluded,
 	"BRING_YOUR_OWN_LICENSE": AutonomousDataWarehouseLicenseModelBringYourOwnLicense,
+}
+
+var mappingAutonomousDataWarehouseLicenseModelEnumLowerCase = map[string]AutonomousDataWarehouseLicenseModelEnum{
+	"license_included":       AutonomousDataWarehouseLicenseModelLicenseIncluded,
+	"bring_your_own_license": AutonomousDataWarehouseLicenseModelBringYourOwnLicense,
 }
 
 // GetAutonomousDataWarehouseLicenseModelEnumValues Enumerates the set of values for AutonomousDataWarehouseLicenseModelEnum
@@ -197,11 +213,6 @@ func GetAutonomousDataWarehouseLicenseModelEnumStringValues() []string {
 
 // GetMappingAutonomousDataWarehouseLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAutonomousDataWarehouseLicenseModelEnum(val string) (AutonomousDataWarehouseLicenseModelEnum, bool) {
-	mappingAutonomousDataWarehouseLicenseModelEnumIgnoreCase := make(map[string]AutonomousDataWarehouseLicenseModelEnum)
-	for k, v := range mappingAutonomousDataWarehouseLicenseModelEnum {
-		mappingAutonomousDataWarehouseLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAutonomousDataWarehouseLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAutonomousDataWarehouseLicenseModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

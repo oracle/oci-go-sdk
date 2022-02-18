@@ -12,7 +12,7 @@ package logging
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -229,6 +229,22 @@ var mappingUnifiedAgentParserParserTypeEnum = map[string]UnifiedAgentParserParse
 	"MULTILINE_GROK": UnifiedAgentParserParserTypeMultilineGrok,
 }
 
+var mappingUnifiedAgentParserParserTypeEnumLowerCase = map[string]UnifiedAgentParserParserTypeEnum{
+	"auditd":         UnifiedAgentParserParserTypeAuditd,
+	"json":           UnifiedAgentParserParserTypeJson,
+	"tsv":            UnifiedAgentParserParserTypeTsv,
+	"csv":            UnifiedAgentParserParserTypeCsv,
+	"none":           UnifiedAgentParserParserTypeNone,
+	"syslog":         UnifiedAgentParserParserTypeSyslog,
+	"apache2":        UnifiedAgentParserParserTypeApache2,
+	"apache_error":   UnifiedAgentParserParserTypeApacheError,
+	"msgpack":        UnifiedAgentParserParserTypeMsgpack,
+	"regexp":         UnifiedAgentParserParserTypeRegexp,
+	"multiline":      UnifiedAgentParserParserTypeMultiline,
+	"grok":           UnifiedAgentParserParserTypeGrok,
+	"multiline_grok": UnifiedAgentParserParserTypeMultilineGrok,
+}
+
 // GetUnifiedAgentParserParserTypeEnumValues Enumerates the set of values for UnifiedAgentParserParserTypeEnum
 func GetUnifiedAgentParserParserTypeEnumValues() []UnifiedAgentParserParserTypeEnum {
 	values := make([]UnifiedAgentParserParserTypeEnum, 0)
@@ -259,11 +275,6 @@ func GetUnifiedAgentParserParserTypeEnumStringValues() []string {
 
 // GetMappingUnifiedAgentParserParserTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUnifiedAgentParserParserTypeEnum(val string) (UnifiedAgentParserParserTypeEnum, bool) {
-	mappingUnifiedAgentParserParserTypeEnumIgnoreCase := make(map[string]UnifiedAgentParserParserTypeEnum)
-	for k, v := range mappingUnifiedAgentParserParserTypeEnum {
-		mappingUnifiedAgentParserParserTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUnifiedAgentParserParserTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUnifiedAgentParserParserTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

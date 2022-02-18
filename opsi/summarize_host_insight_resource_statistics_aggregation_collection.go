@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -74,6 +74,12 @@ var mappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMe
 	"LOGICAL_MEMORY": SummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricLogicalMemory,
 }
 
+var mappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnumLowerCase = map[string]SummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnum{
+	"cpu":            SummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricCpu,
+	"memory":         SummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricMemory,
+	"logical_memory": SummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricLogicalMemory,
+}
+
 // GetSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnumValues Enumerates the set of values for SummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnum
 func GetSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnumValues() []SummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnum {
 	values := make([]SummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnum, 0)
@@ -94,11 +100,6 @@ func GetSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetri
 
 // GetMappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnum(val string) (SummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnum, bool) {
-	mappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnum)
-	for k, v := range mappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnum {
-		mappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeHostInsightResourceStatisticsAggregationCollectionResourceMetricEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -143,6 +143,11 @@ var mappingSummarizeAwrDbSnapshotRangesSortByEnum = map[string]SummarizeAwrDbSna
 	"NAME":              SummarizeAwrDbSnapshotRangesSortByName,
 }
 
+var mappingSummarizeAwrDbSnapshotRangesSortByEnumLowerCase = map[string]SummarizeAwrDbSnapshotRangesSortByEnum{
+	"end_interval_time": SummarizeAwrDbSnapshotRangesSortByEndIntervalTime,
+	"name":              SummarizeAwrDbSnapshotRangesSortByName,
+}
+
 // GetSummarizeAwrDbSnapshotRangesSortByEnumValues Enumerates the set of values for SummarizeAwrDbSnapshotRangesSortByEnum
 func GetSummarizeAwrDbSnapshotRangesSortByEnumValues() []SummarizeAwrDbSnapshotRangesSortByEnum {
 	values := make([]SummarizeAwrDbSnapshotRangesSortByEnum, 0)
@@ -162,12 +167,7 @@ func GetSummarizeAwrDbSnapshotRangesSortByEnumStringValues() []string {
 
 // GetMappingSummarizeAwrDbSnapshotRangesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAwrDbSnapshotRangesSortByEnum(val string) (SummarizeAwrDbSnapshotRangesSortByEnum, bool) {
-	mappingSummarizeAwrDbSnapshotRangesSortByEnumIgnoreCase := make(map[string]SummarizeAwrDbSnapshotRangesSortByEnum)
-	for k, v := range mappingSummarizeAwrDbSnapshotRangesSortByEnum {
-		mappingSummarizeAwrDbSnapshotRangesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAwrDbSnapshotRangesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAwrDbSnapshotRangesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +183,11 @@ const (
 var mappingSummarizeAwrDbSnapshotRangesSortOrderEnum = map[string]SummarizeAwrDbSnapshotRangesSortOrderEnum{
 	"ASC":  SummarizeAwrDbSnapshotRangesSortOrderAsc,
 	"DESC": SummarizeAwrDbSnapshotRangesSortOrderDesc,
+}
+
+var mappingSummarizeAwrDbSnapshotRangesSortOrderEnumLowerCase = map[string]SummarizeAwrDbSnapshotRangesSortOrderEnum{
+	"asc":  SummarizeAwrDbSnapshotRangesSortOrderAsc,
+	"desc": SummarizeAwrDbSnapshotRangesSortOrderDesc,
 }
 
 // GetSummarizeAwrDbSnapshotRangesSortOrderEnumValues Enumerates the set of values for SummarizeAwrDbSnapshotRangesSortOrderEnum
@@ -204,11 +209,6 @@ func GetSummarizeAwrDbSnapshotRangesSortOrderEnumStringValues() []string {
 
 // GetMappingSummarizeAwrDbSnapshotRangesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAwrDbSnapshotRangesSortOrderEnum(val string) (SummarizeAwrDbSnapshotRangesSortOrderEnum, bool) {
-	mappingSummarizeAwrDbSnapshotRangesSortOrderEnumIgnoreCase := make(map[string]SummarizeAwrDbSnapshotRangesSortOrderEnum)
-	for k, v := range mappingSummarizeAwrDbSnapshotRangesSortOrderEnum {
-		mappingSummarizeAwrDbSnapshotRangesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAwrDbSnapshotRangesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAwrDbSnapshotRangesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

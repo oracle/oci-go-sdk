@@ -6,7 +6,7 @@ package certificatesmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -148,6 +148,11 @@ var mappingListAssociationsSortByEnum = map[string]ListAssociationsSortByEnum{
 	"TIMECREATED": ListAssociationsSortByTimecreated,
 }
 
+var mappingListAssociationsSortByEnumLowerCase = map[string]ListAssociationsSortByEnum{
+	"name":        ListAssociationsSortByName,
+	"timecreated": ListAssociationsSortByTimecreated,
+}
+
 // GetListAssociationsSortByEnumValues Enumerates the set of values for ListAssociationsSortByEnum
 func GetListAssociationsSortByEnumValues() []ListAssociationsSortByEnum {
 	values := make([]ListAssociationsSortByEnum, 0)
@@ -167,12 +172,7 @@ func GetListAssociationsSortByEnumStringValues() []string {
 
 // GetMappingListAssociationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAssociationsSortByEnum(val string) (ListAssociationsSortByEnum, bool) {
-	mappingListAssociationsSortByEnumIgnoreCase := make(map[string]ListAssociationsSortByEnum)
-	for k, v := range mappingListAssociationsSortByEnum {
-		mappingListAssociationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAssociationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAssociationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -188,6 +188,11 @@ const (
 var mappingListAssociationsSortOrderEnum = map[string]ListAssociationsSortOrderEnum{
 	"ASC":  ListAssociationsSortOrderAsc,
 	"DESC": ListAssociationsSortOrderDesc,
+}
+
+var mappingListAssociationsSortOrderEnumLowerCase = map[string]ListAssociationsSortOrderEnum{
+	"asc":  ListAssociationsSortOrderAsc,
+	"desc": ListAssociationsSortOrderDesc,
 }
 
 // GetListAssociationsSortOrderEnumValues Enumerates the set of values for ListAssociationsSortOrderEnum
@@ -209,12 +214,7 @@ func GetListAssociationsSortOrderEnumStringValues() []string {
 
 // GetMappingListAssociationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAssociationsSortOrderEnum(val string) (ListAssociationsSortOrderEnum, bool) {
-	mappingListAssociationsSortOrderEnumIgnoreCase := make(map[string]ListAssociationsSortOrderEnum)
-	for k, v := range mappingListAssociationsSortOrderEnum {
-		mappingListAssociationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAssociationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAssociationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -232,6 +232,12 @@ var mappingListAssociationsAssociationTypeEnum = map[string]ListAssociationsAsso
 	"CERTIFICATE":           ListAssociationsAssociationTypeCertificate,
 	"CERTIFICATE_AUTHORITY": ListAssociationsAssociationTypeCertificateAuthority,
 	"CA_BUNDLE":             ListAssociationsAssociationTypeCaBundle,
+}
+
+var mappingListAssociationsAssociationTypeEnumLowerCase = map[string]ListAssociationsAssociationTypeEnum{
+	"certificate":           ListAssociationsAssociationTypeCertificate,
+	"certificate_authority": ListAssociationsAssociationTypeCertificateAuthority,
+	"ca_bundle":             ListAssociationsAssociationTypeCaBundle,
 }
 
 // GetListAssociationsAssociationTypeEnumValues Enumerates the set of values for ListAssociationsAssociationTypeEnum
@@ -254,11 +260,6 @@ func GetListAssociationsAssociationTypeEnumStringValues() []string {
 
 // GetMappingListAssociationsAssociationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAssociationsAssociationTypeEnum(val string) (ListAssociationsAssociationTypeEnum, bool) {
-	mappingListAssociationsAssociationTypeEnumIgnoreCase := make(map[string]ListAssociationsAssociationTypeEnum)
-	for k, v := range mappingListAssociationsAssociationTypeEnum {
-		mappingListAssociationsAssociationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAssociationsAssociationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAssociationsAssociationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

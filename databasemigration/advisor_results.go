@@ -33,6 +33,14 @@ var mappingAdvisorResultsEnum = map[string]AdvisorResultsEnum{
 	"PASS":          AdvisorResultsPass,
 }
 
+var mappingAdvisorResultsEnumLowerCase = map[string]AdvisorResultsEnum{
+	"fatal":         AdvisorResultsFatal,
+	"blocker":       AdvisorResultsBlocker,
+	"warning":       AdvisorResultsWarning,
+	"informational": AdvisorResultsInformational,
+	"pass":          AdvisorResultsPass,
+}
+
 // GetAdvisorResultsEnumValues Enumerates the set of values for AdvisorResultsEnum
 func GetAdvisorResultsEnumValues() []AdvisorResultsEnum {
 	values := make([]AdvisorResultsEnum, 0)
@@ -55,11 +63,6 @@ func GetAdvisorResultsEnumStringValues() []string {
 
 // GetMappingAdvisorResultsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAdvisorResultsEnum(val string) (AdvisorResultsEnum, bool) {
-	mappingAdvisorResultsEnumIgnoreCase := make(map[string]AdvisorResultsEnum)
-	for k, v := range mappingAdvisorResultsEnum {
-		mappingAdvisorResultsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAdvisorResultsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAdvisorResultsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

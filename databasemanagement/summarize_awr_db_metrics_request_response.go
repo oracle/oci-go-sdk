@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -162,6 +162,11 @@ var mappingSummarizeAwrDbMetricsSortByEnum = map[string]SummarizeAwrDbMetricsSor
 	"NAME":      SummarizeAwrDbMetricsSortByName,
 }
 
+var mappingSummarizeAwrDbMetricsSortByEnumLowerCase = map[string]SummarizeAwrDbMetricsSortByEnum{
+	"timestamp": SummarizeAwrDbMetricsSortByTimestamp,
+	"name":      SummarizeAwrDbMetricsSortByName,
+}
+
 // GetSummarizeAwrDbMetricsSortByEnumValues Enumerates the set of values for SummarizeAwrDbMetricsSortByEnum
 func GetSummarizeAwrDbMetricsSortByEnumValues() []SummarizeAwrDbMetricsSortByEnum {
 	values := make([]SummarizeAwrDbMetricsSortByEnum, 0)
@@ -181,12 +186,7 @@ func GetSummarizeAwrDbMetricsSortByEnumStringValues() []string {
 
 // GetMappingSummarizeAwrDbMetricsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAwrDbMetricsSortByEnum(val string) (SummarizeAwrDbMetricsSortByEnum, bool) {
-	mappingSummarizeAwrDbMetricsSortByEnumIgnoreCase := make(map[string]SummarizeAwrDbMetricsSortByEnum)
-	for k, v := range mappingSummarizeAwrDbMetricsSortByEnum {
-		mappingSummarizeAwrDbMetricsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAwrDbMetricsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAwrDbMetricsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -202,6 +202,11 @@ const (
 var mappingSummarizeAwrDbMetricsSortOrderEnum = map[string]SummarizeAwrDbMetricsSortOrderEnum{
 	"ASC":  SummarizeAwrDbMetricsSortOrderAsc,
 	"DESC": SummarizeAwrDbMetricsSortOrderDesc,
+}
+
+var mappingSummarizeAwrDbMetricsSortOrderEnumLowerCase = map[string]SummarizeAwrDbMetricsSortOrderEnum{
+	"asc":  SummarizeAwrDbMetricsSortOrderAsc,
+	"desc": SummarizeAwrDbMetricsSortOrderDesc,
 }
 
 // GetSummarizeAwrDbMetricsSortOrderEnumValues Enumerates the set of values for SummarizeAwrDbMetricsSortOrderEnum
@@ -223,11 +228,6 @@ func GetSummarizeAwrDbMetricsSortOrderEnumStringValues() []string {
 
 // GetMappingSummarizeAwrDbMetricsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAwrDbMetricsSortOrderEnum(val string) (SummarizeAwrDbMetricsSortOrderEnum, bool) {
-	mappingSummarizeAwrDbMetricsSortOrderEnumIgnoreCase := make(map[string]SummarizeAwrDbMetricsSortOrderEnum)
-	for k, v := range mappingSummarizeAwrDbMetricsSortOrderEnum {
-		mappingSummarizeAwrDbMetricsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAwrDbMetricsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAwrDbMetricsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

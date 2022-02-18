@@ -6,7 +6,7 @@ package servicecatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -131,6 +131,10 @@ var mappingListServiceCatalogsSortByEnum = map[string]ListServiceCatalogsSortByE
 	"TIMECREATED": ListServiceCatalogsSortByTimecreated,
 }
 
+var mappingListServiceCatalogsSortByEnumLowerCase = map[string]ListServiceCatalogsSortByEnum{
+	"timecreated": ListServiceCatalogsSortByTimecreated,
+}
+
 // GetListServiceCatalogsSortByEnumValues Enumerates the set of values for ListServiceCatalogsSortByEnum
 func GetListServiceCatalogsSortByEnumValues() []ListServiceCatalogsSortByEnum {
 	values := make([]ListServiceCatalogsSortByEnum, 0)
@@ -149,12 +153,7 @@ func GetListServiceCatalogsSortByEnumStringValues() []string {
 
 // GetMappingListServiceCatalogsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListServiceCatalogsSortByEnum(val string) (ListServiceCatalogsSortByEnum, bool) {
-	mappingListServiceCatalogsSortByEnumIgnoreCase := make(map[string]ListServiceCatalogsSortByEnum)
-	for k, v := range mappingListServiceCatalogsSortByEnum {
-		mappingListServiceCatalogsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListServiceCatalogsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListServiceCatalogsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -170,6 +169,11 @@ const (
 var mappingListServiceCatalogsSortOrderEnum = map[string]ListServiceCatalogsSortOrderEnum{
 	"ASC":  ListServiceCatalogsSortOrderAsc,
 	"DESC": ListServiceCatalogsSortOrderDesc,
+}
+
+var mappingListServiceCatalogsSortOrderEnumLowerCase = map[string]ListServiceCatalogsSortOrderEnum{
+	"asc":  ListServiceCatalogsSortOrderAsc,
+	"desc": ListServiceCatalogsSortOrderDesc,
 }
 
 // GetListServiceCatalogsSortOrderEnumValues Enumerates the set of values for ListServiceCatalogsSortOrderEnum
@@ -191,11 +195,6 @@ func GetListServiceCatalogsSortOrderEnumStringValues() []string {
 
 // GetMappingListServiceCatalogsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListServiceCatalogsSortOrderEnum(val string) (ListServiceCatalogsSortOrderEnum, bool) {
-	mappingListServiceCatalogsSortOrderEnumIgnoreCase := make(map[string]ListServiceCatalogsSortOrderEnum)
-	for k, v := range mappingListServiceCatalogsSortOrderEnum {
-		mappingListServiceCatalogsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListServiceCatalogsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListServiceCatalogsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

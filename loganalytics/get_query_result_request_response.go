@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -134,6 +134,10 @@ var mappingGetQueryResultOutputModeEnum = map[string]GetQueryResultOutputModeEnu
 	"JSON_ROWS": GetQueryResultOutputModeJsonRows,
 }
 
+var mappingGetQueryResultOutputModeEnumLowerCase = map[string]GetQueryResultOutputModeEnum{
+	"json_rows": GetQueryResultOutputModeJsonRows,
+}
+
 // GetGetQueryResultOutputModeEnumValues Enumerates the set of values for GetQueryResultOutputModeEnum
 func GetGetQueryResultOutputModeEnumValues() []GetQueryResultOutputModeEnum {
 	values := make([]GetQueryResultOutputModeEnum, 0)
@@ -152,11 +156,6 @@ func GetGetQueryResultOutputModeEnumStringValues() []string {
 
 // GetMappingGetQueryResultOutputModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetQueryResultOutputModeEnum(val string) (GetQueryResultOutputModeEnum, bool) {
-	mappingGetQueryResultOutputModeEnumIgnoreCase := make(map[string]GetQueryResultOutputModeEnum)
-	for k, v := range mappingGetQueryResultOutputModeEnum {
-		mappingGetQueryResultOutputModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetQueryResultOutputModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetQueryResultOutputModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

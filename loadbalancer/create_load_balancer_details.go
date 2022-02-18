@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -125,6 +125,11 @@ var mappingCreateLoadBalancerDetailsIpModeEnum = map[string]CreateLoadBalancerDe
 	"IPV6": CreateLoadBalancerDetailsIpModeIpv6,
 }
 
+var mappingCreateLoadBalancerDetailsIpModeEnumLowerCase = map[string]CreateLoadBalancerDetailsIpModeEnum{
+	"ipv4": CreateLoadBalancerDetailsIpModeIpv4,
+	"ipv6": CreateLoadBalancerDetailsIpModeIpv6,
+}
+
 // GetCreateLoadBalancerDetailsIpModeEnumValues Enumerates the set of values for CreateLoadBalancerDetailsIpModeEnum
 func GetCreateLoadBalancerDetailsIpModeEnumValues() []CreateLoadBalancerDetailsIpModeEnum {
 	values := make([]CreateLoadBalancerDetailsIpModeEnum, 0)
@@ -144,11 +149,6 @@ func GetCreateLoadBalancerDetailsIpModeEnumStringValues() []string {
 
 // GetMappingCreateLoadBalancerDetailsIpModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateLoadBalancerDetailsIpModeEnum(val string) (CreateLoadBalancerDetailsIpModeEnum, bool) {
-	mappingCreateLoadBalancerDetailsIpModeEnumIgnoreCase := make(map[string]CreateLoadBalancerDetailsIpModeEnum)
-	for k, v := range mappingCreateLoadBalancerDetailsIpModeEnum {
-		mappingCreateLoadBalancerDetailsIpModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateLoadBalancerDetailsIpModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateLoadBalancerDetailsIpModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package bds
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -61,6 +61,11 @@ var mappingMetricThresholdRuleOperatorEnum = map[string]MetricThresholdRuleOpera
 	"LT": MetricThresholdRuleOperatorLt,
 }
 
+var mappingMetricThresholdRuleOperatorEnumLowerCase = map[string]MetricThresholdRuleOperatorEnum{
+	"gt": MetricThresholdRuleOperatorGt,
+	"lt": MetricThresholdRuleOperatorLt,
+}
+
 // GetMetricThresholdRuleOperatorEnumValues Enumerates the set of values for MetricThresholdRuleOperatorEnum
 func GetMetricThresholdRuleOperatorEnumValues() []MetricThresholdRuleOperatorEnum {
 	values := make([]MetricThresholdRuleOperatorEnum, 0)
@@ -80,11 +85,6 @@ func GetMetricThresholdRuleOperatorEnumStringValues() []string {
 
 // GetMappingMetricThresholdRuleOperatorEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMetricThresholdRuleOperatorEnum(val string) (MetricThresholdRuleOperatorEnum, bool) {
-	mappingMetricThresholdRuleOperatorEnumIgnoreCase := make(map[string]MetricThresholdRuleOperatorEnum)
-	for k, v := range mappingMetricThresholdRuleOperatorEnum {
-		mappingMetricThresholdRuleOperatorEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMetricThresholdRuleOperatorEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMetricThresholdRuleOperatorEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

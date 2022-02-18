@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -182,6 +182,24 @@ var mappingUserStatusEnum = map[string]UserStatusEnum{
 	"EXPIRED_AND_LOCKED_TIMED_AND_IN_ROL": UserStatusExpiredAndLockedTimedAndInRol,
 }
 
+var mappingUserStatusEnumLowerCase = map[string]UserStatusEnum{
+	"open":                                UserStatusOpen,
+	"expired":                             UserStatusExpired,
+	"expired_grace":                       UserStatusExpiredGrace,
+	"locked":                              UserStatusLocked,
+	"locked_timed":                        UserStatusLockedTimed,
+	"expired_and_locked":                  UserStatusExpiredAndLocked,
+	"expired_grace_and_locked":            UserStatusExpiredGraceAndLocked,
+	"expired_and_locked_timed":            UserStatusExpiredAndLockedTimed,
+	"expired_grace_and_locked_timed":      UserStatusExpiredGraceAndLockedTimed,
+	"open_and_in_rollover":                UserStatusOpenAndInRollover,
+	"expired_and_in_rollover":             UserStatusExpiredAndInRollover,
+	"locked_and_in_rollover":              UserStatusLockedAndInRollover,
+	"expired_and_locked_and_in_rollover":  UserStatusExpiredAndLockedAndInRollover,
+	"locked_timed_and_in_rollover":        UserStatusLockedTimedAndInRollover,
+	"expired_and_locked_timed_and_in_rol": UserStatusExpiredAndLockedTimedAndInRol,
+}
+
 // GetUserStatusEnumValues Enumerates the set of values for UserStatusEnum
 func GetUserStatusEnumValues() []UserStatusEnum {
 	values := make([]UserStatusEnum, 0)
@@ -214,12 +232,7 @@ func GetUserStatusEnumStringValues() []string {
 
 // GetMappingUserStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserStatusEnum(val string) (UserStatusEnum, bool) {
-	mappingUserStatusEnumIgnoreCase := make(map[string]UserStatusEnum)
-	for k, v := range mappingUserStatusEnum {
-		mappingUserStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -235,6 +248,11 @@ const (
 var mappingUserEditionsEnabledEnum = map[string]UserEditionsEnabledEnum{
 	"YES": UserEditionsEnabledYes,
 	"NO":  UserEditionsEnabledNo,
+}
+
+var mappingUserEditionsEnabledEnumLowerCase = map[string]UserEditionsEnabledEnum{
+	"yes": UserEditionsEnabledYes,
+	"no":  UserEditionsEnabledNo,
 }
 
 // GetUserEditionsEnabledEnumValues Enumerates the set of values for UserEditionsEnabledEnum
@@ -256,12 +274,7 @@ func GetUserEditionsEnabledEnumStringValues() []string {
 
 // GetMappingUserEditionsEnabledEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserEditionsEnabledEnum(val string) (UserEditionsEnabledEnum, bool) {
-	mappingUserEditionsEnabledEnumIgnoreCase := make(map[string]UserEditionsEnabledEnum)
-	for k, v := range mappingUserEditionsEnabledEnum {
-		mappingUserEditionsEnabledEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserEditionsEnabledEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserEditionsEnabledEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -281,6 +294,13 @@ var mappingUserAuthenticationEnum = map[string]UserAuthenticationEnum{
 	"EXTERNAL": UserAuthenticationExternal,
 	"GLOBAL":   UserAuthenticationGlobal,
 	"PASSWORD": UserAuthenticationPassword,
+}
+
+var mappingUserAuthenticationEnumLowerCase = map[string]UserAuthenticationEnum{
+	"none":     UserAuthenticationNone,
+	"external": UserAuthenticationExternal,
+	"global":   UserAuthenticationGlobal,
+	"password": UserAuthenticationPassword,
 }
 
 // GetUserAuthenticationEnumValues Enumerates the set of values for UserAuthenticationEnum
@@ -304,12 +324,7 @@ func GetUserAuthenticationEnumStringValues() []string {
 
 // GetMappingUserAuthenticationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserAuthenticationEnum(val string) (UserAuthenticationEnum, bool) {
-	mappingUserAuthenticationEnumIgnoreCase := make(map[string]UserAuthenticationEnum)
-	for k, v := range mappingUserAuthenticationEnum {
-		mappingUserAuthenticationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserAuthenticationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserAuthenticationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -325,6 +340,11 @@ const (
 var mappingUserProxyConnectEnum = map[string]UserProxyConnectEnum{
 	"YES": UserProxyConnectYes,
 	"NO":  UserProxyConnectNo,
+}
+
+var mappingUserProxyConnectEnumLowerCase = map[string]UserProxyConnectEnum{
+	"yes": UserProxyConnectYes,
+	"no":  UserProxyConnectNo,
 }
 
 // GetUserProxyConnectEnumValues Enumerates the set of values for UserProxyConnectEnum
@@ -346,12 +366,7 @@ func GetUserProxyConnectEnumStringValues() []string {
 
 // GetMappingUserProxyConnectEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserProxyConnectEnum(val string) (UserProxyConnectEnum, bool) {
-	mappingUserProxyConnectEnumIgnoreCase := make(map[string]UserProxyConnectEnum)
-	for k, v := range mappingUserProxyConnectEnum {
-		mappingUserProxyConnectEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserProxyConnectEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserProxyConnectEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -367,6 +382,11 @@ const (
 var mappingUserCommonEnum = map[string]UserCommonEnum{
 	"YES": UserCommonYes,
 	"NO":  UserCommonNo,
+}
+
+var mappingUserCommonEnumLowerCase = map[string]UserCommonEnum{
+	"yes": UserCommonYes,
+	"no":  UserCommonNo,
 }
 
 // GetUserCommonEnumValues Enumerates the set of values for UserCommonEnum
@@ -388,12 +408,7 @@ func GetUserCommonEnumStringValues() []string {
 
 // GetMappingUserCommonEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserCommonEnum(val string) (UserCommonEnum, bool) {
-	mappingUserCommonEnumIgnoreCase := make(map[string]UserCommonEnum)
-	for k, v := range mappingUserCommonEnum {
-		mappingUserCommonEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserCommonEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserCommonEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -409,6 +424,11 @@ const (
 var mappingUserOracleMaintainedEnum = map[string]UserOracleMaintainedEnum{
 	"YES": UserOracleMaintainedYes,
 	"NO":  UserOracleMaintainedNo,
+}
+
+var mappingUserOracleMaintainedEnumLowerCase = map[string]UserOracleMaintainedEnum{
+	"yes": UserOracleMaintainedYes,
+	"no":  UserOracleMaintainedNo,
 }
 
 // GetUserOracleMaintainedEnumValues Enumerates the set of values for UserOracleMaintainedEnum
@@ -430,12 +450,7 @@ func GetUserOracleMaintainedEnumStringValues() []string {
 
 // GetMappingUserOracleMaintainedEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserOracleMaintainedEnum(val string) (UserOracleMaintainedEnum, bool) {
-	mappingUserOracleMaintainedEnumIgnoreCase := make(map[string]UserOracleMaintainedEnum)
-	for k, v := range mappingUserOracleMaintainedEnum {
-		mappingUserOracleMaintainedEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserOracleMaintainedEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserOracleMaintainedEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -451,6 +466,11 @@ const (
 var mappingUserInheritedEnum = map[string]UserInheritedEnum{
 	"YES": UserInheritedYes,
 	"NO":  UserInheritedNo,
+}
+
+var mappingUserInheritedEnumLowerCase = map[string]UserInheritedEnum{
+	"yes": UserInheritedYes,
+	"no":  UserInheritedNo,
 }
 
 // GetUserInheritedEnumValues Enumerates the set of values for UserInheritedEnum
@@ -472,12 +492,7 @@ func GetUserInheritedEnumStringValues() []string {
 
 // GetMappingUserInheritedEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserInheritedEnum(val string) (UserInheritedEnum, bool) {
-	mappingUserInheritedEnumIgnoreCase := make(map[string]UserInheritedEnum)
-	for k, v := range mappingUserInheritedEnum {
-		mappingUserInheritedEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserInheritedEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserInheritedEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -493,6 +508,11 @@ const (
 var mappingUserImplicitEnum = map[string]UserImplicitEnum{
 	"YES": UserImplicitYes,
 	"NO":  UserImplicitNo,
+}
+
+var mappingUserImplicitEnumLowerCase = map[string]UserImplicitEnum{
+	"yes": UserImplicitYes,
+	"no":  UserImplicitNo,
 }
 
 // GetUserImplicitEnumValues Enumerates the set of values for UserImplicitEnum
@@ -514,12 +534,7 @@ func GetUserImplicitEnumStringValues() []string {
 
 // GetMappingUserImplicitEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserImplicitEnum(val string) (UserImplicitEnum, bool) {
-	mappingUserImplicitEnumIgnoreCase := make(map[string]UserImplicitEnum)
-	for k, v := range mappingUserImplicitEnum {
-		mappingUserImplicitEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserImplicitEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserImplicitEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -535,6 +550,11 @@ const (
 var mappingUserAllSharedEnum = map[string]UserAllSharedEnum{
 	"YES": UserAllSharedYes,
 	"NO":  UserAllSharedNo,
+}
+
+var mappingUserAllSharedEnumLowerCase = map[string]UserAllSharedEnum{
+	"yes": UserAllSharedYes,
+	"no":  UserAllSharedNo,
 }
 
 // GetUserAllSharedEnumValues Enumerates the set of values for UserAllSharedEnum
@@ -556,12 +576,7 @@ func GetUserAllSharedEnumStringValues() []string {
 
 // GetMappingUserAllSharedEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserAllSharedEnum(val string) (UserAllSharedEnum, bool) {
-	mappingUserAllSharedEnumIgnoreCase := make(map[string]UserAllSharedEnum)
-	for k, v := range mappingUserAllSharedEnum {
-		mappingUserAllSharedEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserAllSharedEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserAllSharedEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -577,6 +592,11 @@ const (
 var mappingUserExternalSharedEnum = map[string]UserExternalSharedEnum{
 	"YES": UserExternalSharedYes,
 	"NO":  UserExternalSharedNo,
+}
+
+var mappingUserExternalSharedEnumLowerCase = map[string]UserExternalSharedEnum{
+	"yes": UserExternalSharedYes,
+	"no":  UserExternalSharedNo,
 }
 
 // GetUserExternalSharedEnumValues Enumerates the set of values for UserExternalSharedEnum
@@ -598,11 +618,6 @@ func GetUserExternalSharedEnumStringValues() []string {
 
 // GetMappingUserExternalSharedEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserExternalSharedEnum(val string) (UserExternalSharedEnum, bool) {
-	mappingUserExternalSharedEnumIgnoreCase := make(map[string]UserExternalSharedEnum)
-	for k, v := range mappingUserExternalSharedEnum {
-		mappingUserExternalSharedEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserExternalSharedEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserExternalSharedEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

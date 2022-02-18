@@ -30,6 +30,12 @@ var mappingIsEligibleForInstallationEnum = map[string]IsEligibleForInstallationE
 	"UNKNOWN":         IsEligibleForInstallationUnknown,
 }
 
+var mappingIsEligibleForInstallationEnumLowerCase = map[string]IsEligibleForInstallationEnum{
+	"installable":     IsEligibleForInstallationInstallable,
+	"not_installable": IsEligibleForInstallationNotInstallable,
+	"unknown":         IsEligibleForInstallationUnknown,
+}
+
 // GetIsEligibleForInstallationEnumValues Enumerates the set of values for IsEligibleForInstallationEnum
 func GetIsEligibleForInstallationEnumValues() []IsEligibleForInstallationEnum {
 	values := make([]IsEligibleForInstallationEnum, 0)
@@ -50,11 +56,6 @@ func GetIsEligibleForInstallationEnumStringValues() []string {
 
 // GetMappingIsEligibleForInstallationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIsEligibleForInstallationEnum(val string) (IsEligibleForInstallationEnum, bool) {
-	mappingIsEligibleForInstallationEnumIgnoreCase := make(map[string]IsEligibleForInstallationEnum)
-	for k, v := range mappingIsEligibleForInstallationEnum {
-		mappingIsEligibleForInstallationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIsEligibleForInstallationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIsEligibleForInstallationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

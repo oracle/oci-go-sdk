@@ -12,7 +12,7 @@ package datalabelingservicedataplane
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -150,6 +150,12 @@ var mappingAnnotationLifecycleStateEnum = map[string]AnnotationLifecycleStateEnu
 	"DELETED":  AnnotationLifecycleStateDeleted,
 }
 
+var mappingAnnotationLifecycleStateEnumLowerCase = map[string]AnnotationLifecycleStateEnum{
+	"active":   AnnotationLifecycleStateActive,
+	"inactive": AnnotationLifecycleStateInactive,
+	"deleted":  AnnotationLifecycleStateDeleted,
+}
+
 // GetAnnotationLifecycleStateEnumValues Enumerates the set of values for AnnotationLifecycleStateEnum
 func GetAnnotationLifecycleStateEnumValues() []AnnotationLifecycleStateEnum {
 	values := make([]AnnotationLifecycleStateEnum, 0)
@@ -170,11 +176,6 @@ func GetAnnotationLifecycleStateEnumStringValues() []string {
 
 // GetMappingAnnotationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAnnotationLifecycleStateEnum(val string) (AnnotationLifecycleStateEnum, bool) {
-	mappingAnnotationLifecycleStateEnumIgnoreCase := make(map[string]AnnotationLifecycleStateEnum)
-	for k, v := range mappingAnnotationLifecycleStateEnum {
-		mappingAnnotationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAnnotationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAnnotationLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -119,6 +119,13 @@ var mappingRemotePeeringConnectionLifecycleStateEnum = map[string]RemotePeeringC
 	"TERMINATED":   RemotePeeringConnectionLifecycleStateTerminated,
 }
 
+var mappingRemotePeeringConnectionLifecycleStateEnumLowerCase = map[string]RemotePeeringConnectionLifecycleStateEnum{
+	"available":    RemotePeeringConnectionLifecycleStateAvailable,
+	"provisioning": RemotePeeringConnectionLifecycleStateProvisioning,
+	"terminating":  RemotePeeringConnectionLifecycleStateTerminating,
+	"terminated":   RemotePeeringConnectionLifecycleStateTerminated,
+}
+
 // GetRemotePeeringConnectionLifecycleStateEnumValues Enumerates the set of values for RemotePeeringConnectionLifecycleStateEnum
 func GetRemotePeeringConnectionLifecycleStateEnumValues() []RemotePeeringConnectionLifecycleStateEnum {
 	values := make([]RemotePeeringConnectionLifecycleStateEnum, 0)
@@ -140,12 +147,7 @@ func GetRemotePeeringConnectionLifecycleStateEnumStringValues() []string {
 
 // GetMappingRemotePeeringConnectionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRemotePeeringConnectionLifecycleStateEnum(val string) (RemotePeeringConnectionLifecycleStateEnum, bool) {
-	mappingRemotePeeringConnectionLifecycleStateEnumIgnoreCase := make(map[string]RemotePeeringConnectionLifecycleStateEnum)
-	for k, v := range mappingRemotePeeringConnectionLifecycleStateEnum {
-		mappingRemotePeeringConnectionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRemotePeeringConnectionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRemotePeeringConnectionLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -167,6 +169,14 @@ var mappingRemotePeeringConnectionPeeringStatusEnum = map[string]RemotePeeringCo
 	"PENDING": RemotePeeringConnectionPeeringStatusPending,
 	"PEERED":  RemotePeeringConnectionPeeringStatusPeered,
 	"REVOKED": RemotePeeringConnectionPeeringStatusRevoked,
+}
+
+var mappingRemotePeeringConnectionPeeringStatusEnumLowerCase = map[string]RemotePeeringConnectionPeeringStatusEnum{
+	"invalid": RemotePeeringConnectionPeeringStatusInvalid,
+	"new":     RemotePeeringConnectionPeeringStatusNew,
+	"pending": RemotePeeringConnectionPeeringStatusPending,
+	"peered":  RemotePeeringConnectionPeeringStatusPeered,
+	"revoked": RemotePeeringConnectionPeeringStatusRevoked,
 }
 
 // GetRemotePeeringConnectionPeeringStatusEnumValues Enumerates the set of values for RemotePeeringConnectionPeeringStatusEnum
@@ -191,11 +201,6 @@ func GetRemotePeeringConnectionPeeringStatusEnumStringValues() []string {
 
 // GetMappingRemotePeeringConnectionPeeringStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRemotePeeringConnectionPeeringStatusEnum(val string) (RemotePeeringConnectionPeeringStatusEnum, bool) {
-	mappingRemotePeeringConnectionPeeringStatusEnumIgnoreCase := make(map[string]RemotePeeringConnectionPeeringStatusEnum)
-	for k, v := range mappingRemotePeeringConnectionPeeringStatusEnum {
-		mappingRemotePeeringConnectionPeeringStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRemotePeeringConnectionPeeringStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRemotePeeringConnectionPeeringStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

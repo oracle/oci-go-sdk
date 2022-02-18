@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -158,6 +158,31 @@ var mappingGetJobDefinitionFieldsEnum = map[string]GetJobDefinitionFieldsEnum{
 	"properties":                 GetJobDefinitionFieldsProperties,
 }
 
+var mappingGetJobDefinitionFieldsEnumLowerCase = map[string]GetJobDefinitionFieldsEnum{
+	"key":                        GetJobDefinitionFieldsKey,
+	"displayname":                GetJobDefinitionFieldsDisplayname,
+	"description":                GetJobDefinitionFieldsDescription,
+	"catalogid":                  GetJobDefinitionFieldsCatalogid,
+	"jobtype":                    GetJobDefinitionFieldsJobtype,
+	"isincremental":              GetJobDefinitionFieldsIsincremental,
+	"dataassetkey":               GetJobDefinitionFieldsDataassetkey,
+	"connectionkey":              GetJobDefinitionFieldsConnectionkey,
+	"internalversion":            GetJobDefinitionFieldsInternalversion,
+	"lifecyclestate":             GetJobDefinitionFieldsLifecyclestate,
+	"timecreated":                GetJobDefinitionFieldsTimecreated,
+	"timeupdated":                GetJobDefinitionFieldsTimeupdated,
+	"createdbyid":                GetJobDefinitionFieldsCreatedbyid,
+	"updatedbyid":                GetJobDefinitionFieldsUpdatedbyid,
+	"uri":                        GetJobDefinitionFieldsUri,
+	"issampledataextracted":      GetJobDefinitionFieldsIssampledataextracted,
+	"sampledatasizeinmbs":        GetJobDefinitionFieldsSampledatasizeinmbs,
+	"timelatestexecutionstarted": GetJobDefinitionFieldsTimelatestexecutionstarted,
+	"timelatestexecutionended":   GetJobDefinitionFieldsTimelatestexecutionended,
+	"jobexecutionstate":          GetJobDefinitionFieldsJobexecutionstate,
+	"scheduletype":               GetJobDefinitionFieldsScheduletype,
+	"properties":                 GetJobDefinitionFieldsProperties,
+}
+
 // GetGetJobDefinitionFieldsEnumValues Enumerates the set of values for GetJobDefinitionFieldsEnum
 func GetGetJobDefinitionFieldsEnumValues() []GetJobDefinitionFieldsEnum {
 	values := make([]GetJobDefinitionFieldsEnum, 0)
@@ -197,11 +222,6 @@ func GetGetJobDefinitionFieldsEnumStringValues() []string {
 
 // GetMappingGetJobDefinitionFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetJobDefinitionFieldsEnum(val string) (GetJobDefinitionFieldsEnum, bool) {
-	mappingGetJobDefinitionFieldsEnumIgnoreCase := make(map[string]GetJobDefinitionFieldsEnum)
-	for k, v := range mappingGetJobDefinitionFieldsEnum {
-		mappingGetJobDefinitionFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetJobDefinitionFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetJobDefinitionFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

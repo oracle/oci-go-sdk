@@ -6,7 +6,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -192,6 +192,14 @@ var mappingListWafLogsActionEnum = map[string]ListWafLogsActionEnum{
 	"REDIRECTED": ListWafLogsActionRedirected,
 }
 
+var mappingListWafLogsActionEnumLowerCase = map[string]ListWafLogsActionEnum{
+	"block":      ListWafLogsActionBlock,
+	"detect":     ListWafLogsActionDetect,
+	"bypass":     ListWafLogsActionBypass,
+	"log":        ListWafLogsActionLog,
+	"redirected": ListWafLogsActionRedirected,
+}
+
 // GetListWafLogsActionEnumValues Enumerates the set of values for ListWafLogsActionEnum
 func GetListWafLogsActionEnumValues() []ListWafLogsActionEnum {
 	values := make([]ListWafLogsActionEnum, 0)
@@ -214,12 +222,7 @@ func GetListWafLogsActionEnumStringValues() []string {
 
 // GetMappingListWafLogsActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWafLogsActionEnum(val string) (ListWafLogsActionEnum, bool) {
-	mappingListWafLogsActionEnumIgnoreCase := make(map[string]ListWafLogsActionEnum)
-	for k, v := range mappingListWafLogsActionEnum {
-		mappingListWafLogsActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWafLogsActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWafLogsActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -249,6 +252,17 @@ var mappingListWafLogsHttpMethodEnum = map[string]ListWafLogsHttpMethodEnum{
 	"CONNECT": ListWafLogsHttpMethodConnect,
 }
 
+var mappingListWafLogsHttpMethodEnumLowerCase = map[string]ListWafLogsHttpMethodEnum{
+	"options": ListWafLogsHttpMethodOptions,
+	"get":     ListWafLogsHttpMethodGet,
+	"head":    ListWafLogsHttpMethodHead,
+	"post":    ListWafLogsHttpMethodPost,
+	"put":     ListWafLogsHttpMethodPut,
+	"delete":  ListWafLogsHttpMethodDelete,
+	"trace":   ListWafLogsHttpMethodTrace,
+	"connect": ListWafLogsHttpMethodConnect,
+}
+
 // GetListWafLogsHttpMethodEnumValues Enumerates the set of values for ListWafLogsHttpMethodEnum
 func GetListWafLogsHttpMethodEnumValues() []ListWafLogsHttpMethodEnum {
 	values := make([]ListWafLogsHttpMethodEnum, 0)
@@ -274,12 +288,7 @@ func GetListWafLogsHttpMethodEnumStringValues() []string {
 
 // GetMappingListWafLogsHttpMethodEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWafLogsHttpMethodEnum(val string) (ListWafLogsHttpMethodEnum, bool) {
-	mappingListWafLogsHttpMethodEnumIgnoreCase := make(map[string]ListWafLogsHttpMethodEnum)
-	for k, v := range mappingListWafLogsHttpMethodEnum {
-		mappingListWafLogsHttpMethodEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWafLogsHttpMethodEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWafLogsHttpMethodEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -311,6 +320,18 @@ var mappingListWafLogsLogTypeEnum = map[string]ListWafLogsLogTypeEnum{
 	"ADDRESS_RATE_LIMITING":        ListWafLogsLogTypeAddressRateLimiting,
 }
 
+var mappingListWafLogsLogTypeEnumLowerCase = map[string]ListWafLogsLogTypeEnum{
+	"access":                       ListWafLogsLogTypeAccess,
+	"protection_rules":             ListWafLogsLogTypeProtectionRules,
+	"js_challenge":                 ListWafLogsLogTypeJsChallenge,
+	"captcha":                      ListWafLogsLogTypeCaptcha,
+	"access_rules":                 ListWafLogsLogTypeAccessRules,
+	"threat_feeds":                 ListWafLogsLogTypeThreatFeeds,
+	"human_interaction_challenge":  ListWafLogsLogTypeHumanInteractionChallenge,
+	"device_fingerprint_challenge": ListWafLogsLogTypeDeviceFingerprintChallenge,
+	"address_rate_limiting":        ListWafLogsLogTypeAddressRateLimiting,
+}
+
 // GetListWafLogsLogTypeEnumValues Enumerates the set of values for ListWafLogsLogTypeEnum
 func GetListWafLogsLogTypeEnumValues() []ListWafLogsLogTypeEnum {
 	values := make([]ListWafLogsLogTypeEnum, 0)
@@ -337,11 +358,6 @@ func GetListWafLogsLogTypeEnumStringValues() []string {
 
 // GetMappingListWafLogsLogTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWafLogsLogTypeEnum(val string) (ListWafLogsLogTypeEnum, bool) {
-	mappingListWafLogsLogTypeEnumIgnoreCase := make(map[string]ListWafLogsLogTypeEnum)
-	for k, v := range mappingListWafLogsLogTypeEnum {
-		mappingListWafLogsLogTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWafLogsLogTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWafLogsLogTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

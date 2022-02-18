@@ -34,6 +34,14 @@ var mappingCustomPropertyDataTypeEnum = map[string]CustomPropertyDataTypeEnum{
 	"DATE":      CustomPropertyDataTypeDate,
 }
 
+var mappingCustomPropertyDataTypeEnumLowerCase = map[string]CustomPropertyDataTypeEnum{
+	"text":      CustomPropertyDataTypeText,
+	"rich_text": CustomPropertyDataTypeRichText,
+	"boolean":   CustomPropertyDataTypeBoolean,
+	"number":    CustomPropertyDataTypeNumber,
+	"date":      CustomPropertyDataTypeDate,
+}
+
 // GetCustomPropertyDataTypeEnumValues Enumerates the set of values for CustomPropertyDataTypeEnum
 func GetCustomPropertyDataTypeEnumValues() []CustomPropertyDataTypeEnum {
 	values := make([]CustomPropertyDataTypeEnum, 0)
@@ -56,11 +64,6 @@ func GetCustomPropertyDataTypeEnumStringValues() []string {
 
 // GetMappingCustomPropertyDataTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCustomPropertyDataTypeEnum(val string) (CustomPropertyDataTypeEnum, bool) {
-	mappingCustomPropertyDataTypeEnumIgnoreCase := make(map[string]CustomPropertyDataTypeEnum)
-	for k, v := range mappingCustomPropertyDataTypeEnum {
-		mappingCustomPropertyDataTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCustomPropertyDataTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCustomPropertyDataTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

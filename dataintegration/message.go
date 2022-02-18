@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -63,6 +63,12 @@ var mappingMessageTypeEnum = map[string]MessageTypeEnum{
 	"INFO":    MessageTypeInfo,
 }
 
+var mappingMessageTypeEnumLowerCase = map[string]MessageTypeEnum{
+	"error":   MessageTypeError,
+	"warning": MessageTypeWarning,
+	"info":    MessageTypeInfo,
+}
+
 // GetMessageTypeEnumValues Enumerates the set of values for MessageTypeEnum
 func GetMessageTypeEnumValues() []MessageTypeEnum {
 	values := make([]MessageTypeEnum, 0)
@@ -83,11 +89,6 @@ func GetMessageTypeEnumStringValues() []string {
 
 // GetMappingMessageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMessageTypeEnum(val string) (MessageTypeEnum, bool) {
-	mappingMessageTypeEnumIgnoreCase := make(map[string]MessageTypeEnum)
-	for k, v := range mappingMessageTypeEnum {
-		mappingMessageTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMessageTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMessageTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -138,6 +138,18 @@ var mappingDbNodeSummaryLifecycleStateEnum = map[string]DbNodeSummaryLifecycleSt
 	"FAILED":       DbNodeSummaryLifecycleStateFailed,
 }
 
+var mappingDbNodeSummaryLifecycleStateEnumLowerCase = map[string]DbNodeSummaryLifecycleStateEnum{
+	"provisioning": DbNodeSummaryLifecycleStateProvisioning,
+	"available":    DbNodeSummaryLifecycleStateAvailable,
+	"updating":     DbNodeSummaryLifecycleStateUpdating,
+	"stopping":     DbNodeSummaryLifecycleStateStopping,
+	"stopped":      DbNodeSummaryLifecycleStateStopped,
+	"starting":     DbNodeSummaryLifecycleStateStarting,
+	"terminating":  DbNodeSummaryLifecycleStateTerminating,
+	"terminated":   DbNodeSummaryLifecycleStateTerminated,
+	"failed":       DbNodeSummaryLifecycleStateFailed,
+}
+
 // GetDbNodeSummaryLifecycleStateEnumValues Enumerates the set of values for DbNodeSummaryLifecycleStateEnum
 func GetDbNodeSummaryLifecycleStateEnumValues() []DbNodeSummaryLifecycleStateEnum {
 	values := make([]DbNodeSummaryLifecycleStateEnum, 0)
@@ -164,12 +176,7 @@ func GetDbNodeSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingDbNodeSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDbNodeSummaryLifecycleStateEnum(val string) (DbNodeSummaryLifecycleStateEnum, bool) {
-	mappingDbNodeSummaryLifecycleStateEnumIgnoreCase := make(map[string]DbNodeSummaryLifecycleStateEnum)
-	for k, v := range mappingDbNodeSummaryLifecycleStateEnum {
-		mappingDbNodeSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDbNodeSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDbNodeSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +190,10 @@ const (
 
 var mappingDbNodeSummaryMaintenanceTypeEnum = map[string]DbNodeSummaryMaintenanceTypeEnum{
 	"VMDB_REBOOT_MIGRATION": DbNodeSummaryMaintenanceTypeVmdbRebootMigration,
+}
+
+var mappingDbNodeSummaryMaintenanceTypeEnumLowerCase = map[string]DbNodeSummaryMaintenanceTypeEnum{
+	"vmdb_reboot_migration": DbNodeSummaryMaintenanceTypeVmdbRebootMigration,
 }
 
 // GetDbNodeSummaryMaintenanceTypeEnumValues Enumerates the set of values for DbNodeSummaryMaintenanceTypeEnum
@@ -203,11 +214,6 @@ func GetDbNodeSummaryMaintenanceTypeEnumStringValues() []string {
 
 // GetMappingDbNodeSummaryMaintenanceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDbNodeSummaryMaintenanceTypeEnum(val string) (DbNodeSummaryMaintenanceTypeEnum, bool) {
-	mappingDbNodeSummaryMaintenanceTypeEnumIgnoreCase := make(map[string]DbNodeSummaryMaintenanceTypeEnum)
-	for k, v := range mappingDbNodeSummaryMaintenanceTypeEnum {
-		mappingDbNodeSummaryMaintenanceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDbNodeSummaryMaintenanceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDbNodeSummaryMaintenanceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

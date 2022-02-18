@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -203,6 +203,15 @@ var mappingSummarizeDatabaseInsightResourceUsageDatabaseTypeEnum = map[string]Su
 	"EXTERNAL-NONCDB": SummarizeDatabaseInsightResourceUsageDatabaseTypeExternalNoncdb,
 }
 
+var mappingSummarizeDatabaseInsightResourceUsageDatabaseTypeEnumLowerCase = map[string]SummarizeDatabaseInsightResourceUsageDatabaseTypeEnum{
+	"adw-s":           SummarizeDatabaseInsightResourceUsageDatabaseTypeAdwS,
+	"atp-s":           SummarizeDatabaseInsightResourceUsageDatabaseTypeAtpS,
+	"adw-d":           SummarizeDatabaseInsightResourceUsageDatabaseTypeAdwD,
+	"atp-d":           SummarizeDatabaseInsightResourceUsageDatabaseTypeAtpD,
+	"external-pdb":    SummarizeDatabaseInsightResourceUsageDatabaseTypeExternalPdb,
+	"external-noncdb": SummarizeDatabaseInsightResourceUsageDatabaseTypeExternalNoncdb,
+}
+
 // GetSummarizeDatabaseInsightResourceUsageDatabaseTypeEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceUsageDatabaseTypeEnum
 func GetSummarizeDatabaseInsightResourceUsageDatabaseTypeEnumValues() []SummarizeDatabaseInsightResourceUsageDatabaseTypeEnum {
 	values := make([]SummarizeDatabaseInsightResourceUsageDatabaseTypeEnum, 0)
@@ -226,11 +235,6 @@ func GetSummarizeDatabaseInsightResourceUsageDatabaseTypeEnumStringValues() []st
 
 // GetMappingSummarizeDatabaseInsightResourceUsageDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeDatabaseInsightResourceUsageDatabaseTypeEnum(val string) (SummarizeDatabaseInsightResourceUsageDatabaseTypeEnum, bool) {
-	mappingSummarizeDatabaseInsightResourceUsageDatabaseTypeEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceUsageDatabaseTypeEnum)
-	for k, v := range mappingSummarizeDatabaseInsightResourceUsageDatabaseTypeEnum {
-		mappingSummarizeDatabaseInsightResourceUsageDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeDatabaseInsightResourceUsageDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeDatabaseInsightResourceUsageDatabaseTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

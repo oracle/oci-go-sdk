@@ -6,7 +6,7 @@ package bds
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -147,6 +147,11 @@ var mappingListBdsMetastoreConfigurationsSortByEnum = map[string]ListBdsMetastor
 	"displayName": ListBdsMetastoreConfigurationsSortByDisplayname,
 }
 
+var mappingListBdsMetastoreConfigurationsSortByEnumLowerCase = map[string]ListBdsMetastoreConfigurationsSortByEnum{
+	"timecreated": ListBdsMetastoreConfigurationsSortByTimecreated,
+	"displayname": ListBdsMetastoreConfigurationsSortByDisplayname,
+}
+
 // GetListBdsMetastoreConfigurationsSortByEnumValues Enumerates the set of values for ListBdsMetastoreConfigurationsSortByEnum
 func GetListBdsMetastoreConfigurationsSortByEnumValues() []ListBdsMetastoreConfigurationsSortByEnum {
 	values := make([]ListBdsMetastoreConfigurationsSortByEnum, 0)
@@ -166,12 +171,7 @@ func GetListBdsMetastoreConfigurationsSortByEnumStringValues() []string {
 
 // GetMappingListBdsMetastoreConfigurationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBdsMetastoreConfigurationsSortByEnum(val string) (ListBdsMetastoreConfigurationsSortByEnum, bool) {
-	mappingListBdsMetastoreConfigurationsSortByEnumIgnoreCase := make(map[string]ListBdsMetastoreConfigurationsSortByEnum)
-	for k, v := range mappingListBdsMetastoreConfigurationsSortByEnum {
-		mappingListBdsMetastoreConfigurationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBdsMetastoreConfigurationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBdsMetastoreConfigurationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +187,11 @@ const (
 var mappingListBdsMetastoreConfigurationsSortOrderEnum = map[string]ListBdsMetastoreConfigurationsSortOrderEnum{
 	"ASC":  ListBdsMetastoreConfigurationsSortOrderAsc,
 	"DESC": ListBdsMetastoreConfigurationsSortOrderDesc,
+}
+
+var mappingListBdsMetastoreConfigurationsSortOrderEnumLowerCase = map[string]ListBdsMetastoreConfigurationsSortOrderEnum{
+	"asc":  ListBdsMetastoreConfigurationsSortOrderAsc,
+	"desc": ListBdsMetastoreConfigurationsSortOrderDesc,
 }
 
 // GetListBdsMetastoreConfigurationsSortOrderEnumValues Enumerates the set of values for ListBdsMetastoreConfigurationsSortOrderEnum
@@ -208,11 +213,6 @@ func GetListBdsMetastoreConfigurationsSortOrderEnumStringValues() []string {
 
 // GetMappingListBdsMetastoreConfigurationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBdsMetastoreConfigurationsSortOrderEnum(val string) (ListBdsMetastoreConfigurationsSortOrderEnum, bool) {
-	mappingListBdsMetastoreConfigurationsSortOrderEnumIgnoreCase := make(map[string]ListBdsMetastoreConfigurationsSortOrderEnum)
-	for k, v := range mappingListBdsMetastoreConfigurationsSortOrderEnum {
-		mappingListBdsMetastoreConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBdsMetastoreConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBdsMetastoreConfigurationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

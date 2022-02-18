@@ -32,6 +32,13 @@ var mappingIntervalTypesEnum = map[string]IntervalTypesEnum{
 	"MONTH": IntervalTypesMonth,
 }
 
+var mappingIntervalTypesEnumLowerCase = map[string]IntervalTypesEnum{
+	"hour":  IntervalTypesHour,
+	"day":   IntervalTypesDay,
+	"week":  IntervalTypesWeek,
+	"month": IntervalTypesMonth,
+}
+
 // GetIntervalTypesEnumValues Enumerates the set of values for IntervalTypesEnum
 func GetIntervalTypesEnumValues() []IntervalTypesEnum {
 	values := make([]IntervalTypesEnum, 0)
@@ -53,11 +60,6 @@ func GetIntervalTypesEnumStringValues() []string {
 
 // GetMappingIntervalTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIntervalTypesEnum(val string) (IntervalTypesEnum, bool) {
-	mappingIntervalTypesEnumIgnoreCase := make(map[string]IntervalTypesEnum)
-	for k, v := range mappingIntervalTypesEnum {
-		mappingIntervalTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIntervalTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIntervalTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

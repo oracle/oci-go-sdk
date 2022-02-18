@@ -14,7 +14,7 @@ package opsi
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,10 @@ var mappingCredentialDetailsCredentialTypeEnum = map[string]CredentialDetailsCre
 	"CREDENTIALS_BY_SOURCE": CredentialDetailsCredentialTypeCredentialsBySource,
 }
 
+var mappingCredentialDetailsCredentialTypeEnumLowerCase = map[string]CredentialDetailsCredentialTypeEnum{
+	"credentials_by_source": CredentialDetailsCredentialTypeCredentialsBySource,
+}
+
 // GetCredentialDetailsCredentialTypeEnumValues Enumerates the set of values for CredentialDetailsCredentialTypeEnum
 func GetCredentialDetailsCredentialTypeEnumValues() []CredentialDetailsCredentialTypeEnum {
 	values := make([]CredentialDetailsCredentialTypeEnum, 0)
@@ -117,11 +121,6 @@ func GetCredentialDetailsCredentialTypeEnumStringValues() []string {
 
 // GetMappingCredentialDetailsCredentialTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCredentialDetailsCredentialTypeEnum(val string) (CredentialDetailsCredentialTypeEnum, bool) {
-	mappingCredentialDetailsCredentialTypeEnumIgnoreCase := make(map[string]CredentialDetailsCredentialTypeEnum)
-	for k, v := range mappingCredentialDetailsCredentialTypeEnum {
-		mappingCredentialDetailsCredentialTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCredentialDetailsCredentialTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCredentialDetailsCredentialTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package artifacts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -59,6 +59,11 @@ var mappingContainerRepositoryReadmeFormatEnum = map[string]ContainerRepositoryR
 	"TEXT_PLAIN":    ContainerRepositoryReadmeFormatPlain,
 }
 
+var mappingContainerRepositoryReadmeFormatEnumLowerCase = map[string]ContainerRepositoryReadmeFormatEnum{
+	"text_markdown": ContainerRepositoryReadmeFormatMarkdown,
+	"text_plain":    ContainerRepositoryReadmeFormatPlain,
+}
+
 // GetContainerRepositoryReadmeFormatEnumValues Enumerates the set of values for ContainerRepositoryReadmeFormatEnum
 func GetContainerRepositoryReadmeFormatEnumValues() []ContainerRepositoryReadmeFormatEnum {
 	values := make([]ContainerRepositoryReadmeFormatEnum, 0)
@@ -78,11 +83,6 @@ func GetContainerRepositoryReadmeFormatEnumStringValues() []string {
 
 // GetMappingContainerRepositoryReadmeFormatEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingContainerRepositoryReadmeFormatEnum(val string) (ContainerRepositoryReadmeFormatEnum, bool) {
-	mappingContainerRepositoryReadmeFormatEnumIgnoreCase := make(map[string]ContainerRepositoryReadmeFormatEnum)
-	for k, v := range mappingContainerRepositoryReadmeFormatEnum {
-		mappingContainerRepositoryReadmeFormatEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingContainerRepositoryReadmeFormatEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingContainerRepositoryReadmeFormatEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -131,6 +131,11 @@ var mappingDeleteDomainRecordsScopeEnum = map[string]DeleteDomainRecordsScopeEnu
 	"PRIVATE": DeleteDomainRecordsScopePrivate,
 }
 
+var mappingDeleteDomainRecordsScopeEnumLowerCase = map[string]DeleteDomainRecordsScopeEnum{
+	"global":  DeleteDomainRecordsScopeGlobal,
+	"private": DeleteDomainRecordsScopePrivate,
+}
+
 // GetDeleteDomainRecordsScopeEnumValues Enumerates the set of values for DeleteDomainRecordsScopeEnum
 func GetDeleteDomainRecordsScopeEnumValues() []DeleteDomainRecordsScopeEnum {
 	values := make([]DeleteDomainRecordsScopeEnum, 0)
@@ -150,11 +155,6 @@ func GetDeleteDomainRecordsScopeEnumStringValues() []string {
 
 // GetMappingDeleteDomainRecordsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeleteDomainRecordsScopeEnum(val string) (DeleteDomainRecordsScopeEnum, bool) {
-	mappingDeleteDomainRecordsScopeEnumIgnoreCase := make(map[string]DeleteDomainRecordsScopeEnum)
-	for k, v := range mappingDeleteDomainRecordsScopeEnum {
-		mappingDeleteDomainRecordsScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeleteDomainRecordsScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeleteDomainRecordsScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
