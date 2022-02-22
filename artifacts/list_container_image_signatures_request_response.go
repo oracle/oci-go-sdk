@@ -6,7 +6,7 @@ package artifacts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -181,6 +181,13 @@ var mappingListContainerImageSignaturesSigningAlgorithmEnum = map[string]ListCon
 	"SHA_512_RSA_PKCS_PSS": ListContainerImageSignaturesSigningAlgorithm512RsaPkcsPss,
 }
 
+var mappingListContainerImageSignaturesSigningAlgorithmEnumLowerCase = map[string]ListContainerImageSignaturesSigningAlgorithmEnum{
+	"sha_224_rsa_pkcs_pss": ListContainerImageSignaturesSigningAlgorithm224RsaPkcsPss,
+	"sha_256_rsa_pkcs_pss": ListContainerImageSignaturesSigningAlgorithm256RsaPkcsPss,
+	"sha_384_rsa_pkcs_pss": ListContainerImageSignaturesSigningAlgorithm384RsaPkcsPss,
+	"sha_512_rsa_pkcs_pss": ListContainerImageSignaturesSigningAlgorithm512RsaPkcsPss,
+}
+
 // GetListContainerImageSignaturesSigningAlgorithmEnumValues Enumerates the set of values for ListContainerImageSignaturesSigningAlgorithmEnum
 func GetListContainerImageSignaturesSigningAlgorithmEnumValues() []ListContainerImageSignaturesSigningAlgorithmEnum {
 	values := make([]ListContainerImageSignaturesSigningAlgorithmEnum, 0)
@@ -202,12 +209,7 @@ func GetListContainerImageSignaturesSigningAlgorithmEnumStringValues() []string 
 
 // GetMappingListContainerImageSignaturesSigningAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListContainerImageSignaturesSigningAlgorithmEnum(val string) (ListContainerImageSignaturesSigningAlgorithmEnum, bool) {
-	mappingListContainerImageSignaturesSigningAlgorithmEnumIgnoreCase := make(map[string]ListContainerImageSignaturesSigningAlgorithmEnum)
-	for k, v := range mappingListContainerImageSignaturesSigningAlgorithmEnum {
-		mappingListContainerImageSignaturesSigningAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListContainerImageSignaturesSigningAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListContainerImageSignaturesSigningAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -223,6 +225,11 @@ const (
 var mappingListContainerImageSignaturesSortByEnum = map[string]ListContainerImageSignaturesSortByEnum{
 	"TIMECREATED": ListContainerImageSignaturesSortByTimecreated,
 	"DISPLAYNAME": ListContainerImageSignaturesSortByDisplayname,
+}
+
+var mappingListContainerImageSignaturesSortByEnumLowerCase = map[string]ListContainerImageSignaturesSortByEnum{
+	"timecreated": ListContainerImageSignaturesSortByTimecreated,
+	"displayname": ListContainerImageSignaturesSortByDisplayname,
 }
 
 // GetListContainerImageSignaturesSortByEnumValues Enumerates the set of values for ListContainerImageSignaturesSortByEnum
@@ -244,12 +251,7 @@ func GetListContainerImageSignaturesSortByEnumStringValues() []string {
 
 // GetMappingListContainerImageSignaturesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListContainerImageSignaturesSortByEnum(val string) (ListContainerImageSignaturesSortByEnum, bool) {
-	mappingListContainerImageSignaturesSortByEnumIgnoreCase := make(map[string]ListContainerImageSignaturesSortByEnum)
-	for k, v := range mappingListContainerImageSignaturesSortByEnum {
-		mappingListContainerImageSignaturesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListContainerImageSignaturesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListContainerImageSignaturesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -265,6 +267,11 @@ const (
 var mappingListContainerImageSignaturesSortOrderEnum = map[string]ListContainerImageSignaturesSortOrderEnum{
 	"ASC":  ListContainerImageSignaturesSortOrderAsc,
 	"DESC": ListContainerImageSignaturesSortOrderDesc,
+}
+
+var mappingListContainerImageSignaturesSortOrderEnumLowerCase = map[string]ListContainerImageSignaturesSortOrderEnum{
+	"asc":  ListContainerImageSignaturesSortOrderAsc,
+	"desc": ListContainerImageSignaturesSortOrderDesc,
 }
 
 // GetListContainerImageSignaturesSortOrderEnumValues Enumerates the set of values for ListContainerImageSignaturesSortOrderEnum
@@ -286,11 +293,6 @@ func GetListContainerImageSignaturesSortOrderEnumStringValues() []string {
 
 // GetMappingListContainerImageSignaturesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListContainerImageSignaturesSortOrderEnum(val string) (ListContainerImageSignaturesSortOrderEnum, bool) {
-	mappingListContainerImageSignaturesSortOrderEnumIgnoreCase := make(map[string]ListContainerImageSignaturesSortOrderEnum)
-	for k, v := range mappingListContainerImageSignaturesSortOrderEnum {
-		mappingListContainerImageSignaturesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListContainerImageSignaturesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListContainerImageSignaturesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

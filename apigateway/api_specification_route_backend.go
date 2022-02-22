@@ -14,7 +14,7 @@ package apigateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -101,6 +101,12 @@ var mappingApiSpecificationRouteBackendTypeEnum = map[string]ApiSpecificationRou
 	"STOCK_RESPONSE_BACKEND":   ApiSpecificationRouteBackendTypeStockResponseBackend,
 }
 
+var mappingApiSpecificationRouteBackendTypeEnumLowerCase = map[string]ApiSpecificationRouteBackendTypeEnum{
+	"oracle_functions_backend": ApiSpecificationRouteBackendTypeOracleFunctionsBackend,
+	"http_backend":             ApiSpecificationRouteBackendTypeHttpBackend,
+	"stock_response_backend":   ApiSpecificationRouteBackendTypeStockResponseBackend,
+}
+
 // GetApiSpecificationRouteBackendTypeEnumValues Enumerates the set of values for ApiSpecificationRouteBackendTypeEnum
 func GetApiSpecificationRouteBackendTypeEnumValues() []ApiSpecificationRouteBackendTypeEnum {
 	values := make([]ApiSpecificationRouteBackendTypeEnum, 0)
@@ -121,11 +127,6 @@ func GetApiSpecificationRouteBackendTypeEnumStringValues() []string {
 
 // GetMappingApiSpecificationRouteBackendTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingApiSpecificationRouteBackendTypeEnum(val string) (ApiSpecificationRouteBackendTypeEnum, bool) {
-	mappingApiSpecificationRouteBackendTypeEnumIgnoreCase := make(map[string]ApiSpecificationRouteBackendTypeEnum)
-	for k, v := range mappingApiSpecificationRouteBackendTypeEnum {
-		mappingApiSpecificationRouteBackendTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingApiSpecificationRouteBackendTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingApiSpecificationRouteBackendTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -70,6 +70,10 @@ var mappingLogEntryTypeEnum = map[string]LogEntryTypeEnum{
 	"TERRAFORM_CONSOLE": LogEntryTypeTerraformConsole,
 }
 
+var mappingLogEntryTypeEnumLowerCase = map[string]LogEntryTypeEnum{
+	"terraform_console": LogEntryTypeTerraformConsole,
+}
+
 // GetLogEntryTypeEnumValues Enumerates the set of values for LogEntryTypeEnum
 func GetLogEntryTypeEnumValues() []LogEntryTypeEnum {
 	values := make([]LogEntryTypeEnum, 0)
@@ -88,12 +92,7 @@ func GetLogEntryTypeEnumStringValues() []string {
 
 // GetMappingLogEntryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogEntryTypeEnum(val string) (LogEntryTypeEnum, bool) {
-	mappingLogEntryTypeEnumIgnoreCase := make(map[string]LogEntryTypeEnum)
-	for k, v := range mappingLogEntryTypeEnum {
-		mappingLogEntryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogEntryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogEntryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -119,6 +118,15 @@ var mappingLogEntryLevelEnum = map[string]LogEntryLevelEnum{
 	"FATAL": LogEntryLevelFatal,
 }
 
+var mappingLogEntryLevelEnumLowerCase = map[string]LogEntryLevelEnum{
+	"trace": LogEntryLevelTrace,
+	"debug": LogEntryLevelDebug,
+	"info":  LogEntryLevelInfo,
+	"warn":  LogEntryLevelWarn,
+	"error": LogEntryLevelError,
+	"fatal": LogEntryLevelFatal,
+}
+
 // GetLogEntryLevelEnumValues Enumerates the set of values for LogEntryLevelEnum
 func GetLogEntryLevelEnumValues() []LogEntryLevelEnum {
 	values := make([]LogEntryLevelEnum, 0)
@@ -142,11 +150,6 @@ func GetLogEntryLevelEnumStringValues() []string {
 
 // GetMappingLogEntryLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogEntryLevelEnum(val string) (LogEntryLevelEnum, bool) {
-	mappingLogEntryLevelEnumIgnoreCase := make(map[string]LogEntryLevelEnum)
-	for k, v := range mappingLogEntryLevelEnum {
-		mappingLogEntryLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogEntryLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogEntryLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -78,6 +78,11 @@ var mappingTransferJobSummaryDeviceTypeEnum = map[string]TransferJobSummaryDevic
 	"APPLIANCE": TransferJobSummaryDeviceTypeAppliance,
 }
 
+var mappingTransferJobSummaryDeviceTypeEnumLowerCase = map[string]TransferJobSummaryDeviceTypeEnum{
+	"disk":      TransferJobSummaryDeviceTypeDisk,
+	"appliance": TransferJobSummaryDeviceTypeAppliance,
+}
+
 // GetTransferJobSummaryDeviceTypeEnumValues Enumerates the set of values for TransferJobSummaryDeviceTypeEnum
 func GetTransferJobSummaryDeviceTypeEnumValues() []TransferJobSummaryDeviceTypeEnum {
 	values := make([]TransferJobSummaryDeviceTypeEnum, 0)
@@ -97,12 +102,7 @@ func GetTransferJobSummaryDeviceTypeEnumStringValues() []string {
 
 // GetMappingTransferJobSummaryDeviceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTransferJobSummaryDeviceTypeEnum(val string) (TransferJobSummaryDeviceTypeEnum, bool) {
-	mappingTransferJobSummaryDeviceTypeEnumIgnoreCase := make(map[string]TransferJobSummaryDeviceTypeEnum)
-	for k, v := range mappingTransferJobSummaryDeviceTypeEnum {
-		mappingTransferJobSummaryDeviceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTransferJobSummaryDeviceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTransferJobSummaryDeviceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -124,6 +124,14 @@ var mappingTransferJobSummaryLifecycleStateEnum = map[string]TransferJobSummaryL
 	"ACTIVE":    TransferJobSummaryLifecycleStateActive,
 	"DELETED":   TransferJobSummaryLifecycleStateDeleted,
 	"CLOSED":    TransferJobSummaryLifecycleStateClosed,
+}
+
+var mappingTransferJobSummaryLifecycleStateEnumLowerCase = map[string]TransferJobSummaryLifecycleStateEnum{
+	"initiated": TransferJobSummaryLifecycleStateInitiated,
+	"preparing": TransferJobSummaryLifecycleStatePreparing,
+	"active":    TransferJobSummaryLifecycleStateActive,
+	"deleted":   TransferJobSummaryLifecycleStateDeleted,
+	"closed":    TransferJobSummaryLifecycleStateClosed,
 }
 
 // GetTransferJobSummaryLifecycleStateEnumValues Enumerates the set of values for TransferJobSummaryLifecycleStateEnum
@@ -148,11 +156,6 @@ func GetTransferJobSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingTransferJobSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTransferJobSummaryLifecycleStateEnum(val string) (TransferJobSummaryLifecycleStateEnum, bool) {
-	mappingTransferJobSummaryLifecycleStateEnumIgnoreCase := make(map[string]TransferJobSummaryLifecycleStateEnum)
-	for k, v := range mappingTransferJobSummaryLifecycleStateEnum {
-		mappingTransferJobSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTransferJobSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTransferJobSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

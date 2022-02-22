@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -59,6 +59,11 @@ var mappingEnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelE
 	"BRING_YOUR_OWN_LICENSE": EnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelBringYourOwnLicense,
 }
 
+var mappingEnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnumLowerCase = map[string]EnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnum{
+	"license_included":       EnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelLicenseIncluded,
+	"bring_your_own_license": EnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelBringYourOwnLicense,
+}
+
 // GetEnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnumValues Enumerates the set of values for EnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnum
 func GetEnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnumValues() []EnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnum {
 	values := make([]EnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnum, 0)
@@ -78,11 +83,6 @@ func GetEnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnum
 
 // GetMappingEnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnum(val string) (EnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnum, bool) {
-	mappingEnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnumIgnoreCase := make(map[string]EnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnum)
-	for k, v := range mappingEnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnum {
-		mappingEnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEnableExternalContainerDatabaseDatabaseManagementDetailsLicenseModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

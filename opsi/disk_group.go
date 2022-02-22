@@ -27,6 +27,10 @@ var mappingDiskGroupEnum = map[string]DiskGroupEnum{
 	"STORAGE": DiskGroupStorage,
 }
 
+var mappingDiskGroupEnumLowerCase = map[string]DiskGroupEnum{
+	"storage": DiskGroupStorage,
+}
+
 // GetDiskGroupEnumValues Enumerates the set of values for DiskGroupEnum
 func GetDiskGroupEnumValues() []DiskGroupEnum {
 	values := make([]DiskGroupEnum, 0)
@@ -45,11 +49,6 @@ func GetDiskGroupEnumStringValues() []string {
 
 // GetMappingDiskGroupEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDiskGroupEnum(val string) (DiskGroupEnum, bool) {
-	mappingDiskGroupEnumIgnoreCase := make(map[string]DiskGroupEnum)
-	for k, v := range mappingDiskGroupEnum {
-		mappingDiskGroupEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDiskGroupEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDiskGroupEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,14 @@ var mappingRestCallConfigMethodTypeEnum = map[string]RestCallConfigMethodTypeEnu
 	"PUT":    RestCallConfigMethodTypePut,
 }
 
+var mappingRestCallConfigMethodTypeEnumLowerCase = map[string]RestCallConfigMethodTypeEnum{
+	"get":    RestCallConfigMethodTypeGet,
+	"post":   RestCallConfigMethodTypePost,
+	"patch":  RestCallConfigMethodTypePatch,
+	"delete": RestCallConfigMethodTypeDelete,
+	"put":    RestCallConfigMethodTypePut,
+}
+
 // GetRestCallConfigMethodTypeEnumValues Enumerates the set of values for RestCallConfigMethodTypeEnum
 func GetRestCallConfigMethodTypeEnumValues() []RestCallConfigMethodTypeEnum {
 	values := make([]RestCallConfigMethodTypeEnum, 0)
@@ -88,11 +96,6 @@ func GetRestCallConfigMethodTypeEnumStringValues() []string {
 
 // GetMappingRestCallConfigMethodTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRestCallConfigMethodTypeEnum(val string) (RestCallConfigMethodTypeEnum, bool) {
-	mappingRestCallConfigMethodTypeEnumIgnoreCase := make(map[string]RestCallConfigMethodTypeEnum)
-	for k, v := range mappingRestCallConfigMethodTypeEnum {
-		mappingRestCallConfigMethodTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRestCallConfigMethodTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRestCallConfigMethodTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

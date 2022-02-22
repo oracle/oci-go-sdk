@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -90,6 +90,15 @@ var mappingReferenceSummaryTypeEnum = map[string]ReferenceSummaryTypeEnum{
 	"GENERIC_JDBC_DATA_ASSET":          ReferenceSummaryTypeGenericJdbcDataAsset,
 }
 
+var mappingReferenceSummaryTypeEnumLowerCase = map[string]ReferenceSummaryTypeEnum{
+	"oracle_data_asset":                ReferenceSummaryTypeOracleDataAsset,
+	"oracle_object_storage_data_asset": ReferenceSummaryTypeOracleObjectStorageDataAsset,
+	"oracle_atp_data_asset":            ReferenceSummaryTypeOracleAtpDataAsset,
+	"oracle_adwc_data_asset":           ReferenceSummaryTypeOracleAdwcDataAsset,
+	"mysql_data_asset":                 ReferenceSummaryTypeMysqlDataAsset,
+	"generic_jdbc_data_asset":          ReferenceSummaryTypeGenericJdbcDataAsset,
+}
+
 // GetReferenceSummaryTypeEnumValues Enumerates the set of values for ReferenceSummaryTypeEnum
 func GetReferenceSummaryTypeEnumValues() []ReferenceSummaryTypeEnum {
 	values := make([]ReferenceSummaryTypeEnum, 0)
@@ -113,11 +122,6 @@ func GetReferenceSummaryTypeEnumStringValues() []string {
 
 // GetMappingReferenceSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingReferenceSummaryTypeEnum(val string) (ReferenceSummaryTypeEnum, bool) {
-	mappingReferenceSummaryTypeEnumIgnoreCase := make(map[string]ReferenceSummaryTypeEnum)
-	for k, v := range mappingReferenceSummaryTypeEnum {
-		mappingReferenceSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingReferenceSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingReferenceSummaryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -75,6 +75,21 @@ var mappingMonthNameEnum = map[string]MonthNameEnum{
 	"DECEMBER":  MonthNameDecember,
 }
 
+var mappingMonthNameEnumLowerCase = map[string]MonthNameEnum{
+	"january":   MonthNameJanuary,
+	"february":  MonthNameFebruary,
+	"march":     MonthNameMarch,
+	"april":     MonthNameApril,
+	"may":       MonthNameMay,
+	"june":      MonthNameJune,
+	"july":      MonthNameJuly,
+	"august":    MonthNameAugust,
+	"september": MonthNameSeptember,
+	"october":   MonthNameOctober,
+	"november":  MonthNameNovember,
+	"december":  MonthNameDecember,
+}
+
 // GetMonthNameEnumValues Enumerates the set of values for MonthNameEnum
 func GetMonthNameEnumValues() []MonthNameEnum {
 	values := make([]MonthNameEnum, 0)
@@ -104,11 +119,6 @@ func GetMonthNameEnumStringValues() []string {
 
 // GetMappingMonthNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMonthNameEnum(val string) (MonthNameEnum, bool) {
-	mappingMonthNameEnumIgnoreCase := make(map[string]MonthNameEnum)
-	for k, v := range mappingMonthNameEnum {
-		mappingMonthNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMonthNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMonthNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

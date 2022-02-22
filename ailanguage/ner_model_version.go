@@ -29,6 +29,11 @@ var mappingNerModelVersionEnum = map[string]NerModelVersionEnum{
 	"V1.1": NerModelVersionV11,
 }
 
+var mappingNerModelVersionEnumLowerCase = map[string]NerModelVersionEnum{
+	"v2.1": NerModelVersionV21,
+	"v1.1": NerModelVersionV11,
+}
+
 // GetNerModelVersionEnumValues Enumerates the set of values for NerModelVersionEnum
 func GetNerModelVersionEnumValues() []NerModelVersionEnum {
 	values := make([]NerModelVersionEnum, 0)
@@ -48,11 +53,6 @@ func GetNerModelVersionEnumStringValues() []string {
 
 // GetMappingNerModelVersionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNerModelVersionEnum(val string) (NerModelVersionEnum, bool) {
-	mappingNerModelVersionEnumIgnoreCase := make(map[string]NerModelVersionEnum)
-	for k, v := range mappingNerModelVersionEnum {
-		mappingNerModelVersionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNerModelVersionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNerModelVersionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

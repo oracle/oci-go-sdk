@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -84,6 +84,15 @@ var mappingPatchObjectMetadataTypeEnum = map[string]PatchObjectMetadataTypeEnum{
 	"REST_TASK":         PatchObjectMetadataTypeRestTask,
 }
 
+var mappingPatchObjectMetadataTypeEnumLowerCase = map[string]PatchObjectMetadataTypeEnum{
+	"integration_task":  PatchObjectMetadataTypeIntegrationTask,
+	"data_loader_task":  PatchObjectMetadataTypeDataLoaderTask,
+	"pipeline_task":     PatchObjectMetadataTypePipelineTask,
+	"sql_task":          PatchObjectMetadataTypeSqlTask,
+	"oci_dataflow_task": PatchObjectMetadataTypeOciDataflowTask,
+	"rest_task":         PatchObjectMetadataTypeRestTask,
+}
+
 // GetPatchObjectMetadataTypeEnumValues Enumerates the set of values for PatchObjectMetadataTypeEnum
 func GetPatchObjectMetadataTypeEnumValues() []PatchObjectMetadataTypeEnum {
 	values := make([]PatchObjectMetadataTypeEnum, 0)
@@ -107,12 +116,7 @@ func GetPatchObjectMetadataTypeEnumStringValues() []string {
 
 // GetMappingPatchObjectMetadataTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchObjectMetadataTypeEnum(val string) (PatchObjectMetadataTypeEnum, bool) {
-	mappingPatchObjectMetadataTypeEnumIgnoreCase := make(map[string]PatchObjectMetadataTypeEnum)
-	for k, v := range mappingPatchObjectMetadataTypeEnum {
-		mappingPatchObjectMetadataTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchObjectMetadataTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchObjectMetadataTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -130,6 +134,12 @@ var mappingPatchObjectMetadataActionEnum = map[string]PatchObjectMetadataActionE
 	"CREATED": PatchObjectMetadataActionCreated,
 	"DELETED": PatchObjectMetadataActionDeleted,
 	"UPDATED": PatchObjectMetadataActionUpdated,
+}
+
+var mappingPatchObjectMetadataActionEnumLowerCase = map[string]PatchObjectMetadataActionEnum{
+	"created": PatchObjectMetadataActionCreated,
+	"deleted": PatchObjectMetadataActionDeleted,
+	"updated": PatchObjectMetadataActionUpdated,
 }
 
 // GetPatchObjectMetadataActionEnumValues Enumerates the set of values for PatchObjectMetadataActionEnum
@@ -152,11 +162,6 @@ func GetPatchObjectMetadataActionEnumStringValues() []string {
 
 // GetMappingPatchObjectMetadataActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchObjectMetadataActionEnum(val string) (PatchObjectMetadataActionEnum, bool) {
-	mappingPatchObjectMetadataActionEnumIgnoreCase := make(map[string]PatchObjectMetadataActionEnum)
-	for k, v := range mappingPatchObjectMetadataActionEnum {
-		mappingPatchObjectMetadataActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchObjectMetadataActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchObjectMetadataActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

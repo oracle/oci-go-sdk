@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,11 @@ var mappingListUserDefinedFunctionsSortOrderEnum = map[string]ListUserDefinedFun
 	"DESC": ListUserDefinedFunctionsSortOrderDesc,
 }
 
+var mappingListUserDefinedFunctionsSortOrderEnumLowerCase = map[string]ListUserDefinedFunctionsSortOrderEnum{
+	"asc":  ListUserDefinedFunctionsSortOrderAsc,
+	"desc": ListUserDefinedFunctionsSortOrderDesc,
+}
+
 // GetListUserDefinedFunctionsSortOrderEnumValues Enumerates the set of values for ListUserDefinedFunctionsSortOrderEnum
 func GetListUserDefinedFunctionsSortOrderEnumValues() []ListUserDefinedFunctionsSortOrderEnum {
 	values := make([]ListUserDefinedFunctionsSortOrderEnum, 0)
@@ -163,12 +168,7 @@ func GetListUserDefinedFunctionsSortOrderEnumStringValues() []string {
 
 // GetMappingListUserDefinedFunctionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUserDefinedFunctionsSortOrderEnum(val string) (ListUserDefinedFunctionsSortOrderEnum, bool) {
-	mappingListUserDefinedFunctionsSortOrderEnumIgnoreCase := make(map[string]ListUserDefinedFunctionsSortOrderEnum)
-	for k, v := range mappingListUserDefinedFunctionsSortOrderEnum {
-		mappingListUserDefinedFunctionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUserDefinedFunctionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUserDefinedFunctionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -184,6 +184,11 @@ const (
 var mappingListUserDefinedFunctionsSortByEnum = map[string]ListUserDefinedFunctionsSortByEnum{
 	"TIME_CREATED": ListUserDefinedFunctionsSortByTimeCreated,
 	"DISPLAY_NAME": ListUserDefinedFunctionsSortByDisplayName,
+}
+
+var mappingListUserDefinedFunctionsSortByEnumLowerCase = map[string]ListUserDefinedFunctionsSortByEnum{
+	"time_created": ListUserDefinedFunctionsSortByTimeCreated,
+	"display_name": ListUserDefinedFunctionsSortByDisplayName,
 }
 
 // GetListUserDefinedFunctionsSortByEnumValues Enumerates the set of values for ListUserDefinedFunctionsSortByEnum
@@ -205,11 +210,6 @@ func GetListUserDefinedFunctionsSortByEnumStringValues() []string {
 
 // GetMappingListUserDefinedFunctionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUserDefinedFunctionsSortByEnum(val string) (ListUserDefinedFunctionsSortByEnum, bool) {
-	mappingListUserDefinedFunctionsSortByEnumIgnoreCase := make(map[string]ListUserDefinedFunctionsSortByEnum)
-	for k, v := range mappingListUserDefinedFunctionsSortByEnum {
-		mappingListUserDefinedFunctionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUserDefinedFunctionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUserDefinedFunctionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

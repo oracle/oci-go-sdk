@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -199,6 +199,18 @@ var mappingDeployStageExecutionProgressStatusEnum = map[string]DeployStageExecut
 	"ROLLBACK_FAILED":      DeployStageExecutionProgressStatusRollbackFailed,
 }
 
+var mappingDeployStageExecutionProgressStatusEnumLowerCase = map[string]DeployStageExecutionProgressStatusEnum{
+	"accepted":             DeployStageExecutionProgressStatusAccepted,
+	"in_progress":          DeployStageExecutionProgressStatusInProgress,
+	"failed":               DeployStageExecutionProgressStatusFailed,
+	"succeeded":            DeployStageExecutionProgressStatusSucceeded,
+	"canceling":            DeployStageExecutionProgressStatusCanceling,
+	"canceled":             DeployStageExecutionProgressStatusCanceled,
+	"rollback_in_progress": DeployStageExecutionProgressStatusRollbackInProgress,
+	"rollback_succeeded":   DeployStageExecutionProgressStatusRollbackSucceeded,
+	"rollback_failed":      DeployStageExecutionProgressStatusRollbackFailed,
+}
+
 // GetDeployStageExecutionProgressStatusEnumValues Enumerates the set of values for DeployStageExecutionProgressStatusEnum
 func GetDeployStageExecutionProgressStatusEnumValues() []DeployStageExecutionProgressStatusEnum {
 	values := make([]DeployStageExecutionProgressStatusEnum, 0)
@@ -225,11 +237,6 @@ func GetDeployStageExecutionProgressStatusEnumStringValues() []string {
 
 // GetMappingDeployStageExecutionProgressStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeployStageExecutionProgressStatusEnum(val string) (DeployStageExecutionProgressStatusEnum, bool) {
-	mappingDeployStageExecutionProgressStatusEnumIgnoreCase := make(map[string]DeployStageExecutionProgressStatusEnum)
-	for k, v := range mappingDeployStageExecutionProgressStatusEnum {
-		mappingDeployStageExecutionProgressStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeployStageExecutionProgressStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeployStageExecutionProgressStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

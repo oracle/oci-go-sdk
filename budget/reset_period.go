@@ -25,6 +25,10 @@ var mappingResetPeriodEnum = map[string]ResetPeriodEnum{
 	"MONTHLY": ResetPeriodMonthly,
 }
 
+var mappingResetPeriodEnumLowerCase = map[string]ResetPeriodEnum{
+	"monthly": ResetPeriodMonthly,
+}
+
 // GetResetPeriodEnumValues Enumerates the set of values for ResetPeriodEnum
 func GetResetPeriodEnumValues() []ResetPeriodEnum {
 	values := make([]ResetPeriodEnum, 0)
@@ -43,11 +47,6 @@ func GetResetPeriodEnumStringValues() []string {
 
 // GetMappingResetPeriodEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingResetPeriodEnum(val string) (ResetPeriodEnum, bool) {
-	mappingResetPeriodEnumIgnoreCase := make(map[string]ResetPeriodEnum)
-	for k, v := range mappingResetPeriodEnum {
-		mappingResetPeriodEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingResetPeriodEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingResetPeriodEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

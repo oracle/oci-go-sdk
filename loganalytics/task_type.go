@@ -31,6 +31,13 @@ var mappingTaskTypeEnum = map[string]TaskTypeEnum{
 	"ACCELERATION_MAINTENANCE": TaskTypeAccelerationMaintenance,
 }
 
+var mappingTaskTypeEnumLowerCase = map[string]TaskTypeEnum{
+	"saved_search":             TaskTypeSavedSearch,
+	"acceleration":             TaskTypeAcceleration,
+	"purge":                    TaskTypePurge,
+	"acceleration_maintenance": TaskTypeAccelerationMaintenance,
+}
+
 // GetTaskTypeEnumValues Enumerates the set of values for TaskTypeEnum
 func GetTaskTypeEnumValues() []TaskTypeEnum {
 	values := make([]TaskTypeEnum, 0)
@@ -52,11 +59,6 @@ func GetTaskTypeEnumStringValues() []string {
 
 // GetMappingTaskTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskTypeEnum(val string) (TaskTypeEnum, bool) {
-	mappingTaskTypeEnumIgnoreCase := make(map[string]TaskTypeEnum)
-	for k, v := range mappingTaskTypeEnum {
-		mappingTaskTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package marketplace
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -103,6 +103,12 @@ var mappingListingSummaryPricingTypesEnum = map[string]ListingSummaryPricingType
 	"PAYGO": ListingSummaryPricingTypesPaygo,
 }
 
+var mappingListingSummaryPricingTypesEnumLowerCase = map[string]ListingSummaryPricingTypesEnum{
+	"free":  ListingSummaryPricingTypesFree,
+	"byol":  ListingSummaryPricingTypesByol,
+	"paygo": ListingSummaryPricingTypesPaygo,
+}
+
 // GetListingSummaryPricingTypesEnumValues Enumerates the set of values for ListingSummaryPricingTypesEnum
 func GetListingSummaryPricingTypesEnumValues() []ListingSummaryPricingTypesEnum {
 	values := make([]ListingSummaryPricingTypesEnum, 0)
@@ -123,11 +129,6 @@ func GetListingSummaryPricingTypesEnumStringValues() []string {
 
 // GetMappingListingSummaryPricingTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListingSummaryPricingTypesEnum(val string) (ListingSummaryPricingTypesEnum, bool) {
-	mappingListingSummaryPricingTypesEnumIgnoreCase := make(map[string]ListingSummaryPricingTypesEnum)
-	for k, v := range mappingListingSummaryPricingTypesEnum {
-		mappingListingSummaryPricingTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListingSummaryPricingTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListingSummaryPricingTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

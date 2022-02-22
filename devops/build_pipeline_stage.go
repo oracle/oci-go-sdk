@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -252,6 +252,15 @@ var mappingBuildPipelineStageLifecycleStateEnum = map[string]BuildPipelineStageL
 	"FAILED":   BuildPipelineStageLifecycleStateFailed,
 }
 
+var mappingBuildPipelineStageLifecycleStateEnumLowerCase = map[string]BuildPipelineStageLifecycleStateEnum{
+	"creating": BuildPipelineStageLifecycleStateCreating,
+	"updating": BuildPipelineStageLifecycleStateUpdating,
+	"active":   BuildPipelineStageLifecycleStateActive,
+	"deleting": BuildPipelineStageLifecycleStateDeleting,
+	"deleted":  BuildPipelineStageLifecycleStateDeleted,
+	"failed":   BuildPipelineStageLifecycleStateFailed,
+}
+
 // GetBuildPipelineStageLifecycleStateEnumValues Enumerates the set of values for BuildPipelineStageLifecycleStateEnum
 func GetBuildPipelineStageLifecycleStateEnumValues() []BuildPipelineStageLifecycleStateEnum {
 	values := make([]BuildPipelineStageLifecycleStateEnum, 0)
@@ -275,12 +284,7 @@ func GetBuildPipelineStageLifecycleStateEnumStringValues() []string {
 
 // GetMappingBuildPipelineStageLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBuildPipelineStageLifecycleStateEnum(val string) (BuildPipelineStageLifecycleStateEnum, bool) {
-	mappingBuildPipelineStageLifecycleStateEnumIgnoreCase := make(map[string]BuildPipelineStageLifecycleStateEnum)
-	for k, v := range mappingBuildPipelineStageLifecycleStateEnum {
-		mappingBuildPipelineStageLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBuildPipelineStageLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBuildPipelineStageLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -300,6 +304,13 @@ var mappingBuildPipelineStageBuildPipelineStageTypeEnum = map[string]BuildPipeli
 	"BUILD":                       BuildPipelineStageBuildPipelineStageTypeBuild,
 	"DELIVER_ARTIFACT":            BuildPipelineStageBuildPipelineStageTypeDeliverArtifact,
 	"TRIGGER_DEPLOYMENT_PIPELINE": BuildPipelineStageBuildPipelineStageTypeTriggerDeploymentPipeline,
+}
+
+var mappingBuildPipelineStageBuildPipelineStageTypeEnumLowerCase = map[string]BuildPipelineStageBuildPipelineStageTypeEnum{
+	"wait":                        BuildPipelineStageBuildPipelineStageTypeWait,
+	"build":                       BuildPipelineStageBuildPipelineStageTypeBuild,
+	"deliver_artifact":            BuildPipelineStageBuildPipelineStageTypeDeliverArtifact,
+	"trigger_deployment_pipeline": BuildPipelineStageBuildPipelineStageTypeTriggerDeploymentPipeline,
 }
 
 // GetBuildPipelineStageBuildPipelineStageTypeEnumValues Enumerates the set of values for BuildPipelineStageBuildPipelineStageTypeEnum
@@ -323,11 +334,6 @@ func GetBuildPipelineStageBuildPipelineStageTypeEnumStringValues() []string {
 
 // GetMappingBuildPipelineStageBuildPipelineStageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBuildPipelineStageBuildPipelineStageTypeEnum(val string) (BuildPipelineStageBuildPipelineStageTypeEnum, bool) {
-	mappingBuildPipelineStageBuildPipelineStageTypeEnumIgnoreCase := make(map[string]BuildPipelineStageBuildPipelineStageTypeEnum)
-	for k, v := range mappingBuildPipelineStageBuildPipelineStageTypeEnum {
-		mappingBuildPipelineStageBuildPipelineStageTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBuildPipelineStageBuildPipelineStageTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBuildPipelineStageBuildPipelineStageTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

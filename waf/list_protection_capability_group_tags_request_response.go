@@ -6,7 +6,7 @@ package waf
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,11 @@ var mappingListProtectionCapabilityGroupTagsSortOrderEnum = map[string]ListProte
 	"DESC": ListProtectionCapabilityGroupTagsSortOrderDesc,
 }
 
+var mappingListProtectionCapabilityGroupTagsSortOrderEnumLowerCase = map[string]ListProtectionCapabilityGroupTagsSortOrderEnum{
+	"asc":  ListProtectionCapabilityGroupTagsSortOrderAsc,
+	"desc": ListProtectionCapabilityGroupTagsSortOrderDesc,
+}
+
 // GetListProtectionCapabilityGroupTagsSortOrderEnumValues Enumerates the set of values for ListProtectionCapabilityGroupTagsSortOrderEnum
 func GetListProtectionCapabilityGroupTagsSortOrderEnumValues() []ListProtectionCapabilityGroupTagsSortOrderEnum {
 	values := make([]ListProtectionCapabilityGroupTagsSortOrderEnum, 0)
@@ -157,12 +162,7 @@ func GetListProtectionCapabilityGroupTagsSortOrderEnumStringValues() []string {
 
 // GetMappingListProtectionCapabilityGroupTagsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProtectionCapabilityGroupTagsSortOrderEnum(val string) (ListProtectionCapabilityGroupTagsSortOrderEnum, bool) {
-	mappingListProtectionCapabilityGroupTagsSortOrderEnumIgnoreCase := make(map[string]ListProtectionCapabilityGroupTagsSortOrderEnum)
-	for k, v := range mappingListProtectionCapabilityGroupTagsSortOrderEnum {
-		mappingListProtectionCapabilityGroupTagsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProtectionCapabilityGroupTagsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProtectionCapabilityGroupTagsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -175,6 +175,10 @@ const (
 )
 
 var mappingListProtectionCapabilityGroupTagsSortByEnum = map[string]ListProtectionCapabilityGroupTagsSortByEnum{
+	"name": ListProtectionCapabilityGroupTagsSortByName,
+}
+
+var mappingListProtectionCapabilityGroupTagsSortByEnumLowerCase = map[string]ListProtectionCapabilityGroupTagsSortByEnum{
 	"name": ListProtectionCapabilityGroupTagsSortByName,
 }
 
@@ -196,11 +200,6 @@ func GetListProtectionCapabilityGroupTagsSortByEnumStringValues() []string {
 
 // GetMappingListProtectionCapabilityGroupTagsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProtectionCapabilityGroupTagsSortByEnum(val string) (ListProtectionCapabilityGroupTagsSortByEnum, bool) {
-	mappingListProtectionCapabilityGroupTagsSortByEnumIgnoreCase := make(map[string]ListProtectionCapabilityGroupTagsSortByEnum)
-	for k, v := range mappingListProtectionCapabilityGroupTagsSortByEnum {
-		mappingListProtectionCapabilityGroupTagsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProtectionCapabilityGroupTagsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProtectionCapabilityGroupTagsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

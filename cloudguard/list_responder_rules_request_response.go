@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -145,6 +145,16 @@ var mappingListResponderRulesLifecycleStateEnum = map[string]ListResponderRulesL
 	"FAILED":   ListResponderRulesLifecycleStateFailed,
 }
 
+var mappingListResponderRulesLifecycleStateEnumLowerCase = map[string]ListResponderRulesLifecycleStateEnum{
+	"creating": ListResponderRulesLifecycleStateCreating,
+	"updating": ListResponderRulesLifecycleStateUpdating,
+	"active":   ListResponderRulesLifecycleStateActive,
+	"inactive": ListResponderRulesLifecycleStateInactive,
+	"deleting": ListResponderRulesLifecycleStateDeleting,
+	"deleted":  ListResponderRulesLifecycleStateDeleted,
+	"failed":   ListResponderRulesLifecycleStateFailed,
+}
+
 // GetListResponderRulesLifecycleStateEnumValues Enumerates the set of values for ListResponderRulesLifecycleStateEnum
 func GetListResponderRulesLifecycleStateEnumValues() []ListResponderRulesLifecycleStateEnum {
 	values := make([]ListResponderRulesLifecycleStateEnum, 0)
@@ -169,12 +179,7 @@ func GetListResponderRulesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListResponderRulesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResponderRulesLifecycleStateEnum(val string) (ListResponderRulesLifecycleStateEnum, bool) {
-	mappingListResponderRulesLifecycleStateEnumIgnoreCase := make(map[string]ListResponderRulesLifecycleStateEnum)
-	for k, v := range mappingListResponderRulesLifecycleStateEnum {
-		mappingListResponderRulesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResponderRulesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResponderRulesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -190,6 +195,11 @@ const (
 var mappingListResponderRulesSortOrderEnum = map[string]ListResponderRulesSortOrderEnum{
 	"ASC":  ListResponderRulesSortOrderAsc,
 	"DESC": ListResponderRulesSortOrderDesc,
+}
+
+var mappingListResponderRulesSortOrderEnumLowerCase = map[string]ListResponderRulesSortOrderEnum{
+	"asc":  ListResponderRulesSortOrderAsc,
+	"desc": ListResponderRulesSortOrderDesc,
 }
 
 // GetListResponderRulesSortOrderEnumValues Enumerates the set of values for ListResponderRulesSortOrderEnum
@@ -211,12 +221,7 @@ func GetListResponderRulesSortOrderEnumStringValues() []string {
 
 // GetMappingListResponderRulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResponderRulesSortOrderEnum(val string) (ListResponderRulesSortOrderEnum, bool) {
-	mappingListResponderRulesSortOrderEnumIgnoreCase := make(map[string]ListResponderRulesSortOrderEnum)
-	for k, v := range mappingListResponderRulesSortOrderEnum {
-		mappingListResponderRulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResponderRulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResponderRulesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -232,6 +237,11 @@ const (
 var mappingListResponderRulesSortByEnum = map[string]ListResponderRulesSortByEnum{
 	"timeCreated": ListResponderRulesSortByTimecreated,
 	"displayName": ListResponderRulesSortByDisplayname,
+}
+
+var mappingListResponderRulesSortByEnumLowerCase = map[string]ListResponderRulesSortByEnum{
+	"timecreated": ListResponderRulesSortByTimecreated,
+	"displayname": ListResponderRulesSortByDisplayname,
 }
 
 // GetListResponderRulesSortByEnumValues Enumerates the set of values for ListResponderRulesSortByEnum
@@ -253,11 +263,6 @@ func GetListResponderRulesSortByEnumStringValues() []string {
 
 // GetMappingListResponderRulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResponderRulesSortByEnum(val string) (ListResponderRulesSortByEnum, bool) {
-	mappingListResponderRulesSortByEnumIgnoreCase := make(map[string]ListResponderRulesSortByEnum)
-	for k, v := range mappingListResponderRulesSortByEnum {
-		mappingListResponderRulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResponderRulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResponderRulesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

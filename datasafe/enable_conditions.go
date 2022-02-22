@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -70,6 +70,11 @@ var mappingEnableConditionsEntitySelectionEnum = map[string]EnableConditionsEnti
 	"EXCLUDE": EnableConditionsEntitySelectionExclude,
 }
 
+var mappingEnableConditionsEntitySelectionEnumLowerCase = map[string]EnableConditionsEntitySelectionEnum{
+	"include": EnableConditionsEntitySelectionInclude,
+	"exclude": EnableConditionsEntitySelectionExclude,
+}
+
 // GetEnableConditionsEntitySelectionEnumValues Enumerates the set of values for EnableConditionsEntitySelectionEnum
 func GetEnableConditionsEntitySelectionEnumValues() []EnableConditionsEntitySelectionEnum {
 	values := make([]EnableConditionsEntitySelectionEnum, 0)
@@ -89,12 +94,7 @@ func GetEnableConditionsEntitySelectionEnumStringValues() []string {
 
 // GetMappingEnableConditionsEntitySelectionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEnableConditionsEntitySelectionEnum(val string) (EnableConditionsEntitySelectionEnum, bool) {
-	mappingEnableConditionsEntitySelectionEnumIgnoreCase := make(map[string]EnableConditionsEntitySelectionEnum)
-	for k, v := range mappingEnableConditionsEntitySelectionEnum {
-		mappingEnableConditionsEntitySelectionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEnableConditionsEntitySelectionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEnableConditionsEntitySelectionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -112,6 +112,12 @@ var mappingEnableConditionsEntityTypeEnum = map[string]EnableConditionsEntityTyp
 	"USER":      EnableConditionsEntityTypeUser,
 	"ROLE":      EnableConditionsEntityTypeRole,
 	"ALL_USERS": EnableConditionsEntityTypeAllUsers,
+}
+
+var mappingEnableConditionsEntityTypeEnumLowerCase = map[string]EnableConditionsEntityTypeEnum{
+	"user":      EnableConditionsEntityTypeUser,
+	"role":      EnableConditionsEntityTypeRole,
+	"all_users": EnableConditionsEntityTypeAllUsers,
 }
 
 // GetEnableConditionsEntityTypeEnumValues Enumerates the set of values for EnableConditionsEntityTypeEnum
@@ -134,12 +140,7 @@ func GetEnableConditionsEntityTypeEnumStringValues() []string {
 
 // GetMappingEnableConditionsEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEnableConditionsEntityTypeEnum(val string) (EnableConditionsEntityTypeEnum, bool) {
-	mappingEnableConditionsEntityTypeEnumIgnoreCase := make(map[string]EnableConditionsEntityTypeEnum)
-	for k, v := range mappingEnableConditionsEntityTypeEnum {
-		mappingEnableConditionsEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEnableConditionsEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEnableConditionsEntityTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -157,6 +158,12 @@ var mappingEnableConditionsOperationStatusEnum = map[string]EnableConditionsOper
 	"SUCCESS": EnableConditionsOperationStatusSuccess,
 	"FAILURE": EnableConditionsOperationStatusFailure,
 	"BOTH":    EnableConditionsOperationStatusBoth,
+}
+
+var mappingEnableConditionsOperationStatusEnumLowerCase = map[string]EnableConditionsOperationStatusEnum{
+	"success": EnableConditionsOperationStatusSuccess,
+	"failure": EnableConditionsOperationStatusFailure,
+	"both":    EnableConditionsOperationStatusBoth,
 }
 
 // GetEnableConditionsOperationStatusEnumValues Enumerates the set of values for EnableConditionsOperationStatusEnum
@@ -179,11 +186,6 @@ func GetEnableConditionsOperationStatusEnumStringValues() []string {
 
 // GetMappingEnableConditionsOperationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEnableConditionsOperationStatusEnum(val string) (EnableConditionsOperationStatusEnum, bool) {
-	mappingEnableConditionsOperationStatusEnumIgnoreCase := make(map[string]EnableConditionsOperationStatusEnum)
-	for k, v := range mappingEnableConditionsOperationStatusEnum {
-		mappingEnableConditionsOperationStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEnableConditionsOperationStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEnableConditionsOperationStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

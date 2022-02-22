@@ -31,6 +31,12 @@ var mappingResourceStatusEnum = map[string]ResourceStatusEnum{
 	"TERMINATED": ResourceStatusTerminated,
 }
 
+var mappingResourceStatusEnumLowerCase = map[string]ResourceStatusEnum{
+	"disabled":   ResourceStatusDisabled,
+	"enabled":    ResourceStatusEnabled,
+	"terminated": ResourceStatusTerminated,
+}
+
 // GetResourceStatusEnumValues Enumerates the set of values for ResourceStatusEnum
 func GetResourceStatusEnumValues() []ResourceStatusEnum {
 	values := make([]ResourceStatusEnum, 0)
@@ -51,11 +57,6 @@ func GetResourceStatusEnumStringValues() []string {
 
 // GetMappingResourceStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingResourceStatusEnum(val string) (ResourceStatusEnum, bool) {
-	mappingResourceStatusEnumIgnoreCase := make(map[string]ResourceStatusEnum)
-	for k, v := range mappingResourceStatusEnum {
-		mappingResourceStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingResourceStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingResourceStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package nosql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -125,6 +125,11 @@ var mappingGetRowConsistencyEnum = map[string]GetRowConsistencyEnum{
 	"ABSOLUTE": GetRowConsistencyAbsolute,
 }
 
+var mappingGetRowConsistencyEnumLowerCase = map[string]GetRowConsistencyEnum{
+	"eventual": GetRowConsistencyEventual,
+	"absolute": GetRowConsistencyAbsolute,
+}
+
 // GetGetRowConsistencyEnumValues Enumerates the set of values for GetRowConsistencyEnum
 func GetGetRowConsistencyEnumValues() []GetRowConsistencyEnum {
 	values := make([]GetRowConsistencyEnum, 0)
@@ -144,11 +149,6 @@ func GetGetRowConsistencyEnumStringValues() []string {
 
 // GetMappingGetRowConsistencyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetRowConsistencyEnum(val string) (GetRowConsistencyEnum, bool) {
-	mappingGetRowConsistencyEnumIgnoreCase := make(map[string]GetRowConsistencyEnum)
-	for k, v := range mappingGetRowConsistencyEnum {
-		mappingGetRowConsistencyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetRowConsistencyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetRowConsistencyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

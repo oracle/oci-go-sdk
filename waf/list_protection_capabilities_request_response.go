@@ -6,7 +6,7 @@ package waf
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -149,6 +149,11 @@ var mappingListProtectionCapabilitiesSortOrderEnum = map[string]ListProtectionCa
 	"DESC": ListProtectionCapabilitiesSortOrderDesc,
 }
 
+var mappingListProtectionCapabilitiesSortOrderEnumLowerCase = map[string]ListProtectionCapabilitiesSortOrderEnum{
+	"asc":  ListProtectionCapabilitiesSortOrderAsc,
+	"desc": ListProtectionCapabilitiesSortOrderDesc,
+}
+
 // GetListProtectionCapabilitiesSortOrderEnumValues Enumerates the set of values for ListProtectionCapabilitiesSortOrderEnum
 func GetListProtectionCapabilitiesSortOrderEnumValues() []ListProtectionCapabilitiesSortOrderEnum {
 	values := make([]ListProtectionCapabilitiesSortOrderEnum, 0)
@@ -168,12 +173,7 @@ func GetListProtectionCapabilitiesSortOrderEnumStringValues() []string {
 
 // GetMappingListProtectionCapabilitiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProtectionCapabilitiesSortOrderEnum(val string) (ListProtectionCapabilitiesSortOrderEnum, bool) {
-	mappingListProtectionCapabilitiesSortOrderEnumIgnoreCase := make(map[string]ListProtectionCapabilitiesSortOrderEnum)
-	for k, v := range mappingListProtectionCapabilitiesSortOrderEnum {
-		mappingListProtectionCapabilitiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProtectionCapabilitiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProtectionCapabilitiesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -191,6 +191,12 @@ var mappingListProtectionCapabilitiesSortByEnum = map[string]ListProtectionCapab
 	"key":         ListProtectionCapabilitiesSortByKey,
 	"type":        ListProtectionCapabilitiesSortByType,
 	"displayName": ListProtectionCapabilitiesSortByDisplayname,
+}
+
+var mappingListProtectionCapabilitiesSortByEnumLowerCase = map[string]ListProtectionCapabilitiesSortByEnum{
+	"key":         ListProtectionCapabilitiesSortByKey,
+	"type":        ListProtectionCapabilitiesSortByType,
+	"displayname": ListProtectionCapabilitiesSortByDisplayname,
 }
 
 // GetListProtectionCapabilitiesSortByEnumValues Enumerates the set of values for ListProtectionCapabilitiesSortByEnum
@@ -213,11 +219,6 @@ func GetListProtectionCapabilitiesSortByEnumStringValues() []string {
 
 // GetMappingListProtectionCapabilitiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProtectionCapabilitiesSortByEnum(val string) (ListProtectionCapabilitiesSortByEnum, bool) {
-	mappingListProtectionCapabilitiesSortByEnumIgnoreCase := make(map[string]ListProtectionCapabilitiesSortByEnum)
-	for k, v := range mappingListProtectionCapabilitiesSortByEnum {
-		mappingListProtectionCapabilitiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProtectionCapabilitiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProtectionCapabilitiesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

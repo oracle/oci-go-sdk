@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -152,6 +152,11 @@ var mappingListInternetGatewaysSortByEnum = map[string]ListInternetGatewaysSortB
 	"DISPLAYNAME": ListInternetGatewaysSortByDisplayname,
 }
 
+var mappingListInternetGatewaysSortByEnumLowerCase = map[string]ListInternetGatewaysSortByEnum{
+	"timecreated": ListInternetGatewaysSortByTimecreated,
+	"displayname": ListInternetGatewaysSortByDisplayname,
+}
+
 // GetListInternetGatewaysSortByEnumValues Enumerates the set of values for ListInternetGatewaysSortByEnum
 func GetListInternetGatewaysSortByEnumValues() []ListInternetGatewaysSortByEnum {
 	values := make([]ListInternetGatewaysSortByEnum, 0)
@@ -171,12 +176,7 @@ func GetListInternetGatewaysSortByEnumStringValues() []string {
 
 // GetMappingListInternetGatewaysSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListInternetGatewaysSortByEnum(val string) (ListInternetGatewaysSortByEnum, bool) {
-	mappingListInternetGatewaysSortByEnumIgnoreCase := make(map[string]ListInternetGatewaysSortByEnum)
-	for k, v := range mappingListInternetGatewaysSortByEnum {
-		mappingListInternetGatewaysSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListInternetGatewaysSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListInternetGatewaysSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -192,6 +192,11 @@ const (
 var mappingListInternetGatewaysSortOrderEnum = map[string]ListInternetGatewaysSortOrderEnum{
 	"ASC":  ListInternetGatewaysSortOrderAsc,
 	"DESC": ListInternetGatewaysSortOrderDesc,
+}
+
+var mappingListInternetGatewaysSortOrderEnumLowerCase = map[string]ListInternetGatewaysSortOrderEnum{
+	"asc":  ListInternetGatewaysSortOrderAsc,
+	"desc": ListInternetGatewaysSortOrderDesc,
 }
 
 // GetListInternetGatewaysSortOrderEnumValues Enumerates the set of values for ListInternetGatewaysSortOrderEnum
@@ -213,11 +218,6 @@ func GetListInternetGatewaysSortOrderEnumStringValues() []string {
 
 // GetMappingListInternetGatewaysSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListInternetGatewaysSortOrderEnum(val string) (ListInternetGatewaysSortOrderEnum, bool) {
-	mappingListInternetGatewaysSortOrderEnumIgnoreCase := make(map[string]ListInternetGatewaysSortOrderEnum)
-	for k, v := range mappingListInternetGatewaysSortOrderEnum {
-		mappingListInternetGatewaysSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListInternetGatewaysSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListInternetGatewaysSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

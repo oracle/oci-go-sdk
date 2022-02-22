@@ -6,7 +6,7 @@ package oda
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -130,6 +130,11 @@ var mappingListWorkRequestErrorsSortByEnum = map[string]ListWorkRequestErrorsSor
 	"TIMESTAMP": ListWorkRequestErrorsSortByTimestamp,
 }
 
+var mappingListWorkRequestErrorsSortByEnumLowerCase = map[string]ListWorkRequestErrorsSortByEnum{
+	"code":      ListWorkRequestErrorsSortByCode,
+	"timestamp": ListWorkRequestErrorsSortByTimestamp,
+}
+
 // GetListWorkRequestErrorsSortByEnumValues Enumerates the set of values for ListWorkRequestErrorsSortByEnum
 func GetListWorkRequestErrorsSortByEnumValues() []ListWorkRequestErrorsSortByEnum {
 	values := make([]ListWorkRequestErrorsSortByEnum, 0)
@@ -149,12 +154,7 @@ func GetListWorkRequestErrorsSortByEnumStringValues() []string {
 
 // GetMappingListWorkRequestErrorsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWorkRequestErrorsSortByEnum(val string) (ListWorkRequestErrorsSortByEnum, bool) {
-	mappingListWorkRequestErrorsSortByEnumIgnoreCase := make(map[string]ListWorkRequestErrorsSortByEnum)
-	for k, v := range mappingListWorkRequestErrorsSortByEnum {
-		mappingListWorkRequestErrorsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWorkRequestErrorsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWorkRequestErrorsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -170,6 +170,11 @@ const (
 var mappingListWorkRequestErrorsSortOrderEnum = map[string]ListWorkRequestErrorsSortOrderEnum{
 	"ASC":  ListWorkRequestErrorsSortOrderAsc,
 	"DESC": ListWorkRequestErrorsSortOrderDesc,
+}
+
+var mappingListWorkRequestErrorsSortOrderEnumLowerCase = map[string]ListWorkRequestErrorsSortOrderEnum{
+	"asc":  ListWorkRequestErrorsSortOrderAsc,
+	"desc": ListWorkRequestErrorsSortOrderDesc,
 }
 
 // GetListWorkRequestErrorsSortOrderEnumValues Enumerates the set of values for ListWorkRequestErrorsSortOrderEnum
@@ -191,11 +196,6 @@ func GetListWorkRequestErrorsSortOrderEnumStringValues() []string {
 
 // GetMappingListWorkRequestErrorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWorkRequestErrorsSortOrderEnum(val string) (ListWorkRequestErrorsSortOrderEnum, bool) {
-	mappingListWorkRequestErrorsSortOrderEnumIgnoreCase := make(map[string]ListWorkRequestErrorsSortOrderEnum)
-	for k, v := range mappingListWorkRequestErrorsSortOrderEnum {
-		mappingListWorkRequestErrorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWorkRequestErrorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWorkRequestErrorsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

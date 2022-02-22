@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -242,6 +242,15 @@ var mappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum = map[s
 	"EXTERNAL-NONCDB": SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeExternalNoncdb,
 }
 
+var mappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnumLowerCase = map[string]SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum{
+	"adw-s":           SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAdwS,
+	"atp-s":           SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAtpS,
+	"adw-d":           SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAdwD,
+	"atp-d":           SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAtpD,
+	"external-pdb":    SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeExternalPdb,
+	"external-noncdb": SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeExternalNoncdb,
+}
+
 // GetSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum
 func GetSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnumValues() []SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum {
 	values := make([]SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum, 0)
@@ -265,12 +274,7 @@ func GetSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnumStringValue
 
 // GetMappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum(val string) (SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum, bool) {
-	mappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum)
-	for k, v := range mappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum {
-		mappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -286,6 +290,11 @@ const (
 var mappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnum = map[string]SummarizeDatabaseInsightResourceForecastTrendStatisticEnum{
 	"AVG": SummarizeDatabaseInsightResourceForecastTrendStatisticAvg,
 	"MAX": SummarizeDatabaseInsightResourceForecastTrendStatisticMax,
+}
+
+var mappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnumLowerCase = map[string]SummarizeDatabaseInsightResourceForecastTrendStatisticEnum{
+	"avg": SummarizeDatabaseInsightResourceForecastTrendStatisticAvg,
+	"max": SummarizeDatabaseInsightResourceForecastTrendStatisticMax,
 }
 
 // GetSummarizeDatabaseInsightResourceForecastTrendStatisticEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceForecastTrendStatisticEnum
@@ -307,12 +316,7 @@ func GetSummarizeDatabaseInsightResourceForecastTrendStatisticEnumStringValues()
 
 // GetMappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnum(val string) (SummarizeDatabaseInsightResourceForecastTrendStatisticEnum, bool) {
-	mappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceForecastTrendStatisticEnum)
-	for k, v := range mappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnum {
-		mappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeDatabaseInsightResourceForecastTrendStatisticEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -330,6 +334,12 @@ var mappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnum = map[
 	"LINEAR":     SummarizeDatabaseInsightResourceForecastTrendForecastModelLinear,
 	"ML_AUTO":    SummarizeDatabaseInsightResourceForecastTrendForecastModelMlAuto,
 	"ML_NO_AUTO": SummarizeDatabaseInsightResourceForecastTrendForecastModelMlNoAuto,
+}
+
+var mappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnumLowerCase = map[string]SummarizeDatabaseInsightResourceForecastTrendForecastModelEnum{
+	"linear":     SummarizeDatabaseInsightResourceForecastTrendForecastModelLinear,
+	"ml_auto":    SummarizeDatabaseInsightResourceForecastTrendForecastModelMlAuto,
+	"ml_no_auto": SummarizeDatabaseInsightResourceForecastTrendForecastModelMlNoAuto,
 }
 
 // GetSummarizeDatabaseInsightResourceForecastTrendForecastModelEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceForecastTrendForecastModelEnum
@@ -352,12 +362,7 @@ func GetSummarizeDatabaseInsightResourceForecastTrendForecastModelEnumStringValu
 
 // GetMappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnum(val string) (SummarizeDatabaseInsightResourceForecastTrendForecastModelEnum, bool) {
-	mappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceForecastTrendForecastModelEnum)
-	for k, v := range mappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnum {
-		mappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeDatabaseInsightResourceForecastTrendForecastModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -377,6 +382,13 @@ var mappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnum = m
 	"LOW_UTILIZATION":         SummarizeDatabaseInsightResourceForecastTrendUtilizationLevelLowUtilization,
 	"MEDIUM_HIGH_UTILIZATION": SummarizeDatabaseInsightResourceForecastTrendUtilizationLevelMediumHighUtilization,
 	"MEDIUM_LOW_UTILIZATION":  SummarizeDatabaseInsightResourceForecastTrendUtilizationLevelMediumLowUtilization,
+}
+
+var mappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnumLowerCase = map[string]SummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnum{
+	"high_utilization":        SummarizeDatabaseInsightResourceForecastTrendUtilizationLevelHighUtilization,
+	"low_utilization":         SummarizeDatabaseInsightResourceForecastTrendUtilizationLevelLowUtilization,
+	"medium_high_utilization": SummarizeDatabaseInsightResourceForecastTrendUtilizationLevelMediumHighUtilization,
+	"medium_low_utilization":  SummarizeDatabaseInsightResourceForecastTrendUtilizationLevelMediumLowUtilization,
 }
 
 // GetSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnum
@@ -400,11 +412,6 @@ func GetSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnumStringV
 
 // GetMappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnum(val string) (SummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnum, bool) {
-	mappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnum)
-	for k, v := range mappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnum {
-		mappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeDatabaseInsightResourceForecastTrendUtilizationLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

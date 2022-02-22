@@ -95,6 +95,45 @@ var mappingAvailabilityDomainEnum = map[string]AvailabilityDomainEnum{
 	"NO_AD":               AvailabilityDomainNoAd,
 }
 
+var mappingAvailabilityDomainEnumLowerCase = map[string]AvailabilityDomainEnum{
+	"dev_1":               AvailabilityDomainDev1,
+	"dev_2":               AvailabilityDomainDev2,
+	"dev_3":               AvailabilityDomainDev3,
+	"integ_next_1":        AvailabilityDomainIntegNext1,
+	"integ_stable_1":      AvailabilityDomainIntegStable1,
+	"sea_ad_1":            AvailabilityDomainSeaAd1,
+	"sea_ad_2":            AvailabilityDomainSeaAd2,
+	"sea_ad_3":            AvailabilityDomainSeaAd3,
+	"phx_ad_1":            AvailabilityDomainPhxAd1,
+	"phx_ad_2":            AvailabilityDomainPhxAd2,
+	"phx_ad_3":            AvailabilityDomainPhxAd3,
+	"us_ashburn_ad_1":     AvailabilityDomainUsAshburnAd1,
+	"us_ashburn_ad_2":     AvailabilityDomainUsAshburnAd2,
+	"us_ashburn_ad_3":     AvailabilityDomainUsAshburnAd3,
+	"us_ashburn_ad_4":     AvailabilityDomainUsAshburnAd4,
+	"eu_frankfurt_1_ad_1": AvailabilityDomainEuFrankfurt1Ad1,
+	"eu_frankfurt_1_ad_2": AvailabilityDomainEuFrankfurt1Ad2,
+	"eu_frankfurt_1_ad_3": AvailabilityDomainEuFrankfurt1Ad3,
+	"uk_london_1_ad_1":    AvailabilityDomainUkLondon1Ad1,
+	"uk_london_1_ad_2":    AvailabilityDomainUkLondon1Ad2,
+	"uk_london_1_ad_3":    AvailabilityDomainUkLondon1Ad3,
+	"ca_toronto_1_ad_1":   AvailabilityDomainCaToronto1Ad1,
+	"ap_tokyo_1_ad_1":     AvailabilityDomainApTokyo1Ad1,
+	"ap_seoul_1_ad_1":     AvailabilityDomainApSeoul1Ad1,
+	"ap_mumbai_1_ad_1":    AvailabilityDomainApMumbai1Ad1,
+	"sa_saopaulo_1_ad_1":  AvailabilityDomainSaSaopaulo1Ad1,
+	"me_jeddah_1_ad_1":    AvailabilityDomainMeJeddah1Ad1,
+	"ap_osaka_1_ad_1":     AvailabilityDomainApOsaka1Ad1,
+	"ap_sydney_1_ad_1":    AvailabilityDomainApSydney1Ad1,
+	"eu_zurich_1_ad_1":    AvailabilityDomainEuZurich1Ad1,
+	"eu_amsterdam_1_ad_1": AvailabilityDomainEuAmsterdam1Ad1,
+	"ap_melbourne_1_ad_1": AvailabilityDomainApMelbourne1Ad1,
+	"ca_montreal_1_ad_1":  AvailabilityDomainCaMontreal1Ad1,
+	"ap_hyderabad_1_ad_1": AvailabilityDomainApHyderabad1Ad1,
+	"ap_chuncheon_1_ad_1": AvailabilityDomainApChuncheon1Ad1,
+	"no_ad":               AvailabilityDomainNoAd,
+}
+
 // GetAvailabilityDomainEnumValues Enumerates the set of values for AvailabilityDomainEnum
 func GetAvailabilityDomainEnumValues() []AvailabilityDomainEnum {
 	values := make([]AvailabilityDomainEnum, 0)
@@ -148,11 +187,6 @@ func GetAvailabilityDomainEnumStringValues() []string {
 
 // GetMappingAvailabilityDomainEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAvailabilityDomainEnum(val string) (AvailabilityDomainEnum, bool) {
-	mappingAvailabilityDomainEnumIgnoreCase := make(map[string]AvailabilityDomainEnum)
-	for k, v := range mappingAvailabilityDomainEnum {
-		mappingAvailabilityDomainEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAvailabilityDomainEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAvailabilityDomainEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -98,6 +98,14 @@ var mappingDatabaseConnectionStringProfileConsumerGroupEnum = map[string]Databas
 	"TPURGENT": DatabaseConnectionStringProfileConsumerGroupTpurgent,
 }
 
+var mappingDatabaseConnectionStringProfileConsumerGroupEnumLowerCase = map[string]DatabaseConnectionStringProfileConsumerGroupEnum{
+	"high":     DatabaseConnectionStringProfileConsumerGroupHigh,
+	"medium":   DatabaseConnectionStringProfileConsumerGroupMedium,
+	"low":      DatabaseConnectionStringProfileConsumerGroupLow,
+	"tp":       DatabaseConnectionStringProfileConsumerGroupTp,
+	"tpurgent": DatabaseConnectionStringProfileConsumerGroupTpurgent,
+}
+
 // GetDatabaseConnectionStringProfileConsumerGroupEnumValues Enumerates the set of values for DatabaseConnectionStringProfileConsumerGroupEnum
 func GetDatabaseConnectionStringProfileConsumerGroupEnumValues() []DatabaseConnectionStringProfileConsumerGroupEnum {
 	values := make([]DatabaseConnectionStringProfileConsumerGroupEnum, 0)
@@ -120,12 +128,7 @@ func GetDatabaseConnectionStringProfileConsumerGroupEnumStringValues() []string 
 
 // GetMappingDatabaseConnectionStringProfileConsumerGroupEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseConnectionStringProfileConsumerGroupEnum(val string) (DatabaseConnectionStringProfileConsumerGroupEnum, bool) {
-	mappingDatabaseConnectionStringProfileConsumerGroupEnumIgnoreCase := make(map[string]DatabaseConnectionStringProfileConsumerGroupEnum)
-	for k, v := range mappingDatabaseConnectionStringProfileConsumerGroupEnum {
-		mappingDatabaseConnectionStringProfileConsumerGroupEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseConnectionStringProfileConsumerGroupEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseConnectionStringProfileConsumerGroupEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -141,6 +144,11 @@ const (
 var mappingDatabaseConnectionStringProfileProtocolEnum = map[string]DatabaseConnectionStringProfileProtocolEnum{
 	"TCP":  DatabaseConnectionStringProfileProtocolTcp,
 	"TCPS": DatabaseConnectionStringProfileProtocolTcps,
+}
+
+var mappingDatabaseConnectionStringProfileProtocolEnumLowerCase = map[string]DatabaseConnectionStringProfileProtocolEnum{
+	"tcp":  DatabaseConnectionStringProfileProtocolTcp,
+	"tcps": DatabaseConnectionStringProfileProtocolTcps,
 }
 
 // GetDatabaseConnectionStringProfileProtocolEnumValues Enumerates the set of values for DatabaseConnectionStringProfileProtocolEnum
@@ -162,12 +170,7 @@ func GetDatabaseConnectionStringProfileProtocolEnumStringValues() []string {
 
 // GetMappingDatabaseConnectionStringProfileProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseConnectionStringProfileProtocolEnum(val string) (DatabaseConnectionStringProfileProtocolEnum, bool) {
-	mappingDatabaseConnectionStringProfileProtocolEnumIgnoreCase := make(map[string]DatabaseConnectionStringProfileProtocolEnum)
-	for k, v := range mappingDatabaseConnectionStringProfileProtocolEnum {
-		mappingDatabaseConnectionStringProfileProtocolEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseConnectionStringProfileProtocolEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseConnectionStringProfileProtocolEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +186,11 @@ const (
 var mappingDatabaseConnectionStringProfileTlsAuthenticationEnum = map[string]DatabaseConnectionStringProfileTlsAuthenticationEnum{
 	"SERVER": DatabaseConnectionStringProfileTlsAuthenticationServer,
 	"MUTUAL": DatabaseConnectionStringProfileTlsAuthenticationMutual,
+}
+
+var mappingDatabaseConnectionStringProfileTlsAuthenticationEnumLowerCase = map[string]DatabaseConnectionStringProfileTlsAuthenticationEnum{
+	"server": DatabaseConnectionStringProfileTlsAuthenticationServer,
+	"mutual": DatabaseConnectionStringProfileTlsAuthenticationMutual,
 }
 
 // GetDatabaseConnectionStringProfileTlsAuthenticationEnumValues Enumerates the set of values for DatabaseConnectionStringProfileTlsAuthenticationEnum
@@ -204,12 +212,7 @@ func GetDatabaseConnectionStringProfileTlsAuthenticationEnumStringValues() []str
 
 // GetMappingDatabaseConnectionStringProfileTlsAuthenticationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseConnectionStringProfileTlsAuthenticationEnum(val string) (DatabaseConnectionStringProfileTlsAuthenticationEnum, bool) {
-	mappingDatabaseConnectionStringProfileTlsAuthenticationEnumIgnoreCase := make(map[string]DatabaseConnectionStringProfileTlsAuthenticationEnum)
-	for k, v := range mappingDatabaseConnectionStringProfileTlsAuthenticationEnum {
-		mappingDatabaseConnectionStringProfileTlsAuthenticationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseConnectionStringProfileTlsAuthenticationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseConnectionStringProfileTlsAuthenticationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -225,6 +228,11 @@ const (
 var mappingDatabaseConnectionStringProfileHostFormatEnum = map[string]DatabaseConnectionStringProfileHostFormatEnum{
 	"FQDN": DatabaseConnectionStringProfileHostFormatFqdn,
 	"IP":   DatabaseConnectionStringProfileHostFormatIp,
+}
+
+var mappingDatabaseConnectionStringProfileHostFormatEnumLowerCase = map[string]DatabaseConnectionStringProfileHostFormatEnum{
+	"fqdn": DatabaseConnectionStringProfileHostFormatFqdn,
+	"ip":   DatabaseConnectionStringProfileHostFormatIp,
 }
 
 // GetDatabaseConnectionStringProfileHostFormatEnumValues Enumerates the set of values for DatabaseConnectionStringProfileHostFormatEnum
@@ -246,12 +254,7 @@ func GetDatabaseConnectionStringProfileHostFormatEnumStringValues() []string {
 
 // GetMappingDatabaseConnectionStringProfileHostFormatEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseConnectionStringProfileHostFormatEnum(val string) (DatabaseConnectionStringProfileHostFormatEnum, bool) {
-	mappingDatabaseConnectionStringProfileHostFormatEnumIgnoreCase := make(map[string]DatabaseConnectionStringProfileHostFormatEnum)
-	for k, v := range mappingDatabaseConnectionStringProfileHostFormatEnum {
-		mappingDatabaseConnectionStringProfileHostFormatEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseConnectionStringProfileHostFormatEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseConnectionStringProfileHostFormatEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -267,6 +270,11 @@ const (
 var mappingDatabaseConnectionStringProfileSessionModeEnum = map[string]DatabaseConnectionStringProfileSessionModeEnum{
 	"DIRECT":   DatabaseConnectionStringProfileSessionModeDirect,
 	"REDIRECT": DatabaseConnectionStringProfileSessionModeRedirect,
+}
+
+var mappingDatabaseConnectionStringProfileSessionModeEnumLowerCase = map[string]DatabaseConnectionStringProfileSessionModeEnum{
+	"direct":   DatabaseConnectionStringProfileSessionModeDirect,
+	"redirect": DatabaseConnectionStringProfileSessionModeRedirect,
 }
 
 // GetDatabaseConnectionStringProfileSessionModeEnumValues Enumerates the set of values for DatabaseConnectionStringProfileSessionModeEnum
@@ -288,12 +296,7 @@ func GetDatabaseConnectionStringProfileSessionModeEnumStringValues() []string {
 
 // GetMappingDatabaseConnectionStringProfileSessionModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseConnectionStringProfileSessionModeEnum(val string) (DatabaseConnectionStringProfileSessionModeEnum, bool) {
-	mappingDatabaseConnectionStringProfileSessionModeEnumIgnoreCase := make(map[string]DatabaseConnectionStringProfileSessionModeEnum)
-	for k, v := range mappingDatabaseConnectionStringProfileSessionModeEnum {
-		mappingDatabaseConnectionStringProfileSessionModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseConnectionStringProfileSessionModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseConnectionStringProfileSessionModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -311,6 +314,12 @@ var mappingDatabaseConnectionStringProfileSyntaxFormatEnum = map[string]Database
 	"LONG":          DatabaseConnectionStringProfileSyntaxFormatLong,
 	"EZCONNECT":     DatabaseConnectionStringProfileSyntaxFormatEzconnect,
 	"EZCONNECTPLUS": DatabaseConnectionStringProfileSyntaxFormatEzconnectplus,
+}
+
+var mappingDatabaseConnectionStringProfileSyntaxFormatEnumLowerCase = map[string]DatabaseConnectionStringProfileSyntaxFormatEnum{
+	"long":          DatabaseConnectionStringProfileSyntaxFormatLong,
+	"ezconnect":     DatabaseConnectionStringProfileSyntaxFormatEzconnect,
+	"ezconnectplus": DatabaseConnectionStringProfileSyntaxFormatEzconnectplus,
 }
 
 // GetDatabaseConnectionStringProfileSyntaxFormatEnumValues Enumerates the set of values for DatabaseConnectionStringProfileSyntaxFormatEnum
@@ -333,11 +342,6 @@ func GetDatabaseConnectionStringProfileSyntaxFormatEnumStringValues() []string {
 
 // GetMappingDatabaseConnectionStringProfileSyntaxFormatEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseConnectionStringProfileSyntaxFormatEnum(val string) (DatabaseConnectionStringProfileSyntaxFormatEnum, bool) {
-	mappingDatabaseConnectionStringProfileSyntaxFormatEnumIgnoreCase := make(map[string]DatabaseConnectionStringProfileSyntaxFormatEnum)
-	for k, v := range mappingDatabaseConnectionStringProfileSyntaxFormatEnum {
-		mappingDatabaseConnectionStringProfileSyntaxFormatEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseConnectionStringProfileSyntaxFormatEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseConnectionStringProfileSyntaxFormatEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

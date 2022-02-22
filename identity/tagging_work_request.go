@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -92,6 +92,14 @@ var mappingTaggingWorkRequestOperationTypeEnum = map[string]TaggingWorkRequestOp
 	"IMPORT_STANDARD_TAGS":           TaggingWorkRequestOperationTypeImportStandardTags,
 }
 
+var mappingTaggingWorkRequestOperationTypeEnumLowerCase = map[string]TaggingWorkRequestOperationTypeEnum{
+	"delete_tag_definition":          TaggingWorkRequestOperationTypeDeleteTagDefinition,
+	"delete_non_empty_tag_namespace": TaggingWorkRequestOperationTypeDeleteNonEmptyTagNamespace,
+	"bulk_delete_tag_definition":     TaggingWorkRequestOperationTypeBulkDeleteTagDefinition,
+	"bulk_edit_of_tags":              TaggingWorkRequestOperationTypeBulkEditOfTags,
+	"import_standard_tags":           TaggingWorkRequestOperationTypeImportStandardTags,
+}
+
 // GetTaggingWorkRequestOperationTypeEnumValues Enumerates the set of values for TaggingWorkRequestOperationTypeEnum
 func GetTaggingWorkRequestOperationTypeEnumValues() []TaggingWorkRequestOperationTypeEnum {
 	values := make([]TaggingWorkRequestOperationTypeEnum, 0)
@@ -114,12 +122,7 @@ func GetTaggingWorkRequestOperationTypeEnumStringValues() []string {
 
 // GetMappingTaggingWorkRequestOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaggingWorkRequestOperationTypeEnum(val string) (TaggingWorkRequestOperationTypeEnum, bool) {
-	mappingTaggingWorkRequestOperationTypeEnumIgnoreCase := make(map[string]TaggingWorkRequestOperationTypeEnum)
-	for k, v := range mappingTaggingWorkRequestOperationTypeEnum {
-		mappingTaggingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaggingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaggingWorkRequestOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -147,6 +150,16 @@ var mappingTaggingWorkRequestStatusEnum = map[string]TaggingWorkRequestStatusEnu
 	"CANCELED":            TaggingWorkRequestStatusCanceled,
 }
 
+var mappingTaggingWorkRequestStatusEnumLowerCase = map[string]TaggingWorkRequestStatusEnum{
+	"accepted":            TaggingWorkRequestStatusAccepted,
+	"in_progress":         TaggingWorkRequestStatusInProgress,
+	"failed":              TaggingWorkRequestStatusFailed,
+	"succeeded":           TaggingWorkRequestStatusSucceeded,
+	"partially_succeeded": TaggingWorkRequestStatusPartiallySucceeded,
+	"canceling":           TaggingWorkRequestStatusCanceling,
+	"canceled":            TaggingWorkRequestStatusCanceled,
+}
+
 // GetTaggingWorkRequestStatusEnumValues Enumerates the set of values for TaggingWorkRequestStatusEnum
 func GetTaggingWorkRequestStatusEnumValues() []TaggingWorkRequestStatusEnum {
 	values := make([]TaggingWorkRequestStatusEnum, 0)
@@ -171,11 +184,6 @@ func GetTaggingWorkRequestStatusEnumStringValues() []string {
 
 // GetMappingTaggingWorkRequestStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaggingWorkRequestStatusEnum(val string) (TaggingWorkRequestStatusEnum, bool) {
-	mappingTaggingWorkRequestStatusEnumIgnoreCase := make(map[string]TaggingWorkRequestStatusEnum)
-	for k, v := range mappingTaggingWorkRequestStatusEnum {
-		mappingTaggingWorkRequestStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaggingWorkRequestStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaggingWorkRequestStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

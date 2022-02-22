@@ -6,7 +6,7 @@ package filestorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -173,6 +173,14 @@ var mappingListFileSystemsLifecycleStateEnum = map[string]ListFileSystemsLifecyc
 	"FAILED":   ListFileSystemsLifecycleStateFailed,
 }
 
+var mappingListFileSystemsLifecycleStateEnumLowerCase = map[string]ListFileSystemsLifecycleStateEnum{
+	"creating": ListFileSystemsLifecycleStateCreating,
+	"active":   ListFileSystemsLifecycleStateActive,
+	"deleting": ListFileSystemsLifecycleStateDeleting,
+	"deleted":  ListFileSystemsLifecycleStateDeleted,
+	"failed":   ListFileSystemsLifecycleStateFailed,
+}
+
 // GetListFileSystemsLifecycleStateEnumValues Enumerates the set of values for ListFileSystemsLifecycleStateEnum
 func GetListFileSystemsLifecycleStateEnumValues() []ListFileSystemsLifecycleStateEnum {
 	values := make([]ListFileSystemsLifecycleStateEnum, 0)
@@ -195,12 +203,7 @@ func GetListFileSystemsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListFileSystemsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFileSystemsLifecycleStateEnum(val string) (ListFileSystemsLifecycleStateEnum, bool) {
-	mappingListFileSystemsLifecycleStateEnumIgnoreCase := make(map[string]ListFileSystemsLifecycleStateEnum)
-	for k, v := range mappingListFileSystemsLifecycleStateEnum {
-		mappingListFileSystemsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFileSystemsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFileSystemsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -216,6 +219,11 @@ const (
 var mappingListFileSystemsSortByEnum = map[string]ListFileSystemsSortByEnum{
 	"TIMECREATED": ListFileSystemsSortByTimecreated,
 	"DISPLAYNAME": ListFileSystemsSortByDisplayname,
+}
+
+var mappingListFileSystemsSortByEnumLowerCase = map[string]ListFileSystemsSortByEnum{
+	"timecreated": ListFileSystemsSortByTimecreated,
+	"displayname": ListFileSystemsSortByDisplayname,
 }
 
 // GetListFileSystemsSortByEnumValues Enumerates the set of values for ListFileSystemsSortByEnum
@@ -237,12 +245,7 @@ func GetListFileSystemsSortByEnumStringValues() []string {
 
 // GetMappingListFileSystemsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFileSystemsSortByEnum(val string) (ListFileSystemsSortByEnum, bool) {
-	mappingListFileSystemsSortByEnumIgnoreCase := make(map[string]ListFileSystemsSortByEnum)
-	for k, v := range mappingListFileSystemsSortByEnum {
-		mappingListFileSystemsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFileSystemsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFileSystemsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -258,6 +261,11 @@ const (
 var mappingListFileSystemsSortOrderEnum = map[string]ListFileSystemsSortOrderEnum{
 	"ASC":  ListFileSystemsSortOrderAsc,
 	"DESC": ListFileSystemsSortOrderDesc,
+}
+
+var mappingListFileSystemsSortOrderEnumLowerCase = map[string]ListFileSystemsSortOrderEnum{
+	"asc":  ListFileSystemsSortOrderAsc,
+	"desc": ListFileSystemsSortOrderDesc,
 }
 
 // GetListFileSystemsSortOrderEnumValues Enumerates the set of values for ListFileSystemsSortOrderEnum
@@ -279,11 +287,6 @@ func GetListFileSystemsSortOrderEnumStringValues() []string {
 
 // GetMappingListFileSystemsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFileSystemsSortOrderEnum(val string) (ListFileSystemsSortOrderEnum, bool) {
-	mappingListFileSystemsSortOrderEnumIgnoreCase := make(map[string]ListFileSystemsSortOrderEnum)
-	for k, v := range mappingListFileSystemsSortOrderEnum {
-		mappingListFileSystemsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFileSystemsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFileSystemsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

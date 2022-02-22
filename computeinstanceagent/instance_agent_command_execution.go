@@ -13,7 +13,7 @@ package computeinstanceagent
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -148,6 +148,14 @@ var mappingInstanceAgentCommandExecutionDeliveryStateEnum = map[string]InstanceA
 	"EXPIRED":        InstanceAgentCommandExecutionDeliveryStateExpired,
 }
 
+var mappingInstanceAgentCommandExecutionDeliveryStateEnumLowerCase = map[string]InstanceAgentCommandExecutionDeliveryStateEnum{
+	"visible":        InstanceAgentCommandExecutionDeliveryStateVisible,
+	"pending":        InstanceAgentCommandExecutionDeliveryStatePending,
+	"acked":          InstanceAgentCommandExecutionDeliveryStateAcked,
+	"acked_canceled": InstanceAgentCommandExecutionDeliveryStateAckedCanceled,
+	"expired":        InstanceAgentCommandExecutionDeliveryStateExpired,
+}
+
 // GetInstanceAgentCommandExecutionDeliveryStateEnumValues Enumerates the set of values for InstanceAgentCommandExecutionDeliveryStateEnum
 func GetInstanceAgentCommandExecutionDeliveryStateEnumValues() []InstanceAgentCommandExecutionDeliveryStateEnum {
 	values := make([]InstanceAgentCommandExecutionDeliveryStateEnum, 0)
@@ -170,12 +178,7 @@ func GetInstanceAgentCommandExecutionDeliveryStateEnumStringValues() []string {
 
 // GetMappingInstanceAgentCommandExecutionDeliveryStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceAgentCommandExecutionDeliveryStateEnum(val string) (InstanceAgentCommandExecutionDeliveryStateEnum, bool) {
-	mappingInstanceAgentCommandExecutionDeliveryStateEnumIgnoreCase := make(map[string]InstanceAgentCommandExecutionDeliveryStateEnum)
-	for k, v := range mappingInstanceAgentCommandExecutionDeliveryStateEnum {
-		mappingInstanceAgentCommandExecutionDeliveryStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceAgentCommandExecutionDeliveryStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceAgentCommandExecutionDeliveryStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -201,6 +204,15 @@ var mappingInstanceAgentCommandExecutionLifecycleStateEnum = map[string]Instance
 	"CANCELED":    InstanceAgentCommandExecutionLifecycleStateCanceled,
 }
 
+var mappingInstanceAgentCommandExecutionLifecycleStateEnumLowerCase = map[string]InstanceAgentCommandExecutionLifecycleStateEnum{
+	"accepted":    InstanceAgentCommandExecutionLifecycleStateAccepted,
+	"in_progress": InstanceAgentCommandExecutionLifecycleStateInProgress,
+	"succeeded":   InstanceAgentCommandExecutionLifecycleStateSucceeded,
+	"failed":      InstanceAgentCommandExecutionLifecycleStateFailed,
+	"timed_out":   InstanceAgentCommandExecutionLifecycleStateTimedOut,
+	"canceled":    InstanceAgentCommandExecutionLifecycleStateCanceled,
+}
+
 // GetInstanceAgentCommandExecutionLifecycleStateEnumValues Enumerates the set of values for InstanceAgentCommandExecutionLifecycleStateEnum
 func GetInstanceAgentCommandExecutionLifecycleStateEnumValues() []InstanceAgentCommandExecutionLifecycleStateEnum {
 	values := make([]InstanceAgentCommandExecutionLifecycleStateEnum, 0)
@@ -224,11 +236,6 @@ func GetInstanceAgentCommandExecutionLifecycleStateEnumStringValues() []string {
 
 // GetMappingInstanceAgentCommandExecutionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceAgentCommandExecutionLifecycleStateEnum(val string) (InstanceAgentCommandExecutionLifecycleStateEnum, bool) {
-	mappingInstanceAgentCommandExecutionLifecycleStateEnumIgnoreCase := make(map[string]InstanceAgentCommandExecutionLifecycleStateEnum)
-	for k, v := range mappingInstanceAgentCommandExecutionLifecycleStateEnum {
-		mappingInstanceAgentCommandExecutionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceAgentCommandExecutionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceAgentCommandExecutionLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -31,6 +31,13 @@ var mappingInfrastructureTypeEnum = map[string]InfrastructureTypeEnum{
 	"NON_ORACLE_CLOUD":  InfrastructureTypeNonOracleCloud,
 }
 
+var mappingInfrastructureTypeEnumLowerCase = map[string]InfrastructureTypeEnum{
+	"oracle_cloud":      InfrastructureTypeOracleCloud,
+	"cloud_at_customer": InfrastructureTypeCloudAtCustomer,
+	"on_premises":       InfrastructureTypeOnPremises,
+	"non_oracle_cloud":  InfrastructureTypeNonOracleCloud,
+}
+
 // GetInfrastructureTypeEnumValues Enumerates the set of values for InfrastructureTypeEnum
 func GetInfrastructureTypeEnumValues() []InfrastructureTypeEnum {
 	values := make([]InfrastructureTypeEnum, 0)
@@ -52,11 +59,6 @@ func GetInfrastructureTypeEnumStringValues() []string {
 
 // GetMappingInfrastructureTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInfrastructureTypeEnum(val string) (InfrastructureTypeEnum, bool) {
-	mappingInfrastructureTypeEnumIgnoreCase := make(map[string]InfrastructureTypeEnum)
-	for k, v := range mappingInfrastructureTypeEnum {
-		mappingInfrastructureTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInfrastructureTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInfrastructureTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

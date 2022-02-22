@@ -12,7 +12,7 @@ package artifacts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -92,6 +92,13 @@ var mappingContainerImageSignatureSummarySigningAlgorithmEnum = map[string]Conta
 	"SHA_512_RSA_PKCS_PSS": ContainerImageSignatureSummarySigningAlgorithm512RsaPkcsPss,
 }
 
+var mappingContainerImageSignatureSummarySigningAlgorithmEnumLowerCase = map[string]ContainerImageSignatureSummarySigningAlgorithmEnum{
+	"sha_224_rsa_pkcs_pss": ContainerImageSignatureSummarySigningAlgorithm224RsaPkcsPss,
+	"sha_256_rsa_pkcs_pss": ContainerImageSignatureSummarySigningAlgorithm256RsaPkcsPss,
+	"sha_384_rsa_pkcs_pss": ContainerImageSignatureSummarySigningAlgorithm384RsaPkcsPss,
+	"sha_512_rsa_pkcs_pss": ContainerImageSignatureSummarySigningAlgorithm512RsaPkcsPss,
+}
+
 // GetContainerImageSignatureSummarySigningAlgorithmEnumValues Enumerates the set of values for ContainerImageSignatureSummarySigningAlgorithmEnum
 func GetContainerImageSignatureSummarySigningAlgorithmEnumValues() []ContainerImageSignatureSummarySigningAlgorithmEnum {
 	values := make([]ContainerImageSignatureSummarySigningAlgorithmEnum, 0)
@@ -113,11 +120,6 @@ func GetContainerImageSignatureSummarySigningAlgorithmEnumStringValues() []strin
 
 // GetMappingContainerImageSignatureSummarySigningAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingContainerImageSignatureSummarySigningAlgorithmEnum(val string) (ContainerImageSignatureSummarySigningAlgorithmEnum, bool) {
-	mappingContainerImageSignatureSummarySigningAlgorithmEnumIgnoreCase := make(map[string]ContainerImageSignatureSummarySigningAlgorithmEnum)
-	for k, v := range mappingContainerImageSignatureSummarySigningAlgorithmEnum {
-		mappingContainerImageSignatureSummarySigningAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingContainerImageSignatureSummarySigningAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingContainerImageSignatureSummarySigningAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -15,7 +15,7 @@ package resourcemanager
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -187,6 +187,10 @@ var mappingConfigurationSourceProviderLifecycleStateEnum = map[string]Configurat
 	"ACTIVE": ConfigurationSourceProviderLifecycleStateActive,
 }
 
+var mappingConfigurationSourceProviderLifecycleStateEnumLowerCase = map[string]ConfigurationSourceProviderLifecycleStateEnum{
+	"active": ConfigurationSourceProviderLifecycleStateActive,
+}
+
 // GetConfigurationSourceProviderLifecycleStateEnumValues Enumerates the set of values for ConfigurationSourceProviderLifecycleStateEnum
 func GetConfigurationSourceProviderLifecycleStateEnumValues() []ConfigurationSourceProviderLifecycleStateEnum {
 	values := make([]ConfigurationSourceProviderLifecycleStateEnum, 0)
@@ -205,12 +209,7 @@ func GetConfigurationSourceProviderLifecycleStateEnumStringValues() []string {
 
 // GetMappingConfigurationSourceProviderLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConfigurationSourceProviderLifecycleStateEnum(val string) (ConfigurationSourceProviderLifecycleStateEnum, bool) {
-	mappingConfigurationSourceProviderLifecycleStateEnumIgnoreCase := make(map[string]ConfigurationSourceProviderLifecycleStateEnum)
-	for k, v := range mappingConfigurationSourceProviderLifecycleStateEnum {
-		mappingConfigurationSourceProviderLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConfigurationSourceProviderLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConfigurationSourceProviderLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -226,6 +225,11 @@ const (
 var mappingConfigurationSourceProviderConfigSourceProviderTypeEnum = map[string]ConfigurationSourceProviderConfigSourceProviderTypeEnum{
 	"GITLAB_ACCESS_TOKEN": ConfigurationSourceProviderConfigSourceProviderTypeGitlabAccessToken,
 	"GITHUB_ACCESS_TOKEN": ConfigurationSourceProviderConfigSourceProviderTypeGithubAccessToken,
+}
+
+var mappingConfigurationSourceProviderConfigSourceProviderTypeEnumLowerCase = map[string]ConfigurationSourceProviderConfigSourceProviderTypeEnum{
+	"gitlab_access_token": ConfigurationSourceProviderConfigSourceProviderTypeGitlabAccessToken,
+	"github_access_token": ConfigurationSourceProviderConfigSourceProviderTypeGithubAccessToken,
 }
 
 // GetConfigurationSourceProviderConfigSourceProviderTypeEnumValues Enumerates the set of values for ConfigurationSourceProviderConfigSourceProviderTypeEnum
@@ -247,11 +251,6 @@ func GetConfigurationSourceProviderConfigSourceProviderTypeEnumStringValues() []
 
 // GetMappingConfigurationSourceProviderConfigSourceProviderTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConfigurationSourceProviderConfigSourceProviderTypeEnum(val string) (ConfigurationSourceProviderConfigSourceProviderTypeEnum, bool) {
-	mappingConfigurationSourceProviderConfigSourceProviderTypeEnumIgnoreCase := make(map[string]ConfigurationSourceProviderConfigSourceProviderTypeEnum)
-	for k, v := range mappingConfigurationSourceProviderConfigSourceProviderTypeEnum {
-		mappingConfigurationSourceProviderConfigSourceProviderTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConfigurationSourceProviderConfigSourceProviderTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConfigurationSourceProviderConfigSourceProviderTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

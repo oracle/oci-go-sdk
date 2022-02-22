@@ -33,6 +33,14 @@ var mappingLinkEnumEnum = map[string]LinkEnumEnum{
 	"PREV":      LinkEnumPrev,
 }
 
+var mappingLinkEnumEnumLowerCase = map[string]LinkEnumEnum{
+	"self":      LinkEnumSelf,
+	"canonical": LinkEnumCanonical,
+	"next":      LinkEnumNext,
+	"template":  LinkEnumTemplate,
+	"prev":      LinkEnumPrev,
+}
+
 // GetLinkEnumEnumValues Enumerates the set of values for LinkEnumEnum
 func GetLinkEnumEnumValues() []LinkEnumEnum {
 	values := make([]LinkEnumEnum, 0)
@@ -55,11 +63,6 @@ func GetLinkEnumEnumStringValues() []string {
 
 // GetMappingLinkEnumEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLinkEnumEnum(val string) (LinkEnumEnum, bool) {
-	mappingLinkEnumEnumIgnoreCase := make(map[string]LinkEnumEnum)
-	for k, v := range mappingLinkEnumEnum {
-		mappingLinkEnumEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLinkEnumEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLinkEnumEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

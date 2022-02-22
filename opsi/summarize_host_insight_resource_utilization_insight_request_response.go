@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -182,6 +182,12 @@ var mappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum = map[
 	"SUNOS":   SummarizeHostInsightResourceUtilizationInsightPlatformTypeSunos,
 }
 
+var mappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnumLowerCase = map[string]SummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum{
+	"linux":   SummarizeHostInsightResourceUtilizationInsightPlatformTypeLinux,
+	"solaris": SummarizeHostInsightResourceUtilizationInsightPlatformTypeSolaris,
+	"sunos":   SummarizeHostInsightResourceUtilizationInsightPlatformTypeSunos,
+}
+
 // GetSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnumValues Enumerates the set of values for SummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum
 func GetSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnumValues() []SummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum {
 	values := make([]SummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum, 0)
@@ -202,11 +208,6 @@ func GetSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnumStringValu
 
 // GetMappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum(val string) (SummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum, bool) {
-	mappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum)
-	for k, v := range mappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnum {
-		mappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeHostInsightResourceUtilizationInsightPlatformTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

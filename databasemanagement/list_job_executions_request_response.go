@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -150,6 +150,11 @@ var mappingListJobExecutionsSortByEnum = map[string]ListJobExecutionsSortByEnum{
 	"NAME":        ListJobExecutionsSortByName,
 }
 
+var mappingListJobExecutionsSortByEnumLowerCase = map[string]ListJobExecutionsSortByEnum{
+	"timecreated": ListJobExecutionsSortByTimecreated,
+	"name":        ListJobExecutionsSortByName,
+}
+
 // GetListJobExecutionsSortByEnumValues Enumerates the set of values for ListJobExecutionsSortByEnum
 func GetListJobExecutionsSortByEnumValues() []ListJobExecutionsSortByEnum {
 	values := make([]ListJobExecutionsSortByEnum, 0)
@@ -169,12 +174,7 @@ func GetListJobExecutionsSortByEnumStringValues() []string {
 
 // GetMappingListJobExecutionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJobExecutionsSortByEnum(val string) (ListJobExecutionsSortByEnum, bool) {
-	mappingListJobExecutionsSortByEnumIgnoreCase := make(map[string]ListJobExecutionsSortByEnum)
-	for k, v := range mappingListJobExecutionsSortByEnum {
-		mappingListJobExecutionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJobExecutionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJobExecutionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -190,6 +190,11 @@ const (
 var mappingListJobExecutionsSortOrderEnum = map[string]ListJobExecutionsSortOrderEnum{
 	"ASC":  ListJobExecutionsSortOrderAsc,
 	"DESC": ListJobExecutionsSortOrderDesc,
+}
+
+var mappingListJobExecutionsSortOrderEnumLowerCase = map[string]ListJobExecutionsSortOrderEnum{
+	"asc":  ListJobExecutionsSortOrderAsc,
+	"desc": ListJobExecutionsSortOrderDesc,
 }
 
 // GetListJobExecutionsSortOrderEnumValues Enumerates the set of values for ListJobExecutionsSortOrderEnum
@@ -211,11 +216,6 @@ func GetListJobExecutionsSortOrderEnumStringValues() []string {
 
 // GetMappingListJobExecutionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJobExecutionsSortOrderEnum(val string) (ListJobExecutionsSortOrderEnum, bool) {
-	mappingListJobExecutionsSortOrderEnumIgnoreCase := make(map[string]ListJobExecutionsSortOrderEnum)
-	for k, v := range mappingListJobExecutionsSortOrderEnum {
-		mappingListJobExecutionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJobExecutionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJobExecutionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

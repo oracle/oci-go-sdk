@@ -11,7 +11,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -142,6 +142,16 @@ var mappingApplianceExportJobLifecycleStateEnum = map[string]ApplianceExportJobL
 	"DELETED":    ApplianceExportJobLifecycleStateDeleted,
 }
 
+var mappingApplianceExportJobLifecycleStateEnumLowerCase = map[string]ApplianceExportJobLifecycleStateEnum{
+	"creating":   ApplianceExportJobLifecycleStateCreating,
+	"active":     ApplianceExportJobLifecycleStateActive,
+	"inprogress": ApplianceExportJobLifecycleStateInprogress,
+	"succeeded":  ApplianceExportJobLifecycleStateSucceeded,
+	"failed":     ApplianceExportJobLifecycleStateFailed,
+	"cancelled":  ApplianceExportJobLifecycleStateCancelled,
+	"deleted":    ApplianceExportJobLifecycleStateDeleted,
+}
+
 // GetApplianceExportJobLifecycleStateEnumValues Enumerates the set of values for ApplianceExportJobLifecycleStateEnum
 func GetApplianceExportJobLifecycleStateEnumValues() []ApplianceExportJobLifecycleStateEnum {
 	values := make([]ApplianceExportJobLifecycleStateEnum, 0)
@@ -166,11 +176,6 @@ func GetApplianceExportJobLifecycleStateEnumStringValues() []string {
 
 // GetMappingApplianceExportJobLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingApplianceExportJobLifecycleStateEnum(val string) (ApplianceExportJobLifecycleStateEnum, bool) {
-	mappingApplianceExportJobLifecycleStateEnumIgnoreCase := make(map[string]ApplianceExportJobLifecycleStateEnum)
-	for k, v := range mappingApplianceExportJobLifecycleStateEnum {
-		mappingApplianceExportJobLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingApplianceExportJobLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingApplianceExportJobLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -162,6 +162,13 @@ var mappingListScheduledJobsOperationTypeEnum = map[string]ListScheduledJobsOper
 	"UPDATEALL": ListScheduledJobsOperationTypeUpdateall,
 }
 
+var mappingListScheduledJobsOperationTypeEnumLowerCase = map[string]ListScheduledJobsOperationTypeEnum{
+	"install":   ListScheduledJobsOperationTypeInstall,
+	"update":    ListScheduledJobsOperationTypeUpdate,
+	"remove":    ListScheduledJobsOperationTypeRemove,
+	"updateall": ListScheduledJobsOperationTypeUpdateall,
+}
+
 // GetListScheduledJobsOperationTypeEnumValues Enumerates the set of values for ListScheduledJobsOperationTypeEnum
 func GetListScheduledJobsOperationTypeEnumValues() []ListScheduledJobsOperationTypeEnum {
 	values := make([]ListScheduledJobsOperationTypeEnum, 0)
@@ -183,12 +190,7 @@ func GetListScheduledJobsOperationTypeEnumStringValues() []string {
 
 // GetMappingListScheduledJobsOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListScheduledJobsOperationTypeEnum(val string) (ListScheduledJobsOperationTypeEnum, bool) {
-	mappingListScheduledJobsOperationTypeEnumIgnoreCase := make(map[string]ListScheduledJobsOperationTypeEnum)
-	for k, v := range mappingListScheduledJobsOperationTypeEnum {
-		mappingListScheduledJobsOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListScheduledJobsOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListScheduledJobsOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -204,6 +206,11 @@ const (
 var mappingListScheduledJobsSortOrderEnum = map[string]ListScheduledJobsSortOrderEnum{
 	"ASC":  ListScheduledJobsSortOrderAsc,
 	"DESC": ListScheduledJobsSortOrderDesc,
+}
+
+var mappingListScheduledJobsSortOrderEnumLowerCase = map[string]ListScheduledJobsSortOrderEnum{
+	"asc":  ListScheduledJobsSortOrderAsc,
+	"desc": ListScheduledJobsSortOrderDesc,
 }
 
 // GetListScheduledJobsSortOrderEnumValues Enumerates the set of values for ListScheduledJobsSortOrderEnum
@@ -225,12 +232,7 @@ func GetListScheduledJobsSortOrderEnumStringValues() []string {
 
 // GetMappingListScheduledJobsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListScheduledJobsSortOrderEnum(val string) (ListScheduledJobsSortOrderEnum, bool) {
-	mappingListScheduledJobsSortOrderEnumIgnoreCase := make(map[string]ListScheduledJobsSortOrderEnum)
-	for k, v := range mappingListScheduledJobsSortOrderEnum {
-		mappingListScheduledJobsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListScheduledJobsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListScheduledJobsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -246,6 +248,11 @@ const (
 var mappingListScheduledJobsSortByEnum = map[string]ListScheduledJobsSortByEnum{
 	"TIMECREATED": ListScheduledJobsSortByTimecreated,
 	"DISPLAYNAME": ListScheduledJobsSortByDisplayname,
+}
+
+var mappingListScheduledJobsSortByEnumLowerCase = map[string]ListScheduledJobsSortByEnum{
+	"timecreated": ListScheduledJobsSortByTimecreated,
+	"displayname": ListScheduledJobsSortByDisplayname,
 }
 
 // GetListScheduledJobsSortByEnumValues Enumerates the set of values for ListScheduledJobsSortByEnum
@@ -267,12 +274,7 @@ func GetListScheduledJobsSortByEnumStringValues() []string {
 
 // GetMappingListScheduledJobsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListScheduledJobsSortByEnum(val string) (ListScheduledJobsSortByEnum, bool) {
-	mappingListScheduledJobsSortByEnumIgnoreCase := make(map[string]ListScheduledJobsSortByEnum)
-	for k, v := range mappingListScheduledJobsSortByEnum {
-		mappingListScheduledJobsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListScheduledJobsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListScheduledJobsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -298,6 +300,15 @@ var mappingListScheduledJobsLifecycleStateEnum = map[string]ListScheduledJobsLif
 	"FAILED":   ListScheduledJobsLifecycleStateFailed,
 }
 
+var mappingListScheduledJobsLifecycleStateEnumLowerCase = map[string]ListScheduledJobsLifecycleStateEnum{
+	"creating": ListScheduledJobsLifecycleStateCreating,
+	"updating": ListScheduledJobsLifecycleStateUpdating,
+	"active":   ListScheduledJobsLifecycleStateActive,
+	"deleting": ListScheduledJobsLifecycleStateDeleting,
+	"deleted":  ListScheduledJobsLifecycleStateDeleted,
+	"failed":   ListScheduledJobsLifecycleStateFailed,
+}
+
 // GetListScheduledJobsLifecycleStateEnumValues Enumerates the set of values for ListScheduledJobsLifecycleStateEnum
 func GetListScheduledJobsLifecycleStateEnumValues() []ListScheduledJobsLifecycleStateEnum {
 	values := make([]ListScheduledJobsLifecycleStateEnum, 0)
@@ -321,12 +332,7 @@ func GetListScheduledJobsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListScheduledJobsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListScheduledJobsLifecycleStateEnum(val string) (ListScheduledJobsLifecycleStateEnum, bool) {
-	mappingListScheduledJobsLifecycleStateEnumIgnoreCase := make(map[string]ListScheduledJobsLifecycleStateEnum)
-	for k, v := range mappingListScheduledJobsLifecycleStateEnum {
-		mappingListScheduledJobsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListScheduledJobsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListScheduledJobsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -344,6 +350,12 @@ var mappingListScheduledJobsOsFamilyEnum = map[string]ListScheduledJobsOsFamilyE
 	"LINUX":   ListScheduledJobsOsFamilyLinux,
 	"WINDOWS": ListScheduledJobsOsFamilyWindows,
 	"ALL":     ListScheduledJobsOsFamilyAll,
+}
+
+var mappingListScheduledJobsOsFamilyEnumLowerCase = map[string]ListScheduledJobsOsFamilyEnum{
+	"linux":   ListScheduledJobsOsFamilyLinux,
+	"windows": ListScheduledJobsOsFamilyWindows,
+	"all":     ListScheduledJobsOsFamilyAll,
 }
 
 // GetListScheduledJobsOsFamilyEnumValues Enumerates the set of values for ListScheduledJobsOsFamilyEnum
@@ -366,11 +378,6 @@ func GetListScheduledJobsOsFamilyEnumStringValues() []string {
 
 // GetMappingListScheduledJobsOsFamilyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListScheduledJobsOsFamilyEnum(val string) (ListScheduledJobsOsFamilyEnum, bool) {
-	mappingListScheduledJobsOsFamilyEnumIgnoreCase := make(map[string]ListScheduledJobsOsFamilyEnum)
-	for k, v := range mappingListScheduledJobsOsFamilyEnum {
-		mappingListScheduledJobsOsFamilyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListScheduledJobsOsFamilyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListScheduledJobsOsFamilyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

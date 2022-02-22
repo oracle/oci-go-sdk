@@ -12,7 +12,7 @@ package databasetools
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingDatabaseToolsKeyStorePasswordDetailsValueTypeEnum = map[string]Databa
 	"SECRETID": DatabaseToolsKeyStorePasswordDetailsValueTypeSecretid,
 }
 
+var mappingDatabaseToolsKeyStorePasswordDetailsValueTypeEnumLowerCase = map[string]DatabaseToolsKeyStorePasswordDetailsValueTypeEnum{
+	"secretid": DatabaseToolsKeyStorePasswordDetailsValueTypeSecretid,
+}
+
 // GetDatabaseToolsKeyStorePasswordDetailsValueTypeEnumValues Enumerates the set of values for DatabaseToolsKeyStorePasswordDetailsValueTypeEnum
 func GetDatabaseToolsKeyStorePasswordDetailsValueTypeEnumValues() []DatabaseToolsKeyStorePasswordDetailsValueTypeEnum {
 	values := make([]DatabaseToolsKeyStorePasswordDetailsValueTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetDatabaseToolsKeyStorePasswordDetailsValueTypeEnumStringValues() []string
 
 // GetMappingDatabaseToolsKeyStorePasswordDetailsValueTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseToolsKeyStorePasswordDetailsValueTypeEnum(val string) (DatabaseToolsKeyStorePasswordDetailsValueTypeEnum, bool) {
-	mappingDatabaseToolsKeyStorePasswordDetailsValueTypeEnumIgnoreCase := make(map[string]DatabaseToolsKeyStorePasswordDetailsValueTypeEnum)
-	for k, v := range mappingDatabaseToolsKeyStorePasswordDetailsValueTypeEnum {
-		mappingDatabaseToolsKeyStorePasswordDetailsValueTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseToolsKeyStorePasswordDetailsValueTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseToolsKeyStorePasswordDetailsValueTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

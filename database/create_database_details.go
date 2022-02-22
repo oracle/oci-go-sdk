@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -96,6 +96,11 @@ var mappingCreateDatabaseDetailsDbWorkloadEnum = map[string]CreateDatabaseDetail
 	"DSS":  CreateDatabaseDetailsDbWorkloadDss,
 }
 
+var mappingCreateDatabaseDetailsDbWorkloadEnumLowerCase = map[string]CreateDatabaseDetailsDbWorkloadEnum{
+	"oltp": CreateDatabaseDetailsDbWorkloadOltp,
+	"dss":  CreateDatabaseDetailsDbWorkloadDss,
+}
+
 // GetCreateDatabaseDetailsDbWorkloadEnumValues Enumerates the set of values for CreateDatabaseDetailsDbWorkloadEnum
 func GetCreateDatabaseDetailsDbWorkloadEnumValues() []CreateDatabaseDetailsDbWorkloadEnum {
 	values := make([]CreateDatabaseDetailsDbWorkloadEnum, 0)
@@ -115,11 +120,6 @@ func GetCreateDatabaseDetailsDbWorkloadEnumStringValues() []string {
 
 // GetMappingCreateDatabaseDetailsDbWorkloadEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateDatabaseDetailsDbWorkloadEnum(val string) (CreateDatabaseDetailsDbWorkloadEnum, bool) {
-	mappingCreateDatabaseDetailsDbWorkloadEnumIgnoreCase := make(map[string]CreateDatabaseDetailsDbWorkloadEnum)
-	for k, v := range mappingCreateDatabaseDetailsDbWorkloadEnum {
-		mappingCreateDatabaseDetailsDbWorkloadEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateDatabaseDetailsDbWorkloadEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateDatabaseDetailsDbWorkloadEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

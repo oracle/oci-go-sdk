@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -163,6 +163,12 @@ var mappingSummarizeAwrDbTopWaitEventsSessionTypeEnum = map[string]SummarizeAwrD
 	"ALL":        SummarizeAwrDbTopWaitEventsSessionTypeAll,
 }
 
+var mappingSummarizeAwrDbTopWaitEventsSessionTypeEnumLowerCase = map[string]SummarizeAwrDbTopWaitEventsSessionTypeEnum{
+	"foreground": SummarizeAwrDbTopWaitEventsSessionTypeForeground,
+	"background": SummarizeAwrDbTopWaitEventsSessionTypeBackground,
+	"all":        SummarizeAwrDbTopWaitEventsSessionTypeAll,
+}
+
 // GetSummarizeAwrDbTopWaitEventsSessionTypeEnumValues Enumerates the set of values for SummarizeAwrDbTopWaitEventsSessionTypeEnum
 func GetSummarizeAwrDbTopWaitEventsSessionTypeEnumValues() []SummarizeAwrDbTopWaitEventsSessionTypeEnum {
 	values := make([]SummarizeAwrDbTopWaitEventsSessionTypeEnum, 0)
@@ -183,12 +189,7 @@ func GetSummarizeAwrDbTopWaitEventsSessionTypeEnumStringValues() []string {
 
 // GetMappingSummarizeAwrDbTopWaitEventsSessionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAwrDbTopWaitEventsSessionTypeEnum(val string) (SummarizeAwrDbTopWaitEventsSessionTypeEnum, bool) {
-	mappingSummarizeAwrDbTopWaitEventsSessionTypeEnumIgnoreCase := make(map[string]SummarizeAwrDbTopWaitEventsSessionTypeEnum)
-	for k, v := range mappingSummarizeAwrDbTopWaitEventsSessionTypeEnum {
-		mappingSummarizeAwrDbTopWaitEventsSessionTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAwrDbTopWaitEventsSessionTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAwrDbTopWaitEventsSessionTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -204,6 +205,11 @@ const (
 var mappingSummarizeAwrDbTopWaitEventsSortByEnum = map[string]SummarizeAwrDbTopWaitEventsSortByEnum{
 	"WAITS_PERSEC":         SummarizeAwrDbTopWaitEventsSortByWaitsPersec,
 	"AVG_WAIT_TIME_PERSEC": SummarizeAwrDbTopWaitEventsSortByAvgWaitTimePersec,
+}
+
+var mappingSummarizeAwrDbTopWaitEventsSortByEnumLowerCase = map[string]SummarizeAwrDbTopWaitEventsSortByEnum{
+	"waits_persec":         SummarizeAwrDbTopWaitEventsSortByWaitsPersec,
+	"avg_wait_time_persec": SummarizeAwrDbTopWaitEventsSortByAvgWaitTimePersec,
 }
 
 // GetSummarizeAwrDbTopWaitEventsSortByEnumValues Enumerates the set of values for SummarizeAwrDbTopWaitEventsSortByEnum
@@ -225,12 +231,7 @@ func GetSummarizeAwrDbTopWaitEventsSortByEnumStringValues() []string {
 
 // GetMappingSummarizeAwrDbTopWaitEventsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAwrDbTopWaitEventsSortByEnum(val string) (SummarizeAwrDbTopWaitEventsSortByEnum, bool) {
-	mappingSummarizeAwrDbTopWaitEventsSortByEnumIgnoreCase := make(map[string]SummarizeAwrDbTopWaitEventsSortByEnum)
-	for k, v := range mappingSummarizeAwrDbTopWaitEventsSortByEnum {
-		mappingSummarizeAwrDbTopWaitEventsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAwrDbTopWaitEventsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAwrDbTopWaitEventsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -246,6 +247,11 @@ const (
 var mappingSummarizeAwrDbTopWaitEventsSortOrderEnum = map[string]SummarizeAwrDbTopWaitEventsSortOrderEnum{
 	"ASC":  SummarizeAwrDbTopWaitEventsSortOrderAsc,
 	"DESC": SummarizeAwrDbTopWaitEventsSortOrderDesc,
+}
+
+var mappingSummarizeAwrDbTopWaitEventsSortOrderEnumLowerCase = map[string]SummarizeAwrDbTopWaitEventsSortOrderEnum{
+	"asc":  SummarizeAwrDbTopWaitEventsSortOrderAsc,
+	"desc": SummarizeAwrDbTopWaitEventsSortOrderDesc,
 }
 
 // GetSummarizeAwrDbTopWaitEventsSortOrderEnumValues Enumerates the set of values for SummarizeAwrDbTopWaitEventsSortOrderEnum
@@ -267,11 +273,6 @@ func GetSummarizeAwrDbTopWaitEventsSortOrderEnumStringValues() []string {
 
 // GetMappingSummarizeAwrDbTopWaitEventsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAwrDbTopWaitEventsSortOrderEnum(val string) (SummarizeAwrDbTopWaitEventsSortOrderEnum, bool) {
-	mappingSummarizeAwrDbTopWaitEventsSortOrderEnumIgnoreCase := make(map[string]SummarizeAwrDbTopWaitEventsSortOrderEnum)
-	for k, v := range mappingSummarizeAwrDbTopWaitEventsSortOrderEnum {
-		mappingSummarizeAwrDbTopWaitEventsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAwrDbTopWaitEventsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAwrDbTopWaitEventsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

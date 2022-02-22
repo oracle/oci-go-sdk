@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -26,10 +26,10 @@ import (
 // route distribution specify how how incoming route advertisements through a referenced attachment or all attachments of a certain type are inserted into the route table.
 // You can assign a route distribution as a DRG attachment's export distribution. Export route distribution statements specify how routes in a
 // DRG attachment's assigned table are advertised out through the attachment. When a DRG attachment is created, a route distribution is created with a
-// single ACCEPT statement with an empty match criteria (empty match criteria implies match ALL).
+// single ACCEPT statement with match criteria MATCH_ALL.
 // Exporting routes through VCN attachments is unsupported, so no VCN attachments are assigned an export distribution.
 // The two auto-generated DRG route tables (one as the default for VCN attachments, and the other for all other types of attachments)
-// are each assigned an auto generated import route distribution. The default VCN table's import distribution has a single statement with empty match criteria statement to import routes from
+// are each assigned an auto generated import route distribution. The default VCN table's import distribution has a single statement with match criteria MATCH_ALL to import routes from
 // each DRG attachment type. The other table's import distribution has a statement to import routes from attachments with the VCN type.
 // The route distribution is always in the same compartment as the DRG.
 type DrgRouteDistribution struct {
@@ -108,6 +108,13 @@ var mappingDrgRouteDistributionLifecycleStateEnum = map[string]DrgRouteDistribut
 	"TERMINATED":   DrgRouteDistributionLifecycleStateTerminated,
 }
 
+var mappingDrgRouteDistributionLifecycleStateEnumLowerCase = map[string]DrgRouteDistributionLifecycleStateEnum{
+	"provisioning": DrgRouteDistributionLifecycleStateProvisioning,
+	"available":    DrgRouteDistributionLifecycleStateAvailable,
+	"terminating":  DrgRouteDistributionLifecycleStateTerminating,
+	"terminated":   DrgRouteDistributionLifecycleStateTerminated,
+}
+
 // GetDrgRouteDistributionLifecycleStateEnumValues Enumerates the set of values for DrgRouteDistributionLifecycleStateEnum
 func GetDrgRouteDistributionLifecycleStateEnumValues() []DrgRouteDistributionLifecycleStateEnum {
 	values := make([]DrgRouteDistributionLifecycleStateEnum, 0)
@@ -129,12 +136,7 @@ func GetDrgRouteDistributionLifecycleStateEnumStringValues() []string {
 
 // GetMappingDrgRouteDistributionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDrgRouteDistributionLifecycleStateEnum(val string) (DrgRouteDistributionLifecycleStateEnum, bool) {
-	mappingDrgRouteDistributionLifecycleStateEnumIgnoreCase := make(map[string]DrgRouteDistributionLifecycleStateEnum)
-	for k, v := range mappingDrgRouteDistributionLifecycleStateEnum {
-		mappingDrgRouteDistributionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDrgRouteDistributionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDrgRouteDistributionLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -150,6 +152,11 @@ const (
 var mappingDrgRouteDistributionDistributionTypeEnum = map[string]DrgRouteDistributionDistributionTypeEnum{
 	"IMPORT": DrgRouteDistributionDistributionTypeImport,
 	"EXPORT": DrgRouteDistributionDistributionTypeExport,
+}
+
+var mappingDrgRouteDistributionDistributionTypeEnumLowerCase = map[string]DrgRouteDistributionDistributionTypeEnum{
+	"import": DrgRouteDistributionDistributionTypeImport,
+	"export": DrgRouteDistributionDistributionTypeExport,
 }
 
 // GetDrgRouteDistributionDistributionTypeEnumValues Enumerates the set of values for DrgRouteDistributionDistributionTypeEnum
@@ -171,11 +178,6 @@ func GetDrgRouteDistributionDistributionTypeEnumStringValues() []string {
 
 // GetMappingDrgRouteDistributionDistributionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDrgRouteDistributionDistributionTypeEnum(val string) (DrgRouteDistributionDistributionTypeEnum, bool) {
-	mappingDrgRouteDistributionDistributionTypeEnumIgnoreCase := make(map[string]DrgRouteDistributionDistributionTypeEnum)
-	for k, v := range mappingDrgRouteDistributionDistributionTypeEnum {
-		mappingDrgRouteDistributionDistributionTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDrgRouteDistributionDistributionTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDrgRouteDistributionDistributionTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

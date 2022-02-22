@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -78,6 +78,11 @@ var mappingCachingRuleActionEnum = map[string]CachingRuleActionEnum{
 	"BYPASS_CACHE": CachingRuleActionBypassCache,
 }
 
+var mappingCachingRuleActionEnumLowerCase = map[string]CachingRuleActionEnum{
+	"cache":        CachingRuleActionCache,
+	"bypass_cache": CachingRuleActionBypassCache,
+}
+
 // GetCachingRuleActionEnumValues Enumerates the set of values for CachingRuleActionEnum
 func GetCachingRuleActionEnumValues() []CachingRuleActionEnum {
 	values := make([]CachingRuleActionEnum, 0)
@@ -97,11 +102,6 @@ func GetCachingRuleActionEnumStringValues() []string {
 
 // GetMappingCachingRuleActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCachingRuleActionEnum(val string) (CachingRuleActionEnum, bool) {
-	mappingCachingRuleActionEnumIgnoreCase := make(map[string]CachingRuleActionEnum)
-	for k, v := range mappingCachingRuleActionEnum {
-		mappingCachingRuleActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCachingRuleActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCachingRuleActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

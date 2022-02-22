@@ -11,7 +11,7 @@ package networkloadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -72,6 +72,13 @@ var mappingNetworkLoadBalancerHealthSummaryStatusEnum = map[string]NetworkLoadBa
 	"UNKNOWN":  NetworkLoadBalancerHealthSummaryStatusUnknown,
 }
 
+var mappingNetworkLoadBalancerHealthSummaryStatusEnumLowerCase = map[string]NetworkLoadBalancerHealthSummaryStatusEnum{
+	"ok":       NetworkLoadBalancerHealthSummaryStatusOk,
+	"warning":  NetworkLoadBalancerHealthSummaryStatusWarning,
+	"critical": NetworkLoadBalancerHealthSummaryStatusCritical,
+	"unknown":  NetworkLoadBalancerHealthSummaryStatusUnknown,
+}
+
 // GetNetworkLoadBalancerHealthSummaryStatusEnumValues Enumerates the set of values for NetworkLoadBalancerHealthSummaryStatusEnum
 func GetNetworkLoadBalancerHealthSummaryStatusEnumValues() []NetworkLoadBalancerHealthSummaryStatusEnum {
 	values := make([]NetworkLoadBalancerHealthSummaryStatusEnum, 0)
@@ -93,11 +100,6 @@ func GetNetworkLoadBalancerHealthSummaryStatusEnumStringValues() []string {
 
 // GetMappingNetworkLoadBalancerHealthSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNetworkLoadBalancerHealthSummaryStatusEnum(val string) (NetworkLoadBalancerHealthSummaryStatusEnum, bool) {
-	mappingNetworkLoadBalancerHealthSummaryStatusEnumIgnoreCase := make(map[string]NetworkLoadBalancerHealthSummaryStatusEnum)
-	for k, v := range mappingNetworkLoadBalancerHealthSummaryStatusEnum {
-		mappingNetworkLoadBalancerHealthSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNetworkLoadBalancerHealthSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNetworkLoadBalancerHealthSummaryStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

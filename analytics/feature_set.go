@@ -27,6 +27,11 @@ var mappingFeatureSetEnum = map[string]FeatureSetEnum{
 	"ENTERPRISE_ANALYTICS":   FeatureSetEnterpriseAnalytics,
 }
 
+var mappingFeatureSetEnumLowerCase = map[string]FeatureSetEnum{
+	"self_service_analytics": FeatureSetSelfServiceAnalytics,
+	"enterprise_analytics":   FeatureSetEnterpriseAnalytics,
+}
+
 // GetFeatureSetEnumValues Enumerates the set of values for FeatureSetEnum
 func GetFeatureSetEnumValues() []FeatureSetEnum {
 	values := make([]FeatureSetEnum, 0)
@@ -46,11 +51,6 @@ func GetFeatureSetEnumStringValues() []string {
 
 // GetMappingFeatureSetEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFeatureSetEnum(val string) (FeatureSetEnum, bool) {
-	mappingFeatureSetEnumIgnoreCase := make(map[string]FeatureSetEnum)
-	for k, v := range mappingFeatureSetEnum {
-		mappingFeatureSetEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFeatureSetEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFeatureSetEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

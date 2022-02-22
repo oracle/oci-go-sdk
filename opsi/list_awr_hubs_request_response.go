@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -151,6 +151,11 @@ var mappingListAwrHubsSortOrderEnum = map[string]ListAwrHubsSortOrderEnum{
 	"DESC": ListAwrHubsSortOrderDesc,
 }
 
+var mappingListAwrHubsSortOrderEnumLowerCase = map[string]ListAwrHubsSortOrderEnum{
+	"asc":  ListAwrHubsSortOrderAsc,
+	"desc": ListAwrHubsSortOrderDesc,
+}
+
 // GetListAwrHubsSortOrderEnumValues Enumerates the set of values for ListAwrHubsSortOrderEnum
 func GetListAwrHubsSortOrderEnumValues() []ListAwrHubsSortOrderEnum {
 	values := make([]ListAwrHubsSortOrderEnum, 0)
@@ -170,12 +175,7 @@ func GetListAwrHubsSortOrderEnumStringValues() []string {
 
 // GetMappingListAwrHubsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAwrHubsSortOrderEnum(val string) (ListAwrHubsSortOrderEnum, bool) {
-	mappingListAwrHubsSortOrderEnumIgnoreCase := make(map[string]ListAwrHubsSortOrderEnum)
-	for k, v := range mappingListAwrHubsSortOrderEnum {
-		mappingListAwrHubsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAwrHubsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAwrHubsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -191,6 +191,11 @@ const (
 var mappingListAwrHubsSortByEnum = map[string]ListAwrHubsSortByEnum{
 	"timeCreated": ListAwrHubsSortByTimecreated,
 	"displayName": ListAwrHubsSortByDisplayname,
+}
+
+var mappingListAwrHubsSortByEnumLowerCase = map[string]ListAwrHubsSortByEnum{
+	"timecreated": ListAwrHubsSortByTimecreated,
+	"displayname": ListAwrHubsSortByDisplayname,
 }
 
 // GetListAwrHubsSortByEnumValues Enumerates the set of values for ListAwrHubsSortByEnum
@@ -212,11 +217,6 @@ func GetListAwrHubsSortByEnumStringValues() []string {
 
 // GetMappingListAwrHubsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAwrHubsSortByEnum(val string) (ListAwrHubsSortByEnum, bool) {
-	mappingListAwrHubsSortByEnumIgnoreCase := make(map[string]ListAwrHubsSortByEnum)
-	for k, v := range mappingListAwrHubsSortByEnum {
-		mappingListAwrHubsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAwrHubsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAwrHubsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

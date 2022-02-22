@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -135,6 +135,11 @@ var mappingListProjectsSortOrderEnum = map[string]ListProjectsSortOrderEnum{
 	"DESC": ListProjectsSortOrderDesc,
 }
 
+var mappingListProjectsSortOrderEnumLowerCase = map[string]ListProjectsSortOrderEnum{
+	"asc":  ListProjectsSortOrderAsc,
+	"desc": ListProjectsSortOrderDesc,
+}
+
 // GetListProjectsSortOrderEnumValues Enumerates the set of values for ListProjectsSortOrderEnum
 func GetListProjectsSortOrderEnumValues() []ListProjectsSortOrderEnum {
 	values := make([]ListProjectsSortOrderEnum, 0)
@@ -154,12 +159,7 @@ func GetListProjectsSortOrderEnumStringValues() []string {
 
 // GetMappingListProjectsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProjectsSortOrderEnum(val string) (ListProjectsSortOrderEnum, bool) {
-	mappingListProjectsSortOrderEnumIgnoreCase := make(map[string]ListProjectsSortOrderEnum)
-	for k, v := range mappingListProjectsSortOrderEnum {
-		mappingListProjectsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProjectsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProjectsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -175,6 +175,11 @@ const (
 var mappingListProjectsSortByEnum = map[string]ListProjectsSortByEnum{
 	"timeCreated": ListProjectsSortByTimecreated,
 	"displayName": ListProjectsSortByDisplayname,
+}
+
+var mappingListProjectsSortByEnumLowerCase = map[string]ListProjectsSortByEnum{
+	"timecreated": ListProjectsSortByTimecreated,
+	"displayname": ListProjectsSortByDisplayname,
 }
 
 // GetListProjectsSortByEnumValues Enumerates the set of values for ListProjectsSortByEnum
@@ -196,11 +201,6 @@ func GetListProjectsSortByEnumStringValues() []string {
 
 // GetMappingListProjectsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProjectsSortByEnum(val string) (ListProjectsSortByEnum, bool) {
-	mappingListProjectsSortByEnumIgnoreCase := make(map[string]ListProjectsSortByEnum)
-	for k, v := range mappingListProjectsSortByEnum {
-		mappingListProjectsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProjectsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProjectsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

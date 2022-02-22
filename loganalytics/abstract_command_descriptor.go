@@ -12,7 +12,7 @@ package loganalytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -401,6 +401,54 @@ var mappingAbstractCommandDescriptorNameEnum = map[string]AbstractCommandDescrip
 	"COMPARE":          AbstractCommandDescriptorNameCompare,
 }
 
+var mappingAbstractCommandDescriptorNameEnumLowerCase = map[string]AbstractCommandDescriptorNameEnum{
+	"command":          AbstractCommandDescriptorNameCommand,
+	"search":           AbstractCommandDescriptorNameSearch,
+	"stats":            AbstractCommandDescriptorNameStats,
+	"geo_stats":        AbstractCommandDescriptorNameGeoStats,
+	"time_stats":       AbstractCommandDescriptorNameTimeStats,
+	"sort":             AbstractCommandDescriptorNameSort,
+	"fields":           AbstractCommandDescriptorNameFields,
+	"add_fields":       AbstractCommandDescriptorNameAddFields,
+	"link":             AbstractCommandDescriptorNameLink,
+	"link_details":     AbstractCommandDescriptorNameLinkDetails,
+	"cluster":          AbstractCommandDescriptorNameCluster,
+	"cluster_details":  AbstractCommandDescriptorNameClusterDetails,
+	"cluster_split":    AbstractCommandDescriptorNameClusterSplit,
+	"eval":             AbstractCommandDescriptorNameEval,
+	"extract":          AbstractCommandDescriptorNameExtract,
+	"json_extract":     AbstractCommandDescriptorNameJsonExtract,
+	"xml_extract":      AbstractCommandDescriptorNameXmlExtract,
+	"event_stats":      AbstractCommandDescriptorNameEventStats,
+	"bucket":           AbstractCommandDescriptorNameBucket,
+	"classify":         AbstractCommandDescriptorNameClassify,
+	"top":              AbstractCommandDescriptorNameTop,
+	"bottom":           AbstractCommandDescriptorNameBottom,
+	"head":             AbstractCommandDescriptorNameHead,
+	"tail":             AbstractCommandDescriptorNameTail,
+	"field_summary":    AbstractCommandDescriptorNameFieldSummary,
+	"regex":            AbstractCommandDescriptorNameRegex,
+	"rename":           AbstractCommandDescriptorNameRename,
+	"time_compare":     AbstractCommandDescriptorNameTimeCompare,
+	"where":            AbstractCommandDescriptorNameWhere,
+	"cluster_compare":  AbstractCommandDescriptorNameClusterCompare,
+	"delete":           AbstractCommandDescriptorNameDelete,
+	"delta":            AbstractCommandDescriptorNameDelta,
+	"distinct":         AbstractCommandDescriptorNameDistinct,
+	"search_lookup":    AbstractCommandDescriptorNameSearchLookup,
+	"lookup":           AbstractCommandDescriptorNameLookup,
+	"demo_mode":        AbstractCommandDescriptorNameDemoMode,
+	"macro":            AbstractCommandDescriptorNameMacro,
+	"multi_search":     AbstractCommandDescriptorNameMultiSearch,
+	"highlight":        AbstractCommandDescriptorNameHighlight,
+	"highlight_rows":   AbstractCommandDescriptorNameHighlightRows,
+	"highlight_groups": AbstractCommandDescriptorNameHighlightGroups,
+	"create_view":      AbstractCommandDescriptorNameCreateView,
+	"map":              AbstractCommandDescriptorNameMap,
+	"nlp":              AbstractCommandDescriptorNameNlp,
+	"compare":          AbstractCommandDescriptorNameCompare,
+}
+
 // GetAbstractCommandDescriptorNameEnumValues Enumerates the set of values for AbstractCommandDescriptorNameEnum
 func GetAbstractCommandDescriptorNameEnumValues() []AbstractCommandDescriptorNameEnum {
 	values := make([]AbstractCommandDescriptorNameEnum, 0)
@@ -463,11 +511,6 @@ func GetAbstractCommandDescriptorNameEnumStringValues() []string {
 
 // GetMappingAbstractCommandDescriptorNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAbstractCommandDescriptorNameEnum(val string) (AbstractCommandDescriptorNameEnum, bool) {
-	mappingAbstractCommandDescriptorNameEnumIgnoreCase := make(map[string]AbstractCommandDescriptorNameEnum)
-	for k, v := range mappingAbstractCommandDescriptorNameEnum {
-		mappingAbstractCommandDescriptorNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAbstractCommandDescriptorNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAbstractCommandDescriptorNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

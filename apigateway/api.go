@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -113,6 +113,15 @@ var mappingApiLifecycleStateEnum = map[string]ApiLifecycleStateEnum{
 	"FAILED":   ApiLifecycleStateFailed,
 }
 
+var mappingApiLifecycleStateEnumLowerCase = map[string]ApiLifecycleStateEnum{
+	"creating": ApiLifecycleStateCreating,
+	"active":   ApiLifecycleStateActive,
+	"updating": ApiLifecycleStateUpdating,
+	"deleting": ApiLifecycleStateDeleting,
+	"deleted":  ApiLifecycleStateDeleted,
+	"failed":   ApiLifecycleStateFailed,
+}
+
 // GetApiLifecycleStateEnumValues Enumerates the set of values for ApiLifecycleStateEnum
 func GetApiLifecycleStateEnumValues() []ApiLifecycleStateEnum {
 	values := make([]ApiLifecycleStateEnum, 0)
@@ -136,11 +145,6 @@ func GetApiLifecycleStateEnumStringValues() []string {
 
 // GetMappingApiLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingApiLifecycleStateEnum(val string) (ApiLifecycleStateEnum, bool) {
-	mappingApiLifecycleStateEnumIgnoreCase := make(map[string]ApiLifecycleStateEnum)
-	for k, v := range mappingApiLifecycleStateEnum {
-		mappingApiLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingApiLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingApiLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

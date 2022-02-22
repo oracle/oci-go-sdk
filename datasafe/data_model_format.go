@@ -25,6 +25,10 @@ var mappingDataModelFormatEnum = map[string]DataModelFormatEnum{
 	"XML": DataModelFormatXml,
 }
 
+var mappingDataModelFormatEnumLowerCase = map[string]DataModelFormatEnum{
+	"xml": DataModelFormatXml,
+}
+
 // GetDataModelFormatEnumValues Enumerates the set of values for DataModelFormatEnum
 func GetDataModelFormatEnumValues() []DataModelFormatEnum {
 	values := make([]DataModelFormatEnum, 0)
@@ -43,11 +47,6 @@ func GetDataModelFormatEnumStringValues() []string {
 
 // GetMappingDataModelFormatEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataModelFormatEnum(val string) (DataModelFormatEnum, bool) {
-	mappingDataModelFormatEnumIgnoreCase := make(map[string]DataModelFormatEnum)
-	for k, v := range mappingDataModelFormatEnum {
-		mappingDataModelFormatEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataModelFormatEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataModelFormatEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -31,6 +31,13 @@ var mappingJobPhaseStatusEnum = map[string]JobPhaseStatusEnum{
 	"FAILED":    JobPhaseStatusFailed,
 }
 
+var mappingJobPhaseStatusEnumLowerCase = map[string]JobPhaseStatusEnum{
+	"pending":   JobPhaseStatusPending,
+	"started":   JobPhaseStatusStarted,
+	"completed": JobPhaseStatusCompleted,
+	"failed":    JobPhaseStatusFailed,
+}
+
 // GetJobPhaseStatusEnumValues Enumerates the set of values for JobPhaseStatusEnum
 func GetJobPhaseStatusEnumValues() []JobPhaseStatusEnum {
 	values := make([]JobPhaseStatusEnum, 0)
@@ -52,11 +59,6 @@ func GetJobPhaseStatusEnumStringValues() []string {
 
 // GetMappingJobPhaseStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJobPhaseStatusEnum(val string) (JobPhaseStatusEnum, bool) {
-	mappingJobPhaseStatusEnumIgnoreCase := make(map[string]JobPhaseStatusEnum)
-	for k, v := range mappingJobPhaseStatusEnum {
-		mappingJobPhaseStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJobPhaseStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJobPhaseStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

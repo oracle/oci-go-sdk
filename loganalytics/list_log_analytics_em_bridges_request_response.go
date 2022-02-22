@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -154,6 +154,11 @@ var mappingListLogAnalyticsEmBridgesSortOrderEnum = map[string]ListLogAnalyticsE
 	"DESC": ListLogAnalyticsEmBridgesSortOrderDesc,
 }
 
+var mappingListLogAnalyticsEmBridgesSortOrderEnumLowerCase = map[string]ListLogAnalyticsEmBridgesSortOrderEnum{
+	"asc":  ListLogAnalyticsEmBridgesSortOrderAsc,
+	"desc": ListLogAnalyticsEmBridgesSortOrderDesc,
+}
+
 // GetListLogAnalyticsEmBridgesSortOrderEnumValues Enumerates the set of values for ListLogAnalyticsEmBridgesSortOrderEnum
 func GetListLogAnalyticsEmBridgesSortOrderEnumValues() []ListLogAnalyticsEmBridgesSortOrderEnum {
 	values := make([]ListLogAnalyticsEmBridgesSortOrderEnum, 0)
@@ -173,12 +178,7 @@ func GetListLogAnalyticsEmBridgesSortOrderEnumStringValues() []string {
 
 // GetMappingListLogAnalyticsEmBridgesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLogAnalyticsEmBridgesSortOrderEnum(val string) (ListLogAnalyticsEmBridgesSortOrderEnum, bool) {
-	mappingListLogAnalyticsEmBridgesSortOrderEnumIgnoreCase := make(map[string]ListLogAnalyticsEmBridgesSortOrderEnum)
-	for k, v := range mappingListLogAnalyticsEmBridgesSortOrderEnum {
-		mappingListLogAnalyticsEmBridgesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLogAnalyticsEmBridgesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLogAnalyticsEmBridgesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -196,6 +196,12 @@ var mappingListLogAnalyticsEmBridgesSortByEnum = map[string]ListLogAnalyticsEmBr
 	"timeCreated": ListLogAnalyticsEmBridgesSortByTimecreated,
 	"timeUpdated": ListLogAnalyticsEmBridgesSortByTimeupdated,
 	"displayName": ListLogAnalyticsEmBridgesSortByDisplayname,
+}
+
+var mappingListLogAnalyticsEmBridgesSortByEnumLowerCase = map[string]ListLogAnalyticsEmBridgesSortByEnum{
+	"timecreated": ListLogAnalyticsEmBridgesSortByTimecreated,
+	"timeupdated": ListLogAnalyticsEmBridgesSortByTimeupdated,
+	"displayname": ListLogAnalyticsEmBridgesSortByDisplayname,
 }
 
 // GetListLogAnalyticsEmBridgesSortByEnumValues Enumerates the set of values for ListLogAnalyticsEmBridgesSortByEnum
@@ -218,11 +224,6 @@ func GetListLogAnalyticsEmBridgesSortByEnumStringValues() []string {
 
 // GetMappingListLogAnalyticsEmBridgesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLogAnalyticsEmBridgesSortByEnum(val string) (ListLogAnalyticsEmBridgesSortByEnum, bool) {
-	mappingListLogAnalyticsEmBridgesSortByEnumIgnoreCase := make(map[string]ListLogAnalyticsEmBridgesSortByEnum)
-	for k, v := range mappingListLogAnalyticsEmBridgesSortByEnum {
-		mappingListLogAnalyticsEmBridgesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLogAnalyticsEmBridgesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLogAnalyticsEmBridgesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

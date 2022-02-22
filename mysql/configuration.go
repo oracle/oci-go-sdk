@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -97,6 +97,11 @@ var mappingConfigurationTypeEnum = map[string]ConfigurationTypeEnum{
 	"CUSTOM":  ConfigurationTypeCustom,
 }
 
+var mappingConfigurationTypeEnumLowerCase = map[string]ConfigurationTypeEnum{
+	"default": ConfigurationTypeDefault,
+	"custom":  ConfigurationTypeCustom,
+}
+
 // GetConfigurationTypeEnumValues Enumerates the set of values for ConfigurationTypeEnum
 func GetConfigurationTypeEnumValues() []ConfigurationTypeEnum {
 	values := make([]ConfigurationTypeEnum, 0)
@@ -116,12 +121,7 @@ func GetConfigurationTypeEnumStringValues() []string {
 
 // GetMappingConfigurationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConfigurationTypeEnum(val string) (ConfigurationTypeEnum, bool) {
-	mappingConfigurationTypeEnumIgnoreCase := make(map[string]ConfigurationTypeEnum)
-	for k, v := range mappingConfigurationTypeEnum {
-		mappingConfigurationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConfigurationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConfigurationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -137,6 +137,11 @@ const (
 var mappingConfigurationLifecycleStateEnum = map[string]ConfigurationLifecycleStateEnum{
 	"ACTIVE":  ConfigurationLifecycleStateActive,
 	"DELETED": ConfigurationLifecycleStateDeleted,
+}
+
+var mappingConfigurationLifecycleStateEnumLowerCase = map[string]ConfigurationLifecycleStateEnum{
+	"active":  ConfigurationLifecycleStateActive,
+	"deleted": ConfigurationLifecycleStateDeleted,
 }
 
 // GetConfigurationLifecycleStateEnumValues Enumerates the set of values for ConfigurationLifecycleStateEnum
@@ -158,11 +163,6 @@ func GetConfigurationLifecycleStateEnumStringValues() []string {
 
 // GetMappingConfigurationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConfigurationLifecycleStateEnum(val string) (ConfigurationLifecycleStateEnum, bool) {
-	mappingConfigurationLifecycleStateEnumIgnoreCase := make(map[string]ConfigurationLifecycleStateEnum)
-	for k, v := range mappingConfigurationLifecycleStateEnum {
-		mappingConfigurationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConfigurationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConfigurationLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

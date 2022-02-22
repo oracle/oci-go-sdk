@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -134,6 +134,11 @@ var mappingListSoftwareSourcePackagesSortOrderEnum = map[string]ListSoftwareSour
 	"DESC": ListSoftwareSourcePackagesSortOrderDesc,
 }
 
+var mappingListSoftwareSourcePackagesSortOrderEnumLowerCase = map[string]ListSoftwareSourcePackagesSortOrderEnum{
+	"asc":  ListSoftwareSourcePackagesSortOrderAsc,
+	"desc": ListSoftwareSourcePackagesSortOrderDesc,
+}
+
 // GetListSoftwareSourcePackagesSortOrderEnumValues Enumerates the set of values for ListSoftwareSourcePackagesSortOrderEnum
 func GetListSoftwareSourcePackagesSortOrderEnumValues() []ListSoftwareSourcePackagesSortOrderEnum {
 	values := make([]ListSoftwareSourcePackagesSortOrderEnum, 0)
@@ -153,12 +158,7 @@ func GetListSoftwareSourcePackagesSortOrderEnumStringValues() []string {
 
 // GetMappingListSoftwareSourcePackagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSoftwareSourcePackagesSortOrderEnum(val string) (ListSoftwareSourcePackagesSortOrderEnum, bool) {
-	mappingListSoftwareSourcePackagesSortOrderEnumIgnoreCase := make(map[string]ListSoftwareSourcePackagesSortOrderEnum)
-	for k, v := range mappingListSoftwareSourcePackagesSortOrderEnum {
-		mappingListSoftwareSourcePackagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSoftwareSourcePackagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSoftwareSourcePackagesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -174,6 +174,11 @@ const (
 var mappingListSoftwareSourcePackagesSortByEnum = map[string]ListSoftwareSourcePackagesSortByEnum{
 	"TIMECREATED": ListSoftwareSourcePackagesSortByTimecreated,
 	"DISPLAYNAME": ListSoftwareSourcePackagesSortByDisplayname,
+}
+
+var mappingListSoftwareSourcePackagesSortByEnumLowerCase = map[string]ListSoftwareSourcePackagesSortByEnum{
+	"timecreated": ListSoftwareSourcePackagesSortByTimecreated,
+	"displayname": ListSoftwareSourcePackagesSortByDisplayname,
 }
 
 // GetListSoftwareSourcePackagesSortByEnumValues Enumerates the set of values for ListSoftwareSourcePackagesSortByEnum
@@ -195,11 +200,6 @@ func GetListSoftwareSourcePackagesSortByEnumStringValues() []string {
 
 // GetMappingListSoftwareSourcePackagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSoftwareSourcePackagesSortByEnum(val string) (ListSoftwareSourcePackagesSortByEnum, bool) {
-	mappingListSoftwareSourcePackagesSortByEnumIgnoreCase := make(map[string]ListSoftwareSourcePackagesSortByEnum)
-	for k, v := range mappingListSoftwareSourcePackagesSortByEnum {
-		mappingListSoftwareSourcePackagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSoftwareSourcePackagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSoftwareSourcePackagesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

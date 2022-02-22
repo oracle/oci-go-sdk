@@ -11,7 +11,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -70,6 +70,14 @@ var mappingDeployStageExecutionStepStateEnum = map[string]DeployStageExecutionSt
 	"CANCELED":    DeployStageExecutionStepStateCanceled,
 }
 
+var mappingDeployStageExecutionStepStateEnumLowerCase = map[string]DeployStageExecutionStepStateEnum{
+	"waiting":     DeployStageExecutionStepStateWaiting,
+	"in_progress": DeployStageExecutionStepStateInProgress,
+	"failed":      DeployStageExecutionStepStateFailed,
+	"succeeded":   DeployStageExecutionStepStateSucceeded,
+	"canceled":    DeployStageExecutionStepStateCanceled,
+}
+
 // GetDeployStageExecutionStepStateEnumValues Enumerates the set of values for DeployStageExecutionStepStateEnum
 func GetDeployStageExecutionStepStateEnumValues() []DeployStageExecutionStepStateEnum {
 	values := make([]DeployStageExecutionStepStateEnum, 0)
@@ -92,11 +100,6 @@ func GetDeployStageExecutionStepStateEnumStringValues() []string {
 
 // GetMappingDeployStageExecutionStepStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeployStageExecutionStepStateEnum(val string) (DeployStageExecutionStepStateEnum, bool) {
-	mappingDeployStageExecutionStepStateEnumIgnoreCase := make(map[string]DeployStageExecutionStepStateEnum)
-	for k, v := range mappingDeployStageExecutionStepStateEnum {
-		mappingDeployStageExecutionStepStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeployStageExecutionStepStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeployStageExecutionStepStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

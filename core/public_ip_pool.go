@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -92,6 +92,14 @@ var mappingPublicIpPoolLifecycleStateEnum = map[string]PublicIpPoolLifecycleStat
 	"DELETED":  PublicIpPoolLifecycleStateDeleted,
 }
 
+var mappingPublicIpPoolLifecycleStateEnumLowerCase = map[string]PublicIpPoolLifecycleStateEnum{
+	"inactive": PublicIpPoolLifecycleStateInactive,
+	"updating": PublicIpPoolLifecycleStateUpdating,
+	"active":   PublicIpPoolLifecycleStateActive,
+	"deleting": PublicIpPoolLifecycleStateDeleting,
+	"deleted":  PublicIpPoolLifecycleStateDeleted,
+}
+
 // GetPublicIpPoolLifecycleStateEnumValues Enumerates the set of values for PublicIpPoolLifecycleStateEnum
 func GetPublicIpPoolLifecycleStateEnumValues() []PublicIpPoolLifecycleStateEnum {
 	values := make([]PublicIpPoolLifecycleStateEnum, 0)
@@ -114,11 +122,6 @@ func GetPublicIpPoolLifecycleStateEnumStringValues() []string {
 
 // GetMappingPublicIpPoolLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPublicIpPoolLifecycleStateEnum(val string) (PublicIpPoolLifecycleStateEnum, bool) {
-	mappingPublicIpPoolLifecycleStateEnumIgnoreCase := make(map[string]PublicIpPoolLifecycleStateEnum)
-	for k, v := range mappingPublicIpPoolLifecycleStateEnum {
-		mappingPublicIpPoolLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPublicIpPoolLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPublicIpPoolLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

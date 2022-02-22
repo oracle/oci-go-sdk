@@ -11,7 +11,7 @@ package identitydataplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -67,6 +67,14 @@ var mappingThinAssociationAuthorizationResponseAssociationResultEnum = map[strin
 	"SUCCESS":              ThinAssociationAuthorizationResponseAssociationResultSuccess,
 }
 
+var mappingThinAssociationAuthorizationResponseAssociationResultEnumLowerCase = map[string]ThinAssociationAuthorizationResponseAssociationResultEnum{
+	"fail_unknown":         ThinAssociationAuthorizationResponseAssociationResultFailUnknown,
+	"fail_bad_request":     ThinAssociationAuthorizationResponseAssociationResultFailBadRequest,
+	"fail_missing_endorse": ThinAssociationAuthorizationResponseAssociationResultFailMissingEndorse,
+	"fail_missing_admit":   ThinAssociationAuthorizationResponseAssociationResultFailMissingAdmit,
+	"success":              ThinAssociationAuthorizationResponseAssociationResultSuccess,
+}
+
 // GetThinAssociationAuthorizationResponseAssociationResultEnumValues Enumerates the set of values for ThinAssociationAuthorizationResponseAssociationResultEnum
 func GetThinAssociationAuthorizationResponseAssociationResultEnumValues() []ThinAssociationAuthorizationResponseAssociationResultEnum {
 	values := make([]ThinAssociationAuthorizationResponseAssociationResultEnum, 0)
@@ -89,11 +97,6 @@ func GetThinAssociationAuthorizationResponseAssociationResultEnumStringValues() 
 
 // GetMappingThinAssociationAuthorizationResponseAssociationResultEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingThinAssociationAuthorizationResponseAssociationResultEnum(val string) (ThinAssociationAuthorizationResponseAssociationResultEnum, bool) {
-	mappingThinAssociationAuthorizationResponseAssociationResultEnumIgnoreCase := make(map[string]ThinAssociationAuthorizationResponseAssociationResultEnum)
-	for k, v := range mappingThinAssociationAuthorizationResponseAssociationResultEnum {
-		mappingThinAssociationAuthorizationResponseAssociationResultEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingThinAssociationAuthorizationResponseAssociationResultEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingThinAssociationAuthorizationResponseAssociationResultEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

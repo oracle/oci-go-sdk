@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -112,6 +112,11 @@ var mappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum = map[string]C
 	"HOSTNAME":   CreateIpSecConnectionDetailsCpeLocalIdentifierTypeHostname,
 }
 
+var mappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumLowerCase = map[string]CreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum{
+	"ip_address": CreateIpSecConnectionDetailsCpeLocalIdentifierTypeIpAddress,
+	"hostname":   CreateIpSecConnectionDetailsCpeLocalIdentifierTypeHostname,
+}
+
 // GetCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumValues Enumerates the set of values for CreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum
 func GetCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumValues() []CreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum {
 	values := make([]CreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum, 0)
@@ -131,11 +136,6 @@ func GetCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumStringValues() []s
 
 // GetMappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum(val string) (CreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum, bool) {
-	mappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumIgnoreCase := make(map[string]CreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum)
-	for k, v := range mappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnum {
-		mappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateIpSecConnectionDetailsCpeLocalIdentifierTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

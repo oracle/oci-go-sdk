@@ -6,7 +6,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -127,6 +127,19 @@ var mappingListTransferDevicesLifecycleStateEnum = map[string]ListTransferDevice
 	"CANCELLED":  ListTransferDevicesLifecycleStateCancelled,
 }
 
+var mappingListTransferDevicesLifecycleStateEnumLowerCase = map[string]ListTransferDevicesLifecycleStateEnum{
+	"preparing":  ListTransferDevicesLifecycleStatePreparing,
+	"ready":      ListTransferDevicesLifecycleStateReady,
+	"packaged":   ListTransferDevicesLifecycleStatePackaged,
+	"active":     ListTransferDevicesLifecycleStateActive,
+	"processing": ListTransferDevicesLifecycleStateProcessing,
+	"complete":   ListTransferDevicesLifecycleStateComplete,
+	"missing":    ListTransferDevicesLifecycleStateMissing,
+	"error":      ListTransferDevicesLifecycleStateError,
+	"deleted":    ListTransferDevicesLifecycleStateDeleted,
+	"cancelled":  ListTransferDevicesLifecycleStateCancelled,
+}
+
 // GetListTransferDevicesLifecycleStateEnumValues Enumerates the set of values for ListTransferDevicesLifecycleStateEnum
 func GetListTransferDevicesLifecycleStateEnumValues() []ListTransferDevicesLifecycleStateEnum {
 	values := make([]ListTransferDevicesLifecycleStateEnum, 0)
@@ -154,11 +167,6 @@ func GetListTransferDevicesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListTransferDevicesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTransferDevicesLifecycleStateEnum(val string) (ListTransferDevicesLifecycleStateEnum, bool) {
-	mappingListTransferDevicesLifecycleStateEnumIgnoreCase := make(map[string]ListTransferDevicesLifecycleStateEnum)
-	for k, v := range mappingListTransferDevicesLifecycleStateEnum {
-		mappingListTransferDevicesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTransferDevicesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTransferDevicesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

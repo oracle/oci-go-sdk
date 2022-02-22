@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -72,6 +72,12 @@ var mappingShapeSummaryIsSupportedForEnum = map[string]ShapeSummaryIsSupportedFo
 	"HEATWAVECLUSTER":  ShapeSummaryIsSupportedForHeatwavecluster,
 }
 
+var mappingShapeSummaryIsSupportedForEnumLowerCase = map[string]ShapeSummaryIsSupportedForEnum{
+	"dbsystem":         ShapeSummaryIsSupportedForDbsystem,
+	"analyticscluster": ShapeSummaryIsSupportedForAnalyticscluster,
+	"heatwavecluster":  ShapeSummaryIsSupportedForHeatwavecluster,
+}
+
 // GetShapeSummaryIsSupportedForEnumValues Enumerates the set of values for ShapeSummaryIsSupportedForEnum
 func GetShapeSummaryIsSupportedForEnumValues() []ShapeSummaryIsSupportedForEnum {
 	values := make([]ShapeSummaryIsSupportedForEnum, 0)
@@ -92,11 +98,6 @@ func GetShapeSummaryIsSupportedForEnumStringValues() []string {
 
 // GetMappingShapeSummaryIsSupportedForEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingShapeSummaryIsSupportedForEnum(val string) (ShapeSummaryIsSupportedForEnum, bool) {
-	mappingShapeSummaryIsSupportedForEnumIgnoreCase := make(map[string]ShapeSummaryIsSupportedForEnum)
-	for k, v := range mappingShapeSummaryIsSupportedForEnum {
-		mappingShapeSummaryIsSupportedForEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingShapeSummaryIsSupportedForEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingShapeSummaryIsSupportedForEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

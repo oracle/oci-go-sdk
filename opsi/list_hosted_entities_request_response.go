@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -171,6 +171,12 @@ var mappingListHostedEntitiesPlatformTypeEnum = map[string]ListHostedEntitiesPla
 	"SUNOS":   ListHostedEntitiesPlatformTypeSunos,
 }
 
+var mappingListHostedEntitiesPlatformTypeEnumLowerCase = map[string]ListHostedEntitiesPlatformTypeEnum{
+	"linux":   ListHostedEntitiesPlatformTypeLinux,
+	"solaris": ListHostedEntitiesPlatformTypeSolaris,
+	"sunos":   ListHostedEntitiesPlatformTypeSunos,
+}
+
 // GetListHostedEntitiesPlatformTypeEnumValues Enumerates the set of values for ListHostedEntitiesPlatformTypeEnum
 func GetListHostedEntitiesPlatformTypeEnumValues() []ListHostedEntitiesPlatformTypeEnum {
 	values := make([]ListHostedEntitiesPlatformTypeEnum, 0)
@@ -191,12 +197,7 @@ func GetListHostedEntitiesPlatformTypeEnumStringValues() []string {
 
 // GetMappingListHostedEntitiesPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHostedEntitiesPlatformTypeEnum(val string) (ListHostedEntitiesPlatformTypeEnum, bool) {
-	mappingListHostedEntitiesPlatformTypeEnumIgnoreCase := make(map[string]ListHostedEntitiesPlatformTypeEnum)
-	for k, v := range mappingListHostedEntitiesPlatformTypeEnum {
-		mappingListHostedEntitiesPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHostedEntitiesPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHostedEntitiesPlatformTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -212,6 +213,11 @@ const (
 var mappingListHostedEntitiesSortOrderEnum = map[string]ListHostedEntitiesSortOrderEnum{
 	"ASC":  ListHostedEntitiesSortOrderAsc,
 	"DESC": ListHostedEntitiesSortOrderDesc,
+}
+
+var mappingListHostedEntitiesSortOrderEnumLowerCase = map[string]ListHostedEntitiesSortOrderEnum{
+	"asc":  ListHostedEntitiesSortOrderAsc,
+	"desc": ListHostedEntitiesSortOrderDesc,
 }
 
 // GetListHostedEntitiesSortOrderEnumValues Enumerates the set of values for ListHostedEntitiesSortOrderEnum
@@ -233,12 +239,7 @@ func GetListHostedEntitiesSortOrderEnumStringValues() []string {
 
 // GetMappingListHostedEntitiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHostedEntitiesSortOrderEnum(val string) (ListHostedEntitiesSortOrderEnum, bool) {
-	mappingListHostedEntitiesSortOrderEnumIgnoreCase := make(map[string]ListHostedEntitiesSortOrderEnum)
-	for k, v := range mappingListHostedEntitiesSortOrderEnum {
-		mappingListHostedEntitiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHostedEntitiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHostedEntitiesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -254,6 +255,11 @@ const (
 var mappingListHostedEntitiesSortByEnum = map[string]ListHostedEntitiesSortByEnum{
 	"entityName": ListHostedEntitiesSortByEntityname,
 	"entityType": ListHostedEntitiesSortByEntitytype,
+}
+
+var mappingListHostedEntitiesSortByEnumLowerCase = map[string]ListHostedEntitiesSortByEnum{
+	"entityname": ListHostedEntitiesSortByEntityname,
+	"entitytype": ListHostedEntitiesSortByEntitytype,
 }
 
 // GetListHostedEntitiesSortByEnumValues Enumerates the set of values for ListHostedEntitiesSortByEnum
@@ -275,11 +281,6 @@ func GetListHostedEntitiesSortByEnumStringValues() []string {
 
 // GetMappingListHostedEntitiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHostedEntitiesSortByEnum(val string) (ListHostedEntitiesSortByEnum, bool) {
-	mappingListHostedEntitiesSortByEnumIgnoreCase := make(map[string]ListHostedEntitiesSortByEnum)
-	for k, v := range mappingListHostedEntitiesSortByEnum {
-		mappingListHostedEntitiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHostedEntitiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHostedEntitiesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

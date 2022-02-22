@@ -12,7 +12,7 @@ package aivision
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,11 @@ var mappingDocumentDetailsSourceEnum = map[string]DocumentDetailsSourceEnum{
 	"OBJECT_STORAGE": DocumentDetailsSourceObjectStorage,
 }
 
+var mappingDocumentDetailsSourceEnumLowerCase = map[string]DocumentDetailsSourceEnum{
+	"inline":         DocumentDetailsSourceInline,
+	"object_storage": DocumentDetailsSourceObjectStorage,
+}
+
 // GetDocumentDetailsSourceEnumValues Enumerates the set of values for DocumentDetailsSourceEnum
 func GetDocumentDetailsSourceEnumValues() []DocumentDetailsSourceEnum {
 	values := make([]DocumentDetailsSourceEnum, 0)
@@ -112,11 +117,6 @@ func GetDocumentDetailsSourceEnumStringValues() []string {
 
 // GetMappingDocumentDetailsSourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDocumentDetailsSourceEnum(val string) (DocumentDetailsSourceEnum, bool) {
-	mappingDocumentDetailsSourceEnumIgnoreCase := make(map[string]DocumentDetailsSourceEnum)
-	for k, v := range mappingDocumentDetailsSourceEnum {
-		mappingDocumentDetailsSourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDocumentDetailsSourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDocumentDetailsSourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

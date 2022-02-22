@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -142,6 +142,11 @@ var mappingListAwrSnapshotsSortOrderEnum = map[string]ListAwrSnapshotsSortOrderE
 	"DESC": ListAwrSnapshotsSortOrderDesc,
 }
 
+var mappingListAwrSnapshotsSortOrderEnumLowerCase = map[string]ListAwrSnapshotsSortOrderEnum{
+	"asc":  ListAwrSnapshotsSortOrderAsc,
+	"desc": ListAwrSnapshotsSortOrderDesc,
+}
+
 // GetListAwrSnapshotsSortOrderEnumValues Enumerates the set of values for ListAwrSnapshotsSortOrderEnum
 func GetListAwrSnapshotsSortOrderEnumValues() []ListAwrSnapshotsSortOrderEnum {
 	values := make([]ListAwrSnapshotsSortOrderEnum, 0)
@@ -161,12 +166,7 @@ func GetListAwrSnapshotsSortOrderEnumStringValues() []string {
 
 // GetMappingListAwrSnapshotsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAwrSnapshotsSortOrderEnum(val string) (ListAwrSnapshotsSortOrderEnum, bool) {
-	mappingListAwrSnapshotsSortOrderEnumIgnoreCase := make(map[string]ListAwrSnapshotsSortOrderEnum)
-	for k, v := range mappingListAwrSnapshotsSortOrderEnum {
-		mappingListAwrSnapshotsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAwrSnapshotsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAwrSnapshotsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -182,6 +182,11 @@ const (
 var mappingListAwrSnapshotsSortByEnum = map[string]ListAwrSnapshotsSortByEnum{
 	"timeBegin":  ListAwrSnapshotsSortByTimebegin,
 	"snapshotId": ListAwrSnapshotsSortBySnapshotid,
+}
+
+var mappingListAwrSnapshotsSortByEnumLowerCase = map[string]ListAwrSnapshotsSortByEnum{
+	"timebegin":  ListAwrSnapshotsSortByTimebegin,
+	"snapshotid": ListAwrSnapshotsSortBySnapshotid,
 }
 
 // GetListAwrSnapshotsSortByEnumValues Enumerates the set of values for ListAwrSnapshotsSortByEnum
@@ -203,11 +208,6 @@ func GetListAwrSnapshotsSortByEnumStringValues() []string {
 
 // GetMappingListAwrSnapshotsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAwrSnapshotsSortByEnum(val string) (ListAwrSnapshotsSortByEnum, bool) {
-	mappingListAwrSnapshotsSortByEnumIgnoreCase := make(map[string]ListAwrSnapshotsSortByEnum)
-	for k, v := range mappingListAwrSnapshotsSortByEnum {
-		mappingListAwrSnapshotsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAwrSnapshotsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAwrSnapshotsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

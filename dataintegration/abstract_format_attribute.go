@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -113,6 +113,12 @@ var mappingAbstractFormatAttributeModelTypeEnum = map[string]AbstractFormatAttri
 	"AVRO_FORMAT": AbstractFormatAttributeModelTypeAvroFormat,
 }
 
+var mappingAbstractFormatAttributeModelTypeEnumLowerCase = map[string]AbstractFormatAttributeModelTypeEnum{
+	"json_format": AbstractFormatAttributeModelTypeJsonFormat,
+	"csv_format":  AbstractFormatAttributeModelTypeCsvFormat,
+	"avro_format": AbstractFormatAttributeModelTypeAvroFormat,
+}
+
 // GetAbstractFormatAttributeModelTypeEnumValues Enumerates the set of values for AbstractFormatAttributeModelTypeEnum
 func GetAbstractFormatAttributeModelTypeEnumValues() []AbstractFormatAttributeModelTypeEnum {
 	values := make([]AbstractFormatAttributeModelTypeEnum, 0)
@@ -133,11 +139,6 @@ func GetAbstractFormatAttributeModelTypeEnumStringValues() []string {
 
 // GetMappingAbstractFormatAttributeModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAbstractFormatAttributeModelTypeEnum(val string) (AbstractFormatAttributeModelTypeEnum, bool) {
-	mappingAbstractFormatAttributeModelTypeEnumIgnoreCase := make(map[string]AbstractFormatAttributeModelTypeEnum)
-	for k, v := range mappingAbstractFormatAttributeModelTypeEnum {
-		mappingAbstractFormatAttributeModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAbstractFormatAttributeModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAbstractFormatAttributeModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

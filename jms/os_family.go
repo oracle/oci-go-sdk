@@ -31,6 +31,13 @@ var mappingOsFamilyEnum = map[string]OsFamilyEnum{
 	"UNKNOWN": OsFamilyUnknown,
 }
 
+var mappingOsFamilyEnumLowerCase = map[string]OsFamilyEnum{
+	"linux":   OsFamilyLinux,
+	"windows": OsFamilyWindows,
+	"macos":   OsFamilyMacos,
+	"unknown": OsFamilyUnknown,
+}
+
 // GetOsFamilyEnumValues Enumerates the set of values for OsFamilyEnum
 func GetOsFamilyEnumValues() []OsFamilyEnum {
 	values := make([]OsFamilyEnum, 0)
@@ -52,11 +59,6 @@ func GetOsFamilyEnumStringValues() []string {
 
 // GetMappingOsFamilyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOsFamilyEnum(val string) (OsFamilyEnum, bool) {
-	mappingOsFamilyEnumIgnoreCase := make(map[string]OsFamilyEnum)
-	for k, v := range mappingOsFamilyEnum {
-		mappingOsFamilyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOsFamilyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOsFamilyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

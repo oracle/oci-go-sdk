@@ -6,7 +6,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -143,6 +143,11 @@ var mappingListGroupsSortByEnum = map[string]ListGroupsSortByEnum{
 	"NAME":        ListGroupsSortByName,
 }
 
+var mappingListGroupsSortByEnumLowerCase = map[string]ListGroupsSortByEnum{
+	"timecreated": ListGroupsSortByTimecreated,
+	"name":        ListGroupsSortByName,
+}
+
 // GetListGroupsSortByEnumValues Enumerates the set of values for ListGroupsSortByEnum
 func GetListGroupsSortByEnumValues() []ListGroupsSortByEnum {
 	values := make([]ListGroupsSortByEnum, 0)
@@ -162,12 +167,7 @@ func GetListGroupsSortByEnumStringValues() []string {
 
 // GetMappingListGroupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListGroupsSortByEnum(val string) (ListGroupsSortByEnum, bool) {
-	mappingListGroupsSortByEnumIgnoreCase := make(map[string]ListGroupsSortByEnum)
-	for k, v := range mappingListGroupsSortByEnum {
-		mappingListGroupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListGroupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListGroupsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +183,11 @@ const (
 var mappingListGroupsSortOrderEnum = map[string]ListGroupsSortOrderEnum{
 	"ASC":  ListGroupsSortOrderAsc,
 	"DESC": ListGroupsSortOrderDesc,
+}
+
+var mappingListGroupsSortOrderEnumLowerCase = map[string]ListGroupsSortOrderEnum{
+	"asc":  ListGroupsSortOrderAsc,
+	"desc": ListGroupsSortOrderDesc,
 }
 
 // GetListGroupsSortOrderEnumValues Enumerates the set of values for ListGroupsSortOrderEnum
@@ -204,11 +209,6 @@ func GetListGroupsSortOrderEnumStringValues() []string {
 
 // GetMappingListGroupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListGroupsSortOrderEnum(val string) (ListGroupsSortOrderEnum, bool) {
-	mappingListGroupsSortOrderEnumIgnoreCase := make(map[string]ListGroupsSortOrderEnum)
-	for k, v := range mappingListGroupsSortOrderEnum {
-		mappingListGroupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListGroupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListGroupsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

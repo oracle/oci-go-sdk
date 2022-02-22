@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -121,6 +121,11 @@ var mappingProtectionSettingsBlockActionEnum = map[string]ProtectionSettingsBloc
 	"SET_RESPONSE_CODE": ProtectionSettingsBlockActionSetResponseCode,
 }
 
+var mappingProtectionSettingsBlockActionEnumLowerCase = map[string]ProtectionSettingsBlockActionEnum{
+	"show_error_page":   ProtectionSettingsBlockActionShowErrorPage,
+	"set_response_code": ProtectionSettingsBlockActionSetResponseCode,
+}
+
 // GetProtectionSettingsBlockActionEnumValues Enumerates the set of values for ProtectionSettingsBlockActionEnum
 func GetProtectionSettingsBlockActionEnumValues() []ProtectionSettingsBlockActionEnum {
 	values := make([]ProtectionSettingsBlockActionEnum, 0)
@@ -140,12 +145,7 @@ func GetProtectionSettingsBlockActionEnumStringValues() []string {
 
 // GetMappingProtectionSettingsBlockActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingProtectionSettingsBlockActionEnum(val string) (ProtectionSettingsBlockActionEnum, bool) {
-	mappingProtectionSettingsBlockActionEnumIgnoreCase := make(map[string]ProtectionSettingsBlockActionEnum)
-	for k, v := range mappingProtectionSettingsBlockActionEnum {
-		mappingProtectionSettingsBlockActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingProtectionSettingsBlockActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingProtectionSettingsBlockActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -179,6 +179,19 @@ var mappingProtectionSettingsAllowedHttpMethodsEnum = map[string]ProtectionSetti
 	"PROPFIND": ProtectionSettingsAllowedHttpMethodsPropfind,
 }
 
+var mappingProtectionSettingsAllowedHttpMethodsEnumLowerCase = map[string]ProtectionSettingsAllowedHttpMethodsEnum{
+	"options":  ProtectionSettingsAllowedHttpMethodsOptions,
+	"get":      ProtectionSettingsAllowedHttpMethodsGet,
+	"head":     ProtectionSettingsAllowedHttpMethodsHead,
+	"post":     ProtectionSettingsAllowedHttpMethodsPost,
+	"put":      ProtectionSettingsAllowedHttpMethodsPut,
+	"delete":   ProtectionSettingsAllowedHttpMethodsDelete,
+	"trace":    ProtectionSettingsAllowedHttpMethodsTrace,
+	"connect":  ProtectionSettingsAllowedHttpMethodsConnect,
+	"patch":    ProtectionSettingsAllowedHttpMethodsPatch,
+	"propfind": ProtectionSettingsAllowedHttpMethodsPropfind,
+}
+
 // GetProtectionSettingsAllowedHttpMethodsEnumValues Enumerates the set of values for ProtectionSettingsAllowedHttpMethodsEnum
 func GetProtectionSettingsAllowedHttpMethodsEnumValues() []ProtectionSettingsAllowedHttpMethodsEnum {
 	values := make([]ProtectionSettingsAllowedHttpMethodsEnum, 0)
@@ -206,11 +219,6 @@ func GetProtectionSettingsAllowedHttpMethodsEnumStringValues() []string {
 
 // GetMappingProtectionSettingsAllowedHttpMethodsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingProtectionSettingsAllowedHttpMethodsEnum(val string) (ProtectionSettingsAllowedHttpMethodsEnum, bool) {
-	mappingProtectionSettingsAllowedHttpMethodsEnumIgnoreCase := make(map[string]ProtectionSettingsAllowedHttpMethodsEnum)
-	for k, v := range mappingProtectionSettingsAllowedHttpMethodsEnum {
-		mappingProtectionSettingsAllowedHttpMethodsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingProtectionSettingsAllowedHttpMethodsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingProtectionSettingsAllowedHttpMethodsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

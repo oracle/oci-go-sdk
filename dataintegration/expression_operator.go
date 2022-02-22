@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -171,6 +171,12 @@ var mappingExpressionOperatorTriggerRuleEnum = map[string]ExpressionOperatorTrig
 	"ALL_COMPLETE": ExpressionOperatorTriggerRuleComplete,
 }
 
+var mappingExpressionOperatorTriggerRuleEnumLowerCase = map[string]ExpressionOperatorTriggerRuleEnum{
+	"all_success":  ExpressionOperatorTriggerRuleSuccess,
+	"all_failed":   ExpressionOperatorTriggerRuleFailed,
+	"all_complete": ExpressionOperatorTriggerRuleComplete,
+}
+
 // GetExpressionOperatorTriggerRuleEnumValues Enumerates the set of values for ExpressionOperatorTriggerRuleEnum
 func GetExpressionOperatorTriggerRuleEnumValues() []ExpressionOperatorTriggerRuleEnum {
 	values := make([]ExpressionOperatorTriggerRuleEnum, 0)
@@ -191,11 +197,6 @@ func GetExpressionOperatorTriggerRuleEnumStringValues() []string {
 
 // GetMappingExpressionOperatorTriggerRuleEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExpressionOperatorTriggerRuleEnum(val string) (ExpressionOperatorTriggerRuleEnum, bool) {
-	mappingExpressionOperatorTriggerRuleEnumIgnoreCase := make(map[string]ExpressionOperatorTriggerRuleEnum)
-	for k, v := range mappingExpressionOperatorTriggerRuleEnum {
-		mappingExpressionOperatorTriggerRuleEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExpressionOperatorTriggerRuleEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExpressionOperatorTriggerRuleEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

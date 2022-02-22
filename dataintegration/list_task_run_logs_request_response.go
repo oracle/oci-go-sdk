@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,11 @@ var mappingListTaskRunLogsSortOrderEnum = map[string]ListTaskRunLogsSortOrderEnu
 	"DESC": ListTaskRunLogsSortOrderDesc,
 }
 
+var mappingListTaskRunLogsSortOrderEnumLowerCase = map[string]ListTaskRunLogsSortOrderEnum{
+	"asc":  ListTaskRunLogsSortOrderAsc,
+	"desc": ListTaskRunLogsSortOrderDesc,
+}
+
 // GetListTaskRunLogsSortOrderEnumValues Enumerates the set of values for ListTaskRunLogsSortOrderEnum
 func GetListTaskRunLogsSortOrderEnumValues() []ListTaskRunLogsSortOrderEnum {
 	values := make([]ListTaskRunLogsSortOrderEnum, 0)
@@ -157,12 +162,7 @@ func GetListTaskRunLogsSortOrderEnumStringValues() []string {
 
 // GetMappingListTaskRunLogsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTaskRunLogsSortOrderEnum(val string) (ListTaskRunLogsSortOrderEnum, bool) {
-	mappingListTaskRunLogsSortOrderEnumIgnoreCase := make(map[string]ListTaskRunLogsSortOrderEnum)
-	for k, v := range mappingListTaskRunLogsSortOrderEnum {
-		mappingListTaskRunLogsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTaskRunLogsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTaskRunLogsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -178,6 +178,11 @@ const (
 var mappingListTaskRunLogsSortByEnum = map[string]ListTaskRunLogsSortByEnum{
 	"TIME_CREATED": ListTaskRunLogsSortByTimeCreated,
 	"DISPLAY_NAME": ListTaskRunLogsSortByDisplayName,
+}
+
+var mappingListTaskRunLogsSortByEnumLowerCase = map[string]ListTaskRunLogsSortByEnum{
+	"time_created": ListTaskRunLogsSortByTimeCreated,
+	"display_name": ListTaskRunLogsSortByDisplayName,
 }
 
 // GetListTaskRunLogsSortByEnumValues Enumerates the set of values for ListTaskRunLogsSortByEnum
@@ -199,11 +204,6 @@ func GetListTaskRunLogsSortByEnumStringValues() []string {
 
 // GetMappingListTaskRunLogsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTaskRunLogsSortByEnum(val string) (ListTaskRunLogsSortByEnum, bool) {
-	mappingListTaskRunLogsSortByEnumIgnoreCase := make(map[string]ListTaskRunLogsSortByEnum)
-	for k, v := range mappingListTaskRunLogsSortByEnum {
-		mappingListTaskRunLogsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTaskRunLogsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTaskRunLogsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

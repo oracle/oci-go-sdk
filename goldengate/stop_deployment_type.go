@@ -25,6 +25,10 @@ var mappingStopDeploymentTypeEnum = map[string]StopDeploymentTypeEnum{
 	"DEFAULT": StopDeploymentTypeDefault,
 }
 
+var mappingStopDeploymentTypeEnumLowerCase = map[string]StopDeploymentTypeEnum{
+	"default": StopDeploymentTypeDefault,
+}
+
 // GetStopDeploymentTypeEnumValues Enumerates the set of values for StopDeploymentTypeEnum
 func GetStopDeploymentTypeEnumValues() []StopDeploymentTypeEnum {
 	values := make([]StopDeploymentTypeEnum, 0)
@@ -43,11 +47,6 @@ func GetStopDeploymentTypeEnumStringValues() []string {
 
 // GetMappingStopDeploymentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStopDeploymentTypeEnum(val string) (StopDeploymentTypeEnum, bool) {
-	mappingStopDeploymentTypeEnumIgnoreCase := make(map[string]StopDeploymentTypeEnum)
-	for k, v := range mappingStopDeploymentTypeEnum {
-		mappingStopDeploymentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStopDeploymentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStopDeploymentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

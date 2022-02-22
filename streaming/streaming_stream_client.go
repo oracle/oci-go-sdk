@@ -12,8 +12,8 @@ package streaming
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
-	"github.com/oracle/oci-go-sdk/v58/common/auth"
+	"github.com/oracle/oci-go-sdk/v59/common"
+	"github.com/oracle/oci-go-sdk/v59/common/auth"
 	"net/http"
 )
 

@@ -37,6 +37,16 @@ var mappingIndicatorTypeEnum = map[string]IndicatorTypeEnum{
 	"URL":         IndicatorTypeUrl,
 }
 
+var mappingIndicatorTypeEnumLowerCase = map[string]IndicatorTypeEnum{
+	"domain_name": IndicatorTypeDomainName,
+	"file_name":   IndicatorTypeFileName,
+	"md5_hash":    IndicatorTypeMd5Hash,
+	"sha1_hash":   IndicatorTypeSha1Hash,
+	"sha256_hash": IndicatorTypeSha256Hash,
+	"ip_address":  IndicatorTypeIpAddress,
+	"url":         IndicatorTypeUrl,
+}
+
 // GetIndicatorTypeEnumValues Enumerates the set of values for IndicatorTypeEnum
 func GetIndicatorTypeEnumValues() []IndicatorTypeEnum {
 	values := make([]IndicatorTypeEnum, 0)
@@ -61,11 +71,6 @@ func GetIndicatorTypeEnumStringValues() []string {
 
 // GetMappingIndicatorTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIndicatorTypeEnum(val string) (IndicatorTypeEnum, bool) {
-	mappingIndicatorTypeEnumIgnoreCase := make(map[string]IndicatorTypeEnum)
-	for k, v := range mappingIndicatorTypeEnum {
-		mappingIndicatorTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIndicatorTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIndicatorTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

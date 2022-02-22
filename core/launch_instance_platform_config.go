@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -150,6 +150,14 @@ var mappingLaunchInstancePlatformConfigTypeEnum = map[string]LaunchInstancePlatf
 	"INTEL_VM":         LaunchInstancePlatformConfigTypeIntelVm,
 }
 
+var mappingLaunchInstancePlatformConfigTypeEnumLowerCase = map[string]LaunchInstancePlatformConfigTypeEnum{
+	"amd_milan_bm":     LaunchInstancePlatformConfigTypeAmdMilanBm,
+	"amd_rome_bm":      LaunchInstancePlatformConfigTypeAmdRomeBm,
+	"intel_skylake_bm": LaunchInstancePlatformConfigTypeIntelSkylakeBm,
+	"amd_vm":           LaunchInstancePlatformConfigTypeAmdVm,
+	"intel_vm":         LaunchInstancePlatformConfigTypeIntelVm,
+}
+
 // GetLaunchInstancePlatformConfigTypeEnumValues Enumerates the set of values for LaunchInstancePlatformConfigTypeEnum
 func GetLaunchInstancePlatformConfigTypeEnumValues() []LaunchInstancePlatformConfigTypeEnum {
 	values := make([]LaunchInstancePlatformConfigTypeEnum, 0)
@@ -172,11 +180,6 @@ func GetLaunchInstancePlatformConfigTypeEnumStringValues() []string {
 
 // GetMappingLaunchInstancePlatformConfigTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLaunchInstancePlatformConfigTypeEnum(val string) (LaunchInstancePlatformConfigTypeEnum, bool) {
-	mappingLaunchInstancePlatformConfigTypeEnumIgnoreCase := make(map[string]LaunchInstancePlatformConfigTypeEnum)
-	for k, v := range mappingLaunchInstancePlatformConfigTypeEnum {
-		mappingLaunchInstancePlatformConfigTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLaunchInstancePlatformConfigTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLaunchInstancePlatformConfigTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

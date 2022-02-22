@@ -31,6 +31,13 @@ var mappingHealthCheckProtocolsEnum = map[string]HealthCheckProtocolsEnum{
 	"UDP":   HealthCheckProtocolsUdp,
 }
 
+var mappingHealthCheckProtocolsEnumLowerCase = map[string]HealthCheckProtocolsEnum{
+	"http":  HealthCheckProtocolsHttp,
+	"https": HealthCheckProtocolsHttps,
+	"tcp":   HealthCheckProtocolsTcp,
+	"udp":   HealthCheckProtocolsUdp,
+}
+
 // GetHealthCheckProtocolsEnumValues Enumerates the set of values for HealthCheckProtocolsEnum
 func GetHealthCheckProtocolsEnumValues() []HealthCheckProtocolsEnum {
 	values := make([]HealthCheckProtocolsEnum, 0)
@@ -52,11 +59,6 @@ func GetHealthCheckProtocolsEnumStringValues() []string {
 
 // GetMappingHealthCheckProtocolsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHealthCheckProtocolsEnum(val string) (HealthCheckProtocolsEnum, bool) {
-	mappingHealthCheckProtocolsEnumIgnoreCase := make(map[string]HealthCheckProtocolsEnum)
-	for k, v := range mappingHealthCheckProtocolsEnum {
-		mappingHealthCheckProtocolsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHealthCheckProtocolsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHealthCheckProtocolsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

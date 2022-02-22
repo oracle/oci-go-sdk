@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -142,6 +142,16 @@ var mappingListManagedListTypesLifecycleStateEnum = map[string]ListManagedListTy
 	"FAILED":   ListManagedListTypesLifecycleStateFailed,
 }
 
+var mappingListManagedListTypesLifecycleStateEnumLowerCase = map[string]ListManagedListTypesLifecycleStateEnum{
+	"creating": ListManagedListTypesLifecycleStateCreating,
+	"updating": ListManagedListTypesLifecycleStateUpdating,
+	"active":   ListManagedListTypesLifecycleStateActive,
+	"inactive": ListManagedListTypesLifecycleStateInactive,
+	"deleting": ListManagedListTypesLifecycleStateDeleting,
+	"deleted":  ListManagedListTypesLifecycleStateDeleted,
+	"failed":   ListManagedListTypesLifecycleStateFailed,
+}
+
 // GetListManagedListTypesLifecycleStateEnumValues Enumerates the set of values for ListManagedListTypesLifecycleStateEnum
 func GetListManagedListTypesLifecycleStateEnumValues() []ListManagedListTypesLifecycleStateEnum {
 	values := make([]ListManagedListTypesLifecycleStateEnum, 0)
@@ -166,12 +176,7 @@ func GetListManagedListTypesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListManagedListTypesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedListTypesLifecycleStateEnum(val string) (ListManagedListTypesLifecycleStateEnum, bool) {
-	mappingListManagedListTypesLifecycleStateEnumIgnoreCase := make(map[string]ListManagedListTypesLifecycleStateEnum)
-	for k, v := range mappingListManagedListTypesLifecycleStateEnum {
-		mappingListManagedListTypesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedListTypesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedListTypesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +192,11 @@ const (
 var mappingListManagedListTypesSortOrderEnum = map[string]ListManagedListTypesSortOrderEnum{
 	"ASC":  ListManagedListTypesSortOrderAsc,
 	"DESC": ListManagedListTypesSortOrderDesc,
+}
+
+var mappingListManagedListTypesSortOrderEnumLowerCase = map[string]ListManagedListTypesSortOrderEnum{
+	"asc":  ListManagedListTypesSortOrderAsc,
+	"desc": ListManagedListTypesSortOrderDesc,
 }
 
 // GetListManagedListTypesSortOrderEnumValues Enumerates the set of values for ListManagedListTypesSortOrderEnum
@@ -208,12 +218,7 @@ func GetListManagedListTypesSortOrderEnumStringValues() []string {
 
 // GetMappingListManagedListTypesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedListTypesSortOrderEnum(val string) (ListManagedListTypesSortOrderEnum, bool) {
-	mappingListManagedListTypesSortOrderEnumIgnoreCase := make(map[string]ListManagedListTypesSortOrderEnum)
-	for k, v := range mappingListManagedListTypesSortOrderEnum {
-		mappingListManagedListTypesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedListTypesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedListTypesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -229,6 +234,11 @@ const (
 var mappingListManagedListTypesSortByEnum = map[string]ListManagedListTypesSortByEnum{
 	"displayName": ListManagedListTypesSortByDisplayname,
 	"riskLevel":   ListManagedListTypesSortByRisklevel,
+}
+
+var mappingListManagedListTypesSortByEnumLowerCase = map[string]ListManagedListTypesSortByEnum{
+	"displayname": ListManagedListTypesSortByDisplayname,
+	"risklevel":   ListManagedListTypesSortByRisklevel,
 }
 
 // GetListManagedListTypesSortByEnumValues Enumerates the set of values for ListManagedListTypesSortByEnum
@@ -250,11 +260,6 @@ func GetListManagedListTypesSortByEnumStringValues() []string {
 
 // GetMappingListManagedListTypesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedListTypesSortByEnum(val string) (ListManagedListTypesSortByEnum, bool) {
-	mappingListManagedListTypesSortByEnumIgnoreCase := make(map[string]ListManagedListTypesSortByEnum)
-	for k, v := range mappingListManagedListTypesSortByEnum {
-		mappingListManagedListTypesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedListTypesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedListTypesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

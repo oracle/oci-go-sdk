@@ -6,7 +6,7 @@ package filestorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -150,6 +150,14 @@ var mappingListSnapshotsLifecycleStateEnum = map[string]ListSnapshotsLifecycleSt
 	"FAILED":   ListSnapshotsLifecycleStateFailed,
 }
 
+var mappingListSnapshotsLifecycleStateEnumLowerCase = map[string]ListSnapshotsLifecycleStateEnum{
+	"creating": ListSnapshotsLifecycleStateCreating,
+	"active":   ListSnapshotsLifecycleStateActive,
+	"deleting": ListSnapshotsLifecycleStateDeleting,
+	"deleted":  ListSnapshotsLifecycleStateDeleted,
+	"failed":   ListSnapshotsLifecycleStateFailed,
+}
+
 // GetListSnapshotsLifecycleStateEnumValues Enumerates the set of values for ListSnapshotsLifecycleStateEnum
 func GetListSnapshotsLifecycleStateEnumValues() []ListSnapshotsLifecycleStateEnum {
 	values := make([]ListSnapshotsLifecycleStateEnum, 0)
@@ -172,12 +180,7 @@ func GetListSnapshotsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListSnapshotsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSnapshotsLifecycleStateEnum(val string) (ListSnapshotsLifecycleStateEnum, bool) {
-	mappingListSnapshotsLifecycleStateEnumIgnoreCase := make(map[string]ListSnapshotsLifecycleStateEnum)
-	for k, v := range mappingListSnapshotsLifecycleStateEnum {
-		mappingListSnapshotsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSnapshotsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSnapshotsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -193,6 +196,11 @@ const (
 var mappingListSnapshotsSortOrderEnum = map[string]ListSnapshotsSortOrderEnum{
 	"ASC":  ListSnapshotsSortOrderAsc,
 	"DESC": ListSnapshotsSortOrderDesc,
+}
+
+var mappingListSnapshotsSortOrderEnumLowerCase = map[string]ListSnapshotsSortOrderEnum{
+	"asc":  ListSnapshotsSortOrderAsc,
+	"desc": ListSnapshotsSortOrderDesc,
 }
 
 // GetListSnapshotsSortOrderEnumValues Enumerates the set of values for ListSnapshotsSortOrderEnum
@@ -214,11 +222,6 @@ func GetListSnapshotsSortOrderEnumStringValues() []string {
 
 // GetMappingListSnapshotsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSnapshotsSortOrderEnum(val string) (ListSnapshotsSortOrderEnum, bool) {
-	mappingListSnapshotsSortOrderEnumIgnoreCase := make(map[string]ListSnapshotsSortOrderEnum)
-	for k, v := range mappingListSnapshotsSortOrderEnum {
-		mappingListSnapshotsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSnapshotsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSnapshotsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

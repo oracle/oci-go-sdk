@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -112,6 +112,19 @@ var mappingVaultSummaryLifecycleStateEnum = map[string]VaultSummaryLifecycleStat
 	"RESTORING":           VaultSummaryLifecycleStateRestoring,
 }
 
+var mappingVaultSummaryLifecycleStateEnumLowerCase = map[string]VaultSummaryLifecycleStateEnum{
+	"creating":            VaultSummaryLifecycleStateCreating,
+	"active":              VaultSummaryLifecycleStateActive,
+	"deleting":            VaultSummaryLifecycleStateDeleting,
+	"deleted":             VaultSummaryLifecycleStateDeleted,
+	"pending_deletion":    VaultSummaryLifecycleStatePendingDeletion,
+	"scheduling_deletion": VaultSummaryLifecycleStateSchedulingDeletion,
+	"cancelling_deletion": VaultSummaryLifecycleStateCancellingDeletion,
+	"updating":            VaultSummaryLifecycleStateUpdating,
+	"backup_in_progress":  VaultSummaryLifecycleStateBackupInProgress,
+	"restoring":           VaultSummaryLifecycleStateRestoring,
+}
+
 // GetVaultSummaryLifecycleStateEnumValues Enumerates the set of values for VaultSummaryLifecycleStateEnum
 func GetVaultSummaryLifecycleStateEnumValues() []VaultSummaryLifecycleStateEnum {
 	values := make([]VaultSummaryLifecycleStateEnum, 0)
@@ -139,12 +152,7 @@ func GetVaultSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingVaultSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVaultSummaryLifecycleStateEnum(val string) (VaultSummaryLifecycleStateEnum, bool) {
-	mappingVaultSummaryLifecycleStateEnumIgnoreCase := make(map[string]VaultSummaryLifecycleStateEnum)
-	for k, v := range mappingVaultSummaryLifecycleStateEnum {
-		mappingVaultSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVaultSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVaultSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -160,6 +168,11 @@ const (
 var mappingVaultSummaryVaultTypeEnum = map[string]VaultSummaryVaultTypeEnum{
 	"VIRTUAL_PRIVATE": VaultSummaryVaultTypeVirtualPrivate,
 	"DEFAULT":         VaultSummaryVaultTypeDefault,
+}
+
+var mappingVaultSummaryVaultTypeEnumLowerCase = map[string]VaultSummaryVaultTypeEnum{
+	"virtual_private": VaultSummaryVaultTypeVirtualPrivate,
+	"default":         VaultSummaryVaultTypeDefault,
 }
 
 // GetVaultSummaryVaultTypeEnumValues Enumerates the set of values for VaultSummaryVaultTypeEnum
@@ -181,11 +194,6 @@ func GetVaultSummaryVaultTypeEnumStringValues() []string {
 
 // GetMappingVaultSummaryVaultTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVaultSummaryVaultTypeEnum(val string) (VaultSummaryVaultTypeEnum, bool) {
-	mappingVaultSummaryVaultTypeEnumIgnoreCase := make(map[string]VaultSummaryVaultTypeEnum)
-	for k, v := range mappingVaultSummaryVaultTypeEnum {
-		mappingVaultSummaryVaultTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVaultSummaryVaultTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVaultSummaryVaultTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

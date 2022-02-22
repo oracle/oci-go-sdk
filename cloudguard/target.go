@@ -2,23 +2,24 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Cloud Guard APIs
+// Cloud Guard API
 //
-// A description of the Cloud Guard APIs
+// Use the Cloud Guard API to automate processes that you would otherwise perform through the Cloud Guard Console.
+// **Note:** You can perform Create, Update, and Delete operations only from the reporting region of your Cloud Guard tenancy. You can perform Read operations from any region.
 //
 
 package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
 // Target Description of Target.
 type Target struct {
 
-	// Unique identifier that is immutable on creation
+	// Unique identifier that is immutable on creation.
 	Id *string `mandatory:"true" json:"id"`
 
 	// Compartment Identifier where the resource is created
@@ -33,7 +34,7 @@ type Target struct {
 	// Total number of recipes attached to target
 	RecipeCount *int `mandatory:"true" json:"recipeCount"`
 
-	// Target Identifier, can be renamed
+	// Target display name, can be renamed.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The target description.
@@ -62,6 +63,7 @@ type Target struct {
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
+	// Avoid entering confidential information.
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.

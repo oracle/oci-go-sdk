@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,11 @@ var mappingDatabaseCredentialsRoleEnum = map[string]DatabaseCredentialsRoleEnum{
 	"SYSDBA": DatabaseCredentialsRoleSysdba,
 }
 
+var mappingDatabaseCredentialsRoleEnumLowerCase = map[string]DatabaseCredentialsRoleEnum{
+	"normal": DatabaseCredentialsRoleNormal,
+	"sysdba": DatabaseCredentialsRoleSysdba,
+}
+
 // GetDatabaseCredentialsRoleEnumValues Enumerates the set of values for DatabaseCredentialsRoleEnum
 func GetDatabaseCredentialsRoleEnumValues() []DatabaseCredentialsRoleEnum {
 	values := make([]DatabaseCredentialsRoleEnum, 0)
@@ -85,11 +90,6 @@ func GetDatabaseCredentialsRoleEnumStringValues() []string {
 
 // GetMappingDatabaseCredentialsRoleEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseCredentialsRoleEnum(val string) (DatabaseCredentialsRoleEnum, bool) {
-	mappingDatabaseCredentialsRoleEnumIgnoreCase := make(map[string]DatabaseCredentialsRoleEnum)
-	for k, v := range mappingDatabaseCredentialsRoleEnum {
-		mappingDatabaseCredentialsRoleEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseCredentialsRoleEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseCredentialsRoleEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

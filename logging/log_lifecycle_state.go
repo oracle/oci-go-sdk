@@ -35,6 +35,15 @@ var mappingLogLifecycleStateEnum = map[string]LogLifecycleStateEnum{
 	"FAILED":   LogLifecycleStateFailed,
 }
 
+var mappingLogLifecycleStateEnumLowerCase = map[string]LogLifecycleStateEnum{
+	"creating": LogLifecycleStateCreating,
+	"active":   LogLifecycleStateActive,
+	"updating": LogLifecycleStateUpdating,
+	"inactive": LogLifecycleStateInactive,
+	"deleting": LogLifecycleStateDeleting,
+	"failed":   LogLifecycleStateFailed,
+}
+
 // GetLogLifecycleStateEnumValues Enumerates the set of values for LogLifecycleStateEnum
 func GetLogLifecycleStateEnumValues() []LogLifecycleStateEnum {
 	values := make([]LogLifecycleStateEnum, 0)
@@ -58,11 +67,6 @@ func GetLogLifecycleStateEnumStringValues() []string {
 
 // GetMappingLogLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogLifecycleStateEnum(val string) (LogLifecycleStateEnum, bool) {
-	mappingLogLifecycleStateEnumIgnoreCase := make(map[string]LogLifecycleStateEnum)
-	for k, v := range mappingLogLifecycleStateEnum {
-		mappingLogLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

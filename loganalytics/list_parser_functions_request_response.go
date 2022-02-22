@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -131,6 +131,10 @@ var mappingListParserFunctionsSortByEnum = map[string]ListParserFunctionsSortByE
 	"name": ListParserFunctionsSortByName,
 }
 
+var mappingListParserFunctionsSortByEnumLowerCase = map[string]ListParserFunctionsSortByEnum{
+	"name": ListParserFunctionsSortByName,
+}
+
 // GetListParserFunctionsSortByEnumValues Enumerates the set of values for ListParserFunctionsSortByEnum
 func GetListParserFunctionsSortByEnumValues() []ListParserFunctionsSortByEnum {
 	values := make([]ListParserFunctionsSortByEnum, 0)
@@ -149,12 +153,7 @@ func GetListParserFunctionsSortByEnumStringValues() []string {
 
 // GetMappingListParserFunctionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListParserFunctionsSortByEnum(val string) (ListParserFunctionsSortByEnum, bool) {
-	mappingListParserFunctionsSortByEnumIgnoreCase := make(map[string]ListParserFunctionsSortByEnum)
-	for k, v := range mappingListParserFunctionsSortByEnum {
-		mappingListParserFunctionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListParserFunctionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListParserFunctionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -170,6 +169,11 @@ const (
 var mappingListParserFunctionsSortOrderEnum = map[string]ListParserFunctionsSortOrderEnum{
 	"ASC":  ListParserFunctionsSortOrderAsc,
 	"DESC": ListParserFunctionsSortOrderDesc,
+}
+
+var mappingListParserFunctionsSortOrderEnumLowerCase = map[string]ListParserFunctionsSortOrderEnum{
+	"asc":  ListParserFunctionsSortOrderAsc,
+	"desc": ListParserFunctionsSortOrderDesc,
 }
 
 // GetListParserFunctionsSortOrderEnumValues Enumerates the set of values for ListParserFunctionsSortOrderEnum
@@ -191,11 +195,6 @@ func GetListParserFunctionsSortOrderEnumStringValues() []string {
 
 // GetMappingListParserFunctionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListParserFunctionsSortOrderEnum(val string) (ListParserFunctionsSortOrderEnum, bool) {
-	mappingListParserFunctionsSortOrderEnumIgnoreCase := make(map[string]ListParserFunctionsSortOrderEnum)
-	for k, v := range mappingListParserFunctionsSortOrderEnum {
-		mappingListParserFunctionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListParserFunctionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListParserFunctionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

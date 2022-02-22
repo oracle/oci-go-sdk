@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,11 @@ var mappingRouteRuleDestinationTypeEnum = map[string]RouteRuleDestinationTypeEnu
 	"SERVICE_CIDR_BLOCK": RouteRuleDestinationTypeServiceCidrBlock,
 }
 
+var mappingRouteRuleDestinationTypeEnumLowerCase = map[string]RouteRuleDestinationTypeEnum{
+	"cidr_block":         RouteRuleDestinationTypeCidrBlock,
+	"service_cidr_block": RouteRuleDestinationTypeServiceCidrBlock,
+}
+
 // GetRouteRuleDestinationTypeEnumValues Enumerates the set of values for RouteRuleDestinationTypeEnum
 func GetRouteRuleDestinationTypeEnumValues() []RouteRuleDestinationTypeEnum {
 	values := make([]RouteRuleDestinationTypeEnum, 0)
@@ -112,11 +117,6 @@ func GetRouteRuleDestinationTypeEnumStringValues() []string {
 
 // GetMappingRouteRuleDestinationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRouteRuleDestinationTypeEnum(val string) (RouteRuleDestinationTypeEnum, bool) {
-	mappingRouteRuleDestinationTypeEnumIgnoreCase := make(map[string]RouteRuleDestinationTypeEnum)
-	for k, v := range mappingRouteRuleDestinationTypeEnum {
-		mappingRouteRuleDestinationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRouteRuleDestinationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRouteRuleDestinationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

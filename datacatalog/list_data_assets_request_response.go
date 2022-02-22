@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -177,6 +177,17 @@ var mappingListDataAssetsLifecycleStateEnum = map[string]ListDataAssetsLifecycle
 	"MOVING":   ListDataAssetsLifecycleStateMoving,
 }
 
+var mappingListDataAssetsLifecycleStateEnumLowerCase = map[string]ListDataAssetsLifecycleStateEnum{
+	"creating": ListDataAssetsLifecycleStateCreating,
+	"active":   ListDataAssetsLifecycleStateActive,
+	"inactive": ListDataAssetsLifecycleStateInactive,
+	"updating": ListDataAssetsLifecycleStateUpdating,
+	"deleting": ListDataAssetsLifecycleStateDeleting,
+	"deleted":  ListDataAssetsLifecycleStateDeleted,
+	"failed":   ListDataAssetsLifecycleStateFailed,
+	"moving":   ListDataAssetsLifecycleStateMoving,
+}
+
 // GetListDataAssetsLifecycleStateEnumValues Enumerates the set of values for ListDataAssetsLifecycleStateEnum
 func GetListDataAssetsLifecycleStateEnumValues() []ListDataAssetsLifecycleStateEnum {
 	values := make([]ListDataAssetsLifecycleStateEnum, 0)
@@ -202,12 +213,7 @@ func GetListDataAssetsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListDataAssetsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataAssetsLifecycleStateEnum(val string) (ListDataAssetsLifecycleStateEnum, bool) {
-	mappingListDataAssetsLifecycleStateEnumIgnoreCase := make(map[string]ListDataAssetsLifecycleStateEnum)
-	for k, v := range mappingListDataAssetsLifecycleStateEnum {
-		mappingListDataAssetsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataAssetsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataAssetsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -239,6 +245,18 @@ var mappingListDataAssetsFieldsEnum = map[string]ListDataAssetsFieldsEnum{
 	"uri":            ListDataAssetsFieldsUri,
 }
 
+var mappingListDataAssetsFieldsEnumLowerCase = map[string]ListDataAssetsFieldsEnum{
+	"key":            ListDataAssetsFieldsKey,
+	"displayname":    ListDataAssetsFieldsDisplayname,
+	"description":    ListDataAssetsFieldsDescription,
+	"catalogid":      ListDataAssetsFieldsCatalogid,
+	"externalkey":    ListDataAssetsFieldsExternalkey,
+	"typekey":        ListDataAssetsFieldsTypekey,
+	"lifecyclestate": ListDataAssetsFieldsLifecyclestate,
+	"timecreated":    ListDataAssetsFieldsTimecreated,
+	"uri":            ListDataAssetsFieldsUri,
+}
+
 // GetListDataAssetsFieldsEnumValues Enumerates the set of values for ListDataAssetsFieldsEnum
 func GetListDataAssetsFieldsEnumValues() []ListDataAssetsFieldsEnum {
 	values := make([]ListDataAssetsFieldsEnum, 0)
@@ -265,12 +283,7 @@ func GetListDataAssetsFieldsEnumStringValues() []string {
 
 // GetMappingListDataAssetsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataAssetsFieldsEnum(val string) (ListDataAssetsFieldsEnum, bool) {
-	mappingListDataAssetsFieldsEnumIgnoreCase := make(map[string]ListDataAssetsFieldsEnum)
-	for k, v := range mappingListDataAssetsFieldsEnum {
-		mappingListDataAssetsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataAssetsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataAssetsFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -286,6 +299,11 @@ const (
 var mappingListDataAssetsSortByEnum = map[string]ListDataAssetsSortByEnum{
 	"TIMECREATED": ListDataAssetsSortByTimecreated,
 	"DISPLAYNAME": ListDataAssetsSortByDisplayname,
+}
+
+var mappingListDataAssetsSortByEnumLowerCase = map[string]ListDataAssetsSortByEnum{
+	"timecreated": ListDataAssetsSortByTimecreated,
+	"displayname": ListDataAssetsSortByDisplayname,
 }
 
 // GetListDataAssetsSortByEnumValues Enumerates the set of values for ListDataAssetsSortByEnum
@@ -307,12 +325,7 @@ func GetListDataAssetsSortByEnumStringValues() []string {
 
 // GetMappingListDataAssetsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataAssetsSortByEnum(val string) (ListDataAssetsSortByEnum, bool) {
-	mappingListDataAssetsSortByEnumIgnoreCase := make(map[string]ListDataAssetsSortByEnum)
-	for k, v := range mappingListDataAssetsSortByEnum {
-		mappingListDataAssetsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataAssetsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataAssetsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -328,6 +341,11 @@ const (
 var mappingListDataAssetsSortOrderEnum = map[string]ListDataAssetsSortOrderEnum{
 	"ASC":  ListDataAssetsSortOrderAsc,
 	"DESC": ListDataAssetsSortOrderDesc,
+}
+
+var mappingListDataAssetsSortOrderEnumLowerCase = map[string]ListDataAssetsSortOrderEnum{
+	"asc":  ListDataAssetsSortOrderAsc,
+	"desc": ListDataAssetsSortOrderDesc,
 }
 
 // GetListDataAssetsSortOrderEnumValues Enumerates the set of values for ListDataAssetsSortOrderEnum
@@ -349,11 +367,6 @@ func GetListDataAssetsSortOrderEnumStringValues() []string {
 
 // GetMappingListDataAssetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataAssetsSortOrderEnum(val string) (ListDataAssetsSortOrderEnum, bool) {
-	mappingListDataAssetsSortOrderEnumIgnoreCase := make(map[string]ListDataAssetsSortOrderEnum)
-	for k, v := range mappingListDataAssetsSortOrderEnum {
-		mappingListDataAssetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataAssetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataAssetsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

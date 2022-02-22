@@ -11,7 +11,7 @@ package osubusage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -151,6 +151,24 @@ var mappingComputedUsageTypeEnum = map[string]ComputedUsageTypeEnum{
 	"DELAYED_USAGE_POST_TERMINATION":    ComputedUsageTypeDelayedUsagePostTermination,
 }
 
+var mappingComputedUsageTypeEnumLowerCase = map[string]ComputedUsageTypeEnum{
+	"promotion":                         ComputedUsageTypePromotion,
+	"do_not_bill":                       ComputedUsageTypeDoNotBill,
+	"usage":                             ComputedUsageTypeUsage,
+	"commit":                            ComputedUsageTypeCommit,
+	"overage":                           ComputedUsageTypeOverage,
+	"pay_as_you_go":                     ComputedUsageTypePayAsYouGo,
+	"monthly_minimum":                   ComputedUsageTypeMonthlyMinimum,
+	"delayed_usage_invoice_timing":      ComputedUsageTypeDelayedUsageInvoiceTiming,
+	"delayed_usage_commitment_exp":      ComputedUsageTypeDelayedUsageCommitmentExp,
+	"on_account_credit":                 ComputedUsageTypeOnAccountCredit,
+	"service_credit":                    ComputedUsageTypeServiceCredit,
+	"commitment_expiration":             ComputedUsageTypeCommitmentExpiration,
+	"funded_allocation":                 ComputedUsageTypeFundedAllocation,
+	"donot_bill_usage_post_termination": ComputedUsageTypeDonotBillUsagePostTermination,
+	"delayed_usage_post_termination":    ComputedUsageTypeDelayedUsagePostTermination,
+}
+
 // GetComputedUsageTypeEnumValues Enumerates the set of values for ComputedUsageTypeEnum
 func GetComputedUsageTypeEnumValues() []ComputedUsageTypeEnum {
 	values := make([]ComputedUsageTypeEnum, 0)
@@ -183,11 +201,6 @@ func GetComputedUsageTypeEnumStringValues() []string {
 
 // GetMappingComputedUsageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingComputedUsageTypeEnum(val string) (ComputedUsageTypeEnum, bool) {
-	mappingComputedUsageTypeEnumIgnoreCase := make(map[string]ComputedUsageTypeEnum)
-	for k, v := range mappingComputedUsageTypeEnum {
-		mappingComputedUsageTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingComputedUsageTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingComputedUsageTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

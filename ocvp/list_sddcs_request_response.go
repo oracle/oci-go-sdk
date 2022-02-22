@@ -6,7 +6,7 @@ package ocvp
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -151,6 +151,11 @@ var mappingListSddcsSortOrderEnum = map[string]ListSddcsSortOrderEnum{
 	"DESC": ListSddcsSortOrderDesc,
 }
 
+var mappingListSddcsSortOrderEnumLowerCase = map[string]ListSddcsSortOrderEnum{
+	"asc":  ListSddcsSortOrderAsc,
+	"desc": ListSddcsSortOrderDesc,
+}
+
 // GetListSddcsSortOrderEnumValues Enumerates the set of values for ListSddcsSortOrderEnum
 func GetListSddcsSortOrderEnumValues() []ListSddcsSortOrderEnum {
 	values := make([]ListSddcsSortOrderEnum, 0)
@@ -170,12 +175,7 @@ func GetListSddcsSortOrderEnumStringValues() []string {
 
 // GetMappingListSddcsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSddcsSortOrderEnum(val string) (ListSddcsSortOrderEnum, bool) {
-	mappingListSddcsSortOrderEnumIgnoreCase := make(map[string]ListSddcsSortOrderEnum)
-	for k, v := range mappingListSddcsSortOrderEnum {
-		mappingListSddcsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSddcsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSddcsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -191,6 +191,11 @@ const (
 var mappingListSddcsSortByEnum = map[string]ListSddcsSortByEnum{
 	"timeCreated": ListSddcsSortByTimecreated,
 	"displayName": ListSddcsSortByDisplayname,
+}
+
+var mappingListSddcsSortByEnumLowerCase = map[string]ListSddcsSortByEnum{
+	"timecreated": ListSddcsSortByTimecreated,
+	"displayname": ListSddcsSortByDisplayname,
 }
 
 // GetListSddcsSortByEnumValues Enumerates the set of values for ListSddcsSortByEnum
@@ -212,12 +217,7 @@ func GetListSddcsSortByEnumStringValues() []string {
 
 // GetMappingListSddcsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSddcsSortByEnum(val string) (ListSddcsSortByEnum, bool) {
-	mappingListSddcsSortByEnumIgnoreCase := make(map[string]ListSddcsSortByEnum)
-	for k, v := range mappingListSddcsSortByEnum {
-		mappingListSddcsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSddcsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSddcsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -243,6 +243,15 @@ var mappingListSddcsLifecycleStateEnum = map[string]ListSddcsLifecycleStateEnum{
 	"FAILED":   ListSddcsLifecycleStateFailed,
 }
 
+var mappingListSddcsLifecycleStateEnumLowerCase = map[string]ListSddcsLifecycleStateEnum{
+	"creating": ListSddcsLifecycleStateCreating,
+	"updating": ListSddcsLifecycleStateUpdating,
+	"active":   ListSddcsLifecycleStateActive,
+	"deleting": ListSddcsLifecycleStateDeleting,
+	"deleted":  ListSddcsLifecycleStateDeleted,
+	"failed":   ListSddcsLifecycleStateFailed,
+}
+
 // GetListSddcsLifecycleStateEnumValues Enumerates the set of values for ListSddcsLifecycleStateEnum
 func GetListSddcsLifecycleStateEnumValues() []ListSddcsLifecycleStateEnum {
 	values := make([]ListSddcsLifecycleStateEnum, 0)
@@ -266,11 +275,6 @@ func GetListSddcsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListSddcsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSddcsLifecycleStateEnum(val string) (ListSddcsLifecycleStateEnum, bool) {
-	mappingListSddcsLifecycleStateEnumIgnoreCase := make(map[string]ListSddcsLifecycleStateEnum)
-	for k, v := range mappingListSddcsLifecycleStateEnum {
-		mappingListSddcsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSddcsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSddcsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -96,6 +96,11 @@ var mappingIngressSecurityRuleSourceTypeEnum = map[string]IngressSecurityRuleSou
 	"SERVICE_CIDR_BLOCK": IngressSecurityRuleSourceTypeServiceCidrBlock,
 }
 
+var mappingIngressSecurityRuleSourceTypeEnumLowerCase = map[string]IngressSecurityRuleSourceTypeEnum{
+	"cidr_block":         IngressSecurityRuleSourceTypeCidrBlock,
+	"service_cidr_block": IngressSecurityRuleSourceTypeServiceCidrBlock,
+}
+
 // GetIngressSecurityRuleSourceTypeEnumValues Enumerates the set of values for IngressSecurityRuleSourceTypeEnum
 func GetIngressSecurityRuleSourceTypeEnumValues() []IngressSecurityRuleSourceTypeEnum {
 	values := make([]IngressSecurityRuleSourceTypeEnum, 0)
@@ -115,11 +120,6 @@ func GetIngressSecurityRuleSourceTypeEnumStringValues() []string {
 
 // GetMappingIngressSecurityRuleSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIngressSecurityRuleSourceTypeEnum(val string) (IngressSecurityRuleSourceTypeEnum, bool) {
-	mappingIngressSecurityRuleSourceTypeEnumIgnoreCase := make(map[string]IngressSecurityRuleSourceTypeEnum)
-	for k, v := range mappingIngressSecurityRuleSourceTypeEnum {
-		mappingIngressSecurityRuleSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIngressSecurityRuleSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIngressSecurityRuleSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

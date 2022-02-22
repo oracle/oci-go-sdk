@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -118,6 +118,10 @@ var mappingGetFolderProjectionEnum = map[string]GetFolderProjectionEnum{
 	"CHILD_COUNT_STATISTICS": GetFolderProjectionChildCountStatistics,
 }
 
+var mappingGetFolderProjectionEnumLowerCase = map[string]GetFolderProjectionEnum{
+	"child_count_statistics": GetFolderProjectionChildCountStatistics,
+}
+
 // GetGetFolderProjectionEnumValues Enumerates the set of values for GetFolderProjectionEnum
 func GetGetFolderProjectionEnumValues() []GetFolderProjectionEnum {
 	values := make([]GetFolderProjectionEnum, 0)
@@ -136,11 +140,6 @@ func GetGetFolderProjectionEnumStringValues() []string {
 
 // GetMappingGetFolderProjectionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetFolderProjectionEnum(val string) (GetFolderProjectionEnum, bool) {
-	mappingGetFolderProjectionEnumIgnoreCase := make(map[string]GetFolderProjectionEnum)
-	for k, v := range mappingGetFolderProjectionEnum {
-		mappingGetFolderProjectionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetFolderProjectionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetFolderProjectionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

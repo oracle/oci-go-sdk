@@ -14,7 +14,7 @@ package opsi
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -112,6 +112,12 @@ var mappingDatabaseConfigurationMetricGroupMetricNameEnum = map[string]DatabaseC
 	"DB_OS_CONFIG_INSTANCE":  DatabaseConfigurationMetricGroupMetricNameOsConfigInstance,
 }
 
+var mappingDatabaseConfigurationMetricGroupMetricNameEnumLowerCase = map[string]DatabaseConfigurationMetricGroupMetricNameEnum{
+	"db_external_properties": DatabaseConfigurationMetricGroupMetricNameExternalProperties,
+	"db_external_instance":   DatabaseConfigurationMetricGroupMetricNameExternalInstance,
+	"db_os_config_instance":  DatabaseConfigurationMetricGroupMetricNameOsConfigInstance,
+}
+
 // GetDatabaseConfigurationMetricGroupMetricNameEnumValues Enumerates the set of values for DatabaseConfigurationMetricGroupMetricNameEnum
 func GetDatabaseConfigurationMetricGroupMetricNameEnumValues() []DatabaseConfigurationMetricGroupMetricNameEnum {
 	values := make([]DatabaseConfigurationMetricGroupMetricNameEnum, 0)
@@ -132,11 +138,6 @@ func GetDatabaseConfigurationMetricGroupMetricNameEnumStringValues() []string {
 
 // GetMappingDatabaseConfigurationMetricGroupMetricNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseConfigurationMetricGroupMetricNameEnum(val string) (DatabaseConfigurationMetricGroupMetricNameEnum, bool) {
-	mappingDatabaseConfigurationMetricGroupMetricNameEnumIgnoreCase := make(map[string]DatabaseConfigurationMetricGroupMetricNameEnum)
-	for k, v := range mappingDatabaseConfigurationMetricGroupMetricNameEnum {
-		mappingDatabaseConfigurationMetricGroupMetricNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseConfigurationMetricGroupMetricNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseConfigurationMetricGroupMetricNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

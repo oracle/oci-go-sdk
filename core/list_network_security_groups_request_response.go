@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -155,6 +155,11 @@ var mappingListNetworkSecurityGroupsSortByEnum = map[string]ListNetworkSecurityG
 	"DISPLAYNAME": ListNetworkSecurityGroupsSortByDisplayname,
 }
 
+var mappingListNetworkSecurityGroupsSortByEnumLowerCase = map[string]ListNetworkSecurityGroupsSortByEnum{
+	"timecreated": ListNetworkSecurityGroupsSortByTimecreated,
+	"displayname": ListNetworkSecurityGroupsSortByDisplayname,
+}
+
 // GetListNetworkSecurityGroupsSortByEnumValues Enumerates the set of values for ListNetworkSecurityGroupsSortByEnum
 func GetListNetworkSecurityGroupsSortByEnumValues() []ListNetworkSecurityGroupsSortByEnum {
 	values := make([]ListNetworkSecurityGroupsSortByEnum, 0)
@@ -174,12 +179,7 @@ func GetListNetworkSecurityGroupsSortByEnumStringValues() []string {
 
 // GetMappingListNetworkSecurityGroupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListNetworkSecurityGroupsSortByEnum(val string) (ListNetworkSecurityGroupsSortByEnum, bool) {
-	mappingListNetworkSecurityGroupsSortByEnumIgnoreCase := make(map[string]ListNetworkSecurityGroupsSortByEnum)
-	for k, v := range mappingListNetworkSecurityGroupsSortByEnum {
-		mappingListNetworkSecurityGroupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListNetworkSecurityGroupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListNetworkSecurityGroupsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -195,6 +195,11 @@ const (
 var mappingListNetworkSecurityGroupsSortOrderEnum = map[string]ListNetworkSecurityGroupsSortOrderEnum{
 	"ASC":  ListNetworkSecurityGroupsSortOrderAsc,
 	"DESC": ListNetworkSecurityGroupsSortOrderDesc,
+}
+
+var mappingListNetworkSecurityGroupsSortOrderEnumLowerCase = map[string]ListNetworkSecurityGroupsSortOrderEnum{
+	"asc":  ListNetworkSecurityGroupsSortOrderAsc,
+	"desc": ListNetworkSecurityGroupsSortOrderDesc,
 }
 
 // GetListNetworkSecurityGroupsSortOrderEnumValues Enumerates the set of values for ListNetworkSecurityGroupsSortOrderEnum
@@ -216,11 +221,6 @@ func GetListNetworkSecurityGroupsSortOrderEnumStringValues() []string {
 
 // GetMappingListNetworkSecurityGroupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListNetworkSecurityGroupsSortOrderEnum(val string) (ListNetworkSecurityGroupsSortOrderEnum, bool) {
-	mappingListNetworkSecurityGroupsSortOrderEnumIgnoreCase := make(map[string]ListNetworkSecurityGroupsSortOrderEnum)
-	for k, v := range mappingListNetworkSecurityGroupsSortOrderEnum {
-		mappingListNetworkSecurityGroupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListNetworkSecurityGroupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListNetworkSecurityGroupsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

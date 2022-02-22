@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -146,6 +146,15 @@ var mappingListFindingsSeverityEnum = map[string]ListFindingsSeverityEnum{
 	"PASS":     ListFindingsSeverityPass,
 }
 
+var mappingListFindingsSeverityEnumLowerCase = map[string]ListFindingsSeverityEnum{
+	"high":     ListFindingsSeverityHigh,
+	"medium":   ListFindingsSeverityMedium,
+	"low":      ListFindingsSeverityLow,
+	"evaluate": ListFindingsSeverityEvaluate,
+	"advisory": ListFindingsSeverityAdvisory,
+	"pass":     ListFindingsSeverityPass,
+}
+
 // GetListFindingsSeverityEnumValues Enumerates the set of values for ListFindingsSeverityEnum
 func GetListFindingsSeverityEnumValues() []ListFindingsSeverityEnum {
 	values := make([]ListFindingsSeverityEnum, 0)
@@ -169,12 +178,7 @@ func GetListFindingsSeverityEnumStringValues() []string {
 
 // GetMappingListFindingsSeverityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFindingsSeverityEnum(val string) (ListFindingsSeverityEnum, bool) {
-	mappingListFindingsSeverityEnumIgnoreCase := make(map[string]ListFindingsSeverityEnum)
-	for k, v := range mappingListFindingsSeverityEnum {
-		mappingListFindingsSeverityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFindingsSeverityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFindingsSeverityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -190,6 +194,11 @@ const (
 var mappingListFindingsAccessLevelEnum = map[string]ListFindingsAccessLevelEnum{
 	"RESTRICTED": ListFindingsAccessLevelRestricted,
 	"ACCESSIBLE": ListFindingsAccessLevelAccessible,
+}
+
+var mappingListFindingsAccessLevelEnumLowerCase = map[string]ListFindingsAccessLevelEnum{
+	"restricted": ListFindingsAccessLevelRestricted,
+	"accessible": ListFindingsAccessLevelAccessible,
 }
 
 // GetListFindingsAccessLevelEnumValues Enumerates the set of values for ListFindingsAccessLevelEnum
@@ -211,11 +220,6 @@ func GetListFindingsAccessLevelEnumStringValues() []string {
 
 // GetMappingListFindingsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFindingsAccessLevelEnum(val string) (ListFindingsAccessLevelEnum, bool) {
-	mappingListFindingsAccessLevelEnumIgnoreCase := make(map[string]ListFindingsAccessLevelEnum)
-	for k, v := range mappingListFindingsAccessLevelEnum {
-		mappingListFindingsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFindingsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFindingsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

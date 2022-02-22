@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -118,6 +118,10 @@ var mappingGetFunctionLibraryProjectionEnum = map[string]GetFunctionLibraryProje
 	"CHILD_COUNT_STATISTICS": GetFunctionLibraryProjectionChildCountStatistics,
 }
 
+var mappingGetFunctionLibraryProjectionEnumLowerCase = map[string]GetFunctionLibraryProjectionEnum{
+	"child_count_statistics": GetFunctionLibraryProjectionChildCountStatistics,
+}
+
 // GetGetFunctionLibraryProjectionEnumValues Enumerates the set of values for GetFunctionLibraryProjectionEnum
 func GetGetFunctionLibraryProjectionEnumValues() []GetFunctionLibraryProjectionEnum {
 	values := make([]GetFunctionLibraryProjectionEnum, 0)
@@ -136,11 +140,6 @@ func GetGetFunctionLibraryProjectionEnumStringValues() []string {
 
 // GetMappingGetFunctionLibraryProjectionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetFunctionLibraryProjectionEnum(val string) (GetFunctionLibraryProjectionEnum, bool) {
-	mappingGetFunctionLibraryProjectionEnumIgnoreCase := make(map[string]GetFunctionLibraryProjectionEnum)
-	for k, v := range mappingGetFunctionLibraryProjectionEnum {
-		mappingGetFunctionLibraryProjectionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetFunctionLibraryProjectionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetFunctionLibraryProjectionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

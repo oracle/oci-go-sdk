@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -152,6 +152,11 @@ var mappingPublicIpAssignedEntityTypeEnum = map[string]PublicIpAssignedEntityTyp
 	"NAT_GATEWAY": PublicIpAssignedEntityTypeNatGateway,
 }
 
+var mappingPublicIpAssignedEntityTypeEnumLowerCase = map[string]PublicIpAssignedEntityTypeEnum{
+	"private_ip":  PublicIpAssignedEntityTypePrivateIp,
+	"nat_gateway": PublicIpAssignedEntityTypeNatGateway,
+}
+
 // GetPublicIpAssignedEntityTypeEnumValues Enumerates the set of values for PublicIpAssignedEntityTypeEnum
 func GetPublicIpAssignedEntityTypeEnumValues() []PublicIpAssignedEntityTypeEnum {
 	values := make([]PublicIpAssignedEntityTypeEnum, 0)
@@ -171,12 +176,7 @@ func GetPublicIpAssignedEntityTypeEnumStringValues() []string {
 
 // GetMappingPublicIpAssignedEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPublicIpAssignedEntityTypeEnum(val string) (PublicIpAssignedEntityTypeEnum, bool) {
-	mappingPublicIpAssignedEntityTypeEnumIgnoreCase := make(map[string]PublicIpAssignedEntityTypeEnum)
-	for k, v := range mappingPublicIpAssignedEntityTypeEnum {
-		mappingPublicIpAssignedEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPublicIpAssignedEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPublicIpAssignedEntityTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -206,6 +206,17 @@ var mappingPublicIpLifecycleStateEnum = map[string]PublicIpLifecycleStateEnum{
 	"TERMINATED":   PublicIpLifecycleStateTerminated,
 }
 
+var mappingPublicIpLifecycleStateEnumLowerCase = map[string]PublicIpLifecycleStateEnum{
+	"provisioning": PublicIpLifecycleStateProvisioning,
+	"available":    PublicIpLifecycleStateAvailable,
+	"assigning":    PublicIpLifecycleStateAssigning,
+	"assigned":     PublicIpLifecycleStateAssigned,
+	"unassigning":  PublicIpLifecycleStateUnassigning,
+	"unassigned":   PublicIpLifecycleStateUnassigned,
+	"terminating":  PublicIpLifecycleStateTerminating,
+	"terminated":   PublicIpLifecycleStateTerminated,
+}
+
 // GetPublicIpLifecycleStateEnumValues Enumerates the set of values for PublicIpLifecycleStateEnum
 func GetPublicIpLifecycleStateEnumValues() []PublicIpLifecycleStateEnum {
 	values := make([]PublicIpLifecycleStateEnum, 0)
@@ -231,12 +242,7 @@ func GetPublicIpLifecycleStateEnumStringValues() []string {
 
 // GetMappingPublicIpLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPublicIpLifecycleStateEnum(val string) (PublicIpLifecycleStateEnum, bool) {
-	mappingPublicIpLifecycleStateEnumIgnoreCase := make(map[string]PublicIpLifecycleStateEnum)
-	for k, v := range mappingPublicIpLifecycleStateEnum {
-		mappingPublicIpLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPublicIpLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPublicIpLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -252,6 +258,11 @@ const (
 var mappingPublicIpLifetimeEnum = map[string]PublicIpLifetimeEnum{
 	"EPHEMERAL": PublicIpLifetimeEphemeral,
 	"RESERVED":  PublicIpLifetimeReserved,
+}
+
+var mappingPublicIpLifetimeEnumLowerCase = map[string]PublicIpLifetimeEnum{
+	"ephemeral": PublicIpLifetimeEphemeral,
+	"reserved":  PublicIpLifetimeReserved,
 }
 
 // GetPublicIpLifetimeEnumValues Enumerates the set of values for PublicIpLifetimeEnum
@@ -273,12 +284,7 @@ func GetPublicIpLifetimeEnumStringValues() []string {
 
 // GetMappingPublicIpLifetimeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPublicIpLifetimeEnum(val string) (PublicIpLifetimeEnum, bool) {
-	mappingPublicIpLifetimeEnumIgnoreCase := make(map[string]PublicIpLifetimeEnum)
-	for k, v := range mappingPublicIpLifetimeEnum {
-		mappingPublicIpLifetimeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPublicIpLifetimeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPublicIpLifetimeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -294,6 +300,11 @@ const (
 var mappingPublicIpScopeEnum = map[string]PublicIpScopeEnum{
 	"REGION":              PublicIpScopeRegion,
 	"AVAILABILITY_DOMAIN": PublicIpScopeAvailabilityDomain,
+}
+
+var mappingPublicIpScopeEnumLowerCase = map[string]PublicIpScopeEnum{
+	"region":              PublicIpScopeRegion,
+	"availability_domain": PublicIpScopeAvailabilityDomain,
 }
 
 // GetPublicIpScopeEnumValues Enumerates the set of values for PublicIpScopeEnum
@@ -315,11 +326,6 @@ func GetPublicIpScopeEnumStringValues() []string {
 
 // GetMappingPublicIpScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPublicIpScopeEnum(val string) (PublicIpScopeEnum, bool) {
-	mappingPublicIpScopeEnumIgnoreCase := make(map[string]PublicIpScopeEnum)
-	for k, v := range mappingPublicIpScopeEnum {
-		mappingPublicIpScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPublicIpScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPublicIpScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -62,6 +62,12 @@ var mappingJobExecutionsStatusSummaryStatusEnum = map[string]JobExecutionsStatus
 	"IN_PROGRESS": JobExecutionsStatusSummaryStatusInProgress,
 }
 
+var mappingJobExecutionsStatusSummaryStatusEnumLowerCase = map[string]JobExecutionsStatusSummaryStatusEnum{
+	"succeeded":   JobExecutionsStatusSummaryStatusSucceeded,
+	"failed":      JobExecutionsStatusSummaryStatusFailed,
+	"in_progress": JobExecutionsStatusSummaryStatusInProgress,
+}
+
 // GetJobExecutionsStatusSummaryStatusEnumValues Enumerates the set of values for JobExecutionsStatusSummaryStatusEnum
 func GetJobExecutionsStatusSummaryStatusEnumValues() []JobExecutionsStatusSummaryStatusEnum {
 	values := make([]JobExecutionsStatusSummaryStatusEnum, 0)
@@ -82,11 +88,6 @@ func GetJobExecutionsStatusSummaryStatusEnumStringValues() []string {
 
 // GetMappingJobExecutionsStatusSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJobExecutionsStatusSummaryStatusEnum(val string) (JobExecutionsStatusSummaryStatusEnum, bool) {
-	mappingJobExecutionsStatusSummaryStatusEnumIgnoreCase := make(map[string]JobExecutionsStatusSummaryStatusEnum)
-	for k, v := range mappingJobExecutionsStatusSummaryStatusEnum {
-		mappingJobExecutionsStatusSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJobExecutionsStatusSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJobExecutionsStatusSummaryStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package threatintelligence
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -64,6 +64,14 @@ var mappingDataVisibilityTlpNameEnum = map[string]DataVisibilityTlpNameEnum{
 	"TLP_RED":            DataVisibilityTlpNameRed,
 }
 
+var mappingDataVisibilityTlpNameEnumLowerCase = map[string]DataVisibilityTlpNameEnum{
+	"tlp_internal_audit": DataVisibilityTlpNameInternalAudit,
+	"tlp_white":          DataVisibilityTlpNameWhite,
+	"tlp_green":          DataVisibilityTlpNameGreen,
+	"tlp_amber":          DataVisibilityTlpNameAmber,
+	"tlp_red":            DataVisibilityTlpNameRed,
+}
+
 // GetDataVisibilityTlpNameEnumValues Enumerates the set of values for DataVisibilityTlpNameEnum
 func GetDataVisibilityTlpNameEnumValues() []DataVisibilityTlpNameEnum {
 	values := make([]DataVisibilityTlpNameEnum, 0)
@@ -86,11 +94,6 @@ func GetDataVisibilityTlpNameEnumStringValues() []string {
 
 // GetMappingDataVisibilityTlpNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataVisibilityTlpNameEnum(val string) (DataVisibilityTlpNameEnum, bool) {
-	mappingDataVisibilityTlpNameEnumIgnoreCase := make(map[string]DataVisibilityTlpNameEnum)
-	for k, v := range mappingDataVisibilityTlpNameEnum {
-		mappingDataVisibilityTlpNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataVisibilityTlpNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataVisibilityTlpNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

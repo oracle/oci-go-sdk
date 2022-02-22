@@ -14,7 +14,7 @@ package nosql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -84,6 +84,15 @@ var mappingIndexLifecycleStateEnum = map[string]IndexLifecycleStateEnum{
 	"FAILED":   IndexLifecycleStateFailed,
 }
 
+var mappingIndexLifecycleStateEnumLowerCase = map[string]IndexLifecycleStateEnum{
+	"creating": IndexLifecycleStateCreating,
+	"updating": IndexLifecycleStateUpdating,
+	"active":   IndexLifecycleStateActive,
+	"deleting": IndexLifecycleStateDeleting,
+	"deleted":  IndexLifecycleStateDeleted,
+	"failed":   IndexLifecycleStateFailed,
+}
+
 // GetIndexLifecycleStateEnumValues Enumerates the set of values for IndexLifecycleStateEnum
 func GetIndexLifecycleStateEnumValues() []IndexLifecycleStateEnum {
 	values := make([]IndexLifecycleStateEnum, 0)
@@ -107,11 +116,6 @@ func GetIndexLifecycleStateEnumStringValues() []string {
 
 // GetMappingIndexLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIndexLifecycleStateEnum(val string) (IndexLifecycleStateEnum, bool) {
-	mappingIndexLifecycleStateEnumIgnoreCase := make(map[string]IndexLifecycleStateEnum)
-	for k, v := range mappingIndexLifecycleStateEnum {
-		mappingIndexLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIndexLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIndexLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

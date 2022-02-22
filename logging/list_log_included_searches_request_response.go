@@ -6,7 +6,7 @@ package logging
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,11 @@ var mappingListLogIncludedSearchesSortByEnum = map[string]ListLogIncludedSearche
 	"displayName": ListLogIncludedSearchesSortByDisplayname,
 }
 
+var mappingListLogIncludedSearchesSortByEnumLowerCase = map[string]ListLogIncludedSearchesSortByEnum{
+	"timecreated": ListLogIncludedSearchesSortByTimecreated,
+	"displayname": ListLogIncludedSearchesSortByDisplayname,
+}
+
 // GetListLogIncludedSearchesSortByEnumValues Enumerates the set of values for ListLogIncludedSearchesSortByEnum
 func GetListLogIncludedSearchesSortByEnumValues() []ListLogIncludedSearchesSortByEnum {
 	values := make([]ListLogIncludedSearchesSortByEnum, 0)
@@ -160,12 +165,7 @@ func GetListLogIncludedSearchesSortByEnumStringValues() []string {
 
 // GetMappingListLogIncludedSearchesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLogIncludedSearchesSortByEnum(val string) (ListLogIncludedSearchesSortByEnum, bool) {
-	mappingListLogIncludedSearchesSortByEnumIgnoreCase := make(map[string]ListLogIncludedSearchesSortByEnum)
-	for k, v := range mappingListLogIncludedSearchesSortByEnum {
-		mappingListLogIncludedSearchesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLogIncludedSearchesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLogIncludedSearchesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +181,11 @@ const (
 var mappingListLogIncludedSearchesSortOrderEnum = map[string]ListLogIncludedSearchesSortOrderEnum{
 	"ASC":  ListLogIncludedSearchesSortOrderAsc,
 	"DESC": ListLogIncludedSearchesSortOrderDesc,
+}
+
+var mappingListLogIncludedSearchesSortOrderEnumLowerCase = map[string]ListLogIncludedSearchesSortOrderEnum{
+	"asc":  ListLogIncludedSearchesSortOrderAsc,
+	"desc": ListLogIncludedSearchesSortOrderDesc,
 }
 
 // GetListLogIncludedSearchesSortOrderEnumValues Enumerates the set of values for ListLogIncludedSearchesSortOrderEnum
@@ -202,11 +207,6 @@ func GetListLogIncludedSearchesSortOrderEnumStringValues() []string {
 
 // GetMappingListLogIncludedSearchesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLogIncludedSearchesSortOrderEnum(val string) (ListLogIncludedSearchesSortOrderEnum, bool) {
-	mappingListLogIncludedSearchesSortOrderEnumIgnoreCase := make(map[string]ListLogIncludedSearchesSortOrderEnum)
-	for k, v := range mappingListLogIncludedSearchesSortOrderEnum {
-		mappingListLogIncludedSearchesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLogIncludedSearchesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLogIncludedSearchesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

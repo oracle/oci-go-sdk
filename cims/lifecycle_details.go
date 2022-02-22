@@ -31,6 +31,13 @@ var mappingLifecycleDetailsEnum = map[string]LifecycleDetailsEnum{
 	"CLOSED":                LifecycleDetailsClosed,
 }
 
+var mappingLifecycleDetailsEnumLowerCase = map[string]LifecycleDetailsEnum{
+	"pending_with_oracle":   LifecycleDetailsPendingWithOracle,
+	"pending_with_customer": LifecycleDetailsPendingWithCustomer,
+	"close_requested":       LifecycleDetailsCloseRequested,
+	"closed":                LifecycleDetailsClosed,
+}
+
 // GetLifecycleDetailsEnumValues Enumerates the set of values for LifecycleDetailsEnum
 func GetLifecycleDetailsEnumValues() []LifecycleDetailsEnum {
 	values := make([]LifecycleDetailsEnum, 0)
@@ -52,11 +59,6 @@ func GetLifecycleDetailsEnumStringValues() []string {
 
 // GetMappingLifecycleDetailsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLifecycleDetailsEnum(val string) (LifecycleDetailsEnum, bool) {
-	mappingLifecycleDetailsEnumIgnoreCase := make(map[string]LifecycleDetailsEnum)
-	for k, v := range mappingLifecycleDetailsEnum {
-		mappingLifecycleDetailsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLifecycleDetailsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLifecycleDetailsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

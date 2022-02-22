@@ -11,7 +11,7 @@ package blockchain
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -57,6 +57,12 @@ var mappingAvailabilityDomainAdsEnum = map[string]AvailabilityDomainAdsEnum{
 	"AD3": AvailabilityDomainAdsAd3,
 }
 
+var mappingAvailabilityDomainAdsEnumLowerCase = map[string]AvailabilityDomainAdsEnum{
+	"ad1": AvailabilityDomainAdsAd1,
+	"ad2": AvailabilityDomainAdsAd2,
+	"ad3": AvailabilityDomainAdsAd3,
+}
+
 // GetAvailabilityDomainAdsEnumValues Enumerates the set of values for AvailabilityDomainAdsEnum
 func GetAvailabilityDomainAdsEnumValues() []AvailabilityDomainAdsEnum {
 	values := make([]AvailabilityDomainAdsEnum, 0)
@@ -77,11 +83,6 @@ func GetAvailabilityDomainAdsEnumStringValues() []string {
 
 // GetMappingAvailabilityDomainAdsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAvailabilityDomainAdsEnum(val string) (AvailabilityDomainAdsEnum, bool) {
-	mappingAvailabilityDomainAdsEnumIgnoreCase := make(map[string]AvailabilityDomainAdsEnum)
-	for k, v := range mappingAvailabilityDomainAdsEnum {
-		mappingAvailabilityDomainAdsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAvailabilityDomainAdsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAvailabilityDomainAdsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

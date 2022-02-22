@@ -35,6 +35,15 @@ var mappingAlertPolicyLifecycleStateEnum = map[string]AlertPolicyLifecycleStateE
 	"FAILED":   AlertPolicyLifecycleStateFailed,
 }
 
+var mappingAlertPolicyLifecycleStateEnumLowerCase = map[string]AlertPolicyLifecycleStateEnum{
+	"creating": AlertPolicyLifecycleStateCreating,
+	"updating": AlertPolicyLifecycleStateUpdating,
+	"active":   AlertPolicyLifecycleStateActive,
+	"deleting": AlertPolicyLifecycleStateDeleting,
+	"deleted":  AlertPolicyLifecycleStateDeleted,
+	"failed":   AlertPolicyLifecycleStateFailed,
+}
+
 // GetAlertPolicyLifecycleStateEnumValues Enumerates the set of values for AlertPolicyLifecycleStateEnum
 func GetAlertPolicyLifecycleStateEnumValues() []AlertPolicyLifecycleStateEnum {
 	values := make([]AlertPolicyLifecycleStateEnum, 0)
@@ -58,11 +67,6 @@ func GetAlertPolicyLifecycleStateEnumStringValues() []string {
 
 // GetMappingAlertPolicyLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAlertPolicyLifecycleStateEnum(val string) (AlertPolicyLifecycleStateEnum, bool) {
-	mappingAlertPolicyLifecycleStateEnumIgnoreCase := make(map[string]AlertPolicyLifecycleStateEnum)
-	for k, v := range mappingAlertPolicyLifecycleStateEnum {
-		mappingAlertPolicyLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAlertPolicyLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAlertPolicyLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

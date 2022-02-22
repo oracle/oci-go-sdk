@@ -73,6 +73,34 @@ var mappingDocumentLanguageEnum = map[string]DocumentLanguageEnum{
 	"OTHERS":  DocumentLanguageOthers,
 }
 
+var mappingDocumentLanguageEnumLowerCase = map[string]DocumentLanguageEnum{
+	"eng":     DocumentLanguageEng,
+	"ces":     DocumentLanguageCes,
+	"dan":     DocumentLanguageDan,
+	"nld":     DocumentLanguageNld,
+	"fin":     DocumentLanguageFin,
+	"fra":     DocumentLanguageFra,
+	"deu":     DocumentLanguageDeu,
+	"ell":     DocumentLanguageEll,
+	"hun":     DocumentLanguageHun,
+	"ita":     DocumentLanguageIta,
+	"nor":     DocumentLanguageNor,
+	"pol":     DocumentLanguagePol,
+	"por":     DocumentLanguagePor,
+	"ron":     DocumentLanguageRon,
+	"rus":     DocumentLanguageRus,
+	"slk":     DocumentLanguageSlk,
+	"spa":     DocumentLanguageSpa,
+	"swe":     DocumentLanguageSwe,
+	"tur":     DocumentLanguageTur,
+	"ara":     DocumentLanguageAra,
+	"chi_sim": DocumentLanguageChiSim,
+	"hin":     DocumentLanguageHin,
+	"jpn":     DocumentLanguageJpn,
+	"kor":     DocumentLanguageKor,
+	"others":  DocumentLanguageOthers,
+}
+
 // GetDocumentLanguageEnumValues Enumerates the set of values for DocumentLanguageEnum
 func GetDocumentLanguageEnumValues() []DocumentLanguageEnum {
 	values := make([]DocumentLanguageEnum, 0)
@@ -115,11 +143,6 @@ func GetDocumentLanguageEnumStringValues() []string {
 
 // GetMappingDocumentLanguageEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDocumentLanguageEnum(val string) (DocumentLanguageEnum, bool) {
-	mappingDocumentLanguageEnumIgnoreCase := make(map[string]DocumentLanguageEnum)
-	for k, v := range mappingDocumentLanguageEnum {
-		mappingDocumentLanguageEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDocumentLanguageEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDocumentLanguageEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

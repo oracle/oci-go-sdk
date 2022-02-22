@@ -6,7 +6,7 @@ package oce
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -140,6 +140,11 @@ var mappingListOceInstancesSortOrderEnum = map[string]ListOceInstancesSortOrderE
 	"DESC": ListOceInstancesSortOrderDesc,
 }
 
+var mappingListOceInstancesSortOrderEnumLowerCase = map[string]ListOceInstancesSortOrderEnum{
+	"asc":  ListOceInstancesSortOrderAsc,
+	"desc": ListOceInstancesSortOrderDesc,
+}
+
 // GetListOceInstancesSortOrderEnumValues Enumerates the set of values for ListOceInstancesSortOrderEnum
 func GetListOceInstancesSortOrderEnumValues() []ListOceInstancesSortOrderEnum {
 	values := make([]ListOceInstancesSortOrderEnum, 0)
@@ -159,12 +164,7 @@ func GetListOceInstancesSortOrderEnumStringValues() []string {
 
 // GetMappingListOceInstancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOceInstancesSortOrderEnum(val string) (ListOceInstancesSortOrderEnum, bool) {
-	mappingListOceInstancesSortOrderEnumIgnoreCase := make(map[string]ListOceInstancesSortOrderEnum)
-	for k, v := range mappingListOceInstancesSortOrderEnum {
-		mappingListOceInstancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOceInstancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOceInstancesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -180,6 +180,11 @@ const (
 var mappingListOceInstancesSortByEnum = map[string]ListOceInstancesSortByEnum{
 	"timeCreated": ListOceInstancesSortByTimecreated,
 	"displayName": ListOceInstancesSortByDisplayname,
+}
+
+var mappingListOceInstancesSortByEnumLowerCase = map[string]ListOceInstancesSortByEnum{
+	"timecreated": ListOceInstancesSortByTimecreated,
+	"displayname": ListOceInstancesSortByDisplayname,
 }
 
 // GetListOceInstancesSortByEnumValues Enumerates the set of values for ListOceInstancesSortByEnum
@@ -201,12 +206,7 @@ func GetListOceInstancesSortByEnumStringValues() []string {
 
 // GetMappingListOceInstancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOceInstancesSortByEnum(val string) (ListOceInstancesSortByEnum, bool) {
-	mappingListOceInstancesSortByEnumIgnoreCase := make(map[string]ListOceInstancesSortByEnum)
-	for k, v := range mappingListOceInstancesSortByEnum {
-		mappingListOceInstancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOceInstancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOceInstancesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -232,6 +232,15 @@ var mappingListOceInstancesLifecycleStateEnum = map[string]ListOceInstancesLifec
 	"FAILED":   ListOceInstancesLifecycleStateFailed,
 }
 
+var mappingListOceInstancesLifecycleStateEnumLowerCase = map[string]ListOceInstancesLifecycleStateEnum{
+	"creating": ListOceInstancesLifecycleStateCreating,
+	"updating": ListOceInstancesLifecycleStateUpdating,
+	"active":   ListOceInstancesLifecycleStateActive,
+	"deleting": ListOceInstancesLifecycleStateDeleting,
+	"deleted":  ListOceInstancesLifecycleStateDeleted,
+	"failed":   ListOceInstancesLifecycleStateFailed,
+}
+
 // GetListOceInstancesLifecycleStateEnumValues Enumerates the set of values for ListOceInstancesLifecycleStateEnum
 func GetListOceInstancesLifecycleStateEnumValues() []ListOceInstancesLifecycleStateEnum {
 	values := make([]ListOceInstancesLifecycleStateEnum, 0)
@@ -255,11 +264,6 @@ func GetListOceInstancesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListOceInstancesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOceInstancesLifecycleStateEnum(val string) (ListOceInstancesLifecycleStateEnum, bool) {
-	mappingListOceInstancesLifecycleStateEnumIgnoreCase := make(map[string]ListOceInstancesLifecycleStateEnum)
-	for k, v := range mappingListOceInstancesLifecycleStateEnum {
-		mappingListOceInstancesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOceInstancesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOceInstancesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

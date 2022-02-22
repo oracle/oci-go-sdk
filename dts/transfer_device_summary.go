@@ -11,7 +11,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -81,6 +81,19 @@ var mappingTransferDeviceSummaryLifecycleStateEnum = map[string]TransferDeviceSu
 	"CANCELLED":  TransferDeviceSummaryLifecycleStateCancelled,
 }
 
+var mappingTransferDeviceSummaryLifecycleStateEnumLowerCase = map[string]TransferDeviceSummaryLifecycleStateEnum{
+	"preparing":  TransferDeviceSummaryLifecycleStatePreparing,
+	"ready":      TransferDeviceSummaryLifecycleStateReady,
+	"packaged":   TransferDeviceSummaryLifecycleStatePackaged,
+	"active":     TransferDeviceSummaryLifecycleStateActive,
+	"processing": TransferDeviceSummaryLifecycleStateProcessing,
+	"complete":   TransferDeviceSummaryLifecycleStateComplete,
+	"missing":    TransferDeviceSummaryLifecycleStateMissing,
+	"error":      TransferDeviceSummaryLifecycleStateError,
+	"deleted":    TransferDeviceSummaryLifecycleStateDeleted,
+	"cancelled":  TransferDeviceSummaryLifecycleStateCancelled,
+}
+
 // GetTransferDeviceSummaryLifecycleStateEnumValues Enumerates the set of values for TransferDeviceSummaryLifecycleStateEnum
 func GetTransferDeviceSummaryLifecycleStateEnumValues() []TransferDeviceSummaryLifecycleStateEnum {
 	values := make([]TransferDeviceSummaryLifecycleStateEnum, 0)
@@ -108,11 +121,6 @@ func GetTransferDeviceSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingTransferDeviceSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTransferDeviceSummaryLifecycleStateEnum(val string) (TransferDeviceSummaryLifecycleStateEnum, bool) {
-	mappingTransferDeviceSummaryLifecycleStateEnumIgnoreCase := make(map[string]TransferDeviceSummaryLifecycleStateEnum)
-	for k, v := range mappingTransferDeviceSummaryLifecycleStateEnum {
-		mappingTransferDeviceSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTransferDeviceSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTransferDeviceSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

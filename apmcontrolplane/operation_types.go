@@ -5,7 +5,7 @@
 // Application Performance Monitoring Control Plane API
 //
 // Use the Application Performance Monitoring Control Plane API to perform operations such as creating, updating,
-// deleting and listing APM domains and monitoring the progress of these operations using the work request APIs.
+// deleting and listing APM domains and monitoring the progress of these operations using the work request APIs. For more information, see Application Performance Monitoring (https://docs.cloud.oracle.com/iaas/application-performance-monitoring/index.html).
 //
 
 package apmcontrolplane
@@ -34,6 +34,14 @@ var mappingOperationTypesEnum = map[string]OperationTypesEnum{
 	"REMOVE_DATA_KEYS":   OperationTypesRemoveDataKeys,
 }
 
+var mappingOperationTypesEnumLowerCase = map[string]OperationTypesEnum{
+	"create_apm_domain":  OperationTypesCreateApmDomain,
+	"update_apm_domain":  OperationTypesUpdateApmDomain,
+	"delete_apm_domain":  OperationTypesDeleteApmDomain,
+	"generate_data_keys": OperationTypesGenerateDataKeys,
+	"remove_data_keys":   OperationTypesRemoveDataKeys,
+}
+
 // GetOperationTypesEnumValues Enumerates the set of values for OperationTypesEnum
 func GetOperationTypesEnumValues() []OperationTypesEnum {
 	values := make([]OperationTypesEnum, 0)
@@ -56,11 +64,6 @@ func GetOperationTypesEnumStringValues() []string {
 
 // GetMappingOperationTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperationTypesEnum(val string) (OperationTypesEnum, bool) {
-	mappingOperationTypesEnumIgnoreCase := make(map[string]OperationTypesEnum)
-	for k, v := range mappingOperationTypesEnum {
-		mappingOperationTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperationTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperationTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

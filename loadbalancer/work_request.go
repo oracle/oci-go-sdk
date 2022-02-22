@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -96,6 +96,13 @@ var mappingWorkRequestLifecycleStateEnum = map[string]WorkRequestLifecycleStateE
 	"SUCCEEDED":   WorkRequestLifecycleStateSucceeded,
 }
 
+var mappingWorkRequestLifecycleStateEnumLowerCase = map[string]WorkRequestLifecycleStateEnum{
+	"accepted":    WorkRequestLifecycleStateAccepted,
+	"in_progress": WorkRequestLifecycleStateInProgress,
+	"failed":      WorkRequestLifecycleStateFailed,
+	"succeeded":   WorkRequestLifecycleStateSucceeded,
+}
+
 // GetWorkRequestLifecycleStateEnumValues Enumerates the set of values for WorkRequestLifecycleStateEnum
 func GetWorkRequestLifecycleStateEnumValues() []WorkRequestLifecycleStateEnum {
 	values := make([]WorkRequestLifecycleStateEnum, 0)
@@ -117,11 +124,6 @@ func GetWorkRequestLifecycleStateEnumStringValues() []string {
 
 // GetMappingWorkRequestLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestLifecycleStateEnum(val string) (WorkRequestLifecycleStateEnum, bool) {
-	mappingWorkRequestLifecycleStateEnumIgnoreCase := make(map[string]WorkRequestLifecycleStateEnum)
-	for k, v := range mappingWorkRequestLifecycleStateEnum {
-		mappingWorkRequestLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

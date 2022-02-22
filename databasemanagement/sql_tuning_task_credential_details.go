@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -118,6 +118,11 @@ var mappingSqlTuningTaskCredentialDetailsRoleEnum = map[string]SqlTuningTaskCred
 	"SYSDBA": SqlTuningTaskCredentialDetailsRoleSysdba,
 }
 
+var mappingSqlTuningTaskCredentialDetailsRoleEnumLowerCase = map[string]SqlTuningTaskCredentialDetailsRoleEnum{
+	"normal": SqlTuningTaskCredentialDetailsRoleNormal,
+	"sysdba": SqlTuningTaskCredentialDetailsRoleSysdba,
+}
+
 // GetSqlTuningTaskCredentialDetailsRoleEnumValues Enumerates the set of values for SqlTuningTaskCredentialDetailsRoleEnum
 func GetSqlTuningTaskCredentialDetailsRoleEnumValues() []SqlTuningTaskCredentialDetailsRoleEnum {
 	values := make([]SqlTuningTaskCredentialDetailsRoleEnum, 0)
@@ -137,11 +142,6 @@ func GetSqlTuningTaskCredentialDetailsRoleEnumStringValues() []string {
 
 // GetMappingSqlTuningTaskCredentialDetailsRoleEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSqlTuningTaskCredentialDetailsRoleEnum(val string) (SqlTuningTaskCredentialDetailsRoleEnum, bool) {
-	mappingSqlTuningTaskCredentialDetailsRoleEnumIgnoreCase := make(map[string]SqlTuningTaskCredentialDetailsRoleEnum)
-	for k, v := range mappingSqlTuningTaskCredentialDetailsRoleEnum {
-		mappingSqlTuningTaskCredentialDetailsRoleEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSqlTuningTaskCredentialDetailsRoleEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSqlTuningTaskCredentialDetailsRoleEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

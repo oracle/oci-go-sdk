@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,11 @@ var mappingListConnectionsSortByEnum = map[string]ListConnectionsSortByEnum{
 	"DISPLAY_NAME": ListConnectionsSortByDisplayName,
 }
 
+var mappingListConnectionsSortByEnumLowerCase = map[string]ListConnectionsSortByEnum{
+	"time_created": ListConnectionsSortByTimeCreated,
+	"display_name": ListConnectionsSortByDisplayName,
+}
+
 // GetListConnectionsSortByEnumValues Enumerates the set of values for ListConnectionsSortByEnum
 func GetListConnectionsSortByEnumValues() []ListConnectionsSortByEnum {
 	values := make([]ListConnectionsSortByEnum, 0)
@@ -163,12 +168,7 @@ func GetListConnectionsSortByEnumStringValues() []string {
 
 // GetMappingListConnectionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConnectionsSortByEnum(val string) (ListConnectionsSortByEnum, bool) {
-	mappingListConnectionsSortByEnumIgnoreCase := make(map[string]ListConnectionsSortByEnum)
-	for k, v := range mappingListConnectionsSortByEnum {
-		mappingListConnectionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConnectionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConnectionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -184,6 +184,11 @@ const (
 var mappingListConnectionsSortOrderEnum = map[string]ListConnectionsSortOrderEnum{
 	"ASC":  ListConnectionsSortOrderAsc,
 	"DESC": ListConnectionsSortOrderDesc,
+}
+
+var mappingListConnectionsSortOrderEnumLowerCase = map[string]ListConnectionsSortOrderEnum{
+	"asc":  ListConnectionsSortOrderAsc,
+	"desc": ListConnectionsSortOrderDesc,
 }
 
 // GetListConnectionsSortOrderEnumValues Enumerates the set of values for ListConnectionsSortOrderEnum
@@ -205,11 +210,6 @@ func GetListConnectionsSortOrderEnumStringValues() []string {
 
 // GetMappingListConnectionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConnectionsSortOrderEnum(val string) (ListConnectionsSortOrderEnum, bool) {
-	mappingListConnectionsSortOrderEnumIgnoreCase := make(map[string]ListConnectionsSortOrderEnum)
-	for k, v := range mappingListConnectionsSortOrderEnum {
-		mappingListConnectionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConnectionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConnectionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

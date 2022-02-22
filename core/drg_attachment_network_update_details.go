@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -91,6 +91,10 @@ var mappingDrgAttachmentNetworkUpdateDetailsTypeEnum = map[string]DrgAttachmentN
 	"VCN": DrgAttachmentNetworkUpdateDetailsTypeVcn,
 }
 
+var mappingDrgAttachmentNetworkUpdateDetailsTypeEnumLowerCase = map[string]DrgAttachmentNetworkUpdateDetailsTypeEnum{
+	"vcn": DrgAttachmentNetworkUpdateDetailsTypeVcn,
+}
+
 // GetDrgAttachmentNetworkUpdateDetailsTypeEnumValues Enumerates the set of values for DrgAttachmentNetworkUpdateDetailsTypeEnum
 func GetDrgAttachmentNetworkUpdateDetailsTypeEnumValues() []DrgAttachmentNetworkUpdateDetailsTypeEnum {
 	values := make([]DrgAttachmentNetworkUpdateDetailsTypeEnum, 0)
@@ -109,11 +113,6 @@ func GetDrgAttachmentNetworkUpdateDetailsTypeEnumStringValues() []string {
 
 // GetMappingDrgAttachmentNetworkUpdateDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDrgAttachmentNetworkUpdateDetailsTypeEnum(val string) (DrgAttachmentNetworkUpdateDetailsTypeEnum, bool) {
-	mappingDrgAttachmentNetworkUpdateDetailsTypeEnumIgnoreCase := make(map[string]DrgAttachmentNetworkUpdateDetailsTypeEnum)
-	for k, v := range mappingDrgAttachmentNetworkUpdateDetailsTypeEnum {
-		mappingDrgAttachmentNetworkUpdateDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDrgAttachmentNetworkUpdateDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDrgAttachmentNetworkUpdateDetailsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

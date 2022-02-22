@@ -6,7 +6,7 @@ package databasemigration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -143,6 +143,11 @@ var mappingListMigrationsSortByEnum = map[string]ListMigrationsSortByEnum{
 	"displayName": ListMigrationsSortByDisplayname,
 }
 
+var mappingListMigrationsSortByEnumLowerCase = map[string]ListMigrationsSortByEnum{
+	"timecreated": ListMigrationsSortByTimecreated,
+	"displayname": ListMigrationsSortByDisplayname,
+}
+
 // GetListMigrationsSortByEnumValues Enumerates the set of values for ListMigrationsSortByEnum
 func GetListMigrationsSortByEnumValues() []ListMigrationsSortByEnum {
 	values := make([]ListMigrationsSortByEnum, 0)
@@ -162,12 +167,7 @@ func GetListMigrationsSortByEnumStringValues() []string {
 
 // GetMappingListMigrationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMigrationsSortByEnum(val string) (ListMigrationsSortByEnum, bool) {
-	mappingListMigrationsSortByEnumIgnoreCase := make(map[string]ListMigrationsSortByEnum)
-	for k, v := range mappingListMigrationsSortByEnum {
-		mappingListMigrationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMigrationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMigrationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +183,11 @@ const (
 var mappingListMigrationsSortOrderEnum = map[string]ListMigrationsSortOrderEnum{
 	"ASC":  ListMigrationsSortOrderAsc,
 	"DESC": ListMigrationsSortOrderDesc,
+}
+
+var mappingListMigrationsSortOrderEnumLowerCase = map[string]ListMigrationsSortOrderEnum{
+	"asc":  ListMigrationsSortOrderAsc,
+	"desc": ListMigrationsSortOrderDesc,
 }
 
 // GetListMigrationsSortOrderEnumValues Enumerates the set of values for ListMigrationsSortOrderEnum
@@ -204,12 +209,7 @@ func GetListMigrationsSortOrderEnumStringValues() []string {
 
 // GetMappingListMigrationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMigrationsSortOrderEnum(val string) (ListMigrationsSortOrderEnum, bool) {
-	mappingListMigrationsSortOrderEnumIgnoreCase := make(map[string]ListMigrationsSortOrderEnum)
-	for k, v := range mappingListMigrationsSortOrderEnum {
-		mappingListMigrationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMigrationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMigrationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -249,6 +249,22 @@ var mappingListMigrationsLifecycleStateEnum = map[string]ListMigrationsLifecycle
 	"FAILED":          ListMigrationsLifecycleStateFailed,
 }
 
+var mappingListMigrationsLifecycleStateEnumLowerCase = map[string]ListMigrationsLifecycleStateEnum{
+	"creating":        ListMigrationsLifecycleStateCreating,
+	"updating":        ListMigrationsLifecycleStateUpdating,
+	"active":          ListMigrationsLifecycleStateActive,
+	"in_progress":     ListMigrationsLifecycleStateInProgress,
+	"accepted":        ListMigrationsLifecycleStateAccepted,
+	"succeeded":       ListMigrationsLifecycleStateSucceeded,
+	"canceled":        ListMigrationsLifecycleStateCanceled,
+	"waiting":         ListMigrationsLifecycleStateWaiting,
+	"needs_attention": ListMigrationsLifecycleStateNeedsAttention,
+	"inactive":        ListMigrationsLifecycleStateInactive,
+	"deleting":        ListMigrationsLifecycleStateDeleting,
+	"deleted":         ListMigrationsLifecycleStateDeleted,
+	"failed":          ListMigrationsLifecycleStateFailed,
+}
+
 // GetListMigrationsLifecycleStateEnumValues Enumerates the set of values for ListMigrationsLifecycleStateEnum
 func GetListMigrationsLifecycleStateEnumValues() []ListMigrationsLifecycleStateEnum {
 	values := make([]ListMigrationsLifecycleStateEnum, 0)
@@ -279,12 +295,7 @@ func GetListMigrationsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListMigrationsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMigrationsLifecycleStateEnum(val string) (ListMigrationsLifecycleStateEnum, bool) {
-	mappingListMigrationsLifecycleStateEnumIgnoreCase := make(map[string]ListMigrationsLifecycleStateEnum)
-	for k, v := range mappingListMigrationsLifecycleStateEnum {
-		mappingListMigrationsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMigrationsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMigrationsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -312,6 +323,16 @@ var mappingListMigrationsLifecycleDetailsEnum = map[string]ListMigrationsLifecyc
 	"DONE":       ListMigrationsLifecycleDetailsDone,
 }
 
+var mappingListMigrationsLifecycleDetailsEnumLowerCase = map[string]ListMigrationsLifecycleDetailsEnum{
+	"ready":      ListMigrationsLifecycleDetailsReady,
+	"aborting":   ListMigrationsLifecycleDetailsAborting,
+	"validating": ListMigrationsLifecycleDetailsValidating,
+	"validated":  ListMigrationsLifecycleDetailsValidated,
+	"waiting":    ListMigrationsLifecycleDetailsWaiting,
+	"migrating":  ListMigrationsLifecycleDetailsMigrating,
+	"done":       ListMigrationsLifecycleDetailsDone,
+}
+
 // GetListMigrationsLifecycleDetailsEnumValues Enumerates the set of values for ListMigrationsLifecycleDetailsEnum
 func GetListMigrationsLifecycleDetailsEnumValues() []ListMigrationsLifecycleDetailsEnum {
 	values := make([]ListMigrationsLifecycleDetailsEnum, 0)
@@ -336,11 +357,6 @@ func GetListMigrationsLifecycleDetailsEnumStringValues() []string {
 
 // GetMappingListMigrationsLifecycleDetailsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMigrationsLifecycleDetailsEnum(val string) (ListMigrationsLifecycleDetailsEnum, bool) {
-	mappingListMigrationsLifecycleDetailsEnumIgnoreCase := make(map[string]ListMigrationsLifecycleDetailsEnum)
-	for k, v := range mappingListMigrationsLifecycleDetailsEnum {
-		mappingListMigrationsLifecycleDetailsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMigrationsLifecycleDetailsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMigrationsLifecycleDetailsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

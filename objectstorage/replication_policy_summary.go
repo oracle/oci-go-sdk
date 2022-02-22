@@ -13,7 +13,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -80,6 +80,11 @@ var mappingReplicationPolicySummaryStatusEnum = map[string]ReplicationPolicySumm
 	"CLIENT_ERROR": ReplicationPolicySummaryStatusClientError,
 }
 
+var mappingReplicationPolicySummaryStatusEnumLowerCase = map[string]ReplicationPolicySummaryStatusEnum{
+	"active":       ReplicationPolicySummaryStatusActive,
+	"client_error": ReplicationPolicySummaryStatusClientError,
+}
+
 // GetReplicationPolicySummaryStatusEnumValues Enumerates the set of values for ReplicationPolicySummaryStatusEnum
 func GetReplicationPolicySummaryStatusEnumValues() []ReplicationPolicySummaryStatusEnum {
 	values := make([]ReplicationPolicySummaryStatusEnum, 0)
@@ -99,11 +104,6 @@ func GetReplicationPolicySummaryStatusEnumStringValues() []string {
 
 // GetMappingReplicationPolicySummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingReplicationPolicySummaryStatusEnum(val string) (ReplicationPolicySummaryStatusEnum, bool) {
-	mappingReplicationPolicySummaryStatusEnumIgnoreCase := make(map[string]ReplicationPolicySummaryStatusEnum)
-	for k, v := range mappingReplicationPolicySummaryStatusEnum {
-		mappingReplicationPolicySummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingReplicationPolicySummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingReplicationPolicySummaryStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

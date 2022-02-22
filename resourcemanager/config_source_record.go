@@ -15,7 +15,7 @@ package resourcemanager
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -102,6 +102,12 @@ var mappingConfigSourceRecordConfigSourceRecordTypeEnum = map[string]ConfigSourc
 	"OBJECT_STORAGE_CONFIG_SOURCE": ConfigSourceRecordConfigSourceRecordTypeObjectStorageConfigSource,
 }
 
+var mappingConfigSourceRecordConfigSourceRecordTypeEnumLowerCase = map[string]ConfigSourceRecordConfigSourceRecordTypeEnum{
+	"zip_upload":                   ConfigSourceRecordConfigSourceRecordTypeZipUpload,
+	"git_config_source":            ConfigSourceRecordConfigSourceRecordTypeGitConfigSource,
+	"object_storage_config_source": ConfigSourceRecordConfigSourceRecordTypeObjectStorageConfigSource,
+}
+
 // GetConfigSourceRecordConfigSourceRecordTypeEnumValues Enumerates the set of values for ConfigSourceRecordConfigSourceRecordTypeEnum
 func GetConfigSourceRecordConfigSourceRecordTypeEnumValues() []ConfigSourceRecordConfigSourceRecordTypeEnum {
 	values := make([]ConfigSourceRecordConfigSourceRecordTypeEnum, 0)
@@ -122,11 +128,6 @@ func GetConfigSourceRecordConfigSourceRecordTypeEnumStringValues() []string {
 
 // GetMappingConfigSourceRecordConfigSourceRecordTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConfigSourceRecordConfigSourceRecordTypeEnum(val string) (ConfigSourceRecordConfigSourceRecordTypeEnum, bool) {
-	mappingConfigSourceRecordConfigSourceRecordTypeEnumIgnoreCase := make(map[string]ConfigSourceRecordConfigSourceRecordTypeEnum)
-	for k, v := range mappingConfigSourceRecordConfigSourceRecordTypeEnum {
-		mappingConfigSourceRecordConfigSourceRecordTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConfigSourceRecordConfigSourceRecordTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConfigSourceRecordConfigSourceRecordTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

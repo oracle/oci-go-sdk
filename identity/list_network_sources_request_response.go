@@ -6,7 +6,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -143,6 +143,11 @@ var mappingListNetworkSourcesSortByEnum = map[string]ListNetworkSourcesSortByEnu
 	"NAME":        ListNetworkSourcesSortByName,
 }
 
+var mappingListNetworkSourcesSortByEnumLowerCase = map[string]ListNetworkSourcesSortByEnum{
+	"timecreated": ListNetworkSourcesSortByTimecreated,
+	"name":        ListNetworkSourcesSortByName,
+}
+
 // GetListNetworkSourcesSortByEnumValues Enumerates the set of values for ListNetworkSourcesSortByEnum
 func GetListNetworkSourcesSortByEnumValues() []ListNetworkSourcesSortByEnum {
 	values := make([]ListNetworkSourcesSortByEnum, 0)
@@ -162,12 +167,7 @@ func GetListNetworkSourcesSortByEnumStringValues() []string {
 
 // GetMappingListNetworkSourcesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListNetworkSourcesSortByEnum(val string) (ListNetworkSourcesSortByEnum, bool) {
-	mappingListNetworkSourcesSortByEnumIgnoreCase := make(map[string]ListNetworkSourcesSortByEnum)
-	for k, v := range mappingListNetworkSourcesSortByEnum {
-		mappingListNetworkSourcesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListNetworkSourcesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListNetworkSourcesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +183,11 @@ const (
 var mappingListNetworkSourcesSortOrderEnum = map[string]ListNetworkSourcesSortOrderEnum{
 	"ASC":  ListNetworkSourcesSortOrderAsc,
 	"DESC": ListNetworkSourcesSortOrderDesc,
+}
+
+var mappingListNetworkSourcesSortOrderEnumLowerCase = map[string]ListNetworkSourcesSortOrderEnum{
+	"asc":  ListNetworkSourcesSortOrderAsc,
+	"desc": ListNetworkSourcesSortOrderDesc,
 }
 
 // GetListNetworkSourcesSortOrderEnumValues Enumerates the set of values for ListNetworkSourcesSortOrderEnum
@@ -204,11 +209,6 @@ func GetListNetworkSourcesSortOrderEnumStringValues() []string {
 
 // GetMappingListNetworkSourcesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListNetworkSourcesSortOrderEnum(val string) (ListNetworkSourcesSortOrderEnum, bool) {
-	mappingListNetworkSourcesSortOrderEnumIgnoreCase := make(map[string]ListNetworkSourcesSortOrderEnum)
-	for k, v := range mappingListNetworkSourcesSortOrderEnum {
-		mappingListNetworkSourcesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListNetworkSourcesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListNetworkSourcesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

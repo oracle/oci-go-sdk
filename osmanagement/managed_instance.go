@@ -12,7 +12,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -139,6 +139,13 @@ var mappingManagedInstanceStatusEnum = map[string]ManagedInstanceStatusEnum{
 	"WARNING":     ManagedInstanceStatusWarning,
 }
 
+var mappingManagedInstanceStatusEnumLowerCase = map[string]ManagedInstanceStatusEnum{
+	"normal":      ManagedInstanceStatusNormal,
+	"unreachable": ManagedInstanceStatusUnreachable,
+	"error":       ManagedInstanceStatusError,
+	"warning":     ManagedInstanceStatusWarning,
+}
+
 // GetManagedInstanceStatusEnumValues Enumerates the set of values for ManagedInstanceStatusEnum
 func GetManagedInstanceStatusEnumValues() []ManagedInstanceStatusEnum {
 	values := make([]ManagedInstanceStatusEnum, 0)
@@ -160,11 +167,6 @@ func GetManagedInstanceStatusEnumStringValues() []string {
 
 // GetMappingManagedInstanceStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingManagedInstanceStatusEnum(val string) (ManagedInstanceStatusEnum, bool) {
-	mappingManagedInstanceStatusEnumIgnoreCase := make(map[string]ManagedInstanceStatusEnum)
-	for k, v := range mappingManagedInstanceStatusEnum {
-		mappingManagedInstanceStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingManagedInstanceStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingManagedInstanceStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

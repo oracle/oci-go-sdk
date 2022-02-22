@@ -51,6 +51,23 @@ var mappingWorkRequestActionResultEnum = map[string]WorkRequestActionResultEnum{
 	"NONE":                           WorkRequestActionResultNone,
 }
 
+var mappingWorkRequestActionResultEnumLowerCase = map[string]WorkRequestActionResultEnum{
+	"compartment_changed":            WorkRequestActionResultCompartmentChanged,
+	"created":                        WorkRequestActionResultCreated,
+	"deleted":                        WorkRequestActionResultDeleted,
+	"started":                        WorkRequestActionResultStarted,
+	"stopped":                        WorkRequestActionResultStopped,
+	"scaled":                         WorkRequestActionResultScaled,
+	"network_endpoint_changed":       WorkRequestActionResultNetworkEndpointChanged,
+	"vanity_url_created":             WorkRequestActionResultVanityUrlCreated,
+	"vanity_url_updated":             WorkRequestActionResultVanityUrlUpdated,
+	"vanity_url_deleted":             WorkRequestActionResultVanityUrlDeleted,
+	"private_access_channel_created": WorkRequestActionResultPrivateAccessChannelCreated,
+	"private_access_channel_updated": WorkRequestActionResultPrivateAccessChannelUpdated,
+	"private_access_channel_deleted": WorkRequestActionResultPrivateAccessChannelDeleted,
+	"none":                           WorkRequestActionResultNone,
+}
+
 // GetWorkRequestActionResultEnumValues Enumerates the set of values for WorkRequestActionResultEnum
 func GetWorkRequestActionResultEnumValues() []WorkRequestActionResultEnum {
 	values := make([]WorkRequestActionResultEnum, 0)
@@ -82,11 +99,6 @@ func GetWorkRequestActionResultEnumStringValues() []string {
 
 // GetMappingWorkRequestActionResultEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestActionResultEnum(val string) (WorkRequestActionResultEnum, bool) {
-	mappingWorkRequestActionResultEnumIgnoreCase := make(map[string]WorkRequestActionResultEnum)
-	for k, v := range mappingWorkRequestActionResultEnum {
-		mappingWorkRequestActionResultEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestActionResultEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestActionResultEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

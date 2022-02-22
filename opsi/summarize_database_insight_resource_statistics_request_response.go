@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -233,6 +233,15 @@ var mappingSummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum = map[stri
 	"EXTERNAL-NONCDB": SummarizeDatabaseInsightResourceStatisticsDatabaseTypeExternalNoncdb,
 }
 
+var mappingSummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnumLowerCase = map[string]SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum{
+	"adw-s":           SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAdwS,
+	"atp-s":           SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAtpS,
+	"adw-d":           SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAdwD,
+	"atp-d":           SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAtpD,
+	"external-pdb":    SummarizeDatabaseInsightResourceStatisticsDatabaseTypeExternalPdb,
+	"external-noncdb": SummarizeDatabaseInsightResourceStatisticsDatabaseTypeExternalNoncdb,
+}
+
 // GetSummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum
 func GetSummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnumValues() []SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum {
 	values := make([]SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum, 0)
@@ -256,12 +265,7 @@ func GetSummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnumStringValues()
 
 // GetMappingSummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum(val string) (SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum, bool) {
-	mappingSummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum)
-	for k, v := range mappingSummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum {
-		mappingSummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -277,6 +281,11 @@ const (
 var mappingSummarizeDatabaseInsightResourceStatisticsSortOrderEnum = map[string]SummarizeDatabaseInsightResourceStatisticsSortOrderEnum{
 	"ASC":  SummarizeDatabaseInsightResourceStatisticsSortOrderAsc,
 	"DESC": SummarizeDatabaseInsightResourceStatisticsSortOrderDesc,
+}
+
+var mappingSummarizeDatabaseInsightResourceStatisticsSortOrderEnumLowerCase = map[string]SummarizeDatabaseInsightResourceStatisticsSortOrderEnum{
+	"asc":  SummarizeDatabaseInsightResourceStatisticsSortOrderAsc,
+	"desc": SummarizeDatabaseInsightResourceStatisticsSortOrderDesc,
 }
 
 // GetSummarizeDatabaseInsightResourceStatisticsSortOrderEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceStatisticsSortOrderEnum
@@ -298,12 +307,7 @@ func GetSummarizeDatabaseInsightResourceStatisticsSortOrderEnumStringValues() []
 
 // GetMappingSummarizeDatabaseInsightResourceStatisticsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeDatabaseInsightResourceStatisticsSortOrderEnum(val string) (SummarizeDatabaseInsightResourceStatisticsSortOrderEnum, bool) {
-	mappingSummarizeDatabaseInsightResourceStatisticsSortOrderEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceStatisticsSortOrderEnum)
-	for k, v := range mappingSummarizeDatabaseInsightResourceStatisticsSortOrderEnum {
-		mappingSummarizeDatabaseInsightResourceStatisticsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeDatabaseInsightResourceStatisticsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeDatabaseInsightResourceStatisticsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -325,6 +329,14 @@ var mappingSummarizeDatabaseInsightResourceStatisticsSortByEnum = map[string]Sum
 	"usageChangePercent": SummarizeDatabaseInsightResourceStatisticsSortByUsagechangepercent,
 	"databaseName":       SummarizeDatabaseInsightResourceStatisticsSortByDatabasename,
 	"databaseType":       SummarizeDatabaseInsightResourceStatisticsSortByDatabasetype,
+}
+
+var mappingSummarizeDatabaseInsightResourceStatisticsSortByEnumLowerCase = map[string]SummarizeDatabaseInsightResourceStatisticsSortByEnum{
+	"utilizationpercent": SummarizeDatabaseInsightResourceStatisticsSortByUtilizationpercent,
+	"usage":              SummarizeDatabaseInsightResourceStatisticsSortByUsage,
+	"usagechangepercent": SummarizeDatabaseInsightResourceStatisticsSortByUsagechangepercent,
+	"databasename":       SummarizeDatabaseInsightResourceStatisticsSortByDatabasename,
+	"databasetype":       SummarizeDatabaseInsightResourceStatisticsSortByDatabasetype,
 }
 
 // GetSummarizeDatabaseInsightResourceStatisticsSortByEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceStatisticsSortByEnum
@@ -349,11 +361,6 @@ func GetSummarizeDatabaseInsightResourceStatisticsSortByEnumStringValues() []str
 
 // GetMappingSummarizeDatabaseInsightResourceStatisticsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeDatabaseInsightResourceStatisticsSortByEnum(val string) (SummarizeDatabaseInsightResourceStatisticsSortByEnum, bool) {
-	mappingSummarizeDatabaseInsightResourceStatisticsSortByEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceStatisticsSortByEnum)
-	for k, v := range mappingSummarizeDatabaseInsightResourceStatisticsSortByEnum {
-		mappingSummarizeDatabaseInsightResourceStatisticsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeDatabaseInsightResourceStatisticsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeDatabaseInsightResourceStatisticsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

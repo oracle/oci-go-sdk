@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -198,6 +198,11 @@ var mappingListAlertAnalyticsSortOrderEnum = map[string]ListAlertAnalyticsSortOr
 	"DESC": ListAlertAnalyticsSortOrderDesc,
 }
 
+var mappingListAlertAnalyticsSortOrderEnumLowerCase = map[string]ListAlertAnalyticsSortOrderEnum{
+	"asc":  ListAlertAnalyticsSortOrderAsc,
+	"desc": ListAlertAnalyticsSortOrderDesc,
+}
+
 // GetListAlertAnalyticsSortOrderEnumValues Enumerates the set of values for ListAlertAnalyticsSortOrderEnum
 func GetListAlertAnalyticsSortOrderEnumValues() []ListAlertAnalyticsSortOrderEnum {
 	values := make([]ListAlertAnalyticsSortOrderEnum, 0)
@@ -217,12 +222,7 @@ func GetListAlertAnalyticsSortOrderEnumStringValues() []string {
 
 // GetMappingListAlertAnalyticsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAlertAnalyticsSortOrderEnum(val string) (ListAlertAnalyticsSortOrderEnum, bool) {
-	mappingListAlertAnalyticsSortOrderEnumIgnoreCase := make(map[string]ListAlertAnalyticsSortOrderEnum)
-	for k, v := range mappingListAlertAnalyticsSortOrderEnum {
-		mappingListAlertAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAlertAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAlertAnalyticsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -238,6 +238,11 @@ const (
 var mappingListAlertAnalyticsSortByEnum = map[string]ListAlertAnalyticsSortByEnum{
 	"displayName": ListAlertAnalyticsSortByDisplayname,
 	"timeCreated": ListAlertAnalyticsSortByTimecreated,
+}
+
+var mappingListAlertAnalyticsSortByEnumLowerCase = map[string]ListAlertAnalyticsSortByEnum{
+	"displayname": ListAlertAnalyticsSortByDisplayname,
+	"timecreated": ListAlertAnalyticsSortByTimecreated,
 }
 
 // GetListAlertAnalyticsSortByEnumValues Enumerates the set of values for ListAlertAnalyticsSortByEnum
@@ -259,12 +264,7 @@ func GetListAlertAnalyticsSortByEnumStringValues() []string {
 
 // GetMappingListAlertAnalyticsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAlertAnalyticsSortByEnum(val string) (ListAlertAnalyticsSortByEnum, bool) {
-	mappingListAlertAnalyticsSortByEnumIgnoreCase := make(map[string]ListAlertAnalyticsSortByEnum)
-	for k, v := range mappingListAlertAnalyticsSortByEnum {
-		mappingListAlertAnalyticsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAlertAnalyticsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAlertAnalyticsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -280,6 +280,11 @@ const (
 var mappingListAlertAnalyticsAccessLevelEnum = map[string]ListAlertAnalyticsAccessLevelEnum{
 	"RESTRICTED": ListAlertAnalyticsAccessLevelRestricted,
 	"ACCESSIBLE": ListAlertAnalyticsAccessLevelAccessible,
+}
+
+var mappingListAlertAnalyticsAccessLevelEnumLowerCase = map[string]ListAlertAnalyticsAccessLevelEnum{
+	"restricted": ListAlertAnalyticsAccessLevelRestricted,
+	"accessible": ListAlertAnalyticsAccessLevelAccessible,
 }
 
 // GetListAlertAnalyticsAccessLevelEnumValues Enumerates the set of values for ListAlertAnalyticsAccessLevelEnum
@@ -301,12 +306,7 @@ func GetListAlertAnalyticsAccessLevelEnumStringValues() []string {
 
 // GetMappingListAlertAnalyticsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAlertAnalyticsAccessLevelEnum(val string) (ListAlertAnalyticsAccessLevelEnum, bool) {
-	mappingListAlertAnalyticsAccessLevelEnumIgnoreCase := make(map[string]ListAlertAnalyticsAccessLevelEnum)
-	for k, v := range mappingListAlertAnalyticsAccessLevelEnum {
-		mappingListAlertAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAlertAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAlertAnalyticsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -348,6 +348,23 @@ var mappingListAlertAnalyticsSummaryFieldEnum = map[string]ListAlertAnalyticsSum
 	"alertcount":    ListAlertAnalyticsSummaryFieldAlertcount,
 }
 
+var mappingListAlertAnalyticsSummaryFieldEnumLowerCase = map[string]ListAlertAnalyticsSummaryFieldEnum{
+	"alerttype":     ListAlertAnalyticsSummaryFieldAlerttype,
+	"targetids":     ListAlertAnalyticsSummaryFieldTargetids,
+	"targetnames":   ListAlertAnalyticsSummaryFieldTargetnames,
+	"alertseverity": ListAlertAnalyticsSummaryFieldAlertseverity,
+	"alertstatus":   ListAlertAnalyticsSummaryFieldAlertstatus,
+	"timecreated":   ListAlertAnalyticsSummaryFieldTimecreated,
+	"policyid":      ListAlertAnalyticsSummaryFieldPolicyid,
+	"open":          ListAlertAnalyticsSummaryFieldOpen,
+	"closed":        ListAlertAnalyticsSummaryFieldClosed,
+	"critical":      ListAlertAnalyticsSummaryFieldCritical,
+	"high":          ListAlertAnalyticsSummaryFieldHigh,
+	"medium":        ListAlertAnalyticsSummaryFieldMedium,
+	"low":           ListAlertAnalyticsSummaryFieldLow,
+	"alertcount":    ListAlertAnalyticsSummaryFieldAlertcount,
+}
+
 // GetListAlertAnalyticsSummaryFieldEnumValues Enumerates the set of values for ListAlertAnalyticsSummaryFieldEnum
 func GetListAlertAnalyticsSummaryFieldEnumValues() []ListAlertAnalyticsSummaryFieldEnum {
 	values := make([]ListAlertAnalyticsSummaryFieldEnum, 0)
@@ -379,12 +396,7 @@ func GetListAlertAnalyticsSummaryFieldEnumStringValues() []string {
 
 // GetMappingListAlertAnalyticsSummaryFieldEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAlertAnalyticsSummaryFieldEnum(val string) (ListAlertAnalyticsSummaryFieldEnum, bool) {
-	mappingListAlertAnalyticsSummaryFieldEnumIgnoreCase := make(map[string]ListAlertAnalyticsSummaryFieldEnum)
-	for k, v := range mappingListAlertAnalyticsSummaryFieldEnum {
-		mappingListAlertAnalyticsSummaryFieldEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAlertAnalyticsSummaryFieldEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAlertAnalyticsSummaryFieldEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -412,6 +424,16 @@ var mappingListAlertAnalyticsGroupByEnum = map[string]ListAlertAnalyticsGroupByE
 	"policyId":      ListAlertAnalyticsGroupByPolicyid,
 }
 
+var mappingListAlertAnalyticsGroupByEnumLowerCase = map[string]ListAlertAnalyticsGroupByEnum{
+	"alerttype":     ListAlertAnalyticsGroupByAlerttype,
+	"targetids":     ListAlertAnalyticsGroupByTargetids,
+	"targetnames":   ListAlertAnalyticsGroupByTargetnames,
+	"alertseverity": ListAlertAnalyticsGroupByAlertseverity,
+	"alertstatus":   ListAlertAnalyticsGroupByAlertstatus,
+	"timecreated":   ListAlertAnalyticsGroupByTimecreated,
+	"policyid":      ListAlertAnalyticsGroupByPolicyid,
+}
+
 // GetListAlertAnalyticsGroupByEnumValues Enumerates the set of values for ListAlertAnalyticsGroupByEnum
 func GetListAlertAnalyticsGroupByEnumValues() []ListAlertAnalyticsGroupByEnum {
 	values := make([]ListAlertAnalyticsGroupByEnum, 0)
@@ -436,11 +458,6 @@ func GetListAlertAnalyticsGroupByEnumStringValues() []string {
 
 // GetMappingListAlertAnalyticsGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAlertAnalyticsGroupByEnum(val string) (ListAlertAnalyticsGroupByEnum, bool) {
-	mappingListAlertAnalyticsGroupByEnumIgnoreCase := make(map[string]ListAlertAnalyticsGroupByEnum)
-	for k, v := range mappingListAlertAnalyticsGroupByEnum {
-		mappingListAlertAnalyticsGroupByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAlertAnalyticsGroupByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAlertAnalyticsGroupByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

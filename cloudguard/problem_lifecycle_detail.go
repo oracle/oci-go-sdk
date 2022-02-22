@@ -2,9 +2,10 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Cloud Guard APIs
+// Cloud Guard API
 //
-// A description of the Cloud Guard APIs
+// Use the Cloud Guard API to automate processes that you would otherwise perform through the Cloud Guard Console.
+// **Note:** You can perform Create, Update, and Delete operations only from the reporting region of your Cloud Guard tenancy. You can perform Read operations from any region.
 //
 
 package cloudguard
@@ -31,6 +32,13 @@ var mappingProblemLifecycleDetailEnum = map[string]ProblemLifecycleDetailEnum{
 	"DELETED":   ProblemLifecycleDetailDeleted,
 }
 
+var mappingProblemLifecycleDetailEnumLowerCase = map[string]ProblemLifecycleDetailEnum{
+	"open":      ProblemLifecycleDetailOpen,
+	"resolved":  ProblemLifecycleDetailResolved,
+	"dismissed": ProblemLifecycleDetailDismissed,
+	"deleted":   ProblemLifecycleDetailDeleted,
+}
+
 // GetProblemLifecycleDetailEnumValues Enumerates the set of values for ProblemLifecycleDetailEnum
 func GetProblemLifecycleDetailEnumValues() []ProblemLifecycleDetailEnum {
 	values := make([]ProblemLifecycleDetailEnum, 0)
@@ -52,11 +60,6 @@ func GetProblemLifecycleDetailEnumStringValues() []string {
 
 // GetMappingProblemLifecycleDetailEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingProblemLifecycleDetailEnum(val string) (ProblemLifecycleDetailEnum, bool) {
-	mappingProblemLifecycleDetailEnumIgnoreCase := make(map[string]ProblemLifecycleDetailEnum)
-	for k, v := range mappingProblemLifecycleDetailEnum {
-		mappingProblemLifecycleDetailEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingProblemLifecycleDetailEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingProblemLifecycleDetailEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

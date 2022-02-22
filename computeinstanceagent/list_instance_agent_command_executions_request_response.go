@@ -6,7 +6,7 @@ package computeinstanceagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -146,6 +146,11 @@ var mappingListInstanceAgentCommandExecutionsSortByEnum = map[string]ListInstanc
 	"DISPLAYNAME": ListInstanceAgentCommandExecutionsSortByDisplayname,
 }
 
+var mappingListInstanceAgentCommandExecutionsSortByEnumLowerCase = map[string]ListInstanceAgentCommandExecutionsSortByEnum{
+	"timecreated": ListInstanceAgentCommandExecutionsSortByTimecreated,
+	"displayname": ListInstanceAgentCommandExecutionsSortByDisplayname,
+}
+
 // GetListInstanceAgentCommandExecutionsSortByEnumValues Enumerates the set of values for ListInstanceAgentCommandExecutionsSortByEnum
 func GetListInstanceAgentCommandExecutionsSortByEnumValues() []ListInstanceAgentCommandExecutionsSortByEnum {
 	values := make([]ListInstanceAgentCommandExecutionsSortByEnum, 0)
@@ -165,12 +170,7 @@ func GetListInstanceAgentCommandExecutionsSortByEnumStringValues() []string {
 
 // GetMappingListInstanceAgentCommandExecutionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListInstanceAgentCommandExecutionsSortByEnum(val string) (ListInstanceAgentCommandExecutionsSortByEnum, bool) {
-	mappingListInstanceAgentCommandExecutionsSortByEnumIgnoreCase := make(map[string]ListInstanceAgentCommandExecutionsSortByEnum)
-	for k, v := range mappingListInstanceAgentCommandExecutionsSortByEnum {
-		mappingListInstanceAgentCommandExecutionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListInstanceAgentCommandExecutionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListInstanceAgentCommandExecutionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -186,6 +186,11 @@ const (
 var mappingListInstanceAgentCommandExecutionsSortOrderEnum = map[string]ListInstanceAgentCommandExecutionsSortOrderEnum{
 	"ASC":  ListInstanceAgentCommandExecutionsSortOrderAsc,
 	"DESC": ListInstanceAgentCommandExecutionsSortOrderDesc,
+}
+
+var mappingListInstanceAgentCommandExecutionsSortOrderEnumLowerCase = map[string]ListInstanceAgentCommandExecutionsSortOrderEnum{
+	"asc":  ListInstanceAgentCommandExecutionsSortOrderAsc,
+	"desc": ListInstanceAgentCommandExecutionsSortOrderDesc,
 }
 
 // GetListInstanceAgentCommandExecutionsSortOrderEnumValues Enumerates the set of values for ListInstanceAgentCommandExecutionsSortOrderEnum
@@ -207,11 +212,6 @@ func GetListInstanceAgentCommandExecutionsSortOrderEnumStringValues() []string {
 
 // GetMappingListInstanceAgentCommandExecutionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListInstanceAgentCommandExecutionsSortOrderEnum(val string) (ListInstanceAgentCommandExecutionsSortOrderEnum, bool) {
-	mappingListInstanceAgentCommandExecutionsSortOrderEnumIgnoreCase := make(map[string]ListInstanceAgentCommandExecutionsSortOrderEnum)
-	for k, v := range mappingListInstanceAgentCommandExecutionsSortOrderEnum {
-		mappingListInstanceAgentCommandExecutionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListInstanceAgentCommandExecutionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListInstanceAgentCommandExecutionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

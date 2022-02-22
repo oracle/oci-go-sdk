@@ -6,7 +6,7 @@ package apmsynthetics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -151,6 +151,12 @@ var mappingListMonitorsStatusEnum = map[string]ListMonitorsStatusEnum{
 	"INVALID":  ListMonitorsStatusInvalid,
 }
 
+var mappingListMonitorsStatusEnumLowerCase = map[string]ListMonitorsStatusEnum{
+	"enabled":  ListMonitorsStatusEnabled,
+	"disabled": ListMonitorsStatusDisabled,
+	"invalid":  ListMonitorsStatusInvalid,
+}
+
 // GetListMonitorsStatusEnumValues Enumerates the set of values for ListMonitorsStatusEnum
 func GetListMonitorsStatusEnumValues() []ListMonitorsStatusEnum {
 	values := make([]ListMonitorsStatusEnum, 0)
@@ -171,12 +177,7 @@ func GetListMonitorsStatusEnumStringValues() []string {
 
 // GetMappingListMonitorsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMonitorsStatusEnum(val string) (ListMonitorsStatusEnum, bool) {
-	mappingListMonitorsStatusEnumIgnoreCase := make(map[string]ListMonitorsStatusEnum)
-	for k, v := range mappingListMonitorsStatusEnum {
-		mappingListMonitorsStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMonitorsStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMonitorsStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -192,6 +193,11 @@ const (
 var mappingListMonitorsSortOrderEnum = map[string]ListMonitorsSortOrderEnum{
 	"ASC":  ListMonitorsSortOrderAsc,
 	"DESC": ListMonitorsSortOrderDesc,
+}
+
+var mappingListMonitorsSortOrderEnumLowerCase = map[string]ListMonitorsSortOrderEnum{
+	"asc":  ListMonitorsSortOrderAsc,
+	"desc": ListMonitorsSortOrderDesc,
 }
 
 // GetListMonitorsSortOrderEnumValues Enumerates the set of values for ListMonitorsSortOrderEnum
@@ -213,12 +219,7 @@ func GetListMonitorsSortOrderEnumStringValues() []string {
 
 // GetMappingListMonitorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMonitorsSortOrderEnum(val string) (ListMonitorsSortOrderEnum, bool) {
-	mappingListMonitorsSortOrderEnumIgnoreCase := make(map[string]ListMonitorsSortOrderEnum)
-	for k, v := range mappingListMonitorsSortOrderEnum {
-		mappingListMonitorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMonitorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMonitorsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -240,6 +241,14 @@ var mappingListMonitorsSortByEnum = map[string]ListMonitorsSortByEnum{
 	"timeUpdated": ListMonitorsSortByTimeupdated,
 	"status":      ListMonitorsSortByStatus,
 	"monitorType": ListMonitorsSortByMonitortype,
+}
+
+var mappingListMonitorsSortByEnumLowerCase = map[string]ListMonitorsSortByEnum{
+	"displayname": ListMonitorsSortByDisplayname,
+	"timecreated": ListMonitorsSortByTimecreated,
+	"timeupdated": ListMonitorsSortByTimeupdated,
+	"status":      ListMonitorsSortByStatus,
+	"monitortype": ListMonitorsSortByMonitortype,
 }
 
 // GetListMonitorsSortByEnumValues Enumerates the set of values for ListMonitorsSortByEnum
@@ -264,11 +273,6 @@ func GetListMonitorsSortByEnumStringValues() []string {
 
 // GetMappingListMonitorsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMonitorsSortByEnum(val string) (ListMonitorsSortByEnum, bool) {
-	mappingListMonitorsSortByEnumIgnoreCase := make(map[string]ListMonitorsSortByEnum)
-	for k, v := range mappingListMonitorsSortByEnum {
-		mappingListMonitorsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMonitorsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMonitorsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

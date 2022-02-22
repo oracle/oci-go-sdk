@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,18 @@ var mappingGetJobLogFieldsEnum = map[string]GetJobLogFieldsEnum{
 	"uri":             GetJobLogFieldsUri,
 }
 
+var mappingGetJobLogFieldsEnumLowerCase = map[string]GetJobLogFieldsEnum{
+	"key":             GetJobLogFieldsKey,
+	"jobexecutionkey": GetJobLogFieldsJobexecutionkey,
+	"createdbyid":     GetJobLogFieldsCreatedbyid,
+	"updatedbyid":     GetJobLogFieldsUpdatedbyid,
+	"timeupdated":     GetJobLogFieldsTimeupdated,
+	"timecreated":     GetJobLogFieldsTimecreated,
+	"severity":        GetJobLogFieldsSeverity,
+	"logmessage":      GetJobLogFieldsLogmessage,
+	"uri":             GetJobLogFieldsUri,
+}
+
 // GetGetJobLogFieldsEnumValues Enumerates the set of values for GetJobLogFieldsEnum
 func GetGetJobLogFieldsEnumValues() []GetJobLogFieldsEnum {
 	values := make([]GetJobLogFieldsEnum, 0)
@@ -164,11 +176,6 @@ func GetGetJobLogFieldsEnumStringValues() []string {
 
 // GetMappingGetJobLogFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetJobLogFieldsEnum(val string) (GetJobLogFieldsEnum, bool) {
-	mappingGetJobLogFieldsEnumIgnoreCase := make(map[string]GetJobLogFieldsEnum)
-	for k, v := range mappingGetJobLogFieldsEnum {
-		mappingGetJobLogFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetJobLogFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetJobLogFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

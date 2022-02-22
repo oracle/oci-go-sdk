@@ -12,7 +12,7 @@ package mysql
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingChannelSourceSourceTypeEnum = map[string]ChannelSourceSourceTypeEnum{
 	"MYSQL": ChannelSourceSourceTypeMysql,
 }
 
+var mappingChannelSourceSourceTypeEnumLowerCase = map[string]ChannelSourceSourceTypeEnum{
+	"mysql": ChannelSourceSourceTypeMysql,
+}
+
 // GetChannelSourceSourceTypeEnumValues Enumerates the set of values for ChannelSourceSourceTypeEnum
 func GetChannelSourceSourceTypeEnumValues() []ChannelSourceSourceTypeEnum {
 	values := make([]ChannelSourceSourceTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetChannelSourceSourceTypeEnumStringValues() []string {
 
 // GetMappingChannelSourceSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingChannelSourceSourceTypeEnum(val string) (ChannelSourceSourceTypeEnum, bool) {
-	mappingChannelSourceSourceTypeEnumIgnoreCase := make(map[string]ChannelSourceSourceTypeEnum)
-	for k, v := range mappingChannelSourceSourceTypeEnum {
-		mappingChannelSourceSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingChannelSourceSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingChannelSourceSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -29,6 +29,12 @@ var mappingListingTypeEnum = map[string]ListingTypeEnum{
 	"PRIVATE":   ListingTypePrivate,
 }
 
+var mappingListingTypeEnumLowerCase = map[string]ListingTypeEnum{
+	"community": ListingTypeCommunity,
+	"partner":   ListingTypePartner,
+	"private":   ListingTypePrivate,
+}
+
 // GetListingTypeEnumValues Enumerates the set of values for ListingTypeEnum
 func GetListingTypeEnumValues() []ListingTypeEnum {
 	values := make([]ListingTypeEnum, 0)
@@ -49,11 +55,6 @@ func GetListingTypeEnumStringValues() []string {
 
 // GetMappingListingTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListingTypeEnum(val string) (ListingTypeEnum, bool) {
-	mappingListingTypeEnumIgnoreCase := make(map[string]ListingTypeEnum)
-	for k, v := range mappingListingTypeEnum {
-		mappingListingTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListingTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListingTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

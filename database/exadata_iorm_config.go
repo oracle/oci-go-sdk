@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -75,6 +75,14 @@ var mappingExadataIormConfigLifecycleStateEnum = map[string]ExadataIormConfigLif
 	"FAILED":        ExadataIormConfigLifecycleStateFailed,
 }
 
+var mappingExadataIormConfigLifecycleStateEnumLowerCase = map[string]ExadataIormConfigLifecycleStateEnum{
+	"bootstrapping": ExadataIormConfigLifecycleStateBootstrapping,
+	"enabled":       ExadataIormConfigLifecycleStateEnabled,
+	"disabled":      ExadataIormConfigLifecycleStateDisabled,
+	"updating":      ExadataIormConfigLifecycleStateUpdating,
+	"failed":        ExadataIormConfigLifecycleStateFailed,
+}
+
 // GetExadataIormConfigLifecycleStateEnumValues Enumerates the set of values for ExadataIormConfigLifecycleStateEnum
 func GetExadataIormConfigLifecycleStateEnumValues() []ExadataIormConfigLifecycleStateEnum {
 	values := make([]ExadataIormConfigLifecycleStateEnum, 0)
@@ -97,12 +105,7 @@ func GetExadataIormConfigLifecycleStateEnumStringValues() []string {
 
 // GetMappingExadataIormConfigLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExadataIormConfigLifecycleStateEnum(val string) (ExadataIormConfigLifecycleStateEnum, bool) {
-	mappingExadataIormConfigLifecycleStateEnumIgnoreCase := make(map[string]ExadataIormConfigLifecycleStateEnum)
-	for k, v := range mappingExadataIormConfigLifecycleStateEnum {
-		mappingExadataIormConfigLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExadataIormConfigLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExadataIormConfigLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -124,6 +127,14 @@ var mappingExadataIormConfigObjectiveEnum = map[string]ExadataIormConfigObjectiv
 	"BALANCED":        ExadataIormConfigObjectiveBalanced,
 	"AUTO":            ExadataIormConfigObjectiveAuto,
 	"BASIC":           ExadataIormConfigObjectiveBasic,
+}
+
+var mappingExadataIormConfigObjectiveEnumLowerCase = map[string]ExadataIormConfigObjectiveEnum{
+	"low_latency":     ExadataIormConfigObjectiveLowLatency,
+	"high_throughput": ExadataIormConfigObjectiveHighThroughput,
+	"balanced":        ExadataIormConfigObjectiveBalanced,
+	"auto":            ExadataIormConfigObjectiveAuto,
+	"basic":           ExadataIormConfigObjectiveBasic,
 }
 
 // GetExadataIormConfigObjectiveEnumValues Enumerates the set of values for ExadataIormConfigObjectiveEnum
@@ -148,11 +159,6 @@ func GetExadataIormConfigObjectiveEnumStringValues() []string {
 
 // GetMappingExadataIormConfigObjectiveEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExadataIormConfigObjectiveEnum(val string) (ExadataIormConfigObjectiveEnum, bool) {
-	mappingExadataIormConfigObjectiveEnumIgnoreCase := make(map[string]ExadataIormConfigObjectiveEnum)
-	for k, v := range mappingExadataIormConfigObjectiveEnum {
-		mappingExadataIormConfigObjectiveEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExadataIormConfigObjectiveEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExadataIormConfigObjectiveEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

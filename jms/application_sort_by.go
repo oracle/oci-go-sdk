@@ -37,6 +37,16 @@ var mappingApplicationSortByEnum = map[string]ApplicationSortByEnum{
 	"osName":                          ApplicationSortByOsName,
 }
 
+var mappingApplicationSortByEnumLowerCase = map[string]ApplicationSortByEnum{
+	"timefirstseen":                   ApplicationSortByTimeFirstSeen,
+	"timelastseen":                    ApplicationSortByTimeLastSeen,
+	"displayname":                     ApplicationSortByDisplayName,
+	"approximatejrecount":             ApplicationSortByApproximateJreCount,
+	"approximateinstallationcount":    ApplicationSortByApproximateInstallationCount,
+	"approximatemanagedinstancecount": ApplicationSortByApproximateManagedInstanceCount,
+	"osname":                          ApplicationSortByOsName,
+}
+
 // GetApplicationSortByEnumValues Enumerates the set of values for ApplicationSortByEnum
 func GetApplicationSortByEnumValues() []ApplicationSortByEnum {
 	values := make([]ApplicationSortByEnum, 0)
@@ -61,11 +71,6 @@ func GetApplicationSortByEnumStringValues() []string {
 
 // GetMappingApplicationSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingApplicationSortByEnum(val string) (ApplicationSortByEnum, bool) {
-	mappingApplicationSortByEnumIgnoreCase := make(map[string]ApplicationSortByEnum)
-	for k, v := range mappingApplicationSortByEnum {
-		mappingApplicationSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingApplicationSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingApplicationSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

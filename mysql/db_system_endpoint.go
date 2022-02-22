@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -80,6 +80,11 @@ var mappingDbSystemEndpointModesEnum = map[string]DbSystemEndpointModesEnum{
 	"WRITE": DbSystemEndpointModesWrite,
 }
 
+var mappingDbSystemEndpointModesEnumLowerCase = map[string]DbSystemEndpointModesEnum{
+	"read":  DbSystemEndpointModesRead,
+	"write": DbSystemEndpointModesWrite,
+}
+
 // GetDbSystemEndpointModesEnumValues Enumerates the set of values for DbSystemEndpointModesEnum
 func GetDbSystemEndpointModesEnumValues() []DbSystemEndpointModesEnum {
 	values := make([]DbSystemEndpointModesEnum, 0)
@@ -99,12 +104,7 @@ func GetDbSystemEndpointModesEnumStringValues() []string {
 
 // GetMappingDbSystemEndpointModesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDbSystemEndpointModesEnum(val string) (DbSystemEndpointModesEnum, bool) {
-	mappingDbSystemEndpointModesEnumIgnoreCase := make(map[string]DbSystemEndpointModesEnum)
-	for k, v := range mappingDbSystemEndpointModesEnum {
-		mappingDbSystemEndpointModesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDbSystemEndpointModesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDbSystemEndpointModesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -122,6 +122,12 @@ var mappingDbSystemEndpointStatusEnum = map[string]DbSystemEndpointStatusEnum{
 	"ACTIVE":   DbSystemEndpointStatusActive,
 	"INACTIVE": DbSystemEndpointStatusInactive,
 	"UPDATING": DbSystemEndpointStatusUpdating,
+}
+
+var mappingDbSystemEndpointStatusEnumLowerCase = map[string]DbSystemEndpointStatusEnum{
+	"active":   DbSystemEndpointStatusActive,
+	"inactive": DbSystemEndpointStatusInactive,
+	"updating": DbSystemEndpointStatusUpdating,
 }
 
 // GetDbSystemEndpointStatusEnumValues Enumerates the set of values for DbSystemEndpointStatusEnum
@@ -144,11 +150,6 @@ func GetDbSystemEndpointStatusEnumStringValues() []string {
 
 // GetMappingDbSystemEndpointStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDbSystemEndpointStatusEnum(val string) (DbSystemEndpointStatusEnum, bool) {
-	mappingDbSystemEndpointStatusEnumIgnoreCase := make(map[string]DbSystemEndpointStatusEnum)
-	for k, v := range mappingDbSystemEndpointStatusEnum {
-		mappingDbSystemEndpointStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDbSystemEndpointStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDbSystemEndpointStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

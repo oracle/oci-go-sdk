@@ -14,7 +14,7 @@ package apigateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -89,6 +89,10 @@ var mappingResponseCacheStorePolicyTypeEnum = map[string]ResponseCacheStorePolic
 	"FIXED_TTL_STORE_POLICY": ResponseCacheStorePolicyTypeFixedTtlStorePolicy,
 }
 
+var mappingResponseCacheStorePolicyTypeEnumLowerCase = map[string]ResponseCacheStorePolicyTypeEnum{
+	"fixed_ttl_store_policy": ResponseCacheStorePolicyTypeFixedTtlStorePolicy,
+}
+
 // GetResponseCacheStorePolicyTypeEnumValues Enumerates the set of values for ResponseCacheStorePolicyTypeEnum
 func GetResponseCacheStorePolicyTypeEnumValues() []ResponseCacheStorePolicyTypeEnum {
 	values := make([]ResponseCacheStorePolicyTypeEnum, 0)
@@ -107,11 +111,6 @@ func GetResponseCacheStorePolicyTypeEnumStringValues() []string {
 
 // GetMappingResponseCacheStorePolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingResponseCacheStorePolicyTypeEnum(val string) (ResponseCacheStorePolicyTypeEnum, bool) {
-	mappingResponseCacheStorePolicyTypeEnumIgnoreCase := make(map[string]ResponseCacheStorePolicyTypeEnum)
-	for k, v := range mappingResponseCacheStorePolicyTypeEnum {
-		mappingResponseCacheStorePolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingResponseCacheStorePolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingResponseCacheStorePolicyTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -152,6 +152,13 @@ var mappingCreateVirtualCircuitDetailsRoutingPolicyEnum = map[string]CreateVirtu
 	"GLOBAL":                 CreateVirtualCircuitDetailsRoutingPolicyGlobal,
 }
 
+var mappingCreateVirtualCircuitDetailsRoutingPolicyEnumLowerCase = map[string]CreateVirtualCircuitDetailsRoutingPolicyEnum{
+	"oracle_service_network": CreateVirtualCircuitDetailsRoutingPolicyOracleServiceNetwork,
+	"regional":               CreateVirtualCircuitDetailsRoutingPolicyRegional,
+	"market_level":           CreateVirtualCircuitDetailsRoutingPolicyMarketLevel,
+	"global":                 CreateVirtualCircuitDetailsRoutingPolicyGlobal,
+}
+
 // GetCreateVirtualCircuitDetailsRoutingPolicyEnumValues Enumerates the set of values for CreateVirtualCircuitDetailsRoutingPolicyEnum
 func GetCreateVirtualCircuitDetailsRoutingPolicyEnumValues() []CreateVirtualCircuitDetailsRoutingPolicyEnum {
 	values := make([]CreateVirtualCircuitDetailsRoutingPolicyEnum, 0)
@@ -173,12 +180,7 @@ func GetCreateVirtualCircuitDetailsRoutingPolicyEnumStringValues() []string {
 
 // GetMappingCreateVirtualCircuitDetailsRoutingPolicyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateVirtualCircuitDetailsRoutingPolicyEnum(val string) (CreateVirtualCircuitDetailsRoutingPolicyEnum, bool) {
-	mappingCreateVirtualCircuitDetailsRoutingPolicyEnumIgnoreCase := make(map[string]CreateVirtualCircuitDetailsRoutingPolicyEnum)
-	for k, v := range mappingCreateVirtualCircuitDetailsRoutingPolicyEnum {
-		mappingCreateVirtualCircuitDetailsRoutingPolicyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateVirtualCircuitDetailsRoutingPolicyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateVirtualCircuitDetailsRoutingPolicyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -194,6 +196,11 @@ const (
 var mappingCreateVirtualCircuitDetailsTypeEnum = map[string]CreateVirtualCircuitDetailsTypeEnum{
 	"PUBLIC":  CreateVirtualCircuitDetailsTypePublic,
 	"PRIVATE": CreateVirtualCircuitDetailsTypePrivate,
+}
+
+var mappingCreateVirtualCircuitDetailsTypeEnumLowerCase = map[string]CreateVirtualCircuitDetailsTypeEnum{
+	"public":  CreateVirtualCircuitDetailsTypePublic,
+	"private": CreateVirtualCircuitDetailsTypePrivate,
 }
 
 // GetCreateVirtualCircuitDetailsTypeEnumValues Enumerates the set of values for CreateVirtualCircuitDetailsTypeEnum
@@ -215,11 +222,6 @@ func GetCreateVirtualCircuitDetailsTypeEnumStringValues() []string {
 
 // GetMappingCreateVirtualCircuitDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateVirtualCircuitDetailsTypeEnum(val string) (CreateVirtualCircuitDetailsTypeEnum, bool) {
-	mappingCreateVirtualCircuitDetailsTypeEnumIgnoreCase := make(map[string]CreateVirtualCircuitDetailsTypeEnum)
-	for k, v := range mappingCreateVirtualCircuitDetailsTypeEnum {
-		mappingCreateVirtualCircuitDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateVirtualCircuitDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateVirtualCircuitDetailsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

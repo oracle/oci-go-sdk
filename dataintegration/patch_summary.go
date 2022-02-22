@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -109,6 +109,12 @@ var mappingPatchSummaryPatchTypeEnum = map[string]PatchSummaryPatchTypeEnum{
 	"UNPUBLISH": PatchSummaryPatchTypeUnpublish,
 }
 
+var mappingPatchSummaryPatchTypeEnumLowerCase = map[string]PatchSummaryPatchTypeEnum{
+	"publish":   PatchSummaryPatchTypePublish,
+	"refresh":   PatchSummaryPatchTypeRefresh,
+	"unpublish": PatchSummaryPatchTypeUnpublish,
+}
+
 // GetPatchSummaryPatchTypeEnumValues Enumerates the set of values for PatchSummaryPatchTypeEnum
 func GetPatchSummaryPatchTypeEnumValues() []PatchSummaryPatchTypeEnum {
 	values := make([]PatchSummaryPatchTypeEnum, 0)
@@ -129,12 +135,7 @@ func GetPatchSummaryPatchTypeEnumStringValues() []string {
 
 // GetMappingPatchSummaryPatchTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchSummaryPatchTypeEnum(val string) (PatchSummaryPatchTypeEnum, bool) {
-	mappingPatchSummaryPatchTypeEnumIgnoreCase := make(map[string]PatchSummaryPatchTypeEnum)
-	for k, v := range mappingPatchSummaryPatchTypeEnum {
-		mappingPatchSummaryPatchTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchSummaryPatchTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchSummaryPatchTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -154,6 +155,13 @@ var mappingPatchSummaryPatchStatusEnum = map[string]PatchSummaryPatchStatusEnum{
 	"SUCCESSFUL":  PatchSummaryPatchStatusSuccessful,
 	"FAILED":      PatchSummaryPatchStatusFailed,
 	"IN_PROGRESS": PatchSummaryPatchStatusInProgress,
+}
+
+var mappingPatchSummaryPatchStatusEnumLowerCase = map[string]PatchSummaryPatchStatusEnum{
+	"queued":      PatchSummaryPatchStatusQueued,
+	"successful":  PatchSummaryPatchStatusSuccessful,
+	"failed":      PatchSummaryPatchStatusFailed,
+	"in_progress": PatchSummaryPatchStatusInProgress,
 }
 
 // GetPatchSummaryPatchStatusEnumValues Enumerates the set of values for PatchSummaryPatchStatusEnum
@@ -177,11 +185,6 @@ func GetPatchSummaryPatchStatusEnumStringValues() []string {
 
 // GetMappingPatchSummaryPatchStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchSummaryPatchStatusEnum(val string) (PatchSummaryPatchStatusEnum, bool) {
-	mappingPatchSummaryPatchStatusEnumIgnoreCase := make(map[string]PatchSummaryPatchStatusEnum)
-	for k, v := range mappingPatchSummaryPatchStatusEnum {
-		mappingPatchSummaryPatchStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchSummaryPatchStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchSummaryPatchStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

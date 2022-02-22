@@ -6,7 +6,7 @@ package rover
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -148,6 +148,15 @@ var mappingListRoverNodesLifecycleStateEnum = map[string]ListRoverNodesLifecycle
 	"FAILED":   ListRoverNodesLifecycleStateFailed,
 }
 
+var mappingListRoverNodesLifecycleStateEnumLowerCase = map[string]ListRoverNodesLifecycleStateEnum{
+	"creating": ListRoverNodesLifecycleStateCreating,
+	"updating": ListRoverNodesLifecycleStateUpdating,
+	"active":   ListRoverNodesLifecycleStateActive,
+	"deleting": ListRoverNodesLifecycleStateDeleting,
+	"deleted":  ListRoverNodesLifecycleStateDeleted,
+	"failed":   ListRoverNodesLifecycleStateFailed,
+}
+
 // GetListRoverNodesLifecycleStateEnumValues Enumerates the set of values for ListRoverNodesLifecycleStateEnum
 func GetListRoverNodesLifecycleStateEnumValues() []ListRoverNodesLifecycleStateEnum {
 	values := make([]ListRoverNodesLifecycleStateEnum, 0)
@@ -171,12 +180,7 @@ func GetListRoverNodesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListRoverNodesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRoverNodesLifecycleStateEnum(val string) (ListRoverNodesLifecycleStateEnum, bool) {
-	mappingListRoverNodesLifecycleStateEnumIgnoreCase := make(map[string]ListRoverNodesLifecycleStateEnum)
-	for k, v := range mappingListRoverNodesLifecycleStateEnum {
-		mappingListRoverNodesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRoverNodesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRoverNodesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -192,6 +196,11 @@ const (
 var mappingListRoverNodesSortOrderEnum = map[string]ListRoverNodesSortOrderEnum{
 	"ASC":  ListRoverNodesSortOrderAsc,
 	"DESC": ListRoverNodesSortOrderDesc,
+}
+
+var mappingListRoverNodesSortOrderEnumLowerCase = map[string]ListRoverNodesSortOrderEnum{
+	"asc":  ListRoverNodesSortOrderAsc,
+	"desc": ListRoverNodesSortOrderDesc,
 }
 
 // GetListRoverNodesSortOrderEnumValues Enumerates the set of values for ListRoverNodesSortOrderEnum
@@ -213,12 +222,7 @@ func GetListRoverNodesSortOrderEnumStringValues() []string {
 
 // GetMappingListRoverNodesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRoverNodesSortOrderEnum(val string) (ListRoverNodesSortOrderEnum, bool) {
-	mappingListRoverNodesSortOrderEnumIgnoreCase := make(map[string]ListRoverNodesSortOrderEnum)
-	for k, v := range mappingListRoverNodesSortOrderEnum {
-		mappingListRoverNodesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRoverNodesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRoverNodesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -234,6 +238,11 @@ const (
 var mappingListRoverNodesSortByEnum = map[string]ListRoverNodesSortByEnum{
 	"timeCreated": ListRoverNodesSortByTimecreated,
 	"displayName": ListRoverNodesSortByDisplayname,
+}
+
+var mappingListRoverNodesSortByEnumLowerCase = map[string]ListRoverNodesSortByEnum{
+	"timecreated": ListRoverNodesSortByTimecreated,
+	"displayname": ListRoverNodesSortByDisplayname,
 }
 
 // GetListRoverNodesSortByEnumValues Enumerates the set of values for ListRoverNodesSortByEnum
@@ -255,11 +264,6 @@ func GetListRoverNodesSortByEnumStringValues() []string {
 
 // GetMappingListRoverNodesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRoverNodesSortByEnum(val string) (ListRoverNodesSortByEnum, bool) {
-	mappingListRoverNodesSortByEnumIgnoreCase := make(map[string]ListRoverNodesSortByEnum)
-	for k, v := range mappingListRoverNodesSortByEnum {
-		mappingListRoverNodesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRoverNodesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRoverNodesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

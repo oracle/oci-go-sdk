@@ -6,7 +6,7 @@ package apmcontrolplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -18,7 +18,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/ChangeApmDomainCompartment.go.html to see an example of how to use ChangeApmDomainCompartmentRequest.
 type ChangeApmDomainCompartmentRequest struct {
 
-	// The OCID of the APM domain
+	// The OCID of the APM domain.
 	ApmDomainId *string `mandatory:"true" contributesTo:"path" name:"apmDomainId"`
 
 	// The information to be used in changing compartment.
@@ -33,7 +33,7 @@ type ChangeApmDomainCompartmentRequest struct {
 	// The client request ID for tracing.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
-	// A token that uniquely identifies a request so it can be retried in case of a timeout or
+	// A token that uniquely identifies a request therefore it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24
 	// hours, but can be invalidated before then due to conflicting operations. For example, if a resource
 	// has been deleted and purged from the system, then a retry of the original creation request

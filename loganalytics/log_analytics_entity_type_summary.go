@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -84,6 +84,12 @@ var mappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum = m
 	"UNKNOWN":    LogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusUnknown,
 }
 
+var mappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnumLowerCase = map[string]LogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum{
+	"eligible":   LogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEligible,
+	"ineligible": LogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusIneligible,
+	"unknown":    LogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusUnknown,
+}
+
 // GetLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnumValues Enumerates the set of values for LogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum
 func GetLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnumValues() []LogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum {
 	values := make([]LogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum, 0)
@@ -104,11 +110,6 @@ func GetLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnumStringV
 
 // GetMappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum(val string) (LogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum, bool) {
-	mappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnumIgnoreCase := make(map[string]LogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum)
-	for k, v := range mappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnum {
-		mappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogAnalyticsEntityTypeSummaryManagementAgentEligibilityStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -142,6 +142,11 @@ var mappingListCloudAutonomousVmClustersSortByEnum = map[string]ListCloudAutonom
 	"DISPLAYNAME": ListCloudAutonomousVmClustersSortByDisplayname,
 }
 
+var mappingListCloudAutonomousVmClustersSortByEnumLowerCase = map[string]ListCloudAutonomousVmClustersSortByEnum{
+	"timecreated": ListCloudAutonomousVmClustersSortByTimecreated,
+	"displayname": ListCloudAutonomousVmClustersSortByDisplayname,
+}
+
 // GetListCloudAutonomousVmClustersSortByEnumValues Enumerates the set of values for ListCloudAutonomousVmClustersSortByEnum
 func GetListCloudAutonomousVmClustersSortByEnumValues() []ListCloudAutonomousVmClustersSortByEnum {
 	values := make([]ListCloudAutonomousVmClustersSortByEnum, 0)
@@ -161,12 +166,7 @@ func GetListCloudAutonomousVmClustersSortByEnumStringValues() []string {
 
 // GetMappingListCloudAutonomousVmClustersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCloudAutonomousVmClustersSortByEnum(val string) (ListCloudAutonomousVmClustersSortByEnum, bool) {
-	mappingListCloudAutonomousVmClustersSortByEnumIgnoreCase := make(map[string]ListCloudAutonomousVmClustersSortByEnum)
-	for k, v := range mappingListCloudAutonomousVmClustersSortByEnum {
-		mappingListCloudAutonomousVmClustersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCloudAutonomousVmClustersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCloudAutonomousVmClustersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -182,6 +182,11 @@ const (
 var mappingListCloudAutonomousVmClustersSortOrderEnum = map[string]ListCloudAutonomousVmClustersSortOrderEnum{
 	"ASC":  ListCloudAutonomousVmClustersSortOrderAsc,
 	"DESC": ListCloudAutonomousVmClustersSortOrderDesc,
+}
+
+var mappingListCloudAutonomousVmClustersSortOrderEnumLowerCase = map[string]ListCloudAutonomousVmClustersSortOrderEnum{
+	"asc":  ListCloudAutonomousVmClustersSortOrderAsc,
+	"desc": ListCloudAutonomousVmClustersSortOrderDesc,
 }
 
 // GetListCloudAutonomousVmClustersSortOrderEnumValues Enumerates the set of values for ListCloudAutonomousVmClustersSortOrderEnum
@@ -203,11 +208,6 @@ func GetListCloudAutonomousVmClustersSortOrderEnumStringValues() []string {
 
 // GetMappingListCloudAutonomousVmClustersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCloudAutonomousVmClustersSortOrderEnum(val string) (ListCloudAutonomousVmClustersSortOrderEnum, bool) {
-	mappingListCloudAutonomousVmClustersSortOrderEnumIgnoreCase := make(map[string]ListCloudAutonomousVmClustersSortOrderEnum)
-	for k, v := range mappingListCloudAutonomousVmClustersSortOrderEnum {
-		mappingListCloudAutonomousVmClustersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCloudAutonomousVmClustersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCloudAutonomousVmClustersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

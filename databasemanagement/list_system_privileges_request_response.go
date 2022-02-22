@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -132,6 +132,10 @@ var mappingListSystemPrivilegesSortByEnum = map[string]ListSystemPrivilegesSortB
 	"NAME": ListSystemPrivilegesSortByName,
 }
 
+var mappingListSystemPrivilegesSortByEnumLowerCase = map[string]ListSystemPrivilegesSortByEnum{
+	"name": ListSystemPrivilegesSortByName,
+}
+
 // GetListSystemPrivilegesSortByEnumValues Enumerates the set of values for ListSystemPrivilegesSortByEnum
 func GetListSystemPrivilegesSortByEnumValues() []ListSystemPrivilegesSortByEnum {
 	values := make([]ListSystemPrivilegesSortByEnum, 0)
@@ -150,12 +154,7 @@ func GetListSystemPrivilegesSortByEnumStringValues() []string {
 
 // GetMappingListSystemPrivilegesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSystemPrivilegesSortByEnum(val string) (ListSystemPrivilegesSortByEnum, bool) {
-	mappingListSystemPrivilegesSortByEnumIgnoreCase := make(map[string]ListSystemPrivilegesSortByEnum)
-	for k, v := range mappingListSystemPrivilegesSortByEnum {
-		mappingListSystemPrivilegesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSystemPrivilegesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSystemPrivilegesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -171,6 +170,11 @@ const (
 var mappingListSystemPrivilegesSortOrderEnum = map[string]ListSystemPrivilegesSortOrderEnum{
 	"ASC":  ListSystemPrivilegesSortOrderAsc,
 	"DESC": ListSystemPrivilegesSortOrderDesc,
+}
+
+var mappingListSystemPrivilegesSortOrderEnumLowerCase = map[string]ListSystemPrivilegesSortOrderEnum{
+	"asc":  ListSystemPrivilegesSortOrderAsc,
+	"desc": ListSystemPrivilegesSortOrderDesc,
 }
 
 // GetListSystemPrivilegesSortOrderEnumValues Enumerates the set of values for ListSystemPrivilegesSortOrderEnum
@@ -192,11 +196,6 @@ func GetListSystemPrivilegesSortOrderEnumStringValues() []string {
 
 // GetMappingListSystemPrivilegesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSystemPrivilegesSortOrderEnum(val string) (ListSystemPrivilegesSortOrderEnum, bool) {
-	mappingListSystemPrivilegesSortOrderEnumIgnoreCase := make(map[string]ListSystemPrivilegesSortOrderEnum)
-	for k, v := range mappingListSystemPrivilegesSortOrderEnum {
-		mappingListSystemPrivilegesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSystemPrivilegesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSystemPrivilegesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

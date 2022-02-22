@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -142,6 +142,16 @@ var mappingListDetectorsLifecycleStateEnum = map[string]ListDetectorsLifecycleSt
 	"FAILED":   ListDetectorsLifecycleStateFailed,
 }
 
+var mappingListDetectorsLifecycleStateEnumLowerCase = map[string]ListDetectorsLifecycleStateEnum{
+	"creating": ListDetectorsLifecycleStateCreating,
+	"updating": ListDetectorsLifecycleStateUpdating,
+	"active":   ListDetectorsLifecycleStateActive,
+	"inactive": ListDetectorsLifecycleStateInactive,
+	"deleting": ListDetectorsLifecycleStateDeleting,
+	"deleted":  ListDetectorsLifecycleStateDeleted,
+	"failed":   ListDetectorsLifecycleStateFailed,
+}
+
 // GetListDetectorsLifecycleStateEnumValues Enumerates the set of values for ListDetectorsLifecycleStateEnum
 func GetListDetectorsLifecycleStateEnumValues() []ListDetectorsLifecycleStateEnum {
 	values := make([]ListDetectorsLifecycleStateEnum, 0)
@@ -166,12 +176,7 @@ func GetListDetectorsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListDetectorsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDetectorsLifecycleStateEnum(val string) (ListDetectorsLifecycleStateEnum, bool) {
-	mappingListDetectorsLifecycleStateEnumIgnoreCase := make(map[string]ListDetectorsLifecycleStateEnum)
-	for k, v := range mappingListDetectorsLifecycleStateEnum {
-		mappingListDetectorsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDetectorsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDetectorsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +192,11 @@ const (
 var mappingListDetectorsSortOrderEnum = map[string]ListDetectorsSortOrderEnum{
 	"ASC":  ListDetectorsSortOrderAsc,
 	"DESC": ListDetectorsSortOrderDesc,
+}
+
+var mappingListDetectorsSortOrderEnumLowerCase = map[string]ListDetectorsSortOrderEnum{
+	"asc":  ListDetectorsSortOrderAsc,
+	"desc": ListDetectorsSortOrderDesc,
 }
 
 // GetListDetectorsSortOrderEnumValues Enumerates the set of values for ListDetectorsSortOrderEnum
@@ -208,12 +218,7 @@ func GetListDetectorsSortOrderEnumStringValues() []string {
 
 // GetMappingListDetectorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDetectorsSortOrderEnum(val string) (ListDetectorsSortOrderEnum, bool) {
-	mappingListDetectorsSortOrderEnumIgnoreCase := make(map[string]ListDetectorsSortOrderEnum)
-	for k, v := range mappingListDetectorsSortOrderEnum {
-		mappingListDetectorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDetectorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDetectorsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -229,6 +234,11 @@ const (
 var mappingListDetectorsSortByEnum = map[string]ListDetectorsSortByEnum{
 	"timeCreated": ListDetectorsSortByTimecreated,
 	"displayName": ListDetectorsSortByDisplayname,
+}
+
+var mappingListDetectorsSortByEnumLowerCase = map[string]ListDetectorsSortByEnum{
+	"timecreated": ListDetectorsSortByTimecreated,
+	"displayname": ListDetectorsSortByDisplayname,
 }
 
 // GetListDetectorsSortByEnumValues Enumerates the set of values for ListDetectorsSortByEnum
@@ -250,11 +260,6 @@ func GetListDetectorsSortByEnumStringValues() []string {
 
 // GetMappingListDetectorsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDetectorsSortByEnum(val string) (ListDetectorsSortByEnum, bool) {
-	mappingListDetectorsSortByEnumIgnoreCase := make(map[string]ListDetectorsSortByEnum)
-	for k, v := range mappingListDetectorsSortByEnum {
-		mappingListDetectorsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDetectorsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDetectorsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

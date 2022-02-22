@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -134,6 +134,11 @@ var mappingCreateDatabaseBaseSourceEnum = map[string]CreateDatabaseBaseSourceEnu
 	"DB_BACKUP": CreateDatabaseBaseSourceDbBackup,
 }
 
+var mappingCreateDatabaseBaseSourceEnumLowerCase = map[string]CreateDatabaseBaseSourceEnum{
+	"none":      CreateDatabaseBaseSourceNone,
+	"db_backup": CreateDatabaseBaseSourceDbBackup,
+}
+
 // GetCreateDatabaseBaseSourceEnumValues Enumerates the set of values for CreateDatabaseBaseSourceEnum
 func GetCreateDatabaseBaseSourceEnumValues() []CreateDatabaseBaseSourceEnum {
 	values := make([]CreateDatabaseBaseSourceEnum, 0)
@@ -153,11 +158,6 @@ func GetCreateDatabaseBaseSourceEnumStringValues() []string {
 
 // GetMappingCreateDatabaseBaseSourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateDatabaseBaseSourceEnum(val string) (CreateDatabaseBaseSourceEnum, bool) {
-	mappingCreateDatabaseBaseSourceEnumIgnoreCase := make(map[string]CreateDatabaseBaseSourceEnum)
-	for k, v := range mappingCreateDatabaseBaseSourceEnum {
-		mappingCreateDatabaseBaseSourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateDatabaseBaseSourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateDatabaseBaseSourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

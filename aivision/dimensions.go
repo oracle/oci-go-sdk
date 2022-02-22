@@ -11,7 +11,7 @@ package aivision
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -61,6 +61,11 @@ var mappingDimensionsUnitEnum = map[string]DimensionsUnitEnum{
 	"INCH":  DimensionsUnitInch,
 }
 
+var mappingDimensionsUnitEnumLowerCase = map[string]DimensionsUnitEnum{
+	"pixel": DimensionsUnitPixel,
+	"inch":  DimensionsUnitInch,
+}
+
 // GetDimensionsUnitEnumValues Enumerates the set of values for DimensionsUnitEnum
 func GetDimensionsUnitEnumValues() []DimensionsUnitEnum {
 	values := make([]DimensionsUnitEnum, 0)
@@ -80,11 +85,6 @@ func GetDimensionsUnitEnumStringValues() []string {
 
 // GetMappingDimensionsUnitEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDimensionsUnitEnum(val string) (DimensionsUnitEnum, bool) {
-	mappingDimensionsUnitEnumIgnoreCase := make(map[string]DimensionsUnitEnum)
-	for k, v := range mappingDimensionsUnitEnum {
-		mappingDimensionsUnitEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDimensionsUnitEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDimensionsUnitEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -131,6 +131,13 @@ var mappingRecommendationsSourceObjectTypeEnum = map[string]RecommendationsSourc
 	"CATEGORY":    RecommendationsSourceObjectTypeCategory,
 }
 
+var mappingRecommendationsSourceObjectTypeEnumLowerCase = map[string]RecommendationsSourceObjectTypeEnum{
+	"data_entity": RecommendationsSourceObjectTypeDataEntity,
+	"attribute":   RecommendationsSourceObjectTypeAttribute,
+	"term":        RecommendationsSourceObjectTypeTerm,
+	"category":    RecommendationsSourceObjectTypeCategory,
+}
+
 // GetRecommendationsSourceObjectTypeEnumValues Enumerates the set of values for RecommendationsSourceObjectTypeEnum
 func GetRecommendationsSourceObjectTypeEnumValues() []RecommendationsSourceObjectTypeEnum {
 	values := make([]RecommendationsSourceObjectTypeEnum, 0)
@@ -152,12 +159,7 @@ func GetRecommendationsSourceObjectTypeEnumStringValues() []string {
 
 // GetMappingRecommendationsSourceObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRecommendationsSourceObjectTypeEnum(val string) (RecommendationsSourceObjectTypeEnum, bool) {
-	mappingRecommendationsSourceObjectTypeEnumIgnoreCase := make(map[string]RecommendationsSourceObjectTypeEnum)
-	for k, v := range mappingRecommendationsSourceObjectTypeEnum {
-		mappingRecommendationsSourceObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRecommendationsSourceObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRecommendationsSourceObjectTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -175,6 +177,12 @@ var mappingRecommendationsRecommendationStatusEnum = map[string]RecommendationsR
 	"ACCEPTED": RecommendationsRecommendationStatusAccepted,
 	"REJECTED": RecommendationsRecommendationStatusRejected,
 	"INFERRED": RecommendationsRecommendationStatusInferred,
+}
+
+var mappingRecommendationsRecommendationStatusEnumLowerCase = map[string]RecommendationsRecommendationStatusEnum{
+	"accepted": RecommendationsRecommendationStatusAccepted,
+	"rejected": RecommendationsRecommendationStatusRejected,
+	"inferred": RecommendationsRecommendationStatusInferred,
 }
 
 // GetRecommendationsRecommendationStatusEnumValues Enumerates the set of values for RecommendationsRecommendationStatusEnum
@@ -197,11 +205,6 @@ func GetRecommendationsRecommendationStatusEnumStringValues() []string {
 
 // GetMappingRecommendationsRecommendationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRecommendationsRecommendationStatusEnum(val string) (RecommendationsRecommendationStatusEnum, bool) {
-	mappingRecommendationsRecommendationStatusEnumIgnoreCase := make(map[string]RecommendationsRecommendationStatusEnum)
-	for k, v := range mappingRecommendationsRecommendationStatusEnum {
-		mappingRecommendationsRecommendationStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRecommendationsRecommendationStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRecommendationsRecommendationStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

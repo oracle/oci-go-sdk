@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -217,6 +217,11 @@ var mappingCreateTablespaceDetailsTypeEnum = map[string]CreateTablespaceDetailsT
 	"TEMPORARY": CreateTablespaceDetailsTypeTemporary,
 }
 
+var mappingCreateTablespaceDetailsTypeEnumLowerCase = map[string]CreateTablespaceDetailsTypeEnum{
+	"permanent": CreateTablespaceDetailsTypePermanent,
+	"temporary": CreateTablespaceDetailsTypeTemporary,
+}
+
 // GetCreateTablespaceDetailsTypeEnumValues Enumerates the set of values for CreateTablespaceDetailsTypeEnum
 func GetCreateTablespaceDetailsTypeEnumValues() []CreateTablespaceDetailsTypeEnum {
 	values := make([]CreateTablespaceDetailsTypeEnum, 0)
@@ -236,12 +241,7 @@ func GetCreateTablespaceDetailsTypeEnumStringValues() []string {
 
 // GetMappingCreateTablespaceDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateTablespaceDetailsTypeEnum(val string) (CreateTablespaceDetailsTypeEnum, bool) {
-	mappingCreateTablespaceDetailsTypeEnumIgnoreCase := make(map[string]CreateTablespaceDetailsTypeEnum)
-	for k, v := range mappingCreateTablespaceDetailsTypeEnum {
-		mappingCreateTablespaceDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateTablespaceDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateTablespaceDetailsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -257,6 +257,11 @@ const (
 var mappingCreateTablespaceDetailsDefaultCompressEnum = map[string]CreateTablespaceDetailsDefaultCompressEnum{
 	"NO_COMPRESS":    CreateTablespaceDetailsDefaultCompressNoCompress,
 	"BASIC_COMPRESS": CreateTablespaceDetailsDefaultCompressBasicCompress,
+}
+
+var mappingCreateTablespaceDetailsDefaultCompressEnumLowerCase = map[string]CreateTablespaceDetailsDefaultCompressEnum{
+	"no_compress":    CreateTablespaceDetailsDefaultCompressNoCompress,
+	"basic_compress": CreateTablespaceDetailsDefaultCompressBasicCompress,
 }
 
 // GetCreateTablespaceDetailsDefaultCompressEnumValues Enumerates the set of values for CreateTablespaceDetailsDefaultCompressEnum
@@ -278,12 +283,7 @@ func GetCreateTablespaceDetailsDefaultCompressEnumStringValues() []string {
 
 // GetMappingCreateTablespaceDetailsDefaultCompressEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateTablespaceDetailsDefaultCompressEnum(val string) (CreateTablespaceDetailsDefaultCompressEnum, bool) {
-	mappingCreateTablespaceDetailsDefaultCompressEnumIgnoreCase := make(map[string]CreateTablespaceDetailsDefaultCompressEnum)
-	for k, v := range mappingCreateTablespaceDetailsDefaultCompressEnum {
-		mappingCreateTablespaceDetailsDefaultCompressEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateTablespaceDetailsDefaultCompressEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateTablespaceDetailsDefaultCompressEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -299,6 +299,11 @@ const (
 var mappingCreateTablespaceDetailsStatusEnum = map[string]CreateTablespaceDetailsStatusEnum{
 	"READ_ONLY":  CreateTablespaceDetailsStatusOnly,
 	"READ_WRITE": CreateTablespaceDetailsStatusWrite,
+}
+
+var mappingCreateTablespaceDetailsStatusEnumLowerCase = map[string]CreateTablespaceDetailsStatusEnum{
+	"read_only":  CreateTablespaceDetailsStatusOnly,
+	"read_write": CreateTablespaceDetailsStatusWrite,
 }
 
 // GetCreateTablespaceDetailsStatusEnumValues Enumerates the set of values for CreateTablespaceDetailsStatusEnum
@@ -320,12 +325,7 @@ func GetCreateTablespaceDetailsStatusEnumStringValues() []string {
 
 // GetMappingCreateTablespaceDetailsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateTablespaceDetailsStatusEnum(val string) (CreateTablespaceDetailsStatusEnum, bool) {
-	mappingCreateTablespaceDetailsStatusEnumIgnoreCase := make(map[string]CreateTablespaceDetailsStatusEnum)
-	for k, v := range mappingCreateTablespaceDetailsStatusEnum {
-		mappingCreateTablespaceDetailsStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateTablespaceDetailsStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateTablespaceDetailsStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -341,6 +341,11 @@ const (
 var mappingCreateTablespaceDetailsExtentManagementEnum = map[string]CreateTablespaceDetailsExtentManagementEnum{
 	"AUTOALLOCATE": CreateTablespaceDetailsExtentManagementAutoallocate,
 	"UNIFORM":      CreateTablespaceDetailsExtentManagementUniform,
+}
+
+var mappingCreateTablespaceDetailsExtentManagementEnumLowerCase = map[string]CreateTablespaceDetailsExtentManagementEnum{
+	"autoallocate": CreateTablespaceDetailsExtentManagementAutoallocate,
+	"uniform":      CreateTablespaceDetailsExtentManagementUniform,
 }
 
 // GetCreateTablespaceDetailsExtentManagementEnumValues Enumerates the set of values for CreateTablespaceDetailsExtentManagementEnum
@@ -362,12 +367,7 @@ func GetCreateTablespaceDetailsExtentManagementEnumStringValues() []string {
 
 // GetMappingCreateTablespaceDetailsExtentManagementEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateTablespaceDetailsExtentManagementEnum(val string) (CreateTablespaceDetailsExtentManagementEnum, bool) {
-	mappingCreateTablespaceDetailsExtentManagementEnumIgnoreCase := make(map[string]CreateTablespaceDetailsExtentManagementEnum)
-	for k, v := range mappingCreateTablespaceDetailsExtentManagementEnum {
-		mappingCreateTablespaceDetailsExtentManagementEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateTablespaceDetailsExtentManagementEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateTablespaceDetailsExtentManagementEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -383,6 +383,11 @@ const (
 var mappingCreateTablespaceDetailsSegmentManagementEnum = map[string]CreateTablespaceDetailsSegmentManagementEnum{
 	"AUTO":   CreateTablespaceDetailsSegmentManagementAuto,
 	"MANUAL": CreateTablespaceDetailsSegmentManagementManual,
+}
+
+var mappingCreateTablespaceDetailsSegmentManagementEnumLowerCase = map[string]CreateTablespaceDetailsSegmentManagementEnum{
+	"auto":   CreateTablespaceDetailsSegmentManagementAuto,
+	"manual": CreateTablespaceDetailsSegmentManagementManual,
 }
 
 // GetCreateTablespaceDetailsSegmentManagementEnumValues Enumerates the set of values for CreateTablespaceDetailsSegmentManagementEnum
@@ -404,11 +409,6 @@ func GetCreateTablespaceDetailsSegmentManagementEnumStringValues() []string {
 
 // GetMappingCreateTablespaceDetailsSegmentManagementEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateTablespaceDetailsSegmentManagementEnum(val string) (CreateTablespaceDetailsSegmentManagementEnum, bool) {
-	mappingCreateTablespaceDetailsSegmentManagementEnumIgnoreCase := make(map[string]CreateTablespaceDetailsSegmentManagementEnum)
-	for k, v := range mappingCreateTablespaceDetailsSegmentManagementEnum {
-		mappingCreateTablespaceDetailsSegmentManagementEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateTablespaceDetailsSegmentManagementEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateTablespaceDetailsSegmentManagementEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

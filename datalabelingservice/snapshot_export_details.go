@@ -12,7 +12,7 @@ package datalabelingservice
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingSnapshotExportDetailsExportTypeEnum = map[string]SnapshotExportDetail
 	"OBJECT_STORAGE": SnapshotExportDetailsExportTypeObjectStorage,
 }
 
+var mappingSnapshotExportDetailsExportTypeEnumLowerCase = map[string]SnapshotExportDetailsExportTypeEnum{
+	"object_storage": SnapshotExportDetailsExportTypeObjectStorage,
+}
+
 // GetSnapshotExportDetailsExportTypeEnumValues Enumerates the set of values for SnapshotExportDetailsExportTypeEnum
 func GetSnapshotExportDetailsExportTypeEnumValues() []SnapshotExportDetailsExportTypeEnum {
 	values := make([]SnapshotExportDetailsExportTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetSnapshotExportDetailsExportTypeEnumStringValues() []string {
 
 // GetMappingSnapshotExportDetailsExportTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSnapshotExportDetailsExportTypeEnum(val string) (SnapshotExportDetailsExportTypeEnum, bool) {
-	mappingSnapshotExportDetailsExportTypeEnumIgnoreCase := make(map[string]SnapshotExportDetailsExportTypeEnum)
-	for k, v := range mappingSnapshotExportDetailsExportTypeEnum {
-		mappingSnapshotExportDetailsExportTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSnapshotExportDetailsExportTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSnapshotExportDetailsExportTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

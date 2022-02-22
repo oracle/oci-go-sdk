@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -89,6 +89,11 @@ var mappingPatchSummaryLastActionEnum = map[string]PatchSummaryLastActionEnum{
 	"PRECHECK": PatchSummaryLastActionPrecheck,
 }
 
+var mappingPatchSummaryLastActionEnumLowerCase = map[string]PatchSummaryLastActionEnum{
+	"apply":    PatchSummaryLastActionApply,
+	"precheck": PatchSummaryLastActionPrecheck,
+}
+
 // GetPatchSummaryLastActionEnumValues Enumerates the set of values for PatchSummaryLastActionEnum
 func GetPatchSummaryLastActionEnumValues() []PatchSummaryLastActionEnum {
 	values := make([]PatchSummaryLastActionEnum, 0)
@@ -108,12 +113,7 @@ func GetPatchSummaryLastActionEnumStringValues() []string {
 
 // GetMappingPatchSummaryLastActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchSummaryLastActionEnum(val string) (PatchSummaryLastActionEnum, bool) {
-	mappingPatchSummaryLastActionEnumIgnoreCase := make(map[string]PatchSummaryLastActionEnum)
-	for k, v := range mappingPatchSummaryLastActionEnum {
-		mappingPatchSummaryLastActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchSummaryLastActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchSummaryLastActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -129,6 +129,11 @@ const (
 var mappingPatchSummaryAvailableActionsEnum = map[string]PatchSummaryAvailableActionsEnum{
 	"APPLY":    PatchSummaryAvailableActionsApply,
 	"PRECHECK": PatchSummaryAvailableActionsPrecheck,
+}
+
+var mappingPatchSummaryAvailableActionsEnumLowerCase = map[string]PatchSummaryAvailableActionsEnum{
+	"apply":    PatchSummaryAvailableActionsApply,
+	"precheck": PatchSummaryAvailableActionsPrecheck,
 }
 
 // GetPatchSummaryAvailableActionsEnumValues Enumerates the set of values for PatchSummaryAvailableActionsEnum
@@ -150,12 +155,7 @@ func GetPatchSummaryAvailableActionsEnumStringValues() []string {
 
 // GetMappingPatchSummaryAvailableActionsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchSummaryAvailableActionsEnum(val string) (PatchSummaryAvailableActionsEnum, bool) {
-	mappingPatchSummaryAvailableActionsEnumIgnoreCase := make(map[string]PatchSummaryAvailableActionsEnum)
-	for k, v := range mappingPatchSummaryAvailableActionsEnum {
-		mappingPatchSummaryAvailableActionsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchSummaryAvailableActionsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchSummaryAvailableActionsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -175,6 +175,13 @@ var mappingPatchSummaryLifecycleStateEnum = map[string]PatchSummaryLifecycleStat
 	"SUCCESS":     PatchSummaryLifecycleStateSuccess,
 	"IN_PROGRESS": PatchSummaryLifecycleStateInProgress,
 	"FAILED":      PatchSummaryLifecycleStateFailed,
+}
+
+var mappingPatchSummaryLifecycleStateEnumLowerCase = map[string]PatchSummaryLifecycleStateEnum{
+	"available":   PatchSummaryLifecycleStateAvailable,
+	"success":     PatchSummaryLifecycleStateSuccess,
+	"in_progress": PatchSummaryLifecycleStateInProgress,
+	"failed":      PatchSummaryLifecycleStateFailed,
 }
 
 // GetPatchSummaryLifecycleStateEnumValues Enumerates the set of values for PatchSummaryLifecycleStateEnum
@@ -198,11 +205,6 @@ func GetPatchSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingPatchSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchSummaryLifecycleStateEnum(val string) (PatchSummaryLifecycleStateEnum, bool) {
-	mappingPatchSummaryLifecycleStateEnumIgnoreCase := make(map[string]PatchSummaryLifecycleStateEnum)
-	for k, v := range mappingPatchSummaryLifecycleStateEnum {
-		mappingPatchSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

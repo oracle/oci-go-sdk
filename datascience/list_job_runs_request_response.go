@@ -6,7 +6,7 @@ package datascience
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -155,6 +155,11 @@ var mappingListJobRunsSortOrderEnum = map[string]ListJobRunsSortOrderEnum{
 	"DESC": ListJobRunsSortOrderDesc,
 }
 
+var mappingListJobRunsSortOrderEnumLowerCase = map[string]ListJobRunsSortOrderEnum{
+	"asc":  ListJobRunsSortOrderAsc,
+	"desc": ListJobRunsSortOrderDesc,
+}
+
 // GetListJobRunsSortOrderEnumValues Enumerates the set of values for ListJobRunsSortOrderEnum
 func GetListJobRunsSortOrderEnumValues() []ListJobRunsSortOrderEnum {
 	values := make([]ListJobRunsSortOrderEnum, 0)
@@ -174,12 +179,7 @@ func GetListJobRunsSortOrderEnumStringValues() []string {
 
 // GetMappingListJobRunsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJobRunsSortOrderEnum(val string) (ListJobRunsSortOrderEnum, bool) {
-	mappingListJobRunsSortOrderEnumIgnoreCase := make(map[string]ListJobRunsSortOrderEnum)
-	for k, v := range mappingListJobRunsSortOrderEnum {
-		mappingListJobRunsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJobRunsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJobRunsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -195,6 +195,11 @@ const (
 var mappingListJobRunsSortByEnum = map[string]ListJobRunsSortByEnum{
 	"timeCreated": ListJobRunsSortByTimecreated,
 	"displayName": ListJobRunsSortByDisplayname,
+}
+
+var mappingListJobRunsSortByEnumLowerCase = map[string]ListJobRunsSortByEnum{
+	"timecreated": ListJobRunsSortByTimecreated,
+	"displayname": ListJobRunsSortByDisplayname,
 }
 
 // GetListJobRunsSortByEnumValues Enumerates the set of values for ListJobRunsSortByEnum
@@ -216,12 +221,7 @@ func GetListJobRunsSortByEnumStringValues() []string {
 
 // GetMappingListJobRunsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJobRunsSortByEnum(val string) (ListJobRunsSortByEnum, bool) {
-	mappingListJobRunsSortByEnumIgnoreCase := make(map[string]ListJobRunsSortByEnum)
-	for k, v := range mappingListJobRunsSortByEnum {
-		mappingListJobRunsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJobRunsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJobRunsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -251,6 +251,17 @@ var mappingListJobRunsLifecycleStateEnum = map[string]ListJobRunsLifecycleStateE
 	"NEEDS_ATTENTION": ListJobRunsLifecycleStateNeedsAttention,
 }
 
+var mappingListJobRunsLifecycleStateEnumLowerCase = map[string]ListJobRunsLifecycleStateEnum{
+	"accepted":        ListJobRunsLifecycleStateAccepted,
+	"in_progress":     ListJobRunsLifecycleStateInProgress,
+	"failed":          ListJobRunsLifecycleStateFailed,
+	"succeeded":       ListJobRunsLifecycleStateSucceeded,
+	"canceling":       ListJobRunsLifecycleStateCanceling,
+	"canceled":        ListJobRunsLifecycleStateCanceled,
+	"deleted":         ListJobRunsLifecycleStateDeleted,
+	"needs_attention": ListJobRunsLifecycleStateNeedsAttention,
+}
+
 // GetListJobRunsLifecycleStateEnumValues Enumerates the set of values for ListJobRunsLifecycleStateEnum
 func GetListJobRunsLifecycleStateEnumValues() []ListJobRunsLifecycleStateEnum {
 	values := make([]ListJobRunsLifecycleStateEnum, 0)
@@ -276,11 +287,6 @@ func GetListJobRunsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListJobRunsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJobRunsLifecycleStateEnum(val string) (ListJobRunsLifecycleStateEnum, bool) {
-	mappingListJobRunsLifecycleStateEnumIgnoreCase := make(map[string]ListJobRunsLifecycleStateEnum)
-	for k, v := range mappingListJobRunsLifecycleStateEnum {
-		mappingListJobRunsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJobRunsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJobRunsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -13,7 +13,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -63,6 +63,11 @@ var mappingDurationTimeUnitEnum = map[string]DurationTimeUnitEnum{
 	"DAYS":  DurationTimeUnitDays,
 }
 
+var mappingDurationTimeUnitEnumLowerCase = map[string]DurationTimeUnitEnum{
+	"years": DurationTimeUnitYears,
+	"days":  DurationTimeUnitDays,
+}
+
 // GetDurationTimeUnitEnumValues Enumerates the set of values for DurationTimeUnitEnum
 func GetDurationTimeUnitEnumValues() []DurationTimeUnitEnum {
 	values := make([]DurationTimeUnitEnum, 0)
@@ -82,11 +87,6 @@ func GetDurationTimeUnitEnumStringValues() []string {
 
 // GetMappingDurationTimeUnitEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDurationTimeUnitEnum(val string) (DurationTimeUnitEnum, bool) {
-	mappingDurationTimeUnitEnumIgnoreCase := make(map[string]DurationTimeUnitEnum)
-	for k, v := range mappingDurationTimeUnitEnum {
-		mappingDurationTimeUnitEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDurationTimeUnitEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDurationTimeUnitEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

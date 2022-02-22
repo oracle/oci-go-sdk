@@ -31,6 +31,12 @@ var mappingArchivalStateEnum = map[string]ArchivalStateEnum{
 	"Restored":  ArchivalStateRestored,
 }
 
+var mappingArchivalStateEnumLowerCase = map[string]ArchivalStateEnum{
+	"archived":  ArchivalStateArchived,
+	"restoring": ArchivalStateRestoring,
+	"restored":  ArchivalStateRestored,
+}
+
 // GetArchivalStateEnumValues Enumerates the set of values for ArchivalStateEnum
 func GetArchivalStateEnumValues() []ArchivalStateEnum {
 	values := make([]ArchivalStateEnum, 0)
@@ -51,11 +57,6 @@ func GetArchivalStateEnumStringValues() []string {
 
 // GetMappingArchivalStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingArchivalStateEnum(val string) (ArchivalStateEnum, bool) {
-	mappingArchivalStateEnumIgnoreCase := make(map[string]ArchivalStateEnum)
-	for k, v := range mappingArchivalStateEnum {
-		mappingArchivalStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingArchivalStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingArchivalStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

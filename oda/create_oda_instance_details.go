@@ -11,7 +11,7 @@ package oda
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -73,6 +73,11 @@ var mappingCreateOdaInstanceDetailsShapeNameEnum = map[string]CreateOdaInstanceD
 	"PRODUCTION":  CreateOdaInstanceDetailsShapeNameProduction,
 }
 
+var mappingCreateOdaInstanceDetailsShapeNameEnumLowerCase = map[string]CreateOdaInstanceDetailsShapeNameEnum{
+	"development": CreateOdaInstanceDetailsShapeNameDevelopment,
+	"production":  CreateOdaInstanceDetailsShapeNameProduction,
+}
+
 // GetCreateOdaInstanceDetailsShapeNameEnumValues Enumerates the set of values for CreateOdaInstanceDetailsShapeNameEnum
 func GetCreateOdaInstanceDetailsShapeNameEnumValues() []CreateOdaInstanceDetailsShapeNameEnum {
 	values := make([]CreateOdaInstanceDetailsShapeNameEnum, 0)
@@ -92,11 +97,6 @@ func GetCreateOdaInstanceDetailsShapeNameEnumStringValues() []string {
 
 // GetMappingCreateOdaInstanceDetailsShapeNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateOdaInstanceDetailsShapeNameEnum(val string) (CreateOdaInstanceDetailsShapeNameEnum, bool) {
-	mappingCreateOdaInstanceDetailsShapeNameEnumIgnoreCase := make(map[string]CreateOdaInstanceDetailsShapeNameEnum)
-	for k, v := range mappingCreateOdaInstanceDetailsShapeNameEnum {
-		mappingCreateOdaInstanceDetailsShapeNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateOdaInstanceDetailsShapeNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateOdaInstanceDetailsShapeNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

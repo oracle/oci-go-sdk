@@ -13,7 +13,7 @@ package dns
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -130,6 +130,14 @@ var mappingSteeringPolicyRuleRuleTypeEnum = map[string]SteeringPolicyRuleRuleTyp
 	"LIMIT":    SteeringPolicyRuleRuleTypeLimit,
 }
 
+var mappingSteeringPolicyRuleRuleTypeEnumLowerCase = map[string]SteeringPolicyRuleRuleTypeEnum{
+	"filter":   SteeringPolicyRuleRuleTypeFilter,
+	"health":   SteeringPolicyRuleRuleTypeHealth,
+	"weighted": SteeringPolicyRuleRuleTypeWeighted,
+	"priority": SteeringPolicyRuleRuleTypePriority,
+	"limit":    SteeringPolicyRuleRuleTypeLimit,
+}
+
 // GetSteeringPolicyRuleRuleTypeEnumValues Enumerates the set of values for SteeringPolicyRuleRuleTypeEnum
 func GetSteeringPolicyRuleRuleTypeEnumValues() []SteeringPolicyRuleRuleTypeEnum {
 	values := make([]SteeringPolicyRuleRuleTypeEnum, 0)
@@ -152,11 +160,6 @@ func GetSteeringPolicyRuleRuleTypeEnumStringValues() []string {
 
 // GetMappingSteeringPolicyRuleRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSteeringPolicyRuleRuleTypeEnum(val string) (SteeringPolicyRuleRuleTypeEnum, bool) {
-	mappingSteeringPolicyRuleRuleTypeEnumIgnoreCase := make(map[string]SteeringPolicyRuleRuleTypeEnum)
-	for k, v := range mappingSteeringPolicyRuleRuleTypeEnum {
-		mappingSteeringPolicyRuleRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSteeringPolicyRuleRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSteeringPolicyRuleRuleTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

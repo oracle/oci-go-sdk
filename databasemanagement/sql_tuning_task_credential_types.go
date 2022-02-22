@@ -29,6 +29,11 @@ var mappingSqlTuningTaskCredentialTypesEnum = map[string]SqlTuningTaskCredential
 	"PASSWORD": SqlTuningTaskCredentialTypesPassword,
 }
 
+var mappingSqlTuningTaskCredentialTypesEnumLowerCase = map[string]SqlTuningTaskCredentialTypesEnum{
+	"secret":   SqlTuningTaskCredentialTypesSecret,
+	"password": SqlTuningTaskCredentialTypesPassword,
+}
+
 // GetSqlTuningTaskCredentialTypesEnumValues Enumerates the set of values for SqlTuningTaskCredentialTypesEnum
 func GetSqlTuningTaskCredentialTypesEnumValues() []SqlTuningTaskCredentialTypesEnum {
 	values := make([]SqlTuningTaskCredentialTypesEnum, 0)
@@ -48,11 +53,6 @@ func GetSqlTuningTaskCredentialTypesEnumStringValues() []string {
 
 // GetMappingSqlTuningTaskCredentialTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSqlTuningTaskCredentialTypesEnum(val string) (SqlTuningTaskCredentialTypesEnum, bool) {
-	mappingSqlTuningTaskCredentialTypesEnumIgnoreCase := make(map[string]SqlTuningTaskCredentialTypesEnum)
-	for k, v := range mappingSqlTuningTaskCredentialTypesEnum {
-		mappingSqlTuningTaskCredentialTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSqlTuningTaskCredentialTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSqlTuningTaskCredentialTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

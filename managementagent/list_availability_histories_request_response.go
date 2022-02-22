@@ -6,7 +6,7 @@ package managementagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -136,6 +136,11 @@ var mappingListAvailabilityHistoriesSortOrderEnum = map[string]ListAvailabilityH
 	"DESC": ListAvailabilityHistoriesSortOrderDesc,
 }
 
+var mappingListAvailabilityHistoriesSortOrderEnumLowerCase = map[string]ListAvailabilityHistoriesSortOrderEnum{
+	"asc":  ListAvailabilityHistoriesSortOrderAsc,
+	"desc": ListAvailabilityHistoriesSortOrderDesc,
+}
+
 // GetListAvailabilityHistoriesSortOrderEnumValues Enumerates the set of values for ListAvailabilityHistoriesSortOrderEnum
 func GetListAvailabilityHistoriesSortOrderEnumValues() []ListAvailabilityHistoriesSortOrderEnum {
 	values := make([]ListAvailabilityHistoriesSortOrderEnum, 0)
@@ -155,12 +160,7 @@ func GetListAvailabilityHistoriesSortOrderEnumStringValues() []string {
 
 // GetMappingListAvailabilityHistoriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAvailabilityHistoriesSortOrderEnum(val string) (ListAvailabilityHistoriesSortOrderEnum, bool) {
-	mappingListAvailabilityHistoriesSortOrderEnumIgnoreCase := make(map[string]ListAvailabilityHistoriesSortOrderEnum)
-	for k, v := range mappingListAvailabilityHistoriesSortOrderEnum {
-		mappingListAvailabilityHistoriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAvailabilityHistoriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAvailabilityHistoriesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -174,6 +174,10 @@ const (
 
 var mappingListAvailabilityHistoriesSortByEnum = map[string]ListAvailabilityHistoriesSortByEnum{
 	"timeAvailabilityStatusStarted": ListAvailabilityHistoriesSortByTimeavailabilitystatusstarted,
+}
+
+var mappingListAvailabilityHistoriesSortByEnumLowerCase = map[string]ListAvailabilityHistoriesSortByEnum{
+	"timeavailabilitystatusstarted": ListAvailabilityHistoriesSortByTimeavailabilitystatusstarted,
 }
 
 // GetListAvailabilityHistoriesSortByEnumValues Enumerates the set of values for ListAvailabilityHistoriesSortByEnum
@@ -194,11 +198,6 @@ func GetListAvailabilityHistoriesSortByEnumStringValues() []string {
 
 // GetMappingListAvailabilityHistoriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAvailabilityHistoriesSortByEnum(val string) (ListAvailabilityHistoriesSortByEnum, bool) {
-	mappingListAvailabilityHistoriesSortByEnumIgnoreCase := make(map[string]ListAvailabilityHistoriesSortByEnum)
-	for k, v := range mappingListAvailabilityHistoriesSortByEnum {
-		mappingListAvailabilityHistoriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAvailabilityHistoriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAvailabilityHistoriesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

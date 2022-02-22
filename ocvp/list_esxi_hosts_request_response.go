@@ -6,7 +6,7 @@ package ocvp
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -150,6 +150,11 @@ var mappingListEsxiHostsSortOrderEnum = map[string]ListEsxiHostsSortOrderEnum{
 	"DESC": ListEsxiHostsSortOrderDesc,
 }
 
+var mappingListEsxiHostsSortOrderEnumLowerCase = map[string]ListEsxiHostsSortOrderEnum{
+	"asc":  ListEsxiHostsSortOrderAsc,
+	"desc": ListEsxiHostsSortOrderDesc,
+}
+
 // GetListEsxiHostsSortOrderEnumValues Enumerates the set of values for ListEsxiHostsSortOrderEnum
 func GetListEsxiHostsSortOrderEnumValues() []ListEsxiHostsSortOrderEnum {
 	values := make([]ListEsxiHostsSortOrderEnum, 0)
@@ -169,12 +174,7 @@ func GetListEsxiHostsSortOrderEnumStringValues() []string {
 
 // GetMappingListEsxiHostsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListEsxiHostsSortOrderEnum(val string) (ListEsxiHostsSortOrderEnum, bool) {
-	mappingListEsxiHostsSortOrderEnumIgnoreCase := make(map[string]ListEsxiHostsSortOrderEnum)
-	for k, v := range mappingListEsxiHostsSortOrderEnum {
-		mappingListEsxiHostsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListEsxiHostsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListEsxiHostsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -190,6 +190,11 @@ const (
 var mappingListEsxiHostsSortByEnum = map[string]ListEsxiHostsSortByEnum{
 	"timeCreated": ListEsxiHostsSortByTimecreated,
 	"displayName": ListEsxiHostsSortByDisplayname,
+}
+
+var mappingListEsxiHostsSortByEnumLowerCase = map[string]ListEsxiHostsSortByEnum{
+	"timecreated": ListEsxiHostsSortByTimecreated,
+	"displayname": ListEsxiHostsSortByDisplayname,
 }
 
 // GetListEsxiHostsSortByEnumValues Enumerates the set of values for ListEsxiHostsSortByEnum
@@ -211,12 +216,7 @@ func GetListEsxiHostsSortByEnumStringValues() []string {
 
 // GetMappingListEsxiHostsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListEsxiHostsSortByEnum(val string) (ListEsxiHostsSortByEnum, bool) {
-	mappingListEsxiHostsSortByEnumIgnoreCase := make(map[string]ListEsxiHostsSortByEnum)
-	for k, v := range mappingListEsxiHostsSortByEnum {
-		mappingListEsxiHostsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListEsxiHostsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListEsxiHostsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -242,6 +242,15 @@ var mappingListEsxiHostsLifecycleStateEnum = map[string]ListEsxiHostsLifecycleSt
 	"FAILED":   ListEsxiHostsLifecycleStateFailed,
 }
 
+var mappingListEsxiHostsLifecycleStateEnumLowerCase = map[string]ListEsxiHostsLifecycleStateEnum{
+	"creating": ListEsxiHostsLifecycleStateCreating,
+	"updating": ListEsxiHostsLifecycleStateUpdating,
+	"active":   ListEsxiHostsLifecycleStateActive,
+	"deleting": ListEsxiHostsLifecycleStateDeleting,
+	"deleted":  ListEsxiHostsLifecycleStateDeleted,
+	"failed":   ListEsxiHostsLifecycleStateFailed,
+}
+
 // GetListEsxiHostsLifecycleStateEnumValues Enumerates the set of values for ListEsxiHostsLifecycleStateEnum
 func GetListEsxiHostsLifecycleStateEnumValues() []ListEsxiHostsLifecycleStateEnum {
 	values := make([]ListEsxiHostsLifecycleStateEnum, 0)
@@ -265,11 +274,6 @@ func GetListEsxiHostsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListEsxiHostsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListEsxiHostsLifecycleStateEnum(val string) (ListEsxiHostsLifecycleStateEnum, bool) {
-	mappingListEsxiHostsLifecycleStateEnumIgnoreCase := make(map[string]ListEsxiHostsLifecycleStateEnum)
-	for k, v := range mappingListEsxiHostsLifecycleStateEnum {
-		mappingListEsxiHostsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListEsxiHostsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListEsxiHostsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

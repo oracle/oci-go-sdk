@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -83,6 +83,13 @@ var mappingInstancePoolLoadBalancerAttachmentLifecycleStateEnum = map[string]Ins
 	"DETACHED":  InstancePoolLoadBalancerAttachmentLifecycleStateDetached,
 }
 
+var mappingInstancePoolLoadBalancerAttachmentLifecycleStateEnumLowerCase = map[string]InstancePoolLoadBalancerAttachmentLifecycleStateEnum{
+	"attaching": InstancePoolLoadBalancerAttachmentLifecycleStateAttaching,
+	"attached":  InstancePoolLoadBalancerAttachmentLifecycleStateAttached,
+	"detaching": InstancePoolLoadBalancerAttachmentLifecycleStateDetaching,
+	"detached":  InstancePoolLoadBalancerAttachmentLifecycleStateDetached,
+}
+
 // GetInstancePoolLoadBalancerAttachmentLifecycleStateEnumValues Enumerates the set of values for InstancePoolLoadBalancerAttachmentLifecycleStateEnum
 func GetInstancePoolLoadBalancerAttachmentLifecycleStateEnumValues() []InstancePoolLoadBalancerAttachmentLifecycleStateEnum {
 	values := make([]InstancePoolLoadBalancerAttachmentLifecycleStateEnum, 0)
@@ -104,11 +111,6 @@ func GetInstancePoolLoadBalancerAttachmentLifecycleStateEnumStringValues() []str
 
 // GetMappingInstancePoolLoadBalancerAttachmentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstancePoolLoadBalancerAttachmentLifecycleStateEnum(val string) (InstancePoolLoadBalancerAttachmentLifecycleStateEnum, bool) {
-	mappingInstancePoolLoadBalancerAttachmentLifecycleStateEnumIgnoreCase := make(map[string]InstancePoolLoadBalancerAttachmentLifecycleStateEnum)
-	for k, v := range mappingInstancePoolLoadBalancerAttachmentLifecycleStateEnum {
-		mappingInstancePoolLoadBalancerAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstancePoolLoadBalancerAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstancePoolLoadBalancerAttachmentLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

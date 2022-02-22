@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,11 @@ var mappingGetSubnetTopologyAccessLevelEnum = map[string]GetSubnetTopologyAccess
 	"ACCESSIBLE": GetSubnetTopologyAccessLevelAccessible,
 }
 
+var mappingGetSubnetTopologyAccessLevelEnumLowerCase = map[string]GetSubnetTopologyAccessLevelEnum{
+	"any":        GetSubnetTopologyAccessLevelAny,
+	"accessible": GetSubnetTopologyAccessLevelAccessible,
+}
+
 // GetGetSubnetTopologyAccessLevelEnumValues Enumerates the set of values for GetSubnetTopologyAccessLevelEnum
 func GetGetSubnetTopologyAccessLevelEnumValues() []GetSubnetTopologyAccessLevelEnum {
 	values := make([]GetSubnetTopologyAccessLevelEnum, 0)
@@ -157,11 +162,6 @@ func GetGetSubnetTopologyAccessLevelEnumStringValues() []string {
 
 // GetMappingGetSubnetTopologyAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetSubnetTopologyAccessLevelEnum(val string) (GetSubnetTopologyAccessLevelEnum, bool) {
-	mappingGetSubnetTopologyAccessLevelEnumIgnoreCase := make(map[string]GetSubnetTopologyAccessLevelEnum)
-	for k, v := range mappingGetSubnetTopologyAccessLevelEnum {
-		mappingGetSubnetTopologyAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetSubnetTopologyAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetSubnetTopologyAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

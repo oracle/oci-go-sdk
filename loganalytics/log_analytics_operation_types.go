@@ -27,6 +27,11 @@ var mappingLogAnalyticsOperationTypesEnum = map[string]LogAnalyticsOperationType
 	"DELETE_LOG_ANALYTICS": LogAnalyticsOperationTypesDeleteLogAnalytics,
 }
 
+var mappingLogAnalyticsOperationTypesEnumLowerCase = map[string]LogAnalyticsOperationTypesEnum{
+	"create_log_analytics": LogAnalyticsOperationTypesCreateLogAnalytics,
+	"delete_log_analytics": LogAnalyticsOperationTypesDeleteLogAnalytics,
+}
+
 // GetLogAnalyticsOperationTypesEnumValues Enumerates the set of values for LogAnalyticsOperationTypesEnum
 func GetLogAnalyticsOperationTypesEnumValues() []LogAnalyticsOperationTypesEnum {
 	values := make([]LogAnalyticsOperationTypesEnum, 0)
@@ -46,11 +51,6 @@ func GetLogAnalyticsOperationTypesEnumStringValues() []string {
 
 // GetMappingLogAnalyticsOperationTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogAnalyticsOperationTypesEnum(val string) (LogAnalyticsOperationTypesEnum, bool) {
-	mappingLogAnalyticsOperationTypesEnumIgnoreCase := make(map[string]LogAnalyticsOperationTypesEnum)
-	for k, v := range mappingLogAnalyticsOperationTypesEnum {
-		mappingLogAnalyticsOperationTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogAnalyticsOperationTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogAnalyticsOperationTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

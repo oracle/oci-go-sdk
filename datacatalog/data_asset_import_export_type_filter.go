@@ -28,6 +28,11 @@ var mappingDataAssetImportExportTypeFilterEnum = map[string]DataAssetImportExpor
 	"ALL":                    DataAssetImportExportTypeFilterAll,
 }
 
+var mappingDataAssetImportExportTypeFilterEnumLowerCase = map[string]DataAssetImportExportTypeFilterEnum{
+	"custom_property_values": DataAssetImportExportTypeFilterCustomPropertyValues,
+	"all":                    DataAssetImportExportTypeFilterAll,
+}
+
 // GetDataAssetImportExportTypeFilterEnumValues Enumerates the set of values for DataAssetImportExportTypeFilterEnum
 func GetDataAssetImportExportTypeFilterEnumValues() []DataAssetImportExportTypeFilterEnum {
 	values := make([]DataAssetImportExportTypeFilterEnum, 0)
@@ -47,11 +52,6 @@ func GetDataAssetImportExportTypeFilterEnumStringValues() []string {
 
 // GetMappingDataAssetImportExportTypeFilterEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataAssetImportExportTypeFilterEnum(val string) (DataAssetImportExportTypeFilterEnum, bool) {
-	mappingDataAssetImportExportTypeFilterEnumIgnoreCase := make(map[string]DataAssetImportExportTypeFilterEnum)
-	for k, v := range mappingDataAssetImportExportTypeFilterEnum {
-		mappingDataAssetImportExportTypeFilterEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataAssetImportExportTypeFilterEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataAssetImportExportTypeFilterEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

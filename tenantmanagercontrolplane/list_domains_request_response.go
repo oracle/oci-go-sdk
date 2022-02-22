@@ -6,7 +6,7 @@ package tenantmanagercontrolplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -155,6 +155,15 @@ var mappingListDomainsLifecycleStateEnum = map[string]ListDomainsLifecycleStateE
 	"TERMINATED": ListDomainsLifecycleStateTerminated,
 }
 
+var mappingListDomainsLifecycleStateEnumLowerCase = map[string]ListDomainsLifecycleStateEnum{
+	"creating":   ListDomainsLifecycleStateCreating,
+	"active":     ListDomainsLifecycleStateActive,
+	"inactive":   ListDomainsLifecycleStateInactive,
+	"updating":   ListDomainsLifecycleStateUpdating,
+	"failed":     ListDomainsLifecycleStateFailed,
+	"terminated": ListDomainsLifecycleStateTerminated,
+}
+
 // GetListDomainsLifecycleStateEnumValues Enumerates the set of values for ListDomainsLifecycleStateEnum
 func GetListDomainsLifecycleStateEnumValues() []ListDomainsLifecycleStateEnum {
 	values := make([]ListDomainsLifecycleStateEnum, 0)
@@ -178,12 +187,7 @@ func GetListDomainsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListDomainsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDomainsLifecycleStateEnum(val string) (ListDomainsLifecycleStateEnum, bool) {
-	mappingListDomainsLifecycleStateEnumIgnoreCase := make(map[string]ListDomainsLifecycleStateEnum)
-	for k, v := range mappingListDomainsLifecycleStateEnum {
-		mappingListDomainsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDomainsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDomainsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -199,6 +203,11 @@ const (
 var mappingListDomainsSortByEnum = map[string]ListDomainsSortByEnum{
 	"timeCreated": ListDomainsSortByTimecreated,
 	"displayName": ListDomainsSortByDisplayname,
+}
+
+var mappingListDomainsSortByEnumLowerCase = map[string]ListDomainsSortByEnum{
+	"timecreated": ListDomainsSortByTimecreated,
+	"displayname": ListDomainsSortByDisplayname,
 }
 
 // GetListDomainsSortByEnumValues Enumerates the set of values for ListDomainsSortByEnum
@@ -220,12 +229,7 @@ func GetListDomainsSortByEnumStringValues() []string {
 
 // GetMappingListDomainsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDomainsSortByEnum(val string) (ListDomainsSortByEnum, bool) {
-	mappingListDomainsSortByEnumIgnoreCase := make(map[string]ListDomainsSortByEnum)
-	for k, v := range mappingListDomainsSortByEnum {
-		mappingListDomainsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDomainsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDomainsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -241,6 +245,11 @@ const (
 var mappingListDomainsSortOrderEnum = map[string]ListDomainsSortOrderEnum{
 	"ASC":  ListDomainsSortOrderAsc,
 	"DESC": ListDomainsSortOrderDesc,
+}
+
+var mappingListDomainsSortOrderEnumLowerCase = map[string]ListDomainsSortOrderEnum{
+	"asc":  ListDomainsSortOrderAsc,
+	"desc": ListDomainsSortOrderDesc,
 }
 
 // GetListDomainsSortOrderEnumValues Enumerates the set of values for ListDomainsSortOrderEnum
@@ -262,11 +271,6 @@ func GetListDomainsSortOrderEnumStringValues() []string {
 
 // GetMappingListDomainsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDomainsSortOrderEnum(val string) (ListDomainsSortOrderEnum, bool) {
-	mappingListDomainsSortOrderEnumIgnoreCase := make(map[string]ListDomainsSortOrderEnum)
-	for k, v := range mappingListDomainsSortOrderEnum {
-		mappingListDomainsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDomainsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDomainsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

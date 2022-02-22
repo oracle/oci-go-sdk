@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -64,6 +64,11 @@ var mappingResourceDiscoveryServiceSummaryDiscoveryScopeEnum = map[string]Resour
 	"COMPARTMENT": ResourceDiscoveryServiceSummaryDiscoveryScopeCompartment,
 }
 
+var mappingResourceDiscoveryServiceSummaryDiscoveryScopeEnumLowerCase = map[string]ResourceDiscoveryServiceSummaryDiscoveryScopeEnum{
+	"tenancy":     ResourceDiscoveryServiceSummaryDiscoveryScopeTenancy,
+	"compartment": ResourceDiscoveryServiceSummaryDiscoveryScopeCompartment,
+}
+
 // GetResourceDiscoveryServiceSummaryDiscoveryScopeEnumValues Enumerates the set of values for ResourceDiscoveryServiceSummaryDiscoveryScopeEnum
 func GetResourceDiscoveryServiceSummaryDiscoveryScopeEnumValues() []ResourceDiscoveryServiceSummaryDiscoveryScopeEnum {
 	values := make([]ResourceDiscoveryServiceSummaryDiscoveryScopeEnum, 0)
@@ -83,11 +88,6 @@ func GetResourceDiscoveryServiceSummaryDiscoveryScopeEnumStringValues() []string
 
 // GetMappingResourceDiscoveryServiceSummaryDiscoveryScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingResourceDiscoveryServiceSummaryDiscoveryScopeEnum(val string) (ResourceDiscoveryServiceSummaryDiscoveryScopeEnum, bool) {
-	mappingResourceDiscoveryServiceSummaryDiscoveryScopeEnumIgnoreCase := make(map[string]ResourceDiscoveryServiceSummaryDiscoveryScopeEnum)
-	for k, v := range mappingResourceDiscoveryServiceSummaryDiscoveryScopeEnum {
-		mappingResourceDiscoveryServiceSummaryDiscoveryScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingResourceDiscoveryServiceSummaryDiscoveryScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingResourceDiscoveryServiceSummaryDiscoveryScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

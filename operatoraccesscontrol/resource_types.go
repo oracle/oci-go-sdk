@@ -31,6 +31,12 @@ var mappingResourceTypesEnum = map[string]ResourceTypesEnum{
 	"AUTONOMOUSVMCLUSTER":   ResourceTypesAutonomousvmcluster,
 }
 
+var mappingResourceTypesEnumLowerCase = map[string]ResourceTypesEnum{
+	"exacc":                 ResourceTypesExacc,
+	"exadatainfrastructure": ResourceTypesExadatainfrastructure,
+	"autonomousvmcluster":   ResourceTypesAutonomousvmcluster,
+}
+
 // GetResourceTypesEnumValues Enumerates the set of values for ResourceTypesEnum
 func GetResourceTypesEnumValues() []ResourceTypesEnum {
 	values := make([]ResourceTypesEnum, 0)
@@ -51,11 +57,6 @@ func GetResourceTypesEnumStringValues() []string {
 
 // GetMappingResourceTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingResourceTypesEnum(val string) (ResourceTypesEnum, bool) {
-	mappingResourceTypesEnumIgnoreCase := make(map[string]ResourceTypesEnum)
-	for k, v := range mappingResourceTypesEnum {
-		mappingResourceTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingResourceTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingResourceTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

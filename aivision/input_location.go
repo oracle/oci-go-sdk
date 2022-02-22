@@ -12,7 +12,7 @@ package aivision
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingInputLocationSourceTypeEnum = map[string]InputLocationSourceTypeEnum{
 	"OBJECT_LIST_INLINE_INPUT_LOCATION": InputLocationSourceTypeObjectListInlineInputLocation,
 }
 
+var mappingInputLocationSourceTypeEnumLowerCase = map[string]InputLocationSourceTypeEnum{
+	"object_list_inline_input_location": InputLocationSourceTypeObjectListInlineInputLocation,
+}
+
 // GetInputLocationSourceTypeEnumValues Enumerates the set of values for InputLocationSourceTypeEnum
 func GetInputLocationSourceTypeEnumValues() []InputLocationSourceTypeEnum {
 	values := make([]InputLocationSourceTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetInputLocationSourceTypeEnumStringValues() []string {
 
 // GetMappingInputLocationSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInputLocationSourceTypeEnum(val string) (InputLocationSourceTypeEnum, bool) {
-	mappingInputLocationSourceTypeEnumIgnoreCase := make(map[string]InputLocationSourceTypeEnum)
-	for k, v := range mappingInputLocationSourceTypeEnum {
-		mappingInputLocationSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInputLocationSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInputLocationSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

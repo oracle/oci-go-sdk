@@ -11,7 +11,7 @@ package vault
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -88,6 +88,10 @@ var mappingSecretVersionSummaryContentTypeEnum = map[string]SecretVersionSummary
 	"BASE64": SecretVersionSummaryContentTypeBase64,
 }
 
+var mappingSecretVersionSummaryContentTypeEnumLowerCase = map[string]SecretVersionSummaryContentTypeEnum{
+	"base64": SecretVersionSummaryContentTypeBase64,
+}
+
 // GetSecretVersionSummaryContentTypeEnumValues Enumerates the set of values for SecretVersionSummaryContentTypeEnum
 func GetSecretVersionSummaryContentTypeEnumValues() []SecretVersionSummaryContentTypeEnum {
 	values := make([]SecretVersionSummaryContentTypeEnum, 0)
@@ -106,12 +110,7 @@ func GetSecretVersionSummaryContentTypeEnumStringValues() []string {
 
 // GetMappingSecretVersionSummaryContentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSecretVersionSummaryContentTypeEnum(val string) (SecretVersionSummaryContentTypeEnum, bool) {
-	mappingSecretVersionSummaryContentTypeEnumIgnoreCase := make(map[string]SecretVersionSummaryContentTypeEnum)
-	for k, v := range mappingSecretVersionSummaryContentTypeEnum {
-		mappingSecretVersionSummaryContentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSecretVersionSummaryContentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSecretVersionSummaryContentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -133,6 +132,14 @@ var mappingSecretVersionSummaryStagesEnum = map[string]SecretVersionSummaryStage
 	"LATEST":     SecretVersionSummaryStagesLatest,
 	"PREVIOUS":   SecretVersionSummaryStagesPrevious,
 	"DEPRECATED": SecretVersionSummaryStagesDeprecated,
+}
+
+var mappingSecretVersionSummaryStagesEnumLowerCase = map[string]SecretVersionSummaryStagesEnum{
+	"current":    SecretVersionSummaryStagesCurrent,
+	"pending":    SecretVersionSummaryStagesPending,
+	"latest":     SecretVersionSummaryStagesLatest,
+	"previous":   SecretVersionSummaryStagesPrevious,
+	"deprecated": SecretVersionSummaryStagesDeprecated,
 }
 
 // GetSecretVersionSummaryStagesEnumValues Enumerates the set of values for SecretVersionSummaryStagesEnum
@@ -157,11 +164,6 @@ func GetSecretVersionSummaryStagesEnumStringValues() []string {
 
 // GetMappingSecretVersionSummaryStagesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSecretVersionSummaryStagesEnum(val string) (SecretVersionSummaryStagesEnum, bool) {
-	mappingSecretVersionSummaryStagesEnumIgnoreCase := make(map[string]SecretVersionSummaryStagesEnum)
-	for k, v := range mappingSecretVersionSummaryStagesEnum {
-		mappingSecretVersionSummaryStagesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSecretVersionSummaryStagesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSecretVersionSummaryStagesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

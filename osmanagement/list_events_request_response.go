@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -147,6 +147,11 @@ var mappingListEventsSortOrderEnum = map[string]ListEventsSortOrderEnum{
 	"DESC": ListEventsSortOrderDesc,
 }
 
+var mappingListEventsSortOrderEnumLowerCase = map[string]ListEventsSortOrderEnum{
+	"asc":  ListEventsSortOrderAsc,
+	"desc": ListEventsSortOrderDesc,
+}
+
 // GetListEventsSortOrderEnumValues Enumerates the set of values for ListEventsSortOrderEnum
 func GetListEventsSortOrderEnumValues() []ListEventsSortOrderEnum {
 	values := make([]ListEventsSortOrderEnum, 0)
@@ -166,12 +171,7 @@ func GetListEventsSortOrderEnumStringValues() []string {
 
 // GetMappingListEventsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListEventsSortOrderEnum(val string) (ListEventsSortOrderEnum, bool) {
-	mappingListEventsSortOrderEnumIgnoreCase := make(map[string]ListEventsSortOrderEnum)
-	for k, v := range mappingListEventsSortOrderEnum {
-		mappingListEventsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListEventsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListEventsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +187,11 @@ const (
 var mappingListEventsSortByEnum = map[string]ListEventsSortByEnum{
 	"TIMECREATED": ListEventsSortByTimecreated,
 	"DISPLAYNAME": ListEventsSortByDisplayname,
+}
+
+var mappingListEventsSortByEnumLowerCase = map[string]ListEventsSortByEnum{
+	"timecreated": ListEventsSortByTimecreated,
+	"displayname": ListEventsSortByDisplayname,
 }
 
 // GetListEventsSortByEnumValues Enumerates the set of values for ListEventsSortByEnum
@@ -208,12 +213,7 @@ func GetListEventsSortByEnumStringValues() []string {
 
 // GetMappingListEventsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListEventsSortByEnum(val string) (ListEventsSortByEnum, bool) {
-	mappingListEventsSortByEnumIgnoreCase := make(map[string]ListEventsSortByEnum)
-	for k, v := range mappingListEventsSortByEnum {
-		mappingListEventsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListEventsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListEventsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -247,6 +247,19 @@ var mappingListEventsEventTypeEnum = map[string]ListEventsEventTypeEnum{
 	"WARNING":           ListEventsEventTypeWarning,
 }
 
+var mappingListEventsEventTypeEnumLowerCase = map[string]ListEventsEventTypeEnum{
+	"kernel_oops":       ListEventsEventTypeKernelOops,
+	"kernel_crash":      ListEventsEventTypeKernelCrash,
+	"crash":             ListEventsEventTypeCrash,
+	"exploit_attempt":   ListEventsEventTypeExploitAttempt,
+	"compliance":        ListEventsEventTypeCompliance,
+	"tuning_suggestion": ListEventsEventTypeTuningSuggestion,
+	"tuning_applied":    ListEventsEventTypeTuningApplied,
+	"security":          ListEventsEventTypeSecurity,
+	"error":             ListEventsEventTypeError,
+	"warning":           ListEventsEventTypeWarning,
+}
+
 // GetListEventsEventTypeEnumValues Enumerates the set of values for ListEventsEventTypeEnum
 func GetListEventsEventTypeEnumValues() []ListEventsEventTypeEnum {
 	values := make([]ListEventsEventTypeEnum, 0)
@@ -274,11 +287,6 @@ func GetListEventsEventTypeEnumStringValues() []string {
 
 // GetMappingListEventsEventTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListEventsEventTypeEnum(val string) (ListEventsEventTypeEnum, bool) {
-	mappingListEventsEventTypeEnumIgnoreCase := make(map[string]ListEventsEventTypeEnum)
-	for k, v := range mappingListEventsEventTypeEnum {
-		mappingListEventsEventTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListEventsEventTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListEventsEventTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

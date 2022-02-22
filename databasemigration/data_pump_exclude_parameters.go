@@ -29,6 +29,12 @@ var mappingDataPumpExcludeParametersEnum = map[string]DataPumpExcludeParametersE
 	"MATERIALIZED_VIEW_LOG": DataPumpExcludeParametersMaterializedViewLog,
 }
 
+var mappingDataPumpExcludeParametersEnumLowerCase = map[string]DataPumpExcludeParametersEnum{
+	"index":                 DataPumpExcludeParametersIndex,
+	"materialized_view":     DataPumpExcludeParametersMaterializedView,
+	"materialized_view_log": DataPumpExcludeParametersMaterializedViewLog,
+}
+
 // GetDataPumpExcludeParametersEnumValues Enumerates the set of values for DataPumpExcludeParametersEnum
 func GetDataPumpExcludeParametersEnumValues() []DataPumpExcludeParametersEnum {
 	values := make([]DataPumpExcludeParametersEnum, 0)
@@ -49,11 +55,6 @@ func GetDataPumpExcludeParametersEnumStringValues() []string {
 
 // GetMappingDataPumpExcludeParametersEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataPumpExcludeParametersEnum(val string) (DataPumpExcludeParametersEnum, bool) {
-	mappingDataPumpExcludeParametersEnumIgnoreCase := make(map[string]DataPumpExcludeParametersEnum)
-	for k, v := range mappingDataPumpExcludeParametersEnum {
-		mappingDataPumpExcludeParametersEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataPumpExcludeParametersEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataPumpExcludeParametersEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

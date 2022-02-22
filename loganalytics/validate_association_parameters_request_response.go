@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -133,6 +133,11 @@ var mappingValidateAssociationParametersSortOrderEnum = map[string]ValidateAssoc
 	"DESC": ValidateAssociationParametersSortOrderDesc,
 }
 
+var mappingValidateAssociationParametersSortOrderEnumLowerCase = map[string]ValidateAssociationParametersSortOrderEnum{
+	"asc":  ValidateAssociationParametersSortOrderAsc,
+	"desc": ValidateAssociationParametersSortOrderDesc,
+}
+
 // GetValidateAssociationParametersSortOrderEnumValues Enumerates the set of values for ValidateAssociationParametersSortOrderEnum
 func GetValidateAssociationParametersSortOrderEnumValues() []ValidateAssociationParametersSortOrderEnum {
 	values := make([]ValidateAssociationParametersSortOrderEnum, 0)
@@ -152,12 +157,7 @@ func GetValidateAssociationParametersSortOrderEnumStringValues() []string {
 
 // GetMappingValidateAssociationParametersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingValidateAssociationParametersSortOrderEnum(val string) (ValidateAssociationParametersSortOrderEnum, bool) {
-	mappingValidateAssociationParametersSortOrderEnumIgnoreCase := make(map[string]ValidateAssociationParametersSortOrderEnum)
-	for k, v := range mappingValidateAssociationParametersSortOrderEnum {
-		mappingValidateAssociationParametersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingValidateAssociationParametersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingValidateAssociationParametersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -172,6 +172,11 @@ const (
 
 var mappingValidateAssociationParametersSortByEnum = map[string]ValidateAssociationParametersSortByEnum{
 	"sourceDisplayName": ValidateAssociationParametersSortBySourcedisplayname,
+	"status":            ValidateAssociationParametersSortByStatus,
+}
+
+var mappingValidateAssociationParametersSortByEnumLowerCase = map[string]ValidateAssociationParametersSortByEnum{
+	"sourcedisplayname": ValidateAssociationParametersSortBySourcedisplayname,
 	"status":            ValidateAssociationParametersSortByStatus,
 }
 
@@ -194,11 +199,6 @@ func GetValidateAssociationParametersSortByEnumStringValues() []string {
 
 // GetMappingValidateAssociationParametersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingValidateAssociationParametersSortByEnum(val string) (ValidateAssociationParametersSortByEnum, bool) {
-	mappingValidateAssociationParametersSortByEnumIgnoreCase := make(map[string]ValidateAssociationParametersSortByEnum)
-	for k, v := range mappingValidateAssociationParametersSortByEnum {
-		mappingValidateAssociationParametersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingValidateAssociationParametersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingValidateAssociationParametersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

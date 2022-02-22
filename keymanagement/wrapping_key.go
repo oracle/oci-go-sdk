@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -95,6 +95,22 @@ var mappingWrappingKeyLifecycleStateEnum = map[string]WrappingKeyLifecycleStateE
 	"RESTORING":           WrappingKeyLifecycleStateRestoring,
 }
 
+var mappingWrappingKeyLifecycleStateEnumLowerCase = map[string]WrappingKeyLifecycleStateEnum{
+	"creating":            WrappingKeyLifecycleStateCreating,
+	"enabling":            WrappingKeyLifecycleStateEnabling,
+	"enabled":             WrappingKeyLifecycleStateEnabled,
+	"disabling":           WrappingKeyLifecycleStateDisabling,
+	"disabled":            WrappingKeyLifecycleStateDisabled,
+	"deleting":            WrappingKeyLifecycleStateDeleting,
+	"deleted":             WrappingKeyLifecycleStateDeleted,
+	"pending_deletion":    WrappingKeyLifecycleStatePendingDeletion,
+	"scheduling_deletion": WrappingKeyLifecycleStateSchedulingDeletion,
+	"cancelling_deletion": WrappingKeyLifecycleStateCancellingDeletion,
+	"updating":            WrappingKeyLifecycleStateUpdating,
+	"backup_in_progress":  WrappingKeyLifecycleStateBackupInProgress,
+	"restoring":           WrappingKeyLifecycleStateRestoring,
+}
+
 // GetWrappingKeyLifecycleStateEnumValues Enumerates the set of values for WrappingKeyLifecycleStateEnum
 func GetWrappingKeyLifecycleStateEnumValues() []WrappingKeyLifecycleStateEnum {
 	values := make([]WrappingKeyLifecycleStateEnum, 0)
@@ -125,11 +141,6 @@ func GetWrappingKeyLifecycleStateEnumStringValues() []string {
 
 // GetMappingWrappingKeyLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWrappingKeyLifecycleStateEnum(val string) (WrappingKeyLifecycleStateEnum, bool) {
-	mappingWrappingKeyLifecycleStateEnumIgnoreCase := make(map[string]WrappingKeyLifecycleStateEnum)
-	for k, v := range mappingWrappingKeyLifecycleStateEnum {
-		mappingWrappingKeyLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWrappingKeyLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWrappingKeyLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

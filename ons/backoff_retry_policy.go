@@ -12,7 +12,7 @@ package ons
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -58,6 +58,10 @@ var mappingBackoffRetryPolicyPolicyTypeEnum = map[string]BackoffRetryPolicyPolic
 	"EXPONENTIAL": BackoffRetryPolicyPolicyTypeExponential,
 }
 
+var mappingBackoffRetryPolicyPolicyTypeEnumLowerCase = map[string]BackoffRetryPolicyPolicyTypeEnum{
+	"exponential": BackoffRetryPolicyPolicyTypeExponential,
+}
+
 // GetBackoffRetryPolicyPolicyTypeEnumValues Enumerates the set of values for BackoffRetryPolicyPolicyTypeEnum
 func GetBackoffRetryPolicyPolicyTypeEnumValues() []BackoffRetryPolicyPolicyTypeEnum {
 	values := make([]BackoffRetryPolicyPolicyTypeEnum, 0)
@@ -76,11 +80,6 @@ func GetBackoffRetryPolicyPolicyTypeEnumStringValues() []string {
 
 // GetMappingBackoffRetryPolicyPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBackoffRetryPolicyPolicyTypeEnum(val string) (BackoffRetryPolicyPolicyTypeEnum, bool) {
-	mappingBackoffRetryPolicyPolicyTypeEnumIgnoreCase := make(map[string]BackoffRetryPolicyPolicyTypeEnum)
-	for k, v := range mappingBackoffRetryPolicyPolicyTypeEnum {
-		mappingBackoffRetryPolicyPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBackoffRetryPolicyPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBackoffRetryPolicyPolicyTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

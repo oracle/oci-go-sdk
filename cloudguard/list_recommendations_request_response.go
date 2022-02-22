@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -157,6 +157,11 @@ var mappingListRecommendationsSortOrderEnum = map[string]ListRecommendationsSort
 	"DESC": ListRecommendationsSortOrderDesc,
 }
 
+var mappingListRecommendationsSortOrderEnumLowerCase = map[string]ListRecommendationsSortOrderEnum{
+	"asc":  ListRecommendationsSortOrderAsc,
+	"desc": ListRecommendationsSortOrderDesc,
+}
+
 // GetListRecommendationsSortOrderEnumValues Enumerates the set of values for ListRecommendationsSortOrderEnum
 func GetListRecommendationsSortOrderEnumValues() []ListRecommendationsSortOrderEnum {
 	values := make([]ListRecommendationsSortOrderEnum, 0)
@@ -176,12 +181,7 @@ func GetListRecommendationsSortOrderEnumStringValues() []string {
 
 // GetMappingListRecommendationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRecommendationsSortOrderEnum(val string) (ListRecommendationsSortOrderEnum, bool) {
-	mappingListRecommendationsSortOrderEnumIgnoreCase := make(map[string]ListRecommendationsSortOrderEnum)
-	for k, v := range mappingListRecommendationsSortOrderEnum {
-		mappingListRecommendationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRecommendationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRecommendationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -197,6 +197,11 @@ const (
 var mappingListRecommendationsSortByEnum = map[string]ListRecommendationsSortByEnum{
 	"riskLevel":   ListRecommendationsSortByRisklevel,
 	"timeCreated": ListRecommendationsSortByTimecreated,
+}
+
+var mappingListRecommendationsSortByEnumLowerCase = map[string]ListRecommendationsSortByEnum{
+	"risklevel":   ListRecommendationsSortByRisklevel,
+	"timecreated": ListRecommendationsSortByTimecreated,
 }
 
 // GetListRecommendationsSortByEnumValues Enumerates the set of values for ListRecommendationsSortByEnum
@@ -218,12 +223,7 @@ func GetListRecommendationsSortByEnumStringValues() []string {
 
 // GetMappingListRecommendationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRecommendationsSortByEnum(val string) (ListRecommendationsSortByEnum, bool) {
-	mappingListRecommendationsSortByEnumIgnoreCase := make(map[string]ListRecommendationsSortByEnum)
-	for k, v := range mappingListRecommendationsSortByEnum {
-		mappingListRecommendationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRecommendationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRecommendationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -239,6 +239,11 @@ const (
 var mappingListRecommendationsAccessLevelEnum = map[string]ListRecommendationsAccessLevelEnum{
 	"RESTRICTED": ListRecommendationsAccessLevelRestricted,
 	"ACCESSIBLE": ListRecommendationsAccessLevelAccessible,
+}
+
+var mappingListRecommendationsAccessLevelEnumLowerCase = map[string]ListRecommendationsAccessLevelEnum{
+	"restricted": ListRecommendationsAccessLevelRestricted,
+	"accessible": ListRecommendationsAccessLevelAccessible,
 }
 
 // GetListRecommendationsAccessLevelEnumValues Enumerates the set of values for ListRecommendationsAccessLevelEnum
@@ -260,12 +265,7 @@ func GetListRecommendationsAccessLevelEnumStringValues() []string {
 
 // GetMappingListRecommendationsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRecommendationsAccessLevelEnum(val string) (ListRecommendationsAccessLevelEnum, bool) {
-	mappingListRecommendationsAccessLevelEnumIgnoreCase := make(map[string]ListRecommendationsAccessLevelEnum)
-	for k, v := range mappingListRecommendationsAccessLevelEnum {
-		mappingListRecommendationsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRecommendationsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRecommendationsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -293,6 +293,16 @@ var mappingListRecommendationsLifecycleStateEnum = map[string]ListRecommendation
 	"FAILED":   ListRecommendationsLifecycleStateFailed,
 }
 
+var mappingListRecommendationsLifecycleStateEnumLowerCase = map[string]ListRecommendationsLifecycleStateEnum{
+	"creating": ListRecommendationsLifecycleStateCreating,
+	"updating": ListRecommendationsLifecycleStateUpdating,
+	"active":   ListRecommendationsLifecycleStateActive,
+	"inactive": ListRecommendationsLifecycleStateInactive,
+	"deleting": ListRecommendationsLifecycleStateDeleting,
+	"deleted":  ListRecommendationsLifecycleStateDeleted,
+	"failed":   ListRecommendationsLifecycleStateFailed,
+}
+
 // GetListRecommendationsLifecycleStateEnumValues Enumerates the set of values for ListRecommendationsLifecycleStateEnum
 func GetListRecommendationsLifecycleStateEnumValues() []ListRecommendationsLifecycleStateEnum {
 	values := make([]ListRecommendationsLifecycleStateEnum, 0)
@@ -317,12 +327,7 @@ func GetListRecommendationsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListRecommendationsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRecommendationsLifecycleStateEnum(val string) (ListRecommendationsLifecycleStateEnum, bool) {
-	mappingListRecommendationsLifecycleStateEnumIgnoreCase := make(map[string]ListRecommendationsLifecycleStateEnum)
-	for k, v := range mappingListRecommendationsLifecycleStateEnum {
-		mappingListRecommendationsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRecommendationsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRecommendationsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -340,6 +345,12 @@ var mappingListRecommendationsLifecycleDetailEnum = map[string]ListRecommendatio
 	"OPEN":      ListRecommendationsLifecycleDetailOpen,
 	"RESOLVED":  ListRecommendationsLifecycleDetailResolved,
 	"DISMISSED": ListRecommendationsLifecycleDetailDismissed,
+}
+
+var mappingListRecommendationsLifecycleDetailEnumLowerCase = map[string]ListRecommendationsLifecycleDetailEnum{
+	"open":      ListRecommendationsLifecycleDetailOpen,
+	"resolved":  ListRecommendationsLifecycleDetailResolved,
+	"dismissed": ListRecommendationsLifecycleDetailDismissed,
 }
 
 // GetListRecommendationsLifecycleDetailEnumValues Enumerates the set of values for ListRecommendationsLifecycleDetailEnum
@@ -362,11 +373,6 @@ func GetListRecommendationsLifecycleDetailEnumStringValues() []string {
 
 // GetMappingListRecommendationsLifecycleDetailEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRecommendationsLifecycleDetailEnum(val string) (ListRecommendationsLifecycleDetailEnum, bool) {
-	mappingListRecommendationsLifecycleDetailEnumIgnoreCase := make(map[string]ListRecommendationsLifecycleDetailEnum)
-	for k, v := range mappingListRecommendationsLifecycleDetailEnum {
-		mappingListRecommendationsLifecycleDetailEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRecommendationsLifecycleDetailEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRecommendationsLifecycleDetailEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

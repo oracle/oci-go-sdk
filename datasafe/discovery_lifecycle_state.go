@@ -35,6 +35,15 @@ var mappingDiscoveryLifecycleStateEnum = map[string]DiscoveryLifecycleStateEnum{
 	"FAILED":   DiscoveryLifecycleStateFailed,
 }
 
+var mappingDiscoveryLifecycleStateEnumLowerCase = map[string]DiscoveryLifecycleStateEnum{
+	"creating": DiscoveryLifecycleStateCreating,
+	"active":   DiscoveryLifecycleStateActive,
+	"updating": DiscoveryLifecycleStateUpdating,
+	"deleting": DiscoveryLifecycleStateDeleting,
+	"deleted":  DiscoveryLifecycleStateDeleted,
+	"failed":   DiscoveryLifecycleStateFailed,
+}
+
 // GetDiscoveryLifecycleStateEnumValues Enumerates the set of values for DiscoveryLifecycleStateEnum
 func GetDiscoveryLifecycleStateEnumValues() []DiscoveryLifecycleStateEnum {
 	values := make([]DiscoveryLifecycleStateEnum, 0)
@@ -58,11 +67,6 @@ func GetDiscoveryLifecycleStateEnumStringValues() []string {
 
 // GetMappingDiscoveryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDiscoveryLifecycleStateEnum(val string) (DiscoveryLifecycleStateEnum, bool) {
-	mappingDiscoveryLifecycleStateEnumIgnoreCase := make(map[string]DiscoveryLifecycleStateEnum)
-	for k, v := range mappingDiscoveryLifecycleStateEnum {
-		mappingDiscoveryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDiscoveryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDiscoveryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

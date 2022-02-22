@@ -12,7 +12,7 @@ package artifacts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -81,6 +81,13 @@ var mappingCreateContainerImageSignatureDetailsSigningAlgorithmEnum = map[string
 	"SHA_512_RSA_PKCS_PSS": CreateContainerImageSignatureDetailsSigningAlgorithm512RsaPkcsPss,
 }
 
+var mappingCreateContainerImageSignatureDetailsSigningAlgorithmEnumLowerCase = map[string]CreateContainerImageSignatureDetailsSigningAlgorithmEnum{
+	"sha_224_rsa_pkcs_pss": CreateContainerImageSignatureDetailsSigningAlgorithm224RsaPkcsPss,
+	"sha_256_rsa_pkcs_pss": CreateContainerImageSignatureDetailsSigningAlgorithm256RsaPkcsPss,
+	"sha_384_rsa_pkcs_pss": CreateContainerImageSignatureDetailsSigningAlgorithm384RsaPkcsPss,
+	"sha_512_rsa_pkcs_pss": CreateContainerImageSignatureDetailsSigningAlgorithm512RsaPkcsPss,
+}
+
 // GetCreateContainerImageSignatureDetailsSigningAlgorithmEnumValues Enumerates the set of values for CreateContainerImageSignatureDetailsSigningAlgorithmEnum
 func GetCreateContainerImageSignatureDetailsSigningAlgorithmEnumValues() []CreateContainerImageSignatureDetailsSigningAlgorithmEnum {
 	values := make([]CreateContainerImageSignatureDetailsSigningAlgorithmEnum, 0)
@@ -102,11 +109,6 @@ func GetCreateContainerImageSignatureDetailsSigningAlgorithmEnumStringValues() [
 
 // GetMappingCreateContainerImageSignatureDetailsSigningAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateContainerImageSignatureDetailsSigningAlgorithmEnum(val string) (CreateContainerImageSignatureDetailsSigningAlgorithmEnum, bool) {
-	mappingCreateContainerImageSignatureDetailsSigningAlgorithmEnumIgnoreCase := make(map[string]CreateContainerImageSignatureDetailsSigningAlgorithmEnum)
-	for k, v := range mappingCreateContainerImageSignatureDetailsSigningAlgorithmEnum {
-		mappingCreateContainerImageSignatureDetailsSigningAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateContainerImageSignatureDetailsSigningAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateContainerImageSignatureDetailsSigningAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

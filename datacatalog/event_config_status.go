@@ -28,6 +28,11 @@ var mappingEventConfigStatusEnum = map[string]EventConfigStatusEnum{
 	"DISABLED": EventConfigStatusDisabled,
 }
 
+var mappingEventConfigStatusEnumLowerCase = map[string]EventConfigStatusEnum{
+	"enabled":  EventConfigStatusEnabled,
+	"disabled": EventConfigStatusDisabled,
+}
+
 // GetEventConfigStatusEnumValues Enumerates the set of values for EventConfigStatusEnum
 func GetEventConfigStatusEnumValues() []EventConfigStatusEnum {
 	values := make([]EventConfigStatusEnum, 0)
@@ -47,11 +52,6 @@ func GetEventConfigStatusEnumStringValues() []string {
 
 // GetMappingEventConfigStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEventConfigStatusEnum(val string) (EventConfigStatusEnum, bool) {
-	mappingEventConfigStatusEnumIgnoreCase := make(map[string]EventConfigStatusEnum)
-	for k, v := range mappingEventConfigStatusEnum {
-		mappingEventConfigStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEventConfigStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEventConfigStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

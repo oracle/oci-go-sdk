@@ -11,7 +11,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -65,6 +65,12 @@ var mappingTriggerScheduleScheduleTypeEnum = map[string]TriggerScheduleScheduleT
 	"CUSTOM":  TriggerScheduleScheduleTypeCustom,
 }
 
+var mappingTriggerScheduleScheduleTypeEnumLowerCase = map[string]TriggerScheduleScheduleTypeEnum{
+	"none":    TriggerScheduleScheduleTypeNone,
+	"default": TriggerScheduleScheduleTypeDefault,
+	"custom":  TriggerScheduleScheduleTypeCustom,
+}
+
 // GetTriggerScheduleScheduleTypeEnumValues Enumerates the set of values for TriggerScheduleScheduleTypeEnum
 func GetTriggerScheduleScheduleTypeEnumValues() []TriggerScheduleScheduleTypeEnum {
 	values := make([]TriggerScheduleScheduleTypeEnum, 0)
@@ -85,11 +91,6 @@ func GetTriggerScheduleScheduleTypeEnumStringValues() []string {
 
 // GetMappingTriggerScheduleScheduleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTriggerScheduleScheduleTypeEnum(val string) (TriggerScheduleScheduleTypeEnum, bool) {
-	mappingTriggerScheduleScheduleTypeEnumIgnoreCase := make(map[string]TriggerScheduleScheduleTypeEnum)
-	for k, v := range mappingTriggerScheduleScheduleTypeEnum {
-		mappingTriggerScheduleScheduleTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTriggerScheduleScheduleTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTriggerScheduleScheduleTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

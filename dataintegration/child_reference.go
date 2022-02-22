@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,15 @@ var mappingChildReferenceTypeEnum = map[string]ChildReferenceTypeEnum{
 	"GENERIC_JDBC_CONNECTION":          ChildReferenceTypeGenericJdbcConnection,
 }
 
+var mappingChildReferenceTypeEnumLowerCase = map[string]ChildReferenceTypeEnum{
+	"oracledb_connection":              ChildReferenceTypeOracledbConnection,
+	"oracle_object_storage_connection": ChildReferenceTypeOracleObjectStorageConnection,
+	"oracle_atp_connection":            ChildReferenceTypeOracleAtpConnection,
+	"oracle_adwc_connection":           ChildReferenceTypeOracleAdwcConnection,
+	"mysql_connection":                 ChildReferenceTypeMysqlConnection,
+	"generic_jdbc_connection":          ChildReferenceTypeGenericJdbcConnection,
+}
+
 // GetChildReferenceTypeEnumValues Enumerates the set of values for ChildReferenceTypeEnum
 func GetChildReferenceTypeEnumValues() []ChildReferenceTypeEnum {
 	values := make([]ChildReferenceTypeEnum, 0)
@@ -110,11 +119,6 @@ func GetChildReferenceTypeEnumStringValues() []string {
 
 // GetMappingChildReferenceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingChildReferenceTypeEnum(val string) (ChildReferenceTypeEnum, bool) {
-	mappingChildReferenceTypeEnumIgnoreCase := make(map[string]ChildReferenceTypeEnum)
-	for k, v := range mappingChildReferenceTypeEnum {
-		mappingChildReferenceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingChildReferenceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingChildReferenceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

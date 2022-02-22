@@ -35,6 +35,14 @@ var mappingOperatorActionCategoriesEnum = map[string]OperatorActionCategoriesEnu
 	"CELLMANAGEMENT":     OperatorActionCategoriesCellmanagement,
 }
 
+var mappingOperatorActionCategoriesEnumLowerCase = map[string]OperatorActionCategoriesEnum{
+	"servicediagnostics": OperatorActionCategoriesServicediagnostics,
+	"servicemanagement":  OperatorActionCategoriesServicemanagement,
+	"systemmanagement":   OperatorActionCategoriesSystemmanagement,
+	"fulladministration": OperatorActionCategoriesFulladministration,
+	"cellmanagement":     OperatorActionCategoriesCellmanagement,
+}
+
 // GetOperatorActionCategoriesEnumValues Enumerates the set of values for OperatorActionCategoriesEnum
 func GetOperatorActionCategoriesEnumValues() []OperatorActionCategoriesEnum {
 	values := make([]OperatorActionCategoriesEnum, 0)
@@ -57,11 +65,6 @@ func GetOperatorActionCategoriesEnumStringValues() []string {
 
 // GetMappingOperatorActionCategoriesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperatorActionCategoriesEnum(val string) (OperatorActionCategoriesEnum, bool) {
-	mappingOperatorActionCategoriesEnumIgnoreCase := make(map[string]OperatorActionCategoriesEnum)
-	for k, v := range mappingOperatorActionCategoriesEnum {
-		mappingOperatorActionCategoriesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperatorActionCategoriesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperatorActionCategoriesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

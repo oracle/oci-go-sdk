@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -161,6 +161,11 @@ var mappingListAuditArchiveRetrievalsAccessLevelEnum = map[string]ListAuditArchi
 	"ACCESSIBLE": ListAuditArchiveRetrievalsAccessLevelAccessible,
 }
 
+var mappingListAuditArchiveRetrievalsAccessLevelEnumLowerCase = map[string]ListAuditArchiveRetrievalsAccessLevelEnum{
+	"restricted": ListAuditArchiveRetrievalsAccessLevelRestricted,
+	"accessible": ListAuditArchiveRetrievalsAccessLevelAccessible,
+}
+
 // GetListAuditArchiveRetrievalsAccessLevelEnumValues Enumerates the set of values for ListAuditArchiveRetrievalsAccessLevelEnum
 func GetListAuditArchiveRetrievalsAccessLevelEnumValues() []ListAuditArchiveRetrievalsAccessLevelEnum {
 	values := make([]ListAuditArchiveRetrievalsAccessLevelEnum, 0)
@@ -180,12 +185,7 @@ func GetListAuditArchiveRetrievalsAccessLevelEnumStringValues() []string {
 
 // GetMappingListAuditArchiveRetrievalsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditArchiveRetrievalsAccessLevelEnum(val string) (ListAuditArchiveRetrievalsAccessLevelEnum, bool) {
-	mappingListAuditArchiveRetrievalsAccessLevelEnumIgnoreCase := make(map[string]ListAuditArchiveRetrievalsAccessLevelEnum)
-	for k, v := range mappingListAuditArchiveRetrievalsAccessLevelEnum {
-		mappingListAuditArchiveRetrievalsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditArchiveRetrievalsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditArchiveRetrievalsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -211,6 +211,15 @@ var mappingListAuditArchiveRetrievalsLifecycleStateEnum = map[string]ListAuditAr
 	"DELETED":         ListAuditArchiveRetrievalsLifecycleStateDeleted,
 }
 
+var mappingListAuditArchiveRetrievalsLifecycleStateEnumLowerCase = map[string]ListAuditArchiveRetrievalsLifecycleStateEnum{
+	"creating":        ListAuditArchiveRetrievalsLifecycleStateCreating,
+	"active":          ListAuditArchiveRetrievalsLifecycleStateActive,
+	"needs_attention": ListAuditArchiveRetrievalsLifecycleStateNeedsAttention,
+	"failed":          ListAuditArchiveRetrievalsLifecycleStateFailed,
+	"deleting":        ListAuditArchiveRetrievalsLifecycleStateDeleting,
+	"deleted":         ListAuditArchiveRetrievalsLifecycleStateDeleted,
+}
+
 // GetListAuditArchiveRetrievalsLifecycleStateEnumValues Enumerates the set of values for ListAuditArchiveRetrievalsLifecycleStateEnum
 func GetListAuditArchiveRetrievalsLifecycleStateEnumValues() []ListAuditArchiveRetrievalsLifecycleStateEnum {
 	values := make([]ListAuditArchiveRetrievalsLifecycleStateEnum, 0)
@@ -234,12 +243,7 @@ func GetListAuditArchiveRetrievalsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListAuditArchiveRetrievalsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditArchiveRetrievalsLifecycleStateEnum(val string) (ListAuditArchiveRetrievalsLifecycleStateEnum, bool) {
-	mappingListAuditArchiveRetrievalsLifecycleStateEnumIgnoreCase := make(map[string]ListAuditArchiveRetrievalsLifecycleStateEnum)
-	for k, v := range mappingListAuditArchiveRetrievalsLifecycleStateEnum {
-		mappingListAuditArchiveRetrievalsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditArchiveRetrievalsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditArchiveRetrievalsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -255,6 +259,11 @@ const (
 var mappingListAuditArchiveRetrievalsSortOrderEnum = map[string]ListAuditArchiveRetrievalsSortOrderEnum{
 	"ASC":  ListAuditArchiveRetrievalsSortOrderAsc,
 	"DESC": ListAuditArchiveRetrievalsSortOrderDesc,
+}
+
+var mappingListAuditArchiveRetrievalsSortOrderEnumLowerCase = map[string]ListAuditArchiveRetrievalsSortOrderEnum{
+	"asc":  ListAuditArchiveRetrievalsSortOrderAsc,
+	"desc": ListAuditArchiveRetrievalsSortOrderDesc,
 }
 
 // GetListAuditArchiveRetrievalsSortOrderEnumValues Enumerates the set of values for ListAuditArchiveRetrievalsSortOrderEnum
@@ -276,12 +285,7 @@ func GetListAuditArchiveRetrievalsSortOrderEnumStringValues() []string {
 
 // GetMappingListAuditArchiveRetrievalsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditArchiveRetrievalsSortOrderEnum(val string) (ListAuditArchiveRetrievalsSortOrderEnum, bool) {
-	mappingListAuditArchiveRetrievalsSortOrderEnumIgnoreCase := make(map[string]ListAuditArchiveRetrievalsSortOrderEnum)
-	for k, v := range mappingListAuditArchiveRetrievalsSortOrderEnum {
-		mappingListAuditArchiveRetrievalsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditArchiveRetrievalsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditArchiveRetrievalsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -297,6 +301,11 @@ const (
 var mappingListAuditArchiveRetrievalsSortByEnum = map[string]ListAuditArchiveRetrievalsSortByEnum{
 	"TIMECREATED": ListAuditArchiveRetrievalsSortByTimecreated,
 	"DISPLAYNAME": ListAuditArchiveRetrievalsSortByDisplayname,
+}
+
+var mappingListAuditArchiveRetrievalsSortByEnumLowerCase = map[string]ListAuditArchiveRetrievalsSortByEnum{
+	"timecreated": ListAuditArchiveRetrievalsSortByTimecreated,
+	"displayname": ListAuditArchiveRetrievalsSortByDisplayname,
 }
 
 // GetListAuditArchiveRetrievalsSortByEnumValues Enumerates the set of values for ListAuditArchiveRetrievalsSortByEnum
@@ -318,11 +327,6 @@ func GetListAuditArchiveRetrievalsSortByEnumStringValues() []string {
 
 // GetMappingListAuditArchiveRetrievalsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditArchiveRetrievalsSortByEnum(val string) (ListAuditArchiveRetrievalsSortByEnum, bool) {
-	mappingListAuditArchiveRetrievalsSortByEnumIgnoreCase := make(map[string]ListAuditArchiveRetrievalsSortByEnum)
-	for k, v := range mappingListAuditArchiveRetrievalsSortByEnum {
-		mappingListAuditArchiveRetrievalsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditArchiveRetrievalsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditArchiveRetrievalsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

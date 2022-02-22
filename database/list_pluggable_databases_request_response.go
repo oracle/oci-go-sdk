@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -140,6 +140,11 @@ var mappingListPluggableDatabasesSortByEnum = map[string]ListPluggableDatabasesS
 	"TIMECREATED": ListPluggableDatabasesSortByTimecreated,
 }
 
+var mappingListPluggableDatabasesSortByEnumLowerCase = map[string]ListPluggableDatabasesSortByEnum{
+	"pdbname":     ListPluggableDatabasesSortByPdbname,
+	"timecreated": ListPluggableDatabasesSortByTimecreated,
+}
+
 // GetListPluggableDatabasesSortByEnumValues Enumerates the set of values for ListPluggableDatabasesSortByEnum
 func GetListPluggableDatabasesSortByEnumValues() []ListPluggableDatabasesSortByEnum {
 	values := make([]ListPluggableDatabasesSortByEnum, 0)
@@ -159,12 +164,7 @@ func GetListPluggableDatabasesSortByEnumStringValues() []string {
 
 // GetMappingListPluggableDatabasesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPluggableDatabasesSortByEnum(val string) (ListPluggableDatabasesSortByEnum, bool) {
-	mappingListPluggableDatabasesSortByEnumIgnoreCase := make(map[string]ListPluggableDatabasesSortByEnum)
-	for k, v := range mappingListPluggableDatabasesSortByEnum {
-		mappingListPluggableDatabasesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPluggableDatabasesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPluggableDatabasesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -180,6 +180,11 @@ const (
 var mappingListPluggableDatabasesSortOrderEnum = map[string]ListPluggableDatabasesSortOrderEnum{
 	"ASC":  ListPluggableDatabasesSortOrderAsc,
 	"DESC": ListPluggableDatabasesSortOrderDesc,
+}
+
+var mappingListPluggableDatabasesSortOrderEnumLowerCase = map[string]ListPluggableDatabasesSortOrderEnum{
+	"asc":  ListPluggableDatabasesSortOrderAsc,
+	"desc": ListPluggableDatabasesSortOrderDesc,
 }
 
 // GetListPluggableDatabasesSortOrderEnumValues Enumerates the set of values for ListPluggableDatabasesSortOrderEnum
@@ -201,11 +206,6 @@ func GetListPluggableDatabasesSortOrderEnumStringValues() []string {
 
 // GetMappingListPluggableDatabasesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPluggableDatabasesSortOrderEnum(val string) (ListPluggableDatabasesSortOrderEnum, bool) {
-	mappingListPluggableDatabasesSortOrderEnumIgnoreCase := make(map[string]ListPluggableDatabasesSortOrderEnum)
-	for k, v := range mappingListPluggableDatabasesSortOrderEnum {
-		mappingListPluggableDatabasesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPluggableDatabasesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPluggableDatabasesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

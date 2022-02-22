@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -149,6 +149,13 @@ var mappingParameterOutputAggregationTypeEnum = map[string]ParameterOutputAggreg
 	"SUM":   ParameterOutputAggregationTypeSum,
 }
 
+var mappingParameterOutputAggregationTypeEnumLowerCase = map[string]ParameterOutputAggregationTypeEnum{
+	"min":   ParameterOutputAggregationTypeMin,
+	"max":   ParameterOutputAggregationTypeMax,
+	"count": ParameterOutputAggregationTypeCount,
+	"sum":   ParameterOutputAggregationTypeSum,
+}
+
 // GetParameterOutputAggregationTypeEnumValues Enumerates the set of values for ParameterOutputAggregationTypeEnum
 func GetParameterOutputAggregationTypeEnumValues() []ParameterOutputAggregationTypeEnum {
 	values := make([]ParameterOutputAggregationTypeEnum, 0)
@@ -170,11 +177,6 @@ func GetParameterOutputAggregationTypeEnumStringValues() []string {
 
 // GetMappingParameterOutputAggregationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingParameterOutputAggregationTypeEnum(val string) (ParameterOutputAggregationTypeEnum, bool) {
-	mappingParameterOutputAggregationTypeEnumIgnoreCase := make(map[string]ParameterOutputAggregationTypeEnum)
-	for k, v := range mappingParameterOutputAggregationTypeEnum {
-		mappingParameterOutputAggregationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingParameterOutputAggregationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingParameterOutputAggregationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -75,6 +75,17 @@ var mappingDrgRedundancyStatusStatusEnum = map[string]DrgRedundancyStatusStatusE
 	"NOT_REDUNDANT_NO_CONNECTION":            DrgRedundancyStatusStatusNotRedundantNoConnection,
 }
 
+var mappingDrgRedundancyStatusStatusEnumLowerCase = map[string]DrgRedundancyStatusStatusEnum{
+	"not_available":                          DrgRedundancyStatusStatusNotAvailable,
+	"redundant":                              DrgRedundancyStatusStatusRedundant,
+	"not_redundant_single_ipsec":             DrgRedundancyStatusStatusNotRedundantSingleIpsec,
+	"not_redundant_single_virtualcircuit":    DrgRedundancyStatusStatusNotRedundantSingleVirtualcircuit,
+	"not_redundant_multiple_ipsecs":          DrgRedundancyStatusStatusNotRedundantMultipleIpsecs,
+	"not_redundant_multiple_virtualcircuits": DrgRedundancyStatusStatusNotRedundantMultipleVirtualcircuits,
+	"not_redundant_mix_connections":          DrgRedundancyStatusStatusNotRedundantMixConnections,
+	"not_redundant_no_connection":            DrgRedundancyStatusStatusNotRedundantNoConnection,
+}
+
 // GetDrgRedundancyStatusStatusEnumValues Enumerates the set of values for DrgRedundancyStatusStatusEnum
 func GetDrgRedundancyStatusStatusEnumValues() []DrgRedundancyStatusStatusEnum {
 	values := make([]DrgRedundancyStatusStatusEnum, 0)
@@ -100,11 +111,6 @@ func GetDrgRedundancyStatusStatusEnumStringValues() []string {
 
 // GetMappingDrgRedundancyStatusStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDrgRedundancyStatusStatusEnum(val string) (DrgRedundancyStatusStatusEnum, bool) {
-	mappingDrgRedundancyStatusStatusEnumIgnoreCase := make(map[string]DrgRedundancyStatusStatusEnum)
-	for k, v := range mappingDrgRedundancyStatusStatusEnum {
-		mappingDrgRedundancyStatusStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDrgRedundancyStatusStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDrgRedundancyStatusStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

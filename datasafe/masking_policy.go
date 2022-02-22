@@ -12,7 +12,7 @@ package datasafe
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -204,6 +204,12 @@ var mappingMaskingPolicyRecompileEnum = map[string]MaskingPolicyRecompileEnum{
 	"NONE":     MaskingPolicyRecompileNone,
 }
 
+var mappingMaskingPolicyRecompileEnumLowerCase = map[string]MaskingPolicyRecompileEnum{
+	"serial":   MaskingPolicyRecompileSerial,
+	"parallel": MaskingPolicyRecompileParallel,
+	"none":     MaskingPolicyRecompileNone,
+}
+
 // GetMaskingPolicyRecompileEnumValues Enumerates the set of values for MaskingPolicyRecompileEnum
 func GetMaskingPolicyRecompileEnumValues() []MaskingPolicyRecompileEnum {
 	values := make([]MaskingPolicyRecompileEnum, 0)
@@ -224,11 +230,6 @@ func GetMaskingPolicyRecompileEnumStringValues() []string {
 
 // GetMappingMaskingPolicyRecompileEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMaskingPolicyRecompileEnum(val string) (MaskingPolicyRecompileEnum, bool) {
-	mappingMaskingPolicyRecompileEnumIgnoreCase := make(map[string]MaskingPolicyRecompileEnum)
-	for k, v := range mappingMaskingPolicyRecompileEnum {
-		mappingMaskingPolicyRecompileEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMaskingPolicyRecompileEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMaskingPolicyRecompileEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

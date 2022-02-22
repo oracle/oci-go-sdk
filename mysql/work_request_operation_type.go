@@ -63,6 +63,29 @@ var mappingWorkRequestOperationTypeEnum = map[string]WorkRequestOperationTypeEnu
 	"GENERATE_HEATWAVE_CLUSTER_MEMORY_ESTIMATE":  WorkRequestOperationTypeGenerateHeatwaveClusterMemoryEstimate,
 }
 
+var mappingWorkRequestOperationTypeEnumLowerCase = map[string]WorkRequestOperationTypeEnum{
+	"create_dbsystem":                            WorkRequestOperationTypeCreateDbsystem,
+	"update_dbsystem":                            WorkRequestOperationTypeUpdateDbsystem,
+	"delete_dbsystem":                            WorkRequestOperationTypeDeleteDbsystem,
+	"start_dbsystem":                             WorkRequestOperationTypeStartDbsystem,
+	"stop_dbsystem":                              WorkRequestOperationTypeStopDbsystem,
+	"restart_dbsystem":                           WorkRequestOperationTypeRestartDbsystem,
+	"add_analytics_cluster":                      WorkRequestOperationTypeAddAnalyticsCluster,
+	"update_analytics_cluster":                   WorkRequestOperationTypeUpdateAnalyticsCluster,
+	"delete_analytics_cluster":                   WorkRequestOperationTypeDeleteAnalyticsCluster,
+	"start_analytics_cluster":                    WorkRequestOperationTypeStartAnalyticsCluster,
+	"stop_analytics_cluster":                     WorkRequestOperationTypeStopAnalyticsCluster,
+	"restart_analytics_cluster":                  WorkRequestOperationTypeRestartAnalyticsCluster,
+	"generate_analytics_cluster_memory_estimate": WorkRequestOperationTypeGenerateAnalyticsClusterMemoryEstimate,
+	"add_heatwave_cluster":                       WorkRequestOperationTypeAddHeatwaveCluster,
+	"update_heatwave_cluster":                    WorkRequestOperationTypeUpdateHeatwaveCluster,
+	"delete_heatwave_cluster":                    WorkRequestOperationTypeDeleteHeatwaveCluster,
+	"start_heatwave_cluster":                     WorkRequestOperationTypeStartHeatwaveCluster,
+	"stop_heatwave_cluster":                      WorkRequestOperationTypeStopHeatwaveCluster,
+	"restart_heatwave_cluster":                   WorkRequestOperationTypeRestartHeatwaveCluster,
+	"generate_heatwave_cluster_memory_estimate":  WorkRequestOperationTypeGenerateHeatwaveClusterMemoryEstimate,
+}
+
 // GetWorkRequestOperationTypeEnumValues Enumerates the set of values for WorkRequestOperationTypeEnum
 func GetWorkRequestOperationTypeEnumValues() []WorkRequestOperationTypeEnum {
 	values := make([]WorkRequestOperationTypeEnum, 0)
@@ -100,11 +123,6 @@ func GetWorkRequestOperationTypeEnumStringValues() []string {
 
 // GetMappingWorkRequestOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestOperationTypeEnum(val string) (WorkRequestOperationTypeEnum, bool) {
-	mappingWorkRequestOperationTypeEnumIgnoreCase := make(map[string]WorkRequestOperationTypeEnum)
-	for k, v := range mappingWorkRequestOperationTypeEnum {
-		mappingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

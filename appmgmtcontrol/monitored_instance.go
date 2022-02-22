@@ -11,7 +11,7 @@ package appmgmtcontrol
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -84,6 +84,11 @@ var mappingMonitoredInstanceMonitoringStateEnum = map[string]MonitoredInstanceMo
 	"DISABLED": MonitoredInstanceMonitoringStateDisabled,
 }
 
+var mappingMonitoredInstanceMonitoringStateEnumLowerCase = map[string]MonitoredInstanceMonitoringStateEnum{
+	"enabled":  MonitoredInstanceMonitoringStateEnabled,
+	"disabled": MonitoredInstanceMonitoringStateDisabled,
+}
+
 // GetMonitoredInstanceMonitoringStateEnumValues Enumerates the set of values for MonitoredInstanceMonitoringStateEnum
 func GetMonitoredInstanceMonitoringStateEnumValues() []MonitoredInstanceMonitoringStateEnum {
 	values := make([]MonitoredInstanceMonitoringStateEnum, 0)
@@ -103,12 +108,7 @@ func GetMonitoredInstanceMonitoringStateEnumStringValues() []string {
 
 // GetMappingMonitoredInstanceMonitoringStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMonitoredInstanceMonitoringStateEnum(val string) (MonitoredInstanceMonitoringStateEnum, bool) {
-	mappingMonitoredInstanceMonitoringStateEnumIgnoreCase := make(map[string]MonitoredInstanceMonitoringStateEnum)
-	for k, v := range mappingMonitoredInstanceMonitoringStateEnum {
-		mappingMonitoredInstanceMonitoringStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMonitoredInstanceMonitoringStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMonitoredInstanceMonitoringStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -136,6 +136,16 @@ var mappingMonitoredInstanceLifecycleStateEnum = map[string]MonitoredInstanceLif
 	"FAILED":   MonitoredInstanceLifecycleStateFailed,
 }
 
+var mappingMonitoredInstanceLifecycleStateEnumLowerCase = map[string]MonitoredInstanceLifecycleStateEnum{
+	"creating": MonitoredInstanceLifecycleStateCreating,
+	"updating": MonitoredInstanceLifecycleStateUpdating,
+	"active":   MonitoredInstanceLifecycleStateActive,
+	"inactive": MonitoredInstanceLifecycleStateInactive,
+	"deleting": MonitoredInstanceLifecycleStateDeleting,
+	"deleted":  MonitoredInstanceLifecycleStateDeleted,
+	"failed":   MonitoredInstanceLifecycleStateFailed,
+}
+
 // GetMonitoredInstanceLifecycleStateEnumValues Enumerates the set of values for MonitoredInstanceLifecycleStateEnum
 func GetMonitoredInstanceLifecycleStateEnumValues() []MonitoredInstanceLifecycleStateEnum {
 	values := make([]MonitoredInstanceLifecycleStateEnum, 0)
@@ -160,11 +170,6 @@ func GetMonitoredInstanceLifecycleStateEnumStringValues() []string {
 
 // GetMappingMonitoredInstanceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMonitoredInstanceLifecycleStateEnum(val string) (MonitoredInstanceLifecycleStateEnum, bool) {
-	mappingMonitoredInstanceLifecycleStateEnumIgnoreCase := make(map[string]MonitoredInstanceLifecycleStateEnum)
-	for k, v := range mappingMonitoredInstanceLifecycleStateEnum {
-		mappingMonitoredInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMonitoredInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMonitoredInstanceLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

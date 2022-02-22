@@ -6,7 +6,7 @@ package ospgateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -184,6 +184,17 @@ var mappingListInvoicesTypeEnum = map[string]ListInvoicesTypeEnum{
 	"USAGE":        ListInvoicesTypeUsage,
 }
 
+var mappingListInvoicesTypeEnumLowerCase = map[string]ListInvoicesTypeEnum{
+	"hardware":     ListInvoicesTypeHardware,
+	"subscription": ListInvoicesTypeSubscription,
+	"support":      ListInvoicesTypeSupport,
+	"license":      ListInvoicesTypeLicense,
+	"education":    ListInvoicesTypeEducation,
+	"consulting":   ListInvoicesTypeConsulting,
+	"service":      ListInvoicesTypeService,
+	"usage":        ListInvoicesTypeUsage,
+}
+
 // GetListInvoicesTypeEnumValues Enumerates the set of values for ListInvoicesTypeEnum
 func GetListInvoicesTypeEnumValues() []ListInvoicesTypeEnum {
 	values := make([]ListInvoicesTypeEnum, 0)
@@ -209,12 +220,7 @@ func GetListInvoicesTypeEnumStringValues() []string {
 
 // GetMappingListInvoicesTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListInvoicesTypeEnum(val string) (ListInvoicesTypeEnum, bool) {
-	mappingListInvoicesTypeEnumIgnoreCase := make(map[string]ListInvoicesTypeEnum)
-	for k, v := range mappingListInvoicesTypeEnum {
-		mappingListInvoicesTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListInvoicesTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListInvoicesTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -234,6 +240,13 @@ var mappingListInvoicesStatusEnum = map[string]ListInvoicesStatusEnum{
 	"PAST_DUE":          ListInvoicesStatusPastDue,
 	"PAYMENT_SUBMITTED": ListInvoicesStatusPaymentSubmitted,
 	"CLOSED":            ListInvoicesStatusClosed,
+}
+
+var mappingListInvoicesStatusEnumLowerCase = map[string]ListInvoicesStatusEnum{
+	"open":              ListInvoicesStatusOpen,
+	"past_due":          ListInvoicesStatusPastDue,
+	"payment_submitted": ListInvoicesStatusPaymentSubmitted,
+	"closed":            ListInvoicesStatusClosed,
 }
 
 // GetListInvoicesStatusEnumValues Enumerates the set of values for ListInvoicesStatusEnum
@@ -257,12 +270,7 @@ func GetListInvoicesStatusEnumStringValues() []string {
 
 // GetMappingListInvoicesStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListInvoicesStatusEnum(val string) (ListInvoicesStatusEnum, bool) {
-	mappingListInvoicesStatusEnumIgnoreCase := make(map[string]ListInvoicesStatusEnum)
-	for k, v := range mappingListInvoicesStatusEnum {
-		mappingListInvoicesStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListInvoicesStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListInvoicesStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -294,6 +302,18 @@ var mappingListInvoicesSortByEnum = map[string]ListInvoicesSortByEnum{
 	"BALANCE_DUE":  ListInvoicesSortByBalanceDue,
 }
 
+var mappingListInvoicesSortByEnumLowerCase = map[string]ListInvoicesSortByEnum{
+	"invoice_no":   ListInvoicesSortByInvoiceNo,
+	"ref_no":       ListInvoicesSortByRefNo,
+	"status":       ListInvoicesSortByStatus,
+	"type":         ListInvoicesSortByType,
+	"invoice_date": ListInvoicesSortByInvoiceDate,
+	"due_date":     ListInvoicesSortByDueDate,
+	"paym_ref":     ListInvoicesSortByPaymRef,
+	"total_amount": ListInvoicesSortByTotalAmount,
+	"balance_due":  ListInvoicesSortByBalanceDue,
+}
+
 // GetListInvoicesSortByEnumValues Enumerates the set of values for ListInvoicesSortByEnum
 func GetListInvoicesSortByEnumValues() []ListInvoicesSortByEnum {
 	values := make([]ListInvoicesSortByEnum, 0)
@@ -320,12 +340,7 @@ func GetListInvoicesSortByEnumStringValues() []string {
 
 // GetMappingListInvoicesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListInvoicesSortByEnum(val string) (ListInvoicesSortByEnum, bool) {
-	mappingListInvoicesSortByEnumIgnoreCase := make(map[string]ListInvoicesSortByEnum)
-	for k, v := range mappingListInvoicesSortByEnum {
-		mappingListInvoicesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListInvoicesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListInvoicesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -341,6 +356,11 @@ const (
 var mappingListInvoicesSortOrderEnum = map[string]ListInvoicesSortOrderEnum{
 	"ASC":  ListInvoicesSortOrderAsc,
 	"DESC": ListInvoicesSortOrderDesc,
+}
+
+var mappingListInvoicesSortOrderEnumLowerCase = map[string]ListInvoicesSortOrderEnum{
+	"asc":  ListInvoicesSortOrderAsc,
+	"desc": ListInvoicesSortOrderDesc,
 }
 
 // GetListInvoicesSortOrderEnumValues Enumerates the set of values for ListInvoicesSortOrderEnum
@@ -362,11 +382,6 @@ func GetListInvoicesSortOrderEnumStringValues() []string {
 
 // GetMappingListInvoicesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListInvoicesSortOrderEnum(val string) (ListInvoicesSortOrderEnum, bool) {
-	mappingListInvoicesSortOrderEnumIgnoreCase := make(map[string]ListInvoicesSortOrderEnum)
-	for k, v := range mappingListInvoicesSortOrderEnum {
-		mappingListInvoicesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListInvoicesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListInvoicesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

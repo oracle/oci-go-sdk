@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -153,6 +153,11 @@ var mappingListDataEntitiesSortByEnum = map[string]ListDataEntitiesSortByEnum{
 	"DISPLAY_NAME": ListDataEntitiesSortByDisplayName,
 }
 
+var mappingListDataEntitiesSortByEnumLowerCase = map[string]ListDataEntitiesSortByEnum{
+	"time_created": ListDataEntitiesSortByTimeCreated,
+	"display_name": ListDataEntitiesSortByDisplayName,
+}
+
 // GetListDataEntitiesSortByEnumValues Enumerates the set of values for ListDataEntitiesSortByEnum
 func GetListDataEntitiesSortByEnumValues() []ListDataEntitiesSortByEnum {
 	values := make([]ListDataEntitiesSortByEnum, 0)
@@ -172,12 +177,7 @@ func GetListDataEntitiesSortByEnumStringValues() []string {
 
 // GetMappingListDataEntitiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataEntitiesSortByEnum(val string) (ListDataEntitiesSortByEnum, bool) {
-	mappingListDataEntitiesSortByEnumIgnoreCase := make(map[string]ListDataEntitiesSortByEnum)
-	for k, v := range mappingListDataEntitiesSortByEnum {
-		mappingListDataEntitiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataEntitiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataEntitiesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -193,6 +193,11 @@ const (
 var mappingListDataEntitiesSortOrderEnum = map[string]ListDataEntitiesSortOrderEnum{
 	"ASC":  ListDataEntitiesSortOrderAsc,
 	"DESC": ListDataEntitiesSortOrderDesc,
+}
+
+var mappingListDataEntitiesSortOrderEnumLowerCase = map[string]ListDataEntitiesSortOrderEnum{
+	"asc":  ListDataEntitiesSortOrderAsc,
+	"desc": ListDataEntitiesSortOrderDesc,
 }
 
 // GetListDataEntitiesSortOrderEnumValues Enumerates the set of values for ListDataEntitiesSortOrderEnum
@@ -214,11 +219,6 @@ func GetListDataEntitiesSortOrderEnumStringValues() []string {
 
 // GetMappingListDataEntitiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataEntitiesSortOrderEnum(val string) (ListDataEntitiesSortOrderEnum, bool) {
-	mappingListDataEntitiesSortOrderEnumIgnoreCase := make(map[string]ListDataEntitiesSortOrderEnum)
-	for k, v := range mappingListDataEntitiesSortOrderEnum {
-		mappingListDataEntitiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataEntitiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataEntitiesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

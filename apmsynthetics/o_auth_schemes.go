@@ -27,6 +27,11 @@ var mappingOAuthSchemesEnum = map[string]OAuthSchemesEnum{
 	"BASIC": OAuthSchemesBasic,
 }
 
+var mappingOAuthSchemesEnumLowerCase = map[string]OAuthSchemesEnum{
+	"none":  OAuthSchemesNone,
+	"basic": OAuthSchemesBasic,
+}
+
 // GetOAuthSchemesEnumValues Enumerates the set of values for OAuthSchemesEnum
 func GetOAuthSchemesEnumValues() []OAuthSchemesEnum {
 	values := make([]OAuthSchemesEnum, 0)
@@ -46,11 +51,6 @@ func GetOAuthSchemesEnumStringValues() []string {
 
 // GetMappingOAuthSchemesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOAuthSchemesEnum(val string) (OAuthSchemesEnum, bool) {
-	mappingOAuthSchemesEnumIgnoreCase := make(map[string]OAuthSchemesEnum)
-	for k, v := range mappingOAuthSchemesEnum {
-		mappingOAuthSchemesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOAuthSchemesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOAuthSchemesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

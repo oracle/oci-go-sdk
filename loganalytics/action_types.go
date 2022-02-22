@@ -33,6 +33,14 @@ var mappingActionTypesEnum = map[string]ActionTypesEnum{
 	"RELATED":     ActionTypesRelated,
 }
 
+var mappingActionTypesEnumLowerCase = map[string]ActionTypesEnum{
+	"created":     ActionTypesCreated,
+	"updated":     ActionTypesUpdated,
+	"deleted":     ActionTypesDeleted,
+	"in_progress": ActionTypesInProgress,
+	"related":     ActionTypesRelated,
+}
+
 // GetActionTypesEnumValues Enumerates the set of values for ActionTypesEnum
 func GetActionTypesEnumValues() []ActionTypesEnum {
 	values := make([]ActionTypesEnum, 0)
@@ -55,11 +63,6 @@ func GetActionTypesEnumStringValues() []string {
 
 // GetMappingActionTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingActionTypesEnum(val string) (ActionTypesEnum, bool) {
-	mappingActionTypesEnumIgnoreCase := make(map[string]ActionTypesEnum)
-	for k, v := range mappingActionTypesEnum {
-		mappingActionTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingActionTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingActionTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

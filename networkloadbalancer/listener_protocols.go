@@ -31,6 +31,13 @@ var mappingListenerProtocolsEnum = map[string]ListenerProtocolsEnum{
 	"TCP_AND_UDP": ListenerProtocolsTcpAndUdp,
 }
 
+var mappingListenerProtocolsEnumLowerCase = map[string]ListenerProtocolsEnum{
+	"any":         ListenerProtocolsAny,
+	"tcp":         ListenerProtocolsTcp,
+	"udp":         ListenerProtocolsUdp,
+	"tcp_and_udp": ListenerProtocolsTcpAndUdp,
+}
+
 // GetListenerProtocolsEnumValues Enumerates the set of values for ListenerProtocolsEnum
 func GetListenerProtocolsEnumValues() []ListenerProtocolsEnum {
 	values := make([]ListenerProtocolsEnum, 0)
@@ -52,11 +59,6 @@ func GetListenerProtocolsEnumStringValues() []string {
 
 // GetMappingListenerProtocolsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListenerProtocolsEnum(val string) (ListenerProtocolsEnum, bool) {
-	mappingListenerProtocolsEnumIgnoreCase := make(map[string]ListenerProtocolsEnum)
-	for k, v := range mappingListenerProtocolsEnum {
-		mappingListenerProtocolsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListenerProtocolsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListenerProtocolsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

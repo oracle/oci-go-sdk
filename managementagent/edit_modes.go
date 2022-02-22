@@ -29,6 +29,12 @@ var mappingEditModesEnum = map[string]EditModesEnum{
 	"EXTENSIBLE": EditModesExtensible,
 }
 
+var mappingEditModesEnumLowerCase = map[string]EditModesEnum{
+	"read_only":  EditModesReadOnly,
+	"writable":   EditModesWritable,
+	"extensible": EditModesExtensible,
+}
+
 // GetEditModesEnumValues Enumerates the set of values for EditModesEnum
 func GetEditModesEnumValues() []EditModesEnum {
 	values := make([]EditModesEnum, 0)
@@ -49,11 +55,6 @@ func GetEditModesEnumStringValues() []string {
 
 // GetMappingEditModesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEditModesEnum(val string) (EditModesEnum, bool) {
-	mappingEditModesEnumIgnoreCase := make(map[string]EditModesEnum)
-	for k, v := range mappingEditModesEnum {
-		mappingEditModesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEditModesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEditModesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

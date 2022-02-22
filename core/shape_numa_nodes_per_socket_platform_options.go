@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -69,6 +69,13 @@ var mappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum = map[string]
 	"NPS4": ShapeNumaNodesPerSocketPlatformOptionsAllowedValuesNps4,
 }
 
+var mappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnumLowerCase = map[string]ShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum{
+	"nps0": ShapeNumaNodesPerSocketPlatformOptionsAllowedValuesNps0,
+	"nps1": ShapeNumaNodesPerSocketPlatformOptionsAllowedValuesNps1,
+	"nps2": ShapeNumaNodesPerSocketPlatformOptionsAllowedValuesNps2,
+	"nps4": ShapeNumaNodesPerSocketPlatformOptionsAllowedValuesNps4,
+}
+
 // GetShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnumValues Enumerates the set of values for ShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum
 func GetShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnumValues() []ShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum {
 	values := make([]ShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum, 0)
@@ -90,11 +97,6 @@ func GetShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnumStringValues() []
 
 // GetMappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum(val string) (ShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum, bool) {
-	mappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnumIgnoreCase := make(map[string]ShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum)
-	for k, v := range mappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum {
-		mappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

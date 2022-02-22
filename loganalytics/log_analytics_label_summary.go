@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,13 @@ var mappingLogAnalyticsLabelSummaryPriorityEnum = map[string]LogAnalyticsLabelSu
 	"HIGH":   LogAnalyticsLabelSummaryPriorityHigh,
 }
 
+var mappingLogAnalyticsLabelSummaryPriorityEnumLowerCase = map[string]LogAnalyticsLabelSummaryPriorityEnum{
+	"none":   LogAnalyticsLabelSummaryPriorityNone,
+	"low":    LogAnalyticsLabelSummaryPriorityLow,
+	"medium": LogAnalyticsLabelSummaryPriorityMedium,
+	"high":   LogAnalyticsLabelSummaryPriorityHigh,
+}
+
 // GetLogAnalyticsLabelSummaryPriorityEnumValues Enumerates the set of values for LogAnalyticsLabelSummaryPriorityEnum
 func GetLogAnalyticsLabelSummaryPriorityEnumValues() []LogAnalyticsLabelSummaryPriorityEnum {
 	values := make([]LogAnalyticsLabelSummaryPriorityEnum, 0)
@@ -120,12 +127,7 @@ func GetLogAnalyticsLabelSummaryPriorityEnumStringValues() []string {
 
 // GetMappingLogAnalyticsLabelSummaryPriorityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogAnalyticsLabelSummaryPriorityEnum(val string) (LogAnalyticsLabelSummaryPriorityEnum, bool) {
-	mappingLogAnalyticsLabelSummaryPriorityEnumIgnoreCase := make(map[string]LogAnalyticsLabelSummaryPriorityEnum)
-	for k, v := range mappingLogAnalyticsLabelSummaryPriorityEnum {
-		mappingLogAnalyticsLabelSummaryPriorityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogAnalyticsLabelSummaryPriorityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogAnalyticsLabelSummaryPriorityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -141,6 +143,11 @@ const (
 var mappingLogAnalyticsLabelSummaryTypeEnum = map[string]LogAnalyticsLabelSummaryTypeEnum{
 	"INFO":    LogAnalyticsLabelSummaryTypeInfo,
 	"PROBLEM": LogAnalyticsLabelSummaryTypeProblem,
+}
+
+var mappingLogAnalyticsLabelSummaryTypeEnumLowerCase = map[string]LogAnalyticsLabelSummaryTypeEnum{
+	"info":    LogAnalyticsLabelSummaryTypeInfo,
+	"problem": LogAnalyticsLabelSummaryTypeProblem,
 }
 
 // GetLogAnalyticsLabelSummaryTypeEnumValues Enumerates the set of values for LogAnalyticsLabelSummaryTypeEnum
@@ -162,11 +169,6 @@ func GetLogAnalyticsLabelSummaryTypeEnumStringValues() []string {
 
 // GetMappingLogAnalyticsLabelSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogAnalyticsLabelSummaryTypeEnum(val string) (LogAnalyticsLabelSummaryTypeEnum, bool) {
-	mappingLogAnalyticsLabelSummaryTypeEnumIgnoreCase := make(map[string]LogAnalyticsLabelSummaryTypeEnum)
-	for k, v := range mappingLogAnalyticsLabelSummaryTypeEnum {
-		mappingLogAnalyticsLabelSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogAnalyticsLabelSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogAnalyticsLabelSummaryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

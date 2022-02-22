@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -153,6 +153,13 @@ var mappingListScheduledTasksTaskTypeEnum = map[string]ListScheduledTasksTaskTyp
 	"ACCELERATION_MAINTENANCE": ListScheduledTasksTaskTypeAccelerationMaintenance,
 }
 
+var mappingListScheduledTasksTaskTypeEnumLowerCase = map[string]ListScheduledTasksTaskTypeEnum{
+	"saved_search":             ListScheduledTasksTaskTypeSavedSearch,
+	"acceleration":             ListScheduledTasksTaskTypeAcceleration,
+	"purge":                    ListScheduledTasksTaskTypePurge,
+	"acceleration_maintenance": ListScheduledTasksTaskTypeAccelerationMaintenance,
+}
+
 // GetListScheduledTasksTaskTypeEnumValues Enumerates the set of values for ListScheduledTasksTaskTypeEnum
 func GetListScheduledTasksTaskTypeEnumValues() []ListScheduledTasksTaskTypeEnum {
 	values := make([]ListScheduledTasksTaskTypeEnum, 0)
@@ -174,12 +181,7 @@ func GetListScheduledTasksTaskTypeEnumStringValues() []string {
 
 // GetMappingListScheduledTasksTaskTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListScheduledTasksTaskTypeEnum(val string) (ListScheduledTasksTaskTypeEnum, bool) {
-	mappingListScheduledTasksTaskTypeEnumIgnoreCase := make(map[string]ListScheduledTasksTaskTypeEnum)
-	for k, v := range mappingListScheduledTasksTaskTypeEnum {
-		mappingListScheduledTasksTaskTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListScheduledTasksTaskTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListScheduledTasksTaskTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -195,6 +197,11 @@ const (
 var mappingListScheduledTasksSortOrderEnum = map[string]ListScheduledTasksSortOrderEnum{
 	"ASC":  ListScheduledTasksSortOrderAsc,
 	"DESC": ListScheduledTasksSortOrderDesc,
+}
+
+var mappingListScheduledTasksSortOrderEnumLowerCase = map[string]ListScheduledTasksSortOrderEnum{
+	"asc":  ListScheduledTasksSortOrderAsc,
+	"desc": ListScheduledTasksSortOrderDesc,
 }
 
 // GetListScheduledTasksSortOrderEnumValues Enumerates the set of values for ListScheduledTasksSortOrderEnum
@@ -216,12 +223,7 @@ func GetListScheduledTasksSortOrderEnumStringValues() []string {
 
 // GetMappingListScheduledTasksSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListScheduledTasksSortOrderEnum(val string) (ListScheduledTasksSortOrderEnum, bool) {
-	mappingListScheduledTasksSortOrderEnumIgnoreCase := make(map[string]ListScheduledTasksSortOrderEnum)
-	for k, v := range mappingListScheduledTasksSortOrderEnum {
-		mappingListScheduledTasksSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListScheduledTasksSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListScheduledTasksSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -239,6 +241,12 @@ var mappingListScheduledTasksSortByEnum = map[string]ListScheduledTasksSortByEnu
 	"timeCreated": ListScheduledTasksSortByTimecreated,
 	"timeUpdated": ListScheduledTasksSortByTimeupdated,
 	"displayName": ListScheduledTasksSortByDisplayname,
+}
+
+var mappingListScheduledTasksSortByEnumLowerCase = map[string]ListScheduledTasksSortByEnum{
+	"timecreated": ListScheduledTasksSortByTimecreated,
+	"timeupdated": ListScheduledTasksSortByTimeupdated,
+	"displayname": ListScheduledTasksSortByDisplayname,
 }
 
 // GetListScheduledTasksSortByEnumValues Enumerates the set of values for ListScheduledTasksSortByEnum
@@ -261,11 +269,6 @@ func GetListScheduledTasksSortByEnumStringValues() []string {
 
 // GetMappingListScheduledTasksSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListScheduledTasksSortByEnum(val string) (ListScheduledTasksSortByEnum, bool) {
-	mappingListScheduledTasksSortByEnumIgnoreCase := make(map[string]ListScheduledTasksSortByEnum)
-	for k, v := range mappingListScheduledTasksSortByEnum {
-		mappingListScheduledTasksSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListScheduledTasksSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListScheduledTasksSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

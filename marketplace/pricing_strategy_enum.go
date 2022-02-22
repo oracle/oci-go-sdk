@@ -31,6 +31,13 @@ var mappingPricingStrategyEnumEnum = map[string]PricingStrategyEnumEnum{
 	"PER_INSTANCE_MONTHLY_INCLUSIVE": PricingStrategyEnumPerInstanceMonthlyInclusive,
 }
 
+var mappingPricingStrategyEnumEnumLowerCase = map[string]PricingStrategyEnumEnum{
+	"per_ocpu_linear":                PricingStrategyEnumPerOcpuLinear,
+	"per_ocpu_min_billing":           PricingStrategyEnumPerOcpuMinBilling,
+	"per_instance":                   PricingStrategyEnumPerInstance,
+	"per_instance_monthly_inclusive": PricingStrategyEnumPerInstanceMonthlyInclusive,
+}
+
 // GetPricingStrategyEnumEnumValues Enumerates the set of values for PricingStrategyEnumEnum
 func GetPricingStrategyEnumEnumValues() []PricingStrategyEnumEnum {
 	values := make([]PricingStrategyEnumEnum, 0)
@@ -52,11 +59,6 @@ func GetPricingStrategyEnumEnumStringValues() []string {
 
 // GetMappingPricingStrategyEnumEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPricingStrategyEnumEnum(val string) (PricingStrategyEnumEnum, bool) {
-	mappingPricingStrategyEnumEnumIgnoreCase := make(map[string]PricingStrategyEnumEnum)
-	for k, v := range mappingPricingStrategyEnumEnum {
-		mappingPricingStrategyEnumEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPricingStrategyEnumEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPricingStrategyEnumEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

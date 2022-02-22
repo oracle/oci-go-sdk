@@ -12,8 +12,8 @@ package identitydataplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
-	"github.com/oracle/oci-go-sdk/v58/common/auth"
+	"github.com/oracle/oci-go-sdk/v59/common"
+	"github.com/oracle/oci-go-sdk/v59/common/auth"
 	"net/http"
 )
 
@@ -51,7 +51,7 @@ func NewDataplaneClientWithOboToken(configProvider common.ConfigurationProvider,
 
 func newDataplaneClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client DataplaneClient, err error) {
 	// Dataplane service default circuit breaker is enabled
-	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSetting())
+	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName())
 	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 

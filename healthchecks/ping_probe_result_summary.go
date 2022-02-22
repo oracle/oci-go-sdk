@@ -13,7 +13,7 @@ package healthchecks
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -127,6 +127,14 @@ var mappingPingProbeResultSummaryErrorCategoryEnum = map[string]PingProbeResultS
 	"SYSTEM":    PingProbeResultSummaryErrorCategorySystem,
 }
 
+var mappingPingProbeResultSummaryErrorCategoryEnumLowerCase = map[string]PingProbeResultSummaryErrorCategoryEnum{
+	"none":      PingProbeResultSummaryErrorCategoryNone,
+	"dns":       PingProbeResultSummaryErrorCategoryDns,
+	"transport": PingProbeResultSummaryErrorCategoryTransport,
+	"network":   PingProbeResultSummaryErrorCategoryNetwork,
+	"system":    PingProbeResultSummaryErrorCategorySystem,
+}
+
 // GetPingProbeResultSummaryErrorCategoryEnumValues Enumerates the set of values for PingProbeResultSummaryErrorCategoryEnum
 func GetPingProbeResultSummaryErrorCategoryEnumValues() []PingProbeResultSummaryErrorCategoryEnum {
 	values := make([]PingProbeResultSummaryErrorCategoryEnum, 0)
@@ -149,12 +157,7 @@ func GetPingProbeResultSummaryErrorCategoryEnumStringValues() []string {
 
 // GetMappingPingProbeResultSummaryErrorCategoryEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPingProbeResultSummaryErrorCategoryEnum(val string) (PingProbeResultSummaryErrorCategoryEnum, bool) {
-	mappingPingProbeResultSummaryErrorCategoryEnumIgnoreCase := make(map[string]PingProbeResultSummaryErrorCategoryEnum)
-	for k, v := range mappingPingProbeResultSummaryErrorCategoryEnum {
-		mappingPingProbeResultSummaryErrorCategoryEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPingProbeResultSummaryErrorCategoryEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPingProbeResultSummaryErrorCategoryEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 

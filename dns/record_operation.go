@@ -12,7 +12,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -103,6 +103,13 @@ var mappingRecordOperationOperationEnum = map[string]RecordOperationOperationEnu
 	"REMOVE":   RecordOperationOperationRemove,
 }
 
+var mappingRecordOperationOperationEnumLowerCase = map[string]RecordOperationOperationEnum{
+	"require":  RecordOperationOperationRequire,
+	"prohibit": RecordOperationOperationProhibit,
+	"add":      RecordOperationOperationAdd,
+	"remove":   RecordOperationOperationRemove,
+}
+
 // GetRecordOperationOperationEnumValues Enumerates the set of values for RecordOperationOperationEnum
 func GetRecordOperationOperationEnumValues() []RecordOperationOperationEnum {
 	values := make([]RecordOperationOperationEnum, 0)
@@ -124,11 +131,6 @@ func GetRecordOperationOperationEnumStringValues() []string {
 
 // GetMappingRecordOperationOperationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRecordOperationOperationEnum(val string) (RecordOperationOperationEnum, bool) {
-	mappingRecordOperationOperationEnumIgnoreCase := make(map[string]RecordOperationOperationEnum)
-	for k, v := range mappingRecordOperationOperationEnum {
-		mappingRecordOperationOperationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRecordOperationOperationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRecordOperationOperationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

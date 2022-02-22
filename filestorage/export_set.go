@@ -11,7 +11,7 @@ package filestorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -107,6 +107,13 @@ var mappingExportSetLifecycleStateEnum = map[string]ExportSetLifecycleStateEnum{
 	"DELETED":  ExportSetLifecycleStateDeleted,
 }
 
+var mappingExportSetLifecycleStateEnumLowerCase = map[string]ExportSetLifecycleStateEnum{
+	"creating": ExportSetLifecycleStateCreating,
+	"active":   ExportSetLifecycleStateActive,
+	"deleting": ExportSetLifecycleStateDeleting,
+	"deleted":  ExportSetLifecycleStateDeleted,
+}
+
 // GetExportSetLifecycleStateEnumValues Enumerates the set of values for ExportSetLifecycleStateEnum
 func GetExportSetLifecycleStateEnumValues() []ExportSetLifecycleStateEnum {
 	values := make([]ExportSetLifecycleStateEnum, 0)
@@ -128,11 +135,6 @@ func GetExportSetLifecycleStateEnumStringValues() []string {
 
 // GetMappingExportSetLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExportSetLifecycleStateEnum(val string) (ExportSetLifecycleStateEnum, bool) {
-	mappingExportSetLifecycleStateEnumIgnoreCase := make(map[string]ExportSetLifecycleStateEnum)
-	for k, v := range mappingExportSetLifecycleStateEnum {
-		mappingExportSetLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExportSetLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExportSetLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

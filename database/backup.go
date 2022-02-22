@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -105,6 +105,12 @@ var mappingBackupTypeEnum = map[string]BackupTypeEnum{
 	"VIRTUAL_FULL": BackupTypeVirtualFull,
 }
 
+var mappingBackupTypeEnumLowerCase = map[string]BackupTypeEnum{
+	"incremental":  BackupTypeIncremental,
+	"full":         BackupTypeFull,
+	"virtual_full": BackupTypeVirtualFull,
+}
+
 // GetBackupTypeEnumValues Enumerates the set of values for BackupTypeEnum
 func GetBackupTypeEnumValues() []BackupTypeEnum {
 	values := make([]BackupTypeEnum, 0)
@@ -125,12 +131,7 @@ func GetBackupTypeEnumStringValues() []string {
 
 // GetMappingBackupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBackupTypeEnum(val string) (BackupTypeEnum, bool) {
-	mappingBackupTypeEnumIgnoreCase := make(map[string]BackupTypeEnum)
-	for k, v := range mappingBackupTypeEnum {
-		mappingBackupTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBackupTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBackupTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -156,6 +157,15 @@ var mappingBackupLifecycleStateEnum = map[string]BackupLifecycleStateEnum{
 	"RESTORING": BackupLifecycleStateRestoring,
 }
 
+var mappingBackupLifecycleStateEnumLowerCase = map[string]BackupLifecycleStateEnum{
+	"creating":  BackupLifecycleStateCreating,
+	"active":    BackupLifecycleStateActive,
+	"deleting":  BackupLifecycleStateDeleting,
+	"deleted":   BackupLifecycleStateDeleted,
+	"failed":    BackupLifecycleStateFailed,
+	"restoring": BackupLifecycleStateRestoring,
+}
+
 // GetBackupLifecycleStateEnumValues Enumerates the set of values for BackupLifecycleStateEnum
 func GetBackupLifecycleStateEnumValues() []BackupLifecycleStateEnum {
 	values := make([]BackupLifecycleStateEnum, 0)
@@ -179,12 +189,7 @@ func GetBackupLifecycleStateEnumStringValues() []string {
 
 // GetMappingBackupLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBackupLifecycleStateEnum(val string) (BackupLifecycleStateEnum, bool) {
-	mappingBackupLifecycleStateEnumIgnoreCase := make(map[string]BackupLifecycleStateEnum)
-	for k, v := range mappingBackupLifecycleStateEnum {
-		mappingBackupLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBackupLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBackupLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -204,6 +209,13 @@ var mappingBackupDatabaseEditionEnum = map[string]BackupDatabaseEditionEnum{
 	"ENTERPRISE_EDITION":                     BackupDatabaseEditionEnterpriseEdition,
 	"ENTERPRISE_EDITION_HIGH_PERFORMANCE":    BackupDatabaseEditionEnterpriseEditionHighPerformance,
 	"ENTERPRISE_EDITION_EXTREME_PERFORMANCE": BackupDatabaseEditionEnterpriseEditionExtremePerformance,
+}
+
+var mappingBackupDatabaseEditionEnumLowerCase = map[string]BackupDatabaseEditionEnum{
+	"standard_edition":                       BackupDatabaseEditionStandardEdition,
+	"enterprise_edition":                     BackupDatabaseEditionEnterpriseEdition,
+	"enterprise_edition_high_performance":    BackupDatabaseEditionEnterpriseEditionHighPerformance,
+	"enterprise_edition_extreme_performance": BackupDatabaseEditionEnterpriseEditionExtremePerformance,
 }
 
 // GetBackupDatabaseEditionEnumValues Enumerates the set of values for BackupDatabaseEditionEnum
@@ -227,11 +239,6 @@ func GetBackupDatabaseEditionEnumStringValues() []string {
 
 // GetMappingBackupDatabaseEditionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBackupDatabaseEditionEnum(val string) (BackupDatabaseEditionEnum, bool) {
-	mappingBackupDatabaseEditionEnumIgnoreCase := make(map[string]BackupDatabaseEditionEnum)
-	for k, v := range mappingBackupDatabaseEditionEnum {
-		mappingBackupDatabaseEditionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBackupDatabaseEditionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBackupDatabaseEditionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

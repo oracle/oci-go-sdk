@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -63,6 +63,11 @@ var mappingWrappedImportKeyWrappingAlgorithmEnum = map[string]WrappedImportKeyWr
 	"RSA_OAEP_AES_SHA256": WrappedImportKeyWrappingAlgorithmAesSha256,
 }
 
+var mappingWrappedImportKeyWrappingAlgorithmEnumLowerCase = map[string]WrappedImportKeyWrappingAlgorithmEnum{
+	"rsa_oaep_sha256":     WrappedImportKeyWrappingAlgorithmSha256,
+	"rsa_oaep_aes_sha256": WrappedImportKeyWrappingAlgorithmAesSha256,
+}
+
 // GetWrappedImportKeyWrappingAlgorithmEnumValues Enumerates the set of values for WrappedImportKeyWrappingAlgorithmEnum
 func GetWrappedImportKeyWrappingAlgorithmEnumValues() []WrappedImportKeyWrappingAlgorithmEnum {
 	values := make([]WrappedImportKeyWrappingAlgorithmEnum, 0)
@@ -82,11 +87,6 @@ func GetWrappedImportKeyWrappingAlgorithmEnumStringValues() []string {
 
 // GetMappingWrappedImportKeyWrappingAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWrappedImportKeyWrappingAlgorithmEnum(val string) (WrappedImportKeyWrappingAlgorithmEnum, bool) {
-	mappingWrappedImportKeyWrappingAlgorithmEnumIgnoreCase := make(map[string]WrappedImportKeyWrappingAlgorithmEnum)
-	for k, v := range mappingWrappedImportKeyWrappingAlgorithmEnum {
-		mappingWrappedImportKeyWrappingAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWrappedImportKeyWrappingAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWrappedImportKeyWrappingAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

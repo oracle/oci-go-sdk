@@ -6,7 +6,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -134,6 +134,11 @@ var mappingListMfaTotpDevicesSortByEnum = map[string]ListMfaTotpDevicesSortByEnu
 	"NAME":        ListMfaTotpDevicesSortByName,
 }
 
+var mappingListMfaTotpDevicesSortByEnumLowerCase = map[string]ListMfaTotpDevicesSortByEnum{
+	"timecreated": ListMfaTotpDevicesSortByTimecreated,
+	"name":        ListMfaTotpDevicesSortByName,
+}
+
 // GetListMfaTotpDevicesSortByEnumValues Enumerates the set of values for ListMfaTotpDevicesSortByEnum
 func GetListMfaTotpDevicesSortByEnumValues() []ListMfaTotpDevicesSortByEnum {
 	values := make([]ListMfaTotpDevicesSortByEnum, 0)
@@ -153,12 +158,7 @@ func GetListMfaTotpDevicesSortByEnumStringValues() []string {
 
 // GetMappingListMfaTotpDevicesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMfaTotpDevicesSortByEnum(val string) (ListMfaTotpDevicesSortByEnum, bool) {
-	mappingListMfaTotpDevicesSortByEnumIgnoreCase := make(map[string]ListMfaTotpDevicesSortByEnum)
-	for k, v := range mappingListMfaTotpDevicesSortByEnum {
-		mappingListMfaTotpDevicesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMfaTotpDevicesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMfaTotpDevicesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -174,6 +174,11 @@ const (
 var mappingListMfaTotpDevicesSortOrderEnum = map[string]ListMfaTotpDevicesSortOrderEnum{
 	"ASC":  ListMfaTotpDevicesSortOrderAsc,
 	"DESC": ListMfaTotpDevicesSortOrderDesc,
+}
+
+var mappingListMfaTotpDevicesSortOrderEnumLowerCase = map[string]ListMfaTotpDevicesSortOrderEnum{
+	"asc":  ListMfaTotpDevicesSortOrderAsc,
+	"desc": ListMfaTotpDevicesSortOrderDesc,
 }
 
 // GetListMfaTotpDevicesSortOrderEnumValues Enumerates the set of values for ListMfaTotpDevicesSortOrderEnum
@@ -195,11 +200,6 @@ func GetListMfaTotpDevicesSortOrderEnumStringValues() []string {
 
 // GetMappingListMfaTotpDevicesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMfaTotpDevicesSortOrderEnum(val string) (ListMfaTotpDevicesSortOrderEnum, bool) {
-	mappingListMfaTotpDevicesSortOrderEnumIgnoreCase := make(map[string]ListMfaTotpDevicesSortOrderEnum)
-	for k, v := range mappingListMfaTotpDevicesSortOrderEnum {
-		mappingListMfaTotpDevicesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMfaTotpDevicesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMfaTotpDevicesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

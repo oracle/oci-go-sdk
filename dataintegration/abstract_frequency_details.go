@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -128,6 +128,14 @@ var mappingAbstractFrequencyDetailsFrequencyEnum = map[string]AbstractFrequencyD
 	"CUSTOM":  AbstractFrequencyDetailsFrequencyCustom,
 }
 
+var mappingAbstractFrequencyDetailsFrequencyEnumLowerCase = map[string]AbstractFrequencyDetailsFrequencyEnum{
+	"hourly":  AbstractFrequencyDetailsFrequencyHourly,
+	"daily":   AbstractFrequencyDetailsFrequencyDaily,
+	"monthly": AbstractFrequencyDetailsFrequencyMonthly,
+	"weekly":  AbstractFrequencyDetailsFrequencyWeekly,
+	"custom":  AbstractFrequencyDetailsFrequencyCustom,
+}
+
 // GetAbstractFrequencyDetailsFrequencyEnumValues Enumerates the set of values for AbstractFrequencyDetailsFrequencyEnum
 func GetAbstractFrequencyDetailsFrequencyEnumValues() []AbstractFrequencyDetailsFrequencyEnum {
 	values := make([]AbstractFrequencyDetailsFrequencyEnum, 0)
@@ -150,12 +158,7 @@ func GetAbstractFrequencyDetailsFrequencyEnumStringValues() []string {
 
 // GetMappingAbstractFrequencyDetailsFrequencyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAbstractFrequencyDetailsFrequencyEnum(val string) (AbstractFrequencyDetailsFrequencyEnum, bool) {
-	mappingAbstractFrequencyDetailsFrequencyEnumIgnoreCase := make(map[string]AbstractFrequencyDetailsFrequencyEnum)
-	for k, v := range mappingAbstractFrequencyDetailsFrequencyEnum {
-		mappingAbstractFrequencyDetailsFrequencyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAbstractFrequencyDetailsFrequencyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAbstractFrequencyDetailsFrequencyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +184,15 @@ var mappingAbstractFrequencyDetailsModelTypeEnum = map[string]AbstractFrequencyD
 	"CUSTOM":       AbstractFrequencyDetailsModelTypeCustom,
 }
 
+var mappingAbstractFrequencyDetailsModelTypeEnumLowerCase = map[string]AbstractFrequencyDetailsModelTypeEnum{
+	"hourly":       AbstractFrequencyDetailsModelTypeHourly,
+	"daily":        AbstractFrequencyDetailsModelTypeDaily,
+	"monthly":      AbstractFrequencyDetailsModelTypeMonthly,
+	"weekly":       AbstractFrequencyDetailsModelTypeWeekly,
+	"monthly_rule": AbstractFrequencyDetailsModelTypeMonthlyRule,
+	"custom":       AbstractFrequencyDetailsModelTypeCustom,
+}
+
 // GetAbstractFrequencyDetailsModelTypeEnumValues Enumerates the set of values for AbstractFrequencyDetailsModelTypeEnum
 func GetAbstractFrequencyDetailsModelTypeEnumValues() []AbstractFrequencyDetailsModelTypeEnum {
 	values := make([]AbstractFrequencyDetailsModelTypeEnum, 0)
@@ -204,11 +216,6 @@ func GetAbstractFrequencyDetailsModelTypeEnumStringValues() []string {
 
 // GetMappingAbstractFrequencyDetailsModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAbstractFrequencyDetailsModelTypeEnum(val string) (AbstractFrequencyDetailsModelTypeEnum, bool) {
-	mappingAbstractFrequencyDetailsModelTypeEnumIgnoreCase := make(map[string]AbstractFrequencyDetailsModelTypeEnum)
-	for k, v := range mappingAbstractFrequencyDetailsModelTypeEnum {
-		mappingAbstractFrequencyDetailsModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAbstractFrequencyDetailsModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAbstractFrequencyDetailsModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

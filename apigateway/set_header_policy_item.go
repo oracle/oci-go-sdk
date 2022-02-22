@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -68,6 +68,12 @@ var mappingSetHeaderPolicyItemIfExistsEnum = map[string]SetHeaderPolicyItemIfExi
 	"SKIP":      SetHeaderPolicyItemIfExistsSkip,
 }
 
+var mappingSetHeaderPolicyItemIfExistsEnumLowerCase = map[string]SetHeaderPolicyItemIfExistsEnum{
+	"overwrite": SetHeaderPolicyItemIfExistsOverwrite,
+	"append":    SetHeaderPolicyItemIfExistsAppend,
+	"skip":      SetHeaderPolicyItemIfExistsSkip,
+}
+
 // GetSetHeaderPolicyItemIfExistsEnumValues Enumerates the set of values for SetHeaderPolicyItemIfExistsEnum
 func GetSetHeaderPolicyItemIfExistsEnumValues() []SetHeaderPolicyItemIfExistsEnum {
 	values := make([]SetHeaderPolicyItemIfExistsEnum, 0)
@@ -88,11 +94,6 @@ func GetSetHeaderPolicyItemIfExistsEnumStringValues() []string {
 
 // GetMappingSetHeaderPolicyItemIfExistsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSetHeaderPolicyItemIfExistsEnum(val string) (SetHeaderPolicyItemIfExistsEnum, bool) {
-	mappingSetHeaderPolicyItemIfExistsEnumIgnoreCase := make(map[string]SetHeaderPolicyItemIfExistsEnum)
-	for k, v := range mappingSetHeaderPolicyItemIfExistsEnum {
-		mappingSetHeaderPolicyItemIfExistsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSetHeaderPolicyItemIfExistsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSetHeaderPolicyItemIfExistsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

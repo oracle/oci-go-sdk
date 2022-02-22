@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -153,6 +153,11 @@ var mappingListConsoleHistoriesSortByEnum = map[string]ListConsoleHistoriesSortB
 	"DISPLAYNAME": ListConsoleHistoriesSortByDisplayname,
 }
 
+var mappingListConsoleHistoriesSortByEnumLowerCase = map[string]ListConsoleHistoriesSortByEnum{
+	"timecreated": ListConsoleHistoriesSortByTimecreated,
+	"displayname": ListConsoleHistoriesSortByDisplayname,
+}
+
 // GetListConsoleHistoriesSortByEnumValues Enumerates the set of values for ListConsoleHistoriesSortByEnum
 func GetListConsoleHistoriesSortByEnumValues() []ListConsoleHistoriesSortByEnum {
 	values := make([]ListConsoleHistoriesSortByEnum, 0)
@@ -172,12 +177,7 @@ func GetListConsoleHistoriesSortByEnumStringValues() []string {
 
 // GetMappingListConsoleHistoriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConsoleHistoriesSortByEnum(val string) (ListConsoleHistoriesSortByEnum, bool) {
-	mappingListConsoleHistoriesSortByEnumIgnoreCase := make(map[string]ListConsoleHistoriesSortByEnum)
-	for k, v := range mappingListConsoleHistoriesSortByEnum {
-		mappingListConsoleHistoriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConsoleHistoriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConsoleHistoriesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -193,6 +193,11 @@ const (
 var mappingListConsoleHistoriesSortOrderEnum = map[string]ListConsoleHistoriesSortOrderEnum{
 	"ASC":  ListConsoleHistoriesSortOrderAsc,
 	"DESC": ListConsoleHistoriesSortOrderDesc,
+}
+
+var mappingListConsoleHistoriesSortOrderEnumLowerCase = map[string]ListConsoleHistoriesSortOrderEnum{
+	"asc":  ListConsoleHistoriesSortOrderAsc,
+	"desc": ListConsoleHistoriesSortOrderDesc,
 }
 
 // GetListConsoleHistoriesSortOrderEnumValues Enumerates the set of values for ListConsoleHistoriesSortOrderEnum
@@ -214,11 +219,6 @@ func GetListConsoleHistoriesSortOrderEnumStringValues() []string {
 
 // GetMappingListConsoleHistoriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConsoleHistoriesSortOrderEnum(val string) (ListConsoleHistoriesSortOrderEnum, bool) {
-	mappingListConsoleHistoriesSortOrderEnumIgnoreCase := make(map[string]ListConsoleHistoriesSortOrderEnum)
-	for k, v := range mappingListConsoleHistoriesSortOrderEnum {
-		mappingListConsoleHistoriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConsoleHistoriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConsoleHistoriesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -43,6 +43,19 @@ var mappingJreSortByEnum = map[string]JreSortByEnum{
 	"securityStatus":                  JreSortBySecurityStatus,
 }
 
+var mappingJreSortByEnumLowerCase = map[string]JreSortByEnum{
+	"distribution":                    JreSortByDistribution,
+	"timefirstseen":                   JreSortByTimeFirstSeen,
+	"timelastseen":                    JreSortByTimeLastSeen,
+	"vendor":                          JreSortByVendor,
+	"version":                         JreSortByVersion,
+	"approximateinstallationcount":    JreSortByApproximateInstallationCount,
+	"approximateapplicationcount":     JreSortByApproximateApplicationCount,
+	"approximatemanagedinstancecount": JreSortByApproximateManagedInstanceCount,
+	"osname":                          JreSortByOsName,
+	"securitystatus":                  JreSortBySecurityStatus,
+}
+
 // GetJreSortByEnumValues Enumerates the set of values for JreSortByEnum
 func GetJreSortByEnumValues() []JreSortByEnum {
 	values := make([]JreSortByEnum, 0)
@@ -70,11 +83,6 @@ func GetJreSortByEnumStringValues() []string {
 
 // GetMappingJreSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJreSortByEnum(val string) (JreSortByEnum, bool) {
-	mappingJreSortByEnumIgnoreCase := make(map[string]JreSortByEnum)
-	for k, v := range mappingJreSortByEnum {
-		mappingJreSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJreSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJreSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

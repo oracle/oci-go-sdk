@@ -32,6 +32,13 @@ var mappingHarvestStatusEnum = map[string]HarvestStatusEnum{
 	"DEFERRED":    HarvestStatusDeferred,
 }
 
+var mappingHarvestStatusEnumLowerCase = map[string]HarvestStatusEnum{
+	"complete":    HarvestStatusComplete,
+	"error":       HarvestStatusError,
+	"in_progress": HarvestStatusInProgress,
+	"deferred":    HarvestStatusDeferred,
+}
+
 // GetHarvestStatusEnumValues Enumerates the set of values for HarvestStatusEnum
 func GetHarvestStatusEnumValues() []HarvestStatusEnum {
 	values := make([]HarvestStatusEnum, 0)
@@ -53,11 +60,6 @@ func GetHarvestStatusEnumStringValues() []string {
 
 // GetMappingHarvestStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHarvestStatusEnum(val string) (HarvestStatusEnum, bool) {
-	mappingHarvestStatusEnumIgnoreCase := make(map[string]HarvestStatusEnum)
-	for k, v := range mappingHarvestStatusEnum {
-		mappingHarvestStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHarvestStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHarvestStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

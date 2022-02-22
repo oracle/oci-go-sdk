@@ -6,7 +6,7 @@ package budget
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -148,6 +148,11 @@ var mappingListBudgetsSortOrderEnum = map[string]ListBudgetsSortOrderEnum{
 	"DESC": ListBudgetsSortOrderDesc,
 }
 
+var mappingListBudgetsSortOrderEnumLowerCase = map[string]ListBudgetsSortOrderEnum{
+	"asc":  ListBudgetsSortOrderAsc,
+	"desc": ListBudgetsSortOrderDesc,
+}
+
 // GetListBudgetsSortOrderEnumValues Enumerates the set of values for ListBudgetsSortOrderEnum
 func GetListBudgetsSortOrderEnumValues() []ListBudgetsSortOrderEnum {
 	values := make([]ListBudgetsSortOrderEnum, 0)
@@ -167,12 +172,7 @@ func GetListBudgetsSortOrderEnumStringValues() []string {
 
 // GetMappingListBudgetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBudgetsSortOrderEnum(val string) (ListBudgetsSortOrderEnum, bool) {
-	mappingListBudgetsSortOrderEnumIgnoreCase := make(map[string]ListBudgetsSortOrderEnum)
-	for k, v := range mappingListBudgetsSortOrderEnum {
-		mappingListBudgetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBudgetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBudgetsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -188,6 +188,11 @@ const (
 var mappingListBudgetsSortByEnum = map[string]ListBudgetsSortByEnum{
 	"timeCreated": ListBudgetsSortByTimecreated,
 	"displayName": ListBudgetsSortByDisplayname,
+}
+
+var mappingListBudgetsSortByEnumLowerCase = map[string]ListBudgetsSortByEnum{
+	"timecreated": ListBudgetsSortByTimecreated,
+	"displayname": ListBudgetsSortByDisplayname,
 }
 
 // GetListBudgetsSortByEnumValues Enumerates the set of values for ListBudgetsSortByEnum
@@ -209,12 +214,7 @@ func GetListBudgetsSortByEnumStringValues() []string {
 
 // GetMappingListBudgetsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBudgetsSortByEnum(val string) (ListBudgetsSortByEnum, bool) {
-	mappingListBudgetsSortByEnumIgnoreCase := make(map[string]ListBudgetsSortByEnum)
-	for k, v := range mappingListBudgetsSortByEnum {
-		mappingListBudgetsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBudgetsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBudgetsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -230,6 +230,11 @@ const (
 var mappingListBudgetsLifecycleStateEnum = map[string]ListBudgetsLifecycleStateEnum{
 	"ACTIVE":   ListBudgetsLifecycleStateActive,
 	"INACTIVE": ListBudgetsLifecycleStateInactive,
+}
+
+var mappingListBudgetsLifecycleStateEnumLowerCase = map[string]ListBudgetsLifecycleStateEnum{
+	"active":   ListBudgetsLifecycleStateActive,
+	"inactive": ListBudgetsLifecycleStateInactive,
 }
 
 // GetListBudgetsLifecycleStateEnumValues Enumerates the set of values for ListBudgetsLifecycleStateEnum
@@ -251,12 +256,7 @@ func GetListBudgetsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListBudgetsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBudgetsLifecycleStateEnum(val string) (ListBudgetsLifecycleStateEnum, bool) {
-	mappingListBudgetsLifecycleStateEnumIgnoreCase := make(map[string]ListBudgetsLifecycleStateEnum)
-	for k, v := range mappingListBudgetsLifecycleStateEnum {
-		mappingListBudgetsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBudgetsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBudgetsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -274,6 +274,12 @@ var mappingListBudgetsTargetTypeEnum = map[string]ListBudgetsTargetTypeEnum{
 	"ALL":         ListBudgetsTargetTypeAll,
 	"COMPARTMENT": ListBudgetsTargetTypeCompartment,
 	"TAG":         ListBudgetsTargetTypeTag,
+}
+
+var mappingListBudgetsTargetTypeEnumLowerCase = map[string]ListBudgetsTargetTypeEnum{
+	"all":         ListBudgetsTargetTypeAll,
+	"compartment": ListBudgetsTargetTypeCompartment,
+	"tag":         ListBudgetsTargetTypeTag,
 }
 
 // GetListBudgetsTargetTypeEnumValues Enumerates the set of values for ListBudgetsTargetTypeEnum
@@ -296,11 +302,6 @@ func GetListBudgetsTargetTypeEnumStringValues() []string {
 
 // GetMappingListBudgetsTargetTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBudgetsTargetTypeEnum(val string) (ListBudgetsTargetTypeEnum, bool) {
-	mappingListBudgetsTargetTypeEnumIgnoreCase := make(map[string]ListBudgetsTargetTypeEnum)
-	for k, v := range mappingListBudgetsTargetTypeEnum {
-		mappingListBudgetsTargetTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBudgetsTargetTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBudgetsTargetTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

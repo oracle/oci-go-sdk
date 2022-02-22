@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -63,9 +63,11 @@ type CreateBootVolumeDetails struct {
 	// Allowed values:
 	//   * `10`: Represents Balanced option.
 	//   * `20`: Represents Higher Performance option.
+	// For performance autotune enabled volumes, It would be the Default(Minimum) VPUs/GB.
 	VpusPerGB *int64 `mandatory:"false" json:"vpusPerGB"`
 
-	// Specifies whether the auto-tune performance is enabled for this boot volume.
+	// Specifies whether the auto-tune performance is enabled for this boot volume. This field is deprecated.
+	// Use the `DetachedVolumeAutotunePolicy` instead to enable the volume for detached autotune.
 	IsAutoTuneEnabled *bool `mandatory:"false" json:"isAutoTuneEnabled"`
 
 	// The list of boot volume replicas to be enabled for this boot volume

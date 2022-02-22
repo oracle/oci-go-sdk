@@ -31,6 +31,12 @@ var mappingDataSourceTypeEnum = map[string]DataSourceTypeEnum{
 	"INFLUX":                DataSourceTypeInflux,
 }
 
+var mappingDataSourceTypeEnumLowerCase = map[string]DataSourceTypeEnum{
+	"oracle_object_storage": DataSourceTypeOracleObjectStorage,
+	"oracle_atp":            DataSourceTypeOracleAtp,
+	"influx":                DataSourceTypeInflux,
+}
+
 // GetDataSourceTypeEnumValues Enumerates the set of values for DataSourceTypeEnum
 func GetDataSourceTypeEnumValues() []DataSourceTypeEnum {
 	values := make([]DataSourceTypeEnum, 0)
@@ -51,11 +57,6 @@ func GetDataSourceTypeEnumStringValues() []string {
 
 // GetMappingDataSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataSourceTypeEnum(val string) (DataSourceTypeEnum, bool) {
-	mappingDataSourceTypeEnumIgnoreCase := make(map[string]DataSourceTypeEnum)
-	for k, v := range mappingDataSourceTypeEnum {
-		mappingDataSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

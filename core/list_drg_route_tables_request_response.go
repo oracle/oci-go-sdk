@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -152,6 +152,11 @@ var mappingListDrgRouteTablesSortByEnum = map[string]ListDrgRouteTablesSortByEnu
 	"DISPLAYNAME": ListDrgRouteTablesSortByDisplayname,
 }
 
+var mappingListDrgRouteTablesSortByEnumLowerCase = map[string]ListDrgRouteTablesSortByEnum{
+	"timecreated": ListDrgRouteTablesSortByTimecreated,
+	"displayname": ListDrgRouteTablesSortByDisplayname,
+}
+
 // GetListDrgRouteTablesSortByEnumValues Enumerates the set of values for ListDrgRouteTablesSortByEnum
 func GetListDrgRouteTablesSortByEnumValues() []ListDrgRouteTablesSortByEnum {
 	values := make([]ListDrgRouteTablesSortByEnum, 0)
@@ -171,12 +176,7 @@ func GetListDrgRouteTablesSortByEnumStringValues() []string {
 
 // GetMappingListDrgRouteTablesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDrgRouteTablesSortByEnum(val string) (ListDrgRouteTablesSortByEnum, bool) {
-	mappingListDrgRouteTablesSortByEnumIgnoreCase := make(map[string]ListDrgRouteTablesSortByEnum)
-	for k, v := range mappingListDrgRouteTablesSortByEnum {
-		mappingListDrgRouteTablesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDrgRouteTablesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDrgRouteTablesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -192,6 +192,11 @@ const (
 var mappingListDrgRouteTablesSortOrderEnum = map[string]ListDrgRouteTablesSortOrderEnum{
 	"ASC":  ListDrgRouteTablesSortOrderAsc,
 	"DESC": ListDrgRouteTablesSortOrderDesc,
+}
+
+var mappingListDrgRouteTablesSortOrderEnumLowerCase = map[string]ListDrgRouteTablesSortOrderEnum{
+	"asc":  ListDrgRouteTablesSortOrderAsc,
+	"desc": ListDrgRouteTablesSortOrderDesc,
 }
 
 // GetListDrgRouteTablesSortOrderEnumValues Enumerates the set of values for ListDrgRouteTablesSortOrderEnum
@@ -213,11 +218,6 @@ func GetListDrgRouteTablesSortOrderEnumStringValues() []string {
 
 // GetMappingListDrgRouteTablesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDrgRouteTablesSortOrderEnum(val string) (ListDrgRouteTablesSortOrderEnum, bool) {
-	mappingListDrgRouteTablesSortOrderEnumIgnoreCase := make(map[string]ListDrgRouteTablesSortOrderEnum)
-	for k, v := range mappingListDrgRouteTablesSortOrderEnum {
-		mappingListDrgRouteTablesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDrgRouteTablesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDrgRouteTablesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -256,6 +256,17 @@ var mappingConnectionSummaryModelTypeEnum = map[string]ConnectionSummaryModelTyp
 	"AMAZON_S3_CONNECTION":             ConnectionSummaryModelTypeAmazonS3Connection,
 }
 
+var mappingConnectionSummaryModelTypeEnumLowerCase = map[string]ConnectionSummaryModelTypeEnum{
+	"oracle_adwc_connection":           ConnectionSummaryModelTypeOracleAdwcConnection,
+	"oracle_atp_connection":            ConnectionSummaryModelTypeOracleAtpConnection,
+	"oracle_object_storage_connection": ConnectionSummaryModelTypeOracleObjectStorageConnection,
+	"oracledb_connection":              ConnectionSummaryModelTypeOracledbConnection,
+	"mysql_connection":                 ConnectionSummaryModelTypeMysqlConnection,
+	"generic_jdbc_connection":          ConnectionSummaryModelTypeGenericJdbcConnection,
+	"bicc_connection":                  ConnectionSummaryModelTypeBiccConnection,
+	"amazon_s3_connection":             ConnectionSummaryModelTypeAmazonS3Connection,
+}
+
 // GetConnectionSummaryModelTypeEnumValues Enumerates the set of values for ConnectionSummaryModelTypeEnum
 func GetConnectionSummaryModelTypeEnumValues() []ConnectionSummaryModelTypeEnum {
 	values := make([]ConnectionSummaryModelTypeEnum, 0)
@@ -281,11 +292,6 @@ func GetConnectionSummaryModelTypeEnumStringValues() []string {
 
 // GetMappingConnectionSummaryModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConnectionSummaryModelTypeEnum(val string) (ConnectionSummaryModelTypeEnum, bool) {
-	mappingConnectionSummaryModelTypeEnumIgnoreCase := make(map[string]ConnectionSummaryModelTypeEnum)
-	for k, v := range mappingConnectionSummaryModelTypeEnum {
-		mappingConnectionSummaryModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConnectionSummaryModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConnectionSummaryModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

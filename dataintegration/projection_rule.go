@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -179,6 +179,14 @@ var mappingProjectionRuleModelTypeEnum = map[string]ProjectionRuleModelTypeEnum{
 	"RENAME_RULE":             ProjectionRuleModelTypeRenameRule,
 }
 
+var mappingProjectionRuleModelTypeEnumLowerCase = map[string]ProjectionRuleModelTypeEnum{
+	"name_pattern_rule":       ProjectionRuleModelTypeNamePatternRule,
+	"type_list_rule":          ProjectionRuleModelTypeTypeListRule,
+	"name_list_rule":          ProjectionRuleModelTypeNameListRule,
+	"typed_name_pattern_rule": ProjectionRuleModelTypeTypedNamePatternRule,
+	"rename_rule":             ProjectionRuleModelTypeRenameRule,
+}
+
 // GetProjectionRuleModelTypeEnumValues Enumerates the set of values for ProjectionRuleModelTypeEnum
 func GetProjectionRuleModelTypeEnumValues() []ProjectionRuleModelTypeEnum {
 	values := make([]ProjectionRuleModelTypeEnum, 0)
@@ -201,11 +209,6 @@ func GetProjectionRuleModelTypeEnumStringValues() []string {
 
 // GetMappingProjectionRuleModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingProjectionRuleModelTypeEnum(val string) (ProjectionRuleModelTypeEnum, bool) {
-	mappingProjectionRuleModelTypeEnumIgnoreCase := make(map[string]ProjectionRuleModelTypeEnum)
-	for k, v := range mappingProjectionRuleModelTypeEnum {
-		mappingProjectionRuleModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingProjectionRuleModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingProjectionRuleModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

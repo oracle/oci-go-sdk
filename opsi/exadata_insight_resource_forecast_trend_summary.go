@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -84,6 +84,17 @@ var mappingExadataInsightResourceForecastTrendSummaryPatternEnum = map[string]Ex
 	"YEARLY_SEASONS":                    ExadataInsightResourceForecastTrendSummaryPatternYearlySeasons,
 }
 
+var mappingExadataInsightResourceForecastTrendSummaryPatternEnumLowerCase = map[string]ExadataInsightResourceForecastTrendSummaryPatternEnum{
+	"linear":                            ExadataInsightResourceForecastTrendSummaryPatternLinear,
+	"monthly_seasons":                   ExadataInsightResourceForecastTrendSummaryPatternMonthlySeasons,
+	"monthly_and_yearly_seasons":        ExadataInsightResourceForecastTrendSummaryPatternMonthlyAndYearlySeasons,
+	"weekly_seasons":                    ExadataInsightResourceForecastTrendSummaryPatternWeeklySeasons,
+	"weekly_and_monthly_seasons":        ExadataInsightResourceForecastTrendSummaryPatternWeeklyAndMonthlySeasons,
+	"weekly_monthly_and_yearly_seasons": ExadataInsightResourceForecastTrendSummaryPatternWeeklyMonthlyAndYearlySeasons,
+	"weekly_and_yearly_seasons":         ExadataInsightResourceForecastTrendSummaryPatternWeeklyAndYearlySeasons,
+	"yearly_seasons":                    ExadataInsightResourceForecastTrendSummaryPatternYearlySeasons,
+}
+
 // GetExadataInsightResourceForecastTrendSummaryPatternEnumValues Enumerates the set of values for ExadataInsightResourceForecastTrendSummaryPatternEnum
 func GetExadataInsightResourceForecastTrendSummaryPatternEnumValues() []ExadataInsightResourceForecastTrendSummaryPatternEnum {
 	values := make([]ExadataInsightResourceForecastTrendSummaryPatternEnum, 0)
@@ -109,11 +120,6 @@ func GetExadataInsightResourceForecastTrendSummaryPatternEnumStringValues() []st
 
 // GetMappingExadataInsightResourceForecastTrendSummaryPatternEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExadataInsightResourceForecastTrendSummaryPatternEnum(val string) (ExadataInsightResourceForecastTrendSummaryPatternEnum, bool) {
-	mappingExadataInsightResourceForecastTrendSummaryPatternEnumIgnoreCase := make(map[string]ExadataInsightResourceForecastTrendSummaryPatternEnum)
-	for k, v := range mappingExadataInsightResourceForecastTrendSummaryPatternEnum {
-		mappingExadataInsightResourceForecastTrendSummaryPatternEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExadataInsightResourceForecastTrendSummaryPatternEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExadataInsightResourceForecastTrendSummaryPatternEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

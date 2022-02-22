@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -27,7 +27,6 @@ type UpdateDrgRouteDistributionStatementDetails struct {
 	Id *string `mandatory:"true" json:"id"`
 
 	// The action is applied only if all of the match criteria is met.
-	// If there are no match criteria in a statement, match ALL is implied.
 	MatchCriteria []DrgRouteDistributionMatchCriteria `mandatory:"false" json:"matchCriteria"`
 
 	// The priority of the statement you'd like to update.

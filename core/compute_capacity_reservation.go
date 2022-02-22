@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -121,6 +121,15 @@ var mappingComputeCapacityReservationLifecycleStateEnum = map[string]ComputeCapa
 	"DELETING": ComputeCapacityReservationLifecycleStateDeleting,
 }
 
+var mappingComputeCapacityReservationLifecycleStateEnumLowerCase = map[string]ComputeCapacityReservationLifecycleStateEnum{
+	"active":   ComputeCapacityReservationLifecycleStateActive,
+	"creating": ComputeCapacityReservationLifecycleStateCreating,
+	"updating": ComputeCapacityReservationLifecycleStateUpdating,
+	"moving":   ComputeCapacityReservationLifecycleStateMoving,
+	"deleted":  ComputeCapacityReservationLifecycleStateDeleted,
+	"deleting": ComputeCapacityReservationLifecycleStateDeleting,
+}
+
 // GetComputeCapacityReservationLifecycleStateEnumValues Enumerates the set of values for ComputeCapacityReservationLifecycleStateEnum
 func GetComputeCapacityReservationLifecycleStateEnumValues() []ComputeCapacityReservationLifecycleStateEnum {
 	values := make([]ComputeCapacityReservationLifecycleStateEnum, 0)
@@ -144,11 +153,6 @@ func GetComputeCapacityReservationLifecycleStateEnumStringValues() []string {
 
 // GetMappingComputeCapacityReservationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingComputeCapacityReservationLifecycleStateEnum(val string) (ComputeCapacityReservationLifecycleStateEnum, bool) {
-	mappingComputeCapacityReservationLifecycleStateEnumIgnoreCase := make(map[string]ComputeCapacityReservationLifecycleStateEnum)
-	for k, v := range mappingComputeCapacityReservationLifecycleStateEnum {
-		mappingComputeCapacityReservationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingComputeCapacityReservationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingComputeCapacityReservationLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

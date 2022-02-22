@@ -11,7 +11,7 @@ package limits
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -82,6 +82,12 @@ var mappingLimitDefinitionSummaryScopeTypeEnum = map[string]LimitDefinitionSumma
 	"AD":     LimitDefinitionSummaryScopeTypeAd,
 }
 
+var mappingLimitDefinitionSummaryScopeTypeEnumLowerCase = map[string]LimitDefinitionSummaryScopeTypeEnum{
+	"global": LimitDefinitionSummaryScopeTypeGlobal,
+	"region": LimitDefinitionSummaryScopeTypeRegion,
+	"ad":     LimitDefinitionSummaryScopeTypeAd,
+}
+
 // GetLimitDefinitionSummaryScopeTypeEnumValues Enumerates the set of values for LimitDefinitionSummaryScopeTypeEnum
 func GetLimitDefinitionSummaryScopeTypeEnumValues() []LimitDefinitionSummaryScopeTypeEnum {
 	values := make([]LimitDefinitionSummaryScopeTypeEnum, 0)
@@ -102,11 +108,6 @@ func GetLimitDefinitionSummaryScopeTypeEnumStringValues() []string {
 
 // GetMappingLimitDefinitionSummaryScopeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLimitDefinitionSummaryScopeTypeEnum(val string) (LimitDefinitionSummaryScopeTypeEnum, bool) {
-	mappingLimitDefinitionSummaryScopeTypeEnumIgnoreCase := make(map[string]LimitDefinitionSummaryScopeTypeEnum)
-	for k, v := range mappingLimitDefinitionSummaryScopeTypeEnum {
-		mappingLimitDefinitionSummaryScopeTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLimitDefinitionSummaryScopeTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLimitDefinitionSummaryScopeTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

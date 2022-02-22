@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -124,6 +124,17 @@ var mappingDatabaseSoftwareImageLifecycleStateEnum = map[string]DatabaseSoftware
 	"UPDATING":     DatabaseSoftwareImageLifecycleStateUpdating,
 }
 
+var mappingDatabaseSoftwareImageLifecycleStateEnumLowerCase = map[string]DatabaseSoftwareImageLifecycleStateEnum{
+	"provisioning": DatabaseSoftwareImageLifecycleStateProvisioning,
+	"available":    DatabaseSoftwareImageLifecycleStateAvailable,
+	"deleting":     DatabaseSoftwareImageLifecycleStateDeleting,
+	"deleted":      DatabaseSoftwareImageLifecycleStateDeleted,
+	"failed":       DatabaseSoftwareImageLifecycleStateFailed,
+	"terminating":  DatabaseSoftwareImageLifecycleStateTerminating,
+	"terminated":   DatabaseSoftwareImageLifecycleStateTerminated,
+	"updating":     DatabaseSoftwareImageLifecycleStateUpdating,
+}
+
 // GetDatabaseSoftwareImageLifecycleStateEnumValues Enumerates the set of values for DatabaseSoftwareImageLifecycleStateEnum
 func GetDatabaseSoftwareImageLifecycleStateEnumValues() []DatabaseSoftwareImageLifecycleStateEnum {
 	values := make([]DatabaseSoftwareImageLifecycleStateEnum, 0)
@@ -149,12 +160,7 @@ func GetDatabaseSoftwareImageLifecycleStateEnumStringValues() []string {
 
 // GetMappingDatabaseSoftwareImageLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseSoftwareImageLifecycleStateEnum(val string) (DatabaseSoftwareImageLifecycleStateEnum, bool) {
-	mappingDatabaseSoftwareImageLifecycleStateEnumIgnoreCase := make(map[string]DatabaseSoftwareImageLifecycleStateEnum)
-	for k, v := range mappingDatabaseSoftwareImageLifecycleStateEnum {
-		mappingDatabaseSoftwareImageLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseSoftwareImageLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseSoftwareImageLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -170,6 +176,11 @@ const (
 var mappingDatabaseSoftwareImageImageTypeEnum = map[string]DatabaseSoftwareImageImageTypeEnum{
 	"GRID_IMAGE":     DatabaseSoftwareImageImageTypeGridImage,
 	"DATABASE_IMAGE": DatabaseSoftwareImageImageTypeDatabaseImage,
+}
+
+var mappingDatabaseSoftwareImageImageTypeEnumLowerCase = map[string]DatabaseSoftwareImageImageTypeEnum{
+	"grid_image":     DatabaseSoftwareImageImageTypeGridImage,
+	"database_image": DatabaseSoftwareImageImageTypeDatabaseImage,
 }
 
 // GetDatabaseSoftwareImageImageTypeEnumValues Enumerates the set of values for DatabaseSoftwareImageImageTypeEnum
@@ -191,12 +202,7 @@ func GetDatabaseSoftwareImageImageTypeEnumStringValues() []string {
 
 // GetMappingDatabaseSoftwareImageImageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseSoftwareImageImageTypeEnum(val string) (DatabaseSoftwareImageImageTypeEnum, bool) {
-	mappingDatabaseSoftwareImageImageTypeEnumIgnoreCase := make(map[string]DatabaseSoftwareImageImageTypeEnum)
-	for k, v := range mappingDatabaseSoftwareImageImageTypeEnum {
-		mappingDatabaseSoftwareImageImageTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseSoftwareImageImageTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseSoftwareImageImageTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -214,6 +220,12 @@ var mappingDatabaseSoftwareImageImageShapeFamilyEnum = map[string]DatabaseSoftwa
 	"VM_BM_SHAPE":   DatabaseSoftwareImageImageShapeFamilyVmBmShape,
 	"EXADATA_SHAPE": DatabaseSoftwareImageImageShapeFamilyExadataShape,
 	"EXACC_SHAPE":   DatabaseSoftwareImageImageShapeFamilyExaccShape,
+}
+
+var mappingDatabaseSoftwareImageImageShapeFamilyEnumLowerCase = map[string]DatabaseSoftwareImageImageShapeFamilyEnum{
+	"vm_bm_shape":   DatabaseSoftwareImageImageShapeFamilyVmBmShape,
+	"exadata_shape": DatabaseSoftwareImageImageShapeFamilyExadataShape,
+	"exacc_shape":   DatabaseSoftwareImageImageShapeFamilyExaccShape,
 }
 
 // GetDatabaseSoftwareImageImageShapeFamilyEnumValues Enumerates the set of values for DatabaseSoftwareImageImageShapeFamilyEnum
@@ -236,11 +248,6 @@ func GetDatabaseSoftwareImageImageShapeFamilyEnumStringValues() []string {
 
 // GetMappingDatabaseSoftwareImageImageShapeFamilyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseSoftwareImageImageShapeFamilyEnum(val string) (DatabaseSoftwareImageImageShapeFamilyEnum, bool) {
-	mappingDatabaseSoftwareImageImageShapeFamilyEnumIgnoreCase := make(map[string]DatabaseSoftwareImageImageShapeFamilyEnum)
-	for k, v := range mappingDatabaseSoftwareImageImageShapeFamilyEnum {
-		mappingDatabaseSoftwareImageImageShapeFamilyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseSoftwareImageImageShapeFamilyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseSoftwareImageImageShapeFamilyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

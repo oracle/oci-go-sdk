@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -132,6 +132,11 @@ var mappingListTablespacesSortByEnum = map[string]ListTablespacesSortByEnum{
 	"NAME":        ListTablespacesSortByName,
 }
 
+var mappingListTablespacesSortByEnumLowerCase = map[string]ListTablespacesSortByEnum{
+	"timecreated": ListTablespacesSortByTimecreated,
+	"name":        ListTablespacesSortByName,
+}
+
 // GetListTablespacesSortByEnumValues Enumerates the set of values for ListTablespacesSortByEnum
 func GetListTablespacesSortByEnumValues() []ListTablespacesSortByEnum {
 	values := make([]ListTablespacesSortByEnum, 0)
@@ -151,12 +156,7 @@ func GetListTablespacesSortByEnumStringValues() []string {
 
 // GetMappingListTablespacesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTablespacesSortByEnum(val string) (ListTablespacesSortByEnum, bool) {
-	mappingListTablespacesSortByEnumIgnoreCase := make(map[string]ListTablespacesSortByEnum)
-	for k, v := range mappingListTablespacesSortByEnum {
-		mappingListTablespacesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTablespacesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTablespacesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -172,6 +172,11 @@ const (
 var mappingListTablespacesSortOrderEnum = map[string]ListTablespacesSortOrderEnum{
 	"ASC":  ListTablespacesSortOrderAsc,
 	"DESC": ListTablespacesSortOrderDesc,
+}
+
+var mappingListTablespacesSortOrderEnumLowerCase = map[string]ListTablespacesSortOrderEnum{
+	"asc":  ListTablespacesSortOrderAsc,
+	"desc": ListTablespacesSortOrderDesc,
 }
 
 // GetListTablespacesSortOrderEnumValues Enumerates the set of values for ListTablespacesSortOrderEnum
@@ -193,11 +198,6 @@ func GetListTablespacesSortOrderEnumStringValues() []string {
 
 // GetMappingListTablespacesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTablespacesSortOrderEnum(val string) (ListTablespacesSortOrderEnum, bool) {
-	mappingListTablespacesSortOrderEnumIgnoreCase := make(map[string]ListTablespacesSortOrderEnum)
-	for k, v := range mappingListTablespacesSortOrderEnum {
-		mappingListTablespacesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTablespacesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTablespacesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

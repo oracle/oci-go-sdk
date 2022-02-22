@@ -6,7 +6,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -155,6 +155,11 @@ var mappingListConfigurationsTypeEnum = map[string]ListConfigurationsTypeEnum{
 	"CUSTOM":  ListConfigurationsTypeCustom,
 }
 
+var mappingListConfigurationsTypeEnumLowerCase = map[string]ListConfigurationsTypeEnum{
+	"default": ListConfigurationsTypeDefault,
+	"custom":  ListConfigurationsTypeCustom,
+}
+
 // GetListConfigurationsTypeEnumValues Enumerates the set of values for ListConfigurationsTypeEnum
 func GetListConfigurationsTypeEnumValues() []ListConfigurationsTypeEnum {
 	values := make([]ListConfigurationsTypeEnum, 0)
@@ -174,12 +179,7 @@ func GetListConfigurationsTypeEnumStringValues() []string {
 
 // GetMappingListConfigurationsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConfigurationsTypeEnum(val string) (ListConfigurationsTypeEnum, bool) {
-	mappingListConfigurationsTypeEnumIgnoreCase := make(map[string]ListConfigurationsTypeEnum)
-	for k, v := range mappingListConfigurationsTypeEnum {
-		mappingListConfigurationsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConfigurationsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConfigurationsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -199,6 +199,13 @@ var mappingListConfigurationsSortByEnum = map[string]ListConfigurationsSortByEnu
 	"shapeName":   ListConfigurationsSortByShapename,
 	"timeCreated": ListConfigurationsSortByTimecreated,
 	"timeUpdated": ListConfigurationsSortByTimeupdated,
+}
+
+var mappingListConfigurationsSortByEnumLowerCase = map[string]ListConfigurationsSortByEnum{
+	"displayname": ListConfigurationsSortByDisplayname,
+	"shapename":   ListConfigurationsSortByShapename,
+	"timecreated": ListConfigurationsSortByTimecreated,
+	"timeupdated": ListConfigurationsSortByTimeupdated,
 }
 
 // GetListConfigurationsSortByEnumValues Enumerates the set of values for ListConfigurationsSortByEnum
@@ -222,12 +229,7 @@ func GetListConfigurationsSortByEnumStringValues() []string {
 
 // GetMappingListConfigurationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConfigurationsSortByEnum(val string) (ListConfigurationsSortByEnum, bool) {
-	mappingListConfigurationsSortByEnumIgnoreCase := make(map[string]ListConfigurationsSortByEnum)
-	for k, v := range mappingListConfigurationsSortByEnum {
-		mappingListConfigurationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConfigurationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConfigurationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -243,6 +245,11 @@ const (
 var mappingListConfigurationsSortOrderEnum = map[string]ListConfigurationsSortOrderEnum{
 	"ASC":  ListConfigurationsSortOrderAsc,
 	"DESC": ListConfigurationsSortOrderDesc,
+}
+
+var mappingListConfigurationsSortOrderEnumLowerCase = map[string]ListConfigurationsSortOrderEnum{
+	"asc":  ListConfigurationsSortOrderAsc,
+	"desc": ListConfigurationsSortOrderDesc,
 }
 
 // GetListConfigurationsSortOrderEnumValues Enumerates the set of values for ListConfigurationsSortOrderEnum
@@ -264,11 +271,6 @@ func GetListConfigurationsSortOrderEnumStringValues() []string {
 
 // GetMappingListConfigurationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConfigurationsSortOrderEnum(val string) (ListConfigurationsSortOrderEnum, bool) {
-	mappingListConfigurationsSortOrderEnumIgnoreCase := make(map[string]ListConfigurationsSortOrderEnum)
-	for k, v := range mappingListConfigurationsSortOrderEnum {
-		mappingListConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConfigurationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

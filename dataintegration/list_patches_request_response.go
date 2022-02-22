@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,11 @@ var mappingListPatchesSortOrderEnum = map[string]ListPatchesSortOrderEnum{
 	"DESC": ListPatchesSortOrderDesc,
 }
 
+var mappingListPatchesSortOrderEnumLowerCase = map[string]ListPatchesSortOrderEnum{
+	"asc":  ListPatchesSortOrderAsc,
+	"desc": ListPatchesSortOrderDesc,
+}
+
 // GetListPatchesSortOrderEnumValues Enumerates the set of values for ListPatchesSortOrderEnum
 func GetListPatchesSortOrderEnumValues() []ListPatchesSortOrderEnum {
 	values := make([]ListPatchesSortOrderEnum, 0)
@@ -163,12 +168,7 @@ func GetListPatchesSortOrderEnumStringValues() []string {
 
 // GetMappingListPatchesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPatchesSortOrderEnum(val string) (ListPatchesSortOrderEnum, bool) {
-	mappingListPatchesSortOrderEnumIgnoreCase := make(map[string]ListPatchesSortOrderEnum)
-	for k, v := range mappingListPatchesSortOrderEnum {
-		mappingListPatchesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPatchesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPatchesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -184,6 +184,11 @@ const (
 var mappingListPatchesSortByEnum = map[string]ListPatchesSortByEnum{
 	"TIME_CREATED": ListPatchesSortByTimeCreated,
 	"DISPLAY_NAME": ListPatchesSortByDisplayName,
+}
+
+var mappingListPatchesSortByEnumLowerCase = map[string]ListPatchesSortByEnum{
+	"time_created": ListPatchesSortByTimeCreated,
+	"display_name": ListPatchesSortByDisplayName,
 }
 
 // GetListPatchesSortByEnumValues Enumerates the set of values for ListPatchesSortByEnum
@@ -205,11 +210,6 @@ func GetListPatchesSortByEnumStringValues() []string {
 
 // GetMappingListPatchesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPatchesSortByEnum(val string) (ListPatchesSortByEnum, bool) {
-	mappingListPatchesSortByEnumIgnoreCase := make(map[string]ListPatchesSortByEnum)
-	for k, v := range mappingListPatchesSortByEnum {
-		mappingListPatchesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPatchesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPatchesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

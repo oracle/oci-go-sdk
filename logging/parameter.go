@@ -11,7 +11,7 @@ package logging
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -63,6 +63,12 @@ var mappingParameterTypeEnum = map[string]ParameterTypeEnum{
 	"boolean": ParameterTypeBoolean,
 }
 
+var mappingParameterTypeEnumLowerCase = map[string]ParameterTypeEnum{
+	"integer": ParameterTypeInteger,
+	"string":  ParameterTypeString,
+	"boolean": ParameterTypeBoolean,
+}
+
 // GetParameterTypeEnumValues Enumerates the set of values for ParameterTypeEnum
 func GetParameterTypeEnumValues() []ParameterTypeEnum {
 	values := make([]ParameterTypeEnum, 0)
@@ -83,11 +89,6 @@ func GetParameterTypeEnumStringValues() []string {
 
 // GetMappingParameterTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingParameterTypeEnum(val string) (ParameterTypeEnum, bool) {
-	mappingParameterTypeEnumIgnoreCase := make(map[string]ParameterTypeEnum)
-	for k, v := range mappingParameterTypeEnum {
-		mappingParameterTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingParameterTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingParameterTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -27,6 +27,11 @@ var mappingStorageDataTypeEnum = map[string]StorageDataTypeEnum{
 	"LOOKUP": StorageDataTypeLookup,
 }
 
+var mappingStorageDataTypeEnumLowerCase = map[string]StorageDataTypeEnum{
+	"log":    StorageDataTypeLog,
+	"lookup": StorageDataTypeLookup,
+}
+
 // GetStorageDataTypeEnumValues Enumerates the set of values for StorageDataTypeEnum
 func GetStorageDataTypeEnumValues() []StorageDataTypeEnum {
 	values := make([]StorageDataTypeEnum, 0)
@@ -46,11 +51,6 @@ func GetStorageDataTypeEnumStringValues() []string {
 
 // GetMappingStorageDataTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStorageDataTypeEnum(val string) (StorageDataTypeEnum, bool) {
-	mappingStorageDataTypeEnumIgnoreCase := make(map[string]StorageDataTypeEnum)
-	for k, v := range mappingStorageDataTypeEnum {
-		mappingStorageDataTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStorageDataTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStorageDataTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

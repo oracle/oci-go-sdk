@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -73,6 +73,14 @@ var mappingShapePlatformConfigOptionsTypeEnum = map[string]ShapePlatformConfigOp
 	"INTEL_VM":         ShapePlatformConfigOptionsTypeIntelVm,
 }
 
+var mappingShapePlatformConfigOptionsTypeEnumLowerCase = map[string]ShapePlatformConfigOptionsTypeEnum{
+	"amd_milan_bm":     ShapePlatformConfigOptionsTypeAmdMilanBm,
+	"amd_rome_bm":      ShapePlatformConfigOptionsTypeAmdRomeBm,
+	"intel_skylake_bm": ShapePlatformConfigOptionsTypeIntelSkylakeBm,
+	"amd_vm":           ShapePlatformConfigOptionsTypeAmdVm,
+	"intel_vm":         ShapePlatformConfigOptionsTypeIntelVm,
+}
+
 // GetShapePlatformConfigOptionsTypeEnumValues Enumerates the set of values for ShapePlatformConfigOptionsTypeEnum
 func GetShapePlatformConfigOptionsTypeEnumValues() []ShapePlatformConfigOptionsTypeEnum {
 	values := make([]ShapePlatformConfigOptionsTypeEnum, 0)
@@ -95,11 +103,6 @@ func GetShapePlatformConfigOptionsTypeEnumStringValues() []string {
 
 // GetMappingShapePlatformConfigOptionsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingShapePlatformConfigOptionsTypeEnum(val string) (ShapePlatformConfigOptionsTypeEnum, bool) {
-	mappingShapePlatformConfigOptionsTypeEnumIgnoreCase := make(map[string]ShapePlatformConfigOptionsTypeEnum)
-	for k, v := range mappingShapePlatformConfigOptionsTypeEnum {
-		mappingShapePlatformConfigOptionsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingShapePlatformConfigOptionsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingShapePlatformConfigOptionsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

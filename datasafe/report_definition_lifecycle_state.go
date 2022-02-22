@@ -33,6 +33,14 @@ var mappingReportDefinitionLifecycleStateEnum = map[string]ReportDefinitionLifec
 	"DELETED":  ReportDefinitionLifecycleStateDeleted,
 }
 
+var mappingReportDefinitionLifecycleStateEnumLowerCase = map[string]ReportDefinitionLifecycleStateEnum{
+	"creating": ReportDefinitionLifecycleStateCreating,
+	"updating": ReportDefinitionLifecycleStateUpdating,
+	"active":   ReportDefinitionLifecycleStateActive,
+	"deleting": ReportDefinitionLifecycleStateDeleting,
+	"deleted":  ReportDefinitionLifecycleStateDeleted,
+}
+
 // GetReportDefinitionLifecycleStateEnumValues Enumerates the set of values for ReportDefinitionLifecycleStateEnum
 func GetReportDefinitionLifecycleStateEnumValues() []ReportDefinitionLifecycleStateEnum {
 	values := make([]ReportDefinitionLifecycleStateEnum, 0)
@@ -55,11 +63,6 @@ func GetReportDefinitionLifecycleStateEnumStringValues() []string {
 
 // GetMappingReportDefinitionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingReportDefinitionLifecycleStateEnum(val string) (ReportDefinitionLifecycleStateEnum, bool) {
-	mappingReportDefinitionLifecycleStateEnumIgnoreCase := make(map[string]ReportDefinitionLifecycleStateEnum)
-	for k, v := range mappingReportDefinitionLifecycleStateEnum {
-		mappingReportDefinitionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingReportDefinitionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingReportDefinitionLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

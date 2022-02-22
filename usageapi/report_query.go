@@ -11,7 +11,7 @@ package usageapi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -111,6 +111,13 @@ var mappingReportQueryGranularityEnum = map[string]ReportQueryGranularityEnum{
 	"TOTAL":   ReportQueryGranularityTotal,
 }
 
+var mappingReportQueryGranularityEnumLowerCase = map[string]ReportQueryGranularityEnum{
+	"hourly":  ReportQueryGranularityHourly,
+	"daily":   ReportQueryGranularityDaily,
+	"monthly": ReportQueryGranularityMonthly,
+	"total":   ReportQueryGranularityTotal,
+}
+
 // GetReportQueryGranularityEnumValues Enumerates the set of values for ReportQueryGranularityEnum
 func GetReportQueryGranularityEnumValues() []ReportQueryGranularityEnum {
 	values := make([]ReportQueryGranularityEnum, 0)
@@ -132,12 +139,7 @@ func GetReportQueryGranularityEnumStringValues() []string {
 
 // GetMappingReportQueryGranularityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingReportQueryGranularityEnum(val string) (ReportQueryGranularityEnum, bool) {
-	mappingReportQueryGranularityEnumIgnoreCase := make(map[string]ReportQueryGranularityEnum)
-	for k, v := range mappingReportQueryGranularityEnum {
-		mappingReportQueryGranularityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingReportQueryGranularityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingReportQueryGranularityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -159,6 +161,14 @@ var mappingReportQueryQueryTypeEnum = map[string]ReportQueryQueryTypeEnum{
 	"CREDIT":        ReportQueryQueryTypeCredit,
 	"EXPIREDCREDIT": ReportQueryQueryTypeExpiredcredit,
 	"ALLCREDIT":     ReportQueryQueryTypeAllcredit,
+}
+
+var mappingReportQueryQueryTypeEnumLowerCase = map[string]ReportQueryQueryTypeEnum{
+	"usage":         ReportQueryQueryTypeUsage,
+	"cost":          ReportQueryQueryTypeCost,
+	"credit":        ReportQueryQueryTypeCredit,
+	"expiredcredit": ReportQueryQueryTypeExpiredcredit,
+	"allcredit":     ReportQueryQueryTypeAllcredit,
 }
 
 // GetReportQueryQueryTypeEnumValues Enumerates the set of values for ReportQueryQueryTypeEnum
@@ -183,12 +193,7 @@ func GetReportQueryQueryTypeEnumStringValues() []string {
 
 // GetMappingReportQueryQueryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingReportQueryQueryTypeEnum(val string) (ReportQueryQueryTypeEnum, bool) {
-	mappingReportQueryQueryTypeEnumIgnoreCase := make(map[string]ReportQueryQueryTypeEnum)
-	for k, v := range mappingReportQueryQueryTypeEnum {
-		mappingReportQueryQueryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingReportQueryQueryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingReportQueryQueryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -222,6 +227,19 @@ var mappingReportQueryDateRangeNameEnum = map[string]ReportQueryDateRangeNameEnu
 	"CUSTOM":            ReportQueryDateRangeNameCustom,
 }
 
+var mappingReportQueryDateRangeNameEnumLowerCase = map[string]ReportQueryDateRangeNameEnum{
+	"last_seven_days":   ReportQueryDateRangeNameLastSevenDays,
+	"last_ten_days":     ReportQueryDateRangeNameLastTenDays,
+	"mtd":               ReportQueryDateRangeNameMtd,
+	"last_two_months":   ReportQueryDateRangeNameLastTwoMonths,
+	"last_three_months": ReportQueryDateRangeNameLastThreeMonths,
+	"all":               ReportQueryDateRangeNameAll,
+	"last_six_months":   ReportQueryDateRangeNameLastSixMonths,
+	"last_one_year":     ReportQueryDateRangeNameLastOneYear,
+	"ytd":               ReportQueryDateRangeNameYtd,
+	"custom":            ReportQueryDateRangeNameCustom,
+}
+
 // GetReportQueryDateRangeNameEnumValues Enumerates the set of values for ReportQueryDateRangeNameEnum
 func GetReportQueryDateRangeNameEnumValues() []ReportQueryDateRangeNameEnum {
 	values := make([]ReportQueryDateRangeNameEnum, 0)
@@ -249,11 +267,6 @@ func GetReportQueryDateRangeNameEnumStringValues() []string {
 
 // GetMappingReportQueryDateRangeNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingReportQueryDateRangeNameEnum(val string) (ReportQueryDateRangeNameEnum, bool) {
-	mappingReportQueryDateRangeNameEnumIgnoreCase := make(map[string]ReportQueryDateRangeNameEnum)
-	for k, v := range mappingReportQueryDateRangeNameEnum {
-		mappingReportQueryDateRangeNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingReportQueryDateRangeNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingReportQueryDateRangeNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

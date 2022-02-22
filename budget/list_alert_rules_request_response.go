@@ -6,7 +6,7 @@ package budget
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -139,6 +139,11 @@ var mappingListAlertRulesSortOrderEnum = map[string]ListAlertRulesSortOrderEnum{
 	"DESC": ListAlertRulesSortOrderDesc,
 }
 
+var mappingListAlertRulesSortOrderEnumLowerCase = map[string]ListAlertRulesSortOrderEnum{
+	"asc":  ListAlertRulesSortOrderAsc,
+	"desc": ListAlertRulesSortOrderDesc,
+}
+
 // GetListAlertRulesSortOrderEnumValues Enumerates the set of values for ListAlertRulesSortOrderEnum
 func GetListAlertRulesSortOrderEnumValues() []ListAlertRulesSortOrderEnum {
 	values := make([]ListAlertRulesSortOrderEnum, 0)
@@ -158,12 +163,7 @@ func GetListAlertRulesSortOrderEnumStringValues() []string {
 
 // GetMappingListAlertRulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAlertRulesSortOrderEnum(val string) (ListAlertRulesSortOrderEnum, bool) {
-	mappingListAlertRulesSortOrderEnumIgnoreCase := make(map[string]ListAlertRulesSortOrderEnum)
-	for k, v := range mappingListAlertRulesSortOrderEnum {
-		mappingListAlertRulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAlertRulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAlertRulesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -179,6 +179,11 @@ const (
 var mappingListAlertRulesSortByEnum = map[string]ListAlertRulesSortByEnum{
 	"timeCreated": ListAlertRulesSortByTimecreated,
 	"displayName": ListAlertRulesSortByDisplayname,
+}
+
+var mappingListAlertRulesSortByEnumLowerCase = map[string]ListAlertRulesSortByEnum{
+	"timecreated": ListAlertRulesSortByTimecreated,
+	"displayname": ListAlertRulesSortByDisplayname,
 }
 
 // GetListAlertRulesSortByEnumValues Enumerates the set of values for ListAlertRulesSortByEnum
@@ -200,12 +205,7 @@ func GetListAlertRulesSortByEnumStringValues() []string {
 
 // GetMappingListAlertRulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAlertRulesSortByEnum(val string) (ListAlertRulesSortByEnum, bool) {
-	mappingListAlertRulesSortByEnumIgnoreCase := make(map[string]ListAlertRulesSortByEnum)
-	for k, v := range mappingListAlertRulesSortByEnum {
-		mappingListAlertRulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAlertRulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAlertRulesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -221,6 +221,11 @@ const (
 var mappingListAlertRulesLifecycleStateEnum = map[string]ListAlertRulesLifecycleStateEnum{
 	"ACTIVE":   ListAlertRulesLifecycleStateActive,
 	"INACTIVE": ListAlertRulesLifecycleStateInactive,
+}
+
+var mappingListAlertRulesLifecycleStateEnumLowerCase = map[string]ListAlertRulesLifecycleStateEnum{
+	"active":   ListAlertRulesLifecycleStateActive,
+	"inactive": ListAlertRulesLifecycleStateInactive,
 }
 
 // GetListAlertRulesLifecycleStateEnumValues Enumerates the set of values for ListAlertRulesLifecycleStateEnum
@@ -242,11 +247,6 @@ func GetListAlertRulesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListAlertRulesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAlertRulesLifecycleStateEnum(val string) (ListAlertRulesLifecycleStateEnum, bool) {
-	mappingListAlertRulesLifecycleStateEnumIgnoreCase := make(map[string]ListAlertRulesLifecycleStateEnum)
-	for k, v := range mappingListAlertRulesLifecycleStateEnum {
-		mappingListAlertRulesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAlertRulesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAlertRulesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

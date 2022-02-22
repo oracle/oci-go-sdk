@@ -13,7 +13,7 @@ package monitoring
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -95,6 +95,12 @@ var mappingListMetricsDetailsSortByEnum = map[string]ListMetricsDetailsSortByEnu
 	"RESOURCEGROUP": ListMetricsDetailsSortByResourcegroup,
 }
 
+var mappingListMetricsDetailsSortByEnumLowerCase = map[string]ListMetricsDetailsSortByEnum{
+	"namespace":     ListMetricsDetailsSortByNamespace,
+	"name":          ListMetricsDetailsSortByName,
+	"resourcegroup": ListMetricsDetailsSortByResourcegroup,
+}
+
 // GetListMetricsDetailsSortByEnumValues Enumerates the set of values for ListMetricsDetailsSortByEnum
 func GetListMetricsDetailsSortByEnumValues() []ListMetricsDetailsSortByEnum {
 	values := make([]ListMetricsDetailsSortByEnum, 0)
@@ -115,12 +121,7 @@ func GetListMetricsDetailsSortByEnumStringValues() []string {
 
 // GetMappingListMetricsDetailsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMetricsDetailsSortByEnum(val string) (ListMetricsDetailsSortByEnum, bool) {
-	mappingListMetricsDetailsSortByEnumIgnoreCase := make(map[string]ListMetricsDetailsSortByEnum)
-	for k, v := range mappingListMetricsDetailsSortByEnum {
-		mappingListMetricsDetailsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMetricsDetailsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMetricsDetailsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -136,6 +137,11 @@ const (
 var mappingListMetricsDetailsSortOrderEnum = map[string]ListMetricsDetailsSortOrderEnum{
 	"ASC":  ListMetricsDetailsSortOrderAsc,
 	"DESC": ListMetricsDetailsSortOrderDesc,
+}
+
+var mappingListMetricsDetailsSortOrderEnumLowerCase = map[string]ListMetricsDetailsSortOrderEnum{
+	"asc":  ListMetricsDetailsSortOrderAsc,
+	"desc": ListMetricsDetailsSortOrderDesc,
 }
 
 // GetListMetricsDetailsSortOrderEnumValues Enumerates the set of values for ListMetricsDetailsSortOrderEnum
@@ -157,11 +163,6 @@ func GetListMetricsDetailsSortOrderEnumStringValues() []string {
 
 // GetMappingListMetricsDetailsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMetricsDetailsSortOrderEnum(val string) (ListMetricsDetailsSortOrderEnum, bool) {
-	mappingListMetricsDetailsSortOrderEnumIgnoreCase := make(map[string]ListMetricsDetailsSortOrderEnum)
-	for k, v := range mappingListMetricsDetailsSortOrderEnum {
-		mappingListMetricsDetailsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMetricsDetailsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMetricsDetailsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

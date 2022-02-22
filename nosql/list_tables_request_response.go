@@ -6,7 +6,7 @@ package nosql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -143,6 +143,11 @@ var mappingListTablesSortOrderEnum = map[string]ListTablesSortOrderEnum{
 	"DESC": ListTablesSortOrderDesc,
 }
 
+var mappingListTablesSortOrderEnumLowerCase = map[string]ListTablesSortOrderEnum{
+	"asc":  ListTablesSortOrderAsc,
+	"desc": ListTablesSortOrderDesc,
+}
+
 // GetListTablesSortOrderEnumValues Enumerates the set of values for ListTablesSortOrderEnum
 func GetListTablesSortOrderEnumValues() []ListTablesSortOrderEnum {
 	values := make([]ListTablesSortOrderEnum, 0)
@@ -162,12 +167,7 @@ func GetListTablesSortOrderEnumStringValues() []string {
 
 // GetMappingListTablesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTablesSortOrderEnum(val string) (ListTablesSortOrderEnum, bool) {
-	mappingListTablesSortOrderEnumIgnoreCase := make(map[string]ListTablesSortOrderEnum)
-	for k, v := range mappingListTablesSortOrderEnum {
-		mappingListTablesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTablesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTablesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -182,6 +182,11 @@ const (
 
 var mappingListTablesSortByEnum = map[string]ListTablesSortByEnum{
 	"timeCreated": ListTablesSortByTimecreated,
+	"name":        ListTablesSortByName,
+}
+
+var mappingListTablesSortByEnumLowerCase = map[string]ListTablesSortByEnum{
+	"timecreated": ListTablesSortByTimecreated,
 	"name":        ListTablesSortByName,
 }
 
@@ -204,12 +209,7 @@ func GetListTablesSortByEnumStringValues() []string {
 
 // GetMappingListTablesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTablesSortByEnum(val string) (ListTablesSortByEnum, bool) {
-	mappingListTablesSortByEnumIgnoreCase := make(map[string]ListTablesSortByEnum)
-	for k, v := range mappingListTablesSortByEnum {
-		mappingListTablesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTablesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTablesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -239,6 +239,17 @@ var mappingListTablesLifecycleStateEnum = map[string]ListTablesLifecycleStateEnu
 	"INACTIVE": ListTablesLifecycleStateInactive,
 }
 
+var mappingListTablesLifecycleStateEnumLowerCase = map[string]ListTablesLifecycleStateEnum{
+	"all":      ListTablesLifecycleStateAll,
+	"creating": ListTablesLifecycleStateCreating,
+	"updating": ListTablesLifecycleStateUpdating,
+	"active":   ListTablesLifecycleStateActive,
+	"deleting": ListTablesLifecycleStateDeleting,
+	"deleted":  ListTablesLifecycleStateDeleted,
+	"failed":   ListTablesLifecycleStateFailed,
+	"inactive": ListTablesLifecycleStateInactive,
+}
+
 // GetListTablesLifecycleStateEnumValues Enumerates the set of values for ListTablesLifecycleStateEnum
 func GetListTablesLifecycleStateEnumValues() []ListTablesLifecycleStateEnum {
 	values := make([]ListTablesLifecycleStateEnum, 0)
@@ -264,11 +275,6 @@ func GetListTablesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListTablesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTablesLifecycleStateEnum(val string) (ListTablesLifecycleStateEnum, bool) {
-	mappingListTablesLifecycleStateEnumIgnoreCase := make(map[string]ListTablesLifecycleStateEnum)
-	for k, v := range mappingListTablesLifecycleStateEnum {
-		mappingListTablesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTablesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTablesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

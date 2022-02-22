@@ -49,6 +49,22 @@ var mappingMigrationLifecycleStatesEnum = map[string]MigrationLifecycleStatesEnu
 	"FAILED":          MigrationLifecycleStatesFailed,
 }
 
+var mappingMigrationLifecycleStatesEnumLowerCase = map[string]MigrationLifecycleStatesEnum{
+	"creating":        MigrationLifecycleStatesCreating,
+	"updating":        MigrationLifecycleStatesUpdating,
+	"active":          MigrationLifecycleStatesActive,
+	"in_progress":     MigrationLifecycleStatesInProgress,
+	"accepted":        MigrationLifecycleStatesAccepted,
+	"succeeded":       MigrationLifecycleStatesSucceeded,
+	"canceled":        MigrationLifecycleStatesCanceled,
+	"waiting":         MigrationLifecycleStatesWaiting,
+	"needs_attention": MigrationLifecycleStatesNeedsAttention,
+	"inactive":        MigrationLifecycleStatesInactive,
+	"deleting":        MigrationLifecycleStatesDeleting,
+	"deleted":         MigrationLifecycleStatesDeleted,
+	"failed":          MigrationLifecycleStatesFailed,
+}
+
 // GetMigrationLifecycleStatesEnumValues Enumerates the set of values for MigrationLifecycleStatesEnum
 func GetMigrationLifecycleStatesEnumValues() []MigrationLifecycleStatesEnum {
 	values := make([]MigrationLifecycleStatesEnum, 0)
@@ -79,11 +95,6 @@ func GetMigrationLifecycleStatesEnumStringValues() []string {
 
 // GetMappingMigrationLifecycleStatesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMigrationLifecycleStatesEnum(val string) (MigrationLifecycleStatesEnum, bool) {
-	mappingMigrationLifecycleStatesEnumIgnoreCase := make(map[string]MigrationLifecycleStatesEnum)
-	for k, v := range mappingMigrationLifecycleStatesEnum {
-		mappingMigrationLifecycleStatesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMigrationLifecycleStatesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMigrationLifecycleStatesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

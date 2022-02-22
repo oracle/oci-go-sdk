@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,16 @@ var mappingAppCatalogListingResourceVersionAllowedActionsEnum = map[string]AppCa
 	"CAPTURE_CONSOLE_HISTORY": AppCatalogListingResourceVersionAllowedActionsCaptureConsoleHistory,
 }
 
+var mappingAppCatalogListingResourceVersionAllowedActionsEnumLowerCase = map[string]AppCatalogListingResourceVersionAllowedActionsEnum{
+	"snapshot":                AppCatalogListingResourceVersionAllowedActionsSnapshot,
+	"boot_volume_detach":      AppCatalogListingResourceVersionAllowedActionsBootVolumeDetach,
+	"preserve_boot_volume":    AppCatalogListingResourceVersionAllowedActionsPreserveBootVolume,
+	"serial_console_access":   AppCatalogListingResourceVersionAllowedActionsSerialConsoleAccess,
+	"boot_recovery":           AppCatalogListingResourceVersionAllowedActionsBootRecovery,
+	"backup_boot_volume":      AppCatalogListingResourceVersionAllowedActionsBackupBootVolume,
+	"capture_console_history": AppCatalogListingResourceVersionAllowedActionsCaptureConsoleHistory,
+}
+
 // GetAppCatalogListingResourceVersionAllowedActionsEnumValues Enumerates the set of values for AppCatalogListingResourceVersionAllowedActionsEnum
 func GetAppCatalogListingResourceVersionAllowedActionsEnumValues() []AppCatalogListingResourceVersionAllowedActionsEnum {
 	values := make([]AppCatalogListingResourceVersionAllowedActionsEnum, 0)
@@ -123,11 +133,6 @@ func GetAppCatalogListingResourceVersionAllowedActionsEnumStringValues() []strin
 
 // GetMappingAppCatalogListingResourceVersionAllowedActionsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAppCatalogListingResourceVersionAllowedActionsEnum(val string) (AppCatalogListingResourceVersionAllowedActionsEnum, bool) {
-	mappingAppCatalogListingResourceVersionAllowedActionsEnumIgnoreCase := make(map[string]AppCatalogListingResourceVersionAllowedActionsEnum)
-	for k, v := range mappingAppCatalogListingResourceVersionAllowedActionsEnum {
-		mappingAppCatalogListingResourceVersionAllowedActionsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAppCatalogListingResourceVersionAllowedActionsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAppCatalogListingResourceVersionAllowedActionsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

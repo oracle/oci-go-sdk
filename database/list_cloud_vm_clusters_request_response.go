@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -139,6 +139,11 @@ var mappingListCloudVmClustersSortByEnum = map[string]ListCloudVmClustersSortByE
 	"DISPLAYNAME": ListCloudVmClustersSortByDisplayname,
 }
 
+var mappingListCloudVmClustersSortByEnumLowerCase = map[string]ListCloudVmClustersSortByEnum{
+	"timecreated": ListCloudVmClustersSortByTimecreated,
+	"displayname": ListCloudVmClustersSortByDisplayname,
+}
+
 // GetListCloudVmClustersSortByEnumValues Enumerates the set of values for ListCloudVmClustersSortByEnum
 func GetListCloudVmClustersSortByEnumValues() []ListCloudVmClustersSortByEnum {
 	values := make([]ListCloudVmClustersSortByEnum, 0)
@@ -158,12 +163,7 @@ func GetListCloudVmClustersSortByEnumStringValues() []string {
 
 // GetMappingListCloudVmClustersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCloudVmClustersSortByEnum(val string) (ListCloudVmClustersSortByEnum, bool) {
-	mappingListCloudVmClustersSortByEnumIgnoreCase := make(map[string]ListCloudVmClustersSortByEnum)
-	for k, v := range mappingListCloudVmClustersSortByEnum {
-		mappingListCloudVmClustersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCloudVmClustersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCloudVmClustersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -179,6 +179,11 @@ const (
 var mappingListCloudVmClustersSortOrderEnum = map[string]ListCloudVmClustersSortOrderEnum{
 	"ASC":  ListCloudVmClustersSortOrderAsc,
 	"DESC": ListCloudVmClustersSortOrderDesc,
+}
+
+var mappingListCloudVmClustersSortOrderEnumLowerCase = map[string]ListCloudVmClustersSortOrderEnum{
+	"asc":  ListCloudVmClustersSortOrderAsc,
+	"desc": ListCloudVmClustersSortOrderDesc,
 }
 
 // GetListCloudVmClustersSortOrderEnumValues Enumerates the set of values for ListCloudVmClustersSortOrderEnum
@@ -200,11 +205,6 @@ func GetListCloudVmClustersSortOrderEnumStringValues() []string {
 
 // GetMappingListCloudVmClustersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCloudVmClustersSortOrderEnum(val string) (ListCloudVmClustersSortOrderEnum, bool) {
-	mappingListCloudVmClustersSortOrderEnumIgnoreCase := make(map[string]ListCloudVmClustersSortOrderEnum)
-	for k, v := range mappingListCloudVmClustersSortOrderEnum {
-		mappingListCloudVmClustersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCloudVmClustersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCloudVmClustersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

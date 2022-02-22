@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -115,6 +115,13 @@ var mappingScheduledTaskSummaryTaskStatusEnum = map[string]ScheduledTaskSummaryT
 	"BLOCKED":   ScheduledTaskSummaryTaskStatusBlocked,
 }
 
+var mappingScheduledTaskSummaryTaskStatusEnumLowerCase = map[string]ScheduledTaskSummaryTaskStatusEnum{
+	"ready":     ScheduledTaskSummaryTaskStatusReady,
+	"paused":    ScheduledTaskSummaryTaskStatusPaused,
+	"completed": ScheduledTaskSummaryTaskStatusCompleted,
+	"blocked":   ScheduledTaskSummaryTaskStatusBlocked,
+}
+
 // GetScheduledTaskSummaryTaskStatusEnumValues Enumerates the set of values for ScheduledTaskSummaryTaskStatusEnum
 func GetScheduledTaskSummaryTaskStatusEnumValues() []ScheduledTaskSummaryTaskStatusEnum {
 	values := make([]ScheduledTaskSummaryTaskStatusEnum, 0)
@@ -136,12 +143,7 @@ func GetScheduledTaskSummaryTaskStatusEnumStringValues() []string {
 
 // GetMappingScheduledTaskSummaryTaskStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingScheduledTaskSummaryTaskStatusEnum(val string) (ScheduledTaskSummaryTaskStatusEnum, bool) {
-	mappingScheduledTaskSummaryTaskStatusEnumIgnoreCase := make(map[string]ScheduledTaskSummaryTaskStatusEnum)
-	for k, v := range mappingScheduledTaskSummaryTaskStatusEnum {
-		mappingScheduledTaskSummaryTaskStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingScheduledTaskSummaryTaskStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingScheduledTaskSummaryTaskStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -157,6 +159,11 @@ const (
 var mappingScheduledTaskSummaryLastExecutionStatusEnum = map[string]ScheduledTaskSummaryLastExecutionStatusEnum{
 	"FAILED":    ScheduledTaskSummaryLastExecutionStatusFailed,
 	"SUCCEEDED": ScheduledTaskSummaryLastExecutionStatusSucceeded,
+}
+
+var mappingScheduledTaskSummaryLastExecutionStatusEnumLowerCase = map[string]ScheduledTaskSummaryLastExecutionStatusEnum{
+	"failed":    ScheduledTaskSummaryLastExecutionStatusFailed,
+	"succeeded": ScheduledTaskSummaryLastExecutionStatusSucceeded,
 }
 
 // GetScheduledTaskSummaryLastExecutionStatusEnumValues Enumerates the set of values for ScheduledTaskSummaryLastExecutionStatusEnum
@@ -178,11 +185,6 @@ func GetScheduledTaskSummaryLastExecutionStatusEnumStringValues() []string {
 
 // GetMappingScheduledTaskSummaryLastExecutionStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingScheduledTaskSummaryLastExecutionStatusEnum(val string) (ScheduledTaskSummaryLastExecutionStatusEnum, bool) {
-	mappingScheduledTaskSummaryLastExecutionStatusEnumIgnoreCase := make(map[string]ScheduledTaskSummaryLastExecutionStatusEnum)
-	for k, v := range mappingScheduledTaskSummaryLastExecutionStatusEnum {
-		mappingScheduledTaskSummaryLastExecutionStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingScheduledTaskSummaryLastExecutionStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingScheduledTaskSummaryLastExecutionStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package dashboardservice
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -148,6 +148,11 @@ var mappingListDashboardGroupsSortOrderEnum = map[string]ListDashboardGroupsSort
 	"DESC": ListDashboardGroupsSortOrderDesc,
 }
 
+var mappingListDashboardGroupsSortOrderEnumLowerCase = map[string]ListDashboardGroupsSortOrderEnum{
+	"asc":  ListDashboardGroupsSortOrderAsc,
+	"desc": ListDashboardGroupsSortOrderDesc,
+}
+
 // GetListDashboardGroupsSortOrderEnumValues Enumerates the set of values for ListDashboardGroupsSortOrderEnum
 func GetListDashboardGroupsSortOrderEnumValues() []ListDashboardGroupsSortOrderEnum {
 	values := make([]ListDashboardGroupsSortOrderEnum, 0)
@@ -167,12 +172,7 @@ func GetListDashboardGroupsSortOrderEnumStringValues() []string {
 
 // GetMappingListDashboardGroupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDashboardGroupsSortOrderEnum(val string) (ListDashboardGroupsSortOrderEnum, bool) {
-	mappingListDashboardGroupsSortOrderEnumIgnoreCase := make(map[string]ListDashboardGroupsSortOrderEnum)
-	for k, v := range mappingListDashboardGroupsSortOrderEnum {
-		mappingListDashboardGroupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDashboardGroupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDashboardGroupsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -188,6 +188,11 @@ const (
 var mappingListDashboardGroupsSortByEnum = map[string]ListDashboardGroupsSortByEnum{
 	"timeCreated": ListDashboardGroupsSortByTimecreated,
 	"displayName": ListDashboardGroupsSortByDisplayname,
+}
+
+var mappingListDashboardGroupsSortByEnumLowerCase = map[string]ListDashboardGroupsSortByEnum{
+	"timecreated": ListDashboardGroupsSortByTimecreated,
+	"displayname": ListDashboardGroupsSortByDisplayname,
 }
 
 // GetListDashboardGroupsSortByEnumValues Enumerates the set of values for ListDashboardGroupsSortByEnum
@@ -209,11 +214,6 @@ func GetListDashboardGroupsSortByEnumStringValues() []string {
 
 // GetMappingListDashboardGroupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDashboardGroupsSortByEnum(val string) (ListDashboardGroupsSortByEnum, bool) {
-	mappingListDashboardGroupsSortByEnumIgnoreCase := make(map[string]ListDashboardGroupsSortByEnum)
-	for k, v := range mappingListDashboardGroupsSortByEnum {
-		mappingListDashboardGroupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDashboardGroupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDashboardGroupsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

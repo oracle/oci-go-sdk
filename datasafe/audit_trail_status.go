@@ -39,6 +39,17 @@ var mappingAuditTrailStatusEnum = map[string]AuditTrailStatusEnum{
 	"RETRYING":   AuditTrailStatusRetrying,
 }
 
+var mappingAuditTrailStatusEnumLowerCase = map[string]AuditTrailStatusEnum{
+	"starting":   AuditTrailStatusStarting,
+	"collecting": AuditTrailStatusCollecting,
+	"recovering": AuditTrailStatusRecovering,
+	"idle":       AuditTrailStatusIdle,
+	"stopping":   AuditTrailStatusStopping,
+	"stopped":    AuditTrailStatusStopped,
+	"resuming":   AuditTrailStatusResuming,
+	"retrying":   AuditTrailStatusRetrying,
+}
+
 // GetAuditTrailStatusEnumValues Enumerates the set of values for AuditTrailStatusEnum
 func GetAuditTrailStatusEnumValues() []AuditTrailStatusEnum {
 	values := make([]AuditTrailStatusEnum, 0)
@@ -64,11 +75,6 @@ func GetAuditTrailStatusEnumStringValues() []string {
 
 // GetMappingAuditTrailStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAuditTrailStatusEnum(val string) (AuditTrailStatusEnum, bool) {
-	mappingAuditTrailStatusEnumIgnoreCase := make(map[string]AuditTrailStatusEnum)
-	for k, v := range mappingAuditTrailStatusEnum {
-		mappingAuditTrailStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAuditTrailStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAuditTrailStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

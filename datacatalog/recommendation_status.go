@@ -30,6 +30,12 @@ var mappingRecommendationStatusEnum = map[string]RecommendationStatusEnum{
 	"INFERRED": RecommendationStatusInferred,
 }
 
+var mappingRecommendationStatusEnumLowerCase = map[string]RecommendationStatusEnum{
+	"accepted": RecommendationStatusAccepted,
+	"rejected": RecommendationStatusRejected,
+	"inferred": RecommendationStatusInferred,
+}
+
 // GetRecommendationStatusEnumValues Enumerates the set of values for RecommendationStatusEnum
 func GetRecommendationStatusEnumValues() []RecommendationStatusEnum {
 	values := make([]RecommendationStatusEnum, 0)
@@ -50,11 +56,6 @@ func GetRecommendationStatusEnumStringValues() []string {
 
 // GetMappingRecommendationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRecommendationStatusEnum(val string) (RecommendationStatusEnum, bool) {
-	mappingRecommendationStatusEnumIgnoreCase := make(map[string]RecommendationStatusEnum)
-	for k, v := range mappingRecommendationStatusEnum {
-		mappingRecommendationStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRecommendationStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRecommendationStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

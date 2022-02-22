@@ -31,6 +31,11 @@ var mappingEncryptionInTransitTypeEnum = map[string]EncryptionInTransitTypeEnum{
 	"BM_ENCRYPTION_IN_TRANSIT": EncryptionInTransitTypeBmEncryptionInTransit,
 }
 
+var mappingEncryptionInTransitTypeEnumLowerCase = map[string]EncryptionInTransitTypeEnum{
+	"none":                     EncryptionInTransitTypeNone,
+	"bm_encryption_in_transit": EncryptionInTransitTypeBmEncryptionInTransit,
+}
+
 // GetEncryptionInTransitTypeEnumValues Enumerates the set of values for EncryptionInTransitTypeEnum
 func GetEncryptionInTransitTypeEnumValues() []EncryptionInTransitTypeEnum {
 	values := make([]EncryptionInTransitTypeEnum, 0)
@@ -50,11 +55,6 @@ func GetEncryptionInTransitTypeEnumStringValues() []string {
 
 // GetMappingEncryptionInTransitTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEncryptionInTransitTypeEnum(val string) (EncryptionInTransitTypeEnum, bool) {
-	mappingEncryptionInTransitTypeEnumIgnoreCase := make(map[string]EncryptionInTransitTypeEnum)
-	for k, v := range mappingEncryptionInTransitTypeEnum {
-		mappingEncryptionInTransitTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEncryptionInTransitTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEncryptionInTransitTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

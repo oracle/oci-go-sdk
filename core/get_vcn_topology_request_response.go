@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,11 @@ var mappingGetVcnTopologyAccessLevelEnum = map[string]GetVcnTopologyAccessLevelE
 	"ACCESSIBLE": GetVcnTopologyAccessLevelAccessible,
 }
 
+var mappingGetVcnTopologyAccessLevelEnumLowerCase = map[string]GetVcnTopologyAccessLevelEnum{
+	"any":        GetVcnTopologyAccessLevelAny,
+	"accessible": GetVcnTopologyAccessLevelAccessible,
+}
+
 // GetGetVcnTopologyAccessLevelEnumValues Enumerates the set of values for GetVcnTopologyAccessLevelEnum
 func GetGetVcnTopologyAccessLevelEnumValues() []GetVcnTopologyAccessLevelEnum {
 	values := make([]GetVcnTopologyAccessLevelEnum, 0)
@@ -157,11 +162,6 @@ func GetGetVcnTopologyAccessLevelEnumStringValues() []string {
 
 // GetMappingGetVcnTopologyAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetVcnTopologyAccessLevelEnum(val string) (GetVcnTopologyAccessLevelEnum, bool) {
-	mappingGetVcnTopologyAccessLevelEnumIgnoreCase := make(map[string]GetVcnTopologyAccessLevelEnum)
-	for k, v := range mappingGetVcnTopologyAccessLevelEnum {
-		mappingGetVcnTopologyAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetVcnTopologyAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetVcnTopologyAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

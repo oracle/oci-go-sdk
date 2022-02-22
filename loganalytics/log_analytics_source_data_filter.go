@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,13 @@ var mappingLogAnalyticsSourceDataFilterFilterTypeEnum = map[string]LogAnalyticsS
 	"DROP_STRING":    LogAnalyticsSourceDataFilterFilterTypeDropString,
 }
 
+var mappingLogAnalyticsSourceDataFilterFilterTypeEnumLowerCase = map[string]LogAnalyticsSourceDataFilterFilterTypeEnum{
+	"mask":           LogAnalyticsSourceDataFilterFilterTypeMask,
+	"hash_mask":      LogAnalyticsSourceDataFilterFilterTypeHashMask,
+	"drop_log_entry": LogAnalyticsSourceDataFilterFilterTypeDropLogEntry,
+	"drop_string":    LogAnalyticsSourceDataFilterFilterTypeDropString,
+}
+
 // GetLogAnalyticsSourceDataFilterFilterTypeEnumValues Enumerates the set of values for LogAnalyticsSourceDataFilterFilterTypeEnum
 func GetLogAnalyticsSourceDataFilterFilterTypeEnumValues() []LogAnalyticsSourceDataFilterFilterTypeEnum {
 	values := make([]LogAnalyticsSourceDataFilterFilterTypeEnum, 0)
@@ -120,11 +127,6 @@ func GetLogAnalyticsSourceDataFilterFilterTypeEnumStringValues() []string {
 
 // GetMappingLogAnalyticsSourceDataFilterFilterTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogAnalyticsSourceDataFilterFilterTypeEnum(val string) (LogAnalyticsSourceDataFilterFilterTypeEnum, bool) {
-	mappingLogAnalyticsSourceDataFilterFilterTypeEnumIgnoreCase := make(map[string]LogAnalyticsSourceDataFilterFilterTypeEnum)
-	for k, v := range mappingLogAnalyticsSourceDataFilterFilterTypeEnum {
-		mappingLogAnalyticsSourceDataFilterFilterTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogAnalyticsSourceDataFilterFilterTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogAnalyticsSourceDataFilterFilterTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

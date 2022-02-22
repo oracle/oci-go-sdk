@@ -18,7 +18,7 @@ package dashboardservice
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -224,6 +224,15 @@ var mappingDashboardLifecycleStateEnum = map[string]DashboardLifecycleStateEnum{
 	"FAILED":   DashboardLifecycleStateFailed,
 }
 
+var mappingDashboardLifecycleStateEnumLowerCase = map[string]DashboardLifecycleStateEnum{
+	"creating": DashboardLifecycleStateCreating,
+	"updating": DashboardLifecycleStateUpdating,
+	"active":   DashboardLifecycleStateActive,
+	"deleting": DashboardLifecycleStateDeleting,
+	"deleted":  DashboardLifecycleStateDeleted,
+	"failed":   DashboardLifecycleStateFailed,
+}
+
 // GetDashboardLifecycleStateEnumValues Enumerates the set of values for DashboardLifecycleStateEnum
 func GetDashboardLifecycleStateEnumValues() []DashboardLifecycleStateEnum {
 	values := make([]DashboardLifecycleStateEnum, 0)
@@ -247,12 +256,7 @@ func GetDashboardLifecycleStateEnumStringValues() []string {
 
 // GetMappingDashboardLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDashboardLifecycleStateEnum(val string) (DashboardLifecycleStateEnum, bool) {
-	mappingDashboardLifecycleStateEnumIgnoreCase := make(map[string]DashboardLifecycleStateEnum)
-	for k, v := range mappingDashboardLifecycleStateEnum {
-		mappingDashboardLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDashboardLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDashboardLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -266,6 +270,10 @@ const (
 
 var mappingDashboardSchemaVersionEnum = map[string]DashboardSchemaVersionEnum{
 	"V1": DashboardSchemaVersionV1,
+}
+
+var mappingDashboardSchemaVersionEnumLowerCase = map[string]DashboardSchemaVersionEnum{
+	"v1": DashboardSchemaVersionV1,
 }
 
 // GetDashboardSchemaVersionEnumValues Enumerates the set of values for DashboardSchemaVersionEnum
@@ -286,11 +294,6 @@ func GetDashboardSchemaVersionEnumStringValues() []string {
 
 // GetMappingDashboardSchemaVersionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDashboardSchemaVersionEnum(val string) (DashboardSchemaVersionEnum, bool) {
-	mappingDashboardSchemaVersionEnumIgnoreCase := make(map[string]DashboardSchemaVersionEnum)
-	for k, v := range mappingDashboardSchemaVersionEnum {
-		mappingDashboardSchemaVersionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDashboardSchemaVersionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDashboardSchemaVersionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

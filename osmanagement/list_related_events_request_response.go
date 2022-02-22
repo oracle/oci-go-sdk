@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,11 @@ var mappingListRelatedEventsSortOrderEnum = map[string]ListRelatedEventsSortOrde
 	"DESC": ListRelatedEventsSortOrderDesc,
 }
 
+var mappingListRelatedEventsSortOrderEnumLowerCase = map[string]ListRelatedEventsSortOrderEnum{
+	"asc":  ListRelatedEventsSortOrderAsc,
+	"desc": ListRelatedEventsSortOrderDesc,
+}
+
 // GetListRelatedEventsSortOrderEnumValues Enumerates the set of values for ListRelatedEventsSortOrderEnum
 func GetListRelatedEventsSortOrderEnumValues() []ListRelatedEventsSortOrderEnum {
 	values := make([]ListRelatedEventsSortOrderEnum, 0)
@@ -157,12 +162,7 @@ func GetListRelatedEventsSortOrderEnumStringValues() []string {
 
 // GetMappingListRelatedEventsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRelatedEventsSortOrderEnum(val string) (ListRelatedEventsSortOrderEnum, bool) {
-	mappingListRelatedEventsSortOrderEnumIgnoreCase := make(map[string]ListRelatedEventsSortOrderEnum)
-	for k, v := range mappingListRelatedEventsSortOrderEnum {
-		mappingListRelatedEventsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRelatedEventsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRelatedEventsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -180,6 +180,12 @@ var mappingListRelatedEventsSortByEnum = map[string]ListRelatedEventsSortByEnum{
 	"instanceId":       ListRelatedEventsSortByInstanceid,
 	"id":               ListRelatedEventsSortById,
 	"eventFingerprint": ListRelatedEventsSortByEventfingerprint,
+}
+
+var mappingListRelatedEventsSortByEnumLowerCase = map[string]ListRelatedEventsSortByEnum{
+	"instanceid":       ListRelatedEventsSortByInstanceid,
+	"id":               ListRelatedEventsSortById,
+	"eventfingerprint": ListRelatedEventsSortByEventfingerprint,
 }
 
 // GetListRelatedEventsSortByEnumValues Enumerates the set of values for ListRelatedEventsSortByEnum
@@ -202,11 +208,6 @@ func GetListRelatedEventsSortByEnumStringValues() []string {
 
 // GetMappingListRelatedEventsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRelatedEventsSortByEnum(val string) (ListRelatedEventsSortByEnum, bool) {
-	mappingListRelatedEventsSortByEnumIgnoreCase := make(map[string]ListRelatedEventsSortByEnum)
-	for k, v := range mappingListRelatedEventsSortByEnum {
-		mappingListRelatedEventsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRelatedEventsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRelatedEventsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

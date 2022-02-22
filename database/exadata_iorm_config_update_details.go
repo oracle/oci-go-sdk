@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,14 @@ var mappingExadataIormConfigUpdateDetailsObjectiveEnum = map[string]ExadataIormC
 	"BASIC":           ExadataIormConfigUpdateDetailsObjectiveBasic,
 }
 
+var mappingExadataIormConfigUpdateDetailsObjectiveEnumLowerCase = map[string]ExadataIormConfigUpdateDetailsObjectiveEnum{
+	"low_latency":     ExadataIormConfigUpdateDetailsObjectiveLowLatency,
+	"high_throughput": ExadataIormConfigUpdateDetailsObjectiveHighThroughput,
+	"balanced":        ExadataIormConfigUpdateDetailsObjectiveBalanced,
+	"auto":            ExadataIormConfigUpdateDetailsObjectiveAuto,
+	"basic":           ExadataIormConfigUpdateDetailsObjectiveBasic,
+}
+
 // GetExadataIormConfigUpdateDetailsObjectiveEnumValues Enumerates the set of values for ExadataIormConfigUpdateDetailsObjectiveEnum
 func GetExadataIormConfigUpdateDetailsObjectiveEnumValues() []ExadataIormConfigUpdateDetailsObjectiveEnum {
 	values := make([]ExadataIormConfigUpdateDetailsObjectiveEnum, 0)
@@ -88,11 +96,6 @@ func GetExadataIormConfigUpdateDetailsObjectiveEnumStringValues() []string {
 
 // GetMappingExadataIormConfigUpdateDetailsObjectiveEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExadataIormConfigUpdateDetailsObjectiveEnum(val string) (ExadataIormConfigUpdateDetailsObjectiveEnum, bool) {
-	mappingExadataIormConfigUpdateDetailsObjectiveEnumIgnoreCase := make(map[string]ExadataIormConfigUpdateDetailsObjectiveEnum)
-	for k, v := range mappingExadataIormConfigUpdateDetailsObjectiveEnum {
-		mappingExadataIormConfigUpdateDetailsObjectiveEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExadataIormConfigUpdateDetailsObjectiveEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExadataIormConfigUpdateDetailsObjectiveEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

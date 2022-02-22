@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -210,6 +210,16 @@ var mappingCloudVmClusterLifecycleStateEnum = map[string]CloudVmClusterLifecycle
 	"MAINTENANCE_IN_PROGRESS": CloudVmClusterLifecycleStateMaintenanceInProgress,
 }
 
+var mappingCloudVmClusterLifecycleStateEnumLowerCase = map[string]CloudVmClusterLifecycleStateEnum{
+	"provisioning":            CloudVmClusterLifecycleStateProvisioning,
+	"available":               CloudVmClusterLifecycleStateAvailable,
+	"updating":                CloudVmClusterLifecycleStateUpdating,
+	"terminating":             CloudVmClusterLifecycleStateTerminating,
+	"terminated":              CloudVmClusterLifecycleStateTerminated,
+	"failed":                  CloudVmClusterLifecycleStateFailed,
+	"maintenance_in_progress": CloudVmClusterLifecycleStateMaintenanceInProgress,
+}
+
 // GetCloudVmClusterLifecycleStateEnumValues Enumerates the set of values for CloudVmClusterLifecycleStateEnum
 func GetCloudVmClusterLifecycleStateEnumValues() []CloudVmClusterLifecycleStateEnum {
 	values := make([]CloudVmClusterLifecycleStateEnum, 0)
@@ -234,12 +244,7 @@ func GetCloudVmClusterLifecycleStateEnumStringValues() []string {
 
 // GetMappingCloudVmClusterLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCloudVmClusterLifecycleStateEnum(val string) (CloudVmClusterLifecycleStateEnum, bool) {
-	mappingCloudVmClusterLifecycleStateEnumIgnoreCase := make(map[string]CloudVmClusterLifecycleStateEnum)
-	for k, v := range mappingCloudVmClusterLifecycleStateEnum {
-		mappingCloudVmClusterLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCloudVmClusterLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCloudVmClusterLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -255,6 +260,11 @@ const (
 var mappingCloudVmClusterLicenseModelEnum = map[string]CloudVmClusterLicenseModelEnum{
 	"LICENSE_INCLUDED":       CloudVmClusterLicenseModelLicenseIncluded,
 	"BRING_YOUR_OWN_LICENSE": CloudVmClusterLicenseModelBringYourOwnLicense,
+}
+
+var mappingCloudVmClusterLicenseModelEnumLowerCase = map[string]CloudVmClusterLicenseModelEnum{
+	"license_included":       CloudVmClusterLicenseModelLicenseIncluded,
+	"bring_your_own_license": CloudVmClusterLicenseModelBringYourOwnLicense,
 }
 
 // GetCloudVmClusterLicenseModelEnumValues Enumerates the set of values for CloudVmClusterLicenseModelEnum
@@ -276,12 +286,7 @@ func GetCloudVmClusterLicenseModelEnumStringValues() []string {
 
 // GetMappingCloudVmClusterLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCloudVmClusterLicenseModelEnum(val string) (CloudVmClusterLicenseModelEnum, bool) {
-	mappingCloudVmClusterLicenseModelEnumIgnoreCase := make(map[string]CloudVmClusterLicenseModelEnum)
-	for k, v := range mappingCloudVmClusterLicenseModelEnum {
-		mappingCloudVmClusterLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCloudVmClusterLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCloudVmClusterLicenseModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -297,6 +302,11 @@ const (
 var mappingCloudVmClusterDiskRedundancyEnum = map[string]CloudVmClusterDiskRedundancyEnum{
 	"HIGH":   CloudVmClusterDiskRedundancyHigh,
 	"NORMAL": CloudVmClusterDiskRedundancyNormal,
+}
+
+var mappingCloudVmClusterDiskRedundancyEnumLowerCase = map[string]CloudVmClusterDiskRedundancyEnum{
+	"high":   CloudVmClusterDiskRedundancyHigh,
+	"normal": CloudVmClusterDiskRedundancyNormal,
 }
 
 // GetCloudVmClusterDiskRedundancyEnumValues Enumerates the set of values for CloudVmClusterDiskRedundancyEnum
@@ -318,11 +328,6 @@ func GetCloudVmClusterDiskRedundancyEnumStringValues() []string {
 
 // GetMappingCloudVmClusterDiskRedundancyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCloudVmClusterDiskRedundancyEnum(val string) (CloudVmClusterDiskRedundancyEnum, bool) {
-	mappingCloudVmClusterDiskRedundancyEnumIgnoreCase := make(map[string]CloudVmClusterDiskRedundancyEnum)
-	for k, v := range mappingCloudVmClusterDiskRedundancyEnum {
-		mappingCloudVmClusterDiskRedundancyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCloudVmClusterDiskRedundancyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCloudVmClusterDiskRedundancyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

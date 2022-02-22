@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -132,6 +132,10 @@ var mappingListProxyUsersSortByEnum = map[string]ListProxyUsersSortByEnum{
 	"NAME": ListProxyUsersSortByName,
 }
 
+var mappingListProxyUsersSortByEnumLowerCase = map[string]ListProxyUsersSortByEnum{
+	"name": ListProxyUsersSortByName,
+}
+
 // GetListProxyUsersSortByEnumValues Enumerates the set of values for ListProxyUsersSortByEnum
 func GetListProxyUsersSortByEnumValues() []ListProxyUsersSortByEnum {
 	values := make([]ListProxyUsersSortByEnum, 0)
@@ -150,12 +154,7 @@ func GetListProxyUsersSortByEnumStringValues() []string {
 
 // GetMappingListProxyUsersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProxyUsersSortByEnum(val string) (ListProxyUsersSortByEnum, bool) {
-	mappingListProxyUsersSortByEnumIgnoreCase := make(map[string]ListProxyUsersSortByEnum)
-	for k, v := range mappingListProxyUsersSortByEnum {
-		mappingListProxyUsersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProxyUsersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProxyUsersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -171,6 +170,11 @@ const (
 var mappingListProxyUsersSortOrderEnum = map[string]ListProxyUsersSortOrderEnum{
 	"ASC":  ListProxyUsersSortOrderAsc,
 	"DESC": ListProxyUsersSortOrderDesc,
+}
+
+var mappingListProxyUsersSortOrderEnumLowerCase = map[string]ListProxyUsersSortOrderEnum{
+	"asc":  ListProxyUsersSortOrderAsc,
+	"desc": ListProxyUsersSortOrderDesc,
 }
 
 // GetListProxyUsersSortOrderEnumValues Enumerates the set of values for ListProxyUsersSortOrderEnum
@@ -192,11 +196,6 @@ func GetListProxyUsersSortOrderEnumStringValues() []string {
 
 // GetMappingListProxyUsersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProxyUsersSortOrderEnum(val string) (ListProxyUsersSortOrderEnum, bool) {
-	mappingListProxyUsersSortOrderEnumIgnoreCase := make(map[string]ListProxyUsersSortOrderEnum)
-	for k, v := range mappingListProxyUsersSortOrderEnum {
-		mappingListProxyUsersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProxyUsersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProxyUsersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

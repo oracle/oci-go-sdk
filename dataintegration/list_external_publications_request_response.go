@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,11 @@ var mappingListExternalPublicationsSortOrderEnum = map[string]ListExternalPublic
 	"DESC": ListExternalPublicationsSortOrderDesc,
 }
 
+var mappingListExternalPublicationsSortOrderEnumLowerCase = map[string]ListExternalPublicationsSortOrderEnum{
+	"asc":  ListExternalPublicationsSortOrderAsc,
+	"desc": ListExternalPublicationsSortOrderDesc,
+}
+
 // GetListExternalPublicationsSortOrderEnumValues Enumerates the set of values for ListExternalPublicationsSortOrderEnum
 func GetListExternalPublicationsSortOrderEnumValues() []ListExternalPublicationsSortOrderEnum {
 	values := make([]ListExternalPublicationsSortOrderEnum, 0)
@@ -160,12 +165,7 @@ func GetListExternalPublicationsSortOrderEnumStringValues() []string {
 
 // GetMappingListExternalPublicationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListExternalPublicationsSortOrderEnum(val string) (ListExternalPublicationsSortOrderEnum, bool) {
-	mappingListExternalPublicationsSortOrderEnumIgnoreCase := make(map[string]ListExternalPublicationsSortOrderEnum)
-	for k, v := range mappingListExternalPublicationsSortOrderEnum {
-		mappingListExternalPublicationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListExternalPublicationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListExternalPublicationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +181,11 @@ const (
 var mappingListExternalPublicationsSortByEnum = map[string]ListExternalPublicationsSortByEnum{
 	"TIME_CREATED": ListExternalPublicationsSortByTimeCreated,
 	"DISPLAY_NAME": ListExternalPublicationsSortByDisplayName,
+}
+
+var mappingListExternalPublicationsSortByEnumLowerCase = map[string]ListExternalPublicationsSortByEnum{
+	"time_created": ListExternalPublicationsSortByTimeCreated,
+	"display_name": ListExternalPublicationsSortByDisplayName,
 }
 
 // GetListExternalPublicationsSortByEnumValues Enumerates the set of values for ListExternalPublicationsSortByEnum
@@ -202,11 +207,6 @@ func GetListExternalPublicationsSortByEnumStringValues() []string {
 
 // GetMappingListExternalPublicationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListExternalPublicationsSortByEnum(val string) (ListExternalPublicationsSortByEnum, bool) {
-	mappingListExternalPublicationsSortByEnumIgnoreCase := make(map[string]ListExternalPublicationsSortByEnum)
-	for k, v := range mappingListExternalPublicationsSortByEnum {
-		mappingListExternalPublicationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListExternalPublicationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListExternalPublicationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

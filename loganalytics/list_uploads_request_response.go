@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -142,6 +142,11 @@ var mappingListUploadsSortOrderEnum = map[string]ListUploadsSortOrderEnum{
 	"DESC": ListUploadsSortOrderDesc,
 }
 
+var mappingListUploadsSortOrderEnumLowerCase = map[string]ListUploadsSortOrderEnum{
+	"asc":  ListUploadsSortOrderAsc,
+	"desc": ListUploadsSortOrderDesc,
+}
+
 // GetListUploadsSortOrderEnumValues Enumerates the set of values for ListUploadsSortOrderEnum
 func GetListUploadsSortOrderEnumValues() []ListUploadsSortOrderEnum {
 	values := make([]ListUploadsSortOrderEnum, 0)
@@ -161,12 +166,7 @@ func GetListUploadsSortOrderEnumStringValues() []string {
 
 // GetMappingListUploadsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUploadsSortOrderEnum(val string) (ListUploadsSortOrderEnum, bool) {
-	mappingListUploadsSortOrderEnumIgnoreCase := make(map[string]ListUploadsSortOrderEnum)
-	for k, v := range mappingListUploadsSortOrderEnum {
-		mappingListUploadsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUploadsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUploadsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +183,12 @@ const (
 var mappingListUploadsSortByEnum = map[string]ListUploadsSortByEnum{
 	"timeUpdated": ListUploadsSortByTimeupdated,
 	"timeCreated": ListUploadsSortByTimecreated,
+	"name":        ListUploadsSortByName,
+}
+
+var mappingListUploadsSortByEnumLowerCase = map[string]ListUploadsSortByEnum{
+	"timeupdated": ListUploadsSortByTimeupdated,
+	"timecreated": ListUploadsSortByTimecreated,
 	"name":        ListUploadsSortByName,
 }
 
@@ -206,12 +212,7 @@ func GetListUploadsSortByEnumStringValues() []string {
 
 // GetMappingListUploadsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUploadsSortByEnum(val string) (ListUploadsSortByEnum, bool) {
-	mappingListUploadsSortByEnumIgnoreCase := make(map[string]ListUploadsSortByEnum)
-	for k, v := range mappingListUploadsSortByEnum {
-		mappingListUploadsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUploadsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUploadsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -229,6 +230,12 @@ var mappingListUploadsWarningsFilterEnum = map[string]ListUploadsWarningsFilterE
 	"WITH_WARNINGS":    ListUploadsWarningsFilterWithWarnings,
 	"WITHOUT_WARNINGS": ListUploadsWarningsFilterWithoutWarnings,
 	"ALL":              ListUploadsWarningsFilterAll,
+}
+
+var mappingListUploadsWarningsFilterEnumLowerCase = map[string]ListUploadsWarningsFilterEnum{
+	"with_warnings":    ListUploadsWarningsFilterWithWarnings,
+	"without_warnings": ListUploadsWarningsFilterWithoutWarnings,
+	"all":              ListUploadsWarningsFilterAll,
 }
 
 // GetListUploadsWarningsFilterEnumValues Enumerates the set of values for ListUploadsWarningsFilterEnum
@@ -251,11 +258,6 @@ func GetListUploadsWarningsFilterEnumStringValues() []string {
 
 // GetMappingListUploadsWarningsFilterEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUploadsWarningsFilterEnum(val string) (ListUploadsWarningsFilterEnum, bool) {
-	mappingListUploadsWarningsFilterEnumIgnoreCase := make(map[string]ListUploadsWarningsFilterEnum)
-	for k, v := range mappingListUploadsWarningsFilterEnum {
-		mappingListUploadsWarningsFilterEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUploadsWarningsFilterEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUploadsWarningsFilterEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

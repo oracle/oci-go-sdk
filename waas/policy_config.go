@@ -12,7 +12,7 @@ package waas
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -191,6 +191,13 @@ var mappingPolicyConfigTlsProtocolsEnum = map[string]PolicyConfigTlsProtocolsEnu
 	"TLS_V1_3": PolicyConfigTlsProtocolsV13,
 }
 
+var mappingPolicyConfigTlsProtocolsEnumLowerCase = map[string]PolicyConfigTlsProtocolsEnum{
+	"tls_v1":   PolicyConfigTlsProtocolsV1,
+	"tls_v1_1": PolicyConfigTlsProtocolsV11,
+	"tls_v1_2": PolicyConfigTlsProtocolsV12,
+	"tls_v1_3": PolicyConfigTlsProtocolsV13,
+}
+
 // GetPolicyConfigTlsProtocolsEnumValues Enumerates the set of values for PolicyConfigTlsProtocolsEnum
 func GetPolicyConfigTlsProtocolsEnumValues() []PolicyConfigTlsProtocolsEnum {
 	values := make([]PolicyConfigTlsProtocolsEnum, 0)
@@ -212,12 +219,7 @@ func GetPolicyConfigTlsProtocolsEnumStringValues() []string {
 
 // GetMappingPolicyConfigTlsProtocolsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPolicyConfigTlsProtocolsEnum(val string) (PolicyConfigTlsProtocolsEnum, bool) {
-	mappingPolicyConfigTlsProtocolsEnumIgnoreCase := make(map[string]PolicyConfigTlsProtocolsEnum)
-	for k, v := range mappingPolicyConfigTlsProtocolsEnum {
-		mappingPolicyConfigTlsProtocolsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPolicyConfigTlsProtocolsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPolicyConfigTlsProtocolsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -239,6 +241,14 @@ var mappingPolicyConfigClientAddressHeaderEnum = map[string]PolicyConfigClientAd
 	"X_REAL_IP":       PolicyConfigClientAddressHeaderXRealIp,
 	"CLIENT_IP":       PolicyConfigClientAddressHeaderClientIp,
 	"TRUE_CLIENT_IP":  PolicyConfigClientAddressHeaderTrueClientIp,
+}
+
+var mappingPolicyConfigClientAddressHeaderEnumLowerCase = map[string]PolicyConfigClientAddressHeaderEnum{
+	"x_forwarded_for": PolicyConfigClientAddressHeaderXForwardedFor,
+	"x_client_ip":     PolicyConfigClientAddressHeaderXClientIp,
+	"x_real_ip":       PolicyConfigClientAddressHeaderXRealIp,
+	"client_ip":       PolicyConfigClientAddressHeaderClientIp,
+	"true_client_ip":  PolicyConfigClientAddressHeaderTrueClientIp,
 }
 
 // GetPolicyConfigClientAddressHeaderEnumValues Enumerates the set of values for PolicyConfigClientAddressHeaderEnum
@@ -263,12 +273,7 @@ func GetPolicyConfigClientAddressHeaderEnumStringValues() []string {
 
 // GetMappingPolicyConfigClientAddressHeaderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPolicyConfigClientAddressHeaderEnum(val string) (PolicyConfigClientAddressHeaderEnum, bool) {
-	mappingPolicyConfigClientAddressHeaderEnumIgnoreCase := make(map[string]PolicyConfigClientAddressHeaderEnum)
-	for k, v := range mappingPolicyConfigClientAddressHeaderEnum {
-		mappingPolicyConfigClientAddressHeaderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPolicyConfigClientAddressHeaderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPolicyConfigClientAddressHeaderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -282,6 +287,10 @@ const (
 
 var mappingPolicyConfigCipherGroupEnum = map[string]PolicyConfigCipherGroupEnum{
 	"DEFAULT": PolicyConfigCipherGroupDefault,
+}
+
+var mappingPolicyConfigCipherGroupEnumLowerCase = map[string]PolicyConfigCipherGroupEnum{
+	"default": PolicyConfigCipherGroupDefault,
 }
 
 // GetPolicyConfigCipherGroupEnumValues Enumerates the set of values for PolicyConfigCipherGroupEnum
@@ -302,11 +311,6 @@ func GetPolicyConfigCipherGroupEnumStringValues() []string {
 
 // GetMappingPolicyConfigCipherGroupEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPolicyConfigCipherGroupEnum(val string) (PolicyConfigCipherGroupEnum, bool) {
-	mappingPolicyConfigCipherGroupEnumIgnoreCase := make(map[string]PolicyConfigCipherGroupEnum)
-	for k, v := range mappingPolicyConfigCipherGroupEnum {
-		mappingPolicyConfigCipherGroupEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPolicyConfigCipherGroupEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPolicyConfigCipherGroupEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

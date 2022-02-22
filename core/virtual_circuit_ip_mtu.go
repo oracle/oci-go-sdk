@@ -31,6 +31,11 @@ var mappingVirtualCircuitIpMtuEnum = map[string]VirtualCircuitIpMtuEnum{
 	"MTU_9000": VirtualCircuitIpMtuMtu9000,
 }
 
+var mappingVirtualCircuitIpMtuEnumLowerCase = map[string]VirtualCircuitIpMtuEnum{
+	"mtu_1500": VirtualCircuitIpMtuMtu1500,
+	"mtu_9000": VirtualCircuitIpMtuMtu9000,
+}
+
 // GetVirtualCircuitIpMtuEnumValues Enumerates the set of values for VirtualCircuitIpMtuEnum
 func GetVirtualCircuitIpMtuEnumValues() []VirtualCircuitIpMtuEnum {
 	values := make([]VirtualCircuitIpMtuEnum, 0)
@@ -50,11 +55,6 @@ func GetVirtualCircuitIpMtuEnumStringValues() []string {
 
 // GetMappingVirtualCircuitIpMtuEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVirtualCircuitIpMtuEnum(val string) (VirtualCircuitIpMtuEnum, bool) {
-	mappingVirtualCircuitIpMtuEnumIgnoreCase := make(map[string]VirtualCircuitIpMtuEnum)
-	for k, v := range mappingVirtualCircuitIpMtuEnum {
-		mappingVirtualCircuitIpMtuEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVirtualCircuitIpMtuEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVirtualCircuitIpMtuEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

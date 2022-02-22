@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -140,6 +140,19 @@ var mappingGetTermRelationshipFieldsEnum = map[string]GetTermRelationshipFieldsE
 	"uri":                    GetTermRelationshipFieldsUri,
 }
 
+var mappingGetTermRelationshipFieldsEnumLowerCase = map[string]GetTermRelationshipFieldsEnum{
+	"key":                    GetTermRelationshipFieldsKey,
+	"displayname":            GetTermRelationshipFieldsDisplayname,
+	"description":            GetTermRelationshipFieldsDescription,
+	"relatedtermkey":         GetTermRelationshipFieldsRelatedtermkey,
+	"relatedtermdisplayname": GetTermRelationshipFieldsRelatedtermdisplayname,
+	"parenttermkey":          GetTermRelationshipFieldsParenttermkey,
+	"parenttermdisplayname":  GetTermRelationshipFieldsParenttermdisplayname,
+	"lifecyclestate":         GetTermRelationshipFieldsLifecyclestate,
+	"timecreated":            GetTermRelationshipFieldsTimecreated,
+	"uri":                    GetTermRelationshipFieldsUri,
+}
+
 // GetGetTermRelationshipFieldsEnumValues Enumerates the set of values for GetTermRelationshipFieldsEnum
 func GetGetTermRelationshipFieldsEnumValues() []GetTermRelationshipFieldsEnum {
 	values := make([]GetTermRelationshipFieldsEnum, 0)
@@ -167,11 +180,6 @@ func GetGetTermRelationshipFieldsEnumStringValues() []string {
 
 // GetMappingGetTermRelationshipFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetTermRelationshipFieldsEnum(val string) (GetTermRelationshipFieldsEnum, bool) {
-	mappingGetTermRelationshipFieldsEnumIgnoreCase := make(map[string]GetTermRelationshipFieldsEnum)
-	for k, v := range mappingGetTermRelationshipFieldsEnum {
-		mappingGetTermRelationshipFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetTermRelationshipFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetTermRelationshipFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

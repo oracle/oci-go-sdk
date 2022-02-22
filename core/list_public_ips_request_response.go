@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -146,6 +146,11 @@ var mappingListPublicIpsScopeEnum = map[string]ListPublicIpsScopeEnum{
 	"AVAILABILITY_DOMAIN": ListPublicIpsScopeAvailabilityDomain,
 }
 
+var mappingListPublicIpsScopeEnumLowerCase = map[string]ListPublicIpsScopeEnum{
+	"region":              ListPublicIpsScopeRegion,
+	"availability_domain": ListPublicIpsScopeAvailabilityDomain,
+}
+
 // GetListPublicIpsScopeEnumValues Enumerates the set of values for ListPublicIpsScopeEnum
 func GetListPublicIpsScopeEnumValues() []ListPublicIpsScopeEnum {
 	values := make([]ListPublicIpsScopeEnum, 0)
@@ -165,12 +170,7 @@ func GetListPublicIpsScopeEnumStringValues() []string {
 
 // GetMappingListPublicIpsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPublicIpsScopeEnum(val string) (ListPublicIpsScopeEnum, bool) {
-	mappingListPublicIpsScopeEnumIgnoreCase := make(map[string]ListPublicIpsScopeEnum)
-	for k, v := range mappingListPublicIpsScopeEnum {
-		mappingListPublicIpsScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPublicIpsScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPublicIpsScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -186,6 +186,11 @@ const (
 var mappingListPublicIpsLifetimeEnum = map[string]ListPublicIpsLifetimeEnum{
 	"EPHEMERAL": ListPublicIpsLifetimeEphemeral,
 	"RESERVED":  ListPublicIpsLifetimeReserved,
+}
+
+var mappingListPublicIpsLifetimeEnumLowerCase = map[string]ListPublicIpsLifetimeEnum{
+	"ephemeral": ListPublicIpsLifetimeEphemeral,
+	"reserved":  ListPublicIpsLifetimeReserved,
 }
 
 // GetListPublicIpsLifetimeEnumValues Enumerates the set of values for ListPublicIpsLifetimeEnum
@@ -207,11 +212,6 @@ func GetListPublicIpsLifetimeEnumStringValues() []string {
 
 // GetMappingListPublicIpsLifetimeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPublicIpsLifetimeEnum(val string) (ListPublicIpsLifetimeEnum, bool) {
-	mappingListPublicIpsLifetimeEnumIgnoreCase := make(map[string]ListPublicIpsLifetimeEnum)
-	for k, v := range mappingListPublicIpsLifetimeEnum {
-		mappingListPublicIpsLifetimeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPublicIpsLifetimeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPublicIpsLifetimeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,11 @@ var mappingListAuditProfileAnalyticsAccessLevelEnum = map[string]ListAuditProfil
 	"ACCESSIBLE": ListAuditProfileAnalyticsAccessLevelAccessible,
 }
 
+var mappingListAuditProfileAnalyticsAccessLevelEnumLowerCase = map[string]ListAuditProfileAnalyticsAccessLevelEnum{
+	"restricted": ListAuditProfileAnalyticsAccessLevelRestricted,
+	"accessible": ListAuditProfileAnalyticsAccessLevelAccessible,
+}
+
 // GetListAuditProfileAnalyticsAccessLevelEnumValues Enumerates the set of values for ListAuditProfileAnalyticsAccessLevelEnum
 func GetListAuditProfileAnalyticsAccessLevelEnumValues() []ListAuditProfileAnalyticsAccessLevelEnum {
 	values := make([]ListAuditProfileAnalyticsAccessLevelEnum, 0)
@@ -157,12 +162,7 @@ func GetListAuditProfileAnalyticsAccessLevelEnumStringValues() []string {
 
 // GetMappingListAuditProfileAnalyticsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditProfileAnalyticsAccessLevelEnum(val string) (ListAuditProfileAnalyticsAccessLevelEnum, bool) {
-	mappingListAuditProfileAnalyticsAccessLevelEnumIgnoreCase := make(map[string]ListAuditProfileAnalyticsAccessLevelEnum)
-	for k, v := range mappingListAuditProfileAnalyticsAccessLevelEnum {
-		mappingListAuditProfileAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditProfileAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditProfileAnalyticsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -176,6 +176,10 @@ const (
 
 var mappingListAuditProfileAnalyticsGroupByEnum = map[string]ListAuditProfileAnalyticsGroupByEnum{
 	"isPaidUsageEnabled": ListAuditProfileAnalyticsGroupByIspaidusageenabled,
+}
+
+var mappingListAuditProfileAnalyticsGroupByEnumLowerCase = map[string]ListAuditProfileAnalyticsGroupByEnum{
+	"ispaidusageenabled": ListAuditProfileAnalyticsGroupByIspaidusageenabled,
 }
 
 // GetListAuditProfileAnalyticsGroupByEnumValues Enumerates the set of values for ListAuditProfileAnalyticsGroupByEnum
@@ -196,11 +200,6 @@ func GetListAuditProfileAnalyticsGroupByEnumStringValues() []string {
 
 // GetMappingListAuditProfileAnalyticsGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditProfileAnalyticsGroupByEnum(val string) (ListAuditProfileAnalyticsGroupByEnum, bool) {
-	mappingListAuditProfileAnalyticsGroupByEnumIgnoreCase := make(map[string]ListAuditProfileAnalyticsGroupByEnum)
-	for k, v := range mappingListAuditProfileAnalyticsGroupByEnum {
-		mappingListAuditProfileAnalyticsGroupByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditProfileAnalyticsGroupByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditProfileAnalyticsGroupByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

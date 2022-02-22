@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,11 @@ var mappingDatabaseConnectionCredentialsCredentialTypeEnum = map[string]Database
 	"DETAILS":        DatabaseConnectionCredentialsCredentialTypeDetails,
 }
 
+var mappingDatabaseConnectionCredentialsCredentialTypeEnumLowerCase = map[string]DatabaseConnectionCredentialsCredentialTypeEnum{
+	"name_reference": DatabaseConnectionCredentialsCredentialTypeNameReference,
+	"details":        DatabaseConnectionCredentialsCredentialTypeDetails,
+}
+
 // GetDatabaseConnectionCredentialsCredentialTypeEnumValues Enumerates the set of values for DatabaseConnectionCredentialsCredentialTypeEnum
 func GetDatabaseConnectionCredentialsCredentialTypeEnumValues() []DatabaseConnectionCredentialsCredentialTypeEnum {
 	values := make([]DatabaseConnectionCredentialsCredentialTypeEnum, 0)
@@ -112,11 +117,6 @@ func GetDatabaseConnectionCredentialsCredentialTypeEnumStringValues() []string {
 
 // GetMappingDatabaseConnectionCredentialsCredentialTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseConnectionCredentialsCredentialTypeEnum(val string) (DatabaseConnectionCredentialsCredentialTypeEnum, bool) {
-	mappingDatabaseConnectionCredentialsCredentialTypeEnumIgnoreCase := make(map[string]DatabaseConnectionCredentialsCredentialTypeEnum)
-	for k, v := range mappingDatabaseConnectionCredentialsCredentialTypeEnum {
-		mappingDatabaseConnectionCredentialsCredentialTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseConnectionCredentialsCredentialTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseConnectionCredentialsCredentialTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

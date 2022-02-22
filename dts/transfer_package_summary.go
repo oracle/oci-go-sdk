@@ -11,7 +11,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -71,6 +71,18 @@ var mappingTransferPackageSummaryLifecycleStateEnum = map[string]TransferPackage
 	"CANCELLED_RETURNED": TransferPackageSummaryLifecycleStateCancelledReturned,
 }
 
+var mappingTransferPackageSummaryLifecycleStateEnumLowerCase = map[string]TransferPackageSummaryLifecycleStateEnum{
+	"preparing":          TransferPackageSummaryLifecycleStatePreparing,
+	"shipping":           TransferPackageSummaryLifecycleStateShipping,
+	"received":           TransferPackageSummaryLifecycleStateReceived,
+	"processing":         TransferPackageSummaryLifecycleStateProcessing,
+	"processed":          TransferPackageSummaryLifecycleStateProcessed,
+	"returned":           TransferPackageSummaryLifecycleStateReturned,
+	"deleted":            TransferPackageSummaryLifecycleStateDeleted,
+	"cancelled":          TransferPackageSummaryLifecycleStateCancelled,
+	"cancelled_returned": TransferPackageSummaryLifecycleStateCancelledReturned,
+}
+
 // GetTransferPackageSummaryLifecycleStateEnumValues Enumerates the set of values for TransferPackageSummaryLifecycleStateEnum
 func GetTransferPackageSummaryLifecycleStateEnumValues() []TransferPackageSummaryLifecycleStateEnum {
 	values := make([]TransferPackageSummaryLifecycleStateEnum, 0)
@@ -97,11 +109,6 @@ func GetTransferPackageSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingTransferPackageSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTransferPackageSummaryLifecycleStateEnum(val string) (TransferPackageSummaryLifecycleStateEnum, bool) {
-	mappingTransferPackageSummaryLifecycleStateEnumIgnoreCase := make(map[string]TransferPackageSummaryLifecycleStateEnum)
-	for k, v := range mappingTransferPackageSummaryLifecycleStateEnum {
-		mappingTransferPackageSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTransferPackageSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTransferPackageSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

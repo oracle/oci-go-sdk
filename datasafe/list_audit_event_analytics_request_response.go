@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -193,6 +193,11 @@ var mappingListAuditEventAnalyticsAccessLevelEnum = map[string]ListAuditEventAna
 	"ACCESSIBLE": ListAuditEventAnalyticsAccessLevelAccessible,
 }
 
+var mappingListAuditEventAnalyticsAccessLevelEnumLowerCase = map[string]ListAuditEventAnalyticsAccessLevelEnum{
+	"restricted": ListAuditEventAnalyticsAccessLevelRestricted,
+	"accessible": ListAuditEventAnalyticsAccessLevelAccessible,
+}
+
 // GetListAuditEventAnalyticsAccessLevelEnumValues Enumerates the set of values for ListAuditEventAnalyticsAccessLevelEnum
 func GetListAuditEventAnalyticsAccessLevelEnumValues() []ListAuditEventAnalyticsAccessLevelEnum {
 	values := make([]ListAuditEventAnalyticsAccessLevelEnum, 0)
@@ -212,12 +217,7 @@ func GetListAuditEventAnalyticsAccessLevelEnumStringValues() []string {
 
 // GetMappingListAuditEventAnalyticsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditEventAnalyticsAccessLevelEnum(val string) (ListAuditEventAnalyticsAccessLevelEnum, bool) {
-	mappingListAuditEventAnalyticsAccessLevelEnumIgnoreCase := make(map[string]ListAuditEventAnalyticsAccessLevelEnum)
-	for k, v := range mappingListAuditEventAnalyticsAccessLevelEnum {
-		mappingListAuditEventAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditEventAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditEventAnalyticsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -295,6 +295,41 @@ var mappingListAuditEventAnalyticsSummaryFieldEnum = map[string]ListAuditEventAn
 	"revokes":               ListAuditEventAnalyticsSummaryFieldRevokes,
 }
 
+var mappingListAuditEventAnalyticsSummaryFieldEnumLowerCase = map[string]ListAuditEventAnalyticsSummaryFieldEnum{
+	"auditeventtime":        ListAuditEventAnalyticsSummaryFieldAuditeventtime,
+	"dbusername":            ListAuditEventAnalyticsSummaryFieldDbusername,
+	"targetid":              ListAuditEventAnalyticsSummaryFieldTargetid,
+	"targetname":            ListAuditEventAnalyticsSummaryFieldTargetname,
+	"targetclass":           ListAuditEventAnalyticsSummaryFieldTargetclass,
+	"objecttype":            ListAuditEventAnalyticsSummaryFieldObjecttype,
+	"clienthostname":        ListAuditEventAnalyticsSummaryFieldClienthostname,
+	"clientprogram":         ListAuditEventAnalyticsSummaryFieldClientprogram,
+	"clientid":              ListAuditEventAnalyticsSummaryFieldClientid,
+	"audittype":             ListAuditEventAnalyticsSummaryFieldAudittype,
+	"eventname":             ListAuditEventAnalyticsSummaryFieldEventname,
+	"allrecord":             ListAuditEventAnalyticsSummaryFieldAllrecord,
+	"auditsettingschange":   ListAuditEventAnalyticsSummaryFieldAuditsettingschange,
+	"dbschemachange":        ListAuditEventAnalyticsSummaryFieldDbschemachange,
+	"entitlementchange":     ListAuditEventAnalyticsSummaryFieldEntitlementchange,
+	"loginfailure":          ListAuditEventAnalyticsSummaryFieldLoginfailure,
+	"loginsuccess":          ListAuditEventAnalyticsSummaryFieldLoginsuccess,
+	"allviolations":         ListAuditEventAnalyticsSummaryFieldAllviolations,
+	"realmviolations":       ListAuditEventAnalyticsSummaryFieldRealmviolations,
+	"ruleviolations":        ListAuditEventAnalyticsSummaryFieldRuleviolations,
+	"dvconfigactivities":    ListAuditEventAnalyticsSummaryFieldDvconfigactivities,
+	"ddls":                  ListAuditEventAnalyticsSummaryFieldDdls,
+	"dmls":                  ListAuditEventAnalyticsSummaryFieldDmls,
+	"privilegechanges":      ListAuditEventAnalyticsSummaryFieldPrivilegechanges,
+	"auditsettingsenables":  ListAuditEventAnalyticsSummaryFieldAuditsettingsenables,
+	"auditsettingsdisables": ListAuditEventAnalyticsSummaryFieldAuditsettingsdisables,
+	"selects":               ListAuditEventAnalyticsSummaryFieldSelects,
+	"creates":               ListAuditEventAnalyticsSummaryFieldCreates,
+	"alters":                ListAuditEventAnalyticsSummaryFieldAlters,
+	"drops":                 ListAuditEventAnalyticsSummaryFieldDrops,
+	"grants":                ListAuditEventAnalyticsSummaryFieldGrants,
+	"revokes":               ListAuditEventAnalyticsSummaryFieldRevokes,
+}
+
 // GetListAuditEventAnalyticsSummaryFieldEnumValues Enumerates the set of values for ListAuditEventAnalyticsSummaryFieldEnum
 func GetListAuditEventAnalyticsSummaryFieldEnumValues() []ListAuditEventAnalyticsSummaryFieldEnum {
 	values := make([]ListAuditEventAnalyticsSummaryFieldEnum, 0)
@@ -344,12 +379,7 @@ func GetListAuditEventAnalyticsSummaryFieldEnumStringValues() []string {
 
 // GetMappingListAuditEventAnalyticsSummaryFieldEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditEventAnalyticsSummaryFieldEnum(val string) (ListAuditEventAnalyticsSummaryFieldEnum, bool) {
-	mappingListAuditEventAnalyticsSummaryFieldEnumIgnoreCase := make(map[string]ListAuditEventAnalyticsSummaryFieldEnum)
-	for k, v := range mappingListAuditEventAnalyticsSummaryFieldEnum {
-		mappingListAuditEventAnalyticsSummaryFieldEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditEventAnalyticsSummaryFieldEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditEventAnalyticsSummaryFieldEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -385,6 +415,20 @@ var mappingListAuditEventAnalyticsGroupByEnum = map[string]ListAuditEventAnalyti
 	"eventName":      ListAuditEventAnalyticsGroupByEventname,
 }
 
+var mappingListAuditEventAnalyticsGroupByEnumLowerCase = map[string]ListAuditEventAnalyticsGroupByEnum{
+	"auditeventtime": ListAuditEventAnalyticsGroupByAuditeventtime,
+	"dbusername":     ListAuditEventAnalyticsGroupByDbusername,
+	"targetid":       ListAuditEventAnalyticsGroupByTargetid,
+	"targetname":     ListAuditEventAnalyticsGroupByTargetname,
+	"targetclass":    ListAuditEventAnalyticsGroupByTargetclass,
+	"objecttype":     ListAuditEventAnalyticsGroupByObjecttype,
+	"clienthostname": ListAuditEventAnalyticsGroupByClienthostname,
+	"clientprogram":  ListAuditEventAnalyticsGroupByClientprogram,
+	"clientid":       ListAuditEventAnalyticsGroupByClientid,
+	"audittype":      ListAuditEventAnalyticsGroupByAudittype,
+	"eventname":      ListAuditEventAnalyticsGroupByEventname,
+}
+
 // GetListAuditEventAnalyticsGroupByEnumValues Enumerates the set of values for ListAuditEventAnalyticsGroupByEnum
 func GetListAuditEventAnalyticsGroupByEnumValues() []ListAuditEventAnalyticsGroupByEnum {
 	values := make([]ListAuditEventAnalyticsGroupByEnum, 0)
@@ -413,12 +457,7 @@ func GetListAuditEventAnalyticsGroupByEnumStringValues() []string {
 
 // GetMappingListAuditEventAnalyticsGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditEventAnalyticsGroupByEnum(val string) (ListAuditEventAnalyticsGroupByEnum, bool) {
-	mappingListAuditEventAnalyticsGroupByEnumIgnoreCase := make(map[string]ListAuditEventAnalyticsGroupByEnum)
-	for k, v := range mappingListAuditEventAnalyticsGroupByEnum {
-		mappingListAuditEventAnalyticsGroupByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditEventAnalyticsGroupByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditEventAnalyticsGroupByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -434,6 +473,11 @@ const (
 var mappingListAuditEventAnalyticsSortOrderEnum = map[string]ListAuditEventAnalyticsSortOrderEnum{
 	"ASC":  ListAuditEventAnalyticsSortOrderAsc,
 	"DESC": ListAuditEventAnalyticsSortOrderDesc,
+}
+
+var mappingListAuditEventAnalyticsSortOrderEnumLowerCase = map[string]ListAuditEventAnalyticsSortOrderEnum{
+	"asc":  ListAuditEventAnalyticsSortOrderAsc,
+	"desc": ListAuditEventAnalyticsSortOrderDesc,
 }
 
 // GetListAuditEventAnalyticsSortOrderEnumValues Enumerates the set of values for ListAuditEventAnalyticsSortOrderEnum
@@ -455,12 +499,7 @@ func GetListAuditEventAnalyticsSortOrderEnumStringValues() []string {
 
 // GetMappingListAuditEventAnalyticsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditEventAnalyticsSortOrderEnum(val string) (ListAuditEventAnalyticsSortOrderEnum, bool) {
-	mappingListAuditEventAnalyticsSortOrderEnumIgnoreCase := make(map[string]ListAuditEventAnalyticsSortOrderEnum)
-	for k, v := range mappingListAuditEventAnalyticsSortOrderEnum {
-		mappingListAuditEventAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditEventAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditEventAnalyticsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -496,6 +535,20 @@ var mappingListAuditEventAnalyticsSortByEnum = map[string]ListAuditEventAnalytic
 	"auditType":      ListAuditEventAnalyticsSortByAudittype,
 }
 
+var mappingListAuditEventAnalyticsSortByEnumLowerCase = map[string]ListAuditEventAnalyticsSortByEnum{
+	"targetid":       ListAuditEventAnalyticsSortByTargetid,
+	"targetclass":    ListAuditEventAnalyticsSortByTargetclass,
+	"targetname":     ListAuditEventAnalyticsSortByTargetname,
+	"objecttype":     ListAuditEventAnalyticsSortByObjecttype,
+	"dbusername":     ListAuditEventAnalyticsSortByDbusername,
+	"eventname":      ListAuditEventAnalyticsSortByEventname,
+	"auditeventtime": ListAuditEventAnalyticsSortByAuditeventtime,
+	"clienthostname": ListAuditEventAnalyticsSortByClienthostname,
+	"clientprogram":  ListAuditEventAnalyticsSortByClientprogram,
+	"clientid":       ListAuditEventAnalyticsSortByClientid,
+	"audittype":      ListAuditEventAnalyticsSortByAudittype,
+}
+
 // GetListAuditEventAnalyticsSortByEnumValues Enumerates the set of values for ListAuditEventAnalyticsSortByEnum
 func GetListAuditEventAnalyticsSortByEnumValues() []ListAuditEventAnalyticsSortByEnum {
 	values := make([]ListAuditEventAnalyticsSortByEnum, 0)
@@ -524,11 +577,6 @@ func GetListAuditEventAnalyticsSortByEnumStringValues() []string {
 
 // GetMappingListAuditEventAnalyticsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditEventAnalyticsSortByEnum(val string) (ListAuditEventAnalyticsSortByEnum, bool) {
-	mappingListAuditEventAnalyticsSortByEnumIgnoreCase := make(map[string]ListAuditEventAnalyticsSortByEnum)
-	for k, v := range mappingListAuditEventAnalyticsSortByEnum {
-		mappingListAuditEventAnalyticsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditEventAnalyticsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditEventAnalyticsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

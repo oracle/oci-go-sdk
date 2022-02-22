@@ -11,7 +11,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -83,6 +83,19 @@ var mappingTransferDeviceLifecycleStateEnum = map[string]TransferDeviceLifecycle
 	"CANCELLED":  TransferDeviceLifecycleStateCancelled,
 }
 
+var mappingTransferDeviceLifecycleStateEnumLowerCase = map[string]TransferDeviceLifecycleStateEnum{
+	"preparing":  TransferDeviceLifecycleStatePreparing,
+	"ready":      TransferDeviceLifecycleStateReady,
+	"packaged":   TransferDeviceLifecycleStatePackaged,
+	"active":     TransferDeviceLifecycleStateActive,
+	"processing": TransferDeviceLifecycleStateProcessing,
+	"complete":   TransferDeviceLifecycleStateComplete,
+	"missing":    TransferDeviceLifecycleStateMissing,
+	"error":      TransferDeviceLifecycleStateError,
+	"deleted":    TransferDeviceLifecycleStateDeleted,
+	"cancelled":  TransferDeviceLifecycleStateCancelled,
+}
+
 // GetTransferDeviceLifecycleStateEnumValues Enumerates the set of values for TransferDeviceLifecycleStateEnum
 func GetTransferDeviceLifecycleStateEnumValues() []TransferDeviceLifecycleStateEnum {
 	values := make([]TransferDeviceLifecycleStateEnum, 0)
@@ -110,11 +123,6 @@ func GetTransferDeviceLifecycleStateEnumStringValues() []string {
 
 // GetMappingTransferDeviceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTransferDeviceLifecycleStateEnum(val string) (TransferDeviceLifecycleStateEnum, bool) {
-	mappingTransferDeviceLifecycleStateEnumIgnoreCase := make(map[string]TransferDeviceLifecycleStateEnum)
-	for k, v := range mappingTransferDeviceLifecycleStateEnum {
-		mappingTransferDeviceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTransferDeviceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTransferDeviceLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

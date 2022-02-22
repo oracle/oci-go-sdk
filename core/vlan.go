@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -122,6 +122,14 @@ var mappingVlanLifecycleStateEnum = map[string]VlanLifecycleStateEnum{
 	"UPDATING":     VlanLifecycleStateUpdating,
 }
 
+var mappingVlanLifecycleStateEnumLowerCase = map[string]VlanLifecycleStateEnum{
+	"provisioning": VlanLifecycleStateProvisioning,
+	"available":    VlanLifecycleStateAvailable,
+	"terminating":  VlanLifecycleStateTerminating,
+	"terminated":   VlanLifecycleStateTerminated,
+	"updating":     VlanLifecycleStateUpdating,
+}
+
 // GetVlanLifecycleStateEnumValues Enumerates the set of values for VlanLifecycleStateEnum
 func GetVlanLifecycleStateEnumValues() []VlanLifecycleStateEnum {
 	values := make([]VlanLifecycleStateEnum, 0)
@@ -144,11 +152,6 @@ func GetVlanLifecycleStateEnumStringValues() []string {
 
 // GetMappingVlanLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVlanLifecycleStateEnum(val string) (VlanLifecycleStateEnum, bool) {
-	mappingVlanLifecycleStateEnumIgnoreCase := make(map[string]VlanLifecycleStateEnum)
-	for k, v := range mappingVlanLifecycleStateEnum {
-		mappingVlanLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVlanLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVlanLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

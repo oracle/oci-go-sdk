@@ -33,6 +33,14 @@ var mappingSensitiveColumnLifecycleStateEnum = map[string]SensitiveColumnLifecyc
 	"FAILED":   SensitiveColumnLifecycleStateFailed,
 }
 
+var mappingSensitiveColumnLifecycleStateEnumLowerCase = map[string]SensitiveColumnLifecycleStateEnum{
+	"creating": SensitiveColumnLifecycleStateCreating,
+	"active":   SensitiveColumnLifecycleStateActive,
+	"updating": SensitiveColumnLifecycleStateUpdating,
+	"deleting": SensitiveColumnLifecycleStateDeleting,
+	"failed":   SensitiveColumnLifecycleStateFailed,
+}
+
 // GetSensitiveColumnLifecycleStateEnumValues Enumerates the set of values for SensitiveColumnLifecycleStateEnum
 func GetSensitiveColumnLifecycleStateEnumValues() []SensitiveColumnLifecycleStateEnum {
 	values := make([]SensitiveColumnLifecycleStateEnum, 0)
@@ -55,11 +63,6 @@ func GetSensitiveColumnLifecycleStateEnumStringValues() []string {
 
 // GetMappingSensitiveColumnLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSensitiveColumnLifecycleStateEnum(val string) (SensitiveColumnLifecycleStateEnum, bool) {
-	mappingSensitiveColumnLifecycleStateEnumIgnoreCase := make(map[string]SensitiveColumnLifecycleStateEnum)
-	for k, v := range mappingSensitiveColumnLifecycleStateEnum {
-		mappingSensitiveColumnLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSensitiveColumnLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSensitiveColumnLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

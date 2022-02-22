@@ -11,7 +11,7 @@ package streaming
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -75,6 +75,14 @@ var mappingCreateCursorDetailsTypeEnum = map[string]CreateCursorDetailsTypeEnum{
 	"TRIM_HORIZON": CreateCursorDetailsTypeTrimHorizon,
 }
 
+var mappingCreateCursorDetailsTypeEnumLowerCase = map[string]CreateCursorDetailsTypeEnum{
+	"after_offset": CreateCursorDetailsTypeAfterOffset,
+	"at_offset":    CreateCursorDetailsTypeAtOffset,
+	"at_time":      CreateCursorDetailsTypeAtTime,
+	"latest":       CreateCursorDetailsTypeLatest,
+	"trim_horizon": CreateCursorDetailsTypeTrimHorizon,
+}
+
 // GetCreateCursorDetailsTypeEnumValues Enumerates the set of values for CreateCursorDetailsTypeEnum
 func GetCreateCursorDetailsTypeEnumValues() []CreateCursorDetailsTypeEnum {
 	values := make([]CreateCursorDetailsTypeEnum, 0)
@@ -97,11 +105,6 @@ func GetCreateCursorDetailsTypeEnumStringValues() []string {
 
 // GetMappingCreateCursorDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateCursorDetailsTypeEnum(val string) (CreateCursorDetailsTypeEnum, bool) {
-	mappingCreateCursorDetailsTypeEnumIgnoreCase := make(map[string]CreateCursorDetailsTypeEnum)
-	for k, v := range mappingCreateCursorDetailsTypeEnum {
-		mappingCreateCursorDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateCursorDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateCursorDetailsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

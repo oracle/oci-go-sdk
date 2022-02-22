@@ -14,7 +14,7 @@ package nosql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -120,6 +120,16 @@ var mappingTableLifecycleStateEnum = map[string]TableLifecycleStateEnum{
 	"INACTIVE": TableLifecycleStateInactive,
 }
 
+var mappingTableLifecycleStateEnumLowerCase = map[string]TableLifecycleStateEnum{
+	"creating": TableLifecycleStateCreating,
+	"updating": TableLifecycleStateUpdating,
+	"active":   TableLifecycleStateActive,
+	"deleting": TableLifecycleStateDeleting,
+	"deleted":  TableLifecycleStateDeleted,
+	"failed":   TableLifecycleStateFailed,
+	"inactive": TableLifecycleStateInactive,
+}
+
 // GetTableLifecycleStateEnumValues Enumerates the set of values for TableLifecycleStateEnum
 func GetTableLifecycleStateEnumValues() []TableLifecycleStateEnum {
 	values := make([]TableLifecycleStateEnum, 0)
@@ -144,11 +154,6 @@ func GetTableLifecycleStateEnumStringValues() []string {
 
 // GetMappingTableLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTableLifecycleStateEnum(val string) (TableLifecycleStateEnum, bool) {
-	mappingTableLifecycleStateEnumIgnoreCase := make(map[string]TableLifecycleStateEnum)
-	for k, v := range mappingTableLifecycleStateEnum {
-		mappingTableLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTableLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTableLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

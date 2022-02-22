@@ -33,6 +33,13 @@ var mappingStatusEnum = map[string]StatusEnum{
 	"IMPLEMENTED": StatusImplemented,
 }
 
+var mappingStatusEnumLowerCase = map[string]StatusEnum{
+	"pending":     StatusPending,
+	"dismissed":   StatusDismissed,
+	"postponed":   StatusPostponed,
+	"implemented": StatusImplemented,
+}
+
 // GetStatusEnumValues Enumerates the set of values for StatusEnum
 func GetStatusEnumValues() []StatusEnum {
 	values := make([]StatusEnum, 0)
@@ -54,11 +61,6 @@ func GetStatusEnumStringValues() []string {
 
 // GetMappingStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStatusEnum(val string) (StatusEnum, bool) {
-	mappingStatusEnumIgnoreCase := make(map[string]StatusEnum)
-	for k, v := range mappingStatusEnum {
-		mappingStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

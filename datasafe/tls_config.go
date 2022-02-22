@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -70,6 +70,11 @@ var mappingTlsConfigStatusEnum = map[string]TlsConfigStatusEnum{
 	"DISABLED": TlsConfigStatusDisabled,
 }
 
+var mappingTlsConfigStatusEnumLowerCase = map[string]TlsConfigStatusEnum{
+	"enabled":  TlsConfigStatusEnabled,
+	"disabled": TlsConfigStatusDisabled,
+}
+
 // GetTlsConfigStatusEnumValues Enumerates the set of values for TlsConfigStatusEnum
 func GetTlsConfigStatusEnumValues() []TlsConfigStatusEnum {
 	values := make([]TlsConfigStatusEnum, 0)
@@ -89,12 +94,7 @@ func GetTlsConfigStatusEnumStringValues() []string {
 
 // GetMappingTlsConfigStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTlsConfigStatusEnum(val string) (TlsConfigStatusEnum, bool) {
-	mappingTlsConfigStatusEnumIgnoreCase := make(map[string]TlsConfigStatusEnum)
-	for k, v := range mappingTlsConfigStatusEnum {
-		mappingTlsConfigStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTlsConfigStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTlsConfigStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -108,6 +108,10 @@ const (
 
 var mappingTlsConfigCertificateStoreTypeEnum = map[string]TlsConfigCertificateStoreTypeEnum{
 	"JKS": TlsConfigCertificateStoreTypeJks,
+}
+
+var mappingTlsConfigCertificateStoreTypeEnumLowerCase = map[string]TlsConfigCertificateStoreTypeEnum{
+	"jks": TlsConfigCertificateStoreTypeJks,
 }
 
 // GetTlsConfigCertificateStoreTypeEnumValues Enumerates the set of values for TlsConfigCertificateStoreTypeEnum
@@ -128,11 +132,6 @@ func GetTlsConfigCertificateStoreTypeEnumStringValues() []string {
 
 // GetMappingTlsConfigCertificateStoreTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTlsConfigCertificateStoreTypeEnum(val string) (TlsConfigCertificateStoreTypeEnum, bool) {
-	mappingTlsConfigCertificateStoreTypeEnumIgnoreCase := make(map[string]TlsConfigCertificateStoreTypeEnum)
-	for k, v := range mappingTlsConfigCertificateStoreTypeEnum {
-		mappingTlsConfigCertificateStoreTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTlsConfigCertificateStoreTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTlsConfigCertificateStoreTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

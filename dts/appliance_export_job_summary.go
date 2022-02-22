@@ -11,7 +11,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -84,6 +84,16 @@ var mappingApplianceExportJobSummaryLifecycleStateEnum = map[string]ApplianceExp
 	"DELETED":    ApplianceExportJobSummaryLifecycleStateDeleted,
 }
 
+var mappingApplianceExportJobSummaryLifecycleStateEnumLowerCase = map[string]ApplianceExportJobSummaryLifecycleStateEnum{
+	"creating":   ApplianceExportJobSummaryLifecycleStateCreating,
+	"active":     ApplianceExportJobSummaryLifecycleStateActive,
+	"inprogress": ApplianceExportJobSummaryLifecycleStateInprogress,
+	"succeeded":  ApplianceExportJobSummaryLifecycleStateSucceeded,
+	"failed":     ApplianceExportJobSummaryLifecycleStateFailed,
+	"cancelled":  ApplianceExportJobSummaryLifecycleStateCancelled,
+	"deleted":    ApplianceExportJobSummaryLifecycleStateDeleted,
+}
+
 // GetApplianceExportJobSummaryLifecycleStateEnumValues Enumerates the set of values for ApplianceExportJobSummaryLifecycleStateEnum
 func GetApplianceExportJobSummaryLifecycleStateEnumValues() []ApplianceExportJobSummaryLifecycleStateEnum {
 	values := make([]ApplianceExportJobSummaryLifecycleStateEnum, 0)
@@ -108,11 +118,6 @@ func GetApplianceExportJobSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingApplianceExportJobSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingApplianceExportJobSummaryLifecycleStateEnum(val string) (ApplianceExportJobSummaryLifecycleStateEnum, bool) {
-	mappingApplianceExportJobSummaryLifecycleStateEnumIgnoreCase := make(map[string]ApplianceExportJobSummaryLifecycleStateEnum)
-	for k, v := range mappingApplianceExportJobSummaryLifecycleStateEnum {
-		mappingApplianceExportJobSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingApplianceExportJobSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingApplianceExportJobSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

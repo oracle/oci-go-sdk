@@ -11,7 +11,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -133,6 +133,11 @@ var mappingRepositoryRepositoryTypeEnum = map[string]RepositoryRepositoryTypeEnu
 	"HOSTED":   RepositoryRepositoryTypeHosted,
 }
 
+var mappingRepositoryRepositoryTypeEnumLowerCase = map[string]RepositoryRepositoryTypeEnum{
+	"mirrored": RepositoryRepositoryTypeMirrored,
+	"hosted":   RepositoryRepositoryTypeHosted,
+}
+
 // GetRepositoryRepositoryTypeEnumValues Enumerates the set of values for RepositoryRepositoryTypeEnum
 func GetRepositoryRepositoryTypeEnumValues() []RepositoryRepositoryTypeEnum {
 	values := make([]RepositoryRepositoryTypeEnum, 0)
@@ -152,12 +157,7 @@ func GetRepositoryRepositoryTypeEnumStringValues() []string {
 
 // GetMappingRepositoryRepositoryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRepositoryRepositoryTypeEnum(val string) (RepositoryRepositoryTypeEnum, bool) {
-	mappingRepositoryRepositoryTypeEnumIgnoreCase := make(map[string]RepositoryRepositoryTypeEnum)
-	for k, v := range mappingRepositoryRepositoryTypeEnum {
-		mappingRepositoryRepositoryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRepositoryRepositoryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRepositoryRepositoryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -175,6 +175,12 @@ var mappingRepositoryLifecycleStateEnum = map[string]RepositoryLifecycleStateEnu
 	"ACTIVE":   RepositoryLifecycleStateActive,
 	"CREATING": RepositoryLifecycleStateCreating,
 	"DELETED":  RepositoryLifecycleStateDeleted,
+}
+
+var mappingRepositoryLifecycleStateEnumLowerCase = map[string]RepositoryLifecycleStateEnum{
+	"active":   RepositoryLifecycleStateActive,
+	"creating": RepositoryLifecycleStateCreating,
+	"deleted":  RepositoryLifecycleStateDeleted,
 }
 
 // GetRepositoryLifecycleStateEnumValues Enumerates the set of values for RepositoryLifecycleStateEnum
@@ -197,12 +203,7 @@ func GetRepositoryLifecycleStateEnumStringValues() []string {
 
 // GetMappingRepositoryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRepositoryLifecycleStateEnum(val string) (RepositoryLifecycleStateEnum, bool) {
-	mappingRepositoryLifecycleStateEnumIgnoreCase := make(map[string]RepositoryLifecycleStateEnum)
-	for k, v := range mappingRepositoryLifecycleStateEnum {
-		mappingRepositoryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRepositoryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRepositoryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -218,6 +219,11 @@ const (
 var mappingRepositoryTriggerBuildEventsEnum = map[string]RepositoryTriggerBuildEventsEnum{
 	"PUSH":           RepositoryTriggerBuildEventsPush,
 	"COMMIT_UPDATES": RepositoryTriggerBuildEventsCommitUpdates,
+}
+
+var mappingRepositoryTriggerBuildEventsEnumLowerCase = map[string]RepositoryTriggerBuildEventsEnum{
+	"push":           RepositoryTriggerBuildEventsPush,
+	"commit_updates": RepositoryTriggerBuildEventsCommitUpdates,
 }
 
 // GetRepositoryTriggerBuildEventsEnumValues Enumerates the set of values for RepositoryTriggerBuildEventsEnum
@@ -239,11 +245,6 @@ func GetRepositoryTriggerBuildEventsEnumStringValues() []string {
 
 // GetMappingRepositoryTriggerBuildEventsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRepositoryTriggerBuildEventsEnum(val string) (RepositoryTriggerBuildEventsEnum, bool) {
-	mappingRepositoryTriggerBuildEventsEnumIgnoreCase := make(map[string]RepositoryTriggerBuildEventsEnum)
-	for k, v := range mappingRepositoryTriggerBuildEventsEnum {
-		mappingRepositoryTriggerBuildEventsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRepositoryTriggerBuildEventsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRepositoryTriggerBuildEventsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

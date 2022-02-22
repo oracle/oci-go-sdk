@@ -12,7 +12,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -114,6 +114,11 @@ var mappingZoneSummaryZoneTypeEnum = map[string]ZoneSummaryZoneTypeEnum{
 	"SECONDARY": ZoneSummaryZoneTypeSecondary,
 }
 
+var mappingZoneSummaryZoneTypeEnumLowerCase = map[string]ZoneSummaryZoneTypeEnum{
+	"primary":   ZoneSummaryZoneTypePrimary,
+	"secondary": ZoneSummaryZoneTypeSecondary,
+}
+
 // GetZoneSummaryZoneTypeEnumValues Enumerates the set of values for ZoneSummaryZoneTypeEnum
 func GetZoneSummaryZoneTypeEnumValues() []ZoneSummaryZoneTypeEnum {
 	values := make([]ZoneSummaryZoneTypeEnum, 0)
@@ -133,12 +138,7 @@ func GetZoneSummaryZoneTypeEnumStringValues() []string {
 
 // GetMappingZoneSummaryZoneTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingZoneSummaryZoneTypeEnum(val string) (ZoneSummaryZoneTypeEnum, bool) {
-	mappingZoneSummaryZoneTypeEnumIgnoreCase := make(map[string]ZoneSummaryZoneTypeEnum)
-	for k, v := range mappingZoneSummaryZoneTypeEnum {
-		mappingZoneSummaryZoneTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingZoneSummaryZoneTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingZoneSummaryZoneTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -164,6 +164,15 @@ var mappingZoneSummaryLifecycleStateEnum = map[string]ZoneSummaryLifecycleStateE
 	"UPDATING": ZoneSummaryLifecycleStateUpdating,
 }
 
+var mappingZoneSummaryLifecycleStateEnumLowerCase = map[string]ZoneSummaryLifecycleStateEnum{
+	"active":   ZoneSummaryLifecycleStateActive,
+	"creating": ZoneSummaryLifecycleStateCreating,
+	"deleted":  ZoneSummaryLifecycleStateDeleted,
+	"deleting": ZoneSummaryLifecycleStateDeleting,
+	"failed":   ZoneSummaryLifecycleStateFailed,
+	"updating": ZoneSummaryLifecycleStateUpdating,
+}
+
 // GetZoneSummaryLifecycleStateEnumValues Enumerates the set of values for ZoneSummaryLifecycleStateEnum
 func GetZoneSummaryLifecycleStateEnumValues() []ZoneSummaryLifecycleStateEnum {
 	values := make([]ZoneSummaryLifecycleStateEnum, 0)
@@ -187,11 +196,6 @@ func GetZoneSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingZoneSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingZoneSummaryLifecycleStateEnum(val string) (ZoneSummaryLifecycleStateEnum, bool) {
-	mappingZoneSummaryLifecycleStateEnumIgnoreCase := make(map[string]ZoneSummaryLifecycleStateEnum)
-	for k, v := range mappingZoneSummaryLifecycleStateEnum {
-		mappingZoneSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingZoneSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingZoneSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

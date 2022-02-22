@@ -37,6 +37,16 @@ var mappingMigrationStatusEnum = map[string]MigrationStatusEnum{
 	"DONE":       MigrationStatusDone,
 }
 
+var mappingMigrationStatusEnumLowerCase = map[string]MigrationStatusEnum{
+	"ready":      MigrationStatusReady,
+	"aborting":   MigrationStatusAborting,
+	"validating": MigrationStatusValidating,
+	"validated":  MigrationStatusValidated,
+	"waiting":    MigrationStatusWaiting,
+	"migrating":  MigrationStatusMigrating,
+	"done":       MigrationStatusDone,
+}
+
 // GetMigrationStatusEnumValues Enumerates the set of values for MigrationStatusEnum
 func GetMigrationStatusEnumValues() []MigrationStatusEnum {
 	values := make([]MigrationStatusEnum, 0)
@@ -61,11 +71,6 @@ func GetMigrationStatusEnumStringValues() []string {
 
 // GetMappingMigrationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMigrationStatusEnum(val string) (MigrationStatusEnum, bool) {
-	mappingMigrationStatusEnumIgnoreCase := make(map[string]MigrationStatusEnum)
-	for k, v := range mappingMigrationStatusEnum {
-		mappingMigrationStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMigrationStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMigrationStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

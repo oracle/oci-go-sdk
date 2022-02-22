@@ -11,7 +11,7 @@ package identitydataplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -80,6 +80,10 @@ var mappingIdentityProviderProtocolEnum = map[string]IdentityProviderProtocolEnu
 	"SAML2": IdentityProviderProtocolSaml2,
 }
 
+var mappingIdentityProviderProtocolEnumLowerCase = map[string]IdentityProviderProtocolEnum{
+	"saml2": IdentityProviderProtocolSaml2,
+}
+
 // GetIdentityProviderProtocolEnumValues Enumerates the set of values for IdentityProviderProtocolEnum
 func GetIdentityProviderProtocolEnumValues() []IdentityProviderProtocolEnum {
 	values := make([]IdentityProviderProtocolEnum, 0)
@@ -98,11 +102,6 @@ func GetIdentityProviderProtocolEnumStringValues() []string {
 
 // GetMappingIdentityProviderProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIdentityProviderProtocolEnum(val string) (IdentityProviderProtocolEnum, bool) {
-	mappingIdentityProviderProtocolEnumIgnoreCase := make(map[string]IdentityProviderProtocolEnum)
-	for k, v := range mappingIdentityProviderProtocolEnum {
-		mappingIdentityProviderProtocolEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIdentityProviderProtocolEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIdentityProviderProtocolEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

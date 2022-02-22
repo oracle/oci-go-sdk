@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -70,6 +70,12 @@ var mappingVirtualCircuitPublicPrefixVerificationStateEnum = map[string]VirtualC
 	"FAILED":      VirtualCircuitPublicPrefixVerificationStateFailed,
 }
 
+var mappingVirtualCircuitPublicPrefixVerificationStateEnumLowerCase = map[string]VirtualCircuitPublicPrefixVerificationStateEnum{
+	"in_progress": VirtualCircuitPublicPrefixVerificationStateInProgress,
+	"completed":   VirtualCircuitPublicPrefixVerificationStateCompleted,
+	"failed":      VirtualCircuitPublicPrefixVerificationStateFailed,
+}
+
 // GetVirtualCircuitPublicPrefixVerificationStateEnumValues Enumerates the set of values for VirtualCircuitPublicPrefixVerificationStateEnum
 func GetVirtualCircuitPublicPrefixVerificationStateEnumValues() []VirtualCircuitPublicPrefixVerificationStateEnum {
 	values := make([]VirtualCircuitPublicPrefixVerificationStateEnum, 0)
@@ -90,11 +96,6 @@ func GetVirtualCircuitPublicPrefixVerificationStateEnumStringValues() []string {
 
 // GetMappingVirtualCircuitPublicPrefixVerificationStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVirtualCircuitPublicPrefixVerificationStateEnum(val string) (VirtualCircuitPublicPrefixVerificationStateEnum, bool) {
-	mappingVirtualCircuitPublicPrefixVerificationStateEnumIgnoreCase := make(map[string]VirtualCircuitPublicPrefixVerificationStateEnum)
-	for k, v := range mappingVirtualCircuitPublicPrefixVerificationStateEnum {
-		mappingVirtualCircuitPublicPrefixVerificationStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVirtualCircuitPublicPrefixVerificationStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVirtualCircuitPublicPrefixVerificationStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -13,7 +13,7 @@ package dns
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -110,6 +110,10 @@ var mappingResolverRuleDetailsActionEnum = map[string]ResolverRuleDetailsActionE
 	"FORWARD": ResolverRuleDetailsActionForward,
 }
 
+var mappingResolverRuleDetailsActionEnumLowerCase = map[string]ResolverRuleDetailsActionEnum{
+	"forward": ResolverRuleDetailsActionForward,
+}
+
 // GetResolverRuleDetailsActionEnumValues Enumerates the set of values for ResolverRuleDetailsActionEnum
 func GetResolverRuleDetailsActionEnumValues() []ResolverRuleDetailsActionEnum {
 	values := make([]ResolverRuleDetailsActionEnum, 0)
@@ -128,11 +132,6 @@ func GetResolverRuleDetailsActionEnumStringValues() []string {
 
 // GetMappingResolverRuleDetailsActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingResolverRuleDetailsActionEnum(val string) (ResolverRuleDetailsActionEnum, bool) {
-	mappingResolverRuleDetailsActionEnumIgnoreCase := make(map[string]ResolverRuleDetailsActionEnum)
-	for k, v := range mappingResolverRuleDetailsActionEnum {
-		mappingResolverRuleDetailsActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingResolverRuleDetailsActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingResolverRuleDetailsActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

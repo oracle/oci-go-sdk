@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -158,6 +158,11 @@ var mappingListAuditPoliciesAccessLevelEnum = map[string]ListAuditPoliciesAccess
 	"ACCESSIBLE": ListAuditPoliciesAccessLevelAccessible,
 }
 
+var mappingListAuditPoliciesAccessLevelEnumLowerCase = map[string]ListAuditPoliciesAccessLevelEnum{
+	"restricted": ListAuditPoliciesAccessLevelRestricted,
+	"accessible": ListAuditPoliciesAccessLevelAccessible,
+}
+
 // GetListAuditPoliciesAccessLevelEnumValues Enumerates the set of values for ListAuditPoliciesAccessLevelEnum
 func GetListAuditPoliciesAccessLevelEnumValues() []ListAuditPoliciesAccessLevelEnum {
 	values := make([]ListAuditPoliciesAccessLevelEnum, 0)
@@ -177,12 +182,7 @@ func GetListAuditPoliciesAccessLevelEnumStringValues() []string {
 
 // GetMappingListAuditPoliciesAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditPoliciesAccessLevelEnum(val string) (ListAuditPoliciesAccessLevelEnum, bool) {
-	mappingListAuditPoliciesAccessLevelEnumIgnoreCase := make(map[string]ListAuditPoliciesAccessLevelEnum)
-	for k, v := range mappingListAuditPoliciesAccessLevelEnum {
-		mappingListAuditPoliciesAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditPoliciesAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditPoliciesAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -210,6 +210,16 @@ var mappingListAuditPoliciesLifecycleStateEnum = map[string]ListAuditPoliciesLif
 	"DELETED":         ListAuditPoliciesLifecycleStateDeleted,
 }
 
+var mappingListAuditPoliciesLifecycleStateEnumLowerCase = map[string]ListAuditPoliciesLifecycleStateEnum{
+	"creating":        ListAuditPoliciesLifecycleStateCreating,
+	"updating":        ListAuditPoliciesLifecycleStateUpdating,
+	"active":          ListAuditPoliciesLifecycleStateActive,
+	"failed":          ListAuditPoliciesLifecycleStateFailed,
+	"needs_attention": ListAuditPoliciesLifecycleStateNeedsAttention,
+	"deleting":        ListAuditPoliciesLifecycleStateDeleting,
+	"deleted":         ListAuditPoliciesLifecycleStateDeleted,
+}
+
 // GetListAuditPoliciesLifecycleStateEnumValues Enumerates the set of values for ListAuditPoliciesLifecycleStateEnum
 func GetListAuditPoliciesLifecycleStateEnumValues() []ListAuditPoliciesLifecycleStateEnum {
 	values := make([]ListAuditPoliciesLifecycleStateEnum, 0)
@@ -234,12 +244,7 @@ func GetListAuditPoliciesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListAuditPoliciesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditPoliciesLifecycleStateEnum(val string) (ListAuditPoliciesLifecycleStateEnum, bool) {
-	mappingListAuditPoliciesLifecycleStateEnumIgnoreCase := make(map[string]ListAuditPoliciesLifecycleStateEnum)
-	for k, v := range mappingListAuditPoliciesLifecycleStateEnum {
-		mappingListAuditPoliciesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditPoliciesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditPoliciesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -255,6 +260,11 @@ const (
 var mappingListAuditPoliciesSortOrderEnum = map[string]ListAuditPoliciesSortOrderEnum{
 	"ASC":  ListAuditPoliciesSortOrderAsc,
 	"DESC": ListAuditPoliciesSortOrderDesc,
+}
+
+var mappingListAuditPoliciesSortOrderEnumLowerCase = map[string]ListAuditPoliciesSortOrderEnum{
+	"asc":  ListAuditPoliciesSortOrderAsc,
+	"desc": ListAuditPoliciesSortOrderDesc,
 }
 
 // GetListAuditPoliciesSortOrderEnumValues Enumerates the set of values for ListAuditPoliciesSortOrderEnum
@@ -276,12 +286,7 @@ func GetListAuditPoliciesSortOrderEnumStringValues() []string {
 
 // GetMappingListAuditPoliciesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditPoliciesSortOrderEnum(val string) (ListAuditPoliciesSortOrderEnum, bool) {
-	mappingListAuditPoliciesSortOrderEnumIgnoreCase := make(map[string]ListAuditPoliciesSortOrderEnum)
-	for k, v := range mappingListAuditPoliciesSortOrderEnum {
-		mappingListAuditPoliciesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditPoliciesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditPoliciesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -297,6 +302,11 @@ const (
 var mappingListAuditPoliciesSortByEnum = map[string]ListAuditPoliciesSortByEnum{
 	"TIMECREATED": ListAuditPoliciesSortByTimecreated,
 	"DISPLAYNAME": ListAuditPoliciesSortByDisplayname,
+}
+
+var mappingListAuditPoliciesSortByEnumLowerCase = map[string]ListAuditPoliciesSortByEnum{
+	"timecreated": ListAuditPoliciesSortByTimecreated,
+	"displayname": ListAuditPoliciesSortByDisplayname,
 }
 
 // GetListAuditPoliciesSortByEnumValues Enumerates the set of values for ListAuditPoliciesSortByEnum
@@ -318,11 +328,6 @@ func GetListAuditPoliciesSortByEnumStringValues() []string {
 
 // GetMappingListAuditPoliciesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditPoliciesSortByEnum(val string) (ListAuditPoliciesSortByEnum, bool) {
-	mappingListAuditPoliciesSortByEnumIgnoreCase := make(map[string]ListAuditPoliciesSortByEnum)
-	for k, v := range mappingListAuditPoliciesSortByEnum {
-		mappingListAuditPoliciesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditPoliciesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditPoliciesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

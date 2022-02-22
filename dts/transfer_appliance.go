@@ -11,7 +11,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -119,6 +119,29 @@ var mappingTransferApplianceLifecycleStateEnum = map[string]TransferApplianceLif
 	"ERROR":                     TransferApplianceLifecycleStateError,
 }
 
+var mappingTransferApplianceLifecycleStateEnumLowerCase = map[string]TransferApplianceLifecycleStateEnum{
+	"requested":                 TransferApplianceLifecycleStateRequested,
+	"oracle_preparing":          TransferApplianceLifecycleStateOraclePreparing,
+	"shipping":                  TransferApplianceLifecycleStateShipping,
+	"delivered":                 TransferApplianceLifecycleStateDelivered,
+	"preparing":                 TransferApplianceLifecycleStatePreparing,
+	"finalized":                 TransferApplianceLifecycleStateFinalized,
+	"return_delayed":            TransferApplianceLifecycleStateReturnDelayed,
+	"return_shipped":            TransferApplianceLifecycleStateReturnShipped,
+	"return_shipped_cancelled":  TransferApplianceLifecycleStateReturnShippedCancelled,
+	"oracle_received":           TransferApplianceLifecycleStateOracleReceived,
+	"oracle_received_cancelled": TransferApplianceLifecycleStateOracleReceivedCancelled,
+	"processing":                TransferApplianceLifecycleStateProcessing,
+	"complete":                  TransferApplianceLifecycleStateComplete,
+	"customer_never_received":   TransferApplianceLifecycleStateCustomerNeverReceived,
+	"oracle_never_received":     TransferApplianceLifecycleStateOracleNeverReceived,
+	"customer_lost":             TransferApplianceLifecycleStateCustomerLost,
+	"cancelled":                 TransferApplianceLifecycleStateCancelled,
+	"deleted":                   TransferApplianceLifecycleStateDeleted,
+	"rejected":                  TransferApplianceLifecycleStateRejected,
+	"error":                     TransferApplianceLifecycleStateError,
+}
+
 // GetTransferApplianceLifecycleStateEnumValues Enumerates the set of values for TransferApplianceLifecycleStateEnum
 func GetTransferApplianceLifecycleStateEnumValues() []TransferApplianceLifecycleStateEnum {
 	values := make([]TransferApplianceLifecycleStateEnum, 0)
@@ -156,11 +179,6 @@ func GetTransferApplianceLifecycleStateEnumStringValues() []string {
 
 // GetMappingTransferApplianceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTransferApplianceLifecycleStateEnum(val string) (TransferApplianceLifecycleStateEnum, bool) {
-	mappingTransferApplianceLifecycleStateEnumIgnoreCase := make(map[string]TransferApplianceLifecycleStateEnum)
-	for k, v := range mappingTransferApplianceLifecycleStateEnum {
-		mappingTransferApplianceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTransferApplianceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTransferApplianceLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

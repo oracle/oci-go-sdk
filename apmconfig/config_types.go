@@ -30,6 +30,12 @@ var mappingConfigTypesEnum = map[string]ConfigTypesEnum{
 	"APDEX":        ConfigTypesApdex,
 }
 
+var mappingConfigTypesEnumLowerCase = map[string]ConfigTypesEnum{
+	"span_filter":  ConfigTypesSpanFilter,
+	"metric_group": ConfigTypesMetricGroup,
+	"apdex":        ConfigTypesApdex,
+}
+
 // GetConfigTypesEnumValues Enumerates the set of values for ConfigTypesEnum
 func GetConfigTypesEnumValues() []ConfigTypesEnum {
 	values := make([]ConfigTypesEnum, 0)
@@ -50,11 +56,6 @@ func GetConfigTypesEnumStringValues() []string {
 
 // GetMappingConfigTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConfigTypesEnum(val string) (ConfigTypesEnum, bool) {
-	mappingConfigTypesEnumIgnoreCase := make(map[string]ConfigTypesEnum)
-	for k, v := range mappingConfigTypesEnum {
-		mappingConfigTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConfigTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConfigTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

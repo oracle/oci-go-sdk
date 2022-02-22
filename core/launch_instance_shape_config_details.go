@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -77,6 +77,12 @@ var mappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum = map[str
 	"BASELINE_1_1": LaunchInstanceShapeConfigDetailsBaselineOcpuUtilization1,
 }
 
+var mappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumLowerCase = map[string]LaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum{
+	"baseline_1_8": LaunchInstanceShapeConfigDetailsBaselineOcpuUtilization8,
+	"baseline_1_2": LaunchInstanceShapeConfigDetailsBaselineOcpuUtilization2,
+	"baseline_1_1": LaunchInstanceShapeConfigDetailsBaselineOcpuUtilization1,
+}
+
 // GetLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumValues Enumerates the set of values for LaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum
 func GetLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumValues() []LaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum {
 	values := make([]LaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum, 0)
@@ -97,11 +103,6 @@ func GetLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumStringValues(
 
 // GetMappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum(val string) (LaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum, bool) {
-	mappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumIgnoreCase := make(map[string]LaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum)
-	for k, v := range mappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum {
-		mappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

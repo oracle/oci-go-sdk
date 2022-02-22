@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,11 @@ var mappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnum = map[string]Cr
 	"BRING_YOUR_OWN_LICENSE": CreateCloudAutonomousVmClusterDetailsLicenseModelBringYourOwnLicense,
 }
 
+var mappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnumLowerCase = map[string]CreateCloudAutonomousVmClusterDetailsLicenseModelEnum{
+	"license_included":       CreateCloudAutonomousVmClusterDetailsLicenseModelLicenseIncluded,
+	"bring_your_own_license": CreateCloudAutonomousVmClusterDetailsLicenseModelBringYourOwnLicense,
+}
+
 // GetCreateCloudAutonomousVmClusterDetailsLicenseModelEnumValues Enumerates the set of values for CreateCloudAutonomousVmClusterDetailsLicenseModelEnum
 func GetCreateCloudAutonomousVmClusterDetailsLicenseModelEnumValues() []CreateCloudAutonomousVmClusterDetailsLicenseModelEnum {
 	values := make([]CreateCloudAutonomousVmClusterDetailsLicenseModelEnum, 0)
@@ -106,11 +111,6 @@ func GetCreateCloudAutonomousVmClusterDetailsLicenseModelEnumStringValues() []st
 
 // GetMappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnum(val string) (CreateCloudAutonomousVmClusterDetailsLicenseModelEnum, bool) {
-	mappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnumIgnoreCase := make(map[string]CreateCloudAutonomousVmClusterDetailsLicenseModelEnum)
-	for k, v := range mappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnum {
-		mappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateCloudAutonomousVmClusterDetailsLicenseModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

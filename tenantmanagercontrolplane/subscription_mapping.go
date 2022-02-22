@@ -11,7 +11,7 @@ package tenantmanagercontrolplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -86,6 +86,16 @@ var mappingSubscriptionMappingLifecycleStateEnum = map[string]SubscriptionMappin
 	"FAILED":   SubscriptionMappingLifecycleStateFailed,
 }
 
+var mappingSubscriptionMappingLifecycleStateEnumLowerCase = map[string]SubscriptionMappingLifecycleStateEnum{
+	"creating": SubscriptionMappingLifecycleStateCreating,
+	"active":   SubscriptionMappingLifecycleStateActive,
+	"inactive": SubscriptionMappingLifecycleStateInactive,
+	"updating": SubscriptionMappingLifecycleStateUpdating,
+	"deleting": SubscriptionMappingLifecycleStateDeleting,
+	"deleted":  SubscriptionMappingLifecycleStateDeleted,
+	"failed":   SubscriptionMappingLifecycleStateFailed,
+}
+
 // GetSubscriptionMappingLifecycleStateEnumValues Enumerates the set of values for SubscriptionMappingLifecycleStateEnum
 func GetSubscriptionMappingLifecycleStateEnumValues() []SubscriptionMappingLifecycleStateEnum {
 	values := make([]SubscriptionMappingLifecycleStateEnum, 0)
@@ -110,11 +120,6 @@ func GetSubscriptionMappingLifecycleStateEnumStringValues() []string {
 
 // GetMappingSubscriptionMappingLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSubscriptionMappingLifecycleStateEnum(val string) (SubscriptionMappingLifecycleStateEnum, bool) {
-	mappingSubscriptionMappingLifecycleStateEnumIgnoreCase := make(map[string]SubscriptionMappingLifecycleStateEnum)
-	for k, v := range mappingSubscriptionMappingLifecycleStateEnum {
-		mappingSubscriptionMappingLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSubscriptionMappingLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSubscriptionMappingLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

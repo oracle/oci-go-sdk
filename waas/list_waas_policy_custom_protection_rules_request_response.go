@@ -6,7 +6,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -126,6 +126,11 @@ var mappingListWaasPolicyCustomProtectionRulesActionEnum = map[string]ListWaasPo
 	"BLOCK":  ListWaasPolicyCustomProtectionRulesActionBlock,
 }
 
+var mappingListWaasPolicyCustomProtectionRulesActionEnumLowerCase = map[string]ListWaasPolicyCustomProtectionRulesActionEnum{
+	"detect": ListWaasPolicyCustomProtectionRulesActionDetect,
+	"block":  ListWaasPolicyCustomProtectionRulesActionBlock,
+}
+
 // GetListWaasPolicyCustomProtectionRulesActionEnumValues Enumerates the set of values for ListWaasPolicyCustomProtectionRulesActionEnum
 func GetListWaasPolicyCustomProtectionRulesActionEnumValues() []ListWaasPolicyCustomProtectionRulesActionEnum {
 	values := make([]ListWaasPolicyCustomProtectionRulesActionEnum, 0)
@@ -145,11 +150,6 @@ func GetListWaasPolicyCustomProtectionRulesActionEnumStringValues() []string {
 
 // GetMappingListWaasPolicyCustomProtectionRulesActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWaasPolicyCustomProtectionRulesActionEnum(val string) (ListWaasPolicyCustomProtectionRulesActionEnum, bool) {
-	mappingListWaasPolicyCustomProtectionRulesActionEnumIgnoreCase := make(map[string]ListWaasPolicyCustomProtectionRulesActionEnum)
-	for k, v := range mappingListWaasPolicyCustomProtectionRulesActionEnum {
-		mappingListWaasPolicyCustomProtectionRulesActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWaasPolicyCustomProtectionRulesActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWaasPolicyCustomProtectionRulesActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

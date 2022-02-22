@@ -36,6 +36,14 @@ var mappingSourceTypesEnum = map[string]SourceTypesEnum{
 	"IMPORT":           SourceTypesImport,
 }
 
+var mappingSourceTypesEnumLowerCase = map[string]SourceTypesEnum{
+	"ocic":             SourceTypesOcic,
+	"internal_compute": SourceTypesInternalCompute,
+	"occ":              SourceTypesOcc,
+	"ocic_idcs":        SourceTypesOcicIdcs,
+	"import":           SourceTypesImport,
+}
+
 // GetSourceTypesEnumValues Enumerates the set of values for SourceTypesEnum
 func GetSourceTypesEnumValues() []SourceTypesEnum {
 	values := make([]SourceTypesEnum, 0)
@@ -58,11 +66,6 @@ func GetSourceTypesEnumStringValues() []string {
 
 // GetMappingSourceTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSourceTypesEnum(val string) (SourceTypesEnum, bool) {
-	mappingSourceTypesEnumIgnoreCase := make(map[string]SourceTypesEnum)
-	for k, v := range mappingSourceTypesEnum {
-		mappingSourceTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSourceTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSourceTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

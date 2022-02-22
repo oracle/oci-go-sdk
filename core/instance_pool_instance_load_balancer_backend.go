@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -72,6 +72,13 @@ var mappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum = map[
 	"UNKNOWN":  InstancePoolInstanceLoadBalancerBackendBackendHealthStatusUnknown,
 }
 
+var mappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnumLowerCase = map[string]InstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum{
+	"ok":       InstancePoolInstanceLoadBalancerBackendBackendHealthStatusOk,
+	"warning":  InstancePoolInstanceLoadBalancerBackendBackendHealthStatusWarning,
+	"critical": InstancePoolInstanceLoadBalancerBackendBackendHealthStatusCritical,
+	"unknown":  InstancePoolInstanceLoadBalancerBackendBackendHealthStatusUnknown,
+}
+
 // GetInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnumValues Enumerates the set of values for InstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum
 func GetInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnumValues() []InstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum {
 	values := make([]InstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum, 0)
@@ -93,11 +100,6 @@ func GetInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnumStringValu
 
 // GetMappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum(val string) (InstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum, bool) {
-	mappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnumIgnoreCase := make(map[string]InstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum)
-	for k, v := range mappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnum {
-		mappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstancePoolInstanceLoadBalancerBackendBackendHealthStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

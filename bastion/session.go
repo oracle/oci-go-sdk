@@ -12,7 +12,7 @@ package bastion
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -165,6 +165,10 @@ var mappingSessionKeyTypeEnum = map[string]SessionKeyTypeEnum{
 	"PUB": SessionKeyTypePub,
 }
 
+var mappingSessionKeyTypeEnumLowerCase = map[string]SessionKeyTypeEnum{
+	"pub": SessionKeyTypePub,
+}
+
 // GetSessionKeyTypeEnumValues Enumerates the set of values for SessionKeyTypeEnum
 func GetSessionKeyTypeEnumValues() []SessionKeyTypeEnum {
 	values := make([]SessionKeyTypeEnum, 0)
@@ -183,11 +187,6 @@ func GetSessionKeyTypeEnumStringValues() []string {
 
 // GetMappingSessionKeyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSessionKeyTypeEnum(val string) (SessionKeyTypeEnum, bool) {
-	mappingSessionKeyTypeEnumIgnoreCase := make(map[string]SessionKeyTypeEnum)
-	for k, v := range mappingSessionKeyTypeEnum {
-		mappingSessionKeyTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSessionKeyTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSessionKeyTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

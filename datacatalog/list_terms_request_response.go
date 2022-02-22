@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -177,6 +177,17 @@ var mappingListTermsLifecycleStateEnum = map[string]ListTermsLifecycleStateEnum{
 	"MOVING":   ListTermsLifecycleStateMoving,
 }
 
+var mappingListTermsLifecycleStateEnumLowerCase = map[string]ListTermsLifecycleStateEnum{
+	"creating": ListTermsLifecycleStateCreating,
+	"active":   ListTermsLifecycleStateActive,
+	"inactive": ListTermsLifecycleStateInactive,
+	"updating": ListTermsLifecycleStateUpdating,
+	"deleting": ListTermsLifecycleStateDeleting,
+	"deleted":  ListTermsLifecycleStateDeleted,
+	"failed":   ListTermsLifecycleStateFailed,
+	"moving":   ListTermsLifecycleStateMoving,
+}
+
 // GetListTermsLifecycleStateEnumValues Enumerates the set of values for ListTermsLifecycleStateEnum
 func GetListTermsLifecycleStateEnumValues() []ListTermsLifecycleStateEnum {
 	values := make([]ListTermsLifecycleStateEnum, 0)
@@ -202,12 +213,7 @@ func GetListTermsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListTermsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTermsLifecycleStateEnum(val string) (ListTermsLifecycleStateEnum, bool) {
-	mappingListTermsLifecycleStateEnumIgnoreCase := make(map[string]ListTermsLifecycleStateEnum)
-	for k, v := range mappingListTermsLifecycleStateEnum {
-		mappingListTermsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTermsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTermsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -227,6 +233,13 @@ var mappingListTermsWorkflowStatusEnum = map[string]ListTermsWorkflowStatusEnum{
 	"APPROVED":     ListTermsWorkflowStatusApproved,
 	"UNDER_REVIEW": ListTermsWorkflowStatusUnderReview,
 	"ESCALATED":    ListTermsWorkflowStatusEscalated,
+}
+
+var mappingListTermsWorkflowStatusEnumLowerCase = map[string]ListTermsWorkflowStatusEnum{
+	"new":          ListTermsWorkflowStatusNew,
+	"approved":     ListTermsWorkflowStatusApproved,
+	"under_review": ListTermsWorkflowStatusUnderReview,
+	"escalated":    ListTermsWorkflowStatusEscalated,
 }
 
 // GetListTermsWorkflowStatusEnumValues Enumerates the set of values for ListTermsWorkflowStatusEnum
@@ -250,12 +263,7 @@ func GetListTermsWorkflowStatusEnumStringValues() []string {
 
 // GetMappingListTermsWorkflowStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTermsWorkflowStatusEnum(val string) (ListTermsWorkflowStatusEnum, bool) {
-	mappingListTermsWorkflowStatusEnumIgnoreCase := make(map[string]ListTermsWorkflowStatusEnum)
-	for k, v := range mappingListTermsWorkflowStatusEnum {
-		mappingListTermsWorkflowStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTermsWorkflowStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTermsWorkflowStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -293,6 +301,21 @@ var mappingListTermsFieldsEnum = map[string]ListTermsFieldsEnum{
 	"uri":                       ListTermsFieldsUri,
 }
 
+var mappingListTermsFieldsEnumLowerCase = map[string]ListTermsFieldsEnum{
+	"key":                       ListTermsFieldsKey,
+	"displayname":               ListTermsFieldsDisplayname,
+	"description":               ListTermsFieldsDescription,
+	"glossarykey":               ListTermsFieldsGlossarykey,
+	"parenttermkey":             ListTermsFieldsParenttermkey,
+	"isallowedtohavechildterms": ListTermsFieldsIsallowedtohavechildterms,
+	"path":                      ListTermsFieldsPath,
+	"lifecyclestate":            ListTermsFieldsLifecyclestate,
+	"timecreated":               ListTermsFieldsTimecreated,
+	"workflowstatus":            ListTermsFieldsWorkflowstatus,
+	"associatedobjectcount":     ListTermsFieldsAssociatedobjectcount,
+	"uri":                       ListTermsFieldsUri,
+}
+
 // GetListTermsFieldsEnumValues Enumerates the set of values for ListTermsFieldsEnum
 func GetListTermsFieldsEnumValues() []ListTermsFieldsEnum {
 	values := make([]ListTermsFieldsEnum, 0)
@@ -322,12 +345,7 @@ func GetListTermsFieldsEnumStringValues() []string {
 
 // GetMappingListTermsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTermsFieldsEnum(val string) (ListTermsFieldsEnum, bool) {
-	mappingListTermsFieldsEnumIgnoreCase := make(map[string]ListTermsFieldsEnum)
-	for k, v := range mappingListTermsFieldsEnum {
-		mappingListTermsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTermsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTermsFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -343,6 +361,11 @@ const (
 var mappingListTermsSortByEnum = map[string]ListTermsSortByEnum{
 	"TIMECREATED": ListTermsSortByTimecreated,
 	"DISPLAYNAME": ListTermsSortByDisplayname,
+}
+
+var mappingListTermsSortByEnumLowerCase = map[string]ListTermsSortByEnum{
+	"timecreated": ListTermsSortByTimecreated,
+	"displayname": ListTermsSortByDisplayname,
 }
 
 // GetListTermsSortByEnumValues Enumerates the set of values for ListTermsSortByEnum
@@ -364,12 +387,7 @@ func GetListTermsSortByEnumStringValues() []string {
 
 // GetMappingListTermsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTermsSortByEnum(val string) (ListTermsSortByEnum, bool) {
-	mappingListTermsSortByEnumIgnoreCase := make(map[string]ListTermsSortByEnum)
-	for k, v := range mappingListTermsSortByEnum {
-		mappingListTermsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTermsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTermsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -385,6 +403,11 @@ const (
 var mappingListTermsSortOrderEnum = map[string]ListTermsSortOrderEnum{
 	"ASC":  ListTermsSortOrderAsc,
 	"DESC": ListTermsSortOrderDesc,
+}
+
+var mappingListTermsSortOrderEnumLowerCase = map[string]ListTermsSortOrderEnum{
+	"asc":  ListTermsSortOrderAsc,
+	"desc": ListTermsSortOrderDesc,
 }
 
 // GetListTermsSortOrderEnumValues Enumerates the set of values for ListTermsSortOrderEnum
@@ -406,11 +429,6 @@ func GetListTermsSortOrderEnumStringValues() []string {
 
 // GetMappingListTermsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTermsSortOrderEnum(val string) (ListTermsSortOrderEnum, bool) {
-	mappingListTermsSortOrderEnumIgnoreCase := make(map[string]ListTermsSortOrderEnum)
-	for k, v := range mappingListTermsSortOrderEnum {
-		mappingListTermsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTermsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTermsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

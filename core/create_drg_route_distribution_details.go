@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -74,6 +74,10 @@ var mappingCreateDrgRouteDistributionDetailsDistributionTypeEnum = map[string]Cr
 	"IMPORT": CreateDrgRouteDistributionDetailsDistributionTypeImport,
 }
 
+var mappingCreateDrgRouteDistributionDetailsDistributionTypeEnumLowerCase = map[string]CreateDrgRouteDistributionDetailsDistributionTypeEnum{
+	"import": CreateDrgRouteDistributionDetailsDistributionTypeImport,
+}
+
 // GetCreateDrgRouteDistributionDetailsDistributionTypeEnumValues Enumerates the set of values for CreateDrgRouteDistributionDetailsDistributionTypeEnum
 func GetCreateDrgRouteDistributionDetailsDistributionTypeEnumValues() []CreateDrgRouteDistributionDetailsDistributionTypeEnum {
 	values := make([]CreateDrgRouteDistributionDetailsDistributionTypeEnum, 0)
@@ -92,11 +96,6 @@ func GetCreateDrgRouteDistributionDetailsDistributionTypeEnumStringValues() []st
 
 // GetMappingCreateDrgRouteDistributionDetailsDistributionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateDrgRouteDistributionDetailsDistributionTypeEnum(val string) (CreateDrgRouteDistributionDetailsDistributionTypeEnum, bool) {
-	mappingCreateDrgRouteDistributionDetailsDistributionTypeEnumIgnoreCase := make(map[string]CreateDrgRouteDistributionDetailsDistributionTypeEnum)
-	for k, v := range mappingCreateDrgRouteDistributionDetailsDistributionTypeEnum {
-		mappingCreateDrgRouteDistributionDetailsDistributionTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateDrgRouteDistributionDetailsDistributionTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateDrgRouteDistributionDetailsDistributionTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

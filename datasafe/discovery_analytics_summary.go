@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -68,6 +68,15 @@ var mappingDiscoveryAnalyticsSummaryMetricNameEnum = map[string]DiscoveryAnalyti
 	"SENSITIVE_DATA_VALUE": DiscoveryAnalyticsSummaryMetricNameDataValue,
 }
 
+var mappingDiscoveryAnalyticsSummaryMetricNameEnumLowerCase = map[string]DiscoveryAnalyticsSummaryMetricNameEnum{
+	"sensitive_data_model": DiscoveryAnalyticsSummaryMetricNameDataModel,
+	"sensitive_type":       DiscoveryAnalyticsSummaryMetricNameType,
+	"sensitive_schema":     DiscoveryAnalyticsSummaryMetricNameSchema,
+	"sensitive_table":      DiscoveryAnalyticsSummaryMetricNameTable,
+	"sensitive_column":     DiscoveryAnalyticsSummaryMetricNameColumn,
+	"sensitive_data_value": DiscoveryAnalyticsSummaryMetricNameDataValue,
+}
+
 // GetDiscoveryAnalyticsSummaryMetricNameEnumValues Enumerates the set of values for DiscoveryAnalyticsSummaryMetricNameEnum
 func GetDiscoveryAnalyticsSummaryMetricNameEnumValues() []DiscoveryAnalyticsSummaryMetricNameEnum {
 	values := make([]DiscoveryAnalyticsSummaryMetricNameEnum, 0)
@@ -91,11 +100,6 @@ func GetDiscoveryAnalyticsSummaryMetricNameEnumStringValues() []string {
 
 // GetMappingDiscoveryAnalyticsSummaryMetricNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDiscoveryAnalyticsSummaryMetricNameEnum(val string) (DiscoveryAnalyticsSummaryMetricNameEnum, bool) {
-	mappingDiscoveryAnalyticsSummaryMetricNameEnumIgnoreCase := make(map[string]DiscoveryAnalyticsSummaryMetricNameEnum)
-	for k, v := range mappingDiscoveryAnalyticsSummaryMetricNameEnum {
-		mappingDiscoveryAnalyticsSummaryMetricNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDiscoveryAnalyticsSummaryMetricNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDiscoveryAnalyticsSummaryMetricNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

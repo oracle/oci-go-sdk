@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -81,6 +81,7 @@ type Volume struct {
 	//   * `0`: Represents Lower Cost option.
 	//   * `10`: Represents Balanced option.
 	//   * `20`: Represents Higher Performance option.
+	// For performance autotune enabled volumes, It would be the Default(Minimum) VPUs/GB.
 	VpusPerGB *int64 `mandatory:"false" json:"vpusPerGB"`
 
 	// The size of the volume in GBs.
@@ -91,10 +92,11 @@ type Volume struct {
 	// The OCID of the source volume group.
 	VolumeGroupId *string `mandatory:"false" json:"volumeGroupId"`
 
-	// Specifies whether the auto-tune performance is enabled for this volume.
+	// Specifies whether the auto-tune performance is enabled for this volume. This field is deprecated.
+	// Use the `DetachedVolumeAutotunePolicy` instead to enable the volume for detached autotune.
 	IsAutoTuneEnabled *bool `mandatory:"false" json:"isAutoTuneEnabled"`
 
-	// The number of Volume Performance Units per GB that this volume is effectively tuned to when it's idle.
+	// The number of Volume Performance Units per GB that this volume is effectively tuned to.
 	AutoTunedVpusPerGB *int64 `mandatory:"false" json:"autoTunedVpusPerGB"`
 
 	// The list of block volume replicas of this volume.
@@ -223,6 +225,15 @@ var mappingVolumeLifecycleStateEnum = map[string]VolumeLifecycleStateEnum{
 	"FAULTY":       VolumeLifecycleStateFaulty,
 }
 
+var mappingVolumeLifecycleStateEnumLowerCase = map[string]VolumeLifecycleStateEnum{
+	"provisioning": VolumeLifecycleStateProvisioning,
+	"restoring":    VolumeLifecycleStateRestoring,
+	"available":    VolumeLifecycleStateAvailable,
+	"terminating":  VolumeLifecycleStateTerminating,
+	"terminated":   VolumeLifecycleStateTerminated,
+	"faulty":       VolumeLifecycleStateFaulty,
+}
+
 // GetVolumeLifecycleStateEnumValues Enumerates the set of values for VolumeLifecycleStateEnum
 func GetVolumeLifecycleStateEnumValues() []VolumeLifecycleStateEnum {
 	values := make([]VolumeLifecycleStateEnum, 0)
@@ -246,11 +257,6 @@ func GetVolumeLifecycleStateEnumStringValues() []string {
 
 // GetMappingVolumeLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVolumeLifecycleStateEnum(val string) (VolumeLifecycleStateEnum, bool) {
-	mappingVolumeLifecycleStateEnumIgnoreCase := make(map[string]VolumeLifecycleStateEnum)
-	for k, v := range mappingVolumeLifecycleStateEnum {
-		mappingVolumeLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVolumeLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVolumeLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

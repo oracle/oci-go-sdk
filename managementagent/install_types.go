@@ -27,6 +27,11 @@ var mappingInstallTypesEnum = map[string]InstallTypesEnum{
 	"GATEWAY": InstallTypesGateway,
 }
 
+var mappingInstallTypesEnumLowerCase = map[string]InstallTypesEnum{
+	"agent":   InstallTypesAgent,
+	"gateway": InstallTypesGateway,
+}
+
 // GetInstallTypesEnumValues Enumerates the set of values for InstallTypesEnum
 func GetInstallTypesEnumValues() []InstallTypesEnum {
 	values := make([]InstallTypesEnum, 0)
@@ -46,11 +51,6 @@ func GetInstallTypesEnumStringValues() []string {
 
 // GetMappingInstallTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstallTypesEnum(val string) (InstallTypesEnum, bool) {
-	mappingInstallTypesEnumIgnoreCase := make(map[string]InstallTypesEnum)
-	for k, v := range mappingInstallTypesEnum {
-		mappingInstallTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstallTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstallTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

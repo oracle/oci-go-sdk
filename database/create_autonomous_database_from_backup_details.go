@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -390,6 +390,11 @@ var mappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum = map[string]C
 	"METADATA": CreateAutonomousDatabaseFromBackupDetailsCloneTypeMetadata,
 }
 
+var mappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnumLowerCase = map[string]CreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum{
+	"full":     CreateAutonomousDatabaseFromBackupDetailsCloneTypeFull,
+	"metadata": CreateAutonomousDatabaseFromBackupDetailsCloneTypeMetadata,
+}
+
 // GetCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnumValues Enumerates the set of values for CreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum
 func GetCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnumValues() []CreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum {
 	values := make([]CreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum, 0)
@@ -409,11 +414,6 @@ func GetCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnumStringValues() []s
 
 // GetMappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum(val string) (CreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum, bool) {
-	mappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnumIgnoreCase := make(map[string]CreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum)
-	for k, v := range mappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnum {
-		mappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateAutonomousDatabaseFromBackupDetailsCloneTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

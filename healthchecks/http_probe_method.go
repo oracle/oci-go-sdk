@@ -29,6 +29,11 @@ var mappingHttpProbeMethodEnum = map[string]HttpProbeMethodEnum{
 	"HEAD": HttpProbeMethodHead,
 }
 
+var mappingHttpProbeMethodEnumLowerCase = map[string]HttpProbeMethodEnum{
+	"get":  HttpProbeMethodGet,
+	"head": HttpProbeMethodHead,
+}
+
 // GetHttpProbeMethodEnumValues Enumerates the set of values for HttpProbeMethodEnum
 func GetHttpProbeMethodEnumValues() []HttpProbeMethodEnum {
 	values := make([]HttpProbeMethodEnum, 0)
@@ -48,11 +53,6 @@ func GetHttpProbeMethodEnumStringValues() []string {
 
 // GetMappingHttpProbeMethodEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHttpProbeMethodEnum(val string) (HttpProbeMethodEnum, bool) {
-	mappingHttpProbeMethodEnumIgnoreCase := make(map[string]HttpProbeMethodEnum)
-	for k, v := range mappingHttpProbeMethodEnum {
-		mappingHttpProbeMethodEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHttpProbeMethodEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHttpProbeMethodEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

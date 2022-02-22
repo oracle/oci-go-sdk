@@ -2,16 +2,17 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Cloud Guard APIs
+// Cloud Guard API
 //
-// A description of the Cloud Guard APIs
+// Use the Cloud Guard API to automate processes that you would otherwise perform through the Cloud Guard Console.
+// **Note:** You can perform Create, Update, and Delete operations only from the reporting region of your Cloud Guard tenancy. You can perform Read operations from any region.
 //
 
 package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -122,6 +123,21 @@ var mappingDetectorRuleSummaryManagedListTypesEnum = map[string]DetectorRuleSumm
 	"GENERIC":       DetectorRuleSummaryManagedListTypesGeneric,
 }
 
+var mappingDetectorRuleSummaryManagedListTypesEnumLowerCase = map[string]DetectorRuleSummaryManagedListTypesEnum{
+	"cidr_block":    DetectorRuleSummaryManagedListTypesCidrBlock,
+	"users":         DetectorRuleSummaryManagedListTypesUsers,
+	"groups":        DetectorRuleSummaryManagedListTypesGroups,
+	"ipv4address":   DetectorRuleSummaryManagedListTypesIpv4address,
+	"ipv6address":   DetectorRuleSummaryManagedListTypesIpv6address,
+	"resource_ocid": DetectorRuleSummaryManagedListTypesResourceOcid,
+	"region":        DetectorRuleSummaryManagedListTypesRegion,
+	"country":       DetectorRuleSummaryManagedListTypesCountry,
+	"state":         DetectorRuleSummaryManagedListTypesState,
+	"city":          DetectorRuleSummaryManagedListTypesCity,
+	"tags":          DetectorRuleSummaryManagedListTypesTags,
+	"generic":       DetectorRuleSummaryManagedListTypesGeneric,
+}
+
 // GetDetectorRuleSummaryManagedListTypesEnumValues Enumerates the set of values for DetectorRuleSummaryManagedListTypesEnum
 func GetDetectorRuleSummaryManagedListTypesEnumValues() []DetectorRuleSummaryManagedListTypesEnum {
 	values := make([]DetectorRuleSummaryManagedListTypesEnum, 0)
@@ -151,11 +167,6 @@ func GetDetectorRuleSummaryManagedListTypesEnumStringValues() []string {
 
 // GetMappingDetectorRuleSummaryManagedListTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDetectorRuleSummaryManagedListTypesEnum(val string) (DetectorRuleSummaryManagedListTypesEnum, bool) {
-	mappingDetectorRuleSummaryManagedListTypesEnumIgnoreCase := make(map[string]DetectorRuleSummaryManagedListTypesEnum)
-	for k, v := range mappingDetectorRuleSummaryManagedListTypesEnum {
-		mappingDetectorRuleSummaryManagedListTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDetectorRuleSummaryManagedListTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDetectorRuleSummaryManagedListTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

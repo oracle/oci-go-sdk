@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -146,6 +146,11 @@ var mappingListViewsSortOrderEnum = map[string]ListViewsSortOrderEnum{
 	"DESC": ListViewsSortOrderDesc,
 }
 
+var mappingListViewsSortOrderEnumLowerCase = map[string]ListViewsSortOrderEnum{
+	"asc":  ListViewsSortOrderAsc,
+	"desc": ListViewsSortOrderDesc,
+}
+
 // GetListViewsSortOrderEnumValues Enumerates the set of values for ListViewsSortOrderEnum
 func GetListViewsSortOrderEnumValues() []ListViewsSortOrderEnum {
 	values := make([]ListViewsSortOrderEnum, 0)
@@ -165,12 +170,7 @@ func GetListViewsSortOrderEnumStringValues() []string {
 
 // GetMappingListViewsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListViewsSortOrderEnum(val string) (ListViewsSortOrderEnum, bool) {
-	mappingListViewsSortOrderEnumIgnoreCase := make(map[string]ListViewsSortOrderEnum)
-	for k, v := range mappingListViewsSortOrderEnum {
-		mappingListViewsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListViewsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListViewsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -186,6 +186,11 @@ const (
 var mappingListViewsSortByEnum = map[string]ListViewsSortByEnum{
 	"displayName": ListViewsSortByDisplayname,
 	"timeCreated": ListViewsSortByTimecreated,
+}
+
+var mappingListViewsSortByEnumLowerCase = map[string]ListViewsSortByEnum{
+	"displayname": ListViewsSortByDisplayname,
+	"timecreated": ListViewsSortByTimecreated,
 }
 
 // GetListViewsSortByEnumValues Enumerates the set of values for ListViewsSortByEnum
@@ -207,12 +212,7 @@ func GetListViewsSortByEnumStringValues() []string {
 
 // GetMappingListViewsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListViewsSortByEnum(val string) (ListViewsSortByEnum, bool) {
-	mappingListViewsSortByEnumIgnoreCase := make(map[string]ListViewsSortByEnum)
-	for k, v := range mappingListViewsSortByEnum {
-		mappingListViewsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListViewsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListViewsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -228,6 +228,11 @@ const (
 var mappingListViewsScopeEnum = map[string]ListViewsScopeEnum{
 	"GLOBAL":  ListViewsScopeGlobal,
 	"PRIVATE": ListViewsScopePrivate,
+}
+
+var mappingListViewsScopeEnumLowerCase = map[string]ListViewsScopeEnum{
+	"global":  ListViewsScopeGlobal,
+	"private": ListViewsScopePrivate,
 }
 
 // GetListViewsScopeEnumValues Enumerates the set of values for ListViewsScopeEnum
@@ -249,11 +254,6 @@ func GetListViewsScopeEnumStringValues() []string {
 
 // GetMappingListViewsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListViewsScopeEnum(val string) (ListViewsScopeEnum, bool) {
-	mappingListViewsScopeEnumIgnoreCase := make(map[string]ListViewsScopeEnum)
-	for k, v := range mappingListViewsScopeEnum {
-		mappingListViewsScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListViewsScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListViewsScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

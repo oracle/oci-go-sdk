@@ -6,7 +6,7 @@ package datalabelingservicedataplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,11 @@ var mappingSummarizeRecordAnalyticsSortOrderEnum = map[string]SummarizeRecordAna
 	"DESC": SummarizeRecordAnalyticsSortOrderDesc,
 }
 
+var mappingSummarizeRecordAnalyticsSortOrderEnumLowerCase = map[string]SummarizeRecordAnalyticsSortOrderEnum{
+	"asc":  SummarizeRecordAnalyticsSortOrderAsc,
+	"desc": SummarizeRecordAnalyticsSortOrderDesc,
+}
+
 // GetSummarizeRecordAnalyticsSortOrderEnumValues Enumerates the set of values for SummarizeRecordAnalyticsSortOrderEnum
 func GetSummarizeRecordAnalyticsSortOrderEnumValues() []SummarizeRecordAnalyticsSortOrderEnum {
 	values := make([]SummarizeRecordAnalyticsSortOrderEnum, 0)
@@ -160,12 +165,7 @@ func GetSummarizeRecordAnalyticsSortOrderEnumStringValues() []string {
 
 // GetMappingSummarizeRecordAnalyticsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeRecordAnalyticsSortOrderEnum(val string) (SummarizeRecordAnalyticsSortOrderEnum, bool) {
-	mappingSummarizeRecordAnalyticsSortOrderEnumIgnoreCase := make(map[string]SummarizeRecordAnalyticsSortOrderEnum)
-	for k, v := range mappingSummarizeRecordAnalyticsSortOrderEnum {
-		mappingSummarizeRecordAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeRecordAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeRecordAnalyticsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +181,11 @@ const (
 var mappingSummarizeRecordAnalyticsRecordGroupByEnum = map[string]SummarizeRecordAnalyticsRecordGroupByEnum{
 	"isLabeled":               SummarizeRecordAnalyticsRecordGroupByIslabeled,
 	"annotationLabelContains": SummarizeRecordAnalyticsRecordGroupByAnnotationlabelcontains,
+}
+
+var mappingSummarizeRecordAnalyticsRecordGroupByEnumLowerCase = map[string]SummarizeRecordAnalyticsRecordGroupByEnum{
+	"islabeled":               SummarizeRecordAnalyticsRecordGroupByIslabeled,
+	"annotationlabelcontains": SummarizeRecordAnalyticsRecordGroupByAnnotationlabelcontains,
 }
 
 // GetSummarizeRecordAnalyticsRecordGroupByEnumValues Enumerates the set of values for SummarizeRecordAnalyticsRecordGroupByEnum
@@ -202,12 +207,7 @@ func GetSummarizeRecordAnalyticsRecordGroupByEnumStringValues() []string {
 
 // GetMappingSummarizeRecordAnalyticsRecordGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeRecordAnalyticsRecordGroupByEnum(val string) (SummarizeRecordAnalyticsRecordGroupByEnum, bool) {
-	mappingSummarizeRecordAnalyticsRecordGroupByEnumIgnoreCase := make(map[string]SummarizeRecordAnalyticsRecordGroupByEnum)
-	for k, v := range mappingSummarizeRecordAnalyticsRecordGroupByEnum {
-		mappingSummarizeRecordAnalyticsRecordGroupByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeRecordAnalyticsRecordGroupByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeRecordAnalyticsRecordGroupByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -223,6 +223,11 @@ const (
 var mappingSummarizeRecordAnalyticsSortByEnum = map[string]SummarizeRecordAnalyticsSortByEnum{
 	"count":     SummarizeRecordAnalyticsSortByCount,
 	"isLabeled": SummarizeRecordAnalyticsSortByIslabeled,
+}
+
+var mappingSummarizeRecordAnalyticsSortByEnumLowerCase = map[string]SummarizeRecordAnalyticsSortByEnum{
+	"count":     SummarizeRecordAnalyticsSortByCount,
+	"islabeled": SummarizeRecordAnalyticsSortByIslabeled,
 }
 
 // GetSummarizeRecordAnalyticsSortByEnumValues Enumerates the set of values for SummarizeRecordAnalyticsSortByEnum
@@ -244,11 +249,6 @@ func GetSummarizeRecordAnalyticsSortByEnumStringValues() []string {
 
 // GetMappingSummarizeRecordAnalyticsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeRecordAnalyticsSortByEnum(val string) (SummarizeRecordAnalyticsSortByEnum, bool) {
-	mappingSummarizeRecordAnalyticsSortByEnumIgnoreCase := make(map[string]SummarizeRecordAnalyticsSortByEnum)
-	for k, v := range mappingSummarizeRecordAnalyticsSortByEnum {
-		mappingSummarizeRecordAnalyticsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeRecordAnalyticsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeRecordAnalyticsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

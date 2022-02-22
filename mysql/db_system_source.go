@@ -12,7 +12,7 @@ package mysql
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,12 @@ var mappingDbSystemSourceSourceTypeEnum = map[string]DbSystemSourceSourceTypeEnu
 	"IMPORTURL": DbSystemSourceSourceTypeImporturl,
 }
 
+var mappingDbSystemSourceSourceTypeEnumLowerCase = map[string]DbSystemSourceSourceTypeEnum{
+	"none":      DbSystemSourceSourceTypeNone,
+	"backup":    DbSystemSourceSourceTypeBackup,
+	"importurl": DbSystemSourceSourceTypeImporturl,
+}
+
 // GetDbSystemSourceSourceTypeEnumValues Enumerates the set of values for DbSystemSourceSourceTypeEnum
 func GetDbSystemSourceSourceTypeEnumValues() []DbSystemSourceSourceTypeEnum {
 	values := make([]DbSystemSourceSourceTypeEnum, 0)
@@ -119,11 +125,6 @@ func GetDbSystemSourceSourceTypeEnumStringValues() []string {
 
 // GetMappingDbSystemSourceSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDbSystemSourceSourceTypeEnum(val string) (DbSystemSourceSourceTypeEnum, bool) {
-	mappingDbSystemSourceSourceTypeEnumIgnoreCase := make(map[string]DbSystemSourceSourceTypeEnum)
-	for k, v := range mappingDbSystemSourceSourceTypeEnum {
-		mappingDbSystemSourceSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDbSystemSourceSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDbSystemSourceSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

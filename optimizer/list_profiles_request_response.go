@@ -6,7 +6,7 @@ package optimizer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -140,6 +140,11 @@ var mappingListProfilesSortOrderEnum = map[string]ListProfilesSortOrderEnum{
 	"DESC": ListProfilesSortOrderDesc,
 }
 
+var mappingListProfilesSortOrderEnumLowerCase = map[string]ListProfilesSortOrderEnum{
+	"asc":  ListProfilesSortOrderAsc,
+	"desc": ListProfilesSortOrderDesc,
+}
+
 // GetListProfilesSortOrderEnumValues Enumerates the set of values for ListProfilesSortOrderEnum
 func GetListProfilesSortOrderEnumValues() []ListProfilesSortOrderEnum {
 	values := make([]ListProfilesSortOrderEnum, 0)
@@ -159,12 +164,7 @@ func GetListProfilesSortOrderEnumStringValues() []string {
 
 // GetMappingListProfilesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProfilesSortOrderEnum(val string) (ListProfilesSortOrderEnum, bool) {
-	mappingListProfilesSortOrderEnumIgnoreCase := make(map[string]ListProfilesSortOrderEnum)
-	for k, v := range mappingListProfilesSortOrderEnum {
-		mappingListProfilesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProfilesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProfilesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -180,6 +180,11 @@ const (
 var mappingListProfilesSortByEnum = map[string]ListProfilesSortByEnum{
 	"NAME":        ListProfilesSortByName,
 	"TIMECREATED": ListProfilesSortByTimecreated,
+}
+
+var mappingListProfilesSortByEnumLowerCase = map[string]ListProfilesSortByEnum{
+	"name":        ListProfilesSortByName,
+	"timecreated": ListProfilesSortByTimecreated,
 }
 
 // GetListProfilesSortByEnumValues Enumerates the set of values for ListProfilesSortByEnum
@@ -201,12 +206,7 @@ func GetListProfilesSortByEnumStringValues() []string {
 
 // GetMappingListProfilesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProfilesSortByEnum(val string) (ListProfilesSortByEnum, bool) {
-	mappingListProfilesSortByEnumIgnoreCase := make(map[string]ListProfilesSortByEnum)
-	for k, v := range mappingListProfilesSortByEnum {
-		mappingListProfilesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProfilesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProfilesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -238,6 +238,18 @@ var mappingListProfilesLifecycleStateEnum = map[string]ListProfilesLifecycleStat
 	"CREATING":  ListProfilesLifecycleStateCreating,
 }
 
+var mappingListProfilesLifecycleStateEnumLowerCase = map[string]ListProfilesLifecycleStateEnum{
+	"active":    ListProfilesLifecycleStateActive,
+	"failed":    ListProfilesLifecycleStateFailed,
+	"inactive":  ListProfilesLifecycleStateInactive,
+	"attaching": ListProfilesLifecycleStateAttaching,
+	"detaching": ListProfilesLifecycleStateDetaching,
+	"deleting":  ListProfilesLifecycleStateDeleting,
+	"deleted":   ListProfilesLifecycleStateDeleted,
+	"updating":  ListProfilesLifecycleStateUpdating,
+	"creating":  ListProfilesLifecycleStateCreating,
+}
+
 // GetListProfilesLifecycleStateEnumValues Enumerates the set of values for ListProfilesLifecycleStateEnum
 func GetListProfilesLifecycleStateEnumValues() []ListProfilesLifecycleStateEnum {
 	values := make([]ListProfilesLifecycleStateEnum, 0)
@@ -264,11 +276,6 @@ func GetListProfilesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListProfilesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProfilesLifecycleStateEnum(val string) (ListProfilesLifecycleStateEnum, bool) {
-	mappingListProfilesLifecycleStateEnumIgnoreCase := make(map[string]ListProfilesLifecycleStateEnum)
-	for k, v := range mappingListProfilesLifecycleStateEnum {
-		mappingListProfilesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProfilesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProfilesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

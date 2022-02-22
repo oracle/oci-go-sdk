@@ -31,6 +31,13 @@ var mappingNetworkLoadBalancersProtocolSummaryEnum = map[string]NetworkLoadBalan
 	"TCP_AND_UDP": NetworkLoadBalancersProtocolSummaryTcpAndUdp,
 }
 
+var mappingNetworkLoadBalancersProtocolSummaryEnumLowerCase = map[string]NetworkLoadBalancersProtocolSummaryEnum{
+	"any":         NetworkLoadBalancersProtocolSummaryAny,
+	"tcp":         NetworkLoadBalancersProtocolSummaryTcp,
+	"udp":         NetworkLoadBalancersProtocolSummaryUdp,
+	"tcp_and_udp": NetworkLoadBalancersProtocolSummaryTcpAndUdp,
+}
+
 // GetNetworkLoadBalancersProtocolSummaryEnumValues Enumerates the set of values for NetworkLoadBalancersProtocolSummaryEnum
 func GetNetworkLoadBalancersProtocolSummaryEnumValues() []NetworkLoadBalancersProtocolSummaryEnum {
 	values := make([]NetworkLoadBalancersProtocolSummaryEnum, 0)
@@ -52,11 +59,6 @@ func GetNetworkLoadBalancersProtocolSummaryEnumStringValues() []string {
 
 // GetMappingNetworkLoadBalancersProtocolSummaryEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNetworkLoadBalancersProtocolSummaryEnum(val string) (NetworkLoadBalancersProtocolSummaryEnum, bool) {
-	mappingNetworkLoadBalancersProtocolSummaryEnumIgnoreCase := make(map[string]NetworkLoadBalancersProtocolSummaryEnum)
-	for k, v := range mappingNetworkLoadBalancersProtocolSummaryEnum {
-		mappingNetworkLoadBalancersProtocolSummaryEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNetworkLoadBalancersProtocolSummaryEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNetworkLoadBalancersProtocolSummaryEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

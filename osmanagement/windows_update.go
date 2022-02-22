@@ -12,7 +12,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,12 @@ var mappingWindowsUpdateInstallationRequirementsEnum = map[string]WindowsUpdateI
 	"USER_INTERACTION_REQUIRED": WindowsUpdateInstallationRequirementsUserInteractionRequired,
 }
 
+var mappingWindowsUpdateInstallationRequirementsEnumLowerCase = map[string]WindowsUpdateInstallationRequirementsEnum{
+	"eula_acceptance_required":  WindowsUpdateInstallationRequirementsEulaAcceptanceRequired,
+	"software_media_required":   WindowsUpdateInstallationRequirementsSoftwareMediaRequired,
+	"user_interaction_required": WindowsUpdateInstallationRequirementsUserInteractionRequired,
+}
+
 // GetWindowsUpdateInstallationRequirementsEnumValues Enumerates the set of values for WindowsUpdateInstallationRequirementsEnum
 func GetWindowsUpdateInstallationRequirementsEnumValues() []WindowsUpdateInstallationRequirementsEnum {
 	values := make([]WindowsUpdateInstallationRequirementsEnum, 0)
@@ -113,11 +119,6 @@ func GetWindowsUpdateInstallationRequirementsEnumStringValues() []string {
 
 // GetMappingWindowsUpdateInstallationRequirementsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWindowsUpdateInstallationRequirementsEnum(val string) (WindowsUpdateInstallationRequirementsEnum, bool) {
-	mappingWindowsUpdateInstallationRequirementsEnumIgnoreCase := make(map[string]WindowsUpdateInstallationRequirementsEnum)
-	for k, v := range mappingWindowsUpdateInstallationRequirementsEnum {
-		mappingWindowsUpdateInstallationRequirementsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWindowsUpdateInstallationRequirementsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWindowsUpdateInstallationRequirementsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

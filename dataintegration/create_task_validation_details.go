@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -235,6 +235,12 @@ var mappingCreateTaskValidationDetailsModelTypeEnum = map[string]CreateTaskValid
 	"PIPELINE_TASK":    CreateTaskValidationDetailsModelTypePipelineTask,
 }
 
+var mappingCreateTaskValidationDetailsModelTypeEnumLowerCase = map[string]CreateTaskValidationDetailsModelTypeEnum{
+	"integration_task": CreateTaskValidationDetailsModelTypeIntegrationTask,
+	"data_loader_task": CreateTaskValidationDetailsModelTypeDataLoaderTask,
+	"pipeline_task":    CreateTaskValidationDetailsModelTypePipelineTask,
+}
+
 // GetCreateTaskValidationDetailsModelTypeEnumValues Enumerates the set of values for CreateTaskValidationDetailsModelTypeEnum
 func GetCreateTaskValidationDetailsModelTypeEnumValues() []CreateTaskValidationDetailsModelTypeEnum {
 	values := make([]CreateTaskValidationDetailsModelTypeEnum, 0)
@@ -255,11 +261,6 @@ func GetCreateTaskValidationDetailsModelTypeEnumStringValues() []string {
 
 // GetMappingCreateTaskValidationDetailsModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateTaskValidationDetailsModelTypeEnum(val string) (CreateTaskValidationDetailsModelTypeEnum, bool) {
-	mappingCreateTaskValidationDetailsModelTypeEnumIgnoreCase := make(map[string]CreateTaskValidationDetailsModelTypeEnum)
-	for k, v := range mappingCreateTaskValidationDetailsModelTypeEnum {
-		mappingCreateTaskValidationDetailsModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateTaskValidationDetailsModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateTaskValidationDetailsModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

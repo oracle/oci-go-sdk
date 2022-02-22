@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -227,6 +227,17 @@ var mappingUpdateConnectionDetailsModelTypeEnum = map[string]UpdateConnectionDet
 	"AMAZON_S3_CONNECTION":             UpdateConnectionDetailsModelTypeAmazonS3Connection,
 }
 
+var mappingUpdateConnectionDetailsModelTypeEnumLowerCase = map[string]UpdateConnectionDetailsModelTypeEnum{
+	"oracle_adwc_connection":           UpdateConnectionDetailsModelTypeOracleAdwcConnection,
+	"oracle_atp_connection":            UpdateConnectionDetailsModelTypeOracleAtpConnection,
+	"oracle_object_storage_connection": UpdateConnectionDetailsModelTypeOracleObjectStorageConnection,
+	"oracledb_connection":              UpdateConnectionDetailsModelTypeOracledbConnection,
+	"mysql_connection":                 UpdateConnectionDetailsModelTypeMysqlConnection,
+	"generic_jdbc_connection":          UpdateConnectionDetailsModelTypeGenericJdbcConnection,
+	"bicc_connection":                  UpdateConnectionDetailsModelTypeBiccConnection,
+	"amazon_s3_connection":             UpdateConnectionDetailsModelTypeAmazonS3Connection,
+}
+
 // GetUpdateConnectionDetailsModelTypeEnumValues Enumerates the set of values for UpdateConnectionDetailsModelTypeEnum
 func GetUpdateConnectionDetailsModelTypeEnumValues() []UpdateConnectionDetailsModelTypeEnum {
 	values := make([]UpdateConnectionDetailsModelTypeEnum, 0)
@@ -252,11 +263,6 @@ func GetUpdateConnectionDetailsModelTypeEnumStringValues() []string {
 
 // GetMappingUpdateConnectionDetailsModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateConnectionDetailsModelTypeEnum(val string) (UpdateConnectionDetailsModelTypeEnum, bool) {
-	mappingUpdateConnectionDetailsModelTypeEnumIgnoreCase := make(map[string]UpdateConnectionDetailsModelTypeEnum)
-	for k, v := range mappingUpdateConnectionDetailsModelTypeEnum {
-		mappingUpdateConnectionDetailsModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateConnectionDetailsModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateConnectionDetailsModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

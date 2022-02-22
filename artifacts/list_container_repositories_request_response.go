@@ -6,7 +6,7 @@ package artifacts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -158,6 +158,11 @@ var mappingListContainerRepositoriesSortByEnum = map[string]ListContainerReposit
 	"DISPLAYNAME": ListContainerRepositoriesSortByDisplayname,
 }
 
+var mappingListContainerRepositoriesSortByEnumLowerCase = map[string]ListContainerRepositoriesSortByEnum{
+	"timecreated": ListContainerRepositoriesSortByTimecreated,
+	"displayname": ListContainerRepositoriesSortByDisplayname,
+}
+
 // GetListContainerRepositoriesSortByEnumValues Enumerates the set of values for ListContainerRepositoriesSortByEnum
 func GetListContainerRepositoriesSortByEnumValues() []ListContainerRepositoriesSortByEnum {
 	values := make([]ListContainerRepositoriesSortByEnum, 0)
@@ -177,12 +182,7 @@ func GetListContainerRepositoriesSortByEnumStringValues() []string {
 
 // GetMappingListContainerRepositoriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListContainerRepositoriesSortByEnum(val string) (ListContainerRepositoriesSortByEnum, bool) {
-	mappingListContainerRepositoriesSortByEnumIgnoreCase := make(map[string]ListContainerRepositoriesSortByEnum)
-	for k, v := range mappingListContainerRepositoriesSortByEnum {
-		mappingListContainerRepositoriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListContainerRepositoriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListContainerRepositoriesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -198,6 +198,11 @@ const (
 var mappingListContainerRepositoriesSortOrderEnum = map[string]ListContainerRepositoriesSortOrderEnum{
 	"ASC":  ListContainerRepositoriesSortOrderAsc,
 	"DESC": ListContainerRepositoriesSortOrderDesc,
+}
+
+var mappingListContainerRepositoriesSortOrderEnumLowerCase = map[string]ListContainerRepositoriesSortOrderEnum{
+	"asc":  ListContainerRepositoriesSortOrderAsc,
+	"desc": ListContainerRepositoriesSortOrderDesc,
 }
 
 // GetListContainerRepositoriesSortOrderEnumValues Enumerates the set of values for ListContainerRepositoriesSortOrderEnum
@@ -219,11 +224,6 @@ func GetListContainerRepositoriesSortOrderEnumStringValues() []string {
 
 // GetMappingListContainerRepositoriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListContainerRepositoriesSortOrderEnum(val string) (ListContainerRepositoriesSortOrderEnum, bool) {
-	mappingListContainerRepositoriesSortOrderEnumIgnoreCase := make(map[string]ListContainerRepositoriesSortOrderEnum)
-	for k, v := range mappingListContainerRepositoriesSortOrderEnum {
-		mappingListContainerRepositoriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListContainerRepositoriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListContainerRepositoriesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package loganalytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -119,6 +119,12 @@ var mappingScheduleMisfirePolicyEnum = map[string]ScheduleMisfirePolicyEnum{
 	"SKIP":               ScheduleMisfirePolicySkip,
 }
 
+var mappingScheduleMisfirePolicyEnumLowerCase = map[string]ScheduleMisfirePolicyEnum{
+	"retry_once":         ScheduleMisfirePolicyRetryOnce,
+	"retry_indefinitely": ScheduleMisfirePolicyRetryIndefinitely,
+	"skip":               ScheduleMisfirePolicySkip,
+}
+
 // GetScheduleMisfirePolicyEnumValues Enumerates the set of values for ScheduleMisfirePolicyEnum
 func GetScheduleMisfirePolicyEnumValues() []ScheduleMisfirePolicyEnum {
 	values := make([]ScheduleMisfirePolicyEnum, 0)
@@ -139,12 +145,7 @@ func GetScheduleMisfirePolicyEnumStringValues() []string {
 
 // GetMappingScheduleMisfirePolicyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingScheduleMisfirePolicyEnum(val string) (ScheduleMisfirePolicyEnum, bool) {
-	mappingScheduleMisfirePolicyEnumIgnoreCase := make(map[string]ScheduleMisfirePolicyEnum)
-	for k, v := range mappingScheduleMisfirePolicyEnum {
-		mappingScheduleMisfirePolicyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingScheduleMisfirePolicyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingScheduleMisfirePolicyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -160,6 +161,11 @@ const (
 var mappingScheduleTypeEnum = map[string]ScheduleTypeEnum{
 	"FIXED_FREQUENCY": ScheduleTypeFixedFrequency,
 	"CRON":            ScheduleTypeCron,
+}
+
+var mappingScheduleTypeEnumLowerCase = map[string]ScheduleTypeEnum{
+	"fixed_frequency": ScheduleTypeFixedFrequency,
+	"cron":            ScheduleTypeCron,
 }
 
 // GetScheduleTypeEnumValues Enumerates the set of values for ScheduleTypeEnum
@@ -181,11 +187,6 @@ func GetScheduleTypeEnumStringValues() []string {
 
 // GetMappingScheduleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingScheduleTypeEnum(val string) (ScheduleTypeEnum, bool) {
-	mappingScheduleTypeEnumIgnoreCase := make(map[string]ScheduleTypeEnum)
-	for k, v := range mappingScheduleTypeEnum {
-		mappingScheduleTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingScheduleTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingScheduleTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -80,6 +80,13 @@ var mappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum 
 	"IPSEC_TUNNEL":              DrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeIpsecTunnel,
 }
 
+var mappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnumLowerCase = map[string]DrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum{
+	"vcn":                       DrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeVcn,
+	"virtual_circuit":           DrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeVirtualCircuit,
+	"remote_peering_connection": DrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeRemotePeeringConnection,
+	"ipsec_tunnel":              DrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeIpsecTunnel,
+}
+
 // GetDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnumValues Enumerates the set of values for DrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum
 func GetDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnumValues() []DrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum {
 	values := make([]DrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum, 0)
@@ -101,11 +108,6 @@ func GetDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnumStri
 
 // GetMappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum(val string) (DrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum, bool) {
-	mappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnumIgnoreCase := make(map[string]DrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum)
-	for k, v := range mappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum {
-		mappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -72,6 +72,18 @@ var mappingCountStatisticSummaryObjectTypeEnum = map[string]CountStatisticSummar
 	"USER_DEFINED_FUNCTION": CountStatisticSummaryObjectTypeUserDefinedFunction,
 }
 
+var mappingCountStatisticSummaryObjectTypeEnumLowerCase = map[string]CountStatisticSummaryObjectTypeEnum{
+	"project":               CountStatisticSummaryObjectTypeProject,
+	"folder":                CountStatisticSummaryObjectTypeFolder,
+	"data_flow":             CountStatisticSummaryObjectTypeDataFlow,
+	"data_asset":            CountStatisticSummaryObjectTypeDataAsset,
+	"connection":            CountStatisticSummaryObjectTypeConnection,
+	"task":                  CountStatisticSummaryObjectTypeTask,
+	"application":           CountStatisticSummaryObjectTypeApplication,
+	"function_library":      CountStatisticSummaryObjectTypeFunctionLibrary,
+	"user_defined_function": CountStatisticSummaryObjectTypeUserDefinedFunction,
+}
+
 // GetCountStatisticSummaryObjectTypeEnumValues Enumerates the set of values for CountStatisticSummaryObjectTypeEnum
 func GetCountStatisticSummaryObjectTypeEnumValues() []CountStatisticSummaryObjectTypeEnum {
 	values := make([]CountStatisticSummaryObjectTypeEnum, 0)
@@ -98,11 +110,6 @@ func GetCountStatisticSummaryObjectTypeEnumStringValues() []string {
 
 // GetMappingCountStatisticSummaryObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCountStatisticSummaryObjectTypeEnum(val string) (CountStatisticSummaryObjectTypeEnum, bool) {
-	mappingCountStatisticSummaryObjectTypeEnumIgnoreCase := make(map[string]CountStatisticSummaryObjectTypeEnum)
-	for k, v := range mappingCountStatisticSummaryObjectTypeEnum {
-		mappingCountStatisticSummaryObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCountStatisticSummaryObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCountStatisticSummaryObjectTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

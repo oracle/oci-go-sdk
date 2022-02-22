@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -62,6 +62,11 @@ var mappingEnableDatabaseManagementDetailsManagementTypeEnum = map[string]Enable
 	"ADVANCED": EnableDatabaseManagementDetailsManagementTypeAdvanced,
 }
 
+var mappingEnableDatabaseManagementDetailsManagementTypeEnumLowerCase = map[string]EnableDatabaseManagementDetailsManagementTypeEnum{
+	"basic":    EnableDatabaseManagementDetailsManagementTypeBasic,
+	"advanced": EnableDatabaseManagementDetailsManagementTypeAdvanced,
+}
+
 // GetEnableDatabaseManagementDetailsManagementTypeEnumValues Enumerates the set of values for EnableDatabaseManagementDetailsManagementTypeEnum
 func GetEnableDatabaseManagementDetailsManagementTypeEnumValues() []EnableDatabaseManagementDetailsManagementTypeEnum {
 	values := make([]EnableDatabaseManagementDetailsManagementTypeEnum, 0)
@@ -81,11 +86,6 @@ func GetEnableDatabaseManagementDetailsManagementTypeEnumStringValues() []string
 
 // GetMappingEnableDatabaseManagementDetailsManagementTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEnableDatabaseManagementDetailsManagementTypeEnum(val string) (EnableDatabaseManagementDetailsManagementTypeEnum, bool) {
-	mappingEnableDatabaseManagementDetailsManagementTypeEnumIgnoreCase := make(map[string]EnableDatabaseManagementDetailsManagementTypeEnum)
-	for k, v := range mappingEnableDatabaseManagementDetailsManagementTypeEnum {
-		mappingEnableDatabaseManagementDetailsManagementTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEnableDatabaseManagementDetailsManagementTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEnableDatabaseManagementDetailsManagementTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

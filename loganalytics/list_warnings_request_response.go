@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -176,6 +176,12 @@ var mappingListWarningsWarningStateEnum = map[string]ListWarningsWarningStateEnu
 	"UNSUPPRESSED": ListWarningsWarningStateUnsuppressed,
 }
 
+var mappingListWarningsWarningStateEnumLowerCase = map[string]ListWarningsWarningStateEnum{
+	"all":          ListWarningsWarningStateAll,
+	"suppressed":   ListWarningsWarningStateSuppressed,
+	"unsuppressed": ListWarningsWarningStateUnsuppressed,
+}
+
 // GetListWarningsWarningStateEnumValues Enumerates the set of values for ListWarningsWarningStateEnum
 func GetListWarningsWarningStateEnumValues() []ListWarningsWarningStateEnum {
 	values := make([]ListWarningsWarningStateEnum, 0)
@@ -196,12 +202,7 @@ func GetListWarningsWarningStateEnumStringValues() []string {
 
 // GetMappingListWarningsWarningStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWarningsWarningStateEnum(val string) (ListWarningsWarningStateEnum, bool) {
-	mappingListWarningsWarningStateEnumIgnoreCase := make(map[string]ListWarningsWarningStateEnum)
-	for k, v := range mappingListWarningsWarningStateEnum {
-		mappingListWarningsWarningStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWarningsWarningStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWarningsWarningStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -217,6 +218,11 @@ const (
 var mappingListWarningsSortOrderEnum = map[string]ListWarningsSortOrderEnum{
 	"ASC":  ListWarningsSortOrderAsc,
 	"DESC": ListWarningsSortOrderDesc,
+}
+
+var mappingListWarningsSortOrderEnumLowerCase = map[string]ListWarningsSortOrderEnum{
+	"asc":  ListWarningsSortOrderAsc,
+	"desc": ListWarningsSortOrderDesc,
 }
 
 // GetListWarningsSortOrderEnumValues Enumerates the set of values for ListWarningsSortOrderEnum
@@ -238,12 +244,7 @@ func GetListWarningsSortOrderEnumStringValues() []string {
 
 // GetMappingListWarningsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWarningsSortOrderEnum(val string) (ListWarningsSortOrderEnum, bool) {
-	mappingListWarningsSortOrderEnumIgnoreCase := make(map[string]ListWarningsSortOrderEnum)
-	for k, v := range mappingListWarningsSortOrderEnum {
-		mappingListWarningsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWarningsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWarningsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -273,6 +274,17 @@ var mappingListWarningsSortByEnum = map[string]ListWarningsSortByEnum{
 	"InitialWarningDate": ListWarningsSortByInitialwarningdate,
 }
 
+var mappingListWarningsSortByEnumLowerCase = map[string]ListWarningsSortByEnum{
+	"entitytype":         ListWarningsSortByEntitytype,
+	"sourcename":         ListWarningsSortBySourcename,
+	"patterntext":        ListWarningsSortByPatterntext,
+	"firstreported":      ListWarningsSortByFirstreported,
+	"warningmessage":     ListWarningsSortByWarningmessage,
+	"host":               ListWarningsSortByHost,
+	"entityname":         ListWarningsSortByEntityname,
+	"initialwarningdate": ListWarningsSortByInitialwarningdate,
+}
+
 // GetListWarningsSortByEnumValues Enumerates the set of values for ListWarningsSortByEnum
 func GetListWarningsSortByEnumValues() []ListWarningsSortByEnum {
 	values := make([]ListWarningsSortByEnum, 0)
@@ -298,11 +310,6 @@ func GetListWarningsSortByEnumStringValues() []string {
 
 // GetMappingListWarningsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWarningsSortByEnum(val string) (ListWarningsSortByEnum, bool) {
-	mappingListWarningsSortByEnumIgnoreCase := make(map[string]ListWarningsSortByEnum)
-	for k, v := range mappingListWarningsSortByEnum {
-		mappingListWarningsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWarningsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWarningsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -134,6 +134,11 @@ var mappingGetZoneScopeEnum = map[string]GetZoneScopeEnum{
 	"PRIVATE": GetZoneScopePrivate,
 }
 
+var mappingGetZoneScopeEnumLowerCase = map[string]GetZoneScopeEnum{
+	"global":  GetZoneScopeGlobal,
+	"private": GetZoneScopePrivate,
+}
+
 // GetGetZoneScopeEnumValues Enumerates the set of values for GetZoneScopeEnum
 func GetGetZoneScopeEnumValues() []GetZoneScopeEnum {
 	values := make([]GetZoneScopeEnum, 0)
@@ -153,11 +158,6 @@ func GetGetZoneScopeEnumStringValues() []string {
 
 // GetMappingGetZoneScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetZoneScopeEnum(val string) (GetZoneScopeEnum, bool) {
-	mappingGetZoneScopeEnumIgnoreCase := make(map[string]GetZoneScopeEnum)
-	for k, v := range mappingGetZoneScopeEnum {
-		mappingGetZoneScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetZoneScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetZoneScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

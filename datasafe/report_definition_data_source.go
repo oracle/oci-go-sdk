@@ -27,6 +27,11 @@ var mappingReportDefinitionDataSourceEnum = map[string]ReportDefinitionDataSourc
 	"ALERTS": ReportDefinitionDataSourceAlerts,
 }
 
+var mappingReportDefinitionDataSourceEnumLowerCase = map[string]ReportDefinitionDataSourceEnum{
+	"events": ReportDefinitionDataSourceEvents,
+	"alerts": ReportDefinitionDataSourceAlerts,
+}
+
 // GetReportDefinitionDataSourceEnumValues Enumerates the set of values for ReportDefinitionDataSourceEnum
 func GetReportDefinitionDataSourceEnumValues() []ReportDefinitionDataSourceEnum {
 	values := make([]ReportDefinitionDataSourceEnum, 0)
@@ -46,11 +51,6 @@ func GetReportDefinitionDataSourceEnumStringValues() []string {
 
 // GetMappingReportDefinitionDataSourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingReportDefinitionDataSourceEnum(val string) (ReportDefinitionDataSourceEnum, bool) {
-	mappingReportDefinitionDataSourceEnumIgnoreCase := make(map[string]ReportDefinitionDataSourceEnum)
-	for k, v := range mappingReportDefinitionDataSourceEnum {
-		mappingReportDefinitionDataSourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingReportDefinitionDataSourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingReportDefinitionDataSourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

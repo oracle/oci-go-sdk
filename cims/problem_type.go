@@ -31,6 +31,13 @@ var mappingProblemTypeEnum = map[string]ProblemTypeEnum{
 	"ACCOUNT":      ProblemTypeAccount,
 }
 
+var mappingProblemTypeEnumLowerCase = map[string]ProblemTypeEnum{
+	"limit":        ProblemTypeLimit,
+	"legacy_limit": ProblemTypeLegacyLimit,
+	"tech":         ProblemTypeTech,
+	"account":      ProblemTypeAccount,
+}
+
 // GetProblemTypeEnumValues Enumerates the set of values for ProblemTypeEnum
 func GetProblemTypeEnumValues() []ProblemTypeEnum {
 	values := make([]ProblemTypeEnum, 0)
@@ -52,11 +59,6 @@ func GetProblemTypeEnumStringValues() []string {
 
 // GetMappingProblemTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingProblemTypeEnum(val string) (ProblemTypeEnum, bool) {
-	mappingProblemTypeEnumIgnoreCase := make(map[string]ProblemTypeEnum)
-	for k, v := range mappingProblemTypeEnum {
-		mappingProblemTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingProblemTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingProblemTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

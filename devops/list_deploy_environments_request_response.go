@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,11 @@ var mappingListDeployEnvironmentsSortOrderEnum = map[string]ListDeployEnvironmen
 	"DESC": ListDeployEnvironmentsSortOrderDesc,
 }
 
+var mappingListDeployEnvironmentsSortOrderEnumLowerCase = map[string]ListDeployEnvironmentsSortOrderEnum{
+	"asc":  ListDeployEnvironmentsSortOrderAsc,
+	"desc": ListDeployEnvironmentsSortOrderDesc,
+}
+
 // GetListDeployEnvironmentsSortOrderEnumValues Enumerates the set of values for ListDeployEnvironmentsSortOrderEnum
 func GetListDeployEnvironmentsSortOrderEnumValues() []ListDeployEnvironmentsSortOrderEnum {
 	values := make([]ListDeployEnvironmentsSortOrderEnum, 0)
@@ -157,12 +162,7 @@ func GetListDeployEnvironmentsSortOrderEnumStringValues() []string {
 
 // GetMappingListDeployEnvironmentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDeployEnvironmentsSortOrderEnum(val string) (ListDeployEnvironmentsSortOrderEnum, bool) {
-	mappingListDeployEnvironmentsSortOrderEnumIgnoreCase := make(map[string]ListDeployEnvironmentsSortOrderEnum)
-	for k, v := range mappingListDeployEnvironmentsSortOrderEnum {
-		mappingListDeployEnvironmentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDeployEnvironmentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDeployEnvironmentsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -178,6 +178,11 @@ const (
 var mappingListDeployEnvironmentsSortByEnum = map[string]ListDeployEnvironmentsSortByEnum{
 	"timeCreated": ListDeployEnvironmentsSortByTimecreated,
 	"displayName": ListDeployEnvironmentsSortByDisplayname,
+}
+
+var mappingListDeployEnvironmentsSortByEnumLowerCase = map[string]ListDeployEnvironmentsSortByEnum{
+	"timecreated": ListDeployEnvironmentsSortByTimecreated,
+	"displayname": ListDeployEnvironmentsSortByDisplayname,
 }
 
 // GetListDeployEnvironmentsSortByEnumValues Enumerates the set of values for ListDeployEnvironmentsSortByEnum
@@ -199,11 +204,6 @@ func GetListDeployEnvironmentsSortByEnumStringValues() []string {
 
 // GetMappingListDeployEnvironmentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDeployEnvironmentsSortByEnum(val string) (ListDeployEnvironmentsSortByEnum, bool) {
-	mappingListDeployEnvironmentsSortByEnumIgnoreCase := make(map[string]ListDeployEnvironmentsSortByEnum)
-	for k, v := range mappingListDeployEnvironmentsSortByEnum {
-		mappingListDeployEnvironmentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDeployEnvironmentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDeployEnvironmentsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

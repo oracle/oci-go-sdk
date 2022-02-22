@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -80,6 +80,17 @@ var mappingHealthCheckResultHealthCheckStatusEnum = map[string]HealthCheckResult
 	"UNKNOWN":             HealthCheckResultHealthCheckStatusUnknown,
 }
 
+var mappingHealthCheckResultHealthCheckStatusEnumLowerCase = map[string]HealthCheckResultHealthCheckStatusEnum{
+	"ok":                  HealthCheckResultHealthCheckStatusOk,
+	"invalid_status_code": HealthCheckResultHealthCheckStatusInvalidStatusCode,
+	"timed_out":           HealthCheckResultHealthCheckStatusTimedOut,
+	"regex_mismatch":      HealthCheckResultHealthCheckStatusRegexMismatch,
+	"connect_failed":      HealthCheckResultHealthCheckStatusConnectFailed,
+	"io_error":            HealthCheckResultHealthCheckStatusIoError,
+	"offline":             HealthCheckResultHealthCheckStatusOffline,
+	"unknown":             HealthCheckResultHealthCheckStatusUnknown,
+}
+
 // GetHealthCheckResultHealthCheckStatusEnumValues Enumerates the set of values for HealthCheckResultHealthCheckStatusEnum
 func GetHealthCheckResultHealthCheckStatusEnumValues() []HealthCheckResultHealthCheckStatusEnum {
 	values := make([]HealthCheckResultHealthCheckStatusEnum, 0)
@@ -105,11 +116,6 @@ func GetHealthCheckResultHealthCheckStatusEnumStringValues() []string {
 
 // GetMappingHealthCheckResultHealthCheckStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHealthCheckResultHealthCheckStatusEnum(val string) (HealthCheckResultHealthCheckStatusEnum, bool) {
-	mappingHealthCheckResultHealthCheckStatusEnumIgnoreCase := make(map[string]HealthCheckResultHealthCheckStatusEnum)
-	for k, v := range mappingHealthCheckResultHealthCheckStatusEnum {
-		mappingHealthCheckResultHealthCheckStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHealthCheckResultHealthCheckStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHealthCheckResultHealthCheckStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

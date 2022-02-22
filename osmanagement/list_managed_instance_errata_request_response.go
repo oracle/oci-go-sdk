@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -134,6 +134,11 @@ var mappingListManagedInstanceErrataSortOrderEnum = map[string]ListManagedInstan
 	"DESC": ListManagedInstanceErrataSortOrderDesc,
 }
 
+var mappingListManagedInstanceErrataSortOrderEnumLowerCase = map[string]ListManagedInstanceErrataSortOrderEnum{
+	"asc":  ListManagedInstanceErrataSortOrderAsc,
+	"desc": ListManagedInstanceErrataSortOrderDesc,
+}
+
 // GetListManagedInstanceErrataSortOrderEnumValues Enumerates the set of values for ListManagedInstanceErrataSortOrderEnum
 func GetListManagedInstanceErrataSortOrderEnumValues() []ListManagedInstanceErrataSortOrderEnum {
 	values := make([]ListManagedInstanceErrataSortOrderEnum, 0)
@@ -153,12 +158,7 @@ func GetListManagedInstanceErrataSortOrderEnumStringValues() []string {
 
 // GetMappingListManagedInstanceErrataSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedInstanceErrataSortOrderEnum(val string) (ListManagedInstanceErrataSortOrderEnum, bool) {
-	mappingListManagedInstanceErrataSortOrderEnumIgnoreCase := make(map[string]ListManagedInstanceErrataSortOrderEnum)
-	for k, v := range mappingListManagedInstanceErrataSortOrderEnum {
-		mappingListManagedInstanceErrataSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedInstanceErrataSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedInstanceErrataSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -174,6 +174,11 @@ const (
 var mappingListManagedInstanceErrataSortByEnum = map[string]ListManagedInstanceErrataSortByEnum{
 	"TIMECREATED": ListManagedInstanceErrataSortByTimecreated,
 	"DISPLAYNAME": ListManagedInstanceErrataSortByDisplayname,
+}
+
+var mappingListManagedInstanceErrataSortByEnumLowerCase = map[string]ListManagedInstanceErrataSortByEnum{
+	"timecreated": ListManagedInstanceErrataSortByTimecreated,
+	"displayname": ListManagedInstanceErrataSortByDisplayname,
 }
 
 // GetListManagedInstanceErrataSortByEnumValues Enumerates the set of values for ListManagedInstanceErrataSortByEnum
@@ -195,11 +200,6 @@ func GetListManagedInstanceErrataSortByEnumStringValues() []string {
 
 // GetMappingListManagedInstanceErrataSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedInstanceErrataSortByEnum(val string) (ListManagedInstanceErrataSortByEnum, bool) {
-	mappingListManagedInstanceErrataSortByEnumIgnoreCase := make(map[string]ListManagedInstanceErrataSortByEnum)
-	for k, v := range mappingListManagedInstanceErrataSortByEnum {
-		mappingListManagedInstanceErrataSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedInstanceErrataSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedInstanceErrataSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -165,6 +165,17 @@ var mappingListTermRelationshipsLifecycleStateEnum = map[string]ListTermRelation
 	"MOVING":   ListTermRelationshipsLifecycleStateMoving,
 }
 
+var mappingListTermRelationshipsLifecycleStateEnumLowerCase = map[string]ListTermRelationshipsLifecycleStateEnum{
+	"creating": ListTermRelationshipsLifecycleStateCreating,
+	"active":   ListTermRelationshipsLifecycleStateActive,
+	"inactive": ListTermRelationshipsLifecycleStateInactive,
+	"updating": ListTermRelationshipsLifecycleStateUpdating,
+	"deleting": ListTermRelationshipsLifecycleStateDeleting,
+	"deleted":  ListTermRelationshipsLifecycleStateDeleted,
+	"failed":   ListTermRelationshipsLifecycleStateFailed,
+	"moving":   ListTermRelationshipsLifecycleStateMoving,
+}
+
 // GetListTermRelationshipsLifecycleStateEnumValues Enumerates the set of values for ListTermRelationshipsLifecycleStateEnum
 func GetListTermRelationshipsLifecycleStateEnumValues() []ListTermRelationshipsLifecycleStateEnum {
 	values := make([]ListTermRelationshipsLifecycleStateEnum, 0)
@@ -190,12 +201,7 @@ func GetListTermRelationshipsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListTermRelationshipsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTermRelationshipsLifecycleStateEnum(val string) (ListTermRelationshipsLifecycleStateEnum, bool) {
-	mappingListTermRelationshipsLifecycleStateEnumIgnoreCase := make(map[string]ListTermRelationshipsLifecycleStateEnum)
-	for k, v := range mappingListTermRelationshipsLifecycleStateEnum {
-		mappingListTermRelationshipsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTermRelationshipsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTermRelationshipsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -229,6 +235,19 @@ var mappingListTermRelationshipsFieldsEnum = map[string]ListTermRelationshipsFie
 	"uri":                    ListTermRelationshipsFieldsUri,
 }
 
+var mappingListTermRelationshipsFieldsEnumLowerCase = map[string]ListTermRelationshipsFieldsEnum{
+	"key":                    ListTermRelationshipsFieldsKey,
+	"displayname":            ListTermRelationshipsFieldsDisplayname,
+	"description":            ListTermRelationshipsFieldsDescription,
+	"relatedtermkey":         ListTermRelationshipsFieldsRelatedtermkey,
+	"relatedtermdisplayname": ListTermRelationshipsFieldsRelatedtermdisplayname,
+	"parenttermkey":          ListTermRelationshipsFieldsParenttermkey,
+	"parenttermdisplayname":  ListTermRelationshipsFieldsParenttermdisplayname,
+	"lifecyclestate":         ListTermRelationshipsFieldsLifecyclestate,
+	"timecreated":            ListTermRelationshipsFieldsTimecreated,
+	"uri":                    ListTermRelationshipsFieldsUri,
+}
+
 // GetListTermRelationshipsFieldsEnumValues Enumerates the set of values for ListTermRelationshipsFieldsEnum
 func GetListTermRelationshipsFieldsEnumValues() []ListTermRelationshipsFieldsEnum {
 	values := make([]ListTermRelationshipsFieldsEnum, 0)
@@ -256,12 +275,7 @@ func GetListTermRelationshipsFieldsEnumStringValues() []string {
 
 // GetMappingListTermRelationshipsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTermRelationshipsFieldsEnum(val string) (ListTermRelationshipsFieldsEnum, bool) {
-	mappingListTermRelationshipsFieldsEnumIgnoreCase := make(map[string]ListTermRelationshipsFieldsEnum)
-	for k, v := range mappingListTermRelationshipsFieldsEnum {
-		mappingListTermRelationshipsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTermRelationshipsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTermRelationshipsFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -277,6 +291,11 @@ const (
 var mappingListTermRelationshipsSortByEnum = map[string]ListTermRelationshipsSortByEnum{
 	"TIMECREATED": ListTermRelationshipsSortByTimecreated,
 	"DISPLAYNAME": ListTermRelationshipsSortByDisplayname,
+}
+
+var mappingListTermRelationshipsSortByEnumLowerCase = map[string]ListTermRelationshipsSortByEnum{
+	"timecreated": ListTermRelationshipsSortByTimecreated,
+	"displayname": ListTermRelationshipsSortByDisplayname,
 }
 
 // GetListTermRelationshipsSortByEnumValues Enumerates the set of values for ListTermRelationshipsSortByEnum
@@ -298,12 +317,7 @@ func GetListTermRelationshipsSortByEnumStringValues() []string {
 
 // GetMappingListTermRelationshipsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTermRelationshipsSortByEnum(val string) (ListTermRelationshipsSortByEnum, bool) {
-	mappingListTermRelationshipsSortByEnumIgnoreCase := make(map[string]ListTermRelationshipsSortByEnum)
-	for k, v := range mappingListTermRelationshipsSortByEnum {
-		mappingListTermRelationshipsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTermRelationshipsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTermRelationshipsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -319,6 +333,11 @@ const (
 var mappingListTermRelationshipsSortOrderEnum = map[string]ListTermRelationshipsSortOrderEnum{
 	"ASC":  ListTermRelationshipsSortOrderAsc,
 	"DESC": ListTermRelationshipsSortOrderDesc,
+}
+
+var mappingListTermRelationshipsSortOrderEnumLowerCase = map[string]ListTermRelationshipsSortOrderEnum{
+	"asc":  ListTermRelationshipsSortOrderAsc,
+	"desc": ListTermRelationshipsSortOrderDesc,
 }
 
 // GetListTermRelationshipsSortOrderEnumValues Enumerates the set of values for ListTermRelationshipsSortOrderEnum
@@ -340,11 +359,6 @@ func GetListTermRelationshipsSortOrderEnumStringValues() []string {
 
 // GetMappingListTermRelationshipsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTermRelationshipsSortOrderEnum(val string) (ListTermRelationshipsSortOrderEnum, bool) {
-	mappingListTermRelationshipsSortOrderEnumIgnoreCase := make(map[string]ListTermRelationshipsSortOrderEnum)
-	for k, v := range mappingListTermRelationshipsSortOrderEnum {
-		mappingListTermRelationshipsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTermRelationshipsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTermRelationshipsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

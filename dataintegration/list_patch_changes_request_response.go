@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,11 @@ var mappingListPatchChangesSortOrderEnum = map[string]ListPatchChangesSortOrderE
 	"DESC": ListPatchChangesSortOrderDesc,
 }
 
+var mappingListPatchChangesSortOrderEnumLowerCase = map[string]ListPatchChangesSortOrderEnum{
+	"asc":  ListPatchChangesSortOrderAsc,
+	"desc": ListPatchChangesSortOrderDesc,
+}
+
 // GetListPatchChangesSortOrderEnumValues Enumerates the set of values for ListPatchChangesSortOrderEnum
 func GetListPatchChangesSortOrderEnumValues() []ListPatchChangesSortOrderEnum {
 	values := make([]ListPatchChangesSortOrderEnum, 0)
@@ -163,12 +168,7 @@ func GetListPatchChangesSortOrderEnumStringValues() []string {
 
 // GetMappingListPatchChangesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPatchChangesSortOrderEnum(val string) (ListPatchChangesSortOrderEnum, bool) {
-	mappingListPatchChangesSortOrderEnumIgnoreCase := make(map[string]ListPatchChangesSortOrderEnum)
-	for k, v := range mappingListPatchChangesSortOrderEnum {
-		mappingListPatchChangesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPatchChangesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPatchChangesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -184,6 +184,11 @@ const (
 var mappingListPatchChangesSortByEnum = map[string]ListPatchChangesSortByEnum{
 	"TIME_CREATED": ListPatchChangesSortByTimeCreated,
 	"DISPLAY_NAME": ListPatchChangesSortByDisplayName,
+}
+
+var mappingListPatchChangesSortByEnumLowerCase = map[string]ListPatchChangesSortByEnum{
+	"time_created": ListPatchChangesSortByTimeCreated,
+	"display_name": ListPatchChangesSortByDisplayName,
 }
 
 // GetListPatchChangesSortByEnumValues Enumerates the set of values for ListPatchChangesSortByEnum
@@ -205,11 +210,6 @@ func GetListPatchChangesSortByEnumStringValues() []string {
 
 // GetMappingListPatchChangesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPatchChangesSortByEnum(val string) (ListPatchChangesSortByEnum, bool) {
-	mappingListPatchChangesSortByEnumIgnoreCase := make(map[string]ListPatchChangesSortByEnum)
-	for k, v := range mappingListPatchChangesSortByEnum {
-		mappingListPatchChangesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPatchChangesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPatchChangesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

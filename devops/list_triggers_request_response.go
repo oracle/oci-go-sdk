@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,11 @@ var mappingListTriggersSortOrderEnum = map[string]ListTriggersSortOrderEnum{
 	"DESC": ListTriggersSortOrderDesc,
 }
 
+var mappingListTriggersSortOrderEnumLowerCase = map[string]ListTriggersSortOrderEnum{
+	"asc":  ListTriggersSortOrderAsc,
+	"desc": ListTriggersSortOrderDesc,
+}
+
 // GetListTriggersSortOrderEnumValues Enumerates the set of values for ListTriggersSortOrderEnum
 func GetListTriggersSortOrderEnumValues() []ListTriggersSortOrderEnum {
 	values := make([]ListTriggersSortOrderEnum, 0)
@@ -157,12 +162,7 @@ func GetListTriggersSortOrderEnumStringValues() []string {
 
 // GetMappingListTriggersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTriggersSortOrderEnum(val string) (ListTriggersSortOrderEnum, bool) {
-	mappingListTriggersSortOrderEnumIgnoreCase := make(map[string]ListTriggersSortOrderEnum)
-	for k, v := range mappingListTriggersSortOrderEnum {
-		mappingListTriggersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTriggersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTriggersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -178,6 +178,11 @@ const (
 var mappingListTriggersSortByEnum = map[string]ListTriggersSortByEnum{
 	"timeCreated": ListTriggersSortByTimecreated,
 	"displayName": ListTriggersSortByDisplayname,
+}
+
+var mappingListTriggersSortByEnumLowerCase = map[string]ListTriggersSortByEnum{
+	"timecreated": ListTriggersSortByTimecreated,
+	"displayname": ListTriggersSortByDisplayname,
 }
 
 // GetListTriggersSortByEnumValues Enumerates the set of values for ListTriggersSortByEnum
@@ -199,11 +204,6 @@ func GetListTriggersSortByEnumStringValues() []string {
 
 // GetMappingListTriggersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTriggersSortByEnum(val string) (ListTriggersSortByEnum, bool) {
-	mappingListTriggersSortByEnumIgnoreCase := make(map[string]ListTriggersSortByEnum)
-	for k, v := range mappingListTriggersSortByEnum {
-		mappingListTriggersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTriggersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTriggersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

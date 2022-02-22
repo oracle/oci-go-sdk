@@ -33,6 +33,13 @@ var mappingStrategyParameterTypeEnum = map[string]StrategyParameterTypeEnum{
 	"DATETIME": StrategyParameterTypeDatetime,
 }
 
+var mappingStrategyParameterTypeEnumLowerCase = map[string]StrategyParameterTypeEnum{
+	"string":   StrategyParameterTypeString,
+	"boolean":  StrategyParameterTypeBoolean,
+	"number":   StrategyParameterTypeNumber,
+	"datetime": StrategyParameterTypeDatetime,
+}
+
 // GetStrategyParameterTypeEnumValues Enumerates the set of values for StrategyParameterTypeEnum
 func GetStrategyParameterTypeEnumValues() []StrategyParameterTypeEnum {
 	values := make([]StrategyParameterTypeEnum, 0)
@@ -54,11 +61,6 @@ func GetStrategyParameterTypeEnumStringValues() []string {
 
 // GetMappingStrategyParameterTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStrategyParameterTypeEnum(val string) (StrategyParameterTypeEnum, bool) {
-	mappingStrategyParameterTypeEnumIgnoreCase := make(map[string]StrategyParameterTypeEnum)
-	for k, v := range mappingStrategyParameterTypeEnum {
-		mappingStrategyParameterTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStrategyParameterTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStrategyParameterTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

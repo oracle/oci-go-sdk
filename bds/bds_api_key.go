@@ -11,7 +11,7 @@ package bds
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,14 @@ var mappingBdsApiKeyLifecycleStateEnum = map[string]BdsApiKeyLifecycleStateEnum{
 	"FAILED":   BdsApiKeyLifecycleStateFailed,
 }
 
+var mappingBdsApiKeyLifecycleStateEnumLowerCase = map[string]BdsApiKeyLifecycleStateEnum{
+	"creating": BdsApiKeyLifecycleStateCreating,
+	"active":   BdsApiKeyLifecycleStateActive,
+	"deleting": BdsApiKeyLifecycleStateDeleting,
+	"deleted":  BdsApiKeyLifecycleStateDeleted,
+	"failed":   BdsApiKeyLifecycleStateFailed,
+}
+
 // GetBdsApiKeyLifecycleStateEnumValues Enumerates the set of values for BdsApiKeyLifecycleStateEnum
 func GetBdsApiKeyLifecycleStateEnumValues() []BdsApiKeyLifecycleStateEnum {
 	values := make([]BdsApiKeyLifecycleStateEnum, 0)
@@ -109,11 +117,6 @@ func GetBdsApiKeyLifecycleStateEnumStringValues() []string {
 
 // GetMappingBdsApiKeyLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBdsApiKeyLifecycleStateEnum(val string) (BdsApiKeyLifecycleStateEnum, bool) {
-	mappingBdsApiKeyLifecycleStateEnumIgnoreCase := make(map[string]BdsApiKeyLifecycleStateEnum)
-	for k, v := range mappingBdsApiKeyLifecycleStateEnum {
-		mappingBdsApiKeyLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBdsApiKeyLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBdsApiKeyLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

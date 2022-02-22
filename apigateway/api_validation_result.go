@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -64,6 +64,13 @@ var mappingApiValidationResultResultEnum = map[string]ApiValidationResultResultE
 	"FAILED":  ApiValidationResultResultFailed,
 }
 
+var mappingApiValidationResultResultEnumLowerCase = map[string]ApiValidationResultResultEnum{
+	"error":   ApiValidationResultResultError,
+	"warning": ApiValidationResultResultWarning,
+	"ok":      ApiValidationResultResultOk,
+	"failed":  ApiValidationResultResultFailed,
+}
+
 // GetApiValidationResultResultEnumValues Enumerates the set of values for ApiValidationResultResultEnum
 func GetApiValidationResultResultEnumValues() []ApiValidationResultResultEnum {
 	values := make([]ApiValidationResultResultEnum, 0)
@@ -85,11 +92,6 @@ func GetApiValidationResultResultEnumStringValues() []string {
 
 // GetMappingApiValidationResultResultEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingApiValidationResultResultEnum(val string) (ApiValidationResultResultEnum, bool) {
-	mappingApiValidationResultResultEnumIgnoreCase := make(map[string]ApiValidationResultResultEnum)
-	for k, v := range mappingApiValidationResultResultEnum {
-		mappingApiValidationResultResultEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingApiValidationResultResultEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingApiValidationResultResultEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

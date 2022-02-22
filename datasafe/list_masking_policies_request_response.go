@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -183,6 +183,16 @@ var mappingListMaskingPoliciesLifecycleStateEnum = map[string]ListMaskingPolicie
 	"FAILED":          ListMaskingPoliciesLifecycleStateFailed,
 }
 
+var mappingListMaskingPoliciesLifecycleStateEnumLowerCase = map[string]ListMaskingPoliciesLifecycleStateEnum{
+	"creating":        ListMaskingPoliciesLifecycleStateCreating,
+	"active":          ListMaskingPoliciesLifecycleStateActive,
+	"updating":        ListMaskingPoliciesLifecycleStateUpdating,
+	"deleting":        ListMaskingPoliciesLifecycleStateDeleting,
+	"deleted":         ListMaskingPoliciesLifecycleStateDeleted,
+	"needs_attention": ListMaskingPoliciesLifecycleStateNeedsAttention,
+	"failed":          ListMaskingPoliciesLifecycleStateFailed,
+}
+
 // GetListMaskingPoliciesLifecycleStateEnumValues Enumerates the set of values for ListMaskingPoliciesLifecycleStateEnum
 func GetListMaskingPoliciesLifecycleStateEnumValues() []ListMaskingPoliciesLifecycleStateEnum {
 	values := make([]ListMaskingPoliciesLifecycleStateEnum, 0)
@@ -207,12 +217,7 @@ func GetListMaskingPoliciesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListMaskingPoliciesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMaskingPoliciesLifecycleStateEnum(val string) (ListMaskingPoliciesLifecycleStateEnum, bool) {
-	mappingListMaskingPoliciesLifecycleStateEnumIgnoreCase := make(map[string]ListMaskingPoliciesLifecycleStateEnum)
-	for k, v := range mappingListMaskingPoliciesLifecycleStateEnum {
-		mappingListMaskingPoliciesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMaskingPoliciesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMaskingPoliciesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -228,6 +233,11 @@ const (
 var mappingListMaskingPoliciesSortOrderEnum = map[string]ListMaskingPoliciesSortOrderEnum{
 	"ASC":  ListMaskingPoliciesSortOrderAsc,
 	"DESC": ListMaskingPoliciesSortOrderDesc,
+}
+
+var mappingListMaskingPoliciesSortOrderEnumLowerCase = map[string]ListMaskingPoliciesSortOrderEnum{
+	"asc":  ListMaskingPoliciesSortOrderAsc,
+	"desc": ListMaskingPoliciesSortOrderDesc,
 }
 
 // GetListMaskingPoliciesSortOrderEnumValues Enumerates the set of values for ListMaskingPoliciesSortOrderEnum
@@ -249,12 +259,7 @@ func GetListMaskingPoliciesSortOrderEnumStringValues() []string {
 
 // GetMappingListMaskingPoliciesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMaskingPoliciesSortOrderEnum(val string) (ListMaskingPoliciesSortOrderEnum, bool) {
-	mappingListMaskingPoliciesSortOrderEnumIgnoreCase := make(map[string]ListMaskingPoliciesSortOrderEnum)
-	for k, v := range mappingListMaskingPoliciesSortOrderEnum {
-		mappingListMaskingPoliciesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMaskingPoliciesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMaskingPoliciesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -270,6 +275,11 @@ const (
 var mappingListMaskingPoliciesSortByEnum = map[string]ListMaskingPoliciesSortByEnum{
 	"displayName": ListMaskingPoliciesSortByDisplayname,
 	"timeCreated": ListMaskingPoliciesSortByTimecreated,
+}
+
+var mappingListMaskingPoliciesSortByEnumLowerCase = map[string]ListMaskingPoliciesSortByEnum{
+	"displayname": ListMaskingPoliciesSortByDisplayname,
+	"timecreated": ListMaskingPoliciesSortByTimecreated,
 }
 
 // GetListMaskingPoliciesSortByEnumValues Enumerates the set of values for ListMaskingPoliciesSortByEnum
@@ -291,12 +301,7 @@ func GetListMaskingPoliciesSortByEnumStringValues() []string {
 
 // GetMappingListMaskingPoliciesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMaskingPoliciesSortByEnum(val string) (ListMaskingPoliciesSortByEnum, bool) {
-	mappingListMaskingPoliciesSortByEnumIgnoreCase := make(map[string]ListMaskingPoliciesSortByEnum)
-	for k, v := range mappingListMaskingPoliciesSortByEnum {
-		mappingListMaskingPoliciesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMaskingPoliciesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMaskingPoliciesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -312,6 +317,11 @@ const (
 var mappingListMaskingPoliciesAccessLevelEnum = map[string]ListMaskingPoliciesAccessLevelEnum{
 	"RESTRICTED": ListMaskingPoliciesAccessLevelRestricted,
 	"ACCESSIBLE": ListMaskingPoliciesAccessLevelAccessible,
+}
+
+var mappingListMaskingPoliciesAccessLevelEnumLowerCase = map[string]ListMaskingPoliciesAccessLevelEnum{
+	"restricted": ListMaskingPoliciesAccessLevelRestricted,
+	"accessible": ListMaskingPoliciesAccessLevelAccessible,
 }
 
 // GetListMaskingPoliciesAccessLevelEnumValues Enumerates the set of values for ListMaskingPoliciesAccessLevelEnum
@@ -333,11 +343,6 @@ func GetListMaskingPoliciesAccessLevelEnumStringValues() []string {
 
 // GetMappingListMaskingPoliciesAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMaskingPoliciesAccessLevelEnum(val string) (ListMaskingPoliciesAccessLevelEnum, bool) {
-	mappingListMaskingPoliciesAccessLevelEnumIgnoreCase := make(map[string]ListMaskingPoliciesAccessLevelEnum)
-	for k, v := range mappingListMaskingPoliciesAccessLevelEnum {
-		mappingListMaskingPoliciesAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMaskingPoliciesAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMaskingPoliciesAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

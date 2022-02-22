@@ -6,7 +6,7 @@ package datalabelingservicedataplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,11 @@ var mappingSummarizeAnnotationAnalyticsSortOrderEnum = map[string]SummarizeAnnot
 	"DESC": SummarizeAnnotationAnalyticsSortOrderDesc,
 }
 
+var mappingSummarizeAnnotationAnalyticsSortOrderEnumLowerCase = map[string]SummarizeAnnotationAnalyticsSortOrderEnum{
+	"asc":  SummarizeAnnotationAnalyticsSortOrderAsc,
+	"desc": SummarizeAnnotationAnalyticsSortOrderDesc,
+}
+
 // GetSummarizeAnnotationAnalyticsSortOrderEnumValues Enumerates the set of values for SummarizeAnnotationAnalyticsSortOrderEnum
 func GetSummarizeAnnotationAnalyticsSortOrderEnumValues() []SummarizeAnnotationAnalyticsSortOrderEnum {
 	values := make([]SummarizeAnnotationAnalyticsSortOrderEnum, 0)
@@ -163,12 +168,7 @@ func GetSummarizeAnnotationAnalyticsSortOrderEnumStringValues() []string {
 
 // GetMappingSummarizeAnnotationAnalyticsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAnnotationAnalyticsSortOrderEnum(val string) (SummarizeAnnotationAnalyticsSortOrderEnum, bool) {
-	mappingSummarizeAnnotationAnalyticsSortOrderEnumIgnoreCase := make(map[string]SummarizeAnnotationAnalyticsSortOrderEnum)
-	for k, v := range mappingSummarizeAnnotationAnalyticsSortOrderEnum {
-		mappingSummarizeAnnotationAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAnnotationAnalyticsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAnnotationAnalyticsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -186,6 +186,12 @@ var mappingSummarizeAnnotationAnalyticsSortByEnum = map[string]SummarizeAnnotati
 	"count":     SummarizeAnnotationAnalyticsSortByCount,
 	"label":     SummarizeAnnotationAnalyticsSortByLabel,
 	"updatedBy": SummarizeAnnotationAnalyticsSortByUpdatedby,
+}
+
+var mappingSummarizeAnnotationAnalyticsSortByEnumLowerCase = map[string]SummarizeAnnotationAnalyticsSortByEnum{
+	"count":     SummarizeAnnotationAnalyticsSortByCount,
+	"label":     SummarizeAnnotationAnalyticsSortByLabel,
+	"updatedby": SummarizeAnnotationAnalyticsSortByUpdatedby,
 }
 
 // GetSummarizeAnnotationAnalyticsSortByEnumValues Enumerates the set of values for SummarizeAnnotationAnalyticsSortByEnum
@@ -208,12 +214,7 @@ func GetSummarizeAnnotationAnalyticsSortByEnumStringValues() []string {
 
 // GetMappingSummarizeAnnotationAnalyticsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAnnotationAnalyticsSortByEnum(val string) (SummarizeAnnotationAnalyticsSortByEnum, bool) {
-	mappingSummarizeAnnotationAnalyticsSortByEnumIgnoreCase := make(map[string]SummarizeAnnotationAnalyticsSortByEnum)
-	for k, v := range mappingSummarizeAnnotationAnalyticsSortByEnum {
-		mappingSummarizeAnnotationAnalyticsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAnnotationAnalyticsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAnnotationAnalyticsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -228,6 +229,11 @@ const (
 
 var mappingSummarizeAnnotationAnalyticsAnnotationGroupByEnum = map[string]SummarizeAnnotationAnalyticsAnnotationGroupByEnum{
 	"updatedBy": SummarizeAnnotationAnalyticsAnnotationGroupByUpdatedby,
+	"label":     SummarizeAnnotationAnalyticsAnnotationGroupByLabel,
+}
+
+var mappingSummarizeAnnotationAnalyticsAnnotationGroupByEnumLowerCase = map[string]SummarizeAnnotationAnalyticsAnnotationGroupByEnum{
+	"updatedby": SummarizeAnnotationAnalyticsAnnotationGroupByUpdatedby,
 	"label":     SummarizeAnnotationAnalyticsAnnotationGroupByLabel,
 }
 
@@ -250,11 +256,6 @@ func GetSummarizeAnnotationAnalyticsAnnotationGroupByEnumStringValues() []string
 
 // GetMappingSummarizeAnnotationAnalyticsAnnotationGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeAnnotationAnalyticsAnnotationGroupByEnum(val string) (SummarizeAnnotationAnalyticsAnnotationGroupByEnum, bool) {
-	mappingSummarizeAnnotationAnalyticsAnnotationGroupByEnumIgnoreCase := make(map[string]SummarizeAnnotationAnalyticsAnnotationGroupByEnum)
-	for k, v := range mappingSummarizeAnnotationAnalyticsAnnotationGroupByEnum {
-		mappingSummarizeAnnotationAnalyticsAnnotationGroupByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeAnnotationAnalyticsAnnotationGroupByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeAnnotationAnalyticsAnnotationGroupByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

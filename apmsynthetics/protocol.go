@@ -27,6 +27,11 @@ var mappingProtocolEnum = map[string]ProtocolEnum{
 	"TCP":  ProtocolTcp,
 }
 
+var mappingProtocolEnumLowerCase = map[string]ProtocolEnum{
+	"icmp": ProtocolIcmp,
+	"tcp":  ProtocolTcp,
+}
+
 // GetProtocolEnumValues Enumerates the set of values for ProtocolEnum
 func GetProtocolEnumValues() []ProtocolEnum {
 	values := make([]ProtocolEnum, 0)
@@ -46,11 +51,6 @@ func GetProtocolEnumStringValues() []string {
 
 // GetMappingProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingProtocolEnum(val string) (ProtocolEnum, bool) {
-	mappingProtocolEnumIgnoreCase := make(map[string]ProtocolEnum)
-	for k, v := range mappingProtocolEnum {
-		mappingProtocolEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingProtocolEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingProtocolEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

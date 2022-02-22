@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -130,6 +130,11 @@ var mappingChangeZoneCompartmentScopeEnum = map[string]ChangeZoneCompartmentScop
 	"PRIVATE": ChangeZoneCompartmentScopePrivate,
 }
 
+var mappingChangeZoneCompartmentScopeEnumLowerCase = map[string]ChangeZoneCompartmentScopeEnum{
+	"global":  ChangeZoneCompartmentScopeGlobal,
+	"private": ChangeZoneCompartmentScopePrivate,
+}
+
 // GetChangeZoneCompartmentScopeEnumValues Enumerates the set of values for ChangeZoneCompartmentScopeEnum
 func GetChangeZoneCompartmentScopeEnumValues() []ChangeZoneCompartmentScopeEnum {
 	values := make([]ChangeZoneCompartmentScopeEnum, 0)
@@ -149,11 +154,6 @@ func GetChangeZoneCompartmentScopeEnumStringValues() []string {
 
 // GetMappingChangeZoneCompartmentScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingChangeZoneCompartmentScopeEnum(val string) (ChangeZoneCompartmentScopeEnum, bool) {
-	mappingChangeZoneCompartmentScopeEnumIgnoreCase := make(map[string]ChangeZoneCompartmentScopeEnum)
-	for k, v := range mappingChangeZoneCompartmentScopeEnum {
-		mappingChangeZoneCompartmentScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingChangeZoneCompartmentScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingChangeZoneCompartmentScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

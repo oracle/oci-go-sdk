@@ -27,6 +27,11 @@ var mappingMigrationTypesEnum = map[string]MigrationTypesEnum{
 	"OFFLINE": MigrationTypesOffline,
 }
 
+var mappingMigrationTypesEnumLowerCase = map[string]MigrationTypesEnum{
+	"online":  MigrationTypesOnline,
+	"offline": MigrationTypesOffline,
+}
+
 // GetMigrationTypesEnumValues Enumerates the set of values for MigrationTypesEnum
 func GetMigrationTypesEnumValues() []MigrationTypesEnum {
 	values := make([]MigrationTypesEnum, 0)
@@ -46,11 +51,6 @@ func GetMigrationTypesEnumStringValues() []string {
 
 // GetMappingMigrationTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMigrationTypesEnum(val string) (MigrationTypesEnum, bool) {
-	mappingMigrationTypesEnumIgnoreCase := make(map[string]MigrationTypesEnum)
-	for k, v := range mappingMigrationTypesEnum {
-		mappingMigrationTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMigrationTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMigrationTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

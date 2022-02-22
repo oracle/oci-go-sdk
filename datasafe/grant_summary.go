@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -76,6 +76,13 @@ var mappingGrantSummaryPrivilegeTypeEnum = map[string]GrantSummaryPrivilegeTypeE
 	"ROLE":             GrantSummaryPrivilegeTypeRole,
 }
 
+var mappingGrantSummaryPrivilegeTypeEnumLowerCase = map[string]GrantSummaryPrivilegeTypeEnum{
+	"system_privilege": GrantSummaryPrivilegeTypeSystemPrivilege,
+	"object_privilege": GrantSummaryPrivilegeTypeObjectPrivilege,
+	"admin_privilege":  GrantSummaryPrivilegeTypeAdminPrivilege,
+	"role":             GrantSummaryPrivilegeTypeRole,
+}
+
 // GetGrantSummaryPrivilegeTypeEnumValues Enumerates the set of values for GrantSummaryPrivilegeTypeEnum
 func GetGrantSummaryPrivilegeTypeEnumValues() []GrantSummaryPrivilegeTypeEnum {
 	values := make([]GrantSummaryPrivilegeTypeEnum, 0)
@@ -97,12 +104,7 @@ func GetGrantSummaryPrivilegeTypeEnumStringValues() []string {
 
 // GetMappingGrantSummaryPrivilegeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGrantSummaryPrivilegeTypeEnum(val string) (GrantSummaryPrivilegeTypeEnum, bool) {
-	mappingGrantSummaryPrivilegeTypeEnumIgnoreCase := make(map[string]GrantSummaryPrivilegeTypeEnum)
-	for k, v := range mappingGrantSummaryPrivilegeTypeEnum {
-		mappingGrantSummaryPrivilegeTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGrantSummaryPrivilegeTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGrantSummaryPrivilegeTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -122,6 +124,13 @@ var mappingGrantSummaryPrivilegeCategoryEnum = map[string]GrantSummaryPrivilegeC
 	"HIGH":     GrantSummaryPrivilegeCategoryHigh,
 	"MEDIUM":   GrantSummaryPrivilegeCategoryMedium,
 	"LOW":      GrantSummaryPrivilegeCategoryLow,
+}
+
+var mappingGrantSummaryPrivilegeCategoryEnumLowerCase = map[string]GrantSummaryPrivilegeCategoryEnum{
+	"critical": GrantSummaryPrivilegeCategoryCritical,
+	"high":     GrantSummaryPrivilegeCategoryHigh,
+	"medium":   GrantSummaryPrivilegeCategoryMedium,
+	"low":      GrantSummaryPrivilegeCategoryLow,
 }
 
 // GetGrantSummaryPrivilegeCategoryEnumValues Enumerates the set of values for GrantSummaryPrivilegeCategoryEnum
@@ -145,11 +154,6 @@ func GetGrantSummaryPrivilegeCategoryEnumStringValues() []string {
 
 // GetMappingGrantSummaryPrivilegeCategoryEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGrantSummaryPrivilegeCategoryEnum(val string) (GrantSummaryPrivilegeCategoryEnum, bool) {
-	mappingGrantSummaryPrivilegeCategoryEnumIgnoreCase := make(map[string]GrantSummaryPrivilegeCategoryEnum)
-	for k, v := range mappingGrantSummaryPrivilegeCategoryEnum {
-		mappingGrantSummaryPrivilegeCategoryEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGrantSummaryPrivilegeCategoryEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGrantSummaryPrivilegeCategoryEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

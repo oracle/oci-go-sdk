@@ -32,6 +32,13 @@ var mappingHcxLicenseStatusEnum = map[string]HcxLicenseStatusEnum{
 	"DELETED":     HcxLicenseStatusDeleted,
 }
 
+var mappingHcxLicenseStatusEnumLowerCase = map[string]HcxLicenseStatusEnum{
+	"available":   HcxLicenseStatusAvailable,
+	"consumed":    HcxLicenseStatusConsumed,
+	"deactivated": HcxLicenseStatusDeactivated,
+	"deleted":     HcxLicenseStatusDeleted,
+}
+
 // GetHcxLicenseStatusEnumValues Enumerates the set of values for HcxLicenseStatusEnum
 func GetHcxLicenseStatusEnumValues() []HcxLicenseStatusEnum {
 	values := make([]HcxLicenseStatusEnum, 0)
@@ -53,11 +60,6 @@ func GetHcxLicenseStatusEnumStringValues() []string {
 
 // GetMappingHcxLicenseStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHcxLicenseStatusEnum(val string) (HcxLicenseStatusEnum, bool) {
-	mappingHcxLicenseStatusEnumIgnoreCase := make(map[string]HcxLicenseStatusEnum)
-	for k, v := range mappingHcxLicenseStatusEnum {
-		mappingHcxLicenseStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHcxLicenseStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHcxLicenseStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package usageapi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -60,6 +60,12 @@ var mappingCostAnalysisUiGraphEnum = map[string]CostAnalysisUiGraphEnum{
 	"STACKED_LINES": CostAnalysisUiGraphStackedLines,
 }
 
+var mappingCostAnalysisUiGraphEnumLowerCase = map[string]CostAnalysisUiGraphEnum{
+	"bars":          CostAnalysisUiGraphBars,
+	"lines":         CostAnalysisUiGraphLines,
+	"stacked_lines": CostAnalysisUiGraphStackedLines,
+}
+
 // GetCostAnalysisUiGraphEnumValues Enumerates the set of values for CostAnalysisUiGraphEnum
 func GetCostAnalysisUiGraphEnumValues() []CostAnalysisUiGraphEnum {
 	values := make([]CostAnalysisUiGraphEnum, 0)
@@ -80,11 +86,6 @@ func GetCostAnalysisUiGraphEnumStringValues() []string {
 
 // GetMappingCostAnalysisUiGraphEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCostAnalysisUiGraphEnum(val string) (CostAnalysisUiGraphEnum, bool) {
-	mappingCostAnalysisUiGraphEnumIgnoreCase := make(map[string]CostAnalysisUiGraphEnum)
-	for k, v := range mappingCostAnalysisUiGraphEnum {
-		mappingCostAnalysisUiGraphEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCostAnalysisUiGraphEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCostAnalysisUiGraphEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -141,6 +141,13 @@ var mappingUpdateVirtualCircuitDetailsRoutingPolicyEnum = map[string]UpdateVirtu
 	"GLOBAL":                 UpdateVirtualCircuitDetailsRoutingPolicyGlobal,
 }
 
+var mappingUpdateVirtualCircuitDetailsRoutingPolicyEnumLowerCase = map[string]UpdateVirtualCircuitDetailsRoutingPolicyEnum{
+	"oracle_service_network": UpdateVirtualCircuitDetailsRoutingPolicyOracleServiceNetwork,
+	"regional":               UpdateVirtualCircuitDetailsRoutingPolicyRegional,
+	"market_level":           UpdateVirtualCircuitDetailsRoutingPolicyMarketLevel,
+	"global":                 UpdateVirtualCircuitDetailsRoutingPolicyGlobal,
+}
+
 // GetUpdateVirtualCircuitDetailsRoutingPolicyEnumValues Enumerates the set of values for UpdateVirtualCircuitDetailsRoutingPolicyEnum
 func GetUpdateVirtualCircuitDetailsRoutingPolicyEnumValues() []UpdateVirtualCircuitDetailsRoutingPolicyEnum {
 	values := make([]UpdateVirtualCircuitDetailsRoutingPolicyEnum, 0)
@@ -162,12 +169,7 @@ func GetUpdateVirtualCircuitDetailsRoutingPolicyEnumStringValues() []string {
 
 // GetMappingUpdateVirtualCircuitDetailsRoutingPolicyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateVirtualCircuitDetailsRoutingPolicyEnum(val string) (UpdateVirtualCircuitDetailsRoutingPolicyEnum, bool) {
-	mappingUpdateVirtualCircuitDetailsRoutingPolicyEnumIgnoreCase := make(map[string]UpdateVirtualCircuitDetailsRoutingPolicyEnum)
-	for k, v := range mappingUpdateVirtualCircuitDetailsRoutingPolicyEnum {
-		mappingUpdateVirtualCircuitDetailsRoutingPolicyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateVirtualCircuitDetailsRoutingPolicyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateVirtualCircuitDetailsRoutingPolicyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +185,11 @@ const (
 var mappingUpdateVirtualCircuitDetailsProviderStateEnum = map[string]UpdateVirtualCircuitDetailsProviderStateEnum{
 	"ACTIVE":   UpdateVirtualCircuitDetailsProviderStateActive,
 	"INACTIVE": UpdateVirtualCircuitDetailsProviderStateInactive,
+}
+
+var mappingUpdateVirtualCircuitDetailsProviderStateEnumLowerCase = map[string]UpdateVirtualCircuitDetailsProviderStateEnum{
+	"active":   UpdateVirtualCircuitDetailsProviderStateActive,
+	"inactive": UpdateVirtualCircuitDetailsProviderStateInactive,
 }
 
 // GetUpdateVirtualCircuitDetailsProviderStateEnumValues Enumerates the set of values for UpdateVirtualCircuitDetailsProviderStateEnum
@@ -204,11 +211,6 @@ func GetUpdateVirtualCircuitDetailsProviderStateEnumStringValues() []string {
 
 // GetMappingUpdateVirtualCircuitDetailsProviderStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateVirtualCircuitDetailsProviderStateEnum(val string) (UpdateVirtualCircuitDetailsProviderStateEnum, bool) {
-	mappingUpdateVirtualCircuitDetailsProviderStateEnumIgnoreCase := make(map[string]UpdateVirtualCircuitDetailsProviderStateEnum)
-	for k, v := range mappingUpdateVirtualCircuitDetailsProviderStateEnum {
-		mappingUpdateVirtualCircuitDetailsProviderStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateVirtualCircuitDetailsProviderStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateVirtualCircuitDetailsProviderStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

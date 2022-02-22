@@ -31,6 +31,12 @@ var mappingDatabaseStatusEnum = map[string]DatabaseStatusEnum{
 	"UNKNOWN": DatabaseStatusUnknown,
 }
 
+var mappingDatabaseStatusEnumLowerCase = map[string]DatabaseStatusEnum{
+	"up":      DatabaseStatusUp,
+	"down":    DatabaseStatusDown,
+	"unknown": DatabaseStatusUnknown,
+}
+
 // GetDatabaseStatusEnumValues Enumerates the set of values for DatabaseStatusEnum
 func GetDatabaseStatusEnumValues() []DatabaseStatusEnum {
 	values := make([]DatabaseStatusEnum, 0)
@@ -51,11 +57,6 @@ func GetDatabaseStatusEnumStringValues() []string {
 
 // GetMappingDatabaseStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseStatusEnum(val string) (DatabaseStatusEnum, bool) {
-	mappingDatabaseStatusEnumIgnoreCase := make(map[string]DatabaseStatusEnum)
-	for k, v := range mappingDatabaseStatusEnum {
-		mappingDatabaseStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

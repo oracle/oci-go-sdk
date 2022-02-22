@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -164,6 +164,13 @@ var mappingDhcpOptionsLifecycleStateEnum = map[string]DhcpOptionsLifecycleStateE
 	"TERMINATED":   DhcpOptionsLifecycleStateTerminated,
 }
 
+var mappingDhcpOptionsLifecycleStateEnumLowerCase = map[string]DhcpOptionsLifecycleStateEnum{
+	"provisioning": DhcpOptionsLifecycleStateProvisioning,
+	"available":    DhcpOptionsLifecycleStateAvailable,
+	"terminating":  DhcpOptionsLifecycleStateTerminating,
+	"terminated":   DhcpOptionsLifecycleStateTerminated,
+}
+
 // GetDhcpOptionsLifecycleStateEnumValues Enumerates the set of values for DhcpOptionsLifecycleStateEnum
 func GetDhcpOptionsLifecycleStateEnumValues() []DhcpOptionsLifecycleStateEnum {
 	values := make([]DhcpOptionsLifecycleStateEnum, 0)
@@ -185,12 +192,7 @@ func GetDhcpOptionsLifecycleStateEnumStringValues() []string {
 
 // GetMappingDhcpOptionsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDhcpOptionsLifecycleStateEnum(val string) (DhcpOptionsLifecycleStateEnum, bool) {
-	mappingDhcpOptionsLifecycleStateEnumIgnoreCase := make(map[string]DhcpOptionsLifecycleStateEnum)
-	for k, v := range mappingDhcpOptionsLifecycleStateEnum {
-		mappingDhcpOptionsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDhcpOptionsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDhcpOptionsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -208,6 +210,12 @@ var mappingDhcpOptionsDomainNameTypeEnum = map[string]DhcpOptionsDomainNameTypeE
 	"SUBNET_DOMAIN": DhcpOptionsDomainNameTypeSubnetDomain,
 	"VCN_DOMAIN":    DhcpOptionsDomainNameTypeVcnDomain,
 	"CUSTOM_DOMAIN": DhcpOptionsDomainNameTypeCustomDomain,
+}
+
+var mappingDhcpOptionsDomainNameTypeEnumLowerCase = map[string]DhcpOptionsDomainNameTypeEnum{
+	"subnet_domain": DhcpOptionsDomainNameTypeSubnetDomain,
+	"vcn_domain":    DhcpOptionsDomainNameTypeVcnDomain,
+	"custom_domain": DhcpOptionsDomainNameTypeCustomDomain,
 }
 
 // GetDhcpOptionsDomainNameTypeEnumValues Enumerates the set of values for DhcpOptionsDomainNameTypeEnum
@@ -230,11 +238,6 @@ func GetDhcpOptionsDomainNameTypeEnumStringValues() []string {
 
 // GetMappingDhcpOptionsDomainNameTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDhcpOptionsDomainNameTypeEnum(val string) (DhcpOptionsDomainNameTypeEnum, bool) {
-	mappingDhcpOptionsDomainNameTypeEnumIgnoreCase := make(map[string]DhcpOptionsDomainNameTypeEnum)
-	for k, v := range mappingDhcpOptionsDomainNameTypeEnum {
-		mappingDhcpOptionsDomainNameTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDhcpOptionsDomainNameTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDhcpOptionsDomainNameTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

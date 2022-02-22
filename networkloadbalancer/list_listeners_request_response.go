@@ -6,7 +6,7 @@ package networkloadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -137,6 +137,11 @@ var mappingListListenersSortOrderEnum = map[string]ListListenersSortOrderEnum{
 	"DESC": ListListenersSortOrderDesc,
 }
 
+var mappingListListenersSortOrderEnumLowerCase = map[string]ListListenersSortOrderEnum{
+	"asc":  ListListenersSortOrderAsc,
+	"desc": ListListenersSortOrderDesc,
+}
+
 // GetListListenersSortOrderEnumValues Enumerates the set of values for ListListenersSortOrderEnum
 func GetListListenersSortOrderEnumValues() []ListListenersSortOrderEnum {
 	values := make([]ListListenersSortOrderEnum, 0)
@@ -156,12 +161,7 @@ func GetListListenersSortOrderEnumStringValues() []string {
 
 // GetMappingListListenersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListListenersSortOrderEnum(val string) (ListListenersSortOrderEnum, bool) {
-	mappingListListenersSortOrderEnumIgnoreCase := make(map[string]ListListenersSortOrderEnum)
-	for k, v := range mappingListListenersSortOrderEnum {
-		mappingListListenersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListListenersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListListenersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -177,6 +177,11 @@ const (
 var mappingListListenersSortByEnum = map[string]ListListenersSortByEnum{
 	"timeCreated": ListListenersSortByTimecreated,
 	"displayName": ListListenersSortByDisplayname,
+}
+
+var mappingListListenersSortByEnumLowerCase = map[string]ListListenersSortByEnum{
+	"timecreated": ListListenersSortByTimecreated,
+	"displayname": ListListenersSortByDisplayname,
 }
 
 // GetListListenersSortByEnumValues Enumerates the set of values for ListListenersSortByEnum
@@ -198,11 +203,6 @@ func GetListListenersSortByEnumStringValues() []string {
 
 // GetMappingListListenersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListListenersSortByEnum(val string) (ListListenersSortByEnum, bool) {
-	mappingListListenersSortByEnumIgnoreCase := make(map[string]ListListenersSortByEnum)
-	for k, v := range mappingListListenersSortByEnum {
-		mappingListListenersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListListenersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListListenersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

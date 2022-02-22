@@ -6,7 +6,7 @@ package datalabelingservice
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -120,6 +120,11 @@ var mappingListAnnotationFormatsSortOrderEnum = map[string]ListAnnotationFormats
 	"DESC": ListAnnotationFormatsSortOrderDesc,
 }
 
+var mappingListAnnotationFormatsSortOrderEnumLowerCase = map[string]ListAnnotationFormatsSortOrderEnum{
+	"asc":  ListAnnotationFormatsSortOrderAsc,
+	"desc": ListAnnotationFormatsSortOrderDesc,
+}
+
 // GetListAnnotationFormatsSortOrderEnumValues Enumerates the set of values for ListAnnotationFormatsSortOrderEnum
 func GetListAnnotationFormatsSortOrderEnumValues() []ListAnnotationFormatsSortOrderEnum {
 	values := make([]ListAnnotationFormatsSortOrderEnum, 0)
@@ -139,11 +144,6 @@ func GetListAnnotationFormatsSortOrderEnumStringValues() []string {
 
 // GetMappingListAnnotationFormatsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAnnotationFormatsSortOrderEnum(val string) (ListAnnotationFormatsSortOrderEnum, bool) {
-	mappingListAnnotationFormatsSortOrderEnumIgnoreCase := make(map[string]ListAnnotationFormatsSortOrderEnum)
-	for k, v := range mappingListAnnotationFormatsSortOrderEnum {
-		mappingListAnnotationFormatsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAnnotationFormatsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAnnotationFormatsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -39,6 +39,16 @@ var mappingOperatorControlAssignmentLifecycleStatesEnum = map[string]OperatorCon
 	"DELETIONFAILED": OperatorControlAssignmentLifecycleStatesDeletionfailed,
 }
 
+var mappingOperatorControlAssignmentLifecycleStatesEnumLowerCase = map[string]OperatorControlAssignmentLifecycleStatesEnum{
+	"created":        OperatorControlAssignmentLifecycleStatesCreated,
+	"applied":        OperatorControlAssignmentLifecycleStatesApplied,
+	"applyfailed":    OperatorControlAssignmentLifecycleStatesApplyfailed,
+	"updating":       OperatorControlAssignmentLifecycleStatesUpdating,
+	"deleting":       OperatorControlAssignmentLifecycleStatesDeleting,
+	"deleted":        OperatorControlAssignmentLifecycleStatesDeleted,
+	"deletionfailed": OperatorControlAssignmentLifecycleStatesDeletionfailed,
+}
+
 // GetOperatorControlAssignmentLifecycleStatesEnumValues Enumerates the set of values for OperatorControlAssignmentLifecycleStatesEnum
 func GetOperatorControlAssignmentLifecycleStatesEnumValues() []OperatorControlAssignmentLifecycleStatesEnum {
 	values := make([]OperatorControlAssignmentLifecycleStatesEnum, 0)
@@ -63,11 +73,6 @@ func GetOperatorControlAssignmentLifecycleStatesEnumStringValues() []string {
 
 // GetMappingOperatorControlAssignmentLifecycleStatesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperatorControlAssignmentLifecycleStatesEnum(val string) (OperatorControlAssignmentLifecycleStatesEnum, bool) {
-	mappingOperatorControlAssignmentLifecycleStatesEnumIgnoreCase := make(map[string]OperatorControlAssignmentLifecycleStatesEnum)
-	for k, v := range mappingOperatorControlAssignmentLifecycleStatesEnum {
-		mappingOperatorControlAssignmentLifecycleStatesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperatorControlAssignmentLifecycleStatesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperatorControlAssignmentLifecycleStatesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -96,6 +96,11 @@ var mappingExportDetailsOutputFormatEnum = map[string]ExportDetailsOutputFormatE
 	"JSON": ExportDetailsOutputFormatJson,
 }
 
+var mappingExportDetailsOutputFormatEnumLowerCase = map[string]ExportDetailsOutputFormatEnum{
+	"csv":  ExportDetailsOutputFormatCsv,
+	"json": ExportDetailsOutputFormatJson,
+}
+
 // GetExportDetailsOutputFormatEnumValues Enumerates the set of values for ExportDetailsOutputFormatEnum
 func GetExportDetailsOutputFormatEnumValues() []ExportDetailsOutputFormatEnum {
 	values := make([]ExportDetailsOutputFormatEnum, 0)
@@ -115,11 +120,6 @@ func GetExportDetailsOutputFormatEnumStringValues() []string {
 
 // GetMappingExportDetailsOutputFormatEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExportDetailsOutputFormatEnum(val string) (ExportDetailsOutputFormatEnum, bool) {
-	mappingExportDetailsOutputFormatEnumIgnoreCase := make(map[string]ExportDetailsOutputFormatEnum)
-	for k, v := range mappingExportDetailsOutputFormatEnum {
-		mappingExportDetailsOutputFormatEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExportDetailsOutputFormatEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExportDetailsOutputFormatEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

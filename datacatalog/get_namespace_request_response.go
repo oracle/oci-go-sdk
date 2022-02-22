@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -132,6 +132,18 @@ var mappingGetNamespaceFieldsEnum = map[string]GetNamespaceFieldsEnum{
 	"properties":     GetNamespaceFieldsProperties,
 }
 
+var mappingGetNamespaceFieldsEnumLowerCase = map[string]GetNamespaceFieldsEnum{
+	"key":            GetNamespaceFieldsKey,
+	"displayname":    GetNamespaceFieldsDisplayname,
+	"description":    GetNamespaceFieldsDescription,
+	"lifecyclestate": GetNamespaceFieldsLifecyclestate,
+	"timecreated":    GetNamespaceFieldsTimecreated,
+	"timeupdated":    GetNamespaceFieldsTimeupdated,
+	"createdbyid":    GetNamespaceFieldsCreatedbyid,
+	"updatedbyid":    GetNamespaceFieldsUpdatedbyid,
+	"properties":     GetNamespaceFieldsProperties,
+}
+
 // GetGetNamespaceFieldsEnumValues Enumerates the set of values for GetNamespaceFieldsEnum
 func GetGetNamespaceFieldsEnumValues() []GetNamespaceFieldsEnum {
 	values := make([]GetNamespaceFieldsEnum, 0)
@@ -158,11 +170,6 @@ func GetGetNamespaceFieldsEnumStringValues() []string {
 
 // GetMappingGetNamespaceFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetNamespaceFieldsEnum(val string) (GetNamespaceFieldsEnum, bool) {
-	mappingGetNamespaceFieldsEnumIgnoreCase := make(map[string]GetNamespaceFieldsEnum)
-	for k, v := range mappingGetNamespaceFieldsEnum {
-		mappingGetNamespaceFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetNamespaceFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetNamespaceFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

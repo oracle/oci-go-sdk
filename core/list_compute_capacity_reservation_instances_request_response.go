@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -146,6 +146,11 @@ var mappingListComputeCapacityReservationInstancesSortByEnum = map[string]ListCo
 	"DISPLAYNAME": ListComputeCapacityReservationInstancesSortByDisplayname,
 }
 
+var mappingListComputeCapacityReservationInstancesSortByEnumLowerCase = map[string]ListComputeCapacityReservationInstancesSortByEnum{
+	"timecreated": ListComputeCapacityReservationInstancesSortByTimecreated,
+	"displayname": ListComputeCapacityReservationInstancesSortByDisplayname,
+}
+
 // GetListComputeCapacityReservationInstancesSortByEnumValues Enumerates the set of values for ListComputeCapacityReservationInstancesSortByEnum
 func GetListComputeCapacityReservationInstancesSortByEnumValues() []ListComputeCapacityReservationInstancesSortByEnum {
 	values := make([]ListComputeCapacityReservationInstancesSortByEnum, 0)
@@ -165,12 +170,7 @@ func GetListComputeCapacityReservationInstancesSortByEnumStringValues() []string
 
 // GetMappingListComputeCapacityReservationInstancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListComputeCapacityReservationInstancesSortByEnum(val string) (ListComputeCapacityReservationInstancesSortByEnum, bool) {
-	mappingListComputeCapacityReservationInstancesSortByEnumIgnoreCase := make(map[string]ListComputeCapacityReservationInstancesSortByEnum)
-	for k, v := range mappingListComputeCapacityReservationInstancesSortByEnum {
-		mappingListComputeCapacityReservationInstancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListComputeCapacityReservationInstancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListComputeCapacityReservationInstancesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -186,6 +186,11 @@ const (
 var mappingListComputeCapacityReservationInstancesSortOrderEnum = map[string]ListComputeCapacityReservationInstancesSortOrderEnum{
 	"ASC":  ListComputeCapacityReservationInstancesSortOrderAsc,
 	"DESC": ListComputeCapacityReservationInstancesSortOrderDesc,
+}
+
+var mappingListComputeCapacityReservationInstancesSortOrderEnumLowerCase = map[string]ListComputeCapacityReservationInstancesSortOrderEnum{
+	"asc":  ListComputeCapacityReservationInstancesSortOrderAsc,
+	"desc": ListComputeCapacityReservationInstancesSortOrderDesc,
 }
 
 // GetListComputeCapacityReservationInstancesSortOrderEnumValues Enumerates the set of values for ListComputeCapacityReservationInstancesSortOrderEnum
@@ -207,11 +212,6 @@ func GetListComputeCapacityReservationInstancesSortOrderEnumStringValues() []str
 
 // GetMappingListComputeCapacityReservationInstancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListComputeCapacityReservationInstancesSortOrderEnum(val string) (ListComputeCapacityReservationInstancesSortOrderEnum, bool) {
-	mappingListComputeCapacityReservationInstancesSortOrderEnumIgnoreCase := make(map[string]ListComputeCapacityReservationInstancesSortOrderEnum)
-	for k, v := range mappingListComputeCapacityReservationInstancesSortOrderEnum {
-		mappingListComputeCapacityReservationInstancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListComputeCapacityReservationInstancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListComputeCapacityReservationInstancesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -84,6 +84,10 @@ var mappingFunctionLibraryModelTypeEnum = map[string]FunctionLibraryModelTypeEnu
 	"FUNCTION_LIBRARY": FunctionLibraryModelTypeFunctionLibrary,
 }
 
+var mappingFunctionLibraryModelTypeEnumLowerCase = map[string]FunctionLibraryModelTypeEnum{
+	"function_library": FunctionLibraryModelTypeFunctionLibrary,
+}
+
 // GetFunctionLibraryModelTypeEnumValues Enumerates the set of values for FunctionLibraryModelTypeEnum
 func GetFunctionLibraryModelTypeEnumValues() []FunctionLibraryModelTypeEnum {
 	values := make([]FunctionLibraryModelTypeEnum, 0)
@@ -102,11 +106,6 @@ func GetFunctionLibraryModelTypeEnumStringValues() []string {
 
 // GetMappingFunctionLibraryModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFunctionLibraryModelTypeEnum(val string) (FunctionLibraryModelTypeEnum, bool) {
-	mappingFunctionLibraryModelTypeEnumIgnoreCase := make(map[string]FunctionLibraryModelTypeEnum)
-	for k, v := range mappingFunctionLibraryModelTypeEnum {
-		mappingFunctionLibraryModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFunctionLibraryModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFunctionLibraryModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

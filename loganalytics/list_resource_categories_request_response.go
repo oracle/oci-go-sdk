@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,11 @@ var mappingListResourceCategoriesSortOrderEnum = map[string]ListResourceCategori
 	"DESC": ListResourceCategoriesSortOrderDesc,
 }
 
+var mappingListResourceCategoriesSortOrderEnumLowerCase = map[string]ListResourceCategoriesSortOrderEnum{
+	"asc":  ListResourceCategoriesSortOrderAsc,
+	"desc": ListResourceCategoriesSortOrderDesc,
+}
+
 // GetListResourceCategoriesSortOrderEnumValues Enumerates the set of values for ListResourceCategoriesSortOrderEnum
 func GetListResourceCategoriesSortOrderEnumValues() []ListResourceCategoriesSortOrderEnum {
 	values := make([]ListResourceCategoriesSortOrderEnum, 0)
@@ -160,12 +165,7 @@ func GetListResourceCategoriesSortOrderEnumStringValues() []string {
 
 // GetMappingListResourceCategoriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResourceCategoriesSortOrderEnum(val string) (ListResourceCategoriesSortOrderEnum, bool) {
-	mappingListResourceCategoriesSortOrderEnumIgnoreCase := make(map[string]ListResourceCategoriesSortOrderEnum)
-	for k, v := range mappingListResourceCategoriesSortOrderEnum {
-		mappingListResourceCategoriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResourceCategoriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResourceCategoriesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +183,12 @@ var mappingListResourceCategoriesSortByEnum = map[string]ListResourceCategoriesS
 	"resourceType": ListResourceCategoriesSortByResourcetype,
 	"categoryName": ListResourceCategoriesSortByCategoryname,
 	"resourceId":   ListResourceCategoriesSortByResourceid,
+}
+
+var mappingListResourceCategoriesSortByEnumLowerCase = map[string]ListResourceCategoriesSortByEnum{
+	"resourcetype": ListResourceCategoriesSortByResourcetype,
+	"categoryname": ListResourceCategoriesSortByCategoryname,
+	"resourceid":   ListResourceCategoriesSortByResourceid,
 }
 
 // GetListResourceCategoriesSortByEnumValues Enumerates the set of values for ListResourceCategoriesSortByEnum
@@ -205,11 +211,6 @@ func GetListResourceCategoriesSortByEnumStringValues() []string {
 
 // GetMappingListResourceCategoriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResourceCategoriesSortByEnum(val string) (ListResourceCategoriesSortByEnum, bool) {
-	mappingListResourceCategoriesSortByEnumIgnoreCase := make(map[string]ListResourceCategoriesSortByEnum)
-	for k, v := range mappingListResourceCategoriesSortByEnum {
-		mappingListResourceCategoriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResourceCategoriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResourceCategoriesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

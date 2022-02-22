@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,11 @@ var mappingListDataFlowsSortOrderEnum = map[string]ListDataFlowsSortOrderEnum{
 	"DESC": ListDataFlowsSortOrderDesc,
 }
 
+var mappingListDataFlowsSortOrderEnumLowerCase = map[string]ListDataFlowsSortOrderEnum{
+	"asc":  ListDataFlowsSortOrderAsc,
+	"desc": ListDataFlowsSortOrderDesc,
+}
+
 // GetListDataFlowsSortOrderEnumValues Enumerates the set of values for ListDataFlowsSortOrderEnum
 func GetListDataFlowsSortOrderEnumValues() []ListDataFlowsSortOrderEnum {
 	values := make([]ListDataFlowsSortOrderEnum, 0)
@@ -163,12 +168,7 @@ func GetListDataFlowsSortOrderEnumStringValues() []string {
 
 // GetMappingListDataFlowsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataFlowsSortOrderEnum(val string) (ListDataFlowsSortOrderEnum, bool) {
-	mappingListDataFlowsSortOrderEnumIgnoreCase := make(map[string]ListDataFlowsSortOrderEnum)
-	for k, v := range mappingListDataFlowsSortOrderEnum {
-		mappingListDataFlowsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataFlowsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataFlowsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -184,6 +184,11 @@ const (
 var mappingListDataFlowsSortByEnum = map[string]ListDataFlowsSortByEnum{
 	"TIME_CREATED": ListDataFlowsSortByTimeCreated,
 	"DISPLAY_NAME": ListDataFlowsSortByDisplayName,
+}
+
+var mappingListDataFlowsSortByEnumLowerCase = map[string]ListDataFlowsSortByEnum{
+	"time_created": ListDataFlowsSortByTimeCreated,
+	"display_name": ListDataFlowsSortByDisplayName,
 }
 
 // GetListDataFlowsSortByEnumValues Enumerates the set of values for ListDataFlowsSortByEnum
@@ -205,11 +210,6 @@ func GetListDataFlowsSortByEnumStringValues() []string {
 
 // GetMappingListDataFlowsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataFlowsSortByEnum(val string) (ListDataFlowsSortByEnum, bool) {
-	mappingListDataFlowsSortByEnumIgnoreCase := make(map[string]ListDataFlowsSortByEnum)
-	for k, v := range mappingListDataFlowsSortByEnum {
-		mappingListDataFlowsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataFlowsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataFlowsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

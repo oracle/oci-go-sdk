@@ -47,6 +47,21 @@ var mappingWorkRequestOperationTypeEnum = map[string]WorkRequestOperationTypeEnu
 	"JOB_DELETE":                  WorkRequestOperationTypeJobDelete,
 }
 
+var mappingWorkRequestOperationTypeEnumLowerCase = map[string]WorkRequestOperationTypeEnum{
+	"notebook_session_create":     WorkRequestOperationTypeNotebookSessionCreate,
+	"notebook_session_delete":     WorkRequestOperationTypeNotebookSessionDelete,
+	"notebook_session_activate":   WorkRequestOperationTypeNotebookSessionActivate,
+	"notebook_session_deactivate": WorkRequestOperationTypeNotebookSessionDeactivate,
+	"model_deployment_create":     WorkRequestOperationTypeModelDeploymentCreate,
+	"model_deployment_delete":     WorkRequestOperationTypeModelDeploymentDelete,
+	"model_deployment_activate":   WorkRequestOperationTypeModelDeploymentActivate,
+	"model_deployment_deactivate": WorkRequestOperationTypeModelDeploymentDeactivate,
+	"model_deployment_update":     WorkRequestOperationTypeModelDeploymentUpdate,
+	"project_delete":              WorkRequestOperationTypeProjectDelete,
+	"workrequest_cancel":          WorkRequestOperationTypeWorkrequestCancel,
+	"job_delete":                  WorkRequestOperationTypeJobDelete,
+}
+
 // GetWorkRequestOperationTypeEnumValues Enumerates the set of values for WorkRequestOperationTypeEnum
 func GetWorkRequestOperationTypeEnumValues() []WorkRequestOperationTypeEnum {
 	values := make([]WorkRequestOperationTypeEnum, 0)
@@ -76,11 +91,6 @@ func GetWorkRequestOperationTypeEnumStringValues() []string {
 
 // GetMappingWorkRequestOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestOperationTypeEnum(val string) (WorkRequestOperationTypeEnum, bool) {
-	mappingWorkRequestOperationTypeEnumIgnoreCase := make(map[string]WorkRequestOperationTypeEnum)
-	for k, v := range mappingWorkRequestOperationTypeEnum {
-		mappingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

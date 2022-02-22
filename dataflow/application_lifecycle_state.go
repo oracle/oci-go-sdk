@@ -29,6 +29,12 @@ var mappingApplicationLifecycleStateEnum = map[string]ApplicationLifecycleStateE
 	"INACTIVE": ApplicationLifecycleStateInactive,
 }
 
+var mappingApplicationLifecycleStateEnumLowerCase = map[string]ApplicationLifecycleStateEnum{
+	"active":   ApplicationLifecycleStateActive,
+	"deleted":  ApplicationLifecycleStateDeleted,
+	"inactive": ApplicationLifecycleStateInactive,
+}
+
 // GetApplicationLifecycleStateEnumValues Enumerates the set of values for ApplicationLifecycleStateEnum
 func GetApplicationLifecycleStateEnumValues() []ApplicationLifecycleStateEnum {
 	values := make([]ApplicationLifecycleStateEnum, 0)
@@ -49,11 +55,6 @@ func GetApplicationLifecycleStateEnumStringValues() []string {
 
 // GetMappingApplicationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingApplicationLifecycleStateEnum(val string) (ApplicationLifecycleStateEnum, bool) {
-	mappingApplicationLifecycleStateEnumIgnoreCase := make(map[string]ApplicationLifecycleStateEnum)
-	for k, v := range mappingApplicationLifecycleStateEnum {
-		mappingApplicationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingApplicationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingApplicationLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

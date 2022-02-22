@@ -12,7 +12,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -124,6 +124,11 @@ var mappingZoneZoneTypeEnum = map[string]ZoneZoneTypeEnum{
 	"SECONDARY": ZoneZoneTypeSecondary,
 }
 
+var mappingZoneZoneTypeEnumLowerCase = map[string]ZoneZoneTypeEnum{
+	"primary":   ZoneZoneTypePrimary,
+	"secondary": ZoneZoneTypeSecondary,
+}
+
 // GetZoneZoneTypeEnumValues Enumerates the set of values for ZoneZoneTypeEnum
 func GetZoneZoneTypeEnumValues() []ZoneZoneTypeEnum {
 	values := make([]ZoneZoneTypeEnum, 0)
@@ -143,12 +148,7 @@ func GetZoneZoneTypeEnumStringValues() []string {
 
 // GetMappingZoneZoneTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingZoneZoneTypeEnum(val string) (ZoneZoneTypeEnum, bool) {
-	mappingZoneZoneTypeEnumIgnoreCase := make(map[string]ZoneZoneTypeEnum)
-	for k, v := range mappingZoneZoneTypeEnum {
-		mappingZoneZoneTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingZoneZoneTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingZoneZoneTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -174,6 +174,15 @@ var mappingZoneLifecycleStateEnum = map[string]ZoneLifecycleStateEnum{
 	"UPDATING": ZoneLifecycleStateUpdating,
 }
 
+var mappingZoneLifecycleStateEnumLowerCase = map[string]ZoneLifecycleStateEnum{
+	"active":   ZoneLifecycleStateActive,
+	"creating": ZoneLifecycleStateCreating,
+	"deleted":  ZoneLifecycleStateDeleted,
+	"deleting": ZoneLifecycleStateDeleting,
+	"failed":   ZoneLifecycleStateFailed,
+	"updating": ZoneLifecycleStateUpdating,
+}
+
 // GetZoneLifecycleStateEnumValues Enumerates the set of values for ZoneLifecycleStateEnum
 func GetZoneLifecycleStateEnumValues() []ZoneLifecycleStateEnum {
 	values := make([]ZoneLifecycleStateEnum, 0)
@@ -197,11 +206,6 @@ func GetZoneLifecycleStateEnumStringValues() []string {
 
 // GetMappingZoneLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingZoneLifecycleStateEnum(val string) (ZoneLifecycleStateEnum, bool) {
-	mappingZoneLifecycleStateEnumIgnoreCase := make(map[string]ZoneLifecycleStateEnum)
-	for k, v := range mappingZoneLifecycleStateEnum {
-		mappingZoneLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingZoneLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingZoneLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

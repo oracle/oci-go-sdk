@@ -29,6 +29,12 @@ var mappingOrganizationTenancyRoleEnum = map[string]OrganizationTenancyRoleEnum{
 	"NONE":   OrganizationTenancyRoleNone,
 }
 
+var mappingOrganizationTenancyRoleEnumLowerCase = map[string]OrganizationTenancyRoleEnum{
+	"parent": OrganizationTenancyRoleParent,
+	"child":  OrganizationTenancyRoleChild,
+	"none":   OrganizationTenancyRoleNone,
+}
+
 // GetOrganizationTenancyRoleEnumValues Enumerates the set of values for OrganizationTenancyRoleEnum
 func GetOrganizationTenancyRoleEnumValues() []OrganizationTenancyRoleEnum {
 	values := make([]OrganizationTenancyRoleEnum, 0)
@@ -49,11 +55,6 @@ func GetOrganizationTenancyRoleEnumStringValues() []string {
 
 // GetMappingOrganizationTenancyRoleEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOrganizationTenancyRoleEnum(val string) (OrganizationTenancyRoleEnum, bool) {
-	mappingOrganizationTenancyRoleEnumIgnoreCase := make(map[string]OrganizationTenancyRoleEnum)
-	for k, v := range mappingOrganizationTenancyRoleEnum {
-		mappingOrganizationTenancyRoleEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOrganizationTenancyRoleEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOrganizationTenancyRoleEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

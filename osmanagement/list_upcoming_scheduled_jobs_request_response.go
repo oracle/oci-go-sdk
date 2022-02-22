@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -153,6 +153,11 @@ var mappingListUpcomingScheduledJobsSortOrderEnum = map[string]ListUpcomingSched
 	"DESC": ListUpcomingScheduledJobsSortOrderDesc,
 }
 
+var mappingListUpcomingScheduledJobsSortOrderEnumLowerCase = map[string]ListUpcomingScheduledJobsSortOrderEnum{
+	"asc":  ListUpcomingScheduledJobsSortOrderAsc,
+	"desc": ListUpcomingScheduledJobsSortOrderDesc,
+}
+
 // GetListUpcomingScheduledJobsSortOrderEnumValues Enumerates the set of values for ListUpcomingScheduledJobsSortOrderEnum
 func GetListUpcomingScheduledJobsSortOrderEnumValues() []ListUpcomingScheduledJobsSortOrderEnum {
 	values := make([]ListUpcomingScheduledJobsSortOrderEnum, 0)
@@ -172,12 +177,7 @@ func GetListUpcomingScheduledJobsSortOrderEnumStringValues() []string {
 
 // GetMappingListUpcomingScheduledJobsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUpcomingScheduledJobsSortOrderEnum(val string) (ListUpcomingScheduledJobsSortOrderEnum, bool) {
-	mappingListUpcomingScheduledJobsSortOrderEnumIgnoreCase := make(map[string]ListUpcomingScheduledJobsSortOrderEnum)
-	for k, v := range mappingListUpcomingScheduledJobsSortOrderEnum {
-		mappingListUpcomingScheduledJobsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUpcomingScheduledJobsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUpcomingScheduledJobsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -193,6 +193,11 @@ const (
 var mappingListUpcomingScheduledJobsSortByEnum = map[string]ListUpcomingScheduledJobsSortByEnum{
 	"TIMECREATED": ListUpcomingScheduledJobsSortByTimecreated,
 	"DISPLAYNAME": ListUpcomingScheduledJobsSortByDisplayname,
+}
+
+var mappingListUpcomingScheduledJobsSortByEnumLowerCase = map[string]ListUpcomingScheduledJobsSortByEnum{
+	"timecreated": ListUpcomingScheduledJobsSortByTimecreated,
+	"displayname": ListUpcomingScheduledJobsSortByDisplayname,
 }
 
 // GetListUpcomingScheduledJobsSortByEnumValues Enumerates the set of values for ListUpcomingScheduledJobsSortByEnum
@@ -214,12 +219,7 @@ func GetListUpcomingScheduledJobsSortByEnumStringValues() []string {
 
 // GetMappingListUpcomingScheduledJobsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUpcomingScheduledJobsSortByEnum(val string) (ListUpcomingScheduledJobsSortByEnum, bool) {
-	mappingListUpcomingScheduledJobsSortByEnumIgnoreCase := make(map[string]ListUpcomingScheduledJobsSortByEnum)
-	for k, v := range mappingListUpcomingScheduledJobsSortByEnum {
-		mappingListUpcomingScheduledJobsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUpcomingScheduledJobsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUpcomingScheduledJobsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -245,6 +245,15 @@ var mappingListUpcomingScheduledJobsLifecycleStateEnum = map[string]ListUpcoming
 	"FAILED":   ListUpcomingScheduledJobsLifecycleStateFailed,
 }
 
+var mappingListUpcomingScheduledJobsLifecycleStateEnumLowerCase = map[string]ListUpcomingScheduledJobsLifecycleStateEnum{
+	"creating": ListUpcomingScheduledJobsLifecycleStateCreating,
+	"updating": ListUpcomingScheduledJobsLifecycleStateUpdating,
+	"active":   ListUpcomingScheduledJobsLifecycleStateActive,
+	"deleting": ListUpcomingScheduledJobsLifecycleStateDeleting,
+	"deleted":  ListUpcomingScheduledJobsLifecycleStateDeleted,
+	"failed":   ListUpcomingScheduledJobsLifecycleStateFailed,
+}
+
 // GetListUpcomingScheduledJobsLifecycleStateEnumValues Enumerates the set of values for ListUpcomingScheduledJobsLifecycleStateEnum
 func GetListUpcomingScheduledJobsLifecycleStateEnumValues() []ListUpcomingScheduledJobsLifecycleStateEnum {
 	values := make([]ListUpcomingScheduledJobsLifecycleStateEnum, 0)
@@ -268,12 +277,7 @@ func GetListUpcomingScheduledJobsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListUpcomingScheduledJobsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUpcomingScheduledJobsLifecycleStateEnum(val string) (ListUpcomingScheduledJobsLifecycleStateEnum, bool) {
-	mappingListUpcomingScheduledJobsLifecycleStateEnumIgnoreCase := make(map[string]ListUpcomingScheduledJobsLifecycleStateEnum)
-	for k, v := range mappingListUpcomingScheduledJobsLifecycleStateEnum {
-		mappingListUpcomingScheduledJobsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUpcomingScheduledJobsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUpcomingScheduledJobsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -291,6 +295,12 @@ var mappingListUpcomingScheduledJobsOsFamilyEnum = map[string]ListUpcomingSchedu
 	"LINUX":   ListUpcomingScheduledJobsOsFamilyLinux,
 	"WINDOWS": ListUpcomingScheduledJobsOsFamilyWindows,
 	"ALL":     ListUpcomingScheduledJobsOsFamilyAll,
+}
+
+var mappingListUpcomingScheduledJobsOsFamilyEnumLowerCase = map[string]ListUpcomingScheduledJobsOsFamilyEnum{
+	"linux":   ListUpcomingScheduledJobsOsFamilyLinux,
+	"windows": ListUpcomingScheduledJobsOsFamilyWindows,
+	"all":     ListUpcomingScheduledJobsOsFamilyAll,
 }
 
 // GetListUpcomingScheduledJobsOsFamilyEnumValues Enumerates the set of values for ListUpcomingScheduledJobsOsFamilyEnum
@@ -313,11 +323,6 @@ func GetListUpcomingScheduledJobsOsFamilyEnumStringValues() []string {
 
 // GetMappingListUpcomingScheduledJobsOsFamilyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUpcomingScheduledJobsOsFamilyEnum(val string) (ListUpcomingScheduledJobsOsFamilyEnum, bool) {
-	mappingListUpcomingScheduledJobsOsFamilyEnumIgnoreCase := make(map[string]ListUpcomingScheduledJobsOsFamilyEnum)
-	for k, v := range mappingListUpcomingScheduledJobsOsFamilyEnum {
-		mappingListUpcomingScheduledJobsOsFamilyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUpcomingScheduledJobsOsFamilyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUpcomingScheduledJobsOsFamilyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

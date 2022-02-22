@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,12 @@ var mappingListQueryWorkRequestsModeEnum = map[string]ListQueryWorkRequestsModeE
 	"BACKGROUND": ListQueryWorkRequestsModeBackground,
 }
 
+var mappingListQueryWorkRequestsModeEnumLowerCase = map[string]ListQueryWorkRequestsModeEnum{
+	"all":        ListQueryWorkRequestsModeAll,
+	"foreground": ListQueryWorkRequestsModeForeground,
+	"background": ListQueryWorkRequestsModeBackground,
+}
+
 // GetListQueryWorkRequestsModeEnumValues Enumerates the set of values for ListQueryWorkRequestsModeEnum
 func GetListQueryWorkRequestsModeEnumValues() []ListQueryWorkRequestsModeEnum {
 	values := make([]ListQueryWorkRequestsModeEnum, 0)
@@ -161,12 +167,7 @@ func GetListQueryWorkRequestsModeEnumStringValues() []string {
 
 // GetMappingListQueryWorkRequestsModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListQueryWorkRequestsModeEnum(val string) (ListQueryWorkRequestsModeEnum, bool) {
-	mappingListQueryWorkRequestsModeEnumIgnoreCase := make(map[string]ListQueryWorkRequestsModeEnum)
-	for k, v := range mappingListQueryWorkRequestsModeEnum {
-		mappingListQueryWorkRequestsModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListQueryWorkRequestsModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListQueryWorkRequestsModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -182,6 +183,11 @@ const (
 var mappingListQueryWorkRequestsSortOrderEnum = map[string]ListQueryWorkRequestsSortOrderEnum{
 	"ASC":  ListQueryWorkRequestsSortOrderAsc,
 	"DESC": ListQueryWorkRequestsSortOrderDesc,
+}
+
+var mappingListQueryWorkRequestsSortOrderEnumLowerCase = map[string]ListQueryWorkRequestsSortOrderEnum{
+	"asc":  ListQueryWorkRequestsSortOrderAsc,
+	"desc": ListQueryWorkRequestsSortOrderDesc,
 }
 
 // GetListQueryWorkRequestsSortOrderEnumValues Enumerates the set of values for ListQueryWorkRequestsSortOrderEnum
@@ -203,12 +209,7 @@ func GetListQueryWorkRequestsSortOrderEnumStringValues() []string {
 
 // GetMappingListQueryWorkRequestsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListQueryWorkRequestsSortOrderEnum(val string) (ListQueryWorkRequestsSortOrderEnum, bool) {
-	mappingListQueryWorkRequestsSortOrderEnumIgnoreCase := make(map[string]ListQueryWorkRequestsSortOrderEnum)
-	for k, v := range mappingListQueryWorkRequestsSortOrderEnum {
-		mappingListQueryWorkRequestsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListQueryWorkRequestsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListQueryWorkRequestsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -224,6 +225,11 @@ const (
 var mappingListQueryWorkRequestsSortByEnum = map[string]ListQueryWorkRequestsSortByEnum{
 	"timeStarted": ListQueryWorkRequestsSortByTimestarted,
 	"timeExpires": ListQueryWorkRequestsSortByTimeexpires,
+}
+
+var mappingListQueryWorkRequestsSortByEnumLowerCase = map[string]ListQueryWorkRequestsSortByEnum{
+	"timestarted": ListQueryWorkRequestsSortByTimestarted,
+	"timeexpires": ListQueryWorkRequestsSortByTimeexpires,
 }
 
 // GetListQueryWorkRequestsSortByEnumValues Enumerates the set of values for ListQueryWorkRequestsSortByEnum
@@ -245,11 +251,6 @@ func GetListQueryWorkRequestsSortByEnumStringValues() []string {
 
 // GetMappingListQueryWorkRequestsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListQueryWorkRequestsSortByEnum(val string) (ListQueryWorkRequestsSortByEnum, bool) {
-	mappingListQueryWorkRequestsSortByEnumIgnoreCase := make(map[string]ListQueryWorkRequestsSortByEnum)
-	for k, v := range mappingListQueryWorkRequestsSortByEnum {
-		mappingListQueryWorkRequestsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListQueryWorkRequestsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListQueryWorkRequestsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

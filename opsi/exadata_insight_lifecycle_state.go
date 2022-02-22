@@ -37,6 +37,15 @@ var mappingExadataInsightLifecycleStateEnum = map[string]ExadataInsightLifecycle
 	"FAILED":   ExadataInsightLifecycleStateFailed,
 }
 
+var mappingExadataInsightLifecycleStateEnumLowerCase = map[string]ExadataInsightLifecycleStateEnum{
+	"creating": ExadataInsightLifecycleStateCreating,
+	"updating": ExadataInsightLifecycleStateUpdating,
+	"active":   ExadataInsightLifecycleStateActive,
+	"deleting": ExadataInsightLifecycleStateDeleting,
+	"deleted":  ExadataInsightLifecycleStateDeleted,
+	"failed":   ExadataInsightLifecycleStateFailed,
+}
+
 // GetExadataInsightLifecycleStateEnumValues Enumerates the set of values for ExadataInsightLifecycleStateEnum
 func GetExadataInsightLifecycleStateEnumValues() []ExadataInsightLifecycleStateEnum {
 	values := make([]ExadataInsightLifecycleStateEnum, 0)
@@ -60,11 +69,6 @@ func GetExadataInsightLifecycleStateEnumStringValues() []string {
 
 // GetMappingExadataInsightLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExadataInsightLifecycleStateEnum(val string) (ExadataInsightLifecycleStateEnum, bool) {
-	mappingExadataInsightLifecycleStateEnumIgnoreCase := make(map[string]ExadataInsightLifecycleStateEnum)
-	for k, v := range mappingExadataInsightLifecycleStateEnum {
-		mappingExadataInsightLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExadataInsightLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExadataInsightLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

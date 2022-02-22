@@ -25,6 +25,10 @@ var mappingCancelDeploymentBackupTypeEnum = map[string]CancelDeploymentBackupTyp
 	"DEFAULT": CancelDeploymentBackupTypeDefault,
 }
 
+var mappingCancelDeploymentBackupTypeEnumLowerCase = map[string]CancelDeploymentBackupTypeEnum{
+	"default": CancelDeploymentBackupTypeDefault,
+}
+
 // GetCancelDeploymentBackupTypeEnumValues Enumerates the set of values for CancelDeploymentBackupTypeEnum
 func GetCancelDeploymentBackupTypeEnumValues() []CancelDeploymentBackupTypeEnum {
 	values := make([]CancelDeploymentBackupTypeEnum, 0)
@@ -43,11 +47,6 @@ func GetCancelDeploymentBackupTypeEnumStringValues() []string {
 
 // GetMappingCancelDeploymentBackupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCancelDeploymentBackupTypeEnum(val string) (CancelDeploymentBackupTypeEnum, bool) {
-	mappingCancelDeploymentBackupTypeEnumIgnoreCase := make(map[string]CancelDeploymentBackupTypeEnum)
-	for k, v := range mappingCancelDeploymentBackupTypeEnum {
-		mappingCancelDeploymentBackupTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCancelDeploymentBackupTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCancelDeploymentBackupTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

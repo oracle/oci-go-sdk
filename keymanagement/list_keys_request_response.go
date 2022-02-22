@@ -6,7 +6,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -157,6 +157,11 @@ var mappingListKeysSortByEnum = map[string]ListKeysSortByEnum{
 	"DISPLAYNAME": ListKeysSortByDisplayname,
 }
 
+var mappingListKeysSortByEnumLowerCase = map[string]ListKeysSortByEnum{
+	"timecreated": ListKeysSortByTimecreated,
+	"displayname": ListKeysSortByDisplayname,
+}
+
 // GetListKeysSortByEnumValues Enumerates the set of values for ListKeysSortByEnum
 func GetListKeysSortByEnumValues() []ListKeysSortByEnum {
 	values := make([]ListKeysSortByEnum, 0)
@@ -176,12 +181,7 @@ func GetListKeysSortByEnumStringValues() []string {
 
 // GetMappingListKeysSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListKeysSortByEnum(val string) (ListKeysSortByEnum, bool) {
-	mappingListKeysSortByEnumIgnoreCase := make(map[string]ListKeysSortByEnum)
-	for k, v := range mappingListKeysSortByEnum {
-		mappingListKeysSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListKeysSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListKeysSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -197,6 +197,11 @@ const (
 var mappingListKeysSortOrderEnum = map[string]ListKeysSortOrderEnum{
 	"ASC":  ListKeysSortOrderAsc,
 	"DESC": ListKeysSortOrderDesc,
+}
+
+var mappingListKeysSortOrderEnumLowerCase = map[string]ListKeysSortOrderEnum{
+	"asc":  ListKeysSortOrderAsc,
+	"desc": ListKeysSortOrderDesc,
 }
 
 // GetListKeysSortOrderEnumValues Enumerates the set of values for ListKeysSortOrderEnum
@@ -218,12 +223,7 @@ func GetListKeysSortOrderEnumStringValues() []string {
 
 // GetMappingListKeysSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListKeysSortOrderEnum(val string) (ListKeysSortOrderEnum, bool) {
-	mappingListKeysSortOrderEnumIgnoreCase := make(map[string]ListKeysSortOrderEnum)
-	for k, v := range mappingListKeysSortOrderEnum {
-		mappingListKeysSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListKeysSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListKeysSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -239,6 +239,11 @@ const (
 var mappingListKeysProtectionModeEnum = map[string]ListKeysProtectionModeEnum{
 	"HSM":      ListKeysProtectionModeHsm,
 	"SOFTWARE": ListKeysProtectionModeSoftware,
+}
+
+var mappingListKeysProtectionModeEnumLowerCase = map[string]ListKeysProtectionModeEnum{
+	"hsm":      ListKeysProtectionModeHsm,
+	"software": ListKeysProtectionModeSoftware,
 }
 
 // GetListKeysProtectionModeEnumValues Enumerates the set of values for ListKeysProtectionModeEnum
@@ -260,12 +265,7 @@ func GetListKeysProtectionModeEnumStringValues() []string {
 
 // GetMappingListKeysProtectionModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListKeysProtectionModeEnum(val string) (ListKeysProtectionModeEnum, bool) {
-	mappingListKeysProtectionModeEnumIgnoreCase := make(map[string]ListKeysProtectionModeEnum)
-	for k, v := range mappingListKeysProtectionModeEnum {
-		mappingListKeysProtectionModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListKeysProtectionModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListKeysProtectionModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -283,6 +283,12 @@ var mappingListKeysAlgorithmEnum = map[string]ListKeysAlgorithmEnum{
 	"AES":   ListKeysAlgorithmAes,
 	"RSA":   ListKeysAlgorithmRsa,
 	"ECDSA": ListKeysAlgorithmEcdsa,
+}
+
+var mappingListKeysAlgorithmEnumLowerCase = map[string]ListKeysAlgorithmEnum{
+	"aes":   ListKeysAlgorithmAes,
+	"rsa":   ListKeysAlgorithmRsa,
+	"ecdsa": ListKeysAlgorithmEcdsa,
 }
 
 // GetListKeysAlgorithmEnumValues Enumerates the set of values for ListKeysAlgorithmEnum
@@ -305,12 +311,7 @@ func GetListKeysAlgorithmEnumStringValues() []string {
 
 // GetMappingListKeysAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListKeysAlgorithmEnum(val string) (ListKeysAlgorithmEnum, bool) {
-	mappingListKeysAlgorithmEnumIgnoreCase := make(map[string]ListKeysAlgorithmEnum)
-	for k, v := range mappingListKeysAlgorithmEnum {
-		mappingListKeysAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListKeysAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListKeysAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -328,6 +329,12 @@ var mappingListKeysCurveIdEnum = map[string]ListKeysCurveIdEnum{
 	"NIST_P256": ListKeysCurveIdP256,
 	"NIST_P384": ListKeysCurveIdP384,
 	"NIST_P521": ListKeysCurveIdP521,
+}
+
+var mappingListKeysCurveIdEnumLowerCase = map[string]ListKeysCurveIdEnum{
+	"nist_p256": ListKeysCurveIdP256,
+	"nist_p384": ListKeysCurveIdP384,
+	"nist_p521": ListKeysCurveIdP521,
 }
 
 // GetListKeysCurveIdEnumValues Enumerates the set of values for ListKeysCurveIdEnum
@@ -350,11 +357,6 @@ func GetListKeysCurveIdEnumStringValues() []string {
 
 // GetMappingListKeysCurveIdEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListKeysCurveIdEnum(val string) (ListKeysCurveIdEnum, bool) {
-	mappingListKeysCurveIdEnumIgnoreCase := make(map[string]ListKeysCurveIdEnum)
-	for k, v := range mappingListKeysCurveIdEnum {
-		mappingListKeysCurveIdEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListKeysCurveIdEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListKeysCurveIdEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

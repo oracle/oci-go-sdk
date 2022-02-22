@@ -15,7 +15,7 @@ package resourcemanager
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -153,6 +153,10 @@ var mappingTemplateLifecycleStateEnum = map[string]TemplateLifecycleStateEnum{
 	"ACTIVE": TemplateLifecycleStateActive,
 }
 
+var mappingTemplateLifecycleStateEnumLowerCase = map[string]TemplateLifecycleStateEnum{
+	"active": TemplateLifecycleStateActive,
+}
+
 // GetTemplateLifecycleStateEnumValues Enumerates the set of values for TemplateLifecycleStateEnum
 func GetTemplateLifecycleStateEnumValues() []TemplateLifecycleStateEnum {
 	values := make([]TemplateLifecycleStateEnum, 0)
@@ -171,11 +175,6 @@ func GetTemplateLifecycleStateEnumStringValues() []string {
 
 // GetMappingTemplateLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTemplateLifecycleStateEnum(val string) (TemplateLifecycleStateEnum, bool) {
-	mappingTemplateLifecycleStateEnumIgnoreCase := make(map[string]TemplateLifecycleStateEnum)
-	for k, v := range mappingTemplateLifecycleStateEnum {
-		mappingTemplateLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTemplateLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTemplateLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

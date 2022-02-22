@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -84,6 +84,13 @@ var mappingSdkLanguageOptionalParametersInputTypeEnum = map[string]SdkLanguageOp
 	"STRING": SdkLanguageOptionalParametersInputTypeString,
 }
 
+var mappingSdkLanguageOptionalParametersInputTypeEnumLowerCase = map[string]SdkLanguageOptionalParametersInputTypeEnum{
+	"enum":   SdkLanguageOptionalParametersInputTypeEnumvalue,
+	"email":  SdkLanguageOptionalParametersInputTypeEmail,
+	"uri":    SdkLanguageOptionalParametersInputTypeUri,
+	"string": SdkLanguageOptionalParametersInputTypeString,
+}
+
 // GetSdkLanguageOptionalParametersInputTypeEnumValues Enumerates the set of values for SdkLanguageOptionalParametersInputTypeEnum
 func GetSdkLanguageOptionalParametersInputTypeEnumValues() []SdkLanguageOptionalParametersInputTypeEnum {
 	values := make([]SdkLanguageOptionalParametersInputTypeEnum, 0)
@@ -105,11 +112,6 @@ func GetSdkLanguageOptionalParametersInputTypeEnumStringValues() []string {
 
 // GetMappingSdkLanguageOptionalParametersInputTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSdkLanguageOptionalParametersInputTypeEnum(val string) (SdkLanguageOptionalParametersInputTypeEnum, bool) {
-	mappingSdkLanguageOptionalParametersInputTypeEnumIgnoreCase := make(map[string]SdkLanguageOptionalParametersInputTypeEnum)
-	for k, v := range mappingSdkLanguageOptionalParametersInputTypeEnum {
-		mappingSdkLanguageOptionalParametersInputTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSdkLanguageOptionalParametersInputTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSdkLanguageOptionalParametersInputTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

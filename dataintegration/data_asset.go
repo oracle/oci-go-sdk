@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -256,6 +256,17 @@ var mappingDataAssetModelTypeEnum = map[string]DataAssetModelTypeEnum{
 	"AMAZON_S3_DATA_ASSET":             DataAssetModelTypeAmazonS3DataAsset,
 }
 
+var mappingDataAssetModelTypeEnumLowerCase = map[string]DataAssetModelTypeEnum{
+	"oracle_data_asset":                DataAssetModelTypeOracleDataAsset,
+	"oracle_object_storage_data_asset": DataAssetModelTypeOracleObjectStorageDataAsset,
+	"oracle_atp_data_asset":            DataAssetModelTypeOracleAtpDataAsset,
+	"oracle_adwc_data_asset":           DataAssetModelTypeOracleAdwcDataAsset,
+	"mysql_data_asset":                 DataAssetModelTypeMysqlDataAsset,
+	"generic_jdbc_data_asset":          DataAssetModelTypeGenericJdbcDataAsset,
+	"fusion_app_data_asset":            DataAssetModelTypeFusionAppDataAsset,
+	"amazon_s3_data_asset":             DataAssetModelTypeAmazonS3DataAsset,
+}
+
 // GetDataAssetModelTypeEnumValues Enumerates the set of values for DataAssetModelTypeEnum
 func GetDataAssetModelTypeEnumValues() []DataAssetModelTypeEnum {
 	values := make([]DataAssetModelTypeEnum, 0)
@@ -281,11 +292,6 @@ func GetDataAssetModelTypeEnumStringValues() []string {
 
 // GetMappingDataAssetModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataAssetModelTypeEnum(val string) (DataAssetModelTypeEnum, bool) {
-	mappingDataAssetModelTypeEnumIgnoreCase := make(map[string]DataAssetModelTypeEnum)
-	for k, v := range mappingDataAssetModelTypeEnum {
-		mappingDataAssetModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataAssetModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataAssetModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

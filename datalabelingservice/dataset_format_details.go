@@ -12,7 +12,7 @@ package datalabelingservice
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,12 @@ var mappingDatasetFormatDetailsFormatTypeEnum = map[string]DatasetFormatDetailsF
 	"TEXT":     DatasetFormatDetailsFormatTypeText,
 }
 
+var mappingDatasetFormatDetailsFormatTypeEnumLowerCase = map[string]DatasetFormatDetailsFormatTypeEnum{
+	"document": DatasetFormatDetailsFormatTypeDocument,
+	"image":    DatasetFormatDetailsFormatTypeImage,
+	"text":     DatasetFormatDetailsFormatTypeText,
+}
+
 // GetDatasetFormatDetailsFormatTypeEnumValues Enumerates the set of values for DatasetFormatDetailsFormatTypeEnum
 func GetDatasetFormatDetailsFormatTypeEnumValues() []DatasetFormatDetailsFormatTypeEnum {
 	values := make([]DatasetFormatDetailsFormatTypeEnum, 0)
@@ -119,11 +125,6 @@ func GetDatasetFormatDetailsFormatTypeEnumStringValues() []string {
 
 // GetMappingDatasetFormatDetailsFormatTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatasetFormatDetailsFormatTypeEnum(val string) (DatasetFormatDetailsFormatTypeEnum, bool) {
-	mappingDatasetFormatDetailsFormatTypeEnumIgnoreCase := make(map[string]DatasetFormatDetailsFormatTypeEnum)
-	for k, v := range mappingDatasetFormatDetailsFormatTypeEnum {
-		mappingDatasetFormatDetailsFormatTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatasetFormatDetailsFormatTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatasetFormatDetailsFormatTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

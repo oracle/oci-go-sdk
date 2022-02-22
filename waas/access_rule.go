@@ -12,7 +12,7 @@ package waas
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -212,6 +212,15 @@ var mappingAccessRuleActionEnum = map[string]AccessRuleActionEnum{
 	"SHOW_CAPTCHA": AccessRuleActionShowCaptcha,
 }
 
+var mappingAccessRuleActionEnumLowerCase = map[string]AccessRuleActionEnum{
+	"allow":        AccessRuleActionAllow,
+	"detect":       AccessRuleActionDetect,
+	"block":        AccessRuleActionBlock,
+	"bypass":       AccessRuleActionBypass,
+	"redirect":     AccessRuleActionRedirect,
+	"show_captcha": AccessRuleActionShowCaptcha,
+}
+
 // GetAccessRuleActionEnumValues Enumerates the set of values for AccessRuleActionEnum
 func GetAccessRuleActionEnumValues() []AccessRuleActionEnum {
 	values := make([]AccessRuleActionEnum, 0)
@@ -235,12 +244,7 @@ func GetAccessRuleActionEnumStringValues() []string {
 
 // GetMappingAccessRuleActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAccessRuleActionEnum(val string) (AccessRuleActionEnum, bool) {
-	mappingAccessRuleActionEnumIgnoreCase := make(map[string]AccessRuleActionEnum)
-	for k, v := range mappingAccessRuleActionEnum {
-		mappingAccessRuleActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAccessRuleActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAccessRuleActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -256,6 +260,11 @@ const (
 var mappingAccessRuleBlockActionEnum = map[string]AccessRuleBlockActionEnum{
 	"SET_RESPONSE_CODE": AccessRuleBlockActionSetResponseCode,
 	"SHOW_ERROR_PAGE":   AccessRuleBlockActionShowErrorPage,
+}
+
+var mappingAccessRuleBlockActionEnumLowerCase = map[string]AccessRuleBlockActionEnum{
+	"set_response_code": AccessRuleBlockActionSetResponseCode,
+	"show_error_page":   AccessRuleBlockActionShowErrorPage,
 }
 
 // GetAccessRuleBlockActionEnumValues Enumerates the set of values for AccessRuleBlockActionEnum
@@ -277,12 +286,7 @@ func GetAccessRuleBlockActionEnumStringValues() []string {
 
 // GetMappingAccessRuleBlockActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAccessRuleBlockActionEnum(val string) (AccessRuleBlockActionEnum, bool) {
-	mappingAccessRuleBlockActionEnumIgnoreCase := make(map[string]AccessRuleBlockActionEnum)
-	for k, v := range mappingAccessRuleBlockActionEnum {
-		mappingAccessRuleBlockActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAccessRuleBlockActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAccessRuleBlockActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -302,6 +306,13 @@ var mappingAccessRuleBypassChallengesEnum = map[string]AccessRuleBypassChallenge
 	"DEVICE_FINGERPRINT_CHALLENGE": AccessRuleBypassChallengesDeviceFingerprintChallenge,
 	"HUMAN_INTERACTION_CHALLENGE":  AccessRuleBypassChallengesHumanInteractionChallenge,
 	"CAPTCHA":                      AccessRuleBypassChallengesCaptcha,
+}
+
+var mappingAccessRuleBypassChallengesEnumLowerCase = map[string]AccessRuleBypassChallengesEnum{
+	"js_challenge":                 AccessRuleBypassChallengesJsChallenge,
+	"device_fingerprint_challenge": AccessRuleBypassChallengesDeviceFingerprintChallenge,
+	"human_interaction_challenge":  AccessRuleBypassChallengesHumanInteractionChallenge,
+	"captcha":                      AccessRuleBypassChallengesCaptcha,
 }
 
 // GetAccessRuleBypassChallengesEnumValues Enumerates the set of values for AccessRuleBypassChallengesEnum
@@ -325,12 +336,7 @@ func GetAccessRuleBypassChallengesEnumStringValues() []string {
 
 // GetMappingAccessRuleBypassChallengesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAccessRuleBypassChallengesEnum(val string) (AccessRuleBypassChallengesEnum, bool) {
-	mappingAccessRuleBypassChallengesEnumIgnoreCase := make(map[string]AccessRuleBypassChallengesEnum)
-	for k, v := range mappingAccessRuleBypassChallengesEnum {
-		mappingAccessRuleBypassChallengesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAccessRuleBypassChallengesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAccessRuleBypassChallengesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -346,6 +352,11 @@ const (
 var mappingAccessRuleRedirectResponseCodeEnum = map[string]AccessRuleRedirectResponseCodeEnum{
 	"MOVED_PERMANENTLY": AccessRuleRedirectResponseCodeMovedPermanently,
 	"FOUND":             AccessRuleRedirectResponseCodeFound,
+}
+
+var mappingAccessRuleRedirectResponseCodeEnumLowerCase = map[string]AccessRuleRedirectResponseCodeEnum{
+	"moved_permanently": AccessRuleRedirectResponseCodeMovedPermanently,
+	"found":             AccessRuleRedirectResponseCodeFound,
 }
 
 // GetAccessRuleRedirectResponseCodeEnumValues Enumerates the set of values for AccessRuleRedirectResponseCodeEnum
@@ -367,11 +378,6 @@ func GetAccessRuleRedirectResponseCodeEnumStringValues() []string {
 
 // GetMappingAccessRuleRedirectResponseCodeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAccessRuleRedirectResponseCodeEnum(val string) (AccessRuleRedirectResponseCodeEnum, bool) {
-	mappingAccessRuleRedirectResponseCodeEnumIgnoreCase := make(map[string]AccessRuleRedirectResponseCodeEnum)
-	for k, v := range mappingAccessRuleRedirectResponseCodeEnum {
-		mappingAccessRuleRedirectResponseCodeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAccessRuleRedirectResponseCodeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAccessRuleRedirectResponseCodeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

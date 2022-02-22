@@ -6,7 +6,7 @@ package apmcontrolplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -36,7 +36,7 @@ type ListApmDomainsRequest struct {
 	// The sort order to use, either 'asc' or 'desc'.
 	SortOrder ListApmDomainsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
-	// The field to sort by. Only one sort order may be provided. Default order for timeCreated is descending. Default order for displayName is ascending. If no value is specified timeCreated is default.
+	// The field to sort by. Only one sort order may be provided. Default order for timeCreated is descending. Default order for displayName is ascending. If no value is specified, timeCreated is default.
 	SortBy ListApmDomainsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
 	// The client request ID for tracing.
@@ -143,6 +143,15 @@ var mappingListApmDomainsLifecycleStateEnum = map[string]ListApmDomainsLifecycle
 	"FAILED":   ListApmDomainsLifecycleStateFailed,
 }
 
+var mappingListApmDomainsLifecycleStateEnumLowerCase = map[string]ListApmDomainsLifecycleStateEnum{
+	"creating": ListApmDomainsLifecycleStateCreating,
+	"updating": ListApmDomainsLifecycleStateUpdating,
+	"active":   ListApmDomainsLifecycleStateActive,
+	"deleting": ListApmDomainsLifecycleStateDeleting,
+	"deleted":  ListApmDomainsLifecycleStateDeleted,
+	"failed":   ListApmDomainsLifecycleStateFailed,
+}
+
 // GetListApmDomainsLifecycleStateEnumValues Enumerates the set of values for ListApmDomainsLifecycleStateEnum
 func GetListApmDomainsLifecycleStateEnumValues() []ListApmDomainsLifecycleStateEnum {
 	values := make([]ListApmDomainsLifecycleStateEnum, 0)
@@ -166,12 +175,7 @@ func GetListApmDomainsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListApmDomainsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListApmDomainsLifecycleStateEnum(val string) (ListApmDomainsLifecycleStateEnum, bool) {
-	mappingListApmDomainsLifecycleStateEnumIgnoreCase := make(map[string]ListApmDomainsLifecycleStateEnum)
-	for k, v := range mappingListApmDomainsLifecycleStateEnum {
-		mappingListApmDomainsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListApmDomainsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListApmDomainsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +191,11 @@ const (
 var mappingListApmDomainsSortOrderEnum = map[string]ListApmDomainsSortOrderEnum{
 	"ASC":  ListApmDomainsSortOrderAsc,
 	"DESC": ListApmDomainsSortOrderDesc,
+}
+
+var mappingListApmDomainsSortOrderEnumLowerCase = map[string]ListApmDomainsSortOrderEnum{
+	"asc":  ListApmDomainsSortOrderAsc,
+	"desc": ListApmDomainsSortOrderDesc,
 }
 
 // GetListApmDomainsSortOrderEnumValues Enumerates the set of values for ListApmDomainsSortOrderEnum
@@ -208,12 +217,7 @@ func GetListApmDomainsSortOrderEnumStringValues() []string {
 
 // GetMappingListApmDomainsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListApmDomainsSortOrderEnum(val string) (ListApmDomainsSortOrderEnum, bool) {
-	mappingListApmDomainsSortOrderEnumIgnoreCase := make(map[string]ListApmDomainsSortOrderEnum)
-	for k, v := range mappingListApmDomainsSortOrderEnum {
-		mappingListApmDomainsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListApmDomainsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListApmDomainsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -229,6 +233,11 @@ const (
 var mappingListApmDomainsSortByEnum = map[string]ListApmDomainsSortByEnum{
 	"timeCreated": ListApmDomainsSortByTimecreated,
 	"displayName": ListApmDomainsSortByDisplayname,
+}
+
+var mappingListApmDomainsSortByEnumLowerCase = map[string]ListApmDomainsSortByEnum{
+	"timecreated": ListApmDomainsSortByTimecreated,
+	"displayname": ListApmDomainsSortByDisplayname,
 }
 
 // GetListApmDomainsSortByEnumValues Enumerates the set of values for ListApmDomainsSortByEnum
@@ -250,11 +259,6 @@ func GetListApmDomainsSortByEnumStringValues() []string {
 
 // GetMappingListApmDomainsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListApmDomainsSortByEnum(val string) (ListApmDomainsSortByEnum, bool) {
-	mappingListApmDomainsSortByEnumIgnoreCase := make(map[string]ListApmDomainsSortByEnum)
-	for k, v := range mappingListApmDomainsSortByEnum {
-		mappingListApmDomainsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListApmDomainsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListApmDomainsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

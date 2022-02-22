@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -117,6 +117,13 @@ var mappingServiceGatewayLifecycleStateEnum = map[string]ServiceGatewayLifecycle
 	"TERMINATED":   ServiceGatewayLifecycleStateTerminated,
 }
 
+var mappingServiceGatewayLifecycleStateEnumLowerCase = map[string]ServiceGatewayLifecycleStateEnum{
+	"provisioning": ServiceGatewayLifecycleStateProvisioning,
+	"available":    ServiceGatewayLifecycleStateAvailable,
+	"terminating":  ServiceGatewayLifecycleStateTerminating,
+	"terminated":   ServiceGatewayLifecycleStateTerminated,
+}
+
 // GetServiceGatewayLifecycleStateEnumValues Enumerates the set of values for ServiceGatewayLifecycleStateEnum
 func GetServiceGatewayLifecycleStateEnumValues() []ServiceGatewayLifecycleStateEnum {
 	values := make([]ServiceGatewayLifecycleStateEnum, 0)
@@ -138,11 +145,6 @@ func GetServiceGatewayLifecycleStateEnumStringValues() []string {
 
 // GetMappingServiceGatewayLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingServiceGatewayLifecycleStateEnum(val string) (ServiceGatewayLifecycleStateEnum, bool) {
-	mappingServiceGatewayLifecycleStateEnumIgnoreCase := make(map[string]ServiceGatewayLifecycleStateEnum)
-	for k, v := range mappingServiceGatewayLifecycleStateEnum {
-		mappingServiceGatewayLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingServiceGatewayLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingServiceGatewayLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

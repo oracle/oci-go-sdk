@@ -6,7 +6,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,17 @@ var mappingListWafBlockedRequestsWafFeatureEnum = map[string]ListWafBlockedReque
 	"ADDRESS_RATE_LIMITING":        ListWafBlockedRequestsWafFeatureAddressRateLimiting,
 }
 
+var mappingListWafBlockedRequestsWafFeatureEnumLowerCase = map[string]ListWafBlockedRequestsWafFeatureEnum{
+	"protection_rules":             ListWafBlockedRequestsWafFeatureProtectionRules,
+	"js_challenge":                 ListWafBlockedRequestsWafFeatureJsChallenge,
+	"access_rules":                 ListWafBlockedRequestsWafFeatureAccessRules,
+	"threat_feeds":                 ListWafBlockedRequestsWafFeatureThreatFeeds,
+	"human_interaction_challenge":  ListWafBlockedRequestsWafFeatureHumanInteractionChallenge,
+	"device_fingerprint_challenge": ListWafBlockedRequestsWafFeatureDeviceFingerprintChallenge,
+	"captcha":                      ListWafBlockedRequestsWafFeatureCaptcha,
+	"address_rate_limiting":        ListWafBlockedRequestsWafFeatureAddressRateLimiting,
+}
+
 // GetListWafBlockedRequestsWafFeatureEnumValues Enumerates the set of values for ListWafBlockedRequestsWafFeatureEnum
 func GetListWafBlockedRequestsWafFeatureEnumValues() []ListWafBlockedRequestsWafFeatureEnum {
 	values := make([]ListWafBlockedRequestsWafFeatureEnum, 0)
@@ -163,11 +174,6 @@ func GetListWafBlockedRequestsWafFeatureEnumStringValues() []string {
 
 // GetMappingListWafBlockedRequestsWafFeatureEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWafBlockedRequestsWafFeatureEnum(val string) (ListWafBlockedRequestsWafFeatureEnum, bool) {
-	mappingListWafBlockedRequestsWafFeatureEnumIgnoreCase := make(map[string]ListWafBlockedRequestsWafFeatureEnum)
-	for k, v := range mappingListWafBlockedRequestsWafFeatureEnum {
-		mappingListWafBlockedRequestsWafFeatureEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWafBlockedRequestsWafFeatureEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWafBlockedRequestsWafFeatureEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

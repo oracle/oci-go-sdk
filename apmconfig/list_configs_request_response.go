@@ -6,7 +6,7 @@ package apmconfig
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,11 @@ var mappingListConfigsSortOrderEnum = map[string]ListConfigsSortOrderEnum{
 	"DESC": ListConfigsSortOrderDesc,
 }
 
+var mappingListConfigsSortOrderEnumLowerCase = map[string]ListConfigsSortOrderEnum{
+	"asc":  ListConfigsSortOrderAsc,
+	"desc": ListConfigsSortOrderDesc,
+}
+
 // GetListConfigsSortOrderEnumValues Enumerates the set of values for ListConfigsSortOrderEnum
 func GetListConfigsSortOrderEnumValues() []ListConfigsSortOrderEnum {
 	values := make([]ListConfigsSortOrderEnum, 0)
@@ -157,12 +162,7 @@ func GetListConfigsSortOrderEnumStringValues() []string {
 
 // GetMappingListConfigsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConfigsSortOrderEnum(val string) (ListConfigsSortOrderEnum, bool) {
-	mappingListConfigsSortOrderEnumIgnoreCase := make(map[string]ListConfigsSortOrderEnum)
-	for k, v := range mappingListConfigsSortOrderEnum {
-		mappingListConfigsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConfigsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConfigsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -180,6 +180,12 @@ var mappingListConfigsSortByEnum = map[string]ListConfigsSortByEnum{
 	"displayName": ListConfigsSortByDisplayname,
 	"timeCreated": ListConfigsSortByTimecreated,
 	"timeUpdated": ListConfigsSortByTimeupdated,
+}
+
+var mappingListConfigsSortByEnumLowerCase = map[string]ListConfigsSortByEnum{
+	"displayname": ListConfigsSortByDisplayname,
+	"timecreated": ListConfigsSortByTimecreated,
+	"timeupdated": ListConfigsSortByTimeupdated,
 }
 
 // GetListConfigsSortByEnumValues Enumerates the set of values for ListConfigsSortByEnum
@@ -202,11 +208,6 @@ func GetListConfigsSortByEnumStringValues() []string {
 
 // GetMappingListConfigsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConfigsSortByEnum(val string) (ListConfigsSortByEnum, bool) {
-	mappingListConfigsSortByEnumIgnoreCase := make(map[string]ListConfigsSortByEnum)
-	for k, v := range mappingListConfigsSortByEnum {
-		mappingListConfigsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConfigsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConfigsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

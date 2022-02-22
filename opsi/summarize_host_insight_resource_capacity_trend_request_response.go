@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -206,6 +206,12 @@ var mappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnum = map[strin
 	"SUNOS":   SummarizeHostInsightResourceCapacityTrendPlatformTypeSunos,
 }
 
+var mappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnumLowerCase = map[string]SummarizeHostInsightResourceCapacityTrendPlatformTypeEnum{
+	"linux":   SummarizeHostInsightResourceCapacityTrendPlatformTypeLinux,
+	"solaris": SummarizeHostInsightResourceCapacityTrendPlatformTypeSolaris,
+	"sunos":   SummarizeHostInsightResourceCapacityTrendPlatformTypeSunos,
+}
+
 // GetSummarizeHostInsightResourceCapacityTrendPlatformTypeEnumValues Enumerates the set of values for SummarizeHostInsightResourceCapacityTrendPlatformTypeEnum
 func GetSummarizeHostInsightResourceCapacityTrendPlatformTypeEnumValues() []SummarizeHostInsightResourceCapacityTrendPlatformTypeEnum {
 	values := make([]SummarizeHostInsightResourceCapacityTrendPlatformTypeEnum, 0)
@@ -226,12 +232,7 @@ func GetSummarizeHostInsightResourceCapacityTrendPlatformTypeEnumStringValues() 
 
 // GetMappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnum(val string) (SummarizeHostInsightResourceCapacityTrendPlatformTypeEnum, bool) {
-	mappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceCapacityTrendPlatformTypeEnum)
-	for k, v := range mappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnum {
-		mappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeHostInsightResourceCapacityTrendPlatformTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -251,6 +252,13 @@ var mappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum = map[s
 	"LOW_UTILIZATION":         SummarizeHostInsightResourceCapacityTrendUtilizationLevelLowUtilization,
 	"MEDIUM_HIGH_UTILIZATION": SummarizeHostInsightResourceCapacityTrendUtilizationLevelMediumHighUtilization,
 	"MEDIUM_LOW_UTILIZATION":  SummarizeHostInsightResourceCapacityTrendUtilizationLevelMediumLowUtilization,
+}
+
+var mappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnumLowerCase = map[string]SummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum{
+	"high_utilization":        SummarizeHostInsightResourceCapacityTrendUtilizationLevelHighUtilization,
+	"low_utilization":         SummarizeHostInsightResourceCapacityTrendUtilizationLevelLowUtilization,
+	"medium_high_utilization": SummarizeHostInsightResourceCapacityTrendUtilizationLevelMediumHighUtilization,
+	"medium_low_utilization":  SummarizeHostInsightResourceCapacityTrendUtilizationLevelMediumLowUtilization,
 }
 
 // GetSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnumValues Enumerates the set of values for SummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum
@@ -274,12 +282,7 @@ func GetSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnumStringValue
 
 // GetMappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum(val string) (SummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum, bool) {
-	mappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum)
-	for k, v := range mappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnum {
-		mappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeHostInsightResourceCapacityTrendUtilizationLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -295,6 +298,11 @@ const (
 var mappingSummarizeHostInsightResourceCapacityTrendSortOrderEnum = map[string]SummarizeHostInsightResourceCapacityTrendSortOrderEnum{
 	"ASC":  SummarizeHostInsightResourceCapacityTrendSortOrderAsc,
 	"DESC": SummarizeHostInsightResourceCapacityTrendSortOrderDesc,
+}
+
+var mappingSummarizeHostInsightResourceCapacityTrendSortOrderEnumLowerCase = map[string]SummarizeHostInsightResourceCapacityTrendSortOrderEnum{
+	"asc":  SummarizeHostInsightResourceCapacityTrendSortOrderAsc,
+	"desc": SummarizeHostInsightResourceCapacityTrendSortOrderDesc,
 }
 
 // GetSummarizeHostInsightResourceCapacityTrendSortOrderEnumValues Enumerates the set of values for SummarizeHostInsightResourceCapacityTrendSortOrderEnum
@@ -316,12 +324,7 @@ func GetSummarizeHostInsightResourceCapacityTrendSortOrderEnumStringValues() []s
 
 // GetMappingSummarizeHostInsightResourceCapacityTrendSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeHostInsightResourceCapacityTrendSortOrderEnum(val string) (SummarizeHostInsightResourceCapacityTrendSortOrderEnum, bool) {
-	mappingSummarizeHostInsightResourceCapacityTrendSortOrderEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceCapacityTrendSortOrderEnum)
-	for k, v := range mappingSummarizeHostInsightResourceCapacityTrendSortOrderEnum {
-		mappingSummarizeHostInsightResourceCapacityTrendSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeHostInsightResourceCapacityTrendSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeHostInsightResourceCapacityTrendSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -336,6 +339,11 @@ const (
 
 var mappingSummarizeHostInsightResourceCapacityTrendSortByEnum = map[string]SummarizeHostInsightResourceCapacityTrendSortByEnum{
 	"endTimestamp": SummarizeHostInsightResourceCapacityTrendSortByEndtimestamp,
+	"capacity":     SummarizeHostInsightResourceCapacityTrendSortByCapacity,
+}
+
+var mappingSummarizeHostInsightResourceCapacityTrendSortByEnumLowerCase = map[string]SummarizeHostInsightResourceCapacityTrendSortByEnum{
+	"endtimestamp": SummarizeHostInsightResourceCapacityTrendSortByEndtimestamp,
 	"capacity":     SummarizeHostInsightResourceCapacityTrendSortByCapacity,
 }
 
@@ -358,11 +366,6 @@ func GetSummarizeHostInsightResourceCapacityTrendSortByEnumStringValues() []stri
 
 // GetMappingSummarizeHostInsightResourceCapacityTrendSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeHostInsightResourceCapacityTrendSortByEnum(val string) (SummarizeHostInsightResourceCapacityTrendSortByEnum, bool) {
-	mappingSummarizeHostInsightResourceCapacityTrendSortByEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceCapacityTrendSortByEnum)
-	for k, v := range mappingSummarizeHostInsightResourceCapacityTrendSortByEnum {
-		mappingSummarizeHostInsightResourceCapacityTrendSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeHostInsightResourceCapacityTrendSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeHostInsightResourceCapacityTrendSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

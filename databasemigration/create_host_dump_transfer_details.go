@@ -12,7 +12,7 @@ package databasemigration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,11 @@ var mappingCreateHostDumpTransferDetailsKindEnum = map[string]CreateHostDumpTran
 	"OCI_CLI": CreateHostDumpTransferDetailsKindOciCli,
 }
 
+var mappingCreateHostDumpTransferDetailsKindEnumLowerCase = map[string]CreateHostDumpTransferDetailsKindEnum{
+	"curl":    CreateHostDumpTransferDetailsKindCurl,
+	"oci_cli": CreateHostDumpTransferDetailsKindOciCli,
+}
+
 // GetCreateHostDumpTransferDetailsKindEnumValues Enumerates the set of values for CreateHostDumpTransferDetailsKindEnum
 func GetCreateHostDumpTransferDetailsKindEnumValues() []CreateHostDumpTransferDetailsKindEnum {
 	values := make([]CreateHostDumpTransferDetailsKindEnum, 0)
@@ -112,11 +117,6 @@ func GetCreateHostDumpTransferDetailsKindEnumStringValues() []string {
 
 // GetMappingCreateHostDumpTransferDetailsKindEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateHostDumpTransferDetailsKindEnum(val string) (CreateHostDumpTransferDetailsKindEnum, bool) {
-	mappingCreateHostDumpTransferDetailsKindEnumIgnoreCase := make(map[string]CreateHostDumpTransferDetailsKindEnum)
-	for k, v := range mappingCreateHostDumpTransferDetailsKindEnum {
-		mappingCreateHostDumpTransferDetailsKindEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateHostDumpTransferDetailsKindEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateHostDumpTransferDetailsKindEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

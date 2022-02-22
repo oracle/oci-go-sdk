@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -133,6 +133,13 @@ var mappingLocalPeeringGatewayLifecycleStateEnum = map[string]LocalPeeringGatewa
 	"TERMINATED":   LocalPeeringGatewayLifecycleStateTerminated,
 }
 
+var mappingLocalPeeringGatewayLifecycleStateEnumLowerCase = map[string]LocalPeeringGatewayLifecycleStateEnum{
+	"provisioning": LocalPeeringGatewayLifecycleStateProvisioning,
+	"available":    LocalPeeringGatewayLifecycleStateAvailable,
+	"terminating":  LocalPeeringGatewayLifecycleStateTerminating,
+	"terminated":   LocalPeeringGatewayLifecycleStateTerminated,
+}
+
 // GetLocalPeeringGatewayLifecycleStateEnumValues Enumerates the set of values for LocalPeeringGatewayLifecycleStateEnum
 func GetLocalPeeringGatewayLifecycleStateEnumValues() []LocalPeeringGatewayLifecycleStateEnum {
 	values := make([]LocalPeeringGatewayLifecycleStateEnum, 0)
@@ -154,12 +161,7 @@ func GetLocalPeeringGatewayLifecycleStateEnumStringValues() []string {
 
 // GetMappingLocalPeeringGatewayLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLocalPeeringGatewayLifecycleStateEnum(val string) (LocalPeeringGatewayLifecycleStateEnum, bool) {
-	mappingLocalPeeringGatewayLifecycleStateEnumIgnoreCase := make(map[string]LocalPeeringGatewayLifecycleStateEnum)
-	for k, v := range mappingLocalPeeringGatewayLifecycleStateEnum {
-		mappingLocalPeeringGatewayLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLocalPeeringGatewayLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLocalPeeringGatewayLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +183,14 @@ var mappingLocalPeeringGatewayPeeringStatusEnum = map[string]LocalPeeringGateway
 	"PEERED":  LocalPeeringGatewayPeeringStatusPeered,
 	"PENDING": LocalPeeringGatewayPeeringStatusPending,
 	"REVOKED": LocalPeeringGatewayPeeringStatusRevoked,
+}
+
+var mappingLocalPeeringGatewayPeeringStatusEnumLowerCase = map[string]LocalPeeringGatewayPeeringStatusEnum{
+	"invalid": LocalPeeringGatewayPeeringStatusInvalid,
+	"new":     LocalPeeringGatewayPeeringStatusNew,
+	"peered":  LocalPeeringGatewayPeeringStatusPeered,
+	"pending": LocalPeeringGatewayPeeringStatusPending,
+	"revoked": LocalPeeringGatewayPeeringStatusRevoked,
 }
 
 // GetLocalPeeringGatewayPeeringStatusEnumValues Enumerates the set of values for LocalPeeringGatewayPeeringStatusEnum
@@ -205,11 +215,6 @@ func GetLocalPeeringGatewayPeeringStatusEnumStringValues() []string {
 
 // GetMappingLocalPeeringGatewayPeeringStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLocalPeeringGatewayPeeringStatusEnum(val string) (LocalPeeringGatewayPeeringStatusEnum, bool) {
-	mappingLocalPeeringGatewayPeeringStatusEnumIgnoreCase := make(map[string]LocalPeeringGatewayPeeringStatusEnum)
-	for k, v := range mappingLocalPeeringGatewayPeeringStatusEnum {
-		mappingLocalPeeringGatewayPeeringStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLocalPeeringGatewayPeeringStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLocalPeeringGatewayPeeringStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

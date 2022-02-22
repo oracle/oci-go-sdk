@@ -13,7 +13,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -155,6 +155,12 @@ var mappingBucketPublicAccessTypeEnum = map[string]BucketPublicAccessTypeEnum{
 	"ObjectReadWithoutList": BucketPublicAccessTypeObjectreadwithoutlist,
 }
 
+var mappingBucketPublicAccessTypeEnumLowerCase = map[string]BucketPublicAccessTypeEnum{
+	"nopublicaccess":        BucketPublicAccessTypeNopublicaccess,
+	"objectread":            BucketPublicAccessTypeObjectread,
+	"objectreadwithoutlist": BucketPublicAccessTypeObjectreadwithoutlist,
+}
+
 // GetBucketPublicAccessTypeEnumValues Enumerates the set of values for BucketPublicAccessTypeEnum
 func GetBucketPublicAccessTypeEnumValues() []BucketPublicAccessTypeEnum {
 	values := make([]BucketPublicAccessTypeEnum, 0)
@@ -175,12 +181,7 @@ func GetBucketPublicAccessTypeEnumStringValues() []string {
 
 // GetMappingBucketPublicAccessTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBucketPublicAccessTypeEnum(val string) (BucketPublicAccessTypeEnum, bool) {
-	mappingBucketPublicAccessTypeEnumIgnoreCase := make(map[string]BucketPublicAccessTypeEnum)
-	for k, v := range mappingBucketPublicAccessTypeEnum {
-		mappingBucketPublicAccessTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBucketPublicAccessTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBucketPublicAccessTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -196,6 +197,11 @@ const (
 var mappingBucketStorageTierEnum = map[string]BucketStorageTierEnum{
 	"Standard": BucketStorageTierStandard,
 	"Archive":  BucketStorageTierArchive,
+}
+
+var mappingBucketStorageTierEnumLowerCase = map[string]BucketStorageTierEnum{
+	"standard": BucketStorageTierStandard,
+	"archive":  BucketStorageTierArchive,
 }
 
 // GetBucketStorageTierEnumValues Enumerates the set of values for BucketStorageTierEnum
@@ -217,12 +223,7 @@ func GetBucketStorageTierEnumStringValues() []string {
 
 // GetMappingBucketStorageTierEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBucketStorageTierEnum(val string) (BucketStorageTierEnum, bool) {
-	mappingBucketStorageTierEnumIgnoreCase := make(map[string]BucketStorageTierEnum)
-	for k, v := range mappingBucketStorageTierEnum {
-		mappingBucketStorageTierEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBucketStorageTierEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBucketStorageTierEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -240,6 +241,12 @@ var mappingBucketVersioningEnum = map[string]BucketVersioningEnum{
 	"Enabled":   BucketVersioningEnabled,
 	"Suspended": BucketVersioningSuspended,
 	"Disabled":  BucketVersioningDisabled,
+}
+
+var mappingBucketVersioningEnumLowerCase = map[string]BucketVersioningEnum{
+	"enabled":   BucketVersioningEnabled,
+	"suspended": BucketVersioningSuspended,
+	"disabled":  BucketVersioningDisabled,
 }
 
 // GetBucketVersioningEnumValues Enumerates the set of values for BucketVersioningEnum
@@ -262,12 +269,7 @@ func GetBucketVersioningEnumStringValues() []string {
 
 // GetMappingBucketVersioningEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBucketVersioningEnum(val string) (BucketVersioningEnum, bool) {
-	mappingBucketVersioningEnumIgnoreCase := make(map[string]BucketVersioningEnum)
-	for k, v := range mappingBucketVersioningEnum {
-		mappingBucketVersioningEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBucketVersioningEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBucketVersioningEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -283,6 +285,11 @@ const (
 var mappingBucketAutoTieringEnum = map[string]BucketAutoTieringEnum{
 	"Disabled":         BucketAutoTieringDisabled,
 	"InfrequentAccess": BucketAutoTieringInfrequentaccess,
+}
+
+var mappingBucketAutoTieringEnumLowerCase = map[string]BucketAutoTieringEnum{
+	"disabled":         BucketAutoTieringDisabled,
+	"infrequentaccess": BucketAutoTieringInfrequentaccess,
 }
 
 // GetBucketAutoTieringEnumValues Enumerates the set of values for BucketAutoTieringEnum
@@ -304,11 +311,6 @@ func GetBucketAutoTieringEnumStringValues() []string {
 
 // GetMappingBucketAutoTieringEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBucketAutoTieringEnum(val string) (BucketAutoTieringEnum, bool) {
-	mappingBucketAutoTieringEnumIgnoreCase := make(map[string]BucketAutoTieringEnum)
-	for k, v := range mappingBucketAutoTieringEnum {
-		mappingBucketAutoTieringEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBucketAutoTieringEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBucketAutoTieringEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

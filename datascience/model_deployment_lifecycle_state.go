@@ -39,6 +39,17 @@ var mappingModelDeploymentLifecycleStateEnum = map[string]ModelDeploymentLifecyc
 	"NEEDS_ATTENTION": ModelDeploymentLifecycleStateNeedsAttention,
 }
 
+var mappingModelDeploymentLifecycleStateEnumLowerCase = map[string]ModelDeploymentLifecycleStateEnum{
+	"creating":        ModelDeploymentLifecycleStateCreating,
+	"active":          ModelDeploymentLifecycleStateActive,
+	"deleting":        ModelDeploymentLifecycleStateDeleting,
+	"failed":          ModelDeploymentLifecycleStateFailed,
+	"inactive":        ModelDeploymentLifecycleStateInactive,
+	"updating":        ModelDeploymentLifecycleStateUpdating,
+	"deleted":         ModelDeploymentLifecycleStateDeleted,
+	"needs_attention": ModelDeploymentLifecycleStateNeedsAttention,
+}
+
 // GetModelDeploymentLifecycleStateEnumValues Enumerates the set of values for ModelDeploymentLifecycleStateEnum
 func GetModelDeploymentLifecycleStateEnumValues() []ModelDeploymentLifecycleStateEnum {
 	values := make([]ModelDeploymentLifecycleStateEnum, 0)
@@ -64,11 +75,6 @@ func GetModelDeploymentLifecycleStateEnumStringValues() []string {
 
 // GetMappingModelDeploymentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingModelDeploymentLifecycleStateEnum(val string) (ModelDeploymentLifecycleStateEnum, bool) {
-	mappingModelDeploymentLifecycleStateEnumIgnoreCase := make(map[string]ModelDeploymentLifecycleStateEnum)
-	for k, v := range mappingModelDeploymentLifecycleStateEnum {
-		mappingModelDeploymentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingModelDeploymentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingModelDeploymentLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

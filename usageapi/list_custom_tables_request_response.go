@@ -6,7 +6,7 @@ package usageapi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -129,6 +129,10 @@ var mappingListCustomTablesSortByEnum = map[string]ListCustomTablesSortByEnum{
 	"displayName": ListCustomTablesSortByDisplayname,
 }
 
+var mappingListCustomTablesSortByEnumLowerCase = map[string]ListCustomTablesSortByEnum{
+	"displayname": ListCustomTablesSortByDisplayname,
+}
+
 // GetListCustomTablesSortByEnumValues Enumerates the set of values for ListCustomTablesSortByEnum
 func GetListCustomTablesSortByEnumValues() []ListCustomTablesSortByEnum {
 	values := make([]ListCustomTablesSortByEnum, 0)
@@ -147,12 +151,7 @@ func GetListCustomTablesSortByEnumStringValues() []string {
 
 // GetMappingListCustomTablesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCustomTablesSortByEnum(val string) (ListCustomTablesSortByEnum, bool) {
-	mappingListCustomTablesSortByEnumIgnoreCase := make(map[string]ListCustomTablesSortByEnum)
-	for k, v := range mappingListCustomTablesSortByEnum {
-		mappingListCustomTablesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCustomTablesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCustomTablesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -168,6 +167,11 @@ const (
 var mappingListCustomTablesSortOrderEnum = map[string]ListCustomTablesSortOrderEnum{
 	"ASC":  ListCustomTablesSortOrderAsc,
 	"DESC": ListCustomTablesSortOrderDesc,
+}
+
+var mappingListCustomTablesSortOrderEnumLowerCase = map[string]ListCustomTablesSortOrderEnum{
+	"asc":  ListCustomTablesSortOrderAsc,
+	"desc": ListCustomTablesSortOrderDesc,
 }
 
 // GetListCustomTablesSortOrderEnumValues Enumerates the set of values for ListCustomTablesSortOrderEnum
@@ -189,11 +193,6 @@ func GetListCustomTablesSortOrderEnumStringValues() []string {
 
 // GetMappingListCustomTablesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCustomTablesSortOrderEnum(val string) (ListCustomTablesSortOrderEnum, bool) {
-	mappingListCustomTablesSortOrderEnumIgnoreCase := make(map[string]ListCustomTablesSortOrderEnum)
-	for k, v := range mappingListCustomTablesSortOrderEnum {
-		mappingListCustomTablesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCustomTablesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCustomTablesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

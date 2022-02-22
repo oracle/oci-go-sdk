@@ -25,6 +25,10 @@ var mappingSubSystemNameEnum = map[string]SubSystemNameEnum{
 	"LOG": SubSystemNameLog,
 }
 
+var mappingSubSystemNameEnumLowerCase = map[string]SubSystemNameEnum{
+	"log": SubSystemNameLog,
+}
+
 // GetSubSystemNameEnumValues Enumerates the set of values for SubSystemNameEnum
 func GetSubSystemNameEnumValues() []SubSystemNameEnum {
 	values := make([]SubSystemNameEnum, 0)
@@ -43,11 +47,6 @@ func GetSubSystemNameEnumStringValues() []string {
 
 // GetMappingSubSystemNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSubSystemNameEnum(val string) (SubSystemNameEnum, bool) {
-	mappingSubSystemNameEnumIgnoreCase := make(map[string]SubSystemNameEnum)
-	for k, v := range mappingSubSystemNameEnum {
-		mappingSubSystemNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSubSystemNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSubSystemNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

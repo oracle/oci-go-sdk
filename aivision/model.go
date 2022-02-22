@@ -12,7 +12,7 @@ package aivision
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -255,6 +255,11 @@ var mappingModelModelTypeEnum = map[string]ModelModelTypeEnum{
 	"OBJECT_DETECTION":     ModelModelTypeObjectDetection,
 }
 
+var mappingModelModelTypeEnumLowerCase = map[string]ModelModelTypeEnum{
+	"image_classification": ModelModelTypeImageClassification,
+	"object_detection":     ModelModelTypeObjectDetection,
+}
+
 // GetModelModelTypeEnumValues Enumerates the set of values for ModelModelTypeEnum
 func GetModelModelTypeEnumValues() []ModelModelTypeEnum {
 	values := make([]ModelModelTypeEnum, 0)
@@ -274,12 +279,7 @@ func GetModelModelTypeEnumStringValues() []string {
 
 // GetMappingModelModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingModelModelTypeEnum(val string) (ModelModelTypeEnum, bool) {
-	mappingModelModelTypeEnumIgnoreCase := make(map[string]ModelModelTypeEnum)
-	for k, v := range mappingModelModelTypeEnum {
-		mappingModelModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingModelModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingModelModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -305,6 +305,15 @@ var mappingModelLifecycleStateEnum = map[string]ModelLifecycleStateEnum{
 	"FAILED":   ModelLifecycleStateFailed,
 }
 
+var mappingModelLifecycleStateEnumLowerCase = map[string]ModelLifecycleStateEnum{
+	"creating": ModelLifecycleStateCreating,
+	"updating": ModelLifecycleStateUpdating,
+	"active":   ModelLifecycleStateActive,
+	"deleting": ModelLifecycleStateDeleting,
+	"deleted":  ModelLifecycleStateDeleted,
+	"failed":   ModelLifecycleStateFailed,
+}
+
 // GetModelLifecycleStateEnumValues Enumerates the set of values for ModelLifecycleStateEnum
 func GetModelLifecycleStateEnumValues() []ModelLifecycleStateEnum {
 	values := make([]ModelLifecycleStateEnum, 0)
@@ -328,11 +337,6 @@ func GetModelLifecycleStateEnumStringValues() []string {
 
 // GetMappingModelLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingModelLifecycleStateEnum(val string) (ModelLifecycleStateEnum, bool) {
-	mappingModelLifecycleStateEnumIgnoreCase := make(map[string]ModelLifecycleStateEnum)
-	for k, v := range mappingModelLifecycleStateEnum {
-		mappingModelLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingModelLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingModelLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

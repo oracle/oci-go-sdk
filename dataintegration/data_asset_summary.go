@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -246,6 +246,17 @@ var mappingDataAssetSummaryModelTypeEnum = map[string]DataAssetSummaryModelTypeE
 	"AMAZON_S3_DATA_ASSET":             DataAssetSummaryModelTypeAmazonS3DataAsset,
 }
 
+var mappingDataAssetSummaryModelTypeEnumLowerCase = map[string]DataAssetSummaryModelTypeEnum{
+	"oracle_data_asset":                DataAssetSummaryModelTypeOracleDataAsset,
+	"oracle_object_storage_data_asset": DataAssetSummaryModelTypeOracleObjectStorageDataAsset,
+	"oracle_atp_data_asset":            DataAssetSummaryModelTypeOracleAtpDataAsset,
+	"oracle_adwc_data_asset":           DataAssetSummaryModelTypeOracleAdwcDataAsset,
+	"mysql_data_asset":                 DataAssetSummaryModelTypeMysqlDataAsset,
+	"generic_jdbc_data_asset":          DataAssetSummaryModelTypeGenericJdbcDataAsset,
+	"fusion_app_data_asset":            DataAssetSummaryModelTypeFusionAppDataAsset,
+	"amazon_s3_data_asset":             DataAssetSummaryModelTypeAmazonS3DataAsset,
+}
+
 // GetDataAssetSummaryModelTypeEnumValues Enumerates the set of values for DataAssetSummaryModelTypeEnum
 func GetDataAssetSummaryModelTypeEnumValues() []DataAssetSummaryModelTypeEnum {
 	values := make([]DataAssetSummaryModelTypeEnum, 0)
@@ -271,11 +282,6 @@ func GetDataAssetSummaryModelTypeEnumStringValues() []string {
 
 // GetMappingDataAssetSummaryModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataAssetSummaryModelTypeEnum(val string) (DataAssetSummaryModelTypeEnum, bool) {
-	mappingDataAssetSummaryModelTypeEnumIgnoreCase := make(map[string]DataAssetSummaryModelTypeEnum)
-	for k, v := range mappingDataAssetSummaryModelTypeEnum {
-		mappingDataAssetSummaryModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataAssetSummaryModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataAssetSummaryModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

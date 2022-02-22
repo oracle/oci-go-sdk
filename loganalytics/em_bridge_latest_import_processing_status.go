@@ -33,6 +33,14 @@ var mappingEmBridgeLatestImportProcessingStatusEnum = map[string]EmBridgeLatestI
 	"PARTIAL_SUCCESS": EmBridgeLatestImportProcessingStatusPartialSuccess,
 }
 
+var mappingEmBridgeLatestImportProcessingStatusEnumLowerCase = map[string]EmBridgeLatestImportProcessingStatusEnum{
+	"not_started":     EmBridgeLatestImportProcessingStatusNotStarted,
+	"success":         EmBridgeLatestImportProcessingStatusSuccess,
+	"in_progress":     EmBridgeLatestImportProcessingStatusInProgress,
+	"failed":          EmBridgeLatestImportProcessingStatusFailed,
+	"partial_success": EmBridgeLatestImportProcessingStatusPartialSuccess,
+}
+
 // GetEmBridgeLatestImportProcessingStatusEnumValues Enumerates the set of values for EmBridgeLatestImportProcessingStatusEnum
 func GetEmBridgeLatestImportProcessingStatusEnumValues() []EmBridgeLatestImportProcessingStatusEnum {
 	values := make([]EmBridgeLatestImportProcessingStatusEnum, 0)
@@ -55,11 +63,6 @@ func GetEmBridgeLatestImportProcessingStatusEnumStringValues() []string {
 
 // GetMappingEmBridgeLatestImportProcessingStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEmBridgeLatestImportProcessingStatusEnum(val string) (EmBridgeLatestImportProcessingStatusEnum, bool) {
-	mappingEmBridgeLatestImportProcessingStatusEnumIgnoreCase := make(map[string]EmBridgeLatestImportProcessingStatusEnum)
-	for k, v := range mappingEmBridgeLatestImportProcessingStatusEnum {
-		mappingEmBridgeLatestImportProcessingStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEmBridgeLatestImportProcessingStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEmBridgeLatestImportProcessingStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

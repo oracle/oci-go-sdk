@@ -6,7 +6,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -143,6 +143,11 @@ var mappingListDynamicGroupsSortByEnum = map[string]ListDynamicGroupsSortByEnum{
 	"NAME":        ListDynamicGroupsSortByName,
 }
 
+var mappingListDynamicGroupsSortByEnumLowerCase = map[string]ListDynamicGroupsSortByEnum{
+	"timecreated": ListDynamicGroupsSortByTimecreated,
+	"name":        ListDynamicGroupsSortByName,
+}
+
 // GetListDynamicGroupsSortByEnumValues Enumerates the set of values for ListDynamicGroupsSortByEnum
 func GetListDynamicGroupsSortByEnumValues() []ListDynamicGroupsSortByEnum {
 	values := make([]ListDynamicGroupsSortByEnum, 0)
@@ -162,12 +167,7 @@ func GetListDynamicGroupsSortByEnumStringValues() []string {
 
 // GetMappingListDynamicGroupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDynamicGroupsSortByEnum(val string) (ListDynamicGroupsSortByEnum, bool) {
-	mappingListDynamicGroupsSortByEnumIgnoreCase := make(map[string]ListDynamicGroupsSortByEnum)
-	for k, v := range mappingListDynamicGroupsSortByEnum {
-		mappingListDynamicGroupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDynamicGroupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDynamicGroupsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +183,11 @@ const (
 var mappingListDynamicGroupsSortOrderEnum = map[string]ListDynamicGroupsSortOrderEnum{
 	"ASC":  ListDynamicGroupsSortOrderAsc,
 	"DESC": ListDynamicGroupsSortOrderDesc,
+}
+
+var mappingListDynamicGroupsSortOrderEnumLowerCase = map[string]ListDynamicGroupsSortOrderEnum{
+	"asc":  ListDynamicGroupsSortOrderAsc,
+	"desc": ListDynamicGroupsSortOrderDesc,
 }
 
 // GetListDynamicGroupsSortOrderEnumValues Enumerates the set of values for ListDynamicGroupsSortOrderEnum
@@ -204,11 +209,6 @@ func GetListDynamicGroupsSortOrderEnumStringValues() []string {
 
 // GetMappingListDynamicGroupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDynamicGroupsSortOrderEnum(val string) (ListDynamicGroupsSortOrderEnum, bool) {
-	mappingListDynamicGroupsSortOrderEnumIgnoreCase := make(map[string]ListDynamicGroupsSortOrderEnum)
-	for k, v := range mappingListDynamicGroupsSortOrderEnum {
-		mappingListDynamicGroupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDynamicGroupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDynamicGroupsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

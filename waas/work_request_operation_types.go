@@ -43,6 +43,19 @@ var mappingWorkRequestOperationTypesEnum = map[string]WorkRequestOperationTypesE
 	"DELETE_CUSTOM_PROTECTION_RULE": WorkRequestOperationTypesDeleteCustomProtectionRule,
 }
 
+var mappingWorkRequestOperationTypesEnumLowerCase = map[string]WorkRequestOperationTypesEnum{
+	"create_waas_policy":            WorkRequestOperationTypesCreateWaasPolicy,
+	"update_waas_policy":            WorkRequestOperationTypesUpdateWaasPolicy,
+	"delete_waas_policy":            WorkRequestOperationTypesDeleteWaasPolicy,
+	"create_http_redirect":          WorkRequestOperationTypesCreateHttpRedirect,
+	"update_http_redirect":          WorkRequestOperationTypesUpdateHttpRedirect,
+	"delete_http_redirect":          WorkRequestOperationTypesDeleteHttpRedirect,
+	"purge_waas_policy_cache":       WorkRequestOperationTypesPurgeWaasPolicyCache,
+	"create_custom_protection_rule": WorkRequestOperationTypesCreateCustomProtectionRule,
+	"update_custom_protection_rule": WorkRequestOperationTypesUpdateCustomProtectionRule,
+	"delete_custom_protection_rule": WorkRequestOperationTypesDeleteCustomProtectionRule,
+}
+
 // GetWorkRequestOperationTypesEnumValues Enumerates the set of values for WorkRequestOperationTypesEnum
 func GetWorkRequestOperationTypesEnumValues() []WorkRequestOperationTypesEnum {
 	values := make([]WorkRequestOperationTypesEnum, 0)
@@ -70,11 +83,6 @@ func GetWorkRequestOperationTypesEnumStringValues() []string {
 
 // GetMappingWorkRequestOperationTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestOperationTypesEnum(val string) (WorkRequestOperationTypesEnum, bool) {
-	mappingWorkRequestOperationTypesEnumIgnoreCase := make(map[string]WorkRequestOperationTypesEnum)
-	for k, v := range mappingWorkRequestOperationTypesEnum {
-		mappingWorkRequestOperationTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestOperationTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestOperationTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

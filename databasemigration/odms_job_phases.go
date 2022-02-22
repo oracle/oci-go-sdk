@@ -61,6 +61,28 @@ var mappingOdmsJobPhasesEnum = map[string]OdmsJobPhasesEnum{
 	"ODMS_CLEANUP":                        OdmsJobPhasesOdmsCleanup,
 }
 
+var mappingOdmsJobPhasesEnumLowerCase = map[string]OdmsJobPhasesEnum{
+	"odms_validate_tgt":                   OdmsJobPhasesOdmsValidateTgt,
+	"odms_validate_src":                   OdmsJobPhasesOdmsValidateSrc,
+	"odms_validate_premigration_advisor":  OdmsJobPhasesOdmsValidatePremigrationAdvisor,
+	"odms_validate_gg_hub":                OdmsJobPhasesOdmsValidateGgHub,
+	"odms_validate_datapump_settings":     OdmsJobPhasesOdmsValidateDatapumpSettings,
+	"odms_validate_datapump_settings_src": OdmsJobPhasesOdmsValidateDatapumpSettingsSrc,
+	"odms_validate_datapump_settings_tgt": OdmsJobPhasesOdmsValidateDatapumpSettingsTgt,
+	"odms_validate_datapump_src":          OdmsJobPhasesOdmsValidateDatapumpSrc,
+	"odms_validate_datapump_estimate_src": OdmsJobPhasesOdmsValidateDatapumpEstimateSrc,
+	"odms_validate":                       OdmsJobPhasesOdmsValidate,
+	"odms_prepare":                        OdmsJobPhasesOdmsPrepare,
+	"odms_initial_load_export":            OdmsJobPhasesOdmsInitialLoadExport,
+	"odms_data_upload":                    OdmsJobPhasesOdmsDataUpload,
+	"odms_initial_load_import":            OdmsJobPhasesOdmsInitialLoadImport,
+	"odms_post_initial_load":              OdmsJobPhasesOdmsPostInitialLoad,
+	"odms_prepare_replication_target":     OdmsJobPhasesOdmsPrepareReplicationTarget,
+	"odms_monitor_replication_lag":        OdmsJobPhasesOdmsMonitorReplicationLag,
+	"odms_switchover":                     OdmsJobPhasesOdmsSwitchover,
+	"odms_cleanup":                        OdmsJobPhasesOdmsCleanup,
+}
+
 // GetOdmsJobPhasesEnumValues Enumerates the set of values for OdmsJobPhasesEnum
 func GetOdmsJobPhasesEnumValues() []OdmsJobPhasesEnum {
 	values := make([]OdmsJobPhasesEnum, 0)
@@ -97,11 +119,6 @@ func GetOdmsJobPhasesEnumStringValues() []string {
 
 // GetMappingOdmsJobPhasesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOdmsJobPhasesEnum(val string) (OdmsJobPhasesEnum, bool) {
-	mappingOdmsJobPhasesEnumIgnoreCase := make(map[string]OdmsJobPhasesEnum)
-	for k, v := range mappingOdmsJobPhasesEnum {
-		mappingOdmsJobPhasesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOdmsJobPhasesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOdmsJobPhasesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package integration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -199,6 +199,11 @@ var mappingIntegrationInstanceIntegrationInstanceTypeEnum = map[string]Integrati
 	"ENTERPRISE": IntegrationInstanceIntegrationInstanceTypeEnterprise,
 }
 
+var mappingIntegrationInstanceIntegrationInstanceTypeEnumLowerCase = map[string]IntegrationInstanceIntegrationInstanceTypeEnum{
+	"standard":   IntegrationInstanceIntegrationInstanceTypeStandard,
+	"enterprise": IntegrationInstanceIntegrationInstanceTypeEnterprise,
+}
+
 // GetIntegrationInstanceIntegrationInstanceTypeEnumValues Enumerates the set of values for IntegrationInstanceIntegrationInstanceTypeEnum
 func GetIntegrationInstanceIntegrationInstanceTypeEnumValues() []IntegrationInstanceIntegrationInstanceTypeEnum {
 	values := make([]IntegrationInstanceIntegrationInstanceTypeEnum, 0)
@@ -218,12 +223,7 @@ func GetIntegrationInstanceIntegrationInstanceTypeEnumStringValues() []string {
 
 // GetMappingIntegrationInstanceIntegrationInstanceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIntegrationInstanceIntegrationInstanceTypeEnum(val string) (IntegrationInstanceIntegrationInstanceTypeEnum, bool) {
-	mappingIntegrationInstanceIntegrationInstanceTypeEnumIgnoreCase := make(map[string]IntegrationInstanceIntegrationInstanceTypeEnum)
-	for k, v := range mappingIntegrationInstanceIntegrationInstanceTypeEnum {
-		mappingIntegrationInstanceIntegrationInstanceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIntegrationInstanceIntegrationInstanceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIntegrationInstanceIntegrationInstanceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -251,6 +251,16 @@ var mappingIntegrationInstanceLifecycleStateEnum = map[string]IntegrationInstanc
 	"FAILED":   IntegrationInstanceLifecycleStateFailed,
 }
 
+var mappingIntegrationInstanceLifecycleStateEnumLowerCase = map[string]IntegrationInstanceLifecycleStateEnum{
+	"creating": IntegrationInstanceLifecycleStateCreating,
+	"updating": IntegrationInstanceLifecycleStateUpdating,
+	"active":   IntegrationInstanceLifecycleStateActive,
+	"inactive": IntegrationInstanceLifecycleStateInactive,
+	"deleting": IntegrationInstanceLifecycleStateDeleting,
+	"deleted":  IntegrationInstanceLifecycleStateDeleted,
+	"failed":   IntegrationInstanceLifecycleStateFailed,
+}
+
 // GetIntegrationInstanceLifecycleStateEnumValues Enumerates the set of values for IntegrationInstanceLifecycleStateEnum
 func GetIntegrationInstanceLifecycleStateEnumValues() []IntegrationInstanceLifecycleStateEnum {
 	values := make([]IntegrationInstanceLifecycleStateEnum, 0)
@@ -275,12 +285,7 @@ func GetIntegrationInstanceLifecycleStateEnumStringValues() []string {
 
 // GetMappingIntegrationInstanceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIntegrationInstanceLifecycleStateEnum(val string) (IntegrationInstanceLifecycleStateEnum, bool) {
-	mappingIntegrationInstanceLifecycleStateEnumIgnoreCase := make(map[string]IntegrationInstanceLifecycleStateEnum)
-	for k, v := range mappingIntegrationInstanceLifecycleStateEnum {
-		mappingIntegrationInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIntegrationInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIntegrationInstanceLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -298,6 +303,12 @@ var mappingIntegrationInstanceConsumptionModelEnum = map[string]IntegrationInsta
 	"UCM":      IntegrationInstanceConsumptionModelUcm,
 	"GOV":      IntegrationInstanceConsumptionModelGov,
 	"OIC4SAAS": IntegrationInstanceConsumptionModelOic4saas,
+}
+
+var mappingIntegrationInstanceConsumptionModelEnumLowerCase = map[string]IntegrationInstanceConsumptionModelEnum{
+	"ucm":      IntegrationInstanceConsumptionModelUcm,
+	"gov":      IntegrationInstanceConsumptionModelGov,
+	"oic4saas": IntegrationInstanceConsumptionModelOic4saas,
 }
 
 // GetIntegrationInstanceConsumptionModelEnumValues Enumerates the set of values for IntegrationInstanceConsumptionModelEnum
@@ -320,11 +331,6 @@ func GetIntegrationInstanceConsumptionModelEnumStringValues() []string {
 
 // GetMappingIntegrationInstanceConsumptionModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIntegrationInstanceConsumptionModelEnum(val string) (IntegrationInstanceConsumptionModelEnum, bool) {
-	mappingIntegrationInstanceConsumptionModelEnumIgnoreCase := make(map[string]IntegrationInstanceConsumptionModelEnum)
-	for k, v := range mappingIntegrationInstanceConsumptionModelEnum {
-		mappingIntegrationInstanceConsumptionModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIntegrationInstanceConsumptionModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIntegrationInstanceConsumptionModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

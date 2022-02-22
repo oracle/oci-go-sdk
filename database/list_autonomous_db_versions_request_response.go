@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -127,6 +127,11 @@ var mappingListAutonomousDbVersionsSortOrderEnum = map[string]ListAutonomousDbVe
 	"DESC": ListAutonomousDbVersionsSortOrderDesc,
 }
 
+var mappingListAutonomousDbVersionsSortOrderEnumLowerCase = map[string]ListAutonomousDbVersionsSortOrderEnum{
+	"asc":  ListAutonomousDbVersionsSortOrderAsc,
+	"desc": ListAutonomousDbVersionsSortOrderDesc,
+}
+
 // GetListAutonomousDbVersionsSortOrderEnumValues Enumerates the set of values for ListAutonomousDbVersionsSortOrderEnum
 func GetListAutonomousDbVersionsSortOrderEnumValues() []ListAutonomousDbVersionsSortOrderEnum {
 	values := make([]ListAutonomousDbVersionsSortOrderEnum, 0)
@@ -146,11 +151,6 @@ func GetListAutonomousDbVersionsSortOrderEnumStringValues() []string {
 
 // GetMappingListAutonomousDbVersionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAutonomousDbVersionsSortOrderEnum(val string) (ListAutonomousDbVersionsSortOrderEnum, bool) {
-	mappingListAutonomousDbVersionsSortOrderEnumIgnoreCase := make(map[string]ListAutonomousDbVersionsSortOrderEnum)
-	for k, v := range mappingListAutonomousDbVersionsSortOrderEnum {
-		mappingListAutonomousDbVersionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAutonomousDbVersionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAutonomousDbVersionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

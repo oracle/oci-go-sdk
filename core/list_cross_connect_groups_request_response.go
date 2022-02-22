@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -149,6 +149,11 @@ var mappingListCrossConnectGroupsSortByEnum = map[string]ListCrossConnectGroupsS
 	"DISPLAYNAME": ListCrossConnectGroupsSortByDisplayname,
 }
 
+var mappingListCrossConnectGroupsSortByEnumLowerCase = map[string]ListCrossConnectGroupsSortByEnum{
+	"timecreated": ListCrossConnectGroupsSortByTimecreated,
+	"displayname": ListCrossConnectGroupsSortByDisplayname,
+}
+
 // GetListCrossConnectGroupsSortByEnumValues Enumerates the set of values for ListCrossConnectGroupsSortByEnum
 func GetListCrossConnectGroupsSortByEnumValues() []ListCrossConnectGroupsSortByEnum {
 	values := make([]ListCrossConnectGroupsSortByEnum, 0)
@@ -168,12 +173,7 @@ func GetListCrossConnectGroupsSortByEnumStringValues() []string {
 
 // GetMappingListCrossConnectGroupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCrossConnectGroupsSortByEnum(val string) (ListCrossConnectGroupsSortByEnum, bool) {
-	mappingListCrossConnectGroupsSortByEnumIgnoreCase := make(map[string]ListCrossConnectGroupsSortByEnum)
-	for k, v := range mappingListCrossConnectGroupsSortByEnum {
-		mappingListCrossConnectGroupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCrossConnectGroupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCrossConnectGroupsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -189,6 +189,11 @@ const (
 var mappingListCrossConnectGroupsSortOrderEnum = map[string]ListCrossConnectGroupsSortOrderEnum{
 	"ASC":  ListCrossConnectGroupsSortOrderAsc,
 	"DESC": ListCrossConnectGroupsSortOrderDesc,
+}
+
+var mappingListCrossConnectGroupsSortOrderEnumLowerCase = map[string]ListCrossConnectGroupsSortOrderEnum{
+	"asc":  ListCrossConnectGroupsSortOrderAsc,
+	"desc": ListCrossConnectGroupsSortOrderDesc,
 }
 
 // GetListCrossConnectGroupsSortOrderEnumValues Enumerates the set of values for ListCrossConnectGroupsSortOrderEnum
@@ -210,11 +215,6 @@ func GetListCrossConnectGroupsSortOrderEnumStringValues() []string {
 
 // GetMappingListCrossConnectGroupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCrossConnectGroupsSortOrderEnum(val string) (ListCrossConnectGroupsSortOrderEnum, bool) {
-	mappingListCrossConnectGroupsSortOrderEnumIgnoreCase := make(map[string]ListCrossConnectGroupsSortOrderEnum)
-	for k, v := range mappingListCrossConnectGroupsSortOrderEnum {
-		mappingListCrossConnectGroupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCrossConnectGroupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCrossConnectGroupsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

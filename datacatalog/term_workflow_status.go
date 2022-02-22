@@ -32,6 +32,13 @@ var mappingTermWorkflowStatusEnum = map[string]TermWorkflowStatusEnum{
 	"ESCALATED":    TermWorkflowStatusEscalated,
 }
 
+var mappingTermWorkflowStatusEnumLowerCase = map[string]TermWorkflowStatusEnum{
+	"new":          TermWorkflowStatusNew,
+	"approved":     TermWorkflowStatusApproved,
+	"under_review": TermWorkflowStatusUnderReview,
+	"escalated":    TermWorkflowStatusEscalated,
+}
+
 // GetTermWorkflowStatusEnumValues Enumerates the set of values for TermWorkflowStatusEnum
 func GetTermWorkflowStatusEnumValues() []TermWorkflowStatusEnum {
 	values := make([]TermWorkflowStatusEnum, 0)
@@ -53,11 +60,6 @@ func GetTermWorkflowStatusEnumStringValues() []string {
 
 // GetMappingTermWorkflowStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTermWorkflowStatusEnum(val string) (TermWorkflowStatusEnum, bool) {
-	mappingTermWorkflowStatusEnumIgnoreCase := make(map[string]TermWorkflowStatusEnum)
-	for k, v := range mappingTermWorkflowStatusEnum {
-		mappingTermWorkflowStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTermWorkflowStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTermWorkflowStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

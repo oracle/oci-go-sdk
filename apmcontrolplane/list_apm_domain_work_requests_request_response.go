@@ -6,7 +6,7 @@ package apmcontrolplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -18,7 +18,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/ListApmDomainWorkRequests.go.html to see an example of how to use ListApmDomainWorkRequestsRequest.
 type ListApmDomainWorkRequestsRequest struct {
 
-	// The OCID of the APM domain
+	// The OCID of the APM domain.
 	ApmDomainId *string `mandatory:"true" contributesTo:"path" name:"apmDomainId"`
 
 	// The client request ID for tracing.

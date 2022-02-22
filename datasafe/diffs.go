@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -75,6 +75,15 @@ var mappingDiffsSeverityEnum = map[string]DiffsSeverityEnum{
 	"PASS":     DiffsSeverityPass,
 }
 
+var mappingDiffsSeverityEnumLowerCase = map[string]DiffsSeverityEnum{
+	"high":     DiffsSeverityHigh,
+	"medium":   DiffsSeverityMedium,
+	"low":      DiffsSeverityLow,
+	"evaluate": DiffsSeverityEvaluate,
+	"advisory": DiffsSeverityAdvisory,
+	"pass":     DiffsSeverityPass,
+}
+
 // GetDiffsSeverityEnumValues Enumerates the set of values for DiffsSeverityEnum
 func GetDiffsSeverityEnumValues() []DiffsSeverityEnum {
 	values := make([]DiffsSeverityEnum, 0)
@@ -98,11 +107,6 @@ func GetDiffsSeverityEnumStringValues() []string {
 
 // GetMappingDiffsSeverityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDiffsSeverityEnum(val string) (DiffsSeverityEnum, bool) {
-	mappingDiffsSeverityEnumIgnoreCase := make(map[string]DiffsSeverityEnum)
-	for k, v := range mappingDiffsSeverityEnum {
-		mappingDiffsSeverityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDiffsSeverityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDiffsSeverityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

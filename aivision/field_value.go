@@ -12,7 +12,7 @@ package aivision
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -162,6 +162,16 @@ var mappingFieldValueValueTypeEnum = map[string]FieldValueValueTypeEnum{
 	"ARRAY":        FieldValueValueTypeArray,
 }
 
+var mappingFieldValueValueTypeEnumLowerCase = map[string]FieldValueValueTypeEnum{
+	"string":       FieldValueValueTypeString,
+	"date":         FieldValueValueTypeDate,
+	"time":         FieldValueValueTypeTime,
+	"phone_number": FieldValueValueTypePhoneNumber,
+	"number":       FieldValueValueTypeNumber,
+	"integer":      FieldValueValueTypeInteger,
+	"array":        FieldValueValueTypeArray,
+}
+
 // GetFieldValueValueTypeEnumValues Enumerates the set of values for FieldValueValueTypeEnum
 func GetFieldValueValueTypeEnumValues() []FieldValueValueTypeEnum {
 	values := make([]FieldValueValueTypeEnum, 0)
@@ -186,11 +196,6 @@ func GetFieldValueValueTypeEnumStringValues() []string {
 
 // GetMappingFieldValueValueTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFieldValueValueTypeEnum(val string) (FieldValueValueTypeEnum, bool) {
-	mappingFieldValueValueTypeEnumIgnoreCase := make(map[string]FieldValueValueTypeEnum)
-	for k, v := range mappingFieldValueValueTypeEnum {
-		mappingFieldValueValueTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFieldValueValueTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFieldValueValueTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

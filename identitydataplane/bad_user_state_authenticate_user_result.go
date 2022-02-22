@@ -11,7 +11,7 @@ package identitydataplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -71,6 +71,13 @@ var mappingBadUserStateAuthenticateUserResultUserStateEnum = map[string]BadUserS
 	"PASSWORD_INVALID":          BadUserStateAuthenticateUserResultUserStatePasswordInvalid,
 }
 
+var mappingBadUserStateAuthenticateUserResultUserStateEnumLowerCase = map[string]BadUserStateAuthenticateUserResultUserStateEnum{
+	"user_blocked":              BadUserStateAuthenticateUserResultUserStateUserBlocked,
+	"user_disabled":             BadUserStateAuthenticateUserResultUserStateUserDisabled,
+	"one_time_password_expired": BadUserStateAuthenticateUserResultUserStateOneTimePasswordExpired,
+	"password_invalid":          BadUserStateAuthenticateUserResultUserStatePasswordInvalid,
+}
+
 // GetBadUserStateAuthenticateUserResultUserStateEnumValues Enumerates the set of values for BadUserStateAuthenticateUserResultUserStateEnum
 func GetBadUserStateAuthenticateUserResultUserStateEnumValues() []BadUserStateAuthenticateUserResultUserStateEnum {
 	values := make([]BadUserStateAuthenticateUserResultUserStateEnum, 0)
@@ -92,11 +99,6 @@ func GetBadUserStateAuthenticateUserResultUserStateEnumStringValues() []string {
 
 // GetMappingBadUserStateAuthenticateUserResultUserStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBadUserStateAuthenticateUserResultUserStateEnum(val string) (BadUserStateAuthenticateUserResultUserStateEnum, bool) {
-	mappingBadUserStateAuthenticateUserResultUserStateEnumIgnoreCase := make(map[string]BadUserStateAuthenticateUserResultUserStateEnum)
-	for k, v := range mappingBadUserStateAuthenticateUserResultUserStateEnum {
-		mappingBadUserStateAuthenticateUserResultUserStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBadUserStateAuthenticateUserResultUserStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBadUserStateAuthenticateUserResultUserStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

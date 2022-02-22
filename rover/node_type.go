@@ -27,6 +27,11 @@ var mappingNodeTypeEnum = map[string]NodeTypeEnum{
 	"CLUSTERED":  NodeTypeClustered,
 }
 
+var mappingNodeTypeEnumLowerCase = map[string]NodeTypeEnum{
+	"standalone": NodeTypeStandalone,
+	"clustered":  NodeTypeClustered,
+}
+
 // GetNodeTypeEnumValues Enumerates the set of values for NodeTypeEnum
 func GetNodeTypeEnumValues() []NodeTypeEnum {
 	values := make([]NodeTypeEnum, 0)
@@ -46,11 +51,6 @@ func GetNodeTypeEnumStringValues() []string {
 
 // GetMappingNodeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNodeTypeEnum(val string) (NodeTypeEnum, bool) {
-	mappingNodeTypeEnumIgnoreCase := make(map[string]NodeTypeEnum)
-	for k, v := range mappingNodeTypeEnum {
-		mappingNodeTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNodeTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNodeTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

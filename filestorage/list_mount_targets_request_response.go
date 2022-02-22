@@ -6,7 +6,7 @@ package filestorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -170,6 +170,14 @@ var mappingListMountTargetsLifecycleStateEnum = map[string]ListMountTargetsLifec
 	"FAILED":   ListMountTargetsLifecycleStateFailed,
 }
 
+var mappingListMountTargetsLifecycleStateEnumLowerCase = map[string]ListMountTargetsLifecycleStateEnum{
+	"creating": ListMountTargetsLifecycleStateCreating,
+	"active":   ListMountTargetsLifecycleStateActive,
+	"deleting": ListMountTargetsLifecycleStateDeleting,
+	"deleted":  ListMountTargetsLifecycleStateDeleted,
+	"failed":   ListMountTargetsLifecycleStateFailed,
+}
+
 // GetListMountTargetsLifecycleStateEnumValues Enumerates the set of values for ListMountTargetsLifecycleStateEnum
 func GetListMountTargetsLifecycleStateEnumValues() []ListMountTargetsLifecycleStateEnum {
 	values := make([]ListMountTargetsLifecycleStateEnum, 0)
@@ -192,12 +200,7 @@ func GetListMountTargetsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListMountTargetsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMountTargetsLifecycleStateEnum(val string) (ListMountTargetsLifecycleStateEnum, bool) {
-	mappingListMountTargetsLifecycleStateEnumIgnoreCase := make(map[string]ListMountTargetsLifecycleStateEnum)
-	for k, v := range mappingListMountTargetsLifecycleStateEnum {
-		mappingListMountTargetsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMountTargetsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMountTargetsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -213,6 +216,11 @@ const (
 var mappingListMountTargetsSortByEnum = map[string]ListMountTargetsSortByEnum{
 	"TIMECREATED": ListMountTargetsSortByTimecreated,
 	"DISPLAYNAME": ListMountTargetsSortByDisplayname,
+}
+
+var mappingListMountTargetsSortByEnumLowerCase = map[string]ListMountTargetsSortByEnum{
+	"timecreated": ListMountTargetsSortByTimecreated,
+	"displayname": ListMountTargetsSortByDisplayname,
 }
 
 // GetListMountTargetsSortByEnumValues Enumerates the set of values for ListMountTargetsSortByEnum
@@ -234,12 +242,7 @@ func GetListMountTargetsSortByEnumStringValues() []string {
 
 // GetMappingListMountTargetsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMountTargetsSortByEnum(val string) (ListMountTargetsSortByEnum, bool) {
-	mappingListMountTargetsSortByEnumIgnoreCase := make(map[string]ListMountTargetsSortByEnum)
-	for k, v := range mappingListMountTargetsSortByEnum {
-		mappingListMountTargetsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMountTargetsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMountTargetsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -255,6 +258,11 @@ const (
 var mappingListMountTargetsSortOrderEnum = map[string]ListMountTargetsSortOrderEnum{
 	"ASC":  ListMountTargetsSortOrderAsc,
 	"DESC": ListMountTargetsSortOrderDesc,
+}
+
+var mappingListMountTargetsSortOrderEnumLowerCase = map[string]ListMountTargetsSortOrderEnum{
+	"asc":  ListMountTargetsSortOrderAsc,
+	"desc": ListMountTargetsSortOrderDesc,
 }
 
 // GetListMountTargetsSortOrderEnumValues Enumerates the set of values for ListMountTargetsSortOrderEnum
@@ -276,11 +284,6 @@ func GetListMountTargetsSortOrderEnumStringValues() []string {
 
 // GetMappingListMountTargetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMountTargetsSortOrderEnum(val string) (ListMountTargetsSortOrderEnum, bool) {
-	mappingListMountTargetsSortOrderEnumIgnoreCase := make(map[string]ListMountTargetsSortOrderEnum)
-	for k, v := range mappingListMountTargetsSortOrderEnum {
-		mappingListMountTargetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMountTargetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMountTargetsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

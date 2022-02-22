@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -73,6 +73,14 @@ var mappingIamWorkRequestResourceActionTypeEnum = map[string]IamWorkRequestResou
 	"IN_PROGRESS": IamWorkRequestResourceActionTypeInProgress,
 }
 
+var mappingIamWorkRequestResourceActionTypeEnumLowerCase = map[string]IamWorkRequestResourceActionTypeEnum{
+	"created":     IamWorkRequestResourceActionTypeCreated,
+	"updated":     IamWorkRequestResourceActionTypeUpdated,
+	"deleted":     IamWorkRequestResourceActionTypeDeleted,
+	"related":     IamWorkRequestResourceActionTypeRelated,
+	"in_progress": IamWorkRequestResourceActionTypeInProgress,
+}
+
 // GetIamWorkRequestResourceActionTypeEnumValues Enumerates the set of values for IamWorkRequestResourceActionTypeEnum
 func GetIamWorkRequestResourceActionTypeEnumValues() []IamWorkRequestResourceActionTypeEnum {
 	values := make([]IamWorkRequestResourceActionTypeEnum, 0)
@@ -95,11 +103,6 @@ func GetIamWorkRequestResourceActionTypeEnumStringValues() []string {
 
 // GetMappingIamWorkRequestResourceActionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIamWorkRequestResourceActionTypeEnum(val string) (IamWorkRequestResourceActionTypeEnum, bool) {
-	mappingIamWorkRequestResourceActionTypeEnumIgnoreCase := make(map[string]IamWorkRequestResourceActionTypeEnum)
-	for k, v := range mappingIamWorkRequestResourceActionTypeEnum {
-		mappingIamWorkRequestResourceActionTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIamWorkRequestResourceActionTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIamWorkRequestResourceActionTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -135,6 +135,11 @@ var mappingSearchSoftwarePackagesSortOrderEnum = map[string]SearchSoftwarePackag
 	"DESC": SearchSoftwarePackagesSortOrderDesc,
 }
 
+var mappingSearchSoftwarePackagesSortOrderEnumLowerCase = map[string]SearchSoftwarePackagesSortOrderEnum{
+	"asc":  SearchSoftwarePackagesSortOrderAsc,
+	"desc": SearchSoftwarePackagesSortOrderDesc,
+}
+
 // GetSearchSoftwarePackagesSortOrderEnumValues Enumerates the set of values for SearchSoftwarePackagesSortOrderEnum
 func GetSearchSoftwarePackagesSortOrderEnumValues() []SearchSoftwarePackagesSortOrderEnum {
 	values := make([]SearchSoftwarePackagesSortOrderEnum, 0)
@@ -154,12 +159,7 @@ func GetSearchSoftwarePackagesSortOrderEnumStringValues() []string {
 
 // GetMappingSearchSoftwarePackagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSearchSoftwarePackagesSortOrderEnum(val string) (SearchSoftwarePackagesSortOrderEnum, bool) {
-	mappingSearchSoftwarePackagesSortOrderEnumIgnoreCase := make(map[string]SearchSoftwarePackagesSortOrderEnum)
-	for k, v := range mappingSearchSoftwarePackagesSortOrderEnum {
-		mappingSearchSoftwarePackagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSearchSoftwarePackagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSearchSoftwarePackagesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -175,6 +175,11 @@ const (
 var mappingSearchSoftwarePackagesSortByEnum = map[string]SearchSoftwarePackagesSortByEnum{
 	"TIMECREATED": SearchSoftwarePackagesSortByTimecreated,
 	"DISPLAYNAME": SearchSoftwarePackagesSortByDisplayname,
+}
+
+var mappingSearchSoftwarePackagesSortByEnumLowerCase = map[string]SearchSoftwarePackagesSortByEnum{
+	"timecreated": SearchSoftwarePackagesSortByTimecreated,
+	"displayname": SearchSoftwarePackagesSortByDisplayname,
 }
 
 // GetSearchSoftwarePackagesSortByEnumValues Enumerates the set of values for SearchSoftwarePackagesSortByEnum
@@ -196,11 +201,6 @@ func GetSearchSoftwarePackagesSortByEnumStringValues() []string {
 
 // GetMappingSearchSoftwarePackagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSearchSoftwarePackagesSortByEnum(val string) (SearchSoftwarePackagesSortByEnum, bool) {
-	mappingSearchSoftwarePackagesSortByEnumIgnoreCase := make(map[string]SearchSoftwarePackagesSortByEnum)
-	for k, v := range mappingSearchSoftwarePackagesSortByEnum {
-		mappingSearchSoftwarePackagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSearchSoftwarePackagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSearchSoftwarePackagesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

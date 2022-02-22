@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -147,6 +147,24 @@ var mappingGetConnectionFieldsEnum = map[string]GetConnectionFieldsEnum{
 	"uri":               GetConnectionFieldsUri,
 }
 
+var mappingGetConnectionFieldsEnumLowerCase = map[string]GetConnectionFieldsEnum{
+	"key":               GetConnectionFieldsKey,
+	"displayname":       GetConnectionFieldsDisplayname,
+	"description":       GetConnectionFieldsDescription,
+	"dataassetkey":      GetConnectionFieldsDataassetkey,
+	"typekey":           GetConnectionFieldsTypekey,
+	"timecreated":       GetConnectionFieldsTimecreated,
+	"timeupdated":       GetConnectionFieldsTimeupdated,
+	"createdbyid":       GetConnectionFieldsCreatedbyid,
+	"updatedbyid":       GetConnectionFieldsUpdatedbyid,
+	"properties":        GetConnectionFieldsProperties,
+	"externalkey":       GetConnectionFieldsExternalkey,
+	"timestatusupdated": GetConnectionFieldsTimestatusupdated,
+	"lifecyclestate":    GetConnectionFieldsLifecyclestate,
+	"isdefault":         GetConnectionFieldsIsdefault,
+	"uri":               GetConnectionFieldsUri,
+}
+
 // GetGetConnectionFieldsEnumValues Enumerates the set of values for GetConnectionFieldsEnum
 func GetGetConnectionFieldsEnumValues() []GetConnectionFieldsEnum {
 	values := make([]GetConnectionFieldsEnum, 0)
@@ -179,11 +197,6 @@ func GetGetConnectionFieldsEnumStringValues() []string {
 
 // GetMappingGetConnectionFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetConnectionFieldsEnum(val string) (GetConnectionFieldsEnum, bool) {
-	mappingGetConnectionFieldsEnumIgnoreCase := make(map[string]GetConnectionFieldsEnum)
-	for k, v := range mappingGetConnectionFieldsEnum {
-		mappingGetConnectionFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetConnectionFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetConnectionFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

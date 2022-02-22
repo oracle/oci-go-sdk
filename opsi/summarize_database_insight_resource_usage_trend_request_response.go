@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -212,6 +212,15 @@ var mappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum = map[stri
 	"EXTERNAL-NONCDB": SummarizeDatabaseInsightResourceUsageTrendDatabaseTypeExternalNoncdb,
 }
 
+var mappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnumLowerCase = map[string]SummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum{
+	"adw-s":           SummarizeDatabaseInsightResourceUsageTrendDatabaseTypeAdwS,
+	"atp-s":           SummarizeDatabaseInsightResourceUsageTrendDatabaseTypeAtpS,
+	"adw-d":           SummarizeDatabaseInsightResourceUsageTrendDatabaseTypeAdwD,
+	"atp-d":           SummarizeDatabaseInsightResourceUsageTrendDatabaseTypeAtpD,
+	"external-pdb":    SummarizeDatabaseInsightResourceUsageTrendDatabaseTypeExternalPdb,
+	"external-noncdb": SummarizeDatabaseInsightResourceUsageTrendDatabaseTypeExternalNoncdb,
+}
+
 // GetSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum
 func GetSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnumValues() []SummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum {
 	values := make([]SummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum, 0)
@@ -235,12 +244,7 @@ func GetSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnumStringValues()
 
 // GetMappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum(val string) (SummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum, bool) {
-	mappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum)
-	for k, v := range mappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnum {
-		mappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeDatabaseInsightResourceUsageTrendDatabaseTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -256,6 +260,11 @@ const (
 var mappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnum = map[string]SummarizeDatabaseInsightResourceUsageTrendSortOrderEnum{
 	"ASC":  SummarizeDatabaseInsightResourceUsageTrendSortOrderAsc,
 	"DESC": SummarizeDatabaseInsightResourceUsageTrendSortOrderDesc,
+}
+
+var mappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnumLowerCase = map[string]SummarizeDatabaseInsightResourceUsageTrendSortOrderEnum{
+	"asc":  SummarizeDatabaseInsightResourceUsageTrendSortOrderAsc,
+	"desc": SummarizeDatabaseInsightResourceUsageTrendSortOrderDesc,
 }
 
 // GetSummarizeDatabaseInsightResourceUsageTrendSortOrderEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceUsageTrendSortOrderEnum
@@ -277,12 +286,7 @@ func GetSummarizeDatabaseInsightResourceUsageTrendSortOrderEnumStringValues() []
 
 // GetMappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnum(val string) (SummarizeDatabaseInsightResourceUsageTrendSortOrderEnum, bool) {
-	mappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceUsageTrendSortOrderEnum)
-	for k, v := range mappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnum {
-		mappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeDatabaseInsightResourceUsageTrendSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -298,6 +302,12 @@ const (
 
 var mappingSummarizeDatabaseInsightResourceUsageTrendSortByEnum = map[string]SummarizeDatabaseInsightResourceUsageTrendSortByEnum{
 	"endTimestamp": SummarizeDatabaseInsightResourceUsageTrendSortByEndtimestamp,
+	"usage":        SummarizeDatabaseInsightResourceUsageTrendSortByUsage,
+	"capacity":     SummarizeDatabaseInsightResourceUsageTrendSortByCapacity,
+}
+
+var mappingSummarizeDatabaseInsightResourceUsageTrendSortByEnumLowerCase = map[string]SummarizeDatabaseInsightResourceUsageTrendSortByEnum{
+	"endtimestamp": SummarizeDatabaseInsightResourceUsageTrendSortByEndtimestamp,
 	"usage":        SummarizeDatabaseInsightResourceUsageTrendSortByUsage,
 	"capacity":     SummarizeDatabaseInsightResourceUsageTrendSortByCapacity,
 }
@@ -322,11 +332,6 @@ func GetSummarizeDatabaseInsightResourceUsageTrendSortByEnumStringValues() []str
 
 // GetMappingSummarizeDatabaseInsightResourceUsageTrendSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeDatabaseInsightResourceUsageTrendSortByEnum(val string) (SummarizeDatabaseInsightResourceUsageTrendSortByEnum, bool) {
-	mappingSummarizeDatabaseInsightResourceUsageTrendSortByEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceUsageTrendSortByEnum)
-	for k, v := range mappingSummarizeDatabaseInsightResourceUsageTrendSortByEnum {
-		mappingSummarizeDatabaseInsightResourceUsageTrendSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeDatabaseInsightResourceUsageTrendSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeDatabaseInsightResourceUsageTrendSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

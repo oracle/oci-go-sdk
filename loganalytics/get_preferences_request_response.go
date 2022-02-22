@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -130,6 +130,11 @@ var mappingGetPreferencesSortOrderEnum = map[string]GetPreferencesSortOrderEnum{
 	"DESC": GetPreferencesSortOrderDesc,
 }
 
+var mappingGetPreferencesSortOrderEnumLowerCase = map[string]GetPreferencesSortOrderEnum{
+	"asc":  GetPreferencesSortOrderAsc,
+	"desc": GetPreferencesSortOrderDesc,
+}
+
 // GetGetPreferencesSortOrderEnumValues Enumerates the set of values for GetPreferencesSortOrderEnum
 func GetGetPreferencesSortOrderEnumValues() []GetPreferencesSortOrderEnum {
 	values := make([]GetPreferencesSortOrderEnum, 0)
@@ -149,12 +154,7 @@ func GetGetPreferencesSortOrderEnumStringValues() []string {
 
 // GetMappingGetPreferencesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetPreferencesSortOrderEnum(val string) (GetPreferencesSortOrderEnum, bool) {
-	mappingGetPreferencesSortOrderEnumIgnoreCase := make(map[string]GetPreferencesSortOrderEnum)
-	for k, v := range mappingGetPreferencesSortOrderEnum {
-		mappingGetPreferencesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetPreferencesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetPreferencesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -167,6 +167,10 @@ const (
 )
 
 var mappingGetPreferencesSortByEnum = map[string]GetPreferencesSortByEnum{
+	"name": GetPreferencesSortByName,
+}
+
+var mappingGetPreferencesSortByEnumLowerCase = map[string]GetPreferencesSortByEnum{
 	"name": GetPreferencesSortByName,
 }
 
@@ -188,11 +192,6 @@ func GetGetPreferencesSortByEnumStringValues() []string {
 
 // GetMappingGetPreferencesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetPreferencesSortByEnum(val string) (GetPreferencesSortByEnum, bool) {
-	mappingGetPreferencesSortByEnumIgnoreCase := make(map[string]GetPreferencesSortByEnum)
-	for k, v := range mappingGetPreferencesSortByEnum {
-		mappingGetPreferencesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetPreferencesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetPreferencesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

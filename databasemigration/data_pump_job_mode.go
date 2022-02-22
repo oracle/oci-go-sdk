@@ -33,6 +33,14 @@ var mappingDataPumpJobModeEnum = map[string]DataPumpJobModeEnum{
 	"TRANSPORTABLE": DataPumpJobModeTransportable,
 }
 
+var mappingDataPumpJobModeEnumLowerCase = map[string]DataPumpJobModeEnum{
+	"full":          DataPumpJobModeFull,
+	"schema":        DataPumpJobModeSchema,
+	"table":         DataPumpJobModeTable,
+	"tablespace":    DataPumpJobModeTablespace,
+	"transportable": DataPumpJobModeTransportable,
+}
+
 // GetDataPumpJobModeEnumValues Enumerates the set of values for DataPumpJobModeEnum
 func GetDataPumpJobModeEnumValues() []DataPumpJobModeEnum {
 	values := make([]DataPumpJobModeEnum, 0)
@@ -55,11 +63,6 @@ func GetDataPumpJobModeEnumStringValues() []string {
 
 // GetMappingDataPumpJobModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataPumpJobModeEnum(val string) (DataPumpJobModeEnum, bool) {
-	mappingDataPumpJobModeEnumIgnoreCase := make(map[string]DataPumpJobModeEnum)
-	for k, v := range mappingDataPumpJobModeEnum {
-		mappingDataPumpJobModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataPumpJobModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataPumpJobModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

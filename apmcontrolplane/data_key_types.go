@@ -5,7 +5,7 @@
 // Application Performance Monitoring Control Plane API
 //
 // Use the Application Performance Monitoring Control Plane API to perform operations such as creating, updating,
-// deleting and listing APM domains and monitoring the progress of these operations using the work request APIs.
+// deleting and listing APM domains and monitoring the progress of these operations using the work request APIs. For more information, see Application Performance Monitoring (https://docs.cloud.oracle.com/iaas/application-performance-monitoring/index.html).
 //
 
 package apmcontrolplane
@@ -28,6 +28,11 @@ var mappingDataKeyTypesEnum = map[string]DataKeyTypesEnum{
 	"PUBLIC":  DataKeyTypesPublic,
 }
 
+var mappingDataKeyTypesEnumLowerCase = map[string]DataKeyTypesEnum{
+	"private": DataKeyTypesPrivate,
+	"public":  DataKeyTypesPublic,
+}
+
 // GetDataKeyTypesEnumValues Enumerates the set of values for DataKeyTypesEnum
 func GetDataKeyTypesEnumValues() []DataKeyTypesEnum {
 	values := make([]DataKeyTypesEnum, 0)
@@ -47,11 +52,6 @@ func GetDataKeyTypesEnumStringValues() []string {
 
 // GetMappingDataKeyTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataKeyTypesEnum(val string) (DataKeyTypesEnum, bool) {
-	mappingDataKeyTypesEnumIgnoreCase := make(map[string]DataKeyTypesEnum)
-	for k, v := range mappingDataKeyTypesEnum {
-		mappingDataKeyTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataKeyTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataKeyTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

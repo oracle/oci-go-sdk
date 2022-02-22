@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -180,6 +180,12 @@ var mappingInputPortPortTypeEnum = map[string]InputPortPortTypeEnum{
 	"MODEL":   InputPortPortTypeModel,
 }
 
+var mappingInputPortPortTypeEnumLowerCase = map[string]InputPortPortTypeEnum{
+	"data":    InputPortPortTypeData,
+	"control": InputPortPortTypeControl,
+	"model":   InputPortPortTypeModel,
+}
+
 // GetInputPortPortTypeEnumValues Enumerates the set of values for InputPortPortTypeEnum
 func GetInputPortPortTypeEnumValues() []InputPortPortTypeEnum {
 	values := make([]InputPortPortTypeEnum, 0)
@@ -200,11 +206,6 @@ func GetInputPortPortTypeEnumStringValues() []string {
 
 // GetMappingInputPortPortTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInputPortPortTypeEnum(val string) (InputPortPortTypeEnum, bool) {
-	mappingInputPortPortTypeEnumIgnoreCase := make(map[string]InputPortPortTypeEnum)
-	for k, v := range mappingInputPortPortTypeEnum {
-		mappingInputPortPortTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInputPortPortTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInputPortPortTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

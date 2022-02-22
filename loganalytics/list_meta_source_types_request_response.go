@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -128,6 +128,10 @@ var mappingListMetaSourceTypesSortByEnum = map[string]ListMetaSourceTypesSortByE
 	"name": ListMetaSourceTypesSortByName,
 }
 
+var mappingListMetaSourceTypesSortByEnumLowerCase = map[string]ListMetaSourceTypesSortByEnum{
+	"name": ListMetaSourceTypesSortByName,
+}
+
 // GetListMetaSourceTypesSortByEnumValues Enumerates the set of values for ListMetaSourceTypesSortByEnum
 func GetListMetaSourceTypesSortByEnumValues() []ListMetaSourceTypesSortByEnum {
 	values := make([]ListMetaSourceTypesSortByEnum, 0)
@@ -146,12 +150,7 @@ func GetListMetaSourceTypesSortByEnumStringValues() []string {
 
 // GetMappingListMetaSourceTypesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMetaSourceTypesSortByEnum(val string) (ListMetaSourceTypesSortByEnum, bool) {
-	mappingListMetaSourceTypesSortByEnumIgnoreCase := make(map[string]ListMetaSourceTypesSortByEnum)
-	for k, v := range mappingListMetaSourceTypesSortByEnum {
-		mappingListMetaSourceTypesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMetaSourceTypesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMetaSourceTypesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -167,6 +166,11 @@ const (
 var mappingListMetaSourceTypesSortOrderEnum = map[string]ListMetaSourceTypesSortOrderEnum{
 	"ASC":  ListMetaSourceTypesSortOrderAsc,
 	"DESC": ListMetaSourceTypesSortOrderDesc,
+}
+
+var mappingListMetaSourceTypesSortOrderEnumLowerCase = map[string]ListMetaSourceTypesSortOrderEnum{
+	"asc":  ListMetaSourceTypesSortOrderAsc,
+	"desc": ListMetaSourceTypesSortOrderDesc,
 }
 
 // GetListMetaSourceTypesSortOrderEnumValues Enumerates the set of values for ListMetaSourceTypesSortOrderEnum
@@ -188,11 +192,6 @@ func GetListMetaSourceTypesSortOrderEnumStringValues() []string {
 
 // GetMappingListMetaSourceTypesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMetaSourceTypesSortOrderEnum(val string) (ListMetaSourceTypesSortOrderEnum, bool) {
-	mappingListMetaSourceTypesSortOrderEnumIgnoreCase := make(map[string]ListMetaSourceTypesSortOrderEnum)
-	for k, v := range mappingListMetaSourceTypesSortOrderEnum {
-		mappingListMetaSourceTypesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMetaSourceTypesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMetaSourceTypesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

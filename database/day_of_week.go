@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -65,6 +65,16 @@ var mappingDayOfWeekNameEnum = map[string]DayOfWeekNameEnum{
 	"SUNDAY":    DayOfWeekNameSunday,
 }
 
+var mappingDayOfWeekNameEnumLowerCase = map[string]DayOfWeekNameEnum{
+	"monday":    DayOfWeekNameMonday,
+	"tuesday":   DayOfWeekNameTuesday,
+	"wednesday": DayOfWeekNameWednesday,
+	"thursday":  DayOfWeekNameThursday,
+	"friday":    DayOfWeekNameFriday,
+	"saturday":  DayOfWeekNameSaturday,
+	"sunday":    DayOfWeekNameSunday,
+}
+
 // GetDayOfWeekNameEnumValues Enumerates the set of values for DayOfWeekNameEnum
 func GetDayOfWeekNameEnumValues() []DayOfWeekNameEnum {
 	values := make([]DayOfWeekNameEnum, 0)
@@ -89,11 +99,6 @@ func GetDayOfWeekNameEnumStringValues() []string {
 
 // GetMappingDayOfWeekNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDayOfWeekNameEnum(val string) (DayOfWeekNameEnum, bool) {
-	mappingDayOfWeekNameEnumIgnoreCase := make(map[string]DayOfWeekNameEnum)
-	for k, v := range mappingDayOfWeekNameEnum {
-		mappingDayOfWeekNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDayOfWeekNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDayOfWeekNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

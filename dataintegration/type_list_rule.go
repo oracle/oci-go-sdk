@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -147,6 +147,12 @@ var mappingTypeListRuleMatchingStrategyEnum = map[string]TypeListRuleMatchingStr
 	"NAME_ONLY":    TypeListRuleMatchingStrategyNameOnly,
 }
 
+var mappingTypeListRuleMatchingStrategyEnumLowerCase = map[string]TypeListRuleMatchingStrategyEnum{
+	"name_or_tags": TypeListRuleMatchingStrategyNameOrTags,
+	"tags_only":    TypeListRuleMatchingStrategyTagsOnly,
+	"name_only":    TypeListRuleMatchingStrategyNameOnly,
+}
+
 // GetTypeListRuleMatchingStrategyEnumValues Enumerates the set of values for TypeListRuleMatchingStrategyEnum
 func GetTypeListRuleMatchingStrategyEnumValues() []TypeListRuleMatchingStrategyEnum {
 	values := make([]TypeListRuleMatchingStrategyEnum, 0)
@@ -167,12 +173,7 @@ func GetTypeListRuleMatchingStrategyEnumStringValues() []string {
 
 // GetMappingTypeListRuleMatchingStrategyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTypeListRuleMatchingStrategyEnum(val string) (TypeListRuleMatchingStrategyEnum, bool) {
-	mappingTypeListRuleMatchingStrategyEnumIgnoreCase := make(map[string]TypeListRuleMatchingStrategyEnum)
-	for k, v := range mappingTypeListRuleMatchingStrategyEnum {
-		mappingTypeListRuleMatchingStrategyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTypeListRuleMatchingStrategyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTypeListRuleMatchingStrategyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -188,6 +189,11 @@ const (
 var mappingTypeListRuleRuleTypeEnum = map[string]TypeListRuleRuleTypeEnum{
 	"INCLUDE": TypeListRuleRuleTypeInclude,
 	"EXCLUDE": TypeListRuleRuleTypeExclude,
+}
+
+var mappingTypeListRuleRuleTypeEnumLowerCase = map[string]TypeListRuleRuleTypeEnum{
+	"include": TypeListRuleRuleTypeInclude,
+	"exclude": TypeListRuleRuleTypeExclude,
 }
 
 // GetTypeListRuleRuleTypeEnumValues Enumerates the set of values for TypeListRuleRuleTypeEnum
@@ -209,11 +215,6 @@ func GetTypeListRuleRuleTypeEnumStringValues() []string {
 
 // GetMappingTypeListRuleRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTypeListRuleRuleTypeEnum(val string) (TypeListRuleRuleTypeEnum, bool) {
-	mappingTypeListRuleRuleTypeEnumIgnoreCase := make(map[string]TypeListRuleRuleTypeEnum)
-	for k, v := range mappingTypeListRuleRuleTypeEnum {
-		mappingTypeListRuleRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTypeListRuleRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTypeListRuleRuleTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -123,6 +123,12 @@ var mappingTopologyEntityRelationshipTypeEnum = map[string]TopologyEntityRelatio
 	"ROUTES_TO":       TopologyEntityRelationshipTypeRoutesTo,
 }
 
+var mappingTopologyEntityRelationshipTypeEnumLowerCase = map[string]TopologyEntityRelationshipTypeEnum{
+	"contains":        TopologyEntityRelationshipTypeContains,
+	"associated_with": TopologyEntityRelationshipTypeAssociatedWith,
+	"routes_to":       TopologyEntityRelationshipTypeRoutesTo,
+}
+
 // GetTopologyEntityRelationshipTypeEnumValues Enumerates the set of values for TopologyEntityRelationshipTypeEnum
 func GetTopologyEntityRelationshipTypeEnumValues() []TopologyEntityRelationshipTypeEnum {
 	values := make([]TopologyEntityRelationshipTypeEnum, 0)
@@ -143,11 +149,6 @@ func GetTopologyEntityRelationshipTypeEnumStringValues() []string {
 
 // GetMappingTopologyEntityRelationshipTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTopologyEntityRelationshipTypeEnum(val string) (TopologyEntityRelationshipTypeEnum, bool) {
-	mappingTopologyEntityRelationshipTypeEnumIgnoreCase := make(map[string]TopologyEntityRelationshipTypeEnum)
-	for k, v := range mappingTopologyEntityRelationshipTypeEnum {
-		mappingTopologyEntityRelationshipTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTopologyEntityRelationshipTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTopologyEntityRelationshipTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

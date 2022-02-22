@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingDynamicTypeHandlerModelTypeEnum = map[string]DynamicTypeHandlerModelT
 	"RULE_TYPE_CONFIGS": DynamicTypeHandlerModelTypeRuleTypeConfigs,
 }
 
+var mappingDynamicTypeHandlerModelTypeEnumLowerCase = map[string]DynamicTypeHandlerModelTypeEnum{
+	"rule_type_configs": DynamicTypeHandlerModelTypeRuleTypeConfigs,
+}
+
 // GetDynamicTypeHandlerModelTypeEnumValues Enumerates the set of values for DynamicTypeHandlerModelTypeEnum
 func GetDynamicTypeHandlerModelTypeEnumValues() []DynamicTypeHandlerModelTypeEnum {
 	values := make([]DynamicTypeHandlerModelTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetDynamicTypeHandlerModelTypeEnumStringValues() []string {
 
 // GetMappingDynamicTypeHandlerModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDynamicTypeHandlerModelTypeEnum(val string) (DynamicTypeHandlerModelTypeEnum, bool) {
-	mappingDynamicTypeHandlerModelTypeEnumIgnoreCase := make(map[string]DynamicTypeHandlerModelTypeEnum)
-	for k, v := range mappingDynamicTypeHandlerModelTypeEnum {
-		mappingDynamicTypeHandlerModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDynamicTypeHandlerModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDynamicTypeHandlerModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

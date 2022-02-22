@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -98,6 +98,13 @@ var mappingRouteTableLifecycleStateEnum = map[string]RouteTableLifecycleStateEnu
 	"TERMINATED":   RouteTableLifecycleStateTerminated,
 }
 
+var mappingRouteTableLifecycleStateEnumLowerCase = map[string]RouteTableLifecycleStateEnum{
+	"provisioning": RouteTableLifecycleStateProvisioning,
+	"available":    RouteTableLifecycleStateAvailable,
+	"terminating":  RouteTableLifecycleStateTerminating,
+	"terminated":   RouteTableLifecycleStateTerminated,
+}
+
 // GetRouteTableLifecycleStateEnumValues Enumerates the set of values for RouteTableLifecycleStateEnum
 func GetRouteTableLifecycleStateEnumValues() []RouteTableLifecycleStateEnum {
 	values := make([]RouteTableLifecycleStateEnum, 0)
@@ -119,11 +126,6 @@ func GetRouteTableLifecycleStateEnumStringValues() []string {
 
 // GetMappingRouteTableLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRouteTableLifecycleStateEnum(val string) (RouteTableLifecycleStateEnum, bool) {
-	mappingRouteTableLifecycleStateEnumIgnoreCase := make(map[string]RouteTableLifecycleStateEnum)
-	for k, v := range mappingRouteTableLifecycleStateEnum {
-		mappingRouteTableLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRouteTableLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRouteTableLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

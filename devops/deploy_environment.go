@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -228,6 +228,15 @@ var mappingDeployEnvironmentLifecycleStateEnum = map[string]DeployEnvironmentLif
 	"FAILED":   DeployEnvironmentLifecycleStateFailed,
 }
 
+var mappingDeployEnvironmentLifecycleStateEnumLowerCase = map[string]DeployEnvironmentLifecycleStateEnum{
+	"creating": DeployEnvironmentLifecycleStateCreating,
+	"updating": DeployEnvironmentLifecycleStateUpdating,
+	"active":   DeployEnvironmentLifecycleStateActive,
+	"deleting": DeployEnvironmentLifecycleStateDeleting,
+	"deleted":  DeployEnvironmentLifecycleStateDeleted,
+	"failed":   DeployEnvironmentLifecycleStateFailed,
+}
+
 // GetDeployEnvironmentLifecycleStateEnumValues Enumerates the set of values for DeployEnvironmentLifecycleStateEnum
 func GetDeployEnvironmentLifecycleStateEnumValues() []DeployEnvironmentLifecycleStateEnum {
 	values := make([]DeployEnvironmentLifecycleStateEnum, 0)
@@ -251,12 +260,7 @@ func GetDeployEnvironmentLifecycleStateEnumStringValues() []string {
 
 // GetMappingDeployEnvironmentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeployEnvironmentLifecycleStateEnum(val string) (DeployEnvironmentLifecycleStateEnum, bool) {
-	mappingDeployEnvironmentLifecycleStateEnumIgnoreCase := make(map[string]DeployEnvironmentLifecycleStateEnum)
-	for k, v := range mappingDeployEnvironmentLifecycleStateEnum {
-		mappingDeployEnvironmentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeployEnvironmentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeployEnvironmentLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -274,6 +278,12 @@ var mappingDeployEnvironmentDeployEnvironmentTypeEnum = map[string]DeployEnviron
 	"OKE_CLUSTER":            DeployEnvironmentDeployEnvironmentTypeOkeCluster,
 	"COMPUTE_INSTANCE_GROUP": DeployEnvironmentDeployEnvironmentTypeComputeInstanceGroup,
 	"FUNCTION":               DeployEnvironmentDeployEnvironmentTypeFunction,
+}
+
+var mappingDeployEnvironmentDeployEnvironmentTypeEnumLowerCase = map[string]DeployEnvironmentDeployEnvironmentTypeEnum{
+	"oke_cluster":            DeployEnvironmentDeployEnvironmentTypeOkeCluster,
+	"compute_instance_group": DeployEnvironmentDeployEnvironmentTypeComputeInstanceGroup,
+	"function":               DeployEnvironmentDeployEnvironmentTypeFunction,
 }
 
 // GetDeployEnvironmentDeployEnvironmentTypeEnumValues Enumerates the set of values for DeployEnvironmentDeployEnvironmentTypeEnum
@@ -296,11 +306,6 @@ func GetDeployEnvironmentDeployEnvironmentTypeEnumStringValues() []string {
 
 // GetMappingDeployEnvironmentDeployEnvironmentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeployEnvironmentDeployEnvironmentTypeEnum(val string) (DeployEnvironmentDeployEnvironmentTypeEnum, bool) {
-	mappingDeployEnvironmentDeployEnvironmentTypeEnumIgnoreCase := make(map[string]DeployEnvironmentDeployEnvironmentTypeEnum)
-	for k, v := range mappingDeployEnvironmentDeployEnvironmentTypeEnum {
-		mappingDeployEnvironmentDeployEnvironmentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeployEnvironmentDeployEnvironmentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeployEnvironmentDeployEnvironmentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

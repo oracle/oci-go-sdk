@@ -31,6 +31,13 @@ var mappingKeyAlgorithmEnum = map[string]KeyAlgorithmEnum{
 	"ECDSA_P384": KeyAlgorithmEcdsaP384,
 }
 
+var mappingKeyAlgorithmEnumLowerCase = map[string]KeyAlgorithmEnum{
+	"rsa2048":    KeyAlgorithmRsa2048,
+	"rsa4096":    KeyAlgorithmRsa4096,
+	"ecdsa_p256": KeyAlgorithmEcdsaP256,
+	"ecdsa_p384": KeyAlgorithmEcdsaP384,
+}
+
 // GetKeyAlgorithmEnumValues Enumerates the set of values for KeyAlgorithmEnum
 func GetKeyAlgorithmEnumValues() []KeyAlgorithmEnum {
 	values := make([]KeyAlgorithmEnum, 0)
@@ -52,11 +59,6 @@ func GetKeyAlgorithmEnumStringValues() []string {
 
 // GetMappingKeyAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingKeyAlgorithmEnum(val string) (KeyAlgorithmEnum, bool) {
-	mappingKeyAlgorithmEnumIgnoreCase := make(map[string]KeyAlgorithmEnum)
-	for k, v := range mappingKeyAlgorithmEnum {
-		mappingKeyAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingKeyAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingKeyAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

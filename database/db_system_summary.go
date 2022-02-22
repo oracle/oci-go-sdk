@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -232,6 +232,13 @@ var mappingDbSystemSummaryDatabaseEditionEnum = map[string]DbSystemSummaryDataba
 	"ENTERPRISE_EDITION_EXTREME_PERFORMANCE": DbSystemSummaryDatabaseEditionEnterpriseEditionExtremePerformance,
 }
 
+var mappingDbSystemSummaryDatabaseEditionEnumLowerCase = map[string]DbSystemSummaryDatabaseEditionEnum{
+	"standard_edition":                       DbSystemSummaryDatabaseEditionStandardEdition,
+	"enterprise_edition":                     DbSystemSummaryDatabaseEditionEnterpriseEdition,
+	"enterprise_edition_high_performance":    DbSystemSummaryDatabaseEditionEnterpriseEditionHighPerformance,
+	"enterprise_edition_extreme_performance": DbSystemSummaryDatabaseEditionEnterpriseEditionExtremePerformance,
+}
+
 // GetDbSystemSummaryDatabaseEditionEnumValues Enumerates the set of values for DbSystemSummaryDatabaseEditionEnum
 func GetDbSystemSummaryDatabaseEditionEnumValues() []DbSystemSummaryDatabaseEditionEnum {
 	values := make([]DbSystemSummaryDatabaseEditionEnum, 0)
@@ -253,12 +260,7 @@ func GetDbSystemSummaryDatabaseEditionEnumStringValues() []string {
 
 // GetMappingDbSystemSummaryDatabaseEditionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDbSystemSummaryDatabaseEditionEnum(val string) (DbSystemSummaryDatabaseEditionEnum, bool) {
-	mappingDbSystemSummaryDatabaseEditionEnumIgnoreCase := make(map[string]DbSystemSummaryDatabaseEditionEnum)
-	for k, v := range mappingDbSystemSummaryDatabaseEditionEnum {
-		mappingDbSystemSummaryDatabaseEditionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDbSystemSummaryDatabaseEditionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDbSystemSummaryDatabaseEditionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -290,6 +292,18 @@ var mappingDbSystemSummaryLifecycleStateEnum = map[string]DbSystemSummaryLifecyc
 	"NEEDS_ATTENTION":         DbSystemSummaryLifecycleStateNeedsAttention,
 }
 
+var mappingDbSystemSummaryLifecycleStateEnumLowerCase = map[string]DbSystemSummaryLifecycleStateEnum{
+	"provisioning":            DbSystemSummaryLifecycleStateProvisioning,
+	"available":               DbSystemSummaryLifecycleStateAvailable,
+	"updating":                DbSystemSummaryLifecycleStateUpdating,
+	"terminating":             DbSystemSummaryLifecycleStateTerminating,
+	"terminated":              DbSystemSummaryLifecycleStateTerminated,
+	"failed":                  DbSystemSummaryLifecycleStateFailed,
+	"migrated":                DbSystemSummaryLifecycleStateMigrated,
+	"maintenance_in_progress": DbSystemSummaryLifecycleStateMaintenanceInProgress,
+	"needs_attention":         DbSystemSummaryLifecycleStateNeedsAttention,
+}
+
 // GetDbSystemSummaryLifecycleStateEnumValues Enumerates the set of values for DbSystemSummaryLifecycleStateEnum
 func GetDbSystemSummaryLifecycleStateEnumValues() []DbSystemSummaryLifecycleStateEnum {
 	values := make([]DbSystemSummaryLifecycleStateEnum, 0)
@@ -316,12 +330,7 @@ func GetDbSystemSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingDbSystemSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDbSystemSummaryLifecycleStateEnum(val string) (DbSystemSummaryLifecycleStateEnum, bool) {
-	mappingDbSystemSummaryLifecycleStateEnumIgnoreCase := make(map[string]DbSystemSummaryLifecycleStateEnum)
-	for k, v := range mappingDbSystemSummaryLifecycleStateEnum {
-		mappingDbSystemSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDbSystemSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDbSystemSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -337,6 +346,11 @@ const (
 var mappingDbSystemSummaryDiskRedundancyEnum = map[string]DbSystemSummaryDiskRedundancyEnum{
 	"HIGH":   DbSystemSummaryDiskRedundancyHigh,
 	"NORMAL": DbSystemSummaryDiskRedundancyNormal,
+}
+
+var mappingDbSystemSummaryDiskRedundancyEnumLowerCase = map[string]DbSystemSummaryDiskRedundancyEnum{
+	"high":   DbSystemSummaryDiskRedundancyHigh,
+	"normal": DbSystemSummaryDiskRedundancyNormal,
 }
 
 // GetDbSystemSummaryDiskRedundancyEnumValues Enumerates the set of values for DbSystemSummaryDiskRedundancyEnum
@@ -358,12 +372,7 @@ func GetDbSystemSummaryDiskRedundancyEnumStringValues() []string {
 
 // GetMappingDbSystemSummaryDiskRedundancyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDbSystemSummaryDiskRedundancyEnum(val string) (DbSystemSummaryDiskRedundancyEnum, bool) {
-	mappingDbSystemSummaryDiskRedundancyEnumIgnoreCase := make(map[string]DbSystemSummaryDiskRedundancyEnum)
-	for k, v := range mappingDbSystemSummaryDiskRedundancyEnum {
-		mappingDbSystemSummaryDiskRedundancyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDbSystemSummaryDiskRedundancyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDbSystemSummaryDiskRedundancyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -379,6 +388,11 @@ const (
 var mappingDbSystemSummaryLicenseModelEnum = map[string]DbSystemSummaryLicenseModelEnum{
 	"LICENSE_INCLUDED":       DbSystemSummaryLicenseModelLicenseIncluded,
 	"BRING_YOUR_OWN_LICENSE": DbSystemSummaryLicenseModelBringYourOwnLicense,
+}
+
+var mappingDbSystemSummaryLicenseModelEnumLowerCase = map[string]DbSystemSummaryLicenseModelEnum{
+	"license_included":       DbSystemSummaryLicenseModelLicenseIncluded,
+	"bring_your_own_license": DbSystemSummaryLicenseModelBringYourOwnLicense,
 }
 
 // GetDbSystemSummaryLicenseModelEnumValues Enumerates the set of values for DbSystemSummaryLicenseModelEnum
@@ -400,11 +414,6 @@ func GetDbSystemSummaryLicenseModelEnumStringValues() []string {
 
 // GetMappingDbSystemSummaryLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDbSystemSummaryLicenseModelEnum(val string) (DbSystemSummaryLicenseModelEnum, bool) {
-	mappingDbSystemSummaryLicenseModelEnumIgnoreCase := make(map[string]DbSystemSummaryLicenseModelEnum)
-	for k, v := range mappingDbSystemSummaryLicenseModelEnum {
-		mappingDbSystemSummaryLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDbSystemSummaryLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDbSystemSummaryLicenseModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

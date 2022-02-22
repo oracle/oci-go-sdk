@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -92,6 +92,14 @@ var mappingOAuth2ClientCredentialLifecycleStateEnum = map[string]OAuth2ClientCre
 	"DELETED":  OAuth2ClientCredentialLifecycleStateDeleted,
 }
 
+var mappingOAuth2ClientCredentialLifecycleStateEnumLowerCase = map[string]OAuth2ClientCredentialLifecycleStateEnum{
+	"creating": OAuth2ClientCredentialLifecycleStateCreating,
+	"active":   OAuth2ClientCredentialLifecycleStateActive,
+	"inactive": OAuth2ClientCredentialLifecycleStateInactive,
+	"deleting": OAuth2ClientCredentialLifecycleStateDeleting,
+	"deleted":  OAuth2ClientCredentialLifecycleStateDeleted,
+}
+
 // GetOAuth2ClientCredentialLifecycleStateEnumValues Enumerates the set of values for OAuth2ClientCredentialLifecycleStateEnum
 func GetOAuth2ClientCredentialLifecycleStateEnumValues() []OAuth2ClientCredentialLifecycleStateEnum {
 	values := make([]OAuth2ClientCredentialLifecycleStateEnum, 0)
@@ -114,11 +122,6 @@ func GetOAuth2ClientCredentialLifecycleStateEnumStringValues() []string {
 
 // GetMappingOAuth2ClientCredentialLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOAuth2ClientCredentialLifecycleStateEnum(val string) (OAuth2ClientCredentialLifecycleStateEnum, bool) {
-	mappingOAuth2ClientCredentialLifecycleStateEnumIgnoreCase := make(map[string]OAuth2ClientCredentialLifecycleStateEnum)
-	for k, v := range mappingOAuth2ClientCredentialLifecycleStateEnum {
-		mappingOAuth2ClientCredentialLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOAuth2ClientCredentialLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOAuth2ClientCredentialLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

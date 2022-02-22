@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -111,6 +111,15 @@ var mappingDbHomeFromAgentResourceIdLifecycleStateEnum = map[string]DbHomeFromAg
 	"FAILED":       DbHomeFromAgentResourceIdLifecycleStateFailed,
 }
 
+var mappingDbHomeFromAgentResourceIdLifecycleStateEnumLowerCase = map[string]DbHomeFromAgentResourceIdLifecycleStateEnum{
+	"provisioning": DbHomeFromAgentResourceIdLifecycleStateProvisioning,
+	"available":    DbHomeFromAgentResourceIdLifecycleStateAvailable,
+	"updating":     DbHomeFromAgentResourceIdLifecycleStateUpdating,
+	"terminating":  DbHomeFromAgentResourceIdLifecycleStateTerminating,
+	"terminated":   DbHomeFromAgentResourceIdLifecycleStateTerminated,
+	"failed":       DbHomeFromAgentResourceIdLifecycleStateFailed,
+}
+
 // GetDbHomeFromAgentResourceIdLifecycleStateEnumValues Enumerates the set of values for DbHomeFromAgentResourceIdLifecycleStateEnum
 func GetDbHomeFromAgentResourceIdLifecycleStateEnumValues() []DbHomeFromAgentResourceIdLifecycleStateEnum {
 	values := make([]DbHomeFromAgentResourceIdLifecycleStateEnum, 0)
@@ -134,11 +143,6 @@ func GetDbHomeFromAgentResourceIdLifecycleStateEnumStringValues() []string {
 
 // GetMappingDbHomeFromAgentResourceIdLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDbHomeFromAgentResourceIdLifecycleStateEnum(val string) (DbHomeFromAgentResourceIdLifecycleStateEnum, bool) {
-	mappingDbHomeFromAgentResourceIdLifecycleStateEnumIgnoreCase := make(map[string]DbHomeFromAgentResourceIdLifecycleStateEnum)
-	for k, v := range mappingDbHomeFromAgentResourceIdLifecycleStateEnum {
-		mappingDbHomeFromAgentResourceIdLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDbHomeFromAgentResourceIdLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDbHomeFromAgentResourceIdLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

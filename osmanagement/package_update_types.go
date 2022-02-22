@@ -36,6 +36,15 @@ var mappingPackageUpdateTypesEnum = map[string]PackageUpdateTypesEnum{
 	"ALL":         PackageUpdateTypesAll,
 }
 
+var mappingPackageUpdateTypesEnumLowerCase = map[string]PackageUpdateTypesEnum{
+	"security":    PackageUpdateTypesSecurity,
+	"bugfix":      PackageUpdateTypesBugfix,
+	"enhancement": PackageUpdateTypesEnhancement,
+	"other":       PackageUpdateTypesOther,
+	"ksplice":     PackageUpdateTypesKsplice,
+	"all":         PackageUpdateTypesAll,
+}
+
 // GetPackageUpdateTypesEnumValues Enumerates the set of values for PackageUpdateTypesEnum
 func GetPackageUpdateTypesEnumValues() []PackageUpdateTypesEnum {
 	values := make([]PackageUpdateTypesEnum, 0)
@@ -59,11 +68,6 @@ func GetPackageUpdateTypesEnumStringValues() []string {
 
 // GetMappingPackageUpdateTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPackageUpdateTypesEnum(val string) (PackageUpdateTypesEnum, bool) {
-	mappingPackageUpdateTypesEnumIgnoreCase := make(map[string]PackageUpdateTypesEnum)
-	for k, v := range mappingPackageUpdateTypesEnum {
-		mappingPackageUpdateTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPackageUpdateTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPackageUpdateTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

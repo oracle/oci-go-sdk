@@ -13,7 +13,7 @@ package loadbalancer
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -88,6 +88,10 @@ var mappingActionNameEnum = map[string]ActionNameEnum{
 	"FORWARD_TO_BACKENDSET": ActionNameForwardToBackendset,
 }
 
+var mappingActionNameEnumLowerCase = map[string]ActionNameEnum{
+	"forward_to_backendset": ActionNameForwardToBackendset,
+}
+
 // GetActionNameEnumValues Enumerates the set of values for ActionNameEnum
 func GetActionNameEnumValues() []ActionNameEnum {
 	values := make([]ActionNameEnum, 0)
@@ -106,11 +110,6 @@ func GetActionNameEnumStringValues() []string {
 
 // GetMappingActionNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingActionNameEnum(val string) (ActionNameEnum, bool) {
-	mappingActionNameEnumIgnoreCase := make(map[string]ActionNameEnum)
-	for k, v := range mappingActionNameEnum {
-		mappingActionNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingActionNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingActionNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

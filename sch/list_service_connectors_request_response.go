@@ -6,7 +6,7 @@ package sch
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -160,6 +160,16 @@ var mappingListServiceConnectorsLifecycleStateEnum = map[string]ListServiceConne
 	"FAILED":   ListServiceConnectorsLifecycleStateFailed,
 }
 
+var mappingListServiceConnectorsLifecycleStateEnumLowerCase = map[string]ListServiceConnectorsLifecycleStateEnum{
+	"creating": ListServiceConnectorsLifecycleStateCreating,
+	"updating": ListServiceConnectorsLifecycleStateUpdating,
+	"active":   ListServiceConnectorsLifecycleStateActive,
+	"inactive": ListServiceConnectorsLifecycleStateInactive,
+	"deleting": ListServiceConnectorsLifecycleStateDeleting,
+	"deleted":  ListServiceConnectorsLifecycleStateDeleted,
+	"failed":   ListServiceConnectorsLifecycleStateFailed,
+}
+
 // GetListServiceConnectorsLifecycleStateEnumValues Enumerates the set of values for ListServiceConnectorsLifecycleStateEnum
 func GetListServiceConnectorsLifecycleStateEnumValues() []ListServiceConnectorsLifecycleStateEnum {
 	values := make([]ListServiceConnectorsLifecycleStateEnum, 0)
@@ -184,12 +194,7 @@ func GetListServiceConnectorsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListServiceConnectorsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListServiceConnectorsLifecycleStateEnum(val string) (ListServiceConnectorsLifecycleStateEnum, bool) {
-	mappingListServiceConnectorsLifecycleStateEnumIgnoreCase := make(map[string]ListServiceConnectorsLifecycleStateEnum)
-	for k, v := range mappingListServiceConnectorsLifecycleStateEnum {
-		mappingListServiceConnectorsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListServiceConnectorsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListServiceConnectorsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -205,6 +210,11 @@ const (
 var mappingListServiceConnectorsSortOrderEnum = map[string]ListServiceConnectorsSortOrderEnum{
 	"ASC":  ListServiceConnectorsSortOrderAsc,
 	"DESC": ListServiceConnectorsSortOrderDesc,
+}
+
+var mappingListServiceConnectorsSortOrderEnumLowerCase = map[string]ListServiceConnectorsSortOrderEnum{
+	"asc":  ListServiceConnectorsSortOrderAsc,
+	"desc": ListServiceConnectorsSortOrderDesc,
 }
 
 // GetListServiceConnectorsSortOrderEnumValues Enumerates the set of values for ListServiceConnectorsSortOrderEnum
@@ -226,12 +236,7 @@ func GetListServiceConnectorsSortOrderEnumStringValues() []string {
 
 // GetMappingListServiceConnectorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListServiceConnectorsSortOrderEnum(val string) (ListServiceConnectorsSortOrderEnum, bool) {
-	mappingListServiceConnectorsSortOrderEnumIgnoreCase := make(map[string]ListServiceConnectorsSortOrderEnum)
-	for k, v := range mappingListServiceConnectorsSortOrderEnum {
-		mappingListServiceConnectorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListServiceConnectorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListServiceConnectorsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -247,6 +252,11 @@ const (
 var mappingListServiceConnectorsSortByEnum = map[string]ListServiceConnectorsSortByEnum{
 	"timeCreated": ListServiceConnectorsSortByTimecreated,
 	"displayName": ListServiceConnectorsSortByDisplayname,
+}
+
+var mappingListServiceConnectorsSortByEnumLowerCase = map[string]ListServiceConnectorsSortByEnum{
+	"timecreated": ListServiceConnectorsSortByTimecreated,
+	"displayname": ListServiceConnectorsSortByDisplayname,
 }
 
 // GetListServiceConnectorsSortByEnumValues Enumerates the set of values for ListServiceConnectorsSortByEnum
@@ -268,11 +278,6 @@ func GetListServiceConnectorsSortByEnumStringValues() []string {
 
 // GetMappingListServiceConnectorsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListServiceConnectorsSortByEnum(val string) (ListServiceConnectorsSortByEnum, bool) {
-	mappingListServiceConnectorsSortByEnumIgnoreCase := make(map[string]ListServiceConnectorsSortByEnum)
-	for k, v := range mappingListServiceConnectorsSortByEnum {
-		mappingListServiceConnectorsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListServiceConnectorsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListServiceConnectorsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

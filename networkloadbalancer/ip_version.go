@@ -27,6 +27,11 @@ var mappingIpVersionEnum = map[string]IpVersionEnum{
 	"IPV6": IpVersionIpv6,
 }
 
+var mappingIpVersionEnumLowerCase = map[string]IpVersionEnum{
+	"ipv4": IpVersionIpv4,
+	"ipv6": IpVersionIpv6,
+}
+
 // GetIpVersionEnumValues Enumerates the set of values for IpVersionEnum
 func GetIpVersionEnumValues() []IpVersionEnum {
 	values := make([]IpVersionEnum, 0)
@@ -46,11 +51,6 @@ func GetIpVersionEnumStringValues() []string {
 
 // GetMappingIpVersionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIpVersionEnum(val string) (IpVersionEnum, bool) {
-	mappingIpVersionEnumIgnoreCase := make(map[string]IpVersionEnum)
-	for k, v := range mappingIpVersionEnum {
-		mappingIpVersionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIpVersionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIpVersionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

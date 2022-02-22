@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -61,6 +61,11 @@ var mappingCustomProtectionRuleSettingActionEnum = map[string]CustomProtectionRu
 	"BLOCK":  CustomProtectionRuleSettingActionBlock,
 }
 
+var mappingCustomProtectionRuleSettingActionEnumLowerCase = map[string]CustomProtectionRuleSettingActionEnum{
+	"detect": CustomProtectionRuleSettingActionDetect,
+	"block":  CustomProtectionRuleSettingActionBlock,
+}
+
 // GetCustomProtectionRuleSettingActionEnumValues Enumerates the set of values for CustomProtectionRuleSettingActionEnum
 func GetCustomProtectionRuleSettingActionEnumValues() []CustomProtectionRuleSettingActionEnum {
 	values := make([]CustomProtectionRuleSettingActionEnum, 0)
@@ -80,11 +85,6 @@ func GetCustomProtectionRuleSettingActionEnumStringValues() []string {
 
 // GetMappingCustomProtectionRuleSettingActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCustomProtectionRuleSettingActionEnum(val string) (CustomProtectionRuleSettingActionEnum, bool) {
-	mappingCustomProtectionRuleSettingActionEnumIgnoreCase := make(map[string]CustomProtectionRuleSettingActionEnum)
-	for k, v := range mappingCustomProtectionRuleSettingActionEnum {
-		mappingCustomProtectionRuleSettingActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCustomProtectionRuleSettingActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCustomProtectionRuleSettingActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

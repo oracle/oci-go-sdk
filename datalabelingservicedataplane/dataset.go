@@ -12,7 +12,7 @@ package datalabelingservicedataplane
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -200,6 +200,16 @@ var mappingDatasetLifecycleStateEnum = map[string]DatasetLifecycleStateEnum{
 	"FAILED":          DatasetLifecycleStateFailed,
 }
 
+var mappingDatasetLifecycleStateEnumLowerCase = map[string]DatasetLifecycleStateEnum{
+	"creating":        DatasetLifecycleStateCreating,
+	"updating":        DatasetLifecycleStateUpdating,
+	"active":          DatasetLifecycleStateActive,
+	"needs_attention": DatasetLifecycleStateNeedsAttention,
+	"deleting":        DatasetLifecycleStateDeleting,
+	"deleted":         DatasetLifecycleStateDeleted,
+	"failed":          DatasetLifecycleStateFailed,
+}
+
 // GetDatasetLifecycleStateEnumValues Enumerates the set of values for DatasetLifecycleStateEnum
 func GetDatasetLifecycleStateEnumValues() []DatasetLifecycleStateEnum {
 	values := make([]DatasetLifecycleStateEnum, 0)
@@ -224,11 +234,6 @@ func GetDatasetLifecycleStateEnumStringValues() []string {
 
 // GetMappingDatasetLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatasetLifecycleStateEnum(val string) (DatasetLifecycleStateEnum, bool) {
-	mappingDatasetLifecycleStateEnumIgnoreCase := make(map[string]DatasetLifecycleStateEnum)
-	for k, v := range mappingDatasetLifecycleStateEnum {
-		mappingDatasetLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatasetLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatasetLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

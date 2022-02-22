@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -100,6 +100,13 @@ var mappingPdbConversionHistoryEntrySummaryActionEnum = map[string]PdbConversion
 	"SYNC_ROLLBACK": PdbConversionHistoryEntrySummaryActionSyncRollback,
 }
 
+var mappingPdbConversionHistoryEntrySummaryActionEnumLowerCase = map[string]PdbConversionHistoryEntrySummaryActionEnum{
+	"precheck":      PdbConversionHistoryEntrySummaryActionPrecheck,
+	"convert":       PdbConversionHistoryEntrySummaryActionConvert,
+	"sync":          PdbConversionHistoryEntrySummaryActionSync,
+	"sync_rollback": PdbConversionHistoryEntrySummaryActionSyncRollback,
+}
+
 // GetPdbConversionHistoryEntrySummaryActionEnumValues Enumerates the set of values for PdbConversionHistoryEntrySummaryActionEnum
 func GetPdbConversionHistoryEntrySummaryActionEnumValues() []PdbConversionHistoryEntrySummaryActionEnum {
 	values := make([]PdbConversionHistoryEntrySummaryActionEnum, 0)
@@ -121,12 +128,7 @@ func GetPdbConversionHistoryEntrySummaryActionEnumStringValues() []string {
 
 // GetMappingPdbConversionHistoryEntrySummaryActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPdbConversionHistoryEntrySummaryActionEnum(val string) (PdbConversionHistoryEntrySummaryActionEnum, bool) {
-	mappingPdbConversionHistoryEntrySummaryActionEnumIgnoreCase := make(map[string]PdbConversionHistoryEntrySummaryActionEnum)
-	for k, v := range mappingPdbConversionHistoryEntrySummaryActionEnum {
-		mappingPdbConversionHistoryEntrySummaryActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPdbConversionHistoryEntrySummaryActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPdbConversionHistoryEntrySummaryActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -140,6 +142,10 @@ const (
 
 var mappingPdbConversionHistoryEntrySummaryTargetEnum = map[string]PdbConversionHistoryEntrySummaryTargetEnum{
 	"NEW_DATABASE": PdbConversionHistoryEntrySummaryTargetNewDatabase,
+}
+
+var mappingPdbConversionHistoryEntrySummaryTargetEnumLowerCase = map[string]PdbConversionHistoryEntrySummaryTargetEnum{
+	"new_database": PdbConversionHistoryEntrySummaryTargetNewDatabase,
 }
 
 // GetPdbConversionHistoryEntrySummaryTargetEnumValues Enumerates the set of values for PdbConversionHistoryEntrySummaryTargetEnum
@@ -160,12 +166,7 @@ func GetPdbConversionHistoryEntrySummaryTargetEnumStringValues() []string {
 
 // GetMappingPdbConversionHistoryEntrySummaryTargetEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPdbConversionHistoryEntrySummaryTargetEnum(val string) (PdbConversionHistoryEntrySummaryTargetEnum, bool) {
-	mappingPdbConversionHistoryEntrySummaryTargetEnumIgnoreCase := make(map[string]PdbConversionHistoryEntrySummaryTargetEnum)
-	for k, v := range mappingPdbConversionHistoryEntrySummaryTargetEnum {
-		mappingPdbConversionHistoryEntrySummaryTargetEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPdbConversionHistoryEntrySummaryTargetEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPdbConversionHistoryEntrySummaryTargetEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +184,12 @@ var mappingPdbConversionHistoryEntrySummaryLifecycleStateEnum = map[string]PdbCo
 	"SUCCEEDED":   PdbConversionHistoryEntrySummaryLifecycleStateSucceeded,
 	"FAILED":      PdbConversionHistoryEntrySummaryLifecycleStateFailed,
 	"IN_PROGRESS": PdbConversionHistoryEntrySummaryLifecycleStateInProgress,
+}
+
+var mappingPdbConversionHistoryEntrySummaryLifecycleStateEnumLowerCase = map[string]PdbConversionHistoryEntrySummaryLifecycleStateEnum{
+	"succeeded":   PdbConversionHistoryEntrySummaryLifecycleStateSucceeded,
+	"failed":      PdbConversionHistoryEntrySummaryLifecycleStateFailed,
+	"in_progress": PdbConversionHistoryEntrySummaryLifecycleStateInProgress,
 }
 
 // GetPdbConversionHistoryEntrySummaryLifecycleStateEnumValues Enumerates the set of values for PdbConversionHistoryEntrySummaryLifecycleStateEnum
@@ -205,11 +212,6 @@ func GetPdbConversionHistoryEntrySummaryLifecycleStateEnumStringValues() []strin
 
 // GetMappingPdbConversionHistoryEntrySummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPdbConversionHistoryEntrySummaryLifecycleStateEnum(val string) (PdbConversionHistoryEntrySummaryLifecycleStateEnum, bool) {
-	mappingPdbConversionHistoryEntrySummaryLifecycleStateEnumIgnoreCase := make(map[string]PdbConversionHistoryEntrySummaryLifecycleStateEnum)
-	for k, v := range mappingPdbConversionHistoryEntrySummaryLifecycleStateEnum {
-		mappingPdbConversionHistoryEntrySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPdbConversionHistoryEntrySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPdbConversionHistoryEntrySummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

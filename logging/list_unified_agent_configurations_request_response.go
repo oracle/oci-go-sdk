@@ -6,7 +6,7 @@ package logging
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -161,6 +161,15 @@ var mappingListUnifiedAgentConfigurationsLifecycleStateEnum = map[string]ListUni
 	"FAILED":   ListUnifiedAgentConfigurationsLifecycleStateFailed,
 }
 
+var mappingListUnifiedAgentConfigurationsLifecycleStateEnumLowerCase = map[string]ListUnifiedAgentConfigurationsLifecycleStateEnum{
+	"creating": ListUnifiedAgentConfigurationsLifecycleStateCreating,
+	"active":   ListUnifiedAgentConfigurationsLifecycleStateActive,
+	"updating": ListUnifiedAgentConfigurationsLifecycleStateUpdating,
+	"inactive": ListUnifiedAgentConfigurationsLifecycleStateInactive,
+	"deleting": ListUnifiedAgentConfigurationsLifecycleStateDeleting,
+	"failed":   ListUnifiedAgentConfigurationsLifecycleStateFailed,
+}
+
 // GetListUnifiedAgentConfigurationsLifecycleStateEnumValues Enumerates the set of values for ListUnifiedAgentConfigurationsLifecycleStateEnum
 func GetListUnifiedAgentConfigurationsLifecycleStateEnumValues() []ListUnifiedAgentConfigurationsLifecycleStateEnum {
 	values := make([]ListUnifiedAgentConfigurationsLifecycleStateEnum, 0)
@@ -184,12 +193,7 @@ func GetListUnifiedAgentConfigurationsLifecycleStateEnumStringValues() []string 
 
 // GetMappingListUnifiedAgentConfigurationsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUnifiedAgentConfigurationsLifecycleStateEnum(val string) (ListUnifiedAgentConfigurationsLifecycleStateEnum, bool) {
-	mappingListUnifiedAgentConfigurationsLifecycleStateEnumIgnoreCase := make(map[string]ListUnifiedAgentConfigurationsLifecycleStateEnum)
-	for k, v := range mappingListUnifiedAgentConfigurationsLifecycleStateEnum {
-		mappingListUnifiedAgentConfigurationsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUnifiedAgentConfigurationsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUnifiedAgentConfigurationsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -205,6 +209,11 @@ const (
 var mappingListUnifiedAgentConfigurationsSortByEnum = map[string]ListUnifiedAgentConfigurationsSortByEnum{
 	"timeCreated": ListUnifiedAgentConfigurationsSortByTimecreated,
 	"displayName": ListUnifiedAgentConfigurationsSortByDisplayname,
+}
+
+var mappingListUnifiedAgentConfigurationsSortByEnumLowerCase = map[string]ListUnifiedAgentConfigurationsSortByEnum{
+	"timecreated": ListUnifiedAgentConfigurationsSortByTimecreated,
+	"displayname": ListUnifiedAgentConfigurationsSortByDisplayname,
 }
 
 // GetListUnifiedAgentConfigurationsSortByEnumValues Enumerates the set of values for ListUnifiedAgentConfigurationsSortByEnum
@@ -226,12 +235,7 @@ func GetListUnifiedAgentConfigurationsSortByEnumStringValues() []string {
 
 // GetMappingListUnifiedAgentConfigurationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUnifiedAgentConfigurationsSortByEnum(val string) (ListUnifiedAgentConfigurationsSortByEnum, bool) {
-	mappingListUnifiedAgentConfigurationsSortByEnumIgnoreCase := make(map[string]ListUnifiedAgentConfigurationsSortByEnum)
-	for k, v := range mappingListUnifiedAgentConfigurationsSortByEnum {
-		mappingListUnifiedAgentConfigurationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUnifiedAgentConfigurationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUnifiedAgentConfigurationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -247,6 +251,11 @@ const (
 var mappingListUnifiedAgentConfigurationsSortOrderEnum = map[string]ListUnifiedAgentConfigurationsSortOrderEnum{
 	"ASC":  ListUnifiedAgentConfigurationsSortOrderAsc,
 	"DESC": ListUnifiedAgentConfigurationsSortOrderDesc,
+}
+
+var mappingListUnifiedAgentConfigurationsSortOrderEnumLowerCase = map[string]ListUnifiedAgentConfigurationsSortOrderEnum{
+	"asc":  ListUnifiedAgentConfigurationsSortOrderAsc,
+	"desc": ListUnifiedAgentConfigurationsSortOrderDesc,
 }
 
 // GetListUnifiedAgentConfigurationsSortOrderEnumValues Enumerates the set of values for ListUnifiedAgentConfigurationsSortOrderEnum
@@ -268,11 +277,6 @@ func GetListUnifiedAgentConfigurationsSortOrderEnumStringValues() []string {
 
 // GetMappingListUnifiedAgentConfigurationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListUnifiedAgentConfigurationsSortOrderEnum(val string) (ListUnifiedAgentConfigurationsSortOrderEnum, bool) {
-	mappingListUnifiedAgentConfigurationsSortOrderEnumIgnoreCase := make(map[string]ListUnifiedAgentConfigurationsSortOrderEnum)
-	for k, v := range mappingListUnifiedAgentConfigurationsSortOrderEnum {
-		mappingListUnifiedAgentConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListUnifiedAgentConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListUnifiedAgentConfigurationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

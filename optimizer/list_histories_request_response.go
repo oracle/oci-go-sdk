@@ -6,7 +6,7 @@ package optimizer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -159,6 +159,11 @@ var mappingListHistoriesSortOrderEnum = map[string]ListHistoriesSortOrderEnum{
 	"DESC": ListHistoriesSortOrderDesc,
 }
 
+var mappingListHistoriesSortOrderEnumLowerCase = map[string]ListHistoriesSortOrderEnum{
+	"asc":  ListHistoriesSortOrderAsc,
+	"desc": ListHistoriesSortOrderDesc,
+}
+
 // GetListHistoriesSortOrderEnumValues Enumerates the set of values for ListHistoriesSortOrderEnum
 func GetListHistoriesSortOrderEnumValues() []ListHistoriesSortOrderEnum {
 	values := make([]ListHistoriesSortOrderEnum, 0)
@@ -178,12 +183,7 @@ func GetListHistoriesSortOrderEnumStringValues() []string {
 
 // GetMappingListHistoriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHistoriesSortOrderEnum(val string) (ListHistoriesSortOrderEnum, bool) {
-	mappingListHistoriesSortOrderEnumIgnoreCase := make(map[string]ListHistoriesSortOrderEnum)
-	for k, v := range mappingListHistoriesSortOrderEnum {
-		mappingListHistoriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHistoriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHistoriesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -199,6 +199,11 @@ const (
 var mappingListHistoriesSortByEnum = map[string]ListHistoriesSortByEnum{
 	"NAME":        ListHistoriesSortByName,
 	"TIMECREATED": ListHistoriesSortByTimecreated,
+}
+
+var mappingListHistoriesSortByEnumLowerCase = map[string]ListHistoriesSortByEnum{
+	"name":        ListHistoriesSortByName,
+	"timecreated": ListHistoriesSortByTimecreated,
 }
 
 // GetListHistoriesSortByEnumValues Enumerates the set of values for ListHistoriesSortByEnum
@@ -220,12 +225,7 @@ func GetListHistoriesSortByEnumStringValues() []string {
 
 // GetMappingListHistoriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHistoriesSortByEnum(val string) (ListHistoriesSortByEnum, bool) {
-	mappingListHistoriesSortByEnumIgnoreCase := make(map[string]ListHistoriesSortByEnum)
-	for k, v := range mappingListHistoriesSortByEnum {
-		mappingListHistoriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHistoriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHistoriesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -257,6 +257,18 @@ var mappingListHistoriesLifecycleStateEnum = map[string]ListHistoriesLifecycleSt
 	"CREATING":  ListHistoriesLifecycleStateCreating,
 }
 
+var mappingListHistoriesLifecycleStateEnumLowerCase = map[string]ListHistoriesLifecycleStateEnum{
+	"active":    ListHistoriesLifecycleStateActive,
+	"failed":    ListHistoriesLifecycleStateFailed,
+	"inactive":  ListHistoriesLifecycleStateInactive,
+	"attaching": ListHistoriesLifecycleStateAttaching,
+	"detaching": ListHistoriesLifecycleStateDetaching,
+	"deleting":  ListHistoriesLifecycleStateDeleting,
+	"deleted":   ListHistoriesLifecycleStateDeleted,
+	"updating":  ListHistoriesLifecycleStateUpdating,
+	"creating":  ListHistoriesLifecycleStateCreating,
+}
+
 // GetListHistoriesLifecycleStateEnumValues Enumerates the set of values for ListHistoriesLifecycleStateEnum
 func GetListHistoriesLifecycleStateEnumValues() []ListHistoriesLifecycleStateEnum {
 	values := make([]ListHistoriesLifecycleStateEnum, 0)
@@ -283,12 +295,7 @@ func GetListHistoriesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListHistoriesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHistoriesLifecycleStateEnum(val string) (ListHistoriesLifecycleStateEnum, bool) {
-	mappingListHistoriesLifecycleStateEnumIgnoreCase := make(map[string]ListHistoriesLifecycleStateEnum)
-	for k, v := range mappingListHistoriesLifecycleStateEnum {
-		mappingListHistoriesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHistoriesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHistoriesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -308,6 +315,13 @@ var mappingListHistoriesStatusEnum = map[string]ListHistoriesStatusEnum{
 	"DISMISSED":   ListHistoriesStatusDismissed,
 	"POSTPONED":   ListHistoriesStatusPostponed,
 	"IMPLEMENTED": ListHistoriesStatusImplemented,
+}
+
+var mappingListHistoriesStatusEnumLowerCase = map[string]ListHistoriesStatusEnum{
+	"pending":     ListHistoriesStatusPending,
+	"dismissed":   ListHistoriesStatusDismissed,
+	"postponed":   ListHistoriesStatusPostponed,
+	"implemented": ListHistoriesStatusImplemented,
 }
 
 // GetListHistoriesStatusEnumValues Enumerates the set of values for ListHistoriesStatusEnum
@@ -331,11 +345,6 @@ func GetListHistoriesStatusEnumStringValues() []string {
 
 // GetMappingListHistoriesStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHistoriesStatusEnum(val string) (ListHistoriesStatusEnum, bool) {
-	mappingListHistoriesStatusEnumIgnoreCase := make(map[string]ListHistoriesStatusEnum)
-	for k, v := range mappingListHistoriesStatusEnum {
-		mappingListHistoriesStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHistoriesStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHistoriesStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

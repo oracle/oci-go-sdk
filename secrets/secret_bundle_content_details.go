@@ -12,7 +12,7 @@ package secrets
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingSecretBundleContentDetailsContentTypeEnum = map[string]SecretBundleCo
 	"BASE64": SecretBundleContentDetailsContentTypeBase64,
 }
 
+var mappingSecretBundleContentDetailsContentTypeEnumLowerCase = map[string]SecretBundleContentDetailsContentTypeEnum{
+	"base64": SecretBundleContentDetailsContentTypeBase64,
+}
+
 // GetSecretBundleContentDetailsContentTypeEnumValues Enumerates the set of values for SecretBundleContentDetailsContentTypeEnum
 func GetSecretBundleContentDetailsContentTypeEnumValues() []SecretBundleContentDetailsContentTypeEnum {
 	values := make([]SecretBundleContentDetailsContentTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetSecretBundleContentDetailsContentTypeEnumStringValues() []string {
 
 // GetMappingSecretBundleContentDetailsContentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSecretBundleContentDetailsContentTypeEnum(val string) (SecretBundleContentDetailsContentTypeEnum, bool) {
-	mappingSecretBundleContentDetailsContentTypeEnumIgnoreCase := make(map[string]SecretBundleContentDetailsContentTypeEnum)
-	for k, v := range mappingSecretBundleContentDetailsContentTypeEnum {
-		mappingSecretBundleContentDetailsContentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSecretBundleContentDetailsContentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSecretBundleContentDetailsContentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -81,6 +81,15 @@ var mappingFindingSeverityEnum = map[string]FindingSeverityEnum{
 	"PASS":     FindingSeverityPass,
 }
 
+var mappingFindingSeverityEnumLowerCase = map[string]FindingSeverityEnum{
+	"high":     FindingSeverityHigh,
+	"medium":   FindingSeverityMedium,
+	"low":      FindingSeverityLow,
+	"evaluate": FindingSeverityEvaluate,
+	"advisory": FindingSeverityAdvisory,
+	"pass":     FindingSeverityPass,
+}
+
 // GetFindingSeverityEnumValues Enumerates the set of values for FindingSeverityEnum
 func GetFindingSeverityEnumValues() []FindingSeverityEnum {
 	values := make([]FindingSeverityEnum, 0)
@@ -104,11 +113,6 @@ func GetFindingSeverityEnumStringValues() []string {
 
 // GetMappingFindingSeverityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFindingSeverityEnum(val string) (FindingSeverityEnum, bool) {
-	mappingFindingSeverityEnumIgnoreCase := make(map[string]FindingSeverityEnum)
-	for k, v := range mappingFindingSeverityEnum {
-		mappingFindingSeverityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFindingSeverityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFindingSeverityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

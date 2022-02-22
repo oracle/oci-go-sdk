@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -26,7 +26,7 @@ type CreateIpSecConnectionTunnelDetails struct {
 	// Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// The type of routing to use for this tunnel (either BGP dynamic routing or static routing).
+	// The type of routing to use for this tunnel (BGP dynamic routing, static routing, or policy-based routing).
 	Routing CreateIpSecConnectionTunnelDetailsRoutingEnum `mandatory:"false" json:"routing,omitempty"`
 
 	// Internet Key Exchange protocol version.
@@ -40,10 +40,15 @@ type CreateIpSecConnectionTunnelDetails struct {
 
 	BgpSessionConfig *CreateIpSecTunnelBgpSessionDetails `mandatory:"false" json:"bgpSessionConfig"`
 
-	// Whether Oracle side is the initiator for negotiation.
+	// Indicates whether the Oracle end of the IPSec connection is able to initiate starting up the IPSec tunnel.
 	OracleInitiation CreateIpSecConnectionTunnelDetailsOracleInitiationEnum `mandatory:"false" json:"oracleInitiation,omitempty"`
 
-	// Whether NAT-T Enabled on the tunnel
+	// By default (the `AUTO` setting), IKE sends packets with a source and destination port set to 500,
+	// and when it detects that the port used to forward packets has changed (most likely because a NAT device
+	// is between the CPE device and the Oracle VPN headend) it will try to negotiate the use of NAT-T.
+	// The `ENABLED` option sets the IKE protocol to use port 4500 instead of 500 and forces encapsulating traffic with the ESP protocol inside UDP packets.
+	// The `DISABLED` option directs IKE to completely refuse to negotiate NAT-T
+	// even if it senses there may be a NAT device in use.
 	NatTranslationEnabled CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum `mandatory:"false" json:"natTranslationEnabled,omitempty"`
 
 	PhaseOneConfig *PhaseOneConfigDetails `mandatory:"false" json:"phaseOneConfig"`
@@ -99,6 +104,12 @@ var mappingCreateIpSecConnectionTunnelDetailsRoutingEnum = map[string]CreateIpSe
 	"POLICY": CreateIpSecConnectionTunnelDetailsRoutingPolicy,
 }
 
+var mappingCreateIpSecConnectionTunnelDetailsRoutingEnumLowerCase = map[string]CreateIpSecConnectionTunnelDetailsRoutingEnum{
+	"bgp":    CreateIpSecConnectionTunnelDetailsRoutingBgp,
+	"static": CreateIpSecConnectionTunnelDetailsRoutingStatic,
+	"policy": CreateIpSecConnectionTunnelDetailsRoutingPolicy,
+}
+
 // GetCreateIpSecConnectionTunnelDetailsRoutingEnumValues Enumerates the set of values for CreateIpSecConnectionTunnelDetailsRoutingEnum
 func GetCreateIpSecConnectionTunnelDetailsRoutingEnumValues() []CreateIpSecConnectionTunnelDetailsRoutingEnum {
 	values := make([]CreateIpSecConnectionTunnelDetailsRoutingEnum, 0)
@@ -119,12 +130,7 @@ func GetCreateIpSecConnectionTunnelDetailsRoutingEnumStringValues() []string {
 
 // GetMappingCreateIpSecConnectionTunnelDetailsRoutingEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateIpSecConnectionTunnelDetailsRoutingEnum(val string) (CreateIpSecConnectionTunnelDetailsRoutingEnum, bool) {
-	mappingCreateIpSecConnectionTunnelDetailsRoutingEnumIgnoreCase := make(map[string]CreateIpSecConnectionTunnelDetailsRoutingEnum)
-	for k, v := range mappingCreateIpSecConnectionTunnelDetailsRoutingEnum {
-		mappingCreateIpSecConnectionTunnelDetailsRoutingEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateIpSecConnectionTunnelDetailsRoutingEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateIpSecConnectionTunnelDetailsRoutingEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -140,6 +146,11 @@ const (
 var mappingCreateIpSecConnectionTunnelDetailsIkeVersionEnum = map[string]CreateIpSecConnectionTunnelDetailsIkeVersionEnum{
 	"V1": CreateIpSecConnectionTunnelDetailsIkeVersionV1,
 	"V2": CreateIpSecConnectionTunnelDetailsIkeVersionV2,
+}
+
+var mappingCreateIpSecConnectionTunnelDetailsIkeVersionEnumLowerCase = map[string]CreateIpSecConnectionTunnelDetailsIkeVersionEnum{
+	"v1": CreateIpSecConnectionTunnelDetailsIkeVersionV1,
+	"v2": CreateIpSecConnectionTunnelDetailsIkeVersionV2,
 }
 
 // GetCreateIpSecConnectionTunnelDetailsIkeVersionEnumValues Enumerates the set of values for CreateIpSecConnectionTunnelDetailsIkeVersionEnum
@@ -161,12 +172,7 @@ func GetCreateIpSecConnectionTunnelDetailsIkeVersionEnumStringValues() []string 
 
 // GetMappingCreateIpSecConnectionTunnelDetailsIkeVersionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateIpSecConnectionTunnelDetailsIkeVersionEnum(val string) (CreateIpSecConnectionTunnelDetailsIkeVersionEnum, bool) {
-	mappingCreateIpSecConnectionTunnelDetailsIkeVersionEnumIgnoreCase := make(map[string]CreateIpSecConnectionTunnelDetailsIkeVersionEnum)
-	for k, v := range mappingCreateIpSecConnectionTunnelDetailsIkeVersionEnum {
-		mappingCreateIpSecConnectionTunnelDetailsIkeVersionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateIpSecConnectionTunnelDetailsIkeVersionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateIpSecConnectionTunnelDetailsIkeVersionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -182,6 +188,11 @@ const (
 var mappingCreateIpSecConnectionTunnelDetailsOracleInitiationEnum = map[string]CreateIpSecConnectionTunnelDetailsOracleInitiationEnum{
 	"INITIATOR_OR_RESPONDER": CreateIpSecConnectionTunnelDetailsOracleInitiationInitiatorOrResponder,
 	"RESPONDER_ONLY":         CreateIpSecConnectionTunnelDetailsOracleInitiationResponderOnly,
+}
+
+var mappingCreateIpSecConnectionTunnelDetailsOracleInitiationEnumLowerCase = map[string]CreateIpSecConnectionTunnelDetailsOracleInitiationEnum{
+	"initiator_or_responder": CreateIpSecConnectionTunnelDetailsOracleInitiationInitiatorOrResponder,
+	"responder_only":         CreateIpSecConnectionTunnelDetailsOracleInitiationResponderOnly,
 }
 
 // GetCreateIpSecConnectionTunnelDetailsOracleInitiationEnumValues Enumerates the set of values for CreateIpSecConnectionTunnelDetailsOracleInitiationEnum
@@ -203,12 +214,7 @@ func GetCreateIpSecConnectionTunnelDetailsOracleInitiationEnumStringValues() []s
 
 // GetMappingCreateIpSecConnectionTunnelDetailsOracleInitiationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateIpSecConnectionTunnelDetailsOracleInitiationEnum(val string) (CreateIpSecConnectionTunnelDetailsOracleInitiationEnum, bool) {
-	mappingCreateIpSecConnectionTunnelDetailsOracleInitiationEnumIgnoreCase := make(map[string]CreateIpSecConnectionTunnelDetailsOracleInitiationEnum)
-	for k, v := range mappingCreateIpSecConnectionTunnelDetailsOracleInitiationEnum {
-		mappingCreateIpSecConnectionTunnelDetailsOracleInitiationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateIpSecConnectionTunnelDetailsOracleInitiationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateIpSecConnectionTunnelDetailsOracleInitiationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -226,6 +232,12 @@ var mappingCreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum = map[str
 	"ENABLED":  CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnabled,
 	"DISABLED": CreateIpSecConnectionTunnelDetailsNatTranslationEnabledDisabled,
 	"AUTO":     CreateIpSecConnectionTunnelDetailsNatTranslationEnabledAuto,
+}
+
+var mappingCreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnumLowerCase = map[string]CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum{
+	"enabled":  CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnabled,
+	"disabled": CreateIpSecConnectionTunnelDetailsNatTranslationEnabledDisabled,
+	"auto":     CreateIpSecConnectionTunnelDetailsNatTranslationEnabledAuto,
 }
 
 // GetCreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnumValues Enumerates the set of values for CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum
@@ -248,11 +260,6 @@ func GetCreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnumStringValues(
 
 // GetMappingCreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum(val string) (CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum, bool) {
-	mappingCreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnumIgnoreCase := make(map[string]CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum)
-	for k, v := range mappingCreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum {
-		mappingCreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

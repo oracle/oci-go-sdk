@@ -35,6 +35,15 @@ var mappingHeatWaveClusterMemoryEstimateStatusEnum = map[string]HeatWaveClusterM
 	"CANCELED":    HeatWaveClusterMemoryEstimateStatusCanceled,
 }
 
+var mappingHeatWaveClusterMemoryEstimateStatusEnumLowerCase = map[string]HeatWaveClusterMemoryEstimateStatusEnum{
+	"accepted":    HeatWaveClusterMemoryEstimateStatusAccepted,
+	"in_progress": HeatWaveClusterMemoryEstimateStatusInProgress,
+	"failed":      HeatWaveClusterMemoryEstimateStatusFailed,
+	"succeeded":   HeatWaveClusterMemoryEstimateStatusSucceeded,
+	"canceling":   HeatWaveClusterMemoryEstimateStatusCanceling,
+	"canceled":    HeatWaveClusterMemoryEstimateStatusCanceled,
+}
+
 // GetHeatWaveClusterMemoryEstimateStatusEnumValues Enumerates the set of values for HeatWaveClusterMemoryEstimateStatusEnum
 func GetHeatWaveClusterMemoryEstimateStatusEnumValues() []HeatWaveClusterMemoryEstimateStatusEnum {
 	values := make([]HeatWaveClusterMemoryEstimateStatusEnum, 0)
@@ -58,11 +67,6 @@ func GetHeatWaveClusterMemoryEstimateStatusEnumStringValues() []string {
 
 // GetMappingHeatWaveClusterMemoryEstimateStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHeatWaveClusterMemoryEstimateStatusEnum(val string) (HeatWaveClusterMemoryEstimateStatusEnum, bool) {
-	mappingHeatWaveClusterMemoryEstimateStatusEnumIgnoreCase := make(map[string]HeatWaveClusterMemoryEstimateStatusEnum)
-	for k, v := range mappingHeatWaveClusterMemoryEstimateStatusEnum {
-		mappingHeatWaveClusterMemoryEstimateStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHeatWaveClusterMemoryEstimateStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHeatWaveClusterMemoryEstimateStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

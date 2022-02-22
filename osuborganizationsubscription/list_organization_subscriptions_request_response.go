@@ -6,7 +6,7 @@ package osuborganizationsubscription
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -133,6 +133,11 @@ var mappingListOrganizationSubscriptionsSortOrderEnum = map[string]ListOrganizat
 	"DESC": ListOrganizationSubscriptionsSortOrderDesc,
 }
 
+var mappingListOrganizationSubscriptionsSortOrderEnumLowerCase = map[string]ListOrganizationSubscriptionsSortOrderEnum{
+	"asc":  ListOrganizationSubscriptionsSortOrderAsc,
+	"desc": ListOrganizationSubscriptionsSortOrderDesc,
+}
+
 // GetListOrganizationSubscriptionsSortOrderEnumValues Enumerates the set of values for ListOrganizationSubscriptionsSortOrderEnum
 func GetListOrganizationSubscriptionsSortOrderEnumValues() []ListOrganizationSubscriptionsSortOrderEnum {
 	values := make([]ListOrganizationSubscriptionsSortOrderEnum, 0)
@@ -152,12 +157,7 @@ func GetListOrganizationSubscriptionsSortOrderEnumStringValues() []string {
 
 // GetMappingListOrganizationSubscriptionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOrganizationSubscriptionsSortOrderEnum(val string) (ListOrganizationSubscriptionsSortOrderEnum, bool) {
-	mappingListOrganizationSubscriptionsSortOrderEnumIgnoreCase := make(map[string]ListOrganizationSubscriptionsSortOrderEnum)
-	for k, v := range mappingListOrganizationSubscriptionsSortOrderEnum {
-		mappingListOrganizationSubscriptionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOrganizationSubscriptionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOrganizationSubscriptionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -173,6 +173,11 @@ const (
 var mappingListOrganizationSubscriptionsSortByEnum = map[string]ListOrganizationSubscriptionsSortByEnum{
 	"SUBSCRIPTIONID": ListOrganizationSubscriptionsSortBySubscriptionid,
 	"TIMESTART":      ListOrganizationSubscriptionsSortByTimestart,
+}
+
+var mappingListOrganizationSubscriptionsSortByEnumLowerCase = map[string]ListOrganizationSubscriptionsSortByEnum{
+	"subscriptionid": ListOrganizationSubscriptionsSortBySubscriptionid,
+	"timestart":      ListOrganizationSubscriptionsSortByTimestart,
 }
 
 // GetListOrganizationSubscriptionsSortByEnumValues Enumerates the set of values for ListOrganizationSubscriptionsSortByEnum
@@ -194,11 +199,6 @@ func GetListOrganizationSubscriptionsSortByEnumStringValues() []string {
 
 // GetMappingListOrganizationSubscriptionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListOrganizationSubscriptionsSortByEnum(val string) (ListOrganizationSubscriptionsSortByEnum, bool) {
-	mappingListOrganizationSubscriptionsSortByEnumIgnoreCase := make(map[string]ListOrganizationSubscriptionsSortByEnum)
-	for k, v := range mappingListOrganizationSubscriptionsSortByEnum {
-		mappingListOrganizationSubscriptionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListOrganizationSubscriptionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListOrganizationSubscriptionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

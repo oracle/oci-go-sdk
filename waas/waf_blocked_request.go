@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -76,6 +76,17 @@ var mappingWafBlockedRequestWafFeatureEnum = map[string]WafBlockedRequestWafFeat
 	"ADDRESS_RATE_LIMITING":        WafBlockedRequestWafFeatureAddressRateLimiting,
 }
 
+var mappingWafBlockedRequestWafFeatureEnumLowerCase = map[string]WafBlockedRequestWafFeatureEnum{
+	"protection_rules":             WafBlockedRequestWafFeatureProtectionRules,
+	"js_challenge":                 WafBlockedRequestWafFeatureJsChallenge,
+	"access_rules":                 WafBlockedRequestWafFeatureAccessRules,
+	"threat_feeds":                 WafBlockedRequestWafFeatureThreatFeeds,
+	"human_interaction_challenge":  WafBlockedRequestWafFeatureHumanInteractionChallenge,
+	"device_fingerprint_challenge": WafBlockedRequestWafFeatureDeviceFingerprintChallenge,
+	"captcha":                      WafBlockedRequestWafFeatureCaptcha,
+	"address_rate_limiting":        WafBlockedRequestWafFeatureAddressRateLimiting,
+}
+
 // GetWafBlockedRequestWafFeatureEnumValues Enumerates the set of values for WafBlockedRequestWafFeatureEnum
 func GetWafBlockedRequestWafFeatureEnumValues() []WafBlockedRequestWafFeatureEnum {
 	values := make([]WafBlockedRequestWafFeatureEnum, 0)
@@ -101,11 +112,6 @@ func GetWafBlockedRequestWafFeatureEnumStringValues() []string {
 
 // GetMappingWafBlockedRequestWafFeatureEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWafBlockedRequestWafFeatureEnum(val string) (WafBlockedRequestWafFeatureEnum, bool) {
-	mappingWafBlockedRequestWafFeatureEnumIgnoreCase := make(map[string]WafBlockedRequestWafFeatureEnum)
-	for k, v := range mappingWafBlockedRequestWafFeatureEnum {
-		mappingWafBlockedRequestWafFeatureEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWafBlockedRequestWafFeatureEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWafBlockedRequestWafFeatureEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

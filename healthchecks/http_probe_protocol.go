@@ -29,6 +29,11 @@ var mappingHttpProbeProtocolEnum = map[string]HttpProbeProtocolEnum{
 	"HTTPS": HttpProbeProtocolHttps,
 }
 
+var mappingHttpProbeProtocolEnumLowerCase = map[string]HttpProbeProtocolEnum{
+	"http":  HttpProbeProtocolHttp,
+	"https": HttpProbeProtocolHttps,
+}
+
 // GetHttpProbeProtocolEnumValues Enumerates the set of values for HttpProbeProtocolEnum
 func GetHttpProbeProtocolEnumValues() []HttpProbeProtocolEnum {
 	values := make([]HttpProbeProtocolEnum, 0)
@@ -48,11 +53,6 @@ func GetHttpProbeProtocolEnumStringValues() []string {
 
 // GetMappingHttpProbeProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHttpProbeProtocolEnum(val string) (HttpProbeProtocolEnum, bool) {
-	mappingHttpProbeProtocolEnumIgnoreCase := make(map[string]HttpProbeProtocolEnum)
-	for k, v := range mappingHttpProbeProtocolEnum {
-		mappingHttpProbeProtocolEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHttpProbeProtocolEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHttpProbeProtocolEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

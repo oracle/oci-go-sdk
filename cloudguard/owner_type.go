@@ -2,9 +2,10 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Cloud Guard APIs
+// Cloud Guard API
 //
-// A description of the Cloud Guard APIs
+// Use the Cloud Guard API to automate processes that you would otherwise perform through the Cloud Guard Console.
+// **Note:** You can perform Create, Update, and Delete operations only from the reporting region of your Cloud Guard tenancy. You can perform Read operations from any region.
 //
 
 package cloudguard
@@ -27,6 +28,11 @@ var mappingOwnerTypeEnum = map[string]OwnerTypeEnum{
 	"ORACLE":   OwnerTypeOracle,
 }
 
+var mappingOwnerTypeEnumLowerCase = map[string]OwnerTypeEnum{
+	"customer": OwnerTypeCustomer,
+	"oracle":   OwnerTypeOracle,
+}
+
 // GetOwnerTypeEnumValues Enumerates the set of values for OwnerTypeEnum
 func GetOwnerTypeEnumValues() []OwnerTypeEnum {
 	values := make([]OwnerTypeEnum, 0)
@@ -46,11 +52,6 @@ func GetOwnerTypeEnumStringValues() []string {
 
 // GetMappingOwnerTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOwnerTypeEnum(val string) (OwnerTypeEnum, bool) {
-	mappingOwnerTypeEnumIgnoreCase := make(map[string]OwnerTypeEnum)
-	for k, v := range mappingOwnerTypeEnum {
-		mappingOwnerTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOwnerTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOwnerTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

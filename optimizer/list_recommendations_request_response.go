@@ -6,7 +6,7 @@ package optimizer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -153,6 +153,11 @@ var mappingListRecommendationsSortOrderEnum = map[string]ListRecommendationsSort
 	"DESC": ListRecommendationsSortOrderDesc,
 }
 
+var mappingListRecommendationsSortOrderEnumLowerCase = map[string]ListRecommendationsSortOrderEnum{
+	"asc":  ListRecommendationsSortOrderAsc,
+	"desc": ListRecommendationsSortOrderDesc,
+}
+
 // GetListRecommendationsSortOrderEnumValues Enumerates the set of values for ListRecommendationsSortOrderEnum
 func GetListRecommendationsSortOrderEnumValues() []ListRecommendationsSortOrderEnum {
 	values := make([]ListRecommendationsSortOrderEnum, 0)
@@ -172,12 +177,7 @@ func GetListRecommendationsSortOrderEnumStringValues() []string {
 
 // GetMappingListRecommendationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRecommendationsSortOrderEnum(val string) (ListRecommendationsSortOrderEnum, bool) {
-	mappingListRecommendationsSortOrderEnumIgnoreCase := make(map[string]ListRecommendationsSortOrderEnum)
-	for k, v := range mappingListRecommendationsSortOrderEnum {
-		mappingListRecommendationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRecommendationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRecommendationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -193,6 +193,11 @@ const (
 var mappingListRecommendationsSortByEnum = map[string]ListRecommendationsSortByEnum{
 	"NAME":        ListRecommendationsSortByName,
 	"TIMECREATED": ListRecommendationsSortByTimecreated,
+}
+
+var mappingListRecommendationsSortByEnumLowerCase = map[string]ListRecommendationsSortByEnum{
+	"name":        ListRecommendationsSortByName,
+	"timecreated": ListRecommendationsSortByTimecreated,
 }
 
 // GetListRecommendationsSortByEnumValues Enumerates the set of values for ListRecommendationsSortByEnum
@@ -214,12 +219,7 @@ func GetListRecommendationsSortByEnumStringValues() []string {
 
 // GetMappingListRecommendationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRecommendationsSortByEnum(val string) (ListRecommendationsSortByEnum, bool) {
-	mappingListRecommendationsSortByEnumIgnoreCase := make(map[string]ListRecommendationsSortByEnum)
-	for k, v := range mappingListRecommendationsSortByEnum {
-		mappingListRecommendationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRecommendationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRecommendationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -251,6 +251,18 @@ var mappingListRecommendationsLifecycleStateEnum = map[string]ListRecommendation
 	"CREATING":  ListRecommendationsLifecycleStateCreating,
 }
 
+var mappingListRecommendationsLifecycleStateEnumLowerCase = map[string]ListRecommendationsLifecycleStateEnum{
+	"active":    ListRecommendationsLifecycleStateActive,
+	"failed":    ListRecommendationsLifecycleStateFailed,
+	"inactive":  ListRecommendationsLifecycleStateInactive,
+	"attaching": ListRecommendationsLifecycleStateAttaching,
+	"detaching": ListRecommendationsLifecycleStateDetaching,
+	"deleting":  ListRecommendationsLifecycleStateDeleting,
+	"deleted":   ListRecommendationsLifecycleStateDeleted,
+	"updating":  ListRecommendationsLifecycleStateUpdating,
+	"creating":  ListRecommendationsLifecycleStateCreating,
+}
+
 // GetListRecommendationsLifecycleStateEnumValues Enumerates the set of values for ListRecommendationsLifecycleStateEnum
 func GetListRecommendationsLifecycleStateEnumValues() []ListRecommendationsLifecycleStateEnum {
 	values := make([]ListRecommendationsLifecycleStateEnum, 0)
@@ -277,12 +289,7 @@ func GetListRecommendationsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListRecommendationsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRecommendationsLifecycleStateEnum(val string) (ListRecommendationsLifecycleStateEnum, bool) {
-	mappingListRecommendationsLifecycleStateEnumIgnoreCase := make(map[string]ListRecommendationsLifecycleStateEnum)
-	for k, v := range mappingListRecommendationsLifecycleStateEnum {
-		mappingListRecommendationsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRecommendationsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRecommendationsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -302,6 +309,13 @@ var mappingListRecommendationsStatusEnum = map[string]ListRecommendationsStatusE
 	"DISMISSED":   ListRecommendationsStatusDismissed,
 	"POSTPONED":   ListRecommendationsStatusPostponed,
 	"IMPLEMENTED": ListRecommendationsStatusImplemented,
+}
+
+var mappingListRecommendationsStatusEnumLowerCase = map[string]ListRecommendationsStatusEnum{
+	"pending":     ListRecommendationsStatusPending,
+	"dismissed":   ListRecommendationsStatusDismissed,
+	"postponed":   ListRecommendationsStatusPostponed,
+	"implemented": ListRecommendationsStatusImplemented,
 }
 
 // GetListRecommendationsStatusEnumValues Enumerates the set of values for ListRecommendationsStatusEnum
@@ -325,11 +339,6 @@ func GetListRecommendationsStatusEnumStringValues() []string {
 
 // GetMappingListRecommendationsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRecommendationsStatusEnum(val string) (ListRecommendationsStatusEnum, bool) {
-	mappingListRecommendationsStatusEnumIgnoreCase := make(map[string]ListRecommendationsStatusEnum)
-	for k, v := range mappingListRecommendationsStatusEnum {
-		mappingListRecommendationsStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRecommendationsStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRecommendationsStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,11 @@ var mappingPutRepositoryRefDetailsRefTypeEnum = map[string]PutRepositoryRefDetai
 	"TAG":    PutRepositoryRefDetailsRefTypeTag,
 }
 
+var mappingPutRepositoryRefDetailsRefTypeEnumLowerCase = map[string]PutRepositoryRefDetailsRefTypeEnum{
+	"branch": PutRepositoryRefDetailsRefTypeBranch,
+	"tag":    PutRepositoryRefDetailsRefTypeTag,
+}
+
 // GetPutRepositoryRefDetailsRefTypeEnumValues Enumerates the set of values for PutRepositoryRefDetailsRefTypeEnum
 func GetPutRepositoryRefDetailsRefTypeEnumValues() []PutRepositoryRefDetailsRefTypeEnum {
 	values := make([]PutRepositoryRefDetailsRefTypeEnum, 0)
@@ -112,11 +117,6 @@ func GetPutRepositoryRefDetailsRefTypeEnumStringValues() []string {
 
 // GetMappingPutRepositoryRefDetailsRefTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPutRepositoryRefDetailsRefTypeEnum(val string) (PutRepositoryRefDetailsRefTypeEnum, bool) {
-	mappingPutRepositoryRefDetailsRefTypeEnumIgnoreCase := make(map[string]PutRepositoryRefDetailsRefTypeEnum)
-	for k, v := range mappingPutRepositoryRefDetailsRefTypeEnum {
-		mappingPutRepositoryRefDetailsRefTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPutRepositoryRefDetailsRefTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPutRepositoryRefDetailsRefTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

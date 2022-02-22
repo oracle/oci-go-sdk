@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -129,6 +129,12 @@ var mappingListVmClusterUpdatesUpdateTypeEnum = map[string]ListVmClusterUpdatesU
 	"OS_UPDATE":  ListVmClusterUpdatesUpdateTypeOsUpdate,
 }
 
+var mappingListVmClusterUpdatesUpdateTypeEnumLowerCase = map[string]ListVmClusterUpdatesUpdateTypeEnum{
+	"gi_upgrade": ListVmClusterUpdatesUpdateTypeGiUpgrade,
+	"gi_patch":   ListVmClusterUpdatesUpdateTypeGiPatch,
+	"os_update":  ListVmClusterUpdatesUpdateTypeOsUpdate,
+}
+
 // GetListVmClusterUpdatesUpdateTypeEnumValues Enumerates the set of values for ListVmClusterUpdatesUpdateTypeEnum
 func GetListVmClusterUpdatesUpdateTypeEnumValues() []ListVmClusterUpdatesUpdateTypeEnum {
 	values := make([]ListVmClusterUpdatesUpdateTypeEnum, 0)
@@ -149,11 +155,6 @@ func GetListVmClusterUpdatesUpdateTypeEnumStringValues() []string {
 
 // GetMappingListVmClusterUpdatesUpdateTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListVmClusterUpdatesUpdateTypeEnum(val string) (ListVmClusterUpdatesUpdateTypeEnum, bool) {
-	mappingListVmClusterUpdatesUpdateTypeEnumIgnoreCase := make(map[string]ListVmClusterUpdatesUpdateTypeEnum)
-	for k, v := range mappingListVmClusterUpdatesUpdateTypeEnum {
-		mappingListVmClusterUpdatesUpdateTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListVmClusterUpdatesUpdateTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListVmClusterUpdatesUpdateTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

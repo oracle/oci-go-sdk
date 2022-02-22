@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -72,6 +72,12 @@ var mappingSchemaDriftConfigExtraColumnHandlingEnum = map[string]SchemaDriftConf
 	"DO_NOT_ALLOW": SchemaDriftConfigExtraColumnHandlingDoNotAllow,
 }
 
+var mappingSchemaDriftConfigExtraColumnHandlingEnumLowerCase = map[string]SchemaDriftConfigExtraColumnHandlingEnum{
+	"allow":        SchemaDriftConfigExtraColumnHandlingAllow,
+	"null_fillup":  SchemaDriftConfigExtraColumnHandlingNullFillup,
+	"do_not_allow": SchemaDriftConfigExtraColumnHandlingDoNotAllow,
+}
+
 // GetSchemaDriftConfigExtraColumnHandlingEnumValues Enumerates the set of values for SchemaDriftConfigExtraColumnHandlingEnum
 func GetSchemaDriftConfigExtraColumnHandlingEnumValues() []SchemaDriftConfigExtraColumnHandlingEnum {
 	values := make([]SchemaDriftConfigExtraColumnHandlingEnum, 0)
@@ -92,12 +98,7 @@ func GetSchemaDriftConfigExtraColumnHandlingEnumStringValues() []string {
 
 // GetMappingSchemaDriftConfigExtraColumnHandlingEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSchemaDriftConfigExtraColumnHandlingEnum(val string) (SchemaDriftConfigExtraColumnHandlingEnum, bool) {
-	mappingSchemaDriftConfigExtraColumnHandlingEnumIgnoreCase := make(map[string]SchemaDriftConfigExtraColumnHandlingEnum)
-	for k, v := range mappingSchemaDriftConfigExtraColumnHandlingEnum {
-		mappingSchemaDriftConfigExtraColumnHandlingEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSchemaDriftConfigExtraColumnHandlingEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSchemaDriftConfigExtraColumnHandlingEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -115,6 +116,12 @@ var mappingSchemaDriftConfigMissingColumnHandlingEnum = map[string]SchemaDriftCo
 	"ALLOW":        SchemaDriftConfigMissingColumnHandlingAllow,
 	"NULL_SELECT":  SchemaDriftConfigMissingColumnHandlingNullSelect,
 	"DO_NOT_ALLOW": SchemaDriftConfigMissingColumnHandlingDoNotAllow,
+}
+
+var mappingSchemaDriftConfigMissingColumnHandlingEnumLowerCase = map[string]SchemaDriftConfigMissingColumnHandlingEnum{
+	"allow":        SchemaDriftConfigMissingColumnHandlingAllow,
+	"null_select":  SchemaDriftConfigMissingColumnHandlingNullSelect,
+	"do_not_allow": SchemaDriftConfigMissingColumnHandlingDoNotAllow,
 }
 
 // GetSchemaDriftConfigMissingColumnHandlingEnumValues Enumerates the set of values for SchemaDriftConfigMissingColumnHandlingEnum
@@ -137,12 +144,7 @@ func GetSchemaDriftConfigMissingColumnHandlingEnumStringValues() []string {
 
 // GetMappingSchemaDriftConfigMissingColumnHandlingEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSchemaDriftConfigMissingColumnHandlingEnum(val string) (SchemaDriftConfigMissingColumnHandlingEnum, bool) {
-	mappingSchemaDriftConfigMissingColumnHandlingEnumIgnoreCase := make(map[string]SchemaDriftConfigMissingColumnHandlingEnum)
-	for k, v := range mappingSchemaDriftConfigMissingColumnHandlingEnum {
-		mappingSchemaDriftConfigMissingColumnHandlingEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSchemaDriftConfigMissingColumnHandlingEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSchemaDriftConfigMissingColumnHandlingEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -160,6 +162,12 @@ var mappingSchemaDriftConfigDataTypeChangeHandlingEnum = map[string]SchemaDriftC
 	"ALLOW":               SchemaDriftConfigDataTypeChangeHandlingAllow,
 	"DO_CAST_IF_POSSIBLE": SchemaDriftConfigDataTypeChangeHandlingDoCastIfPossible,
 	"DO_NOT_ALLOW":        SchemaDriftConfigDataTypeChangeHandlingDoNotAllow,
+}
+
+var mappingSchemaDriftConfigDataTypeChangeHandlingEnumLowerCase = map[string]SchemaDriftConfigDataTypeChangeHandlingEnum{
+	"allow":               SchemaDriftConfigDataTypeChangeHandlingAllow,
+	"do_cast_if_possible": SchemaDriftConfigDataTypeChangeHandlingDoCastIfPossible,
+	"do_not_allow":        SchemaDriftConfigDataTypeChangeHandlingDoNotAllow,
 }
 
 // GetSchemaDriftConfigDataTypeChangeHandlingEnumValues Enumerates the set of values for SchemaDriftConfigDataTypeChangeHandlingEnum
@@ -182,11 +190,6 @@ func GetSchemaDriftConfigDataTypeChangeHandlingEnumStringValues() []string {
 
 // GetMappingSchemaDriftConfigDataTypeChangeHandlingEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSchemaDriftConfigDataTypeChangeHandlingEnum(val string) (SchemaDriftConfigDataTypeChangeHandlingEnum, bool) {
-	mappingSchemaDriftConfigDataTypeChangeHandlingEnumIgnoreCase := make(map[string]SchemaDriftConfigDataTypeChangeHandlingEnum)
-	for k, v := range mappingSchemaDriftConfigDataTypeChangeHandlingEnum {
-		mappingSchemaDriftConfigDataTypeChangeHandlingEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSchemaDriftConfigDataTypeChangeHandlingEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSchemaDriftConfigDataTypeChangeHandlingEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

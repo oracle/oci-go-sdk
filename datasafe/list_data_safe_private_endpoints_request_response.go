@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -160,6 +160,16 @@ var mappingListDataSafePrivateEndpointsLifecycleStateEnum = map[string]ListDataS
 	"NA":       ListDataSafePrivateEndpointsLifecycleStateNa,
 }
 
+var mappingListDataSafePrivateEndpointsLifecycleStateEnumLowerCase = map[string]ListDataSafePrivateEndpointsLifecycleStateEnum{
+	"creating": ListDataSafePrivateEndpointsLifecycleStateCreating,
+	"updating": ListDataSafePrivateEndpointsLifecycleStateUpdating,
+	"active":   ListDataSafePrivateEndpointsLifecycleStateActive,
+	"deleting": ListDataSafePrivateEndpointsLifecycleStateDeleting,
+	"deleted":  ListDataSafePrivateEndpointsLifecycleStateDeleted,
+	"failed":   ListDataSafePrivateEndpointsLifecycleStateFailed,
+	"na":       ListDataSafePrivateEndpointsLifecycleStateNa,
+}
+
 // GetListDataSafePrivateEndpointsLifecycleStateEnumValues Enumerates the set of values for ListDataSafePrivateEndpointsLifecycleStateEnum
 func GetListDataSafePrivateEndpointsLifecycleStateEnumValues() []ListDataSafePrivateEndpointsLifecycleStateEnum {
 	values := make([]ListDataSafePrivateEndpointsLifecycleStateEnum, 0)
@@ -184,12 +194,7 @@ func GetListDataSafePrivateEndpointsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListDataSafePrivateEndpointsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataSafePrivateEndpointsLifecycleStateEnum(val string) (ListDataSafePrivateEndpointsLifecycleStateEnum, bool) {
-	mappingListDataSafePrivateEndpointsLifecycleStateEnumIgnoreCase := make(map[string]ListDataSafePrivateEndpointsLifecycleStateEnum)
-	for k, v := range mappingListDataSafePrivateEndpointsLifecycleStateEnum {
-		mappingListDataSafePrivateEndpointsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataSafePrivateEndpointsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataSafePrivateEndpointsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -205,6 +210,11 @@ const (
 var mappingListDataSafePrivateEndpointsSortOrderEnum = map[string]ListDataSafePrivateEndpointsSortOrderEnum{
 	"ASC":  ListDataSafePrivateEndpointsSortOrderAsc,
 	"DESC": ListDataSafePrivateEndpointsSortOrderDesc,
+}
+
+var mappingListDataSafePrivateEndpointsSortOrderEnumLowerCase = map[string]ListDataSafePrivateEndpointsSortOrderEnum{
+	"asc":  ListDataSafePrivateEndpointsSortOrderAsc,
+	"desc": ListDataSafePrivateEndpointsSortOrderDesc,
 }
 
 // GetListDataSafePrivateEndpointsSortOrderEnumValues Enumerates the set of values for ListDataSafePrivateEndpointsSortOrderEnum
@@ -226,12 +236,7 @@ func GetListDataSafePrivateEndpointsSortOrderEnumStringValues() []string {
 
 // GetMappingListDataSafePrivateEndpointsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataSafePrivateEndpointsSortOrderEnum(val string) (ListDataSafePrivateEndpointsSortOrderEnum, bool) {
-	mappingListDataSafePrivateEndpointsSortOrderEnumIgnoreCase := make(map[string]ListDataSafePrivateEndpointsSortOrderEnum)
-	for k, v := range mappingListDataSafePrivateEndpointsSortOrderEnum {
-		mappingListDataSafePrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataSafePrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataSafePrivateEndpointsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -247,6 +252,11 @@ const (
 var mappingListDataSafePrivateEndpointsSortByEnum = map[string]ListDataSafePrivateEndpointsSortByEnum{
 	"TIMECREATED": ListDataSafePrivateEndpointsSortByTimecreated,
 	"DISPLAYNAME": ListDataSafePrivateEndpointsSortByDisplayname,
+}
+
+var mappingListDataSafePrivateEndpointsSortByEnumLowerCase = map[string]ListDataSafePrivateEndpointsSortByEnum{
+	"timecreated": ListDataSafePrivateEndpointsSortByTimecreated,
+	"displayname": ListDataSafePrivateEndpointsSortByDisplayname,
 }
 
 // GetListDataSafePrivateEndpointsSortByEnumValues Enumerates the set of values for ListDataSafePrivateEndpointsSortByEnum
@@ -268,12 +278,7 @@ func GetListDataSafePrivateEndpointsSortByEnumStringValues() []string {
 
 // GetMappingListDataSafePrivateEndpointsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataSafePrivateEndpointsSortByEnum(val string) (ListDataSafePrivateEndpointsSortByEnum, bool) {
-	mappingListDataSafePrivateEndpointsSortByEnumIgnoreCase := make(map[string]ListDataSafePrivateEndpointsSortByEnum)
-	for k, v := range mappingListDataSafePrivateEndpointsSortByEnum {
-		mappingListDataSafePrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataSafePrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataSafePrivateEndpointsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -289,6 +294,11 @@ const (
 var mappingListDataSafePrivateEndpointsAccessLevelEnum = map[string]ListDataSafePrivateEndpointsAccessLevelEnum{
 	"RESTRICTED": ListDataSafePrivateEndpointsAccessLevelRestricted,
 	"ACCESSIBLE": ListDataSafePrivateEndpointsAccessLevelAccessible,
+}
+
+var mappingListDataSafePrivateEndpointsAccessLevelEnumLowerCase = map[string]ListDataSafePrivateEndpointsAccessLevelEnum{
+	"restricted": ListDataSafePrivateEndpointsAccessLevelRestricted,
+	"accessible": ListDataSafePrivateEndpointsAccessLevelAccessible,
 }
 
 // GetListDataSafePrivateEndpointsAccessLevelEnumValues Enumerates the set of values for ListDataSafePrivateEndpointsAccessLevelEnum
@@ -310,11 +320,6 @@ func GetListDataSafePrivateEndpointsAccessLevelEnumStringValues() []string {
 
 // GetMappingListDataSafePrivateEndpointsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataSafePrivateEndpointsAccessLevelEnum(val string) (ListDataSafePrivateEndpointsAccessLevelEnum, bool) {
-	mappingListDataSafePrivateEndpointsAccessLevelEnumIgnoreCase := make(map[string]ListDataSafePrivateEndpointsAccessLevelEnum)
-	for k, v := range mappingListDataSafePrivateEndpointsAccessLevelEnum {
-		mappingListDataSafePrivateEndpointsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataSafePrivateEndpointsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataSafePrivateEndpointsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

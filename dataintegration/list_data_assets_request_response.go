@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,11 @@ var mappingListDataAssetsSortByEnum = map[string]ListDataAssetsSortByEnum{
 	"DISPLAY_NAME": ListDataAssetsSortByDisplayName,
 }
 
+var mappingListDataAssetsSortByEnumLowerCase = map[string]ListDataAssetsSortByEnum{
+	"time_created": ListDataAssetsSortByTimeCreated,
+	"display_name": ListDataAssetsSortByDisplayName,
+}
+
 // GetListDataAssetsSortByEnumValues Enumerates the set of values for ListDataAssetsSortByEnum
 func GetListDataAssetsSortByEnumValues() []ListDataAssetsSortByEnum {
 	values := make([]ListDataAssetsSortByEnum, 0)
@@ -160,12 +165,7 @@ func GetListDataAssetsSortByEnumStringValues() []string {
 
 // GetMappingListDataAssetsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataAssetsSortByEnum(val string) (ListDataAssetsSortByEnum, bool) {
-	mappingListDataAssetsSortByEnumIgnoreCase := make(map[string]ListDataAssetsSortByEnum)
-	for k, v := range mappingListDataAssetsSortByEnum {
-		mappingListDataAssetsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataAssetsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataAssetsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +181,11 @@ const (
 var mappingListDataAssetsSortOrderEnum = map[string]ListDataAssetsSortOrderEnum{
 	"ASC":  ListDataAssetsSortOrderAsc,
 	"DESC": ListDataAssetsSortOrderDesc,
+}
+
+var mappingListDataAssetsSortOrderEnumLowerCase = map[string]ListDataAssetsSortOrderEnum{
+	"asc":  ListDataAssetsSortOrderAsc,
+	"desc": ListDataAssetsSortOrderDesc,
 }
 
 // GetListDataAssetsSortOrderEnumValues Enumerates the set of values for ListDataAssetsSortOrderEnum
@@ -202,11 +207,6 @@ func GetListDataAssetsSortOrderEnumStringValues() []string {
 
 // GetMappingListDataAssetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataAssetsSortOrderEnum(val string) (ListDataAssetsSortOrderEnum, bool) {
-	mappingListDataAssetsSortOrderEnumIgnoreCase := make(map[string]ListDataAssetsSortOrderEnum)
-	for k, v := range mappingListDataAssetsSortOrderEnum {
-		mappingListDataAssetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataAssetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataAssetsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

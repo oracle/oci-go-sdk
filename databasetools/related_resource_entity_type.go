@@ -29,6 +29,12 @@ var mappingRelatedResourceEntityTypeEnum = map[string]RelatedResourceEntityTypeE
 	"PLUGGABLEDATABASE":  RelatedResourceEntityTypePluggabledatabase,
 }
 
+var mappingRelatedResourceEntityTypeEnumLowerCase = map[string]RelatedResourceEntityTypeEnum{
+	"autonomousdatabase": RelatedResourceEntityTypeAutonomousdatabase,
+	"database":           RelatedResourceEntityTypeDatabase,
+	"pluggabledatabase":  RelatedResourceEntityTypePluggabledatabase,
+}
+
 // GetRelatedResourceEntityTypeEnumValues Enumerates the set of values for RelatedResourceEntityTypeEnum
 func GetRelatedResourceEntityTypeEnumValues() []RelatedResourceEntityTypeEnum {
 	values := make([]RelatedResourceEntityTypeEnum, 0)
@@ -49,11 +55,6 @@ func GetRelatedResourceEntityTypeEnumStringValues() []string {
 
 // GetMappingRelatedResourceEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRelatedResourceEntityTypeEnum(val string) (RelatedResourceEntityTypeEnum, bool) {
-	mappingRelatedResourceEntityTypeEnumIgnoreCase := make(map[string]RelatedResourceEntityTypeEnum)
-	for k, v := range mappingRelatedResourceEntityTypeEnum {
-		mappingRelatedResourceEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRelatedResourceEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRelatedResourceEntityTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

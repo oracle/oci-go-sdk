@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -112,6 +112,11 @@ var mappingImageCapabilitySchemaDescriptorSourceEnum = map[string]ImageCapabilit
 	"IMAGE":  ImageCapabilitySchemaDescriptorSourceImage,
 }
 
+var mappingImageCapabilitySchemaDescriptorSourceEnumLowerCase = map[string]ImageCapabilitySchemaDescriptorSourceEnum{
+	"global": ImageCapabilitySchemaDescriptorSourceGlobal,
+	"image":  ImageCapabilitySchemaDescriptorSourceImage,
+}
+
 // GetImageCapabilitySchemaDescriptorSourceEnumValues Enumerates the set of values for ImageCapabilitySchemaDescriptorSourceEnum
 func GetImageCapabilitySchemaDescriptorSourceEnumValues() []ImageCapabilitySchemaDescriptorSourceEnum {
 	values := make([]ImageCapabilitySchemaDescriptorSourceEnum, 0)
@@ -131,11 +136,6 @@ func GetImageCapabilitySchemaDescriptorSourceEnumStringValues() []string {
 
 // GetMappingImageCapabilitySchemaDescriptorSourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingImageCapabilitySchemaDescriptorSourceEnum(val string) (ImageCapabilitySchemaDescriptorSourceEnum, bool) {
-	mappingImageCapabilitySchemaDescriptorSourceEnumIgnoreCase := make(map[string]ImageCapabilitySchemaDescriptorSourceEnum)
-	for k, v := range mappingImageCapabilitySchemaDescriptorSourceEnum {
-		mappingImageCapabilitySchemaDescriptorSourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingImageCapabilitySchemaDescriptorSourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingImageCapabilitySchemaDescriptorSourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

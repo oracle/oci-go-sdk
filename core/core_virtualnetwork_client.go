@@ -16,8 +16,8 @@ package core
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
-	"github.com/oracle/oci-go-sdk/v58/common/auth"
+	"github.com/oracle/oci-go-sdk/v59/common"
+	"github.com/oracle/oci-go-sdk/v59/common/auth"
 	"net/http"
 )
 
@@ -55,7 +55,7 @@ func NewVirtualNetworkClientWithOboToken(configProvider common.ConfigurationProv
 
 func newVirtualNetworkClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client VirtualNetworkClient, err error) {
 	// VirtualNetwork service default circuit breaker is enabled
-	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSetting())
+	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName())
 	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 
@@ -5496,7 +5496,7 @@ func (client VirtualNetworkClient) getAllDrgAttachments(ctx context.Context, req
 	return response, err
 }
 
-// GetAllowedIkeIPSecParameters The allowed parameters for IKE IPSec
+// GetAllowedIkeIPSecParameters The parameters allowed for IKE IPSec tunnels.
 //
 // See also
 //
@@ -6681,7 +6681,7 @@ func (client VirtualNetworkClient) getIPSecConnectionTunnel(ctx context.Context,
 	return response, err
 }
 
-// GetIPSecConnectionTunnelError Get the identified error for the specified IPSec Tunnel ID.
+// GetIPSecConnectionTunnelError Gets the identified error for the specified IPSec tunnel ID.
 //
 // See also
 //
@@ -9473,7 +9473,7 @@ func (client VirtualNetworkClient) listFastConnectProviderVirtualCircuitBandwidt
 	return response, err
 }
 
-// ListIPSecConnectionTunnelRoutes The routes advertised to the Customer and the routes received from the Customer.
+// ListIPSecConnectionTunnelRoutes The routes advertised to the on-premises network and the routes received from the on-premises network.
 //
 // See also
 //
@@ -9528,7 +9528,7 @@ func (client VirtualNetworkClient) listIPSecConnectionTunnelRoutes(ctx context.C
 	return response, err
 }
 
-// ListIPSecConnectionTunnelSecurityAssociations Lists the tunnel Security Associations information for the specified IPSec Tunnel ID.
+// ListIPSecConnectionTunnelSecurityAssociations Lists the tunnel security associations information for the specified IPSec tunnel ID.
 //
 // See also
 //

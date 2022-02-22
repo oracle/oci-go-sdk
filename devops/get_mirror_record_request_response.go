@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -113,6 +113,11 @@ var mappingGetMirrorRecordMirrorRecordTypeEnum = map[string]GetMirrorRecordMirro
 	"lastSuccessful": GetMirrorRecordMirrorRecordTypeLastsuccessful,
 }
 
+var mappingGetMirrorRecordMirrorRecordTypeEnumLowerCase = map[string]GetMirrorRecordMirrorRecordTypeEnum{
+	"current":        GetMirrorRecordMirrorRecordTypeCurrent,
+	"lastsuccessful": GetMirrorRecordMirrorRecordTypeLastsuccessful,
+}
+
 // GetGetMirrorRecordMirrorRecordTypeEnumValues Enumerates the set of values for GetMirrorRecordMirrorRecordTypeEnum
 func GetGetMirrorRecordMirrorRecordTypeEnumValues() []GetMirrorRecordMirrorRecordTypeEnum {
 	values := make([]GetMirrorRecordMirrorRecordTypeEnum, 0)
@@ -132,11 +137,6 @@ func GetGetMirrorRecordMirrorRecordTypeEnumStringValues() []string {
 
 // GetMappingGetMirrorRecordMirrorRecordTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetMirrorRecordMirrorRecordTypeEnum(val string) (GetMirrorRecordMirrorRecordTypeEnum, bool) {
-	mappingGetMirrorRecordMirrorRecordTypeEnumIgnoreCase := make(map[string]GetMirrorRecordMirrorRecordTypeEnum)
-	for k, v := range mappingGetMirrorRecordMirrorRecordTypeEnum {
-		mappingGetMirrorRecordMirrorRecordTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetMirrorRecordMirrorRecordTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetMirrorRecordMirrorRecordTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

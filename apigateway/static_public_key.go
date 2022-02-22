@@ -14,7 +14,7 @@ package apigateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -106,6 +106,11 @@ var mappingStaticPublicKeyFormatEnum = map[string]StaticPublicKeyFormatEnum{
 	"PEM":          StaticPublicKeyFormatPem,
 }
 
+var mappingStaticPublicKeyFormatEnumLowerCase = map[string]StaticPublicKeyFormatEnum{
+	"json_web_key": StaticPublicKeyFormatJsonWebKey,
+	"pem":          StaticPublicKeyFormatPem,
+}
+
 // GetStaticPublicKeyFormatEnumValues Enumerates the set of values for StaticPublicKeyFormatEnum
 func GetStaticPublicKeyFormatEnumValues() []StaticPublicKeyFormatEnum {
 	values := make([]StaticPublicKeyFormatEnum, 0)
@@ -125,11 +130,6 @@ func GetStaticPublicKeyFormatEnumStringValues() []string {
 
 // GetMappingStaticPublicKeyFormatEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStaticPublicKeyFormatEnum(val string) (StaticPublicKeyFormatEnum, bool) {
-	mappingStaticPublicKeyFormatEnumIgnoreCase := make(map[string]StaticPublicKeyFormatEnum)
-	for k, v := range mappingStaticPublicKeyFormatEnum {
-		mappingStaticPublicKeyFormatEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStaticPublicKeyFormatEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStaticPublicKeyFormatEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

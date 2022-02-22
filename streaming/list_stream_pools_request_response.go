@@ -6,7 +6,7 @@ package streaming
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -140,6 +140,11 @@ var mappingListStreamPoolsSortByEnum = map[string]ListStreamPoolsSortByEnum{
 	"TIMECREATED": ListStreamPoolsSortByTimecreated,
 }
 
+var mappingListStreamPoolsSortByEnumLowerCase = map[string]ListStreamPoolsSortByEnum{
+	"name":        ListStreamPoolsSortByName,
+	"timecreated": ListStreamPoolsSortByTimecreated,
+}
+
 // GetListStreamPoolsSortByEnumValues Enumerates the set of values for ListStreamPoolsSortByEnum
 func GetListStreamPoolsSortByEnumValues() []ListStreamPoolsSortByEnum {
 	values := make([]ListStreamPoolsSortByEnum, 0)
@@ -159,12 +164,7 @@ func GetListStreamPoolsSortByEnumStringValues() []string {
 
 // GetMappingListStreamPoolsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListStreamPoolsSortByEnum(val string) (ListStreamPoolsSortByEnum, bool) {
-	mappingListStreamPoolsSortByEnumIgnoreCase := make(map[string]ListStreamPoolsSortByEnum)
-	for k, v := range mappingListStreamPoolsSortByEnum {
-		mappingListStreamPoolsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListStreamPoolsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListStreamPoolsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -180,6 +180,11 @@ const (
 var mappingListStreamPoolsSortOrderEnum = map[string]ListStreamPoolsSortOrderEnum{
 	"ASC":  ListStreamPoolsSortOrderAsc,
 	"DESC": ListStreamPoolsSortOrderDesc,
+}
+
+var mappingListStreamPoolsSortOrderEnumLowerCase = map[string]ListStreamPoolsSortOrderEnum{
+	"asc":  ListStreamPoolsSortOrderAsc,
+	"desc": ListStreamPoolsSortOrderDesc,
 }
 
 // GetListStreamPoolsSortOrderEnumValues Enumerates the set of values for ListStreamPoolsSortOrderEnum
@@ -201,11 +206,6 @@ func GetListStreamPoolsSortOrderEnumStringValues() []string {
 
 // GetMappingListStreamPoolsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListStreamPoolsSortOrderEnum(val string) (ListStreamPoolsSortOrderEnum, bool) {
-	mappingListStreamPoolsSortOrderEnumIgnoreCase := make(map[string]ListStreamPoolsSortOrderEnum)
-	for k, v := range mappingListStreamPoolsSortOrderEnum {
-		mappingListStreamPoolsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListStreamPoolsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListStreamPoolsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

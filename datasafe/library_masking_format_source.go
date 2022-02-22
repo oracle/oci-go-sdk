@@ -27,6 +27,11 @@ var mappingLibraryMaskingFormatSourceEnum = map[string]LibraryMaskingFormatSourc
 	"USER":   LibraryMaskingFormatSourceUser,
 }
 
+var mappingLibraryMaskingFormatSourceEnumLowerCase = map[string]LibraryMaskingFormatSourceEnum{
+	"oracle": LibraryMaskingFormatSourceOracle,
+	"user":   LibraryMaskingFormatSourceUser,
+}
+
 // GetLibraryMaskingFormatSourceEnumValues Enumerates the set of values for LibraryMaskingFormatSourceEnum
 func GetLibraryMaskingFormatSourceEnumValues() []LibraryMaskingFormatSourceEnum {
 	values := make([]LibraryMaskingFormatSourceEnum, 0)
@@ -46,11 +51,6 @@ func GetLibraryMaskingFormatSourceEnumStringValues() []string {
 
 // GetMappingLibraryMaskingFormatSourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLibraryMaskingFormatSourceEnum(val string) (LibraryMaskingFormatSourceEnum, bool) {
-	mappingLibraryMaskingFormatSourceEnumIgnoreCase := make(map[string]LibraryMaskingFormatSourceEnum)
-	for k, v := range mappingLibraryMaskingFormatSourceEnum {
-		mappingLibraryMaskingFormatSourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLibraryMaskingFormatSourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLibraryMaskingFormatSourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

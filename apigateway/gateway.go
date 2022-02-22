@@ -14,7 +14,7 @@ package apigateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -212,6 +212,11 @@ var mappingGatewayEndpointTypeEnum = map[string]GatewayEndpointTypeEnum{
 	"PRIVATE": GatewayEndpointTypePrivate,
 }
 
+var mappingGatewayEndpointTypeEnumLowerCase = map[string]GatewayEndpointTypeEnum{
+	"public":  GatewayEndpointTypePublic,
+	"private": GatewayEndpointTypePrivate,
+}
+
 // GetGatewayEndpointTypeEnumValues Enumerates the set of values for GatewayEndpointTypeEnum
 func GetGatewayEndpointTypeEnumValues() []GatewayEndpointTypeEnum {
 	values := make([]GatewayEndpointTypeEnum, 0)
@@ -231,12 +236,7 @@ func GetGatewayEndpointTypeEnumStringValues() []string {
 
 // GetMappingGatewayEndpointTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGatewayEndpointTypeEnum(val string) (GatewayEndpointTypeEnum, bool) {
-	mappingGatewayEndpointTypeEnumIgnoreCase := make(map[string]GatewayEndpointTypeEnum)
-	for k, v := range mappingGatewayEndpointTypeEnum {
-		mappingGatewayEndpointTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGatewayEndpointTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGatewayEndpointTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -262,6 +262,15 @@ var mappingGatewayLifecycleStateEnum = map[string]GatewayLifecycleStateEnum{
 	"FAILED":   GatewayLifecycleStateFailed,
 }
 
+var mappingGatewayLifecycleStateEnumLowerCase = map[string]GatewayLifecycleStateEnum{
+	"creating": GatewayLifecycleStateCreating,
+	"active":   GatewayLifecycleStateActive,
+	"updating": GatewayLifecycleStateUpdating,
+	"deleting": GatewayLifecycleStateDeleting,
+	"deleted":  GatewayLifecycleStateDeleted,
+	"failed":   GatewayLifecycleStateFailed,
+}
+
 // GetGatewayLifecycleStateEnumValues Enumerates the set of values for GatewayLifecycleStateEnum
 func GetGatewayLifecycleStateEnumValues() []GatewayLifecycleStateEnum {
 	values := make([]GatewayLifecycleStateEnum, 0)
@@ -285,11 +294,6 @@ func GetGatewayLifecycleStateEnumStringValues() []string {
 
 // GetMappingGatewayLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGatewayLifecycleStateEnum(val string) (GatewayLifecycleStateEnum, bool) {
-	mappingGatewayLifecycleStateEnumIgnoreCase := make(map[string]GatewayLifecycleStateEnum)
-	for k, v := range mappingGatewayLifecycleStateEnum {
-		mappingGatewayLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGatewayLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGatewayLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

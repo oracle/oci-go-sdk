@@ -14,7 +14,7 @@ package nosql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,18 @@ var mappingStatementSummaryOperationEnum = map[string]StatementSummaryOperationE
 	"DELETE":       StatementSummaryOperationDelete,
 }
 
+var mappingStatementSummaryOperationEnumLowerCase = map[string]StatementSummaryOperationEnum{
+	"create_table": StatementSummaryOperationCreateTable,
+	"alter_table":  StatementSummaryOperationAlterTable,
+	"drop_table":   StatementSummaryOperationDropTable,
+	"create_index": StatementSummaryOperationCreateIndex,
+	"drop_index":   StatementSummaryOperationDropIndex,
+	"select":       StatementSummaryOperationSelect,
+	"update":       StatementSummaryOperationUpdate,
+	"insert":       StatementSummaryOperationInsert,
+	"delete":       StatementSummaryOperationDelete,
+}
+
 // GetStatementSummaryOperationEnumValues Enumerates the set of values for StatementSummaryOperationEnum
 func GetStatementSummaryOperationEnumValues() []StatementSummaryOperationEnum {
 	values := make([]StatementSummaryOperationEnum, 0)
@@ -113,11 +125,6 @@ func GetStatementSummaryOperationEnumStringValues() []string {
 
 // GetMappingStatementSummaryOperationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStatementSummaryOperationEnum(val string) (StatementSummaryOperationEnum, bool) {
-	mappingStatementSummaryOperationEnumIgnoreCase := make(map[string]StatementSummaryOperationEnum)
-	for k, v := range mappingStatementSummaryOperationEnum {
-		mappingStatementSummaryOperationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStatementSummaryOperationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStatementSummaryOperationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

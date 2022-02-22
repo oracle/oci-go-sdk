@@ -33,6 +33,14 @@ var mappingAlertSeverityEnum = map[string]AlertSeverityEnum{
 	"EVALUATE": AlertSeverityEvaluate,
 }
 
+var mappingAlertSeverityEnumLowerCase = map[string]AlertSeverityEnum{
+	"critical": AlertSeverityCritical,
+	"high":     AlertSeverityHigh,
+	"medium":   AlertSeverityMedium,
+	"low":      AlertSeverityLow,
+	"evaluate": AlertSeverityEvaluate,
+}
+
 // GetAlertSeverityEnumValues Enumerates the set of values for AlertSeverityEnum
 func GetAlertSeverityEnumValues() []AlertSeverityEnum {
 	values := make([]AlertSeverityEnum, 0)
@@ -55,11 +63,6 @@ func GetAlertSeverityEnumStringValues() []string {
 
 // GetMappingAlertSeverityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAlertSeverityEnum(val string) (AlertSeverityEnum, bool) {
-	mappingAlertSeverityEnumIgnoreCase := make(map[string]AlertSeverityEnum)
-	for k, v := range mappingAlertSeverityEnum {
-		mappingAlertSeverityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAlertSeverityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAlertSeverityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

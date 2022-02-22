@@ -11,7 +11,7 @@ package blockchain
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -101,6 +101,18 @@ var mappingWorkRequestSummaryOperationTypeEnum = map[string]WorkRequestSummaryOp
 	"SCALE_STORAGE":      WorkRequestSummaryOperationTypeScaleStorage,
 }
 
+var mappingWorkRequestSummaryOperationTypeEnumLowerCase = map[string]WorkRequestSummaryOperationTypeEnum{
+	"create_platform":    WorkRequestSummaryOperationTypeCreatePlatform,
+	"update_platform":    WorkRequestSummaryOperationTypeUpdatePlatform,
+	"upgrade_platform":   WorkRequestSummaryOperationTypeUpgradePlatform,
+	"delete_platform":    WorkRequestSummaryOperationTypeDeletePlatform,
+	"scale_platform":     WorkRequestSummaryOperationTypeScalePlatform,
+	"start_platform":     WorkRequestSummaryOperationTypeStartPlatform,
+	"stop_platform":      WorkRequestSummaryOperationTypeStopPlatform,
+	"customize_platform": WorkRequestSummaryOperationTypeCustomizePlatform,
+	"scale_storage":      WorkRequestSummaryOperationTypeScaleStorage,
+}
+
 // GetWorkRequestSummaryOperationTypeEnumValues Enumerates the set of values for WorkRequestSummaryOperationTypeEnum
 func GetWorkRequestSummaryOperationTypeEnumValues() []WorkRequestSummaryOperationTypeEnum {
 	values := make([]WorkRequestSummaryOperationTypeEnum, 0)
@@ -127,11 +139,6 @@ func GetWorkRequestSummaryOperationTypeEnumStringValues() []string {
 
 // GetMappingWorkRequestSummaryOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestSummaryOperationTypeEnum(val string) (WorkRequestSummaryOperationTypeEnum, bool) {
-	mappingWorkRequestSummaryOperationTypeEnumIgnoreCase := make(map[string]WorkRequestSummaryOperationTypeEnum)
-	for k, v := range mappingWorkRequestSummaryOperationTypeEnum {
-		mappingWorkRequestSummaryOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestSummaryOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestSummaryOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

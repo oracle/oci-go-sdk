@@ -25,6 +25,10 @@ var mappingPricingCurrencyEnumEnum = map[string]PricingCurrencyEnumEnum{
 	"USD": PricingCurrencyEnumUsd,
 }
 
+var mappingPricingCurrencyEnumEnumLowerCase = map[string]PricingCurrencyEnumEnum{
+	"usd": PricingCurrencyEnumUsd,
+}
+
 // GetPricingCurrencyEnumEnumValues Enumerates the set of values for PricingCurrencyEnumEnum
 func GetPricingCurrencyEnumEnumValues() []PricingCurrencyEnumEnum {
 	values := make([]PricingCurrencyEnumEnum, 0)
@@ -43,11 +47,6 @@ func GetPricingCurrencyEnumEnumStringValues() []string {
 
 // GetMappingPricingCurrencyEnumEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPricingCurrencyEnumEnum(val string) (PricingCurrencyEnumEnum, bool) {
-	mappingPricingCurrencyEnumEnumIgnoreCase := make(map[string]PricingCurrencyEnumEnum)
-	for k, v := range mappingPricingCurrencyEnumEnum {
-		mappingPricingCurrencyEnumEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPricingCurrencyEnumEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPricingCurrencyEnumEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

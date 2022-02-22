@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -147,6 +147,11 @@ var mappingListManagedDatabasesManagementOptionEnum = map[string]ListManagedData
 	"ADVANCED": ListManagedDatabasesManagementOptionAdvanced,
 }
 
+var mappingListManagedDatabasesManagementOptionEnumLowerCase = map[string]ListManagedDatabasesManagementOptionEnum{
+	"basic":    ListManagedDatabasesManagementOptionBasic,
+	"advanced": ListManagedDatabasesManagementOptionAdvanced,
+}
+
 // GetListManagedDatabasesManagementOptionEnumValues Enumerates the set of values for ListManagedDatabasesManagementOptionEnum
 func GetListManagedDatabasesManagementOptionEnumValues() []ListManagedDatabasesManagementOptionEnum {
 	values := make([]ListManagedDatabasesManagementOptionEnum, 0)
@@ -166,12 +171,7 @@ func GetListManagedDatabasesManagementOptionEnumStringValues() []string {
 
 // GetMappingListManagedDatabasesManagementOptionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedDatabasesManagementOptionEnum(val string) (ListManagedDatabasesManagementOptionEnum, bool) {
-	mappingListManagedDatabasesManagementOptionEnumIgnoreCase := make(map[string]ListManagedDatabasesManagementOptionEnum)
-	for k, v := range mappingListManagedDatabasesManagementOptionEnum {
-		mappingListManagedDatabasesManagementOptionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedDatabasesManagementOptionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedDatabasesManagementOptionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -197,6 +197,15 @@ var mappingListManagedDatabasesDeploymentTypeEnum = map[string]ListManagedDataba
 	"AUTONOMOUS": ListManagedDatabasesDeploymentTypeAutonomous,
 }
 
+var mappingListManagedDatabasesDeploymentTypeEnumLowerCase = map[string]ListManagedDatabasesDeploymentTypeEnum{
+	"onpremise":  ListManagedDatabasesDeploymentTypeOnpremise,
+	"bm":         ListManagedDatabasesDeploymentTypeBm,
+	"vm":         ListManagedDatabasesDeploymentTypeVm,
+	"exadata":    ListManagedDatabasesDeploymentTypeExadata,
+	"exadata_cc": ListManagedDatabasesDeploymentTypeExadataCc,
+	"autonomous": ListManagedDatabasesDeploymentTypeAutonomous,
+}
+
 // GetListManagedDatabasesDeploymentTypeEnumValues Enumerates the set of values for ListManagedDatabasesDeploymentTypeEnum
 func GetListManagedDatabasesDeploymentTypeEnumValues() []ListManagedDatabasesDeploymentTypeEnum {
 	values := make([]ListManagedDatabasesDeploymentTypeEnum, 0)
@@ -220,12 +229,7 @@ func GetListManagedDatabasesDeploymentTypeEnumStringValues() []string {
 
 // GetMappingListManagedDatabasesDeploymentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedDatabasesDeploymentTypeEnum(val string) (ListManagedDatabasesDeploymentTypeEnum, bool) {
-	mappingListManagedDatabasesDeploymentTypeEnumIgnoreCase := make(map[string]ListManagedDatabasesDeploymentTypeEnum)
-	for k, v := range mappingListManagedDatabasesDeploymentTypeEnum {
-		mappingListManagedDatabasesDeploymentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedDatabasesDeploymentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedDatabasesDeploymentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -241,6 +245,11 @@ const (
 var mappingListManagedDatabasesSortByEnum = map[string]ListManagedDatabasesSortByEnum{
 	"TIMECREATED": ListManagedDatabasesSortByTimecreated,
 	"NAME":        ListManagedDatabasesSortByName,
+}
+
+var mappingListManagedDatabasesSortByEnumLowerCase = map[string]ListManagedDatabasesSortByEnum{
+	"timecreated": ListManagedDatabasesSortByTimecreated,
+	"name":        ListManagedDatabasesSortByName,
 }
 
 // GetListManagedDatabasesSortByEnumValues Enumerates the set of values for ListManagedDatabasesSortByEnum
@@ -262,12 +271,7 @@ func GetListManagedDatabasesSortByEnumStringValues() []string {
 
 // GetMappingListManagedDatabasesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedDatabasesSortByEnum(val string) (ListManagedDatabasesSortByEnum, bool) {
-	mappingListManagedDatabasesSortByEnumIgnoreCase := make(map[string]ListManagedDatabasesSortByEnum)
-	for k, v := range mappingListManagedDatabasesSortByEnum {
-		mappingListManagedDatabasesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedDatabasesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedDatabasesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -283,6 +287,11 @@ const (
 var mappingListManagedDatabasesSortOrderEnum = map[string]ListManagedDatabasesSortOrderEnum{
 	"ASC":  ListManagedDatabasesSortOrderAsc,
 	"DESC": ListManagedDatabasesSortOrderDesc,
+}
+
+var mappingListManagedDatabasesSortOrderEnumLowerCase = map[string]ListManagedDatabasesSortOrderEnum{
+	"asc":  ListManagedDatabasesSortOrderAsc,
+	"desc": ListManagedDatabasesSortOrderDesc,
 }
 
 // GetListManagedDatabasesSortOrderEnumValues Enumerates the set of values for ListManagedDatabasesSortOrderEnum
@@ -304,11 +313,6 @@ func GetListManagedDatabasesSortOrderEnumStringValues() []string {
 
 // GetMappingListManagedDatabasesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedDatabasesSortOrderEnum(val string) (ListManagedDatabasesSortOrderEnum, bool) {
-	mappingListManagedDatabasesSortOrderEnumIgnoreCase := make(map[string]ListManagedDatabasesSortOrderEnum)
-	for k, v := range mappingListManagedDatabasesSortOrderEnum {
-		mappingListManagedDatabasesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedDatabasesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedDatabasesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -128,6 +128,10 @@ var mappingListParserMetaPluginsSortByEnum = map[string]ListParserMetaPluginsSor
 	"name": ListParserMetaPluginsSortByName,
 }
 
+var mappingListParserMetaPluginsSortByEnumLowerCase = map[string]ListParserMetaPluginsSortByEnum{
+	"name": ListParserMetaPluginsSortByName,
+}
+
 // GetListParserMetaPluginsSortByEnumValues Enumerates the set of values for ListParserMetaPluginsSortByEnum
 func GetListParserMetaPluginsSortByEnumValues() []ListParserMetaPluginsSortByEnum {
 	values := make([]ListParserMetaPluginsSortByEnum, 0)
@@ -146,12 +150,7 @@ func GetListParserMetaPluginsSortByEnumStringValues() []string {
 
 // GetMappingListParserMetaPluginsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListParserMetaPluginsSortByEnum(val string) (ListParserMetaPluginsSortByEnum, bool) {
-	mappingListParserMetaPluginsSortByEnumIgnoreCase := make(map[string]ListParserMetaPluginsSortByEnum)
-	for k, v := range mappingListParserMetaPluginsSortByEnum {
-		mappingListParserMetaPluginsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListParserMetaPluginsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListParserMetaPluginsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -167,6 +166,11 @@ const (
 var mappingListParserMetaPluginsSortOrderEnum = map[string]ListParserMetaPluginsSortOrderEnum{
 	"ASC":  ListParserMetaPluginsSortOrderAsc,
 	"DESC": ListParserMetaPluginsSortOrderDesc,
+}
+
+var mappingListParserMetaPluginsSortOrderEnumLowerCase = map[string]ListParserMetaPluginsSortOrderEnum{
+	"asc":  ListParserMetaPluginsSortOrderAsc,
+	"desc": ListParserMetaPluginsSortOrderDesc,
 }
 
 // GetListParserMetaPluginsSortOrderEnumValues Enumerates the set of values for ListParserMetaPluginsSortOrderEnum
@@ -188,11 +192,6 @@ func GetListParserMetaPluginsSortOrderEnumStringValues() []string {
 
 // GetMappingListParserMetaPluginsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListParserMetaPluginsSortOrderEnum(val string) (ListParserMetaPluginsSortOrderEnum, bool) {
-	mappingListParserMetaPluginsSortOrderEnumIgnoreCase := make(map[string]ListParserMetaPluginsSortOrderEnum)
-	for k, v := range mappingListParserMetaPluginsSortOrderEnum {
-		mappingListParserMetaPluginsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListParserMetaPluginsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListParserMetaPluginsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

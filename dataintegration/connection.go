@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -256,6 +256,17 @@ var mappingConnectionModelTypeEnum = map[string]ConnectionModelTypeEnum{
 	"AMAZON_S3_CONNECTION":             ConnectionModelTypeAmazonS3Connection,
 }
 
+var mappingConnectionModelTypeEnumLowerCase = map[string]ConnectionModelTypeEnum{
+	"oracle_adwc_connection":           ConnectionModelTypeOracleAdwcConnection,
+	"oracle_atp_connection":            ConnectionModelTypeOracleAtpConnection,
+	"oracle_object_storage_connection": ConnectionModelTypeOracleObjectStorageConnection,
+	"oracledb_connection":              ConnectionModelTypeOracledbConnection,
+	"mysql_connection":                 ConnectionModelTypeMysqlConnection,
+	"generic_jdbc_connection":          ConnectionModelTypeGenericJdbcConnection,
+	"bicc_connection":                  ConnectionModelTypeBiccConnection,
+	"amazon_s3_connection":             ConnectionModelTypeAmazonS3Connection,
+}
+
 // GetConnectionModelTypeEnumValues Enumerates the set of values for ConnectionModelTypeEnum
 func GetConnectionModelTypeEnumValues() []ConnectionModelTypeEnum {
 	values := make([]ConnectionModelTypeEnum, 0)
@@ -281,11 +292,6 @@ func GetConnectionModelTypeEnumStringValues() []string {
 
 // GetMappingConnectionModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConnectionModelTypeEnum(val string) (ConnectionModelTypeEnum, bool) {
-	mappingConnectionModelTypeEnumIgnoreCase := make(map[string]ConnectionModelTypeEnum)
-	for k, v := range mappingConnectionModelTypeEnum {
-		mappingConnectionModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConnectionModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConnectionModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

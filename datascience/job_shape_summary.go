@@ -11,7 +11,7 @@ package datascience
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -68,6 +68,13 @@ var mappingJobShapeSummaryShapeSeriesEnum = map[string]JobShapeSummaryShapeSerie
 	"LEGACY":        JobShapeSummaryShapeSeriesLegacy,
 }
 
+var mappingJobShapeSummaryShapeSeriesEnumLowerCase = map[string]JobShapeSummaryShapeSeriesEnum{
+	"amd_rome":      JobShapeSummaryShapeSeriesAmdRome,
+	"intel_skylake": JobShapeSummaryShapeSeriesIntelSkylake,
+	"nvidia_gpu":    JobShapeSummaryShapeSeriesNvidiaGpu,
+	"legacy":        JobShapeSummaryShapeSeriesLegacy,
+}
+
 // GetJobShapeSummaryShapeSeriesEnumValues Enumerates the set of values for JobShapeSummaryShapeSeriesEnum
 func GetJobShapeSummaryShapeSeriesEnumValues() []JobShapeSummaryShapeSeriesEnum {
 	values := make([]JobShapeSummaryShapeSeriesEnum, 0)
@@ -89,11 +96,6 @@ func GetJobShapeSummaryShapeSeriesEnumStringValues() []string {
 
 // GetMappingJobShapeSummaryShapeSeriesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJobShapeSummaryShapeSeriesEnum(val string) (JobShapeSummaryShapeSeriesEnum, bool) {
-	mappingJobShapeSummaryShapeSeriesEnumIgnoreCase := make(map[string]JobShapeSummaryShapeSeriesEnum)
-	for k, v := range mappingJobShapeSummaryShapeSeriesEnum {
-		mappingJobShapeSummaryShapeSeriesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJobShapeSummaryShapeSeriesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJobShapeSummaryShapeSeriesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

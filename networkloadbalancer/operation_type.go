@@ -57,6 +57,26 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"DETACH_NLB_FROM_POD":          OperationTypeDetachNlbFromPod,
 }
 
+var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
+	"create_network_load_balancer": OperationTypeCreateNetworkLoadBalancer,
+	"update_network_load_balancer": OperationTypeUpdateNetworkLoadBalancer,
+	"delete_network_load_balancer": OperationTypeDeleteNetworkLoadBalancer,
+	"create_backend":               OperationTypeCreateBackend,
+	"update_backend":               OperationTypeUpdateBackend,
+	"delete_backend":               OperationTypeDeleteBackend,
+	"create_listener":              OperationTypeCreateListener,
+	"update_listener":              OperationTypeUpdateListener,
+	"delete_listener":              OperationTypeDeleteListener,
+	"create_backendset":            OperationTypeCreateBackendset,
+	"update_backendset":            OperationTypeUpdateBackendset,
+	"delete_backendset":            OperationTypeDeleteBackendset,
+	"update_nsgs":                  OperationTypeUpdateNsgs,
+	"update_health_checker":        OperationTypeUpdateHealthChecker,
+	"change_compartment":           OperationTypeChangeCompartment,
+	"attach_nlb_to_pod":            OperationTypeAttachNlbToPod,
+	"detach_nlb_from_pod":          OperationTypeDetachNlbFromPod,
+}
+
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum
 func GetOperationTypeEnumValues() []OperationTypeEnum {
 	values := make([]OperationTypeEnum, 0)
@@ -91,11 +111,6 @@ func GetOperationTypeEnumStringValues() []string {
 
 // GetMappingOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperationTypeEnum(val string) (OperationTypeEnum, bool) {
-	mappingOperationTypeEnumIgnoreCase := make(map[string]OperationTypeEnum)
-	for k, v := range mappingOperationTypeEnum {
-		mappingOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

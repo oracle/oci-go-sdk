@@ -12,7 +12,7 @@ package loganalytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -154,6 +154,11 @@ var mappingSortFieldDirectionEnum = map[string]SortFieldDirectionEnum{
 	"DESCENDING": SortFieldDirectionDescending,
 }
 
+var mappingSortFieldDirectionEnumLowerCase = map[string]SortFieldDirectionEnum{
+	"ascending":  SortFieldDirectionAscending,
+	"descending": SortFieldDirectionDescending,
+}
+
 // GetSortFieldDirectionEnumValues Enumerates the set of values for SortFieldDirectionEnum
 func GetSortFieldDirectionEnumValues() []SortFieldDirectionEnum {
 	values := make([]SortFieldDirectionEnum, 0)
@@ -173,11 +178,6 @@ func GetSortFieldDirectionEnumStringValues() []string {
 
 // GetMappingSortFieldDirectionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSortFieldDirectionEnum(val string) (SortFieldDirectionEnum, bool) {
-	mappingSortFieldDirectionEnumIgnoreCase := make(map[string]SortFieldDirectionEnum)
-	for k, v := range mappingSortFieldDirectionEnum {
-		mappingSortFieldDirectionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSortFieldDirectionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSortFieldDirectionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

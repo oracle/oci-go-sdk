@@ -6,7 +6,7 @@ package computeinstanceagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -153,6 +153,13 @@ var mappingListInstanceAgentPluginsStatusEnum = map[string]ListInstanceAgentPlug
 	"INVALID":       ListInstanceAgentPluginsStatusInvalid,
 }
 
+var mappingListInstanceAgentPluginsStatusEnumLowerCase = map[string]ListInstanceAgentPluginsStatusEnum{
+	"running":       ListInstanceAgentPluginsStatusRunning,
+	"stopped":       ListInstanceAgentPluginsStatusStopped,
+	"not_supported": ListInstanceAgentPluginsStatusNotSupported,
+	"invalid":       ListInstanceAgentPluginsStatusInvalid,
+}
+
 // GetListInstanceAgentPluginsStatusEnumValues Enumerates the set of values for ListInstanceAgentPluginsStatusEnum
 func GetListInstanceAgentPluginsStatusEnumValues() []ListInstanceAgentPluginsStatusEnum {
 	values := make([]ListInstanceAgentPluginsStatusEnum, 0)
@@ -174,12 +181,7 @@ func GetListInstanceAgentPluginsStatusEnumStringValues() []string {
 
 // GetMappingListInstanceAgentPluginsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListInstanceAgentPluginsStatusEnum(val string) (ListInstanceAgentPluginsStatusEnum, bool) {
-	mappingListInstanceAgentPluginsStatusEnumIgnoreCase := make(map[string]ListInstanceAgentPluginsStatusEnum)
-	for k, v := range mappingListInstanceAgentPluginsStatusEnum {
-		mappingListInstanceAgentPluginsStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListInstanceAgentPluginsStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListInstanceAgentPluginsStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -195,6 +197,11 @@ const (
 var mappingListInstanceAgentPluginsSortByEnum = map[string]ListInstanceAgentPluginsSortByEnum{
 	"TIMECREATED": ListInstanceAgentPluginsSortByTimecreated,
 	"DISPLAYNAME": ListInstanceAgentPluginsSortByDisplayname,
+}
+
+var mappingListInstanceAgentPluginsSortByEnumLowerCase = map[string]ListInstanceAgentPluginsSortByEnum{
+	"timecreated": ListInstanceAgentPluginsSortByTimecreated,
+	"displayname": ListInstanceAgentPluginsSortByDisplayname,
 }
 
 // GetListInstanceAgentPluginsSortByEnumValues Enumerates the set of values for ListInstanceAgentPluginsSortByEnum
@@ -216,12 +223,7 @@ func GetListInstanceAgentPluginsSortByEnumStringValues() []string {
 
 // GetMappingListInstanceAgentPluginsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListInstanceAgentPluginsSortByEnum(val string) (ListInstanceAgentPluginsSortByEnum, bool) {
-	mappingListInstanceAgentPluginsSortByEnumIgnoreCase := make(map[string]ListInstanceAgentPluginsSortByEnum)
-	for k, v := range mappingListInstanceAgentPluginsSortByEnum {
-		mappingListInstanceAgentPluginsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListInstanceAgentPluginsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListInstanceAgentPluginsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -237,6 +239,11 @@ const (
 var mappingListInstanceAgentPluginsSortOrderEnum = map[string]ListInstanceAgentPluginsSortOrderEnum{
 	"ASC":  ListInstanceAgentPluginsSortOrderAsc,
 	"DESC": ListInstanceAgentPluginsSortOrderDesc,
+}
+
+var mappingListInstanceAgentPluginsSortOrderEnumLowerCase = map[string]ListInstanceAgentPluginsSortOrderEnum{
+	"asc":  ListInstanceAgentPluginsSortOrderAsc,
+	"desc": ListInstanceAgentPluginsSortOrderDesc,
 }
 
 // GetListInstanceAgentPluginsSortOrderEnumValues Enumerates the set of values for ListInstanceAgentPluginsSortOrderEnum
@@ -258,11 +265,6 @@ func GetListInstanceAgentPluginsSortOrderEnumStringValues() []string {
 
 // GetMappingListInstanceAgentPluginsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListInstanceAgentPluginsSortOrderEnum(val string) (ListInstanceAgentPluginsSortOrderEnum, bool) {
-	mappingListInstanceAgentPluginsSortOrderEnumIgnoreCase := make(map[string]ListInstanceAgentPluginsSortOrderEnum)
-	for k, v := range mappingListInstanceAgentPluginsSortOrderEnum {
-		mappingListInstanceAgentPluginsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListInstanceAgentPluginsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListInstanceAgentPluginsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

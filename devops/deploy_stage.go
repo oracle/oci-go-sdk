@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -263,6 +263,15 @@ var mappingDeployStageLifecycleStateEnum = map[string]DeployStageLifecycleStateE
 	"FAILED":   DeployStageLifecycleStateFailed,
 }
 
+var mappingDeployStageLifecycleStateEnumLowerCase = map[string]DeployStageLifecycleStateEnum{
+	"creating": DeployStageLifecycleStateCreating,
+	"updating": DeployStageLifecycleStateUpdating,
+	"active":   DeployStageLifecycleStateActive,
+	"deleting": DeployStageLifecycleStateDeleting,
+	"deleted":  DeployStageLifecycleStateDeleted,
+	"failed":   DeployStageLifecycleStateFailed,
+}
+
 // GetDeployStageLifecycleStateEnumValues Enumerates the set of values for DeployStageLifecycleStateEnum
 func GetDeployStageLifecycleStateEnumValues() []DeployStageLifecycleStateEnum {
 	values := make([]DeployStageLifecycleStateEnum, 0)
@@ -286,12 +295,7 @@ func GetDeployStageLifecycleStateEnumStringValues() []string {
 
 // GetMappingDeployStageLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeployStageLifecycleStateEnum(val string) (DeployStageLifecycleStateEnum, bool) {
-	mappingDeployStageLifecycleStateEnumIgnoreCase := make(map[string]DeployStageLifecycleStateEnum)
-	for k, v := range mappingDeployStageLifecycleStateEnum {
-		mappingDeployStageLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeployStageLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeployStageLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -319,6 +323,16 @@ var mappingDeployStageDeployStageTypeEnum = map[string]DeployStageDeployStageTyp
 	"MANUAL_APPROVAL":             DeployStageDeployStageTypeManualApproval,
 }
 
+var mappingDeployStageDeployStageTypeEnumLowerCase = map[string]DeployStageDeployStageTypeEnum{
+	"wait": DeployStageDeployStageTypeWait,
+	"compute_instance_group_rolling_deployment": DeployStageDeployStageTypeComputeInstanceGroupRollingDeployment,
+	"oke_deployment":              DeployStageDeployStageTypeOkeDeployment,
+	"deploy_function":             DeployStageDeployStageTypeDeployFunction,
+	"invoke_function":             DeployStageDeployStageTypeInvokeFunction,
+	"load_balancer_traffic_shift": DeployStageDeployStageTypeLoadBalancerTrafficShift,
+	"manual_approval":             DeployStageDeployStageTypeManualApproval,
+}
+
 // GetDeployStageDeployStageTypeEnumValues Enumerates the set of values for DeployStageDeployStageTypeEnum
 func GetDeployStageDeployStageTypeEnumValues() []DeployStageDeployStageTypeEnum {
 	values := make([]DeployStageDeployStageTypeEnum, 0)
@@ -343,11 +357,6 @@ func GetDeployStageDeployStageTypeEnumStringValues() []string {
 
 // GetMappingDeployStageDeployStageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeployStageDeployStageTypeEnum(val string) (DeployStageDeployStageTypeEnum, bool) {
-	mappingDeployStageDeployStageTypeEnumIgnoreCase := make(map[string]DeployStageDeployStageTypeEnum)
-	for k, v := range mappingDeployStageDeployStageTypeEnum {
-		mappingDeployStageDeployStageTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeployStageDeployStageTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeployStageDeployStageTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

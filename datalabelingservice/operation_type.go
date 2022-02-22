@@ -39,6 +39,17 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"RENAME_DATASET_LABELS":    OperationTypeRenameDatasetLabels,
 }
 
+var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
+	"create_dataset":           OperationTypeCreateDataset,
+	"delete_dataset":           OperationTypeDeleteDataset,
+	"move_dataset":             OperationTypeMoveDataset,
+	"generate_dataset_records": OperationTypeGenerateDatasetRecords,
+	"snapshot_dataset":         OperationTypeSnapshotDataset,
+	"add_dataset_labels":       OperationTypeAddDatasetLabels,
+	"remove_dataset_labels":    OperationTypeRemoveDatasetLabels,
+	"rename_dataset_labels":    OperationTypeRenameDatasetLabels,
+}
+
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum
 func GetOperationTypeEnumValues() []OperationTypeEnum {
 	values := make([]OperationTypeEnum, 0)
@@ -64,11 +75,6 @@ func GetOperationTypeEnumStringValues() []string {
 
 // GetMappingOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperationTypeEnum(val string) (OperationTypeEnum, bool) {
-	mappingOperationTypeEnumIgnoreCase := make(map[string]OperationTypeEnum)
-	for k, v := range mappingOperationTypeEnum {
-		mappingOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

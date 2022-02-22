@@ -6,7 +6,7 @@ package managementdashboard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -129,6 +129,11 @@ var mappingListManagementSavedSearchesSortOrderEnum = map[string]ListManagementS
 	"DESC": ListManagementSavedSearchesSortOrderDesc,
 }
 
+var mappingListManagementSavedSearchesSortOrderEnumLowerCase = map[string]ListManagementSavedSearchesSortOrderEnum{
+	"asc":  ListManagementSavedSearchesSortOrderAsc,
+	"desc": ListManagementSavedSearchesSortOrderDesc,
+}
+
 // GetListManagementSavedSearchesSortOrderEnumValues Enumerates the set of values for ListManagementSavedSearchesSortOrderEnum
 func GetListManagementSavedSearchesSortOrderEnumValues() []ListManagementSavedSearchesSortOrderEnum {
 	values := make([]ListManagementSavedSearchesSortOrderEnum, 0)
@@ -148,12 +153,7 @@ func GetListManagementSavedSearchesSortOrderEnumStringValues() []string {
 
 // GetMappingListManagementSavedSearchesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagementSavedSearchesSortOrderEnum(val string) (ListManagementSavedSearchesSortOrderEnum, bool) {
-	mappingListManagementSavedSearchesSortOrderEnumIgnoreCase := make(map[string]ListManagementSavedSearchesSortOrderEnum)
-	for k, v := range mappingListManagementSavedSearchesSortOrderEnum {
-		mappingListManagementSavedSearchesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagementSavedSearchesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagementSavedSearchesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -169,6 +169,11 @@ const (
 var mappingListManagementSavedSearchesSortByEnum = map[string]ListManagementSavedSearchesSortByEnum{
 	"timeCreated": ListManagementSavedSearchesSortByTimecreated,
 	"displayName": ListManagementSavedSearchesSortByDisplayname,
+}
+
+var mappingListManagementSavedSearchesSortByEnumLowerCase = map[string]ListManagementSavedSearchesSortByEnum{
+	"timecreated": ListManagementSavedSearchesSortByTimecreated,
+	"displayname": ListManagementSavedSearchesSortByDisplayname,
 }
 
 // GetListManagementSavedSearchesSortByEnumValues Enumerates the set of values for ListManagementSavedSearchesSortByEnum
@@ -190,11 +195,6 @@ func GetListManagementSavedSearchesSortByEnumStringValues() []string {
 
 // GetMappingListManagementSavedSearchesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagementSavedSearchesSortByEnum(val string) (ListManagementSavedSearchesSortByEnum, bool) {
-	mappingListManagementSavedSearchesSortByEnumIgnoreCase := make(map[string]ListManagementSavedSearchesSortByEnum)
-	for k, v := range mappingListManagementSavedSearchesSortByEnum {
-		mappingListManagementSavedSearchesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagementSavedSearchesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagementSavedSearchesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

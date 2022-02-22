@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -170,6 +170,16 @@ var mappingListDataMaskRulesLifecycleStateEnum = map[string]ListDataMaskRulesLif
 	"FAILED":   ListDataMaskRulesLifecycleStateFailed,
 }
 
+var mappingListDataMaskRulesLifecycleStateEnumLowerCase = map[string]ListDataMaskRulesLifecycleStateEnum{
+	"creating": ListDataMaskRulesLifecycleStateCreating,
+	"updating": ListDataMaskRulesLifecycleStateUpdating,
+	"active":   ListDataMaskRulesLifecycleStateActive,
+	"inactive": ListDataMaskRulesLifecycleStateInactive,
+	"deleting": ListDataMaskRulesLifecycleStateDeleting,
+	"deleted":  ListDataMaskRulesLifecycleStateDeleted,
+	"failed":   ListDataMaskRulesLifecycleStateFailed,
+}
+
 // GetListDataMaskRulesLifecycleStateEnumValues Enumerates the set of values for ListDataMaskRulesLifecycleStateEnum
 func GetListDataMaskRulesLifecycleStateEnumValues() []ListDataMaskRulesLifecycleStateEnum {
 	values := make([]ListDataMaskRulesLifecycleStateEnum, 0)
@@ -194,12 +204,7 @@ func GetListDataMaskRulesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListDataMaskRulesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataMaskRulesLifecycleStateEnum(val string) (ListDataMaskRulesLifecycleStateEnum, bool) {
-	mappingListDataMaskRulesLifecycleStateEnumIgnoreCase := make(map[string]ListDataMaskRulesLifecycleStateEnum)
-	for k, v := range mappingListDataMaskRulesLifecycleStateEnum {
-		mappingListDataMaskRulesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataMaskRulesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataMaskRulesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -215,6 +220,11 @@ const (
 var mappingListDataMaskRulesAccessLevelEnum = map[string]ListDataMaskRulesAccessLevelEnum{
 	"RESTRICTED": ListDataMaskRulesAccessLevelRestricted,
 	"ACCESSIBLE": ListDataMaskRulesAccessLevelAccessible,
+}
+
+var mappingListDataMaskRulesAccessLevelEnumLowerCase = map[string]ListDataMaskRulesAccessLevelEnum{
+	"restricted": ListDataMaskRulesAccessLevelRestricted,
+	"accessible": ListDataMaskRulesAccessLevelAccessible,
 }
 
 // GetListDataMaskRulesAccessLevelEnumValues Enumerates the set of values for ListDataMaskRulesAccessLevelEnum
@@ -236,12 +246,7 @@ func GetListDataMaskRulesAccessLevelEnumStringValues() []string {
 
 // GetMappingListDataMaskRulesAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataMaskRulesAccessLevelEnum(val string) (ListDataMaskRulesAccessLevelEnum, bool) {
-	mappingListDataMaskRulesAccessLevelEnumIgnoreCase := make(map[string]ListDataMaskRulesAccessLevelEnum)
-	for k, v := range mappingListDataMaskRulesAccessLevelEnum {
-		mappingListDataMaskRulesAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataMaskRulesAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataMaskRulesAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -257,6 +262,11 @@ const (
 var mappingListDataMaskRulesSortOrderEnum = map[string]ListDataMaskRulesSortOrderEnum{
 	"ASC":  ListDataMaskRulesSortOrderAsc,
 	"DESC": ListDataMaskRulesSortOrderDesc,
+}
+
+var mappingListDataMaskRulesSortOrderEnumLowerCase = map[string]ListDataMaskRulesSortOrderEnum{
+	"asc":  ListDataMaskRulesSortOrderAsc,
+	"desc": ListDataMaskRulesSortOrderDesc,
 }
 
 // GetListDataMaskRulesSortOrderEnumValues Enumerates the set of values for ListDataMaskRulesSortOrderEnum
@@ -278,12 +288,7 @@ func GetListDataMaskRulesSortOrderEnumStringValues() []string {
 
 // GetMappingListDataMaskRulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataMaskRulesSortOrderEnum(val string) (ListDataMaskRulesSortOrderEnum, bool) {
-	mappingListDataMaskRulesSortOrderEnumIgnoreCase := make(map[string]ListDataMaskRulesSortOrderEnum)
-	for k, v := range mappingListDataMaskRulesSortOrderEnum {
-		mappingListDataMaskRulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataMaskRulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataMaskRulesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -299,6 +304,11 @@ const (
 var mappingListDataMaskRulesSortByEnum = map[string]ListDataMaskRulesSortByEnum{
 	"timeCreated": ListDataMaskRulesSortByTimecreated,
 	"displayName": ListDataMaskRulesSortByDisplayname,
+}
+
+var mappingListDataMaskRulesSortByEnumLowerCase = map[string]ListDataMaskRulesSortByEnum{
+	"timecreated": ListDataMaskRulesSortByTimecreated,
+	"displayname": ListDataMaskRulesSortByDisplayname,
 }
 
 // GetListDataMaskRulesSortByEnumValues Enumerates the set of values for ListDataMaskRulesSortByEnum
@@ -320,12 +330,7 @@ func GetListDataMaskRulesSortByEnumStringValues() []string {
 
 // GetMappingListDataMaskRulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataMaskRulesSortByEnum(val string) (ListDataMaskRulesSortByEnum, bool) {
-	mappingListDataMaskRulesSortByEnumIgnoreCase := make(map[string]ListDataMaskRulesSortByEnum)
-	for k, v := range mappingListDataMaskRulesSortByEnum {
-		mappingListDataMaskRulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataMaskRulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataMaskRulesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -341,6 +346,11 @@ const (
 var mappingListDataMaskRulesDataMaskRuleStatusEnum = map[string]ListDataMaskRulesDataMaskRuleStatusEnum{
 	"ENABLED":  ListDataMaskRulesDataMaskRuleStatusEnabled,
 	"DISABLED": ListDataMaskRulesDataMaskRuleStatusDisabled,
+}
+
+var mappingListDataMaskRulesDataMaskRuleStatusEnumLowerCase = map[string]ListDataMaskRulesDataMaskRuleStatusEnum{
+	"enabled":  ListDataMaskRulesDataMaskRuleStatusEnabled,
+	"disabled": ListDataMaskRulesDataMaskRuleStatusDisabled,
 }
 
 // GetListDataMaskRulesDataMaskRuleStatusEnumValues Enumerates the set of values for ListDataMaskRulesDataMaskRuleStatusEnum
@@ -362,11 +372,6 @@ func GetListDataMaskRulesDataMaskRuleStatusEnumStringValues() []string {
 
 // GetMappingListDataMaskRulesDataMaskRuleStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataMaskRulesDataMaskRuleStatusEnum(val string) (ListDataMaskRulesDataMaskRuleStatusEnum, bool) {
-	mappingListDataMaskRulesDataMaskRuleStatusEnumIgnoreCase := make(map[string]ListDataMaskRulesDataMaskRuleStatusEnum)
-	for k, v := range mappingListDataMaskRulesDataMaskRuleStatusEnum {
-		mappingListDataMaskRulesDataMaskRuleStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataMaskRulesDataMaskRuleStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataMaskRulesDataMaskRuleStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

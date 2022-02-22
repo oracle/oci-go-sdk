@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -142,6 +142,11 @@ var mappingListComputeGlobalImageCapabilitySchemaVersionsSortByEnum = map[string
 	"DISPLAYNAME": ListComputeGlobalImageCapabilitySchemaVersionsSortByDisplayname,
 }
 
+var mappingListComputeGlobalImageCapabilitySchemaVersionsSortByEnumLowerCase = map[string]ListComputeGlobalImageCapabilitySchemaVersionsSortByEnum{
+	"timecreated": ListComputeGlobalImageCapabilitySchemaVersionsSortByTimecreated,
+	"displayname": ListComputeGlobalImageCapabilitySchemaVersionsSortByDisplayname,
+}
+
 // GetListComputeGlobalImageCapabilitySchemaVersionsSortByEnumValues Enumerates the set of values for ListComputeGlobalImageCapabilitySchemaVersionsSortByEnum
 func GetListComputeGlobalImageCapabilitySchemaVersionsSortByEnumValues() []ListComputeGlobalImageCapabilitySchemaVersionsSortByEnum {
 	values := make([]ListComputeGlobalImageCapabilitySchemaVersionsSortByEnum, 0)
@@ -161,12 +166,7 @@ func GetListComputeGlobalImageCapabilitySchemaVersionsSortByEnumStringValues() [
 
 // GetMappingListComputeGlobalImageCapabilitySchemaVersionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListComputeGlobalImageCapabilitySchemaVersionsSortByEnum(val string) (ListComputeGlobalImageCapabilitySchemaVersionsSortByEnum, bool) {
-	mappingListComputeGlobalImageCapabilitySchemaVersionsSortByEnumIgnoreCase := make(map[string]ListComputeGlobalImageCapabilitySchemaVersionsSortByEnum)
-	for k, v := range mappingListComputeGlobalImageCapabilitySchemaVersionsSortByEnum {
-		mappingListComputeGlobalImageCapabilitySchemaVersionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListComputeGlobalImageCapabilitySchemaVersionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListComputeGlobalImageCapabilitySchemaVersionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -182,6 +182,11 @@ const (
 var mappingListComputeGlobalImageCapabilitySchemaVersionsSortOrderEnum = map[string]ListComputeGlobalImageCapabilitySchemaVersionsSortOrderEnum{
 	"ASC":  ListComputeGlobalImageCapabilitySchemaVersionsSortOrderAsc,
 	"DESC": ListComputeGlobalImageCapabilitySchemaVersionsSortOrderDesc,
+}
+
+var mappingListComputeGlobalImageCapabilitySchemaVersionsSortOrderEnumLowerCase = map[string]ListComputeGlobalImageCapabilitySchemaVersionsSortOrderEnum{
+	"asc":  ListComputeGlobalImageCapabilitySchemaVersionsSortOrderAsc,
+	"desc": ListComputeGlobalImageCapabilitySchemaVersionsSortOrderDesc,
 }
 
 // GetListComputeGlobalImageCapabilitySchemaVersionsSortOrderEnumValues Enumerates the set of values for ListComputeGlobalImageCapabilitySchemaVersionsSortOrderEnum
@@ -203,11 +208,6 @@ func GetListComputeGlobalImageCapabilitySchemaVersionsSortOrderEnumStringValues(
 
 // GetMappingListComputeGlobalImageCapabilitySchemaVersionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListComputeGlobalImageCapabilitySchemaVersionsSortOrderEnum(val string) (ListComputeGlobalImageCapabilitySchemaVersionsSortOrderEnum, bool) {
-	mappingListComputeGlobalImageCapabilitySchemaVersionsSortOrderEnumIgnoreCase := make(map[string]ListComputeGlobalImageCapabilitySchemaVersionsSortOrderEnum)
-	for k, v := range mappingListComputeGlobalImageCapabilitySchemaVersionsSortOrderEnum {
-		mappingListComputeGlobalImageCapabilitySchemaVersionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListComputeGlobalImageCapabilitySchemaVersionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListComputeGlobalImageCapabilitySchemaVersionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

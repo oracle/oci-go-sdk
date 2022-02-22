@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -91,6 +91,13 @@ var mappingLoadBalancerHealthStatusEnum = map[string]LoadBalancerHealthStatusEnu
 	"UNKNOWN":  LoadBalancerHealthStatusUnknown,
 }
 
+var mappingLoadBalancerHealthStatusEnumLowerCase = map[string]LoadBalancerHealthStatusEnum{
+	"ok":       LoadBalancerHealthStatusOk,
+	"warning":  LoadBalancerHealthStatusWarning,
+	"critical": LoadBalancerHealthStatusCritical,
+	"unknown":  LoadBalancerHealthStatusUnknown,
+}
+
 // GetLoadBalancerHealthStatusEnumValues Enumerates the set of values for LoadBalancerHealthStatusEnum
 func GetLoadBalancerHealthStatusEnumValues() []LoadBalancerHealthStatusEnum {
 	values := make([]LoadBalancerHealthStatusEnum, 0)
@@ -112,11 +119,6 @@ func GetLoadBalancerHealthStatusEnumStringValues() []string {
 
 // GetMappingLoadBalancerHealthStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLoadBalancerHealthStatusEnum(val string) (LoadBalancerHealthStatusEnum, bool) {
-	mappingLoadBalancerHealthStatusEnumIgnoreCase := make(map[string]LoadBalancerHealthStatusEnum)
-	for k, v := range mappingLoadBalancerHealthStatusEnum {
-		mappingLoadBalancerHealthStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLoadBalancerHealthStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLoadBalancerHealthStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

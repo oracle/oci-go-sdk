@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -118,6 +118,11 @@ var mappingTablespaceAdminCredentialDetailsRoleEnum = map[string]TablespaceAdmin
 	"SYSDBA": TablespaceAdminCredentialDetailsRoleSysdba,
 }
 
+var mappingTablespaceAdminCredentialDetailsRoleEnumLowerCase = map[string]TablespaceAdminCredentialDetailsRoleEnum{
+	"normal": TablespaceAdminCredentialDetailsRoleNormal,
+	"sysdba": TablespaceAdminCredentialDetailsRoleSysdba,
+}
+
 // GetTablespaceAdminCredentialDetailsRoleEnumValues Enumerates the set of values for TablespaceAdminCredentialDetailsRoleEnum
 func GetTablespaceAdminCredentialDetailsRoleEnumValues() []TablespaceAdminCredentialDetailsRoleEnum {
 	values := make([]TablespaceAdminCredentialDetailsRoleEnum, 0)
@@ -137,12 +142,7 @@ func GetTablespaceAdminCredentialDetailsRoleEnumStringValues() []string {
 
 // GetMappingTablespaceAdminCredentialDetailsRoleEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTablespaceAdminCredentialDetailsRoleEnum(val string) (TablespaceAdminCredentialDetailsRoleEnum, bool) {
-	mappingTablespaceAdminCredentialDetailsRoleEnumIgnoreCase := make(map[string]TablespaceAdminCredentialDetailsRoleEnum)
-	for k, v := range mappingTablespaceAdminCredentialDetailsRoleEnum {
-		mappingTablespaceAdminCredentialDetailsRoleEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTablespaceAdminCredentialDetailsRoleEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTablespaceAdminCredentialDetailsRoleEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -158,6 +158,11 @@ const (
 var mappingTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnum = map[string]TablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnum{
 	"SECRET":   TablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeSecret,
 	"PASSWORD": TablespaceAdminCredentialDetailsTablespaceAdminCredentialTypePassword,
+}
+
+var mappingTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnumLowerCase = map[string]TablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnum{
+	"secret":   TablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeSecret,
+	"password": TablespaceAdminCredentialDetailsTablespaceAdminCredentialTypePassword,
 }
 
 // GetTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnumValues Enumerates the set of values for TablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnum
@@ -179,11 +184,6 @@ func GetTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnumStringV
 
 // GetMappingTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnum(val string) (TablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnum, bool) {
-	mappingTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnumIgnoreCase := make(map[string]TablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnum)
-	for k, v := range mappingTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnum {
-		mappingTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

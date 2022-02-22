@@ -12,7 +12,7 @@ package logging
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingSourceSourceTypeEnum = map[string]SourceSourceTypeEnum{
 	"OCISERVICE": SourceSourceTypeOciservice,
 }
 
+var mappingSourceSourceTypeEnumLowerCase = map[string]SourceSourceTypeEnum{
+	"ociservice": SourceSourceTypeOciservice,
+}
+
 // GetSourceSourceTypeEnumValues Enumerates the set of values for SourceSourceTypeEnum
 func GetSourceSourceTypeEnumValues() []SourceSourceTypeEnum {
 	values := make([]SourceSourceTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetSourceSourceTypeEnumStringValues() []string {
 
 // GetMappingSourceSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSourceSourceTypeEnum(val string) (SourceSourceTypeEnum, bool) {
-	mappingSourceSourceTypeEnumIgnoreCase := make(map[string]SourceSourceTypeEnum)
-	for k, v := range mappingSourceSourceTypeEnum {
-		mappingSourceSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSourceSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSourceSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

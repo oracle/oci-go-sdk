@@ -12,7 +12,7 @@ package datascience
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingJobConfigurationDetailsJobTypeEnum = map[string]JobConfigurationDetai
 	"DEFAULT": JobConfigurationDetailsJobTypeDefault,
 }
 
+var mappingJobConfigurationDetailsJobTypeEnumLowerCase = map[string]JobConfigurationDetailsJobTypeEnum{
+	"default": JobConfigurationDetailsJobTypeDefault,
+}
+
 // GetJobConfigurationDetailsJobTypeEnumValues Enumerates the set of values for JobConfigurationDetailsJobTypeEnum
 func GetJobConfigurationDetailsJobTypeEnumValues() []JobConfigurationDetailsJobTypeEnum {
 	values := make([]JobConfigurationDetailsJobTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetJobConfigurationDetailsJobTypeEnumStringValues() []string {
 
 // GetMappingJobConfigurationDetailsJobTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJobConfigurationDetailsJobTypeEnum(val string) (JobConfigurationDetailsJobTypeEnum, bool) {
-	mappingJobConfigurationDetailsJobTypeEnumIgnoreCase := make(map[string]JobConfigurationDetailsJobTypeEnum)
-	for k, v := range mappingJobConfigurationDetailsJobTypeEnum {
-		mappingJobConfigurationDetailsJobTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJobConfigurationDetailsJobTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJobConfigurationDetailsJobTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

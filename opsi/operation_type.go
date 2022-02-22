@@ -99,6 +99,46 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"DELETE_AWRHUB":                    OperationTypeDeleteAwrhub,
 }
 
+var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
+	"enable_database_insight":          OperationTypeEnableDatabaseInsight,
+	"disable_database_insight":         OperationTypeDisableDatabaseInsight,
+	"update_database_insight":          OperationTypeUpdateDatabaseInsight,
+	"create_database_insight":          OperationTypeCreateDatabaseInsight,
+	"move_database_insight":            OperationTypeMoveDatabaseInsight,
+	"delete_database_insight":          OperationTypeDeleteDatabaseInsight,
+	"create_enterprise_manager_bridge": OperationTypeCreateEnterpriseManagerBridge,
+	"udpate_enterprise_manager_bridge": OperationTypeUdpateEnterpriseManagerBridge,
+	"move_enterprise_manager_bridge":   OperationTypeMoveEnterpriseManagerBridge,
+	"delete_enterprise_manager_bridge": OperationTypeDeleteEnterpriseManagerBridge,
+	"enable_host_insight":              OperationTypeEnableHostInsight,
+	"disable_host_insight":             OperationTypeDisableHostInsight,
+	"update_host_insight":              OperationTypeUpdateHostInsight,
+	"create_host_insight":              OperationTypeCreateHostInsight,
+	"move_host_insight":                OperationTypeMoveHostInsight,
+	"delete_host_insight":              OperationTypeDeleteHostInsight,
+	"create_exadata_insight":           OperationTypeCreateExadataInsight,
+	"enable_exadata_insight":           OperationTypeEnableExadataInsight,
+	"disable_exadata_insight":          OperationTypeDisableExadataInsight,
+	"update_exadata_insight":           OperationTypeUpdateExadataInsight,
+	"move_exadata_insight":             OperationTypeMoveExadataInsight,
+	"delete_exadata_insight":           OperationTypeDeleteExadataInsight,
+	"add_exadata_insight_members":      OperationTypeAddExadataInsightMembers,
+	"exadata_auto_sync":                OperationTypeExadataAutoSync,
+	"update_opsi_warehouse":            OperationTypeUpdateOpsiWarehouse,
+	"create_opsi_warehouse":            OperationTypeCreateOpsiWarehouse,
+	"move_opsi_warehouse":              OperationTypeMoveOpsiWarehouse,
+	"delete_opsi_warehouse":            OperationTypeDeleteOpsiWarehouse,
+	"rotate_opsi_warehouse_wallet":     OperationTypeRotateOpsiWarehouseWallet,
+	"update_opsi_warehouse_user":       OperationTypeUpdateOpsiWarehouseUser,
+	"create_opsi_warehouse_user":       OperationTypeCreateOpsiWarehouseUser,
+	"move_opsi_warehouse_user":         OperationTypeMoveOpsiWarehouseUser,
+	"delete_opsi_warehouse_user":       OperationTypeDeleteOpsiWarehouseUser,
+	"update_awrhub":                    OperationTypeUpdateAwrhub,
+	"create_awrhub":                    OperationTypeCreateAwrhub,
+	"move_awrhub":                      OperationTypeMoveAwrhub,
+	"delete_awrhub":                    OperationTypeDeleteAwrhub,
+}
+
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum
 func GetOperationTypeEnumValues() []OperationTypeEnum {
 	values := make([]OperationTypeEnum, 0)
@@ -153,11 +193,6 @@ func GetOperationTypeEnumStringValues() []string {
 
 // GetMappingOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperationTypeEnum(val string) (OperationTypeEnum, bool) {
-	mappingOperationTypeEnumIgnoreCase := make(map[string]OperationTypeEnum)
-	for k, v := range mappingOperationTypeEnum {
-		mappingOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

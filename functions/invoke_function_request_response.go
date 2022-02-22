@@ -6,7 +6,7 @@ package functions
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"io"
 	"net/http"
 	"strings"
@@ -124,6 +124,11 @@ var mappingInvokeFunctionFnIntentEnum = map[string]InvokeFunctionFnIntentEnum{
 	"cloudevent":  InvokeFunctionFnIntentCloudevent,
 }
 
+var mappingInvokeFunctionFnIntentEnumLowerCase = map[string]InvokeFunctionFnIntentEnum{
+	"httprequest": InvokeFunctionFnIntentHttprequest,
+	"cloudevent":  InvokeFunctionFnIntentCloudevent,
+}
+
 // GetInvokeFunctionFnIntentEnumValues Enumerates the set of values for InvokeFunctionFnIntentEnum
 func GetInvokeFunctionFnIntentEnumValues() []InvokeFunctionFnIntentEnum {
 	values := make([]InvokeFunctionFnIntentEnum, 0)
@@ -143,12 +148,7 @@ func GetInvokeFunctionFnIntentEnumStringValues() []string {
 
 // GetMappingInvokeFunctionFnIntentEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInvokeFunctionFnIntentEnum(val string) (InvokeFunctionFnIntentEnum, bool) {
-	mappingInvokeFunctionFnIntentEnumIgnoreCase := make(map[string]InvokeFunctionFnIntentEnum)
-	for k, v := range mappingInvokeFunctionFnIntentEnum {
-		mappingInvokeFunctionFnIntentEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInvokeFunctionFnIntentEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInvokeFunctionFnIntentEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -162,6 +162,11 @@ const (
 )
 
 var mappingInvokeFunctionFnInvokeTypeEnum = map[string]InvokeFunctionFnInvokeTypeEnum{
+	"detached": InvokeFunctionFnInvokeTypeDetached,
+	"sync":     InvokeFunctionFnInvokeTypeSync,
+}
+
+var mappingInvokeFunctionFnInvokeTypeEnumLowerCase = map[string]InvokeFunctionFnInvokeTypeEnum{
 	"detached": InvokeFunctionFnInvokeTypeDetached,
 	"sync":     InvokeFunctionFnInvokeTypeSync,
 }
@@ -185,11 +190,6 @@ func GetInvokeFunctionFnInvokeTypeEnumStringValues() []string {
 
 // GetMappingInvokeFunctionFnInvokeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInvokeFunctionFnInvokeTypeEnum(val string) (InvokeFunctionFnInvokeTypeEnum, bool) {
-	mappingInvokeFunctionFnInvokeTypeEnumIgnoreCase := make(map[string]InvokeFunctionFnInvokeTypeEnum)
-	for k, v := range mappingInvokeFunctionFnInvokeTypeEnum {
-		mappingInvokeFunctionFnInvokeTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInvokeFunctionFnInvokeTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInvokeFunctionFnInvokeTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

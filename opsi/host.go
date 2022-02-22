@@ -29,6 +29,11 @@ var mappingHostEnum = map[string]HostEnum{
 	"MEMORY": HostMemory,
 }
 
+var mappingHostEnumLowerCase = map[string]HostEnum{
+	"cpu":    HostCpu,
+	"memory": HostMemory,
+}
+
 // GetHostEnumValues Enumerates the set of values for HostEnum
 func GetHostEnumValues() []HostEnum {
 	values := make([]HostEnum, 0)
@@ -48,11 +53,6 @@ func GetHostEnumStringValues() []string {
 
 // GetMappingHostEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHostEnum(val string) (HostEnum, bool) {
-	mappingHostEnumIgnoreCase := make(map[string]HostEnum)
-	for k, v := range mappingHostEnum {
-		mappingHostEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHostEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHostEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

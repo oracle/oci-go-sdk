@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -182,6 +182,12 @@ var mappingSummarizeHostInsightResourceUsagePlatformTypeEnum = map[string]Summar
 	"SUNOS":   SummarizeHostInsightResourceUsagePlatformTypeSunos,
 }
 
+var mappingSummarizeHostInsightResourceUsagePlatformTypeEnumLowerCase = map[string]SummarizeHostInsightResourceUsagePlatformTypeEnum{
+	"linux":   SummarizeHostInsightResourceUsagePlatformTypeLinux,
+	"solaris": SummarizeHostInsightResourceUsagePlatformTypeSolaris,
+	"sunos":   SummarizeHostInsightResourceUsagePlatformTypeSunos,
+}
+
 // GetSummarizeHostInsightResourceUsagePlatformTypeEnumValues Enumerates the set of values for SummarizeHostInsightResourceUsagePlatformTypeEnum
 func GetSummarizeHostInsightResourceUsagePlatformTypeEnumValues() []SummarizeHostInsightResourceUsagePlatformTypeEnum {
 	values := make([]SummarizeHostInsightResourceUsagePlatformTypeEnum, 0)
@@ -202,11 +208,6 @@ func GetSummarizeHostInsightResourceUsagePlatformTypeEnumStringValues() []string
 
 // GetMappingSummarizeHostInsightResourceUsagePlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeHostInsightResourceUsagePlatformTypeEnum(val string) (SummarizeHostInsightResourceUsagePlatformTypeEnum, bool) {
-	mappingSummarizeHostInsightResourceUsagePlatformTypeEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceUsagePlatformTypeEnum)
-	for k, v := range mappingSummarizeHostInsightResourceUsagePlatformTypeEnum {
-		mappingSummarizeHostInsightResourceUsagePlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeHostInsightResourceUsagePlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeHostInsightResourceUsagePlatformTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

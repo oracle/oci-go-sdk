@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -173,6 +173,11 @@ var mappingListLibraryMaskingFormatsAccessLevelEnum = map[string]ListLibraryMask
 	"ACCESSIBLE": ListLibraryMaskingFormatsAccessLevelAccessible,
 }
 
+var mappingListLibraryMaskingFormatsAccessLevelEnumLowerCase = map[string]ListLibraryMaskingFormatsAccessLevelEnum{
+	"restricted": ListLibraryMaskingFormatsAccessLevelRestricted,
+	"accessible": ListLibraryMaskingFormatsAccessLevelAccessible,
+}
+
 // GetListLibraryMaskingFormatsAccessLevelEnumValues Enumerates the set of values for ListLibraryMaskingFormatsAccessLevelEnum
 func GetListLibraryMaskingFormatsAccessLevelEnumValues() []ListLibraryMaskingFormatsAccessLevelEnum {
 	values := make([]ListLibraryMaskingFormatsAccessLevelEnum, 0)
@@ -192,12 +197,7 @@ func GetListLibraryMaskingFormatsAccessLevelEnumStringValues() []string {
 
 // GetMappingListLibraryMaskingFormatsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLibraryMaskingFormatsAccessLevelEnum(val string) (ListLibraryMaskingFormatsAccessLevelEnum, bool) {
-	mappingListLibraryMaskingFormatsAccessLevelEnumIgnoreCase := make(map[string]ListLibraryMaskingFormatsAccessLevelEnum)
-	for k, v := range mappingListLibraryMaskingFormatsAccessLevelEnum {
-		mappingListLibraryMaskingFormatsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLibraryMaskingFormatsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLibraryMaskingFormatsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -225,6 +225,16 @@ var mappingListLibraryMaskingFormatsLifecycleStateEnum = map[string]ListLibraryM
 	"FAILED":          ListLibraryMaskingFormatsLifecycleStateFailed,
 }
 
+var mappingListLibraryMaskingFormatsLifecycleStateEnumLowerCase = map[string]ListLibraryMaskingFormatsLifecycleStateEnum{
+	"creating":        ListLibraryMaskingFormatsLifecycleStateCreating,
+	"active":          ListLibraryMaskingFormatsLifecycleStateActive,
+	"updating":        ListLibraryMaskingFormatsLifecycleStateUpdating,
+	"deleting":        ListLibraryMaskingFormatsLifecycleStateDeleting,
+	"deleted":         ListLibraryMaskingFormatsLifecycleStateDeleted,
+	"needs_attention": ListLibraryMaskingFormatsLifecycleStateNeedsAttention,
+	"failed":          ListLibraryMaskingFormatsLifecycleStateFailed,
+}
+
 // GetListLibraryMaskingFormatsLifecycleStateEnumValues Enumerates the set of values for ListLibraryMaskingFormatsLifecycleStateEnum
 func GetListLibraryMaskingFormatsLifecycleStateEnumValues() []ListLibraryMaskingFormatsLifecycleStateEnum {
 	values := make([]ListLibraryMaskingFormatsLifecycleStateEnum, 0)
@@ -249,12 +259,7 @@ func GetListLibraryMaskingFormatsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListLibraryMaskingFormatsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLibraryMaskingFormatsLifecycleStateEnum(val string) (ListLibraryMaskingFormatsLifecycleStateEnum, bool) {
-	mappingListLibraryMaskingFormatsLifecycleStateEnumIgnoreCase := make(map[string]ListLibraryMaskingFormatsLifecycleStateEnum)
-	for k, v := range mappingListLibraryMaskingFormatsLifecycleStateEnum {
-		mappingListLibraryMaskingFormatsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLibraryMaskingFormatsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLibraryMaskingFormatsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -270,6 +275,11 @@ const (
 var mappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum = map[string]ListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum{
 	"ORACLE": ListLibraryMaskingFormatsLibraryMaskingFormatSourceOracle,
 	"USER":   ListLibraryMaskingFormatsLibraryMaskingFormatSourceUser,
+}
+
+var mappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnumLowerCase = map[string]ListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum{
+	"oracle": ListLibraryMaskingFormatsLibraryMaskingFormatSourceOracle,
+	"user":   ListLibraryMaskingFormatsLibraryMaskingFormatSourceUser,
 }
 
 // GetListLibraryMaskingFormatsLibraryMaskingFormatSourceEnumValues Enumerates the set of values for ListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum
@@ -291,12 +301,7 @@ func GetListLibraryMaskingFormatsLibraryMaskingFormatSourceEnumStringValues() []
 
 // GetMappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum(val string) (ListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum, bool) {
-	mappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnumIgnoreCase := make(map[string]ListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum)
-	for k, v := range mappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnum {
-		mappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLibraryMaskingFormatsLibraryMaskingFormatSourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -312,6 +317,11 @@ const (
 var mappingListLibraryMaskingFormatsSortOrderEnum = map[string]ListLibraryMaskingFormatsSortOrderEnum{
 	"ASC":  ListLibraryMaskingFormatsSortOrderAsc,
 	"DESC": ListLibraryMaskingFormatsSortOrderDesc,
+}
+
+var mappingListLibraryMaskingFormatsSortOrderEnumLowerCase = map[string]ListLibraryMaskingFormatsSortOrderEnum{
+	"asc":  ListLibraryMaskingFormatsSortOrderAsc,
+	"desc": ListLibraryMaskingFormatsSortOrderDesc,
 }
 
 // GetListLibraryMaskingFormatsSortOrderEnumValues Enumerates the set of values for ListLibraryMaskingFormatsSortOrderEnum
@@ -333,12 +343,7 @@ func GetListLibraryMaskingFormatsSortOrderEnumStringValues() []string {
 
 // GetMappingListLibraryMaskingFormatsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLibraryMaskingFormatsSortOrderEnum(val string) (ListLibraryMaskingFormatsSortOrderEnum, bool) {
-	mappingListLibraryMaskingFormatsSortOrderEnumIgnoreCase := make(map[string]ListLibraryMaskingFormatsSortOrderEnum)
-	for k, v := range mappingListLibraryMaskingFormatsSortOrderEnum {
-		mappingListLibraryMaskingFormatsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLibraryMaskingFormatsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLibraryMaskingFormatsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -354,6 +359,11 @@ const (
 var mappingListLibraryMaskingFormatsSortByEnum = map[string]ListLibraryMaskingFormatsSortByEnum{
 	"displayName": ListLibraryMaskingFormatsSortByDisplayname,
 	"timeCreated": ListLibraryMaskingFormatsSortByTimecreated,
+}
+
+var mappingListLibraryMaskingFormatsSortByEnumLowerCase = map[string]ListLibraryMaskingFormatsSortByEnum{
+	"displayname": ListLibraryMaskingFormatsSortByDisplayname,
+	"timecreated": ListLibraryMaskingFormatsSortByTimecreated,
 }
 
 // GetListLibraryMaskingFormatsSortByEnumValues Enumerates the set of values for ListLibraryMaskingFormatsSortByEnum
@@ -375,11 +385,6 @@ func GetListLibraryMaskingFormatsSortByEnumStringValues() []string {
 
 // GetMappingListLibraryMaskingFormatsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLibraryMaskingFormatsSortByEnum(val string) (ListLibraryMaskingFormatsSortByEnum, bool) {
-	mappingListLibraryMaskingFormatsSortByEnumIgnoreCase := make(map[string]ListLibraryMaskingFormatsSortByEnum)
-	for k, v := range mappingListLibraryMaskingFormatsSortByEnum {
-		mappingListLibraryMaskingFormatsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLibraryMaskingFormatsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLibraryMaskingFormatsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

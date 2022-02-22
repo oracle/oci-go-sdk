@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -242,6 +242,16 @@ var mappingDataEntitySummaryFromDataStoreEntityTypeEnum = map[string]DataEntityS
 	"DATA_STORE": DataEntitySummaryFromDataStoreEntityTypeDataStore,
 }
 
+var mappingDataEntitySummaryFromDataStoreEntityTypeEnumLowerCase = map[string]DataEntitySummaryFromDataStoreEntityTypeEnum{
+	"table":      DataEntitySummaryFromDataStoreEntityTypeTable,
+	"view":       DataEntitySummaryFromDataStoreEntityTypeView,
+	"file":       DataEntitySummaryFromDataStoreEntityTypeFile,
+	"queue":      DataEntitySummaryFromDataStoreEntityTypeQueue,
+	"stream":     DataEntitySummaryFromDataStoreEntityTypeStream,
+	"other":      DataEntitySummaryFromDataStoreEntityTypeOther,
+	"data_store": DataEntitySummaryFromDataStoreEntityTypeDataStore,
+}
+
 // GetDataEntitySummaryFromDataStoreEntityTypeEnumValues Enumerates the set of values for DataEntitySummaryFromDataStoreEntityTypeEnum
 func GetDataEntitySummaryFromDataStoreEntityTypeEnumValues() []DataEntitySummaryFromDataStoreEntityTypeEnum {
 	values := make([]DataEntitySummaryFromDataStoreEntityTypeEnum, 0)
@@ -266,11 +276,6 @@ func GetDataEntitySummaryFromDataStoreEntityTypeEnumStringValues() []string {
 
 // GetMappingDataEntitySummaryFromDataStoreEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataEntitySummaryFromDataStoreEntityTypeEnum(val string) (DataEntitySummaryFromDataStoreEntityTypeEnum, bool) {
-	mappingDataEntitySummaryFromDataStoreEntityTypeEnumIgnoreCase := make(map[string]DataEntitySummaryFromDataStoreEntityTypeEnum)
-	for k, v := range mappingDataEntitySummaryFromDataStoreEntityTypeEnum {
-		mappingDataEntitySummaryFromDataStoreEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataEntitySummaryFromDataStoreEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataEntitySummaryFromDataStoreEntityTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

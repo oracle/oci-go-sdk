@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -139,6 +139,11 @@ var mappingListInstanceConfigurationsSortByEnum = map[string]ListInstanceConfigu
 	"DISPLAYNAME": ListInstanceConfigurationsSortByDisplayname,
 }
 
+var mappingListInstanceConfigurationsSortByEnumLowerCase = map[string]ListInstanceConfigurationsSortByEnum{
+	"timecreated": ListInstanceConfigurationsSortByTimecreated,
+	"displayname": ListInstanceConfigurationsSortByDisplayname,
+}
+
 // GetListInstanceConfigurationsSortByEnumValues Enumerates the set of values for ListInstanceConfigurationsSortByEnum
 func GetListInstanceConfigurationsSortByEnumValues() []ListInstanceConfigurationsSortByEnum {
 	values := make([]ListInstanceConfigurationsSortByEnum, 0)
@@ -158,12 +163,7 @@ func GetListInstanceConfigurationsSortByEnumStringValues() []string {
 
 // GetMappingListInstanceConfigurationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListInstanceConfigurationsSortByEnum(val string) (ListInstanceConfigurationsSortByEnum, bool) {
-	mappingListInstanceConfigurationsSortByEnumIgnoreCase := make(map[string]ListInstanceConfigurationsSortByEnum)
-	for k, v := range mappingListInstanceConfigurationsSortByEnum {
-		mappingListInstanceConfigurationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListInstanceConfigurationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListInstanceConfigurationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -179,6 +179,11 @@ const (
 var mappingListInstanceConfigurationsSortOrderEnum = map[string]ListInstanceConfigurationsSortOrderEnum{
 	"ASC":  ListInstanceConfigurationsSortOrderAsc,
 	"DESC": ListInstanceConfigurationsSortOrderDesc,
+}
+
+var mappingListInstanceConfigurationsSortOrderEnumLowerCase = map[string]ListInstanceConfigurationsSortOrderEnum{
+	"asc":  ListInstanceConfigurationsSortOrderAsc,
+	"desc": ListInstanceConfigurationsSortOrderDesc,
 }
 
 // GetListInstanceConfigurationsSortOrderEnumValues Enumerates the set of values for ListInstanceConfigurationsSortOrderEnum
@@ -200,11 +205,6 @@ func GetListInstanceConfigurationsSortOrderEnumStringValues() []string {
 
 // GetMappingListInstanceConfigurationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListInstanceConfigurationsSortOrderEnum(val string) (ListInstanceConfigurationsSortOrderEnum, bool) {
-	mappingListInstanceConfigurationsSortOrderEnumIgnoreCase := make(map[string]ListInstanceConfigurationsSortOrderEnum)
-	for k, v := range mappingListInstanceConfigurationsSortOrderEnum {
-		mappingListInstanceConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListInstanceConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListInstanceConfigurationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

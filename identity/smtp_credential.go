@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -94,6 +94,14 @@ var mappingSmtpCredentialLifecycleStateEnum = map[string]SmtpCredentialLifecycle
 	"DELETED":  SmtpCredentialLifecycleStateDeleted,
 }
 
+var mappingSmtpCredentialLifecycleStateEnumLowerCase = map[string]SmtpCredentialLifecycleStateEnum{
+	"creating": SmtpCredentialLifecycleStateCreating,
+	"active":   SmtpCredentialLifecycleStateActive,
+	"inactive": SmtpCredentialLifecycleStateInactive,
+	"deleting": SmtpCredentialLifecycleStateDeleting,
+	"deleted":  SmtpCredentialLifecycleStateDeleted,
+}
+
 // GetSmtpCredentialLifecycleStateEnumValues Enumerates the set of values for SmtpCredentialLifecycleStateEnum
 func GetSmtpCredentialLifecycleStateEnumValues() []SmtpCredentialLifecycleStateEnum {
 	values := make([]SmtpCredentialLifecycleStateEnum, 0)
@@ -116,11 +124,6 @@ func GetSmtpCredentialLifecycleStateEnumStringValues() []string {
 
 // GetMappingSmtpCredentialLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSmtpCredentialLifecycleStateEnum(val string) (SmtpCredentialLifecycleStateEnum, bool) {
-	mappingSmtpCredentialLifecycleStateEnumIgnoreCase := make(map[string]SmtpCredentialLifecycleStateEnum)
-	for k, v := range mappingSmtpCredentialLifecycleStateEnum {
-		mappingSmtpCredentialLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSmtpCredentialLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSmtpCredentialLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

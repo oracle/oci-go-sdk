@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -157,6 +157,11 @@ var mappingListDependentObjectsSortOrderEnum = map[string]ListDependentObjectsSo
 	"DESC": ListDependentObjectsSortOrderDesc,
 }
 
+var mappingListDependentObjectsSortOrderEnumLowerCase = map[string]ListDependentObjectsSortOrderEnum{
+	"asc":  ListDependentObjectsSortOrderAsc,
+	"desc": ListDependentObjectsSortOrderDesc,
+}
+
 // GetListDependentObjectsSortOrderEnumValues Enumerates the set of values for ListDependentObjectsSortOrderEnum
 func GetListDependentObjectsSortOrderEnumValues() []ListDependentObjectsSortOrderEnum {
 	values := make([]ListDependentObjectsSortOrderEnum, 0)
@@ -176,12 +181,7 @@ func GetListDependentObjectsSortOrderEnumStringValues() []string {
 
 // GetMappingListDependentObjectsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDependentObjectsSortOrderEnum(val string) (ListDependentObjectsSortOrderEnum, bool) {
-	mappingListDependentObjectsSortOrderEnumIgnoreCase := make(map[string]ListDependentObjectsSortOrderEnum)
-	for k, v := range mappingListDependentObjectsSortOrderEnum {
-		mappingListDependentObjectsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDependentObjectsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDependentObjectsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -197,6 +197,11 @@ const (
 var mappingListDependentObjectsSortByEnum = map[string]ListDependentObjectsSortByEnum{
 	"TIME_CREATED": ListDependentObjectsSortByTimeCreated,
 	"DISPLAY_NAME": ListDependentObjectsSortByDisplayName,
+}
+
+var mappingListDependentObjectsSortByEnumLowerCase = map[string]ListDependentObjectsSortByEnum{
+	"time_created": ListDependentObjectsSortByTimeCreated,
+	"display_name": ListDependentObjectsSortByDisplayName,
 }
 
 // GetListDependentObjectsSortByEnumValues Enumerates the set of values for ListDependentObjectsSortByEnum
@@ -218,11 +223,6 @@ func GetListDependentObjectsSortByEnumStringValues() []string {
 
 // GetMappingListDependentObjectsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDependentObjectsSortByEnum(val string) (ListDependentObjectsSortByEnum, bool) {
-	mappingListDependentObjectsSortByEnumIgnoreCase := make(map[string]ListDependentObjectsSortByEnum)
-	for k, v := range mappingListDependentObjectsSortByEnum {
-		mappingListDependentObjectsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDependentObjectsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDependentObjectsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

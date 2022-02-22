@@ -35,6 +35,15 @@ var mappingCaBundleLifecycleStateEnum = map[string]CaBundleLifecycleStateEnum{
 	"FAILED":   CaBundleLifecycleStateFailed,
 }
 
+var mappingCaBundleLifecycleStateEnumLowerCase = map[string]CaBundleLifecycleStateEnum{
+	"creating": CaBundleLifecycleStateCreating,
+	"active":   CaBundleLifecycleStateActive,
+	"updating": CaBundleLifecycleStateUpdating,
+	"deleting": CaBundleLifecycleStateDeleting,
+	"deleted":  CaBundleLifecycleStateDeleted,
+	"failed":   CaBundleLifecycleStateFailed,
+}
+
 // GetCaBundleLifecycleStateEnumValues Enumerates the set of values for CaBundleLifecycleStateEnum
 func GetCaBundleLifecycleStateEnumValues() []CaBundleLifecycleStateEnum {
 	values := make([]CaBundleLifecycleStateEnum, 0)
@@ -58,11 +67,6 @@ func GetCaBundleLifecycleStateEnumStringValues() []string {
 
 // GetMappingCaBundleLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCaBundleLifecycleStateEnum(val string) (CaBundleLifecycleStateEnum, bool) {
-	mappingCaBundleLifecycleStateEnumIgnoreCase := make(map[string]CaBundleLifecycleStateEnum)
-	for k, v := range mappingCaBundleLifecycleStateEnum {
-		mappingCaBundleLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCaBundleLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCaBundleLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -2,16 +2,17 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Cloud Guard APIs
+// Cloud Guard API
 //
-// A description of the Cloud Guard APIs
+// Use the Cloud Guard API to automate processes that you would otherwise perform through the Cloud Guard Console.
+// **Note:** You can perform Create, Update, and Delete operations only from the reporting region of your Cloud Guard tenancy. You can perform Read operations from any region.
 //
 
 package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -22,7 +23,7 @@ type TargetDetectorDetails struct {
 	IsEnabled *bool `mandatory:"true" json:"isEnabled"`
 
 	// The Risk Level
-	RiskLevel RiskLevelEnum `mandatory:"true" json:"riskLevel"`
+	RiskLevel RiskLevelEnum `mandatory:"false" json:"riskLevel,omitempty"`
 
 	// Configuration details
 	Configurations []DetectorConfiguration `mandatory:"false" json:"configurations"`
@@ -35,6 +36,15 @@ type TargetDetectorDetails struct {
 
 	// configuration allowed or not
 	IsConfigurationAllowed *bool `mandatory:"false" json:"isConfigurationAllowed"`
+
+	// Cutover point for an elevated resource Risk Score to create a Problem
+	ProblemThreshold *int `mandatory:"false" json:"problemThreshold"`
+
+	// List of target types for which the detector rule is applicable
+	TargetTypes []string `mandatory:"false" json:"targetTypes"`
+
+	// List of sighting types
+	SightingTypes []SightingType `mandatory:"false" json:"sightingTypes"`
 }
 
 func (m TargetDetectorDetails) String() string {
@@ -46,10 +56,10 @@ func (m TargetDetectorDetails) String() string {
 // Not recommended for calling this function directly
 func (m TargetDetectorDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
+
 	if _, ok := GetMappingRiskLevelEnum(string(m.RiskLevel)); !ok && m.RiskLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RiskLevel: %s. Supported values are: %s.", m.RiskLevel, strings.Join(GetRiskLevelEnumStringValues(), ",")))
 	}
-
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}

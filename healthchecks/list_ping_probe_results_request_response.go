@@ -6,7 +6,7 @@ package healthchecks
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -135,6 +135,11 @@ var mappingListPingProbeResultsSortOrderEnum = map[string]ListPingProbeResultsSo
 	"DESC": ListPingProbeResultsSortOrderDesc,
 }
 
+var mappingListPingProbeResultsSortOrderEnumLowerCase = map[string]ListPingProbeResultsSortOrderEnum{
+	"asc":  ListPingProbeResultsSortOrderAsc,
+	"desc": ListPingProbeResultsSortOrderDesc,
+}
+
 // GetListPingProbeResultsSortOrderEnumValues Enumerates the set of values for ListPingProbeResultsSortOrderEnum
 func GetListPingProbeResultsSortOrderEnumValues() []ListPingProbeResultsSortOrderEnum {
 	values := make([]ListPingProbeResultsSortOrderEnum, 0)
@@ -154,11 +159,6 @@ func GetListPingProbeResultsSortOrderEnumStringValues() []string {
 
 // GetMappingListPingProbeResultsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPingProbeResultsSortOrderEnum(val string) (ListPingProbeResultsSortOrderEnum, bool) {
-	mappingListPingProbeResultsSortOrderEnumIgnoreCase := make(map[string]ListPingProbeResultsSortOrderEnum)
-	for k, v := range mappingListPingProbeResultsSortOrderEnum {
-		mappingListPingProbeResultsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPingProbeResultsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPingProbeResultsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

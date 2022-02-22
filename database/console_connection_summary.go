@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -77,6 +77,14 @@ var mappingConsoleConnectionSummaryLifecycleStateEnum = map[string]ConsoleConnec
 	"FAILED":   ConsoleConnectionSummaryLifecycleStateFailed,
 }
 
+var mappingConsoleConnectionSummaryLifecycleStateEnumLowerCase = map[string]ConsoleConnectionSummaryLifecycleStateEnum{
+	"active":   ConsoleConnectionSummaryLifecycleStateActive,
+	"creating": ConsoleConnectionSummaryLifecycleStateCreating,
+	"deleted":  ConsoleConnectionSummaryLifecycleStateDeleted,
+	"deleting": ConsoleConnectionSummaryLifecycleStateDeleting,
+	"failed":   ConsoleConnectionSummaryLifecycleStateFailed,
+}
+
 // GetConsoleConnectionSummaryLifecycleStateEnumValues Enumerates the set of values for ConsoleConnectionSummaryLifecycleStateEnum
 func GetConsoleConnectionSummaryLifecycleStateEnumValues() []ConsoleConnectionSummaryLifecycleStateEnum {
 	values := make([]ConsoleConnectionSummaryLifecycleStateEnum, 0)
@@ -99,11 +107,6 @@ func GetConsoleConnectionSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingConsoleConnectionSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConsoleConnectionSummaryLifecycleStateEnum(val string) (ConsoleConnectionSummaryLifecycleStateEnum, bool) {
-	mappingConsoleConnectionSummaryLifecycleStateEnumIgnoreCase := make(map[string]ConsoleConnectionSummaryLifecycleStateEnum)
-	for k, v := range mappingConsoleConnectionSummaryLifecycleStateEnum {
-		mappingConsoleConnectionSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConsoleConnectionSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConsoleConnectionSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

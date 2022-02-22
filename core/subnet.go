@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -179,6 +179,14 @@ var mappingSubnetLifecycleStateEnum = map[string]SubnetLifecycleStateEnum{
 	"UPDATING":     SubnetLifecycleStateUpdating,
 }
 
+var mappingSubnetLifecycleStateEnumLowerCase = map[string]SubnetLifecycleStateEnum{
+	"provisioning": SubnetLifecycleStateProvisioning,
+	"available":    SubnetLifecycleStateAvailable,
+	"terminating":  SubnetLifecycleStateTerminating,
+	"terminated":   SubnetLifecycleStateTerminated,
+	"updating":     SubnetLifecycleStateUpdating,
+}
+
 // GetSubnetLifecycleStateEnumValues Enumerates the set of values for SubnetLifecycleStateEnum
 func GetSubnetLifecycleStateEnumValues() []SubnetLifecycleStateEnum {
 	values := make([]SubnetLifecycleStateEnum, 0)
@@ -201,11 +209,6 @@ func GetSubnetLifecycleStateEnumStringValues() []string {
 
 // GetMappingSubnetLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSubnetLifecycleStateEnum(val string) (SubnetLifecycleStateEnum, bool) {
-	mappingSubnetLifecycleStateEnumIgnoreCase := make(map[string]SubnetLifecycleStateEnum)
-	for k, v := range mappingSubnetLifecycleStateEnum {
-		mappingSubnetLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSubnetLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSubnetLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

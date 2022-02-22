@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -74,6 +74,11 @@ var mappingSystemPrivilegeSummaryAdminOptionEnum = map[string]SystemPrivilegeSum
 	"NO":  SystemPrivilegeSummaryAdminOptionNo,
 }
 
+var mappingSystemPrivilegeSummaryAdminOptionEnumLowerCase = map[string]SystemPrivilegeSummaryAdminOptionEnum{
+	"yes": SystemPrivilegeSummaryAdminOptionYes,
+	"no":  SystemPrivilegeSummaryAdminOptionNo,
+}
+
 // GetSystemPrivilegeSummaryAdminOptionEnumValues Enumerates the set of values for SystemPrivilegeSummaryAdminOptionEnum
 func GetSystemPrivilegeSummaryAdminOptionEnumValues() []SystemPrivilegeSummaryAdminOptionEnum {
 	values := make([]SystemPrivilegeSummaryAdminOptionEnum, 0)
@@ -93,12 +98,7 @@ func GetSystemPrivilegeSummaryAdminOptionEnumStringValues() []string {
 
 // GetMappingSystemPrivilegeSummaryAdminOptionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSystemPrivilegeSummaryAdminOptionEnum(val string) (SystemPrivilegeSummaryAdminOptionEnum, bool) {
-	mappingSystemPrivilegeSummaryAdminOptionEnumIgnoreCase := make(map[string]SystemPrivilegeSummaryAdminOptionEnum)
-	for k, v := range mappingSystemPrivilegeSummaryAdminOptionEnum {
-		mappingSystemPrivilegeSummaryAdminOptionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSystemPrivilegeSummaryAdminOptionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSystemPrivilegeSummaryAdminOptionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -114,6 +114,11 @@ const (
 var mappingSystemPrivilegeSummaryCommonEnum = map[string]SystemPrivilegeSummaryCommonEnum{
 	"YES": SystemPrivilegeSummaryCommonYes,
 	"NO":  SystemPrivilegeSummaryCommonNo,
+}
+
+var mappingSystemPrivilegeSummaryCommonEnumLowerCase = map[string]SystemPrivilegeSummaryCommonEnum{
+	"yes": SystemPrivilegeSummaryCommonYes,
+	"no":  SystemPrivilegeSummaryCommonNo,
 }
 
 // GetSystemPrivilegeSummaryCommonEnumValues Enumerates the set of values for SystemPrivilegeSummaryCommonEnum
@@ -135,12 +140,7 @@ func GetSystemPrivilegeSummaryCommonEnumStringValues() []string {
 
 // GetMappingSystemPrivilegeSummaryCommonEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSystemPrivilegeSummaryCommonEnum(val string) (SystemPrivilegeSummaryCommonEnum, bool) {
-	mappingSystemPrivilegeSummaryCommonEnumIgnoreCase := make(map[string]SystemPrivilegeSummaryCommonEnum)
-	for k, v := range mappingSystemPrivilegeSummaryCommonEnum {
-		mappingSystemPrivilegeSummaryCommonEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSystemPrivilegeSummaryCommonEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSystemPrivilegeSummaryCommonEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -156,6 +156,11 @@ const (
 var mappingSystemPrivilegeSummaryInheritedEnum = map[string]SystemPrivilegeSummaryInheritedEnum{
 	"YES": SystemPrivilegeSummaryInheritedYes,
 	"NO":  SystemPrivilegeSummaryInheritedNo,
+}
+
+var mappingSystemPrivilegeSummaryInheritedEnumLowerCase = map[string]SystemPrivilegeSummaryInheritedEnum{
+	"yes": SystemPrivilegeSummaryInheritedYes,
+	"no":  SystemPrivilegeSummaryInheritedNo,
 }
 
 // GetSystemPrivilegeSummaryInheritedEnumValues Enumerates the set of values for SystemPrivilegeSummaryInheritedEnum
@@ -177,11 +182,6 @@ func GetSystemPrivilegeSummaryInheritedEnumStringValues() []string {
 
 // GetMappingSystemPrivilegeSummaryInheritedEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSystemPrivilegeSummaryInheritedEnum(val string) (SystemPrivilegeSummaryInheritedEnum, bool) {
-	mappingSystemPrivilegeSummaryInheritedEnumIgnoreCase := make(map[string]SystemPrivilegeSummaryInheritedEnum)
-	for k, v := range mappingSystemPrivilegeSummaryInheritedEnum {
-		mappingSystemPrivilegeSummaryInheritedEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSystemPrivilegeSummaryInheritedEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSystemPrivilegeSummaryInheritedEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

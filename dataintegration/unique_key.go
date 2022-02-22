@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -152,6 +152,11 @@ var mappingUniqueKeyModelTypeEnum = map[string]UniqueKeyModelTypeEnum{
 	"UNIQUE_KEY":  UniqueKeyModelTypeUniqueKey,
 }
 
+var mappingUniqueKeyModelTypeEnumLowerCase = map[string]UniqueKeyModelTypeEnum{
+	"primary_key": UniqueKeyModelTypePrimaryKey,
+	"unique_key":  UniqueKeyModelTypeUniqueKey,
+}
+
 // GetUniqueKeyModelTypeEnumValues Enumerates the set of values for UniqueKeyModelTypeEnum
 func GetUniqueKeyModelTypeEnumValues() []UniqueKeyModelTypeEnum {
 	values := make([]UniqueKeyModelTypeEnum, 0)
@@ -171,11 +176,6 @@ func GetUniqueKeyModelTypeEnumStringValues() []string {
 
 // GetMappingUniqueKeyModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUniqueKeyModelTypeEnum(val string) (UniqueKeyModelTypeEnum, bool) {
-	mappingUniqueKeyModelTypeEnumIgnoreCase := make(map[string]UniqueKeyModelTypeEnum)
-	for k, v := range mappingUniqueKeyModelTypeEnum {
-		mappingUniqueKeyModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUniqueKeyModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUniqueKeyModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

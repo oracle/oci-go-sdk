@@ -15,7 +15,7 @@ package resourcemanager
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -178,6 +178,14 @@ var mappingStackLifecycleStateEnum = map[string]StackLifecycleStateEnum{
 	"FAILED":   StackLifecycleStateFailed,
 }
 
+var mappingStackLifecycleStateEnumLowerCase = map[string]StackLifecycleStateEnum{
+	"creating": StackLifecycleStateCreating,
+	"active":   StackLifecycleStateActive,
+	"deleting": StackLifecycleStateDeleting,
+	"deleted":  StackLifecycleStateDeleted,
+	"failed":   StackLifecycleStateFailed,
+}
+
 // GetStackLifecycleStateEnumValues Enumerates the set of values for StackLifecycleStateEnum
 func GetStackLifecycleStateEnumValues() []StackLifecycleStateEnum {
 	values := make([]StackLifecycleStateEnum, 0)
@@ -200,12 +208,7 @@ func GetStackLifecycleStateEnumStringValues() []string {
 
 // GetMappingStackLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStackLifecycleStateEnum(val string) (StackLifecycleStateEnum, bool) {
-	mappingStackLifecycleStateEnumIgnoreCase := make(map[string]StackLifecycleStateEnum)
-	for k, v := range mappingStackLifecycleStateEnum {
-		mappingStackLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStackLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStackLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -223,6 +226,12 @@ var mappingStackStackDriftStatusEnum = map[string]StackStackDriftStatusEnum{
 	"NOT_CHECKED": StackStackDriftStatusNotChecked,
 	"IN_SYNC":     StackStackDriftStatusInSync,
 	"DRIFTED":     StackStackDriftStatusDrifted,
+}
+
+var mappingStackStackDriftStatusEnumLowerCase = map[string]StackStackDriftStatusEnum{
+	"not_checked": StackStackDriftStatusNotChecked,
+	"in_sync":     StackStackDriftStatusInSync,
+	"drifted":     StackStackDriftStatusDrifted,
 }
 
 // GetStackStackDriftStatusEnumValues Enumerates the set of values for StackStackDriftStatusEnum
@@ -245,11 +254,6 @@ func GetStackStackDriftStatusEnumStringValues() []string {
 
 // GetMappingStackStackDriftStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStackStackDriftStatusEnum(val string) (StackStackDriftStatusEnum, bool) {
-	mappingStackStackDriftStatusEnumIgnoreCase := make(map[string]StackStackDriftStatusEnum)
-	for k, v := range mappingStackStackDriftStatusEnum {
-		mappingStackStackDriftStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStackStackDriftStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStackStackDriftStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

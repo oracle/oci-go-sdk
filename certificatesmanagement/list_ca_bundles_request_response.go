@@ -6,7 +6,7 @@ package certificatesmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -151,6 +151,15 @@ var mappingListCaBundlesLifecycleStateEnum = map[string]ListCaBundlesLifecycleSt
 	"FAILED":   ListCaBundlesLifecycleStateFailed,
 }
 
+var mappingListCaBundlesLifecycleStateEnumLowerCase = map[string]ListCaBundlesLifecycleStateEnum{
+	"creating": ListCaBundlesLifecycleStateCreating,
+	"active":   ListCaBundlesLifecycleStateActive,
+	"updating": ListCaBundlesLifecycleStateUpdating,
+	"deleting": ListCaBundlesLifecycleStateDeleting,
+	"deleted":  ListCaBundlesLifecycleStateDeleted,
+	"failed":   ListCaBundlesLifecycleStateFailed,
+}
+
 // GetListCaBundlesLifecycleStateEnumValues Enumerates the set of values for ListCaBundlesLifecycleStateEnum
 func GetListCaBundlesLifecycleStateEnumValues() []ListCaBundlesLifecycleStateEnum {
 	values := make([]ListCaBundlesLifecycleStateEnum, 0)
@@ -174,12 +183,7 @@ func GetListCaBundlesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListCaBundlesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCaBundlesLifecycleStateEnum(val string) (ListCaBundlesLifecycleStateEnum, bool) {
-	mappingListCaBundlesLifecycleStateEnumIgnoreCase := make(map[string]ListCaBundlesLifecycleStateEnum)
-	for k, v := range mappingListCaBundlesLifecycleStateEnum {
-		mappingListCaBundlesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCaBundlesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCaBundlesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -195,6 +199,11 @@ const (
 var mappingListCaBundlesSortByEnum = map[string]ListCaBundlesSortByEnum{
 	"NAME":        ListCaBundlesSortByName,
 	"TIMECREATED": ListCaBundlesSortByTimecreated,
+}
+
+var mappingListCaBundlesSortByEnumLowerCase = map[string]ListCaBundlesSortByEnum{
+	"name":        ListCaBundlesSortByName,
+	"timecreated": ListCaBundlesSortByTimecreated,
 }
 
 // GetListCaBundlesSortByEnumValues Enumerates the set of values for ListCaBundlesSortByEnum
@@ -216,12 +225,7 @@ func GetListCaBundlesSortByEnumStringValues() []string {
 
 // GetMappingListCaBundlesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCaBundlesSortByEnum(val string) (ListCaBundlesSortByEnum, bool) {
-	mappingListCaBundlesSortByEnumIgnoreCase := make(map[string]ListCaBundlesSortByEnum)
-	for k, v := range mappingListCaBundlesSortByEnum {
-		mappingListCaBundlesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCaBundlesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCaBundlesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -237,6 +241,11 @@ const (
 var mappingListCaBundlesSortOrderEnum = map[string]ListCaBundlesSortOrderEnum{
 	"ASC":  ListCaBundlesSortOrderAsc,
 	"DESC": ListCaBundlesSortOrderDesc,
+}
+
+var mappingListCaBundlesSortOrderEnumLowerCase = map[string]ListCaBundlesSortOrderEnum{
+	"asc":  ListCaBundlesSortOrderAsc,
+	"desc": ListCaBundlesSortOrderDesc,
 }
 
 // GetListCaBundlesSortOrderEnumValues Enumerates the set of values for ListCaBundlesSortOrderEnum
@@ -258,11 +267,6 @@ func GetListCaBundlesSortOrderEnumStringValues() []string {
 
 // GetMappingListCaBundlesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCaBundlesSortOrderEnum(val string) (ListCaBundlesSortOrderEnum, bool) {
-	mappingListCaBundlesSortOrderEnumIgnoreCase := make(map[string]ListCaBundlesSortOrderEnum)
-	for k, v := range mappingListCaBundlesSortOrderEnum {
-		mappingListCaBundlesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCaBundlesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCaBundlesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

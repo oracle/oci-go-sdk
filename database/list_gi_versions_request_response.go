@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -125,6 +125,11 @@ var mappingListGiVersionsSortOrderEnum = map[string]ListGiVersionsSortOrderEnum{
 	"DESC": ListGiVersionsSortOrderDesc,
 }
 
+var mappingListGiVersionsSortOrderEnumLowerCase = map[string]ListGiVersionsSortOrderEnum{
+	"asc":  ListGiVersionsSortOrderAsc,
+	"desc": ListGiVersionsSortOrderDesc,
+}
+
 // GetListGiVersionsSortOrderEnumValues Enumerates the set of values for ListGiVersionsSortOrderEnum
 func GetListGiVersionsSortOrderEnumValues() []ListGiVersionsSortOrderEnum {
 	values := make([]ListGiVersionsSortOrderEnum, 0)
@@ -144,11 +149,6 @@ func GetListGiVersionsSortOrderEnumStringValues() []string {
 
 // GetMappingListGiVersionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListGiVersionsSortOrderEnum(val string) (ListGiVersionsSortOrderEnum, bool) {
-	mappingListGiVersionsSortOrderEnumIgnoreCase := make(map[string]ListGiVersionsSortOrderEnum)
-	for k, v := range mappingListGiVersionsSortOrderEnum {
-		mappingListGiVersionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListGiVersionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListGiVersionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

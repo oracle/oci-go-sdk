@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -79,6 +79,11 @@ var mappingCreateKeyDetailsProtectionModeEnum = map[string]CreateKeyDetailsProte
 	"SOFTWARE": CreateKeyDetailsProtectionModeSoftware,
 }
 
+var mappingCreateKeyDetailsProtectionModeEnumLowerCase = map[string]CreateKeyDetailsProtectionModeEnum{
+	"hsm":      CreateKeyDetailsProtectionModeHsm,
+	"software": CreateKeyDetailsProtectionModeSoftware,
+}
+
 // GetCreateKeyDetailsProtectionModeEnumValues Enumerates the set of values for CreateKeyDetailsProtectionModeEnum
 func GetCreateKeyDetailsProtectionModeEnumValues() []CreateKeyDetailsProtectionModeEnum {
 	values := make([]CreateKeyDetailsProtectionModeEnum, 0)
@@ -98,11 +103,6 @@ func GetCreateKeyDetailsProtectionModeEnumStringValues() []string {
 
 // GetMappingCreateKeyDetailsProtectionModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateKeyDetailsProtectionModeEnum(val string) (CreateKeyDetailsProtectionModeEnum, bool) {
-	mappingCreateKeyDetailsProtectionModeEnumIgnoreCase := make(map[string]CreateKeyDetailsProtectionModeEnum)
-	for k, v := range mappingCreateKeyDetailsProtectionModeEnum {
-		mappingCreateKeyDetailsProtectionModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateKeyDetailsProtectionModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateKeyDetailsProtectionModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -68,6 +68,12 @@ var mappingSetQueryParameterPolicyItemIfExistsEnum = map[string]SetQueryParamete
 	"SKIP":      SetQueryParameterPolicyItemIfExistsSkip,
 }
 
+var mappingSetQueryParameterPolicyItemIfExistsEnumLowerCase = map[string]SetQueryParameterPolicyItemIfExistsEnum{
+	"overwrite": SetQueryParameterPolicyItemIfExistsOverwrite,
+	"append":    SetQueryParameterPolicyItemIfExistsAppend,
+	"skip":      SetQueryParameterPolicyItemIfExistsSkip,
+}
+
 // GetSetQueryParameterPolicyItemIfExistsEnumValues Enumerates the set of values for SetQueryParameterPolicyItemIfExistsEnum
 func GetSetQueryParameterPolicyItemIfExistsEnumValues() []SetQueryParameterPolicyItemIfExistsEnum {
 	values := make([]SetQueryParameterPolicyItemIfExistsEnum, 0)
@@ -88,11 +94,6 @@ func GetSetQueryParameterPolicyItemIfExistsEnumStringValues() []string {
 
 // GetMappingSetQueryParameterPolicyItemIfExistsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSetQueryParameterPolicyItemIfExistsEnum(val string) (SetQueryParameterPolicyItemIfExistsEnum, bool) {
-	mappingSetQueryParameterPolicyItemIfExistsEnumIgnoreCase := make(map[string]SetQueryParameterPolicyItemIfExistsEnum)
-	for k, v := range mappingSetQueryParameterPolicyItemIfExistsEnum {
-		mappingSetQueryParameterPolicyItemIfExistsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSetQueryParameterPolicyItemIfExistsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSetQueryParameterPolicyItemIfExistsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

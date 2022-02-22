@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -193,6 +193,10 @@ var mappingBuildStageImageEnum = map[string]BuildStageImageEnum{
 	"OL7_X86_64_STANDARD_10": BuildStageImageOl7X8664Standard10,
 }
 
+var mappingBuildStageImageEnumLowerCase = map[string]BuildStageImageEnum{
+	"ol7_x86_64_standard_10": BuildStageImageOl7X8664Standard10,
+}
+
 // GetBuildStageImageEnumValues Enumerates the set of values for BuildStageImageEnum
 func GetBuildStageImageEnumValues() []BuildStageImageEnum {
 	values := make([]BuildStageImageEnum, 0)
@@ -211,11 +215,6 @@ func GetBuildStageImageEnumStringValues() []string {
 
 // GetMappingBuildStageImageEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBuildStageImageEnum(val string) (BuildStageImageEnum, bool) {
-	mappingBuildStageImageEnumIgnoreCase := make(map[string]BuildStageImageEnum)
-	for k, v := range mappingBuildStageImageEnum {
-		mappingBuildStageImageEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBuildStageImageEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBuildStageImageEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

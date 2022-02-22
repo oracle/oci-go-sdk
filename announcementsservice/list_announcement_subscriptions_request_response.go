@@ -6,7 +6,7 @@ package announcementsservice
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -139,6 +139,11 @@ var mappingListAnnouncementSubscriptionsSortOrderEnum = map[string]ListAnnouncem
 	"DESC": ListAnnouncementSubscriptionsSortOrderDesc,
 }
 
+var mappingListAnnouncementSubscriptionsSortOrderEnumLowerCase = map[string]ListAnnouncementSubscriptionsSortOrderEnum{
+	"asc":  ListAnnouncementSubscriptionsSortOrderAsc,
+	"desc": ListAnnouncementSubscriptionsSortOrderDesc,
+}
+
 // GetListAnnouncementSubscriptionsSortOrderEnumValues Enumerates the set of values for ListAnnouncementSubscriptionsSortOrderEnum
 func GetListAnnouncementSubscriptionsSortOrderEnumValues() []ListAnnouncementSubscriptionsSortOrderEnum {
 	values := make([]ListAnnouncementSubscriptionsSortOrderEnum, 0)
@@ -158,12 +163,7 @@ func GetListAnnouncementSubscriptionsSortOrderEnumStringValues() []string {
 
 // GetMappingListAnnouncementSubscriptionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAnnouncementSubscriptionsSortOrderEnum(val string) (ListAnnouncementSubscriptionsSortOrderEnum, bool) {
-	mappingListAnnouncementSubscriptionsSortOrderEnumIgnoreCase := make(map[string]ListAnnouncementSubscriptionsSortOrderEnum)
-	for k, v := range mappingListAnnouncementSubscriptionsSortOrderEnum {
-		mappingListAnnouncementSubscriptionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAnnouncementSubscriptionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAnnouncementSubscriptionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -179,6 +179,11 @@ const (
 var mappingListAnnouncementSubscriptionsSortByEnum = map[string]ListAnnouncementSubscriptionsSortByEnum{
 	"timeCreated": ListAnnouncementSubscriptionsSortByTimecreated,
 	"displayName": ListAnnouncementSubscriptionsSortByDisplayname,
+}
+
+var mappingListAnnouncementSubscriptionsSortByEnumLowerCase = map[string]ListAnnouncementSubscriptionsSortByEnum{
+	"timecreated": ListAnnouncementSubscriptionsSortByTimecreated,
+	"displayname": ListAnnouncementSubscriptionsSortByDisplayname,
 }
 
 // GetListAnnouncementSubscriptionsSortByEnumValues Enumerates the set of values for ListAnnouncementSubscriptionsSortByEnum
@@ -200,11 +205,6 @@ func GetListAnnouncementSubscriptionsSortByEnumStringValues() []string {
 
 // GetMappingListAnnouncementSubscriptionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAnnouncementSubscriptionsSortByEnum(val string) (ListAnnouncementSubscriptionsSortByEnum, bool) {
-	mappingListAnnouncementSubscriptionsSortByEnumIgnoreCase := make(map[string]ListAnnouncementSubscriptionsSortByEnum)
-	for k, v := range mappingListAnnouncementSubscriptionsSortByEnum {
-		mappingListAnnouncementSubscriptionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAnnouncementSubscriptionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAnnouncementSubscriptionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

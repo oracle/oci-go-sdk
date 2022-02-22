@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,13 @@ var mappingDrgLifecycleStateEnum = map[string]DrgLifecycleStateEnum{
 	"TERMINATED":   DrgLifecycleStateTerminated,
 }
 
+var mappingDrgLifecycleStateEnumLowerCase = map[string]DrgLifecycleStateEnum{
+	"provisioning": DrgLifecycleStateProvisioning,
+	"available":    DrgLifecycleStateAvailable,
+	"terminating":  DrgLifecycleStateTerminating,
+	"terminated":   DrgLifecycleStateTerminated,
+}
+
 // GetDrgLifecycleStateEnumValues Enumerates the set of values for DrgLifecycleStateEnum
 func GetDrgLifecycleStateEnumValues() []DrgLifecycleStateEnum {
 	values := make([]DrgLifecycleStateEnum, 0)
@@ -120,11 +127,6 @@ func GetDrgLifecycleStateEnumStringValues() []string {
 
 // GetMappingDrgLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDrgLifecycleStateEnum(val string) (DrgLifecycleStateEnum, bool) {
-	mappingDrgLifecycleStateEnumIgnoreCase := make(map[string]DrgLifecycleStateEnum)
-	for k, v := range mappingDrgLifecycleStateEnum {
-		mappingDrgLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDrgLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDrgLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

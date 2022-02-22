@@ -27,6 +27,10 @@ var mappingNodeSourceTypeEnum = map[string]NodeSourceTypeEnum{
 	"IMAGE": NodeSourceTypeImage,
 }
 
+var mappingNodeSourceTypeEnumLowerCase = map[string]NodeSourceTypeEnum{
+	"image": NodeSourceTypeImage,
+}
+
 // GetNodeSourceTypeEnumValues Enumerates the set of values for NodeSourceTypeEnum
 func GetNodeSourceTypeEnumValues() []NodeSourceTypeEnum {
 	values := make([]NodeSourceTypeEnum, 0)
@@ -45,11 +49,6 @@ func GetNodeSourceTypeEnumStringValues() []string {
 
 // GetMappingNodeSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNodeSourceTypeEnum(val string) (NodeSourceTypeEnum, bool) {
-	mappingNodeSourceTypeEnumIgnoreCase := make(map[string]NodeSourceTypeEnum)
-	for k, v := range mappingNodeSourceTypeEnum {
-		mappingNodeSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNodeSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNodeSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

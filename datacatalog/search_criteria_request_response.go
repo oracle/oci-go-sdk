@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -156,6 +156,17 @@ var mappingSearchCriteriaLifecycleStateEnum = map[string]SearchCriteriaLifecycle
 	"MOVING":   SearchCriteriaLifecycleStateMoving,
 }
 
+var mappingSearchCriteriaLifecycleStateEnumLowerCase = map[string]SearchCriteriaLifecycleStateEnum{
+	"creating": SearchCriteriaLifecycleStateCreating,
+	"active":   SearchCriteriaLifecycleStateActive,
+	"inactive": SearchCriteriaLifecycleStateInactive,
+	"updating": SearchCriteriaLifecycleStateUpdating,
+	"deleting": SearchCriteriaLifecycleStateDeleting,
+	"deleted":  SearchCriteriaLifecycleStateDeleted,
+	"failed":   SearchCriteriaLifecycleStateFailed,
+	"moving":   SearchCriteriaLifecycleStateMoving,
+}
+
 // GetSearchCriteriaLifecycleStateEnumValues Enumerates the set of values for SearchCriteriaLifecycleStateEnum
 func GetSearchCriteriaLifecycleStateEnumValues() []SearchCriteriaLifecycleStateEnum {
 	values := make([]SearchCriteriaLifecycleStateEnum, 0)
@@ -181,12 +192,7 @@ func GetSearchCriteriaLifecycleStateEnumStringValues() []string {
 
 // GetMappingSearchCriteriaLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSearchCriteriaLifecycleStateEnum(val string) (SearchCriteriaLifecycleStateEnum, bool) {
-	mappingSearchCriteriaLifecycleStateEnumIgnoreCase := make(map[string]SearchCriteriaLifecycleStateEnum)
-	for k, v := range mappingSearchCriteriaLifecycleStateEnum {
-		mappingSearchCriteriaLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSearchCriteriaLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSearchCriteriaLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -202,6 +208,11 @@ const (
 var mappingSearchCriteriaSortByEnum = map[string]SearchCriteriaSortByEnum{
 	"TIMECREATED": SearchCriteriaSortByTimecreated,
 	"DISPLAYNAME": SearchCriteriaSortByDisplayname,
+}
+
+var mappingSearchCriteriaSortByEnumLowerCase = map[string]SearchCriteriaSortByEnum{
+	"timecreated": SearchCriteriaSortByTimecreated,
+	"displayname": SearchCriteriaSortByDisplayname,
 }
 
 // GetSearchCriteriaSortByEnumValues Enumerates the set of values for SearchCriteriaSortByEnum
@@ -223,12 +234,7 @@ func GetSearchCriteriaSortByEnumStringValues() []string {
 
 // GetMappingSearchCriteriaSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSearchCriteriaSortByEnum(val string) (SearchCriteriaSortByEnum, bool) {
-	mappingSearchCriteriaSortByEnumIgnoreCase := make(map[string]SearchCriteriaSortByEnum)
-	for k, v := range mappingSearchCriteriaSortByEnum {
-		mappingSearchCriteriaSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSearchCriteriaSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSearchCriteriaSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -244,6 +250,11 @@ const (
 var mappingSearchCriteriaSortOrderEnum = map[string]SearchCriteriaSortOrderEnum{
 	"ASC":  SearchCriteriaSortOrderAsc,
 	"DESC": SearchCriteriaSortOrderDesc,
+}
+
+var mappingSearchCriteriaSortOrderEnumLowerCase = map[string]SearchCriteriaSortOrderEnum{
+	"asc":  SearchCriteriaSortOrderAsc,
+	"desc": SearchCriteriaSortOrderDesc,
 }
 
 // GetSearchCriteriaSortOrderEnumValues Enumerates the set of values for SearchCriteriaSortOrderEnum
@@ -265,11 +276,6 @@ func GetSearchCriteriaSortOrderEnumStringValues() []string {
 
 // GetMappingSearchCriteriaSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSearchCriteriaSortOrderEnum(val string) (SearchCriteriaSortOrderEnum, bool) {
-	mappingSearchCriteriaSortOrderEnumIgnoreCase := make(map[string]SearchCriteriaSortOrderEnum)
-	for k, v := range mappingSearchCriteriaSortOrderEnum {
-		mappingSearchCriteriaSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSearchCriteriaSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSearchCriteriaSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

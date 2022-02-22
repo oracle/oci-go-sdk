@@ -6,7 +6,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -122,6 +122,12 @@ var mappingListShapesIsSupportedForEnum = map[string]ListShapesIsSupportedForEnu
 	"HEATWAVECLUSTER":  ListShapesIsSupportedForHeatwavecluster,
 }
 
+var mappingListShapesIsSupportedForEnumLowerCase = map[string]ListShapesIsSupportedForEnum{
+	"dbsystem":         ListShapesIsSupportedForDbsystem,
+	"analyticscluster": ListShapesIsSupportedForAnalyticscluster,
+	"heatwavecluster":  ListShapesIsSupportedForHeatwavecluster,
+}
+
 // GetListShapesIsSupportedForEnumValues Enumerates the set of values for ListShapesIsSupportedForEnum
 func GetListShapesIsSupportedForEnumValues() []ListShapesIsSupportedForEnum {
 	values := make([]ListShapesIsSupportedForEnum, 0)
@@ -142,11 +148,6 @@ func GetListShapesIsSupportedForEnumStringValues() []string {
 
 // GetMappingListShapesIsSupportedForEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListShapesIsSupportedForEnum(val string) (ListShapesIsSupportedForEnum, bool) {
-	mappingListShapesIsSupportedForEnumIgnoreCase := make(map[string]ListShapesIsSupportedForEnum)
-	for k, v := range mappingListShapesIsSupportedForEnum {
-		mappingListShapesIsSupportedForEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListShapesIsSupportedForEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListShapesIsSupportedForEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -120,6 +120,11 @@ var mappingListAuthorsSortOrderEnum = map[string]ListAuthorsSortOrderEnum{
 	"DESC": ListAuthorsSortOrderDesc,
 }
 
+var mappingListAuthorsSortOrderEnumLowerCase = map[string]ListAuthorsSortOrderEnum{
+	"asc":  ListAuthorsSortOrderAsc,
+	"desc": ListAuthorsSortOrderDesc,
+}
+
 // GetListAuthorsSortOrderEnumValues Enumerates the set of values for ListAuthorsSortOrderEnum
 func GetListAuthorsSortOrderEnumValues() []ListAuthorsSortOrderEnum {
 	values := make([]ListAuthorsSortOrderEnum, 0)
@@ -139,11 +144,6 @@ func GetListAuthorsSortOrderEnumStringValues() []string {
 
 // GetMappingListAuthorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuthorsSortOrderEnum(val string) (ListAuthorsSortOrderEnum, bool) {
-	mappingListAuthorsSortOrderEnumIgnoreCase := make(map[string]ListAuthorsSortOrderEnum)
-	for k, v := range mappingListAuthorsSortOrderEnum {
-		mappingListAuthorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuthorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuthorsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

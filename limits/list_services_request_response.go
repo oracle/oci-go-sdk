@@ -6,7 +6,7 @@ package limits
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -127,6 +127,11 @@ var mappingListServicesSortByEnum = map[string]ListServicesSortByEnum{
 	"description": ListServicesSortByDescription,
 }
 
+var mappingListServicesSortByEnumLowerCase = map[string]ListServicesSortByEnum{
+	"name":        ListServicesSortByName,
+	"description": ListServicesSortByDescription,
+}
+
 // GetListServicesSortByEnumValues Enumerates the set of values for ListServicesSortByEnum
 func GetListServicesSortByEnumValues() []ListServicesSortByEnum {
 	values := make([]ListServicesSortByEnum, 0)
@@ -146,12 +151,7 @@ func GetListServicesSortByEnumStringValues() []string {
 
 // GetMappingListServicesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListServicesSortByEnum(val string) (ListServicesSortByEnum, bool) {
-	mappingListServicesSortByEnumIgnoreCase := make(map[string]ListServicesSortByEnum)
-	for k, v := range mappingListServicesSortByEnum {
-		mappingListServicesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListServicesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListServicesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -167,6 +167,11 @@ const (
 var mappingListServicesSortOrderEnum = map[string]ListServicesSortOrderEnum{
 	"ASC":  ListServicesSortOrderAsc,
 	"DESC": ListServicesSortOrderDesc,
+}
+
+var mappingListServicesSortOrderEnumLowerCase = map[string]ListServicesSortOrderEnum{
+	"asc":  ListServicesSortOrderAsc,
+	"desc": ListServicesSortOrderDesc,
 }
 
 // GetListServicesSortOrderEnumValues Enumerates the set of values for ListServicesSortOrderEnum
@@ -188,11 +193,6 @@ func GetListServicesSortOrderEnumStringValues() []string {
 
 // GetMappingListServicesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListServicesSortOrderEnum(val string) (ListServicesSortOrderEnum, bool) {
-	mappingListServicesSortOrderEnumIgnoreCase := make(map[string]ListServicesSortOrderEnum)
-	for k, v := range mappingListServicesSortOrderEnum {
-		mappingListServicesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListServicesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListServicesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -13,7 +13,7 @@ package dns
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -142,6 +142,11 @@ var mappingCreateZoneBaseDetailsMigrationSourceEnum = map[string]CreateZoneBaseD
 	"DYNECT": CreateZoneBaseDetailsMigrationSourceDynect,
 }
 
+var mappingCreateZoneBaseDetailsMigrationSourceEnumLowerCase = map[string]CreateZoneBaseDetailsMigrationSourceEnum{
+	"none":   CreateZoneBaseDetailsMigrationSourceNone,
+	"dynect": CreateZoneBaseDetailsMigrationSourceDynect,
+}
+
 // GetCreateZoneBaseDetailsMigrationSourceEnumValues Enumerates the set of values for CreateZoneBaseDetailsMigrationSourceEnum
 func GetCreateZoneBaseDetailsMigrationSourceEnumValues() []CreateZoneBaseDetailsMigrationSourceEnum {
 	values := make([]CreateZoneBaseDetailsMigrationSourceEnum, 0)
@@ -161,11 +166,6 @@ func GetCreateZoneBaseDetailsMigrationSourceEnumStringValues() []string {
 
 // GetMappingCreateZoneBaseDetailsMigrationSourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateZoneBaseDetailsMigrationSourceEnum(val string) (CreateZoneBaseDetailsMigrationSourceEnum, bool) {
-	mappingCreateZoneBaseDetailsMigrationSourceEnumIgnoreCase := make(map[string]CreateZoneBaseDetailsMigrationSourceEnum)
-	for k, v := range mappingCreateZoneBaseDetailsMigrationSourceEnum {
-		mappingCreateZoneBaseDetailsMigrationSourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateZoneBaseDetailsMigrationSourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateZoneBaseDetailsMigrationSourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

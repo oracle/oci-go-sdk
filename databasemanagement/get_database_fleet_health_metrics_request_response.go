@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -133,6 +133,11 @@ var mappingGetDatabaseFleetHealthMetricsCompareTypeEnum = map[string]GetDatabase
 	"DAY":  GetDatabaseFleetHealthMetricsCompareTypeDay,
 }
 
+var mappingGetDatabaseFleetHealthMetricsCompareTypeEnumLowerCase = map[string]GetDatabaseFleetHealthMetricsCompareTypeEnum{
+	"hour": GetDatabaseFleetHealthMetricsCompareTypeHour,
+	"day":  GetDatabaseFleetHealthMetricsCompareTypeDay,
+}
+
 // GetGetDatabaseFleetHealthMetricsCompareTypeEnumValues Enumerates the set of values for GetDatabaseFleetHealthMetricsCompareTypeEnum
 func GetGetDatabaseFleetHealthMetricsCompareTypeEnumValues() []GetDatabaseFleetHealthMetricsCompareTypeEnum {
 	values := make([]GetDatabaseFleetHealthMetricsCompareTypeEnum, 0)
@@ -152,11 +157,6 @@ func GetGetDatabaseFleetHealthMetricsCompareTypeEnumStringValues() []string {
 
 // GetMappingGetDatabaseFleetHealthMetricsCompareTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetDatabaseFleetHealthMetricsCompareTypeEnum(val string) (GetDatabaseFleetHealthMetricsCompareTypeEnum, bool) {
-	mappingGetDatabaseFleetHealthMetricsCompareTypeEnumIgnoreCase := make(map[string]GetDatabaseFleetHealthMetricsCompareTypeEnum)
-	for k, v := range mappingGetDatabaseFleetHealthMetricsCompareTypeEnum {
-		mappingGetDatabaseFleetHealthMetricsCompareTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetDatabaseFleetHealthMetricsCompareTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetDatabaseFleetHealthMetricsCompareTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

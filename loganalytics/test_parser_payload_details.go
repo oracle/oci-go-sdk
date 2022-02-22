@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -139,6 +139,14 @@ var mappingTestParserPayloadDetailsTypeEnum = map[string]TestParserPayloadDetail
 	"DELIMITED": TestParserPayloadDetailsTypeDelimited,
 }
 
+var mappingTestParserPayloadDetailsTypeEnumLowerCase = map[string]TestParserPayloadDetailsTypeEnum{
+	"xml":       TestParserPayloadDetailsTypeXml,
+	"json":      TestParserPayloadDetailsTypeJson,
+	"regex":     TestParserPayloadDetailsTypeRegex,
+	"odl":       TestParserPayloadDetailsTypeOdl,
+	"delimited": TestParserPayloadDetailsTypeDelimited,
+}
+
 // GetTestParserPayloadDetailsTypeEnumValues Enumerates the set of values for TestParserPayloadDetailsTypeEnum
 func GetTestParserPayloadDetailsTypeEnumValues() []TestParserPayloadDetailsTypeEnum {
 	values := make([]TestParserPayloadDetailsTypeEnum, 0)
@@ -161,11 +169,6 @@ func GetTestParserPayloadDetailsTypeEnumStringValues() []string {
 
 // GetMappingTestParserPayloadDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTestParserPayloadDetailsTypeEnum(val string) (TestParserPayloadDetailsTypeEnum, bool) {
-	mappingTestParserPayloadDetailsTypeEnumIgnoreCase := make(map[string]TestParserPayloadDetailsTypeEnum)
-	for k, v := range mappingTestParserPayloadDetailsTypeEnum {
-		mappingTestParserPayloadDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTestParserPayloadDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTestParserPayloadDetailsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package tenantmanagercontrolplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,12 @@ var mappingDomainLifecycleStateEnum = map[string]DomainLifecycleStateEnum{
 	"FAILED":  DomainLifecycleStateFailed,
 }
 
+var mappingDomainLifecycleStateEnumLowerCase = map[string]DomainLifecycleStateEnum{
+	"active":  DomainLifecycleStateActive,
+	"deleted": DomainLifecycleStateDeleted,
+	"failed":  DomainLifecycleStateFailed,
+}
+
 // GetDomainLifecycleStateEnumValues Enumerates the set of values for DomainLifecycleStateEnum
 func GetDomainLifecycleStateEnumValues() []DomainLifecycleStateEnum {
 	values := make([]DomainLifecycleStateEnum, 0)
@@ -113,12 +119,7 @@ func GetDomainLifecycleStateEnumStringValues() []string {
 
 // GetMappingDomainLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDomainLifecycleStateEnum(val string) (DomainLifecycleStateEnum, bool) {
-	mappingDomainLifecycleStateEnumIgnoreCase := make(map[string]DomainLifecycleStateEnum)
-	for k, v := range mappingDomainLifecycleStateEnum {
-		mappingDomainLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDomainLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDomainLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -148,6 +149,17 @@ var mappingDomainStatusEnum = map[string]DomainStatusEnum{
 	"FAILED":    DomainStatusFailed,
 }
 
+var mappingDomainStatusEnumLowerCase = map[string]DomainStatusEnum{
+	"pending":   DomainStatusPending,
+	"releasing": DomainStatusReleasing,
+	"released":  DomainStatusReleased,
+	"expiring":  DomainStatusExpiring,
+	"revoking":  DomainStatusRevoking,
+	"revoked":   DomainStatusRevoked,
+	"active":    DomainStatusActive,
+	"failed":    DomainStatusFailed,
+}
+
 // GetDomainStatusEnumValues Enumerates the set of values for DomainStatusEnum
 func GetDomainStatusEnumValues() []DomainStatusEnum {
 	values := make([]DomainStatusEnum, 0)
@@ -173,11 +185,6 @@ func GetDomainStatusEnumStringValues() []string {
 
 // GetMappingDomainStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDomainStatusEnum(val string) (DomainStatusEnum, bool) {
-	mappingDomainStatusEnumIgnoreCase := make(map[string]DomainStatusEnum)
-	for k, v := range mappingDomainStatusEnum {
-		mappingDomainStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDomainStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDomainStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

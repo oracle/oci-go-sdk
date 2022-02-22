@@ -6,7 +6,7 @@ package bastion
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,14 @@ var mappingListSessionsSessionLifecycleStateEnum = map[string]ListSessionsSessio
 	"FAILED":   ListSessionsSessionLifecycleStateFailed,
 }
 
+var mappingListSessionsSessionLifecycleStateEnumLowerCase = map[string]ListSessionsSessionLifecycleStateEnum{
+	"creating": ListSessionsSessionLifecycleStateCreating,
+	"active":   ListSessionsSessionLifecycleStateActive,
+	"deleting": ListSessionsSessionLifecycleStateDeleting,
+	"deleted":  ListSessionsSessionLifecycleStateDeleted,
+	"failed":   ListSessionsSessionLifecycleStateFailed,
+}
+
 // GetListSessionsSessionLifecycleStateEnumValues Enumerates the set of values for ListSessionsSessionLifecycleStateEnum
 func GetListSessionsSessionLifecycleStateEnumValues() []ListSessionsSessionLifecycleStateEnum {
 	values := make([]ListSessionsSessionLifecycleStateEnum, 0)
@@ -166,12 +174,7 @@ func GetListSessionsSessionLifecycleStateEnumStringValues() []string {
 
 // GetMappingListSessionsSessionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSessionsSessionLifecycleStateEnum(val string) (ListSessionsSessionLifecycleStateEnum, bool) {
-	mappingListSessionsSessionLifecycleStateEnumIgnoreCase := make(map[string]ListSessionsSessionLifecycleStateEnum)
-	for k, v := range mappingListSessionsSessionLifecycleStateEnum {
-		mappingListSessionsSessionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSessionsSessionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSessionsSessionLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +190,11 @@ const (
 var mappingListSessionsSortOrderEnum = map[string]ListSessionsSortOrderEnum{
 	"ASC":  ListSessionsSortOrderAsc,
 	"DESC": ListSessionsSortOrderDesc,
+}
+
+var mappingListSessionsSortOrderEnumLowerCase = map[string]ListSessionsSortOrderEnum{
+	"asc":  ListSessionsSortOrderAsc,
+	"desc": ListSessionsSortOrderDesc,
 }
 
 // GetListSessionsSortOrderEnumValues Enumerates the set of values for ListSessionsSortOrderEnum
@@ -208,12 +216,7 @@ func GetListSessionsSortOrderEnumStringValues() []string {
 
 // GetMappingListSessionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSessionsSortOrderEnum(val string) (ListSessionsSortOrderEnum, bool) {
-	mappingListSessionsSortOrderEnumIgnoreCase := make(map[string]ListSessionsSortOrderEnum)
-	for k, v := range mappingListSessionsSortOrderEnum {
-		mappingListSessionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSessionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSessionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -229,6 +232,11 @@ const (
 var mappingListSessionsSortByEnum = map[string]ListSessionsSortByEnum{
 	"timeCreated": ListSessionsSortByTimecreated,
 	"displayName": ListSessionsSortByDisplayname,
+}
+
+var mappingListSessionsSortByEnumLowerCase = map[string]ListSessionsSortByEnum{
+	"timecreated": ListSessionsSortByTimecreated,
+	"displayname": ListSessionsSortByDisplayname,
 }
 
 // GetListSessionsSortByEnumValues Enumerates the set of values for ListSessionsSortByEnum
@@ -250,11 +258,6 @@ func GetListSessionsSortByEnumStringValues() []string {
 
 // GetMappingListSessionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSessionsSortByEnum(val string) (ListSessionsSortByEnum, bool) {
-	mappingListSessionsSortByEnumIgnoreCase := make(map[string]ListSessionsSortByEnum)
-	for k, v := range mappingListSessionsSortByEnum {
-		mappingListSessionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSessionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSessionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

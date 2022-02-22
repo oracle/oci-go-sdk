@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -230,6 +230,15 @@ var mappingSummarizeSqlStatisticsDatabaseTypeEnum = map[string]SummarizeSqlStati
 	"EXTERNAL-NONCDB": SummarizeSqlStatisticsDatabaseTypeExternalNoncdb,
 }
 
+var mappingSummarizeSqlStatisticsDatabaseTypeEnumLowerCase = map[string]SummarizeSqlStatisticsDatabaseTypeEnum{
+	"adw-s":           SummarizeSqlStatisticsDatabaseTypeAdwS,
+	"atp-s":           SummarizeSqlStatisticsDatabaseTypeAtpS,
+	"adw-d":           SummarizeSqlStatisticsDatabaseTypeAdwD,
+	"atp-d":           SummarizeSqlStatisticsDatabaseTypeAtpD,
+	"external-pdb":    SummarizeSqlStatisticsDatabaseTypeExternalPdb,
+	"external-noncdb": SummarizeSqlStatisticsDatabaseTypeExternalNoncdb,
+}
+
 // GetSummarizeSqlStatisticsDatabaseTypeEnumValues Enumerates the set of values for SummarizeSqlStatisticsDatabaseTypeEnum
 func GetSummarizeSqlStatisticsDatabaseTypeEnumValues() []SummarizeSqlStatisticsDatabaseTypeEnum {
 	values := make([]SummarizeSqlStatisticsDatabaseTypeEnum, 0)
@@ -253,12 +262,7 @@ func GetSummarizeSqlStatisticsDatabaseTypeEnumStringValues() []string {
 
 // GetMappingSummarizeSqlStatisticsDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeSqlStatisticsDatabaseTypeEnum(val string) (SummarizeSqlStatisticsDatabaseTypeEnum, bool) {
-	mappingSummarizeSqlStatisticsDatabaseTypeEnumIgnoreCase := make(map[string]SummarizeSqlStatisticsDatabaseTypeEnum)
-	for k, v := range mappingSummarizeSqlStatisticsDatabaseTypeEnum {
-		mappingSummarizeSqlStatisticsDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeSqlStatisticsDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeSqlStatisticsDatabaseTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -274,6 +278,11 @@ const (
 var mappingSummarizeSqlStatisticsSortOrderEnum = map[string]SummarizeSqlStatisticsSortOrderEnum{
 	"ASC":  SummarizeSqlStatisticsSortOrderAsc,
 	"DESC": SummarizeSqlStatisticsSortOrderDesc,
+}
+
+var mappingSummarizeSqlStatisticsSortOrderEnumLowerCase = map[string]SummarizeSqlStatisticsSortOrderEnum{
+	"asc":  SummarizeSqlStatisticsSortOrderAsc,
+	"desc": SummarizeSqlStatisticsSortOrderDesc,
 }
 
 // GetSummarizeSqlStatisticsSortOrderEnumValues Enumerates the set of values for SummarizeSqlStatisticsSortOrderEnum
@@ -295,12 +304,7 @@ func GetSummarizeSqlStatisticsSortOrderEnumStringValues() []string {
 
 // GetMappingSummarizeSqlStatisticsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeSqlStatisticsSortOrderEnum(val string) (SummarizeSqlStatisticsSortOrderEnum, bool) {
-	mappingSummarizeSqlStatisticsSortOrderEnumIgnoreCase := make(map[string]SummarizeSqlStatisticsSortOrderEnum)
-	for k, v := range mappingSummarizeSqlStatisticsSortOrderEnum {
-		mappingSummarizeSqlStatisticsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeSqlStatisticsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeSqlStatisticsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -352,6 +356,28 @@ var mappingSummarizeSqlStatisticsSortByEnum = map[string]SummarizeSqlStatisticsS
 	"changeInInefficiencyInPct":          SummarizeSqlStatisticsSortByChangeininefficiencyinpct,
 }
 
+var mappingSummarizeSqlStatisticsSortByEnumLowerCase = map[string]SummarizeSqlStatisticsSortByEnum{
+	"databasetimeinsec":                  SummarizeSqlStatisticsSortByDatabasetimeinsec,
+	"executionsperhour":                  SummarizeSqlStatisticsSortByExecutionsperhour,
+	"executionscount":                    SummarizeSqlStatisticsSortByExecutionscount,
+	"cputimeinsec":                       SummarizeSqlStatisticsSortByCputimeinsec,
+	"iotimeinsec":                        SummarizeSqlStatisticsSortByIotimeinsec,
+	"inefficientwaittimeinsec":           SummarizeSqlStatisticsSortByInefficientwaittimeinsec,
+	"responsetimeinsec":                  SummarizeSqlStatisticsSortByResponsetimeinsec,
+	"plancount":                          SummarizeSqlStatisticsSortByPlancount,
+	"variability":                        SummarizeSqlStatisticsSortByVariability,
+	"averageactivesessions":              SummarizeSqlStatisticsSortByAverageactivesessions,
+	"databasetimepct":                    SummarizeSqlStatisticsSortByDatabasetimepct,
+	"inefficiencyinpct":                  SummarizeSqlStatisticsSortByInefficiencyinpct,
+	"changeincputimeinpct":               SummarizeSqlStatisticsSortByChangeincputimeinpct,
+	"changeiniotimeinpct":                SummarizeSqlStatisticsSortByChangeiniotimeinpct,
+	"changeininefficientwaittimeinpct":   SummarizeSqlStatisticsSortByChangeininefficientwaittimeinpct,
+	"changeinresponsetimeinpct":          SummarizeSqlStatisticsSortByChangeinresponsetimeinpct,
+	"changeinaverageactivesessionsinpct": SummarizeSqlStatisticsSortByChangeinaverageactivesessionsinpct,
+	"changeinexecutionsperhourinpct":     SummarizeSqlStatisticsSortByChangeinexecutionsperhourinpct,
+	"changeininefficiencyinpct":          SummarizeSqlStatisticsSortByChangeininefficiencyinpct,
+}
+
 // GetSummarizeSqlStatisticsSortByEnumValues Enumerates the set of values for SummarizeSqlStatisticsSortByEnum
 func GetSummarizeSqlStatisticsSortByEnumValues() []SummarizeSqlStatisticsSortByEnum {
 	values := make([]SummarizeSqlStatisticsSortByEnum, 0)
@@ -388,12 +414,7 @@ func GetSummarizeSqlStatisticsSortByEnumStringValues() []string {
 
 // GetMappingSummarizeSqlStatisticsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeSqlStatisticsSortByEnum(val string) (SummarizeSqlStatisticsSortByEnum, bool) {
-	mappingSummarizeSqlStatisticsSortByEnumIgnoreCase := make(map[string]SummarizeSqlStatisticsSortByEnum)
-	for k, v := range mappingSummarizeSqlStatisticsSortByEnum {
-		mappingSummarizeSqlStatisticsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeSqlStatisticsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeSqlStatisticsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -457,6 +478,34 @@ var mappingSummarizeSqlStatisticsCategoryEnum = map[string]SummarizeSqlStatistic
 	"INEFFICIENT_CHANGING_PLANS_AND_INCREASING_INEFFICIENT_WAIT": SummarizeSqlStatisticsCategoryInefficientChangingPlansAndIncreasingInefficientWait,
 }
 
+var mappingSummarizeSqlStatisticsCategoryEnumLowerCase = map[string]SummarizeSqlStatisticsCategoryEnum{
+	"degrading":                                   SummarizeSqlStatisticsCategoryDegrading,
+	"variant":                                     SummarizeSqlStatisticsCategoryVariant,
+	"inefficient":                                 SummarizeSqlStatisticsCategoryInefficient,
+	"changing_plans":                              SummarizeSqlStatisticsCategoryChangingPlans,
+	"improving":                                   SummarizeSqlStatisticsCategoryImproving,
+	"degrading_variant":                           SummarizeSqlStatisticsCategoryDegradingVariant,
+	"degrading_inefficient":                       SummarizeSqlStatisticsCategoryDegradingInefficient,
+	"degrading_changing_plans":                    SummarizeSqlStatisticsCategoryDegradingChangingPlans,
+	"degrading_increasing_io":                     SummarizeSqlStatisticsCategoryDegradingIncreasingIo,
+	"degrading_increasing_cpu":                    SummarizeSqlStatisticsCategoryDegradingIncreasingCpu,
+	"degrading_increasing_inefficient_wait":       SummarizeSqlStatisticsCategoryDegradingIncreasingInefficientWait,
+	"degrading_changing_plans_and_increasing_io":  SummarizeSqlStatisticsCategoryDegradingChangingPlansAndIncreasingIo,
+	"degrading_changing_plans_and_increasing_cpu": SummarizeSqlStatisticsCategoryDegradingChangingPlansAndIncreasingCpu,
+	"degrading_changing_plans_and_increasing_inefficient_wait": SummarizeSqlStatisticsCategoryDegradingChangingPlansAndIncreasingInefficientWait,
+	"variant_inefficient":                                        SummarizeSqlStatisticsCategoryVariantInefficient,
+	"variant_changing_plans":                                     SummarizeSqlStatisticsCategoryVariantChangingPlans,
+	"variant_increasing_io":                                      SummarizeSqlStatisticsCategoryVariantIncreasingIo,
+	"variant_increasing_cpu":                                     SummarizeSqlStatisticsCategoryVariantIncreasingCpu,
+	"variant_increasing_inefficient_wait":                        SummarizeSqlStatisticsCategoryVariantIncreasingInefficientWait,
+	"variant_changing_plans_and_increasing_io":                   SummarizeSqlStatisticsCategoryVariantChangingPlansAndIncreasingIo,
+	"variant_changing_plans_and_increasing_cpu":                  SummarizeSqlStatisticsCategoryVariantChangingPlansAndIncreasingCpu,
+	"variant_changing_plans_and_increasing_inefficient_wait":     SummarizeSqlStatisticsCategoryVariantChangingPlansAndIncreasingInefficientWait,
+	"inefficient_changing_plans":                                 SummarizeSqlStatisticsCategoryInefficientChangingPlans,
+	"inefficient_increasing_inefficient_wait":                    SummarizeSqlStatisticsCategoryInefficientIncreasingInefficientWait,
+	"inefficient_changing_plans_and_increasing_inefficient_wait": SummarizeSqlStatisticsCategoryInefficientChangingPlansAndIncreasingInefficientWait,
+}
+
 // GetSummarizeSqlStatisticsCategoryEnumValues Enumerates the set of values for SummarizeSqlStatisticsCategoryEnum
 func GetSummarizeSqlStatisticsCategoryEnumValues() []SummarizeSqlStatisticsCategoryEnum {
 	values := make([]SummarizeSqlStatisticsCategoryEnum, 0)
@@ -499,11 +548,6 @@ func GetSummarizeSqlStatisticsCategoryEnumStringValues() []string {
 
 // GetMappingSummarizeSqlStatisticsCategoryEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeSqlStatisticsCategoryEnum(val string) (SummarizeSqlStatisticsCategoryEnum, bool) {
-	mappingSummarizeSqlStatisticsCategoryEnumIgnoreCase := make(map[string]SummarizeSqlStatisticsCategoryEnum)
-	for k, v := range mappingSummarizeSqlStatisticsCategoryEnum {
-		mappingSummarizeSqlStatisticsCategoryEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeSqlStatisticsCategoryEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeSqlStatisticsCategoryEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

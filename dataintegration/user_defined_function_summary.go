@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -86,6 +86,10 @@ var mappingUserDefinedFunctionSummaryModelTypeEnum = map[string]UserDefinedFunct
 	"DIS_USER_DEFINED_FUNCTION": UserDefinedFunctionSummaryModelTypeDisUserDefinedFunction,
 }
 
+var mappingUserDefinedFunctionSummaryModelTypeEnumLowerCase = map[string]UserDefinedFunctionSummaryModelTypeEnum{
+	"dis_user_defined_function": UserDefinedFunctionSummaryModelTypeDisUserDefinedFunction,
+}
+
 // GetUserDefinedFunctionSummaryModelTypeEnumValues Enumerates the set of values for UserDefinedFunctionSummaryModelTypeEnum
 func GetUserDefinedFunctionSummaryModelTypeEnumValues() []UserDefinedFunctionSummaryModelTypeEnum {
 	values := make([]UserDefinedFunctionSummaryModelTypeEnum, 0)
@@ -104,11 +108,6 @@ func GetUserDefinedFunctionSummaryModelTypeEnumStringValues() []string {
 
 // GetMappingUserDefinedFunctionSummaryModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserDefinedFunctionSummaryModelTypeEnum(val string) (UserDefinedFunctionSummaryModelTypeEnum, bool) {
-	mappingUserDefinedFunctionSummaryModelTypeEnumIgnoreCase := make(map[string]UserDefinedFunctionSummaryModelTypeEnum)
-	for k, v := range mappingUserDefinedFunctionSummaryModelTypeEnum {
-		mappingUserDefinedFunctionSummaryModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserDefinedFunctionSummaryModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserDefinedFunctionSummaryModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -14,7 +14,7 @@ package opsi
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -206,6 +206,12 @@ var mappingMacsManagedExternalHostInsightPlatformTypeEnum = map[string]MacsManag
 	"SUNOS":   MacsManagedExternalHostInsightPlatformTypeSunos,
 }
 
+var mappingMacsManagedExternalHostInsightPlatformTypeEnumLowerCase = map[string]MacsManagedExternalHostInsightPlatformTypeEnum{
+	"linux":   MacsManagedExternalHostInsightPlatformTypeLinux,
+	"solaris": MacsManagedExternalHostInsightPlatformTypeSolaris,
+	"sunos":   MacsManagedExternalHostInsightPlatformTypeSunos,
+}
+
 // GetMacsManagedExternalHostInsightPlatformTypeEnumValues Enumerates the set of values for MacsManagedExternalHostInsightPlatformTypeEnum
 func GetMacsManagedExternalHostInsightPlatformTypeEnumValues() []MacsManagedExternalHostInsightPlatformTypeEnum {
 	values := make([]MacsManagedExternalHostInsightPlatformTypeEnum, 0)
@@ -226,11 +232,6 @@ func GetMacsManagedExternalHostInsightPlatformTypeEnumStringValues() []string {
 
 // GetMappingMacsManagedExternalHostInsightPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMacsManagedExternalHostInsightPlatformTypeEnum(val string) (MacsManagedExternalHostInsightPlatformTypeEnum, bool) {
-	mappingMacsManagedExternalHostInsightPlatformTypeEnumIgnoreCase := make(map[string]MacsManagedExternalHostInsightPlatformTypeEnum)
-	for k, v := range mappingMacsManagedExternalHostInsightPlatformTypeEnum {
-		mappingMacsManagedExternalHostInsightPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMacsManagedExternalHostInsightPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMacsManagedExternalHostInsightPlatformTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

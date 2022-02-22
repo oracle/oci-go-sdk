@@ -12,7 +12,7 @@ package loganalytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -154,6 +154,11 @@ var mappingFieldsAddRemoveFieldOperationEnum = map[string]FieldsAddRemoveFieldOp
 	"REMOVE": FieldsAddRemoveFieldOperationRemove,
 }
 
+var mappingFieldsAddRemoveFieldOperationEnumLowerCase = map[string]FieldsAddRemoveFieldOperationEnum{
+	"add":    FieldsAddRemoveFieldOperationAdd,
+	"remove": FieldsAddRemoveFieldOperationRemove,
+}
+
 // GetFieldsAddRemoveFieldOperationEnumValues Enumerates the set of values for FieldsAddRemoveFieldOperationEnum
 func GetFieldsAddRemoveFieldOperationEnumValues() []FieldsAddRemoveFieldOperationEnum {
 	values := make([]FieldsAddRemoveFieldOperationEnum, 0)
@@ -173,11 +178,6 @@ func GetFieldsAddRemoveFieldOperationEnumStringValues() []string {
 
 // GetMappingFieldsAddRemoveFieldOperationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFieldsAddRemoveFieldOperationEnum(val string) (FieldsAddRemoveFieldOperationEnum, bool) {
-	mappingFieldsAddRemoveFieldOperationEnumIgnoreCase := make(map[string]FieldsAddRemoveFieldOperationEnum)
-	for k, v := range mappingFieldsAddRemoveFieldOperationEnum {
-		mappingFieldsAddRemoveFieldOperationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFieldsAddRemoveFieldOperationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFieldsAddRemoveFieldOperationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

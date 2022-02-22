@@ -2,9 +2,10 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Cloud Guard APIs
+// Cloud Guard API
 //
-// A description of the Cloud Guard APIs
+// Use the Cloud Guard API to automate processes that you would otherwise perform through the Cloud Guard Console.
+// **Note:** You can perform Create, Update, and Delete operations only from the reporting region of your Cloud Guard tenancy. You can perform Read operations from any region.
 //
 
 package cloudguard
@@ -35,6 +36,15 @@ var mappingDataMaskCategoryEnum = map[string]DataMaskCategoryEnum{
 	"CUSTOM":    DataMaskCategoryCustom,
 }
 
+var mappingDataMaskCategoryEnumLowerCase = map[string]DataMaskCategoryEnum{
+	"actor":     DataMaskCategoryActor,
+	"pii":       DataMaskCategoryPii,
+	"phi":       DataMaskCategoryPhi,
+	"financial": DataMaskCategoryFinancial,
+	"location":  DataMaskCategoryLocation,
+	"custom":    DataMaskCategoryCustom,
+}
+
 // GetDataMaskCategoryEnumValues Enumerates the set of values for DataMaskCategoryEnum
 func GetDataMaskCategoryEnumValues() []DataMaskCategoryEnum {
 	values := make([]DataMaskCategoryEnum, 0)
@@ -58,11 +68,6 @@ func GetDataMaskCategoryEnumStringValues() []string {
 
 // GetMappingDataMaskCategoryEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataMaskCategoryEnum(val string) (DataMaskCategoryEnum, bool) {
-	mappingDataMaskCategoryEnumIgnoreCase := make(map[string]DataMaskCategoryEnum)
-	for k, v := range mappingDataMaskCategoryEnum {
-		mappingDataMaskCategoryEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataMaskCategoryEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataMaskCategoryEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

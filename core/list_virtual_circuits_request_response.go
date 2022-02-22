@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -149,6 +149,11 @@ var mappingListVirtualCircuitsSortByEnum = map[string]ListVirtualCircuitsSortByE
 	"DISPLAYNAME": ListVirtualCircuitsSortByDisplayname,
 }
 
+var mappingListVirtualCircuitsSortByEnumLowerCase = map[string]ListVirtualCircuitsSortByEnum{
+	"timecreated": ListVirtualCircuitsSortByTimecreated,
+	"displayname": ListVirtualCircuitsSortByDisplayname,
+}
+
 // GetListVirtualCircuitsSortByEnumValues Enumerates the set of values for ListVirtualCircuitsSortByEnum
 func GetListVirtualCircuitsSortByEnumValues() []ListVirtualCircuitsSortByEnum {
 	values := make([]ListVirtualCircuitsSortByEnum, 0)
@@ -168,12 +173,7 @@ func GetListVirtualCircuitsSortByEnumStringValues() []string {
 
 // GetMappingListVirtualCircuitsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListVirtualCircuitsSortByEnum(val string) (ListVirtualCircuitsSortByEnum, bool) {
-	mappingListVirtualCircuitsSortByEnumIgnoreCase := make(map[string]ListVirtualCircuitsSortByEnum)
-	for k, v := range mappingListVirtualCircuitsSortByEnum {
-		mappingListVirtualCircuitsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListVirtualCircuitsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListVirtualCircuitsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -189,6 +189,11 @@ const (
 var mappingListVirtualCircuitsSortOrderEnum = map[string]ListVirtualCircuitsSortOrderEnum{
 	"ASC":  ListVirtualCircuitsSortOrderAsc,
 	"DESC": ListVirtualCircuitsSortOrderDesc,
+}
+
+var mappingListVirtualCircuitsSortOrderEnumLowerCase = map[string]ListVirtualCircuitsSortOrderEnum{
+	"asc":  ListVirtualCircuitsSortOrderAsc,
+	"desc": ListVirtualCircuitsSortOrderDesc,
 }
 
 // GetListVirtualCircuitsSortOrderEnumValues Enumerates the set of values for ListVirtualCircuitsSortOrderEnum
@@ -210,11 +215,6 @@ func GetListVirtualCircuitsSortOrderEnumStringValues() []string {
 
 // GetMappingListVirtualCircuitsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListVirtualCircuitsSortOrderEnum(val string) (ListVirtualCircuitsSortOrderEnum, bool) {
-	mappingListVirtualCircuitsSortOrderEnumIgnoreCase := make(map[string]ListVirtualCircuitsSortOrderEnum)
-	for k, v := range mappingListVirtualCircuitsSortOrderEnum {
-		mappingListVirtualCircuitsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListVirtualCircuitsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListVirtualCircuitsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

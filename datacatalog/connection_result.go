@@ -28,6 +28,11 @@ var mappingConnectionResultEnum = map[string]ConnectionResultEnum{
 	"FAILED":    ConnectionResultFailed,
 }
 
+var mappingConnectionResultEnumLowerCase = map[string]ConnectionResultEnum{
+	"succeeded": ConnectionResultSucceeded,
+	"failed":    ConnectionResultFailed,
+}
+
 // GetConnectionResultEnumValues Enumerates the set of values for ConnectionResultEnum
 func GetConnectionResultEnumValues() []ConnectionResultEnum {
 	values := make([]ConnectionResultEnum, 0)
@@ -47,11 +52,6 @@ func GetConnectionResultEnumStringValues() []string {
 
 // GetMappingConnectionResultEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConnectionResultEnum(val string) (ConnectionResultEnum, bool) {
-	mappingConnectionResultEnumIgnoreCase := make(map[string]ConnectionResultEnum)
-	for k, v := range mappingConnectionResultEnum {
-		mappingConnectionResultEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConnectionResultEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConnectionResultEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package appmgmtcontrol
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -129,6 +129,11 @@ var mappingListMonitoredInstancesSortOrderEnum = map[string]ListMonitoredInstanc
 	"DESC": ListMonitoredInstancesSortOrderDesc,
 }
 
+var mappingListMonitoredInstancesSortOrderEnumLowerCase = map[string]ListMonitoredInstancesSortOrderEnum{
+	"asc":  ListMonitoredInstancesSortOrderAsc,
+	"desc": ListMonitoredInstancesSortOrderDesc,
+}
+
 // GetListMonitoredInstancesSortOrderEnumValues Enumerates the set of values for ListMonitoredInstancesSortOrderEnum
 func GetListMonitoredInstancesSortOrderEnumValues() []ListMonitoredInstancesSortOrderEnum {
 	values := make([]ListMonitoredInstancesSortOrderEnum, 0)
@@ -148,12 +153,7 @@ func GetListMonitoredInstancesSortOrderEnumStringValues() []string {
 
 // GetMappingListMonitoredInstancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMonitoredInstancesSortOrderEnum(val string) (ListMonitoredInstancesSortOrderEnum, bool) {
-	mappingListMonitoredInstancesSortOrderEnumIgnoreCase := make(map[string]ListMonitoredInstancesSortOrderEnum)
-	for k, v := range mappingListMonitoredInstancesSortOrderEnum {
-		mappingListMonitoredInstancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMonitoredInstancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMonitoredInstancesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -169,6 +169,11 @@ const (
 var mappingListMonitoredInstancesSortByEnum = map[string]ListMonitoredInstancesSortByEnum{
 	"timeCreated": ListMonitoredInstancesSortByTimecreated,
 	"displayName": ListMonitoredInstancesSortByDisplayname,
+}
+
+var mappingListMonitoredInstancesSortByEnumLowerCase = map[string]ListMonitoredInstancesSortByEnum{
+	"timecreated": ListMonitoredInstancesSortByTimecreated,
+	"displayname": ListMonitoredInstancesSortByDisplayname,
 }
 
 // GetListMonitoredInstancesSortByEnumValues Enumerates the set of values for ListMonitoredInstancesSortByEnum
@@ -190,11 +195,6 @@ func GetListMonitoredInstancesSortByEnumStringValues() []string {
 
 // GetMappingListMonitoredInstancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMonitoredInstancesSortByEnum(val string) (ListMonitoredInstancesSortByEnum, bool) {
-	mappingListMonitoredInstancesSortByEnumIgnoreCase := make(map[string]ListMonitoredInstancesSortByEnum)
-	for k, v := range mappingListMonitoredInstancesSortByEnum {
-		mappingListMonitoredInstancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMonitoredInstancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMonitoredInstancesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

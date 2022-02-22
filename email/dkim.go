@@ -15,7 +15,7 @@ package email
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -131,6 +131,17 @@ var mappingDkimLifecycleStateEnum = map[string]DkimLifecycleStateEnum{
 	"UPDATING":        DkimLifecycleStateUpdating,
 }
 
+var mappingDkimLifecycleStateEnumLowerCase = map[string]DkimLifecycleStateEnum{
+	"active":          DkimLifecycleStateActive,
+	"creating":        DkimLifecycleStateCreating,
+	"deleting":        DkimLifecycleStateDeleting,
+	"deleted":         DkimLifecycleStateDeleted,
+	"failed":          DkimLifecycleStateFailed,
+	"inactive":        DkimLifecycleStateInactive,
+	"needs_attention": DkimLifecycleStateNeedsAttention,
+	"updating":        DkimLifecycleStateUpdating,
+}
+
 // GetDkimLifecycleStateEnumValues Enumerates the set of values for DkimLifecycleStateEnum
 func GetDkimLifecycleStateEnumValues() []DkimLifecycleStateEnum {
 	values := make([]DkimLifecycleStateEnum, 0)
@@ -156,11 +167,6 @@ func GetDkimLifecycleStateEnumStringValues() []string {
 
 // GetMappingDkimLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDkimLifecycleStateEnum(val string) (DkimLifecycleStateEnum, bool) {
-	mappingDkimLifecycleStateEnumIgnoreCase := make(map[string]DkimLifecycleStateEnum)
-	for k, v := range mappingDkimLifecycleStateEnum {
-		mappingDkimLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDkimLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDkimLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -2,9 +2,10 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Cloud Guard APIs
+// Cloud Guard API
 //
-// A description of the Cloud Guard APIs
+// Use the Cloud Guard API to automate processes that you would otherwise perform through the Cloud Guard Console.
+// **Note:** You can perform Create, Update, and Delete operations only from the reporting region of your Cloud Guard tenancy. You can perform Read operations from any region.
 //
 
 package cloudguard
@@ -12,14 +13,15 @@ package cloudguard
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
 // CreateDataMaskRuleDetails The information about new Data Mask Rule.
 type CreateDataMaskRuleDetails struct {
 
-	// Data Mask Rule name
+	// Data mask rule name.
+	// Avoid entering confidential information.
 	DisplayName *string `mandatory:"true" json:"displayName"`
 
 	// Compartment Identifier where the resource is created
@@ -33,7 +35,8 @@ type CreateDataMaskRuleDetails struct {
 	// Data Mask Categories
 	DataMaskCategories []DataMaskCategoryEnum `mandatory:"true" json:"dataMaskCategories"`
 
-	// The Data Mask Rule description.
+	// The data mask rule description.
+	// Avoid entering confidential information.
 	Description *string `mandatory:"false" json:"description"`
 
 	// The status of the dataMaskRule.
@@ -44,6 +47,7 @@ type CreateDataMaskRuleDetails struct {
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
+	// Avoid entering confidential information.
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.

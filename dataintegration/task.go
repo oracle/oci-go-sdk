@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -272,6 +272,15 @@ var mappingTaskModelTypeEnum = map[string]TaskModelTypeEnum{
 	"REST_TASK":         TaskModelTypeRestTask,
 }
 
+var mappingTaskModelTypeEnumLowerCase = map[string]TaskModelTypeEnum{
+	"integration_task":  TaskModelTypeIntegrationTask,
+	"data_loader_task":  TaskModelTypeDataLoaderTask,
+	"pipeline_task":     TaskModelTypePipelineTask,
+	"sql_task":          TaskModelTypeSqlTask,
+	"oci_dataflow_task": TaskModelTypeOciDataflowTask,
+	"rest_task":         TaskModelTypeRestTask,
+}
+
 // GetTaskModelTypeEnumValues Enumerates the set of values for TaskModelTypeEnum
 func GetTaskModelTypeEnumValues() []TaskModelTypeEnum {
 	values := make([]TaskModelTypeEnum, 0)
@@ -295,11 +304,6 @@ func GetTaskModelTypeEnumStringValues() []string {
 
 // GetMappingTaskModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskModelTypeEnum(val string) (TaskModelTypeEnum, bool) {
-	mappingTaskModelTypeEnumIgnoreCase := make(map[string]TaskModelTypeEnum)
-	for k, v := range mappingTaskModelTypeEnum {
-		mappingTaskModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

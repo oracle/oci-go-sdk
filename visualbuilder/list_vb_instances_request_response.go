@@ -6,7 +6,7 @@ package visualbuilder
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -150,6 +150,16 @@ var mappingListVbInstancesLifecycleStateEnum = map[string]ListVbInstancesLifecyc
 	"FAILED":   ListVbInstancesLifecycleStateFailed,
 }
 
+var mappingListVbInstancesLifecycleStateEnumLowerCase = map[string]ListVbInstancesLifecycleStateEnum{
+	"creating": ListVbInstancesLifecycleStateCreating,
+	"updating": ListVbInstancesLifecycleStateUpdating,
+	"active":   ListVbInstancesLifecycleStateActive,
+	"inactive": ListVbInstancesLifecycleStateInactive,
+	"deleting": ListVbInstancesLifecycleStateDeleting,
+	"deleted":  ListVbInstancesLifecycleStateDeleted,
+	"failed":   ListVbInstancesLifecycleStateFailed,
+}
+
 // GetListVbInstancesLifecycleStateEnumValues Enumerates the set of values for ListVbInstancesLifecycleStateEnum
 func GetListVbInstancesLifecycleStateEnumValues() []ListVbInstancesLifecycleStateEnum {
 	values := make([]ListVbInstancesLifecycleStateEnum, 0)
@@ -174,12 +184,7 @@ func GetListVbInstancesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListVbInstancesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListVbInstancesLifecycleStateEnum(val string) (ListVbInstancesLifecycleStateEnum, bool) {
-	mappingListVbInstancesLifecycleStateEnumIgnoreCase := make(map[string]ListVbInstancesLifecycleStateEnum)
-	for k, v := range mappingListVbInstancesLifecycleStateEnum {
-		mappingListVbInstancesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListVbInstancesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListVbInstancesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -195,6 +200,11 @@ const (
 var mappingListVbInstancesSortOrderEnum = map[string]ListVbInstancesSortOrderEnum{
 	"ASC":  ListVbInstancesSortOrderAsc,
 	"DESC": ListVbInstancesSortOrderDesc,
+}
+
+var mappingListVbInstancesSortOrderEnumLowerCase = map[string]ListVbInstancesSortOrderEnum{
+	"asc":  ListVbInstancesSortOrderAsc,
+	"desc": ListVbInstancesSortOrderDesc,
 }
 
 // GetListVbInstancesSortOrderEnumValues Enumerates the set of values for ListVbInstancesSortOrderEnum
@@ -216,12 +226,7 @@ func GetListVbInstancesSortOrderEnumStringValues() []string {
 
 // GetMappingListVbInstancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListVbInstancesSortOrderEnum(val string) (ListVbInstancesSortOrderEnum, bool) {
-	mappingListVbInstancesSortOrderEnumIgnoreCase := make(map[string]ListVbInstancesSortOrderEnum)
-	for k, v := range mappingListVbInstancesSortOrderEnum {
-		mappingListVbInstancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListVbInstancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListVbInstancesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -237,6 +242,11 @@ const (
 var mappingListVbInstancesSortByEnum = map[string]ListVbInstancesSortByEnum{
 	"timeCreated": ListVbInstancesSortByTimecreated,
 	"displayName": ListVbInstancesSortByDisplayname,
+}
+
+var mappingListVbInstancesSortByEnumLowerCase = map[string]ListVbInstancesSortByEnum{
+	"timecreated": ListVbInstancesSortByTimecreated,
+	"displayname": ListVbInstancesSortByDisplayname,
 }
 
 // GetListVbInstancesSortByEnumValues Enumerates the set of values for ListVbInstancesSortByEnum
@@ -258,11 +268,6 @@ func GetListVbInstancesSortByEnumStringValues() []string {
 
 // GetMappingListVbInstancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListVbInstancesSortByEnum(val string) (ListVbInstancesSortByEnum, bool) {
-	mappingListVbInstancesSortByEnumIgnoreCase := make(map[string]ListVbInstancesSortByEnum)
-	for k, v := range mappingListVbInstancesSortByEnum {
-		mappingListVbInstancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListVbInstancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListVbInstancesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package aivision
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -111,6 +111,14 @@ var mappingDocumentFeatureFeatureTypeEnum = map[string]DocumentFeatureFeatureTyp
 	"DOCUMENT_CLASSIFICATION": DocumentFeatureFeatureTypeDocumentClassification,
 }
 
+var mappingDocumentFeatureFeatureTypeEnumLowerCase = map[string]DocumentFeatureFeatureTypeEnum{
+	"language_classification": DocumentFeatureFeatureTypeLanguageClassification,
+	"text_detection":          DocumentFeatureFeatureTypeTextDetection,
+	"table_detection":         DocumentFeatureFeatureTypeTableDetection,
+	"key_value_detection":     DocumentFeatureFeatureTypeKeyValueDetection,
+	"document_classification": DocumentFeatureFeatureTypeDocumentClassification,
+}
+
 // GetDocumentFeatureFeatureTypeEnumValues Enumerates the set of values for DocumentFeatureFeatureTypeEnum
 func GetDocumentFeatureFeatureTypeEnumValues() []DocumentFeatureFeatureTypeEnum {
 	values := make([]DocumentFeatureFeatureTypeEnum, 0)
@@ -133,11 +141,6 @@ func GetDocumentFeatureFeatureTypeEnumStringValues() []string {
 
 // GetMappingDocumentFeatureFeatureTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDocumentFeatureFeatureTypeEnum(val string) (DocumentFeatureFeatureTypeEnum, bool) {
-	mappingDocumentFeatureFeatureTypeEnumIgnoreCase := make(map[string]DocumentFeatureFeatureTypeEnum)
-	for k, v := range mappingDocumentFeatureFeatureTypeEnum {
-		mappingDocumentFeatureFeatureTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDocumentFeatureFeatureTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDocumentFeatureFeatureTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

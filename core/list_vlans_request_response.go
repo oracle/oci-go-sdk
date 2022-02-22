@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -152,6 +152,11 @@ var mappingListVlansSortByEnum = map[string]ListVlansSortByEnum{
 	"DISPLAYNAME": ListVlansSortByDisplayname,
 }
 
+var mappingListVlansSortByEnumLowerCase = map[string]ListVlansSortByEnum{
+	"timecreated": ListVlansSortByTimecreated,
+	"displayname": ListVlansSortByDisplayname,
+}
+
 // GetListVlansSortByEnumValues Enumerates the set of values for ListVlansSortByEnum
 func GetListVlansSortByEnumValues() []ListVlansSortByEnum {
 	values := make([]ListVlansSortByEnum, 0)
@@ -171,12 +176,7 @@ func GetListVlansSortByEnumStringValues() []string {
 
 // GetMappingListVlansSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListVlansSortByEnum(val string) (ListVlansSortByEnum, bool) {
-	mappingListVlansSortByEnumIgnoreCase := make(map[string]ListVlansSortByEnum)
-	for k, v := range mappingListVlansSortByEnum {
-		mappingListVlansSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListVlansSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListVlansSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -192,6 +192,11 @@ const (
 var mappingListVlansSortOrderEnum = map[string]ListVlansSortOrderEnum{
 	"ASC":  ListVlansSortOrderAsc,
 	"DESC": ListVlansSortOrderDesc,
+}
+
+var mappingListVlansSortOrderEnumLowerCase = map[string]ListVlansSortOrderEnum{
+	"asc":  ListVlansSortOrderAsc,
+	"desc": ListVlansSortOrderDesc,
 }
 
 // GetListVlansSortOrderEnumValues Enumerates the set of values for ListVlansSortOrderEnum
@@ -213,11 +218,6 @@ func GetListVlansSortOrderEnumStringValues() []string {
 
 // GetMappingListVlansSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListVlansSortOrderEnum(val string) (ListVlansSortOrderEnum, bool) {
-	mappingListVlansSortOrderEnumIgnoreCase := make(map[string]ListVlansSortOrderEnum)
-	for k, v := range mappingListVlansSortOrderEnum {
-		mappingListVlansSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListVlansSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListVlansSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

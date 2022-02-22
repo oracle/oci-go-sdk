@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -75,6 +75,10 @@ var mappingCreateApplicationDetailsModelTypeEnum = map[string]CreateApplicationD
 	"INTEGRATION_APPLICATION": CreateApplicationDetailsModelTypeIntegrationApplication,
 }
 
+var mappingCreateApplicationDetailsModelTypeEnumLowerCase = map[string]CreateApplicationDetailsModelTypeEnum{
+	"integration_application": CreateApplicationDetailsModelTypeIntegrationApplication,
+}
+
 // GetCreateApplicationDetailsModelTypeEnumValues Enumerates the set of values for CreateApplicationDetailsModelTypeEnum
 func GetCreateApplicationDetailsModelTypeEnumValues() []CreateApplicationDetailsModelTypeEnum {
 	values := make([]CreateApplicationDetailsModelTypeEnum, 0)
@@ -93,11 +97,6 @@ func GetCreateApplicationDetailsModelTypeEnumStringValues() []string {
 
 // GetMappingCreateApplicationDetailsModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateApplicationDetailsModelTypeEnum(val string) (CreateApplicationDetailsModelTypeEnum, bool) {
-	mappingCreateApplicationDetailsModelTypeEnumIgnoreCase := make(map[string]CreateApplicationDetailsModelTypeEnum)
-	for k, v := range mappingCreateApplicationDetailsModelTypeEnum {
-		mappingCreateApplicationDetailsModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateApplicationDetailsModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateApplicationDetailsModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -100,6 +100,11 @@ var mappingLogAnalyticsSourceFunctionFunctionNameEnum = map[string]LogAnalyticsS
 	"LOOKUP":      LogAnalyticsSourceFunctionFunctionNameLookup,
 }
 
+var mappingLogAnalyticsSourceFunctionFunctionNameEnumLowerCase = map[string]LogAnalyticsSourceFunctionFunctionNameEnum{
+	"geolocation": LogAnalyticsSourceFunctionFunctionNameGeolocation,
+	"lookup":      LogAnalyticsSourceFunctionFunctionNameLookup,
+}
+
 // GetLogAnalyticsSourceFunctionFunctionNameEnumValues Enumerates the set of values for LogAnalyticsSourceFunctionFunctionNameEnum
 func GetLogAnalyticsSourceFunctionFunctionNameEnumValues() []LogAnalyticsSourceFunctionFunctionNameEnum {
 	values := make([]LogAnalyticsSourceFunctionFunctionNameEnum, 0)
@@ -119,11 +124,6 @@ func GetLogAnalyticsSourceFunctionFunctionNameEnumStringValues() []string {
 
 // GetMappingLogAnalyticsSourceFunctionFunctionNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogAnalyticsSourceFunctionFunctionNameEnum(val string) (LogAnalyticsSourceFunctionFunctionNameEnum, bool) {
-	mappingLogAnalyticsSourceFunctionFunctionNameEnumIgnoreCase := make(map[string]LogAnalyticsSourceFunctionFunctionNameEnum)
-	for k, v := range mappingLogAnalyticsSourceFunctionFunctionNameEnum {
-		mappingLogAnalyticsSourceFunctionFunctionNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogAnalyticsSourceFunctionFunctionNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogAnalyticsSourceFunctionFunctionNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

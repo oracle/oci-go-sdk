@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -86,6 +86,11 @@ var mappingRoleSummaryAdminOptionEnum = map[string]RoleSummaryAdminOptionEnum{
 	"NO":  RoleSummaryAdminOptionNo,
 }
 
+var mappingRoleSummaryAdminOptionEnumLowerCase = map[string]RoleSummaryAdminOptionEnum{
+	"yes": RoleSummaryAdminOptionYes,
+	"no":  RoleSummaryAdminOptionNo,
+}
+
 // GetRoleSummaryAdminOptionEnumValues Enumerates the set of values for RoleSummaryAdminOptionEnum
 func GetRoleSummaryAdminOptionEnumValues() []RoleSummaryAdminOptionEnum {
 	values := make([]RoleSummaryAdminOptionEnum, 0)
@@ -105,12 +110,7 @@ func GetRoleSummaryAdminOptionEnumStringValues() []string {
 
 // GetMappingRoleSummaryAdminOptionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRoleSummaryAdminOptionEnum(val string) (RoleSummaryAdminOptionEnum, bool) {
-	mappingRoleSummaryAdminOptionEnumIgnoreCase := make(map[string]RoleSummaryAdminOptionEnum)
-	for k, v := range mappingRoleSummaryAdminOptionEnum {
-		mappingRoleSummaryAdminOptionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRoleSummaryAdminOptionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRoleSummaryAdminOptionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -126,6 +126,11 @@ const (
 var mappingRoleSummaryDelegateOptionEnum = map[string]RoleSummaryDelegateOptionEnum{
 	"YES": RoleSummaryDelegateOptionYes,
 	"NO":  RoleSummaryDelegateOptionNo,
+}
+
+var mappingRoleSummaryDelegateOptionEnumLowerCase = map[string]RoleSummaryDelegateOptionEnum{
+	"yes": RoleSummaryDelegateOptionYes,
+	"no":  RoleSummaryDelegateOptionNo,
 }
 
 // GetRoleSummaryDelegateOptionEnumValues Enumerates the set of values for RoleSummaryDelegateOptionEnum
@@ -147,12 +152,7 @@ func GetRoleSummaryDelegateOptionEnumStringValues() []string {
 
 // GetMappingRoleSummaryDelegateOptionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRoleSummaryDelegateOptionEnum(val string) (RoleSummaryDelegateOptionEnum, bool) {
-	mappingRoleSummaryDelegateOptionEnumIgnoreCase := make(map[string]RoleSummaryDelegateOptionEnum)
-	for k, v := range mappingRoleSummaryDelegateOptionEnum {
-		mappingRoleSummaryDelegateOptionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRoleSummaryDelegateOptionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRoleSummaryDelegateOptionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -168,6 +168,11 @@ const (
 var mappingRoleSummaryDefaultRoleEnum = map[string]RoleSummaryDefaultRoleEnum{
 	"YES": RoleSummaryDefaultRoleYes,
 	"NO":  RoleSummaryDefaultRoleNo,
+}
+
+var mappingRoleSummaryDefaultRoleEnumLowerCase = map[string]RoleSummaryDefaultRoleEnum{
+	"yes": RoleSummaryDefaultRoleYes,
+	"no":  RoleSummaryDefaultRoleNo,
 }
 
 // GetRoleSummaryDefaultRoleEnumValues Enumerates the set of values for RoleSummaryDefaultRoleEnum
@@ -189,12 +194,7 @@ func GetRoleSummaryDefaultRoleEnumStringValues() []string {
 
 // GetMappingRoleSummaryDefaultRoleEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRoleSummaryDefaultRoleEnum(val string) (RoleSummaryDefaultRoleEnum, bool) {
-	mappingRoleSummaryDefaultRoleEnumIgnoreCase := make(map[string]RoleSummaryDefaultRoleEnum)
-	for k, v := range mappingRoleSummaryDefaultRoleEnum {
-		mappingRoleSummaryDefaultRoleEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRoleSummaryDefaultRoleEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRoleSummaryDefaultRoleEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -210,6 +210,11 @@ const (
 var mappingRoleSummaryCommonEnum = map[string]RoleSummaryCommonEnum{
 	"YES": RoleSummaryCommonYes,
 	"NO":  RoleSummaryCommonNo,
+}
+
+var mappingRoleSummaryCommonEnumLowerCase = map[string]RoleSummaryCommonEnum{
+	"yes": RoleSummaryCommonYes,
+	"no":  RoleSummaryCommonNo,
 }
 
 // GetRoleSummaryCommonEnumValues Enumerates the set of values for RoleSummaryCommonEnum
@@ -231,12 +236,7 @@ func GetRoleSummaryCommonEnumStringValues() []string {
 
 // GetMappingRoleSummaryCommonEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRoleSummaryCommonEnum(val string) (RoleSummaryCommonEnum, bool) {
-	mappingRoleSummaryCommonEnumIgnoreCase := make(map[string]RoleSummaryCommonEnum)
-	for k, v := range mappingRoleSummaryCommonEnum {
-		mappingRoleSummaryCommonEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRoleSummaryCommonEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRoleSummaryCommonEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -252,6 +252,11 @@ const (
 var mappingRoleSummaryInheritedEnum = map[string]RoleSummaryInheritedEnum{
 	"YES": RoleSummaryInheritedYes,
 	"NO":  RoleSummaryInheritedNo,
+}
+
+var mappingRoleSummaryInheritedEnumLowerCase = map[string]RoleSummaryInheritedEnum{
+	"yes": RoleSummaryInheritedYes,
+	"no":  RoleSummaryInheritedNo,
 }
 
 // GetRoleSummaryInheritedEnumValues Enumerates the set of values for RoleSummaryInheritedEnum
@@ -273,11 +278,6 @@ func GetRoleSummaryInheritedEnumStringValues() []string {
 
 // GetMappingRoleSummaryInheritedEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRoleSummaryInheritedEnum(val string) (RoleSummaryInheritedEnum, bool) {
-	mappingRoleSummaryInheritedEnumIgnoreCase := make(map[string]RoleSummaryInheritedEnum)
-	for k, v := range mappingRoleSummaryInheritedEnum {
-		mappingRoleSummaryInheritedEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRoleSummaryInheritedEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRoleSummaryInheritedEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

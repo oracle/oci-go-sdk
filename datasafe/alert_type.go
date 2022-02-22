@@ -29,6 +29,12 @@ var mappingAlertTypeEnum = map[string]AlertTypeEnum{
 	"USER_ASSESSMENT":     AlertTypeUserAssessment,
 }
 
+var mappingAlertTypeEnumLowerCase = map[string]AlertTypeEnum{
+	"auditing":            AlertTypeAuditing,
+	"security_assessment": AlertTypeSecurityAssessment,
+	"user_assessment":     AlertTypeUserAssessment,
+}
+
 // GetAlertTypeEnumValues Enumerates the set of values for AlertTypeEnum
 func GetAlertTypeEnumValues() []AlertTypeEnum {
 	values := make([]AlertTypeEnum, 0)
@@ -49,11 +55,6 @@ func GetAlertTypeEnumStringValues() []string {
 
 // GetMappingAlertTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAlertTypeEnum(val string) (AlertTypeEnum, bool) {
-	mappingAlertTypeEnumIgnoreCase := make(map[string]AlertTypeEnum)
-	for k, v := range mappingAlertTypeEnum {
-		mappingAlertTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAlertTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAlertTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

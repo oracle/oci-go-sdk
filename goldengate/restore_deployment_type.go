@@ -25,6 +25,10 @@ var mappingRestoreDeploymentTypeEnum = map[string]RestoreDeploymentTypeEnum{
 	"DEFAULT": RestoreDeploymentTypeDefault,
 }
 
+var mappingRestoreDeploymentTypeEnumLowerCase = map[string]RestoreDeploymentTypeEnum{
+	"default": RestoreDeploymentTypeDefault,
+}
+
 // GetRestoreDeploymentTypeEnumValues Enumerates the set of values for RestoreDeploymentTypeEnum
 func GetRestoreDeploymentTypeEnumValues() []RestoreDeploymentTypeEnum {
 	values := make([]RestoreDeploymentTypeEnum, 0)
@@ -43,11 +47,6 @@ func GetRestoreDeploymentTypeEnumStringValues() []string {
 
 // GetMappingRestoreDeploymentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRestoreDeploymentTypeEnum(val string) (RestoreDeploymentTypeEnum, bool) {
-	mappingRestoreDeploymentTypeEnumIgnoreCase := make(map[string]RestoreDeploymentTypeEnum)
-	for k, v := range mappingRestoreDeploymentTypeEnum {
-		mappingRestoreDeploymentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRestoreDeploymentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRestoreDeploymentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

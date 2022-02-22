@@ -6,7 +6,7 @@ package optimizer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -143,6 +143,11 @@ var mappingListEnrollmentStatusesSortOrderEnum = map[string]ListEnrollmentStatus
 	"DESC": ListEnrollmentStatusesSortOrderDesc,
 }
 
+var mappingListEnrollmentStatusesSortOrderEnumLowerCase = map[string]ListEnrollmentStatusesSortOrderEnum{
+	"asc":  ListEnrollmentStatusesSortOrderAsc,
+	"desc": ListEnrollmentStatusesSortOrderDesc,
+}
+
 // GetListEnrollmentStatusesSortOrderEnumValues Enumerates the set of values for ListEnrollmentStatusesSortOrderEnum
 func GetListEnrollmentStatusesSortOrderEnumValues() []ListEnrollmentStatusesSortOrderEnum {
 	values := make([]ListEnrollmentStatusesSortOrderEnum, 0)
@@ -162,12 +167,7 @@ func GetListEnrollmentStatusesSortOrderEnumStringValues() []string {
 
 // GetMappingListEnrollmentStatusesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListEnrollmentStatusesSortOrderEnum(val string) (ListEnrollmentStatusesSortOrderEnum, bool) {
-	mappingListEnrollmentStatusesSortOrderEnumIgnoreCase := make(map[string]ListEnrollmentStatusesSortOrderEnum)
-	for k, v := range mappingListEnrollmentStatusesSortOrderEnum {
-		mappingListEnrollmentStatusesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListEnrollmentStatusesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListEnrollmentStatusesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +183,11 @@ const (
 var mappingListEnrollmentStatusesSortByEnum = map[string]ListEnrollmentStatusesSortByEnum{
 	"NAME":        ListEnrollmentStatusesSortByName,
 	"TIMECREATED": ListEnrollmentStatusesSortByTimecreated,
+}
+
+var mappingListEnrollmentStatusesSortByEnumLowerCase = map[string]ListEnrollmentStatusesSortByEnum{
+	"name":        ListEnrollmentStatusesSortByName,
+	"timecreated": ListEnrollmentStatusesSortByTimecreated,
 }
 
 // GetListEnrollmentStatusesSortByEnumValues Enumerates the set of values for ListEnrollmentStatusesSortByEnum
@@ -204,12 +209,7 @@ func GetListEnrollmentStatusesSortByEnumStringValues() []string {
 
 // GetMappingListEnrollmentStatusesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListEnrollmentStatusesSortByEnum(val string) (ListEnrollmentStatusesSortByEnum, bool) {
-	mappingListEnrollmentStatusesSortByEnumIgnoreCase := make(map[string]ListEnrollmentStatusesSortByEnum)
-	for k, v := range mappingListEnrollmentStatusesSortByEnum {
-		mappingListEnrollmentStatusesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListEnrollmentStatusesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListEnrollmentStatusesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -241,6 +241,18 @@ var mappingListEnrollmentStatusesLifecycleStateEnum = map[string]ListEnrollmentS
 	"CREATING":  ListEnrollmentStatusesLifecycleStateCreating,
 }
 
+var mappingListEnrollmentStatusesLifecycleStateEnumLowerCase = map[string]ListEnrollmentStatusesLifecycleStateEnum{
+	"active":    ListEnrollmentStatusesLifecycleStateActive,
+	"failed":    ListEnrollmentStatusesLifecycleStateFailed,
+	"inactive":  ListEnrollmentStatusesLifecycleStateInactive,
+	"attaching": ListEnrollmentStatusesLifecycleStateAttaching,
+	"detaching": ListEnrollmentStatusesLifecycleStateDetaching,
+	"deleting":  ListEnrollmentStatusesLifecycleStateDeleting,
+	"deleted":   ListEnrollmentStatusesLifecycleStateDeleted,
+	"updating":  ListEnrollmentStatusesLifecycleStateUpdating,
+	"creating":  ListEnrollmentStatusesLifecycleStateCreating,
+}
+
 // GetListEnrollmentStatusesLifecycleStateEnumValues Enumerates the set of values for ListEnrollmentStatusesLifecycleStateEnum
 func GetListEnrollmentStatusesLifecycleStateEnumValues() []ListEnrollmentStatusesLifecycleStateEnum {
 	values := make([]ListEnrollmentStatusesLifecycleStateEnum, 0)
@@ -267,12 +279,7 @@ func GetListEnrollmentStatusesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListEnrollmentStatusesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListEnrollmentStatusesLifecycleStateEnum(val string) (ListEnrollmentStatusesLifecycleStateEnum, bool) {
-	mappingListEnrollmentStatusesLifecycleStateEnumIgnoreCase := make(map[string]ListEnrollmentStatusesLifecycleStateEnum)
-	for k, v := range mappingListEnrollmentStatusesLifecycleStateEnum {
-		mappingListEnrollmentStatusesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListEnrollmentStatusesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListEnrollmentStatusesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -288,6 +295,11 @@ const (
 var mappingListEnrollmentStatusesStatusEnum = map[string]ListEnrollmentStatusesStatusEnum{
 	"ACTIVE":   ListEnrollmentStatusesStatusActive,
 	"INACTIVE": ListEnrollmentStatusesStatusInactive,
+}
+
+var mappingListEnrollmentStatusesStatusEnumLowerCase = map[string]ListEnrollmentStatusesStatusEnum{
+	"active":   ListEnrollmentStatusesStatusActive,
+	"inactive": ListEnrollmentStatusesStatusInactive,
 }
 
 // GetListEnrollmentStatusesStatusEnumValues Enumerates the set of values for ListEnrollmentStatusesStatusEnum
@@ -309,11 +321,6 @@ func GetListEnrollmentStatusesStatusEnumStringValues() []string {
 
 // GetMappingListEnrollmentStatusesStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListEnrollmentStatusesStatusEnum(val string) (ListEnrollmentStatusesStatusEnum, bool) {
-	mappingListEnrollmentStatusesStatusEnumIgnoreCase := make(map[string]ListEnrollmentStatusesStatusEnum)
-	for k, v := range mappingListEnrollmentStatusesStatusEnum {
-		mappingListEnrollmentStatusesStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListEnrollmentStatusesStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListEnrollmentStatusesStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

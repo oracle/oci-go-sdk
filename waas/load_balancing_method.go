@@ -12,7 +12,7 @@ package waas
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,12 @@ var mappingLoadBalancingMethodMethodEnum = map[string]LoadBalancingMethodMethodE
 	"STICKY_COOKIE": LoadBalancingMethodMethodStickyCookie,
 }
 
+var mappingLoadBalancingMethodMethodEnumLowerCase = map[string]LoadBalancingMethodMethodEnum{
+	"ip_hash":       LoadBalancingMethodMethodIpHash,
+	"round_robin":   LoadBalancingMethodMethodRoundRobin,
+	"sticky_cookie": LoadBalancingMethodMethodStickyCookie,
+}
+
 // GetLoadBalancingMethodMethodEnumValues Enumerates the set of values for LoadBalancingMethodMethodEnum
 func GetLoadBalancingMethodMethodEnumValues() []LoadBalancingMethodMethodEnum {
 	values := make([]LoadBalancingMethodMethodEnum, 0)
@@ -119,11 +125,6 @@ func GetLoadBalancingMethodMethodEnumStringValues() []string {
 
 // GetMappingLoadBalancingMethodMethodEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLoadBalancingMethodMethodEnum(val string) (LoadBalancingMethodMethodEnum, bool) {
-	mappingLoadBalancingMethodMethodEnumIgnoreCase := make(map[string]LoadBalancingMethodMethodEnum)
-	for k, v := range mappingLoadBalancingMethodMethodEnum {
-		mappingLoadBalancingMethodMethodEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLoadBalancingMethodMethodEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLoadBalancingMethodMethodEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

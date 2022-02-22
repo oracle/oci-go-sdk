@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"io"
 	"net/http"
 	"strings"
@@ -142,6 +142,11 @@ var mappingRegisterLookupTypeEnum = map[string]RegisterLookupTypeEnum{
 	"Dictionary": RegisterLookupTypeDictionary,
 }
 
+var mappingRegisterLookupTypeEnumLowerCase = map[string]RegisterLookupTypeEnum{
+	"lookup":     RegisterLookupTypeLookup,
+	"dictionary": RegisterLookupTypeDictionary,
+}
+
 // GetRegisterLookupTypeEnumValues Enumerates the set of values for RegisterLookupTypeEnum
 func GetRegisterLookupTypeEnumValues() []RegisterLookupTypeEnum {
 	values := make([]RegisterLookupTypeEnum, 0)
@@ -161,11 +166,6 @@ func GetRegisterLookupTypeEnumStringValues() []string {
 
 // GetMappingRegisterLookupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRegisterLookupTypeEnum(val string) (RegisterLookupTypeEnum, bool) {
-	mappingRegisterLookupTypeEnumIgnoreCase := make(map[string]RegisterLookupTypeEnum)
-	for k, v := range mappingRegisterLookupTypeEnum {
-		mappingRegisterLookupTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRegisterLookupTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRegisterLookupTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

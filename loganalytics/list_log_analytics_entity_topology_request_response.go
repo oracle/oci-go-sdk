@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -136,6 +136,11 @@ var mappingListLogAnalyticsEntityTopologyLifecycleStateEnum = map[string]ListLog
 	"DELETED": ListLogAnalyticsEntityTopologyLifecycleStateDeleted,
 }
 
+var mappingListLogAnalyticsEntityTopologyLifecycleStateEnumLowerCase = map[string]ListLogAnalyticsEntityTopologyLifecycleStateEnum{
+	"active":  ListLogAnalyticsEntityTopologyLifecycleStateActive,
+	"deleted": ListLogAnalyticsEntityTopologyLifecycleStateDeleted,
+}
+
 // GetListLogAnalyticsEntityTopologyLifecycleStateEnumValues Enumerates the set of values for ListLogAnalyticsEntityTopologyLifecycleStateEnum
 func GetListLogAnalyticsEntityTopologyLifecycleStateEnumValues() []ListLogAnalyticsEntityTopologyLifecycleStateEnum {
 	values := make([]ListLogAnalyticsEntityTopologyLifecycleStateEnum, 0)
@@ -155,12 +160,7 @@ func GetListLogAnalyticsEntityTopologyLifecycleStateEnumStringValues() []string 
 
 // GetMappingListLogAnalyticsEntityTopologyLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLogAnalyticsEntityTopologyLifecycleStateEnum(val string) (ListLogAnalyticsEntityTopologyLifecycleStateEnum, bool) {
-	mappingListLogAnalyticsEntityTopologyLifecycleStateEnumIgnoreCase := make(map[string]ListLogAnalyticsEntityTopologyLifecycleStateEnum)
-	for k, v := range mappingListLogAnalyticsEntityTopologyLifecycleStateEnum {
-		mappingListLogAnalyticsEntityTopologyLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLogAnalyticsEntityTopologyLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLogAnalyticsEntityTopologyLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -176,6 +176,11 @@ const (
 var mappingListLogAnalyticsEntityTopologySortOrderEnum = map[string]ListLogAnalyticsEntityTopologySortOrderEnum{
 	"ASC":  ListLogAnalyticsEntityTopologySortOrderAsc,
 	"DESC": ListLogAnalyticsEntityTopologySortOrderDesc,
+}
+
+var mappingListLogAnalyticsEntityTopologySortOrderEnumLowerCase = map[string]ListLogAnalyticsEntityTopologySortOrderEnum{
+	"asc":  ListLogAnalyticsEntityTopologySortOrderAsc,
+	"desc": ListLogAnalyticsEntityTopologySortOrderDesc,
 }
 
 // GetListLogAnalyticsEntityTopologySortOrderEnumValues Enumerates the set of values for ListLogAnalyticsEntityTopologySortOrderEnum
@@ -197,12 +202,7 @@ func GetListLogAnalyticsEntityTopologySortOrderEnumStringValues() []string {
 
 // GetMappingListLogAnalyticsEntityTopologySortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLogAnalyticsEntityTopologySortOrderEnum(val string) (ListLogAnalyticsEntityTopologySortOrderEnum, bool) {
-	mappingListLogAnalyticsEntityTopologySortOrderEnumIgnoreCase := make(map[string]ListLogAnalyticsEntityTopologySortOrderEnum)
-	for k, v := range mappingListLogAnalyticsEntityTopologySortOrderEnum {
-		mappingListLogAnalyticsEntityTopologySortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLogAnalyticsEntityTopologySortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLogAnalyticsEntityTopologySortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -219,6 +219,12 @@ const (
 var mappingListLogAnalyticsEntityTopologySortByEnum = map[string]ListLogAnalyticsEntityTopologySortByEnum{
 	"timeCreated": ListLogAnalyticsEntityTopologySortByTimecreated,
 	"timeUpdated": ListLogAnalyticsEntityTopologySortByTimeupdated,
+	"name":        ListLogAnalyticsEntityTopologySortByName,
+}
+
+var mappingListLogAnalyticsEntityTopologySortByEnumLowerCase = map[string]ListLogAnalyticsEntityTopologySortByEnum{
+	"timecreated": ListLogAnalyticsEntityTopologySortByTimecreated,
+	"timeupdated": ListLogAnalyticsEntityTopologySortByTimeupdated,
 	"name":        ListLogAnalyticsEntityTopologySortByName,
 }
 
@@ -242,11 +248,6 @@ func GetListLogAnalyticsEntityTopologySortByEnumStringValues() []string {
 
 // GetMappingListLogAnalyticsEntityTopologySortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLogAnalyticsEntityTopologySortByEnum(val string) (ListLogAnalyticsEntityTopologySortByEnum, bool) {
-	mappingListLogAnalyticsEntityTopologySortByEnumIgnoreCase := make(map[string]ListLogAnalyticsEntityTopologySortByEnum)
-	for k, v := range mappingListLogAnalyticsEntityTopologySortByEnum {
-		mappingListLogAnalyticsEntityTopologySortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLogAnalyticsEntityTopologySortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLogAnalyticsEntityTopologySortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

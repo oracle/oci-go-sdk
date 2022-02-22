@@ -6,7 +6,7 @@ package managementagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -150,6 +150,17 @@ var mappingListManagementAgentInstallKeysLifecycleStateEnum = map[string]ListMan
 	"FAILED":     ListManagementAgentInstallKeysLifecycleStateFailed,
 }
 
+var mappingListManagementAgentInstallKeysLifecycleStateEnumLowerCase = map[string]ListManagementAgentInstallKeysLifecycleStateEnum{
+	"creating":   ListManagementAgentInstallKeysLifecycleStateCreating,
+	"updating":   ListManagementAgentInstallKeysLifecycleStateUpdating,
+	"active":     ListManagementAgentInstallKeysLifecycleStateActive,
+	"inactive":   ListManagementAgentInstallKeysLifecycleStateInactive,
+	"terminated": ListManagementAgentInstallKeysLifecycleStateTerminated,
+	"deleting":   ListManagementAgentInstallKeysLifecycleStateDeleting,
+	"deleted":    ListManagementAgentInstallKeysLifecycleStateDeleted,
+	"failed":     ListManagementAgentInstallKeysLifecycleStateFailed,
+}
+
 // GetListManagementAgentInstallKeysLifecycleStateEnumValues Enumerates the set of values for ListManagementAgentInstallKeysLifecycleStateEnum
 func GetListManagementAgentInstallKeysLifecycleStateEnumValues() []ListManagementAgentInstallKeysLifecycleStateEnum {
 	values := make([]ListManagementAgentInstallKeysLifecycleStateEnum, 0)
@@ -175,12 +186,7 @@ func GetListManagementAgentInstallKeysLifecycleStateEnumStringValues() []string 
 
 // GetMappingListManagementAgentInstallKeysLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagementAgentInstallKeysLifecycleStateEnum(val string) (ListManagementAgentInstallKeysLifecycleStateEnum, bool) {
-	mappingListManagementAgentInstallKeysLifecycleStateEnumIgnoreCase := make(map[string]ListManagementAgentInstallKeysLifecycleStateEnum)
-	for k, v := range mappingListManagementAgentInstallKeysLifecycleStateEnum {
-		mappingListManagementAgentInstallKeysLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagementAgentInstallKeysLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagementAgentInstallKeysLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -196,6 +202,11 @@ const (
 var mappingListManagementAgentInstallKeysSortOrderEnum = map[string]ListManagementAgentInstallKeysSortOrderEnum{
 	"ASC":  ListManagementAgentInstallKeysSortOrderAsc,
 	"DESC": ListManagementAgentInstallKeysSortOrderDesc,
+}
+
+var mappingListManagementAgentInstallKeysSortOrderEnumLowerCase = map[string]ListManagementAgentInstallKeysSortOrderEnum{
+	"asc":  ListManagementAgentInstallKeysSortOrderAsc,
+	"desc": ListManagementAgentInstallKeysSortOrderDesc,
 }
 
 // GetListManagementAgentInstallKeysSortOrderEnumValues Enumerates the set of values for ListManagementAgentInstallKeysSortOrderEnum
@@ -217,12 +228,7 @@ func GetListManagementAgentInstallKeysSortOrderEnumStringValues() []string {
 
 // GetMappingListManagementAgentInstallKeysSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagementAgentInstallKeysSortOrderEnum(val string) (ListManagementAgentInstallKeysSortOrderEnum, bool) {
-	mappingListManagementAgentInstallKeysSortOrderEnumIgnoreCase := make(map[string]ListManagementAgentInstallKeysSortOrderEnum)
-	for k, v := range mappingListManagementAgentInstallKeysSortOrderEnum {
-		mappingListManagementAgentInstallKeysSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagementAgentInstallKeysSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagementAgentInstallKeysSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -238,6 +244,11 @@ const (
 var mappingListManagementAgentInstallKeysSortByEnum = map[string]ListManagementAgentInstallKeysSortByEnum{
 	"timeCreated": ListManagementAgentInstallKeysSortByTimecreated,
 	"displayName": ListManagementAgentInstallKeysSortByDisplayname,
+}
+
+var mappingListManagementAgentInstallKeysSortByEnumLowerCase = map[string]ListManagementAgentInstallKeysSortByEnum{
+	"timecreated": ListManagementAgentInstallKeysSortByTimecreated,
+	"displayname": ListManagementAgentInstallKeysSortByDisplayname,
 }
 
 // GetListManagementAgentInstallKeysSortByEnumValues Enumerates the set of values for ListManagementAgentInstallKeysSortByEnum
@@ -259,11 +270,6 @@ func GetListManagementAgentInstallKeysSortByEnumStringValues() []string {
 
 // GetMappingListManagementAgentInstallKeysSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagementAgentInstallKeysSortByEnum(val string) (ListManagementAgentInstallKeysSortByEnum, bool) {
-	mappingListManagementAgentInstallKeysSortByEnumIgnoreCase := make(map[string]ListManagementAgentInstallKeysSortByEnum)
-	for k, v := range mappingListManagementAgentInstallKeysSortByEnum {
-		mappingListManagementAgentInstallKeysSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagementAgentInstallKeysSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagementAgentInstallKeysSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

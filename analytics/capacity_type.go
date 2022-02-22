@@ -27,6 +27,11 @@ var mappingCapacityTypeEnum = map[string]CapacityTypeEnum{
 	"USER_COUNT": CapacityTypeUserCount,
 }
 
+var mappingCapacityTypeEnumLowerCase = map[string]CapacityTypeEnum{
+	"olpu_count": CapacityTypeOlpuCount,
+	"user_count": CapacityTypeUserCount,
+}
+
 // GetCapacityTypeEnumValues Enumerates the set of values for CapacityTypeEnum
 func GetCapacityTypeEnumValues() []CapacityTypeEnum {
 	values := make([]CapacityTypeEnum, 0)
@@ -46,11 +51,6 @@ func GetCapacityTypeEnumStringValues() []string {
 
 // GetMappingCapacityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCapacityTypeEnum(val string) (CapacityTypeEnum, bool) {
-	mappingCapacityTypeEnumIgnoreCase := make(map[string]CapacityTypeEnum)
-	for k, v := range mappingCapacityTypeEnum {
-		mappingCapacityTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCapacityTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCapacityTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

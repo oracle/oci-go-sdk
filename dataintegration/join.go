@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -77,6 +77,13 @@ var mappingJoinPolicyEnum = map[string]JoinPolicyEnum{
 	"FULL_JOIN":  JoinPolicyFullJoin,
 }
 
+var mappingJoinPolicyEnumLowerCase = map[string]JoinPolicyEnum{
+	"inner_join": JoinPolicyInnerJoin,
+	"left_join":  JoinPolicyLeftJoin,
+	"right_join": JoinPolicyRightJoin,
+	"full_join":  JoinPolicyFullJoin,
+}
+
 // GetJoinPolicyEnumValues Enumerates the set of values for JoinPolicyEnum
 func GetJoinPolicyEnumValues() []JoinPolicyEnum {
 	values := make([]JoinPolicyEnum, 0)
@@ -98,11 +105,6 @@ func GetJoinPolicyEnumStringValues() []string {
 
 // GetMappingJoinPolicyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJoinPolicyEnum(val string) (JoinPolicyEnum, bool) {
-	mappingJoinPolicyEnumIgnoreCase := make(map[string]JoinPolicyEnum)
-	for k, v := range mappingJoinPolicyEnum {
-		mappingJoinPolicyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJoinPolicyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJoinPolicyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

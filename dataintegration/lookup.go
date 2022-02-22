@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -178,6 +178,14 @@ var mappingLookupMultiMatchStrategyEnum = map[string]LookupMultiMatchStrategyEnu
 	"RETURN_ERROR": LookupMultiMatchStrategyError,
 }
 
+var mappingLookupMultiMatchStrategyEnumLowerCase = map[string]LookupMultiMatchStrategyEnum{
+	"return_any":   LookupMultiMatchStrategyAny,
+	"return_first": LookupMultiMatchStrategyFirst,
+	"return_last":  LookupMultiMatchStrategyLast,
+	"return_all":   LookupMultiMatchStrategyAll,
+	"return_error": LookupMultiMatchStrategyError,
+}
+
 // GetLookupMultiMatchStrategyEnumValues Enumerates the set of values for LookupMultiMatchStrategyEnum
 func GetLookupMultiMatchStrategyEnumValues() []LookupMultiMatchStrategyEnum {
 	values := make([]LookupMultiMatchStrategyEnum, 0)
@@ -200,11 +208,6 @@ func GetLookupMultiMatchStrategyEnumStringValues() []string {
 
 // GetMappingLookupMultiMatchStrategyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLookupMultiMatchStrategyEnum(val string) (LookupMultiMatchStrategyEnum, bool) {
-	mappingLookupMultiMatchStrategyEnumIgnoreCase := make(map[string]LookupMultiMatchStrategyEnum)
-	for k, v := range mappingLookupMultiMatchStrategyEnum {
-		mappingLookupMultiMatchStrategyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLookupMultiMatchStrategyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLookupMultiMatchStrategyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

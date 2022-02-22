@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -137,6 +137,11 @@ var mappingUpdateTablespaceDetailsTypeEnum = map[string]UpdateTablespaceDetailsT
 	"TEMPORARY": UpdateTablespaceDetailsTypeTemporary,
 }
 
+var mappingUpdateTablespaceDetailsTypeEnumLowerCase = map[string]UpdateTablespaceDetailsTypeEnum{
+	"permanent": UpdateTablespaceDetailsTypePermanent,
+	"temporary": UpdateTablespaceDetailsTypeTemporary,
+}
+
 // GetUpdateTablespaceDetailsTypeEnumValues Enumerates the set of values for UpdateTablespaceDetailsTypeEnum
 func GetUpdateTablespaceDetailsTypeEnumValues() []UpdateTablespaceDetailsTypeEnum {
 	values := make([]UpdateTablespaceDetailsTypeEnum, 0)
@@ -156,12 +161,7 @@ func GetUpdateTablespaceDetailsTypeEnumStringValues() []string {
 
 // GetMappingUpdateTablespaceDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateTablespaceDetailsTypeEnum(val string) (UpdateTablespaceDetailsTypeEnum, bool) {
-	mappingUpdateTablespaceDetailsTypeEnumIgnoreCase := make(map[string]UpdateTablespaceDetailsTypeEnum)
-	for k, v := range mappingUpdateTablespaceDetailsTypeEnum {
-		mappingUpdateTablespaceDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateTablespaceDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateTablespaceDetailsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -177,6 +177,11 @@ const (
 var mappingUpdateTablespaceDetailsStatusEnum = map[string]UpdateTablespaceDetailsStatusEnum{
 	"READ_ONLY":  UpdateTablespaceDetailsStatusOnly,
 	"READ_WRITE": UpdateTablespaceDetailsStatusWrite,
+}
+
+var mappingUpdateTablespaceDetailsStatusEnumLowerCase = map[string]UpdateTablespaceDetailsStatusEnum{
+	"read_only":  UpdateTablespaceDetailsStatusOnly,
+	"read_write": UpdateTablespaceDetailsStatusWrite,
 }
 
 // GetUpdateTablespaceDetailsStatusEnumValues Enumerates the set of values for UpdateTablespaceDetailsStatusEnum
@@ -198,11 +203,6 @@ func GetUpdateTablespaceDetailsStatusEnumStringValues() []string {
 
 // GetMappingUpdateTablespaceDetailsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateTablespaceDetailsStatusEnum(val string) (UpdateTablespaceDetailsStatusEnum, bool) {
-	mappingUpdateTablespaceDetailsStatusEnumIgnoreCase := make(map[string]UpdateTablespaceDetailsStatusEnum)
-	for k, v := range mappingUpdateTablespaceDetailsStatusEnum {
-		mappingUpdateTablespaceDetailsStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateTablespaceDetailsStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateTablespaceDetailsStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

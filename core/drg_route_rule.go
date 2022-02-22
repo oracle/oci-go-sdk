@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -108,6 +108,11 @@ var mappingDrgRouteRuleDestinationTypeEnum = map[string]DrgRouteRuleDestinationT
 	"SERVICE_CIDR_BLOCK": DrgRouteRuleDestinationTypeServiceCidrBlock,
 }
 
+var mappingDrgRouteRuleDestinationTypeEnumLowerCase = map[string]DrgRouteRuleDestinationTypeEnum{
+	"cidr_block":         DrgRouteRuleDestinationTypeCidrBlock,
+	"service_cidr_block": DrgRouteRuleDestinationTypeServiceCidrBlock,
+}
+
 // GetDrgRouteRuleDestinationTypeEnumValues Enumerates the set of values for DrgRouteRuleDestinationTypeEnum
 func GetDrgRouteRuleDestinationTypeEnumValues() []DrgRouteRuleDestinationTypeEnum {
 	values := make([]DrgRouteRuleDestinationTypeEnum, 0)
@@ -127,12 +132,7 @@ func GetDrgRouteRuleDestinationTypeEnumStringValues() []string {
 
 // GetMappingDrgRouteRuleDestinationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDrgRouteRuleDestinationTypeEnum(val string) (DrgRouteRuleDestinationTypeEnum, bool) {
-	mappingDrgRouteRuleDestinationTypeEnumIgnoreCase := make(map[string]DrgRouteRuleDestinationTypeEnum)
-	for k, v := range mappingDrgRouteRuleDestinationTypeEnum {
-		mappingDrgRouteRuleDestinationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDrgRouteRuleDestinationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDrgRouteRuleDestinationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -148,6 +148,11 @@ const (
 var mappingDrgRouteRuleRouteTypeEnum = map[string]DrgRouteRuleRouteTypeEnum{
 	"STATIC":  DrgRouteRuleRouteTypeStatic,
 	"DYNAMIC": DrgRouteRuleRouteTypeDynamic,
+}
+
+var mappingDrgRouteRuleRouteTypeEnumLowerCase = map[string]DrgRouteRuleRouteTypeEnum{
+	"static":  DrgRouteRuleRouteTypeStatic,
+	"dynamic": DrgRouteRuleRouteTypeDynamic,
 }
 
 // GetDrgRouteRuleRouteTypeEnumValues Enumerates the set of values for DrgRouteRuleRouteTypeEnum
@@ -169,12 +174,7 @@ func GetDrgRouteRuleRouteTypeEnumStringValues() []string {
 
 // GetMappingDrgRouteRuleRouteTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDrgRouteRuleRouteTypeEnum(val string) (DrgRouteRuleRouteTypeEnum, bool) {
-	mappingDrgRouteRuleRouteTypeEnumIgnoreCase := make(map[string]DrgRouteRuleRouteTypeEnum)
-	for k, v := range mappingDrgRouteRuleRouteTypeEnum {
-		mappingDrgRouteRuleRouteTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDrgRouteRuleRouteTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDrgRouteRuleRouteTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -194,6 +194,13 @@ var mappingDrgRouteRuleRouteProvenanceEnum = map[string]DrgRouteRuleRouteProvena
 	"VCN":             DrgRouteRuleRouteProvenanceVcn,
 	"VIRTUAL_CIRCUIT": DrgRouteRuleRouteProvenanceVirtualCircuit,
 	"IPSEC_TUNNEL":    DrgRouteRuleRouteProvenanceIpsecTunnel,
+}
+
+var mappingDrgRouteRuleRouteProvenanceEnumLowerCase = map[string]DrgRouteRuleRouteProvenanceEnum{
+	"static":          DrgRouteRuleRouteProvenanceStatic,
+	"vcn":             DrgRouteRuleRouteProvenanceVcn,
+	"virtual_circuit": DrgRouteRuleRouteProvenanceVirtualCircuit,
+	"ipsec_tunnel":    DrgRouteRuleRouteProvenanceIpsecTunnel,
 }
 
 // GetDrgRouteRuleRouteProvenanceEnumValues Enumerates the set of values for DrgRouteRuleRouteProvenanceEnum
@@ -217,11 +224,6 @@ func GetDrgRouteRuleRouteProvenanceEnumStringValues() []string {
 
 // GetMappingDrgRouteRuleRouteProvenanceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDrgRouteRuleRouteProvenanceEnum(val string) (DrgRouteRuleRouteProvenanceEnum, bool) {
-	mappingDrgRouteRuleRouteProvenanceEnumIgnoreCase := make(map[string]DrgRouteRuleRouteProvenanceEnum)
-	for k, v := range mappingDrgRouteRuleRouteProvenanceEnum {
-		mappingDrgRouteRuleRouteProvenanceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDrgRouteRuleRouteProvenanceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDrgRouteRuleRouteProvenanceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

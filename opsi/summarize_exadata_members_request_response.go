@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -140,6 +140,11 @@ var mappingSummarizeExadataMembersSortOrderEnum = map[string]SummarizeExadataMem
 	"DESC": SummarizeExadataMembersSortOrderDesc,
 }
 
+var mappingSummarizeExadataMembersSortOrderEnumLowerCase = map[string]SummarizeExadataMembersSortOrderEnum{
+	"asc":  SummarizeExadataMembersSortOrderAsc,
+	"desc": SummarizeExadataMembersSortOrderDesc,
+}
+
 // GetSummarizeExadataMembersSortOrderEnumValues Enumerates the set of values for SummarizeExadataMembersSortOrderEnum
 func GetSummarizeExadataMembersSortOrderEnumValues() []SummarizeExadataMembersSortOrderEnum {
 	values := make([]SummarizeExadataMembersSortOrderEnum, 0)
@@ -159,12 +164,7 @@ func GetSummarizeExadataMembersSortOrderEnumStringValues() []string {
 
 // GetMappingSummarizeExadataMembersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeExadataMembersSortOrderEnum(val string) (SummarizeExadataMembersSortOrderEnum, bool) {
-	mappingSummarizeExadataMembersSortOrderEnumIgnoreCase := make(map[string]SummarizeExadataMembersSortOrderEnum)
-	for k, v := range mappingSummarizeExadataMembersSortOrderEnum {
-		mappingSummarizeExadataMembersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeExadataMembersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeExadataMembersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -182,6 +182,12 @@ var mappingSummarizeExadataMembersSortByEnum = map[string]SummarizeExadataMember
 	"name":        SummarizeExadataMembersSortByName,
 	"displayName": SummarizeExadataMembersSortByDisplayname,
 	"entityType":  SummarizeExadataMembersSortByEntitytype,
+}
+
+var mappingSummarizeExadataMembersSortByEnumLowerCase = map[string]SummarizeExadataMembersSortByEnum{
+	"name":        SummarizeExadataMembersSortByName,
+	"displayname": SummarizeExadataMembersSortByDisplayname,
+	"entitytype":  SummarizeExadataMembersSortByEntitytype,
 }
 
 // GetSummarizeExadataMembersSortByEnumValues Enumerates the set of values for SummarizeExadataMembersSortByEnum
@@ -204,11 +210,6 @@ func GetSummarizeExadataMembersSortByEnumStringValues() []string {
 
 // GetMappingSummarizeExadataMembersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeExadataMembersSortByEnum(val string) (SummarizeExadataMembersSortByEnum, bool) {
-	mappingSummarizeExadataMembersSortByEnumIgnoreCase := make(map[string]SummarizeExadataMembersSortByEnum)
-	for k, v := range mappingSummarizeExadataMembersSortByEnum {
-		mappingSummarizeExadataMembersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeExadataMembersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeExadataMembersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

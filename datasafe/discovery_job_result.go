@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -135,6 +135,12 @@ var mappingDiscoveryJobResultDiscoveryTypeEnum = map[string]DiscoveryJobResultDi
 	"DELETED":  DiscoveryJobResultDiscoveryTypeDeleted,
 }
 
+var mappingDiscoveryJobResultDiscoveryTypeEnumLowerCase = map[string]DiscoveryJobResultDiscoveryTypeEnum{
+	"new":      DiscoveryJobResultDiscoveryTypeNew,
+	"modified": DiscoveryJobResultDiscoveryTypeModified,
+	"deleted":  DiscoveryJobResultDiscoveryTypeDeleted,
+}
+
 // GetDiscoveryJobResultDiscoveryTypeEnumValues Enumerates the set of values for DiscoveryJobResultDiscoveryTypeEnum
 func GetDiscoveryJobResultDiscoveryTypeEnumValues() []DiscoveryJobResultDiscoveryTypeEnum {
 	values := make([]DiscoveryJobResultDiscoveryTypeEnum, 0)
@@ -155,12 +161,7 @@ func GetDiscoveryJobResultDiscoveryTypeEnumStringValues() []string {
 
 // GetMappingDiscoveryJobResultDiscoveryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDiscoveryJobResultDiscoveryTypeEnum(val string) (DiscoveryJobResultDiscoveryTypeEnum, bool) {
-	mappingDiscoveryJobResultDiscoveryTypeEnumIgnoreCase := make(map[string]DiscoveryJobResultDiscoveryTypeEnum)
-	for k, v := range mappingDiscoveryJobResultDiscoveryTypeEnum {
-		mappingDiscoveryJobResultDiscoveryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDiscoveryJobResultDiscoveryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDiscoveryJobResultDiscoveryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -176,6 +177,11 @@ const (
 var mappingDiscoveryJobResultObjectTypeEnum = map[string]DiscoveryJobResultObjectTypeEnum{
 	"TABLE":           DiscoveryJobResultObjectTypeTable,
 	"EDITIONING_VIEW": DiscoveryJobResultObjectTypeEditioningView,
+}
+
+var mappingDiscoveryJobResultObjectTypeEnumLowerCase = map[string]DiscoveryJobResultObjectTypeEnum{
+	"table":           DiscoveryJobResultObjectTypeTable,
+	"editioning_view": DiscoveryJobResultObjectTypeEditioningView,
 }
 
 // GetDiscoveryJobResultObjectTypeEnumValues Enumerates the set of values for DiscoveryJobResultObjectTypeEnum
@@ -197,12 +203,7 @@ func GetDiscoveryJobResultObjectTypeEnumStringValues() []string {
 
 // GetMappingDiscoveryJobResultObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDiscoveryJobResultObjectTypeEnum(val string) (DiscoveryJobResultObjectTypeEnum, bool) {
-	mappingDiscoveryJobResultObjectTypeEnumIgnoreCase := make(map[string]DiscoveryJobResultObjectTypeEnum)
-	for k, v := range mappingDiscoveryJobResultObjectTypeEnum {
-		mappingDiscoveryJobResultObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDiscoveryJobResultObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDiscoveryJobResultObjectTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -220,6 +221,12 @@ var mappingDiscoveryJobResultRelationTypeEnum = map[string]DiscoveryJobResultRel
 	"NONE":        DiscoveryJobResultRelationTypeNone,
 	"APP_DEFINED": DiscoveryJobResultRelationTypeAppDefined,
 	"DB_DEFINED":  DiscoveryJobResultRelationTypeDbDefined,
+}
+
+var mappingDiscoveryJobResultRelationTypeEnumLowerCase = map[string]DiscoveryJobResultRelationTypeEnum{
+	"none":        DiscoveryJobResultRelationTypeNone,
+	"app_defined": DiscoveryJobResultRelationTypeAppDefined,
+	"db_defined":  DiscoveryJobResultRelationTypeDbDefined,
 }
 
 // GetDiscoveryJobResultRelationTypeEnumValues Enumerates the set of values for DiscoveryJobResultRelationTypeEnum
@@ -242,12 +249,7 @@ func GetDiscoveryJobResultRelationTypeEnumStringValues() []string {
 
 // GetMappingDiscoveryJobResultRelationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDiscoveryJobResultRelationTypeEnum(val string) (DiscoveryJobResultRelationTypeEnum, bool) {
-	mappingDiscoveryJobResultRelationTypeEnumIgnoreCase := make(map[string]DiscoveryJobResultRelationTypeEnum)
-	for k, v := range mappingDiscoveryJobResultRelationTypeEnum {
-		mappingDiscoveryJobResultRelationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDiscoveryJobResultRelationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDiscoveryJobResultRelationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -267,6 +269,13 @@ var mappingDiscoveryJobResultPlannedActionEnum = map[string]DiscoveryJobResultPl
 	"ACCEPT":     DiscoveryJobResultPlannedActionAccept,
 	"INVALIDATE": DiscoveryJobResultPlannedActionInvalidate,
 	"REJECT":     DiscoveryJobResultPlannedActionReject,
+}
+
+var mappingDiscoveryJobResultPlannedActionEnumLowerCase = map[string]DiscoveryJobResultPlannedActionEnum{
+	"none":       DiscoveryJobResultPlannedActionNone,
+	"accept":     DiscoveryJobResultPlannedActionAccept,
+	"invalidate": DiscoveryJobResultPlannedActionInvalidate,
+	"reject":     DiscoveryJobResultPlannedActionReject,
 }
 
 // GetDiscoveryJobResultPlannedActionEnumValues Enumerates the set of values for DiscoveryJobResultPlannedActionEnum
@@ -290,11 +299,6 @@ func GetDiscoveryJobResultPlannedActionEnumStringValues() []string {
 
 // GetMappingDiscoveryJobResultPlannedActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDiscoveryJobResultPlannedActionEnum(val string) (DiscoveryJobResultPlannedActionEnum, bool) {
-	mappingDiscoveryJobResultPlannedActionEnumIgnoreCase := make(map[string]DiscoveryJobResultPlannedActionEnum)
-	for k, v := range mappingDiscoveryJobResultPlannedActionEnum {
-		mappingDiscoveryJobResultPlannedActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDiscoveryJobResultPlannedActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDiscoveryJobResultPlannedActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
