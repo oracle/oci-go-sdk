@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -139,6 +139,13 @@ var mappingImageLaunchModeEnum = map[string]ImageLaunchModeEnum{
 	"CUSTOM":          ImageLaunchModeCustom,
 }
 
+var mappingImageLaunchModeEnumLowerCase = map[string]ImageLaunchModeEnum{
+	"native":          ImageLaunchModeNative,
+	"emulated":        ImageLaunchModeEmulated,
+	"paravirtualized": ImageLaunchModeParavirtualized,
+	"custom":          ImageLaunchModeCustom,
+}
+
 // GetImageLaunchModeEnumValues Enumerates the set of values for ImageLaunchModeEnum
 func GetImageLaunchModeEnumValues() []ImageLaunchModeEnum {
 	values := make([]ImageLaunchModeEnum, 0)
@@ -160,12 +167,7 @@ func GetImageLaunchModeEnumStringValues() []string {
 
 // GetMappingImageLaunchModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingImageLaunchModeEnum(val string) (ImageLaunchModeEnum, bool) {
-	mappingImageLaunchModeEnumIgnoreCase := make(map[string]ImageLaunchModeEnum)
-	for k, v := range mappingImageLaunchModeEnum {
-		mappingImageLaunchModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingImageLaunchModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingImageLaunchModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -191,6 +193,15 @@ var mappingImageLifecycleStateEnum = map[string]ImageLifecycleStateEnum{
 	"DELETED":      ImageLifecycleStateDeleted,
 }
 
+var mappingImageLifecycleStateEnumLowerCase = map[string]ImageLifecycleStateEnum{
+	"provisioning": ImageLifecycleStateProvisioning,
+	"importing":    ImageLifecycleStateImporting,
+	"available":    ImageLifecycleStateAvailable,
+	"exporting":    ImageLifecycleStateExporting,
+	"disabled":     ImageLifecycleStateDisabled,
+	"deleted":      ImageLifecycleStateDeleted,
+}
+
 // GetImageLifecycleStateEnumValues Enumerates the set of values for ImageLifecycleStateEnum
 func GetImageLifecycleStateEnumValues() []ImageLifecycleStateEnum {
 	values := make([]ImageLifecycleStateEnum, 0)
@@ -214,12 +225,7 @@ func GetImageLifecycleStateEnumStringValues() []string {
 
 // GetMappingImageLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingImageLifecycleStateEnum(val string) (ImageLifecycleStateEnum, bool) {
-	mappingImageLifecycleStateEnumIgnoreCase := make(map[string]ImageLifecycleStateEnum)
-	for k, v := range mappingImageLifecycleStateEnum {
-		mappingImageLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingImageLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingImageLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -235,6 +241,11 @@ const (
 var mappingImageListingTypeEnum = map[string]ImageListingTypeEnum{
 	"COMMUNITY": ImageListingTypeCommunity,
 	"NONE":      ImageListingTypeNone,
+}
+
+var mappingImageListingTypeEnumLowerCase = map[string]ImageListingTypeEnum{
+	"community": ImageListingTypeCommunity,
+	"none":      ImageListingTypeNone,
 }
 
 // GetImageListingTypeEnumValues Enumerates the set of values for ImageListingTypeEnum
@@ -256,11 +267,6 @@ func GetImageListingTypeEnumStringValues() []string {
 
 // GetMappingImageListingTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingImageListingTypeEnum(val string) (ImageListingTypeEnum, bool) {
-	mappingImageListingTypeEnumIgnoreCase := make(map[string]ImageListingTypeEnum)
-	for k, v := range mappingImageListingTypeEnum {
-		mappingImageListingTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingImageListingTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingImageListingTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -109,6 +109,12 @@ var mappingAwrDbReportFormatEnum = map[string]AwrDbReportFormatEnum{
 	"XML":  AwrDbReportFormatXml,
 }
 
+var mappingAwrDbReportFormatEnumLowerCase = map[string]AwrDbReportFormatEnum{
+	"html": AwrDbReportFormatHtml,
+	"text": AwrDbReportFormatText,
+	"xml":  AwrDbReportFormatXml,
+}
+
 // GetAwrDbReportFormatEnumValues Enumerates the set of values for AwrDbReportFormatEnum
 func GetAwrDbReportFormatEnumValues() []AwrDbReportFormatEnum {
 	values := make([]AwrDbReportFormatEnum, 0)
@@ -129,11 +135,6 @@ func GetAwrDbReportFormatEnumStringValues() []string {
 
 // GetMappingAwrDbReportFormatEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAwrDbReportFormatEnum(val string) (AwrDbReportFormatEnum, bool) {
-	mappingAwrDbReportFormatEnumIgnoreCase := make(map[string]AwrDbReportFormatEnum)
-	for k, v := range mappingAwrDbReportFormatEnum {
-		mappingAwrDbReportFormatEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAwrDbReportFormatEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAwrDbReportFormatEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

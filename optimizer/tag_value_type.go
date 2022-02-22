@@ -29,6 +29,11 @@ var mappingTagValueTypeEnum = map[string]TagValueTypeEnum{
 	"ANY":   TagValueTypeAny,
 }
 
+var mappingTagValueTypeEnumLowerCase = map[string]TagValueTypeEnum{
+	"value": TagValueTypeValue,
+	"any":   TagValueTypeAny,
+}
+
 // GetTagValueTypeEnumValues Enumerates the set of values for TagValueTypeEnum
 func GetTagValueTypeEnumValues() []TagValueTypeEnum {
 	values := make([]TagValueTypeEnum, 0)
@@ -48,11 +53,6 @@ func GetTagValueTypeEnumStringValues() []string {
 
 // GetMappingTagValueTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTagValueTypeEnum(val string) (TagValueTypeEnum, bool) {
-	mappingTagValueTypeEnumIgnoreCase := make(map[string]TagValueTypeEnum)
-	for k, v := range mappingTagValueTypeEnum {
-		mappingTagValueTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTagValueTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTagValueTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

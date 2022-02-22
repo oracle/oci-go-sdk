@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -79,6 +79,11 @@ var mappingLogAnalyticsAssociationParameterStatusEnum = map[string]LogAnalyticsA
 	"FAILED":    LogAnalyticsAssociationParameterStatusFailed,
 }
 
+var mappingLogAnalyticsAssociationParameterStatusEnumLowerCase = map[string]LogAnalyticsAssociationParameterStatusEnum{
+	"succeeded": LogAnalyticsAssociationParameterStatusSucceeded,
+	"failed":    LogAnalyticsAssociationParameterStatusFailed,
+}
+
 // GetLogAnalyticsAssociationParameterStatusEnumValues Enumerates the set of values for LogAnalyticsAssociationParameterStatusEnum
 func GetLogAnalyticsAssociationParameterStatusEnumValues() []LogAnalyticsAssociationParameterStatusEnum {
 	values := make([]LogAnalyticsAssociationParameterStatusEnum, 0)
@@ -98,11 +103,6 @@ func GetLogAnalyticsAssociationParameterStatusEnumStringValues() []string {
 
 // GetMappingLogAnalyticsAssociationParameterStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogAnalyticsAssociationParameterStatusEnum(val string) (LogAnalyticsAssociationParameterStatusEnum, bool) {
-	mappingLogAnalyticsAssociationParameterStatusEnumIgnoreCase := make(map[string]LogAnalyticsAssociationParameterStatusEnum)
-	for k, v := range mappingLogAnalyticsAssociationParameterStatusEnum {
-		mappingLogAnalyticsAssociationParameterStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogAnalyticsAssociationParameterStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogAnalyticsAssociationParameterStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

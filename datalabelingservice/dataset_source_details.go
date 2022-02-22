@@ -12,7 +12,7 @@ package datalabelingservice
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingDatasetSourceDetailsSourceTypeEnum = map[string]DatasetSourceDetailsS
 	"OBJECT_STORAGE": DatasetSourceDetailsSourceTypeObjectStorage,
 }
 
+var mappingDatasetSourceDetailsSourceTypeEnumLowerCase = map[string]DatasetSourceDetailsSourceTypeEnum{
+	"object_storage": DatasetSourceDetailsSourceTypeObjectStorage,
+}
+
 // GetDatasetSourceDetailsSourceTypeEnumValues Enumerates the set of values for DatasetSourceDetailsSourceTypeEnum
 func GetDatasetSourceDetailsSourceTypeEnumValues() []DatasetSourceDetailsSourceTypeEnum {
 	values := make([]DatasetSourceDetailsSourceTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetDatasetSourceDetailsSourceTypeEnumStringValues() []string {
 
 // GetMappingDatasetSourceDetailsSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatasetSourceDetailsSourceTypeEnum(val string) (DatasetSourceDetailsSourceTypeEnum, bool) {
-	mappingDatasetSourceDetailsSourceTypeEnumIgnoreCase := make(map[string]DatasetSourceDetailsSourceTypeEnum)
-	for k, v := range mappingDatasetSourceDetailsSourceTypeEnum {
-		mappingDatasetSourceDetailsSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatasetSourceDetailsSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatasetSourceDetailsSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

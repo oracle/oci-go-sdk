@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -63,6 +63,11 @@ var mappingAuthDetailsModelTypeEnum = map[string]AuthDetailsModelTypeEnum{
 	"RESOURCE_PRINCIPAL_AUTH_DETAILS": AuthDetailsModelTypeResourcePrincipalAuthDetails,
 }
 
+var mappingAuthDetailsModelTypeEnumLowerCase = map[string]AuthDetailsModelTypeEnum{
+	"no_auth_details":                 AuthDetailsModelTypeNoAuthDetails,
+	"resource_principal_auth_details": AuthDetailsModelTypeResourcePrincipalAuthDetails,
+}
+
 // GetAuthDetailsModelTypeEnumValues Enumerates the set of values for AuthDetailsModelTypeEnum
 func GetAuthDetailsModelTypeEnumValues() []AuthDetailsModelTypeEnum {
 	values := make([]AuthDetailsModelTypeEnum, 0)
@@ -82,11 +87,6 @@ func GetAuthDetailsModelTypeEnumStringValues() []string {
 
 // GetMappingAuthDetailsModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAuthDetailsModelTypeEnum(val string) (AuthDetailsModelTypeEnum, bool) {
-	mappingAuthDetailsModelTypeEnumIgnoreCase := make(map[string]AuthDetailsModelTypeEnum)
-	for k, v := range mappingAuthDetailsModelTypeEnum {
-		mappingAuthDetailsModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAuthDetailsModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAuthDetailsModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

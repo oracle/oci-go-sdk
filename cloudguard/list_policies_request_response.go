@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -126,6 +126,11 @@ var mappingListPoliciesSortOrderEnum = map[string]ListPoliciesSortOrderEnum{
 	"DESC": ListPoliciesSortOrderDesc,
 }
 
+var mappingListPoliciesSortOrderEnumLowerCase = map[string]ListPoliciesSortOrderEnum{
+	"asc":  ListPoliciesSortOrderAsc,
+	"desc": ListPoliciesSortOrderDesc,
+}
+
 // GetListPoliciesSortOrderEnumValues Enumerates the set of values for ListPoliciesSortOrderEnum
 func GetListPoliciesSortOrderEnumValues() []ListPoliciesSortOrderEnum {
 	values := make([]ListPoliciesSortOrderEnum, 0)
@@ -145,12 +150,7 @@ func GetListPoliciesSortOrderEnumStringValues() []string {
 
 // GetMappingListPoliciesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPoliciesSortOrderEnum(val string) (ListPoliciesSortOrderEnum, bool) {
-	mappingListPoliciesSortOrderEnumIgnoreCase := make(map[string]ListPoliciesSortOrderEnum)
-	for k, v := range mappingListPoliciesSortOrderEnum {
-		mappingListPoliciesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPoliciesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPoliciesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -166,6 +166,11 @@ const (
 var mappingListPoliciesSortByEnum = map[string]ListPoliciesSortByEnum{
 	"timeCreated": ListPoliciesSortByTimecreated,
 	"displayName": ListPoliciesSortByDisplayname,
+}
+
+var mappingListPoliciesSortByEnumLowerCase = map[string]ListPoliciesSortByEnum{
+	"timecreated": ListPoliciesSortByTimecreated,
+	"displayname": ListPoliciesSortByDisplayname,
 }
 
 // GetListPoliciesSortByEnumValues Enumerates the set of values for ListPoliciesSortByEnum
@@ -187,11 +192,6 @@ func GetListPoliciesSortByEnumStringValues() []string {
 
 // GetMappingListPoliciesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPoliciesSortByEnum(val string) (ListPoliciesSortByEnum, bool) {
-	mappingListPoliciesSortByEnumIgnoreCase := make(map[string]ListPoliciesSortByEnum)
-	for k, v := range mappingListPoliciesSortByEnum {
-		mappingListPoliciesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPoliciesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPoliciesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

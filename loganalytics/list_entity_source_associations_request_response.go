@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -160,6 +160,14 @@ var mappingListEntitySourceAssociationsLifeCycleStateEnum = map[string]ListEntit
 	"FAILED":      ListEntitySourceAssociationsLifeCycleStateFailed,
 }
 
+var mappingListEntitySourceAssociationsLifeCycleStateEnumLowerCase = map[string]ListEntitySourceAssociationsLifeCycleStateEnum{
+	"all":         ListEntitySourceAssociationsLifeCycleStateAll,
+	"accepted":    ListEntitySourceAssociationsLifeCycleStateAccepted,
+	"in_progress": ListEntitySourceAssociationsLifeCycleStateInProgress,
+	"succeeded":   ListEntitySourceAssociationsLifeCycleStateSucceeded,
+	"failed":      ListEntitySourceAssociationsLifeCycleStateFailed,
+}
+
 // GetListEntitySourceAssociationsLifeCycleStateEnumValues Enumerates the set of values for ListEntitySourceAssociationsLifeCycleStateEnum
 func GetListEntitySourceAssociationsLifeCycleStateEnumValues() []ListEntitySourceAssociationsLifeCycleStateEnum {
 	values := make([]ListEntitySourceAssociationsLifeCycleStateEnum, 0)
@@ -182,12 +190,7 @@ func GetListEntitySourceAssociationsLifeCycleStateEnumStringValues() []string {
 
 // GetMappingListEntitySourceAssociationsLifeCycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListEntitySourceAssociationsLifeCycleStateEnum(val string) (ListEntitySourceAssociationsLifeCycleStateEnum, bool) {
-	mappingListEntitySourceAssociationsLifeCycleStateEnumIgnoreCase := make(map[string]ListEntitySourceAssociationsLifeCycleStateEnum)
-	for k, v := range mappingListEntitySourceAssociationsLifeCycleStateEnum {
-		mappingListEntitySourceAssociationsLifeCycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListEntitySourceAssociationsLifeCycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListEntitySourceAssociationsLifeCycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -203,6 +206,11 @@ const (
 var mappingListEntitySourceAssociationsSortOrderEnum = map[string]ListEntitySourceAssociationsSortOrderEnum{
 	"ASC":  ListEntitySourceAssociationsSortOrderAsc,
 	"DESC": ListEntitySourceAssociationsSortOrderDesc,
+}
+
+var mappingListEntitySourceAssociationsSortOrderEnumLowerCase = map[string]ListEntitySourceAssociationsSortOrderEnum{
+	"asc":  ListEntitySourceAssociationsSortOrderAsc,
+	"desc": ListEntitySourceAssociationsSortOrderDesc,
 }
 
 // GetListEntitySourceAssociationsSortOrderEnumValues Enumerates the set of values for ListEntitySourceAssociationsSortOrderEnum
@@ -224,12 +232,7 @@ func GetListEntitySourceAssociationsSortOrderEnumStringValues() []string {
 
 // GetMappingListEntitySourceAssociationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListEntitySourceAssociationsSortOrderEnum(val string) (ListEntitySourceAssociationsSortOrderEnum, bool) {
-	mappingListEntitySourceAssociationsSortOrderEnumIgnoreCase := make(map[string]ListEntitySourceAssociationsSortOrderEnum)
-	for k, v := range mappingListEntitySourceAssociationsSortOrderEnum {
-		mappingListEntitySourceAssociationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListEntitySourceAssociationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListEntitySourceAssociationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -246,6 +249,12 @@ const (
 var mappingListEntitySourceAssociationsSortByEnum = map[string]ListEntitySourceAssociationsSortByEnum{
 	"sourceDisplayName": ListEntitySourceAssociationsSortBySourcedisplayname,
 	"timeLastAttempted": ListEntitySourceAssociationsSortByTimelastattempted,
+	"status":            ListEntitySourceAssociationsSortByStatus,
+}
+
+var mappingListEntitySourceAssociationsSortByEnumLowerCase = map[string]ListEntitySourceAssociationsSortByEnum{
+	"sourcedisplayname": ListEntitySourceAssociationsSortBySourcedisplayname,
+	"timelastattempted": ListEntitySourceAssociationsSortByTimelastattempted,
 	"status":            ListEntitySourceAssociationsSortByStatus,
 }
 
@@ -269,11 +278,6 @@ func GetListEntitySourceAssociationsSortByEnumStringValues() []string {
 
 // GetMappingListEntitySourceAssociationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListEntitySourceAssociationsSortByEnum(val string) (ListEntitySourceAssociationsSortByEnum, bool) {
-	mappingListEntitySourceAssociationsSortByEnumIgnoreCase := make(map[string]ListEntitySourceAssociationsSortByEnum)
-	for k, v := range mappingListEntitySourceAssociationsSortByEnum {
-		mappingListEntitySourceAssociationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListEntitySourceAssociationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListEntitySourceAssociationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package blockchain
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -139,6 +139,11 @@ var mappingBlockchainPlatformPlatformRoleEnum = map[string]BlockchainPlatformPla
 	"PARTICIPANT": BlockchainPlatformPlatformRoleParticipant,
 }
 
+var mappingBlockchainPlatformPlatformRoleEnumLowerCase = map[string]BlockchainPlatformPlatformRoleEnum{
+	"founder":     BlockchainPlatformPlatformRoleFounder,
+	"participant": BlockchainPlatformPlatformRoleParticipant,
+}
+
 // GetBlockchainPlatformPlatformRoleEnumValues Enumerates the set of values for BlockchainPlatformPlatformRoleEnum
 func GetBlockchainPlatformPlatformRoleEnumValues() []BlockchainPlatformPlatformRoleEnum {
 	values := make([]BlockchainPlatformPlatformRoleEnum, 0)
@@ -158,12 +163,7 @@ func GetBlockchainPlatformPlatformRoleEnumStringValues() []string {
 
 // GetMappingBlockchainPlatformPlatformRoleEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBlockchainPlatformPlatformRoleEnum(val string) (BlockchainPlatformPlatformRoleEnum, bool) {
-	mappingBlockchainPlatformPlatformRoleEnumIgnoreCase := make(map[string]BlockchainPlatformPlatformRoleEnum)
-	for k, v := range mappingBlockchainPlatformPlatformRoleEnum {
-		mappingBlockchainPlatformPlatformRoleEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBlockchainPlatformPlatformRoleEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBlockchainPlatformPlatformRoleEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -189,6 +189,15 @@ var mappingBlockchainPlatformComputeShapeEnum = map[string]BlockchainPlatformCom
 	"ENTERPRISE_CUSTOM":      BlockchainPlatformComputeShapeEnterpriseCustom,
 }
 
+var mappingBlockchainPlatformComputeShapeEnumLowerCase = map[string]BlockchainPlatformComputeShapeEnum{
+	"standard":               BlockchainPlatformComputeShapeStandard,
+	"enterprise_small":       BlockchainPlatformComputeShapeEnterpriseSmall,
+	"enterprise_medium":      BlockchainPlatformComputeShapeEnterpriseMedium,
+	"enterprise_large":       BlockchainPlatformComputeShapeEnterpriseLarge,
+	"enterprise_extra_large": BlockchainPlatformComputeShapeEnterpriseExtraLarge,
+	"enterprise_custom":      BlockchainPlatformComputeShapeEnterpriseCustom,
+}
+
 // GetBlockchainPlatformComputeShapeEnumValues Enumerates the set of values for BlockchainPlatformComputeShapeEnum
 func GetBlockchainPlatformComputeShapeEnumValues() []BlockchainPlatformComputeShapeEnum {
 	values := make([]BlockchainPlatformComputeShapeEnum, 0)
@@ -212,12 +221,7 @@ func GetBlockchainPlatformComputeShapeEnumStringValues() []string {
 
 // GetMappingBlockchainPlatformComputeShapeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBlockchainPlatformComputeShapeEnum(val string) (BlockchainPlatformComputeShapeEnum, bool) {
-	mappingBlockchainPlatformComputeShapeEnumIgnoreCase := make(map[string]BlockchainPlatformComputeShapeEnum)
-	for k, v := range mappingBlockchainPlatformComputeShapeEnum {
-		mappingBlockchainPlatformComputeShapeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBlockchainPlatformComputeShapeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBlockchainPlatformComputeShapeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -233,6 +237,11 @@ const (
 var mappingBlockchainPlatformPlatformShapeTypeEnum = map[string]BlockchainPlatformPlatformShapeTypeEnum{
 	"DEFAULT": BlockchainPlatformPlatformShapeTypeDefault,
 	"CUSTOM":  BlockchainPlatformPlatformShapeTypeCustom,
+}
+
+var mappingBlockchainPlatformPlatformShapeTypeEnumLowerCase = map[string]BlockchainPlatformPlatformShapeTypeEnum{
+	"default": BlockchainPlatformPlatformShapeTypeDefault,
+	"custom":  BlockchainPlatformPlatformShapeTypeCustom,
 }
 
 // GetBlockchainPlatformPlatformShapeTypeEnumValues Enumerates the set of values for BlockchainPlatformPlatformShapeTypeEnum
@@ -254,12 +263,7 @@ func GetBlockchainPlatformPlatformShapeTypeEnumStringValues() []string {
 
 // GetMappingBlockchainPlatformPlatformShapeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBlockchainPlatformPlatformShapeTypeEnum(val string) (BlockchainPlatformPlatformShapeTypeEnum, bool) {
-	mappingBlockchainPlatformPlatformShapeTypeEnumIgnoreCase := make(map[string]BlockchainPlatformPlatformShapeTypeEnum)
-	for k, v := range mappingBlockchainPlatformPlatformShapeTypeEnum {
-		mappingBlockchainPlatformPlatformShapeTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBlockchainPlatformPlatformShapeTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBlockchainPlatformPlatformShapeTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -275,6 +279,11 @@ const (
 var mappingBlockchainPlatformLoadBalancerShapeEnum = map[string]BlockchainPlatformLoadBalancerShapeEnum{
 	"LB_100_MBPS": BlockchainPlatformLoadBalancerShape100Mbps,
 	"LB_400_MBPS": BlockchainPlatformLoadBalancerShape400Mbps,
+}
+
+var mappingBlockchainPlatformLoadBalancerShapeEnumLowerCase = map[string]BlockchainPlatformLoadBalancerShapeEnum{
+	"lb_100_mbps": BlockchainPlatformLoadBalancerShape100Mbps,
+	"lb_400_mbps": BlockchainPlatformLoadBalancerShape400Mbps,
 }
 
 // GetBlockchainPlatformLoadBalancerShapeEnumValues Enumerates the set of values for BlockchainPlatformLoadBalancerShapeEnum
@@ -296,12 +305,7 @@ func GetBlockchainPlatformLoadBalancerShapeEnumStringValues() []string {
 
 // GetMappingBlockchainPlatformLoadBalancerShapeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBlockchainPlatformLoadBalancerShapeEnum(val string) (BlockchainPlatformLoadBalancerShapeEnum, bool) {
-	mappingBlockchainPlatformLoadBalancerShapeEnumIgnoreCase := make(map[string]BlockchainPlatformLoadBalancerShapeEnum)
-	for k, v := range mappingBlockchainPlatformLoadBalancerShapeEnum {
-		mappingBlockchainPlatformLoadBalancerShapeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBlockchainPlatformLoadBalancerShapeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBlockchainPlatformLoadBalancerShapeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -331,6 +335,17 @@ var mappingBlockchainPlatformLifecycleStateEnum = map[string]BlockchainPlatformL
 	"FAILED":   BlockchainPlatformLifecycleStateFailed,
 }
 
+var mappingBlockchainPlatformLifecycleStateEnumLowerCase = map[string]BlockchainPlatformLifecycleStateEnum{
+	"creating": BlockchainPlatformLifecycleStateCreating,
+	"updating": BlockchainPlatformLifecycleStateUpdating,
+	"active":   BlockchainPlatformLifecycleStateActive,
+	"deleting": BlockchainPlatformLifecycleStateDeleting,
+	"deleted":  BlockchainPlatformLifecycleStateDeleted,
+	"scaling":  BlockchainPlatformLifecycleStateScaling,
+	"inactive": BlockchainPlatformLifecycleStateInactive,
+	"failed":   BlockchainPlatformLifecycleStateFailed,
+}
+
 // GetBlockchainPlatformLifecycleStateEnumValues Enumerates the set of values for BlockchainPlatformLifecycleStateEnum
 func GetBlockchainPlatformLifecycleStateEnumValues() []BlockchainPlatformLifecycleStateEnum {
 	values := make([]BlockchainPlatformLifecycleStateEnum, 0)
@@ -356,11 +371,6 @@ func GetBlockchainPlatformLifecycleStateEnumStringValues() []string {
 
 // GetMappingBlockchainPlatformLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBlockchainPlatformLifecycleStateEnum(val string) (BlockchainPlatformLifecycleStateEnum, bool) {
-	mappingBlockchainPlatformLifecycleStateEnumIgnoreCase := make(map[string]BlockchainPlatformLifecycleStateEnum)
-	for k, v := range mappingBlockchainPlatformLifecycleStateEnum {
-		mappingBlockchainPlatformLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBlockchainPlatformLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBlockchainPlatformLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

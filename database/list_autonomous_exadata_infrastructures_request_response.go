@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,11 @@ var mappingListAutonomousExadataInfrastructuresSortByEnum = map[string]ListAuton
 	"DISPLAYNAME": ListAutonomousExadataInfrastructuresSortByDisplayname,
 }
 
+var mappingListAutonomousExadataInfrastructuresSortByEnumLowerCase = map[string]ListAutonomousExadataInfrastructuresSortByEnum{
+	"timecreated": ListAutonomousExadataInfrastructuresSortByTimecreated,
+	"displayname": ListAutonomousExadataInfrastructuresSortByDisplayname,
+}
+
 // GetListAutonomousExadataInfrastructuresSortByEnumValues Enumerates the set of values for ListAutonomousExadataInfrastructuresSortByEnum
 func GetListAutonomousExadataInfrastructuresSortByEnumValues() []ListAutonomousExadataInfrastructuresSortByEnum {
 	values := make([]ListAutonomousExadataInfrastructuresSortByEnum, 0)
@@ -160,12 +165,7 @@ func GetListAutonomousExadataInfrastructuresSortByEnumStringValues() []string {
 
 // GetMappingListAutonomousExadataInfrastructuresSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAutonomousExadataInfrastructuresSortByEnum(val string) (ListAutonomousExadataInfrastructuresSortByEnum, bool) {
-	mappingListAutonomousExadataInfrastructuresSortByEnumIgnoreCase := make(map[string]ListAutonomousExadataInfrastructuresSortByEnum)
-	for k, v := range mappingListAutonomousExadataInfrastructuresSortByEnum {
-		mappingListAutonomousExadataInfrastructuresSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAutonomousExadataInfrastructuresSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAutonomousExadataInfrastructuresSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +181,11 @@ const (
 var mappingListAutonomousExadataInfrastructuresSortOrderEnum = map[string]ListAutonomousExadataInfrastructuresSortOrderEnum{
 	"ASC":  ListAutonomousExadataInfrastructuresSortOrderAsc,
 	"DESC": ListAutonomousExadataInfrastructuresSortOrderDesc,
+}
+
+var mappingListAutonomousExadataInfrastructuresSortOrderEnumLowerCase = map[string]ListAutonomousExadataInfrastructuresSortOrderEnum{
+	"asc":  ListAutonomousExadataInfrastructuresSortOrderAsc,
+	"desc": ListAutonomousExadataInfrastructuresSortOrderDesc,
 }
 
 // GetListAutonomousExadataInfrastructuresSortOrderEnumValues Enumerates the set of values for ListAutonomousExadataInfrastructuresSortOrderEnum
@@ -202,11 +207,6 @@ func GetListAutonomousExadataInfrastructuresSortOrderEnumStringValues() []string
 
 // GetMappingListAutonomousExadataInfrastructuresSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAutonomousExadataInfrastructuresSortOrderEnum(val string) (ListAutonomousExadataInfrastructuresSortOrderEnum, bool) {
-	mappingListAutonomousExadataInfrastructuresSortOrderEnumIgnoreCase := make(map[string]ListAutonomousExadataInfrastructuresSortOrderEnum)
-	for k, v := range mappingListAutonomousExadataInfrastructuresSortOrderEnum {
-		mappingListAutonomousExadataInfrastructuresSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAutonomousExadataInfrastructuresSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAutonomousExadataInfrastructuresSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

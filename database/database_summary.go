@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -146,6 +146,19 @@ var mappingDatabaseSummaryLifecycleStateEnum = map[string]DatabaseSummaryLifecyc
 	"FAILED":             DatabaseSummaryLifecycleStateFailed,
 }
 
+var mappingDatabaseSummaryLifecycleStateEnumLowerCase = map[string]DatabaseSummaryLifecycleStateEnum{
+	"provisioning":       DatabaseSummaryLifecycleStateProvisioning,
+	"available":          DatabaseSummaryLifecycleStateAvailable,
+	"updating":           DatabaseSummaryLifecycleStateUpdating,
+	"backup_in_progress": DatabaseSummaryLifecycleStateBackupInProgress,
+	"upgrading":          DatabaseSummaryLifecycleStateUpgrading,
+	"converting":         DatabaseSummaryLifecycleStateConverting,
+	"terminating":        DatabaseSummaryLifecycleStateTerminating,
+	"terminated":         DatabaseSummaryLifecycleStateTerminated,
+	"restore_failed":     DatabaseSummaryLifecycleStateRestoreFailed,
+	"failed":             DatabaseSummaryLifecycleStateFailed,
+}
+
 // GetDatabaseSummaryLifecycleStateEnumValues Enumerates the set of values for DatabaseSummaryLifecycleStateEnum
 func GetDatabaseSummaryLifecycleStateEnumValues() []DatabaseSummaryLifecycleStateEnum {
 	values := make([]DatabaseSummaryLifecycleStateEnum, 0)
@@ -173,11 +186,6 @@ func GetDatabaseSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingDatabaseSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseSummaryLifecycleStateEnum(val string) (DatabaseSummaryLifecycleStateEnum, bool) {
-	mappingDatabaseSummaryLifecycleStateEnumIgnoreCase := make(map[string]DatabaseSummaryLifecycleStateEnum)
-	for k, v := range mappingDatabaseSummaryLifecycleStateEnum {
-		mappingDatabaseSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

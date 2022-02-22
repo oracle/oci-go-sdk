@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -142,6 +142,11 @@ var mappingListExternalDatabaseConnectorsSortByEnum = map[string]ListExternalDat
 	"TIMECREATED": ListExternalDatabaseConnectorsSortByTimecreated,
 }
 
+var mappingListExternalDatabaseConnectorsSortByEnumLowerCase = map[string]ListExternalDatabaseConnectorsSortByEnum{
+	"displayname": ListExternalDatabaseConnectorsSortByDisplayname,
+	"timecreated": ListExternalDatabaseConnectorsSortByTimecreated,
+}
+
 // GetListExternalDatabaseConnectorsSortByEnumValues Enumerates the set of values for ListExternalDatabaseConnectorsSortByEnum
 func GetListExternalDatabaseConnectorsSortByEnumValues() []ListExternalDatabaseConnectorsSortByEnum {
 	values := make([]ListExternalDatabaseConnectorsSortByEnum, 0)
@@ -161,12 +166,7 @@ func GetListExternalDatabaseConnectorsSortByEnumStringValues() []string {
 
 // GetMappingListExternalDatabaseConnectorsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListExternalDatabaseConnectorsSortByEnum(val string) (ListExternalDatabaseConnectorsSortByEnum, bool) {
-	mappingListExternalDatabaseConnectorsSortByEnumIgnoreCase := make(map[string]ListExternalDatabaseConnectorsSortByEnum)
-	for k, v := range mappingListExternalDatabaseConnectorsSortByEnum {
-		mappingListExternalDatabaseConnectorsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListExternalDatabaseConnectorsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListExternalDatabaseConnectorsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -182,6 +182,11 @@ const (
 var mappingListExternalDatabaseConnectorsSortOrderEnum = map[string]ListExternalDatabaseConnectorsSortOrderEnum{
 	"ASC":  ListExternalDatabaseConnectorsSortOrderAsc,
 	"DESC": ListExternalDatabaseConnectorsSortOrderDesc,
+}
+
+var mappingListExternalDatabaseConnectorsSortOrderEnumLowerCase = map[string]ListExternalDatabaseConnectorsSortOrderEnum{
+	"asc":  ListExternalDatabaseConnectorsSortOrderAsc,
+	"desc": ListExternalDatabaseConnectorsSortOrderDesc,
 }
 
 // GetListExternalDatabaseConnectorsSortOrderEnumValues Enumerates the set of values for ListExternalDatabaseConnectorsSortOrderEnum
@@ -203,11 +208,6 @@ func GetListExternalDatabaseConnectorsSortOrderEnumStringValues() []string {
 
 // GetMappingListExternalDatabaseConnectorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListExternalDatabaseConnectorsSortOrderEnum(val string) (ListExternalDatabaseConnectorsSortOrderEnum, bool) {
-	mappingListExternalDatabaseConnectorsSortOrderEnumIgnoreCase := make(map[string]ListExternalDatabaseConnectorsSortOrderEnum)
-	for k, v := range mappingListExternalDatabaseConnectorsSortOrderEnum {
-		mappingListExternalDatabaseConnectorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListExternalDatabaseConnectorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListExternalDatabaseConnectorsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

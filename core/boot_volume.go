@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -81,6 +81,7 @@ type BootVolume struct {
 	// Allowed values:
 	//   * `10`: Represents Balanced option.
 	//   * `20`: Represents Higher Performance option.
+	// For performance autotune enabled volumes, It would be the Default(Minimum) VPUs/GB.
 	VpusPerGB *int64 `mandatory:"false" json:"vpusPerGB"`
 
 	// The size of the boot volume in GBs.
@@ -94,10 +95,11 @@ type BootVolume struct {
 	// The OCID of the Key Management master encryption key assigned to the boot volume.
 	KmsKeyId *string `mandatory:"false" json:"kmsKeyId"`
 
-	// Specifies whether the auto-tune performance is enabled for this boot volume.
+	// Specifies whether the auto-tune performance is enabled for this boot volume. This field is deprecated.
+	// Use the `DetachedVolumeAutotunePolicy` instead to enable the volume for detached autotune.
 	IsAutoTuneEnabled *bool `mandatory:"false" json:"isAutoTuneEnabled"`
 
-	// The number of Volume Performance Units per GB that this boot volume is effectively tuned to when it's idle.
+	// The number of Volume Performance Units per GB that this boot volume is effectively tuned to.
 	AutoTunedVpusPerGB *int64 `mandatory:"false" json:"autoTunedVpusPerGB"`
 
 	// The list of boot volume replicas of this boot volume
@@ -229,6 +231,15 @@ var mappingBootVolumeLifecycleStateEnum = map[string]BootVolumeLifecycleStateEnu
 	"FAULTY":       BootVolumeLifecycleStateFaulty,
 }
 
+var mappingBootVolumeLifecycleStateEnumLowerCase = map[string]BootVolumeLifecycleStateEnum{
+	"provisioning": BootVolumeLifecycleStateProvisioning,
+	"restoring":    BootVolumeLifecycleStateRestoring,
+	"available":    BootVolumeLifecycleStateAvailable,
+	"terminating":  BootVolumeLifecycleStateTerminating,
+	"terminated":   BootVolumeLifecycleStateTerminated,
+	"faulty":       BootVolumeLifecycleStateFaulty,
+}
+
 // GetBootVolumeLifecycleStateEnumValues Enumerates the set of values for BootVolumeLifecycleStateEnum
 func GetBootVolumeLifecycleStateEnumValues() []BootVolumeLifecycleStateEnum {
 	values := make([]BootVolumeLifecycleStateEnum, 0)
@@ -252,11 +263,6 @@ func GetBootVolumeLifecycleStateEnumStringValues() []string {
 
 // GetMappingBootVolumeLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBootVolumeLifecycleStateEnum(val string) (BootVolumeLifecycleStateEnum, bool) {
-	mappingBootVolumeLifecycleStateEnumIgnoreCase := make(map[string]BootVolumeLifecycleStateEnum)
-	for k, v := range mappingBootVolumeLifecycleStateEnum {
-		mappingBootVolumeLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBootVolumeLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBootVolumeLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

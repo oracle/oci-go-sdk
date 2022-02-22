@@ -13,7 +13,7 @@ package containerengine
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,14 @@ var mappingClusterMigrateToNativeVcnStatusStateEnum = map[string]ClusterMigrateT
 	"COMPLETED":            ClusterMigrateToNativeVcnStatusStateCompleted,
 }
 
+var mappingClusterMigrateToNativeVcnStatusStateEnumLowerCase = map[string]ClusterMigrateToNativeVcnStatusStateEnum{
+	"not_started":          ClusterMigrateToNativeVcnStatusStateNotStarted,
+	"requested":            ClusterMigrateToNativeVcnStatusStateRequested,
+	"in_progress":          ClusterMigrateToNativeVcnStatusStateInProgress,
+	"pending_decommission": ClusterMigrateToNativeVcnStatusStatePendingDecommission,
+	"completed":            ClusterMigrateToNativeVcnStatusStateCompleted,
+}
+
 // GetClusterMigrateToNativeVcnStatusStateEnumValues Enumerates the set of values for ClusterMigrateToNativeVcnStatusStateEnum
 func GetClusterMigrateToNativeVcnStatusStateEnumValues() []ClusterMigrateToNativeVcnStatusStateEnum {
 	values := make([]ClusterMigrateToNativeVcnStatusStateEnum, 0)
@@ -88,11 +96,6 @@ func GetClusterMigrateToNativeVcnStatusStateEnumStringValues() []string {
 
 // GetMappingClusterMigrateToNativeVcnStatusStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingClusterMigrateToNativeVcnStatusStateEnum(val string) (ClusterMigrateToNativeVcnStatusStateEnum, bool) {
-	mappingClusterMigrateToNativeVcnStatusStateEnumIgnoreCase := make(map[string]ClusterMigrateToNativeVcnStatusStateEnum)
-	for k, v := range mappingClusterMigrateToNativeVcnStatusStateEnum {
-		mappingClusterMigrateToNativeVcnStatusStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingClusterMigrateToNativeVcnStatusStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingClusterMigrateToNativeVcnStatusStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

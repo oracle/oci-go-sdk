@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -123,6 +123,11 @@ var mappingCreateTsigKeyScopeEnum = map[string]CreateTsigKeyScopeEnum{
 	"PRIVATE": CreateTsigKeyScopePrivate,
 }
 
+var mappingCreateTsigKeyScopeEnumLowerCase = map[string]CreateTsigKeyScopeEnum{
+	"global":  CreateTsigKeyScopeGlobal,
+	"private": CreateTsigKeyScopePrivate,
+}
+
 // GetCreateTsigKeyScopeEnumValues Enumerates the set of values for CreateTsigKeyScopeEnum
 func GetCreateTsigKeyScopeEnumValues() []CreateTsigKeyScopeEnum {
 	values := make([]CreateTsigKeyScopeEnum, 0)
@@ -142,11 +147,6 @@ func GetCreateTsigKeyScopeEnumStringValues() []string {
 
 // GetMappingCreateTsigKeyScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateTsigKeyScopeEnum(val string) (CreateTsigKeyScopeEnum, bool) {
-	mappingCreateTsigKeyScopeEnumIgnoreCase := make(map[string]CreateTsigKeyScopeEnum)
-	for k, v := range mappingCreateTsigKeyScopeEnum {
-		mappingCreateTsigKeyScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateTsigKeyScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateTsigKeyScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

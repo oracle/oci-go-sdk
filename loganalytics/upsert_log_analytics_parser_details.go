@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -138,6 +138,14 @@ var mappingUpsertLogAnalyticsParserDetailsTypeEnum = map[string]UpsertLogAnalyti
 	"DELIMITED": UpsertLogAnalyticsParserDetailsTypeDelimited,
 }
 
+var mappingUpsertLogAnalyticsParserDetailsTypeEnumLowerCase = map[string]UpsertLogAnalyticsParserDetailsTypeEnum{
+	"xml":       UpsertLogAnalyticsParserDetailsTypeXml,
+	"json":      UpsertLogAnalyticsParserDetailsTypeJson,
+	"regex":     UpsertLogAnalyticsParserDetailsTypeRegex,
+	"odl":       UpsertLogAnalyticsParserDetailsTypeOdl,
+	"delimited": UpsertLogAnalyticsParserDetailsTypeDelimited,
+}
+
 // GetUpsertLogAnalyticsParserDetailsTypeEnumValues Enumerates the set of values for UpsertLogAnalyticsParserDetailsTypeEnum
 func GetUpsertLogAnalyticsParserDetailsTypeEnumValues() []UpsertLogAnalyticsParserDetailsTypeEnum {
 	values := make([]UpsertLogAnalyticsParserDetailsTypeEnum, 0)
@@ -160,11 +168,6 @@ func GetUpsertLogAnalyticsParserDetailsTypeEnumStringValues() []string {
 
 // GetMappingUpsertLogAnalyticsParserDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpsertLogAnalyticsParserDetailsTypeEnum(val string) (UpsertLogAnalyticsParserDetailsTypeEnum, bool) {
-	mappingUpsertLogAnalyticsParserDetailsTypeEnumIgnoreCase := make(map[string]UpsertLogAnalyticsParserDetailsTypeEnum)
-	for k, v := range mappingUpsertLogAnalyticsParserDetailsTypeEnum {
-		mappingUpsertLogAnalyticsParserDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpsertLogAnalyticsParserDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpsertLogAnalyticsParserDetailsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

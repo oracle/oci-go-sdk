@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -122,6 +122,11 @@ var mappingDeleteSteeringPolicyAttachmentScopeEnum = map[string]DeleteSteeringPo
 	"PRIVATE": DeleteSteeringPolicyAttachmentScopePrivate,
 }
 
+var mappingDeleteSteeringPolicyAttachmentScopeEnumLowerCase = map[string]DeleteSteeringPolicyAttachmentScopeEnum{
+	"global":  DeleteSteeringPolicyAttachmentScopeGlobal,
+	"private": DeleteSteeringPolicyAttachmentScopePrivate,
+}
+
 // GetDeleteSteeringPolicyAttachmentScopeEnumValues Enumerates the set of values for DeleteSteeringPolicyAttachmentScopeEnum
 func GetDeleteSteeringPolicyAttachmentScopeEnumValues() []DeleteSteeringPolicyAttachmentScopeEnum {
 	values := make([]DeleteSteeringPolicyAttachmentScopeEnum, 0)
@@ -141,11 +146,6 @@ func GetDeleteSteeringPolicyAttachmentScopeEnumStringValues() []string {
 
 // GetMappingDeleteSteeringPolicyAttachmentScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeleteSteeringPolicyAttachmentScopeEnum(val string) (DeleteSteeringPolicyAttachmentScopeEnum, bool) {
-	mappingDeleteSteeringPolicyAttachmentScopeEnumIgnoreCase := make(map[string]DeleteSteeringPolicyAttachmentScopeEnum)
-	for k, v := range mappingDeleteSteeringPolicyAttachmentScopeEnum {
-		mappingDeleteSteeringPolicyAttachmentScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeleteSteeringPolicyAttachmentScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeleteSteeringPolicyAttachmentScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

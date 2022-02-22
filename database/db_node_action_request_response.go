@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -132,6 +132,13 @@ var mappingDbNodeActionActionEnum = map[string]DbNodeActionActionEnum{
 	"RESET":     DbNodeActionActionReset,
 }
 
+var mappingDbNodeActionActionEnumLowerCase = map[string]DbNodeActionActionEnum{
+	"stop":      DbNodeActionActionStop,
+	"start":     DbNodeActionActionStart,
+	"softreset": DbNodeActionActionSoftreset,
+	"reset":     DbNodeActionActionReset,
+}
+
 // GetDbNodeActionActionEnumValues Enumerates the set of values for DbNodeActionActionEnum
 func GetDbNodeActionActionEnumValues() []DbNodeActionActionEnum {
 	values := make([]DbNodeActionActionEnum, 0)
@@ -153,11 +160,6 @@ func GetDbNodeActionActionEnumStringValues() []string {
 
 // GetMappingDbNodeActionActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDbNodeActionActionEnum(val string) (DbNodeActionActionEnum, bool) {
-	mappingDbNodeActionActionEnumIgnoreCase := make(map[string]DbNodeActionActionEnum)
-	for k, v := range mappingDbNodeActionActionEnum {
-		mappingDbNodeActionActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDbNodeActionActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDbNodeActionActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

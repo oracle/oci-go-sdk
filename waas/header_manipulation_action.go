@@ -12,7 +12,7 @@ package waas
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,12 @@ var mappingHeaderManipulationActionActionEnum = map[string]HeaderManipulationAct
 	"REMOVE_HTTP_RESPONSE_HEADER": HeaderManipulationActionActionRemoveHttpResponseHeader,
 }
 
+var mappingHeaderManipulationActionActionEnumLowerCase = map[string]HeaderManipulationActionActionEnum{
+	"extend_http_response_header": HeaderManipulationActionActionExtendHttpResponseHeader,
+	"add_http_response_header":    HeaderManipulationActionActionAddHttpResponseHeader,
+	"remove_http_response_header": HeaderManipulationActionActionRemoveHttpResponseHeader,
+}
+
 // GetHeaderManipulationActionActionEnumValues Enumerates the set of values for HeaderManipulationActionActionEnum
 func GetHeaderManipulationActionActionEnumValues() []HeaderManipulationActionActionEnum {
 	values := make([]HeaderManipulationActionActionEnum, 0)
@@ -119,11 +125,6 @@ func GetHeaderManipulationActionActionEnumStringValues() []string {
 
 // GetMappingHeaderManipulationActionActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHeaderManipulationActionActionEnum(val string) (HeaderManipulationActionActionEnum, bool) {
-	mappingHeaderManipulationActionActionEnumIgnoreCase := make(map[string]HeaderManipulationActionActionEnum)
-	for k, v := range mappingHeaderManipulationActionActionEnum {
-		mappingHeaderManipulationActionActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHeaderManipulationActionActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHeaderManipulationActionActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

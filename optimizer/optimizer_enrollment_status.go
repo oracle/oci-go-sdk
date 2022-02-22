@@ -29,6 +29,11 @@ var mappingOptimizerEnrollmentStatusEnum = map[string]OptimizerEnrollmentStatusE
 	"INACTIVE": OptimizerEnrollmentStatusInactive,
 }
 
+var mappingOptimizerEnrollmentStatusEnumLowerCase = map[string]OptimizerEnrollmentStatusEnum{
+	"active":   OptimizerEnrollmentStatusActive,
+	"inactive": OptimizerEnrollmentStatusInactive,
+}
+
 // GetOptimizerEnrollmentStatusEnumValues Enumerates the set of values for OptimizerEnrollmentStatusEnum
 func GetOptimizerEnrollmentStatusEnumValues() []OptimizerEnrollmentStatusEnum {
 	values := make([]OptimizerEnrollmentStatusEnum, 0)
@@ -48,11 +53,6 @@ func GetOptimizerEnrollmentStatusEnumStringValues() []string {
 
 // GetMappingOptimizerEnrollmentStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOptimizerEnrollmentStatusEnum(val string) (OptimizerEnrollmentStatusEnum, bool) {
-	mappingOptimizerEnrollmentStatusEnumIgnoreCase := make(map[string]OptimizerEnrollmentStatusEnum)
-	for k, v := range mappingOptimizerEnrollmentStatusEnum {
-		mappingOptimizerEnrollmentStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOptimizerEnrollmentStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOptimizerEnrollmentStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

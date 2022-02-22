@@ -14,7 +14,7 @@ package opsi
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -136,6 +136,16 @@ var mappingHostConfigurationMetricGroupMetricNameEnum = map[string]HostConfigura
 	"HOST_ENTITES":                    HostConfigurationMetricGroupMetricNameEntites,
 }
 
+var mappingHostConfigurationMetricGroupMetricNameEnumLowerCase = map[string]HostConfigurationMetricGroupMetricNameEnum{
+	"host_product":                    HostConfigurationMetricGroupMetricNameProduct,
+	"host_resource_allocation":        HostConfigurationMetricGroupMetricNameResourceAllocation,
+	"host_memory_configuration":       HostConfigurationMetricGroupMetricNameMemoryConfiguration,
+	"host_hardware_configuration":     HostConfigurationMetricGroupMetricNameHardwareConfiguration,
+	"host_cpu_hardware_configuration": HostConfigurationMetricGroupMetricNameCpuHardwareConfiguration,
+	"host_network_configuration":      HostConfigurationMetricGroupMetricNameNetworkConfiguration,
+	"host_entites":                    HostConfigurationMetricGroupMetricNameEntites,
+}
+
 // GetHostConfigurationMetricGroupMetricNameEnumValues Enumerates the set of values for HostConfigurationMetricGroupMetricNameEnum
 func GetHostConfigurationMetricGroupMetricNameEnumValues() []HostConfigurationMetricGroupMetricNameEnum {
 	values := make([]HostConfigurationMetricGroupMetricNameEnum, 0)
@@ -160,11 +170,6 @@ func GetHostConfigurationMetricGroupMetricNameEnumStringValues() []string {
 
 // GetMappingHostConfigurationMetricGroupMetricNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHostConfigurationMetricGroupMetricNameEnum(val string) (HostConfigurationMetricGroupMetricNameEnum, bool) {
-	mappingHostConfigurationMetricGroupMetricNameEnumIgnoreCase := make(map[string]HostConfigurationMetricGroupMetricNameEnum)
-	for k, v := range mappingHostConfigurationMetricGroupMetricNameEnum {
-		mappingHostConfigurationMetricGroupMetricNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHostConfigurationMetricGroupMetricNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHostConfigurationMetricGroupMetricNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

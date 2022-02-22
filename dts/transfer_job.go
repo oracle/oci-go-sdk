@@ -11,7 +11,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -89,6 +89,11 @@ var mappingTransferJobDeviceTypeEnum = map[string]TransferJobDeviceTypeEnum{
 	"APPLIANCE": TransferJobDeviceTypeAppliance,
 }
 
+var mappingTransferJobDeviceTypeEnumLowerCase = map[string]TransferJobDeviceTypeEnum{
+	"disk":      TransferJobDeviceTypeDisk,
+	"appliance": TransferJobDeviceTypeAppliance,
+}
+
 // GetTransferJobDeviceTypeEnumValues Enumerates the set of values for TransferJobDeviceTypeEnum
 func GetTransferJobDeviceTypeEnumValues() []TransferJobDeviceTypeEnum {
 	values := make([]TransferJobDeviceTypeEnum, 0)
@@ -108,12 +113,7 @@ func GetTransferJobDeviceTypeEnumStringValues() []string {
 
 // GetMappingTransferJobDeviceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTransferJobDeviceTypeEnum(val string) (TransferJobDeviceTypeEnum, bool) {
-	mappingTransferJobDeviceTypeEnumIgnoreCase := make(map[string]TransferJobDeviceTypeEnum)
-	for k, v := range mappingTransferJobDeviceTypeEnum {
-		mappingTransferJobDeviceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTransferJobDeviceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTransferJobDeviceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -135,6 +135,14 @@ var mappingTransferJobLifecycleStateEnum = map[string]TransferJobLifecycleStateE
 	"ACTIVE":    TransferJobLifecycleStateActive,
 	"DELETED":   TransferJobLifecycleStateDeleted,
 	"CLOSED":    TransferJobLifecycleStateClosed,
+}
+
+var mappingTransferJobLifecycleStateEnumLowerCase = map[string]TransferJobLifecycleStateEnum{
+	"initiated": TransferJobLifecycleStateInitiated,
+	"preparing": TransferJobLifecycleStatePreparing,
+	"active":    TransferJobLifecycleStateActive,
+	"deleted":   TransferJobLifecycleStateDeleted,
+	"closed":    TransferJobLifecycleStateClosed,
 }
 
 // GetTransferJobLifecycleStateEnumValues Enumerates the set of values for TransferJobLifecycleStateEnum
@@ -159,11 +167,6 @@ func GetTransferJobLifecycleStateEnumStringValues() []string {
 
 // GetMappingTransferJobLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTransferJobLifecycleStateEnum(val string) (TransferJobLifecycleStateEnum, bool) {
-	mappingTransferJobLifecycleStateEnumIgnoreCase := make(map[string]TransferJobLifecycleStateEnum)
-	for k, v := range mappingTransferJobLifecycleStateEnum {
-		mappingTransferJobLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTransferJobLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTransferJobLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package datascience
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -77,6 +77,13 @@ var mappingFastLaunchJobConfigSummaryShapeSeriesEnum = map[string]FastLaunchJobC
 	"LEGACY":        FastLaunchJobConfigSummaryShapeSeriesLegacy,
 }
 
+var mappingFastLaunchJobConfigSummaryShapeSeriesEnumLowerCase = map[string]FastLaunchJobConfigSummaryShapeSeriesEnum{
+	"amd_rome":      FastLaunchJobConfigSummaryShapeSeriesAmdRome,
+	"intel_skylake": FastLaunchJobConfigSummaryShapeSeriesIntelSkylake,
+	"nvidia_gpu":    FastLaunchJobConfigSummaryShapeSeriesNvidiaGpu,
+	"legacy":        FastLaunchJobConfigSummaryShapeSeriesLegacy,
+}
+
 // GetFastLaunchJobConfigSummaryShapeSeriesEnumValues Enumerates the set of values for FastLaunchJobConfigSummaryShapeSeriesEnum
 func GetFastLaunchJobConfigSummaryShapeSeriesEnumValues() []FastLaunchJobConfigSummaryShapeSeriesEnum {
 	values := make([]FastLaunchJobConfigSummaryShapeSeriesEnum, 0)
@@ -98,12 +105,7 @@ func GetFastLaunchJobConfigSummaryShapeSeriesEnumStringValues() []string {
 
 // GetMappingFastLaunchJobConfigSummaryShapeSeriesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFastLaunchJobConfigSummaryShapeSeriesEnum(val string) (FastLaunchJobConfigSummaryShapeSeriesEnum, bool) {
-	mappingFastLaunchJobConfigSummaryShapeSeriesEnumIgnoreCase := make(map[string]FastLaunchJobConfigSummaryShapeSeriesEnum)
-	for k, v := range mappingFastLaunchJobConfigSummaryShapeSeriesEnum {
-		mappingFastLaunchJobConfigSummaryShapeSeriesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFastLaunchJobConfigSummaryShapeSeriesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFastLaunchJobConfigSummaryShapeSeriesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -121,6 +123,12 @@ var mappingFastLaunchJobConfigSummaryManagedEgressSupportEnum = map[string]FastL
 	"REQUIRED":    FastLaunchJobConfigSummaryManagedEgressSupportRequired,
 	"SUPPORTED":   FastLaunchJobConfigSummaryManagedEgressSupportSupported,
 	"UNSUPPORTED": FastLaunchJobConfigSummaryManagedEgressSupportUnsupported,
+}
+
+var mappingFastLaunchJobConfigSummaryManagedEgressSupportEnumLowerCase = map[string]FastLaunchJobConfigSummaryManagedEgressSupportEnum{
+	"required":    FastLaunchJobConfigSummaryManagedEgressSupportRequired,
+	"supported":   FastLaunchJobConfigSummaryManagedEgressSupportSupported,
+	"unsupported": FastLaunchJobConfigSummaryManagedEgressSupportUnsupported,
 }
 
 // GetFastLaunchJobConfigSummaryManagedEgressSupportEnumValues Enumerates the set of values for FastLaunchJobConfigSummaryManagedEgressSupportEnum
@@ -143,11 +151,6 @@ func GetFastLaunchJobConfigSummaryManagedEgressSupportEnumStringValues() []strin
 
 // GetMappingFastLaunchJobConfigSummaryManagedEgressSupportEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFastLaunchJobConfigSummaryManagedEgressSupportEnum(val string) (FastLaunchJobConfigSummaryManagedEgressSupportEnum, bool) {
-	mappingFastLaunchJobConfigSummaryManagedEgressSupportEnumIgnoreCase := make(map[string]FastLaunchJobConfigSummaryManagedEgressSupportEnum)
-	for k, v := range mappingFastLaunchJobConfigSummaryManagedEgressSupportEnum {
-		mappingFastLaunchJobConfigSummaryManagedEgressSupportEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFastLaunchJobConfigSummaryManagedEgressSupportEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFastLaunchJobConfigSummaryManagedEgressSupportEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

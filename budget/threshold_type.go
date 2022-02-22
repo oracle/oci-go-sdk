@@ -27,6 +27,11 @@ var mappingThresholdTypeEnum = map[string]ThresholdTypeEnum{
 	"ABSOLUTE":   ThresholdTypeAbsolute,
 }
 
+var mappingThresholdTypeEnumLowerCase = map[string]ThresholdTypeEnum{
+	"percentage": ThresholdTypePercentage,
+	"absolute":   ThresholdTypeAbsolute,
+}
+
 // GetThresholdTypeEnumValues Enumerates the set of values for ThresholdTypeEnum
 func GetThresholdTypeEnumValues() []ThresholdTypeEnum {
 	values := make([]ThresholdTypeEnum, 0)
@@ -46,11 +51,6 @@ func GetThresholdTypeEnumStringValues() []string {
 
 // GetMappingThresholdTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingThresholdTypeEnum(val string) (ThresholdTypeEnum, bool) {
-	mappingThresholdTypeEnumIgnoreCase := make(map[string]ThresholdTypeEnum)
-	for k, v := range mappingThresholdTypeEnum {
-		mappingThresholdTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingThresholdTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingThresholdTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

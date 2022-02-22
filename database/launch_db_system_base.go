@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -402,6 +402,13 @@ var mappingLaunchDbSystemBaseSourceEnum = map[string]LaunchDbSystemBaseSourceEnu
 	"DB_SYSTEM": LaunchDbSystemBaseSourceDbSystem,
 }
 
+var mappingLaunchDbSystemBaseSourceEnumLowerCase = map[string]LaunchDbSystemBaseSourceEnum{
+	"none":      LaunchDbSystemBaseSourceNone,
+	"db_backup": LaunchDbSystemBaseSourceDbBackup,
+	"database":  LaunchDbSystemBaseSourceDatabase,
+	"db_system": LaunchDbSystemBaseSourceDbSystem,
+}
+
 // GetLaunchDbSystemBaseSourceEnumValues Enumerates the set of values for LaunchDbSystemBaseSourceEnum
 func GetLaunchDbSystemBaseSourceEnumValues() []LaunchDbSystemBaseSourceEnum {
 	values := make([]LaunchDbSystemBaseSourceEnum, 0)
@@ -423,11 +430,6 @@ func GetLaunchDbSystemBaseSourceEnumStringValues() []string {
 
 // GetMappingLaunchDbSystemBaseSourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLaunchDbSystemBaseSourceEnum(val string) (LaunchDbSystemBaseSourceEnum, bool) {
-	mappingLaunchDbSystemBaseSourceEnumIgnoreCase := make(map[string]LaunchDbSystemBaseSourceEnum)
-	for k, v := range mappingLaunchDbSystemBaseSourceEnum {
-		mappingLaunchDbSystemBaseSourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLaunchDbSystemBaseSourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLaunchDbSystemBaseSourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -132,6 +132,16 @@ var mappingBackupLifecycleStateEnum = map[string]BackupLifecycleStateEnum{
 	"FAILED":   BackupLifecycleStateFailed,
 }
 
+var mappingBackupLifecycleStateEnumLowerCase = map[string]BackupLifecycleStateEnum{
+	"creating": BackupLifecycleStateCreating,
+	"active":   BackupLifecycleStateActive,
+	"inactive": BackupLifecycleStateInactive,
+	"updating": BackupLifecycleStateUpdating,
+	"deleting": BackupLifecycleStateDeleting,
+	"deleted":  BackupLifecycleStateDeleted,
+	"failed":   BackupLifecycleStateFailed,
+}
+
 // GetBackupLifecycleStateEnumValues Enumerates the set of values for BackupLifecycleStateEnum
 func GetBackupLifecycleStateEnumValues() []BackupLifecycleStateEnum {
 	values := make([]BackupLifecycleStateEnum, 0)
@@ -156,12 +166,7 @@ func GetBackupLifecycleStateEnumStringValues() []string {
 
 // GetMappingBackupLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBackupLifecycleStateEnum(val string) (BackupLifecycleStateEnum, bool) {
-	mappingBackupLifecycleStateEnumIgnoreCase := make(map[string]BackupLifecycleStateEnum)
-	for k, v := range mappingBackupLifecycleStateEnum {
-		mappingBackupLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBackupLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBackupLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -177,6 +182,11 @@ const (
 var mappingBackupBackupTypeEnum = map[string]BackupBackupTypeEnum{
 	"FULL":        BackupBackupTypeFull,
 	"INCREMENTAL": BackupBackupTypeIncremental,
+}
+
+var mappingBackupBackupTypeEnumLowerCase = map[string]BackupBackupTypeEnum{
+	"full":        BackupBackupTypeFull,
+	"incremental": BackupBackupTypeIncremental,
 }
 
 // GetBackupBackupTypeEnumValues Enumerates the set of values for BackupBackupTypeEnum
@@ -198,12 +208,7 @@ func GetBackupBackupTypeEnumStringValues() []string {
 
 // GetMappingBackupBackupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBackupBackupTypeEnum(val string) (BackupBackupTypeEnum, bool) {
-	mappingBackupBackupTypeEnumIgnoreCase := make(map[string]BackupBackupTypeEnum)
-	for k, v := range mappingBackupBackupTypeEnum {
-		mappingBackupBackupTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBackupBackupTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBackupBackupTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -221,6 +226,12 @@ var mappingBackupCreationTypeEnum = map[string]BackupCreationTypeEnum{
 	"MANUAL":    BackupCreationTypeManual,
 	"AUTOMATIC": BackupCreationTypeAutomatic,
 	"OPERATOR":  BackupCreationTypeOperator,
+}
+
+var mappingBackupCreationTypeEnumLowerCase = map[string]BackupCreationTypeEnum{
+	"manual":    BackupCreationTypeManual,
+	"automatic": BackupCreationTypeAutomatic,
+	"operator":  BackupCreationTypeOperator,
 }
 
 // GetBackupCreationTypeEnumValues Enumerates the set of values for BackupCreationTypeEnum
@@ -243,11 +254,6 @@ func GetBackupCreationTypeEnumStringValues() []string {
 
 // GetMappingBackupCreationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBackupCreationTypeEnum(val string) (BackupCreationTypeEnum, bool) {
-	mappingBackupCreationTypeEnumIgnoreCase := make(map[string]BackupCreationTypeEnum)
-	for k, v := range mappingBackupCreationTypeEnum {
-		mappingBackupCreationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBackupCreationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBackupCreationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

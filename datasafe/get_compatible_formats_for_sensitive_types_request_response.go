@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -129,6 +129,11 @@ var mappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnum = map[string]Get
 	"ACCESSIBLE": GetCompatibleFormatsForSensitiveTypesAccessLevelAccessible,
 }
 
+var mappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnumLowerCase = map[string]GetCompatibleFormatsForSensitiveTypesAccessLevelEnum{
+	"restricted": GetCompatibleFormatsForSensitiveTypesAccessLevelRestricted,
+	"accessible": GetCompatibleFormatsForSensitiveTypesAccessLevelAccessible,
+}
+
 // GetGetCompatibleFormatsForSensitiveTypesAccessLevelEnumValues Enumerates the set of values for GetCompatibleFormatsForSensitiveTypesAccessLevelEnum
 func GetGetCompatibleFormatsForSensitiveTypesAccessLevelEnumValues() []GetCompatibleFormatsForSensitiveTypesAccessLevelEnum {
 	values := make([]GetCompatibleFormatsForSensitiveTypesAccessLevelEnum, 0)
@@ -148,11 +153,6 @@ func GetGetCompatibleFormatsForSensitiveTypesAccessLevelEnumStringValues() []str
 
 // GetMappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnum(val string) (GetCompatibleFormatsForSensitiveTypesAccessLevelEnum, bool) {
-	mappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnumIgnoreCase := make(map[string]GetCompatibleFormatsForSensitiveTypesAccessLevelEnum)
-	for k, v := range mappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnum {
-		mappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetCompatibleFormatsForSensitiveTypesAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

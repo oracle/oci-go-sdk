@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -201,6 +201,22 @@ var mappingAwrQueryResultAwrResultTypeEnum = map[string]AwrQueryResultAwrResultT
 	"AWRDB_SQL_REPORT":          AwrQueryResultAwrResultTypeSqlReport,
 }
 
+var mappingAwrQueryResultAwrResultTypeEnumLowerCase = map[string]AwrQueryResultAwrResultTypeEnum{
+	"awrdb_set":                 AwrQueryResultAwrResultTypeSet,
+	"awrdb_snapshot_range_set":  AwrQueryResultAwrResultTypeSnapshotRangeSet,
+	"awrdb_snapshot_set":        AwrQueryResultAwrResultTypeSnapshotSet,
+	"awrdb_metrics_set":         AwrQueryResultAwrResultTypeMetricsSet,
+	"awrdb_sysstat_set":         AwrQueryResultAwrResultTypeSysstatSet,
+	"awrdb_top_event_set":       AwrQueryResultAwrResultTypeTopEventSet,
+	"awrdb_event_set":           AwrQueryResultAwrResultTypeEventSet,
+	"awrdb_event_histogram":     AwrQueryResultAwrResultTypeEventHistogram,
+	"awrdb_db_parameter_set":    AwrQueryResultAwrResultTypeDbParameterSet,
+	"awrdb_db_parameter_change": AwrQueryResultAwrResultTypeDbParameterChange,
+	"awrdb_ash_cpu_usage_set":   AwrQueryResultAwrResultTypeAshCpuUsageSet,
+	"awrdb_db_report":           AwrQueryResultAwrResultTypeDbReport,
+	"awrdb_sql_report":          AwrQueryResultAwrResultTypeSqlReport,
+}
+
 // GetAwrQueryResultAwrResultTypeEnumValues Enumerates the set of values for AwrQueryResultAwrResultTypeEnum
 func GetAwrQueryResultAwrResultTypeEnumValues() []AwrQueryResultAwrResultTypeEnum {
 	values := make([]AwrQueryResultAwrResultTypeEnum, 0)
@@ -231,11 +247,6 @@ func GetAwrQueryResultAwrResultTypeEnumStringValues() []string {
 
 // GetMappingAwrQueryResultAwrResultTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAwrQueryResultAwrResultTypeEnum(val string) (AwrQueryResultAwrResultTypeEnum, bool) {
-	mappingAwrQueryResultAwrResultTypeEnumIgnoreCase := make(map[string]AwrQueryResultAwrResultTypeEnum)
-	for k, v := range mappingAwrQueryResultAwrResultTypeEnum {
-		mappingAwrQueryResultAwrResultTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAwrQueryResultAwrResultTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAwrQueryResultAwrResultTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

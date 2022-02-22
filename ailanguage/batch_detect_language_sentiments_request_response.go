@@ -6,7 +6,7 @@ package ailanguage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -115,6 +115,11 @@ var mappingBatchDetectLanguageSentimentsLevelEnum = map[string]BatchDetectLangua
 	"SENTENCE": BatchDetectLanguageSentimentsLevelSentence,
 }
 
+var mappingBatchDetectLanguageSentimentsLevelEnumLowerCase = map[string]BatchDetectLanguageSentimentsLevelEnum{
+	"aspect":   BatchDetectLanguageSentimentsLevelAspect,
+	"sentence": BatchDetectLanguageSentimentsLevelSentence,
+}
+
 // GetBatchDetectLanguageSentimentsLevelEnumValues Enumerates the set of values for BatchDetectLanguageSentimentsLevelEnum
 func GetBatchDetectLanguageSentimentsLevelEnumValues() []BatchDetectLanguageSentimentsLevelEnum {
 	values := make([]BatchDetectLanguageSentimentsLevelEnum, 0)
@@ -134,11 +139,6 @@ func GetBatchDetectLanguageSentimentsLevelEnumStringValues() []string {
 
 // GetMappingBatchDetectLanguageSentimentsLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBatchDetectLanguageSentimentsLevelEnum(val string) (BatchDetectLanguageSentimentsLevelEnum, bool) {
-	mappingBatchDetectLanguageSentimentsLevelEnumIgnoreCase := make(map[string]BatchDetectLanguageSentimentsLevelEnum)
-	for k, v := range mappingBatchDetectLanguageSentimentsLevelEnum {
-		mappingBatchDetectLanguageSentimentsLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBatchDetectLanguageSentimentsLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBatchDetectLanguageSentimentsLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

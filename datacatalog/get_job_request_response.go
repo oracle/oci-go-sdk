@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -162,6 +162,33 @@ var mappingGetJobFieldsEnum = map[string]GetJobFieldsEnum{
 	"errorMessage":           GetJobFieldsErrormessage,
 }
 
+var mappingGetJobFieldsEnumLowerCase = map[string]GetJobFieldsEnum{
+	"key":                    GetJobFieldsKey,
+	"displayname":            GetJobFieldsDisplayname,
+	"description":            GetJobFieldsDescription,
+	"catalogid":              GetJobFieldsCatalogid,
+	"lifecyclestate":         GetJobFieldsLifecyclestate,
+	"timecreated":            GetJobFieldsTimecreated,
+	"timeupdated":            GetJobFieldsTimeupdated,
+	"jobtype":                GetJobFieldsJobtype,
+	"schedulecronexpression": GetJobFieldsSchedulecronexpression,
+	"timeschedulebegin":      GetJobFieldsTimeschedulebegin,
+	"timescheduleend":        GetJobFieldsTimescheduleend,
+	"scheduletype":           GetJobFieldsScheduletype,
+	"connectionkey":          GetJobFieldsConnectionkey,
+	"jobdefinitionkey":       GetJobFieldsJobdefinitionkey,
+	"internalversion":        GetJobFieldsInternalversion,
+	"executioncount":         GetJobFieldsExecutioncount,
+	"timeoflatestexecution":  GetJobFieldsTimeoflatestexecution,
+	"executions":             GetJobFieldsExecutions,
+	"createdbyid":            GetJobFieldsCreatedbyid,
+	"updatedbyid":            GetJobFieldsUpdatedbyid,
+	"uri":                    GetJobFieldsUri,
+	"jobdefinitionname":      GetJobFieldsJobdefinitionname,
+	"errorcode":              GetJobFieldsErrorcode,
+	"errormessage":           GetJobFieldsErrormessage,
+}
+
 // GetGetJobFieldsEnumValues Enumerates the set of values for GetJobFieldsEnum
 func GetGetJobFieldsEnumValues() []GetJobFieldsEnum {
 	values := make([]GetJobFieldsEnum, 0)
@@ -203,11 +230,6 @@ func GetGetJobFieldsEnumStringValues() []string {
 
 // GetMappingGetJobFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetJobFieldsEnum(val string) (GetJobFieldsEnum, bool) {
-	mappingGetJobFieldsEnumIgnoreCase := make(map[string]GetJobFieldsEnum)
-	for k, v := range mappingGetJobFieldsEnum {
-		mappingGetJobFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetJobFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetJobFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

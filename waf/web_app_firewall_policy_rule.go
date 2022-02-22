@@ -13,7 +13,7 @@ package waf
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -140,6 +140,10 @@ var mappingWebAppFirewallPolicyRuleConditionLanguageEnum = map[string]WebAppFire
 	"JMESPATH": WebAppFirewallPolicyRuleConditionLanguageJmespath,
 }
 
+var mappingWebAppFirewallPolicyRuleConditionLanguageEnumLowerCase = map[string]WebAppFirewallPolicyRuleConditionLanguageEnum{
+	"jmespath": WebAppFirewallPolicyRuleConditionLanguageJmespath,
+}
+
 // GetWebAppFirewallPolicyRuleConditionLanguageEnumValues Enumerates the set of values for WebAppFirewallPolicyRuleConditionLanguageEnum
 func GetWebAppFirewallPolicyRuleConditionLanguageEnumValues() []WebAppFirewallPolicyRuleConditionLanguageEnum {
 	values := make([]WebAppFirewallPolicyRuleConditionLanguageEnum, 0)
@@ -158,12 +162,7 @@ func GetWebAppFirewallPolicyRuleConditionLanguageEnumStringValues() []string {
 
 // GetMappingWebAppFirewallPolicyRuleConditionLanguageEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWebAppFirewallPolicyRuleConditionLanguageEnum(val string) (WebAppFirewallPolicyRuleConditionLanguageEnum, bool) {
-	mappingWebAppFirewallPolicyRuleConditionLanguageEnumIgnoreCase := make(map[string]WebAppFirewallPolicyRuleConditionLanguageEnum)
-	for k, v := range mappingWebAppFirewallPolicyRuleConditionLanguageEnum {
-		mappingWebAppFirewallPolicyRuleConditionLanguageEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWebAppFirewallPolicyRuleConditionLanguageEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWebAppFirewallPolicyRuleConditionLanguageEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +180,12 @@ var mappingWebAppFirewallPolicyRuleTypeEnum = map[string]WebAppFirewallPolicyRul
 	"ACCESS_CONTROL":        WebAppFirewallPolicyRuleTypeAccessControl,
 	"PROTECTION":            WebAppFirewallPolicyRuleTypeProtection,
 	"REQUEST_RATE_LIMITING": WebAppFirewallPolicyRuleTypeRequestRateLimiting,
+}
+
+var mappingWebAppFirewallPolicyRuleTypeEnumLowerCase = map[string]WebAppFirewallPolicyRuleTypeEnum{
+	"access_control":        WebAppFirewallPolicyRuleTypeAccessControl,
+	"protection":            WebAppFirewallPolicyRuleTypeProtection,
+	"request_rate_limiting": WebAppFirewallPolicyRuleTypeRequestRateLimiting,
 }
 
 // GetWebAppFirewallPolicyRuleTypeEnumValues Enumerates the set of values for WebAppFirewallPolicyRuleTypeEnum
@@ -203,11 +208,6 @@ func GetWebAppFirewallPolicyRuleTypeEnumStringValues() []string {
 
 // GetMappingWebAppFirewallPolicyRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWebAppFirewallPolicyRuleTypeEnum(val string) (WebAppFirewallPolicyRuleTypeEnum, bool) {
-	mappingWebAppFirewallPolicyRuleTypeEnumIgnoreCase := make(map[string]WebAppFirewallPolicyRuleTypeEnum)
-	for k, v := range mappingWebAppFirewallPolicyRuleTypeEnum {
-		mappingWebAppFirewallPolicyRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWebAppFirewallPolicyRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWebAppFirewallPolicyRuleTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

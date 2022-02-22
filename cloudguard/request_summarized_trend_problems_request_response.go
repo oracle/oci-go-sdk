@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -136,6 +136,11 @@ var mappingRequestSummarizedTrendProblemsAccessLevelEnum = map[string]RequestSum
 	"ACCESSIBLE": RequestSummarizedTrendProblemsAccessLevelAccessible,
 }
 
+var mappingRequestSummarizedTrendProblemsAccessLevelEnumLowerCase = map[string]RequestSummarizedTrendProblemsAccessLevelEnum{
+	"restricted": RequestSummarizedTrendProblemsAccessLevelRestricted,
+	"accessible": RequestSummarizedTrendProblemsAccessLevelAccessible,
+}
+
 // GetRequestSummarizedTrendProblemsAccessLevelEnumValues Enumerates the set of values for RequestSummarizedTrendProblemsAccessLevelEnum
 func GetRequestSummarizedTrendProblemsAccessLevelEnumValues() []RequestSummarizedTrendProblemsAccessLevelEnum {
 	values := make([]RequestSummarizedTrendProblemsAccessLevelEnum, 0)
@@ -155,11 +160,6 @@ func GetRequestSummarizedTrendProblemsAccessLevelEnumStringValues() []string {
 
 // GetMappingRequestSummarizedTrendProblemsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRequestSummarizedTrendProblemsAccessLevelEnum(val string) (RequestSummarizedTrendProblemsAccessLevelEnum, bool) {
-	mappingRequestSummarizedTrendProblemsAccessLevelEnumIgnoreCase := make(map[string]RequestSummarizedTrendProblemsAccessLevelEnum)
-	for k, v := range mappingRequestSummarizedTrendProblemsAccessLevelEnum {
-		mappingRequestSummarizedTrendProblemsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRequestSummarizedTrendProblemsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRequestSummarizedTrendProblemsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -27,6 +27,10 @@ var mappingImportableAgentEntitySourceEnum = map[string]ImportableAgentEntitySou
 	"MACS_MANAGED_EXTERNAL_HOST": ImportableAgentEntitySourceMacsManagedExternalHost,
 }
 
+var mappingImportableAgentEntitySourceEnumLowerCase = map[string]ImportableAgentEntitySourceEnum{
+	"macs_managed_external_host": ImportableAgentEntitySourceMacsManagedExternalHost,
+}
+
 // GetImportableAgentEntitySourceEnumValues Enumerates the set of values for ImportableAgentEntitySourceEnum
 func GetImportableAgentEntitySourceEnumValues() []ImportableAgentEntitySourceEnum {
 	values := make([]ImportableAgentEntitySourceEnum, 0)
@@ -45,11 +49,6 @@ func GetImportableAgentEntitySourceEnumStringValues() []string {
 
 // GetMappingImportableAgentEntitySourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingImportableAgentEntitySourceEnum(val string) (ImportableAgentEntitySourceEnum, bool) {
-	mappingImportableAgentEntitySourceEnumIgnoreCase := make(map[string]ImportableAgentEntitySourceEnum)
-	for k, v := range mappingImportableAgentEntitySourceEnum {
-		mappingImportableAgentEntitySourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingImportableAgentEntitySourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingImportableAgentEntitySourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

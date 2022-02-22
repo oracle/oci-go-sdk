@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -58,6 +58,11 @@ var mappingAutonomousDatabaseWalletLifecycleStateEnum = map[string]AutonomousDat
 	"UPDATING": AutonomousDatabaseWalletLifecycleStateUpdating,
 }
 
+var mappingAutonomousDatabaseWalletLifecycleStateEnumLowerCase = map[string]AutonomousDatabaseWalletLifecycleStateEnum{
+	"active":   AutonomousDatabaseWalletLifecycleStateActive,
+	"updating": AutonomousDatabaseWalletLifecycleStateUpdating,
+}
+
 // GetAutonomousDatabaseWalletLifecycleStateEnumValues Enumerates the set of values for AutonomousDatabaseWalletLifecycleStateEnum
 func GetAutonomousDatabaseWalletLifecycleStateEnumValues() []AutonomousDatabaseWalletLifecycleStateEnum {
 	values := make([]AutonomousDatabaseWalletLifecycleStateEnum, 0)
@@ -77,11 +82,6 @@ func GetAutonomousDatabaseWalletLifecycleStateEnumStringValues() []string {
 
 // GetMappingAutonomousDatabaseWalletLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAutonomousDatabaseWalletLifecycleStateEnum(val string) (AutonomousDatabaseWalletLifecycleStateEnum, bool) {
-	mappingAutonomousDatabaseWalletLifecycleStateEnumIgnoreCase := make(map[string]AutonomousDatabaseWalletLifecycleStateEnum)
-	for k, v := range mappingAutonomousDatabaseWalletLifecycleStateEnum {
-		mappingAutonomousDatabaseWalletLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAutonomousDatabaseWalletLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAutonomousDatabaseWalletLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

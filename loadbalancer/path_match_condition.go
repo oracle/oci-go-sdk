@@ -13,7 +13,7 @@ package loadbalancer
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,13 @@ var mappingPathMatchConditionOperatorEnum = map[string]PathMatchConditionOperato
 	"SUFFIX_MATCH":               PathMatchConditionOperatorSuffixMatch,
 }
 
+var mappingPathMatchConditionOperatorEnumLowerCase = map[string]PathMatchConditionOperatorEnum{
+	"exact_match":                PathMatchConditionOperatorExactMatch,
+	"force_longest_prefix_match": PathMatchConditionOperatorForceLongestPrefixMatch,
+	"prefix_match":               PathMatchConditionOperatorPrefixMatch,
+	"suffix_match":               PathMatchConditionOperatorSuffixMatch,
+}
+
 // GetPathMatchConditionOperatorEnumValues Enumerates the set of values for PathMatchConditionOperatorEnum
 func GetPathMatchConditionOperatorEnumValues() []PathMatchConditionOperatorEnum {
 	values := make([]PathMatchConditionOperatorEnum, 0)
@@ -108,11 +115,6 @@ func GetPathMatchConditionOperatorEnumStringValues() []string {
 
 // GetMappingPathMatchConditionOperatorEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPathMatchConditionOperatorEnum(val string) (PathMatchConditionOperatorEnum, bool) {
-	mappingPathMatchConditionOperatorEnumIgnoreCase := make(map[string]PathMatchConditionOperatorEnum)
-	for k, v := range mappingPathMatchConditionOperatorEnum {
-		mappingPathMatchConditionOperatorEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPathMatchConditionOperatorEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPathMatchConditionOperatorEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

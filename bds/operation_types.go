@@ -65,6 +65,30 @@ var mappingOperationTypesEnum = map[string]OperationTypesEnum{
 	"TEST_METASTORE_CONFIG":        OperationTypesTestMetastoreConfig,
 }
 
+var mappingOperationTypesEnumLowerCase = map[string]OperationTypesEnum{
+	"create_bds":                   OperationTypesCreateBds,
+	"update_bds":                   OperationTypesUpdateBds,
+	"delete_bds":                   OperationTypesDeleteBds,
+	"add_block_storage":            OperationTypesAddBlockStorage,
+	"add_worker_nodes":             OperationTypesAddWorkerNodes,
+	"add_cloud_sql":                OperationTypesAddCloudSql,
+	"remove_cloud_sql":             OperationTypesRemoveCloudSql,
+	"change_compartment_for_bds":   OperationTypesChangeCompartmentForBds,
+	"change_shape":                 OperationTypesChangeShape,
+	"update_infra":                 OperationTypesUpdateInfra,
+	"restart_node":                 OperationTypesRestartNode,
+	"autoscale_config":             OperationTypesAutoscaleConfig,
+	"autoscale_run":                OperationTypesAutoscaleRun,
+	"create_api_key":               OperationTypesCreateApiKey,
+	"delete_api_key":               OperationTypesDeleteApiKey,
+	"test_object_store_connection": OperationTypesTestObjectStoreConnection,
+	"create_metastore_config":      OperationTypesCreateMetastoreConfig,
+	"delete_metastore_config":      OperationTypesDeleteMetastoreConfig,
+	"update_metastore_config":      OperationTypesUpdateMetastoreConfig,
+	"activate_metastore_config":    OperationTypesActivateMetastoreConfig,
+	"test_metastore_config":        OperationTypesTestMetastoreConfig,
+}
+
 // GetOperationTypesEnumValues Enumerates the set of values for OperationTypesEnum
 func GetOperationTypesEnumValues() []OperationTypesEnum {
 	values := make([]OperationTypesEnum, 0)
@@ -103,11 +127,6 @@ func GetOperationTypesEnumStringValues() []string {
 
 // GetMappingOperationTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperationTypesEnum(val string) (OperationTypesEnum, bool) {
-	mappingOperationTypesEnumIgnoreCase := make(map[string]OperationTypesEnum)
-	for k, v := range mappingOperationTypesEnum {
-		mappingOperationTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperationTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperationTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

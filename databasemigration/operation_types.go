@@ -45,6 +45,20 @@ var mappingOperationTypesEnum = map[string]OperationTypesEnum{
 	"UPDATE_CONNECTION":  OperationTypesUpdateConnection,
 }
 
+var mappingOperationTypesEnumLowerCase = map[string]OperationTypesEnum{
+	"create_agent":       OperationTypesCreateAgent,
+	"delete_agent":       OperationTypesDeleteAgent,
+	"create_migration":   OperationTypesCreateMigration,
+	"clone_migration":    OperationTypesCloneMigration,
+	"delete_migration":   OperationTypesDeleteMigration,
+	"update_migration":   OperationTypesUpdateMigration,
+	"start_migration":    OperationTypesStartMigration,
+	"validate_migration": OperationTypesValidateMigration,
+	"create_connection":  OperationTypesCreateConnection,
+	"delete_connection":  OperationTypesDeleteConnection,
+	"update_connection":  OperationTypesUpdateConnection,
+}
+
 // GetOperationTypesEnumValues Enumerates the set of values for OperationTypesEnum
 func GetOperationTypesEnumValues() []OperationTypesEnum {
 	values := make([]OperationTypesEnum, 0)
@@ -73,11 +87,6 @@ func GetOperationTypesEnumStringValues() []string {
 
 // GetMappingOperationTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperationTypesEnum(val string) (OperationTypesEnum, bool) {
-	mappingOperationTypesEnumIgnoreCase := make(map[string]OperationTypesEnum)
-	for k, v := range mappingOperationTypesEnum {
-		mappingOperationTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperationTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperationTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

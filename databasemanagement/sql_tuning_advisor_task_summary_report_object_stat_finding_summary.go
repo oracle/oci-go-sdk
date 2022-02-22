@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -72,6 +72,11 @@ var mappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeE
 	"STALE":   SqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeStale,
 }
 
+var mappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnumLowerCase = map[string]SqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum{
+	"missing": SqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeMissing,
+	"stale":   SqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeStale,
+}
+
 // GetSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnumValues Enumerates the set of values for SqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum
 func GetSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnumValues() []SqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum {
 	values := make([]SqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum, 0)
@@ -91,11 +96,6 @@ func GetSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum
 
 // GetMappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum(val string) (SqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum, bool) {
-	mappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnumIgnoreCase := make(map[string]SqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum)
-	for k, v := range mappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnum {
-		mappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSqlTuningAdvisorTaskSummaryReportObjectStatFindingSummaryProblemTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

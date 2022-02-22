@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -97,6 +97,15 @@ var mappingDataFormatTypeEnum = map[string]DataFormatTypeEnum{
 	"AVRO":    DataFormatTypeAvro,
 }
 
+var mappingDataFormatTypeEnumLowerCase = map[string]DataFormatTypeEnum{
+	"xml":     DataFormatTypeXml,
+	"json":    DataFormatTypeJson,
+	"csv":     DataFormatTypeCsv,
+	"orc":     DataFormatTypeOrc,
+	"parquet": DataFormatTypeParquet,
+	"avro":    DataFormatTypeAvro,
+}
+
 // GetDataFormatTypeEnumValues Enumerates the set of values for DataFormatTypeEnum
 func GetDataFormatTypeEnumValues() []DataFormatTypeEnum {
 	values := make([]DataFormatTypeEnum, 0)
@@ -120,11 +129,6 @@ func GetDataFormatTypeEnumStringValues() []string {
 
 // GetMappingDataFormatTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataFormatTypeEnum(val string) (DataFormatTypeEnum, bool) {
-	mappingDataFormatTypeEnumIgnoreCase := make(map[string]DataFormatTypeEnum)
-	for k, v := range mappingDataFormatTypeEnum {
-		mappingDataFormatTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataFormatTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataFormatTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

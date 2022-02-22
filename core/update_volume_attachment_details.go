@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -70,6 +70,16 @@ var mappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnum = map[string]UpdateV
 	"LOGOUT_FAILED":    UpdateVolumeAttachmentDetailsIscsiLoginStateLogoutFailed,
 }
 
+var mappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnumLowerCase = map[string]UpdateVolumeAttachmentDetailsIscsiLoginStateEnum{
+	"unknown":          UpdateVolumeAttachmentDetailsIscsiLoginStateUnknown,
+	"logging_in":       UpdateVolumeAttachmentDetailsIscsiLoginStateLoggingIn,
+	"login_succeeded":  UpdateVolumeAttachmentDetailsIscsiLoginStateLoginSucceeded,
+	"login_failed":     UpdateVolumeAttachmentDetailsIscsiLoginStateLoginFailed,
+	"logging_out":      UpdateVolumeAttachmentDetailsIscsiLoginStateLoggingOut,
+	"logout_succeeded": UpdateVolumeAttachmentDetailsIscsiLoginStateLogoutSucceeded,
+	"logout_failed":    UpdateVolumeAttachmentDetailsIscsiLoginStateLogoutFailed,
+}
+
 // GetUpdateVolumeAttachmentDetailsIscsiLoginStateEnumValues Enumerates the set of values for UpdateVolumeAttachmentDetailsIscsiLoginStateEnum
 func GetUpdateVolumeAttachmentDetailsIscsiLoginStateEnumValues() []UpdateVolumeAttachmentDetailsIscsiLoginStateEnum {
 	values := make([]UpdateVolumeAttachmentDetailsIscsiLoginStateEnum, 0)
@@ -94,11 +104,6 @@ func GetUpdateVolumeAttachmentDetailsIscsiLoginStateEnumStringValues() []string 
 
 // GetMappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnum(val string) (UpdateVolumeAttachmentDetailsIscsiLoginStateEnum, bool) {
-	mappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnumIgnoreCase := make(map[string]UpdateVolumeAttachmentDetailsIscsiLoginStateEnum)
-	for k, v := range mappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnum {
-		mappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateVolumeAttachmentDetailsIscsiLoginStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

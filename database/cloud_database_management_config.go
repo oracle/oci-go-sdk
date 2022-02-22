@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -73,6 +73,17 @@ var mappingCloudDatabaseManagementConfigManagementStatusEnum = map[string]CloudD
 	"FAILED_UPDATING":  CloudDatabaseManagementConfigManagementStatusFailedUpdating,
 }
 
+var mappingCloudDatabaseManagementConfigManagementStatusEnumLowerCase = map[string]CloudDatabaseManagementConfigManagementStatusEnum{
+	"enabling":         CloudDatabaseManagementConfigManagementStatusEnabling,
+	"enabled":          CloudDatabaseManagementConfigManagementStatusEnabled,
+	"disabling":        CloudDatabaseManagementConfigManagementStatusDisabling,
+	"disabled":         CloudDatabaseManagementConfigManagementStatusDisabled,
+	"updating":         CloudDatabaseManagementConfigManagementStatusUpdating,
+	"failed_enabling":  CloudDatabaseManagementConfigManagementStatusFailedEnabling,
+	"failed_disabling": CloudDatabaseManagementConfigManagementStatusFailedDisabling,
+	"failed_updating":  CloudDatabaseManagementConfigManagementStatusFailedUpdating,
+}
+
 // GetCloudDatabaseManagementConfigManagementStatusEnumValues Enumerates the set of values for CloudDatabaseManagementConfigManagementStatusEnum
 func GetCloudDatabaseManagementConfigManagementStatusEnumValues() []CloudDatabaseManagementConfigManagementStatusEnum {
 	values := make([]CloudDatabaseManagementConfigManagementStatusEnum, 0)
@@ -98,12 +109,7 @@ func GetCloudDatabaseManagementConfigManagementStatusEnumStringValues() []string
 
 // GetMappingCloudDatabaseManagementConfigManagementStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCloudDatabaseManagementConfigManagementStatusEnum(val string) (CloudDatabaseManagementConfigManagementStatusEnum, bool) {
-	mappingCloudDatabaseManagementConfigManagementStatusEnumIgnoreCase := make(map[string]CloudDatabaseManagementConfigManagementStatusEnum)
-	for k, v := range mappingCloudDatabaseManagementConfigManagementStatusEnum {
-		mappingCloudDatabaseManagementConfigManagementStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCloudDatabaseManagementConfigManagementStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCloudDatabaseManagementConfigManagementStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -119,6 +125,11 @@ const (
 var mappingCloudDatabaseManagementConfigManagementTypeEnum = map[string]CloudDatabaseManagementConfigManagementTypeEnum{
 	"BASIC":    CloudDatabaseManagementConfigManagementTypeBasic,
 	"ADVANCED": CloudDatabaseManagementConfigManagementTypeAdvanced,
+}
+
+var mappingCloudDatabaseManagementConfigManagementTypeEnumLowerCase = map[string]CloudDatabaseManagementConfigManagementTypeEnum{
+	"basic":    CloudDatabaseManagementConfigManagementTypeBasic,
+	"advanced": CloudDatabaseManagementConfigManagementTypeAdvanced,
 }
 
 // GetCloudDatabaseManagementConfigManagementTypeEnumValues Enumerates the set of values for CloudDatabaseManagementConfigManagementTypeEnum
@@ -140,11 +151,6 @@ func GetCloudDatabaseManagementConfigManagementTypeEnumStringValues() []string {
 
 // GetMappingCloudDatabaseManagementConfigManagementTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCloudDatabaseManagementConfigManagementTypeEnum(val string) (CloudDatabaseManagementConfigManagementTypeEnum, bool) {
-	mappingCloudDatabaseManagementConfigManagementTypeEnumIgnoreCase := make(map[string]CloudDatabaseManagementConfigManagementTypeEnum)
-	for k, v := range mappingCloudDatabaseManagementConfigManagementTypeEnum {
-		mappingCloudDatabaseManagementConfigManagementTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCloudDatabaseManagementConfigManagementTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCloudDatabaseManagementConfigManagementTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

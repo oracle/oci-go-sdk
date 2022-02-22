@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -72,6 +72,14 @@ var mappingJobScheduleDetailsIntervalTypeEnum = map[string]JobScheduleDetailsInt
 	"NEVER":   JobScheduleDetailsIntervalTypeNever,
 }
 
+var mappingJobScheduleDetailsIntervalTypeEnumLowerCase = map[string]JobScheduleDetailsIntervalTypeEnum{
+	"daily":   JobScheduleDetailsIntervalTypeDaily,
+	"hourly":  JobScheduleDetailsIntervalTypeHourly,
+	"weekly":  JobScheduleDetailsIntervalTypeWeekly,
+	"monthly": JobScheduleDetailsIntervalTypeMonthly,
+	"never":   JobScheduleDetailsIntervalTypeNever,
+}
+
 // GetJobScheduleDetailsIntervalTypeEnumValues Enumerates the set of values for JobScheduleDetailsIntervalTypeEnum
 func GetJobScheduleDetailsIntervalTypeEnumValues() []JobScheduleDetailsIntervalTypeEnum {
 	values := make([]JobScheduleDetailsIntervalTypeEnum, 0)
@@ -94,11 +102,6 @@ func GetJobScheduleDetailsIntervalTypeEnumStringValues() []string {
 
 // GetMappingJobScheduleDetailsIntervalTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJobScheduleDetailsIntervalTypeEnum(val string) (JobScheduleDetailsIntervalTypeEnum, bool) {
-	mappingJobScheduleDetailsIntervalTypeEnumIgnoreCase := make(map[string]JobScheduleDetailsIntervalTypeEnum)
-	for k, v := range mappingJobScheduleDetailsIntervalTypeEnum {
-		mappingJobScheduleDetailsIntervalTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJobScheduleDetailsIntervalTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJobScheduleDetailsIntervalTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

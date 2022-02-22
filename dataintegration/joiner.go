@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -170,6 +170,13 @@ var mappingJoinerJoinTypeEnum = map[string]JoinerJoinTypeEnum{
 	"RIGHT": JoinerJoinTypeRight,
 }
 
+var mappingJoinerJoinTypeEnumLowerCase = map[string]JoinerJoinTypeEnum{
+	"inner": JoinerJoinTypeInner,
+	"full":  JoinerJoinTypeFull,
+	"left":  JoinerJoinTypeLeft,
+	"right": JoinerJoinTypeRight,
+}
+
 // GetJoinerJoinTypeEnumValues Enumerates the set of values for JoinerJoinTypeEnum
 func GetJoinerJoinTypeEnumValues() []JoinerJoinTypeEnum {
 	values := make([]JoinerJoinTypeEnum, 0)
@@ -191,11 +198,6 @@ func GetJoinerJoinTypeEnumStringValues() []string {
 
 // GetMappingJoinerJoinTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJoinerJoinTypeEnum(val string) (JoinerJoinTypeEnum, bool) {
-	mappingJoinerJoinTypeEnumIgnoreCase := make(map[string]JoinerJoinTypeEnum)
-	for k, v := range mappingJoinerJoinTypeEnum {
-		mappingJoinerJoinTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJoinerJoinTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJoinerJoinTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

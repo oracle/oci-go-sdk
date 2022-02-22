@@ -32,6 +32,13 @@ var mappingSavedSearchTypesEnum = map[string]SavedSearchTypesEnum{
 	"WIDGET_DONT_SHOW_IN_DASHBOARD": SavedSearchTypesWidgetDontShowInDashboard,
 }
 
+var mappingSavedSearchTypesEnumLowerCase = map[string]SavedSearchTypesEnum{
+	"search_show_in_dashboard":      SavedSearchTypesSearchShowInDashboard,
+	"search_dont_show_in_dashboard": SavedSearchTypesSearchDontShowInDashboard,
+	"widget_show_in_dashboard":      SavedSearchTypesWidgetShowInDashboard,
+	"widget_dont_show_in_dashboard": SavedSearchTypesWidgetDontShowInDashboard,
+}
+
 // GetSavedSearchTypesEnumValues Enumerates the set of values for SavedSearchTypesEnum
 func GetSavedSearchTypesEnumValues() []SavedSearchTypesEnum {
 	values := make([]SavedSearchTypesEnum, 0)
@@ -53,11 +60,6 @@ func GetSavedSearchTypesEnumStringValues() []string {
 
 // GetMappingSavedSearchTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSavedSearchTypesEnum(val string) (SavedSearchTypesEnum, bool) {
-	mappingSavedSearchTypesEnumIgnoreCase := make(map[string]SavedSearchTypesEnum)
-	for k, v := range mappingSavedSearchTypesEnum {
-		mappingSavedSearchTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSavedSearchTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSavedSearchTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

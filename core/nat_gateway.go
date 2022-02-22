@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -111,6 +111,13 @@ var mappingNatGatewayLifecycleStateEnum = map[string]NatGatewayLifecycleStateEnu
 	"TERMINATED":   NatGatewayLifecycleStateTerminated,
 }
 
+var mappingNatGatewayLifecycleStateEnumLowerCase = map[string]NatGatewayLifecycleStateEnum{
+	"provisioning": NatGatewayLifecycleStateProvisioning,
+	"available":    NatGatewayLifecycleStateAvailable,
+	"terminating":  NatGatewayLifecycleStateTerminating,
+	"terminated":   NatGatewayLifecycleStateTerminated,
+}
+
 // GetNatGatewayLifecycleStateEnumValues Enumerates the set of values for NatGatewayLifecycleStateEnum
 func GetNatGatewayLifecycleStateEnumValues() []NatGatewayLifecycleStateEnum {
 	values := make([]NatGatewayLifecycleStateEnum, 0)
@@ -132,11 +139,6 @@ func GetNatGatewayLifecycleStateEnumStringValues() []string {
 
 // GetMappingNatGatewayLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNatGatewayLifecycleStateEnum(val string) (NatGatewayLifecycleStateEnum, bool) {
-	mappingNatGatewayLifecycleStateEnumIgnoreCase := make(map[string]NatGatewayLifecycleStateEnum)
-	for k, v := range mappingNatGatewayLifecycleStateEnum {
-		mappingNatGatewayLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNatGatewayLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNatGatewayLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -100,6 +100,16 @@ var mappingBuildPipelineLifecycleStateEnum = map[string]BuildPipelineLifecycleSt
 	"FAILED":   BuildPipelineLifecycleStateFailed,
 }
 
+var mappingBuildPipelineLifecycleStateEnumLowerCase = map[string]BuildPipelineLifecycleStateEnum{
+	"creating": BuildPipelineLifecycleStateCreating,
+	"updating": BuildPipelineLifecycleStateUpdating,
+	"active":   BuildPipelineLifecycleStateActive,
+	"inactive": BuildPipelineLifecycleStateInactive,
+	"deleting": BuildPipelineLifecycleStateDeleting,
+	"deleted":  BuildPipelineLifecycleStateDeleted,
+	"failed":   BuildPipelineLifecycleStateFailed,
+}
+
 // GetBuildPipelineLifecycleStateEnumValues Enumerates the set of values for BuildPipelineLifecycleStateEnum
 func GetBuildPipelineLifecycleStateEnumValues() []BuildPipelineLifecycleStateEnum {
 	values := make([]BuildPipelineLifecycleStateEnum, 0)
@@ -124,11 +134,6 @@ func GetBuildPipelineLifecycleStateEnumStringValues() []string {
 
 // GetMappingBuildPipelineLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBuildPipelineLifecycleStateEnum(val string) (BuildPipelineLifecycleStateEnum, bool) {
-	mappingBuildPipelineLifecycleStateEnumIgnoreCase := make(map[string]BuildPipelineLifecycleStateEnum)
-	for k, v := range mappingBuildPipelineLifecycleStateEnum {
-		mappingBuildPipelineLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBuildPipelineLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBuildPipelineLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

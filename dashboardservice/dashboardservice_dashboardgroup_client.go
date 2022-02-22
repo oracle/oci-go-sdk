@@ -18,8 +18,8 @@ package dashboardservice
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
-	"github.com/oracle/oci-go-sdk/v58/common/auth"
+	"github.com/oracle/oci-go-sdk/v59/common"
+	"github.com/oracle/oci-go-sdk/v59/common/auth"
 	"net/http"
 )
 
@@ -57,7 +57,7 @@ func NewDashboardGroupClientWithOboToken(configProvider common.ConfigurationProv
 
 func newDashboardGroupClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client DashboardGroupClient, err error) {
 	// DashboardGroup service default circuit breaker is enabled
-	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSetting())
+	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName())
 	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 

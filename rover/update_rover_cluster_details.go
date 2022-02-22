@@ -11,7 +11,7 @@ package rover
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -129,6 +129,11 @@ var mappingUpdateRoverClusterDetailsShippingPreferenceEnum = map[string]UpdateRo
 	"CUSTOMER_PICKUP": UpdateRoverClusterDetailsShippingPreferenceCustomerPickup,
 }
 
+var mappingUpdateRoverClusterDetailsShippingPreferenceEnumLowerCase = map[string]UpdateRoverClusterDetailsShippingPreferenceEnum{
+	"oracle_shipped":  UpdateRoverClusterDetailsShippingPreferenceOracleShipped,
+	"customer_pickup": UpdateRoverClusterDetailsShippingPreferenceCustomerPickup,
+}
+
 // GetUpdateRoverClusterDetailsShippingPreferenceEnumValues Enumerates the set of values for UpdateRoverClusterDetailsShippingPreferenceEnum
 func GetUpdateRoverClusterDetailsShippingPreferenceEnumValues() []UpdateRoverClusterDetailsShippingPreferenceEnum {
 	values := make([]UpdateRoverClusterDetailsShippingPreferenceEnum, 0)
@@ -148,11 +153,6 @@ func GetUpdateRoverClusterDetailsShippingPreferenceEnumStringValues() []string {
 
 // GetMappingUpdateRoverClusterDetailsShippingPreferenceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateRoverClusterDetailsShippingPreferenceEnum(val string) (UpdateRoverClusterDetailsShippingPreferenceEnum, bool) {
-	mappingUpdateRoverClusterDetailsShippingPreferenceEnumIgnoreCase := make(map[string]UpdateRoverClusterDetailsShippingPreferenceEnum)
-	for k, v := range mappingUpdateRoverClusterDetailsShippingPreferenceEnum {
-		mappingUpdateRoverClusterDetailsShippingPreferenceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateRoverClusterDetailsShippingPreferenceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateRoverClusterDetailsShippingPreferenceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -70,6 +70,11 @@ var mappingUserDetailsAuthenticationTypeEnum = map[string]UserDetailsAuthenticat
 	"NONE":     UserDetailsAuthenticationTypeNone,
 }
 
+var mappingUserDetailsAuthenticationTypeEnumLowerCase = map[string]UserDetailsAuthenticationTypeEnum{
+	"password": UserDetailsAuthenticationTypePassword,
+	"none":     UserDetailsAuthenticationTypeNone,
+}
+
 // GetUserDetailsAuthenticationTypeEnumValues Enumerates the set of values for UserDetailsAuthenticationTypeEnum
 func GetUserDetailsAuthenticationTypeEnumValues() []UserDetailsAuthenticationTypeEnum {
 	values := make([]UserDetailsAuthenticationTypeEnum, 0)
@@ -89,11 +94,6 @@ func GetUserDetailsAuthenticationTypeEnumStringValues() []string {
 
 // GetMappingUserDetailsAuthenticationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserDetailsAuthenticationTypeEnum(val string) (UserDetailsAuthenticationTypeEnum, bool) {
-	mappingUserDetailsAuthenticationTypeEnumIgnoreCase := make(map[string]UserDetailsAuthenticationTypeEnum)
-	for k, v := range mappingUserDetailsAuthenticationTypeEnum {
-		mappingUserDetailsAuthenticationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserDetailsAuthenticationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserDetailsAuthenticationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

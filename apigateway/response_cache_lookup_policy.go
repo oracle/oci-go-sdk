@@ -14,7 +14,7 @@ package apigateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -112,6 +112,10 @@ var mappingResponseCacheLookupPolicyTypeEnum = map[string]ResponseCacheLookupPol
 	"SIMPLE_LOOKUP_POLICY": ResponseCacheLookupPolicyTypeSimpleLookupPolicy,
 }
 
+var mappingResponseCacheLookupPolicyTypeEnumLowerCase = map[string]ResponseCacheLookupPolicyTypeEnum{
+	"simple_lookup_policy": ResponseCacheLookupPolicyTypeSimpleLookupPolicy,
+}
+
 // GetResponseCacheLookupPolicyTypeEnumValues Enumerates the set of values for ResponseCacheLookupPolicyTypeEnum
 func GetResponseCacheLookupPolicyTypeEnumValues() []ResponseCacheLookupPolicyTypeEnum {
 	values := make([]ResponseCacheLookupPolicyTypeEnum, 0)
@@ -130,11 +134,6 @@ func GetResponseCacheLookupPolicyTypeEnumStringValues() []string {
 
 // GetMappingResponseCacheLookupPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingResponseCacheLookupPolicyTypeEnum(val string) (ResponseCacheLookupPolicyTypeEnum, bool) {
-	mappingResponseCacheLookupPolicyTypeEnumIgnoreCase := make(map[string]ResponseCacheLookupPolicyTypeEnum)
-	for k, v := range mappingResponseCacheLookupPolicyTypeEnum {
-		mappingResponseCacheLookupPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingResponseCacheLookupPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingResponseCacheLookupPolicyTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

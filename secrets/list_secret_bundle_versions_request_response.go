@@ -6,7 +6,7 @@ package secrets
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -127,6 +127,10 @@ var mappingListSecretBundleVersionsSortByEnum = map[string]ListSecretBundleVersi
 	"VERSION_NUMBER": ListSecretBundleVersionsSortByVersionNumber,
 }
 
+var mappingListSecretBundleVersionsSortByEnumLowerCase = map[string]ListSecretBundleVersionsSortByEnum{
+	"version_number": ListSecretBundleVersionsSortByVersionNumber,
+}
+
 // GetListSecretBundleVersionsSortByEnumValues Enumerates the set of values for ListSecretBundleVersionsSortByEnum
 func GetListSecretBundleVersionsSortByEnumValues() []ListSecretBundleVersionsSortByEnum {
 	values := make([]ListSecretBundleVersionsSortByEnum, 0)
@@ -145,12 +149,7 @@ func GetListSecretBundleVersionsSortByEnumStringValues() []string {
 
 // GetMappingListSecretBundleVersionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSecretBundleVersionsSortByEnum(val string) (ListSecretBundleVersionsSortByEnum, bool) {
-	mappingListSecretBundleVersionsSortByEnumIgnoreCase := make(map[string]ListSecretBundleVersionsSortByEnum)
-	for k, v := range mappingListSecretBundleVersionsSortByEnum {
-		mappingListSecretBundleVersionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSecretBundleVersionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSecretBundleVersionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -166,6 +165,11 @@ const (
 var mappingListSecretBundleVersionsSortOrderEnum = map[string]ListSecretBundleVersionsSortOrderEnum{
 	"ASC":  ListSecretBundleVersionsSortOrderAsc,
 	"DESC": ListSecretBundleVersionsSortOrderDesc,
+}
+
+var mappingListSecretBundleVersionsSortOrderEnumLowerCase = map[string]ListSecretBundleVersionsSortOrderEnum{
+	"asc":  ListSecretBundleVersionsSortOrderAsc,
+	"desc": ListSecretBundleVersionsSortOrderDesc,
 }
 
 // GetListSecretBundleVersionsSortOrderEnumValues Enumerates the set of values for ListSecretBundleVersionsSortOrderEnum
@@ -187,11 +191,6 @@ func GetListSecretBundleVersionsSortOrderEnumStringValues() []string {
 
 // GetMappingListSecretBundleVersionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSecretBundleVersionsSortOrderEnum(val string) (ListSecretBundleVersionsSortOrderEnum, bool) {
-	mappingListSecretBundleVersionsSortOrderEnumIgnoreCase := make(map[string]ListSecretBundleVersionsSortOrderEnum)
-	for k, v := range mappingListSecretBundleVersionsSortOrderEnum {
-		mappingListSecretBundleVersionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSecretBundleVersionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSecretBundleVersionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

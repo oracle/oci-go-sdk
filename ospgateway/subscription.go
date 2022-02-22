@@ -12,7 +12,7 @@ package ospgateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -194,6 +194,11 @@ var mappingSubscriptionPlanTypeEnum = map[string]SubscriptionPlanTypeEnum{
 	"PAYG":      SubscriptionPlanTypePayg,
 }
 
+var mappingSubscriptionPlanTypeEnumLowerCase = map[string]SubscriptionPlanTypeEnum{
+	"free_tier": SubscriptionPlanTypeFreeTier,
+	"payg":      SubscriptionPlanTypePayg,
+}
+
 // GetSubscriptionPlanTypeEnumValues Enumerates the set of values for SubscriptionPlanTypeEnum
 func GetSubscriptionPlanTypeEnumValues() []SubscriptionPlanTypeEnum {
 	values := make([]SubscriptionPlanTypeEnum, 0)
@@ -213,12 +218,7 @@ func GetSubscriptionPlanTypeEnumStringValues() []string {
 
 // GetMappingSubscriptionPlanTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSubscriptionPlanTypeEnum(val string) (SubscriptionPlanTypeEnum, bool) {
-	mappingSubscriptionPlanTypeEnumIgnoreCase := make(map[string]SubscriptionPlanTypeEnum)
-	for k, v := range mappingSubscriptionPlanTypeEnum {
-		mappingSubscriptionPlanTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSubscriptionPlanTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSubscriptionPlanTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -238,6 +238,13 @@ var mappingSubscriptionUpgradeStateEnum = map[string]SubscriptionUpgradeStateEnu
 	"SUBMITTED": SubscriptionUpgradeStateSubmitted,
 	"ERROR":     SubscriptionUpgradeStateError,
 	"UPGRADED":  SubscriptionUpgradeStateUpgraded,
+}
+
+var mappingSubscriptionUpgradeStateEnumLowerCase = map[string]SubscriptionUpgradeStateEnum{
+	"promo":     SubscriptionUpgradeStatePromo,
+	"submitted": SubscriptionUpgradeStateSubmitted,
+	"error":     SubscriptionUpgradeStateError,
+	"upgraded":  SubscriptionUpgradeStateUpgraded,
 }
 
 // GetSubscriptionUpgradeStateEnumValues Enumerates the set of values for SubscriptionUpgradeStateEnum
@@ -261,12 +268,7 @@ func GetSubscriptionUpgradeStateEnumStringValues() []string {
 
 // GetMappingSubscriptionUpgradeStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSubscriptionUpgradeStateEnum(val string) (SubscriptionUpgradeStateEnum, bool) {
-	mappingSubscriptionUpgradeStateEnumIgnoreCase := make(map[string]SubscriptionUpgradeStateEnum)
-	for k, v := range mappingSubscriptionUpgradeStateEnum {
-		mappingSubscriptionUpgradeStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSubscriptionUpgradeStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSubscriptionUpgradeStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -282,6 +284,11 @@ const (
 var mappingSubscriptionUpgradeStateDetailsEnum = map[string]SubscriptionUpgradeStateDetailsEnum{
 	"TAX_ERROR":     SubscriptionUpgradeStateDetailsTaxError,
 	"UPGRADE_ERROR": SubscriptionUpgradeStateDetailsUpgradeError,
+}
+
+var mappingSubscriptionUpgradeStateDetailsEnumLowerCase = map[string]SubscriptionUpgradeStateDetailsEnum{
+	"tax_error":     SubscriptionUpgradeStateDetailsTaxError,
+	"upgrade_error": SubscriptionUpgradeStateDetailsUpgradeError,
 }
 
 // GetSubscriptionUpgradeStateDetailsEnumValues Enumerates the set of values for SubscriptionUpgradeStateDetailsEnum
@@ -303,11 +310,6 @@ func GetSubscriptionUpgradeStateDetailsEnumStringValues() []string {
 
 // GetMappingSubscriptionUpgradeStateDetailsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSubscriptionUpgradeStateDetailsEnum(val string) (SubscriptionUpgradeStateDetailsEnum, bool) {
-	mappingSubscriptionUpgradeStateDetailsEnumIgnoreCase := make(map[string]SubscriptionUpgradeStateDetailsEnum)
-	for k, v := range mappingSubscriptionUpgradeStateDetailsEnum {
-		mappingSubscriptionUpgradeStateDetailsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSubscriptionUpgradeStateDetailsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSubscriptionUpgradeStateDetailsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -88,6 +88,21 @@ var mappingDbBackupConfigAutoBackupWindowEnum = map[string]DbBackupConfigAutoBac
 	"SLOT_TWELVE": DbBackupConfigAutoBackupWindowTwelve,
 }
 
+var mappingDbBackupConfigAutoBackupWindowEnumLowerCase = map[string]DbBackupConfigAutoBackupWindowEnum{
+	"slot_one":    DbBackupConfigAutoBackupWindowOne,
+	"slot_two":    DbBackupConfigAutoBackupWindowTwo,
+	"slot_three":  DbBackupConfigAutoBackupWindowThree,
+	"slot_four":   DbBackupConfigAutoBackupWindowFour,
+	"slot_five":   DbBackupConfigAutoBackupWindowFive,
+	"slot_six":    DbBackupConfigAutoBackupWindowSix,
+	"slot_seven":  DbBackupConfigAutoBackupWindowSeven,
+	"slot_eight":  DbBackupConfigAutoBackupWindowEight,
+	"slot_nine":   DbBackupConfigAutoBackupWindowNine,
+	"slot_ten":    DbBackupConfigAutoBackupWindowTen,
+	"slot_eleven": DbBackupConfigAutoBackupWindowEleven,
+	"slot_twelve": DbBackupConfigAutoBackupWindowTwelve,
+}
+
 // GetDbBackupConfigAutoBackupWindowEnumValues Enumerates the set of values for DbBackupConfigAutoBackupWindowEnum
 func GetDbBackupConfigAutoBackupWindowEnumValues() []DbBackupConfigAutoBackupWindowEnum {
 	values := make([]DbBackupConfigAutoBackupWindowEnum, 0)
@@ -117,11 +132,6 @@ func GetDbBackupConfigAutoBackupWindowEnumStringValues() []string {
 
 // GetMappingDbBackupConfigAutoBackupWindowEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDbBackupConfigAutoBackupWindowEnum(val string) (DbBackupConfigAutoBackupWindowEnum, bool) {
-	mappingDbBackupConfigAutoBackupWindowEnumIgnoreCase := make(map[string]DbBackupConfigAutoBackupWindowEnum)
-	for k, v := range mappingDbBackupConfigAutoBackupWindowEnum {
-		mappingDbBackupConfigAutoBackupWindowEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDbBackupConfigAutoBackupWindowEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDbBackupConfigAutoBackupWindowEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

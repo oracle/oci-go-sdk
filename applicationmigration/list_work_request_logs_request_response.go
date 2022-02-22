@@ -6,7 +6,7 @@ package applicationmigration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -123,6 +123,11 @@ var mappingListWorkRequestLogsSortOrderEnum = map[string]ListWorkRequestLogsSort
 	"DESC": ListWorkRequestLogsSortOrderDesc,
 }
 
+var mappingListWorkRequestLogsSortOrderEnumLowerCase = map[string]ListWorkRequestLogsSortOrderEnum{
+	"asc":  ListWorkRequestLogsSortOrderAsc,
+	"desc": ListWorkRequestLogsSortOrderDesc,
+}
+
 // GetListWorkRequestLogsSortOrderEnumValues Enumerates the set of values for ListWorkRequestLogsSortOrderEnum
 func GetListWorkRequestLogsSortOrderEnumValues() []ListWorkRequestLogsSortOrderEnum {
 	values := make([]ListWorkRequestLogsSortOrderEnum, 0)
@@ -142,11 +147,6 @@ func GetListWorkRequestLogsSortOrderEnumStringValues() []string {
 
 // GetMappingListWorkRequestLogsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWorkRequestLogsSortOrderEnum(val string) (ListWorkRequestLogsSortOrderEnum, bool) {
-	mappingListWorkRequestLogsSortOrderEnumIgnoreCase := make(map[string]ListWorkRequestLogsSortOrderEnum)
-	for k, v := range mappingListWorkRequestLogsSortOrderEnum {
-		mappingListWorkRequestLogsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWorkRequestLogsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWorkRequestLogsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

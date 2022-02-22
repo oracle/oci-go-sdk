@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -84,6 +84,12 @@ var mappingVmClusterUpdateHistoryEntryUpdateActionEnum = map[string]VmClusterUpd
 	"ROLLBACK":      VmClusterUpdateHistoryEntryUpdateActionRollback,
 }
 
+var mappingVmClusterUpdateHistoryEntryUpdateActionEnumLowerCase = map[string]VmClusterUpdateHistoryEntryUpdateActionEnum{
+	"rolling_apply": VmClusterUpdateHistoryEntryUpdateActionRollingApply,
+	"precheck":      VmClusterUpdateHistoryEntryUpdateActionPrecheck,
+	"rollback":      VmClusterUpdateHistoryEntryUpdateActionRollback,
+}
+
 // GetVmClusterUpdateHistoryEntryUpdateActionEnumValues Enumerates the set of values for VmClusterUpdateHistoryEntryUpdateActionEnum
 func GetVmClusterUpdateHistoryEntryUpdateActionEnumValues() []VmClusterUpdateHistoryEntryUpdateActionEnum {
 	values := make([]VmClusterUpdateHistoryEntryUpdateActionEnum, 0)
@@ -104,12 +110,7 @@ func GetVmClusterUpdateHistoryEntryUpdateActionEnumStringValues() []string {
 
 // GetMappingVmClusterUpdateHistoryEntryUpdateActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVmClusterUpdateHistoryEntryUpdateActionEnum(val string) (VmClusterUpdateHistoryEntryUpdateActionEnum, bool) {
-	mappingVmClusterUpdateHistoryEntryUpdateActionEnumIgnoreCase := make(map[string]VmClusterUpdateHistoryEntryUpdateActionEnum)
-	for k, v := range mappingVmClusterUpdateHistoryEntryUpdateActionEnum {
-		mappingVmClusterUpdateHistoryEntryUpdateActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVmClusterUpdateHistoryEntryUpdateActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVmClusterUpdateHistoryEntryUpdateActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -127,6 +128,12 @@ var mappingVmClusterUpdateHistoryEntryUpdateTypeEnum = map[string]VmClusterUpdat
 	"GI_UPGRADE": VmClusterUpdateHistoryEntryUpdateTypeGiUpgrade,
 	"GI_PATCH":   VmClusterUpdateHistoryEntryUpdateTypeGiPatch,
 	"OS_UPDATE":  VmClusterUpdateHistoryEntryUpdateTypeOsUpdate,
+}
+
+var mappingVmClusterUpdateHistoryEntryUpdateTypeEnumLowerCase = map[string]VmClusterUpdateHistoryEntryUpdateTypeEnum{
+	"gi_upgrade": VmClusterUpdateHistoryEntryUpdateTypeGiUpgrade,
+	"gi_patch":   VmClusterUpdateHistoryEntryUpdateTypeGiPatch,
+	"os_update":  VmClusterUpdateHistoryEntryUpdateTypeOsUpdate,
 }
 
 // GetVmClusterUpdateHistoryEntryUpdateTypeEnumValues Enumerates the set of values for VmClusterUpdateHistoryEntryUpdateTypeEnum
@@ -149,12 +156,7 @@ func GetVmClusterUpdateHistoryEntryUpdateTypeEnumStringValues() []string {
 
 // GetMappingVmClusterUpdateHistoryEntryUpdateTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVmClusterUpdateHistoryEntryUpdateTypeEnum(val string) (VmClusterUpdateHistoryEntryUpdateTypeEnum, bool) {
-	mappingVmClusterUpdateHistoryEntryUpdateTypeEnumIgnoreCase := make(map[string]VmClusterUpdateHistoryEntryUpdateTypeEnum)
-	for k, v := range mappingVmClusterUpdateHistoryEntryUpdateTypeEnum {
-		mappingVmClusterUpdateHistoryEntryUpdateTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVmClusterUpdateHistoryEntryUpdateTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVmClusterUpdateHistoryEntryUpdateTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -172,6 +174,12 @@ var mappingVmClusterUpdateHistoryEntryLifecycleStateEnum = map[string]VmClusterU
 	"IN_PROGRESS": VmClusterUpdateHistoryEntryLifecycleStateInProgress,
 	"SUCCEEDED":   VmClusterUpdateHistoryEntryLifecycleStateSucceeded,
 	"FAILED":      VmClusterUpdateHistoryEntryLifecycleStateFailed,
+}
+
+var mappingVmClusterUpdateHistoryEntryLifecycleStateEnumLowerCase = map[string]VmClusterUpdateHistoryEntryLifecycleStateEnum{
+	"in_progress": VmClusterUpdateHistoryEntryLifecycleStateInProgress,
+	"succeeded":   VmClusterUpdateHistoryEntryLifecycleStateSucceeded,
+	"failed":      VmClusterUpdateHistoryEntryLifecycleStateFailed,
 }
 
 // GetVmClusterUpdateHistoryEntryLifecycleStateEnumValues Enumerates the set of values for VmClusterUpdateHistoryEntryLifecycleStateEnum
@@ -194,11 +202,6 @@ func GetVmClusterUpdateHistoryEntryLifecycleStateEnumStringValues() []string {
 
 // GetMappingVmClusterUpdateHistoryEntryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVmClusterUpdateHistoryEntryLifecycleStateEnum(val string) (VmClusterUpdateHistoryEntryLifecycleStateEnum, bool) {
-	mappingVmClusterUpdateHistoryEntryLifecycleStateEnumIgnoreCase := make(map[string]VmClusterUpdateHistoryEntryLifecycleStateEnum)
-	for k, v := range mappingVmClusterUpdateHistoryEntryLifecycleStateEnum {
-		mappingVmClusterUpdateHistoryEntryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVmClusterUpdateHistoryEntryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVmClusterUpdateHistoryEntryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

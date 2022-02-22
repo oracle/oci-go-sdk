@@ -13,7 +13,7 @@ package artifacts
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -190,6 +190,12 @@ var mappingRepositoryLifecycleStateEnum = map[string]RepositoryLifecycleStateEnu
 	"DELETED":   RepositoryLifecycleStateDeleted,
 }
 
+var mappingRepositoryLifecycleStateEnumLowerCase = map[string]RepositoryLifecycleStateEnum{
+	"available": RepositoryLifecycleStateAvailable,
+	"deleting":  RepositoryLifecycleStateDeleting,
+	"deleted":   RepositoryLifecycleStateDeleted,
+}
+
 // GetRepositoryLifecycleStateEnumValues Enumerates the set of values for RepositoryLifecycleStateEnum
 func GetRepositoryLifecycleStateEnumValues() []RepositoryLifecycleStateEnum {
 	values := make([]RepositoryLifecycleStateEnum, 0)
@@ -210,12 +216,7 @@ func GetRepositoryLifecycleStateEnumStringValues() []string {
 
 // GetMappingRepositoryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRepositoryLifecycleStateEnum(val string) (RepositoryLifecycleStateEnum, bool) {
-	mappingRepositoryLifecycleStateEnumIgnoreCase := make(map[string]RepositoryLifecycleStateEnum)
-	for k, v := range mappingRepositoryLifecycleStateEnum {
-		mappingRepositoryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRepositoryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRepositoryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -229,6 +230,10 @@ const (
 
 var mappingRepositoryRepositoryTypeEnum = map[string]RepositoryRepositoryTypeEnum{
 	"GENERIC": RepositoryRepositoryTypeGeneric,
+}
+
+var mappingRepositoryRepositoryTypeEnumLowerCase = map[string]RepositoryRepositoryTypeEnum{
+	"generic": RepositoryRepositoryTypeGeneric,
 }
 
 // GetRepositoryRepositoryTypeEnumValues Enumerates the set of values for RepositoryRepositoryTypeEnum
@@ -249,11 +254,6 @@ func GetRepositoryRepositoryTypeEnumStringValues() []string {
 
 // GetMappingRepositoryRepositoryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRepositoryRepositoryTypeEnum(val string) (RepositoryRepositoryTypeEnum, bool) {
-	mappingRepositoryRepositoryTypeEnumIgnoreCase := make(map[string]RepositoryRepositoryTypeEnum)
-	for k, v := range mappingRepositoryRepositoryTypeEnum {
-		mappingRepositoryRepositoryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRepositoryRepositoryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRepositoryRepositoryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

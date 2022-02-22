@@ -11,7 +11,7 @@ package tenantmanagercontrolplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -94,6 +94,11 @@ var mappingDomainGovernanceLifecycleStateEnum = map[string]DomainGovernanceLifec
 	"INACTIVE": DomainGovernanceLifecycleStateInactive,
 }
 
+var mappingDomainGovernanceLifecycleStateEnumLowerCase = map[string]DomainGovernanceLifecycleStateEnum{
+	"active":   DomainGovernanceLifecycleStateActive,
+	"inactive": DomainGovernanceLifecycleStateInactive,
+}
+
 // GetDomainGovernanceLifecycleStateEnumValues Enumerates the set of values for DomainGovernanceLifecycleStateEnum
 func GetDomainGovernanceLifecycleStateEnumValues() []DomainGovernanceLifecycleStateEnum {
 	values := make([]DomainGovernanceLifecycleStateEnum, 0)
@@ -113,11 +118,6 @@ func GetDomainGovernanceLifecycleStateEnumStringValues() []string {
 
 // GetMappingDomainGovernanceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDomainGovernanceLifecycleStateEnum(val string) (DomainGovernanceLifecycleStateEnum, bool) {
-	mappingDomainGovernanceLifecycleStateEnumIgnoreCase := make(map[string]DomainGovernanceLifecycleStateEnum)
-	for k, v := range mappingDomainGovernanceLifecycleStateEnum {
-		mappingDomainGovernanceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDomainGovernanceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDomainGovernanceLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

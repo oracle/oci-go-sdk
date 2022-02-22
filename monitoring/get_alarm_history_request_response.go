@@ -6,7 +6,7 @@ package monitoring
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -134,6 +134,11 @@ var mappingGetAlarmHistoryAlarmHistorytypeEnum = map[string]GetAlarmHistoryAlarm
 	"STATE_TRANSITION_HISTORY": GetAlarmHistoryAlarmHistorytypeTransitionHistory,
 }
 
+var mappingGetAlarmHistoryAlarmHistorytypeEnumLowerCase = map[string]GetAlarmHistoryAlarmHistorytypeEnum{
+	"state_history":            GetAlarmHistoryAlarmHistorytypeHistory,
+	"state_transition_history": GetAlarmHistoryAlarmHistorytypeTransitionHistory,
+}
+
 // GetGetAlarmHistoryAlarmHistorytypeEnumValues Enumerates the set of values for GetAlarmHistoryAlarmHistorytypeEnum
 func GetGetAlarmHistoryAlarmHistorytypeEnumValues() []GetAlarmHistoryAlarmHistorytypeEnum {
 	values := make([]GetAlarmHistoryAlarmHistorytypeEnum, 0)
@@ -153,11 +158,6 @@ func GetGetAlarmHistoryAlarmHistorytypeEnumStringValues() []string {
 
 // GetMappingGetAlarmHistoryAlarmHistorytypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetAlarmHistoryAlarmHistorytypeEnum(val string) (GetAlarmHistoryAlarmHistorytypeEnum, bool) {
-	mappingGetAlarmHistoryAlarmHistorytypeEnumIgnoreCase := make(map[string]GetAlarmHistoryAlarmHistorytypeEnum)
-	for k, v := range mappingGetAlarmHistoryAlarmHistorytypeEnum {
-		mappingGetAlarmHistoryAlarmHistorytypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetAlarmHistoryAlarmHistorytypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetAlarmHistoryAlarmHistorytypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

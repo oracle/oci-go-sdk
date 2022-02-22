@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -77,6 +77,14 @@ var mappingUiPasswordLifecycleStateEnum = map[string]UiPasswordLifecycleStateEnu
 	"DELETED":  UiPasswordLifecycleStateDeleted,
 }
 
+var mappingUiPasswordLifecycleStateEnumLowerCase = map[string]UiPasswordLifecycleStateEnum{
+	"creating": UiPasswordLifecycleStateCreating,
+	"active":   UiPasswordLifecycleStateActive,
+	"inactive": UiPasswordLifecycleStateInactive,
+	"deleting": UiPasswordLifecycleStateDeleting,
+	"deleted":  UiPasswordLifecycleStateDeleted,
+}
+
 // GetUiPasswordLifecycleStateEnumValues Enumerates the set of values for UiPasswordLifecycleStateEnum
 func GetUiPasswordLifecycleStateEnumValues() []UiPasswordLifecycleStateEnum {
 	values := make([]UiPasswordLifecycleStateEnum, 0)
@@ -99,11 +107,6 @@ func GetUiPasswordLifecycleStateEnumStringValues() []string {
 
 // GetMappingUiPasswordLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUiPasswordLifecycleStateEnum(val string) (UiPasswordLifecycleStateEnum, bool) {
-	mappingUiPasswordLifecycleStateEnumIgnoreCase := make(map[string]UiPasswordLifecycleStateEnum)
-	for k, v := range mappingUiPasswordLifecycleStateEnum {
-		mappingUiPasswordLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUiPasswordLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUiPasswordLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package osubusage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -101,6 +101,24 @@ var mappingComputedUsageAggregationTypeEnum = map[string]ComputedUsageAggregatio
 	"DELAYED_USAGE_POST_TERMINATION":    ComputedUsageAggregationTypeDelayedUsagePostTermination,
 }
 
+var mappingComputedUsageAggregationTypeEnumLowerCase = map[string]ComputedUsageAggregationTypeEnum{
+	"promotion":                         ComputedUsageAggregationTypePromotion,
+	"do_not_bill":                       ComputedUsageAggregationTypeDoNotBill,
+	"usage":                             ComputedUsageAggregationTypeUsage,
+	"commit":                            ComputedUsageAggregationTypeCommit,
+	"overage":                           ComputedUsageAggregationTypeOverage,
+	"pay_as_you_go":                     ComputedUsageAggregationTypePayAsYouGo,
+	"monthly_minimum":                   ComputedUsageAggregationTypeMonthlyMinimum,
+	"delayed_usage_invoice_timing":      ComputedUsageAggregationTypeDelayedUsageInvoiceTiming,
+	"delayed_usage_commitment_exp":      ComputedUsageAggregationTypeDelayedUsageCommitmentExp,
+	"on_account_credit":                 ComputedUsageAggregationTypeOnAccountCredit,
+	"service_credit":                    ComputedUsageAggregationTypeServiceCredit,
+	"commitment_expiration":             ComputedUsageAggregationTypeCommitmentExpiration,
+	"funded_allocation":                 ComputedUsageAggregationTypeFundedAllocation,
+	"donot_bill_usage_post_termination": ComputedUsageAggregationTypeDonotBillUsagePostTermination,
+	"delayed_usage_post_termination":    ComputedUsageAggregationTypeDelayedUsagePostTermination,
+}
+
 // GetComputedUsageAggregationTypeEnumValues Enumerates the set of values for ComputedUsageAggregationTypeEnum
 func GetComputedUsageAggregationTypeEnumValues() []ComputedUsageAggregationTypeEnum {
 	values := make([]ComputedUsageAggregationTypeEnum, 0)
@@ -133,11 +151,6 @@ func GetComputedUsageAggregationTypeEnumStringValues() []string {
 
 // GetMappingComputedUsageAggregationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingComputedUsageAggregationTypeEnum(val string) (ComputedUsageAggregationTypeEnum, bool) {
-	mappingComputedUsageAggregationTypeEnumIgnoreCase := make(map[string]ComputedUsageAggregationTypeEnum)
-	for k, v := range mappingComputedUsageAggregationTypeEnum {
-		mappingComputedUsageAggregationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingComputedUsageAggregationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingComputedUsageAggregationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

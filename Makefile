@@ -1,6 +1,6 @@
 DOC_SERVER_URL=https:\/\/docs.cloud.oracle.com
 
-GEN_TARGETS = identity core objectstorage loadbalancer database audit dns filestorage email containerengine resourcesearch keymanagement announcementsservice healthchecks waas autoscaling streaming ons monitoring resourcemanager budget workrequests functions limits events dts oce oda analytics integration osmanagement marketplace apigateway applicationmigration datacatalog dataflow datascience nosql secrets vault bds cims datasafe mysql dataintegration ocvp usageapi blockchain loggingingestion logging loganalytics managementdashboard sch loggingsearch managementagent cloudguard opsi computeinstanceagent optimizer tenantmanagercontrolplane rover databasemanagement artifacts apmsynthetics goldengate apmcontrolplane apmtraces networkloadbalancer vulnerabilityscanning databasemigration servicecatalog ailanguage operatoraccesscontrol bastion genericartifactscontent jms devops aianomalydetection datalabelingservice datalabelingservicedataplane apmconfig waf certificates certificatesmanagement usage databasetools servicemanagerproxy appmgmtcontrol ospgateway identitydataplane visualbuilder osubusage osubsubscription osuborganizationsubscription osubbillingschedule dashboardservice threatintelligence aivision ##SPECNAME##
+GEN_TARGETS = identity core objectstorage loadbalancer database audit dns filestorage email containerengine resourcesearch keymanagement announcementsservice healthchecks waas autoscaling streaming ons monitoring resourcemanager budget workrequests functions limits events dts oce oda analytics integration osmanagement marketplace apigateway applicationmigration datacatalog dataflow datascience nosql secrets vault bds cims datasafe mysql dataintegration ocvp usageapi blockchain loggingingestion logging loganalytics managementdashboard sch loggingsearch managementagent cloudguard opsi computeinstanceagent optimizer tenantmanagercontrolplane rover databasemanagement artifacts apmsynthetics goldengate apmcontrolplane apmtraces networkloadbalancer vulnerabilityscanning databasemigration servicecatalog ailanguage operatoraccesscontrol bastion genericartifactscontent jms devops aianomalydetection datalabelingservice datalabelingservicedataplane apmconfig waf certificates certificatesmanagement usage databasetools servicemanagerproxy appmgmtcontrol ospgateway identitydataplane visualbuilder osubusage osubsubscription osuborganizationsubscription osubbillingschedule dashboardservice threatintelligence aivision aispeech dataconnectivity ##SPECNAME##
 NON_GEN_TARGETS = common common/auth objectstorage/transfer example
 TARGETS = $(NON_GEN_TARGETS) $(GEN_TARGETS)
 
@@ -83,6 +83,14 @@ pre-doc:
 	# Note: This should stay the old docs URL (with us-phoenix-1), because it
 	# processes go files and changes the old URL into the new URL
 	find . -name \*.go |xargs sed -i 's/https:\/\/docs.us-phoenix-1.oraclecloud.com/${DOC_SERVER_URL}/g'
+
+pre-doc-local:
+	@echo "Rendering doc server to ${DOC_SERVER_URL}"
+	find . -name \*.go |xargs sed -i '' 's/{{DOC_SERVER_URL}}/${DOC_SERVER_URL}/g'
+	# Note: This should stay the old docs URL (with us-phoenix-1), because it
+	# processes go files and changes the old URL into the new URL
+	find . -name \*.go |xargs sed -i '' 's/https:\/\/docs.us-phoenix-1.oraclecloud.com/${DOC_SERVER_URL}/g'
+
 
 gen-version:
 	go generate -x

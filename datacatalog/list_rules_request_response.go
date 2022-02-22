@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -182,6 +182,12 @@ var mappingListRulesRuleTypeEnum = map[string]ListRulesRuleTypeEnum{
 	"UNIQUEKEY":  ListRulesRuleTypeUniquekey,
 }
 
+var mappingListRulesRuleTypeEnumLowerCase = map[string]ListRulesRuleTypeEnum{
+	"primarykey": ListRulesRuleTypePrimarykey,
+	"foreignkey": ListRulesRuleTypeForeignkey,
+	"uniquekey":  ListRulesRuleTypeUniquekey,
+}
+
 // GetListRulesRuleTypeEnumValues Enumerates the set of values for ListRulesRuleTypeEnum
 func GetListRulesRuleTypeEnumValues() []ListRulesRuleTypeEnum {
 	values := make([]ListRulesRuleTypeEnum, 0)
@@ -202,12 +208,7 @@ func GetListRulesRuleTypeEnumStringValues() []string {
 
 // GetMappingListRulesRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRulesRuleTypeEnum(val string) (ListRulesRuleTypeEnum, bool) {
-	mappingListRulesRuleTypeEnumIgnoreCase := make(map[string]ListRulesRuleTypeEnum)
-	for k, v := range mappingListRulesRuleTypeEnum {
-		mappingListRulesRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRulesRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRulesRuleTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -237,6 +238,17 @@ var mappingListRulesLifecycleStateEnum = map[string]ListRulesLifecycleStateEnum{
 	"MOVING":   ListRulesLifecycleStateMoving,
 }
 
+var mappingListRulesLifecycleStateEnumLowerCase = map[string]ListRulesLifecycleStateEnum{
+	"creating": ListRulesLifecycleStateCreating,
+	"active":   ListRulesLifecycleStateActive,
+	"inactive": ListRulesLifecycleStateInactive,
+	"updating": ListRulesLifecycleStateUpdating,
+	"deleting": ListRulesLifecycleStateDeleting,
+	"deleted":  ListRulesLifecycleStateDeleted,
+	"failed":   ListRulesLifecycleStateFailed,
+	"moving":   ListRulesLifecycleStateMoving,
+}
+
 // GetListRulesLifecycleStateEnumValues Enumerates the set of values for ListRulesLifecycleStateEnum
 func GetListRulesLifecycleStateEnumValues() []ListRulesLifecycleStateEnum {
 	values := make([]ListRulesLifecycleStateEnum, 0)
@@ -262,12 +274,7 @@ func GetListRulesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListRulesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRulesLifecycleStateEnum(val string) (ListRulesLifecycleStateEnum, bool) {
-	mappingListRulesLifecycleStateEnumIgnoreCase := make(map[string]ListRulesLifecycleStateEnum)
-	for k, v := range mappingListRulesLifecycleStateEnum {
-		mappingListRulesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRulesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRulesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -285,6 +292,12 @@ var mappingListRulesOriginTypeEnum = map[string]ListRulesOriginTypeEnum{
 	"SOURCE":    ListRulesOriginTypeSource,
 	"USER":      ListRulesOriginTypeUser,
 	"PROFILING": ListRulesOriginTypeProfiling,
+}
+
+var mappingListRulesOriginTypeEnumLowerCase = map[string]ListRulesOriginTypeEnum{
+	"source":    ListRulesOriginTypeSource,
+	"user":      ListRulesOriginTypeUser,
+	"profiling": ListRulesOriginTypeProfiling,
 }
 
 // GetListRulesOriginTypeEnumValues Enumerates the set of values for ListRulesOriginTypeEnum
@@ -307,12 +320,7 @@ func GetListRulesOriginTypeEnumStringValues() []string {
 
 // GetMappingListRulesOriginTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRulesOriginTypeEnum(val string) (ListRulesOriginTypeEnum, bool) {
-	mappingListRulesOriginTypeEnumIgnoreCase := make(map[string]ListRulesOriginTypeEnum)
-	for k, v := range mappingListRulesOriginTypeEnum {
-		mappingListRulesOriginTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRulesOriginTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRulesOriginTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -354,6 +362,23 @@ var mappingListRulesFieldsEnum = map[string]ListRulesFieldsEnum{
 	"uri":                  ListRulesFieldsUri,
 }
 
+var mappingListRulesFieldsEnumLowerCase = map[string]ListRulesFieldsEnum{
+	"key":                  ListRulesFieldsKey,
+	"displayname":          ListRulesFieldsDisplayname,
+	"ruletype":             ListRulesFieldsRuletype,
+	"externalkey":          ListRulesFieldsExternalkey,
+	"referencedfolderkey":  ListRulesFieldsReferencedfolderkey,
+	"referencedfoldername": ListRulesFieldsReferencedfoldername,
+	"referencedentitykey":  ListRulesFieldsReferencedentitykey,
+	"referencedentityname": ListRulesFieldsReferencedentityname,
+	"referencedrulekey":    ListRulesFieldsReferencedrulekey,
+	"referencedrulename":   ListRulesFieldsReferencedrulename,
+	"origintype":           ListRulesFieldsOrigintype,
+	"lifecyclestate":       ListRulesFieldsLifecyclestate,
+	"timecreated":          ListRulesFieldsTimecreated,
+	"uri":                  ListRulesFieldsUri,
+}
+
 // GetListRulesFieldsEnumValues Enumerates the set of values for ListRulesFieldsEnum
 func GetListRulesFieldsEnumValues() []ListRulesFieldsEnum {
 	values := make([]ListRulesFieldsEnum, 0)
@@ -385,12 +410,7 @@ func GetListRulesFieldsEnumStringValues() []string {
 
 // GetMappingListRulesFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRulesFieldsEnum(val string) (ListRulesFieldsEnum, bool) {
-	mappingListRulesFieldsEnumIgnoreCase := make(map[string]ListRulesFieldsEnum)
-	for k, v := range mappingListRulesFieldsEnum {
-		mappingListRulesFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRulesFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRulesFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -406,6 +426,11 @@ const (
 var mappingListRulesSortByEnum = map[string]ListRulesSortByEnum{
 	"TIMECREATED": ListRulesSortByTimecreated,
 	"DISPLAYNAME": ListRulesSortByDisplayname,
+}
+
+var mappingListRulesSortByEnumLowerCase = map[string]ListRulesSortByEnum{
+	"timecreated": ListRulesSortByTimecreated,
+	"displayname": ListRulesSortByDisplayname,
 }
 
 // GetListRulesSortByEnumValues Enumerates the set of values for ListRulesSortByEnum
@@ -427,12 +452,7 @@ func GetListRulesSortByEnumStringValues() []string {
 
 // GetMappingListRulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRulesSortByEnum(val string) (ListRulesSortByEnum, bool) {
-	mappingListRulesSortByEnumIgnoreCase := make(map[string]ListRulesSortByEnum)
-	for k, v := range mappingListRulesSortByEnum {
-		mappingListRulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRulesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -448,6 +468,11 @@ const (
 var mappingListRulesSortOrderEnum = map[string]ListRulesSortOrderEnum{
 	"ASC":  ListRulesSortOrderAsc,
 	"DESC": ListRulesSortOrderDesc,
+}
+
+var mappingListRulesSortOrderEnumLowerCase = map[string]ListRulesSortOrderEnum{
+	"asc":  ListRulesSortOrderAsc,
+	"desc": ListRulesSortOrderDesc,
 }
 
 // GetListRulesSortOrderEnumValues Enumerates the set of values for ListRulesSortOrderEnum
@@ -469,11 +494,6 @@ func GetListRulesSortOrderEnumStringValues() []string {
 
 // GetMappingListRulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRulesSortOrderEnum(val string) (ListRulesSortOrderEnum, bool) {
-	mappingListRulesSortOrderEnumIgnoreCase := make(map[string]ListRulesSortOrderEnum)
-	for k, v := range mappingListRulesSortOrderEnum {
-		mappingListRulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRulesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

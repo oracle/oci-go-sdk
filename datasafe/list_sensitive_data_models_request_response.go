@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -170,6 +170,11 @@ var mappingListSensitiveDataModelsAccessLevelEnum = map[string]ListSensitiveData
 	"ACCESSIBLE": ListSensitiveDataModelsAccessLevelAccessible,
 }
 
+var mappingListSensitiveDataModelsAccessLevelEnumLowerCase = map[string]ListSensitiveDataModelsAccessLevelEnum{
+	"restricted": ListSensitiveDataModelsAccessLevelRestricted,
+	"accessible": ListSensitiveDataModelsAccessLevelAccessible,
+}
+
 // GetListSensitiveDataModelsAccessLevelEnumValues Enumerates the set of values for ListSensitiveDataModelsAccessLevelEnum
 func GetListSensitiveDataModelsAccessLevelEnumValues() []ListSensitiveDataModelsAccessLevelEnum {
 	values := make([]ListSensitiveDataModelsAccessLevelEnum, 0)
@@ -189,12 +194,7 @@ func GetListSensitiveDataModelsAccessLevelEnumStringValues() []string {
 
 // GetMappingListSensitiveDataModelsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSensitiveDataModelsAccessLevelEnum(val string) (ListSensitiveDataModelsAccessLevelEnum, bool) {
-	mappingListSensitiveDataModelsAccessLevelEnumIgnoreCase := make(map[string]ListSensitiveDataModelsAccessLevelEnum)
-	for k, v := range mappingListSensitiveDataModelsAccessLevelEnum {
-		mappingListSensitiveDataModelsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSensitiveDataModelsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSensitiveDataModelsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -210,6 +210,11 @@ const (
 var mappingListSensitiveDataModelsSortOrderEnum = map[string]ListSensitiveDataModelsSortOrderEnum{
 	"ASC":  ListSensitiveDataModelsSortOrderAsc,
 	"DESC": ListSensitiveDataModelsSortOrderDesc,
+}
+
+var mappingListSensitiveDataModelsSortOrderEnumLowerCase = map[string]ListSensitiveDataModelsSortOrderEnum{
+	"asc":  ListSensitiveDataModelsSortOrderAsc,
+	"desc": ListSensitiveDataModelsSortOrderDesc,
 }
 
 // GetListSensitiveDataModelsSortOrderEnumValues Enumerates the set of values for ListSensitiveDataModelsSortOrderEnum
@@ -231,12 +236,7 @@ func GetListSensitiveDataModelsSortOrderEnumStringValues() []string {
 
 // GetMappingListSensitiveDataModelsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSensitiveDataModelsSortOrderEnum(val string) (ListSensitiveDataModelsSortOrderEnum, bool) {
-	mappingListSensitiveDataModelsSortOrderEnumIgnoreCase := make(map[string]ListSensitiveDataModelsSortOrderEnum)
-	for k, v := range mappingListSensitiveDataModelsSortOrderEnum {
-		mappingListSensitiveDataModelsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSensitiveDataModelsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSensitiveDataModelsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -252,6 +252,11 @@ const (
 var mappingListSensitiveDataModelsSortByEnum = map[string]ListSensitiveDataModelsSortByEnum{
 	"timeCreated": ListSensitiveDataModelsSortByTimecreated,
 	"displayName": ListSensitiveDataModelsSortByDisplayname,
+}
+
+var mappingListSensitiveDataModelsSortByEnumLowerCase = map[string]ListSensitiveDataModelsSortByEnum{
+	"timecreated": ListSensitiveDataModelsSortByTimecreated,
+	"displayname": ListSensitiveDataModelsSortByDisplayname,
 }
 
 // GetListSensitiveDataModelsSortByEnumValues Enumerates the set of values for ListSensitiveDataModelsSortByEnum
@@ -273,12 +278,7 @@ func GetListSensitiveDataModelsSortByEnumStringValues() []string {
 
 // GetMappingListSensitiveDataModelsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSensitiveDataModelsSortByEnum(val string) (ListSensitiveDataModelsSortByEnum, bool) {
-	mappingListSensitiveDataModelsSortByEnumIgnoreCase := make(map[string]ListSensitiveDataModelsSortByEnum)
-	for k, v := range mappingListSensitiveDataModelsSortByEnum {
-		mappingListSensitiveDataModelsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSensitiveDataModelsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSensitiveDataModelsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -304,6 +304,15 @@ var mappingListSensitiveDataModelsLifecycleStateEnum = map[string]ListSensitiveD
 	"FAILED":   ListSensitiveDataModelsLifecycleStateFailed,
 }
 
+var mappingListSensitiveDataModelsLifecycleStateEnumLowerCase = map[string]ListSensitiveDataModelsLifecycleStateEnum{
+	"creating": ListSensitiveDataModelsLifecycleStateCreating,
+	"active":   ListSensitiveDataModelsLifecycleStateActive,
+	"updating": ListSensitiveDataModelsLifecycleStateUpdating,
+	"deleting": ListSensitiveDataModelsLifecycleStateDeleting,
+	"deleted":  ListSensitiveDataModelsLifecycleStateDeleted,
+	"failed":   ListSensitiveDataModelsLifecycleStateFailed,
+}
+
 // GetListSensitiveDataModelsLifecycleStateEnumValues Enumerates the set of values for ListSensitiveDataModelsLifecycleStateEnum
 func GetListSensitiveDataModelsLifecycleStateEnumValues() []ListSensitiveDataModelsLifecycleStateEnum {
 	values := make([]ListSensitiveDataModelsLifecycleStateEnum, 0)
@@ -327,11 +336,6 @@ func GetListSensitiveDataModelsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListSensitiveDataModelsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSensitiveDataModelsLifecycleStateEnum(val string) (ListSensitiveDataModelsLifecycleStateEnum, bool) {
-	mappingListSensitiveDataModelsLifecycleStateEnumIgnoreCase := make(map[string]ListSensitiveDataModelsLifecycleStateEnum)
-	for k, v := range mappingListSensitiveDataModelsLifecycleStateEnum {
-		mappingListSensitiveDataModelsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSensitiveDataModelsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSensitiveDataModelsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

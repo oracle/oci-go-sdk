@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -97,6 +97,13 @@ var mappingStackResourceDriftSummaryResourceDriftStatusEnum = map[string]StackRe
 	"DELETED":     StackResourceDriftSummaryResourceDriftStatusDeleted,
 }
 
+var mappingStackResourceDriftSummaryResourceDriftStatusEnumLowerCase = map[string]StackResourceDriftSummaryResourceDriftStatusEnum{
+	"not_checked": StackResourceDriftSummaryResourceDriftStatusNotChecked,
+	"in_sync":     StackResourceDriftSummaryResourceDriftStatusInSync,
+	"modified":    StackResourceDriftSummaryResourceDriftStatusModified,
+	"deleted":     StackResourceDriftSummaryResourceDriftStatusDeleted,
+}
+
 // GetStackResourceDriftSummaryResourceDriftStatusEnumValues Enumerates the set of values for StackResourceDriftSummaryResourceDriftStatusEnum
 func GetStackResourceDriftSummaryResourceDriftStatusEnumValues() []StackResourceDriftSummaryResourceDriftStatusEnum {
 	values := make([]StackResourceDriftSummaryResourceDriftStatusEnum, 0)
@@ -118,11 +125,6 @@ func GetStackResourceDriftSummaryResourceDriftStatusEnumStringValues() []string 
 
 // GetMappingStackResourceDriftSummaryResourceDriftStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStackResourceDriftSummaryResourceDriftStatusEnum(val string) (StackResourceDriftSummaryResourceDriftStatusEnum, bool) {
-	mappingStackResourceDriftSummaryResourceDriftStatusEnumIgnoreCase := make(map[string]StackResourceDriftSummaryResourceDriftStatusEnum)
-	for k, v := range mappingStackResourceDriftSummaryResourceDriftStatusEnum {
-		mappingStackResourceDriftSummaryResourceDriftStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStackResourceDriftSummaryResourceDriftStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStackResourceDriftSummaryResourceDriftStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

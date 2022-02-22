@@ -6,7 +6,7 @@ package osubusage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,13 @@ var mappingListComputedUsageAggregatedsGroupingEnum = map[string]ListComputedUsa
 	"NONE":    ListComputedUsageAggregatedsGroupingNone,
 }
 
+var mappingListComputedUsageAggregatedsGroupingEnumLowerCase = map[string]ListComputedUsageAggregatedsGroupingEnum{
+	"hourly":  ListComputedUsageAggregatedsGroupingHourly,
+	"daily":   ListComputedUsageAggregatedsGroupingDaily,
+	"monthly": ListComputedUsageAggregatedsGroupingMonthly,
+	"none":    ListComputedUsageAggregatedsGroupingNone,
+}
+
 // GetListComputedUsageAggregatedsGroupingEnumValues Enumerates the set of values for ListComputedUsageAggregatedsGroupingEnum
 func GetListComputedUsageAggregatedsGroupingEnumValues() []ListComputedUsageAggregatedsGroupingEnum {
 	values := make([]ListComputedUsageAggregatedsGroupingEnum, 0)
@@ -162,11 +169,6 @@ func GetListComputedUsageAggregatedsGroupingEnumStringValues() []string {
 
 // GetMappingListComputedUsageAggregatedsGroupingEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListComputedUsageAggregatedsGroupingEnum(val string) (ListComputedUsageAggregatedsGroupingEnum, bool) {
-	mappingListComputedUsageAggregatedsGroupingEnumIgnoreCase := make(map[string]ListComputedUsageAggregatedsGroupingEnum)
-	for k, v := range mappingListComputedUsageAggregatedsGroupingEnum {
-		mappingListComputedUsageAggregatedsGroupingEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListComputedUsageAggregatedsGroupingEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListComputedUsageAggregatedsGroupingEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

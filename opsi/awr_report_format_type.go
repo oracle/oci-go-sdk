@@ -29,6 +29,11 @@ var mappingAwrReportFormatTypeEnum = map[string]AwrReportFormatTypeEnum{
 	"TEXT": AwrReportFormatTypeText,
 }
 
+var mappingAwrReportFormatTypeEnumLowerCase = map[string]AwrReportFormatTypeEnum{
+	"html": AwrReportFormatTypeHtml,
+	"text": AwrReportFormatTypeText,
+}
+
 // GetAwrReportFormatTypeEnumValues Enumerates the set of values for AwrReportFormatTypeEnum
 func GetAwrReportFormatTypeEnumValues() []AwrReportFormatTypeEnum {
 	values := make([]AwrReportFormatTypeEnum, 0)
@@ -48,11 +53,6 @@ func GetAwrReportFormatTypeEnumStringValues() []string {
 
 // GetMappingAwrReportFormatTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAwrReportFormatTypeEnum(val string) (AwrReportFormatTypeEnum, bool) {
-	mappingAwrReportFormatTypeEnumIgnoreCase := make(map[string]AwrReportFormatTypeEnum)
-	for k, v := range mappingAwrReportFormatTypeEnum {
-		mappingAwrReportFormatTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAwrReportFormatTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAwrReportFormatTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

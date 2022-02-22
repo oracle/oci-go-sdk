@@ -31,6 +31,9 @@ const (
 	// Default Realm Environment Variable
 	defaultRealmEnvVarName = "OCI_DEFAULT_REALM"
 
+	//EndpointTemplateForRegionWithDot Environment Variable
+	EndpointTemplateForRegionWithDot = "https://{endpoint_service_name}.{region}"
+
 	// Region Metadata
 	regionIdentifierPropertyName     = "regionIdentifier"     // e.g. "ap-sydney-1"
 	realmKeyPropertyName             = "realmKey"             // e.g. "oc1"
@@ -65,6 +68,34 @@ func (region Region) EndpointForTemplate(service string, serviceEndpointTemplate
 	endpoint = strings.Replace(endpoint, "{secondLevelDomain}", region.secondLevelDomain(), 1)
 
 	return endpoint
+}
+
+// EndpointForTemplateDottedRegion returns a endpoint for a service based on template, only unknown region name can fall back to "oc1", but not short code region name.
+func (region Region) EndpointForTemplateDottedRegion(service string, serviceEndpointTemplate string, endpointServiceName string) (string, error) {
+	if endpointServiceName != "" {
+		endpoint := strings.Replace(EndpointTemplateForRegionWithDot, "{endpoint_service_name}", endpointServiceName, 1)
+		endpoint = strings.Replace(endpoint, "{region}", string(region), 1)
+		Debugf("Constructing endpoint from service name %s and region %s", endpointServiceName, region)
+		return endpoint, nil
+	}
+	if serviceEndpointTemplate != "" {
+		var endpoint = ""
+		res := strings.Split(serviceEndpointTemplate, "//")
+		if len(res) > 1 {
+			res = strings.Split(res[1], ".")
+			if len(res) > 0 {
+				endpoint = strings.Replace(EndpointTemplateForRegionWithDot, "{endpoint_service_name}", res[0], 1)
+				endpoint = strings.Replace(endpoint, "{region}", string(region), 1)
+			} else {
+				return endpoint, fmt.Errorf("Endpoint service name not present in endpoint template")
+			}
+		} else {
+			return endpoint, fmt.Errorf("Invalid serviceEndpointTemplates")
+		}
+		Debugf("Constructing endpoint by extracting service name from endpoint template %s", serviceEndpointTemplate)
+		return endpoint, nil
+	}
+	return "", fmt.Errorf("EndpointForTemplateDottedRegion function require endpointServiceName or serviceEndpointTemplate, no endpointServiceName or serviceEndpointTemplate provided")
 }
 
 func (region Region) secondLevelDomain() string {

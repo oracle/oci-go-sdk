@@ -11,7 +11,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -68,6 +68,13 @@ var mappingBuildStageRunStepStateEnum = map[string]BuildStageRunStepStateEnum{
 	"SUCCEEDED":   BuildStageRunStepStateSucceeded,
 }
 
+var mappingBuildStageRunStepStateEnumLowerCase = map[string]BuildStageRunStepStateEnum{
+	"waiting":     BuildStageRunStepStateWaiting,
+	"in_progress": BuildStageRunStepStateInProgress,
+	"failed":      BuildStageRunStepStateFailed,
+	"succeeded":   BuildStageRunStepStateSucceeded,
+}
+
 // GetBuildStageRunStepStateEnumValues Enumerates the set of values for BuildStageRunStepStateEnum
 func GetBuildStageRunStepStateEnumValues() []BuildStageRunStepStateEnum {
 	values := make([]BuildStageRunStepStateEnum, 0)
@@ -89,11 +96,6 @@ func GetBuildStageRunStepStateEnumStringValues() []string {
 
 // GetMappingBuildStageRunStepStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBuildStageRunStepStateEnum(val string) (BuildStageRunStepStateEnum, bool) {
-	mappingBuildStageRunStepStateEnumIgnoreCase := make(map[string]BuildStageRunStepStateEnum)
-	for k, v := range mappingBuildStageRunStepStateEnum {
-		mappingBuildStageRunStepStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBuildStageRunStepStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBuildStageRunStepStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

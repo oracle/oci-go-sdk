@@ -27,6 +27,11 @@ var mappingNlbIpVersionEnum = map[string]NlbIpVersionEnum{
 	"IPV4_AND_IPV6": NlbIpVersionIpv4AndIpv6,
 }
 
+var mappingNlbIpVersionEnumLowerCase = map[string]NlbIpVersionEnum{
+	"ipv4":          NlbIpVersionIpv4,
+	"ipv4_and_ipv6": NlbIpVersionIpv4AndIpv6,
+}
+
 // GetNlbIpVersionEnumValues Enumerates the set of values for NlbIpVersionEnum
 func GetNlbIpVersionEnumValues() []NlbIpVersionEnum {
 	values := make([]NlbIpVersionEnum, 0)
@@ -46,11 +51,6 @@ func GetNlbIpVersionEnumStringValues() []string {
 
 // GetMappingNlbIpVersionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNlbIpVersionEnum(val string) (NlbIpVersionEnum, bool) {
-	mappingNlbIpVersionEnumIgnoreCase := make(map[string]NlbIpVersionEnum)
-	for k, v := range mappingNlbIpVersionEnum {
-		mappingNlbIpVersionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNlbIpVersionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNlbIpVersionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

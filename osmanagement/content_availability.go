@@ -34,6 +34,14 @@ var mappingContentAvailabilityEnum = map[string]ContentAvailabilityEnum{
 	"AVAILABLE_ON_INSTANCE_UPLOAD_IN_PROGRESS": ContentAvailabilityAvailableOnInstanceUploadInProgress,
 }
 
+var mappingContentAvailabilityEnumLowerCase = map[string]ContentAvailabilityEnum{
+	"not_available":                            ContentAvailabilityNotAvailable,
+	"available_on_instance":                    ContentAvailabilityAvailableOnInstance,
+	"available_on_service":                     ContentAvailabilityAvailableOnService,
+	"available_on_instance_and_service":        ContentAvailabilityAvailableOnInstanceAndService,
+	"available_on_instance_upload_in_progress": ContentAvailabilityAvailableOnInstanceUploadInProgress,
+}
+
 // GetContentAvailabilityEnumValues Enumerates the set of values for ContentAvailabilityEnum
 func GetContentAvailabilityEnumValues() []ContentAvailabilityEnum {
 	values := make([]ContentAvailabilityEnum, 0)
@@ -56,11 +64,6 @@ func GetContentAvailabilityEnumStringValues() []string {
 
 // GetMappingContentAvailabilityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingContentAvailabilityEnum(val string) (ContentAvailabilityEnum, bool) {
-	mappingContentAvailabilityEnumIgnoreCase := make(map[string]ContentAvailabilityEnum)
-	for k, v := range mappingContentAvailabilityEnum {
-		mappingContentAvailabilityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingContentAvailabilityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingContentAvailabilityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

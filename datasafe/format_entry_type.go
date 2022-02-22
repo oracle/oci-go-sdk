@@ -69,6 +69,32 @@ var mappingFormatEntryTypeEnum = map[string]FormatEntryTypeEnum{
 	"USER_DEFINED_FUNCTION":         FormatEntryTypeUserDefinedFunction,
 }
 
+var mappingFormatEntryTypeEnumLowerCase = map[string]FormatEntryTypeEnum{
+	"delete_rows":                   FormatEntryTypeDeleteRows,
+	"deterministic_substitution":    FormatEntryTypeDeterministicSubstitution,
+	"deterministic_encryption":      FormatEntryTypeDeterministicEncryption,
+	"deterministic_encryption_date": FormatEntryTypeDeterministicEncryptionDate,
+	"fixed_number":                  FormatEntryTypeFixedNumber,
+	"fixed_string":                  FormatEntryTypeFixedString,
+	"library_masking_format":        FormatEntryTypeLibraryMaskingFormat,
+	"null_value":                    FormatEntryTypeNullValue,
+	"post_processing_function":      FormatEntryTypePostProcessingFunction,
+	"preserve_original_data":        FormatEntryTypePreserveOriginalData,
+	"random_date":                   FormatEntryTypeRandomDate,
+	"random_decimal_number":         FormatEntryTypeRandomDecimalNumber,
+	"random_digits":                 FormatEntryTypeRandomDigits,
+	"random_list":                   FormatEntryTypeRandomList,
+	"random_number":                 FormatEntryTypeRandomNumber,
+	"random_string":                 FormatEntryTypeRandomString,
+	"random_substitution":           FormatEntryTypeRandomSubstitution,
+	"regular_expression":            FormatEntryTypeRegularExpression,
+	"shuffle":                       FormatEntryTypeShuffle,
+	"sql_expression":                FormatEntryTypeSqlExpression,
+	"substring":                     FormatEntryTypeSubstring,
+	"truncate_table":                FormatEntryTypeTruncateTable,
+	"user_defined_function":         FormatEntryTypeUserDefinedFunction,
+}
+
 // GetFormatEntryTypeEnumValues Enumerates the set of values for FormatEntryTypeEnum
 func GetFormatEntryTypeEnumValues() []FormatEntryTypeEnum {
 	values := make([]FormatEntryTypeEnum, 0)
@@ -109,11 +135,6 @@ func GetFormatEntryTypeEnumStringValues() []string {
 
 // GetMappingFormatEntryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFormatEntryTypeEnum(val string) (FormatEntryTypeEnum, bool) {
-	mappingFormatEntryTypeEnumIgnoreCase := make(map[string]FormatEntryTypeEnum)
-	for k, v := range mappingFormatEntryTypeEnum {
-		mappingFormatEntryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFormatEntryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFormatEntryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

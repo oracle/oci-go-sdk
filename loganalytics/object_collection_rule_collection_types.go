@@ -29,6 +29,12 @@ var mappingObjectCollectionRuleCollectionTypesEnum = map[string]ObjectCollection
 	"HISTORIC_LIVE": ObjectCollectionRuleCollectionTypesHistoricLive,
 }
 
+var mappingObjectCollectionRuleCollectionTypesEnumLowerCase = map[string]ObjectCollectionRuleCollectionTypesEnum{
+	"live":          ObjectCollectionRuleCollectionTypesLive,
+	"historic":      ObjectCollectionRuleCollectionTypesHistoric,
+	"historic_live": ObjectCollectionRuleCollectionTypesHistoricLive,
+}
+
 // GetObjectCollectionRuleCollectionTypesEnumValues Enumerates the set of values for ObjectCollectionRuleCollectionTypesEnum
 func GetObjectCollectionRuleCollectionTypesEnumValues() []ObjectCollectionRuleCollectionTypesEnum {
 	values := make([]ObjectCollectionRuleCollectionTypesEnum, 0)
@@ -49,11 +55,6 @@ func GetObjectCollectionRuleCollectionTypesEnumStringValues() []string {
 
 // GetMappingObjectCollectionRuleCollectionTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingObjectCollectionRuleCollectionTypesEnum(val string) (ObjectCollectionRuleCollectionTypesEnum, bool) {
-	mappingObjectCollectionRuleCollectionTypesEnumIgnoreCase := make(map[string]ObjectCollectionRuleCollectionTypesEnum)
-	for k, v := range mappingObjectCollectionRuleCollectionTypesEnum {
-		mappingObjectCollectionRuleCollectionTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingObjectCollectionRuleCollectionTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingObjectCollectionRuleCollectionTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -31,6 +31,13 @@ var mappingLicenseTypeEnum = map[string]LicenseTypeEnum{
 	"STARTER": LicenseTypeStarter,
 }
 
+var mappingLicenseTypeEnumLowerCase = map[string]LicenseTypeEnum{
+	"new":     LicenseTypeNew,
+	"byol":    LicenseTypeByol,
+	"premium": LicenseTypePremium,
+	"starter": LicenseTypeStarter,
+}
+
 // GetLicenseTypeEnumValues Enumerates the set of values for LicenseTypeEnum
 func GetLicenseTypeEnumValues() []LicenseTypeEnum {
 	values := make([]LicenseTypeEnum, 0)
@@ -52,11 +59,6 @@ func GetLicenseTypeEnumStringValues() []string {
 
 // GetMappingLicenseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLicenseTypeEnum(val string) (LicenseTypeEnum, bool) {
-	mappingLicenseTypeEnumIgnoreCase := make(map[string]LicenseTypeEnum)
-	for k, v := range mappingLicenseTypeEnum {
-		mappingLicenseTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLicenseTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLicenseTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

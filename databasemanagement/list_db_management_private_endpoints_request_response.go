@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -152,6 +152,15 @@ var mappingListDbManagementPrivateEndpointsLifecycleStateEnum = map[string]ListD
 	"FAILED":   ListDbManagementPrivateEndpointsLifecycleStateFailed,
 }
 
+var mappingListDbManagementPrivateEndpointsLifecycleStateEnumLowerCase = map[string]ListDbManagementPrivateEndpointsLifecycleStateEnum{
+	"creating": ListDbManagementPrivateEndpointsLifecycleStateCreating,
+	"updating": ListDbManagementPrivateEndpointsLifecycleStateUpdating,
+	"active":   ListDbManagementPrivateEndpointsLifecycleStateActive,
+	"deleting": ListDbManagementPrivateEndpointsLifecycleStateDeleting,
+	"deleted":  ListDbManagementPrivateEndpointsLifecycleStateDeleted,
+	"failed":   ListDbManagementPrivateEndpointsLifecycleStateFailed,
+}
+
 // GetListDbManagementPrivateEndpointsLifecycleStateEnumValues Enumerates the set of values for ListDbManagementPrivateEndpointsLifecycleStateEnum
 func GetListDbManagementPrivateEndpointsLifecycleStateEnumValues() []ListDbManagementPrivateEndpointsLifecycleStateEnum {
 	values := make([]ListDbManagementPrivateEndpointsLifecycleStateEnum, 0)
@@ -175,12 +184,7 @@ func GetListDbManagementPrivateEndpointsLifecycleStateEnumStringValues() []strin
 
 // GetMappingListDbManagementPrivateEndpointsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDbManagementPrivateEndpointsLifecycleStateEnum(val string) (ListDbManagementPrivateEndpointsLifecycleStateEnum, bool) {
-	mappingListDbManagementPrivateEndpointsLifecycleStateEnumIgnoreCase := make(map[string]ListDbManagementPrivateEndpointsLifecycleStateEnum)
-	for k, v := range mappingListDbManagementPrivateEndpointsLifecycleStateEnum {
-		mappingListDbManagementPrivateEndpointsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDbManagementPrivateEndpointsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDbManagementPrivateEndpointsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -196,6 +200,11 @@ const (
 var mappingListDbManagementPrivateEndpointsSortOrderEnum = map[string]ListDbManagementPrivateEndpointsSortOrderEnum{
 	"ASC":  ListDbManagementPrivateEndpointsSortOrderAsc,
 	"DESC": ListDbManagementPrivateEndpointsSortOrderDesc,
+}
+
+var mappingListDbManagementPrivateEndpointsSortOrderEnumLowerCase = map[string]ListDbManagementPrivateEndpointsSortOrderEnum{
+	"asc":  ListDbManagementPrivateEndpointsSortOrderAsc,
+	"desc": ListDbManagementPrivateEndpointsSortOrderDesc,
 }
 
 // GetListDbManagementPrivateEndpointsSortOrderEnumValues Enumerates the set of values for ListDbManagementPrivateEndpointsSortOrderEnum
@@ -217,12 +226,7 @@ func GetListDbManagementPrivateEndpointsSortOrderEnumStringValues() []string {
 
 // GetMappingListDbManagementPrivateEndpointsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDbManagementPrivateEndpointsSortOrderEnum(val string) (ListDbManagementPrivateEndpointsSortOrderEnum, bool) {
-	mappingListDbManagementPrivateEndpointsSortOrderEnumIgnoreCase := make(map[string]ListDbManagementPrivateEndpointsSortOrderEnum)
-	for k, v := range mappingListDbManagementPrivateEndpointsSortOrderEnum {
-		mappingListDbManagementPrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDbManagementPrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDbManagementPrivateEndpointsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -238,6 +242,11 @@ const (
 var mappingListDbManagementPrivateEndpointsSortByEnum = map[string]ListDbManagementPrivateEndpointsSortByEnum{
 	"TIMECREATED": ListDbManagementPrivateEndpointsSortByTimecreated,
 	"NAME":        ListDbManagementPrivateEndpointsSortByName,
+}
+
+var mappingListDbManagementPrivateEndpointsSortByEnumLowerCase = map[string]ListDbManagementPrivateEndpointsSortByEnum{
+	"timecreated": ListDbManagementPrivateEndpointsSortByTimecreated,
+	"name":        ListDbManagementPrivateEndpointsSortByName,
 }
 
 // GetListDbManagementPrivateEndpointsSortByEnumValues Enumerates the set of values for ListDbManagementPrivateEndpointsSortByEnum
@@ -259,11 +268,6 @@ func GetListDbManagementPrivateEndpointsSortByEnumStringValues() []string {
 
 // GetMappingListDbManagementPrivateEndpointsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDbManagementPrivateEndpointsSortByEnum(val string) (ListDbManagementPrivateEndpointsSortByEnum, bool) {
-	mappingListDbManagementPrivateEndpointsSortByEnumIgnoreCase := make(map[string]ListDbManagementPrivateEndpointsSortByEnum)
-	for k, v := range mappingListDbManagementPrivateEndpointsSortByEnum {
-		mappingListDbManagementPrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDbManagementPrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDbManagementPrivateEndpointsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

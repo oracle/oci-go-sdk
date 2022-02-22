@@ -12,7 +12,7 @@ package waf
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,11 @@ var mappingProtectionCapabilitySummaryTypeEnum = map[string]ProtectionCapability
 	"RESPONSE_PROTECTION_CAPABILITY": ProtectionCapabilitySummaryTypeResponseProtectionCapability,
 }
 
+var mappingProtectionCapabilitySummaryTypeEnumLowerCase = map[string]ProtectionCapabilitySummaryTypeEnum{
+	"request_protection_capability":  ProtectionCapabilitySummaryTypeRequestProtectionCapability,
+	"response_protection_capability": ProtectionCapabilitySummaryTypeResponseProtectionCapability,
+}
+
 // GetProtectionCapabilitySummaryTypeEnumValues Enumerates the set of values for ProtectionCapabilitySummaryTypeEnum
 func GetProtectionCapabilitySummaryTypeEnumValues() []ProtectionCapabilitySummaryTypeEnum {
 	values := make([]ProtectionCapabilitySummaryTypeEnum, 0)
@@ -112,11 +117,6 @@ func GetProtectionCapabilitySummaryTypeEnumStringValues() []string {
 
 // GetMappingProtectionCapabilitySummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingProtectionCapabilitySummaryTypeEnum(val string) (ProtectionCapabilitySummaryTypeEnum, bool) {
-	mappingProtectionCapabilitySummaryTypeEnumIgnoreCase := make(map[string]ProtectionCapabilitySummaryTypeEnum)
-	for k, v := range mappingProtectionCapabilitySummaryTypeEnum {
-		mappingProtectionCapabilitySummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingProtectionCapabilitySummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingProtectionCapabilitySummaryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

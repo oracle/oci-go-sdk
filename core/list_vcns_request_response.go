@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -149,6 +149,11 @@ var mappingListVcnsSortByEnum = map[string]ListVcnsSortByEnum{
 	"DISPLAYNAME": ListVcnsSortByDisplayname,
 }
 
+var mappingListVcnsSortByEnumLowerCase = map[string]ListVcnsSortByEnum{
+	"timecreated": ListVcnsSortByTimecreated,
+	"displayname": ListVcnsSortByDisplayname,
+}
+
 // GetListVcnsSortByEnumValues Enumerates the set of values for ListVcnsSortByEnum
 func GetListVcnsSortByEnumValues() []ListVcnsSortByEnum {
 	values := make([]ListVcnsSortByEnum, 0)
@@ -168,12 +173,7 @@ func GetListVcnsSortByEnumStringValues() []string {
 
 // GetMappingListVcnsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListVcnsSortByEnum(val string) (ListVcnsSortByEnum, bool) {
-	mappingListVcnsSortByEnumIgnoreCase := make(map[string]ListVcnsSortByEnum)
-	for k, v := range mappingListVcnsSortByEnum {
-		mappingListVcnsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListVcnsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListVcnsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -189,6 +189,11 @@ const (
 var mappingListVcnsSortOrderEnum = map[string]ListVcnsSortOrderEnum{
 	"ASC":  ListVcnsSortOrderAsc,
 	"DESC": ListVcnsSortOrderDesc,
+}
+
+var mappingListVcnsSortOrderEnumLowerCase = map[string]ListVcnsSortOrderEnum{
+	"asc":  ListVcnsSortOrderAsc,
+	"desc": ListVcnsSortOrderDesc,
 }
 
 // GetListVcnsSortOrderEnumValues Enumerates the set of values for ListVcnsSortOrderEnum
@@ -210,11 +215,6 @@ func GetListVcnsSortOrderEnumStringValues() []string {
 
 // GetMappingListVcnsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListVcnsSortOrderEnum(val string) (ListVcnsSortOrderEnum, bool) {
-	mappingListVcnsSortOrderEnumIgnoreCase := make(map[string]ListVcnsSortOrderEnum)
-	for k, v := range mappingListVcnsSortOrderEnum {
-		mappingListVcnsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListVcnsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListVcnsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -158,6 +158,12 @@ var mappingAutonomousContainerDatabaseServiceLevelAgreementTypeEnum = map[string
 	"AUTONOMOUS_DATAGUARD": AutonomousContainerDatabaseServiceLevelAgreementTypeAutonomousDataguard,
 }
 
+var mappingAutonomousContainerDatabaseServiceLevelAgreementTypeEnumLowerCase = map[string]AutonomousContainerDatabaseServiceLevelAgreementTypeEnum{
+	"standard":             AutonomousContainerDatabaseServiceLevelAgreementTypeStandard,
+	"mission_critical":     AutonomousContainerDatabaseServiceLevelAgreementTypeMissionCritical,
+	"autonomous_dataguard": AutonomousContainerDatabaseServiceLevelAgreementTypeAutonomousDataguard,
+}
+
 // GetAutonomousContainerDatabaseServiceLevelAgreementTypeEnumValues Enumerates the set of values for AutonomousContainerDatabaseServiceLevelAgreementTypeEnum
 func GetAutonomousContainerDatabaseServiceLevelAgreementTypeEnumValues() []AutonomousContainerDatabaseServiceLevelAgreementTypeEnum {
 	values := make([]AutonomousContainerDatabaseServiceLevelAgreementTypeEnum, 0)
@@ -178,12 +184,7 @@ func GetAutonomousContainerDatabaseServiceLevelAgreementTypeEnumStringValues() [
 
 // GetMappingAutonomousContainerDatabaseServiceLevelAgreementTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAutonomousContainerDatabaseServiceLevelAgreementTypeEnum(val string) (AutonomousContainerDatabaseServiceLevelAgreementTypeEnum, bool) {
-	mappingAutonomousContainerDatabaseServiceLevelAgreementTypeEnumIgnoreCase := make(map[string]AutonomousContainerDatabaseServiceLevelAgreementTypeEnum)
-	for k, v := range mappingAutonomousContainerDatabaseServiceLevelAgreementTypeEnum {
-		mappingAutonomousContainerDatabaseServiceLevelAgreementTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAutonomousContainerDatabaseServiceLevelAgreementTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAutonomousContainerDatabaseServiceLevelAgreementTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -199,6 +200,11 @@ const (
 var mappingAutonomousContainerDatabaseInfrastructureTypeEnum = map[string]AutonomousContainerDatabaseInfrastructureTypeEnum{
 	"CLOUD":             AutonomousContainerDatabaseInfrastructureTypeCloud,
 	"CLOUD_AT_CUSTOMER": AutonomousContainerDatabaseInfrastructureTypeCloudAtCustomer,
+}
+
+var mappingAutonomousContainerDatabaseInfrastructureTypeEnumLowerCase = map[string]AutonomousContainerDatabaseInfrastructureTypeEnum{
+	"cloud":             AutonomousContainerDatabaseInfrastructureTypeCloud,
+	"cloud_at_customer": AutonomousContainerDatabaseInfrastructureTypeCloudAtCustomer,
 }
 
 // GetAutonomousContainerDatabaseInfrastructureTypeEnumValues Enumerates the set of values for AutonomousContainerDatabaseInfrastructureTypeEnum
@@ -220,12 +226,7 @@ func GetAutonomousContainerDatabaseInfrastructureTypeEnumStringValues() []string
 
 // GetMappingAutonomousContainerDatabaseInfrastructureTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAutonomousContainerDatabaseInfrastructureTypeEnum(val string) (AutonomousContainerDatabaseInfrastructureTypeEnum, bool) {
-	mappingAutonomousContainerDatabaseInfrastructureTypeEnumIgnoreCase := make(map[string]AutonomousContainerDatabaseInfrastructureTypeEnum)
-	for k, v := range mappingAutonomousContainerDatabaseInfrastructureTypeEnum {
-		mappingAutonomousContainerDatabaseInfrastructureTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAutonomousContainerDatabaseInfrastructureTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAutonomousContainerDatabaseInfrastructureTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -265,6 +266,22 @@ var mappingAutonomousContainerDatabaseLifecycleStateEnum = map[string]Autonomous
 	"UNAVAILABLE":             AutonomousContainerDatabaseLifecycleStateUnavailable,
 }
 
+var mappingAutonomousContainerDatabaseLifecycleStateEnumLowerCase = map[string]AutonomousContainerDatabaseLifecycleStateEnum{
+	"provisioning":            AutonomousContainerDatabaseLifecycleStateProvisioning,
+	"available":               AutonomousContainerDatabaseLifecycleStateAvailable,
+	"updating":                AutonomousContainerDatabaseLifecycleStateUpdating,
+	"terminating":             AutonomousContainerDatabaseLifecycleStateTerminating,
+	"terminated":              AutonomousContainerDatabaseLifecycleStateTerminated,
+	"failed":                  AutonomousContainerDatabaseLifecycleStateFailed,
+	"backup_in_progress":      AutonomousContainerDatabaseLifecycleStateBackupInProgress,
+	"restoring":               AutonomousContainerDatabaseLifecycleStateRestoring,
+	"restore_failed":          AutonomousContainerDatabaseLifecycleStateRestoreFailed,
+	"restarting":              AutonomousContainerDatabaseLifecycleStateRestarting,
+	"maintenance_in_progress": AutonomousContainerDatabaseLifecycleStateMaintenanceInProgress,
+	"role_change_in_progress": AutonomousContainerDatabaseLifecycleStateRoleChangeInProgress,
+	"unavailable":             AutonomousContainerDatabaseLifecycleStateUnavailable,
+}
+
 // GetAutonomousContainerDatabaseLifecycleStateEnumValues Enumerates the set of values for AutonomousContainerDatabaseLifecycleStateEnum
 func GetAutonomousContainerDatabaseLifecycleStateEnumValues() []AutonomousContainerDatabaseLifecycleStateEnum {
 	values := make([]AutonomousContainerDatabaseLifecycleStateEnum, 0)
@@ -295,12 +312,7 @@ func GetAutonomousContainerDatabaseLifecycleStateEnumStringValues() []string {
 
 // GetMappingAutonomousContainerDatabaseLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAutonomousContainerDatabaseLifecycleStateEnum(val string) (AutonomousContainerDatabaseLifecycleStateEnum, bool) {
-	mappingAutonomousContainerDatabaseLifecycleStateEnumIgnoreCase := make(map[string]AutonomousContainerDatabaseLifecycleStateEnum)
-	for k, v := range mappingAutonomousContainerDatabaseLifecycleStateEnum {
-		mappingAutonomousContainerDatabaseLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAutonomousContainerDatabaseLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAutonomousContainerDatabaseLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -316,6 +328,11 @@ const (
 var mappingAutonomousContainerDatabasePatchModelEnum = map[string]AutonomousContainerDatabasePatchModelEnum{
 	"RELEASE_UPDATES":          AutonomousContainerDatabasePatchModelUpdates,
 	"RELEASE_UPDATE_REVISIONS": AutonomousContainerDatabasePatchModelUpdateRevisions,
+}
+
+var mappingAutonomousContainerDatabasePatchModelEnumLowerCase = map[string]AutonomousContainerDatabasePatchModelEnum{
+	"release_updates":          AutonomousContainerDatabasePatchModelUpdates,
+	"release_update_revisions": AutonomousContainerDatabasePatchModelUpdateRevisions,
 }
 
 // GetAutonomousContainerDatabasePatchModelEnumValues Enumerates the set of values for AutonomousContainerDatabasePatchModelEnum
@@ -337,12 +354,7 @@ func GetAutonomousContainerDatabasePatchModelEnumStringValues() []string {
 
 // GetMappingAutonomousContainerDatabasePatchModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAutonomousContainerDatabasePatchModelEnum(val string) (AutonomousContainerDatabasePatchModelEnum, bool) {
-	mappingAutonomousContainerDatabasePatchModelEnumIgnoreCase := make(map[string]AutonomousContainerDatabasePatchModelEnum)
-	for k, v := range mappingAutonomousContainerDatabasePatchModelEnum {
-		mappingAutonomousContainerDatabasePatchModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAutonomousContainerDatabasePatchModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAutonomousContainerDatabasePatchModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -360,6 +372,12 @@ var mappingAutonomousContainerDatabaseRoleEnum = map[string]AutonomousContainerD
 	"PRIMARY":          AutonomousContainerDatabaseRolePrimary,
 	"STANDBY":          AutonomousContainerDatabaseRoleStandby,
 	"DISABLED_STANDBY": AutonomousContainerDatabaseRoleDisabledStandby,
+}
+
+var mappingAutonomousContainerDatabaseRoleEnumLowerCase = map[string]AutonomousContainerDatabaseRoleEnum{
+	"primary":          AutonomousContainerDatabaseRolePrimary,
+	"standby":          AutonomousContainerDatabaseRoleStandby,
+	"disabled_standby": AutonomousContainerDatabaseRoleDisabledStandby,
 }
 
 // GetAutonomousContainerDatabaseRoleEnumValues Enumerates the set of values for AutonomousContainerDatabaseRoleEnum
@@ -382,11 +400,6 @@ func GetAutonomousContainerDatabaseRoleEnumStringValues() []string {
 
 // GetMappingAutonomousContainerDatabaseRoleEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAutonomousContainerDatabaseRoleEnum(val string) (AutonomousContainerDatabaseRoleEnum, bool) {
-	mappingAutonomousContainerDatabaseRoleEnumIgnoreCase := make(map[string]AutonomousContainerDatabaseRoleEnum)
-	for k, v := range mappingAutonomousContainerDatabaseRoleEnum {
-		mappingAutonomousContainerDatabaseRoleEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAutonomousContainerDatabaseRoleEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAutonomousContainerDatabaseRoleEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

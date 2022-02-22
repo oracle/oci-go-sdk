@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -101,6 +101,24 @@ var mappingUserSummaryStatusEnum = map[string]UserSummaryStatusEnum{
 	"EXPIRED_AND_LOCKED_TIMED_AND_IN_ROL": UserSummaryStatusExpiredAndLockedTimedAndInRol,
 }
 
+var mappingUserSummaryStatusEnumLowerCase = map[string]UserSummaryStatusEnum{
+	"open":                                UserSummaryStatusOpen,
+	"expired":                             UserSummaryStatusExpired,
+	"expired_grace":                       UserSummaryStatusExpiredGrace,
+	"locked":                              UserSummaryStatusLocked,
+	"locked_timed":                        UserSummaryStatusLockedTimed,
+	"expired_and_locked":                  UserSummaryStatusExpiredAndLocked,
+	"expired_grace_and_locked":            UserSummaryStatusExpiredGraceAndLocked,
+	"expired_and_locked_timed":            UserSummaryStatusExpiredAndLockedTimed,
+	"expired_grace_and_locked_timed":      UserSummaryStatusExpiredGraceAndLockedTimed,
+	"open_and_in_rollover":                UserSummaryStatusOpenAndInRollover,
+	"expired_and_in_rollover":             UserSummaryStatusExpiredAndInRollover,
+	"locked_and_in_rollover":              UserSummaryStatusLockedAndInRollover,
+	"expired_and_locked_and_in_rollover":  UserSummaryStatusExpiredAndLockedAndInRollover,
+	"locked_timed_and_in_rollover":        UserSummaryStatusLockedTimedAndInRollover,
+	"expired_and_locked_timed_and_in_rol": UserSummaryStatusExpiredAndLockedTimedAndInRol,
+}
+
 // GetUserSummaryStatusEnumValues Enumerates the set of values for UserSummaryStatusEnum
 func GetUserSummaryStatusEnumValues() []UserSummaryStatusEnum {
 	values := make([]UserSummaryStatusEnum, 0)
@@ -133,11 +151,6 @@ func GetUserSummaryStatusEnumStringValues() []string {
 
 // GetMappingUserSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserSummaryStatusEnum(val string) (UserSummaryStatusEnum, bool) {
-	mappingUserSummaryStatusEnumIgnoreCase := make(map[string]UserSummaryStatusEnum)
-	for k, v := range mappingUserSummaryStatusEnum {
-		mappingUserSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserSummaryStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

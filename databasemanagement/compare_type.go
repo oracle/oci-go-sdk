@@ -29,6 +29,11 @@ var mappingCompareTypeEnum = map[string]CompareTypeEnum{
 	"DAY":  CompareTypeDay,
 }
 
+var mappingCompareTypeEnumLowerCase = map[string]CompareTypeEnum{
+	"hour": CompareTypeHour,
+	"day":  CompareTypeDay,
+}
+
 // GetCompareTypeEnumValues Enumerates the set of values for CompareTypeEnum
 func GetCompareTypeEnumValues() []CompareTypeEnum {
 	values := make([]CompareTypeEnum, 0)
@@ -48,11 +53,6 @@ func GetCompareTypeEnumStringValues() []string {
 
 // GetMappingCompareTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCompareTypeEnum(val string) (CompareTypeEnum, bool) {
-	mappingCompareTypeEnumIgnoreCase := make(map[string]CompareTypeEnum)
-	for k, v := range mappingCompareTypeEnum {
-		mappingCompareTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCompareTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCompareTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -145,6 +145,17 @@ var mappingListCatalogPrivateEndpointsLifecycleStateEnum = map[string]ListCatalo
 	"MOVING":   ListCatalogPrivateEndpointsLifecycleStateMoving,
 }
 
+var mappingListCatalogPrivateEndpointsLifecycleStateEnumLowerCase = map[string]ListCatalogPrivateEndpointsLifecycleStateEnum{
+	"creating": ListCatalogPrivateEndpointsLifecycleStateCreating,
+	"active":   ListCatalogPrivateEndpointsLifecycleStateActive,
+	"inactive": ListCatalogPrivateEndpointsLifecycleStateInactive,
+	"updating": ListCatalogPrivateEndpointsLifecycleStateUpdating,
+	"deleting": ListCatalogPrivateEndpointsLifecycleStateDeleting,
+	"deleted":  ListCatalogPrivateEndpointsLifecycleStateDeleted,
+	"failed":   ListCatalogPrivateEndpointsLifecycleStateFailed,
+	"moving":   ListCatalogPrivateEndpointsLifecycleStateMoving,
+}
+
 // GetListCatalogPrivateEndpointsLifecycleStateEnumValues Enumerates the set of values for ListCatalogPrivateEndpointsLifecycleStateEnum
 func GetListCatalogPrivateEndpointsLifecycleStateEnumValues() []ListCatalogPrivateEndpointsLifecycleStateEnum {
 	values := make([]ListCatalogPrivateEndpointsLifecycleStateEnum, 0)
@@ -170,12 +181,7 @@ func GetListCatalogPrivateEndpointsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListCatalogPrivateEndpointsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCatalogPrivateEndpointsLifecycleStateEnum(val string) (ListCatalogPrivateEndpointsLifecycleStateEnum, bool) {
-	mappingListCatalogPrivateEndpointsLifecycleStateEnumIgnoreCase := make(map[string]ListCatalogPrivateEndpointsLifecycleStateEnum)
-	for k, v := range mappingListCatalogPrivateEndpointsLifecycleStateEnum {
-		mappingListCatalogPrivateEndpointsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCatalogPrivateEndpointsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCatalogPrivateEndpointsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -191,6 +197,11 @@ const (
 var mappingListCatalogPrivateEndpointsSortOrderEnum = map[string]ListCatalogPrivateEndpointsSortOrderEnum{
 	"ASC":  ListCatalogPrivateEndpointsSortOrderAsc,
 	"DESC": ListCatalogPrivateEndpointsSortOrderDesc,
+}
+
+var mappingListCatalogPrivateEndpointsSortOrderEnumLowerCase = map[string]ListCatalogPrivateEndpointsSortOrderEnum{
+	"asc":  ListCatalogPrivateEndpointsSortOrderAsc,
+	"desc": ListCatalogPrivateEndpointsSortOrderDesc,
 }
 
 // GetListCatalogPrivateEndpointsSortOrderEnumValues Enumerates the set of values for ListCatalogPrivateEndpointsSortOrderEnum
@@ -212,12 +223,7 @@ func GetListCatalogPrivateEndpointsSortOrderEnumStringValues() []string {
 
 // GetMappingListCatalogPrivateEndpointsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCatalogPrivateEndpointsSortOrderEnum(val string) (ListCatalogPrivateEndpointsSortOrderEnum, bool) {
-	mappingListCatalogPrivateEndpointsSortOrderEnumIgnoreCase := make(map[string]ListCatalogPrivateEndpointsSortOrderEnum)
-	for k, v := range mappingListCatalogPrivateEndpointsSortOrderEnum {
-		mappingListCatalogPrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCatalogPrivateEndpointsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCatalogPrivateEndpointsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -233,6 +239,11 @@ const (
 var mappingListCatalogPrivateEndpointsSortByEnum = map[string]ListCatalogPrivateEndpointsSortByEnum{
 	"TIMECREATED": ListCatalogPrivateEndpointsSortByTimecreated,
 	"DISPLAYNAME": ListCatalogPrivateEndpointsSortByDisplayname,
+}
+
+var mappingListCatalogPrivateEndpointsSortByEnumLowerCase = map[string]ListCatalogPrivateEndpointsSortByEnum{
+	"timecreated": ListCatalogPrivateEndpointsSortByTimecreated,
+	"displayname": ListCatalogPrivateEndpointsSortByDisplayname,
 }
 
 // GetListCatalogPrivateEndpointsSortByEnumValues Enumerates the set of values for ListCatalogPrivateEndpointsSortByEnum
@@ -254,11 +265,6 @@ func GetListCatalogPrivateEndpointsSortByEnumStringValues() []string {
 
 // GetMappingListCatalogPrivateEndpointsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCatalogPrivateEndpointsSortByEnum(val string) (ListCatalogPrivateEndpointsSortByEnum, bool) {
-	mappingListCatalogPrivateEndpointsSortByEnumIgnoreCase := make(map[string]ListCatalogPrivateEndpointsSortByEnum)
-	for k, v := range mappingListCatalogPrivateEndpointsSortByEnum {
-		mappingListCatalogPrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCatalogPrivateEndpointsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCatalogPrivateEndpointsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

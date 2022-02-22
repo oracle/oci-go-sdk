@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -68,6 +68,12 @@ var mappingInstanceDetailsStatusEnum = map[string]InstanceDetailsStatusEnum{
 	"UNKNOWN": InstanceDetailsStatusUnknown,
 }
 
+var mappingInstanceDetailsStatusEnumLowerCase = map[string]InstanceDetailsStatusEnum{
+	"up":      InstanceDetailsStatusUp,
+	"down":    InstanceDetailsStatusDown,
+	"unknown": InstanceDetailsStatusUnknown,
+}
+
 // GetInstanceDetailsStatusEnumValues Enumerates the set of values for InstanceDetailsStatusEnum
 func GetInstanceDetailsStatusEnumValues() []InstanceDetailsStatusEnum {
 	values := make([]InstanceDetailsStatusEnum, 0)
@@ -88,11 +94,6 @@ func GetInstanceDetailsStatusEnumStringValues() []string {
 
 // GetMappingInstanceDetailsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceDetailsStatusEnum(val string) (InstanceDetailsStatusEnum, bool) {
-	mappingInstanceDetailsStatusEnumIgnoreCase := make(map[string]InstanceDetailsStatusEnum)
-	for k, v := range mappingInstanceDetailsStatusEnum {
-		mappingInstanceDetailsStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceDetailsStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceDetailsStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

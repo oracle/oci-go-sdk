@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -177,6 +177,12 @@ var mappingGetZoneRecordsSortByEnum = map[string]GetZoneRecordsSortByEnum{
 	"ttl":    GetZoneRecordsSortByTtl,
 }
 
+var mappingGetZoneRecordsSortByEnumLowerCase = map[string]GetZoneRecordsSortByEnum{
+	"domain": GetZoneRecordsSortByDomain,
+	"rtype":  GetZoneRecordsSortByRtype,
+	"ttl":    GetZoneRecordsSortByTtl,
+}
+
 // GetGetZoneRecordsSortByEnumValues Enumerates the set of values for GetZoneRecordsSortByEnum
 func GetGetZoneRecordsSortByEnumValues() []GetZoneRecordsSortByEnum {
 	values := make([]GetZoneRecordsSortByEnum, 0)
@@ -197,12 +203,7 @@ func GetGetZoneRecordsSortByEnumStringValues() []string {
 
 // GetMappingGetZoneRecordsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetZoneRecordsSortByEnum(val string) (GetZoneRecordsSortByEnum, bool) {
-	mappingGetZoneRecordsSortByEnumIgnoreCase := make(map[string]GetZoneRecordsSortByEnum)
-	for k, v := range mappingGetZoneRecordsSortByEnum {
-		mappingGetZoneRecordsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetZoneRecordsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetZoneRecordsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -218,6 +219,11 @@ const (
 var mappingGetZoneRecordsSortOrderEnum = map[string]GetZoneRecordsSortOrderEnum{
 	"ASC":  GetZoneRecordsSortOrderAsc,
 	"DESC": GetZoneRecordsSortOrderDesc,
+}
+
+var mappingGetZoneRecordsSortOrderEnumLowerCase = map[string]GetZoneRecordsSortOrderEnum{
+	"asc":  GetZoneRecordsSortOrderAsc,
+	"desc": GetZoneRecordsSortOrderDesc,
 }
 
 // GetGetZoneRecordsSortOrderEnumValues Enumerates the set of values for GetZoneRecordsSortOrderEnum
@@ -239,12 +245,7 @@ func GetGetZoneRecordsSortOrderEnumStringValues() []string {
 
 // GetMappingGetZoneRecordsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetZoneRecordsSortOrderEnum(val string) (GetZoneRecordsSortOrderEnum, bool) {
-	mappingGetZoneRecordsSortOrderEnumIgnoreCase := make(map[string]GetZoneRecordsSortOrderEnum)
-	for k, v := range mappingGetZoneRecordsSortOrderEnum {
-		mappingGetZoneRecordsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetZoneRecordsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetZoneRecordsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -260,6 +261,11 @@ const (
 var mappingGetZoneRecordsScopeEnum = map[string]GetZoneRecordsScopeEnum{
 	"GLOBAL":  GetZoneRecordsScopeGlobal,
 	"PRIVATE": GetZoneRecordsScopePrivate,
+}
+
+var mappingGetZoneRecordsScopeEnumLowerCase = map[string]GetZoneRecordsScopeEnum{
+	"global":  GetZoneRecordsScopeGlobal,
+	"private": GetZoneRecordsScopePrivate,
 }
 
 // GetGetZoneRecordsScopeEnumValues Enumerates the set of values for GetZoneRecordsScopeEnum
@@ -281,11 +287,6 @@ func GetGetZoneRecordsScopeEnumStringValues() []string {
 
 // GetMappingGetZoneRecordsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetZoneRecordsScopeEnum(val string) (GetZoneRecordsScopeEnum, bool) {
-	mappingGetZoneRecordsScopeEnumIgnoreCase := make(map[string]GetZoneRecordsScopeEnum)
-	for k, v := range mappingGetZoneRecordsScopeEnum {
-		mappingGetZoneRecordsScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetZoneRecordsScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetZoneRecordsScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

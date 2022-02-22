@@ -27,6 +27,11 @@ var mappingOrchestrationVariableTypeEnumEnum = map[string]OrchestrationVariableT
 	"INTEGER": OrchestrationVariableTypeEnumInteger,
 }
 
+var mappingOrchestrationVariableTypeEnumEnumLowerCase = map[string]OrchestrationVariableTypeEnumEnum{
+	"string":  OrchestrationVariableTypeEnumString,
+	"integer": OrchestrationVariableTypeEnumInteger,
+}
+
 // GetOrchestrationVariableTypeEnumEnumValues Enumerates the set of values for OrchestrationVariableTypeEnumEnum
 func GetOrchestrationVariableTypeEnumEnumValues() []OrchestrationVariableTypeEnumEnum {
 	values := make([]OrchestrationVariableTypeEnumEnum, 0)
@@ -46,11 +51,6 @@ func GetOrchestrationVariableTypeEnumEnumStringValues() []string {
 
 // GetMappingOrchestrationVariableTypeEnumEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOrchestrationVariableTypeEnumEnum(val string) (OrchestrationVariableTypeEnumEnum, bool) {
-	mappingOrchestrationVariableTypeEnumEnumIgnoreCase := make(map[string]OrchestrationVariableTypeEnumEnum)
-	for k, v := range mappingOrchestrationVariableTypeEnumEnum {
-		mappingOrchestrationVariableTypeEnumEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOrchestrationVariableTypeEnumEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOrchestrationVariableTypeEnumEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

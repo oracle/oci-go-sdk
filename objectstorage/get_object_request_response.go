@@ -6,7 +6,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"io"
 	"net/http"
 	"strings"
@@ -229,6 +229,12 @@ var mappingGetObjectStorageTierEnum = map[string]GetObjectStorageTierEnum{
 	"Archive":          GetObjectStorageTierArchive,
 }
 
+var mappingGetObjectStorageTierEnumLowerCase = map[string]GetObjectStorageTierEnum{
+	"standard":         GetObjectStorageTierStandard,
+	"infrequentaccess": GetObjectStorageTierInfrequentaccess,
+	"archive":          GetObjectStorageTierArchive,
+}
+
 // GetGetObjectStorageTierEnumValues Enumerates the set of values for GetObjectStorageTierEnum
 func GetGetObjectStorageTierEnumValues() []GetObjectStorageTierEnum {
 	values := make([]GetObjectStorageTierEnum, 0)
@@ -249,12 +255,7 @@ func GetGetObjectStorageTierEnumStringValues() []string {
 
 // GetMappingGetObjectStorageTierEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetObjectStorageTierEnum(val string) (GetObjectStorageTierEnum, bool) {
-	mappingGetObjectStorageTierEnumIgnoreCase := make(map[string]GetObjectStorageTierEnum)
-	for k, v := range mappingGetObjectStorageTierEnum {
-		mappingGetObjectStorageTierEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetObjectStorageTierEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetObjectStorageTierEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -272,6 +273,12 @@ var mappingGetObjectArchivalStateEnum = map[string]GetObjectArchivalStateEnum{
 	"Archived":  GetObjectArchivalStateArchived,
 	"Restoring": GetObjectArchivalStateRestoring,
 	"Restored":  GetObjectArchivalStateRestored,
+}
+
+var mappingGetObjectArchivalStateEnumLowerCase = map[string]GetObjectArchivalStateEnum{
+	"archived":  GetObjectArchivalStateArchived,
+	"restoring": GetObjectArchivalStateRestoring,
+	"restored":  GetObjectArchivalStateRestored,
 }
 
 // GetGetObjectArchivalStateEnumValues Enumerates the set of values for GetObjectArchivalStateEnum
@@ -294,11 +301,6 @@ func GetGetObjectArchivalStateEnumStringValues() []string {
 
 // GetMappingGetObjectArchivalStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetObjectArchivalStateEnum(val string) (GetObjectArchivalStateEnum, bool) {
-	mappingGetObjectArchivalStateEnumIgnoreCase := make(map[string]GetObjectArchivalStateEnum)
-	for k, v := range mappingGetObjectArchivalStateEnum {
-		mappingGetObjectArchivalStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetObjectArchivalStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetObjectArchivalStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

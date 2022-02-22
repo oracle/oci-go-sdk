@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -90,6 +90,12 @@ var mappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum = map[stri
 	"UNKNOWN":    LogAnalyticsEntityTypeManagementAgentEligibilityStatusUnknown,
 }
 
+var mappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnumLowerCase = map[string]LogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum{
+	"eligible":   LogAnalyticsEntityTypeManagementAgentEligibilityStatusEligible,
+	"ineligible": LogAnalyticsEntityTypeManagementAgentEligibilityStatusIneligible,
+	"unknown":    LogAnalyticsEntityTypeManagementAgentEligibilityStatusUnknown,
+}
+
 // GetLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnumValues Enumerates the set of values for LogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum
 func GetLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnumValues() []LogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum {
 	values := make([]LogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum, 0)
@@ -110,11 +116,6 @@ func GetLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnumStringValues()
 
 // GetMappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum(val string) (LogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum, bool) {
-	mappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnumIgnoreCase := make(map[string]LogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum)
-	for k, v := range mappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnum {
-		mappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogAnalyticsEntityTypeManagementAgentEligibilityStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

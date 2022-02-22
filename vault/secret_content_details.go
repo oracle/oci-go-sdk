@@ -12,7 +12,7 @@ package vault
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -116,6 +116,11 @@ var mappingSecretContentDetailsStageEnum = map[string]SecretContentDetailsStageE
 	"PENDING": SecretContentDetailsStagePending,
 }
 
+var mappingSecretContentDetailsStageEnumLowerCase = map[string]SecretContentDetailsStageEnum{
+	"current": SecretContentDetailsStageCurrent,
+	"pending": SecretContentDetailsStagePending,
+}
+
 // GetSecretContentDetailsStageEnumValues Enumerates the set of values for SecretContentDetailsStageEnum
 func GetSecretContentDetailsStageEnumValues() []SecretContentDetailsStageEnum {
 	values := make([]SecretContentDetailsStageEnum, 0)
@@ -135,12 +140,7 @@ func GetSecretContentDetailsStageEnumStringValues() []string {
 
 // GetMappingSecretContentDetailsStageEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSecretContentDetailsStageEnum(val string) (SecretContentDetailsStageEnum, bool) {
-	mappingSecretContentDetailsStageEnumIgnoreCase := make(map[string]SecretContentDetailsStageEnum)
-	for k, v := range mappingSecretContentDetailsStageEnum {
-		mappingSecretContentDetailsStageEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSecretContentDetailsStageEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSecretContentDetailsStageEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -154,6 +154,10 @@ const (
 
 var mappingSecretContentDetailsContentTypeEnum = map[string]SecretContentDetailsContentTypeEnum{
 	"BASE64": SecretContentDetailsContentTypeBase64,
+}
+
+var mappingSecretContentDetailsContentTypeEnumLowerCase = map[string]SecretContentDetailsContentTypeEnum{
+	"base64": SecretContentDetailsContentTypeBase64,
 }
 
 // GetSecretContentDetailsContentTypeEnumValues Enumerates the set of values for SecretContentDetailsContentTypeEnum
@@ -174,11 +178,6 @@ func GetSecretContentDetailsContentTypeEnumStringValues() []string {
 
 // GetMappingSecretContentDetailsContentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSecretContentDetailsContentTypeEnum(val string) (SecretContentDetailsContentTypeEnum, bool) {
-	mappingSecretContentDetailsContentTypeEnumIgnoreCase := make(map[string]SecretContentDetailsContentTypeEnum)
-	for k, v := range mappingSecretContentDetailsContentTypeEnum {
-		mappingSecretContentDetailsContentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSecretContentDetailsContentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSecretContentDetailsContentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

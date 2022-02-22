@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -128,6 +128,11 @@ var mappingImageSourceDetailsSourceImageTypeEnum = map[string]ImageSourceDetails
 	"VMDK":  ImageSourceDetailsSourceImageTypeVmdk,
 }
 
+var mappingImageSourceDetailsSourceImageTypeEnumLowerCase = map[string]ImageSourceDetailsSourceImageTypeEnum{
+	"qcow2": ImageSourceDetailsSourceImageTypeQcow2,
+	"vmdk":  ImageSourceDetailsSourceImageTypeVmdk,
+}
+
 // GetImageSourceDetailsSourceImageTypeEnumValues Enumerates the set of values for ImageSourceDetailsSourceImageTypeEnum
 func GetImageSourceDetailsSourceImageTypeEnumValues() []ImageSourceDetailsSourceImageTypeEnum {
 	values := make([]ImageSourceDetailsSourceImageTypeEnum, 0)
@@ -147,11 +152,6 @@ func GetImageSourceDetailsSourceImageTypeEnumStringValues() []string {
 
 // GetMappingImageSourceDetailsSourceImageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingImageSourceDetailsSourceImageTypeEnum(val string) (ImageSourceDetailsSourceImageTypeEnum, bool) {
-	mappingImageSourceDetailsSourceImageTypeEnumIgnoreCase := make(map[string]ImageSourceDetailsSourceImageTypeEnum)
-	for k, v := range mappingImageSourceDetailsSourceImageTypeEnum {
-		mappingImageSourceDetailsSourceImageTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingImageSourceDetailsSourceImageTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingImageSourceDetailsSourceImageTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

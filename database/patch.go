@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -86,6 +86,11 @@ var mappingPatchLastActionEnum = map[string]PatchLastActionEnum{
 	"PRECHECK": PatchLastActionPrecheck,
 }
 
+var mappingPatchLastActionEnumLowerCase = map[string]PatchLastActionEnum{
+	"apply":    PatchLastActionApply,
+	"precheck": PatchLastActionPrecheck,
+}
+
 // GetPatchLastActionEnumValues Enumerates the set of values for PatchLastActionEnum
 func GetPatchLastActionEnumValues() []PatchLastActionEnum {
 	values := make([]PatchLastActionEnum, 0)
@@ -105,12 +110,7 @@ func GetPatchLastActionEnumStringValues() []string {
 
 // GetMappingPatchLastActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchLastActionEnum(val string) (PatchLastActionEnum, bool) {
-	mappingPatchLastActionEnumIgnoreCase := make(map[string]PatchLastActionEnum)
-	for k, v := range mappingPatchLastActionEnum {
-		mappingPatchLastActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchLastActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchLastActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -126,6 +126,11 @@ const (
 var mappingPatchAvailableActionsEnum = map[string]PatchAvailableActionsEnum{
 	"APPLY":    PatchAvailableActionsApply,
 	"PRECHECK": PatchAvailableActionsPrecheck,
+}
+
+var mappingPatchAvailableActionsEnumLowerCase = map[string]PatchAvailableActionsEnum{
+	"apply":    PatchAvailableActionsApply,
+	"precheck": PatchAvailableActionsPrecheck,
 }
 
 // GetPatchAvailableActionsEnumValues Enumerates the set of values for PatchAvailableActionsEnum
@@ -147,12 +152,7 @@ func GetPatchAvailableActionsEnumStringValues() []string {
 
 // GetMappingPatchAvailableActionsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchAvailableActionsEnum(val string) (PatchAvailableActionsEnum, bool) {
-	mappingPatchAvailableActionsEnumIgnoreCase := make(map[string]PatchAvailableActionsEnum)
-	for k, v := range mappingPatchAvailableActionsEnum {
-		mappingPatchAvailableActionsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchAvailableActionsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchAvailableActionsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -172,6 +172,13 @@ var mappingPatchLifecycleStateEnum = map[string]PatchLifecycleStateEnum{
 	"SUCCESS":     PatchLifecycleStateSuccess,
 	"IN_PROGRESS": PatchLifecycleStateInProgress,
 	"FAILED":      PatchLifecycleStateFailed,
+}
+
+var mappingPatchLifecycleStateEnumLowerCase = map[string]PatchLifecycleStateEnum{
+	"available":   PatchLifecycleStateAvailable,
+	"success":     PatchLifecycleStateSuccess,
+	"in_progress": PatchLifecycleStateInProgress,
+	"failed":      PatchLifecycleStateFailed,
 }
 
 // GetPatchLifecycleStateEnumValues Enumerates the set of values for PatchLifecycleStateEnum
@@ -195,11 +202,6 @@ func GetPatchLifecycleStateEnumStringValues() []string {
 
 // GetMappingPatchLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchLifecycleStateEnum(val string) (PatchLifecycleStateEnum, bool) {
-	mappingPatchLifecycleStateEnumIgnoreCase := make(map[string]PatchLifecycleStateEnum)
-	for k, v := range mappingPatchLifecycleStateEnum {
-		mappingPatchLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

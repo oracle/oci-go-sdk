@@ -6,7 +6,7 @@ package optimizer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,11 @@ var mappingListCategoriesSortOrderEnum = map[string]ListCategoriesSortOrderEnum{
 	"DESC": ListCategoriesSortOrderDesc,
 }
 
+var mappingListCategoriesSortOrderEnumLowerCase = map[string]ListCategoriesSortOrderEnum{
+	"asc":  ListCategoriesSortOrderAsc,
+	"desc": ListCategoriesSortOrderDesc,
+}
+
 // GetListCategoriesSortOrderEnumValues Enumerates the set of values for ListCategoriesSortOrderEnum
 func GetListCategoriesSortOrderEnumValues() []ListCategoriesSortOrderEnum {
 	values := make([]ListCategoriesSortOrderEnum, 0)
@@ -163,12 +168,7 @@ func GetListCategoriesSortOrderEnumStringValues() []string {
 
 // GetMappingListCategoriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCategoriesSortOrderEnum(val string) (ListCategoriesSortOrderEnum, bool) {
-	mappingListCategoriesSortOrderEnumIgnoreCase := make(map[string]ListCategoriesSortOrderEnum)
-	for k, v := range mappingListCategoriesSortOrderEnum {
-		mappingListCategoriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCategoriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCategoriesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -184,6 +184,11 @@ const (
 var mappingListCategoriesSortByEnum = map[string]ListCategoriesSortByEnum{
 	"NAME":        ListCategoriesSortByName,
 	"TIMECREATED": ListCategoriesSortByTimecreated,
+}
+
+var mappingListCategoriesSortByEnumLowerCase = map[string]ListCategoriesSortByEnum{
+	"name":        ListCategoriesSortByName,
+	"timecreated": ListCategoriesSortByTimecreated,
 }
 
 // GetListCategoriesSortByEnumValues Enumerates the set of values for ListCategoriesSortByEnum
@@ -205,12 +210,7 @@ func GetListCategoriesSortByEnumStringValues() []string {
 
 // GetMappingListCategoriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCategoriesSortByEnum(val string) (ListCategoriesSortByEnum, bool) {
-	mappingListCategoriesSortByEnumIgnoreCase := make(map[string]ListCategoriesSortByEnum)
-	for k, v := range mappingListCategoriesSortByEnum {
-		mappingListCategoriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCategoriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCategoriesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -242,6 +242,18 @@ var mappingListCategoriesLifecycleStateEnum = map[string]ListCategoriesLifecycle
 	"CREATING":  ListCategoriesLifecycleStateCreating,
 }
 
+var mappingListCategoriesLifecycleStateEnumLowerCase = map[string]ListCategoriesLifecycleStateEnum{
+	"active":    ListCategoriesLifecycleStateActive,
+	"failed":    ListCategoriesLifecycleStateFailed,
+	"inactive":  ListCategoriesLifecycleStateInactive,
+	"attaching": ListCategoriesLifecycleStateAttaching,
+	"detaching": ListCategoriesLifecycleStateDetaching,
+	"deleting":  ListCategoriesLifecycleStateDeleting,
+	"deleted":   ListCategoriesLifecycleStateDeleted,
+	"updating":  ListCategoriesLifecycleStateUpdating,
+	"creating":  ListCategoriesLifecycleStateCreating,
+}
+
 // GetListCategoriesLifecycleStateEnumValues Enumerates the set of values for ListCategoriesLifecycleStateEnum
 func GetListCategoriesLifecycleStateEnumValues() []ListCategoriesLifecycleStateEnum {
 	values := make([]ListCategoriesLifecycleStateEnum, 0)
@@ -268,11 +280,6 @@ func GetListCategoriesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListCategoriesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCategoriesLifecycleStateEnum(val string) (ListCategoriesLifecycleStateEnum, bool) {
-	mappingListCategoriesLifecycleStateEnumIgnoreCase := make(map[string]ListCategoriesLifecycleStateEnum)
-	for k, v := range mappingListCategoriesLifecycleStateEnum {
-		mappingListCategoriesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCategoriesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCategoriesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

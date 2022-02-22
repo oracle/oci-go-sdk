@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -186,6 +186,12 @@ var mappingListHostConfigurationsPlatformTypeEnum = map[string]ListHostConfigura
 	"SUNOS":   ListHostConfigurationsPlatformTypeSunos,
 }
 
+var mappingListHostConfigurationsPlatformTypeEnumLowerCase = map[string]ListHostConfigurationsPlatformTypeEnum{
+	"linux":   ListHostConfigurationsPlatformTypeLinux,
+	"solaris": ListHostConfigurationsPlatformTypeSolaris,
+	"sunos":   ListHostConfigurationsPlatformTypeSunos,
+}
+
 // GetListHostConfigurationsPlatformTypeEnumValues Enumerates the set of values for ListHostConfigurationsPlatformTypeEnum
 func GetListHostConfigurationsPlatformTypeEnumValues() []ListHostConfigurationsPlatformTypeEnum {
 	values := make([]ListHostConfigurationsPlatformTypeEnum, 0)
@@ -206,12 +212,7 @@ func GetListHostConfigurationsPlatformTypeEnumStringValues() []string {
 
 // GetMappingListHostConfigurationsPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHostConfigurationsPlatformTypeEnum(val string) (ListHostConfigurationsPlatformTypeEnum, bool) {
-	mappingListHostConfigurationsPlatformTypeEnumIgnoreCase := make(map[string]ListHostConfigurationsPlatformTypeEnum)
-	for k, v := range mappingListHostConfigurationsPlatformTypeEnum {
-		mappingListHostConfigurationsPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHostConfigurationsPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHostConfigurationsPlatformTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -227,6 +228,11 @@ const (
 var mappingListHostConfigurationsSortOrderEnum = map[string]ListHostConfigurationsSortOrderEnum{
 	"ASC":  ListHostConfigurationsSortOrderAsc,
 	"DESC": ListHostConfigurationsSortOrderDesc,
+}
+
+var mappingListHostConfigurationsSortOrderEnumLowerCase = map[string]ListHostConfigurationsSortOrderEnum{
+	"asc":  ListHostConfigurationsSortOrderAsc,
+	"desc": ListHostConfigurationsSortOrderDesc,
 }
 
 // GetListHostConfigurationsSortOrderEnumValues Enumerates the set of values for ListHostConfigurationsSortOrderEnum
@@ -248,12 +254,7 @@ func GetListHostConfigurationsSortOrderEnumStringValues() []string {
 
 // GetMappingListHostConfigurationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHostConfigurationsSortOrderEnum(val string) (ListHostConfigurationsSortOrderEnum, bool) {
-	mappingListHostConfigurationsSortOrderEnumIgnoreCase := make(map[string]ListHostConfigurationsSortOrderEnum)
-	for k, v := range mappingListHostConfigurationsSortOrderEnum {
-		mappingListHostConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHostConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHostConfigurationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -269,6 +270,11 @@ const (
 var mappingListHostConfigurationsSortByEnum = map[string]ListHostConfigurationsSortByEnum{
 	"hostName":     ListHostConfigurationsSortByHostname,
 	"platformType": ListHostConfigurationsSortByPlatformtype,
+}
+
+var mappingListHostConfigurationsSortByEnumLowerCase = map[string]ListHostConfigurationsSortByEnum{
+	"hostname":     ListHostConfigurationsSortByHostname,
+	"platformtype": ListHostConfigurationsSortByPlatformtype,
 }
 
 // GetListHostConfigurationsSortByEnumValues Enumerates the set of values for ListHostConfigurationsSortByEnum
@@ -290,11 +296,6 @@ func GetListHostConfigurationsSortByEnumStringValues() []string {
 
 // GetMappingListHostConfigurationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListHostConfigurationsSortByEnum(val string) (ListHostConfigurationsSortByEnum, bool) {
-	mappingListHostConfigurationsSortByEnumIgnoreCase := make(map[string]ListHostConfigurationsSortByEnum)
-	for k, v := range mappingListHostConfigurationsSortByEnum {
-		mappingListHostConfigurationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListHostConfigurationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListHostConfigurationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

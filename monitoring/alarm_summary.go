@@ -13,7 +13,7 @@ package monitoring
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -135,6 +135,13 @@ var mappingAlarmSummarySeverityEnum = map[string]AlarmSummarySeverityEnum{
 	"INFO":     AlarmSummarySeverityInfo,
 }
 
+var mappingAlarmSummarySeverityEnumLowerCase = map[string]AlarmSummarySeverityEnum{
+	"critical": AlarmSummarySeverityCritical,
+	"error":    AlarmSummarySeverityError,
+	"warning":  AlarmSummarySeverityWarning,
+	"info":     AlarmSummarySeverityInfo,
+}
+
 // GetAlarmSummarySeverityEnumValues Enumerates the set of values for AlarmSummarySeverityEnum
 func GetAlarmSummarySeverityEnumValues() []AlarmSummarySeverityEnum {
 	values := make([]AlarmSummarySeverityEnum, 0)
@@ -156,11 +163,6 @@ func GetAlarmSummarySeverityEnumStringValues() []string {
 
 // GetMappingAlarmSummarySeverityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAlarmSummarySeverityEnum(val string) (AlarmSummarySeverityEnum, bool) {
-	mappingAlarmSummarySeverityEnumIgnoreCase := make(map[string]AlarmSummarySeverityEnum)
-	for k, v := range mappingAlarmSummarySeverityEnum {
-		mappingAlarmSummarySeverityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAlarmSummarySeverityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAlarmSummarySeverityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

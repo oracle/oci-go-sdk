@@ -29,6 +29,12 @@ var mappingOperationStatusEnum = map[string]OperationStatusEnum{
 	"SUCCEEDED": OperationStatusSucceeded,
 }
 
+var mappingOperationStatusEnumLowerCase = map[string]OperationStatusEnum{
+	"accepted":  OperationStatusAccepted,
+	"failed":    OperationStatusFailed,
+	"succeeded": OperationStatusSucceeded,
+}
+
 // GetOperationStatusEnumValues Enumerates the set of values for OperationStatusEnum
 func GetOperationStatusEnumValues() []OperationStatusEnum {
 	values := make([]OperationStatusEnum, 0)
@@ -49,11 +55,6 @@ func GetOperationStatusEnumStringValues() []string {
 
 // GetMappingOperationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperationStatusEnum(val string) (OperationStatusEnum, bool) {
-	mappingOperationStatusEnumIgnoreCase := make(map[string]OperationStatusEnum)
-	for k, v := range mappingOperationStatusEnum {
-		mappingOperationStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperationStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperationStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

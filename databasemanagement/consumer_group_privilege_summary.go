@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,11 @@ var mappingConsumerGroupPrivilegeSummaryGrantOptionEnum = map[string]ConsumerGro
 	"NO":  ConsumerGroupPrivilegeSummaryGrantOptionNo,
 }
 
+var mappingConsumerGroupPrivilegeSummaryGrantOptionEnumLowerCase = map[string]ConsumerGroupPrivilegeSummaryGrantOptionEnum{
+	"yes": ConsumerGroupPrivilegeSummaryGrantOptionYes,
+	"no":  ConsumerGroupPrivilegeSummaryGrantOptionNo,
+}
+
 // GetConsumerGroupPrivilegeSummaryGrantOptionEnumValues Enumerates the set of values for ConsumerGroupPrivilegeSummaryGrantOptionEnum
 func GetConsumerGroupPrivilegeSummaryGrantOptionEnumValues() []ConsumerGroupPrivilegeSummaryGrantOptionEnum {
 	values := make([]ConsumerGroupPrivilegeSummaryGrantOptionEnum, 0)
@@ -85,12 +90,7 @@ func GetConsumerGroupPrivilegeSummaryGrantOptionEnumStringValues() []string {
 
 // GetMappingConsumerGroupPrivilegeSummaryGrantOptionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConsumerGroupPrivilegeSummaryGrantOptionEnum(val string) (ConsumerGroupPrivilegeSummaryGrantOptionEnum, bool) {
-	mappingConsumerGroupPrivilegeSummaryGrantOptionEnumIgnoreCase := make(map[string]ConsumerGroupPrivilegeSummaryGrantOptionEnum)
-	for k, v := range mappingConsumerGroupPrivilegeSummaryGrantOptionEnum {
-		mappingConsumerGroupPrivilegeSummaryGrantOptionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConsumerGroupPrivilegeSummaryGrantOptionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConsumerGroupPrivilegeSummaryGrantOptionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -106,6 +106,11 @@ const (
 var mappingConsumerGroupPrivilegeSummaryInitialGroupEnum = map[string]ConsumerGroupPrivilegeSummaryInitialGroupEnum{
 	"YES": ConsumerGroupPrivilegeSummaryInitialGroupYes,
 	"NO":  ConsumerGroupPrivilegeSummaryInitialGroupNo,
+}
+
+var mappingConsumerGroupPrivilegeSummaryInitialGroupEnumLowerCase = map[string]ConsumerGroupPrivilegeSummaryInitialGroupEnum{
+	"yes": ConsumerGroupPrivilegeSummaryInitialGroupYes,
+	"no":  ConsumerGroupPrivilegeSummaryInitialGroupNo,
 }
 
 // GetConsumerGroupPrivilegeSummaryInitialGroupEnumValues Enumerates the set of values for ConsumerGroupPrivilegeSummaryInitialGroupEnum
@@ -127,11 +132,6 @@ func GetConsumerGroupPrivilegeSummaryInitialGroupEnumStringValues() []string {
 
 // GetMappingConsumerGroupPrivilegeSummaryInitialGroupEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConsumerGroupPrivilegeSummaryInitialGroupEnum(val string) (ConsumerGroupPrivilegeSummaryInitialGroupEnum, bool) {
-	mappingConsumerGroupPrivilegeSummaryInitialGroupEnumIgnoreCase := make(map[string]ConsumerGroupPrivilegeSummaryInitialGroupEnum)
-	for k, v := range mappingConsumerGroupPrivilegeSummaryInitialGroupEnum {
-		mappingConsumerGroupPrivilegeSummaryInitialGroupEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConsumerGroupPrivilegeSummaryInitialGroupEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConsumerGroupPrivilegeSummaryInitialGroupEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -184,6 +184,31 @@ var mappingListAggregatedPhysicalEntitiesFieldsEnum = map[string]ListAggregatedP
 	"properties":        ListAggregatedPhysicalEntitiesFieldsProperties,
 }
 
+var mappingListAggregatedPhysicalEntitiesFieldsEnumLowerCase = map[string]ListAggregatedPhysicalEntitiesFieldsEnum{
+	"key":               ListAggregatedPhysicalEntitiesFieldsKey,
+	"displayname":       ListAggregatedPhysicalEntitiesFieldsDisplayname,
+	"description":       ListAggregatedPhysicalEntitiesFieldsDescription,
+	"dataassetkey":      ListAggregatedPhysicalEntitiesFieldsDataassetkey,
+	"timecreated":       ListAggregatedPhysicalEntitiesFieldsTimecreated,
+	"timeupdated":       ListAggregatedPhysicalEntitiesFieldsTimeupdated,
+	"createdbyid":       ListAggregatedPhysicalEntitiesFieldsCreatedbyid,
+	"updatedbyid":       ListAggregatedPhysicalEntitiesFieldsUpdatedbyid,
+	"lifecyclestate":    ListAggregatedPhysicalEntitiesFieldsLifecyclestate,
+	"externalkey":       ListAggregatedPhysicalEntitiesFieldsExternalkey,
+	"timeexternal":      ListAggregatedPhysicalEntitiesFieldsTimeexternal,
+	"timestatusupdated": ListAggregatedPhysicalEntitiesFieldsTimestatusupdated,
+	"islogical":         ListAggregatedPhysicalEntitiesFieldsIslogical,
+	"ispartition":       ListAggregatedPhysicalEntitiesFieldsIspartition,
+	"folderkey":         ListAggregatedPhysicalEntitiesFieldsFolderkey,
+	"foldername":        ListAggregatedPhysicalEntitiesFieldsFoldername,
+	"typekey":           ListAggregatedPhysicalEntitiesFieldsTypekey,
+	"path":              ListAggregatedPhysicalEntitiesFieldsPath,
+	"harveststatus":     ListAggregatedPhysicalEntitiesFieldsHarveststatus,
+	"lastjobkey":        ListAggregatedPhysicalEntitiesFieldsLastjobkey,
+	"uri":               ListAggregatedPhysicalEntitiesFieldsUri,
+	"properties":        ListAggregatedPhysicalEntitiesFieldsProperties,
+}
+
 // GetListAggregatedPhysicalEntitiesFieldsEnumValues Enumerates the set of values for ListAggregatedPhysicalEntitiesFieldsEnum
 func GetListAggregatedPhysicalEntitiesFieldsEnumValues() []ListAggregatedPhysicalEntitiesFieldsEnum {
 	values := make([]ListAggregatedPhysicalEntitiesFieldsEnum, 0)
@@ -223,12 +248,7 @@ func GetListAggregatedPhysicalEntitiesFieldsEnumStringValues() []string {
 
 // GetMappingListAggregatedPhysicalEntitiesFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAggregatedPhysicalEntitiesFieldsEnum(val string) (ListAggregatedPhysicalEntitiesFieldsEnum, bool) {
-	mappingListAggregatedPhysicalEntitiesFieldsEnumIgnoreCase := make(map[string]ListAggregatedPhysicalEntitiesFieldsEnum)
-	for k, v := range mappingListAggregatedPhysicalEntitiesFieldsEnum {
-		mappingListAggregatedPhysicalEntitiesFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAggregatedPhysicalEntitiesFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAggregatedPhysicalEntitiesFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -244,6 +264,11 @@ const (
 var mappingListAggregatedPhysicalEntitiesSortByEnum = map[string]ListAggregatedPhysicalEntitiesSortByEnum{
 	"TIMECREATED": ListAggregatedPhysicalEntitiesSortByTimecreated,
 	"DISPLAYNAME": ListAggregatedPhysicalEntitiesSortByDisplayname,
+}
+
+var mappingListAggregatedPhysicalEntitiesSortByEnumLowerCase = map[string]ListAggregatedPhysicalEntitiesSortByEnum{
+	"timecreated": ListAggregatedPhysicalEntitiesSortByTimecreated,
+	"displayname": ListAggregatedPhysicalEntitiesSortByDisplayname,
 }
 
 // GetListAggregatedPhysicalEntitiesSortByEnumValues Enumerates the set of values for ListAggregatedPhysicalEntitiesSortByEnum
@@ -265,12 +290,7 @@ func GetListAggregatedPhysicalEntitiesSortByEnumStringValues() []string {
 
 // GetMappingListAggregatedPhysicalEntitiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAggregatedPhysicalEntitiesSortByEnum(val string) (ListAggregatedPhysicalEntitiesSortByEnum, bool) {
-	mappingListAggregatedPhysicalEntitiesSortByEnumIgnoreCase := make(map[string]ListAggregatedPhysicalEntitiesSortByEnum)
-	for k, v := range mappingListAggregatedPhysicalEntitiesSortByEnum {
-		mappingListAggregatedPhysicalEntitiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAggregatedPhysicalEntitiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAggregatedPhysicalEntitiesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -286,6 +306,11 @@ const (
 var mappingListAggregatedPhysicalEntitiesSortOrderEnum = map[string]ListAggregatedPhysicalEntitiesSortOrderEnum{
 	"ASC":  ListAggregatedPhysicalEntitiesSortOrderAsc,
 	"DESC": ListAggregatedPhysicalEntitiesSortOrderDesc,
+}
+
+var mappingListAggregatedPhysicalEntitiesSortOrderEnumLowerCase = map[string]ListAggregatedPhysicalEntitiesSortOrderEnum{
+	"asc":  ListAggregatedPhysicalEntitiesSortOrderAsc,
+	"desc": ListAggregatedPhysicalEntitiesSortOrderDesc,
 }
 
 // GetListAggregatedPhysicalEntitiesSortOrderEnumValues Enumerates the set of values for ListAggregatedPhysicalEntitiesSortOrderEnum
@@ -307,11 +332,6 @@ func GetListAggregatedPhysicalEntitiesSortOrderEnumStringValues() []string {
 
 // GetMappingListAggregatedPhysicalEntitiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAggregatedPhysicalEntitiesSortOrderEnum(val string) (ListAggregatedPhysicalEntitiesSortOrderEnum, bool) {
-	mappingListAggregatedPhysicalEntitiesSortOrderEnumIgnoreCase := make(map[string]ListAggregatedPhysicalEntitiesSortOrderEnum)
-	for k, v := range mappingListAggregatedPhysicalEntitiesSortOrderEnum {
-		mappingListAggregatedPhysicalEntitiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAggregatedPhysicalEntitiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAggregatedPhysicalEntitiesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

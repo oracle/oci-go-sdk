@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -67,6 +67,12 @@ var mappingUpgradeStatusStatusEnum = map[string]UpgradeStatusStatusEnum{
 	"UPGRADED":     UpgradeStatusStatusUpgraded,
 }
 
+var mappingUpgradeStatusStatusEnumLowerCase = map[string]UpgradeStatusStatusEnum{
+	"not_upgraded": UpgradeStatusStatusNotUpgraded,
+	"in_progress":  UpgradeStatusStatusInProgress,
+	"upgraded":     UpgradeStatusStatusUpgraded,
+}
+
 // GetUpgradeStatusStatusEnumValues Enumerates the set of values for UpgradeStatusStatusEnum
 func GetUpgradeStatusStatusEnumValues() []UpgradeStatusStatusEnum {
 	values := make([]UpgradeStatusStatusEnum, 0)
@@ -87,11 +93,6 @@ func GetUpgradeStatusStatusEnumStringValues() []string {
 
 // GetMappingUpgradeStatusStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpgradeStatusStatusEnum(val string) (UpgradeStatusStatusEnum, bool) {
-	mappingUpgradeStatusStatusEnumIgnoreCase := make(map[string]UpgradeStatusStatusEnum)
-	for k, v := range mappingUpgradeStatusStatusEnum {
-		mappingUpgradeStatusStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpgradeStatusStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpgradeStatusStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

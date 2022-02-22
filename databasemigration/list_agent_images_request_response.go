@@ -6,7 +6,7 @@ package databasemigration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -118,6 +118,11 @@ var mappingListAgentImagesSortOrderEnum = map[string]ListAgentImagesSortOrderEnu
 	"DESC": ListAgentImagesSortOrderDesc,
 }
 
+var mappingListAgentImagesSortOrderEnumLowerCase = map[string]ListAgentImagesSortOrderEnum{
+	"asc":  ListAgentImagesSortOrderAsc,
+	"desc": ListAgentImagesSortOrderDesc,
+}
+
 // GetListAgentImagesSortOrderEnumValues Enumerates the set of values for ListAgentImagesSortOrderEnum
 func GetListAgentImagesSortOrderEnumValues() []ListAgentImagesSortOrderEnum {
 	values := make([]ListAgentImagesSortOrderEnum, 0)
@@ -137,11 +142,6 @@ func GetListAgentImagesSortOrderEnumStringValues() []string {
 
 // GetMappingListAgentImagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAgentImagesSortOrderEnum(val string) (ListAgentImagesSortOrderEnum, bool) {
-	mappingListAgentImagesSortOrderEnumIgnoreCase := make(map[string]ListAgentImagesSortOrderEnum)
-	for k, v := range mappingListAgentImagesSortOrderEnum {
-		mappingListAgentImagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAgentImagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAgentImagesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

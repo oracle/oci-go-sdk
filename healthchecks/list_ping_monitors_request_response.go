@@ -6,7 +6,7 @@ package healthchecks
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,12 @@ var mappingListPingMonitorsSortByEnum = map[string]ListPingMonitorsSortByEnum{
 	"timeCreated": ListPingMonitorsSortByTimecreated,
 }
 
+var mappingListPingMonitorsSortByEnumLowerCase = map[string]ListPingMonitorsSortByEnum{
+	"id":          ListPingMonitorsSortById,
+	"displayname": ListPingMonitorsSortByDisplayname,
+	"timecreated": ListPingMonitorsSortByTimecreated,
+}
+
 // GetListPingMonitorsSortByEnumValues Enumerates the set of values for ListPingMonitorsSortByEnum
 func GetListPingMonitorsSortByEnumValues() []ListPingMonitorsSortByEnum {
 	values := make([]ListPingMonitorsSortByEnum, 0)
@@ -158,12 +164,7 @@ func GetListPingMonitorsSortByEnumStringValues() []string {
 
 // GetMappingListPingMonitorsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPingMonitorsSortByEnum(val string) (ListPingMonitorsSortByEnum, bool) {
-	mappingListPingMonitorsSortByEnumIgnoreCase := make(map[string]ListPingMonitorsSortByEnum)
-	for k, v := range mappingListPingMonitorsSortByEnum {
-		mappingListPingMonitorsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPingMonitorsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPingMonitorsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -179,6 +180,11 @@ const (
 var mappingListPingMonitorsSortOrderEnum = map[string]ListPingMonitorsSortOrderEnum{
 	"ASC":  ListPingMonitorsSortOrderAsc,
 	"DESC": ListPingMonitorsSortOrderDesc,
+}
+
+var mappingListPingMonitorsSortOrderEnumLowerCase = map[string]ListPingMonitorsSortOrderEnum{
+	"asc":  ListPingMonitorsSortOrderAsc,
+	"desc": ListPingMonitorsSortOrderDesc,
 }
 
 // GetListPingMonitorsSortOrderEnumValues Enumerates the set of values for ListPingMonitorsSortOrderEnum
@@ -200,11 +206,6 @@ func GetListPingMonitorsSortOrderEnumStringValues() []string {
 
 // GetMappingListPingMonitorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPingMonitorsSortOrderEnum(val string) (ListPingMonitorsSortOrderEnum, bool) {
-	mappingListPingMonitorsSortOrderEnumIgnoreCase := make(map[string]ListPingMonitorsSortOrderEnum)
-	for k, v := range mappingListPingMonitorsSortOrderEnum {
-		mappingListPingMonitorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPingMonitorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPingMonitorsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

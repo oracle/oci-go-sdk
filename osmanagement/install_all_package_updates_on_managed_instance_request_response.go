@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -125,6 +125,15 @@ var mappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum = map[string]
 	"ALL":         InstallAllPackageUpdatesOnManagedInstanceUpdateTypeAll,
 }
 
+var mappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnumLowerCase = map[string]InstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum{
+	"security":    InstallAllPackageUpdatesOnManagedInstanceUpdateTypeSecurity,
+	"bugfix":      InstallAllPackageUpdatesOnManagedInstanceUpdateTypeBugfix,
+	"enhancement": InstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnhancement,
+	"other":       InstallAllPackageUpdatesOnManagedInstanceUpdateTypeOther,
+	"ksplice":     InstallAllPackageUpdatesOnManagedInstanceUpdateTypeKsplice,
+	"all":         InstallAllPackageUpdatesOnManagedInstanceUpdateTypeAll,
+}
+
 // GetInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnumValues Enumerates the set of values for InstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum
 func GetInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnumValues() []InstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum {
 	values := make([]InstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum, 0)
@@ -148,11 +157,6 @@ func GetInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnumStringValues() []
 
 // GetMappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum(val string) (InstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum, bool) {
-	mappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnumIgnoreCase := make(map[string]InstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum)
-	for k, v := range mappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnum {
-		mappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstallAllPackageUpdatesOnManagedInstanceUpdateTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

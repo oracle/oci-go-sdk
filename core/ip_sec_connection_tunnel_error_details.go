@@ -15,29 +15,29 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
-// IpSecConnectionTunnelErrorDetails Ipsec tunnels error details
+// IpSecConnectionTunnelErrorDetails Details for an error on an IPSec tunnel.
 type IpSecConnectionTunnelErrorDetails struct {
 
-	// unique id generated for each error report
+	// Unique ID generated for each error report.
 	Id *string `mandatory:"true" json:"id"`
 
-	// unique code describes error type
+	// Unique code describes the error type.
 	ErrorCode *string `mandatory:"true" json:"errorCode"`
 
-	// detailed description of the error
+	// A detailed description of the error.
 	ErrorDescription *string `mandatory:"true" json:"errorDescription"`
 
-	// how to resolve the error
+	// Resolution for the error.
 	Solution *string `mandatory:"true" json:"solution"`
 
-	// link to oracle resources
+	// Link to more Oracle resources or relevant documentation.
 	OciResourcesLink *string `mandatory:"true" json:"ociResourcesLink"`
 
-	// timestamp when error occurred.
+	// Timestamp when the error occurred.
 	Timestamp *common.SDKTime `mandatory:"true" json:"timestamp"`
 }
 

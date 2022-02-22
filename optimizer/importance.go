@@ -35,6 +35,14 @@ var mappingImportanceEnum = map[string]ImportanceEnum{
 	"MINOR":    ImportanceMinor,
 }
 
+var mappingImportanceEnumLowerCase = map[string]ImportanceEnum{
+	"critical": ImportanceCritical,
+	"high":     ImportanceHigh,
+	"moderate": ImportanceModerate,
+	"low":      ImportanceLow,
+	"minor":    ImportanceMinor,
+}
+
 // GetImportanceEnumValues Enumerates the set of values for ImportanceEnum
 func GetImportanceEnumValues() []ImportanceEnum {
 	values := make([]ImportanceEnum, 0)
@@ -57,11 +65,6 @@ func GetImportanceEnumStringValues() []string {
 
 // GetMappingImportanceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingImportanceEnum(val string) (ImportanceEnum, bool) {
-	mappingImportanceEnumIgnoreCase := make(map[string]ImportanceEnum)
-	for k, v := range mappingImportanceEnum {
-		mappingImportanceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingImportanceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingImportanceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -13,7 +13,7 @@ package dns
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -141,6 +141,10 @@ var mappingCreateResolverEndpointDetailsEndpointTypeEnum = map[string]CreateReso
 	"VNIC": CreateResolverEndpointDetailsEndpointTypeVnic,
 }
 
+var mappingCreateResolverEndpointDetailsEndpointTypeEnumLowerCase = map[string]CreateResolverEndpointDetailsEndpointTypeEnum{
+	"vnic": CreateResolverEndpointDetailsEndpointTypeVnic,
+}
+
 // GetCreateResolverEndpointDetailsEndpointTypeEnumValues Enumerates the set of values for CreateResolverEndpointDetailsEndpointTypeEnum
 func GetCreateResolverEndpointDetailsEndpointTypeEnumValues() []CreateResolverEndpointDetailsEndpointTypeEnum {
 	values := make([]CreateResolverEndpointDetailsEndpointTypeEnum, 0)
@@ -159,11 +163,6 @@ func GetCreateResolverEndpointDetailsEndpointTypeEnumStringValues() []string {
 
 // GetMappingCreateResolverEndpointDetailsEndpointTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateResolverEndpointDetailsEndpointTypeEnum(val string) (CreateResolverEndpointDetailsEndpointTypeEnum, bool) {
-	mappingCreateResolverEndpointDetailsEndpointTypeEnumIgnoreCase := make(map[string]CreateResolverEndpointDetailsEndpointTypeEnum)
-	for k, v := range mappingCreateResolverEndpointDetailsEndpointTypeEnum {
-		mappingCreateResolverEndpointDetailsEndpointTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateResolverEndpointDetailsEndpointTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateResolverEndpointDetailsEndpointTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

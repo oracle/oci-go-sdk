@@ -27,6 +27,11 @@ var mappingDeploymentBackupTypeEnum = map[string]DeploymentBackupTypeEnum{
 	"FULL":        DeploymentBackupTypeFull,
 }
 
+var mappingDeploymentBackupTypeEnumLowerCase = map[string]DeploymentBackupTypeEnum{
+	"incremental": DeploymentBackupTypeIncremental,
+	"full":        DeploymentBackupTypeFull,
+}
+
 // GetDeploymentBackupTypeEnumValues Enumerates the set of values for DeploymentBackupTypeEnum
 func GetDeploymentBackupTypeEnumValues() []DeploymentBackupTypeEnum {
 	values := make([]DeploymentBackupTypeEnum, 0)
@@ -46,11 +51,6 @@ func GetDeploymentBackupTypeEnumStringValues() []string {
 
 // GetMappingDeploymentBackupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDeploymentBackupTypeEnum(val string) (DeploymentBackupTypeEnum, bool) {
-	mappingDeploymentBackupTypeEnumIgnoreCase := make(map[string]DeploymentBackupTypeEnum)
-	for k, v := range mappingDeploymentBackupTypeEnum {
-		mappingDeploymentBackupTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDeploymentBackupTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDeploymentBackupTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

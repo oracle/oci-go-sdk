@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -103,6 +103,17 @@ var mappingClusterNetworkSummaryLifecycleStateEnum = map[string]ClusterNetworkSu
 	"RUNNING":      ClusterNetworkSummaryLifecycleStateRunning,
 }
 
+var mappingClusterNetworkSummaryLifecycleStateEnumLowerCase = map[string]ClusterNetworkSummaryLifecycleStateEnum{
+	"provisioning": ClusterNetworkSummaryLifecycleStateProvisioning,
+	"scaling":      ClusterNetworkSummaryLifecycleStateScaling,
+	"starting":     ClusterNetworkSummaryLifecycleStateStarting,
+	"stopping":     ClusterNetworkSummaryLifecycleStateStopping,
+	"terminating":  ClusterNetworkSummaryLifecycleStateTerminating,
+	"stopped":      ClusterNetworkSummaryLifecycleStateStopped,
+	"terminated":   ClusterNetworkSummaryLifecycleStateTerminated,
+	"running":      ClusterNetworkSummaryLifecycleStateRunning,
+}
+
 // GetClusterNetworkSummaryLifecycleStateEnumValues Enumerates the set of values for ClusterNetworkSummaryLifecycleStateEnum
 func GetClusterNetworkSummaryLifecycleStateEnumValues() []ClusterNetworkSummaryLifecycleStateEnum {
 	values := make([]ClusterNetworkSummaryLifecycleStateEnum, 0)
@@ -128,11 +139,6 @@ func GetClusterNetworkSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingClusterNetworkSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingClusterNetworkSummaryLifecycleStateEnum(val string) (ClusterNetworkSummaryLifecycleStateEnum, bool) {
-	mappingClusterNetworkSummaryLifecycleStateEnumIgnoreCase := make(map[string]ClusterNetworkSummaryLifecycleStateEnum)
-	for k, v := range mappingClusterNetworkSummaryLifecycleStateEnum {
-		mappingClusterNetworkSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingClusterNetworkSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingClusterNetworkSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

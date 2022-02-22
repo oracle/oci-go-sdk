@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -77,6 +77,11 @@ var mappingPatchHistoryEntrySummaryActionEnum = map[string]PatchHistoryEntrySumm
 	"PRECHECK": PatchHistoryEntrySummaryActionPrecheck,
 }
 
+var mappingPatchHistoryEntrySummaryActionEnumLowerCase = map[string]PatchHistoryEntrySummaryActionEnum{
+	"apply":    PatchHistoryEntrySummaryActionApply,
+	"precheck": PatchHistoryEntrySummaryActionPrecheck,
+}
+
 // GetPatchHistoryEntrySummaryActionEnumValues Enumerates the set of values for PatchHistoryEntrySummaryActionEnum
 func GetPatchHistoryEntrySummaryActionEnumValues() []PatchHistoryEntrySummaryActionEnum {
 	values := make([]PatchHistoryEntrySummaryActionEnum, 0)
@@ -96,12 +101,7 @@ func GetPatchHistoryEntrySummaryActionEnumStringValues() []string {
 
 // GetMappingPatchHistoryEntrySummaryActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchHistoryEntrySummaryActionEnum(val string) (PatchHistoryEntrySummaryActionEnum, bool) {
-	mappingPatchHistoryEntrySummaryActionEnumIgnoreCase := make(map[string]PatchHistoryEntrySummaryActionEnum)
-	for k, v := range mappingPatchHistoryEntrySummaryActionEnum {
-		mappingPatchHistoryEntrySummaryActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchHistoryEntrySummaryActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchHistoryEntrySummaryActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -119,6 +119,12 @@ var mappingPatchHistoryEntrySummaryLifecycleStateEnum = map[string]PatchHistoryE
 	"IN_PROGRESS": PatchHistoryEntrySummaryLifecycleStateInProgress,
 	"SUCCEEDED":   PatchHistoryEntrySummaryLifecycleStateSucceeded,
 	"FAILED":      PatchHistoryEntrySummaryLifecycleStateFailed,
+}
+
+var mappingPatchHistoryEntrySummaryLifecycleStateEnumLowerCase = map[string]PatchHistoryEntrySummaryLifecycleStateEnum{
+	"in_progress": PatchHistoryEntrySummaryLifecycleStateInProgress,
+	"succeeded":   PatchHistoryEntrySummaryLifecycleStateSucceeded,
+	"failed":      PatchHistoryEntrySummaryLifecycleStateFailed,
 }
 
 // GetPatchHistoryEntrySummaryLifecycleStateEnumValues Enumerates the set of values for PatchHistoryEntrySummaryLifecycleStateEnum
@@ -141,11 +147,6 @@ func GetPatchHistoryEntrySummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingPatchHistoryEntrySummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchHistoryEntrySummaryLifecycleStateEnum(val string) (PatchHistoryEntrySummaryLifecycleStateEnum, bool) {
-	mappingPatchHistoryEntrySummaryLifecycleStateEnumIgnoreCase := make(map[string]PatchHistoryEntrySummaryLifecycleStateEnum)
-	for k, v := range mappingPatchHistoryEntrySummaryLifecycleStateEnum {
-		mappingPatchHistoryEntrySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchHistoryEntrySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchHistoryEntrySummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

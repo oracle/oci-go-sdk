@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -200,6 +200,17 @@ var mappingListFoldersLifecycleStateEnum = map[string]ListFoldersLifecycleStateE
 	"MOVING":   ListFoldersLifecycleStateMoving,
 }
 
+var mappingListFoldersLifecycleStateEnumLowerCase = map[string]ListFoldersLifecycleStateEnum{
+	"creating": ListFoldersLifecycleStateCreating,
+	"active":   ListFoldersLifecycleStateActive,
+	"inactive": ListFoldersLifecycleStateInactive,
+	"updating": ListFoldersLifecycleStateUpdating,
+	"deleting": ListFoldersLifecycleStateDeleting,
+	"deleted":  ListFoldersLifecycleStateDeleted,
+	"failed":   ListFoldersLifecycleStateFailed,
+	"moving":   ListFoldersLifecycleStateMoving,
+}
+
 // GetListFoldersLifecycleStateEnumValues Enumerates the set of values for ListFoldersLifecycleStateEnum
 func GetListFoldersLifecycleStateEnumValues() []ListFoldersLifecycleStateEnum {
 	values := make([]ListFoldersLifecycleStateEnum, 0)
@@ -225,12 +236,7 @@ func GetListFoldersLifecycleStateEnumStringValues() []string {
 
 // GetMappingListFoldersLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFoldersLifecycleStateEnum(val string) (ListFoldersLifecycleStateEnum, bool) {
-	mappingListFoldersLifecycleStateEnumIgnoreCase := make(map[string]ListFoldersLifecycleStateEnum)
-	for k, v := range mappingListFoldersLifecycleStateEnum {
-		mappingListFoldersLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFoldersLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFoldersLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -250,6 +256,13 @@ var mappingListFoldersHarvestStatusEnum = map[string]ListFoldersHarvestStatusEnu
 	"ERROR":       ListFoldersHarvestStatusError,
 	"IN_PROGRESS": ListFoldersHarvestStatusInProgress,
 	"DEFERRED":    ListFoldersHarvestStatusDeferred,
+}
+
+var mappingListFoldersHarvestStatusEnumLowerCase = map[string]ListFoldersHarvestStatusEnum{
+	"complete":    ListFoldersHarvestStatusComplete,
+	"error":       ListFoldersHarvestStatusError,
+	"in_progress": ListFoldersHarvestStatusInProgress,
+	"deferred":    ListFoldersHarvestStatusDeferred,
 }
 
 // GetListFoldersHarvestStatusEnumValues Enumerates the set of values for ListFoldersHarvestStatusEnum
@@ -273,12 +286,7 @@ func GetListFoldersHarvestStatusEnumStringValues() []string {
 
 // GetMappingListFoldersHarvestStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFoldersHarvestStatusEnum(val string) (ListFoldersHarvestStatusEnum, bool) {
-	mappingListFoldersHarvestStatusEnumIgnoreCase := make(map[string]ListFoldersHarvestStatusEnum)
-	for k, v := range mappingListFoldersHarvestStatusEnum {
-		mappingListFoldersHarvestStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFoldersHarvestStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFoldersHarvestStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -314,6 +322,20 @@ var mappingListFoldersFieldsEnum = map[string]ListFoldersFieldsEnum{
 	"uri":             ListFoldersFieldsUri,
 }
 
+var mappingListFoldersFieldsEnumLowerCase = map[string]ListFoldersFieldsEnum{
+	"key":             ListFoldersFieldsKey,
+	"displayname":     ListFoldersFieldsDisplayname,
+	"description":     ListFoldersFieldsDescription,
+	"parentfolderkey": ListFoldersFieldsParentfolderkey,
+	"path":            ListFoldersFieldsPath,
+	"dataassetkey":    ListFoldersFieldsDataassetkey,
+	"externalkey":     ListFoldersFieldsExternalkey,
+	"timeexternal":    ListFoldersFieldsTimeexternal,
+	"timecreated":     ListFoldersFieldsTimecreated,
+	"lifecyclestate":  ListFoldersFieldsLifecyclestate,
+	"uri":             ListFoldersFieldsUri,
+}
+
 // GetListFoldersFieldsEnumValues Enumerates the set of values for ListFoldersFieldsEnum
 func GetListFoldersFieldsEnumValues() []ListFoldersFieldsEnum {
 	values := make([]ListFoldersFieldsEnum, 0)
@@ -342,12 +364,7 @@ func GetListFoldersFieldsEnumStringValues() []string {
 
 // GetMappingListFoldersFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFoldersFieldsEnum(val string) (ListFoldersFieldsEnum, bool) {
-	mappingListFoldersFieldsEnumIgnoreCase := make(map[string]ListFoldersFieldsEnum)
-	for k, v := range mappingListFoldersFieldsEnum {
-		mappingListFoldersFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFoldersFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFoldersFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -363,6 +380,11 @@ const (
 var mappingListFoldersSortByEnum = map[string]ListFoldersSortByEnum{
 	"TIMECREATED": ListFoldersSortByTimecreated,
 	"DISPLAYNAME": ListFoldersSortByDisplayname,
+}
+
+var mappingListFoldersSortByEnumLowerCase = map[string]ListFoldersSortByEnum{
+	"timecreated": ListFoldersSortByTimecreated,
+	"displayname": ListFoldersSortByDisplayname,
 }
 
 // GetListFoldersSortByEnumValues Enumerates the set of values for ListFoldersSortByEnum
@@ -384,12 +406,7 @@ func GetListFoldersSortByEnumStringValues() []string {
 
 // GetMappingListFoldersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFoldersSortByEnum(val string) (ListFoldersSortByEnum, bool) {
-	mappingListFoldersSortByEnumIgnoreCase := make(map[string]ListFoldersSortByEnum)
-	for k, v := range mappingListFoldersSortByEnum {
-		mappingListFoldersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFoldersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFoldersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -405,6 +422,11 @@ const (
 var mappingListFoldersSortOrderEnum = map[string]ListFoldersSortOrderEnum{
 	"ASC":  ListFoldersSortOrderAsc,
 	"DESC": ListFoldersSortOrderDesc,
+}
+
+var mappingListFoldersSortOrderEnumLowerCase = map[string]ListFoldersSortOrderEnum{
+	"asc":  ListFoldersSortOrderAsc,
+	"desc": ListFoldersSortOrderDesc,
 }
 
 // GetListFoldersSortOrderEnumValues Enumerates the set of values for ListFoldersSortOrderEnum
@@ -426,11 +448,6 @@ func GetListFoldersSortOrderEnumStringValues() []string {
 
 // GetMappingListFoldersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFoldersSortOrderEnum(val string) (ListFoldersSortOrderEnum, bool) {
-	mappingListFoldersSortOrderEnumIgnoreCase := make(map[string]ListFoldersSortOrderEnum)
-	for k, v := range mappingListFoldersSortOrderEnum {
-		mappingListFoldersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFoldersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFoldersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

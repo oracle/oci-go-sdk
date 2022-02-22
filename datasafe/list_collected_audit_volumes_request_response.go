@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -145,6 +145,11 @@ var mappingListCollectedAuditVolumesSortOrderEnum = map[string]ListCollectedAudi
 	"DESC": ListCollectedAuditVolumesSortOrderDesc,
 }
 
+var mappingListCollectedAuditVolumesSortOrderEnumLowerCase = map[string]ListCollectedAuditVolumesSortOrderEnum{
+	"asc":  ListCollectedAuditVolumesSortOrderAsc,
+	"desc": ListCollectedAuditVolumesSortOrderDesc,
+}
+
 // GetListCollectedAuditVolumesSortOrderEnumValues Enumerates the set of values for ListCollectedAuditVolumesSortOrderEnum
 func GetListCollectedAuditVolumesSortOrderEnumValues() []ListCollectedAuditVolumesSortOrderEnum {
 	values := make([]ListCollectedAuditVolumesSortOrderEnum, 0)
@@ -164,12 +169,7 @@ func GetListCollectedAuditVolumesSortOrderEnumStringValues() []string {
 
 // GetMappingListCollectedAuditVolumesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCollectedAuditVolumesSortOrderEnum(val string) (ListCollectedAuditVolumesSortOrderEnum, bool) {
-	mappingListCollectedAuditVolumesSortOrderEnumIgnoreCase := make(map[string]ListCollectedAuditVolumesSortOrderEnum)
-	for k, v := range mappingListCollectedAuditVolumesSortOrderEnum {
-		mappingListCollectedAuditVolumesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCollectedAuditVolumesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCollectedAuditVolumesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +187,12 @@ var mappingListCollectedAuditVolumesSortByEnum = map[string]ListCollectedAuditVo
 	"monthInConsideration": ListCollectedAuditVolumesSortByMonthinconsideration,
 	"onlineVolume":         ListCollectedAuditVolumesSortByOnlinevolume,
 	"archivedVolume":       ListCollectedAuditVolumesSortByArchivedvolume,
+}
+
+var mappingListCollectedAuditVolumesSortByEnumLowerCase = map[string]ListCollectedAuditVolumesSortByEnum{
+	"monthinconsideration": ListCollectedAuditVolumesSortByMonthinconsideration,
+	"onlinevolume":         ListCollectedAuditVolumesSortByOnlinevolume,
+	"archivedvolume":       ListCollectedAuditVolumesSortByArchivedvolume,
 }
 
 // GetListCollectedAuditVolumesSortByEnumValues Enumerates the set of values for ListCollectedAuditVolumesSortByEnum
@@ -209,11 +215,6 @@ func GetListCollectedAuditVolumesSortByEnumStringValues() []string {
 
 // GetMappingListCollectedAuditVolumesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCollectedAuditVolumesSortByEnum(val string) (ListCollectedAuditVolumesSortByEnum, bool) {
-	mappingListCollectedAuditVolumesSortByEnumIgnoreCase := make(map[string]ListCollectedAuditVolumesSortByEnum)
-	for k, v := range mappingListCollectedAuditVolumesSortByEnum {
-		mappingListCollectedAuditVolumesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCollectedAuditVolumesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCollectedAuditVolumesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -37,6 +37,16 @@ var mappingCreditCardTypeEnum = map[string]CreditCardTypeEnum{
 	"ELO":        CreditCardTypeElo,
 }
 
+var mappingCreditCardTypeEnumLowerCase = map[string]CreditCardTypeEnum{
+	"visa":       CreditCardTypeVisa,
+	"amex":       CreditCardTypeAmex,
+	"mastercard": CreditCardTypeMastercard,
+	"discover":   CreditCardTypeDiscover,
+	"jcb":        CreditCardTypeJcb,
+	"diner":      CreditCardTypeDiner,
+	"elo":        CreditCardTypeElo,
+}
+
 // GetCreditCardTypeEnumValues Enumerates the set of values for CreditCardTypeEnum
 func GetCreditCardTypeEnumValues() []CreditCardTypeEnum {
 	values := make([]CreditCardTypeEnum, 0)
@@ -61,11 +71,6 @@ func GetCreditCardTypeEnumStringValues() []string {
 
 // GetMappingCreditCardTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreditCardTypeEnum(val string) (CreditCardTypeEnum, bool) {
-	mappingCreditCardTypeEnumIgnoreCase := make(map[string]CreditCardTypeEnum)
-	for k, v := range mappingCreditCardTypeEnum {
-		mappingCreditCardTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreditCardTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreditCardTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

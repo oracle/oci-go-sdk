@@ -6,7 +6,7 @@ package apmcontrolplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -21,7 +21,7 @@ type GenerateDataKeysRequest struct {
 	// List of new Data Keys to be generated.
 	GenerateDataKeysListDetails []GenerateDataKeyDetails `contributesTo:"body"`
 
-	// The OCID of the APM domain
+	// The OCID of the APM domain.
 	ApmDomainId *string `mandatory:"true" contributesTo:"path" name:"apmDomainId"`
 
 	// For optimistic concurrency control. Set the `if-match` parameter

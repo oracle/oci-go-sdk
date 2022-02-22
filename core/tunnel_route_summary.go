@@ -15,26 +15,26 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
-// TunnelRouteSummary The routes advertised to the Customer and the routes received from the Customer
+// TunnelRouteSummary A summary of the routes advertised to and received from the on-premises network.
 type TunnelRouteSummary struct {
 
-	// BGP Network Layer Reachability Information
+	// The BGP network layer reachability information.
 	Prefix *string `mandatory:"false" json:"prefix"`
 
-	// The age of the route
+	// The age of the route.
 	Age *int64 `mandatory:"false" json:"age"`
 
-	// Is this the best route
+	// Indicates this is the best route.
 	IsBestPath *bool `mandatory:"false" json:"isBestPath"`
 
-	// List of ASNs in AS Path
+	// A list of ASNs in AS_Path.
 	AsPath []int `mandatory:"false" json:"asPath"`
 
-	// Route advertiser
+	// The source of the route advertisement.
 	Advertiser TunnelRouteSummaryAdvertiserEnum `mandatory:"false" json:"advertiser,omitempty"`
 }
 
@@ -71,6 +71,11 @@ var mappingTunnelRouteSummaryAdvertiserEnum = map[string]TunnelRouteSummaryAdver
 	"ORACLE":   TunnelRouteSummaryAdvertiserOracle,
 }
 
+var mappingTunnelRouteSummaryAdvertiserEnumLowerCase = map[string]TunnelRouteSummaryAdvertiserEnum{
+	"customer": TunnelRouteSummaryAdvertiserCustomer,
+	"oracle":   TunnelRouteSummaryAdvertiserOracle,
+}
+
 // GetTunnelRouteSummaryAdvertiserEnumValues Enumerates the set of values for TunnelRouteSummaryAdvertiserEnum
 func GetTunnelRouteSummaryAdvertiserEnumValues() []TunnelRouteSummaryAdvertiserEnum {
 	values := make([]TunnelRouteSummaryAdvertiserEnum, 0)
@@ -90,11 +95,6 @@ func GetTunnelRouteSummaryAdvertiserEnumStringValues() []string {
 
 // GetMappingTunnelRouteSummaryAdvertiserEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTunnelRouteSummaryAdvertiserEnum(val string) (TunnelRouteSummaryAdvertiserEnum, bool) {
-	mappingTunnelRouteSummaryAdvertiserEnumIgnoreCase := make(map[string]TunnelRouteSummaryAdvertiserEnum)
-	for k, v := range mappingTunnelRouteSummaryAdvertiserEnum {
-		mappingTunnelRouteSummaryAdvertiserEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTunnelRouteSummaryAdvertiserEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTunnelRouteSummaryAdvertiserEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

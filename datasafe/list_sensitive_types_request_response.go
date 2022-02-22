@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -185,6 +185,11 @@ var mappingListSensitiveTypesAccessLevelEnum = map[string]ListSensitiveTypesAcce
 	"ACCESSIBLE": ListSensitiveTypesAccessLevelAccessible,
 }
 
+var mappingListSensitiveTypesAccessLevelEnumLowerCase = map[string]ListSensitiveTypesAccessLevelEnum{
+	"restricted": ListSensitiveTypesAccessLevelRestricted,
+	"accessible": ListSensitiveTypesAccessLevelAccessible,
+}
+
 // GetListSensitiveTypesAccessLevelEnumValues Enumerates the set of values for ListSensitiveTypesAccessLevelEnum
 func GetListSensitiveTypesAccessLevelEnumValues() []ListSensitiveTypesAccessLevelEnum {
 	values := make([]ListSensitiveTypesAccessLevelEnum, 0)
@@ -204,12 +209,7 @@ func GetListSensitiveTypesAccessLevelEnumStringValues() []string {
 
 // GetMappingListSensitiveTypesAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSensitiveTypesAccessLevelEnum(val string) (ListSensitiveTypesAccessLevelEnum, bool) {
-	mappingListSensitiveTypesAccessLevelEnumIgnoreCase := make(map[string]ListSensitiveTypesAccessLevelEnum)
-	for k, v := range mappingListSensitiveTypesAccessLevelEnum {
-		mappingListSensitiveTypesAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSensitiveTypesAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSensitiveTypesAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -225,6 +225,11 @@ const (
 var mappingListSensitiveTypesSensitiveTypeSourceEnum = map[string]ListSensitiveTypesSensitiveTypeSourceEnum{
 	"ORACLE": ListSensitiveTypesSensitiveTypeSourceOracle,
 	"USER":   ListSensitiveTypesSensitiveTypeSourceUser,
+}
+
+var mappingListSensitiveTypesSensitiveTypeSourceEnumLowerCase = map[string]ListSensitiveTypesSensitiveTypeSourceEnum{
+	"oracle": ListSensitiveTypesSensitiveTypeSourceOracle,
+	"user":   ListSensitiveTypesSensitiveTypeSourceUser,
 }
 
 // GetListSensitiveTypesSensitiveTypeSourceEnumValues Enumerates the set of values for ListSensitiveTypesSensitiveTypeSourceEnum
@@ -246,12 +251,7 @@ func GetListSensitiveTypesSensitiveTypeSourceEnumStringValues() []string {
 
 // GetMappingListSensitiveTypesSensitiveTypeSourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSensitiveTypesSensitiveTypeSourceEnum(val string) (ListSensitiveTypesSensitiveTypeSourceEnum, bool) {
-	mappingListSensitiveTypesSensitiveTypeSourceEnumIgnoreCase := make(map[string]ListSensitiveTypesSensitiveTypeSourceEnum)
-	for k, v := range mappingListSensitiveTypesSensitiveTypeSourceEnum {
-		mappingListSensitiveTypesSensitiveTypeSourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSensitiveTypesSensitiveTypeSourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSensitiveTypesSensitiveTypeSourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -267,6 +267,11 @@ const (
 var mappingListSensitiveTypesEntityTypeEnum = map[string]ListSensitiveTypesEntityTypeEnum{
 	"SENSITIVE_TYPE":     ListSensitiveTypesEntityTypeType,
 	"SENSITIVE_CATEGORY": ListSensitiveTypesEntityTypeCategory,
+}
+
+var mappingListSensitiveTypesEntityTypeEnumLowerCase = map[string]ListSensitiveTypesEntityTypeEnum{
+	"sensitive_type":     ListSensitiveTypesEntityTypeType,
+	"sensitive_category": ListSensitiveTypesEntityTypeCategory,
 }
 
 // GetListSensitiveTypesEntityTypeEnumValues Enumerates the set of values for ListSensitiveTypesEntityTypeEnum
@@ -288,12 +293,7 @@ func GetListSensitiveTypesEntityTypeEnumStringValues() []string {
 
 // GetMappingListSensitiveTypesEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSensitiveTypesEntityTypeEnum(val string) (ListSensitiveTypesEntityTypeEnum, bool) {
-	mappingListSensitiveTypesEntityTypeEnumIgnoreCase := make(map[string]ListSensitiveTypesEntityTypeEnum)
-	for k, v := range mappingListSensitiveTypesEntityTypeEnum {
-		mappingListSensitiveTypesEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSensitiveTypesEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSensitiveTypesEntityTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -309,6 +309,11 @@ const (
 var mappingListSensitiveTypesSortOrderEnum = map[string]ListSensitiveTypesSortOrderEnum{
 	"ASC":  ListSensitiveTypesSortOrderAsc,
 	"DESC": ListSensitiveTypesSortOrderDesc,
+}
+
+var mappingListSensitiveTypesSortOrderEnumLowerCase = map[string]ListSensitiveTypesSortOrderEnum{
+	"asc":  ListSensitiveTypesSortOrderAsc,
+	"desc": ListSensitiveTypesSortOrderDesc,
 }
 
 // GetListSensitiveTypesSortOrderEnumValues Enumerates the set of values for ListSensitiveTypesSortOrderEnum
@@ -330,12 +335,7 @@ func GetListSensitiveTypesSortOrderEnumStringValues() []string {
 
 // GetMappingListSensitiveTypesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSensitiveTypesSortOrderEnum(val string) (ListSensitiveTypesSortOrderEnum, bool) {
-	mappingListSensitiveTypesSortOrderEnumIgnoreCase := make(map[string]ListSensitiveTypesSortOrderEnum)
-	for k, v := range mappingListSensitiveTypesSortOrderEnum {
-		mappingListSensitiveTypesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSensitiveTypesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSensitiveTypesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -351,6 +351,11 @@ const (
 var mappingListSensitiveTypesSortByEnum = map[string]ListSensitiveTypesSortByEnum{
 	"timeCreated": ListSensitiveTypesSortByTimecreated,
 	"displayName": ListSensitiveTypesSortByDisplayname,
+}
+
+var mappingListSensitiveTypesSortByEnumLowerCase = map[string]ListSensitiveTypesSortByEnum{
+	"timecreated": ListSensitiveTypesSortByTimecreated,
+	"displayname": ListSensitiveTypesSortByDisplayname,
 }
 
 // GetListSensitiveTypesSortByEnumValues Enumerates the set of values for ListSensitiveTypesSortByEnum
@@ -372,12 +377,7 @@ func GetListSensitiveTypesSortByEnumStringValues() []string {
 
 // GetMappingListSensitiveTypesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSensitiveTypesSortByEnum(val string) (ListSensitiveTypesSortByEnum, bool) {
-	mappingListSensitiveTypesSortByEnumIgnoreCase := make(map[string]ListSensitiveTypesSortByEnum)
-	for k, v := range mappingListSensitiveTypesSortByEnum {
-		mappingListSensitiveTypesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSensitiveTypesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSensitiveTypesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -403,6 +403,15 @@ var mappingListSensitiveTypesLifecycleStateEnum = map[string]ListSensitiveTypesL
 	"FAILED":   ListSensitiveTypesLifecycleStateFailed,
 }
 
+var mappingListSensitiveTypesLifecycleStateEnumLowerCase = map[string]ListSensitiveTypesLifecycleStateEnum{
+	"creating": ListSensitiveTypesLifecycleStateCreating,
+	"active":   ListSensitiveTypesLifecycleStateActive,
+	"updating": ListSensitiveTypesLifecycleStateUpdating,
+	"deleting": ListSensitiveTypesLifecycleStateDeleting,
+	"deleted":  ListSensitiveTypesLifecycleStateDeleted,
+	"failed":   ListSensitiveTypesLifecycleStateFailed,
+}
+
 // GetListSensitiveTypesLifecycleStateEnumValues Enumerates the set of values for ListSensitiveTypesLifecycleStateEnum
 func GetListSensitiveTypesLifecycleStateEnumValues() []ListSensitiveTypesLifecycleStateEnum {
 	values := make([]ListSensitiveTypesLifecycleStateEnum, 0)
@@ -426,11 +435,6 @@ func GetListSensitiveTypesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListSensitiveTypesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSensitiveTypesLifecycleStateEnum(val string) (ListSensitiveTypesLifecycleStateEnum, bool) {
-	mappingListSensitiveTypesLifecycleStateEnumIgnoreCase := make(map[string]ListSensitiveTypesLifecycleStateEnum)
-	for k, v := range mappingListSensitiveTypesLifecycleStateEnum {
-		mappingListSensitiveTypesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSensitiveTypesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSensitiveTypesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

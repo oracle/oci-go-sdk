@@ -11,7 +11,7 @@ package marketplace
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -111,6 +111,14 @@ var mappingPublicationLifecycleStateEnum = map[string]PublicationLifecycleStateE
 	"FAILED":   PublicationLifecycleStateFailed,
 }
 
+var mappingPublicationLifecycleStateEnumLowerCase = map[string]PublicationLifecycleStateEnum{
+	"creating": PublicationLifecycleStateCreating,
+	"active":   PublicationLifecycleStateActive,
+	"deleting": PublicationLifecycleStateDeleting,
+	"deleted":  PublicationLifecycleStateDeleted,
+	"failed":   PublicationLifecycleStateFailed,
+}
+
 // GetPublicationLifecycleStateEnumValues Enumerates the set of values for PublicationLifecycleStateEnum
 func GetPublicationLifecycleStateEnumValues() []PublicationLifecycleStateEnum {
 	values := make([]PublicationLifecycleStateEnum, 0)
@@ -133,11 +141,6 @@ func GetPublicationLifecycleStateEnumStringValues() []string {
 
 // GetMappingPublicationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPublicationLifecycleStateEnum(val string) (PublicationLifecycleStateEnum, bool) {
-	mappingPublicationLifecycleStateEnumIgnoreCase := make(map[string]PublicationLifecycleStateEnum)
-	for k, v := range mappingPublicationLifecycleStateEnum {
-		mappingPublicationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPublicationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPublicationLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

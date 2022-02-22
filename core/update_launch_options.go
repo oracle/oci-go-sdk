@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -95,6 +95,11 @@ var mappingUpdateLaunchOptionsBootVolumeTypeEnum = map[string]UpdateLaunchOption
 	"PARAVIRTUALIZED": UpdateLaunchOptionsBootVolumeTypeParavirtualized,
 }
 
+var mappingUpdateLaunchOptionsBootVolumeTypeEnumLowerCase = map[string]UpdateLaunchOptionsBootVolumeTypeEnum{
+	"iscsi":           UpdateLaunchOptionsBootVolumeTypeIscsi,
+	"paravirtualized": UpdateLaunchOptionsBootVolumeTypeParavirtualized,
+}
+
 // GetUpdateLaunchOptionsBootVolumeTypeEnumValues Enumerates the set of values for UpdateLaunchOptionsBootVolumeTypeEnum
 func GetUpdateLaunchOptionsBootVolumeTypeEnumValues() []UpdateLaunchOptionsBootVolumeTypeEnum {
 	values := make([]UpdateLaunchOptionsBootVolumeTypeEnum, 0)
@@ -114,12 +119,7 @@ func GetUpdateLaunchOptionsBootVolumeTypeEnumStringValues() []string {
 
 // GetMappingUpdateLaunchOptionsBootVolumeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateLaunchOptionsBootVolumeTypeEnum(val string) (UpdateLaunchOptionsBootVolumeTypeEnum, bool) {
-	mappingUpdateLaunchOptionsBootVolumeTypeEnumIgnoreCase := make(map[string]UpdateLaunchOptionsBootVolumeTypeEnum)
-	for k, v := range mappingUpdateLaunchOptionsBootVolumeTypeEnum {
-		mappingUpdateLaunchOptionsBootVolumeTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateLaunchOptionsBootVolumeTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateLaunchOptionsBootVolumeTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -135,6 +135,11 @@ const (
 var mappingUpdateLaunchOptionsNetworkTypeEnum = map[string]UpdateLaunchOptionsNetworkTypeEnum{
 	"VFIO":            UpdateLaunchOptionsNetworkTypeVfio,
 	"PARAVIRTUALIZED": UpdateLaunchOptionsNetworkTypeParavirtualized,
+}
+
+var mappingUpdateLaunchOptionsNetworkTypeEnumLowerCase = map[string]UpdateLaunchOptionsNetworkTypeEnum{
+	"vfio":            UpdateLaunchOptionsNetworkTypeVfio,
+	"paravirtualized": UpdateLaunchOptionsNetworkTypeParavirtualized,
 }
 
 // GetUpdateLaunchOptionsNetworkTypeEnumValues Enumerates the set of values for UpdateLaunchOptionsNetworkTypeEnum
@@ -156,11 +161,6 @@ func GetUpdateLaunchOptionsNetworkTypeEnumStringValues() []string {
 
 // GetMappingUpdateLaunchOptionsNetworkTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateLaunchOptionsNetworkTypeEnum(val string) (UpdateLaunchOptionsNetworkTypeEnum, bool) {
-	mappingUpdateLaunchOptionsNetworkTypeEnumIgnoreCase := make(map[string]UpdateLaunchOptionsNetworkTypeEnum)
-	for k, v := range mappingUpdateLaunchOptionsNetworkTypeEnum {
-		mappingUpdateLaunchOptionsNetworkTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateLaunchOptionsNetworkTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateLaunchOptionsNetworkTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -182,6 +182,15 @@ var mappingListTargetAlertPolicyAssociationsLifecycleStateEnum = map[string]List
 	"FAILED":   ListTargetAlertPolicyAssociationsLifecycleStateFailed,
 }
 
+var mappingListTargetAlertPolicyAssociationsLifecycleStateEnumLowerCase = map[string]ListTargetAlertPolicyAssociationsLifecycleStateEnum{
+	"creating": ListTargetAlertPolicyAssociationsLifecycleStateCreating,
+	"updating": ListTargetAlertPolicyAssociationsLifecycleStateUpdating,
+	"active":   ListTargetAlertPolicyAssociationsLifecycleStateActive,
+	"deleting": ListTargetAlertPolicyAssociationsLifecycleStateDeleting,
+	"deleted":  ListTargetAlertPolicyAssociationsLifecycleStateDeleted,
+	"failed":   ListTargetAlertPolicyAssociationsLifecycleStateFailed,
+}
+
 // GetListTargetAlertPolicyAssociationsLifecycleStateEnumValues Enumerates the set of values for ListTargetAlertPolicyAssociationsLifecycleStateEnum
 func GetListTargetAlertPolicyAssociationsLifecycleStateEnumValues() []ListTargetAlertPolicyAssociationsLifecycleStateEnum {
 	values := make([]ListTargetAlertPolicyAssociationsLifecycleStateEnum, 0)
@@ -205,12 +214,7 @@ func GetListTargetAlertPolicyAssociationsLifecycleStateEnumStringValues() []stri
 
 // GetMappingListTargetAlertPolicyAssociationsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTargetAlertPolicyAssociationsLifecycleStateEnum(val string) (ListTargetAlertPolicyAssociationsLifecycleStateEnum, bool) {
-	mappingListTargetAlertPolicyAssociationsLifecycleStateEnumIgnoreCase := make(map[string]ListTargetAlertPolicyAssociationsLifecycleStateEnum)
-	for k, v := range mappingListTargetAlertPolicyAssociationsLifecycleStateEnum {
-		mappingListTargetAlertPolicyAssociationsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTargetAlertPolicyAssociationsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTargetAlertPolicyAssociationsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -226,6 +230,11 @@ const (
 var mappingListTargetAlertPolicyAssociationsSortOrderEnum = map[string]ListTargetAlertPolicyAssociationsSortOrderEnum{
 	"ASC":  ListTargetAlertPolicyAssociationsSortOrderAsc,
 	"DESC": ListTargetAlertPolicyAssociationsSortOrderDesc,
+}
+
+var mappingListTargetAlertPolicyAssociationsSortOrderEnumLowerCase = map[string]ListTargetAlertPolicyAssociationsSortOrderEnum{
+	"asc":  ListTargetAlertPolicyAssociationsSortOrderAsc,
+	"desc": ListTargetAlertPolicyAssociationsSortOrderDesc,
 }
 
 // GetListTargetAlertPolicyAssociationsSortOrderEnumValues Enumerates the set of values for ListTargetAlertPolicyAssociationsSortOrderEnum
@@ -247,12 +256,7 @@ func GetListTargetAlertPolicyAssociationsSortOrderEnumStringValues() []string {
 
 // GetMappingListTargetAlertPolicyAssociationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTargetAlertPolicyAssociationsSortOrderEnum(val string) (ListTargetAlertPolicyAssociationsSortOrderEnum, bool) {
-	mappingListTargetAlertPolicyAssociationsSortOrderEnumIgnoreCase := make(map[string]ListTargetAlertPolicyAssociationsSortOrderEnum)
-	for k, v := range mappingListTargetAlertPolicyAssociationsSortOrderEnum {
-		mappingListTargetAlertPolicyAssociationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTargetAlertPolicyAssociationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTargetAlertPolicyAssociationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -268,6 +272,11 @@ const (
 var mappingListTargetAlertPolicyAssociationsSortByEnum = map[string]ListTargetAlertPolicyAssociationsSortByEnum{
 	"TIMECREATED": ListTargetAlertPolicyAssociationsSortByTimecreated,
 	"DISPLAYNAME": ListTargetAlertPolicyAssociationsSortByDisplayname,
+}
+
+var mappingListTargetAlertPolicyAssociationsSortByEnumLowerCase = map[string]ListTargetAlertPolicyAssociationsSortByEnum{
+	"timecreated": ListTargetAlertPolicyAssociationsSortByTimecreated,
+	"displayname": ListTargetAlertPolicyAssociationsSortByDisplayname,
 }
 
 // GetListTargetAlertPolicyAssociationsSortByEnumValues Enumerates the set of values for ListTargetAlertPolicyAssociationsSortByEnum
@@ -289,12 +298,7 @@ func GetListTargetAlertPolicyAssociationsSortByEnumStringValues() []string {
 
 // GetMappingListTargetAlertPolicyAssociationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTargetAlertPolicyAssociationsSortByEnum(val string) (ListTargetAlertPolicyAssociationsSortByEnum, bool) {
-	mappingListTargetAlertPolicyAssociationsSortByEnumIgnoreCase := make(map[string]ListTargetAlertPolicyAssociationsSortByEnum)
-	for k, v := range mappingListTargetAlertPolicyAssociationsSortByEnum {
-		mappingListTargetAlertPolicyAssociationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTargetAlertPolicyAssociationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTargetAlertPolicyAssociationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -310,6 +314,11 @@ const (
 var mappingListTargetAlertPolicyAssociationsAccessLevelEnum = map[string]ListTargetAlertPolicyAssociationsAccessLevelEnum{
 	"RESTRICTED": ListTargetAlertPolicyAssociationsAccessLevelRestricted,
 	"ACCESSIBLE": ListTargetAlertPolicyAssociationsAccessLevelAccessible,
+}
+
+var mappingListTargetAlertPolicyAssociationsAccessLevelEnumLowerCase = map[string]ListTargetAlertPolicyAssociationsAccessLevelEnum{
+	"restricted": ListTargetAlertPolicyAssociationsAccessLevelRestricted,
+	"accessible": ListTargetAlertPolicyAssociationsAccessLevelAccessible,
 }
 
 // GetListTargetAlertPolicyAssociationsAccessLevelEnumValues Enumerates the set of values for ListTargetAlertPolicyAssociationsAccessLevelEnum
@@ -331,11 +340,6 @@ func GetListTargetAlertPolicyAssociationsAccessLevelEnumStringValues() []string 
 
 // GetMappingListTargetAlertPolicyAssociationsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTargetAlertPolicyAssociationsAccessLevelEnum(val string) (ListTargetAlertPolicyAssociationsAccessLevelEnum, bool) {
-	mappingListTargetAlertPolicyAssociationsAccessLevelEnumIgnoreCase := make(map[string]ListTargetAlertPolicyAssociationsAccessLevelEnum)
-	for k, v := range mappingListTargetAlertPolicyAssociationsAccessLevelEnum {
-		mappingListTargetAlertPolicyAssociationsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTargetAlertPolicyAssociationsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTargetAlertPolicyAssociationsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

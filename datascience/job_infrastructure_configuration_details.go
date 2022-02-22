@@ -12,7 +12,7 @@ package datascience
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum = map[
 	"STANDALONE": JobInfrastructureConfigurationDetailsJobInfrastructureTypeStandalone,
 }
 
+var mappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnumLowerCase = map[string]JobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum{
+	"standalone": JobInfrastructureConfigurationDetailsJobInfrastructureTypeStandalone,
+}
+
 // GetJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnumValues Enumerates the set of values for JobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum
 func GetJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnumValues() []JobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum {
 	values := make([]JobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnumStringValu
 
 // GetMappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum(val string) (JobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum, bool) {
-	mappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnumIgnoreCase := make(map[string]JobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum)
-	for k, v := range mappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum {
-		mappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

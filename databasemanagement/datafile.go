@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -114,6 +114,14 @@ var mappingDatafileStatusEnum = map[string]DatafileStatusEnum{
 	"UNKNOWN":   DatafileStatusUnknown,
 }
 
+var mappingDatafileStatusEnumLowerCase = map[string]DatafileStatusEnum{
+	"available": DatafileStatusAvailable,
+	"invalid":   DatafileStatusInvalid,
+	"offline":   DatafileStatusOffline,
+	"online":    DatafileStatusOnline,
+	"unknown":   DatafileStatusUnknown,
+}
+
 // GetDatafileStatusEnumValues Enumerates the set of values for DatafileStatusEnum
 func GetDatafileStatusEnumValues() []DatafileStatusEnum {
 	values := make([]DatafileStatusEnum, 0)
@@ -136,12 +144,7 @@ func GetDatafileStatusEnumStringValues() []string {
 
 // GetMappingDatafileStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatafileStatusEnum(val string) (DatafileStatusEnum, bool) {
-	mappingDatafileStatusEnumIgnoreCase := make(map[string]DatafileStatusEnum)
-	for k, v := range mappingDatafileStatusEnum {
-		mappingDatafileStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatafileStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatafileStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -163,6 +166,14 @@ var mappingDatafileOnlineStatusEnum = map[string]DatafileOnlineStatusEnum{
 	"OFFLINE": DatafileOnlineStatusOffline,
 	"ONLINE":  DatafileOnlineStatusOnline,
 	"RECOVER": DatafileOnlineStatusRecover,
+}
+
+var mappingDatafileOnlineStatusEnumLowerCase = map[string]DatafileOnlineStatusEnum{
+	"sysoff":  DatafileOnlineStatusSysoff,
+	"system":  DatafileOnlineStatusSystem,
+	"offline": DatafileOnlineStatusOffline,
+	"online":  DatafileOnlineStatusOnline,
+	"recover": DatafileOnlineStatusRecover,
 }
 
 // GetDatafileOnlineStatusEnumValues Enumerates the set of values for DatafileOnlineStatusEnum
@@ -187,12 +198,7 @@ func GetDatafileOnlineStatusEnumStringValues() []string {
 
 // GetMappingDatafileOnlineStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatafileOnlineStatusEnum(val string) (DatafileOnlineStatusEnum, bool) {
-	mappingDatafileOnlineStatusEnumIgnoreCase := make(map[string]DatafileOnlineStatusEnum)
-	for k, v := range mappingDatafileOnlineStatusEnum {
-		mappingDatafileOnlineStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatafileOnlineStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatafileOnlineStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -210,6 +216,12 @@ var mappingDatafileLostWriteProtectEnum = map[string]DatafileLostWriteProtectEnu
 	"ENABLED":     DatafileLostWriteProtectEnabled,
 	"PROTECT_OFF": DatafileLostWriteProtectProtectOff,
 	"SUSPEND":     DatafileLostWriteProtectSuspend,
+}
+
+var mappingDatafileLostWriteProtectEnumLowerCase = map[string]DatafileLostWriteProtectEnum{
+	"enabled":     DatafileLostWriteProtectEnabled,
+	"protect_off": DatafileLostWriteProtectProtectOff,
+	"suspend":     DatafileLostWriteProtectSuspend,
 }
 
 // GetDatafileLostWriteProtectEnumValues Enumerates the set of values for DatafileLostWriteProtectEnum
@@ -232,12 +244,7 @@ func GetDatafileLostWriteProtectEnumStringValues() []string {
 
 // GetMappingDatafileLostWriteProtectEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatafileLostWriteProtectEnum(val string) (DatafileLostWriteProtectEnum, bool) {
-	mappingDatafileLostWriteProtectEnumIgnoreCase := make(map[string]DatafileLostWriteProtectEnum)
-	for k, v := range mappingDatafileLostWriteProtectEnum {
-		mappingDatafileLostWriteProtectEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatafileLostWriteProtectEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatafileLostWriteProtectEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -255,6 +262,12 @@ var mappingDatafileSharedEnum = map[string]DatafileSharedEnum{
 	"SHARED":        DatafileSharedShared,
 	"LOCAL_FOR_RIM": DatafileSharedLocalForRim,
 	"LOCAL_FOR_ALL": DatafileSharedLocalForAll,
+}
+
+var mappingDatafileSharedEnumLowerCase = map[string]DatafileSharedEnum{
+	"shared":        DatafileSharedShared,
+	"local_for_rim": DatafileSharedLocalForRim,
+	"local_for_all": DatafileSharedLocalForAll,
 }
 
 // GetDatafileSharedEnumValues Enumerates the set of values for DatafileSharedEnum
@@ -277,11 +290,6 @@ func GetDatafileSharedEnumStringValues() []string {
 
 // GetMappingDatafileSharedEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatafileSharedEnum(val string) (DatafileSharedEnum, bool) {
-	mappingDatafileSharedEnumIgnoreCase := make(map[string]DatafileSharedEnum)
-	for k, v := range mappingDatafileSharedEnum {
-		mappingDatafileSharedEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatafileSharedEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatafileSharedEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package osubbillingschedule
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -136,6 +136,11 @@ var mappingListBillingSchedulesSortOrderEnum = map[string]ListBillingSchedulesSo
 	"DESC": ListBillingSchedulesSortOrderDesc,
 }
 
+var mappingListBillingSchedulesSortOrderEnumLowerCase = map[string]ListBillingSchedulesSortOrderEnum{
+	"asc":  ListBillingSchedulesSortOrderAsc,
+	"desc": ListBillingSchedulesSortOrderDesc,
+}
+
 // GetListBillingSchedulesSortOrderEnumValues Enumerates the set of values for ListBillingSchedulesSortOrderEnum
 func GetListBillingSchedulesSortOrderEnumValues() []ListBillingSchedulesSortOrderEnum {
 	values := make([]ListBillingSchedulesSortOrderEnum, 0)
@@ -155,12 +160,7 @@ func GetListBillingSchedulesSortOrderEnumStringValues() []string {
 
 // GetMappingListBillingSchedulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBillingSchedulesSortOrderEnum(val string) (ListBillingSchedulesSortOrderEnum, bool) {
-	mappingListBillingSchedulesSortOrderEnumIgnoreCase := make(map[string]ListBillingSchedulesSortOrderEnum)
-	for k, v := range mappingListBillingSchedulesSortOrderEnum {
-		mappingListBillingSchedulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBillingSchedulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBillingSchedulesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -176,6 +176,11 @@ const (
 var mappingListBillingSchedulesSortByEnum = map[string]ListBillingSchedulesSortByEnum{
 	"ORDERNUMBER":   ListBillingSchedulesSortByOrdernumber,
 	"TIMEINVOICING": ListBillingSchedulesSortByTimeinvoicing,
+}
+
+var mappingListBillingSchedulesSortByEnumLowerCase = map[string]ListBillingSchedulesSortByEnum{
+	"ordernumber":   ListBillingSchedulesSortByOrdernumber,
+	"timeinvoicing": ListBillingSchedulesSortByTimeinvoicing,
 }
 
 // GetListBillingSchedulesSortByEnumValues Enumerates the set of values for ListBillingSchedulesSortByEnum
@@ -197,11 +202,6 @@ func GetListBillingSchedulesSortByEnumStringValues() []string {
 
 // GetMappingListBillingSchedulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBillingSchedulesSortByEnum(val string) (ListBillingSchedulesSortByEnum, bool) {
-	mappingListBillingSchedulesSortByEnumIgnoreCase := make(map[string]ListBillingSchedulesSortByEnum)
-	for k, v := range mappingListBillingSchedulesSortByEnum {
-		mappingListBillingSchedulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBillingSchedulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBillingSchedulesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

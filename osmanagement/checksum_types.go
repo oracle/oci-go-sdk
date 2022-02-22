@@ -32,6 +32,13 @@ var mappingChecksumTypesEnum = map[string]ChecksumTypesEnum{
 	"SHA512": ChecksumTypesSha512,
 }
 
+var mappingChecksumTypesEnumLowerCase = map[string]ChecksumTypesEnum{
+	"sha1":   ChecksumTypesSha1,
+	"sha256": ChecksumTypesSha256,
+	"sha384": ChecksumTypesSha384,
+	"sha512": ChecksumTypesSha512,
+}
+
 // GetChecksumTypesEnumValues Enumerates the set of values for ChecksumTypesEnum
 func GetChecksumTypesEnumValues() []ChecksumTypesEnum {
 	values := make([]ChecksumTypesEnum, 0)
@@ -53,11 +60,6 @@ func GetChecksumTypesEnumStringValues() []string {
 
 // GetMappingChecksumTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingChecksumTypesEnum(val string) (ChecksumTypesEnum, bool) {
-	mappingChecksumTypesEnumIgnoreCase := make(map[string]ChecksumTypesEnum)
-	for k, v := range mappingChecksumTypesEnum {
-		mappingChecksumTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingChecksumTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingChecksumTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

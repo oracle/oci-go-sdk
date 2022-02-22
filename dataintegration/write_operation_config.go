@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -174,6 +174,13 @@ var mappingWriteOperationConfigWriteModeEnum = map[string]WriteOperationConfigWr
 	"IGNORE":    WriteOperationConfigWriteModeIgnore,
 }
 
+var mappingWriteOperationConfigWriteModeEnumLowerCase = map[string]WriteOperationConfigWriteModeEnum{
+	"overwrite": WriteOperationConfigWriteModeOverwrite,
+	"append":    WriteOperationConfigWriteModeAppend,
+	"merge":     WriteOperationConfigWriteModeMerge,
+	"ignore":    WriteOperationConfigWriteModeIgnore,
+}
+
 // GetWriteOperationConfigWriteModeEnumValues Enumerates the set of values for WriteOperationConfigWriteModeEnum
 func GetWriteOperationConfigWriteModeEnumValues() []WriteOperationConfigWriteModeEnum {
 	values := make([]WriteOperationConfigWriteModeEnum, 0)
@@ -195,11 +202,6 @@ func GetWriteOperationConfigWriteModeEnumStringValues() []string {
 
 // GetMappingWriteOperationConfigWriteModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWriteOperationConfigWriteModeEnum(val string) (WriteOperationConfigWriteModeEnum, bool) {
-	mappingWriteOperationConfigWriteModeEnumIgnoreCase := make(map[string]WriteOperationConfigWriteModeEnum)
-	for k, v := range mappingWriteOperationConfigWriteModeEnum {
-		mappingWriteOperationConfigWriteModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWriteOperationConfigWriteModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWriteOperationConfigWriteModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

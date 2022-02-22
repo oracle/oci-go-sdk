@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -262,6 +262,52 @@ var mappingListCustomPropertiesTypeNameEnum = map[string]ListCustomPropertiesTyp
 	"UNRECOGNIZED_FILE":                    ListCustomPropertiesTypeNameUnrecognizedFile,
 }
 
+var mappingListCustomPropertiesTypeNameEnumLowerCase = map[string]ListCustomPropertiesTypeNameEnum{
+	"data_asset":                           ListCustomPropertiesTypeNameDataAsset,
+	"autonomous_data_warehouse":            ListCustomPropertiesTypeNameAutonomousDataWarehouse,
+	"hive":                                 ListCustomPropertiesTypeNameHive,
+	"kafka":                                ListCustomPropertiesTypeNameKafka,
+	"mysql":                                ListCustomPropertiesTypeNameMysql,
+	"oracle_object_storage":                ListCustomPropertiesTypeNameOracleObjectStorage,
+	"autonomous_transaction_processing":    ListCustomPropertiesTypeNameAutonomousTransactionProcessing,
+	"oracle":                               ListCustomPropertiesTypeNameOracle,
+	"postgresql":                           ListCustomPropertiesTypeNamePostgresql,
+	"microsoft_azure_sql_database":         ListCustomPropertiesTypeNameMicrosoftAzureSqlDatabase,
+	"microsoft_sql_server":                 ListCustomPropertiesTypeNameMicrosoftSqlServer,
+	"ibm_db2":                              ListCustomPropertiesTypeNameIbmDb2,
+	"data_entity":                          ListCustomPropertiesTypeNameDataEntity,
+	"logical_entity":                       ListCustomPropertiesTypeNameLogicalEntity,
+	"table":                                ListCustomPropertiesTypeNameTable,
+	"view":                                 ListCustomPropertiesTypeNameView,
+	"attribute":                            ListCustomPropertiesTypeNameAttribute,
+	"folder":                               ListCustomPropertiesTypeNameFolder,
+	"oracle_analytics_subject_area_column": ListCustomPropertiesTypeNameOracleAnalyticsSubjectAreaColumn,
+	"oracle_analytics_logical_column":      ListCustomPropertiesTypeNameOracleAnalyticsLogicalColumn,
+	"oracle_analytics_physical_column":     ListCustomPropertiesTypeNameOracleAnalyticsPhysicalColumn,
+	"oracle_analytics_analysis_column":     ListCustomPropertiesTypeNameOracleAnalyticsAnalysisColumn,
+	"oracle_analytics_server":              ListCustomPropertiesTypeNameOracleAnalyticsServer,
+	"oracle_analytics_cloud":               ListCustomPropertiesTypeNameOracleAnalyticsCloud,
+	"oracle_analytics_subject_area":        ListCustomPropertiesTypeNameOracleAnalyticsSubjectArea,
+	"oracle_analytics_dashboard":           ListCustomPropertiesTypeNameOracleAnalyticsDashboard,
+	"oracle_analytics_business_model":      ListCustomPropertiesTypeNameOracleAnalyticsBusinessModel,
+	"oracle_analytics_physical_database":   ListCustomPropertiesTypeNameOracleAnalyticsPhysicalDatabase,
+	"oracle_analytics_physical_schema":     ListCustomPropertiesTypeNameOracleAnalyticsPhysicalSchema,
+	"oracle_analytics_presentation_table":  ListCustomPropertiesTypeNameOracleAnalyticsPresentationTable,
+	"oracle_analytics_logical_table":       ListCustomPropertiesTypeNameOracleAnalyticsLogicalTable,
+	"oracle_analytics_physical_table":      ListCustomPropertiesTypeNameOracleAnalyticsPhysicalTable,
+	"oracle_analytics_analysis":            ListCustomPropertiesTypeNameOracleAnalyticsAnalysis,
+	"database_schema":                      ListCustomPropertiesTypeNameDatabaseSchema,
+	"topic":                                ListCustomPropertiesTypeNameTopic,
+	"connection":                           ListCustomPropertiesTypeNameConnection,
+	"glossary":                             ListCustomPropertiesTypeNameGlossary,
+	"term":                                 ListCustomPropertiesTypeNameTerm,
+	"category":                             ListCustomPropertiesTypeNameCategory,
+	"file":                                 ListCustomPropertiesTypeNameFile,
+	"bucket":                               ListCustomPropertiesTypeNameBucket,
+	"message":                              ListCustomPropertiesTypeNameMessage,
+	"unrecognized_file":                    ListCustomPropertiesTypeNameUnrecognizedFile,
+}
+
 // GetListCustomPropertiesTypeNameEnumValues Enumerates the set of values for ListCustomPropertiesTypeNameEnum
 func GetListCustomPropertiesTypeNameEnumValues() []ListCustomPropertiesTypeNameEnum {
 	values := make([]ListCustomPropertiesTypeNameEnum, 0)
@@ -322,12 +368,7 @@ func GetListCustomPropertiesTypeNameEnumStringValues() []string {
 
 // GetMappingListCustomPropertiesTypeNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCustomPropertiesTypeNameEnum(val string) (ListCustomPropertiesTypeNameEnum, bool) {
-	mappingListCustomPropertiesTypeNameEnumIgnoreCase := make(map[string]ListCustomPropertiesTypeNameEnum)
-	for k, v := range mappingListCustomPropertiesTypeNameEnum {
-		mappingListCustomPropertiesTypeNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCustomPropertiesTypeNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCustomPropertiesTypeNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -357,6 +398,17 @@ var mappingListCustomPropertiesLifecycleStateEnum = map[string]ListCustomPropert
 	"MOVING":   ListCustomPropertiesLifecycleStateMoving,
 }
 
+var mappingListCustomPropertiesLifecycleStateEnumLowerCase = map[string]ListCustomPropertiesLifecycleStateEnum{
+	"creating": ListCustomPropertiesLifecycleStateCreating,
+	"active":   ListCustomPropertiesLifecycleStateActive,
+	"inactive": ListCustomPropertiesLifecycleStateInactive,
+	"updating": ListCustomPropertiesLifecycleStateUpdating,
+	"deleting": ListCustomPropertiesLifecycleStateDeleting,
+	"deleted":  ListCustomPropertiesLifecycleStateDeleted,
+	"failed":   ListCustomPropertiesLifecycleStateFailed,
+	"moving":   ListCustomPropertiesLifecycleStateMoving,
+}
+
 // GetListCustomPropertiesLifecycleStateEnumValues Enumerates the set of values for ListCustomPropertiesLifecycleStateEnum
 func GetListCustomPropertiesLifecycleStateEnumValues() []ListCustomPropertiesLifecycleStateEnum {
 	values := make([]ListCustomPropertiesLifecycleStateEnum, 0)
@@ -382,12 +434,7 @@ func GetListCustomPropertiesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListCustomPropertiesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCustomPropertiesLifecycleStateEnum(val string) (ListCustomPropertiesLifecycleStateEnum, bool) {
-	mappingListCustomPropertiesLifecycleStateEnumIgnoreCase := make(map[string]ListCustomPropertiesLifecycleStateEnum)
-	for k, v := range mappingListCustomPropertiesLifecycleStateEnum {
-		mappingListCustomPropertiesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCustomPropertiesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCustomPropertiesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -415,6 +462,16 @@ var mappingListCustomPropertiesFieldsEnum = map[string]ListCustomPropertiesField
 	"timeCreated":    ListCustomPropertiesFieldsTimecreated,
 }
 
+var mappingListCustomPropertiesFieldsEnumLowerCase = map[string]ListCustomPropertiesFieldsEnum{
+	"key":            ListCustomPropertiesFieldsKey,
+	"displayname":    ListCustomPropertiesFieldsDisplayname,
+	"description":    ListCustomPropertiesFieldsDescription,
+	"datatype":       ListCustomPropertiesFieldsDatatype,
+	"namespacename":  ListCustomPropertiesFieldsNamespacename,
+	"lifecyclestate": ListCustomPropertiesFieldsLifecyclestate,
+	"timecreated":    ListCustomPropertiesFieldsTimecreated,
+}
+
 // GetListCustomPropertiesFieldsEnumValues Enumerates the set of values for ListCustomPropertiesFieldsEnum
 func GetListCustomPropertiesFieldsEnumValues() []ListCustomPropertiesFieldsEnum {
 	values := make([]ListCustomPropertiesFieldsEnum, 0)
@@ -439,12 +496,7 @@ func GetListCustomPropertiesFieldsEnumStringValues() []string {
 
 // GetMappingListCustomPropertiesFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCustomPropertiesFieldsEnum(val string) (ListCustomPropertiesFieldsEnum, bool) {
-	mappingListCustomPropertiesFieldsEnumIgnoreCase := make(map[string]ListCustomPropertiesFieldsEnum)
-	for k, v := range mappingListCustomPropertiesFieldsEnum {
-		mappingListCustomPropertiesFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCustomPropertiesFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCustomPropertiesFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -460,6 +512,11 @@ const (
 var mappingListCustomPropertiesSortOrderEnum = map[string]ListCustomPropertiesSortOrderEnum{
 	"ASC":  ListCustomPropertiesSortOrderAsc,
 	"DESC": ListCustomPropertiesSortOrderDesc,
+}
+
+var mappingListCustomPropertiesSortOrderEnumLowerCase = map[string]ListCustomPropertiesSortOrderEnum{
+	"asc":  ListCustomPropertiesSortOrderAsc,
+	"desc": ListCustomPropertiesSortOrderDesc,
 }
 
 // GetListCustomPropertiesSortOrderEnumValues Enumerates the set of values for ListCustomPropertiesSortOrderEnum
@@ -481,12 +538,7 @@ func GetListCustomPropertiesSortOrderEnumStringValues() []string {
 
 // GetMappingListCustomPropertiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCustomPropertiesSortOrderEnum(val string) (ListCustomPropertiesSortOrderEnum, bool) {
-	mappingListCustomPropertiesSortOrderEnumIgnoreCase := make(map[string]ListCustomPropertiesSortOrderEnum)
-	for k, v := range mappingListCustomPropertiesSortOrderEnum {
-		mappingListCustomPropertiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCustomPropertiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCustomPropertiesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -502,6 +554,11 @@ const (
 var mappingListCustomPropertiesSortByEnum = map[string]ListCustomPropertiesSortByEnum{
 	"DISPLAYNAME": ListCustomPropertiesSortByDisplayname,
 	"USAGECOUNT":  ListCustomPropertiesSortByUsagecount,
+}
+
+var mappingListCustomPropertiesSortByEnumLowerCase = map[string]ListCustomPropertiesSortByEnum{
+	"displayname": ListCustomPropertiesSortByDisplayname,
+	"usagecount":  ListCustomPropertiesSortByUsagecount,
 }
 
 // GetListCustomPropertiesSortByEnumValues Enumerates the set of values for ListCustomPropertiesSortByEnum
@@ -523,11 +580,6 @@ func GetListCustomPropertiesSortByEnumStringValues() []string {
 
 // GetMappingListCustomPropertiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCustomPropertiesSortByEnum(val string) (ListCustomPropertiesSortByEnum, bool) {
-	mappingListCustomPropertiesSortByEnumIgnoreCase := make(map[string]ListCustomPropertiesSortByEnum)
-	for k, v := range mappingListCustomPropertiesSortByEnum {
-		mappingListCustomPropertiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCustomPropertiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCustomPropertiesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

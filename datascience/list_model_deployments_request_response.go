@@ -6,7 +6,7 @@ package datascience
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -167,6 +167,17 @@ var mappingListModelDeploymentsLifecycleStateEnum = map[string]ListModelDeployme
 	"NEEDS_ATTENTION": ListModelDeploymentsLifecycleStateNeedsAttention,
 }
 
+var mappingListModelDeploymentsLifecycleStateEnumLowerCase = map[string]ListModelDeploymentsLifecycleStateEnum{
+	"creating":        ListModelDeploymentsLifecycleStateCreating,
+	"active":          ListModelDeploymentsLifecycleStateActive,
+	"deleting":        ListModelDeploymentsLifecycleStateDeleting,
+	"failed":          ListModelDeploymentsLifecycleStateFailed,
+	"inactive":        ListModelDeploymentsLifecycleStateInactive,
+	"updating":        ListModelDeploymentsLifecycleStateUpdating,
+	"deleted":         ListModelDeploymentsLifecycleStateDeleted,
+	"needs_attention": ListModelDeploymentsLifecycleStateNeedsAttention,
+}
+
 // GetListModelDeploymentsLifecycleStateEnumValues Enumerates the set of values for ListModelDeploymentsLifecycleStateEnum
 func GetListModelDeploymentsLifecycleStateEnumValues() []ListModelDeploymentsLifecycleStateEnum {
 	values := make([]ListModelDeploymentsLifecycleStateEnum, 0)
@@ -192,12 +203,7 @@ func GetListModelDeploymentsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListModelDeploymentsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListModelDeploymentsLifecycleStateEnum(val string) (ListModelDeploymentsLifecycleStateEnum, bool) {
-	mappingListModelDeploymentsLifecycleStateEnumIgnoreCase := make(map[string]ListModelDeploymentsLifecycleStateEnum)
-	for k, v := range mappingListModelDeploymentsLifecycleStateEnum {
-		mappingListModelDeploymentsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListModelDeploymentsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListModelDeploymentsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -213,6 +219,11 @@ const (
 var mappingListModelDeploymentsSortOrderEnum = map[string]ListModelDeploymentsSortOrderEnum{
 	"ASC":  ListModelDeploymentsSortOrderAsc,
 	"DESC": ListModelDeploymentsSortOrderDesc,
+}
+
+var mappingListModelDeploymentsSortOrderEnumLowerCase = map[string]ListModelDeploymentsSortOrderEnum{
+	"asc":  ListModelDeploymentsSortOrderAsc,
+	"desc": ListModelDeploymentsSortOrderDesc,
 }
 
 // GetListModelDeploymentsSortOrderEnumValues Enumerates the set of values for ListModelDeploymentsSortOrderEnum
@@ -234,12 +245,7 @@ func GetListModelDeploymentsSortOrderEnumStringValues() []string {
 
 // GetMappingListModelDeploymentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListModelDeploymentsSortOrderEnum(val string) (ListModelDeploymentsSortOrderEnum, bool) {
-	mappingListModelDeploymentsSortOrderEnumIgnoreCase := make(map[string]ListModelDeploymentsSortOrderEnum)
-	for k, v := range mappingListModelDeploymentsSortOrderEnum {
-		mappingListModelDeploymentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListModelDeploymentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListModelDeploymentsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -255,6 +261,11 @@ const (
 var mappingListModelDeploymentsSortByEnum = map[string]ListModelDeploymentsSortByEnum{
 	"timeCreated": ListModelDeploymentsSortByTimecreated,
 	"displayName": ListModelDeploymentsSortByDisplayname,
+}
+
+var mappingListModelDeploymentsSortByEnumLowerCase = map[string]ListModelDeploymentsSortByEnum{
+	"timecreated": ListModelDeploymentsSortByTimecreated,
+	"displayname": ListModelDeploymentsSortByDisplayname,
 }
 
 // GetListModelDeploymentsSortByEnumValues Enumerates the set of values for ListModelDeploymentsSortByEnum
@@ -276,11 +287,6 @@ func GetListModelDeploymentsSortByEnumStringValues() []string {
 
 // GetMappingListModelDeploymentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListModelDeploymentsSortByEnum(val string) (ListModelDeploymentsSortByEnum, bool) {
-	mappingListModelDeploymentsSortByEnumIgnoreCase := make(map[string]ListModelDeploymentsSortByEnum)
-	for k, v := range mappingListModelDeploymentsSortByEnum {
-		mappingListModelDeploymentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListModelDeploymentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListModelDeploymentsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

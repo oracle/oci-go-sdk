@@ -33,6 +33,13 @@ var mappingExadataRackTypeEnum = map[string]ExadataRackTypeEnum{
 	"EIGHTH":  ExadataRackTypeEighth,
 }
 
+var mappingExadataRackTypeEnumLowerCase = map[string]ExadataRackTypeEnum{
+	"full":    ExadataRackTypeFull,
+	"half":    ExadataRackTypeHalf,
+	"quarter": ExadataRackTypeQuarter,
+	"eighth":  ExadataRackTypeEighth,
+}
+
 // GetExadataRackTypeEnumValues Enumerates the set of values for ExadataRackTypeEnum
 func GetExadataRackTypeEnumValues() []ExadataRackTypeEnum {
 	values := make([]ExadataRackTypeEnum, 0)
@@ -54,11 +61,6 @@ func GetExadataRackTypeEnumStringValues() []string {
 
 // GetMappingExadataRackTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExadataRackTypeEnum(val string) (ExadataRackTypeEnum, bool) {
-	mappingExadataRackTypeEnumIgnoreCase := make(map[string]ExadataRackTypeEnum)
-	for k, v := range mappingExadataRackTypeEnum {
-		mappingExadataRackTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExadataRackTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExadataRackTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

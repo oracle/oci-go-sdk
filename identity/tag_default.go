@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -92,6 +92,10 @@ var mappingTagDefaultLifecycleStateEnum = map[string]TagDefaultLifecycleStateEnu
 	"ACTIVE": TagDefaultLifecycleStateActive,
 }
 
+var mappingTagDefaultLifecycleStateEnumLowerCase = map[string]TagDefaultLifecycleStateEnum{
+	"active": TagDefaultLifecycleStateActive,
+}
+
 // GetTagDefaultLifecycleStateEnumValues Enumerates the set of values for TagDefaultLifecycleStateEnum
 func GetTagDefaultLifecycleStateEnumValues() []TagDefaultLifecycleStateEnum {
 	values := make([]TagDefaultLifecycleStateEnum, 0)
@@ -110,11 +114,6 @@ func GetTagDefaultLifecycleStateEnumStringValues() []string {
 
 // GetMappingTagDefaultLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTagDefaultLifecycleStateEnum(val string) (TagDefaultLifecycleStateEnum, bool) {
-	mappingTagDefaultLifecycleStateEnumIgnoreCase := make(map[string]TagDefaultLifecycleStateEnum)
-	for k, v := range mappingTagDefaultLifecycleStateEnum {
-		mappingTagDefaultLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTagDefaultLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTagDefaultLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

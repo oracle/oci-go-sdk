@@ -12,7 +12,7 @@ package secrets
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -141,6 +141,14 @@ var mappingSecretBundleStagesEnum = map[string]SecretBundleStagesEnum{
 	"DEPRECATED": SecretBundleStagesDeprecated,
 }
 
+var mappingSecretBundleStagesEnumLowerCase = map[string]SecretBundleStagesEnum{
+	"current":    SecretBundleStagesCurrent,
+	"pending":    SecretBundleStagesPending,
+	"latest":     SecretBundleStagesLatest,
+	"previous":   SecretBundleStagesPrevious,
+	"deprecated": SecretBundleStagesDeprecated,
+}
+
 // GetSecretBundleStagesEnumValues Enumerates the set of values for SecretBundleStagesEnum
 func GetSecretBundleStagesEnumValues() []SecretBundleStagesEnum {
 	values := make([]SecretBundleStagesEnum, 0)
@@ -163,11 +171,6 @@ func GetSecretBundleStagesEnumStringValues() []string {
 
 // GetMappingSecretBundleStagesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSecretBundleStagesEnum(val string) (SecretBundleStagesEnum, bool) {
-	mappingSecretBundleStagesEnumIgnoreCase := make(map[string]SecretBundleStagesEnum)
-	for k, v := range mappingSecretBundleStagesEnum {
-		mappingSecretBundleStagesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSecretBundleStagesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSecretBundleStagesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

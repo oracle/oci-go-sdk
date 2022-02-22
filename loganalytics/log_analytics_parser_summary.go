@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -154,6 +154,14 @@ var mappingLogAnalyticsParserSummaryTypeEnum = map[string]LogAnalyticsParserSumm
 	"DELIMITED": LogAnalyticsParserSummaryTypeDelimited,
 }
 
+var mappingLogAnalyticsParserSummaryTypeEnumLowerCase = map[string]LogAnalyticsParserSummaryTypeEnum{
+	"xml":       LogAnalyticsParserSummaryTypeXml,
+	"json":      LogAnalyticsParserSummaryTypeJson,
+	"regex":     LogAnalyticsParserSummaryTypeRegex,
+	"odl":       LogAnalyticsParserSummaryTypeOdl,
+	"delimited": LogAnalyticsParserSummaryTypeDelimited,
+}
+
 // GetLogAnalyticsParserSummaryTypeEnumValues Enumerates the set of values for LogAnalyticsParserSummaryTypeEnum
 func GetLogAnalyticsParserSummaryTypeEnumValues() []LogAnalyticsParserSummaryTypeEnum {
 	values := make([]LogAnalyticsParserSummaryTypeEnum, 0)
@@ -176,11 +184,6 @@ func GetLogAnalyticsParserSummaryTypeEnumStringValues() []string {
 
 // GetMappingLogAnalyticsParserSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogAnalyticsParserSummaryTypeEnum(val string) (LogAnalyticsParserSummaryTypeEnum, bool) {
-	mappingLogAnalyticsParserSummaryTypeEnumIgnoreCase := make(map[string]LogAnalyticsParserSummaryTypeEnum)
-	for k, v := range mappingLogAnalyticsParserSummaryTypeEnum {
-		mappingLogAnalyticsParserSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogAnalyticsParserSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogAnalyticsParserSummaryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

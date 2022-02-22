@@ -27,6 +27,11 @@ var mappingPackageTypeEnumEnum = map[string]PackageTypeEnumEnum{
 	"IMAGE":         PackageTypeEnumImage,
 }
 
+var mappingPackageTypeEnumEnumLowerCase = map[string]PackageTypeEnumEnum{
+	"orchestration": PackageTypeEnumOrchestration,
+	"image":         PackageTypeEnumImage,
+}
+
 // GetPackageTypeEnumEnumValues Enumerates the set of values for PackageTypeEnumEnum
 func GetPackageTypeEnumEnumValues() []PackageTypeEnumEnum {
 	values := make([]PackageTypeEnumEnum, 0)
@@ -46,11 +51,6 @@ func GetPackageTypeEnumEnumStringValues() []string {
 
 // GetMappingPackageTypeEnumEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPackageTypeEnumEnum(val string) (PackageTypeEnumEnum, bool) {
-	mappingPackageTypeEnumEnumIgnoreCase := make(map[string]PackageTypeEnumEnum)
-	for k, v := range mappingPackageTypeEnumEnum {
-		mappingPackageTypeEnumEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPackageTypeEnumEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPackageTypeEnumEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

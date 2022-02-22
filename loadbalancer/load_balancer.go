@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -148,6 +148,14 @@ var mappingLoadBalancerLifecycleStateEnum = map[string]LoadBalancerLifecycleStat
 	"DELETED":  LoadBalancerLifecycleStateDeleted,
 }
 
+var mappingLoadBalancerLifecycleStateEnumLowerCase = map[string]LoadBalancerLifecycleStateEnum{
+	"creating": LoadBalancerLifecycleStateCreating,
+	"failed":   LoadBalancerLifecycleStateFailed,
+	"active":   LoadBalancerLifecycleStateActive,
+	"deleting": LoadBalancerLifecycleStateDeleting,
+	"deleted":  LoadBalancerLifecycleStateDeleted,
+}
+
 // GetLoadBalancerLifecycleStateEnumValues Enumerates the set of values for LoadBalancerLifecycleStateEnum
 func GetLoadBalancerLifecycleStateEnumValues() []LoadBalancerLifecycleStateEnum {
 	values := make([]LoadBalancerLifecycleStateEnum, 0)
@@ -170,11 +178,6 @@ func GetLoadBalancerLifecycleStateEnumStringValues() []string {
 
 // GetMappingLoadBalancerLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLoadBalancerLifecycleStateEnum(val string) (LoadBalancerLifecycleStateEnum, bool) {
-	mappingLoadBalancerLifecycleStateEnumIgnoreCase := make(map[string]LoadBalancerLifecycleStateEnum)
-	for k, v := range mappingLoadBalancerLifecycleStateEnum {
-		mappingLoadBalancerLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLoadBalancerLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLoadBalancerLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

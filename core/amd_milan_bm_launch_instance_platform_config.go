@@ -16,12 +16,11 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
-// AmdMilanBmLaunchInstancePlatformConfig The platform configuration used when launching a bare metal instance with an E4 shape
-// (the AMD Milan platform).
+// AmdMilanBmLaunchInstancePlatformConfig The platform configuration used when launching a bare metal instance with an E4 shape.
 type AmdMilanBmLaunchInstancePlatformConfig struct {
 
 	// Whether Secure Boot is enabled on the instance.
@@ -103,6 +102,13 @@ var mappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum = map[st
 	"NPS4": AmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketNps4,
 }
 
+var mappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnumLowerCase = map[string]AmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum{
+	"nps0": AmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketNps0,
+	"nps1": AmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketNps1,
+	"nps2": AmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketNps2,
+	"nps4": AmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketNps4,
+}
+
 // GetAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnumValues Enumerates the set of values for AmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum
 func GetAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnumValues() []AmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum {
 	values := make([]AmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum, 0)
@@ -124,11 +130,6 @@ func GetAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnumStringValues
 
 // GetMappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum(val string) (AmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum, bool) {
-	mappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnumIgnoreCase := make(map[string]AmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum)
-	for k, v := range mappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnum {
-		mappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAmdMilanBmLaunchInstancePlatformConfigNumaNodesPerSocketEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

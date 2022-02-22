@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -124,6 +124,11 @@ var mappingObjectStatsSortByEnum = map[string]ObjectStatsSortByEnum{
 	"DISPLAYNAME": ObjectStatsSortByDisplayname,
 }
 
+var mappingObjectStatsSortByEnumLowerCase = map[string]ObjectStatsSortByEnum{
+	"timecreated": ObjectStatsSortByTimecreated,
+	"displayname": ObjectStatsSortByDisplayname,
+}
+
 // GetObjectStatsSortByEnumValues Enumerates the set of values for ObjectStatsSortByEnum
 func GetObjectStatsSortByEnumValues() []ObjectStatsSortByEnum {
 	values := make([]ObjectStatsSortByEnum, 0)
@@ -143,12 +148,7 @@ func GetObjectStatsSortByEnumStringValues() []string {
 
 // GetMappingObjectStatsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingObjectStatsSortByEnum(val string) (ObjectStatsSortByEnum, bool) {
-	mappingObjectStatsSortByEnumIgnoreCase := make(map[string]ObjectStatsSortByEnum)
-	for k, v := range mappingObjectStatsSortByEnum {
-		mappingObjectStatsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingObjectStatsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingObjectStatsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -164,6 +164,11 @@ const (
 var mappingObjectStatsSortOrderEnum = map[string]ObjectStatsSortOrderEnum{
 	"ASC":  ObjectStatsSortOrderAsc,
 	"DESC": ObjectStatsSortOrderDesc,
+}
+
+var mappingObjectStatsSortOrderEnumLowerCase = map[string]ObjectStatsSortOrderEnum{
+	"asc":  ObjectStatsSortOrderAsc,
+	"desc": ObjectStatsSortOrderDesc,
 }
 
 // GetObjectStatsSortOrderEnumValues Enumerates the set of values for ObjectStatsSortOrderEnum
@@ -185,11 +190,6 @@ func GetObjectStatsSortOrderEnumStringValues() []string {
 
 // GetMappingObjectStatsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingObjectStatsSortOrderEnum(val string) (ObjectStatsSortOrderEnum, bool) {
-	mappingObjectStatsSortOrderEnumIgnoreCase := make(map[string]ObjectStatsSortOrderEnum)
-	for k, v := range mappingObjectStatsSortOrderEnum {
-		mappingObjectStatsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingObjectStatsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingObjectStatsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package visualbuilder
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -116,6 +116,16 @@ var mappingVbInstanceLifecycleStateEnum = map[string]VbInstanceLifecycleStateEnu
 	"FAILED":   VbInstanceLifecycleStateFailed,
 }
 
+var mappingVbInstanceLifecycleStateEnumLowerCase = map[string]VbInstanceLifecycleStateEnum{
+	"creating": VbInstanceLifecycleStateCreating,
+	"updating": VbInstanceLifecycleStateUpdating,
+	"active":   VbInstanceLifecycleStateActive,
+	"inactive": VbInstanceLifecycleStateInactive,
+	"deleting": VbInstanceLifecycleStateDeleting,
+	"deleted":  VbInstanceLifecycleStateDeleted,
+	"failed":   VbInstanceLifecycleStateFailed,
+}
+
 // GetVbInstanceLifecycleStateEnumValues Enumerates the set of values for VbInstanceLifecycleStateEnum
 func GetVbInstanceLifecycleStateEnumValues() []VbInstanceLifecycleStateEnum {
 	values := make([]VbInstanceLifecycleStateEnum, 0)
@@ -140,12 +150,7 @@ func GetVbInstanceLifecycleStateEnumStringValues() []string {
 
 // GetMappingVbInstanceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVbInstanceLifecycleStateEnum(val string) (VbInstanceLifecycleStateEnum, bool) {
-	mappingVbInstanceLifecycleStateEnumIgnoreCase := make(map[string]VbInstanceLifecycleStateEnum)
-	for k, v := range mappingVbInstanceLifecycleStateEnum {
-		mappingVbInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVbInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVbInstanceLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -163,6 +168,12 @@ var mappingVbInstanceConsumptionModelEnum = map[string]VbInstanceConsumptionMode
 	"UCM":     VbInstanceConsumptionModelUcm,
 	"GOV":     VbInstanceConsumptionModelGov,
 	"VB4SAAS": VbInstanceConsumptionModelVb4saas,
+}
+
+var mappingVbInstanceConsumptionModelEnumLowerCase = map[string]VbInstanceConsumptionModelEnum{
+	"ucm":     VbInstanceConsumptionModelUcm,
+	"gov":     VbInstanceConsumptionModelGov,
+	"vb4saas": VbInstanceConsumptionModelVb4saas,
 }
 
 // GetVbInstanceConsumptionModelEnumValues Enumerates the set of values for VbInstanceConsumptionModelEnum
@@ -185,11 +196,6 @@ func GetVbInstanceConsumptionModelEnumStringValues() []string {
 
 // GetMappingVbInstanceConsumptionModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVbInstanceConsumptionModelEnum(val string) (VbInstanceConsumptionModelEnum, bool) {
-	mappingVbInstanceConsumptionModelEnumIgnoreCase := make(map[string]VbInstanceConsumptionModelEnum)
-	for k, v := range mappingVbInstanceConsumptionModelEnum {
-		mappingVbInstanceConsumptionModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVbInstanceConsumptionModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVbInstanceConsumptionModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

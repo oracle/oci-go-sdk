@@ -15,20 +15,20 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
-// AllowedPhaseOneParameters Phase One Parameters
+// AllowedPhaseOneParameters Allowed phase one parameters.
 type AllowedPhaseOneParameters struct {
 
-	// Phase One Encryption Algorithms
+	// Allowed phase one encryption algorithms.
 	EncryptionAlgorithms []string `mandatory:"false" json:"encryptionAlgorithms"`
 
-	// Phase One Authentication Algorithms
+	// Allowed phase one authentication algorithms.
 	AuthenticationAlgorithms []string `mandatory:"false" json:"authenticationAlgorithms"`
 
-	// DH Groups
+	// Allowed phase one Diffie-Hellman groups.
 	DhGroups []string `mandatory:"false" json:"dhGroups"`
 }
 

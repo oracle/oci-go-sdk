@@ -29,6 +29,12 @@ var mappingDatabaseConnectionTypesEnum = map[string]DatabaseConnectionTypesEnum{
 	"USER_MANAGED_OCI": DatabaseConnectionTypesUserManagedOci,
 }
 
+var mappingDatabaseConnectionTypesEnumLowerCase = map[string]DatabaseConnectionTypesEnum{
+	"manual":           DatabaseConnectionTypesManual,
+	"autonomous":       DatabaseConnectionTypesAutonomous,
+	"user_managed_oci": DatabaseConnectionTypesUserManagedOci,
+}
+
 // GetDatabaseConnectionTypesEnumValues Enumerates the set of values for DatabaseConnectionTypesEnum
 func GetDatabaseConnectionTypesEnumValues() []DatabaseConnectionTypesEnum {
 	values := make([]DatabaseConnectionTypesEnum, 0)
@@ -49,11 +55,6 @@ func GetDatabaseConnectionTypesEnumStringValues() []string {
 
 // GetMappingDatabaseConnectionTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseConnectionTypesEnum(val string) (DatabaseConnectionTypesEnum, bool) {
-	mappingDatabaseConnectionTypesEnumIgnoreCase := make(map[string]DatabaseConnectionTypesEnum)
-	for k, v := range mappingDatabaseConnectionTypesEnum {
-		mappingDatabaseConnectionTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseConnectionTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseConnectionTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

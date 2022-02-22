@@ -11,7 +11,7 @@ package marketplace
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -71,6 +71,11 @@ var mappingAgreementAuthorEnum = map[string]AgreementAuthorEnum{
 	"PARTNER": AgreementAuthorPartner,
 }
 
+var mappingAgreementAuthorEnumLowerCase = map[string]AgreementAuthorEnum{
+	"oracle":  AgreementAuthorOracle,
+	"partner": AgreementAuthorPartner,
+}
+
 // GetAgreementAuthorEnumValues Enumerates the set of values for AgreementAuthorEnum
 func GetAgreementAuthorEnumValues() []AgreementAuthorEnum {
 	values := make([]AgreementAuthorEnum, 0)
@@ -90,11 +95,6 @@ func GetAgreementAuthorEnumStringValues() []string {
 
 // GetMappingAgreementAuthorEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAgreementAuthorEnum(val string) (AgreementAuthorEnum, bool) {
-	mappingAgreementAuthorEnumIgnoreCase := make(map[string]AgreementAuthorEnum)
-	for k, v := range mappingAgreementAuthorEnum {
-		mappingAgreementAuthorEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAgreementAuthorEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAgreementAuthorEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

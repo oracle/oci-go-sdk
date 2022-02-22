@@ -2,9 +2,10 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Cloud Guard APIs
+// Cloud Guard API
 //
-// A description of the Cloud Guard APIs
+// Use the Cloud Guard API to automate processes that you would otherwise perform through the Cloud Guard Console.
+// **Note:** You can perform Create, Update, and Delete operations only from the reporting region of your Cloud Guard tenancy. You can perform Read operations from any region.
 //
 
 package cloudguard
@@ -27,6 +28,11 @@ var mappingProblemLifecycleStateEnum = map[string]ProblemLifecycleStateEnum{
 	"INACTIVE": ProblemLifecycleStateInactive,
 }
 
+var mappingProblemLifecycleStateEnumLowerCase = map[string]ProblemLifecycleStateEnum{
+	"active":   ProblemLifecycleStateActive,
+	"inactive": ProblemLifecycleStateInactive,
+}
+
 // GetProblemLifecycleStateEnumValues Enumerates the set of values for ProblemLifecycleStateEnum
 func GetProblemLifecycleStateEnumValues() []ProblemLifecycleStateEnum {
 	values := make([]ProblemLifecycleStateEnum, 0)
@@ -46,11 +52,6 @@ func GetProblemLifecycleStateEnumStringValues() []string {
 
 // GetMappingProblemLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingProblemLifecycleStateEnum(val string) (ProblemLifecycleStateEnum, bool) {
-	mappingProblemLifecycleStateEnumIgnoreCase := make(map[string]ProblemLifecycleStateEnum)
-	for k, v := range mappingProblemLifecycleStateEnum {
-		mappingProblemLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingProblemLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingProblemLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

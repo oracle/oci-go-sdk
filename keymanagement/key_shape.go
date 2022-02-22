@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -70,6 +70,12 @@ var mappingKeyShapeAlgorithmEnum = map[string]KeyShapeAlgorithmEnum{
 	"ECDSA": KeyShapeAlgorithmEcdsa,
 }
 
+var mappingKeyShapeAlgorithmEnumLowerCase = map[string]KeyShapeAlgorithmEnum{
+	"aes":   KeyShapeAlgorithmAes,
+	"rsa":   KeyShapeAlgorithmRsa,
+	"ecdsa": KeyShapeAlgorithmEcdsa,
+}
+
 // GetKeyShapeAlgorithmEnumValues Enumerates the set of values for KeyShapeAlgorithmEnum
 func GetKeyShapeAlgorithmEnumValues() []KeyShapeAlgorithmEnum {
 	values := make([]KeyShapeAlgorithmEnum, 0)
@@ -90,12 +96,7 @@ func GetKeyShapeAlgorithmEnumStringValues() []string {
 
 // GetMappingKeyShapeAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingKeyShapeAlgorithmEnum(val string) (KeyShapeAlgorithmEnum, bool) {
-	mappingKeyShapeAlgorithmEnumIgnoreCase := make(map[string]KeyShapeAlgorithmEnum)
-	for k, v := range mappingKeyShapeAlgorithmEnum {
-		mappingKeyShapeAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingKeyShapeAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingKeyShapeAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -113,6 +114,12 @@ var mappingKeyShapeCurveIdEnum = map[string]KeyShapeCurveIdEnum{
 	"NIST_P256": KeyShapeCurveIdP256,
 	"NIST_P384": KeyShapeCurveIdP384,
 	"NIST_P521": KeyShapeCurveIdP521,
+}
+
+var mappingKeyShapeCurveIdEnumLowerCase = map[string]KeyShapeCurveIdEnum{
+	"nist_p256": KeyShapeCurveIdP256,
+	"nist_p384": KeyShapeCurveIdP384,
+	"nist_p521": KeyShapeCurveIdP521,
 }
 
 // GetKeyShapeCurveIdEnumValues Enumerates the set of values for KeyShapeCurveIdEnum
@@ -135,11 +142,6 @@ func GetKeyShapeCurveIdEnumStringValues() []string {
 
 // GetMappingKeyShapeCurveIdEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingKeyShapeCurveIdEnum(val string) (KeyShapeCurveIdEnum, bool) {
-	mappingKeyShapeCurveIdEnumIgnoreCase := make(map[string]KeyShapeCurveIdEnum)
-	for k, v := range mappingKeyShapeCurveIdEnum {
-		mappingKeyShapeCurveIdEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingKeyShapeCurveIdEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingKeyShapeCurveIdEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

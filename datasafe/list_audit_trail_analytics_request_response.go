@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,11 @@ var mappingListAuditTrailAnalyticsAccessLevelEnum = map[string]ListAuditTrailAna
 	"ACCESSIBLE": ListAuditTrailAnalyticsAccessLevelAccessible,
 }
 
+var mappingListAuditTrailAnalyticsAccessLevelEnumLowerCase = map[string]ListAuditTrailAnalyticsAccessLevelEnum{
+	"restricted": ListAuditTrailAnalyticsAccessLevelRestricted,
+	"accessible": ListAuditTrailAnalyticsAccessLevelAccessible,
+}
+
 // GetListAuditTrailAnalyticsAccessLevelEnumValues Enumerates the set of values for ListAuditTrailAnalyticsAccessLevelEnum
 func GetListAuditTrailAnalyticsAccessLevelEnumValues() []ListAuditTrailAnalyticsAccessLevelEnum {
 	values := make([]ListAuditTrailAnalyticsAccessLevelEnum, 0)
@@ -160,12 +165,7 @@ func GetListAuditTrailAnalyticsAccessLevelEnumStringValues() []string {
 
 // GetMappingListAuditTrailAnalyticsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditTrailAnalyticsAccessLevelEnum(val string) (ListAuditTrailAnalyticsAccessLevelEnum, bool) {
-	mappingListAuditTrailAnalyticsAccessLevelEnumIgnoreCase := make(map[string]ListAuditTrailAnalyticsAccessLevelEnum)
-	for k, v := range mappingListAuditTrailAnalyticsAccessLevelEnum {
-		mappingListAuditTrailAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditTrailAnalyticsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditTrailAnalyticsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -185,6 +185,13 @@ var mappingListAuditTrailAnalyticsGroupByEnum = map[string]ListAuditTrailAnalyti
 	"lifecycleState": ListAuditTrailAnalyticsGroupByLifecyclestate,
 	"status":         ListAuditTrailAnalyticsGroupByStatus,
 	"targetId":       ListAuditTrailAnalyticsGroupByTargetid,
+}
+
+var mappingListAuditTrailAnalyticsGroupByEnumLowerCase = map[string]ListAuditTrailAnalyticsGroupByEnum{
+	"location":       ListAuditTrailAnalyticsGroupByLocation,
+	"lifecyclestate": ListAuditTrailAnalyticsGroupByLifecyclestate,
+	"status":         ListAuditTrailAnalyticsGroupByStatus,
+	"targetid":       ListAuditTrailAnalyticsGroupByTargetid,
 }
 
 // GetListAuditTrailAnalyticsGroupByEnumValues Enumerates the set of values for ListAuditTrailAnalyticsGroupByEnum
@@ -208,11 +215,6 @@ func GetListAuditTrailAnalyticsGroupByEnumStringValues() []string {
 
 // GetMappingListAuditTrailAnalyticsGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAuditTrailAnalyticsGroupByEnum(val string) (ListAuditTrailAnalyticsGroupByEnum, bool) {
-	mappingListAuditTrailAnalyticsGroupByEnumIgnoreCase := make(map[string]ListAuditTrailAnalyticsGroupByEnum)
-	for k, v := range mappingListAuditTrailAnalyticsGroupByEnum {
-		mappingListAuditTrailAnalyticsGroupByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAuditTrailAnalyticsGroupByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAuditTrailAnalyticsGroupByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -27,6 +27,11 @@ var mappingSensitiveTypeEntityEnum = map[string]SensitiveTypeEntityEnum{
 	"SENSITIVE_CATEGORY": SensitiveTypeEntitySensitiveCategory,
 }
 
+var mappingSensitiveTypeEntityEnumLowerCase = map[string]SensitiveTypeEntityEnum{
+	"sensitive_type":     SensitiveTypeEntitySensitiveType,
+	"sensitive_category": SensitiveTypeEntitySensitiveCategory,
+}
+
 // GetSensitiveTypeEntityEnumValues Enumerates the set of values for SensitiveTypeEntityEnum
 func GetSensitiveTypeEntityEnumValues() []SensitiveTypeEntityEnum {
 	values := make([]SensitiveTypeEntityEnum, 0)
@@ -46,11 +51,6 @@ func GetSensitiveTypeEntityEnumStringValues() []string {
 
 // GetMappingSensitiveTypeEntityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSensitiveTypeEntityEnum(val string) (SensitiveTypeEntityEnum, bool) {
-	mappingSensitiveTypeEntityEnumIgnoreCase := make(map[string]SensitiveTypeEntityEnum)
-	for k, v := range mappingSensitiveTypeEntityEnum {
-		mappingSensitiveTypeEntityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSensitiveTypeEntityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSensitiveTypeEntityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

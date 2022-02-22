@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,11 @@ var mappingComputeInstanceGroupSelectorSelectorTypeEnum = map[string]ComputeInst
 	"INSTANCE_QUERY": ComputeInstanceGroupSelectorSelectorTypeQuery,
 }
 
+var mappingComputeInstanceGroupSelectorSelectorTypeEnumLowerCase = map[string]ComputeInstanceGroupSelectorSelectorTypeEnum{
+	"instance_ids":   ComputeInstanceGroupSelectorSelectorTypeIds,
+	"instance_query": ComputeInstanceGroupSelectorSelectorTypeQuery,
+}
+
 // GetComputeInstanceGroupSelectorSelectorTypeEnumValues Enumerates the set of values for ComputeInstanceGroupSelectorSelectorTypeEnum
 func GetComputeInstanceGroupSelectorSelectorTypeEnumValues() []ComputeInstanceGroupSelectorSelectorTypeEnum {
 	values := make([]ComputeInstanceGroupSelectorSelectorTypeEnum, 0)
@@ -112,11 +117,6 @@ func GetComputeInstanceGroupSelectorSelectorTypeEnumStringValues() []string {
 
 // GetMappingComputeInstanceGroupSelectorSelectorTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingComputeInstanceGroupSelectorSelectorTypeEnum(val string) (ComputeInstanceGroupSelectorSelectorTypeEnum, bool) {
-	mappingComputeInstanceGroupSelectorSelectorTypeEnumIgnoreCase := make(map[string]ComputeInstanceGroupSelectorSelectorTypeEnum)
-	for k, v := range mappingComputeInstanceGroupSelectorSelectorTypeEnum {
-		mappingComputeInstanceGroupSelectorSelectorTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingComputeInstanceGroupSelectorSelectorTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingComputeInstanceGroupSelectorSelectorTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

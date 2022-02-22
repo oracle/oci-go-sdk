@@ -13,7 +13,7 @@ package containerengine
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -114,6 +114,16 @@ var mappingNodeLifecycleStateEnum = map[string]NodeLifecycleStateEnum{
 	"INACTIVE": NodeLifecycleStateInactive,
 }
 
+var mappingNodeLifecycleStateEnumLowerCase = map[string]NodeLifecycleStateEnum{
+	"creating": NodeLifecycleStateCreating,
+	"active":   NodeLifecycleStateActive,
+	"updating": NodeLifecycleStateUpdating,
+	"deleting": NodeLifecycleStateDeleting,
+	"deleted":  NodeLifecycleStateDeleted,
+	"failing":  NodeLifecycleStateFailing,
+	"inactive": NodeLifecycleStateInactive,
+}
+
 // GetNodeLifecycleStateEnumValues Enumerates the set of values for NodeLifecycleStateEnum
 func GetNodeLifecycleStateEnumValues() []NodeLifecycleStateEnum {
 	values := make([]NodeLifecycleStateEnum, 0)
@@ -138,11 +148,6 @@ func GetNodeLifecycleStateEnumStringValues() []string {
 
 // GetMappingNodeLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNodeLifecycleStateEnum(val string) (NodeLifecycleStateEnum, bool) {
-	mappingNodeLifecycleStateEnumIgnoreCase := make(map[string]NodeLifecycleStateEnum)
-	for k, v := range mappingNodeLifecycleStateEnum {
-		mappingNodeLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNodeLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNodeLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

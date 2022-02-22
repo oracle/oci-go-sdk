@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -136,6 +136,11 @@ var mappingBatchGetBasicInfoSortOrderEnum = map[string]BatchGetBasicInfoSortOrde
 	"DESC": BatchGetBasicInfoSortOrderDesc,
 }
 
+var mappingBatchGetBasicInfoSortOrderEnumLowerCase = map[string]BatchGetBasicInfoSortOrderEnum{
+	"asc":  BatchGetBasicInfoSortOrderAsc,
+	"desc": BatchGetBasicInfoSortOrderDesc,
+}
+
 // GetBatchGetBasicInfoSortOrderEnumValues Enumerates the set of values for BatchGetBasicInfoSortOrderEnum
 func GetBatchGetBasicInfoSortOrderEnumValues() []BatchGetBasicInfoSortOrderEnum {
 	values := make([]BatchGetBasicInfoSortOrderEnum, 0)
@@ -155,12 +160,7 @@ func GetBatchGetBasicInfoSortOrderEnumStringValues() []string {
 
 // GetMappingBatchGetBasicInfoSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBatchGetBasicInfoSortOrderEnum(val string) (BatchGetBasicInfoSortOrderEnum, bool) {
-	mappingBatchGetBasicInfoSortOrderEnumIgnoreCase := make(map[string]BatchGetBasicInfoSortOrderEnum)
-	for k, v := range mappingBatchGetBasicInfoSortOrderEnum {
-		mappingBatchGetBasicInfoSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBatchGetBasicInfoSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBatchGetBasicInfoSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -174,6 +174,11 @@ const (
 )
 
 var mappingBatchGetBasicInfoBasicLabelSortByEnum = map[string]BatchGetBasicInfoBasicLabelSortByEnum{
+	"name":     BatchGetBasicInfoBasicLabelSortByName,
+	"priority": BatchGetBasicInfoBasicLabelSortByPriority,
+}
+
+var mappingBatchGetBasicInfoBasicLabelSortByEnumLowerCase = map[string]BatchGetBasicInfoBasicLabelSortByEnum{
 	"name":     BatchGetBasicInfoBasicLabelSortByName,
 	"priority": BatchGetBasicInfoBasicLabelSortByPriority,
 }
@@ -197,11 +202,6 @@ func GetBatchGetBasicInfoBasicLabelSortByEnumStringValues() []string {
 
 // GetMappingBatchGetBasicInfoBasicLabelSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBatchGetBasicInfoBasicLabelSortByEnum(val string) (BatchGetBasicInfoBasicLabelSortByEnum, bool) {
-	mappingBatchGetBasicInfoBasicLabelSortByEnumIgnoreCase := make(map[string]BatchGetBasicInfoBasicLabelSortByEnum)
-	for k, v := range mappingBatchGetBasicInfoBasicLabelSortByEnum {
-		mappingBatchGetBasicInfoBasicLabelSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBatchGetBasicInfoBasicLabelSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBatchGetBasicInfoBasicLabelSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

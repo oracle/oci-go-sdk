@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -132,6 +132,10 @@ var mappingListConsumerGroupPrivilegesSortByEnum = map[string]ListConsumerGroupP
 	"NAME": ListConsumerGroupPrivilegesSortByName,
 }
 
+var mappingListConsumerGroupPrivilegesSortByEnumLowerCase = map[string]ListConsumerGroupPrivilegesSortByEnum{
+	"name": ListConsumerGroupPrivilegesSortByName,
+}
+
 // GetListConsumerGroupPrivilegesSortByEnumValues Enumerates the set of values for ListConsumerGroupPrivilegesSortByEnum
 func GetListConsumerGroupPrivilegesSortByEnumValues() []ListConsumerGroupPrivilegesSortByEnum {
 	values := make([]ListConsumerGroupPrivilegesSortByEnum, 0)
@@ -150,12 +154,7 @@ func GetListConsumerGroupPrivilegesSortByEnumStringValues() []string {
 
 // GetMappingListConsumerGroupPrivilegesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConsumerGroupPrivilegesSortByEnum(val string) (ListConsumerGroupPrivilegesSortByEnum, bool) {
-	mappingListConsumerGroupPrivilegesSortByEnumIgnoreCase := make(map[string]ListConsumerGroupPrivilegesSortByEnum)
-	for k, v := range mappingListConsumerGroupPrivilegesSortByEnum {
-		mappingListConsumerGroupPrivilegesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConsumerGroupPrivilegesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConsumerGroupPrivilegesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -171,6 +170,11 @@ const (
 var mappingListConsumerGroupPrivilegesSortOrderEnum = map[string]ListConsumerGroupPrivilegesSortOrderEnum{
 	"ASC":  ListConsumerGroupPrivilegesSortOrderAsc,
 	"DESC": ListConsumerGroupPrivilegesSortOrderDesc,
+}
+
+var mappingListConsumerGroupPrivilegesSortOrderEnumLowerCase = map[string]ListConsumerGroupPrivilegesSortOrderEnum{
+	"asc":  ListConsumerGroupPrivilegesSortOrderAsc,
+	"desc": ListConsumerGroupPrivilegesSortOrderDesc,
 }
 
 // GetListConsumerGroupPrivilegesSortOrderEnumValues Enumerates the set of values for ListConsumerGroupPrivilegesSortOrderEnum
@@ -192,11 +196,6 @@ func GetListConsumerGroupPrivilegesSortOrderEnumStringValues() []string {
 
 // GetMappingListConsumerGroupPrivilegesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConsumerGroupPrivilegesSortOrderEnum(val string) (ListConsumerGroupPrivilegesSortOrderEnum, bool) {
-	mappingListConsumerGroupPrivilegesSortOrderEnumIgnoreCase := make(map[string]ListConsumerGroupPrivilegesSortOrderEnum)
-	for k, v := range mappingListConsumerGroupPrivilegesSortOrderEnum {
-		mappingListConsumerGroupPrivilegesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConsumerGroupPrivilegesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConsumerGroupPrivilegesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

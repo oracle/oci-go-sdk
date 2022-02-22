@@ -35,6 +35,15 @@ var mappingAuditArchiveRetrievalLifecycleStateEnum = map[string]AuditArchiveRetr
 	"DELETED":         AuditArchiveRetrievalLifecycleStateDeleted,
 }
 
+var mappingAuditArchiveRetrievalLifecycleStateEnumLowerCase = map[string]AuditArchiveRetrievalLifecycleStateEnum{
+	"creating":        AuditArchiveRetrievalLifecycleStateCreating,
+	"active":          AuditArchiveRetrievalLifecycleStateActive,
+	"needs_attention": AuditArchiveRetrievalLifecycleStateNeedsAttention,
+	"failed":          AuditArchiveRetrievalLifecycleStateFailed,
+	"deleting":        AuditArchiveRetrievalLifecycleStateDeleting,
+	"deleted":         AuditArchiveRetrievalLifecycleStateDeleted,
+}
+
 // GetAuditArchiveRetrievalLifecycleStateEnumValues Enumerates the set of values for AuditArchiveRetrievalLifecycleStateEnum
 func GetAuditArchiveRetrievalLifecycleStateEnumValues() []AuditArchiveRetrievalLifecycleStateEnum {
 	values := make([]AuditArchiveRetrievalLifecycleStateEnum, 0)
@@ -58,11 +67,6 @@ func GetAuditArchiveRetrievalLifecycleStateEnumStringValues() []string {
 
 // GetMappingAuditArchiveRetrievalLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAuditArchiveRetrievalLifecycleStateEnum(val string) (AuditArchiveRetrievalLifecycleStateEnum, bool) {
-	mappingAuditArchiveRetrievalLifecycleStateEnumIgnoreCase := make(map[string]AuditArchiveRetrievalLifecycleStateEnum)
-	for k, v := range mappingAuditArchiveRetrievalLifecycleStateEnum {
-		mappingAuditArchiveRetrievalLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAuditArchiveRetrievalLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAuditArchiveRetrievalLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

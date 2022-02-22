@@ -11,7 +11,7 @@ package cims
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -80,6 +80,13 @@ var mappingClassifierScopeEnum = map[string]ClassifierScopeEnum{
 	"NONE":    ClassifierScopeNone,
 }
 
+var mappingClassifierScopeEnumLowerCase = map[string]ClassifierScopeEnum{
+	"ad":      ClassifierScopeAd,
+	"region":  ClassifierScopeRegion,
+	"tenancy": ClassifierScopeTenancy,
+	"none":    ClassifierScopeNone,
+}
+
 // GetClassifierScopeEnumValues Enumerates the set of values for ClassifierScopeEnum
 func GetClassifierScopeEnumValues() []ClassifierScopeEnum {
 	values := make([]ClassifierScopeEnum, 0)
@@ -101,12 +108,7 @@ func GetClassifierScopeEnumStringValues() []string {
 
 // GetMappingClassifierScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingClassifierScopeEnum(val string) (ClassifierScopeEnum, bool) {
-	mappingClassifierScopeEnumIgnoreCase := make(map[string]ClassifierScopeEnum)
-	for k, v := range mappingClassifierScopeEnum {
-		mappingClassifierScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingClassifierScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingClassifierScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -124,6 +126,12 @@ var mappingClassifierUnitEnum = map[string]ClassifierUnitEnum{
 	"COUNT": ClassifierUnitCount,
 	"GB":    ClassifierUnitGb,
 	"NONE":  ClassifierUnitNone,
+}
+
+var mappingClassifierUnitEnumLowerCase = map[string]ClassifierUnitEnum{
+	"count": ClassifierUnitCount,
+	"gb":    ClassifierUnitGb,
+	"none":  ClassifierUnitNone,
 }
 
 // GetClassifierUnitEnumValues Enumerates the set of values for ClassifierUnitEnum
@@ -146,11 +154,6 @@ func GetClassifierUnitEnumStringValues() []string {
 
 // GetMappingClassifierUnitEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingClassifierUnitEnum(val string) (ClassifierUnitEnum, bool) {
-	mappingClassifierUnitEnumIgnoreCase := make(map[string]ClassifierUnitEnum)
-	for k, v := range mappingClassifierUnitEnum {
-		mappingClassifierUnitEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingClassifierUnitEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingClassifierUnitEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

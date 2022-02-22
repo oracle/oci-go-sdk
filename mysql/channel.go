@@ -12,7 +12,7 @@ package mysql
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -172,6 +172,17 @@ var mappingChannelLifecycleStateEnum = map[string]ChannelLifecycleStateEnum{
 	"FAILED":          ChannelLifecycleStateFailed,
 }
 
+var mappingChannelLifecycleStateEnumLowerCase = map[string]ChannelLifecycleStateEnum{
+	"creating":        ChannelLifecycleStateCreating,
+	"active":          ChannelLifecycleStateActive,
+	"needs_attention": ChannelLifecycleStateNeedsAttention,
+	"inactive":        ChannelLifecycleStateInactive,
+	"updating":        ChannelLifecycleStateUpdating,
+	"deleting":        ChannelLifecycleStateDeleting,
+	"deleted":         ChannelLifecycleStateDeleted,
+	"failed":          ChannelLifecycleStateFailed,
+}
+
 // GetChannelLifecycleStateEnumValues Enumerates the set of values for ChannelLifecycleStateEnum
 func GetChannelLifecycleStateEnumValues() []ChannelLifecycleStateEnum {
 	values := make([]ChannelLifecycleStateEnum, 0)
@@ -197,11 +208,6 @@ func GetChannelLifecycleStateEnumStringValues() []string {
 
 // GetMappingChannelLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingChannelLifecycleStateEnum(val string) (ChannelLifecycleStateEnum, bool) {
-	mappingChannelLifecycleStateEnumIgnoreCase := make(map[string]ChannelLifecycleStateEnum)
-	for k, v := range mappingChannelLifecycleStateEnum {
-		mappingChannelLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingChannelLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingChannelLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

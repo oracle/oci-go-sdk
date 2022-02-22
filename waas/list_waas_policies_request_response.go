@@ -6,7 +6,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -146,6 +146,12 @@ var mappingListWaasPoliciesSortByEnum = map[string]ListWaasPoliciesSortByEnum{
 	"timeCreated": ListWaasPoliciesSortByTimecreated,
 }
 
+var mappingListWaasPoliciesSortByEnumLowerCase = map[string]ListWaasPoliciesSortByEnum{
+	"id":          ListWaasPoliciesSortById,
+	"displayname": ListWaasPoliciesSortByDisplayname,
+	"timecreated": ListWaasPoliciesSortByTimecreated,
+}
+
 // GetListWaasPoliciesSortByEnumValues Enumerates the set of values for ListWaasPoliciesSortByEnum
 func GetListWaasPoliciesSortByEnumValues() []ListWaasPoliciesSortByEnum {
 	values := make([]ListWaasPoliciesSortByEnum, 0)
@@ -166,12 +172,7 @@ func GetListWaasPoliciesSortByEnumStringValues() []string {
 
 // GetMappingListWaasPoliciesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWaasPoliciesSortByEnum(val string) (ListWaasPoliciesSortByEnum, bool) {
-	mappingListWaasPoliciesSortByEnumIgnoreCase := make(map[string]ListWaasPoliciesSortByEnum)
-	for k, v := range mappingListWaasPoliciesSortByEnum {
-		mappingListWaasPoliciesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWaasPoliciesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWaasPoliciesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +188,11 @@ const (
 var mappingListWaasPoliciesSortOrderEnum = map[string]ListWaasPoliciesSortOrderEnum{
 	"ASC":  ListWaasPoliciesSortOrderAsc,
 	"DESC": ListWaasPoliciesSortOrderDesc,
+}
+
+var mappingListWaasPoliciesSortOrderEnumLowerCase = map[string]ListWaasPoliciesSortOrderEnum{
+	"asc":  ListWaasPoliciesSortOrderAsc,
+	"desc": ListWaasPoliciesSortOrderDesc,
 }
 
 // GetListWaasPoliciesSortOrderEnumValues Enumerates the set of values for ListWaasPoliciesSortOrderEnum
@@ -208,11 +214,6 @@ func GetListWaasPoliciesSortOrderEnumStringValues() []string {
 
 // GetMappingListWaasPoliciesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWaasPoliciesSortOrderEnum(val string) (ListWaasPoliciesSortOrderEnum, bool) {
-	mappingListWaasPoliciesSortOrderEnumIgnoreCase := make(map[string]ListWaasPoliciesSortOrderEnum)
-	for k, v := range mappingListWaasPoliciesSortOrderEnum {
-		mappingListWaasPoliciesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWaasPoliciesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWaasPoliciesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

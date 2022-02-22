@@ -13,7 +13,7 @@ package waf
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -147,6 +147,11 @@ var mappingCreateNetworkAddressListDetailsTypeEnum = map[string]CreateNetworkAdd
 	"VCN_ADDRESSES": CreateNetworkAddressListDetailsTypeVcnAddresses,
 }
 
+var mappingCreateNetworkAddressListDetailsTypeEnumLowerCase = map[string]CreateNetworkAddressListDetailsTypeEnum{
+	"addresses":     CreateNetworkAddressListDetailsTypeAddresses,
+	"vcn_addresses": CreateNetworkAddressListDetailsTypeVcnAddresses,
+}
+
 // GetCreateNetworkAddressListDetailsTypeEnumValues Enumerates the set of values for CreateNetworkAddressListDetailsTypeEnum
 func GetCreateNetworkAddressListDetailsTypeEnumValues() []CreateNetworkAddressListDetailsTypeEnum {
 	values := make([]CreateNetworkAddressListDetailsTypeEnum, 0)
@@ -166,11 +171,6 @@ func GetCreateNetworkAddressListDetailsTypeEnumStringValues() []string {
 
 // GetMappingCreateNetworkAddressListDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateNetworkAddressListDetailsTypeEnum(val string) (CreateNetworkAddressListDetailsTypeEnum, bool) {
-	mappingCreateNetworkAddressListDetailsTypeEnumIgnoreCase := make(map[string]CreateNetworkAddressListDetailsTypeEnum)
-	for k, v := range mappingCreateNetworkAddressListDetailsTypeEnum {
-		mappingCreateNetworkAddressListDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateNetworkAddressListDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateNetworkAddressListDetailsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -27,6 +27,11 @@ var mappingAlertStatusEnum = map[string]AlertStatusEnum{
 	"CLOSED": AlertStatusClosed,
 }
 
+var mappingAlertStatusEnumLowerCase = map[string]AlertStatusEnum{
+	"open":   AlertStatusOpen,
+	"closed": AlertStatusClosed,
+}
+
 // GetAlertStatusEnumValues Enumerates the set of values for AlertStatusEnum
 func GetAlertStatusEnumValues() []AlertStatusEnum {
 	values := make([]AlertStatusEnum, 0)
@@ -46,11 +51,6 @@ func GetAlertStatusEnumStringValues() []string {
 
 // GetMappingAlertStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAlertStatusEnum(val string) (AlertStatusEnum, bool) {
-	mappingAlertStatusEnumIgnoreCase := make(map[string]AlertStatusEnum)
-	for k, v := range mappingAlertStatusEnum {
-		mappingAlertStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAlertStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAlertStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

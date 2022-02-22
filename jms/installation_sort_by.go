@@ -41,6 +41,18 @@ var mappingInstallationSortByEnum = map[string]InstallationSortByEnum{
 	"osName":                          InstallationSortByOsName,
 }
 
+var mappingInstallationSortByEnumLowerCase = map[string]InstallationSortByEnum{
+	"jredistribution":                 InstallationSortByJreDistribution,
+	"jrevendor":                       InstallationSortByJreVendor,
+	"jreversion":                      InstallationSortByJreVersion,
+	"path":                            InstallationSortByPath,
+	"timefirstseen":                   InstallationSortByTimeFirstSeen,
+	"timelastseen":                    InstallationSortByTimeLastSeen,
+	"approximateapplicationcount":     InstallationSortByApproximateApplicationCount,
+	"approximatemanagedinstancecount": InstallationSortByApproximateManagedInstanceCount,
+	"osname":                          InstallationSortByOsName,
+}
+
 // GetInstallationSortByEnumValues Enumerates the set of values for InstallationSortByEnum
 func GetInstallationSortByEnumValues() []InstallationSortByEnum {
 	values := make([]InstallationSortByEnum, 0)
@@ -67,11 +79,6 @@ func GetInstallationSortByEnumStringValues() []string {
 
 // GetMappingInstallationSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstallationSortByEnum(val string) (InstallationSortByEnum, bool) {
-	mappingInstallationSortByEnumIgnoreCase := make(map[string]InstallationSortByEnum)
-	for k, v := range mappingInstallationSortByEnum {
-		mappingInstallationSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstallationSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstallationSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -152,6 +152,11 @@ var mappingListDatabaseSoftwareImagesSortByEnum = map[string]ListDatabaseSoftwar
 	"DISPLAYNAME": ListDatabaseSoftwareImagesSortByDisplayname,
 }
 
+var mappingListDatabaseSoftwareImagesSortByEnumLowerCase = map[string]ListDatabaseSoftwareImagesSortByEnum{
+	"timecreated": ListDatabaseSoftwareImagesSortByTimecreated,
+	"displayname": ListDatabaseSoftwareImagesSortByDisplayname,
+}
+
 // GetListDatabaseSoftwareImagesSortByEnumValues Enumerates the set of values for ListDatabaseSoftwareImagesSortByEnum
 func GetListDatabaseSoftwareImagesSortByEnumValues() []ListDatabaseSoftwareImagesSortByEnum {
 	values := make([]ListDatabaseSoftwareImagesSortByEnum, 0)
@@ -171,12 +176,7 @@ func GetListDatabaseSoftwareImagesSortByEnumStringValues() []string {
 
 // GetMappingListDatabaseSoftwareImagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseSoftwareImagesSortByEnum(val string) (ListDatabaseSoftwareImagesSortByEnum, bool) {
-	mappingListDatabaseSoftwareImagesSortByEnumIgnoreCase := make(map[string]ListDatabaseSoftwareImagesSortByEnum)
-	for k, v := range mappingListDatabaseSoftwareImagesSortByEnum {
-		mappingListDatabaseSoftwareImagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseSoftwareImagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseSoftwareImagesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -192,6 +192,11 @@ const (
 var mappingListDatabaseSoftwareImagesSortOrderEnum = map[string]ListDatabaseSoftwareImagesSortOrderEnum{
 	"ASC":  ListDatabaseSoftwareImagesSortOrderAsc,
 	"DESC": ListDatabaseSoftwareImagesSortOrderDesc,
+}
+
+var mappingListDatabaseSoftwareImagesSortOrderEnumLowerCase = map[string]ListDatabaseSoftwareImagesSortOrderEnum{
+	"asc":  ListDatabaseSoftwareImagesSortOrderAsc,
+	"desc": ListDatabaseSoftwareImagesSortOrderDesc,
 }
 
 // GetListDatabaseSoftwareImagesSortOrderEnumValues Enumerates the set of values for ListDatabaseSoftwareImagesSortOrderEnum
@@ -213,11 +218,6 @@ func GetListDatabaseSoftwareImagesSortOrderEnumStringValues() []string {
 
 // GetMappingListDatabaseSoftwareImagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseSoftwareImagesSortOrderEnum(val string) (ListDatabaseSoftwareImagesSortOrderEnum, bool) {
-	mappingListDatabaseSoftwareImagesSortOrderEnumIgnoreCase := make(map[string]ListDatabaseSoftwareImagesSortOrderEnum)
-	for k, v := range mappingListDatabaseSoftwareImagesSortOrderEnum {
-		mappingListDatabaseSoftwareImagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseSoftwareImagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseSoftwareImagesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

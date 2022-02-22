@@ -6,7 +6,7 @@ package datalabelingservicedataplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -150,6 +150,11 @@ var mappingListAnnotationsSortOrderEnum = map[string]ListAnnotationsSortOrderEnu
 	"DESC": ListAnnotationsSortOrderDesc,
 }
 
+var mappingListAnnotationsSortOrderEnumLowerCase = map[string]ListAnnotationsSortOrderEnum{
+	"asc":  ListAnnotationsSortOrderAsc,
+	"desc": ListAnnotationsSortOrderDesc,
+}
+
 // GetListAnnotationsSortOrderEnumValues Enumerates the set of values for ListAnnotationsSortOrderEnum
 func GetListAnnotationsSortOrderEnumValues() []ListAnnotationsSortOrderEnum {
 	values := make([]ListAnnotationsSortOrderEnum, 0)
@@ -169,12 +174,7 @@ func GetListAnnotationsSortOrderEnumStringValues() []string {
 
 // GetMappingListAnnotationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAnnotationsSortOrderEnum(val string) (ListAnnotationsSortOrderEnum, bool) {
-	mappingListAnnotationsSortOrderEnumIgnoreCase := make(map[string]ListAnnotationsSortOrderEnum)
-	for k, v := range mappingListAnnotationsSortOrderEnum {
-		mappingListAnnotationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAnnotationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAnnotationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -189,6 +189,11 @@ const (
 
 var mappingListAnnotationsSortByEnum = map[string]ListAnnotationsSortByEnum{
 	"timeCreated": ListAnnotationsSortByTimecreated,
+	"label":       ListAnnotationsSortByLabel,
+}
+
+var mappingListAnnotationsSortByEnumLowerCase = map[string]ListAnnotationsSortByEnum{
+	"timecreated": ListAnnotationsSortByTimecreated,
 	"label":       ListAnnotationsSortByLabel,
 }
 
@@ -211,11 +216,6 @@ func GetListAnnotationsSortByEnumStringValues() []string {
 
 // GetMappingListAnnotationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAnnotationsSortByEnum(val string) (ListAnnotationsSortByEnum, bool) {
-	mappingListAnnotationsSortByEnumIgnoreCase := make(map[string]ListAnnotationsSortByEnum)
-	for k, v := range mappingListAnnotationsSortByEnum {
-		mappingListAnnotationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAnnotationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAnnotationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,11 @@ var mappingConnectionDetailsProtocolEnum = map[string]ConnectionDetailsProtocolE
 	"TCPS": ConnectionDetailsProtocolTcps,
 }
 
+var mappingConnectionDetailsProtocolEnumLowerCase = map[string]ConnectionDetailsProtocolEnum{
+	"tcp":  ConnectionDetailsProtocolTcp,
+	"tcps": ConnectionDetailsProtocolTcps,
+}
+
 // GetConnectionDetailsProtocolEnumValues Enumerates the set of values for ConnectionDetailsProtocolEnum
 func GetConnectionDetailsProtocolEnumValues() []ConnectionDetailsProtocolEnum {
 	values := make([]ConnectionDetailsProtocolEnum, 0)
@@ -85,11 +90,6 @@ func GetConnectionDetailsProtocolEnumStringValues() []string {
 
 // GetMappingConnectionDetailsProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConnectionDetailsProtocolEnum(val string) (ConnectionDetailsProtocolEnum, bool) {
-	mappingConnectionDetailsProtocolEnumIgnoreCase := make(map[string]ConnectionDetailsProtocolEnum)
-	for k, v := range mappingConnectionDetailsProtocolEnum {
-		mappingConnectionDetailsProtocolEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConnectionDetailsProtocolEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConnectionDetailsProtocolEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

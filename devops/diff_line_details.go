@@ -11,7 +11,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -68,6 +68,13 @@ var mappingDiffLineDetailsConflictMarkerEnum = map[string]DiffLineDetailsConflic
 	"NONE":   DiffLineDetailsConflictMarkerNone,
 }
 
+var mappingDiffLineDetailsConflictMarkerEnumLowerCase = map[string]DiffLineDetailsConflictMarkerEnum{
+	"base":   DiffLineDetailsConflictMarkerBase,
+	"target": DiffLineDetailsConflictMarkerTarget,
+	"marker": DiffLineDetailsConflictMarkerMarker,
+	"none":   DiffLineDetailsConflictMarkerNone,
+}
+
 // GetDiffLineDetailsConflictMarkerEnumValues Enumerates the set of values for DiffLineDetailsConflictMarkerEnum
 func GetDiffLineDetailsConflictMarkerEnumValues() []DiffLineDetailsConflictMarkerEnum {
 	values := make([]DiffLineDetailsConflictMarkerEnum, 0)
@@ -89,11 +96,6 @@ func GetDiffLineDetailsConflictMarkerEnumStringValues() []string {
 
 // GetMappingDiffLineDetailsConflictMarkerEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDiffLineDetailsConflictMarkerEnum(val string) (DiffLineDetailsConflictMarkerEnum, bool) {
-	mappingDiffLineDetailsConflictMarkerEnumIgnoreCase := make(map[string]DiffLineDetailsConflictMarkerEnum)
-	for k, v := range mappingDiffLineDetailsConflictMarkerEnum {
-		mappingDiffLineDetailsConflictMarkerEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDiffLineDetailsConflictMarkerEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDiffLineDetailsConflictMarkerEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

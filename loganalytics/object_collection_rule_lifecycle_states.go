@@ -29,6 +29,12 @@ var mappingObjectCollectionRuleLifecycleStatesEnum = map[string]ObjectCollection
 	"INACTIVE": ObjectCollectionRuleLifecycleStatesInactive,
 }
 
+var mappingObjectCollectionRuleLifecycleStatesEnumLowerCase = map[string]ObjectCollectionRuleLifecycleStatesEnum{
+	"active":   ObjectCollectionRuleLifecycleStatesActive,
+	"deleted":  ObjectCollectionRuleLifecycleStatesDeleted,
+	"inactive": ObjectCollectionRuleLifecycleStatesInactive,
+}
+
 // GetObjectCollectionRuleLifecycleStatesEnumValues Enumerates the set of values for ObjectCollectionRuleLifecycleStatesEnum
 func GetObjectCollectionRuleLifecycleStatesEnumValues() []ObjectCollectionRuleLifecycleStatesEnum {
 	values := make([]ObjectCollectionRuleLifecycleStatesEnum, 0)
@@ -49,11 +55,6 @@ func GetObjectCollectionRuleLifecycleStatesEnumStringValues() []string {
 
 // GetMappingObjectCollectionRuleLifecycleStatesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingObjectCollectionRuleLifecycleStatesEnum(val string) (ObjectCollectionRuleLifecycleStatesEnum, bool) {
-	mappingObjectCollectionRuleLifecycleStatesEnumIgnoreCase := make(map[string]ObjectCollectionRuleLifecycleStatesEnum)
-	for k, v := range mappingObjectCollectionRuleLifecycleStatesEnum {
-		mappingObjectCollectionRuleLifecycleStatesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingObjectCollectionRuleLifecycleStatesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingObjectCollectionRuleLifecycleStatesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

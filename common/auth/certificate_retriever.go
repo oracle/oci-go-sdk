@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 )
 
 // x509CertificateRetriever provides an X509 certificate with the RSA private key

@@ -39,6 +39,17 @@ var mappingRevocationReasonEnum = map[string]RevocationReasonEnum{
 	"AA_COMPROMISE":          RevocationReasonAaCompromise,
 }
 
+var mappingRevocationReasonEnumLowerCase = map[string]RevocationReasonEnum{
+	"unspecified":            RevocationReasonUnspecified,
+	"key_compromise":         RevocationReasonKeyCompromise,
+	"ca_compromise":          RevocationReasonCaCompromise,
+	"affiliation_changed":    RevocationReasonAffiliationChanged,
+	"superseded":             RevocationReasonSuperseded,
+	"cessation_of_operation": RevocationReasonCessationOfOperation,
+	"privilege_withdrawn":    RevocationReasonPrivilegeWithdrawn,
+	"aa_compromise":          RevocationReasonAaCompromise,
+}
+
 // GetRevocationReasonEnumValues Enumerates the set of values for RevocationReasonEnum
 func GetRevocationReasonEnumValues() []RevocationReasonEnum {
 	values := make([]RevocationReasonEnum, 0)
@@ -64,11 +75,6 @@ func GetRevocationReasonEnumStringValues() []string {
 
 // GetMappingRevocationReasonEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRevocationReasonEnum(val string) (RevocationReasonEnum, bool) {
-	mappingRevocationReasonEnumIgnoreCase := make(map[string]RevocationReasonEnum)
-	for k, v := range mappingRevocationReasonEnum {
-		mappingRevocationReasonEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRevocationReasonEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRevocationReasonEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -5,7 +5,7 @@
 // Application Performance Monitoring Control Plane API
 //
 // Use the Application Performance Monitoring Control Plane API to perform operations such as creating, updating,
-// deleting and listing APM domains and monitoring the progress of these operations using the work request APIs.
+// deleting and listing APM domains and monitoring the progress of these operations using the work request APIs. For more information, see Application Performance Monitoring (https://docs.cloud.oracle.com/iaas/application-performance-monitoring/index.html).
 //
 
 package apmcontrolplane
@@ -13,8 +13,8 @@ package apmcontrolplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
-	"github.com/oracle/oci-go-sdk/v58/common/auth"
+	"github.com/oracle/oci-go-sdk/v59/common"
+	"github.com/oracle/oci-go-sdk/v59/common/auth"
 	"net/http"
 )
 
@@ -52,7 +52,7 @@ func NewApmDomainClientWithOboToken(configProvider common.ConfigurationProvider,
 
 func newApmDomainClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client ApmDomainClient, err error) {
 	// ApmDomain service default circuit breaker is enabled
-	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSetting())
+	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName())
 	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 
@@ -90,9 +90,10 @@ func (client *ApmDomainClient) ConfigurationProvider() *common.ConfigurationProv
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/ChangeApmDomainCompartment.go.html to see an example of how to use ChangeApmDomainCompartment API.
+// A default retry strategy applies to this operation ChangeApmDomainCompartment()
 func (client ApmDomainClient) ChangeApmDomainCompartment(ctx context.Context, request ChangeApmDomainCompartmentRequest) (response ChangeApmDomainCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -150,9 +151,10 @@ func (client ApmDomainClient) changeApmDomainCompartment(ctx context.Context, re
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/CreateApmDomain.go.html to see an example of how to use CreateApmDomain API.
+// A default retry strategy applies to this operation CreateApmDomain()
 func (client ApmDomainClient) CreateApmDomain(ctx context.Context, request CreateApmDomainRequest) (response CreateApmDomainResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -212,9 +214,10 @@ func (client ApmDomainClient) createApmDomain(ctx context.Context, request commo
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/DeleteApmDomain.go.html to see an example of how to use DeleteApmDomain API.
+// A default retry strategy applies to this operation DeleteApmDomain()
 func (client ApmDomainClient) DeleteApmDomain(ctx context.Context, request DeleteApmDomainRequest) (response DeleteApmDomainResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -268,9 +271,10 @@ func (client ApmDomainClient) deleteApmDomain(ctx context.Context, request commo
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/GenerateDataKeys.go.html to see an example of how to use GenerateDataKeys API.
+// A default retry strategy applies to this operation GenerateDataKeys()
 func (client ApmDomainClient) GenerateDataKeys(ctx context.Context, request GenerateDataKeysRequest) (response GenerateDataKeysResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -323,9 +327,10 @@ func (client ApmDomainClient) generateDataKeys(ctx context.Context, request comm
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/GetApmDomain.go.html to see an example of how to use GetApmDomain API.
+// A default retry strategy applies to this operation GetApmDomain()
 func (client ApmDomainClient) GetApmDomain(ctx context.Context, request GetApmDomainRequest) (response GetApmDomainResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -378,9 +383,10 @@ func (client ApmDomainClient) getApmDomain(ctx context.Context, request common.O
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/GetWorkRequest.go.html to see an example of how to use GetWorkRequest API.
+// A default retry strategy applies to this operation GetWorkRequest()
 func (client ApmDomainClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -433,9 +439,10 @@ func (client ApmDomainClient) getWorkRequest(ctx context.Context, request common
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/ListApmDomainWorkRequests.go.html to see an example of how to use ListApmDomainWorkRequests API.
+// A default retry strategy applies to this operation ListApmDomainWorkRequests()
 func (client ApmDomainClient) ListApmDomainWorkRequests(ctx context.Context, request ListApmDomainWorkRequestsRequest) (response ListApmDomainWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -488,9 +495,10 @@ func (client ApmDomainClient) listApmDomainWorkRequests(ctx context.Context, req
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/ListApmDomains.go.html to see an example of how to use ListApmDomains API.
+// A default retry strategy applies to this operation ListApmDomains()
 func (client ApmDomainClient) ListApmDomains(ctx context.Context, request ListApmDomainsRequest) (response ListApmDomainsResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -544,9 +552,10 @@ func (client ApmDomainClient) listApmDomains(ctx context.Context, request common
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/ListDataKeys.go.html to see an example of how to use ListDataKeys API.
+// A default retry strategy applies to this operation ListDataKeys()
 func (client ApmDomainClient) ListDataKeys(ctx context.Context, request ListDataKeysRequest) (response ListDataKeysResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -599,9 +608,10 @@ func (client ApmDomainClient) listDataKeys(ctx context.Context, request common.O
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/ListWorkRequestErrors.go.html to see an example of how to use ListWorkRequestErrors API.
+// A default retry strategy applies to this operation ListWorkRequestErrors()
 func (client ApmDomainClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -654,9 +664,10 @@ func (client ApmDomainClient) listWorkRequestErrors(ctx context.Context, request
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/ListWorkRequestLogs.go.html to see an example of how to use ListWorkRequestLogs API.
+// A default retry strategy applies to this operation ListWorkRequestLogs()
 func (client ApmDomainClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -709,9 +720,10 @@ func (client ApmDomainClient) listWorkRequestLogs(ctx context.Context, request c
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/ListWorkRequests.go.html to see an example of how to use ListWorkRequests API.
+// A default retry strategy applies to this operation ListWorkRequests()
 func (client ApmDomainClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -765,9 +777,10 @@ func (client ApmDomainClient) listWorkRequests(ctx context.Context, request comm
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/RemoveDataKeys.go.html to see an example of how to use RemoveDataKeys API.
+// A default retry strategy applies to this operation RemoveDataKeys()
 func (client ApmDomainClient) RemoveDataKeys(ctx context.Context, request RemoveDataKeysRequest) (response RemoveDataKeysResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -820,9 +833,10 @@ func (client ApmDomainClient) removeDataKeys(ctx context.Context, request common
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/UpdateApmDomain.go.html to see an example of how to use UpdateApmDomain API.
+// A default retry strategy applies to this operation UpdateApmDomain()
 func (client ApmDomainClient) UpdateApmDomain(ctx context.Context, request UpdateApmDomainRequest) (response UpdateApmDomainResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}

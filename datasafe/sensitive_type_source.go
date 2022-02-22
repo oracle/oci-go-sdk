@@ -27,6 +27,11 @@ var mappingSensitiveTypeSourceEnum = map[string]SensitiveTypeSourceEnum{
 	"USER":   SensitiveTypeSourceUser,
 }
 
+var mappingSensitiveTypeSourceEnumLowerCase = map[string]SensitiveTypeSourceEnum{
+	"oracle": SensitiveTypeSourceOracle,
+	"user":   SensitiveTypeSourceUser,
+}
+
 // GetSensitiveTypeSourceEnumValues Enumerates the set of values for SensitiveTypeSourceEnum
 func GetSensitiveTypeSourceEnumValues() []SensitiveTypeSourceEnum {
 	values := make([]SensitiveTypeSourceEnum, 0)
@@ -46,11 +51,6 @@ func GetSensitiveTypeSourceEnumStringValues() []string {
 
 // GetMappingSensitiveTypeSourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSensitiveTypeSourceEnum(val string) (SensitiveTypeSourceEnum, bool) {
-	mappingSensitiveTypeSourceEnumIgnoreCase := make(map[string]SensitiveTypeSourceEnum)
-	for k, v := range mappingSensitiveTypeSourceEnum {
-		mappingSensitiveTypeSourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSensitiveTypeSourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSensitiveTypeSourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

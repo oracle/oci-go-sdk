@@ -10,9 +10,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/oracle/oci-go-sdk/v58/common"
-	"github.com/oracle/oci-go-sdk/v58/core"
-	"github.com/oracle/oci-go-sdk/v58/example/helpers"
+	"github.com/oracle/oci-go-sdk/v59/common"
+	"github.com/oracle/oci-go-sdk/v59/core"
+	"github.com/oracle/oci-go-sdk/v59/example/helpers"
 )
 
 func ExampleCreateServiceGateway() {

@@ -37,6 +37,16 @@ var mappingSubscriptionLifecycleStateEnum = map[string]SubscriptionLifecycleStat
 	"FAILED":   SubscriptionLifecycleStateFailed,
 }
 
+var mappingSubscriptionLifecycleStateEnumLowerCase = map[string]SubscriptionLifecycleStateEnum{
+	"creating": SubscriptionLifecycleStateCreating,
+	"active":   SubscriptionLifecycleStateActive,
+	"inactive": SubscriptionLifecycleStateInactive,
+	"updating": SubscriptionLifecycleStateUpdating,
+	"deleting": SubscriptionLifecycleStateDeleting,
+	"deleted":  SubscriptionLifecycleStateDeleted,
+	"failed":   SubscriptionLifecycleStateFailed,
+}
+
 // GetSubscriptionLifecycleStateEnumValues Enumerates the set of values for SubscriptionLifecycleStateEnum
 func GetSubscriptionLifecycleStateEnumValues() []SubscriptionLifecycleStateEnum {
 	values := make([]SubscriptionLifecycleStateEnum, 0)
@@ -61,11 +71,6 @@ func GetSubscriptionLifecycleStateEnumStringValues() []string {
 
 // GetMappingSubscriptionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSubscriptionLifecycleStateEnum(val string) (SubscriptionLifecycleStateEnum, bool) {
-	mappingSubscriptionLifecycleStateEnumIgnoreCase := make(map[string]SubscriptionLifecycleStateEnum)
-	for k, v := range mappingSubscriptionLifecycleStateEnum {
-		mappingSubscriptionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSubscriptionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSubscriptionLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

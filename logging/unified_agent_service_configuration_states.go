@@ -27,6 +27,11 @@ var mappingUnifiedAgentServiceConfigurationStatesEnum = map[string]UnifiedAgentS
 	"INVALID": UnifiedAgentServiceConfigurationStatesInvalid,
 }
 
+var mappingUnifiedAgentServiceConfigurationStatesEnumLowerCase = map[string]UnifiedAgentServiceConfigurationStatesEnum{
+	"valid":   UnifiedAgentServiceConfigurationStatesValid,
+	"invalid": UnifiedAgentServiceConfigurationStatesInvalid,
+}
+
 // GetUnifiedAgentServiceConfigurationStatesEnumValues Enumerates the set of values for UnifiedAgentServiceConfigurationStatesEnum
 func GetUnifiedAgentServiceConfigurationStatesEnumValues() []UnifiedAgentServiceConfigurationStatesEnum {
 	values := make([]UnifiedAgentServiceConfigurationStatesEnum, 0)
@@ -46,11 +51,6 @@ func GetUnifiedAgentServiceConfigurationStatesEnumStringValues() []string {
 
 // GetMappingUnifiedAgentServiceConfigurationStatesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUnifiedAgentServiceConfigurationStatesEnum(val string) (UnifiedAgentServiceConfigurationStatesEnum, bool) {
-	mappingUnifiedAgentServiceConfigurationStatesEnumIgnoreCase := make(map[string]UnifiedAgentServiceConfigurationStatesEnum)
-	for k, v := range mappingUnifiedAgentServiceConfigurationStatesEnum {
-		mappingUnifiedAgentServiceConfigurationStatesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUnifiedAgentServiceConfigurationStatesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUnifiedAgentServiceConfigurationStatesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

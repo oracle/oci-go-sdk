@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -153,6 +153,11 @@ var mappingListDiscoveryJobResultsSortOrderEnum = map[string]ListDiscoveryJobRes
 	"DESC": ListDiscoveryJobResultsSortOrderDesc,
 }
 
+var mappingListDiscoveryJobResultsSortOrderEnumLowerCase = map[string]ListDiscoveryJobResultsSortOrderEnum{
+	"asc":  ListDiscoveryJobResultsSortOrderAsc,
+	"desc": ListDiscoveryJobResultsSortOrderDesc,
+}
+
 // GetListDiscoveryJobResultsSortOrderEnumValues Enumerates the set of values for ListDiscoveryJobResultsSortOrderEnum
 func GetListDiscoveryJobResultsSortOrderEnumValues() []ListDiscoveryJobResultsSortOrderEnum {
 	values := make([]ListDiscoveryJobResultsSortOrderEnum, 0)
@@ -172,12 +177,7 @@ func GetListDiscoveryJobResultsSortOrderEnumStringValues() []string {
 
 // GetMappingListDiscoveryJobResultsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDiscoveryJobResultsSortOrderEnum(val string) (ListDiscoveryJobResultsSortOrderEnum, bool) {
-	mappingListDiscoveryJobResultsSortOrderEnumIgnoreCase := make(map[string]ListDiscoveryJobResultsSortOrderEnum)
-	for k, v := range mappingListDiscoveryJobResultsSortOrderEnum {
-		mappingListDiscoveryJobResultsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDiscoveryJobResultsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDiscoveryJobResultsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -203,6 +203,15 @@ var mappingListDiscoveryJobResultsSortByEnum = map[string]ListDiscoveryJobResult
 	"plannedAction": ListDiscoveryJobResultsSortByPlannedaction,
 }
 
+var mappingListDiscoveryJobResultsSortByEnumLowerCase = map[string]ListDiscoveryJobResultsSortByEnum{
+	"discoverytype": ListDiscoveryJobResultsSortByDiscoverytype,
+	"timefinished":  ListDiscoveryJobResultsSortByTimefinished,
+	"schemaname":    ListDiscoveryJobResultsSortBySchemaname,
+	"objectname":    ListDiscoveryJobResultsSortByObjectname,
+	"columnname":    ListDiscoveryJobResultsSortByColumnname,
+	"plannedaction": ListDiscoveryJobResultsSortByPlannedaction,
+}
+
 // GetListDiscoveryJobResultsSortByEnumValues Enumerates the set of values for ListDiscoveryJobResultsSortByEnum
 func GetListDiscoveryJobResultsSortByEnumValues() []ListDiscoveryJobResultsSortByEnum {
 	values := make([]ListDiscoveryJobResultsSortByEnum, 0)
@@ -226,11 +235,6 @@ func GetListDiscoveryJobResultsSortByEnumStringValues() []string {
 
 // GetMappingListDiscoveryJobResultsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDiscoveryJobResultsSortByEnum(val string) (ListDiscoveryJobResultsSortByEnum, bool) {
-	mappingListDiscoveryJobResultsSortByEnumIgnoreCase := make(map[string]ListDiscoveryJobResultsSortByEnum)
-	for k, v := range mappingListDiscoveryJobResultsSortByEnum {
-		mappingListDiscoveryJobResultsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDiscoveryJobResultsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDiscoveryJobResultsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

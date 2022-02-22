@@ -6,7 +6,7 @@ package certificatesmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -161,6 +161,18 @@ var mappingListCertificateAuthoritiesLifecycleStateEnum = map[string]ListCertifi
 	"FAILED":              ListCertificateAuthoritiesLifecycleStateFailed,
 }
 
+var mappingListCertificateAuthoritiesLifecycleStateEnumLowerCase = map[string]ListCertificateAuthoritiesLifecycleStateEnum{
+	"creating":            ListCertificateAuthoritiesLifecycleStateCreating,
+	"active":              ListCertificateAuthoritiesLifecycleStateActive,
+	"updating":            ListCertificateAuthoritiesLifecycleStateUpdating,
+	"deleting":            ListCertificateAuthoritiesLifecycleStateDeleting,
+	"deleted":             ListCertificateAuthoritiesLifecycleStateDeleted,
+	"scheduling_deletion": ListCertificateAuthoritiesLifecycleStateSchedulingDeletion,
+	"pending_deletion":    ListCertificateAuthoritiesLifecycleStatePendingDeletion,
+	"cancelling_deletion": ListCertificateAuthoritiesLifecycleStateCancellingDeletion,
+	"failed":              ListCertificateAuthoritiesLifecycleStateFailed,
+}
+
 // GetListCertificateAuthoritiesLifecycleStateEnumValues Enumerates the set of values for ListCertificateAuthoritiesLifecycleStateEnum
 func GetListCertificateAuthoritiesLifecycleStateEnumValues() []ListCertificateAuthoritiesLifecycleStateEnum {
 	values := make([]ListCertificateAuthoritiesLifecycleStateEnum, 0)
@@ -187,12 +199,7 @@ func GetListCertificateAuthoritiesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListCertificateAuthoritiesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCertificateAuthoritiesLifecycleStateEnum(val string) (ListCertificateAuthoritiesLifecycleStateEnum, bool) {
-	mappingListCertificateAuthoritiesLifecycleStateEnumIgnoreCase := make(map[string]ListCertificateAuthoritiesLifecycleStateEnum)
-	for k, v := range mappingListCertificateAuthoritiesLifecycleStateEnum {
-		mappingListCertificateAuthoritiesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCertificateAuthoritiesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCertificateAuthoritiesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -210,6 +217,12 @@ var mappingListCertificateAuthoritiesSortByEnum = map[string]ListCertificateAuth
 	"NAME":           ListCertificateAuthoritiesSortByName,
 	"EXPIRATIONDATE": ListCertificateAuthoritiesSortByExpirationdate,
 	"TIMECREATED":    ListCertificateAuthoritiesSortByTimecreated,
+}
+
+var mappingListCertificateAuthoritiesSortByEnumLowerCase = map[string]ListCertificateAuthoritiesSortByEnum{
+	"name":           ListCertificateAuthoritiesSortByName,
+	"expirationdate": ListCertificateAuthoritiesSortByExpirationdate,
+	"timecreated":    ListCertificateAuthoritiesSortByTimecreated,
 }
 
 // GetListCertificateAuthoritiesSortByEnumValues Enumerates the set of values for ListCertificateAuthoritiesSortByEnum
@@ -232,12 +245,7 @@ func GetListCertificateAuthoritiesSortByEnumStringValues() []string {
 
 // GetMappingListCertificateAuthoritiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCertificateAuthoritiesSortByEnum(val string) (ListCertificateAuthoritiesSortByEnum, bool) {
-	mappingListCertificateAuthoritiesSortByEnumIgnoreCase := make(map[string]ListCertificateAuthoritiesSortByEnum)
-	for k, v := range mappingListCertificateAuthoritiesSortByEnum {
-		mappingListCertificateAuthoritiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCertificateAuthoritiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCertificateAuthoritiesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -253,6 +261,11 @@ const (
 var mappingListCertificateAuthoritiesSortOrderEnum = map[string]ListCertificateAuthoritiesSortOrderEnum{
 	"ASC":  ListCertificateAuthoritiesSortOrderAsc,
 	"DESC": ListCertificateAuthoritiesSortOrderDesc,
+}
+
+var mappingListCertificateAuthoritiesSortOrderEnumLowerCase = map[string]ListCertificateAuthoritiesSortOrderEnum{
+	"asc":  ListCertificateAuthoritiesSortOrderAsc,
+	"desc": ListCertificateAuthoritiesSortOrderDesc,
 }
 
 // GetListCertificateAuthoritiesSortOrderEnumValues Enumerates the set of values for ListCertificateAuthoritiesSortOrderEnum
@@ -274,11 +287,6 @@ func GetListCertificateAuthoritiesSortOrderEnumStringValues() []string {
 
 // GetMappingListCertificateAuthoritiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCertificateAuthoritiesSortOrderEnum(val string) (ListCertificateAuthoritiesSortOrderEnum, bool) {
-	mappingListCertificateAuthoritiesSortOrderEnumIgnoreCase := make(map[string]ListCertificateAuthoritiesSortOrderEnum)
-	for k, v := range mappingListCertificateAuthoritiesSortOrderEnum {
-		mappingListCertificateAuthoritiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCertificateAuthoritiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCertificateAuthoritiesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

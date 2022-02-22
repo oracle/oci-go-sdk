@@ -16,7 +16,7 @@ package autoscaling
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -76,6 +76,13 @@ var mappingResourcePowerActionActionEnum = map[string]ResourcePowerActionActionE
 	"RESET":     ResourcePowerActionActionReset,
 }
 
+var mappingResourcePowerActionActionEnumLowerCase = map[string]ResourcePowerActionActionEnum{
+	"stop":      ResourcePowerActionActionStop,
+	"start":     ResourcePowerActionActionStart,
+	"softreset": ResourcePowerActionActionSoftreset,
+	"reset":     ResourcePowerActionActionReset,
+}
+
 // GetResourcePowerActionActionEnumValues Enumerates the set of values for ResourcePowerActionActionEnum
 func GetResourcePowerActionActionEnumValues() []ResourcePowerActionActionEnum {
 	values := make([]ResourcePowerActionActionEnum, 0)
@@ -97,11 +104,6 @@ func GetResourcePowerActionActionEnumStringValues() []string {
 
 // GetMappingResourcePowerActionActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingResourcePowerActionActionEnum(val string) (ResourcePowerActionActionEnum, bool) {
-	mappingResourcePowerActionActionEnumIgnoreCase := make(map[string]ResourcePowerActionActionEnum)
-	for k, v := range mappingResourcePowerActionActionEnum {
-		mappingResourcePowerActionActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingResourcePowerActionActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingResourcePowerActionActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

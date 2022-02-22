@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -103,6 +103,11 @@ var mappingComputeInstanceGroupRolloutPolicyPolicyTypeEnum = map[string]ComputeI
 	"COMPUTE_INSTANCE_GROUP_LINEAR_ROLLOUT_POLICY_BY_PERCENTAGE": ComputeInstanceGroupRolloutPolicyPolicyTypePercentage,
 }
 
+var mappingComputeInstanceGroupRolloutPolicyPolicyTypeEnumLowerCase = map[string]ComputeInstanceGroupRolloutPolicyPolicyTypeEnum{
+	"compute_instance_group_linear_rollout_policy_by_count":      ComputeInstanceGroupRolloutPolicyPolicyTypeCount,
+	"compute_instance_group_linear_rollout_policy_by_percentage": ComputeInstanceGroupRolloutPolicyPolicyTypePercentage,
+}
+
 // GetComputeInstanceGroupRolloutPolicyPolicyTypeEnumValues Enumerates the set of values for ComputeInstanceGroupRolloutPolicyPolicyTypeEnum
 func GetComputeInstanceGroupRolloutPolicyPolicyTypeEnumValues() []ComputeInstanceGroupRolloutPolicyPolicyTypeEnum {
 	values := make([]ComputeInstanceGroupRolloutPolicyPolicyTypeEnum, 0)
@@ -122,11 +127,6 @@ func GetComputeInstanceGroupRolloutPolicyPolicyTypeEnumStringValues() []string {
 
 // GetMappingComputeInstanceGroupRolloutPolicyPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingComputeInstanceGroupRolloutPolicyPolicyTypeEnum(val string) (ComputeInstanceGroupRolloutPolicyPolicyTypeEnum, bool) {
-	mappingComputeInstanceGroupRolloutPolicyPolicyTypeEnumIgnoreCase := make(map[string]ComputeInstanceGroupRolloutPolicyPolicyTypeEnum)
-	for k, v := range mappingComputeInstanceGroupRolloutPolicyPolicyTypeEnum {
-		mappingComputeInstanceGroupRolloutPolicyPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingComputeInstanceGroupRolloutPolicyPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingComputeInstanceGroupRolloutPolicyPolicyTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

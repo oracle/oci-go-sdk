@@ -29,6 +29,12 @@ var mappingEntityCloudTypeEnum = map[string]EntityCloudTypeEnum{
 	"ALL":       EntityCloudTypeAll,
 }
 
+var mappingEntityCloudTypeEnumLowerCase = map[string]EntityCloudTypeEnum{
+	"cloud":     EntityCloudTypeCloud,
+	"non_cloud": EntityCloudTypeNonCloud,
+	"all":       EntityCloudTypeAll,
+}
+
 // GetEntityCloudTypeEnumValues Enumerates the set of values for EntityCloudTypeEnum
 func GetEntityCloudTypeEnumValues() []EntityCloudTypeEnum {
 	values := make([]EntityCloudTypeEnum, 0)
@@ -49,11 +55,6 @@ func GetEntityCloudTypeEnumStringValues() []string {
 
 // GetMappingEntityCloudTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEntityCloudTypeEnum(val string) (EntityCloudTypeEnum, bool) {
-	mappingEntityCloudTypeEnumIgnoreCase := make(map[string]EntityCloudTypeEnum)
-	for k, v := range mappingEntityCloudTypeEnum {
-		mappingEntityCloudTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEntityCloudTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEntityCloudTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

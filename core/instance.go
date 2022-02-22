@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -315,6 +315,13 @@ var mappingInstanceLaunchModeEnum = map[string]InstanceLaunchModeEnum{
 	"CUSTOM":          InstanceLaunchModeCustom,
 }
 
+var mappingInstanceLaunchModeEnumLowerCase = map[string]InstanceLaunchModeEnum{
+	"native":          InstanceLaunchModeNative,
+	"emulated":        InstanceLaunchModeEmulated,
+	"paravirtualized": InstanceLaunchModeParavirtualized,
+	"custom":          InstanceLaunchModeCustom,
+}
+
 // GetInstanceLaunchModeEnumValues Enumerates the set of values for InstanceLaunchModeEnum
 func GetInstanceLaunchModeEnumValues() []InstanceLaunchModeEnum {
 	values := make([]InstanceLaunchModeEnum, 0)
@@ -336,12 +343,7 @@ func GetInstanceLaunchModeEnumStringValues() []string {
 
 // GetMappingInstanceLaunchModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceLaunchModeEnum(val string) (InstanceLaunchModeEnum, bool) {
-	mappingInstanceLaunchModeEnumIgnoreCase := make(map[string]InstanceLaunchModeEnum)
-	for k, v := range mappingInstanceLaunchModeEnum {
-		mappingInstanceLaunchModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceLaunchModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceLaunchModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -373,6 +375,18 @@ var mappingInstanceLifecycleStateEnum = map[string]InstanceLifecycleStateEnum{
 	"TERMINATED":     InstanceLifecycleStateTerminated,
 }
 
+var mappingInstanceLifecycleStateEnumLowerCase = map[string]InstanceLifecycleStateEnum{
+	"moving":         InstanceLifecycleStateMoving,
+	"provisioning":   InstanceLifecycleStateProvisioning,
+	"running":        InstanceLifecycleStateRunning,
+	"starting":       InstanceLifecycleStateStarting,
+	"stopping":       InstanceLifecycleStateStopping,
+	"stopped":        InstanceLifecycleStateStopped,
+	"creating_image": InstanceLifecycleStateCreatingImage,
+	"terminating":    InstanceLifecycleStateTerminating,
+	"terminated":     InstanceLifecycleStateTerminated,
+}
+
 // GetInstanceLifecycleStateEnumValues Enumerates the set of values for InstanceLifecycleStateEnum
 func GetInstanceLifecycleStateEnumValues() []InstanceLifecycleStateEnum {
 	values := make([]InstanceLifecycleStateEnum, 0)
@@ -399,11 +413,6 @@ func GetInstanceLifecycleStateEnumStringValues() []string {
 
 // GetMappingInstanceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceLifecycleStateEnum(val string) (InstanceLifecycleStateEnum, bool) {
-	mappingInstanceLifecycleStateEnumIgnoreCase := make(map[string]InstanceLifecycleStateEnum)
-	for k, v := range mappingInstanceLifecycleStateEnum {
-		mappingInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

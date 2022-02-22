@@ -6,7 +6,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -147,6 +147,10 @@ var mappingListIdentityProvidersProtocolEnum = map[string]ListIdentityProvidersP
 	"SAML2": ListIdentityProvidersProtocolSaml2,
 }
 
+var mappingListIdentityProvidersProtocolEnumLowerCase = map[string]ListIdentityProvidersProtocolEnum{
+	"saml2": ListIdentityProvidersProtocolSaml2,
+}
+
 // GetListIdentityProvidersProtocolEnumValues Enumerates the set of values for ListIdentityProvidersProtocolEnum
 func GetListIdentityProvidersProtocolEnumValues() []ListIdentityProvidersProtocolEnum {
 	values := make([]ListIdentityProvidersProtocolEnum, 0)
@@ -165,12 +169,7 @@ func GetListIdentityProvidersProtocolEnumStringValues() []string {
 
 // GetMappingListIdentityProvidersProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListIdentityProvidersProtocolEnum(val string) (ListIdentityProvidersProtocolEnum, bool) {
-	mappingListIdentityProvidersProtocolEnumIgnoreCase := make(map[string]ListIdentityProvidersProtocolEnum)
-	for k, v := range mappingListIdentityProvidersProtocolEnum {
-		mappingListIdentityProvidersProtocolEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListIdentityProvidersProtocolEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListIdentityProvidersProtocolEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -186,6 +185,11 @@ const (
 var mappingListIdentityProvidersSortByEnum = map[string]ListIdentityProvidersSortByEnum{
 	"TIMECREATED": ListIdentityProvidersSortByTimecreated,
 	"NAME":        ListIdentityProvidersSortByName,
+}
+
+var mappingListIdentityProvidersSortByEnumLowerCase = map[string]ListIdentityProvidersSortByEnum{
+	"timecreated": ListIdentityProvidersSortByTimecreated,
+	"name":        ListIdentityProvidersSortByName,
 }
 
 // GetListIdentityProvidersSortByEnumValues Enumerates the set of values for ListIdentityProvidersSortByEnum
@@ -207,12 +211,7 @@ func GetListIdentityProvidersSortByEnumStringValues() []string {
 
 // GetMappingListIdentityProvidersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListIdentityProvidersSortByEnum(val string) (ListIdentityProvidersSortByEnum, bool) {
-	mappingListIdentityProvidersSortByEnumIgnoreCase := make(map[string]ListIdentityProvidersSortByEnum)
-	for k, v := range mappingListIdentityProvidersSortByEnum {
-		mappingListIdentityProvidersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListIdentityProvidersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListIdentityProvidersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -228,6 +227,11 @@ const (
 var mappingListIdentityProvidersSortOrderEnum = map[string]ListIdentityProvidersSortOrderEnum{
 	"ASC":  ListIdentityProvidersSortOrderAsc,
 	"DESC": ListIdentityProvidersSortOrderDesc,
+}
+
+var mappingListIdentityProvidersSortOrderEnumLowerCase = map[string]ListIdentityProvidersSortOrderEnum{
+	"asc":  ListIdentityProvidersSortOrderAsc,
+	"desc": ListIdentityProvidersSortOrderDesc,
 }
 
 // GetListIdentityProvidersSortOrderEnumValues Enumerates the set of values for ListIdentityProvidersSortOrderEnum
@@ -249,11 +253,6 @@ func GetListIdentityProvidersSortOrderEnumStringValues() []string {
 
 // GetMappingListIdentityProvidersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListIdentityProvidersSortOrderEnum(val string) (ListIdentityProvidersSortOrderEnum, bool) {
-	mappingListIdentityProvidersSortOrderEnumIgnoreCase := make(map[string]ListIdentityProvidersSortOrderEnum)
-	for k, v := range mappingListIdentityProvidersSortOrderEnum {
-		mappingListIdentityProvidersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListIdentityProvidersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListIdentityProvidersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

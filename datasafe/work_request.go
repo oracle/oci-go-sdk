@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -262,6 +262,101 @@ var mappingWorkRequestOperationTypeEnum = map[string]WorkRequestOperationTypeEnu
 	"MASKING_JOB":                                WorkRequestOperationTypeMaskingJob,
 }
 
+var mappingWorkRequestOperationTypeEnumLowerCase = map[string]WorkRequestOperationTypeEnum{
+	"enable_data_safe_configuration":             WorkRequestOperationTypeEnableDataSafeConfiguration,
+	"create_private_endpoint":                    WorkRequestOperationTypeCreatePrivateEndpoint,
+	"update_private_endpoint":                    WorkRequestOperationTypeUpdatePrivateEndpoint,
+	"delete_private_endpoint":                    WorkRequestOperationTypeDeletePrivateEndpoint,
+	"change_private_endpoint_compartment":        WorkRequestOperationTypeChangePrivateEndpointCompartment,
+	"create_onprem_connector":                    WorkRequestOperationTypeCreateOnpremConnector,
+	"update_onprem_connector":                    WorkRequestOperationTypeUpdateOnpremConnector,
+	"delete_onprem_connector":                    WorkRequestOperationTypeDeleteOnpremConnector,
+	"update_onprem_connector_wallet":             WorkRequestOperationTypeUpdateOnpremConnectorWallet,
+	"change_onprem_connector_compartment":        WorkRequestOperationTypeChangeOnpremConnectorCompartment,
+	"create_target_database":                     WorkRequestOperationTypeCreateTargetDatabase,
+	"update_target_database":                     WorkRequestOperationTypeUpdateTargetDatabase,
+	"activate_target_database":                   WorkRequestOperationTypeActivateTargetDatabase,
+	"deactivate_target_database":                 WorkRequestOperationTypeDeactivateTargetDatabase,
+	"delete_target_database":                     WorkRequestOperationTypeDeleteTargetDatabase,
+	"change_target_database_compartment":         WorkRequestOperationTypeChangeTargetDatabaseCompartment,
+	"provision_policy":                           WorkRequestOperationTypeProvisionPolicy,
+	"retrieve_policy":                            WorkRequestOperationTypeRetrievePolicy,
+	"update_policy":                              WorkRequestOperationTypeUpdatePolicy,
+	"change_policy_compartment":                  WorkRequestOperationTypeChangePolicyCompartment,
+	"create_user_assessment":                     WorkRequestOperationTypeCreateUserAssessment,
+	"assess_user_assessment":                     WorkRequestOperationTypeAssessUserAssessment,
+	"create_snapshot_user_assessment":            WorkRequestOperationTypeCreateSnapshotUserAssessment,
+	"create_schedule_user_assessment":            WorkRequestOperationTypeCreateScheduleUserAssessment,
+	"compare_with_baseline_user_assessment":      WorkRequestOperationTypeCompareWithBaselineUserAssessment,
+	"delete_user_assessment":                     WorkRequestOperationTypeDeleteUserAssessment,
+	"update_user_assessment":                     WorkRequestOperationTypeUpdateUserAssessment,
+	"change_user_assessment_compartment":         WorkRequestOperationTypeChangeUserAssessmentCompartment,
+	"set_user_assessment_baseline":               WorkRequestOperationTypeSetUserAssessmentBaseline,
+	"unset_user_assessment_baseline":             WorkRequestOperationTypeUnsetUserAssessmentBaseline,
+	"generate_user_assessment_report":            WorkRequestOperationTypeGenerateUserAssessmentReport,
+	"create_security_assessment":                 WorkRequestOperationTypeCreateSecurityAssessment,
+	"create_security_assessment_now":             WorkRequestOperationTypeCreateSecurityAssessmentNow,
+	"assess_security_assessment":                 WorkRequestOperationTypeAssessSecurityAssessment,
+	"create_snapshot_security_assessment":        WorkRequestOperationTypeCreateSnapshotSecurityAssessment,
+	"create_schedule_security_assessment":        WorkRequestOperationTypeCreateScheduleSecurityAssessment,
+	"compare_with_baseline_security_assessment":  WorkRequestOperationTypeCompareWithBaselineSecurityAssessment,
+	"delete_security_assessment":                 WorkRequestOperationTypeDeleteSecurityAssessment,
+	"update_security_assessment":                 WorkRequestOperationTypeUpdateSecurityAssessment,
+	"change_security_assessment_compartment":     WorkRequestOperationTypeChangeSecurityAssessmentCompartment,
+	"set_security_assessment_baseline":           WorkRequestOperationTypeSetSecurityAssessmentBaseline,
+	"unset_security_assessment_baseline":         WorkRequestOperationTypeUnsetSecurityAssessmentBaseline,
+	"generate_security_assessment_report":        WorkRequestOperationTypeGenerateSecurityAssessmentReport,
+	"create_audit_profile":                       WorkRequestOperationTypeCreateAuditProfile,
+	"calculate_volume":                           WorkRequestOperationTypeCalculateVolume,
+	"calculate_collected_volume":                 WorkRequestOperationTypeCalculateCollectedVolume,
+	"audit_trail":                                WorkRequestOperationTypeAuditTrail,
+	"delete_audit_trail":                         WorkRequestOperationTypeDeleteAuditTrail,
+	"discover_audit_trails":                      WorkRequestOperationTypeDiscoverAuditTrails,
+	"update_audit_trail":                         WorkRequestOperationTypeUpdateAuditTrail,
+	"update_audit_profile":                       WorkRequestOperationTypeUpdateAuditProfile,
+	"audit_change_compartment":                   WorkRequestOperationTypeAuditChangeCompartment,
+	"create_report_definition":                   WorkRequestOperationTypeCreateReportDefinition,
+	"update_report_definition":                   WorkRequestOperationTypeUpdateReportDefinition,
+	"change_report_definition_compartment":       WorkRequestOperationTypeChangeReportDefinitionCompartment,
+	"delete_report_definition":                   WorkRequestOperationTypeDeleteReportDefinition,
+	"generate_report":                            WorkRequestOperationTypeGenerateReport,
+	"change_report_compartment":                  WorkRequestOperationTypeChangeReportCompartment,
+	"delete_archive_retrieval":                   WorkRequestOperationTypeDeleteArchiveRetrieval,
+	"create_archive_retrieval":                   WorkRequestOperationTypeCreateArchiveRetrieval,
+	"update_archive_retrieval":                   WorkRequestOperationTypeUpdateArchiveRetrieval,
+	"change_archive_retrieval_compartment":       WorkRequestOperationTypeChangeArchiveRetrievalCompartment,
+	"update_alert":                               WorkRequestOperationTypeUpdateAlert,
+	"target_alert_policy_association":            WorkRequestOperationTypeTargetAlertPolicyAssociation,
+	"create_sensitive_data_model":                WorkRequestOperationTypeCreateSensitiveDataModel,
+	"update_sensitive_data_model":                WorkRequestOperationTypeUpdateSensitiveDataModel,
+	"delete_sensitive_data_model":                WorkRequestOperationTypeDeleteSensitiveDataModel,
+	"upload_sensitive_data_model":                WorkRequestOperationTypeUploadSensitiveDataModel,
+	"generate_sensitive_data_model_for_download": WorkRequestOperationTypeGenerateSensitiveDataModelForDownload,
+	"create_sensitive_column":                    WorkRequestOperationTypeCreateSensitiveColumn,
+	"update_sensitive_column":                    WorkRequestOperationTypeUpdateSensitiveColumn,
+	"patch_sensitive_columns":                    WorkRequestOperationTypePatchSensitiveColumns,
+	"create_discovery_job":                       WorkRequestOperationTypeCreateDiscoveryJob,
+	"delete_discovery_job":                       WorkRequestOperationTypeDeleteDiscoveryJob,
+	"patch_discovery_job_result":                 WorkRequestOperationTypePatchDiscoveryJobResult,
+	"apply_discovery_job_result":                 WorkRequestOperationTypeApplyDiscoveryJobResult,
+	"generate_discovery_report":                  WorkRequestOperationTypeGenerateDiscoveryReport,
+	"create_sensitive_type":                      WorkRequestOperationTypeCreateSensitiveType,
+	"update_sensitive_type":                      WorkRequestOperationTypeUpdateSensitiveType,
+	"create_masking_policy":                      WorkRequestOperationTypeCreateMaskingPolicy,
+	"update_masking_policy":                      WorkRequestOperationTypeUpdateMaskingPolicy,
+	"delete_masking_policy":                      WorkRequestOperationTypeDeleteMaskingPolicy,
+	"upload_masking_policy":                      WorkRequestOperationTypeUploadMaskingPolicy,
+	"generate_masking_policy_for_download":       WorkRequestOperationTypeGenerateMaskingPolicyForDownload,
+	"create_masking_column":                      WorkRequestOperationTypeCreateMaskingColumn,
+	"update_masking_column":                      WorkRequestOperationTypeUpdateMaskingColumn,
+	"patch_masking_columns":                      WorkRequestOperationTypePatchMaskingColumns,
+	"generate_masking_report":                    WorkRequestOperationTypeGenerateMaskingReport,
+	"create_library_masking_format":              WorkRequestOperationTypeCreateLibraryMaskingFormat,
+	"update_library_masking_format":              WorkRequestOperationTypeUpdateLibraryMaskingFormat,
+	"add_columns_from_sdm":                       WorkRequestOperationTypeAddColumnsFromSdm,
+	"masking_job":                                WorkRequestOperationTypeMaskingJob,
+}
+
 // GetWorkRequestOperationTypeEnumValues Enumerates the set of values for WorkRequestOperationTypeEnum
 func GetWorkRequestOperationTypeEnumValues() []WorkRequestOperationTypeEnum {
 	values := make([]WorkRequestOperationTypeEnum, 0)
@@ -371,12 +466,7 @@ func GetWorkRequestOperationTypeEnumStringValues() []string {
 
 // GetMappingWorkRequestOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestOperationTypeEnum(val string) (WorkRequestOperationTypeEnum, bool) {
-	mappingWorkRequestOperationTypeEnumIgnoreCase := make(map[string]WorkRequestOperationTypeEnum)
-	for k, v := range mappingWorkRequestOperationTypeEnum {
-		mappingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -406,6 +496,17 @@ var mappingWorkRequestStatusEnum = map[string]WorkRequestStatusEnum{
 	"SUSPENDED":   WorkRequestStatusSuspended,
 }
 
+var mappingWorkRequestStatusEnumLowerCase = map[string]WorkRequestStatusEnum{
+	"accepted":    WorkRequestStatusAccepted,
+	"in_progress": WorkRequestStatusInProgress,
+	"failed":      WorkRequestStatusFailed,
+	"succeeded":   WorkRequestStatusSucceeded,
+	"canceling":   WorkRequestStatusCanceling,
+	"canceled":    WorkRequestStatusCanceled,
+	"suspending":  WorkRequestStatusSuspending,
+	"suspended":   WorkRequestStatusSuspended,
+}
+
 // GetWorkRequestStatusEnumValues Enumerates the set of values for WorkRequestStatusEnum
 func GetWorkRequestStatusEnumValues() []WorkRequestStatusEnum {
 	values := make([]WorkRequestStatusEnum, 0)
@@ -431,11 +532,6 @@ func GetWorkRequestStatusEnumStringValues() []string {
 
 // GetMappingWorkRequestStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestStatusEnum(val string) (WorkRequestStatusEnum, bool) {
-	mappingWorkRequestStatusEnumIgnoreCase := make(map[string]WorkRequestStatusEnum)
-	for k, v := range mappingWorkRequestStatusEnum {
-		mappingWorkRequestStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

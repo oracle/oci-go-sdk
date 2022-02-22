@@ -6,7 +6,7 @@ package loadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -146,6 +146,11 @@ var mappingListLoadBalancersSortByEnum = map[string]ListLoadBalancersSortByEnum{
 	"DISPLAYNAME": ListLoadBalancersSortByDisplayname,
 }
 
+var mappingListLoadBalancersSortByEnumLowerCase = map[string]ListLoadBalancersSortByEnum{
+	"timecreated": ListLoadBalancersSortByTimecreated,
+	"displayname": ListLoadBalancersSortByDisplayname,
+}
+
 // GetListLoadBalancersSortByEnumValues Enumerates the set of values for ListLoadBalancersSortByEnum
 func GetListLoadBalancersSortByEnumValues() []ListLoadBalancersSortByEnum {
 	values := make([]ListLoadBalancersSortByEnum, 0)
@@ -165,12 +170,7 @@ func GetListLoadBalancersSortByEnumStringValues() []string {
 
 // GetMappingListLoadBalancersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLoadBalancersSortByEnum(val string) (ListLoadBalancersSortByEnum, bool) {
-	mappingListLoadBalancersSortByEnumIgnoreCase := make(map[string]ListLoadBalancersSortByEnum)
-	for k, v := range mappingListLoadBalancersSortByEnum {
-		mappingListLoadBalancersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLoadBalancersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLoadBalancersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -186,6 +186,11 @@ const (
 var mappingListLoadBalancersSortOrderEnum = map[string]ListLoadBalancersSortOrderEnum{
 	"ASC":  ListLoadBalancersSortOrderAsc,
 	"DESC": ListLoadBalancersSortOrderDesc,
+}
+
+var mappingListLoadBalancersSortOrderEnumLowerCase = map[string]ListLoadBalancersSortOrderEnum{
+	"asc":  ListLoadBalancersSortOrderAsc,
+	"desc": ListLoadBalancersSortOrderDesc,
 }
 
 // GetListLoadBalancersSortOrderEnumValues Enumerates the set of values for ListLoadBalancersSortOrderEnum
@@ -207,11 +212,6 @@ func GetListLoadBalancersSortOrderEnumStringValues() []string {
 
 // GetMappingListLoadBalancersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLoadBalancersSortOrderEnum(val string) (ListLoadBalancersSortOrderEnum, bool) {
-	mappingListLoadBalancersSortOrderEnumIgnoreCase := make(map[string]ListLoadBalancersSortOrderEnum)
-	for k, v := range mappingListLoadBalancersSortOrderEnum {
-		mappingListLoadBalancersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLoadBalancersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLoadBalancersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

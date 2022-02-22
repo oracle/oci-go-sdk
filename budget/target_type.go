@@ -27,6 +27,11 @@ var mappingTargetTypeEnum = map[string]TargetTypeEnum{
 	"TAG":         TargetTypeTag,
 }
 
+var mappingTargetTypeEnumLowerCase = map[string]TargetTypeEnum{
+	"compartment": TargetTypeCompartment,
+	"tag":         TargetTypeTag,
+}
+
 // GetTargetTypeEnumValues Enumerates the set of values for TargetTypeEnum
 func GetTargetTypeEnumValues() []TargetTypeEnum {
 	values := make([]TargetTypeEnum, 0)
@@ -46,11 +51,6 @@ func GetTargetTypeEnumStringValues() []string {
 
 // GetMappingTargetTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTargetTypeEnum(val string) (TargetTypeEnum, bool) {
-	mappingTargetTypeEnumIgnoreCase := make(map[string]TargetTypeEnum)
-	for k, v := range mappingTargetTypeEnum {
-		mappingTargetTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTargetTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTargetTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

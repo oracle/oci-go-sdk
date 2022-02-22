@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -138,6 +138,10 @@ var mappingBuildStageRunProgressImageEnum = map[string]BuildStageRunProgressImag
 	"OL7_X86_64_STANDARD_10": BuildStageRunProgressImageOl7X8664Standard10,
 }
 
+var mappingBuildStageRunProgressImageEnumLowerCase = map[string]BuildStageRunProgressImageEnum{
+	"ol7_x86_64_standard_10": BuildStageRunProgressImageOl7X8664Standard10,
+}
+
 // GetBuildStageRunProgressImageEnumValues Enumerates the set of values for BuildStageRunProgressImageEnum
 func GetBuildStageRunProgressImageEnumValues() []BuildStageRunProgressImageEnum {
 	values := make([]BuildStageRunProgressImageEnum, 0)
@@ -156,11 +160,6 @@ func GetBuildStageRunProgressImageEnumStringValues() []string {
 
 // GetMappingBuildStageRunProgressImageEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBuildStageRunProgressImageEnum(val string) (BuildStageRunProgressImageEnum, bool) {
-	mappingBuildStageRunProgressImageEnumIgnoreCase := make(map[string]BuildStageRunProgressImageEnum)
-	for k, v := range mappingBuildStageRunProgressImageEnum {
-		mappingBuildStageRunProgressImageEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBuildStageRunProgressImageEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBuildStageRunProgressImageEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

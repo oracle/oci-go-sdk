@@ -27,6 +27,11 @@ var mappingRequestMethodsEnum = map[string]RequestMethodsEnum{
 	"POST": RequestMethodsPost,
 }
 
+var mappingRequestMethodsEnumLowerCase = map[string]RequestMethodsEnum{
+	"get":  RequestMethodsGet,
+	"post": RequestMethodsPost,
+}
+
 // GetRequestMethodsEnumValues Enumerates the set of values for RequestMethodsEnum
 func GetRequestMethodsEnumValues() []RequestMethodsEnum {
 	values := make([]RequestMethodsEnum, 0)
@@ -46,11 +51,6 @@ func GetRequestMethodsEnumStringValues() []string {
 
 // GetMappingRequestMethodsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRequestMethodsEnum(val string) (RequestMethodsEnum, bool) {
-	mappingRequestMethodsEnumIgnoreCase := make(map[string]RequestMethodsEnum)
-	for k, v := range mappingRequestMethodsEnum {
-		mappingRequestMethodsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRequestMethodsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRequestMethodsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

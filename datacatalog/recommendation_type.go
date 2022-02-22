@@ -26,6 +26,10 @@ var mappingRecommendationTypeEnum = map[string]RecommendationTypeEnum{
 	"LINK_GLOSSARY_TERM": RecommendationTypeLinkGlossaryTerm,
 }
 
+var mappingRecommendationTypeEnumLowerCase = map[string]RecommendationTypeEnum{
+	"link_glossary_term": RecommendationTypeLinkGlossaryTerm,
+}
+
 // GetRecommendationTypeEnumValues Enumerates the set of values for RecommendationTypeEnum
 func GetRecommendationTypeEnumValues() []RecommendationTypeEnum {
 	values := make([]RecommendationTypeEnum, 0)
@@ -44,11 +48,6 @@ func GetRecommendationTypeEnumStringValues() []string {
 
 // GetMappingRecommendationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRecommendationTypeEnum(val string) (RecommendationTypeEnum, bool) {
-	mappingRecommendationTypeEnumIgnoreCase := make(map[string]RecommendationTypeEnum)
-	for k, v := range mappingRecommendationTypeEnum {
-		mappingRecommendationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRecommendationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRecommendationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

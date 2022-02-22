@@ -12,7 +12,7 @@ package ons
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -90,6 +90,12 @@ var mappingNotificationTopicSummaryLifecycleStateEnum = map[string]NotificationT
 	"CREATING": NotificationTopicSummaryLifecycleStateCreating,
 }
 
+var mappingNotificationTopicSummaryLifecycleStateEnumLowerCase = map[string]NotificationTopicSummaryLifecycleStateEnum{
+	"active":   NotificationTopicSummaryLifecycleStateActive,
+	"deleting": NotificationTopicSummaryLifecycleStateDeleting,
+	"creating": NotificationTopicSummaryLifecycleStateCreating,
+}
+
 // GetNotificationTopicSummaryLifecycleStateEnumValues Enumerates the set of values for NotificationTopicSummaryLifecycleStateEnum
 func GetNotificationTopicSummaryLifecycleStateEnumValues() []NotificationTopicSummaryLifecycleStateEnum {
 	values := make([]NotificationTopicSummaryLifecycleStateEnum, 0)
@@ -110,11 +116,6 @@ func GetNotificationTopicSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingNotificationTopicSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNotificationTopicSummaryLifecycleStateEnum(val string) (NotificationTopicSummaryLifecycleStateEnum, bool) {
-	mappingNotificationTopicSummaryLifecycleStateEnumIgnoreCase := make(map[string]NotificationTopicSummaryLifecycleStateEnum)
-	for k, v := range mappingNotificationTopicSummaryLifecycleStateEnum {
-		mappingNotificationTopicSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNotificationTopicSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNotificationTopicSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

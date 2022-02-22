@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -203,6 +203,15 @@ var mappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum = 
 	"EXTERNAL-NONCDB": SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeExternalNoncdb,
 }
 
+var mappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnumLowerCase = map[string]SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum{
+	"adw-s":           SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAdwS,
+	"atp-s":           SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAtpS,
+	"adw-d":           SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAdwD,
+	"atp-d":           SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAtpD,
+	"external-pdb":    SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeExternalPdb,
+	"external-noncdb": SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeExternalNoncdb,
+}
+
 // GetSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum
 func GetSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnumValues() []SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum {
 	values := make([]SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum, 0)
@@ -226,11 +235,6 @@ func GetSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnumString
 
 // GetMappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum(val string) (SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum, bool) {
-	mappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum)
-	for k, v := range mappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum {
-		mappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

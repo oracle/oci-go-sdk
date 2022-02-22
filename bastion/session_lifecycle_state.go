@@ -33,6 +33,14 @@ var mappingSessionLifecycleStateEnum = map[string]SessionLifecycleStateEnum{
 	"FAILED":   SessionLifecycleStateFailed,
 }
 
+var mappingSessionLifecycleStateEnumLowerCase = map[string]SessionLifecycleStateEnum{
+	"creating": SessionLifecycleStateCreating,
+	"active":   SessionLifecycleStateActive,
+	"deleting": SessionLifecycleStateDeleting,
+	"deleted":  SessionLifecycleStateDeleted,
+	"failed":   SessionLifecycleStateFailed,
+}
+
 // GetSessionLifecycleStateEnumValues Enumerates the set of values for SessionLifecycleStateEnum
 func GetSessionLifecycleStateEnumValues() []SessionLifecycleStateEnum {
 	values := make([]SessionLifecycleStateEnum, 0)
@@ -55,11 +63,6 @@ func GetSessionLifecycleStateEnumStringValues() []string {
 
 // GetMappingSessionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSessionLifecycleStateEnum(val string) (SessionLifecycleStateEnum, bool) {
-	mappingSessionLifecycleStateEnumIgnoreCase := make(map[string]SessionLifecycleStateEnum)
-	for k, v := range mappingSessionLifecycleStateEnum {
-		mappingSessionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSessionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSessionLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

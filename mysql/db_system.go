@@ -12,7 +12,7 @@ package mysql
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -130,6 +130,10 @@ type DbSystem struct {
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
 	// Example: `{"foo-namespace": {"bar-key": "value"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+
+	// Whether to run the DB System with InnoDB Redo Logs and the Double Write Buffer enabled or disabled,
+	// and whether to enable or disable syncing of the Binary Logs.
+	CrashRecovery CrashRecoveryStatusEnum `mandatory:"false" json:"crashRecovery,omitempty"`
 }
 
 func (m DbSystem) String() string {
@@ -145,6 +149,9 @@ func (m DbSystem) ValidateEnumValue() (bool, error) {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDbSystemLifecycleStateEnumStringValues(), ",")))
 	}
 
+	if _, ok := GetMappingCrashRecoveryStatusEnum(string(m.CrashRecovery)); !ok && m.CrashRecovery != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CrashRecovery: %s. Supported values are: %s.", m.CrashRecovery, strings.Join(GetCrashRecoveryStatusEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
@@ -176,6 +183,7 @@ func (m *DbSystem) UnmarshalJSON(data []byte) (e error) {
 		LifecycleDetails           *string                           `json:"lifecycleDetails"`
 		FreeformTags               map[string]string                 `json:"freeformTags"`
 		DefinedTags                map[string]map[string]interface{} `json:"definedTags"`
+		CrashRecovery              CrashRecoveryStatusEnum           `json:"crashRecovery"`
 		Id                         *string                           `json:"id"`
 		DisplayName                *string                           `json:"displayName"`
 		CompartmentId              *string                           `json:"compartmentId"`
@@ -251,6 +259,8 @@ func (m *DbSystem) UnmarshalJSON(data []byte) (e error) {
 
 	m.DefinedTags = model.DefinedTags
 
+	m.CrashRecovery = model.CrashRecovery
+
 	m.Id = model.Id
 
 	m.DisplayName = model.DisplayName
@@ -298,6 +308,16 @@ var mappingDbSystemLifecycleStateEnum = map[string]DbSystemLifecycleStateEnum{
 	"FAILED":   DbSystemLifecycleStateFailed,
 }
 
+var mappingDbSystemLifecycleStateEnumLowerCase = map[string]DbSystemLifecycleStateEnum{
+	"creating": DbSystemLifecycleStateCreating,
+	"active":   DbSystemLifecycleStateActive,
+	"inactive": DbSystemLifecycleStateInactive,
+	"updating": DbSystemLifecycleStateUpdating,
+	"deleting": DbSystemLifecycleStateDeleting,
+	"deleted":  DbSystemLifecycleStateDeleted,
+	"failed":   DbSystemLifecycleStateFailed,
+}
+
 // GetDbSystemLifecycleStateEnumValues Enumerates the set of values for DbSystemLifecycleStateEnum
 func GetDbSystemLifecycleStateEnumValues() []DbSystemLifecycleStateEnum {
 	values := make([]DbSystemLifecycleStateEnum, 0)
@@ -322,11 +342,6 @@ func GetDbSystemLifecycleStateEnumStringValues() []string {
 
 // GetMappingDbSystemLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDbSystemLifecycleStateEnum(val string) (DbSystemLifecycleStateEnum, bool) {
-	mappingDbSystemLifecycleStateEnumIgnoreCase := make(map[string]DbSystemLifecycleStateEnum)
-	for k, v := range mappingDbSystemLifecycleStateEnum {
-		mappingDbSystemLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDbSystemLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDbSystemLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

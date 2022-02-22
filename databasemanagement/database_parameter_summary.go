@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -152,6 +152,15 @@ var mappingDatabaseParameterSummaryTypeEnum = map[string]DatabaseParameterSummar
 	"RESERVED":    DatabaseParameterSummaryTypeReserved,
 }
 
+var mappingDatabaseParameterSummaryTypeEnumLowerCase = map[string]DatabaseParameterSummaryTypeEnum{
+	"boolean":     DatabaseParameterSummaryTypeBoolean,
+	"string":      DatabaseParameterSummaryTypeString,
+	"integer":     DatabaseParameterSummaryTypeInteger,
+	"filename":    DatabaseParameterSummaryTypeFilename,
+	"big_integer": DatabaseParameterSummaryTypeBigInteger,
+	"reserved":    DatabaseParameterSummaryTypeReserved,
+}
+
 // GetDatabaseParameterSummaryTypeEnumValues Enumerates the set of values for DatabaseParameterSummaryTypeEnum
 func GetDatabaseParameterSummaryTypeEnumValues() []DatabaseParameterSummaryTypeEnum {
 	values := make([]DatabaseParameterSummaryTypeEnum, 0)
@@ -175,12 +184,7 @@ func GetDatabaseParameterSummaryTypeEnumStringValues() []string {
 
 // GetMappingDatabaseParameterSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseParameterSummaryTypeEnum(val string) (DatabaseParameterSummaryTypeEnum, bool) {
-	mappingDatabaseParameterSummaryTypeEnumIgnoreCase := make(map[string]DatabaseParameterSummaryTypeEnum)
-	for k, v := range mappingDatabaseParameterSummaryTypeEnum {
-		mappingDatabaseParameterSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseParameterSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseParameterSummaryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -198,6 +202,12 @@ var mappingDatabaseParameterSummaryIsSystemModifiableEnum = map[string]DatabaseP
 	"IMMEDIATE": DatabaseParameterSummaryIsSystemModifiableImmediate,
 	"DEFERRED":  DatabaseParameterSummaryIsSystemModifiableDeferred,
 	"FALSE":     DatabaseParameterSummaryIsSystemModifiableFalse,
+}
+
+var mappingDatabaseParameterSummaryIsSystemModifiableEnumLowerCase = map[string]DatabaseParameterSummaryIsSystemModifiableEnum{
+	"immediate": DatabaseParameterSummaryIsSystemModifiableImmediate,
+	"deferred":  DatabaseParameterSummaryIsSystemModifiableDeferred,
+	"false":     DatabaseParameterSummaryIsSystemModifiableFalse,
 }
 
 // GetDatabaseParameterSummaryIsSystemModifiableEnumValues Enumerates the set of values for DatabaseParameterSummaryIsSystemModifiableEnum
@@ -220,12 +230,7 @@ func GetDatabaseParameterSummaryIsSystemModifiableEnumStringValues() []string {
 
 // GetMappingDatabaseParameterSummaryIsSystemModifiableEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseParameterSummaryIsSystemModifiableEnum(val string) (DatabaseParameterSummaryIsSystemModifiableEnum, bool) {
-	mappingDatabaseParameterSummaryIsSystemModifiableEnumIgnoreCase := make(map[string]DatabaseParameterSummaryIsSystemModifiableEnum)
-	for k, v := range mappingDatabaseParameterSummaryIsSystemModifiableEnum {
-		mappingDatabaseParameterSummaryIsSystemModifiableEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseParameterSummaryIsSystemModifiableEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseParameterSummaryIsSystemModifiableEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -241,6 +246,11 @@ const (
 var mappingDatabaseParameterSummaryIsModifiedEnum = map[string]DatabaseParameterSummaryIsModifiedEnum{
 	"MODIFIED": DatabaseParameterSummaryIsModifiedModified,
 	"FALSE":    DatabaseParameterSummaryIsModifiedFalse,
+}
+
+var mappingDatabaseParameterSummaryIsModifiedEnumLowerCase = map[string]DatabaseParameterSummaryIsModifiedEnum{
+	"modified": DatabaseParameterSummaryIsModifiedModified,
+	"false":    DatabaseParameterSummaryIsModifiedFalse,
 }
 
 // GetDatabaseParameterSummaryIsModifiedEnumValues Enumerates the set of values for DatabaseParameterSummaryIsModifiedEnum
@@ -262,12 +272,7 @@ func GetDatabaseParameterSummaryIsModifiedEnumStringValues() []string {
 
 // GetMappingDatabaseParameterSummaryIsModifiedEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseParameterSummaryIsModifiedEnum(val string) (DatabaseParameterSummaryIsModifiedEnum, bool) {
-	mappingDatabaseParameterSummaryIsModifiedEnumIgnoreCase := make(map[string]DatabaseParameterSummaryIsModifiedEnum)
-	for k, v := range mappingDatabaseParameterSummaryIsModifiedEnum {
-		mappingDatabaseParameterSummaryIsModifiedEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseParameterSummaryIsModifiedEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseParameterSummaryIsModifiedEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -285,6 +290,12 @@ var mappingDatabaseParameterSummaryConstraintEnum = map[string]DatabaseParameter
 	"UNIQUE":    DatabaseParameterSummaryConstraintUnique,
 	"IDENTICAL": DatabaseParameterSummaryConstraintIdentical,
 	"NONE":      DatabaseParameterSummaryConstraintNone,
+}
+
+var mappingDatabaseParameterSummaryConstraintEnumLowerCase = map[string]DatabaseParameterSummaryConstraintEnum{
+	"unique":    DatabaseParameterSummaryConstraintUnique,
+	"identical": DatabaseParameterSummaryConstraintIdentical,
+	"none":      DatabaseParameterSummaryConstraintNone,
 }
 
 // GetDatabaseParameterSummaryConstraintEnumValues Enumerates the set of values for DatabaseParameterSummaryConstraintEnum
@@ -307,11 +318,6 @@ func GetDatabaseParameterSummaryConstraintEnumStringValues() []string {
 
 // GetMappingDatabaseParameterSummaryConstraintEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseParameterSummaryConstraintEnum(val string) (DatabaseParameterSummaryConstraintEnum, bool) {
-	mappingDatabaseParameterSummaryConstraintEnumIgnoreCase := make(map[string]DatabaseParameterSummaryConstraintEnum)
-	for k, v := range mappingDatabaseParameterSummaryConstraintEnum {
-		mappingDatabaseParameterSummaryConstraintEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseParameterSummaryConstraintEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseParameterSummaryConstraintEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

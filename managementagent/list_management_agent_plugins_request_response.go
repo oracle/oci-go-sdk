@@ -6,7 +6,7 @@ package managementagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,11 @@ var mappingListManagementAgentPluginsSortOrderEnum = map[string]ListManagementAg
 	"DESC": ListManagementAgentPluginsSortOrderDesc,
 }
 
+var mappingListManagementAgentPluginsSortOrderEnumLowerCase = map[string]ListManagementAgentPluginsSortOrderEnum{
+	"asc":  ListManagementAgentPluginsSortOrderAsc,
+	"desc": ListManagementAgentPluginsSortOrderDesc,
+}
+
 // GetListManagementAgentPluginsSortOrderEnumValues Enumerates the set of values for ListManagementAgentPluginsSortOrderEnum
 func GetListManagementAgentPluginsSortOrderEnumValues() []ListManagementAgentPluginsSortOrderEnum {
 	values := make([]ListManagementAgentPluginsSortOrderEnum, 0)
@@ -163,12 +168,7 @@ func GetListManagementAgentPluginsSortOrderEnumStringValues() []string {
 
 // GetMappingListManagementAgentPluginsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagementAgentPluginsSortOrderEnum(val string) (ListManagementAgentPluginsSortOrderEnum, bool) {
-	mappingListManagementAgentPluginsSortOrderEnumIgnoreCase := make(map[string]ListManagementAgentPluginsSortOrderEnum)
-	for k, v := range mappingListManagementAgentPluginsSortOrderEnum {
-		mappingListManagementAgentPluginsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagementAgentPluginsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagementAgentPluginsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -182,6 +182,10 @@ const (
 
 var mappingListManagementAgentPluginsSortByEnum = map[string]ListManagementAgentPluginsSortByEnum{
 	"displayName": ListManagementAgentPluginsSortByDisplayname,
+}
+
+var mappingListManagementAgentPluginsSortByEnumLowerCase = map[string]ListManagementAgentPluginsSortByEnum{
+	"displayname": ListManagementAgentPluginsSortByDisplayname,
 }
 
 // GetListManagementAgentPluginsSortByEnumValues Enumerates the set of values for ListManagementAgentPluginsSortByEnum
@@ -202,12 +206,7 @@ func GetListManagementAgentPluginsSortByEnumStringValues() []string {
 
 // GetMappingListManagementAgentPluginsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagementAgentPluginsSortByEnum(val string) (ListManagementAgentPluginsSortByEnum, bool) {
-	mappingListManagementAgentPluginsSortByEnumIgnoreCase := make(map[string]ListManagementAgentPluginsSortByEnum)
-	for k, v := range mappingListManagementAgentPluginsSortByEnum {
-		mappingListManagementAgentPluginsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagementAgentPluginsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagementAgentPluginsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -237,6 +236,17 @@ var mappingListManagementAgentPluginsLifecycleStateEnum = map[string]ListManagem
 	"FAILED":     ListManagementAgentPluginsLifecycleStateFailed,
 }
 
+var mappingListManagementAgentPluginsLifecycleStateEnumLowerCase = map[string]ListManagementAgentPluginsLifecycleStateEnum{
+	"creating":   ListManagementAgentPluginsLifecycleStateCreating,
+	"updating":   ListManagementAgentPluginsLifecycleStateUpdating,
+	"active":     ListManagementAgentPluginsLifecycleStateActive,
+	"inactive":   ListManagementAgentPluginsLifecycleStateInactive,
+	"terminated": ListManagementAgentPluginsLifecycleStateTerminated,
+	"deleting":   ListManagementAgentPluginsLifecycleStateDeleting,
+	"deleted":    ListManagementAgentPluginsLifecycleStateDeleted,
+	"failed":     ListManagementAgentPluginsLifecycleStateFailed,
+}
+
 // GetListManagementAgentPluginsLifecycleStateEnumValues Enumerates the set of values for ListManagementAgentPluginsLifecycleStateEnum
 func GetListManagementAgentPluginsLifecycleStateEnumValues() []ListManagementAgentPluginsLifecycleStateEnum {
 	values := make([]ListManagementAgentPluginsLifecycleStateEnum, 0)
@@ -262,11 +272,6 @@ func GetListManagementAgentPluginsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListManagementAgentPluginsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagementAgentPluginsLifecycleStateEnum(val string) (ListManagementAgentPluginsLifecycleStateEnum, bool) {
-	mappingListManagementAgentPluginsLifecycleStateEnumIgnoreCase := make(map[string]ListManagementAgentPluginsLifecycleStateEnum)
-	for k, v := range mappingListManagementAgentPluginsLifecycleStateEnum {
-		mappingListManagementAgentPluginsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagementAgentPluginsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagementAgentPluginsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

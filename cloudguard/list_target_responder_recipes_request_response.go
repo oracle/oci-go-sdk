@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -148,6 +148,16 @@ var mappingListTargetResponderRecipesLifecycleStateEnum = map[string]ListTargetR
 	"FAILED":   ListTargetResponderRecipesLifecycleStateFailed,
 }
 
+var mappingListTargetResponderRecipesLifecycleStateEnumLowerCase = map[string]ListTargetResponderRecipesLifecycleStateEnum{
+	"creating": ListTargetResponderRecipesLifecycleStateCreating,
+	"updating": ListTargetResponderRecipesLifecycleStateUpdating,
+	"active":   ListTargetResponderRecipesLifecycleStateActive,
+	"inactive": ListTargetResponderRecipesLifecycleStateInactive,
+	"deleting": ListTargetResponderRecipesLifecycleStateDeleting,
+	"deleted":  ListTargetResponderRecipesLifecycleStateDeleted,
+	"failed":   ListTargetResponderRecipesLifecycleStateFailed,
+}
+
 // GetListTargetResponderRecipesLifecycleStateEnumValues Enumerates the set of values for ListTargetResponderRecipesLifecycleStateEnum
 func GetListTargetResponderRecipesLifecycleStateEnumValues() []ListTargetResponderRecipesLifecycleStateEnum {
 	values := make([]ListTargetResponderRecipesLifecycleStateEnum, 0)
@@ -172,12 +182,7 @@ func GetListTargetResponderRecipesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListTargetResponderRecipesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTargetResponderRecipesLifecycleStateEnum(val string) (ListTargetResponderRecipesLifecycleStateEnum, bool) {
-	mappingListTargetResponderRecipesLifecycleStateEnumIgnoreCase := make(map[string]ListTargetResponderRecipesLifecycleStateEnum)
-	for k, v := range mappingListTargetResponderRecipesLifecycleStateEnum {
-		mappingListTargetResponderRecipesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTargetResponderRecipesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTargetResponderRecipesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -193,6 +198,11 @@ const (
 var mappingListTargetResponderRecipesSortOrderEnum = map[string]ListTargetResponderRecipesSortOrderEnum{
 	"ASC":  ListTargetResponderRecipesSortOrderAsc,
 	"DESC": ListTargetResponderRecipesSortOrderDesc,
+}
+
+var mappingListTargetResponderRecipesSortOrderEnumLowerCase = map[string]ListTargetResponderRecipesSortOrderEnum{
+	"asc":  ListTargetResponderRecipesSortOrderAsc,
+	"desc": ListTargetResponderRecipesSortOrderDesc,
 }
 
 // GetListTargetResponderRecipesSortOrderEnumValues Enumerates the set of values for ListTargetResponderRecipesSortOrderEnum
@@ -214,12 +224,7 @@ func GetListTargetResponderRecipesSortOrderEnumStringValues() []string {
 
 // GetMappingListTargetResponderRecipesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTargetResponderRecipesSortOrderEnum(val string) (ListTargetResponderRecipesSortOrderEnum, bool) {
-	mappingListTargetResponderRecipesSortOrderEnumIgnoreCase := make(map[string]ListTargetResponderRecipesSortOrderEnum)
-	for k, v := range mappingListTargetResponderRecipesSortOrderEnum {
-		mappingListTargetResponderRecipesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTargetResponderRecipesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTargetResponderRecipesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -235,6 +240,11 @@ const (
 var mappingListTargetResponderRecipesSortByEnum = map[string]ListTargetResponderRecipesSortByEnum{
 	"timeCreated": ListTargetResponderRecipesSortByTimecreated,
 	"displayName": ListTargetResponderRecipesSortByDisplayname,
+}
+
+var mappingListTargetResponderRecipesSortByEnumLowerCase = map[string]ListTargetResponderRecipesSortByEnum{
+	"timecreated": ListTargetResponderRecipesSortByTimecreated,
+	"displayname": ListTargetResponderRecipesSortByDisplayname,
 }
 
 // GetListTargetResponderRecipesSortByEnumValues Enumerates the set of values for ListTargetResponderRecipesSortByEnum
@@ -256,11 +266,6 @@ func GetListTargetResponderRecipesSortByEnumStringValues() []string {
 
 // GetMappingListTargetResponderRecipesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTargetResponderRecipesSortByEnum(val string) (ListTargetResponderRecipesSortByEnum, bool) {
-	mappingListTargetResponderRecipesSortByEnumIgnoreCase := make(map[string]ListTargetResponderRecipesSortByEnum)
-	for k, v := range mappingListTargetResponderRecipesSortByEnum {
-		mappingListTargetResponderRecipesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTargetResponderRecipesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTargetResponderRecipesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

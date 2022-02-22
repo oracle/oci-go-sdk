@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -101,6 +101,11 @@ var mappingLogAnalyticsLookupTypeEnum = map[string]LogAnalyticsLookupTypeEnum{
 	"Dictionary": LogAnalyticsLookupTypeDictionary,
 }
 
+var mappingLogAnalyticsLookupTypeEnumLowerCase = map[string]LogAnalyticsLookupTypeEnum{
+	"lookup":     LogAnalyticsLookupTypeLookup,
+	"dictionary": LogAnalyticsLookupTypeDictionary,
+}
+
 // GetLogAnalyticsLookupTypeEnumValues Enumerates the set of values for LogAnalyticsLookupTypeEnum
 func GetLogAnalyticsLookupTypeEnumValues() []LogAnalyticsLookupTypeEnum {
 	values := make([]LogAnalyticsLookupTypeEnum, 0)
@@ -120,11 +125,6 @@ func GetLogAnalyticsLookupTypeEnumStringValues() []string {
 
 // GetMappingLogAnalyticsLookupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogAnalyticsLookupTypeEnum(val string) (LogAnalyticsLookupTypeEnum, bool) {
-	mappingLogAnalyticsLookupTypeEnumIgnoreCase := make(map[string]LogAnalyticsLookupTypeEnum)
-	for k, v := range mappingLogAnalyticsLookupTypeEnum {
-		mappingLogAnalyticsLookupTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogAnalyticsLookupTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogAnalyticsLookupTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

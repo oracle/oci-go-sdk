@@ -11,7 +11,7 @@ package osubusage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,14 @@ var mappingComputedUsageAggregatedSummaryPricingModelEnum = map[string]ComputedU
 	"FUNDED_ALLOCATION": ComputedUsageAggregatedSummaryPricingModelFundedAllocation,
 }
 
+var mappingComputedUsageAggregatedSummaryPricingModelEnumLowerCase = map[string]ComputedUsageAggregatedSummaryPricingModelEnum{
+	"pay_as_you_go":     ComputedUsageAggregatedSummaryPricingModelPayAsYouGo,
+	"monthly":           ComputedUsageAggregatedSummaryPricingModelMonthly,
+	"annual":            ComputedUsageAggregatedSummaryPricingModelAnnual,
+	"prepaid":           ComputedUsageAggregatedSummaryPricingModelPrepaid,
+	"funded_allocation": ComputedUsageAggregatedSummaryPricingModelFundedAllocation,
+}
+
 // GetComputedUsageAggregatedSummaryPricingModelEnumValues Enumerates the set of values for ComputedUsageAggregatedSummaryPricingModelEnum
 func GetComputedUsageAggregatedSummaryPricingModelEnumValues() []ComputedUsageAggregatedSummaryPricingModelEnum {
 	values := make([]ComputedUsageAggregatedSummaryPricingModelEnum, 0)
@@ -109,11 +117,6 @@ func GetComputedUsageAggregatedSummaryPricingModelEnumStringValues() []string {
 
 // GetMappingComputedUsageAggregatedSummaryPricingModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingComputedUsageAggregatedSummaryPricingModelEnum(val string) (ComputedUsageAggregatedSummaryPricingModelEnum, bool) {
-	mappingComputedUsageAggregatedSummaryPricingModelEnumIgnoreCase := make(map[string]ComputedUsageAggregatedSummaryPricingModelEnum)
-	for k, v := range mappingComputedUsageAggregatedSummaryPricingModelEnum {
-		mappingComputedUsageAggregatedSummaryPricingModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingComputedUsageAggregatedSummaryPricingModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingComputedUsageAggregatedSummaryPricingModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

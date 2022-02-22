@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -147,6 +147,11 @@ var mappingListSchedulesSortByEnum = map[string]ListSchedulesSortByEnum{
 	"DISPLAY_NAME": ListSchedulesSortByDisplayName,
 }
 
+var mappingListSchedulesSortByEnumLowerCase = map[string]ListSchedulesSortByEnum{
+	"time_created": ListSchedulesSortByTimeCreated,
+	"display_name": ListSchedulesSortByDisplayName,
+}
+
 // GetListSchedulesSortByEnumValues Enumerates the set of values for ListSchedulesSortByEnum
 func GetListSchedulesSortByEnumValues() []ListSchedulesSortByEnum {
 	values := make([]ListSchedulesSortByEnum, 0)
@@ -166,12 +171,7 @@ func GetListSchedulesSortByEnumStringValues() []string {
 
 // GetMappingListSchedulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSchedulesSortByEnum(val string) (ListSchedulesSortByEnum, bool) {
-	mappingListSchedulesSortByEnumIgnoreCase := make(map[string]ListSchedulesSortByEnum)
-	for k, v := range mappingListSchedulesSortByEnum {
-		mappingListSchedulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSchedulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSchedulesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +187,11 @@ const (
 var mappingListSchedulesSortOrderEnum = map[string]ListSchedulesSortOrderEnum{
 	"ASC":  ListSchedulesSortOrderAsc,
 	"DESC": ListSchedulesSortOrderDesc,
+}
+
+var mappingListSchedulesSortOrderEnumLowerCase = map[string]ListSchedulesSortOrderEnum{
+	"asc":  ListSchedulesSortOrderAsc,
+	"desc": ListSchedulesSortOrderDesc,
 }
 
 // GetListSchedulesSortOrderEnumValues Enumerates the set of values for ListSchedulesSortOrderEnum
@@ -208,11 +213,6 @@ func GetListSchedulesSortOrderEnumStringValues() []string {
 
 // GetMappingListSchedulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSchedulesSortOrderEnum(val string) (ListSchedulesSortOrderEnum, bool) {
-	mappingListSchedulesSortOrderEnumIgnoreCase := make(map[string]ListSchedulesSortOrderEnum)
-	for k, v := range mappingListSchedulesSortOrderEnum {
-		mappingListSchedulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSchedulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSchedulesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

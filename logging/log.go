@@ -11,7 +11,7 @@ package logging
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -101,6 +101,11 @@ var mappingLogLogTypeEnum = map[string]LogLogTypeEnum{
 	"SERVICE": LogLogTypeService,
 }
 
+var mappingLogLogTypeEnumLowerCase = map[string]LogLogTypeEnum{
+	"custom":  LogLogTypeCustom,
+	"service": LogLogTypeService,
+}
+
 // GetLogLogTypeEnumValues Enumerates the set of values for LogLogTypeEnum
 func GetLogLogTypeEnumValues() []LogLogTypeEnum {
 	values := make([]LogLogTypeEnum, 0)
@@ -120,11 +125,6 @@ func GetLogLogTypeEnumStringValues() []string {
 
 // GetMappingLogLogTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogLogTypeEnum(val string) (LogLogTypeEnum, bool) {
-	mappingLogLogTypeEnumIgnoreCase := make(map[string]LogLogTypeEnum)
-	for k, v := range mappingLogLogTypeEnum {
-		mappingLogLogTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogLogTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogLogTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

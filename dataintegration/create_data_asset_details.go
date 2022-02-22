@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -218,6 +218,17 @@ var mappingCreateDataAssetDetailsModelTypeEnum = map[string]CreateDataAssetDetai
 	"AMAZON_S3_DATA_ASSET":             CreateDataAssetDetailsModelTypeAmazonS3DataAsset,
 }
 
+var mappingCreateDataAssetDetailsModelTypeEnumLowerCase = map[string]CreateDataAssetDetailsModelTypeEnum{
+	"oracle_data_asset":                CreateDataAssetDetailsModelTypeOracleDataAsset,
+	"oracle_object_storage_data_asset": CreateDataAssetDetailsModelTypeOracleObjectStorageDataAsset,
+	"oracle_atp_data_asset":            CreateDataAssetDetailsModelTypeOracleAtpDataAsset,
+	"oracle_adwc_data_asset":           CreateDataAssetDetailsModelTypeOracleAdwcDataAsset,
+	"mysql_data_asset":                 CreateDataAssetDetailsModelTypeMysqlDataAsset,
+	"generic_jdbc_data_asset":          CreateDataAssetDetailsModelTypeGenericJdbcDataAsset,
+	"fusion_app_data_asset":            CreateDataAssetDetailsModelTypeFusionAppDataAsset,
+	"amazon_s3_data_asset":             CreateDataAssetDetailsModelTypeAmazonS3DataAsset,
+}
+
 // GetCreateDataAssetDetailsModelTypeEnumValues Enumerates the set of values for CreateDataAssetDetailsModelTypeEnum
 func GetCreateDataAssetDetailsModelTypeEnumValues() []CreateDataAssetDetailsModelTypeEnum {
 	values := make([]CreateDataAssetDetailsModelTypeEnum, 0)
@@ -243,11 +254,6 @@ func GetCreateDataAssetDetailsModelTypeEnumStringValues() []string {
 
 // GetMappingCreateDataAssetDetailsModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateDataAssetDetailsModelTypeEnum(val string) (CreateDataAssetDetailsModelTypeEnum, bool) {
-	mappingCreateDataAssetDetailsModelTypeEnumIgnoreCase := make(map[string]CreateDataAssetDetailsModelTypeEnum)
-	for k, v := range mappingCreateDataAssetDetailsModelTypeEnum {
-		mappingCreateDataAssetDetailsModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateDataAssetDetailsModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateDataAssetDetailsModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

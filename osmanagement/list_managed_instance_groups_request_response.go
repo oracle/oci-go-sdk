@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -143,6 +143,11 @@ var mappingListManagedInstanceGroupsSortOrderEnum = map[string]ListManagedInstan
 	"DESC": ListManagedInstanceGroupsSortOrderDesc,
 }
 
+var mappingListManagedInstanceGroupsSortOrderEnumLowerCase = map[string]ListManagedInstanceGroupsSortOrderEnum{
+	"asc":  ListManagedInstanceGroupsSortOrderAsc,
+	"desc": ListManagedInstanceGroupsSortOrderDesc,
+}
+
 // GetListManagedInstanceGroupsSortOrderEnumValues Enumerates the set of values for ListManagedInstanceGroupsSortOrderEnum
 func GetListManagedInstanceGroupsSortOrderEnumValues() []ListManagedInstanceGroupsSortOrderEnum {
 	values := make([]ListManagedInstanceGroupsSortOrderEnum, 0)
@@ -162,12 +167,7 @@ func GetListManagedInstanceGroupsSortOrderEnumStringValues() []string {
 
 // GetMappingListManagedInstanceGroupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedInstanceGroupsSortOrderEnum(val string) (ListManagedInstanceGroupsSortOrderEnum, bool) {
-	mappingListManagedInstanceGroupsSortOrderEnumIgnoreCase := make(map[string]ListManagedInstanceGroupsSortOrderEnum)
-	for k, v := range mappingListManagedInstanceGroupsSortOrderEnum {
-		mappingListManagedInstanceGroupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedInstanceGroupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedInstanceGroupsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +183,11 @@ const (
 var mappingListManagedInstanceGroupsSortByEnum = map[string]ListManagedInstanceGroupsSortByEnum{
 	"TIMECREATED": ListManagedInstanceGroupsSortByTimecreated,
 	"DISPLAYNAME": ListManagedInstanceGroupsSortByDisplayname,
+}
+
+var mappingListManagedInstanceGroupsSortByEnumLowerCase = map[string]ListManagedInstanceGroupsSortByEnum{
+	"timecreated": ListManagedInstanceGroupsSortByTimecreated,
+	"displayname": ListManagedInstanceGroupsSortByDisplayname,
 }
 
 // GetListManagedInstanceGroupsSortByEnumValues Enumerates the set of values for ListManagedInstanceGroupsSortByEnum
@@ -204,12 +209,7 @@ func GetListManagedInstanceGroupsSortByEnumStringValues() []string {
 
 // GetMappingListManagedInstanceGroupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedInstanceGroupsSortByEnum(val string) (ListManagedInstanceGroupsSortByEnum, bool) {
-	mappingListManagedInstanceGroupsSortByEnumIgnoreCase := make(map[string]ListManagedInstanceGroupsSortByEnum)
-	for k, v := range mappingListManagedInstanceGroupsSortByEnum {
-		mappingListManagedInstanceGroupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedInstanceGroupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedInstanceGroupsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -235,6 +235,15 @@ var mappingListManagedInstanceGroupsLifecycleStateEnum = map[string]ListManagedI
 	"FAILED":   ListManagedInstanceGroupsLifecycleStateFailed,
 }
 
+var mappingListManagedInstanceGroupsLifecycleStateEnumLowerCase = map[string]ListManagedInstanceGroupsLifecycleStateEnum{
+	"creating": ListManagedInstanceGroupsLifecycleStateCreating,
+	"updating": ListManagedInstanceGroupsLifecycleStateUpdating,
+	"active":   ListManagedInstanceGroupsLifecycleStateActive,
+	"deleting": ListManagedInstanceGroupsLifecycleStateDeleting,
+	"deleted":  ListManagedInstanceGroupsLifecycleStateDeleted,
+	"failed":   ListManagedInstanceGroupsLifecycleStateFailed,
+}
+
 // GetListManagedInstanceGroupsLifecycleStateEnumValues Enumerates the set of values for ListManagedInstanceGroupsLifecycleStateEnum
 func GetListManagedInstanceGroupsLifecycleStateEnumValues() []ListManagedInstanceGroupsLifecycleStateEnum {
 	values := make([]ListManagedInstanceGroupsLifecycleStateEnum, 0)
@@ -258,12 +267,7 @@ func GetListManagedInstanceGroupsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListManagedInstanceGroupsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedInstanceGroupsLifecycleStateEnum(val string) (ListManagedInstanceGroupsLifecycleStateEnum, bool) {
-	mappingListManagedInstanceGroupsLifecycleStateEnumIgnoreCase := make(map[string]ListManagedInstanceGroupsLifecycleStateEnum)
-	for k, v := range mappingListManagedInstanceGroupsLifecycleStateEnum {
-		mappingListManagedInstanceGroupsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedInstanceGroupsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedInstanceGroupsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -281,6 +285,12 @@ var mappingListManagedInstanceGroupsOsFamilyEnum = map[string]ListManagedInstanc
 	"LINUX":   ListManagedInstanceGroupsOsFamilyLinux,
 	"WINDOWS": ListManagedInstanceGroupsOsFamilyWindows,
 	"ALL":     ListManagedInstanceGroupsOsFamilyAll,
+}
+
+var mappingListManagedInstanceGroupsOsFamilyEnumLowerCase = map[string]ListManagedInstanceGroupsOsFamilyEnum{
+	"linux":   ListManagedInstanceGroupsOsFamilyLinux,
+	"windows": ListManagedInstanceGroupsOsFamilyWindows,
+	"all":     ListManagedInstanceGroupsOsFamilyAll,
 }
 
 // GetListManagedInstanceGroupsOsFamilyEnumValues Enumerates the set of values for ListManagedInstanceGroupsOsFamilyEnum
@@ -303,11 +313,6 @@ func GetListManagedInstanceGroupsOsFamilyEnumStringValues() []string {
 
 // GetMappingListManagedInstanceGroupsOsFamilyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedInstanceGroupsOsFamilyEnum(val string) (ListManagedInstanceGroupsOsFamilyEnum, bool) {
-	mappingListManagedInstanceGroupsOsFamilyEnumIgnoreCase := make(map[string]ListManagedInstanceGroupsOsFamilyEnum)
-	for k, v := range mappingListManagedInstanceGroupsOsFamilyEnum {
-		mappingListManagedInstanceGroupsOsFamilyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedInstanceGroupsOsFamilyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedInstanceGroupsOsFamilyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

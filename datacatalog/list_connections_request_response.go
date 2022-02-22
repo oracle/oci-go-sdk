@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -183,6 +183,17 @@ var mappingListConnectionsLifecycleStateEnum = map[string]ListConnectionsLifecyc
 	"MOVING":   ListConnectionsLifecycleStateMoving,
 }
 
+var mappingListConnectionsLifecycleStateEnumLowerCase = map[string]ListConnectionsLifecycleStateEnum{
+	"creating": ListConnectionsLifecycleStateCreating,
+	"active":   ListConnectionsLifecycleStateActive,
+	"inactive": ListConnectionsLifecycleStateInactive,
+	"updating": ListConnectionsLifecycleStateUpdating,
+	"deleting": ListConnectionsLifecycleStateDeleting,
+	"deleted":  ListConnectionsLifecycleStateDeleted,
+	"failed":   ListConnectionsLifecycleStateFailed,
+	"moving":   ListConnectionsLifecycleStateMoving,
+}
+
 // GetListConnectionsLifecycleStateEnumValues Enumerates the set of values for ListConnectionsLifecycleStateEnum
 func GetListConnectionsLifecycleStateEnumValues() []ListConnectionsLifecycleStateEnum {
 	values := make([]ListConnectionsLifecycleStateEnum, 0)
@@ -208,12 +219,7 @@ func GetListConnectionsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListConnectionsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConnectionsLifecycleStateEnum(val string) (ListConnectionsLifecycleStateEnum, bool) {
-	mappingListConnectionsLifecycleStateEnumIgnoreCase := make(map[string]ListConnectionsLifecycleStateEnum)
-	for k, v := range mappingListConnectionsLifecycleStateEnum {
-		mappingListConnectionsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConnectionsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConnectionsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -247,6 +253,19 @@ var mappingListConnectionsFieldsEnum = map[string]ListConnectionsFieldsEnum{
 	"uri":            ListConnectionsFieldsUri,
 }
 
+var mappingListConnectionsFieldsEnumLowerCase = map[string]ListConnectionsFieldsEnum{
+	"key":            ListConnectionsFieldsKey,
+	"displayname":    ListConnectionsFieldsDisplayname,
+	"description":    ListConnectionsFieldsDescription,
+	"dataassetkey":   ListConnectionsFieldsDataassetkey,
+	"typekey":        ListConnectionsFieldsTypekey,
+	"timecreated":    ListConnectionsFieldsTimecreated,
+	"externalkey":    ListConnectionsFieldsExternalkey,
+	"lifecyclestate": ListConnectionsFieldsLifecyclestate,
+	"isdefault":      ListConnectionsFieldsIsdefault,
+	"uri":            ListConnectionsFieldsUri,
+}
+
 // GetListConnectionsFieldsEnumValues Enumerates the set of values for ListConnectionsFieldsEnum
 func GetListConnectionsFieldsEnumValues() []ListConnectionsFieldsEnum {
 	values := make([]ListConnectionsFieldsEnum, 0)
@@ -274,12 +293,7 @@ func GetListConnectionsFieldsEnumStringValues() []string {
 
 // GetMappingListConnectionsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConnectionsFieldsEnum(val string) (ListConnectionsFieldsEnum, bool) {
-	mappingListConnectionsFieldsEnumIgnoreCase := make(map[string]ListConnectionsFieldsEnum)
-	for k, v := range mappingListConnectionsFieldsEnum {
-		mappingListConnectionsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConnectionsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConnectionsFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -295,6 +309,11 @@ const (
 var mappingListConnectionsSortByEnum = map[string]ListConnectionsSortByEnum{
 	"TIMECREATED": ListConnectionsSortByTimecreated,
 	"DISPLAYNAME": ListConnectionsSortByDisplayname,
+}
+
+var mappingListConnectionsSortByEnumLowerCase = map[string]ListConnectionsSortByEnum{
+	"timecreated": ListConnectionsSortByTimecreated,
+	"displayname": ListConnectionsSortByDisplayname,
 }
 
 // GetListConnectionsSortByEnumValues Enumerates the set of values for ListConnectionsSortByEnum
@@ -316,12 +335,7 @@ func GetListConnectionsSortByEnumStringValues() []string {
 
 // GetMappingListConnectionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConnectionsSortByEnum(val string) (ListConnectionsSortByEnum, bool) {
-	mappingListConnectionsSortByEnumIgnoreCase := make(map[string]ListConnectionsSortByEnum)
-	for k, v := range mappingListConnectionsSortByEnum {
-		mappingListConnectionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConnectionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConnectionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -337,6 +351,11 @@ const (
 var mappingListConnectionsSortOrderEnum = map[string]ListConnectionsSortOrderEnum{
 	"ASC":  ListConnectionsSortOrderAsc,
 	"DESC": ListConnectionsSortOrderDesc,
+}
+
+var mappingListConnectionsSortOrderEnumLowerCase = map[string]ListConnectionsSortOrderEnum{
+	"asc":  ListConnectionsSortOrderAsc,
+	"desc": ListConnectionsSortOrderDesc,
 }
 
 // GetListConnectionsSortOrderEnumValues Enumerates the set of values for ListConnectionsSortOrderEnum
@@ -358,11 +377,6 @@ func GetListConnectionsSortOrderEnumStringValues() []string {
 
 // GetMappingListConnectionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConnectionsSortOrderEnum(val string) (ListConnectionsSortOrderEnum, bool) {
-	mappingListConnectionsSortOrderEnumIgnoreCase := make(map[string]ListConnectionsSortOrderEnum)
-	for k, v := range mappingListConnectionsSortOrderEnum {
-		mappingListConnectionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConnectionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConnectionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

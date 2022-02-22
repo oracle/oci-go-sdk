@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -175,6 +175,14 @@ var mappingMergeOperatorTriggerRuleEnum = map[string]MergeOperatorTriggerRuleEnu
 	"ONE_FAILED":   MergeOperatorTriggerRuleOneFailed,
 }
 
+var mappingMergeOperatorTriggerRuleEnumLowerCase = map[string]MergeOperatorTriggerRuleEnum{
+	"all_success":  MergeOperatorTriggerRuleAllSuccess,
+	"all_failed":   MergeOperatorTriggerRuleAllFailed,
+	"all_complete": MergeOperatorTriggerRuleAllComplete,
+	"one_success":  MergeOperatorTriggerRuleOneSuccess,
+	"one_failed":   MergeOperatorTriggerRuleOneFailed,
+}
+
 // GetMergeOperatorTriggerRuleEnumValues Enumerates the set of values for MergeOperatorTriggerRuleEnum
 func GetMergeOperatorTriggerRuleEnumValues() []MergeOperatorTriggerRuleEnum {
 	values := make([]MergeOperatorTriggerRuleEnum, 0)
@@ -197,11 +205,6 @@ func GetMergeOperatorTriggerRuleEnumStringValues() []string {
 
 // GetMappingMergeOperatorTriggerRuleEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMergeOperatorTriggerRuleEnum(val string) (MergeOperatorTriggerRuleEnum, bool) {
-	mappingMergeOperatorTriggerRuleEnumIgnoreCase := make(map[string]MergeOperatorTriggerRuleEnum)
-	for k, v := range mappingMergeOperatorTriggerRuleEnum {
-		mappingMergeOperatorTriggerRuleEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMergeOperatorTriggerRuleEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMergeOperatorTriggerRuleEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

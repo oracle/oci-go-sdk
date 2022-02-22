@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -95,6 +95,10 @@ var mappingTriggerActionTypeEnum = map[string]TriggerActionTypeEnum{
 	"TRIGGER_BUILD_PIPELINE": TriggerActionTypeTriggerBuildPipeline,
 }
 
+var mappingTriggerActionTypeEnumLowerCase = map[string]TriggerActionTypeEnum{
+	"trigger_build_pipeline": TriggerActionTypeTriggerBuildPipeline,
+}
+
 // GetTriggerActionTypeEnumValues Enumerates the set of values for TriggerActionTypeEnum
 func GetTriggerActionTypeEnumValues() []TriggerActionTypeEnum {
 	values := make([]TriggerActionTypeEnum, 0)
@@ -113,11 +117,6 @@ func GetTriggerActionTypeEnumStringValues() []string {
 
 // GetMappingTriggerActionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTriggerActionTypeEnum(val string) (TriggerActionTypeEnum, bool) {
-	mappingTriggerActionTypeEnumIgnoreCase := make(map[string]TriggerActionTypeEnum)
-	for k, v := range mappingTriggerActionTypeEnum {
-		mappingTriggerActionTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTriggerActionTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTriggerActionTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

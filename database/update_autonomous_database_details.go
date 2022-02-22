@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -216,6 +216,13 @@ var mappingUpdateAutonomousDatabaseDetailsDbWorkloadEnum = map[string]UpdateAuto
 	"APEX": UpdateAutonomousDatabaseDetailsDbWorkloadApex,
 }
 
+var mappingUpdateAutonomousDatabaseDetailsDbWorkloadEnumLowerCase = map[string]UpdateAutonomousDatabaseDetailsDbWorkloadEnum{
+	"oltp": UpdateAutonomousDatabaseDetailsDbWorkloadOltp,
+	"dw":   UpdateAutonomousDatabaseDetailsDbWorkloadDw,
+	"ajd":  UpdateAutonomousDatabaseDetailsDbWorkloadAjd,
+	"apex": UpdateAutonomousDatabaseDetailsDbWorkloadApex,
+}
+
 // GetUpdateAutonomousDatabaseDetailsDbWorkloadEnumValues Enumerates the set of values for UpdateAutonomousDatabaseDetailsDbWorkloadEnum
 func GetUpdateAutonomousDatabaseDetailsDbWorkloadEnumValues() []UpdateAutonomousDatabaseDetailsDbWorkloadEnum {
 	values := make([]UpdateAutonomousDatabaseDetailsDbWorkloadEnum, 0)
@@ -237,12 +244,7 @@ func GetUpdateAutonomousDatabaseDetailsDbWorkloadEnumStringValues() []string {
 
 // GetMappingUpdateAutonomousDatabaseDetailsDbWorkloadEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateAutonomousDatabaseDetailsDbWorkloadEnum(val string) (UpdateAutonomousDatabaseDetailsDbWorkloadEnum, bool) {
-	mappingUpdateAutonomousDatabaseDetailsDbWorkloadEnumIgnoreCase := make(map[string]UpdateAutonomousDatabaseDetailsDbWorkloadEnum)
-	for k, v := range mappingUpdateAutonomousDatabaseDetailsDbWorkloadEnum {
-		mappingUpdateAutonomousDatabaseDetailsDbWorkloadEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateAutonomousDatabaseDetailsDbWorkloadEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateAutonomousDatabaseDetailsDbWorkloadEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -258,6 +260,11 @@ const (
 var mappingUpdateAutonomousDatabaseDetailsLicenseModelEnum = map[string]UpdateAutonomousDatabaseDetailsLicenseModelEnum{
 	"LICENSE_INCLUDED":       UpdateAutonomousDatabaseDetailsLicenseModelLicenseIncluded,
 	"BRING_YOUR_OWN_LICENSE": UpdateAutonomousDatabaseDetailsLicenseModelBringYourOwnLicense,
+}
+
+var mappingUpdateAutonomousDatabaseDetailsLicenseModelEnumLowerCase = map[string]UpdateAutonomousDatabaseDetailsLicenseModelEnum{
+	"license_included":       UpdateAutonomousDatabaseDetailsLicenseModelLicenseIncluded,
+	"bring_your_own_license": UpdateAutonomousDatabaseDetailsLicenseModelBringYourOwnLicense,
 }
 
 // GetUpdateAutonomousDatabaseDetailsLicenseModelEnumValues Enumerates the set of values for UpdateAutonomousDatabaseDetailsLicenseModelEnum
@@ -279,12 +286,7 @@ func GetUpdateAutonomousDatabaseDetailsLicenseModelEnumStringValues() []string {
 
 // GetMappingUpdateAutonomousDatabaseDetailsLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateAutonomousDatabaseDetailsLicenseModelEnum(val string) (UpdateAutonomousDatabaseDetailsLicenseModelEnum, bool) {
-	mappingUpdateAutonomousDatabaseDetailsLicenseModelEnumIgnoreCase := make(map[string]UpdateAutonomousDatabaseDetailsLicenseModelEnum)
-	for k, v := range mappingUpdateAutonomousDatabaseDetailsLicenseModelEnum {
-		mappingUpdateAutonomousDatabaseDetailsLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateAutonomousDatabaseDetailsLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateAutonomousDatabaseDetailsLicenseModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -300,6 +302,11 @@ const (
 var mappingUpdateAutonomousDatabaseDetailsRefreshableModeEnum = map[string]UpdateAutonomousDatabaseDetailsRefreshableModeEnum{
 	"AUTOMATIC": UpdateAutonomousDatabaseDetailsRefreshableModeAutomatic,
 	"MANUAL":    UpdateAutonomousDatabaseDetailsRefreshableModeManual,
+}
+
+var mappingUpdateAutonomousDatabaseDetailsRefreshableModeEnumLowerCase = map[string]UpdateAutonomousDatabaseDetailsRefreshableModeEnum{
+	"automatic": UpdateAutonomousDatabaseDetailsRefreshableModeAutomatic,
+	"manual":    UpdateAutonomousDatabaseDetailsRefreshableModeManual,
 }
 
 // GetUpdateAutonomousDatabaseDetailsRefreshableModeEnumValues Enumerates the set of values for UpdateAutonomousDatabaseDetailsRefreshableModeEnum
@@ -321,12 +328,7 @@ func GetUpdateAutonomousDatabaseDetailsRefreshableModeEnumStringValues() []strin
 
 // GetMappingUpdateAutonomousDatabaseDetailsRefreshableModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateAutonomousDatabaseDetailsRefreshableModeEnum(val string) (UpdateAutonomousDatabaseDetailsRefreshableModeEnum, bool) {
-	mappingUpdateAutonomousDatabaseDetailsRefreshableModeEnumIgnoreCase := make(map[string]UpdateAutonomousDatabaseDetailsRefreshableModeEnum)
-	for k, v := range mappingUpdateAutonomousDatabaseDetailsRefreshableModeEnum {
-		mappingUpdateAutonomousDatabaseDetailsRefreshableModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateAutonomousDatabaseDetailsRefreshableModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateAutonomousDatabaseDetailsRefreshableModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -342,6 +344,11 @@ const (
 var mappingUpdateAutonomousDatabaseDetailsOpenModeEnum = map[string]UpdateAutonomousDatabaseDetailsOpenModeEnum{
 	"READ_ONLY":  UpdateAutonomousDatabaseDetailsOpenModeOnly,
 	"READ_WRITE": UpdateAutonomousDatabaseDetailsOpenModeWrite,
+}
+
+var mappingUpdateAutonomousDatabaseDetailsOpenModeEnumLowerCase = map[string]UpdateAutonomousDatabaseDetailsOpenModeEnum{
+	"read_only":  UpdateAutonomousDatabaseDetailsOpenModeOnly,
+	"read_write": UpdateAutonomousDatabaseDetailsOpenModeWrite,
 }
 
 // GetUpdateAutonomousDatabaseDetailsOpenModeEnumValues Enumerates the set of values for UpdateAutonomousDatabaseDetailsOpenModeEnum
@@ -363,12 +370,7 @@ func GetUpdateAutonomousDatabaseDetailsOpenModeEnumStringValues() []string {
 
 // GetMappingUpdateAutonomousDatabaseDetailsOpenModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateAutonomousDatabaseDetailsOpenModeEnum(val string) (UpdateAutonomousDatabaseDetailsOpenModeEnum, bool) {
-	mappingUpdateAutonomousDatabaseDetailsOpenModeEnumIgnoreCase := make(map[string]UpdateAutonomousDatabaseDetailsOpenModeEnum)
-	for k, v := range mappingUpdateAutonomousDatabaseDetailsOpenModeEnum {
-		mappingUpdateAutonomousDatabaseDetailsOpenModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateAutonomousDatabaseDetailsOpenModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateAutonomousDatabaseDetailsOpenModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -384,6 +386,11 @@ const (
 var mappingUpdateAutonomousDatabaseDetailsPermissionLevelEnum = map[string]UpdateAutonomousDatabaseDetailsPermissionLevelEnum{
 	"RESTRICTED":   UpdateAutonomousDatabaseDetailsPermissionLevelRestricted,
 	"UNRESTRICTED": UpdateAutonomousDatabaseDetailsPermissionLevelUnrestricted,
+}
+
+var mappingUpdateAutonomousDatabaseDetailsPermissionLevelEnumLowerCase = map[string]UpdateAutonomousDatabaseDetailsPermissionLevelEnum{
+	"restricted":   UpdateAutonomousDatabaseDetailsPermissionLevelRestricted,
+	"unrestricted": UpdateAutonomousDatabaseDetailsPermissionLevelUnrestricted,
 }
 
 // GetUpdateAutonomousDatabaseDetailsPermissionLevelEnumValues Enumerates the set of values for UpdateAutonomousDatabaseDetailsPermissionLevelEnum
@@ -405,11 +412,6 @@ func GetUpdateAutonomousDatabaseDetailsPermissionLevelEnumStringValues() []strin
 
 // GetMappingUpdateAutonomousDatabaseDetailsPermissionLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateAutonomousDatabaseDetailsPermissionLevelEnum(val string) (UpdateAutonomousDatabaseDetailsPermissionLevelEnum, bool) {
-	mappingUpdateAutonomousDatabaseDetailsPermissionLevelEnumIgnoreCase := make(map[string]UpdateAutonomousDatabaseDetailsPermissionLevelEnum)
-	for k, v := range mappingUpdateAutonomousDatabaseDetailsPermissionLevelEnum {
-		mappingUpdateAutonomousDatabaseDetailsPermissionLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateAutonomousDatabaseDetailsPermissionLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateAutonomousDatabaseDetailsPermissionLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

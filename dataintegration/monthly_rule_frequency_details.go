@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -100,6 +100,15 @@ var mappingMonthlyRuleFrequencyDetailsWeekOfMonthEnum = map[string]MonthlyRuleFr
 	"LAST":   MonthlyRuleFrequencyDetailsWeekOfMonthLast,
 }
 
+var mappingMonthlyRuleFrequencyDetailsWeekOfMonthEnumLowerCase = map[string]MonthlyRuleFrequencyDetailsWeekOfMonthEnum{
+	"first":  MonthlyRuleFrequencyDetailsWeekOfMonthFirst,
+	"second": MonthlyRuleFrequencyDetailsWeekOfMonthSecond,
+	"third":  MonthlyRuleFrequencyDetailsWeekOfMonthThird,
+	"fourth": MonthlyRuleFrequencyDetailsWeekOfMonthFourth,
+	"fifth":  MonthlyRuleFrequencyDetailsWeekOfMonthFifth,
+	"last":   MonthlyRuleFrequencyDetailsWeekOfMonthLast,
+}
+
 // GetMonthlyRuleFrequencyDetailsWeekOfMonthEnumValues Enumerates the set of values for MonthlyRuleFrequencyDetailsWeekOfMonthEnum
 func GetMonthlyRuleFrequencyDetailsWeekOfMonthEnumValues() []MonthlyRuleFrequencyDetailsWeekOfMonthEnum {
 	values := make([]MonthlyRuleFrequencyDetailsWeekOfMonthEnum, 0)
@@ -123,12 +132,7 @@ func GetMonthlyRuleFrequencyDetailsWeekOfMonthEnumStringValues() []string {
 
 // GetMappingMonthlyRuleFrequencyDetailsWeekOfMonthEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMonthlyRuleFrequencyDetailsWeekOfMonthEnum(val string) (MonthlyRuleFrequencyDetailsWeekOfMonthEnum, bool) {
-	mappingMonthlyRuleFrequencyDetailsWeekOfMonthEnumIgnoreCase := make(map[string]MonthlyRuleFrequencyDetailsWeekOfMonthEnum)
-	for k, v := range mappingMonthlyRuleFrequencyDetailsWeekOfMonthEnum {
-		mappingMonthlyRuleFrequencyDetailsWeekOfMonthEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMonthlyRuleFrequencyDetailsWeekOfMonthEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMonthlyRuleFrequencyDetailsWeekOfMonthEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -156,6 +160,16 @@ var mappingMonthlyRuleFrequencyDetailsDayOfWeekEnum = map[string]MonthlyRuleFreq
 	"SATURDAY":  MonthlyRuleFrequencyDetailsDayOfWeekSaturday,
 }
 
+var mappingMonthlyRuleFrequencyDetailsDayOfWeekEnumLowerCase = map[string]MonthlyRuleFrequencyDetailsDayOfWeekEnum{
+	"sunday":    MonthlyRuleFrequencyDetailsDayOfWeekSunday,
+	"monday":    MonthlyRuleFrequencyDetailsDayOfWeekMonday,
+	"tuesday":   MonthlyRuleFrequencyDetailsDayOfWeekTuesday,
+	"wednesday": MonthlyRuleFrequencyDetailsDayOfWeekWednesday,
+	"thursday":  MonthlyRuleFrequencyDetailsDayOfWeekThursday,
+	"friday":    MonthlyRuleFrequencyDetailsDayOfWeekFriday,
+	"saturday":  MonthlyRuleFrequencyDetailsDayOfWeekSaturday,
+}
+
 // GetMonthlyRuleFrequencyDetailsDayOfWeekEnumValues Enumerates the set of values for MonthlyRuleFrequencyDetailsDayOfWeekEnum
 func GetMonthlyRuleFrequencyDetailsDayOfWeekEnumValues() []MonthlyRuleFrequencyDetailsDayOfWeekEnum {
 	values := make([]MonthlyRuleFrequencyDetailsDayOfWeekEnum, 0)
@@ -180,11 +194,6 @@ func GetMonthlyRuleFrequencyDetailsDayOfWeekEnumStringValues() []string {
 
 // GetMappingMonthlyRuleFrequencyDetailsDayOfWeekEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMonthlyRuleFrequencyDetailsDayOfWeekEnum(val string) (MonthlyRuleFrequencyDetailsDayOfWeekEnum, bool) {
-	mappingMonthlyRuleFrequencyDetailsDayOfWeekEnumIgnoreCase := make(map[string]MonthlyRuleFrequencyDetailsDayOfWeekEnum)
-	for k, v := range mappingMonthlyRuleFrequencyDetailsDayOfWeekEnum {
-		mappingMonthlyRuleFrequencyDetailsDayOfWeekEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMonthlyRuleFrequencyDetailsDayOfWeekEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMonthlyRuleFrequencyDetailsDayOfWeekEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

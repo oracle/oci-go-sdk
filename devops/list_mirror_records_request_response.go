@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -117,6 +117,11 @@ var mappingListMirrorRecordsSortOrderEnum = map[string]ListMirrorRecordsSortOrde
 	"DESC": ListMirrorRecordsSortOrderDesc,
 }
 
+var mappingListMirrorRecordsSortOrderEnumLowerCase = map[string]ListMirrorRecordsSortOrderEnum{
+	"asc":  ListMirrorRecordsSortOrderAsc,
+	"desc": ListMirrorRecordsSortOrderDesc,
+}
+
 // GetListMirrorRecordsSortOrderEnumValues Enumerates the set of values for ListMirrorRecordsSortOrderEnum
 func GetListMirrorRecordsSortOrderEnumValues() []ListMirrorRecordsSortOrderEnum {
 	values := make([]ListMirrorRecordsSortOrderEnum, 0)
@@ -136,11 +141,6 @@ func GetListMirrorRecordsSortOrderEnumStringValues() []string {
 
 // GetMappingListMirrorRecordsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMirrorRecordsSortOrderEnum(val string) (ListMirrorRecordsSortOrderEnum, bool) {
-	mappingListMirrorRecordsSortOrderEnumIgnoreCase := make(map[string]ListMirrorRecordsSortOrderEnum)
-	for k, v := range mappingListMirrorRecordsSortOrderEnum {
-		mappingListMirrorRecordsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMirrorRecordsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMirrorRecordsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

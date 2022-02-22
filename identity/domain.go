@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -114,6 +114,11 @@ var mappingDomainTypeEnum = map[string]DomainTypeEnum{
 	"SECONDARY": DomainTypeSecondary,
 }
 
+var mappingDomainTypeEnumLowerCase = map[string]DomainTypeEnum{
+	"default":   DomainTypeDefault,
+	"secondary": DomainTypeSecondary,
+}
+
 // GetDomainTypeEnumValues Enumerates the set of values for DomainTypeEnum
 func GetDomainTypeEnumValues() []DomainTypeEnum {
 	values := make([]DomainTypeEnum, 0)
@@ -133,12 +138,7 @@ func GetDomainTypeEnumStringValues() []string {
 
 // GetMappingDomainTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDomainTypeEnum(val string) (DomainTypeEnum, bool) {
-	mappingDomainTypeEnumIgnoreCase := make(map[string]DomainTypeEnum)
-	for k, v := range mappingDomainTypeEnum {
-		mappingDomainTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDomainTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDomainTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -158,6 +158,13 @@ var mappingDomainLifecycleStateEnum = map[string]DomainLifecycleStateEnum{
 	"ACTIVE":   DomainLifecycleStateActive,
 	"DELETING": DomainLifecycleStateDeleting,
 	"INACTIVE": DomainLifecycleStateInactive,
+}
+
+var mappingDomainLifecycleStateEnumLowerCase = map[string]DomainLifecycleStateEnum{
+	"creating": DomainLifecycleStateCreating,
+	"active":   DomainLifecycleStateActive,
+	"deleting": DomainLifecycleStateDeleting,
+	"inactive": DomainLifecycleStateInactive,
 }
 
 // GetDomainLifecycleStateEnumValues Enumerates the set of values for DomainLifecycleStateEnum
@@ -181,12 +188,7 @@ func GetDomainLifecycleStateEnumStringValues() []string {
 
 // GetMappingDomainLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDomainLifecycleStateEnum(val string) (DomainLifecycleStateEnum, bool) {
-	mappingDomainLifecycleStateEnumIgnoreCase := make(map[string]DomainLifecycleStateEnum)
-	for k, v := range mappingDomainLifecycleStateEnum {
-		mappingDomainLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDomainLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDomainLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -204,6 +206,12 @@ var mappingDomainLifecycleDetailsEnum = map[string]DomainLifecycleDetailsEnum{
 	"DEACTIVATING": DomainLifecycleDetailsDeactivating,
 	"ACTIVATING":   DomainLifecycleDetailsActivating,
 	"UPDATING":     DomainLifecycleDetailsUpdating,
+}
+
+var mappingDomainLifecycleDetailsEnumLowerCase = map[string]DomainLifecycleDetailsEnum{
+	"deactivating": DomainLifecycleDetailsDeactivating,
+	"activating":   DomainLifecycleDetailsActivating,
+	"updating":     DomainLifecycleDetailsUpdating,
 }
 
 // GetDomainLifecycleDetailsEnumValues Enumerates the set of values for DomainLifecycleDetailsEnum
@@ -226,11 +234,6 @@ func GetDomainLifecycleDetailsEnumStringValues() []string {
 
 // GetMappingDomainLifecycleDetailsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDomainLifecycleDetailsEnum(val string) (DomainLifecycleDetailsEnum, bool) {
-	mappingDomainLifecycleDetailsEnumIgnoreCase := make(map[string]DomainLifecycleDetailsEnum)
-	for k, v := range mappingDomainLifecycleDetailsEnum {
-		mappingDomainLifecycleDetailsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDomainLifecycleDetailsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDomainLifecycleDetailsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

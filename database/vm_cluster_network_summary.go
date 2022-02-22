@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -113,6 +113,19 @@ var mappingVmClusterNetworkSummaryLifecycleStateEnum = map[string]VmClusterNetwo
 	"FAILED":              VmClusterNetworkSummaryLifecycleStateFailed,
 }
 
+var mappingVmClusterNetworkSummaryLifecycleStateEnumLowerCase = map[string]VmClusterNetworkSummaryLifecycleStateEnum{
+	"creating":            VmClusterNetworkSummaryLifecycleStateCreating,
+	"requires_validation": VmClusterNetworkSummaryLifecycleStateRequiresValidation,
+	"validating":          VmClusterNetworkSummaryLifecycleStateValidating,
+	"validated":           VmClusterNetworkSummaryLifecycleStateValidated,
+	"validation_failed":   VmClusterNetworkSummaryLifecycleStateValidationFailed,
+	"updating":            VmClusterNetworkSummaryLifecycleStateUpdating,
+	"allocated":           VmClusterNetworkSummaryLifecycleStateAllocated,
+	"terminating":         VmClusterNetworkSummaryLifecycleStateTerminating,
+	"terminated":          VmClusterNetworkSummaryLifecycleStateTerminated,
+	"failed":              VmClusterNetworkSummaryLifecycleStateFailed,
+}
+
 // GetVmClusterNetworkSummaryLifecycleStateEnumValues Enumerates the set of values for VmClusterNetworkSummaryLifecycleStateEnum
 func GetVmClusterNetworkSummaryLifecycleStateEnumValues() []VmClusterNetworkSummaryLifecycleStateEnum {
 	values := make([]VmClusterNetworkSummaryLifecycleStateEnum, 0)
@@ -140,11 +153,6 @@ func GetVmClusterNetworkSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingVmClusterNetworkSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVmClusterNetworkSummaryLifecycleStateEnum(val string) (VmClusterNetworkSummaryLifecycleStateEnum, bool) {
-	mappingVmClusterNetworkSummaryLifecycleStateEnumIgnoreCase := make(map[string]VmClusterNetworkSummaryLifecycleStateEnum)
-	for k, v := range mappingVmClusterNetworkSummaryLifecycleStateEnum {
-		mappingVmClusterNetworkSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVmClusterNetworkSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVmClusterNetworkSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

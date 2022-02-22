@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -104,6 +104,12 @@ var mappingDatabaseUpgradeHistoryEntryActionEnum = map[string]DatabaseUpgradeHis
 	"ROLLBACK": DatabaseUpgradeHistoryEntryActionRollback,
 }
 
+var mappingDatabaseUpgradeHistoryEntryActionEnumLowerCase = map[string]DatabaseUpgradeHistoryEntryActionEnum{
+	"precheck": DatabaseUpgradeHistoryEntryActionPrecheck,
+	"upgrade":  DatabaseUpgradeHistoryEntryActionUpgrade,
+	"rollback": DatabaseUpgradeHistoryEntryActionRollback,
+}
+
 // GetDatabaseUpgradeHistoryEntryActionEnumValues Enumerates the set of values for DatabaseUpgradeHistoryEntryActionEnum
 func GetDatabaseUpgradeHistoryEntryActionEnumValues() []DatabaseUpgradeHistoryEntryActionEnum {
 	values := make([]DatabaseUpgradeHistoryEntryActionEnum, 0)
@@ -124,12 +130,7 @@ func GetDatabaseUpgradeHistoryEntryActionEnumStringValues() []string {
 
 // GetMappingDatabaseUpgradeHistoryEntryActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseUpgradeHistoryEntryActionEnum(val string) (DatabaseUpgradeHistoryEntryActionEnum, bool) {
-	mappingDatabaseUpgradeHistoryEntryActionEnumIgnoreCase := make(map[string]DatabaseUpgradeHistoryEntryActionEnum)
-	for k, v := range mappingDatabaseUpgradeHistoryEntryActionEnum {
-		mappingDatabaseUpgradeHistoryEntryActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseUpgradeHistoryEntryActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseUpgradeHistoryEntryActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -147,6 +148,12 @@ var mappingDatabaseUpgradeHistoryEntrySourceEnum = map[string]DatabaseUpgradeHis
 	"DB_HOME":           DatabaseUpgradeHistoryEntrySourceHome,
 	"DB_VERSION":        DatabaseUpgradeHistoryEntrySourceVersion,
 	"DB_SOFTWARE_IMAGE": DatabaseUpgradeHistoryEntrySourceSoftwareImage,
+}
+
+var mappingDatabaseUpgradeHistoryEntrySourceEnumLowerCase = map[string]DatabaseUpgradeHistoryEntrySourceEnum{
+	"db_home":           DatabaseUpgradeHistoryEntrySourceHome,
+	"db_version":        DatabaseUpgradeHistoryEntrySourceVersion,
+	"db_software_image": DatabaseUpgradeHistoryEntrySourceSoftwareImage,
 }
 
 // GetDatabaseUpgradeHistoryEntrySourceEnumValues Enumerates the set of values for DatabaseUpgradeHistoryEntrySourceEnum
@@ -169,12 +176,7 @@ func GetDatabaseUpgradeHistoryEntrySourceEnumStringValues() []string {
 
 // GetMappingDatabaseUpgradeHistoryEntrySourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseUpgradeHistoryEntrySourceEnum(val string) (DatabaseUpgradeHistoryEntrySourceEnum, bool) {
-	mappingDatabaseUpgradeHistoryEntrySourceEnumIgnoreCase := make(map[string]DatabaseUpgradeHistoryEntrySourceEnum)
-	for k, v := range mappingDatabaseUpgradeHistoryEntrySourceEnum {
-		mappingDatabaseUpgradeHistoryEntrySourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseUpgradeHistoryEntrySourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseUpgradeHistoryEntrySourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -192,6 +194,12 @@ var mappingDatabaseUpgradeHistoryEntryLifecycleStateEnum = map[string]DatabaseUp
 	"SUCCEEDED":   DatabaseUpgradeHistoryEntryLifecycleStateSucceeded,
 	"FAILED":      DatabaseUpgradeHistoryEntryLifecycleStateFailed,
 	"IN_PROGRESS": DatabaseUpgradeHistoryEntryLifecycleStateInProgress,
+}
+
+var mappingDatabaseUpgradeHistoryEntryLifecycleStateEnumLowerCase = map[string]DatabaseUpgradeHistoryEntryLifecycleStateEnum{
+	"succeeded":   DatabaseUpgradeHistoryEntryLifecycleStateSucceeded,
+	"failed":      DatabaseUpgradeHistoryEntryLifecycleStateFailed,
+	"in_progress": DatabaseUpgradeHistoryEntryLifecycleStateInProgress,
 }
 
 // GetDatabaseUpgradeHistoryEntryLifecycleStateEnumValues Enumerates the set of values for DatabaseUpgradeHistoryEntryLifecycleStateEnum
@@ -214,11 +222,6 @@ func GetDatabaseUpgradeHistoryEntryLifecycleStateEnumStringValues() []string {
 
 // GetMappingDatabaseUpgradeHistoryEntryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseUpgradeHistoryEntryLifecycleStateEnum(val string) (DatabaseUpgradeHistoryEntryLifecycleStateEnum, bool) {
-	mappingDatabaseUpgradeHistoryEntryLifecycleStateEnumIgnoreCase := make(map[string]DatabaseUpgradeHistoryEntryLifecycleStateEnum)
-	for k, v := range mappingDatabaseUpgradeHistoryEntryLifecycleStateEnum {
-		mappingDatabaseUpgradeHistoryEntryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseUpgradeHistoryEntryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseUpgradeHistoryEntryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

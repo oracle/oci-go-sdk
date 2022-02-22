@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -144,6 +144,11 @@ var mappingListDbSystemsSortByEnum = map[string]ListDbSystemsSortByEnum{
 	"DISPLAYNAME": ListDbSystemsSortByDisplayname,
 }
 
+var mappingListDbSystemsSortByEnumLowerCase = map[string]ListDbSystemsSortByEnum{
+	"timecreated": ListDbSystemsSortByTimecreated,
+	"displayname": ListDbSystemsSortByDisplayname,
+}
+
 // GetListDbSystemsSortByEnumValues Enumerates the set of values for ListDbSystemsSortByEnum
 func GetListDbSystemsSortByEnumValues() []ListDbSystemsSortByEnum {
 	values := make([]ListDbSystemsSortByEnum, 0)
@@ -163,12 +168,7 @@ func GetListDbSystemsSortByEnumStringValues() []string {
 
 // GetMappingListDbSystemsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDbSystemsSortByEnum(val string) (ListDbSystemsSortByEnum, bool) {
-	mappingListDbSystemsSortByEnumIgnoreCase := make(map[string]ListDbSystemsSortByEnum)
-	for k, v := range mappingListDbSystemsSortByEnum {
-		mappingListDbSystemsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDbSystemsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDbSystemsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -184,6 +184,11 @@ const (
 var mappingListDbSystemsSortOrderEnum = map[string]ListDbSystemsSortOrderEnum{
 	"ASC":  ListDbSystemsSortOrderAsc,
 	"DESC": ListDbSystemsSortOrderDesc,
+}
+
+var mappingListDbSystemsSortOrderEnumLowerCase = map[string]ListDbSystemsSortOrderEnum{
+	"asc":  ListDbSystemsSortOrderAsc,
+	"desc": ListDbSystemsSortOrderDesc,
 }
 
 // GetListDbSystemsSortOrderEnumValues Enumerates the set of values for ListDbSystemsSortOrderEnum
@@ -205,11 +210,6 @@ func GetListDbSystemsSortOrderEnumStringValues() []string {
 
 // GetMappingListDbSystemsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDbSystemsSortOrderEnum(val string) (ListDbSystemsSortOrderEnum, bool) {
-	mappingListDbSystemsSortOrderEnumIgnoreCase := make(map[string]ListDbSystemsSortOrderEnum)
-	for k, v := range mappingListDbSystemsSortOrderEnum {
-		mappingListDbSystemsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDbSystemsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDbSystemsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

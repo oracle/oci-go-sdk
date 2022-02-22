@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -137,6 +137,10 @@ var mappingListDatabaseUpgradeHistoryEntriesSortByEnum = map[string]ListDatabase
 	"TIMESTARTED": ListDatabaseUpgradeHistoryEntriesSortByTimestarted,
 }
 
+var mappingListDatabaseUpgradeHistoryEntriesSortByEnumLowerCase = map[string]ListDatabaseUpgradeHistoryEntriesSortByEnum{
+	"timestarted": ListDatabaseUpgradeHistoryEntriesSortByTimestarted,
+}
+
 // GetListDatabaseUpgradeHistoryEntriesSortByEnumValues Enumerates the set of values for ListDatabaseUpgradeHistoryEntriesSortByEnum
 func GetListDatabaseUpgradeHistoryEntriesSortByEnumValues() []ListDatabaseUpgradeHistoryEntriesSortByEnum {
 	values := make([]ListDatabaseUpgradeHistoryEntriesSortByEnum, 0)
@@ -155,12 +159,7 @@ func GetListDatabaseUpgradeHistoryEntriesSortByEnumStringValues() []string {
 
 // GetMappingListDatabaseUpgradeHistoryEntriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseUpgradeHistoryEntriesSortByEnum(val string) (ListDatabaseUpgradeHistoryEntriesSortByEnum, bool) {
-	mappingListDatabaseUpgradeHistoryEntriesSortByEnumIgnoreCase := make(map[string]ListDatabaseUpgradeHistoryEntriesSortByEnum)
-	for k, v := range mappingListDatabaseUpgradeHistoryEntriesSortByEnum {
-		mappingListDatabaseUpgradeHistoryEntriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseUpgradeHistoryEntriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseUpgradeHistoryEntriesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -176,6 +175,11 @@ const (
 var mappingListDatabaseUpgradeHistoryEntriesSortOrderEnum = map[string]ListDatabaseUpgradeHistoryEntriesSortOrderEnum{
 	"ASC":  ListDatabaseUpgradeHistoryEntriesSortOrderAsc,
 	"DESC": ListDatabaseUpgradeHistoryEntriesSortOrderDesc,
+}
+
+var mappingListDatabaseUpgradeHistoryEntriesSortOrderEnumLowerCase = map[string]ListDatabaseUpgradeHistoryEntriesSortOrderEnum{
+	"asc":  ListDatabaseUpgradeHistoryEntriesSortOrderAsc,
+	"desc": ListDatabaseUpgradeHistoryEntriesSortOrderDesc,
 }
 
 // GetListDatabaseUpgradeHistoryEntriesSortOrderEnumValues Enumerates the set of values for ListDatabaseUpgradeHistoryEntriesSortOrderEnum
@@ -197,11 +201,6 @@ func GetListDatabaseUpgradeHistoryEntriesSortOrderEnumStringValues() []string {
 
 // GetMappingListDatabaseUpgradeHistoryEntriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseUpgradeHistoryEntriesSortOrderEnum(val string) (ListDatabaseUpgradeHistoryEntriesSortOrderEnum, bool) {
-	mappingListDatabaseUpgradeHistoryEntriesSortOrderEnumIgnoreCase := make(map[string]ListDatabaseUpgradeHistoryEntriesSortOrderEnum)
-	for k, v := range mappingListDatabaseUpgradeHistoryEntriesSortOrderEnum {
-		mappingListDatabaseUpgradeHistoryEntriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseUpgradeHistoryEntriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseUpgradeHistoryEntriesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -78,6 +78,11 @@ var mappingJsChallengeActionEnum = map[string]JsChallengeActionEnum{
 	"BLOCK":  JsChallengeActionBlock,
 }
 
+var mappingJsChallengeActionEnumLowerCase = map[string]JsChallengeActionEnum{
+	"detect": JsChallengeActionDetect,
+	"block":  JsChallengeActionBlock,
+}
+
 // GetJsChallengeActionEnumValues Enumerates the set of values for JsChallengeActionEnum
 func GetJsChallengeActionEnumValues() []JsChallengeActionEnum {
 	values := make([]JsChallengeActionEnum, 0)
@@ -97,11 +102,6 @@ func GetJsChallengeActionEnumStringValues() []string {
 
 // GetMappingJsChallengeActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJsChallengeActionEnum(val string) (JsChallengeActionEnum, bool) {
-	mappingJsChallengeActionEnumIgnoreCase := make(map[string]JsChallengeActionEnum)
-	for k, v := range mappingJsChallengeActionEnum {
-		mappingJsChallengeActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJsChallengeActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJsChallengeActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

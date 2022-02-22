@@ -27,6 +27,11 @@ var mappingSortOrdersEnum = map[string]SortOrdersEnum{
 	"DESC": SortOrdersDesc,
 }
 
+var mappingSortOrdersEnumLowerCase = map[string]SortOrdersEnum{
+	"asc":  SortOrdersAsc,
+	"desc": SortOrdersDesc,
+}
+
 // GetSortOrdersEnumValues Enumerates the set of values for SortOrdersEnum
 func GetSortOrdersEnumValues() []SortOrdersEnum {
 	values := make([]SortOrdersEnum, 0)
@@ -46,11 +51,6 @@ func GetSortOrdersEnumStringValues() []string {
 
 // GetMappingSortOrdersEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSortOrdersEnum(val string) (SortOrdersEnum, bool) {
-	mappingSortOrdersEnumIgnoreCase := make(map[string]SortOrdersEnum)
-	for k, v := range mappingSortOrdersEnum {
-		mappingSortOrdersEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSortOrdersEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSortOrdersEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -83,6 +83,15 @@ var mappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionRes
 	"MEMORY_SGA": SummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricMemorySga,
 }
 
+var mappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnumLowerCase = map[string]SummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnum{
+	"cpu":        SummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricCpu,
+	"storage":    SummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricStorage,
+	"io":         SummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricIo,
+	"memory":     SummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricMemory,
+	"memory_pga": SummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricMemoryPga,
+	"memory_sga": SummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricMemorySga,
+}
+
 // GetSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnum
 func GetSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnumValues() []SummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnum {
 	values := make([]SummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnum, 0)
@@ -106,11 +115,6 @@ func GetSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResour
 
 // GetMappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnum(val string) (SummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnum, bool) {
-	mappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnum)
-	for k, v := range mappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnum {
-		mappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

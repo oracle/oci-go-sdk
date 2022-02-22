@@ -15,11 +15,11 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
-// AddVcnCidrDetails Details for adding a CIDR block to a VCN.
+// AddVcnCidrDetails Details used to add a CIDR block to a VCN.
 type AddVcnCidrDetails struct {
 
 	// The CIDR block to add.

@@ -6,7 +6,7 @@ package bds
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,11 @@ var mappingListBdsApiKeysSortByEnum = map[string]ListBdsApiKeysSortByEnum{
 	"displayName": ListBdsApiKeysSortByDisplayname,
 }
 
+var mappingListBdsApiKeysSortByEnumLowerCase = map[string]ListBdsApiKeysSortByEnum{
+	"timecreated": ListBdsApiKeysSortByTimecreated,
+	"displayname": ListBdsApiKeysSortByDisplayname,
+}
+
 // GetListBdsApiKeysSortByEnumValues Enumerates the set of values for ListBdsApiKeysSortByEnum
 func GetListBdsApiKeysSortByEnumValues() []ListBdsApiKeysSortByEnum {
 	values := make([]ListBdsApiKeysSortByEnum, 0)
@@ -157,12 +162,7 @@ func GetListBdsApiKeysSortByEnumStringValues() []string {
 
 // GetMappingListBdsApiKeysSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBdsApiKeysSortByEnum(val string) (ListBdsApiKeysSortByEnum, bool) {
-	mappingListBdsApiKeysSortByEnumIgnoreCase := make(map[string]ListBdsApiKeysSortByEnum)
-	for k, v := range mappingListBdsApiKeysSortByEnum {
-		mappingListBdsApiKeysSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBdsApiKeysSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBdsApiKeysSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -178,6 +178,11 @@ const (
 var mappingListBdsApiKeysSortOrderEnum = map[string]ListBdsApiKeysSortOrderEnum{
 	"ASC":  ListBdsApiKeysSortOrderAsc,
 	"DESC": ListBdsApiKeysSortOrderDesc,
+}
+
+var mappingListBdsApiKeysSortOrderEnumLowerCase = map[string]ListBdsApiKeysSortOrderEnum{
+	"asc":  ListBdsApiKeysSortOrderAsc,
+	"desc": ListBdsApiKeysSortOrderDesc,
 }
 
 // GetListBdsApiKeysSortOrderEnumValues Enumerates the set of values for ListBdsApiKeysSortOrderEnum
@@ -199,11 +204,6 @@ func GetListBdsApiKeysSortOrderEnumStringValues() []string {
 
 // GetMappingListBdsApiKeysSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBdsApiKeysSortOrderEnum(val string) (ListBdsApiKeysSortOrderEnum, bool) {
-	mappingListBdsApiKeysSortOrderEnumIgnoreCase := make(map[string]ListBdsApiKeysSortOrderEnum)
-	for k, v := range mappingListBdsApiKeysSortOrderEnum {
-		mappingListBdsApiKeysSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBdsApiKeysSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBdsApiKeysSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

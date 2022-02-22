@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -65,6 +65,12 @@ var mappingApiValidationDetailSeverityEnum = map[string]ApiValidationDetailSever
 	"ERROR":   ApiValidationDetailSeverityError,
 }
 
+var mappingApiValidationDetailSeverityEnumLowerCase = map[string]ApiValidationDetailSeverityEnum{
+	"info":    ApiValidationDetailSeverityInfo,
+	"warning": ApiValidationDetailSeverityWarning,
+	"error":   ApiValidationDetailSeverityError,
+}
+
 // GetApiValidationDetailSeverityEnumValues Enumerates the set of values for ApiValidationDetailSeverityEnum
 func GetApiValidationDetailSeverityEnumValues() []ApiValidationDetailSeverityEnum {
 	values := make([]ApiValidationDetailSeverityEnum, 0)
@@ -85,11 +91,6 @@ func GetApiValidationDetailSeverityEnumStringValues() []string {
 
 // GetMappingApiValidationDetailSeverityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingApiValidationDetailSeverityEnum(val string) (ApiValidationDetailSeverityEnum, bool) {
-	mappingApiValidationDetailSeverityEnumIgnoreCase := make(map[string]ApiValidationDetailSeverityEnum)
-	for k, v := range mappingApiValidationDetailSeverityEnum {
-		mappingApiValidationDetailSeverityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingApiValidationDetailSeverityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingApiValidationDetailSeverityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

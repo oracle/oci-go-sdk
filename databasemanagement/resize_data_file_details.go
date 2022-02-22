@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -122,6 +122,11 @@ var mappingResizeDataFileDetailsFileTypeEnum = map[string]ResizeDataFileDetailsF
 	"TEMPFILE": ResizeDataFileDetailsFileTypeTempfile,
 }
 
+var mappingResizeDataFileDetailsFileTypeEnumLowerCase = map[string]ResizeDataFileDetailsFileTypeEnum{
+	"datafile": ResizeDataFileDetailsFileTypeDatafile,
+	"tempfile": ResizeDataFileDetailsFileTypeTempfile,
+}
+
 // GetResizeDataFileDetailsFileTypeEnumValues Enumerates the set of values for ResizeDataFileDetailsFileTypeEnum
 func GetResizeDataFileDetailsFileTypeEnumValues() []ResizeDataFileDetailsFileTypeEnum {
 	values := make([]ResizeDataFileDetailsFileTypeEnum, 0)
@@ -141,11 +146,6 @@ func GetResizeDataFileDetailsFileTypeEnumStringValues() []string {
 
 // GetMappingResizeDataFileDetailsFileTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingResizeDataFileDetailsFileTypeEnum(val string) (ResizeDataFileDetailsFileTypeEnum, bool) {
-	mappingResizeDataFileDetailsFileTypeEnumIgnoreCase := make(map[string]ResizeDataFileDetailsFileTypeEnum)
-	for k, v := range mappingResizeDataFileDetailsFileTypeEnum {
-		mappingResizeDataFileDetailsFileTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingResizeDataFileDetailsFileTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingResizeDataFileDetailsFileTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

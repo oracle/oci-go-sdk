@@ -11,7 +11,7 @@ package databasemigration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -59,6 +59,10 @@ var mappingUnsupportedDatabaseObjectTypeEnum = map[string]UnsupportedDatabaseObj
 	"GOLDEN_GATE": UnsupportedDatabaseObjectTypeGoldenGate,
 }
 
+var mappingUnsupportedDatabaseObjectTypeEnumLowerCase = map[string]UnsupportedDatabaseObjectTypeEnum{
+	"golden_gate": UnsupportedDatabaseObjectTypeGoldenGate,
+}
+
 // GetUnsupportedDatabaseObjectTypeEnumValues Enumerates the set of values for UnsupportedDatabaseObjectTypeEnum
 func GetUnsupportedDatabaseObjectTypeEnumValues() []UnsupportedDatabaseObjectTypeEnum {
 	values := make([]UnsupportedDatabaseObjectTypeEnum, 0)
@@ -77,11 +81,6 @@ func GetUnsupportedDatabaseObjectTypeEnumStringValues() []string {
 
 // GetMappingUnsupportedDatabaseObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUnsupportedDatabaseObjectTypeEnum(val string) (UnsupportedDatabaseObjectTypeEnum, bool) {
-	mappingUnsupportedDatabaseObjectTypeEnumIgnoreCase := make(map[string]UnsupportedDatabaseObjectTypeEnum)
-	for k, v := range mappingUnsupportedDatabaseObjectTypeEnum {
-		mappingUnsupportedDatabaseObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUnsupportedDatabaseObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUnsupportedDatabaseObjectTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

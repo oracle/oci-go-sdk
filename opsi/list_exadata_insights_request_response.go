@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -167,6 +167,11 @@ var mappingListExadataInsightsSortOrderEnum = map[string]ListExadataInsightsSort
 	"DESC": ListExadataInsightsSortOrderDesc,
 }
 
+var mappingListExadataInsightsSortOrderEnumLowerCase = map[string]ListExadataInsightsSortOrderEnum{
+	"asc":  ListExadataInsightsSortOrderAsc,
+	"desc": ListExadataInsightsSortOrderDesc,
+}
+
 // GetListExadataInsightsSortOrderEnumValues Enumerates the set of values for ListExadataInsightsSortOrderEnum
 func GetListExadataInsightsSortOrderEnumValues() []ListExadataInsightsSortOrderEnum {
 	values := make([]ListExadataInsightsSortOrderEnum, 0)
@@ -186,12 +191,7 @@ func GetListExadataInsightsSortOrderEnumStringValues() []string {
 
 // GetMappingListExadataInsightsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListExadataInsightsSortOrderEnum(val string) (ListExadataInsightsSortOrderEnum, bool) {
-	mappingListExadataInsightsSortOrderEnumIgnoreCase := make(map[string]ListExadataInsightsSortOrderEnum)
-	for k, v := range mappingListExadataInsightsSortOrderEnum {
-		mappingListExadataInsightsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListExadataInsightsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListExadataInsightsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -207,6 +207,11 @@ const (
 var mappingListExadataInsightsSortByEnum = map[string]ListExadataInsightsSortByEnum{
 	"timeCreated": ListExadataInsightsSortByTimecreated,
 	"exadataName": ListExadataInsightsSortByExadataname,
+}
+
+var mappingListExadataInsightsSortByEnumLowerCase = map[string]ListExadataInsightsSortByEnum{
+	"timecreated": ListExadataInsightsSortByTimecreated,
+	"exadataname": ListExadataInsightsSortByExadataname,
 }
 
 // GetListExadataInsightsSortByEnumValues Enumerates the set of values for ListExadataInsightsSortByEnum
@@ -228,11 +233,6 @@ func GetListExadataInsightsSortByEnumStringValues() []string {
 
 // GetMappingListExadataInsightsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListExadataInsightsSortByEnum(val string) (ListExadataInsightsSortByEnum, bool) {
-	mappingListExadataInsightsSortByEnumIgnoreCase := make(map[string]ListExadataInsightsSortByEnum)
-	for k, v := range mappingListExadataInsightsSortByEnum {
-		mappingListExadataInsightsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListExadataInsightsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListExadataInsightsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

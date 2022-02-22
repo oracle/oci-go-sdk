@@ -6,7 +6,7 @@ package analytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -148,6 +148,10 @@ var mappingListWorkRequestsResourceTypeEnum = map[string]ListWorkRequestsResourc
 	"ANALYTICS_INSTANCE": ListWorkRequestsResourceTypeAnalyticsInstance,
 }
 
+var mappingListWorkRequestsResourceTypeEnumLowerCase = map[string]ListWorkRequestsResourceTypeEnum{
+	"analytics_instance": ListWorkRequestsResourceTypeAnalyticsInstance,
+}
+
 // GetListWorkRequestsResourceTypeEnumValues Enumerates the set of values for ListWorkRequestsResourceTypeEnum
 func GetListWorkRequestsResourceTypeEnumValues() []ListWorkRequestsResourceTypeEnum {
 	values := make([]ListWorkRequestsResourceTypeEnum, 0)
@@ -166,12 +170,7 @@ func GetListWorkRequestsResourceTypeEnumStringValues() []string {
 
 // GetMappingListWorkRequestsResourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWorkRequestsResourceTypeEnum(val string) (ListWorkRequestsResourceTypeEnum, bool) {
-	mappingListWorkRequestsResourceTypeEnumIgnoreCase := make(map[string]ListWorkRequestsResourceTypeEnum)
-	for k, v := range mappingListWorkRequestsResourceTypeEnum {
-		mappingListWorkRequestsResourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWorkRequestsResourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWorkRequestsResourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -197,6 +196,15 @@ var mappingListWorkRequestsSortByEnum = map[string]ListWorkRequestsSortByEnum{
 	"timeFinished":  ListWorkRequestsSortByTimefinished,
 }
 
+var mappingListWorkRequestsSortByEnumLowerCase = map[string]ListWorkRequestsSortByEnum{
+	"id":            ListWorkRequestsSortById,
+	"operationtype": ListWorkRequestsSortByOperationtype,
+	"status":        ListWorkRequestsSortByStatus,
+	"timeaccepted":  ListWorkRequestsSortByTimeaccepted,
+	"timestarted":   ListWorkRequestsSortByTimestarted,
+	"timefinished":  ListWorkRequestsSortByTimefinished,
+}
+
 // GetListWorkRequestsSortByEnumValues Enumerates the set of values for ListWorkRequestsSortByEnum
 func GetListWorkRequestsSortByEnumValues() []ListWorkRequestsSortByEnum {
 	values := make([]ListWorkRequestsSortByEnum, 0)
@@ -220,12 +228,7 @@ func GetListWorkRequestsSortByEnumStringValues() []string {
 
 // GetMappingListWorkRequestsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWorkRequestsSortByEnum(val string) (ListWorkRequestsSortByEnum, bool) {
-	mappingListWorkRequestsSortByEnumIgnoreCase := make(map[string]ListWorkRequestsSortByEnum)
-	for k, v := range mappingListWorkRequestsSortByEnum {
-		mappingListWorkRequestsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWorkRequestsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWorkRequestsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -241,6 +244,11 @@ const (
 var mappingListWorkRequestsSortOrderEnum = map[string]ListWorkRequestsSortOrderEnum{
 	"ASC":  ListWorkRequestsSortOrderAsc,
 	"DESC": ListWorkRequestsSortOrderDesc,
+}
+
+var mappingListWorkRequestsSortOrderEnumLowerCase = map[string]ListWorkRequestsSortOrderEnum{
+	"asc":  ListWorkRequestsSortOrderAsc,
+	"desc": ListWorkRequestsSortOrderDesc,
 }
 
 // GetListWorkRequestsSortOrderEnumValues Enumerates the set of values for ListWorkRequestsSortOrderEnum
@@ -262,11 +270,6 @@ func GetListWorkRequestsSortOrderEnumStringValues() []string {
 
 // GetMappingListWorkRequestsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWorkRequestsSortOrderEnum(val string) (ListWorkRequestsSortOrderEnum, bool) {
-	mappingListWorkRequestsSortOrderEnumIgnoreCase := make(map[string]ListWorkRequestsSortOrderEnum)
-	for k, v := range mappingListWorkRequestsSortOrderEnum {
-		mappingListWorkRequestsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWorkRequestsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWorkRequestsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

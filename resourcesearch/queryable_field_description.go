@@ -11,7 +11,7 @@ package resourcesearch
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -77,6 +77,17 @@ var mappingQueryableFieldDescriptionFieldTypeEnum = map[string]QueryableFieldDes
 	"OBJECT":     QueryableFieldDescriptionFieldTypeObject,
 }
 
+var mappingQueryableFieldDescriptionFieldTypeEnumLowerCase = map[string]QueryableFieldDescriptionFieldTypeEnum{
+	"identifier": QueryableFieldDescriptionFieldTypeIdentifier,
+	"string":     QueryableFieldDescriptionFieldTypeString,
+	"integer":    QueryableFieldDescriptionFieldTypeInteger,
+	"rational":   QueryableFieldDescriptionFieldTypeRational,
+	"boolean":    QueryableFieldDescriptionFieldTypeBoolean,
+	"datetime":   QueryableFieldDescriptionFieldTypeDatetime,
+	"ip":         QueryableFieldDescriptionFieldTypeIp,
+	"object":     QueryableFieldDescriptionFieldTypeObject,
+}
+
 // GetQueryableFieldDescriptionFieldTypeEnumValues Enumerates the set of values for QueryableFieldDescriptionFieldTypeEnum
 func GetQueryableFieldDescriptionFieldTypeEnumValues() []QueryableFieldDescriptionFieldTypeEnum {
 	values := make([]QueryableFieldDescriptionFieldTypeEnum, 0)
@@ -102,11 +113,6 @@ func GetQueryableFieldDescriptionFieldTypeEnumStringValues() []string {
 
 // GetMappingQueryableFieldDescriptionFieldTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingQueryableFieldDescriptionFieldTypeEnum(val string) (QueryableFieldDescriptionFieldTypeEnum, bool) {
-	mappingQueryableFieldDescriptionFieldTypeEnumIgnoreCase := make(map[string]QueryableFieldDescriptionFieldTypeEnum)
-	for k, v := range mappingQueryableFieldDescriptionFieldTypeEnum {
-		mappingQueryableFieldDescriptionFieldTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingQueryableFieldDescriptionFieldTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingQueryableFieldDescriptionFieldTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

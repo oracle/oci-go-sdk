@@ -6,7 +6,7 @@ package dataflow
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -165,6 +165,17 @@ var mappingListRunsLifecycleStateEnum = map[string]ListRunsLifecycleStateEnum{
 	"STOPPED":     ListRunsLifecycleStateStopped,
 }
 
+var mappingListRunsLifecycleStateEnumLowerCase = map[string]ListRunsLifecycleStateEnum{
+	"accepted":    ListRunsLifecycleStateAccepted,
+	"in_progress": ListRunsLifecycleStateInProgress,
+	"canceling":   ListRunsLifecycleStateCanceling,
+	"canceled":    ListRunsLifecycleStateCanceled,
+	"failed":      ListRunsLifecycleStateFailed,
+	"succeeded":   ListRunsLifecycleStateSucceeded,
+	"stopping":    ListRunsLifecycleStateStopping,
+	"stopped":     ListRunsLifecycleStateStopped,
+}
+
 // GetListRunsLifecycleStateEnumValues Enumerates the set of values for ListRunsLifecycleStateEnum
 func GetListRunsLifecycleStateEnumValues() []ListRunsLifecycleStateEnum {
 	values := make([]ListRunsLifecycleStateEnum, 0)
@@ -190,12 +201,7 @@ func GetListRunsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListRunsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRunsLifecycleStateEnum(val string) (ListRunsLifecycleStateEnum, bool) {
-	mappingListRunsLifecycleStateEnumIgnoreCase := make(map[string]ListRunsLifecycleStateEnum)
-	for k, v := range mappingListRunsLifecycleStateEnum {
-		mappingListRunsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRunsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRunsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -225,6 +231,17 @@ var mappingListRunsSortByEnum = map[string]ListRunsSortByEnum{
 	"dataWrittenInBytes":        ListRunsSortByDatawritteninbytes,
 }
 
+var mappingListRunsSortByEnumLowerCase = map[string]ListRunsSortByEnum{
+	"timecreated":               ListRunsSortByTimecreated,
+	"displayname":               ListRunsSortByDisplayname,
+	"language":                  ListRunsSortByLanguage,
+	"rundurationinmilliseconds": ListRunsSortByRundurationinmilliseconds,
+	"lifecyclestate":            ListRunsSortByLifecyclestate,
+	"totalocpu":                 ListRunsSortByTotalocpu,
+	"datareadinbytes":           ListRunsSortByDatareadinbytes,
+	"datawritteninbytes":        ListRunsSortByDatawritteninbytes,
+}
+
 // GetListRunsSortByEnumValues Enumerates the set of values for ListRunsSortByEnum
 func GetListRunsSortByEnumValues() []ListRunsSortByEnum {
 	values := make([]ListRunsSortByEnum, 0)
@@ -250,12 +267,7 @@ func GetListRunsSortByEnumStringValues() []string {
 
 // GetMappingListRunsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRunsSortByEnum(val string) (ListRunsSortByEnum, bool) {
-	mappingListRunsSortByEnumIgnoreCase := make(map[string]ListRunsSortByEnum)
-	for k, v := range mappingListRunsSortByEnum {
-		mappingListRunsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRunsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRunsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -271,6 +283,11 @@ const (
 var mappingListRunsSortOrderEnum = map[string]ListRunsSortOrderEnum{
 	"ASC":  ListRunsSortOrderAsc,
 	"DESC": ListRunsSortOrderDesc,
+}
+
+var mappingListRunsSortOrderEnumLowerCase = map[string]ListRunsSortOrderEnum{
+	"asc":  ListRunsSortOrderAsc,
+	"desc": ListRunsSortOrderDesc,
 }
 
 // GetListRunsSortOrderEnumValues Enumerates the set of values for ListRunsSortOrderEnum
@@ -292,11 +309,6 @@ func GetListRunsSortOrderEnumStringValues() []string {
 
 // GetMappingListRunsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRunsSortOrderEnum(val string) (ListRunsSortOrderEnum, bool) {
-	mappingListRunsSortOrderEnumIgnoreCase := make(map[string]ListRunsSortOrderEnum)
-	for k, v := range mappingListRunsSortOrderEnum {
-		mappingListRunsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRunsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRunsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

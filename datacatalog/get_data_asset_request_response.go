@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -140,6 +140,22 @@ var mappingGetDataAssetFieldsEnum = map[string]GetDataAssetFieldsEnum{
 	"properties":     GetDataAssetFieldsProperties,
 }
 
+var mappingGetDataAssetFieldsEnumLowerCase = map[string]GetDataAssetFieldsEnum{
+	"key":            GetDataAssetFieldsKey,
+	"displayname":    GetDataAssetFieldsDisplayname,
+	"description":    GetDataAssetFieldsDescription,
+	"catalogid":      GetDataAssetFieldsCatalogid,
+	"externalkey":    GetDataAssetFieldsExternalkey,
+	"typekey":        GetDataAssetFieldsTypekey,
+	"lifecyclestate": GetDataAssetFieldsLifecyclestate,
+	"timecreated":    GetDataAssetFieldsTimecreated,
+	"timeupdated":    GetDataAssetFieldsTimeupdated,
+	"createdbyid":    GetDataAssetFieldsCreatedbyid,
+	"updatedbyid":    GetDataAssetFieldsUpdatedbyid,
+	"uri":            GetDataAssetFieldsUri,
+	"properties":     GetDataAssetFieldsProperties,
+}
+
 // GetGetDataAssetFieldsEnumValues Enumerates the set of values for GetDataAssetFieldsEnum
 func GetGetDataAssetFieldsEnumValues() []GetDataAssetFieldsEnum {
 	values := make([]GetDataAssetFieldsEnum, 0)
@@ -170,11 +186,6 @@ func GetGetDataAssetFieldsEnumStringValues() []string {
 
 // GetMappingGetDataAssetFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetDataAssetFieldsEnum(val string) (GetDataAssetFieldsEnum, bool) {
-	mappingGetDataAssetFieldsEnumIgnoreCase := make(map[string]GetDataAssetFieldsEnum)
-	for k, v := range mappingGetDataAssetFieldsEnum {
-		mappingGetDataAssetFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetDataAssetFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetDataAssetFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -80,6 +80,11 @@ var mappingUpdateBackupDestinationDetailsNfsMountTypeEnum = map[string]UpdateBac
 	"AUTOMATED_MOUNT": UpdateBackupDestinationDetailsNfsMountTypeAutomatedMount,
 }
 
+var mappingUpdateBackupDestinationDetailsNfsMountTypeEnumLowerCase = map[string]UpdateBackupDestinationDetailsNfsMountTypeEnum{
+	"self_mount":      UpdateBackupDestinationDetailsNfsMountTypeSelfMount,
+	"automated_mount": UpdateBackupDestinationDetailsNfsMountTypeAutomatedMount,
+}
+
 // GetUpdateBackupDestinationDetailsNfsMountTypeEnumValues Enumerates the set of values for UpdateBackupDestinationDetailsNfsMountTypeEnum
 func GetUpdateBackupDestinationDetailsNfsMountTypeEnumValues() []UpdateBackupDestinationDetailsNfsMountTypeEnum {
 	values := make([]UpdateBackupDestinationDetailsNfsMountTypeEnum, 0)
@@ -99,11 +104,6 @@ func GetUpdateBackupDestinationDetailsNfsMountTypeEnumStringValues() []string {
 
 // GetMappingUpdateBackupDestinationDetailsNfsMountTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateBackupDestinationDetailsNfsMountTypeEnum(val string) (UpdateBackupDestinationDetailsNfsMountTypeEnum, bool) {
-	mappingUpdateBackupDestinationDetailsNfsMountTypeEnumIgnoreCase := make(map[string]UpdateBackupDestinationDetailsNfsMountTypeEnum)
-	for k, v := range mappingUpdateBackupDestinationDetailsNfsMountTypeEnum {
-		mappingUpdateBackupDestinationDetailsNfsMountTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateBackupDestinationDetailsNfsMountTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateBackupDestinationDetailsNfsMountTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

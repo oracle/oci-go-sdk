@@ -6,7 +6,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -143,6 +143,12 @@ var mappingGetBucketFieldsEnum = map[string]GetBucketFieldsEnum{
 	"autoTiering":      GetBucketFieldsAutotiering,
 }
 
+var mappingGetBucketFieldsEnumLowerCase = map[string]GetBucketFieldsEnum{
+	"approximatecount": GetBucketFieldsApproximatecount,
+	"approximatesize":  GetBucketFieldsApproximatesize,
+	"autotiering":      GetBucketFieldsAutotiering,
+}
+
 // GetGetBucketFieldsEnumValues Enumerates the set of values for GetBucketFieldsEnum
 func GetGetBucketFieldsEnumValues() []GetBucketFieldsEnum {
 	values := make([]GetBucketFieldsEnum, 0)
@@ -163,11 +169,6 @@ func GetGetBucketFieldsEnumStringValues() []string {
 
 // GetMappingGetBucketFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetBucketFieldsEnum(val string) (GetBucketFieldsEnum, bool) {
-	mappingGetBucketFieldsEnumIgnoreCase := make(map[string]GetBucketFieldsEnum)
-	for k, v := range mappingGetBucketFieldsEnum {
-		mappingGetBucketFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetBucketFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetBucketFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

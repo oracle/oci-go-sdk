@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingSecretConfigModelTypeEnum = map[string]SecretConfigModelTypeEnum{
 	"OCI_VAULT_SECRET_CONFIG": SecretConfigModelTypeOciVaultSecretConfig,
 }
 
+var mappingSecretConfigModelTypeEnumLowerCase = map[string]SecretConfigModelTypeEnum{
+	"oci_vault_secret_config": SecretConfigModelTypeOciVaultSecretConfig,
+}
+
 // GetSecretConfigModelTypeEnumValues Enumerates the set of values for SecretConfigModelTypeEnum
 func GetSecretConfigModelTypeEnumValues() []SecretConfigModelTypeEnum {
 	values := make([]SecretConfigModelTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetSecretConfigModelTypeEnumStringValues() []string {
 
 // GetMappingSecretConfigModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSecretConfigModelTypeEnum(val string) (SecretConfigModelTypeEnum, bool) {
-	mappingSecretConfigModelTypeEnumIgnoreCase := make(map[string]SecretConfigModelTypeEnum)
-	for k, v := range mappingSecretConfigModelTypeEnum {
-		mappingSecretConfigModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSecretConfigModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSecretConfigModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

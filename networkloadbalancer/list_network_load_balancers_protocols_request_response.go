@@ -6,7 +6,7 @@ package networkloadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -128,6 +128,11 @@ var mappingListNetworkLoadBalancersProtocolsSortOrderEnum = map[string]ListNetwo
 	"DESC": ListNetworkLoadBalancersProtocolsSortOrderDesc,
 }
 
+var mappingListNetworkLoadBalancersProtocolsSortOrderEnumLowerCase = map[string]ListNetworkLoadBalancersProtocolsSortOrderEnum{
+	"asc":  ListNetworkLoadBalancersProtocolsSortOrderAsc,
+	"desc": ListNetworkLoadBalancersProtocolsSortOrderDesc,
+}
+
 // GetListNetworkLoadBalancersProtocolsSortOrderEnumValues Enumerates the set of values for ListNetworkLoadBalancersProtocolsSortOrderEnum
 func GetListNetworkLoadBalancersProtocolsSortOrderEnumValues() []ListNetworkLoadBalancersProtocolsSortOrderEnum {
 	values := make([]ListNetworkLoadBalancersProtocolsSortOrderEnum, 0)
@@ -147,12 +152,7 @@ func GetListNetworkLoadBalancersProtocolsSortOrderEnumStringValues() []string {
 
 // GetMappingListNetworkLoadBalancersProtocolsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListNetworkLoadBalancersProtocolsSortOrderEnum(val string) (ListNetworkLoadBalancersProtocolsSortOrderEnum, bool) {
-	mappingListNetworkLoadBalancersProtocolsSortOrderEnumIgnoreCase := make(map[string]ListNetworkLoadBalancersProtocolsSortOrderEnum)
-	for k, v := range mappingListNetworkLoadBalancersProtocolsSortOrderEnum {
-		mappingListNetworkLoadBalancersProtocolsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListNetworkLoadBalancersProtocolsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListNetworkLoadBalancersProtocolsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -168,6 +168,11 @@ const (
 var mappingListNetworkLoadBalancersProtocolsSortByEnum = map[string]ListNetworkLoadBalancersProtocolsSortByEnum{
 	"timeCreated": ListNetworkLoadBalancersProtocolsSortByTimecreated,
 	"displayName": ListNetworkLoadBalancersProtocolsSortByDisplayname,
+}
+
+var mappingListNetworkLoadBalancersProtocolsSortByEnumLowerCase = map[string]ListNetworkLoadBalancersProtocolsSortByEnum{
+	"timecreated": ListNetworkLoadBalancersProtocolsSortByTimecreated,
+	"displayname": ListNetworkLoadBalancersProtocolsSortByDisplayname,
 }
 
 // GetListNetworkLoadBalancersProtocolsSortByEnumValues Enumerates the set of values for ListNetworkLoadBalancersProtocolsSortByEnum
@@ -189,11 +194,6 @@ func GetListNetworkLoadBalancersProtocolsSortByEnumStringValues() []string {
 
 // GetMappingListNetworkLoadBalancersProtocolsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListNetworkLoadBalancersProtocolsSortByEnum(val string) (ListNetworkLoadBalancersProtocolsSortByEnum, bool) {
-	mappingListNetworkLoadBalancersProtocolsSortByEnumIgnoreCase := make(map[string]ListNetworkLoadBalancersProtocolsSortByEnum)
-	for k, v := range mappingListNetworkLoadBalancersProtocolsSortByEnum {
-		mappingListNetworkLoadBalancersProtocolsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListNetworkLoadBalancersProtocolsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListNetworkLoadBalancersProtocolsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

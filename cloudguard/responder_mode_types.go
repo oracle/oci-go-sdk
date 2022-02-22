@@ -2,9 +2,10 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Cloud Guard APIs
+// Cloud Guard API
 //
-// A description of the Cloud Guard APIs
+// Use the Cloud Guard API to automate processes that you would otherwise perform through the Cloud Guard Console.
+// **Note:** You can perform Create, Update, and Delete operations only from the reporting region of your Cloud Guard tenancy. You can perform Read operations from any region.
 //
 
 package cloudguard
@@ -27,6 +28,11 @@ var mappingResponderModeTypesEnum = map[string]ResponderModeTypesEnum{
 	"USERACTION": ResponderModeTypesUseraction,
 }
 
+var mappingResponderModeTypesEnumLowerCase = map[string]ResponderModeTypesEnum{
+	"autoaction": ResponderModeTypesAutoaction,
+	"useraction": ResponderModeTypesUseraction,
+}
+
 // GetResponderModeTypesEnumValues Enumerates the set of values for ResponderModeTypesEnum
 func GetResponderModeTypesEnumValues() []ResponderModeTypesEnum {
 	values := make([]ResponderModeTypesEnum, 0)
@@ -46,11 +52,6 @@ func GetResponderModeTypesEnumStringValues() []string {
 
 // GetMappingResponderModeTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingResponderModeTypesEnum(val string) (ResponderModeTypesEnum, bool) {
-	mappingResponderModeTypesEnumIgnoreCase := make(map[string]ResponderModeTypesEnum)
-	for k, v := range mappingResponderModeTypesEnum {
-		mappingResponderModeTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingResponderModeTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingResponderModeTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -65,6 +65,16 @@ var mappingCompressionCodecEnum = map[string]CompressionCodecEnum{
 	"SNAPPY":  CompressionCodecSnappy,
 }
 
+var mappingCompressionCodecEnumLowerCase = map[string]CompressionCodecEnum{
+	"none":    CompressionCodecNone,
+	"auto":    CompressionCodecAuto,
+	"gzip":    CompressionCodecGzip,
+	"bzip2":   CompressionCodecBzip2,
+	"deflate": CompressionCodecDeflate,
+	"lz4":     CompressionCodecLz4,
+	"snappy":  CompressionCodecSnappy,
+}
+
 // GetCompressionCodecEnumValues Enumerates the set of values for CompressionCodecEnum
 func GetCompressionCodecEnumValues() []CompressionCodecEnum {
 	values := make([]CompressionCodecEnum, 0)
@@ -89,11 +99,6 @@ func GetCompressionCodecEnumStringValues() []string {
 
 // GetMappingCompressionCodecEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCompressionCodecEnum(val string) (CompressionCodecEnum, bool) {
-	mappingCompressionCodecEnumIgnoreCase := make(map[string]CompressionCodecEnum)
-	for k, v := range mappingCompressionCodecEnum {
-		mappingCompressionCodecEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCompressionCodecEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCompressionCodecEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

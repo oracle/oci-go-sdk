@@ -35,6 +35,15 @@ var mappingStorageOperationTypeEnum = map[string]StorageOperationTypeEnum{
 	"CLEANUP_ARCHIVAL_STORAGE_DATA": StorageOperationTypeCleanupArchivalStorageData,
 }
 
+var mappingStorageOperationTypeEnumLowerCase = map[string]StorageOperationTypeEnum{
+	"offboard_tenancy":              StorageOperationTypeOffboardTenancy,
+	"purge_storage_data":            StorageOperationTypePurgeStorageData,
+	"recall_archived_storage_data":  StorageOperationTypeRecallArchivedStorageData,
+	"release_recalled_storage_data": StorageOperationTypeReleaseRecalledStorageData,
+	"archive_storage_data":          StorageOperationTypeArchiveStorageData,
+	"cleanup_archival_storage_data": StorageOperationTypeCleanupArchivalStorageData,
+}
+
 // GetStorageOperationTypeEnumValues Enumerates the set of values for StorageOperationTypeEnum
 func GetStorageOperationTypeEnumValues() []StorageOperationTypeEnum {
 	values := make([]StorageOperationTypeEnum, 0)
@@ -58,11 +67,6 @@ func GetStorageOperationTypeEnumStringValues() []string {
 
 // GetMappingStorageOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingStorageOperationTypeEnum(val string) (StorageOperationTypeEnum, bool) {
-	mappingStorageOperationTypeEnumIgnoreCase := make(map[string]StorageOperationTypeEnum)
-	for k, v := range mappingStorageOperationTypeEnum {
-		mappingStorageOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingStorageOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingStorageOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

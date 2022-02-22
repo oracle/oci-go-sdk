@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -150,6 +150,12 @@ var mappingListSourceEventTypesIsSystemEnum = map[string]ListSourceEventTypesIsS
 	"BUILT_IN": ListSourceEventTypesIsSystemBuiltIn,
 }
 
+var mappingListSourceEventTypesIsSystemEnumLowerCase = map[string]ListSourceEventTypesIsSystemEnum{
+	"all":      ListSourceEventTypesIsSystemAll,
+	"custom":   ListSourceEventTypesIsSystemCustom,
+	"built_in": ListSourceEventTypesIsSystemBuiltIn,
+}
+
 // GetListSourceEventTypesIsSystemEnumValues Enumerates the set of values for ListSourceEventTypesIsSystemEnum
 func GetListSourceEventTypesIsSystemEnumValues() []ListSourceEventTypesIsSystemEnum {
 	values := make([]ListSourceEventTypesIsSystemEnum, 0)
@@ -170,12 +176,7 @@ func GetListSourceEventTypesIsSystemEnumStringValues() []string {
 
 // GetMappingListSourceEventTypesIsSystemEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSourceEventTypesIsSystemEnum(val string) (ListSourceEventTypesIsSystemEnum, bool) {
-	mappingListSourceEventTypesIsSystemEnumIgnoreCase := make(map[string]ListSourceEventTypesIsSystemEnum)
-	for k, v := range mappingListSourceEventTypesIsSystemEnum {
-		mappingListSourceEventTypesIsSystemEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSourceEventTypesIsSystemEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSourceEventTypesIsSystemEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -191,6 +192,11 @@ const (
 var mappingListSourceEventTypesSortByEnum = map[string]ListSourceEventTypesSortByEnum{
 	"eventType":   ListSourceEventTypesSortByEventtype,
 	"timeUpdated": ListSourceEventTypesSortByTimeupdated,
+}
+
+var mappingListSourceEventTypesSortByEnumLowerCase = map[string]ListSourceEventTypesSortByEnum{
+	"eventtype":   ListSourceEventTypesSortByEventtype,
+	"timeupdated": ListSourceEventTypesSortByTimeupdated,
 }
 
 // GetListSourceEventTypesSortByEnumValues Enumerates the set of values for ListSourceEventTypesSortByEnum
@@ -212,12 +218,7 @@ func GetListSourceEventTypesSortByEnumStringValues() []string {
 
 // GetMappingListSourceEventTypesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSourceEventTypesSortByEnum(val string) (ListSourceEventTypesSortByEnum, bool) {
-	mappingListSourceEventTypesSortByEnumIgnoreCase := make(map[string]ListSourceEventTypesSortByEnum)
-	for k, v := range mappingListSourceEventTypesSortByEnum {
-		mappingListSourceEventTypesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSourceEventTypesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSourceEventTypesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -233,6 +234,11 @@ const (
 var mappingListSourceEventTypesSortOrderEnum = map[string]ListSourceEventTypesSortOrderEnum{
 	"ASC":  ListSourceEventTypesSortOrderAsc,
 	"DESC": ListSourceEventTypesSortOrderDesc,
+}
+
+var mappingListSourceEventTypesSortOrderEnumLowerCase = map[string]ListSourceEventTypesSortOrderEnum{
+	"asc":  ListSourceEventTypesSortOrderAsc,
+	"desc": ListSourceEventTypesSortOrderDesc,
 }
 
 // GetListSourceEventTypesSortOrderEnumValues Enumerates the set of values for ListSourceEventTypesSortOrderEnum
@@ -254,11 +260,6 @@ func GetListSourceEventTypesSortOrderEnumStringValues() []string {
 
 // GetMappingListSourceEventTypesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSourceEventTypesSortOrderEnum(val string) (ListSourceEventTypesSortOrderEnum, bool) {
-	mappingListSourceEventTypesSortOrderEnumIgnoreCase := make(map[string]ListSourceEventTypesSortOrderEnum)
-	for k, v := range mappingListSourceEventTypesSortOrderEnum {
-		mappingListSourceEventTypesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSourceEventTypesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSourceEventTypesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

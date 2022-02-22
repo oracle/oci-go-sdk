@@ -27,6 +27,11 @@ var mappingJobModeEnum = map[string]JobModeEnum{
 	"BACKGROUND": JobModeBackground,
 }
 
+var mappingJobModeEnumLowerCase = map[string]JobModeEnum{
+	"foreground": JobModeForeground,
+	"background": JobModeBackground,
+}
+
 // GetJobModeEnumValues Enumerates the set of values for JobModeEnum
 func GetJobModeEnumValues() []JobModeEnum {
 	values := make([]JobModeEnum, 0)
@@ -46,11 +51,6 @@ func GetJobModeEnumStringValues() []string {
 
 // GetMappingJobModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJobModeEnum(val string) (JobModeEnum, bool) {
-	mappingJobModeEnumIgnoreCase := make(map[string]JobModeEnum)
-	for k, v := range mappingJobModeEnum {
-		mappingJobModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJobModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJobModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

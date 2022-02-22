@@ -9,9 +9,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/oracle/oci-go-sdk/v58/common"
-	"github.com/oracle/oci-go-sdk/v58/datalabelingservicedataplane"
-	"github.com/oracle/oci-go-sdk/v58/example/helpers"
+	"github.com/oracle/oci-go-sdk/v59/common"
+	"github.com/oracle/oci-go-sdk/v59/datalabelingservicedataplane"
+	"github.com/oracle/oci-go-sdk/v59/example/helpers"
 )
 
 func ExampleCreateRecord() {

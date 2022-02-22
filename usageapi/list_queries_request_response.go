@@ -6,7 +6,7 @@ package usageapi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -126,6 +126,10 @@ var mappingListQueriesSortByEnum = map[string]ListQueriesSortByEnum{
 	"displayName": ListQueriesSortByDisplayname,
 }
 
+var mappingListQueriesSortByEnumLowerCase = map[string]ListQueriesSortByEnum{
+	"displayname": ListQueriesSortByDisplayname,
+}
+
 // GetListQueriesSortByEnumValues Enumerates the set of values for ListQueriesSortByEnum
 func GetListQueriesSortByEnumValues() []ListQueriesSortByEnum {
 	values := make([]ListQueriesSortByEnum, 0)
@@ -144,12 +148,7 @@ func GetListQueriesSortByEnumStringValues() []string {
 
 // GetMappingListQueriesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListQueriesSortByEnum(val string) (ListQueriesSortByEnum, bool) {
-	mappingListQueriesSortByEnumIgnoreCase := make(map[string]ListQueriesSortByEnum)
-	for k, v := range mappingListQueriesSortByEnum {
-		mappingListQueriesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListQueriesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListQueriesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -165,6 +164,11 @@ const (
 var mappingListQueriesSortOrderEnum = map[string]ListQueriesSortOrderEnum{
 	"ASC":  ListQueriesSortOrderAsc,
 	"DESC": ListQueriesSortOrderDesc,
+}
+
+var mappingListQueriesSortOrderEnumLowerCase = map[string]ListQueriesSortOrderEnum{
+	"asc":  ListQueriesSortOrderAsc,
+	"desc": ListQueriesSortOrderDesc,
 }
 
 // GetListQueriesSortOrderEnumValues Enumerates the set of values for ListQueriesSortOrderEnum
@@ -186,11 +190,6 @@ func GetListQueriesSortOrderEnumStringValues() []string {
 
 // GetMappingListQueriesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListQueriesSortOrderEnum(val string) (ListQueriesSortOrderEnum, bool) {
-	mappingListQueriesSortOrderEnumIgnoreCase := make(map[string]ListQueriesSortOrderEnum)
-	for k, v := range mappingListQueriesSortOrderEnum {
-		mappingListQueriesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListQueriesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListQueriesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

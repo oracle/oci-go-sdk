@@ -2,23 +2,24 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Cloud Guard APIs
+// Cloud Guard API
 //
-// A description of the Cloud Guard APIs
+// Use the Cloud Guard API to automate processes that you would otherwise perform through the Cloud Guard Console.
+// **Note:** You can perform Create, Update, and Delete operations only from the reporting region of your Cloud Guard tenancy. You can perform Read operations from any region.
 //
 
 package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
 // TargetDetectorRecipeDetectorRule Detector Recipe Rule
 type TargetDetectorRecipeDetectorRule struct {
 
-	// The unique identifier of the detector rule
+	// The unique identifier of the detector rule.
 	DetectorRuleId *string `mandatory:"true" json:"detectorRuleId"`
 
 	// detector for the rule
@@ -30,10 +31,10 @@ type TargetDetectorRecipeDetectorRule struct {
 	// resource type of the configuration to which the rule is applied
 	ResourceType *string `mandatory:"true" json:"resourceType"`
 
-	// displayName
+	// Display name for TargetDetectorRecipeDetectorRule. information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// Description for TargetDetectorRecipeDetectorRule
+	// Description for TargetDetectorRecipeDetectorRule. information.
 	Description *string `mandatory:"false" json:"description"`
 
 	// Recommendation for TargetDetectorRecipeDetectorRule
@@ -119,6 +120,21 @@ var mappingTargetDetectorRecipeDetectorRuleManagedListTypesEnum = map[string]Tar
 	"GENERIC":       TargetDetectorRecipeDetectorRuleManagedListTypesGeneric,
 }
 
+var mappingTargetDetectorRecipeDetectorRuleManagedListTypesEnumLowerCase = map[string]TargetDetectorRecipeDetectorRuleManagedListTypesEnum{
+	"cidr_block":    TargetDetectorRecipeDetectorRuleManagedListTypesCidrBlock,
+	"users":         TargetDetectorRecipeDetectorRuleManagedListTypesUsers,
+	"groups":        TargetDetectorRecipeDetectorRuleManagedListTypesGroups,
+	"ipv4address":   TargetDetectorRecipeDetectorRuleManagedListTypesIpv4address,
+	"ipv6address":   TargetDetectorRecipeDetectorRuleManagedListTypesIpv6address,
+	"resource_ocid": TargetDetectorRecipeDetectorRuleManagedListTypesResourceOcid,
+	"region":        TargetDetectorRecipeDetectorRuleManagedListTypesRegion,
+	"country":       TargetDetectorRecipeDetectorRuleManagedListTypesCountry,
+	"state":         TargetDetectorRecipeDetectorRuleManagedListTypesState,
+	"city":          TargetDetectorRecipeDetectorRuleManagedListTypesCity,
+	"tags":          TargetDetectorRecipeDetectorRuleManagedListTypesTags,
+	"generic":       TargetDetectorRecipeDetectorRuleManagedListTypesGeneric,
+}
+
 // GetTargetDetectorRecipeDetectorRuleManagedListTypesEnumValues Enumerates the set of values for TargetDetectorRecipeDetectorRuleManagedListTypesEnum
 func GetTargetDetectorRecipeDetectorRuleManagedListTypesEnumValues() []TargetDetectorRecipeDetectorRuleManagedListTypesEnum {
 	values := make([]TargetDetectorRecipeDetectorRuleManagedListTypesEnum, 0)
@@ -148,11 +164,6 @@ func GetTargetDetectorRecipeDetectorRuleManagedListTypesEnumStringValues() []str
 
 // GetMappingTargetDetectorRecipeDetectorRuleManagedListTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTargetDetectorRecipeDetectorRuleManagedListTypesEnum(val string) (TargetDetectorRecipeDetectorRuleManagedListTypesEnum, bool) {
-	mappingTargetDetectorRecipeDetectorRuleManagedListTypesEnumIgnoreCase := make(map[string]TargetDetectorRecipeDetectorRuleManagedListTypesEnum)
-	for k, v := range mappingTargetDetectorRecipeDetectorRuleManagedListTypesEnum {
-		mappingTargetDetectorRecipeDetectorRuleManagedListTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTargetDetectorRecipeDetectorRuleManagedListTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTargetDetectorRecipeDetectorRuleManagedListTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

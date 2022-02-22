@@ -69,6 +69,32 @@ var mappingRegionEnum = map[string]RegionEnum{
 	"YNY":            RegionYny,
 }
 
+var mappingRegionEnumLowerCase = map[string]RegionEnum{
+	"dev":            RegionDev,
+	"sea":            RegionSea,
+	"integ_next":     RegionIntegNext,
+	"integ_stable":   RegionIntegStable,
+	"phx":            RegionPhx,
+	"iad":            RegionIad,
+	"fra":            RegionFra,
+	"eu_frankfurt_1": RegionEuFrankfurt1,
+	"lhr":            RegionLhr,
+	"yyz":            RegionYyz,
+	"nrt":            RegionNrt,
+	"icn":            RegionIcn,
+	"bom":            RegionBom,
+	"gru":            RegionGru,
+	"syd":            RegionSyd,
+	"zrh":            RegionZrh,
+	"jed":            RegionJed,
+	"ams":            RegionAms,
+	"kix":            RegionKix,
+	"mel":            RegionMel,
+	"yul":            RegionYul,
+	"hyd":            RegionHyd,
+	"yny":            RegionYny,
+}
+
 // GetRegionEnumValues Enumerates the set of values for RegionEnum
 func GetRegionEnumValues() []RegionEnum {
 	values := make([]RegionEnum, 0)
@@ -109,11 +135,6 @@ func GetRegionEnumStringValues() []string {
 
 // GetMappingRegionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRegionEnum(val string) (RegionEnum, bool) {
-	mappingRegionEnumIgnoreCase := make(map[string]RegionEnum)
-	for k, v := range mappingRegionEnum {
-		mappingRegionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRegionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRegionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

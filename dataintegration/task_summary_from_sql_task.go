@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -191,6 +191,11 @@ var mappingTaskSummaryFromSqlTaskSqlScriptTypeEnum = map[string]TaskSummaryFromS
 	"SQL_CODE":         TaskSummaryFromSqlTaskSqlScriptTypeSqlCode,
 }
 
+var mappingTaskSummaryFromSqlTaskSqlScriptTypeEnumLowerCase = map[string]TaskSummaryFromSqlTaskSqlScriptTypeEnum{
+	"stored_procedure": TaskSummaryFromSqlTaskSqlScriptTypeStoredProcedure,
+	"sql_code":         TaskSummaryFromSqlTaskSqlScriptTypeSqlCode,
+}
+
 // GetTaskSummaryFromSqlTaskSqlScriptTypeEnumValues Enumerates the set of values for TaskSummaryFromSqlTaskSqlScriptTypeEnum
 func GetTaskSummaryFromSqlTaskSqlScriptTypeEnumValues() []TaskSummaryFromSqlTaskSqlScriptTypeEnum {
 	values := make([]TaskSummaryFromSqlTaskSqlScriptTypeEnum, 0)
@@ -210,11 +215,6 @@ func GetTaskSummaryFromSqlTaskSqlScriptTypeEnumStringValues() []string {
 
 // GetMappingTaskSummaryFromSqlTaskSqlScriptTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskSummaryFromSqlTaskSqlScriptTypeEnum(val string) (TaskSummaryFromSqlTaskSqlScriptTypeEnum, bool) {
-	mappingTaskSummaryFromSqlTaskSqlScriptTypeEnumIgnoreCase := make(map[string]TaskSummaryFromSqlTaskSqlScriptTypeEnum)
-	for k, v := range mappingTaskSummaryFromSqlTaskSqlScriptTypeEnum {
-		mappingTaskSummaryFromSqlTaskSqlScriptTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskSummaryFromSqlTaskSqlScriptTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskSummaryFromSqlTaskSqlScriptTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

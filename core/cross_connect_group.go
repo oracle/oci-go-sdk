@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -64,6 +64,13 @@ type CrossConnectGroup struct {
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	MacsecProperties *MacsecProperties `mandatory:"false" json:"macsecProperties"`
+
+	// The FastConnect device that terminates the physical connection.
+	OciPhysicalDeviceName *string `mandatory:"false" json:"ociPhysicalDeviceName"`
+
+	// The FastConnect device that terminates the logical connection.
+	// This device might be different than the device that terminates the physical connection.
+	OciLogicalDeviceName *string `mandatory:"false" json:"ociLogicalDeviceName"`
 }
 
 func (m CrossConnectGroup) String() string {
@@ -105,6 +112,14 @@ var mappingCrossConnectGroupLifecycleStateEnum = map[string]CrossConnectGroupLif
 	"TERMINATED":   CrossConnectGroupLifecycleStateTerminated,
 }
 
+var mappingCrossConnectGroupLifecycleStateEnumLowerCase = map[string]CrossConnectGroupLifecycleStateEnum{
+	"provisioning": CrossConnectGroupLifecycleStateProvisioning,
+	"provisioned":  CrossConnectGroupLifecycleStateProvisioned,
+	"inactive":     CrossConnectGroupLifecycleStateInactive,
+	"terminating":  CrossConnectGroupLifecycleStateTerminating,
+	"terminated":   CrossConnectGroupLifecycleStateTerminated,
+}
+
 // GetCrossConnectGroupLifecycleStateEnumValues Enumerates the set of values for CrossConnectGroupLifecycleStateEnum
 func GetCrossConnectGroupLifecycleStateEnumValues() []CrossConnectGroupLifecycleStateEnum {
 	values := make([]CrossConnectGroupLifecycleStateEnum, 0)
@@ -127,11 +142,6 @@ func GetCrossConnectGroupLifecycleStateEnumStringValues() []string {
 
 // GetMappingCrossConnectGroupLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCrossConnectGroupLifecycleStateEnum(val string) (CrossConnectGroupLifecycleStateEnum, bool) {
-	mappingCrossConnectGroupLifecycleStateEnumIgnoreCase := make(map[string]CrossConnectGroupLifecycleStateEnum)
-	for k, v := range mappingCrossConnectGroupLifecycleStateEnum {
-		mappingCrossConnectGroupLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCrossConnectGroupLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCrossConnectGroupLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

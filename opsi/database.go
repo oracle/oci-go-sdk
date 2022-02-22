@@ -33,6 +33,13 @@ var mappingDatabaseEnum = map[string]DatabaseEnum{
 	"MEMORY":  DatabaseMemory,
 }
 
+var mappingDatabaseEnumLowerCase = map[string]DatabaseEnum{
+	"cpu":     DatabaseCpu,
+	"storage": DatabaseStorage,
+	"io":      DatabaseIo,
+	"memory":  DatabaseMemory,
+}
+
 // GetDatabaseEnumValues Enumerates the set of values for DatabaseEnum
 func GetDatabaseEnumValues() []DatabaseEnum {
 	values := make([]DatabaseEnum, 0)
@@ -54,11 +61,6 @@ func GetDatabaseEnumStringValues() []string {
 
 // GetMappingDatabaseEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseEnum(val string) (DatabaseEnum, bool) {
-	mappingDatabaseEnumIgnoreCase := make(map[string]DatabaseEnum)
-	for k, v := range mappingDatabaseEnum {
-		mappingDatabaseEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

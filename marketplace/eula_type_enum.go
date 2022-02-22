@@ -25,6 +25,10 @@ var mappingEulaTypeEnumEnum = map[string]EulaTypeEnumEnum{
 	"TEXT": EulaTypeEnumText,
 }
 
+var mappingEulaTypeEnumEnumLowerCase = map[string]EulaTypeEnumEnum{
+	"text": EulaTypeEnumText,
+}
+
 // GetEulaTypeEnumEnumValues Enumerates the set of values for EulaTypeEnumEnum
 func GetEulaTypeEnumEnumValues() []EulaTypeEnumEnum {
 	values := make([]EulaTypeEnumEnum, 0)
@@ -43,11 +47,6 @@ func GetEulaTypeEnumEnumStringValues() []string {
 
 // GetMappingEulaTypeEnumEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEulaTypeEnumEnum(val string) (EulaTypeEnumEnum, bool) {
-	mappingEulaTypeEnumEnumIgnoreCase := make(map[string]EulaTypeEnumEnum)
-	for k, v := range mappingEulaTypeEnumEnum {
-		mappingEulaTypeEnumEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEulaTypeEnumEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEulaTypeEnumEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

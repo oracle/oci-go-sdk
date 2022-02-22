@@ -6,7 +6,7 @@ package blockchain
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -137,6 +137,11 @@ var mappingListPeersSortOrderEnum = map[string]ListPeersSortOrderEnum{
 	"DESC": ListPeersSortOrderDesc,
 }
 
+var mappingListPeersSortOrderEnumLowerCase = map[string]ListPeersSortOrderEnum{
+	"asc":  ListPeersSortOrderAsc,
+	"desc": ListPeersSortOrderDesc,
+}
+
 // GetListPeersSortOrderEnumValues Enumerates the set of values for ListPeersSortOrderEnum
 func GetListPeersSortOrderEnumValues() []ListPeersSortOrderEnum {
 	values := make([]ListPeersSortOrderEnum, 0)
@@ -156,12 +161,7 @@ func GetListPeersSortOrderEnumStringValues() []string {
 
 // GetMappingListPeersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPeersSortOrderEnum(val string) (ListPeersSortOrderEnum, bool) {
-	mappingListPeersSortOrderEnumIgnoreCase := make(map[string]ListPeersSortOrderEnum)
-	for k, v := range mappingListPeersSortOrderEnum {
-		mappingListPeersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPeersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPeersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -177,6 +177,11 @@ const (
 var mappingListPeersSortByEnum = map[string]ListPeersSortByEnum{
 	"timeCreated": ListPeersSortByTimecreated,
 	"displayName": ListPeersSortByDisplayname,
+}
+
+var mappingListPeersSortByEnumLowerCase = map[string]ListPeersSortByEnum{
+	"timecreated": ListPeersSortByTimecreated,
+	"displayname": ListPeersSortByDisplayname,
 }
 
 // GetListPeersSortByEnumValues Enumerates the set of values for ListPeersSortByEnum
@@ -198,11 +203,6 @@ func GetListPeersSortByEnumStringValues() []string {
 
 // GetMappingListPeersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPeersSortByEnum(val string) (ListPeersSortByEnum, bool) {
-	mappingListPeersSortByEnumIgnoreCase := make(map[string]ListPeersSortByEnum)
-	for k, v := range mappingListPeersSortByEnum {
-		mappingListPeersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPeersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPeersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

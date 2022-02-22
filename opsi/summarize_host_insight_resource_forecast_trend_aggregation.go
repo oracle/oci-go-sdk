@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -83,6 +83,12 @@ var mappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnu
 	"LOGICAL_MEMORY": SummarizeHostInsightResourceForecastTrendAggregationResourceMetricLogicalMemory,
 }
 
+var mappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnumLowerCase = map[string]SummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnum{
+	"cpu":            SummarizeHostInsightResourceForecastTrendAggregationResourceMetricCpu,
+	"memory":         SummarizeHostInsightResourceForecastTrendAggregationResourceMetricMemory,
+	"logical_memory": SummarizeHostInsightResourceForecastTrendAggregationResourceMetricLogicalMemory,
+}
+
 // GetSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnumValues Enumerates the set of values for SummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnum
 func GetSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnumValues() []SummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnum {
 	values := make([]SummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnum, 0)
@@ -103,12 +109,7 @@ func GetSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnumSt
 
 // GetMappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnum(val string) (SummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnum, bool) {
-	mappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnum)
-	for k, v := range mappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnum {
-		mappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeHostInsightResourceForecastTrendAggregationResourceMetricEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -138,6 +139,17 @@ var mappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnum = map
 	"YEARLY_SEASONS":                    SummarizeHostInsightResourceForecastTrendAggregationPatternYearlySeasons,
 }
 
+var mappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnumLowerCase = map[string]SummarizeHostInsightResourceForecastTrendAggregationPatternEnum{
+	"linear":                            SummarizeHostInsightResourceForecastTrendAggregationPatternLinear,
+	"monthly_seasons":                   SummarizeHostInsightResourceForecastTrendAggregationPatternMonthlySeasons,
+	"monthly_and_yearly_seasons":        SummarizeHostInsightResourceForecastTrendAggregationPatternMonthlyAndYearlySeasons,
+	"weekly_seasons":                    SummarizeHostInsightResourceForecastTrendAggregationPatternWeeklySeasons,
+	"weekly_and_monthly_seasons":        SummarizeHostInsightResourceForecastTrendAggregationPatternWeeklyAndMonthlySeasons,
+	"weekly_monthly_and_yearly_seasons": SummarizeHostInsightResourceForecastTrendAggregationPatternWeeklyMonthlyAndYearlySeasons,
+	"weekly_and_yearly_seasons":         SummarizeHostInsightResourceForecastTrendAggregationPatternWeeklyAndYearlySeasons,
+	"yearly_seasons":                    SummarizeHostInsightResourceForecastTrendAggregationPatternYearlySeasons,
+}
+
 // GetSummarizeHostInsightResourceForecastTrendAggregationPatternEnumValues Enumerates the set of values for SummarizeHostInsightResourceForecastTrendAggregationPatternEnum
 func GetSummarizeHostInsightResourceForecastTrendAggregationPatternEnumValues() []SummarizeHostInsightResourceForecastTrendAggregationPatternEnum {
 	values := make([]SummarizeHostInsightResourceForecastTrendAggregationPatternEnum, 0)
@@ -163,11 +175,6 @@ func GetSummarizeHostInsightResourceForecastTrendAggregationPatternEnumStringVal
 
 // GetMappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnum(val string) (SummarizeHostInsightResourceForecastTrendAggregationPatternEnum, bool) {
-	mappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnumIgnoreCase := make(map[string]SummarizeHostInsightResourceForecastTrendAggregationPatternEnum)
-	for k, v := range mappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnum {
-		mappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeHostInsightResourceForecastTrendAggregationPatternEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package servicecatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -102,6 +102,14 @@ var mappingPrivateApplicationLifecycleStateEnum = map[string]PrivateApplicationL
 	"DELETED":  PrivateApplicationLifecycleStateDeleted,
 }
 
+var mappingPrivateApplicationLifecycleStateEnumLowerCase = map[string]PrivateApplicationLifecycleStateEnum{
+	"creating": PrivateApplicationLifecycleStateCreating,
+	"updating": PrivateApplicationLifecycleStateUpdating,
+	"active":   PrivateApplicationLifecycleStateActive,
+	"deleting": PrivateApplicationLifecycleStateDeleting,
+	"deleted":  PrivateApplicationLifecycleStateDeleted,
+}
+
 // GetPrivateApplicationLifecycleStateEnumValues Enumerates the set of values for PrivateApplicationLifecycleStateEnum
 func GetPrivateApplicationLifecycleStateEnumValues() []PrivateApplicationLifecycleStateEnum {
 	values := make([]PrivateApplicationLifecycleStateEnum, 0)
@@ -124,11 +132,6 @@ func GetPrivateApplicationLifecycleStateEnumStringValues() []string {
 
 // GetMappingPrivateApplicationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPrivateApplicationLifecycleStateEnum(val string) (PrivateApplicationLifecycleStateEnum, bool) {
-	mappingPrivateApplicationLifecycleStateEnumIgnoreCase := make(map[string]PrivateApplicationLifecycleStateEnum)
-	for k, v := range mappingPrivateApplicationLifecycleStateEnum {
-		mappingPrivateApplicationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPrivateApplicationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPrivateApplicationLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

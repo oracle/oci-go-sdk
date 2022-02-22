@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -206,6 +206,15 @@ var mappingDataEntityFromFileEntityDetailsEntityTypeEnum = map[string]DataEntity
 	"OTHER":  DataEntityFromFileEntityDetailsEntityTypeOther,
 }
 
+var mappingDataEntityFromFileEntityDetailsEntityTypeEnumLowerCase = map[string]DataEntityFromFileEntityDetailsEntityTypeEnum{
+	"table":  DataEntityFromFileEntityDetailsEntityTypeTable,
+	"view":   DataEntityFromFileEntityDetailsEntityTypeView,
+	"file":   DataEntityFromFileEntityDetailsEntityTypeFile,
+	"queue":  DataEntityFromFileEntityDetailsEntityTypeQueue,
+	"stream": DataEntityFromFileEntityDetailsEntityTypeStream,
+	"other":  DataEntityFromFileEntityDetailsEntityTypeOther,
+}
+
 // GetDataEntityFromFileEntityDetailsEntityTypeEnumValues Enumerates the set of values for DataEntityFromFileEntityDetailsEntityTypeEnum
 func GetDataEntityFromFileEntityDetailsEntityTypeEnumValues() []DataEntityFromFileEntityDetailsEntityTypeEnum {
 	values := make([]DataEntityFromFileEntityDetailsEntityTypeEnum, 0)
@@ -229,11 +238,6 @@ func GetDataEntityFromFileEntityDetailsEntityTypeEnumStringValues() []string {
 
 // GetMappingDataEntityFromFileEntityDetailsEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataEntityFromFileEntityDetailsEntityTypeEnum(val string) (DataEntityFromFileEntityDetailsEntityTypeEnum, bool) {
-	mappingDataEntityFromFileEntityDetailsEntityTypeEnumIgnoreCase := make(map[string]DataEntityFromFileEntityDetailsEntityTypeEnum)
-	for k, v := range mappingDataEntityFromFileEntityDetailsEntityTypeEnum {
-		mappingDataEntityFromFileEntityDetailsEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataEntityFromFileEntityDetailsEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataEntityFromFileEntityDetailsEntityTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

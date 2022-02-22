@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -71,6 +71,11 @@ var mappingRecalledDataStatusEnum = map[string]RecalledDataStatusEnum{
 	"PENDING":  RecalledDataStatusPending,
 }
 
+var mappingRecalledDataStatusEnumLowerCase = map[string]RecalledDataStatusEnum{
+	"recalled": RecalledDataStatusRecalled,
+	"pending":  RecalledDataStatusPending,
+}
+
 // GetRecalledDataStatusEnumValues Enumerates the set of values for RecalledDataStatusEnum
 func GetRecalledDataStatusEnumValues() []RecalledDataStatusEnum {
 	values := make([]RecalledDataStatusEnum, 0)
@@ -90,11 +95,6 @@ func GetRecalledDataStatusEnumStringValues() []string {
 
 // GetMappingRecalledDataStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRecalledDataStatusEnum(val string) (RecalledDataStatusEnum, bool) {
-	mappingRecalledDataStatusEnumIgnoreCase := make(map[string]RecalledDataStatusEnum)
-	for k, v := range mappingRecalledDataStatusEnum {
-		mappingRecalledDataStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRecalledDataStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRecalledDataStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

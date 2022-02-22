@@ -31,6 +31,13 @@ var mappingDataPumpTableExistsActionEnum = map[string]DataPumpTableExistsActionE
 	"SKIP":     DataPumpTableExistsActionSkip,
 }
 
+var mappingDataPumpTableExistsActionEnumLowerCase = map[string]DataPumpTableExistsActionEnum{
+	"truncate": DataPumpTableExistsActionTruncate,
+	"replace":  DataPumpTableExistsActionReplace,
+	"append":   DataPumpTableExistsActionAppend,
+	"skip":     DataPumpTableExistsActionSkip,
+}
+
 // GetDataPumpTableExistsActionEnumValues Enumerates the set of values for DataPumpTableExistsActionEnum
 func GetDataPumpTableExistsActionEnumValues() []DataPumpTableExistsActionEnum {
 	values := make([]DataPumpTableExistsActionEnum, 0)
@@ -52,11 +59,6 @@ func GetDataPumpTableExistsActionEnumStringValues() []string {
 
 // GetMappingDataPumpTableExistsActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataPumpTableExistsActionEnum(val string) (DataPumpTableExistsActionEnum, bool) {
-	mappingDataPumpTableExistsActionEnumIgnoreCase := make(map[string]DataPumpTableExistsActionEnum)
-	for k, v := range mappingDataPumpTableExistsActionEnum {
-		mappingDataPumpTableExistsActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataPumpTableExistsActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataPumpTableExistsActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

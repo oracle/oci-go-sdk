@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -73,6 +73,11 @@ var mappingMaintenanceWindowPreferenceEnum = map[string]MaintenanceWindowPrefere
 	"CUSTOM_PREFERENCE": MaintenanceWindowPreferenceCustomPreference,
 }
 
+var mappingMaintenanceWindowPreferenceEnumLowerCase = map[string]MaintenanceWindowPreferenceEnum{
+	"no_preference":     MaintenanceWindowPreferenceNoPreference,
+	"custom_preference": MaintenanceWindowPreferenceCustomPreference,
+}
+
 // GetMaintenanceWindowPreferenceEnumValues Enumerates the set of values for MaintenanceWindowPreferenceEnum
 func GetMaintenanceWindowPreferenceEnumValues() []MaintenanceWindowPreferenceEnum {
 	values := make([]MaintenanceWindowPreferenceEnum, 0)
@@ -92,11 +97,6 @@ func GetMaintenanceWindowPreferenceEnumStringValues() []string {
 
 // GetMappingMaintenanceWindowPreferenceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMaintenanceWindowPreferenceEnum(val string) (MaintenanceWindowPreferenceEnum, bool) {
-	mappingMaintenanceWindowPreferenceEnumIgnoreCase := make(map[string]MaintenanceWindowPreferenceEnum)
-	for k, v := range mappingMaintenanceWindowPreferenceEnum {
-		mappingMaintenanceWindowPreferenceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMaintenanceWindowPreferenceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMaintenanceWindowPreferenceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

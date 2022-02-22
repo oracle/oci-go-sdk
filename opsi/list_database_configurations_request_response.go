@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -200,6 +200,15 @@ var mappingListDatabaseConfigurationsDatabaseTypeEnum = map[string]ListDatabaseC
 	"EXTERNAL-NONCDB": ListDatabaseConfigurationsDatabaseTypeExternalNoncdb,
 }
 
+var mappingListDatabaseConfigurationsDatabaseTypeEnumLowerCase = map[string]ListDatabaseConfigurationsDatabaseTypeEnum{
+	"adw-s":           ListDatabaseConfigurationsDatabaseTypeAdwS,
+	"atp-s":           ListDatabaseConfigurationsDatabaseTypeAtpS,
+	"adw-d":           ListDatabaseConfigurationsDatabaseTypeAdwD,
+	"atp-d":           ListDatabaseConfigurationsDatabaseTypeAtpD,
+	"external-pdb":    ListDatabaseConfigurationsDatabaseTypeExternalPdb,
+	"external-noncdb": ListDatabaseConfigurationsDatabaseTypeExternalNoncdb,
+}
+
 // GetListDatabaseConfigurationsDatabaseTypeEnumValues Enumerates the set of values for ListDatabaseConfigurationsDatabaseTypeEnum
 func GetListDatabaseConfigurationsDatabaseTypeEnumValues() []ListDatabaseConfigurationsDatabaseTypeEnum {
 	values := make([]ListDatabaseConfigurationsDatabaseTypeEnum, 0)
@@ -223,12 +232,7 @@ func GetListDatabaseConfigurationsDatabaseTypeEnumStringValues() []string {
 
 // GetMappingListDatabaseConfigurationsDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseConfigurationsDatabaseTypeEnum(val string) (ListDatabaseConfigurationsDatabaseTypeEnum, bool) {
-	mappingListDatabaseConfigurationsDatabaseTypeEnumIgnoreCase := make(map[string]ListDatabaseConfigurationsDatabaseTypeEnum)
-	for k, v := range mappingListDatabaseConfigurationsDatabaseTypeEnum {
-		mappingListDatabaseConfigurationsDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseConfigurationsDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseConfigurationsDatabaseTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -244,6 +248,11 @@ const (
 var mappingListDatabaseConfigurationsSortOrderEnum = map[string]ListDatabaseConfigurationsSortOrderEnum{
 	"ASC":  ListDatabaseConfigurationsSortOrderAsc,
 	"DESC": ListDatabaseConfigurationsSortOrderDesc,
+}
+
+var mappingListDatabaseConfigurationsSortOrderEnumLowerCase = map[string]ListDatabaseConfigurationsSortOrderEnum{
+	"asc":  ListDatabaseConfigurationsSortOrderAsc,
+	"desc": ListDatabaseConfigurationsSortOrderDesc,
 }
 
 // GetListDatabaseConfigurationsSortOrderEnumValues Enumerates the set of values for ListDatabaseConfigurationsSortOrderEnum
@@ -265,12 +274,7 @@ func GetListDatabaseConfigurationsSortOrderEnumStringValues() []string {
 
 // GetMappingListDatabaseConfigurationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseConfigurationsSortOrderEnum(val string) (ListDatabaseConfigurationsSortOrderEnum, bool) {
-	mappingListDatabaseConfigurationsSortOrderEnumIgnoreCase := make(map[string]ListDatabaseConfigurationsSortOrderEnum)
-	for k, v := range mappingListDatabaseConfigurationsSortOrderEnum {
-		mappingListDatabaseConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseConfigurationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -288,6 +292,12 @@ var mappingListDatabaseConfigurationsSortByEnum = map[string]ListDatabaseConfigu
 	"databaseName":        ListDatabaseConfigurationsSortByDatabasename,
 	"databaseDisplayName": ListDatabaseConfigurationsSortByDatabasedisplayname,
 	"databaseType":        ListDatabaseConfigurationsSortByDatabasetype,
+}
+
+var mappingListDatabaseConfigurationsSortByEnumLowerCase = map[string]ListDatabaseConfigurationsSortByEnum{
+	"databasename":        ListDatabaseConfigurationsSortByDatabasename,
+	"databasedisplayname": ListDatabaseConfigurationsSortByDatabasedisplayname,
+	"databasetype":        ListDatabaseConfigurationsSortByDatabasetype,
 }
 
 // GetListDatabaseConfigurationsSortByEnumValues Enumerates the set of values for ListDatabaseConfigurationsSortByEnum
@@ -310,11 +320,6 @@ func GetListDatabaseConfigurationsSortByEnumStringValues() []string {
 
 // GetMappingListDatabaseConfigurationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseConfigurationsSortByEnum(val string) (ListDatabaseConfigurationsSortByEnum, bool) {
-	mappingListDatabaseConfigurationsSortByEnumIgnoreCase := make(map[string]ListDatabaseConfigurationsSortByEnum)
-	for k, v := range mappingListDatabaseConfigurationsSortByEnum {
-		mappingListDatabaseConfigurationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseConfigurationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseConfigurationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

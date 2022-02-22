@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -136,6 +136,11 @@ var mappingRequestSummarizedTrendResponderExecutionsAccessLevelEnum = map[string
 	"ACCESSIBLE": RequestSummarizedTrendResponderExecutionsAccessLevelAccessible,
 }
 
+var mappingRequestSummarizedTrendResponderExecutionsAccessLevelEnumLowerCase = map[string]RequestSummarizedTrendResponderExecutionsAccessLevelEnum{
+	"restricted": RequestSummarizedTrendResponderExecutionsAccessLevelRestricted,
+	"accessible": RequestSummarizedTrendResponderExecutionsAccessLevelAccessible,
+}
+
 // GetRequestSummarizedTrendResponderExecutionsAccessLevelEnumValues Enumerates the set of values for RequestSummarizedTrendResponderExecutionsAccessLevelEnum
 func GetRequestSummarizedTrendResponderExecutionsAccessLevelEnumValues() []RequestSummarizedTrendResponderExecutionsAccessLevelEnum {
 	values := make([]RequestSummarizedTrendResponderExecutionsAccessLevelEnum, 0)
@@ -155,11 +160,6 @@ func GetRequestSummarizedTrendResponderExecutionsAccessLevelEnumStringValues() [
 
 // GetMappingRequestSummarizedTrendResponderExecutionsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRequestSummarizedTrendResponderExecutionsAccessLevelEnum(val string) (RequestSummarizedTrendResponderExecutionsAccessLevelEnum, bool) {
-	mappingRequestSummarizedTrendResponderExecutionsAccessLevelEnumIgnoreCase := make(map[string]RequestSummarizedTrendResponderExecutionsAccessLevelEnum)
-	for k, v := range mappingRequestSummarizedTrendResponderExecutionsAccessLevelEnum {
-		mappingRequestSummarizedTrendResponderExecutionsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRequestSummarizedTrendResponderExecutionsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRequestSummarizedTrendResponderExecutionsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

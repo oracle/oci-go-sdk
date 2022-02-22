@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -146,6 +146,11 @@ var mappingListResolversSortOrderEnum = map[string]ListResolversSortOrderEnum{
 	"DESC": ListResolversSortOrderDesc,
 }
 
+var mappingListResolversSortOrderEnumLowerCase = map[string]ListResolversSortOrderEnum{
+	"asc":  ListResolversSortOrderAsc,
+	"desc": ListResolversSortOrderDesc,
+}
+
 // GetListResolversSortOrderEnumValues Enumerates the set of values for ListResolversSortOrderEnum
 func GetListResolversSortOrderEnumValues() []ListResolversSortOrderEnum {
 	values := make([]ListResolversSortOrderEnum, 0)
@@ -165,12 +170,7 @@ func GetListResolversSortOrderEnumStringValues() []string {
 
 // GetMappingListResolversSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResolversSortOrderEnum(val string) (ListResolversSortOrderEnum, bool) {
-	mappingListResolversSortOrderEnumIgnoreCase := make(map[string]ListResolversSortOrderEnum)
-	for k, v := range mappingListResolversSortOrderEnum {
-		mappingListResolversSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResolversSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResolversSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -186,6 +186,11 @@ const (
 var mappingListResolversSortByEnum = map[string]ListResolversSortByEnum{
 	"displayName": ListResolversSortByDisplayname,
 	"timeCreated": ListResolversSortByTimecreated,
+}
+
+var mappingListResolversSortByEnumLowerCase = map[string]ListResolversSortByEnum{
+	"displayname": ListResolversSortByDisplayname,
+	"timecreated": ListResolversSortByTimecreated,
 }
 
 // GetListResolversSortByEnumValues Enumerates the set of values for ListResolversSortByEnum
@@ -207,12 +212,7 @@ func GetListResolversSortByEnumStringValues() []string {
 
 // GetMappingListResolversSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResolversSortByEnum(val string) (ListResolversSortByEnum, bool) {
-	mappingListResolversSortByEnumIgnoreCase := make(map[string]ListResolversSortByEnum)
-	for k, v := range mappingListResolversSortByEnum {
-		mappingListResolversSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResolversSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResolversSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -228,6 +228,11 @@ const (
 var mappingListResolversScopeEnum = map[string]ListResolversScopeEnum{
 	"GLOBAL":  ListResolversScopeGlobal,
 	"PRIVATE": ListResolversScopePrivate,
+}
+
+var mappingListResolversScopeEnumLowerCase = map[string]ListResolversScopeEnum{
+	"global":  ListResolversScopeGlobal,
+	"private": ListResolversScopePrivate,
 }
 
 // GetListResolversScopeEnumValues Enumerates the set of values for ListResolversScopeEnum
@@ -249,11 +254,6 @@ func GetListResolversScopeEnumStringValues() []string {
 
 // GetMappingListResolversScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResolversScopeEnum(val string) (ListResolversScopeEnum, bool) {
-	mappingListResolversScopeEnumIgnoreCase := make(map[string]ListResolversScopeEnum)
-	for k, v := range mappingListResolversScopeEnum {
-		mappingListResolversScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResolversScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResolversScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

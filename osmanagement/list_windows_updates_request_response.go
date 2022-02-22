@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -131,6 +131,11 @@ var mappingListWindowsUpdatesSortOrderEnum = map[string]ListWindowsUpdatesSortOr
 	"DESC": ListWindowsUpdatesSortOrderDesc,
 }
 
+var mappingListWindowsUpdatesSortOrderEnumLowerCase = map[string]ListWindowsUpdatesSortOrderEnum{
+	"asc":  ListWindowsUpdatesSortOrderAsc,
+	"desc": ListWindowsUpdatesSortOrderDesc,
+}
+
 // GetListWindowsUpdatesSortOrderEnumValues Enumerates the set of values for ListWindowsUpdatesSortOrderEnum
 func GetListWindowsUpdatesSortOrderEnumValues() []ListWindowsUpdatesSortOrderEnum {
 	values := make([]ListWindowsUpdatesSortOrderEnum, 0)
@@ -150,12 +155,7 @@ func GetListWindowsUpdatesSortOrderEnumStringValues() []string {
 
 // GetMappingListWindowsUpdatesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWindowsUpdatesSortOrderEnum(val string) (ListWindowsUpdatesSortOrderEnum, bool) {
-	mappingListWindowsUpdatesSortOrderEnumIgnoreCase := make(map[string]ListWindowsUpdatesSortOrderEnum)
-	for k, v := range mappingListWindowsUpdatesSortOrderEnum {
-		mappingListWindowsUpdatesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWindowsUpdatesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWindowsUpdatesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -171,6 +171,11 @@ const (
 var mappingListWindowsUpdatesSortByEnum = map[string]ListWindowsUpdatesSortByEnum{
 	"TIMECREATED": ListWindowsUpdatesSortByTimecreated,
 	"DISPLAYNAME": ListWindowsUpdatesSortByDisplayname,
+}
+
+var mappingListWindowsUpdatesSortByEnumLowerCase = map[string]ListWindowsUpdatesSortByEnum{
+	"timecreated": ListWindowsUpdatesSortByTimecreated,
+	"displayname": ListWindowsUpdatesSortByDisplayname,
 }
 
 // GetListWindowsUpdatesSortByEnumValues Enumerates the set of values for ListWindowsUpdatesSortByEnum
@@ -192,11 +197,6 @@ func GetListWindowsUpdatesSortByEnumStringValues() []string {
 
 // GetMappingListWindowsUpdatesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListWindowsUpdatesSortByEnum(val string) (ListWindowsUpdatesSortByEnum, bool) {
-	mappingListWindowsUpdatesSortByEnumIgnoreCase := make(map[string]ListWindowsUpdatesSortByEnum)
-	for k, v := range mappingListWindowsUpdatesSortByEnum {
-		mappingListWindowsUpdatesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListWindowsUpdatesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListWindowsUpdatesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

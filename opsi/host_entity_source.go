@@ -29,6 +29,11 @@ var mappingHostEntitySourceEnum = map[string]HostEntitySourceEnum{
 	"EM_MANAGED_EXTERNAL_HOST":   HostEntitySourceEmManagedExternalHost,
 }
 
+var mappingHostEntitySourceEnumLowerCase = map[string]HostEntitySourceEnum{
+	"macs_managed_external_host": HostEntitySourceMacsManagedExternalHost,
+	"em_managed_external_host":   HostEntitySourceEmManagedExternalHost,
+}
+
 // GetHostEntitySourceEnumValues Enumerates the set of values for HostEntitySourceEnum
 func GetHostEntitySourceEnumValues() []HostEntitySourceEnum {
 	values := make([]HostEntitySourceEnum, 0)
@@ -48,11 +53,6 @@ func GetHostEntitySourceEnumStringValues() []string {
 
 // GetMappingHostEntitySourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHostEntitySourceEnum(val string) (HostEntitySourceEnum, bool) {
-	mappingHostEntitySourceEnumIgnoreCase := make(map[string]HostEntitySourceEnum)
-	for k, v := range mappingHostEntitySourceEnum {
-		mappingHostEntitySourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHostEntitySourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHostEntitySourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

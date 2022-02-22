@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -58,6 +58,11 @@ var mappingAutonomousDatabaseBackupConfigManualBackupTypeEnum = map[string]Auton
 	"OBJECT_STORE": AutonomousDatabaseBackupConfigManualBackupTypeObjectStore,
 }
 
+var mappingAutonomousDatabaseBackupConfigManualBackupTypeEnumLowerCase = map[string]AutonomousDatabaseBackupConfigManualBackupTypeEnum{
+	"none":         AutonomousDatabaseBackupConfigManualBackupTypeNone,
+	"object_store": AutonomousDatabaseBackupConfigManualBackupTypeObjectStore,
+}
+
 // GetAutonomousDatabaseBackupConfigManualBackupTypeEnumValues Enumerates the set of values for AutonomousDatabaseBackupConfigManualBackupTypeEnum
 func GetAutonomousDatabaseBackupConfigManualBackupTypeEnumValues() []AutonomousDatabaseBackupConfigManualBackupTypeEnum {
 	values := make([]AutonomousDatabaseBackupConfigManualBackupTypeEnum, 0)
@@ -77,11 +82,6 @@ func GetAutonomousDatabaseBackupConfigManualBackupTypeEnumStringValues() []strin
 
 // GetMappingAutonomousDatabaseBackupConfigManualBackupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAutonomousDatabaseBackupConfigManualBackupTypeEnum(val string) (AutonomousDatabaseBackupConfigManualBackupTypeEnum, bool) {
-	mappingAutonomousDatabaseBackupConfigManualBackupTypeEnumIgnoreCase := make(map[string]AutonomousDatabaseBackupConfigManualBackupTypeEnum)
-	for k, v := range mappingAutonomousDatabaseBackupConfigManualBackupTypeEnum {
-		mappingAutonomousDatabaseBackupConfigManualBackupTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAutonomousDatabaseBackupConfigManualBackupTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAutonomousDatabaseBackupConfigManualBackupTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

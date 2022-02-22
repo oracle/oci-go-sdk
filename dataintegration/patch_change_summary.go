@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -84,6 +84,15 @@ var mappingPatchChangeSummaryTypeEnum = map[string]PatchChangeSummaryTypeEnum{
 	"REST_TASK":         PatchChangeSummaryTypeRestTask,
 }
 
+var mappingPatchChangeSummaryTypeEnumLowerCase = map[string]PatchChangeSummaryTypeEnum{
+	"integration_task":  PatchChangeSummaryTypeIntegrationTask,
+	"data_loader_task":  PatchChangeSummaryTypeDataLoaderTask,
+	"pipeline_task":     PatchChangeSummaryTypePipelineTask,
+	"sql_task":          PatchChangeSummaryTypeSqlTask,
+	"oci_dataflow_task": PatchChangeSummaryTypeOciDataflowTask,
+	"rest_task":         PatchChangeSummaryTypeRestTask,
+}
+
 // GetPatchChangeSummaryTypeEnumValues Enumerates the set of values for PatchChangeSummaryTypeEnum
 func GetPatchChangeSummaryTypeEnumValues() []PatchChangeSummaryTypeEnum {
 	values := make([]PatchChangeSummaryTypeEnum, 0)
@@ -107,12 +116,7 @@ func GetPatchChangeSummaryTypeEnumStringValues() []string {
 
 // GetMappingPatchChangeSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchChangeSummaryTypeEnum(val string) (PatchChangeSummaryTypeEnum, bool) {
-	mappingPatchChangeSummaryTypeEnumIgnoreCase := make(map[string]PatchChangeSummaryTypeEnum)
-	for k, v := range mappingPatchChangeSummaryTypeEnum {
-		mappingPatchChangeSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchChangeSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchChangeSummaryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -130,6 +134,12 @@ var mappingPatchChangeSummaryActionEnum = map[string]PatchChangeSummaryActionEnu
 	"CREATED": PatchChangeSummaryActionCreated,
 	"DELETED": PatchChangeSummaryActionDeleted,
 	"UPDATED": PatchChangeSummaryActionUpdated,
+}
+
+var mappingPatchChangeSummaryActionEnumLowerCase = map[string]PatchChangeSummaryActionEnum{
+	"created": PatchChangeSummaryActionCreated,
+	"deleted": PatchChangeSummaryActionDeleted,
+	"updated": PatchChangeSummaryActionUpdated,
 }
 
 // GetPatchChangeSummaryActionEnumValues Enumerates the set of values for PatchChangeSummaryActionEnum
@@ -152,11 +162,6 @@ func GetPatchChangeSummaryActionEnumStringValues() []string {
 
 // GetMappingPatchChangeSummaryActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchChangeSummaryActionEnum(val string) (PatchChangeSummaryActionEnum, bool) {
-	mappingPatchChangeSummaryActionEnumIgnoreCase := make(map[string]PatchChangeSummaryActionEnum)
-	for k, v := range mappingPatchChangeSummaryActionEnum {
-		mappingPatchChangeSummaryActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchChangeSummaryActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchChangeSummaryActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package certificates
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -130,6 +130,14 @@ var mappingGetCertificateBundleStageEnum = map[string]GetCertificateBundleStageE
 	"DEPRECATED": GetCertificateBundleStageDeprecated,
 }
 
+var mappingGetCertificateBundleStageEnumLowerCase = map[string]GetCertificateBundleStageEnum{
+	"current":    GetCertificateBundleStageCurrent,
+	"pending":    GetCertificateBundleStagePending,
+	"latest":     GetCertificateBundleStageLatest,
+	"previous":   GetCertificateBundleStagePrevious,
+	"deprecated": GetCertificateBundleStageDeprecated,
+}
+
 // GetGetCertificateBundleStageEnumValues Enumerates the set of values for GetCertificateBundleStageEnum
 func GetGetCertificateBundleStageEnumValues() []GetCertificateBundleStageEnum {
 	values := make([]GetCertificateBundleStageEnum, 0)
@@ -152,12 +160,7 @@ func GetGetCertificateBundleStageEnumStringValues() []string {
 
 // GetMappingGetCertificateBundleStageEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetCertificateBundleStageEnum(val string) (GetCertificateBundleStageEnum, bool) {
-	mappingGetCertificateBundleStageEnumIgnoreCase := make(map[string]GetCertificateBundleStageEnum)
-	for k, v := range mappingGetCertificateBundleStageEnum {
-		mappingGetCertificateBundleStageEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetCertificateBundleStageEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetCertificateBundleStageEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -173,6 +176,11 @@ const (
 var mappingGetCertificateBundleCertificateBundleTypeEnum = map[string]GetCertificateBundleCertificateBundleTypeEnum{
 	"CERTIFICATE_CONTENT_PUBLIC_ONLY":      GetCertificateBundleCertificateBundleTypePublicOnly,
 	"CERTIFICATE_CONTENT_WITH_PRIVATE_KEY": GetCertificateBundleCertificateBundleTypeWithPrivateKey,
+}
+
+var mappingGetCertificateBundleCertificateBundleTypeEnumLowerCase = map[string]GetCertificateBundleCertificateBundleTypeEnum{
+	"certificate_content_public_only":      GetCertificateBundleCertificateBundleTypePublicOnly,
+	"certificate_content_with_private_key": GetCertificateBundleCertificateBundleTypeWithPrivateKey,
 }
 
 // GetGetCertificateBundleCertificateBundleTypeEnumValues Enumerates the set of values for GetCertificateBundleCertificateBundleTypeEnum
@@ -194,11 +202,6 @@ func GetGetCertificateBundleCertificateBundleTypeEnumStringValues() []string {
 
 // GetMappingGetCertificateBundleCertificateBundleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetCertificateBundleCertificateBundleTypeEnum(val string) (GetCertificateBundleCertificateBundleTypeEnum, bool) {
-	mappingGetCertificateBundleCertificateBundleTypeEnumIgnoreCase := make(map[string]GetCertificateBundleCertificateBundleTypeEnum)
-	for k, v := range mappingGetCertificateBundleCertificateBundleTypeEnum {
-		mappingGetCertificateBundleCertificateBundleTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetCertificateBundleCertificateBundleTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetCertificateBundleCertificateBundleTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

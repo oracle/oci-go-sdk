@@ -31,6 +31,12 @@ var mappingParameterScopeEnum = map[string]ParameterScopeEnum{
 	"BOTH":   ParameterScopeBoth,
 }
 
+var mappingParameterScopeEnumLowerCase = map[string]ParameterScopeEnum{
+	"memory": ParameterScopeMemory,
+	"spfile": ParameterScopeSpfile,
+	"both":   ParameterScopeBoth,
+}
+
 // GetParameterScopeEnumValues Enumerates the set of values for ParameterScopeEnum
 func GetParameterScopeEnumValues() []ParameterScopeEnum {
 	values := make([]ParameterScopeEnum, 0)
@@ -51,11 +57,6 @@ func GetParameterScopeEnumStringValues() []string {
 
 // GetMappingParameterScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingParameterScopeEnum(val string) (ParameterScopeEnum, bool) {
-	mappingParameterScopeEnumIgnoreCase := make(map[string]ParameterScopeEnum)
-	for k, v := range mappingParameterScopeEnum {
-		mappingParameterScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingParameterScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingParameterScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

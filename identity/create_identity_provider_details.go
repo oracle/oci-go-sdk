@@ -12,7 +12,7 @@ package identity
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -162,6 +162,11 @@ var mappingCreateIdentityProviderDetailsProductTypeEnum = map[string]CreateIdent
 	"ADFS": CreateIdentityProviderDetailsProductTypeAdfs,
 }
 
+var mappingCreateIdentityProviderDetailsProductTypeEnumLowerCase = map[string]CreateIdentityProviderDetailsProductTypeEnum{
+	"idcs": CreateIdentityProviderDetailsProductTypeIdcs,
+	"adfs": CreateIdentityProviderDetailsProductTypeAdfs,
+}
+
 // GetCreateIdentityProviderDetailsProductTypeEnumValues Enumerates the set of values for CreateIdentityProviderDetailsProductTypeEnum
 func GetCreateIdentityProviderDetailsProductTypeEnumValues() []CreateIdentityProviderDetailsProductTypeEnum {
 	values := make([]CreateIdentityProviderDetailsProductTypeEnum, 0)
@@ -181,12 +186,7 @@ func GetCreateIdentityProviderDetailsProductTypeEnumStringValues() []string {
 
 // GetMappingCreateIdentityProviderDetailsProductTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateIdentityProviderDetailsProductTypeEnum(val string) (CreateIdentityProviderDetailsProductTypeEnum, bool) {
-	mappingCreateIdentityProviderDetailsProductTypeEnumIgnoreCase := make(map[string]CreateIdentityProviderDetailsProductTypeEnum)
-	for k, v := range mappingCreateIdentityProviderDetailsProductTypeEnum {
-		mappingCreateIdentityProviderDetailsProductTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateIdentityProviderDetailsProductTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateIdentityProviderDetailsProductTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -202,6 +202,11 @@ const (
 var mappingCreateIdentityProviderDetailsProtocolEnum = map[string]CreateIdentityProviderDetailsProtocolEnum{
 	"SAML2": CreateIdentityProviderDetailsProtocolSaml2,
 	"ADFS":  CreateIdentityProviderDetailsProtocolAdfs,
+}
+
+var mappingCreateIdentityProviderDetailsProtocolEnumLowerCase = map[string]CreateIdentityProviderDetailsProtocolEnum{
+	"saml2": CreateIdentityProviderDetailsProtocolSaml2,
+	"adfs":  CreateIdentityProviderDetailsProtocolAdfs,
 }
 
 // GetCreateIdentityProviderDetailsProtocolEnumValues Enumerates the set of values for CreateIdentityProviderDetailsProtocolEnum
@@ -223,11 +228,6 @@ func GetCreateIdentityProviderDetailsProtocolEnumStringValues() []string {
 
 // GetMappingCreateIdentityProviderDetailsProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateIdentityProviderDetailsProtocolEnum(val string) (CreateIdentityProviderDetailsProtocolEnum, bool) {
-	mappingCreateIdentityProviderDetailsProtocolEnumIgnoreCase := make(map[string]CreateIdentityProviderDetailsProtocolEnum)
-	for k, v := range mappingCreateIdentityProviderDetailsProtocolEnum {
-		mappingCreateIdentityProviderDetailsProtocolEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateIdentityProviderDetailsProtocolEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateIdentityProviderDetailsProtocolEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

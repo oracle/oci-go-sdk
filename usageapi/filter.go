@@ -11,7 +11,7 @@ package usageapi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,12 @@ var mappingFilterOperatorEnum = map[string]FilterOperatorEnum{
 	"OR":  FilterOperatorOr,
 }
 
+var mappingFilterOperatorEnumLowerCase = map[string]FilterOperatorEnum{
+	"and": FilterOperatorAnd,
+	"not": FilterOperatorNot,
+	"or":  FilterOperatorOr,
+}
+
 // GetFilterOperatorEnumValues Enumerates the set of values for FilterOperatorEnum
 func GetFilterOperatorEnumValues() []FilterOperatorEnum {
 	values := make([]FilterOperatorEnum, 0)
@@ -86,11 +92,6 @@ func GetFilterOperatorEnumStringValues() []string {
 
 // GetMappingFilterOperatorEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFilterOperatorEnum(val string) (FilterOperatorEnum, bool) {
-	mappingFilterOperatorEnumIgnoreCase := make(map[string]FilterOperatorEnum)
-	for k, v := range mappingFilterOperatorEnum {
-		mappingFilterOperatorEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFilterOperatorEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFilterOperatorEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

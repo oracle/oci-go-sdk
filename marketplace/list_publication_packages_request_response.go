@@ -6,7 +6,7 @@ package marketplace
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -133,6 +133,10 @@ var mappingListPublicationPackagesSortByEnum = map[string]ListPublicationPackage
 	"TIMERELEASED": ListPublicationPackagesSortByTimereleased,
 }
 
+var mappingListPublicationPackagesSortByEnumLowerCase = map[string]ListPublicationPackagesSortByEnum{
+	"timereleased": ListPublicationPackagesSortByTimereleased,
+}
+
 // GetListPublicationPackagesSortByEnumValues Enumerates the set of values for ListPublicationPackagesSortByEnum
 func GetListPublicationPackagesSortByEnumValues() []ListPublicationPackagesSortByEnum {
 	values := make([]ListPublicationPackagesSortByEnum, 0)
@@ -151,12 +155,7 @@ func GetListPublicationPackagesSortByEnumStringValues() []string {
 
 // GetMappingListPublicationPackagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPublicationPackagesSortByEnum(val string) (ListPublicationPackagesSortByEnum, bool) {
-	mappingListPublicationPackagesSortByEnumIgnoreCase := make(map[string]ListPublicationPackagesSortByEnum)
-	for k, v := range mappingListPublicationPackagesSortByEnum {
-		mappingListPublicationPackagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPublicationPackagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPublicationPackagesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -172,6 +171,11 @@ const (
 var mappingListPublicationPackagesSortOrderEnum = map[string]ListPublicationPackagesSortOrderEnum{
 	"ASC":  ListPublicationPackagesSortOrderAsc,
 	"DESC": ListPublicationPackagesSortOrderDesc,
+}
+
+var mappingListPublicationPackagesSortOrderEnumLowerCase = map[string]ListPublicationPackagesSortOrderEnum{
+	"asc":  ListPublicationPackagesSortOrderAsc,
+	"desc": ListPublicationPackagesSortOrderDesc,
 }
 
 // GetListPublicationPackagesSortOrderEnumValues Enumerates the set of values for ListPublicationPackagesSortOrderEnum
@@ -193,11 +197,6 @@ func GetListPublicationPackagesSortOrderEnumStringValues() []string {
 
 // GetMappingListPublicationPackagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListPublicationPackagesSortOrderEnum(val string) (ListPublicationPackagesSortOrderEnum, bool) {
-	mappingListPublicationPackagesSortOrderEnumIgnoreCase := make(map[string]ListPublicationPackagesSortOrderEnum)
-	for k, v := range mappingListPublicationPackagesSortOrderEnum {
-		mappingListPublicationPackagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListPublicationPackagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListPublicationPackagesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -67,6 +67,13 @@ var mappingCachingRuleCriteriaConditionEnum = map[string]CachingRuleCriteriaCond
 	"URL_PART_CONTAINS":  CachingRuleCriteriaConditionPartContains,
 }
 
+var mappingCachingRuleCriteriaConditionEnumLowerCase = map[string]CachingRuleCriteriaConditionEnum{
+	"url_is":             CachingRuleCriteriaConditionIs,
+	"url_starts_with":    CachingRuleCriteriaConditionStartsWith,
+	"url_part_ends_with": CachingRuleCriteriaConditionPartEndsWith,
+	"url_part_contains":  CachingRuleCriteriaConditionPartContains,
+}
+
 // GetCachingRuleCriteriaConditionEnumValues Enumerates the set of values for CachingRuleCriteriaConditionEnum
 func GetCachingRuleCriteriaConditionEnumValues() []CachingRuleCriteriaConditionEnum {
 	values := make([]CachingRuleCriteriaConditionEnum, 0)
@@ -88,11 +95,6 @@ func GetCachingRuleCriteriaConditionEnumStringValues() []string {
 
 // GetMappingCachingRuleCriteriaConditionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCachingRuleCriteriaConditionEnum(val string) (CachingRuleCriteriaConditionEnum, bool) {
-	mappingCachingRuleCriteriaConditionEnumIgnoreCase := make(map[string]CachingRuleCriteriaConditionEnum)
-	for k, v := range mappingCachingRuleCriteriaConditionEnum {
-		mappingCachingRuleCriteriaConditionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCachingRuleCriteriaConditionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCachingRuleCriteriaConditionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

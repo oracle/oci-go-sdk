@@ -11,7 +11,7 @@ package usageapi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -59,6 +59,10 @@ var mappingForecastForecastTypeEnum = map[string]ForecastForecastTypeEnum{
 	"BASIC": ForecastForecastTypeBasic,
 }
 
+var mappingForecastForecastTypeEnumLowerCase = map[string]ForecastForecastTypeEnum{
+	"basic": ForecastForecastTypeBasic,
+}
+
 // GetForecastForecastTypeEnumValues Enumerates the set of values for ForecastForecastTypeEnum
 func GetForecastForecastTypeEnumValues() []ForecastForecastTypeEnum {
 	values := make([]ForecastForecastTypeEnum, 0)
@@ -77,11 +81,6 @@ func GetForecastForecastTypeEnumStringValues() []string {
 
 // GetMappingForecastForecastTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingForecastForecastTypeEnum(val string) (ForecastForecastTypeEnum, bool) {
-	mappingForecastForecastTypeEnumIgnoreCase := make(map[string]ForecastForecastTypeEnum)
-	for k, v := range mappingForecastForecastTypeEnum {
-		mappingForecastForecastTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingForecastForecastTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingForecastForecastTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

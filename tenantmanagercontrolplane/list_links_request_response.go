@@ -6,7 +6,7 @@ package tenantmanagercontrolplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -137,6 +137,15 @@ var mappingListLinksLifecycleStateEnum = map[string]ListLinksLifecycleStateEnum{
 	"TERMINATED": ListLinksLifecycleStateTerminated,
 }
 
+var mappingListLinksLifecycleStateEnumLowerCase = map[string]ListLinksLifecycleStateEnum{
+	"creating":   ListLinksLifecycleStateCreating,
+	"active":     ListLinksLifecycleStateActive,
+	"inactive":   ListLinksLifecycleStateInactive,
+	"updating":   ListLinksLifecycleStateUpdating,
+	"failed":     ListLinksLifecycleStateFailed,
+	"terminated": ListLinksLifecycleStateTerminated,
+}
+
 // GetListLinksLifecycleStateEnumValues Enumerates the set of values for ListLinksLifecycleStateEnum
 func GetListLinksLifecycleStateEnumValues() []ListLinksLifecycleStateEnum {
 	values := make([]ListLinksLifecycleStateEnum, 0)
@@ -160,12 +169,7 @@ func GetListLinksLifecycleStateEnumStringValues() []string {
 
 // GetMappingListLinksLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLinksLifecycleStateEnum(val string) (ListLinksLifecycleStateEnum, bool) {
-	mappingListLinksLifecycleStateEnumIgnoreCase := make(map[string]ListLinksLifecycleStateEnum)
-	for k, v := range mappingListLinksLifecycleStateEnum {
-		mappingListLinksLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLinksLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLinksLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +185,11 @@ const (
 var mappingListLinksSortOrderEnum = map[string]ListLinksSortOrderEnum{
 	"ASC":  ListLinksSortOrderAsc,
 	"DESC": ListLinksSortOrderDesc,
+}
+
+var mappingListLinksSortOrderEnumLowerCase = map[string]ListLinksSortOrderEnum{
+	"asc":  ListLinksSortOrderAsc,
+	"desc": ListLinksSortOrderDesc,
 }
 
 // GetListLinksSortOrderEnumValues Enumerates the set of values for ListLinksSortOrderEnum
@@ -202,11 +211,6 @@ func GetListLinksSortOrderEnumStringValues() []string {
 
 // GetMappingListLinksSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListLinksSortOrderEnum(val string) (ListLinksSortOrderEnum, bool) {
-	mappingListLinksSortOrderEnumIgnoreCase := make(map[string]ListLinksSortOrderEnum)
-	for k, v := range mappingListLinksSortOrderEnum {
-		mappingListLinksSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListLinksSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListLinksSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

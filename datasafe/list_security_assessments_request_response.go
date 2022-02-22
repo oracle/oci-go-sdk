@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -187,6 +187,11 @@ var mappingListSecurityAssessmentsAccessLevelEnum = map[string]ListSecurityAsses
 	"ACCESSIBLE": ListSecurityAssessmentsAccessLevelAccessible,
 }
 
+var mappingListSecurityAssessmentsAccessLevelEnumLowerCase = map[string]ListSecurityAssessmentsAccessLevelEnum{
+	"restricted": ListSecurityAssessmentsAccessLevelRestricted,
+	"accessible": ListSecurityAssessmentsAccessLevelAccessible,
+}
+
 // GetListSecurityAssessmentsAccessLevelEnumValues Enumerates the set of values for ListSecurityAssessmentsAccessLevelEnum
 func GetListSecurityAssessmentsAccessLevelEnumValues() []ListSecurityAssessmentsAccessLevelEnum {
 	values := make([]ListSecurityAssessmentsAccessLevelEnum, 0)
@@ -206,12 +211,7 @@ func GetListSecurityAssessmentsAccessLevelEnumStringValues() []string {
 
 // GetMappingListSecurityAssessmentsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSecurityAssessmentsAccessLevelEnum(val string) (ListSecurityAssessmentsAccessLevelEnum, bool) {
-	mappingListSecurityAssessmentsAccessLevelEnumIgnoreCase := make(map[string]ListSecurityAssessmentsAccessLevelEnum)
-	for k, v := range mappingListSecurityAssessmentsAccessLevelEnum {
-		mappingListSecurityAssessmentsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSecurityAssessmentsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSecurityAssessmentsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -231,6 +231,13 @@ var mappingListSecurityAssessmentsTypeEnum = map[string]ListSecurityAssessmentsT
 	"SAVED":         ListSecurityAssessmentsTypeSaved,
 	"SAVE_SCHEDULE": ListSecurityAssessmentsTypeSaveSchedule,
 	"COMPARTMENT":   ListSecurityAssessmentsTypeCompartment,
+}
+
+var mappingListSecurityAssessmentsTypeEnumLowerCase = map[string]ListSecurityAssessmentsTypeEnum{
+	"latest":        ListSecurityAssessmentsTypeLatest,
+	"saved":         ListSecurityAssessmentsTypeSaved,
+	"save_schedule": ListSecurityAssessmentsTypeSaveSchedule,
+	"compartment":   ListSecurityAssessmentsTypeCompartment,
 }
 
 // GetListSecurityAssessmentsTypeEnumValues Enumerates the set of values for ListSecurityAssessmentsTypeEnum
@@ -254,12 +261,7 @@ func GetListSecurityAssessmentsTypeEnumStringValues() []string {
 
 // GetMappingListSecurityAssessmentsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSecurityAssessmentsTypeEnum(val string) (ListSecurityAssessmentsTypeEnum, bool) {
-	mappingListSecurityAssessmentsTypeEnumIgnoreCase := make(map[string]ListSecurityAssessmentsTypeEnum)
-	for k, v := range mappingListSecurityAssessmentsTypeEnum {
-		mappingListSecurityAssessmentsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSecurityAssessmentsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSecurityAssessmentsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -275,6 +277,11 @@ const (
 var mappingListSecurityAssessmentsTriggeredByEnum = map[string]ListSecurityAssessmentsTriggeredByEnum{
 	"USER":   ListSecurityAssessmentsTriggeredByUser,
 	"SYSTEM": ListSecurityAssessmentsTriggeredBySystem,
+}
+
+var mappingListSecurityAssessmentsTriggeredByEnumLowerCase = map[string]ListSecurityAssessmentsTriggeredByEnum{
+	"user":   ListSecurityAssessmentsTriggeredByUser,
+	"system": ListSecurityAssessmentsTriggeredBySystem,
 }
 
 // GetListSecurityAssessmentsTriggeredByEnumValues Enumerates the set of values for ListSecurityAssessmentsTriggeredByEnum
@@ -296,12 +303,7 @@ func GetListSecurityAssessmentsTriggeredByEnumStringValues() []string {
 
 // GetMappingListSecurityAssessmentsTriggeredByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSecurityAssessmentsTriggeredByEnum(val string) (ListSecurityAssessmentsTriggeredByEnum, bool) {
-	mappingListSecurityAssessmentsTriggeredByEnumIgnoreCase := make(map[string]ListSecurityAssessmentsTriggeredByEnum)
-	for k, v := range mappingListSecurityAssessmentsTriggeredByEnum {
-		mappingListSecurityAssessmentsTriggeredByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSecurityAssessmentsTriggeredByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSecurityAssessmentsTriggeredByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -317,6 +319,11 @@ const (
 var mappingListSecurityAssessmentsSortOrderEnum = map[string]ListSecurityAssessmentsSortOrderEnum{
 	"ASC":  ListSecurityAssessmentsSortOrderAsc,
 	"DESC": ListSecurityAssessmentsSortOrderDesc,
+}
+
+var mappingListSecurityAssessmentsSortOrderEnumLowerCase = map[string]ListSecurityAssessmentsSortOrderEnum{
+	"asc":  ListSecurityAssessmentsSortOrderAsc,
+	"desc": ListSecurityAssessmentsSortOrderDesc,
 }
 
 // GetListSecurityAssessmentsSortOrderEnumValues Enumerates the set of values for ListSecurityAssessmentsSortOrderEnum
@@ -338,12 +345,7 @@ func GetListSecurityAssessmentsSortOrderEnumStringValues() []string {
 
 // GetMappingListSecurityAssessmentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSecurityAssessmentsSortOrderEnum(val string) (ListSecurityAssessmentsSortOrderEnum, bool) {
-	mappingListSecurityAssessmentsSortOrderEnumIgnoreCase := make(map[string]ListSecurityAssessmentsSortOrderEnum)
-	for k, v := range mappingListSecurityAssessmentsSortOrderEnum {
-		mappingListSecurityAssessmentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSecurityAssessmentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSecurityAssessmentsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -359,6 +361,11 @@ const (
 var mappingListSecurityAssessmentsSortByEnum = map[string]ListSecurityAssessmentsSortByEnum{
 	"timeCreated": ListSecurityAssessmentsSortByTimecreated,
 	"displayName": ListSecurityAssessmentsSortByDisplayname,
+}
+
+var mappingListSecurityAssessmentsSortByEnumLowerCase = map[string]ListSecurityAssessmentsSortByEnum{
+	"timecreated": ListSecurityAssessmentsSortByTimecreated,
+	"displayname": ListSecurityAssessmentsSortByDisplayname,
 }
 
 // GetListSecurityAssessmentsSortByEnumValues Enumerates the set of values for ListSecurityAssessmentsSortByEnum
@@ -380,12 +387,7 @@ func GetListSecurityAssessmentsSortByEnumStringValues() []string {
 
 // GetMappingListSecurityAssessmentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSecurityAssessmentsSortByEnum(val string) (ListSecurityAssessmentsSortByEnum, bool) {
-	mappingListSecurityAssessmentsSortByEnumIgnoreCase := make(map[string]ListSecurityAssessmentsSortByEnum)
-	for k, v := range mappingListSecurityAssessmentsSortByEnum {
-		mappingListSecurityAssessmentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSecurityAssessmentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSecurityAssessmentsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -407,6 +409,14 @@ var mappingListSecurityAssessmentsLifecycleStateEnum = map[string]ListSecurityAs
 	"UPDATING":  ListSecurityAssessmentsLifecycleStateUpdating,
 	"DELETING":  ListSecurityAssessmentsLifecycleStateDeleting,
 	"FAILED":    ListSecurityAssessmentsLifecycleStateFailed,
+}
+
+var mappingListSecurityAssessmentsLifecycleStateEnumLowerCase = map[string]ListSecurityAssessmentsLifecycleStateEnum{
+	"creating":  ListSecurityAssessmentsLifecycleStateCreating,
+	"succeeded": ListSecurityAssessmentsLifecycleStateSucceeded,
+	"updating":  ListSecurityAssessmentsLifecycleStateUpdating,
+	"deleting":  ListSecurityAssessmentsLifecycleStateDeleting,
+	"failed":    ListSecurityAssessmentsLifecycleStateFailed,
 }
 
 // GetListSecurityAssessmentsLifecycleStateEnumValues Enumerates the set of values for ListSecurityAssessmentsLifecycleStateEnum
@@ -431,11 +441,6 @@ func GetListSecurityAssessmentsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListSecurityAssessmentsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSecurityAssessmentsLifecycleStateEnum(val string) (ListSecurityAssessmentsLifecycleStateEnum, bool) {
-	mappingListSecurityAssessmentsLifecycleStateEnumIgnoreCase := make(map[string]ListSecurityAssessmentsLifecycleStateEnum)
-	for k, v := range mappingListSecurityAssessmentsLifecycleStateEnum {
-		mappingListSecurityAssessmentsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSecurityAssessmentsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSecurityAssessmentsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

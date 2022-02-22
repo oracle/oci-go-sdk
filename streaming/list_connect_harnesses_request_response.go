@@ -6,7 +6,7 @@ package streaming
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -140,6 +140,11 @@ var mappingListConnectHarnessesSortByEnum = map[string]ListConnectHarnessesSortB
 	"TIMECREATED": ListConnectHarnessesSortByTimecreated,
 }
 
+var mappingListConnectHarnessesSortByEnumLowerCase = map[string]ListConnectHarnessesSortByEnum{
+	"name":        ListConnectHarnessesSortByName,
+	"timecreated": ListConnectHarnessesSortByTimecreated,
+}
+
 // GetListConnectHarnessesSortByEnumValues Enumerates the set of values for ListConnectHarnessesSortByEnum
 func GetListConnectHarnessesSortByEnumValues() []ListConnectHarnessesSortByEnum {
 	values := make([]ListConnectHarnessesSortByEnum, 0)
@@ -159,12 +164,7 @@ func GetListConnectHarnessesSortByEnumStringValues() []string {
 
 // GetMappingListConnectHarnessesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConnectHarnessesSortByEnum(val string) (ListConnectHarnessesSortByEnum, bool) {
-	mappingListConnectHarnessesSortByEnumIgnoreCase := make(map[string]ListConnectHarnessesSortByEnum)
-	for k, v := range mappingListConnectHarnessesSortByEnum {
-		mappingListConnectHarnessesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConnectHarnessesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConnectHarnessesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -180,6 +180,11 @@ const (
 var mappingListConnectHarnessesSortOrderEnum = map[string]ListConnectHarnessesSortOrderEnum{
 	"ASC":  ListConnectHarnessesSortOrderAsc,
 	"DESC": ListConnectHarnessesSortOrderDesc,
+}
+
+var mappingListConnectHarnessesSortOrderEnumLowerCase = map[string]ListConnectHarnessesSortOrderEnum{
+	"asc":  ListConnectHarnessesSortOrderAsc,
+	"desc": ListConnectHarnessesSortOrderDesc,
 }
 
 // GetListConnectHarnessesSortOrderEnumValues Enumerates the set of values for ListConnectHarnessesSortOrderEnum
@@ -201,11 +206,6 @@ func GetListConnectHarnessesSortOrderEnumStringValues() []string {
 
 // GetMappingListConnectHarnessesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConnectHarnessesSortOrderEnum(val string) (ListConnectHarnessesSortOrderEnum, bool) {
-	mappingListConnectHarnessesSortOrderEnumIgnoreCase := make(map[string]ListConnectHarnessesSortOrderEnum)
-	for k, v := range mappingListConnectHarnessesSortOrderEnum {
-		mappingListConnectHarnessesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConnectHarnessesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConnectHarnessesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,8 +12,8 @@ package analytics
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
-	"github.com/oracle/oci-go-sdk/v58/common/auth"
+	"github.com/oracle/oci-go-sdk/v59/common"
+	"github.com/oracle/oci-go-sdk/v59/common/auth"
 	"net/http"
 )
 
@@ -51,7 +51,7 @@ func NewAnalyticsClientWithOboToken(configProvider common.ConfigurationProvider,
 
 func newAnalyticsClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client AnalyticsClient, err error) {
 	// Analytics service default circuit breaker is enabled
-	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSetting())
+	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName())
 	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 
@@ -1059,6 +1059,66 @@ func (client AnalyticsClient) scaleAnalyticsInstance(ctx context.Context, reques
 	}
 
 	var response ScaleAnalyticsInstanceResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// SetKmsKey Encrypts the customer data of this Analytics instance using either a customer OCI Vault Key or Oracle managed default key.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/analytics/SetKmsKey.go.html to see an example of how to use SetKmsKey API.
+func (client AnalyticsClient) SetKmsKey(ctx context.Context, request SetKmsKeyRequest) (response SetKmsKeyResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.setKmsKey, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = SetKmsKeyResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = SetKmsKeyResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(SetKmsKeyResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into SetKmsKeyResponse")
+	}
+	return
+}
+
+// setKmsKey implements the OCIOperation interface (enables retrying operations)
+func (client AnalyticsClient) setKmsKey(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/analyticsInstances/{analyticsInstanceId}/actions/setKmsKey", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response SetKmsKeyResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)

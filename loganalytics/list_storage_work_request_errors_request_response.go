@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -136,6 +136,11 @@ var mappingListStorageWorkRequestErrorsSortOrderEnum = map[string]ListStorageWor
 	"DESC": ListStorageWorkRequestErrorsSortOrderDesc,
 }
 
+var mappingListStorageWorkRequestErrorsSortOrderEnumLowerCase = map[string]ListStorageWorkRequestErrorsSortOrderEnum{
+	"asc":  ListStorageWorkRequestErrorsSortOrderAsc,
+	"desc": ListStorageWorkRequestErrorsSortOrderDesc,
+}
+
 // GetListStorageWorkRequestErrorsSortOrderEnumValues Enumerates the set of values for ListStorageWorkRequestErrorsSortOrderEnum
 func GetListStorageWorkRequestErrorsSortOrderEnumValues() []ListStorageWorkRequestErrorsSortOrderEnum {
 	values := make([]ListStorageWorkRequestErrorsSortOrderEnum, 0)
@@ -155,12 +160,7 @@ func GetListStorageWorkRequestErrorsSortOrderEnumStringValues() []string {
 
 // GetMappingListStorageWorkRequestErrorsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListStorageWorkRequestErrorsSortOrderEnum(val string) (ListStorageWorkRequestErrorsSortOrderEnum, bool) {
-	mappingListStorageWorkRequestErrorsSortOrderEnumIgnoreCase := make(map[string]ListStorageWorkRequestErrorsSortOrderEnum)
-	for k, v := range mappingListStorageWorkRequestErrorsSortOrderEnum {
-		mappingListStorageWorkRequestErrorsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListStorageWorkRequestErrorsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListStorageWorkRequestErrorsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -174,6 +174,10 @@ const (
 
 var mappingListStorageWorkRequestErrorsSortByEnum = map[string]ListStorageWorkRequestErrorsSortByEnum{
 	"timeCreated": ListStorageWorkRequestErrorsSortByTimecreated,
+}
+
+var mappingListStorageWorkRequestErrorsSortByEnumLowerCase = map[string]ListStorageWorkRequestErrorsSortByEnum{
+	"timecreated": ListStorageWorkRequestErrorsSortByTimecreated,
 }
 
 // GetListStorageWorkRequestErrorsSortByEnumValues Enumerates the set of values for ListStorageWorkRequestErrorsSortByEnum
@@ -194,11 +198,6 @@ func GetListStorageWorkRequestErrorsSortByEnumStringValues() []string {
 
 // GetMappingListStorageWorkRequestErrorsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListStorageWorkRequestErrorsSortByEnum(val string) (ListStorageWorkRequestErrorsSortByEnum, bool) {
-	mappingListStorageWorkRequestErrorsSortByEnumIgnoreCase := make(map[string]ListStorageWorkRequestErrorsSortByEnum)
-	for k, v := range mappingListStorageWorkRequestErrorsSortByEnum {
-		mappingListStorageWorkRequestErrorsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListStorageWorkRequestErrorsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListStorageWorkRequestErrorsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

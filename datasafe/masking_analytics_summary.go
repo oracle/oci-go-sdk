@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -72,6 +72,17 @@ var mappingMaskingAnalyticsSummaryMetricNameEnum = map[string]MaskingAnalyticsSu
 	"MASKED_DATA_VALUE":     MaskingAnalyticsSummaryMetricNameMaskedDataValue,
 }
 
+var mappingMaskingAnalyticsSummaryMetricNameEnumLowerCase = map[string]MaskingAnalyticsSummaryMetricNameEnum{
+	"masking_policy":        MaskingAnalyticsSummaryMetricNameMaskingPolicy,
+	"masking_database":      MaskingAnalyticsSummaryMetricNameMaskingDatabase,
+	"masking_work_request":  MaskingAnalyticsSummaryMetricNameMaskingWorkRequest,
+	"masked_sensitive_type": MaskingAnalyticsSummaryMetricNameMaskedSensitiveType,
+	"masked_schema":         MaskingAnalyticsSummaryMetricNameMaskedSchema,
+	"masked_table":          MaskingAnalyticsSummaryMetricNameMaskedTable,
+	"masked_column":         MaskingAnalyticsSummaryMetricNameMaskedColumn,
+	"masked_data_value":     MaskingAnalyticsSummaryMetricNameMaskedDataValue,
+}
+
 // GetMaskingAnalyticsSummaryMetricNameEnumValues Enumerates the set of values for MaskingAnalyticsSummaryMetricNameEnum
 func GetMaskingAnalyticsSummaryMetricNameEnumValues() []MaskingAnalyticsSummaryMetricNameEnum {
 	values := make([]MaskingAnalyticsSummaryMetricNameEnum, 0)
@@ -97,11 +108,6 @@ func GetMaskingAnalyticsSummaryMetricNameEnumStringValues() []string {
 
 // GetMappingMaskingAnalyticsSummaryMetricNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMaskingAnalyticsSummaryMetricNameEnum(val string) (MaskingAnalyticsSummaryMetricNameEnum, bool) {
-	mappingMaskingAnalyticsSummaryMetricNameEnumIgnoreCase := make(map[string]MaskingAnalyticsSummaryMetricNameEnum)
-	for k, v := range mappingMaskingAnalyticsSummaryMetricNameEnum {
-		mappingMaskingAnalyticsSummaryMetricNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMaskingAnalyticsSummaryMetricNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMaskingAnalyticsSummaryMetricNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

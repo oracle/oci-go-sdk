@@ -31,6 +31,12 @@ var mappingExadataTypeEnum = map[string]ExadataTypeEnum{
 	"EXACC":     ExadataTypeExacc,
 }
 
+var mappingExadataTypeEnumLowerCase = map[string]ExadataTypeEnum{
+	"dbmachine": ExadataTypeDbmachine,
+	"exacs":     ExadataTypeExacs,
+	"exacc":     ExadataTypeExacc,
+}
+
 // GetExadataTypeEnumValues Enumerates the set of values for ExadataTypeEnum
 func GetExadataTypeEnumValues() []ExadataTypeEnum {
 	values := make([]ExadataTypeEnum, 0)
@@ -51,11 +57,6 @@ func GetExadataTypeEnumStringValues() []string {
 
 // GetMappingExadataTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExadataTypeEnum(val string) (ExadataTypeEnum, bool) {
-	mappingExadataTypeEnumIgnoreCase := make(map[string]ExadataTypeEnum)
-	for k, v := range mappingExadataTypeEnum {
-		mappingExadataTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExadataTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExadataTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

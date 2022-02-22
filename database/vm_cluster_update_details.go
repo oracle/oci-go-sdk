@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -60,6 +60,12 @@ var mappingVmClusterUpdateDetailsUpdateActionEnum = map[string]VmClusterUpdateDe
 	"ROLLBACK":      VmClusterUpdateDetailsUpdateActionRollback,
 }
 
+var mappingVmClusterUpdateDetailsUpdateActionEnumLowerCase = map[string]VmClusterUpdateDetailsUpdateActionEnum{
+	"rolling_apply": VmClusterUpdateDetailsUpdateActionRollingApply,
+	"precheck":      VmClusterUpdateDetailsUpdateActionPrecheck,
+	"rollback":      VmClusterUpdateDetailsUpdateActionRollback,
+}
+
 // GetVmClusterUpdateDetailsUpdateActionEnumValues Enumerates the set of values for VmClusterUpdateDetailsUpdateActionEnum
 func GetVmClusterUpdateDetailsUpdateActionEnumValues() []VmClusterUpdateDetailsUpdateActionEnum {
 	values := make([]VmClusterUpdateDetailsUpdateActionEnum, 0)
@@ -80,11 +86,6 @@ func GetVmClusterUpdateDetailsUpdateActionEnumStringValues() []string {
 
 // GetMappingVmClusterUpdateDetailsUpdateActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVmClusterUpdateDetailsUpdateActionEnum(val string) (VmClusterUpdateDetailsUpdateActionEnum, bool) {
-	mappingVmClusterUpdateDetailsUpdateActionEnumIgnoreCase := make(map[string]VmClusterUpdateDetailsUpdateActionEnum)
-	for k, v := range mappingVmClusterUpdateDetailsUpdateActionEnum {
-		mappingVmClusterUpdateDetailsUpdateActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVmClusterUpdateDetailsUpdateActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVmClusterUpdateDetailsUpdateActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

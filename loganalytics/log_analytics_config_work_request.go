@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -91,6 +91,14 @@ var mappingLogAnalyticsConfigWorkRequestOperationTypeEnum = map[string]LogAnalyt
 	"DELETE_LOOKUP":       LogAnalyticsConfigWorkRequestOperationTypeDeleteLookup,
 }
 
+var mappingLogAnalyticsConfigWorkRequestOperationTypeEnumLowerCase = map[string]LogAnalyticsConfigWorkRequestOperationTypeEnum{
+	"create_associations": LogAnalyticsConfigWorkRequestOperationTypeCreateAssociations,
+	"delete_associations": LogAnalyticsConfigWorkRequestOperationTypeDeleteAssociations,
+	"append_lookup_data":  LogAnalyticsConfigWorkRequestOperationTypeAppendLookupData,
+	"update_lookup_data":  LogAnalyticsConfigWorkRequestOperationTypeUpdateLookupData,
+	"delete_lookup":       LogAnalyticsConfigWorkRequestOperationTypeDeleteLookup,
+}
+
 // GetLogAnalyticsConfigWorkRequestOperationTypeEnumValues Enumerates the set of values for LogAnalyticsConfigWorkRequestOperationTypeEnum
 func GetLogAnalyticsConfigWorkRequestOperationTypeEnumValues() []LogAnalyticsConfigWorkRequestOperationTypeEnum {
 	values := make([]LogAnalyticsConfigWorkRequestOperationTypeEnum, 0)
@@ -113,12 +121,7 @@ func GetLogAnalyticsConfigWorkRequestOperationTypeEnumStringValues() []string {
 
 // GetMappingLogAnalyticsConfigWorkRequestOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogAnalyticsConfigWorkRequestOperationTypeEnum(val string) (LogAnalyticsConfigWorkRequestOperationTypeEnum, bool) {
-	mappingLogAnalyticsConfigWorkRequestOperationTypeEnumIgnoreCase := make(map[string]LogAnalyticsConfigWorkRequestOperationTypeEnum)
-	for k, v := range mappingLogAnalyticsConfigWorkRequestOperationTypeEnum {
-		mappingLogAnalyticsConfigWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogAnalyticsConfigWorkRequestOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogAnalyticsConfigWorkRequestOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -138,6 +141,13 @@ var mappingLogAnalyticsConfigWorkRequestLifecycleStateEnum = map[string]LogAnaly
 	"IN_PROGRESS": LogAnalyticsConfigWorkRequestLifecycleStateInProgress,
 	"SUCCEEDED":   LogAnalyticsConfigWorkRequestLifecycleStateSucceeded,
 	"FAILED":      LogAnalyticsConfigWorkRequestLifecycleStateFailed,
+}
+
+var mappingLogAnalyticsConfigWorkRequestLifecycleStateEnumLowerCase = map[string]LogAnalyticsConfigWorkRequestLifecycleStateEnum{
+	"accepted":    LogAnalyticsConfigWorkRequestLifecycleStateAccepted,
+	"in_progress": LogAnalyticsConfigWorkRequestLifecycleStateInProgress,
+	"succeeded":   LogAnalyticsConfigWorkRequestLifecycleStateSucceeded,
+	"failed":      LogAnalyticsConfigWorkRequestLifecycleStateFailed,
 }
 
 // GetLogAnalyticsConfigWorkRequestLifecycleStateEnumValues Enumerates the set of values for LogAnalyticsConfigWorkRequestLifecycleStateEnum
@@ -161,11 +171,6 @@ func GetLogAnalyticsConfigWorkRequestLifecycleStateEnumStringValues() []string {
 
 // GetMappingLogAnalyticsConfigWorkRequestLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogAnalyticsConfigWorkRequestLifecycleStateEnum(val string) (LogAnalyticsConfigWorkRequestLifecycleStateEnum, bool) {
-	mappingLogAnalyticsConfigWorkRequestLifecycleStateEnumIgnoreCase := make(map[string]LogAnalyticsConfigWorkRequestLifecycleStateEnum)
-	for k, v := range mappingLogAnalyticsConfigWorkRequestLifecycleStateEnum {
-		mappingLogAnalyticsConfigWorkRequestLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogAnalyticsConfigWorkRequestLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogAnalyticsConfigWorkRequestLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

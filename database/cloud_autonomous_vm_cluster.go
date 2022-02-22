@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -159,6 +159,16 @@ var mappingCloudAutonomousVmClusterLifecycleStateEnum = map[string]CloudAutonomo
 	"MAINTENANCE_IN_PROGRESS": CloudAutonomousVmClusterLifecycleStateMaintenanceInProgress,
 }
 
+var mappingCloudAutonomousVmClusterLifecycleStateEnumLowerCase = map[string]CloudAutonomousVmClusterLifecycleStateEnum{
+	"provisioning":            CloudAutonomousVmClusterLifecycleStateProvisioning,
+	"available":               CloudAutonomousVmClusterLifecycleStateAvailable,
+	"updating":                CloudAutonomousVmClusterLifecycleStateUpdating,
+	"terminating":             CloudAutonomousVmClusterLifecycleStateTerminating,
+	"terminated":              CloudAutonomousVmClusterLifecycleStateTerminated,
+	"failed":                  CloudAutonomousVmClusterLifecycleStateFailed,
+	"maintenance_in_progress": CloudAutonomousVmClusterLifecycleStateMaintenanceInProgress,
+}
+
 // GetCloudAutonomousVmClusterLifecycleStateEnumValues Enumerates the set of values for CloudAutonomousVmClusterLifecycleStateEnum
 func GetCloudAutonomousVmClusterLifecycleStateEnumValues() []CloudAutonomousVmClusterLifecycleStateEnum {
 	values := make([]CloudAutonomousVmClusterLifecycleStateEnum, 0)
@@ -183,12 +193,7 @@ func GetCloudAutonomousVmClusterLifecycleStateEnumStringValues() []string {
 
 // GetMappingCloudAutonomousVmClusterLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCloudAutonomousVmClusterLifecycleStateEnum(val string) (CloudAutonomousVmClusterLifecycleStateEnum, bool) {
-	mappingCloudAutonomousVmClusterLifecycleStateEnumIgnoreCase := make(map[string]CloudAutonomousVmClusterLifecycleStateEnum)
-	for k, v := range mappingCloudAutonomousVmClusterLifecycleStateEnum {
-		mappingCloudAutonomousVmClusterLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCloudAutonomousVmClusterLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCloudAutonomousVmClusterLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -204,6 +209,11 @@ const (
 var mappingCloudAutonomousVmClusterLicenseModelEnum = map[string]CloudAutonomousVmClusterLicenseModelEnum{
 	"LICENSE_INCLUDED":       CloudAutonomousVmClusterLicenseModelLicenseIncluded,
 	"BRING_YOUR_OWN_LICENSE": CloudAutonomousVmClusterLicenseModelBringYourOwnLicense,
+}
+
+var mappingCloudAutonomousVmClusterLicenseModelEnumLowerCase = map[string]CloudAutonomousVmClusterLicenseModelEnum{
+	"license_included":       CloudAutonomousVmClusterLicenseModelLicenseIncluded,
+	"bring_your_own_license": CloudAutonomousVmClusterLicenseModelBringYourOwnLicense,
 }
 
 // GetCloudAutonomousVmClusterLicenseModelEnumValues Enumerates the set of values for CloudAutonomousVmClusterLicenseModelEnum
@@ -225,11 +235,6 @@ func GetCloudAutonomousVmClusterLicenseModelEnumStringValues() []string {
 
 // GetMappingCloudAutonomousVmClusterLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCloudAutonomousVmClusterLicenseModelEnum(val string) (CloudAutonomousVmClusterLicenseModelEnum, bool) {
-	mappingCloudAutonomousVmClusterLicenseModelEnumIgnoreCase := make(map[string]CloudAutonomousVmClusterLicenseModelEnum)
-	for k, v := range mappingCloudAutonomousVmClusterLicenseModelEnum {
-		mappingCloudAutonomousVmClusterLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCloudAutonomousVmClusterLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCloudAutonomousVmClusterLicenseModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

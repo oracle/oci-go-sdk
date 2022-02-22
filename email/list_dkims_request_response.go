@@ -6,7 +6,7 @@ package email
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -145,6 +145,11 @@ var mappingListDkimsSortOrderEnum = map[string]ListDkimsSortOrderEnum{
 	"DESC": ListDkimsSortOrderDesc,
 }
 
+var mappingListDkimsSortOrderEnumLowerCase = map[string]ListDkimsSortOrderEnum{
+	"asc":  ListDkimsSortOrderAsc,
+	"desc": ListDkimsSortOrderDesc,
+}
+
 // GetListDkimsSortOrderEnumValues Enumerates the set of values for ListDkimsSortOrderEnum
 func GetListDkimsSortOrderEnumValues() []ListDkimsSortOrderEnum {
 	values := make([]ListDkimsSortOrderEnum, 0)
@@ -164,12 +169,7 @@ func GetListDkimsSortOrderEnumStringValues() []string {
 
 // GetMappingListDkimsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDkimsSortOrderEnum(val string) (ListDkimsSortOrderEnum, bool) {
-	mappingListDkimsSortOrderEnumIgnoreCase := make(map[string]ListDkimsSortOrderEnum)
-	for k, v := range mappingListDkimsSortOrderEnum {
-		mappingListDkimsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDkimsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDkimsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +187,12 @@ var mappingListDkimsSortByEnum = map[string]ListDkimsSortByEnum{
 	"TIMECREATED": ListDkimsSortByTimecreated,
 	"ID":          ListDkimsSortById,
 	"NAME":        ListDkimsSortByName,
+}
+
+var mappingListDkimsSortByEnumLowerCase = map[string]ListDkimsSortByEnum{
+	"timecreated": ListDkimsSortByTimecreated,
+	"id":          ListDkimsSortById,
+	"name":        ListDkimsSortByName,
 }
 
 // GetListDkimsSortByEnumValues Enumerates the set of values for ListDkimsSortByEnum
@@ -209,11 +215,6 @@ func GetListDkimsSortByEnumStringValues() []string {
 
 // GetMappingListDkimsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDkimsSortByEnum(val string) (ListDkimsSortByEnum, bool) {
-	mappingListDkimsSortByEnumIgnoreCase := make(map[string]ListDkimsSortByEnum)
-	for k, v := range mappingListDkimsSortByEnum {
-		mappingListDkimsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDkimsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDkimsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

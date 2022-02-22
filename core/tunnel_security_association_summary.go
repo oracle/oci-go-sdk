@@ -15,26 +15,26 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
-// TunnelSecurityAssociationSummary Detailed Tunnel SA
+// TunnelSecurityAssociationSummary A summary of the IPSec tunnel security association details.
 type TunnelSecurityAssociationSummary struct {
 
-	// IP and mask of the Partner Subnet for Policy Based VPNs or Static Routes
+	// The IP address and mask of the partner subnet used in policy based VPNs or static routes.
 	CpeSubnet *string `mandatory:"false" json:"cpeSubnet"`
 
-	// IP and mask of the Local Subnet for Policy Based VPNs or Static Routes
+	// The IP address and mask of the local subnet used in policy based VPNs or static routes.
 	OracleSubnet *string `mandatory:"false" json:"oracleSubnet"`
 
-	// Phase 1 Status of the Tunnel
+	// The IPSec tunnel's phase one status.
 	TunnelSaStatus TunnelSecurityAssociationSummaryTunnelSaStatusEnum `mandatory:"false" json:"tunnelSaStatus,omitempty"`
 
-	// Current state if status is not up, including phase1/phase2 and possible reason for tunnel not up
+	// Current state if the IPSec tunnel status is not `UP`, including phase one and phase two details and a possible reason the tunnel is not `UP`.
 	TunnelSaErrorInfo *string `mandatory:"false" json:"tunnelSaErrorInfo"`
 
-	// Seconds in current state
+	// Time in the current state, in seconds.
 	Time *string `mandatory:"false" json:"time"`
 }
 
@@ -79,6 +79,15 @@ var mappingTunnelSecurityAssociationSummaryTunnelSaStatusEnum = map[string]Tunne
 	"UNKNOWN":    TunnelSecurityAssociationSummaryTunnelSaStatusUnknown,
 }
 
+var mappingTunnelSecurityAssociationSummaryTunnelSaStatusEnumLowerCase = map[string]TunnelSecurityAssociationSummaryTunnelSaStatusEnum{
+	"initiating": TunnelSecurityAssociationSummaryTunnelSaStatusInitiating,
+	"listening":  TunnelSecurityAssociationSummaryTunnelSaStatusListening,
+	"up":         TunnelSecurityAssociationSummaryTunnelSaStatusUp,
+	"down":       TunnelSecurityAssociationSummaryTunnelSaStatusDown,
+	"error":      TunnelSecurityAssociationSummaryTunnelSaStatusError,
+	"unknown":    TunnelSecurityAssociationSummaryTunnelSaStatusUnknown,
+}
+
 // GetTunnelSecurityAssociationSummaryTunnelSaStatusEnumValues Enumerates the set of values for TunnelSecurityAssociationSummaryTunnelSaStatusEnum
 func GetTunnelSecurityAssociationSummaryTunnelSaStatusEnumValues() []TunnelSecurityAssociationSummaryTunnelSaStatusEnum {
 	values := make([]TunnelSecurityAssociationSummaryTunnelSaStatusEnum, 0)
@@ -102,11 +111,6 @@ func GetTunnelSecurityAssociationSummaryTunnelSaStatusEnumStringValues() []strin
 
 // GetMappingTunnelSecurityAssociationSummaryTunnelSaStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTunnelSecurityAssociationSummaryTunnelSaStatusEnum(val string) (TunnelSecurityAssociationSummaryTunnelSaStatusEnum, bool) {
-	mappingTunnelSecurityAssociationSummaryTunnelSaStatusEnumIgnoreCase := make(map[string]TunnelSecurityAssociationSummaryTunnelSaStatusEnum)
-	for k, v := range mappingTunnelSecurityAssociationSummaryTunnelSaStatusEnum {
-		mappingTunnelSecurityAssociationSummaryTunnelSaStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTunnelSecurityAssociationSummaryTunnelSaStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTunnelSecurityAssociationSummaryTunnelSaStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

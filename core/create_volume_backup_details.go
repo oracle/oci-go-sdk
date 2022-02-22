@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -76,6 +76,11 @@ var mappingCreateVolumeBackupDetailsTypeEnum = map[string]CreateVolumeBackupDeta
 	"INCREMENTAL": CreateVolumeBackupDetailsTypeIncremental,
 }
 
+var mappingCreateVolumeBackupDetailsTypeEnumLowerCase = map[string]CreateVolumeBackupDetailsTypeEnum{
+	"full":        CreateVolumeBackupDetailsTypeFull,
+	"incremental": CreateVolumeBackupDetailsTypeIncremental,
+}
+
 // GetCreateVolumeBackupDetailsTypeEnumValues Enumerates the set of values for CreateVolumeBackupDetailsTypeEnum
 func GetCreateVolumeBackupDetailsTypeEnumValues() []CreateVolumeBackupDetailsTypeEnum {
 	values := make([]CreateVolumeBackupDetailsTypeEnum, 0)
@@ -95,11 +100,6 @@ func GetCreateVolumeBackupDetailsTypeEnumStringValues() []string {
 
 // GetMappingCreateVolumeBackupDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateVolumeBackupDetailsTypeEnum(val string) (CreateVolumeBackupDetailsTypeEnum, bool) {
-	mappingCreateVolumeBackupDetailsTypeEnumIgnoreCase := make(map[string]CreateVolumeBackupDetailsTypeEnum)
-	for k, v := range mappingCreateVolumeBackupDetailsTypeEnum {
-		mappingCreateVolumeBackupDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateVolumeBackupDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateVolumeBackupDetailsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

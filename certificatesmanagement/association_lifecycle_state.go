@@ -33,6 +33,14 @@ var mappingAssociationLifecycleStateEnum = map[string]AssociationLifecycleStateE
 	"FAILED":   AssociationLifecycleStateFailed,
 }
 
+var mappingAssociationLifecycleStateEnumLowerCase = map[string]AssociationLifecycleStateEnum{
+	"creating": AssociationLifecycleStateCreating,
+	"active":   AssociationLifecycleStateActive,
+	"updating": AssociationLifecycleStateUpdating,
+	"deleting": AssociationLifecycleStateDeleting,
+	"failed":   AssociationLifecycleStateFailed,
+}
+
 // GetAssociationLifecycleStateEnumValues Enumerates the set of values for AssociationLifecycleStateEnum
 func GetAssociationLifecycleStateEnumValues() []AssociationLifecycleStateEnum {
 	values := make([]AssociationLifecycleStateEnum, 0)
@@ -55,11 +63,6 @@ func GetAssociationLifecycleStateEnumStringValues() []string {
 
 // GetMappingAssociationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAssociationLifecycleStateEnum(val string) (AssociationLifecycleStateEnum, bool) {
-	mappingAssociationLifecycleStateEnumIgnoreCase := make(map[string]AssociationLifecycleStateEnum)
-	for k, v := range mappingAssociationLifecycleStateEnum {
-		mappingAssociationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAssociationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAssociationLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

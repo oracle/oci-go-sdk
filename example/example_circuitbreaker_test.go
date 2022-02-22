@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v58/common"
-	"github.com/oracle/oci-go-sdk/v58/example/helpers"
-	"github.com/oracle/oci-go-sdk/v58/identity"
+	"github.com/oracle/oci-go-sdk/v59/common"
+	"github.com/oracle/oci-go-sdk/v59/example/helpers"
+	"github.com/oracle/oci-go-sdk/v59/identity"
 )
 
 // Example shows how to configure circuit breaker
@@ -37,7 +37,8 @@ func ExampleConfigureCircuitBreaker() {
 		common.WithMinimumRequests(5),
 		common.WithCloseStateWindow(60*time.Second),
 		common.WithFailureRateThreshold(0.70),
-		common.WithSuccessStatCodeMap(successStatCodeMap))
+		common.WithSuccessStatCodeMap(successStatCodeMap),
+		common.WithServiceName("Identity"))
 
 	// if prefer to use default circuit breaker, no need to define successStatCodeMap and cb, but directly call:
 	// cbst := common.DefaultCircuitBreakerSetting()
@@ -57,11 +58,11 @@ func ExampleConfigureCircuitBreaker() {
 
 	for i := 0; i < 5; i++ {
 		identityClient.ListAvailabilityDomains(context.Background(), request)
-		fmt.Println(i*10, "seconds CircuitBreaker state: "+identityClient.Configuration.CircuitBreaker.State().String())
+		fmt.Println(i*10, "seconds CircuitBreaker state: "+identityClient.Configuration.CircuitBreaker.Cb.State().String())
 		time.Sleep(10 * time.Second)
 	}
 	time.Sleep(5 * time.Second)
-	fmt.Println("After 55s, CircuitBreaker current state: " + identityClient.Configuration.CircuitBreaker.State().String())
+	fmt.Println("After 55s, CircuitBreaker current state: " + identityClient.Configuration.CircuitBreaker.Cb.State().String())
 
 	fmt.Println("Wait 30 sec...")
 	time.Sleep(30 * time.Second)
@@ -72,7 +73,7 @@ func ExampleConfigureCircuitBreaker() {
 	}
 	identityClient.ListAvailabilityDomains(context.Background(), request)
 	time.Sleep(10 * time.Second)
-	fmt.Println("check current CircuitBreaker state: " + identityClient.Configuration.CircuitBreaker.State().String())
+	fmt.Println("check current CircuitBreaker state: " + identityClient.Configuration.CircuitBreaker.Cb.State().String())
 
 	// Output:
 	// 0 seconds CircuitBreaker state: closed

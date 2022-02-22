@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -64,6 +64,12 @@ var mappingUserAssessmentComparisonLifecycleStateEnum = map[string]UserAssessmen
 	"FAILED":    UserAssessmentComparisonLifecycleStateFailed,
 }
 
+var mappingUserAssessmentComparisonLifecycleStateEnumLowerCase = map[string]UserAssessmentComparisonLifecycleStateEnum{
+	"creating":  UserAssessmentComparisonLifecycleStateCreating,
+	"succeeded": UserAssessmentComparisonLifecycleStateSucceeded,
+	"failed":    UserAssessmentComparisonLifecycleStateFailed,
+}
+
 // GetUserAssessmentComparisonLifecycleStateEnumValues Enumerates the set of values for UserAssessmentComparisonLifecycleStateEnum
 func GetUserAssessmentComparisonLifecycleStateEnumValues() []UserAssessmentComparisonLifecycleStateEnum {
 	values := make([]UserAssessmentComparisonLifecycleStateEnum, 0)
@@ -84,11 +90,6 @@ func GetUserAssessmentComparisonLifecycleStateEnumStringValues() []string {
 
 // GetMappingUserAssessmentComparisonLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserAssessmentComparisonLifecycleStateEnum(val string) (UserAssessmentComparisonLifecycleStateEnum, bool) {
-	mappingUserAssessmentComparisonLifecycleStateEnumIgnoreCase := make(map[string]UserAssessmentComparisonLifecycleStateEnum)
-	for k, v := range mappingUserAssessmentComparisonLifecycleStateEnum {
-		mappingUserAssessmentComparisonLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserAssessmentComparisonLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserAssessmentComparisonLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

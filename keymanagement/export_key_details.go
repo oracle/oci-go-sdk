@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -74,6 +74,11 @@ var mappingExportKeyDetailsAlgorithmEnum = map[string]ExportKeyDetailsAlgorithmE
 	"RSA_OAEP_SHA256":     ExportKeyDetailsAlgorithmSha256,
 }
 
+var mappingExportKeyDetailsAlgorithmEnumLowerCase = map[string]ExportKeyDetailsAlgorithmEnum{
+	"rsa_oaep_aes_sha256": ExportKeyDetailsAlgorithmAesSha256,
+	"rsa_oaep_sha256":     ExportKeyDetailsAlgorithmSha256,
+}
+
 // GetExportKeyDetailsAlgorithmEnumValues Enumerates the set of values for ExportKeyDetailsAlgorithmEnum
 func GetExportKeyDetailsAlgorithmEnumValues() []ExportKeyDetailsAlgorithmEnum {
 	values := make([]ExportKeyDetailsAlgorithmEnum, 0)
@@ -93,11 +98,6 @@ func GetExportKeyDetailsAlgorithmEnumStringValues() []string {
 
 // GetMappingExportKeyDetailsAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExportKeyDetailsAlgorithmEnum(val string) (ExportKeyDetailsAlgorithmEnum, bool) {
-	mappingExportKeyDetailsAlgorithmEnumIgnoreCase := make(map[string]ExportKeyDetailsAlgorithmEnum)
-	for k, v := range mappingExportKeyDetailsAlgorithmEnum {
-		mappingExportKeyDetailsAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExportKeyDetailsAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExportKeyDetailsAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

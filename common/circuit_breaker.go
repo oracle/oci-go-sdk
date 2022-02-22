@@ -21,6 +21,8 @@ const (
 	CircuitBreakerDefaultVolumeThreshold uint32 = 10
 	// DefaultCircuitBreakerName is the name of the circuit breaker
 	DefaultCircuitBreakerName string = "DefaultCircuitBreaker"
+	// DefaultCircuitBreakerServiceName is the servicename of the circuit breaker
+	DefaultCircuitBreakerServiceName string = ""
 )
 
 // CircuitBreakerSetting wraps all exposed configurable params of circuit breaker
@@ -46,12 +48,30 @@ type CircuitBreakerSetting struct {
 	// as the success or failure accounted by circuit breaker
 	// the default value is {409, "IncorrectState"}
 	successStatErrCodeMap map[StatErrCode]bool
+	// serviceName is the name of the service which can be set using withServiceName option for NewCircuitBreaker.
+	// The default value is empty string
+	serviceName string
 }
 
 // Convert CircuitBreakerSetting to human-readable string representation
 func (cbst CircuitBreakerSetting) String() string {
-	return fmt.Sprintf("{name=%v, isEnabled=%v, closeStateWindow=%v, openStateWindow=%v, failureRateThreshold=%v, minimumRequests=%v, successStatCodeMap=%v, successStatErrCodeMap=%v}",
-		cbst.name, cbst.isEnabled, cbst.closeStateWindow, cbst.openStateWindow, cbst.failureRateThreshold, cbst.minimumRequests, cbst.successStatCodeMap, cbst.successStatErrCodeMap)
+	return fmt.Sprintf("{name=%v, isEnabled=%v, closeStateWindow=%v, openStateWindow=%v, failureRateThreshold=%v, minimumRequests=%v, successStatCodeMap=%v, successStatErrCodeMap=%v, serviceName=%v}",
+		cbst.name, cbst.isEnabled, cbst.closeStateWindow, cbst.openStateWindow, cbst.failureRateThreshold, cbst.minimumRequests, cbst.successStatCodeMap, cbst.successStatErrCodeMap, cbst.serviceName)
+}
+
+// OciCircuitBreaker wraps all exposed configurable params of circuit breaker and 3P gobreaker CircuirBreaker
+type OciCircuitBreaker struct {
+	Cbst *CircuitBreakerSetting
+	Cb   *gobreaker.CircuitBreaker
+}
+
+// NewOciCircuitBreaker is used for initializing specified oci circuit breaker configuration with circuit breaker settings
+func NewOciCircuitBreaker(cbst *CircuitBreakerSetting, gbcb *gobreaker.CircuitBreaker) *OciCircuitBreaker {
+	ocb := new(OciCircuitBreaker)
+	ocb.Cbst = cbst
+	ocb.Cb = gbcb
+
+	return ocb
 }
 
 // CircuitBreakerOption is the type of the options for NewCircuitBreakerWithOptions.
@@ -86,6 +106,30 @@ func DefaultCircuitBreakerSetting() *CircuitBreakerSetting {
 		WithSuccessStatCodeMap(successStatCodeMap))
 }
 
+// DefaultCircuitBreakerSettingWithServiceName is used for set circuit breaker with default config
+func DefaultCircuitBreakerSettingWithServiceName() *CircuitBreakerSetting {
+	successStatErrCodeMap := map[StatErrCode]bool{
+		{409, "IncorrectState"}: false,
+	}
+	successStatCodeMap := map[int]bool{
+		429: false,
+		500: false,
+		502: false,
+		503: false,
+		504: false,
+	}
+	return newCircuitBreakerSetting(
+		WithName(DefaultCircuitBreakerName),
+		WithIsEnabled(true),
+		WithCloseStateWindow(CircuitBreakerDefaultClosedWindow),
+		WithOpenStateWindow(CircuitBreakerDefaultResetTimeout),
+		WithFailureRateThreshold(CircuitBreakerDefaultFailureRateThreshold),
+		WithMinimumRequests(CircuitBreakerDefaultVolumeThreshold),
+		WithSuccessStatErrCodeMap(successStatErrCodeMap),
+		WithSuccessStatCodeMap(successStatCodeMap),
+		WithServiceName(DefaultCircuitBreakerServiceName))
+}
+
 // NoCircuitBreakerSetting is used for disable Circuit Breaker
 func NoCircuitBreakerSetting() *CircuitBreakerSetting {
 	return NewCircuitBreakerSettingWithOptions(WithIsEnabled(false))
@@ -94,7 +138,7 @@ func NoCircuitBreakerSetting() *CircuitBreakerSetting {
 // NewCircuitBreakerSettingWithOptions is a helper method to assemble a CircuitBreakerSetting object.
 // It starts out with the values returned by defaultCircuitBreakerSetting().
 func NewCircuitBreakerSettingWithOptions(opts ...CircuitBreakerOption) *CircuitBreakerSetting {
-	cbst := DefaultCircuitBreakerSetting()
+	cbst := DefaultCircuitBreakerSettingWithServiceName()
 	// allow changing values
 	for _, opt := range opts {
 		opt(cbst)
@@ -107,13 +151,16 @@ func NewCircuitBreakerSettingWithOptions(opts ...CircuitBreakerOption) *CircuitB
 }
 
 // NewCircuitBreaker is used for initialing specified circuit breaker configuration with base client
-func NewCircuitBreaker(cbst *CircuitBreakerSetting) *gobreaker.CircuitBreaker {
+func NewCircuitBreaker(cbst *CircuitBreakerSetting) *OciCircuitBreaker {
 	if !cbst.isEnabled {
 		return nil
 	}
+
 	st := gobreaker.Settings{}
 	customizeGoBreakerSetting(&st, cbst)
-	return gobreaker.NewCircuitBreaker(st)
+	gbcb := gobreaker.NewCircuitBreaker(st)
+
+	return NewOciCircuitBreaker(cbst, gbcb)
 }
 
 func newCircuitBreakerSetting(opts ...CircuitBreakerOption) *CircuitBreakerSetting {
@@ -131,6 +178,11 @@ func customizeGoBreakerSetting(st *gobreaker.Settings, cbst *CircuitBreakerSetti
 	st.Name = cbst.name
 	st.Timeout = cbst.openStateWindow
 	st.Interval = cbst.closeStateWindow
+	st.OnStateChange = func(name string, from gobreaker.State, to gobreaker.State) {
+		if to == gobreaker.StateOpen {
+			Debugf("Circuit Breaker %s is now in Open State\n", name)
+		}
+	}
 	st.ReadyToTrip = func(counts gobreaker.Counts) bool {
 		failureRatio := float64(counts.TotalFailures) / float64(counts.Requests)
 		return counts.Requests >= cbst.minimumRequests && failureRatio >= cbst.failureRateThreshold
@@ -209,6 +261,14 @@ func WithSuccessStatErrCodeMap(successStatErrCodeMap map[StatErrCode]bool) Circu
 	// this is the CircuitBreakerOption function type
 	return func(cbst *CircuitBreakerSetting) {
 		cbst.successStatErrCodeMap = successStatErrCodeMap
+	}
+}
+
+// WithServiceName is the option for NewCircuitBreaker that sets the ServiceName.
+func WithServiceName(serviceName string) CircuitBreakerOption {
+	// this is the CircuitBreakerOption function type
+	return func(cbst *CircuitBreakerSetting) {
+		cbst.serviceName = serviceName
 	}
 }
 

@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -146,6 +146,11 @@ var mappingListTsigKeysSortByEnum = map[string]ListTsigKeysSortByEnum{
 	"timeCreated": ListTsigKeysSortByTimecreated,
 }
 
+var mappingListTsigKeysSortByEnumLowerCase = map[string]ListTsigKeysSortByEnum{
+	"name":        ListTsigKeysSortByName,
+	"timecreated": ListTsigKeysSortByTimecreated,
+}
+
 // GetListTsigKeysSortByEnumValues Enumerates the set of values for ListTsigKeysSortByEnum
 func GetListTsigKeysSortByEnumValues() []ListTsigKeysSortByEnum {
 	values := make([]ListTsigKeysSortByEnum, 0)
@@ -165,12 +170,7 @@ func GetListTsigKeysSortByEnumStringValues() []string {
 
 // GetMappingListTsigKeysSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTsigKeysSortByEnum(val string) (ListTsigKeysSortByEnum, bool) {
-	mappingListTsigKeysSortByEnumIgnoreCase := make(map[string]ListTsigKeysSortByEnum)
-	for k, v := range mappingListTsigKeysSortByEnum {
-		mappingListTsigKeysSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTsigKeysSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTsigKeysSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -186,6 +186,11 @@ const (
 var mappingListTsigKeysSortOrderEnum = map[string]ListTsigKeysSortOrderEnum{
 	"ASC":  ListTsigKeysSortOrderAsc,
 	"DESC": ListTsigKeysSortOrderDesc,
+}
+
+var mappingListTsigKeysSortOrderEnumLowerCase = map[string]ListTsigKeysSortOrderEnum{
+	"asc":  ListTsigKeysSortOrderAsc,
+	"desc": ListTsigKeysSortOrderDesc,
 }
 
 // GetListTsigKeysSortOrderEnumValues Enumerates the set of values for ListTsigKeysSortOrderEnum
@@ -207,12 +212,7 @@ func GetListTsigKeysSortOrderEnumStringValues() []string {
 
 // GetMappingListTsigKeysSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTsigKeysSortOrderEnum(val string) (ListTsigKeysSortOrderEnum, bool) {
-	mappingListTsigKeysSortOrderEnumIgnoreCase := make(map[string]ListTsigKeysSortOrderEnum)
-	for k, v := range mappingListTsigKeysSortOrderEnum {
-		mappingListTsigKeysSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTsigKeysSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTsigKeysSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -228,6 +228,11 @@ const (
 var mappingListTsigKeysScopeEnum = map[string]ListTsigKeysScopeEnum{
 	"GLOBAL":  ListTsigKeysScopeGlobal,
 	"PRIVATE": ListTsigKeysScopePrivate,
+}
+
+var mappingListTsigKeysScopeEnumLowerCase = map[string]ListTsigKeysScopeEnum{
+	"global":  ListTsigKeysScopeGlobal,
+	"private": ListTsigKeysScopePrivate,
 }
 
 // GetListTsigKeysScopeEnumValues Enumerates the set of values for ListTsigKeysScopeEnum
@@ -249,11 +254,6 @@ func GetListTsigKeysScopeEnumStringValues() []string {
 
 // GetMappingListTsigKeysScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListTsigKeysScopeEnum(val string) (ListTsigKeysScopeEnum, bool) {
-	mappingListTsigKeysScopeEnumIgnoreCase := make(map[string]ListTsigKeysScopeEnum)
-	for k, v := range mappingListTsigKeysScopeEnum {
-		mappingListTsigKeysScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListTsigKeysScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListTsigKeysScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

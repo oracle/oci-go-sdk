@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -84,6 +84,10 @@ var mappingFunctionLibrarySummaryModelTypeEnum = map[string]FunctionLibrarySumma
 	"FUNCTION_LIBRARY": FunctionLibrarySummaryModelTypeFunctionLibrary,
 }
 
+var mappingFunctionLibrarySummaryModelTypeEnumLowerCase = map[string]FunctionLibrarySummaryModelTypeEnum{
+	"function_library": FunctionLibrarySummaryModelTypeFunctionLibrary,
+}
+
 // GetFunctionLibrarySummaryModelTypeEnumValues Enumerates the set of values for FunctionLibrarySummaryModelTypeEnum
 func GetFunctionLibrarySummaryModelTypeEnumValues() []FunctionLibrarySummaryModelTypeEnum {
 	values := make([]FunctionLibrarySummaryModelTypeEnum, 0)
@@ -102,11 +106,6 @@ func GetFunctionLibrarySummaryModelTypeEnumStringValues() []string {
 
 // GetMappingFunctionLibrarySummaryModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFunctionLibrarySummaryModelTypeEnum(val string) (FunctionLibrarySummaryModelTypeEnum, bool) {
-	mappingFunctionLibrarySummaryModelTypeEnumIgnoreCase := make(map[string]FunctionLibrarySummaryModelTypeEnum)
-	for k, v := range mappingFunctionLibrarySummaryModelTypeEnum {
-		mappingFunctionLibrarySummaryModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFunctionLibrarySummaryModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFunctionLibrarySummaryModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

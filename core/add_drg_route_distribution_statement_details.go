@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -24,7 +24,6 @@ import (
 type AddDrgRouteDistributionStatementDetails struct {
 
 	// The action is applied only if all of the match criteria is met.
-	// If there are no match criteria in a statement, match ALL is implied.
 	MatchCriteria []DrgRouteDistributionMatchCriteria `mandatory:"true" json:"matchCriteria"`
 
 	// Accept: import/export the route "as is"
@@ -102,6 +101,10 @@ var mappingAddDrgRouteDistributionStatementDetailsActionEnum = map[string]AddDrg
 	"ACCEPT": AddDrgRouteDistributionStatementDetailsActionAccept,
 }
 
+var mappingAddDrgRouteDistributionStatementDetailsActionEnumLowerCase = map[string]AddDrgRouteDistributionStatementDetailsActionEnum{
+	"accept": AddDrgRouteDistributionStatementDetailsActionAccept,
+}
+
 // GetAddDrgRouteDistributionStatementDetailsActionEnumValues Enumerates the set of values for AddDrgRouteDistributionStatementDetailsActionEnum
 func GetAddDrgRouteDistributionStatementDetailsActionEnumValues() []AddDrgRouteDistributionStatementDetailsActionEnum {
 	values := make([]AddDrgRouteDistributionStatementDetailsActionEnum, 0)
@@ -120,11 +123,6 @@ func GetAddDrgRouteDistributionStatementDetailsActionEnumStringValues() []string
 
 // GetMappingAddDrgRouteDistributionStatementDetailsActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAddDrgRouteDistributionStatementDetailsActionEnum(val string) (AddDrgRouteDistributionStatementDetailsActionEnum, bool) {
-	mappingAddDrgRouteDistributionStatementDetailsActionEnumIgnoreCase := make(map[string]AddDrgRouteDistributionStatementDetailsActionEnum)
-	for k, v := range mappingAddDrgRouteDistributionStatementDetailsActionEnum {
-		mappingAddDrgRouteDistributionStatementDetailsActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAddDrgRouteDistributionStatementDetailsActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAddDrgRouteDistributionStatementDetailsActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

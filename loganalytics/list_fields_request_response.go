@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -174,6 +174,15 @@ var mappingListFieldsParserTypeEnum = map[string]ListFieldsParserTypeEnum{
 	"DELIMITED": ListFieldsParserTypeDelimited,
 }
 
+var mappingListFieldsParserTypeEnumLowerCase = map[string]ListFieldsParserTypeEnum{
+	"all":       ListFieldsParserTypeAll,
+	"regex":     ListFieldsParserTypeRegex,
+	"xml":       ListFieldsParserTypeXml,
+	"json":      ListFieldsParserTypeJson,
+	"odl":       ListFieldsParserTypeOdl,
+	"delimited": ListFieldsParserTypeDelimited,
+}
+
 // GetListFieldsParserTypeEnumValues Enumerates the set of values for ListFieldsParserTypeEnum
 func GetListFieldsParserTypeEnumValues() []ListFieldsParserTypeEnum {
 	values := make([]ListFieldsParserTypeEnum, 0)
@@ -197,12 +206,7 @@ func GetListFieldsParserTypeEnumStringValues() []string {
 
 // GetMappingListFieldsParserTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFieldsParserTypeEnum(val string) (ListFieldsParserTypeEnum, bool) {
-	mappingListFieldsParserTypeEnumIgnoreCase := make(map[string]ListFieldsParserTypeEnum)
-	for k, v := range mappingListFieldsParserTypeEnum {
-		mappingListFieldsParserTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFieldsParserTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFieldsParserTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -218,6 +222,11 @@ const (
 var mappingListFieldsSortOrderEnum = map[string]ListFieldsSortOrderEnum{
 	"ASC":  ListFieldsSortOrderAsc,
 	"DESC": ListFieldsSortOrderDesc,
+}
+
+var mappingListFieldsSortOrderEnumLowerCase = map[string]ListFieldsSortOrderEnum{
+	"asc":  ListFieldsSortOrderAsc,
+	"desc": ListFieldsSortOrderDesc,
 }
 
 // GetListFieldsSortOrderEnumValues Enumerates the set of values for ListFieldsSortOrderEnum
@@ -239,12 +248,7 @@ func GetListFieldsSortOrderEnumStringValues() []string {
 
 // GetMappingListFieldsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFieldsSortOrderEnum(val string) (ListFieldsSortOrderEnum, bool) {
-	mappingListFieldsSortOrderEnumIgnoreCase := make(map[string]ListFieldsSortOrderEnum)
-	for k, v := range mappingListFieldsSortOrderEnum {
-		mappingListFieldsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFieldsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFieldsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -260,6 +264,11 @@ const (
 var mappingListFieldsSortByEnum = map[string]ListFieldsSortByEnum{
 	"name":     ListFieldsSortByName,
 	"dataType": ListFieldsSortByDatatype,
+}
+
+var mappingListFieldsSortByEnumLowerCase = map[string]ListFieldsSortByEnum{
+	"name":     ListFieldsSortByName,
+	"datatype": ListFieldsSortByDatatype,
 }
 
 // GetListFieldsSortByEnumValues Enumerates the set of values for ListFieldsSortByEnum
@@ -281,11 +290,6 @@ func GetListFieldsSortByEnumStringValues() []string {
 
 // GetMappingListFieldsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListFieldsSortByEnum(val string) (ListFieldsSortByEnum, bool) {
-	mappingListFieldsSortByEnumIgnoreCase := make(map[string]ListFieldsSortByEnum)
-	for k, v := range mappingListFieldsSortByEnum {
-		mappingListFieldsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListFieldsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListFieldsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

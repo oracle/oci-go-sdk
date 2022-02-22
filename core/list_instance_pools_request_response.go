@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -149,6 +149,11 @@ var mappingListInstancePoolsSortByEnum = map[string]ListInstancePoolsSortByEnum{
 	"DISPLAYNAME": ListInstancePoolsSortByDisplayname,
 }
 
+var mappingListInstancePoolsSortByEnumLowerCase = map[string]ListInstancePoolsSortByEnum{
+	"timecreated": ListInstancePoolsSortByTimecreated,
+	"displayname": ListInstancePoolsSortByDisplayname,
+}
+
 // GetListInstancePoolsSortByEnumValues Enumerates the set of values for ListInstancePoolsSortByEnum
 func GetListInstancePoolsSortByEnumValues() []ListInstancePoolsSortByEnum {
 	values := make([]ListInstancePoolsSortByEnum, 0)
@@ -168,12 +173,7 @@ func GetListInstancePoolsSortByEnumStringValues() []string {
 
 // GetMappingListInstancePoolsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListInstancePoolsSortByEnum(val string) (ListInstancePoolsSortByEnum, bool) {
-	mappingListInstancePoolsSortByEnumIgnoreCase := make(map[string]ListInstancePoolsSortByEnum)
-	for k, v := range mappingListInstancePoolsSortByEnum {
-		mappingListInstancePoolsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListInstancePoolsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListInstancePoolsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -189,6 +189,11 @@ const (
 var mappingListInstancePoolsSortOrderEnum = map[string]ListInstancePoolsSortOrderEnum{
 	"ASC":  ListInstancePoolsSortOrderAsc,
 	"DESC": ListInstancePoolsSortOrderDesc,
+}
+
+var mappingListInstancePoolsSortOrderEnumLowerCase = map[string]ListInstancePoolsSortOrderEnum{
+	"asc":  ListInstancePoolsSortOrderAsc,
+	"desc": ListInstancePoolsSortOrderDesc,
 }
 
 // GetListInstancePoolsSortOrderEnumValues Enumerates the set of values for ListInstancePoolsSortOrderEnum
@@ -210,11 +215,6 @@ func GetListInstancePoolsSortOrderEnumStringValues() []string {
 
 // GetMappingListInstancePoolsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListInstancePoolsSortOrderEnum(val string) (ListInstancePoolsSortOrderEnum, bool) {
-	mappingListInstancePoolsSortOrderEnumIgnoreCase := make(map[string]ListInstancePoolsSortOrderEnum)
-	for k, v := range mappingListInstancePoolsSortOrderEnum {
-		mappingListInstancePoolsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListInstancePoolsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListInstancePoolsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -13,7 +13,7 @@ package aianomalydetection
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -86,6 +86,12 @@ var mappingPerSignalDetailsStatusEnum = map[string]PerSignalDetailsStatusEnum{
 	"OTHER":    PerSignalDetailsStatusOther,
 }
 
+var mappingPerSignalDetailsStatusEnumLowerCase = map[string]PerSignalDetailsStatusEnum{
+	"accepted": PerSignalDetailsStatusAccepted,
+	"dropped":  PerSignalDetailsStatusDropped,
+	"other":    PerSignalDetailsStatusOther,
+}
+
 // GetPerSignalDetailsStatusEnumValues Enumerates the set of values for PerSignalDetailsStatusEnum
 func GetPerSignalDetailsStatusEnumValues() []PerSignalDetailsStatusEnum {
 	values := make([]PerSignalDetailsStatusEnum, 0)
@@ -106,11 +112,6 @@ func GetPerSignalDetailsStatusEnumStringValues() []string {
 
 // GetMappingPerSignalDetailsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPerSignalDetailsStatusEnum(val string) (PerSignalDetailsStatusEnum, bool) {
-	mappingPerSignalDetailsStatusEnumIgnoreCase := make(map[string]PerSignalDetailsStatusEnum)
-	for k, v := range mappingPerSignalDetailsStatusEnum {
-		mappingPerSignalDetailsStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPerSignalDetailsStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPerSignalDetailsStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

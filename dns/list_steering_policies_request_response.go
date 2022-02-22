@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -171,6 +171,12 @@ var mappingListSteeringPoliciesSortByEnum = map[string]ListSteeringPoliciesSortB
 	"template":    ListSteeringPoliciesSortByTemplate,
 }
 
+var mappingListSteeringPoliciesSortByEnumLowerCase = map[string]ListSteeringPoliciesSortByEnum{
+	"displayname": ListSteeringPoliciesSortByDisplayname,
+	"timecreated": ListSteeringPoliciesSortByTimecreated,
+	"template":    ListSteeringPoliciesSortByTemplate,
+}
+
 // GetListSteeringPoliciesSortByEnumValues Enumerates the set of values for ListSteeringPoliciesSortByEnum
 func GetListSteeringPoliciesSortByEnumValues() []ListSteeringPoliciesSortByEnum {
 	values := make([]ListSteeringPoliciesSortByEnum, 0)
@@ -191,12 +197,7 @@ func GetListSteeringPoliciesSortByEnumStringValues() []string {
 
 // GetMappingListSteeringPoliciesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSteeringPoliciesSortByEnum(val string) (ListSteeringPoliciesSortByEnum, bool) {
-	mappingListSteeringPoliciesSortByEnumIgnoreCase := make(map[string]ListSteeringPoliciesSortByEnum)
-	for k, v := range mappingListSteeringPoliciesSortByEnum {
-		mappingListSteeringPoliciesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSteeringPoliciesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSteeringPoliciesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -212,6 +213,11 @@ const (
 var mappingListSteeringPoliciesSortOrderEnum = map[string]ListSteeringPoliciesSortOrderEnum{
 	"ASC":  ListSteeringPoliciesSortOrderAsc,
 	"DESC": ListSteeringPoliciesSortOrderDesc,
+}
+
+var mappingListSteeringPoliciesSortOrderEnumLowerCase = map[string]ListSteeringPoliciesSortOrderEnum{
+	"asc":  ListSteeringPoliciesSortOrderAsc,
+	"desc": ListSteeringPoliciesSortOrderDesc,
 }
 
 // GetListSteeringPoliciesSortOrderEnumValues Enumerates the set of values for ListSteeringPoliciesSortOrderEnum
@@ -233,12 +239,7 @@ func GetListSteeringPoliciesSortOrderEnumStringValues() []string {
 
 // GetMappingListSteeringPoliciesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSteeringPoliciesSortOrderEnum(val string) (ListSteeringPoliciesSortOrderEnum, bool) {
-	mappingListSteeringPoliciesSortOrderEnumIgnoreCase := make(map[string]ListSteeringPoliciesSortOrderEnum)
-	for k, v := range mappingListSteeringPoliciesSortOrderEnum {
-		mappingListSteeringPoliciesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSteeringPoliciesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSteeringPoliciesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -254,6 +255,11 @@ const (
 var mappingListSteeringPoliciesScopeEnum = map[string]ListSteeringPoliciesScopeEnum{
 	"GLOBAL":  ListSteeringPoliciesScopeGlobal,
 	"PRIVATE": ListSteeringPoliciesScopePrivate,
+}
+
+var mappingListSteeringPoliciesScopeEnumLowerCase = map[string]ListSteeringPoliciesScopeEnum{
+	"global":  ListSteeringPoliciesScopeGlobal,
+	"private": ListSteeringPoliciesScopePrivate,
 }
 
 // GetListSteeringPoliciesScopeEnumValues Enumerates the set of values for ListSteeringPoliciesScopeEnum
@@ -275,11 +281,6 @@ func GetListSteeringPoliciesScopeEnumStringValues() []string {
 
 // GetMappingListSteeringPoliciesScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSteeringPoliciesScopeEnum(val string) (ListSteeringPoliciesScopeEnum, bool) {
-	mappingListSteeringPoliciesScopeEnumIgnoreCase := make(map[string]ListSteeringPoliciesScopeEnum)
-	for k, v := range mappingListSteeringPoliciesScopeEnum {
-		mappingListSteeringPoliciesScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSteeringPoliciesScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSteeringPoliciesScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

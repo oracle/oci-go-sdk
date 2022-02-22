@@ -25,6 +25,10 @@ var mappingUpgradeDeploymentTypeEnum = map[string]UpgradeDeploymentTypeEnum{
 	"CURRENT_RELEASE": UpgradeDeploymentTypeCurrentRelease,
 }
 
+var mappingUpgradeDeploymentTypeEnumLowerCase = map[string]UpgradeDeploymentTypeEnum{
+	"current_release": UpgradeDeploymentTypeCurrentRelease,
+}
+
 // GetUpgradeDeploymentTypeEnumValues Enumerates the set of values for UpgradeDeploymentTypeEnum
 func GetUpgradeDeploymentTypeEnumValues() []UpgradeDeploymentTypeEnum {
 	values := make([]UpgradeDeploymentTypeEnum, 0)
@@ -43,11 +47,6 @@ func GetUpgradeDeploymentTypeEnumStringValues() []string {
 
 // GetMappingUpgradeDeploymentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpgradeDeploymentTypeEnum(val string) (UpgradeDeploymentTypeEnum, bool) {
-	mappingUpgradeDeploymentTypeEnumIgnoreCase := make(map[string]UpgradeDeploymentTypeEnum)
-	for k, v := range mappingUpgradeDeploymentTypeEnum {
-		mappingUpgradeDeploymentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpgradeDeploymentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpgradeDeploymentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

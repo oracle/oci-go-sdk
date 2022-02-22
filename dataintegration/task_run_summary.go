@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -126,6 +126,16 @@ var mappingTaskRunSummaryStatusEnum = map[string]TaskRunSummaryStatusEnum{
 	"ERROR":       TaskRunSummaryStatusError,
 }
 
+var mappingTaskRunSummaryStatusEnumLowerCase = map[string]TaskRunSummaryStatusEnum{
+	"not_started": TaskRunSummaryStatusNotStarted,
+	"queued":      TaskRunSummaryStatusQueued,
+	"running":     TaskRunSummaryStatusRunning,
+	"terminating": TaskRunSummaryStatusTerminating,
+	"terminated":  TaskRunSummaryStatusTerminated,
+	"success":     TaskRunSummaryStatusSuccess,
+	"error":       TaskRunSummaryStatusError,
+}
+
 // GetTaskRunSummaryStatusEnumValues Enumerates the set of values for TaskRunSummaryStatusEnum
 func GetTaskRunSummaryStatusEnumValues() []TaskRunSummaryStatusEnum {
 	values := make([]TaskRunSummaryStatusEnum, 0)
@@ -150,12 +160,7 @@ func GetTaskRunSummaryStatusEnumStringValues() []string {
 
 // GetMappingTaskRunSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskRunSummaryStatusEnum(val string) (TaskRunSummaryStatusEnum, bool) {
-	mappingTaskRunSummaryStatusEnumIgnoreCase := make(map[string]TaskRunSummaryStatusEnum)
-	for k, v := range mappingTaskRunSummaryStatusEnum {
-		mappingTaskRunSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskRunSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskRunSummaryStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +186,15 @@ var mappingTaskRunSummaryTaskTypeEnum = map[string]TaskRunSummaryTaskTypeEnum{
 	"REST_TASK":         TaskRunSummaryTaskTypeRestTask,
 }
 
+var mappingTaskRunSummaryTaskTypeEnumLowerCase = map[string]TaskRunSummaryTaskTypeEnum{
+	"integration_task":  TaskRunSummaryTaskTypeIntegrationTask,
+	"data_loader_task":  TaskRunSummaryTaskTypeDataLoaderTask,
+	"pipeline_task":     TaskRunSummaryTaskTypePipelineTask,
+	"sql_task":          TaskRunSummaryTaskTypeSqlTask,
+	"oci_dataflow_task": TaskRunSummaryTaskTypeOciDataflowTask,
+	"rest_task":         TaskRunSummaryTaskTypeRestTask,
+}
+
 // GetTaskRunSummaryTaskTypeEnumValues Enumerates the set of values for TaskRunSummaryTaskTypeEnum
 func GetTaskRunSummaryTaskTypeEnumValues() []TaskRunSummaryTaskTypeEnum {
 	values := make([]TaskRunSummaryTaskTypeEnum, 0)
@@ -204,12 +218,7 @@ func GetTaskRunSummaryTaskTypeEnumStringValues() []string {
 
 // GetMappingTaskRunSummaryTaskTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskRunSummaryTaskTypeEnum(val string) (TaskRunSummaryTaskTypeEnum, bool) {
-	mappingTaskRunSummaryTaskTypeEnumIgnoreCase := make(map[string]TaskRunSummaryTaskTypeEnum)
-	for k, v := range mappingTaskRunSummaryTaskTypeEnum {
-		mappingTaskRunSummaryTaskTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskRunSummaryTaskTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskRunSummaryTaskTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -227,6 +236,12 @@ var mappingTaskRunSummaryReRunTypeEnum = map[string]TaskRunSummaryReRunTypeEnum{
 	"BEGINNING": TaskRunSummaryReRunTypeBeginning,
 	"FAILED":    TaskRunSummaryReRunTypeFailed,
 	"STEP":      TaskRunSummaryReRunTypeStep,
+}
+
+var mappingTaskRunSummaryReRunTypeEnumLowerCase = map[string]TaskRunSummaryReRunTypeEnum{
+	"beginning": TaskRunSummaryReRunTypeBeginning,
+	"failed":    TaskRunSummaryReRunTypeFailed,
+	"step":      TaskRunSummaryReRunTypeStep,
 }
 
 // GetTaskRunSummaryReRunTypeEnumValues Enumerates the set of values for TaskRunSummaryReRunTypeEnum
@@ -249,11 +264,6 @@ func GetTaskRunSummaryReRunTypeEnumStringValues() []string {
 
 // GetMappingTaskRunSummaryReRunTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskRunSummaryReRunTypeEnum(val string) (TaskRunSummaryReRunTypeEnum, bool) {
-	mappingTaskRunSummaryReRunTypeEnumIgnoreCase := make(map[string]TaskRunSummaryReRunTypeEnum)
-	for k, v := range mappingTaskRunSummaryReRunTypeEnum {
-		mappingTaskRunSummaryReRunTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskRunSummaryReRunTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskRunSummaryReRunTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

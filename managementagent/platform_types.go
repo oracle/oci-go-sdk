@@ -29,6 +29,12 @@ var mappingPlatformTypesEnum = map[string]PlatformTypesEnum{
 	"SOLARIS": PlatformTypesSolaris,
 }
 
+var mappingPlatformTypesEnumLowerCase = map[string]PlatformTypesEnum{
+	"linux":   PlatformTypesLinux,
+	"windows": PlatformTypesWindows,
+	"solaris": PlatformTypesSolaris,
+}
+
 // GetPlatformTypesEnumValues Enumerates the set of values for PlatformTypesEnum
 func GetPlatformTypesEnumValues() []PlatformTypesEnum {
 	values := make([]PlatformTypesEnum, 0)
@@ -49,11 +55,6 @@ func GetPlatformTypesEnumStringValues() []string {
 
 // GetMappingPlatformTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPlatformTypesEnum(val string) (PlatformTypesEnum, bool) {
-	mappingPlatformTypesEnumIgnoreCase := make(map[string]PlatformTypesEnum)
-	for k, v := range mappingPlatformTypesEnum {
-		mappingPlatformTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPlatformTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPlatformTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

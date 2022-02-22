@@ -11,7 +11,7 @@ package databasemigration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,13 @@ var mappingMetadataRemapTypeEnum = map[string]MetadataRemapTypeEnum{
 	"TABLE":      MetadataRemapTypeTable,
 }
 
+var mappingMetadataRemapTypeEnumLowerCase = map[string]MetadataRemapTypeEnum{
+	"schema":     MetadataRemapTypeSchema,
+	"tablespace": MetadataRemapTypeTablespace,
+	"datafile":   MetadataRemapTypeDatafile,
+	"table":      MetadataRemapTypeTable,
+}
+
 // GetMetadataRemapTypeEnumValues Enumerates the set of values for MetadataRemapTypeEnum
 func GetMetadataRemapTypeEnumValues() []MetadataRemapTypeEnum {
 	values := make([]MetadataRemapTypeEnum, 0)
@@ -87,11 +94,6 @@ func GetMetadataRemapTypeEnumStringValues() []string {
 
 // GetMappingMetadataRemapTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMetadataRemapTypeEnum(val string) (MetadataRemapTypeEnum, bool) {
-	mappingMetadataRemapTypeEnumIgnoreCase := make(map[string]MetadataRemapTypeEnum)
-	for k, v := range mappingMetadataRemapTypeEnum {
-		mappingMetadataRemapTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMetadataRemapTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMetadataRemapTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

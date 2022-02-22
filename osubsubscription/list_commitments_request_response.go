@@ -6,7 +6,7 @@ package osubsubscription
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -137,6 +137,11 @@ var mappingListCommitmentsSortOrderEnum = map[string]ListCommitmentsSortOrderEnu
 	"DESC": ListCommitmentsSortOrderDesc,
 }
 
+var mappingListCommitmentsSortOrderEnumLowerCase = map[string]ListCommitmentsSortOrderEnum{
+	"asc":  ListCommitmentsSortOrderAsc,
+	"desc": ListCommitmentsSortOrderDesc,
+}
+
 // GetListCommitmentsSortOrderEnumValues Enumerates the set of values for ListCommitmentsSortOrderEnum
 func GetListCommitmentsSortOrderEnumValues() []ListCommitmentsSortOrderEnum {
 	values := make([]ListCommitmentsSortOrderEnum, 0)
@@ -156,12 +161,7 @@ func GetListCommitmentsSortOrderEnumStringValues() []string {
 
 // GetMappingListCommitmentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCommitmentsSortOrderEnum(val string) (ListCommitmentsSortOrderEnum, bool) {
-	mappingListCommitmentsSortOrderEnumIgnoreCase := make(map[string]ListCommitmentsSortOrderEnum)
-	for k, v := range mappingListCommitmentsSortOrderEnum {
-		mappingListCommitmentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCommitmentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCommitmentsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -177,6 +177,11 @@ const (
 var mappingListCommitmentsSortByEnum = map[string]ListCommitmentsSortByEnum{
 	"TIMECREATED": ListCommitmentsSortByTimecreated,
 	"TIMESTART":   ListCommitmentsSortByTimestart,
+}
+
+var mappingListCommitmentsSortByEnumLowerCase = map[string]ListCommitmentsSortByEnum{
+	"timecreated": ListCommitmentsSortByTimecreated,
+	"timestart":   ListCommitmentsSortByTimestart,
 }
 
 // GetListCommitmentsSortByEnumValues Enumerates the set of values for ListCommitmentsSortByEnum
@@ -198,11 +203,6 @@ func GetListCommitmentsSortByEnumStringValues() []string {
 
 // GetMappingListCommitmentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListCommitmentsSortByEnum(val string) (ListCommitmentsSortByEnum, bool) {
-	mappingListCommitmentsSortByEnumIgnoreCase := make(map[string]ListCommitmentsSortByEnum)
-	for k, v := range mappingListCommitmentsSortByEnum {
-		mappingListCommitmentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListCommitmentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListCommitmentsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

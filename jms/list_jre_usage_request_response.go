@@ -6,7 +6,7 @@ package jms
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -146,6 +146,11 @@ var mappingListJreUsageSortOrderEnum = map[string]ListJreUsageSortOrderEnum{
 	"DESC": ListJreUsageSortOrderDesc,
 }
 
+var mappingListJreUsageSortOrderEnumLowerCase = map[string]ListJreUsageSortOrderEnum{
+	"asc":  ListJreUsageSortOrderAsc,
+	"desc": ListJreUsageSortOrderDesc,
+}
+
 // GetListJreUsageSortOrderEnumValues Enumerates the set of values for ListJreUsageSortOrderEnum
 func GetListJreUsageSortOrderEnumValues() []ListJreUsageSortOrderEnum {
 	values := make([]ListJreUsageSortOrderEnum, 0)
@@ -165,12 +170,7 @@ func GetListJreUsageSortOrderEnumStringValues() []string {
 
 // GetMappingListJreUsageSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJreUsageSortOrderEnum(val string) (ListJreUsageSortOrderEnum, bool) {
-	mappingListJreUsageSortOrderEnumIgnoreCase := make(map[string]ListJreUsageSortOrderEnum)
-	for k, v := range mappingListJreUsageSortOrderEnum {
-		mappingListJreUsageSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJreUsageSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJreUsageSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -204,6 +204,19 @@ var mappingListJreUsageSortByEnum = map[string]ListJreUsageSortByEnum{
 	"securityStatus":                  ListJreUsageSortBySecuritystatus,
 }
 
+var mappingListJreUsageSortByEnumLowerCase = map[string]ListJreUsageSortByEnum{
+	"distribution":                    ListJreUsageSortByDistribution,
+	"timefirstseen":                   ListJreUsageSortByTimefirstseen,
+	"timelastseen":                    ListJreUsageSortByTimelastseen,
+	"vendor":                          ListJreUsageSortByVendor,
+	"version":                         ListJreUsageSortByVersion,
+	"approximateinstallationcount":    ListJreUsageSortByApproximateinstallationcount,
+	"approximateapplicationcount":     ListJreUsageSortByApproximateapplicationcount,
+	"approximatemanagedinstancecount": ListJreUsageSortByApproximatemanagedinstancecount,
+	"osname":                          ListJreUsageSortByOsname,
+	"securitystatus":                  ListJreUsageSortBySecuritystatus,
+}
+
 // GetListJreUsageSortByEnumValues Enumerates the set of values for ListJreUsageSortByEnum
 func GetListJreUsageSortByEnumValues() []ListJreUsageSortByEnum {
 	values := make([]ListJreUsageSortByEnum, 0)
@@ -231,11 +244,6 @@ func GetListJreUsageSortByEnumStringValues() []string {
 
 // GetMappingListJreUsageSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJreUsageSortByEnum(val string) (ListJreUsageSortByEnum, bool) {
-	mappingListJreUsageSortByEnumIgnoreCase := make(map[string]ListJreUsageSortByEnum)
-	for k, v := range mappingListJreUsageSortByEnum {
-		mappingListJreUsageSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJreUsageSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJreUsageSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

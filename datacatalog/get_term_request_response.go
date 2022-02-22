@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -153,6 +153,27 @@ var mappingGetTermFieldsEnum = map[string]GetTermFieldsEnum{
 	"associatedObjects":         GetTermFieldsAssociatedobjects,
 }
 
+var mappingGetTermFieldsEnumLowerCase = map[string]GetTermFieldsEnum{
+	"key":                       GetTermFieldsKey,
+	"displayname":               GetTermFieldsDisplayname,
+	"description":               GetTermFieldsDescription,
+	"glossarykey":               GetTermFieldsGlossarykey,
+	"parenttermkey":             GetTermFieldsParenttermkey,
+	"isallowedtohavechildterms": GetTermFieldsIsallowedtohavechildterms,
+	"path":                      GetTermFieldsPath,
+	"lifecyclestate":            GetTermFieldsLifecyclestate,
+	"timecreated":               GetTermFieldsTimecreated,
+	"timeupdated":               GetTermFieldsTimeupdated,
+	"createdbyid":               GetTermFieldsCreatedbyid,
+	"updatedbyid":               GetTermFieldsUpdatedbyid,
+	"owner":                     GetTermFieldsOwner,
+	"workflowstatus":            GetTermFieldsWorkflowstatus,
+	"uri":                       GetTermFieldsUri,
+	"relatedterms":              GetTermFieldsRelatedterms,
+	"associatedobjectcount":     GetTermFieldsAssociatedobjectcount,
+	"associatedobjects":         GetTermFieldsAssociatedobjects,
+}
+
 // GetGetTermFieldsEnumValues Enumerates the set of values for GetTermFieldsEnum
 func GetGetTermFieldsEnumValues() []GetTermFieldsEnum {
 	values := make([]GetTermFieldsEnum, 0)
@@ -188,11 +209,6 @@ func GetGetTermFieldsEnumStringValues() []string {
 
 // GetMappingGetTermFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetTermFieldsEnum(val string) (GetTermFieldsEnum, bool) {
-	mappingGetTermFieldsEnumIgnoreCase := make(map[string]GetTermFieldsEnum)
-	for k, v := range mappingGetTermFieldsEnum {
-		mappingGetTermFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetTermFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetTermFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

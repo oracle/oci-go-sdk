@@ -33,6 +33,14 @@ var mappingWorkRequestStatusEnum = map[string]WorkRequestStatusEnum{
 	"SUCCEEDED":   WorkRequestStatusSucceeded,
 }
 
+var mappingWorkRequestStatusEnumLowerCase = map[string]WorkRequestStatusEnum{
+	"accepted":    WorkRequestStatusAccepted,
+	"canceled":    WorkRequestStatusCanceled,
+	"failed":      WorkRequestStatusFailed,
+	"in_progress": WorkRequestStatusInProgress,
+	"succeeded":   WorkRequestStatusSucceeded,
+}
+
 // GetWorkRequestStatusEnumValues Enumerates the set of values for WorkRequestStatusEnum
 func GetWorkRequestStatusEnumValues() []WorkRequestStatusEnum {
 	values := make([]WorkRequestStatusEnum, 0)
@@ -55,11 +63,6 @@ func GetWorkRequestStatusEnumStringValues() []string {
 
 // GetMappingWorkRequestStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestStatusEnum(val string) (WorkRequestStatusEnum, bool) {
-	mappingWorkRequestStatusEnumIgnoreCase := make(map[string]WorkRequestStatusEnum)
-	for k, v := range mappingWorkRequestStatusEnum {
-		mappingWorkRequestStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

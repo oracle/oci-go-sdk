@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,13 @@ var mappingConvertToPdbDetailsActionEnum = map[string]ConvertToPdbDetailsActionE
 	"SYNC_ROLLBACK": ConvertToPdbDetailsActionSyncRollback,
 }
 
+var mappingConvertToPdbDetailsActionEnumLowerCase = map[string]ConvertToPdbDetailsActionEnum{
+	"precheck":      ConvertToPdbDetailsActionPrecheck,
+	"convert":       ConvertToPdbDetailsActionConvert,
+	"sync":          ConvertToPdbDetailsActionSync,
+	"sync_rollback": ConvertToPdbDetailsActionSyncRollback,
+}
+
 // GetConvertToPdbDetailsActionEnumValues Enumerates the set of values for ConvertToPdbDetailsActionEnum
 func GetConvertToPdbDetailsActionEnumValues() []ConvertToPdbDetailsActionEnum {
 	values := make([]ConvertToPdbDetailsActionEnum, 0)
@@ -114,11 +121,6 @@ func GetConvertToPdbDetailsActionEnumStringValues() []string {
 
 // GetMappingConvertToPdbDetailsActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConvertToPdbDetailsActionEnum(val string) (ConvertToPdbDetailsActionEnum, bool) {
-	mappingConvertToPdbDetailsActionEnumIgnoreCase := make(map[string]ConvertToPdbDetailsActionEnum)
-	for k, v := range mappingConvertToPdbDetailsActionEnum {
-		mappingConvertToPdbDetailsActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConvertToPdbDetailsActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConvertToPdbDetailsActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

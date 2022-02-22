@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -58,6 +58,11 @@ var mappingDownloadDiscoveryReportDetailsReportFormatEnum = map[string]DownloadD
 	"XLS": DownloadDiscoveryReportDetailsReportFormatXls,
 }
 
+var mappingDownloadDiscoveryReportDetailsReportFormatEnumLowerCase = map[string]DownloadDiscoveryReportDetailsReportFormatEnum{
+	"pdf": DownloadDiscoveryReportDetailsReportFormatPdf,
+	"xls": DownloadDiscoveryReportDetailsReportFormatXls,
+}
+
 // GetDownloadDiscoveryReportDetailsReportFormatEnumValues Enumerates the set of values for DownloadDiscoveryReportDetailsReportFormatEnum
 func GetDownloadDiscoveryReportDetailsReportFormatEnumValues() []DownloadDiscoveryReportDetailsReportFormatEnum {
 	values := make([]DownloadDiscoveryReportDetailsReportFormatEnum, 0)
@@ -77,11 +82,6 @@ func GetDownloadDiscoveryReportDetailsReportFormatEnumStringValues() []string {
 
 // GetMappingDownloadDiscoveryReportDetailsReportFormatEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDownloadDiscoveryReportDetailsReportFormatEnum(val string) (DownloadDiscoveryReportDetailsReportFormatEnum, bool) {
-	mappingDownloadDiscoveryReportDetailsReportFormatEnumIgnoreCase := make(map[string]DownloadDiscoveryReportDetailsReportFormatEnum)
-	for k, v := range mappingDownloadDiscoveryReportDetailsReportFormatEnum {
-		mappingDownloadDiscoveryReportDetailsReportFormatEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDownloadDiscoveryReportDetailsReportFormatEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDownloadDiscoveryReportDetailsReportFormatEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

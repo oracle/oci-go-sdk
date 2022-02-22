@@ -6,7 +6,7 @@ package goldengate
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -152,6 +152,21 @@ var mappingListDatabaseRegistrationsLifecycleStateEnum = map[string]ListDatabase
 	"SUCCEEDED":       ListDatabaseRegistrationsLifecycleStateSucceeded,
 }
 
+var mappingListDatabaseRegistrationsLifecycleStateEnumLowerCase = map[string]ListDatabaseRegistrationsLifecycleStateEnum{
+	"creating":        ListDatabaseRegistrationsLifecycleStateCreating,
+	"updating":        ListDatabaseRegistrationsLifecycleStateUpdating,
+	"active":          ListDatabaseRegistrationsLifecycleStateActive,
+	"inactive":        ListDatabaseRegistrationsLifecycleStateInactive,
+	"deleting":        ListDatabaseRegistrationsLifecycleStateDeleting,
+	"deleted":         ListDatabaseRegistrationsLifecycleStateDeleted,
+	"failed":          ListDatabaseRegistrationsLifecycleStateFailed,
+	"needs_attention": ListDatabaseRegistrationsLifecycleStateNeedsAttention,
+	"in_progress":     ListDatabaseRegistrationsLifecycleStateInProgress,
+	"canceling":       ListDatabaseRegistrationsLifecycleStateCanceling,
+	"canceled":        ListDatabaseRegistrationsLifecycleStateCanceled,
+	"succeeded":       ListDatabaseRegistrationsLifecycleStateSucceeded,
+}
+
 // GetListDatabaseRegistrationsLifecycleStateEnumValues Enumerates the set of values for ListDatabaseRegistrationsLifecycleStateEnum
 func GetListDatabaseRegistrationsLifecycleStateEnumValues() []ListDatabaseRegistrationsLifecycleStateEnum {
 	values := make([]ListDatabaseRegistrationsLifecycleStateEnum, 0)
@@ -181,12 +196,7 @@ func GetListDatabaseRegistrationsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListDatabaseRegistrationsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseRegistrationsLifecycleStateEnum(val string) (ListDatabaseRegistrationsLifecycleStateEnum, bool) {
-	mappingListDatabaseRegistrationsLifecycleStateEnumIgnoreCase := make(map[string]ListDatabaseRegistrationsLifecycleStateEnum)
-	for k, v := range mappingListDatabaseRegistrationsLifecycleStateEnum {
-		mappingListDatabaseRegistrationsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseRegistrationsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseRegistrationsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -202,6 +212,11 @@ const (
 var mappingListDatabaseRegistrationsSortOrderEnum = map[string]ListDatabaseRegistrationsSortOrderEnum{
 	"ASC":  ListDatabaseRegistrationsSortOrderAsc,
 	"DESC": ListDatabaseRegistrationsSortOrderDesc,
+}
+
+var mappingListDatabaseRegistrationsSortOrderEnumLowerCase = map[string]ListDatabaseRegistrationsSortOrderEnum{
+	"asc":  ListDatabaseRegistrationsSortOrderAsc,
+	"desc": ListDatabaseRegistrationsSortOrderDesc,
 }
 
 // GetListDatabaseRegistrationsSortOrderEnumValues Enumerates the set of values for ListDatabaseRegistrationsSortOrderEnum
@@ -223,12 +238,7 @@ func GetListDatabaseRegistrationsSortOrderEnumStringValues() []string {
 
 // GetMappingListDatabaseRegistrationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseRegistrationsSortOrderEnum(val string) (ListDatabaseRegistrationsSortOrderEnum, bool) {
-	mappingListDatabaseRegistrationsSortOrderEnumIgnoreCase := make(map[string]ListDatabaseRegistrationsSortOrderEnum)
-	for k, v := range mappingListDatabaseRegistrationsSortOrderEnum {
-		mappingListDatabaseRegistrationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseRegistrationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseRegistrationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -244,6 +254,11 @@ const (
 var mappingListDatabaseRegistrationsSortByEnum = map[string]ListDatabaseRegistrationsSortByEnum{
 	"timeCreated": ListDatabaseRegistrationsSortByTimecreated,
 	"displayName": ListDatabaseRegistrationsSortByDisplayname,
+}
+
+var mappingListDatabaseRegistrationsSortByEnumLowerCase = map[string]ListDatabaseRegistrationsSortByEnum{
+	"timecreated": ListDatabaseRegistrationsSortByTimecreated,
+	"displayname": ListDatabaseRegistrationsSortByDisplayname,
 }
 
 // GetListDatabaseRegistrationsSortByEnumValues Enumerates the set of values for ListDatabaseRegistrationsSortByEnum
@@ -265,11 +280,6 @@ func GetListDatabaseRegistrationsSortByEnumStringValues() []string {
 
 // GetMappingListDatabaseRegistrationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseRegistrationsSortByEnum(val string) (ListDatabaseRegistrationsSortByEnum, bool) {
-	mappingListDatabaseRegistrationsSortByEnumIgnoreCase := make(map[string]ListDatabaseRegistrationsSortByEnum)
-	for k, v := range mappingListDatabaseRegistrationsSortByEnum {
-		mappingListDatabaseRegistrationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseRegistrationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseRegistrationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

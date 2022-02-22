@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -117,6 +117,12 @@ var mappingUpdateDhcpDetailsDomainNameTypeEnum = map[string]UpdateDhcpDetailsDom
 	"CUSTOM_DOMAIN": UpdateDhcpDetailsDomainNameTypeCustomDomain,
 }
 
+var mappingUpdateDhcpDetailsDomainNameTypeEnumLowerCase = map[string]UpdateDhcpDetailsDomainNameTypeEnum{
+	"subnet_domain": UpdateDhcpDetailsDomainNameTypeSubnetDomain,
+	"vcn_domain":    UpdateDhcpDetailsDomainNameTypeVcnDomain,
+	"custom_domain": UpdateDhcpDetailsDomainNameTypeCustomDomain,
+}
+
 // GetUpdateDhcpDetailsDomainNameTypeEnumValues Enumerates the set of values for UpdateDhcpDetailsDomainNameTypeEnum
 func GetUpdateDhcpDetailsDomainNameTypeEnumValues() []UpdateDhcpDetailsDomainNameTypeEnum {
 	values := make([]UpdateDhcpDetailsDomainNameTypeEnum, 0)
@@ -137,11 +143,6 @@ func GetUpdateDhcpDetailsDomainNameTypeEnumStringValues() []string {
 
 // GetMappingUpdateDhcpDetailsDomainNameTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateDhcpDetailsDomainNameTypeEnum(val string) (UpdateDhcpDetailsDomainNameTypeEnum, bool) {
-	mappingUpdateDhcpDetailsDomainNameTypeEnumIgnoreCase := make(map[string]UpdateDhcpDetailsDomainNameTypeEnum)
-	for k, v := range mappingUpdateDhcpDetailsDomainNameTypeEnum {
-		mappingUpdateDhcpDetailsDomainNameTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateDhcpDetailsDomainNameTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateDhcpDetailsDomainNameTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

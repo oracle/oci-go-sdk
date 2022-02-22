@@ -12,7 +12,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -98,6 +98,13 @@ var mappingViewLifecycleStateEnum = map[string]ViewLifecycleStateEnum{
 	"UPDATING": ViewLifecycleStateUpdating,
 }
 
+var mappingViewLifecycleStateEnumLowerCase = map[string]ViewLifecycleStateEnum{
+	"active":   ViewLifecycleStateActive,
+	"deleted":  ViewLifecycleStateDeleted,
+	"deleting": ViewLifecycleStateDeleting,
+	"updating": ViewLifecycleStateUpdating,
+}
+
 // GetViewLifecycleStateEnumValues Enumerates the set of values for ViewLifecycleStateEnum
 func GetViewLifecycleStateEnumValues() []ViewLifecycleStateEnum {
 	values := make([]ViewLifecycleStateEnum, 0)
@@ -119,11 +126,6 @@ func GetViewLifecycleStateEnumStringValues() []string {
 
 // GetMappingViewLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingViewLifecycleStateEnum(val string) (ViewLifecycleStateEnum, bool) {
-	mappingViewLifecycleStateEnumIgnoreCase := make(map[string]ViewLifecycleStateEnum)
-	for k, v := range mappingViewLifecycleStateEnum {
-		mappingViewLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingViewLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingViewLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

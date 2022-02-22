@@ -14,7 +14,7 @@ package apigateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -89,6 +89,10 @@ var mappingContentValidationValidationTypeEnum = map[string]ContentValidationVal
 	"NONE": ContentValidationValidationTypeNone,
 }
 
+var mappingContentValidationValidationTypeEnumLowerCase = map[string]ContentValidationValidationTypeEnum{
+	"none": ContentValidationValidationTypeNone,
+}
+
 // GetContentValidationValidationTypeEnumValues Enumerates the set of values for ContentValidationValidationTypeEnum
 func GetContentValidationValidationTypeEnumValues() []ContentValidationValidationTypeEnum {
 	values := make([]ContentValidationValidationTypeEnum, 0)
@@ -107,11 +111,6 @@ func GetContentValidationValidationTypeEnumStringValues() []string {
 
 // GetMappingContentValidationValidationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingContentValidationValidationTypeEnum(val string) (ContentValidationValidationTypeEnum, bool) {
-	mappingContentValidationValidationTypeEnumIgnoreCase := make(map[string]ContentValidationValidationTypeEnum)
-	for k, v := range mappingContentValidationValidationTypeEnum {
-		mappingContentValidationValidationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingContentValidationValidationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingContentValidationValidationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

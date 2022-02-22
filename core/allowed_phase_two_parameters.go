@@ -15,20 +15,20 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
-// AllowedPhaseTwoParameters Phase Two Parameters
+// AllowedPhaseTwoParameters Allowed phase two parameters.
 type AllowedPhaseTwoParameters struct {
 
-	// Phase Two Encryption Algorithms
+	// Allowed phase two encryption algorithms.
 	EncryptionAlgorithms []string `mandatory:"false" json:"encryptionAlgorithms"`
 
-	// Phase Two Authentication Algorithms
+	// Allowed phase two authentication algorithms.
 	AuthenticationAlgorithms []string `mandatory:"false" json:"authenticationAlgorithms"`
 
-	// PFS DH Groups
+	// Allowed perfect forward secrecy Diffie-Hellman groups.
 	PfsDhGroups []string `mandatory:"false" json:"pfsDhGroups"`
 }
 

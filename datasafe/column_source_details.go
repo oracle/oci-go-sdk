@@ -12,7 +12,7 @@ package datasafe
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,11 @@ var mappingColumnSourceDetailsColumnSourceEnum = map[string]ColumnSourceDetailsC
 	"SENSITIVE_DATA_MODEL": ColumnSourceDetailsColumnSourceSensitiveDataModel,
 }
 
+var mappingColumnSourceDetailsColumnSourceEnumLowerCase = map[string]ColumnSourceDetailsColumnSourceEnum{
+	"target":               ColumnSourceDetailsColumnSourceTarget,
+	"sensitive_data_model": ColumnSourceDetailsColumnSourceSensitiveDataModel,
+}
+
 // GetColumnSourceDetailsColumnSourceEnumValues Enumerates the set of values for ColumnSourceDetailsColumnSourceEnum
 func GetColumnSourceDetailsColumnSourceEnumValues() []ColumnSourceDetailsColumnSourceEnum {
 	values := make([]ColumnSourceDetailsColumnSourceEnum, 0)
@@ -112,11 +117,6 @@ func GetColumnSourceDetailsColumnSourceEnumStringValues() []string {
 
 // GetMappingColumnSourceDetailsColumnSourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingColumnSourceDetailsColumnSourceEnum(val string) (ColumnSourceDetailsColumnSourceEnum, bool) {
-	mappingColumnSourceDetailsColumnSourceEnumIgnoreCase := make(map[string]ColumnSourceDetailsColumnSourceEnum)
-	for k, v := range mappingColumnSourceDetailsColumnSourceEnum {
-		mappingColumnSourceDetailsColumnSourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingColumnSourceDetailsColumnSourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingColumnSourceDetailsColumnSourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

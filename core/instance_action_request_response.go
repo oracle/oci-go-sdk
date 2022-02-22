@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -133,6 +133,15 @@ var mappingInstanceActionActionEnum = map[string]InstanceActionActionEnum{
 	"SENDDIAGNOSTICINTERRUPT": InstanceActionActionSenddiagnosticinterrupt,
 }
 
+var mappingInstanceActionActionEnumLowerCase = map[string]InstanceActionActionEnum{
+	"stop":                    InstanceActionActionStop,
+	"start":                   InstanceActionActionStart,
+	"softreset":               InstanceActionActionSoftreset,
+	"reset":                   InstanceActionActionReset,
+	"softstop":                InstanceActionActionSoftstop,
+	"senddiagnosticinterrupt": InstanceActionActionSenddiagnosticinterrupt,
+}
+
 // GetInstanceActionActionEnumValues Enumerates the set of values for InstanceActionActionEnum
 func GetInstanceActionActionEnumValues() []InstanceActionActionEnum {
 	values := make([]InstanceActionActionEnum, 0)
@@ -156,11 +165,6 @@ func GetInstanceActionActionEnumStringValues() []string {
 
 // GetMappingInstanceActionActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceActionActionEnum(val string) (InstanceActionActionEnum, bool) {
-	mappingInstanceActionActionEnumIgnoreCase := make(map[string]InstanceActionActionEnum)
-	for k, v := range mappingInstanceActionActionEnum {
-		mappingInstanceActionActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceActionActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceActionActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

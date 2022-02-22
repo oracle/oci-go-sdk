@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -144,6 +144,16 @@ var mappingAutonomousExadataInfrastructureSummaryLifecycleStateEnum = map[string
 	"MAINTENANCE_IN_PROGRESS": AutonomousExadataInfrastructureSummaryLifecycleStateMaintenanceInProgress,
 }
 
+var mappingAutonomousExadataInfrastructureSummaryLifecycleStateEnumLowerCase = map[string]AutonomousExadataInfrastructureSummaryLifecycleStateEnum{
+	"provisioning":            AutonomousExadataInfrastructureSummaryLifecycleStateProvisioning,
+	"available":               AutonomousExadataInfrastructureSummaryLifecycleStateAvailable,
+	"updating":                AutonomousExadataInfrastructureSummaryLifecycleStateUpdating,
+	"terminating":             AutonomousExadataInfrastructureSummaryLifecycleStateTerminating,
+	"terminated":              AutonomousExadataInfrastructureSummaryLifecycleStateTerminated,
+	"failed":                  AutonomousExadataInfrastructureSummaryLifecycleStateFailed,
+	"maintenance_in_progress": AutonomousExadataInfrastructureSummaryLifecycleStateMaintenanceInProgress,
+}
+
 // GetAutonomousExadataInfrastructureSummaryLifecycleStateEnumValues Enumerates the set of values for AutonomousExadataInfrastructureSummaryLifecycleStateEnum
 func GetAutonomousExadataInfrastructureSummaryLifecycleStateEnumValues() []AutonomousExadataInfrastructureSummaryLifecycleStateEnum {
 	values := make([]AutonomousExadataInfrastructureSummaryLifecycleStateEnum, 0)
@@ -168,12 +178,7 @@ func GetAutonomousExadataInfrastructureSummaryLifecycleStateEnumStringValues() [
 
 // GetMappingAutonomousExadataInfrastructureSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAutonomousExadataInfrastructureSummaryLifecycleStateEnum(val string) (AutonomousExadataInfrastructureSummaryLifecycleStateEnum, bool) {
-	mappingAutonomousExadataInfrastructureSummaryLifecycleStateEnumIgnoreCase := make(map[string]AutonomousExadataInfrastructureSummaryLifecycleStateEnum)
-	for k, v := range mappingAutonomousExadataInfrastructureSummaryLifecycleStateEnum {
-		mappingAutonomousExadataInfrastructureSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAutonomousExadataInfrastructureSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAutonomousExadataInfrastructureSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -189,6 +194,11 @@ const (
 var mappingAutonomousExadataInfrastructureSummaryLicenseModelEnum = map[string]AutonomousExadataInfrastructureSummaryLicenseModelEnum{
 	"LICENSE_INCLUDED":       AutonomousExadataInfrastructureSummaryLicenseModelLicenseIncluded,
 	"BRING_YOUR_OWN_LICENSE": AutonomousExadataInfrastructureSummaryLicenseModelBringYourOwnLicense,
+}
+
+var mappingAutonomousExadataInfrastructureSummaryLicenseModelEnumLowerCase = map[string]AutonomousExadataInfrastructureSummaryLicenseModelEnum{
+	"license_included":       AutonomousExadataInfrastructureSummaryLicenseModelLicenseIncluded,
+	"bring_your_own_license": AutonomousExadataInfrastructureSummaryLicenseModelBringYourOwnLicense,
 }
 
 // GetAutonomousExadataInfrastructureSummaryLicenseModelEnumValues Enumerates the set of values for AutonomousExadataInfrastructureSummaryLicenseModelEnum
@@ -210,11 +220,6 @@ func GetAutonomousExadataInfrastructureSummaryLicenseModelEnumStringValues() []s
 
 // GetMappingAutonomousExadataInfrastructureSummaryLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAutonomousExadataInfrastructureSummaryLicenseModelEnum(val string) (AutonomousExadataInfrastructureSummaryLicenseModelEnum, bool) {
-	mappingAutonomousExadataInfrastructureSummaryLicenseModelEnumIgnoreCase := make(map[string]AutonomousExadataInfrastructureSummaryLicenseModelEnum)
-	for k, v := range mappingAutonomousExadataInfrastructureSummaryLicenseModelEnum {
-		mappingAutonomousExadataInfrastructureSummaryLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAutonomousExadataInfrastructureSummaryLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAutonomousExadataInfrastructureSummaryLicenseModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -44,6 +44,19 @@ var mappingEventTypeEnum = map[string]EventTypeEnum{
 	"WARNING":           EventTypeWarning,
 }
 
+var mappingEventTypeEnumLowerCase = map[string]EventTypeEnum{
+	"kernel_oops":       EventTypeKernelOops,
+	"kernel_crash":      EventTypeKernelCrash,
+	"crash":             EventTypeCrash,
+	"exploit_attempt":   EventTypeExploitAttempt,
+	"compliance":        EventTypeCompliance,
+	"tuning_suggestion": EventTypeTuningSuggestion,
+	"tuning_applied":    EventTypeTuningApplied,
+	"security":          EventTypeSecurity,
+	"error":             EventTypeError,
+	"warning":           EventTypeWarning,
+}
+
 // GetEventTypeEnumValues Enumerates the set of values for EventTypeEnum
 func GetEventTypeEnumValues() []EventTypeEnum {
 	values := make([]EventTypeEnum, 0)
@@ -71,11 +84,6 @@ func GetEventTypeEnumStringValues() []string {
 
 // GetMappingEventTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingEventTypeEnum(val string) (EventTypeEnum, bool) {
-	mappingEventTypeEnumIgnoreCase := make(map[string]EventTypeEnum)
-	for k, v := range mappingEventTypeEnum {
-		mappingEventTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingEventTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingEventTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

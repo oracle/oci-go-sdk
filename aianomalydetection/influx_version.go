@@ -29,6 +29,11 @@ var mappingInfluxVersionEnum = map[string]InfluxVersionEnum{
 	"V_2_0": InfluxVersionV20,
 }
 
+var mappingInfluxVersionEnumLowerCase = map[string]InfluxVersionEnum{
+	"v_1_8": InfluxVersionV18,
+	"v_2_0": InfluxVersionV20,
+}
+
 // GetInfluxVersionEnumValues Enumerates the set of values for InfluxVersionEnum
 func GetInfluxVersionEnumValues() []InfluxVersionEnum {
 	values := make([]InfluxVersionEnum, 0)
@@ -48,11 +53,6 @@ func GetInfluxVersionEnumStringValues() []string {
 
 // GetMappingInfluxVersionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInfluxVersionEnum(val string) (InfluxVersionEnum, bool) {
-	mappingInfluxVersionEnumIgnoreCase := make(map[string]InfluxVersionEnum)
-	for k, v := range mappingInfluxVersionEnum {
-		mappingInfluxVersionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInfluxVersionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInfluxVersionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

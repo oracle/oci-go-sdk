@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -139,6 +139,11 @@ var mappingKeyStoreSummaryLifecycleStateEnum = map[string]KeyStoreSummaryLifecyc
 	"DELETED": KeyStoreSummaryLifecycleStateDeleted,
 }
 
+var mappingKeyStoreSummaryLifecycleStateEnumLowerCase = map[string]KeyStoreSummaryLifecycleStateEnum{
+	"active":  KeyStoreSummaryLifecycleStateActive,
+	"deleted": KeyStoreSummaryLifecycleStateDeleted,
+}
+
 // GetKeyStoreSummaryLifecycleStateEnumValues Enumerates the set of values for KeyStoreSummaryLifecycleStateEnum
 func GetKeyStoreSummaryLifecycleStateEnumValues() []KeyStoreSummaryLifecycleStateEnum {
 	values := make([]KeyStoreSummaryLifecycleStateEnum, 0)
@@ -158,11 +163,6 @@ func GetKeyStoreSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingKeyStoreSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingKeyStoreSummaryLifecycleStateEnum(val string) (KeyStoreSummaryLifecycleStateEnum, bool) {
-	mappingKeyStoreSummaryLifecycleStateEnumIgnoreCase := make(map[string]KeyStoreSummaryLifecycleStateEnum)
-	for k, v := range mappingKeyStoreSummaryLifecycleStateEnum {
-		mappingKeyStoreSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingKeyStoreSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingKeyStoreSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

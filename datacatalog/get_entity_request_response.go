@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -164,6 +164,31 @@ var mappingGetEntityFieldsEnum = map[string]GetEntityFieldsEnum{
 	"properties":        GetEntityFieldsProperties,
 }
 
+var mappingGetEntityFieldsEnumLowerCase = map[string]GetEntityFieldsEnum{
+	"key":               GetEntityFieldsKey,
+	"displayname":       GetEntityFieldsDisplayname,
+	"description":       GetEntityFieldsDescription,
+	"dataassetkey":      GetEntityFieldsDataassetkey,
+	"timecreated":       GetEntityFieldsTimecreated,
+	"timeupdated":       GetEntityFieldsTimeupdated,
+	"createdbyid":       GetEntityFieldsCreatedbyid,
+	"updatedbyid":       GetEntityFieldsUpdatedbyid,
+	"lifecyclestate":    GetEntityFieldsLifecyclestate,
+	"externalkey":       GetEntityFieldsExternalkey,
+	"timeexternal":      GetEntityFieldsTimeexternal,
+	"timestatusupdated": GetEntityFieldsTimestatusupdated,
+	"islogical":         GetEntityFieldsIslogical,
+	"ispartition":       GetEntityFieldsIspartition,
+	"folderkey":         GetEntityFieldsFolderkey,
+	"foldername":        GetEntityFieldsFoldername,
+	"typekey":           GetEntityFieldsTypekey,
+	"path":              GetEntityFieldsPath,
+	"harveststatus":     GetEntityFieldsHarveststatus,
+	"lastjobkey":        GetEntityFieldsLastjobkey,
+	"uri":               GetEntityFieldsUri,
+	"properties":        GetEntityFieldsProperties,
+}
+
 // GetGetEntityFieldsEnumValues Enumerates the set of values for GetEntityFieldsEnum
 func GetGetEntityFieldsEnumValues() []GetEntityFieldsEnum {
 	values := make([]GetEntityFieldsEnum, 0)
@@ -203,11 +228,6 @@ func GetGetEntityFieldsEnumStringValues() []string {
 
 // GetMappingGetEntityFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetEntityFieldsEnum(val string) (GetEntityFieldsEnum, bool) {
-	mappingGetEntityFieldsEnumIgnoreCase := make(map[string]GetEntityFieldsEnum)
-	for k, v := range mappingGetEntityFieldsEnum {
-		mappingGetEntityFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetEntityFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetEntityFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

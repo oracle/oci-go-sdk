@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -92,6 +92,11 @@ var mappingCreateExternalBackupJobDetailsDatabaseModeEnum = map[string]CreateExt
 	"RAC": CreateExternalBackupJobDetailsDatabaseModeRac,
 }
 
+var mappingCreateExternalBackupJobDetailsDatabaseModeEnumLowerCase = map[string]CreateExternalBackupJobDetailsDatabaseModeEnum{
+	"si":  CreateExternalBackupJobDetailsDatabaseModeSi,
+	"rac": CreateExternalBackupJobDetailsDatabaseModeRac,
+}
+
 // GetCreateExternalBackupJobDetailsDatabaseModeEnumValues Enumerates the set of values for CreateExternalBackupJobDetailsDatabaseModeEnum
 func GetCreateExternalBackupJobDetailsDatabaseModeEnumValues() []CreateExternalBackupJobDetailsDatabaseModeEnum {
 	values := make([]CreateExternalBackupJobDetailsDatabaseModeEnum, 0)
@@ -111,12 +116,7 @@ func GetCreateExternalBackupJobDetailsDatabaseModeEnumStringValues() []string {
 
 // GetMappingCreateExternalBackupJobDetailsDatabaseModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateExternalBackupJobDetailsDatabaseModeEnum(val string) (CreateExternalBackupJobDetailsDatabaseModeEnum, bool) {
-	mappingCreateExternalBackupJobDetailsDatabaseModeEnumIgnoreCase := make(map[string]CreateExternalBackupJobDetailsDatabaseModeEnum)
-	for k, v := range mappingCreateExternalBackupJobDetailsDatabaseModeEnum {
-		mappingCreateExternalBackupJobDetailsDatabaseModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateExternalBackupJobDetailsDatabaseModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateExternalBackupJobDetailsDatabaseModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -136,6 +136,13 @@ var mappingCreateExternalBackupJobDetailsDatabaseEditionEnum = map[string]Create
 	"ENTERPRISE_EDITION":                     CreateExternalBackupJobDetailsDatabaseEditionEnterpriseEdition,
 	"ENTERPRISE_EDITION_HIGH_PERFORMANCE":    CreateExternalBackupJobDetailsDatabaseEditionEnterpriseEditionHighPerformance,
 	"ENTERPRISE_EDITION_EXTREME_PERFORMANCE": CreateExternalBackupJobDetailsDatabaseEditionEnterpriseEditionExtremePerformance,
+}
+
+var mappingCreateExternalBackupJobDetailsDatabaseEditionEnumLowerCase = map[string]CreateExternalBackupJobDetailsDatabaseEditionEnum{
+	"standard_edition":                       CreateExternalBackupJobDetailsDatabaseEditionStandardEdition,
+	"enterprise_edition":                     CreateExternalBackupJobDetailsDatabaseEditionEnterpriseEdition,
+	"enterprise_edition_high_performance":    CreateExternalBackupJobDetailsDatabaseEditionEnterpriseEditionHighPerformance,
+	"enterprise_edition_extreme_performance": CreateExternalBackupJobDetailsDatabaseEditionEnterpriseEditionExtremePerformance,
 }
 
 // GetCreateExternalBackupJobDetailsDatabaseEditionEnumValues Enumerates the set of values for CreateExternalBackupJobDetailsDatabaseEditionEnum
@@ -159,11 +166,6 @@ func GetCreateExternalBackupJobDetailsDatabaseEditionEnumStringValues() []string
 
 // GetMappingCreateExternalBackupJobDetailsDatabaseEditionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateExternalBackupJobDetailsDatabaseEditionEnum(val string) (CreateExternalBackupJobDetailsDatabaseEditionEnum, bool) {
-	mappingCreateExternalBackupJobDetailsDatabaseEditionEnumIgnoreCase := make(map[string]CreateExternalBackupJobDetailsDatabaseEditionEnum)
-	for k, v := range mappingCreateExternalBackupJobDetailsDatabaseEditionEnum {
-		mappingCreateExternalBackupJobDetailsDatabaseEditionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateExternalBackupJobDetailsDatabaseEditionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateExternalBackupJobDetailsDatabaseEditionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

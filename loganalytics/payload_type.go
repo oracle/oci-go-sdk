@@ -29,6 +29,12 @@ var mappingPayloadTypeEnum = map[string]PayloadTypeEnum{
 	"ZIP":  PayloadTypeZip,
 }
 
+var mappingPayloadTypeEnumLowerCase = map[string]PayloadTypeEnum{
+	"json": PayloadTypeJson,
+	"gzip": PayloadTypeGzip,
+	"zip":  PayloadTypeZip,
+}
+
 // GetPayloadTypeEnumValues Enumerates the set of values for PayloadTypeEnum
 func GetPayloadTypeEnumValues() []PayloadTypeEnum {
 	values := make([]PayloadTypeEnum, 0)
@@ -49,11 +55,6 @@ func GetPayloadTypeEnumStringValues() []string {
 
 // GetMappingPayloadTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPayloadTypeEnum(val string) (PayloadTypeEnum, bool) {
-	mappingPayloadTypeEnumIgnoreCase := make(map[string]PayloadTypeEnum)
-	for k, v := range mappingPayloadTypeEnum {
-		mappingPayloadTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPayloadTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPayloadTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

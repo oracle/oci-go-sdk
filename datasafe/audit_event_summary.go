@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -173,6 +173,12 @@ var mappingAuditEventSummaryDatabaseTypeEnum = map[string]AuditEventSummaryDatab
 	"INSTALLED_DATABASE":     AuditEventSummaryDatabaseTypeInstalledDatabase,
 }
 
+var mappingAuditEventSummaryDatabaseTypeEnumLowerCase = map[string]AuditEventSummaryDatabaseTypeEnum{
+	"database_cloud_service": AuditEventSummaryDatabaseTypeDatabaseCloudService,
+	"autonomous_database":    AuditEventSummaryDatabaseTypeAutonomousDatabase,
+	"installed_database":     AuditEventSummaryDatabaseTypeInstalledDatabase,
+}
+
 // GetAuditEventSummaryDatabaseTypeEnumValues Enumerates the set of values for AuditEventSummaryDatabaseTypeEnum
 func GetAuditEventSummaryDatabaseTypeEnumValues() []AuditEventSummaryDatabaseTypeEnum {
 	values := make([]AuditEventSummaryDatabaseTypeEnum, 0)
@@ -193,12 +199,7 @@ func GetAuditEventSummaryDatabaseTypeEnumStringValues() []string {
 
 // GetMappingAuditEventSummaryDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAuditEventSummaryDatabaseTypeEnum(val string) (AuditEventSummaryDatabaseTypeEnum, bool) {
-	mappingAuditEventSummaryDatabaseTypeEnumIgnoreCase := make(map[string]AuditEventSummaryDatabaseTypeEnum)
-	for k, v := range mappingAuditEventSummaryDatabaseTypeEnum {
-		mappingAuditEventSummaryDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAuditEventSummaryDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAuditEventSummaryDatabaseTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -212,6 +213,10 @@ const (
 
 var mappingAuditEventSummaryTargetClassEnum = map[string]AuditEventSummaryTargetClassEnum{
 	"DATABASE": AuditEventSummaryTargetClassDatabase,
+}
+
+var mappingAuditEventSummaryTargetClassEnumLowerCase = map[string]AuditEventSummaryTargetClassEnum{
+	"database": AuditEventSummaryTargetClassDatabase,
 }
 
 // GetAuditEventSummaryTargetClassEnumValues Enumerates the set of values for AuditEventSummaryTargetClassEnum
@@ -232,12 +237,7 @@ func GetAuditEventSummaryTargetClassEnumStringValues() []string {
 
 // GetMappingAuditEventSummaryTargetClassEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAuditEventSummaryTargetClassEnum(val string) (AuditEventSummaryTargetClassEnum, bool) {
-	mappingAuditEventSummaryTargetClassEnumIgnoreCase := make(map[string]AuditEventSummaryTargetClassEnum)
-	for k, v := range mappingAuditEventSummaryTargetClassEnum {
-		mappingAuditEventSummaryTargetClassEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAuditEventSummaryTargetClassEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAuditEventSummaryTargetClassEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -253,6 +253,11 @@ const (
 var mappingAuditEventSummaryOperationStatusEnum = map[string]AuditEventSummaryOperationStatusEnum{
 	"SUCCESS": AuditEventSummaryOperationStatusSuccess,
 	"FAILURE": AuditEventSummaryOperationStatusFailure,
+}
+
+var mappingAuditEventSummaryOperationStatusEnumLowerCase = map[string]AuditEventSummaryOperationStatusEnum{
+	"success": AuditEventSummaryOperationStatusSuccess,
+	"failure": AuditEventSummaryOperationStatusFailure,
 }
 
 // GetAuditEventSummaryOperationStatusEnumValues Enumerates the set of values for AuditEventSummaryOperationStatusEnum
@@ -274,12 +279,7 @@ func GetAuditEventSummaryOperationStatusEnumStringValues() []string {
 
 // GetMappingAuditEventSummaryOperationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAuditEventSummaryOperationStatusEnum(val string) (AuditEventSummaryOperationStatusEnum, bool) {
-	mappingAuditEventSummaryOperationStatusEnumIgnoreCase := make(map[string]AuditEventSummaryOperationStatusEnum)
-	for k, v := range mappingAuditEventSummaryOperationStatusEnum {
-		mappingAuditEventSummaryOperationStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAuditEventSummaryOperationStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAuditEventSummaryOperationStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -293,6 +293,10 @@ const (
 
 var mappingAuditEventSummaryAuditLocationEnum = map[string]AuditEventSummaryAuditLocationEnum{
 	"AUDIT_TABLE": AuditEventSummaryAuditLocationAuditTable,
+}
+
+var mappingAuditEventSummaryAuditLocationEnumLowerCase = map[string]AuditEventSummaryAuditLocationEnum{
+	"audit_table": AuditEventSummaryAuditLocationAuditTable,
 }
 
 // GetAuditEventSummaryAuditLocationEnumValues Enumerates the set of values for AuditEventSummaryAuditLocationEnum
@@ -313,12 +317,7 @@ func GetAuditEventSummaryAuditLocationEnumStringValues() []string {
 
 // GetMappingAuditEventSummaryAuditLocationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAuditEventSummaryAuditLocationEnum(val string) (AuditEventSummaryAuditLocationEnum, bool) {
-	mappingAuditEventSummaryAuditLocationEnumIgnoreCase := make(map[string]AuditEventSummaryAuditLocationEnum)
-	for k, v := range mappingAuditEventSummaryAuditLocationEnum {
-		mappingAuditEventSummaryAuditLocationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAuditEventSummaryAuditLocationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAuditEventSummaryAuditLocationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -348,6 +347,17 @@ var mappingAuditEventSummaryAuditTypeEnum = map[string]AuditEventSummaryAuditTyp
 	"DIRECT_PATH_API": AuditEventSummaryAuditTypeDirectPathApi,
 }
 
+var mappingAuditEventSummaryAuditTypeEnumLowerCase = map[string]AuditEventSummaryAuditTypeEnum{
+	"standard":        AuditEventSummaryAuditTypeStandard,
+	"fine_grained":    AuditEventSummaryAuditTypeFineGrained,
+	"xs":              AuditEventSummaryAuditTypeXs,
+	"database_vault":  AuditEventSummaryAuditTypeDatabaseVault,
+	"label_security":  AuditEventSummaryAuditTypeLabelSecurity,
+	"rman":            AuditEventSummaryAuditTypeRman,
+	"datapump":        AuditEventSummaryAuditTypeDatapump,
+	"direct_path_api": AuditEventSummaryAuditTypeDirectPathApi,
+}
+
 // GetAuditEventSummaryAuditTypeEnumValues Enumerates the set of values for AuditEventSummaryAuditTypeEnum
 func GetAuditEventSummaryAuditTypeEnumValues() []AuditEventSummaryAuditTypeEnum {
 	values := make([]AuditEventSummaryAuditTypeEnum, 0)
@@ -373,11 +383,6 @@ func GetAuditEventSummaryAuditTypeEnumStringValues() []string {
 
 // GetMappingAuditEventSummaryAuditTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAuditEventSummaryAuditTypeEnum(val string) (AuditEventSummaryAuditTypeEnum, bool) {
-	mappingAuditEventSummaryAuditTypeEnumIgnoreCase := make(map[string]AuditEventSummaryAuditTypeEnum)
-	for k, v := range mappingAuditEventSummaryAuditTypeEnum {
-		mappingAuditEventSummaryAuditTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAuditEventSummaryAuditTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAuditEventSummaryAuditTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

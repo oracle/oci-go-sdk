@@ -35,6 +35,15 @@ var mappingWorkRequestSortByEnum = map[string]WorkRequestSortByEnum{
 	"timeFinished":  WorkRequestSortByTimeFinished,
 }
 
+var mappingWorkRequestSortByEnumLowerCase = map[string]WorkRequestSortByEnum{
+	"id":            WorkRequestSortById,
+	"operationtype": WorkRequestSortByOperationType,
+	"status":        WorkRequestSortByStatus,
+	"timeaccepted":  WorkRequestSortByTimeAccepted,
+	"timestarted":   WorkRequestSortByTimeStarted,
+	"timefinished":  WorkRequestSortByTimeFinished,
+}
+
 // GetWorkRequestSortByEnumValues Enumerates the set of values for WorkRequestSortByEnum
 func GetWorkRequestSortByEnumValues() []WorkRequestSortByEnum {
 	values := make([]WorkRequestSortByEnum, 0)
@@ -58,11 +67,6 @@ func GetWorkRequestSortByEnumStringValues() []string {
 
 // GetMappingWorkRequestSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestSortByEnum(val string) (WorkRequestSortByEnum, bool) {
-	mappingWorkRequestSortByEnumIgnoreCase := make(map[string]WorkRequestSortByEnum)
-	for k, v := range mappingWorkRequestSortByEnum {
-		mappingWorkRequestSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

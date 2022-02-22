@@ -11,7 +11,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -61,6 +61,14 @@ var mappingUpdateTransferApplianceDetailsLifecycleStateEnum = map[string]UpdateT
 	"CANCELLED":               UpdateTransferApplianceDetailsLifecycleStateCancelled,
 }
 
+var mappingUpdateTransferApplianceDetailsLifecycleStateEnumLowerCase = map[string]UpdateTransferApplianceDetailsLifecycleStateEnum{
+	"preparing":               UpdateTransferApplianceDetailsLifecycleStatePreparing,
+	"finalized":               UpdateTransferApplianceDetailsLifecycleStateFinalized,
+	"deleted":                 UpdateTransferApplianceDetailsLifecycleStateDeleted,
+	"customer_never_received": UpdateTransferApplianceDetailsLifecycleStateCustomerNeverReceived,
+	"cancelled":               UpdateTransferApplianceDetailsLifecycleStateCancelled,
+}
+
 // GetUpdateTransferApplianceDetailsLifecycleStateEnumValues Enumerates the set of values for UpdateTransferApplianceDetailsLifecycleStateEnum
 func GetUpdateTransferApplianceDetailsLifecycleStateEnumValues() []UpdateTransferApplianceDetailsLifecycleStateEnum {
 	values := make([]UpdateTransferApplianceDetailsLifecycleStateEnum, 0)
@@ -83,11 +91,6 @@ func GetUpdateTransferApplianceDetailsLifecycleStateEnumStringValues() []string 
 
 // GetMappingUpdateTransferApplianceDetailsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateTransferApplianceDetailsLifecycleStateEnum(val string) (UpdateTransferApplianceDetailsLifecycleStateEnum, bool) {
-	mappingUpdateTransferApplianceDetailsLifecycleStateEnumIgnoreCase := make(map[string]UpdateTransferApplianceDetailsLifecycleStateEnum)
-	for k, v := range mappingUpdateTransferApplianceDetailsLifecycleStateEnum {
-		mappingUpdateTransferApplianceDetailsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateTransferApplianceDetailsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateTransferApplianceDetailsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

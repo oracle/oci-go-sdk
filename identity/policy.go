@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -111,6 +111,14 @@ var mappingPolicyLifecycleStateEnum = map[string]PolicyLifecycleStateEnum{
 	"DELETED":  PolicyLifecycleStateDeleted,
 }
 
+var mappingPolicyLifecycleStateEnumLowerCase = map[string]PolicyLifecycleStateEnum{
+	"creating": PolicyLifecycleStateCreating,
+	"active":   PolicyLifecycleStateActive,
+	"inactive": PolicyLifecycleStateInactive,
+	"deleting": PolicyLifecycleStateDeleting,
+	"deleted":  PolicyLifecycleStateDeleted,
+}
+
 // GetPolicyLifecycleStateEnumValues Enumerates the set of values for PolicyLifecycleStateEnum
 func GetPolicyLifecycleStateEnumValues() []PolicyLifecycleStateEnum {
 	values := make([]PolicyLifecycleStateEnum, 0)
@@ -133,11 +141,6 @@ func GetPolicyLifecycleStateEnumStringValues() []string {
 
 // GetMappingPolicyLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPolicyLifecycleStateEnum(val string) (PolicyLifecycleStateEnum, bool) {
-	mappingPolicyLifecycleStateEnumIgnoreCase := make(map[string]PolicyLifecycleStateEnum)
-	for k, v := range mappingPolicyLifecycleStateEnum {
-		mappingPolicyLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPolicyLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPolicyLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package usage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,11 @@ var mappingListProductsSortOrderEnum = map[string]ListProductsSortOrderEnum{
 	"DESC": ListProductsSortOrderDesc,
 }
 
+var mappingListProductsSortOrderEnumLowerCase = map[string]ListProductsSortOrderEnum{
+	"asc":  ListProductsSortOrderAsc,
+	"desc": ListProductsSortOrderDesc,
+}
+
 // GetListProductsSortOrderEnumValues Enumerates the set of values for ListProductsSortOrderEnum
 func GetListProductsSortOrderEnumValues() []ListProductsSortOrderEnum {
 	values := make([]ListProductsSortOrderEnum, 0)
@@ -157,12 +162,7 @@ func GetListProductsSortOrderEnumStringValues() []string {
 
 // GetMappingListProductsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProductsSortOrderEnum(val string) (ListProductsSortOrderEnum, bool) {
-	mappingListProductsSortOrderEnumIgnoreCase := make(map[string]ListProductsSortOrderEnum)
-	for k, v := range mappingListProductsSortOrderEnum {
-		mappingListProductsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProductsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProductsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -178,6 +178,11 @@ const (
 var mappingListProductsSortByEnum = map[string]ListProductsSortByEnum{
 	"TIMECREATED": ListProductsSortByTimecreated,
 	"TIMESTART":   ListProductsSortByTimestart,
+}
+
+var mappingListProductsSortByEnumLowerCase = map[string]ListProductsSortByEnum{
+	"timecreated": ListProductsSortByTimecreated,
+	"timestart":   ListProductsSortByTimestart,
 }
 
 // GetListProductsSortByEnumValues Enumerates the set of values for ListProductsSortByEnum
@@ -199,12 +204,7 @@ func GetListProductsSortByEnumStringValues() []string {
 
 // GetMappingListProductsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProductsSortByEnum(val string) (ListProductsSortByEnum, bool) {
-	mappingListProductsSortByEnumIgnoreCase := make(map[string]ListProductsSortByEnum)
-	for k, v := range mappingListProductsSortByEnum {
-		mappingListProductsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProductsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProductsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -222,6 +222,12 @@ var mappingListProductsProducttypeEnum = map[string]ListProductsProducttypeEnum{
 	"ALL":        ListProductsProducttypeAll,
 	"ELIGIBLE":   ListProductsProducttypeEligible,
 	"INELIGIBLE": ListProductsProducttypeIneligible,
+}
+
+var mappingListProductsProducttypeEnumLowerCase = map[string]ListProductsProducttypeEnum{
+	"all":        ListProductsProducttypeAll,
+	"eligible":   ListProductsProducttypeEligible,
+	"ineligible": ListProductsProducttypeIneligible,
 }
 
 // GetListProductsProducttypeEnumValues Enumerates the set of values for ListProductsProducttypeEnum
@@ -244,11 +250,6 @@ func GetListProductsProducttypeEnumStringValues() []string {
 
 // GetMappingListProductsProducttypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListProductsProducttypeEnum(val string) (ListProductsProducttypeEnum, bool) {
-	mappingListProductsProducttypeEnumIgnoreCase := make(map[string]ListProductsProducttypeEnum)
-	for k, v := range mappingListProductsProducttypeEnum {
-		mappingListProductsProducttypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListProductsProducttypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListProductsProducttypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -317,6 +317,13 @@ var mappingSqlJobSqlTypeEnum = map[string]SqlJobSqlTypeEnum{
 	"PLSQL": SqlJobSqlTypePlsql,
 }
 
+var mappingSqlJobSqlTypeEnumLowerCase = map[string]SqlJobSqlTypeEnum{
+	"query": SqlJobSqlTypeQuery,
+	"dml":   SqlJobSqlTypeDml,
+	"ddl":   SqlJobSqlTypeDdl,
+	"plsql": SqlJobSqlTypePlsql,
+}
+
 // GetSqlJobSqlTypeEnumValues Enumerates the set of values for SqlJobSqlTypeEnum
 func GetSqlJobSqlTypeEnumValues() []SqlJobSqlTypeEnum {
 	values := make([]SqlJobSqlTypeEnum, 0)
@@ -338,12 +345,7 @@ func GetSqlJobSqlTypeEnumStringValues() []string {
 
 // GetMappingSqlJobSqlTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSqlJobSqlTypeEnum(val string) (SqlJobSqlTypeEnum, bool) {
-	mappingSqlJobSqlTypeEnumIgnoreCase := make(map[string]SqlJobSqlTypeEnum)
-	for k, v := range mappingSqlJobSqlTypeEnum {
-		mappingSqlJobSqlTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSqlJobSqlTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSqlJobSqlTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -357,6 +359,10 @@ const (
 
 var mappingSqlJobOperationTypeEnum = map[string]SqlJobOperationTypeEnum{
 	"EXECUTE_SQL": SqlJobOperationTypeExecuteSql,
+}
+
+var mappingSqlJobOperationTypeEnumLowerCase = map[string]SqlJobOperationTypeEnum{
+	"execute_sql": SqlJobOperationTypeExecuteSql,
 }
 
 // GetSqlJobOperationTypeEnumValues Enumerates the set of values for SqlJobOperationTypeEnum
@@ -377,12 +383,7 @@ func GetSqlJobOperationTypeEnumStringValues() []string {
 
 // GetMappingSqlJobOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSqlJobOperationTypeEnum(val string) (SqlJobOperationTypeEnum, bool) {
-	mappingSqlJobOperationTypeEnumIgnoreCase := make(map[string]SqlJobOperationTypeEnum)
-	for k, v := range mappingSqlJobOperationTypeEnum {
-		mappingSqlJobOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSqlJobOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSqlJobOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -398,6 +399,11 @@ const (
 var mappingSqlJobRoleEnum = map[string]SqlJobRoleEnum{
 	"NORMAL": SqlJobRoleNormal,
 	"SYSDBA": SqlJobRoleSysdba,
+}
+
+var mappingSqlJobRoleEnumLowerCase = map[string]SqlJobRoleEnum{
+	"normal": SqlJobRoleNormal,
+	"sysdba": SqlJobRoleSysdba,
 }
 
 // GetSqlJobRoleEnumValues Enumerates the set of values for SqlJobRoleEnum
@@ -419,11 +425,6 @@ func GetSqlJobRoleEnumStringValues() []string {
 
 // GetMappingSqlJobRoleEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSqlJobRoleEnum(val string) (SqlJobRoleEnum, bool) {
-	mappingSqlJobRoleEnumIgnoreCase := make(map[string]SqlJobRoleEnum)
-	for k, v := range mappingSqlJobRoleEnum {
-		mappingSqlJobRoleEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSqlJobRoleEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSqlJobRoleEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

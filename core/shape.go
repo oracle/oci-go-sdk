@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -80,6 +80,31 @@ type Shape struct {
 	MaxVnicAttachmentOptions *ShapeMaxVnicAttachmentOptions `mandatory:"false" json:"maxVnicAttachmentOptions"`
 
 	PlatformConfigOptions *ShapePlatformConfigOptions `mandatory:"false" json:"platformConfigOptions"`
+
+	// Whether billing continues when the instances that use this shape are in the stopped state.
+	IsBilledForStoppedInstance *bool `mandatory:"false" json:"isBilledForStoppedInstance"`
+
+	// How instances that use this shape are charged.
+	BillingType ShapeBillingTypeEnum `mandatory:"false" json:"billingType,omitempty"`
+
+	// The list of of compartment quotas for the shape.
+	QuotaNames []string `mandatory:"false" json:"quotaNames"`
+
+	// Whether the shape supports creating subcore or burstable instances. A burstable instance (https://docs.cloud.oracle.com/iaas/Content/Compute/References/burstable-instances.htm)
+	// is a virtual machine (VM) instance that provides a baseline level of CPU performance with the ability to burst to a higher level to support occasional
+	// spikes in usage.
+	IsSubcore *bool `mandatory:"false" json:"isSubcore"`
+
+	// Whether the shape supports creating flexible instances. A flexible shape (https://docs.cloud.oracle.com/iaas/Content/Compute/References/computeshapes.htm#flexible)
+	// is a shape that lets you customize the number of OCPUs and the amount of memory when launching or resizing your instance.
+	IsFlexible *bool `mandatory:"false" json:"isFlexible"`
+
+	// The list of compatible shapes that this shape can be changed to. For more information,
+	// see Changing the Shape of an Instance (https://docs.cloud.oracle.com/iaas/Content/Compute/Tasks/resizinginstances.htm).
+	ResizeCompatibleShapes []string `mandatory:"false" json:"resizeCompatibleShapes"`
+
+	// The list of shapes and shape details (if applicable) that Oracle recommends that you use as an alternative to the current shape.
+	RecommendedAlternatives []ShapeAlternativeObject `mandatory:"false" json:"recommendedAlternatives"`
 }
 
 func (m Shape) String() string {
@@ -98,6 +123,9 @@ func (m Shape) ValidateEnumValue() (bool, error) {
 		}
 	}
 
+	if _, ok := GetMappingShapeBillingTypeEnum(string(m.BillingType)); !ok && m.BillingType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BillingType: %s. Supported values are: %s.", m.BillingType, strings.Join(GetShapeBillingTypeEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
@@ -120,6 +148,12 @@ var mappingShapeBaselineOcpuUtilizationsEnum = map[string]ShapeBaselineOcpuUtili
 	"BASELINE_1_1": ShapeBaselineOcpuUtilizations1,
 }
 
+var mappingShapeBaselineOcpuUtilizationsEnumLowerCase = map[string]ShapeBaselineOcpuUtilizationsEnum{
+	"baseline_1_8": ShapeBaselineOcpuUtilizations8,
+	"baseline_1_2": ShapeBaselineOcpuUtilizations2,
+	"baseline_1_1": ShapeBaselineOcpuUtilizations1,
+}
+
 // GetShapeBaselineOcpuUtilizationsEnumValues Enumerates the set of values for ShapeBaselineOcpuUtilizationsEnum
 func GetShapeBaselineOcpuUtilizationsEnumValues() []ShapeBaselineOcpuUtilizationsEnum {
 	values := make([]ShapeBaselineOcpuUtilizationsEnum, 0)
@@ -140,11 +174,52 @@ func GetShapeBaselineOcpuUtilizationsEnumStringValues() []string {
 
 // GetMappingShapeBaselineOcpuUtilizationsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingShapeBaselineOcpuUtilizationsEnum(val string) (ShapeBaselineOcpuUtilizationsEnum, bool) {
-	mappingShapeBaselineOcpuUtilizationsEnumIgnoreCase := make(map[string]ShapeBaselineOcpuUtilizationsEnum)
-	for k, v := range mappingShapeBaselineOcpuUtilizationsEnum {
-		mappingShapeBaselineOcpuUtilizationsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
+	enum, ok := mappingShapeBaselineOcpuUtilizationsEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
+}
 
-	enum, ok := mappingShapeBaselineOcpuUtilizationsEnumIgnoreCase[strings.ToLower(val)]
+// ShapeBillingTypeEnum Enum with underlying type: string
+type ShapeBillingTypeEnum string
+
+// Set of constants representing the allowable values for ShapeBillingTypeEnum
+const (
+	ShapeBillingTypeAlwaysFree  ShapeBillingTypeEnum = "ALWAYS_FREE"
+	ShapeBillingTypeLimitedFree ShapeBillingTypeEnum = "LIMITED_FREE"
+	ShapeBillingTypePaid        ShapeBillingTypeEnum = "PAID"
+)
+
+var mappingShapeBillingTypeEnum = map[string]ShapeBillingTypeEnum{
+	"ALWAYS_FREE":  ShapeBillingTypeAlwaysFree,
+	"LIMITED_FREE": ShapeBillingTypeLimitedFree,
+	"PAID":         ShapeBillingTypePaid,
+}
+
+var mappingShapeBillingTypeEnumLowerCase = map[string]ShapeBillingTypeEnum{
+	"always_free":  ShapeBillingTypeAlwaysFree,
+	"limited_free": ShapeBillingTypeLimitedFree,
+	"paid":         ShapeBillingTypePaid,
+}
+
+// GetShapeBillingTypeEnumValues Enumerates the set of values for ShapeBillingTypeEnum
+func GetShapeBillingTypeEnumValues() []ShapeBillingTypeEnum {
+	values := make([]ShapeBillingTypeEnum, 0)
+	for _, v := range mappingShapeBillingTypeEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetShapeBillingTypeEnumStringValues Enumerates the set of values in String for ShapeBillingTypeEnum
+func GetShapeBillingTypeEnumStringValues() []string {
+	return []string{
+		"ALWAYS_FREE",
+		"LIMITED_FREE",
+		"PAID",
+	}
+}
+
+// GetMappingShapeBillingTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingShapeBillingTypeEnum(val string) (ShapeBillingTypeEnum, bool) {
+	enum, ok := mappingShapeBillingTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

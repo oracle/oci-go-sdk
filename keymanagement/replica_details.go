@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -59,6 +59,11 @@ var mappingReplicaDetailsStatusEnum = map[string]ReplicaDetailsStatusEnum{
 	"REPLICATED":  ReplicaDetailsStatusReplicated,
 }
 
+var mappingReplicaDetailsStatusEnumLowerCase = map[string]ReplicaDetailsStatusEnum{
+	"replicating": ReplicaDetailsStatusReplicating,
+	"replicated":  ReplicaDetailsStatusReplicated,
+}
+
 // GetReplicaDetailsStatusEnumValues Enumerates the set of values for ReplicaDetailsStatusEnum
 func GetReplicaDetailsStatusEnumValues() []ReplicaDetailsStatusEnum {
 	values := make([]ReplicaDetailsStatusEnum, 0)
@@ -78,11 +83,6 @@ func GetReplicaDetailsStatusEnumStringValues() []string {
 
 // GetMappingReplicaDetailsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingReplicaDetailsStatusEnum(val string) (ReplicaDetailsStatusEnum, bool) {
-	mappingReplicaDetailsStatusEnumIgnoreCase := make(map[string]ReplicaDetailsStatusEnum)
-	for k, v := range mappingReplicaDetailsStatusEnum {
-		mappingReplicaDetailsStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingReplicaDetailsStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingReplicaDetailsStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

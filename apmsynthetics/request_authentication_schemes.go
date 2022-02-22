@@ -31,6 +31,13 @@ var mappingRequestAuthenticationSchemesEnum = map[string]RequestAuthenticationSc
 	"BEARER": RequestAuthenticationSchemesBearer,
 }
 
+var mappingRequestAuthenticationSchemesEnumLowerCase = map[string]RequestAuthenticationSchemesEnum{
+	"oauth":  RequestAuthenticationSchemesOauth,
+	"none":   RequestAuthenticationSchemesNone,
+	"basic":  RequestAuthenticationSchemesBasic,
+	"bearer": RequestAuthenticationSchemesBearer,
+}
+
 // GetRequestAuthenticationSchemesEnumValues Enumerates the set of values for RequestAuthenticationSchemesEnum
 func GetRequestAuthenticationSchemesEnumValues() []RequestAuthenticationSchemesEnum {
 	values := make([]RequestAuthenticationSchemesEnum, 0)
@@ -52,11 +59,6 @@ func GetRequestAuthenticationSchemesEnumStringValues() []string {
 
 // GetMappingRequestAuthenticationSchemesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRequestAuthenticationSchemesEnum(val string) (RequestAuthenticationSchemesEnum, bool) {
-	mappingRequestAuthenticationSchemesEnumIgnoreCase := make(map[string]RequestAuthenticationSchemesEnum)
-	for k, v := range mappingRequestAuthenticationSchemesEnum {
-		mappingRequestAuthenticationSchemesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRequestAuthenticationSchemesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRequestAuthenticationSchemesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

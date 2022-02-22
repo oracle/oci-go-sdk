@@ -11,7 +11,7 @@ package loggingsearch
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,13 @@ var mappingFieldInfoFieldTypeEnum = map[string]FieldInfoFieldTypeEnum{
 	"ARRAY":   FieldInfoFieldTypeArray,
 }
 
+var mappingFieldInfoFieldTypeEnumLowerCase = map[string]FieldInfoFieldTypeEnum{
+	"string":  FieldInfoFieldTypeString,
+	"number":  FieldInfoFieldTypeNumber,
+	"boolean": FieldInfoFieldTypeBoolean,
+	"array":   FieldInfoFieldTypeArray,
+}
+
 // GetFieldInfoFieldTypeEnumValues Enumerates the set of values for FieldInfoFieldTypeEnum
 func GetFieldInfoFieldTypeEnumValues() []FieldInfoFieldTypeEnum {
 	values := make([]FieldInfoFieldTypeEnum, 0)
@@ -87,11 +94,6 @@ func GetFieldInfoFieldTypeEnumStringValues() []string {
 
 // GetMappingFieldInfoFieldTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFieldInfoFieldTypeEnum(val string) (FieldInfoFieldTypeEnum, bool) {
-	mappingFieldInfoFieldTypeEnumIgnoreCase := make(map[string]FieldInfoFieldTypeEnum)
-	for k, v := range mappingFieldInfoFieldTypeEnum {
-		mappingFieldInfoFieldTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFieldInfoFieldTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFieldInfoFieldTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package datasafe
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -109,6 +109,12 @@ var mappingPatchInstructionOperationEnum = map[string]PatchInstructionOperationE
 	"MERGE":  PatchInstructionOperationMerge,
 }
 
+var mappingPatchInstructionOperationEnumLowerCase = map[string]PatchInstructionOperationEnum{
+	"insert": PatchInstructionOperationInsert,
+	"remove": PatchInstructionOperationRemove,
+	"merge":  PatchInstructionOperationMerge,
+}
+
 // GetPatchInstructionOperationEnumValues Enumerates the set of values for PatchInstructionOperationEnum
 func GetPatchInstructionOperationEnumValues() []PatchInstructionOperationEnum {
 	values := make([]PatchInstructionOperationEnum, 0)
@@ -129,11 +135,6 @@ func GetPatchInstructionOperationEnumStringValues() []string {
 
 // GetMappingPatchInstructionOperationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPatchInstructionOperationEnum(val string) (PatchInstructionOperationEnum, bool) {
-	mappingPatchInstructionOperationEnumIgnoreCase := make(map[string]PatchInstructionOperationEnum)
-	for k, v := range mappingPatchInstructionOperationEnum {
-		mappingPatchInstructionOperationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPatchInstructionOperationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPatchInstructionOperationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

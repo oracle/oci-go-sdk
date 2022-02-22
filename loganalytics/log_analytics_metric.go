@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -128,6 +128,15 @@ var mappingLogAnalyticsMetricMetricTypeEnum = map[string]LogAnalyticsMetricMetri
 	"AVERAGE_DISTRIBUTION": LogAnalyticsMetricMetricTypeAverageDistribution,
 }
 
+var mappingLogAnalyticsMetricMetricTypeEnumLowerCase = map[string]LogAnalyticsMetricMetricTypeEnum{
+	"count":                LogAnalyticsMetricMetricTypeCount,
+	"sum":                  LogAnalyticsMetricMetricTypeSum,
+	"average":              LogAnalyticsMetricMetricTypeAverage,
+	"count_distribution":   LogAnalyticsMetricMetricTypeCountDistribution,
+	"sum_distribution":     LogAnalyticsMetricMetricTypeSumDistribution,
+	"average_distribution": LogAnalyticsMetricMetricTypeAverageDistribution,
+}
+
 // GetLogAnalyticsMetricMetricTypeEnumValues Enumerates the set of values for LogAnalyticsMetricMetricTypeEnum
 func GetLogAnalyticsMetricMetricTypeEnumValues() []LogAnalyticsMetricMetricTypeEnum {
 	values := make([]LogAnalyticsMetricMetricTypeEnum, 0)
@@ -151,12 +160,7 @@ func GetLogAnalyticsMetricMetricTypeEnumStringValues() []string {
 
 // GetMappingLogAnalyticsMetricMetricTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogAnalyticsMetricMetricTypeEnum(val string) (LogAnalyticsMetricMetricTypeEnum, bool) {
-	mappingLogAnalyticsMetricMetricTypeEnumIgnoreCase := make(map[string]LogAnalyticsMetricMetricTypeEnum)
-	for k, v := range mappingLogAnalyticsMetricMetricTypeEnum {
-		mappingLogAnalyticsMetricMetricTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogAnalyticsMetricMetricTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogAnalyticsMetricMetricTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -176,6 +180,13 @@ var mappingLogAnalyticsMetricOperatorEnum = map[string]LogAnalyticsMetricOperato
 	"IN_IGNORE_CASE":       LogAnalyticsMetricOperatorInIgnoreCase,
 	"EQUAL_IGNORE_CASE":    LogAnalyticsMetricOperatorEqualIgnoreCase,
 	"NOT_NULL":             LogAnalyticsMetricOperatorNotNull,
+}
+
+var mappingLogAnalyticsMetricOperatorEnumLowerCase = map[string]LogAnalyticsMetricOperatorEnum{
+	"contains_ignore_case": LogAnalyticsMetricOperatorContainsIgnoreCase,
+	"in_ignore_case":       LogAnalyticsMetricOperatorInIgnoreCase,
+	"equal_ignore_case":    LogAnalyticsMetricOperatorEqualIgnoreCase,
+	"not_null":             LogAnalyticsMetricOperatorNotNull,
 }
 
 // GetLogAnalyticsMetricOperatorEnumValues Enumerates the set of values for LogAnalyticsMetricOperatorEnum
@@ -199,11 +210,6 @@ func GetLogAnalyticsMetricOperatorEnumStringValues() []string {
 
 // GetMappingLogAnalyticsMetricOperatorEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLogAnalyticsMetricOperatorEnum(val string) (LogAnalyticsMetricOperatorEnum, bool) {
-	mappingLogAnalyticsMetricOperatorEnumIgnoreCase := make(map[string]LogAnalyticsMetricOperatorEnum)
-	for k, v := range mappingLogAnalyticsMetricOperatorEnum {
-		mappingLogAnalyticsMetricOperatorEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLogAnalyticsMetricOperatorEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLogAnalyticsMetricOperatorEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

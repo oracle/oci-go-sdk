@@ -11,7 +11,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,12 @@ var mappingRepositoryObjectTypeEnum = map[string]RepositoryObjectTypeEnum{
 	"COMMIT": RepositoryObjectTypeCommit,
 }
 
+var mappingRepositoryObjectTypeEnumLowerCase = map[string]RepositoryObjectTypeEnum{
+	"blob":   RepositoryObjectTypeBlob,
+	"tree":   RepositoryObjectTypeTree,
+	"commit": RepositoryObjectTypeCommit,
+}
+
 // GetRepositoryObjectTypeEnumValues Enumerates the set of values for RepositoryObjectTypeEnum
 func GetRepositoryObjectTypeEnumValues() []RepositoryObjectTypeEnum {
 	values := make([]RepositoryObjectTypeEnum, 0)
@@ -86,11 +92,6 @@ func GetRepositoryObjectTypeEnumStringValues() []string {
 
 // GetMappingRepositoryObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRepositoryObjectTypeEnum(val string) (RepositoryObjectTypeEnum, bool) {
-	mappingRepositoryObjectTypeEnumIgnoreCase := make(map[string]RepositoryObjectTypeEnum)
-	for k, v := range mappingRepositoryObjectTypeEnum {
-		mappingRepositoryObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRepositoryObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRepositoryObjectTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

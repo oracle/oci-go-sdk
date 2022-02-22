@@ -37,6 +37,16 @@ var mappingMaskingLifecycleStateEnum = map[string]MaskingLifecycleStateEnum{
 	"FAILED":          MaskingLifecycleStateFailed,
 }
 
+var mappingMaskingLifecycleStateEnumLowerCase = map[string]MaskingLifecycleStateEnum{
+	"creating":        MaskingLifecycleStateCreating,
+	"active":          MaskingLifecycleStateActive,
+	"updating":        MaskingLifecycleStateUpdating,
+	"deleting":        MaskingLifecycleStateDeleting,
+	"deleted":         MaskingLifecycleStateDeleted,
+	"needs_attention": MaskingLifecycleStateNeedsAttention,
+	"failed":          MaskingLifecycleStateFailed,
+}
+
 // GetMaskingLifecycleStateEnumValues Enumerates the set of values for MaskingLifecycleStateEnum
 func GetMaskingLifecycleStateEnumValues() []MaskingLifecycleStateEnum {
 	values := make([]MaskingLifecycleStateEnum, 0)
@@ -61,11 +71,6 @@ func GetMaskingLifecycleStateEnumStringValues() []string {
 
 // GetMappingMaskingLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMaskingLifecycleStateEnum(val string) (MaskingLifecycleStateEnum, bool) {
-	mappingMaskingLifecycleStateEnumIgnoreCase := make(map[string]MaskingLifecycleStateEnum)
-	for k, v := range mappingMaskingLifecycleStateEnum {
-		mappingMaskingLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMaskingLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMaskingLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

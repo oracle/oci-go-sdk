@@ -6,7 +6,7 @@ package monitoring
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -146,6 +146,11 @@ var mappingListAlarmsStatusSortByEnum = map[string]ListAlarmsStatusSortByEnum{
 	"severity":    ListAlarmsStatusSortBySeverity,
 }
 
+var mappingListAlarmsStatusSortByEnumLowerCase = map[string]ListAlarmsStatusSortByEnum{
+	"displayname": ListAlarmsStatusSortByDisplayname,
+	"severity":    ListAlarmsStatusSortBySeverity,
+}
+
 // GetListAlarmsStatusSortByEnumValues Enumerates the set of values for ListAlarmsStatusSortByEnum
 func GetListAlarmsStatusSortByEnumValues() []ListAlarmsStatusSortByEnum {
 	values := make([]ListAlarmsStatusSortByEnum, 0)
@@ -165,12 +170,7 @@ func GetListAlarmsStatusSortByEnumStringValues() []string {
 
 // GetMappingListAlarmsStatusSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAlarmsStatusSortByEnum(val string) (ListAlarmsStatusSortByEnum, bool) {
-	mappingListAlarmsStatusSortByEnumIgnoreCase := make(map[string]ListAlarmsStatusSortByEnum)
-	for k, v := range mappingListAlarmsStatusSortByEnum {
-		mappingListAlarmsStatusSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAlarmsStatusSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAlarmsStatusSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -186,6 +186,11 @@ const (
 var mappingListAlarmsStatusSortOrderEnum = map[string]ListAlarmsStatusSortOrderEnum{
 	"ASC":  ListAlarmsStatusSortOrderAsc,
 	"DESC": ListAlarmsStatusSortOrderDesc,
+}
+
+var mappingListAlarmsStatusSortOrderEnumLowerCase = map[string]ListAlarmsStatusSortOrderEnum{
+	"asc":  ListAlarmsStatusSortOrderAsc,
+	"desc": ListAlarmsStatusSortOrderDesc,
 }
 
 // GetListAlarmsStatusSortOrderEnumValues Enumerates the set of values for ListAlarmsStatusSortOrderEnum
@@ -207,11 +212,6 @@ func GetListAlarmsStatusSortOrderEnumStringValues() []string {
 
 // GetMappingListAlarmsStatusSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAlarmsStatusSortOrderEnum(val string) (ListAlarmsStatusSortOrderEnum, bool) {
-	mappingListAlarmsStatusSortOrderEnumIgnoreCase := make(map[string]ListAlarmsStatusSortOrderEnum)
-	for k, v := range mappingListAlarmsStatusSortOrderEnum {
-		mappingListAlarmsStatusSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAlarmsStatusSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAlarmsStatusSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

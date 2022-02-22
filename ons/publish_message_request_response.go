@@ -6,7 +6,7 @@ package ons
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -118,6 +118,11 @@ var mappingPublishMessageMessageTypeEnum = map[string]PublishMessageMessageTypeE
 	"RAW_TEXT": PublishMessageMessageTypeRawText,
 }
 
+var mappingPublishMessageMessageTypeEnumLowerCase = map[string]PublishMessageMessageTypeEnum{
+	"json":     PublishMessageMessageTypeJson,
+	"raw_text": PublishMessageMessageTypeRawText,
+}
+
 // GetPublishMessageMessageTypeEnumValues Enumerates the set of values for PublishMessageMessageTypeEnum
 func GetPublishMessageMessageTypeEnumValues() []PublishMessageMessageTypeEnum {
 	values := make([]PublishMessageMessageTypeEnum, 0)
@@ -137,11 +142,6 @@ func GetPublishMessageMessageTypeEnumStringValues() []string {
 
 // GetMappingPublishMessageMessageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPublishMessageMessageTypeEnum(val string) (PublishMessageMessageTypeEnum, bool) {
-	mappingPublishMessageMessageTypeEnumIgnoreCase := make(map[string]PublishMessageMessageTypeEnum)
-	for k, v := range mappingPublishMessageMessageTypeEnum {
-		mappingPublishMessageMessageTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPublishMessageMessageTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPublishMessageMessageTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -67,6 +67,11 @@ var mappingViolationRuleTypeEnum = map[string]ViolationRuleTypeEnum{
 	"ERROR": ViolationRuleTypeError,
 }
 
+var mappingViolationRuleTypeEnumLowerCase = map[string]ViolationRuleTypeEnum{
+	"warn":  ViolationRuleTypeWarn,
+	"error": ViolationRuleTypeError,
+}
+
 // GetViolationRuleTypeEnumValues Enumerates the set of values for ViolationRuleTypeEnum
 func GetViolationRuleTypeEnumValues() []ViolationRuleTypeEnum {
 	values := make([]ViolationRuleTypeEnum, 0)
@@ -86,11 +91,6 @@ func GetViolationRuleTypeEnumStringValues() []string {
 
 // GetMappingViolationRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingViolationRuleTypeEnum(val string) (ViolationRuleTypeEnum, bool) {
-	mappingViolationRuleTypeEnumIgnoreCase := make(map[string]ViolationRuleTypeEnum)
-	for k, v := range mappingViolationRuleTypeEnum {
-		mappingViolationRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingViolationRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingViolationRuleTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

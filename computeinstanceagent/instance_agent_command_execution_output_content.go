@@ -13,7 +13,7 @@ package computeinstanceagent
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -120,6 +120,12 @@ var mappingInstanceAgentCommandExecutionOutputContentOutputTypeEnum = map[string
 	"OBJECT_STORAGE_TUPLE": InstanceAgentCommandExecutionOutputContentOutputTypeObjectStorageTuple,
 }
 
+var mappingInstanceAgentCommandExecutionOutputContentOutputTypeEnumLowerCase = map[string]InstanceAgentCommandExecutionOutputContentOutputTypeEnum{
+	"text":                 InstanceAgentCommandExecutionOutputContentOutputTypeText,
+	"object_storage_uri":   InstanceAgentCommandExecutionOutputContentOutputTypeObjectStorageUri,
+	"object_storage_tuple": InstanceAgentCommandExecutionOutputContentOutputTypeObjectStorageTuple,
+}
+
 // GetInstanceAgentCommandExecutionOutputContentOutputTypeEnumValues Enumerates the set of values for InstanceAgentCommandExecutionOutputContentOutputTypeEnum
 func GetInstanceAgentCommandExecutionOutputContentOutputTypeEnumValues() []InstanceAgentCommandExecutionOutputContentOutputTypeEnum {
 	values := make([]InstanceAgentCommandExecutionOutputContentOutputTypeEnum, 0)
@@ -140,11 +146,6 @@ func GetInstanceAgentCommandExecutionOutputContentOutputTypeEnumStringValues() [
 
 // GetMappingInstanceAgentCommandExecutionOutputContentOutputTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceAgentCommandExecutionOutputContentOutputTypeEnum(val string) (InstanceAgentCommandExecutionOutputContentOutputTypeEnum, bool) {
-	mappingInstanceAgentCommandExecutionOutputContentOutputTypeEnumIgnoreCase := make(map[string]InstanceAgentCommandExecutionOutputContentOutputTypeEnum)
-	for k, v := range mappingInstanceAgentCommandExecutionOutputContentOutputTypeEnum {
-		mappingInstanceAgentCommandExecutionOutputContentOutputTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceAgentCommandExecutionOutputContentOutputTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceAgentCommandExecutionOutputContentOutputTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

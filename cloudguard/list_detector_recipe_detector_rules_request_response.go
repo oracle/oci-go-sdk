@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -148,6 +148,16 @@ var mappingListDetectorRecipeDetectorRulesLifecycleStateEnum = map[string]ListDe
 	"FAILED":   ListDetectorRecipeDetectorRulesLifecycleStateFailed,
 }
 
+var mappingListDetectorRecipeDetectorRulesLifecycleStateEnumLowerCase = map[string]ListDetectorRecipeDetectorRulesLifecycleStateEnum{
+	"creating": ListDetectorRecipeDetectorRulesLifecycleStateCreating,
+	"updating": ListDetectorRecipeDetectorRulesLifecycleStateUpdating,
+	"active":   ListDetectorRecipeDetectorRulesLifecycleStateActive,
+	"inactive": ListDetectorRecipeDetectorRulesLifecycleStateInactive,
+	"deleting": ListDetectorRecipeDetectorRulesLifecycleStateDeleting,
+	"deleted":  ListDetectorRecipeDetectorRulesLifecycleStateDeleted,
+	"failed":   ListDetectorRecipeDetectorRulesLifecycleStateFailed,
+}
+
 // GetListDetectorRecipeDetectorRulesLifecycleStateEnumValues Enumerates the set of values for ListDetectorRecipeDetectorRulesLifecycleStateEnum
 func GetListDetectorRecipeDetectorRulesLifecycleStateEnumValues() []ListDetectorRecipeDetectorRulesLifecycleStateEnum {
 	values := make([]ListDetectorRecipeDetectorRulesLifecycleStateEnum, 0)
@@ -172,12 +182,7 @@ func GetListDetectorRecipeDetectorRulesLifecycleStateEnumStringValues() []string
 
 // GetMappingListDetectorRecipeDetectorRulesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDetectorRecipeDetectorRulesLifecycleStateEnum(val string) (ListDetectorRecipeDetectorRulesLifecycleStateEnum, bool) {
-	mappingListDetectorRecipeDetectorRulesLifecycleStateEnumIgnoreCase := make(map[string]ListDetectorRecipeDetectorRulesLifecycleStateEnum)
-	for k, v := range mappingListDetectorRecipeDetectorRulesLifecycleStateEnum {
-		mappingListDetectorRecipeDetectorRulesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDetectorRecipeDetectorRulesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDetectorRecipeDetectorRulesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -193,6 +198,11 @@ const (
 var mappingListDetectorRecipeDetectorRulesSortOrderEnum = map[string]ListDetectorRecipeDetectorRulesSortOrderEnum{
 	"ASC":  ListDetectorRecipeDetectorRulesSortOrderAsc,
 	"DESC": ListDetectorRecipeDetectorRulesSortOrderDesc,
+}
+
+var mappingListDetectorRecipeDetectorRulesSortOrderEnumLowerCase = map[string]ListDetectorRecipeDetectorRulesSortOrderEnum{
+	"asc":  ListDetectorRecipeDetectorRulesSortOrderAsc,
+	"desc": ListDetectorRecipeDetectorRulesSortOrderDesc,
 }
 
 // GetListDetectorRecipeDetectorRulesSortOrderEnumValues Enumerates the set of values for ListDetectorRecipeDetectorRulesSortOrderEnum
@@ -214,12 +224,7 @@ func GetListDetectorRecipeDetectorRulesSortOrderEnumStringValues() []string {
 
 // GetMappingListDetectorRecipeDetectorRulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDetectorRecipeDetectorRulesSortOrderEnum(val string) (ListDetectorRecipeDetectorRulesSortOrderEnum, bool) {
-	mappingListDetectorRecipeDetectorRulesSortOrderEnumIgnoreCase := make(map[string]ListDetectorRecipeDetectorRulesSortOrderEnum)
-	for k, v := range mappingListDetectorRecipeDetectorRulesSortOrderEnum {
-		mappingListDetectorRecipeDetectorRulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDetectorRecipeDetectorRulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDetectorRecipeDetectorRulesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -235,6 +240,11 @@ const (
 var mappingListDetectorRecipeDetectorRulesSortByEnum = map[string]ListDetectorRecipeDetectorRulesSortByEnum{
 	"displayName": ListDetectorRecipeDetectorRulesSortByDisplayname,
 	"riskLevel":   ListDetectorRecipeDetectorRulesSortByRisklevel,
+}
+
+var mappingListDetectorRecipeDetectorRulesSortByEnumLowerCase = map[string]ListDetectorRecipeDetectorRulesSortByEnum{
+	"displayname": ListDetectorRecipeDetectorRulesSortByDisplayname,
+	"risklevel":   ListDetectorRecipeDetectorRulesSortByRisklevel,
 }
 
 // GetListDetectorRecipeDetectorRulesSortByEnumValues Enumerates the set of values for ListDetectorRecipeDetectorRulesSortByEnum
@@ -256,11 +266,6 @@ func GetListDetectorRecipeDetectorRulesSortByEnumStringValues() []string {
 
 // GetMappingListDetectorRecipeDetectorRulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDetectorRecipeDetectorRulesSortByEnum(val string) (ListDetectorRecipeDetectorRulesSortByEnum, bool) {
-	mappingListDetectorRecipeDetectorRulesSortByEnumIgnoreCase := make(map[string]ListDetectorRecipeDetectorRulesSortByEnum)
-	for k, v := range mappingListDetectorRecipeDetectorRulesSortByEnum {
-		mappingListDetectorRecipeDetectorRulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDetectorRecipeDetectorRulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDetectorRecipeDetectorRulesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

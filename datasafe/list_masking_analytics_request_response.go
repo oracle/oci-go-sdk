@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -132,6 +132,11 @@ var mappingListMaskingAnalyticsGroupByEnum = map[string]ListMaskingAnalyticsGrou
 	"policyId": ListMaskingAnalyticsGroupByPolicyid,
 }
 
+var mappingListMaskingAnalyticsGroupByEnumLowerCase = map[string]ListMaskingAnalyticsGroupByEnum{
+	"targetid": ListMaskingAnalyticsGroupByTargetid,
+	"policyid": ListMaskingAnalyticsGroupByPolicyid,
+}
+
 // GetListMaskingAnalyticsGroupByEnumValues Enumerates the set of values for ListMaskingAnalyticsGroupByEnum
 func GetListMaskingAnalyticsGroupByEnumValues() []ListMaskingAnalyticsGroupByEnum {
 	values := make([]ListMaskingAnalyticsGroupByEnum, 0)
@@ -151,11 +156,6 @@ func GetListMaskingAnalyticsGroupByEnumStringValues() []string {
 
 // GetMappingListMaskingAnalyticsGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMaskingAnalyticsGroupByEnum(val string) (ListMaskingAnalyticsGroupByEnum, bool) {
-	mappingListMaskingAnalyticsGroupByEnumIgnoreCase := make(map[string]ListMaskingAnalyticsGroupByEnum)
-	for k, v := range mappingListMaskingAnalyticsGroupByEnum {
-		mappingListMaskingAnalyticsGroupByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMaskingAnalyticsGroupByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMaskingAnalyticsGroupByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

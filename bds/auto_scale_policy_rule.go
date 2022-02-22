@@ -11,7 +11,7 @@ package bds
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -57,6 +57,11 @@ var mappingAutoScalePolicyRuleActionEnum = map[string]AutoScalePolicyRuleActionE
 	"CHANGE_SHAPE_SCALE_DOWN": AutoScalePolicyRuleActionDown,
 }
 
+var mappingAutoScalePolicyRuleActionEnumLowerCase = map[string]AutoScalePolicyRuleActionEnum{
+	"change_shape_scale_up":   AutoScalePolicyRuleActionUp,
+	"change_shape_scale_down": AutoScalePolicyRuleActionDown,
+}
+
 // GetAutoScalePolicyRuleActionEnumValues Enumerates the set of values for AutoScalePolicyRuleActionEnum
 func GetAutoScalePolicyRuleActionEnumValues() []AutoScalePolicyRuleActionEnum {
 	values := make([]AutoScalePolicyRuleActionEnum, 0)
@@ -76,11 +81,6 @@ func GetAutoScalePolicyRuleActionEnumStringValues() []string {
 
 // GetMappingAutoScalePolicyRuleActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAutoScalePolicyRuleActionEnum(val string) (AutoScalePolicyRuleActionEnum, bool) {
-	mappingAutoScalePolicyRuleActionEnumIgnoreCase := make(map[string]AutoScalePolicyRuleActionEnum)
-	for k, v := range mappingAutoScalePolicyRuleActionEnum {
-		mappingAutoScalePolicyRuleActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAutoScalePolicyRuleActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAutoScalePolicyRuleActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

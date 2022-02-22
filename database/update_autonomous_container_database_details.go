@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -75,6 +75,11 @@ var mappingUpdateAutonomousContainerDatabaseDetailsPatchModelEnum = map[string]U
 	"RELEASE_UPDATE_REVISIONS": UpdateAutonomousContainerDatabaseDetailsPatchModelUpdateRevisions,
 }
 
+var mappingUpdateAutonomousContainerDatabaseDetailsPatchModelEnumLowerCase = map[string]UpdateAutonomousContainerDatabaseDetailsPatchModelEnum{
+	"release_updates":          UpdateAutonomousContainerDatabaseDetailsPatchModelUpdates,
+	"release_update_revisions": UpdateAutonomousContainerDatabaseDetailsPatchModelUpdateRevisions,
+}
+
 // GetUpdateAutonomousContainerDatabaseDetailsPatchModelEnumValues Enumerates the set of values for UpdateAutonomousContainerDatabaseDetailsPatchModelEnum
 func GetUpdateAutonomousContainerDatabaseDetailsPatchModelEnumValues() []UpdateAutonomousContainerDatabaseDetailsPatchModelEnum {
 	values := make([]UpdateAutonomousContainerDatabaseDetailsPatchModelEnum, 0)
@@ -94,11 +99,6 @@ func GetUpdateAutonomousContainerDatabaseDetailsPatchModelEnumStringValues() []s
 
 // GetMappingUpdateAutonomousContainerDatabaseDetailsPatchModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateAutonomousContainerDatabaseDetailsPatchModelEnum(val string) (UpdateAutonomousContainerDatabaseDetailsPatchModelEnum, bool) {
-	mappingUpdateAutonomousContainerDatabaseDetailsPatchModelEnumIgnoreCase := make(map[string]UpdateAutonomousContainerDatabaseDetailsPatchModelEnum)
-	for k, v := range mappingUpdateAutonomousContainerDatabaseDetailsPatchModelEnum {
-		mappingUpdateAutonomousContainerDatabaseDetailsPatchModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateAutonomousContainerDatabaseDetailsPatchModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateAutonomousContainerDatabaseDetailsPatchModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

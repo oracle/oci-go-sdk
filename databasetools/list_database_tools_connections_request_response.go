@@ -6,7 +6,7 @@ package databasetools
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -152,6 +152,15 @@ var mappingListDatabaseToolsConnectionsLifecycleStateEnum = map[string]ListDatab
 	"FAILED":   ListDatabaseToolsConnectionsLifecycleStateFailed,
 }
 
+var mappingListDatabaseToolsConnectionsLifecycleStateEnumLowerCase = map[string]ListDatabaseToolsConnectionsLifecycleStateEnum{
+	"creating": ListDatabaseToolsConnectionsLifecycleStateCreating,
+	"updating": ListDatabaseToolsConnectionsLifecycleStateUpdating,
+	"active":   ListDatabaseToolsConnectionsLifecycleStateActive,
+	"deleting": ListDatabaseToolsConnectionsLifecycleStateDeleting,
+	"deleted":  ListDatabaseToolsConnectionsLifecycleStateDeleted,
+	"failed":   ListDatabaseToolsConnectionsLifecycleStateFailed,
+}
+
 // GetListDatabaseToolsConnectionsLifecycleStateEnumValues Enumerates the set of values for ListDatabaseToolsConnectionsLifecycleStateEnum
 func GetListDatabaseToolsConnectionsLifecycleStateEnumValues() []ListDatabaseToolsConnectionsLifecycleStateEnum {
 	values := make([]ListDatabaseToolsConnectionsLifecycleStateEnum, 0)
@@ -175,12 +184,7 @@ func GetListDatabaseToolsConnectionsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListDatabaseToolsConnectionsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseToolsConnectionsLifecycleStateEnum(val string) (ListDatabaseToolsConnectionsLifecycleStateEnum, bool) {
-	mappingListDatabaseToolsConnectionsLifecycleStateEnumIgnoreCase := make(map[string]ListDatabaseToolsConnectionsLifecycleStateEnum)
-	for k, v := range mappingListDatabaseToolsConnectionsLifecycleStateEnum {
-		mappingListDatabaseToolsConnectionsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseToolsConnectionsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseToolsConnectionsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -196,6 +200,11 @@ const (
 var mappingListDatabaseToolsConnectionsSortOrderEnum = map[string]ListDatabaseToolsConnectionsSortOrderEnum{
 	"ASC":  ListDatabaseToolsConnectionsSortOrderAsc,
 	"DESC": ListDatabaseToolsConnectionsSortOrderDesc,
+}
+
+var mappingListDatabaseToolsConnectionsSortOrderEnumLowerCase = map[string]ListDatabaseToolsConnectionsSortOrderEnum{
+	"asc":  ListDatabaseToolsConnectionsSortOrderAsc,
+	"desc": ListDatabaseToolsConnectionsSortOrderDesc,
 }
 
 // GetListDatabaseToolsConnectionsSortOrderEnumValues Enumerates the set of values for ListDatabaseToolsConnectionsSortOrderEnum
@@ -217,12 +226,7 @@ func GetListDatabaseToolsConnectionsSortOrderEnumStringValues() []string {
 
 // GetMappingListDatabaseToolsConnectionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseToolsConnectionsSortOrderEnum(val string) (ListDatabaseToolsConnectionsSortOrderEnum, bool) {
-	mappingListDatabaseToolsConnectionsSortOrderEnumIgnoreCase := make(map[string]ListDatabaseToolsConnectionsSortOrderEnum)
-	for k, v := range mappingListDatabaseToolsConnectionsSortOrderEnum {
-		mappingListDatabaseToolsConnectionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseToolsConnectionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseToolsConnectionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -238,6 +242,11 @@ const (
 var mappingListDatabaseToolsConnectionsSortByEnum = map[string]ListDatabaseToolsConnectionsSortByEnum{
 	"timeCreated": ListDatabaseToolsConnectionsSortByTimecreated,
 	"displayName": ListDatabaseToolsConnectionsSortByDisplayname,
+}
+
+var mappingListDatabaseToolsConnectionsSortByEnumLowerCase = map[string]ListDatabaseToolsConnectionsSortByEnum{
+	"timecreated": ListDatabaseToolsConnectionsSortByTimecreated,
+	"displayname": ListDatabaseToolsConnectionsSortByDisplayname,
 }
 
 // GetListDatabaseToolsConnectionsSortByEnumValues Enumerates the set of values for ListDatabaseToolsConnectionsSortByEnum
@@ -259,11 +268,6 @@ func GetListDatabaseToolsConnectionsSortByEnumStringValues() []string {
 
 // GetMappingListDatabaseToolsConnectionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseToolsConnectionsSortByEnum(val string) (ListDatabaseToolsConnectionsSortByEnum, bool) {
-	mappingListDatabaseToolsConnectionsSortByEnumIgnoreCase := make(map[string]ListDatabaseToolsConnectionsSortByEnum)
-	for k, v := range mappingListDatabaseToolsConnectionsSortByEnum {
-		mappingListDatabaseToolsConnectionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseToolsConnectionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseToolsConnectionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -122,6 +122,15 @@ var mappingBootVolumeReplicaLifecycleStateEnum = map[string]BootVolumeReplicaLif
 	"FAULTY":       BootVolumeReplicaLifecycleStateFaulty,
 }
 
+var mappingBootVolumeReplicaLifecycleStateEnumLowerCase = map[string]BootVolumeReplicaLifecycleStateEnum{
+	"provisioning": BootVolumeReplicaLifecycleStateProvisioning,
+	"available":    BootVolumeReplicaLifecycleStateAvailable,
+	"activating":   BootVolumeReplicaLifecycleStateActivating,
+	"terminating":  BootVolumeReplicaLifecycleStateTerminating,
+	"terminated":   BootVolumeReplicaLifecycleStateTerminated,
+	"faulty":       BootVolumeReplicaLifecycleStateFaulty,
+}
+
 // GetBootVolumeReplicaLifecycleStateEnumValues Enumerates the set of values for BootVolumeReplicaLifecycleStateEnum
 func GetBootVolumeReplicaLifecycleStateEnumValues() []BootVolumeReplicaLifecycleStateEnum {
 	values := make([]BootVolumeReplicaLifecycleStateEnum, 0)
@@ -145,11 +154,6 @@ func GetBootVolumeReplicaLifecycleStateEnumStringValues() []string {
 
 // GetMappingBootVolumeReplicaLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBootVolumeReplicaLifecycleStateEnum(val string) (BootVolumeReplicaLifecycleStateEnum, bool) {
-	mappingBootVolumeReplicaLifecycleStateEnumIgnoreCase := make(map[string]BootVolumeReplicaLifecycleStateEnum)
-	for k, v := range mappingBootVolumeReplicaLifecycleStateEnum {
-		mappingBootVolumeReplicaLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBootVolumeReplicaLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBootVolumeReplicaLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

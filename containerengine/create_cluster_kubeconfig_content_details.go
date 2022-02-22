@@ -13,7 +13,7 @@ package containerengine
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -65,6 +65,12 @@ var mappingCreateClusterKubeconfigContentDetailsEndpointEnum = map[string]Create
 	"PRIVATE_ENDPOINT":  CreateClusterKubeconfigContentDetailsEndpointPrivateEndpoint,
 }
 
+var mappingCreateClusterKubeconfigContentDetailsEndpointEnumLowerCase = map[string]CreateClusterKubeconfigContentDetailsEndpointEnum{
+	"legacy_kubernetes": CreateClusterKubeconfigContentDetailsEndpointLegacyKubernetes,
+	"public_endpoint":   CreateClusterKubeconfigContentDetailsEndpointPublicEndpoint,
+	"private_endpoint":  CreateClusterKubeconfigContentDetailsEndpointPrivateEndpoint,
+}
+
 // GetCreateClusterKubeconfigContentDetailsEndpointEnumValues Enumerates the set of values for CreateClusterKubeconfigContentDetailsEndpointEnum
 func GetCreateClusterKubeconfigContentDetailsEndpointEnumValues() []CreateClusterKubeconfigContentDetailsEndpointEnum {
 	values := make([]CreateClusterKubeconfigContentDetailsEndpointEnum, 0)
@@ -85,11 +91,6 @@ func GetCreateClusterKubeconfigContentDetailsEndpointEnumStringValues() []string
 
 // GetMappingCreateClusterKubeconfigContentDetailsEndpointEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateClusterKubeconfigContentDetailsEndpointEnum(val string) (CreateClusterKubeconfigContentDetailsEndpointEnum, bool) {
-	mappingCreateClusterKubeconfigContentDetailsEndpointEnumIgnoreCase := make(map[string]CreateClusterKubeconfigContentDetailsEndpointEnum)
-	for k, v := range mappingCreateClusterKubeconfigContentDetailsEndpointEnum {
-		mappingCreateClusterKubeconfigContentDetailsEndpointEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateClusterKubeconfigContentDetailsEndpointEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateClusterKubeconfigContentDetailsEndpointEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

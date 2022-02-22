@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -131,6 +131,11 @@ var mappingListDatabaseParametersSourceEnum = map[string]ListDatabaseParametersS
 	"SPFILE":  ListDatabaseParametersSourceSpfile,
 }
 
+var mappingListDatabaseParametersSourceEnumLowerCase = map[string]ListDatabaseParametersSourceEnum{
+	"current": ListDatabaseParametersSourceCurrent,
+	"spfile":  ListDatabaseParametersSourceSpfile,
+}
+
 // GetListDatabaseParametersSourceEnumValues Enumerates the set of values for ListDatabaseParametersSourceEnum
 func GetListDatabaseParametersSourceEnumValues() []ListDatabaseParametersSourceEnum {
 	values := make([]ListDatabaseParametersSourceEnum, 0)
@@ -150,12 +155,7 @@ func GetListDatabaseParametersSourceEnumStringValues() []string {
 
 // GetMappingListDatabaseParametersSourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseParametersSourceEnum(val string) (ListDatabaseParametersSourceEnum, bool) {
-	mappingListDatabaseParametersSourceEnumIgnoreCase := make(map[string]ListDatabaseParametersSourceEnum)
-	for k, v := range mappingListDatabaseParametersSourceEnum {
-		mappingListDatabaseParametersSourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseParametersSourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseParametersSourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -169,6 +169,10 @@ const (
 
 var mappingListDatabaseParametersSortByEnum = map[string]ListDatabaseParametersSortByEnum{
 	"NAME": ListDatabaseParametersSortByName,
+}
+
+var mappingListDatabaseParametersSortByEnumLowerCase = map[string]ListDatabaseParametersSortByEnum{
+	"name": ListDatabaseParametersSortByName,
 }
 
 // GetListDatabaseParametersSortByEnumValues Enumerates the set of values for ListDatabaseParametersSortByEnum
@@ -189,12 +193,7 @@ func GetListDatabaseParametersSortByEnumStringValues() []string {
 
 // GetMappingListDatabaseParametersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseParametersSortByEnum(val string) (ListDatabaseParametersSortByEnum, bool) {
-	mappingListDatabaseParametersSortByEnumIgnoreCase := make(map[string]ListDatabaseParametersSortByEnum)
-	for k, v := range mappingListDatabaseParametersSortByEnum {
-		mappingListDatabaseParametersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseParametersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseParametersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -210,6 +209,11 @@ const (
 var mappingListDatabaseParametersSortOrderEnum = map[string]ListDatabaseParametersSortOrderEnum{
 	"ASC":  ListDatabaseParametersSortOrderAsc,
 	"DESC": ListDatabaseParametersSortOrderDesc,
+}
+
+var mappingListDatabaseParametersSortOrderEnumLowerCase = map[string]ListDatabaseParametersSortOrderEnum{
+	"asc":  ListDatabaseParametersSortOrderAsc,
+	"desc": ListDatabaseParametersSortOrderDesc,
 }
 
 // GetListDatabaseParametersSortOrderEnumValues Enumerates the set of values for ListDatabaseParametersSortOrderEnum
@@ -231,11 +235,6 @@ func GetListDatabaseParametersSortOrderEnumStringValues() []string {
 
 // GetMappingListDatabaseParametersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseParametersSortOrderEnum(val string) (ListDatabaseParametersSortOrderEnum, bool) {
-	mappingListDatabaseParametersSortOrderEnumIgnoreCase := make(map[string]ListDatabaseParametersSortOrderEnum)
-	for k, v := range mappingListDatabaseParametersSortOrderEnum {
-		mappingListDatabaseParametersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseParametersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseParametersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

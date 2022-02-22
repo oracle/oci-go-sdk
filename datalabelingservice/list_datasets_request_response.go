@@ -6,7 +6,7 @@ package datalabelingservice
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,11 @@ var mappingListDatasetsSortOrderEnum = map[string]ListDatasetsSortOrderEnum{
 	"DESC": ListDatasetsSortOrderDesc,
 }
 
+var mappingListDatasetsSortOrderEnumLowerCase = map[string]ListDatasetsSortOrderEnum{
+	"asc":  ListDatasetsSortOrderAsc,
+	"desc": ListDatasetsSortOrderDesc,
+}
+
 // GetListDatasetsSortOrderEnumValues Enumerates the set of values for ListDatasetsSortOrderEnum
 func GetListDatasetsSortOrderEnumValues() []ListDatasetsSortOrderEnum {
 	values := make([]ListDatasetsSortOrderEnum, 0)
@@ -160,12 +165,7 @@ func GetListDatasetsSortOrderEnumStringValues() []string {
 
 // GetMappingListDatasetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatasetsSortOrderEnum(val string) (ListDatasetsSortOrderEnum, bool) {
-	mappingListDatasetsSortOrderEnumIgnoreCase := make(map[string]ListDatasetsSortOrderEnum)
-	for k, v := range mappingListDatasetsSortOrderEnum {
-		mappingListDatasetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatasetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatasetsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +181,11 @@ const (
 var mappingListDatasetsSortByEnum = map[string]ListDatasetsSortByEnum{
 	"timeCreated": ListDatasetsSortByTimecreated,
 	"displayName": ListDatasetsSortByDisplayname,
+}
+
+var mappingListDatasetsSortByEnumLowerCase = map[string]ListDatasetsSortByEnum{
+	"timecreated": ListDatasetsSortByTimecreated,
+	"displayname": ListDatasetsSortByDisplayname,
 }
 
 // GetListDatasetsSortByEnumValues Enumerates the set of values for ListDatasetsSortByEnum
@@ -202,11 +207,6 @@ func GetListDatasetsSortByEnumStringValues() []string {
 
 // GetMappingListDatasetsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatasetsSortByEnum(val string) (ListDatasetsSortByEnum, bool) {
-	mappingListDatasetsSortByEnumIgnoreCase := make(map[string]ListDatasetsSortByEnum)
-	for k, v := range mappingListDatasetsSortByEnum {
-		mappingListDatasetsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatasetsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatasetsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

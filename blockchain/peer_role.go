@@ -11,7 +11,7 @@ package blockchain
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -55,6 +55,11 @@ var mappingPeerRoleRoleEnum = map[string]PeerRoleRoleEnum{
 	"ADMIN":  PeerRoleRoleAdmin,
 }
 
+var mappingPeerRoleRoleEnumLowerCase = map[string]PeerRoleRoleEnum{
+	"member": PeerRoleRoleMember,
+	"admin":  PeerRoleRoleAdmin,
+}
+
 // GetPeerRoleRoleEnumValues Enumerates the set of values for PeerRoleRoleEnum
 func GetPeerRoleRoleEnumValues() []PeerRoleRoleEnum {
 	values := make([]PeerRoleRoleEnum, 0)
@@ -74,11 +79,6 @@ func GetPeerRoleRoleEnumStringValues() []string {
 
 // GetMappingPeerRoleRoleEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPeerRoleRoleEnum(val string) (PeerRoleRoleEnum, bool) {
-	mappingPeerRoleRoleEnumIgnoreCase := make(map[string]PeerRoleRoleEnum)
-	for k, v := range mappingPeerRoleRoleEnum {
-		mappingPeerRoleRoleEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPeerRoleRoleEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPeerRoleRoleEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

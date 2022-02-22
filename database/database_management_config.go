@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -73,6 +73,15 @@ var mappingDatabaseManagementConfigDatabaseManagementStatusEnum = map[string]Dat
 	"FAILED_DISABLING": DatabaseManagementConfigDatabaseManagementStatusFailedDisabling,
 }
 
+var mappingDatabaseManagementConfigDatabaseManagementStatusEnumLowerCase = map[string]DatabaseManagementConfigDatabaseManagementStatusEnum{
+	"enabling":         DatabaseManagementConfigDatabaseManagementStatusEnabling,
+	"enabled":          DatabaseManagementConfigDatabaseManagementStatusEnabled,
+	"disabling":        DatabaseManagementConfigDatabaseManagementStatusDisabling,
+	"not_enabled":      DatabaseManagementConfigDatabaseManagementStatusNotEnabled,
+	"failed_enabling":  DatabaseManagementConfigDatabaseManagementStatusFailedEnabling,
+	"failed_disabling": DatabaseManagementConfigDatabaseManagementStatusFailedDisabling,
+}
+
 // GetDatabaseManagementConfigDatabaseManagementStatusEnumValues Enumerates the set of values for DatabaseManagementConfigDatabaseManagementStatusEnum
 func GetDatabaseManagementConfigDatabaseManagementStatusEnumValues() []DatabaseManagementConfigDatabaseManagementStatusEnum {
 	values := make([]DatabaseManagementConfigDatabaseManagementStatusEnum, 0)
@@ -96,12 +105,7 @@ func GetDatabaseManagementConfigDatabaseManagementStatusEnumStringValues() []str
 
 // GetMappingDatabaseManagementConfigDatabaseManagementStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseManagementConfigDatabaseManagementStatusEnum(val string) (DatabaseManagementConfigDatabaseManagementStatusEnum, bool) {
-	mappingDatabaseManagementConfigDatabaseManagementStatusEnumIgnoreCase := make(map[string]DatabaseManagementConfigDatabaseManagementStatusEnum)
-	for k, v := range mappingDatabaseManagementConfigDatabaseManagementStatusEnum {
-		mappingDatabaseManagementConfigDatabaseManagementStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseManagementConfigDatabaseManagementStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseManagementConfigDatabaseManagementStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -117,6 +121,11 @@ const (
 var mappingDatabaseManagementConfigLicenseModelEnum = map[string]DatabaseManagementConfigLicenseModelEnum{
 	"LICENSE_INCLUDED":       DatabaseManagementConfigLicenseModelLicenseIncluded,
 	"BRING_YOUR_OWN_LICENSE": DatabaseManagementConfigLicenseModelBringYourOwnLicense,
+}
+
+var mappingDatabaseManagementConfigLicenseModelEnumLowerCase = map[string]DatabaseManagementConfigLicenseModelEnum{
+	"license_included":       DatabaseManagementConfigLicenseModelLicenseIncluded,
+	"bring_your_own_license": DatabaseManagementConfigLicenseModelBringYourOwnLicense,
 }
 
 // GetDatabaseManagementConfigLicenseModelEnumValues Enumerates the set of values for DatabaseManagementConfigLicenseModelEnum
@@ -138,11 +147,6 @@ func GetDatabaseManagementConfigLicenseModelEnumStringValues() []string {
 
 // GetMappingDatabaseManagementConfigLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseManagementConfigLicenseModelEnum(val string) (DatabaseManagementConfigLicenseModelEnum, bool) {
-	mappingDatabaseManagementConfigLicenseModelEnumIgnoreCase := make(map[string]DatabaseManagementConfigLicenseModelEnum)
-	for k, v := range mappingDatabaseManagementConfigLicenseModelEnum {
-		mappingDatabaseManagementConfigLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseManagementConfigLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseManagementConfigLicenseModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

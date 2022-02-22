@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -137,6 +137,11 @@ var mappingListManagedInstancesSortOrderEnum = map[string]ListManagedInstancesSo
 	"DESC": ListManagedInstancesSortOrderDesc,
 }
 
+var mappingListManagedInstancesSortOrderEnumLowerCase = map[string]ListManagedInstancesSortOrderEnum{
+	"asc":  ListManagedInstancesSortOrderAsc,
+	"desc": ListManagedInstancesSortOrderDesc,
+}
+
 // GetListManagedInstancesSortOrderEnumValues Enumerates the set of values for ListManagedInstancesSortOrderEnum
 func GetListManagedInstancesSortOrderEnumValues() []ListManagedInstancesSortOrderEnum {
 	values := make([]ListManagedInstancesSortOrderEnum, 0)
@@ -156,12 +161,7 @@ func GetListManagedInstancesSortOrderEnumStringValues() []string {
 
 // GetMappingListManagedInstancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedInstancesSortOrderEnum(val string) (ListManagedInstancesSortOrderEnum, bool) {
-	mappingListManagedInstancesSortOrderEnumIgnoreCase := make(map[string]ListManagedInstancesSortOrderEnum)
-	for k, v := range mappingListManagedInstancesSortOrderEnum {
-		mappingListManagedInstancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedInstancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedInstancesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -177,6 +177,11 @@ const (
 var mappingListManagedInstancesSortByEnum = map[string]ListManagedInstancesSortByEnum{
 	"TIMECREATED": ListManagedInstancesSortByTimecreated,
 	"DISPLAYNAME": ListManagedInstancesSortByDisplayname,
+}
+
+var mappingListManagedInstancesSortByEnumLowerCase = map[string]ListManagedInstancesSortByEnum{
+	"timecreated": ListManagedInstancesSortByTimecreated,
+	"displayname": ListManagedInstancesSortByDisplayname,
 }
 
 // GetListManagedInstancesSortByEnumValues Enumerates the set of values for ListManagedInstancesSortByEnum
@@ -198,12 +203,7 @@ func GetListManagedInstancesSortByEnumStringValues() []string {
 
 // GetMappingListManagedInstancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedInstancesSortByEnum(val string) (ListManagedInstancesSortByEnum, bool) {
-	mappingListManagedInstancesSortByEnumIgnoreCase := make(map[string]ListManagedInstancesSortByEnum)
-	for k, v := range mappingListManagedInstancesSortByEnum {
-		mappingListManagedInstancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedInstancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedInstancesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -221,6 +221,12 @@ var mappingListManagedInstancesOsFamilyEnum = map[string]ListManagedInstancesOsF
 	"LINUX":   ListManagedInstancesOsFamilyLinux,
 	"WINDOWS": ListManagedInstancesOsFamilyWindows,
 	"ALL":     ListManagedInstancesOsFamilyAll,
+}
+
+var mappingListManagedInstancesOsFamilyEnumLowerCase = map[string]ListManagedInstancesOsFamilyEnum{
+	"linux":   ListManagedInstancesOsFamilyLinux,
+	"windows": ListManagedInstancesOsFamilyWindows,
+	"all":     ListManagedInstancesOsFamilyAll,
 }
 
 // GetListManagedInstancesOsFamilyEnumValues Enumerates the set of values for ListManagedInstancesOsFamilyEnum
@@ -243,11 +249,6 @@ func GetListManagedInstancesOsFamilyEnumStringValues() []string {
 
 // GetMappingListManagedInstancesOsFamilyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedInstancesOsFamilyEnum(val string) (ListManagedInstancesOsFamilyEnum, bool) {
-	mappingListManagedInstancesOsFamilyEnumIgnoreCase := make(map[string]ListManagedInstancesOsFamilyEnum)
-	for k, v := range mappingListManagedInstancesOsFamilyEnum {
-		mappingListManagedInstancesOsFamilyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedInstancesOsFamilyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedInstancesOsFamilyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

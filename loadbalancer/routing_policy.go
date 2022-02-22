@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -62,6 +62,10 @@ var mappingRoutingPolicyConditionLanguageVersionEnum = map[string]RoutingPolicyC
 	"V1": RoutingPolicyConditionLanguageVersionV1,
 }
 
+var mappingRoutingPolicyConditionLanguageVersionEnumLowerCase = map[string]RoutingPolicyConditionLanguageVersionEnum{
+	"v1": RoutingPolicyConditionLanguageVersionV1,
+}
+
 // GetRoutingPolicyConditionLanguageVersionEnumValues Enumerates the set of values for RoutingPolicyConditionLanguageVersionEnum
 func GetRoutingPolicyConditionLanguageVersionEnumValues() []RoutingPolicyConditionLanguageVersionEnum {
 	values := make([]RoutingPolicyConditionLanguageVersionEnum, 0)
@@ -80,11 +84,6 @@ func GetRoutingPolicyConditionLanguageVersionEnumStringValues() []string {
 
 // GetMappingRoutingPolicyConditionLanguageVersionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRoutingPolicyConditionLanguageVersionEnum(val string) (RoutingPolicyConditionLanguageVersionEnum, bool) {
-	mappingRoutingPolicyConditionLanguageVersionEnumIgnoreCase := make(map[string]RoutingPolicyConditionLanguageVersionEnum)
-	for k, v := range mappingRoutingPolicyConditionLanguageVersionEnum {
-		mappingRoutingPolicyConditionLanguageVersionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRoutingPolicyConditionLanguageVersionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRoutingPolicyConditionLanguageVersionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

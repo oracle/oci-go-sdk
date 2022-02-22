@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -69,6 +69,12 @@ var mappingExecutionLogPolicyLogLevelEnum = map[string]ExecutionLogPolicyLogLeve
 	"ERROR": ExecutionLogPolicyLogLevelError,
 }
 
+var mappingExecutionLogPolicyLogLevelEnumLowerCase = map[string]ExecutionLogPolicyLogLevelEnum{
+	"info":  ExecutionLogPolicyLogLevelInfo,
+	"warn":  ExecutionLogPolicyLogLevelWarn,
+	"error": ExecutionLogPolicyLogLevelError,
+}
+
 // GetExecutionLogPolicyLogLevelEnumValues Enumerates the set of values for ExecutionLogPolicyLogLevelEnum
 func GetExecutionLogPolicyLogLevelEnumValues() []ExecutionLogPolicyLogLevelEnum {
 	values := make([]ExecutionLogPolicyLogLevelEnum, 0)
@@ -89,11 +95,6 @@ func GetExecutionLogPolicyLogLevelEnumStringValues() []string {
 
 // GetMappingExecutionLogPolicyLogLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExecutionLogPolicyLogLevelEnum(val string) (ExecutionLogPolicyLogLevelEnum, bool) {
-	mappingExecutionLogPolicyLogLevelEnumIgnoreCase := make(map[string]ExecutionLogPolicyLogLevelEnum)
-	for k, v := range mappingExecutionLogPolicyLogLevelEnum {
-		mappingExecutionLogPolicyLogLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExecutionLogPolicyLogLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExecutionLogPolicyLogLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

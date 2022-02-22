@@ -11,7 +11,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -84,6 +84,13 @@ var mappingTransferApplianceEntitlementLifecycleStateEnum = map[string]TransferA
 	"DELETED":  TransferApplianceEntitlementLifecycleStateDeleted,
 }
 
+var mappingTransferApplianceEntitlementLifecycleStateEnumLowerCase = map[string]TransferApplianceEntitlementLifecycleStateEnum{
+	"creating": TransferApplianceEntitlementLifecycleStateCreating,
+	"active":   TransferApplianceEntitlementLifecycleStateActive,
+	"inactive": TransferApplianceEntitlementLifecycleStateInactive,
+	"deleted":  TransferApplianceEntitlementLifecycleStateDeleted,
+}
+
 // GetTransferApplianceEntitlementLifecycleStateEnumValues Enumerates the set of values for TransferApplianceEntitlementLifecycleStateEnum
 func GetTransferApplianceEntitlementLifecycleStateEnumValues() []TransferApplianceEntitlementLifecycleStateEnum {
 	values := make([]TransferApplianceEntitlementLifecycleStateEnum, 0)
@@ -105,11 +112,6 @@ func GetTransferApplianceEntitlementLifecycleStateEnumStringValues() []string {
 
 // GetMappingTransferApplianceEntitlementLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTransferApplianceEntitlementLifecycleStateEnum(val string) (TransferApplianceEntitlementLifecycleStateEnum, bool) {
-	mappingTransferApplianceEntitlementLifecycleStateEnumIgnoreCase := make(map[string]TransferApplianceEntitlementLifecycleStateEnum)
-	for k, v := range mappingTransferApplianceEntitlementLifecycleStateEnum {
-		mappingTransferApplianceEntitlementLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTransferApplianceEntitlementLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTransferApplianceEntitlementLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

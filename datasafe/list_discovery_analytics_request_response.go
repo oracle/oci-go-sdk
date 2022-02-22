@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -132,6 +132,11 @@ var mappingListDiscoveryAnalyticsGroupByEnum = map[string]ListDiscoveryAnalytics
 	"sensitiveDataModelId": ListDiscoveryAnalyticsGroupBySensitivedatamodelid,
 }
 
+var mappingListDiscoveryAnalyticsGroupByEnumLowerCase = map[string]ListDiscoveryAnalyticsGroupByEnum{
+	"targetid":             ListDiscoveryAnalyticsGroupByTargetid,
+	"sensitivedatamodelid": ListDiscoveryAnalyticsGroupBySensitivedatamodelid,
+}
+
 // GetListDiscoveryAnalyticsGroupByEnumValues Enumerates the set of values for ListDiscoveryAnalyticsGroupByEnum
 func GetListDiscoveryAnalyticsGroupByEnumValues() []ListDiscoveryAnalyticsGroupByEnum {
 	values := make([]ListDiscoveryAnalyticsGroupByEnum, 0)
@@ -151,11 +156,6 @@ func GetListDiscoveryAnalyticsGroupByEnumStringValues() []string {
 
 // GetMappingListDiscoveryAnalyticsGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDiscoveryAnalyticsGroupByEnum(val string) (ListDiscoveryAnalyticsGroupByEnum, bool) {
-	mappingListDiscoveryAnalyticsGroupByEnumIgnoreCase := make(map[string]ListDiscoveryAnalyticsGroupByEnum)
-	for k, v := range mappingListDiscoveryAnalyticsGroupByEnum {
-		mappingListDiscoveryAnalyticsGroupByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDiscoveryAnalyticsGroupByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDiscoveryAnalyticsGroupByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

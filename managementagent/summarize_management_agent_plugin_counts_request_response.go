@@ -6,7 +6,7 @@ package managementagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -115,6 +115,10 @@ var mappingSummarizeManagementAgentPluginCountsGroupByEnum = map[string]Summariz
 	"pluginName": SummarizeManagementAgentPluginCountsGroupByPluginname,
 }
 
+var mappingSummarizeManagementAgentPluginCountsGroupByEnumLowerCase = map[string]SummarizeManagementAgentPluginCountsGroupByEnum{
+	"pluginname": SummarizeManagementAgentPluginCountsGroupByPluginname,
+}
+
 // GetSummarizeManagementAgentPluginCountsGroupByEnumValues Enumerates the set of values for SummarizeManagementAgentPluginCountsGroupByEnum
 func GetSummarizeManagementAgentPluginCountsGroupByEnumValues() []SummarizeManagementAgentPluginCountsGroupByEnum {
 	values := make([]SummarizeManagementAgentPluginCountsGroupByEnum, 0)
@@ -133,11 +137,6 @@ func GetSummarizeManagementAgentPluginCountsGroupByEnumStringValues() []string {
 
 // GetMappingSummarizeManagementAgentPluginCountsGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeManagementAgentPluginCountsGroupByEnum(val string) (SummarizeManagementAgentPluginCountsGroupByEnum, bool) {
-	mappingSummarizeManagementAgentPluginCountsGroupByEnumIgnoreCase := make(map[string]SummarizeManagementAgentPluginCountsGroupByEnum)
-	for k, v := range mappingSummarizeManagementAgentPluginCountsGroupByEnum {
-		mappingSummarizeManagementAgentPluginCountsGroupByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeManagementAgentPluginCountsGroupByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeManagementAgentPluginCountsGroupByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

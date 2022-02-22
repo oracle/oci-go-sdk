@@ -6,7 +6,7 @@ package networkloadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -148,6 +148,15 @@ var mappingListNetworkLoadBalancersLifecycleStateEnum = map[string]ListNetworkLo
 	"FAILED":   ListNetworkLoadBalancersLifecycleStateFailed,
 }
 
+var mappingListNetworkLoadBalancersLifecycleStateEnumLowerCase = map[string]ListNetworkLoadBalancersLifecycleStateEnum{
+	"creating": ListNetworkLoadBalancersLifecycleStateCreating,
+	"updating": ListNetworkLoadBalancersLifecycleStateUpdating,
+	"active":   ListNetworkLoadBalancersLifecycleStateActive,
+	"deleting": ListNetworkLoadBalancersLifecycleStateDeleting,
+	"deleted":  ListNetworkLoadBalancersLifecycleStateDeleted,
+	"failed":   ListNetworkLoadBalancersLifecycleStateFailed,
+}
+
 // GetListNetworkLoadBalancersLifecycleStateEnumValues Enumerates the set of values for ListNetworkLoadBalancersLifecycleStateEnum
 func GetListNetworkLoadBalancersLifecycleStateEnumValues() []ListNetworkLoadBalancersLifecycleStateEnum {
 	values := make([]ListNetworkLoadBalancersLifecycleStateEnum, 0)
@@ -171,12 +180,7 @@ func GetListNetworkLoadBalancersLifecycleStateEnumStringValues() []string {
 
 // GetMappingListNetworkLoadBalancersLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListNetworkLoadBalancersLifecycleStateEnum(val string) (ListNetworkLoadBalancersLifecycleStateEnum, bool) {
-	mappingListNetworkLoadBalancersLifecycleStateEnumIgnoreCase := make(map[string]ListNetworkLoadBalancersLifecycleStateEnum)
-	for k, v := range mappingListNetworkLoadBalancersLifecycleStateEnum {
-		mappingListNetworkLoadBalancersLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListNetworkLoadBalancersLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListNetworkLoadBalancersLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -192,6 +196,11 @@ const (
 var mappingListNetworkLoadBalancersSortOrderEnum = map[string]ListNetworkLoadBalancersSortOrderEnum{
 	"ASC":  ListNetworkLoadBalancersSortOrderAsc,
 	"DESC": ListNetworkLoadBalancersSortOrderDesc,
+}
+
+var mappingListNetworkLoadBalancersSortOrderEnumLowerCase = map[string]ListNetworkLoadBalancersSortOrderEnum{
+	"asc":  ListNetworkLoadBalancersSortOrderAsc,
+	"desc": ListNetworkLoadBalancersSortOrderDesc,
 }
 
 // GetListNetworkLoadBalancersSortOrderEnumValues Enumerates the set of values for ListNetworkLoadBalancersSortOrderEnum
@@ -213,12 +222,7 @@ func GetListNetworkLoadBalancersSortOrderEnumStringValues() []string {
 
 // GetMappingListNetworkLoadBalancersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListNetworkLoadBalancersSortOrderEnum(val string) (ListNetworkLoadBalancersSortOrderEnum, bool) {
-	mappingListNetworkLoadBalancersSortOrderEnumIgnoreCase := make(map[string]ListNetworkLoadBalancersSortOrderEnum)
-	for k, v := range mappingListNetworkLoadBalancersSortOrderEnum {
-		mappingListNetworkLoadBalancersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListNetworkLoadBalancersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListNetworkLoadBalancersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -234,6 +238,11 @@ const (
 var mappingListNetworkLoadBalancersSortByEnum = map[string]ListNetworkLoadBalancersSortByEnum{
 	"timeCreated": ListNetworkLoadBalancersSortByTimecreated,
 	"displayName": ListNetworkLoadBalancersSortByDisplayname,
+}
+
+var mappingListNetworkLoadBalancersSortByEnumLowerCase = map[string]ListNetworkLoadBalancersSortByEnum{
+	"timecreated": ListNetworkLoadBalancersSortByTimecreated,
+	"displayname": ListNetworkLoadBalancersSortByDisplayname,
 }
 
 // GetListNetworkLoadBalancersSortByEnumValues Enumerates the set of values for ListNetworkLoadBalancersSortByEnum
@@ -255,11 +264,6 @@ func GetListNetworkLoadBalancersSortByEnumStringValues() []string {
 
 // GetMappingListNetworkLoadBalancersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListNetworkLoadBalancersSortByEnum(val string) (ListNetworkLoadBalancersSortByEnum, bool) {
-	mappingListNetworkLoadBalancersSortByEnumIgnoreCase := make(map[string]ListNetworkLoadBalancersSortByEnum)
-	for k, v := range mappingListNetworkLoadBalancersSortByEnum {
-		mappingListNetworkLoadBalancersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListNetworkLoadBalancersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListNetworkLoadBalancersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

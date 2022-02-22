@@ -12,7 +12,7 @@ package apmsynthetics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -115,6 +115,13 @@ var mappingMonitorConfigurationConfigTypeEnum = map[string]MonitorConfigurationC
 	"SCRIPTED_REST_CONFIG":    MonitorConfigurationConfigTypeScriptedRestConfig,
 }
 
+var mappingMonitorConfigurationConfigTypeEnumLowerCase = map[string]MonitorConfigurationConfigTypeEnum{
+	"browser_config":          MonitorConfigurationConfigTypeBrowserConfig,
+	"scripted_browser_config": MonitorConfigurationConfigTypeScriptedBrowserConfig,
+	"rest_config":             MonitorConfigurationConfigTypeRestConfig,
+	"scripted_rest_config":    MonitorConfigurationConfigTypeScriptedRestConfig,
+}
+
 // GetMonitorConfigurationConfigTypeEnumValues Enumerates the set of values for MonitorConfigurationConfigTypeEnum
 func GetMonitorConfigurationConfigTypeEnumValues() []MonitorConfigurationConfigTypeEnum {
 	values := make([]MonitorConfigurationConfigTypeEnum, 0)
@@ -136,11 +143,6 @@ func GetMonitorConfigurationConfigTypeEnumStringValues() []string {
 
 // GetMappingMonitorConfigurationConfigTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMonitorConfigurationConfigTypeEnum(val string) (MonitorConfigurationConfigTypeEnum, bool) {
-	mappingMonitorConfigurationConfigTypeEnumIgnoreCase := make(map[string]MonitorConfigurationConfigTypeEnum)
-	for k, v := range mappingMonitorConfigurationConfigTypeEnum {
-		mappingMonitorConfigurationConfigTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMonitorConfigurationConfigTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMonitorConfigurationConfigTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

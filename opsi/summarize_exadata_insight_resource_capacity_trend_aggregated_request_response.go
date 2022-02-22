@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -191,6 +191,11 @@ var mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum =
 	"DESC": SummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderDesc,
 }
 
+var mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnumLowerCase = map[string]SummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum{
+	"asc":  SummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderAsc,
+	"desc": SummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderDesc,
+}
+
 // GetSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnumValues Enumerates the set of values for SummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum
 func GetSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnumValues() []SummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum {
 	values := make([]SummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum, 0)
@@ -210,12 +215,7 @@ func GetSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnumStrin
 
 // GetMappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum(val string) (SummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum, bool) {
-	mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum)
-	for k, v := range mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnum {
-		mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -230,6 +230,11 @@ const (
 
 var mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum = map[string]SummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum{
 	"endTimestamp": SummarizeExadataInsightResourceCapacityTrendAggregatedSortByEndtimestamp,
+	"capacity":     SummarizeExadataInsightResourceCapacityTrendAggregatedSortByCapacity,
+}
+
+var mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnumLowerCase = map[string]SummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum{
+	"endtimestamp": SummarizeExadataInsightResourceCapacityTrendAggregatedSortByEndtimestamp,
 	"capacity":     SummarizeExadataInsightResourceCapacityTrendAggregatedSortByCapacity,
 }
 
@@ -252,11 +257,6 @@ func GetSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnumStringVa
 
 // GetMappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum(val string) (SummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum, bool) {
-	mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum)
-	for k, v := range mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnum {
-		mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeExadataInsightResourceCapacityTrendAggregatedSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

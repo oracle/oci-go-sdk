@@ -33,6 +33,14 @@ var mappingDatatypesEnum = map[string]DatatypesEnum{
 	"BOOLEAN": DatatypesBoolean,
 }
 
+var mappingDatatypesEnumLowerCase = map[string]DatatypesEnum{
+	"long":    DatatypesLong,
+	"double":  DatatypesDouble,
+	"integer": DatatypesInteger,
+	"string":  DatatypesString,
+	"boolean": DatatypesBoolean,
+}
+
 // GetDatatypesEnumValues Enumerates the set of values for DatatypesEnum
 func GetDatatypesEnumValues() []DatatypesEnum {
 	values := make([]DatatypesEnum, 0)
@@ -55,11 +63,6 @@ func GetDatatypesEnumStringValues() []string {
 
 // GetMappingDatatypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatatypesEnum(val string) (DatatypesEnum, bool) {
-	mappingDatatypesEnumIgnoreCase := make(map[string]DatatypesEnum)
-	for k, v := range mappingDatatypesEnum {
-		mappingDatatypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatatypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatatypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -35,6 +35,15 @@ var mappingMaskingColumnLifecycleStateEnum = map[string]MaskingColumnLifecycleSt
 	"FAILED":          MaskingColumnLifecycleStateFailed,
 }
 
+var mappingMaskingColumnLifecycleStateEnumLowerCase = map[string]MaskingColumnLifecycleStateEnum{
+	"creating":        MaskingColumnLifecycleStateCreating,
+	"active":          MaskingColumnLifecycleStateActive,
+	"updating":        MaskingColumnLifecycleStateUpdating,
+	"deleting":        MaskingColumnLifecycleStateDeleting,
+	"needs_attention": MaskingColumnLifecycleStateNeedsAttention,
+	"failed":          MaskingColumnLifecycleStateFailed,
+}
+
 // GetMaskingColumnLifecycleStateEnumValues Enumerates the set of values for MaskingColumnLifecycleStateEnum
 func GetMaskingColumnLifecycleStateEnumValues() []MaskingColumnLifecycleStateEnum {
 	values := make([]MaskingColumnLifecycleStateEnum, 0)
@@ -58,11 +67,6 @@ func GetMaskingColumnLifecycleStateEnumStringValues() []string {
 
 // GetMappingMaskingColumnLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMaskingColumnLifecycleStateEnum(val string) (MaskingColumnLifecycleStateEnum, bool) {
-	mappingMaskingColumnLifecycleStateEnumIgnoreCase := make(map[string]MaskingColumnLifecycleStateEnum)
-	for k, v := range mappingMaskingColumnLifecycleStateEnum {
-		mappingMaskingColumnLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMaskingColumnLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMaskingColumnLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

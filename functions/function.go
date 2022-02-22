@@ -11,7 +11,7 @@ package functions
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -123,6 +123,16 @@ var mappingFunctionLifecycleStateEnum = map[string]FunctionLifecycleStateEnum{
 	"FAILED":   FunctionLifecycleStateFailed,
 }
 
+var mappingFunctionLifecycleStateEnumLowerCase = map[string]FunctionLifecycleStateEnum{
+	"creating": FunctionLifecycleStateCreating,
+	"active":   FunctionLifecycleStateActive,
+	"inactive": FunctionLifecycleStateInactive,
+	"updating": FunctionLifecycleStateUpdating,
+	"deleting": FunctionLifecycleStateDeleting,
+	"deleted":  FunctionLifecycleStateDeleted,
+	"failed":   FunctionLifecycleStateFailed,
+}
+
 // GetFunctionLifecycleStateEnumValues Enumerates the set of values for FunctionLifecycleStateEnum
 func GetFunctionLifecycleStateEnumValues() []FunctionLifecycleStateEnum {
 	values := make([]FunctionLifecycleStateEnum, 0)
@@ -147,11 +157,6 @@ func GetFunctionLifecycleStateEnumStringValues() []string {
 
 // GetMappingFunctionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFunctionLifecycleStateEnum(val string) (FunctionLifecycleStateEnum, bool) {
-	mappingFunctionLifecycleStateEnumIgnoreCase := make(map[string]FunctionLifecycleStateEnum)
-	for k, v := range mappingFunctionLifecycleStateEnum {
-		mappingFunctionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFunctionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFunctionLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

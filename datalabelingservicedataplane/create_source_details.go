@@ -12,7 +12,7 @@ package datalabelingservicedataplane
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingCreateSourceDetailsSourceTypeEnum = map[string]CreateSourceDetailsSou
 	"OBJECT_STORAGE": CreateSourceDetailsSourceTypeObjectStorage,
 }
 
+var mappingCreateSourceDetailsSourceTypeEnumLowerCase = map[string]CreateSourceDetailsSourceTypeEnum{
+	"object_storage": CreateSourceDetailsSourceTypeObjectStorage,
+}
+
 // GetCreateSourceDetailsSourceTypeEnumValues Enumerates the set of values for CreateSourceDetailsSourceTypeEnum
 func GetCreateSourceDetailsSourceTypeEnumValues() []CreateSourceDetailsSourceTypeEnum {
 	values := make([]CreateSourceDetailsSourceTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetCreateSourceDetailsSourceTypeEnumStringValues() []string {
 
 // GetMappingCreateSourceDetailsSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateSourceDetailsSourceTypeEnum(val string) (CreateSourceDetailsSourceTypeEnum, bool) {
-	mappingCreateSourceDetailsSourceTypeEnumIgnoreCase := make(map[string]CreateSourceDetailsSourceTypeEnum)
-	for k, v := range mappingCreateSourceDetailsSourceTypeEnum {
-		mappingCreateSourceDetailsSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateSourceDetailsSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateSourceDetailsSourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -31,6 +31,13 @@ var mappingWorkRequestResourceMetadataKeyEnum = map[string]WorkRequestResourceMe
 	"SNAPSHOT_VERSION": WorkRequestResourceMetadataKeySnapshotVersion,
 }
 
+var mappingWorkRequestResourceMetadataKeyEnumLowerCase = map[string]WorkRequestResourceMetadataKeyEnum{
+	"namespace":        WorkRequestResourceMetadataKeyNamespace,
+	"bucket":           WorkRequestResourceMetadataKeyBucket,
+	"object":           WorkRequestResourceMetadataKeyObject,
+	"snapshot_version": WorkRequestResourceMetadataKeySnapshotVersion,
+}
+
 // GetWorkRequestResourceMetadataKeyEnumValues Enumerates the set of values for WorkRequestResourceMetadataKeyEnum
 func GetWorkRequestResourceMetadataKeyEnumValues() []WorkRequestResourceMetadataKeyEnum {
 	values := make([]WorkRequestResourceMetadataKeyEnum, 0)
@@ -52,11 +59,6 @@ func GetWorkRequestResourceMetadataKeyEnumStringValues() []string {
 
 // GetMappingWorkRequestResourceMetadataKeyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestResourceMetadataKeyEnum(val string) (WorkRequestResourceMetadataKeyEnum, bool) {
-	mappingWorkRequestResourceMetadataKeyEnumIgnoreCase := make(map[string]WorkRequestResourceMetadataKeyEnum)
-	for k, v := range mappingWorkRequestResourceMetadataKeyEnum {
-		mappingWorkRequestResourceMetadataKeyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestResourceMetadataKeyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestResourceMetadataKeyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

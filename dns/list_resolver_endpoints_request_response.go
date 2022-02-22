@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -143,6 +143,11 @@ var mappingListResolverEndpointsSortOrderEnum = map[string]ListResolverEndpoints
 	"DESC": ListResolverEndpointsSortOrderDesc,
 }
 
+var mappingListResolverEndpointsSortOrderEnumLowerCase = map[string]ListResolverEndpointsSortOrderEnum{
+	"asc":  ListResolverEndpointsSortOrderAsc,
+	"desc": ListResolverEndpointsSortOrderDesc,
+}
+
 // GetListResolverEndpointsSortOrderEnumValues Enumerates the set of values for ListResolverEndpointsSortOrderEnum
 func GetListResolverEndpointsSortOrderEnumValues() []ListResolverEndpointsSortOrderEnum {
 	values := make([]ListResolverEndpointsSortOrderEnum, 0)
@@ -162,12 +167,7 @@ func GetListResolverEndpointsSortOrderEnumStringValues() []string {
 
 // GetMappingListResolverEndpointsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResolverEndpointsSortOrderEnum(val string) (ListResolverEndpointsSortOrderEnum, bool) {
-	mappingListResolverEndpointsSortOrderEnumIgnoreCase := make(map[string]ListResolverEndpointsSortOrderEnum)
-	for k, v := range mappingListResolverEndpointsSortOrderEnum {
-		mappingListResolverEndpointsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResolverEndpointsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResolverEndpointsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +183,11 @@ const (
 var mappingListResolverEndpointsSortByEnum = map[string]ListResolverEndpointsSortByEnum{
 	"name":        ListResolverEndpointsSortByName,
 	"timeCreated": ListResolverEndpointsSortByTimecreated,
+}
+
+var mappingListResolverEndpointsSortByEnumLowerCase = map[string]ListResolverEndpointsSortByEnum{
+	"name":        ListResolverEndpointsSortByName,
+	"timecreated": ListResolverEndpointsSortByTimecreated,
 }
 
 // GetListResolverEndpointsSortByEnumValues Enumerates the set of values for ListResolverEndpointsSortByEnum
@@ -204,12 +209,7 @@ func GetListResolverEndpointsSortByEnumStringValues() []string {
 
 // GetMappingListResolverEndpointsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResolverEndpointsSortByEnum(val string) (ListResolverEndpointsSortByEnum, bool) {
-	mappingListResolverEndpointsSortByEnumIgnoreCase := make(map[string]ListResolverEndpointsSortByEnum)
-	for k, v := range mappingListResolverEndpointsSortByEnum {
-		mappingListResolverEndpointsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResolverEndpointsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResolverEndpointsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -225,6 +225,11 @@ const (
 var mappingListResolverEndpointsScopeEnum = map[string]ListResolverEndpointsScopeEnum{
 	"GLOBAL":  ListResolverEndpointsScopeGlobal,
 	"PRIVATE": ListResolverEndpointsScopePrivate,
+}
+
+var mappingListResolverEndpointsScopeEnumLowerCase = map[string]ListResolverEndpointsScopeEnum{
+	"global":  ListResolverEndpointsScopeGlobal,
+	"private": ListResolverEndpointsScopePrivate,
 }
 
 // GetListResolverEndpointsScopeEnumValues Enumerates the set of values for ListResolverEndpointsScopeEnum
@@ -246,11 +251,6 @@ func GetListResolverEndpointsScopeEnumStringValues() []string {
 
 // GetMappingListResolverEndpointsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResolverEndpointsScopeEnum(val string) (ListResolverEndpointsScopeEnum, bool) {
-	mappingListResolverEndpointsScopeEnumIgnoreCase := make(map[string]ListResolverEndpointsScopeEnum)
-	for k, v := range mappingListResolverEndpointsScopeEnum {
-		mappingListResolverEndpointsScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResolverEndpointsScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResolverEndpointsScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

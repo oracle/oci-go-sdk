@@ -12,7 +12,7 @@ package ospgateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -194,6 +194,11 @@ var mappingSubscriptionSummaryPlanTypeEnum = map[string]SubscriptionSummaryPlanT
 	"PAYG":      SubscriptionSummaryPlanTypePayg,
 }
 
+var mappingSubscriptionSummaryPlanTypeEnumLowerCase = map[string]SubscriptionSummaryPlanTypeEnum{
+	"free_tier": SubscriptionSummaryPlanTypeFreeTier,
+	"payg":      SubscriptionSummaryPlanTypePayg,
+}
+
 // GetSubscriptionSummaryPlanTypeEnumValues Enumerates the set of values for SubscriptionSummaryPlanTypeEnum
 func GetSubscriptionSummaryPlanTypeEnumValues() []SubscriptionSummaryPlanTypeEnum {
 	values := make([]SubscriptionSummaryPlanTypeEnum, 0)
@@ -213,12 +218,7 @@ func GetSubscriptionSummaryPlanTypeEnumStringValues() []string {
 
 // GetMappingSubscriptionSummaryPlanTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSubscriptionSummaryPlanTypeEnum(val string) (SubscriptionSummaryPlanTypeEnum, bool) {
-	mappingSubscriptionSummaryPlanTypeEnumIgnoreCase := make(map[string]SubscriptionSummaryPlanTypeEnum)
-	for k, v := range mappingSubscriptionSummaryPlanTypeEnum {
-		mappingSubscriptionSummaryPlanTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSubscriptionSummaryPlanTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSubscriptionSummaryPlanTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -238,6 +238,13 @@ var mappingSubscriptionSummaryUpgradeStateEnum = map[string]SubscriptionSummaryU
 	"SUBMITTED": SubscriptionSummaryUpgradeStateSubmitted,
 	"ERROR":     SubscriptionSummaryUpgradeStateError,
 	"UPGRADED":  SubscriptionSummaryUpgradeStateUpgraded,
+}
+
+var mappingSubscriptionSummaryUpgradeStateEnumLowerCase = map[string]SubscriptionSummaryUpgradeStateEnum{
+	"promo":     SubscriptionSummaryUpgradeStatePromo,
+	"submitted": SubscriptionSummaryUpgradeStateSubmitted,
+	"error":     SubscriptionSummaryUpgradeStateError,
+	"upgraded":  SubscriptionSummaryUpgradeStateUpgraded,
 }
 
 // GetSubscriptionSummaryUpgradeStateEnumValues Enumerates the set of values for SubscriptionSummaryUpgradeStateEnum
@@ -261,12 +268,7 @@ func GetSubscriptionSummaryUpgradeStateEnumStringValues() []string {
 
 // GetMappingSubscriptionSummaryUpgradeStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSubscriptionSummaryUpgradeStateEnum(val string) (SubscriptionSummaryUpgradeStateEnum, bool) {
-	mappingSubscriptionSummaryUpgradeStateEnumIgnoreCase := make(map[string]SubscriptionSummaryUpgradeStateEnum)
-	for k, v := range mappingSubscriptionSummaryUpgradeStateEnum {
-		mappingSubscriptionSummaryUpgradeStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSubscriptionSummaryUpgradeStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSubscriptionSummaryUpgradeStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -282,6 +284,11 @@ const (
 var mappingSubscriptionSummaryUpgradeStateDetailsEnum = map[string]SubscriptionSummaryUpgradeStateDetailsEnum{
 	"TAX_ERROR":     SubscriptionSummaryUpgradeStateDetailsTaxError,
 	"UPGRADE_ERROR": SubscriptionSummaryUpgradeStateDetailsUpgradeError,
+}
+
+var mappingSubscriptionSummaryUpgradeStateDetailsEnumLowerCase = map[string]SubscriptionSummaryUpgradeStateDetailsEnum{
+	"tax_error":     SubscriptionSummaryUpgradeStateDetailsTaxError,
+	"upgrade_error": SubscriptionSummaryUpgradeStateDetailsUpgradeError,
 }
 
 // GetSubscriptionSummaryUpgradeStateDetailsEnumValues Enumerates the set of values for SubscriptionSummaryUpgradeStateDetailsEnum
@@ -303,11 +310,6 @@ func GetSubscriptionSummaryUpgradeStateDetailsEnumStringValues() []string {
 
 // GetMappingSubscriptionSummaryUpgradeStateDetailsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSubscriptionSummaryUpgradeStateDetailsEnum(val string) (SubscriptionSummaryUpgradeStateDetailsEnum, bool) {
-	mappingSubscriptionSummaryUpgradeStateDetailsEnumIgnoreCase := make(map[string]SubscriptionSummaryUpgradeStateDetailsEnum)
-	for k, v := range mappingSubscriptionSummaryUpgradeStateDetailsEnum {
-		mappingSubscriptionSummaryUpgradeStateDetailsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSubscriptionSummaryUpgradeStateDetailsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSubscriptionSummaryUpgradeStateDetailsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -37,6 +37,16 @@ var mappingLifecycleSubStateEnum = map[string]LifecycleSubStateEnum{
 	"BACKUP_IN_PROGRESS": LifecycleSubStateBackupInProgress,
 }
 
+var mappingLifecycleSubStateEnumLowerCase = map[string]LifecycleSubStateEnum{
+	"recovering":         LifecycleSubStateRecovering,
+	"starting":           LifecycleSubStateStarting,
+	"stopping":           LifecycleSubStateStopping,
+	"moving":             LifecycleSubStateMoving,
+	"upgrading":          LifecycleSubStateUpgrading,
+	"restoring":          LifecycleSubStateRestoring,
+	"backup_in_progress": LifecycleSubStateBackupInProgress,
+}
+
 // GetLifecycleSubStateEnumValues Enumerates the set of values for LifecycleSubStateEnum
 func GetLifecycleSubStateEnumValues() []LifecycleSubStateEnum {
 	values := make([]LifecycleSubStateEnum, 0)
@@ -61,11 +71,6 @@ func GetLifecycleSubStateEnumStringValues() []string {
 
 // GetMappingLifecycleSubStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLifecycleSubStateEnum(val string) (LifecycleSubStateEnum, bool) {
-	mappingLifecycleSubStateEnumIgnoreCase := make(map[string]LifecycleSubStateEnum)
-	for k, v := range mappingLifecycleSubStateEnum {
-		mappingLifecycleSubStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLifecycleSubStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLifecycleSubStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

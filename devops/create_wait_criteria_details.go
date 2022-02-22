@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,10 @@ var mappingCreateWaitCriteriaDetailsWaitTypeEnum = map[string]CreateWaitCriteria
 	"ABSOLUTE_WAIT": CreateWaitCriteriaDetailsWaitTypeAbsoluteWait,
 }
 
+var mappingCreateWaitCriteriaDetailsWaitTypeEnumLowerCase = map[string]CreateWaitCriteriaDetailsWaitTypeEnum{
+	"absolute_wait": CreateWaitCriteriaDetailsWaitTypeAbsoluteWait,
+}
+
 // GetCreateWaitCriteriaDetailsWaitTypeEnumValues Enumerates the set of values for CreateWaitCriteriaDetailsWaitTypeEnum
 func GetCreateWaitCriteriaDetailsWaitTypeEnumValues() []CreateWaitCriteriaDetailsWaitTypeEnum {
 	values := make([]CreateWaitCriteriaDetailsWaitTypeEnum, 0)
@@ -105,11 +109,6 @@ func GetCreateWaitCriteriaDetailsWaitTypeEnumStringValues() []string {
 
 // GetMappingCreateWaitCriteriaDetailsWaitTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateWaitCriteriaDetailsWaitTypeEnum(val string) (CreateWaitCriteriaDetailsWaitTypeEnum, bool) {
-	mappingCreateWaitCriteriaDetailsWaitTypeEnumIgnoreCase := make(map[string]CreateWaitCriteriaDetailsWaitTypeEnum)
-	for k, v := range mappingCreateWaitCriteriaDetailsWaitTypeEnum {
-		mappingCreateWaitCriteriaDetailsWaitTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateWaitCriteriaDetailsWaitTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateWaitCriteriaDetailsWaitTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

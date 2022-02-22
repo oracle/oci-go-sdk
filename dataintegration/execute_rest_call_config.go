@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,14 @@ var mappingExecuteRestCallConfigMethodTypeEnum = map[string]ExecuteRestCallConfi
 	"PUT":    ExecuteRestCallConfigMethodTypePut,
 }
 
+var mappingExecuteRestCallConfigMethodTypeEnumLowerCase = map[string]ExecuteRestCallConfigMethodTypeEnum{
+	"get":    ExecuteRestCallConfigMethodTypeGet,
+	"post":   ExecuteRestCallConfigMethodTypePost,
+	"patch":  ExecuteRestCallConfigMethodTypePatch,
+	"delete": ExecuteRestCallConfigMethodTypeDelete,
+	"put":    ExecuteRestCallConfigMethodTypePut,
+}
+
 // GetExecuteRestCallConfigMethodTypeEnumValues Enumerates the set of values for ExecuteRestCallConfigMethodTypeEnum
 func GetExecuteRestCallConfigMethodTypeEnumValues() []ExecuteRestCallConfigMethodTypeEnum {
 	values := make([]ExecuteRestCallConfigMethodTypeEnum, 0)
@@ -88,11 +96,6 @@ func GetExecuteRestCallConfigMethodTypeEnumStringValues() []string {
 
 // GetMappingExecuteRestCallConfigMethodTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExecuteRestCallConfigMethodTypeEnum(val string) (ExecuteRestCallConfigMethodTypeEnum, bool) {
-	mappingExecuteRestCallConfigMethodTypeEnumIgnoreCase := make(map[string]ExecuteRestCallConfigMethodTypeEnum)
-	for k, v := range mappingExecuteRestCallConfigMethodTypeEnum {
-		mappingExecuteRestCallConfigMethodTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExecuteRestCallConfigMethodTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExecuteRestCallConfigMethodTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

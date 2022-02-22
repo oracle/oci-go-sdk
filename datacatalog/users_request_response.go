@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -124,6 +124,11 @@ var mappingUsersSortByEnum = map[string]UsersSortByEnum{
 	"DISPLAYNAME": UsersSortByDisplayname,
 }
 
+var mappingUsersSortByEnumLowerCase = map[string]UsersSortByEnum{
+	"timecreated": UsersSortByTimecreated,
+	"displayname": UsersSortByDisplayname,
+}
+
 // GetUsersSortByEnumValues Enumerates the set of values for UsersSortByEnum
 func GetUsersSortByEnumValues() []UsersSortByEnum {
 	values := make([]UsersSortByEnum, 0)
@@ -143,12 +148,7 @@ func GetUsersSortByEnumStringValues() []string {
 
 // GetMappingUsersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUsersSortByEnum(val string) (UsersSortByEnum, bool) {
-	mappingUsersSortByEnumIgnoreCase := make(map[string]UsersSortByEnum)
-	for k, v := range mappingUsersSortByEnum {
-		mappingUsersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUsersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUsersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -164,6 +164,11 @@ const (
 var mappingUsersSortOrderEnum = map[string]UsersSortOrderEnum{
 	"ASC":  UsersSortOrderAsc,
 	"DESC": UsersSortOrderDesc,
+}
+
+var mappingUsersSortOrderEnumLowerCase = map[string]UsersSortOrderEnum{
+	"asc":  UsersSortOrderAsc,
+	"desc": UsersSortOrderDesc,
 }
 
 // GetUsersSortOrderEnumValues Enumerates the set of values for UsersSortOrderEnum
@@ -185,11 +190,6 @@ func GetUsersSortOrderEnumStringValues() []string {
 
 // GetMappingUsersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUsersSortOrderEnum(val string) (UsersSortOrderEnum, bool) {
-	mappingUsersSortOrderEnumIgnoreCase := make(map[string]UsersSortOrderEnum)
-	for k, v := range mappingUsersSortOrderEnum {
-		mappingUsersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUsersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUsersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

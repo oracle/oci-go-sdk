@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -228,6 +228,10 @@ var mappingTriggerLifecycleStateEnum = map[string]TriggerLifecycleStateEnum{
 	"ACTIVE": TriggerLifecycleStateActive,
 }
 
+var mappingTriggerLifecycleStateEnumLowerCase = map[string]TriggerLifecycleStateEnum{
+	"active": TriggerLifecycleStateActive,
+}
+
 // GetTriggerLifecycleStateEnumValues Enumerates the set of values for TriggerLifecycleStateEnum
 func GetTriggerLifecycleStateEnumValues() []TriggerLifecycleStateEnum {
 	values := make([]TriggerLifecycleStateEnum, 0)
@@ -246,12 +250,7 @@ func GetTriggerLifecycleStateEnumStringValues() []string {
 
 // GetMappingTriggerLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTriggerLifecycleStateEnum(val string) (TriggerLifecycleStateEnum, bool) {
-	mappingTriggerLifecycleStateEnumIgnoreCase := make(map[string]TriggerLifecycleStateEnum)
-	for k, v := range mappingTriggerLifecycleStateEnum {
-		mappingTriggerLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTriggerLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTriggerLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -269,6 +268,12 @@ var mappingTriggerTriggerSourceEnum = map[string]TriggerTriggerSourceEnum{
 	"GITHUB":                 TriggerTriggerSourceGithub,
 	"GITLAB":                 TriggerTriggerSourceGitlab,
 	"DEVOPS_CODE_REPOSITORY": TriggerTriggerSourceDevopsCodeRepository,
+}
+
+var mappingTriggerTriggerSourceEnumLowerCase = map[string]TriggerTriggerSourceEnum{
+	"github":                 TriggerTriggerSourceGithub,
+	"gitlab":                 TriggerTriggerSourceGitlab,
+	"devops_code_repository": TriggerTriggerSourceDevopsCodeRepository,
 }
 
 // GetTriggerTriggerSourceEnumValues Enumerates the set of values for TriggerTriggerSourceEnum
@@ -291,11 +296,6 @@ func GetTriggerTriggerSourceEnumStringValues() []string {
 
 // GetMappingTriggerTriggerSourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTriggerTriggerSourceEnum(val string) (TriggerTriggerSourceEnum, bool) {
-	mappingTriggerTriggerSourceEnumIgnoreCase := make(map[string]TriggerTriggerSourceEnum)
-	for k, v := range mappingTriggerTriggerSourceEnum {
-		mappingTriggerTriggerSourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTriggerTriggerSourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTriggerTriggerSourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -13,7 +13,7 @@ package dns
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -205,6 +205,15 @@ var mappingResolverLifecycleStateEnum = map[string]ResolverLifecycleStateEnum{
 	"UPDATING": ResolverLifecycleStateUpdating,
 }
 
+var mappingResolverLifecycleStateEnumLowerCase = map[string]ResolverLifecycleStateEnum{
+	"active":   ResolverLifecycleStateActive,
+	"creating": ResolverLifecycleStateCreating,
+	"deleted":  ResolverLifecycleStateDeleted,
+	"deleting": ResolverLifecycleStateDeleting,
+	"failed":   ResolverLifecycleStateFailed,
+	"updating": ResolverLifecycleStateUpdating,
+}
+
 // GetResolverLifecycleStateEnumValues Enumerates the set of values for ResolverLifecycleStateEnum
 func GetResolverLifecycleStateEnumValues() []ResolverLifecycleStateEnum {
 	values := make([]ResolverLifecycleStateEnum, 0)
@@ -228,11 +237,6 @@ func GetResolverLifecycleStateEnumStringValues() []string {
 
 // GetMappingResolverLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingResolverLifecycleStateEnum(val string) (ResolverLifecycleStateEnum, bool) {
-	mappingResolverLifecycleStateEnumIgnoreCase := make(map[string]ResolverLifecycleStateEnum)
-	for k, v := range mappingResolverLifecycleStateEnum {
-		mappingResolverLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingResolverLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingResolverLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

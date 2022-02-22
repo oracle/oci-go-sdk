@@ -25,6 +25,10 @@ var mappingManagementAgentPluginGroupByEnum = map[string]ManagementAgentPluginGr
 	"pluginName": ManagementAgentPluginGroupByPluginName,
 }
 
+var mappingManagementAgentPluginGroupByEnumLowerCase = map[string]ManagementAgentPluginGroupByEnum{
+	"pluginname": ManagementAgentPluginGroupByPluginName,
+}
+
 // GetManagementAgentPluginGroupByEnumValues Enumerates the set of values for ManagementAgentPluginGroupByEnum
 func GetManagementAgentPluginGroupByEnumValues() []ManagementAgentPluginGroupByEnum {
 	values := make([]ManagementAgentPluginGroupByEnum, 0)
@@ -43,11 +47,6 @@ func GetManagementAgentPluginGroupByEnumStringValues() []string {
 
 // GetMappingManagementAgentPluginGroupByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingManagementAgentPluginGroupByEnum(val string) (ManagementAgentPluginGroupByEnum, bool) {
-	mappingManagementAgentPluginGroupByEnumIgnoreCase := make(map[string]ManagementAgentPluginGroupByEnum)
-	for k, v := range mappingManagementAgentPluginGroupByEnum {
-		mappingManagementAgentPluginGroupByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingManagementAgentPluginGroupByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingManagementAgentPluginGroupByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

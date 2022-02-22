@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -111,6 +111,19 @@ var mappingKeyVersionLifecycleStateEnum = map[string]KeyVersionLifecycleStateEnu
 	"CANCELLING_DELETION": KeyVersionLifecycleStateCancellingDeletion,
 }
 
+var mappingKeyVersionLifecycleStateEnumLowerCase = map[string]KeyVersionLifecycleStateEnum{
+	"creating":            KeyVersionLifecycleStateCreating,
+	"enabling":            KeyVersionLifecycleStateEnabling,
+	"enabled":             KeyVersionLifecycleStateEnabled,
+	"disabling":           KeyVersionLifecycleStateDisabling,
+	"disabled":            KeyVersionLifecycleStateDisabled,
+	"deleting":            KeyVersionLifecycleStateDeleting,
+	"deleted":             KeyVersionLifecycleStateDeleted,
+	"pending_deletion":    KeyVersionLifecycleStatePendingDeletion,
+	"scheduling_deletion": KeyVersionLifecycleStateSchedulingDeletion,
+	"cancelling_deletion": KeyVersionLifecycleStateCancellingDeletion,
+}
+
 // GetKeyVersionLifecycleStateEnumValues Enumerates the set of values for KeyVersionLifecycleStateEnum
 func GetKeyVersionLifecycleStateEnumValues() []KeyVersionLifecycleStateEnum {
 	values := make([]KeyVersionLifecycleStateEnum, 0)
@@ -138,12 +151,7 @@ func GetKeyVersionLifecycleStateEnumStringValues() []string {
 
 // GetMappingKeyVersionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingKeyVersionLifecycleStateEnum(val string) (KeyVersionLifecycleStateEnum, bool) {
-	mappingKeyVersionLifecycleStateEnumIgnoreCase := make(map[string]KeyVersionLifecycleStateEnum)
-	for k, v := range mappingKeyVersionLifecycleStateEnum {
-		mappingKeyVersionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingKeyVersionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingKeyVersionLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -159,6 +167,11 @@ const (
 var mappingKeyVersionOriginEnum = map[string]KeyVersionOriginEnum{
 	"INTERNAL": KeyVersionOriginInternal,
 	"EXTERNAL": KeyVersionOriginExternal,
+}
+
+var mappingKeyVersionOriginEnumLowerCase = map[string]KeyVersionOriginEnum{
+	"internal": KeyVersionOriginInternal,
+	"external": KeyVersionOriginExternal,
 }
 
 // GetKeyVersionOriginEnumValues Enumerates the set of values for KeyVersionOriginEnum
@@ -180,11 +193,6 @@ func GetKeyVersionOriginEnumStringValues() []string {
 
 // GetMappingKeyVersionOriginEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingKeyVersionOriginEnum(val string) (KeyVersionOriginEnum, bool) {
-	mappingKeyVersionOriginEnumIgnoreCase := make(map[string]KeyVersionOriginEnum)
-	for k, v := range mappingKeyVersionOriginEnum {
-		mappingKeyVersionOriginEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingKeyVersionOriginEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingKeyVersionOriginEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

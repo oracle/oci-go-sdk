@@ -11,7 +11,7 @@ package vault
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -112,6 +112,18 @@ var mappingSecretSummaryLifecycleStateEnum = map[string]SecretSummaryLifecycleSt
 	"FAILED":              SecretSummaryLifecycleStateFailed,
 }
 
+var mappingSecretSummaryLifecycleStateEnumLowerCase = map[string]SecretSummaryLifecycleStateEnum{
+	"creating":            SecretSummaryLifecycleStateCreating,
+	"active":              SecretSummaryLifecycleStateActive,
+	"updating":            SecretSummaryLifecycleStateUpdating,
+	"deleting":            SecretSummaryLifecycleStateDeleting,
+	"deleted":             SecretSummaryLifecycleStateDeleted,
+	"scheduling_deletion": SecretSummaryLifecycleStateSchedulingDeletion,
+	"pending_deletion":    SecretSummaryLifecycleStatePendingDeletion,
+	"cancelling_deletion": SecretSummaryLifecycleStateCancellingDeletion,
+	"failed":              SecretSummaryLifecycleStateFailed,
+}
+
 // GetSecretSummaryLifecycleStateEnumValues Enumerates the set of values for SecretSummaryLifecycleStateEnum
 func GetSecretSummaryLifecycleStateEnumValues() []SecretSummaryLifecycleStateEnum {
 	values := make([]SecretSummaryLifecycleStateEnum, 0)
@@ -138,11 +150,6 @@ func GetSecretSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingSecretSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSecretSummaryLifecycleStateEnum(val string) (SecretSummaryLifecycleStateEnum, bool) {
-	mappingSecretSummaryLifecycleStateEnumIgnoreCase := make(map[string]SecretSummaryLifecycleStateEnum)
-	for k, v := range mappingSecretSummaryLifecycleStateEnum {
-		mappingSecretSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSecretSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSecretSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

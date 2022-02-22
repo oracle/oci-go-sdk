@@ -6,7 +6,7 @@ package optimizer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -156,6 +156,11 @@ var mappingListResourceActionsSortOrderEnum = map[string]ListResourceActionsSort
 	"DESC": ListResourceActionsSortOrderDesc,
 }
 
+var mappingListResourceActionsSortOrderEnumLowerCase = map[string]ListResourceActionsSortOrderEnum{
+	"asc":  ListResourceActionsSortOrderAsc,
+	"desc": ListResourceActionsSortOrderDesc,
+}
+
 // GetListResourceActionsSortOrderEnumValues Enumerates the set of values for ListResourceActionsSortOrderEnum
 func GetListResourceActionsSortOrderEnumValues() []ListResourceActionsSortOrderEnum {
 	values := make([]ListResourceActionsSortOrderEnum, 0)
@@ -175,12 +180,7 @@ func GetListResourceActionsSortOrderEnumStringValues() []string {
 
 // GetMappingListResourceActionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResourceActionsSortOrderEnum(val string) (ListResourceActionsSortOrderEnum, bool) {
-	mappingListResourceActionsSortOrderEnumIgnoreCase := make(map[string]ListResourceActionsSortOrderEnum)
-	for k, v := range mappingListResourceActionsSortOrderEnum {
-		mappingListResourceActionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResourceActionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResourceActionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -196,6 +196,11 @@ const (
 var mappingListResourceActionsSortByEnum = map[string]ListResourceActionsSortByEnum{
 	"NAME":        ListResourceActionsSortByName,
 	"TIMECREATED": ListResourceActionsSortByTimecreated,
+}
+
+var mappingListResourceActionsSortByEnumLowerCase = map[string]ListResourceActionsSortByEnum{
+	"name":        ListResourceActionsSortByName,
+	"timecreated": ListResourceActionsSortByTimecreated,
 }
 
 // GetListResourceActionsSortByEnumValues Enumerates the set of values for ListResourceActionsSortByEnum
@@ -217,12 +222,7 @@ func GetListResourceActionsSortByEnumStringValues() []string {
 
 // GetMappingListResourceActionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResourceActionsSortByEnum(val string) (ListResourceActionsSortByEnum, bool) {
-	mappingListResourceActionsSortByEnumIgnoreCase := make(map[string]ListResourceActionsSortByEnum)
-	for k, v := range mappingListResourceActionsSortByEnum {
-		mappingListResourceActionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResourceActionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResourceActionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -254,6 +254,18 @@ var mappingListResourceActionsLifecycleStateEnum = map[string]ListResourceAction
 	"CREATING":  ListResourceActionsLifecycleStateCreating,
 }
 
+var mappingListResourceActionsLifecycleStateEnumLowerCase = map[string]ListResourceActionsLifecycleStateEnum{
+	"active":    ListResourceActionsLifecycleStateActive,
+	"failed":    ListResourceActionsLifecycleStateFailed,
+	"inactive":  ListResourceActionsLifecycleStateInactive,
+	"attaching": ListResourceActionsLifecycleStateAttaching,
+	"detaching": ListResourceActionsLifecycleStateDetaching,
+	"deleting":  ListResourceActionsLifecycleStateDeleting,
+	"deleted":   ListResourceActionsLifecycleStateDeleted,
+	"updating":  ListResourceActionsLifecycleStateUpdating,
+	"creating":  ListResourceActionsLifecycleStateCreating,
+}
+
 // GetListResourceActionsLifecycleStateEnumValues Enumerates the set of values for ListResourceActionsLifecycleStateEnum
 func GetListResourceActionsLifecycleStateEnumValues() []ListResourceActionsLifecycleStateEnum {
 	values := make([]ListResourceActionsLifecycleStateEnum, 0)
@@ -280,12 +292,7 @@ func GetListResourceActionsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListResourceActionsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResourceActionsLifecycleStateEnum(val string) (ListResourceActionsLifecycleStateEnum, bool) {
-	mappingListResourceActionsLifecycleStateEnumIgnoreCase := make(map[string]ListResourceActionsLifecycleStateEnum)
-	for k, v := range mappingListResourceActionsLifecycleStateEnum {
-		mappingListResourceActionsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResourceActionsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResourceActionsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -305,6 +312,13 @@ var mappingListResourceActionsStatusEnum = map[string]ListResourceActionsStatusE
 	"DISMISSED":   ListResourceActionsStatusDismissed,
 	"POSTPONED":   ListResourceActionsStatusPostponed,
 	"IMPLEMENTED": ListResourceActionsStatusImplemented,
+}
+
+var mappingListResourceActionsStatusEnumLowerCase = map[string]ListResourceActionsStatusEnum{
+	"pending":     ListResourceActionsStatusPending,
+	"dismissed":   ListResourceActionsStatusDismissed,
+	"postponed":   ListResourceActionsStatusPostponed,
+	"implemented": ListResourceActionsStatusImplemented,
 }
 
 // GetListResourceActionsStatusEnumValues Enumerates the set of values for ListResourceActionsStatusEnum
@@ -328,11 +342,6 @@ func GetListResourceActionsStatusEnumStringValues() []string {
 
 // GetMappingListResourceActionsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResourceActionsStatusEnum(val string) (ListResourceActionsStatusEnum, bool) {
-	mappingListResourceActionsStatusEnumIgnoreCase := make(map[string]ListResourceActionsStatusEnum)
-	for k, v := range mappingListResourceActionsStatusEnum {
-		mappingListResourceActionsStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResourceActionsStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResourceActionsStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

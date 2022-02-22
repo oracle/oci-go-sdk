@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -69,6 +69,13 @@ var mappingBulkEditOperationDetailsOperationTypeEnum = map[string]BulkEditOperat
 	"REMOVE":            BulkEditOperationDetailsOperationTypeRemove,
 }
 
+var mappingBulkEditOperationDetailsOperationTypeEnumLowerCase = map[string]BulkEditOperationDetailsOperationTypeEnum{
+	"add_where_absent":  BulkEditOperationDetailsOperationTypeAddWhereAbsent,
+	"set_where_present": BulkEditOperationDetailsOperationTypeSetWherePresent,
+	"add_or_set":        BulkEditOperationDetailsOperationTypeAddOrSet,
+	"remove":            BulkEditOperationDetailsOperationTypeRemove,
+}
+
 // GetBulkEditOperationDetailsOperationTypeEnumValues Enumerates the set of values for BulkEditOperationDetailsOperationTypeEnum
 func GetBulkEditOperationDetailsOperationTypeEnumValues() []BulkEditOperationDetailsOperationTypeEnum {
 	values := make([]BulkEditOperationDetailsOperationTypeEnum, 0)
@@ -90,11 +97,6 @@ func GetBulkEditOperationDetailsOperationTypeEnumStringValues() []string {
 
 // GetMappingBulkEditOperationDetailsOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBulkEditOperationDetailsOperationTypeEnum(val string) (BulkEditOperationDetailsOperationTypeEnum, bool) {
-	mappingBulkEditOperationDetailsOperationTypeEnumIgnoreCase := make(map[string]BulkEditOperationDetailsOperationTypeEnum)
-	for k, v := range mappingBulkEditOperationDetailsOperationTypeEnum {
-		mappingBulkEditOperationDetailsOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBulkEditOperationDetailsOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBulkEditOperationDetailsOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

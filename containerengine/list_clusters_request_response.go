@@ -6,7 +6,7 @@ package containerengine
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,11 @@ var mappingListClustersSortOrderEnum = map[string]ListClustersSortOrderEnum{
 	"DESC": ListClustersSortOrderDesc,
 }
 
+var mappingListClustersSortOrderEnumLowerCase = map[string]ListClustersSortOrderEnum{
+	"asc":  ListClustersSortOrderAsc,
+	"desc": ListClustersSortOrderDesc,
+}
+
 // GetListClustersSortOrderEnumValues Enumerates the set of values for ListClustersSortOrderEnum
 func GetListClustersSortOrderEnumValues() []ListClustersSortOrderEnum {
 	values := make([]ListClustersSortOrderEnum, 0)
@@ -160,12 +165,7 @@ func GetListClustersSortOrderEnumStringValues() []string {
 
 // GetMappingListClustersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListClustersSortOrderEnum(val string) (ListClustersSortOrderEnum, bool) {
-	mappingListClustersSortOrderEnumIgnoreCase := make(map[string]ListClustersSortOrderEnum)
-	for k, v := range mappingListClustersSortOrderEnum {
-		mappingListClustersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListClustersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListClustersSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +183,12 @@ var mappingListClustersSortByEnum = map[string]ListClustersSortByEnum{
 	"ID":           ListClustersSortById,
 	"NAME":         ListClustersSortByName,
 	"TIME_CREATED": ListClustersSortByTimeCreated,
+}
+
+var mappingListClustersSortByEnumLowerCase = map[string]ListClustersSortByEnum{
+	"id":           ListClustersSortById,
+	"name":         ListClustersSortByName,
+	"time_created": ListClustersSortByTimeCreated,
 }
 
 // GetListClustersSortByEnumValues Enumerates the set of values for ListClustersSortByEnum
@@ -205,11 +211,6 @@ func GetListClustersSortByEnumStringValues() []string {
 
 // GetMappingListClustersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListClustersSortByEnum(val string) (ListClustersSortByEnum, bool) {
-	mappingListClustersSortByEnumIgnoreCase := make(map[string]ListClustersSortByEnum)
-	for k, v := range mappingListClustersSortByEnum {
-		mappingListClustersSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListClustersSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListClustersSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

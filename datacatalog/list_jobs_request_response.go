@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -200,6 +200,12 @@ var mappingListJobsLifecycleStateEnum = map[string]ListJobsLifecycleStateEnum{
 	"EXPIRED":  ListJobsLifecycleStateExpired,
 }
 
+var mappingListJobsLifecycleStateEnumLowerCase = map[string]ListJobsLifecycleStateEnum{
+	"active":   ListJobsLifecycleStateActive,
+	"inactive": ListJobsLifecycleStateInactive,
+	"expired":  ListJobsLifecycleStateExpired,
+}
+
 // GetListJobsLifecycleStateEnumValues Enumerates the set of values for ListJobsLifecycleStateEnum
 func GetListJobsLifecycleStateEnumValues() []ListJobsLifecycleStateEnum {
 	values := make([]ListJobsLifecycleStateEnum, 0)
@@ -220,12 +226,7 @@ func GetListJobsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListJobsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJobsLifecycleStateEnum(val string) (ListJobsLifecycleStateEnum, bool) {
-	mappingListJobsLifecycleStateEnumIgnoreCase := make(map[string]ListJobsLifecycleStateEnum)
-	for k, v := range mappingListJobsLifecycleStateEnum {
-		mappingListJobsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJobsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJobsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -273,6 +274,26 @@ var mappingListJobsJobTypeEnum = map[string]ListJobsJobTypeEnum{
 	"IMPORT_DATA_ASSET":            ListJobsJobTypeImportDataAsset,
 }
 
+var mappingListJobsJobTypeEnumLowerCase = map[string]ListJobsJobTypeEnum{
+	"harvest":                      ListJobsJobTypeHarvest,
+	"profiling":                    ListJobsJobTypeProfiling,
+	"sampling":                     ListJobsJobTypeSampling,
+	"preview":                      ListJobsJobTypePreview,
+	"import":                       ListJobsJobTypeImport,
+	"export":                       ListJobsJobTypeExport,
+	"import_glossary":              ListJobsJobTypeImportGlossary,
+	"export_glossary":              ListJobsJobTypeExportGlossary,
+	"internal":                     ListJobsJobTypeInternal,
+	"purge":                        ListJobsJobTypePurge,
+	"immediate":                    ListJobsJobTypeImmediate,
+	"scheduled":                    ListJobsJobTypeScheduled,
+	"immediate_execution":          ListJobsJobTypeImmediateExecution,
+	"scheduled_execution":          ListJobsJobTypeScheduledExecution,
+	"scheduled_execution_instance": ListJobsJobTypeScheduledExecutionInstance,
+	"async_delete":                 ListJobsJobTypeAsyncDelete,
+	"import_data_asset":            ListJobsJobTypeImportDataAsset,
+}
+
 // GetListJobsJobTypeEnumValues Enumerates the set of values for ListJobsJobTypeEnum
 func GetListJobsJobTypeEnumValues() []ListJobsJobTypeEnum {
 	values := make([]ListJobsJobTypeEnum, 0)
@@ -307,12 +328,7 @@ func GetListJobsJobTypeEnumStringValues() []string {
 
 // GetMappingListJobsJobTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJobsJobTypeEnum(val string) (ListJobsJobTypeEnum, bool) {
-	mappingListJobsJobTypeEnumIgnoreCase := make(map[string]ListJobsJobTypeEnum)
-	for k, v := range mappingListJobsJobTypeEnum {
-		mappingListJobsJobTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJobsJobTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJobsJobTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -328,6 +344,11 @@ const (
 var mappingListJobsScheduleTypeEnum = map[string]ListJobsScheduleTypeEnum{
 	"SCHEDULED": ListJobsScheduleTypeScheduled,
 	"IMMEDIATE": ListJobsScheduleTypeImmediate,
+}
+
+var mappingListJobsScheduleTypeEnumLowerCase = map[string]ListJobsScheduleTypeEnum{
+	"scheduled": ListJobsScheduleTypeScheduled,
+	"immediate": ListJobsScheduleTypeImmediate,
 }
 
 // GetListJobsScheduleTypeEnumValues Enumerates the set of values for ListJobsScheduleTypeEnum
@@ -349,12 +370,7 @@ func GetListJobsScheduleTypeEnumStringValues() []string {
 
 // GetMappingListJobsScheduleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJobsScheduleTypeEnum(val string) (ListJobsScheduleTypeEnum, bool) {
-	mappingListJobsScheduleTypeEnumIgnoreCase := make(map[string]ListJobsScheduleTypeEnum)
-	for k, v := range mappingListJobsScheduleTypeEnum {
-		mappingListJobsScheduleTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJobsScheduleTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJobsScheduleTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -410,6 +426,30 @@ var mappingListJobsFieldsEnum = map[string]ListJobsFieldsEnum{
 	"errorMessage":           ListJobsFieldsErrormessage,
 }
 
+var mappingListJobsFieldsEnumLowerCase = map[string]ListJobsFieldsEnum{
+	"key":                    ListJobsFieldsKey,
+	"displayname":            ListJobsFieldsDisplayname,
+	"description":            ListJobsFieldsDescription,
+	"catalogid":              ListJobsFieldsCatalogid,
+	"jobdefinitionkey":       ListJobsFieldsJobdefinitionkey,
+	"lifecyclestate":         ListJobsFieldsLifecyclestate,
+	"timecreated":            ListJobsFieldsTimecreated,
+	"timeupdated":            ListJobsFieldsTimeupdated,
+	"createdbyid":            ListJobsFieldsCreatedbyid,
+	"updatedbyid":            ListJobsFieldsUpdatedbyid,
+	"jobtype":                ListJobsFieldsJobtype,
+	"schedulecronexpression": ListJobsFieldsSchedulecronexpression,
+	"timeschedulebegin":      ListJobsFieldsTimeschedulebegin,
+	"scheduletype":           ListJobsFieldsScheduletype,
+	"executioncount":         ListJobsFieldsExecutioncount,
+	"timeoflatestexecution":  ListJobsFieldsTimeoflatestexecution,
+	"executions":             ListJobsFieldsExecutions,
+	"uri":                    ListJobsFieldsUri,
+	"jobdefinitionname":      ListJobsFieldsJobdefinitionname,
+	"errorcode":              ListJobsFieldsErrorcode,
+	"errormessage":           ListJobsFieldsErrormessage,
+}
+
 // GetListJobsFieldsEnumValues Enumerates the set of values for ListJobsFieldsEnum
 func GetListJobsFieldsEnumValues() []ListJobsFieldsEnum {
 	values := make([]ListJobsFieldsEnum, 0)
@@ -448,12 +488,7 @@ func GetListJobsFieldsEnumStringValues() []string {
 
 // GetMappingListJobsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJobsFieldsEnum(val string) (ListJobsFieldsEnum, bool) {
-	mappingListJobsFieldsEnumIgnoreCase := make(map[string]ListJobsFieldsEnum)
-	for k, v := range mappingListJobsFieldsEnum {
-		mappingListJobsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJobsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJobsFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -469,6 +504,11 @@ const (
 var mappingListJobsSortByEnum = map[string]ListJobsSortByEnum{
 	"TIMECREATED": ListJobsSortByTimecreated,
 	"DISPLAYNAME": ListJobsSortByDisplayname,
+}
+
+var mappingListJobsSortByEnumLowerCase = map[string]ListJobsSortByEnum{
+	"timecreated": ListJobsSortByTimecreated,
+	"displayname": ListJobsSortByDisplayname,
 }
 
 // GetListJobsSortByEnumValues Enumerates the set of values for ListJobsSortByEnum
@@ -490,12 +530,7 @@ func GetListJobsSortByEnumStringValues() []string {
 
 // GetMappingListJobsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJobsSortByEnum(val string) (ListJobsSortByEnum, bool) {
-	mappingListJobsSortByEnumIgnoreCase := make(map[string]ListJobsSortByEnum)
-	for k, v := range mappingListJobsSortByEnum {
-		mappingListJobsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJobsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJobsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -511,6 +546,11 @@ const (
 var mappingListJobsSortOrderEnum = map[string]ListJobsSortOrderEnum{
 	"ASC":  ListJobsSortOrderAsc,
 	"DESC": ListJobsSortOrderDesc,
+}
+
+var mappingListJobsSortOrderEnumLowerCase = map[string]ListJobsSortOrderEnum{
+	"asc":  ListJobsSortOrderAsc,
+	"desc": ListJobsSortOrderDesc,
 }
 
 // GetListJobsSortOrderEnumValues Enumerates the set of values for ListJobsSortOrderEnum
@@ -532,11 +572,6 @@ func GetListJobsSortOrderEnumStringValues() []string {
 
 // GetMappingListJobsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListJobsSortOrderEnum(val string) (ListJobsSortOrderEnum, bool) {
-	mappingListJobsSortOrderEnumIgnoreCase := make(map[string]ListJobsSortOrderEnum)
-	for k, v := range mappingListJobsSortOrderEnum {
-		mappingListJobsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListJobsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListJobsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

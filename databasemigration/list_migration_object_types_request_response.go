@@ -6,7 +6,7 @@ package databasemigration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -123,6 +123,10 @@ var mappingListMigrationObjectTypesSortByEnum = map[string]ListMigrationObjectTy
 	"name": ListMigrationObjectTypesSortByName,
 }
 
+var mappingListMigrationObjectTypesSortByEnumLowerCase = map[string]ListMigrationObjectTypesSortByEnum{
+	"name": ListMigrationObjectTypesSortByName,
+}
+
 // GetListMigrationObjectTypesSortByEnumValues Enumerates the set of values for ListMigrationObjectTypesSortByEnum
 func GetListMigrationObjectTypesSortByEnumValues() []ListMigrationObjectTypesSortByEnum {
 	values := make([]ListMigrationObjectTypesSortByEnum, 0)
@@ -141,12 +145,7 @@ func GetListMigrationObjectTypesSortByEnumStringValues() []string {
 
 // GetMappingListMigrationObjectTypesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMigrationObjectTypesSortByEnum(val string) (ListMigrationObjectTypesSortByEnum, bool) {
-	mappingListMigrationObjectTypesSortByEnumIgnoreCase := make(map[string]ListMigrationObjectTypesSortByEnum)
-	for k, v := range mappingListMigrationObjectTypesSortByEnum {
-		mappingListMigrationObjectTypesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMigrationObjectTypesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMigrationObjectTypesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -162,6 +161,11 @@ const (
 var mappingListMigrationObjectTypesSortOrderEnum = map[string]ListMigrationObjectTypesSortOrderEnum{
 	"ASC":  ListMigrationObjectTypesSortOrderAsc,
 	"DESC": ListMigrationObjectTypesSortOrderDesc,
+}
+
+var mappingListMigrationObjectTypesSortOrderEnumLowerCase = map[string]ListMigrationObjectTypesSortOrderEnum{
+	"asc":  ListMigrationObjectTypesSortOrderAsc,
+	"desc": ListMigrationObjectTypesSortOrderDesc,
 }
 
 // GetListMigrationObjectTypesSortOrderEnumValues Enumerates the set of values for ListMigrationObjectTypesSortOrderEnum
@@ -183,11 +187,6 @@ func GetListMigrationObjectTypesSortOrderEnumStringValues() []string {
 
 // GetMappingListMigrationObjectTypesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMigrationObjectTypesSortOrderEnum(val string) (ListMigrationObjectTypesSortOrderEnum, bool) {
-	mappingListMigrationObjectTypesSortOrderEnumIgnoreCase := make(map[string]ListMigrationObjectTypesSortOrderEnum)
-	for k, v := range mappingListMigrationObjectTypesSortOrderEnum {
-		mappingListMigrationObjectTypesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMigrationObjectTypesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMigrationObjectTypesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

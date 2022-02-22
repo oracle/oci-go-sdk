@@ -12,7 +12,7 @@ package loganalytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -233,6 +233,15 @@ var mappingAbstractColumnTypeEnum = map[string]AbstractColumnTypeEnum{
 	"CLASSIFY_COLUMN":   AbstractColumnTypeClassifyColumn,
 }
 
+var mappingAbstractColumnTypeEnumLowerCase = map[string]AbstractColumnTypeEnum{
+	"column":            AbstractColumnTypeColumn,
+	"chart_column":      AbstractColumnTypeChartColumn,
+	"chart_data_column": AbstractColumnTypeChartDataColumn,
+	"time_column":       AbstractColumnTypeTimeColumn,
+	"trend_column":      AbstractColumnTypeTrendColumn,
+	"classify_column":   AbstractColumnTypeClassifyColumn,
+}
+
 // GetAbstractColumnTypeEnumValues Enumerates the set of values for AbstractColumnTypeEnum
 func GetAbstractColumnTypeEnumValues() []AbstractColumnTypeEnum {
 	values := make([]AbstractColumnTypeEnum, 0)
@@ -256,11 +265,6 @@ func GetAbstractColumnTypeEnumStringValues() []string {
 
 // GetMappingAbstractColumnTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAbstractColumnTypeEnum(val string) (AbstractColumnTypeEnum, bool) {
-	mappingAbstractColumnTypeEnumIgnoreCase := make(map[string]AbstractColumnTypeEnum)
-	for k, v := range mappingAbstractColumnTypeEnum {
-		mappingAbstractColumnTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAbstractColumnTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAbstractColumnTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

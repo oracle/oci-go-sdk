@@ -12,7 +12,7 @@ package cims
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -109,6 +109,12 @@ var mappingCreateLimitItemDetailsLimitStatusEnum = map[string]CreateLimitItemDet
 	"NOT_APPROVED":       CreateLimitItemDetailsLimitStatusNotApproved,
 }
 
+var mappingCreateLimitItemDetailsLimitStatusEnumLowerCase = map[string]CreateLimitItemDetailsLimitStatusEnum{
+	"approved":           CreateLimitItemDetailsLimitStatusApproved,
+	"partially_approved": CreateLimitItemDetailsLimitStatusPartiallyApproved,
+	"not_approved":       CreateLimitItemDetailsLimitStatusNotApproved,
+}
+
 // GetCreateLimitItemDetailsLimitStatusEnumValues Enumerates the set of values for CreateLimitItemDetailsLimitStatusEnum
 func GetCreateLimitItemDetailsLimitStatusEnumValues() []CreateLimitItemDetailsLimitStatusEnum {
 	values := make([]CreateLimitItemDetailsLimitStatusEnum, 0)
@@ -129,11 +135,6 @@ func GetCreateLimitItemDetailsLimitStatusEnumStringValues() []string {
 
 // GetMappingCreateLimitItemDetailsLimitStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateLimitItemDetailsLimitStatusEnum(val string) (CreateLimitItemDetailsLimitStatusEnum, bool) {
-	mappingCreateLimitItemDetailsLimitStatusEnumIgnoreCase := make(map[string]CreateLimitItemDetailsLimitStatusEnum)
-	for k, v := range mappingCreateLimitItemDetailsLimitStatusEnum {
-		mappingCreateLimitItemDetailsLimitStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateLimitItemDetailsLimitStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateLimitItemDetailsLimitStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

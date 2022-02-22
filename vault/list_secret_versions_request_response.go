@@ -6,7 +6,7 @@ package vault
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -128,6 +128,10 @@ var mappingListSecretVersionsSortByEnum = map[string]ListSecretVersionsSortByEnu
 	"VERSION_NUMBER": ListSecretVersionsSortByVersionNumber,
 }
 
+var mappingListSecretVersionsSortByEnumLowerCase = map[string]ListSecretVersionsSortByEnum{
+	"version_number": ListSecretVersionsSortByVersionNumber,
+}
+
 // GetListSecretVersionsSortByEnumValues Enumerates the set of values for ListSecretVersionsSortByEnum
 func GetListSecretVersionsSortByEnumValues() []ListSecretVersionsSortByEnum {
 	values := make([]ListSecretVersionsSortByEnum, 0)
@@ -146,12 +150,7 @@ func GetListSecretVersionsSortByEnumStringValues() []string {
 
 // GetMappingListSecretVersionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSecretVersionsSortByEnum(val string) (ListSecretVersionsSortByEnum, bool) {
-	mappingListSecretVersionsSortByEnumIgnoreCase := make(map[string]ListSecretVersionsSortByEnum)
-	for k, v := range mappingListSecretVersionsSortByEnum {
-		mappingListSecretVersionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSecretVersionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSecretVersionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -167,6 +166,11 @@ const (
 var mappingListSecretVersionsSortOrderEnum = map[string]ListSecretVersionsSortOrderEnum{
 	"ASC":  ListSecretVersionsSortOrderAsc,
 	"DESC": ListSecretVersionsSortOrderDesc,
+}
+
+var mappingListSecretVersionsSortOrderEnumLowerCase = map[string]ListSecretVersionsSortOrderEnum{
+	"asc":  ListSecretVersionsSortOrderAsc,
+	"desc": ListSecretVersionsSortOrderDesc,
 }
 
 // GetListSecretVersionsSortOrderEnumValues Enumerates the set of values for ListSecretVersionsSortOrderEnum
@@ -188,11 +192,6 @@ func GetListSecretVersionsSortOrderEnumStringValues() []string {
 
 // GetMappingListSecretVersionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSecretVersionsSortOrderEnum(val string) (ListSecretVersionsSortOrderEnum, bool) {
-	mappingListSecretVersionsSortOrderEnumIgnoreCase := make(map[string]ListSecretVersionsSortOrderEnum)
-	for k, v := range mappingListSecretVersionsSortOrderEnum {
-		mappingListSecretVersionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSecretVersionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSecretVersionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

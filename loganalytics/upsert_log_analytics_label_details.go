@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,13 @@ var mappingUpsertLogAnalyticsLabelDetailsPriorityEnum = map[string]UpsertLogAnal
 	"HIGH":   UpsertLogAnalyticsLabelDetailsPriorityHigh,
 }
 
+var mappingUpsertLogAnalyticsLabelDetailsPriorityEnumLowerCase = map[string]UpsertLogAnalyticsLabelDetailsPriorityEnum{
+	"none":   UpsertLogAnalyticsLabelDetailsPriorityNone,
+	"low":    UpsertLogAnalyticsLabelDetailsPriorityLow,
+	"medium": UpsertLogAnalyticsLabelDetailsPriorityMedium,
+	"high":   UpsertLogAnalyticsLabelDetailsPriorityHigh,
+}
+
 // GetUpsertLogAnalyticsLabelDetailsPriorityEnumValues Enumerates the set of values for UpsertLogAnalyticsLabelDetailsPriorityEnum
 func GetUpsertLogAnalyticsLabelDetailsPriorityEnumValues() []UpsertLogAnalyticsLabelDetailsPriorityEnum {
 	values := make([]UpsertLogAnalyticsLabelDetailsPriorityEnum, 0)
@@ -114,12 +121,7 @@ func GetUpsertLogAnalyticsLabelDetailsPriorityEnumStringValues() []string {
 
 // GetMappingUpsertLogAnalyticsLabelDetailsPriorityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpsertLogAnalyticsLabelDetailsPriorityEnum(val string) (UpsertLogAnalyticsLabelDetailsPriorityEnum, bool) {
-	mappingUpsertLogAnalyticsLabelDetailsPriorityEnumIgnoreCase := make(map[string]UpsertLogAnalyticsLabelDetailsPriorityEnum)
-	for k, v := range mappingUpsertLogAnalyticsLabelDetailsPriorityEnum {
-		mappingUpsertLogAnalyticsLabelDetailsPriorityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpsertLogAnalyticsLabelDetailsPriorityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpsertLogAnalyticsLabelDetailsPriorityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -135,6 +137,11 @@ const (
 var mappingUpsertLogAnalyticsLabelDetailsTypeEnum = map[string]UpsertLogAnalyticsLabelDetailsTypeEnum{
 	"INFO":    UpsertLogAnalyticsLabelDetailsTypeInfo,
 	"PROBLEM": UpsertLogAnalyticsLabelDetailsTypeProblem,
+}
+
+var mappingUpsertLogAnalyticsLabelDetailsTypeEnumLowerCase = map[string]UpsertLogAnalyticsLabelDetailsTypeEnum{
+	"info":    UpsertLogAnalyticsLabelDetailsTypeInfo,
+	"problem": UpsertLogAnalyticsLabelDetailsTypeProblem,
 }
 
 // GetUpsertLogAnalyticsLabelDetailsTypeEnumValues Enumerates the set of values for UpsertLogAnalyticsLabelDetailsTypeEnum
@@ -156,11 +163,6 @@ func GetUpsertLogAnalyticsLabelDetailsTypeEnumStringValues() []string {
 
 // GetMappingUpsertLogAnalyticsLabelDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpsertLogAnalyticsLabelDetailsTypeEnum(val string) (UpsertLogAnalyticsLabelDetailsTypeEnum, bool) {
-	mappingUpsertLogAnalyticsLabelDetailsTypeEnumIgnoreCase := make(map[string]UpsertLogAnalyticsLabelDetailsTypeEnum)
-	for k, v := range mappingUpsertLogAnalyticsLabelDetailsTypeEnum {
-		mappingUpsertLogAnalyticsLabelDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpsertLogAnalyticsLabelDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpsertLogAnalyticsLabelDetailsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

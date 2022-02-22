@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -142,6 +142,16 @@ var mappingListConditionMetadataTypesLifecycleStateEnum = map[string]ListConditi
 	"FAILED":   ListConditionMetadataTypesLifecycleStateFailed,
 }
 
+var mappingListConditionMetadataTypesLifecycleStateEnumLowerCase = map[string]ListConditionMetadataTypesLifecycleStateEnum{
+	"creating": ListConditionMetadataTypesLifecycleStateCreating,
+	"updating": ListConditionMetadataTypesLifecycleStateUpdating,
+	"active":   ListConditionMetadataTypesLifecycleStateActive,
+	"inactive": ListConditionMetadataTypesLifecycleStateInactive,
+	"deleting": ListConditionMetadataTypesLifecycleStateDeleting,
+	"deleted":  ListConditionMetadataTypesLifecycleStateDeleted,
+	"failed":   ListConditionMetadataTypesLifecycleStateFailed,
+}
+
 // GetListConditionMetadataTypesLifecycleStateEnumValues Enumerates the set of values for ListConditionMetadataTypesLifecycleStateEnum
 func GetListConditionMetadataTypesLifecycleStateEnumValues() []ListConditionMetadataTypesLifecycleStateEnum {
 	values := make([]ListConditionMetadataTypesLifecycleStateEnum, 0)
@@ -166,12 +176,7 @@ func GetListConditionMetadataTypesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListConditionMetadataTypesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConditionMetadataTypesLifecycleStateEnum(val string) (ListConditionMetadataTypesLifecycleStateEnum, bool) {
-	mappingListConditionMetadataTypesLifecycleStateEnumIgnoreCase := make(map[string]ListConditionMetadataTypesLifecycleStateEnum)
-	for k, v := range mappingListConditionMetadataTypesLifecycleStateEnum {
-		mappingListConditionMetadataTypesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConditionMetadataTypesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConditionMetadataTypesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +192,11 @@ const (
 var mappingListConditionMetadataTypesSortOrderEnum = map[string]ListConditionMetadataTypesSortOrderEnum{
 	"ASC":  ListConditionMetadataTypesSortOrderAsc,
 	"DESC": ListConditionMetadataTypesSortOrderDesc,
+}
+
+var mappingListConditionMetadataTypesSortOrderEnumLowerCase = map[string]ListConditionMetadataTypesSortOrderEnum{
+	"asc":  ListConditionMetadataTypesSortOrderAsc,
+	"desc": ListConditionMetadataTypesSortOrderDesc,
 }
 
 // GetListConditionMetadataTypesSortOrderEnumValues Enumerates the set of values for ListConditionMetadataTypesSortOrderEnum
@@ -208,12 +218,7 @@ func GetListConditionMetadataTypesSortOrderEnumStringValues() []string {
 
 // GetMappingListConditionMetadataTypesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConditionMetadataTypesSortOrderEnum(val string) (ListConditionMetadataTypesSortOrderEnum, bool) {
-	mappingListConditionMetadataTypesSortOrderEnumIgnoreCase := make(map[string]ListConditionMetadataTypesSortOrderEnum)
-	for k, v := range mappingListConditionMetadataTypesSortOrderEnum {
-		mappingListConditionMetadataTypesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConditionMetadataTypesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConditionMetadataTypesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -229,6 +234,11 @@ const (
 var mappingListConditionMetadataTypesSortByEnum = map[string]ListConditionMetadataTypesSortByEnum{
 	"timeCreated": ListConditionMetadataTypesSortByTimecreated,
 	"displayName": ListConditionMetadataTypesSortByDisplayname,
+}
+
+var mappingListConditionMetadataTypesSortByEnumLowerCase = map[string]ListConditionMetadataTypesSortByEnum{
+	"timecreated": ListConditionMetadataTypesSortByTimecreated,
+	"displayname": ListConditionMetadataTypesSortByDisplayname,
 }
 
 // GetListConditionMetadataTypesSortByEnumValues Enumerates the set of values for ListConditionMetadataTypesSortByEnum
@@ -250,11 +260,6 @@ func GetListConditionMetadataTypesSortByEnumStringValues() []string {
 
 // GetMappingListConditionMetadataTypesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListConditionMetadataTypesSortByEnum(val string) (ListConditionMetadataTypesSortByEnum, bool) {
-	mappingListConditionMetadataTypesSortByEnumIgnoreCase := make(map[string]ListConditionMetadataTypesSortByEnum)
-	for k, v := range mappingListConditionMetadataTypesSortByEnum {
-		mappingListConditionMetadataTypesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListConditionMetadataTypesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListConditionMetadataTypesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

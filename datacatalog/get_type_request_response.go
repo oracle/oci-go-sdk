@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,21 @@ var mappingGetTypeFieldsEnum = map[string]GetTypeFieldsEnum{
 	"uri":              GetTypeFieldsUri,
 }
 
+var mappingGetTypeFieldsEnumLowerCase = map[string]GetTypeFieldsEnum{
+	"key":              GetTypeFieldsKey,
+	"description":      GetTypeFieldsDescription,
+	"name":             GetTypeFieldsName,
+	"catalogid":        GetTypeFieldsCatalogid,
+	"properties":       GetTypeFieldsProperties,
+	"isinternal":       GetTypeFieldsIsinternal,
+	"istag":            GetTypeFieldsIstag,
+	"isapproved":       GetTypeFieldsIsapproved,
+	"typecategory":     GetTypeFieldsTypecategory,
+	"externaltypename": GetTypeFieldsExternaltypename,
+	"lifecyclestate":   GetTypeFieldsLifecyclestate,
+	"uri":              GetTypeFieldsUri,
+}
+
 // GetGetTypeFieldsEnumValues Enumerates the set of values for GetTypeFieldsEnum
 func GetGetTypeFieldsEnumValues() []GetTypeFieldsEnum {
 	values := make([]GetTypeFieldsEnum, 0)
@@ -167,11 +182,6 @@ func GetGetTypeFieldsEnumStringValues() []string {
 
 // GetMappingGetTypeFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetTypeFieldsEnum(val string) (GetTypeFieldsEnum, bool) {
-	mappingGetTypeFieldsEnumIgnoreCase := make(map[string]GetTypeFieldsEnum)
-	for k, v := range mappingGetTypeFieldsEnum {
-		mappingGetTypeFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetTypeFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetTypeFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -184,6 +184,15 @@ var mappingPublishedObjectModelTypeEnum = map[string]PublishedObjectModelTypeEnu
 	"REST_TASK":         PublishedObjectModelTypeRestTask,
 }
 
+var mappingPublishedObjectModelTypeEnumLowerCase = map[string]PublishedObjectModelTypeEnum{
+	"integration_task":  PublishedObjectModelTypeIntegrationTask,
+	"data_loader_task":  PublishedObjectModelTypeDataLoaderTask,
+	"pipeline_task":     PublishedObjectModelTypePipelineTask,
+	"sql_task":          PublishedObjectModelTypeSqlTask,
+	"oci_dataflow_task": PublishedObjectModelTypeOciDataflowTask,
+	"rest_task":         PublishedObjectModelTypeRestTask,
+}
+
 // GetPublishedObjectModelTypeEnumValues Enumerates the set of values for PublishedObjectModelTypeEnum
 func GetPublishedObjectModelTypeEnumValues() []PublishedObjectModelTypeEnum {
 	values := make([]PublishedObjectModelTypeEnum, 0)
@@ -207,11 +216,6 @@ func GetPublishedObjectModelTypeEnumStringValues() []string {
 
 // GetMappingPublishedObjectModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPublishedObjectModelTypeEnum(val string) (PublishedObjectModelTypeEnum, bool) {
-	mappingPublishedObjectModelTypeEnumIgnoreCase := make(map[string]PublishedObjectModelTypeEnum)
-	for k, v := range mappingPublishedObjectModelTypeEnum {
-		mappingPublishedObjectModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPublishedObjectModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPublishedObjectModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

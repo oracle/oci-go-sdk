@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -160,6 +160,11 @@ var mappingListImagesSortByEnum = map[string]ListImagesSortByEnum{
 	"DISPLAYNAME": ListImagesSortByDisplayname,
 }
 
+var mappingListImagesSortByEnumLowerCase = map[string]ListImagesSortByEnum{
+	"timecreated": ListImagesSortByTimecreated,
+	"displayname": ListImagesSortByDisplayname,
+}
+
 // GetListImagesSortByEnumValues Enumerates the set of values for ListImagesSortByEnum
 func GetListImagesSortByEnumValues() []ListImagesSortByEnum {
 	values := make([]ListImagesSortByEnum, 0)
@@ -179,12 +184,7 @@ func GetListImagesSortByEnumStringValues() []string {
 
 // GetMappingListImagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListImagesSortByEnum(val string) (ListImagesSortByEnum, bool) {
-	mappingListImagesSortByEnumIgnoreCase := make(map[string]ListImagesSortByEnum)
-	for k, v := range mappingListImagesSortByEnum {
-		mappingListImagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListImagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListImagesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -200,6 +200,11 @@ const (
 var mappingListImagesSortOrderEnum = map[string]ListImagesSortOrderEnum{
 	"ASC":  ListImagesSortOrderAsc,
 	"DESC": ListImagesSortOrderDesc,
+}
+
+var mappingListImagesSortOrderEnumLowerCase = map[string]ListImagesSortOrderEnum{
+	"asc":  ListImagesSortOrderAsc,
+	"desc": ListImagesSortOrderDesc,
 }
 
 // GetListImagesSortOrderEnumValues Enumerates the set of values for ListImagesSortOrderEnum
@@ -221,11 +226,6 @@ func GetListImagesSortOrderEnumStringValues() []string {
 
 // GetMappingListImagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListImagesSortOrderEnum(val string) (ListImagesSortOrderEnum, bool) {
-	mappingListImagesSortOrderEnumIgnoreCase := make(map[string]ListImagesSortOrderEnum)
-	for k, v := range mappingListImagesSortOrderEnum {
-		mappingListImagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListImagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListImagesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

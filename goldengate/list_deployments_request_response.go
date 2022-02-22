@@ -6,7 +6,7 @@ package goldengate
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -161,6 +161,21 @@ var mappingListDeploymentsLifecycleStateEnum = map[string]ListDeploymentsLifecyc
 	"SUCCEEDED":       ListDeploymentsLifecycleStateSucceeded,
 }
 
+var mappingListDeploymentsLifecycleStateEnumLowerCase = map[string]ListDeploymentsLifecycleStateEnum{
+	"creating":        ListDeploymentsLifecycleStateCreating,
+	"updating":        ListDeploymentsLifecycleStateUpdating,
+	"active":          ListDeploymentsLifecycleStateActive,
+	"inactive":        ListDeploymentsLifecycleStateInactive,
+	"deleting":        ListDeploymentsLifecycleStateDeleting,
+	"deleted":         ListDeploymentsLifecycleStateDeleted,
+	"failed":          ListDeploymentsLifecycleStateFailed,
+	"needs_attention": ListDeploymentsLifecycleStateNeedsAttention,
+	"in_progress":     ListDeploymentsLifecycleStateInProgress,
+	"canceling":       ListDeploymentsLifecycleStateCanceling,
+	"canceled":        ListDeploymentsLifecycleStateCanceled,
+	"succeeded":       ListDeploymentsLifecycleStateSucceeded,
+}
+
 // GetListDeploymentsLifecycleStateEnumValues Enumerates the set of values for ListDeploymentsLifecycleStateEnum
 func GetListDeploymentsLifecycleStateEnumValues() []ListDeploymentsLifecycleStateEnum {
 	values := make([]ListDeploymentsLifecycleStateEnum, 0)
@@ -190,12 +205,7 @@ func GetListDeploymentsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListDeploymentsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDeploymentsLifecycleStateEnum(val string) (ListDeploymentsLifecycleStateEnum, bool) {
-	mappingListDeploymentsLifecycleStateEnumIgnoreCase := make(map[string]ListDeploymentsLifecycleStateEnum)
-	for k, v := range mappingListDeploymentsLifecycleStateEnum {
-		mappingListDeploymentsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDeploymentsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDeploymentsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -223,6 +233,16 @@ var mappingListDeploymentsLifecycleSubStateEnum = map[string]ListDeploymentsLife
 	"BACKUP_IN_PROGRESS": ListDeploymentsLifecycleSubStateBackupInProgress,
 }
 
+var mappingListDeploymentsLifecycleSubStateEnumLowerCase = map[string]ListDeploymentsLifecycleSubStateEnum{
+	"recovering":         ListDeploymentsLifecycleSubStateRecovering,
+	"starting":           ListDeploymentsLifecycleSubStateStarting,
+	"stopping":           ListDeploymentsLifecycleSubStateStopping,
+	"moving":             ListDeploymentsLifecycleSubStateMoving,
+	"upgrading":          ListDeploymentsLifecycleSubStateUpgrading,
+	"restoring":          ListDeploymentsLifecycleSubStateRestoring,
+	"backup_in_progress": ListDeploymentsLifecycleSubStateBackupInProgress,
+}
+
 // GetListDeploymentsLifecycleSubStateEnumValues Enumerates the set of values for ListDeploymentsLifecycleSubStateEnum
 func GetListDeploymentsLifecycleSubStateEnumValues() []ListDeploymentsLifecycleSubStateEnum {
 	values := make([]ListDeploymentsLifecycleSubStateEnum, 0)
@@ -247,12 +267,7 @@ func GetListDeploymentsLifecycleSubStateEnumStringValues() []string {
 
 // GetMappingListDeploymentsLifecycleSubStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDeploymentsLifecycleSubStateEnum(val string) (ListDeploymentsLifecycleSubStateEnum, bool) {
-	mappingListDeploymentsLifecycleSubStateEnumIgnoreCase := make(map[string]ListDeploymentsLifecycleSubStateEnum)
-	for k, v := range mappingListDeploymentsLifecycleSubStateEnum {
-		mappingListDeploymentsLifecycleSubStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDeploymentsLifecycleSubStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDeploymentsLifecycleSubStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -268,6 +283,11 @@ const (
 var mappingListDeploymentsSortOrderEnum = map[string]ListDeploymentsSortOrderEnum{
 	"ASC":  ListDeploymentsSortOrderAsc,
 	"DESC": ListDeploymentsSortOrderDesc,
+}
+
+var mappingListDeploymentsSortOrderEnumLowerCase = map[string]ListDeploymentsSortOrderEnum{
+	"asc":  ListDeploymentsSortOrderAsc,
+	"desc": ListDeploymentsSortOrderDesc,
 }
 
 // GetListDeploymentsSortOrderEnumValues Enumerates the set of values for ListDeploymentsSortOrderEnum
@@ -289,12 +309,7 @@ func GetListDeploymentsSortOrderEnumStringValues() []string {
 
 // GetMappingListDeploymentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDeploymentsSortOrderEnum(val string) (ListDeploymentsSortOrderEnum, bool) {
-	mappingListDeploymentsSortOrderEnumIgnoreCase := make(map[string]ListDeploymentsSortOrderEnum)
-	for k, v := range mappingListDeploymentsSortOrderEnum {
-		mappingListDeploymentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDeploymentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDeploymentsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -310,6 +325,11 @@ const (
 var mappingListDeploymentsSortByEnum = map[string]ListDeploymentsSortByEnum{
 	"timeCreated": ListDeploymentsSortByTimecreated,
 	"displayName": ListDeploymentsSortByDisplayname,
+}
+
+var mappingListDeploymentsSortByEnumLowerCase = map[string]ListDeploymentsSortByEnum{
+	"timecreated": ListDeploymentsSortByTimecreated,
+	"displayname": ListDeploymentsSortByDisplayname,
 }
 
 // GetListDeploymentsSortByEnumValues Enumerates the set of values for ListDeploymentsSortByEnum
@@ -331,11 +351,6 @@ func GetListDeploymentsSortByEnumStringValues() []string {
 
 // GetMappingListDeploymentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDeploymentsSortByEnum(val string) (ListDeploymentsSortByEnum, bool) {
-	mappingListDeploymentsSortByEnumIgnoreCase := make(map[string]ListDeploymentsSortByEnum)
-	for k, v := range mappingListDeploymentsSortByEnum {
-		mappingListDeploymentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDeploymentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDeploymentsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

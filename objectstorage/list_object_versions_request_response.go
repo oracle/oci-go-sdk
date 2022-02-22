@@ -6,7 +6,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -169,6 +169,17 @@ var mappingListObjectVersionsFieldsEnum = map[string]ListObjectVersionsFieldsEnu
 	"archivalState": ListObjectVersionsFieldsArchivalstate,
 }
 
+var mappingListObjectVersionsFieldsEnumLowerCase = map[string]ListObjectVersionsFieldsEnum{
+	"name":          ListObjectVersionsFieldsName,
+	"size":          ListObjectVersionsFieldsSize,
+	"etag":          ListObjectVersionsFieldsEtag,
+	"timecreated":   ListObjectVersionsFieldsTimecreated,
+	"md5":           ListObjectVersionsFieldsMd5,
+	"timemodified":  ListObjectVersionsFieldsTimemodified,
+	"storagetier":   ListObjectVersionsFieldsStoragetier,
+	"archivalstate": ListObjectVersionsFieldsArchivalstate,
+}
+
 // GetListObjectVersionsFieldsEnumValues Enumerates the set of values for ListObjectVersionsFieldsEnum
 func GetListObjectVersionsFieldsEnumValues() []ListObjectVersionsFieldsEnum {
 	values := make([]ListObjectVersionsFieldsEnum, 0)
@@ -194,11 +205,6 @@ func GetListObjectVersionsFieldsEnumStringValues() []string {
 
 // GetMappingListObjectVersionsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListObjectVersionsFieldsEnum(val string) (ListObjectVersionsFieldsEnum, bool) {
-	mappingListObjectVersionsFieldsEnumIgnoreCase := make(map[string]ListObjectVersionsFieldsEnum)
-	for k, v := range mappingListObjectVersionsFieldsEnum {
-		mappingListObjectVersionsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListObjectVersionsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListObjectVersionsFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

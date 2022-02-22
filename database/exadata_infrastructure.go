@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -186,6 +186,20 @@ var mappingExadataInfrastructureLifecycleStateEnum = map[string]ExadataInfrastru
 	"MAINTENANCE_IN_PROGRESS": ExadataInfrastructureLifecycleStateMaintenanceInProgress,
 }
 
+var mappingExadataInfrastructureLifecycleStateEnumLowerCase = map[string]ExadataInfrastructureLifecycleStateEnum{
+	"creating":                ExadataInfrastructureLifecycleStateCreating,
+	"requires_activation":     ExadataInfrastructureLifecycleStateRequiresActivation,
+	"activating":              ExadataInfrastructureLifecycleStateActivating,
+	"active":                  ExadataInfrastructureLifecycleStateActive,
+	"activation_failed":       ExadataInfrastructureLifecycleStateActivationFailed,
+	"failed":                  ExadataInfrastructureLifecycleStateFailed,
+	"updating":                ExadataInfrastructureLifecycleStateUpdating,
+	"deleting":                ExadataInfrastructureLifecycleStateDeleting,
+	"deleted":                 ExadataInfrastructureLifecycleStateDeleted,
+	"disconnected":            ExadataInfrastructureLifecycleStateDisconnected,
+	"maintenance_in_progress": ExadataInfrastructureLifecycleStateMaintenanceInProgress,
+}
+
 // GetExadataInfrastructureLifecycleStateEnumValues Enumerates the set of values for ExadataInfrastructureLifecycleStateEnum
 func GetExadataInfrastructureLifecycleStateEnumValues() []ExadataInfrastructureLifecycleStateEnum {
 	values := make([]ExadataInfrastructureLifecycleStateEnum, 0)
@@ -214,12 +228,7 @@ func GetExadataInfrastructureLifecycleStateEnumStringValues() []string {
 
 // GetMappingExadataInfrastructureLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExadataInfrastructureLifecycleStateEnum(val string) (ExadataInfrastructureLifecycleStateEnum, bool) {
-	mappingExadataInfrastructureLifecycleStateEnumIgnoreCase := make(map[string]ExadataInfrastructureLifecycleStateEnum)
-	for k, v := range mappingExadataInfrastructureLifecycleStateEnum {
-		mappingExadataInfrastructureLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExadataInfrastructureLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExadataInfrastructureLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -235,6 +244,11 @@ const (
 var mappingExadataInfrastructureMaintenanceSLOStatusEnum = map[string]ExadataInfrastructureMaintenanceSLOStatusEnum{
 	"OK":       ExadataInfrastructureMaintenanceSLOStatusOk,
 	"DEGRADED": ExadataInfrastructureMaintenanceSLOStatusDegraded,
+}
+
+var mappingExadataInfrastructureMaintenanceSLOStatusEnumLowerCase = map[string]ExadataInfrastructureMaintenanceSLOStatusEnum{
+	"ok":       ExadataInfrastructureMaintenanceSLOStatusOk,
+	"degraded": ExadataInfrastructureMaintenanceSLOStatusDegraded,
 }
 
 // GetExadataInfrastructureMaintenanceSLOStatusEnumValues Enumerates the set of values for ExadataInfrastructureMaintenanceSLOStatusEnum
@@ -256,11 +270,6 @@ func GetExadataInfrastructureMaintenanceSLOStatusEnumStringValues() []string {
 
 // GetMappingExadataInfrastructureMaintenanceSLOStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingExadataInfrastructureMaintenanceSLOStatusEnum(val string) (ExadataInfrastructureMaintenanceSLOStatusEnum, bool) {
-	mappingExadataInfrastructureMaintenanceSLOStatusEnumIgnoreCase := make(map[string]ExadataInfrastructureMaintenanceSLOStatusEnum)
-	for k, v := range mappingExadataInfrastructureMaintenanceSLOStatusEnum {
-		mappingExadataInfrastructureMaintenanceSLOStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingExadataInfrastructureMaintenanceSLOStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingExadataInfrastructureMaintenanceSLOStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

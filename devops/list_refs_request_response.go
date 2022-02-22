@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -135,6 +135,11 @@ var mappingListRefsRefTypeEnum = map[string]ListRefsRefTypeEnum{
 	"TAG":    ListRefsRefTypeTag,
 }
 
+var mappingListRefsRefTypeEnumLowerCase = map[string]ListRefsRefTypeEnum{
+	"branch": ListRefsRefTypeBranch,
+	"tag":    ListRefsRefTypeTag,
+}
+
 // GetListRefsRefTypeEnumValues Enumerates the set of values for ListRefsRefTypeEnum
 func GetListRefsRefTypeEnumValues() []ListRefsRefTypeEnum {
 	values := make([]ListRefsRefTypeEnum, 0)
@@ -154,12 +159,7 @@ func GetListRefsRefTypeEnumStringValues() []string {
 
 // GetMappingListRefsRefTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRefsRefTypeEnum(val string) (ListRefsRefTypeEnum, bool) {
-	mappingListRefsRefTypeEnumIgnoreCase := make(map[string]ListRefsRefTypeEnum)
-	for k, v := range mappingListRefsRefTypeEnum {
-		mappingListRefsRefTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRefsRefTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRefsRefTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -175,6 +175,11 @@ const (
 var mappingListRefsSortOrderEnum = map[string]ListRefsSortOrderEnum{
 	"ASC":  ListRefsSortOrderAsc,
 	"DESC": ListRefsSortOrderDesc,
+}
+
+var mappingListRefsSortOrderEnumLowerCase = map[string]ListRefsSortOrderEnum{
+	"asc":  ListRefsSortOrderAsc,
+	"desc": ListRefsSortOrderDesc,
 }
 
 // GetListRefsSortOrderEnumValues Enumerates the set of values for ListRefsSortOrderEnum
@@ -196,12 +201,7 @@ func GetListRefsSortOrderEnumStringValues() []string {
 
 // GetMappingListRefsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRefsSortOrderEnum(val string) (ListRefsSortOrderEnum, bool) {
-	mappingListRefsSortOrderEnumIgnoreCase := make(map[string]ListRefsSortOrderEnum)
-	for k, v := range mappingListRefsSortOrderEnum {
-		mappingListRefsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRefsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRefsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -217,6 +217,11 @@ const (
 var mappingListRefsSortByEnum = map[string]ListRefsSortByEnum{
 	"refType": ListRefsSortByReftype,
 	"refName": ListRefsSortByRefname,
+}
+
+var mappingListRefsSortByEnumLowerCase = map[string]ListRefsSortByEnum{
+	"reftype": ListRefsSortByReftype,
+	"refname": ListRefsSortByRefname,
 }
 
 // GetListRefsSortByEnumValues Enumerates the set of values for ListRefsSortByEnum
@@ -238,11 +243,6 @@ func GetListRefsSortByEnumStringValues() []string {
 
 // GetMappingListRefsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRefsSortByEnum(val string) (ListRefsSortByEnum, bool) {
-	mappingListRefsSortByEnumIgnoreCase := make(map[string]ListRefsSortByEnum)
-	for k, v := range mappingListRefsSortByEnum {
-		mappingListRefsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRefsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRefsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

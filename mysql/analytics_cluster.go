@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -89,6 +89,16 @@ var mappingAnalyticsClusterLifecycleStateEnum = map[string]AnalyticsClusterLifec
 	"FAILED":   AnalyticsClusterLifecycleStateFailed,
 }
 
+var mappingAnalyticsClusterLifecycleStateEnumLowerCase = map[string]AnalyticsClusterLifecycleStateEnum{
+	"creating": AnalyticsClusterLifecycleStateCreating,
+	"active":   AnalyticsClusterLifecycleStateActive,
+	"inactive": AnalyticsClusterLifecycleStateInactive,
+	"updating": AnalyticsClusterLifecycleStateUpdating,
+	"deleting": AnalyticsClusterLifecycleStateDeleting,
+	"deleted":  AnalyticsClusterLifecycleStateDeleted,
+	"failed":   AnalyticsClusterLifecycleStateFailed,
+}
+
 // GetAnalyticsClusterLifecycleStateEnumValues Enumerates the set of values for AnalyticsClusterLifecycleStateEnum
 func GetAnalyticsClusterLifecycleStateEnumValues() []AnalyticsClusterLifecycleStateEnum {
 	values := make([]AnalyticsClusterLifecycleStateEnum, 0)
@@ -113,11 +123,6 @@ func GetAnalyticsClusterLifecycleStateEnumStringValues() []string {
 
 // GetMappingAnalyticsClusterLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAnalyticsClusterLifecycleStateEnum(val string) (AnalyticsClusterLifecycleStateEnum, bool) {
-	mappingAnalyticsClusterLifecycleStateEnumIgnoreCase := make(map[string]AnalyticsClusterLifecycleStateEnum)
-	for k, v := range mappingAnalyticsClusterLifecycleStateEnum {
-		mappingAnalyticsClusterLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAnalyticsClusterLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAnalyticsClusterLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

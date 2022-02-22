@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -119,6 +119,14 @@ var mappingDataEntitySummaryModelTypeEnum = map[string]DataEntitySummaryModelTyp
 	"DATA_STORE_ENTITY": DataEntitySummaryModelTypeDataStoreEntity,
 }
 
+var mappingDataEntitySummaryModelTypeEnumLowerCase = map[string]DataEntitySummaryModelTypeEnum{
+	"view_entity":       DataEntitySummaryModelTypeViewEntity,
+	"table_entity":      DataEntitySummaryModelTypeTableEntity,
+	"file_entity":       DataEntitySummaryModelTypeFileEntity,
+	"sql_entity":        DataEntitySummaryModelTypeSqlEntity,
+	"data_store_entity": DataEntitySummaryModelTypeDataStoreEntity,
+}
+
 // GetDataEntitySummaryModelTypeEnumValues Enumerates the set of values for DataEntitySummaryModelTypeEnum
 func GetDataEntitySummaryModelTypeEnumValues() []DataEntitySummaryModelTypeEnum {
 	values := make([]DataEntitySummaryModelTypeEnum, 0)
@@ -141,11 +149,6 @@ func GetDataEntitySummaryModelTypeEnumStringValues() []string {
 
 // GetMappingDataEntitySummaryModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataEntitySummaryModelTypeEnum(val string) (DataEntitySummaryModelTypeEnum, bool) {
-	mappingDataEntitySummaryModelTypeEnumIgnoreCase := make(map[string]DataEntitySummaryModelTypeEnum)
-	for k, v := range mappingDataEntitySummaryModelTypeEnum {
-		mappingDataEntitySummaryModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataEntitySummaryModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataEntitySummaryModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

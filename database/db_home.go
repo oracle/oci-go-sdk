@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -111,6 +111,15 @@ var mappingDbHomeLifecycleStateEnum = map[string]DbHomeLifecycleStateEnum{
 	"FAILED":       DbHomeLifecycleStateFailed,
 }
 
+var mappingDbHomeLifecycleStateEnumLowerCase = map[string]DbHomeLifecycleStateEnum{
+	"provisioning": DbHomeLifecycleStateProvisioning,
+	"available":    DbHomeLifecycleStateAvailable,
+	"updating":     DbHomeLifecycleStateUpdating,
+	"terminating":  DbHomeLifecycleStateTerminating,
+	"terminated":   DbHomeLifecycleStateTerminated,
+	"failed":       DbHomeLifecycleStateFailed,
+}
+
 // GetDbHomeLifecycleStateEnumValues Enumerates the set of values for DbHomeLifecycleStateEnum
 func GetDbHomeLifecycleStateEnumValues() []DbHomeLifecycleStateEnum {
 	values := make([]DbHomeLifecycleStateEnum, 0)
@@ -134,11 +143,6 @@ func GetDbHomeLifecycleStateEnumStringValues() []string {
 
 // GetMappingDbHomeLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDbHomeLifecycleStateEnum(val string) (DbHomeLifecycleStateEnum, bool) {
-	mappingDbHomeLifecycleStateEnumIgnoreCase := make(map[string]DbHomeLifecycleStateEnum)
-	for k, v := range mappingDbHomeLifecycleStateEnum {
-		mappingDbHomeLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDbHomeLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDbHomeLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

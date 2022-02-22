@@ -12,7 +12,7 @@ package ons
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -102,6 +102,12 @@ var mappingSubscriptionLifecycleStateEnum = map[string]SubscriptionLifecycleStat
 	"DELETED": SubscriptionLifecycleStateDeleted,
 }
 
+var mappingSubscriptionLifecycleStateEnumLowerCase = map[string]SubscriptionLifecycleStateEnum{
+	"pending": SubscriptionLifecycleStatePending,
+	"active":  SubscriptionLifecycleStateActive,
+	"deleted": SubscriptionLifecycleStateDeleted,
+}
+
 // GetSubscriptionLifecycleStateEnumValues Enumerates the set of values for SubscriptionLifecycleStateEnum
 func GetSubscriptionLifecycleStateEnumValues() []SubscriptionLifecycleStateEnum {
 	values := make([]SubscriptionLifecycleStateEnum, 0)
@@ -122,11 +128,6 @@ func GetSubscriptionLifecycleStateEnumStringValues() []string {
 
 // GetMappingSubscriptionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSubscriptionLifecycleStateEnum(val string) (SubscriptionLifecycleStateEnum, bool) {
-	mappingSubscriptionLifecycleStateEnumIgnoreCase := make(map[string]SubscriptionLifecycleStateEnum)
-	for k, v := range mappingSubscriptionLifecycleStateEnum {
-		mappingSubscriptionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSubscriptionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSubscriptionLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

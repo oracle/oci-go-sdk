@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -315,6 +315,13 @@ var mappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnum = map[string
 	"CUSTOM":          InstanceConfigurationLaunchInstanceDetailsLaunchModeCustom,
 }
 
+var mappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnumLowerCase = map[string]InstanceConfigurationLaunchInstanceDetailsLaunchModeEnum{
+	"native":          InstanceConfigurationLaunchInstanceDetailsLaunchModeNative,
+	"emulated":        InstanceConfigurationLaunchInstanceDetailsLaunchModeEmulated,
+	"paravirtualized": InstanceConfigurationLaunchInstanceDetailsLaunchModeParavirtualized,
+	"custom":          InstanceConfigurationLaunchInstanceDetailsLaunchModeCustom,
+}
+
 // GetInstanceConfigurationLaunchInstanceDetailsLaunchModeEnumValues Enumerates the set of values for InstanceConfigurationLaunchInstanceDetailsLaunchModeEnum
 func GetInstanceConfigurationLaunchInstanceDetailsLaunchModeEnumValues() []InstanceConfigurationLaunchInstanceDetailsLaunchModeEnum {
 	values := make([]InstanceConfigurationLaunchInstanceDetailsLaunchModeEnum, 0)
@@ -336,12 +343,7 @@ func GetInstanceConfigurationLaunchInstanceDetailsLaunchModeEnumStringValues() [
 
 // GetMappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnum(val string) (InstanceConfigurationLaunchInstanceDetailsLaunchModeEnum, bool) {
-	mappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnumIgnoreCase := make(map[string]InstanceConfigurationLaunchInstanceDetailsLaunchModeEnum)
-	for k, v := range mappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnum {
-		mappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -357,6 +359,11 @@ const (
 var mappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum = map[string]InstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum{
 	"LIVE_MIGRATE": InstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionLiveMigrate,
 	"REBOOT":       InstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionReboot,
+}
+
+var mappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnumLowerCase = map[string]InstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum{
+	"live_migrate": InstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionLiveMigrate,
+	"reboot":       InstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionReboot,
 }
 
 // GetInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnumValues Enumerates the set of values for InstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum
@@ -378,11 +385,6 @@ func GetInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum
 
 // GetMappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum(val string) (InstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum, bool) {
-	mappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnumIgnoreCase := make(map[string]InstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum)
-	for k, v := range mappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum {
-		mappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

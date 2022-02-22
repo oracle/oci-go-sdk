@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,11 @@ var mappingListBuildPipelinesSortOrderEnum = map[string]ListBuildPipelinesSortOr
 	"DESC": ListBuildPipelinesSortOrderDesc,
 }
 
+var mappingListBuildPipelinesSortOrderEnumLowerCase = map[string]ListBuildPipelinesSortOrderEnum{
+	"asc":  ListBuildPipelinesSortOrderAsc,
+	"desc": ListBuildPipelinesSortOrderDesc,
+}
+
 // GetListBuildPipelinesSortOrderEnumValues Enumerates the set of values for ListBuildPipelinesSortOrderEnum
 func GetListBuildPipelinesSortOrderEnumValues() []ListBuildPipelinesSortOrderEnum {
 	values := make([]ListBuildPipelinesSortOrderEnum, 0)
@@ -157,12 +162,7 @@ func GetListBuildPipelinesSortOrderEnumStringValues() []string {
 
 // GetMappingListBuildPipelinesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBuildPipelinesSortOrderEnum(val string) (ListBuildPipelinesSortOrderEnum, bool) {
-	mappingListBuildPipelinesSortOrderEnumIgnoreCase := make(map[string]ListBuildPipelinesSortOrderEnum)
-	for k, v := range mappingListBuildPipelinesSortOrderEnum {
-		mappingListBuildPipelinesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBuildPipelinesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBuildPipelinesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -178,6 +178,11 @@ const (
 var mappingListBuildPipelinesSortByEnum = map[string]ListBuildPipelinesSortByEnum{
 	"timeCreated": ListBuildPipelinesSortByTimecreated,
 	"displayName": ListBuildPipelinesSortByDisplayname,
+}
+
+var mappingListBuildPipelinesSortByEnumLowerCase = map[string]ListBuildPipelinesSortByEnum{
+	"timecreated": ListBuildPipelinesSortByTimecreated,
+	"displayname": ListBuildPipelinesSortByDisplayname,
 }
 
 // GetListBuildPipelinesSortByEnumValues Enumerates the set of values for ListBuildPipelinesSortByEnum
@@ -199,11 +204,6 @@ func GetListBuildPipelinesSortByEnumStringValues() []string {
 
 // GetMappingListBuildPipelinesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListBuildPipelinesSortByEnum(val string) (ListBuildPipelinesSortByEnum, bool) {
-	mappingListBuildPipelinesSortByEnumIgnoreCase := make(map[string]ListBuildPipelinesSortByEnum)
-	for k, v := range mappingListBuildPipelinesSortByEnum {
-		mappingListBuildPipelinesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListBuildPipelinesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListBuildPipelinesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package aivision
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -93,6 +93,11 @@ var mappingDatasetDatasetTypeEnum = map[string]DatasetDatasetTypeEnum{
 	"OBJECT_STORAGE":        DatasetDatasetTypeObjectStorage,
 }
 
+var mappingDatasetDatasetTypeEnumLowerCase = map[string]DatasetDatasetTypeEnum{
+	"data_science_labeling": DatasetDatasetTypeDataScienceLabeling,
+	"object_storage":        DatasetDatasetTypeObjectStorage,
+}
+
 // GetDatasetDatasetTypeEnumValues Enumerates the set of values for DatasetDatasetTypeEnum
 func GetDatasetDatasetTypeEnumValues() []DatasetDatasetTypeEnum {
 	values := make([]DatasetDatasetTypeEnum, 0)
@@ -112,11 +117,6 @@ func GetDatasetDatasetTypeEnumStringValues() []string {
 
 // GetMappingDatasetDatasetTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatasetDatasetTypeEnum(val string) (DatasetDatasetTypeEnum, bool) {
-	mappingDatasetDatasetTypeEnumIgnoreCase := make(map[string]DatasetDatasetTypeEnum)
-	for k, v := range mappingDatasetDatasetTypeEnum {
-		mappingDatasetDatasetTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatasetDatasetTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatasetDatasetTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

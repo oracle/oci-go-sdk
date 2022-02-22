@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -138,6 +138,21 @@ var mappingGetGlossaryFieldsEnum = map[string]GetGlossaryFieldsEnum{
 	"uri":            GetGlossaryFieldsUri,
 }
 
+var mappingGetGlossaryFieldsEnumLowerCase = map[string]GetGlossaryFieldsEnum{
+	"key":            GetGlossaryFieldsKey,
+	"displayname":    GetGlossaryFieldsDisplayname,
+	"description":    GetGlossaryFieldsDescription,
+	"catalogid":      GetGlossaryFieldsCatalogid,
+	"lifecyclestate": GetGlossaryFieldsLifecyclestate,
+	"timecreated":    GetGlossaryFieldsTimecreated,
+	"timeupdated":    GetGlossaryFieldsTimeupdated,
+	"createdbyid":    GetGlossaryFieldsCreatedbyid,
+	"updatedbyid":    GetGlossaryFieldsUpdatedbyid,
+	"owner":          GetGlossaryFieldsOwner,
+	"workflowstatus": GetGlossaryFieldsWorkflowstatus,
+	"uri":            GetGlossaryFieldsUri,
+}
+
 // GetGetGlossaryFieldsEnumValues Enumerates the set of values for GetGlossaryFieldsEnum
 func GetGetGlossaryFieldsEnumValues() []GetGlossaryFieldsEnum {
 	values := make([]GetGlossaryFieldsEnum, 0)
@@ -167,11 +182,6 @@ func GetGetGlossaryFieldsEnumStringValues() []string {
 
 // GetMappingGetGlossaryFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGetGlossaryFieldsEnum(val string) (GetGlossaryFieldsEnum, bool) {
-	mappingGetGlossaryFieldsEnumIgnoreCase := make(map[string]GetGlossaryFieldsEnum)
-	for k, v := range mappingGetGlossaryFieldsEnum {
-		mappingGetGlossaryFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingGetGlossaryFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingGetGlossaryFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

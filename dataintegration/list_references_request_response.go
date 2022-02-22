@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -141,6 +141,11 @@ var mappingListReferencesSortOrderEnum = map[string]ListReferencesSortOrderEnum{
 	"DESC": ListReferencesSortOrderDesc,
 }
 
+var mappingListReferencesSortOrderEnumLowerCase = map[string]ListReferencesSortOrderEnum{
+	"asc":  ListReferencesSortOrderAsc,
+	"desc": ListReferencesSortOrderDesc,
+}
+
 // GetListReferencesSortOrderEnumValues Enumerates the set of values for ListReferencesSortOrderEnum
 func GetListReferencesSortOrderEnumValues() []ListReferencesSortOrderEnum {
 	values := make([]ListReferencesSortOrderEnum, 0)
@@ -160,12 +165,7 @@ func GetListReferencesSortOrderEnumStringValues() []string {
 
 // GetMappingListReferencesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListReferencesSortOrderEnum(val string) (ListReferencesSortOrderEnum, bool) {
-	mappingListReferencesSortOrderEnumIgnoreCase := make(map[string]ListReferencesSortOrderEnum)
-	for k, v := range mappingListReferencesSortOrderEnum {
-		mappingListReferencesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListReferencesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListReferencesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -181,6 +181,11 @@ const (
 var mappingListReferencesSortByEnum = map[string]ListReferencesSortByEnum{
 	"TIME_CREATED": ListReferencesSortByTimeCreated,
 	"DISPLAY_NAME": ListReferencesSortByDisplayName,
+}
+
+var mappingListReferencesSortByEnumLowerCase = map[string]ListReferencesSortByEnum{
+	"time_created": ListReferencesSortByTimeCreated,
+	"display_name": ListReferencesSortByDisplayName,
 }
 
 // GetListReferencesSortByEnumValues Enumerates the set of values for ListReferencesSortByEnum
@@ -202,11 +207,6 @@ func GetListReferencesSortByEnumStringValues() []string {
 
 // GetMappingListReferencesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListReferencesSortByEnum(val string) (ListReferencesSortByEnum, bool) {
-	mappingListReferencesSortByEnumIgnoreCase := make(map[string]ListReferencesSortByEnum)
-	for k, v := range mappingListReferencesSortByEnum {
-		mappingListReferencesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListReferencesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListReferencesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

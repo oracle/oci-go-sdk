@@ -11,7 +11,7 @@ package streaming
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,15 @@ var mappingCustomEncryptionKeyKeyStateEnum = map[string]CustomEncryptionKeyKeySt
 	"UPDATING": CustomEncryptionKeyKeyStateUpdating,
 }
 
+var mappingCustomEncryptionKeyKeyStateEnumLowerCase = map[string]CustomEncryptionKeyKeyStateEnum{
+	"active":   CustomEncryptionKeyKeyStateActive,
+	"creating": CustomEncryptionKeyKeyStateCreating,
+	"deleting": CustomEncryptionKeyKeyStateDeleting,
+	"none":     CustomEncryptionKeyKeyStateNone,
+	"failed":   CustomEncryptionKeyKeyStateFailed,
+	"updating": CustomEncryptionKeyKeyStateUpdating,
+}
+
 // GetCustomEncryptionKeyKeyStateEnumValues Enumerates the set of values for CustomEncryptionKeyKeyStateEnum
 func GetCustomEncryptionKeyKeyStateEnumValues() []CustomEncryptionKeyKeyStateEnum {
 	values := make([]CustomEncryptionKeyKeyStateEnum, 0)
@@ -89,11 +98,6 @@ func GetCustomEncryptionKeyKeyStateEnumStringValues() []string {
 
 // GetMappingCustomEncryptionKeyKeyStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCustomEncryptionKeyKeyStateEnum(val string) (CustomEncryptionKeyKeyStateEnum, bool) {
-	mappingCustomEncryptionKeyKeyStateEnumIgnoreCase := make(map[string]CustomEncryptionKeyKeyStateEnum)
-	for k, v := range mappingCustomEncryptionKeyKeyStateEnum {
-		mappingCustomEncryptionKeyKeyStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCustomEncryptionKeyKeyStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCustomEncryptionKeyKeyStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -16,9 +16,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/oracle/oci-go-sdk/v58/common"
-	"github.com/oracle/oci-go-sdk/v58/example/helpers"
-	"github.com/oracle/oci-go-sdk/v58/identity"
+	"github.com/oracle/oci-go-sdk/v59/common"
+	"github.com/oracle/oci-go-sdk/v59/example/helpers"
+	"github.com/oracle/oci-go-sdk/v59/identity"
 )
 
 // ExampleMoveCompartment Moves an active compartment under a different parent

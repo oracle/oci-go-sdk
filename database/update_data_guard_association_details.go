@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -84,6 +84,12 @@ var mappingUpdateDataGuardAssociationDetailsProtectionModeEnum = map[string]Upda
 	"MAXIMUM_PROTECTION":   UpdateDataGuardAssociationDetailsProtectionModeProtection,
 }
 
+var mappingUpdateDataGuardAssociationDetailsProtectionModeEnumLowerCase = map[string]UpdateDataGuardAssociationDetailsProtectionModeEnum{
+	"maximum_availability": UpdateDataGuardAssociationDetailsProtectionModeAvailability,
+	"maximum_performance":  UpdateDataGuardAssociationDetailsProtectionModePerformance,
+	"maximum_protection":   UpdateDataGuardAssociationDetailsProtectionModeProtection,
+}
+
 // GetUpdateDataGuardAssociationDetailsProtectionModeEnumValues Enumerates the set of values for UpdateDataGuardAssociationDetailsProtectionModeEnum
 func GetUpdateDataGuardAssociationDetailsProtectionModeEnumValues() []UpdateDataGuardAssociationDetailsProtectionModeEnum {
 	values := make([]UpdateDataGuardAssociationDetailsProtectionModeEnum, 0)
@@ -104,12 +110,7 @@ func GetUpdateDataGuardAssociationDetailsProtectionModeEnumStringValues() []stri
 
 // GetMappingUpdateDataGuardAssociationDetailsProtectionModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateDataGuardAssociationDetailsProtectionModeEnum(val string) (UpdateDataGuardAssociationDetailsProtectionModeEnum, bool) {
-	mappingUpdateDataGuardAssociationDetailsProtectionModeEnumIgnoreCase := make(map[string]UpdateDataGuardAssociationDetailsProtectionModeEnum)
-	for k, v := range mappingUpdateDataGuardAssociationDetailsProtectionModeEnum {
-		mappingUpdateDataGuardAssociationDetailsProtectionModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateDataGuardAssociationDetailsProtectionModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateDataGuardAssociationDetailsProtectionModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -127,6 +128,12 @@ var mappingUpdateDataGuardAssociationDetailsTransportTypeEnum = map[string]Updat
 	"SYNC":     UpdateDataGuardAssociationDetailsTransportTypeSync,
 	"ASYNC":    UpdateDataGuardAssociationDetailsTransportTypeAsync,
 	"FASTSYNC": UpdateDataGuardAssociationDetailsTransportTypeFastsync,
+}
+
+var mappingUpdateDataGuardAssociationDetailsTransportTypeEnumLowerCase = map[string]UpdateDataGuardAssociationDetailsTransportTypeEnum{
+	"sync":     UpdateDataGuardAssociationDetailsTransportTypeSync,
+	"async":    UpdateDataGuardAssociationDetailsTransportTypeAsync,
+	"fastsync": UpdateDataGuardAssociationDetailsTransportTypeFastsync,
 }
 
 // GetUpdateDataGuardAssociationDetailsTransportTypeEnumValues Enumerates the set of values for UpdateDataGuardAssociationDetailsTransportTypeEnum
@@ -149,11 +156,6 @@ func GetUpdateDataGuardAssociationDetailsTransportTypeEnumStringValues() []strin
 
 // GetMappingUpdateDataGuardAssociationDetailsTransportTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateDataGuardAssociationDetailsTransportTypeEnum(val string) (UpdateDataGuardAssociationDetailsTransportTypeEnum, bool) {
-	mappingUpdateDataGuardAssociationDetailsTransportTypeEnumIgnoreCase := make(map[string]UpdateDataGuardAssociationDetailsTransportTypeEnum)
-	for k, v := range mappingUpdateDataGuardAssociationDetailsTransportTypeEnum {
-		mappingUpdateDataGuardAssociationDetailsTransportTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateDataGuardAssociationDetailsTransportTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateDataGuardAssociationDetailsTransportTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

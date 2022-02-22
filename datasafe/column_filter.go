@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -87,6 +87,21 @@ var mappingColumnFilterOperatorEnum = map[string]ColumnFilterOperatorEnum{
 	"NOT_IN": ColumnFilterOperatorNotIn,
 }
 
+var mappingColumnFilterOperatorEnumLowerCase = map[string]ColumnFilterOperatorEnum{
+	"in":     ColumnFilterOperatorIn,
+	"eq":     ColumnFilterOperatorEq,
+	"gt":     ColumnFilterOperatorGt,
+	"ge":     ColumnFilterOperatorGe,
+	"lt":     ColumnFilterOperatorLt,
+	"le":     ColumnFilterOperatorLe,
+	"and":    ColumnFilterOperatorAnd,
+	"or":     ColumnFilterOperatorOr,
+	"ne":     ColumnFilterOperatorNe,
+	"co":     ColumnFilterOperatorCo,
+	"not":    ColumnFilterOperatorNot,
+	"not_in": ColumnFilterOperatorNotIn,
+}
+
 // GetColumnFilterOperatorEnumValues Enumerates the set of values for ColumnFilterOperatorEnum
 func GetColumnFilterOperatorEnumValues() []ColumnFilterOperatorEnum {
 	values := make([]ColumnFilterOperatorEnum, 0)
@@ -116,11 +131,6 @@ func GetColumnFilterOperatorEnumStringValues() []string {
 
 // GetMappingColumnFilterOperatorEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingColumnFilterOperatorEnum(val string) (ColumnFilterOperatorEnum, bool) {
-	mappingColumnFilterOperatorEnumIgnoreCase := make(map[string]ColumnFilterOperatorEnum)
-	for k, v := range mappingColumnFilterOperatorEnum {
-		mappingColumnFilterOperatorEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingColumnFilterOperatorEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingColumnFilterOperatorEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -117,6 +117,13 @@ var mappingUserSummaryUserCategoryEnum = map[string]UserSummaryUserCategoryEnum{
 	"LOW":      UserSummaryUserCategoryLow,
 }
 
+var mappingUserSummaryUserCategoryEnumLowerCase = map[string]UserSummaryUserCategoryEnum{
+	"critical": UserSummaryUserCategoryCritical,
+	"high":     UserSummaryUserCategoryHigh,
+	"medium":   UserSummaryUserCategoryMedium,
+	"low":      UserSummaryUserCategoryLow,
+}
+
 // GetUserSummaryUserCategoryEnumValues Enumerates the set of values for UserSummaryUserCategoryEnum
 func GetUserSummaryUserCategoryEnumValues() []UserSummaryUserCategoryEnum {
 	values := make([]UserSummaryUserCategoryEnum, 0)
@@ -138,12 +145,7 @@ func GetUserSummaryUserCategoryEnumStringValues() []string {
 
 // GetMappingUserSummaryUserCategoryEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserSummaryUserCategoryEnum(val string) (UserSummaryUserCategoryEnum, bool) {
-	mappingUserSummaryUserCategoryEnumIgnoreCase := make(map[string]UserSummaryUserCategoryEnum)
-	for k, v := range mappingUserSummaryUserCategoryEnum {
-		mappingUserSummaryUserCategoryEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserSummaryUserCategoryEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserSummaryUserCategoryEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -165,6 +167,14 @@ var mappingUserSummaryAccountStatusEnum = map[string]UserSummaryAccountStatusEnu
 	"EXPIRED":            UserSummaryAccountStatusExpired,
 	"EXPIRED_AND_LOCKED": UserSummaryAccountStatusExpiredAndLocked,
 	"NONE":               UserSummaryAccountStatusNone,
+}
+
+var mappingUserSummaryAccountStatusEnumLowerCase = map[string]UserSummaryAccountStatusEnum{
+	"open":               UserSummaryAccountStatusOpen,
+	"locked":             UserSummaryAccountStatusLocked,
+	"expired":            UserSummaryAccountStatusExpired,
+	"expired_and_locked": UserSummaryAccountStatusExpiredAndLocked,
+	"none":               UserSummaryAccountStatusNone,
 }
 
 // GetUserSummaryAccountStatusEnumValues Enumerates the set of values for UserSummaryAccountStatusEnum
@@ -189,12 +199,7 @@ func GetUserSummaryAccountStatusEnumStringValues() []string {
 
 // GetMappingUserSummaryAccountStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserSummaryAccountStatusEnum(val string) (UserSummaryAccountStatusEnum, bool) {
-	mappingUserSummaryAccountStatusEnumIgnoreCase := make(map[string]UserSummaryAccountStatusEnum)
-	for k, v := range mappingUserSummaryAccountStatusEnum {
-		mappingUserSummaryAccountStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserSummaryAccountStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserSummaryAccountStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -210,6 +215,11 @@ const (
 var mappingUserSummaryAuthenticationTypeEnum = map[string]UserSummaryAuthenticationTypeEnum{
 	"PASSWORD": UserSummaryAuthenticationTypePassword,
 	"NONE":     UserSummaryAuthenticationTypeNone,
+}
+
+var mappingUserSummaryAuthenticationTypeEnumLowerCase = map[string]UserSummaryAuthenticationTypeEnum{
+	"password": UserSummaryAuthenticationTypePassword,
+	"none":     UserSummaryAuthenticationTypeNone,
 }
 
 // GetUserSummaryAuthenticationTypeEnumValues Enumerates the set of values for UserSummaryAuthenticationTypeEnum
@@ -231,12 +241,7 @@ func GetUserSummaryAuthenticationTypeEnumStringValues() []string {
 
 // GetMappingUserSummaryAuthenticationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserSummaryAuthenticationTypeEnum(val string) (UserSummaryAuthenticationTypeEnum, bool) {
-	mappingUserSummaryAuthenticationTypeEnumIgnoreCase := make(map[string]UserSummaryAuthenticationTypeEnum)
-	for k, v := range mappingUserSummaryAuthenticationTypeEnum {
-		mappingUserSummaryAuthenticationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserSummaryAuthenticationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserSummaryAuthenticationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -258,6 +263,14 @@ var mappingUserSummaryUserTypesEnum = map[string]UserSummaryUserTypesEnum{
 	"PRIVILEGED":       UserSummaryUserTypesPrivileged,
 	"SCHEMA":           UserSummaryUserTypesSchema,
 	"NON_PRIVILEGED":   UserSummaryUserTypesNonPrivileged,
+}
+
+var mappingUserSummaryUserTypesEnumLowerCase = map[string]UserSummaryUserTypesEnum{
+	"admin_privileged": UserSummaryUserTypesAdminPrivileged,
+	"application":      UserSummaryUserTypesApplication,
+	"privileged":       UserSummaryUserTypesPrivileged,
+	"schema":           UserSummaryUserTypesSchema,
+	"non_privileged":   UserSummaryUserTypesNonPrivileged,
 }
 
 // GetUserSummaryUserTypesEnumValues Enumerates the set of values for UserSummaryUserTypesEnum
@@ -282,12 +295,7 @@ func GetUserSummaryUserTypesEnumStringValues() []string {
 
 // GetMappingUserSummaryUserTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserSummaryUserTypesEnum(val string) (UserSummaryUserTypesEnum, bool) {
-	mappingUserSummaryUserTypesEnumIgnoreCase := make(map[string]UserSummaryUserTypesEnum)
-	for k, v := range mappingUserSummaryUserTypesEnum {
-		mappingUserSummaryUserTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserSummaryUserTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserSummaryUserTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -307,6 +315,13 @@ var mappingUserSummaryAdminRolesEnum = map[string]UserSummaryAdminRolesEnum{
 	"DBA":         UserSummaryAdminRolesDba,
 	"DV_ADMIN":    UserSummaryAdminRolesDvAdmin,
 	"AUDIT_ADMIN": UserSummaryAdminRolesAuditAdmin,
+}
+
+var mappingUserSummaryAdminRolesEnumLowerCase = map[string]UserSummaryAdminRolesEnum{
+	"pdb_dba":     UserSummaryAdminRolesPdbDba,
+	"dba":         UserSummaryAdminRolesDba,
+	"dv_admin":    UserSummaryAdminRolesDvAdmin,
+	"audit_admin": UserSummaryAdminRolesAuditAdmin,
 }
 
 // GetUserSummaryAdminRolesEnumValues Enumerates the set of values for UserSummaryAdminRolesEnum
@@ -330,11 +345,6 @@ func GetUserSummaryAdminRolesEnumStringValues() []string {
 
 // GetMappingUserSummaryAdminRolesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserSummaryAdminRolesEnum(val string) (UserSummaryAdminRolesEnum, bool) {
-	mappingUserSummaryAdminRolesEnumIgnoreCase := make(map[string]UserSummaryAdminRolesEnum)
-	for k, v := range mappingUserSummaryAdminRolesEnum {
-		mappingUserSummaryAdminRolesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserSummaryAdminRolesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserSummaryAdminRolesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

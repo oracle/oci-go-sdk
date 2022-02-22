@@ -11,7 +11,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -69,6 +69,11 @@ var mappingCreateTransferJobDetailsDeviceTypeEnum = map[string]CreateTransferJob
 	"APPLIANCE": CreateTransferJobDetailsDeviceTypeAppliance,
 }
 
+var mappingCreateTransferJobDetailsDeviceTypeEnumLowerCase = map[string]CreateTransferJobDetailsDeviceTypeEnum{
+	"disk":      CreateTransferJobDetailsDeviceTypeDisk,
+	"appliance": CreateTransferJobDetailsDeviceTypeAppliance,
+}
+
 // GetCreateTransferJobDetailsDeviceTypeEnumValues Enumerates the set of values for CreateTransferJobDetailsDeviceTypeEnum
 func GetCreateTransferJobDetailsDeviceTypeEnumValues() []CreateTransferJobDetailsDeviceTypeEnum {
 	values := make([]CreateTransferJobDetailsDeviceTypeEnum, 0)
@@ -88,11 +93,6 @@ func GetCreateTransferJobDetailsDeviceTypeEnumStringValues() []string {
 
 // GetMappingCreateTransferJobDetailsDeviceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateTransferJobDetailsDeviceTypeEnum(val string) (CreateTransferJobDetailsDeviceTypeEnum, bool) {
-	mappingCreateTransferJobDetailsDeviceTypeEnumIgnoreCase := make(map[string]CreateTransferJobDetailsDeviceTypeEnum)
-	for k, v := range mappingCreateTransferJobDetailsDeviceTypeEnum {
-		mappingCreateTransferJobDetailsDeviceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateTransferJobDetailsDeviceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateTransferJobDetailsDeviceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

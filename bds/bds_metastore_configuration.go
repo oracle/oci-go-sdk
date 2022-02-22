@@ -11,7 +11,7 @@ package bds
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -79,6 +79,11 @@ var mappingBdsMetastoreConfigurationMetastoreTypeEnum = map[string]BdsMetastoreC
 	"EXTERNAL": BdsMetastoreConfigurationMetastoreTypeExternal,
 }
 
+var mappingBdsMetastoreConfigurationMetastoreTypeEnumLowerCase = map[string]BdsMetastoreConfigurationMetastoreTypeEnum{
+	"local":    BdsMetastoreConfigurationMetastoreTypeLocal,
+	"external": BdsMetastoreConfigurationMetastoreTypeExternal,
+}
+
 // GetBdsMetastoreConfigurationMetastoreTypeEnumValues Enumerates the set of values for BdsMetastoreConfigurationMetastoreTypeEnum
 func GetBdsMetastoreConfigurationMetastoreTypeEnumValues() []BdsMetastoreConfigurationMetastoreTypeEnum {
 	values := make([]BdsMetastoreConfigurationMetastoreTypeEnum, 0)
@@ -98,12 +103,7 @@ func GetBdsMetastoreConfigurationMetastoreTypeEnumStringValues() []string {
 
 // GetMappingBdsMetastoreConfigurationMetastoreTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBdsMetastoreConfigurationMetastoreTypeEnum(val string) (BdsMetastoreConfigurationMetastoreTypeEnum, bool) {
-	mappingBdsMetastoreConfigurationMetastoreTypeEnumIgnoreCase := make(map[string]BdsMetastoreConfigurationMetastoreTypeEnum)
-	for k, v := range mappingBdsMetastoreConfigurationMetastoreTypeEnum {
-		mappingBdsMetastoreConfigurationMetastoreTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBdsMetastoreConfigurationMetastoreTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBdsMetastoreConfigurationMetastoreTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -133,6 +133,17 @@ var mappingBdsMetastoreConfigurationLifecycleStateEnum = map[string]BdsMetastore
 	"DELETED":    BdsMetastoreConfigurationLifecycleStateDeleted,
 }
 
+var mappingBdsMetastoreConfigurationLifecycleStateEnumLowerCase = map[string]BdsMetastoreConfigurationLifecycleStateEnum{
+	"creating":   BdsMetastoreConfigurationLifecycleStateCreating,
+	"activating": BdsMetastoreConfigurationLifecycleStateActivating,
+	"active":     BdsMetastoreConfigurationLifecycleStateActive,
+	"inactive":   BdsMetastoreConfigurationLifecycleStateInactive,
+	"updating":   BdsMetastoreConfigurationLifecycleStateUpdating,
+	"failed":     BdsMetastoreConfigurationLifecycleStateFailed,
+	"deleting":   BdsMetastoreConfigurationLifecycleStateDeleting,
+	"deleted":    BdsMetastoreConfigurationLifecycleStateDeleted,
+}
+
 // GetBdsMetastoreConfigurationLifecycleStateEnumValues Enumerates the set of values for BdsMetastoreConfigurationLifecycleStateEnum
 func GetBdsMetastoreConfigurationLifecycleStateEnumValues() []BdsMetastoreConfigurationLifecycleStateEnum {
 	values := make([]BdsMetastoreConfigurationLifecycleStateEnum, 0)
@@ -158,11 +169,6 @@ func GetBdsMetastoreConfigurationLifecycleStateEnumStringValues() []string {
 
 // GetMappingBdsMetastoreConfigurationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBdsMetastoreConfigurationLifecycleStateEnum(val string) (BdsMetastoreConfigurationLifecycleStateEnum, bool) {
-	mappingBdsMetastoreConfigurationLifecycleStateEnumIgnoreCase := make(map[string]BdsMetastoreConfigurationLifecycleStateEnum)
-	for k, v := range mappingBdsMetastoreConfigurationLifecycleStateEnum {
-		mappingBdsMetastoreConfigurationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBdsMetastoreConfigurationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBdsMetastoreConfigurationLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

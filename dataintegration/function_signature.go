@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -127,6 +127,10 @@ var mappingFunctionSignatureModelTypeEnum = map[string]FunctionSignatureModelTyp
 	"DIS_FUNCTION_SIGNATURE": FunctionSignatureModelTypeDisFunctionSignature,
 }
 
+var mappingFunctionSignatureModelTypeEnumLowerCase = map[string]FunctionSignatureModelTypeEnum{
+	"dis_function_signature": FunctionSignatureModelTypeDisFunctionSignature,
+}
+
 // GetFunctionSignatureModelTypeEnumValues Enumerates the set of values for FunctionSignatureModelTypeEnum
 func GetFunctionSignatureModelTypeEnumValues() []FunctionSignatureModelTypeEnum {
 	values := make([]FunctionSignatureModelTypeEnum, 0)
@@ -145,11 +149,6 @@ func GetFunctionSignatureModelTypeEnumStringValues() []string {
 
 // GetMappingFunctionSignatureModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingFunctionSignatureModelTypeEnum(val string) (FunctionSignatureModelTypeEnum, bool) {
-	mappingFunctionSignatureModelTypeEnumIgnoreCase := make(map[string]FunctionSignatureModelTypeEnum)
-	for k, v := range mappingFunctionSignatureModelTypeEnum {
-		mappingFunctionSignatureModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingFunctionSignatureModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingFunctionSignatureModelTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

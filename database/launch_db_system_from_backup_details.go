@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -337,6 +337,13 @@ var mappingLaunchDbSystemFromBackupDetailsDatabaseEditionEnum = map[string]Launc
 	"ENTERPRISE_EDITION_EXTREME_PERFORMANCE": LaunchDbSystemFromBackupDetailsDatabaseEditionEnterpriseEditionExtremePerformance,
 }
 
+var mappingLaunchDbSystemFromBackupDetailsDatabaseEditionEnumLowerCase = map[string]LaunchDbSystemFromBackupDetailsDatabaseEditionEnum{
+	"standard_edition":                       LaunchDbSystemFromBackupDetailsDatabaseEditionStandardEdition,
+	"enterprise_edition":                     LaunchDbSystemFromBackupDetailsDatabaseEditionEnterpriseEdition,
+	"enterprise_edition_high_performance":    LaunchDbSystemFromBackupDetailsDatabaseEditionEnterpriseEditionHighPerformance,
+	"enterprise_edition_extreme_performance": LaunchDbSystemFromBackupDetailsDatabaseEditionEnterpriseEditionExtremePerformance,
+}
+
 // GetLaunchDbSystemFromBackupDetailsDatabaseEditionEnumValues Enumerates the set of values for LaunchDbSystemFromBackupDetailsDatabaseEditionEnum
 func GetLaunchDbSystemFromBackupDetailsDatabaseEditionEnumValues() []LaunchDbSystemFromBackupDetailsDatabaseEditionEnum {
 	values := make([]LaunchDbSystemFromBackupDetailsDatabaseEditionEnum, 0)
@@ -358,12 +365,7 @@ func GetLaunchDbSystemFromBackupDetailsDatabaseEditionEnumStringValues() []strin
 
 // GetMappingLaunchDbSystemFromBackupDetailsDatabaseEditionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLaunchDbSystemFromBackupDetailsDatabaseEditionEnum(val string) (LaunchDbSystemFromBackupDetailsDatabaseEditionEnum, bool) {
-	mappingLaunchDbSystemFromBackupDetailsDatabaseEditionEnumIgnoreCase := make(map[string]LaunchDbSystemFromBackupDetailsDatabaseEditionEnum)
-	for k, v := range mappingLaunchDbSystemFromBackupDetailsDatabaseEditionEnum {
-		mappingLaunchDbSystemFromBackupDetailsDatabaseEditionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLaunchDbSystemFromBackupDetailsDatabaseEditionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLaunchDbSystemFromBackupDetailsDatabaseEditionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -379,6 +381,11 @@ const (
 var mappingLaunchDbSystemFromBackupDetailsDiskRedundancyEnum = map[string]LaunchDbSystemFromBackupDetailsDiskRedundancyEnum{
 	"HIGH":   LaunchDbSystemFromBackupDetailsDiskRedundancyHigh,
 	"NORMAL": LaunchDbSystemFromBackupDetailsDiskRedundancyNormal,
+}
+
+var mappingLaunchDbSystemFromBackupDetailsDiskRedundancyEnumLowerCase = map[string]LaunchDbSystemFromBackupDetailsDiskRedundancyEnum{
+	"high":   LaunchDbSystemFromBackupDetailsDiskRedundancyHigh,
+	"normal": LaunchDbSystemFromBackupDetailsDiskRedundancyNormal,
 }
 
 // GetLaunchDbSystemFromBackupDetailsDiskRedundancyEnumValues Enumerates the set of values for LaunchDbSystemFromBackupDetailsDiskRedundancyEnum
@@ -400,12 +407,7 @@ func GetLaunchDbSystemFromBackupDetailsDiskRedundancyEnumStringValues() []string
 
 // GetMappingLaunchDbSystemFromBackupDetailsDiskRedundancyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLaunchDbSystemFromBackupDetailsDiskRedundancyEnum(val string) (LaunchDbSystemFromBackupDetailsDiskRedundancyEnum, bool) {
-	mappingLaunchDbSystemFromBackupDetailsDiskRedundancyEnumIgnoreCase := make(map[string]LaunchDbSystemFromBackupDetailsDiskRedundancyEnum)
-	for k, v := range mappingLaunchDbSystemFromBackupDetailsDiskRedundancyEnum {
-		mappingLaunchDbSystemFromBackupDetailsDiskRedundancyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLaunchDbSystemFromBackupDetailsDiskRedundancyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLaunchDbSystemFromBackupDetailsDiskRedundancyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -421,6 +423,11 @@ const (
 var mappingLaunchDbSystemFromBackupDetailsLicenseModelEnum = map[string]LaunchDbSystemFromBackupDetailsLicenseModelEnum{
 	"LICENSE_INCLUDED":       LaunchDbSystemFromBackupDetailsLicenseModelLicenseIncluded,
 	"BRING_YOUR_OWN_LICENSE": LaunchDbSystemFromBackupDetailsLicenseModelBringYourOwnLicense,
+}
+
+var mappingLaunchDbSystemFromBackupDetailsLicenseModelEnumLowerCase = map[string]LaunchDbSystemFromBackupDetailsLicenseModelEnum{
+	"license_included":       LaunchDbSystemFromBackupDetailsLicenseModelLicenseIncluded,
+	"bring_your_own_license": LaunchDbSystemFromBackupDetailsLicenseModelBringYourOwnLicense,
 }
 
 // GetLaunchDbSystemFromBackupDetailsLicenseModelEnumValues Enumerates the set of values for LaunchDbSystemFromBackupDetailsLicenseModelEnum
@@ -442,11 +449,6 @@ func GetLaunchDbSystemFromBackupDetailsLicenseModelEnumStringValues() []string {
 
 // GetMappingLaunchDbSystemFromBackupDetailsLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLaunchDbSystemFromBackupDetailsLicenseModelEnum(val string) (LaunchDbSystemFromBackupDetailsLicenseModelEnum, bool) {
-	mappingLaunchDbSystemFromBackupDetailsLicenseModelEnumIgnoreCase := make(map[string]LaunchDbSystemFromBackupDetailsLicenseModelEnum)
-	for k, v := range mappingLaunchDbSystemFromBackupDetailsLicenseModelEnum {
-		mappingLaunchDbSystemFromBackupDetailsLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLaunchDbSystemFromBackupDetailsLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLaunchDbSystemFromBackupDetailsLicenseModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

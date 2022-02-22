@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -295,6 +295,13 @@ var mappingTaskOperatorRetryDelayUnitEnum = map[string]TaskOperatorRetryDelayUni
 	"DAYS":    TaskOperatorRetryDelayUnitDays,
 }
 
+var mappingTaskOperatorRetryDelayUnitEnumLowerCase = map[string]TaskOperatorRetryDelayUnitEnum{
+	"seconds": TaskOperatorRetryDelayUnitSeconds,
+	"minutes": TaskOperatorRetryDelayUnitMinutes,
+	"hours":   TaskOperatorRetryDelayUnitHours,
+	"days":    TaskOperatorRetryDelayUnitDays,
+}
+
 // GetTaskOperatorRetryDelayUnitEnumValues Enumerates the set of values for TaskOperatorRetryDelayUnitEnum
 func GetTaskOperatorRetryDelayUnitEnumValues() []TaskOperatorRetryDelayUnitEnum {
 	values := make([]TaskOperatorRetryDelayUnitEnum, 0)
@@ -316,12 +323,7 @@ func GetTaskOperatorRetryDelayUnitEnumStringValues() []string {
 
 // GetMappingTaskOperatorRetryDelayUnitEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskOperatorRetryDelayUnitEnum(val string) (TaskOperatorRetryDelayUnitEnum, bool) {
-	mappingTaskOperatorRetryDelayUnitEnumIgnoreCase := make(map[string]TaskOperatorRetryDelayUnitEnum)
-	for k, v := range mappingTaskOperatorRetryDelayUnitEnum {
-		mappingTaskOperatorRetryDelayUnitEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskOperatorRetryDelayUnitEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskOperatorRetryDelayUnitEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -341,6 +343,13 @@ var mappingTaskOperatorExpectedDurationUnitEnum = map[string]TaskOperatorExpecte
 	"MINUTES": TaskOperatorExpectedDurationUnitMinutes,
 	"HOURS":   TaskOperatorExpectedDurationUnitHours,
 	"DAYS":    TaskOperatorExpectedDurationUnitDays,
+}
+
+var mappingTaskOperatorExpectedDurationUnitEnumLowerCase = map[string]TaskOperatorExpectedDurationUnitEnum{
+	"seconds": TaskOperatorExpectedDurationUnitSeconds,
+	"minutes": TaskOperatorExpectedDurationUnitMinutes,
+	"hours":   TaskOperatorExpectedDurationUnitHours,
+	"days":    TaskOperatorExpectedDurationUnitDays,
 }
 
 // GetTaskOperatorExpectedDurationUnitEnumValues Enumerates the set of values for TaskOperatorExpectedDurationUnitEnum
@@ -364,12 +373,7 @@ func GetTaskOperatorExpectedDurationUnitEnumStringValues() []string {
 
 // GetMappingTaskOperatorExpectedDurationUnitEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskOperatorExpectedDurationUnitEnum(val string) (TaskOperatorExpectedDurationUnitEnum, bool) {
-	mappingTaskOperatorExpectedDurationUnitEnumIgnoreCase := make(map[string]TaskOperatorExpectedDurationUnitEnum)
-	for k, v := range mappingTaskOperatorExpectedDurationUnitEnum {
-		mappingTaskOperatorExpectedDurationUnitEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskOperatorExpectedDurationUnitEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskOperatorExpectedDurationUnitEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -395,6 +399,15 @@ var mappingTaskOperatorTaskTypeEnum = map[string]TaskOperatorTaskTypeEnum{
 	"REST_TASK":         TaskOperatorTaskTypeRestTask,
 }
 
+var mappingTaskOperatorTaskTypeEnumLowerCase = map[string]TaskOperatorTaskTypeEnum{
+	"pipeline_task":     TaskOperatorTaskTypePipelineTask,
+	"integration_task":  TaskOperatorTaskTypeIntegrationTask,
+	"data_loader_task":  TaskOperatorTaskTypeDataLoaderTask,
+	"sql_task":          TaskOperatorTaskTypeSqlTask,
+	"oci_dataflow_task": TaskOperatorTaskTypeOciDataflowTask,
+	"rest_task":         TaskOperatorTaskTypeRestTask,
+}
+
 // GetTaskOperatorTaskTypeEnumValues Enumerates the set of values for TaskOperatorTaskTypeEnum
 func GetTaskOperatorTaskTypeEnumValues() []TaskOperatorTaskTypeEnum {
 	values := make([]TaskOperatorTaskTypeEnum, 0)
@@ -418,12 +431,7 @@ func GetTaskOperatorTaskTypeEnumStringValues() []string {
 
 // GetMappingTaskOperatorTaskTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskOperatorTaskTypeEnum(val string) (TaskOperatorTaskTypeEnum, bool) {
-	mappingTaskOperatorTaskTypeEnumIgnoreCase := make(map[string]TaskOperatorTaskTypeEnum)
-	for k, v := range mappingTaskOperatorTaskTypeEnum {
-		mappingTaskOperatorTaskTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskOperatorTaskTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskOperatorTaskTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -441,6 +449,12 @@ var mappingTaskOperatorTriggerRuleEnum = map[string]TaskOperatorTriggerRuleEnum{
 	"ALL_SUCCESS":  TaskOperatorTriggerRuleSuccess,
 	"ALL_FAILED":   TaskOperatorTriggerRuleFailed,
 	"ALL_COMPLETE": TaskOperatorTriggerRuleComplete,
+}
+
+var mappingTaskOperatorTriggerRuleEnumLowerCase = map[string]TaskOperatorTriggerRuleEnum{
+	"all_success":  TaskOperatorTriggerRuleSuccess,
+	"all_failed":   TaskOperatorTriggerRuleFailed,
+	"all_complete": TaskOperatorTriggerRuleComplete,
 }
 
 // GetTaskOperatorTriggerRuleEnumValues Enumerates the set of values for TaskOperatorTriggerRuleEnum
@@ -463,11 +477,6 @@ func GetTaskOperatorTriggerRuleEnumStringValues() []string {
 
 // GetMappingTaskOperatorTriggerRuleEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskOperatorTriggerRuleEnum(val string) (TaskOperatorTriggerRuleEnum, bool) {
-	mappingTaskOperatorTriggerRuleEnumIgnoreCase := make(map[string]TaskOperatorTriggerRuleEnum)
-	for k, v := range mappingTaskOperatorTriggerRuleEnum {
-		mappingTaskOperatorTriggerRuleEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskOperatorTriggerRuleEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskOperatorTriggerRuleEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

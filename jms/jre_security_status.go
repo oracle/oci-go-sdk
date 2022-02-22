@@ -31,6 +31,13 @@ var mappingJreSecurityStatusEnum = map[string]JreSecurityStatusEnum{
 	"UPGRADE_REQUIRED": JreSecurityStatusUpgradeRequired,
 }
 
+var mappingJreSecurityStatusEnumLowerCase = map[string]JreSecurityStatusEnum{
+	"unknown":          JreSecurityStatusUnknown,
+	"up_to_date":       JreSecurityStatusUpToDate,
+	"update_required":  JreSecurityStatusUpdateRequired,
+	"upgrade_required": JreSecurityStatusUpgradeRequired,
+}
+
 // GetJreSecurityStatusEnumValues Enumerates the set of values for JreSecurityStatusEnum
 func GetJreSecurityStatusEnumValues() []JreSecurityStatusEnum {
 	values := make([]JreSecurityStatusEnum, 0)
@@ -52,11 +59,6 @@ func GetJreSecurityStatusEnumStringValues() []string {
 
 // GetMappingJreSecurityStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJreSecurityStatusEnum(val string) (JreSecurityStatusEnum, bool) {
-	mappingJreSecurityStatusEnumIgnoreCase := make(map[string]JreSecurityStatusEnum)
-	for k, v := range mappingJreSecurityStatusEnum {
-		mappingJreSecurityStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJreSecurityStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJreSecurityStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

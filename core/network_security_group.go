@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -117,6 +117,13 @@ var mappingNetworkSecurityGroupLifecycleStateEnum = map[string]NetworkSecurityGr
 	"TERMINATED":   NetworkSecurityGroupLifecycleStateTerminated,
 }
 
+var mappingNetworkSecurityGroupLifecycleStateEnumLowerCase = map[string]NetworkSecurityGroupLifecycleStateEnum{
+	"provisioning": NetworkSecurityGroupLifecycleStateProvisioning,
+	"available":    NetworkSecurityGroupLifecycleStateAvailable,
+	"terminating":  NetworkSecurityGroupLifecycleStateTerminating,
+	"terminated":   NetworkSecurityGroupLifecycleStateTerminated,
+}
+
 // GetNetworkSecurityGroupLifecycleStateEnumValues Enumerates the set of values for NetworkSecurityGroupLifecycleStateEnum
 func GetNetworkSecurityGroupLifecycleStateEnumValues() []NetworkSecurityGroupLifecycleStateEnum {
 	values := make([]NetworkSecurityGroupLifecycleStateEnum, 0)
@@ -138,11 +145,6 @@ func GetNetworkSecurityGroupLifecycleStateEnumStringValues() []string {
 
 // GetMappingNetworkSecurityGroupLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNetworkSecurityGroupLifecycleStateEnum(val string) (NetworkSecurityGroupLifecycleStateEnum, bool) {
-	mappingNetworkSecurityGroupLifecycleStateEnumIgnoreCase := make(map[string]NetworkSecurityGroupLifecycleStateEnum)
-	for k, v := range mappingNetworkSecurityGroupLifecycleStateEnum {
-		mappingNetworkSecurityGroupLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNetworkSecurityGroupLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNetworkSecurityGroupLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

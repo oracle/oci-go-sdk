@@ -30,6 +30,12 @@ var mappingRuleOriginTypeEnum = map[string]RuleOriginTypeEnum{
 	"PROFILING": RuleOriginTypeProfiling,
 }
 
+var mappingRuleOriginTypeEnumLowerCase = map[string]RuleOriginTypeEnum{
+	"source":    RuleOriginTypeSource,
+	"user":      RuleOriginTypeUser,
+	"profiling": RuleOriginTypeProfiling,
+}
+
 // GetRuleOriginTypeEnumValues Enumerates the set of values for RuleOriginTypeEnum
 func GetRuleOriginTypeEnumValues() []RuleOriginTypeEnum {
 	values := make([]RuleOriginTypeEnum, 0)
@@ -50,11 +56,6 @@ func GetRuleOriginTypeEnumStringValues() []string {
 
 // GetMappingRuleOriginTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRuleOriginTypeEnum(val string) (RuleOriginTypeEnum, bool) {
-	mappingRuleOriginTypeEnumIgnoreCase := make(map[string]RuleOriginTypeEnum)
-	for k, v := range mappingRuleOriginTypeEnum {
-		mappingRuleOriginTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingRuleOriginTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingRuleOriginTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

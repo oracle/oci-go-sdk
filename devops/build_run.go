@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -181,6 +181,15 @@ var mappingBuildRunLifecycleStateEnum = map[string]BuildRunLifecycleStateEnum{
 	"CANCELED":    BuildRunLifecycleStateCanceled,
 }
 
+var mappingBuildRunLifecycleStateEnumLowerCase = map[string]BuildRunLifecycleStateEnum{
+	"accepted":    BuildRunLifecycleStateAccepted,
+	"in_progress": BuildRunLifecycleStateInProgress,
+	"failed":      BuildRunLifecycleStateFailed,
+	"succeeded":   BuildRunLifecycleStateSucceeded,
+	"canceling":   BuildRunLifecycleStateCanceling,
+	"canceled":    BuildRunLifecycleStateCanceled,
+}
+
 // GetBuildRunLifecycleStateEnumValues Enumerates the set of values for BuildRunLifecycleStateEnum
 func GetBuildRunLifecycleStateEnumValues() []BuildRunLifecycleStateEnum {
 	values := make([]BuildRunLifecycleStateEnum, 0)
@@ -204,11 +213,6 @@ func GetBuildRunLifecycleStateEnumStringValues() []string {
 
 // GetMappingBuildRunLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBuildRunLifecycleStateEnum(val string) (BuildRunLifecycleStateEnum, bool) {
-	mappingBuildRunLifecycleStateEnumIgnoreCase := make(map[string]BuildRunLifecycleStateEnum)
-	for k, v := range mappingBuildRunLifecycleStateEnum {
-		mappingBuildRunLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBuildRunLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBuildRunLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

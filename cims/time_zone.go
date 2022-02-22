@@ -79,6 +79,37 @@ var mappingTimeZoneEnum = map[string]TimeZoneEnum{
 	"CENTRAL_AFRICAN_TIME":                   TimeZoneCentralAfricanTime,
 }
 
+var mappingTimeZoneEnumLowerCase = map[string]TimeZoneEnum{
+	"greenwich_mean_time":                    TimeZoneGreenwichMeanTime,
+	"european_central_time":                  TimeZoneEuropeanCentralTime,
+	"eastern_european_time":                  TimeZoneEasternEuropeanTime,
+	"eastern_african_time":                   TimeZoneEasternAfricanTime,
+	"middle_east_time":                       TimeZoneMiddleEastTime,
+	"near_east_time":                         TimeZoneNearEastTime,
+	"pakistan_lahore_time":                   TimeZonePakistanLahoreTime,
+	"india_standard_time":                    TimeZoneIndiaStandardTime,
+	"bangladesh_standard_time":               TimeZoneBangladeshStandardTime,
+	"vietnam_standard_time":                  TimeZoneVietnamStandardTime,
+	"china_taiwan_time":                      TimeZoneChinaTaiwanTime,
+	"japan_standard_time":                    TimeZoneJapanStandardTime,
+	"australia_central_time":                 TimeZoneAustraliaCentralTime,
+	"australia_eastern_time":                 TimeZoneAustraliaEasternTime,
+	"solomon_standard_time":                  TimeZoneSolomonStandardTime,
+	"new_zealand_standard_time":              TimeZoneNewZealandStandardTime,
+	"midway_islands_time":                    TimeZoneMidwayIslandsTime,
+	"hawaii_standard_time":                   TimeZoneHawaiiStandardTime,
+	"alaska_standard_time":                   TimeZoneAlaskaStandardTime,
+	"pacific_standard_time":                  TimeZonePacificStandardTime,
+	"mountain_standard_time":                 TimeZoneMountainStandardTime,
+	"central_standard_time":                  TimeZoneCentralStandardTime,
+	"eastern_standard_time":                  TimeZoneEasternStandardTime,
+	"puerto_rico_and_us_virgin_islands_time": TimeZonePuertoRicoAndUsVirginIslandsTime,
+	"canada_newfoundland_time":               TimeZoneCanadaNewfoundlandTime,
+	"argentina_standard_time":                TimeZoneArgentinaStandardTime,
+	"mid_atlantic_time":                      TimeZoneMidAtlanticTime,
+	"central_african_time":                   TimeZoneCentralAfricanTime,
+}
+
 // GetTimeZoneEnumValues Enumerates the set of values for TimeZoneEnum
 func GetTimeZoneEnumValues() []TimeZoneEnum {
 	values := make([]TimeZoneEnum, 0)
@@ -124,11 +155,6 @@ func GetTimeZoneEnumStringValues() []string {
 
 // GetMappingTimeZoneEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTimeZoneEnum(val string) (TimeZoneEnum, bool) {
-	mappingTimeZoneEnumIgnoreCase := make(map[string]TimeZoneEnum)
-	for k, v := range mappingTimeZoneEnum {
-		mappingTimeZoneEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTimeZoneEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTimeZoneEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

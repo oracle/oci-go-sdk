@@ -13,7 +13,7 @@ package optimizer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -69,6 +69,14 @@ var mappingQueryableFieldSummaryFieldTypeEnum = map[string]QueryableFieldSummary
 	"OBJECT":    QueryableFieldSummaryFieldTypeObject,
 }
 
+var mappingQueryableFieldSummaryFieldTypeEnumLowerCase = map[string]QueryableFieldSummaryFieldTypeEnum{
+	"string":    QueryableFieldSummaryFieldTypeString,
+	"integer":   QueryableFieldSummaryFieldTypeInteger,
+	"boolean":   QueryableFieldSummaryFieldTypeBoolean,
+	"date_time": QueryableFieldSummaryFieldTypeDateTime,
+	"object":    QueryableFieldSummaryFieldTypeObject,
+}
+
 // GetQueryableFieldSummaryFieldTypeEnumValues Enumerates the set of values for QueryableFieldSummaryFieldTypeEnum
 func GetQueryableFieldSummaryFieldTypeEnumValues() []QueryableFieldSummaryFieldTypeEnum {
 	values := make([]QueryableFieldSummaryFieldTypeEnum, 0)
@@ -91,11 +99,6 @@ func GetQueryableFieldSummaryFieldTypeEnumStringValues() []string {
 
 // GetMappingQueryableFieldSummaryFieldTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingQueryableFieldSummaryFieldTypeEnum(val string) (QueryableFieldSummaryFieldTypeEnum, bool) {
-	mappingQueryableFieldSummaryFieldTypeEnumIgnoreCase := make(map[string]QueryableFieldSummaryFieldTypeEnum)
-	for k, v := range mappingQueryableFieldSummaryFieldTypeEnum {
-		mappingQueryableFieldSummaryFieldTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingQueryableFieldSummaryFieldTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingQueryableFieldSummaryFieldTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

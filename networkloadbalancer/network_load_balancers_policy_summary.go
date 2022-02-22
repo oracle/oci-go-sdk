@@ -29,6 +29,12 @@ var mappingNetworkLoadBalancersPolicySummaryEnum = map[string]NetworkLoadBalance
 	"FIVE_TUPLE":  NetworkLoadBalancersPolicySummaryFiveTuple,
 }
 
+var mappingNetworkLoadBalancersPolicySummaryEnumLowerCase = map[string]NetworkLoadBalancersPolicySummaryEnum{
+	"two_tuple":   NetworkLoadBalancersPolicySummaryTwoTuple,
+	"three_tuple": NetworkLoadBalancersPolicySummaryThreeTuple,
+	"five_tuple":  NetworkLoadBalancersPolicySummaryFiveTuple,
+}
+
 // GetNetworkLoadBalancersPolicySummaryEnumValues Enumerates the set of values for NetworkLoadBalancersPolicySummaryEnum
 func GetNetworkLoadBalancersPolicySummaryEnumValues() []NetworkLoadBalancersPolicySummaryEnum {
 	values := make([]NetworkLoadBalancersPolicySummaryEnum, 0)
@@ -49,11 +55,6 @@ func GetNetworkLoadBalancersPolicySummaryEnumStringValues() []string {
 
 // GetMappingNetworkLoadBalancersPolicySummaryEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNetworkLoadBalancersPolicySummaryEnum(val string) (NetworkLoadBalancersPolicySummaryEnum, bool) {
-	mappingNetworkLoadBalancersPolicySummaryEnumIgnoreCase := make(map[string]NetworkLoadBalancersPolicySummaryEnum)
-	for k, v := range mappingNetworkLoadBalancersPolicySummaryEnum {
-		mappingNetworkLoadBalancersPolicySummaryEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNetworkLoadBalancersPolicySummaryEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNetworkLoadBalancersPolicySummaryEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

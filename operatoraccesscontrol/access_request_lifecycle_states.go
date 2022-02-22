@@ -69,6 +69,31 @@ var mappingAccessRequestLifecycleStatesEnum = map[string]AccessRequestLifecycleS
 	"INREVIEW":          AccessRequestLifecycleStatesInreview,
 }
 
+var mappingAccessRequestLifecycleStatesEnumLowerCase = map[string]AccessRequestLifecycleStatesEnum{
+	"created":           AccessRequestLifecycleStatesCreated,
+	"approvalwaiting":   AccessRequestLifecycleStatesApprovalwaiting,
+	"preapproved":       AccessRequestLifecycleStatesPreapproved,
+	"approved":          AccessRequestLifecycleStatesApproved,
+	"rejected":          AccessRequestLifecycleStatesRejected,
+	"deployed":          AccessRequestLifecycleStatesDeployed,
+	"deployfailed":      AccessRequestLifecycleStatesDeployfailed,
+	"undeployed":        AccessRequestLifecycleStatesUndeployed,
+	"undeployfailed":    AccessRequestLifecycleStatesUndeployfailed,
+	"closefailed":       AccessRequestLifecycleStatesClosefailed,
+	"revokefailed":      AccessRequestLifecycleStatesRevokefailed,
+	"expiryfailed":      AccessRequestLifecycleStatesExpiryfailed,
+	"revoking":          AccessRequestLifecycleStatesRevoking,
+	"revoked":           AccessRequestLifecycleStatesRevoked,
+	"extending":         AccessRequestLifecycleStatesExtending,
+	"extended":          AccessRequestLifecycleStatesExtended,
+	"extensionrejected": AccessRequestLifecycleStatesExtensionrejected,
+	"completing":        AccessRequestLifecycleStatesCompleting,
+	"completed":         AccessRequestLifecycleStatesCompleted,
+	"expired":           AccessRequestLifecycleStatesExpired,
+	"approvedforfuture": AccessRequestLifecycleStatesApprovedforfuture,
+	"inreview":          AccessRequestLifecycleStatesInreview,
+}
+
 // GetAccessRequestLifecycleStatesEnumValues Enumerates the set of values for AccessRequestLifecycleStatesEnum
 func GetAccessRequestLifecycleStatesEnumValues() []AccessRequestLifecycleStatesEnum {
 	values := make([]AccessRequestLifecycleStatesEnum, 0)
@@ -108,11 +133,6 @@ func GetAccessRequestLifecycleStatesEnumStringValues() []string {
 
 // GetMappingAccessRequestLifecycleStatesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAccessRequestLifecycleStatesEnum(val string) (AccessRequestLifecycleStatesEnum, bool) {
-	mappingAccessRequestLifecycleStatesEnumIgnoreCase := make(map[string]AccessRequestLifecycleStatesEnum)
-	for k, v := range mappingAccessRequestLifecycleStatesEnum {
-		mappingAccessRequestLifecycleStatesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAccessRequestLifecycleStatesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAccessRequestLifecycleStatesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

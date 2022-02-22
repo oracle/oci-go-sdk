@@ -2,16 +2,17 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Cloud Guard APIs
+// Cloud Guard API
 //
-// A description of the Cloud Guard APIs
+// Use the Cloud Guard API to automate processes that you would otherwise perform through the Cloud Guard Console.
+// **Note:** You can perform Create, Update, and Delete operations only from the reporting region of your Cloud Guard tenancy. You can perform Read operations from any region.
 //
 
 package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -21,7 +22,7 @@ type TargetDetectorRecipe struct {
 	// Ocid for detector recipe
 	Id *string `mandatory:"true" json:"id"`
 
-	// DisplayName of detector recipe
+	// Display name of detector recipe.
 	DisplayName *string `mandatory:"true" json:"displayName"`
 
 	// compartmentId of detector recipe
@@ -36,7 +37,7 @@ type TargetDetectorRecipe struct {
 	// Type of detector
 	Detector DetectorEnumEnum `mandatory:"true" json:"detector"`
 
-	// Detector recipe description
+	// Detector recipe description.
 	Description *string `mandatory:"false" json:"description"`
 
 	// List of detector rules for the detector type for recipe - user input
@@ -53,6 +54,9 @@ type TargetDetectorRecipe struct {
 
 	// The current state of the resource.
 	LifecycleState LifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
+
+	// The number of days for which source data is retained
+	SourceDataRetention *int `mandatory:"false" json:"sourceDataRetention"`
 }
 
 func (m TargetDetectorRecipe) String() string {

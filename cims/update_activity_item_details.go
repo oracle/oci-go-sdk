@@ -12,7 +12,7 @@ package cims
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -78,6 +78,13 @@ var mappingUpdateActivityItemDetailsActivityTypeEnum = map[string]UpdateActivity
 	"CLOSE":               UpdateActivityItemDetailsActivityTypeClose,
 }
 
+var mappingUpdateActivityItemDetailsActivityTypeEnumLowerCase = map[string]UpdateActivityItemDetailsActivityTypeEnum{
+	"notes":               UpdateActivityItemDetailsActivityTypeNotes,
+	"problem_description": UpdateActivityItemDetailsActivityTypeProblemDescription,
+	"update":              UpdateActivityItemDetailsActivityTypeUpdate,
+	"close":               UpdateActivityItemDetailsActivityTypeClose,
+}
+
 // GetUpdateActivityItemDetailsActivityTypeEnumValues Enumerates the set of values for UpdateActivityItemDetailsActivityTypeEnum
 func GetUpdateActivityItemDetailsActivityTypeEnumValues() []UpdateActivityItemDetailsActivityTypeEnum {
 	values := make([]UpdateActivityItemDetailsActivityTypeEnum, 0)
@@ -99,11 +106,6 @@ func GetUpdateActivityItemDetailsActivityTypeEnumStringValues() []string {
 
 // GetMappingUpdateActivityItemDetailsActivityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateActivityItemDetailsActivityTypeEnum(val string) (UpdateActivityItemDetailsActivityTypeEnum, bool) {
-	mappingUpdateActivityItemDetailsActivityTypeEnumIgnoreCase := make(map[string]UpdateActivityItemDetailsActivityTypeEnum)
-	for k, v := range mappingUpdateActivityItemDetailsActivityTypeEnum {
-		mappingUpdateActivityItemDetailsActivityTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateActivityItemDetailsActivityTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateActivityItemDetailsActivityTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

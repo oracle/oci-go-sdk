@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -129,6 +129,13 @@ var mappingTaskScheduleRetryDelayUnitEnum = map[string]TaskScheduleRetryDelayUni
 	"DAYS":    TaskScheduleRetryDelayUnitDays,
 }
 
+var mappingTaskScheduleRetryDelayUnitEnumLowerCase = map[string]TaskScheduleRetryDelayUnitEnum{
+	"seconds": TaskScheduleRetryDelayUnitSeconds,
+	"minutes": TaskScheduleRetryDelayUnitMinutes,
+	"hours":   TaskScheduleRetryDelayUnitHours,
+	"days":    TaskScheduleRetryDelayUnitDays,
+}
+
 // GetTaskScheduleRetryDelayUnitEnumValues Enumerates the set of values for TaskScheduleRetryDelayUnitEnum
 func GetTaskScheduleRetryDelayUnitEnumValues() []TaskScheduleRetryDelayUnitEnum {
 	values := make([]TaskScheduleRetryDelayUnitEnum, 0)
@@ -150,12 +157,7 @@ func GetTaskScheduleRetryDelayUnitEnumStringValues() []string {
 
 // GetMappingTaskScheduleRetryDelayUnitEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskScheduleRetryDelayUnitEnum(val string) (TaskScheduleRetryDelayUnitEnum, bool) {
-	mappingTaskScheduleRetryDelayUnitEnumIgnoreCase := make(map[string]TaskScheduleRetryDelayUnitEnum)
-	for k, v := range mappingTaskScheduleRetryDelayUnitEnum {
-		mappingTaskScheduleRetryDelayUnitEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskScheduleRetryDelayUnitEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskScheduleRetryDelayUnitEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -173,6 +175,12 @@ var mappingTaskScheduleAuthModeEnum = map[string]TaskScheduleAuthModeEnum{
 	"OBO":                TaskScheduleAuthModeObo,
 	"RESOURCE_PRINCIPAL": TaskScheduleAuthModeResourcePrincipal,
 	"USER_CERTIFICATE":   TaskScheduleAuthModeUserCertificate,
+}
+
+var mappingTaskScheduleAuthModeEnumLowerCase = map[string]TaskScheduleAuthModeEnum{
+	"obo":                TaskScheduleAuthModeObo,
+	"resource_principal": TaskScheduleAuthModeResourcePrincipal,
+	"user_certificate":   TaskScheduleAuthModeUserCertificate,
 }
 
 // GetTaskScheduleAuthModeEnumValues Enumerates the set of values for TaskScheduleAuthModeEnum
@@ -195,12 +203,7 @@ func GetTaskScheduleAuthModeEnumStringValues() []string {
 
 // GetMappingTaskScheduleAuthModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskScheduleAuthModeEnum(val string) (TaskScheduleAuthModeEnum, bool) {
-	mappingTaskScheduleAuthModeEnumIgnoreCase := make(map[string]TaskScheduleAuthModeEnum)
-	for k, v := range mappingTaskScheduleAuthModeEnum {
-		mappingTaskScheduleAuthModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskScheduleAuthModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskScheduleAuthModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -220,6 +223,13 @@ var mappingTaskScheduleExpectedDurationUnitEnum = map[string]TaskScheduleExpecte
 	"MINUTES": TaskScheduleExpectedDurationUnitMinutes,
 	"HOURS":   TaskScheduleExpectedDurationUnitHours,
 	"DAYS":    TaskScheduleExpectedDurationUnitDays,
+}
+
+var mappingTaskScheduleExpectedDurationUnitEnumLowerCase = map[string]TaskScheduleExpectedDurationUnitEnum{
+	"seconds": TaskScheduleExpectedDurationUnitSeconds,
+	"minutes": TaskScheduleExpectedDurationUnitMinutes,
+	"hours":   TaskScheduleExpectedDurationUnitHours,
+	"days":    TaskScheduleExpectedDurationUnitDays,
 }
 
 // GetTaskScheduleExpectedDurationUnitEnumValues Enumerates the set of values for TaskScheduleExpectedDurationUnitEnum
@@ -243,11 +253,6 @@ func GetTaskScheduleExpectedDurationUnitEnumStringValues() []string {
 
 // GetMappingTaskScheduleExpectedDurationUnitEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTaskScheduleExpectedDurationUnitEnum(val string) (TaskScheduleExpectedDurationUnitEnum, bool) {
-	mappingTaskScheduleExpectedDurationUnitEnumIgnoreCase := make(map[string]TaskScheduleExpectedDurationUnitEnum)
-	for k, v := range mappingTaskScheduleExpectedDurationUnitEnum {
-		mappingTaskScheduleExpectedDurationUnitEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTaskScheduleExpectedDurationUnitEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTaskScheduleExpectedDurationUnitEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

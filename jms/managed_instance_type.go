@@ -25,6 +25,10 @@ var mappingManagedInstanceTypeEnum = map[string]ManagedInstanceTypeEnum{
 	"ORACLE_MANAGEMENT_AGENT": ManagedInstanceTypeOracleManagementAgent,
 }
 
+var mappingManagedInstanceTypeEnumLowerCase = map[string]ManagedInstanceTypeEnum{
+	"oracle_management_agent": ManagedInstanceTypeOracleManagementAgent,
+}
+
 // GetManagedInstanceTypeEnumValues Enumerates the set of values for ManagedInstanceTypeEnum
 func GetManagedInstanceTypeEnumValues() []ManagedInstanceTypeEnum {
 	values := make([]ManagedInstanceTypeEnum, 0)
@@ -43,11 +47,6 @@ func GetManagedInstanceTypeEnumStringValues() []string {
 
 // GetMappingManagedInstanceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingManagedInstanceTypeEnum(val string) (ManagedInstanceTypeEnum, bool) {
-	mappingManagedInstanceTypeEnumIgnoreCase := make(map[string]ManagedInstanceTypeEnum)
-	for k, v := range mappingManagedInstanceTypeEnum {
-		mappingManagedInstanceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingManagedInstanceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingManagedInstanceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

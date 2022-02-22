@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -132,6 +132,11 @@ var mappingSensitiveColumnSummaryObjectTypeEnum = map[string]SensitiveColumnSumm
 	"EDITIONING_VIEW": SensitiveColumnSummaryObjectTypeEditioningView,
 }
 
+var mappingSensitiveColumnSummaryObjectTypeEnumLowerCase = map[string]SensitiveColumnSummaryObjectTypeEnum{
+	"table":           SensitiveColumnSummaryObjectTypeTable,
+	"editioning_view": SensitiveColumnSummaryObjectTypeEditioningView,
+}
+
 // GetSensitiveColumnSummaryObjectTypeEnumValues Enumerates the set of values for SensitiveColumnSummaryObjectTypeEnum
 func GetSensitiveColumnSummaryObjectTypeEnumValues() []SensitiveColumnSummaryObjectTypeEnum {
 	values := make([]SensitiveColumnSummaryObjectTypeEnum, 0)
@@ -151,12 +156,7 @@ func GetSensitiveColumnSummaryObjectTypeEnumStringValues() []string {
 
 // GetMappingSensitiveColumnSummaryObjectTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSensitiveColumnSummaryObjectTypeEnum(val string) (SensitiveColumnSummaryObjectTypeEnum, bool) {
-	mappingSensitiveColumnSummaryObjectTypeEnumIgnoreCase := make(map[string]SensitiveColumnSummaryObjectTypeEnum)
-	for k, v := range mappingSensitiveColumnSummaryObjectTypeEnum {
-		mappingSensitiveColumnSummaryObjectTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSensitiveColumnSummaryObjectTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSensitiveColumnSummaryObjectTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -172,6 +172,11 @@ const (
 var mappingSensitiveColumnSummaryStatusEnum = map[string]SensitiveColumnSummaryStatusEnum{
 	"VALID":   SensitiveColumnSummaryStatusValid,
 	"INVALID": SensitiveColumnSummaryStatusInvalid,
+}
+
+var mappingSensitiveColumnSummaryStatusEnumLowerCase = map[string]SensitiveColumnSummaryStatusEnum{
+	"valid":   SensitiveColumnSummaryStatusValid,
+	"invalid": SensitiveColumnSummaryStatusInvalid,
 }
 
 // GetSensitiveColumnSummaryStatusEnumValues Enumerates the set of values for SensitiveColumnSummaryStatusEnum
@@ -193,12 +198,7 @@ func GetSensitiveColumnSummaryStatusEnumStringValues() []string {
 
 // GetMappingSensitiveColumnSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSensitiveColumnSummaryStatusEnum(val string) (SensitiveColumnSummaryStatusEnum, bool) {
-	mappingSensitiveColumnSummaryStatusEnumIgnoreCase := make(map[string]SensitiveColumnSummaryStatusEnum)
-	for k, v := range mappingSensitiveColumnSummaryStatusEnum {
-		mappingSensitiveColumnSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSensitiveColumnSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSensitiveColumnSummaryStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -214,6 +214,11 @@ const (
 var mappingSensitiveColumnSummarySourceEnum = map[string]SensitiveColumnSummarySourceEnum{
 	"MANUAL":    SensitiveColumnSummarySourceManual,
 	"DISCOVERY": SensitiveColumnSummarySourceDiscovery,
+}
+
+var mappingSensitiveColumnSummarySourceEnumLowerCase = map[string]SensitiveColumnSummarySourceEnum{
+	"manual":    SensitiveColumnSummarySourceManual,
+	"discovery": SensitiveColumnSummarySourceDiscovery,
 }
 
 // GetSensitiveColumnSummarySourceEnumValues Enumerates the set of values for SensitiveColumnSummarySourceEnum
@@ -235,12 +240,7 @@ func GetSensitiveColumnSummarySourceEnumStringValues() []string {
 
 // GetMappingSensitiveColumnSummarySourceEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSensitiveColumnSummarySourceEnum(val string) (SensitiveColumnSummarySourceEnum, bool) {
-	mappingSensitiveColumnSummarySourceEnumIgnoreCase := make(map[string]SensitiveColumnSummarySourceEnum)
-	for k, v := range mappingSensitiveColumnSummarySourceEnum {
-		mappingSensitiveColumnSummarySourceEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSensitiveColumnSummarySourceEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSensitiveColumnSummarySourceEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -258,6 +258,12 @@ var mappingSensitiveColumnSummaryRelationTypeEnum = map[string]SensitiveColumnSu
 	"NONE":        SensitiveColumnSummaryRelationTypeNone,
 	"APP_DEFINED": SensitiveColumnSummaryRelationTypeAppDefined,
 	"DB_DEFINED":  SensitiveColumnSummaryRelationTypeDbDefined,
+}
+
+var mappingSensitiveColumnSummaryRelationTypeEnumLowerCase = map[string]SensitiveColumnSummaryRelationTypeEnum{
+	"none":        SensitiveColumnSummaryRelationTypeNone,
+	"app_defined": SensitiveColumnSummaryRelationTypeAppDefined,
+	"db_defined":  SensitiveColumnSummaryRelationTypeDbDefined,
 }
 
 // GetSensitiveColumnSummaryRelationTypeEnumValues Enumerates the set of values for SensitiveColumnSummaryRelationTypeEnum
@@ -280,11 +286,6 @@ func GetSensitiveColumnSummaryRelationTypeEnumStringValues() []string {
 
 // GetMappingSensitiveColumnSummaryRelationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSensitiveColumnSummaryRelationTypeEnum(val string) (SensitiveColumnSummaryRelationTypeEnum, bool) {
-	mappingSensitiveColumnSummaryRelationTypeEnumIgnoreCase := make(map[string]SensitiveColumnSummaryRelationTypeEnum)
-	for k, v := range mappingSensitiveColumnSummaryRelationTypeEnum {
-		mappingSensitiveColumnSummaryRelationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSensitiveColumnSummaryRelationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSensitiveColumnSummaryRelationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

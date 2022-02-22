@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -80,6 +80,12 @@ var mappingCreatePatchDetailsPatchTypeEnum = map[string]CreatePatchDetailsPatchT
 	"UNPUBLISH": CreatePatchDetailsPatchTypeUnpublish,
 }
 
+var mappingCreatePatchDetailsPatchTypeEnumLowerCase = map[string]CreatePatchDetailsPatchTypeEnum{
+	"publish":   CreatePatchDetailsPatchTypePublish,
+	"refresh":   CreatePatchDetailsPatchTypeRefresh,
+	"unpublish": CreatePatchDetailsPatchTypeUnpublish,
+}
+
 // GetCreatePatchDetailsPatchTypeEnumValues Enumerates the set of values for CreatePatchDetailsPatchTypeEnum
 func GetCreatePatchDetailsPatchTypeEnumValues() []CreatePatchDetailsPatchTypeEnum {
 	values := make([]CreatePatchDetailsPatchTypeEnum, 0)
@@ -100,11 +106,6 @@ func GetCreatePatchDetailsPatchTypeEnumStringValues() []string {
 
 // GetMappingCreatePatchDetailsPatchTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreatePatchDetailsPatchTypeEnum(val string) (CreatePatchDetailsPatchTypeEnum, bool) {
-	mappingCreatePatchDetailsPatchTypeEnumIgnoreCase := make(map[string]CreatePatchDetailsPatchTypeEnum)
-	for k, v := range mappingCreatePatchDetailsPatchTypeEnum {
-		mappingCreatePatchDetailsPatchTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreatePatchDetailsPatchTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreatePatchDetailsPatchTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

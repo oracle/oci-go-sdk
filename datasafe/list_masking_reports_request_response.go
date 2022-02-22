@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -147,6 +147,11 @@ var mappingListMaskingReportsSortOrderEnum = map[string]ListMaskingReportsSortOr
 	"DESC": ListMaskingReportsSortOrderDesc,
 }
 
+var mappingListMaskingReportsSortOrderEnumLowerCase = map[string]ListMaskingReportsSortOrderEnum{
+	"asc":  ListMaskingReportsSortOrderAsc,
+	"desc": ListMaskingReportsSortOrderDesc,
+}
+
 // GetListMaskingReportsSortOrderEnumValues Enumerates the set of values for ListMaskingReportsSortOrderEnum
 func GetListMaskingReportsSortOrderEnumValues() []ListMaskingReportsSortOrderEnum {
 	values := make([]ListMaskingReportsSortOrderEnum, 0)
@@ -166,12 +171,7 @@ func GetListMaskingReportsSortOrderEnumStringValues() []string {
 
 // GetMappingListMaskingReportsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMaskingReportsSortOrderEnum(val string) (ListMaskingReportsSortOrderEnum, bool) {
-	mappingListMaskingReportsSortOrderEnumIgnoreCase := make(map[string]ListMaskingReportsSortOrderEnum)
-	for k, v := range mappingListMaskingReportsSortOrderEnum {
-		mappingListMaskingReportsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMaskingReportsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMaskingReportsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -185,6 +185,10 @@ const (
 
 var mappingListMaskingReportsSortByEnum = map[string]ListMaskingReportsSortByEnum{
 	"timeMaskingFinished": ListMaskingReportsSortByTimemaskingfinished,
+}
+
+var mappingListMaskingReportsSortByEnumLowerCase = map[string]ListMaskingReportsSortByEnum{
+	"timemaskingfinished": ListMaskingReportsSortByTimemaskingfinished,
 }
 
 // GetListMaskingReportsSortByEnumValues Enumerates the set of values for ListMaskingReportsSortByEnum
@@ -205,12 +209,7 @@ func GetListMaskingReportsSortByEnumStringValues() []string {
 
 // GetMappingListMaskingReportsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMaskingReportsSortByEnum(val string) (ListMaskingReportsSortByEnum, bool) {
-	mappingListMaskingReportsSortByEnumIgnoreCase := make(map[string]ListMaskingReportsSortByEnum)
-	for k, v := range mappingListMaskingReportsSortByEnum {
-		mappingListMaskingReportsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMaskingReportsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMaskingReportsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -226,6 +225,11 @@ const (
 var mappingListMaskingReportsAccessLevelEnum = map[string]ListMaskingReportsAccessLevelEnum{
 	"RESTRICTED": ListMaskingReportsAccessLevelRestricted,
 	"ACCESSIBLE": ListMaskingReportsAccessLevelAccessible,
+}
+
+var mappingListMaskingReportsAccessLevelEnumLowerCase = map[string]ListMaskingReportsAccessLevelEnum{
+	"restricted": ListMaskingReportsAccessLevelRestricted,
+	"accessible": ListMaskingReportsAccessLevelAccessible,
 }
 
 // GetListMaskingReportsAccessLevelEnumValues Enumerates the set of values for ListMaskingReportsAccessLevelEnum
@@ -247,11 +251,6 @@ func GetListMaskingReportsAccessLevelEnumStringValues() []string {
 
 // GetMappingListMaskingReportsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListMaskingReportsAccessLevelEnum(val string) (ListMaskingReportsAccessLevelEnum, bool) {
-	mappingListMaskingReportsAccessLevelEnumIgnoreCase := make(map[string]ListMaskingReportsAccessLevelEnum)
-	for k, v := range mappingListMaskingReportsAccessLevelEnum {
-		mappingListMaskingReportsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListMaskingReportsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListMaskingReportsAccessLevelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

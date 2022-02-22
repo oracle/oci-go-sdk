@@ -29,6 +29,12 @@ var mappingAssociationTypeEnum = map[string]AssociationTypeEnum{
 	"CA_BUNDLE":             AssociationTypeCaBundle,
 }
 
+var mappingAssociationTypeEnumLowerCase = map[string]AssociationTypeEnum{
+	"certificate":           AssociationTypeCertificate,
+	"certificate_authority": AssociationTypeCertificateAuthority,
+	"ca_bundle":             AssociationTypeCaBundle,
+}
+
 // GetAssociationTypeEnumValues Enumerates the set of values for AssociationTypeEnum
 func GetAssociationTypeEnumValues() []AssociationTypeEnum {
 	values := make([]AssociationTypeEnum, 0)
@@ -49,11 +55,6 @@ func GetAssociationTypeEnumStringValues() []string {
 
 // GetMappingAssociationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAssociationTypeEnum(val string) (AssociationTypeEnum, bool) {
-	mappingAssociationTypeEnumIgnoreCase := make(map[string]AssociationTypeEnum)
-	for k, v := range mappingAssociationTypeEnum {
-		mappingAssociationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAssociationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAssociationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

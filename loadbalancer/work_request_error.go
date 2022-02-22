@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -57,6 +57,11 @@ var mappingWorkRequestErrorErrorCodeEnum = map[string]WorkRequestErrorErrorCodeE
 	"INTERNAL_ERROR": WorkRequestErrorErrorCodeInternalError,
 }
 
+var mappingWorkRequestErrorErrorCodeEnumLowerCase = map[string]WorkRequestErrorErrorCodeEnum{
+	"bad_input":      WorkRequestErrorErrorCodeBadInput,
+	"internal_error": WorkRequestErrorErrorCodeInternalError,
+}
+
 // GetWorkRequestErrorErrorCodeEnumValues Enumerates the set of values for WorkRequestErrorErrorCodeEnum
 func GetWorkRequestErrorErrorCodeEnumValues() []WorkRequestErrorErrorCodeEnum {
 	values := make([]WorkRequestErrorErrorCodeEnum, 0)
@@ -76,11 +81,6 @@ func GetWorkRequestErrorErrorCodeEnumStringValues() []string {
 
 // GetMappingWorkRequestErrorErrorCodeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestErrorErrorCodeEnum(val string) (WorkRequestErrorErrorCodeEnum, bool) {
-	mappingWorkRequestErrorErrorCodeEnumIgnoreCase := make(map[string]WorkRequestErrorErrorCodeEnum)
-	for k, v := range mappingWorkRequestErrorErrorCodeEnum {
-		mappingWorkRequestErrorErrorCodeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestErrorErrorCodeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestErrorErrorCodeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

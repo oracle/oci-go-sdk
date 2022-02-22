@@ -29,6 +29,11 @@ var mappingPingProbeProtocolEnum = map[string]PingProbeProtocolEnum{
 	"TCP":  PingProbeProtocolTcp,
 }
 
+var mappingPingProbeProtocolEnumLowerCase = map[string]PingProbeProtocolEnum{
+	"icmp": PingProbeProtocolIcmp,
+	"tcp":  PingProbeProtocolTcp,
+}
+
 // GetPingProbeProtocolEnumValues Enumerates the set of values for PingProbeProtocolEnum
 func GetPingProbeProtocolEnumValues() []PingProbeProtocolEnum {
 	values := make([]PingProbeProtocolEnum, 0)
@@ -48,11 +53,6 @@ func GetPingProbeProtocolEnumStringValues() []string {
 
 // GetMappingPingProbeProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPingProbeProtocolEnum(val string) (PingProbeProtocolEnum, bool) {
-	mappingPingProbeProtocolEnumIgnoreCase := make(map[string]PingProbeProtocolEnum)
-	for k, v := range mappingPingProbeProtocolEnum {
-		mappingPingProbeProtocolEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPingProbeProtocolEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPingProbeProtocolEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

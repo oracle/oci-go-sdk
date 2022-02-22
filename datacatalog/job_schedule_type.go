@@ -28,6 +28,11 @@ var mappingJobScheduleTypeEnum = map[string]JobScheduleTypeEnum{
 	"IMMEDIATE": JobScheduleTypeImmediate,
 }
 
+var mappingJobScheduleTypeEnumLowerCase = map[string]JobScheduleTypeEnum{
+	"scheduled": JobScheduleTypeScheduled,
+	"immediate": JobScheduleTypeImmediate,
+}
+
 // GetJobScheduleTypeEnumValues Enumerates the set of values for JobScheduleTypeEnum
 func GetJobScheduleTypeEnumValues() []JobScheduleTypeEnum {
 	values := make([]JobScheduleTypeEnum, 0)
@@ -47,11 +52,6 @@ func GetJobScheduleTypeEnumStringValues() []string {
 
 // GetMappingJobScheduleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJobScheduleTypeEnum(val string) (JobScheduleTypeEnum, bool) {
-	mappingJobScheduleTypeEnumIgnoreCase := make(map[string]JobScheduleTypeEnum)
-	for k, v := range mappingJobScheduleTypeEnum {
-		mappingJobScheduleTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJobScheduleTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJobScheduleTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

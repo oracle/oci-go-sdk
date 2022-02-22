@@ -11,7 +11,7 @@ package marketplace
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -77,6 +77,19 @@ var mappingThirdPartyPaidListingEligibilityEligibilityReasonEnum = map[string]Th
 	"NOT_AUTHORIZED":                      ThirdPartyPaidListingEligibilityEligibilityReasonNotAuthorized,
 }
 
+var mappingThirdPartyPaidListingEligibilityEligibilityReasonEnumLowerCase = map[string]ThirdPartyPaidListingEligibilityEligibilityReasonEnum{
+	"eligible":                            ThirdPartyPaidListingEligibilityEligibilityReasonEligible,
+	"ineligible_account_country":          ThirdPartyPaidListingEligibilityEligibilityReasonIneligibleAccountCountry,
+	"ineligible_region":                   ThirdPartyPaidListingEligibilityEligibilityReasonIneligibleRegion,
+	"ineligible_account_blacklisted":      ThirdPartyPaidListingEligibilityEligibilityReasonIneligibleAccountBlacklisted,
+	"ineligible_account_feature_disabled": ThirdPartyPaidListingEligibilityEligibilityReasonIneligibleAccountFeatureDisabled,
+	"ineligible_account_currency":         ThirdPartyPaidListingEligibilityEligibilityReasonIneligibleAccountCurrency,
+	"ineligible_account_not_paid":         ThirdPartyPaidListingEligibilityEligibilityReasonIneligibleAccountNotPaid,
+	"ineligible_account_internal":         ThirdPartyPaidListingEligibilityEligibilityReasonIneligibleAccountInternal,
+	"ineligible_account_gov_subscription": ThirdPartyPaidListingEligibilityEligibilityReasonIneligibleAccountGovSubscription,
+	"not_authorized":                      ThirdPartyPaidListingEligibilityEligibilityReasonNotAuthorized,
+}
+
 // GetThirdPartyPaidListingEligibilityEligibilityReasonEnumValues Enumerates the set of values for ThirdPartyPaidListingEligibilityEligibilityReasonEnum
 func GetThirdPartyPaidListingEligibilityEligibilityReasonEnumValues() []ThirdPartyPaidListingEligibilityEligibilityReasonEnum {
 	values := make([]ThirdPartyPaidListingEligibilityEligibilityReasonEnum, 0)
@@ -104,11 +117,6 @@ func GetThirdPartyPaidListingEligibilityEligibilityReasonEnumStringValues() []st
 
 // GetMappingThirdPartyPaidListingEligibilityEligibilityReasonEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingThirdPartyPaidListingEligibilityEligibilityReasonEnum(val string) (ThirdPartyPaidListingEligibilityEligibilityReasonEnum, bool) {
-	mappingThirdPartyPaidListingEligibilityEligibilityReasonEnumIgnoreCase := make(map[string]ThirdPartyPaidListingEligibilityEligibilityReasonEnum)
-	for k, v := range mappingThirdPartyPaidListingEligibilityEligibilityReasonEnum {
-		mappingThirdPartyPaidListingEligibilityEligibilityReasonEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingThirdPartyPaidListingEligibilityEligibilityReasonEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingThirdPartyPaidListingEligibilityEligibilityReasonEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

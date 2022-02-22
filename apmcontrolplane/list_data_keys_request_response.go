@@ -6,7 +6,7 @@ package apmcontrolplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -18,7 +18,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/ListDataKeys.go.html to see an example of how to use ListDataKeysRequest.
 type ListDataKeysRequest struct {
 
-	// The OCID of the APM domain
+	// The OCID of the APM domain.
 	ApmDomainId *string `mandatory:"true" contributesTo:"path" name:"apmDomainId"`
 
 	// Data key type.
@@ -109,6 +109,11 @@ var mappingListDataKeysDataKeyTypeEnum = map[string]ListDataKeysDataKeyTypeEnum{
 	"PUBLIC":  ListDataKeysDataKeyTypePublic,
 }
 
+var mappingListDataKeysDataKeyTypeEnumLowerCase = map[string]ListDataKeysDataKeyTypeEnum{
+	"private": ListDataKeysDataKeyTypePrivate,
+	"public":  ListDataKeysDataKeyTypePublic,
+}
+
 // GetListDataKeysDataKeyTypeEnumValues Enumerates the set of values for ListDataKeysDataKeyTypeEnum
 func GetListDataKeysDataKeyTypeEnumValues() []ListDataKeysDataKeyTypeEnum {
 	values := make([]ListDataKeysDataKeyTypeEnum, 0)
@@ -128,11 +133,6 @@ func GetListDataKeysDataKeyTypeEnumStringValues() []string {
 
 // GetMappingListDataKeysDataKeyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDataKeysDataKeyTypeEnum(val string) (ListDataKeysDataKeyTypeEnum, bool) {
-	mappingListDataKeysDataKeyTypeEnumIgnoreCase := make(map[string]ListDataKeysDataKeyTypeEnum)
-	for k, v := range mappingListDataKeysDataKeyTypeEnum {
-		mappingListDataKeysDataKeyTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDataKeysDataKeyTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDataKeysDataKeyTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -149,6 +149,15 @@ var mappingListManagedDatabaseGroupsLifecycleStateEnum = map[string]ListManagedD
 	"FAILED":   ListManagedDatabaseGroupsLifecycleStateFailed,
 }
 
+var mappingListManagedDatabaseGroupsLifecycleStateEnumLowerCase = map[string]ListManagedDatabaseGroupsLifecycleStateEnum{
+	"creating": ListManagedDatabaseGroupsLifecycleStateCreating,
+	"updating": ListManagedDatabaseGroupsLifecycleStateUpdating,
+	"active":   ListManagedDatabaseGroupsLifecycleStateActive,
+	"deleting": ListManagedDatabaseGroupsLifecycleStateDeleting,
+	"deleted":  ListManagedDatabaseGroupsLifecycleStateDeleted,
+	"failed":   ListManagedDatabaseGroupsLifecycleStateFailed,
+}
+
 // GetListManagedDatabaseGroupsLifecycleStateEnumValues Enumerates the set of values for ListManagedDatabaseGroupsLifecycleStateEnum
 func GetListManagedDatabaseGroupsLifecycleStateEnumValues() []ListManagedDatabaseGroupsLifecycleStateEnum {
 	values := make([]ListManagedDatabaseGroupsLifecycleStateEnum, 0)
@@ -172,12 +181,7 @@ func GetListManagedDatabaseGroupsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListManagedDatabaseGroupsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedDatabaseGroupsLifecycleStateEnum(val string) (ListManagedDatabaseGroupsLifecycleStateEnum, bool) {
-	mappingListManagedDatabaseGroupsLifecycleStateEnumIgnoreCase := make(map[string]ListManagedDatabaseGroupsLifecycleStateEnum)
-	for k, v := range mappingListManagedDatabaseGroupsLifecycleStateEnum {
-		mappingListManagedDatabaseGroupsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedDatabaseGroupsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedDatabaseGroupsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -193,6 +197,11 @@ const (
 var mappingListManagedDatabaseGroupsSortByEnum = map[string]ListManagedDatabaseGroupsSortByEnum{
 	"TIMECREATED": ListManagedDatabaseGroupsSortByTimecreated,
 	"NAME":        ListManagedDatabaseGroupsSortByName,
+}
+
+var mappingListManagedDatabaseGroupsSortByEnumLowerCase = map[string]ListManagedDatabaseGroupsSortByEnum{
+	"timecreated": ListManagedDatabaseGroupsSortByTimecreated,
+	"name":        ListManagedDatabaseGroupsSortByName,
 }
 
 // GetListManagedDatabaseGroupsSortByEnumValues Enumerates the set of values for ListManagedDatabaseGroupsSortByEnum
@@ -214,12 +223,7 @@ func GetListManagedDatabaseGroupsSortByEnumStringValues() []string {
 
 // GetMappingListManagedDatabaseGroupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedDatabaseGroupsSortByEnum(val string) (ListManagedDatabaseGroupsSortByEnum, bool) {
-	mappingListManagedDatabaseGroupsSortByEnumIgnoreCase := make(map[string]ListManagedDatabaseGroupsSortByEnum)
-	for k, v := range mappingListManagedDatabaseGroupsSortByEnum {
-		mappingListManagedDatabaseGroupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedDatabaseGroupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedDatabaseGroupsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -235,6 +239,11 @@ const (
 var mappingListManagedDatabaseGroupsSortOrderEnum = map[string]ListManagedDatabaseGroupsSortOrderEnum{
 	"ASC":  ListManagedDatabaseGroupsSortOrderAsc,
 	"DESC": ListManagedDatabaseGroupsSortOrderDesc,
+}
+
+var mappingListManagedDatabaseGroupsSortOrderEnumLowerCase = map[string]ListManagedDatabaseGroupsSortOrderEnum{
+	"asc":  ListManagedDatabaseGroupsSortOrderAsc,
+	"desc": ListManagedDatabaseGroupsSortOrderDesc,
 }
 
 // GetListManagedDatabaseGroupsSortOrderEnumValues Enumerates the set of values for ListManagedDatabaseGroupsSortOrderEnum
@@ -256,11 +265,6 @@ func GetListManagedDatabaseGroupsSortOrderEnumStringValues() []string {
 
 // GetMappingListManagedDatabaseGroupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListManagedDatabaseGroupsSortOrderEnum(val string) (ListManagedDatabaseGroupsSortOrderEnum, bool) {
-	mappingListManagedDatabaseGroupsSortOrderEnumIgnoreCase := make(map[string]ListManagedDatabaseGroupsSortOrderEnum)
-	for k, v := range mappingListManagedDatabaseGroupsSortOrderEnum {
-		mappingListManagedDatabaseGroupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListManagedDatabaseGroupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListManagedDatabaseGroupsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

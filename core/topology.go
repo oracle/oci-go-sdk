@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -133,6 +133,12 @@ var mappingTopologyTypeEnum = map[string]TopologyTypeEnum{
 	"SUBNET":     TopologyTypeSubnet,
 }
 
+var mappingTopologyTypeEnumLowerCase = map[string]TopologyTypeEnum{
+	"networking": TopologyTypeNetworking,
+	"vcn":        TopologyTypeVcn,
+	"subnet":     TopologyTypeSubnet,
+}
+
 // GetTopologyTypeEnumValues Enumerates the set of values for TopologyTypeEnum
 func GetTopologyTypeEnumValues() []TopologyTypeEnum {
 	values := make([]TopologyTypeEnum, 0)
@@ -153,11 +159,6 @@ func GetTopologyTypeEnumStringValues() []string {
 
 // GetMappingTopologyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTopologyTypeEnum(val string) (TopologyTypeEnum, bool) {
-	mappingTopologyTypeEnumIgnoreCase := make(map[string]TopologyTypeEnum)
-	for k, v := range mappingTopologyTypeEnum {
-		mappingTopologyTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTopologyTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTopologyTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

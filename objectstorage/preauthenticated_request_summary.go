@@ -13,7 +13,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -89,6 +89,15 @@ var mappingPreauthenticatedRequestSummaryAccessTypeEnum = map[string]Preauthenti
 	"AnyObjectReadWrite": PreauthenticatedRequestSummaryAccessTypeAnyobjectreadwrite,
 }
 
+var mappingPreauthenticatedRequestSummaryAccessTypeEnumLowerCase = map[string]PreauthenticatedRequestSummaryAccessTypeEnum{
+	"objectread":         PreauthenticatedRequestSummaryAccessTypeObjectread,
+	"objectwrite":        PreauthenticatedRequestSummaryAccessTypeObjectwrite,
+	"objectreadwrite":    PreauthenticatedRequestSummaryAccessTypeObjectreadwrite,
+	"anyobjectwrite":     PreauthenticatedRequestSummaryAccessTypeAnyobjectwrite,
+	"anyobjectread":      PreauthenticatedRequestSummaryAccessTypeAnyobjectread,
+	"anyobjectreadwrite": PreauthenticatedRequestSummaryAccessTypeAnyobjectreadwrite,
+}
+
 // GetPreauthenticatedRequestSummaryAccessTypeEnumValues Enumerates the set of values for PreauthenticatedRequestSummaryAccessTypeEnum
 func GetPreauthenticatedRequestSummaryAccessTypeEnumValues() []PreauthenticatedRequestSummaryAccessTypeEnum {
 	values := make([]PreauthenticatedRequestSummaryAccessTypeEnum, 0)
@@ -112,11 +121,6 @@ func GetPreauthenticatedRequestSummaryAccessTypeEnumStringValues() []string {
 
 // GetMappingPreauthenticatedRequestSummaryAccessTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPreauthenticatedRequestSummaryAccessTypeEnum(val string) (PreauthenticatedRequestSummaryAccessTypeEnum, bool) {
-	mappingPreauthenticatedRequestSummaryAccessTypeEnumIgnoreCase := make(map[string]PreauthenticatedRequestSummaryAccessTypeEnum)
-	for k, v := range mappingPreauthenticatedRequestSummaryAccessTypeEnum {
-		mappingPreauthenticatedRequestSummaryAccessTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPreauthenticatedRequestSummaryAccessTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPreauthenticatedRequestSummaryAccessTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

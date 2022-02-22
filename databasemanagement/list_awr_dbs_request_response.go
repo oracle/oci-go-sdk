@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -143,6 +143,11 @@ var mappingListAwrDbsSortByEnum = map[string]ListAwrDbsSortByEnum{
 	"NAME":              ListAwrDbsSortByName,
 }
 
+var mappingListAwrDbsSortByEnumLowerCase = map[string]ListAwrDbsSortByEnum{
+	"end_interval_time": ListAwrDbsSortByEndIntervalTime,
+	"name":              ListAwrDbsSortByName,
+}
+
 // GetListAwrDbsSortByEnumValues Enumerates the set of values for ListAwrDbsSortByEnum
 func GetListAwrDbsSortByEnumValues() []ListAwrDbsSortByEnum {
 	values := make([]ListAwrDbsSortByEnum, 0)
@@ -162,12 +167,7 @@ func GetListAwrDbsSortByEnumStringValues() []string {
 
 // GetMappingListAwrDbsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAwrDbsSortByEnum(val string) (ListAwrDbsSortByEnum, bool) {
-	mappingListAwrDbsSortByEnumIgnoreCase := make(map[string]ListAwrDbsSortByEnum)
-	for k, v := range mappingListAwrDbsSortByEnum {
-		mappingListAwrDbsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAwrDbsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAwrDbsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -183,6 +183,11 @@ const (
 var mappingListAwrDbsSortOrderEnum = map[string]ListAwrDbsSortOrderEnum{
 	"ASC":  ListAwrDbsSortOrderAsc,
 	"DESC": ListAwrDbsSortOrderDesc,
+}
+
+var mappingListAwrDbsSortOrderEnumLowerCase = map[string]ListAwrDbsSortOrderEnum{
+	"asc":  ListAwrDbsSortOrderAsc,
+	"desc": ListAwrDbsSortOrderDesc,
 }
 
 // GetListAwrDbsSortOrderEnumValues Enumerates the set of values for ListAwrDbsSortOrderEnum
@@ -204,11 +209,6 @@ func GetListAwrDbsSortOrderEnumStringValues() []string {
 
 // GetMappingListAwrDbsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAwrDbsSortOrderEnum(val string) (ListAwrDbsSortOrderEnum, bool) {
-	mappingListAwrDbsSortOrderEnumIgnoreCase := make(map[string]ListAwrDbsSortOrderEnum)
-	for k, v := range mappingListAwrDbsSortOrderEnum {
-		mappingListAwrDbsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAwrDbsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAwrDbsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -20,6 +20,9 @@ type ListResourceTypesRequest struct {
 
 	// The ID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+
+	// Detector type
+	DetectorId ListResourceTypesDetectorIdEnum `mandatory:"false" contributesTo:"query" name:"detectorId" omitEmpty:"true"`
 
 	// The field life cycle state. Only one state can be provided. Default value for state is active. If no value is specified state is active.
 	LifecycleState ListResourceTypesLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
@@ -75,6 +78,9 @@ func (request ListResourceTypesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListResourceTypesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
+	if _, ok := GetMappingListResourceTypesDetectorIdEnum(string(request.DetectorId)); !ok && request.DetectorId != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DetectorId: %s. Supported values are: %s.", request.DetectorId, strings.Join(GetListResourceTypesDetectorIdEnumStringValues(), ",")))
+	}
 	if _, ok := GetMappingListResourceTypesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListResourceTypesLifecycleStateEnumStringValues(), ",")))
 	}
@@ -118,6 +124,52 @@ func (response ListResourceTypesResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
 }
 
+// ListResourceTypesDetectorIdEnum Enum with underlying type: string
+type ListResourceTypesDetectorIdEnum string
+
+// Set of constants representing the allowable values for ListResourceTypesDetectorIdEnum
+const (
+	ListResourceTypesDetectorIdActivityDetector      ListResourceTypesDetectorIdEnum = "IAAS_ACTIVITY_DETECTOR"
+	ListResourceTypesDetectorIdConfigurationDetector ListResourceTypesDetectorIdEnum = "IAAS_CONFIGURATION_DETECTOR"
+	ListResourceTypesDetectorIdThreatDetector        ListResourceTypesDetectorIdEnum = "IAAS_THREAT_DETECTOR"
+)
+
+var mappingListResourceTypesDetectorIdEnum = map[string]ListResourceTypesDetectorIdEnum{
+	"IAAS_ACTIVITY_DETECTOR":      ListResourceTypesDetectorIdActivityDetector,
+	"IAAS_CONFIGURATION_DETECTOR": ListResourceTypesDetectorIdConfigurationDetector,
+	"IAAS_THREAT_DETECTOR":        ListResourceTypesDetectorIdThreatDetector,
+}
+
+var mappingListResourceTypesDetectorIdEnumLowerCase = map[string]ListResourceTypesDetectorIdEnum{
+	"iaas_activity_detector":      ListResourceTypesDetectorIdActivityDetector,
+	"iaas_configuration_detector": ListResourceTypesDetectorIdConfigurationDetector,
+	"iaas_threat_detector":        ListResourceTypesDetectorIdThreatDetector,
+}
+
+// GetListResourceTypesDetectorIdEnumValues Enumerates the set of values for ListResourceTypesDetectorIdEnum
+func GetListResourceTypesDetectorIdEnumValues() []ListResourceTypesDetectorIdEnum {
+	values := make([]ListResourceTypesDetectorIdEnum, 0)
+	for _, v := range mappingListResourceTypesDetectorIdEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetListResourceTypesDetectorIdEnumStringValues Enumerates the set of values in String for ListResourceTypesDetectorIdEnum
+func GetListResourceTypesDetectorIdEnumStringValues() []string {
+	return []string{
+		"IAAS_ACTIVITY_DETECTOR",
+		"IAAS_CONFIGURATION_DETECTOR",
+		"IAAS_THREAT_DETECTOR",
+	}
+}
+
+// GetMappingListResourceTypesDetectorIdEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResourceTypesDetectorIdEnum(val string) (ListResourceTypesDetectorIdEnum, bool) {
+	enum, ok := mappingListResourceTypesDetectorIdEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListResourceTypesLifecycleStateEnum Enum with underlying type: string
 type ListResourceTypesLifecycleStateEnum string
 
@@ -140,6 +192,16 @@ var mappingListResourceTypesLifecycleStateEnum = map[string]ListResourceTypesLif
 	"DELETING": ListResourceTypesLifecycleStateDeleting,
 	"DELETED":  ListResourceTypesLifecycleStateDeleted,
 	"FAILED":   ListResourceTypesLifecycleStateFailed,
+}
+
+var mappingListResourceTypesLifecycleStateEnumLowerCase = map[string]ListResourceTypesLifecycleStateEnum{
+	"creating": ListResourceTypesLifecycleStateCreating,
+	"updating": ListResourceTypesLifecycleStateUpdating,
+	"active":   ListResourceTypesLifecycleStateActive,
+	"inactive": ListResourceTypesLifecycleStateInactive,
+	"deleting": ListResourceTypesLifecycleStateDeleting,
+	"deleted":  ListResourceTypesLifecycleStateDeleted,
+	"failed":   ListResourceTypesLifecycleStateFailed,
 }
 
 // GetListResourceTypesLifecycleStateEnumValues Enumerates the set of values for ListResourceTypesLifecycleStateEnum
@@ -166,12 +228,7 @@ func GetListResourceTypesLifecycleStateEnumStringValues() []string {
 
 // GetMappingListResourceTypesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResourceTypesLifecycleStateEnum(val string) (ListResourceTypesLifecycleStateEnum, bool) {
-	mappingListResourceTypesLifecycleStateEnumIgnoreCase := make(map[string]ListResourceTypesLifecycleStateEnum)
-	for k, v := range mappingListResourceTypesLifecycleStateEnum {
-		mappingListResourceTypesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResourceTypesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResourceTypesLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -187,6 +244,11 @@ const (
 var mappingListResourceTypesSortOrderEnum = map[string]ListResourceTypesSortOrderEnum{
 	"ASC":  ListResourceTypesSortOrderAsc,
 	"DESC": ListResourceTypesSortOrderDesc,
+}
+
+var mappingListResourceTypesSortOrderEnumLowerCase = map[string]ListResourceTypesSortOrderEnum{
+	"asc":  ListResourceTypesSortOrderAsc,
+	"desc": ListResourceTypesSortOrderDesc,
 }
 
 // GetListResourceTypesSortOrderEnumValues Enumerates the set of values for ListResourceTypesSortOrderEnum
@@ -208,12 +270,7 @@ func GetListResourceTypesSortOrderEnumStringValues() []string {
 
 // GetMappingListResourceTypesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResourceTypesSortOrderEnum(val string) (ListResourceTypesSortOrderEnum, bool) {
-	mappingListResourceTypesSortOrderEnumIgnoreCase := make(map[string]ListResourceTypesSortOrderEnum)
-	for k, v := range mappingListResourceTypesSortOrderEnum {
-		mappingListResourceTypesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResourceTypesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResourceTypesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -229,6 +286,11 @@ const (
 var mappingListResourceTypesSortByEnum = map[string]ListResourceTypesSortByEnum{
 	"displayName": ListResourceTypesSortByDisplayname,
 	"riskLevel":   ListResourceTypesSortByRisklevel,
+}
+
+var mappingListResourceTypesSortByEnumLowerCase = map[string]ListResourceTypesSortByEnum{
+	"displayname": ListResourceTypesSortByDisplayname,
+	"risklevel":   ListResourceTypesSortByRisklevel,
 }
 
 // GetListResourceTypesSortByEnumValues Enumerates the set of values for ListResourceTypesSortByEnum
@@ -250,11 +312,6 @@ func GetListResourceTypesSortByEnumStringValues() []string {
 
 // GetMappingListResourceTypesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListResourceTypesSortByEnum(val string) (ListResourceTypesSortByEnum, bool) {
-	mappingListResourceTypesSortByEnumIgnoreCase := make(map[string]ListResourceTypesSortByEnum)
-	for k, v := range mappingListResourceTypesSortByEnum {
-		mappingListResourceTypesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListResourceTypesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListResourceTypesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

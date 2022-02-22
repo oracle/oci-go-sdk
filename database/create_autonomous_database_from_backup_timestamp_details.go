@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -393,6 +393,11 @@ var mappingCreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnum = map
 	"METADATA": CreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeMetadata,
 }
 
+var mappingCreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnumLowerCase = map[string]CreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnum{
+	"full":     CreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeFull,
+	"metadata": CreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeMetadata,
+}
+
 // GetCreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnumValues Enumerates the set of values for CreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnum
 func GetCreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnumValues() []CreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnum {
 	values := make([]CreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnum, 0)
@@ -412,11 +417,6 @@ func GetCreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnumStringVal
 
 // GetMappingCreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnum(val string) (CreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnum, bool) {
-	mappingCreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnumIgnoreCase := make(map[string]CreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnum)
-	for k, v := range mappingCreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnum {
-		mappingCreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingCreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingCreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -110,6 +110,11 @@ var mappingBackupDestinationSummaryTypeEnum = map[string]BackupDestinationSummar
 	"RECOVERY_APPLIANCE": BackupDestinationSummaryTypeRecoveryAppliance,
 }
 
+var mappingBackupDestinationSummaryTypeEnumLowerCase = map[string]BackupDestinationSummaryTypeEnum{
+	"nfs":                BackupDestinationSummaryTypeNfs,
+	"recovery_appliance": BackupDestinationSummaryTypeRecoveryAppliance,
+}
+
 // GetBackupDestinationSummaryTypeEnumValues Enumerates the set of values for BackupDestinationSummaryTypeEnum
 func GetBackupDestinationSummaryTypeEnumValues() []BackupDestinationSummaryTypeEnum {
 	values := make([]BackupDestinationSummaryTypeEnum, 0)
@@ -129,12 +134,7 @@ func GetBackupDestinationSummaryTypeEnumStringValues() []string {
 
 // GetMappingBackupDestinationSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBackupDestinationSummaryTypeEnum(val string) (BackupDestinationSummaryTypeEnum, bool) {
-	mappingBackupDestinationSummaryTypeEnumIgnoreCase := make(map[string]BackupDestinationSummaryTypeEnum)
-	for k, v := range mappingBackupDestinationSummaryTypeEnum {
-		mappingBackupDestinationSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBackupDestinationSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBackupDestinationSummaryTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -150,6 +150,11 @@ const (
 var mappingBackupDestinationSummaryNfsMountTypeEnum = map[string]BackupDestinationSummaryNfsMountTypeEnum{
 	"SELF_MOUNT":      BackupDestinationSummaryNfsMountTypeSelfMount,
 	"AUTOMATED_MOUNT": BackupDestinationSummaryNfsMountTypeAutomatedMount,
+}
+
+var mappingBackupDestinationSummaryNfsMountTypeEnumLowerCase = map[string]BackupDestinationSummaryNfsMountTypeEnum{
+	"self_mount":      BackupDestinationSummaryNfsMountTypeSelfMount,
+	"automated_mount": BackupDestinationSummaryNfsMountTypeAutomatedMount,
 }
 
 // GetBackupDestinationSummaryNfsMountTypeEnumValues Enumerates the set of values for BackupDestinationSummaryNfsMountTypeEnum
@@ -171,12 +176,7 @@ func GetBackupDestinationSummaryNfsMountTypeEnumStringValues() []string {
 
 // GetMappingBackupDestinationSummaryNfsMountTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBackupDestinationSummaryNfsMountTypeEnum(val string) (BackupDestinationSummaryNfsMountTypeEnum, bool) {
-	mappingBackupDestinationSummaryNfsMountTypeEnumIgnoreCase := make(map[string]BackupDestinationSummaryNfsMountTypeEnum)
-	for k, v := range mappingBackupDestinationSummaryNfsMountTypeEnum {
-		mappingBackupDestinationSummaryNfsMountTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBackupDestinationSummaryNfsMountTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBackupDestinationSummaryNfsMountTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -194,6 +194,12 @@ var mappingBackupDestinationSummaryLifecycleStateEnum = map[string]BackupDestina
 	"ACTIVE":  BackupDestinationSummaryLifecycleStateActive,
 	"FAILED":  BackupDestinationSummaryLifecycleStateFailed,
 	"DELETED": BackupDestinationSummaryLifecycleStateDeleted,
+}
+
+var mappingBackupDestinationSummaryLifecycleStateEnumLowerCase = map[string]BackupDestinationSummaryLifecycleStateEnum{
+	"active":  BackupDestinationSummaryLifecycleStateActive,
+	"failed":  BackupDestinationSummaryLifecycleStateFailed,
+	"deleted": BackupDestinationSummaryLifecycleStateDeleted,
 }
 
 // GetBackupDestinationSummaryLifecycleStateEnumValues Enumerates the set of values for BackupDestinationSummaryLifecycleStateEnum
@@ -216,11 +222,6 @@ func GetBackupDestinationSummaryLifecycleStateEnumStringValues() []string {
 
 // GetMappingBackupDestinationSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBackupDestinationSummaryLifecycleStateEnum(val string) (BackupDestinationSummaryLifecycleStateEnum, bool) {
-	mappingBackupDestinationSummaryLifecycleStateEnumIgnoreCase := make(map[string]BackupDestinationSummaryLifecycleStateEnum)
-	for k, v := range mappingBackupDestinationSummaryLifecycleStateEnum {
-		mappingBackupDestinationSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBackupDestinationSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBackupDestinationSummaryLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

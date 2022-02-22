@@ -35,6 +35,14 @@ var mappingSqlTuningTaskStatusTypesEnum = map[string]SqlTuningTaskStatusTypesEnu
 	"ERROR":       SqlTuningTaskStatusTypesError,
 }
 
+var mappingSqlTuningTaskStatusTypesEnumLowerCase = map[string]SqlTuningTaskStatusTypesEnum{
+	"completed":   SqlTuningTaskStatusTypesCompleted,
+	"initial":     SqlTuningTaskStatusTypesInitial,
+	"executing":   SqlTuningTaskStatusTypesExecuting,
+	"interrupted": SqlTuningTaskStatusTypesInterrupted,
+	"error":       SqlTuningTaskStatusTypesError,
+}
+
 // GetSqlTuningTaskStatusTypesEnumValues Enumerates the set of values for SqlTuningTaskStatusTypesEnum
 func GetSqlTuningTaskStatusTypesEnumValues() []SqlTuningTaskStatusTypesEnum {
 	values := make([]SqlTuningTaskStatusTypesEnum, 0)
@@ -57,11 +65,6 @@ func GetSqlTuningTaskStatusTypesEnumStringValues() []string {
 
 // GetMappingSqlTuningTaskStatusTypesEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSqlTuningTaskStatusTypesEnum(val string) (SqlTuningTaskStatusTypesEnum, bool) {
-	mappingSqlTuningTaskStatusTypesEnumIgnoreCase := make(map[string]SqlTuningTaskStatusTypesEnum)
-	for k, v := range mappingSqlTuningTaskStatusTypesEnum {
-		mappingSqlTuningTaskStatusTypesEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSqlTuningTaskStatusTypesEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSqlTuningTaskStatusTypesEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

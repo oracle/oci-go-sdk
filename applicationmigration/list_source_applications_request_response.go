@@ -6,7 +6,7 @@ package applicationmigration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -137,6 +137,11 @@ var mappingListSourceApplicationsSortOrderEnum = map[string]ListSourceApplicatio
 	"DESC": ListSourceApplicationsSortOrderDesc,
 }
 
+var mappingListSourceApplicationsSortOrderEnumLowerCase = map[string]ListSourceApplicationsSortOrderEnum{
+	"asc":  ListSourceApplicationsSortOrderAsc,
+	"desc": ListSourceApplicationsSortOrderDesc,
+}
+
 // GetListSourceApplicationsSortOrderEnumValues Enumerates the set of values for ListSourceApplicationsSortOrderEnum
 func GetListSourceApplicationsSortOrderEnumValues() []ListSourceApplicationsSortOrderEnum {
 	values := make([]ListSourceApplicationsSortOrderEnum, 0)
@@ -156,12 +161,7 @@ func GetListSourceApplicationsSortOrderEnumStringValues() []string {
 
 // GetMappingListSourceApplicationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSourceApplicationsSortOrderEnum(val string) (ListSourceApplicationsSortOrderEnum, bool) {
-	mappingListSourceApplicationsSortOrderEnumIgnoreCase := make(map[string]ListSourceApplicationsSortOrderEnum)
-	for k, v := range mappingListSourceApplicationsSortOrderEnum {
-		mappingListSourceApplicationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSourceApplicationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSourceApplicationsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -177,6 +177,11 @@ const (
 var mappingListSourceApplicationsSortByEnum = map[string]ListSourceApplicationsSortByEnum{
 	"TIMECREATED": ListSourceApplicationsSortByTimecreated,
 	"DISPLAYNAME": ListSourceApplicationsSortByDisplayname,
+}
+
+var mappingListSourceApplicationsSortByEnumLowerCase = map[string]ListSourceApplicationsSortByEnum{
+	"timecreated": ListSourceApplicationsSortByTimecreated,
+	"displayname": ListSourceApplicationsSortByDisplayname,
 }
 
 // GetListSourceApplicationsSortByEnumValues Enumerates the set of values for ListSourceApplicationsSortByEnum
@@ -198,11 +203,6 @@ func GetListSourceApplicationsSortByEnumStringValues() []string {
 
 // GetMappingListSourceApplicationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSourceApplicationsSortByEnum(val string) (ListSourceApplicationsSortByEnum, bool) {
-	mappingListSourceApplicationsSortByEnumIgnoreCase := make(map[string]ListSourceApplicationsSortByEnum)
-	for k, v := range mappingListSourceApplicationsSortByEnum {
-		mappingListSourceApplicationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSourceApplicationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSourceApplicationsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

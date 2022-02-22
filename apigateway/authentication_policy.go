@@ -14,7 +14,7 @@ package apigateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -106,6 +106,11 @@ var mappingAuthenticationPolicyTypeEnum = map[string]AuthenticationPolicyTypeEnu
 	"JWT_AUTHENTICATION":    AuthenticationPolicyTypeJwtAuthentication,
 }
 
+var mappingAuthenticationPolicyTypeEnumLowerCase = map[string]AuthenticationPolicyTypeEnum{
+	"custom_authentication": AuthenticationPolicyTypeCustomAuthentication,
+	"jwt_authentication":    AuthenticationPolicyTypeJwtAuthentication,
+}
+
 // GetAuthenticationPolicyTypeEnumValues Enumerates the set of values for AuthenticationPolicyTypeEnum
 func GetAuthenticationPolicyTypeEnumValues() []AuthenticationPolicyTypeEnum {
 	values := make([]AuthenticationPolicyTypeEnum, 0)
@@ -125,11 +130,6 @@ func GetAuthenticationPolicyTypeEnumStringValues() []string {
 
 // GetMappingAuthenticationPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAuthenticationPolicyTypeEnum(val string) (AuthenticationPolicyTypeEnum, bool) {
-	mappingAuthenticationPolicyTypeEnumIgnoreCase := make(map[string]AuthenticationPolicyTypeEnum)
-	for k, v := range mappingAuthenticationPolicyTypeEnum {
-		mappingAuthenticationPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAuthenticationPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAuthenticationPolicyTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

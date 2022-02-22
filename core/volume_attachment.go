@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -264,6 +264,13 @@ var mappingVolumeAttachmentLifecycleStateEnum = map[string]VolumeAttachmentLifec
 	"DETACHED":  VolumeAttachmentLifecycleStateDetached,
 }
 
+var mappingVolumeAttachmentLifecycleStateEnumLowerCase = map[string]VolumeAttachmentLifecycleStateEnum{
+	"attaching": VolumeAttachmentLifecycleStateAttaching,
+	"attached":  VolumeAttachmentLifecycleStateAttached,
+	"detaching": VolumeAttachmentLifecycleStateDetaching,
+	"detached":  VolumeAttachmentLifecycleStateDetached,
+}
+
 // GetVolumeAttachmentLifecycleStateEnumValues Enumerates the set of values for VolumeAttachmentLifecycleStateEnum
 func GetVolumeAttachmentLifecycleStateEnumValues() []VolumeAttachmentLifecycleStateEnum {
 	values := make([]VolumeAttachmentLifecycleStateEnum, 0)
@@ -285,12 +292,7 @@ func GetVolumeAttachmentLifecycleStateEnumStringValues() []string {
 
 // GetMappingVolumeAttachmentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVolumeAttachmentLifecycleStateEnum(val string) (VolumeAttachmentLifecycleStateEnum, bool) {
-	mappingVolumeAttachmentLifecycleStateEnumIgnoreCase := make(map[string]VolumeAttachmentLifecycleStateEnum)
-	for k, v := range mappingVolumeAttachmentLifecycleStateEnum {
-		mappingVolumeAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVolumeAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVolumeAttachmentLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -318,6 +320,16 @@ var mappingVolumeAttachmentIscsiLoginStateEnum = map[string]VolumeAttachmentIscs
 	"LOGOUT_FAILED":    VolumeAttachmentIscsiLoginStateLogoutFailed,
 }
 
+var mappingVolumeAttachmentIscsiLoginStateEnumLowerCase = map[string]VolumeAttachmentIscsiLoginStateEnum{
+	"unknown":          VolumeAttachmentIscsiLoginStateUnknown,
+	"logging_in":       VolumeAttachmentIscsiLoginStateLoggingIn,
+	"login_succeeded":  VolumeAttachmentIscsiLoginStateLoginSucceeded,
+	"login_failed":     VolumeAttachmentIscsiLoginStateLoginFailed,
+	"logging_out":      VolumeAttachmentIscsiLoginStateLoggingOut,
+	"logout_succeeded": VolumeAttachmentIscsiLoginStateLogoutSucceeded,
+	"logout_failed":    VolumeAttachmentIscsiLoginStateLogoutFailed,
+}
+
 // GetVolumeAttachmentIscsiLoginStateEnumValues Enumerates the set of values for VolumeAttachmentIscsiLoginStateEnum
 func GetVolumeAttachmentIscsiLoginStateEnumValues() []VolumeAttachmentIscsiLoginStateEnum {
 	values := make([]VolumeAttachmentIscsiLoginStateEnum, 0)
@@ -342,11 +354,6 @@ func GetVolumeAttachmentIscsiLoginStateEnumStringValues() []string {
 
 // GetMappingVolumeAttachmentIscsiLoginStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVolumeAttachmentIscsiLoginStateEnum(val string) (VolumeAttachmentIscsiLoginStateEnum, bool) {
-	mappingVolumeAttachmentIscsiLoginStateEnumIgnoreCase := make(map[string]VolumeAttachmentIscsiLoginStateEnum)
-	for k, v := range mappingVolumeAttachmentIscsiLoginStateEnum {
-		mappingVolumeAttachmentIscsiLoginStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingVolumeAttachmentIscsiLoginStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingVolumeAttachmentIscsiLoginStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

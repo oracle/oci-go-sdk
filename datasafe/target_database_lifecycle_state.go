@@ -39,6 +39,17 @@ var mappingTargetDatabaseLifecycleStateEnum = map[string]TargetDatabaseLifecycle
 	"FAILED":          TargetDatabaseLifecycleStateFailed,
 }
 
+var mappingTargetDatabaseLifecycleStateEnumLowerCase = map[string]TargetDatabaseLifecycleStateEnum{
+	"creating":        TargetDatabaseLifecycleStateCreating,
+	"updating":        TargetDatabaseLifecycleStateUpdating,
+	"active":          TargetDatabaseLifecycleStateActive,
+	"inactive":        TargetDatabaseLifecycleStateInactive,
+	"deleting":        TargetDatabaseLifecycleStateDeleting,
+	"deleted":         TargetDatabaseLifecycleStateDeleted,
+	"needs_attention": TargetDatabaseLifecycleStateNeedsAttention,
+	"failed":          TargetDatabaseLifecycleStateFailed,
+}
+
 // GetTargetDatabaseLifecycleStateEnumValues Enumerates the set of values for TargetDatabaseLifecycleStateEnum
 func GetTargetDatabaseLifecycleStateEnumValues() []TargetDatabaseLifecycleStateEnum {
 	values := make([]TargetDatabaseLifecycleStateEnum, 0)
@@ -64,11 +75,6 @@ func GetTargetDatabaseLifecycleStateEnumStringValues() []string {
 
 // GetMappingTargetDatabaseLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTargetDatabaseLifecycleStateEnum(val string) (TargetDatabaseLifecycleStateEnum, bool) {
-	mappingTargetDatabaseLifecycleStateEnumIgnoreCase := make(map[string]TargetDatabaseLifecycleStateEnum)
-	for k, v := range mappingTargetDatabaseLifecycleStateEnum {
-		mappingTargetDatabaseLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTargetDatabaseLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTargetDatabaseLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

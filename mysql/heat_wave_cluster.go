@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -90,6 +90,16 @@ var mappingHeatWaveClusterLifecycleStateEnum = map[string]HeatWaveClusterLifecyc
 	"FAILED":   HeatWaveClusterLifecycleStateFailed,
 }
 
+var mappingHeatWaveClusterLifecycleStateEnumLowerCase = map[string]HeatWaveClusterLifecycleStateEnum{
+	"creating": HeatWaveClusterLifecycleStateCreating,
+	"active":   HeatWaveClusterLifecycleStateActive,
+	"inactive": HeatWaveClusterLifecycleStateInactive,
+	"updating": HeatWaveClusterLifecycleStateUpdating,
+	"deleting": HeatWaveClusterLifecycleStateDeleting,
+	"deleted":  HeatWaveClusterLifecycleStateDeleted,
+	"failed":   HeatWaveClusterLifecycleStateFailed,
+}
+
 // GetHeatWaveClusterLifecycleStateEnumValues Enumerates the set of values for HeatWaveClusterLifecycleStateEnum
 func GetHeatWaveClusterLifecycleStateEnumValues() []HeatWaveClusterLifecycleStateEnum {
 	values := make([]HeatWaveClusterLifecycleStateEnum, 0)
@@ -114,11 +124,6 @@ func GetHeatWaveClusterLifecycleStateEnumStringValues() []string {
 
 // GetMappingHeatWaveClusterLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHeatWaveClusterLifecycleStateEnum(val string) (HeatWaveClusterLifecycleStateEnum, bool) {
-	mappingHeatWaveClusterLifecycleStateEnumIgnoreCase := make(map[string]HeatWaveClusterLifecycleStateEnum)
-	for k, v := range mappingHeatWaveClusterLifecycleStateEnum {
-		mappingHeatWaveClusterLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHeatWaveClusterLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHeatWaveClusterLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

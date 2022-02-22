@@ -6,7 +6,7 @@ package tenantmanagercontrolplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -132,6 +132,11 @@ var mappingListAssignedSubscriptionsSortOrderEnum = map[string]ListAssignedSubsc
 	"DESC": ListAssignedSubscriptionsSortOrderDesc,
 }
 
+var mappingListAssignedSubscriptionsSortOrderEnumLowerCase = map[string]ListAssignedSubscriptionsSortOrderEnum{
+	"asc":  ListAssignedSubscriptionsSortOrderAsc,
+	"desc": ListAssignedSubscriptionsSortOrderDesc,
+}
+
 // GetListAssignedSubscriptionsSortOrderEnumValues Enumerates the set of values for ListAssignedSubscriptionsSortOrderEnum
 func GetListAssignedSubscriptionsSortOrderEnumValues() []ListAssignedSubscriptionsSortOrderEnum {
 	values := make([]ListAssignedSubscriptionsSortOrderEnum, 0)
@@ -151,12 +156,7 @@ func GetListAssignedSubscriptionsSortOrderEnumStringValues() []string {
 
 // GetMappingListAssignedSubscriptionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAssignedSubscriptionsSortOrderEnum(val string) (ListAssignedSubscriptionsSortOrderEnum, bool) {
-	mappingListAssignedSubscriptionsSortOrderEnumIgnoreCase := make(map[string]ListAssignedSubscriptionsSortOrderEnum)
-	for k, v := range mappingListAssignedSubscriptionsSortOrderEnum {
-		mappingListAssignedSubscriptionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAssignedSubscriptionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAssignedSubscriptionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -172,6 +172,11 @@ const (
 var mappingListAssignedSubscriptionsSortByEnum = map[string]ListAssignedSubscriptionsSortByEnum{
 	"timeCreated": ListAssignedSubscriptionsSortByTimecreated,
 	"displayName": ListAssignedSubscriptionsSortByDisplayname,
+}
+
+var mappingListAssignedSubscriptionsSortByEnumLowerCase = map[string]ListAssignedSubscriptionsSortByEnum{
+	"timecreated": ListAssignedSubscriptionsSortByTimecreated,
+	"displayname": ListAssignedSubscriptionsSortByDisplayname,
 }
 
 // GetListAssignedSubscriptionsSortByEnumValues Enumerates the set of values for ListAssignedSubscriptionsSortByEnum
@@ -193,11 +198,6 @@ func GetListAssignedSubscriptionsSortByEnumStringValues() []string {
 
 // GetMappingListAssignedSubscriptionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAssignedSubscriptionsSortByEnum(val string) (ListAssignedSubscriptionsSortByEnum, bool) {
-	mappingListAssignedSubscriptionsSortByEnumIgnoreCase := make(map[string]ListAssignedSubscriptionsSortByEnum)
-	for k, v := range mappingListAssignedSubscriptionsSortByEnum {
-		mappingListAssignedSubscriptionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAssignedSubscriptionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAssignedSubscriptionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

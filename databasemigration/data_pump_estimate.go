@@ -27,6 +27,11 @@ var mappingDataPumpEstimateEnum = map[string]DataPumpEstimateEnum{
 	"STATISTICS": DataPumpEstimateStatistics,
 }
 
+var mappingDataPumpEstimateEnumLowerCase = map[string]DataPumpEstimateEnum{
+	"blocks":     DataPumpEstimateBlocks,
+	"statistics": DataPumpEstimateStatistics,
+}
+
 // GetDataPumpEstimateEnumValues Enumerates the set of values for DataPumpEstimateEnum
 func GetDataPumpEstimateEnumValues() []DataPumpEstimateEnum {
 	values := make([]DataPumpEstimateEnum, 0)
@@ -46,11 +51,6 @@ func GetDataPumpEstimateEnumStringValues() []string {
 
 // GetMappingDataPumpEstimateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataPumpEstimateEnum(val string) (DataPumpEstimateEnum, bool) {
-	mappingDataPumpEstimateEnumIgnoreCase := make(map[string]DataPumpEstimateEnum)
-	for k, v := range mappingDataPumpEstimateEnum {
-		mappingDataPumpEstimateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataPumpEstimateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataPumpEstimateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -6,7 +6,7 @@ package osubsubscription
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -139,6 +139,11 @@ var mappingListRateCardsSortOrderEnum = map[string]ListRateCardsSortOrderEnum{
 	"DESC": ListRateCardsSortOrderDesc,
 }
 
+var mappingListRateCardsSortOrderEnumLowerCase = map[string]ListRateCardsSortOrderEnum{
+	"asc":  ListRateCardsSortOrderAsc,
+	"desc": ListRateCardsSortOrderDesc,
+}
+
 // GetListRateCardsSortOrderEnumValues Enumerates the set of values for ListRateCardsSortOrderEnum
 func GetListRateCardsSortOrderEnumValues() []ListRateCardsSortOrderEnum {
 	values := make([]ListRateCardsSortOrderEnum, 0)
@@ -158,12 +163,7 @@ func GetListRateCardsSortOrderEnumStringValues() []string {
 
 // GetMappingListRateCardsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRateCardsSortOrderEnum(val string) (ListRateCardsSortOrderEnum, bool) {
-	mappingListRateCardsSortOrderEnumIgnoreCase := make(map[string]ListRateCardsSortOrderEnum)
-	for k, v := range mappingListRateCardsSortOrderEnum {
-		mappingListRateCardsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRateCardsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRateCardsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -179,6 +179,11 @@ const (
 var mappingListRateCardsSortByEnum = map[string]ListRateCardsSortByEnum{
 	"TIMECREATED": ListRateCardsSortByTimecreated,
 	"TIMESTART":   ListRateCardsSortByTimestart,
+}
+
+var mappingListRateCardsSortByEnumLowerCase = map[string]ListRateCardsSortByEnum{
+	"timecreated": ListRateCardsSortByTimecreated,
+	"timestart":   ListRateCardsSortByTimestart,
 }
 
 // GetListRateCardsSortByEnumValues Enumerates the set of values for ListRateCardsSortByEnum
@@ -200,11 +205,6 @@ func GetListRateCardsSortByEnumStringValues() []string {
 
 // GetMappingListRateCardsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListRateCardsSortByEnum(val string) (ListRateCardsSortByEnum, bool) {
-	mappingListRateCardsSortByEnumIgnoreCase := make(map[string]ListRateCardsSortByEnum)
-	for k, v := range mappingListRateCardsSortByEnum {
-		mappingListRateCardsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListRateCardsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListRateCardsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

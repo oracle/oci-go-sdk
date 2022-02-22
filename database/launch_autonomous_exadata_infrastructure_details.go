@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -96,6 +96,11 @@ var mappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum = map[st
 	"BRING_YOUR_OWN_LICENSE": LaunchAutonomousExadataInfrastructureDetailsLicenseModelBringYourOwnLicense,
 }
 
+var mappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnumLowerCase = map[string]LaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum{
+	"license_included":       LaunchAutonomousExadataInfrastructureDetailsLicenseModelLicenseIncluded,
+	"bring_your_own_license": LaunchAutonomousExadataInfrastructureDetailsLicenseModelBringYourOwnLicense,
+}
+
 // GetLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnumValues Enumerates the set of values for LaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum
 func GetLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnumValues() []LaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum {
 	values := make([]LaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum, 0)
@@ -115,11 +120,6 @@ func GetLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnumStringValues
 
 // GetMappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum(val string) (LaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum, bool) {
-	mappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnumIgnoreCase := make(map[string]LaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum)
-	for k, v := range mappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum {
-		mappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

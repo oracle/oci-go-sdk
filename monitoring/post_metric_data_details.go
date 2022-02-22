@@ -13,7 +13,7 @@ package monitoring
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,11 @@ var mappingPostMetricDataDetailsBatchAtomicityEnum = map[string]PostMetricDataDe
 	"NON_ATOMIC": PostMetricDataDetailsBatchAtomicityNonAtomic,
 }
 
+var mappingPostMetricDataDetailsBatchAtomicityEnumLowerCase = map[string]PostMetricDataDetailsBatchAtomicityEnum{
+	"atomic":     PostMetricDataDetailsBatchAtomicityAtomic,
+	"non_atomic": PostMetricDataDetailsBatchAtomicityNonAtomic,
+}
+
 // GetPostMetricDataDetailsBatchAtomicityEnumValues Enumerates the set of values for PostMetricDataDetailsBatchAtomicityEnum
 func GetPostMetricDataDetailsBatchAtomicityEnumValues() []PostMetricDataDetailsBatchAtomicityEnum {
 	values := make([]PostMetricDataDetailsBatchAtomicityEnum, 0)
@@ -85,11 +90,6 @@ func GetPostMetricDataDetailsBatchAtomicityEnumStringValues() []string {
 
 // GetMappingPostMetricDataDetailsBatchAtomicityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPostMetricDataDetailsBatchAtomicityEnum(val string) (PostMetricDataDetailsBatchAtomicityEnum, bool) {
-	mappingPostMetricDataDetailsBatchAtomicityEnumIgnoreCase := make(map[string]PostMetricDataDetailsBatchAtomicityEnum)
-	for k, v := range mappingPostMetricDataDetailsBatchAtomicityEnum {
-		mappingPostMetricDataDetailsBatchAtomicityEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPostMetricDataDetailsBatchAtomicityEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPostMetricDataDetailsBatchAtomicityEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

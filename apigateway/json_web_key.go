@@ -14,7 +14,7 @@ package apigateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -104,6 +104,10 @@ var mappingJsonWebKeyKtyEnum = map[string]JsonWebKeyKtyEnum{
 	"RSA": JsonWebKeyKtyRsa,
 }
 
+var mappingJsonWebKeyKtyEnumLowerCase = map[string]JsonWebKeyKtyEnum{
+	"rsa": JsonWebKeyKtyRsa,
+}
+
 // GetJsonWebKeyKtyEnumValues Enumerates the set of values for JsonWebKeyKtyEnum
 func GetJsonWebKeyKtyEnumValues() []JsonWebKeyKtyEnum {
 	values := make([]JsonWebKeyKtyEnum, 0)
@@ -122,12 +126,7 @@ func GetJsonWebKeyKtyEnumStringValues() []string {
 
 // GetMappingJsonWebKeyKtyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJsonWebKeyKtyEnum(val string) (JsonWebKeyKtyEnum, bool) {
-	mappingJsonWebKeyKtyEnumIgnoreCase := make(map[string]JsonWebKeyKtyEnum)
-	for k, v := range mappingJsonWebKeyKtyEnum {
-		mappingJsonWebKeyKtyEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJsonWebKeyKtyEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJsonWebKeyKtyEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -140,6 +139,10 @@ const (
 )
 
 var mappingJsonWebKeyUseEnum = map[string]JsonWebKeyUseEnum{
+	"sig": JsonWebKeyUseSig,
+}
+
+var mappingJsonWebKeyUseEnumLowerCase = map[string]JsonWebKeyUseEnum{
 	"sig": JsonWebKeyUseSig,
 }
 
@@ -161,12 +164,7 @@ func GetJsonWebKeyUseEnumStringValues() []string {
 
 // GetMappingJsonWebKeyUseEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJsonWebKeyUseEnum(val string) (JsonWebKeyUseEnum, bool) {
-	mappingJsonWebKeyUseEnumIgnoreCase := make(map[string]JsonWebKeyUseEnum)
-	for k, v := range mappingJsonWebKeyUseEnum {
-		mappingJsonWebKeyUseEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJsonWebKeyUseEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJsonWebKeyUseEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -179,6 +177,10 @@ const (
 )
 
 var mappingJsonWebKeyKeyOpsEnum = map[string]JsonWebKeyKeyOpsEnum{
+	"verify": JsonWebKeyKeyOpsVerify,
+}
+
+var mappingJsonWebKeyKeyOpsEnumLowerCase = map[string]JsonWebKeyKeyOpsEnum{
 	"verify": JsonWebKeyKeyOpsVerify,
 }
 
@@ -200,11 +202,6 @@ func GetJsonWebKeyKeyOpsEnumStringValues() []string {
 
 // GetMappingJsonWebKeyKeyOpsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJsonWebKeyKeyOpsEnum(val string) (JsonWebKeyKeyOpsEnum, bool) {
-	mappingJsonWebKeyKeyOpsEnumIgnoreCase := make(map[string]JsonWebKeyKeyOpsEnum)
-	for k, v := range mappingJsonWebKeyKeyOpsEnum {
-		mappingJsonWebKeyKeyOpsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJsonWebKeyKeyOpsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJsonWebKeyKeyOpsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

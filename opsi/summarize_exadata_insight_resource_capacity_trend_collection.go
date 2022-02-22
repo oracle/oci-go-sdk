@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -85,6 +85,13 @@ var mappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResource
 	"DISKGROUP":      SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeDiskgroup,
 }
 
+var mappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeEnumLowerCase = map[string]SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeEnum{
+	"database":       SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeDatabase,
+	"host":           SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeHost,
+	"storage_server": SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeStorageServer,
+	"diskgroup":      SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeDiskgroup,
+}
+
 // GetSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeEnumValues Enumerates the set of values for SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeEnum
 func GetSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeEnumValues() []SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeEnum {
 	values := make([]SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeEnum, 0)
@@ -106,12 +113,7 @@ func GetSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTyp
 
 // GetMappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeEnum(val string) (SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeEnum, bool) {
-	mappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeEnum)
-	for k, v := range mappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeEnum {
-		mappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -137,6 +139,15 @@ var mappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResource
 	"THROUGHPUT": SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricThroughput,
 }
 
+var mappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricEnumLowerCase = map[string]SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricEnum{
+	"cpu":        SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricCpu,
+	"storage":    SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricStorage,
+	"io":         SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricIo,
+	"memory":     SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricMemory,
+	"iops":       SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricIops,
+	"throughput": SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricThroughput,
+}
+
 // GetSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricEnumValues Enumerates the set of values for SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricEnum
 func GetSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricEnumValues() []SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricEnum {
 	values := make([]SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricEnum, 0)
@@ -160,11 +171,6 @@ func GetSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMet
 
 // GetMappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricEnum(val string) (SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricEnum, bool) {
-	mappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricEnum)
-	for k, v := range mappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricEnum {
-		mappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeExadataInsightResourceCapacityTrendCollectionExadataResourceMetricEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

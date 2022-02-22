@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -201,6 +201,11 @@ var mappingSummarizeExadataInsightResourceUsageSortOrderEnum = map[string]Summar
 	"DESC": SummarizeExadataInsightResourceUsageSortOrderDesc,
 }
 
+var mappingSummarizeExadataInsightResourceUsageSortOrderEnumLowerCase = map[string]SummarizeExadataInsightResourceUsageSortOrderEnum{
+	"asc":  SummarizeExadataInsightResourceUsageSortOrderAsc,
+	"desc": SummarizeExadataInsightResourceUsageSortOrderDesc,
+}
+
 // GetSummarizeExadataInsightResourceUsageSortOrderEnumValues Enumerates the set of values for SummarizeExadataInsightResourceUsageSortOrderEnum
 func GetSummarizeExadataInsightResourceUsageSortOrderEnumValues() []SummarizeExadataInsightResourceUsageSortOrderEnum {
 	values := make([]SummarizeExadataInsightResourceUsageSortOrderEnum, 0)
@@ -220,12 +225,7 @@ func GetSummarizeExadataInsightResourceUsageSortOrderEnumStringValues() []string
 
 // GetMappingSummarizeExadataInsightResourceUsageSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeExadataInsightResourceUsageSortOrderEnum(val string) (SummarizeExadataInsightResourceUsageSortOrderEnum, bool) {
-	mappingSummarizeExadataInsightResourceUsageSortOrderEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceUsageSortOrderEnum)
-	for k, v := range mappingSummarizeExadataInsightResourceUsageSortOrderEnum {
-		mappingSummarizeExadataInsightResourceUsageSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeExadataInsightResourceUsageSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeExadataInsightResourceUsageSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -245,6 +245,13 @@ var mappingSummarizeExadataInsightResourceUsageSortByEnum = map[string]Summarize
 	"usage":              SummarizeExadataInsightResourceUsageSortByUsage,
 	"capacity":           SummarizeExadataInsightResourceUsageSortByCapacity,
 	"usageChangePercent": SummarizeExadataInsightResourceUsageSortByUsagechangepercent,
+}
+
+var mappingSummarizeExadataInsightResourceUsageSortByEnumLowerCase = map[string]SummarizeExadataInsightResourceUsageSortByEnum{
+	"utilizationpercent": SummarizeExadataInsightResourceUsageSortByUtilizationpercent,
+	"usage":              SummarizeExadataInsightResourceUsageSortByUsage,
+	"capacity":           SummarizeExadataInsightResourceUsageSortByCapacity,
+	"usagechangepercent": SummarizeExadataInsightResourceUsageSortByUsagechangepercent,
 }
 
 // GetSummarizeExadataInsightResourceUsageSortByEnumValues Enumerates the set of values for SummarizeExadataInsightResourceUsageSortByEnum
@@ -268,11 +275,6 @@ func GetSummarizeExadataInsightResourceUsageSortByEnumStringValues() []string {
 
 // GetMappingSummarizeExadataInsightResourceUsageSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeExadataInsightResourceUsageSortByEnum(val string) (SummarizeExadataInsightResourceUsageSortByEnum, bool) {
-	mappingSummarizeExadataInsightResourceUsageSortByEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceUsageSortByEnum)
-	for k, v := range mappingSummarizeExadataInsightResourceUsageSortByEnum {
-		mappingSummarizeExadataInsightResourceUsageSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeExadataInsightResourceUsageSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeExadataInsightResourceUsageSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

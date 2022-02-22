@@ -27,6 +27,11 @@ var mappingSortByEnum = map[string]SortByEnum{
 	"severity":    SortBySeverity,
 }
 
+var mappingSortByEnumLowerCase = map[string]SortByEnum{
+	"dateupdated": SortByDateUpdated,
+	"severity":    SortBySeverity,
+}
+
 // GetSortByEnumValues Enumerates the set of values for SortByEnum
 func GetSortByEnumValues() []SortByEnum {
 	values := make([]SortByEnum, 0)
@@ -46,11 +51,6 @@ func GetSortByEnumStringValues() []string {
 
 // GetMappingSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSortByEnum(val string) (SortByEnum, bool) {
-	mappingSortByEnumIgnoreCase := make(map[string]SortByEnum)
-	for k, v := range mappingSortByEnum {
-		mappingSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -207,6 +207,13 @@ var mappingDataEntityFromSqlEntityTypeEnum = map[string]DataEntityFromSqlEntityT
 	"SQL":   DataEntityFromSqlEntityTypeSql,
 }
 
+var mappingDataEntityFromSqlEntityTypeEnumLowerCase = map[string]DataEntityFromSqlEntityTypeEnum{
+	"table": DataEntityFromSqlEntityTypeTable,
+	"view":  DataEntityFromSqlEntityTypeView,
+	"file":  DataEntityFromSqlEntityTypeFile,
+	"sql":   DataEntityFromSqlEntityTypeSql,
+}
+
 // GetDataEntityFromSqlEntityTypeEnumValues Enumerates the set of values for DataEntityFromSqlEntityTypeEnum
 func GetDataEntityFromSqlEntityTypeEnumValues() []DataEntityFromSqlEntityTypeEnum {
 	values := make([]DataEntityFromSqlEntityTypeEnum, 0)
@@ -228,11 +235,6 @@ func GetDataEntityFromSqlEntityTypeEnumStringValues() []string {
 
 // GetMappingDataEntityFromSqlEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataEntityFromSqlEntityTypeEnum(val string) (DataEntityFromSqlEntityTypeEnum, bool) {
-	mappingDataEntityFromSqlEntityTypeEnumIgnoreCase := make(map[string]DataEntityFromSqlEntityTypeEnum)
-	for k, v := range mappingDataEntityFromSqlEntityTypeEnum {
-		mappingDataEntityFromSqlEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataEntityFromSqlEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataEntityFromSqlEntityTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

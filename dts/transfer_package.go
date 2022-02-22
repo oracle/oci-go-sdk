@@ -11,7 +11,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -84,6 +84,18 @@ var mappingTransferPackageLifecycleStateEnum = map[string]TransferPackageLifecyc
 	"CANCELLED_RETURNED": TransferPackageLifecycleStateCancelledReturned,
 }
 
+var mappingTransferPackageLifecycleStateEnumLowerCase = map[string]TransferPackageLifecycleStateEnum{
+	"preparing":          TransferPackageLifecycleStatePreparing,
+	"shipping":           TransferPackageLifecycleStateShipping,
+	"received":           TransferPackageLifecycleStateReceived,
+	"processing":         TransferPackageLifecycleStateProcessing,
+	"processed":          TransferPackageLifecycleStateProcessed,
+	"returned":           TransferPackageLifecycleStateReturned,
+	"deleted":            TransferPackageLifecycleStateDeleted,
+	"cancelled":          TransferPackageLifecycleStateCancelled,
+	"cancelled_returned": TransferPackageLifecycleStateCancelledReturned,
+}
+
 // GetTransferPackageLifecycleStateEnumValues Enumerates the set of values for TransferPackageLifecycleStateEnum
 func GetTransferPackageLifecycleStateEnumValues() []TransferPackageLifecycleStateEnum {
 	values := make([]TransferPackageLifecycleStateEnum, 0)
@@ -110,11 +122,6 @@ func GetTransferPackageLifecycleStateEnumStringValues() []string {
 
 // GetMappingTransferPackageLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingTransferPackageLifecycleStateEnum(val string) (TransferPackageLifecycleStateEnum, bool) {
-	mappingTransferPackageLifecycleStateEnumIgnoreCase := make(map[string]TransferPackageLifecycleStateEnum)
-	for k, v := range mappingTransferPackageLifecycleStateEnum {
-		mappingTransferPackageLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingTransferPackageLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingTransferPackageLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

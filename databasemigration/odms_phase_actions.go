@@ -25,6 +25,10 @@ var mappingOdmsPhaseActionsEnum = map[string]OdmsPhaseActionsEnum{
 	"WAIT": OdmsPhaseActionsWait,
 }
 
+var mappingOdmsPhaseActionsEnumLowerCase = map[string]OdmsPhaseActionsEnum{
+	"wait": OdmsPhaseActionsWait,
+}
+
 // GetOdmsPhaseActionsEnumValues Enumerates the set of values for OdmsPhaseActionsEnum
 func GetOdmsPhaseActionsEnumValues() []OdmsPhaseActionsEnum {
 	values := make([]OdmsPhaseActionsEnum, 0)
@@ -43,11 +47,6 @@ func GetOdmsPhaseActionsEnumStringValues() []string {
 
 // GetMappingOdmsPhaseActionsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOdmsPhaseActionsEnum(val string) (OdmsPhaseActionsEnum, bool) {
-	mappingOdmsPhaseActionsEnumIgnoreCase := make(map[string]OdmsPhaseActionsEnum)
-	for k, v := range mappingOdmsPhaseActionsEnum {
-		mappingOdmsPhaseActionsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOdmsPhaseActionsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOdmsPhaseActionsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

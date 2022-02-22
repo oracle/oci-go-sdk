@@ -25,6 +25,10 @@ var mappingPolicyFormatEnum = map[string]PolicyFormatEnum{
 	"XML": PolicyFormatXml,
 }
 
+var mappingPolicyFormatEnumLowerCase = map[string]PolicyFormatEnum{
+	"xml": PolicyFormatXml,
+}
+
 // GetPolicyFormatEnumValues Enumerates the set of values for PolicyFormatEnum
 func GetPolicyFormatEnumValues() []PolicyFormatEnum {
 	values := make([]PolicyFormatEnum, 0)
@@ -43,11 +47,6 @@ func GetPolicyFormatEnumStringValues() []string {
 
 // GetMappingPolicyFormatEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPolicyFormatEnum(val string) (PolicyFormatEnum, bool) {
-	mappingPolicyFormatEnumIgnoreCase := make(map[string]PolicyFormatEnum)
-	for k, v := range mappingPolicyFormatEnum {
-		mappingPolicyFormatEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingPolicyFormatEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingPolicyFormatEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

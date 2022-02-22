@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -233,6 +233,16 @@ var mappingDataEntityFromDataStoreEntityDetailsEntityTypeEnum = map[string]DataE
 	"DATA_STORE": DataEntityFromDataStoreEntityDetailsEntityTypeDataStore,
 }
 
+var mappingDataEntityFromDataStoreEntityDetailsEntityTypeEnumLowerCase = map[string]DataEntityFromDataStoreEntityDetailsEntityTypeEnum{
+	"table":      DataEntityFromDataStoreEntityDetailsEntityTypeTable,
+	"view":       DataEntityFromDataStoreEntityDetailsEntityTypeView,
+	"file":       DataEntityFromDataStoreEntityDetailsEntityTypeFile,
+	"queue":      DataEntityFromDataStoreEntityDetailsEntityTypeQueue,
+	"stream":     DataEntityFromDataStoreEntityDetailsEntityTypeStream,
+	"other":      DataEntityFromDataStoreEntityDetailsEntityTypeOther,
+	"data_store": DataEntityFromDataStoreEntityDetailsEntityTypeDataStore,
+}
+
 // GetDataEntityFromDataStoreEntityDetailsEntityTypeEnumValues Enumerates the set of values for DataEntityFromDataStoreEntityDetailsEntityTypeEnum
 func GetDataEntityFromDataStoreEntityDetailsEntityTypeEnumValues() []DataEntityFromDataStoreEntityDetailsEntityTypeEnum {
 	values := make([]DataEntityFromDataStoreEntityDetailsEntityTypeEnum, 0)
@@ -257,11 +267,6 @@ func GetDataEntityFromDataStoreEntityDetailsEntityTypeEnumStringValues() []strin
 
 // GetMappingDataEntityFromDataStoreEntityDetailsEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDataEntityFromDataStoreEntityDetailsEntityTypeEnum(val string) (DataEntityFromDataStoreEntityDetailsEntityTypeEnum, bool) {
-	mappingDataEntityFromDataStoreEntityDetailsEntityTypeEnumIgnoreCase := make(map[string]DataEntityFromDataStoreEntityDetailsEntityTypeEnum)
-	for k, v := range mappingDataEntityFromDataStoreEntityDetailsEntityTypeEnum {
-		mappingDataEntityFromDataStoreEntityDetailsEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDataEntityFromDataStoreEntityDetailsEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDataEntityFromDataStoreEntityDetailsEntityTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

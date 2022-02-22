@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -99,6 +99,12 @@ var mappingHealthCheckMethodEnum = map[string]HealthCheckMethodEnum{
 	"POST": HealthCheckMethodPost,
 }
 
+var mappingHealthCheckMethodEnumLowerCase = map[string]HealthCheckMethodEnum{
+	"get":  HealthCheckMethodGet,
+	"head": HealthCheckMethodHead,
+	"post": HealthCheckMethodPost,
+}
+
 // GetHealthCheckMethodEnumValues Enumerates the set of values for HealthCheckMethodEnum
 func GetHealthCheckMethodEnumValues() []HealthCheckMethodEnum {
 	values := make([]HealthCheckMethodEnum, 0)
@@ -119,12 +125,7 @@ func GetHealthCheckMethodEnumStringValues() []string {
 
 // GetMappingHealthCheckMethodEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHealthCheckMethodEnum(val string) (HealthCheckMethodEnum, bool) {
-	mappingHealthCheckMethodEnumIgnoreCase := make(map[string]HealthCheckMethodEnum)
-	for k, v := range mappingHealthCheckMethodEnum {
-		mappingHealthCheckMethodEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHealthCheckMethodEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHealthCheckMethodEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -144,6 +145,13 @@ var mappingHealthCheckExpectedResponseCodeGroupEnum = map[string]HealthCheckExpe
 	"3XX": HealthCheckExpectedResponseCodeGroup3xx,
 	"4XX": HealthCheckExpectedResponseCodeGroup4xx,
 	"5XX": HealthCheckExpectedResponseCodeGroup5xx,
+}
+
+var mappingHealthCheckExpectedResponseCodeGroupEnumLowerCase = map[string]HealthCheckExpectedResponseCodeGroupEnum{
+	"2xx": HealthCheckExpectedResponseCodeGroup2xx,
+	"3xx": HealthCheckExpectedResponseCodeGroup3xx,
+	"4xx": HealthCheckExpectedResponseCodeGroup4xx,
+	"5xx": HealthCheckExpectedResponseCodeGroup5xx,
 }
 
 // GetHealthCheckExpectedResponseCodeGroupEnumValues Enumerates the set of values for HealthCheckExpectedResponseCodeGroupEnum
@@ -167,11 +175,6 @@ func GetHealthCheckExpectedResponseCodeGroupEnumStringValues() []string {
 
 // GetMappingHealthCheckExpectedResponseCodeGroupEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHealthCheckExpectedResponseCodeGroupEnum(val string) (HealthCheckExpectedResponseCodeGroupEnum, bool) {
-	mappingHealthCheckExpectedResponseCodeGroupEnumIgnoreCase := make(map[string]HealthCheckExpectedResponseCodeGroupEnum)
-	for k, v := range mappingHealthCheckExpectedResponseCodeGroupEnum {
-		mappingHealthCheckExpectedResponseCodeGroupEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHealthCheckExpectedResponseCodeGroupEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHealthCheckExpectedResponseCodeGroupEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

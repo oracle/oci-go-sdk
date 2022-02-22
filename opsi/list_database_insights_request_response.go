@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -196,6 +196,15 @@ var mappingListDatabaseInsightsDatabaseTypeEnum = map[string]ListDatabaseInsight
 	"EXTERNAL-NONCDB": ListDatabaseInsightsDatabaseTypeExternalNoncdb,
 }
 
+var mappingListDatabaseInsightsDatabaseTypeEnumLowerCase = map[string]ListDatabaseInsightsDatabaseTypeEnum{
+	"adw-s":           ListDatabaseInsightsDatabaseTypeAdwS,
+	"atp-s":           ListDatabaseInsightsDatabaseTypeAtpS,
+	"adw-d":           ListDatabaseInsightsDatabaseTypeAdwD,
+	"atp-d":           ListDatabaseInsightsDatabaseTypeAtpD,
+	"external-pdb":    ListDatabaseInsightsDatabaseTypeExternalPdb,
+	"external-noncdb": ListDatabaseInsightsDatabaseTypeExternalNoncdb,
+}
+
 // GetListDatabaseInsightsDatabaseTypeEnumValues Enumerates the set of values for ListDatabaseInsightsDatabaseTypeEnum
 func GetListDatabaseInsightsDatabaseTypeEnumValues() []ListDatabaseInsightsDatabaseTypeEnum {
 	values := make([]ListDatabaseInsightsDatabaseTypeEnum, 0)
@@ -219,12 +228,7 @@ func GetListDatabaseInsightsDatabaseTypeEnumStringValues() []string {
 
 // GetMappingListDatabaseInsightsDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseInsightsDatabaseTypeEnum(val string) (ListDatabaseInsightsDatabaseTypeEnum, bool) {
-	mappingListDatabaseInsightsDatabaseTypeEnumIgnoreCase := make(map[string]ListDatabaseInsightsDatabaseTypeEnum)
-	for k, v := range mappingListDatabaseInsightsDatabaseTypeEnum {
-		mappingListDatabaseInsightsDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseInsightsDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseInsightsDatabaseTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -254,6 +258,17 @@ var mappingListDatabaseInsightsFieldsEnum = map[string]ListDatabaseInsightsField
 	"definedTags":         ListDatabaseInsightsFieldsDefinedtags,
 }
 
+var mappingListDatabaseInsightsFieldsEnumLowerCase = map[string]ListDatabaseInsightsFieldsEnum{
+	"compartmentid":       ListDatabaseInsightsFieldsCompartmentid,
+	"databasename":        ListDatabaseInsightsFieldsDatabasename,
+	"databasedisplayname": ListDatabaseInsightsFieldsDatabasedisplayname,
+	"databasetype":        ListDatabaseInsightsFieldsDatabasetype,
+	"databaseversion":     ListDatabaseInsightsFieldsDatabaseversion,
+	"databasehostnames":   ListDatabaseInsightsFieldsDatabasehostnames,
+	"freeformtags":        ListDatabaseInsightsFieldsFreeformtags,
+	"definedtags":         ListDatabaseInsightsFieldsDefinedtags,
+}
+
 // GetListDatabaseInsightsFieldsEnumValues Enumerates the set of values for ListDatabaseInsightsFieldsEnum
 func GetListDatabaseInsightsFieldsEnumValues() []ListDatabaseInsightsFieldsEnum {
 	values := make([]ListDatabaseInsightsFieldsEnum, 0)
@@ -279,12 +294,7 @@ func GetListDatabaseInsightsFieldsEnumStringValues() []string {
 
 // GetMappingListDatabaseInsightsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseInsightsFieldsEnum(val string) (ListDatabaseInsightsFieldsEnum, bool) {
-	mappingListDatabaseInsightsFieldsEnumIgnoreCase := make(map[string]ListDatabaseInsightsFieldsEnum)
-	for k, v := range mappingListDatabaseInsightsFieldsEnum {
-		mappingListDatabaseInsightsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseInsightsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseInsightsFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -300,6 +310,11 @@ const (
 var mappingListDatabaseInsightsSortOrderEnum = map[string]ListDatabaseInsightsSortOrderEnum{
 	"ASC":  ListDatabaseInsightsSortOrderAsc,
 	"DESC": ListDatabaseInsightsSortOrderDesc,
+}
+
+var mappingListDatabaseInsightsSortOrderEnumLowerCase = map[string]ListDatabaseInsightsSortOrderEnum{
+	"asc":  ListDatabaseInsightsSortOrderAsc,
+	"desc": ListDatabaseInsightsSortOrderDesc,
 }
 
 // GetListDatabaseInsightsSortOrderEnumValues Enumerates the set of values for ListDatabaseInsightsSortOrderEnum
@@ -321,12 +336,7 @@ func GetListDatabaseInsightsSortOrderEnumStringValues() []string {
 
 // GetMappingListDatabaseInsightsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseInsightsSortOrderEnum(val string) (ListDatabaseInsightsSortOrderEnum, bool) {
-	mappingListDatabaseInsightsSortOrderEnumIgnoreCase := make(map[string]ListDatabaseInsightsSortOrderEnum)
-	for k, v := range mappingListDatabaseInsightsSortOrderEnum {
-		mappingListDatabaseInsightsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseInsightsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseInsightsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -344,6 +354,12 @@ var mappingListDatabaseInsightsSortByEnum = map[string]ListDatabaseInsightsSortB
 	"databaseName":        ListDatabaseInsightsSortByDatabasename,
 	"databaseDisplayName": ListDatabaseInsightsSortByDatabasedisplayname,
 	"databaseType":        ListDatabaseInsightsSortByDatabasetype,
+}
+
+var mappingListDatabaseInsightsSortByEnumLowerCase = map[string]ListDatabaseInsightsSortByEnum{
+	"databasename":        ListDatabaseInsightsSortByDatabasename,
+	"databasedisplayname": ListDatabaseInsightsSortByDatabasedisplayname,
+	"databasetype":        ListDatabaseInsightsSortByDatabasetype,
 }
 
 // GetListDatabaseInsightsSortByEnumValues Enumerates the set of values for ListDatabaseInsightsSortByEnum
@@ -366,11 +382,6 @@ func GetListDatabaseInsightsSortByEnumStringValues() []string {
 
 // GetMappingListDatabaseInsightsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDatabaseInsightsSortByEnum(val string) (ListDatabaseInsightsSortByEnum, bool) {
-	mappingListDatabaseInsightsSortByEnumIgnoreCase := make(map[string]ListDatabaseInsightsSortByEnum)
-	for k, v := range mappingListDatabaseInsightsSortByEnum {
-		mappingListDatabaseInsightsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDatabaseInsightsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDatabaseInsightsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

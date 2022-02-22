@@ -35,6 +35,14 @@ var mappingUsageUnitEnum = map[string]UsageUnitEnum{
 	"PERCENT": UsageUnitPercent,
 }
 
+var mappingUsageUnitEnumLowerCase = map[string]UsageUnitEnum{
+	"cores":   UsageUnitCores,
+	"gb":      UsageUnitGb,
+	"mbps":    UsageUnitMbps,
+	"iops":    UsageUnitIops,
+	"percent": UsageUnitPercent,
+}
+
 // GetUsageUnitEnumValues Enumerates the set of values for UsageUnitEnum
 func GetUsageUnitEnumValues() []UsageUnitEnum {
 	values := make([]UsageUnitEnum, 0)
@@ -57,11 +65,6 @@ func GetUsageUnitEnumStringValues() []string {
 
 // GetMappingUsageUnitEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUsageUnitEnum(val string) (UsageUnitEnum, bool) {
-	mappingUsageUnitEnumIgnoreCase := make(map[string]UsageUnitEnum)
-	for k, v := range mappingUsageUnitEnum {
-		mappingUsageUnitEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUsageUnitEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUsageUnitEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

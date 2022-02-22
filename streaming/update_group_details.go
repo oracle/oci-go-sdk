@@ -11,7 +11,7 @@ package streaming
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -60,6 +60,12 @@ var mappingUpdateGroupDetailsTypeEnum = map[string]UpdateGroupDetailsTypeEnum{
 	"TRIM_HORIZON": UpdateGroupDetailsTypeTrimHorizon,
 }
 
+var mappingUpdateGroupDetailsTypeEnumLowerCase = map[string]UpdateGroupDetailsTypeEnum{
+	"at_time":      UpdateGroupDetailsTypeAtTime,
+	"latest":       UpdateGroupDetailsTypeLatest,
+	"trim_horizon": UpdateGroupDetailsTypeTrimHorizon,
+}
+
 // GetUpdateGroupDetailsTypeEnumValues Enumerates the set of values for UpdateGroupDetailsTypeEnum
 func GetUpdateGroupDetailsTypeEnumValues() []UpdateGroupDetailsTypeEnum {
 	values := make([]UpdateGroupDetailsTypeEnum, 0)
@@ -80,11 +86,6 @@ func GetUpdateGroupDetailsTypeEnumStringValues() []string {
 
 // GetMappingUpdateGroupDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateGroupDetailsTypeEnum(val string) (UpdateGroupDetailsTypeEnum, bool) {
-	mappingUpdateGroupDetailsTypeEnumIgnoreCase := make(map[string]UpdateGroupDetailsTypeEnum)
-	for k, v := range mappingUpdateGroupDetailsTypeEnum {
-		mappingUpdateGroupDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateGroupDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateGroupDetailsTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

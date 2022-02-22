@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -197,6 +197,15 @@ var mappingSummarizeSqlInsightsDatabaseTypeEnum = map[string]SummarizeSqlInsight
 	"EXTERNAL-NONCDB": SummarizeSqlInsightsDatabaseTypeExternalNoncdb,
 }
 
+var mappingSummarizeSqlInsightsDatabaseTypeEnumLowerCase = map[string]SummarizeSqlInsightsDatabaseTypeEnum{
+	"adw-s":           SummarizeSqlInsightsDatabaseTypeAdwS,
+	"atp-s":           SummarizeSqlInsightsDatabaseTypeAtpS,
+	"adw-d":           SummarizeSqlInsightsDatabaseTypeAdwD,
+	"atp-d":           SummarizeSqlInsightsDatabaseTypeAtpD,
+	"external-pdb":    SummarizeSqlInsightsDatabaseTypeExternalPdb,
+	"external-noncdb": SummarizeSqlInsightsDatabaseTypeExternalNoncdb,
+}
+
 // GetSummarizeSqlInsightsDatabaseTypeEnumValues Enumerates the set of values for SummarizeSqlInsightsDatabaseTypeEnum
 func GetSummarizeSqlInsightsDatabaseTypeEnumValues() []SummarizeSqlInsightsDatabaseTypeEnum {
 	values := make([]SummarizeSqlInsightsDatabaseTypeEnum, 0)
@@ -220,11 +229,6 @@ func GetSummarizeSqlInsightsDatabaseTypeEnumStringValues() []string {
 
 // GetMappingSummarizeSqlInsightsDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeSqlInsightsDatabaseTypeEnum(val string) (SummarizeSqlInsightsDatabaseTypeEnum, bool) {
-	mappingSummarizeSqlInsightsDatabaseTypeEnumIgnoreCase := make(map[string]SummarizeSqlInsightsDatabaseTypeEnum)
-	for k, v := range mappingSummarizeSqlInsightsDatabaseTypeEnum {
-		mappingSummarizeSqlInsightsDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeSqlInsightsDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeSqlInsightsDatabaseTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

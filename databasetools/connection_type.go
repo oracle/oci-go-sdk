@@ -25,6 +25,10 @@ var mappingConnectionTypeEnum = map[string]ConnectionTypeEnum{
 	"ORACLE_DATABASE": ConnectionTypeOracleDatabase,
 }
 
+var mappingConnectionTypeEnumLowerCase = map[string]ConnectionTypeEnum{
+	"oracle_database": ConnectionTypeOracleDatabase,
+}
+
 // GetConnectionTypeEnumValues Enumerates the set of values for ConnectionTypeEnum
 func GetConnectionTypeEnumValues() []ConnectionTypeEnum {
 	values := make([]ConnectionTypeEnum, 0)
@@ -43,11 +47,6 @@ func GetConnectionTypeEnumStringValues() []string {
 
 // GetMappingConnectionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingConnectionTypeEnum(val string) (ConnectionTypeEnum, bool) {
-	mappingConnectionTypeEnumIgnoreCase := make(map[string]ConnectionTypeEnum)
-	for k, v := range mappingConnectionTypeEnum {
-		mappingConnectionTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingConnectionTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingConnectionTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -27,6 +27,11 @@ var mappingMatchingContextTypeEnumEnum = map[string]MatchingContextTypeEnumEnum{
 	"HIGHLIGHTS": MatchingContextTypeEnumHighlights,
 }
 
+var mappingMatchingContextTypeEnumEnumLowerCase = map[string]MatchingContextTypeEnumEnum{
+	"none":       MatchingContextTypeEnumNone,
+	"highlights": MatchingContextTypeEnumHighlights,
+}
+
 // GetMatchingContextTypeEnumEnumValues Enumerates the set of values for MatchingContextTypeEnumEnum
 func GetMatchingContextTypeEnumEnumValues() []MatchingContextTypeEnumEnum {
 	values := make([]MatchingContextTypeEnumEnum, 0)
@@ -46,11 +51,6 @@ func GetMatchingContextTypeEnumEnumStringValues() []string {
 
 // GetMappingMatchingContextTypeEnumEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingMatchingContextTypeEnumEnum(val string) (MatchingContextTypeEnumEnum, bool) {
-	mappingMatchingContextTypeEnumEnumIgnoreCase := make(map[string]MatchingContextTypeEnumEnum)
-	for k, v := range mappingMatchingContextTypeEnumEnum {
-		mappingMatchingContextTypeEnumEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingMatchingContextTypeEnumEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingMatchingContextTypeEnumEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

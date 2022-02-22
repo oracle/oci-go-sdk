@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -137,6 +137,11 @@ var mappingUpdateResolverScopeEnum = map[string]UpdateResolverScopeEnum{
 	"PRIVATE": UpdateResolverScopePrivate,
 }
 
+var mappingUpdateResolverScopeEnumLowerCase = map[string]UpdateResolverScopeEnum{
+	"global":  UpdateResolverScopeGlobal,
+	"private": UpdateResolverScopePrivate,
+}
+
 // GetUpdateResolverScopeEnumValues Enumerates the set of values for UpdateResolverScopeEnum
 func GetUpdateResolverScopeEnumValues() []UpdateResolverScopeEnum {
 	values := make([]UpdateResolverScopeEnum, 0)
@@ -156,11 +161,6 @@ func GetUpdateResolverScopeEnumStringValues() []string {
 
 // GetMappingUpdateResolverScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateResolverScopeEnum(val string) (UpdateResolverScopeEnum, bool) {
-	mappingUpdateResolverScopeEnumIgnoreCase := make(map[string]UpdateResolverScopeEnum)
-	for k, v := range mappingUpdateResolverScopeEnum {
-		mappingUpdateResolverScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateResolverScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateResolverScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

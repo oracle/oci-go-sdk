@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -126,6 +126,11 @@ var mappingListImpactedResourcesSortOrderEnum = map[string]ListImpactedResources
 	"DESC": ListImpactedResourcesSortOrderDesc,
 }
 
+var mappingListImpactedResourcesSortOrderEnumLowerCase = map[string]ListImpactedResourcesSortOrderEnum{
+	"asc":  ListImpactedResourcesSortOrderAsc,
+	"desc": ListImpactedResourcesSortOrderDesc,
+}
+
 // GetListImpactedResourcesSortOrderEnumValues Enumerates the set of values for ListImpactedResourcesSortOrderEnum
 func GetListImpactedResourcesSortOrderEnumValues() []ListImpactedResourcesSortOrderEnum {
 	values := make([]ListImpactedResourcesSortOrderEnum, 0)
@@ -145,12 +150,7 @@ func GetListImpactedResourcesSortOrderEnumStringValues() []string {
 
 // GetMappingListImpactedResourcesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListImpactedResourcesSortOrderEnum(val string) (ListImpactedResourcesSortOrderEnum, bool) {
-	mappingListImpactedResourcesSortOrderEnumIgnoreCase := make(map[string]ListImpactedResourcesSortOrderEnum)
-	for k, v := range mappingListImpactedResourcesSortOrderEnum {
-		mappingListImpactedResourcesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListImpactedResourcesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListImpactedResourcesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -164,6 +164,10 @@ const (
 
 var mappingListImpactedResourcesSortByEnum = map[string]ListImpactedResourcesSortByEnum{
 	"timeCreated": ListImpactedResourcesSortByTimecreated,
+}
+
+var mappingListImpactedResourcesSortByEnumLowerCase = map[string]ListImpactedResourcesSortByEnum{
+	"timecreated": ListImpactedResourcesSortByTimecreated,
 }
 
 // GetListImpactedResourcesSortByEnumValues Enumerates the set of values for ListImpactedResourcesSortByEnum
@@ -184,11 +188,6 @@ func GetListImpactedResourcesSortByEnumStringValues() []string {
 
 // GetMappingListImpactedResourcesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListImpactedResourcesSortByEnum(val string) (ListImpactedResourcesSortByEnum, bool) {
-	mappingListImpactedResourcesSortByEnumIgnoreCase := make(map[string]ListImpactedResourcesSortByEnum)
-	for k, v := range mappingListImpactedResourcesSortByEnum {
-		mappingListImpactedResourcesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListImpactedResourcesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListImpactedResourcesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -14,7 +14,7 @@ package opsi
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -135,6 +135,11 @@ var mappingHostResourceStatisticsResourceNameEnum = map[string]HostResourceStati
 	"HOST_MEMORY_STATISTICS": HostResourceStatisticsResourceNameMemoryStatistics,
 }
 
+var mappingHostResourceStatisticsResourceNameEnumLowerCase = map[string]HostResourceStatisticsResourceNameEnum{
+	"host_cpu_statistics":    HostResourceStatisticsResourceNameCpuStatistics,
+	"host_memory_statistics": HostResourceStatisticsResourceNameMemoryStatistics,
+}
+
 // GetHostResourceStatisticsResourceNameEnumValues Enumerates the set of values for HostResourceStatisticsResourceNameEnum
 func GetHostResourceStatisticsResourceNameEnumValues() []HostResourceStatisticsResourceNameEnum {
 	values := make([]HostResourceStatisticsResourceNameEnum, 0)
@@ -154,11 +159,6 @@ func GetHostResourceStatisticsResourceNameEnumStringValues() []string {
 
 // GetMappingHostResourceStatisticsResourceNameEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingHostResourceStatisticsResourceNameEnum(val string) (HostResourceStatisticsResourceNameEnum, bool) {
-	mappingHostResourceStatisticsResourceNameEnumIgnoreCase := make(map[string]HostResourceStatisticsResourceNameEnum)
-	for k, v := range mappingHostResourceStatisticsResourceNameEnum {
-		mappingHostResourceStatisticsResourceNameEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingHostResourceStatisticsResourceNameEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingHostResourceStatisticsResourceNameEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

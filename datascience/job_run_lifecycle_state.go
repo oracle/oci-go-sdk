@@ -39,6 +39,17 @@ var mappingJobRunLifecycleStateEnum = map[string]JobRunLifecycleStateEnum{
 	"NEEDS_ATTENTION": JobRunLifecycleStateNeedsAttention,
 }
 
+var mappingJobRunLifecycleStateEnumLowerCase = map[string]JobRunLifecycleStateEnum{
+	"accepted":        JobRunLifecycleStateAccepted,
+	"in_progress":     JobRunLifecycleStateInProgress,
+	"failed":          JobRunLifecycleStateFailed,
+	"succeeded":       JobRunLifecycleStateSucceeded,
+	"canceling":       JobRunLifecycleStateCanceling,
+	"canceled":        JobRunLifecycleStateCanceled,
+	"deleted":         JobRunLifecycleStateDeleted,
+	"needs_attention": JobRunLifecycleStateNeedsAttention,
+}
+
 // GetJobRunLifecycleStateEnumValues Enumerates the set of values for JobRunLifecycleStateEnum
 func GetJobRunLifecycleStateEnumValues() []JobRunLifecycleStateEnum {
 	values := make([]JobRunLifecycleStateEnum, 0)
@@ -64,11 +75,6 @@ func GetJobRunLifecycleStateEnumStringValues() []string {
 
 // GetMappingJobRunLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingJobRunLifecycleStateEnum(val string) (JobRunLifecycleStateEnum, bool) {
-	mappingJobRunLifecycleStateEnumIgnoreCase := make(map[string]JobRunLifecycleStateEnum)
-	for k, v := range mappingJobRunLifecycleStateEnum {
-		mappingJobRunLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingJobRunLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingJobRunLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

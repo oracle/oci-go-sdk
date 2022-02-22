@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -77,6 +77,11 @@ var mappingSignDataDetailsMessageTypeEnum = map[string]SignDataDetailsMessageTyp
 	"DIGEST": SignDataDetailsMessageTypeDigest,
 }
 
+var mappingSignDataDetailsMessageTypeEnumLowerCase = map[string]SignDataDetailsMessageTypeEnum{
+	"raw":    SignDataDetailsMessageTypeRaw,
+	"digest": SignDataDetailsMessageTypeDigest,
+}
+
 // GetSignDataDetailsMessageTypeEnumValues Enumerates the set of values for SignDataDetailsMessageTypeEnum
 func GetSignDataDetailsMessageTypeEnumValues() []SignDataDetailsMessageTypeEnum {
 	values := make([]SignDataDetailsMessageTypeEnum, 0)
@@ -96,12 +101,7 @@ func GetSignDataDetailsMessageTypeEnumStringValues() []string {
 
 // GetMappingSignDataDetailsMessageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSignDataDetailsMessageTypeEnum(val string) (SignDataDetailsMessageTypeEnum, bool) {
-	mappingSignDataDetailsMessageTypeEnumIgnoreCase := make(map[string]SignDataDetailsMessageTypeEnum)
-	for k, v := range mappingSignDataDetailsMessageTypeEnum {
-		mappingSignDataDetailsMessageTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSignDataDetailsMessageTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSignDataDetailsMessageTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -137,6 +137,20 @@ var mappingSignDataDetailsSigningAlgorithmEnum = map[string]SignDataDetailsSigni
 	"ECDSA_SHA_512":          SignDataDetailsSigningAlgorithmEcdsaSha512,
 }
 
+var mappingSignDataDetailsSigningAlgorithmEnumLowerCase = map[string]SignDataDetailsSigningAlgorithmEnum{
+	"sha_224_rsa_pkcs_pss":   SignDataDetailsSigningAlgorithmSha224RsaPkcsPss,
+	"sha_256_rsa_pkcs_pss":   SignDataDetailsSigningAlgorithmSha256RsaPkcsPss,
+	"sha_384_rsa_pkcs_pss":   SignDataDetailsSigningAlgorithmSha384RsaPkcsPss,
+	"sha_512_rsa_pkcs_pss":   SignDataDetailsSigningAlgorithmSha512RsaPkcsPss,
+	"sha_224_rsa_pkcs1_v1_5": SignDataDetailsSigningAlgorithmSha224RsaPkcs1V15,
+	"sha_256_rsa_pkcs1_v1_5": SignDataDetailsSigningAlgorithmSha256RsaPkcs1V15,
+	"sha_384_rsa_pkcs1_v1_5": SignDataDetailsSigningAlgorithmSha384RsaPkcs1V15,
+	"sha_512_rsa_pkcs1_v1_5": SignDataDetailsSigningAlgorithmSha512RsaPkcs1V15,
+	"ecdsa_sha_256":          SignDataDetailsSigningAlgorithmEcdsaSha256,
+	"ecdsa_sha_384":          SignDataDetailsSigningAlgorithmEcdsaSha384,
+	"ecdsa_sha_512":          SignDataDetailsSigningAlgorithmEcdsaSha512,
+}
+
 // GetSignDataDetailsSigningAlgorithmEnumValues Enumerates the set of values for SignDataDetailsSigningAlgorithmEnum
 func GetSignDataDetailsSigningAlgorithmEnumValues() []SignDataDetailsSigningAlgorithmEnum {
 	values := make([]SignDataDetailsSigningAlgorithmEnum, 0)
@@ -165,11 +179,6 @@ func GetSignDataDetailsSigningAlgorithmEnumStringValues() []string {
 
 // GetMappingSignDataDetailsSigningAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSignDataDetailsSigningAlgorithmEnum(val string) (SignDataDetailsSigningAlgorithmEnum, bool) {
-	mappingSignDataDetailsSigningAlgorithmEnumIgnoreCase := make(map[string]SignDataDetailsSigningAlgorithmEnum)
-	for k, v := range mappingSignDataDetailsSigningAlgorithmEnum {
-		mappingSignDataDetailsSigningAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSignDataDetailsSigningAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSignDataDetailsSigningAlgorithmEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

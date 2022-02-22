@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -147,6 +147,11 @@ var mappingUserAssessmentTriggeredByEnum = map[string]UserAssessmentTriggeredByE
 	"SYSTEM": UserAssessmentTriggeredBySystem,
 }
 
+var mappingUserAssessmentTriggeredByEnumLowerCase = map[string]UserAssessmentTriggeredByEnum{
+	"user":   UserAssessmentTriggeredByUser,
+	"system": UserAssessmentTriggeredBySystem,
+}
+
 // GetUserAssessmentTriggeredByEnumValues Enumerates the set of values for UserAssessmentTriggeredByEnum
 func GetUserAssessmentTriggeredByEnumValues() []UserAssessmentTriggeredByEnum {
 	values := make([]UserAssessmentTriggeredByEnum, 0)
@@ -166,12 +171,7 @@ func GetUserAssessmentTriggeredByEnumStringValues() []string {
 
 // GetMappingUserAssessmentTriggeredByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserAssessmentTriggeredByEnum(val string) (UserAssessmentTriggeredByEnum, bool) {
-	mappingUserAssessmentTriggeredByEnumIgnoreCase := make(map[string]UserAssessmentTriggeredByEnum)
-	for k, v := range mappingUserAssessmentTriggeredByEnum {
-		mappingUserAssessmentTriggeredByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserAssessmentTriggeredByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserAssessmentTriggeredByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -191,6 +191,13 @@ var mappingUserAssessmentTypeEnum = map[string]UserAssessmentTypeEnum{
 	"SAVED":         UserAssessmentTypeSaved,
 	"SAVE_SCHEDULE": UserAssessmentTypeSaveSchedule,
 	"COMPARTMENT":   UserAssessmentTypeCompartment,
+}
+
+var mappingUserAssessmentTypeEnumLowerCase = map[string]UserAssessmentTypeEnum{
+	"latest":        UserAssessmentTypeLatest,
+	"saved":         UserAssessmentTypeSaved,
+	"save_schedule": UserAssessmentTypeSaveSchedule,
+	"compartment":   UserAssessmentTypeCompartment,
 }
 
 // GetUserAssessmentTypeEnumValues Enumerates the set of values for UserAssessmentTypeEnum
@@ -214,11 +221,6 @@ func GetUserAssessmentTypeEnumStringValues() []string {
 
 // GetMappingUserAssessmentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUserAssessmentTypeEnum(val string) (UserAssessmentTypeEnum, bool) {
-	mappingUserAssessmentTypeEnumIgnoreCase := make(map[string]UserAssessmentTypeEnum)
-	for k, v := range mappingUserAssessmentTypeEnum {
-		mappingUserAssessmentTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUserAssessmentTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUserAssessmentTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

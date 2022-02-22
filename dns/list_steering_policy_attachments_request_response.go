@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -175,6 +175,12 @@ var mappingListSteeringPolicyAttachmentsSortByEnum = map[string]ListSteeringPoli
 	"domainName":  ListSteeringPolicyAttachmentsSortByDomainname,
 }
 
+var mappingListSteeringPolicyAttachmentsSortByEnumLowerCase = map[string]ListSteeringPolicyAttachmentsSortByEnum{
+	"displayname": ListSteeringPolicyAttachmentsSortByDisplayname,
+	"timecreated": ListSteeringPolicyAttachmentsSortByTimecreated,
+	"domainname":  ListSteeringPolicyAttachmentsSortByDomainname,
+}
+
 // GetListSteeringPolicyAttachmentsSortByEnumValues Enumerates the set of values for ListSteeringPolicyAttachmentsSortByEnum
 func GetListSteeringPolicyAttachmentsSortByEnumValues() []ListSteeringPolicyAttachmentsSortByEnum {
 	values := make([]ListSteeringPolicyAttachmentsSortByEnum, 0)
@@ -195,12 +201,7 @@ func GetListSteeringPolicyAttachmentsSortByEnumStringValues() []string {
 
 // GetMappingListSteeringPolicyAttachmentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSteeringPolicyAttachmentsSortByEnum(val string) (ListSteeringPolicyAttachmentsSortByEnum, bool) {
-	mappingListSteeringPolicyAttachmentsSortByEnumIgnoreCase := make(map[string]ListSteeringPolicyAttachmentsSortByEnum)
-	for k, v := range mappingListSteeringPolicyAttachmentsSortByEnum {
-		mappingListSteeringPolicyAttachmentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSteeringPolicyAttachmentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSteeringPolicyAttachmentsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -216,6 +217,11 @@ const (
 var mappingListSteeringPolicyAttachmentsSortOrderEnum = map[string]ListSteeringPolicyAttachmentsSortOrderEnum{
 	"ASC":  ListSteeringPolicyAttachmentsSortOrderAsc,
 	"DESC": ListSteeringPolicyAttachmentsSortOrderDesc,
+}
+
+var mappingListSteeringPolicyAttachmentsSortOrderEnumLowerCase = map[string]ListSteeringPolicyAttachmentsSortOrderEnum{
+	"asc":  ListSteeringPolicyAttachmentsSortOrderAsc,
+	"desc": ListSteeringPolicyAttachmentsSortOrderDesc,
 }
 
 // GetListSteeringPolicyAttachmentsSortOrderEnumValues Enumerates the set of values for ListSteeringPolicyAttachmentsSortOrderEnum
@@ -237,12 +243,7 @@ func GetListSteeringPolicyAttachmentsSortOrderEnumStringValues() []string {
 
 // GetMappingListSteeringPolicyAttachmentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSteeringPolicyAttachmentsSortOrderEnum(val string) (ListSteeringPolicyAttachmentsSortOrderEnum, bool) {
-	mappingListSteeringPolicyAttachmentsSortOrderEnumIgnoreCase := make(map[string]ListSteeringPolicyAttachmentsSortOrderEnum)
-	for k, v := range mappingListSteeringPolicyAttachmentsSortOrderEnum {
-		mappingListSteeringPolicyAttachmentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSteeringPolicyAttachmentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSteeringPolicyAttachmentsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -258,6 +259,11 @@ const (
 var mappingListSteeringPolicyAttachmentsScopeEnum = map[string]ListSteeringPolicyAttachmentsScopeEnum{
 	"GLOBAL":  ListSteeringPolicyAttachmentsScopeGlobal,
 	"PRIVATE": ListSteeringPolicyAttachmentsScopePrivate,
+}
+
+var mappingListSteeringPolicyAttachmentsScopeEnumLowerCase = map[string]ListSteeringPolicyAttachmentsScopeEnum{
+	"global":  ListSteeringPolicyAttachmentsScopeGlobal,
+	"private": ListSteeringPolicyAttachmentsScopePrivate,
 }
 
 // GetListSteeringPolicyAttachmentsScopeEnumValues Enumerates the set of values for ListSteeringPolicyAttachmentsScopeEnum
@@ -279,11 +285,6 @@ func GetListSteeringPolicyAttachmentsScopeEnumStringValues() []string {
 
 // GetMappingListSteeringPolicyAttachmentsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSteeringPolicyAttachmentsScopeEnum(val string) (ListSteeringPolicyAttachmentsScopeEnum, bool) {
-	mappingListSteeringPolicyAttachmentsScopeEnumIgnoreCase := make(map[string]ListSteeringPolicyAttachmentsScopeEnum)
-	for k, v := range mappingListSteeringPolicyAttachmentsScopeEnum {
-		mappingListSteeringPolicyAttachmentsScopeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSteeringPolicyAttachmentsScopeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSteeringPolicyAttachmentsScopeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

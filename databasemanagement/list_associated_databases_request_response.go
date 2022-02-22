@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -130,6 +130,11 @@ var mappingListAssociatedDatabasesSortOrderEnum = map[string]ListAssociatedDatab
 	"DESC": ListAssociatedDatabasesSortOrderDesc,
 }
 
+var mappingListAssociatedDatabasesSortOrderEnumLowerCase = map[string]ListAssociatedDatabasesSortOrderEnum{
+	"asc":  ListAssociatedDatabasesSortOrderAsc,
+	"desc": ListAssociatedDatabasesSortOrderDesc,
+}
+
 // GetListAssociatedDatabasesSortOrderEnumValues Enumerates the set of values for ListAssociatedDatabasesSortOrderEnum
 func GetListAssociatedDatabasesSortOrderEnumValues() []ListAssociatedDatabasesSortOrderEnum {
 	values := make([]ListAssociatedDatabasesSortOrderEnum, 0)
@@ -149,12 +154,7 @@ func GetListAssociatedDatabasesSortOrderEnumStringValues() []string {
 
 // GetMappingListAssociatedDatabasesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAssociatedDatabasesSortOrderEnum(val string) (ListAssociatedDatabasesSortOrderEnum, bool) {
-	mappingListAssociatedDatabasesSortOrderEnumIgnoreCase := make(map[string]ListAssociatedDatabasesSortOrderEnum)
-	for k, v := range mappingListAssociatedDatabasesSortOrderEnum {
-		mappingListAssociatedDatabasesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAssociatedDatabasesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAssociatedDatabasesSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -168,6 +168,10 @@ const (
 
 var mappingListAssociatedDatabasesSortByEnum = map[string]ListAssociatedDatabasesSortByEnum{
 	"timeRegistered": ListAssociatedDatabasesSortByTimeregistered,
+}
+
+var mappingListAssociatedDatabasesSortByEnumLowerCase = map[string]ListAssociatedDatabasesSortByEnum{
+	"timeregistered": ListAssociatedDatabasesSortByTimeregistered,
 }
 
 // GetListAssociatedDatabasesSortByEnumValues Enumerates the set of values for ListAssociatedDatabasesSortByEnum
@@ -188,11 +192,6 @@ func GetListAssociatedDatabasesSortByEnumStringValues() []string {
 
 // GetMappingListAssociatedDatabasesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAssociatedDatabasesSortByEnum(val string) (ListAssociatedDatabasesSortByEnum, bool) {
-	mappingListAssociatedDatabasesSortByEnumIgnoreCase := make(map[string]ListAssociatedDatabasesSortByEnum)
-	for k, v := range mappingListAssociatedDatabasesSortByEnum {
-		mappingListAssociatedDatabasesSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAssociatedDatabasesSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAssociatedDatabasesSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

@@ -25,6 +25,10 @@ var mappingNetworkEndpointTypeEnum = map[string]NetworkEndpointTypeEnum{
 	"PUBLIC": NetworkEndpointTypePublic,
 }
 
+var mappingNetworkEndpointTypeEnumLowerCase = map[string]NetworkEndpointTypeEnum{
+	"public": NetworkEndpointTypePublic,
+}
+
 // GetNetworkEndpointTypeEnumValues Enumerates the set of values for NetworkEndpointTypeEnum
 func GetNetworkEndpointTypeEnumValues() []NetworkEndpointTypeEnum {
 	values := make([]NetworkEndpointTypeEnum, 0)
@@ -43,11 +47,6 @@ func GetNetworkEndpointTypeEnumStringValues() []string {
 
 // GetMappingNetworkEndpointTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingNetworkEndpointTypeEnum(val string) (NetworkEndpointTypeEnum, bool) {
-	mappingNetworkEndpointTypeEnumIgnoreCase := make(map[string]NetworkEndpointTypeEnum)
-	for k, v := range mappingNetworkEndpointTypeEnum {
-		mappingNetworkEndpointTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingNetworkEndpointTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingNetworkEndpointTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

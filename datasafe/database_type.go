@@ -29,6 +29,12 @@ var mappingDatabaseTypeEnum = map[string]DatabaseTypeEnum{
 	"INSTALLED_DATABASE":     DatabaseTypeInstalledDatabase,
 }
 
+var mappingDatabaseTypeEnumLowerCase = map[string]DatabaseTypeEnum{
+	"database_cloud_service": DatabaseTypeDatabaseCloudService,
+	"autonomous_database":    DatabaseTypeAutonomousDatabase,
+	"installed_database":     DatabaseTypeInstalledDatabase,
+}
+
 // GetDatabaseTypeEnumValues Enumerates the set of values for DatabaseTypeEnum
 func GetDatabaseTypeEnumValues() []DatabaseTypeEnum {
 	values := make([]DatabaseTypeEnum, 0)
@@ -49,11 +55,6 @@ func GetDatabaseTypeEnumStringValues() []string {
 
 // GetMappingDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDatabaseTypeEnum(val string) (DatabaseTypeEnum, bool) {
-	mappingDatabaseTypeEnumIgnoreCase := make(map[string]DatabaseTypeEnum)
-	for k, v := range mappingDatabaseTypeEnum {
-		mappingDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingDatabaseTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

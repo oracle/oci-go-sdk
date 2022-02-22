@@ -15,12 +15,12 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
-// IpSecConnectionTunnel Information about a single tunnel in an IPSec connection. This object does not include the tunnel's
-// shared secret (pre-shared key). That is in the
+// IpSecConnectionTunnel Information about a single IPSec tunnel in an IPSec connection. This object does not include the tunnel's
+// shared secret (pre-shared key), which is found in the
 // IPSecConnectionTunnelSharedSecret object.
 type IpSecConnectionTunnel struct {
 
@@ -33,11 +33,11 @@ type IpSecConnectionTunnel struct {
 	// The tunnel's lifecycle state.
 	LifecycleState IpSecConnectionTunnelLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
-	// The IP address of Oracle's VPN headend.
+	// The IP address of the Oracle VPN headend for the connection.
 	// Example: `203.0.113.21`
 	VpnIp *string `mandatory:"false" json:"vpnIp"`
 
-	// The IP address of the CPE's VPN headend.
+	// The IP address of the CPE device's VPN headend.
 	// Example: `203.0.113.22`
 	CpeIp *string `mandatory:"false" json:"cpeIp"`
 
@@ -55,27 +55,36 @@ type IpSecConnectionTunnel struct {
 
 	EncryptionDomainConfig *EncryptionDomainConfig `mandatory:"false" json:"encryptionDomainConfig"`
 
-	// The type of routing used for this tunnel (either BGP dynamic routing or static routing).
+	// The type of routing used for this tunnel (BGP dynamic routing, static routing, or policy-based routing).
 	Routing IpSecConnectionTunnelRoutingEnum `mandatory:"false" json:"routing,omitempty"`
 
-	// The date and time the IPSec connection tunnel was created, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
+	// The date and time the IPSec tunnel was created, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
 	// Example: `2016-08-25T21:10:29.600Z`
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
-	// When the status of the tunnel last changed, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
+	// When the status of the IPSec tunnel last changed, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
 	// Example: `2016-08-25T21:10:29.600Z`
 	TimeStatusUpdated *common.SDKTime `mandatory:"false" json:"timeStatusUpdated"`
 
-	// Indicates whether Oracle can either initiate the tunnel or respond, or respond only.
+	// Indicates whether Oracle can only respond to a request to start an IPSec tunnel from the CPE device, or both respond to and initiate requests.
 	OracleCanInitiate IpSecConnectionTunnelOracleCanInitiateEnum `mandatory:"false" json:"oracleCanInitiate,omitempty"`
 
-	// Whether NAT-T Enabled on the tunnel
+	// By default (the `AUTO` setting), IKE sends packets with a source and destination port set to 500,
+	// and when it detects that the port used to forward packets has changed (most likely because a NAT device
+	// is between the CPE device and the Oracle VPN headend) it will try to negotiate the use of NAT-T.
+	// The `ENABLED` option sets the IKE protocol to use port 4500 instead of 500 and forces encapsulating traffic with the ESP protocol inside UDP packets.
+	// The `DISABLED` option directs IKE to completely refuse to negotiate NAT-T
+	// even if it senses there may be a NAT device in use.
+	//
+	// .
 	NatTranslationEnabled IpSecConnectionTunnelNatTranslationEnabledEnum `mandatory:"false" json:"natTranslationEnabled,omitempty"`
 
-	// dpd mode
+	// Dead peer detection (DPD) mode set on the Oracle side of the connection.
+	// This mode sets whether Oracle can only respond to a request from the CPE device to start DPD,
+	// or both respond to and initiate requests.
 	DpdMode IpSecConnectionTunnelDpdModeEnum `mandatory:"false" json:"dpdMode,omitempty"`
 
-	// Dead peer detection (DPD) timeout in seconds.
+	// DPD timeout in seconds.
 	DpdTimeoutInSec *int `mandatory:"false" json:"dpdTimeoutInSec"`
 
 	PhaseOneDetails *TunnelPhaseOneDetails `mandatory:"false" json:"phaseOneDetails"`
@@ -138,6 +147,13 @@ var mappingIpSecConnectionTunnelStatusEnum = map[string]IpSecConnectionTunnelSta
 	"PARTIAL_UP":           IpSecConnectionTunnelStatusPartialUp,
 }
 
+var mappingIpSecConnectionTunnelStatusEnumLowerCase = map[string]IpSecConnectionTunnelStatusEnum{
+	"up":                   IpSecConnectionTunnelStatusUp,
+	"down":                 IpSecConnectionTunnelStatusDown,
+	"down_for_maintenance": IpSecConnectionTunnelStatusDownForMaintenance,
+	"partial_up":           IpSecConnectionTunnelStatusPartialUp,
+}
+
 // GetIpSecConnectionTunnelStatusEnumValues Enumerates the set of values for IpSecConnectionTunnelStatusEnum
 func GetIpSecConnectionTunnelStatusEnumValues() []IpSecConnectionTunnelStatusEnum {
 	values := make([]IpSecConnectionTunnelStatusEnum, 0)
@@ -159,12 +175,7 @@ func GetIpSecConnectionTunnelStatusEnumStringValues() []string {
 
 // GetMappingIpSecConnectionTunnelStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIpSecConnectionTunnelStatusEnum(val string) (IpSecConnectionTunnelStatusEnum, bool) {
-	mappingIpSecConnectionTunnelStatusEnumIgnoreCase := make(map[string]IpSecConnectionTunnelStatusEnum)
-	for k, v := range mappingIpSecConnectionTunnelStatusEnum {
-		mappingIpSecConnectionTunnelStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIpSecConnectionTunnelStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIpSecConnectionTunnelStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -180,6 +191,11 @@ const (
 var mappingIpSecConnectionTunnelIkeVersionEnum = map[string]IpSecConnectionTunnelIkeVersionEnum{
 	"V1": IpSecConnectionTunnelIkeVersionV1,
 	"V2": IpSecConnectionTunnelIkeVersionV2,
+}
+
+var mappingIpSecConnectionTunnelIkeVersionEnumLowerCase = map[string]IpSecConnectionTunnelIkeVersionEnum{
+	"v1": IpSecConnectionTunnelIkeVersionV1,
+	"v2": IpSecConnectionTunnelIkeVersionV2,
 }
 
 // GetIpSecConnectionTunnelIkeVersionEnumValues Enumerates the set of values for IpSecConnectionTunnelIkeVersionEnum
@@ -201,12 +217,7 @@ func GetIpSecConnectionTunnelIkeVersionEnumStringValues() []string {
 
 // GetMappingIpSecConnectionTunnelIkeVersionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIpSecConnectionTunnelIkeVersionEnum(val string) (IpSecConnectionTunnelIkeVersionEnum, bool) {
-	mappingIpSecConnectionTunnelIkeVersionEnumIgnoreCase := make(map[string]IpSecConnectionTunnelIkeVersionEnum)
-	for k, v := range mappingIpSecConnectionTunnelIkeVersionEnum {
-		mappingIpSecConnectionTunnelIkeVersionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIpSecConnectionTunnelIkeVersionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIpSecConnectionTunnelIkeVersionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -226,6 +237,13 @@ var mappingIpSecConnectionTunnelLifecycleStateEnum = map[string]IpSecConnectionT
 	"AVAILABLE":    IpSecConnectionTunnelLifecycleStateAvailable,
 	"TERMINATING":  IpSecConnectionTunnelLifecycleStateTerminating,
 	"TERMINATED":   IpSecConnectionTunnelLifecycleStateTerminated,
+}
+
+var mappingIpSecConnectionTunnelLifecycleStateEnumLowerCase = map[string]IpSecConnectionTunnelLifecycleStateEnum{
+	"provisioning": IpSecConnectionTunnelLifecycleStateProvisioning,
+	"available":    IpSecConnectionTunnelLifecycleStateAvailable,
+	"terminating":  IpSecConnectionTunnelLifecycleStateTerminating,
+	"terminated":   IpSecConnectionTunnelLifecycleStateTerminated,
 }
 
 // GetIpSecConnectionTunnelLifecycleStateEnumValues Enumerates the set of values for IpSecConnectionTunnelLifecycleStateEnum
@@ -249,12 +267,7 @@ func GetIpSecConnectionTunnelLifecycleStateEnumStringValues() []string {
 
 // GetMappingIpSecConnectionTunnelLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIpSecConnectionTunnelLifecycleStateEnum(val string) (IpSecConnectionTunnelLifecycleStateEnum, bool) {
-	mappingIpSecConnectionTunnelLifecycleStateEnumIgnoreCase := make(map[string]IpSecConnectionTunnelLifecycleStateEnum)
-	for k, v := range mappingIpSecConnectionTunnelLifecycleStateEnum {
-		mappingIpSecConnectionTunnelLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIpSecConnectionTunnelLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIpSecConnectionTunnelLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -272,6 +285,12 @@ var mappingIpSecConnectionTunnelRoutingEnum = map[string]IpSecConnectionTunnelRo
 	"BGP":    IpSecConnectionTunnelRoutingBgp,
 	"STATIC": IpSecConnectionTunnelRoutingStatic,
 	"POLICY": IpSecConnectionTunnelRoutingPolicy,
+}
+
+var mappingIpSecConnectionTunnelRoutingEnumLowerCase = map[string]IpSecConnectionTunnelRoutingEnum{
+	"bgp":    IpSecConnectionTunnelRoutingBgp,
+	"static": IpSecConnectionTunnelRoutingStatic,
+	"policy": IpSecConnectionTunnelRoutingPolicy,
 }
 
 // GetIpSecConnectionTunnelRoutingEnumValues Enumerates the set of values for IpSecConnectionTunnelRoutingEnum
@@ -294,12 +313,7 @@ func GetIpSecConnectionTunnelRoutingEnumStringValues() []string {
 
 // GetMappingIpSecConnectionTunnelRoutingEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIpSecConnectionTunnelRoutingEnum(val string) (IpSecConnectionTunnelRoutingEnum, bool) {
-	mappingIpSecConnectionTunnelRoutingEnumIgnoreCase := make(map[string]IpSecConnectionTunnelRoutingEnum)
-	for k, v := range mappingIpSecConnectionTunnelRoutingEnum {
-		mappingIpSecConnectionTunnelRoutingEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIpSecConnectionTunnelRoutingEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIpSecConnectionTunnelRoutingEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -315,6 +329,11 @@ const (
 var mappingIpSecConnectionTunnelOracleCanInitiateEnum = map[string]IpSecConnectionTunnelOracleCanInitiateEnum{
 	"INITIATOR_OR_RESPONDER": IpSecConnectionTunnelOracleCanInitiateInitiatorOrResponder,
 	"RESPONDER_ONLY":         IpSecConnectionTunnelOracleCanInitiateResponderOnly,
+}
+
+var mappingIpSecConnectionTunnelOracleCanInitiateEnumLowerCase = map[string]IpSecConnectionTunnelOracleCanInitiateEnum{
+	"initiator_or_responder": IpSecConnectionTunnelOracleCanInitiateInitiatorOrResponder,
+	"responder_only":         IpSecConnectionTunnelOracleCanInitiateResponderOnly,
 }
 
 // GetIpSecConnectionTunnelOracleCanInitiateEnumValues Enumerates the set of values for IpSecConnectionTunnelOracleCanInitiateEnum
@@ -336,12 +355,7 @@ func GetIpSecConnectionTunnelOracleCanInitiateEnumStringValues() []string {
 
 // GetMappingIpSecConnectionTunnelOracleCanInitiateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIpSecConnectionTunnelOracleCanInitiateEnum(val string) (IpSecConnectionTunnelOracleCanInitiateEnum, bool) {
-	mappingIpSecConnectionTunnelOracleCanInitiateEnumIgnoreCase := make(map[string]IpSecConnectionTunnelOracleCanInitiateEnum)
-	for k, v := range mappingIpSecConnectionTunnelOracleCanInitiateEnum {
-		mappingIpSecConnectionTunnelOracleCanInitiateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIpSecConnectionTunnelOracleCanInitiateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIpSecConnectionTunnelOracleCanInitiateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -359,6 +373,12 @@ var mappingIpSecConnectionTunnelNatTranslationEnabledEnum = map[string]IpSecConn
 	"ENABLED":  IpSecConnectionTunnelNatTranslationEnabledEnabled,
 	"DISABLED": IpSecConnectionTunnelNatTranslationEnabledDisabled,
 	"AUTO":     IpSecConnectionTunnelNatTranslationEnabledAuto,
+}
+
+var mappingIpSecConnectionTunnelNatTranslationEnabledEnumLowerCase = map[string]IpSecConnectionTunnelNatTranslationEnabledEnum{
+	"enabled":  IpSecConnectionTunnelNatTranslationEnabledEnabled,
+	"disabled": IpSecConnectionTunnelNatTranslationEnabledDisabled,
+	"auto":     IpSecConnectionTunnelNatTranslationEnabledAuto,
 }
 
 // GetIpSecConnectionTunnelNatTranslationEnabledEnumValues Enumerates the set of values for IpSecConnectionTunnelNatTranslationEnabledEnum
@@ -381,12 +401,7 @@ func GetIpSecConnectionTunnelNatTranslationEnabledEnumStringValues() []string {
 
 // GetMappingIpSecConnectionTunnelNatTranslationEnabledEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIpSecConnectionTunnelNatTranslationEnabledEnum(val string) (IpSecConnectionTunnelNatTranslationEnabledEnum, bool) {
-	mappingIpSecConnectionTunnelNatTranslationEnabledEnumIgnoreCase := make(map[string]IpSecConnectionTunnelNatTranslationEnabledEnum)
-	for k, v := range mappingIpSecConnectionTunnelNatTranslationEnabledEnum {
-		mappingIpSecConnectionTunnelNatTranslationEnabledEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIpSecConnectionTunnelNatTranslationEnabledEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIpSecConnectionTunnelNatTranslationEnabledEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -402,6 +417,11 @@ const (
 var mappingIpSecConnectionTunnelDpdModeEnum = map[string]IpSecConnectionTunnelDpdModeEnum{
 	"INITIATE_AND_RESPOND": IpSecConnectionTunnelDpdModeInitiateAndRespond,
 	"RESPOND_ONLY":         IpSecConnectionTunnelDpdModeRespondOnly,
+}
+
+var mappingIpSecConnectionTunnelDpdModeEnumLowerCase = map[string]IpSecConnectionTunnelDpdModeEnum{
+	"initiate_and_respond": IpSecConnectionTunnelDpdModeInitiateAndRespond,
+	"respond_only":         IpSecConnectionTunnelDpdModeRespondOnly,
 }
 
 // GetIpSecConnectionTunnelDpdModeEnumValues Enumerates the set of values for IpSecConnectionTunnelDpdModeEnum
@@ -423,11 +443,6 @@ func GetIpSecConnectionTunnelDpdModeEnumStringValues() []string {
 
 // GetMappingIpSecConnectionTunnelDpdModeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingIpSecConnectionTunnelDpdModeEnum(val string) (IpSecConnectionTunnelDpdModeEnum, bool) {
-	mappingIpSecConnectionTunnelDpdModeEnumIgnoreCase := make(map[string]IpSecConnectionTunnelDpdModeEnum)
-	for k, v := range mappingIpSecConnectionTunnelDpdModeEnum {
-		mappingIpSecConnectionTunnelDpdModeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingIpSecConnectionTunnelDpdModeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingIpSecConnectionTunnelDpdModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

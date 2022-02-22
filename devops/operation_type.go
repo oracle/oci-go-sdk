@@ -95,6 +95,45 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"MIRROR_REPOSITORY":           OperationTypeMirrorRepository,
 }
 
+var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
+	"create_project":              OperationTypeCreateProject,
+	"update_project":              OperationTypeUpdateProject,
+	"delete_project":              OperationTypeDeleteProject,
+	"move_project":                OperationTypeMoveProject,
+	"create_deploy_pipeline":      OperationTypeCreateDeployPipeline,
+	"update_deploy_pipeline":      OperationTypeUpdateDeployPipeline,
+	"delete_deploy_pipeline":      OperationTypeDeleteDeployPipeline,
+	"create_deploy_stage":         OperationTypeCreateDeployStage,
+	"update_deploy_stage":         OperationTypeUpdateDeployStage,
+	"delete_deploy_stage":         OperationTypeDeleteDeployStage,
+	"create_deploy_artifact":      OperationTypeCreateDeployArtifact,
+	"update_deploy_artifact":      OperationTypeUpdateDeployArtifact,
+	"delete_deploy_artifact":      OperationTypeDeleteDeployArtifact,
+	"create_deploy_environment":   OperationTypeCreateDeployEnvironment,
+	"update_deploy_environment":   OperationTypeUpdateDeployEnvironment,
+	"delete_deploy_environment":   OperationTypeDeleteDeployEnvironment,
+	"create_deployment":           OperationTypeCreateDeployment,
+	"update_deployment":           OperationTypeUpdateDeployment,
+	"delete_deployment":           OperationTypeDeleteDeployment,
+	"create_build_pipeline":       OperationTypeCreateBuildPipeline,
+	"update_build_pipeline":       OperationTypeUpdateBuildPipeline,
+	"delete_build_pipeline":       OperationTypeDeleteBuildPipeline,
+	"create_build_pipeline_stage": OperationTypeCreateBuildPipelineStage,
+	"update_build_pipeline_stage": OperationTypeUpdateBuildPipelineStage,
+	"delete_build_pipeline_stage": OperationTypeDeleteBuildPipelineStage,
+	"create_connection":           OperationTypeCreateConnection,
+	"update_connection":           OperationTypeUpdateConnection,
+	"delete_connection":           OperationTypeDeleteConnection,
+	"create_trigger":              OperationTypeCreateTrigger,
+	"update_trigger":              OperationTypeUpdateTrigger,
+	"delete_trigger":              OperationTypeDeleteTrigger,
+	"execute_trigger":             OperationTypeExecuteTrigger,
+	"create_repository":           OperationTypeCreateRepository,
+	"update_repository":           OperationTypeUpdateRepository,
+	"delete_repository":           OperationTypeDeleteRepository,
+	"mirror_repository":           OperationTypeMirrorRepository,
+}
+
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum
 func GetOperationTypeEnumValues() []OperationTypeEnum {
 	values := make([]OperationTypeEnum, 0)
@@ -148,11 +187,6 @@ func GetOperationTypeEnumStringValues() []string {
 
 // GetMappingOperationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOperationTypeEnum(val string) (OperationTypeEnum, bool) {
-	mappingOperationTypeEnumIgnoreCase := make(map[string]OperationTypeEnum)
-	for k, v := range mappingOperationTypeEnum {
-		mappingOperationTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingOperationTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingOperationTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

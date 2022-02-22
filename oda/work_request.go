@@ -11,7 +11,7 @@ package oda
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -112,6 +112,21 @@ var mappingWorkRequestRequestActionEnum = map[string]WorkRequestRequestActionEnu
 	"LOOKUP_ODA_INSTANCES_FOR_CACCT":  WorkRequestRequestActionLookupOdaInstancesForCacct,
 }
 
+var mappingWorkRequestRequestActionEnumLowerCase = map[string]WorkRequestRequestActionEnum{
+	"create_oda_instance":             WorkRequestRequestActionCreateOdaInstance,
+	"upgrade_oda_instance":            WorkRequestRequestActionUpgradeOdaInstance,
+	"delete_oda_instance":             WorkRequestRequestActionDeleteOdaInstance,
+	"purge_oda_instance":              WorkRequestRequestActionPurgeOdaInstance,
+	"recover_oda_instance":            WorkRequestRequestActionRecoverOdaInstance,
+	"stop_oda_instance":               WorkRequestRequestActionStopOdaInstance,
+	"start_oda_instance":              WorkRequestRequestActionStartOdaInstance,
+	"change_oda_instance_compartment": WorkRequestRequestActionChangeOdaInstanceCompartment,
+	"create_association":              WorkRequestRequestActionCreateAssociation,
+	"delete_association":              WorkRequestRequestActionDeleteAssociation,
+	"update_entitlements_for_cacct":   WorkRequestRequestActionUpdateEntitlementsForCacct,
+	"lookup_oda_instances_for_cacct":  WorkRequestRequestActionLookupOdaInstancesForCacct,
+}
+
 // GetWorkRequestRequestActionEnumValues Enumerates the set of values for WorkRequestRequestActionEnum
 func GetWorkRequestRequestActionEnumValues() []WorkRequestRequestActionEnum {
 	values := make([]WorkRequestRequestActionEnum, 0)
@@ -141,12 +156,7 @@ func GetWorkRequestRequestActionEnumStringValues() []string {
 
 // GetMappingWorkRequestRequestActionEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestRequestActionEnum(val string) (WorkRequestRequestActionEnum, bool) {
-	mappingWorkRequestRequestActionEnumIgnoreCase := make(map[string]WorkRequestRequestActionEnum)
-	for k, v := range mappingWorkRequestRequestActionEnum {
-		mappingWorkRequestRequestActionEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestRequestActionEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestRequestActionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -172,6 +182,15 @@ var mappingWorkRequestStatusEnum = map[string]WorkRequestStatusEnum{
 	"CANCELED":    WorkRequestStatusCanceled,
 }
 
+var mappingWorkRequestStatusEnumLowerCase = map[string]WorkRequestStatusEnum{
+	"accepted":    WorkRequestStatusAccepted,
+	"in_progress": WorkRequestStatusInProgress,
+	"succeeded":   WorkRequestStatusSucceeded,
+	"failed":      WorkRequestStatusFailed,
+	"canceling":   WorkRequestStatusCanceling,
+	"canceled":    WorkRequestStatusCanceled,
+}
+
 // GetWorkRequestStatusEnumValues Enumerates the set of values for WorkRequestStatusEnum
 func GetWorkRequestStatusEnumValues() []WorkRequestStatusEnum {
 	values := make([]WorkRequestStatusEnum, 0)
@@ -195,11 +214,6 @@ func GetWorkRequestStatusEnumStringValues() []string {
 
 // GetMappingWorkRequestStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingWorkRequestStatusEnum(val string) (WorkRequestStatusEnum, bool) {
-	mappingWorkRequestStatusEnumIgnoreCase := make(map[string]WorkRequestStatusEnum)
-	for k, v := range mappingWorkRequestStatusEnum {
-		mappingWorkRequestStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingWorkRequestStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingWorkRequestStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

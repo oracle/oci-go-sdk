@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -175,6 +175,17 @@ var mappingListAttributeTagsLifecycleStateEnum = map[string]ListAttributeTagsLif
 	"MOVING":   ListAttributeTagsLifecycleStateMoving,
 }
 
+var mappingListAttributeTagsLifecycleStateEnumLowerCase = map[string]ListAttributeTagsLifecycleStateEnum{
+	"creating": ListAttributeTagsLifecycleStateCreating,
+	"active":   ListAttributeTagsLifecycleStateActive,
+	"inactive": ListAttributeTagsLifecycleStateInactive,
+	"updating": ListAttributeTagsLifecycleStateUpdating,
+	"deleting": ListAttributeTagsLifecycleStateDeleting,
+	"deleted":  ListAttributeTagsLifecycleStateDeleted,
+	"failed":   ListAttributeTagsLifecycleStateFailed,
+	"moving":   ListAttributeTagsLifecycleStateMoving,
+}
+
 // GetListAttributeTagsLifecycleStateEnumValues Enumerates the set of values for ListAttributeTagsLifecycleStateEnum
 func GetListAttributeTagsLifecycleStateEnumValues() []ListAttributeTagsLifecycleStateEnum {
 	values := make([]ListAttributeTagsLifecycleStateEnum, 0)
@@ -200,12 +211,7 @@ func GetListAttributeTagsLifecycleStateEnumStringValues() []string {
 
 // GetMappingListAttributeTagsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAttributeTagsLifecycleStateEnum(val string) (ListAttributeTagsLifecycleStateEnum, bool) {
-	mappingListAttributeTagsLifecycleStateEnumIgnoreCase := make(map[string]ListAttributeTagsLifecycleStateEnum)
-	for k, v := range mappingListAttributeTagsLifecycleStateEnum {
-		mappingListAttributeTagsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAttributeTagsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAttributeTagsLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -239,6 +245,19 @@ var mappingListAttributeTagsFieldsEnum = map[string]ListAttributeTagsFieldsEnum{
 	"attributeKey":    ListAttributeTagsFieldsAttributekey,
 }
 
+var mappingListAttributeTagsFieldsEnumLowerCase = map[string]ListAttributeTagsFieldsEnum{
+	"key":             ListAttributeTagsFieldsKey,
+	"name":            ListAttributeTagsFieldsName,
+	"termkey":         ListAttributeTagsFieldsTermkey,
+	"termpath":        ListAttributeTagsFieldsTermpath,
+	"termdescription": ListAttributeTagsFieldsTermdescription,
+	"lifecyclestate":  ListAttributeTagsFieldsLifecyclestate,
+	"timecreated":     ListAttributeTagsFieldsTimecreated,
+	"uri":             ListAttributeTagsFieldsUri,
+	"glossarykey":     ListAttributeTagsFieldsGlossarykey,
+	"attributekey":    ListAttributeTagsFieldsAttributekey,
+}
+
 // GetListAttributeTagsFieldsEnumValues Enumerates the set of values for ListAttributeTagsFieldsEnum
 func GetListAttributeTagsFieldsEnumValues() []ListAttributeTagsFieldsEnum {
 	values := make([]ListAttributeTagsFieldsEnum, 0)
@@ -266,12 +285,7 @@ func GetListAttributeTagsFieldsEnumStringValues() []string {
 
 // GetMappingListAttributeTagsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAttributeTagsFieldsEnum(val string) (ListAttributeTagsFieldsEnum, bool) {
-	mappingListAttributeTagsFieldsEnumIgnoreCase := make(map[string]ListAttributeTagsFieldsEnum)
-	for k, v := range mappingListAttributeTagsFieldsEnum {
-		mappingListAttributeTagsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAttributeTagsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAttributeTagsFieldsEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -287,6 +301,11 @@ const (
 var mappingListAttributeTagsSortByEnum = map[string]ListAttributeTagsSortByEnum{
 	"TIMECREATED": ListAttributeTagsSortByTimecreated,
 	"DISPLAYNAME": ListAttributeTagsSortByDisplayname,
+}
+
+var mappingListAttributeTagsSortByEnumLowerCase = map[string]ListAttributeTagsSortByEnum{
+	"timecreated": ListAttributeTagsSortByTimecreated,
+	"displayname": ListAttributeTagsSortByDisplayname,
 }
 
 // GetListAttributeTagsSortByEnumValues Enumerates the set of values for ListAttributeTagsSortByEnum
@@ -308,12 +327,7 @@ func GetListAttributeTagsSortByEnumStringValues() []string {
 
 // GetMappingListAttributeTagsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAttributeTagsSortByEnum(val string) (ListAttributeTagsSortByEnum, bool) {
-	mappingListAttributeTagsSortByEnumIgnoreCase := make(map[string]ListAttributeTagsSortByEnum)
-	for k, v := range mappingListAttributeTagsSortByEnum {
-		mappingListAttributeTagsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAttributeTagsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAttributeTagsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -329,6 +343,11 @@ const (
 var mappingListAttributeTagsSortOrderEnum = map[string]ListAttributeTagsSortOrderEnum{
 	"ASC":  ListAttributeTagsSortOrderAsc,
 	"DESC": ListAttributeTagsSortOrderDesc,
+}
+
+var mappingListAttributeTagsSortOrderEnumLowerCase = map[string]ListAttributeTagsSortOrderEnum{
+	"asc":  ListAttributeTagsSortOrderAsc,
+	"desc": ListAttributeTagsSortOrderDesc,
 }
 
 // GetListAttributeTagsSortOrderEnumValues Enumerates the set of values for ListAttributeTagsSortOrderEnum
@@ -350,11 +369,6 @@ func GetListAttributeTagsSortOrderEnumStringValues() []string {
 
 // GetMappingListAttributeTagsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAttributeTagsSortOrderEnum(val string) (ListAttributeTagsSortOrderEnum, bool) {
-	mappingListAttributeTagsSortOrderEnumIgnoreCase := make(map[string]ListAttributeTagsSortOrderEnum)
-	for k, v := range mappingListAttributeTagsSortOrderEnum {
-		mappingListAttributeTagsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListAttributeTagsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListAttributeTagsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

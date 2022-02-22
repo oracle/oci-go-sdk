@@ -12,7 +12,7 @@ package announcementsservice
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -130,6 +130,12 @@ var mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum = map[str
 	"OPT_OUT_ALL_ANNOUNCEMENTS":                     BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeOutAllAnnouncements,
 }
 
+var mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumLowerCase = map[string]BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum{
+	"opt_in_tenant_announcements":                   BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeInTenantAnnouncements,
+	"opt_in_tenant_and_informational_announcements": BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeInTenantAndInformationalAnnouncements,
+	"opt_out_all_announcements":                     BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeOutAllAnnouncements,
+}
+
 // GetBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumValues Enumerates the set of values for BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum
 func GetBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumValues() []BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum {
 	values := make([]BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum, 0)
@@ -150,11 +156,6 @@ func GetBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumStringValues(
 
 // GetMappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum(val string) (BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum, bool) {
-	mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumIgnoreCase := make(map[string]BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum)
-	for k, v := range mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum {
-		mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

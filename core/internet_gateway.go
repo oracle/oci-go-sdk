@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -36,7 +36,7 @@ type InternetGateway struct {
 	// The internet gateway's current state.
 	LifecycleState InternetGatewayLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the VCN the internet gateway belongs to.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the VCN the Internet Gateway belongs to.
 	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a
@@ -99,6 +99,13 @@ var mappingInternetGatewayLifecycleStateEnum = map[string]InternetGatewayLifecyc
 	"TERMINATED":   InternetGatewayLifecycleStateTerminated,
 }
 
+var mappingInternetGatewayLifecycleStateEnumLowerCase = map[string]InternetGatewayLifecycleStateEnum{
+	"provisioning": InternetGatewayLifecycleStateProvisioning,
+	"available":    InternetGatewayLifecycleStateAvailable,
+	"terminating":  InternetGatewayLifecycleStateTerminating,
+	"terminated":   InternetGatewayLifecycleStateTerminated,
+}
+
 // GetInternetGatewayLifecycleStateEnumValues Enumerates the set of values for InternetGatewayLifecycleStateEnum
 func GetInternetGatewayLifecycleStateEnumValues() []InternetGatewayLifecycleStateEnum {
 	values := make([]InternetGatewayLifecycleStateEnum, 0)
@@ -120,11 +127,6 @@ func GetInternetGatewayLifecycleStateEnumStringValues() []string {
 
 // GetMappingInternetGatewayLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInternetGatewayLifecycleStateEnum(val string) (InternetGatewayLifecycleStateEnum, bool) {
-	mappingInternetGatewayLifecycleStateEnumIgnoreCase := make(map[string]InternetGatewayLifecycleStateEnum)
-	for k, v := range mappingInternetGatewayLifecycleStateEnum {
-		mappingInternetGatewayLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInternetGatewayLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInternetGatewayLifecycleStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

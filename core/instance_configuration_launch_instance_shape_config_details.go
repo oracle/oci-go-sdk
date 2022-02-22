@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -78,6 +78,12 @@ var mappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtil
 	"BASELINE_1_1": InstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilization1,
 }
 
+var mappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumLowerCase = map[string]InstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum{
+	"baseline_1_8": InstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilization8,
+	"baseline_1_2": InstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilization2,
+	"baseline_1_1": InstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilization1,
+}
+
 // GetInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumValues Enumerates the set of values for InstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum
 func GetInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumValues() []InstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum {
 	values := make([]InstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum, 0)
@@ -98,11 +104,6 @@ func GetInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtiliza
 
 // GetMappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum(val string) (InstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum, bool) {
-	mappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumIgnoreCase := make(map[string]InstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum)
-	for k, v := range mappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum {
-		mappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

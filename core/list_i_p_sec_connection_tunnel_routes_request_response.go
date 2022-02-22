@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -35,9 +35,9 @@ type ListIPSecConnectionTunnelRoutesRequest struct {
 	// List Pagination (https://docs.cloud.oracle.com/iaas/Content/API/Concepts/usingapi.htm#nine).
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 
-	// Specifies the advertiser of the routes. If set to ORACLE, then returns only the
-	// routes advertised by ORACLE, else if set to CUSTOMER, then returns only the
-	// routes advertised by the CUSTOMER.
+	// Specifies the advertiser of the routes. If set to `ORACLE`, this returns only the
+	// routes advertised by Oracle. When set to `CUSTOMER`, this returns only the
+	// routes advertised by the CPE.
 	Advertiser TunnelRouteSummaryAdvertiserEnum `mandatory:"false" contributesTo:"query" name:"advertiser" omitEmpty:"true"`
 
 	// Unique Oracle-assigned identifier for the request.

@@ -35,6 +35,15 @@ var mappingAuditPolicyCategoryEnum = map[string]AuditPolicyCategoryEnum{
 	"CUSTOM":              AuditPolicyCategoryCustom,
 }
 
+var mappingAuditPolicyCategoryEnumLowerCase = map[string]AuditPolicyCategoryEnum{
+	"basic_activity":      AuditPolicyCategoryBasicActivity,
+	"admin_user_activity": AuditPolicyCategoryAdminUserActivity,
+	"user_activity":       AuditPolicyCategoryUserActivity,
+	"oracle_predefined":   AuditPolicyCategoryOraclePredefined,
+	"compliance_standard": AuditPolicyCategoryComplianceStandard,
+	"custom":              AuditPolicyCategoryCustom,
+}
+
 // GetAuditPolicyCategoryEnumValues Enumerates the set of values for AuditPolicyCategoryEnum
 func GetAuditPolicyCategoryEnumValues() []AuditPolicyCategoryEnum {
 	values := make([]AuditPolicyCategoryEnum, 0)
@@ -58,11 +67,6 @@ func GetAuditPolicyCategoryEnumStringValues() []string {
 
 // GetMappingAuditPolicyCategoryEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingAuditPolicyCategoryEnum(val string) (AuditPolicyCategoryEnum, bool) {
-	mappingAuditPolicyCategoryEnumIgnoreCase := make(map[string]AuditPolicyCategoryEnum)
-	for k, v := range mappingAuditPolicyCategoryEnum {
-		mappingAuditPolicyCategoryEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingAuditPolicyCategoryEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingAuditPolicyCategoryEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

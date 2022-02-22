@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -148,6 +148,14 @@ var mappingListSqlTuningAdvisorTasksStatusEnum = map[string]ListSqlTuningAdvisor
 	"ERROR":       ListSqlTuningAdvisorTasksStatusError,
 }
 
+var mappingListSqlTuningAdvisorTasksStatusEnumLowerCase = map[string]ListSqlTuningAdvisorTasksStatusEnum{
+	"initial":     ListSqlTuningAdvisorTasksStatusInitial,
+	"executing":   ListSqlTuningAdvisorTasksStatusExecuting,
+	"interrupted": ListSqlTuningAdvisorTasksStatusInterrupted,
+	"completed":   ListSqlTuningAdvisorTasksStatusCompleted,
+	"error":       ListSqlTuningAdvisorTasksStatusError,
+}
+
 // GetListSqlTuningAdvisorTasksStatusEnumValues Enumerates the set of values for ListSqlTuningAdvisorTasksStatusEnum
 func GetListSqlTuningAdvisorTasksStatusEnumValues() []ListSqlTuningAdvisorTasksStatusEnum {
 	values := make([]ListSqlTuningAdvisorTasksStatusEnum, 0)
@@ -170,12 +178,7 @@ func GetListSqlTuningAdvisorTasksStatusEnumStringValues() []string {
 
 // GetMappingListSqlTuningAdvisorTasksStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSqlTuningAdvisorTasksStatusEnum(val string) (ListSqlTuningAdvisorTasksStatusEnum, bool) {
-	mappingListSqlTuningAdvisorTasksStatusEnumIgnoreCase := make(map[string]ListSqlTuningAdvisorTasksStatusEnum)
-	for k, v := range mappingListSqlTuningAdvisorTasksStatusEnum {
-		mappingListSqlTuningAdvisorTasksStatusEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSqlTuningAdvisorTasksStatusEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSqlTuningAdvisorTasksStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -191,6 +194,11 @@ const (
 var mappingListSqlTuningAdvisorTasksSortByEnum = map[string]ListSqlTuningAdvisorTasksSortByEnum{
 	"NAME":       ListSqlTuningAdvisorTasksSortByName,
 	"START_TIME": ListSqlTuningAdvisorTasksSortByStartTime,
+}
+
+var mappingListSqlTuningAdvisorTasksSortByEnumLowerCase = map[string]ListSqlTuningAdvisorTasksSortByEnum{
+	"name":       ListSqlTuningAdvisorTasksSortByName,
+	"start_time": ListSqlTuningAdvisorTasksSortByStartTime,
 }
 
 // GetListSqlTuningAdvisorTasksSortByEnumValues Enumerates the set of values for ListSqlTuningAdvisorTasksSortByEnum
@@ -212,12 +220,7 @@ func GetListSqlTuningAdvisorTasksSortByEnumStringValues() []string {
 
 // GetMappingListSqlTuningAdvisorTasksSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSqlTuningAdvisorTasksSortByEnum(val string) (ListSqlTuningAdvisorTasksSortByEnum, bool) {
-	mappingListSqlTuningAdvisorTasksSortByEnumIgnoreCase := make(map[string]ListSqlTuningAdvisorTasksSortByEnum)
-	for k, v := range mappingListSqlTuningAdvisorTasksSortByEnum {
-		mappingListSqlTuningAdvisorTasksSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSqlTuningAdvisorTasksSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSqlTuningAdvisorTasksSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -233,6 +236,11 @@ const (
 var mappingListSqlTuningAdvisorTasksSortOrderEnum = map[string]ListSqlTuningAdvisorTasksSortOrderEnum{
 	"ASC":  ListSqlTuningAdvisorTasksSortOrderAsc,
 	"DESC": ListSqlTuningAdvisorTasksSortOrderDesc,
+}
+
+var mappingListSqlTuningAdvisorTasksSortOrderEnumLowerCase = map[string]ListSqlTuningAdvisorTasksSortOrderEnum{
+	"asc":  ListSqlTuningAdvisorTasksSortOrderAsc,
+	"desc": ListSqlTuningAdvisorTasksSortOrderDesc,
 }
 
 // GetListSqlTuningAdvisorTasksSortOrderEnumValues Enumerates the set of values for ListSqlTuningAdvisorTasksSortOrderEnum
@@ -254,11 +262,6 @@ func GetListSqlTuningAdvisorTasksSortOrderEnumStringValues() []string {
 
 // GetMappingListSqlTuningAdvisorTasksSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSqlTuningAdvisorTasksSortOrderEnum(val string) (ListSqlTuningAdvisorTasksSortOrderEnum, bool) {
-	mappingListSqlTuningAdvisorTasksSortOrderEnumIgnoreCase := make(map[string]ListSqlTuningAdvisorTasksSortOrderEnum)
-	for k, v := range mappingListSqlTuningAdvisorTasksSortOrderEnum {
-		mappingListSqlTuningAdvisorTasksSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListSqlTuningAdvisorTasksSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListSqlTuningAdvisorTasksSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

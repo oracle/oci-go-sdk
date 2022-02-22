@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -152,6 +152,11 @@ var mappingListDhcpOptionsSortByEnum = map[string]ListDhcpOptionsSortByEnum{
 	"DISPLAYNAME": ListDhcpOptionsSortByDisplayname,
 }
 
+var mappingListDhcpOptionsSortByEnumLowerCase = map[string]ListDhcpOptionsSortByEnum{
+	"timecreated": ListDhcpOptionsSortByTimecreated,
+	"displayname": ListDhcpOptionsSortByDisplayname,
+}
+
 // GetListDhcpOptionsSortByEnumValues Enumerates the set of values for ListDhcpOptionsSortByEnum
 func GetListDhcpOptionsSortByEnumValues() []ListDhcpOptionsSortByEnum {
 	values := make([]ListDhcpOptionsSortByEnum, 0)
@@ -171,12 +176,7 @@ func GetListDhcpOptionsSortByEnumStringValues() []string {
 
 // GetMappingListDhcpOptionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDhcpOptionsSortByEnum(val string) (ListDhcpOptionsSortByEnum, bool) {
-	mappingListDhcpOptionsSortByEnumIgnoreCase := make(map[string]ListDhcpOptionsSortByEnum)
-	for k, v := range mappingListDhcpOptionsSortByEnum {
-		mappingListDhcpOptionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDhcpOptionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDhcpOptionsSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -192,6 +192,11 @@ const (
 var mappingListDhcpOptionsSortOrderEnum = map[string]ListDhcpOptionsSortOrderEnum{
 	"ASC":  ListDhcpOptionsSortOrderAsc,
 	"DESC": ListDhcpOptionsSortOrderDesc,
+}
+
+var mappingListDhcpOptionsSortOrderEnumLowerCase = map[string]ListDhcpOptionsSortOrderEnum{
+	"asc":  ListDhcpOptionsSortOrderAsc,
+	"desc": ListDhcpOptionsSortOrderDesc,
 }
 
 // GetListDhcpOptionsSortOrderEnumValues Enumerates the set of values for ListDhcpOptionsSortOrderEnum
@@ -213,11 +218,6 @@ func GetListDhcpOptionsSortOrderEnumStringValues() []string {
 
 // GetMappingListDhcpOptionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListDhcpOptionsSortOrderEnum(val string) (ListDhcpOptionsSortOrderEnum, bool) {
-	mappingListDhcpOptionsSortOrderEnumIgnoreCase := make(map[string]ListDhcpOptionsSortOrderEnum)
-	for k, v := range mappingListDhcpOptionsSortOrderEnum {
-		mappingListDhcpOptionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingListDhcpOptionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingListDhcpOptionsSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

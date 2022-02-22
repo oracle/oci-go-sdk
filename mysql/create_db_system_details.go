@@ -12,7 +12,7 @@ package mysql
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -111,6 +111,10 @@ type CreateDbSystemDetails struct {
 	// Usage of predefined tag keys. These predefined keys are scoped to namespaces.
 	// Example: `{"foo-namespace": {"bar-key": "value"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+
+	// Whether to run the DB System with InnoDB Redo Logs and the Double Write Buffer enabled or disabled,
+	// and whether to enable or disable syncing of the Binary Logs.
+	CrashRecovery CrashRecoveryStatusEnum `mandatory:"false" json:"crashRecovery,omitempty"`
 }
 
 func (m CreateDbSystemDetails) String() string {
@@ -123,6 +127,9 @@ func (m CreateDbSystemDetails) String() string {
 func (m CreateDbSystemDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
+	if _, ok := GetMappingCrashRecoveryStatusEnum(string(m.CrashRecovery)); !ok && m.CrashRecovery != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CrashRecovery: %s. Supported values are: %s.", m.CrashRecovery, strings.Join(GetCrashRecoveryStatusEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
@@ -149,6 +156,7 @@ func (m *CreateDbSystemDetails) UnmarshalJSON(data []byte) (e error) {
 		Maintenance          *CreateMaintenanceDetails         `json:"maintenance"`
 		FreeformTags         map[string]string                 `json:"freeformTags"`
 		DefinedTags          map[string]map[string]interface{} `json:"definedTags"`
+		CrashRecovery        CrashRecoveryStatusEnum           `json:"crashRecovery"`
 		CompartmentId        *string                           `json:"compartmentId"`
 		ShapeName            *string                           `json:"shapeName"`
 		SubnetId             *string                           `json:"subnetId"`
@@ -202,6 +210,8 @@ func (m *CreateDbSystemDetails) UnmarshalJSON(data []byte) (e error) {
 	m.FreeformTags = model.FreeformTags
 
 	m.DefinedTags = model.DefinedTags
+
+	m.CrashRecovery = model.CrashRecovery
 
 	m.CompartmentId = model.CompartmentId
 

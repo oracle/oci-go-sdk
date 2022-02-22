@@ -12,7 +12,7 @@ package visualbuilder
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -65,6 +65,11 @@ var mappingApplicationSummaryStateEnum = map[string]ApplicationSummaryStateEnum{
 	"LIVE":  ApplicationSummaryStateLive,
 }
 
+var mappingApplicationSummaryStateEnumLowerCase = map[string]ApplicationSummaryStateEnum{
+	"stage": ApplicationSummaryStateStage,
+	"live":  ApplicationSummaryStateLive,
+}
+
 // GetApplicationSummaryStateEnumValues Enumerates the set of values for ApplicationSummaryStateEnum
 func GetApplicationSummaryStateEnumValues() []ApplicationSummaryStateEnum {
 	values := make([]ApplicationSummaryStateEnum, 0)
@@ -84,11 +89,6 @@ func GetApplicationSummaryStateEnumStringValues() []string {
 
 // GetMappingApplicationSummaryStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingApplicationSummaryStateEnum(val string) (ApplicationSummaryStateEnum, bool) {
-	mappingApplicationSummaryStateEnumIgnoreCase := make(map[string]ApplicationSummaryStateEnum)
-	for k, v := range mappingApplicationSummaryStateEnum {
-		mappingApplicationSummaryStateEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingApplicationSummaryStateEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingApplicationSummaryStateEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

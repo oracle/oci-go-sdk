@@ -6,7 +6,7 @@ package jms
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"net/http"
 	"strings"
 )
@@ -178,6 +178,10 @@ var mappingSummarizeManagedInstanceUsageManagedInstanceTypeEnum = map[string]Sum
 	"ORACLE_MANAGEMENT_AGENT": SummarizeManagedInstanceUsageManagedInstanceTypeOracleManagementAgent,
 }
 
+var mappingSummarizeManagedInstanceUsageManagedInstanceTypeEnumLowerCase = map[string]SummarizeManagedInstanceUsageManagedInstanceTypeEnum{
+	"oracle_management_agent": SummarizeManagedInstanceUsageManagedInstanceTypeOracleManagementAgent,
+}
+
 // GetSummarizeManagedInstanceUsageManagedInstanceTypeEnumValues Enumerates the set of values for SummarizeManagedInstanceUsageManagedInstanceTypeEnum
 func GetSummarizeManagedInstanceUsageManagedInstanceTypeEnumValues() []SummarizeManagedInstanceUsageManagedInstanceTypeEnum {
 	values := make([]SummarizeManagedInstanceUsageManagedInstanceTypeEnum, 0)
@@ -196,12 +200,7 @@ func GetSummarizeManagedInstanceUsageManagedInstanceTypeEnumStringValues() []str
 
 // GetMappingSummarizeManagedInstanceUsageManagedInstanceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeManagedInstanceUsageManagedInstanceTypeEnum(val string) (SummarizeManagedInstanceUsageManagedInstanceTypeEnum, bool) {
-	mappingSummarizeManagedInstanceUsageManagedInstanceTypeEnumIgnoreCase := make(map[string]SummarizeManagedInstanceUsageManagedInstanceTypeEnum)
-	for k, v := range mappingSummarizeManagedInstanceUsageManagedInstanceTypeEnum {
-		mappingSummarizeManagedInstanceUsageManagedInstanceTypeEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeManagedInstanceUsageManagedInstanceTypeEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeManagedInstanceUsageManagedInstanceTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -217,6 +216,11 @@ const (
 var mappingSummarizeManagedInstanceUsageSortOrderEnum = map[string]SummarizeManagedInstanceUsageSortOrderEnum{
 	"ASC":  SummarizeManagedInstanceUsageSortOrderAsc,
 	"DESC": SummarizeManagedInstanceUsageSortOrderDesc,
+}
+
+var mappingSummarizeManagedInstanceUsageSortOrderEnumLowerCase = map[string]SummarizeManagedInstanceUsageSortOrderEnum{
+	"asc":  SummarizeManagedInstanceUsageSortOrderAsc,
+	"desc": SummarizeManagedInstanceUsageSortOrderDesc,
 }
 
 // GetSummarizeManagedInstanceUsageSortOrderEnumValues Enumerates the set of values for SummarizeManagedInstanceUsageSortOrderEnum
@@ -238,12 +242,7 @@ func GetSummarizeManagedInstanceUsageSortOrderEnumStringValues() []string {
 
 // GetMappingSummarizeManagedInstanceUsageSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeManagedInstanceUsageSortOrderEnum(val string) (SummarizeManagedInstanceUsageSortOrderEnum, bool) {
-	mappingSummarizeManagedInstanceUsageSortOrderEnumIgnoreCase := make(map[string]SummarizeManagedInstanceUsageSortOrderEnum)
-	for k, v := range mappingSummarizeManagedInstanceUsageSortOrderEnum {
-		mappingSummarizeManagedInstanceUsageSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeManagedInstanceUsageSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeManagedInstanceUsageSortOrderEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -269,6 +268,15 @@ var mappingSummarizeManagedInstanceUsageSortByEnum = map[string]SummarizeManaged
 	"osName":                       SummarizeManagedInstanceUsageSortByOsname,
 }
 
+var mappingSummarizeManagedInstanceUsageSortByEnumLowerCase = map[string]SummarizeManagedInstanceUsageSortByEnum{
+	"timefirstseen":                SummarizeManagedInstanceUsageSortByTimefirstseen,
+	"timelastseen":                 SummarizeManagedInstanceUsageSortByTimelastseen,
+	"approximatejrecount":          SummarizeManagedInstanceUsageSortByApproximatejrecount,
+	"approximateinstallationcount": SummarizeManagedInstanceUsageSortByApproximateinstallationcount,
+	"approximateapplicationcount":  SummarizeManagedInstanceUsageSortByApproximateapplicationcount,
+	"osname":                       SummarizeManagedInstanceUsageSortByOsname,
+}
+
 // GetSummarizeManagedInstanceUsageSortByEnumValues Enumerates the set of values for SummarizeManagedInstanceUsageSortByEnum
 func GetSummarizeManagedInstanceUsageSortByEnumValues() []SummarizeManagedInstanceUsageSortByEnum {
 	values := make([]SummarizeManagedInstanceUsageSortByEnum, 0)
@@ -292,11 +300,6 @@ func GetSummarizeManagedInstanceUsageSortByEnumStringValues() []string {
 
 // GetMappingSummarizeManagedInstanceUsageSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSummarizeManagedInstanceUsageSortByEnum(val string) (SummarizeManagedInstanceUsageSortByEnum, bool) {
-	mappingSummarizeManagedInstanceUsageSortByEnumIgnoreCase := make(map[string]SummarizeManagedInstanceUsageSortByEnum)
-	for k, v := range mappingSummarizeManagedInstanceUsageSortByEnum {
-		mappingSummarizeManagedInstanceUsageSortByEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingSummarizeManagedInstanceUsageSortByEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingSummarizeManagedInstanceUsageSortByEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

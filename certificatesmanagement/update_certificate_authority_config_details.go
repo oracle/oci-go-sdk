@@ -12,7 +12,7 @@ package certificatesmanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -118,6 +118,11 @@ var mappingUpdateCertificateAuthorityConfigDetailsStageEnum = map[string]UpdateC
 	"PENDING": UpdateCertificateAuthorityConfigDetailsStagePending,
 }
 
+var mappingUpdateCertificateAuthorityConfigDetailsStageEnumLowerCase = map[string]UpdateCertificateAuthorityConfigDetailsStageEnum{
+	"current": UpdateCertificateAuthorityConfigDetailsStageCurrent,
+	"pending": UpdateCertificateAuthorityConfigDetailsStagePending,
+}
+
 // GetUpdateCertificateAuthorityConfigDetailsStageEnumValues Enumerates the set of values for UpdateCertificateAuthorityConfigDetailsStageEnum
 func GetUpdateCertificateAuthorityConfigDetailsStageEnumValues() []UpdateCertificateAuthorityConfigDetailsStageEnum {
 	values := make([]UpdateCertificateAuthorityConfigDetailsStageEnum, 0)
@@ -137,11 +142,6 @@ func GetUpdateCertificateAuthorityConfigDetailsStageEnumStringValues() []string 
 
 // GetMappingUpdateCertificateAuthorityConfigDetailsStageEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingUpdateCertificateAuthorityConfigDetailsStageEnum(val string) (UpdateCertificateAuthorityConfigDetailsStageEnum, bool) {
-	mappingUpdateCertificateAuthorityConfigDetailsStageEnumIgnoreCase := make(map[string]UpdateCertificateAuthorityConfigDetailsStageEnum)
-	for k, v := range mappingUpdateCertificateAuthorityConfigDetailsStageEnum {
-		mappingUpdateCertificateAuthorityConfigDetailsStageEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingUpdateCertificateAuthorityConfigDetailsStageEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingUpdateCertificateAuthorityConfigDetailsStageEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

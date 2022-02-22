@@ -15,7 +15,7 @@ package autoscaling
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v59/common"
 	"strings"
 )
 
@@ -66,6 +66,13 @@ var mappingThresholdOperatorEnum = map[string]ThresholdOperatorEnum{
 	"LTE": ThresholdOperatorLte,
 }
 
+var mappingThresholdOperatorEnumLowerCase = map[string]ThresholdOperatorEnum{
+	"gt":  ThresholdOperatorGt,
+	"gte": ThresholdOperatorGte,
+	"lt":  ThresholdOperatorLt,
+	"lte": ThresholdOperatorLte,
+}
+
 // GetThresholdOperatorEnumValues Enumerates the set of values for ThresholdOperatorEnum
 func GetThresholdOperatorEnumValues() []ThresholdOperatorEnum {
 	values := make([]ThresholdOperatorEnum, 0)
@@ -87,11 +94,6 @@ func GetThresholdOperatorEnumStringValues() []string {
 
 // GetMappingThresholdOperatorEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingThresholdOperatorEnum(val string) (ThresholdOperatorEnum, bool) {
-	mappingThresholdOperatorEnumIgnoreCase := make(map[string]ThresholdOperatorEnum)
-	for k, v := range mappingThresholdOperatorEnum {
-		mappingThresholdOperatorEnumIgnoreCase[strings.ToLower(k)] = v
-	}
-
-	enum, ok := mappingThresholdOperatorEnumIgnoreCase[strings.ToLower(val)]
+	enum, ok := mappingThresholdOperatorEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
