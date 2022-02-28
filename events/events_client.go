@@ -13,8 +13,8 @@ package events
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v59/common"
-	"github.com/oracle/oci-go-sdk/v59/common/auth"
+	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v60/common/auth"
 	"net/http"
 )
 
