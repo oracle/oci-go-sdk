@@ -11,7 +11,7 @@ package datascience
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v59/common"
+	"github.com/oracle/oci-go-sdk/v60/common"
 	"strings"
 )
 
@@ -42,6 +42,8 @@ type NotebookSessionSummary struct {
 	LifecycleState NotebookSessionLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	NotebookSessionConfigurationDetails *NotebookSessionConfigurationDetails `mandatory:"false" json:"notebookSessionConfigurationDetails"`
+
+	NotebookSessionConfigDetails *NotebookSessionConfigDetails `mandatory:"false" json:"notebookSessionConfigDetails"`
 
 	// The URL to interact with the notebook session.
 	NotebookSessionUrl *string `mandatory:"false" json:"notebookSessionUrl"`

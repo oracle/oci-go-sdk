@@ -11,8 +11,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/oracle/oci-go-sdk/v59/common"
-	"github.com/oracle/oci-go-sdk/v59/objectstorage"
+	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v60/objectstorage"
 )
 
 // FileUploader is an interface to upload a file

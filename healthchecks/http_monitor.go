@@ -13,7 +13,7 @@ package healthchecks
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v59/common"
+	"github.com/oracle/oci-go-sdk/v60/common"
 	"strings"
 )
 
