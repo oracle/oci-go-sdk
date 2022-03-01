@@ -13,9 +13,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/oracle/oci-go-sdk/v59/common"
-	"github.com/oracle/oci-go-sdk/v59/database"
-	"github.com/oracle/oci-go-sdk/v59/example/helpers"
+	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v60/database"
+	"github.com/oracle/oci-go-sdk/v60/example/helpers"
 )
 
 var (

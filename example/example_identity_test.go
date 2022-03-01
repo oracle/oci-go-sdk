@@ -12,9 +12,9 @@ import (
 
 	"net/http"
 
-	"github.com/oracle/oci-go-sdk/v59/common"
-	"github.com/oracle/oci-go-sdk/v59/example/helpers"
-	"github.com/oracle/oci-go-sdk/v59/identity"
+	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v60/example/helpers"
+	"github.com/oracle/oci-go-sdk/v60/identity"
 )
 
 // ExampleListAvailabilityDomains Lists the Availability Domains in your tenancy.
