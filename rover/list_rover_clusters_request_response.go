@@ -6,7 +6,7 @@ package rover
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v61/common"
 	"net/http"
 	"strings"
 )
@@ -23,6 +23,9 @@ type ListRoverClustersRequest struct {
 
 	// A filter to return only resources that match the entire display name given.
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
+
+	// A filter to return only Clusters of type matched with the given cluster type.
+	ClusterType ListRoverClustersClusterTypeEnum `mandatory:"false" contributesTo:"query" name:"clusterType" omitEmpty:"true"`
 
 	// The maximum number of items to return.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
@@ -78,6 +81,9 @@ func (request ListRoverClustersRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListRoverClustersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
+	if _, ok := GetMappingListRoverClustersClusterTypeEnum(string(request.ClusterType)); !ok && request.ClusterType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ClusterType: %s. Supported values are: %s.", request.ClusterType, strings.Join(GetListRoverClustersClusterTypeEnumStringValues(), ",")))
+	}
 	if _, ok := GetMappingListRoverClustersLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListRoverClustersLifecycleStateEnumStringValues(), ",")))
 	}
@@ -124,6 +130,48 @@ func (response ListRoverClustersResponse) String() string {
 // HTTPResponse implements the OCIResponse interface
 func (response ListRoverClustersResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
+}
+
+// ListRoverClustersClusterTypeEnum Enum with underlying type: string
+type ListRoverClustersClusterTypeEnum string
+
+// Set of constants representing the allowable values for ListRoverClustersClusterTypeEnum
+const (
+	ListRoverClustersClusterTypeStandalone ListRoverClustersClusterTypeEnum = "STANDALONE"
+	ListRoverClustersClusterTypeStation    ListRoverClustersClusterTypeEnum = "STATION"
+)
+
+var mappingListRoverClustersClusterTypeEnum = map[string]ListRoverClustersClusterTypeEnum{
+	"STANDALONE": ListRoverClustersClusterTypeStandalone,
+	"STATION":    ListRoverClustersClusterTypeStation,
+}
+
+var mappingListRoverClustersClusterTypeEnumLowerCase = map[string]ListRoverClustersClusterTypeEnum{
+	"standalone": ListRoverClustersClusterTypeStandalone,
+	"station":    ListRoverClustersClusterTypeStation,
+}
+
+// GetListRoverClustersClusterTypeEnumValues Enumerates the set of values for ListRoverClustersClusterTypeEnum
+func GetListRoverClustersClusterTypeEnumValues() []ListRoverClustersClusterTypeEnum {
+	values := make([]ListRoverClustersClusterTypeEnum, 0)
+	for _, v := range mappingListRoverClustersClusterTypeEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetListRoverClustersClusterTypeEnumStringValues Enumerates the set of values in String for ListRoverClustersClusterTypeEnum
+func GetListRoverClustersClusterTypeEnumStringValues() []string {
+	return []string{
+		"STANDALONE",
+		"STATION",
+	}
+}
+
+// GetMappingListRoverClustersClusterTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRoverClustersClusterTypeEnum(val string) (ListRoverClustersClusterTypeEnum, bool) {
+	enum, ok := mappingListRoverClustersClusterTypeEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListRoverClustersLifecycleStateEnum Enum with underlying type: string

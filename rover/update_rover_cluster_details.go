@@ -11,7 +11,7 @@ package rover
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v61/common"
 	"strings"
 )
 
@@ -55,6 +55,9 @@ type UpdateRoverClusterDetails struct {
 
 	// Tracking Url for the shipped Rover Cluster.
 	OracleShippingTrackingUrl *string `mandatory:"false" json:"oracleShippingTrackingUrl"`
+
+	// ID provided to customer after successful subscription to Rover Stations.
+	SubscriptionId *string `mandatory:"false" json:"subscriptionId"`
 
 	// Shipping vendor of choice for orace to customer shipping.
 	ShippingVendor *string `mandatory:"false" json:"shippingVendor"`

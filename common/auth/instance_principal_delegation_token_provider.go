@@ -7,7 +7,7 @@ import (
 	"crypto/rsa"
 	"fmt"
 
-	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v61/common"
 )
 
 type instancePrincipalDelegationTokenConfigurationProvider struct {
@@ -81,4 +81,8 @@ func (p instancePrincipalDelegationTokenConfigurationProvider) Region() (string,
 func (p instancePrincipalDelegationTokenConfigurationProvider) AuthType() (common.AuthConfig, error) {
 	token := p.delegationToken
 	return common.AuthConfig{common.InstancePrincipalDelegationToken, false, &token}, nil
+}
+
+func (p instancePrincipalDelegationTokenConfigurationProvider) Refreshable() bool {
+	return true
 }

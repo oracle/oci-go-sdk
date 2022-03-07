@@ -11,7 +11,7 @@ package rover
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v61/common"
 	"strings"
 )
 
@@ -58,6 +58,18 @@ type RoverCluster struct {
 
 	// List of existing workloads that should be provisioned on the nodes.
 	ClusterWorkloads []RoverWorkload `mandatory:"false" json:"clusterWorkloads"`
+
+	// Type of cluster.
+	ClusterType ClusterTypeEnum `mandatory:"false" json:"clusterType,omitempty"`
+
+	// ID provided to customer after successful subscription to Rover Stations.
+	SubscriptionId *string `mandatory:"false" json:"subscriptionId"`
+
+	// Service generated code for the exterior trailer door of the trailer.
+	ExteriorDoorCode *string `mandatory:"false" json:"exteriorDoorCode"`
+
+	// Service generated code to disarm the interior alarm of the trailer.
+	InteriorAlarmDisarmCode *string `mandatory:"false" json:"interiorAlarmDisarmCode"`
 
 	// Root password for the rover cluster.
 	SuperUserPassword *string `mandatory:"false" json:"superUserPassword"`
@@ -141,6 +153,9 @@ func (m RoverCluster) ValidateEnumValue() (bool, error) {
 
 	if _, ok := GetMappingEnclosureTypeEnum(string(m.EnclosureType)); !ok && m.EnclosureType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EnclosureType: %s. Supported values are: %s.", m.EnclosureType, strings.Join(GetEnclosureTypeEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingClusterTypeEnum(string(m.ClusterType)); !ok && m.ClusterType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ClusterType: %s. Supported values are: %s.", m.ClusterType, strings.Join(GetClusterTypeEnumStringValues(), ",")))
 	}
 	if _, ok := GetMappingRoverClusterShippingPreferenceEnum(string(m.ShippingPreference)); !ok && m.ShippingPreference != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShippingPreference: %s. Supported values are: %s.", m.ShippingPreference, strings.Join(GetRoverClusterShippingPreferenceEnumStringValues(), ",")))

@@ -11,9 +11,9 @@ import (
 	"math"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v60/common"
-	"github.com/oracle/oci-go-sdk/v60/example/helpers"
-	"github.com/oracle/oci-go-sdk/v60/identity"
+	"github.com/oracle/oci-go-sdk/v61/common"
+	"github.com/oracle/oci-go-sdk/v61/example/helpers"
+	"github.com/oracle/oci-go-sdk/v61/identity"
 )
 
 // ExampleRetry shows how to use default retry for Create and Delete groups, please

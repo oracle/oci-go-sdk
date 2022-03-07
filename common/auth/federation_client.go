@@ -19,7 +19,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v61/common"
 )
 
 // federationClient is a client to retrieve the security token for an instance principal necessary to sign a request.
