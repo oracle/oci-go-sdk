@@ -11,7 +11,7 @@ package databasemigration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v61/common"
 	"strings"
 )
 
@@ -20,6 +20,8 @@ type DataTransferMediumDetails struct {
 	DatabaseLinkDetails *DatabaseLinkDetails `mandatory:"false" json:"databaseLinkDetails"`
 
 	ObjectStorageDetails *ObjectStoreBucket `mandatory:"false" json:"objectStorageDetails"`
+
+	AwsS3Details *AwsS3Details `mandatory:"false" json:"awsS3Details"`
 }
 
 func (m DataTransferMediumDetails) String() string {

@@ -15,7 +15,7 @@ package resourcemanager
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v61/common"
 	"strings"
 )
 
@@ -23,7 +23,7 @@ import (
 type ObjectStorageConfigSourceRecord struct {
 
 	// The name of the bucket's region.
-	// Example: `PHX`
+	// Example: `us-phoenix-1`
 	Region *string `mandatory:"true" json:"region"`
 
 	// The Object Storage namespace that contains the bucket.

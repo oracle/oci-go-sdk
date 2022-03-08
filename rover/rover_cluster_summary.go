@@ -11,7 +11,7 @@ package rover
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v61/common"
 	"strings"
 )
 
@@ -35,6 +35,12 @@ type RoverClusterSummary struct {
 
 	// The nodes that are part of this cluster.
 	Nodes []string `mandatory:"false" json:"nodes"`
+
+	// Size of the cluster.
+	ClusterSize *int `mandatory:"false" json:"clusterSize"`
+
+	// Type of cluster.
+	ClusterType ClusterTypeEnum `mandatory:"false" json:"clusterType,omitempty"`
 
 	// A property that can contain details on the lifecycle.
 	LifecycleStateDetails *string `mandatory:"false" json:"lifecycleStateDetails"`
@@ -68,6 +74,9 @@ func (m RoverClusterSummary) ValidateEnumValue() (bool, error) {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
 
+	if _, ok := GetMappingClusterTypeEnum(string(m.ClusterType)); !ok && m.ClusterType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ClusterType: %s. Supported values are: %s.", m.ClusterType, strings.Join(GetClusterTypeEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}

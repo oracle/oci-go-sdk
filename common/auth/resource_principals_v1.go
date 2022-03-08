@@ -8,8 +8,7 @@ import (
 	"crypto/rsa"
 	"fmt"
 
-	"github.com/oracle/oci-go-sdk/v60/common"
-
+	"github.com/oracle/oci-go-sdk/v61/common"
 	"net/http"
 	"net/url"
 	"sync"
@@ -269,6 +268,10 @@ func (p resourcePrincipalConfigurationProvider) Region() (string, error) {
 		return string(region), nil
 	}
 	return string(*p.region), nil
+}
+
+func (p resourcePrincipalConfigurationProvider) Refreshable() bool {
+	return true
 }
 
 // resourcePrincipalConfigurationProviderForInstanceWithClients returns a configuration for instance principals

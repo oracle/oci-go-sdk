@@ -11,10 +11,10 @@ import (
 	"math"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v60/common"
-	"github.com/oracle/oci-go-sdk/v60/core"
-	"github.com/oracle/oci-go-sdk/v60/example/helpers"
-	"github.com/oracle/oci-go-sdk/v60/identity"
+	"github.com/oracle/oci-go-sdk/v61/common"
+	"github.com/oracle/oci-go-sdk/v61/core"
+	"github.com/oracle/oci-go-sdk/v61/example/helpers"
+	"github.com/oracle/oci-go-sdk/v61/identity"
 )
 
 // This is a pretend OCID, an instance with this OCID does not actually exist.
@@ -202,6 +202,74 @@ func ExampleEventuallyConsistentRetryBehavior_UnlimitedAttempts() {
 	// Setting retry policy: {MaximumNumberAttempts=9, MinSleepBetween=0, MaxSleepBetween=45, ExponentialBackoffBase=3.52, NonEventuallyConsistentPolicy={MaximumNumberAttempts=0, MinSleepBetween=0, MaxSleepBetween=30, ExponentialBackoffBase=2, NonEventuallyConsistentPolicy=<nil>}}
 	// Service error: NotAuthorizedOrNotFound. Authorization failed or requested resource not found. http status code: 404.
 	// EC retry policy, but no more EC (expect immediate error), elapsed less than three seconds? true
+}
+
+// This example lets you test the behavior of eventual consistency across processes.
+// This test makes an eventually consistent change, and
+// ExampleEventuallyConsistentRetryBehavior_RetryIfEventuallyConsistentChangeMade
+// should retry if an eventually consistent change had been made.
+// Note that this only works if the EC communication mode is set to 'file'
+// by setting the OCI_GO_SDK_EC_CONFIG environment variable to "file,<timestampFile>"
+func ExampleEventuallyConsistentRetryBehavior_MakeEventuallyConsistentChange() {
+	// setup
+	ctx := context.Background()
+
+	compartmentID, _ := common.DefaultConfigProvider().TenancyOCID()
+
+	// this will set the eventually consistent timestamp, because the CreateGroup is eventually consistent and sets the timestamp
+	groupId := createGroup(ctx, compartmentID)
+	deleteGroup(ctx, groupId)
+
+	fmt.Printf("Eventually consistent change made\n")
+
+	// Output:
+	// Eventually consistent change made
+}
+
+// This example lets you test the behavior of eventual consistency across processes.
+// This test makes an operation that should be retried only if there was an eventually
+// consistent change made, which can be done using
+// ExampleEventuallyConsistentRetryBehavior_MakeEventuallyConsistentChange
+// should retry if an eventually consistent change had been made.
+// Note that this only works if the EC communication mode is set to 'file'
+// by setting the OCI_GO_SDK_EC_CONFIG environment variable to "file,<timestampFile>"
+// You should start this example within 30 seconds of running ExampleEventuallyConsistentRetryBehavior_MakeEventuallyConsistentChange.
+//
+// Since this test ONLY works if the EC communication mode is set to 'file',
+// this test has been commented out. It is also a long-running test, typically taking about 4 minutes,
+// and it needs to be run in coordination with ExampleEventuallyConsistentRetryBehavior_MakeEventuallyConsistentChange.
+// That's why the "Output:" line has been changed to prevent the example from automatically running as a test.
+func ExampleEventuallyConsistentRetryBehavior_RetryIfEventuallyConsistentChangeMade() {
+	// setup
+	ctx := context.Background()
+
+	coreClient, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
+	helpers.FatalIfError(clerr)
+
+	// test
+
+	defaultRetryPolicy := common.DefaultRetryPolicy()
+	nonEcRetryPolicy := common.DefaultRetryPolicyWithoutEventualConsistency()
+
+	fmt.Printf("EC retry policy:     %v\n", defaultRetryPolicy)
+	fmt.Printf("Non-EC retry policy: %v\n", nonEcRetryPolicy)
+
+	// With the default retry policy, we do see retries, and this part takes a long time (about 4 minutes).
+	// These retries on 404-NotAuthorizedOrNotFound only happen because there was an eventually consistent
+	// operation in the recent past (CreateGroup).
+	fmt.Printf("\nDefault retry policy (expect long wait, then error):\n")
+	elapsed := getInstance(ctx, coreClient, missingInstanceOcid, &defaultRetryPolicy)
+	fmt.Printf("Default retry policy (expect long wait, then error), elapsed about 4 minutes? %v\n",
+		getComparisonMessage(elapsed.String(), (time.Duration(209)*time.Second < elapsed) && (elapsed < time.Duration(250)*time.Second)))
+
+	// Output -- to enable this example as a test, change this line to "// Output:"
+	// EC retry policy:     {MaximumNumberAttempts=9, MinSleepBetween=0, MaxSleepBetween=45, ExponentialBackoffBase=3.52, NonEventuallyConsistentPolicy={MaximumNumberAttempts=8, MinSleepBetween=0, MaxSleepBetween=30, ExponentialBackoffBase=2, NonEventuallyConsistentPolicy=<nil>}}
+	// Non-EC retry policy: {MaximumNumberAttempts=8, MinSleepBetween=0, MaxSleepBetween=30, ExponentialBackoffBase=2, NonEventuallyConsistentPolicy=<nil>}
+	//
+	// Default retry policy (expect long wait, then error):
+	// Setting retry policy: {MaximumNumberAttempts=9, MinSleepBetween=0, MaxSleepBetween=45, ExponentialBackoffBase=3.52, NonEventuallyConsistentPolicy={MaximumNumberAttempts=8, MinSleepBetween=0, MaxSleepBetween=30, ExponentialBackoffBase=2, NonEventuallyConsistentPolicy=<nil>}}
+	// Service error: NotAuthorizedOrNotFound. Authorization failed or requested resource not found. http status code: 404.
+	// Default retry policy (expect long wait, then error), elapsed about 4 minutes? true
 }
 
 func createGroup(ctx context.Context, compartmentID string) string {

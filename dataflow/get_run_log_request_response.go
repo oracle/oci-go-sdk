@@ -6,7 +6,7 @@ package dataflow
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v61/common"
 	"io"
 	"net/http"
 	"strings"

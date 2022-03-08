@@ -13,7 +13,7 @@ package containerengine
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v61/common"
 	"strings"
 )
 
@@ -57,18 +57,21 @@ const (
 	CreateClusterKubeconfigContentDetailsEndpointLegacyKubernetes CreateClusterKubeconfigContentDetailsEndpointEnum = "LEGACY_KUBERNETES"
 	CreateClusterKubeconfigContentDetailsEndpointPublicEndpoint   CreateClusterKubeconfigContentDetailsEndpointEnum = "PUBLIC_ENDPOINT"
 	CreateClusterKubeconfigContentDetailsEndpointPrivateEndpoint  CreateClusterKubeconfigContentDetailsEndpointEnum = "PRIVATE_ENDPOINT"
+	CreateClusterKubeconfigContentDetailsEndpointVcnHostname      CreateClusterKubeconfigContentDetailsEndpointEnum = "VCN_HOSTNAME"
 )
 
 var mappingCreateClusterKubeconfigContentDetailsEndpointEnum = map[string]CreateClusterKubeconfigContentDetailsEndpointEnum{
 	"LEGACY_KUBERNETES": CreateClusterKubeconfigContentDetailsEndpointLegacyKubernetes,
 	"PUBLIC_ENDPOINT":   CreateClusterKubeconfigContentDetailsEndpointPublicEndpoint,
 	"PRIVATE_ENDPOINT":  CreateClusterKubeconfigContentDetailsEndpointPrivateEndpoint,
+	"VCN_HOSTNAME":      CreateClusterKubeconfigContentDetailsEndpointVcnHostname,
 }
 
 var mappingCreateClusterKubeconfigContentDetailsEndpointEnumLowerCase = map[string]CreateClusterKubeconfigContentDetailsEndpointEnum{
 	"legacy_kubernetes": CreateClusterKubeconfigContentDetailsEndpointLegacyKubernetes,
 	"public_endpoint":   CreateClusterKubeconfigContentDetailsEndpointPublicEndpoint,
 	"private_endpoint":  CreateClusterKubeconfigContentDetailsEndpointPrivateEndpoint,
+	"vcn_hostname":      CreateClusterKubeconfigContentDetailsEndpointVcnHostname,
 }
 
 // GetCreateClusterKubeconfigContentDetailsEndpointEnumValues Enumerates the set of values for CreateClusterKubeconfigContentDetailsEndpointEnum
@@ -86,6 +89,7 @@ func GetCreateClusterKubeconfigContentDetailsEndpointEnumStringValues() []string
 		"LEGACY_KUBERNETES",
 		"PUBLIC_ENDPOINT",
 		"PRIVATE_ENDPOINT",
+		"VCN_HOSTNAME",
 	}
 }
 
