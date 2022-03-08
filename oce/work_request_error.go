@@ -2,16 +2,16 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Oracle Content and Experience API
+// Oracle Content Management API
 //
-// Oracle Content and Experience is a cloud-based content hub to drive omni-channel content management and accelerate experience delivery
+// Oracle Content Management is a cloud-based content hub to drive omni-channel content management and accelerate experience delivery
 //
 
 package oce
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v61/common"
 	"strings"
 )
 

@@ -6,7 +6,7 @@ package rover
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v61/common"
 	"net/http"
 	"strings"
 )
@@ -23,6 +23,9 @@ type ListRoverNodesRequest struct {
 
 	// A filter to return only resources that match the entire display name given.
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
+
+	// A filter to return only Nodes of type matched with the given node type.
+	NodeType ListRoverNodesNodeTypeEnum `mandatory:"false" contributesTo:"query" name:"nodeType" omitEmpty:"true"`
 
 	// The maximum number of items to return.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
@@ -78,6 +81,9 @@ func (request ListRoverNodesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListRoverNodesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
+	if _, ok := GetMappingListRoverNodesNodeTypeEnum(string(request.NodeType)); !ok && request.NodeType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NodeType: %s. Supported values are: %s.", request.NodeType, strings.Join(GetListRoverNodesNodeTypeEnumStringValues(), ",")))
+	}
 	if _, ok := GetMappingListRoverNodesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListRoverNodesLifecycleStateEnumStringValues(), ",")))
 	}
@@ -124,6 +130,52 @@ func (response ListRoverNodesResponse) String() string {
 // HTTPResponse implements the OCIResponse interface
 func (response ListRoverNodesResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
+}
+
+// ListRoverNodesNodeTypeEnum Enum with underlying type: string
+type ListRoverNodesNodeTypeEnum string
+
+// Set of constants representing the allowable values for ListRoverNodesNodeTypeEnum
+const (
+	ListRoverNodesNodeTypeStandalone ListRoverNodesNodeTypeEnum = "STANDALONE"
+	ListRoverNodesNodeTypeClustered  ListRoverNodesNodeTypeEnum = "CLUSTERED"
+	ListRoverNodesNodeTypeStation    ListRoverNodesNodeTypeEnum = "STATION"
+)
+
+var mappingListRoverNodesNodeTypeEnum = map[string]ListRoverNodesNodeTypeEnum{
+	"STANDALONE": ListRoverNodesNodeTypeStandalone,
+	"CLUSTERED":  ListRoverNodesNodeTypeClustered,
+	"STATION":    ListRoverNodesNodeTypeStation,
+}
+
+var mappingListRoverNodesNodeTypeEnumLowerCase = map[string]ListRoverNodesNodeTypeEnum{
+	"standalone": ListRoverNodesNodeTypeStandalone,
+	"clustered":  ListRoverNodesNodeTypeClustered,
+	"station":    ListRoverNodesNodeTypeStation,
+}
+
+// GetListRoverNodesNodeTypeEnumValues Enumerates the set of values for ListRoverNodesNodeTypeEnum
+func GetListRoverNodesNodeTypeEnumValues() []ListRoverNodesNodeTypeEnum {
+	values := make([]ListRoverNodesNodeTypeEnum, 0)
+	for _, v := range mappingListRoverNodesNodeTypeEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetListRoverNodesNodeTypeEnumStringValues Enumerates the set of values in String for ListRoverNodesNodeTypeEnum
+func GetListRoverNodesNodeTypeEnumStringValues() []string {
+	return []string{
+		"STANDALONE",
+		"CLUSTERED",
+		"STATION",
+	}
+}
+
+// GetMappingListRoverNodesNodeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRoverNodesNodeTypeEnum(val string) (ListRoverNodesNodeTypeEnum, bool) {
+	enum, ok := mappingListRoverNodesNodeTypeEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListRoverNodesLifecycleStateEnum Enum with underlying type: string

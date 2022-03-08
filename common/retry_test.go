@@ -35,7 +35,7 @@ func getMockedOCIOperationResponse(statusCode int, attemptNumber uint) OCIOperat
 	response := mockedResponse{
 		RawResponse: &httpResponse,
 	}
-	now := time.Now()
+	now := time.Now().Round(0)
 	return NewOCIOperationResponseExtended(response, nil, attemptNumber, &now, 1.0, now)
 }
 
@@ -55,7 +55,7 @@ func getMockedOCIOperationResponseWithErrorFull(status int, statusCode string, e
 		StatusCode: status,
 		Code:       statusCode,
 	}
-	return NewOCIOperationResponseExtended(response, err, uint(1), endOfWindowTime, backoffScalingFactor, time.Now())
+	return NewOCIOperationResponseExtended(response, err, uint(1), endOfWindowTime, backoffScalingFactor, time.Now().Round(0))
 }
 
 func getExponentialBackoffRetryPolicy(attempts uint) RetryPolicy {
@@ -351,18 +351,28 @@ const (
 )
 
 func TestGetEndTimeOfEventuallyConsistentWindow(t *testing.T) {
-	assert.Equal(t, (*time.Time)(nil), EcContext.GetEndOfWindow())
-	EcContext.UpdateEndOfWindow(eventuallyConsistentWindowSize)
-	assert.NotEqual(t, (*time.Time)(nil), EcContext.GetEndOfWindow())
+	resetTimes()
+
+	var eowt = EcContext.GetEndOfWindow()
+	assert.Equal(t, (*time.Time)(nil), eowt)
+
+	eowt = EcContext.UpdateEndOfWindow(eventuallyConsistentWindowSize)
+	assert.NotEqual(t, (*time.Time)(nil), eowt)
+
+	eowt = EcContext.GetEndOfWindow()
+	assert.NotEqual(t, (*time.Time)(nil), eowt)
+
 	value1 := EcContext.GetEndOfWindow()
 	time.Sleep(1 * time.Second)
-	assert.True(t, value1.Before(time.Now().Add(eventuallyConsistentWindowSize)))
+	assert.True(t, value1.Before(time.Now().Round(0).Add(eventuallyConsistentWindowSize)))
 	value2 := EcContext.GetEndOfWindow()
 	assert.Equal(t, value1, value2)
-	EcContext.UpdateEndOfWindow(eventuallyConsistentWindowSize)
+
+	eowt = EcContext.UpdateEndOfWindow(eventuallyConsistentWindowSize)
+
 	value3 := EcContext.GetEndOfWindow()
 	time.Sleep(1 * time.Second)
-	assert.True(t, value3.Before(time.Now().Add(eventuallyConsistentWindowSize)))
+	assert.True(t, value3.Before(time.Now().Round(0).Add(eventuallyConsistentWindowSize)))
 	assert.True(t, value1.Before(*value3))
 	assert.True(t, value2.Before(*value3))
 }
@@ -594,7 +604,7 @@ func TestDeterminePolicyToUse_EcRetryPolicy_NeedFullEcRetries(t *testing.T) {
 
 	// EC window ends after default retries, with almost the full max cumulative backoff left
 	timeNowProviderValues := make(chan time.Time, 300)
-	now := time.Now()
+	now := time.Now().Round(0)
 	// most recent EC
 	timeNowProviderValues <- now
 	// initial request
@@ -700,7 +710,7 @@ func TestDeterminePolicyToUse_EcRetryPolicy_NeedFullEcRetries_UnlimitedAttempts(
 
 	// EC window ends after default retries, with almost the full max cumulative backoff left
 	timeNowProviderValues := make(chan time.Time, 300)
-	now := time.Now()
+	now := time.Now().Round(0)
 	// most recent EC
 	timeNowProviderValues <- now
 	// initial request
@@ -800,7 +810,7 @@ func TestEventuallyConsistentRetryPolicy_EndOfEcWindowInThePast(t *testing.T) {
 	}
 	assert.False(t, shouldContinueIssuingRequests(10, policy.MaximumNumberAttempts))
 
-	now := time.Now()
+	now := time.Now().Round(0)
 	nowPlusOne := now.Add(1 * time.Minute)
 	endOfWindowTime := now.Add(5 * time.Minute)
 
@@ -829,7 +839,7 @@ func TestEventuallyConsistentRetryPolicy_EcEndsSoonerThanDefaultRetries(t *testi
 	}
 	assert.False(t, shouldContinueIssuingRequests(10, policy.MaximumNumberAttempts))
 
-	now := time.Now()
+	now := time.Now().Round(0)
 	endOfWindowTime := now.Add(5 * time.Minute)
 
 	for _, r := range buildEcResponsesNoRetry(&endOfWindowTime, 1.0) {
@@ -857,7 +867,7 @@ func TestEventuallyConsistentRetryPolicy_NeedEcRetries(t *testing.T) {
 	}
 	assert.False(t, shouldContinueIssuingRequests(10, policy.MaximumNumberAttempts))
 
-	now := time.Now()
+	now := time.Now().Round(0)
 	endOfWindowTime := now.Add(5 * time.Minute)
 
 	for _, r := range buildEcResponsesNoRetry(&endOfWindowTime, 1.0) {
@@ -872,7 +882,7 @@ func TestEventuallyConsistentRetryPolicy_NeedEcRetries(t *testing.T) {
 
 func resetTimes() {
 	EcContext.setEndOfWindow((*time.Time)(nil))
-	EcContext.timeNowProvider = func() time.Time { return time.Now() }
+	EcContext.timeNowProvider = func() time.Time { return time.Now().Round(0) }
 }
 
 func setupTimesEndOfEcWindowInThePast(now *time.Time) time.Time {
@@ -880,7 +890,7 @@ func setupTimesEndOfEcWindowInThePast(now *time.Time) time.Time {
 	timeNowProviderValues := make(chan time.Time, 300)
 
 	if now == (*time.Time)(nil) {
-		n := time.Now()
+		n := time.Now().Round(0)
 		now = &n
 	}
 
@@ -902,7 +912,7 @@ func setupTimesEcEndsSoonerThanDefaultRetries(now *time.Time) time.Time {
 	timeNowProviderValues := make(chan time.Time, 300)
 
 	if now == (*time.Time)(nil) {
-		n := time.Now()
+		n := time.Now().Round(0)
 		now = &n
 	}
 
@@ -927,7 +937,7 @@ func setupTimesNeedEcRetries(now *time.Time, policy RetryPolicy) time.Time {
 	timeNowProviderValues := make(chan time.Time, 300)
 
 	if now == (*time.Time)(nil) {
-		n := time.Now()
+		n := time.Now().Round(0)
 		now = &n
 	}
 
@@ -1554,17 +1564,22 @@ func TestRetryPolicy_RetryWithBadRetryPolicy(t *testing.T) {
 
 func helperTestGetEndTimeOfEventuallyConsistentWindowMultiThreadedSet(t *testing.T, wg2 *sync.WaitGroup) {
 	EcContext.UpdateEndOfWindow(eventuallyConsistentWindowSize)
-	assert.NotEqual(t, (*time.Time)(nil), EcContext.GetEndOfWindow())
+	var eowt = EcContext.GetEndOfWindow()
+	assert.NotEqual(t, (*time.Time)(nil), eowt)
 
 	wg2.Done()
 
 	value1 := EcContext.GetEndOfWindow()
-	assert.True(t, value1.Before(time.Now().Add(eventuallyConsistentWindowSize)))
+	time.Sleep(1 * time.Second)
+	assert.True(t, value1.Before(time.Now().Round(0).Add(eventuallyConsistentWindowSize)))
 	value2 := EcContext.GetEndOfWindow()
 	assert.Equal(t, value1, value2)
-	EcContext.UpdateEndOfWindow(eventuallyConsistentWindowSize)
+	eowt = EcContext.UpdateEndOfWindow(eventuallyConsistentWindowSize)
+	assert.NotEqual(t, (*time.Time)(nil), eowt)
+
 	value3 := EcContext.GetEndOfWindow()
-	assert.True(t, value3.Before(time.Now().Add(eventuallyConsistentWindowSize)))
+	time.Sleep(1 * time.Second)
+	assert.True(t, value3.Before(time.Now().Round(0).Add(eventuallyConsistentWindowSize)))
 	assert.True(t, value1.Before(*value3))
 	assert.True(t, value2.Before(*value3))
 }
@@ -1572,11 +1587,13 @@ func helperTestGetEndTimeOfEventuallyConsistentWindowMultiThreadedSet(t *testing
 func helperTestGetEndTimeOfEventuallyConsistentWindowMultiThreadedGet(t *testing.T, wg2 *sync.WaitGroup) {
 	wg2.Wait()
 
-	assert.NotEqual(t, (*time.Time)(nil), EcContext.GetEndOfWindow())
+	eowt := EcContext.GetEndOfWindow()
+	assert.NotEqual(t, (*time.Time)(nil), eowt)
 }
 
 func TestGetEndTimeOfEventuallyConsistentWindow_MultiThreaded(t *testing.T) {
-	assert.Equal(t, (*time.Time)(nil), EcContext.GetEndOfWindow())
+	var eowt = EcContext.GetEndOfWindow()
+	assert.Equal(t, (*time.Time)(nil), eowt)
 
 	var wg sync.WaitGroup
 	wg.Add(2)
@@ -1596,5 +1613,6 @@ func TestGetEndTimeOfEventuallyConsistentWindow_MultiThreaded(t *testing.T) {
 
 	wg.Wait()
 
-	assert.NotEqual(t, (*time.Time)(nil), EcContext.GetEndOfWindow())
+	eowt = EcContext.GetEndOfWindow()
+	assert.NotEqual(t, (*time.Time)(nil), eowt)
 }

@@ -20,16 +20,19 @@ type NodeTypeEnum string
 const (
 	NodeTypeStandalone NodeTypeEnum = "STANDALONE"
 	NodeTypeClustered  NodeTypeEnum = "CLUSTERED"
+	NodeTypeStation    NodeTypeEnum = "STATION"
 )
 
 var mappingNodeTypeEnum = map[string]NodeTypeEnum{
 	"STANDALONE": NodeTypeStandalone,
 	"CLUSTERED":  NodeTypeClustered,
+	"STATION":    NodeTypeStation,
 }
 
 var mappingNodeTypeEnumLowerCase = map[string]NodeTypeEnum{
 	"standalone": NodeTypeStandalone,
 	"clustered":  NodeTypeClustered,
+	"station":    NodeTypeStation,
 }
 
 // GetNodeTypeEnumValues Enumerates the set of values for NodeTypeEnum
@@ -46,6 +49,7 @@ func GetNodeTypeEnumStringValues() []string {
 	return []string{
 		"STANDALONE",
 		"CLUSTERED",
+		"STATION",
 	}
 }
 

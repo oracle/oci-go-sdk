@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v60/common"
+	"github.com/oracle/oci-go-sdk/v61/common"
 )
 
 const (
@@ -143,4 +143,8 @@ func (p *instancePrincipalKeyProvider) KeyID() (string, error) {
 
 func (p *instancePrincipalKeyProvider) TenancyOCID() (string, error) {
 	return p.TenancyID, nil
+}
+
+func (p *instancePrincipalKeyProvider) Refreshable() bool {
+	return true
 }
