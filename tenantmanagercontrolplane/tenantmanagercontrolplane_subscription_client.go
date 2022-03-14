@@ -12,8 +12,8 @@ package tenantmanagercontrolplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -137,6 +137,8 @@ func (client SubscriptionClient) createSubscriptionMapping(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/SubscriptionMapping/CreateSubscriptionMapping"
+		err = common.PostProcessServiceError(err, "Subscription", "CreateSubscriptionMapping", apiReferenceLink)
 		return response, err
 	}
 
@@ -192,6 +194,8 @@ func (client SubscriptionClient) deleteSubscriptionMapping(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/SubscriptionMapping/DeleteSubscriptionMapping"
+		err = common.PostProcessServiceError(err, "Subscription", "DeleteSubscriptionMapping", apiReferenceLink)
 		return response, err
 	}
 
@@ -247,6 +251,8 @@ func (client SubscriptionClient) getAssignedSubscription(ctx context.Context, re
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/AssignedSubscription/GetAssignedSubscription"
+		err = common.PostProcessServiceError(err, "Subscription", "GetAssignedSubscription", apiReferenceLink)
 		return response, err
 	}
 
@@ -302,6 +308,8 @@ func (client SubscriptionClient) getSubscription(ctx context.Context, request co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Subscription/GetSubscription"
+		err = common.PostProcessServiceError(err, "Subscription", "GetSubscription", apiReferenceLink)
 		return response, err
 	}
 
@@ -357,6 +365,8 @@ func (client SubscriptionClient) getSubscriptionMapping(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/SubscriptionMapping/GetSubscriptionMapping"
+		err = common.PostProcessServiceError(err, "Subscription", "GetSubscriptionMapping", apiReferenceLink)
 		return response, err
 	}
 
@@ -412,6 +422,8 @@ func (client SubscriptionClient) listAssignedSubscriptions(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/AssignedSubscription/ListAssignedSubscriptions"
+		err = common.PostProcessServiceError(err, "Subscription", "ListAssignedSubscriptions", apiReferenceLink)
 		return response, err
 	}
 
@@ -467,6 +479,8 @@ func (client SubscriptionClient) listAvailableRegions(ctx context.Context, reque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Subscription/ListAvailableRegions"
+		err = common.PostProcessServiceError(err, "Subscription", "ListAvailableRegions", apiReferenceLink)
 		return response, err
 	}
 
@@ -522,6 +536,8 @@ func (client SubscriptionClient) listSubscriptionMappings(ctx context.Context, r
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/SubscriptionMapping/ListSubscriptionMappings"
+		err = common.PostProcessServiceError(err, "Subscription", "ListSubscriptionMappings", apiReferenceLink)
 		return response, err
 	}
 
@@ -577,6 +593,8 @@ func (client SubscriptionClient) listSubscriptions(ctx context.Context, request 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Subscription/ListSubscriptions"
+		err = common.PostProcessServiceError(err, "Subscription", "ListSubscriptions", apiReferenceLink)
 		return response, err
 	}
 

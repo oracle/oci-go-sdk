@@ -12,8 +12,8 @@ package threatintelligence
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -132,6 +132,8 @@ func (client ThreatintelClient) getIndicator(ctx context.Context, request common
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/threat-intel/20210831/Indicator/GetIndicator"
+		err = common.PostProcessServiceError(err, "Threatintel", "GetIndicator", apiReferenceLink)
 		return response, err
 	}
 
@@ -187,6 +189,8 @@ func (client ThreatintelClient) listIndicatorCounts(ctx context.Context, request
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/threat-intel/20210831/IndicatorCountCollection/ListIndicatorCounts"
+		err = common.PostProcessServiceError(err, "Threatintel", "ListIndicatorCounts", apiReferenceLink)
 		return response, err
 	}
 
@@ -242,6 +246,8 @@ func (client ThreatintelClient) listIndicators(ctx context.Context, request comm
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/threat-intel/20210831/IndicatorSummaryCollection/ListIndicators"
+		err = common.PostProcessServiceError(err, "Threatintel", "ListIndicators", apiReferenceLink)
 		return response, err
 	}
 
@@ -298,6 +304,8 @@ func (client ThreatintelClient) listThreatTypes(ctx context.Context, request com
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/threat-intel/20210831/ThreatTypesCollection/ListThreatTypes"
+		err = common.PostProcessServiceError(err, "Threatintel", "ListThreatTypes", apiReferenceLink)
 		return response, err
 	}
 

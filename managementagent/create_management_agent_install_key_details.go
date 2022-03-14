@@ -4,14 +4,15 @@
 
 // Management Agent API
 //
-// API for Management Agent Cloud Service
+// Use the Management Agent API to manage your infrastructure's management agents, including their plugins and install keys.
+// For more information, see Management Agent (https://docs.cloud.oracle.com/iaas/management-agents/index.html).
 //
 
 package managementagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
+	"github.com/oracle/oci-go-sdk/v62/common"
 	"strings"
 )
 
@@ -29,6 +30,9 @@ type CreateManagementAgentInstallKeyDetails struct {
 
 	// date after which key would expire after creation
 	TimeExpires *common.SDKTime `mandatory:"false" json:"timeExpires"`
+
+	// If set to true, the install key has no expiration date or usage limit. Defaults to false
+	IsUnlimited *bool `mandatory:"false" json:"isUnlimited"`
 }
 
 func (m CreateManagementAgentInstallKeyDetails) String() string {

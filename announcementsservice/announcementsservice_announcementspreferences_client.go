@@ -12,8 +12,8 @@ package announcementsservice
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -138,6 +138,8 @@ func (client AnnouncementsPreferencesClient) createAnnouncementsPreference(ctx c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementsPreferencesSummary/CreateAnnouncementsPreference"
+		err = common.PostProcessServiceError(err, "AnnouncementsPreferences", "CreateAnnouncementsPreference", apiReferenceLink)
 		return response, err
 	}
 
@@ -194,6 +196,8 @@ func (client AnnouncementsPreferencesClient) getAnnouncementsPreference(ctx cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementsPreferences/GetAnnouncementsPreference"
+		err = common.PostProcessServiceError(err, "AnnouncementsPreferences", "GetAnnouncementsPreference", apiReferenceLink)
 		return response, err
 	}
 
@@ -250,6 +254,8 @@ func (client AnnouncementsPreferencesClient) listAnnouncementsPreferences(ctx co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementsPreferencesSummary/ListAnnouncementsPreferences"
+		err = common.PostProcessServiceError(err, "AnnouncementsPreferences", "ListAnnouncementsPreferences", apiReferenceLink)
 		return response, err
 	}
 
@@ -306,6 +312,8 @@ func (client AnnouncementsPreferencesClient) updateAnnouncementsPreference(ctx c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementsPreferencesSummary/UpdateAnnouncementsPreference"
+		err = common.PostProcessServiceError(err, "AnnouncementsPreferences", "UpdateAnnouncementsPreference", apiReferenceLink)
 		return response, err
 	}
 

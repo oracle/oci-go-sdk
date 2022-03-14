@@ -15,8 +15,8 @@ package applicationmigration
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -137,6 +137,8 @@ func (client ApplicationMigrationClient) cancelWorkRequest(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/WorkRequest/CancelWorkRequest"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "CancelWorkRequest", apiReferenceLink)
 		return response, err
 	}
 
@@ -198,6 +200,8 @@ func (client ApplicationMigrationClient) changeMigrationCompartment(ctx context.
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/Migration/ChangeMigrationCompartment"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "ChangeMigrationCompartment", apiReferenceLink)
 		return response, err
 	}
 
@@ -259,6 +263,8 @@ func (client ApplicationMigrationClient) changeSourceCompartment(ctx context.Con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/Source/ChangeSourceCompartment"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "ChangeSourceCompartment", apiReferenceLink)
 		return response, err
 	}
 
@@ -335,6 +341,8 @@ func (client ApplicationMigrationClient) createMigration(ctx context.Context, re
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "CreateMigration", apiReferenceLink)
 		return response, err
 	}
 
@@ -407,6 +415,8 @@ func (client ApplicationMigrationClient) createSource(ctx context.Context, reque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "CreateSource", apiReferenceLink)
 		return response, err
 	}
 
@@ -465,6 +475,8 @@ func (client ApplicationMigrationClient) deleteMigration(ctx context.Context, re
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/Migration/DeleteMigration"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "DeleteMigration", apiReferenceLink)
 		return response, err
 	}
 
@@ -523,6 +535,8 @@ func (client ApplicationMigrationClient) deleteSource(ctx context.Context, reque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/Source/DeleteSource"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "DeleteSource", apiReferenceLink)
 		return response, err
 	}
 
@@ -578,6 +592,8 @@ func (client ApplicationMigrationClient) getMigration(ctx context.Context, reque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/Migration/GetMigration"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "GetMigration", apiReferenceLink)
 		return response, err
 	}
 
@@ -633,6 +649,8 @@ func (client ApplicationMigrationClient) getSource(ctx context.Context, request 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/Source/GetSource"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "GetSource", apiReferenceLink)
 		return response, err
 	}
 
@@ -688,6 +706,8 @@ func (client ApplicationMigrationClient) getWorkRequest(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/WorkRequest/GetWorkRequest"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "GetWorkRequest", apiReferenceLink)
 		return response, err
 	}
 
@@ -743,6 +763,8 @@ func (client ApplicationMigrationClient) listMigrations(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/MigrationSummary/ListMigrations"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "ListMigrations", apiReferenceLink)
 		return response, err
 	}
 
@@ -800,6 +822,8 @@ func (client ApplicationMigrationClient) listSourceApplications(ctx context.Cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/SourceApplicationSummary/ListSourceApplications"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "ListSourceApplications", apiReferenceLink)
 		return response, err
 	}
 
@@ -858,6 +882,8 @@ func (client ApplicationMigrationClient) listSources(ctx context.Context, reques
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/SourceSummary/ListSources"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "ListSources", apiReferenceLink)
 		return response, err
 	}
 
@@ -913,6 +939,8 @@ func (client ApplicationMigrationClient) listWorkRequestErrors(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/WorkRequestError/ListWorkRequestErrors"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "ListWorkRequestErrors", apiReferenceLink)
 		return response, err
 	}
 
@@ -968,6 +996,8 @@ func (client ApplicationMigrationClient) listWorkRequestLogs(ctx context.Context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/WorkRequestLogEntry/ListWorkRequestLogs"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "ListWorkRequestLogs", apiReferenceLink)
 		return response, err
 	}
 
@@ -1023,6 +1053,8 @@ func (client ApplicationMigrationClient) listWorkRequests(ctx context.Context, r
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/WorkRequestSummary/ListWorkRequests"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "ListWorkRequests", apiReferenceLink)
 		return response, err
 	}
 
@@ -1090,6 +1122,8 @@ func (client ApplicationMigrationClient) migrateApplication(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/Migration/MigrateApplication"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "MigrateApplication", apiReferenceLink)
 		return response, err
 	}
 
@@ -1172,6 +1206,8 @@ func (client ApplicationMigrationClient) updateMigration(ctx context.Context, re
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/Migration/UpdateMigration"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "UpdateMigration", apiReferenceLink)
 		return response, err
 	}
 
@@ -1229,6 +1265,8 @@ func (client ApplicationMigrationClient) updateSource(ctx context.Context, reque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/applicationmigration/20191031/Source/UpdateSource"
+		err = common.PostProcessServiceError(err, "ApplicationMigration", "UpdateSource", apiReferenceLink)
 		return response, err
 	}
 

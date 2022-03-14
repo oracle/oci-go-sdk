@@ -12,8 +12,8 @@ package aispeech
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -137,6 +137,8 @@ func (client AIServiceSpeechClient) cancelTranscriptionJob(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/speech/20220101/TranscriptionJob/CancelTranscriptionJob"
+		err = common.PostProcessServiceError(err, "AIServiceSpeech", "CancelTranscriptionJob", apiReferenceLink)
 		return response, err
 	}
 
@@ -197,6 +199,8 @@ func (client AIServiceSpeechClient) cancelTranscriptionTask(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/speech/20220101/TranscriptionTask/CancelTranscriptionTask"
+		err = common.PostProcessServiceError(err, "AIServiceSpeech", "CancelTranscriptionTask", apiReferenceLink)
 		return response, err
 	}
 
@@ -257,6 +261,8 @@ func (client AIServiceSpeechClient) changeTranscriptionJobCompartment(ctx contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/speech/20220101/TranscriptionJob/ChangeTranscriptionJobCompartment"
+		err = common.PostProcessServiceError(err, "AIServiceSpeech", "ChangeTranscriptionJobCompartment", apiReferenceLink)
 		return response, err
 	}
 
@@ -317,6 +323,8 @@ func (client AIServiceSpeechClient) createTranscriptionJob(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/speech/20220101/TranscriptionJob/CreateTranscriptionJob"
+		err = common.PostProcessServiceError(err, "AIServiceSpeech", "CreateTranscriptionJob", apiReferenceLink)
 		return response, err
 	}
 
@@ -372,6 +380,8 @@ func (client AIServiceSpeechClient) getTranscriptionJob(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/speech/20220101/TranscriptionJob/GetTranscriptionJob"
+		err = common.PostProcessServiceError(err, "AIServiceSpeech", "GetTranscriptionJob", apiReferenceLink)
 		return response, err
 	}
 
@@ -427,6 +437,8 @@ func (client AIServiceSpeechClient) getTranscriptionTask(ctx context.Context, re
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/speech/20220101/TranscriptionTask/GetTranscriptionTask"
+		err = common.PostProcessServiceError(err, "AIServiceSpeech", "GetTranscriptionTask", apiReferenceLink)
 		return response, err
 	}
 
@@ -482,6 +494,8 @@ func (client AIServiceSpeechClient) listTranscriptionJobs(ctx context.Context, r
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/speech/20220101/TranscriptionJob/ListTranscriptionJobs"
+		err = common.PostProcessServiceError(err, "AIServiceSpeech", "ListTranscriptionJobs", apiReferenceLink)
 		return response, err
 	}
 
@@ -537,6 +551,8 @@ func (client AIServiceSpeechClient) listTranscriptionTasks(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/speech/20220101/TranscriptionTask/ListTranscriptionTasks"
+		err = common.PostProcessServiceError(err, "AIServiceSpeech", "ListTranscriptionTasks", apiReferenceLink)
 		return response, err
 	}
 
@@ -592,6 +608,8 @@ func (client AIServiceSpeechClient) updateTranscriptionJob(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/speech/20220101/TranscriptionJob/UpdateTranscriptionJob"
+		err = common.PostProcessServiceError(err, "AIServiceSpeech", "UpdateTranscriptionJob", apiReferenceLink)
 		return response, err
 	}
 

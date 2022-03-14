@@ -14,8 +14,8 @@ package ailanguage
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -134,6 +134,8 @@ func (client AIServiceLanguageClient) batchDetectDominantLanguage(ctx context.Co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/language/20210101/BatchDetectDominantLanguage/BatchDetectDominantLanguage"
+		err = common.PostProcessServiceError(err, "AIServiceLanguage", "BatchDetectDominantLanguage", apiReferenceLink)
 		return response, err
 	}
 
@@ -189,6 +191,8 @@ func (client AIServiceLanguageClient) batchDetectLanguageEntities(ctx context.Co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/language/20210101/BatchDetectLanguageEntities/BatchDetectLanguageEntities"
+		err = common.PostProcessServiceError(err, "AIServiceLanguage", "BatchDetectLanguageEntities", apiReferenceLink)
 		return response, err
 	}
 
@@ -244,6 +248,8 @@ func (client AIServiceLanguageClient) batchDetectLanguageKeyPhrases(ctx context.
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/language/20210101/BatchDetectLanguageKeyPhrases/BatchDetectLanguageKeyPhrases"
+		err = common.PostProcessServiceError(err, "AIServiceLanguage", "BatchDetectLanguageKeyPhrases", apiReferenceLink)
 		return response, err
 	}
 
@@ -299,6 +305,8 @@ func (client AIServiceLanguageClient) batchDetectLanguageSentiments(ctx context.
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/language/20210101/BatchDetectLanguageSentiments/BatchDetectLanguageSentiments"
+		err = common.PostProcessServiceError(err, "AIServiceLanguage", "BatchDetectLanguageSentiments", apiReferenceLink)
 		return response, err
 	}
 
@@ -354,6 +362,8 @@ func (client AIServiceLanguageClient) batchDetectLanguageTextClassification(ctx 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/language/20210101/BatchDetectLanguageTextClassification/BatchDetectLanguageTextClassification"
+		err = common.PostProcessServiceError(err, "AIServiceLanguage", "BatchDetectLanguageTextClassification", apiReferenceLink)
 		return response, err
 	}
 
@@ -409,6 +419,8 @@ func (client AIServiceLanguageClient) detectDominantLanguage(ctx context.Context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/language/20210101/DetectDominantLanguage/DetectDominantLanguage"
+		err = common.PostProcessServiceError(err, "AIServiceLanguage", "DetectDominantLanguage", apiReferenceLink)
 		return response, err
 	}
 
@@ -464,6 +476,8 @@ func (client AIServiceLanguageClient) detectLanguageEntities(ctx context.Context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/language/20210101/DetectLanguageEntities/DetectLanguageEntities"
+		err = common.PostProcessServiceError(err, "AIServiceLanguage", "DetectLanguageEntities", apiReferenceLink)
 		return response, err
 	}
 
@@ -519,6 +533,8 @@ func (client AIServiceLanguageClient) detectLanguageKeyPhrases(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/language/20210101/DetectLanguageKeyPhrases/DetectLanguageKeyPhrases"
+		err = common.PostProcessServiceError(err, "AIServiceLanguage", "DetectLanguageKeyPhrases", apiReferenceLink)
 		return response, err
 	}
 
@@ -574,6 +590,8 @@ func (client AIServiceLanguageClient) detectLanguageSentiments(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/language/20210101/DetectLanguageSentiments/DetectLanguageSentiments"
+		err = common.PostProcessServiceError(err, "AIServiceLanguage", "DetectLanguageSentiments", apiReferenceLink)
 		return response, err
 	}
 
@@ -629,6 +647,8 @@ func (client AIServiceLanguageClient) detectLanguageTextClassification(ctx conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/language/20210101/DetectLanguageTextClassification/DetectLanguageTextClassification"
+		err = common.PostProcessServiceError(err, "AIServiceLanguage", "DetectLanguageTextClassification", apiReferenceLink)
 		return response, err
 	}
 

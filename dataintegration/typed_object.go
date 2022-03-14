@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
+	"github.com/oracle/oci-go-sdk/v62/common"
 	"strings"
 )
 
@@ -133,6 +133,10 @@ func (m *typedobject) UnmarshalPolymorphicJSON(data []byte) (interface{}, error)
 		return mm, err
 	case "DERIVED_FIELD":
 		mm := DerivedField{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "TYPED_EXPRESSION":
+		mm := TypedExpression{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	case "FLOW_PORT":

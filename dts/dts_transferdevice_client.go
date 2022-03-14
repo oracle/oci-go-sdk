@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -137,6 +137,8 @@ func (client TransferDeviceClient) createTransferDevice(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferDevice", "CreateTransferDevice", apiReferenceLink)
 		return response, err
 	}
 
@@ -192,6 +194,8 @@ func (client TransferDeviceClient) deleteTransferDevice(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferDevice", "DeleteTransferDevice", apiReferenceLink)
 		return response, err
 	}
 
@@ -247,6 +251,8 @@ func (client TransferDeviceClient) getTransferDevice(ctx context.Context, reques
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferDevice", "GetTransferDevice", apiReferenceLink)
 		return response, err
 	}
 
@@ -302,6 +308,8 @@ func (client TransferDeviceClient) listTransferDevices(ctx context.Context, requ
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferDevice", "ListTransferDevices", apiReferenceLink)
 		return response, err
 	}
 
@@ -357,6 +365,8 @@ func (client TransferDeviceClient) updateTransferDevice(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferDevice", "UpdateTransferDevice", apiReferenceLink)
 		return response, err
 	}
 

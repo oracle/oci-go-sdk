@@ -12,8 +12,8 @@ package loggingsearch
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -133,6 +133,8 @@ func (client LogSearchClient) searchLogs(ctx context.Context, request common.OCI
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/logging-search/20190909/SearchResult/SearchLogs"
+		err = common.PostProcessServiceError(err, "LogSearch", "SearchLogs", apiReferenceLink)
 		return response, err
 	}
 

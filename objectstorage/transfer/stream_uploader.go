@@ -9,7 +9,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/oracle/oci-go-sdk/v61/common"
+	"github.com/oracle/oci-go-sdk/v62/common"
 )
 
 // StreamUploader is an interface for upload a stream
@@ -80,6 +80,7 @@ func (streamUpload *streamUpload) startConcurrentUpload(ctx context.Context, don
 	}
 	if multipartMD5 != nil && *request.EnableMultipartChecksumVerification && strings.Compare(*resp.OpcMultipartMd5, *multipartMD5) != 0 {
 		err = fmt.Errorf("multipart base64 MD5 checksum verification failure, the sending opcMD5 is %s, the reveived is %s", *resp.OpcMultipartMd5, *multipartMD5)
+		err = uploadManagerError{err: err}
 		common.Debugf("MD5 checksum error: %v\n", err)
 	}
 

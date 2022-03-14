@@ -13,9 +13,9 @@ import (
 	"os/user"
 	"path"
 
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/example/helpers"
-	"github.com/oracle/oci-go-sdk/v61/identity"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/example/helpers"
+	"github.com/oracle/oci-go-sdk/v62/identity"
 )
 
 // This test requires that you have a specified profile setup for security-token based authentication, for the detail
