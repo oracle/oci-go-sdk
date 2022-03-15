@@ -12,8 +12,8 @@ package rover
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -138,6 +138,8 @@ func (client RoverClusterClient) changeRoverClusterCompartment(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverCluster/ChangeRoverClusterCompartment"
+		err = common.PostProcessServiceError(err, "RoverCluster", "ChangeRoverClusterCompartment", apiReferenceLink)
 		return response, err
 	}
 
@@ -199,6 +201,8 @@ func (client RoverClusterClient) createRoverCluster(ctx context.Context, request
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverCluster/CreateRoverCluster"
+		err = common.PostProcessServiceError(err, "RoverCluster", "CreateRoverCluster", apiReferenceLink)
 		return response, err
 	}
 
@@ -260,6 +264,8 @@ func (client RoverClusterClient) deleteRoverCluster(ctx context.Context, request
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverCluster/DeleteRoverCluster"
+		err = common.PostProcessServiceError(err, "RoverCluster", "DeleteRoverCluster", apiReferenceLink)
 		return response, err
 	}
 
@@ -316,6 +322,8 @@ func (client RoverClusterClient) getRoverCluster(ctx context.Context, request co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverCluster/GetRoverCluster"
+		err = common.PostProcessServiceError(err, "RoverCluster", "GetRoverCluster", apiReferenceLink)
 		return response, err
 	}
 
@@ -372,6 +380,8 @@ func (client RoverClusterClient) getRoverClusterCertificate(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverClusterCertificate/GetRoverClusterCertificate"
+		err = common.PostProcessServiceError(err, "RoverCluster", "GetRoverClusterCertificate", apiReferenceLink)
 		return response, err
 	}
 
@@ -428,6 +438,8 @@ func (client RoverClusterClient) listRoverClusters(ctx context.Context, request 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverCluster/ListRoverClusters"
+		err = common.PostProcessServiceError(err, "RoverCluster", "ListRoverClusters", apiReferenceLink)
 		return response, err
 	}
 
@@ -484,6 +496,8 @@ func (client RoverClusterClient) updateRoverCluster(ctx context.Context, request
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverCluster/UpdateRoverCluster"
+		err = common.PostProcessServiceError(err, "RoverCluster", "UpdateRoverCluster", apiReferenceLink)
 		return response, err
 	}
 

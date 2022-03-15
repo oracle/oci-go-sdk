@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -137,6 +137,8 @@ func (client TransferJobClient) changeTransferJobCompartment(ctx context.Context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferJob", "ChangeTransferJobCompartment", apiReferenceLink)
 		return response, err
 	}
 
@@ -197,6 +199,8 @@ func (client TransferJobClient) createTransferJob(ctx context.Context, request c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferJob", "CreateTransferJob", apiReferenceLink)
 		return response, err
 	}
 
@@ -252,6 +256,8 @@ func (client TransferJobClient) deleteTransferJob(ctx context.Context, request c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferJob", "DeleteTransferJob", apiReferenceLink)
 		return response, err
 	}
 
@@ -307,6 +313,8 @@ func (client TransferJobClient) getTransferJob(ctx context.Context, request comm
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferJob", "GetTransferJob", apiReferenceLink)
 		return response, err
 	}
 
@@ -362,6 +370,8 @@ func (client TransferJobClient) listTransferJobs(ctx context.Context, request co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferJob", "ListTransferJobs", apiReferenceLink)
 		return response, err
 	}
 
@@ -417,6 +427,8 @@ func (client TransferJobClient) updateTransferJob(ctx context.Context, request c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferJob", "UpdateTransferJob", apiReferenceLink)
 		return response, err
 	}
 

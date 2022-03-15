@@ -13,7 +13,7 @@ package apmconfig
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
+	"github.com/oracle/oci-go-sdk/v62/common"
 	"strings"
 )
 

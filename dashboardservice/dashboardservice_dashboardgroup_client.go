@@ -18,8 +18,8 @@ package dashboardservice
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -147,6 +147,8 @@ func (client DashboardGroupClient) createDashboardGroup(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/dashboard/20210731/DashboardGroup/CreateDashboardGroup"
+		err = common.PostProcessServiceError(err, "DashboardGroup", "CreateDashboardGroup", apiReferenceLink)
 		return response, err
 	}
 
@@ -202,6 +204,8 @@ func (client DashboardGroupClient) deleteDashboardGroup(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/dashboard/20210731/DashboardGroup/DeleteDashboardGroup"
+		err = common.PostProcessServiceError(err, "DashboardGroup", "DeleteDashboardGroup", apiReferenceLink)
 		return response, err
 	}
 
@@ -257,6 +261,8 @@ func (client DashboardGroupClient) getDashboardGroup(ctx context.Context, reques
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/dashboard/20210731/DashboardGroup/GetDashboardGroup"
+		err = common.PostProcessServiceError(err, "DashboardGroup", "GetDashboardGroup", apiReferenceLink)
 		return response, err
 	}
 
@@ -312,6 +318,8 @@ func (client DashboardGroupClient) listDashboardGroups(ctx context.Context, requ
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/dashboard/20210731/DashboardGroupCollection/ListDashboardGroups"
+		err = common.PostProcessServiceError(err, "DashboardGroup", "ListDashboardGroups", apiReferenceLink)
 		return response, err
 	}
 
@@ -367,6 +375,8 @@ func (client DashboardGroupClient) updateDashboardGroup(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/dashboard/20210731/DashboardGroup/UpdateDashboardGroup"
+		err = common.PostProcessServiceError(err, "DashboardGroup", "UpdateDashboardGroup", apiReferenceLink)
 		return response, err
 	}
 

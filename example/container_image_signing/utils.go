@@ -12,9 +12,9 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/oracle/oci-go-sdk/v61/artifacts"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/keymanagement"
+	"github.com/oracle/oci-go-sdk/v62/artifacts"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/keymanagement"
 )
 
 /*

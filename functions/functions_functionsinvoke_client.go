@@ -12,8 +12,8 @@ package functions
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -124,6 +124,8 @@ func (client FunctionsInvokeClient) invokeFunction(ctx context.Context, request 
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/functions/20181201/Function/InvokeFunction"
+		err = common.PostProcessServiceError(err, "FunctionsInvoke", "InvokeFunction", apiReferenceLink)
 		return response, err
 	}
 

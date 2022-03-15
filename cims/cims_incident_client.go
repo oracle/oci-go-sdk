@@ -12,8 +12,8 @@ package cims
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -132,6 +132,8 @@ func (client IncidentClient) createIncident(ctx context.Context, request common.
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/incidentmanagement/20181231/Incident/CreateIncident"
+		err = common.PostProcessServiceError(err, "Incident", "CreateIncident", apiReferenceLink)
 		return response, err
 	}
 
@@ -187,6 +189,8 @@ func (client IncidentClient) getIncident(ctx context.Context, request common.OCI
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/incidentmanagement/20181231/Incident/GetIncident"
+		err = common.PostProcessServiceError(err, "Incident", "GetIncident", apiReferenceLink)
 		return response, err
 	}
 
@@ -242,6 +246,8 @@ func (client IncidentClient) getStatus(ctx context.Context, request common.OCIRe
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/incidentmanagement/20181231/Status/GetStatus"
+		err = common.PostProcessServiceError(err, "Incident", "GetStatus", apiReferenceLink)
 		return response, err
 	}
 
@@ -297,6 +303,8 @@ func (client IncidentClient) listIncidentResourceTypes(ctx context.Context, requ
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/incidentmanagement/20181231/IncidentResourceType/ListIncidentResourceTypes"
+		err = common.PostProcessServiceError(err, "Incident", "ListIncidentResourceTypes", apiReferenceLink)
 		return response, err
 	}
 
@@ -352,6 +360,8 @@ func (client IncidentClient) listIncidents(ctx context.Context, request common.O
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/incidentmanagement/20181231/IncidentSummary/ListIncidents"
+		err = common.PostProcessServiceError(err, "Incident", "ListIncidents", apiReferenceLink)
 		return response, err
 	}
 
@@ -407,6 +417,8 @@ func (client IncidentClient) updateIncident(ctx context.Context, request common.
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/incidentmanagement/20181231/UpdateIncident/UpdateIncident"
+		err = common.PostProcessServiceError(err, "Incident", "UpdateIncident", apiReferenceLink)
 		return response, err
 	}
 
@@ -462,6 +474,8 @@ func (client IncidentClient) validateUser(ctx context.Context, request common.OC
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/incidentmanagement/20181231/ValidationResponse/ValidateUser"
+		err = common.PostProcessServiceError(err, "Incident", "ValidateUser", apiReferenceLink)
 		return response, err
 	}
 

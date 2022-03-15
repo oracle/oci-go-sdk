@@ -12,8 +12,8 @@ package tenantmanagercontrolplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -137,6 +137,8 @@ func (client OrdersClient) activateOrder(ctx context.Context, request common.OCI
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Order/ActivateOrder"
+		err = common.PostProcessServiceError(err, "Orders", "ActivateOrder", apiReferenceLink)
 		return response, err
 	}
 
@@ -192,6 +194,8 @@ func (client OrdersClient) getOrder(ctx context.Context, request common.OCIReque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Order/GetOrder"
+		err = common.PostProcessServiceError(err, "Orders", "GetOrder", apiReferenceLink)
 		return response, err
 	}
 

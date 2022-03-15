@@ -18,8 +18,8 @@ package dashboardservice
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -147,6 +147,8 @@ func (client DashboardClient) createDashboard(ctx context.Context, request commo
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/dashboard/20210731/Dashboard/CreateDashboard"
+		err = common.PostProcessServiceError(err, "Dashboard", "CreateDashboard", apiReferenceLink)
 		return response, err
 	}
 
@@ -202,6 +204,8 @@ func (client DashboardClient) deleteDashboard(ctx context.Context, request commo
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/dashboard/20210731/Dashboard/DeleteDashboard"
+		err = common.PostProcessServiceError(err, "Dashboard", "DeleteDashboard", apiReferenceLink)
 		return response, err
 	}
 
@@ -257,6 +261,8 @@ func (client DashboardClient) getDashboard(ctx context.Context, request common.O
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/dashboard/20210731/Dashboard/GetDashboard"
+		err = common.PostProcessServiceError(err, "Dashboard", "GetDashboard", apiReferenceLink)
 		return response, err
 	}
 
@@ -312,6 +318,8 @@ func (client DashboardClient) listDashboards(ctx context.Context, request common
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/dashboard/20210731/DashboardCollection/ListDashboards"
+		err = common.PostProcessServiceError(err, "Dashboard", "ListDashboards", apiReferenceLink)
 		return response, err
 	}
 
@@ -367,6 +375,8 @@ func (client DashboardClient) updateDashboard(ctx context.Context, request commo
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/dashboard/20210731/Dashboard/UpdateDashboard"
+		err = common.PostProcessServiceError(err, "Dashboard", "UpdateDashboard", apiReferenceLink)
 		return response, err
 	}
 

@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -137,6 +137,8 @@ func (client TransferApplianceClient) createTransferAppliance(ctx context.Contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferAppliance", "CreateTransferAppliance", apiReferenceLink)
 		return response, err
 	}
 
@@ -192,6 +194,8 @@ func (client TransferApplianceClient) createTransferApplianceAdminCredentials(ct
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferAppliance", "CreateTransferApplianceAdminCredentials", apiReferenceLink)
 		return response, err
 	}
 
@@ -247,6 +251,8 @@ func (client TransferApplianceClient) deleteTransferAppliance(ctx context.Contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferAppliance", "DeleteTransferAppliance", apiReferenceLink)
 		return response, err
 	}
 
@@ -302,6 +308,8 @@ func (client TransferApplianceClient) getTransferAppliance(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferAppliance", "GetTransferAppliance", apiReferenceLink)
 		return response, err
 	}
 
@@ -357,6 +365,8 @@ func (client TransferApplianceClient) getTransferApplianceCertificateAuthorityCe
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferAppliance", "GetTransferApplianceCertificateAuthorityCertificate", apiReferenceLink)
 		return response, err
 	}
 
@@ -412,6 +422,8 @@ func (client TransferApplianceClient) getTransferApplianceEncryptionPassphrase(c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferAppliance", "GetTransferApplianceEncryptionPassphrase", apiReferenceLink)
 		return response, err
 	}
 
@@ -467,6 +479,8 @@ func (client TransferApplianceClient) listTransferAppliances(ctx context.Context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferAppliance", "ListTransferAppliances", apiReferenceLink)
 		return response, err
 	}
 
@@ -522,6 +536,8 @@ func (client TransferApplianceClient) updateTransferAppliance(ctx context.Contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferAppliance", "UpdateTransferAppliance", apiReferenceLink)
 		return response, err
 	}
 

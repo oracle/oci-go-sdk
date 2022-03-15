@@ -12,8 +12,8 @@ package rover
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -138,6 +138,8 @@ func (client RoverEntitlementClient) changeRoverEntitlementCompartment(ctx conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverEntitlement/ChangeRoverEntitlementCompartment"
+		err = common.PostProcessServiceError(err, "RoverEntitlement", "ChangeRoverEntitlementCompartment", apiReferenceLink)
 		return response, err
 	}
 
@@ -199,6 +201,8 @@ func (client RoverEntitlementClient) createRoverEntitlement(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverEntitlement/CreateRoverEntitlement"
+		err = common.PostProcessServiceError(err, "RoverEntitlement", "CreateRoverEntitlement", apiReferenceLink)
 		return response, err
 	}
 
@@ -260,6 +264,8 @@ func (client RoverEntitlementClient) deleteRoverEntitlement(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverEntitlement/DeleteRoverEntitlement"
+		err = common.PostProcessServiceError(err, "RoverEntitlement", "DeleteRoverEntitlement", apiReferenceLink)
 		return response, err
 	}
 
@@ -321,6 +327,8 @@ func (client RoverEntitlementClient) getRoverEntitlement(ctx context.Context, re
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverEntitlement/GetRoverEntitlement"
+		err = common.PostProcessServiceError(err, "RoverEntitlement", "GetRoverEntitlement", apiReferenceLink)
 		return response, err
 	}
 
@@ -377,6 +385,8 @@ func (client RoverEntitlementClient) listRoverEntitlements(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverEntitlement/ListRoverEntitlements"
+		err = common.PostProcessServiceError(err, "RoverEntitlement", "ListRoverEntitlements", apiReferenceLink)
 		return response, err
 	}
 
@@ -433,6 +443,8 @@ func (client RoverEntitlementClient) updateRoverEntitlement(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverCluster/UpdateRoverEntitlement"
+		err = common.PostProcessServiceError(err, "RoverEntitlement", "UpdateRoverEntitlement", apiReferenceLink)
 		return response, err
 	}
 

@@ -10,9 +10,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/core"
-	"github.com/oracle/oci-go-sdk/v61/example/helpers"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/core"
+	"github.com/oracle/oci-go-sdk/v62/example/helpers"
 )
 
 // Copies a volume backup to another region.

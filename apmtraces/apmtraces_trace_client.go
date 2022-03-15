@@ -12,8 +12,8 @@ package apmtraces
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -132,6 +132,8 @@ func (client TraceClient) getAggregatedSnapshot(ctx context.Context, request com
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/apm-trace-explorer/20200630/AggregatedSnapshot/GetAggregatedSnapshot"
+		err = common.PostProcessServiceError(err, "Trace", "GetAggregatedSnapshot", apiReferenceLink)
 		return response, err
 	}
 
@@ -187,6 +189,8 @@ func (client TraceClient) getSpan(ctx context.Context, request common.OCIRequest
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/apm-trace-explorer/20200630/Span/GetSpan"
+		err = common.PostProcessServiceError(err, "Trace", "GetSpan", apiReferenceLink)
 		return response, err
 	}
 
@@ -242,6 +246,8 @@ func (client TraceClient) getTrace(ctx context.Context, request common.OCIReques
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/apm-trace-explorer/20200630/Trace/GetTrace"
+		err = common.PostProcessServiceError(err, "Trace", "GetTrace", apiReferenceLink)
 		return response, err
 	}
 
@@ -297,6 +303,8 @@ func (client TraceClient) getTraceSnapshot(ctx context.Context, request common.O
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/apm-trace-explorer/20200630/TraceSnapshot/GetTraceSnapshot"
+		err = common.PostProcessServiceError(err, "Trace", "GetTraceSnapshot", apiReferenceLink)
 		return response, err
 	}
 
