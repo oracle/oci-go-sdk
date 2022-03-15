@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -132,6 +132,8 @@ func (client TransferPackageClient) attachDevicesToTransferPackage(ctx context.C
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferPackage", "AttachDevicesToTransferPackage", apiReferenceLink)
 		return response, err
 	}
 
@@ -192,6 +194,8 @@ func (client TransferPackageClient) createTransferPackage(ctx context.Context, r
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferPackage", "CreateTransferPackage", apiReferenceLink)
 		return response, err
 	}
 
@@ -247,6 +251,8 @@ func (client TransferPackageClient) deleteTransferPackage(ctx context.Context, r
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferPackage", "DeleteTransferPackage", apiReferenceLink)
 		return response, err
 	}
 
@@ -302,6 +308,8 @@ func (client TransferPackageClient) detachDevicesFromTransferPackage(ctx context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferPackage", "DetachDevicesFromTransferPackage", apiReferenceLink)
 		return response, err
 	}
 
@@ -357,6 +365,8 @@ func (client TransferPackageClient) getTransferPackage(ctx context.Context, requ
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferPackage", "GetTransferPackage", apiReferenceLink)
 		return response, err
 	}
 
@@ -412,6 +422,8 @@ func (client TransferPackageClient) listTransferPackages(ctx context.Context, re
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferPackage", "ListTransferPackages", apiReferenceLink)
 		return response, err
 	}
 
@@ -467,6 +479,8 @@ func (client TransferPackageClient) updateTransferPackage(ctx context.Context, r
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferPackage", "UpdateTransferPackage", apiReferenceLink)
 		return response, err
 	}
 

@@ -12,8 +12,8 @@ package apmtraces
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -133,6 +133,8 @@ func (client QueryClient) listQuickPicks(ctx context.Context, request common.OCI
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/apm-trace-explorer/20200630/QuickPickSummary/ListQuickPicks"
+		err = common.PostProcessServiceError(err, "Query", "ListQuickPicks", apiReferenceLink)
 		return response, err
 	}
 
@@ -191,6 +193,8 @@ func (client QueryClient) query(ctx context.Context, request common.OCIRequest, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/apm-trace-explorer/20200630/QueryResultResponse/Query"
+		err = common.PostProcessServiceError(err, "Query", "Query", apiReferenceLink)
 		return response, err
 	}
 

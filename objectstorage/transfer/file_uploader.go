@@ -11,8 +11,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/objectstorage"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/objectstorage"
 )
 
 // FileUploader is an interface to upload a file
@@ -197,6 +197,7 @@ func (fileUpload *fileUpload) startConcurrentUpload(ctx context.Context, done <-
 
 	if multipartMD5 != nil && *request.EnableMultipartChecksumVerification && strings.Compare(*resp.OpcMultipartMd5, *multipartMD5) != 0 {
 		err = fmt.Errorf("multipart base64 MD5 checksum verification failure, the sending opcMD5 is %s, the reveived is %s", *resp.OpcMultipartMd5, *multipartMD5)
+		err = uploadManagerError{err: err}
 		common.Debugf("MD5 checksum error: %v\n", err)
 	}
 

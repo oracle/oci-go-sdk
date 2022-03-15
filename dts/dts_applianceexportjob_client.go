@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -137,6 +137,8 @@ func (client ApplianceExportJobClient) changeApplianceExportJobCompartment(ctx c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "ApplianceExportJob", "ChangeApplianceExportJobCompartment", apiReferenceLink)
 		return response, err
 	}
 
@@ -197,6 +199,8 @@ func (client ApplianceExportJobClient) createApplianceExportJob(ctx context.Cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "ApplianceExportJob", "CreateApplianceExportJob", apiReferenceLink)
 		return response, err
 	}
 
@@ -252,6 +256,8 @@ func (client ApplianceExportJobClient) deleteApplianceExportJob(ctx context.Cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "ApplianceExportJob", "DeleteApplianceExportJob", apiReferenceLink)
 		return response, err
 	}
 
@@ -307,6 +313,8 @@ func (client ApplianceExportJobClient) getApplianceExportJob(ctx context.Context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "ApplianceExportJob", "GetApplianceExportJob", apiReferenceLink)
 		return response, err
 	}
 
@@ -362,6 +370,8 @@ func (client ApplianceExportJobClient) listApplianceExportJobs(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "ApplianceExportJob", "ListApplianceExportJobs", apiReferenceLink)
 		return response, err
 	}
 
@@ -417,6 +427,8 @@ func (client ApplianceExportJobClient) updateApplianceExportJob(ctx context.Cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "ApplianceExportJob", "UpdateApplianceExportJob", apiReferenceLink)
 		return response, err
 	}
 

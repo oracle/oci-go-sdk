@@ -7,6 +7,7 @@ import (
 	"bytes"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 	"strings"
 	"testing"
 
@@ -19,13 +20,14 @@ func TestErrors_ServiceFailureFromResponse(t *testing.T) {
 	header.Set("opc-request-id", opcID)
 	sampleResponse := `{"key" : "test"}`
 
-	httpResponse := http.Response{Header: header}
+	httpRequest := http.Request{Method: http.MethodGet, URL: &url.URL{}}
+	httpResponse := http.Response{Header: header, Request: &httpRequest}
 	bodyBuffer := bytes.NewBufferString(sampleResponse)
 	httpResponse.Body = ioutil.NopCloser(bodyBuffer)
 	httpResponse.StatusCode = 200
 	err := newServiceFailureFromResponse(&httpResponse)
 	assert.Equal(t, err.(ServiceError).GetOpcRequestID(), opcID)
-	assert.Equal(t, strings.Contains(err.Error(), "Service error:"), true)
+	assert.Equal(t, strings.Contains(err.Error(), "Error returned by"), true)
 
 	failure, ok := IsServiceError(err)
 	assert.Equal(t, ok, true)
@@ -36,7 +38,8 @@ func TestErrors_FailedToParseJson(t *testing.T) {
 	// invalid json
 	sampleResponse := `{"key" : test"}`
 
-	httpResponse := http.Response{}
+	httpRequest := http.Request{Method: http.MethodGet, URL: &url.URL{}}
+	httpResponse := http.Response{Request: &httpRequest}
 	bodyBuffer := bytes.NewBufferString(sampleResponse)
 	httpResponse.Body = ioutil.NopCloser(bodyBuffer)
 	err := newServiceFailureFromResponse(&httpResponse)

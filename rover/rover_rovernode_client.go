@@ -12,8 +12,8 @@ package rover
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -138,6 +138,8 @@ func (client RoverNodeClient) changeRoverNodeCompartment(ctx context.Context, re
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverNode/ChangeRoverNodeCompartment"
+		err = common.PostProcessServiceError(err, "RoverNode", "ChangeRoverNodeCompartment", apiReferenceLink)
 		return response, err
 	}
 
@@ -199,6 +201,8 @@ func (client RoverNodeClient) createRoverNode(ctx context.Context, request commo
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverNode/CreateRoverNode"
+		err = common.PostProcessServiceError(err, "RoverNode", "CreateRoverNode", apiReferenceLink)
 		return response, err
 	}
 
@@ -260,6 +264,8 @@ func (client RoverNodeClient) deleteRoverNode(ctx context.Context, request commo
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverNode/DeleteRoverNode"
+		err = common.PostProcessServiceError(err, "RoverNode", "DeleteRoverNode", apiReferenceLink)
 		return response, err
 	}
 
@@ -316,6 +322,8 @@ func (client RoverNodeClient) getRoverNode(ctx context.Context, request common.O
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverNode/GetRoverNode"
+		err = common.PostProcessServiceError(err, "RoverNode", "GetRoverNode", apiReferenceLink)
 		return response, err
 	}
 
@@ -372,6 +380,8 @@ func (client RoverNodeClient) getRoverNodeCertificate(ctx context.Context, reque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverNodeCertificate/GetRoverNodeCertificate"
+		err = common.PostProcessServiceError(err, "RoverNode", "GetRoverNodeCertificate", apiReferenceLink)
 		return response, err
 	}
 
@@ -428,6 +438,8 @@ func (client RoverNodeClient) getRoverNodeEncryptionKey(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverNodeEncryptionKey/GetRoverNodeEncryptionKey"
+		err = common.PostProcessServiceError(err, "RoverNode", "GetRoverNodeEncryptionKey", apiReferenceLink)
 		return response, err
 	}
 
@@ -484,6 +496,8 @@ func (client RoverNodeClient) getRoverNodeGetRpt(ctx context.Context, request co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverNodeGetRpt/GetRoverNodeGetRpt"
+		err = common.PostProcessServiceError(err, "RoverNode", "GetRoverNodeGetRpt", apiReferenceLink)
 		return response, err
 	}
 
@@ -540,6 +554,8 @@ func (client RoverNodeClient) listRoverNodes(ctx context.Context, request common
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverNode/ListRoverNodes"
+		err = common.PostProcessServiceError(err, "RoverNode", "ListRoverNodes", apiReferenceLink)
 		return response, err
 	}
 
@@ -601,6 +617,8 @@ func (client RoverNodeClient) roverNodeActionSetKey(ctx context.Context, request
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverNodeSetKey/RoverNodeActionSetKey"
+		err = common.PostProcessServiceError(err, "RoverNode", "RoverNodeActionSetKey", apiReferenceLink)
 		return response, err
 	}
 
@@ -657,6 +675,8 @@ func (client RoverNodeClient) updateRoverNode(ctx context.Context, request commo
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverNode/UpdateRoverNode"
+		err = common.PostProcessServiceError(err, "RoverNode", "UpdateRoverNode", apiReferenceLink)
 		return response, err
 	}
 

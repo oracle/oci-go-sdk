@@ -12,8 +12,8 @@ package resourcesearch
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -133,6 +133,8 @@ func (client ResourceSearchClient) getResourceType(ctx context.Context, request 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/search/20180409/ResourceType/GetResourceType"
+		err = common.PostProcessServiceError(err, "ResourceSearch", "GetResourceType", apiReferenceLink)
 		return response, err
 	}
 
@@ -189,6 +191,8 @@ func (client ResourceSearchClient) listResourceTypes(ctx context.Context, reques
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/search/20180409/ResourceType/ListResourceTypes"
+		err = common.PostProcessServiceError(err, "ResourceSearch", "ListResourceTypes", apiReferenceLink)
 		return response, err
 	}
 
@@ -247,6 +251,8 @@ func (client ResourceSearchClient) searchResources(ctx context.Context, request 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/search/20180409/ResourceSummary/SearchResources"
+		err = common.PostProcessServiceError(err, "ResourceSearch", "SearchResources", apiReferenceLink)
 		return response, err
 	}
 

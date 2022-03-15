@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/example/helpers"
-	"github.com/oracle/oci-go-sdk/v61/identity"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/example/helpers"
+	"github.com/oracle/oci-go-sdk/v62/identity"
 )
 
 // Example shows how to configure circuit breaker

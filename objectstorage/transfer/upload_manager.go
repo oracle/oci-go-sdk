@@ -15,13 +15,15 @@ import (
 	"bytes"
 	"context"
 	"errors"
+	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"runtime"
 	"strings"
 
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/objectstorage"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/objectstorage"
 )
 
 // UploadManager is the interface that groups the upload methods
@@ -31,8 +33,8 @@ type UploadManager struct {
 }
 
 var (
-	errorInvalidStreamUploader = errors.New("streamUploader is required, use NewUploadManager for default implementation")
-	errorInvalidFileUploader   = errors.New("fileUploader is required, use NewUploadManager for default implementation")
+	errorInvalidStreamUploader = uploadManagerError{err: errors.New("streamUploader is required, use NewUploadManager for default implementation")}
+	errorInvalidFileUploader   = uploadManagerError{err: errors.New("fileUploader is required, use NewUploadManager for default implementation")}
 )
 
 // NewUploadManager return a pointer to UploadManager
@@ -89,6 +91,7 @@ func (uploadManager *UploadManager) UploadFile(ctx context.Context, request Uplo
 func (uploadManager *UploadManager) ResumeUploadFile(ctx context.Context, uploadID string) (response UploadResponse, err error) {
 	if len(strings.TrimSpace(uploadID)) == 0 {
 		err = errors.New("uploadID is required to resume a multipart file upload")
+		err = uploadManagerError{err: err}
 		return
 	}
 	response, err = uploadManager.FileUploader.ResumeUploadFile(ctx, uploadID)
@@ -138,7 +141,6 @@ func isZeroLength(streamReader io.Reader) bool {
 	default:
 		return false
 	}
-	return false
 }
 
 func uploadEmptyStream(ctx context.Context, request UploadStreamRequest) (response UploadResponse, err error) {
@@ -177,4 +179,12 @@ func getUploadManagerRetryPolicy() *common.RetryPolicy {
 	)
 
 	return &policy
+}
+
+type uploadManagerError struct {
+	err error
+}
+
+func (ume uploadManagerError) Error() string {
+	return fmt.Sprintf("%s\nClient Version: %s, OS Version: %s/%s\nIf you need to contact support, or file a GitHub issue, please include this full error message.", ume.err, common.Version(), runtime.GOOS, runtime.Version())
 }

@@ -4,14 +4,15 @@
 
 // Management Agent API
 //
-// API for Management Agent Cloud Service
+// Use the Management Agent API to manage your infrastructure's management agents, including their plugins and install keys.
+// For more information, see Management Agent (https://docs.cloud.oracle.com/iaas/management-agents/index.html).
 //
 
 package managementagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
+	"github.com/oracle/oci-go-sdk/v62/common"
 	"strings"
 )
 

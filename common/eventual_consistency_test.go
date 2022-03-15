@@ -6,6 +6,7 @@ package common
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"testing"
 	"time"
 
@@ -75,10 +76,10 @@ func TestRetryFileEcContext(t *testing.T) {
 	// File timestamps don't maintain monotonic clock.
 	// The canonical way to strip a monotonic clock reading is to use t = t.Round(0).
 	now := time.Now().Round(0)
-	fileName := fmt.Sprintf("%s/TestRetryFileEcContext-%d", os.TempDir(), now.Unix())
-
+	fileName := filepath.Join(os.TempDir(), fmt.Sprintf("TestRetryFileEcContext-%d", now.Unix()))
 	var f, err = os.Create(fileName)
 	assert.Equal(t, nil, err)
+	f.Close()
 	err = os.Remove(fileName)
 	assert.Equal(t, nil, err)
 
@@ -119,10 +120,10 @@ func setupFileMode(t *testing.T, testName string) {
 	// File timestamps don't maintain monotonic clock.
 	// The canonical way to strip a monotonic clock reading is to use t = t.Round(0).
 	now := time.Now().Round(0)
-	fileName := fmt.Sprintf("%s/%s-%d", os.TempDir(), testName, now.Unix())
-
+	fileName := filepath.Join(os.TempDir(), fmt.Sprintf("%s-%d", testName, now.Unix()))
 	var f, err = os.Create(fileName)
 	assert.Equal(t, nil, err)
+	f.Close()
 	err = os.Remove(fileName)
 	assert.Equal(t, nil, err)
 

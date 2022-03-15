@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 62.0.0 - 2022-03-15
+### Added
+- Support for Ubuntu platforms and unlimited installation keys in the Management Agent Cloud service
+- Support for shielded instances in the VMWare Solution service
+- Support for application resources in the Data Integration service
+- Support for multi-AVM on Exadata Cloud at Customer infrastructure in the Database service
+- Support for heterogeneous (VM and AVM) clusters on Exadata Cloud at Customer infrastructure in the Database service
+- Support for custom maintenance schedules for AVM clusters on Exadata Cloud at Customer infrastructure in the Database service
+- Support for listing vulnerabilities, vulnerability-impacted containers, and vulnerability-impacted hosts in the Vulnerability Scanning service
+- Support for specifying an image count when creating or updating container scan recipes in the Vulnerability Scanning service
+
+### Changed
+- Improved error message for service error, auth provider error, upload manager and other miscellaneous errors
+
+### Breaking Changes
+- LifecycleState type in `workspace_summary` model in dataintegration service changed from `WorkspaceLifecycleStateEnum` to `WorkspaceSummaryLifecycleStateEnum`
+
 ## 61.0.0 - 2022-03-08
 ### Added
 - Support for the Sales Accelerator license option in the Content Management service

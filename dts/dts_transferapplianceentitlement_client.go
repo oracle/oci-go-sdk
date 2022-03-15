@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -137,6 +137,8 @@ func (client TransferApplianceEntitlementClient) createTransferApplianceEntitlem
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferApplianceEntitlement", "CreateTransferApplianceEntitlement", apiReferenceLink)
 		return response, err
 	}
 
@@ -197,6 +199,8 @@ func (client TransferApplianceEntitlementClient) getTransferApplianceEntitlement
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferApplianceEntitlement", "GetTransferApplianceEntitlement", apiReferenceLink)
 		return response, err
 	}
 
@@ -252,6 +256,8 @@ func (client TransferApplianceEntitlementClient) listTransferApplianceEntitlemen
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "TransferApplianceEntitlement", "ListTransferApplianceEntitlement", apiReferenceLink)
 		return response, err
 	}
 

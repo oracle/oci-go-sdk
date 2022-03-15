@@ -12,8 +12,8 @@ package datalabelingservicedataplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -137,6 +137,8 @@ func (client DataLabelingClient) createAnnotation(ctx context.Context, request c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/datalabeling-dp/20211001/Annotation/CreateAnnotation"
+		err = common.PostProcessServiceError(err, "DataLabeling", "CreateAnnotation", apiReferenceLink)
 		return response, err
 	}
 
@@ -197,6 +199,8 @@ func (client DataLabelingClient) createRecord(ctx context.Context, request commo
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/datalabeling-dp/20211001/Record/CreateRecord"
+		err = common.PostProcessServiceError(err, "DataLabeling", "CreateRecord", apiReferenceLink)
 		return response, err
 	}
 
@@ -252,6 +256,8 @@ func (client DataLabelingClient) deleteAnnotation(ctx context.Context, request c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/datalabeling-dp/20211001/Annotation/DeleteAnnotation"
+		err = common.PostProcessServiceError(err, "DataLabeling", "DeleteAnnotation", apiReferenceLink)
 		return response, err
 	}
 
@@ -307,6 +313,8 @@ func (client DataLabelingClient) deleteRecord(ctx context.Context, request commo
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/datalabeling-dp/20211001/Record/DeleteRecord"
+		err = common.PostProcessServiceError(err, "DataLabeling", "DeleteRecord", apiReferenceLink)
 		return response, err
 	}
 
@@ -362,6 +370,8 @@ func (client DataLabelingClient) getAnnotation(ctx context.Context, request comm
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/datalabeling-dp/20211001/Annotation/GetAnnotation"
+		err = common.PostProcessServiceError(err, "DataLabeling", "GetAnnotation", apiReferenceLink)
 		return response, err
 	}
 
@@ -417,6 +427,8 @@ func (client DataLabelingClient) getDataset(ctx context.Context, request common.
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/datalabeling-dp/20211001/Dataset/GetDataset"
+		err = common.PostProcessServiceError(err, "DataLabeling", "GetDataset", apiReferenceLink)
 		return response, err
 	}
 
@@ -472,6 +484,8 @@ func (client DataLabelingClient) getRecord(ctx context.Context, request common.O
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/datalabeling-dp/20211001/Record/GetRecord"
+		err = common.PostProcessServiceError(err, "DataLabeling", "GetRecord", apiReferenceLink)
 		return response, err
 	}
 
@@ -526,6 +540,8 @@ func (client DataLabelingClient) getRecordContent(ctx context.Context, request c
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/datalabeling-dp/20211001/Record/GetRecordContent"
+		err = common.PostProcessServiceError(err, "DataLabeling", "GetRecordContent", apiReferenceLink)
 		return response, err
 	}
 
@@ -580,6 +596,8 @@ func (client DataLabelingClient) getRecordPreviewContent(ctx context.Context, re
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/datalabeling-dp/20211001/Record/GetRecordPreviewContent"
+		err = common.PostProcessServiceError(err, "DataLabeling", "GetRecordPreviewContent", apiReferenceLink)
 		return response, err
 	}
 
@@ -635,6 +653,8 @@ func (client DataLabelingClient) listAnnotations(ctx context.Context, request co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/datalabeling-dp/20211001/AnnotationCollection/ListAnnotations"
+		err = common.PostProcessServiceError(err, "DataLabeling", "ListAnnotations", apiReferenceLink)
 		return response, err
 	}
 
@@ -690,6 +710,8 @@ func (client DataLabelingClient) listRecords(ctx context.Context, request common
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/datalabeling-dp/20211001/RecordCollection/ListRecords"
+		err = common.PostProcessServiceError(err, "DataLabeling", "ListRecords", apiReferenceLink)
 		return response, err
 	}
 
@@ -745,6 +767,8 @@ func (client DataLabelingClient) summarizeAnnotationAnalytics(ctx context.Contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/datalabeling-dp/20211001/AnnotationAnalyticsAggregationCollection/SummarizeAnnotationAnalytics"
+		err = common.PostProcessServiceError(err, "DataLabeling", "SummarizeAnnotationAnalytics", apiReferenceLink)
 		return response, err
 	}
 
@@ -800,6 +824,8 @@ func (client DataLabelingClient) summarizeRecordAnalytics(ctx context.Context, r
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/datalabeling-dp/20211001/RecordAnalyticsAggregationCollection/SummarizeRecordAnalytics"
+		err = common.PostProcessServiceError(err, "DataLabeling", "SummarizeRecordAnalytics", apiReferenceLink)
 		return response, err
 	}
 
@@ -855,6 +881,8 @@ func (client DataLabelingClient) updateAnnotation(ctx context.Context, request c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/datalabeling-dp/20211001/Annotation/UpdateAnnotation"
+		err = common.PostProcessServiceError(err, "DataLabeling", "UpdateAnnotation", apiReferenceLink)
 		return response, err
 	}
 
@@ -910,6 +938,8 @@ func (client DataLabelingClient) updateRecord(ctx context.Context, request commo
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/datalabeling-dp/20211001/Record/UpdateRecord"
+		err = common.PostProcessServiceError(err, "DataLabeling", "UpdateRecord", apiReferenceLink)
 		return response, err
 	}
 

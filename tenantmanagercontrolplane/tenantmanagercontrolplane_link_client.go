@@ -12,8 +12,8 @@ package tenantmanagercontrolplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -132,6 +132,8 @@ func (client LinkClient) deleteLink(ctx context.Context, request common.OCIReque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Link/DeleteLink"
+		err = common.PostProcessServiceError(err, "Link", "DeleteLink", apiReferenceLink)
 		return response, err
 	}
 
@@ -187,6 +189,8 @@ func (client LinkClient) getLink(ctx context.Context, request common.OCIRequest,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Link/GetLink"
+		err = common.PostProcessServiceError(err, "Link", "GetLink", apiReferenceLink)
 		return response, err
 	}
 
@@ -242,6 +246,8 @@ func (client LinkClient) listLinks(ctx context.Context, request common.OCIReques
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Link/ListLinks"
+		err = common.PostProcessServiceError(err, "Link", "ListLinks", apiReferenceLink)
 		return response, err
 	}
 

@@ -12,8 +12,8 @@ package announcementsservice
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -133,6 +133,8 @@ func (client AnnouncementClient) getAnnouncement(ctx context.Context, request co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/Announcement/GetAnnouncement"
+		err = common.PostProcessServiceError(err, "Announcement", "GetAnnouncement", apiReferenceLink)
 		return response, err
 	}
 
@@ -189,6 +191,8 @@ func (client AnnouncementClient) getAnnouncementUserStatus(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementUserStatusDetails/GetAnnouncementUserStatus"
+		err = common.PostProcessServiceError(err, "Announcement", "GetAnnouncementUserStatus", apiReferenceLink)
 		return response, err
 	}
 
@@ -245,6 +249,8 @@ func (client AnnouncementClient) listAnnouncements(ctx context.Context, request 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementsCollection/ListAnnouncements"
+		err = common.PostProcessServiceError(err, "Announcement", "ListAnnouncements", apiReferenceLink)
 		return response, err
 	}
 
@@ -301,6 +307,8 @@ func (client AnnouncementClient) updateAnnouncementUserStatus(ctx context.Contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementUserStatusDetails/UpdateAnnouncementUserStatus"
+		err = common.PostProcessServiceError(err, "Announcement", "UpdateAnnouncementUserStatus", apiReferenceLink)
 		return response, err
 	}
 

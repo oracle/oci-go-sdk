@@ -12,8 +12,8 @@ package certificates
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v61/common"
-	"github.com/oracle/oci-go-sdk/v61/common/auth"
+	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v62/common/auth"
 	"net/http"
 )
 
@@ -132,6 +132,8 @@ func (client CertificatesClient) getCaBundle(ctx context.Context, request common
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/certificates/20210224/CaBundle/GetCaBundle"
+		err = common.PostProcessServiceError(err, "Certificates", "GetCaBundle", apiReferenceLink)
 		return response, err
 	}
 
@@ -188,6 +190,8 @@ func (client CertificatesClient) getCertificateAuthorityBundle(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/certificates/20210224/CertificateAuthorityBundle/GetCertificateAuthorityBundle"
+		err = common.PostProcessServiceError(err, "Certificates", "GetCertificateAuthorityBundle", apiReferenceLink)
 		return response, err
 	}
 
@@ -246,6 +250,8 @@ func (client CertificatesClient) getCertificateBundle(ctx context.Context, reque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/certificates/20210224/CertificateBundle/GetCertificateBundle"
+		err = common.PostProcessServiceError(err, "Certificates", "GetCertificateBundle", apiReferenceLink)
 		return response, err
 	}
 
@@ -301,6 +307,8 @@ func (client CertificatesClient) listCertificateAuthorityBundleVersions(ctx cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/certificates/20210224/CertificateAuthorityBundleVersionSummary/ListCertificateAuthorityBundleVersions"
+		err = common.PostProcessServiceError(err, "Certificates", "ListCertificateAuthorityBundleVersions", apiReferenceLink)
 		return response, err
 	}
 
@@ -356,6 +364,8 @@ func (client CertificatesClient) listCertificateBundleVersions(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/certificates/20210224/CertificateBundleVersionSummary/ListCertificateBundleVersions"
+		err = common.PostProcessServiceError(err, "Certificates", "ListCertificateBundleVersions", apiReferenceLink)
 		return response, err
 	}
 

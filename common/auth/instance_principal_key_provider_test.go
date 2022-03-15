@@ -8,10 +8,11 @@ import (
 	"fmt"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v61/common"
+	"github.com/oracle/oci-go-sdk/v62/common"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )
@@ -206,7 +207,7 @@ func TestInstancePrincipalKeyProvider_PrivateRSAKeyError(t *testing.T) {
 	actualPrivateKey, actualError := keyProvider.PrivateRSAKey()
 
 	assert.Nil(t, actualPrivateKey)
-	assert.EqualError(t, actualError, fmt.Sprintf("failed to get private key: %s", expectedErrorMessage))
+	assert.Equal(t, strings.Contains(actualError.Error(), fmt.Sprintf("failed to get private key: %s", expectedErrorMessage)), true)
 	mockFederationClient.AssertExpectations(t)
 }
 
@@ -232,7 +233,7 @@ func TestInstancePrincipalKeyProvider_KeyIDError(t *testing.T) {
 	actualKeyID, actualError := keyProvider.KeyID()
 
 	assert.Equal(t, "", actualKeyID)
-	assert.EqualError(t, actualError, fmt.Sprintf("failed to get security token: %s", expectedErrorMessage))
+	assert.Equal(t, strings.Contains(actualError.Error(), fmt.Sprintf("failed to get security token: %s", expectedErrorMessage)), true)
 	mockFederationClient.AssertExpectations(t)
 }
 
