@@ -14,7 +14,7 @@ package opsi
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v63/common"
 	"strings"
 )
 
@@ -71,6 +71,10 @@ func (m *createdatabaseinsightdetails) UnmarshalPolymorphicJSON(data []byte) (in
 	switch m.EntitySource {
 	case "EM_MANAGED_EXTERNAL_DATABASE":
 		mm := CreateEmManagedExternalDatabaseInsightDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "PE_COMANAGED_DATABASE":
+		mm := CreatePeComanagedDatabaseInsightDetails{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:

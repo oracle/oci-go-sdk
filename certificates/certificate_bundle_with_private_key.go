@@ -12,7 +12,7 @@ package certificates
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v63/common"
 	"strings"
 )
 

@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v63/common"
 	"strings"
 )
 
@@ -29,7 +29,7 @@ type ConnectionDetails struct {
 	// Listener port number used for connection requests.
 	Port *int `mandatory:"true" json:"port"`
 
-	// Service name used for connection requests.
+	// Database service name used for connection requests.
 	ServiceName *string `mandatory:"true" json:"serviceName"`
 }
 

@@ -9,9 +9,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/oracle/oci-go-sdk/v62/common"
-	"github.com/oracle/oci-go-sdk/v62/example/helpers"
-	"github.com/oracle/oci-go-sdk/v62/resourcemanager"
+	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v63/example/helpers"
+	"github.com/oracle/oci-go-sdk/v63/resourcemanager"
 )
 
 // ExampleResourceManager for how to do CRUD for Resource Manager Stack
