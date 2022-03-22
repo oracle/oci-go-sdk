@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v63/common"
 	"github.com/stretchr/testify/assert"
 )
 

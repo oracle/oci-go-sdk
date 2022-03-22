@@ -9,9 +9,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/oracle/oci-go-sdk/v62/common"
-	"github.com/oracle/oci-go-sdk/v62/database"
-	"github.com/oracle/oci-go-sdk/v62/example/helpers"
+	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v63/database"
+	"github.com/oracle/oci-go-sdk/v63/example/helpers"
 )
 
 func ListPreviewDBVersion() {

@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 63.0.0 - 2022-03-22
+### Added
+- Support for getting the storage utilization of a deployment on deployment list and get operations in the GoldenGate service
+- Support for virtual machines, bare metal machines, and Exadata databases with private endpoints in the Operations Insights service
+- Support for setting deletion policies on database systems in the MySQL Database service
+
+### Breaking Changes
+- Support for retries by default on operations in the Data Labeling service (data plane and control plane)
+
 ## 62.0.0 - 2022-03-15
 ### Added
 - Support for Ubuntu platforms and unlimited installation keys in the Management Agent Cloud service
