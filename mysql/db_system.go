@@ -12,7 +12,7 @@ package mysql
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v63/common"
 	"strings"
 )
 
@@ -41,6 +41,8 @@ type DbSystem struct {
 	LifecycleState DbSystemLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	Maintenance *MaintenanceDetails `mandatory:"true" json:"maintenance"`
+
+	DeletionPolicy *DeletionPolicyDetails `mandatory:"true" json:"deletionPolicy"`
 
 	// The date and time the DB System was created.
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
@@ -192,6 +194,7 @@ func (m *DbSystem) UnmarshalJSON(data []byte) (e error) {
 		DataStorageSizeInGBs       *int                              `json:"dataStorageSizeInGBs"`
 		LifecycleState             DbSystemLifecycleStateEnum        `json:"lifecycleState"`
 		Maintenance                *MaintenanceDetails               `json:"maintenance"`
+		DeletionPolicy             *DeletionPolicyDetails            `json:"deletionPolicy"`
 		TimeCreated                *common.SDKTime                   `json:"timeCreated"`
 		TimeUpdated                *common.SDKTime                   `json:"timeUpdated"`
 	}{}
@@ -276,6 +279,8 @@ func (m *DbSystem) UnmarshalJSON(data []byte) (e error) {
 	m.LifecycleState = model.LifecycleState
 
 	m.Maintenance = model.Maintenance
+
+	m.DeletionPolicy = model.DeletionPolicy
 
 	m.TimeCreated = model.TimeCreated
 

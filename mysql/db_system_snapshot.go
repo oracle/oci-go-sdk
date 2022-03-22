@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v62/common"
+	"github.com/oracle/oci-go-sdk/v63/common"
 	"strings"
 )
 
@@ -37,6 +37,8 @@ type DbSystemSnapshot struct {
 	DataStorageSizeInGBs *int `mandatory:"true" json:"dataStorageSizeInGBs"`
 
 	Maintenance *MaintenanceDetails `mandatory:"true" json:"maintenance"`
+
+	DeletionPolicy *DeletionPolicyDetails `mandatory:"true" json:"deletionPolicy"`
 
 	// User-provided data about the DB System.
 	Description *string `mandatory:"false" json:"description"`

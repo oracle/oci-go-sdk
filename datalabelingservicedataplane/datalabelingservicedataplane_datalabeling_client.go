@@ -12,8 +12,8 @@ package datalabelingservicedataplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v62/common"
-	"github.com/oracle/oci-go-sdk/v62/common/auth"
+	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v63/common/auth"
 	"net/http"
 )
 
@@ -151,9 +151,10 @@ func (client DataLabelingClient) createAnnotation(ctx context.Context, request c
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/CreateRecord.go.html to see an example of how to use CreateRecord API.
+// A default retry strategy applies to this operation CreateRecord()
 func (client DataLabelingClient) CreateRecord(ctx context.Context, request CreateRecordRequest) (response CreateRecordResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -213,9 +214,10 @@ func (client DataLabelingClient) createRecord(ctx context.Context, request commo
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/DeleteAnnotation.go.html to see an example of how to use DeleteAnnotation API.
+// A default retry strategy applies to this operation DeleteAnnotation()
 func (client DataLabelingClient) DeleteAnnotation(ctx context.Context, request DeleteAnnotationRequest) (response DeleteAnnotationResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -270,9 +272,10 @@ func (client DataLabelingClient) deleteAnnotation(ctx context.Context, request c
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/DeleteRecord.go.html to see an example of how to use DeleteRecord API.
+// A default retry strategy applies to this operation DeleteRecord()
 func (client DataLabelingClient) DeleteRecord(ctx context.Context, request DeleteRecordRequest) (response DeleteRecordResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -327,9 +330,10 @@ func (client DataLabelingClient) deleteRecord(ctx context.Context, request commo
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetAnnotation.go.html to see an example of how to use GetAnnotation API.
+// A default retry strategy applies to this operation GetAnnotation()
 func (client DataLabelingClient) GetAnnotation(ctx context.Context, request GetAnnotationRequest) (response GetAnnotationResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -384,9 +388,10 @@ func (client DataLabelingClient) getAnnotation(ctx context.Context, request comm
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetDataset.go.html to see an example of how to use GetDataset API.
+// A default retry strategy applies to this operation GetDataset()
 func (client DataLabelingClient) GetDataset(ctx context.Context, request GetDatasetRequest) (response GetDatasetResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -441,9 +446,10 @@ func (client DataLabelingClient) getDataset(ctx context.Context, request common.
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetRecord.go.html to see an example of how to use GetRecord API.
+// A default retry strategy applies to this operation GetRecord()
 func (client DataLabelingClient) GetRecord(ctx context.Context, request GetRecordRequest) (response GetRecordResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -498,9 +504,10 @@ func (client DataLabelingClient) getRecord(ctx context.Context, request common.O
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetRecordContent.go.html to see an example of how to use GetRecordContent API.
+// A default retry strategy applies to this operation GetRecordContent()
 func (client DataLabelingClient) GetRecordContent(ctx context.Context, request GetRecordContentRequest) (response GetRecordContentResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -554,9 +561,10 @@ func (client DataLabelingClient) getRecordContent(ctx context.Context, request c
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetRecordPreviewContent.go.html to see an example of how to use GetRecordPreviewContent API.
+// A default retry strategy applies to this operation GetRecordPreviewContent()
 func (client DataLabelingClient) GetRecordPreviewContent(ctx context.Context, request GetRecordPreviewContentRequest) (response GetRecordPreviewContentResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -610,9 +618,10 @@ func (client DataLabelingClient) getRecordPreviewContent(ctx context.Context, re
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/ListAnnotations.go.html to see an example of how to use ListAnnotations API.
+// A default retry strategy applies to this operation ListAnnotations()
 func (client DataLabelingClient) ListAnnotations(ctx context.Context, request ListAnnotationsRequest) (response ListAnnotationsResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -667,9 +676,10 @@ func (client DataLabelingClient) listAnnotations(ctx context.Context, request co
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/ListRecords.go.html to see an example of how to use ListRecords API.
+// A default retry strategy applies to this operation ListRecords()
 func (client DataLabelingClient) ListRecords(ctx context.Context, request ListRecordsRequest) (response ListRecordsResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -724,9 +734,10 @@ func (client DataLabelingClient) listRecords(ctx context.Context, request common
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/SummarizeAnnotationAnalytics.go.html to see an example of how to use SummarizeAnnotationAnalytics API.
+// A default retry strategy applies to this operation SummarizeAnnotationAnalytics()
 func (client DataLabelingClient) SummarizeAnnotationAnalytics(ctx context.Context, request SummarizeAnnotationAnalyticsRequest) (response SummarizeAnnotationAnalyticsResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -781,9 +792,10 @@ func (client DataLabelingClient) summarizeAnnotationAnalytics(ctx context.Contex
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/SummarizeRecordAnalytics.go.html to see an example of how to use SummarizeRecordAnalytics API.
+// A default retry strategy applies to this operation SummarizeRecordAnalytics()
 func (client DataLabelingClient) SummarizeRecordAnalytics(ctx context.Context, request SummarizeRecordAnalyticsRequest) (response SummarizeRecordAnalyticsResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -838,9 +850,10 @@ func (client DataLabelingClient) summarizeRecordAnalytics(ctx context.Context, r
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/UpdateAnnotation.go.html to see an example of how to use UpdateAnnotation API.
+// A default retry strategy applies to this operation UpdateAnnotation()
 func (client DataLabelingClient) UpdateAnnotation(ctx context.Context, request UpdateAnnotationRequest) (response UpdateAnnotationResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -895,9 +908,10 @@ func (client DataLabelingClient) updateAnnotation(ctx context.Context, request c
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/UpdateRecord.go.html to see an example of how to use UpdateRecord API.
+// A default retry strategy applies to this operation UpdateRecord()
 func (client DataLabelingClient) UpdateRecord(ctx context.Context, request UpdateRecordRequest) (response UpdateRecordResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
