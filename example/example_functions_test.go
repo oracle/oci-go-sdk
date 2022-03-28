@@ -14,10 +14,10 @@ import (
 	"os"
 	"reflect"
 
-	"github.com/oracle/oci-go-sdk/v63/common"
-	"github.com/oracle/oci-go-sdk/v63/core"
-	"github.com/oracle/oci-go-sdk/v63/example/helpers"
-	"github.com/oracle/oci-go-sdk/v63/functions"
+	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v64/core"
+	"github.com/oracle/oci-go-sdk/v64/example/helpers"
+	"github.com/oracle/oci-go-sdk/v64/functions"
 )
 
 var (

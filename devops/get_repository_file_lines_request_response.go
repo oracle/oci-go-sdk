@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"net/http"
 	"strings"
 )
@@ -92,6 +92,9 @@ type GetRepositoryFileLinesResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+
+	// This API will be deprecated on Wed, 29 Mar 2023 01:00:00 GMT. Please use "/repositories/{repositoryId}/file/lines"
+	Sunset *string `presentIn:"header" name:"sunset"`
 }
 
 func (response GetRepositoryFileLinesResponse) String() string {

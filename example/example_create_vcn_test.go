@@ -10,9 +10,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/oracle/oci-go-sdk/v63/common"
-	"github.com/oracle/oci-go-sdk/v63/core"
-	"github.com/oracle/oci-go-sdk/v63/example/helpers"
+	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v64/core"
+	"github.com/oracle/oci-go-sdk/v64/example/helpers"
 )
 
 func ExampleCreateVcn() {

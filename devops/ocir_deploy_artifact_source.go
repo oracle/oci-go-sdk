@@ -12,14 +12,14 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
 // OcirDeployArtifactSource Specifies the OCIR details.
 type OcirDeployArtifactSource struct {
 
-	// Specifies OCIR Image Path - optionally include tag.
+	// Specifies OCIR image path - optionally include tag.
 	ImageUri *string `mandatory:"true" json:"imageUri"`
 
 	// Specifies image digest for the version of the image.

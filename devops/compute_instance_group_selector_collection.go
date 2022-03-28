@@ -12,14 +12,14 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
 // ComputeInstanceGroupSelectorCollection A collection of selectors. The combination of instances matching the selectors are included in the instance group.
 type ComputeInstanceGroupSelectorCollection struct {
 
-	// A list of selectors for the instance group. UNION operator is used for combining the instances selected by each selector.
+	// A list of selectors for the instance group. Union operator is used for combining the instances selected by each selector.
 	Items []ComputeInstanceGroupSelector `mandatory:"true" json:"items"`
 }
 

@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
@@ -128,6 +128,10 @@ func (m *deploymentsummary) UnmarshalPolymorphicJSON(data []byte) (interface{}, 
 		return mm, err
 	case "PIPELINE_DEPLOYMENT":
 		mm := DeployPipelineDeploymentSummary{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "SINGLE_STAGE_REDEPLOYMENT":
+		mm := SingleDeployStageRedeploymentSummary{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:

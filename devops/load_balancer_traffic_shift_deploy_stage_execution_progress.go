@@ -12,11 +12,11 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
-// LoadBalancerTrafficShiftDeployStageExecutionProgress Specifies the load balancer traffic shift stage execution details.
+// LoadBalancerTrafficShiftDeployStageExecutionProgress Specifies the load balancer Traffic Shift stage execution details.
 type LoadBalancerTrafficShiftDeployStageExecutionProgress struct {
 
 	// Stage display name. Avoid entering confidential information.

@@ -12,14 +12,14 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
 // GenericDeployArtifactSource Specifies the Artifact Registry source details.
 type GenericDeployArtifactSource struct {
 
-	// The OCID of a repository
+	// The OCID of a repository.
 	RepositoryId *string `mandatory:"true" json:"repositoryId"`
 
 	// Specifies the artifact path in the repository.

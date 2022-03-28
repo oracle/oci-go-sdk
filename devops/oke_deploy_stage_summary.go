@@ -12,11 +12,11 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
-// OkeDeployStageSummary Specifies the Kubernetes cluster deployment stage.
+// OkeDeployStageSummary Specifies the Container Engine for Kubernetes (OKE) cluster deployment stage.
 type OkeDeployStageSummary struct {
 
 	// Unique identifier that is immutable on creation.
@@ -34,7 +34,7 @@ type OkeDeployStageSummary struct {
 	// Kubernetes cluster environment OCID for deployment.
 	OkeClusterDeployEnvironmentId *string `mandatory:"true" json:"okeClusterDeployEnvironmentId"`
 
-	// List of Kubernetes manifest artifact OCIDs, the manifests should not include any job resource.
+	// List of Kubernetes manifest artifact OCIDs.
 	KubernetesManifestDeployArtifactIds []string `mandatory:"true" json:"kubernetesManifestDeployArtifactIds"`
 
 	// Default namespace to be used for Kubernetes deployment when not specified in the manifest.

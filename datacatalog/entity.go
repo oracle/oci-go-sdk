@@ -12,7 +12,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
@@ -101,6 +101,9 @@ type Entity struct {
 
 	// URI to the data entity instance in the API.
 	Uri *string `mandatory:"false" json:"uri"`
+
+	// URL of the data entity in the object store.
+	ObjectStorageUrl *string `mandatory:"false" json:"objectStorageUrl"`
 
 	// The list of customized properties along with the values for this object
 	CustomPropertyMembers []CustomPropertyGetUsage `mandatory:"false" json:"customPropertyMembers"`

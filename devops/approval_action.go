@@ -11,7 +11,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
@@ -23,6 +23,9 @@ type ApprovalAction struct {
 
 	// The action of the user on the DevOps deployment stage.
 	Action ApprovalActionActionEnum `mandatory:"true" json:"action"`
+
+	// The reason for approving or rejecting the deployment.
+	Reason *string `mandatory:"false" json:"reason"`
 }
 
 func (m ApprovalAction) String() string {
