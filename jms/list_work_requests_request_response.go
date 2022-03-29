@@ -6,7 +6,7 @@ package jms
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"net/http"
 	"strings"
 )
@@ -23,6 +23,9 @@ type ListWorkRequestsRequest struct {
 
 	// The ID of an asynchronous work request.
 	Id *string `mandatory:"false" contributesTo:"query" name:"id"`
+
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the fleet.
+	FleetId *string `mandatory:"false" contributesTo:"query" name:"fleetId"`
 
 	// The client request ID for tracing.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`

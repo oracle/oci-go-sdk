@@ -6,7 +6,7 @@ package marketplace
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"net/http"
 	"strings"
 )
@@ -24,7 +24,7 @@ type ListListingsRequest struct {
 	// The unique identifier for the listing.
 	ListingId *string `mandatory:"false" contributesTo:"query" name:"listingId"`
 
-	// Image ID of the listing
+	// The image identifier of the listing.
 	ImageId *string `mandatory:"false" contributesTo:"query" name:"imageId"`
 
 	// Limit results to just this publisher.

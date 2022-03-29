@@ -12,11 +12,11 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
-// CreateComputeInstanceGroupDeployStageDetails Specifies the instance group rolling deployment stage.
+// CreateComputeInstanceGroupDeployStageDetails Specifies the Instance Group Rolling deployment stage.
 type CreateComputeInstanceGroupDeployStageDetails struct {
 
 	// The OCID of a pipeline.

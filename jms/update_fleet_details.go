@@ -11,7 +11,7 @@ package jms
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
@@ -23,6 +23,10 @@ type UpdateFleetDetails struct {
 
 	// The Fleet's description.
 	Description *string `mandatory:"false" json:"description"`
+
+	InventoryLog *CustomLog `mandatory:"false" json:"inventoryLog"`
+
+	OperationLog *CustomLog `mandatory:"false" json:"operationLog"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
 	// Example: `{"foo-namespace": {"bar-key": "value"}}`. (See Understanding Free-form Tags (https://docs.cloud.oracle.com/Content/Tagging/Tasks/managingtagsandtagnamespaces.htm)).

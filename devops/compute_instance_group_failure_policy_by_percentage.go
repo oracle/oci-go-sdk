@@ -12,14 +12,14 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
 // ComputeInstanceGroupFailurePolicyByPercentage Specifies a failure policy by percentage for a compute instance group rolling deployment stage.
 type ComputeInstanceGroupFailurePolicyByPercentage struct {
 
-	// The failure percentage threshold, which when reached or exceeded sets the stage as FAILED. Percentage is computed as the ceiling value of the number of failed instances over the total count of the instances in the group.
+	// The failure percentage threshold, which when reached or exceeded sets the stage as Failed. Percentage is computed as the ceiling value of the number of failed instances over the total count of the instances in the group.
 	FailurePercentage *int `mandatory:"true" json:"failurePercentage"`
 }
 

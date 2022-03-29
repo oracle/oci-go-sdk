@@ -12,14 +12,14 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
 // ComputeInstanceGroupFailurePolicyByCount Specifies a failure policy by count for a compute instance group rolling deployment stage.
 type ComputeInstanceGroupFailurePolicyByCount struct {
 
-	// The threshold count of failed instances in the group, which when reached or exceeded sets the stage as FAILED.
+	// The threshold count of failed instances in the group, which when reached or exceeded sets the stage as Failed.
 	FailureCount *int `mandatory:"true" json:"failureCount"`
 }
 

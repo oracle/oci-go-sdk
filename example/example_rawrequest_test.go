@@ -12,8 +12,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v63/common"
-	"github.com/oracle/oci-go-sdk/v63/example/helpers"
+	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v64/example/helpers"
 )
 
 // ExampleRawRequest compose a request, sign it and send to server

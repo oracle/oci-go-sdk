@@ -12,11 +12,11 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
-// ComputeInstanceGroupDeployStageExecutionProgress Specifies the execution details for the instance group rolling deployment stage.
+// ComputeInstanceGroupDeployStageExecutionProgress Specifies the execution details for the Instance Group Rolling deployment stage.
 type ComputeInstanceGroupDeployStageExecutionProgress struct {
 
 	// Stage display name. Avoid entering confidential information.
