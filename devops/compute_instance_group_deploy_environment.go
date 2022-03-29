@@ -12,11 +12,11 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
-// ComputeInstanceGroupDeployEnvironment Specifies the Compute instance group environment. The instances in the group is the combined results of each selectors in the instance group selectors.
+// ComputeInstanceGroupDeployEnvironment Specifies the Compute instance group environment. The combination of instances matching the selectors are included in the instance group.
 type ComputeInstanceGroupDeployEnvironment struct {
 
 	// Unique identifier that is immutable on creation.

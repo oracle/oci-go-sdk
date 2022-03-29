@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 )
 
 type jwtToken struct {

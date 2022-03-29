@@ -12,11 +12,11 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
-// ComputeInstanceGroupDeployStageSummary Specifies the instance group rolling deployment stage.
+// ComputeInstanceGroupDeployStageSummary Specifies the Instance Group Rolling deployment stage.
 type ComputeInstanceGroupDeployStageSummary struct {
 
 	// Unique identifier that is immutable on creation.

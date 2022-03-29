@@ -11,11 +11,13 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
-// LoadBalancerConfig Specifies config for load balancer traffic shift stages.
+// LoadBalancerConfig Specifies configuration for load balancer traffic shift stages.
+// The load balancer specified here should be an Application load balancer type.
+// Network load balancers are not supported.
 type LoadBalancerConfig struct {
 
 	// The OCID of the load balancer.

@@ -11,11 +11,11 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
-// BuildStageRunStep The details about each step in a Build stage.
+// BuildStageRunStep The details about each step in a build stage.
 type BuildStageRunStep struct {
 
 	// Name of the step.

@@ -12,11 +12,11 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v63/common"
+	"github.com/oracle/oci-go-sdk/v64/common"
 	"strings"
 )
 
-// InvokeFunctionDeployStageExecutionProgress Specifies the invoke function stage specific execution details.
+// InvokeFunctionDeployStageExecutionProgress Specifies the Invoke Function stage specific execution details.
 type InvokeFunctionDeployStageExecutionProgress struct {
 
 	// Stage display name. Avoid entering confidential information.
