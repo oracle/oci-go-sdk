@@ -13,8 +13,8 @@ package keymanagement
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
-	"github.com/oracle/oci-go-sdk/v64/common/auth"
+	"github.com/oracle/oci-go-sdk/v65/common"
+	"github.com/oracle/oci-go-sdk/v65/common/auth"
 	"net/http"
 )
 
@@ -52,7 +52,7 @@ func NewKmsManagementClientWithOboToken(configProvider common.ConfigurationProvi
 
 func newKmsManagementClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider, endpoint string) (client KmsManagementClient, err error) {
 	// KmsManagement service default circuit breaker is enabled
-	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName())
+	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName("KmsManagement"))
 	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 

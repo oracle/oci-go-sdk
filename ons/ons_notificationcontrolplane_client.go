@@ -13,8 +13,8 @@ package ons
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
-	"github.com/oracle/oci-go-sdk/v64/common/auth"
+	"github.com/oracle/oci-go-sdk/v65/common"
+	"github.com/oracle/oci-go-sdk/v65/common/auth"
 	"net/http"
 )
 
@@ -52,7 +52,7 @@ func NewNotificationControlPlaneClientWithOboToken(configProvider common.Configu
 
 func newNotificationControlPlaneClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client NotificationControlPlaneClient, err error) {
 	// NotificationControlPlane service default circuit breaker is enabled
-	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName())
+	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName("NotificationControlPlane"))
 	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 

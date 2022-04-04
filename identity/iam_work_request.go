@@ -4,18 +4,18 @@
 
 // Identity and Access Management Service API
 //
-// APIs for managing users, groups, compartments, and policies.
+// APIs for managing users, groups, compartments, policies, and identity domains.
 //
 
 package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
-// IamWorkRequest A IAM work request object that allows users to track Asynchronous API status.
+// IamWorkRequest (For tenancies that support identity domains) An IAM work request object that allows users to track the status of asynchronous API requests.
 type IamWorkRequest struct {
 
 	// The OCID of the work request.
@@ -24,7 +24,7 @@ type IamWorkRequest struct {
 	// The asynchronous operation tracked by this IAM work request.
 	OperationType IamWorkRequestOperationTypeEnum `mandatory:"true" json:"operationType"`
 
-	// Status of the work request
+	// The status of the work request.
 	Status IamWorkRequestStatusEnum `mandatory:"true" json:"status"`
 
 	// The OCID of the compartment containing this IAM work request.

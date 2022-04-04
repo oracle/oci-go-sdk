@@ -12,8 +12,8 @@ package usageapi
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
-	"github.com/oracle/oci-go-sdk/v64/common/auth"
+	"github.com/oracle/oci-go-sdk/v65/common"
+	"github.com/oracle/oci-go-sdk/v65/common/auth"
 	"net/http"
 )
 
@@ -51,7 +51,7 @@ func NewUsageapiClientWithOboToken(configProvider common.ConfigurationProvider, 
 
 func newUsageapiClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client UsageapiClient, err error) {
 	// Usageapi service default circuit breaker is enabled
-	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName())
+	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName("Usageapi"))
 	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 

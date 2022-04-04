@@ -4,14 +4,14 @@
 
 // Identity and Access Management Service API
 //
-// APIs for managing users, groups, compartments, and policies.
+// APIs for managing users, groups, compartments, policies, and identity domains.
 //
 
 package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
@@ -21,7 +21,7 @@ import (
 // where you can create, organize, and administer your cloud resources.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access,
-// see Getting Started with Policies (https://docs.cloud.oracle.com/Content/Identity/Concepts/policygetstarted.htm).
+// see Get Started with Policies (https://docs.cloud.oracle.com/Content/Identity/policiesgs/get-started-with-policies.htm).
 type Tenancy struct {
 
 	// The OCID of the tenancy.

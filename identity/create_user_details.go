@@ -4,14 +4,14 @@
 
 // Identity and Access Management Service API
 //
-// APIs for managing users, groups, compartments, and policies.
+// APIs for managing users, groups, compartments, policies, and identity domains.
 //
 
 package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
@@ -26,6 +26,7 @@ type CreateUserDetails struct {
 	Name *string `mandatory:"true" json:"name"`
 
 	// The description you assign to the user during creation. Does not have to be unique, and it's changeable.
+	// (For tenancies that support identity domains) You can have an empty description.
 	Description *string `mandatory:"true" json:"description"`
 
 	// The email you assign to the user. Has to be unique across the tenancy.

@@ -13,6 +13,43 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestIsErrorAffectedByEventualConsistency(t *testing.T) {
+	var error = servicefailure{
+		StatusCode: 400,
+		Code:       "InvalidParameter"}
+	assert.False(t, IsErrorAffectedByEventualConsistency(error))
+
+	error = servicefailure{
+		StatusCode: 400,
+		Code:       "RelatedResourceNotAuthorizedOrNotFound"}
+	assert.True(t, IsErrorAffectedByEventualConsistency(error))
+
+	error = servicefailure{
+		StatusCode: 404,
+		Code:       "NotFound"}
+	assert.False(t, IsErrorAffectedByEventualConsistency(error))
+
+	error = servicefailure{
+		StatusCode: 404,
+		Code:       "NotAuthorizedOrNotFound"}
+	assert.True(t, IsErrorAffectedByEventualConsistency(error))
+
+	error = servicefailure{
+		StatusCode: 409,
+		Code:       "Conflict"}
+	assert.False(t, IsErrorAffectedByEventualConsistency(error))
+
+	error = servicefailure{
+		StatusCode: 409,
+		Code:       "NotAuthorizedOrResourceAlreadyExists"}
+	assert.True(t, IsErrorAffectedByEventualConsistency(error))
+
+	error = servicefailure{
+		StatusCode: 400,
+		Code:       "InsufficientServicePermissions"}
+	assert.True(t, IsErrorAffectedByEventualConsistency(error))
+}
+
 // tests for EC communication mode: file
 
 func TestRetryGetEcMode(t *testing.T) {

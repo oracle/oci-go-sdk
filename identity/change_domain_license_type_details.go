@@ -4,21 +4,21 @@
 
 // Identity and Access Management Service API
 //
-// APIs for managing users, groups, compartments, and policies.
+// APIs for managing users, groups, compartments, policies, and identity domains.
 //
 
 package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
-// ChangeDomainLicenseTypeDetails Update domain license type
+// ChangeDomainLicenseTypeDetails (For tenancies that support identity domains) Details for updating the license type of the identity domain.
 type ChangeDomainLicenseTypeDetails struct {
 
-	// The License type of Domain
+	// The license type of the identity domain.
 	LicenseType *string `mandatory:"false" json:"licenseType"`
 }
 

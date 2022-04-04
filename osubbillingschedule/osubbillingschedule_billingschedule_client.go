@@ -12,8 +12,8 @@ package osubbillingschedule
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
-	"github.com/oracle/oci-go-sdk/v64/common/auth"
+	"github.com/oracle/oci-go-sdk/v65/common"
+	"github.com/oracle/oci-go-sdk/v65/common/auth"
 	"net/http"
 )
 
@@ -51,7 +51,7 @@ func NewBillingScheduleClientWithOboToken(configProvider common.ConfigurationPro
 
 func newBillingScheduleClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client BillingScheduleClient, err error) {
 	// BillingSchedule service default circuit breaker is enabled
-	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName())
+	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName("BillingSchedule"))
 	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 

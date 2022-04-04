@@ -12,8 +12,8 @@ package announcementsservice
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
-	"github.com/oracle/oci-go-sdk/v64/common/auth"
+	"github.com/oracle/oci-go-sdk/v65/common"
+	"github.com/oracle/oci-go-sdk/v65/common/auth"
 	"net/http"
 )
 
@@ -51,7 +51,7 @@ func NewAnnouncementClientWithOboToken(configProvider common.ConfigurationProvid
 
 func newAnnouncementClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client AnnouncementClient, err error) {
 	// Announcement service default circuit breaker is enabled
-	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName())
+	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName("Announcement"))
 	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 
@@ -133,7 +133,7 @@ func (client AnnouncementClient) getAnnouncement(ctx context.Context, request co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/Announcement/GetAnnouncement"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/0.0.1/Announcement/GetAnnouncement"
 		err = common.PostProcessServiceError(err, "Announcement", "GetAnnouncement", apiReferenceLink)
 		return response, err
 	}
@@ -191,7 +191,7 @@ func (client AnnouncementClient) getAnnouncementUserStatus(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementUserStatusDetails/GetAnnouncementUserStatus"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/0.0.1/AnnouncementUserStatusDetails/GetAnnouncementUserStatus"
 		err = common.PostProcessServiceError(err, "Announcement", "GetAnnouncementUserStatus", apiReferenceLink)
 		return response, err
 	}
@@ -249,7 +249,7 @@ func (client AnnouncementClient) listAnnouncements(ctx context.Context, request 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementsCollection/ListAnnouncements"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/0.0.1/AnnouncementsCollection/ListAnnouncements"
 		err = common.PostProcessServiceError(err, "Announcement", "ListAnnouncements", apiReferenceLink)
 		return response, err
 	}
@@ -307,7 +307,7 @@ func (client AnnouncementClient) updateAnnouncementUserStatus(ctx context.Contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementUserStatusDetails/UpdateAnnouncementUserStatus"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/0.0.1/AnnouncementUserStatusDetails/UpdateAnnouncementUserStatus"
 		err = common.PostProcessServiceError(err, "Announcement", "UpdateAnnouncementUserStatus", apiReferenceLink)
 		return response, err
 	}

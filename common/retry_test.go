@@ -168,6 +168,7 @@ func buildResponsesNoRetry(endOfWindowTime *time.Time, backoffScalingFactor floa
 		getMockedOCIOperationResponseWithErrorFull(400, "QuotaExceeded", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(400, "LimitExceeded", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(400, "RelatedResourceNotAuthorizedOrNotFound", endOfWindowTime, backoffScalingFactor),
+		getMockedOCIOperationResponseWithErrorFull(400, "InsufficientServicePermissions", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(401, "NotAuthenticated", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(403, "SignUpRequired", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(403, "NotAllowed", endOfWindowTime, backoffScalingFactor),
@@ -237,6 +238,7 @@ func buildEcResponsesWantRetry(endOfWindowTime *time.Time, backoffScalingFactor 
 		getMockedOCIOperationResponseWithErrorFull(500, "InternalServerError", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(500, "OutOfCapacity", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(503, "ServiceUnavailable", endOfWindowTime, backoffScalingFactor),
+		getMockedOCIOperationResponseWithErrorFull(400, "InsufficientServicePermissions", endOfWindowTime, backoffScalingFactor),
 	}
 	return responses
 }
@@ -375,38 +377,6 @@ func TestGetEndTimeOfEventuallyConsistentWindow(t *testing.T) {
 	assert.True(t, value3.Before(time.Now().Round(0).Add(eventuallyConsistentWindowSize)))
 	assert.True(t, value1.Before(*value3))
 	assert.True(t, value2.Before(*value3))
-}
-
-func TestIsErrorAffectedByEventualConsistency(t *testing.T) {
-	var error = servicefailure{
-		StatusCode: 400,
-		Code:       "InvalidParameter"}
-	assert.False(t, IsErrorAffectedByEventualConsistency(error))
-
-	error = servicefailure{
-		StatusCode: 400,
-		Code:       "RelatedResourceNotAuthorizedOrNotFound"}
-	assert.True(t, IsErrorAffectedByEventualConsistency(error))
-
-	error = servicefailure{
-		StatusCode: 404,
-		Code:       "NotFound"}
-	assert.False(t, IsErrorAffectedByEventualConsistency(error))
-
-	error = servicefailure{
-		StatusCode: 404,
-		Code:       "NotAuthorizedOrNotFound"}
-	assert.True(t, IsErrorAffectedByEventualConsistency(error))
-
-	error = servicefailure{
-		StatusCode: 409,
-		Code:       "Conflict"}
-	assert.False(t, IsErrorAffectedByEventualConsistency(error))
-
-	error = servicefailure{
-		StatusCode: 409,
-		Code:       "NotAuthorizedOrResourceAlreadyExists"}
-	assert.True(t, IsErrorAffectedByEventualConsistency(error))
 }
 
 func TestGetBackoffWithoutJitter(t *testing.T) {

@@ -6,7 +6,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 	"net/http"
 	"strings"
 )
@@ -400,6 +400,7 @@ const (
 	ListSecurityAssessmentsLifecycleStateSucceeded ListSecurityAssessmentsLifecycleStateEnum = "SUCCEEDED"
 	ListSecurityAssessmentsLifecycleStateUpdating  ListSecurityAssessmentsLifecycleStateEnum = "UPDATING"
 	ListSecurityAssessmentsLifecycleStateDeleting  ListSecurityAssessmentsLifecycleStateEnum = "DELETING"
+	ListSecurityAssessmentsLifecycleStateDeleted   ListSecurityAssessmentsLifecycleStateEnum = "DELETED"
 	ListSecurityAssessmentsLifecycleStateFailed    ListSecurityAssessmentsLifecycleStateEnum = "FAILED"
 )
 
@@ -408,6 +409,7 @@ var mappingListSecurityAssessmentsLifecycleStateEnum = map[string]ListSecurityAs
 	"SUCCEEDED": ListSecurityAssessmentsLifecycleStateSucceeded,
 	"UPDATING":  ListSecurityAssessmentsLifecycleStateUpdating,
 	"DELETING":  ListSecurityAssessmentsLifecycleStateDeleting,
+	"DELETED":   ListSecurityAssessmentsLifecycleStateDeleted,
 	"FAILED":    ListSecurityAssessmentsLifecycleStateFailed,
 }
 
@@ -416,6 +418,7 @@ var mappingListSecurityAssessmentsLifecycleStateEnumLowerCase = map[string]ListS
 	"succeeded": ListSecurityAssessmentsLifecycleStateSucceeded,
 	"updating":  ListSecurityAssessmentsLifecycleStateUpdating,
 	"deleting":  ListSecurityAssessmentsLifecycleStateDeleting,
+	"deleted":   ListSecurityAssessmentsLifecycleStateDeleted,
 	"failed":    ListSecurityAssessmentsLifecycleStateFailed,
 }
 
@@ -435,6 +438,7 @@ func GetListSecurityAssessmentsLifecycleStateEnumStringValues() []string {
 		"SUCCEEDED",
 		"UPDATING",
 		"DELETING",
+		"DELETED",
 		"FAILED",
 	}
 }
