@@ -16,11 +16,11 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
-// DrgAttachmentMatchAllDrgRouteDistributionMatchCriteria No match criteria is applied.
+// DrgAttachmentMatchAllDrgRouteDistributionMatchCriteria All routes are imported or exported.
 type DrgAttachmentMatchAllDrgRouteDistributionMatchCriteria struct {
 }
 

@@ -4,19 +4,19 @@
 
 // Identity and Access Management Service API
 //
-// APIs for managing users, groups, compartments, and policies.
+// APIs for managing users, groups, compartments, policies, and identity domains.
 //
 
 package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
 // TagNamespace A managed container for defined tags. A tag namespace is unique in a tenancy. For more information,
-// see Managing Tags and Tag Namespaces (https://docs.cloud.oracle.com/Content/Identity/Concepts/taggingoverview.htm).
+// see Managing Tags and Tag Namespaces (https://docs.cloud.oracle.com/Content/Tagging/Tasks/managingtagsandtagnamespaces.htm).
 // **Warning:** Oracle recommends that you avoid using any confidential information when you supply string values
 // using the API.
 type TagNamespace struct {
@@ -34,7 +34,7 @@ type TagNamespace struct {
 	Description *string `mandatory:"true" json:"description"`
 
 	// Whether the tag namespace is retired.
-	// See Retiring Key Definitions and Namespace Definitions (https://docs.cloud.oracle.com/Content/Identity/Concepts/taggingoverview.htm#Retiring).
+	// See Retiring Key Definitions and Namespace Definitions (https://docs.cloud.oracle.com/Content/Tagging/Tasks/managingtagsandtagnamespaces.htm#retiringkeys).
 	IsRetired *bool `mandatory:"true" json:"isRetired"`
 
 	// Date and time the tagNamespace was created, in the format defined by RFC3339.

@@ -6,7 +6,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 	"net/http"
 	"strings"
 )
@@ -21,7 +21,7 @@ type ListFaultDomainsRequest struct {
 	// The OCID of the compartment (remember that the tenancy is simply the root compartment).
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
-	// The name of the availibilityDomain.
+	// The name of the availabilityDomain.
 	AvailabilityDomain *string `mandatory:"true" contributesTo:"query" name:"availabilityDomain"`
 
 	// Unique Oracle-assigned identifier for the request.

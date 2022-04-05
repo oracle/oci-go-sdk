@@ -12,7 +12,7 @@ import (
 	"net/http/httputil"
 	"strings"
 
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 )
 
 // httpGet makes a simple HTTP GET request to the given URL, expecting only "200 OK" status code.

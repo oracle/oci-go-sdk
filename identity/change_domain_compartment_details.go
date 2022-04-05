@@ -4,14 +4,14 @@
 
 // Identity and Access Management Service API
 //
-// APIs for managing users, groups, compartments, and policies.
+// APIs for managing users, groups, compartments, policies, and identity domains.
 //
 
 package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
@@ -19,7 +19,7 @@ import (
 type ChangeDomainCompartmentDetails struct {
 
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the destination compartment
-	// into which to move the domain.
+	// into which to move the identity domain.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 }
 
