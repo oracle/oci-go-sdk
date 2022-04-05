@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.0.0 - 2022-04-05
+### Added
+- Support for content length and content type response headers when downloading PDFs in the Account Management service
+- Support for creating Enterprise Manager-based zLinux host targets, creating alarms, and viewing top process analytics in the Operations Insights service
+- Support for diagnostic reboots on VM instances in the Compute service
+
+### Breaking Changes
+- The return type of property LifecycleState was changed from `LifecycleState` to `TargetDatabaseLifecycleState` for TargetDatabase and TargetDatabaseSummary model in the Data Safe service
+
 ## 64.0.0 - 2022-03-29
 ### Added
 - Support for returning the number of network ports as part of listing shapes in the Compute service

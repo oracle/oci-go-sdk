@@ -10,7 +10,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 )
 
 const (

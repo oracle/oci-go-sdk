@@ -4,18 +4,18 @@
 
 // Identity and Access Management Service API
 //
-// APIs for managing users, groups, compartments, and policies.
+// APIs for managing users, groups, compartments, policies, and identity domains.
 //
 
 package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
-// ReplicatedRegionDetails Properties for a region where a domain is replicated too.
+// ReplicatedRegionDetails (For tenancies that support identity domains) Properties for a region where a replica for the identity domain exists.
 type ReplicatedRegionDetails struct {
 
 	// A REPLICATION_ENABLED region, e.g. us-ashburn-1.
@@ -23,10 +23,10 @@ type ReplicatedRegionDetails struct {
 	// for the full list of supported region names.
 	Region *string `mandatory:"false" json:"region"`
 
-	// Region agnostic domain URL.
+	// Region-agnostic identity domain URL.
 	Url *string `mandatory:"false" json:"url"`
 
-	// The IDCS replicated region state
+	// The IDCS-replicated region state.
 	State ReplicatedRegionDetailsStateEnum `mandatory:"false" json:"state,omitempty"`
 }
 

@@ -4,14 +4,14 @@
 
 // Identity and Access Management Service API
 //
-// APIs for managing users, groups, compartments, and policies.
+// APIs for managing users, groups, compartments, policies, and identity domains.
 //
 
 package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
@@ -19,10 +19,11 @@ import (
 type UpdateDynamicGroupDetails struct {
 
 	// The description you assign to the dynamic group. Does not have to be unique, and it's changeable.
+	// (For tenancies that support identity domains) You can have an empty description.
 	Description *string `mandatory:"false" json:"description"`
 
 	// The matching rule to dynamically match an instance certificate to this dynamic group.
-	// For rule syntax, see Managing Dynamic Groups (https://docs.cloud.oracle.com/Content/Identity/Tasks/managingdynamicgroups.htm).
+	// For rule syntax, see Managing Dynamic Groups (https://docs.cloud.oracle.com/Content/Identity/dynamicgroups/managingdynamicgroups.htm).
 	MatchingRule *string `mandatory:"false" json:"matchingRule"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.

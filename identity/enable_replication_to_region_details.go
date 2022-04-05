@@ -4,21 +4,21 @@
 
 // Identity and Access Management Service API
 //
-// APIs for managing users, groups, compartments, and policies.
+// APIs for managing users, groups, compartments, policies, and identity domains.
 //
 
 package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
-// EnableReplicationToRegionDetails Domain replication request packet
+// EnableReplicationToRegionDetails (For tenancies that support identity domains) Identity domain replication request packet.
 type EnableReplicationToRegionDetails struct {
 
-	// A region for which domain replication is requested for.
+	// A region to which you want identity domain replication to occur.
 	// See Regions and Availability Domains (https://docs.cloud.oracle.com/Content/General/Concepts/regions.htm)
 	// for the full list of supported region names.
 	// Example: `us-phoenix-1`

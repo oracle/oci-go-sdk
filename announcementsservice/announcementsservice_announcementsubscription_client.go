@@ -12,8 +12,8 @@ package announcementsservice
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
-	"github.com/oracle/oci-go-sdk/v64/common/auth"
+	"github.com/oracle/oci-go-sdk/v65/common"
+	"github.com/oracle/oci-go-sdk/v65/common/auth"
 	"net/http"
 )
 
@@ -51,7 +51,7 @@ func NewAnnouncementSubscriptionClientWithOboToken(configProvider common.Configu
 
 func newAnnouncementSubscriptionClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client AnnouncementSubscriptionClient, err error) {
 	// AnnouncementSubscription service default circuit breaker is enabled
-	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName())
+	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSettingWithServiceName("AnnouncementSubscription"))
 	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 
@@ -133,7 +133,7 @@ func (client AnnouncementSubscriptionClient) changeAnnouncementSubscriptionCompa
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementSubscription/ChangeAnnouncementSubscriptionCompartment"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/0.0.1/AnnouncementSubscription/ChangeAnnouncementSubscriptionCompartment"
 		err = common.PostProcessServiceError(err, "AnnouncementSubscription", "ChangeAnnouncementSubscriptionCompartment", apiReferenceLink)
 		return response, err
 	}
@@ -196,7 +196,7 @@ func (client AnnouncementSubscriptionClient) createAnnouncementSubscription(ctx 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementSubscription/CreateAnnouncementSubscription"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/0.0.1/AnnouncementSubscription/CreateAnnouncementSubscription"
 		err = common.PostProcessServiceError(err, "AnnouncementSubscription", "CreateAnnouncementSubscription", apiReferenceLink)
 		return response, err
 	}
@@ -259,7 +259,7 @@ func (client AnnouncementSubscriptionClient) createFilterGroup(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementSubscription/CreateFilterGroup"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/0.0.1/AnnouncementSubscription/CreateFilterGroup"
 		err = common.PostProcessServiceError(err, "AnnouncementSubscription", "CreateFilterGroup", apiReferenceLink)
 		return response, err
 	}
@@ -317,7 +317,7 @@ func (client AnnouncementSubscriptionClient) deleteAnnouncementSubscription(ctx 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementSubscription/DeleteAnnouncementSubscription"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/0.0.1/AnnouncementSubscription/DeleteAnnouncementSubscription"
 		err = common.PostProcessServiceError(err, "AnnouncementSubscription", "DeleteAnnouncementSubscription", apiReferenceLink)
 		return response, err
 	}
@@ -375,7 +375,7 @@ func (client AnnouncementSubscriptionClient) deleteFilterGroup(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementSubscription/DeleteFilterGroup"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/0.0.1/AnnouncementSubscription/DeleteFilterGroup"
 		err = common.PostProcessServiceError(err, "AnnouncementSubscription", "DeleteFilterGroup", apiReferenceLink)
 		return response, err
 	}
@@ -433,7 +433,7 @@ func (client AnnouncementSubscriptionClient) getAnnouncementSubscription(ctx con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementSubscription/GetAnnouncementSubscription"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/0.0.1/AnnouncementSubscription/GetAnnouncementSubscription"
 		err = common.PostProcessServiceError(err, "AnnouncementSubscription", "GetAnnouncementSubscription", apiReferenceLink)
 		return response, err
 	}
@@ -491,7 +491,7 @@ func (client AnnouncementSubscriptionClient) listAnnouncementSubscriptions(ctx c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementSubscriptionCollection/ListAnnouncementSubscriptions"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/0.0.1/AnnouncementSubscriptionCollection/ListAnnouncementSubscriptions"
 		err = common.PostProcessServiceError(err, "AnnouncementSubscription", "ListAnnouncementSubscriptions", apiReferenceLink)
 		return response, err
 	}
@@ -549,7 +549,7 @@ func (client AnnouncementSubscriptionClient) updateAnnouncementSubscription(ctx 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementSubscription/UpdateAnnouncementSubscription"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/0.0.1/AnnouncementSubscription/UpdateAnnouncementSubscription"
 		err = common.PostProcessServiceError(err, "AnnouncementSubscription", "UpdateAnnouncementSubscription", apiReferenceLink)
 		return response, err
 	}
@@ -607,7 +607,7 @@ func (client AnnouncementSubscriptionClient) updateFilterGroup(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/20180904/AnnouncementSubscription/UpdateFilterGroup"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/announcements/0.0.1/AnnouncementSubscription/UpdateFilterGroup"
 		err = common.PostProcessServiceError(err, "AnnouncementSubscription", "UpdateFilterGroup", apiReferenceLink)
 		return response, err
 	}

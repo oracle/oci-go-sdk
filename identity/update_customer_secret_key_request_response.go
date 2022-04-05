@@ -6,7 +6,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 	"net/http"
 	"strings"
 )
@@ -21,7 +21,7 @@ type UpdateCustomerSecretKeyRequest struct {
 	// The OCID of the user.
 	UserId *string `mandatory:"true" contributesTo:"path" name:"userId"`
 
-	// The OCID of the secret key.
+	// The access token of the secret key.
 	CustomerSecretKeyId *string `mandatory:"true" contributesTo:"path" name:"customerSecretKeyId"`
 
 	// Request object for updating a secret key.

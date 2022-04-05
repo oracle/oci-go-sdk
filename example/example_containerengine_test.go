@@ -10,12 +10,12 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/oracle/oci-go-sdk/v64/core"
+	"github.com/oracle/oci-go-sdk/v65/core"
 
-	"github.com/oracle/oci-go-sdk/v64/common"
-	"github.com/oracle/oci-go-sdk/v64/containerengine"
-	"github.com/oracle/oci-go-sdk/v64/example/helpers"
-	"github.com/oracle/oci-go-sdk/v64/identity"
+	"github.com/oracle/oci-go-sdk/v65/common"
+	"github.com/oracle/oci-go-sdk/v65/containerengine"
+	"github.com/oracle/oci-go-sdk/v65/example/helpers"
+	"github.com/oracle/oci-go-sdk/v65/identity"
 )
 
 // Example for how to do CRUD on cluster, how to get kubernets config and

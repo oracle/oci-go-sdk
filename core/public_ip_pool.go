@@ -15,11 +15,11 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
-// PublicIpPool A public IP pool is a set of public IP addresses represented as one or more IPv4 CIDR blocks. Resources like load balancers and compute instances can be allocated public IP addresses from a public IP pool.
+// PublicIpPool A public IP pool is a set of public IP addresses represented as one or more IPv4 CIDR blocks.      Resources like load balancers and compute instances can be allocated public IP addresses from a public IP pool.
 type PublicIpPool struct {
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment containing this pool.

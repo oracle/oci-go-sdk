@@ -4,18 +4,18 @@
 
 // Identity and Access Management Service API
 //
-// APIs for managing users, groups, compartments, and policies.
+// APIs for managing users, groups, compartments, policies, and identity domains.
 //
 
 package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v64/common"
+	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
-// IamWorkRequestResource A IAM work request resource entry
+// IamWorkRequestResource (For tenancies that support identity domains) A IAM work request resource entry.
 type IamWorkRequestResource struct {
 
 	// The way in which this resource is affected by the work tracked in the work request.
