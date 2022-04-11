@@ -186,5 +186,5 @@ type uploadManagerError struct {
 }
 
 func (ume uploadManagerError) Error() string {
-	return fmt.Sprintf("%s\nClient Version: %s, OS Version: %s/%s\nIf you need to contact support, or file a GitHub issue, please include this full error message.", ume.err, common.Version(), runtime.GOOS, runtime.Version())
+	return fmt.Sprintf("%s\nClient Version: %s, OS Version: %s/%s\nSee https://docs.oracle.com/iaas/Content/API/Concepts/sdk_troubleshooting.htm for common issues and steps to resolve them. If you need to contact support, or file a GitHub issue, please include this full error message.", ume.err, common.Version(), runtime.GOOS, runtime.Version())
 }
