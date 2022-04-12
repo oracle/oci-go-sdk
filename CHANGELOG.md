@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.1.0 - 2022-04-12
+### Added
+- Support for bringing your own IPv6 addresses in the Networking service
+- Support for specifying database edition and maximum CPU core count when creating or updating an autonomous database in the Database service
+- Support for enabling and disabling data collection options when creating or updating Exadata Cloud at Customer VM clusters in the Database service
+ 
+### Breaking Changes
+- Support for retries by default on operations in the Identity service
+- Support for retries by default on operations in the Operations Insights service
+
 ## 65.0.0 - 2022-04-05
 ### Added
 - Support for content length and content type response headers when downloading PDFs in the Account Management service
