@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.2.0 - 2022-04-19
+### Added
+- Support for the Stack Monitoring service
+- Support for stack monitoring on external databases in the Database service
+- Support for upgrading VM database systems in place in the Database service
+- Support for viewing supported VMWare software versions when listing host shapes in the VMWare Solution service
+- Support for choosing compute shapes when creating SDDCs and ESXi hosts in the VMWare Solution service
+- Support for work requests on delete operations in the Vulnerability Scanning service
+- Support for additional scan metadata in reports, including CVE descriptions, in the Vulnerability  Scanning service
+- Support for redemption codes in the Usage service
+
+### Breaking Changes
+- The property `Etag` was removed from ListRedeemableUsersResponse model in the Usage service
+
+
 ## 65.1.0 - 2022-04-12
 ### Added
 - Support for bringing your own IPv6 addresses in the Networking service
