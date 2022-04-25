@@ -501,6 +501,63 @@ func (client OrganizationClient) listOrganizations(ctx context.Context, request 
 	return response, err
 }
 
+// RestoreOrganizationTenancy An asynchronous API to restore tenancy.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/RestoreOrganizationTenancy.go.html to see an example of how to use RestoreOrganizationTenancy API.
+func (client OrganizationClient) RestoreOrganizationTenancy(ctx context.Context, request RestoreOrganizationTenancyRequest) (response RestoreOrganizationTenancyResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.restoreOrganizationTenancy, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = RestoreOrganizationTenancyResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = RestoreOrganizationTenancyResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(RestoreOrganizationTenancyResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into RestoreOrganizationTenancyResponse")
+	}
+	return
+}
+
+// restoreOrganizationTenancy implements the OCIOperation interface (enables retrying operations)
+func (client OrganizationClient) restoreOrganizationTenancy(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/organizationTenancies/{organizationTenancyId}/actions/restore", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response RestoreOrganizationTenancyResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/OrganizationTenancy/RestoreOrganizationTenancy"
+		err = common.PostProcessServiceError(err, "Organization", "RestoreOrganizationTenancy", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // UnapproveOrganizationTenancyForTransfer Cancel an organization's child tenancy for transfer.
 //
 // See also

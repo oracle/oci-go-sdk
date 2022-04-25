@@ -24,7 +24,7 @@ type AssignedSubscription struct {
 	// OCID of the compartment. Always a tenancy OCID.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// Subscription id.
+	// Subscription ID.
 	ClassicSubscriptionId *string `mandatory:"true" json:"classicSubscriptionId"`
 
 	// The type of subscription, such as 'CLOUDCM', 'SAAS', 'ERP', or 'CRM'.
@@ -39,7 +39,7 @@ type AssignedSubscription struct {
 	// Lifecycle state of the subscription.
 	LifecycleState SubscriptionLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
-	// List of sku linked to the subscription.
+	// List of SKUs linked to the subscription.
 	Skus []SubscriptionSku `mandatory:"false" json:"skus"`
 
 	// List of subscription order OCIDs that contributed to this subscription.

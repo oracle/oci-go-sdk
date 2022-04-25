@@ -29,6 +29,11 @@ const (
 	OperationTypeAssignDefaultSubscription    OperationTypeEnum = "ASSIGN_DEFAULT_SUBSCRIPTION"
 	OperationTypeManualLinkCreation           OperationTypeEnum = "MANUAL_LINK_CREATION"
 	OperationTypeTerminateOrganizationTenancy OperationTypeEnum = "TERMINATE_ORGANIZATION_TENANCY"
+	OperationTypeUpdateSaasCapability         OperationTypeEnum = "UPDATE_SAAS_CAPABILITY"
+	OperationTypeSoftTerminateTenancy         OperationTypeEnum = "SOFT_TERMINATE_TENANCY"
+	OperationTypeHardTerminateTenancy         OperationTypeEnum = "HARD_TERMINATE_TENANCY"
+	OperationTypeRestoreTenancy               OperationTypeEnum = "RESTORE_TENANCY"
+	OperationTypeLogTenancyTerminationRequest OperationTypeEnum = "LOG_TENANCY_TERMINATION_REQUEST"
 )
 
 var mappingOperationTypeEnum = map[string]OperationTypeEnum{
@@ -43,6 +48,11 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"ASSIGN_DEFAULT_SUBSCRIPTION":     OperationTypeAssignDefaultSubscription,
 	"MANUAL_LINK_CREATION":            OperationTypeManualLinkCreation,
 	"TERMINATE_ORGANIZATION_TENANCY":  OperationTypeTerminateOrganizationTenancy,
+	"UPDATE_SAAS_CAPABILITY":          OperationTypeUpdateSaasCapability,
+	"SOFT_TERMINATE_TENANCY":          OperationTypeSoftTerminateTenancy,
+	"HARD_TERMINATE_TENANCY":          OperationTypeHardTerminateTenancy,
+	"RESTORE_TENANCY":                 OperationTypeRestoreTenancy,
+	"LOG_TENANCY_TERMINATION_REQUEST": OperationTypeLogTenancyTerminationRequest,
 }
 
 var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
@@ -57,6 +67,11 @@ var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
 	"assign_default_subscription":     OperationTypeAssignDefaultSubscription,
 	"manual_link_creation":            OperationTypeManualLinkCreation,
 	"terminate_organization_tenancy":  OperationTypeTerminateOrganizationTenancy,
+	"update_saas_capability":          OperationTypeUpdateSaasCapability,
+	"soft_terminate_tenancy":          OperationTypeSoftTerminateTenancy,
+	"hard_terminate_tenancy":          OperationTypeHardTerminateTenancy,
+	"restore_tenancy":                 OperationTypeRestoreTenancy,
+	"log_tenancy_termination_request": OperationTypeLogTenancyTerminationRequest,
 }
 
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum
@@ -82,6 +97,11 @@ func GetOperationTypeEnumStringValues() []string {
 		"ASSIGN_DEFAULT_SUBSCRIPTION",
 		"MANUAL_LINK_CREATION",
 		"TERMINATE_ORGANIZATION_TENANCY",
+		"UPDATE_SAAS_CAPABILITY",
+		"SOFT_TERMINATE_TENANCY",
+		"HARD_TERMINATE_TENANCY",
+		"RESTORE_TENANCY",
+		"LOG_TENANCY_TERMINATION_REQUEST",
 	}
 }
 

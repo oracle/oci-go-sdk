@@ -16,11 +16,9 @@ import (
 	"strings"
 )
 
-// ProfanityTranscriptionFilter Profanity transcription filter.
+// ProfanityTranscriptionFilter Profanity transcription filter to recognize profane words.
 type ProfanityTranscriptionFilter struct {
 
-	// The mode of filters.
-	// Allowed values are:
 	// - `MASK`: Will mask detected profanity in transcription.
 	// - `REMOVE`: Will replace profane word with * in transcription.
 	// - `TAG`: Will tag profane word as profanity but will show actual word.

@@ -21,6 +21,9 @@ type UpdateRoverNodeDetails struct {
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
+	// The shape of workloads in the node.
+	Shape *string `mandatory:"false" json:"shape"`
+
 	// Serial number of the node.
 	SerialNumber *string `mandatory:"false" json:"serialNumber"`
 

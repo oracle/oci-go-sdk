@@ -119,6 +119,9 @@ type RoverCluster struct {
 	// The link to pre-authenticated request for a bucket where image workloads are moved.
 	ImageExportPar *string `mandatory:"false" json:"imageExportPar"`
 
+	// Customer provided master key ID to encrypt secret information. If not provided, Rover's master key will be used for encryption.
+	MasterKeyId *string `mandatory:"false" json:"masterKeyId"`
+
 	// The tags associated with tagSlug.
 	Tags *string `mandatory:"false" json:"tags"`
 

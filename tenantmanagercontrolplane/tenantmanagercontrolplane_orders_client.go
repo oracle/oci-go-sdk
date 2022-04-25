@@ -149,7 +149,7 @@ func (client OrdersClient) activateOrder(ctx context.Context, request common.OCI
 	return response, err
 }
 
-// GetOrder Returns the Order Details given by the order id in the JWT
+// GetOrder Returns the Order Details given by the order ID in the JWT.
 //
 // See also
 //

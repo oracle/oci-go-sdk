@@ -19,6 +19,9 @@ import (
 // TranscriptionNormalization Information to Normalize generated transcript.
 type TranscriptionNormalization struct {
 
+	// Whether to add punctuation in generated transcription. By default it is enabled.
+	IsPunctuationEnabled *bool `mandatory:"false" json:"isPunctuationEnabled"`
+
 	// List of filters.
 	Filters []TranscriptionFilter `mandatory:"false" json:"filters"`
 }
@@ -42,7 +45,8 @@ func (m TranscriptionNormalization) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *TranscriptionNormalization) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		Filters []transcriptionfilter `json:"filters"`
+		IsPunctuationEnabled *bool                 `json:"isPunctuationEnabled"`
+		Filters              []transcriptionfilter `json:"filters"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -50,6 +54,8 @@ func (m *TranscriptionNormalization) UnmarshalJSON(data []byte) (e error) {
 		return
 	}
 	var nn interface{}
+	m.IsPunctuationEnabled = model.IsPunctuationEnabled
+
 	m.Filters = make([]TranscriptionFilter, len(model.Filters))
 	for i, n := range model.Filters {
 		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)
