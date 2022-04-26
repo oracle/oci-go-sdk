@@ -19,10 +19,10 @@ import (
 // TranscriptionJob Description of Transcription Job.
 type TranscriptionJob struct {
 
-	// Unique identifier that is immutable on creation.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the job.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The OCID of the compartment that contains the transcriptionJob.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment where you want to create the job.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	ModelDetails *TranscriptionModelDetails `mandatory:"true" json:"modelDetails"`
@@ -31,10 +31,10 @@ type TranscriptionJob struct {
 
 	OutputLocation *OutputLocation `mandatory:"true" json:"outputLocation"`
 
-	// Job name.
+	// A user-friendly display name for the job.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// Job description.
+	// A short description of the job.
 	Description *string `mandatory:"false" json:"description"`
 
 	Normalization *TranscriptionNormalization `mandatory:"false" json:"normalization"`
@@ -63,8 +63,11 @@ type TranscriptionJob struct {
 	// How much progress the operation has made, vs the total amount of work that must be performed.
 	PercentComplete *int `mandatory:"false" json:"percentComplete"`
 
-	// OCID of the user who created the transcriptionJob.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the user who created the job.
 	CreatedBy *string `mandatory:"false" json:"createdBy"`
+
+	// Transcription format. JSON format will always be provided in addition to any formats in this list.
+	AdditionalTranscriptionFormats []TranscriptionJobAdditionalTranscriptionFormatsEnum `mandatory:"false" json:"additionalTranscriptionFormats,omitempty"`
 
 	// The current state of the Job.
 	LifecycleState TranscriptionJobLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
@@ -95,6 +98,12 @@ func (m TranscriptionJob) String() string {
 func (m TranscriptionJob) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
+	for _, val := range m.AdditionalTranscriptionFormats {
+		if _, ok := GetMappingTranscriptionJobAdditionalTranscriptionFormatsEnum(string(val)); !ok && val != "" {
+			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AdditionalTranscriptionFormats: %s. Supported values are: %s.", val, strings.Join(GetTranscriptionJobAdditionalTranscriptionFormatsEnumStringValues(), ",")))
+		}
+	}
+
 	if _, ok := GetMappingTranscriptionJobLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetTranscriptionJobLifecycleStateEnumStringValues(), ",")))
 	}
@@ -107,28 +116,29 @@ func (m TranscriptionJob) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *TranscriptionJob) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		DisplayName      *string                            `json:"displayName"`
-		Description      *string                            `json:"description"`
-		Normalization    *TranscriptionNormalization        `json:"normalization"`
-		TimeAccepted     *common.SDKTime                    `json:"timeAccepted"`
-		TimeStarted      *common.SDKTime                    `json:"timeStarted"`
-		TimeFinished     *common.SDKTime                    `json:"timeFinished"`
-		TotalTasks       *int                               `json:"totalTasks"`
-		OutstandingTasks *int                               `json:"outstandingTasks"`
-		SuccessfulTasks  *int                               `json:"successfulTasks"`
-		TtlInDays        *int                               `json:"ttlInDays"`
-		PercentComplete  *int                               `json:"percentComplete"`
-		CreatedBy        *string                            `json:"createdBy"`
-		LifecycleState   TranscriptionJobLifecycleStateEnum `json:"lifecycleState"`
-		LifecycleDetails *string                            `json:"lifecycleDetails"`
-		FreeformTags     map[string]string                  `json:"freeformTags"`
-		DefinedTags      map[string]map[string]interface{}  `json:"definedTags"`
-		SystemTags       map[string]map[string]interface{}  `json:"systemTags"`
-		Id               *string                            `json:"id"`
-		CompartmentId    *string                            `json:"compartmentId"`
-		ModelDetails     *TranscriptionModelDetails         `json:"modelDetails"`
-		InputLocation    inputlocation                      `json:"inputLocation"`
-		OutputLocation   *OutputLocation                    `json:"outputLocation"`
+		DisplayName                    *string                                              `json:"displayName"`
+		Description                    *string                                              `json:"description"`
+		Normalization                  *TranscriptionNormalization                          `json:"normalization"`
+		TimeAccepted                   *common.SDKTime                                      `json:"timeAccepted"`
+		TimeStarted                    *common.SDKTime                                      `json:"timeStarted"`
+		TimeFinished                   *common.SDKTime                                      `json:"timeFinished"`
+		TotalTasks                     *int                                                 `json:"totalTasks"`
+		OutstandingTasks               *int                                                 `json:"outstandingTasks"`
+		SuccessfulTasks                *int                                                 `json:"successfulTasks"`
+		TtlInDays                      *int                                                 `json:"ttlInDays"`
+		PercentComplete                *int                                                 `json:"percentComplete"`
+		CreatedBy                      *string                                              `json:"createdBy"`
+		AdditionalTranscriptionFormats []TranscriptionJobAdditionalTranscriptionFormatsEnum `json:"additionalTranscriptionFormats"`
+		LifecycleState                 TranscriptionJobLifecycleStateEnum                   `json:"lifecycleState"`
+		LifecycleDetails               *string                                              `json:"lifecycleDetails"`
+		FreeformTags                   map[string]string                                    `json:"freeformTags"`
+		DefinedTags                    map[string]map[string]interface{}                    `json:"definedTags"`
+		SystemTags                     map[string]map[string]interface{}                    `json:"systemTags"`
+		Id                             *string                                              `json:"id"`
+		CompartmentId                  *string                                              `json:"compartmentId"`
+		ModelDetails                   *TranscriptionModelDetails                           `json:"modelDetails"`
+		InputLocation                  inputlocation                                        `json:"inputLocation"`
+		OutputLocation                 *OutputLocation                                      `json:"outputLocation"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -160,6 +170,11 @@ func (m *TranscriptionJob) UnmarshalJSON(data []byte) (e error) {
 
 	m.CreatedBy = model.CreatedBy
 
+	m.AdditionalTranscriptionFormats = make([]TranscriptionJobAdditionalTranscriptionFormatsEnum, len(model.AdditionalTranscriptionFormats))
+	for i, n := range model.AdditionalTranscriptionFormats {
+		m.AdditionalTranscriptionFormats[i] = n
+	}
+
 	m.LifecycleState = model.LifecycleState
 
 	m.LifecycleDetails = model.LifecycleDetails
@@ -189,6 +204,44 @@ func (m *TranscriptionJob) UnmarshalJSON(data []byte) (e error) {
 	m.OutputLocation = model.OutputLocation
 
 	return
+}
+
+// TranscriptionJobAdditionalTranscriptionFormatsEnum Enum with underlying type: string
+type TranscriptionJobAdditionalTranscriptionFormatsEnum string
+
+// Set of constants representing the allowable values for TranscriptionJobAdditionalTranscriptionFormatsEnum
+const (
+	TranscriptionJobAdditionalTranscriptionFormatsSrt TranscriptionJobAdditionalTranscriptionFormatsEnum = "SRT"
+)
+
+var mappingTranscriptionJobAdditionalTranscriptionFormatsEnum = map[string]TranscriptionJobAdditionalTranscriptionFormatsEnum{
+	"SRT": TranscriptionJobAdditionalTranscriptionFormatsSrt,
+}
+
+var mappingTranscriptionJobAdditionalTranscriptionFormatsEnumLowerCase = map[string]TranscriptionJobAdditionalTranscriptionFormatsEnum{
+	"srt": TranscriptionJobAdditionalTranscriptionFormatsSrt,
+}
+
+// GetTranscriptionJobAdditionalTranscriptionFormatsEnumValues Enumerates the set of values for TranscriptionJobAdditionalTranscriptionFormatsEnum
+func GetTranscriptionJobAdditionalTranscriptionFormatsEnumValues() []TranscriptionJobAdditionalTranscriptionFormatsEnum {
+	values := make([]TranscriptionJobAdditionalTranscriptionFormatsEnum, 0)
+	for _, v := range mappingTranscriptionJobAdditionalTranscriptionFormatsEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetTranscriptionJobAdditionalTranscriptionFormatsEnumStringValues Enumerates the set of values in String for TranscriptionJobAdditionalTranscriptionFormatsEnum
+func GetTranscriptionJobAdditionalTranscriptionFormatsEnumStringValues() []string {
+	return []string{
+		"SRT",
+	}
+}
+
+// GetMappingTranscriptionJobAdditionalTranscriptionFormatsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTranscriptionJobAdditionalTranscriptionFormatsEnum(val string) (TranscriptionJobAdditionalTranscriptionFormatsEnum, bool) {
+	enum, ok := mappingTranscriptionJobAdditionalTranscriptionFormatsEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // TranscriptionJobLifecycleStateEnum Enum with underlying type: string

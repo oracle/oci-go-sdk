@@ -19,7 +19,7 @@ import (
 type ListSubscriptionMappingsRequest struct {
 
 	// The ID of the subscription to which the tenancy is associated.
-	SubscriptionId *string `mandatory:"false" contributesTo:"query" name:"subscriptionId"`
+	SubscriptionId *string `mandatory:"true" contributesTo:"query" name:"subscriptionId"`
 
 	// SubscriptionMappingId is a unique ID for subscription and tenancy mapping.
 	SubscriptionMappingId *string `mandatory:"false" contributesTo:"query" name:"subscriptionMappingId"`

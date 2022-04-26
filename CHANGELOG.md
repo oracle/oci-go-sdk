@@ -4,6 +4,32 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.3.0 - 2022-04-26
+### Added
+- Support for the Service Mesh service
+- Support for security zones in the Cloud Guard service
+- Support for virtual test access points (VTAPs) in the Networking service
+- Support for monitoring as a source in the Service Connector Hub service
+- Support for creating budgets that target subscriptions and child tenancies in the Budgets service
+- Support for listing shapes and specifying a shape during creation of a node in the Roving Edge Infrastructure service
+- Support for bringing your own key in the Roving Edge Infrastructure service
+- Support for enabling inspection of HTTP request bodies in the Web Application Acceleration and Security
+- Support for cost management schedules in the Usage service
+- Support for TCPS on external containers as well as non-container and pluggable databases in the Database service
+- Support for autoscaling on Open Data Hub (ODH) clusters in the Big Data service
+- Support for creating Open Data Hub (ODH) 0.9 clusters in the Big Data service
+- Support for Open Data Hub (ODH) patch management in the Big Data service
+- Support for customizable Kerberos realm names in the Big Data service
+- Support for dedicated vantage points in the Application Performance Monitoring service
+- Support for reactivating child tenancies in the Organizations service
+- Support for punctuation and the SRT transcription format in the AI Speech service
+ 
+### Breaking Changes
+- Support for default retries on some operations in the Networking service
+- Support for default retries on all operations in the Data Safe service
+- Support for default retries on some additional operations in the Application Performance Monitoring service
+- The deprecated parameter `RiskScore` was removed in the sighting model in the Cloud Guard service
+
 ## 65.2.0 - 2022-04-19
 ### Added
 - Support for the Stack Monitoring service

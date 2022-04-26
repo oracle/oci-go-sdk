@@ -27,6 +27,9 @@ type ListRoverNodesRequest struct {
 	// A filter to return only Nodes of type matched with the given node type.
 	NodeType ListRoverNodesNodeTypeEnum `mandatory:"false" contributesTo:"query" name:"nodeType" omitEmpty:"true"`
 
+	// A filter to return only Nodes of type matched with the given node shape.
+	Shape *string `mandatory:"false" contributesTo:"query" name:"shape"`
+
 	// The maximum number of items to return.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
 

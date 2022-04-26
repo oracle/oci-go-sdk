@@ -18,10 +18,10 @@ import (
 // UpdateTranscriptionJobDetails The information to be updated.
 type UpdateTranscriptionJobDetails struct {
 
-	// Transcription job name.
+	// A user-friendly display name for the job.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// Transcription job description.
+	// A short description of the job.
 	Description *string `mandatory:"false" json:"description"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.

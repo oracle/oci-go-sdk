@@ -18,10 +18,10 @@ import (
 // TranscriptionTaskSummary Summary of the Transcription Task.
 type TranscriptionTaskSummary struct {
 
-	// Unique identifier that is immutable on creation.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the task.
 	Id *string `mandatory:"true" json:"id"`
 
-	// Transcription task name.
+	// A user-friendly display name for the task.
 	DisplayName *string `mandatory:"true" json:"displayName"`
 
 	// How much progress the operation has made, vs the total amount of work that must be performed.

@@ -446,7 +446,7 @@ func (client RoverEntitlementClient) updateRoverEntitlement(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverCluster/UpdateRoverEntitlement"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverEntitlement/UpdateRoverEntitlement"
 		err = common.PostProcessServiceError(err, "RoverEntitlement", "UpdateRoverEntitlement", apiReferenceLink)
 		return response, err
 	}

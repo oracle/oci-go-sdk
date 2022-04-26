@@ -15,7 +15,7 @@ import (
 	"strings"
 )
 
-// CreateRoverNodeDetails The representation of CreateRoverNodeDetails
+// CreateRoverNodeDetails The information required to create a RoverNode.
 type CreateRoverNodeDetails struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
@@ -23,6 +23,9 @@ type CreateRoverNodeDetails struct {
 
 	// The OCID of the compartment containing the RoverNode.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
+
+	// The shape of the node.
+	Shape *string `mandatory:"false" json:"shape"`
 
 	CustomerShippingAddress *ShippingAddress `mandatory:"false" json:"customerShippingAddress"`
 
@@ -85,6 +88,9 @@ type CreateRoverNodeDetails struct {
 
 	// Validation code returned by data validation tool. Required for return shipping label generation if data import was requested.
 	DataValidationCode *string `mandatory:"false" json:"dataValidationCode"`
+
+	// Customer provided master key ID to encrypt secret information. If not provided, Rover's master key will be used for encryption.
+	MasterKeyId *string `mandatory:"false" json:"masterKeyId"`
 
 	// The freeform tags associated with this resource, if any. Each tag is a simple key-value pair with no
 	// predefined name, type, or namespace. For more information, see Resource Tags (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcetags.htm).

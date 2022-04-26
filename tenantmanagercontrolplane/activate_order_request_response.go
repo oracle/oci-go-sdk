@@ -21,7 +21,7 @@ type ActivateOrderRequest struct {
 	// The information needed to activate an order in a tenancy.
 	ActivateOrderDetails `contributesTo:"body"`
 
-	// Activation Token containing an order id. JWT RFC 7519 formatted string.
+	// Activation Token containing an order ID. A JWT RFC 7519 formatted string.
 	ActivationToken *string `mandatory:"true" contributesTo:"path" name:"activationToken"`
 
 	// A token that uniquely identifies a request, so it can be retried in case of a timeout or

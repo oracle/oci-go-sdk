@@ -36,6 +36,9 @@ type RoverNodeSummary struct {
 	// The type of node indicating if it belongs to a cluster
 	NodeType NodeTypeEnum `mandatory:"false" json:"nodeType,omitempty"`
 
+	// The shape of the node.
+	Shape *string `mandatory:"false" json:"shape"`
+
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 

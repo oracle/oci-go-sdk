@@ -16,7 +16,7 @@ import (
 	"strings"
 )
 
-// ObjectListInlineInputLocation A list of object locations in Object Storage.
+// ObjectListInlineInputLocation A list of object locations in Object Storage inline in request.
 type ObjectListInlineInputLocation struct {
 
 	// A list of ObjectLocations.

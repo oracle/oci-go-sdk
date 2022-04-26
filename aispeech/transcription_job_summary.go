@@ -18,16 +18,16 @@ import (
 // TranscriptionJobSummary Summary of the Transcription Job.
 type TranscriptionJobSummary struct {
 
-	// Unique identifier that is immutable on creation.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the job.
 	Id *string `mandatory:"true" json:"id"`
 
-	// Transcription Job name, can be renamed.
+	// A user-friendly display name for the job.
 	DisplayName *string `mandatory:"true" json:"displayName"`
 
-	// The OCID of the compartment that contains the transcriptionJob.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment where you want to create the job.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// OCID of the user who created the transcriptionJob.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the user who created the job.
 	CreatedBy *string `mandatory:"false" json:"createdBy"`
 
 	// How much progress the operation has made, vs the total amount of work that must be performed.
