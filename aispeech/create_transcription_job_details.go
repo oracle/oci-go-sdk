@@ -19,18 +19,21 @@ import (
 // CreateTranscriptionJobDetails The information about new Transcription Job.
 type CreateTranscriptionJobDetails struct {
 
-	// The OCID of the compartment that contains the transcriptionJob.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment where you want to create the job.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	InputLocation InputLocation `mandatory:"true" json:"inputLocation"`
 
 	OutputLocation *OutputLocation `mandatory:"true" json:"outputLocation"`
 
-	// Transcription job name.
+	// A user-friendly display name for the job.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// Transcription job description.
+	// A short description of the job.
 	Description *string `mandatory:"false" json:"description"`
+
+	// Transcription Format. By default JSON format will be considered.
+	AdditionalTranscriptionFormats []CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum `mandatory:"false" json:"additionalTranscriptionFormats,omitempty"`
 
 	ModelDetails *TranscriptionModelDetails `mandatory:"false" json:"modelDetails"`
 
@@ -55,6 +58,12 @@ func (m CreateTranscriptionJobDetails) String() string {
 func (m CreateTranscriptionJobDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
+	for _, val := range m.AdditionalTranscriptionFormats {
+		if _, ok := GetMappingCreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum(string(val)); !ok && val != "" {
+			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AdditionalTranscriptionFormats: %s. Supported values are: %s.", val, strings.Join(GetCreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnumStringValues(), ",")))
+		}
+	}
+
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
@@ -64,15 +73,16 @@ func (m CreateTranscriptionJobDetails) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *CreateTranscriptionJobDetails) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		DisplayName    *string                           `json:"displayName"`
-		Description    *string                           `json:"description"`
-		ModelDetails   *TranscriptionModelDetails        `json:"modelDetails"`
-		Normalization  *TranscriptionNormalization       `json:"normalization"`
-		FreeformTags   map[string]string                 `json:"freeformTags"`
-		DefinedTags    map[string]map[string]interface{} `json:"definedTags"`
-		CompartmentId  *string                           `json:"compartmentId"`
-		InputLocation  inputlocation                     `json:"inputLocation"`
-		OutputLocation *OutputLocation                   `json:"outputLocation"`
+		DisplayName                    *string                                                           `json:"displayName"`
+		Description                    *string                                                           `json:"description"`
+		AdditionalTranscriptionFormats []CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum `json:"additionalTranscriptionFormats"`
+		ModelDetails                   *TranscriptionModelDetails                                        `json:"modelDetails"`
+		Normalization                  *TranscriptionNormalization                                       `json:"normalization"`
+		FreeformTags                   map[string]string                                                 `json:"freeformTags"`
+		DefinedTags                    map[string]map[string]interface{}                                 `json:"definedTags"`
+		CompartmentId                  *string                                                           `json:"compartmentId"`
+		InputLocation                  inputlocation                                                     `json:"inputLocation"`
+		OutputLocation                 *OutputLocation                                                   `json:"outputLocation"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -83,6 +93,11 @@ func (m *CreateTranscriptionJobDetails) UnmarshalJSON(data []byte) (e error) {
 	m.DisplayName = model.DisplayName
 
 	m.Description = model.Description
+
+	m.AdditionalTranscriptionFormats = make([]CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum, len(model.AdditionalTranscriptionFormats))
+	for i, n := range model.AdditionalTranscriptionFormats {
+		m.AdditionalTranscriptionFormats[i] = n
+	}
 
 	m.ModelDetails = model.ModelDetails
 
@@ -107,4 +122,42 @@ func (m *CreateTranscriptionJobDetails) UnmarshalJSON(data []byte) (e error) {
 	m.OutputLocation = model.OutputLocation
 
 	return
+}
+
+// CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum Enum with underlying type: string
+type CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum string
+
+// Set of constants representing the allowable values for CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum
+const (
+	CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsSrt CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum = "SRT"
+)
+
+var mappingCreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum = map[string]CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum{
+	"SRT": CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsSrt,
+}
+
+var mappingCreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnumLowerCase = map[string]CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum{
+	"srt": CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsSrt,
+}
+
+// GetCreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnumValues Enumerates the set of values for CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum
+func GetCreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnumValues() []CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum {
+	values := make([]CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum, 0)
+	for _, v := range mappingCreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetCreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnumStringValues Enumerates the set of values in String for CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum
+func GetCreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnumStringValues() []string {
+	return []string{
+		"SRT",
+	}
+}
+
+// GetMappingCreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum(val string) (CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum, bool) {
+	enum, ok := mappingCreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
 }

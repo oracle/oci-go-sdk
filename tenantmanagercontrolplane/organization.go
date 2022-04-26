@@ -24,7 +24,7 @@ type Organization struct {
 	// OCID of the compartment containing the organization. Always a tenancy OCID.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// OCID of the default Annual Universal Credits subscription. Any tenancy joining the organization will automatically get assigned this subscription if a subscription is not explictly assigned.
+	// OCID of the default Universal Credits Model subscription. Any tenancy joining the organization will automatically get assigned this subscription if a subscription is not explictly assigned.
 	DefaultUcmSubscriptionId *string `mandatory:"true" json:"defaultUcmSubscriptionId"`
 
 	// Lifecycle state of the organization.

@@ -36,6 +36,9 @@ type RoverNode struct {
 	// The type of node indicating if it belongs to a cluster
 	NodeType NodeTypeEnum `mandatory:"false" json:"nodeType,omitempty"`
 
+	// The shape of the node.
+	Shape *string `mandatory:"false" json:"shape"`
+
 	// The type of enclosure rover node is shipped in.
 	EnclosureType EnclosureTypeEnum `mandatory:"false" json:"enclosureType,omitempty"`
 
@@ -112,6 +115,9 @@ type RoverNode struct {
 
 	// The link to pre-authenticated request for a bucket where image workloads are moved.
 	ImageExportPar *string `mandatory:"false" json:"imageExportPar"`
+
+	// Customer provided master key ID to encrypt secret information. If not provided, Rover's master key will be used for encryption.
+	MasterKeyId *string `mandatory:"false" json:"masterKeyId"`
 
 	// The tags associated with tagSlug.
 	Tags *string `mandatory:"false" json:"tags"`
