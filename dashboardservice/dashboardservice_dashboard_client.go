@@ -221,9 +221,10 @@ func (client DashboardClient) deleteDashboard(ctx context.Context, request commo
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/GetDashboard.go.html to see an example of how to use GetDashboard API.
+// A default retry strategy applies to this operation GetDashboard()
 func (client DashboardClient) GetDashboard(ctx context.Context, request GetDashboardRequest) (response GetDashboardResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -278,9 +279,10 @@ func (client DashboardClient) getDashboard(ctx context.Context, request common.O
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/ListDashboards.go.html to see an example of how to use ListDashboards API.
+// A default retry strategy applies to this operation ListDashboards()
 func (client DashboardClient) ListDashboards(ctx context.Context, request ListDashboardsRequest) (response ListDashboardsResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
