@@ -221,9 +221,10 @@ func (client DashboardGroupClient) deleteDashboardGroup(ctx context.Context, req
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/GetDashboardGroup.go.html to see an example of how to use GetDashboardGroup API.
+// A default retry strategy applies to this operation GetDashboardGroup()
 func (client DashboardGroupClient) GetDashboardGroup(ctx context.Context, request GetDashboardGroupRequest) (response GetDashboardGroupResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -278,9 +279,10 @@ func (client DashboardGroupClient) getDashboardGroup(ctx context.Context, reques
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/ListDashboardGroups.go.html to see an example of how to use ListDashboardGroups API.
+// A default retry strategy applies to this operation ListDashboardGroups()
 func (client DashboardGroupClient) ListDashboardGroups(ctx context.Context, request ListDashboardGroupsRequest) (response ListDashboardGroupsResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}

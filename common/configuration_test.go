@@ -498,7 +498,7 @@ region=someregion
 	c, e0 := ConfigurationProviderFromFile(tmpConfFile, "")
 	assert.NoError(t, e0)
 	_, e1 := c.KeyID()
-	assert.NoError(t, e1)
+	assert.Error(t, e1)
 	_, e1 = c.TenancyOCID()
 	assert.Error(t, e1)
 
@@ -522,7 +522,7 @@ compartment = somecompartment
 	c, e0 := ConfigurationProviderFromFile(tmpConfFile, "")
 	assert.NoError(t, e0)
 	_, e1 := c.KeyID()
-	assert.NoError(t, e1)
+	assert.Error(t, e1)
 	_, e1 = c.TenancyOCID()
 	assert.Error(t, e1)
 	_, e1 = c.Region()
