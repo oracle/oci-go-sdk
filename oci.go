@@ -257,6 +257,15 @@ Built-in logging in the SDK is controlled via the environment variable "OCI_GO_S
 If the value of the environment variable does not match any of the above then default logging level is "info".
 If the environment variable is not present then no logging messages are emitted.
 
+You can also enable logs by code. For example
+
+	var dlog DefaultSDKLogger
+	dlog.currentLoggingLevel = 2
+	dlog.debugLogger = log.New(os.Stderr, "DEBUG ", log.Ldate|log.Lmicroseconds|log.Lshortfile)
+	SetSDKLogger(dlog)
+
+This way you enable debug logs by code.
+
 The default destination for logging is Stderr and if you want to output log to a file you can set via environment variable "OCI_GO_SDK_LOG_OUTPUT_MODE". The below are possible values
 
 1. "file" or "f" enables all logging output saved to file
