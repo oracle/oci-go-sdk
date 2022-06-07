@@ -48,6 +48,11 @@ func TestIsErrorAffectedByEventualConsistency(t *testing.T) {
 		StatusCode: 400,
 		Code:       "InsufficientServicePermissions"}
 	assert.True(t, IsErrorAffectedByEventualConsistency(error))
+
+	error = servicefailure{
+		StatusCode: 400,
+		Code:       "ResourceDisabled"}
+	assert.True(t, IsErrorAffectedByEventualConsistency(error))
 }
 
 // tests for EC communication mode: file
