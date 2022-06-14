@@ -4,14 +4,33 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.9.0 - 2022-06-14
+### Added
+- Support for the Web Application Acceleration (WAA) service
+- Support for the Governance Rules service
+- Support for the OneSubscription service
+- Support for resource locking in the Identity service
+- Support for quota resource locking in the Limits service
+- Support for returning the backup with the requested changes in the MySQL Database service
+- Support for time zone in Cloud Autonomous VM (CAVM) clusters in the Database service
+- Support for configuration options in the Application Performance Monitoring service
+- Support for MySQL connections in the Database Tools service
+ 
+### Breaking Changes
+- Support for retries by default on operations in the Database Tools service
+- Model `DatabaseToolsAllowedNetworkSources`, `DatabaseToolsVirtualSource` and `ServiceCapability`  removed in Database Tools service
+- `SecretId` is a required property in `DatabaseToolsUserPasswordSecretIdDetails` model in Databasetools service
+
 ## 65.8.1 - 2022-06-07
 ### Added
 - Support for calling Oracle Cloud Infrastructure services in the eu-paris-1 region
 - Support for private endpoints in Resource Manager service
 - Support downloading generated Terraform plan output in JSON or binary format in Resource Manager service
 - Support for querying OPSI Data Objects in the Operations Insights service
+- Added 400-ResourceDisabled to EventualConsistency retry
 ### Changed
 - Network security groups (NSGs) are now optional for autonomous databases on private endpoints in the Database service
+- Changed the scope of `DefaultSDKLogger`, `SetSDKLogger` and `NewSDKLogger` functions to public for enabling logs by code
 
 ## 65.8.0 - 2022-05-31
 ### Added
