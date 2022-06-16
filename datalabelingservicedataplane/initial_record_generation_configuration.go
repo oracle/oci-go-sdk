@@ -15,7 +15,7 @@ import (
 	"strings"
 )
 
-// InitialRecordGenerationConfiguration The initial generate records configuration It generates records from the dataset's source.
+// InitialRecordGenerationConfiguration The initial generate records configuration. It generates records from the dataset's source.
 type InitialRecordGenerationConfiguration struct {
 
 	// The maximum number of records to generate.

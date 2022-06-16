@@ -19,7 +19,7 @@ import (
 // Dataset A dataset is a logical collection of records. The dataset contains all the information necessary to describe a record's source, format, the type of annotations allowed for the record, and the labels allowed on annotations.
 type Dataset struct {
 
-	// The OCID of the dataset.
+	// The OCID of the Dataset.
 	Id *string `mandatory:"true" json:"id"`
 
 	// The OCID of the compartment of the resource.
@@ -28,14 +28,14 @@ type Dataset struct {
 	// The date and time the resource was created, in the timestamp format defined by RFC3339.
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
-	// The date and time the resource was updated, in the timestamp format defined by RFC3339.
+	// The date and time the resource was last updated, in the timestamp format defined by RFC3339.
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
 
 	// The state of a dataset.
-	// CREATING - The dataset is being created.  It transitions to ACTIVE when it is ready for labeling.
+	// CREATING - The dataset is being created.  It will transition to ACTIVE when it is ready for labeling.
 	// ACTIVE   - The dataset is ready for labeling.
-	// UPDATING - The dataset is being updated.  It, and its related resources, might be unavailable for other updates until it returns to ACTIVE.
-	// NEEDS_ATTENTION - A dataset updaten operation has failed due to validation or other errors, and needs attention.
+	// UPDATING - The dataset is being updated.  It and its related resources may be unavailable for other updates until it returns to ACTIVE.
+	// NEEDS_ATTENTION - A dataset updation operation has failed due to validation or other errors and needs attention.
 	// DELETING - The dataset and its related resources are being deleted.
 	// DELETED  - The dataset has been deleted and is no longer available.
 	// FAILED   - The dataset has failed due to validation or other errors.
@@ -53,7 +53,7 @@ type Dataset struct {
 	// A user-friendly display name for the resource.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// A user-provided description of the dataset
+	// A user provided description of the dataset
 	Description *string `mandatory:"false" json:"description"`
 
 	// A message describing the current state in more detail. For example, it can be used to provide actionable information for a resource in FAILED or NEEDS_ATTENTION state.
