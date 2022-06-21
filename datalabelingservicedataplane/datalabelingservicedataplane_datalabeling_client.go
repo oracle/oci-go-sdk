@@ -92,9 +92,10 @@ func (client *DataLabelingClient) ConfigurationProvider() *common.ConfigurationP
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/CreateAnnotation.go.html to see an example of how to use CreateAnnotation API.
+// A default retry strategy applies to this operation CreateAnnotation()
 func (client DataLabelingClient) CreateAnnotation(ctx context.Context, request CreateAnnotationRequest) (response CreateAnnotationResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
