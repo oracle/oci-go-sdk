@@ -34,6 +34,8 @@ const (
 	OperationTypeHardTerminateTenancy         OperationTypeEnum = "HARD_TERMINATE_TENANCY"
 	OperationTypeRestoreTenancy               OperationTypeEnum = "RESTORE_TENANCY"
 	OperationTypeLogTenancyTerminationRequest OperationTypeEnum = "LOG_TENANCY_TERMINATION_REQUEST"
+	OperationTypeSelfOptIn                    OperationTypeEnum = "SELF_OPT_IN"
+	OperationTypeSelfOptOut                   OperationTypeEnum = "SELF_OPT_OUT"
 )
 
 var mappingOperationTypeEnum = map[string]OperationTypeEnum{
@@ -53,6 +55,8 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"HARD_TERMINATE_TENANCY":          OperationTypeHardTerminateTenancy,
 	"RESTORE_TENANCY":                 OperationTypeRestoreTenancy,
 	"LOG_TENANCY_TERMINATION_REQUEST": OperationTypeLogTenancyTerminationRequest,
+	"SELF_OPT_IN":                     OperationTypeSelfOptIn,
+	"SELF_OPT_OUT":                    OperationTypeSelfOptOut,
 }
 
 var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
@@ -72,6 +76,8 @@ var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
 	"hard_terminate_tenancy":          OperationTypeHardTerminateTenancy,
 	"restore_tenancy":                 OperationTypeRestoreTenancy,
 	"log_tenancy_termination_request": OperationTypeLogTenancyTerminationRequest,
+	"self_opt_in":                     OperationTypeSelfOptIn,
+	"self_opt_out":                    OperationTypeSelfOptOut,
 }
 
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum
@@ -102,6 +108,8 @@ func GetOperationTypeEnumStringValues() []string {
 		"HARD_TERMINATE_TENANCY",
 		"RESTORE_TENANCY",
 		"LOG_TENANCY_TERMINATION_REQUEST",
+		"SELF_OPT_IN",
+		"SELF_OPT_OUT",
 	}
 }
 
