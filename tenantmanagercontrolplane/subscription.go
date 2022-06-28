@@ -45,6 +45,30 @@ type Subscription struct {
 	// List of SKUs linked to this subscription.
 	Skus []SubscriptionSku `mandatory:"false" json:"skus"`
 
+	// Denotes any program that is associated with the subscription.
+	ProgramType *string `mandatory:"false" json:"programType"`
+
+	// The country code for the customer associated with the subscription.
+	CustomerCountryCode *string `mandatory:"false" json:"customerCountryCode"`
+
+	// The currency code for the customer associated with the subscription.
+	CloudAmountCurrency *string `mandatory:"false" json:"cloudAmountCurrency"`
+
+	// Customer service identifier for the customer associated with the subscription.
+	CsiNumber *string `mandatory:"false" json:"csiNumber"`
+
+	// Tier for the subscription, such as if it is a free promotion subscription or a paid subscription.
+	SubscriptionTier *string `mandatory:"false" json:"subscriptionTier"`
+
+	// Denotes if the subscription is a government subscription or not.
+	IsGovernmentSubscription *bool `mandatory:"false" json:"isGovernmentSubscription"`
+
+	// List of promotions related to the subscription.
+	Promotion []Promotion `mandatory:"false" json:"promotion"`
+
+	// Purchase entitlement id associated with the subscription.
+	PurchaseEntitlementId *string `mandatory:"false" json:"purchaseEntitlementId"`
+
 	// Subscription start time.
 	StartDate *common.SDKTime `mandatory:"false" json:"startDate"`
 

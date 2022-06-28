@@ -30,7 +30,7 @@ type SubscriptionMapping struct {
 	// Denotes if the subscription is explicity assigned to the root compartment or tenancy.
 	IsExplicitlyAssigned *bool `mandatory:"true" json:"isExplicitlyAssigned"`
 
-	// Lifecycle state of the subscription mapping.
+	// Lifecycle state of the subscriptionMapping.
 	LifecycleState SubscriptionMappingLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// Date-time when subscription mapping was created.
