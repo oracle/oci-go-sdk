@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.13.0 - 2022-07-12
+### Added
+- Support for DBCS databases in the Operations Insights service
+- Support for point-in-time recovery for non-highly-available database systems in the MySQL Database service
+- Support for triggering reboot migration on instances with pending maintenance in the Compute service
+- Support for native pod networking in the Container Engine for Kubernetes service
+- Support for creating Data Guard associations with new database systems in the Database service
+- Fix for double encoding in URL
+  
+### Breaking Changes
+- The data type of the property `HostType` was changed from a List of `string` to a List of `HostTypeEnum` in ListHostInsightsRequest in the Operations Insights service
+- The property `PreserveDataVolumes` was removed from the TerminateInstanceRequest in the Compute service
+
 ## 65.12.0 - 2022-07-05
 ### Added
 - Support for backup policies returned as part of the database system list operation in the MySQL Database service
