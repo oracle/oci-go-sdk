@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
-## 65.14.0 - 2022-07-27
+## 65.14.0 - 2022-07-26
 ### Added
 - Support for the Fusion Apps as a Service service
 - Support for the Digital Media service
@@ -25,6 +25,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
   
 ### Breaking Changes
 - `DataMaskingActivityClient`,`FusionEnvironmentClient`, `FusionEnvironmentFamilyClient`, `RefreshActivityClient`,`ScheduledActivityClient`, and `ServiceAttachmentClient` clients were merged into a single client `FusionApplicationsClient` for the Fusion Apps as a Service service
+- Properties `addressee`, `address1`, `cityOrLocality`, `stateOrRegion`, `zipcode`, `country` are changed from optional to required for ShippingAddress model in Data Transfer Service.
 
 ## 65.13.1 - 2022-07-19
 ### Added
