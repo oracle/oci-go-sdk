@@ -21,6 +21,11 @@ type CreateTransferApplianceRequest struct {
 	// ID of the Transfer Job
 	Id *string `mandatory:"true" contributesTo:"path" name:"id"`
 
+	// A token that uniquely identifies a request so it can be retried in case of a timeout or
+	// server error without risk of executing that same action again. Retry tokens expire after 24
+	// hours, but can be invalidated before then due to conflicting operations (e.g., if a resource
+	// has been deleted and purged from the system, then a retry of the original creation request
+	// may be rejected).
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 
 	// Creates a New Transfer Appliance

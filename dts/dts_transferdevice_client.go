@@ -163,6 +163,11 @@ func (client TransferDeviceClient) DeleteTransferDevice(ctx context.Context, req
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.deleteTransferDevice, policy)
 	if err != nil {
 		if ociResponse != nil {
