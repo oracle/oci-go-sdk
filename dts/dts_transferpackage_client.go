@@ -101,6 +101,11 @@ func (client TransferPackageClient) AttachDevicesToTransferPackage(ctx context.C
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.attachDevicesToTransferPackage, policy)
 	if err != nil {
 		if ociResponse != nil {
@@ -220,6 +225,11 @@ func (client TransferPackageClient) DeleteTransferPackage(ctx context.Context, r
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.deleteTransferPackage, policy)
 	if err != nil {
 		if ociResponse != nil {
@@ -277,6 +287,11 @@ func (client TransferPackageClient) DetachDevicesFromTransferPackage(ctx context
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.detachDevicesFromTransferPackage, policy)
 	if err != nil {
 		if ociResponse != nil {

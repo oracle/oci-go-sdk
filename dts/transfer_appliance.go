@@ -48,6 +48,20 @@ type TransferAppliance struct {
 	CustomerShippingAddress *ShippingAddress `mandatory:"false" json:"customerShippingAddress"`
 
 	UploadStatusLogUri *string `mandatory:"false" json:"uploadStatusLogUri"`
+
+	ReturnShippingLabelUri *string `mandatory:"false" json:"returnShippingLabelUri"`
+
+	// Expected return date from customer for the device, time portion should be zero.
+	ExpectedReturnDate *common.SDKTime `mandatory:"false" json:"expectedReturnDate"`
+
+	// Start time for the window to pickup the device from customer.
+	PickupWindowStartTime *common.SDKTime `mandatory:"false" json:"pickupWindowStartTime"`
+
+	// End time for the window to pickup the device from customer.
+	PickupWindowEndTime *common.SDKTime `mandatory:"false" json:"pickupWindowEndTime"`
+
+	// Minimum storage capacity of the device, in terabytes. Valid options are 50, 95 and 150.
+	MinimumStorageCapacityInTerabytes *int `mandatory:"false" json:"minimumStorageCapacityInTerabytes"`
 }
 
 func (m TransferAppliance) String() string {
@@ -80,6 +94,9 @@ const (
 	TransferApplianceLifecycleStateDelivered               TransferApplianceLifecycleStateEnum = "DELIVERED"
 	TransferApplianceLifecycleStatePreparing               TransferApplianceLifecycleStateEnum = "PREPARING"
 	TransferApplianceLifecycleStateFinalized               TransferApplianceLifecycleStateEnum = "FINALIZED"
+	TransferApplianceLifecycleStateReturnLabelRequested    TransferApplianceLifecycleStateEnum = "RETURN_LABEL_REQUESTED"
+	TransferApplianceLifecycleStateReturnLabelGenerating   TransferApplianceLifecycleStateEnum = "RETURN_LABEL_GENERATING"
+	TransferApplianceLifecycleStateReturnLabelAvailable    TransferApplianceLifecycleStateEnum = "RETURN_LABEL_AVAILABLE"
 	TransferApplianceLifecycleStateReturnDelayed           TransferApplianceLifecycleStateEnum = "RETURN_DELAYED"
 	TransferApplianceLifecycleStateReturnShipped           TransferApplianceLifecycleStateEnum = "RETURN_SHIPPED"
 	TransferApplianceLifecycleStateReturnShippedCancelled  TransferApplianceLifecycleStateEnum = "RETURN_SHIPPED_CANCELLED"
@@ -103,6 +120,9 @@ var mappingTransferApplianceLifecycleStateEnum = map[string]TransferApplianceLif
 	"DELIVERED":                 TransferApplianceLifecycleStateDelivered,
 	"PREPARING":                 TransferApplianceLifecycleStatePreparing,
 	"FINALIZED":                 TransferApplianceLifecycleStateFinalized,
+	"RETURN_LABEL_REQUESTED":    TransferApplianceLifecycleStateReturnLabelRequested,
+	"RETURN_LABEL_GENERATING":   TransferApplianceLifecycleStateReturnLabelGenerating,
+	"RETURN_LABEL_AVAILABLE":    TransferApplianceLifecycleStateReturnLabelAvailable,
 	"RETURN_DELAYED":            TransferApplianceLifecycleStateReturnDelayed,
 	"RETURN_SHIPPED":            TransferApplianceLifecycleStateReturnShipped,
 	"RETURN_SHIPPED_CANCELLED":  TransferApplianceLifecycleStateReturnShippedCancelled,
@@ -126,6 +146,9 @@ var mappingTransferApplianceLifecycleStateEnumLowerCase = map[string]TransferApp
 	"delivered":                 TransferApplianceLifecycleStateDelivered,
 	"preparing":                 TransferApplianceLifecycleStatePreparing,
 	"finalized":                 TransferApplianceLifecycleStateFinalized,
+	"return_label_requested":    TransferApplianceLifecycleStateReturnLabelRequested,
+	"return_label_generating":   TransferApplianceLifecycleStateReturnLabelGenerating,
+	"return_label_available":    TransferApplianceLifecycleStateReturnLabelAvailable,
 	"return_delayed":            TransferApplianceLifecycleStateReturnDelayed,
 	"return_shipped":            TransferApplianceLifecycleStateReturnShipped,
 	"return_shipped_cancelled":  TransferApplianceLifecycleStateReturnShippedCancelled,
@@ -160,6 +183,9 @@ func GetTransferApplianceLifecycleStateEnumStringValues() []string {
 		"DELIVERED",
 		"PREPARING",
 		"FINALIZED",
+		"RETURN_LABEL_REQUESTED",
+		"RETURN_LABEL_GENERATING",
+		"RETURN_LABEL_AVAILABLE",
 		"RETURN_DELAYED",
 		"RETURN_SHIPPED",
 		"RETURN_SHIPPED_CANCELLED",

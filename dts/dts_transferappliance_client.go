@@ -163,6 +163,11 @@ func (client TransferApplianceClient) CreateTransferApplianceAdminCredentials(ct
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.createTransferApplianceAdminCredentials, policy)
 	if err != nil {
 		if ociResponse != nil {
@@ -220,6 +225,11 @@ func (client TransferApplianceClient) DeleteTransferAppliance(ctx context.Contex
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.deleteTransferAppliance, policy)
 	if err != nil {
 		if ociResponse != nil {

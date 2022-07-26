@@ -86,6 +86,17 @@ type ApplianceExportJob struct {
 	// Polices to grant Data Transfer Service to access objects in the Bucket
 	BucketAccessPolicies []string `mandatory:"false" json:"bucketAccessPolicies"`
 
+	ReturnShippingLabelUri *string `mandatory:"false" json:"returnShippingLabelUri"`
+
+	// Expected return date from customer for the device, time portion should be zero.
+	ExpectedReturnDate *common.SDKTime `mandatory:"false" json:"expectedReturnDate"`
+
+	// Start time for the window to pickup the device from customer.
+	PickupWindowStartTime *common.SDKTime `mandatory:"false" json:"pickupWindowStartTime"`
+
+	// End time for the window to pickup the device from customer.
+	PickupWindowEndTime *common.SDKTime `mandatory:"false" json:"pickupWindowEndTime"`
+
 	CustomerShippingAddress *ShippingAddress `mandatory:"false" json:"customerShippingAddress"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no

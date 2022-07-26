@@ -225,6 +225,11 @@ func (client TransferJobClient) DeleteTransferJob(ctx context.Context, request D
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.deleteTransferJob, policy)
 	if err != nil {
 		if ociResponse != nil {
