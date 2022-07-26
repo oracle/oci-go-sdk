@@ -105,6 +105,9 @@ const (
 	ListTransferAppliancesLifecycleStateDelivered               ListTransferAppliancesLifecycleStateEnum = "DELIVERED"
 	ListTransferAppliancesLifecycleStatePreparing               ListTransferAppliancesLifecycleStateEnum = "PREPARING"
 	ListTransferAppliancesLifecycleStateFinalized               ListTransferAppliancesLifecycleStateEnum = "FINALIZED"
+	ListTransferAppliancesLifecycleStateReturnLabelRequested    ListTransferAppliancesLifecycleStateEnum = "RETURN_LABEL_REQUESTED"
+	ListTransferAppliancesLifecycleStateReturnLabelGenerating   ListTransferAppliancesLifecycleStateEnum = "RETURN_LABEL_GENERATING"
+	ListTransferAppliancesLifecycleStateReturnLabelAvailable    ListTransferAppliancesLifecycleStateEnum = "RETURN_LABEL_AVAILABLE"
 	ListTransferAppliancesLifecycleStateReturnDelayed           ListTransferAppliancesLifecycleStateEnum = "RETURN_DELAYED"
 	ListTransferAppliancesLifecycleStateReturnShipped           ListTransferAppliancesLifecycleStateEnum = "RETURN_SHIPPED"
 	ListTransferAppliancesLifecycleStateReturnShippedCancelled  ListTransferAppliancesLifecycleStateEnum = "RETURN_SHIPPED_CANCELLED"
@@ -128,6 +131,9 @@ var mappingListTransferAppliancesLifecycleStateEnum = map[string]ListTransferApp
 	"DELIVERED":                 ListTransferAppliancesLifecycleStateDelivered,
 	"PREPARING":                 ListTransferAppliancesLifecycleStatePreparing,
 	"FINALIZED":                 ListTransferAppliancesLifecycleStateFinalized,
+	"RETURN_LABEL_REQUESTED":    ListTransferAppliancesLifecycleStateReturnLabelRequested,
+	"RETURN_LABEL_GENERATING":   ListTransferAppliancesLifecycleStateReturnLabelGenerating,
+	"RETURN_LABEL_AVAILABLE":    ListTransferAppliancesLifecycleStateReturnLabelAvailable,
 	"RETURN_DELAYED":            ListTransferAppliancesLifecycleStateReturnDelayed,
 	"RETURN_SHIPPED":            ListTransferAppliancesLifecycleStateReturnShipped,
 	"RETURN_SHIPPED_CANCELLED":  ListTransferAppliancesLifecycleStateReturnShippedCancelled,
@@ -151,6 +157,9 @@ var mappingListTransferAppliancesLifecycleStateEnumLowerCase = map[string]ListTr
 	"delivered":                 ListTransferAppliancesLifecycleStateDelivered,
 	"preparing":                 ListTransferAppliancesLifecycleStatePreparing,
 	"finalized":                 ListTransferAppliancesLifecycleStateFinalized,
+	"return_label_requested":    ListTransferAppliancesLifecycleStateReturnLabelRequested,
+	"return_label_generating":   ListTransferAppliancesLifecycleStateReturnLabelGenerating,
+	"return_label_available":    ListTransferAppliancesLifecycleStateReturnLabelAvailable,
 	"return_delayed":            ListTransferAppliancesLifecycleStateReturnDelayed,
 	"return_shipped":            ListTransferAppliancesLifecycleStateReturnShipped,
 	"return_shipped_cancelled":  ListTransferAppliancesLifecycleStateReturnShippedCancelled,
@@ -185,6 +194,9 @@ func GetListTransferAppliancesLifecycleStateEnumStringValues() []string {
 		"DELIVERED",
 		"PREPARING",
 		"FINALIZED",
+		"RETURN_LABEL_REQUESTED",
+		"RETURN_LABEL_GENERATING",
+		"RETURN_LABEL_AVAILABLE",
 		"RETURN_DELAYED",
 		"RETURN_SHIPPED",
 		"RETURN_SHIPPED_CANCELLED",

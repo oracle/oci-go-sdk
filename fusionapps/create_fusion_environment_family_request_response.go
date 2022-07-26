@@ -21,9 +21,6 @@ type CreateFusionEnvironmentFamilyRequest struct {
 	// Details for the new FusionEnvironmentFamily.
 	CreateFusionEnvironmentFamilyDetails `contributesTo:"body"`
 
-	// For Oracle internal use only.
-	OpcProvisionOption *string `mandatory:"false" contributesTo:"header" name:"opc-provision-option"`
-
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24
 	// hours, but can be invalidated before then due to conflicting operations. For example, if a resource

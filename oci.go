@@ -41,7 +41,7 @@ them out to stdout
 			CompartmentId: &tenancyID,
 		}
 
-		r, err := c.ListAvailabilityDomains(context.Background(), request)
+		r, err := client.ListAvailabilityDomains(context.Background(), request)
 		if err != nil {
 			fmt.Println("Error:", err)
 			return
@@ -129,7 +129,7 @@ The example below shows how to create a default signer.
 	signer.Sign(&request)
 
 	// Execute the request
-	client.Do(request)
+	client.Do(&request)
 
 
 
@@ -143,10 +143,10 @@ The signer also allows more granular control on the headers used for signing. Fo
 	request.Header.Set("Date", time.Now().UTC().Format(http.TimeFormat))
 
 	// Mandatory headers to be used in the sign process
-	defaultGenericHeaders    = []string{"date", "(request-target)", "host"}
+	defaultGenericHeaders    := []string{"date", "(request-target)", "host"}
 
 	// Optional headers
-	optionalHeaders = []string{"content-length", "content-type", "x-content-sha256"}
+	optionalHeaders := []string{"content-length", "content-type", "x-content-sha256"}
 
 	// A predicate that specifies when to use the optional signing headers
 	optionalHeadersPredicate := func (r *http.Request) bool {
@@ -157,13 +157,13 @@ The signer also allows more granular control on the headers used for signing. Fo
 	provider := common.DefaultConfigProvider()
 
 	// Build the signer
-	signer := common.RequestSigner(provider, defaultGenericHeaders, optionalHeaders, optionalHeadersPredicate)
+	signer := common.RequestSigner(provider, defaultGenericHeaders, optionalHeaders)
 
 	// Sign the request
 	signer.Sign(&request)
 
 	// Execute the request
-	c.Do(request)
+	client.Do(&request)
 
 You can combine a custom signer with the exposed clients in the SDK.
 This allows you to add custom signed headers to the request. Following is an example:
@@ -172,23 +172,23 @@ This allows you to add custom signed headers to the request. Following is an exa
 	provider := common.DefaultConfigProvider()
 
 	//Create a client for the service you interested in
-	c, _ := identity.NewIdentityClientWithConfigurationProvider(provider)
+	client, _ := identity.NewIdentityClientWithConfigurationProvider(provider)
 
 	//Define a custom header to be signed, and add it to the list of default headers
 	customHeader := "opc-my-token"
 	allHeaders := append(common.DefaultGenericHeaders(), customHeader)
 
 	//Overwrite the signer in your client to sign the new slice of headers
-	c.Signer = common.RequestSigner(provider, allHeaders, common.DefaultBodyHeaders())
+	client.Signer = common.RequestSigner(provider, allHeaders, common.DefaultBodyHeaders())
 
 	//Set the value of the header. This can be done with an Interceptor
-	c.Interceptor = func(request *http.Request) error {
+	client.Interceptor = func(request *http.Request) error {
 		request.Header.Add(customHeader, "customvalue")
 		return nil
 	}
 
 	//Execute your operation as before
-	c.ListGroups(..)
+	client.ListGroups(..)
 
 Bear in mind that some services have a white list of headers that it expects to be signed.
 Therefore, adding an arbitrary header can result in authentications errors.
@@ -203,7 +203,7 @@ Some operations accept or return polymorphic JSON objects. The SDK models such o
 structs that implement such interfaces. Thus, for all operations that expect interfaces as input, pass the struct in the SDK that satisfies
 such interface. For example:
 
-	c, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	client, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	if err != nil {
 		panic(err)
 	}
@@ -220,13 +220,13 @@ such interface. For example:
 	rCreate.CreateIdentityProviderDetails = details
 
 	// Make the call
-	rspCreate, createErr := c.CreateIdentityProvider(context.Background(), rCreate)
+	rspCreate, createErr := client.CreateIdentityProvider(context.Background(), rCreate)
 
 In the case of a polymorphic response you can type assert the interface to the expected type. For example:
 
 	rRead := identity.GetIdentityProviderRequest{}
 	rRead.IdentityProviderId = common.String("aValidId")
-	response, err := c.GetIdentityProvider(context.Background(), rRead)
+	response, err := client.GetIdentityProvider(context.Background(), rRead)
 
 	provider := response.IdentityProvider.(identity.Saml2IdentityProvider)
 

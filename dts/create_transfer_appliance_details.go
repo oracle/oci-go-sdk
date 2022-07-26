@@ -18,6 +18,9 @@ import (
 // CreateTransferApplianceDetails The representation of CreateTransferApplianceDetails
 type CreateTransferApplianceDetails struct {
 	CustomerShippingAddress *ShippingAddress `mandatory:"false" json:"customerShippingAddress"`
+
+	// Minimum storage capacity of the device, in terabytes. Valid options are 50, 95 and 150.
+	MinimumStorageCapacityInTerabytes *int `mandatory:"false" json:"minimumStorageCapacityInTerabytes"`
 }
 
 func (m CreateTransferApplianceDetails) String() string {

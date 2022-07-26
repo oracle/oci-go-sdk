@@ -56,6 +56,9 @@ const (
 	TransferApplianceSummaryLifecycleStateDelivered               TransferApplianceSummaryLifecycleStateEnum = "DELIVERED"
 	TransferApplianceSummaryLifecycleStatePreparing               TransferApplianceSummaryLifecycleStateEnum = "PREPARING"
 	TransferApplianceSummaryLifecycleStateFinalized               TransferApplianceSummaryLifecycleStateEnum = "FINALIZED"
+	TransferApplianceSummaryLifecycleStateReturnLabelRequested    TransferApplianceSummaryLifecycleStateEnum = "RETURN_LABEL_REQUESTED"
+	TransferApplianceSummaryLifecycleStateReturnLabelGenerating   TransferApplianceSummaryLifecycleStateEnum = "RETURN_LABEL_GENERATING"
+	TransferApplianceSummaryLifecycleStateReturnLabelAvailable    TransferApplianceSummaryLifecycleStateEnum = "RETURN_LABEL_AVAILABLE"
 	TransferApplianceSummaryLifecycleStateReturnDelayed           TransferApplianceSummaryLifecycleStateEnum = "RETURN_DELAYED"
 	TransferApplianceSummaryLifecycleStateReturnShipped           TransferApplianceSummaryLifecycleStateEnum = "RETURN_SHIPPED"
 	TransferApplianceSummaryLifecycleStateReturnShippedCancelled  TransferApplianceSummaryLifecycleStateEnum = "RETURN_SHIPPED_CANCELLED"
@@ -79,6 +82,9 @@ var mappingTransferApplianceSummaryLifecycleStateEnum = map[string]TransferAppli
 	"DELIVERED":                 TransferApplianceSummaryLifecycleStateDelivered,
 	"PREPARING":                 TransferApplianceSummaryLifecycleStatePreparing,
 	"FINALIZED":                 TransferApplianceSummaryLifecycleStateFinalized,
+	"RETURN_LABEL_REQUESTED":    TransferApplianceSummaryLifecycleStateReturnLabelRequested,
+	"RETURN_LABEL_GENERATING":   TransferApplianceSummaryLifecycleStateReturnLabelGenerating,
+	"RETURN_LABEL_AVAILABLE":    TransferApplianceSummaryLifecycleStateReturnLabelAvailable,
 	"RETURN_DELAYED":            TransferApplianceSummaryLifecycleStateReturnDelayed,
 	"RETURN_SHIPPED":            TransferApplianceSummaryLifecycleStateReturnShipped,
 	"RETURN_SHIPPED_CANCELLED":  TransferApplianceSummaryLifecycleStateReturnShippedCancelled,
@@ -102,6 +108,9 @@ var mappingTransferApplianceSummaryLifecycleStateEnumLowerCase = map[string]Tran
 	"delivered":                 TransferApplianceSummaryLifecycleStateDelivered,
 	"preparing":                 TransferApplianceSummaryLifecycleStatePreparing,
 	"finalized":                 TransferApplianceSummaryLifecycleStateFinalized,
+	"return_label_requested":    TransferApplianceSummaryLifecycleStateReturnLabelRequested,
+	"return_label_generating":   TransferApplianceSummaryLifecycleStateReturnLabelGenerating,
+	"return_label_available":    TransferApplianceSummaryLifecycleStateReturnLabelAvailable,
 	"return_delayed":            TransferApplianceSummaryLifecycleStateReturnDelayed,
 	"return_shipped":            TransferApplianceSummaryLifecycleStateReturnShipped,
 	"return_shipped_cancelled":  TransferApplianceSummaryLifecycleStateReturnShippedCancelled,
@@ -136,6 +145,9 @@ func GetTransferApplianceSummaryLifecycleStateEnumStringValues() []string {
 		"DELIVERED",
 		"PREPARING",
 		"FINALIZED",
+		"RETURN_LABEL_REQUESTED",
+		"RETURN_LABEL_GENERATING",
+		"RETURN_LABEL_AVAILABLE",
 		"RETURN_DELAYED",
 		"RETURN_SHIPPED",
 		"RETURN_SHIPPED_CANCELLED",

@@ -56,6 +56,15 @@ type UpdateApplianceExportJobDetails struct {
 	// First object from which the next potential export job could start.
 	NextObject *string `mandatory:"false" json:"nextObject"`
 
+	// Expected return date from customer for the device, time portion should be zero.
+	ExpectedReturnDate *common.SDKTime `mandatory:"false" json:"expectedReturnDate"`
+
+	// Start time for the window to pickup the device from customer.
+	PickupWindowStartTime *common.SDKTime `mandatory:"false" json:"pickupWindowStartTime"`
+
+	// End time for the window to pickup the device from customer.
+	PickupWindowEndTime *common.SDKTime `mandatory:"false" json:"pickupWindowEndTime"`
+
 	CustomerShippingAddress *ShippingAddress `mandatory:"false" json:"customerShippingAddress"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no
