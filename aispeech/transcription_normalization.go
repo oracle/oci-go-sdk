@@ -19,7 +19,7 @@ import (
 // TranscriptionNormalization Information to Normalize generated transcript.
 type TranscriptionNormalization struct {
 
-	// Whether to add punctuation in generated transcription. By default it is enabled.
+	// Whether to add punctuation in the generated transcription. Enabled by default.
 	IsPunctuationEnabled *bool `mandatory:"false" json:"isPunctuationEnabled"`
 
 	// List of filters.

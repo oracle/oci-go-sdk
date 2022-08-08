@@ -16,7 +16,7 @@ import (
 	"strings"
 )
 
-// ObjectListFileInputLocation An object in Object Storage that contains a list of input files.
+// ObjectListFileInputLocation Use this locationType when passing the location of the object storage in the request (where the WAV file is stored).
 type ObjectListFileInputLocation struct {
 	ObjectLocation *ObjectLocation `mandatory:"true" json:"objectLocation"`
 }
