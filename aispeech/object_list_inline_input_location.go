@@ -16,7 +16,7 @@ import (
 	"strings"
 )
 
-// ObjectListInlineInputLocation A list of object locations in Object Storage inline in request.
+// ObjectListInlineInputLocation Use this locationType when passing the WAV file name in the request.
 type ObjectListInlineInputLocation struct {
 
 	// A list of ObjectLocations.

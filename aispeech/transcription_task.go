@@ -46,6 +46,9 @@ type TranscriptionTask struct {
 	// Duration of input file in Seconds.
 	FileDurationInSeconds *int `mandatory:"false" json:"fileDurationInSeconds"`
 
+	// Task proccessing duration, which excludes waiting time in the system.
+	ProcessingDurationInSeconds *int `mandatory:"false" json:"processingDurationInSeconds"`
+
 	InputLocation *ObjectLocation `mandatory:"false" json:"inputLocation"`
 
 	OutputLocation *ObjectLocation `mandatory:"false" json:"outputLocation"`

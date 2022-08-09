@@ -33,6 +33,9 @@ type TranscriptionTaskSummary struct {
 	// Duration of input file in Seconds.
 	FileDurationInSeconds *int `mandatory:"false" json:"fileDurationInSeconds"`
 
+	// Task proccessing duration, which excludes waiting time in the system.
+	ProcessingDurationInSeconds *int `mandatory:"false" json:"processingDurationInSeconds"`
+
 	// Task started time
 	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted"`
 

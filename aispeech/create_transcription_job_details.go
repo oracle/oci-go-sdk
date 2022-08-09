@@ -32,7 +32,7 @@ type CreateTranscriptionJobDetails struct {
 	// A short description of the job.
 	Description *string `mandatory:"false" json:"description"`
 
-	// Transcription Format. By default JSON format will be considered.
+	// Transcription Format. By default, the JSON format is used.
 	AdditionalTranscriptionFormats []CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum `mandatory:"false" json:"additionalTranscriptionFormats,omitempty"`
 
 	ModelDetails *TranscriptionModelDetails `mandatory:"false" json:"modelDetails"`

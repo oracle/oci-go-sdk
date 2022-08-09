@@ -22,6 +22,16 @@ type TranscriptionModelDetails struct {
 	Domain TranscriptionModelDetailsDomainEnum `mandatory:"false" json:"domain,omitempty"`
 
 	// Locale value as per given in [https://datatracker.ietf.org/doc/html/rfc5646].
+	// - en-US: English - United States
+	// - es-ES: Spanish - Spain
+	// - pt-BR: Portuguese - Brazil
+	// - en-GB: English - Great Britain
+	// - en-AU: English - Australia
+	// - en-IN: English - India
+	// - hi-IN: Hindi - India
+	// - fr-FR: French - France
+	// - de-DE: German - Germany
+	// - it-IT: Italian - Italy
 	LanguageCode TranscriptionModelDetailsLanguageCodeEnum `mandatory:"false" json:"languageCode,omitempty"`
 }
 
@@ -93,18 +103,39 @@ const (
 	TranscriptionModelDetailsLanguageCodeEnUs TranscriptionModelDetailsLanguageCodeEnum = "en-US"
 	TranscriptionModelDetailsLanguageCodeEsEs TranscriptionModelDetailsLanguageCodeEnum = "es-ES"
 	TranscriptionModelDetailsLanguageCodePtBr TranscriptionModelDetailsLanguageCodeEnum = "pt-BR"
+	TranscriptionModelDetailsLanguageCodeEnGb TranscriptionModelDetailsLanguageCodeEnum = "en-GB"
+	TranscriptionModelDetailsLanguageCodeEnAu TranscriptionModelDetailsLanguageCodeEnum = "en-AU"
+	TranscriptionModelDetailsLanguageCodeEnIn TranscriptionModelDetailsLanguageCodeEnum = "en-IN"
+	TranscriptionModelDetailsLanguageCodeHiIn TranscriptionModelDetailsLanguageCodeEnum = "hi-IN"
+	TranscriptionModelDetailsLanguageCodeFrFr TranscriptionModelDetailsLanguageCodeEnum = "fr-FR"
+	TranscriptionModelDetailsLanguageCodeDeDe TranscriptionModelDetailsLanguageCodeEnum = "de-DE"
+	TranscriptionModelDetailsLanguageCodeItIt TranscriptionModelDetailsLanguageCodeEnum = "it-IT"
 )
 
 var mappingTranscriptionModelDetailsLanguageCodeEnum = map[string]TranscriptionModelDetailsLanguageCodeEnum{
 	"en-US": TranscriptionModelDetailsLanguageCodeEnUs,
 	"es-ES": TranscriptionModelDetailsLanguageCodeEsEs,
 	"pt-BR": TranscriptionModelDetailsLanguageCodePtBr,
+	"en-GB": TranscriptionModelDetailsLanguageCodeEnGb,
+	"en-AU": TranscriptionModelDetailsLanguageCodeEnAu,
+	"en-IN": TranscriptionModelDetailsLanguageCodeEnIn,
+	"hi-IN": TranscriptionModelDetailsLanguageCodeHiIn,
+	"fr-FR": TranscriptionModelDetailsLanguageCodeFrFr,
+	"de-DE": TranscriptionModelDetailsLanguageCodeDeDe,
+	"it-IT": TranscriptionModelDetailsLanguageCodeItIt,
 }
 
 var mappingTranscriptionModelDetailsLanguageCodeEnumLowerCase = map[string]TranscriptionModelDetailsLanguageCodeEnum{
 	"en-us": TranscriptionModelDetailsLanguageCodeEnUs,
 	"es-es": TranscriptionModelDetailsLanguageCodeEsEs,
 	"pt-br": TranscriptionModelDetailsLanguageCodePtBr,
+	"en-gb": TranscriptionModelDetailsLanguageCodeEnGb,
+	"en-au": TranscriptionModelDetailsLanguageCodeEnAu,
+	"en-in": TranscriptionModelDetailsLanguageCodeEnIn,
+	"hi-in": TranscriptionModelDetailsLanguageCodeHiIn,
+	"fr-fr": TranscriptionModelDetailsLanguageCodeFrFr,
+	"de-de": TranscriptionModelDetailsLanguageCodeDeDe,
+	"it-it": TranscriptionModelDetailsLanguageCodeItIt,
 }
 
 // GetTranscriptionModelDetailsLanguageCodeEnumValues Enumerates the set of values for TranscriptionModelDetailsLanguageCodeEnum
@@ -122,6 +153,13 @@ func GetTranscriptionModelDetailsLanguageCodeEnumStringValues() []string {
 		"en-US",
 		"es-ES",
 		"pt-BR",
+		"en-GB",
+		"en-AU",
+		"en-IN",
+		"hi-IN",
+		"fr-FR",
+		"de-DE",
+		"it-IT",
 	}
 }
 

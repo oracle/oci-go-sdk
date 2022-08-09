@@ -93,6 +93,63 @@ func (client *DashboardGroupClient) ConfigurationProvider() *common.Configuratio
 	return client.config
 }
 
+// ChangeDashboardGroupCompartment Moves a DashboardGroup resource from one compartment identifier to another. When provided, If-Match is checked against ETag values of the resource.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/ChangeDashboardGroupCompartment.go.html to see an example of how to use ChangeDashboardGroupCompartment API.
+func (client DashboardGroupClient) ChangeDashboardGroupCompartment(ctx context.Context, request ChangeDashboardGroupCompartmentRequest) (response ChangeDashboardGroupCompartmentResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.changeDashboardGroupCompartment, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ChangeDashboardGroupCompartmentResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ChangeDashboardGroupCompartmentResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ChangeDashboardGroupCompartmentResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ChangeDashboardGroupCompartmentResponse")
+	}
+	return
+}
+
+// changeDashboardGroupCompartment implements the OCIOperation interface (enables retrying operations)
+func (client DashboardGroupClient) changeDashboardGroupCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/dashboardGroups/{dashboardGroupId}/actions/changeCompartment", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ChangeDashboardGroupCompartmentResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/dashboard/20210731/DashboardGroup/ChangeDashboardGroupCompartment"
+		err = common.PostProcessServiceError(err, "DashboardGroup", "ChangeDashboardGroupCompartment", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // CreateDashboardGroup Creates a new dashboard group using the details provided in request body.
 // **Caution:** Resources for the Dashboard service are created in the tenacy's home region.
 // Although it is possible to create dashboard group resource in regions other than the home region,
