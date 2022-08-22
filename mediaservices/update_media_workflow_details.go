@@ -34,7 +34,7 @@ type UpdateMediaWorkflowDetails struct {
 	// JSON object representing named parameters and their default values that can be referenced throughout this workflow.
 	// The values declared here can be overridden by the MediaWorkflowConfigurations or parameters supplied when creating
 	// MediaWorkflowJobs from this MediaWorkflow.
-	Parameters map[string]string `mandatory:"false" json:"parameters"`
+	Parameters map[string]interface{} `mandatory:"false" json:"parameters"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`

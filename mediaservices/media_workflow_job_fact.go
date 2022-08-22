@@ -34,7 +34,7 @@ type MediaWorkflowJobFact struct {
 	Type *string `mandatory:"true" json:"type"`
 
 	// The body of the detail captured as JSON.
-	Detail map[string]string `mandatory:"true" json:"detail"`
+	Detail map[string]interface{} `mandatory:"true" json:"detail"`
 }
 
 func (m MediaWorkflowJobFact) String() string {

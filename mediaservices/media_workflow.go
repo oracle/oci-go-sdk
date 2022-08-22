@@ -42,7 +42,7 @@ type MediaWorkflow struct {
 	// JSON object representing named parameters and their default values that can be referenced throughout this workflow.
 	// The values declared here can be overridden by the MediaWorkflowConfigurations or parameters supplied when creating
 	// MediaWorkflowJobs from this MediaWorkflow.
-	Parameters map[string]string `mandatory:"false" json:"parameters"`
+	Parameters map[string]interface{} `mandatory:"false" json:"parameters"`
 
 	// The time when the MediaWorkflow was created. An RFC3339 formatted datetime string.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`

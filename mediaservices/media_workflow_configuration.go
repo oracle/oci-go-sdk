@@ -32,7 +32,7 @@ type MediaWorkflowConfiguration struct {
 	// objects. Each key of the top level object refer to a task key that is unqiue to the
 	// workflow, each of the second level objects' keys refer to the name of a parameter that is
 	// unique to the task. taskKey -> parameterName -> parameterValue
-	Parameters map[string]string `mandatory:"true" json:"parameters"`
+	Parameters map[string]interface{} `mandatory:"true" json:"parameters"`
 
 	// The time when the the MediaWorkflowConfiguration was created. An RFC3339 formatted datetime string.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
