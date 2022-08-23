@@ -26,7 +26,7 @@ type UpdateMediaWorkflowConfigurationDetails struct {
 	// objects. Each key of the top level object refer to a task key that is unqiue to the
 	// workflow, each of the second level objects' keys refer to the name of a parameter that is
 	// unique to the task. taskKey -> parameterName -> parameterValue
-	Parameters map[string]string `mandatory:"false" json:"parameters"`
+	Parameters map[string]interface{} `mandatory:"false" json:"parameters"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`

@@ -34,7 +34,7 @@ type CreateMediaWorkflowJobDetails interface {
 	// MediaWorkflowJob. The parameters are given as JSON. The top level and 2nd level elements must be
 	// JSON objects (vs arrays, scalars, etc). The top level keys refer to a task's key and the 2nd level
 	// keys refer to a parameter's name.
-	GetParameters() map[string]string
+	GetParameters() map[string]interface{}
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
@@ -50,7 +50,7 @@ type createmediaworkflowjobdetails struct {
 	CompartmentId                 *string                           `mandatory:"true" json:"compartmentId"`
 	MediaWorkflowConfigurationIds []string                          `mandatory:"false" json:"mediaWorkflowConfigurationIds"`
 	DisplayName                   *string                           `mandatory:"false" json:"displayName"`
-	Parameters                    map[string]string                 `mandatory:"false" json:"parameters"`
+	Parameters                    map[string]interface{}            `mandatory:"false" json:"parameters"`
 	FreeformTags                  map[string]string                 `mandatory:"false" json:"freeformTags"`
 	DefinedTags                   map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 	WorkflowIdentifierType        string                            `json:"workflowIdentifierType"`
@@ -116,7 +116,7 @@ func (m createmediaworkflowjobdetails) GetDisplayName() *string {
 }
 
 //GetParameters returns Parameters
-func (m createmediaworkflowjobdetails) GetParameters() map[string]string {
+func (m createmediaworkflowjobdetails) GetParameters() map[string]interface{} {
 	return m.Parameters
 }
 

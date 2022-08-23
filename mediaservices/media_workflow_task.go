@@ -42,12 +42,12 @@ type MediaWorkflowTask struct {
 	// from the workflow of this task, the task will only be enabled if the value of the parameter specified by
 	// enableParameterReference is equal to the value of this property. This property must be prenset if and only if
 	// a enableParameterReference is given. The value is a JSON node.
-	EnableWhenReferencedParameterEquals map[string]string `mandatory:"false" json:"enableWhenReferencedParameterEquals"`
+	EnableWhenReferencedParameterEquals map[string]interface{} `mandatory:"false" json:"enableWhenReferencedParameterEquals"`
 
 	// Data specifiying how this task is to be run. The data is a JSON object that must conform to the JSON Schema
 	// specified by the parameters of the MediaWorkflowTaskDeclaration this task references. The parameters may
 	// contain values or references to other parameters.
-	Parameters map[string]string `mandatory:"false" json:"parameters"`
+	Parameters map[string]interface{} `mandatory:"false" json:"parameters"`
 }
 
 func (m MediaWorkflowTask) String() string {

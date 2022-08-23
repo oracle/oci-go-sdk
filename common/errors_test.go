@@ -49,3 +49,47 @@ func TestErrors_FailedToParseJson(t *testing.T) {
 	assert.Equal(t, failure.GetCode(), "BadErrorResponse")
 	assert.Equal(t, strings.Contains(failure.GetMessage(), "Failed to parse json from response body due to"), true)
 }
+
+func TestComputeOutOfCapacityErrors(t *testing.T) {
+	header := http.Header{}
+	opcID := "111"
+	header.Set("opc-request-id", opcID)
+	sampleResponse := `{"message" : "Out of host capacity.","originalMessage" : "Out of capacity for shape VM.Standard2.1 in dedicated pool vmidp_stress_test.","originalMessageTemplate" : "Out of capacity for shape {shape} in dedicated pool {dedicatedPool}.","messageArguments" : {"problemType": "OUT_OF_CAPACITY","shape": "VM.Standard2.1","dedicatedPool": "vmidp_stress_test"}}`
+	httpRequest := http.Request{Method: http.MethodGet, URL: &url.URL{}}
+	httpResponse := http.Response{Header: header, Request: &httpRequest}
+	bodyBuffer := bytes.NewBufferString(sampleResponse)
+	httpResponse.Body = ioutil.NopCloser(bodyBuffer)
+	httpResponse.StatusCode = 500
+	err := newServiceFailureFromResponse(&httpResponse)
+	assert.Equal(t, err.(ServiceError).GetMessage(), "Out of host capacity.")
+	assert.Equal(t, err.(ServiceErrorLocalizationMessage).GetOriginalMessage(), "Out of capacity for shape VM.Standard2.1 in dedicated pool vmidp_stress_test.")
+	assert.Equal(t, err.(ServiceErrorLocalizationMessage).GetOriginalMessageTemplate(), "Out of capacity for shape {shape} in dedicated pool {dedicatedPool}.")
+	assert.Equal(t, err.(ServiceError).GetOpcRequestID(), opcID)
+	assert.Equal(t, strings.Contains(err.Error(), "Error returned by"), true)
+
+	failure, ok := IsServiceError(err)
+	assert.Equal(t, ok, true)
+	assert.Equal(t, failure.GetHTTPStatusCode(), httpResponse.StatusCode)
+}
+
+func TestPartialComputeOutOfCapacityErrors(t *testing.T) {
+	header := http.Header{}
+	opcID := "111"
+	header.Set("opc-request-id", opcID)
+	sampleResponse := `{"message" : "Out of host capacity.", "messageArguments" : {"problemType": "OUT_OF_CAPACITY","shape": "VM.Standard2.1","dedicatedPool": "vmidp_stress_test"}}`
+	httpRequest := http.Request{Method: http.MethodGet, URL: &url.URL{}}
+	httpResponse := http.Response{Header: header, Request: &httpRequest}
+	bodyBuffer := bytes.NewBufferString(sampleResponse)
+	httpResponse.Body = ioutil.NopCloser(bodyBuffer)
+	httpResponse.StatusCode = 500
+	err := newServiceFailureFromResponse(&httpResponse)
+	assert.Equal(t, err.(ServiceError).GetMessage(), "Out of host capacity.")
+	assert.Equal(t, err.(ServiceErrorLocalizationMessage).GetOriginalMessage(), "")
+	assert.Equal(t, err.(ServiceErrorLocalizationMessage).GetOriginalMessageTemplate(), "")
+	assert.Equal(t, err.(ServiceError).GetOpcRequestID(), opcID)
+	assert.Equal(t, strings.Contains(err.Error(), "Error returned by"), true)
+
+	failure, ok := IsServiceError(err)
+	assert.Equal(t, ok, true)
+	assert.Equal(t, failure.GetHTTPStatusCode(), httpResponse.StatusCode)
+}
