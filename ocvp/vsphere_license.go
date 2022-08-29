@@ -2,12 +2,13 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Analytics API
+// Oracle Cloud VMware Solution API
 //
-// Analytics API.
+// Use the Oracle Cloud VMware API to create SDDCs and manage ESXi hosts and software.
+// For more information, see Oracle Cloud VMware Solution (https://docs.cloud.oracle.com/iaas/Content/VMware/Concepts/ocvsoverview.htm).
 //
 
-package analytics
+package ocvp
 
 import (
 	"fmt"
@@ -15,24 +16,24 @@ import (
 	"strings"
 )
 
-// VirtualCloudNetwork Virtual Cloud Network definition.
-type VirtualCloudNetwork struct {
+// VsphereLicense License for vSphere upgrade.
+type VsphereLicense struct {
 
-	// The Virtual Cloud Network OCID.
-	Id *string `mandatory:"true" json:"id"`
+	// vSphere license type.
+	LicenseType *string `mandatory:"true" json:"licenseType"`
 
-	// Source IP addresses or IP address ranges in ingress rules.
-	WhitelistedIps []string `mandatory:"false" json:"whitelistedIps"`
+	// vSphere license key value.
+	LicenseKey *string `mandatory:"true" json:"licenseKey"`
 }
 
-func (m VirtualCloudNetwork) String() string {
+func (m VsphereLicense) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m VirtualCloudNetwork) ValidateEnumValue() (bool, error) {
+func (m VsphereLicense) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {
