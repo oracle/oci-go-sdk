@@ -76,6 +76,8 @@ var (
 		{409, "IncorrectState"}:  true,
 		{429, "TooManyRequests"}: true,
 
+		{429, "IdcsConversionError"}: true,
+
 		{501, "MethodNotImplemented"}: false,
 	}
 )
