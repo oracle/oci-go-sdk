@@ -15,24 +15,27 @@ import (
 	"strings"
 )
 
-// VirtualCloudNetwork Virtual Cloud Network definition.
-type VirtualCloudNetwork struct {
+// PrivateSourceScanHost Private source Scan Hostname model.
+type PrivateSourceScanHost struct {
 
-	// The Virtual Cloud Network OCID.
-	Id *string `mandatory:"true" json:"id"`
+	// Private Source Scan hostname. Ex: db01-scan.corp.example.com, prd-db01-scan.mycompany.com.
+	ScanHostname *string `mandatory:"true" json:"scanHostname"`
 
-	// Source IP addresses or IP address ranges in ingress rules.
-	WhitelistedIps []string `mandatory:"false" json:"whitelistedIps"`
+	// Private Source Scan host port. This is the source port where SCAN protocol will get connected (e.g. 1521).
+	ScanPort *int `mandatory:"true" json:"scanPort"`
+
+	// Description of private source scan host zone.
+	Description *string `mandatory:"false" json:"description"`
 }
 
-func (m VirtualCloudNetwork) String() string {
+func (m PrivateSourceScanHost) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m VirtualCloudNetwork) ValidateEnumValue() (bool, error) {
+func (m PrivateSourceScanHost) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {

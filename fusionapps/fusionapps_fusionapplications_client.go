@@ -141,7 +141,7 @@ func (client FusionApplicationsClient) changeFusionEnvironmentCompartment(ctx co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironment/ChangeFusionEnvironmentCompartment"
 		err = common.PostProcessServiceError(err, "FusionApplications", "ChangeFusionEnvironmentCompartment", apiReferenceLink)
 		return response, err
 	}
@@ -204,7 +204,7 @@ func (client FusionApplicationsClient) changeFusionEnvironmentFamilyCompartment(
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironmentFamily/ChangeFusionEnvironmentFamilyCompartment"
 		err = common.PostProcessServiceError(err, "FusionApplications", "ChangeFusionEnvironmentFamilyCompartment", apiReferenceLink)
 		return response, err
 	}
@@ -266,7 +266,7 @@ func (client FusionApplicationsClient) createDataMaskingActivity(ctx context.Con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/DataMaskingActivity/CreateDataMaskingActivity"
 		err = common.PostProcessServiceError(err, "FusionApplications", "CreateDataMaskingActivity", apiReferenceLink)
 		return response, err
 	}
@@ -328,7 +328,7 @@ func (client FusionApplicationsClient) createFusionEnvironment(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironment/CreateFusionEnvironment"
 		err = common.PostProcessServiceError(err, "FusionApplications", "CreateFusionEnvironment", apiReferenceLink)
 		return response, err
 	}
@@ -390,7 +390,7 @@ func (client FusionApplicationsClient) createFusionEnvironmentAdminUser(ctx cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironment/CreateFusionEnvironmentAdminUser"
 		err = common.PostProcessServiceError(err, "FusionApplications", "CreateFusionEnvironmentAdminUser", apiReferenceLink)
 		return response, err
 	}
@@ -452,7 +452,7 @@ func (client FusionApplicationsClient) createFusionEnvironmentFamily(ctx context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironmentFamily/CreateFusionEnvironmentFamily"
 		err = common.PostProcessServiceError(err, "FusionApplications", "CreateFusionEnvironmentFamily", apiReferenceLink)
 		return response, err
 	}
@@ -514,7 +514,7 @@ func (client FusionApplicationsClient) createRefreshActivity(ctx context.Context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/CreateRefreshActivityDetails/CreateRefreshActivity"
 		err = common.PostProcessServiceError(err, "FusionApplications", "CreateRefreshActivity", apiReferenceLink)
 		return response, err
 	}
@@ -571,7 +571,7 @@ func (client FusionApplicationsClient) deleteFusionEnvironment(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironment/DeleteFusionEnvironment"
 		err = common.PostProcessServiceError(err, "FusionApplications", "DeleteFusionEnvironment", apiReferenceLink)
 		return response, err
 	}
@@ -628,7 +628,7 @@ func (client FusionApplicationsClient) deleteFusionEnvironmentAdminUser(ctx cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironment/DeleteFusionEnvironmentAdminUser"
 		err = common.PostProcessServiceError(err, "FusionApplications", "DeleteFusionEnvironmentAdminUser", apiReferenceLink)
 		return response, err
 	}
@@ -685,7 +685,7 @@ func (client FusionApplicationsClient) deleteFusionEnvironmentFamily(ctx context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironmentFamily/DeleteFusionEnvironmentFamily"
 		err = common.PostProcessServiceError(err, "FusionApplications", "DeleteFusionEnvironmentFamily", apiReferenceLink)
 		return response, err
 	}
@@ -742,7 +742,7 @@ func (client FusionApplicationsClient) getDataMaskingActivity(ctx context.Contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/DataMaskingActivity/GetDataMaskingActivity"
 		err = common.PostProcessServiceError(err, "FusionApplications", "GetDataMaskingActivity", apiReferenceLink)
 		return response, err
 	}
@@ -799,7 +799,7 @@ func (client FusionApplicationsClient) getFusionEnvironment(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironment/GetFusionEnvironment"
 		err = common.PostProcessServiceError(err, "FusionApplications", "GetFusionEnvironment", apiReferenceLink)
 		return response, err
 	}
@@ -856,7 +856,7 @@ func (client FusionApplicationsClient) getFusionEnvironmentFamily(ctx context.Co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironmentFamily/GetFusionEnvironmentFamily"
 		err = common.PostProcessServiceError(err, "FusionApplications", "GetFusionEnvironmentFamily", apiReferenceLink)
 		return response, err
 	}
@@ -913,7 +913,7 @@ func (client FusionApplicationsClient) getFusionEnvironmentFamilyLimitsAndUsage(
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironmentFamilyLimitsAndUsage/GetFusionEnvironmentFamilyLimitsAndUsage"
 		err = common.PostProcessServiceError(err, "FusionApplications", "GetFusionEnvironmentFamilyLimitsAndUsage", apiReferenceLink)
 		return response, err
 	}
@@ -970,7 +970,7 @@ func (client FusionApplicationsClient) getFusionEnvironmentFamilySubscriptionDet
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironmentFamily/GetFusionEnvironmentFamilySubscriptionDetail"
 		err = common.PostProcessServiceError(err, "FusionApplications", "GetFusionEnvironmentFamilySubscriptionDetail", apiReferenceLink)
 		return response, err
 	}
@@ -1027,7 +1027,7 @@ func (client FusionApplicationsClient) getFusionEnvironmentStatus(ctx context.Co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironmentStatus/GetFusionEnvironmentStatus"
 		err = common.PostProcessServiceError(err, "FusionApplications", "GetFusionEnvironmentStatus", apiReferenceLink)
 		return response, err
 	}
@@ -1084,7 +1084,7 @@ func (client FusionApplicationsClient) getRefreshActivity(ctx context.Context, r
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/RefreshActivity/GetRefreshActivity"
 		err = common.PostProcessServiceError(err, "FusionApplications", "GetRefreshActivity", apiReferenceLink)
 		return response, err
 	}
@@ -1141,7 +1141,7 @@ func (client FusionApplicationsClient) getScheduledActivity(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/ScheduledActivity/GetScheduledActivity"
 		err = common.PostProcessServiceError(err, "FusionApplications", "GetScheduledActivity", apiReferenceLink)
 		return response, err
 	}
@@ -1198,7 +1198,7 @@ func (client FusionApplicationsClient) getServiceAttachment(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/ServiceAttachment/GetServiceAttachment"
 		err = common.PostProcessServiceError(err, "FusionApplications", "GetServiceAttachment", apiReferenceLink)
 		return response, err
 	}
@@ -1255,7 +1255,7 @@ func (client FusionApplicationsClient) getWorkRequest(ctx context.Context, reque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/WorkRequest/GetWorkRequest"
 		err = common.PostProcessServiceError(err, "FusionApplications", "GetWorkRequest", apiReferenceLink)
 		return response, err
 	}
@@ -1312,7 +1312,7 @@ func (client FusionApplicationsClient) listAdminUsers(ctx context.Context, reque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironment/ListAdminUsers"
 		err = common.PostProcessServiceError(err, "FusionApplications", "ListAdminUsers", apiReferenceLink)
 		return response, err
 	}
@@ -1369,7 +1369,7 @@ func (client FusionApplicationsClient) listDataMaskingActivities(ctx context.Con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/DataMaskingActivity/ListDataMaskingActivities"
 		err = common.PostProcessServiceError(err, "FusionApplications", "ListDataMaskingActivities", apiReferenceLink)
 		return response, err
 	}
@@ -1426,7 +1426,7 @@ func (client FusionApplicationsClient) listFusionEnvironmentFamilies(ctx context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironmentFamily/ListFusionEnvironmentFamilies"
 		err = common.PostProcessServiceError(err, "FusionApplications", "ListFusionEnvironmentFamilies", apiReferenceLink)
 		return response, err
 	}
@@ -1483,7 +1483,7 @@ func (client FusionApplicationsClient) listFusionEnvironments(ctx context.Contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironment/ListFusionEnvironments"
 		err = common.PostProcessServiceError(err, "FusionApplications", "ListFusionEnvironments", apiReferenceLink)
 		return response, err
 	}
@@ -1540,7 +1540,7 @@ func (client FusionApplicationsClient) listRefreshActivities(ctx context.Context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/RefreshActivity/ListRefreshActivities"
 		err = common.PostProcessServiceError(err, "FusionApplications", "ListRefreshActivities", apiReferenceLink)
 		return response, err
 	}
@@ -1597,7 +1597,7 @@ func (client FusionApplicationsClient) listScheduledActivities(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/ScheduledActivity/ListScheduledActivities"
 		err = common.PostProcessServiceError(err, "FusionApplications", "ListScheduledActivities", apiReferenceLink)
 		return response, err
 	}
@@ -1654,7 +1654,7 @@ func (client FusionApplicationsClient) listServiceAttachments(ctx context.Contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/ServiceAttachment/ListServiceAttachments"
 		err = common.PostProcessServiceError(err, "FusionApplications", "ListServiceAttachments", apiReferenceLink)
 		return response, err
 	}
@@ -1711,7 +1711,7 @@ func (client FusionApplicationsClient) listTimeAvailableForRefreshes(ctx context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/TimeAvailableForRefresh/ListTimeAvailableForRefreshes"
 		err = common.PostProcessServiceError(err, "FusionApplications", "ListTimeAvailableForRefreshes", apiReferenceLink)
 		return response, err
 	}
@@ -1768,7 +1768,7 @@ func (client FusionApplicationsClient) listWorkRequestErrors(ctx context.Context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/WorkRequestError/ListWorkRequestErrors"
 		err = common.PostProcessServiceError(err, "FusionApplications", "ListWorkRequestErrors", apiReferenceLink)
 		return response, err
 	}
@@ -1825,7 +1825,7 @@ func (client FusionApplicationsClient) listWorkRequestLogs(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/WorkRequestLogEntry/ListWorkRequestLogs"
 		err = common.PostProcessServiceError(err, "FusionApplications", "ListWorkRequestLogs", apiReferenceLink)
 		return response, err
 	}
@@ -1882,7 +1882,7 @@ func (client FusionApplicationsClient) listWorkRequests(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/WorkRequest/ListWorkRequests"
 		err = common.PostProcessServiceError(err, "FusionApplications", "ListWorkRequests", apiReferenceLink)
 		return response, err
 	}
@@ -1944,7 +1944,7 @@ func (client FusionApplicationsClient) resetFusionEnvironmentPassword(ctx contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironment/ResetFusionEnvironmentPassword"
 		err = common.PostProcessServiceError(err, "FusionApplications", "ResetFusionEnvironmentPassword", apiReferenceLink)
 		return response, err
 	}
@@ -2001,7 +2001,7 @@ func (client FusionApplicationsClient) updateFusionEnvironment(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironment/UpdateFusionEnvironment"
 		err = common.PostProcessServiceError(err, "FusionApplications", "UpdateFusionEnvironment", apiReferenceLink)
 		return response, err
 	}
@@ -2058,7 +2058,7 @@ func (client FusionApplicationsClient) updateFusionEnvironmentFamily(ctx context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fusion-applications/20211201/FusionEnvironmentFamily/UpdateFusionEnvironmentFamily"
 		err = common.PostProcessServiceError(err, "FusionApplications", "UpdateFusionEnvironmentFamily", apiReferenceLink)
 		return response, err
 	}
