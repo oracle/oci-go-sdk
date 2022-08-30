@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.18.1 - 2022-08-30
+### Added
+- Support for opting out of guest VM event collection, health metrics, diagnostics logs, and traces in the Database service
+- Support for in-place upgrades for software-defined data centers in the VMWare Solution service
+- Support for single-client access name protocol as a data source for private access channels in the Analytics Cloud service
+- Support for network security groups, egress control on public datasources, and GitHub access in the Analytics Cloud service
+- Support for performance-based autotuning of block and boot volumes in the Block Storage service
+
 ## 65.18.0 - 2022-08-23
 ### Added
 - Support for the Enterprise Manager Warehouse service
@@ -16,6 +24,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 ### Breaking Changes
 - The property `parameters` has its object value type changed from `string` to `any`
 - EmDataLakeClient is renamed to EmWarehouseClient for the EM Warehouse service.
+
+### Changed
+- Compute Out of Capacity error improvement for Go SDK
 
 ## 65.17.0 - 2022-08-16
 ### Added

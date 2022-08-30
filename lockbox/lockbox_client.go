@@ -136,7 +136,7 @@ func (client LockboxClient) cancelWorkRequest(ctx context.Context, request commo
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/WorkRequest/CancelWorkRequest"
 		err = common.PostProcessServiceError(err, "Lockbox", "CancelWorkRequest", apiReferenceLink)
 		return response, err
 	}
@@ -198,7 +198,7 @@ func (client LockboxClient) changeApprovalTemplateCompartment(ctx context.Contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/ApprovalTemplate/ChangeApprovalTemplateCompartment"
 		err = common.PostProcessServiceError(err, "Lockbox", "ChangeApprovalTemplateCompartment", apiReferenceLink)
 		return response, err
 	}
@@ -260,7 +260,7 @@ func (client LockboxClient) changeLockboxCompartment(ctx context.Context, reques
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/Lockbox/ChangeLockboxCompartment"
 		err = common.PostProcessServiceError(err, "Lockbox", "ChangeLockboxCompartment", apiReferenceLink)
 		return response, err
 	}
@@ -322,7 +322,7 @@ func (client LockboxClient) createAccessRequest(ctx context.Context, request com
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/AccessRequest/CreateAccessRequest"
 		err = common.PostProcessServiceError(err, "Lockbox", "CreateAccessRequest", apiReferenceLink)
 		return response, err
 	}
@@ -384,7 +384,7 @@ func (client LockboxClient) createApprovalTemplate(ctx context.Context, request 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/ApprovalTemplate/CreateApprovalTemplate"
 		err = common.PostProcessServiceError(err, "Lockbox", "CreateApprovalTemplate", apiReferenceLink)
 		return response, err
 	}
@@ -446,7 +446,7 @@ func (client LockboxClient) createLockbox(ctx context.Context, request common.OC
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/Lockbox/CreateLockbox"
 		err = common.PostProcessServiceError(err, "Lockbox", "CreateLockbox", apiReferenceLink)
 		return response, err
 	}
@@ -503,7 +503,7 @@ func (client LockboxClient) deleteApprovalTemplate(ctx context.Context, request 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/ApprovalTemplate/DeleteApprovalTemplate"
 		err = common.PostProcessServiceError(err, "Lockbox", "DeleteApprovalTemplate", apiReferenceLink)
 		return response, err
 	}
@@ -565,7 +565,7 @@ func (client LockboxClient) deleteLockbox(ctx context.Context, request common.OC
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/Lockbox/DeleteLockbox"
 		err = common.PostProcessServiceError(err, "Lockbox", "DeleteLockbox", apiReferenceLink)
 		return response, err
 	}
@@ -622,7 +622,7 @@ func (client LockboxClient) getAccessMaterials(ctx context.Context, request comm
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/AccessMaterials/GetAccessMaterials"
 		err = common.PostProcessServiceError(err, "Lockbox", "GetAccessMaterials", apiReferenceLink)
 		return response, err
 	}
@@ -679,7 +679,7 @@ func (client LockboxClient) getAccessRequest(ctx context.Context, request common
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/AccessRequest/GetAccessRequest"
 		err = common.PostProcessServiceError(err, "Lockbox", "GetAccessRequest", apiReferenceLink)
 		return response, err
 	}
@@ -736,7 +736,7 @@ func (client LockboxClient) getApprovalTemplate(ctx context.Context, request com
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/ApprovalTemplate/GetApprovalTemplate"
 		err = common.PostProcessServiceError(err, "Lockbox", "GetApprovalTemplate", apiReferenceLink)
 		return response, err
 	}
@@ -793,7 +793,7 @@ func (client LockboxClient) getLockbox(ctx context.Context, request common.OCIRe
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/Lockbox/GetLockbox"
 		err = common.PostProcessServiceError(err, "Lockbox", "GetLockbox", apiReferenceLink)
 		return response, err
 	}
@@ -850,7 +850,7 @@ func (client LockboxClient) getWorkRequest(ctx context.Context, request common.O
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/WorkRequest/GetWorkRequest"
 		err = common.PostProcessServiceError(err, "Lockbox", "GetWorkRequest", apiReferenceLink)
 		return response, err
 	}
@@ -912,7 +912,7 @@ func (client LockboxClient) handleAccessRequest(ctx context.Context, request com
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/AccessRequest/HandleAccessRequest"
 		err = common.PostProcessServiceError(err, "Lockbox", "HandleAccessRequest", apiReferenceLink)
 		return response, err
 	}
@@ -969,7 +969,7 @@ func (client LockboxClient) listAccessRequests(ctx context.Context, request comm
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/AccessRequestCollection/ListAccessRequests"
 		err = common.PostProcessServiceError(err, "Lockbox", "ListAccessRequests", apiReferenceLink)
 		return response, err
 	}
@@ -1026,7 +1026,7 @@ func (client LockboxClient) listApprovalTemplates(ctx context.Context, request c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/ApprovalTemplateCollection/ListApprovalTemplates"
 		err = common.PostProcessServiceError(err, "Lockbox", "ListApprovalTemplates", apiReferenceLink)
 		return response, err
 	}
@@ -1083,7 +1083,7 @@ func (client LockboxClient) listLockboxes(ctx context.Context, request common.OC
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/LockboxCollection/ListLockboxes"
 		err = common.PostProcessServiceError(err, "Lockbox", "ListLockboxes", apiReferenceLink)
 		return response, err
 	}
@@ -1140,7 +1140,7 @@ func (client LockboxClient) listWorkRequestErrors(ctx context.Context, request c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/WorkRequestError/ListWorkRequestErrors"
 		err = common.PostProcessServiceError(err, "Lockbox", "ListWorkRequestErrors", apiReferenceLink)
 		return response, err
 	}
@@ -1197,7 +1197,7 @@ func (client LockboxClient) listWorkRequestLogs(ctx context.Context, request com
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/WorkRequestLogEntry/ListWorkRequestLogs"
 		err = common.PostProcessServiceError(err, "Lockbox", "ListWorkRequestLogs", apiReferenceLink)
 		return response, err
 	}
@@ -1254,7 +1254,7 @@ func (client LockboxClient) listWorkRequests(ctx context.Context, request common
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/WorkRequest/ListWorkRequests"
 		err = common.PostProcessServiceError(err, "Lockbox", "ListWorkRequests", apiReferenceLink)
 		return response, err
 	}
@@ -1311,7 +1311,7 @@ func (client LockboxClient) updateApprovalTemplate(ctx context.Context, request 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/ApprovalTemplate/UpdateApprovalTemplate"
 		err = common.PostProcessServiceError(err, "Lockbox", "UpdateApprovalTemplate", apiReferenceLink)
 		return response, err
 	}
@@ -1368,7 +1368,7 @@ func (client LockboxClient) updateLockbox(ctx context.Context, request common.OC
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/Lockbox/UpdateLockbox"
 		err = common.PostProcessServiceError(err, "Lockbox", "UpdateLockbox", apiReferenceLink)
 		return response, err
 	}
