@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.19.0 - 2022-09-06
+### Added
+- Support for generic REST, OCI Streaming service, and Lake House connectors in the Data Connectivity Management service
+- Support for connecting to the Data Catalog service in the Data Connectivity Management service
+- Support for Kerberos and SSL for HDFS operations in the Data Connectivity Management service
+- Support for excel-formatted data and default columns in the Data Connectivity Management service
+- Support for reporting connector usage in the Data Connectivity Management service
+- Support for preferred credentials for performing privileged operations in the Database Management service
+- Support for passing a content encoding when posting metrics in the Monitoring service
+- Support for Session Token authentication
+  
+### Breaking Changes
+- The operations `DeleteConnectionValidation` and `ListConnectionValidations` were removed from `DataConnectivityManagementClient` in the Data Connectivity Management service
+- The operation `ListConnectionValidationsResponseEnumerator` was removed from `DataConnectivityManagementPaginators` in the Data Connectivity Management service
+- The models `ListConnectionValidationsResponse`, `ListConnectionValidationsRequest` and `DeleteConnectionValidationRequest` were removed in the Data Connectivity Management service
+- The return type of property `LifecycleState` was changed to `LifecycleStateEnum` from `Registry.LifecycleStateEnum` in `ListRegistriesRequest` model in the Data Connectivity Management service
+
 ## 65.18.1 - 2022-08-30
 ### Added
 - Support for opting out of guest VM event collection, health metrics, diagnostics logs, and traces in the Database service
