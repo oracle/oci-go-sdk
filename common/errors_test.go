@@ -5,10 +5,13 @@ package common
 
 import (
 	"bytes"
+	"fmt"
 	"io/ioutil"
+	"net"
 	"net/http"
 	"net/url"
 	"strings"
+	"syscall"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -92,4 +95,31 @@ func TestPartialComputeOutOfCapacityErrors(t *testing.T) {
 	failure, ok := IsServiceError(err)
 	assert.Equal(t, ok, true)
 	assert.Equal(t, failure.GetHTTPStatusCode(), httpResponse.StatusCode)
+}
+
+func TestNetworkErrors(t *testing.T) {
+	netErr := net.OpError{
+		Op:  "accept",
+		Net: "tcp",
+		Err: syscall.ECONNRESET,
+	}
+	ok := IsNetworkError(&netErr)
+	assert.Equal(t, ok, true)
+
+	netErr1 := net.OpError{
+		Op:  "write",
+		Net: "tcp",
+		Err: syscall.ETIMEDOUT,
+	}
+	success := IsNetworkError(&netErr1)
+	assert.Equal(t, success, true)
+
+	netErr2 := net.OpError{
+		Op:  "write",
+		Net: "tcp",
+		Err: fmt.Errorf("net/http: HTTP/1.x transport connection broken"),
+	}
+	valid := IsNetworkError(&netErr2)
+	assert.Equal(t, valid, true)
+
 }
