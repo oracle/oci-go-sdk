@@ -4,7 +4,7 @@
 
 // Threat Intelligence API
 //
-// Use the Threat Intelligence API to view indicators of compromise and related items. For more information, see Overview of Threat Intelligence (https://docs.cloud.oracle.com/Content/ThreatIntelligence/Concepts/threatintelligenceoverview.htm).
+// Use the Threat Intelligence API to search for information about known threat indicators, including suspicious IP addresses, domain names, and other digital fingerprints. Threat Intelligence is a managed database of curated threat intelligence that comes from first party Oracle security insights, open source feeds, and vendor-procured data. For more information, see the Threat Intelligence documentation (https://docs.cloud.oracle.com/iaas/Content/threat-intel/home.htm).
 //
 
 package threatintelligence
@@ -15,10 +15,10 @@ import (
 	"strings"
 )
 
-// ThreatTypesCollection List of threat types applicable to indicators.
+// ThreatTypesCollection List of threat types that can be associated with threat indicators.
 type ThreatTypesCollection struct {
 
-	// The list of threat types that are available to query on
+	// The list of threat types that can be used to search for threat indicators.
 	Items []ThreatTypeSummary `mandatory:"true" json:"items"`
 }
 

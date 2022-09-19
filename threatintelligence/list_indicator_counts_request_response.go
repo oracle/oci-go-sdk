@@ -18,7 +18,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/ListIndicatorCounts.go.html to see an example of how to use ListIndicatorCountsRequest.
 type ListIndicatorCountsRequest struct {
 
-	// The ID of the tenancy to use to filter results.
+	// The OCID of the tenancy (root compartment) that is used to filter results.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The client request ID for tracing.

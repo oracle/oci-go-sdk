@@ -18,10 +18,10 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/ListIndicators.go.html to see an example of how to use ListIndicatorsRequest.
 type ListIndicatorsRequest struct {
 
-	// The ID of the tenancy to use to filter results.
+	// The OCID of the tenancy (root compartment) that is used to filter results.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
-	// The result set will include indicators that have any of the provided threat types. To filter for multiple threat types repeat the query parameter.
+	// The threat type of entites to be returned. To filter for multiple threat types, repeat this parameter.
 	ThreatTypeName []string `contributesTo:"query" name:"threatTypeName" collectionFormat:"multi"`
 
 	// The indicator type of entities to be returned.
@@ -35,6 +35,21 @@ type ListIndicatorsRequest struct {
 
 	// The oldest update time of entities to be returned.
 	TimeUpdatedGreaterThanOrEqualTo *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeUpdatedGreaterThanOrEqualTo"`
+
+	// Return indicators updated before the provided time.
+	TimeUpdatedLessThan *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeUpdatedLessThan"`
+
+	// The oldest last seen time of entities to be returned.
+	TimeLastSeenGreaterThanOrEqualTo *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeLastSeenGreaterThanOrEqualTo"`
+
+	// Return indicators last seen before the provided time.
+	TimeLastSeenLessThan *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeLastSeenLessThan"`
+
+	// The oldest created/first seen time of entities to be returned.
+	TimeCreatedGreaterThanOrEqualTo *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeCreatedGreaterThanOrEqualTo"`
+
+	// Return indicators created/first seen before the provided time.
+	TimeCreatedLessThan *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeCreatedLessThan"`
 
 	// The maximum number of items to return.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
@@ -239,18 +254,24 @@ type ListIndicatorsSortByEnum string
 
 // Set of constants representing the allowable values for ListIndicatorsSortByEnum
 const (
-	ListIndicatorsSortByConfidence  ListIndicatorsSortByEnum = "confidence"
-	ListIndicatorsSortByTimeupdated ListIndicatorsSortByEnum = "timeUpdated"
+	ListIndicatorsSortByConfidence   ListIndicatorsSortByEnum = "confidence"
+	ListIndicatorsSortByTimecreated  ListIndicatorsSortByEnum = "timeCreated"
+	ListIndicatorsSortByTimeupdated  ListIndicatorsSortByEnum = "timeUpdated"
+	ListIndicatorsSortByTimelastseen ListIndicatorsSortByEnum = "timeLastSeen"
 )
 
 var mappingListIndicatorsSortByEnum = map[string]ListIndicatorsSortByEnum{
-	"confidence":  ListIndicatorsSortByConfidence,
-	"timeUpdated": ListIndicatorsSortByTimeupdated,
+	"confidence":   ListIndicatorsSortByConfidence,
+	"timeCreated":  ListIndicatorsSortByTimecreated,
+	"timeUpdated":  ListIndicatorsSortByTimeupdated,
+	"timeLastSeen": ListIndicatorsSortByTimelastseen,
 }
 
 var mappingListIndicatorsSortByEnumLowerCase = map[string]ListIndicatorsSortByEnum{
-	"confidence":  ListIndicatorsSortByConfidence,
-	"timeupdated": ListIndicatorsSortByTimeupdated,
+	"confidence":   ListIndicatorsSortByConfidence,
+	"timecreated":  ListIndicatorsSortByTimecreated,
+	"timeupdated":  ListIndicatorsSortByTimeupdated,
+	"timelastseen": ListIndicatorsSortByTimelastseen,
 }
 
 // GetListIndicatorsSortByEnumValues Enumerates the set of values for ListIndicatorsSortByEnum
@@ -266,7 +287,9 @@ func GetListIndicatorsSortByEnumValues() []ListIndicatorsSortByEnum {
 func GetListIndicatorsSortByEnumStringValues() []string {
 	return []string{
 		"confidence",
+		"timeCreated",
 		"timeUpdated",
+		"timeLastSeen",
 	}
 }
 

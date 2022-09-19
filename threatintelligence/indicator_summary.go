@@ -4,7 +4,7 @@
 
 // Threat Intelligence API
 //
-// Use the Threat Intelligence API to view indicators of compromise and related items. For more information, see Overview of Threat Intelligence (https://docs.cloud.oracle.com/Content/ThreatIntelligence/Concepts/threatintelligenceoverview.htm).
+// Use the Threat Intelligence API to search for information about known threat indicators, including suspicious IP addresses, domain names, and other digital fingerprints. Threat Intelligence is a managed database of curated threat intelligence that comes from first party Oracle security insights, open source feeds, and vendor-procured data. For more information, see the Threat Intelligence documentation (https://docs.cloud.oracle.com/iaas/Content/threat-intel/home.htm).
 //
 
 package threatintelligence
@@ -21,28 +21,37 @@ type IndicatorSummary struct {
 	// The OCID of the indicator.
 	Id *string `mandatory:"true" json:"id"`
 
-	// Type of indicator
+	// The type of indicator.
 	Type IndicatorTypeEnum `mandatory:"true" json:"type"`
 
-	// The value of indicator.
+	// The indicator data value.
 	Value *string `mandatory:"true" json:"value"`
 
 	// Characteristics of the threat indicator based on previous observations or behavior. May include related tactics, techniques, and procedures.
-	ThreatTypes []ThreatType `mandatory:"true" json:"threatTypes"`
+	ThreatTypes []string `mandatory:"true" json:"threatTypes"`
 
-	// The time the data was first seen for this indicator. An RFC3339 formatted datetime string
+	// A map of attributes with additional information about the indicator.
+	// Each attribute has a name (string), value (string), and attribution (supporting data).
+	Attributes []IndicatorAttributeSummary `mandatory:"true" json:"attributes"`
+
+	// The date and time that the indicator was first detected. An RFC3339 formatted string.
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
-	// The last time this indicator was updated. It starts with the same value as timeCreated and is never empty. An RFC3339 formatted datetime string
+	// The date and time that this indicator was last updated by the system.  Updates can include new reports or regular updates in confidence. The value is the same as `timeCreated` for a new indicator. An RFC3339 formatted string.
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
 
-	// Confidence is an integer from 0 to 100 that provides a measure of our certainty in the maliciousness of the indicator.  This confidence value is aggregated from the confidence in the threat types, attributes, and relationships to create an overall value for the indicator.
+	// The date and time that this indicator was last seen. The value is the same as `timeCreated` for a new indicator. An RFC3339 formatted string.
+	TimeLastSeen *common.SDKTime `mandatory:"true" json:"timeLastSeen"`
+
+	Geodata *GeodataDetails `mandatory:"true" json:"geodata"`
+
+	// An integer from 0 to 100 that represents how certain we are that the indicator is malicious and a potential threat if it is detected communicating with your cloud resources. This confidence value is aggregated from the confidence in the threat types, attributes, and relationships to create an overall value for the indicator.
 	Confidence *int `mandatory:"false" json:"confidence"`
 
-	// Compartment Identifier
+	// The OCID of the compartment that contains this indicator.
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
-	// The state of the indicator.  It will always be ACTIVE.  This field is added for consistency.
+	// The state of the indicator. It will always be `ACTIVE`.
 	LifecycleState LifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 }
 
