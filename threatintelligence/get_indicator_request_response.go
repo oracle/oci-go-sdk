@@ -18,10 +18,10 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/GetIndicator.go.html to see an example of how to use GetIndicatorRequest.
 type GetIndicatorRequest struct {
 
-	// unique indicator identifier
+	// The unique identifier (OCID) of the threat indicator.
 	IndicatorId *string `mandatory:"true" contributesTo:"path" name:"indicatorId"`
 
-	// The ID of the tenancy to use to filter results.
+	// The OCID of the tenancy (root compartment) that is used to filter results.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The client request ID for tracing.

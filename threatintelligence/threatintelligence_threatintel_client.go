@@ -4,7 +4,7 @@
 
 // Threat Intelligence API
 //
-// Use the Threat Intelligence API to view indicators of compromise and related items. For more information, see Overview of Threat Intelligence (https://docs.cloud.oracle.com/Content/ThreatIntelligence/Concepts/threatintelligenceoverview.htm).
+// Use the Threat Intelligence API to search for information about known threat indicators, including suspicious IP addresses, domain names, and other digital fingerprints. Threat Intelligence is a managed database of curated threat intelligence that comes from first party Oracle security insights, open source feeds, and vendor-procured data. For more information, see the Threat Intelligence documentation (https://docs.cloud.oracle.com/iaas/Content/threat-intel/home.htm).
 //
 
 package threatintelligence
@@ -56,7 +56,7 @@ func newThreatintelClientFromBaseClient(baseClient common.BaseClient, configProv
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 
 	client = ThreatintelClient{BaseClient: baseClient}
-	client.BasePath = "20210831"
+	client.BasePath = "20220901"
 	err = client.setConfigurationProvider(configProvider)
 	return
 }
@@ -87,14 +87,15 @@ func (client *ThreatintelClient) ConfigurationProvider() *common.ConfigurationPr
 	return client.config
 }
 
-// GetIndicator Gets a detailed indicator by identifier
+// GetIndicator Get detailed information about a threat indicator with a given identifier.
 //
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/GetIndicator.go.html to see an example of how to use GetIndicator API.
+// A default retry strategy applies to this operation GetIndicator()
 func (client ThreatintelClient) GetIndicator(ctx context.Context, request GetIndicatorRequest) (response GetIndicatorResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -135,7 +136,7 @@ func (client ThreatintelClient) getIndicator(ctx context.Context, request common
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/threat-intel/20210831/Indicator/GetIndicator"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/threat-intel/20220901/Indicator/GetIndicator"
 		err = common.PostProcessServiceError(err, "Threatintel", "GetIndicator", apiReferenceLink)
 		return response, err
 	}
@@ -144,14 +145,15 @@ func (client ThreatintelClient) getIndicator(ctx context.Context, request common
 	return response, err
 }
 
-// ListIndicatorCounts Get the current count of each indicator type.  Results can be sorted ASC or DESC by count.
+// ListIndicatorCounts Get the current count of each threat indicator type. Indicator counts can be sorted in ascending or descending order.
 //
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/ListIndicatorCounts.go.html to see an example of how to use ListIndicatorCounts API.
+// A default retry strategy applies to this operation ListIndicatorCounts()
 func (client ThreatintelClient) ListIndicatorCounts(ctx context.Context, request ListIndicatorCountsRequest) (response ListIndicatorCountsResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -192,7 +194,7 @@ func (client ThreatintelClient) listIndicatorCounts(ctx context.Context, request
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/threat-intel/20210831/IndicatorCountCollection/ListIndicatorCounts"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/threat-intel/20220901/IndicatorCountCollection/ListIndicatorCounts"
 		err = common.PostProcessServiceError(err, "Threatintel", "ListIndicatorCounts", apiReferenceLink)
 		return response, err
 	}
@@ -201,14 +203,15 @@ func (client ThreatintelClient) listIndicatorCounts(ctx context.Context, request
 	return response, err
 }
 
-// ListIndicators Returns a list of IndicatorSummary objects.
+// ListIndicators Get a list of threat indicator summaries based on the search criteria.
 //
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/ListIndicators.go.html to see an example of how to use ListIndicators API.
+// A default retry strategy applies to this operation ListIndicators()
 func (client ThreatintelClient) ListIndicators(ctx context.Context, request ListIndicatorsRequest) (response ListIndicatorsResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -249,7 +252,7 @@ func (client ThreatintelClient) listIndicators(ctx context.Context, request comm
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/threat-intel/20210831/IndicatorSummaryCollection/ListIndicators"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/threat-intel/20220901/IndicatorSummaryCollection/ListIndicators"
 		err = common.PostProcessServiceError(err, "Threatintel", "ListIndicators", apiReferenceLink)
 		return response, err
 	}
@@ -259,14 +262,15 @@ func (client ThreatintelClient) listIndicators(ctx context.Context, request comm
 }
 
 // ListThreatTypes Gets a list of threat types that are available to use as parameters when querying indicators.
-// This is sorted by threat type name according to the sort order query param.
+// The list is sorted by threat type name according to the sort order query param.
 //
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/ListThreatTypes.go.html to see an example of how to use ListThreatTypes API.
+// A default retry strategy applies to this operation ListThreatTypes()
 func (client ThreatintelClient) ListThreatTypes(ctx context.Context, request ListThreatTypesRequest) (response ListThreatTypesResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -307,8 +311,66 @@ func (client ThreatintelClient) listThreatTypes(ctx context.Context, request com
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/threat-intel/20210831/ThreatTypesCollection/ListThreatTypes"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/threat-intel/20220901/ThreatTypesCollection/ListThreatTypes"
 		err = common.PostProcessServiceError(err, "Threatintel", "ListThreatTypes", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// SummarizeIndicators Get indicator summaries based on advanced search criteria.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/SummarizeIndicators.go.html to see an example of how to use SummarizeIndicators API.
+// A default retry strategy applies to this operation SummarizeIndicators()
+func (client ThreatintelClient) SummarizeIndicators(ctx context.Context, request SummarizeIndicatorsRequest) (response SummarizeIndicatorsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.summarizeIndicators, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = SummarizeIndicatorsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = SummarizeIndicatorsResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(SummarizeIndicatorsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into SummarizeIndicatorsResponse")
+	}
+	return
+}
+
+// summarizeIndicators implements the OCIOperation interface (enables retrying operations)
+func (client ThreatintelClient) summarizeIndicators(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/indicators/actions/summarize", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response SummarizeIndicatorsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/threat-intel/20220901/Indicator/SummarizeIndicators"
+		err = common.PostProcessServiceError(err, "Threatintel", "SummarizeIndicators", apiReferenceLink)
 		return response, err
 	}
 
