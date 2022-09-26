@@ -85,8 +85,11 @@ type SearchResourcesResponse struct {
 	// A list of ResourceSummaryCollection instances
 	ResourceSummaryCollection `presentIn:"body"`
 
-	// Pagination token
+	// For pagination of a list of items. When paging through a list, if this header appears in the response, then there are additional items still to get. Include this value as the page parameter for the subsequent GET request. For information about pagination, see ListPagination (https://docs.oracle.com/iaas/Content/API/Concepts/usingapi.htm#nine).
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
+
+	// For pagination of a list of items. When paging through a list, if this header appears in the response, then there are additional items in previous pages to get. Include this value as the page parameter for the subsequent GET request. The absence of this header indicates that you have reached the first page of the list. For more information, see ListPagination (https://docs.oracle.com/iaas/Content/API/Concepts/usingapi.htm#nine).
+	OpcPreviousPage *string `presentIn:"header" name:"opc-previous-page"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact
 	// Oracle about a particular request, please provide the request ID.
