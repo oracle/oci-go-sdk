@@ -17,7 +17,7 @@ import (
 )
 
 // StructuredSearchDetails A request that uses Search's structured query language to specify filter conditions to apply to search results.
-// For more information about writing queries, see Search Language Syntax (https://docs.cloud.oracle.com/en-us/iaas/Content/Search/Concepts/querysyntax.htm).
+// For more information about writing queries, see Search Language Syntax (https://docs.oracle.com/iaas/Content/Search/Concepts/querysyntax.htm).
 type StructuredSearchDetails struct {
 
 	// The structured query describing which resources to search for.
