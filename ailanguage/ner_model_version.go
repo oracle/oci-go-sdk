@@ -5,8 +5,8 @@
 // Language API
 //
 // OCI Language Service solutions can help enterprise customers integrate AI into their products immediately using our proven,
-//     pre-trained and custom models or containers, without a need to set up an house team of AI and ML experts.
-//     This allows enterprises to focus on business drivers and development work rather than AI and ML operations, which shortens the time to market.
+// pre-trained and custom models or containers, without a need to set up an house team of AI and ML experts.
+// This allows enterprises to focus on business drivers and development work rather than AI and ML operations, which shortens the time to market.
 //
 
 package ailanguage
@@ -20,18 +20,18 @@ type NerModelVersionEnum string
 
 // Set of constants representing the allowable values for NerModelVersionEnum
 const (
-	NerModelVersionV21 NerModelVersionEnum = "V2.1"
-	NerModelVersionV11 NerModelVersionEnum = "V1.1"
+	NerModelVersionV21 NerModelVersionEnum = "V2_1"
+	NerModelVersionV11 NerModelVersionEnum = "V1_1"
 )
 
 var mappingNerModelVersionEnum = map[string]NerModelVersionEnum{
-	"V2.1": NerModelVersionV21,
-	"V1.1": NerModelVersionV11,
+	"V2_1": NerModelVersionV21,
+	"V1_1": NerModelVersionV11,
 }
 
 var mappingNerModelVersionEnumLowerCase = map[string]NerModelVersionEnum{
-	"v2.1": NerModelVersionV21,
-	"v1.1": NerModelVersionV11,
+	"v2_1": NerModelVersionV21,
+	"v1_1": NerModelVersionV11,
 }
 
 // GetNerModelVersionEnumValues Enumerates the set of values for NerModelVersionEnum
@@ -46,8 +46,8 @@ func GetNerModelVersionEnumValues() []NerModelVersionEnum {
 // GetNerModelVersionEnumStringValues Enumerates the set of values in String for NerModelVersionEnum
 func GetNerModelVersionEnumStringValues() []string {
 	return []string{
-		"V2.1",
-		"V1.1",
+		"V2_1",
+		"V1_1",
 	}
 }
 
