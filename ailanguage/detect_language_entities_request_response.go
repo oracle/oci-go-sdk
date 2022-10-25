@@ -86,8 +86,11 @@ type DetectLanguageEntitiesResponse struct {
 	DetectLanguageEntitiesResult `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact
-	// Oracle about a particular request, provide the request ID.
+	// Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
+
+	// This API will be retired on Monday, 10 Oct 2022 00:00:00 GMT
+	Sunset *string `presentIn:"header" name:"sunset"`
 }
 
 func (response DetectLanguageEntitiesResponse) String() string {
@@ -104,18 +107,18 @@ type DetectLanguageEntitiesModelVersionEnum string
 
 // Set of constants representing the allowable values for DetectLanguageEntitiesModelVersionEnum
 const (
-	DetectLanguageEntitiesModelVersionV21 DetectLanguageEntitiesModelVersionEnum = "V2.1"
-	DetectLanguageEntitiesModelVersionV11 DetectLanguageEntitiesModelVersionEnum = "V1.1"
+	DetectLanguageEntitiesModelVersionV21 DetectLanguageEntitiesModelVersionEnum = "V2_1"
+	DetectLanguageEntitiesModelVersionV11 DetectLanguageEntitiesModelVersionEnum = "V1_1"
 )
 
 var mappingDetectLanguageEntitiesModelVersionEnum = map[string]DetectLanguageEntitiesModelVersionEnum{
-	"V2.1": DetectLanguageEntitiesModelVersionV21,
-	"V1.1": DetectLanguageEntitiesModelVersionV11,
+	"V2_1": DetectLanguageEntitiesModelVersionV21,
+	"V1_1": DetectLanguageEntitiesModelVersionV11,
 }
 
 var mappingDetectLanguageEntitiesModelVersionEnumLowerCase = map[string]DetectLanguageEntitiesModelVersionEnum{
-	"v2.1": DetectLanguageEntitiesModelVersionV21,
-	"v1.1": DetectLanguageEntitiesModelVersionV11,
+	"v2_1": DetectLanguageEntitiesModelVersionV21,
+	"v1_1": DetectLanguageEntitiesModelVersionV11,
 }
 
 // GetDetectLanguageEntitiesModelVersionEnumValues Enumerates the set of values for DetectLanguageEntitiesModelVersionEnum
@@ -130,8 +133,8 @@ func GetDetectLanguageEntitiesModelVersionEnumValues() []DetectLanguageEntitiesM
 // GetDetectLanguageEntitiesModelVersionEnumStringValues Enumerates the set of values in String for DetectLanguageEntitiesModelVersionEnum
 func GetDetectLanguageEntitiesModelVersionEnumStringValues() []string {
 	return []string{
-		"V2.1",
-		"V1.1",
+		"V2_1",
+		"V1_1",
 	}
 }
 

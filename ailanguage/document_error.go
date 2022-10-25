@@ -5,8 +5,8 @@
 // Language API
 //
 // OCI Language Service solutions can help enterprise customers integrate AI into their products immediately using our proven,
-//     pre-trained and custom models or containers, without a need to set up an house team of AI and ML experts.
-//     This allows enterprises to focus on business drivers and development work rather than AI and ML operations, which shortens the time to market.
+// pre-trained and custom models or containers, without a need to set up an house team of AI and ML experts.
+// This allows enterprises to focus on business drivers and development work rather than AI and ML operations, which shortens the time to market.
 //
 
 package ailanguage
@@ -20,7 +20,7 @@ import (
 // DocumentError Error response for document.
 type DocumentError struct {
 
-	// Unique Document Identifier.
+	// Document unique identifier defined by the user.
 	Key *string `mandatory:"true" json:"key"`
 
 	Error *ErrorDetails `mandatory:"true" json:"error"`

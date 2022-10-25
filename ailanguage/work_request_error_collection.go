@@ -5,8 +5,8 @@
 // Language API
 //
 // OCI Language Service solutions can help enterprise customers integrate AI into their products immediately using our proven,
-//     pre-trained and custom models or containers, without a need to set up an house team of AI and ML experts.
-//     This allows enterprises to focus on business drivers and development work rather than AI and ML operations, which shortens the time to market.
+// pre-trained and custom models or containers, without a need to set up an house team of AI and ML experts.
+// This allows enterprises to focus on business drivers and development work rather than AI and ML operations, which shortens the time to market.
 //
 
 package ailanguage
@@ -17,27 +17,21 @@ import (
 	"strings"
 )
 
-// KeyPhraseDocument The document details for keyPhrases detect call.
-type KeyPhraseDocument struct {
+// WorkRequestErrorCollection Results of a workRequestError search. Contains both WorkRequestError items and other information, such as metadata.
+type WorkRequestErrorCollection struct {
 
-	// Document Unique Identifier.
-	Key *string `mandatory:"true" json:"key"`
-
-	// Document text for detect keyPhrases.
-	Text *string `mandatory:"true" json:"text"`
-
-	// Language code as per ISO 639-1 (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) standard..
-	LanguageCode *string `mandatory:"false" json:"languageCode"`
+	// List of workRequestError objects.
+	Items []WorkRequestError `mandatory:"true" json:"items"`
 }
 
-func (m KeyPhraseDocument) String() string {
+func (m WorkRequestErrorCollection) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m KeyPhraseDocument) ValidateEnumValue() (bool, error) {
+func (m WorkRequestErrorCollection) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {
