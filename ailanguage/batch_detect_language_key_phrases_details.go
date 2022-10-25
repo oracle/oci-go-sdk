@@ -5,8 +5,8 @@
 // Language API
 //
 // OCI Language Service solutions can help enterprise customers integrate AI into their products immediately using our proven,
-//     pre-trained and custom models or containers, without a need to set up an house team of AI and ML experts.
-//     This allows enterprises to focus on business drivers and development work rather than AI and ML operations, which shortens the time to market.
+// pre-trained and custom models or containers, without a need to set up an house team of AI and ML experts.
+// This allows enterprises to focus on business drivers and development work rather than AI and ML operations, which shortens the time to market.
 //
 
 package ailanguage
@@ -21,7 +21,10 @@ import (
 type BatchDetectLanguageKeyPhrasesDetails struct {
 
 	// List of Documents for detect keyPhrases.
-	Documents []KeyPhraseDocument `mandatory:"true" json:"documents"`
+	Documents []TextDocument `mandatory:"true" json:"documents"`
+
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the compartment that calls the API, inference will be served from pre trained model
+	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 }
 
 func (m BatchDetectLanguageKeyPhrasesDetails) String() string {

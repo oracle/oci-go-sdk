@@ -5,8 +5,8 @@
 // Language API
 //
 // OCI Language Service solutions can help enterprise customers integrate AI into their products immediately using our proven,
-//     pre-trained and custom models or containers, without a need to set up an house team of AI and ML experts.
-//     This allows enterprises to focus on business drivers and development work rather than AI and ML operations, which shortens the time to market.
+// pre-trained and custom models or containers, without a need to set up an house team of AI and ML experts.
+// This allows enterprises to focus on business drivers and development work rather than AI and ML operations, which shortens the time to market.
 //
 
 package ailanguage
@@ -20,13 +20,13 @@ import (
 // TextClassificationDocumentResult The document response for test classification detect call.
 type TextClassificationDocumentResult struct {
 
-	// Document Unique Identifier.
+	// Document unique identifier defined by the user.
 	Key *string `mandatory:"true" json:"key"`
 
 	// List of detected text classes.
 	TextClassification []TextClassification `mandatory:"true" json:"textClassification"`
 
-	// Language code as per ISO 639-1 (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) standard.
+	// Language code per the ISO 639-1 (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) standard.
 	LanguageCode *string `mandatory:"true" json:"languageCode"`
 }
 

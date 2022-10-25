@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.24.0 - 2022-10-25
+### Added
+- Support for the Disaster Recovery service
+- Support for running code interactively with session applications using statements in the Data Flow service
+- Support for language custom models and language translation in the AI Language service
+
+### Breaking Changes
+- `TextClassificationDocument` and `KeyPhraseDocument` modles are removed from  ailanguage service
+- Document parameter in `BatchDetectLanguage` related models changed to `TextDocument` type
+
 ## 65.23.0 - 2022-10-04
 ### Added
 - Support for calling Oracle Cloud Infrastructure services in the eu-dcc-milan-1 region
