@@ -38,6 +38,10 @@ func (uploader *multipartUpload) createMultipartUpload(ctx context.Context, requ
 	multipartUploadRequest.ContentEncoding = request.ContentEncoding
 	multipartUploadRequest.ContentLanguage = request.ContentLanguage
 	multipartUploadRequest.Metadata = request.Metadata
+	multipartUploadRequest.OpcSseCustomerAlgorithm = request.OpcSseCustomerAlgorithm
+	multipartUploadRequest.OpcSseCustomerKey = request.OpcSseCustomerKey
+	multipartUploadRequest.OpcSseCustomerKeySha256 = request.OpcSseCustomerKeySha256
+	multipartUploadRequest.OpcSseKmsKeyId = request.OpcSseKmsKeyId
 	switch request.StorageTier {
 	case objectstorage.PutObjectStorageTierStandard:
 		multipartUploadRequest.StorageTier = objectstorage.StorageTierStandard
@@ -96,18 +100,22 @@ func (uploader *multipartUpload) uploadParts(ctx context.Context, done <-chan st
 // send request to upload part to object storage
 func (uploader *multipartUpload) uploadPart(ctx context.Context, request UploadRequest, part uploadPart, uploadID string) (objectstorage.UploadPartResponse, error) {
 	req := objectstorage.UploadPartRequest{
-		NamespaceName:      request.NamespaceName,
-		BucketName:         request.BucketName,
-		ObjectName:         request.ObjectName,
-		UploadId:           common.String(uploadID),
-		UploadPartNum:      common.Int(part.partNum),
-		UploadPartBody:     ioutil.NopCloser(bytes.NewReader(part.partBody)),
-		ContentLength:      common.Int64(part.size),
-		IfMatch:            request.IfMatch,
-		IfNoneMatch:        request.IfNoneMatch,
-		OpcClientRequestId: request.OpcClientRequestID,
-		RequestMetadata:    request.RequestMetadata,
-		ContentMD5:         part.opcMD5,
+		NamespaceName:           request.NamespaceName,
+		BucketName:              request.BucketName,
+		ObjectName:              request.ObjectName,
+		UploadId:                common.String(uploadID),
+		UploadPartNum:           common.Int(part.partNum),
+		UploadPartBody:          ioutil.NopCloser(bytes.NewReader(part.partBody)),
+		ContentLength:           common.Int64(part.size),
+		IfMatch:                 request.IfMatch,
+		IfNoneMatch:             request.IfNoneMatch,
+		OpcClientRequestId:      request.OpcClientRequestID,
+		RequestMetadata:         request.RequestMetadata,
+		ContentMD5:              part.opcMD5,
+		OpcSseCustomerAlgorithm: request.OpcSseCustomerAlgorithm,
+		OpcSseCustomerKey:       request.OpcSseCustomerKey,
+		OpcSseCustomerKeySha256: request.OpcSseCustomerKeySha256,
+		OpcSseKmsKeyId:          request.OpcSseKmsKeyId,
 	}
 
 	resp, err := request.ObjectStorageClient.UploadPart(ctx, req)
