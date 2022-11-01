@@ -91,6 +91,24 @@ type UploadRequest struct {
 
 	// [Optional] Whether or not this UploadManager supports performing multipart uploads md5 checksum verification. Defaults to False.
 	EnableMultipartChecksumVerification *bool `mandatory:"false"`
+
+	// The optional header that specifies "AES256" as the encryption algorithm. For more information, see
+	// Using Your Own Keys for Server-Side Encryption (https://docs.cloud.oracle.com/Content/Object/Tasks/usingyourencryptionkeys.htm).
+	OpcSseCustomerAlgorithm *string `mandatory:"false"`
+
+	// The optional header that specifies the base64-encoded 256-bit encryption key to use to encrypt or
+	// decrypt the data. For more information, see
+	// Using Your Own Keys for Server-Side Encryption (https://docs.cloud.oracle.com/Content/Object/Tasks/usingyourencryptionkeys.htm).
+	OpcSseCustomerKey *string `mandatory:"false"`
+
+	// The optional header that specifies the base64-encoded SHA256 hash of the encryption key. This
+	// value is used to check the integrity of the encryption key. For more information, see
+	// Using Your Own Keys for Server-Side Encryption (https://docs.cloud.oracle.com/Content/Object/Tasks/usingyourencryptionkeys.htm).
+	OpcSseCustomerKeySha256 *string `mandatory:"false"`
+
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of a master encryption key used to call the Key
+	// Management service to generate a data encryption key or to encrypt or decrypt a data encryption key.
+	OpcSseKmsKeyId *string `mandatory:"false"`
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
