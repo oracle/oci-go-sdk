@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.26.0 - 2022-11-08
+### Added
+- Support for listing local and cross-region refreshable clones in the Database service
+- Support for adding multiple cloud VM clusters in the Database service
+- Support for creating rollback jobs in the Resource Manager service
+- Support for edge nodes in the Big Data service
+- Support for Single Client Access Name (SCAN) in the Data Flow service
+- Support for additional filters when listing application dependencies in the Application Dependency Management service
+- Support for additional properties when reading Vulnerability Audit resources in the Application Dependency Management service
+- Support for optionally passing compartment IDs when creating Vulnerability Audit resources in the Application Dependency Management service
+
+### Breaking Changes
+- The property `CertificateId` was made required in `PrivateServerConfigDetails` model in the Resource Manager service
+
+
 ## 65.25.0 - 2022-11-01
 ### Added
 - Support for cloning from a backup from the last available timestamp in the Database service
