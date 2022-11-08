@@ -6,6 +6,7 @@ package common
 import (
 	"bytes"
 	"context"
+	"io"
 	"math"
 	"net/http"
 	"reflect"
@@ -279,6 +280,23 @@ func TestDefaultRetryPolicy(t *testing.T) {
 		assert.False(t, policy.ShouldRetryOperation(r))
 	}
 	for _, r := range responsesWantRetry {
+		assert.True(t, policy.ShouldRetryOperation(r))
+	}
+}
+
+func TestRetryEOF(t *testing.T) {
+	policy := DefaultRetryPolicy()
+	// unroll an exponential retry policy with a specified maximum
+	// number of attempts so it's more obvious what's happening
+	for i := uint(1); i <= 9; i++ {
+		assert.True(t, shouldContinueIssuingRequests(i, policy.MaximumNumberAttempts))
+	}
+	assert.False(t, shouldContinueIssuingRequests(10, policy.MaximumNumberAttempts))
+	for _, r := range responsesNoRetry {
+		assert.False(t, policy.ShouldRetryOperation(r))
+	}
+	for _, r := range responsesWantRetry {
+		r.Error = io.EOF
 		assert.True(t, policy.ShouldRetryOperation(r))
 	}
 }
