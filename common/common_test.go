@@ -217,6 +217,12 @@ func TestEndpointForTemplate(t *testing.T) {
 			endpointTemplate: "https://test.{region}.{secondLevelDomain}",
 			expected:         "https://test.ap-chiyoda-1.oraclecloud8.com",
 		},
+		{
+			service:          "identity",
+			region:           StringToRegion("broom6.us.oracle.com"),
+			endpointTemplate: "https://iaas.{region}.{secondLevelDomain}",
+			expected:         "https://iaas.broom6.us.oracle.com",
+		},
 	}
 
 	for _, testData := range testDataSet {
@@ -225,15 +231,15 @@ func TestEndpointForTemplate(t *testing.T) {
 	}
 }
 
-func TestEndpointForDotInRegion(t *testing.T) {
-	//dot in region with service name and endpoint template
-	region := StringToRegion("some.customerdomain.com")
+func TestEndpointWithServiceName(t *testing.T) {
+	//no dot in region with service name and endpoint template
+	region := StringToRegion("us-phoenix-1")
 	service := "test"
-	endpointTemplate := "https://{region}.bar.com"
+	endpointTemplate := "https://iaas.{region}.{secondLevelDomain}"
 	serviceName := "iaas"
 	endpoint, err := region.EndpointForTemplateDottedRegion(service, endpointTemplate, serviceName)
 	assert.NoError(t, err)
-	assert.Equal(t, "https://iaas.some.customerdomain.com", endpoint)
+	assert.Equal(t, "https://iaas.us-phoenix-1.oraclecloud.com", endpoint)
 
 	service = "identity"
 	region = StringToRegion("broom6.us.oracle.com")
@@ -255,14 +261,6 @@ func TestEndpointForDotInRegion(t *testing.T) {
 	service = "compute"
 	serviceName = "iaas"
 	endpoint, err = region.EndpointForTemplateDottedRegion(service, "", serviceName)
-	assert.NoError(t, err)
-	assert.Equal(t, "https://iaas.broom6.us.oracle.com", endpoint)
-
-	//dot in region without service name and with endpoint template
-	service = "identity"
-	region = StringToRegion("broom6.us.oracle.com")
-	endpointTemplate = "https://iaas.{region}.{secondLevelDomain}"
-	endpoint, err = region.EndpointForTemplateDottedRegion(service, endpointTemplate, "")
 	assert.NoError(t, err)
 	assert.Equal(t, "https://iaas.broom6.us.oracle.com", endpoint)
 

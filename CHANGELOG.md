@@ -4,6 +4,34 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.28.0 - 2022-12-13
+### Added
+- Support for the Queue service
+- Support for Intel X9 shapes when launching VM database systems in the Database service
+- Support for enabling, disabling, and editing Database Management service connections on pluggable databases in the Database service
+- Support for availability configurations and maintenance window schedules on synthetic monitors in the Application Performance Monitoring service
+- Support for scheduling cascading deletes on a project in the DevOps service
+- Support for cancelling a scheduled cascading delete on a project in the DevOps service
+- Support for issue and action fields on job phases of validation and migration processes in the Database Migration service
+- Support for cluster profiles in the Big Data service
+- Support for egress-only services in the Service Mesh service
+- Support for optional listeners and service discovery metadata on virtual deployments in the Service Mesh service
+- Support for canceling work requests in the accepted state in the Service Mesh service
+- Support for filtering work requests on associated resource id and operation status in the Service Mesh service
+- Support for sorting while listing work requests, listing work request logs, and listing work request errors in the Service Mesh service  
+ 
+ 
+### Breaking Changes
+- The type for property `RouteRules` was changed from a List of `VirtualServiceTrafficRouteRule` to a List of `VirtualServiceTrafficRouteRuleDetails` in the models `UpdateVirtualServiceRouteTableDetails` and `CreateVirtualServiceRouteTableDetails` in the Service Mesh service
+- The type for property `Mtls` was changed from `CreateMutualTransportLayerSecurityDetails` to `VirtualServiceMutualTransportLayerSecurityDetails` in the models `UpdateVirtualServiceDetails` and `CreateVirtualServiceDetails.` in the Service Mesh service
+- The type for property `RouteRules` was changed from a List of `IngressGatewayTrafficRouteRule` to a List of `IngressGatewayTrafficRouteRuleDetails` in the models `UpdateIngressGatewayRouteTableDetails` and `CreateIngressGatewayRouteTableDetails` in the Service Mesh service
+- The type for property `Mtls` was changed from `CreateIngressGatewayMutualTransportLayerSecurityDetails` to `IngressGatewayMutualTransportLayerSecurityDetails` in the models `UpdateIngressGatewayDetails` and `CreateIngressGatewayDetails` in the Service Mesh service
+- The type for property `Rules` was changed from a List of `AccessPolicyRule` to a List of `AccessPolicyRuleDetails` in the models `UpdateAccessPolicyDetails` and `CreateAccessPolicyDetails` in the Service Mesh service
+- Support for default retries on operations of the Service Mesh service
+- Support for default retries on operations of the Database Migration service
+- Support for default retries on operations of the Fusion Apps as a Service service
+
+
 ## 65.27.0 - 2022-12-06
 ### Added
 - Support for the Container Instances service
