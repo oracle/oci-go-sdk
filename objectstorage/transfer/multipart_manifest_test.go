@@ -5,7 +5,7 @@ package transfer
 
 import (
 	"os"
-	"path"
+	"path/filepath"
 	"testing"
 
 	"github.com/oracle/oci-go-sdk/v65/example/helpers"
@@ -70,7 +70,7 @@ func TestSplitFileParts(t *testing.T) {
 		assert.Equal(t, testData.expectedLastPartSize, parts[len(parts)-1].size)
 
 		file.Close()
-		os.Remove(path.Base(filePath))
+		os.Remove(filepath.Base(filePath))
 		close(done)
 	}
 }

@@ -9,13 +9,13 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
-	"path"
+	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
 )
 
-//Region type for regions
+// Region type for regions
 type Region string
 
 const (
@@ -140,7 +140,7 @@ func (region Region) RealmID() (string, error) {
 	return "", fmt.Errorf("cannot find realm for region : %s", region)
 }
 
-//StringToRegion convert a string to Region type
+// StringToRegion convert a string to Region type
 func StringToRegion(stringRegion string) (r Region) {
 	regionStr := strings.ToLower(stringRegion)
 	// check if short region name provided
@@ -238,7 +238,7 @@ func setRegionMetadataFromCfgFile(region *string) bool {
 	// Mark readCfgFile Flag as false since it has already been visited.
 	readCfgFile = false
 	homeFolder := getHomeFolder()
-	configFile := path.Join(homeFolder, regionMetadataCfgDirName, regionMetadataCfgFileName)
+	configFile := filepath.Join(homeFolder, regionMetadataCfgDirName, regionMetadataCfgFileName)
 	if jsonArr, ok := readAndParseConfigFile(&configFile); ok {
 		added := false
 		for _, jsonItem := range jsonArr {

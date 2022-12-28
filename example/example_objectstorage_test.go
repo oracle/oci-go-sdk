@@ -12,7 +12,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"path"
+	"path/filepath"
 
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"github.com/oracle/oci-go-sdk/v65/example/helpers"
@@ -33,13 +33,13 @@ func ExampleObjectStorage_UploadFile() {
 	defer deleteBucket(ctx, c, namespace, bname)
 
 	contentlen := 1024 * 1000
-	filepath, filesize := helpers.WriteTempFileOfSize(int64(contentlen))
-	filename := path.Base(filepath)
+	fpath, filesize := helpers.WriteTempFileOfSize(int64(contentlen))
+	filename := filepath.Base(fpath)
 	defer func() {
 		os.Remove(filename)
 	}()
 
-	file, e := os.Open(filepath)
+	file, e := os.Open(fpath)
 	defer file.Close()
 	helpers.FatalIfError(e)
 
@@ -69,8 +69,8 @@ func ExampleObjectStorage_UploadManager_UploadFile() {
 	defer deleteBucket(ctx, c, namespace, bname)
 
 	contentlen := 1024 * 1024 * 300 // 300MB
-	filepath, _ := helpers.WriteTempFileOfSize(int64(contentlen))
-	filename := path.Base(filepath)
+	fpath, _ := helpers.WriteTempFileOfSize(int64(contentlen))
+	filename := filepath.Base(fpath)
 	defer os.Remove(filename)
 
 	uploadManager := transfer.NewUploadManager()
@@ -86,7 +86,7 @@ func ExampleObjectStorage_UploadManager_UploadFile() {
 			ObjectStorageClient:                 &c,
 			EnableMultipartChecksumVerification: common.Bool(true),
 		},
-		FilePath: filepath,
+		FilePath: fpath,
 	}
 
 	// if you want to overwrite default value, you can do it
@@ -137,8 +137,8 @@ func ExampleObjectStorage_UploadManager_Stream() {
 	defer deleteBucket(ctx, c, namespace, bname)
 
 	contentlen := 1024 * 1000 * 130 // 130MB
-	filepath, _ := helpers.WriteTempFileOfSize(int64(contentlen))
-	filename := path.Base(filepath)
+	fpath, _ := helpers.WriteTempFileOfSize(int64(contentlen))
+	filename := filepath.Base(fpath)
 	defer func() {
 		os.Remove(filename)
 	}()
@@ -146,7 +146,7 @@ func ExampleObjectStorage_UploadManager_Stream() {
 	uploadManager := transfer.NewUploadManager()
 	objectName := "sampleStreamUploadObj"
 
-	file, _ := os.Open(filepath)
+	file, _ := os.Open(fpath)
 	defer file.Close()
 
 	req := transfer.UploadStreamRequest{
