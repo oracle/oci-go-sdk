@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2018, 2022, Oracle and/or its affiliates.  All rights reserved.
+// Copyright (c) 2016, 2018, 2023, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
@@ -135,7 +135,7 @@ func (client AIServiceDocumentClient) cancelProcessorJob(ctx context.Context, re
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/document-understanding/20221109/ProcessorJob/CancelProcessorJob"
 		err = common.PostProcessServiceError(err, "AIServiceDocument", "CancelProcessorJob", apiReferenceLink)
 		return response, err
 	}
@@ -198,7 +198,7 @@ func (client AIServiceDocumentClient) createProcessorJob(ctx context.Context, re
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/document-understanding/20221109/ProcessorJob/CreateProcessorJob"
 		err = common.PostProcessServiceError(err, "AIServiceDocument", "CreateProcessorJob", apiReferenceLink)
 		return response, err
 	}
@@ -256,7 +256,7 @@ func (client AIServiceDocumentClient) getProcessorJob(ctx context.Context, reque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/document-understanding/20221109/ProcessorJob/GetProcessorJob"
 		err = common.PostProcessServiceError(err, "AIServiceDocument", "GetProcessorJob", apiReferenceLink)
 		return response, err
 	}

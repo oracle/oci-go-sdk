@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2018, 2022, Oracle and/or its affiliates.  All rights reserved.
+// Copyright (c) 2016, 2018, 2023, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
@@ -58,6 +58,10 @@ func (m *entity) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 		mm := GenericEntity{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
+	case "KEYVALUESELECTION":
+		mm := KeyValueSelectionEntity{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "TEXTSELECTION":
 		mm := TextSelectionEntity{}
 		err = json.Unmarshal(data, &mm)
@@ -91,18 +95,21 @@ const (
 	EntityEntityTypeGeneric              EntityEntityTypeEnum = "GENERIC"
 	EntityEntityTypeImageobjectselection EntityEntityTypeEnum = "IMAGEOBJECTSELECTION"
 	EntityEntityTypeTextselection        EntityEntityTypeEnum = "TEXTSELECTION"
+	EntityEntityTypeKeyvalueselection    EntityEntityTypeEnum = "KEYVALUESELECTION"
 )
 
 var mappingEntityEntityTypeEnum = map[string]EntityEntityTypeEnum{
 	"GENERIC":              EntityEntityTypeGeneric,
 	"IMAGEOBJECTSELECTION": EntityEntityTypeImageobjectselection,
 	"TEXTSELECTION":        EntityEntityTypeTextselection,
+	"KEYVALUESELECTION":    EntityEntityTypeKeyvalueselection,
 }
 
 var mappingEntityEntityTypeEnumLowerCase = map[string]EntityEntityTypeEnum{
 	"generic":              EntityEntityTypeGeneric,
 	"imageobjectselection": EntityEntityTypeImageobjectselection,
 	"textselection":        EntityEntityTypeTextselection,
+	"keyvalueselection":    EntityEntityTypeKeyvalueselection,
 }
 
 // GetEntityEntityTypeEnumValues Enumerates the set of values for EntityEntityTypeEnum
@@ -120,6 +127,7 @@ func GetEntityEntityTypeEnumStringValues() []string {
 		"GENERIC",
 		"IMAGEOBJECTSELECTION",
 		"TEXTSELECTION",
+		"KEYVALUESELECTION",
 	}
 }
 

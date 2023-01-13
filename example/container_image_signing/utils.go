@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2018, 2022, Oracle and/or its affiliates.  All rights reserved.
+// Copyright (c) 2016, 2018, 2023, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 
 package example
@@ -19,43 +19,44 @@ import (
 
 /*
 SignAndUploadContainerImageSignatureMetadata calls KMS to sign the message then calls OCIR to upload the returned signature
-  Description: Sign a container image and upload the signature to the image
-  Response: The signed container image signature metadata.
-  Parameters:
-   - kmsKeyId:
-  	  description: The OCID of the kmsKeyId used to sign the container image. eg) ocid1.key.oc1..exampleuniqueID
-  	  maxLength: 255
-  	  minLength: 1
-   - kmsKeyVersionId:
-  	  description: The OCID of the kmsKeyVersionId used to sign the container image. eg) ocid1.keyversion.oc1..exampleuniqueID
-  	  maxLength: 255
-  	  minLength: 1
-   - signingAlgorithm:
-  	  - description: The algorithm to be used for signing. These are the only supported signing algorithms for container images.
-  	  	 - SHA_224_RSA_PKCS_PSS
-  	  	 - SHA_256_RSA_PKCS_PSS
-  	  	 - SHA_384_RSA_PKCS_PSS
-  	  	 - SHA_512_RSA_PKCS_PSS
-   - compartmentId:
-  	  description: The OCID of the compartment in which the container repository exists. eg) ocid1.compartment.oc1..exampleuniqueID
-  	  maxLength: 100
-  	  minLength: 1
-   - imageId:
-  	  description: The OCID of the container image. eg) ocid1.containerimage.oc1..exampleuniqueID
-  	  maxLength: 255
-  	  minLength: 1
-   - repoPath:
-  	  description The docker repository path. eg) odx-registry/busybox
-   - imageDigest:
-  	  description: The sha256 digest of the docker image. eg) sha256:12345
-   - description:
-  	  description: An user inputted message.
-   - metadata:
-  	  description: An user defined information about the container image in JSON format eg) {"buildNumber":"123"}
-  	  restriction:
-  	   - should only contains alphanumeric key strings.
-  	   - should be alphabetically sorted.
-  	   - should not have whitespaces or escape characters.
+
+	Description: Sign a container image and upload the signature to the image
+	Response: The signed container image signature metadata.
+	Parameters:
+	 - kmsKeyId:
+		  description: The OCID of the kmsKeyId used to sign the container image. eg) ocid1.key.oc1..exampleuniqueID
+		  maxLength: 255
+		  minLength: 1
+	 - kmsKeyVersionId:
+		  description: The OCID of the kmsKeyVersionId used to sign the container image. eg) ocid1.keyversion.oc1..exampleuniqueID
+		  maxLength: 255
+		  minLength: 1
+	 - signingAlgorithm:
+		  - description: The algorithm to be used for signing. These are the only supported signing algorithms for container images.
+		  	 - SHA_224_RSA_PKCS_PSS
+		  	 - SHA_256_RSA_PKCS_PSS
+		  	 - SHA_384_RSA_PKCS_PSS
+		  	 - SHA_512_RSA_PKCS_PSS
+	 - compartmentId:
+		  description: The OCID of the compartment in which the container repository exists. eg) ocid1.compartment.oc1..exampleuniqueID
+		  maxLength: 100
+		  minLength: 1
+	 - imageId:
+		  description: The OCID of the container image. eg) ocid1.containerimage.oc1..exampleuniqueID
+		  maxLength: 255
+		  minLength: 1
+	 - repoPath:
+		  description The docker repository path. eg) odx-registry/busybox
+	 - imageDigest:
+		  description: The sha256 digest of the docker image. eg) sha256:12345
+	 - description:
+		  description: An user inputted message.
+	 - metadata:
+		  description: An user defined information about the container image in JSON format eg) {"buildNumber":"123"}
+		  restriction:
+		   - should only contains alphanumeric key strings.
+		   - should be alphabetically sorted.
+		   - should not have whitespaces or escape characters.
 */
 func SignAndUploadContainerImageSignatureMetadata(ctx context.Context, artifactClient artifacts.ArtifactsClient, configProvider common.ConfigurationProvider, kmsKeyId string, kmsKeyVersionId string, signingAlgorithm string, compartmentId string, imageId string, description string, metadata string) (*artifacts.ContainerImageSignature, error) {
 	signingAlgoKms := mappingSignDataDetailsSigningAlgorithm[signingAlgorithm]
@@ -119,21 +120,22 @@ func SignAndUploadContainerImageSignatureMetadata(ctx context.Context, artifactC
 
 /*
 GetAndVerifyImageSignatureMetadata calls OCIR to list all the signatures satisfying the user provided criterion then calls KMS to verify the returned signatures
-  Description: Fetch a container image signature metadata and verity the signature
-  Response: Boolean to indicate if any of the signatures of the container image is verified
-  Parameters:
-   - compartmentId:
-	  description: The OCID of the compartment in which the container repository exists. eg) ocid1.compartment.oc1..exampleuniqueID
-	  maxLength: 100
-	  minLength: 1
-   - compartmentIdInSubtree:
-	  description: When set to true, the hierarchy of compartments is traversed
-   - repositoryName:
-	  description: The repository name in which the container image exists eg) busybox
-   - imageDigest:
-	  description: The sha256 digest of the docker image. eg) sha256:12345
-   - trustedKeys:
-	  description: List of OCIDs of the kmsKeyId used to sign the container image.
+
+	  Description: Fetch a container image signature metadata and verity the signature
+	  Response: Boolean to indicate if any of the signatures of the container image is verified
+	  Parameters:
+	   - compartmentId:
+		  description: The OCID of the compartment in which the container repository exists. eg) ocid1.compartment.oc1..exampleuniqueID
+		  maxLength: 100
+		  minLength: 1
+	   - compartmentIdInSubtree:
+		  description: When set to true, the hierarchy of compartments is traversed
+	   - repositoryName:
+		  description: The repository name in which the container image exists eg) busybox
+	   - imageDigest:
+		  description: The sha256 digest of the docker image. eg) sha256:12345
+	   - trustedKeys:
+		  description: List of OCIDs of the kmsKeyId used to sign the container image.
 */
 func GetAndVerifyImageSignatureMetadata(ctx context.Context, artifactClient artifacts.ArtifactsClient, configProvider common.ConfigurationProvider, compartmentId string, compartmentIdInSubtree bool, repositoryName string, imageDigest string, trustedKeys []string) (bool, error) {
 	return getAndVerifyImageSignatureMetadataHelper(ctx, artifactClient, configProvider, compartmentId, compartmentIdInSubtree, repositoryName, imageDigest, trustedKeys, "")

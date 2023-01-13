@@ -241,9 +241,7 @@ func getUploadManagerDefaultRetryPolicy() *common.RetryPolicy {
 	return &policy
 }
 
-//
 // MultiPartUploadPart holds the details of Part that is uploaded
-//
 type MultiPartUploadPart struct {
 	PartNum    int
 	TotalParts int
