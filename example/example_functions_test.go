@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2018, 2022, Oracle and/or its affiliates.  All rights reserved.
+// Copyright (c) 2016, 2018, 2023, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 
 // Example code for functions API
@@ -27,23 +27,22 @@ var (
 )
 
 /*
-	SETUP:
+		SETUP:
 
-	This test requires that you have a [DEFAULT] OCI user profile setup e.g. in ~/.oci/config
-	the DEFAULT user will be used in these tests, so any variables supplied must be compatible with that user
+		This test requires that you have a [DEFAULT] OCI user profile setup e.g. in ~/.oci/config
+		the DEFAULT user will be used in these tests, so any variables supplied must be compatible with that user
 
-	This test requires 4 environment variables to be set:
-	for these environment variables, see example/example_test.go {
-		OCI_COMPARTMENT_ID
-		OCI_AVAILABILITY_DOMAIN
-		OCI_ROOT_COMPARTMENT_ID
-    }
-	OCI_FN_IMAGE : The URI of a publicly available image in the Oracle Cloud Infrastructure Registry (OCIR) e.g. phx.ocir.io/<tenancy-name>/<directory>/<image-name>:<image-tag>
+		This test requires 4 environment variables to be set:
+		for these environment variables, see example/example_test.go {
+			OCI_COMPARTMENT_ID
+			OCI_AVAILABILITY_DOMAIN
+			OCI_ROOT_COMPARTMENT_ID
+	    }
+		OCI_FN_IMAGE : The URI of a publicly available image in the Oracle Cloud Infrastructure Registry (OCIR) e.g. phx.ocir.io/<tenancy-name>/<directory>/<image-name>:<image-tag>
 
-	RUN:
-	To run this test/example run:
-	go test github.com/oracle/oci-go-sdk/example -run ExampleFunctionInvoke
-
+		RUN:
+		To run this test/example run:
+		go test github.com/oracle/oci-go-sdk/example -run ExampleFunctionInvoke
 */
 func ExampleFunctionInvoke() {
 	managementClient, err := functions.NewFunctionsManagementClientWithConfigurationProvider(common.DefaultConfigProvider())
@@ -121,7 +120,7 @@ func createApplication(ctx context.Context, client functions.FunctionsManagement
 	return response.Application
 }
 
-//Gets an application, if that application is not ready polls until the application is ready
+// Gets an application, if that application is not ready polls until the application is ready
 func getReadyApplication(ctx context.Context, client functions.FunctionsManagementClient, appID *string) (app functions.Application) {
 	metaWithRetry := helpers.GetRequestMetadataWithCustomizedRetryPolicy(shouldRetryGetApplication)
 

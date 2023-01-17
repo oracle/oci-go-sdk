@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2018, 2022, Oracle and/or its affiliates.  All rights reserved.
+// Copyright (c) 2016, 2018, 2023, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
@@ -43,6 +43,9 @@ type Dataset struct {
 
 	// The annotation format name required for labeling records.
 	AnnotationFormat *string `mandatory:"true" json:"annotationFormat"`
+
+	// An integer value used in achieving concurrency control, this field will be used to generate eTags.
+	LifetimeLogicalClock *int `mandatory:"true" json:"lifetimeLogicalClock"`
 
 	DatasetSourceDetails DatasetSourceDetails `mandatory:"true" json:"datasetSourceDetails"`
 
@@ -113,6 +116,7 @@ func (m *Dataset) UnmarshalJSON(data []byte) (e error) {
 		TimeUpdated                          *common.SDKTime                       `json:"timeUpdated"`
 		LifecycleState                       DatasetLifecycleStateEnum             `json:"lifecycleState"`
 		AnnotationFormat                     *string                               `json:"annotationFormat"`
+		LifetimeLogicalClock                 *int                                  `json:"lifetimeLogicalClock"`
 		DatasetSourceDetails                 datasetsourcedetails                  `json:"datasetSourceDetails"`
 		DatasetFormatDetails                 datasetformatdetails                  `json:"datasetFormatDetails"`
 		LabelSet                             *LabelSet                             `json:"labelSet"`
@@ -150,6 +154,8 @@ func (m *Dataset) UnmarshalJSON(data []byte) (e error) {
 	m.LifecycleState = model.LifecycleState
 
 	m.AnnotationFormat = model.AnnotationFormat
+
+	m.LifetimeLogicalClock = model.LifetimeLogicalClock
 
 	nn, e = model.DatasetSourceDetails.UnmarshalPolymorphicJSON(model.DatasetSourceDetails.JsonData)
 	if e != nil {

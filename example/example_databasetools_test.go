@@ -1,20 +1,20 @@
-// Copyright (c) 2016, 2018, 2022, Oracle and/or its affiliates.  All rights reserved.
+// Copyright (c) 2016, 2018, 2023, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 
 // Examples for creating and validating Database Tools Connections with and without
 // Database Tools Private Endpoint Reverse Connections. Examples include:
 //
 // Oracle:
-//  - ExampleCreateADBsConnectionWithPublicIp
-//  - ExampleCreateADBsConnectionWithPrivateEndpoint
-// MySQL:
-//  - ExampleCreateMySqlConnectionWithPublicIp
-//  - ExampleCreateMySqlDbSystemConnectionWithPrivateEndpoint
+//   - ExampleCreateADBsConnectionWithPublicIp
+//   - ExampleCreateADBsConnectionWithPrivateEndpoint
 //
+// MySQL:
+//   - ExampleCreateMySqlConnectionWithPublicIp
+//   - ExampleCreateMySqlDbSystemConnectionWithPrivateEndpoint
 //
 // Starting the examples:
-//  - First, set environment variables accordingly (see comments below)
-//  - Run with go test
+//   - First, set environment variables accordingly (see comments below)
+//   - Run with go test
 //     go test ./example -run ^ExampleCreateADBsConnectionWithPublicIp$ -v
 //
 // Prerequisites and environment variables are noted in the comment preceding
@@ -86,59 +86,60 @@ type config struct {
 // Endpoint Reverse Connection is not required.
 //
 // Prerequisites:
-//  - An existing ADB-S
-//  - An existing Vault for storage of secrets
-//  - A previously configured .oci/config file with a [DEFAULT] section
-//  - The following environment variables set:
-//      + OCI_DBS_OCID   : The ocid for an ADB-s database
-//      + OCI_VAULT_OCID : The ocid for a vault (to store secrets)
-//      + OCI_DB_USER    : The Oracle database user to connect with
-//      + OCI_DB_PASS    : The Oracle database password to connect with
+//   - An existing ADB-S
+//   - An existing Vault for storage of secrets
+//   - A previously configured .oci/config file with a [DEFAULT] section
+//   - The following environment variables set:
+//   - OCI_DBS_OCID   : The ocid for an ADB-s database
+//   - OCI_VAULT_OCID : The ocid for a vault (to store secrets)
+//   - OCI_DB_USER    : The Oracle database user to connect with
+//   - OCI_DB_PASS    : The Oracle database password to connect with
 //
 // High-level Steps:
-//  1- Locate the Autonomous Database (ADB-S) by the provided OCID
-//  2- Locate the Vault by the provided OCID
-//  3- Download the wallet for the ADB-S
-//  4- Store the secrets in the Vault (as base64 encoded strings)
-//  5- Create a Database Tools connection
-//  6- Validate the connection
 //
-//  ... cleanup when done (delete the temporary secrets and connection)
+//	1- Locate the Autonomous Database (ADB-S) by the provided OCID
+//	2- Locate the Vault by the provided OCID
+//	3- Download the wallet for the ADB-S
+//	4- Store the secrets in the Vault (as base64 encoded strings)
+//	5- Create a Database Tools connection
+//	6- Validate the connection
 //
-//                       Client
-//                         |
-//                         |
-//  +----------------------+----------+
-//  |                      V          |
-//  |              +----------------+ |
-//  |              | Database Tools | |
-//  |              |    Service     | |
-//  |              +----------------+ |
-//  |                      |          |
-//  | Database             |          |
-//  | Tools                |          |
-//  | VCN                  |          |
-//  +----------------------+----------+
-//                         |
-//                         |
-//  +--------------+       |
-//  | Customer     |       |
-//  | VCN          |       |
-//  +--------------+       |
-//                         |
-//                         |
-//  +----------------------+----------+
-//  |                      |          |
-//  |                      V          |
-//  |                  ---------      |
-//  |                 /  ABD-S  \     |
-//  |                 \Public IP/     |
-//  |                  ---------      |
-//  |                                 |
-//  | ADB                             |
-//  | Shared                          |
-//  | VCN                             |
-//  +---------------------------------+
+//	... cleanup when done (delete the temporary secrets and connection)
+//
+//	                     Client
+//	                       |
+//	                       |
+//	+----------------------+----------+
+//	|                      V          |
+//	|              +----------------+ |
+//	|              | Database Tools | |
+//	|              |    Service     | |
+//	|              +----------------+ |
+//	|                      |          |
+//	| Database             |          |
+//	| Tools                |          |
+//	| VCN                  |          |
+//	+----------------------+----------+
+//	                       |
+//	                       |
+//	+--------------+       |
+//	| Customer     |       |
+//	| VCN          |       |
+//	+--------------+       |
+//	                       |
+//	                       |
+//	+----------------------+----------+
+//	|                      |          |
+//	|                      V          |
+//	|                  ---------      |
+//	|                 /  ABD-S  \     |
+//	|                 \Public IP/     |
+//	|                  ---------      |
+//	|                                 |
+//	| ADB                             |
+//	| Shared                          |
+//	| VCN                             |
+//	+---------------------------------+
 func ExampleCreateADBsConnectionWithPublicIp() {
 	// Parses environment variables, .oci/config, and sets up the SDK clients
 	cfg := newConfig()
@@ -177,80 +178,81 @@ func ExampleCreateADBsConnectionWithPublicIp() {
 // example serves as an academic exercise of the SDK.
 //
 // Prerequisites:
-//  - An existing ADB-S with PE and network security group (i.e. ingress on 1522)
-//  - Available capacity (limits apply) to create a new Private Endpoint
-//  - An existing Vault for storage of secrets
-//  - A previously configured .oci/config file with a [DEFAULT] section
-//  - The following environment variables set:
-//      + OCI_DBS_OCID   : The ocid for an ADB-s database
-//      + OCI_VAULT_OCID : The ocid for a vault (to store secrets)
-//      + OCI_DB_USER    : The Oracle database user to connect with
-//      + OCI_DB_PASS    : The Oracle database password to connect with
+//   - An existing ADB-S with PE and network security group (i.e. ingress on 1522)
+//   - Available capacity (limits apply) to create a new Private Endpoint
+//   - An existing Vault for storage of secrets
+//   - A previously configured .oci/config file with a [DEFAULT] section
+//   - The following environment variables set:
+//   - OCI_DBS_OCID   : The ocid for an ADB-s database
+//   - OCI_VAULT_OCID : The ocid for a vault (to store secrets)
+//   - OCI_DB_USER    : The Oracle database user to connect with
+//   - OCI_DB_PASS    : The Oracle database password to connect with
 //
 // High-level Steps:
-//  1- Locate the Autonomous Database (ADB-S) by the provided OCID
-//  2- Locate the Vault by the provided OCID
-//  3- Download the wallet for the ADB-S
-//  4- Store the secrets in the Vault (as base64 encoded strings)
-//  5- Create a Database Tools Private Endpoint for a Reverse Connection to the Private Endpoint of the ADB-S
-//  6- Create a Database Tools connection
-//  7- Validate the connection
 //
-//  ... cleanup when done (delete the temporary secrets, connection, and PE)
+//	1- Locate the Autonomous Database (ADB-S) by the provided OCID
+//	2- Locate the Vault by the provided OCID
+//	3- Download the wallet for the ADB-S
+//	4- Store the secrets in the Vault (as base64 encoded strings)
+//	5- Create a Database Tools Private Endpoint for a Reverse Connection to the Private Endpoint of the ADB-S
+//	6- Create a Database Tools connection
+//	7- Validate the connection
 //
-//                       Client
-//                         |
-//                         |
-//  +----------------------+----------+
-//  |                      V          |
-//  |              +----------------+ |
-//  |              | Database Tools | |
-//  |              |    Service     | |
-//  |              +----------------+ |
-//  |                      |          |
-//  | Database             |          |
-//  | Tools                |          |
-//  | VCN                  |          |
-//  +----------------------+----------+
-//                         |
-//                         |
-//  +----------------------+----------+
-//  |                      |          |
-//  |                      V          |
-//  |                +-----------+    |
-//  |                | Database  |    |
-//  |                |  Tools    |    |
-//  |                | Private   |    |
-//  |                | Endpoint  |    |
-//  |                |  Reverse  |    |
-//  |                | Connection|    |
-//  |                +-----------+    |
-//  |                      |          |
-//  |                      V          |
-//  |                +-----------+    |
-//  |                |   ADB-S   |    |
-//  |                |  Private  |    |
-//  |                |  Endpoint |    |
-//  |                +-----------+    |
-//  |                      |          |
-//  | Customer             |          |
-//  | VCN                  |          |
-//  +----------------------+----------+
-//                         |
-//                         |
-//  +----------------------+----------+
-//  |                      |          |
-//  |                      V          |
-//  |                  ---------      |
-//  |                 /  ABD-S  \     |
-//  |                 | Private |     |
-//  |                 \ Endpoint/     |
-//  |                  ---------      |
-//  |                                 |
-//  | ADB                             |
-//  | Shared                          |
-//  | VCN                             |
-//  +---------------------------------+
+//	... cleanup when done (delete the temporary secrets, connection, and PE)
+//
+//	                     Client
+//	                       |
+//	                       |
+//	+----------------------+----------+
+//	|                      V          |
+//	|              +----------------+ |
+//	|              | Database Tools | |
+//	|              |    Service     | |
+//	|              +----------------+ |
+//	|                      |          |
+//	| Database             |          |
+//	| Tools                |          |
+//	| VCN                  |          |
+//	+----------------------+----------+
+//	                       |
+//	                       |
+//	+----------------------+----------+
+//	|                      |          |
+//	|                      V          |
+//	|                +-----------+    |
+//	|                | Database  |    |
+//	|                |  Tools    |    |
+//	|                | Private   |    |
+//	|                | Endpoint  |    |
+//	|                |  Reverse  |    |
+//	|                | Connection|    |
+//	|                +-----------+    |
+//	|                      |          |
+//	|                      V          |
+//	|                +-----------+    |
+//	|                |   ADB-S   |    |
+//	|                |  Private  |    |
+//	|                |  Endpoint |    |
+//	|                +-----------+    |
+//	|                      |          |
+//	| Customer             |          |
+//	| VCN                  |          |
+//	+----------------------+----------+
+//	                       |
+//	                       |
+//	+----------------------+----------+
+//	|                      |          |
+//	|                      V          |
+//	|                  ---------      |
+//	|                 /  ABD-S  \     |
+//	|                 | Private |     |
+//	|                 \ Endpoint/     |
+//	|                  ---------      |
+//	|                                 |
+//	| ADB                             |
+//	| Shared                          |
+//	| VCN                             |
+//	+---------------------------------+
 func ExampleCreateADBsConnectionWithPrivateEndpoint() {
 	// Parses environment variables, .oci/config, and sets up the SDK clients
 	cfg := newConfig()
@@ -295,52 +297,53 @@ func ExampleCreateADBsConnectionWithPrivateEndpoint() {
 // academic exercise of the SDK and proof of concept only.
 //
 // Prerequisites:
-//  - An existing MySQL database on a compute node, for example
-//  - Firewall or security list entries allowing TCP traffic to MySQL
-//  - An existing Vault for storage of secrets
-//  - A previously configured .oci/config file with a [DEFAULT] section
-//  - The following environment variables set:
-//      + OCI_VAULT_OCID  : The ocid for a vault (to store secrets)
-//      + OCI_DB_USER     : The MySQL database user to connect with
-//      + OCI_DB_PASS     : The MySQL database password to connect with
-//      + OCI_CONN_STRING : The MySQL connection string, asin  mysql://host:port
+//   - An existing MySQL database on a compute node, for example
+//   - Firewall or security list entries allowing TCP traffic to MySQL
+//   - An existing Vault for storage of secrets
+//   - A previously configured .oci/config file with a [DEFAULT] section
+//   - The following environment variables set:
+//   - OCI_VAULT_OCID  : The ocid for a vault (to store secrets)
+//   - OCI_DB_USER     : The MySQL database user to connect with
+//   - OCI_DB_PASS     : The MySQL database password to connect with
+//   - OCI_CONN_STRING : The MySQL connection string, asin  mysql://host:port
 //
 // High-level Steps:
-//  1- Locate the Vault by the provided OCID
-//  2- Store the secret in the Vault (as base64 encoded string)
-//  3- Create a Database Tools Connection
-//  4- Validate the connection
 //
-//  ... cleanup when done (delete the temporary secret and connection)
+//	1- Locate the Vault by the provided OCID
+//	2- Store the secret in the Vault (as base64 encoded string)
+//	3- Create a Database Tools Connection
+//	4- Validate the connection
 //
-//                       Client
-//                         |
-//                         |
-//  +----------------------+----------+
-//  |                      V          |
-//  |              +----------------+ |
-//  |              | Database Tools | |
-//  |              |    Service     | |
-//  |              +----------------+ |
-//  |                      |          |
-//  | Database             |          |
-//  | Tools                |          |
-//  | VCN                  |          |
-//  +----------------------+----------+
-//                         |
-//                         |
-//  +----------------------+----------+
-//  | Compute              |          |
-//  | Node                 |          |
-//  |                      |          |
-//  |                      |          |
-//  |                      V          |
-//  |                  ---------      |
-//  |                 /  MySQL  \     |
-//  |                 \Public IP/     |
-//  |                  ---------      |
-//  |                                 |
-//  +---------------------------------+
+//	... cleanup when done (delete the temporary secret and connection)
+//
+//	                     Client
+//	                       |
+//	                       |
+//	+----------------------+----------+
+//	|                      V          |
+//	|              +----------------+ |
+//	|              | Database Tools | |
+//	|              |    Service     | |
+//	|              +----------------+ |
+//	|                      |          |
+//	| Database             |          |
+//	| Tools                |          |
+//	| VCN                  |          |
+//	+----------------------+----------+
+//	                       |
+//	                       |
+//	+----------------------+----------+
+//	| Compute              |          |
+//	| Node                 |          |
+//	|                      |          |
+//	|                      |          |
+//	|                      V          |
+//	|                  ---------      |
+//	|                 /  MySQL  \     |
+//	|                 \Public IP/     |
+//	|                  ---------      |
+//	|                                 |
+//	+---------------------------------+
 func ExampleCreateMySqlConnectionWithPublicIp() {
 	// Parses environment variables, .oci/config, and sets up the SDK clients
 	cfg := newConfig()
@@ -375,63 +378,64 @@ func ExampleCreateMySqlConnectionWithPublicIp() {
 // is required. This example serves as an academic exercise of the SDK.
 //
 // Prerequisites:
-//  - An existing MySQL DB System in a VCN and associated subnet
-//  - Available capacity (limits apply) to create a new Private Endpoint
-//  - An existing Vault for storage of secrets
-//  - A previously configured .oci/config file with a [DEFAULT] section
-//  - The following environment variables set:
-//      + OCI_DBS_OCID   : The ocid for a MySQL DB System
-//      + OCI_VAULT_OCID : The ocid for a vault (to store secrets)
-//      + OCI_DB_USER    : The MySQL database user to connect with
-//      + OCI_DB_PASS    : The MySQL database password to connect with
+//   - An existing MySQL DB System in a VCN and associated subnet
+//   - Available capacity (limits apply) to create a new Private Endpoint
+//   - An existing Vault for storage of secrets
+//   - A previously configured .oci/config file with a [DEFAULT] section
+//   - The following environment variables set:
+//   - OCI_DBS_OCID   : The ocid for a MySQL DB System
+//   - OCI_VAULT_OCID : The ocid for a vault (to store secrets)
+//   - OCI_DB_USER    : The MySQL database user to connect with
+//   - OCI_DB_PASS    : The MySQL database password to connect with
 //
 // High-level Steps:
-//  1- Locate the MySQL DB System by provided OCID
-//  2- Locate the Vault by provided OCID
-//  3- Store the secret in the Vault (as base64 encoded string)
-//  4- Create a Database Tools Private Endpoint Reverse Connection
-//  5- Create a Database Tools connection
-//  6- Validate the connection
 //
-//  ... cleanup when done (delete the temporary secret, connection, and PE)
+//	1- Locate the MySQL DB System by provided OCID
+//	2- Locate the Vault by provided OCID
+//	3- Store the secret in the Vault (as base64 encoded string)
+//	4- Create a Database Tools Private Endpoint Reverse Connection
+//	5- Create a Database Tools connection
+//	6- Validate the connection
 //
-//                       Client
-//                         |
-//                         |
-//  +----------------------+----------+
-//  |                      V          |
-//  |              +----------------+ |
-//  |              | Database Tools | |
-//  |              |    Service     | |
-//  |              +----------------+ |
-//  |                      |          |
-//  | Database             |          |
-//  | Tools                |          |
-//  | VCN                  |          |
-//  +----------------------+----------+
-//                         |
-//                         |
-//  +----------------------+----------+
-//  |                      |          |
-//  |                      V          |
-//  |                +-----------+    |
-//  |                | Database  |    |
-//  |                |  Tools    |    |
-//  |                | Private   |    |
-//  |                | Endpoint  |    |
-//  |                +-----------+    |
-//  |                      |          |
-//  |                      |          |
-//  |                      V          |
-//  |                  ---------      |
-//  |                 /  MDS    \     |
-//  |                | Private  |     |
-//  |                \   IP    /      |
-//  |                 ---------       |
-//  |                                 |
-//  | Customer                        |
-//  | VCN (jump host not required)    |
-//  +---------------------------------+
+//	... cleanup when done (delete the temporary secret, connection, and PE)
+//
+//	                     Client
+//	                       |
+//	                       |
+//	+----------------------+----------+
+//	|                      V          |
+//	|              +----------------+ |
+//	|              | Database Tools | |
+//	|              |    Service     | |
+//	|              +----------------+ |
+//	|                      |          |
+//	| Database             |          |
+//	| Tools                |          |
+//	| VCN                  |          |
+//	+----------------------+----------+
+//	                       |
+//	                       |
+//	+----------------------+----------+
+//	|                      |          |
+//	|                      V          |
+//	|                +-----------+    |
+//	|                | Database  |    |
+//	|                |  Tools    |    |
+//	|                | Private   |    |
+//	|                | Endpoint  |    |
+//	|                +-----------+    |
+//	|                      |          |
+//	|                      |          |
+//	|                      V          |
+//	|                  ---------      |
+//	|                 /  MDS    \     |
+//	|                | Private  |     |
+//	|                \   IP    /      |
+//	|                 ---------       |
+//	|                                 |
+//	| Customer                        |
+//	| VCN (jump host not required)    |
+//	+---------------------------------+
 func ExampleCreateMySqlDbSystemConnectionWithPrivateEndpoint() {
 	// Parses environment variables, .oci/config, and sets up the SDK clients
 	cfg := newConfig()
