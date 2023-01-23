@@ -274,6 +274,67 @@ func (client AIServiceLanguageClient) batchDetectLanguageKeyPhrases(ctx context.
 	return response, err
 }
 
+// BatchDetectLanguagePiiEntities The API extracts pii entities in text records. For each entity, its type and confidence score (between 0 and 1) is returned.  It supports passing a batch of records.
+// Limitations:
+// - A batch may have up to 100 records.
+// - A record may be up to 5000 characters long.
+// - The total of characters to process in a request can be up to 20,000 characters.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ailanguage/BatchDetectLanguagePiiEntities.go.html to see an example of how to use BatchDetectLanguagePiiEntities API.
+func (client AIServiceLanguageClient) BatchDetectLanguagePiiEntities(ctx context.Context, request BatchDetectLanguagePiiEntitiesRequest) (response BatchDetectLanguagePiiEntitiesResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.batchDetectLanguagePiiEntities, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = BatchDetectLanguagePiiEntitiesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = BatchDetectLanguagePiiEntitiesResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(BatchDetectLanguagePiiEntitiesResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into BatchDetectLanguagePiiEntitiesResponse")
+	}
+	return
+}
+
+// batchDetectLanguagePiiEntities implements the OCIOperation interface (enables retrying operations)
+func (client AIServiceLanguageClient) batchDetectLanguagePiiEntities(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/batchDetectLanguagePiiEntities", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response BatchDetectLanguagePiiEntitiesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/language/20221001/BatchDetectLanguagePiiEntities/BatchDetectLanguagePiiEntities"
+		err = common.PostProcessServiceError(err, "AIServiceLanguage", "BatchDetectLanguagePiiEntities", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // BatchDetectLanguageSentiments The API extracts aspect-based and sentence level sentiment in text records.
 // For aspect-based sentiment analysis, a set of aspects and their respective sentiment is returned for each record. Similarly, for sentence-level sentiment analysis, the sentiment is returned at the sentence level.
 // For sentiment analysis, confidence scores are provided for each of the classes (positive, negative, neutral and mixed).
@@ -1015,8 +1076,10 @@ func (client AIServiceLanguageClient) deleteProject(ctx context.Context, request
 	return response, err
 }
 
-// DetectDominantLanguage The API returns the detected language and a related confidence score (between 0 and 1).
-// List of supported languages. (https://docs.cloud.oracle.com/iaas/language/using/pretrain-models.htm#lang-detect)
+// DetectDominantLanguage **Deprecated**: This API will be retired Tuesday, 10 Oct 2023 00:00:00 GMT.
+// We recommend you replace this API with the batch API, BatchDetectDominantLanguage (https://docs.cloud.oracle.com/iaas/api/#/en/language/20221001/BatchDetectDominantLanguage/BatchDetectDominantLanguage).
+// The DetectDominantLanguage API returns the detected language and a related confidence score (between 0 and 1).
+// List of supported languages (https://docs.cloud.oracle.com/iaas/language/using/pretrain-models.htm#lang-detect)
 // Limitations:
 // - A record may be up to 1000 characters long.
 //
@@ -1075,7 +1138,9 @@ func (client AIServiceLanguageClient) detectDominantLanguage(ctx context.Context
 	return response, err
 }
 
-// DetectLanguageEntities The API extracts entities in text records. For each entity, its type and confidence score (between 0 and 1) is returned.
+// DetectLanguageEntities **Deprecated**: This API will be retired Tuesday, 10 Oct 2023 00:00:00 GMT.
+// We recommend you replace this API with the batch API, BatchDetectLanguageEntities (https://docs.cloud.oracle.com/iaas/api/#/en/language/20221001/BatchDetectLanguageEntities/BatchDetectLanguageEntities).
+// The DetectLanguageEntities API extracts entities in text records. For each entity, its type and confidence score (between 0 and 1) is returned.
 // Limitations:
 // - A text may be up to 1000 characters long.
 //
@@ -1134,7 +1199,9 @@ func (client AIServiceLanguageClient) detectLanguageEntities(ctx context.Context
 	return response, err
 }
 
-// DetectLanguageKeyPhrases The API extracts key-phrases in text records. For each key-phrase, a score (between 0 and 1) is returned that highlights the importance of the key-phrase in the context of the text.
+// DetectLanguageKeyPhrases **Deprecated**: This API will be retired Tuesday, 10 Oct 2023 00:00:00 GMT.
+// We recommend you replace this API with the batch API, BatchDetectLanguageKeyPhrases (https://docs.cloud.oracle.com/iaas/api/#/en/language/20221001/BatchDetectLanguageKeyPhrases/BatchDetectLanguageKeyPhrases).
+// The DetectLanguageKeyPhrases API extracts key-phrases in text records. For each key-phrase, a score (between 0 and 1) is returned that highlights the importance of the key-phrase in the context of the text.
 // Limitations:
 // - A record may be up to 1000 characters long.
 //
@@ -1193,7 +1260,9 @@ func (client AIServiceLanguageClient) detectLanguageKeyPhrases(ctx context.Conte
 	return response, err
 }
 
-// DetectLanguageSentiments The API extracts aspect-based in text records.
+// DetectLanguageSentiments **Deprecated**: This API will be retired Tuesday, 10 Oct 2023 00:00:00 GMT.
+// We recommend you replace this API with the batch API, BatchDetectLanguageSentiments (https://docs.cloud.oracle.com/iaas/api/#/en/language/20221001/BatchDetectLanguageSentiments/BatchDetectLanguageSentiments).
+// The DetectLanguageSentiments API extracts aspect-based in text records.
 // For aspect-based sentiment analysis, a set of aspects and their respective sentiment is returned.
 // For sentiment analysis, confidence scores are provided for each of the classes (positive, negative, neutral).
 // Learn more about sentiment analysis here (https://docs.cloud.oracle.com/iaas/language/using/pretrain-models.htm#sentiment).
@@ -1255,7 +1324,9 @@ func (client AIServiceLanguageClient) detectLanguageSentiments(ctx context.Conte
 	return response, err
 }
 
-// DetectLanguageTextClassification The API automatically classifies text into a set of pre-determined classes and sub-classes. A single class/subclass is returned for each record classified.
+// DetectLanguageTextClassification **Deprecated**: This API will be retired Tuesday, 10 Oct 2023 00:00:00 GMT.
+// We recommend you replace this API with the batch API, BatchDetectLanguageTextClassification (https://docs.cloud.oracle.com/iaas/api/#/en/language/20221001/BatchDetectLanguageTextClassification/BatchDetectLanguageTextClassification).
+// The DetectLanguageTextClassification API automatically classifies text into a set of pre-determined classes and sub-classes. A single class/subclass is returned for each record classified.
 // Learn more about text classification here (https://docs.cloud.oracle.com/iaas/language/using/pretrain-models.htm#text-class).
 // Limitations:
 // - A record may be up to 1000 characters long.
