@@ -79,7 +79,7 @@ type DetectLanguageSentimentsResponse struct {
 	// Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// This API will be retired on Monday, 10 Oct 2022 00:00:00 GMT
+	// This API will be retired on Monday, 10 Oct 2023 00:00:00 GMT
 	Sunset *string `presentIn:"header" name:"sunset"`
 }
 
