@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.31.0 - 2023-02-21
+### Added
+- Support for async jobs in the AI Anomaly Detection service
+- Support for specifying algorithm hints and windows sizes during model training in the AI Anomaly Detection service
+- Support for specifying a sensitivity value during model detection in the AI Anomaly Detection service
+- Support for discovery and monitoring of external Oracle database infrastructure components in the Database Management service   
+ 
+### Breaking Changes
+- The type for property `SystemTags` was changed from `map[string]map[string]interface{}` to `map[string]interface{}` for `ProjectSummary`, `Project`, `ModelSummary`, `Model`, `DataAssetSummary`, `DataAsset`, `AiPrivateEndpointSummary`, `AiPrivateEndpoint` models in the AI Anomaly Detection service
+- Support for retries by default on operations of the AI Anomaly Detection service
+
+
 ## 65.30.0 - 2023-02-14
 ### Added
 - Support for the Visual Builder Studio service
