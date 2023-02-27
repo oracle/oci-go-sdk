@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.31.1 - 2023-02-28
+### Added
+- Support for calling Oracle Cloud Infrastructure services in the eu-dcc-rating-1, eu-dcc-rating-2, eu-dcc-dublin-1, eu-dcc-dublin-2, and eu-dcc-milan-2 regions
+- Support for on-demand bootstrap script execution in the Big Data Service
+
+
 ## 65.31.0 - 2023-02-21
 ### Added
 - Support for async jobs in the AI Anomaly Detection service
