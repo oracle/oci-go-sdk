@@ -26,7 +26,31 @@ type SentimentDocumentResult struct {
 	// List of detected aspects sentiment.
 	Aspects []SentimentAspect `mandatory:"true" json:"aspects"`
 
-	// Language code per the ISO 639-1 (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) standard.
+	// Language code supported
+	// Automatically detect language - auto
+	// Arabic - ar
+	// Brazilian Portuguese -  pt-BR
+	// Czech - cs
+	// Danish - da
+	// Dutch - nl
+	// English - en
+	// Finnish - fi
+	// French - fr
+	// Canadian French - fr-CA
+	// German - de
+	// Italian - it
+	// Japanese - ja
+	// Korean - ko
+	// Norwegian - no
+	// Polish - pl
+	// Romanian - ro
+	// Simplified Chinese - zh-CN
+	// Spanish - es
+	// Swedish - sv
+	// Traditional Chinese - zh-TW
+	// Turkish - tr
+	// Greek - el
+	// Hebrew - he
 	LanguageCode *string `mandatory:"true" json:"languageCode"`
 
 	// Document level sentiment.
