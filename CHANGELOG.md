@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.33.0 - 2023-03-21
+### Added
+- Support for backup automation integration with the Database Recovery service in the Database service
+- Support for changing the disaster recovery configuration of an autonomous database in remote regions of its disaster recovery association in the Database service
+- Support for creating a remote disaster recovery association clone of an autonomous database in the Database service
+- Support for managed build stages to be configured to use custom shape build runners in the DevOps service
+- Support for listing pre-built functions and creating functions from pre-built functions in the Functions service
+- Support for connections types for database resources of type Amazon S3, HDFS, SQL Server, Java Messaging service, Mongo DB, Oracle NoSQL, and Snowflake in the GoldenGate service
+
+### Changes
+- Upgraded golang.org/x/sys package version to v0.6.0
+
+### Breaking Changes
+- The enum value `LAKE_HOUSE_CONNECTION` was renamed to `LAKE_CONNECTION` in the enum ModelTypeEnum in the Connection, ConnectionDetails, ConnectionSummary, CreateConnectionDetails and UpdateConnectionDetails models in the Data Integration Service
+- The enum value `LAKE_HOUSE_DATA_ASSET` was renamed to `LAKE_DATA_ASSET` in the enum ModelTypeEnum in the DataAsset, CreateDataAssetDetails, DataAssetSummary, and UpdateDataAssetDetails models in the Data Integration Service
+- `DefaultValue` is now a required param in `BuildPipelineParameter` model in the Devops service
+
+
 ## 65.32.1 - 2023-03-14
 ### Added
 - Support for the Identity Domains service
