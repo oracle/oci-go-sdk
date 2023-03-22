@@ -7,12 +7,13 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"testing"
-
 	"path"
 	"strings"
+	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 var (
@@ -206,6 +207,42 @@ func TestEnvironmentConfigurationProvider_BadRegion(t *testing.T) {
 	assert.False(t, b)
 	_, e := conf.Region()
 	assert.Error(t, e)
+}
+
+func TestHTTPTimeoutRawConfigurationProvider(t *testing.T) {
+	tests := []struct {
+		name string
+		opts []RawConfigurationProviderOption
+		want time.Duration
+	}{
+		{
+			name: "default",
+			want: defaultTimeout,
+		},
+		{
+			name: "timeout option",
+			opts: []RawConfigurationProviderOption{
+				WithRawConfigProviderHTTPTimeout(time.Hour),
+			},
+			want: time.Hour,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			c := NewRawConfigurationProvider(
+				"ocid1.tenancy.oc1..aaaaaaaaxf3fuazos",
+				"ocid1.user.oc1..aaaaaaaa3p67n2kmpxnbcnff",
+				"us-ashburn-1",
+				"af:81:71:8e:d2",
+				testPrivateKeyConf,
+				nil,
+				tt.opts...,
+			)
+			httpConfigProvider, ok := c.(httpConfigurationProvider)
+			require.True(t, ok)
+			assert.Equal(t, tt.want, httpConfigProvider.HTTPTimeout())
+		})
+	}
 }
 
 func TestFileConfigurationProvider_parseConfigFileData(t *testing.T) {

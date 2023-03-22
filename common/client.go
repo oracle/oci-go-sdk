@@ -209,7 +209,7 @@ func newBaseClient(signer HTTPRequestSigner, dispatcher HTTPRequestDispatcher) B
 	return baseClient
 }
 
-func defaultHTTPDispatcher() http.Client {
+func defaultHTTPDispatcher(timeout time.Duration) http.Client {
 	var httpClient http.Client
 	var tp = http.DefaultTransport.(*http.Transport)
 	if isExpectHeaderDisabled := IsEnvVarFalse(UsingExpectHeaderEnvVar); !isExpectHeaderDisabled {
@@ -239,21 +239,25 @@ func defaultHTTPDispatcher() http.Client {
 		tp.TLSClientConfig = &tls.Config{RootCAs: pool}
 	}
 	httpClient = http.Client{
-		Timeout:   defaultTimeout,
+		Timeout:   timeout,
 		Transport: tp,
 	}
 	return httpClient
 }
 
-func defaultBaseClient(provider KeyProvider) BaseClient {
-	dispatcher := defaultHTTPDispatcher()
+func defaultBaseClient(provider ConfigurationProvider) BaseClient {
+	timeout := defaultTimeout
+	if httpConfigProvider, ok := provider.(httpConfigurationProvider); ok {
+		timeout = httpConfigProvider.HTTPTimeout()
+	}
+	dispatcher := defaultHTTPDispatcher(timeout)
 	signer := DefaultRequestSigner(provider)
 	return newBaseClient(signer, &dispatcher)
 }
 
 // DefaultBaseClientWithSigner creates a default base client with a given signer
 func DefaultBaseClientWithSigner(signer HTTPRequestSigner) BaseClient {
-	dispatcher := defaultHTTPDispatcher()
+	dispatcher := defaultHTTPDispatcher(defaultTimeout)
 	return newBaseClient(signer, &dispatcher)
 }
 

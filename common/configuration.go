@@ -12,6 +12,7 @@ import (
 	"path"
 	"regexp"
 	"strings"
+	"time"
 )
 
 // AuthenticationType for auth
@@ -47,6 +48,10 @@ type ConfigurationProvider interface {
 	AuthType() (AuthConfig, error)
 }
 
+type httpConfigurationProvider interface {
+	HTTPTimeout() time.Duration
+}
+
 // IsConfigurationProviderValid Tests all parts of the configuration provider do not return an error, this method will
 // not check AuthType(), since authType() is not required to be there.
 func IsConfigurationProviderValid(conf ConfigurationProvider) (ok bool, err error) {
@@ -75,11 +80,34 @@ type rawConfigurationProvider struct {
 	fingerprint          string
 	privateKey           string
 	privateKeyPassphrase *string
+	httpTimeout          time.Duration
+}
+
+// RawConfigurationProviderOption is a raw configuration provider option.
+type RawConfigurationProviderOption interface {
+	apply(*rawConfigurationProvider)
+}
+
+type httpTimeoutOption struct {
+	timeout time.Duration
+}
+
+// WithRawConfigProviderHTTPTimeout creates a raw config provider HTTP timeout option.
+func WithRawConfigProviderHTTPTimeout(timeout time.Duration) RawConfigurationProviderOption {
+	return &httpTimeoutOption{timeout}
+}
+
+func (o *httpTimeoutOption) apply(p *rawConfigurationProvider) {
+	p.httpTimeout = o.timeout
 }
 
 // NewRawConfigurationProvider will create a ConfigurationProvider with the arguments of the function
-func NewRawConfigurationProvider(tenancy, user, region, fingerprint, privateKey string, privateKeyPassphrase *string) ConfigurationProvider {
-	return rawConfigurationProvider{tenancy, user, region, fingerprint, privateKey, privateKeyPassphrase}
+func NewRawConfigurationProvider(tenancy, user, region, fingerprint, privateKey string, privateKeyPassphrase *string, opts ...RawConfigurationProviderOption) ConfigurationProvider {
+	p := rawConfigurationProvider{tenancy, user, region, fingerprint, privateKey, privateKeyPassphrase, defaultTimeout}
+	for _, opt := range opts {
+		opt.apply(&p)
+	}
+	return p
 }
 
 func (p rawConfigurationProvider) PrivateRSAKey() (key *rsa.PrivateKey, err error) {
@@ -132,6 +160,10 @@ func (p rawConfigurationProvider) Region() (string, error) {
 
 func (p rawConfigurationProvider) AuthType() (AuthConfig, error) {
 	return AuthConfig{UnknownAuthenticationType, false, nil}, nil
+}
+
+func (p rawConfigurationProvider) HTTPTimeout() time.Duration {
+	return p.httpTimeout
 }
 
 // environmentConfigurationProvider reads configuration from environment variables
