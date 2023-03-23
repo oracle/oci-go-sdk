@@ -18,7 +18,7 @@ Are you a Developer using the OCI SDK? If so, please fill out our survey to help
 We will continue to announce any breaking changes in a new version under the Breaking Changes section in the release changelog and on the Github release page [https://github.com/oracle/oci-go-sdk/releases].
 - However, breaking changes in the SDK's common module will continue to result in a major version bump (x+1.y.z relative to the last published version). That said, we'll continue to maintain backward compatibility as much as possible to minimize the effort involved in upgrading the SDK version used by your code.
 
-## Installing
+## Installation
 If you want to install the SDK under $GOPATH, you can use `go get` to retrieve the SDK:
 ```
 go get -u github.com/oracle/oci-go-sdk
@@ -150,13 +150,13 @@ Full documentation can be found [on the godocs site](https://godoc.org/github.co
 
 
 ## Contributing
-`oci-go-sdk` is an open source project. See [CONTRIBUTING](/CONTRIBUTING.md) for details.
+This project welcomes contributions from the community. Before submitting a pull request, please [review our contribution guide](./CONTRIBUTING.md)
 
-Oracle gratefully acknowledges the contributions to oci-go-sdk that have been made by the community.
-
+## Security
+Please consult the [security guide](./SECURITY.md) for our responsible security vulnerability disclosure process
 
 ## License
-Copyright (c) 2016, 2018, 2021, Oracle and/or its affiliates.  All rights reserved.
+Copyright (c) 2016, 2023, Oracle and/or its affiliates.  All rights reserved.
 This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl
 or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 
