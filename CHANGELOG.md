@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.34.0 - 2023-04-04
+### Added
+- Support for pre-emptible worker nodes in the Container Engine for Kubernetes service
+- Support for larger data storage (now up to 128TB) in the MySQL Database service
+- Support for HTTP health checks for HTTPS backend sets in the Load Balancer service  
+     
+### Breaking Changes
+- The property `BackendSetName` was made required in the `ForwardToBackendSet` model in the Load Balancer service
+- Support for the Data Connectivity Management service was removed
+
+
 ## 65.33.1 - 2023-03-28
 ### Added
 - Support for ACD and OKV wallet naming for autonomous databases and dedicated autonomous databases on Exadata Cloud at Customer in the Database service

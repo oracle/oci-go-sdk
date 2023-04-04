@@ -12,42 +12,53 @@
 package containerengine
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
-// NodePoolPlacementConfigDetails The location where a node pool will place nodes.
-type NodePoolPlacementConfigDetails struct {
-
-	// The availability domain in which to place nodes.
-	// Example: `Uocm:PHX-AD-1`
-	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
-
-	// The OCID of the subnet in which to place nodes.
-	SubnetId *string `mandatory:"true" json:"subnetId"`
-
-	// The OCID of the compute capacity reservation in which to place the compute instance.
-	CapacityReservationId *string `mandatory:"false" json:"capacityReservationId"`
-
-	PreemptibleNodeConfig *PreemptibleNodeConfigDetails `mandatory:"false" json:"preemptibleNodeConfig"`
-
-	// A list of fault domains in which to place nodes.
-	FaultDomains []string `mandatory:"false" json:"faultDomains"`
+// PreemptibleNodeConfigDetails Configuration options for preemptible nodes.
+type PreemptibleNodeConfigDetails struct {
+	PreemptionAction PreemptionAction `mandatory:"true" json:"preemptionAction"`
 }
 
-func (m NodePoolPlacementConfigDetails) String() string {
+func (m PreemptibleNodeConfigDetails) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m NodePoolPlacementConfigDetails) ValidateEnumValue() (bool, error) {
+func (m PreemptibleNodeConfigDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
 	return false, nil
+}
+
+// UnmarshalJSON unmarshals from json
+func (m *PreemptibleNodeConfigDetails) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		PreemptionAction preemptionaction `json:"preemptionAction"`
+	}{}
+
+	e = json.Unmarshal(data, &model)
+	if e != nil {
+		return
+	}
+	var nn interface{}
+	nn, e = model.PreemptionAction.UnmarshalPolymorphicJSON(model.PreemptionAction.JsonData)
+	if e != nil {
+		return
+	}
+	if nn != nil {
+		m.PreemptionAction = nn.(PreemptionAction)
+	} else {
+		m.PreemptionAction = nil
+	}
+
+	return
 }
