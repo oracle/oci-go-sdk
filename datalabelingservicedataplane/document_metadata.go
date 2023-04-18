@@ -18,6 +18,9 @@ import (
 
 // DocumentMetadata Collection of metadata related to document record.
 type DocumentMetadata struct {
+
+	// Job id ocid of OCR batch call.
+	JobId *string `mandatory:"false" json:"jobId"`
 }
 
 func (m DocumentMetadata) String() string {
