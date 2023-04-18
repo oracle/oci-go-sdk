@@ -44,9 +44,6 @@ type Dataset struct {
 	// The annotation format name required for labeling records.
 	AnnotationFormat *string `mandatory:"true" json:"annotationFormat"`
 
-	// An integer value used in achieving concurrency control, this field will be used to generate eTags.
-	LifetimeLogicalClock *int `mandatory:"true" json:"lifetimeLogicalClock"`
-
 	DatasetSourceDetails DatasetSourceDetails `mandatory:"true" json:"datasetSourceDetails"`
 
 	DatasetFormatDetails DatasetFormatDetails `mandatory:"true" json:"datasetFormatDetails"`
@@ -116,7 +113,6 @@ func (m *Dataset) UnmarshalJSON(data []byte) (e error) {
 		TimeUpdated                          *common.SDKTime                       `json:"timeUpdated"`
 		LifecycleState                       DatasetLifecycleStateEnum             `json:"lifecycleState"`
 		AnnotationFormat                     *string                               `json:"annotationFormat"`
-		LifetimeLogicalClock                 *int                                  `json:"lifetimeLogicalClock"`
 		DatasetSourceDetails                 datasetsourcedetails                  `json:"datasetSourceDetails"`
 		DatasetFormatDetails                 datasetformatdetails                  `json:"datasetFormatDetails"`
 		LabelSet                             *LabelSet                             `json:"labelSet"`
@@ -154,8 +150,6 @@ func (m *Dataset) UnmarshalJSON(data []byte) (e error) {
 	m.LifecycleState = model.LifecycleState
 
 	m.AnnotationFormat = model.AnnotationFormat
-
-	m.LifetimeLogicalClock = model.LifetimeLogicalClock
 
 	nn, e = model.DatasetSourceDetails.UnmarshalPolymorphicJSON(model.DatasetSourceDetails.JsonData)
 	if e != nil {
