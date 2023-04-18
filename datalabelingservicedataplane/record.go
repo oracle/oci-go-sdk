@@ -48,9 +48,6 @@ type Record struct {
 	// DELETED - The record has been deleted and is no longer available for labeling.
 	LifecycleState RecordLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
-	// An integer value used in achieving concurrency control, this field will be used to generate eTags.
-	LifetimeLogicalClock *int `mandatory:"true" json:"lifetimeLogicalClock"`
-
 	RecordMetadata RecordMetadata `mandatory:"false" json:"recordMetadata"`
 
 	// A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only.
@@ -84,19 +81,18 @@ func (m Record) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *Record) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		RecordMetadata       recordmetadata                    `json:"recordMetadata"`
-		FreeformTags         map[string]string                 `json:"freeformTags"`
-		DefinedTags          map[string]map[string]interface{} `json:"definedTags"`
-		Id                   *string                           `json:"id"`
-		Name                 *string                           `json:"name"`
-		TimeCreated          *common.SDKTime                   `json:"timeCreated"`
-		TimeUpdated          *common.SDKTime                   `json:"timeUpdated"`
-		DatasetId            *string                           `json:"datasetId"`
-		CompartmentId        *string                           `json:"compartmentId"`
-		SourceDetails        sourcedetails                     `json:"sourceDetails"`
-		IsLabeled            *bool                             `json:"isLabeled"`
-		LifecycleState       RecordLifecycleStateEnum          `json:"lifecycleState"`
-		LifetimeLogicalClock *int                              `json:"lifetimeLogicalClock"`
+		RecordMetadata recordmetadata                    `json:"recordMetadata"`
+		FreeformTags   map[string]string                 `json:"freeformTags"`
+		DefinedTags    map[string]map[string]interface{} `json:"definedTags"`
+		Id             *string                           `json:"id"`
+		Name           *string                           `json:"name"`
+		TimeCreated    *common.SDKTime                   `json:"timeCreated"`
+		TimeUpdated    *common.SDKTime                   `json:"timeUpdated"`
+		DatasetId      *string                           `json:"datasetId"`
+		CompartmentId  *string                           `json:"compartmentId"`
+		SourceDetails  sourcedetails                     `json:"sourceDetails"`
+		IsLabeled      *bool                             `json:"isLabeled"`
+		LifecycleState RecordLifecycleStateEnum          `json:"lifecycleState"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -143,8 +139,6 @@ func (m *Record) UnmarshalJSON(data []byte) (e error) {
 	m.IsLabeled = model.IsLabeled
 
 	m.LifecycleState = model.LifecycleState
-
-	m.LifetimeLogicalClock = model.LifetimeLogicalClock
 
 	return
 }

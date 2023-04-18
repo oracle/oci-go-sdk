@@ -10,6 +10,7 @@
 package datalabelingservicedataplane
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
@@ -42,6 +43,8 @@ type RecordSummary struct {
 	// Describes the lifecycle state.
 	LifecycleState RecordLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
+	RecordMetadata RecordMetadata `mandatory:"false" json:"recordMetadata"`
+
 	// A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only.
 	// For example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
@@ -68,4 +71,58 @@ func (m RecordSummary) ValidateEnumValue() (bool, error) {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
 	return false, nil
+}
+
+// UnmarshalJSON unmarshals from json
+func (m *RecordSummary) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		RecordMetadata recordmetadata                    `json:"recordMetadata"`
+		FreeformTags   map[string]string                 `json:"freeformTags"`
+		DefinedTags    map[string]map[string]interface{} `json:"definedTags"`
+		Id             *string                           `json:"id"`
+		Name           *string                           `json:"name"`
+		TimeCreated    *common.SDKTime                   `json:"timeCreated"`
+		TimeUpdated    *common.SDKTime                   `json:"timeUpdated"`
+		DatasetId      *string                           `json:"datasetId"`
+		CompartmentId  *string                           `json:"compartmentId"`
+		IsLabeled      *bool                             `json:"isLabeled"`
+		LifecycleState RecordLifecycleStateEnum          `json:"lifecycleState"`
+	}{}
+
+	e = json.Unmarshal(data, &model)
+	if e != nil {
+		return
+	}
+	var nn interface{}
+	nn, e = model.RecordMetadata.UnmarshalPolymorphicJSON(model.RecordMetadata.JsonData)
+	if e != nil {
+		return
+	}
+	if nn != nil {
+		m.RecordMetadata = nn.(RecordMetadata)
+	} else {
+		m.RecordMetadata = nil
+	}
+
+	m.FreeformTags = model.FreeformTags
+
+	m.DefinedTags = model.DefinedTags
+
+	m.Id = model.Id
+
+	m.Name = model.Name
+
+	m.TimeCreated = model.TimeCreated
+
+	m.TimeUpdated = model.TimeUpdated
+
+	m.DatasetId = model.DatasetId
+
+	m.CompartmentId = model.CompartmentId
+
+	m.IsLabeled = model.IsLabeled
+
+	m.LifecycleState = model.LifecycleState
+
+	return
 }

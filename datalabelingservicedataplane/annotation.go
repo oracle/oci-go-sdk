@@ -49,9 +49,6 @@ type Annotation struct {
 	// DELETED - Tha annotation been deleted and no longer available for labeling.
 	LifecycleState AnnotationLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
-	// An integer value used in achieving concurrency control, this field will be used to generate eTags.
-	LifetimeLogicalClock *int `mandatory:"true" json:"lifetimeLogicalClock"`
-
 	// A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only.
 	// For example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
@@ -83,18 +80,17 @@ func (m Annotation) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *Annotation) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		FreeformTags         map[string]string                 `json:"freeformTags"`
-		DefinedTags          map[string]map[string]interface{} `json:"definedTags"`
-		Id                   *string                           `json:"id"`
-		TimeCreated          *common.SDKTime                   `json:"timeCreated"`
-		TimeUpdated          *common.SDKTime                   `json:"timeUpdated"`
-		CreatedBy            *string                           `json:"createdBy"`
-		UpdatedBy            *string                           `json:"updatedBy"`
-		RecordId             *string                           `json:"recordId"`
-		Entities             []entity                          `json:"entities"`
-		CompartmentId        *string                           `json:"compartmentId"`
-		LifecycleState       AnnotationLifecycleStateEnum      `json:"lifecycleState"`
-		LifetimeLogicalClock *int                              `json:"lifetimeLogicalClock"`
+		FreeformTags   map[string]string                 `json:"freeformTags"`
+		DefinedTags    map[string]map[string]interface{} `json:"definedTags"`
+		Id             *string                           `json:"id"`
+		TimeCreated    *common.SDKTime                   `json:"timeCreated"`
+		TimeUpdated    *common.SDKTime                   `json:"timeUpdated"`
+		CreatedBy      *string                           `json:"createdBy"`
+		UpdatedBy      *string                           `json:"updatedBy"`
+		RecordId       *string                           `json:"recordId"`
+		Entities       []entity                          `json:"entities"`
+		CompartmentId  *string                           `json:"compartmentId"`
+		LifecycleState AnnotationLifecycleStateEnum      `json:"lifecycleState"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -134,8 +130,6 @@ func (m *Annotation) UnmarshalJSON(data []byte) (e error) {
 	m.CompartmentId = model.CompartmentId
 
 	m.LifecycleState = model.LifecycleState
-
-	m.LifetimeLogicalClock = model.LifetimeLogicalClock
 
 	return
 }
