@@ -4,7 +4,7 @@
 
 // Organizations API
 //
-// The Organizations API allows you to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and its resources.
+// Use the Organizations API to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and organization resources. For more information, see Organization Management Overview (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/organization_management_overview.htm).
 //
 
 package tenantmanagercontrolplane
@@ -50,6 +50,9 @@ type AssignedSubscriptionSummary struct {
 
 	// Date-time when subscription is created.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
+
+	// Customer service identifier for the customer associated with the subscription.
+	CsiNumber *string `mandatory:"false" json:"csiNumber"`
 }
 
 func (m AssignedSubscriptionSummary) String() string {

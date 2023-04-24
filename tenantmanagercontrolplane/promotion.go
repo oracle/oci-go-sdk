@@ -4,7 +4,7 @@
 
 // Organizations API
 //
-// The Organizations API allows you to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and its resources.
+// Use the Organizations API to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and organization resources. For more information, see Organization Management Overview (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/organization_management_overview.htm).
 //
 
 package tenantmanagercontrolplane
@@ -18,28 +18,28 @@ import (
 // Promotion Promotion information for a subscription.
 type Promotion struct {
 
-	// How long the promotion related to the subscription, if any, is valid in duration units.
+	// Specifies how long the promotion related to the subscription, if any, is valid in duration units.
 	Duration *int `mandatory:"false" json:"duration"`
 
 	// Unit for the duration.
 	DurationUnit *string `mandatory:"false" json:"durationUnit"`
 
-	// Total amount of credit for the promotion related to the subscription if there is one.
+	// If a subscription is present, indicates the total amount of promotional subscription credit.
 	Amount *float32 `mandatory:"false" json:"amount"`
 
-	// Current status of the promotion related to the subscription if there is one.
+	// If a subscription is present, indicates the current status of the subscription promotion.
 	Status PromotionStatusEnum `mandatory:"false" json:"status,omitempty"`
 
-	// Whether or not customer intends to pay once the promotion is done.
+	// Speficies whether or not the customer intends to pay after the promotion has expired.
 	IsIntentToPay *bool `mandatory:"false" json:"isIntentToPay"`
 
 	// Currency unit associated with the promotion.
 	CurrencyUnit *string `mandatory:"false" json:"currencyUnit"`
 
-	// Date-time for when the promotion starts.
+	// Date and time when the promotion starts.
 	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted"`
 
-	// Date-time for when the promotion ends.
+	// Date and time when the promotion ends.
 	TimeExpired *common.SDKTime `mandatory:"false" json:"timeExpired"`
 }
 

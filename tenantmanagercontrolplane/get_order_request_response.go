@@ -18,7 +18,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/GetOrder.go.html to see an example of how to use GetOrderRequest.
 type GetOrderRequest struct {
 
-	// Activation Token containing an order ID. A JWT RFC 7519 formatted string.
+	// Activation token containing an order ID. A JWT RFC 7519-formatted string.
 	ActivationToken *string `mandatory:"true" contributesTo:"path" name:"activationToken"`
 
 	// The client request ID for tracing.

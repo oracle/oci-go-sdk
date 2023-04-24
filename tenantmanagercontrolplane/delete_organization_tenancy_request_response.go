@@ -35,7 +35,7 @@ type DeleteOrganizationTenancyRequest struct {
 	// server error, without risk of executing that same action again. Retry tokens expire after 24
 	// hours, but can be invalidated before then due to conflicting operations. For example, if a resource
 	// has been deleted and purged from the system, then a retry of the original creation request
-	// might be rejected.
+	// will be rejected.
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
@@ -90,7 +90,7 @@ type DeleteOrganizationTenancyResponse struct {
 	// Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// Unique Oracle-assigned identifier for the asynchronous request. You can use this to query status of the asynchronous operation.
+	// Unique Oracle-assigned identifier for the asynchronous request. You can use this to query the status of the asynchronous operation.
 	OpcWorkRequestId *string `presentIn:"header" name:"opc-work-request-id"`
 }
 
