@@ -4,7 +4,7 @@
 
 // Organizations API
 //
-// The Organizations API allows you to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and its resources.
+// Use the Organizations API to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and organization resources. For more information, see Organization Management Overview (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/organization_management_overview.htm).
 //
 
 package tenantmanagercontrolplane
@@ -21,7 +21,7 @@ type SubscriptionInfo struct {
 	// Subscription ID.
 	SpmSubscriptionId *string `mandatory:"true" json:"spmSubscriptionId"`
 
-	// Service name for subscription.
+	// Subscription service name.
 	Service *string `mandatory:"true" json:"service"`
 
 	// Subscription start date. An RFC 3339-formatted date and time string.

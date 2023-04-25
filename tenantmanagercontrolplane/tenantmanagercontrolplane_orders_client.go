@@ -4,7 +4,7 @@
 
 // Organizations API
 //
-// The Organizations API allows you to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and its resources.
+// Use the Organizations API to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and organization resources. For more information, see Organization Management Overview (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/organization_management_overview.htm).
 //
 
 package tenantmanagercontrolplane
@@ -149,7 +149,7 @@ func (client OrdersClient) activateOrder(ctx context.Context, request common.OCI
 	return response, err
 }
 
-// GetOrder Returns the Order Details given by the order ID in the JWT.
+// GetOrder Returns the order details given by the order ID in the JWT.
 //
 // See also
 //

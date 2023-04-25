@@ -4,7 +4,7 @@
 
 // Organizations API
 //
-// The Organizations API allows you to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and its resources.
+// Use the Organizations API to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and organization resources. For more information, see Organization Management Overview (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/organization_management_overview.htm).
 //
 
 package tenantmanagercontrolplane
@@ -27,11 +27,14 @@ type CreateChildTenancyDetails struct {
 	// The home region to use for the child tenancy. This must be a region where the parent tenancy is subscribed.
 	HomeRegion *string `mandatory:"true" json:"homeRegion"`
 
-	// The email address of the administrator of the child tenancy.
+	// Email address of the child tenancy administrator.
 	AdminEmail *string `mandatory:"true" json:"adminEmail"`
 
 	// The name to use for the administrator policy in the child tenancy. Must contain only letters and underscores.
 	PolicyName *string `mandatory:"false" json:"policyName"`
+
+	// The governance status of the child tenancy.
+	GovernanceStatus GovernanceStatusEnum `mandatory:"false" json:"governanceStatus,omitempty"`
 }
 
 func (m CreateChildTenancyDetails) String() string {
@@ -44,6 +47,9 @@ func (m CreateChildTenancyDetails) String() string {
 func (m CreateChildTenancyDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
+	if _, ok := GetMappingGovernanceStatusEnum(string(m.GovernanceStatus)); !ok && m.GovernanceStatus != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for GovernanceStatus: %s. Supported values are: %s.", m.GovernanceStatus, strings.Join(GetGovernanceStatusEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}

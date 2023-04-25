@@ -4,7 +4,7 @@
 
 // Organizations API
 //
-// The Organizations API allows you to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and its resources.
+// Use the Organizations API to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and organization resources. For more information, see Organization Management Overview (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/organization_management_overview.htm).
 //
 
 package tenantmanagercontrolplane
@@ -325,7 +325,7 @@ func (client RecipientInvitationClient) listRecipientInvitations(ctx context.Con
 	return response, err
 }
 
-// UpdateRecipientInvitation Updates the RecipientInvitation.
+// UpdateRecipientInvitation Updates the recipient invitation.
 //
 // See also
 //

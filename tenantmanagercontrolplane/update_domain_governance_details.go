@@ -4,7 +4,7 @@
 
 // Organizations API
 //
-// The Organizations API allows you to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and its resources.
+// Use the Organizations API to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and organization resources. For more information, see Organization Management Overview (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/organization_management_overview.htm).
 //
 
 package tenantmanagercontrolplane
@@ -18,7 +18,7 @@ import (
 // UpdateDomainGovernanceDetails The parameters for updating a domain govenance entity.
 type UpdateDomainGovernanceDetails struct {
 
-	// The email to notify the user, and that the ONS subscription will be created with. The ONS subscription for the previous email will also be deleted.
+	// Email address to be used to notify the user, and that the ONS subscription will be created with. The ONS subscription for the previous email will also be deleted.
 	SubscriptionEmail *string `mandatory:"false" json:"subscriptionEmail"`
 
 	// Indicates whether governance is enabled for this domain.

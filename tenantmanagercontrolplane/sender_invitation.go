@@ -4,7 +4,7 @@
 
 // Organizations API
 //
-// The Organizations API allows you to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and its resources.
+// Use the Organizations API to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and organization resources. For more information, see Organization Management Overview (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/organization_management_overview.htm).
 //
 
 package tenantmanagercontrolplane
@@ -24,6 +24,9 @@ type SenderInvitation struct {
 	// OCID of the sender tenancy.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
+	// The list of subjects the invitation contains.
+	Subjects []InvitationSubjectEnum `mandatory:"true" json:"subjects"`
+
 	// OCID of the recipient tenancy.
 	RecipientTenancyId *string `mandatory:"true" json:"recipientTenancyId"`
 
@@ -33,7 +36,7 @@ type SenderInvitation struct {
 	// Status of the sender invitation.
 	Status SenderInvitationStatusEnum `mandatory:"true" json:"status"`
 
-	// Date-time when this sender invitation was created.
+	// Date and time when the sender invitation was created.
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// OCID of the corresponding recipient invitation.
@@ -42,7 +45,7 @@ type SenderInvitation struct {
 	// A user-created name to describe the invitation. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// Date-time when this sender invitation was last updated.
+	// Date and time when the sender invitation was last updated.
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
 
 	// Email address of the recipient.

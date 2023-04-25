@@ -4,7 +4,7 @@
 
 // Organizations API
 //
-// The Organizations API allows you to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and its resources.
+// Use the Organizations API to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and organization resources. For more information, see Organization Management Overview (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/organization_management_overview.htm).
 //
 
 package tenantmanagercontrolplane
@@ -21,22 +21,25 @@ type OrganizationTenancySummary struct {
 	// OCID of the tenancy.
 	TenancyId *string `mandatory:"true" json:"tenancyId"`
 
+	// The governance status of the tenancy.
+	GovernanceStatus GovernanceStatusEnum `mandatory:"true" json:"governanceStatus"`
+
 	// Name of the tenancy.
 	Name *string `mandatory:"false" json:"name"`
 
-	// Lifecycle state of the OrganizationTenancy.
+	// Lifecycle state of the organization tenancy.
 	LifecycleState OrganizationTenancyLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
-	// Role of the OrganizationTenancy.
+	// Role of the organization tenancy.
 	Role OrganizationTenancyRoleEnum `mandatory:"false" json:"role,omitempty"`
 
-	// Date-time when this tenancy joined the organization.
+	// Date and time when the tenancy joined the organization.
 	TimeJoined *common.SDKTime `mandatory:"false" json:"timeJoined"`
 
-	// Date-time when this tenancy left the organization.
+	// Date and time when the tenancy left the organization.
 	TimeLeft *common.SDKTime `mandatory:"false" json:"timeLeft"`
 
-	// Flag to indicate the tenancy is approved for transfer to another organization.
+	// Parameter to indicate the tenancy is approved for transfer to another organization.
 	IsApprovedForTransfer *bool `mandatory:"false" json:"isApprovedForTransfer"`
 }
 
@@ -49,6 +52,9 @@ func (m OrganizationTenancySummary) String() string {
 // Not recommended for calling this function directly
 func (m OrganizationTenancySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
+	if _, ok := GetMappingGovernanceStatusEnum(string(m.GovernanceStatus)); !ok && m.GovernanceStatus != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for GovernanceStatus: %s. Supported values are: %s.", m.GovernanceStatus, strings.Join(GetGovernanceStatusEnumStringValues(), ",")))
+	}
 
 	if _, ok := GetMappingOrganizationTenancyLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetOrganizationTenancyLifecycleStateEnumStringValues(), ",")))

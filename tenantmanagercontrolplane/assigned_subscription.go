@@ -4,7 +4,7 @@
 
 // Organizations API
 //
-// The Organizations API allows you to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and its resources.
+// Use the Organizations API to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and organization resources. For more information, see Organization Management Overview (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/organization_management_overview.htm).
 //
 
 package tenantmanagercontrolplane
@@ -57,16 +57,16 @@ type AssignedSubscription struct {
 	// Customer service identifier for the customer associated with the subscription.
 	CsiNumber *string `mandatory:"false" json:"csiNumber"`
 
-	// Tier for the subscription, such as if it is a free promotion subscription or a paid subscription.
+	// Tier for the subscription, whether it is a free promotion subscription or a paid subscription.
 	SubscriptionTier *string `mandatory:"false" json:"subscriptionTier"`
 
-	// Denotes if the subscription is a government subscription or not.
+	// Denotes whether or not the subscription is a government subscription.
 	IsGovernmentSubscription *bool `mandatory:"false" json:"isGovernmentSubscription"`
 
 	// List of promotions related to the subscription.
 	Promotion []Promotion `mandatory:"false" json:"promotion"`
 
-	// Purchase entitlement id associated with the subscription.
+	// Purchase entitlement ID associated with the subscription.
 	PurchaseEntitlementId *string `mandatory:"false" json:"purchaseEntitlementId"`
 
 	// Subscription start time.

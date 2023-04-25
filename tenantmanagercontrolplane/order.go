@@ -4,7 +4,7 @@
 
 // Organizations API
 //
-// The Organizations API allows you to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and its resources.
+// Use the Organizations API to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and organization resources. For more information, see Organization Management Overview (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/organization_management_overview.htm).
 //
 
 package tenantmanagercontrolplane
@@ -21,7 +21,7 @@ type Order struct {
 	// Immutable and unique order number holding customer subscription information.
 	OrderNumber *string `mandatory:"true" json:"orderNumber"`
 
-	// Administrator email owning the subscription.
+	// Email address of the administrator who owns the subscription.
 	AdminEmail *string `mandatory:"true" json:"adminEmail"`
 
 	// State of the order.

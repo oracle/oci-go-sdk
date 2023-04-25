@@ -4,7 +4,7 @@
 
 // Organizations API
 //
-// The Organizations API allows you to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and its resources.
+// Use the Organizations API to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and organization resources. For more information, see Organization Management Overview (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/organization_management_overview.htm).
 //
 
 package tenantmanagercontrolplane
@@ -501,7 +501,7 @@ func (client OrganizationClient) listOrganizations(ctx context.Context, request 
 	return response, err
 }
 
-// RestoreOrganizationTenancy An asynchronous API to restore tenancy.
+// RestoreOrganizationTenancy An asynchronous API to restore a tenancy.
 //
 // See also
 //
@@ -620,7 +620,7 @@ func (client OrganizationClient) unapproveOrganizationTenancyForTransfer(ctx con
 	return response, err
 }
 
-// UpdateOrganization Assign the default subscription to the organization.
+// UpdateOrganization Map the default subscription to the organization.
 //
 // See also
 //
