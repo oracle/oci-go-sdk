@@ -18,7 +18,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ApproveOrganizationTenancyForTransfer.go.html to see an example of how to use ApproveOrganizationTenancyForTransferRequest.
 type ApproveOrganizationTenancyForTransferRequest struct {
 
-	// The ID of the compartment in which to list resources.
+	// OCID of the compartment. Always a tenancy OCID.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// OCID of the child tenancy.
@@ -35,7 +35,7 @@ type ApproveOrganizationTenancyForTransferRequest struct {
 	// server error, without risk of executing that same action again. Retry tokens expire after 24
 	// hours, but can be invalidated before then due to conflicting operations. For example, if a resource
 	// has been deleted and purged from the system, then a retry of the original creation request
-	// might be rejected.
+	// will be rejected.
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 
 	// The client request ID for tracing.

@@ -4,7 +4,7 @@
 
 // Organizations API
 //
-// The Organizations API allows you to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and its resources.
+// Use the Organizations API to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and organization resources. For more information, see Organization Management Overview (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/organization_management_overview.htm).
 //
 
 package tenantmanagercontrolplane
@@ -30,16 +30,16 @@ type OrganizationSummary struct {
 	// Lifecycle state of the organization.
 	LifecycleState OrganizationLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
-	// Date-time when this organization was created.
+	// Date and time when the organization was created.
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
-	// A display name for the organization.
+	// A display name for the organization. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The name of the tenancy that is the organization parent.
 	ParentName *string `mandatory:"false" json:"parentName"`
 
-	// Date-time when this organization was last updated.
+	// Date and time when the organization was last updated.
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
 }
 

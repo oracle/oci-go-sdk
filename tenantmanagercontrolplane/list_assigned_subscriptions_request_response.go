@@ -18,7 +18,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListAssignedSubscriptions.go.html to see an example of how to use ListAssignedSubscriptionsRequest.
 type ListAssignedSubscriptionsRequest struct {
 
-	// The ID of the compartment in which to list resources.
+	// OCID of the compartment. Always a tenancy OCID.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The ID of the subscription to which the tenancy is associated.

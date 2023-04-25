@@ -219,6 +219,37 @@ func ExampleObjectStorage_GetNamespace() {
 	// Namespace retrieved
 }
 
+func ExampleObjectStorage_GetObjectUsingRealmSpecificEndpoint() {
+	// This example shows how to use realm specific endpoint to get object.
+	// You can select either this environment variable or the customClientConfiguration to enable realm specific endpoint.
+	os.Setenv("OCI_REALM_SPECIFIC_SERVICE_ENDPOINT_TEMPLATE_ENABLED", "true")
+
+	c, clerr := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	helpers.FatalIfError(clerr)
+
+	// An alternative way to enable realm specific endpoint is to use the following code.
+	c.SetCustomClientConfiguration(common.CustomClientConfiguration{
+		RealmSpecificServiceEndpointTemplateEnabled: common.Bool(true),
+	})
+	ctx := context.Background()
+	bname := helpers.GetRandomString(8)
+	namespace := getNamespace(ctx, c)
+	getRequest := objectstorage.GetObjectRequest{
+		NamespaceName: common.String(namespace),
+		BucketName:    common.String(bname),
+		ObjectName:    common.String("ExampleObjectStorage_GetObjectUsingRealmSpecificEndpoint"),
+	}
+
+	response, err := c.GetObject(context.Background(), getRequest)
+	if err != nil {
+		fmt.Println("404")
+		return
+	}
+	fmt.Println(response)
+	// Output:
+	// 404
+}
+
 func getNamespace(ctx context.Context, c objectstorage.ObjectStorageClient) string {
 	request := objectstorage.GetNamespaceRequest{}
 	r, err := c.GetNamespace(ctx, request)

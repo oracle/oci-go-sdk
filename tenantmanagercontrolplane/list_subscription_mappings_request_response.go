@@ -21,10 +21,10 @@ type ListSubscriptionMappingsRequest struct {
 	// The ID of the subscription to which the tenancy is associated.
 	SubscriptionId *string `mandatory:"true" contributesTo:"query" name:"subscriptionId"`
 
-	// SubscriptionMappingId is a unique ID for subscription and tenancy mapping.
+	// A unique ID for subscription and tenancy mapping.
 	SubscriptionMappingId *string `mandatory:"false" contributesTo:"query" name:"subscriptionMappingId"`
 
-	// The ID of the compartment in which to list resources.
+	// OCID of the compartment. Always a tenancy OCID.
 	CompartmentId *string `mandatory:"false" contributesTo:"query" name:"compartmentId"`
 
 	// The lifecycle state of the resource.
