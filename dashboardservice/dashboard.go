@@ -124,6 +124,7 @@ func (m *dashboard) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:
+		common.Logf("Recieved unsupported enum value for Dashboard: %s.", m.SchemaVersion)
 		return *m, nil
 	}
 }

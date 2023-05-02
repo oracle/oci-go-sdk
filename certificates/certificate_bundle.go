@@ -114,6 +114,7 @@ func (m *certificatebundle) UnmarshalPolymorphicJSON(data []byte) (interface{}, 
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:
+		common.Logf("Recieved unsupported enum value for CertificateBundle: %s.", m.CertificateBundleType)
 		return *m, nil
 	}
 }
