@@ -18,7 +18,7 @@ Are you a Developer using the OCI SDK? If so, please fill out our survey to help
 We will continue to announce any breaking changes in a new version under the Breaking Changes section in the release changelog and on the Github release page [https://github.com/oracle/oci-go-sdk/releases].
 - However, breaking changes in the SDK's common module will continue to result in a major version bump (x+1.y.z relative to the last published version). That said, we'll continue to maintain backward compatibility as much as possible to minimize the effort involved in upgrading the SDK version used by your code.
 
-## Installation
+## Installing
 If you want to install the SDK under $GOPATH, you can use `go get` to retrieve the SDK:
 ```
 go get -u github.com/oracle/oci-go-sdk
