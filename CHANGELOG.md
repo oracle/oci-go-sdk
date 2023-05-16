@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.38.0 - 2023-05-16
+### Added
+- Support for self-service integration in the Fusion Apps as a Service service  
+ 
+### Breaking Changes
+- The models `AttachExistingInstanceDetails`, `CreateNewInstanceDetails`, `CreateOicServiceInstanceDetails`, `CreateServiceInstanceDetails`, `FawAdminInfoDetails` and `CreateOaxServiceInstanceDetails` were removed from the Fusion Apps as a Service service
+- The enum `ActionEnum` was removed from the `CreateServiceAttachmentDetails` model in the Fusion Apps as a Service service
+- The property `Action` was removed from the `ServiceAttachment` model in the Fusion Apps as a Service service
+
+
 ## 65.37.1 - 2023-05-09
 ### Added
 - Support for the Access Governance service
