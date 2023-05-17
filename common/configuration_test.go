@@ -9,7 +9,7 @@ import (
 	"os"
 	"testing"
 
-	"path"
+	"path/filepath"
 	"strings"
 
 	"github.com/stretchr/testify/assert"
@@ -836,7 +836,7 @@ compartment = somecompartment
 region=someregion
 `
 
-	tmpKeyLocation := path.Join(getHomeFolder(), "testKey")
+	tmpKeyLocation := filepath.Join(getHomeFolder(), "testKey")
 	e := ioutil.WriteFile(tmpKeyLocation, []byte(testEncryptedPrivateKeyConf), 777)
 	if e != nil {
 		assert.FailNow(t, e.Error())
@@ -876,7 +876,7 @@ func TestExpandPath(t *testing.T) {
 		{
 			name:         "should expand tilde and return appended home dir",
 			inPath:       "~/somepath",
-			expectedPath: path.Join(home, "somepath"),
+			expectedPath: filepath.Join(home, "somepath"),
 		},
 		{
 			name:         "should not do anything",
@@ -886,7 +886,7 @@ func TestExpandPath(t *testing.T) {
 		{
 			name:         "should replace one tilde only",
 			inPath:       "~/~/some/path",
-			expectedPath: path.Join(home, "~/some/path"),
+			expectedPath: filepath.Join(home, "~/some/path"),
 		},
 	}
 	for _, tio := range testIO {

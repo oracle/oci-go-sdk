@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"path"
+	"path/filepath"
 	"strings"
 	"testing"
 
@@ -356,8 +356,8 @@ func TestStringToRegion(t *testing.T) {
 		"regionIdentifier" : "us-testregion-3"
 	}
 ]`
-	tmpLocation := path.Join(getHomeFolder(), ".oci", "regions-config.json")
-	tmpPath := path.Join(getHomeFolder(), ".oci")
+	tmpLocation := filepath.Join(getHomeFolder(), ".oci", "regions-config.json")
+	tmpPath := filepath.Join(getHomeFolder(), ".oci")
 
 	if _, err := os.Stat(tmpPath); err != nil && os.IsNotExist(err) {
 		if err := os.Mkdir(tmpPath, 0777); err != nil {
@@ -466,8 +466,8 @@ func TestSetRegionMetadataFromCfgFileWithNormalRegionName(t *testing.T) {
 		"regionIdentifier" : "us-testregion-3"
 	}
 ]`
-	tmpLocation := path.Join(getHomeFolder(), ".oci", "regions-config.json")
-	tmpPath := path.Join(getHomeFolder(), ".oci")
+	tmpLocation := filepath.Join(getHomeFolder(), ".oci", "regions-config.json")
+	tmpPath := filepath.Join(getHomeFolder(), ".oci")
 
 	if _, err := os.Stat(tmpPath); err != nil && os.IsNotExist(err) {
 		if err := os.Mkdir(tmpPath, 0777); err != nil {
@@ -513,8 +513,8 @@ func TestSetRegionMetadataFromCfgFileWithShortRegionName(t *testing.T) {
 		"regionIdentifier" : "us-testregion-3"
 	}
 ]`
-	tmpLocation := path.Join(getHomeFolder(), ".oci", "regions-config.json")
-	tmpPath := path.Join(getHomeFolder(), ".oci")
+	tmpLocation := filepath.Join(getHomeFolder(), ".oci", "regions-config.json")
+	tmpPath := filepath.Join(getHomeFolder(), ".oci")
 
 	if _, err := os.Stat(tmpPath); err != nil && os.IsNotExist(err) {
 		if err := os.Mkdir(tmpPath, 0777); err != nil {
@@ -547,7 +547,7 @@ func TestSetRegionMetadataFromCfgFileWithShortRegionName(t *testing.T) {
 
 func TestSetRegionMetadataFromCfgFileWithInvalidFileContent(t *testing.T) {
 	fileContent := ""
-	tmpLocation := path.Join(getHomeFolder(), ".oci", "regions-config.json")
+	tmpLocation := filepath.Join(getHomeFolder(), ".oci", "regions-config.json")
 
 	if _, err := os.Stat(tmpLocation); err == nil || os.IsExist(err) {
 		os.Remove(tmpLocation)
