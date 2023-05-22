@@ -11,7 +11,7 @@ import (
 	"log"
 	"os"
 	"os/user"
-	"path"
+	"path/filepath"
 
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"github.com/oracle/oci-go-sdk/v65/example/helpers"
@@ -31,7 +31,7 @@ const (
 
 func ExampleCreateAndUseSecurityTokenBasedConfiguration() {
 	homeFolder := getHomeFolder()
-	configFilePath := path.Join(homeFolder, cfgDirName, cfgFileName)
+	configFilePath := filepath.Join(homeFolder, cfgDirName, cfgFileName)
 	securityTokenBasedAuthConfigProvider := common.CustomProfileConfigProvider(configFilePath, profileName)
 	c, err := identity.NewIdentityClientWithConfigurationProvider(securityTokenBasedAuthConfigProvider)
 	helpers.FatalIfError(err)
