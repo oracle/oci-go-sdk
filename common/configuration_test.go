@@ -556,6 +556,56 @@ security_token_file=%s
 	assert.NoError(t, e1)
 }
 
+func TestFileConfigurationProvider_ConcurrentRead(t *testing.T) {
+	dataTpl := `[DEFAULT]
+user=someuser
+fingerprint=somefingerprint
+key_file=%s
+tenancy=sometenancy
+compartment = somecompartment
+region=someregion
+`
+
+	tmpKeyLocation := filepath.Join(getHomeFolder(), "testKeyForConcurrentRead")
+	e := ioutil.WriteFile(tmpKeyLocation, []byte(testEncryptedPrivateKeyConf), 777)
+	if e != nil {
+		assert.FailNow(t, e.Error())
+	}
+
+	newLocation := strings.Replace(tmpKeyLocation, getHomeFolder(), "~/", 1)
+	data := fmt.Sprintf(dataTpl, newLocation)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(tmpKeyLocation)
+
+	maxGoroutines := 10
+	guard := make(chan struct{}, maxGoroutines)
+
+	for i := 0; i < 30; i++ {
+		guard <- struct{}{} // would block if guard channel is already filled
+		go func(n int) {
+			provider, err := ConfigurationProviderFromFile(tmpConfFile, testKeyPassphrase)
+			assert.NoError(t, err)
+			ok, err := IsConfigurationProviderValid(provider)
+			assert.NoError(t, err)
+			assert.True(t, ok)
+
+			fns := []func() (string, error){provider.TenancyOCID, provider.UserOCID, provider.KeyFingerprint}
+			for _, fn := range fns {
+				val, e := fn()
+				assert.NoError(t, e)
+				assert.NotEmpty(t, val)
+			}
+
+			key, err := provider.PrivateRSAKey()
+			assert.NoError(t, err)
+			assert.NotNil(t, key)
+			<-guard
+		}(i)
+	}
+}
+
 func TestComposingConfigurationProvider_MultipleFiles(t *testing.T) {
 	dataTpl0 := ``
 	dataTpl := `[DEFAULT]
