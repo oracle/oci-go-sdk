@@ -13,7 +13,7 @@ import (
 
 // ChangeLockboxCompartmentRequest wrapper for the ChangeLockboxCompartment operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ChangeLockboxCompartment.go.html to see an example of how to use ChangeLockboxCompartmentRequest.
 type ChangeLockboxCompartmentRequest struct {

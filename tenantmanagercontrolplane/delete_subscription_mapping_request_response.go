@@ -13,7 +13,7 @@ import (
 
 // DeleteSubscriptionMappingRequest wrapper for the DeleteSubscriptionMapping operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/DeleteSubscriptionMapping.go.html to see an example of how to use DeleteSubscriptionMappingRequest.
 type DeleteSubscriptionMappingRequest struct {

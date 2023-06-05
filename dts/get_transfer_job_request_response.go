@@ -13,7 +13,7 @@ import (
 
 // GetTransferJobRequest wrapper for the GetTransferJob operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferJob.go.html to see an example of how to use GetTransferJobRequest.
 type GetTransferJobRequest struct {

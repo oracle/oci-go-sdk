@@ -13,7 +13,7 @@ import (
 
 // CancelSenderInvitationRequest wrapper for the CancelSenderInvitation operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/CancelSenderInvitation.go.html to see an example of how to use CancelSenderInvitationRequest.
 type CancelSenderInvitationRequest struct {

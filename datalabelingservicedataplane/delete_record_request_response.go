@@ -13,7 +13,7 @@ import (
 
 // DeleteRecordRequest wrapper for the DeleteRecord operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/DeleteRecord.go.html to see an example of how to use DeleteRecordRequest.
 type DeleteRecordRequest struct {

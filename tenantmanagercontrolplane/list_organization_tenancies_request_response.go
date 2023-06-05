@@ -13,7 +13,7 @@ import (
 
 // ListOrganizationTenanciesRequest wrapper for the ListOrganizationTenancies operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListOrganizationTenancies.go.html to see an example of how to use ListOrganizationTenanciesRequest.
 type ListOrganizationTenanciesRequest struct {

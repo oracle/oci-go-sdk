@@ -13,7 +13,7 @@ import (
 
 // ListEndpointsRequest wrapper for the ListEndpoints operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ailanguage/ListEndpoints.go.html to see an example of how to use ListEndpointsRequest.
 type ListEndpointsRequest struct {

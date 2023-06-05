@@ -13,7 +13,7 @@ import (
 
 // ChangeTranscriptionJobCompartmentRequest wrapper for the ChangeTranscriptionJobCompartment operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ChangeTranscriptionJobCompartment.go.html to see an example of how to use ChangeTranscriptionJobCompartmentRequest.
 type ChangeTranscriptionJobCompartmentRequest struct {

@@ -13,7 +13,7 @@ import (
 
 // GetGovernanceInstanceConfigurationRequest wrapper for the GetGovernanceInstanceConfiguration operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/GetGovernanceInstanceConfiguration.go.html to see an example of how to use GetGovernanceInstanceConfigurationRequest.
 type GetGovernanceInstanceConfigurationRequest struct {

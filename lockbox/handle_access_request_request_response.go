@@ -13,7 +13,7 @@ import (
 
 // HandleAccessRequestRequest wrapper for the HandleAccessRequest operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/HandleAccessRequest.go.html to see an example of how to use HandleAccessRequestRequest.
 type HandleAccessRequestRequest struct {

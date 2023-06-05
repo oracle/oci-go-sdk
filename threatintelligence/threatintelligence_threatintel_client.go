@@ -17,7 +17,7 @@ import (
 	"net/http"
 )
 
-//ThreatintelClient a client for Threatintel
+// ThreatintelClient a client for Threatintel
 type ThreatintelClient struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
@@ -39,7 +39,8 @@ func NewThreatintelClientWithConfigurationProvider(configProvider common.Configu
 
 // NewThreatintelClientWithOboToken Creates a new default Threatintel client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
-//  as well as reading the region
+//
+//	as well as reading the region
 func NewThreatintelClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client ThreatintelClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {

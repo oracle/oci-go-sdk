@@ -13,7 +13,7 @@ import (
 
 // GetAssignedSubscriptionRequest wrapper for the GetAssignedSubscription operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/GetAssignedSubscription.go.html to see an example of how to use GetAssignedSubscriptionRequest.
 type GetAssignedSubscriptionRequest struct {

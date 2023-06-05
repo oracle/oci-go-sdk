@@ -13,7 +13,7 @@ import (
 
 // BatchLanguageTranslationRequest wrapper for the BatchLanguageTranslation operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ailanguage/BatchLanguageTranslation.go.html to see an example of how to use BatchLanguageTranslationRequest.
 type BatchLanguageTranslationRequest struct {

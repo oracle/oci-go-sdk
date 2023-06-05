@@ -13,7 +13,7 @@ import (
 
 // GetStatusRequest wrapper for the GetStatus operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/GetStatus.go.html to see an example of how to use GetStatusRequest.
 type GetStatusRequest struct {

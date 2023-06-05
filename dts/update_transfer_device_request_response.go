@@ -13,7 +13,7 @@ import (
 
 // UpdateTransferDeviceRequest wrapper for the UpdateTransferDevice operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/UpdateTransferDevice.go.html to see an example of how to use UpdateTransferDeviceRequest.
 type UpdateTransferDeviceRequest struct {

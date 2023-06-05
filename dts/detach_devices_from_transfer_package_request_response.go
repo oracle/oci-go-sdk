@@ -13,7 +13,7 @@ import (
 
 // DetachDevicesFromTransferPackageRequest wrapper for the DetachDevicesFromTransferPackage operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DetachDevicesFromTransferPackage.go.html to see an example of how to use DetachDevicesFromTransferPackageRequest.
 type DetachDevicesFromTransferPackageRequest struct {

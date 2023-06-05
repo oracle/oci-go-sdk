@@ -13,7 +13,7 @@ import (
 
 // ListApprovalTemplatesRequest wrapper for the ListApprovalTemplates operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListApprovalTemplates.go.html to see an example of how to use ListApprovalTemplatesRequest.
 type ListApprovalTemplatesRequest struct {

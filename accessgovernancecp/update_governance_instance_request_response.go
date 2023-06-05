@@ -13,7 +13,7 @@ import (
 
 // UpdateGovernanceInstanceRequest wrapper for the UpdateGovernanceInstance operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/UpdateGovernanceInstance.go.html to see an example of how to use UpdateGovernanceInstanceRequest.
 type UpdateGovernanceInstanceRequest struct {

@@ -13,7 +13,7 @@ import (
 
 // UpdateDashboardRequest wrapper for the UpdateDashboard operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/UpdateDashboard.go.html to see an example of how to use UpdateDashboardRequest.
 type UpdateDashboardRequest struct {

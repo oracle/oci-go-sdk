@@ -13,7 +13,7 @@ import (
 
 // GetTransferApplianceEntitlementRequest wrapper for the GetTransferApplianceEntitlement operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferApplianceEntitlement.go.html to see an example of how to use GetTransferApplianceEntitlementRequest.
 type GetTransferApplianceEntitlementRequest struct {

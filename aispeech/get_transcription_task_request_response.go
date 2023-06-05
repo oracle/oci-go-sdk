@@ -13,7 +13,7 @@ import (
 
 // GetTranscriptionTaskRequest wrapper for the GetTranscriptionTask operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/GetTranscriptionTask.go.html to see an example of how to use GetTranscriptionTaskRequest.
 type GetTranscriptionTaskRequest struct {

@@ -13,7 +13,7 @@ import (
 
 // DeleteDashboardGroupRequest wrapper for the DeleteDashboardGroup operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/DeleteDashboardGroup.go.html to see an example of how to use DeleteDashboardGroupRequest.
 type DeleteDashboardGroupRequest struct {

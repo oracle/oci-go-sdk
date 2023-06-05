@@ -14,7 +14,7 @@ import (
 
 // GetRecordPreviewContentRequest wrapper for the GetRecordPreviewContent operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetRecordPreviewContent.go.html to see an example of how to use GetRecordPreviewContentRequest.
 type GetRecordPreviewContentRequest struct {

@@ -13,7 +13,7 @@ import (
 
 // GetEndpointRequest wrapper for the GetEndpoint operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ailanguage/GetEndpoint.go.html to see an example of how to use GetEndpointRequest.
 type GetEndpointRequest struct {
