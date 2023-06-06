@@ -13,7 +13,7 @@ import (
 
 // SummarizeRecordAnalyticsRequest wrapper for the SummarizeRecordAnalytics operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/SummarizeRecordAnalytics.go.html to see an example of how to use SummarizeRecordAnalyticsRequest.
 type SummarizeRecordAnalyticsRequest struct {

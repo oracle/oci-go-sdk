@@ -13,7 +13,7 @@ import (
 
 // SummarizeIndicatorsRequest wrapper for the SummarizeIndicators operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/SummarizeIndicators.go.html to see an example of how to use SummarizeIndicatorsRequest.
 type SummarizeIndicatorsRequest struct {

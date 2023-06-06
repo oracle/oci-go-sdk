@@ -13,7 +13,7 @@ import (
 
 // CreateSubscriptionMappingRequest wrapper for the CreateSubscriptionMapping operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/CreateSubscriptionMapping.go.html to see an example of how to use CreateSubscriptionMappingRequest.
 type CreateSubscriptionMappingRequest struct {

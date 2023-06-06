@@ -20,7 +20,7 @@ import (
 	"net/http"
 )
 
-//ApplicationMigrationClient a client for ApplicationMigration
+// ApplicationMigrationClient a client for ApplicationMigration
 type ApplicationMigrationClient struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
@@ -42,7 +42,8 @@ func NewApplicationMigrationClientWithConfigurationProvider(configProvider commo
 
 // NewApplicationMigrationClientWithOboToken Creates a new default ApplicationMigration client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
-//  as well as reading the region
+//
+//	as well as reading the region
 func NewApplicationMigrationClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client ApplicationMigrationClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {

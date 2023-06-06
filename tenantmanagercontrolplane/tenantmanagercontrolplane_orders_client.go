@@ -17,7 +17,7 @@ import (
 	"net/http"
 )
 
-//OrdersClient a client for Orders
+// OrdersClient a client for Orders
 type OrdersClient struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
@@ -39,7 +39,8 @@ func NewOrdersClientWithConfigurationProvider(configProvider common.Configuratio
 
 // NewOrdersClientWithOboToken Creates a new default Orders client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
-//  as well as reading the region
+//
+//	as well as reading the region
 func NewOrdersClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client OrdersClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {

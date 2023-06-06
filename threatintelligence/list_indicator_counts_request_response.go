@@ -13,7 +13,7 @@ import (
 
 // ListIndicatorCountsRequest wrapper for the ListIndicatorCounts operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/ListIndicatorCounts.go.html to see an example of how to use ListIndicatorCountsRequest.
 type ListIndicatorCountsRequest struct {

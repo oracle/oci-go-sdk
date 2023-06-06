@@ -13,7 +13,7 @@ import (
 
 // UpdateApplianceExportJobRequest wrapper for the UpdateApplianceExportJob operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/UpdateApplianceExportJob.go.html to see an example of how to use UpdateApplianceExportJobRequest.
 type UpdateApplianceExportJobRequest struct {

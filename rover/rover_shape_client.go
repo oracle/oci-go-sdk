@@ -17,7 +17,7 @@ import (
 	"net/http"
 )
 
-//ShapeClient a client for Shape
+// ShapeClient a client for Shape
 type ShapeClient struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
@@ -39,7 +39,8 @@ func NewShapeClientWithConfigurationProvider(configProvider common.Configuration
 
 // NewShapeClientWithOboToken Creates a new default Shape client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
-//  as well as reading the region
+//
+//	as well as reading the region
 func NewShapeClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client ShapeClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {

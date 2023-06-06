@@ -13,7 +13,7 @@ import (
 
 // ChangeDashboardGroupCompartmentRequest wrapper for the ChangeDashboardGroupCompartment operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/ChangeDashboardGroupCompartment.go.html to see an example of how to use ChangeDashboardGroupCompartmentRequest.
 type ChangeDashboardGroupCompartmentRequest struct {

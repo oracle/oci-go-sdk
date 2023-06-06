@@ -13,7 +13,7 @@ import (
 
 // DeleteInclusionCriterionRequest wrapper for the DeleteInclusionCriterion operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/DeleteInclusionCriterion.go.html to see an example of how to use DeleteInclusionCriterionRequest.
 type DeleteInclusionCriterionRequest struct {

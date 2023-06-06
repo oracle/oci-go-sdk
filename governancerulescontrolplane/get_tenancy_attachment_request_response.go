@@ -13,7 +13,7 @@ import (
 
 // GetTenancyAttachmentRequest wrapper for the GetTenancyAttachment operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetTenancyAttachment.go.html to see an example of how to use GetTenancyAttachmentRequest.
 type GetTenancyAttachmentRequest struct {

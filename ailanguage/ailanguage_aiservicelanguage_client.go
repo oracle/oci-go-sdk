@@ -19,7 +19,7 @@ import (
 	"net/http"
 )
 
-//AIServiceLanguageClient a client for AIServiceLanguage
+// AIServiceLanguageClient a client for AIServiceLanguage
 type AIServiceLanguageClient struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
@@ -41,7 +41,8 @@ func NewAIServiceLanguageClientWithConfigurationProvider(configProvider common.C
 
 // NewAIServiceLanguageClientWithOboToken Creates a new default AIServiceLanguage client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
-//  as well as reading the region
+//
+//	as well as reading the region
 func NewAIServiceLanguageClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client AIServiceLanguageClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {

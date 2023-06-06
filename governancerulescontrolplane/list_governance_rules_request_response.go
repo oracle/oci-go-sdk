@@ -13,7 +13,7 @@ import (
 
 // ListGovernanceRulesRequest wrapper for the ListGovernanceRules operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/ListGovernanceRules.go.html to see an example of how to use ListGovernanceRulesRequest.
 type ListGovernanceRulesRequest struct {

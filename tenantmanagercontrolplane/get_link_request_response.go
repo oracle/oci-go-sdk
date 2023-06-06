@@ -13,7 +13,7 @@ import (
 
 // GetLinkRequest wrapper for the GetLink operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/GetLink.go.html to see an example of how to use GetLinkRequest.
 type GetLinkRequest struct {

@@ -13,7 +13,7 @@ import (
 
 // ListDomainGovernancesRequest wrapper for the ListDomainGovernances operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListDomainGovernances.go.html to see an example of how to use ListDomainGovernancesRequest.
 type ListDomainGovernancesRequest struct {

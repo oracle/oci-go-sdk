@@ -13,7 +13,7 @@ import (
 
 // GetTransferApplianceCertificateAuthorityCertificateRequest wrapper for the GetTransferApplianceCertificateAuthorityCertificate operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferApplianceCertificateAuthorityCertificate.go.html to see an example of how to use GetTransferApplianceCertificateAuthorityCertificateRequest.
 type GetTransferApplianceCertificateAuthorityCertificateRequest struct {

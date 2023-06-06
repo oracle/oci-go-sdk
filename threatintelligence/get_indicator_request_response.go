@@ -13,7 +13,7 @@ import (
 
 // GetIndicatorRequest wrapper for the GetIndicator operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/GetIndicator.go.html to see an example of how to use GetIndicatorRequest.
 type GetIndicatorRequest struct {

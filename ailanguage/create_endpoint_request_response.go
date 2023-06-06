@@ -13,7 +13,7 @@ import (
 
 // CreateEndpointRequest wrapper for the CreateEndpoint operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ailanguage/CreateEndpoint.go.html to see an example of how to use CreateEndpointRequest.
 type CreateEndpointRequest struct {

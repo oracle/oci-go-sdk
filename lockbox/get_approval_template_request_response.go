@@ -13,7 +13,7 @@ import (
 
 // GetApprovalTemplateRequest wrapper for the GetApprovalTemplate operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetApprovalTemplate.go.html to see an example of how to use GetApprovalTemplateRequest.
 type GetApprovalTemplateRequest struct {

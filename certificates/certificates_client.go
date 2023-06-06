@@ -17,7 +17,7 @@ import (
 	"net/http"
 )
 
-//CertificatesClient a client for Certificates
+// CertificatesClient a client for Certificates
 type CertificatesClient struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
@@ -39,7 +39,8 @@ func NewCertificatesClientWithConfigurationProvider(configProvider common.Config
 
 // NewCertificatesClientWithOboToken Creates a new default Certificates client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
-//  as well as reading the region
+//
+//	as well as reading the region
 func NewCertificatesClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client CertificatesClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {

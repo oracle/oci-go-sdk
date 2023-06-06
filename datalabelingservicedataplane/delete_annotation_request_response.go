@@ -13,7 +13,7 @@ import (
 
 // DeleteAnnotationRequest wrapper for the DeleteAnnotation operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/DeleteAnnotation.go.html to see an example of how to use DeleteAnnotationRequest.
 type DeleteAnnotationRequest struct {

@@ -13,7 +13,7 @@ import (
 
 // GetIncidentRequest wrapper for the GetIncident operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/GetIncident.go.html to see an example of how to use GetIncidentRequest.
 type GetIncidentRequest struct {

@@ -17,7 +17,7 @@ import (
 	"net/http"
 )
 
-//RoverEntitlementClient a client for RoverEntitlement
+// RoverEntitlementClient a client for RoverEntitlement
 type RoverEntitlementClient struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
@@ -39,7 +39,8 @@ func NewRoverEntitlementClientWithConfigurationProvider(configProvider common.Co
 
 // NewRoverEntitlementClientWithOboToken Creates a new default RoverEntitlement client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
-//  as well as reading the region
+//
+//	as well as reading the region
 func NewRoverEntitlementClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client RoverEntitlementClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {

@@ -17,7 +17,7 @@ import (
 	"net/http"
 )
 
-//RoverClusterClient a client for RoverCluster
+// RoverClusterClient a client for RoverCluster
 type RoverClusterClient struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
@@ -39,7 +39,8 @@ func NewRoverClusterClientWithConfigurationProvider(configProvider common.Config
 
 // NewRoverClusterClientWithOboToken Creates a new default RoverCluster client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
-//  as well as reading the region
+//
+//	as well as reading the region
 func NewRoverClusterClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client RoverClusterClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {

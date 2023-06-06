@@ -13,7 +13,7 @@ import (
 
 // UpdateOrganizationRequest wrapper for the UpdateOrganization operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/UpdateOrganization.go.html to see an example of how to use UpdateOrganizationRequest.
 type UpdateOrganizationRequest struct {

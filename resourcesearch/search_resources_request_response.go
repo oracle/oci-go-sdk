@@ -13,7 +13,7 @@ import (
 
 // SearchResourcesRequest wrapper for the SearchResources operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/resourcesearch/SearchResources.go.html to see an example of how to use SearchResourcesRequest.
 type SearchResourcesRequest struct {

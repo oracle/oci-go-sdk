@@ -207,3 +207,17 @@ func TestResourcePrincipalConfigurationProvider(t *testing.T) {
 	assert.NotNil(t, privateKey)
 
 }
+
+func TestResourcePrincipalConfigurationProviderForResource(t *testing.T) {
+	// Set up the environment as an example consumer (eg, a function) may have it - this injects no passphrase
+	setupResourcePrincipalsEnvsWithValues(envVars, ResourcePrincipalVersionEnvVar, ResourcePrincipalRegionEnvVar)
+	tempFiles := setupResourcePrincipalsEnvsWithPaths(ResourcePrincipalRPSTEnvVar, ResourcePrincipalPrivatePEMEnvVar)
+	defer removeFile(tempFiles...)
+
+	provider, e := ResourcePrincipalConfigurationProviderForRegion(common.RegionLHR)
+	assert.NoError(t, e)
+
+	region, e := provider.Region()
+	assert.NoError(t, e)
+	assert.Equal(t, string(common.RegionLHR), region)
+}

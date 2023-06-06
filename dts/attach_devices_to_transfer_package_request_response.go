@@ -13,7 +13,7 @@ import (
 
 // AttachDevicesToTransferPackageRequest wrapper for the AttachDevicesToTransferPackage operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/AttachDevicesToTransferPackage.go.html to see an example of how to use AttachDevicesToTransferPackageRequest.
 type AttachDevicesToTransferPackageRequest struct {

@@ -17,7 +17,7 @@ import (
 	"net/http"
 )
 
-//LoggingClient a client for Logging
+// LoggingClient a client for Logging
 type LoggingClient struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
@@ -39,7 +39,8 @@ func NewLoggingClientWithConfigurationProvider(configProvider common.Configurati
 
 // NewLoggingClientWithOboToken Creates a new default Logging client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
-//  as well as reading the region
+//
+//	as well as reading the region
 func NewLoggingClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client LoggingClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {

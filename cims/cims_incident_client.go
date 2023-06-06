@@ -17,7 +17,7 @@ import (
 	"net/http"
 )
 
-//IncidentClient a client for Incident
+// IncidentClient a client for Incident
 type IncidentClient struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
@@ -39,7 +39,8 @@ func NewIncidentClientWithConfigurationProvider(configProvider common.Configurat
 
 // NewIncidentClientWithOboToken Creates a new default Incident client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
-//  as well as reading the region
+//
+//	as well as reading the region
 func NewIncidentClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client IncidentClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {

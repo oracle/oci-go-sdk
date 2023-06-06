@@ -13,7 +13,7 @@ import (
 
 // ChangeApprovalTemplateCompartmentRequest wrapper for the ChangeApprovalTemplateCompartment operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ChangeApprovalTemplateCompartment.go.html to see an example of how to use ChangeApprovalTemplateCompartmentRequest.
 type ChangeApprovalTemplateCompartmentRequest struct {

@@ -13,7 +13,7 @@ import (
 
 // DeleteLinkRequest wrapper for the DeleteLink operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/DeleteLink.go.html to see an example of how to use DeleteLinkRequest.
 type DeleteLinkRequest struct {

@@ -17,7 +17,7 @@ import (
 	"net/http"
 )
 
-//LogSearchClient a client for LogSearch
+// LogSearchClient a client for LogSearch
 type LogSearchClient struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
@@ -39,7 +39,8 @@ func NewLogSearchClientWithConfigurationProvider(configProvider common.Configura
 
 // NewLogSearchClientWithOboToken Creates a new default LogSearch client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
-//  as well as reading the region
+//
+//	as well as reading the region
 func NewLogSearchClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client LogSearchClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {

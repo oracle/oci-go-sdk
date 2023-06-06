@@ -13,7 +13,7 @@ import (
 
 // GetResourceTypeRequest wrapper for the GetResourceType operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/resourcesearch/GetResourceType.go.html to see an example of how to use GetResourceTypeRequest.
 type GetResourceTypeRequest struct {

@@ -13,7 +13,7 @@ import (
 
 // RetryTenancyAttachmentRequest wrapper for the RetryTenancyAttachment operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/RetryTenancyAttachment.go.html to see an example of how to use RetryTenancyAttachmentRequest.
 type RetryTenancyAttachmentRequest struct {
