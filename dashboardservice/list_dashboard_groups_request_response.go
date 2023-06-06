@@ -13,7 +13,7 @@ import (
 
 // ListDashboardGroupsRequest wrapper for the ListDashboardGroups operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/ListDashboardGroups.go.html to see an example of how to use ListDashboardGroupsRequest.
 type ListDashboardGroupsRequest struct {

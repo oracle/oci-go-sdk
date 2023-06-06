@@ -13,7 +13,7 @@ import (
 
 // AcceptRecipientInvitationRequest wrapper for the AcceptRecipientInvitation operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/AcceptRecipientInvitation.go.html to see an example of how to use AcceptRecipientInvitationRequest.
 type AcceptRecipientInvitationRequest struct {

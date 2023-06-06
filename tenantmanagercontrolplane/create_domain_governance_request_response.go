@@ -13,7 +13,7 @@ import (
 
 // CreateDomainGovernanceRequest wrapper for the CreateDomainGovernance operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/CreateDomainGovernance.go.html to see an example of how to use CreateDomainGovernanceRequest.
 type CreateDomainGovernanceRequest struct {

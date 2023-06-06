@@ -13,7 +13,7 @@ import (
 
 // ChangeTransferJobCompartmentRequest wrapper for the ChangeTransferJobCompartment operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ChangeTransferJobCompartment.go.html to see an example of how to use ChangeTransferJobCompartmentRequest.
 type ChangeTransferJobCompartmentRequest struct {

@@ -13,7 +13,7 @@ import (
 
 // ListSenderInvitationsRequest wrapper for the ListSenderInvitations operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListSenderInvitations.go.html to see an example of how to use ListSenderInvitationsRequest.
 type ListSenderInvitationsRequest struct {

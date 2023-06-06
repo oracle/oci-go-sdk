@@ -13,7 +13,7 @@ import (
 
 // RestoreOrganizationTenancyRequest wrapper for the RestoreOrganizationTenancy operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/RestoreOrganizationTenancy.go.html to see an example of how to use RestoreOrganizationTenancyRequest.
 type RestoreOrganizationTenancyRequest struct {

@@ -13,7 +13,7 @@ import (
 
 // GetInclusionCriterionRequest wrapper for the GetInclusionCriterion operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetInclusionCriterion.go.html to see an example of how to use GetInclusionCriterionRequest.
 type GetInclusionCriterionRequest struct {

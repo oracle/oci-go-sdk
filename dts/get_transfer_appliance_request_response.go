@@ -13,7 +13,7 @@ import (
 
 // GetTransferApplianceRequest wrapper for the GetTransferAppliance operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferAppliance.go.html to see an example of how to use GetTransferApplianceRequest.
 type GetTransferApplianceRequest struct {

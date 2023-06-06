@@ -13,7 +13,7 @@ import (
 
 // DeleteTransferJobRequest wrapper for the DeleteTransferJob operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DeleteTransferJob.go.html to see an example of how to use DeleteTransferJobRequest.
 type DeleteTransferJobRequest struct {

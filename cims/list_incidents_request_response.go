@@ -13,7 +13,7 @@ import (
 
 // ListIncidentsRequest wrapper for the ListIncidents operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ListIncidents.go.html to see an example of how to use ListIncidentsRequest.
 type ListIncidentsRequest struct {

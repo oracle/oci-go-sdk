@@ -13,7 +13,7 @@ import (
 
 // GetAccessMaterialsRequest wrapper for the GetAccessMaterials operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetAccessMaterials.go.html to see an example of how to use GetAccessMaterialsRequest.
 type GetAccessMaterialsRequest struct {

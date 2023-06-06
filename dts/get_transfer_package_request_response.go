@@ -13,7 +13,7 @@ import (
 
 // GetTransferPackageRequest wrapper for the GetTransferPackage operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferPackage.go.html to see an example of how to use GetTransferPackageRequest.
 type GetTransferPackageRequest struct {

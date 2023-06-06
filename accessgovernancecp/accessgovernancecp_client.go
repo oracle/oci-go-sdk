@@ -17,7 +17,7 @@ import (
 	"net/http"
 )
 
-//AccessGovernanceCPClient a client for AccessGovernanceCP
+// AccessGovernanceCPClient a client for AccessGovernanceCP
 type AccessGovernanceCPClient struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
@@ -39,7 +39,8 @@ func NewAccessGovernanceCPClientWithConfigurationProvider(configProvider common.
 
 // NewAccessGovernanceCPClientWithOboToken Creates a new default AccessGovernanceCP client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
-//  as well as reading the region
+//
+//	as well as reading the region
 func NewAccessGovernanceCPClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client AccessGovernanceCPClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {

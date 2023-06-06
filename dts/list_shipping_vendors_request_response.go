@@ -13,7 +13,7 @@ import (
 
 // ListShippingVendorsRequest wrapper for the ListShippingVendors operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListShippingVendors.go.html to see an example of how to use ListShippingVendorsRequest.
 type ListShippingVendorsRequest struct {

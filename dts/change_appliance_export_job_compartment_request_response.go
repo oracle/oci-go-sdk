@@ -13,7 +13,7 @@ import (
 
 // ChangeApplianceExportJobCompartmentRequest wrapper for the ChangeApplianceExportJobCompartment operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ChangeApplianceExportJobCompartment.go.html to see an example of how to use ChangeApplianceExportJobCompartmentRequest.
 type ChangeApplianceExportJobCompartmentRequest struct {

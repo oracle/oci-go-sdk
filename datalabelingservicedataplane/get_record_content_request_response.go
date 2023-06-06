@@ -14,7 +14,7 @@ import (
 
 // GetRecordContentRequest wrapper for the GetRecordContent operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetRecordContent.go.html to see an example of how to use GetRecordContentRequest.
 type GetRecordContentRequest struct {

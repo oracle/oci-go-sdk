@@ -13,7 +13,7 @@ import (
 
 // DeleteOrganizationTenancyRequest wrapper for the DeleteOrganizationTenancy operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/DeleteOrganizationTenancy.go.html to see an example of how to use DeleteOrganizationTenancyRequest.
 type DeleteOrganizationTenancyRequest struct {

@@ -13,7 +13,7 @@ import (
 
 // GetApplianceExportJobRequest wrapper for the GetApplianceExportJob operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetApplianceExportJob.go.html to see an example of how to use GetApplianceExportJobRequest.
 type GetApplianceExportJobRequest struct {

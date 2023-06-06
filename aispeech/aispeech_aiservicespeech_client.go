@@ -17,7 +17,7 @@ import (
 	"net/http"
 )
 
-//AIServiceSpeechClient a client for AIServiceSpeech
+// AIServiceSpeechClient a client for AIServiceSpeech
 type AIServiceSpeechClient struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
@@ -39,7 +39,8 @@ func NewAIServiceSpeechClientWithConfigurationProvider(configProvider common.Con
 
 // NewAIServiceSpeechClientWithOboToken Creates a new default AIServiceSpeech client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
-//  as well as reading the region
+//
+//	as well as reading the region
 func NewAIServiceSpeechClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client AIServiceSpeechClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {

@@ -13,7 +13,7 @@ import (
 
 // SearchLogsRequest wrapper for the SearchLogs operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loggingsearch/SearchLogs.go.html to see an example of how to use SearchLogsRequest.
 type SearchLogsRequest struct {

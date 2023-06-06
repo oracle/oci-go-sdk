@@ -13,7 +13,7 @@ import (
 
 // GetDashboardRequest wrapper for the GetDashboard operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/GetDashboard.go.html to see an example of how to use GetDashboardRequest.
 type GetDashboardRequest struct {

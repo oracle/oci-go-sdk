@@ -23,7 +23,7 @@ import (
 	"net/http"
 )
 
-//DashboardClient a client for Dashboard
+// DashboardClient a client for Dashboard
 type DashboardClient struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
@@ -45,7 +45,8 @@ func NewDashboardClientWithConfigurationProvider(configProvider common.Configura
 
 // NewDashboardClientWithOboToken Creates a new default Dashboard client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
-//  as well as reading the region
+//
+//	as well as reading the region
 func NewDashboardClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client DashboardClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {

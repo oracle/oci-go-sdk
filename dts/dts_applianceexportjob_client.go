@@ -17,7 +17,7 @@ import (
 	"net/http"
 )
 
-//ApplianceExportJobClient a client for ApplianceExportJob
+// ApplianceExportJobClient a client for ApplianceExportJob
 type ApplianceExportJobClient struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
@@ -39,7 +39,8 @@ func NewApplianceExportJobClientWithConfigurationProvider(configProvider common.
 
 // NewApplianceExportJobClientWithOboToken Creates a new default ApplianceExportJob client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
-//  as well as reading the region
+//
+//	as well as reading the region
 func NewApplianceExportJobClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client ApplianceExportJobClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {

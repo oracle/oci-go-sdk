@@ -13,7 +13,7 @@ import (
 
 // ListIncidentResourceTypesRequest wrapper for the ListIncidentResourceTypes operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ListIncidentResourceTypes.go.html to see an example of how to use ListIncidentResourceTypesRequest.
 type ListIncidentResourceTypesRequest struct {

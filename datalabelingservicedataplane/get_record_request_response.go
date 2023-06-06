@@ -13,7 +13,7 @@ import (
 
 // GetRecordRequest wrapper for the GetRecord operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetRecord.go.html to see an example of how to use GetRecordRequest.
 type GetRecordRequest struct {

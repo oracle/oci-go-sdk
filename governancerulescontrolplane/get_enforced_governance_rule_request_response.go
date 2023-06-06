@@ -13,7 +13,7 @@ import (
 
 // GetEnforcedGovernanceRuleRequest wrapper for the GetEnforcedGovernanceRule operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetEnforcedGovernanceRule.go.html to see an example of how to use GetEnforcedGovernanceRuleRequest.
 type GetEnforcedGovernanceRuleRequest struct {

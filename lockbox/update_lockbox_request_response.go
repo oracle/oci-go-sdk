@@ -13,7 +13,7 @@ import (
 
 // UpdateLockboxRequest wrapper for the UpdateLockbox operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/UpdateLockbox.go.html to see an example of how to use UpdateLockboxRequest.
 type UpdateLockboxRequest struct {

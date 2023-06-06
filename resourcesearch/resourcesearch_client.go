@@ -17,7 +17,7 @@ import (
 	"net/http"
 )
 
-//ResourceSearchClient a client for ResourceSearch
+// ResourceSearchClient a client for ResourceSearch
 type ResourceSearchClient struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
@@ -39,7 +39,8 @@ func NewResourceSearchClientWithConfigurationProvider(configProvider common.Conf
 
 // NewResourceSearchClientWithOboToken Creates a new default ResourceSearch client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
-//  as well as reading the region
+//
+//	as well as reading the region
 func NewResourceSearchClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client ResourceSearchClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {

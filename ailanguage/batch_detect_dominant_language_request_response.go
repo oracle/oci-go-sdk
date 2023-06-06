@@ -13,7 +13,7 @@ import (
 
 // BatchDetectDominantLanguageRequest wrapper for the BatchDetectDominantLanguage operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ailanguage/BatchDetectDominantLanguage.go.html to see an example of how to use BatchDetectDominantLanguageRequest.
 type BatchDetectDominantLanguageRequest struct {

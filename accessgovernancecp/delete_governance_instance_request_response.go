@@ -13,7 +13,7 @@ import (
 
 // DeleteGovernanceInstanceRequest wrapper for the DeleteGovernanceInstance operation
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/DeleteGovernanceInstance.go.html to see an example of how to use DeleteGovernanceInstanceRequest.
 type DeleteGovernanceInstanceRequest struct {
