@@ -27,6 +27,7 @@ type ValueArray struct {
 	// The indexes of the words in the field value.
 	WordIndexes []int `mandatory:"true" json:"wordIndexes"`
 
+	// The array of values.
 	Items []DocumentField `mandatory:"true" json:"items"`
 
 	// The detected text of a field.
