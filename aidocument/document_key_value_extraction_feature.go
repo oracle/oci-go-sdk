@@ -18,6 +18,9 @@ import (
 
 // DocumentKeyValueExtractionFeature Extracting form fields.
 type DocumentKeyValueExtractionFeature struct {
+
+	// The custom model ID.
+	ModelId *string `mandatory:"false" json:"modelId"`
 }
 
 func (m DocumentKeyValueExtractionFeature) String() string {

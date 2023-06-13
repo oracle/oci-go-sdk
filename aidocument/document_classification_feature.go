@@ -21,6 +21,9 @@ type DocumentClassificationFeature struct {
 
 	// The maximum number of results to return.
 	MaxResults *int `mandatory:"false" json:"maxResults"`
+
+	// The custom model ID.
+	ModelId *string `mandatory:"false" json:"modelId"`
 }
 
 func (m DocumentClassificationFeature) String() string {
