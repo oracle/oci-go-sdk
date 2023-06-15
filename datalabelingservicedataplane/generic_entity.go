@@ -22,6 +22,8 @@ type GenericEntity struct {
 	// A collection of label entities.
 	Labels []Label `mandatory:"true" json:"labels"`
 
+	DocumentEntityMetadata *DocumentEntityMetadata `mandatory:"false" json:"documentEntityMetadata"`
+
 	// A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only.
 	// For example: `{"bar-key": "value"}`
 	ExtendedMetadata map[string]string `mandatory:"false" json:"extendedMetadata"`

@@ -119,6 +119,30 @@ type RoverNode struct {
 	// Customer provided master key ID to encrypt secret information. If not provided, Rover's master key will be used for encryption.
 	MasterKeyId *string `mandatory:"false" json:"masterKeyId"`
 
+	// The certificateAuthorityId of subordinate/intermediate certificate authority.
+	CertificateAuthorityId *string `mandatory:"false" json:"certificateAuthorityId"`
+
+	// The time after which leaf certificate will invalid.
+	TimeCertValidityEnd *common.SDKTime `mandatory:"false" json:"timeCertValidityEnd"`
+
+	// The common name for the leaf certificate.
+	CommonName *string `mandatory:"false" json:"commonName"`
+
+	// The compartmentId of the leaf certificate.
+	CertCompartmentId *string `mandatory:"false" json:"certCompartmentId"`
+
+	// The version number of the leaf certificate.
+	CertificateVersionNumber *string `mandatory:"false" json:"certificateVersionNumber"`
+
+	// The id of the leaf certificate.
+	CertificateId *string `mandatory:"false" json:"certificateId"`
+
+	// key algorithm for issuing leaf certificate.
+	CertKeyAlgorithm CertKeyAlgorithmEnum `mandatory:"false" json:"certKeyAlgorithm,omitempty"`
+
+	// signature algorithm for issuing leaf certificate.
+	CertSignatureAlgorithm CertSignatureAlgorithmEnum `mandatory:"false" json:"certSignatureAlgorithm,omitempty"`
+
 	// The tags associated with tagSlug.
 	Tags *string `mandatory:"false" json:"tags"`
 
@@ -159,6 +183,12 @@ func (m RoverNode) ValidateEnumValue() (bool, error) {
 	}
 	if _, ok := GetMappingRoverNodeShippingPreferenceEnum(string(m.ShippingPreference)); !ok && m.ShippingPreference != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShippingPreference: %s. Supported values are: %s.", m.ShippingPreference, strings.Join(GetRoverNodeShippingPreferenceEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingCertKeyAlgorithmEnum(string(m.CertKeyAlgorithm)); !ok && m.CertKeyAlgorithm != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CertKeyAlgorithm: %s. Supported values are: %s.", m.CertKeyAlgorithm, strings.Join(GetCertKeyAlgorithmEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingCertSignatureAlgorithmEnum(string(m.CertSignatureAlgorithm)); !ok && m.CertSignatureAlgorithm != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CertSignatureAlgorithm: %s. Supported values are: %s.", m.CertSignatureAlgorithm, strings.Join(GetCertSignatureAlgorithmEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
