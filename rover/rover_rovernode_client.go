@@ -567,6 +567,69 @@ func (client RoverNodeClient) listRoverNodes(ctx context.Context, request common
 	return response, err
 }
 
+// RoverNodeActionRetrieveCaBundle Retrieve Ca Bundle for a rover node
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeActionRetrieveCaBundle.go.html to see an example of how to use RoverNodeActionRetrieveCaBundle API.
+// A default retry strategy applies to this operation RoverNodeActionRetrieveCaBundle()
+func (client RoverNodeClient) RoverNodeActionRetrieveCaBundle(ctx context.Context, request RoverNodeActionRetrieveCaBundleRequest) (response RoverNodeActionRetrieveCaBundleResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.roverNodeActionRetrieveCaBundle, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = RoverNodeActionRetrieveCaBundleResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = RoverNodeActionRetrieveCaBundleResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(RoverNodeActionRetrieveCaBundleResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into RoverNodeActionRetrieveCaBundleResponse")
+	}
+	return
+}
+
+// roverNodeActionRetrieveCaBundle implements the OCIOperation interface (enables retrying operations)
+func (client RoverNodeClient) roverNodeActionRetrieveCaBundle(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverNodes/{roverNodeId}/actions/retrieveCaBundle", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response RoverNodeActionRetrieveCaBundleResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverNode/RoverNodeActionRetrieveCaBundle"
+		err = common.PostProcessServiceError(err, "RoverNode", "RoverNodeActionRetrieveCaBundle", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // RoverNodeActionSetKey Get the resource principal public key for a rover node
 //
 // See also
@@ -623,6 +686,258 @@ func (client RoverNodeClient) roverNodeActionSetKey(ctx context.Context, request
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverNodeSetKey/RoverNodeActionSetKey"
 		err = common.PostProcessServiceError(err, "RoverNode", "RoverNodeActionSetKey", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// RoverNodeGenerateCertificate Request to generate certificate for a roverNode.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeGenerateCertificate.go.html to see an example of how to use RoverNodeGenerateCertificate API.
+// A default retry strategy applies to this operation RoverNodeGenerateCertificate()
+func (client RoverNodeClient) RoverNodeGenerateCertificate(ctx context.Context, request RoverNodeGenerateCertificateRequest) (response RoverNodeGenerateCertificateResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.roverNodeGenerateCertificate, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = RoverNodeGenerateCertificateResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = RoverNodeGenerateCertificateResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(RoverNodeGenerateCertificateResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into RoverNodeGenerateCertificateResponse")
+	}
+	return
+}
+
+// roverNodeGenerateCertificate implements the OCIOperation interface (enables retrying operations)
+func (client RoverNodeClient) roverNodeGenerateCertificate(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverNodes/{roverNodeId}/actions/generateCertificate", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response RoverNodeGenerateCertificateResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverNode/RoverNodeGenerateCertificate"
+		err = common.PostProcessServiceError(err, "RoverNode", "RoverNodeGenerateCertificate", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// RoverNodeRenewCertificate Request to renew certificate for a roverNode.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeRenewCertificate.go.html to see an example of how to use RoverNodeRenewCertificate API.
+// A default retry strategy applies to this operation RoverNodeRenewCertificate()
+func (client RoverNodeClient) RoverNodeRenewCertificate(ctx context.Context, request RoverNodeRenewCertificateRequest) (response RoverNodeRenewCertificateResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.roverNodeRenewCertificate, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = RoverNodeRenewCertificateResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = RoverNodeRenewCertificateResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(RoverNodeRenewCertificateResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into RoverNodeRenewCertificateResponse")
+	}
+	return
+}
+
+// roverNodeRenewCertificate implements the OCIOperation interface (enables retrying operations)
+func (client RoverNodeClient) roverNodeRenewCertificate(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverNodes/{roverNodeId}/actions/renewCertificate", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response RoverNodeRenewCertificateResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverNode/RoverNodeRenewCertificate"
+		err = common.PostProcessServiceError(err, "RoverNode", "RoverNodeRenewCertificate", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// RoverNodeReplaceCertificateAuthority Request to replace certificate authority for a roverNode.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeReplaceCertificateAuthority.go.html to see an example of how to use RoverNodeReplaceCertificateAuthority API.
+// A default retry strategy applies to this operation RoverNodeReplaceCertificateAuthority()
+func (client RoverNodeClient) RoverNodeReplaceCertificateAuthority(ctx context.Context, request RoverNodeReplaceCertificateAuthorityRequest) (response RoverNodeReplaceCertificateAuthorityResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.roverNodeReplaceCertificateAuthority, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = RoverNodeReplaceCertificateAuthorityResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = RoverNodeReplaceCertificateAuthorityResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(RoverNodeReplaceCertificateAuthorityResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into RoverNodeReplaceCertificateAuthorityResponse")
+	}
+	return
+}
+
+// roverNodeReplaceCertificateAuthority implements the OCIOperation interface (enables retrying operations)
+func (client RoverNodeClient) roverNodeReplaceCertificateAuthority(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverNodes/{roverNodeId}/actions/replaceCertificateAuthority", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response RoverNodeReplaceCertificateAuthorityResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverNode/RoverNodeReplaceCertificateAuthority"
+		err = common.PostProcessServiceError(err, "RoverNode", "RoverNodeReplaceCertificateAuthority", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// RoverNodeRetrieveLeafCertificate Retrieve the leaf certificate info for a rover node
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeRetrieveLeafCertificate.go.html to see an example of how to use RoverNodeRetrieveLeafCertificate API.
+// A default retry strategy applies to this operation RoverNodeRetrieveLeafCertificate()
+func (client RoverNodeClient) RoverNodeRetrieveLeafCertificate(ctx context.Context, request RoverNodeRetrieveLeafCertificateRequest) (response RoverNodeRetrieveLeafCertificateResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.roverNodeRetrieveLeafCertificate, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = RoverNodeRetrieveLeafCertificateResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = RoverNodeRetrieveLeafCertificateResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(RoverNodeRetrieveLeafCertificateResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into RoverNodeRetrieveLeafCertificateResponse")
+	}
+	return
+}
+
+// roverNodeRetrieveLeafCertificate implements the OCIOperation interface (enables retrying operations)
+func (client RoverNodeClient) roverNodeRetrieveLeafCertificate(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverNodes/{roverNodeId}/actions/retrieveLeafCertificate", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response RoverNodeRetrieveLeafCertificateResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverNode/RoverNodeRetrieveLeafCertificate"
+		err = common.PostProcessServiceError(err, "RoverNode", "RoverNodeRetrieveLeafCertificate", apiReferenceLink)
 		return response, err
 	}
 

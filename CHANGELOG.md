@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.41.1 - 2023-06-20
+### Added
+- Support for serial console access in the Database service
+- Support for an increased storage size limit of up to 384 TBs in the Database service
+- Support for network security group (NSG) support for private database registrations / private endpoints in the Database Migration service
+- Support for document classification on documents of more than one page in the Data Labeling service
+- Support for importing datasets in the Data Labeling service
+- Support for specifying a shape when creating applications in the Functions service
+- Support for creating and managing pools in the Data Flow service
+- Support for specifying certificate parameters when creating or updating a node in the Roving Edge Infrastructure service
+- Support for certificate management in the Roving Edge Infrastructure service
+- Support for upgrade bundle management in the Roving Edge Infrastructure service
+
+
 ## 65.41.0 - 2023-06-13
 ### Added
 - Support for the OCI Control Center service
