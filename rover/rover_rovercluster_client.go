@@ -451,6 +451,69 @@ func (client RoverClusterClient) listRoverClusters(ctx context.Context, request 
 	return response, err
 }
 
+// RequestAdditionalNodes Submit additional nodes request for a roverCluster.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RequestAdditionalNodes.go.html to see an example of how to use RequestAdditionalNodes API.
+// A default retry strategy applies to this operation RequestAdditionalNodes()
+func (client RoverClusterClient) RequestAdditionalNodes(ctx context.Context, request RequestAdditionalNodesRequest) (response RequestAdditionalNodesResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.requestAdditionalNodes, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = RequestAdditionalNodesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = RequestAdditionalNodesResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(RequestAdditionalNodesResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into RequestAdditionalNodesResponse")
+	}
+	return
+}
+
+// requestAdditionalNodes implements the OCIOperation interface (enables retrying operations)
+func (client RoverClusterClient) requestAdditionalNodes(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverClusters/{roverClusterId}/actions/requestAdditionalNodes", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response RequestAdditionalNodesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/rover/20201210/RoverCluster/RequestAdditionalNodes"
+		err = common.PostProcessServiceError(err, "RoverCluster", "RequestAdditionalNodes", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // UpdateRoverCluster Updates the RoverCluster
 //
 // See also

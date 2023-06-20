@@ -32,6 +32,9 @@ type KeyValueSelectionEntity struct {
 
 	// Integer value.
 	Rotation *float32 `mandatory:"false" json:"rotation"`
+
+	// Integer value.
+	PageNumber *float32 `mandatory:"false" json:"pageNumber"`
 }
 
 func (m KeyValueSelectionEntity) String() string {

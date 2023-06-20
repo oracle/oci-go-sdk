@@ -86,6 +86,24 @@ type UpdateRoverNodeDetails struct {
 	// The public key of the resource principal
 	PublicKey *string `mandatory:"false" json:"publicKey"`
 
+	// The certificateAuthorityId of subordinate/intermediate certificate authority.
+	CertificateAuthorityId *string `mandatory:"false" json:"certificateAuthorityId"`
+
+	// The time after which leaf certificate will invalid.
+	TimeCertValidityEnd *common.SDKTime `mandatory:"false" json:"timeCertValidityEnd"`
+
+	// The common name for the leaf certificate.
+	CommonName *string `mandatory:"false" json:"commonName"`
+
+	// The compartmentId of the leaf certificate.
+	CertCompartmentId *string `mandatory:"false" json:"certCompartmentId"`
+
+	// key algorithm for issuing leaf certificate.
+	CertKeyAlgorithm CertKeyAlgorithmEnum `mandatory:"false" json:"certKeyAlgorithm,omitempty"`
+
+	// signature algorithm for issuing leaf certificate.
+	CertSignatureAlgorithm CertSignatureAlgorithmEnum `mandatory:"false" json:"certSignatureAlgorithm,omitempty"`
+
 	// The freeform tags associated with this resource, if any. Each tag is a simple key-value pair with no
 	// predefined name, type, or namespace. For more information, see Resource Tags (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcetags.htm).
 	// Example: `{"Department": "Finance"}`
@@ -120,6 +138,12 @@ func (m UpdateRoverNodeDetails) ValidateEnumValue() (bool, error) {
 	}
 	if _, ok := GetMappingEnclosureTypeEnum(string(m.EnclosureType)); !ok && m.EnclosureType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EnclosureType: %s. Supported values are: %s.", m.EnclosureType, strings.Join(GetEnclosureTypeEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingCertKeyAlgorithmEnum(string(m.CertKeyAlgorithm)); !ok && m.CertKeyAlgorithm != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CertKeyAlgorithm: %s. Supported values are: %s.", m.CertKeyAlgorithm, strings.Join(GetCertKeyAlgorithmEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingCertSignatureAlgorithmEnum(string(m.CertSignatureAlgorithm)); !ok && m.CertSignatureAlgorithm != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CertSignatureAlgorithm: %s. Supported values are: %s.", m.CertSignatureAlgorithm, strings.Join(GetCertSignatureAlgorithmEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))

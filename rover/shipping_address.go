@@ -36,7 +36,7 @@ type ShippingAddress struct {
 	// country for shipping address.
 	Country *string `mandatory:"true" json:"country"`
 
-	// recepient phone number.
+	// recipient phone number.
 	PhoneNumber *string `mandatory:"true" json:"phoneNumber"`
 
 	// CareOf for shipping address.
@@ -51,7 +51,7 @@ type ShippingAddress struct {
 	// Address line 4.
 	Address4 *string `mandatory:"false" json:"address4"`
 
-	// recepient email address.
+	// recipient email address.
 	Email *string `mandatory:"false" json:"email"`
 }
 
