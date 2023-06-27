@@ -83,6 +83,24 @@ functions that return a pointer for a given value. For example:
 	}
 
 
+Dedicated Endpoints
+
+Dedicated endpoints are the endpoint templates defined by the service for a specific realm at client level. OCI Go SDK
+allows you to enable the use of these realm-specific endpoint templates feature at application level and at client level.
+The value set at client level takes precedence over the value set at the application level. This feature is disabled by default.
+
+1. To opt-in the realm-specific endpoint templates feature at application level, set the environment variable
+   OCI_REALM_SPECIFIC_SERVICE_ENDPOINT_TEMPLATE_ENABLED  to true. The boolean value is case insensitive
+
+2. To opt-in the realm-specific endpoint templates feature at client level, set the flag in code as shown below
+    c, clerr := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+    c.SetCustomClientConfiguration(common.CustomClientConfiguration{
+            RealmSpecificServiceEndpointTemplateEnabled: common.Bool(true),
+        })
+
+For reference, please refer https://github.com/oracle/oci-go-sdk/blob/master/example/example_objectstorage_test.go#L222-L251
+
+
 Customizing Requests
 
 The SDK exposes functionality that allows the user to customize any http request before is sent to the service.
