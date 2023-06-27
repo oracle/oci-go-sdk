@@ -137,7 +137,7 @@ func (client OccMetricsClient) listMetricProperties(ctx context.Context, request
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/occ/20230515/MetricPropertyCollection/ListMetricProperties"
 		err = common.PostProcessServiceError(err, "OccMetrics", "ListMetricProperties", apiReferenceLink)
 		return response, err
 	}
@@ -195,7 +195,7 @@ func (client OccMetricsClient) listNamespaces(ctx context.Context, request commo
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/occ/20230515/NamespaceCollection/ListNamespaces"
 		err = common.PostProcessServiceError(err, "OccMetrics", "ListNamespaces", apiReferenceLink)
 		return response, err
 	}
@@ -255,7 +255,7 @@ func (client OccMetricsClient) requestSummarizedMetricData(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/occ/20230515/SummarizedMetricDataCollection/RequestSummarizedMetricData"
 		err = common.PostProcessServiceError(err, "OccMetrics", "RequestSummarizedMetricData", apiReferenceLink)
 		return response, err
 	}
