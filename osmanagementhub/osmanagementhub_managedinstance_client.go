@@ -144,7 +144,7 @@ func (client ManagedInstanceClient) attachSoftwareSourcesToManagedInstance(ctx c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/AttachSoftwareSourcesToManagedInstance"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "AttachSoftwareSourcesToManagedInstance", apiReferenceLink)
 		return response, err
 	}
@@ -208,7 +208,7 @@ func (client ManagedInstanceClient) detachSoftwareSourcesFromManagedInstance(ctx
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/DetachSoftwareSourcesFromManagedInstance"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "DetachSoftwareSourcesFromManagedInstance", apiReferenceLink)
 		return response, err
 	}
@@ -274,7 +274,7 @@ func (client ManagedInstanceClient) disableModuleStreamOnManagedInstance(ctx con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/DisableModuleStreamOnManagedInstance"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "DisableModuleStreamOnManagedInstance", apiReferenceLink)
 		return response, err
 	}
@@ -341,7 +341,7 @@ func (client ManagedInstanceClient) enableModuleStreamOnManagedInstance(ctx cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/EnableModuleStreamOnManagedInstance"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "EnableModuleStreamOnManagedInstance", apiReferenceLink)
 		return response, err
 	}
@@ -399,7 +399,7 @@ func (client ManagedInstanceClient) getManagedInstance(ctx context.Context, requ
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/GetManagedInstance"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "GetManagedInstance", apiReferenceLink)
 		return response, err
 	}
@@ -464,7 +464,7 @@ func (client ManagedInstanceClient) installModuleStreamProfileOnManagedInstance(
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/InstallModuleStreamProfileOnManagedInstance"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "InstallModuleStreamProfileOnManagedInstance", apiReferenceLink)
 		return response, err
 	}
@@ -527,7 +527,7 @@ func (client ManagedInstanceClient) installPackagesOnManagedInstance(ctx context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/InstallPackagesOnManagedInstance"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "InstallPackagesOnManagedInstance", apiReferenceLink)
 		return response, err
 	}
@@ -585,7 +585,7 @@ func (client ManagedInstanceClient) listManagedInstanceAvailablePackages(ctx con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/ListManagedInstanceAvailablePackages"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "ListManagedInstanceAvailablePackages", apiReferenceLink)
 		return response, err
 	}
@@ -643,7 +643,7 @@ func (client ManagedInstanceClient) listManagedInstanceAvailableSoftwareSources(
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/ListManagedInstanceAvailableSoftwareSources"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "ListManagedInstanceAvailableSoftwareSources", apiReferenceLink)
 		return response, err
 	}
@@ -701,7 +701,7 @@ func (client ManagedInstanceClient) listManagedInstanceErrata(ctx context.Contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/ListManagedInstanceErrata"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "ListManagedInstanceErrata", apiReferenceLink)
 		return response, err
 	}
@@ -759,7 +759,7 @@ func (client ManagedInstanceClient) listManagedInstanceInstalledPackages(ctx con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/ListManagedInstanceInstalledPackages"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "ListManagedInstanceInstalledPackages", apiReferenceLink)
 		return response, err
 	}
@@ -826,7 +826,7 @@ func (client ManagedInstanceClient) listManagedInstanceModules(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/ListManagedInstanceModules"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "ListManagedInstanceModules", apiReferenceLink)
 		return response, err
 	}
@@ -884,7 +884,7 @@ func (client ManagedInstanceClient) listManagedInstanceUpdatablePackages(ctx con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/ListManagedInstanceUpdatablePackages"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "ListManagedInstanceUpdatablePackages", apiReferenceLink)
 		return response, err
 	}
@@ -942,7 +942,7 @@ func (client ManagedInstanceClient) listManagedInstances(ctx context.Context, re
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/ListManagedInstances"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "ListManagedInstances", apiReferenceLink)
 		return response, err
 	}
@@ -1056,7 +1056,7 @@ func (client ManagedInstanceClient) manageModuleStreamsOnManagedInstance(ctx con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/ManageModuleStreamsOnManagedInstance"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "ManageModuleStreamsOnManagedInstance", apiReferenceLink)
 		return response, err
 	}
@@ -1119,7 +1119,7 @@ func (client ManagedInstanceClient) refreshSoftwareOnManagedInstance(ctx context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/RefreshSoftwareOnManagedInstance"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "RefreshSoftwareOnManagedInstance", apiReferenceLink)
 		return response, err
 	}
@@ -1184,7 +1184,7 @@ func (client ManagedInstanceClient) removeModuleStreamProfileFromManagedInstance
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/RemoveModuleStreamProfileFromManagedInstance"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "RemoveModuleStreamProfileFromManagedInstance", apiReferenceLink)
 		return response, err
 	}
@@ -1247,7 +1247,7 @@ func (client ManagedInstanceClient) removePackagesFromManagedInstance(ctx contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/RemovePackagesFromManagedInstance"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "RemovePackagesFromManagedInstance", apiReferenceLink)
 		return response, err
 	}
@@ -1313,7 +1313,7 @@ func (client ManagedInstanceClient) switchModuleStreamOnManagedInstance(ctx cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/SwitchModuleStreamOnManagedInstance"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "SwitchModuleStreamOnManagedInstance", apiReferenceLink)
 		return response, err
 	}
@@ -1376,7 +1376,7 @@ func (client ManagedInstanceClient) updateAllPackagesOnManagedInstancesInCompart
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/UpdateAllPackagesOnManagedInstancesInCompartment"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "UpdateAllPackagesOnManagedInstancesInCompartment", apiReferenceLink)
 		return response, err
 	}
@@ -1434,7 +1434,7 @@ func (client ManagedInstanceClient) updateManagedInstance(ctx context.Context, r
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/UpdateManagedInstance"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "UpdateManagedInstance", apiReferenceLink)
 		return response, err
 	}
@@ -1497,7 +1497,7 @@ func (client ManagedInstanceClient) updatePackagesOnManagedInstance(ctx context.
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/UpdatePackagesOnManagedInstance"
 		err = common.PostProcessServiceError(err, "ManagedInstance", "UpdatePackagesOnManagedInstance", apiReferenceLink)
 		return response, err
 	}

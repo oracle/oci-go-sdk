@@ -145,7 +145,7 @@ func (client OnboardingClient) createProfile(ctx context.Context, request common
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/Profile/CreateProfile"
 		err = common.PostProcessServiceError(err, "Onboarding", "CreateProfile", apiReferenceLink)
 		return response, err
 	}
@@ -203,7 +203,7 @@ func (client OnboardingClient) deleteProfile(ctx context.Context, request common
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/Profile/DeleteProfile"
 		err = common.PostProcessServiceError(err, "Onboarding", "DeleteProfile", apiReferenceLink)
 		return response, err
 	}
@@ -261,7 +261,7 @@ func (client OnboardingClient) getProfile(ctx context.Context, request common.OC
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/Profile/GetProfile"
 		err = common.PostProcessServiceError(err, "Onboarding", "GetProfile", apiReferenceLink)
 		return response, err
 	}
@@ -320,7 +320,7 @@ func (client OnboardingClient) listProfiles(ctx context.Context, request common.
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/Profile/ListProfiles"
 		err = common.PostProcessServiceError(err, "Onboarding", "ListProfiles", apiReferenceLink)
 		return response, err
 	}
@@ -378,7 +378,7 @@ func (client OnboardingClient) updateProfile(ctx context.Context, request common
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/Profile/UpdateProfile"
 		err = common.PostProcessServiceError(err, "Onboarding", "UpdateProfile", apiReferenceLink)
 		return response, err
 	}
