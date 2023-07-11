@@ -137,7 +137,7 @@ func (client ReportingManagedInstanceClient) getManagedInstanceAnalyticContent(c
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/GetManagedInstanceAnalyticContent"
 		err = common.PostProcessServiceError(err, "ReportingManagedInstance", "GetManagedInstanceAnalyticContent", apiReferenceLink)
 		return response, err
 	}
@@ -194,7 +194,7 @@ func (client ReportingManagedInstanceClient) getManagedInstanceContent(ctx conte
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstance/GetManagedInstanceContent"
 		err = common.PostProcessServiceError(err, "ReportingManagedInstance", "GetManagedInstanceContent", apiReferenceLink)
 		return response, err
 	}
@@ -252,7 +252,7 @@ func (client ReportingManagedInstanceClient) summarizeManagedInstanceAnalytics(c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/osmh/20220901/ManagedInstanceAnalyticCollection/SummarizeManagedInstanceAnalytics"
 		err = common.PostProcessServiceError(err, "ReportingManagedInstance", "SummarizeManagedInstanceAnalytics", apiReferenceLink)
 		return response, err
 	}
