@@ -21,7 +21,7 @@ type WorkRequestResource struct {
 	// The resource type the work request affects.
 	EntityType *string `mandatory:"true" json:"entityType"`
 
-	// The way in which this resource is affected by the work tracked in the work request.
+	// Indicates how the resource is affected by the work tracked in the work request.
 	// A resource being created, updated, or deleted will remain in the IN_PROGRESS state until
 	// work is complete for that resource, at which point it will transition to CREATED, UPDATED,
 	// or DELETED, respectively.
@@ -30,7 +30,7 @@ type WorkRequestResource struct {
 	// The identifier of the resource the work request affects.
 	Identifier *string `mandatory:"true" json:"identifier"`
 
-	// The URI path that the user can do a GET on to access the resource metadata.
+	// The URI path so that the user can do a GET to access the resource metadata.
 	EntityUri *string `mandatory:"false" json:"entityUri"`
 }
 

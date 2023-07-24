@@ -18,7 +18,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListAssignedSubscriptions.go.html to see an example of how to use ListAssignedSubscriptionsRequest.
 type ListAssignedSubscriptionsRequest struct {
 
-	// OCID of the compartment. Always a tenancy OCID.
+	// The ID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The ID of the subscription to which the tenancy is associated.
@@ -41,6 +41,9 @@ type ListAssignedSubscriptionsRequest struct {
 	// * The default order for displayName is ascending.
 	// * If no value is specified, timeCreated is the default.
 	SortBy ListAssignedSubscriptionsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
+
+	// The version of the subscription entity.
+	EntityVersion ListAssignedSubscriptionsEntityVersionEnum `mandatory:"false" contributesTo:"query" name:"entityVersion" omitEmpty:"true"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
@@ -83,6 +86,9 @@ func (request ListAssignedSubscriptionsRequest) ValidateEnumValue() (bool, error
 	}
 	if _, ok := GetMappingListAssignedSubscriptionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAssignedSubscriptionsSortByEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingListAssignedSubscriptionsEntityVersionEnum(string(request.EntityVersion)); !ok && request.EntityVersion != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EntityVersion: %s. Supported values are: %s.", request.EntityVersion, strings.Join(GetListAssignedSubscriptionsEntityVersionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
@@ -199,5 +205,47 @@ func GetListAssignedSubscriptionsSortByEnumStringValues() []string {
 // GetMappingListAssignedSubscriptionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListAssignedSubscriptionsSortByEnum(val string) (ListAssignedSubscriptionsSortByEnum, bool) {
 	enum, ok := mappingListAssignedSubscriptionsSortByEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
+}
+
+// ListAssignedSubscriptionsEntityVersionEnum Enum with underlying type: string
+type ListAssignedSubscriptionsEntityVersionEnum string
+
+// Set of constants representing the allowable values for ListAssignedSubscriptionsEntityVersionEnum
+const (
+	ListAssignedSubscriptionsEntityVersionV1 ListAssignedSubscriptionsEntityVersionEnum = "V1"
+	ListAssignedSubscriptionsEntityVersionV2 ListAssignedSubscriptionsEntityVersionEnum = "V2"
+)
+
+var mappingListAssignedSubscriptionsEntityVersionEnum = map[string]ListAssignedSubscriptionsEntityVersionEnum{
+	"V1": ListAssignedSubscriptionsEntityVersionV1,
+	"V2": ListAssignedSubscriptionsEntityVersionV2,
+}
+
+var mappingListAssignedSubscriptionsEntityVersionEnumLowerCase = map[string]ListAssignedSubscriptionsEntityVersionEnum{
+	"v1": ListAssignedSubscriptionsEntityVersionV1,
+	"v2": ListAssignedSubscriptionsEntityVersionV2,
+}
+
+// GetListAssignedSubscriptionsEntityVersionEnumValues Enumerates the set of values for ListAssignedSubscriptionsEntityVersionEnum
+func GetListAssignedSubscriptionsEntityVersionEnumValues() []ListAssignedSubscriptionsEntityVersionEnum {
+	values := make([]ListAssignedSubscriptionsEntityVersionEnum, 0)
+	for _, v := range mappingListAssignedSubscriptionsEntityVersionEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetListAssignedSubscriptionsEntityVersionEnumStringValues Enumerates the set of values in String for ListAssignedSubscriptionsEntityVersionEnum
+func GetListAssignedSubscriptionsEntityVersionEnumStringValues() []string {
+	return []string{
+		"V1",
+		"V2",
+	}
+}
+
+// GetMappingListAssignedSubscriptionsEntityVersionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAssignedSubscriptionsEntityVersionEnum(val string) (ListAssignedSubscriptionsEntityVersionEnum, bool) {
+	enum, ok := mappingListAssignedSubscriptionsEntityVersionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

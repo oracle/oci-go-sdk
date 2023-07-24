@@ -10,93 +10,186 @@
 package tenantmanagercontrolplane
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
-// AssignedSubscription Assigned subscription information.
-type AssignedSubscription struct {
+// AssignedSubscription Assigned subscription type, which carries shared properties for any assigned subscription version.
+type AssignedSubscription interface {
 
-	// OCID of the subscription.
-	Id *string `mandatory:"true" json:"id"`
+	// The Oracle ID (OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)) of the subscription.
+	GetId() *string
 
-	// OCID of the compartment. Always a tenancy OCID.
-	CompartmentId *string `mandatory:"true" json:"compartmentId"`
+	// The Oracle ID (OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)) of the owning compartment. Always a tenancy OCID.
+	GetCompartmentId() *string
 
-	// Subscription ID.
-	ClassicSubscriptionId *string `mandatory:"true" json:"classicSubscriptionId"`
+	// The type of subscription, such as 'UCM', 'SAAS', 'ERP', 'CRM'.
+	GetServiceName() *string
 
-	// The type of subscription, such as 'CLOUDCM', 'SAAS', 'ERP', or 'CRM'.
-	ServiceName *string `mandatory:"true" json:"serviceName"`
+	// The date and time of creation, as described in RFC 3339 (https://tools.ietf.org/rfc/rfc3339), section 14.29.
+	GetTimeCreated() *common.SDKTime
 
-	// Denotes if the subscription is legacy or not.
-	IsClassicSubscription *bool `mandatory:"false" json:"isClassicSubscription"`
+	// The date and time of update, as described in RFC 3339 (https://tools.ietf.org/rfc/rfc3339), section 14.29.
+	GetTimeUpdated() *common.SDKTime
 
-	// Region for the subscription.
-	RegionAssignment *string `mandatory:"false" json:"regionAssignment"`
+	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
+	// Example: `{"bar-key": "value"}`
+	GetFreeformTags() map[string]string
 
-	// Lifecycle state of the subscription.
-	LifecycleState SubscriptionLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
-
-	// List of SKUs linked to the subscription.
-	Skus []SubscriptionSku `mandatory:"false" json:"skus"`
-
-	// List of subscription order OCIDs that contributed to this subscription.
-	OrderIds []string `mandatory:"false" json:"orderIds"`
-
-	// Denotes any program that is associated with the subscription.
-	ProgramType *string `mandatory:"false" json:"programType"`
-
-	// The country code for the customer associated with the subscription.
-	CustomerCountryCode *string `mandatory:"false" json:"customerCountryCode"`
-
-	// The currency code for the customer associated with the subscription.
-	CloudAmountCurrency *string `mandatory:"false" json:"cloudAmountCurrency"`
-
-	// Customer service identifier for the customer associated with the subscription.
-	CsiNumber *string `mandatory:"false" json:"csiNumber"`
-
-	// Tier for the subscription, whether it is a free promotion subscription or a paid subscription.
-	SubscriptionTier *string `mandatory:"false" json:"subscriptionTier"`
-
-	// Denotes whether or not the subscription is a government subscription.
-	IsGovernmentSubscription *bool `mandatory:"false" json:"isGovernmentSubscription"`
-
-	// List of promotions related to the subscription.
-	Promotion []Promotion `mandatory:"false" json:"promotion"`
-
-	// Purchase entitlement ID associated with the subscription.
-	PurchaseEntitlementId *string `mandatory:"false" json:"purchaseEntitlementId"`
-
-	// Subscription start time.
-	StartDate *common.SDKTime `mandatory:"false" json:"startDate"`
-
-	// Subscription end time.
-	EndDate *common.SDKTime `mandatory:"false" json:"endDate"`
-
-	// Date-time when subscription is updated.
-	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
-
-	// Date-time when subscription is created.
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
+	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
+	// Example: `{"foo-namespace": {"bar-key": "value"}}`
+	GetDefinedTags() map[string]map[string]interface{}
 }
 
-func (m AssignedSubscription) String() string {
+type assignedsubscription struct {
+	JsonData      []byte
+	Id            *string                           `mandatory:"true" json:"id"`
+	CompartmentId *string                           `mandatory:"true" json:"compartmentId"`
+	ServiceName   *string                           `mandatory:"true" json:"serviceName"`
+	TimeCreated   *common.SDKTime                   `mandatory:"true" json:"timeCreated"`
+	TimeUpdated   *common.SDKTime                   `mandatory:"true" json:"timeUpdated"`
+	FreeformTags  map[string]string                 `mandatory:"true" json:"freeformTags"`
+	DefinedTags   map[string]map[string]interface{} `mandatory:"true" json:"definedTags"`
+	EntityVersion string                            `json:"entityVersion"`
+}
+
+// UnmarshalJSON unmarshals json
+func (m *assignedsubscription) UnmarshalJSON(data []byte) error {
+	m.JsonData = data
+	type Unmarshalerassignedsubscription assignedsubscription
+	s := struct {
+		Model Unmarshalerassignedsubscription
+	}{}
+	err := json.Unmarshal(data, &s.Model)
+	if err != nil {
+		return err
+	}
+	m.Id = s.Model.Id
+	m.CompartmentId = s.Model.CompartmentId
+	m.ServiceName = s.Model.ServiceName
+	m.TimeCreated = s.Model.TimeCreated
+	m.TimeUpdated = s.Model.TimeUpdated
+	m.FreeformTags = s.Model.FreeformTags
+	m.DefinedTags = s.Model.DefinedTags
+	m.EntityVersion = s.Model.EntityVersion
+
+	return err
+}
+
+// UnmarshalPolymorphicJSON unmarshals polymorphic json
+func (m *assignedsubscription) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+
+	if data == nil || string(data) == "null" {
+		return nil, nil
+	}
+
+	var err error
+	switch m.EntityVersion {
+	case "V1":
+		mm := ClassicAssignedSubscription{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "V2":
+		mm := CloudAssignedSubscription{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	default:
+		common.Logf("Recieved unsupported enum value for AssignedSubscription: %s.", m.EntityVersion)
+		return *m, nil
+	}
+}
+
+//GetId returns Id
+func (m assignedsubscription) GetId() *string {
+	return m.Id
+}
+
+//GetCompartmentId returns CompartmentId
+func (m assignedsubscription) GetCompartmentId() *string {
+	return m.CompartmentId
+}
+
+//GetServiceName returns ServiceName
+func (m assignedsubscription) GetServiceName() *string {
+	return m.ServiceName
+}
+
+//GetTimeCreated returns TimeCreated
+func (m assignedsubscription) GetTimeCreated() *common.SDKTime {
+	return m.TimeCreated
+}
+
+//GetTimeUpdated returns TimeUpdated
+func (m assignedsubscription) GetTimeUpdated() *common.SDKTime {
+	return m.TimeUpdated
+}
+
+//GetFreeformTags returns FreeformTags
+func (m assignedsubscription) GetFreeformTags() map[string]string {
+	return m.FreeformTags
+}
+
+//GetDefinedTags returns DefinedTags
+func (m assignedsubscription) GetDefinedTags() map[string]map[string]interface{} {
+	return m.DefinedTags
+}
+
+func (m assignedsubscription) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m AssignedSubscription) ValidateEnumValue() (bool, error) {
+func (m assignedsubscription) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := GetMappingSubscriptionLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
-		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSubscriptionLifecycleStateEnumStringValues(), ",")))
-	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
 	return false, nil
+}
+
+// AssignedSubscriptionEntityVersionEnum Enum with underlying type: string
+type AssignedSubscriptionEntityVersionEnum string
+
+// Set of constants representing the allowable values for AssignedSubscriptionEntityVersionEnum
+const (
+	AssignedSubscriptionEntityVersionV1 AssignedSubscriptionEntityVersionEnum = "V1"
+	AssignedSubscriptionEntityVersionV2 AssignedSubscriptionEntityVersionEnum = "V2"
+)
+
+var mappingAssignedSubscriptionEntityVersionEnum = map[string]AssignedSubscriptionEntityVersionEnum{
+	"V1": AssignedSubscriptionEntityVersionV1,
+	"V2": AssignedSubscriptionEntityVersionV2,
+}
+
+var mappingAssignedSubscriptionEntityVersionEnumLowerCase = map[string]AssignedSubscriptionEntityVersionEnum{
+	"v1": AssignedSubscriptionEntityVersionV1,
+	"v2": AssignedSubscriptionEntityVersionV2,
+}
+
+// GetAssignedSubscriptionEntityVersionEnumValues Enumerates the set of values for AssignedSubscriptionEntityVersionEnum
+func GetAssignedSubscriptionEntityVersionEnumValues() []AssignedSubscriptionEntityVersionEnum {
+	values := make([]AssignedSubscriptionEntityVersionEnum, 0)
+	for _, v := range mappingAssignedSubscriptionEntityVersionEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetAssignedSubscriptionEntityVersionEnumStringValues Enumerates the set of values in String for AssignedSubscriptionEntityVersionEnum
+func GetAssignedSubscriptionEntityVersionEnumStringValues() []string {
+	return []string{
+		"V1",
+		"V2",
+	}
+}
+
+// GetMappingAssignedSubscriptionEntityVersionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAssignedSubscriptionEntityVersionEnum(val string) (AssignedSubscriptionEntityVersionEnum, bool) {
+	enum, ok := mappingAssignedSubscriptionEntityVersionEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
 }

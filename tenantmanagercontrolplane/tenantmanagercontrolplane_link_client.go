@@ -57,7 +57,7 @@ func newLinkClientFromBaseClient(baseClient common.BaseClient, configProvider co
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 
 	client = LinkClient{BaseClient: baseClient}
-	client.BasePath = "20200801"
+	client.BasePath = "20230401"
 	err = client.setConfigurationProvider(configProvider)
 	return
 }
@@ -136,7 +136,7 @@ func (client LinkClient) deleteLink(ctx context.Context, request common.OCIReque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Link/DeleteLink"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/Link/DeleteLink"
 		err = common.PostProcessServiceError(err, "Link", "DeleteLink", apiReferenceLink)
 		return response, err
 	}
@@ -193,7 +193,7 @@ func (client LinkClient) getLink(ctx context.Context, request common.OCIRequest,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Link/GetLink"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/Link/GetLink"
 		err = common.PostProcessServiceError(err, "Link", "GetLink", apiReferenceLink)
 		return response, err
 	}
@@ -250,7 +250,7 @@ func (client LinkClient) listLinks(ctx context.Context, request common.OCIReques
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Link/ListLinks"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/Link/ListLinks"
 		err = common.PostProcessServiceError(err, "Link", "ListLinks", apiReferenceLink)
 		return response, err
 	}

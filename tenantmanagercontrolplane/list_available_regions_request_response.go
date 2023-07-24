@@ -18,7 +18,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListAvailableRegions.go.html to see an example of how to use ListAvailableRegionsRequest.
 type ListAvailableRegionsRequest struct {
 
-	// The ID of the subscription to which the tenancy is associated.
+	// OCID of the subscription.
 	SubscriptionId *string `mandatory:"true" contributesTo:"path" name:"subscriptionId"`
 
 	// The client request ID for tracing.

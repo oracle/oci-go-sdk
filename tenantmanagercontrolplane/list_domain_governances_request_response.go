@@ -18,7 +18,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListDomainGovernances.go.html to see an example of how to use ListDomainGovernancesRequest.
 type ListDomainGovernancesRequest struct {
 
-	// OCID of the compartment. Always a tenancy OCID.
+	// The ID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The domain OCID.

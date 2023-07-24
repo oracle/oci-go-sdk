@@ -21,7 +21,7 @@ type WorkRequestLogEntry struct {
 	// Human-readable log message.
 	Message *string `mandatory:"true" json:"message"`
 
-	// The time the log message was written. An RFC 3339-formatted date and time string.
+	// The time the log message was written. An RFC 3339 formatted date and time string.
 	Timestamp *common.SDKTime `mandatory:"true" json:"timestamp"`
 }
 
