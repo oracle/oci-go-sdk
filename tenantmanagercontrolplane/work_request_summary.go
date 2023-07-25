@@ -21,7 +21,7 @@ type WorkRequestSummary struct {
 	// Type of the work request.
 	OperationType OperationTypeEnum `mandatory:"true" json:"operationType"`
 
-	// Status of current work request.
+	// Status of the current work request.
 	Status OperationStatusEnum `mandatory:"true" json:"status"`
 
 	// The ID of the work request.
@@ -30,7 +30,7 @@ type WorkRequestSummary struct {
 	// The OCID of the compartment that contains the work request.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// The resources affected by this work request.
+	// The resources affected by the work request.
 	Resources []WorkRequestResource `mandatory:"true" json:"resources"`
 
 	// Percentage of the request completed.

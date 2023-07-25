@@ -57,7 +57,7 @@ func newRecipientInvitationClientFromBaseClient(baseClient common.BaseClient, co
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 
 	client = RecipientInvitationClient{BaseClient: baseClient}
-	client.BasePath = "20200801"
+	client.BasePath = "20230401"
 	err = client.setConfigurationProvider(configProvider)
 	return
 }
@@ -141,7 +141,7 @@ func (client RecipientInvitationClient) acceptRecipientInvitation(ctx context.Co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/RecipientInvitation/AcceptRecipientInvitation"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/RecipientInvitation/AcceptRecipientInvitation"
 		err = common.PostProcessServiceError(err, "RecipientInvitation", "AcceptRecipientInvitation", apiReferenceLink)
 		return response, err
 	}
@@ -198,7 +198,7 @@ func (client RecipientInvitationClient) getRecipientInvitation(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/RecipientInvitation/GetRecipientInvitation"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/RecipientInvitation/GetRecipientInvitation"
 		err = common.PostProcessServiceError(err, "RecipientInvitation", "GetRecipientInvitation", apiReferenceLink)
 		return response, err
 	}
@@ -260,7 +260,7 @@ func (client RecipientInvitationClient) ignoreRecipientInvitation(ctx context.Co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/RecipientInvitation/IgnoreRecipientInvitation"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/RecipientInvitation/IgnoreRecipientInvitation"
 		err = common.PostProcessServiceError(err, "RecipientInvitation", "IgnoreRecipientInvitation", apiReferenceLink)
 		return response, err
 	}
@@ -317,7 +317,7 @@ func (client RecipientInvitationClient) listRecipientInvitations(ctx context.Con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/RecipientInvitation/ListRecipientInvitations"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/RecipientInvitation/ListRecipientInvitations"
 		err = common.PostProcessServiceError(err, "RecipientInvitation", "ListRecipientInvitations", apiReferenceLink)
 		return response, err
 	}
@@ -374,7 +374,7 @@ func (client RecipientInvitationClient) updateRecipientInvitation(ctx context.Co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/RecipientInvitation/UpdateRecipientInvitation"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/RecipientInvitation/UpdateRecipientInvitation"
 		err = common.PostProcessServiceError(err, "RecipientInvitation", "UpdateRecipientInvitation", apiReferenceLink)
 		return response, err
 	}

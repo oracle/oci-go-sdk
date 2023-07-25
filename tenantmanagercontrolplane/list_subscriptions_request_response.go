@@ -18,7 +18,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListSubscriptions.go.html to see an example of how to use ListSubscriptionsRequest.
 type ListSubscriptionsRequest struct {
 
-	// OCID of the compartment. Always a tenancy OCID.
+	// The ID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"false" contributesTo:"query" name:"compartmentId"`
 
 	// The ID of the subscription to which the tenancy is associated.
@@ -41,6 +41,9 @@ type ListSubscriptionsRequest struct {
 	// * The default order for displayName is ascending.
 	// * If no value is specified, timeCreated is the default.
 	SortBy ListSubscriptionsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
+
+	// The version of the subscription entity.
+	EntityVersion ListSubscriptionsEntityVersionEnum `mandatory:"false" contributesTo:"query" name:"entityVersion" omitEmpty:"true"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
@@ -83,6 +86,9 @@ func (request ListSubscriptionsRequest) ValidateEnumValue() (bool, error) {
 	}
 	if _, ok := GetMappingListSubscriptionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSubscriptionsSortByEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingListSubscriptionsEntityVersionEnum(string(request.EntityVersion)); !ok && request.EntityVersion != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EntityVersion: %s. Supported values are: %s.", request.EntityVersion, strings.Join(GetListSubscriptionsEntityVersionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
@@ -199,5 +205,47 @@ func GetListSubscriptionsSortByEnumStringValues() []string {
 // GetMappingListSubscriptionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListSubscriptionsSortByEnum(val string) (ListSubscriptionsSortByEnum, bool) {
 	enum, ok := mappingListSubscriptionsSortByEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
+}
+
+// ListSubscriptionsEntityVersionEnum Enum with underlying type: string
+type ListSubscriptionsEntityVersionEnum string
+
+// Set of constants representing the allowable values for ListSubscriptionsEntityVersionEnum
+const (
+	ListSubscriptionsEntityVersionV1 ListSubscriptionsEntityVersionEnum = "V1"
+	ListSubscriptionsEntityVersionV2 ListSubscriptionsEntityVersionEnum = "V2"
+)
+
+var mappingListSubscriptionsEntityVersionEnum = map[string]ListSubscriptionsEntityVersionEnum{
+	"V1": ListSubscriptionsEntityVersionV1,
+	"V2": ListSubscriptionsEntityVersionV2,
+}
+
+var mappingListSubscriptionsEntityVersionEnumLowerCase = map[string]ListSubscriptionsEntityVersionEnum{
+	"v1": ListSubscriptionsEntityVersionV1,
+	"v2": ListSubscriptionsEntityVersionV2,
+}
+
+// GetListSubscriptionsEntityVersionEnumValues Enumerates the set of values for ListSubscriptionsEntityVersionEnum
+func GetListSubscriptionsEntityVersionEnumValues() []ListSubscriptionsEntityVersionEnum {
+	values := make([]ListSubscriptionsEntityVersionEnum, 0)
+	for _, v := range mappingListSubscriptionsEntityVersionEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetListSubscriptionsEntityVersionEnumStringValues Enumerates the set of values in String for ListSubscriptionsEntityVersionEnum
+func GetListSubscriptionsEntityVersionEnumStringValues() []string {
+	return []string{
+		"V1",
+		"V2",
+	}
+}
+
+// GetMappingListSubscriptionsEntityVersionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSubscriptionsEntityVersionEnum(val string) (ListSubscriptionsEntityVersionEnum, bool) {
+	enum, ok := mappingListSubscriptionsEntityVersionEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

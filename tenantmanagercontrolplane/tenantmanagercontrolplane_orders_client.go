@@ -57,7 +57,7 @@ func newOrdersClientFromBaseClient(baseClient common.BaseClient, configProvider 
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 
 	client = OrdersClient{BaseClient: baseClient}
-	client.BasePath = "20200801"
+	client.BasePath = "20230401"
 	err = client.setConfigurationProvider(configProvider)
 	return
 }
@@ -141,7 +141,7 @@ func (client OrdersClient) activateOrder(ctx context.Context, request common.OCI
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Order/ActivateOrder"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/Order/ActivateOrder"
 		err = common.PostProcessServiceError(err, "Orders", "ActivateOrder", apiReferenceLink)
 		return response, err
 	}
@@ -198,7 +198,7 @@ func (client OrdersClient) getOrder(ctx context.Context, request common.OCIReque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Order/GetOrder"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/Order/GetOrder"
 		err = common.PostProcessServiceError(err, "Orders", "GetOrder", apiReferenceLink)
 		return response, err
 	}

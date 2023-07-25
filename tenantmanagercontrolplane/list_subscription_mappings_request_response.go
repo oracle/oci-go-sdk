@@ -18,13 +18,13 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListSubscriptionMappings.go.html to see an example of how to use ListSubscriptionMappingsRequest.
 type ListSubscriptionMappingsRequest struct {
 
-	// The ID of the subscription to which the tenancy is associated.
+	// OCID of the subscription.
 	SubscriptionId *string `mandatory:"true" contributesTo:"query" name:"subscriptionId"`
 
 	// A unique ID for subscription and tenancy mapping.
 	SubscriptionMappingId *string `mandatory:"false" contributesTo:"query" name:"subscriptionMappingId"`
 
-	// OCID of the compartment. Always a tenancy OCID.
+	// The ID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"false" contributesTo:"query" name:"compartmentId"`
 
 	// The lifecycle state of the resource.
