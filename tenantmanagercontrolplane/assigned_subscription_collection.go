@@ -10,15 +10,16 @@
 package tenantmanagercontrolplane
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
-// AssignedSubscriptionCollection List of AssignedSubscription.
+// AssignedSubscriptionCollection Collection of assigned subscription summaries.
 type AssignedSubscriptionCollection struct {
 
-	// Array containing AssignedSubscription items.
+	// Array containing assigned subscription summary items.
 	Items []AssignedSubscriptionSummary `mandatory:"true" json:"items"`
 }
 
@@ -36,4 +37,31 @@ func (m AssignedSubscriptionCollection) ValidateEnumValue() (bool, error) {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
 	return false, nil
+}
+
+// UnmarshalJSON unmarshals from json
+func (m *AssignedSubscriptionCollection) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		Items []assignedsubscriptionsummary `json:"items"`
+	}{}
+
+	e = json.Unmarshal(data, &model)
+	if e != nil {
+		return
+	}
+	var nn interface{}
+	m.Items = make([]AssignedSubscriptionSummary, len(model.Items))
+	for i, n := range model.Items {
+		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)
+		if e != nil {
+			return e
+		}
+		if nn != nil {
+			m.Items[i] = nn.(AssignedSubscriptionSummary)
+		} else {
+			m.Items[i] = nil
+		}
+	}
+
+	return
 }

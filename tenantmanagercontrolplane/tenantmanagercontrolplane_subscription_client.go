@@ -57,7 +57,7 @@ func newSubscriptionClientFromBaseClient(baseClient common.BaseClient, configPro
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 
 	client = SubscriptionClient{BaseClient: baseClient}
-	client.BasePath = "20200801"
+	client.BasePath = "20230401"
 	err = client.setConfigurationProvider(configProvider)
 	return
 }
@@ -141,7 +141,7 @@ func (client SubscriptionClient) createSubscriptionMapping(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/SubscriptionMapping/CreateSubscriptionMapping"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/SubscriptionMapping/CreateSubscriptionMapping"
 		err = common.PostProcessServiceError(err, "Subscription", "CreateSubscriptionMapping", apiReferenceLink)
 		return response, err
 	}
@@ -198,7 +198,7 @@ func (client SubscriptionClient) deleteSubscriptionMapping(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/SubscriptionMapping/DeleteSubscriptionMapping"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/SubscriptionMapping/DeleteSubscriptionMapping"
 		err = common.PostProcessServiceError(err, "Subscription", "DeleteSubscriptionMapping", apiReferenceLink)
 		return response, err
 	}
@@ -255,16 +255,16 @@ func (client SubscriptionClient) getAssignedSubscription(ctx context.Context, re
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/AssignedSubscription/GetAssignedSubscription"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/AssignedSubscription/GetAssignedSubscription"
 		err = common.PostProcessServiceError(err, "Subscription", "GetAssignedSubscription", apiReferenceLink)
 		return response, err
 	}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &assignedsubscription{})
 	return response, err
 }
 
-// GetSubscription Gets the subscription details by subscriptionId.
+// GetSubscription Gets the subscription details by subscription ID.
 //
 // See also
 //
@@ -312,12 +312,12 @@ func (client SubscriptionClient) getSubscription(ctx context.Context, request co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Subscription/GetSubscription"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/Subscription/GetSubscription"
 		err = common.PostProcessServiceError(err, "Subscription", "GetSubscription", apiReferenceLink)
 		return response, err
 	}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &subscription{})
 	return response, err
 }
 
@@ -369,8 +369,66 @@ func (client SubscriptionClient) getSubscriptionMapping(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/SubscriptionMapping/GetSubscriptionMapping"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/SubscriptionMapping/GetSubscriptionMapping"
 		err = common.PostProcessServiceError(err, "Subscription", "GetSubscriptionMapping", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ListAssignedSubscriptionLineItems List line item summaries that a assigned subscription owns.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListAssignedSubscriptionLineItems.go.html to see an example of how to use ListAssignedSubscriptionLineItems API.
+// A default retry strategy applies to this operation ListAssignedSubscriptionLineItems()
+func (client SubscriptionClient) ListAssignedSubscriptionLineItems(ctx context.Context, request ListAssignedSubscriptionLineItemsRequest) (response ListAssignedSubscriptionLineItemsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listAssignedSubscriptionLineItems, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListAssignedSubscriptionLineItemsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListAssignedSubscriptionLineItemsResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListAssignedSubscriptionLineItemsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListAssignedSubscriptionLineItemsResponse")
+	}
+	return
+}
+
+// listAssignedSubscriptionLineItems implements the OCIOperation interface (enables retrying operations)
+func (client SubscriptionClient) listAssignedSubscriptionLineItems(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/assignedSubscriptions/{assignedSubscriptionId}/assignedSubscriptionLineItems", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListAssignedSubscriptionLineItemsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/AssignedSubscriptionLineItemSummary/ListAssignedSubscriptionLineItems"
+		err = common.PostProcessServiceError(err, "Subscription", "ListAssignedSubscriptionLineItems", apiReferenceLink)
 		return response, err
 	}
 
@@ -426,7 +484,7 @@ func (client SubscriptionClient) listAssignedSubscriptions(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/AssignedSubscription/ListAssignedSubscriptions"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/AssignedSubscription/ListAssignedSubscriptions"
 		err = common.PostProcessServiceError(err, "Subscription", "ListAssignedSubscriptions", apiReferenceLink)
 		return response, err
 	}
@@ -483,8 +541,66 @@ func (client SubscriptionClient) listAvailableRegions(ctx context.Context, reque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Subscription/ListAvailableRegions"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/Subscription/ListAvailableRegions"
 		err = common.PostProcessServiceError(err, "Subscription", "ListAvailableRegions", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ListSubscriptionLineItems Lists the line items in a subscription.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListSubscriptionLineItems.go.html to see an example of how to use ListSubscriptionLineItems API.
+// A default retry strategy applies to this operation ListSubscriptionLineItems()
+func (client SubscriptionClient) ListSubscriptionLineItems(ctx context.Context, request ListSubscriptionLineItemsRequest) (response ListSubscriptionLineItemsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listSubscriptionLineItems, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListSubscriptionLineItemsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListSubscriptionLineItemsResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListSubscriptionLineItemsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListSubscriptionLineItemsResponse")
+	}
+	return
+}
+
+// listSubscriptionLineItems implements the OCIOperation interface (enables retrying operations)
+func (client SubscriptionClient) listSubscriptionLineItems(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/subscriptions/{subscriptionId}/subscriptionLineItems", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListSubscriptionLineItemsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/SubscriptionLineItemSummary/ListSubscriptionLineItems"
+		err = common.PostProcessServiceError(err, "Subscription", "ListSubscriptionLineItems", apiReferenceLink)
 		return response, err
 	}
 
@@ -540,7 +656,7 @@ func (client SubscriptionClient) listSubscriptionMappings(ctx context.Context, r
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/SubscriptionMapping/ListSubscriptionMappings"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/SubscriptionMapping/ListSubscriptionMappings"
 		err = common.PostProcessServiceError(err, "Subscription", "ListSubscriptionMappings", apiReferenceLink)
 		return response, err
 	}
@@ -597,7 +713,7 @@ func (client SubscriptionClient) listSubscriptions(ctx context.Context, request 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Subscription/ListSubscriptions"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/Subscription/ListSubscriptions"
 		err = common.PostProcessServiceError(err, "Subscription", "ListSubscriptions", apiReferenceLink)
 		return response, err
 	}

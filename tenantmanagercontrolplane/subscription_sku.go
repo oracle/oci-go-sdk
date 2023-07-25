@@ -18,7 +18,7 @@ import (
 // SubscriptionSku SKU information.
 type SubscriptionSku struct {
 
-	// Stock keeping unit ID.
+	// Stock Keeping Unit (SKU) ID.
 	Sku *string `mandatory:"true" json:"sku"`
 
 	// Quantity of the stock units.
@@ -36,16 +36,16 @@ type SubscriptionSku struct {
 	// Base metric for billing the service.
 	MetricName *string `mandatory:"false" json:"metricName"`
 
-	// Denotes if the SKU is considered as a parent or child.
+	// Specifies if the SKU is considered as a parent or child.
 	IsBaseServiceComponent *bool `mandatory:"false" json:"isBaseServiceComponent"`
 
-	// Denotes if an additional test instance can be provisioned by the SAAS application.
+	// Specifies if an additional test instance can be provisioned by the SaaS application.
 	IsAdditionalInstance *bool `mandatory:"false" json:"isAdditionalInstance"`
 
-	// Date-time when the SKU was created.
+	// Date and time when the SKU was created.
 	StartDate *common.SDKTime `mandatory:"false" json:"startDate"`
 
-	// Date-time when the SKU ended.
+	// Date and time when the SKU ended.
 	EndDate *common.SDKTime `mandatory:"false" json:"endDate"`
 }
 

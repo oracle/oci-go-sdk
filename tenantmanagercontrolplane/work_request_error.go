@@ -25,7 +25,7 @@ type WorkRequestError struct {
 	// A human-readable description of the issue encountered.
 	Message *string `mandatory:"true" json:"message"`
 
-	// The time the error occured. An RFC 3339-formatted date and time string.
+	// The time the error occured. An RFC 3339 formatted date and time string.
 	Timestamp *common.SDKTime `mandatory:"true" json:"timestamp"`
 }
 

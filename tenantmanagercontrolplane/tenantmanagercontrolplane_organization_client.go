@@ -57,7 +57,7 @@ func newOrganizationClientFromBaseClient(baseClient common.BaseClient, configPro
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 
 	client = OrganizationClient{BaseClient: baseClient}
-	client.BasePath = "20200801"
+	client.BasePath = "20230401"
 	err = client.setConfigurationProvider(configProvider)
 	return
 }
@@ -141,7 +141,7 @@ func (client OrganizationClient) approveOrganizationTenancyForTransfer(ctx conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/OrganizationTenancy/ApproveOrganizationTenancyForTransfer"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/OrganizationTenancy/ApproveOrganizationTenancyForTransfer"
 		err = common.PostProcessServiceError(err, "Organization", "ApproveOrganizationTenancyForTransfer", apiReferenceLink)
 		return response, err
 	}
@@ -265,7 +265,7 @@ func (client OrganizationClient) deleteOrganizationTenancy(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/OrganizationTenancy/DeleteOrganizationTenancy"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/OrganizationTenancy/DeleteOrganizationTenancy"
 		err = common.PostProcessServiceError(err, "Organization", "DeleteOrganizationTenancy", apiReferenceLink)
 		return response, err
 	}
@@ -322,7 +322,7 @@ func (client OrganizationClient) getOrganization(ctx context.Context, request co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Organization/GetOrganization"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/Organization/GetOrganization"
 		err = common.PostProcessServiceError(err, "Organization", "GetOrganization", apiReferenceLink)
 		return response, err
 	}
@@ -379,7 +379,7 @@ func (client OrganizationClient) getOrganizationTenancy(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/OrganizationTenancy/GetOrganizationTenancy"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/OrganizationTenancy/GetOrganizationTenancy"
 		err = common.PostProcessServiceError(err, "Organization", "GetOrganizationTenancy", apiReferenceLink)
 		return response, err
 	}
@@ -436,7 +436,7 @@ func (client OrganizationClient) listOrganizationTenancies(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Organization/ListOrganizationTenancies"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/Organization/ListOrganizationTenancies"
 		err = common.PostProcessServiceError(err, "Organization", "ListOrganizationTenancies", apiReferenceLink)
 		return response, err
 	}
@@ -493,7 +493,7 @@ func (client OrganizationClient) listOrganizations(ctx context.Context, request 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Organization/ListOrganizations"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/Organization/ListOrganizations"
 		err = common.PostProcessServiceError(err, "Organization", "ListOrganizations", apiReferenceLink)
 		return response, err
 	}
@@ -550,7 +550,7 @@ func (client OrganizationClient) restoreOrganizationTenancy(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/OrganizationTenancy/RestoreOrganizationTenancy"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/OrganizationTenancy/RestoreOrganizationTenancy"
 		err = common.PostProcessServiceError(err, "Organization", "RestoreOrganizationTenancy", apiReferenceLink)
 		return response, err
 	}
@@ -612,7 +612,7 @@ func (client OrganizationClient) unapproveOrganizationTenancyForTransfer(ctx con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/OrganizationTenancy/UnapproveOrganizationTenancyForTransfer"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/OrganizationTenancy/UnapproveOrganizationTenancyForTransfer"
 		err = common.PostProcessServiceError(err, "Organization", "UnapproveOrganizationTenancyForTransfer", apiReferenceLink)
 		return response, err
 	}
@@ -674,7 +674,7 @@ func (client OrganizationClient) updateOrganization(ctx context.Context, request
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Organization/UpdateOrganization"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/Organization/UpdateOrganization"
 		err = common.PostProcessServiceError(err, "Organization", "UpdateOrganization", apiReferenceLink)
 		return response, err
 	}

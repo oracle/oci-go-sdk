@@ -57,7 +57,7 @@ func newDomainClientFromBaseClient(baseClient common.BaseClient, configProvider 
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 
 	client = DomainClient{BaseClient: baseClient}
-	client.BasePath = "20200801"
+	client.BasePath = "20230401"
 	err = client.setConfigurationProvider(configProvider)
 	return
 }
@@ -198,7 +198,7 @@ func (client DomainClient) deleteDomain(ctx context.Context, request common.OCIR
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Domain/DeleteDomain"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/Domain/DeleteDomain"
 		err = common.PostProcessServiceError(err, "Domain", "DeleteDomain", apiReferenceLink)
 		return response, err
 	}
@@ -255,7 +255,7 @@ func (client DomainClient) getDomain(ctx context.Context, request common.OCIRequ
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Domain/GetDomain"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/Domain/GetDomain"
 		err = common.PostProcessServiceError(err, "Domain", "GetDomain", apiReferenceLink)
 		return response, err
 	}
@@ -312,7 +312,7 @@ func (client DomainClient) listDomains(ctx context.Context, request common.OCIRe
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Domain/ListDomains"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/Domain/ListDomains"
 		err = common.PostProcessServiceError(err, "Domain", "ListDomains", apiReferenceLink)
 		return response, err
 	}
@@ -369,7 +369,7 @@ func (client DomainClient) updateDomain(ctx context.Context, request common.OCIR
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/Domain/UpdateDomain"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/Domain/UpdateDomain"
 		err = common.PostProcessServiceError(err, "Domain", "UpdateDomain", apiReferenceLink)
 		return response, err
 	}

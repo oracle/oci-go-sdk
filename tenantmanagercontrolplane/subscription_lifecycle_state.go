@@ -18,33 +18,27 @@ type SubscriptionLifecycleStateEnum string
 
 // Set of constants representing the allowable values for SubscriptionLifecycleStateEnum
 const (
-	SubscriptionLifecycleStateCreating SubscriptionLifecycleStateEnum = "CREATING"
-	SubscriptionLifecycleStateActive   SubscriptionLifecycleStateEnum = "ACTIVE"
-	SubscriptionLifecycleStateInactive SubscriptionLifecycleStateEnum = "INACTIVE"
-	SubscriptionLifecycleStateUpdating SubscriptionLifecycleStateEnum = "UPDATING"
-	SubscriptionLifecycleStateDeleting SubscriptionLifecycleStateEnum = "DELETING"
-	SubscriptionLifecycleStateDeleted  SubscriptionLifecycleStateEnum = "DELETED"
-	SubscriptionLifecycleStateFailed   SubscriptionLifecycleStateEnum = "FAILED"
+	SubscriptionLifecycleStateNeedsAttention SubscriptionLifecycleStateEnum = "NEEDS_ATTENTION"
+	SubscriptionLifecycleStateActive         SubscriptionLifecycleStateEnum = "ACTIVE"
+	SubscriptionLifecycleStateInactive       SubscriptionLifecycleStateEnum = "INACTIVE"
+	SubscriptionLifecycleStateFailed         SubscriptionLifecycleStateEnum = "FAILED"
+	SubscriptionLifecycleStateCreating       SubscriptionLifecycleStateEnum = "CREATING"
 )
 
 var mappingSubscriptionLifecycleStateEnum = map[string]SubscriptionLifecycleStateEnum{
-	"CREATING": SubscriptionLifecycleStateCreating,
-	"ACTIVE":   SubscriptionLifecycleStateActive,
-	"INACTIVE": SubscriptionLifecycleStateInactive,
-	"UPDATING": SubscriptionLifecycleStateUpdating,
-	"DELETING": SubscriptionLifecycleStateDeleting,
-	"DELETED":  SubscriptionLifecycleStateDeleted,
-	"FAILED":   SubscriptionLifecycleStateFailed,
+	"NEEDS_ATTENTION": SubscriptionLifecycleStateNeedsAttention,
+	"ACTIVE":          SubscriptionLifecycleStateActive,
+	"INACTIVE":        SubscriptionLifecycleStateInactive,
+	"FAILED":          SubscriptionLifecycleStateFailed,
+	"CREATING":        SubscriptionLifecycleStateCreating,
 }
 
 var mappingSubscriptionLifecycleStateEnumLowerCase = map[string]SubscriptionLifecycleStateEnum{
-	"creating": SubscriptionLifecycleStateCreating,
-	"active":   SubscriptionLifecycleStateActive,
-	"inactive": SubscriptionLifecycleStateInactive,
-	"updating": SubscriptionLifecycleStateUpdating,
-	"deleting": SubscriptionLifecycleStateDeleting,
-	"deleted":  SubscriptionLifecycleStateDeleted,
-	"failed":   SubscriptionLifecycleStateFailed,
+	"needs_attention": SubscriptionLifecycleStateNeedsAttention,
+	"active":          SubscriptionLifecycleStateActive,
+	"inactive":        SubscriptionLifecycleStateInactive,
+	"failed":          SubscriptionLifecycleStateFailed,
+	"creating":        SubscriptionLifecycleStateCreating,
 }
 
 // GetSubscriptionLifecycleStateEnumValues Enumerates the set of values for SubscriptionLifecycleStateEnum
@@ -59,13 +53,11 @@ func GetSubscriptionLifecycleStateEnumValues() []SubscriptionLifecycleStateEnum 
 // GetSubscriptionLifecycleStateEnumStringValues Enumerates the set of values in String for SubscriptionLifecycleStateEnum
 func GetSubscriptionLifecycleStateEnumStringValues() []string {
 	return []string{
-		"CREATING",
+		"NEEDS_ATTENTION",
 		"ACTIVE",
 		"INACTIVE",
-		"UPDATING",
-		"DELETING",
-		"DELETED",
 		"FAILED",
+		"CREATING",
 	}
 }
 

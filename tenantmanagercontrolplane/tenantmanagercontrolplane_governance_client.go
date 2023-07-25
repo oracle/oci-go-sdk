@@ -57,7 +57,7 @@ func newGovernanceClientFromBaseClient(baseClient common.BaseClient, configProvi
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 
 	client = GovernanceClient{BaseClient: baseClient}
-	client.BasePath = "20200801"
+	client.BasePath = "20230401"
 	err = client.setConfigurationProvider(configProvider)
 	return
 }
@@ -141,7 +141,7 @@ func (client GovernanceClient) addGovernance(ctx context.Context, request common
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/OrganizationTenancy/AddGovernance"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/OrganizationTenancy/AddGovernance"
 		err = common.PostProcessServiceError(err, "Governance", "AddGovernance", apiReferenceLink)
 		return response, err
 	}
@@ -203,7 +203,7 @@ func (client GovernanceClient) removeGovernance(ctx context.Context, request com
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20200801/OrganizationTenancy/RemoveGovernance"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/organizations/20230401/OrganizationTenancy/RemoveGovernance"
 		err = common.PostProcessServiceError(err, "Governance", "RemoveGovernance", apiReferenceLink)
 		return response, err
 	}

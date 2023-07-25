@@ -24,7 +24,7 @@ type Promotion struct {
 	// Unit for the duration.
 	DurationUnit *string `mandatory:"false" json:"durationUnit"`
 
-	// If a subscription is present, indicates the total amount of promotional subscription credit.
+	// If a subscription is present, indicates the total amount of promotional subscription credits.
 	Amount *float32 `mandatory:"false" json:"amount"`
 
 	// If a subscription is present, indicates the current status of the subscription promotion.

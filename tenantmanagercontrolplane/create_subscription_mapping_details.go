@@ -21,7 +21,7 @@ type CreateSubscriptionMappingDetails struct {
 	// OCID of the compartment. Always a tenancy OCID.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// OCID of subscription.
+	// OCID of Subscription.
 	SubscriptionId *string `mandatory:"true" json:"subscriptionId"`
 }
 
