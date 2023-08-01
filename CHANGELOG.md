@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.46.0 - 2023-08-01
+### Added
+- Support for the Exadata Fleet Update service
+- Support for REST-based log collection, multi-conditional labels, and collection properties in the Logging Analytics service
+- Support for Kubernetes cluster credential rotation in the Container Engine for Kubernetes service
+- Support for zero-downtime features in the Fusion Apps as a Service service
+- Support for news reports in the Operations Insights service
+  
+### Breaking Changes
+- The enum type `TaskTypeAccelerationMaintenance` was removed from the `TaskTypeEnum` enum in the `TaskType` model in the Logging Analytics service
+- The enum type `ListScheduledTasksTaskTypeAccelerationMaintenance` was removed from the `ListScheduledTasksTaskTypeEnum` enum in the `ListScheduledTasksRequest` model in the Logging Analytics service
+
+
 ## 65.45.0 - 2023-07-25
 ### Added
 - Support for composing multiple document service custom key value models into one single model in Document Understanding Service
