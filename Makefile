@@ -27,6 +27,8 @@ build: lint $(TARGETS_BUILD)
 
 test: build $(TARGETS_TEST)
 
+test-only: $(TARGETS_TEST)
+
 test-all: build build-autotest test test-integ
 
 test-integ: 

@@ -23,6 +23,9 @@ type NamedEntityRecognitionModelDetails struct {
 
 	// supported language default value is en
 	LanguageCode *string `mandatory:"false" json:"languageCode"`
+
+	// Optional if nothing specified latest base model will be used for training. Supported versions can be found at /modelTypes/{modelType}
+	Version *string `mandatory:"false" json:"version"`
 }
 
 //GetLanguageCode returns LanguageCode
