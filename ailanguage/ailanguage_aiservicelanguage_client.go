@@ -28,6 +28,9 @@ type AIServiceLanguageClient struct {
 // NewAIServiceLanguageClientWithConfigurationProvider Creates a new default AIServiceLanguage client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewAIServiceLanguageClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client AIServiceLanguageClient, err error) {
+	if enabled := common.CheckForEnabledServices("ailanguage"); !enabled {
+		return client, fmt.Errorf("the Alloy configuration disabled this service, this behavior is controlled by OciSdkEnabledServicesMap variables. Please check if your local alloy_config file configured the service you're targeting or contact the cloud provider on the availability of this service")
+	}
 	provider, err := auth.GetGenericConfigurationProvider(configProvider)
 	if err != nil {
 		return client, err
@@ -1491,6 +1494,64 @@ func (client AIServiceLanguageClient) getModel(ctx context.Context, request comm
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/language/20221001/Model/GetModel"
 		err = common.PostProcessServiceError(err, "AIServiceLanguage", "GetModel", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// GetModelType Gets model capabilities
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ailanguage/GetModelType.go.html to see an example of how to use GetModelType API.
+// A default retry strategy applies to this operation GetModelType()
+func (client AIServiceLanguageClient) GetModelType(ctx context.Context, request GetModelTypeRequest) (response GetModelTypeResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getModelType, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetModelTypeResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetModelTypeResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetModelTypeResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetModelTypeResponse")
+	}
+	return
+}
+
+// getModelType implements the OCIOperation interface (enables retrying operations)
+func (client AIServiceLanguageClient) getModelType(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/modelTypes/{modelType}", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetModelTypeResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/language/20221001/ModelTypeInfo/GetModelType"
+		err = common.PostProcessServiceError(err, "AIServiceLanguage", "GetModelType", apiReferenceLink)
 		return response, err
 	}
 

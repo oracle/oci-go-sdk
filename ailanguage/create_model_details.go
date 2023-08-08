@@ -29,13 +29,13 @@ type CreateModelDetails struct {
 
 	ModelDetails ModelDetails `mandatory:"true" json:"modelDetails"`
 
-	TrainingDataset DatasetDetails `mandatory:"true" json:"trainingDataset"`
-
 	// A user-friendly display name for the resource. It does not have to be unique and can be modified. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// A short description of the a model.
 	Description *string `mandatory:"false" json:"description"`
+
+	TrainingDataset DatasetDetails `mandatory:"false" json:"trainingDataset"`
 
 	TestStrategy TestStrategy `mandatory:"false" json:"testStrategy"`
 
@@ -69,13 +69,13 @@ func (m *CreateModelDetails) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
 		DisplayName     *string                           `json:"displayName"`
 		Description     *string                           `json:"description"`
+		TrainingDataset datasetdetails                    `json:"trainingDataset"`
 		TestStrategy    teststrategy                      `json:"testStrategy"`
 		FreeformTags    map[string]string                 `json:"freeformTags"`
 		DefinedTags     map[string]map[string]interface{} `json:"definedTags"`
 		CompartmentId   *string                           `json:"compartmentId"`
 		ProjectId       *string                           `json:"projectId"`
 		ModelDetails    modeldetails                      `json:"modelDetails"`
-		TrainingDataset datasetdetails                    `json:"trainingDataset"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -86,6 +86,16 @@ func (m *CreateModelDetails) UnmarshalJSON(data []byte) (e error) {
 	m.DisplayName = model.DisplayName
 
 	m.Description = model.Description
+
+	nn, e = model.TrainingDataset.UnmarshalPolymorphicJSON(model.TrainingDataset.JsonData)
+	if e != nil {
+		return
+	}
+	if nn != nil {
+		m.TrainingDataset = nn.(DatasetDetails)
+	} else {
+		m.TrainingDataset = nil
+	}
 
 	nn, e = model.TestStrategy.UnmarshalPolymorphicJSON(model.TestStrategy.JsonData)
 	if e != nil {
@@ -113,16 +123,6 @@ func (m *CreateModelDetails) UnmarshalJSON(data []byte) (e error) {
 		m.ModelDetails = nn.(ModelDetails)
 	} else {
 		m.ModelDetails = nil
-	}
-
-	nn, e = model.TrainingDataset.UnmarshalPolymorphicJSON(model.TrainingDataset.JsonData)
-	if e != nil {
-		return
-	}
-	if nn != nil {
-		m.TrainingDataset = nn.(DatasetDetails)
-	} else {
-		m.TrainingDataset = nil
 	}
 
 	return

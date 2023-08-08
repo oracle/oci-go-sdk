@@ -20,6 +20,9 @@ import (
 
 // ClassificationMultiClassModeDetails Possible text classification multi class mode details
 type ClassificationMultiClassModeDetails struct {
+
+	// Optional if nothing specified latest base model will be used for training. Supported versions can be found at /modelTypes/{modelType}
+	Version *string `mandatory:"false" json:"version"`
 }
 
 func (m ClassificationMultiClassModeDetails) String() string {

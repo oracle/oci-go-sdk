@@ -20,6 +20,9 @@ import (
 
 // ClassificationMultiLabelModeDetails Possible text classification multi label mode details
 type ClassificationMultiLabelModeDetails struct {
+
+	// Optional if nothing specified latest base model will be used for training. Supported versions can be found at /modelTypes/{modelType}
+	Version *string `mandatory:"false" json:"version"`
 }
 
 func (m ClassificationMultiLabelModeDetails) String() string {
