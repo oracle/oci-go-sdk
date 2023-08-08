@@ -57,12 +57,52 @@ func (m *modeldetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error
 
 	var err error
 	switch m.ModelType {
+	case "PRE_TRAINED_KEYPHRASE_EXTRACTION":
+		mm := PreTrainedKeyPhraseExtractionModelDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "PRE_TRAINED_HEALTH_NLU":
+		mm := PreTrainedHealthNluModelDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "PRE_TRAINED_UNIVERSAL":
+		mm := PreTrainedUniversalModel{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "NAMED_ENTITY_RECOGNITION":
 		mm := NamedEntityRecognitionModelDetails{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
+	case "PRE_TRAINED_LANGUAGE_DETECTION":
+		mm := PreTrainedLanguageDetectionModelDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "PRE_TRAINED_NAMED_ENTITY_RECOGNITION":
+		mm := PreTrainedNamedEntityRecognitionModelDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "PRE_TRAINED_SENTIMENT_ANALYSIS":
+		mm := PreTrainedSentimentAnalysisModelDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "PRE_TRAINED_PHI":
+		mm := PreTrainedPhiModelDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "PRE_TRAINED_TEXT_CLASSIFICATION":
+		mm := PreTrainedTextClassificationModelDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "TEXT_CLASSIFICATION":
 		mm := TextClassificationModelDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "PRE_TRAINED_SUMMARIZATION":
+		mm := PreTrainedSummarization{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "PRE_TRAINED_PII":
+		mm := PreTrainedPiiModelDetails{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:
@@ -97,18 +137,48 @@ type ModelDetailsModelTypeEnum string
 
 // Set of constants representing the allowable values for ModelDetailsModelTypeEnum
 const (
-	ModelDetailsModelTypeNamedEntityRecognition ModelDetailsModelTypeEnum = "NAMED_ENTITY_RECOGNITION"
-	ModelDetailsModelTypeTextClassification     ModelDetailsModelTypeEnum = "TEXT_CLASSIFICATION"
+	ModelDetailsModelTypeNamedEntityRecognition           ModelDetailsModelTypeEnum = "NAMED_ENTITY_RECOGNITION"
+	ModelDetailsModelTypeTextClassification               ModelDetailsModelTypeEnum = "TEXT_CLASSIFICATION"
+	ModelDetailsModelTypePreTrainedNamedEntityRecognition ModelDetailsModelTypeEnum = "PRE_TRAINED_NAMED_ENTITY_RECOGNITION"
+	ModelDetailsModelTypePreTrainedTextClassification     ModelDetailsModelTypeEnum = "PRE_TRAINED_TEXT_CLASSIFICATION"
+	ModelDetailsModelTypePreTrainedSentimentAnalysis      ModelDetailsModelTypeEnum = "PRE_TRAINED_SENTIMENT_ANALYSIS"
+	ModelDetailsModelTypePreTrainedKeyphraseExtraction    ModelDetailsModelTypeEnum = "PRE_TRAINED_KEYPHRASE_EXTRACTION"
+	ModelDetailsModelTypePreTrainedLanguageDetection      ModelDetailsModelTypeEnum = "PRE_TRAINED_LANGUAGE_DETECTION"
+	ModelDetailsModelTypePreTrainedPii                    ModelDetailsModelTypeEnum = "PRE_TRAINED_PII"
+	ModelDetailsModelTypePreTrainedTranslation            ModelDetailsModelTypeEnum = "PRE_TRAINED_TRANSLATION"
+	ModelDetailsModelTypePreTrainedHealthNlu              ModelDetailsModelTypeEnum = "PRE_TRAINED_HEALTH_NLU"
+	ModelDetailsModelTypePreTrainedSummarization          ModelDetailsModelTypeEnum = "PRE_TRAINED_SUMMARIZATION"
+	ModelDetailsModelTypePreTrainedUniversal              ModelDetailsModelTypeEnum = "PRE_TRAINED_UNIVERSAL"
 )
 
 var mappingModelDetailsModelTypeEnum = map[string]ModelDetailsModelTypeEnum{
-	"NAMED_ENTITY_RECOGNITION": ModelDetailsModelTypeNamedEntityRecognition,
-	"TEXT_CLASSIFICATION":      ModelDetailsModelTypeTextClassification,
+	"NAMED_ENTITY_RECOGNITION":             ModelDetailsModelTypeNamedEntityRecognition,
+	"TEXT_CLASSIFICATION":                  ModelDetailsModelTypeTextClassification,
+	"PRE_TRAINED_NAMED_ENTITY_RECOGNITION": ModelDetailsModelTypePreTrainedNamedEntityRecognition,
+	"PRE_TRAINED_TEXT_CLASSIFICATION":      ModelDetailsModelTypePreTrainedTextClassification,
+	"PRE_TRAINED_SENTIMENT_ANALYSIS":       ModelDetailsModelTypePreTrainedSentimentAnalysis,
+	"PRE_TRAINED_KEYPHRASE_EXTRACTION":     ModelDetailsModelTypePreTrainedKeyphraseExtraction,
+	"PRE_TRAINED_LANGUAGE_DETECTION":       ModelDetailsModelTypePreTrainedLanguageDetection,
+	"PRE_TRAINED_PII":                      ModelDetailsModelTypePreTrainedPii,
+	"PRE_TRAINED_TRANSLATION":              ModelDetailsModelTypePreTrainedTranslation,
+	"PRE_TRAINED_HEALTH_NLU":               ModelDetailsModelTypePreTrainedHealthNlu,
+	"PRE_TRAINED_SUMMARIZATION":            ModelDetailsModelTypePreTrainedSummarization,
+	"PRE_TRAINED_UNIVERSAL":                ModelDetailsModelTypePreTrainedUniversal,
 }
 
 var mappingModelDetailsModelTypeEnumLowerCase = map[string]ModelDetailsModelTypeEnum{
-	"named_entity_recognition": ModelDetailsModelTypeNamedEntityRecognition,
-	"text_classification":      ModelDetailsModelTypeTextClassification,
+	"named_entity_recognition":             ModelDetailsModelTypeNamedEntityRecognition,
+	"text_classification":                  ModelDetailsModelTypeTextClassification,
+	"pre_trained_named_entity_recognition": ModelDetailsModelTypePreTrainedNamedEntityRecognition,
+	"pre_trained_text_classification":      ModelDetailsModelTypePreTrainedTextClassification,
+	"pre_trained_sentiment_analysis":       ModelDetailsModelTypePreTrainedSentimentAnalysis,
+	"pre_trained_keyphrase_extraction":     ModelDetailsModelTypePreTrainedKeyphraseExtraction,
+	"pre_trained_language_detection":       ModelDetailsModelTypePreTrainedLanguageDetection,
+	"pre_trained_pii":                      ModelDetailsModelTypePreTrainedPii,
+	"pre_trained_translation":              ModelDetailsModelTypePreTrainedTranslation,
+	"pre_trained_health_nlu":               ModelDetailsModelTypePreTrainedHealthNlu,
+	"pre_trained_summarization":            ModelDetailsModelTypePreTrainedSummarization,
+	"pre_trained_universal":                ModelDetailsModelTypePreTrainedUniversal,
 }
 
 // GetModelDetailsModelTypeEnumValues Enumerates the set of values for ModelDetailsModelTypeEnum
@@ -125,6 +195,16 @@ func GetModelDetailsModelTypeEnumStringValues() []string {
 	return []string{
 		"NAMED_ENTITY_RECOGNITION",
 		"TEXT_CLASSIFICATION",
+		"PRE_TRAINED_NAMED_ENTITY_RECOGNITION",
+		"PRE_TRAINED_TEXT_CLASSIFICATION",
+		"PRE_TRAINED_SENTIMENT_ANALYSIS",
+		"PRE_TRAINED_KEYPHRASE_EXTRACTION",
+		"PRE_TRAINED_LANGUAGE_DETECTION",
+		"PRE_TRAINED_PII",
+		"PRE_TRAINED_TRANSLATION",
+		"PRE_TRAINED_HEALTH_NLU",
+		"PRE_TRAINED_SUMMARIZATION",
+		"PRE_TRAINED_UNIVERSAL",
 	}
 }
 

@@ -31,6 +31,9 @@ type ClassMetrics struct {
 
 	// Measures the model's ability to predict actual positive classes. It is the ratio between the predicted true positives and what was actually tagged. The recall metric reveals how many of the predicted classes are correct.
 	Recall *float32 `mandatory:"true" json:"recall"`
+
+	// number of samples in the test set
+	Support *float32 `mandatory:"false" json:"support"`
 }
 
 func (m ClassMetrics) String() string {

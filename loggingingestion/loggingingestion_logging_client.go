@@ -26,6 +26,9 @@ type LoggingClient struct {
 // NewLoggingClientWithConfigurationProvider Creates a new default Logging client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewLoggingClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client LoggingClient, err error) {
+	if enabled := common.CheckForEnabledServices("loggingingestion"); !enabled {
+		return client, fmt.Errorf("the Alloy configuration disabled this service, this behavior is controlled by OciSdkEnabledServicesMap variables. Please check if your local alloy_config file configured the service you're targeting or contact the cloud provider on the availability of this service")
+	}
 	provider, err := auth.GetGenericConfigurationProvider(configProvider)
 	if err != nil {
 		return client, err

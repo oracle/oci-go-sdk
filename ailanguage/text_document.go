@@ -26,31 +26,7 @@ type TextDocument struct {
 	// Document text for language service call.
 	Text *string `mandatory:"true" json:"text"`
 
-	// Language code supported
-	// Automatically detect language - auto
-	// Arabic - ar
-	// Brazilian Portuguese - pt-BR
-	// Czech - cs
-	// Danish - da
-	// Dutch - nl
-	// English - en
-	// Finnish - fi
-	// French - fr
-	// Canadian French - fr-CA
-	// German - de
-	// Italian - it
-	// Japanese - ja
-	// Korean - ko
-	// Norwegian - no
-	// Polish - pl
-	// Romanian - ro
-	// Simplified Chinese - zh-CN
-	// Spanish - es
-	// Swedish - sv
-	// Traditional Chinese - zh-TW
-	// Turkish - tr
-	// Greek - el
-	// Hebrew - he
+	// Language code of the document. Please refer to respective model API documentation (https://docs.cloud.oracle.com/iaas/language/using/overview.htm) for supported languages.
 	LanguageCode *string `mandatory:"false" json:"languageCode"`
 }
 
