@@ -77,6 +77,5 @@ func (m *GiFiltersDiscovery) UnmarshalJSON(data []byte) (e error) {
 			m.Filters[i] = nil
 		}
 	}
-
 	return
 }

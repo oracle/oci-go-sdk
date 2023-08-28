@@ -95,10 +95,7 @@ func (m *CreateTranscriptionJobDetails) UnmarshalJSON(data []byte) (e error) {
 	m.Description = model.Description
 
 	m.AdditionalTranscriptionFormats = make([]CreateTranscriptionJobDetailsAdditionalTranscriptionFormatsEnum, len(model.AdditionalTranscriptionFormats))
-	for i, n := range model.AdditionalTranscriptionFormats {
-		m.AdditionalTranscriptionFormats[i] = n
-	}
-
+	copy(m.AdditionalTranscriptionFormats, model.AdditionalTranscriptionFormats)
 	m.ModelDetails = model.ModelDetails
 
 	m.Normalization = model.Normalization

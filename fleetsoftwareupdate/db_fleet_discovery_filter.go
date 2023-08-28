@@ -95,7 +95,7 @@ func (m *dbfleetdiscoveryfilter) UnmarshalPolymorphicJSON(data []byte) (interfac
 	}
 }
 
-//GetMode returns Mode
+// GetMode returns Mode
 func (m dbfleetdiscoveryfilter) GetMode() DbFleetDiscoveryFilterModeEnum {
 	return m.Mode
 }

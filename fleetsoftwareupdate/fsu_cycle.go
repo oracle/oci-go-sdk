@@ -88,26 +88,26 @@ type FsuCycle interface {
 
 type fsucycle struct {
 	JsonData             []byte
-	Id                   *string                           `mandatory:"true" json:"id"`
-	CompartmentId        *string                           `mandatory:"true" json:"compartmentId"`
-	FsuCollectionId      *string                           `mandatory:"true" json:"fsuCollectionId"`
-	TimeCreated          *common.SDKTime                   `mandatory:"true" json:"timeCreated"`
-	LifecycleState       CycleLifecycleStatesEnum          `mandatory:"true" json:"lifecycleState"`
 	DisplayName          *string                           `mandatory:"false" json:"displayName"`
 	CollectionType       CollectionTypesEnum               `mandatory:"false" json:"collectionType,omitempty"`
 	ExecutingFsuActionId *string                           `mandatory:"false" json:"executingFsuActionId"`
 	NextActionToExecute  []NextActionToExecuteDetails      `mandatory:"false" json:"nextActionToExecute"`
 	LastCompletedAction  DetailedActionTypesEnum           `mandatory:"false" json:"lastCompletedAction,omitempty"`
-	GoalVersionDetails   FsuGoalVersionDetails             `mandatory:"false" json:"goalVersionDetails"`
-	BatchingStrategy     BatchingStrategyDetails           `mandatory:"false" json:"batchingStrategy"`
-	StageActionSchedule  ScheduleDetails                   `mandatory:"false" json:"stageActionSchedule"`
-	ApplyActionSchedule  ScheduleDetails                   `mandatory:"false" json:"applyActionSchedule"`
+	GoalVersionDetails   fsugoalversiondetails             `mandatory:"false" json:"goalVersionDetails"`
+	BatchingStrategy     batchingstrategydetails           `mandatory:"false" json:"batchingStrategy"`
+	StageActionSchedule  scheduledetails                   `mandatory:"false" json:"stageActionSchedule"`
+	ApplyActionSchedule  scheduledetails                   `mandatory:"false" json:"applyActionSchedule"`
 	TimeUpdated          *common.SDKTime                   `mandatory:"false" json:"timeUpdated"`
 	TimeFinished         *common.SDKTime                   `mandatory:"false" json:"timeFinished"`
 	LifecycleDetails     *string                           `mandatory:"false" json:"lifecycleDetails"`
 	FreeformTags         map[string]string                 `mandatory:"false" json:"freeformTags"`
 	DefinedTags          map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 	SystemTags           map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
+	Id                   *string                           `mandatory:"true" json:"id"`
+	CompartmentId        *string                           `mandatory:"true" json:"compartmentId"`
+	FsuCollectionId      *string                           `mandatory:"true" json:"fsuCollectionId"`
+	TimeCreated          *common.SDKTime                   `mandatory:"true" json:"timeCreated"`
+	LifecycleState       CycleLifecycleStatesEnum          `mandatory:"true" json:"lifecycleState"`
 	Type                 string                            `json:"type"`
 }
 
@@ -166,104 +166,104 @@ func (m *fsucycle) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	}
 }
 
-//GetId returns Id
-func (m fsucycle) GetId() *string {
-	return m.Id
-}
-
-//GetCompartmentId returns CompartmentId
-func (m fsucycle) GetCompartmentId() *string {
-	return m.CompartmentId
-}
-
-//GetFsuCollectionId returns FsuCollectionId
-func (m fsucycle) GetFsuCollectionId() *string {
-	return m.FsuCollectionId
-}
-
-//GetTimeCreated returns TimeCreated
-func (m fsucycle) GetTimeCreated() *common.SDKTime {
-	return m.TimeCreated
-}
-
-//GetLifecycleState returns LifecycleState
-func (m fsucycle) GetLifecycleState() CycleLifecycleStatesEnum {
-	return m.LifecycleState
-}
-
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m fsucycle) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetCollectionType returns CollectionType
+// GetCollectionType returns CollectionType
 func (m fsucycle) GetCollectionType() CollectionTypesEnum {
 	return m.CollectionType
 }
 
-//GetExecutingFsuActionId returns ExecutingFsuActionId
+// GetExecutingFsuActionId returns ExecutingFsuActionId
 func (m fsucycle) GetExecutingFsuActionId() *string {
 	return m.ExecutingFsuActionId
 }
 
-//GetNextActionToExecute returns NextActionToExecute
+// GetNextActionToExecute returns NextActionToExecute
 func (m fsucycle) GetNextActionToExecute() []NextActionToExecuteDetails {
 	return m.NextActionToExecute
 }
 
-//GetLastCompletedAction returns LastCompletedAction
+// GetLastCompletedAction returns LastCompletedAction
 func (m fsucycle) GetLastCompletedAction() DetailedActionTypesEnum {
 	return m.LastCompletedAction
 }
 
-//GetGoalVersionDetails returns GoalVersionDetails
-func (m fsucycle) GetGoalVersionDetails() FsuGoalVersionDetails {
+// GetGoalVersionDetails returns GoalVersionDetails
+func (m fsucycle) GetGoalVersionDetails() fsugoalversiondetails {
 	return m.GoalVersionDetails
 }
 
-//GetBatchingStrategy returns BatchingStrategy
-func (m fsucycle) GetBatchingStrategy() BatchingStrategyDetails {
+// GetBatchingStrategy returns BatchingStrategy
+func (m fsucycle) GetBatchingStrategy() batchingstrategydetails {
 	return m.BatchingStrategy
 }
 
-//GetStageActionSchedule returns StageActionSchedule
-func (m fsucycle) GetStageActionSchedule() ScheduleDetails {
+// GetStageActionSchedule returns StageActionSchedule
+func (m fsucycle) GetStageActionSchedule() scheduledetails {
 	return m.StageActionSchedule
 }
 
-//GetApplyActionSchedule returns ApplyActionSchedule
-func (m fsucycle) GetApplyActionSchedule() ScheduleDetails {
+// GetApplyActionSchedule returns ApplyActionSchedule
+func (m fsucycle) GetApplyActionSchedule() scheduledetails {
 	return m.ApplyActionSchedule
 }
 
-//GetTimeUpdated returns TimeUpdated
+// GetTimeUpdated returns TimeUpdated
 func (m fsucycle) GetTimeUpdated() *common.SDKTime {
 	return m.TimeUpdated
 }
 
-//GetTimeFinished returns TimeFinished
+// GetTimeFinished returns TimeFinished
 func (m fsucycle) GetTimeFinished() *common.SDKTime {
 	return m.TimeFinished
 }
 
-//GetLifecycleDetails returns LifecycleDetails
+// GetLifecycleDetails returns LifecycleDetails
 func (m fsucycle) GetLifecycleDetails() *string {
 	return m.LifecycleDetails
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m fsucycle) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m fsucycle) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m fsucycle) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
+}
+
+// GetId returns Id
+func (m fsucycle) GetId() *string {
+	return m.Id
+}
+
+// GetCompartmentId returns CompartmentId
+func (m fsucycle) GetCompartmentId() *string {
+	return m.CompartmentId
+}
+
+// GetFsuCollectionId returns FsuCollectionId
+func (m fsucycle) GetFsuCollectionId() *string {
+	return m.FsuCollectionId
+}
+
+// GetTimeCreated returns TimeCreated
+func (m fsucycle) GetTimeCreated() *common.SDKTime {
+	return m.TimeCreated
+}
+
+// GetLifecycleState returns LifecycleState
+func (m fsucycle) GetLifecycleState() CycleLifecycleStatesEnum {
+	return m.LifecycleState
 }
 
 func (m fsucycle) String() string {

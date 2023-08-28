@@ -144,10 +144,7 @@ func (m *FsuCycleSummary) UnmarshalJSON(data []byte) (e error) {
 	m.ExecutingFsuActionId = model.ExecutingFsuActionId
 
 	m.NextActionToExecute = make([]NextActionToExecuteDetails, len(model.NextActionToExecute))
-	for i, n := range model.NextActionToExecute {
-		m.NextActionToExecute[i] = n
-	}
-
+	copy(m.NextActionToExecute, model.NextActionToExecute)
 	m.LastCompletedAction = model.LastCompletedAction
 
 	m.TimeUpdated = model.TimeUpdated

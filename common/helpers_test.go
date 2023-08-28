@@ -5,7 +5,6 @@ package common
 
 import (
 	"encoding/json"
-	"fmt"
 	"reflect"
 	"testing"
 	"time"
@@ -73,7 +72,7 @@ func TestStructToString_Nested(t *testing.T) {
 	s.Nested.Thestring = "somestring"
 	s.Nested.NestedInt = Int(2)
 
-	str := fmt.Sprintf("%s", s)
+	str := s.String()
 	assert.Contains(t, str, "1")
 	assert.Contains(t, str, "somestring")
 	assert.Contains(t, str, "<nil>")
@@ -165,7 +164,7 @@ func TestFormattedTimeUnMarshaling(t *testing.T) {
 func TestSDKDateToAndFromString(t *testing.T) {
 	_, err := NewSDKDateFromString("InvalidFormat")
 	s, _ := NewSDKDateFromString("2018-09-13")
-	str := fmt.Sprintf("%s", s)
+	str := s.String()
 
 	assert.Equal(t, "2018-09-13", str)
 	assert.IsType(t, &time.ParseError{}, err)

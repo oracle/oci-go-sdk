@@ -72,7 +72,6 @@ func (m *UpdateAnnotationDetails) UnmarshalJSON(data []byte) (e error) {
 			m.Entities[i] = nil
 		}
 	}
-
 	m.FreeformTags = model.FreeformTags
 
 	m.DefinedTags = model.DefinedTags

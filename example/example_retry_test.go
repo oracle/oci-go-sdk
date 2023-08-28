@@ -234,7 +234,7 @@ func ExampleUnlimitedAttemptsRetry() {
 	customRetryPolicy := common.NewRetryPolicyWithOptions(
 		common.WithUnlimitedAttempts(maximumCumulativeBackoff),
 		common.WithShouldRetryOperation(func(r common.OCIOperationResponse) bool {
-			durationSinceInitialAttempt := time.Now().Sub(r.InitialAttemptTime)
+			durationSinceInitialAttempt := time.Since(r.InitialAttemptTime)
 			tooLong := durationSinceInitialAttempt > maximumCumulativeBackoff
 			return common.DefaultShouldRetryOperation(r) && !tooLong
 		}),
@@ -274,7 +274,7 @@ func ExampleUnlimitedAttemptsRetry() {
 		common.ReplaceWithValuesFromRetryPolicy(common.DefaultRetryPolicyWithoutEventualConsistency()),
 		common.WithUnlimitedAttempts(maximumCumulativeBackoff),
 		common.WithShouldRetryOperation(func(r common.OCIOperationResponse) bool {
-			durationSinceInitialAttempt := time.Now().Sub(r.InitialAttemptTime)
+			durationSinceInitialAttempt := time.Since(r.InitialAttemptTime)
 			tooLong := durationSinceInitialAttempt > maximumCumulativeBackoff
 			return shouldRetry(r) && !tooLong
 		}),

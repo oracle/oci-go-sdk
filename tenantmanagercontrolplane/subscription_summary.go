@@ -101,37 +101,37 @@ func (m *subscriptionsummary) UnmarshalPolymorphicJSON(data []byte) (interface{}
 	}
 }
 
-//GetId returns Id
+// GetId returns Id
 func (m subscriptionsummary) GetId() *string {
 	return m.Id
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m subscriptionsummary) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetServiceName returns ServiceName
+// GetServiceName returns ServiceName
 func (m subscriptionsummary) GetServiceName() *string {
 	return m.ServiceName
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m subscriptionsummary) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetTimeUpdated returns TimeUpdated
+// GetTimeUpdated returns TimeUpdated
 func (m subscriptionsummary) GetTimeUpdated() *common.SDKTime {
 	return m.TimeUpdated
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m subscriptionsummary) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m subscriptionsummary) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

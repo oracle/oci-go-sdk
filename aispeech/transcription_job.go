@@ -171,10 +171,7 @@ func (m *TranscriptionJob) UnmarshalJSON(data []byte) (e error) {
 	m.CreatedBy = model.CreatedBy
 
 	m.AdditionalTranscriptionFormats = make([]TranscriptionJobAdditionalTranscriptionFormatsEnum, len(model.AdditionalTranscriptionFormats))
-	for i, n := range model.AdditionalTranscriptionFormats {
-		m.AdditionalTranscriptionFormats[i] = n
-	}
-
+	copy(m.AdditionalTranscriptionFormats, model.AdditionalTranscriptionFormats)
 	m.LifecycleState = model.LifecycleState
 
 	m.LifecycleDetails = model.LifecycleDetails

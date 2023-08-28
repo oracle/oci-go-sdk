@@ -78,6 +78,12 @@ type SoftwareSourceSummary interface {
 
 type softwaresourcesummary struct {
 	JsonData           []byte
+	Description        *string                           `mandatory:"false" json:"description"`
+	PackageCount       *int64                            `mandatory:"false" json:"packageCount"`
+	LifecycleState     SoftwareSourceLifecycleStateEnum  `mandatory:"false" json:"lifecycleState,omitempty"`
+	FreeformTags       map[string]string                 `mandatory:"false" json:"freeformTags"`
+	DefinedTags        map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+	SystemTags         map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 	Id                 *string                           `mandatory:"true" json:"id"`
 	CompartmentId      *string                           `mandatory:"true" json:"compartmentId"`
 	DisplayName        *string                           `mandatory:"true" json:"displayName"`
@@ -88,12 +94,6 @@ type softwaresourcesummary struct {
 	Availability       AvailabilityEnum                  `mandatory:"true" json:"availability"`
 	OsFamily           OsFamilyEnum                      `mandatory:"true" json:"osFamily"`
 	ArchType           ArchTypeEnum                      `mandatory:"true" json:"archType"`
-	Description        *string                           `mandatory:"false" json:"description"`
-	PackageCount       *int64                            `mandatory:"false" json:"packageCount"`
-	LifecycleState     SoftwareSourceLifecycleStateEnum  `mandatory:"false" json:"lifecycleState,omitempty"`
-	FreeformTags       map[string]string                 `mandatory:"false" json:"freeformTags"`
-	DefinedTags        map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
-	SystemTags         map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 	SoftwareSourceType string                            `json:"softwareSourceType"`
 }
 
@@ -156,84 +156,84 @@ func (m *softwaresourcesummary) UnmarshalPolymorphicJSON(data []byte) (interface
 	}
 }
 
-//GetId returns Id
-func (m softwaresourcesummary) GetId() *string {
-	return m.Id
-}
-
-//GetCompartmentId returns CompartmentId
-func (m softwaresourcesummary) GetCompartmentId() *string {
-	return m.CompartmentId
-}
-
-//GetDisplayName returns DisplayName
-func (m softwaresourcesummary) GetDisplayName() *string {
-	return m.DisplayName
-}
-
-//GetRepoId returns RepoId
-func (m softwaresourcesummary) GetRepoId() *string {
-	return m.RepoId
-}
-
-//GetUrl returns Url
-func (m softwaresourcesummary) GetUrl() *string {
-	return m.Url
-}
-
-//GetTimeCreated returns TimeCreated
-func (m softwaresourcesummary) GetTimeCreated() *common.SDKTime {
-	return m.TimeCreated
-}
-
-//GetTimeUpdated returns TimeUpdated
-func (m softwaresourcesummary) GetTimeUpdated() *common.SDKTime {
-	return m.TimeUpdated
-}
-
-//GetAvailability returns Availability
-func (m softwaresourcesummary) GetAvailability() AvailabilityEnum {
-	return m.Availability
-}
-
-//GetOsFamily returns OsFamily
-func (m softwaresourcesummary) GetOsFamily() OsFamilyEnum {
-	return m.OsFamily
-}
-
-//GetArchType returns ArchType
-func (m softwaresourcesummary) GetArchType() ArchTypeEnum {
-	return m.ArchType
-}
-
-//GetDescription returns Description
+// GetDescription returns Description
 func (m softwaresourcesummary) GetDescription() *string {
 	return m.Description
 }
 
-//GetPackageCount returns PackageCount
+// GetPackageCount returns PackageCount
 func (m softwaresourcesummary) GetPackageCount() *int64 {
 	return m.PackageCount
 }
 
-//GetLifecycleState returns LifecycleState
+// GetLifecycleState returns LifecycleState
 func (m softwaresourcesummary) GetLifecycleState() SoftwareSourceLifecycleStateEnum {
 	return m.LifecycleState
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m softwaresourcesummary) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m softwaresourcesummary) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m softwaresourcesummary) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
+}
+
+// GetId returns Id
+func (m softwaresourcesummary) GetId() *string {
+	return m.Id
+}
+
+// GetCompartmentId returns CompartmentId
+func (m softwaresourcesummary) GetCompartmentId() *string {
+	return m.CompartmentId
+}
+
+// GetDisplayName returns DisplayName
+func (m softwaresourcesummary) GetDisplayName() *string {
+	return m.DisplayName
+}
+
+// GetRepoId returns RepoId
+func (m softwaresourcesummary) GetRepoId() *string {
+	return m.RepoId
+}
+
+// GetUrl returns Url
+func (m softwaresourcesummary) GetUrl() *string {
+	return m.Url
+}
+
+// GetTimeCreated returns TimeCreated
+func (m softwaresourcesummary) GetTimeCreated() *common.SDKTime {
+	return m.TimeCreated
+}
+
+// GetTimeUpdated returns TimeUpdated
+func (m softwaresourcesummary) GetTimeUpdated() *common.SDKTime {
+	return m.TimeUpdated
+}
+
+// GetAvailability returns Availability
+func (m softwaresourcesummary) GetAvailability() AvailabilityEnum {
+	return m.Availability
+}
+
+// GetOsFamily returns OsFamily
+func (m softwaresourcesummary) GetOsFamily() OsFamilyEnum {
+	return m.OsFamily
+}
+
+// GetArchType returns ArchType
+func (m softwaresourcesummary) GetArchType() ArchTypeEnum {
+	return m.ArchType
 }
 
 func (m softwaresourcesummary) String() string {

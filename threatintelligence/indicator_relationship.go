@@ -70,9 +70,6 @@ func (m *IndicatorRelationship) UnmarshalJSON(data []byte) (e error) {
 	}
 
 	m.Attribution = make([]DataAttribution, len(model.Attribution))
-	for i, n := range model.Attribution {
-		m.Attribution[i] = n
-	}
-
+	copy(m.Attribution, model.Attribution)
 	return
 }

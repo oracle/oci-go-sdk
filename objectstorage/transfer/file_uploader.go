@@ -36,10 +36,13 @@ type fileUpload struct {
 
 func (fileUpload *fileUpload) UploadFileMultiparts(ctx context.Context, request UploadFileRequest) (response UploadResponse, err error) {
 	file, err := os.Open(request.FilePath)
-	defer file.Close()
+
 	if err != nil {
+		file.Close()
 		return
 	}
+
+	defer file.Close()
 
 	fi, err := file.Stat()
 	if err != nil {
@@ -77,10 +80,13 @@ func (fileUpload *fileUpload) UploadFileMultiparts(ctx context.Context, request 
 func (fileUpload *fileUpload) UploadFilePutObject(ctx context.Context, request UploadFileRequest) (UploadResponse, error) {
 	response := UploadResponse{Type: SinglepartUpload}
 	file, err := os.Open(request.FilePath)
-	defer file.Close()
+
 	if err != nil {
+		file.Close()
 		return response, err
 	}
+
+	defer file.Close()
 
 	fi, err := file.Stat()
 	if err != nil {

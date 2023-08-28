@@ -68,10 +68,6 @@ type FsuActionSummary interface {
 
 type fsuactionsummary struct {
 	JsonData         []byte
-	Id               *string                           `mandatory:"true" json:"id"`
-	CompartmentId    *string                           `mandatory:"true" json:"compartmentId"`
-	TimeCreated      *common.SDKTime                   `mandatory:"true" json:"timeCreated"`
-	LifecycleState   ActionLifecycleStatesEnum         `mandatory:"true" json:"lifecycleState"`
 	DisplayName      *string                           `mandatory:"false" json:"displayName"`
 	TimeStarted      *common.SDKTime                   `mandatory:"false" json:"timeStarted"`
 	TimeFinished     *common.SDKTime                   `mandatory:"false" json:"timeFinished"`
@@ -80,6 +76,10 @@ type fsuactionsummary struct {
 	FreeformTags     map[string]string                 `mandatory:"false" json:"freeformTags"`
 	DefinedTags      map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 	SystemTags       map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
+	Id               *string                           `mandatory:"true" json:"id"`
+	CompartmentId    *string                           `mandatory:"true" json:"compartmentId"`
+	TimeCreated      *common.SDKTime                   `mandatory:"true" json:"timeCreated"`
+	LifecycleState   ActionLifecycleStatesEnum         `mandatory:"true" json:"lifecycleState"`
 	Type             string                            `json:"type"`
 }
 
@@ -146,64 +146,64 @@ func (m *fsuactionsummary) UnmarshalPolymorphicJSON(data []byte) (interface{}, e
 	}
 }
 
-//GetId returns Id
-func (m fsuactionsummary) GetId() *string {
-	return m.Id
-}
-
-//GetCompartmentId returns CompartmentId
-func (m fsuactionsummary) GetCompartmentId() *string {
-	return m.CompartmentId
-}
-
-//GetTimeCreated returns TimeCreated
-func (m fsuactionsummary) GetTimeCreated() *common.SDKTime {
-	return m.TimeCreated
-}
-
-//GetLifecycleState returns LifecycleState
-func (m fsuactionsummary) GetLifecycleState() ActionLifecycleStatesEnum {
-	return m.LifecycleState
-}
-
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m fsuactionsummary) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetTimeStarted returns TimeStarted
+// GetTimeStarted returns TimeStarted
 func (m fsuactionsummary) GetTimeStarted() *common.SDKTime {
 	return m.TimeStarted
 }
 
-//GetTimeFinished returns TimeFinished
+// GetTimeFinished returns TimeFinished
 func (m fsuactionsummary) GetTimeFinished() *common.SDKTime {
 	return m.TimeFinished
 }
 
-//GetTimeUpdated returns TimeUpdated
+// GetTimeUpdated returns TimeUpdated
 func (m fsuactionsummary) GetTimeUpdated() *common.SDKTime {
 	return m.TimeUpdated
 }
 
-//GetLifecycleDetails returns LifecycleDetails
+// GetLifecycleDetails returns LifecycleDetails
 func (m fsuactionsummary) GetLifecycleDetails() *string {
 	return m.LifecycleDetails
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m fsuactionsummary) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m fsuactionsummary) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m fsuactionsummary) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
+}
+
+// GetId returns Id
+func (m fsuactionsummary) GetId() *string {
+	return m.Id
+}
+
+// GetCompartmentId returns CompartmentId
+func (m fsuactionsummary) GetCompartmentId() *string {
+	return m.CompartmentId
+}
+
+// GetTimeCreated returns TimeCreated
+func (m fsuactionsummary) GetTimeCreated() *common.SDKTime {
+	return m.TimeCreated
+}
+
+// GetLifecycleState returns LifecycleState
+func (m fsuactionsummary) GetLifecycleState() ActionLifecycleStatesEnum {
+	return m.LifecycleState
 }
 
 func (m fsuactionsummary) String() string {

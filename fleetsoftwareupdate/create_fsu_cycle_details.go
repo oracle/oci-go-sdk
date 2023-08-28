@@ -48,15 +48,15 @@ type CreateFsuCycleDetails interface {
 
 type createfsucycledetails struct {
 	JsonData            []byte
-	CompartmentId       *string                           `mandatory:"true" json:"compartmentId"`
-	FsuCollectionId     *string                           `mandatory:"true" json:"fsuCollectionId"`
-	GoalVersionDetails  FsuGoalVersionDetails             `mandatory:"true" json:"goalVersionDetails"`
 	DisplayName         *string                           `mandatory:"false" json:"displayName"`
-	BatchingStrategy    CreateBatchingStrategyDetails     `mandatory:"false" json:"batchingStrategy"`
-	StageActionSchedule CreateScheduleDetails             `mandatory:"false" json:"stageActionSchedule"`
-	ApplyActionSchedule CreateScheduleDetails             `mandatory:"false" json:"applyActionSchedule"`
+	BatchingStrategy    createbatchingstrategydetails     `mandatory:"false" json:"batchingStrategy"`
+	StageActionSchedule createscheduledetails             `mandatory:"false" json:"stageActionSchedule"`
+	ApplyActionSchedule createscheduledetails             `mandatory:"false" json:"applyActionSchedule"`
 	FreeformTags        map[string]string                 `mandatory:"false" json:"freeformTags"`
 	DefinedTags         map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+	CompartmentId       *string                           `mandatory:"true" json:"compartmentId"`
+	FsuCollectionId     *string                           `mandatory:"true" json:"fsuCollectionId"`
+	GoalVersionDetails  fsugoalversiondetails             `mandatory:"true" json:"goalVersionDetails"`
 	Type                string                            `json:"type"`
 }
 
@@ -104,49 +104,49 @@ func (m *createfsucycledetails) UnmarshalPolymorphicJSON(data []byte) (interface
 	}
 }
 
-//GetCompartmentId returns CompartmentId
-func (m createfsucycledetails) GetCompartmentId() *string {
-	return m.CompartmentId
-}
-
-//GetFsuCollectionId returns FsuCollectionId
-func (m createfsucycledetails) GetFsuCollectionId() *string {
-	return m.FsuCollectionId
-}
-
-//GetGoalVersionDetails returns GoalVersionDetails
-func (m createfsucycledetails) GetGoalVersionDetails() FsuGoalVersionDetails {
-	return m.GoalVersionDetails
-}
-
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m createfsucycledetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetBatchingStrategy returns BatchingStrategy
-func (m createfsucycledetails) GetBatchingStrategy() CreateBatchingStrategyDetails {
+// GetBatchingStrategy returns BatchingStrategy
+func (m createfsucycledetails) GetBatchingStrategy() createbatchingstrategydetails {
 	return m.BatchingStrategy
 }
 
-//GetStageActionSchedule returns StageActionSchedule
-func (m createfsucycledetails) GetStageActionSchedule() CreateScheduleDetails {
+// GetStageActionSchedule returns StageActionSchedule
+func (m createfsucycledetails) GetStageActionSchedule() createscheduledetails {
 	return m.StageActionSchedule
 }
 
-//GetApplyActionSchedule returns ApplyActionSchedule
-func (m createfsucycledetails) GetApplyActionSchedule() CreateScheduleDetails {
+// GetApplyActionSchedule returns ApplyActionSchedule
+func (m createfsucycledetails) GetApplyActionSchedule() createscheduledetails {
 	return m.ApplyActionSchedule
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m createfsucycledetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m createfsucycledetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
+}
+
+// GetCompartmentId returns CompartmentId
+func (m createfsucycledetails) GetCompartmentId() *string {
+	return m.CompartmentId
+}
+
+// GetFsuCollectionId returns FsuCollectionId
+func (m createfsucycledetails) GetFsuCollectionId() *string {
+	return m.FsuCollectionId
+}
+
+// GetGoalVersionDetails returns GoalVersionDetails
+func (m createfsucycledetails) GetGoalVersionDetails() fsugoalversiondetails {
+	return m.GoalVersionDetails
 }
 
 func (m createfsucycledetails) String() string {

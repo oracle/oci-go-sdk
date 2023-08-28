@@ -83,7 +83,7 @@ func (m *gifleetdiscoveryfilter) UnmarshalPolymorphicJSON(data []byte) (interfac
 	}
 }
 
-//GetMode returns Mode
+// GetMode returns Mode
 func (m gifleetdiscoveryfilter) GetMode() GiFleetDiscoveryFilterModeEnum {
 	return m.Mode
 }
