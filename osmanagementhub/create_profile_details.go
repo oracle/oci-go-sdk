@@ -45,12 +45,12 @@ type CreateProfileDetails interface {
 
 type createprofiledetails struct {
 	JsonData            []byte
-	DisplayName         *string                           `mandatory:"true" json:"displayName"`
-	CompartmentId       *string                           `mandatory:"true" json:"compartmentId"`
 	Description         *string                           `mandatory:"false" json:"description"`
 	ManagementStationId *string                           `mandatory:"false" json:"managementStationId"`
 	FreeformTags        map[string]string                 `mandatory:"false" json:"freeformTags"`
 	DefinedTags         map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+	DisplayName         *string                           `mandatory:"true" json:"displayName"`
+	CompartmentId       *string                           `mandatory:"true" json:"compartmentId"`
 	ProfileType         string                            `json:"profileType"`
 }
 
@@ -107,34 +107,34 @@ func (m *createprofiledetails) UnmarshalPolymorphicJSON(data []byte) (interface{
 	}
 }
 
-//GetDisplayName returns DisplayName
-func (m createprofiledetails) GetDisplayName() *string {
-	return m.DisplayName
-}
-
-//GetCompartmentId returns CompartmentId
-func (m createprofiledetails) GetCompartmentId() *string {
-	return m.CompartmentId
-}
-
-//GetDescription returns Description
+// GetDescription returns Description
 func (m createprofiledetails) GetDescription() *string {
 	return m.Description
 }
 
-//GetManagementStationId returns ManagementStationId
+// GetManagementStationId returns ManagementStationId
 func (m createprofiledetails) GetManagementStationId() *string {
 	return m.ManagementStationId
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m createprofiledetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m createprofiledetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
+}
+
+// GetDisplayName returns DisplayName
+func (m createprofiledetails) GetDisplayName() *string {
+	return m.DisplayName
+}
+
+// GetCompartmentId returns CompartmentId
+func (m createprofiledetails) GetCompartmentId() *string {
+	return m.CompartmentId
 }
 
 func (m createprofiledetails) String() string {

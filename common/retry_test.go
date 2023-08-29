@@ -388,7 +388,7 @@ func TestGetEndTimeOfEventuallyConsistentWindow(t *testing.T) {
 	value2 := EcContext.GetEndOfWindow()
 	assert.Equal(t, value1, value2)
 
-	eowt = EcContext.UpdateEndOfWindow(eventuallyConsistentWindowSize)
+	_ = EcContext.UpdateEndOfWindow(eventuallyConsistentWindowSize)
 
 	value3 := EcContext.GetEndOfWindow()
 	time.Sleep(1 * time.Second)

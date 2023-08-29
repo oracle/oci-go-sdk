@@ -79,12 +79,12 @@ func (m *targetdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, erro
 	}
 }
 
-//GetId returns Id
+// GetId returns Id
 func (m targetdetails) GetId() *string {
 	return m.Id
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m targetdetails) GetCompartmentId() *string {
 	return m.CompartmentId
 }

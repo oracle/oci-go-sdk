@@ -851,11 +851,14 @@ func (cfg config) getADBsWalletAsBase64String() *string {
 				GenerateType: "SINGLE",
 			},
 		})
-	defer response.Content.Close()
+
 	if err != nil {
 		log.Printf("error generating ADBs wallet: %v\n", err)
+		response.Content.Close()
 		return nil
 	}
+
+	defer response.Content.Close()
 
 	zipFileBytes, err := ioutil.ReadAll(response.Content)
 	if err != nil {
@@ -1118,10 +1121,13 @@ func (cfg config) getFileFromZip(zipFileBytes []byte, fileName string) ([]byte, 
 	for _, f := range zipReader.File {
 		if f.Name == fileName {
 			fileReader, err := f.Open()
-			defer fileReader.Close()
+
 			if err != nil {
+				fileReader.Close()
 				return nil, err
 			}
+
+			defer fileReader.Close()
 
 			fileBytes, err := ioutil.ReadAll(fileReader)
 			if err != nil {

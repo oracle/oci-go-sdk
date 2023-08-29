@@ -69,6 +69,7 @@ type Dashboard interface {
 
 type dashboard struct {
 	JsonData         []byte
+	SystemTags       map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 	Id               *string                           `mandatory:"true" json:"id"`
 	DashboardGroupId *string                           `mandatory:"true" json:"dashboardGroupId"`
 	DisplayName      *string                           `mandatory:"true" json:"displayName"`
@@ -79,7 +80,6 @@ type dashboard struct {
 	LifecycleState   DashboardLifecycleStateEnum       `mandatory:"true" json:"lifecycleState"`
 	FreeformTags     map[string]string                 `mandatory:"true" json:"freeformTags"`
 	DefinedTags      map[string]map[string]interface{} `mandatory:"true" json:"definedTags"`
-	SystemTags       map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 	SchemaVersion    string                            `json:"schemaVersion"`
 }
 
@@ -129,59 +129,59 @@ func (m *dashboard) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	}
 }
 
-//GetId returns Id
+// GetSystemTags returns SystemTags
+func (m dashboard) GetSystemTags() map[string]map[string]interface{} {
+	return m.SystemTags
+}
+
+// GetId returns Id
 func (m dashboard) GetId() *string {
 	return m.Id
 }
 
-//GetDashboardGroupId returns DashboardGroupId
+// GetDashboardGroupId returns DashboardGroupId
 func (m dashboard) GetDashboardGroupId() *string {
 	return m.DashboardGroupId
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m dashboard) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetDescription returns Description
+// GetDescription returns Description
 func (m dashboard) GetDescription() *string {
 	return m.Description
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m dashboard) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m dashboard) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetTimeUpdated returns TimeUpdated
+// GetTimeUpdated returns TimeUpdated
 func (m dashboard) GetTimeUpdated() *common.SDKTime {
 	return m.TimeUpdated
 }
 
-//GetLifecycleState returns LifecycleState
+// GetLifecycleState returns LifecycleState
 func (m dashboard) GetLifecycleState() DashboardLifecycleStateEnum {
 	return m.LifecycleState
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m dashboard) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m dashboard) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
-}
-
-//GetSystemTags returns SystemTags
-func (m dashboard) GetSystemTags() map[string]map[string]interface{} {
-	return m.SystemTags
 }
 
 func (m dashboard) String() string {

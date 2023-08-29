@@ -48,11 +48,11 @@ type CreateDashboardDetails interface {
 
 type createdashboarddetails struct {
 	JsonData         []byte
-	DashboardGroupId *string                           `mandatory:"true" json:"dashboardGroupId"`
 	DisplayName      *string                           `mandatory:"false" json:"displayName"`
 	Description      *string                           `mandatory:"false" json:"description"`
 	FreeformTags     map[string]string                 `mandatory:"false" json:"freeformTags"`
 	DefinedTags      map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+	DashboardGroupId *string                           `mandatory:"true" json:"dashboardGroupId"`
 	SchemaVersion    string                            `json:"schemaVersion"`
 }
 
@@ -96,29 +96,29 @@ func (m *createdashboarddetails) UnmarshalPolymorphicJSON(data []byte) (interfac
 	}
 }
 
-//GetDashboardGroupId returns DashboardGroupId
-func (m createdashboarddetails) GetDashboardGroupId() *string {
-	return m.DashboardGroupId
-}
-
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m createdashboarddetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetDescription returns Description
+// GetDescription returns Description
 func (m createdashboarddetails) GetDescription() *string {
 	return m.Description
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m createdashboarddetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m createdashboarddetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
+}
+
+// GetDashboardGroupId returns DashboardGroupId
+func (m createdashboarddetails) GetDashboardGroupId() *string {
+	return m.DashboardGroupId
 }
 
 func (m createdashboarddetails) String() string {

@@ -88,6 +88,5 @@ func (m *CreateAnnotationDetails) UnmarshalJSON(data []byte) (e error) {
 			m.Entities[i] = nil
 		}
 	}
-
 	return
 }

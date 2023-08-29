@@ -567,7 +567,7 @@ region=someregion
 `
 
 	tmpKeyLocation := filepath.Join(getHomeFolder(), "testKeyForConcurrentRead")
-	e := ioutil.WriteFile(tmpKeyLocation, []byte(testEncryptedPrivateKeyConf), 777)
+	e := ioutil.WriteFile(tmpKeyLocation, []byte(testEncryptedPrivateKeyConf), 0777)
 	if e != nil {
 		assert.FailNow(t, e.Error())
 	}
@@ -872,7 +872,7 @@ compartment = somecompartment
 	os.Unsetenv("OCI_REGION")
 	provider, err = ConfigurationProviderFromFile(tmpConfFile, testKeyPassphrase)
 	assert.NoError(t, err)
-	ok, err = IsConfigurationProviderValid(provider)
+	_, err = IsConfigurationProviderValid(provider)
 	assert.Error(t, err)
 }
 
@@ -887,7 +887,7 @@ region=someregion
 `
 
 	tmpKeyLocation := filepath.Join(getHomeFolder(), "testKey")
-	e := ioutil.WriteFile(tmpKeyLocation, []byte(testEncryptedPrivateKeyConf), 777)
+	e := ioutil.WriteFile(tmpKeyLocation, []byte(testEncryptedPrivateKeyConf), 0777)
 	if e != nil {
 		assert.FailNow(t, e.Error())
 	}

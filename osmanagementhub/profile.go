@@ -67,12 +67,6 @@ type Profile interface {
 
 type profile struct {
 	JsonData            []byte
-	Id                  *string                           `mandatory:"true" json:"id"`
-	CompartmentId       *string                           `mandatory:"true" json:"compartmentId"`
-	DisplayName         *string                           `mandatory:"true" json:"displayName"`
-	VendorName          VendorNameEnum                    `mandatory:"true" json:"vendorName"`
-	OsFamily            OsFamilyEnum                      `mandatory:"true" json:"osFamily"`
-	ArchType            ArchTypeEnum                      `mandatory:"true" json:"archType"`
 	Description         *string                           `mandatory:"false" json:"description"`
 	ManagementStationId *string                           `mandatory:"false" json:"managementStationId"`
 	TimeCreated         *common.SDKTime                   `mandatory:"false" json:"timeCreated"`
@@ -80,6 +74,12 @@ type profile struct {
 	FreeformTags        map[string]string                 `mandatory:"false" json:"freeformTags"`
 	DefinedTags         map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 	SystemTags          map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
+	Id                  *string                           `mandatory:"true" json:"id"`
+	CompartmentId       *string                           `mandatory:"true" json:"compartmentId"`
+	DisplayName         *string                           `mandatory:"true" json:"displayName"`
+	VendorName          VendorNameEnum                    `mandatory:"true" json:"vendorName"`
+	OsFamily            OsFamilyEnum                      `mandatory:"true" json:"osFamily"`
+	ArchType            ArchTypeEnum                      `mandatory:"true" json:"archType"`
 	ProfileType         string                            `json:"profileType"`
 }
 
@@ -143,69 +143,69 @@ func (m *profile) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	}
 }
 
-//GetId returns Id
-func (m profile) GetId() *string {
-	return m.Id
-}
-
-//GetCompartmentId returns CompartmentId
-func (m profile) GetCompartmentId() *string {
-	return m.CompartmentId
-}
-
-//GetDisplayName returns DisplayName
-func (m profile) GetDisplayName() *string {
-	return m.DisplayName
-}
-
-//GetVendorName returns VendorName
-func (m profile) GetVendorName() VendorNameEnum {
-	return m.VendorName
-}
-
-//GetOsFamily returns OsFamily
-func (m profile) GetOsFamily() OsFamilyEnum {
-	return m.OsFamily
-}
-
-//GetArchType returns ArchType
-func (m profile) GetArchType() ArchTypeEnum {
-	return m.ArchType
-}
-
-//GetDescription returns Description
+// GetDescription returns Description
 func (m profile) GetDescription() *string {
 	return m.Description
 }
 
-//GetManagementStationId returns ManagementStationId
+// GetManagementStationId returns ManagementStationId
 func (m profile) GetManagementStationId() *string {
 	return m.ManagementStationId
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m profile) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetLifecycleState returns LifecycleState
+// GetLifecycleState returns LifecycleState
 func (m profile) GetLifecycleState() ProfileLifecycleStateEnum {
 	return m.LifecycleState
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m profile) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m profile) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m profile) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
+}
+
+// GetId returns Id
+func (m profile) GetId() *string {
+	return m.Id
+}
+
+// GetCompartmentId returns CompartmentId
+func (m profile) GetCompartmentId() *string {
+	return m.CompartmentId
+}
+
+// GetDisplayName returns DisplayName
+func (m profile) GetDisplayName() *string {
+	return m.DisplayName
+}
+
+// GetVendorName returns VendorName
+func (m profile) GetVendorName() VendorNameEnum {
+	return m.VendorName
+}
+
+// GetOsFamily returns OsFamily
+func (m profile) GetOsFamily() OsFamilyEnum {
+	return m.OsFamily
+}
+
+// GetArchType returns ArchType
+func (m profile) GetArchType() ArchTypeEnum {
+	return m.ArchType
 }
 
 func (m profile) String() string {

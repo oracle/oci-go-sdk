@@ -126,7 +126,6 @@ func (m *Annotation) UnmarshalJSON(data []byte) (e error) {
 			m.Entities[i] = nil
 		}
 	}
-
 	m.CompartmentId = model.CompartmentId
 
 	m.LifecycleState = model.LifecycleState

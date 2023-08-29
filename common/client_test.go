@@ -722,13 +722,13 @@ func TestSeek(t *testing.T) {
 	defer file.Close()
 	offset := int64(0)
 	ocirsc := NewOCIReadSeekCloser(file)
-	curPos, e := ocirsc.Seek(offset, io.SeekCurrent)
+	curPos, _ := ocirsc.Seek(offset, io.SeekCurrent)
 	if info, err := file.Stat(); err == nil {
 		length := info.Size()
 		assert.Equal(t, curPos, length)
 	}
 	offset = int64(2)
-	curPos, e = ocirsc.Seek(offset, io.SeekStart)
+	curPos, e := ocirsc.Seek(offset, io.SeekStart)
 	assert.Nil(t, e)
 	assert.Equal(t, curPos, offset)
 

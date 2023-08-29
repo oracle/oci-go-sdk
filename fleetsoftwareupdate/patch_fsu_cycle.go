@@ -279,10 +279,7 @@ func (m *PatchFsuCycle) UnmarshalJSON(data []byte) (e error) {
 	m.ExecutingFsuActionId = model.ExecutingFsuActionId
 
 	m.NextActionToExecute = make([]NextActionToExecuteDetails, len(model.NextActionToExecute))
-	for i, n := range model.NextActionToExecute {
-		m.NextActionToExecute[i] = n
-	}
-
+	copy(m.NextActionToExecute, model.NextActionToExecute)
 	m.LastCompletedAction = model.LastCompletedAction
 
 	nn, e = model.GoalVersionDetails.UnmarshalPolymorphicJSON(model.GoalVersionDetails.JsonData)
@@ -340,10 +337,7 @@ func (m *PatchFsuCycle) UnmarshalJSON(data []byte) (e error) {
 	m.IsIgnorePatches = model.IsIgnorePatches
 
 	m.IsIgnoreMissingPatches = make([]string, len(model.IsIgnoreMissingPatches))
-	for i, n := range model.IsIgnoreMissingPatches {
-		m.IsIgnoreMissingPatches[i] = n
-	}
-
+	copy(m.IsIgnoreMissingPatches, model.IsIgnoreMissingPatches)
 	m.MaxDrainTimeoutInSeconds = model.MaxDrainTimeoutInSeconds
 
 	m.IsKeepPlacement = model.IsKeepPlacement

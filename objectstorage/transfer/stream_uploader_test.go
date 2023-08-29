@@ -49,6 +49,12 @@ func TestUploadStreamMultiparts(t *testing.T) {
 		filePath, _ := helpers.WriteTempFileOfSize(fileSize)
 
 		file, err := os.Open(filePath)
+
+		if err != nil {
+			file.Close()
+			return
+		}
+
 		defer file.Close()
 		assert.NoError(t, err)
 

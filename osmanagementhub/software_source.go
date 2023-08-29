@@ -86,15 +86,6 @@ type SoftwareSource interface {
 
 type softwaresource struct {
 	JsonData           []byte
-	Id                 *string                           `mandatory:"true" json:"id"`
-	CompartmentId      *string                           `mandatory:"true" json:"compartmentId"`
-	DisplayName        *string                           `mandatory:"true" json:"displayName"`
-	TimeCreated        *common.SDKTime                   `mandatory:"true" json:"timeCreated"`
-	Availability       AvailabilityEnum                  `mandatory:"true" json:"availability"`
-	RepoId             *string                           `mandatory:"true" json:"repoId"`
-	OsFamily           OsFamilyEnum                      `mandatory:"true" json:"osFamily"`
-	ArchType           ArchTypeEnum                      `mandatory:"true" json:"archType"`
-	Url                *string                           `mandatory:"true" json:"url"`
 	Description        *string                           `mandatory:"false" json:"description"`
 	LifecycleState     SoftwareSourceLifecycleStateEnum  `mandatory:"false" json:"lifecycleState,omitempty"`
 	PackageCount       *int64                            `mandatory:"false" json:"packageCount"`
@@ -105,6 +96,15 @@ type softwaresource struct {
 	FreeformTags       map[string]string                 `mandatory:"false" json:"freeformTags"`
 	DefinedTags        map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 	SystemTags         map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
+	Id                 *string                           `mandatory:"true" json:"id"`
+	CompartmentId      *string                           `mandatory:"true" json:"compartmentId"`
+	DisplayName        *string                           `mandatory:"true" json:"displayName"`
+	TimeCreated        *common.SDKTime                   `mandatory:"true" json:"timeCreated"`
+	Availability       AvailabilityEnum                  `mandatory:"true" json:"availability"`
+	RepoId             *string                           `mandatory:"true" json:"repoId"`
+	OsFamily           OsFamilyEnum                      `mandatory:"true" json:"osFamily"`
+	ArchType           ArchTypeEnum                      `mandatory:"true" json:"archType"`
+	Url                *string                           `mandatory:"true" json:"url"`
 	SoftwareSourceType string                            `json:"softwareSourceType"`
 }
 
@@ -170,99 +170,99 @@ func (m *softwaresource) UnmarshalPolymorphicJSON(data []byte) (interface{}, err
 	}
 }
 
-//GetId returns Id
-func (m softwaresource) GetId() *string {
-	return m.Id
-}
-
-//GetCompartmentId returns CompartmentId
-func (m softwaresource) GetCompartmentId() *string {
-	return m.CompartmentId
-}
-
-//GetDisplayName returns DisplayName
-func (m softwaresource) GetDisplayName() *string {
-	return m.DisplayName
-}
-
-//GetTimeCreated returns TimeCreated
-func (m softwaresource) GetTimeCreated() *common.SDKTime {
-	return m.TimeCreated
-}
-
-//GetAvailability returns Availability
-func (m softwaresource) GetAvailability() AvailabilityEnum {
-	return m.Availability
-}
-
-//GetRepoId returns RepoId
-func (m softwaresource) GetRepoId() *string {
-	return m.RepoId
-}
-
-//GetOsFamily returns OsFamily
-func (m softwaresource) GetOsFamily() OsFamilyEnum {
-	return m.OsFamily
-}
-
-//GetArchType returns ArchType
-func (m softwaresource) GetArchType() ArchTypeEnum {
-	return m.ArchType
-}
-
-//GetUrl returns Url
-func (m softwaresource) GetUrl() *string {
-	return m.Url
-}
-
-//GetDescription returns Description
+// GetDescription returns Description
 func (m softwaresource) GetDescription() *string {
 	return m.Description
 }
 
-//GetLifecycleState returns LifecycleState
+// GetLifecycleState returns LifecycleState
 func (m softwaresource) GetLifecycleState() SoftwareSourceLifecycleStateEnum {
 	return m.LifecycleState
 }
 
-//GetPackageCount returns PackageCount
+// GetPackageCount returns PackageCount
 func (m softwaresource) GetPackageCount() *int64 {
 	return m.PackageCount
 }
 
-//GetChecksumType returns ChecksumType
+// GetChecksumType returns ChecksumType
 func (m softwaresource) GetChecksumType() ChecksumTypeEnum {
 	return m.ChecksumType
 }
 
-//GetGpgKeyUrl returns GpgKeyUrl
+// GetGpgKeyUrl returns GpgKeyUrl
 func (m softwaresource) GetGpgKeyUrl() *string {
 	return m.GpgKeyUrl
 }
 
-//GetGpgKeyId returns GpgKeyId
+// GetGpgKeyId returns GpgKeyId
 func (m softwaresource) GetGpgKeyId() *string {
 	return m.GpgKeyId
 }
 
-//GetGpgKeyFingerprint returns GpgKeyFingerprint
+// GetGpgKeyFingerprint returns GpgKeyFingerprint
 func (m softwaresource) GetGpgKeyFingerprint() *string {
 	return m.GpgKeyFingerprint
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m softwaresource) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m softwaresource) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m softwaresource) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
+}
+
+// GetId returns Id
+func (m softwaresource) GetId() *string {
+	return m.Id
+}
+
+// GetCompartmentId returns CompartmentId
+func (m softwaresource) GetCompartmentId() *string {
+	return m.CompartmentId
+}
+
+// GetDisplayName returns DisplayName
+func (m softwaresource) GetDisplayName() *string {
+	return m.DisplayName
+}
+
+// GetTimeCreated returns TimeCreated
+func (m softwaresource) GetTimeCreated() *common.SDKTime {
+	return m.TimeCreated
+}
+
+// GetAvailability returns Availability
+func (m softwaresource) GetAvailability() AvailabilityEnum {
+	return m.Availability
+}
+
+// GetRepoId returns RepoId
+func (m softwaresource) GetRepoId() *string {
+	return m.RepoId
+}
+
+// GetOsFamily returns OsFamily
+func (m softwaresource) GetOsFamily() OsFamilyEnum {
+	return m.OsFamily
+}
+
+// GetArchType returns ArchType
+func (m softwaresource) GetArchType() ArchTypeEnum {
+	return m.ArchType
+}
+
+// GetUrl returns Url
+func (m softwaresource) GetUrl() *string {
+	return m.Url
 }
 
 func (m softwaresource) String() string {

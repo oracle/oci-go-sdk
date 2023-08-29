@@ -70,7 +70,7 @@ func (m *discoverydetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, e
 	}
 }
 
-//GetServiceType returns ServiceType
+// GetServiceType returns ServiceType
 func (m discoverydetails) GetServiceType() DiscoveryServiceTypesEnum {
 	return m.ServiceType
 }

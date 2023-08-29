@@ -62,11 +62,13 @@ func (uploadManager *UploadManager) UploadFile(ctx context.Context, request Uplo
 	}
 
 	file, err := os.Open(request.FilePath)
-	defer file.Close()
 
 	if err != nil {
+		file.Close()
 		return
 	}
+
+	defer file.Close()
 
 	fi, err := file.Stat()
 	if err != nil {

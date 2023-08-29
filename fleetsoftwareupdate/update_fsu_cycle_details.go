@@ -39,8 +39,8 @@ type UpdateFsuCycleDetails interface {
 type updatefsucycledetails struct {
 	JsonData           []byte
 	DisplayName        *string                           `mandatory:"false" json:"displayName"`
-	GoalVersionDetails FsuGoalVersionDetails             `mandatory:"false" json:"goalVersionDetails"`
-	BatchingStrategy   UpdateBatchingStrategyDetails     `mandatory:"false" json:"batchingStrategy"`
+	GoalVersionDetails fsugoalversiondetails             `mandatory:"false" json:"goalVersionDetails"`
+	BatchingStrategy   updatebatchingstrategydetails     `mandatory:"false" json:"batchingStrategy"`
 	FreeformTags       map[string]string                 `mandatory:"false" json:"freeformTags"`
 	DefinedTags        map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 	Type               string                            `json:"type"`
@@ -86,27 +86,27 @@ func (m *updatefsucycledetails) UnmarshalPolymorphicJSON(data []byte) (interface
 	}
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m updatefsucycledetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetGoalVersionDetails returns GoalVersionDetails
-func (m updatefsucycledetails) GetGoalVersionDetails() FsuGoalVersionDetails {
+// GetGoalVersionDetails returns GoalVersionDetails
+func (m updatefsucycledetails) GetGoalVersionDetails() fsugoalversiondetails {
 	return m.GoalVersionDetails
 }
 
-//GetBatchingStrategy returns BatchingStrategy
-func (m updatefsucycledetails) GetBatchingStrategy() UpdateBatchingStrategyDetails {
+// GetBatchingStrategy returns BatchingStrategy
+func (m updatefsucycledetails) GetBatchingStrategy() updatebatchingstrategydetails {
 	return m.BatchingStrategy
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m updatefsucycledetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m updatefsucycledetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

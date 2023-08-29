@@ -41,12 +41,12 @@ type PackageSummary interface {
 
 type packagesummary struct {
 	JsonData              []byte
+	Architecture          ArchTypeEnum            `mandatory:"false" json:"architecture,omitempty"`
+	SoftwareSources       []SoftwareSourceDetails `mandatory:"false" json:"softwareSources"`
 	DisplayName           *string                 `mandatory:"true" json:"displayName"`
 	Name                  *string                 `mandatory:"true" json:"name"`
 	Type                  *string                 `mandatory:"true" json:"type"`
 	Version               *string                 `mandatory:"true" json:"version"`
-	Architecture          ArchTypeEnum            `mandatory:"false" json:"architecture,omitempty"`
-	SoftwareSources       []SoftwareSourceDetails `mandatory:"false" json:"softwareSources"`
 	PackageClassification string                  `json:"packageClassification"`
 }
 
@@ -99,34 +99,34 @@ func (m *packagesummary) UnmarshalPolymorphicJSON(data []byte) (interface{}, err
 	}
 }
 
-//GetDisplayName returns DisplayName
-func (m packagesummary) GetDisplayName() *string {
-	return m.DisplayName
-}
-
-//GetName returns Name
-func (m packagesummary) GetName() *string {
-	return m.Name
-}
-
-//GetType returns Type
-func (m packagesummary) GetType() *string {
-	return m.Type
-}
-
-//GetVersion returns Version
-func (m packagesummary) GetVersion() *string {
-	return m.Version
-}
-
-//GetArchitecture returns Architecture
+// GetArchitecture returns Architecture
 func (m packagesummary) GetArchitecture() ArchTypeEnum {
 	return m.Architecture
 }
 
-//GetSoftwareSources returns SoftwareSources
+// GetSoftwareSources returns SoftwareSources
 func (m packagesummary) GetSoftwareSources() []SoftwareSourceDetails {
 	return m.SoftwareSources
+}
+
+// GetDisplayName returns DisplayName
+func (m packagesummary) GetDisplayName() *string {
+	return m.DisplayName
+}
+
+// GetName returns Name
+func (m packagesummary) GetName() *string {
+	return m.Name
+}
+
+// GetType returns Type
+func (m packagesummary) GetType() *string {
+	return m.Type
+}
+
+// GetVersion returns Version
+func (m packagesummary) GetVersion() *string {
+	return m.Version
 }
 
 func (m packagesummary) String() string {

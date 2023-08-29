@@ -40,8 +40,13 @@ func ExampleObjectStorage_UploadFile() {
 	}()
 
 	file, e := os.Open(fpath)
-	defer file.Close()
-	helpers.FatalIfError(e)
+
+	if e != nil {
+		file.Close()
+		helpers.FatalIfError(e)
+	} else {
+		defer file.Close()
+	}
 
 	e = putObject(ctx, c, namespace, bname, filename, filesize, file, nil)
 	helpers.FatalIfError(e)
