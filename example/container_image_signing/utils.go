@@ -322,7 +322,7 @@ func verifySignature(ctx context.Context, client keymanagement.KmsCryptoClient, 
 
 // buildVaultCryptoClient builds the KmsCryptoClient based on the vault extension OCID in the keyId
 func buildVaultCryptoClient(configProvider common.ConfigurationProvider, keyId string, region string) (client keymanagement.KmsCryptoClient, err error) {
-	re := regexp.MustCompile("ocid1\\.key\\.([\\w-]+)\\.([\\w-]+)\\.([\\w-]+)\\.([\\w]{60})")
+	re := regexp.MustCompile(`ocid1\.key\.([\w-]+)\.([\w-]+)\.([\w-]+)\.([\w]{60})`)
 	vaultExt := re.FindStringSubmatch(keyId)[3]
 	cryptoEndpointTemplate := common.StringToRegion(region).EndpointForTemplate("kms", "https://{vaultExt}-crypto.kms.{region}.{secondLevelDomain}")
 	cryptoEndpoint := strings.Replace(cryptoEndpointTemplate, "{vaultExt}", vaultExt, 1)

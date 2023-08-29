@@ -42,11 +42,11 @@ type CreateSoftwareSourceDetails interface {
 
 type createsoftwaresourcedetails struct {
 	JsonData           []byte
-	CompartmentId      *string                           `mandatory:"true" json:"compartmentId"`
-	DisplayName        *string                           `mandatory:"true" json:"displayName"`
 	Description        *string                           `mandatory:"false" json:"description"`
 	FreeformTags       map[string]string                 `mandatory:"false" json:"freeformTags"`
 	DefinedTags        map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+	CompartmentId      *string                           `mandatory:"true" json:"compartmentId"`
+	DisplayName        *string                           `mandatory:"true" json:"displayName"`
 	SoftwareSourceType string                            `json:"softwareSourceType"`
 }
 
@@ -94,29 +94,29 @@ func (m *createsoftwaresourcedetails) UnmarshalPolymorphicJSON(data []byte) (int
 	}
 }
 
-//GetCompartmentId returns CompartmentId
-func (m createsoftwaresourcedetails) GetCompartmentId() *string {
-	return m.CompartmentId
-}
-
-//GetDisplayName returns DisplayName
-func (m createsoftwaresourcedetails) GetDisplayName() *string {
-	return m.DisplayName
-}
-
-//GetDescription returns Description
+// GetDescription returns Description
 func (m createsoftwaresourcedetails) GetDescription() *string {
 	return m.Description
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m createsoftwaresourcedetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m createsoftwaresourcedetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
+}
+
+// GetCompartmentId returns CompartmentId
+func (m createsoftwaresourcedetails) GetCompartmentId() *string {
+	return m.CompartmentId
+}
+
+// GetDisplayName returns DisplayName
+func (m createsoftwaresourcedetails) GetDisplayName() *string {
+	return m.DisplayName
 }
 
 func (m createsoftwaresourcedetails) String() string {

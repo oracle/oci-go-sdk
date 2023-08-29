@@ -196,10 +196,7 @@ func (m *CreatePatchFsuCycle) UnmarshalJSON(data []byte) (e error) {
 	m.IsIgnorePatches = model.IsIgnorePatches
 
 	m.IsIgnoreMissingPatches = make([]string, len(model.IsIgnoreMissingPatches))
-	for i, n := range model.IsIgnoreMissingPatches {
-		m.IsIgnoreMissingPatches[i] = n
-	}
-
+	copy(m.IsIgnoreMissingPatches, model.IsIgnoreMissingPatches)
 	m.MaxDrainTimeoutInSeconds = model.MaxDrainTimeoutInSeconds
 
 	m.IsKeepPlacement = model.IsKeepPlacement

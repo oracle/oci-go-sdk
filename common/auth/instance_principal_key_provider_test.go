@@ -17,7 +17,45 @@ import (
 	"github.com/stretchr/testify/mock"
 )
 
+const (
+	MetaDataBaseURLEnvVarName = `OCI_METADATA_BASE_URL`
+)
+
 func TestInstancePrincipalKeyProvider_getRegionForFederationClient(t *testing.T) {
+	t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
+	regionServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprint(w, "phx")
+	}))
+	defer regionServer.Close()
+
+	actualRegion, err := getRegionForFederationClient(&http.Client{}, regionServer.URL)
+
+	assert.NoError(t, err)
+	assert.Equal(t, common.RegionPHX, actualRegion)
+}
+
+// Test the Federation Client still works when the metadataBaseURL environment
+// variable is unset, and thus the default is used.
+func TestInstancePrincipalKeyProvider_getRegionForFederationClienURLUnset(t *testing.T) {
+	// t.Setenv temporarily sets the value of the environment variable for the duration of the test
+	t.Setenv(MetaDataBaseURLEnvVarName, "")
+
+	regionServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprint(w, "phx")
+	}))
+	defer regionServer.Close()
+
+	actualRegion, err := getRegionForFederationClient(&http.Client{}, regionServer.URL)
+
+	assert.NoError(t, err)
+	assert.Equal(t, common.RegionPHX, actualRegion)
+}
+
+// Test that the federation client still works when the metadataBaseURL is set to
+// the fallback url.
+func TestInstancePrincipalKeyProvider_getRegionForFederationClienURLSetToFallBack(t *testing.T) {
+	t.Setenv(MetaDataBaseURLEnvVarName, metadataFallbackURL)
+
 	regionServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "phx")
 	}))
@@ -30,6 +68,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClient(t *testing.T)
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFound(t *testing.T) {
+	t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
 	regionServer := httptest.NewServer(http.NotFoundHandler())
 	defer regionServer.Close()
 
@@ -39,6 +78,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFound(t *te
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientTimeout(t *testing.T) {
+	t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
 	HandlerFunc := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		time.Sleep(100 * time.Millisecond)
 	})
@@ -53,6 +93,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientTimeout(t *tes
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFoundRetrySuccess(t *testing.T) {
+	t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
 	responses := []func(w http.ResponseWriter, r *http.Request){
 		func(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, "Bad request ", 404)
@@ -81,6 +122,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFoundRetryS
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFoundRetryFailure(t *testing.T) {
+	t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
 	responses := []func(w http.ResponseWriter, r *http.Request){
 		func(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintln(w, "First response")
@@ -107,6 +149,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFoundRetryF
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientRetrySuccess(t *testing.T) {
+	t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
 	statusCodeList := []int{400, 401, 403, 405, 408, 409, 412, 413, 422, 429, 431, 500, 501, 503}
 	for _, statusCode := range statusCodeList {
 		responses := []func(w http.ResponseWriter, r *http.Request){
@@ -139,6 +182,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientRetrySuccess(t
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientRetryFailure(t *testing.T) {
+	t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
 	statusCodeList := []int{400, 401, 403, 405, 408, 409, 412, 413, 422, 429, 431, 500, 501, 503}
 	responses := []func(w http.ResponseWriter, r *http.Request){
 		func(w http.ResponseWriter, r *http.Request) {
@@ -167,6 +211,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientRetryFailure(t
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientInternalServerError(t *testing.T) {
+	t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
 	regionServer := httptest.NewServer(http.HandlerFunc(internalServerError))
 	defer regionServer.Close()
 

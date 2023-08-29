@@ -25,6 +25,10 @@ EXCLUDED_CLEAN_DIRECTORIES = objectstorage/transfer*
 
 build: lint $(TARGETS_BUILD)
 
+static-check: 
+	@staticcheck ./...
+	@echo "Success: No static check warnings"
+
 test: build $(TARGETS_TEST)
 
 test-only: $(TARGETS_TEST)

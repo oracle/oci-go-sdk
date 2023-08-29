@@ -65,12 +65,6 @@ type FsuCollection interface {
 
 type fsucollection struct {
 	JsonData         []byte
-	Id               *string                           `mandatory:"true" json:"id"`
-	DisplayName      *string                           `mandatory:"true" json:"displayName"`
-	ServiceType      CollectionServiceTypesEnum        `mandatory:"true" json:"serviceType"`
-	CompartmentId    *string                           `mandatory:"true" json:"compartmentId"`
-	TimeCreated      *common.SDKTime                   `mandatory:"true" json:"timeCreated"`
-	LifecycleState   CollectionLifecycleStatesEnum     `mandatory:"true" json:"lifecycleState"`
 	ActiveFsuCycle   *ActiveCycleDetails               `mandatory:"false" json:"activeFsuCycle"`
 	TargetCount      *int                              `mandatory:"false" json:"targetCount"`
 	TimeUpdated      *common.SDKTime                   `mandatory:"false" json:"timeUpdated"`
@@ -78,6 +72,12 @@ type fsucollection struct {
 	FreeformTags     map[string]string                 `mandatory:"false" json:"freeformTags"`
 	DefinedTags      map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 	SystemTags       map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
+	Id               *string                           `mandatory:"true" json:"id"`
+	DisplayName      *string                           `mandatory:"true" json:"displayName"`
+	ServiceType      CollectionServiceTypesEnum        `mandatory:"true" json:"serviceType"`
+	CompartmentId    *string                           `mandatory:"true" json:"compartmentId"`
+	TimeCreated      *common.SDKTime                   `mandatory:"true" json:"timeCreated"`
+	LifecycleState   CollectionLifecycleStatesEnum     `mandatory:"true" json:"lifecycleState"`
 	Type             string                            `json:"type"`
 }
 
@@ -133,69 +133,69 @@ func (m *fsucollection) UnmarshalPolymorphicJSON(data []byte) (interface{}, erro
 	}
 }
 
-//GetId returns Id
-func (m fsucollection) GetId() *string {
-	return m.Id
-}
-
-//GetDisplayName returns DisplayName
-func (m fsucollection) GetDisplayName() *string {
-	return m.DisplayName
-}
-
-//GetServiceType returns ServiceType
-func (m fsucollection) GetServiceType() CollectionServiceTypesEnum {
-	return m.ServiceType
-}
-
-//GetCompartmentId returns CompartmentId
-func (m fsucollection) GetCompartmentId() *string {
-	return m.CompartmentId
-}
-
-//GetTimeCreated returns TimeCreated
-func (m fsucollection) GetTimeCreated() *common.SDKTime {
-	return m.TimeCreated
-}
-
-//GetLifecycleState returns LifecycleState
-func (m fsucollection) GetLifecycleState() CollectionLifecycleStatesEnum {
-	return m.LifecycleState
-}
-
-//GetActiveFsuCycle returns ActiveFsuCycle
+// GetActiveFsuCycle returns ActiveFsuCycle
 func (m fsucollection) GetActiveFsuCycle() *ActiveCycleDetails {
 	return m.ActiveFsuCycle
 }
 
-//GetTargetCount returns TargetCount
+// GetTargetCount returns TargetCount
 func (m fsucollection) GetTargetCount() *int {
 	return m.TargetCount
 }
 
-//GetTimeUpdated returns TimeUpdated
+// GetTimeUpdated returns TimeUpdated
 func (m fsucollection) GetTimeUpdated() *common.SDKTime {
 	return m.TimeUpdated
 }
 
-//GetLifecycleDetails returns LifecycleDetails
+// GetLifecycleDetails returns LifecycleDetails
 func (m fsucollection) GetLifecycleDetails() *string {
 	return m.LifecycleDetails
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m fsucollection) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m fsucollection) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m fsucollection) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
+}
+
+// GetId returns Id
+func (m fsucollection) GetId() *string {
+	return m.Id
+}
+
+// GetDisplayName returns DisplayName
+func (m fsucollection) GetDisplayName() *string {
+	return m.DisplayName
+}
+
+// GetServiceType returns ServiceType
+func (m fsucollection) GetServiceType() CollectionServiceTypesEnum {
+	return m.ServiceType
+}
+
+// GetCompartmentId returns CompartmentId
+func (m fsucollection) GetCompartmentId() *string {
+	return m.CompartmentId
+}
+
+// GetTimeCreated returns TimeCreated
+func (m fsucollection) GetTimeCreated() *common.SDKTime {
+	return m.TimeCreated
+}
+
+// GetLifecycleState returns LifecycleState
+func (m fsucollection) GetLifecycleState() CollectionLifecycleStatesEnum {
+	return m.LifecycleState
 }
 
 func (m fsucollection) String() string {

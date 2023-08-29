@@ -235,7 +235,7 @@ func waitUnitlMoveCompletion(opcWorkRequestID *string) {
 	if opcWorkRequestID != nil {
 		log.Printf("   opc-work-request-id : %s", *opcWorkRequestID)
 		log.Printf("   Querying the status of move operation using opc-work-request-id ")
-		wc, err := workrequests.NewWorkRequestClientWithConfigurationProvider(common.DefaultConfigProvider())
+		wc, _ := workrequests.NewWorkRequestClientWithConfigurationProvider(common.DefaultConfigProvider())
 
 		retryPolicy = getRetryPolicy()
 		// Apply wait until work complete retryPolicy

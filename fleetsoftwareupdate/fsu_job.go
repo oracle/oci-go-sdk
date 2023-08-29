@@ -68,11 +68,6 @@ type FsuJob interface {
 
 type fsujob struct {
 	JsonData         []byte
-	Id               *string                           `mandatory:"true" json:"id"`
-	CompartmentId    *string                           `mandatory:"true" json:"compartmentId"`
-	FsuActionId      *string                           `mandatory:"true" json:"fsuActionId"`
-	TimeCreated      *common.SDKTime                   `mandatory:"true" json:"timeCreated"`
-	LifecycleState   JobLifecycleStatesEnum            `mandatory:"true" json:"lifecycleState"`
 	DisplayName      *string                           `mandatory:"false" json:"displayName"`
 	Progress         *JobProgressDetails               `mandatory:"false" json:"progress"`
 	TimeStarted      *common.SDKTime                   `mandatory:"false" json:"timeStarted"`
@@ -82,6 +77,11 @@ type fsujob struct {
 	FreeformTags     map[string]string                 `mandatory:"false" json:"freeformTags"`
 	DefinedTags      map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 	SystemTags       map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
+	Id               *string                           `mandatory:"true" json:"id"`
+	CompartmentId    *string                           `mandatory:"true" json:"compartmentId"`
+	FsuActionId      *string                           `mandatory:"true" json:"fsuActionId"`
+	TimeCreated      *common.SDKTime                   `mandatory:"true" json:"timeCreated"`
+	LifecycleState   JobLifecycleStatesEnum            `mandatory:"true" json:"lifecycleState"`
 	Type             string                            `json:"type"`
 }
 
@@ -150,74 +150,74 @@ func (m *fsujob) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	}
 }
 
-//GetId returns Id
-func (m fsujob) GetId() *string {
-	return m.Id
-}
-
-//GetCompartmentId returns CompartmentId
-func (m fsujob) GetCompartmentId() *string {
-	return m.CompartmentId
-}
-
-//GetFsuActionId returns FsuActionId
-func (m fsujob) GetFsuActionId() *string {
-	return m.FsuActionId
-}
-
-//GetTimeCreated returns TimeCreated
-func (m fsujob) GetTimeCreated() *common.SDKTime {
-	return m.TimeCreated
-}
-
-//GetLifecycleState returns LifecycleState
-func (m fsujob) GetLifecycleState() JobLifecycleStatesEnum {
-	return m.LifecycleState
-}
-
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m fsujob) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetProgress returns Progress
+// GetProgress returns Progress
 func (m fsujob) GetProgress() *JobProgressDetails {
 	return m.Progress
 }
 
-//GetTimeStarted returns TimeStarted
+// GetTimeStarted returns TimeStarted
 func (m fsujob) GetTimeStarted() *common.SDKTime {
 	return m.TimeStarted
 }
 
-//GetTimeUpdated returns TimeUpdated
+// GetTimeUpdated returns TimeUpdated
 func (m fsujob) GetTimeUpdated() *common.SDKTime {
 	return m.TimeUpdated
 }
 
-//GetTimeFinished returns TimeFinished
+// GetTimeFinished returns TimeFinished
 func (m fsujob) GetTimeFinished() *common.SDKTime {
 	return m.TimeFinished
 }
 
-//GetLifecycleDetails returns LifecycleDetails
+// GetLifecycleDetails returns LifecycleDetails
 func (m fsujob) GetLifecycleDetails() *string {
 	return m.LifecycleDetails
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m fsujob) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m fsujob) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m fsujob) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
+}
+
+// GetId returns Id
+func (m fsujob) GetId() *string {
+	return m.Id
+}
+
+// GetCompartmentId returns CompartmentId
+func (m fsujob) GetCompartmentId() *string {
+	return m.CompartmentId
+}
+
+// GetFsuActionId returns FsuActionId
+func (m fsujob) GetFsuActionId() *string {
+	return m.FsuActionId
+}
+
+// GetTimeCreated returns TimeCreated
+func (m fsujob) GetTimeCreated() *common.SDKTime {
+	return m.TimeCreated
+}
+
+// GetLifecycleState returns LifecycleState
+func (m fsujob) GetLifecycleState() JobLifecycleStatesEnum {
+	return m.LifecycleState
 }
 
 func (m fsujob) String() string {

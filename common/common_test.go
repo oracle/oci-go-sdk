@@ -267,7 +267,7 @@ func TestEndpointWithServiceName(t *testing.T) {
 	//dot in region without service name and without endpoint template
 	service = "analytics"
 	region = StringToRegion("broom6.us.oracle.com")
-	endpoint, err = region.EndpointForTemplateDottedRegion(service, "", "")
+	_, err = region.EndpointForTemplateDottedRegion(service, "", "")
 	assert.Error(t, err)
 }
 

@@ -114,7 +114,9 @@ func TestNewServicePrincipalConfigurationProvider(t *testing.T) {
 	//an interceptor is call back made just before signing and it can
 	//be used to apply arbitrary transformations to the request
 	interceptor := func(request *http.Request) error {
-		request.URL.Query().Set("param1", "value1")
+		q := request.URL.Query()
+		q.Set("param1", "value1")
+		request.URL.RawQuery = q.Encode()
 		return nil
 	}
 

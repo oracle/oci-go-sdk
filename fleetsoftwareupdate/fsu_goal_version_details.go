@@ -82,12 +82,12 @@ func (m *fsugoalversiondetails) UnmarshalPolymorphicJSON(data []byte) (interface
 	}
 }
 
-//GetHomePolicy returns HomePolicy
+// GetHomePolicy returns HomePolicy
 func (m fsugoalversiondetails) GetHomePolicy() FsuGoalVersionDetailsHomePolicyEnum {
 	return m.HomePolicy
 }
 
-//GetNewHomePrefix returns NewHomePrefix
+// GetNewHomePrefix returns NewHomePrefix
 func (m fsugoalversiondetails) GetNewHomePrefix() *string {
 	return m.NewHomePrefix
 }

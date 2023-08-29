@@ -37,10 +37,10 @@ type CreateFsuActionDetails interface {
 
 type createfsuactiondetails struct {
 	JsonData      []byte
-	CompartmentId *string                           `mandatory:"true" json:"compartmentId"`
 	DisplayName   *string                           `mandatory:"false" json:"displayName"`
 	FreeformTags  map[string]string                 `mandatory:"false" json:"freeformTags"`
 	DefinedTags   map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+	CompartmentId *string                           `mandatory:"true" json:"compartmentId"`
 	Type          string                            `json:"type"`
 }
 
@@ -99,24 +99,24 @@ func (m *createfsuactiondetails) UnmarshalPolymorphicJSON(data []byte) (interfac
 	}
 }
 
-//GetCompartmentId returns CompartmentId
-func (m createfsuactiondetails) GetCompartmentId() *string {
-	return m.CompartmentId
-}
-
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m createfsuactiondetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m createfsuactiondetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m createfsuactiondetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
+}
+
+// GetCompartmentId returns CompartmentId
+func (m createfsuactiondetails) GetCompartmentId() *string {
+	return m.CompartmentId
 }
 
 func (m createfsuactiondetails) String() string {

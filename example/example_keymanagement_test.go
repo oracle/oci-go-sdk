@@ -32,7 +32,7 @@ func ExampleVaultOperations() {
 	waitForStateVaultClient(ctx, vault.Id, vaultClient, keymanagement.VaultLifecycleStateActive)
 
 	updatedVault := updateVault(ctx, vaultClient, &updatedVaultName, vault.Id)
-	fmt.Println(fmt.Sprintf("Updated vault display name %s", *updatedVault.DisplayName))
+	fmt.Printf("Updated vault display name %s\n", *updatedVault.DisplayName)
 
 	svdErr := scheduleVaultDeletion(ctx, vaultClient, vault.Id)
 	helpers.FatalIfError(svdErr)
@@ -199,7 +199,7 @@ func ExampleCryptoOperations() {
 	generateDekResponse, err := vaultCryptoClient.GenerateDataEncryptionKey(ctx, generateDekRequest)
 	helpers.FatalIfError(err)
 	generatedKey := generateDekResponse.GeneratedKey
-	fmt.Println(fmt.Sprintf("Plaintext generated DEK: %s", *generatedKey.Plaintext))
+	fmt.Printf("Plaintext generated DEK: %s\n", *generatedKey.Plaintext)
 
 	fmt.Println("generate DEK")
 
@@ -231,7 +231,7 @@ func ExampleCryptoOperations() {
 	helpers.FatalIfError(decryptErr)
 
 	plainText := decryptResponse.Plaintext
-	fmt.Println(fmt.Sprintf("Decrypted plaintext: %s", *plainText))
+	fmt.Printf("Decrypted plaintext: %s\n", *plainText)
 
 	fmt.Print("decrypt data")
 

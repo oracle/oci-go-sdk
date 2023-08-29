@@ -207,6 +207,36 @@ go install github.com/gofrs/flock
 ```
 go install github.com/golang/lint/golint
 ```
+- Install [staticcheck](https://github.com/dominikh/go-tools) with the command:
+```
+go install honnef.co/go/tools/cmd/staticcheck@2023.1.3
+```
+
+### Linting and Staticcheck
+Linting (performed by golint) can be done with the following command:
+
+```
+make lint
+```
+This command is also run by the make build and make test commands.
+Linting will perform a number of formatting changes across the code base.
+
+Staticcheck can be run with:
+
+```
+make static-check
+```
+Staticcheck will provide formatting warnings but will not make any changes to any files.
+You can also cause staticcheck to be run before calls to "git commit" with the pre-commit plugin.
+
+```
+pre-commit install
+```
+You can install pre-commit itself, you can use your package manager of choice, such as
+
+```
+brew install pre-commit
+```
 
 ### Build
 Building is provided by the make file at the root of the project. To build the project execute.

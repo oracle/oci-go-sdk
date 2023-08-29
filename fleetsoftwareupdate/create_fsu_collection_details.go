@@ -40,11 +40,11 @@ type CreateFsuCollectionDetails interface {
 
 type createfsucollectiondetails struct {
 	JsonData      []byte
-	ServiceType   CollectionServiceTypesEnum        `mandatory:"true" json:"serviceType"`
-	CompartmentId *string                           `mandatory:"true" json:"compartmentId"`
 	DisplayName   *string                           `mandatory:"false" json:"displayName"`
 	FreeformTags  map[string]string                 `mandatory:"false" json:"freeformTags"`
 	DefinedTags   map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+	ServiceType   CollectionServiceTypesEnum        `mandatory:"true" json:"serviceType"`
+	CompartmentId *string                           `mandatory:"true" json:"compartmentId"`
 	Type          string                            `json:"type"`
 }
 
@@ -92,29 +92,29 @@ func (m *createfsucollectiondetails) UnmarshalPolymorphicJSON(data []byte) (inte
 	}
 }
 
-//GetServiceType returns ServiceType
-func (m createfsucollectiondetails) GetServiceType() CollectionServiceTypesEnum {
-	return m.ServiceType
-}
-
-//GetCompartmentId returns CompartmentId
-func (m createfsucollectiondetails) GetCompartmentId() *string {
-	return m.CompartmentId
-}
-
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m createfsucollectiondetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m createfsucollectiondetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m createfsucollectiondetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
+}
+
+// GetServiceType returns ServiceType
+func (m createfsucollectiondetails) GetServiceType() CollectionServiceTypesEnum {
+	return m.ServiceType
+}
+
+// GetCompartmentId returns CompartmentId
+func (m createfsucollectiondetails) GetCompartmentId() *string {
+	return m.CompartmentId
 }
 
 func (m createfsucollectiondetails) String() string {
