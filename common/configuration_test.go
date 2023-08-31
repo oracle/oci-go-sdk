@@ -5,6 +5,7 @@ package common
 
 import (
 	"fmt"
+	"io/fs"
 	"io/ioutil"
 	"os"
 	"testing"
@@ -604,6 +605,128 @@ region=someregion
 			<-guard
 		}(i)
 	}
+}
+
+func TestSessionTokenConfigurationProvider_SecurityToken(t *testing.T) {
+	dataTpl := `[security_token_based_auth]
+fingerprint=somefingerprint
+key_file=%s
+tenancy=sometenancy
+region=someregion
+security_token_file=%s
+`
+
+	keyFile := writeTempFile(testPrivateKeyConf)
+	tokenFile := writeTempFile(testSecurityToken)
+	data := fmt.Sprintf(dataTpl, keyFile, tokenFile)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(tokenFile)
+	defer removeFileFn(keyFile)
+
+	c, e0 := ConfigurationProviderForSessionTokenWithProfile(tmpConfFile, "security_token_based_auth", "")
+	assert.NoError(t, e0)
+	_, e1 := c.KeyID()
+	assert.NoError(t, e1)
+
+}
+
+func TestSessionTokenConfigurationProvider_SecurityTokenMissing(t *testing.T) {
+	dataTpl := `[security_token_based_auth]
+fingerprint=somefingerprint
+key_file=%s
+tenancy=sometenancy
+region=someregion
+`
+
+	keyFile := writeTempFile(testPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(keyFile)
+
+	c, e0 := ConfigurationProviderForSessionTokenWithProfile(tmpConfFile, "security_token_based_auth", "")
+	assert.NoError(t, e0)
+	_, e1 := c.KeyID()
+	assert.Error(t, e1)
+
+}
+
+func TestSessionTokenConfigurationProvider_SecurityTokenFilePathEmpty(t *testing.T) {
+	dataTpl := `[security_token_based_auth]
+fingerprint=somefingerprint
+key_file=%s
+tenancy=sometenancy
+region=someregion
+security_token_file=""
+`
+
+	keyFile := writeTempFile(testPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(keyFile)
+
+	c, e0 := ConfigurationProviderForSessionTokenWithProfile(tmpConfFile, "security_token_based_auth", "")
+	assert.NoError(t, e0)
+	_, e1 := c.KeyID()
+	assert.Error(t, e1)
+}
+
+func TestSessionTokenConfigurationProvider_SecurityTokenFileMissing(t *testing.T) {
+	dataTpl := `[security_token_based_auth]
+fingerprint=somefingerprint
+key_file=%s
+tenancy=sometenancy
+region=someregion
+security_token_file=%s
+`
+
+	keyFile := writeTempFile(testPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile, "sample")
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(keyFile)
+
+	c, e0 := ConfigurationProviderForSessionTokenWithProfile(tmpConfFile, "security_token_based_auth", "")
+	assert.NoError(t, e0)
+	_, e1 := c.KeyID()
+	assert.Error(t, e1)
+}
+
+func TestSessionTokenConfigurationProvider_SecurityTokenRefresh(t *testing.T) {
+	dataTpl := `[security_token_based_auth]
+fingerprint=somefingerprint
+key_file=%s
+tenancy=sometenancy
+region=someregion
+security_token_file=%s
+`
+
+	keyFile := writeTempFile(testPrivateKeyConf)
+	tokenFile := writeTempFile(testSecurityToken)
+	data := fmt.Sprintf(dataTpl, keyFile, tokenFile)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(tokenFile)
+	defer removeFileFn(keyFile)
+
+	c, e0 := ConfigurationProviderForSessionTokenWithProfile(tmpConfFile, "security_token_based_auth", "")
+	assert.NoError(t, e0)
+	token, e1 := c.KeyID()
+	assert.NoError(t, e1)
+
+	os.WriteFile(tokenFile, []byte("testSecurityTokenUpdated"), fs.FileMode(os.O_RDWR))
+
+	updatedToken, e2 := c.KeyID()
+	assert.NoError(t, e2)
+	assert.NotEqual(t, token, updatedToken)
+
 }
 
 func TestComposingConfigurationProvider_MultipleFiles(t *testing.T) {

@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -16,7 +20,6 @@ import (
 )
 
 // CreateIncident Details gathered during the creation of the support ticket.
-// **Caution:** Avoid using any confidential information when you supply string values using the API.
 type CreateIncident struct {
 
 	// The OCID of the tenancy.
@@ -24,10 +27,11 @@ type CreateIncident struct {
 
 	Ticket *CreateTicketDetails `mandatory:"true" json:"ticket"`
 
-	// The kind of support ticket, such as a technical issue request.
+	// The kind of support ticket, such as a technical support request or a limit increase request.
 	ProblemType ProblemTypeEnum `mandatory:"true" json:"problemType"`
 
-	// The Customer Support Identifier number for the support account.
+	// The Customer Support Identifier (CSI) number associated with the support account.
+	// The CSI is required for technical support tickets and optional for limits and billing tickets.
 	Csi *string `mandatory:"false" json:"csi"`
 
 	// The list of contacts.

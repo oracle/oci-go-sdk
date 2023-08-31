@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -15,13 +19,13 @@ import (
 	"strings"
 )
 
-// Category Details about the category associated with the support ticket.
+// Category Details about the service category associated with the support ticket.
 type Category struct {
 
-	// Unique identifier for the category.
+	// Unique identifier for the service category.
 	CategoryKey *string `mandatory:"false" json:"categoryKey"`
 
-	// The name of the category. For example, `Compute` or `Identity`.
+	// The name of the service category. For example, `Compute` or `Identity`.
 	Name *string `mandatory:"false" json:"name"`
 }
 

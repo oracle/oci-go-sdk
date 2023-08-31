@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -16,8 +20,7 @@ import (
 	"strings"
 )
 
-// UpdateActivityItemDetails Details for udpating the support ticket activity.
-// **Caution:** Avoid using any confidential information when you supply string values using the API.
+// UpdateActivityItemDetails Details for updating the support ticket activity.
 type UpdateActivityItemDetails struct {
 
 	// Comments updated at the time that the activity occurs.
@@ -69,6 +72,7 @@ const (
 	UpdateActivityItemDetailsActivityTypeProblemDescription UpdateActivityItemDetailsActivityTypeEnum = "PROBLEM_DESCRIPTION"
 	UpdateActivityItemDetailsActivityTypeUpdate             UpdateActivityItemDetailsActivityTypeEnum = "UPDATE"
 	UpdateActivityItemDetailsActivityTypeClose              UpdateActivityItemDetailsActivityTypeEnum = "CLOSE"
+	UpdateActivityItemDetailsActivityTypeReopen             UpdateActivityItemDetailsActivityTypeEnum = "REOPEN"
 )
 
 var mappingUpdateActivityItemDetailsActivityTypeEnum = map[string]UpdateActivityItemDetailsActivityTypeEnum{
@@ -76,6 +80,7 @@ var mappingUpdateActivityItemDetailsActivityTypeEnum = map[string]UpdateActivity
 	"PROBLEM_DESCRIPTION": UpdateActivityItemDetailsActivityTypeProblemDescription,
 	"UPDATE":              UpdateActivityItemDetailsActivityTypeUpdate,
 	"CLOSE":               UpdateActivityItemDetailsActivityTypeClose,
+	"REOPEN":              UpdateActivityItemDetailsActivityTypeReopen,
 }
 
 var mappingUpdateActivityItemDetailsActivityTypeEnumLowerCase = map[string]UpdateActivityItemDetailsActivityTypeEnum{
@@ -83,6 +88,7 @@ var mappingUpdateActivityItemDetailsActivityTypeEnumLowerCase = map[string]Updat
 	"problem_description": UpdateActivityItemDetailsActivityTypeProblemDescription,
 	"update":              UpdateActivityItemDetailsActivityTypeUpdate,
 	"close":               UpdateActivityItemDetailsActivityTypeClose,
+	"reopen":              UpdateActivityItemDetailsActivityTypeReopen,
 }
 
 // GetUpdateActivityItemDetailsActivityTypeEnumValues Enumerates the set of values for UpdateActivityItemDetailsActivityTypeEnum
@@ -101,6 +107,7 @@ func GetUpdateActivityItemDetailsActivityTypeEnumStringValues() []string {
 		"PROBLEM_DESCRIPTION",
 		"UPDATE",
 		"CLOSE",
+		"REOPEN",
 	}
 }
 

@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -15,11 +19,10 @@ import (
 	"strings"
 )
 
-// CreateSubCategoryDetails Details for creating the subcategory of the support ticket.
-// **Caution:** Avoid using any confidential information when you supply string values using the API.
+// CreateSubCategoryDetails Details for creating the service subcategory of the support ticket.
 type CreateSubCategoryDetails struct {
 
-	// Unique identifier for the subcategory.
+	// Unique identifier for the service subcategory.
 	SubCategoryKey *string `mandatory:"false" json:"subCategoryKey"`
 }
 

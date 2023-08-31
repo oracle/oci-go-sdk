@@ -18,20 +18,32 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ValidateUser.go.html to see an example of how to use ValidateUserRequest.
 type ValidateUserRequest struct {
 
-	// The Customer Support Identifier number for the support account.
-	Csi *string `mandatory:"true" contributesTo:"header" name:"csi"`
-
-	// User OCID for Oracle Identity Cloud Service (IDCS) users who also have a federated Oracle Cloud Infrastructure account.
-	Ocid *string `mandatory:"true" contributesTo:"header" name:"ocid"`
+	// The Customer Support Identifier (CSI) associated with the support account.
+	Csi *string `mandatory:"false" contributesTo:"header" name:"csi"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
 	// The kind of support request.
-	ProblemType *string `mandatory:"false" contributesTo:"query" name:"problemType"`
+	ProblemType ValidateUserProblemTypeEnum `mandatory:"false" contributesTo:"query" name:"problemType" omitEmpty:"true"`
+
+	// User OCID for Oracle Identity Cloud Service (IDCS) users who also have a federated Oracle Cloud Infrastructure account.
+	Ocid *string `mandatory:"false" contributesTo:"header" name:"ocid"`
 
 	// The region of the tenancy.
 	Homeregion *string `mandatory:"false" contributesTo:"header" name:"homeregion"`
+
+	// Token type that determine which cloud provider the request come from.
+	Bearertokentype *string `mandatory:"false" contributesTo:"header" name:"bearertokentype"`
+
+	// Token that provided by multi cloud provider, which help to validate the email.
+	Bearertoken *string `mandatory:"false" contributesTo:"header" name:"bearertoken"`
+
+	// IdToken that provided by multi cloud provider, which help to validate the email.
+	Idtoken *string `mandatory:"false" contributesTo:"header" name:"idtoken"`
+
+	// The OCID of identity domain.
+	Domainid *string `mandatory:"false" contributesTo:"header" name:"domainid"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
@@ -69,6 +81,9 @@ func (request ValidateUserRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ValidateUserRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
+	if _, ok := GetMappingValidateUserProblemTypeEnum(string(request.ProblemType)); !ok && request.ProblemType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProblemType: %s. Supported values are: %s.", request.ProblemType, strings.Join(GetValidateUserProblemTypeEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
@@ -95,4 +110,58 @@ func (response ValidateUserResponse) String() string {
 // HTTPResponse implements the OCIResponse interface
 func (response ValidateUserResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
+}
+
+// ValidateUserProblemTypeEnum Enum with underlying type: string
+type ValidateUserProblemTypeEnum string
+
+// Set of constants representing the allowable values for ValidateUserProblemTypeEnum
+const (
+	ValidateUserProblemTypeLimit       ValidateUserProblemTypeEnum = "LIMIT"
+	ValidateUserProblemTypeLegacyLimit ValidateUserProblemTypeEnum = "LEGACY_LIMIT"
+	ValidateUserProblemTypeTech        ValidateUserProblemTypeEnum = "TECH"
+	ValidateUserProblemTypeAccount     ValidateUserProblemTypeEnum = "ACCOUNT"
+	ValidateUserProblemTypeTaxonomy    ValidateUserProblemTypeEnum = "TAXONOMY"
+)
+
+var mappingValidateUserProblemTypeEnum = map[string]ValidateUserProblemTypeEnum{
+	"LIMIT":        ValidateUserProblemTypeLimit,
+	"LEGACY_LIMIT": ValidateUserProblemTypeLegacyLimit,
+	"TECH":         ValidateUserProblemTypeTech,
+	"ACCOUNT":      ValidateUserProblemTypeAccount,
+	"TAXONOMY":     ValidateUserProblemTypeTaxonomy,
+}
+
+var mappingValidateUserProblemTypeEnumLowerCase = map[string]ValidateUserProblemTypeEnum{
+	"limit":        ValidateUserProblemTypeLimit,
+	"legacy_limit": ValidateUserProblemTypeLegacyLimit,
+	"tech":         ValidateUserProblemTypeTech,
+	"account":      ValidateUserProblemTypeAccount,
+	"taxonomy":     ValidateUserProblemTypeTaxonomy,
+}
+
+// GetValidateUserProblemTypeEnumValues Enumerates the set of values for ValidateUserProblemTypeEnum
+func GetValidateUserProblemTypeEnumValues() []ValidateUserProblemTypeEnum {
+	values := make([]ValidateUserProblemTypeEnum, 0)
+	for _, v := range mappingValidateUserProblemTypeEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetValidateUserProblemTypeEnumStringValues Enumerates the set of values in String for ValidateUserProblemTypeEnum
+func GetValidateUserProblemTypeEnumStringValues() []string {
+	return []string{
+		"LIMIT",
+		"LEGACY_LIMIT",
+		"TECH",
+		"ACCOUNT",
+		"TAXONOMY",
+	}
+}
+
+// GetMappingValidateUserProblemTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingValidateUserProblemTypeEnum(val string) (ValidateUserProblemTypeEnum, bool) {
+	enum, ok := mappingValidateUserProblemTypeEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
 }

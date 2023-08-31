@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -15,19 +19,19 @@ import (
 	"strings"
 )
 
-// ContextualData The representation of ContextualData
+// ContextualData Information collected from user context during ticket creation.
 type ContextualData struct {
 
-	// The unique client identifier
+	// The unique identifier for the client.
 	ClientId *string `mandatory:"true" json:"clientId"`
 
-	// The schema name
+	// The name assigned to the schema.
 	SchemaName *string `mandatory:"true" json:"schemaName"`
 
-	// The schema version
+	// The version of the schema.
 	SchemaVersion *string `mandatory:"true" json:"schemaVersion"`
 
-	// The context data payload
+	// The payload for the contextual data.
 	Payload *string `mandatory:"true" json:"payload"`
 }
 
