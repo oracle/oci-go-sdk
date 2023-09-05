@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -79,18 +83,21 @@ const (
 	TicketSeverityHighest TicketSeverityEnum = "HIGHEST"
 	TicketSeverityHigh    TicketSeverityEnum = "HIGH"
 	TicketSeverityMedium  TicketSeverityEnum = "MEDIUM"
+	TicketSeverityLow     TicketSeverityEnum = "LOW"
 )
 
 var mappingTicketSeverityEnum = map[string]TicketSeverityEnum{
 	"HIGHEST": TicketSeverityHighest,
 	"HIGH":    TicketSeverityHigh,
 	"MEDIUM":  TicketSeverityMedium,
+	"LOW":     TicketSeverityLow,
 }
 
 var mappingTicketSeverityEnumLowerCase = map[string]TicketSeverityEnum{
 	"highest": TicketSeverityHighest,
 	"high":    TicketSeverityHigh,
 	"medium":  TicketSeverityMedium,
+	"low":     TicketSeverityLow,
 }
 
 // GetTicketSeverityEnumValues Enumerates the set of values for TicketSeverityEnum
@@ -108,6 +115,7 @@ func GetTicketSeverityEnumStringValues() []string {
 		"HIGHEST",
 		"HIGH",
 		"MEDIUM",
+		"LOW",
 	}
 }
 

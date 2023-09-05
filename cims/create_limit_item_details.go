@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -16,7 +20,7 @@ import (
 	"strings"
 )
 
-// CreateLimitItemDetails Reserved for future use.
+// CreateLimitItemDetails Details about the service limit increase request. Avoid entering confidential information.
 type CreateLimitItemDetails struct {
 	Category *CreateCategoryDetails `mandatory:"false" json:"category"`
 
@@ -24,7 +28,7 @@ type CreateLimitItemDetails struct {
 
 	IssueType *CreateIssueTypeDetails `mandatory:"false" json:"issueType"`
 
-	// The display name of the item.
+	// The display name of the ticket. Avoid entering confidential information.
 	Name *string `mandatory:"false" json:"name"`
 
 	// The limit of the resource currently available.
@@ -33,7 +37,7 @@ type CreateLimitItemDetails struct {
 	// The current usage of the resource.
 	CurrentUsage *int `mandatory:"false" json:"currentUsage"`
 
-	// Reserved for future use.
+	// The new service limit being requested.
 	RequestedLimit *int `mandatory:"false" json:"requestedLimit"`
 
 	// The current status of the request.

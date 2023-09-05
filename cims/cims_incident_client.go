@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -67,7 +71,7 @@ func newIncidentClientFromBaseClient(baseClient common.BaseClient, configProvide
 
 // SetRegion overrides the region of this client.
 func (client *IncidentClient) SetRegion(region string) {
-	client.Host = common.StringToRegion(region).EndpointForTemplate("cims", "https://incidentmanagement.{region}.{secondLevelDomain}")
+	client.Host = common.StringToRegion(region).EndpointForTemplate("cims", "https://incidentmanagement.{region}.oci.{secondLevelDomain}")
 }
 
 // SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
@@ -91,7 +95,7 @@ func (client *IncidentClient) ConfigurationProvider() *common.ConfigurationProvi
 	return client.config
 }
 
-// CreateIncident Enables the customer to create an support ticket.
+// CreateIncident Operation to create a support ticket.
 //
 // See also
 //
@@ -148,7 +152,64 @@ func (client IncidentClient) createIncident(ctx context.Context, request common.
 	return response, err
 }
 
-// GetIncident Gets the details of the support ticket.
+// GetCsiNumber Fetches csi number of the user.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/GetCsiNumber.go.html to see an example of how to use GetCsiNumber API.
+func (client IncidentClient) GetCsiNumber(ctx context.Context, request GetCsiNumberRequest) (response GetCsiNumberResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getCsiNumber, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetCsiNumberResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetCsiNumberResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetCsiNumberResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetCsiNumberResponse")
+	}
+	return
+}
+
+// getCsiNumber implements the OCIOperation interface (enables retrying operations)
+func (client IncidentClient) getCsiNumber(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/v2/incidents/getCsiNumber", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetCsiNumberResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "Incident", "GetCsiNumber", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// GetIncident Gets details about the specified support ticket.
 //
 // See also
 //
@@ -242,7 +303,7 @@ func (client IncidentClient) GetStatus(ctx context.Context, request GetStatusReq
 // getStatus implements the OCIOperation interface (enables retrying operations)
 func (client IncidentClient) getStatus(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
 
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/v2/incidents/status/{source}", binaryReqBody, extraHeaders)
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/v2/incidents/status", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

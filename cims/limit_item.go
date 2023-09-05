@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -16,13 +20,13 @@ import (
 	"strings"
 )
 
-// LimitItem Reserved for future use.
+// LimitItem Details about the LimitItem object.
 type LimitItem struct {
 
 	// Unique identifier for the item.
 	ItemKey *string `mandatory:"true" json:"itemKey"`
 
-	// The display name of the item.
+	// The display name of the item. Avoid entering confidential information.
 	Name *string `mandatory:"false" json:"name"`
 
 	Category *Category `mandatory:"false" json:"category"`
@@ -31,13 +35,13 @@ type LimitItem struct {
 
 	IssueType *IssueType `mandatory:"false" json:"issueType"`
 
-	// The currently available limit of the resource.
+	// The current service limit for the resource.
 	CurrentLimit *int `mandatory:"false" json:"currentLimit"`
 
-	// The current usage of the resource.
+	// The current resource usage.
 	CurrentUsage *int `mandatory:"false" json:"currentUsage"`
 
-	// The requested limit for the resource.
+	// The new service limit being requested for the resource.
 	RequestedLimit *int `mandatory:"false" json:"requestedLimit"`
 
 	// The status of the request.

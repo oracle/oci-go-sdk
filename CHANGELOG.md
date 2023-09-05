@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.49.0 - 2023-09-05
+### Added
+- Support for queue channels in the Queue Service
+- Support for entity lineage retrieval and asynchronous glossary export in the Data Catalog service
+- Support for filtering and sorting while listing work requests in the Container Instances service
+- Support for the ability to create support requests for various support ticket types (TECH,LIMIT, ACCOUNT) in the Customer Incident Management Service
+- Endpoint changed from https://incidentmanagement.{region}.{domainAndTopLevelDomain} to https://incidentmanagement.{region}.oci.{domainAndTopLevelDomain} (e.g. https://incidentmanagement.us-phoenix-1.oraclecloud.com to https://incidentmanagement.us-phoenix-1.oci.oraclecloud.com) in the Customer Incident Management Service
+ 
+### Breaking Changes 
+- The type of property `Region` was changed from `RegionEnum` to `*string` in the models `Resource` and `CreateResourceDetails` in the Customer Incident Management Service
+- The models `AvailabilityDomain`, `RegionEnum`, `CreateUserRequest`, and `UserClient` were removed from the Customer Incident Management Service
+- The type of property `ProblemType` was changed from `string` to `ProblemType` in the `ValidateUserRequest` model in the Customer Incident Management Service
+- The property `Source` was removed from the model `GetStatusRequest` in the Customer Incident Management Service
+- The property `ProblemType` was renamed to `Problemtype` in the model `GetIncidentRequest` in the Customer Incident Management Service
+- The property `AvailabilityDomain` was removed from the models `Resource` and `CreateResourceDetails` in the Customer Incident Management Service
+- The property `Country` was removed from the model `CreateUserDetails` in the Customer Incident Management Service
+
+
 ## 65.48.0 - 2023-08-29
 ### Added 
 - Support for creating and updating network monitors in the Application Performance Monitoring Synthetics service
