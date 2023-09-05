@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -22,6 +26,7 @@ const (
 	ProblemTypeLegacyLimit ProblemTypeEnum = "LEGACY_LIMIT"
 	ProblemTypeTech        ProblemTypeEnum = "TECH"
 	ProblemTypeAccount     ProblemTypeEnum = "ACCOUNT"
+	ProblemTypeTaxonomy    ProblemTypeEnum = "TAXONOMY"
 )
 
 var mappingProblemTypeEnum = map[string]ProblemTypeEnum{
@@ -29,6 +34,7 @@ var mappingProblemTypeEnum = map[string]ProblemTypeEnum{
 	"LEGACY_LIMIT": ProblemTypeLegacyLimit,
 	"TECH":         ProblemTypeTech,
 	"ACCOUNT":      ProblemTypeAccount,
+	"TAXONOMY":     ProblemTypeTaxonomy,
 }
 
 var mappingProblemTypeEnumLowerCase = map[string]ProblemTypeEnum{
@@ -36,6 +42,7 @@ var mappingProblemTypeEnumLowerCase = map[string]ProblemTypeEnum{
 	"legacy_limit": ProblemTypeLegacyLimit,
 	"tech":         ProblemTypeTech,
 	"account":      ProblemTypeAccount,
+	"taxonomy":     ProblemTypeTaxonomy,
 }
 
 // GetProblemTypeEnumValues Enumerates the set of values for ProblemTypeEnum
@@ -54,6 +61,7 @@ func GetProblemTypeEnumStringValues() []string {
 		"LEGACY_LIMIT",
 		"TECH",
 		"ACCOUNT",
+		"TAXONOMY",
 	}
 }
 

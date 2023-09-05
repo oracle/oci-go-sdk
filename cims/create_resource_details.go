@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -17,15 +21,11 @@ import (
 )
 
 // CreateResourceDetails Details about the resource that the support ticket relates to.
-// **Caution:** Avoid using any confidential information when you supply string values using the API.
 type CreateResourceDetails struct {
 	Item CreateItemDetails `mandatory:"false" json:"item"`
 
 	// The list of available Oracle Cloud Infrastructure regions.
-	Region RegionEnum `mandatory:"false" json:"region,omitempty"`
-
-	// The list of available Oracle Cloud Infrastructure availability domains.
-	AvailabilityDomain AvailabilityDomainEnum `mandatory:"false" json:"availabilityDomain,omitempty"`
+	Region *string `mandatory:"false" json:"region"`
 }
 
 func (m CreateResourceDetails) String() string {
@@ -38,12 +38,6 @@ func (m CreateResourceDetails) String() string {
 func (m CreateResourceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := GetMappingRegionEnum(string(m.Region)); !ok && m.Region != "" {
-		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Region: %s. Supported values are: %s.", m.Region, strings.Join(GetRegionEnumStringValues(), ",")))
-	}
-	if _, ok := GetMappingAvailabilityDomainEnum(string(m.AvailabilityDomain)); !ok && m.AvailabilityDomain != "" {
-		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AvailabilityDomain: %s. Supported values are: %s.", m.AvailabilityDomain, strings.Join(GetAvailabilityDomainEnumStringValues(), ",")))
-	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
@@ -53,9 +47,8 @@ func (m CreateResourceDetails) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *CreateResourceDetails) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		Item               createitemdetails      `json:"item"`
-		Region             RegionEnum             `json:"region"`
-		AvailabilityDomain AvailabilityDomainEnum `json:"availabilityDomain"`
+		Item   createitemdetails `json:"item"`
+		Region *string           `json:"region"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -74,8 +67,6 @@ func (m *CreateResourceDetails) UnmarshalJSON(data []byte) (e error) {
 	}
 
 	m.Region = model.Region
-
-	m.AvailabilityDomain = model.AvailabilityDomain
 
 	return
 }

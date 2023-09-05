@@ -21,23 +21,38 @@ type UpdateIncidentRequest struct {
 	// Unique identifier for the support ticket.
 	IncidentKey *string `mandatory:"true" contributesTo:"path" name:"incidentKey"`
 
-	// The Customer Support Identifier associated with the support account.
-	Csi *string `mandatory:"true" contributesTo:"header" name:"csi"`
-
 	// Details about the support ticket being updated.
 	UpdateIncidentDetails UpdateIncident `contributesTo:"body"`
 
-	// User OCID for Oracle Identity Cloud Service (IDCS) users who also have a federated Oracle Cloud Infrastructure account.
-	Ocid *string `mandatory:"true" contributesTo:"header" name:"ocid"`
+	// The Customer Support Identifier (CSI) associated with the support account.
+	Csi *string `mandatory:"false" contributesTo:"header" name:"csi"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
+	// The OCID of the tenancy.
+	CompartmentId *string `mandatory:"false" contributesTo:"query" name:"compartmentId"`
+
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match` parameter to the value of the etag from a previous GET or POST response for that resource. The resource will be updated or deleted only if the etag you provide matches the resource's current etag value.
 	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
 
+	// User OCID for Oracle Identity Cloud Service (IDCS) users who also have a federated Oracle Cloud Infrastructure account.
+	Ocid *string `mandatory:"false" contributesTo:"header" name:"ocid"`
+
 	// The region of the tenancy.
 	Homeregion *string `mandatory:"false" contributesTo:"header" name:"homeregion"`
+
+	// Token type that determine which cloud provider the request come from.
+	Bearertokentype *string `mandatory:"false" contributesTo:"header" name:"bearertokentype"`
+
+	// Token that provided by multi cloud provider, which help to validate the email.
+	Bearertoken *string `mandatory:"false" contributesTo:"header" name:"bearertoken"`
+
+	// IdToken that provided by multi cloud provider, which help to validate the email.
+	Idtoken *string `mandatory:"false" contributesTo:"header" name:"idtoken"`
+
+	// The OCID of identity domain.
+	Domainid *string `mandatory:"false" contributesTo:"header" name:"domainid"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.

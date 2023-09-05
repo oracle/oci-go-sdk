@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -21,7 +25,7 @@ type IncidentResourceType struct {
 	// The label associated with the resource.
 	Label *string `mandatory:"true" json:"label"`
 
-	// Unique identifier of the resource.
+	// A unique identifier for the resource.
 	ResourceTypeKey *string `mandatory:"false" json:"resourceTypeKey"`
 
 	// The display name of the resource.
@@ -32,6 +36,12 @@ type IncidentResourceType struct {
 
 	// The service category list.
 	ServiceCategoryList []ServiceCategory `mandatory:"false" json:"serviceCategoryList"`
+
+	// The map of services for MOS Taxonomy.
+	Service map[string]string `mandatory:"false" json:"service"`
+
+	// The service categories list for MOS Taxonomy.
+	ServiceCategories []ServiceCategories `mandatory:"false" json:"serviceCategories"`
 }
 
 func (m IncidentResourceType) String() string {

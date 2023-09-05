@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -16,22 +20,20 @@ import (
 )
 
 // CreateTicketDetails Details relevant to the support ticket.
-// **Caution:** Avoid using any confidential information when you supply string values using the API.
 type CreateTicketDetails struct {
 
 	// The severity of the support ticket.
 	Severity CreateTicketDetailsSeverityEnum `mandatory:"true" json:"severity"`
 
-	// The title of the support ticket.
+	// The title of the support ticket. Avoid entering confidential information.
 	Title *string `mandatory:"true" json:"title"`
 
-	// The description of the support ticket.
+	// The description of the support ticket. Avoid entering confidential information.
 	Description *string `mandatory:"true" json:"description"`
 
 	// The list of resources.
 	ResourceList []CreateResourceDetails `mandatory:"false" json:"resourceList"`
 
-	// The context from where the ticket is getting created.
 	ContextualData *ContextualData `mandatory:"false" json:"contextualData"`
 }
 
@@ -62,18 +64,21 @@ const (
 	CreateTicketDetailsSeverityHighest CreateTicketDetailsSeverityEnum = "HIGHEST"
 	CreateTicketDetailsSeverityHigh    CreateTicketDetailsSeverityEnum = "HIGH"
 	CreateTicketDetailsSeverityMedium  CreateTicketDetailsSeverityEnum = "MEDIUM"
+	CreateTicketDetailsSeverityLow     CreateTicketDetailsSeverityEnum = "LOW"
 )
 
 var mappingCreateTicketDetailsSeverityEnum = map[string]CreateTicketDetailsSeverityEnum{
 	"HIGHEST": CreateTicketDetailsSeverityHighest,
 	"HIGH":    CreateTicketDetailsSeverityHigh,
 	"MEDIUM":  CreateTicketDetailsSeverityMedium,
+	"LOW":     CreateTicketDetailsSeverityLow,
 }
 
 var mappingCreateTicketDetailsSeverityEnumLowerCase = map[string]CreateTicketDetailsSeverityEnum{
 	"highest": CreateTicketDetailsSeverityHighest,
 	"high":    CreateTicketDetailsSeverityHigh,
 	"medium":  CreateTicketDetailsSeverityMedium,
+	"low":     CreateTicketDetailsSeverityLow,
 }
 
 // GetCreateTicketDetailsSeverityEnumValues Enumerates the set of values for CreateTicketDetailsSeverityEnum
@@ -91,6 +96,7 @@ func GetCreateTicketDetailsSeverityEnumStringValues() []string {
 		"HIGHEST",
 		"HIGH",
 		"MEDIUM",
+		"LOW",
 	}
 }
 

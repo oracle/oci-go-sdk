@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -16,8 +20,7 @@ import (
 	"strings"
 )
 
-// CreateItemDetails Details gathered during item creation.
-// **Caution:** Avoid using any confidential information when you supply string values using the API.
+// CreateItemDetails Details gathered during ticket creation.
 type CreateItemDetails interface {
 	GetCategory() *CreateCategoryDetails
 
@@ -25,7 +28,7 @@ type CreateItemDetails interface {
 
 	GetIssueType() *CreateIssueTypeDetails
 
-	// The display name of the item.
+	// The display name of the ticket. Avoid entering confidential information.
 	GetName() *string
 }
 
@@ -73,6 +76,10 @@ func (m *createitemdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, 
 		return mm, err
 	case "limit":
 		mm := CreateLimitItemDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "account":
+		mm := CreateAccountItemDetails{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:

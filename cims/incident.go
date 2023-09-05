@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -15,7 +19,7 @@ import (
 	"strings"
 )
 
-// Incident Details of about the incident object.
+// Incident Details about the support ticket.
 type Incident struct {
 
 	// Unique identifier for the support ticket.
@@ -32,7 +36,7 @@ type Incident struct {
 
 	IncidentType *IncidentType `mandatory:"false" json:"incidentType"`
 
-	// The kind of support ticket, such as a technical support request.
+	// The kind of support ticket, such as a technical support request or a limit increase request.
 	ProblemType ProblemTypeEnum `mandatory:"false" json:"problemType,omitempty"`
 
 	// The incident referrer. This value is often the URL that the customer used when creating the support ticket.

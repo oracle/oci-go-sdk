@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -15,10 +19,10 @@ import (
 	"strings"
 )
 
-// TenancyInformation Details about the customer's tenancy.
+// TenancyInformation Details about the tenancy.
 type TenancyInformation struct {
 
-	// The Customer Support Identifier number associated with the tenancy.
+	// The Customer Support Identifier (CSI) number associated with the tenancy.
 	CustomerSupportKey *string `mandatory:"true" json:"customerSupportKey"`
 
 	// The OCID of the tenancy.

@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -15,7 +19,7 @@ import (
 	"strings"
 )
 
-// CreateUserDetails Details about creation of user.
+// CreateUserDetails Details for creating a new user.
 type CreateUserDetails struct {
 
 	// The OCID of the tenancy.
@@ -27,10 +31,7 @@ type CreateUserDetails struct {
 	// Last name of the user.
 	LastName *string `mandatory:"true" json:"lastName"`
 
-	// Country of the user.
-	Country *string `mandatory:"true" json:"country"`
-
-	// CSI to be associated to the user.
+	// CSI associated with the user.
 	Csi *string `mandatory:"true" json:"csi"`
 
 	// Contact number of the user.
@@ -41,6 +42,9 @@ type CreateUserDetails struct {
 
 	// Organization of the user.
 	OrganizationName *string `mandatory:"true" json:"organizationName"`
+
+	// The kind of support ticket, such as a technical support request or a limit increase request.
+	ProblemType ProblemTypeEnum `mandatory:"true" json:"problemType"`
 }
 
 func (m CreateUserDetails) String() string {
@@ -52,6 +56,9 @@ func (m CreateUserDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateUserDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
+	if _, ok := GetMappingProblemTypeEnum(string(m.ProblemType)); !ok && m.ProblemType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProblemType: %s. Supported values are: %s.", m.ProblemType, strings.Join(GetProblemTypeEnumStringValues(), ",")))
+	}
 
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))

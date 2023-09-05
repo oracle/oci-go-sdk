@@ -4,7 +4,11 @@
 
 // Support Management API
 //
-// Use the Support Management API to manage support requests. For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm). **Note**: Before you can create service requests with this API, you need to have an Oracle Single Sign On (SSO) account, and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// Use the Support Management API to manage support requests.
+// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// **Note**: Before you can create service requests with this API,
+// you need to have an Oracle Single Sign On (SSO) account,
+// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
 //
 
 package cims
@@ -15,31 +19,31 @@ import (
 	"strings"
 )
 
-// User Details about the user object.
+// User Details about the user.
 type User struct {
 
-	// Unique identifier for the user.
+	// A unique identifier for the user.
 	Key *string `mandatory:"true" json:"key"`
 
-	// First name of the user.
+	// The user's first name.
 	FirstName *string `mandatory:"false" json:"firstName"`
 
-	// Last name of the user.
+	// The user's last name.
 	LastName *string `mandatory:"false" json:"lastName"`
 
-	// Country of the user.
+	// The country of the user.
 	Country *string `mandatory:"false" json:"country"`
 
-	// CSI to be associated to the user.
+	// The CSI associated with the user.
 	Csi *string `mandatory:"false" json:"csi"`
 
-	// Contact number of the user.
+	// The user's contact phone number.
 	Phone *string `mandatory:"false" json:"phone"`
 
-	// Timezone of the user.
+	// The timezone of the user.
 	Timezone *string `mandatory:"false" json:"timezone"`
 
-	// Organization of the user.
+	// The company that the user belongs to.
 	OrganizationName *string `mandatory:"false" json:"organizationName"`
 
 	// The OCID of the tenancy.
@@ -47,6 +51,9 @@ type User struct {
 
 	// The email of the contact person.
 	ContactEmail *string `mandatory:"false" json:"contactEmail"`
+
+	// The kind of support ticket, such as a technical support request or a limit increase request.
+	ProblemType ProblemTypeEnum `mandatory:"false" json:"problemType,omitempty"`
 }
 
 func (m User) String() string {
@@ -59,6 +66,9 @@ func (m User) String() string {
 func (m User) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
+	if _, ok := GetMappingProblemTypeEnum(string(m.ProblemType)); !ok && m.ProblemType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProblemType: %s. Supported values are: %s.", m.ProblemType, strings.Join(GetProblemTypeEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
