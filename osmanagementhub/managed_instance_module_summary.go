@@ -5,7 +5,6 @@
 // OS Management Hub API
 //
 // Use the OS Management Hub API to manage and monitor updates and patches for the operating system environments in your private data centers through a single management console. For more information, see Overview of OS Management Hub (https://docs.cloud.oracle.com/iaas/osmh/doc/overview.htm).
-// Use the table of contents and search tool to explore the  OS Management Hub API.
 //
 
 package osmanagementhub
