@@ -96,7 +96,7 @@ func (client *ManagedInstanceGroupClient) ConfigurationProvider() *common.Config
 // instance group which will then apply to all managed instances in the
 // group.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/AttachManagedInstancesToManagedInstanceGroup.go.html to see an example of how to use AttachManagedInstancesToManagedInstanceGroup API.
 // A default retry strategy applies to this operation AttachManagedInstancesToManagedInstanceGroup()
@@ -159,7 +159,7 @@ func (client ManagedInstanceGroupClient) attachManagedInstancesToManagedInstance
 
 // AttachSoftwareSourcesToManagedInstanceGroup Attaches software sources to the specified managed instance group. The software sources must be compatible with the content for the managed instance group.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/AttachSoftwareSourcesToManagedInstanceGroup.go.html to see an example of how to use AttachSoftwareSourcesToManagedInstanceGroup API.
 // A default retry strategy applies to this operation AttachSoftwareSourcesToManagedInstanceGroup()
@@ -222,7 +222,7 @@ func (client ManagedInstanceGroupClient) attachSoftwareSourcesToManagedInstanceG
 
 // CreateManagedInstanceGroup Creates a new managed instance group.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/CreateManagedInstanceGroup.go.html to see an example of how to use CreateManagedInstanceGroup API.
 // A default retry strategy applies to this operation CreateManagedInstanceGroup()
@@ -285,7 +285,7 @@ func (client ManagedInstanceGroupClient) createManagedInstanceGroup(ctx context.
 
 // DeleteManagedInstanceGroup Deletes a specified managed instance group.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/DeleteManagedInstanceGroup.go.html to see an example of how to use DeleteManagedInstanceGroup API.
 // A default retry strategy applies to this operation DeleteManagedInstanceGroup()
@@ -343,7 +343,7 @@ func (client ManagedInstanceGroupClient) deleteManagedInstanceGroup(ctx context.
 
 // DetachManagedInstancesFromManagedInstanceGroup Removes a managed instance from the specified managed instance group.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/DetachManagedInstancesFromManagedInstanceGroup.go.html to see an example of how to use DetachManagedInstancesFromManagedInstanceGroup API.
 // A default retry strategy applies to this operation DetachManagedInstancesFromManagedInstanceGroup()
@@ -406,7 +406,7 @@ func (client ManagedInstanceGroupClient) detachManagedInstancesFromManagedInstan
 
 // DetachSoftwareSourcesFromManagedInstanceGroup Detaches software sources from a group.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/DetachSoftwareSourcesFromManagedInstanceGroup.go.html to see an example of how to use DetachSoftwareSourcesFromManagedInstanceGroup API.
 // A default retry strategy applies to this operation DetachSoftwareSourcesFromManagedInstanceGroup()
@@ -472,7 +472,7 @@ func (client ManagedInstanceGroupClient) detachSoftwareSourcesFromManagedInstanc
 // contained by the stream. All installed profiles must be removed prior
 // to disabling a module stream.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/DisableModuleStreamOnManagedInstanceGroup.go.html to see an example of how to use DisableModuleStreamOnManagedInstanceGroup API.
 // A default retry strategy applies to this operation DisableModuleStreamOnManagedInstanceGroup()
@@ -539,7 +539,7 @@ func (client ManagedInstanceGroupClient) disableModuleStreamOnManagedInstanceGro
 // succeed.  Attempting to enable a different stream for a module that
 // already has a stream enabled results in an error.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/EnableModuleStreamOnManagedInstanceGroup.go.html to see an example of how to use EnableModuleStreamOnManagedInstanceGroup API.
 // A default retry strategy applies to this operation EnableModuleStreamOnManagedInstanceGroup()
@@ -602,7 +602,7 @@ func (client ManagedInstanceGroupClient) enableModuleStreamOnManagedInstanceGrou
 
 // GetManagedInstanceGroup Gets information about the specified managed instance group.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/GetManagedInstanceGroup.go.html to see an example of how to use GetManagedInstanceGroup API.
 // A default retry strategy applies to this operation GetManagedInstanceGroup()
@@ -662,7 +662,7 @@ func (client ManagedInstanceGroupClient) getManagedInstanceGroup(ctx context.Con
 // enabled before a profile can be installed. If a module stream
 // defines multiple profiles, each one can be installed independently.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/InstallModuleStreamProfileOnManagedInstanceGroup.go.html to see an example of how to use InstallModuleStreamProfileOnManagedInstanceGroup API.
 // A default retry strategy applies to this operation InstallModuleStreamProfileOnManagedInstanceGroup()
@@ -726,7 +726,7 @@ func (client ManagedInstanceGroupClient) installModuleStreamProfileOnManagedInst
 // InstallPackagesOnManagedInstanceGroup Installs package(s) on each managed instance in a managed instance group. The package must be compatible with the
 // instances in the managed instance group.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/InstallPackagesOnManagedInstanceGroup.go.html to see an example of how to use InstallPackagesOnManagedInstanceGroup API.
 // A default retry strategy applies to this operation InstallPackagesOnManagedInstanceGroup()
@@ -790,7 +790,7 @@ func (client ManagedInstanceGroupClient) installPackagesOnManagedInstanceGroup(c
 // ListManagedInstanceGroupAvailableModules Lists available modules that for the specified managed instance group. Filter the list against a variety of
 // criteria including but not limited to its name.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListManagedInstanceGroupAvailableModules.go.html to see an example of how to use ListManagedInstanceGroupAvailableModules API.
 // A default retry strategy applies to this operation ListManagedInstanceGroupAvailableModules()
@@ -849,7 +849,7 @@ func (client ManagedInstanceGroupClient) listManagedInstanceGroupAvailableModule
 // ListManagedInstanceGroupAvailablePackages Lists available packages on the specified managed instances group. Filter the list against a variety
 // of criteria including but not limited to the package name.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListManagedInstanceGroupAvailablePackages.go.html to see an example of how to use ListManagedInstanceGroupAvailablePackages API.
 // A default retry strategy applies to this operation ListManagedInstanceGroupAvailablePackages()
@@ -908,7 +908,7 @@ func (client ManagedInstanceGroupClient) listManagedInstanceGroupAvailablePackag
 // ListManagedInstanceGroupAvailableSoftwareSources Lists available software sources for a specified managed instance group. Filter the list against a variety of
 // criteria including but not limited to its name.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListManagedInstanceGroupAvailableSoftwareSources.go.html to see an example of how to use ListManagedInstanceGroupAvailableSoftwareSources API.
 // A default retry strategy applies to this operation ListManagedInstanceGroupAvailableSoftwareSources()
@@ -967,7 +967,7 @@ func (client ManagedInstanceGroupClient) listManagedInstanceGroupAvailableSoftwa
 // ListManagedInstanceGroupInstalledPackages Lists installed packages on the specified managed instances group. Filter the list against a variety
 // of criteria including but not limited to the package name.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListManagedInstanceGroupInstalledPackages.go.html to see an example of how to use ListManagedInstanceGroupInstalledPackages API.
 // A default retry strategy applies to this operation ListManagedInstanceGroupInstalledPackages()
@@ -1042,7 +1042,7 @@ func (client ManagedInstanceGroupClient) listManagedInstanceGroupInstalledPackag
 // When sorting by the display name, the result set is sorted first
 // by the module name and then by the stream name.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListManagedInstanceGroupModules.go.html to see an example of how to use ListManagedInstanceGroupModules API.
 // A default retry strategy applies to this operation ListManagedInstanceGroupModules()
@@ -1101,7 +1101,7 @@ func (client ManagedInstanceGroupClient) listManagedInstanceGroupModules(ctx con
 // ListManagedInstanceGroups Lists managed instance groups that match the specified compartment or managed instance group OCID. Filter the
 // list against a variety of criteria including but not limited to its name, status, architecture, and OS family.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListManagedInstanceGroups.go.html to see an example of how to use ListManagedInstanceGroups API.
 // A default retry strategy applies to this operation ListManagedInstanceGroups()
@@ -1210,7 +1210,7 @@ func (client ManagedInstanceGroupClient) listManagedInstanceGroups(ctx context.C
 // contains a structured message containing the results of one
 // or more operations.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ManageModuleStreamsOnManagedInstanceGroup.go.html to see an example of how to use ManageModuleStreamsOnManagedInstanceGroup API.
 // A default retry strategy applies to this operation ManageModuleStreamsOnManagedInstanceGroup()
@@ -1275,7 +1275,7 @@ func (client ManagedInstanceGroupClient) manageModuleStreamsOnManagedInstanceGro
 // If a module stream is provided, rather than a fully qualified profile, all
 // profiles that have been installed for the module stream will be removed.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/RemoveModuleStreamProfileFromManagedInstanceGroup.go.html to see an example of how to use RemoveModuleStreamProfileFromManagedInstanceGroup API.
 // A default retry strategy applies to this operation RemoveModuleStreamProfileFromManagedInstanceGroup()
@@ -1338,7 +1338,7 @@ func (client ManagedInstanceGroupClient) removeModuleStreamProfileFromManagedIns
 
 // RemovePackagesFromManagedInstanceGroup Removes package(s) from each managed instance in a specified managed instance group.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/RemovePackagesFromManagedInstanceGroup.go.html to see an example of how to use RemovePackagesFromManagedInstanceGroup API.
 // A default retry strategy applies to this operation RemovePackagesFromManagedInstanceGroup()
@@ -1401,7 +1401,7 @@ func (client ManagedInstanceGroupClient) removePackagesFromManagedInstanceGroup(
 
 // UpdateAllPackagesOnManagedInstanceGroup Updates all packages on each managed instance in the specified managed instance group.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/UpdateAllPackagesOnManagedInstanceGroup.go.html to see an example of how to use UpdateAllPackagesOnManagedInstanceGroup API.
 // A default retry strategy applies to this operation UpdateAllPackagesOnManagedInstanceGroup()
@@ -1464,7 +1464,7 @@ func (client ManagedInstanceGroupClient) updateAllPackagesOnManagedInstanceGroup
 
 // UpdateManagedInstanceGroup Updates the specified managed instance group's name, description, and tags.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/UpdateManagedInstanceGroup.go.html to see an example of how to use UpdateManagedInstanceGroup API.
 // A default retry strategy applies to this operation UpdateManagedInstanceGroup()

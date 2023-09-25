@@ -53,57 +53,57 @@ type CertificateBundlePublicOnly struct {
 	Stages []VersionStageEnum `mandatory:"true" json:"stages"`
 }
 
-//GetCertificateId returns CertificateId
+// GetCertificateId returns CertificateId
 func (m CertificateBundlePublicOnly) GetCertificateId() *string {
 	return m.CertificateId
 }
 
-//GetCertificateName returns CertificateName
+// GetCertificateName returns CertificateName
 func (m CertificateBundlePublicOnly) GetCertificateName() *string {
 	return m.CertificateName
 }
 
-//GetVersionNumber returns VersionNumber
+// GetVersionNumber returns VersionNumber
 func (m CertificateBundlePublicOnly) GetVersionNumber() *int64 {
 	return m.VersionNumber
 }
 
-//GetSerialNumber returns SerialNumber
+// GetSerialNumber returns SerialNumber
 func (m CertificateBundlePublicOnly) GetSerialNumber() *string {
 	return m.SerialNumber
 }
 
-//GetCertificatePem returns CertificatePem
+// GetCertificatePem returns CertificatePem
 func (m CertificateBundlePublicOnly) GetCertificatePem() *string {
 	return m.CertificatePem
 }
 
-//GetCertChainPem returns CertChainPem
+// GetCertChainPem returns CertChainPem
 func (m CertificateBundlePublicOnly) GetCertChainPem() *string {
 	return m.CertChainPem
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m CertificateBundlePublicOnly) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetValidity returns Validity
+// GetValidity returns Validity
 func (m CertificateBundlePublicOnly) GetValidity() *Validity {
 	return m.Validity
 }
 
-//GetVersionName returns VersionName
+// GetVersionName returns VersionName
 func (m CertificateBundlePublicOnly) GetVersionName() *string {
 	return m.VersionName
 }
 
-//GetStages returns Stages
+// GetStages returns Stages
 func (m CertificateBundlePublicOnly) GetStages() []VersionStageEnum {
 	return m.Stages
 }
 
-//GetRevocationStatus returns RevocationStatus
+// GetRevocationStatus returns RevocationStatus
 func (m CertificateBundlePublicOnly) GetRevocationStatus() *RevocationStatus {
 	return m.RevocationStatus
 }

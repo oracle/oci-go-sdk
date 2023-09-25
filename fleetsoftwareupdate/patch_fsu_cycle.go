@@ -99,102 +99,102 @@ type PatchFsuCycle struct {
 	LifecycleState CycleLifecycleStatesEnum `mandatory:"true" json:"lifecycleState"`
 }
 
-//GetId returns Id
+// GetId returns Id
 func (m PatchFsuCycle) GetId() *string {
 	return m.Id
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m PatchFsuCycle) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m PatchFsuCycle) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetFsuCollectionId returns FsuCollectionId
+// GetFsuCollectionId returns FsuCollectionId
 func (m PatchFsuCycle) GetFsuCollectionId() *string {
 	return m.FsuCollectionId
 }
 
-//GetCollectionType returns CollectionType
+// GetCollectionType returns CollectionType
 func (m PatchFsuCycle) GetCollectionType() CollectionTypesEnum {
 	return m.CollectionType
 }
 
-//GetExecutingFsuActionId returns ExecutingFsuActionId
+// GetExecutingFsuActionId returns ExecutingFsuActionId
 func (m PatchFsuCycle) GetExecutingFsuActionId() *string {
 	return m.ExecutingFsuActionId
 }
 
-//GetNextActionToExecute returns NextActionToExecute
+// GetNextActionToExecute returns NextActionToExecute
 func (m PatchFsuCycle) GetNextActionToExecute() []NextActionToExecuteDetails {
 	return m.NextActionToExecute
 }
 
-//GetLastCompletedAction returns LastCompletedAction
+// GetLastCompletedAction returns LastCompletedAction
 func (m PatchFsuCycle) GetLastCompletedAction() DetailedActionTypesEnum {
 	return m.LastCompletedAction
 }
 
-//GetGoalVersionDetails returns GoalVersionDetails
+// GetGoalVersionDetails returns GoalVersionDetails
 func (m PatchFsuCycle) GetGoalVersionDetails() FsuGoalVersionDetails {
 	return m.GoalVersionDetails
 }
 
-//GetBatchingStrategy returns BatchingStrategy
+// GetBatchingStrategy returns BatchingStrategy
 func (m PatchFsuCycle) GetBatchingStrategy() BatchingStrategyDetails {
 	return m.BatchingStrategy
 }
 
-//GetStageActionSchedule returns StageActionSchedule
+// GetStageActionSchedule returns StageActionSchedule
 func (m PatchFsuCycle) GetStageActionSchedule() ScheduleDetails {
 	return m.StageActionSchedule
 }
 
-//GetApplyActionSchedule returns ApplyActionSchedule
+// GetApplyActionSchedule returns ApplyActionSchedule
 func (m PatchFsuCycle) GetApplyActionSchedule() ScheduleDetails {
 	return m.ApplyActionSchedule
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m PatchFsuCycle) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetTimeUpdated returns TimeUpdated
+// GetTimeUpdated returns TimeUpdated
 func (m PatchFsuCycle) GetTimeUpdated() *common.SDKTime {
 	return m.TimeUpdated
 }
 
-//GetTimeFinished returns TimeFinished
+// GetTimeFinished returns TimeFinished
 func (m PatchFsuCycle) GetTimeFinished() *common.SDKTime {
 	return m.TimeFinished
 }
 
-//GetLifecycleState returns LifecycleState
+// GetLifecycleState returns LifecycleState
 func (m PatchFsuCycle) GetLifecycleState() CycleLifecycleStatesEnum {
 	return m.LifecycleState
 }
 
-//GetLifecycleDetails returns LifecycleDetails
+// GetLifecycleDetails returns LifecycleDetails
 func (m PatchFsuCycle) GetLifecycleDetails() *string {
 	return m.LifecycleDetails
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m PatchFsuCycle) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m PatchFsuCycle) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m PatchFsuCycle) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
 }

@@ -93,7 +93,7 @@ func (client *TransferApplianceClient) ConfigurationProvider() *common.Configura
 
 // CreateTransferAppliance Create a new Transfer Appliance
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/CreateTransferAppliance.go.html to see an example of how to use CreateTransferAppliance API.
 func (client TransferApplianceClient) CreateTransferAppliance(ctx context.Context, request CreateTransferApplianceRequest) (response CreateTransferApplianceResponse, err error) {
@@ -155,7 +155,7 @@ func (client TransferApplianceClient) createTransferAppliance(ctx context.Contex
 
 // CreateTransferApplianceAdminCredentials Creates an X.509 certificate from a public key
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/CreateTransferApplianceAdminCredentials.go.html to see an example of how to use CreateTransferApplianceAdminCredentials API.
 func (client TransferApplianceClient) CreateTransferApplianceAdminCredentials(ctx context.Context, request CreateTransferApplianceAdminCredentialsRequest) (response CreateTransferApplianceAdminCredentialsResponse, err error) {
@@ -217,7 +217,7 @@ func (client TransferApplianceClient) createTransferApplianceAdminCredentials(ct
 
 // DeleteTransferAppliance deletes a transfer Appliance
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DeleteTransferAppliance.go.html to see an example of how to use DeleteTransferAppliance API.
 func (client TransferApplianceClient) DeleteTransferAppliance(ctx context.Context, request DeleteTransferApplianceRequest) (response DeleteTransferApplianceResponse, err error) {
@@ -279,7 +279,7 @@ func (client TransferApplianceClient) deleteTransferAppliance(ctx context.Contex
 
 // GetTransferAppliance Describes a transfer appliance in detail
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferAppliance.go.html to see an example of how to use GetTransferAppliance API.
 func (client TransferApplianceClient) GetTransferAppliance(ctx context.Context, request GetTransferApplianceRequest) (response GetTransferApplianceResponse, err error) {
@@ -336,7 +336,7 @@ func (client TransferApplianceClient) getTransferAppliance(ctx context.Context, 
 
 // GetTransferApplianceCertificateAuthorityCertificate Gets the x.509 certificate for the Transfer Appliance's dedicated Certificate Authority (CA)
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferApplianceCertificateAuthorityCertificate.go.html to see an example of how to use GetTransferApplianceCertificateAuthorityCertificate API.
 func (client TransferApplianceClient) GetTransferApplianceCertificateAuthorityCertificate(ctx context.Context, request GetTransferApplianceCertificateAuthorityCertificateRequest) (response GetTransferApplianceCertificateAuthorityCertificateResponse, err error) {
@@ -393,7 +393,7 @@ func (client TransferApplianceClient) getTransferApplianceCertificateAuthorityCe
 
 // GetTransferApplianceEncryptionPassphrase Describes a transfer appliance encryptionPassphrase in detail
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferApplianceEncryptionPassphrase.go.html to see an example of how to use GetTransferApplianceEncryptionPassphrase API.
 func (client TransferApplianceClient) GetTransferApplianceEncryptionPassphrase(ctx context.Context, request GetTransferApplianceEncryptionPassphraseRequest) (response GetTransferApplianceEncryptionPassphraseResponse, err error) {
@@ -450,7 +450,7 @@ func (client TransferApplianceClient) getTransferApplianceEncryptionPassphrase(c
 
 // ListTransferAppliances Lists Transfer Appliances associated with a transferJob
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListTransferAppliances.go.html to see an example of how to use ListTransferAppliances API.
 func (client TransferApplianceClient) ListTransferAppliances(ctx context.Context, request ListTransferAppliancesRequest) (response ListTransferAppliancesResponse, err error) {
@@ -507,7 +507,7 @@ func (client TransferApplianceClient) listTransferAppliances(ctx context.Context
 
 // UpdateTransferAppliance Updates a Transfer Appliance
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/UpdateTransferAppliance.go.html to see an example of how to use UpdateTransferAppliance API.
 func (client TransferApplianceClient) UpdateTransferAppliance(ctx context.Context, request UpdateTransferApplianceRequest) (response UpdateTransferApplianceResponse, err error) {

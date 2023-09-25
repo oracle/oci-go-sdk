@@ -36,27 +36,27 @@ type AccountItem struct {
 	IssueType *IssueType `mandatory:"false" json:"issueType"`
 }
 
-//GetItemKey returns ItemKey
+// GetItemKey returns ItemKey
 func (m AccountItem) GetItemKey() *string {
 	return m.ItemKey
 }
 
-//GetName returns Name
+// GetName returns Name
 func (m AccountItem) GetName() *string {
 	return m.Name
 }
 
-//GetCategory returns Category
+// GetCategory returns Category
 func (m AccountItem) GetCategory() *Category {
 	return m.Category
 }
 
-//GetSubCategory returns SubCategory
+// GetSubCategory returns SubCategory
 func (m AccountItem) GetSubCategory() *SubCategory {
 	return m.SubCategory
 }
 
-//GetIssueType returns IssueType
+// GetIssueType returns IssueType
 func (m AccountItem) GetIssueType() *IssueType {
 	return m.IssueType
 }

@@ -19,7 +19,8 @@ import (
 
 // DatabaseTargetSummary Details of a Database target member of a Exadata Fleet Update Collection.
 // Stored references of the resource documented in
-//   https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/Database/
+//
+//	https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/Database/
 type DatabaseTargetSummary struct {
 
 	// OCID of the target resource in the Exadata Fleet Update Collection.
@@ -41,12 +42,12 @@ type DatabaseTargetSummary struct {
 	SoftwareImageId *string `mandatory:"false" json:"softwareImageId"`
 }
 
-//GetId returns Id
+// GetId returns Id
 func (m DatabaseTargetSummary) GetId() *string {
 	return m.Id
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m DatabaseTargetSummary) GetCompartmentId() *string {
 	return m.CompartmentId
 }

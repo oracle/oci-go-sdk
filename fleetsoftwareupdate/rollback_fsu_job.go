@@ -77,72 +77,72 @@ type RollbackFsuJob struct {
 	LifecycleState JobLifecycleStatesEnum `mandatory:"true" json:"lifecycleState"`
 }
 
-//GetId returns Id
+// GetId returns Id
 func (m RollbackFsuJob) GetId() *string {
 	return m.Id
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m RollbackFsuJob) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m RollbackFsuJob) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetFsuActionId returns FsuActionId
+// GetFsuActionId returns FsuActionId
 func (m RollbackFsuJob) GetFsuActionId() *string {
 	return m.FsuActionId
 }
 
-//GetProgress returns Progress
+// GetProgress returns Progress
 func (m RollbackFsuJob) GetProgress() *JobProgressDetails {
 	return m.Progress
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m RollbackFsuJob) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetTimeStarted returns TimeStarted
+// GetTimeStarted returns TimeStarted
 func (m RollbackFsuJob) GetTimeStarted() *common.SDKTime {
 	return m.TimeStarted
 }
 
-//GetTimeUpdated returns TimeUpdated
+// GetTimeUpdated returns TimeUpdated
 func (m RollbackFsuJob) GetTimeUpdated() *common.SDKTime {
 	return m.TimeUpdated
 }
 
-//GetTimeFinished returns TimeFinished
+// GetTimeFinished returns TimeFinished
 func (m RollbackFsuJob) GetTimeFinished() *common.SDKTime {
 	return m.TimeFinished
 }
 
-//GetLifecycleState returns LifecycleState
+// GetLifecycleState returns LifecycleState
 func (m RollbackFsuJob) GetLifecycleState() JobLifecycleStatesEnum {
 	return m.LifecycleState
 }
 
-//GetLifecycleDetails returns LifecycleDetails
+// GetLifecycleDetails returns LifecycleDetails
 func (m RollbackFsuJob) GetLifecycleDetails() *string {
 	return m.LifecycleDetails
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m RollbackFsuJob) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m RollbackFsuJob) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m RollbackFsuJob) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
 }

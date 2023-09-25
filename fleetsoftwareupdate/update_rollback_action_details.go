@@ -34,17 +34,17 @@ type UpdateRollbackActionDetails struct {
 	ScheduleDetails UpdateScheduleDetails `mandatory:"false" json:"scheduleDetails"`
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m UpdateRollbackActionDetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m UpdateRollbackActionDetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m UpdateRollbackActionDetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

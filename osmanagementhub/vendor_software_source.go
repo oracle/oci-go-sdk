@@ -86,97 +86,97 @@ type VendorSoftwareSource struct {
 	VendorName VendorNameEnum `mandatory:"true" json:"vendorName"`
 }
 
-//GetId returns Id
+// GetId returns Id
 func (m VendorSoftwareSource) GetId() *string {
 	return m.Id
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m VendorSoftwareSource) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m VendorSoftwareSource) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m VendorSoftwareSource) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetDescription returns Description
+// GetDescription returns Description
 func (m VendorSoftwareSource) GetDescription() *string {
 	return m.Description
 }
 
-//GetAvailability returns Availability
+// GetAvailability returns Availability
 func (m VendorSoftwareSource) GetAvailability() AvailabilityEnum {
 	return m.Availability
 }
 
-//GetRepoId returns RepoId
+// GetRepoId returns RepoId
 func (m VendorSoftwareSource) GetRepoId() *string {
 	return m.RepoId
 }
 
-//GetOsFamily returns OsFamily
+// GetOsFamily returns OsFamily
 func (m VendorSoftwareSource) GetOsFamily() OsFamilyEnum {
 	return m.OsFamily
 }
 
-//GetArchType returns ArchType
+// GetArchType returns ArchType
 func (m VendorSoftwareSource) GetArchType() ArchTypeEnum {
 	return m.ArchType
 }
 
-//GetLifecycleState returns LifecycleState
+// GetLifecycleState returns LifecycleState
 func (m VendorSoftwareSource) GetLifecycleState() SoftwareSourceLifecycleStateEnum {
 	return m.LifecycleState
 }
 
-//GetPackageCount returns PackageCount
+// GetPackageCount returns PackageCount
 func (m VendorSoftwareSource) GetPackageCount() *int64 {
 	return m.PackageCount
 }
 
-//GetUrl returns Url
+// GetUrl returns Url
 func (m VendorSoftwareSource) GetUrl() *string {
 	return m.Url
 }
 
-//GetChecksumType returns ChecksumType
+// GetChecksumType returns ChecksumType
 func (m VendorSoftwareSource) GetChecksumType() ChecksumTypeEnum {
 	return m.ChecksumType
 }
 
-//GetGpgKeyUrl returns GpgKeyUrl
+// GetGpgKeyUrl returns GpgKeyUrl
 func (m VendorSoftwareSource) GetGpgKeyUrl() *string {
 	return m.GpgKeyUrl
 }
 
-//GetGpgKeyId returns GpgKeyId
+// GetGpgKeyId returns GpgKeyId
 func (m VendorSoftwareSource) GetGpgKeyId() *string {
 	return m.GpgKeyId
 }
 
-//GetGpgKeyFingerprint returns GpgKeyFingerprint
+// GetGpgKeyFingerprint returns GpgKeyFingerprint
 func (m VendorSoftwareSource) GetGpgKeyFingerprint() *string {
 	return m.GpgKeyFingerprint
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m VendorSoftwareSource) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m VendorSoftwareSource) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m VendorSoftwareSource) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
 }

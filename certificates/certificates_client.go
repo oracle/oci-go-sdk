@@ -93,7 +93,7 @@ func (client *CertificatesClient) ConfigurationProvider() *common.ConfigurationP
 
 // GetCaBundle Gets a ca-bundle bundle.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/GetCaBundle.go.html to see an example of how to use GetCaBundle API.
 func (client CertificatesClient) GetCaBundle(ctx context.Context, request GetCaBundleRequest) (response GetCaBundleResponse, err error) {
@@ -151,7 +151,7 @@ func (client CertificatesClient) getCaBundle(ctx context.Context, request common
 // GetCertificateAuthorityBundle Gets a certificate authority bundle that matches either the specified `stage`, `name`, or `versionNumber` parameter.
 // If none of these parameters are provided, the bundle for the certificate authority version marked as `CURRENT` will be returned.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/GetCertificateAuthorityBundle.go.html to see an example of how to use GetCertificateAuthorityBundle API.
 func (client CertificatesClient) GetCertificateAuthorityBundle(ctx context.Context, request GetCertificateAuthorityBundleRequest) (response GetCertificateAuthorityBundleResponse, err error) {
@@ -211,7 +211,7 @@ func (client CertificatesClient) getCertificateAuthorityBundle(ctx context.Conte
 // By default, the private key is not included in the query result, and a CertificateBundlePublicOnly is returned.
 // If the private key is needed, use the CertificateBundleTypeQueryParam parameter to get a CertificateBundleWithPrivateKey response.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/GetCertificateBundle.go.html to see an example of how to use GetCertificateBundle API.
 func (client CertificatesClient) GetCertificateBundle(ctx context.Context, request GetCertificateBundleRequest) (response GetCertificateBundleResponse, err error) {
@@ -268,7 +268,7 @@ func (client CertificatesClient) getCertificateBundle(ctx context.Context, reque
 
 // ListCertificateAuthorityBundleVersions Lists all certificate authority bundle versions for the specified certificate authority.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/ListCertificateAuthorityBundleVersions.go.html to see an example of how to use ListCertificateAuthorityBundleVersions API.
 func (client CertificatesClient) ListCertificateAuthorityBundleVersions(ctx context.Context, request ListCertificateAuthorityBundleVersionsRequest) (response ListCertificateAuthorityBundleVersionsResponse, err error) {
@@ -325,7 +325,7 @@ func (client CertificatesClient) listCertificateAuthorityBundleVersions(ctx cont
 
 // ListCertificateBundleVersions Lists all certificate bundle versions for the specified certificate.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/ListCertificateBundleVersions.go.html to see an example of how to use ListCertificateBundleVersions API.
 func (client CertificatesClient) ListCertificateBundleVersions(ctx context.Context, request ListCertificateBundleVersionsRequest) (response ListCertificateBundleVersionsResponse, err error) {

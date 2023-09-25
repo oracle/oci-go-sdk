@@ -46,32 +46,32 @@ type InstalledPackageSummary struct {
 	Architecture ArchTypeEnum `mandatory:"false" json:"architecture,omitempty"`
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m InstalledPackageSummary) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetName returns Name
+// GetName returns Name
 func (m InstalledPackageSummary) GetName() *string {
 	return m.Name
 }
 
-//GetType returns Type
+// GetType returns Type
 func (m InstalledPackageSummary) GetType() *string {
 	return m.Type
 }
 
-//GetVersion returns Version
+// GetVersion returns Version
 func (m InstalledPackageSummary) GetVersion() *string {
 	return m.Version
 }
 
-//GetArchitecture returns Architecture
+// GetArchitecture returns Architecture
 func (m InstalledPackageSummary) GetArchitecture() ArchTypeEnum {
 	return m.Architecture
 }
 
-//GetSoftwareSources returns SoftwareSources
+// GetSoftwareSources returns SoftwareSources
 func (m InstalledPackageSummary) GetSoftwareSources() []SoftwareSourceDetails {
 	return m.SoftwareSources
 }

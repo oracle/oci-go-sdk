@@ -40,22 +40,22 @@ type CreateApplyActionDetails struct {
 	ScheduleDetails CreateScheduleDetails `mandatory:"false" json:"scheduleDetails"`
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m CreateApplyActionDetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m CreateApplyActionDetails) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m CreateApplyActionDetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m CreateApplyActionDetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

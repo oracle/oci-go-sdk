@@ -28,7 +28,7 @@ type GiVersionFilter struct {
 	Mode GiFleetDiscoveryFilterModeEnum `mandatory:"false" json:"mode,omitempty"`
 }
 
-//GetMode returns Mode
+// GetMode returns Mode
 func (m GiVersionFilter) GetMode() GiFleetDiscoveryFilterModeEnum {
 	return m.Mode
 }

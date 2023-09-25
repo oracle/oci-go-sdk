@@ -55,27 +55,27 @@ type ActivityItem struct {
 	ItemStatus ActivityItemItemStatusEnum `mandatory:"false" json:"itemStatus,omitempty"`
 }
 
-//GetItemKey returns ItemKey
+// GetItemKey returns ItemKey
 func (m ActivityItem) GetItemKey() *string {
 	return m.ItemKey
 }
 
-//GetName returns Name
+// GetName returns Name
 func (m ActivityItem) GetName() *string {
 	return m.Name
 }
 
-//GetCategory returns Category
+// GetCategory returns Category
 func (m ActivityItem) GetCategory() *Category {
 	return m.Category
 }
 
-//GetSubCategory returns SubCategory
+// GetSubCategory returns SubCategory
 func (m ActivityItem) GetSubCategory() *SubCategory {
 	return m.SubCategory
 }
 
-//GetIssueType returns IssueType
+// GetIssueType returns IssueType
 func (m ActivityItem) GetIssueType() *IssueType {
 	return m.IssueType
 }

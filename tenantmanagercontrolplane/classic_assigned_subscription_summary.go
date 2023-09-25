@@ -64,37 +64,37 @@ type ClassicAssignedSubscriptionSummary struct {
 	LifecycleState ClassicSubscriptionLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 }
 
-//GetId returns Id
+// GetId returns Id
 func (m ClassicAssignedSubscriptionSummary) GetId() *string {
 	return m.Id
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m ClassicAssignedSubscriptionSummary) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetServiceName returns ServiceName
+// GetServiceName returns ServiceName
 func (m ClassicAssignedSubscriptionSummary) GetServiceName() *string {
 	return m.ServiceName
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m ClassicAssignedSubscriptionSummary) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetTimeUpdated returns TimeUpdated
+// GetTimeUpdated returns TimeUpdated
 func (m ClassicAssignedSubscriptionSummary) GetTimeUpdated() *common.SDKTime {
 	return m.TimeUpdated
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m ClassicAssignedSubscriptionSummary) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m ClassicAssignedSubscriptionSummary) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

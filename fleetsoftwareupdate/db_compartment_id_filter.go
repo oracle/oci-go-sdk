@@ -28,7 +28,7 @@ type DbCompartmentIdFilter struct {
 	Mode DbFleetDiscoveryFilterModeEnum `mandatory:"false" json:"mode,omitempty"`
 }
 
-//GetMode returns Mode
+// GetMode returns Mode
 func (m DbCompartmentIdFilter) GetMode() DbFleetDiscoveryFilterModeEnum {
 	return m.Mode
 }

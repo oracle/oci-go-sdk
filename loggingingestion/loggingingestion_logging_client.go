@@ -94,7 +94,7 @@ func (client *LoggingClient) ConfigurationProvider() *common.ConfigurationProvid
 // PutLogs This API allows ingesting logs associated with a logId. A success
 // response implies the data has been accepted.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loggingingestion/PutLogs.go.html to see an example of how to use PutLogs API.
 func (client LoggingClient) PutLogs(ctx context.Context, request PutLogsRequest) (response PutLogsResponse, err error) {

@@ -93,7 +93,7 @@ func (client *WorkRequestClient) ConfigurationProvider() *common.ConfigurationPr
 
 // GetWorkRequest Gets the status of the work request with the given ID.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/GetWorkRequest.go.html to see an example of how to use GetWorkRequest API.
 func (client WorkRequestClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
@@ -150,7 +150,7 @@ func (client WorkRequestClient) getWorkRequest(ctx context.Context, request comm
 
 // ListWorkRequestErrors Return a (paginated) list of errors for a given work request.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListWorkRequestErrors.go.html to see an example of how to use ListWorkRequestErrors API.
 func (client WorkRequestClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
@@ -207,7 +207,7 @@ func (client WorkRequestClient) listWorkRequestErrors(ctx context.Context, reque
 
 // ListWorkRequestLogs Return a (paginated) list of logs for a given work request.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListWorkRequestLogs.go.html to see an example of how to use ListWorkRequestLogs API.
 func (client WorkRequestClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
@@ -264,7 +264,7 @@ func (client WorkRequestClient) listWorkRequestLogs(ctx context.Context, request
 
 // ListWorkRequests Lists the work requests in a compartment.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListWorkRequests.go.html to see an example of how to use ListWorkRequests API.
 func (client WorkRequestClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {

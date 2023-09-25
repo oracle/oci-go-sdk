@@ -93,7 +93,7 @@ func (client *TransferPackageClient) ConfigurationProvider() *common.Configurati
 
 // AttachDevicesToTransferPackage Attaches Devices to a Transfer Package
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/AttachDevicesToTransferPackage.go.html to see an example of how to use AttachDevicesToTransferPackage API.
 func (client TransferPackageClient) AttachDevicesToTransferPackage(ctx context.Context, request AttachDevicesToTransferPackageRequest) (response AttachDevicesToTransferPackageResponse, err error) {
@@ -155,7 +155,7 @@ func (client TransferPackageClient) attachDevicesToTransferPackage(ctx context.C
 
 // CreateTransferPackage Create a new Transfer Package
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/CreateTransferPackage.go.html to see an example of how to use CreateTransferPackage API.
 func (client TransferPackageClient) CreateTransferPackage(ctx context.Context, request CreateTransferPackageRequest) (response CreateTransferPackageResponse, err error) {
@@ -217,7 +217,7 @@ func (client TransferPackageClient) createTransferPackage(ctx context.Context, r
 
 // DeleteTransferPackage deletes a transfer Package
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DeleteTransferPackage.go.html to see an example of how to use DeleteTransferPackage API.
 func (client TransferPackageClient) DeleteTransferPackage(ctx context.Context, request DeleteTransferPackageRequest) (response DeleteTransferPackageResponse, err error) {
@@ -279,7 +279,7 @@ func (client TransferPackageClient) deleteTransferPackage(ctx context.Context, r
 
 // DetachDevicesFromTransferPackage Detaches Devices from a Transfer Package
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DetachDevicesFromTransferPackage.go.html to see an example of how to use DetachDevicesFromTransferPackage API.
 func (client TransferPackageClient) DetachDevicesFromTransferPackage(ctx context.Context, request DetachDevicesFromTransferPackageRequest) (response DetachDevicesFromTransferPackageResponse, err error) {
@@ -341,7 +341,7 @@ func (client TransferPackageClient) detachDevicesFromTransferPackage(ctx context
 
 // GetTransferPackage Describes a transfer package in detail
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferPackage.go.html to see an example of how to use GetTransferPackage API.
 func (client TransferPackageClient) GetTransferPackage(ctx context.Context, request GetTransferPackageRequest) (response GetTransferPackageResponse, err error) {
@@ -398,7 +398,7 @@ func (client TransferPackageClient) getTransferPackage(ctx context.Context, requ
 
 // ListTransferPackages Lists Transfer Packages associated with a transferJob
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListTransferPackages.go.html to see an example of how to use ListTransferPackages API.
 func (client TransferPackageClient) ListTransferPackages(ctx context.Context, request ListTransferPackagesRequest) (response ListTransferPackagesResponse, err error) {
@@ -455,7 +455,7 @@ func (client TransferPackageClient) listTransferPackages(ctx context.Context, re
 
 // UpdateTransferPackage Updates a Transfer Package
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/UpdateTransferPackage.go.html to see an example of how to use UpdateTransferPackage API.
 func (client TransferPackageClient) UpdateTransferPackage(ctx context.Context, request UpdateTransferPackageRequest) (response UpdateTransferPackageResponse, err error) {

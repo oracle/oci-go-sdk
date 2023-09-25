@@ -45,27 +45,27 @@ type CreateDbFsuCollectionDetails struct {
 	SourceMajorVersion DbSourceMajorVersionsEnum `mandatory:"true" json:"sourceMajorVersion"`
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m CreateDbFsuCollectionDetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetServiceType returns ServiceType
+// GetServiceType returns ServiceType
 func (m CreateDbFsuCollectionDetails) GetServiceType() CollectionServiceTypesEnum {
 	return m.ServiceType
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m CreateDbFsuCollectionDetails) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m CreateDbFsuCollectionDetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m CreateDbFsuCollectionDetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

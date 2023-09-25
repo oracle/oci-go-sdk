@@ -13,7 +13,9 @@ TARGETS_TEST = $(patsubst %,test-%, $(TARGETS_WITH_TESTS))
 TARGETS_TESTFILTERED = $(patsubst %,testfiltered-%, $(TARGETS_WITH_TESTS))
 TARGETS_INTEG_TEST = $(patsubst %,test-%, $(TARGETS_WITH_INTEG_TESTS))
 TARGETS_RELEASE= $(patsubst %,release-%, $(TARGETS))
+TARGETS_STATIC = $(patsubst %,staticcheck-%, $(TARGETS))
 GOLINT=$(GOPATH)/bin/golint
+STATICCHECK=$(GOPATH)/bin/staticcheck
 LINT_FLAGS=-min_confidence 0.9 -set_exit_status
 
 AUTOTEST_DIR = autotest
@@ -23,11 +25,9 @@ EXCLUDED_CLEAN_DIRECTORIES = objectstorage/transfer*
 
 .PHONY: $(TARGETS_BUILD) $(TARGET_TEST)
 
-build: lint $(TARGETS_BUILD)
+build: static-check $(TARGETS_BUILD)
 
-static-check: 
-	@staticcheck ./...
-	@echo "Success: No static check warnings"
+static-check: $(TARGETS_STATIC)
 
 test: build $(TARGETS_TEST)
 
@@ -52,6 +52,12 @@ $(TARGETS_LINT): lint-%:%
 	else\
 		(cd $< && $(GOLINT) $(LINT_FLAGS) .);\
 	fi
+
+$(TARGETS_STATIC): staticcheck-%:%
+	@echo "Formating and Static-Checking: $<"
+	@(cd $< && gofmt -s -w .)
+	@(cd $< && $(STATICCHECK) ./...);\
+
 
 # for sample code, only build them via 'go test -c'
 $(TARGETS_BUILD): build-%:%

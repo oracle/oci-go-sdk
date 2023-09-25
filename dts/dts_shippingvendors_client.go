@@ -93,7 +93,7 @@ func (client *ShippingVendorsClient) ConfigurationProvider() *common.Configurati
 
 // ListShippingVendors Lists available shipping vendors for Transfer Package delivery
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListShippingVendors.go.html to see an example of how to use ListShippingVendors API.
 func (client ShippingVendorsClient) ListShippingVendors(ctx context.Context, request ListShippingVendorsRequest) (response ListShippingVendorsResponse, err error) {

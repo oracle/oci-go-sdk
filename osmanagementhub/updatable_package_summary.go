@@ -50,32 +50,32 @@ type UpdatablePackageSummary struct {
 	UpdateType ClassificationTypesEnum `mandatory:"true" json:"updateType"`
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m UpdatablePackageSummary) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetName returns Name
+// GetName returns Name
 func (m UpdatablePackageSummary) GetName() *string {
 	return m.Name
 }
 
-//GetType returns Type
+// GetType returns Type
 func (m UpdatablePackageSummary) GetType() *string {
 	return m.Type
 }
 
-//GetVersion returns Version
+// GetVersion returns Version
 func (m UpdatablePackageSummary) GetVersion() *string {
 	return m.Version
 }
 
-//GetArchitecture returns Architecture
+// GetArchitecture returns Architecture
 func (m UpdatablePackageSummary) GetArchitecture() ArchTypeEnum {
 	return m.Architecture
 }
 
-//GetSoftwareSources returns SoftwareSources
+// GetSoftwareSources returns SoftwareSources
 func (m UpdatablePackageSummary) GetSoftwareSources() []SoftwareSourceDetails {
 	return m.SoftwareSources
 }

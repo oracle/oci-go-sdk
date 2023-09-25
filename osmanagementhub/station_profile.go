@@ -64,67 +64,67 @@ type StationProfile struct {
 	LifecycleState ProfileLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 }
 
-//GetId returns Id
+// GetId returns Id
 func (m StationProfile) GetId() *string {
 	return m.Id
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m StationProfile) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m StationProfile) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetDescription returns Description
+// GetDescription returns Description
 func (m StationProfile) GetDescription() *string {
 	return m.Description
 }
 
-//GetManagementStationId returns ManagementStationId
+// GetManagementStationId returns ManagementStationId
 func (m StationProfile) GetManagementStationId() *string {
 	return m.ManagementStationId
 }
 
-//GetVendorName returns VendorName
+// GetVendorName returns VendorName
 func (m StationProfile) GetVendorName() VendorNameEnum {
 	return m.VendorName
 }
 
-//GetOsFamily returns OsFamily
+// GetOsFamily returns OsFamily
 func (m StationProfile) GetOsFamily() OsFamilyEnum {
 	return m.OsFamily
 }
 
-//GetArchType returns ArchType
+// GetArchType returns ArchType
 func (m StationProfile) GetArchType() ArchTypeEnum {
 	return m.ArchType
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m StationProfile) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetLifecycleState returns LifecycleState
+// GetLifecycleState returns LifecycleState
 func (m StationProfile) GetLifecycleState() ProfileLifecycleStateEnum {
 	return m.LifecycleState
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m StationProfile) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m StationProfile) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m StationProfile) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
 }

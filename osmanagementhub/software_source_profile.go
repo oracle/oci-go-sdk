@@ -67,67 +67,67 @@ type SoftwareSourceProfile struct {
 	LifecycleState ProfileLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 }
 
-//GetId returns Id
+// GetId returns Id
 func (m SoftwareSourceProfile) GetId() *string {
 	return m.Id
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m SoftwareSourceProfile) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m SoftwareSourceProfile) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetDescription returns Description
+// GetDescription returns Description
 func (m SoftwareSourceProfile) GetDescription() *string {
 	return m.Description
 }
 
-//GetManagementStationId returns ManagementStationId
+// GetManagementStationId returns ManagementStationId
 func (m SoftwareSourceProfile) GetManagementStationId() *string {
 	return m.ManagementStationId
 }
 
-//GetVendorName returns VendorName
+// GetVendorName returns VendorName
 func (m SoftwareSourceProfile) GetVendorName() VendorNameEnum {
 	return m.VendorName
 }
 
-//GetOsFamily returns OsFamily
+// GetOsFamily returns OsFamily
 func (m SoftwareSourceProfile) GetOsFamily() OsFamilyEnum {
 	return m.OsFamily
 }
 
-//GetArchType returns ArchType
+// GetArchType returns ArchType
 func (m SoftwareSourceProfile) GetArchType() ArchTypeEnum {
 	return m.ArchType
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m SoftwareSourceProfile) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetLifecycleState returns LifecycleState
+// GetLifecycleState returns LifecycleState
 func (m SoftwareSourceProfile) GetLifecycleState() ProfileLifecycleStateEnum {
 	return m.LifecycleState
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m SoftwareSourceProfile) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m SoftwareSourceProfile) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m SoftwareSourceProfile) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
 }

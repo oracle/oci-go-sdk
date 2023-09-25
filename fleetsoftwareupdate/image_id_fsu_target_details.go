@@ -37,12 +37,12 @@ type ImageIdFsuTargetDetails struct {
 	HomePolicy FsuGoalVersionDetailsHomePolicyEnum `mandatory:"false" json:"homePolicy,omitempty"`
 }
 
-//GetHomePolicy returns HomePolicy
+// GetHomePolicy returns HomePolicy
 func (m ImageIdFsuTargetDetails) GetHomePolicy() FsuGoalVersionDetailsHomePolicyEnum {
 	return m.HomePolicy
 }
 
-//GetNewHomePrefix returns NewHomePrefix
+// GetNewHomePrefix returns NewHomePrefix
 func (m ImageIdFsuTargetDetails) GetNewHomePrefix() *string {
 	return m.NewHomePrefix
 }

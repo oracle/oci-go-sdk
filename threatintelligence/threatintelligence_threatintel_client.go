@@ -93,7 +93,7 @@ func (client *ThreatintelClient) ConfigurationProvider() *common.ConfigurationPr
 
 // GetIndicator Get detailed information about a threat indicator with a given identifier.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/GetIndicator.go.html to see an example of how to use GetIndicator API.
 // A default retry strategy applies to this operation GetIndicator()
@@ -151,7 +151,7 @@ func (client ThreatintelClient) getIndicator(ctx context.Context, request common
 
 // ListIndicatorCounts Get the current count of each threat indicator type. Indicator counts can be sorted in ascending or descending order.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/ListIndicatorCounts.go.html to see an example of how to use ListIndicatorCounts API.
 // A default retry strategy applies to this operation ListIndicatorCounts()
@@ -209,7 +209,7 @@ func (client ThreatintelClient) listIndicatorCounts(ctx context.Context, request
 
 // ListIndicators Get a list of threat indicator summaries based on the search criteria.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/ListIndicators.go.html to see an example of how to use ListIndicators API.
 // A default retry strategy applies to this operation ListIndicators()
@@ -268,7 +268,7 @@ func (client ThreatintelClient) listIndicators(ctx context.Context, request comm
 // ListThreatTypes Gets a list of threat types that are available to use as parameters when querying indicators.
 // The list is sorted by threat type name according to the sort order query param.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/ListThreatTypes.go.html to see an example of how to use ListThreatTypes API.
 // A default retry strategy applies to this operation ListThreatTypes()
@@ -326,7 +326,7 @@ func (client ThreatintelClient) listThreatTypes(ctx context.Context, request com
 
 // SummarizeIndicators Get indicator summaries based on advanced search criteria.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/SummarizeIndicators.go.html to see an example of how to use SummarizeIndicators API.
 // A default retry strategy applies to this operation SummarizeIndicators()
