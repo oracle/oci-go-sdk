@@ -26,7 +26,7 @@ type FreeTextSearchDetails struct {
 	MatchingContextType SearchDetailsMatchingContextTypeEnum `mandatory:"false" json:"matchingContextType,omitempty"`
 }
 
-//GetMatchingContextType returns MatchingContextType
+// GetMatchingContextType returns MatchingContextType
 func (m FreeTextSearchDetails) GetMatchingContextType() SearchDetailsMatchingContextTypeEnum {
 	return m.MatchingContextType
 }

@@ -93,7 +93,7 @@ func (client *DomainGovernanceClient) ConfigurationProvider() *common.Configurat
 
 // CreateDomainGovernance Adds domain governance to a claimed domain.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/CreateDomainGovernance.go.html to see an example of how to use CreateDomainGovernance API.
 func (client DomainGovernanceClient) CreateDomainGovernance(ctx context.Context, request CreateDomainGovernanceRequest) (response CreateDomainGovernanceResponse, err error) {
@@ -155,7 +155,7 @@ func (client DomainGovernanceClient) createDomainGovernance(ctx context.Context,
 
 // DeleteDomainGovernance Removes domain governance from a claimed domain.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/DeleteDomainGovernance.go.html to see an example of how to use DeleteDomainGovernance API.
 func (client DomainGovernanceClient) DeleteDomainGovernance(ctx context.Context, request DeleteDomainGovernanceRequest) (response DeleteDomainGovernanceResponse, err error) {
@@ -212,7 +212,7 @@ func (client DomainGovernanceClient) deleteDomainGovernance(ctx context.Context,
 
 // GetDomainGovernance Gets information about the domain governance entity.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/GetDomainGovernance.go.html to see an example of how to use GetDomainGovernance API.
 func (client DomainGovernanceClient) GetDomainGovernance(ctx context.Context, request GetDomainGovernanceRequest) (response GetDomainGovernanceResponse, err error) {
@@ -269,7 +269,7 @@ func (client DomainGovernanceClient) getDomainGovernance(ctx context.Context, re
 
 // ListDomainGovernances Return a (paginated) list of domain governance entities.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListDomainGovernances.go.html to see an example of how to use ListDomainGovernances API.
 func (client DomainGovernanceClient) ListDomainGovernances(ctx context.Context, request ListDomainGovernancesRequest) (response ListDomainGovernancesResponse, err error) {
@@ -326,7 +326,7 @@ func (client DomainGovernanceClient) listDomainGovernances(ctx context.Context, 
 
 // UpdateDomainGovernance Updates the domain governance entity.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/UpdateDomainGovernance.go.html to see an example of how to use UpdateDomainGovernance API.
 func (client DomainGovernanceClient) UpdateDomainGovernance(ctx context.Context, request UpdateDomainGovernanceRequest) (response UpdateDomainGovernanceResponse, err error) {

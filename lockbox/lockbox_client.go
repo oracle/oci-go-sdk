@@ -94,7 +94,7 @@ func (client *LockboxClient) ConfigurationProvider() *common.ConfigurationProvid
 
 // CancelWorkRequest Cancels the work request with the given ID.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/CancelWorkRequest.go.html to see an example of how to use CancelWorkRequest API.
 func (client LockboxClient) CancelWorkRequest(ctx context.Context, request CancelWorkRequestRequest) (response CancelWorkRequestResponse, err error) {
@@ -151,7 +151,7 @@ func (client LockboxClient) cancelWorkRequest(ctx context.Context, request commo
 
 // ChangeApprovalTemplateCompartment Moves an ApprovalTemplate resource from one compartment identifier to another. When provided, If-Match is checked against ETag values of the resource.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ChangeApprovalTemplateCompartment.go.html to see an example of how to use ChangeApprovalTemplateCompartment API.
 func (client LockboxClient) ChangeApprovalTemplateCompartment(ctx context.Context, request ChangeApprovalTemplateCompartmentRequest) (response ChangeApprovalTemplateCompartmentResponse, err error) {
@@ -213,7 +213,7 @@ func (client LockboxClient) changeApprovalTemplateCompartment(ctx context.Contex
 
 // ChangeLockboxCompartment Moves a Lockbox resource from one compartment identifier to another. When provided, If-Match is checked against ETag values of the resource.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ChangeLockboxCompartment.go.html to see an example of how to use ChangeLockboxCompartment API.
 func (client LockboxClient) ChangeLockboxCompartment(ctx context.Context, request ChangeLockboxCompartmentRequest) (response ChangeLockboxCompartmentResponse, err error) {
@@ -275,7 +275,7 @@ func (client LockboxClient) changeLockboxCompartment(ctx context.Context, reques
 
 // CreateAccessRequest Creates a new access request.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/CreateAccessRequest.go.html to see an example of how to use CreateAccessRequest API.
 func (client LockboxClient) CreateAccessRequest(ctx context.Context, request CreateAccessRequestRequest) (response CreateAccessRequestResponse, err error) {
@@ -337,7 +337,7 @@ func (client LockboxClient) createAccessRequest(ctx context.Context, request com
 
 // CreateApprovalTemplate Creates a new approval template.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/CreateApprovalTemplate.go.html to see an example of how to use CreateApprovalTemplate API.
 func (client LockboxClient) CreateApprovalTemplate(ctx context.Context, request CreateApprovalTemplateRequest) (response CreateApprovalTemplateResponse, err error) {
@@ -399,7 +399,7 @@ func (client LockboxClient) createApprovalTemplate(ctx context.Context, request 
 
 // CreateLockbox Creates a new Lockbox.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/CreateLockbox.go.html to see an example of how to use CreateLockbox API.
 func (client LockboxClient) CreateLockbox(ctx context.Context, request CreateLockboxRequest) (response CreateLockboxResponse, err error) {
@@ -461,7 +461,7 @@ func (client LockboxClient) createLockbox(ctx context.Context, request common.OC
 
 // DeleteApprovalTemplate Deletes an ApprovalTemplate resource by identifier
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/DeleteApprovalTemplate.go.html to see an example of how to use DeleteApprovalTemplate API.
 func (client LockboxClient) DeleteApprovalTemplate(ctx context.Context, request DeleteApprovalTemplateRequest) (response DeleteApprovalTemplateResponse, err error) {
@@ -518,7 +518,7 @@ func (client LockboxClient) deleteApprovalTemplate(ctx context.Context, request 
 
 // DeleteLockbox Deletes a Lockbox resource by identifier
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/DeleteLockbox.go.html to see an example of how to use DeleteLockbox API.
 func (client LockboxClient) DeleteLockbox(ctx context.Context, request DeleteLockboxRequest) (response DeleteLockboxResponse, err error) {
@@ -580,7 +580,7 @@ func (client LockboxClient) deleteLockbox(ctx context.Context, request common.OC
 
 // GetAccessMaterials Retrieves the access credential/material associated with the access request.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetAccessMaterials.go.html to see an example of how to use GetAccessMaterials API.
 func (client LockboxClient) GetAccessMaterials(ctx context.Context, request GetAccessMaterialsRequest) (response GetAccessMaterialsResponse, err error) {
@@ -637,7 +637,7 @@ func (client LockboxClient) getAccessMaterials(ctx context.Context, request comm
 
 // GetAccessRequest Retrieves an access request identified by the access request ID.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetAccessRequest.go.html to see an example of how to use GetAccessRequest API.
 func (client LockboxClient) GetAccessRequest(ctx context.Context, request GetAccessRequestRequest) (response GetAccessRequestResponse, err error) {
@@ -694,7 +694,7 @@ func (client LockboxClient) getAccessRequest(ctx context.Context, request common
 
 // GetApprovalTemplate Retrieves an approval template identified by the approval template ID.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetApprovalTemplate.go.html to see an example of how to use GetApprovalTemplate API.
 func (client LockboxClient) GetApprovalTemplate(ctx context.Context, request GetApprovalTemplateRequest) (response GetApprovalTemplateResponse, err error) {
@@ -751,7 +751,7 @@ func (client LockboxClient) getApprovalTemplate(ctx context.Context, request com
 
 // GetLockbox Gets a Lockbox by identifier
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetLockbox.go.html to see an example of how to use GetLockbox API.
 func (client LockboxClient) GetLockbox(ctx context.Context, request GetLockboxRequest) (response GetLockboxResponse, err error) {
@@ -808,7 +808,7 @@ func (client LockboxClient) getLockbox(ctx context.Context, request common.OCIRe
 
 // GetWorkRequest Gets details of the work request with the given ID.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetWorkRequest.go.html to see an example of how to use GetWorkRequest API.
 func (client LockboxClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
@@ -865,7 +865,7 @@ func (client LockboxClient) getWorkRequest(ctx context.Context, request common.O
 
 // HandleAccessRequest Handle the AccessRequest
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/HandleAccessRequest.go.html to see an example of how to use HandleAccessRequest API.
 func (client LockboxClient) HandleAccessRequest(ctx context.Context, request HandleAccessRequestRequest) (response HandleAccessRequestResponse, err error) {
@@ -927,7 +927,7 @@ func (client LockboxClient) handleAccessRequest(ctx context.Context, request com
 
 // ListAccessRequests Retrieves a list of AccessRequestSummary objects in a compartment.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListAccessRequests.go.html to see an example of how to use ListAccessRequests API.
 func (client LockboxClient) ListAccessRequests(ctx context.Context, request ListAccessRequestsRequest) (response ListAccessRequestsResponse, err error) {
@@ -984,7 +984,7 @@ func (client LockboxClient) listAccessRequests(ctx context.Context, request comm
 
 // ListApprovalTemplates Retrieves a list of ApprovalTemplateSummary objects in a compartment.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListApprovalTemplates.go.html to see an example of how to use ListApprovalTemplates API.
 func (client LockboxClient) ListApprovalTemplates(ctx context.Context, request ListApprovalTemplatesRequest) (response ListApprovalTemplatesResponse, err error) {
@@ -1041,7 +1041,7 @@ func (client LockboxClient) listApprovalTemplates(ctx context.Context, request c
 
 // ListLockboxes Returns a list of Lockboxes.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListLockboxes.go.html to see an example of how to use ListLockboxes API.
 func (client LockboxClient) ListLockboxes(ctx context.Context, request ListLockboxesRequest) (response ListLockboxesResponse, err error) {
@@ -1098,7 +1098,7 @@ func (client LockboxClient) listLockboxes(ctx context.Context, request common.OC
 
 // ListWorkRequestErrors Returns a (paginated) list of errors for the work request with the given ID.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListWorkRequestErrors.go.html to see an example of how to use ListWorkRequestErrors API.
 func (client LockboxClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
@@ -1155,7 +1155,7 @@ func (client LockboxClient) listWorkRequestErrors(ctx context.Context, request c
 
 // ListWorkRequestLogs Returns a (paginated) list of logs for the work request with the given ID.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListWorkRequestLogs.go.html to see an example of how to use ListWorkRequestLogs API.
 func (client LockboxClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
@@ -1212,7 +1212,7 @@ func (client LockboxClient) listWorkRequestLogs(ctx context.Context, request com
 
 // ListWorkRequests Lists the work requests in a compartment.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListWorkRequests.go.html to see an example of how to use ListWorkRequests API.
 func (client LockboxClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
@@ -1269,7 +1269,7 @@ func (client LockboxClient) listWorkRequests(ctx context.Context, request common
 
 // UpdateApprovalTemplate Updates the ApprovalTemplate
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/UpdateApprovalTemplate.go.html to see an example of how to use UpdateApprovalTemplate API.
 func (client LockboxClient) UpdateApprovalTemplate(ctx context.Context, request UpdateApprovalTemplateRequest) (response UpdateApprovalTemplateResponse, err error) {
@@ -1326,7 +1326,7 @@ func (client LockboxClient) updateApprovalTemplate(ctx context.Context, request 
 
 // UpdateLockbox Updates the Lockbox
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/UpdateLockbox.go.html to see an example of how to use UpdateLockbox API.
 func (client LockboxClient) UpdateLockbox(ctx context.Context, request UpdateLockboxRequest) (response UpdateLockboxResponse, err error) {

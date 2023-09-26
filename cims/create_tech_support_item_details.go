@@ -32,22 +32,22 @@ type CreateTechSupportItemDetails struct {
 	Name *string `mandatory:"false" json:"name"`
 }
 
-//GetCategory returns Category
+// GetCategory returns Category
 func (m CreateTechSupportItemDetails) GetCategory() *CreateCategoryDetails {
 	return m.Category
 }
 
-//GetSubCategory returns SubCategory
+// GetSubCategory returns SubCategory
 func (m CreateTechSupportItemDetails) GetSubCategory() *CreateSubCategoryDetails {
 	return m.SubCategory
 }
 
-//GetIssueType returns IssueType
+// GetIssueType returns IssueType
 func (m CreateTechSupportItemDetails) GetIssueType() *CreateIssueTypeDetails {
 	return m.IssueType
 }
 
-//GetName returns Name
+// GetName returns Name
 func (m CreateTechSupportItemDetails) GetName() *string {
 	return m.Name
 }

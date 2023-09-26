@@ -93,7 +93,7 @@ func (client *LinkClient) ConfigurationProvider() *common.ConfigurationProvider 
 
 // DeleteLink Starts the link termination workflow.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/DeleteLink.go.html to see an example of how to use DeleteLink API.
 func (client LinkClient) DeleteLink(ctx context.Context, request DeleteLinkRequest) (response DeleteLinkResponse, err error) {
@@ -150,7 +150,7 @@ func (client LinkClient) deleteLink(ctx context.Context, request common.OCIReque
 
 // GetLink Gets information about the link.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/GetLink.go.html to see an example of how to use GetLink API.
 func (client LinkClient) GetLink(ctx context.Context, request GetLinkRequest) (response GetLinkResponse, err error) {
@@ -207,7 +207,7 @@ func (client LinkClient) getLink(ctx context.Context, request common.OCIRequest,
 
 // ListLinks Return a (paginated) list of links.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListLinks.go.html to see an example of how to use ListLinks API.
 func (client LinkClient) ListLinks(ctx context.Context, request ListLinksRequest) (response ListLinksResponse, err error) {

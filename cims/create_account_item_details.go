@@ -32,22 +32,22 @@ type CreateAccountItemDetails struct {
 	Name *string `mandatory:"false" json:"name"`
 }
 
-//GetCategory returns Category
+// GetCategory returns Category
 func (m CreateAccountItemDetails) GetCategory() *CreateCategoryDetails {
 	return m.Category
 }
 
-//GetSubCategory returns SubCategory
+// GetSubCategory returns SubCategory
 func (m CreateAccountItemDetails) GetSubCategory() *CreateSubCategoryDetails {
 	return m.SubCategory
 }
 
-//GetIssueType returns IssueType
+// GetIssueType returns IssueType
 func (m CreateAccountItemDetails) GetIssueType() *CreateIssueTypeDetails {
 	return m.IssueType
 }
 
-//GetName returns Name
+// GetName returns Name
 func (m CreateAccountItemDetails) GetName() *string {
 	return m.Name
 }

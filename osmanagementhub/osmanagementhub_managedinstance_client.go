@@ -94,7 +94,7 @@ func (client *ManagedInstanceClient) ConfigurationProvider() *common.Configurati
 // AttachSoftwareSourcesToManagedInstance Adds software sources to a managed instance. After the software source has been added,
 // then packages from that software source can be installed on the managed instance.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/AttachSoftwareSourcesToManagedInstance.go.html to see an example of how to use AttachSoftwareSourcesToManagedInstance API.
 // A default retry strategy applies to this operation AttachSoftwareSourcesToManagedInstance()
@@ -158,7 +158,7 @@ func (client ManagedInstanceClient) attachSoftwareSourcesToManagedInstance(ctx c
 // DetachSoftwareSourcesFromManagedInstance Removes software sources from a managed instance.
 // Packages will no longer be able to be installed from these software sources.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/DetachSoftwareSourcesFromManagedInstance.go.html to see an example of how to use DetachSoftwareSourcesFromManagedInstance API.
 // A default retry strategy applies to this operation DetachSoftwareSourcesFromManagedInstance()
@@ -224,7 +224,7 @@ func (client ManagedInstanceClient) detachSoftwareSourcesFromManagedInstance(ctx
 // contained by the stream.  All installed profiles must be removed prior
 // to disabling a module stream.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/DisableModuleStreamOnManagedInstance.go.html to see an example of how to use DisableModuleStreamOnManagedInstance API.
 // A default retry strategy applies to this operation DisableModuleStreamOnManagedInstance()
@@ -291,7 +291,7 @@ func (client ManagedInstanceClient) disableModuleStreamOnManagedInstance(ctx con
 // succeed.  Attempting to enable a different stream for a module that
 // already has a stream enabled results in an error.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/EnableModuleStreamOnManagedInstance.go.html to see an example of how to use EnableModuleStreamOnManagedInstance API.
 // A default retry strategy applies to this operation EnableModuleStreamOnManagedInstance()
@@ -354,7 +354,7 @@ func (client ManagedInstanceClient) enableModuleStreamOnManagedInstance(ctx cont
 
 // GetManagedInstance Gets information about the specified managed instance.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/GetManagedInstance.go.html to see an example of how to use GetManagedInstance API.
 // A default retry strategy applies to this operation GetManagedInstance()
@@ -414,7 +414,7 @@ func (client ManagedInstanceClient) getManagedInstance(ctx context.Context, requ
 // enabled before a profile can be installed.  If a module stream
 // defines multiple profiles, each one can be installed independently.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/InstallModuleStreamProfileOnManagedInstance.go.html to see an example of how to use InstallModuleStreamProfileOnManagedInstance API.
 // A default retry strategy applies to this operation InstallModuleStreamProfileOnManagedInstance()
@@ -477,7 +477,7 @@ func (client ManagedInstanceClient) installModuleStreamProfileOnManagedInstance(
 
 // InstallPackagesOnManagedInstance Installs packages on a managed instance.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/InstallPackagesOnManagedInstance.go.html to see an example of how to use InstallPackagesOnManagedInstance API.
 // A default retry strategy applies to this operation InstallPackagesOnManagedInstance()
@@ -540,7 +540,7 @@ func (client ManagedInstanceClient) installPackagesOnManagedInstance(ctx context
 
 // ListManagedInstanceAvailablePackages Returns a list of available packages for a managed instance.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListManagedInstanceAvailablePackages.go.html to see an example of how to use ListManagedInstanceAvailablePackages API.
 // A default retry strategy applies to this operation ListManagedInstanceAvailablePackages()
@@ -598,7 +598,7 @@ func (client ManagedInstanceClient) listManagedInstanceAvailablePackages(ctx con
 
 // ListManagedInstanceAvailableSoftwareSources Returns a list of available software sources for a managed instance.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListManagedInstanceAvailableSoftwareSources.go.html to see an example of how to use ListManagedInstanceAvailableSoftwareSources API.
 // A default retry strategy applies to this operation ListManagedInstanceAvailableSoftwareSources()
@@ -656,7 +656,7 @@ func (client ManagedInstanceClient) listManagedInstanceAvailableSoftwareSources(
 
 // ListManagedInstanceErrata Returns a list of applicable errata on the managed instance.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListManagedInstanceErrata.go.html to see an example of how to use ListManagedInstanceErrata API.
 // A default retry strategy applies to this operation ListManagedInstanceErrata()
@@ -714,7 +714,7 @@ func (client ManagedInstanceClient) listManagedInstanceErrata(ctx context.Contex
 
 // ListManagedInstanceInstalledPackages Lists the packages that are installed on the managed instance.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListManagedInstanceInstalledPackages.go.html to see an example of how to use ListManagedInstanceInstalledPackages API.
 // A default retry strategy applies to this operation ListManagedInstanceInstalledPackages()
@@ -781,7 +781,7 @@ func (client ManagedInstanceClient) listManagedInstanceInstalledPackages(ctx con
 // in the result set. If it is not defined, the request  is not subject
 // to this filter.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListManagedInstanceModules.go.html to see an example of how to use ListManagedInstanceModules API.
 // A default retry strategy applies to this operation ListManagedInstanceModules()
@@ -839,7 +839,7 @@ func (client ManagedInstanceClient) listManagedInstanceModules(ctx context.Conte
 
 // ListManagedInstanceUpdatablePackages Returns a list of updatable packages for a managed instance.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListManagedInstanceUpdatablePackages.go.html to see an example of how to use ListManagedInstanceUpdatablePackages API.
 // A default retry strategy applies to this operation ListManagedInstanceUpdatablePackages()
@@ -897,7 +897,7 @@ func (client ManagedInstanceClient) listManagedInstanceUpdatablePackages(ctx con
 
 // ListManagedInstances Lists managed instances that match the specified compartment or managed instance OCID. Filter the list against a variety of criteria including but not limited to its name, status, architecture, and OS version.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListManagedInstances.go.html to see an example of how to use ListManagedInstances API.
 // A default retry strategy applies to this operation ListManagedInstances()
@@ -1006,7 +1006,7 @@ func (client ManagedInstanceClient) listManagedInstances(ctx context.Context, re
 // contains a structured message containing the results of one
 // or more operations.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ManageModuleStreamsOnManagedInstance.go.html to see an example of how to use ManageModuleStreamsOnManagedInstance API.
 // A default retry strategy applies to this operation ManageModuleStreamsOnManagedInstance()
@@ -1069,7 +1069,7 @@ func (client ManagedInstanceClient) manageModuleStreamsOnManagedInstance(ctx con
 
 // RefreshSoftwareOnManagedInstance Refresh all installed and updatable software information on a managed instance.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/RefreshSoftwareOnManagedInstance.go.html to see an example of how to use RefreshSoftwareOnManagedInstance API.
 // A default retry strategy applies to this operation RefreshSoftwareOnManagedInstance()
@@ -1134,7 +1134,7 @@ func (client ManagedInstanceClient) refreshSoftwareOnManagedInstance(ctx context
 // If a module stream is provided, rather than a fully qualified profile, all
 // profiles that have been installed for the module stream will be removed.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/RemoveModuleStreamProfileFromManagedInstance.go.html to see an example of how to use RemoveModuleStreamProfileFromManagedInstance API.
 // A default retry strategy applies to this operation RemoveModuleStreamProfileFromManagedInstance()
@@ -1197,7 +1197,7 @@ func (client ManagedInstanceClient) removeModuleStreamProfileFromManagedInstance
 
 // RemovePackagesFromManagedInstance Removes an installed package from a managed instance.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/RemovePackagesFromManagedInstance.go.html to see an example of how to use RemovePackagesFromManagedInstance API.
 // A default retry strategy applies to this operation RemovePackagesFromManagedInstance()
@@ -1263,7 +1263,7 @@ func (client ManagedInstanceClient) removePackagesFromManagedInstance(ctx contex
 // switching to a new stream will remove the existing packages and
 // install their counterparts in the new stream.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/SwitchModuleStreamOnManagedInstance.go.html to see an example of how to use SwitchModuleStreamOnManagedInstance API.
 // A default retry strategy applies to this operation SwitchModuleStreamOnManagedInstance()
@@ -1326,7 +1326,7 @@ func (client ManagedInstanceClient) switchModuleStreamOnManagedInstance(ctx cont
 
 // UpdateAllPackagesOnManagedInstancesInCompartment Install all of the available package updates for all of the managed instances in a compartment.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/UpdateAllPackagesOnManagedInstancesInCompartment.go.html to see an example of how to use UpdateAllPackagesOnManagedInstancesInCompartment API.
 // A default retry strategy applies to this operation UpdateAllPackagesOnManagedInstancesInCompartment()
@@ -1389,7 +1389,7 @@ func (client ManagedInstanceClient) updateAllPackagesOnManagedInstancesInCompart
 
 // UpdateManagedInstance Updates the managed instance.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/UpdateManagedInstance.go.html to see an example of how to use UpdateManagedInstance API.
 // A default retry strategy applies to this operation UpdateManagedInstance()
@@ -1447,7 +1447,7 @@ func (client ManagedInstanceClient) updateManagedInstance(ctx context.Context, r
 
 // UpdatePackagesOnManagedInstance Updates a package on a managed instance.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/UpdatePackagesOnManagedInstance.go.html to see an example of how to use UpdatePackagesOnManagedInstance API.
 // A default retry strategy applies to this operation UpdatePackagesOnManagedInstance()

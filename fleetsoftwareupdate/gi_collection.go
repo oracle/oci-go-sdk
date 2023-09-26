@@ -69,67 +69,67 @@ type GiCollection struct {
 	SourceMajorVersion GiSourceMajorVersionsEnum `mandatory:"true" json:"sourceMajorVersion"`
 }
 
-//GetId returns Id
+// GetId returns Id
 func (m GiCollection) GetId() *string {
 	return m.Id
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m GiCollection) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetServiceType returns ServiceType
+// GetServiceType returns ServiceType
 func (m GiCollection) GetServiceType() CollectionServiceTypesEnum {
 	return m.ServiceType
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m GiCollection) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetActiveFsuCycle returns ActiveFsuCycle
+// GetActiveFsuCycle returns ActiveFsuCycle
 func (m GiCollection) GetActiveFsuCycle() *ActiveCycleDetails {
 	return m.ActiveFsuCycle
 }
 
-//GetTargetCount returns TargetCount
+// GetTargetCount returns TargetCount
 func (m GiCollection) GetTargetCount() *int {
 	return m.TargetCount
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m GiCollection) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetTimeUpdated returns TimeUpdated
+// GetTimeUpdated returns TimeUpdated
 func (m GiCollection) GetTimeUpdated() *common.SDKTime {
 	return m.TimeUpdated
 }
 
-//GetLifecycleState returns LifecycleState
+// GetLifecycleState returns LifecycleState
 func (m GiCollection) GetLifecycleState() CollectionLifecycleStatesEnum {
 	return m.LifecycleState
 }
 
-//GetLifecycleDetails returns LifecycleDetails
+// GetLifecycleDetails returns LifecycleDetails
 func (m GiCollection) GetLifecycleDetails() *string {
 	return m.LifecycleDetails
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m GiCollection) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m GiCollection) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m GiCollection) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
 }

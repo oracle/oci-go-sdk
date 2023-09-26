@@ -95,7 +95,7 @@ func (client *OnboardingClient) ConfigurationProvider() *common.ConfigurationPro
 // A profile is a supplementary file for the OS Management Hub agentry
 // that dictates the content for a managed instance at registration time.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/CreateProfile.go.html to see an example of how to use CreateProfile API.
 // A default retry strategy applies to this operation CreateProfile()
@@ -158,7 +158,7 @@ func (client OnboardingClient) createProfile(ctx context.Context, request common
 
 // DeleteProfile Deletes a specified registration profile.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/DeleteProfile.go.html to see an example of how to use DeleteProfile API.
 // A default retry strategy applies to this operation DeleteProfile()
@@ -216,7 +216,7 @@ func (client OnboardingClient) deleteProfile(ctx context.Context, request common
 
 // GetProfile Gets information about the specified registration profile.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/GetProfile.go.html to see an example of how to use GetProfile API.
 // A default retry strategy applies to this operation GetProfile()
@@ -275,7 +275,7 @@ func (client OnboardingClient) getProfile(ctx context.Context, request common.OC
 // ListProfiles Lists registration profiles that match the specified compartment or profile OCID. Filter the list against a
 // variety of criteria including but not limited to its name, status, vendor name, and architecture type.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListProfiles.go.html to see an example of how to use ListProfiles API.
 // A default retry strategy applies to this operation ListProfiles()
@@ -333,7 +333,7 @@ func (client OnboardingClient) listProfiles(ctx context.Context, request common.
 
 // UpdateProfile Updates the specified profile's name, description, and tags.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/UpdateProfile.go.html to see an example of how to use UpdateProfile API.
 // A default retry strategy applies to this operation UpdateProfile()

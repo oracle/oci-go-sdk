@@ -98,7 +98,7 @@ func (client *ApplicationMigrationClient) ConfigurationProvider() *common.Config
 // For example, if the create migration work request is in the accepted or in progress state for a long time, you can cancel the work request.
 // When you cancel a work request, the state of the work request changes to cancelling, and then to the cancelled state.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/CancelWorkRequest.go.html to see an example of how to use CancelWorkRequest API.
 func (client ApplicationMigrationClient) CancelWorkRequest(ctx context.Context, request CancelWorkRequestRequest) (response CancelWorkRequestResponse, err error) {
@@ -156,7 +156,7 @@ func (client ApplicationMigrationClient) cancelWorkRequest(ctx context.Context, 
 // ChangeMigrationCompartment Moves the specified migration into a different compartment within the same tenancy. For information about moving resources between compartments,
 // see Moving Resources to a Different Compartment (https://docs.cloud.oracle.com/iaas/Content/Identity/Tasks/managingcompartments.htm#moveRes).
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/ChangeMigrationCompartment.go.html to see an example of how to use ChangeMigrationCompartment API.
 func (client ApplicationMigrationClient) ChangeMigrationCompartment(ctx context.Context, request ChangeMigrationCompartmentRequest) (response ChangeMigrationCompartmentResponse, err error) {
@@ -219,7 +219,7 @@ func (client ApplicationMigrationClient) changeMigrationCompartment(ctx context.
 // ChangeSourceCompartment Moves the specified source into a different compartment within the same tenancy. For information about moving resources
 // between compartments, see Moving Resources to a Different Compartment (https://docs.cloud.oracle.com/iaas/Content/Identity/Tasks/managingcompartments.htm#moveRes).
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/ChangeSourceCompartment.go.html to see an example of how to use ChangeSourceCompartment API.
 func (client ApplicationMigrationClient) ChangeSourceCompartment(ctx context.Context, request ChangeSourceCompartmentRequest) (response ChangeSourceCompartmentResponse, err error) {
@@ -297,7 +297,7 @@ func (client ApplicationMigrationClient) changeSourceCompartment(ctx context.Con
 // by using the <code>GetWorkRequest</code> REST API operation on the work request or by viewing the status of the work request in
 // the console.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/CreateMigration.go.html to see an example of how to use CreateMigration API.
 func (client ApplicationMigrationClient) CreateMigration(ctx context.Context, request CreateMigrationRequest) (response CreateMigrationResponse, err error) {
@@ -371,7 +371,7 @@ func (client ApplicationMigrationClient) createMigration(ctx context.Context, re
 // Ensure that the state of the source has changed to <code>ACTIVE</code>, before you retrieve the list of applications from
 // the source environment using the <code>ListSourceApplications</code> REST API call.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/CreateSource.go.html to see an example of how to use CreateSource API.
 func (client ApplicationMigrationClient) CreateSource(ctx context.Context, request CreateSourceRequest) (response CreateSourceResponse, err error) {
@@ -436,7 +436,7 @@ func (client ApplicationMigrationClient) createSource(ctx context.Context, reque
 // relevant migration. You can delete a migration, irrespective of its state. If any work request is being processed for the migration
 // that you want to delete, then the associated work requests are cancelled and then the migration is deleted.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/DeleteMigration.go.html to see an example of how to use DeleteMigration API.
 func (client ApplicationMigrationClient) DeleteMigration(ctx context.Context, request DeleteMigrationRequest) (response DeleteMigrationResponse, err error) {
@@ -496,7 +496,7 @@ func (client ApplicationMigrationClient) deleteMigration(ctx context.Context, re
 // If you have migrated all the required applications in a source or for any other reason you no longer require a source, then you can
 // delete the relevant source.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/DeleteSource.go.html to see an example of how to use DeleteSource API.
 func (client ApplicationMigrationClient) DeleteSource(ctx context.Context, request DeleteSourceRequest) (response DeleteSourceResponse, err error) {
@@ -553,7 +553,7 @@ func (client ApplicationMigrationClient) deleteSource(ctx context.Context, reque
 
 // GetMigration Retrieves details of the specified migration.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/GetMigration.go.html to see an example of how to use GetMigration API.
 func (client ApplicationMigrationClient) GetMigration(ctx context.Context, request GetMigrationRequest) (response GetMigrationResponse, err error) {
@@ -610,7 +610,7 @@ func (client ApplicationMigrationClient) getMigration(ctx context.Context, reque
 
 // GetSource Retrieves details of the specified source. Specify the OCID of the source for which you want to retrieve details.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/GetSource.go.html to see an example of how to use GetSource API.
 func (client ApplicationMigrationClient) GetSource(ctx context.Context, request GetSourceRequest) (response GetSourceResponse, err error) {
@@ -667,7 +667,7 @@ func (client ApplicationMigrationClient) getSource(ctx context.Context, request 
 
 // GetWorkRequest Gets the details of the specified work request.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/GetWorkRequest.go.html to see an example of how to use GetWorkRequest API.
 func (client ApplicationMigrationClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
@@ -724,7 +724,7 @@ func (client ApplicationMigrationClient) getWorkRequest(ctx context.Context, req
 
 // ListMigrations Retrieves details of all the migrations that are available in the specified compartment.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/ListMigrations.go.html to see an example of how to use ListMigrations API.
 func (client ApplicationMigrationClient) ListMigrations(ctx context.Context, request ListMigrationsRequest) (response ListMigrationsResponse, err error) {
@@ -783,7 +783,7 @@ func (client ApplicationMigrationClient) listMigrations(ctx context.Context, req
 // This list is generated dynamically by interrogating the source and the list changes as applications are started or
 // stopped in the source environment.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/ListSourceApplications.go.html to see an example of how to use ListSourceApplications API.
 func (client ApplicationMigrationClient) ListSourceApplications(ctx context.Context, request ListSourceApplicationsRequest) (response ListSourceApplicationsResponse, err error) {
@@ -843,7 +843,7 @@ func (client ApplicationMigrationClient) listSourceApplications(ctx context.Cont
 // To filter the retrieved results, you can pass one or more of the following query parameters, by appending them to the URI
 // as shown in the following example.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/ListSources.go.html to see an example of how to use ListSources API.
 func (client ApplicationMigrationClient) ListSources(ctx context.Context, request ListSourcesRequest) (response ListSourcesResponse, err error) {
@@ -900,7 +900,7 @@ func (client ApplicationMigrationClient) listSources(ctx context.Context, reques
 
 // ListWorkRequestErrors Retrieves details of the errors encountered while executing an operation that is tracked by the specified work request.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/ListWorkRequestErrors.go.html to see an example of how to use ListWorkRequestErrors API.
 func (client ApplicationMigrationClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
@@ -957,7 +957,7 @@ func (client ApplicationMigrationClient) listWorkRequestErrors(ctx context.Conte
 
 // ListWorkRequestLogs Retrieves logs for the specified work request.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/ListWorkRequestLogs.go.html to see an example of how to use ListWorkRequestLogs API.
 func (client ApplicationMigrationClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
@@ -1014,7 +1014,7 @@ func (client ApplicationMigrationClient) listWorkRequestLogs(ctx context.Context
 
 // ListWorkRequests Retrieves details of all the work requests and match the specified query criteria. To filter the retrieved results, you can pass one or more of the following query parameters, by appending them to the URI as shown in the following example.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/ListWorkRequests.go.html to see an example of how to use ListWorkRequests API.
 func (client ApplicationMigrationClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
@@ -1078,7 +1078,7 @@ func (client ApplicationMigrationClient) listWorkRequests(ctx context.Context, r
 // When this work request is processed successfully, Application Migration creates the required resources in the target environment
 // and the state of the migration changes to <code>MIGRATION_SUCCEEDED</code>.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/MigrateApplication.go.html to see an example of how to use MigrateApplication API.
 func (client ApplicationMigrationClient) MigrateApplication(ctx context.Context, request MigrateApplicationRequest) (response MigrateApplicationResponse, err error) {
@@ -1162,7 +1162,7 @@ func (client ApplicationMigrationClient) migrateApplication(ctx context.Context,
 // When the migration has been updated, the state of the migration changes to <code>READY</code>. After updating the migration,
 // you can start the migration whenever you are ready.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/UpdateMigration.go.html to see an example of how to use UpdateMigration API.
 func (client ApplicationMigrationClient) UpdateMigration(ctx context.Context, request UpdateMigrationRequest) (response UpdateMigrationResponse, err error) {
@@ -1226,7 +1226,7 @@ func (client ApplicationMigrationClient) updateMigration(ctx context.Context, re
 // Infrastructure. You can also update the description and tags of a source.
 // **Warning:** Oracle recommends that you avoid using any confidential information when you supply string values using the API.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/UpdateSource.go.html to see an example of how to use UpdateSource API.
 func (client ApplicationMigrationClient) UpdateSource(ctx context.Context, request UpdateSourceRequest) (response UpdateSourceResponse, err error) {

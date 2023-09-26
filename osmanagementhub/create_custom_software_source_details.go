@@ -47,27 +47,27 @@ type CreateCustomSoftwareSourceDetails struct {
 	IsAutomaticallyUpdated *bool `mandatory:"false" json:"isAutomaticallyUpdated"`
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m CreateCustomSoftwareSourceDetails) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m CreateCustomSoftwareSourceDetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetDescription returns Description
+// GetDescription returns Description
 func (m CreateCustomSoftwareSourceDetails) GetDescription() *string {
 	return m.Description
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m CreateCustomSoftwareSourceDetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m CreateCustomSoftwareSourceDetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

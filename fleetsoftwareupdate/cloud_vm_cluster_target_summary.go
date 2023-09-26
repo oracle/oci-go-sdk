@@ -19,7 +19,8 @@ import (
 
 // CloudVmClusterTargetSummary Details of a CloudVmCluster target member of a Exadata Fleet Update Collection.
 // Stored references of the resource documented in
-//  https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/CloudVmCluster/
+//
+//	https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/CloudVmCluster/
 type CloudVmClusterTargetSummary struct {
 
 	// OCID of the target resource in the Exadata Fleet Update Collection.
@@ -32,12 +33,12 @@ type CloudVmClusterTargetSummary struct {
 	InfrastructureId *string `mandatory:"false" json:"infrastructureId"`
 }
 
-//GetId returns Id
+// GetId returns Id
 func (m CloudVmClusterTargetSummary) GetId() *string {
 	return m.Id
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m CloudVmClusterTargetSummary) GetCompartmentId() *string {
 	return m.CompartmentId
 }

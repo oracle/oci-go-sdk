@@ -93,7 +93,7 @@ func (client *TransferJobClient) ConfigurationProvider() *common.ConfigurationPr
 
 // ChangeTransferJobCompartment Moves a TransferJob into a different compartment.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ChangeTransferJobCompartment.go.html to see an example of how to use ChangeTransferJobCompartment API.
 func (client TransferJobClient) ChangeTransferJobCompartment(ctx context.Context, request ChangeTransferJobCompartmentRequest) (response ChangeTransferJobCompartmentResponse, err error) {
@@ -155,7 +155,7 @@ func (client TransferJobClient) changeTransferJobCompartment(ctx context.Context
 
 // CreateTransferJob Create a new Transfer Job that corresponds with customer's logical dataset e.g. a DB or a filesystem.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/CreateTransferJob.go.html to see an example of how to use CreateTransferJob API.
 func (client TransferJobClient) CreateTransferJob(ctx context.Context, request CreateTransferJobRequest) (response CreateTransferJobResponse, err error) {
@@ -217,7 +217,7 @@ func (client TransferJobClient) createTransferJob(ctx context.Context, request c
 
 // DeleteTransferJob deletes a transfer job
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DeleteTransferJob.go.html to see an example of how to use DeleteTransferJob API.
 func (client TransferJobClient) DeleteTransferJob(ctx context.Context, request DeleteTransferJobRequest) (response DeleteTransferJobResponse, err error) {
@@ -279,7 +279,7 @@ func (client TransferJobClient) deleteTransferJob(ctx context.Context, request c
 
 // GetTransferJob Describes a transfer job in detail
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferJob.go.html to see an example of how to use GetTransferJob API.
 func (client TransferJobClient) GetTransferJob(ctx context.Context, request GetTransferJobRequest) (response GetTransferJobResponse, err error) {
@@ -336,7 +336,7 @@ func (client TransferJobClient) getTransferJob(ctx context.Context, request comm
 
 // ListTransferJobs Lists Transfer Jobs in a given compartment
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListTransferJobs.go.html to see an example of how to use ListTransferJobs API.
 func (client TransferJobClient) ListTransferJobs(ctx context.Context, request ListTransferJobsRequest) (response ListTransferJobsResponse, err error) {
@@ -393,7 +393,7 @@ func (client TransferJobClient) listTransferJobs(ctx context.Context, request co
 
 // UpdateTransferJob Updates a Transfer Job that corresponds with customer's logical dataset e.g. a DB or a filesystem.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/UpdateTransferJob.go.html to see an example of how to use UpdateTransferJob API.
 func (client TransferJobClient) UpdateTransferJob(ctx context.Context, request UpdateTransferJobRequest) (response UpdateTransferJobResponse, err error) {

@@ -51,32 +51,32 @@ type CreateStationProfileDetails struct {
 	ArchType ArchTypeEnum `mandatory:"false" json:"archType,omitempty"`
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m CreateStationProfileDetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m CreateStationProfileDetails) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetDescription returns Description
+// GetDescription returns Description
 func (m CreateStationProfileDetails) GetDescription() *string {
 	return m.Description
 }
 
-//GetManagementStationId returns ManagementStationId
+// GetManagementStationId returns ManagementStationId
 func (m CreateStationProfileDetails) GetManagementStationId() *string {
 	return m.ManagementStationId
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m CreateStationProfileDetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m CreateStationProfileDetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

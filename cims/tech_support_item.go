@@ -36,27 +36,27 @@ type TechSupportItem struct {
 	IssueType *IssueType `mandatory:"false" json:"issueType"`
 }
 
-//GetItemKey returns ItemKey
+// GetItemKey returns ItemKey
 func (m TechSupportItem) GetItemKey() *string {
 	return m.ItemKey
 }
 
-//GetName returns Name
+// GetName returns Name
 func (m TechSupportItem) GetName() *string {
 	return m.Name
 }
 
-//GetCategory returns Category
+// GetCategory returns Category
 func (m TechSupportItem) GetCategory() *Category {
 	return m.Category
 }
 
-//GetSubCategory returns SubCategory
+// GetSubCategory returns SubCategory
 func (m TechSupportItem) GetSubCategory() *SubCategory {
 	return m.SubCategory
 }
 
-//GetIssueType returns IssueType
+// GetIssueType returns IssueType
 func (m TechSupportItem) GetIssueType() *IssueType {
 	return m.IssueType
 }

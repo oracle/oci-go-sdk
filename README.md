@@ -218,14 +218,13 @@ Linting (performed by golint) can be done with the following command:
 ```
 make lint
 ```
-This command is also run by the make build and make test commands.
 Linting will perform a number of formatting changes across the code base.
 
-Staticcheck can be run with:
 
 ```
 make static-check
 ```
+This command is also run by the make build and make test commands.
 Staticcheck will provide formatting warnings but will not make any changes to any files.
 You can also cause staticcheck to be run before calls to "git commit" with the pre-commit plugin.
 

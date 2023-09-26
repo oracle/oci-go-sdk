@@ -93,7 +93,7 @@ func (client *ManagementStationClient) ConfigurationProvider() *common.Configura
 
 // CreateManagementStation Creates a management station.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/CreateManagementStation.go.html to see an example of how to use CreateManagementStation API.
 // A default retry strategy applies to this operation CreateManagementStation()
@@ -156,7 +156,7 @@ func (client ManagementStationClient) createManagementStation(ctx context.Contex
 
 // DeleteManagementStation Deletes a management station.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/DeleteManagementStation.go.html to see an example of how to use DeleteManagementStation API.
 // A default retry strategy applies to this operation DeleteManagementStation()
@@ -214,7 +214,7 @@ func (client ManagementStationClient) deleteManagementStation(ctx context.Contex
 
 // GetManagementStation Gets information about the specified management station.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/GetManagementStation.go.html to see an example of how to use GetManagementStation API.
 // A default retry strategy applies to this operation GetManagementStation()
@@ -272,7 +272,7 @@ func (client ManagementStationClient) getManagementStation(ctx context.Context, 
 
 // ListManagementStations Lists management stations in a compartment.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListManagementStations.go.html to see an example of how to use ListManagementStations API.
 // A default retry strategy applies to this operation ListManagementStations()
@@ -330,7 +330,7 @@ func (client ManagementStationClient) listManagementStations(ctx context.Context
 
 // ListMirrors Lists all software source mirrors associated with a specified management station.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListMirrors.go.html to see an example of how to use ListMirrors API.
 // A default retry strategy applies to this operation ListMirrors()
@@ -388,7 +388,7 @@ func (client ManagementStationClient) listMirrors(ctx context.Context, request c
 
 // SynchronizeMirrors Synchronizes the specified mirrors associated with the management station.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/SynchronizeMirrors.go.html to see an example of how to use SynchronizeMirrors API.
 // A default retry strategy applies to this operation SynchronizeMirrors()
@@ -451,7 +451,7 @@ func (client ManagementStationClient) synchronizeMirrors(ctx context.Context, re
 
 // SynchronizeSingleMirrors Synchronize the specified mirror associated with a management station.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/SynchronizeSingleMirrors.go.html to see an example of how to use SynchronizeSingleMirrors API.
 // A default retry strategy applies to this operation SynchronizeSingleMirrors()
@@ -514,7 +514,7 @@ func (client ManagementStationClient) synchronizeSingleMirrors(ctx context.Conte
 
 // UpdateManagementStation Updates the configuration of the specified management station.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/UpdateManagementStation.go.html to see an example of how to use UpdateManagementStation API.
 // A default retry strategy applies to this operation UpdateManagementStation()

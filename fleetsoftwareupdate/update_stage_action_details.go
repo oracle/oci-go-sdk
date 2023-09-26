@@ -34,17 +34,17 @@ type UpdateStageActionDetails struct {
 	ScheduleDetails UpdateScheduleDetails `mandatory:"false" json:"scheduleDetails"`
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m UpdateStageActionDetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m UpdateStageActionDetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m UpdateStageActionDetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

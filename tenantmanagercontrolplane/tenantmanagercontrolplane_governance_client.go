@@ -93,7 +93,7 @@ func (client *GovernanceClient) ConfigurationProvider() *common.ConfigurationPro
 
 // AddGovernance Starts a work request to opt the tenancy in to governance rules.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/AddGovernance.go.html to see an example of how to use AddGovernance API.
 func (client GovernanceClient) AddGovernance(ctx context.Context, request AddGovernanceRequest) (response AddGovernanceResponse, err error) {
@@ -155,7 +155,7 @@ func (client GovernanceClient) addGovernance(ctx context.Context, request common
 
 // RemoveGovernance Starts a work request to opt the tenancy out of governance rules.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/RemoveGovernance.go.html to see an example of how to use RemoveGovernance API.
 func (client GovernanceClient) RemoveGovernance(ctx context.Context, request RemoveGovernanceRequest) (response RemoveGovernanceResponse, err error) {

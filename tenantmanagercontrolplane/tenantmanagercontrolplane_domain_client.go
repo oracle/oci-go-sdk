@@ -93,7 +93,7 @@ func (client *DomainClient) ConfigurationProvider() *common.ConfigurationProvide
 
 // CreateDomain Begins the registration process for claiming a domain.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/CreateDomain.go.html to see an example of how to use CreateDomain API.
 func (client DomainClient) CreateDomain(ctx context.Context, request CreateDomainRequest) (response CreateDomainResponse, err error) {
@@ -155,7 +155,7 @@ func (client DomainClient) createDomain(ctx context.Context, request common.OCIR
 
 // DeleteDomain Releases the domain, making it available to be claimed again by another tenancy.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/DeleteDomain.go.html to see an example of how to use DeleteDomain API.
 func (client DomainClient) DeleteDomain(ctx context.Context, request DeleteDomainRequest) (response DeleteDomainResponse, err error) {
@@ -212,7 +212,7 @@ func (client DomainClient) deleteDomain(ctx context.Context, request common.OCIR
 
 // GetDomain Gets information about the domain.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/GetDomain.go.html to see an example of how to use GetDomain API.
 func (client DomainClient) GetDomain(ctx context.Context, request GetDomainRequest) (response GetDomainResponse, err error) {
@@ -269,7 +269,7 @@ func (client DomainClient) getDomain(ctx context.Context, request common.OCIRequ
 
 // ListDomains Return a (paginated) list of domains.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListDomains.go.html to see an example of how to use ListDomains API.
 func (client DomainClient) ListDomains(ctx context.Context, request ListDomainsRequest) (response ListDomainsResponse, err error) {
@@ -326,7 +326,7 @@ func (client DomainClient) listDomains(ctx context.Context, request common.OCIRe
 
 // UpdateDomain Updates the domain.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/UpdateDomain.go.html to see an example of how to use UpdateDomain API.
 func (client DomainClient) UpdateDomain(ctx context.Context, request UpdateDomainRequest) (response UpdateDomainResponse, err error) {

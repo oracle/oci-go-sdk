@@ -44,22 +44,22 @@ type CreateLimitItemDetails struct {
 	LimitStatus CreateLimitItemDetailsLimitStatusEnum `mandatory:"false" json:"limitStatus,omitempty"`
 }
 
-//GetCategory returns Category
+// GetCategory returns Category
 func (m CreateLimitItemDetails) GetCategory() *CreateCategoryDetails {
 	return m.Category
 }
 
-//GetSubCategory returns SubCategory
+// GetSubCategory returns SubCategory
 func (m CreateLimitItemDetails) GetSubCategory() *CreateSubCategoryDetails {
 	return m.SubCategory
 }
 
-//GetIssueType returns IssueType
+// GetIssueType returns IssueType
 func (m CreateLimitItemDetails) GetIssueType() *CreateIssueTypeDetails {
 	return m.IssueType
 }
 
-//GetName returns Name
+// GetName returns Name
 func (m CreateLimitItemDetails) GetName() *string {
 	return m.Name
 }

@@ -70,67 +70,67 @@ type DbCollection struct {
 	SourceMajorVersion DbSourceMajorVersionsEnum `mandatory:"true" json:"sourceMajorVersion"`
 }
 
-//GetId returns Id
+// GetId returns Id
 func (m DbCollection) GetId() *string {
 	return m.Id
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m DbCollection) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetServiceType returns ServiceType
+// GetServiceType returns ServiceType
 func (m DbCollection) GetServiceType() CollectionServiceTypesEnum {
 	return m.ServiceType
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m DbCollection) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetActiveFsuCycle returns ActiveFsuCycle
+// GetActiveFsuCycle returns ActiveFsuCycle
 func (m DbCollection) GetActiveFsuCycle() *ActiveCycleDetails {
 	return m.ActiveFsuCycle
 }
 
-//GetTargetCount returns TargetCount
+// GetTargetCount returns TargetCount
 func (m DbCollection) GetTargetCount() *int {
 	return m.TargetCount
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m DbCollection) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetTimeUpdated returns TimeUpdated
+// GetTimeUpdated returns TimeUpdated
 func (m DbCollection) GetTimeUpdated() *common.SDKTime {
 	return m.TimeUpdated
 }
 
-//GetLifecycleState returns LifecycleState
+// GetLifecycleState returns LifecycleState
 func (m DbCollection) GetLifecycleState() CollectionLifecycleStatesEnum {
 	return m.LifecycleState
 }
 
-//GetLifecycleDetails returns LifecycleDetails
+// GetLifecycleDetails returns LifecycleDetails
 func (m DbCollection) GetLifecycleDetails() *string {
 	return m.LifecycleDetails
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m DbCollection) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m DbCollection) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m DbCollection) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
 }

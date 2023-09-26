@@ -29,7 +29,7 @@ type GiDiscoveryDetails struct {
 	SourceMajorVersion GiSourceMajorVersionsEnum `mandatory:"true" json:"sourceMajorVersion"`
 }
 
-//GetServiceType returns ServiceType
+// GetServiceType returns ServiceType
 func (m GiDiscoveryDetails) GetServiceType() DiscoveryServiceTypesEnum {
 	return m.ServiceType
 }

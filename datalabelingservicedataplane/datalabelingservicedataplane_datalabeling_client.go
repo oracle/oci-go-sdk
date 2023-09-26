@@ -93,7 +93,7 @@ func (client *DataLabelingClient) ConfigurationProvider() *common.ConfigurationP
 
 // CreateAnnotation Creates an annotation.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/CreateAnnotation.go.html to see an example of how to use CreateAnnotation API.
 // A default retry strategy applies to this operation CreateAnnotation()
@@ -156,7 +156,7 @@ func (client DataLabelingClient) createAnnotation(ctx context.Context, request c
 
 // CreateRecord Creates a record.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/CreateRecord.go.html to see an example of how to use CreateRecord API.
 // A default retry strategy applies to this operation CreateRecord()
@@ -219,7 +219,7 @@ func (client DataLabelingClient) createRecord(ctx context.Context, request commo
 
 // DeleteAnnotation It deletes an annotation resource by identifier.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/DeleteAnnotation.go.html to see an example of how to use DeleteAnnotation API.
 // A default retry strategy applies to this operation DeleteAnnotation()
@@ -277,7 +277,7 @@ func (client DataLabelingClient) deleteAnnotation(ctx context.Context, request c
 
 // DeleteRecord Deletes a record resource by identifier.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/DeleteRecord.go.html to see an example of how to use DeleteRecord API.
 // A default retry strategy applies to this operation DeleteRecord()
@@ -335,7 +335,7 @@ func (client DataLabelingClient) deleteRecord(ctx context.Context, request commo
 
 // GetAnnotation Gets an annotation.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetAnnotation.go.html to see an example of how to use GetAnnotation API.
 // A default retry strategy applies to this operation GetAnnotation()
@@ -393,7 +393,7 @@ func (client DataLabelingClient) getAnnotation(ctx context.Context, request comm
 
 // GetDataset Gets a dataset by identifier.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetDataset.go.html to see an example of how to use GetDataset API.
 // A default retry strategy applies to this operation GetDataset()
@@ -451,7 +451,7 @@ func (client DataLabelingClient) getDataset(ctx context.Context, request common.
 
 // GetRecord Gets a record.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetRecord.go.html to see an example of how to use GetRecord API.
 // A default retry strategy applies to this operation GetRecord()
@@ -509,7 +509,7 @@ func (client DataLabelingClient) getRecord(ctx context.Context, request common.O
 
 // GetRecordContent Retrieves the content of the record from the dataset source.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetRecordContent.go.html to see an example of how to use GetRecordContent API.
 // A default retry strategy applies to this operation GetRecordContent()
@@ -566,7 +566,7 @@ func (client DataLabelingClient) getRecordContent(ctx context.Context, request c
 
 // GetRecordPreviewContent Retrieves the preview of the record content from the dataset source.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetRecordPreviewContent.go.html to see an example of how to use GetRecordPreviewContent API.
 // A default retry strategy applies to this operation GetRecordPreviewContent()
@@ -623,7 +623,7 @@ func (client DataLabelingClient) getRecordPreviewContent(ctx context.Context, re
 
 // ListAnnotations Returns a list of annotations.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/ListAnnotations.go.html to see an example of how to use ListAnnotations API.
 // A default retry strategy applies to this operation ListAnnotations()
@@ -681,7 +681,7 @@ func (client DataLabelingClient) listAnnotations(ctx context.Context, request co
 
 // ListRecords The list of records in the specified compartment.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/ListRecords.go.html to see an example of how to use ListRecords API.
 // A default retry strategy applies to this operation ListRecords()
@@ -739,7 +739,7 @@ func (client DataLabelingClient) listRecords(ctx context.Context, request common
 
 // SummarizeAnnotationAnalytics Summarize the annotations created for a given dataset.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/SummarizeAnnotationAnalytics.go.html to see an example of how to use SummarizeAnnotationAnalytics API.
 // A default retry strategy applies to this operation SummarizeAnnotationAnalytics()
@@ -797,7 +797,7 @@ func (client DataLabelingClient) summarizeAnnotationAnalytics(ctx context.Contex
 
 // SummarizeRecordAnalytics Summarize the records created for a given dataset.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/SummarizeRecordAnalytics.go.html to see an example of how to use SummarizeRecordAnalytics API.
 // A default retry strategy applies to this operation SummarizeRecordAnalytics()
@@ -855,7 +855,7 @@ func (client DataLabelingClient) summarizeRecordAnalytics(ctx context.Context, r
 
 // UpdateAnnotation Updates an annotation.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/UpdateAnnotation.go.html to see an example of how to use UpdateAnnotation API.
 // A default retry strategy applies to this operation UpdateAnnotation()
@@ -913,7 +913,7 @@ func (client DataLabelingClient) updateAnnotation(ctx context.Context, request c
 
 // UpdateRecord Updates a record.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/UpdateRecord.go.html to see an example of how to use UpdateRecord API.
 // A default retry strategy applies to this operation UpdateRecord()

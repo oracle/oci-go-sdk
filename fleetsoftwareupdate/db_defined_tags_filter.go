@@ -31,7 +31,7 @@ type DbDefinedTagsFilter struct {
 	Operator FleetDiscoveryOperatorsEnum `mandatory:"false" json:"operator,omitempty"`
 }
 
-//GetMode returns Mode
+// GetMode returns Mode
 func (m DbDefinedTagsFilter) GetMode() DbFleetDiscoveryFilterModeEnum {
 	return m.Mode
 }

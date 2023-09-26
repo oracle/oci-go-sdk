@@ -59,57 +59,57 @@ type CertificateBundleWithPrivateKey struct {
 	Stages []VersionStageEnum `mandatory:"true" json:"stages"`
 }
 
-//GetCertificateId returns CertificateId
+// GetCertificateId returns CertificateId
 func (m CertificateBundleWithPrivateKey) GetCertificateId() *string {
 	return m.CertificateId
 }
 
-//GetCertificateName returns CertificateName
+// GetCertificateName returns CertificateName
 func (m CertificateBundleWithPrivateKey) GetCertificateName() *string {
 	return m.CertificateName
 }
 
-//GetVersionNumber returns VersionNumber
+// GetVersionNumber returns VersionNumber
 func (m CertificateBundleWithPrivateKey) GetVersionNumber() *int64 {
 	return m.VersionNumber
 }
 
-//GetSerialNumber returns SerialNumber
+// GetSerialNumber returns SerialNumber
 func (m CertificateBundleWithPrivateKey) GetSerialNumber() *string {
 	return m.SerialNumber
 }
 
-//GetCertificatePem returns CertificatePem
+// GetCertificatePem returns CertificatePem
 func (m CertificateBundleWithPrivateKey) GetCertificatePem() *string {
 	return m.CertificatePem
 }
 
-//GetCertChainPem returns CertChainPem
+// GetCertChainPem returns CertChainPem
 func (m CertificateBundleWithPrivateKey) GetCertChainPem() *string {
 	return m.CertChainPem
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m CertificateBundleWithPrivateKey) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetValidity returns Validity
+// GetValidity returns Validity
 func (m CertificateBundleWithPrivateKey) GetValidity() *Validity {
 	return m.Validity
 }
 
-//GetVersionName returns VersionName
+// GetVersionName returns VersionName
 func (m CertificateBundleWithPrivateKey) GetVersionName() *string {
 	return m.VersionName
 }
 
-//GetStages returns Stages
+// GetStages returns Stages
 func (m CertificateBundleWithPrivateKey) GetStages() []VersionStageEnum {
 	return m.Stages
 }
 
-//GetRevocationStatus returns RevocationStatus
+// GetRevocationStatus returns RevocationStatus
 func (m CertificateBundleWithPrivateKey) GetRevocationStatus() *RevocationStatus {
 	return m.RevocationStatus
 }

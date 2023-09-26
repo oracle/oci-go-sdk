@@ -93,7 +93,7 @@ func (client *ResourceSearchClient) ConfigurationProvider() *common.Configuratio
 
 // GetResourceType Gets detailed information about a resource type by using the resource type name.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/resourcesearch/GetResourceType.go.html to see an example of how to use GetResourceType API.
 // A default retry strategy applies to this operation GetResourceType()
@@ -151,7 +151,7 @@ func (client ResourceSearchClient) getResourceType(ctx context.Context, request 
 
 // ListResourceTypes Lists all resource types that you can search or query for.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/resourcesearch/ListResourceTypes.go.html to see an example of how to use ListResourceTypes API.
 // A default retry strategy applies to this operation ListResourceTypes()
@@ -211,7 +211,7 @@ func (client ResourceSearchClient) listResourceTypes(ctx context.Context, reques
 // Results include resources that you have permission to view and can span different resource types.
 // You can also sort results based on a specified resource attribute.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/resourcesearch/SearchResources.go.html to see an example of how to use SearchResources API.
 // A default retry strategy applies to this operation SearchResources()

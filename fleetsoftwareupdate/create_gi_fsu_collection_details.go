@@ -44,27 +44,27 @@ type CreateGiFsuCollectionDetails struct {
 	SourceMajorVersion GiSourceMajorVersionsEnum `mandatory:"true" json:"sourceMajorVersion"`
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m CreateGiFsuCollectionDetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetServiceType returns ServiceType
+// GetServiceType returns ServiceType
 func (m CreateGiFsuCollectionDetails) GetServiceType() CollectionServiceTypesEnum {
 	return m.ServiceType
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m CreateGiFsuCollectionDetails) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m CreateGiFsuCollectionDetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m CreateGiFsuCollectionDetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

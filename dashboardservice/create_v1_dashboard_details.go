@@ -53,27 +53,27 @@ type CreateV1DashboardDetails struct {
 	Config *interface{} `mandatory:"false" json:"config"`
 }
 
-//GetDashboardGroupId returns DashboardGroupId
+// GetDashboardGroupId returns DashboardGroupId
 func (m CreateV1DashboardDetails) GetDashboardGroupId() *string {
 	return m.DashboardGroupId
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m CreateV1DashboardDetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetDescription returns Description
+// GetDescription returns Description
 func (m CreateV1DashboardDetails) GetDescription() *string {
 	return m.Description
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m CreateV1DashboardDetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m CreateV1DashboardDetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
