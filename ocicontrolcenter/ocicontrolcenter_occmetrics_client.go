@@ -93,7 +93,7 @@ func (client *OccMetricsClient) ConfigurationProvider() *common.ConfigurationPro
 
 // ListMetricProperties Returns a list of available metrics for the given namespace. The results for metrics with dimensions includes list of all the associated dimensions. The results are sorted by the metricName and then by dimension in ascending alphabetical order. For a list of valid namespaces, see ListNamespaces.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ocicontrolcenter/ListMetricProperties.go.html to see an example of how to use ListMetricProperties API.
 // A default retry strategy applies to this operation ListMetricProperties()
@@ -151,7 +151,7 @@ func (client OccMetricsClient) listMetricProperties(ctx context.Context, request
 
 // ListNamespaces List all the available source services called namespaces emitting metrics for this region. The namespaces are sorted in ascending alphabetical order.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ocicontrolcenter/ListNamespaces.go.html to see an example of how to use ListNamespaces API.
 // A default retry strategy applies to this operation ListNamespaces()
@@ -211,7 +211,7 @@ func (client OccMetricsClient) listNamespaces(ctx context.Context, request commo
 // The metric data can be filtered by providing the dimension, startTime or endTime.  The metric
 // data in the response is sorted by dimension in ascending order and then by sampleTime in ascending chronological order.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ocicontrolcenter/RequestSummarizedMetricData.go.html to see an example of how to use RequestSummarizedMetricData API.
 // A default retry strategy applies to this operation RequestSummarizedMetricData()

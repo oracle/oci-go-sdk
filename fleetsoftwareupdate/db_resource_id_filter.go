@@ -35,7 +35,7 @@ type DbResourceIdFilter struct {
 	Operator FleetDiscoveryOperatorsEnum `mandatory:"false" json:"operator,omitempty"`
 }
 
-//GetMode returns Mode
+// GetMode returns Mode
 func (m DbResourceIdFilter) GetMode() DbFleetDiscoveryFilterModeEnum {
 	return m.Mode
 }

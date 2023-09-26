@@ -28,7 +28,7 @@ type DbVersionFilter struct {
 	Mode DbFleetDiscoveryFilterModeEnum `mandatory:"false" json:"mode,omitempty"`
 }
 
-//GetMode returns Mode
+// GetMode returns Mode
 func (m DbVersionFilter) GetMode() DbFleetDiscoveryFilterModeEnum {
 	return m.Mode
 }

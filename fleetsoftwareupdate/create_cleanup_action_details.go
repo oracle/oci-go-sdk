@@ -40,22 +40,22 @@ type CreateCleanupActionDetails struct {
 	ScheduleDetails CreateScheduleDetails `mandatory:"false" json:"scheduleDetails"`
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m CreateCleanupActionDetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m CreateCleanupActionDetails) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m CreateCleanupActionDetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m CreateCleanupActionDetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

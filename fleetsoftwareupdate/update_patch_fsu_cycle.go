@@ -50,27 +50,27 @@ type UpdatePatchFsuCycle struct {
 	IsKeepPlacement *bool `mandatory:"false" json:"isKeepPlacement"`
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m UpdatePatchFsuCycle) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetGoalVersionDetails returns GoalVersionDetails
+// GetGoalVersionDetails returns GoalVersionDetails
 func (m UpdatePatchFsuCycle) GetGoalVersionDetails() FsuGoalVersionDetails {
 	return m.GoalVersionDetails
 }
 
-//GetBatchingStrategy returns BatchingStrategy
+// GetBatchingStrategy returns BatchingStrategy
 func (m UpdatePatchFsuCycle) GetBatchingStrategy() UpdateBatchingStrategyDetails {
 	return m.BatchingStrategy
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m UpdatePatchFsuCycle) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m UpdatePatchFsuCycle) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

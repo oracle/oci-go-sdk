@@ -52,37 +52,37 @@ type CloudAssignedSubscriptionSummary struct {
 	LifecycleState SubscriptionLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 }
 
-//GetId returns Id
+// GetId returns Id
 func (m CloudAssignedSubscriptionSummary) GetId() *string {
 	return m.Id
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m CloudAssignedSubscriptionSummary) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetServiceName returns ServiceName
+// GetServiceName returns ServiceName
 func (m CloudAssignedSubscriptionSummary) GetServiceName() *string {
 	return m.ServiceName
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m CloudAssignedSubscriptionSummary) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetTimeUpdated returns TimeUpdated
+// GetTimeUpdated returns TimeUpdated
 func (m CloudAssignedSubscriptionSummary) GetTimeUpdated() *common.SDKTime {
 	return m.TimeUpdated
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m CloudAssignedSubscriptionSummary) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m CloudAssignedSubscriptionSummary) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

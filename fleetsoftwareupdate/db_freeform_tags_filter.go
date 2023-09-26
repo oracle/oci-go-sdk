@@ -31,7 +31,7 @@ type DbFreeformTagsFilter struct {
 	Operator FleetDiscoveryOperatorsEnum `mandatory:"false" json:"operator,omitempty"`
 }
 
-//GetMode returns Mode
+// GetMode returns Mode
 func (m DbFreeformTagsFilter) GetMode() DbFleetDiscoveryFilterModeEnum {
 	return m.Mode
 }

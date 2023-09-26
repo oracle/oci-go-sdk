@@ -93,7 +93,7 @@ func (client *OrdersClient) ConfigurationProvider() *common.ConfigurationProvide
 
 // ActivateOrder Triggers an order activation workflow on behalf of the tenant, given by compartment ID in the body.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ActivateOrder.go.html to see an example of how to use ActivateOrder API.
 func (client OrdersClient) ActivateOrder(ctx context.Context, request ActivateOrderRequest) (response ActivateOrderResponse, err error) {
@@ -155,7 +155,7 @@ func (client OrdersClient) activateOrder(ctx context.Context, request common.OCI
 
 // GetOrder Returns the order details given by the order ID in the JWT.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/GetOrder.go.html to see an example of how to use GetOrder API.
 func (client OrdersClient) GetOrder(ctx context.Context, request GetOrderRequest) (response GetOrderResponse, err error) {

@@ -59,47 +59,47 @@ type CreatePatchFsuCycle struct {
 	IsKeepPlacement *bool `mandatory:"false" json:"isKeepPlacement"`
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m CreatePatchFsuCycle) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m CreatePatchFsuCycle) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetFsuCollectionId returns FsuCollectionId
+// GetFsuCollectionId returns FsuCollectionId
 func (m CreatePatchFsuCycle) GetFsuCollectionId() *string {
 	return m.FsuCollectionId
 }
 
-//GetGoalVersionDetails returns GoalVersionDetails
+// GetGoalVersionDetails returns GoalVersionDetails
 func (m CreatePatchFsuCycle) GetGoalVersionDetails() FsuGoalVersionDetails {
 	return m.GoalVersionDetails
 }
 
-//GetBatchingStrategy returns BatchingStrategy
+// GetBatchingStrategy returns BatchingStrategy
 func (m CreatePatchFsuCycle) GetBatchingStrategy() CreateBatchingStrategyDetails {
 	return m.BatchingStrategy
 }
 
-//GetStageActionSchedule returns StageActionSchedule
+// GetStageActionSchedule returns StageActionSchedule
 func (m CreatePatchFsuCycle) GetStageActionSchedule() CreateScheduleDetails {
 	return m.StageActionSchedule
 }
 
-//GetApplyActionSchedule returns ApplyActionSchedule
+// GetApplyActionSchedule returns ApplyActionSchedule
 func (m CreatePatchFsuCycle) GetApplyActionSchedule() CreateScheduleDetails {
 	return m.ApplyActionSchedule
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m CreatePatchFsuCycle) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m CreatePatchFsuCycle) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

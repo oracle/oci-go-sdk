@@ -31,7 +31,7 @@ type GiFreeformTagsFilter struct {
 	Operator FleetDiscoveryOperatorsEnum `mandatory:"false" json:"operator,omitempty"`
 }
 
-//GetMode returns Mode
+// GetMode returns Mode
 func (m GiFreeformTagsFilter) GetMode() GiFleetDiscoveryFilterModeEnum {
 	return m.Mode
 }

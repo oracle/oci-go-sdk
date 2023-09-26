@@ -99,7 +99,7 @@ func (client *DashboardGroupClient) ConfigurationProvider() *common.Configuratio
 
 // ChangeDashboardGroupCompartment Moves a DashboardGroup resource from one compartment identifier to another. When provided, If-Match is checked against ETag values of the resource.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/ChangeDashboardGroupCompartment.go.html to see an example of how to use ChangeDashboardGroupCompartment API.
 func (client DashboardGroupClient) ChangeDashboardGroupCompartment(ctx context.Context, request ChangeDashboardGroupCompartmentRequest) (response ChangeDashboardGroupCompartmentResponse, err error) {
@@ -160,7 +160,7 @@ func (client DashboardGroupClient) changeDashboardGroupCompartment(ctx context.C
 // you won't be able to view those resources in the Console.
 // Therefore, creating resources outside of the home region is not recommended.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/CreateDashboardGroup.go.html to see an example of how to use CreateDashboardGroup API.
 func (client DashboardGroupClient) CreateDashboardGroup(ctx context.Context, request CreateDashboardGroupRequest) (response CreateDashboardGroupResponse, err error) {
@@ -222,7 +222,7 @@ func (client DashboardGroupClient) createDashboardGroup(ctx context.Context, req
 
 // DeleteDashboardGroup Deletes the specified dashboard group. Uses the dashboard group's OCID to determine which dashboard group to delete.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/DeleteDashboardGroup.go.html to see an example of how to use DeleteDashboardGroup API.
 func (client DashboardGroupClient) DeleteDashboardGroup(ctx context.Context, request DeleteDashboardGroupRequest) (response DeleteDashboardGroupResponse, err error) {
@@ -279,7 +279,7 @@ func (client DashboardGroupClient) deleteDashboardGroup(ctx context.Context, req
 
 // GetDashboardGroup Gets the specified dashboard group's information. Uses the dashboard group's OCID to determine which dashboard to retrieve.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/GetDashboardGroup.go.html to see an example of how to use GetDashboardGroup API.
 // A default retry strategy applies to this operation GetDashboardGroup()
@@ -337,7 +337,7 @@ func (client DashboardGroupClient) getDashboardGroup(ctx context.Context, reques
 
 // ListDashboardGroups Returns a list of dashboard groups with a specific compartment ID.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/ListDashboardGroups.go.html to see an example of how to use ListDashboardGroups API.
 // A default retry strategy applies to this operation ListDashboardGroups()
@@ -395,7 +395,7 @@ func (client DashboardGroupClient) listDashboardGroups(ctx context.Context, requ
 
 // UpdateDashboardGroup Updates the specified dashboard group. Uses the dashboard group's OCID to determine which dashboard group to update.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/UpdateDashboardGroup.go.html to see an example of how to use UpdateDashboardGroup API.
 func (client DashboardGroupClient) UpdateDashboardGroup(ctx context.Context, request UpdateDashboardGroupRequest) (response UpdateDashboardGroupResponse, err error) {

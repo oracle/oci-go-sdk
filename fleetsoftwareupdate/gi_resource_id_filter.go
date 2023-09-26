@@ -35,7 +35,7 @@ type GiResourceIdFilter struct {
 	Operator FleetDiscoveryOperatorsEnum `mandatory:"false" json:"operator,omitempty"`
 }
 
-//GetMode returns Mode
+// GetMode returns Mode
 func (m GiResourceIdFilter) GetMode() GiFleetDiscoveryFilterModeEnum {
 	return m.Mode
 }

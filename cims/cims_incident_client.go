@@ -97,7 +97,7 @@ func (client *IncidentClient) ConfigurationProvider() *common.ConfigurationProvi
 
 // CreateIncident Operation to create a support ticket.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/CreateIncident.go.html to see an example of how to use CreateIncident API.
 func (client IncidentClient) CreateIncident(ctx context.Context, request CreateIncidentRequest) (response CreateIncidentResponse, err error) {
@@ -154,7 +154,7 @@ func (client IncidentClient) createIncident(ctx context.Context, request common.
 
 // GetCsiNumber Fetches csi number of the user.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/GetCsiNumber.go.html to see an example of how to use GetCsiNumber API.
 func (client IncidentClient) GetCsiNumber(ctx context.Context, request GetCsiNumberRequest) (response GetCsiNumberResponse, err error) {
@@ -211,7 +211,7 @@ func (client IncidentClient) getCsiNumber(ctx context.Context, request common.OC
 
 // GetIncident Gets details about the specified support ticket.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/GetIncident.go.html to see an example of how to use GetIncident API.
 func (client IncidentClient) GetIncident(ctx context.Context, request GetIncidentRequest) (response GetIncidentResponse, err error) {
@@ -268,7 +268,7 @@ func (client IncidentClient) getIncident(ctx context.Context, request common.OCI
 
 // GetStatus Gets the status of the service.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/GetStatus.go.html to see an example of how to use GetStatus API.
 func (client IncidentClient) GetStatus(ctx context.Context, request GetStatusRequest) (response GetStatusResponse, err error) {
@@ -325,7 +325,7 @@ func (client IncidentClient) getStatus(ctx context.Context, request common.OCIRe
 
 // ListIncidentResourceTypes During support ticket creation, returns the list of all possible products that Oracle Cloud Infrastructure supports.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ListIncidentResourceTypes.go.html to see an example of how to use ListIncidentResourceTypes API.
 func (client IncidentClient) ListIncidentResourceTypes(ctx context.Context, request ListIncidentResourceTypesRequest) (response ListIncidentResourceTypesResponse, err error) {
@@ -382,7 +382,7 @@ func (client IncidentClient) listIncidentResourceTypes(ctx context.Context, requ
 
 // ListIncidents Returns the list of support tickets raised by the tenancy.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ListIncidents.go.html to see an example of how to use ListIncidents API.
 func (client IncidentClient) ListIncidents(ctx context.Context, request ListIncidentsRequest) (response ListIncidentsResponse, err error) {
@@ -439,7 +439,7 @@ func (client IncidentClient) listIncidents(ctx context.Context, request common.O
 
 // UpdateIncident Updates the specified support ticket's information.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/UpdateIncident.go.html to see an example of how to use UpdateIncident API.
 func (client IncidentClient) UpdateIncident(ctx context.Context, request UpdateIncidentRequest) (response UpdateIncidentResponse, err error) {
@@ -496,7 +496,7 @@ func (client IncidentClient) updateIncident(ctx context.Context, request common.
 
 // ValidateUser Checks whether the requested user is valid.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ValidateUser.go.html to see an example of how to use ValidateUser API.
 func (client IncidentClient) ValidateUser(ctx context.Context, request ValidateUserRequest) (response ValidateUserResponse, err error) {

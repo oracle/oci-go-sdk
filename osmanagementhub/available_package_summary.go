@@ -38,32 +38,32 @@ type AvailablePackageSummary struct {
 	Architecture ArchTypeEnum `mandatory:"false" json:"architecture,omitempty"`
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m AvailablePackageSummary) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetName returns Name
+// GetName returns Name
 func (m AvailablePackageSummary) GetName() *string {
 	return m.Name
 }
 
-//GetType returns Type
+// GetType returns Type
 func (m AvailablePackageSummary) GetType() *string {
 	return m.Type
 }
 
-//GetVersion returns Version
+// GetVersion returns Version
 func (m AvailablePackageSummary) GetVersion() *string {
 	return m.Version
 }
 
-//GetArchitecture returns Architecture
+// GetArchitecture returns Architecture
 func (m AvailablePackageSummary) GetArchitecture() ArchTypeEnum {
 	return m.Architecture
 }
 
-//GetSoftwareSources returns SoftwareSources
+// GetSoftwareSources returns SoftwareSources
 func (m AvailablePackageSummary) GetSoftwareSources() []SoftwareSourceDetails {
 	return m.SoftwareSources
 }

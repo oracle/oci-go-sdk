@@ -50,22 +50,22 @@ type UpdateV1DashboardDetails struct {
 	Widgets []interface{} `mandatory:"false" json:"widgets"`
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m UpdateV1DashboardDetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetDescription returns Description
+// GetDescription returns Description
 func (m UpdateV1DashboardDetails) GetDescription() *string {
 	return m.Description
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m UpdateV1DashboardDetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m UpdateV1DashboardDetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

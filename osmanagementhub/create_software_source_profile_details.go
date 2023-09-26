@@ -54,32 +54,32 @@ type CreateSoftwareSourceProfileDetails struct {
 	ArchType ArchTypeEnum `mandatory:"true" json:"archType"`
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m CreateSoftwareSourceProfileDetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m CreateSoftwareSourceProfileDetails) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetDescription returns Description
+// GetDescription returns Description
 func (m CreateSoftwareSourceProfileDetails) GetDescription() *string {
 	return m.Description
 }
 
-//GetManagementStationId returns ManagementStationId
+// GetManagementStationId returns ManagementStationId
 func (m CreateSoftwareSourceProfileDetails) GetManagementStationId() *string {
 	return m.ManagementStationId
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m CreateSoftwareSourceProfileDetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m CreateSoftwareSourceProfileDetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

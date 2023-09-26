@@ -93,7 +93,7 @@ func (client *AIServiceSpeechClient) ConfigurationProvider() *common.Configurati
 
 // CancelTranscriptionJob Canceling the job cancels all the tasks under it.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/CancelTranscriptionJob.go.html to see an example of how to use CancelTranscriptionJob API.
 func (client AIServiceSpeechClient) CancelTranscriptionJob(ctx context.Context, request CancelTranscriptionJobRequest) (response CancelTranscriptionJobResponse, err error) {
@@ -155,7 +155,7 @@ func (client AIServiceSpeechClient) cancelTranscriptionJob(ctx context.Context, 
 
 // CancelTranscriptionTask Cancel Transcription Task
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/CancelTranscriptionTask.go.html to see an example of how to use CancelTranscriptionTask API.
 func (client AIServiceSpeechClient) CancelTranscriptionTask(ctx context.Context, request CancelTranscriptionTaskRequest) (response CancelTranscriptionTaskResponse, err error) {
@@ -217,7 +217,7 @@ func (client AIServiceSpeechClient) cancelTranscriptionTask(ctx context.Context,
 
 // ChangeTranscriptionJobCompartment Moves a transcription Job resource into a different compartment.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ChangeTranscriptionJobCompartment.go.html to see an example of how to use ChangeTranscriptionJobCompartment API.
 func (client AIServiceSpeechClient) ChangeTranscriptionJobCompartment(ctx context.Context, request ChangeTranscriptionJobCompartmentRequest) (response ChangeTranscriptionJobCompartmentResponse, err error) {
@@ -279,7 +279,7 @@ func (client AIServiceSpeechClient) changeTranscriptionJobCompartment(ctx contex
 
 // CreateTranscriptionJob Creates a new Transcription Job.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/CreateTranscriptionJob.go.html to see an example of how to use CreateTranscriptionJob API.
 func (client AIServiceSpeechClient) CreateTranscriptionJob(ctx context.Context, request CreateTranscriptionJobRequest) (response CreateTranscriptionJobResponse, err error) {
@@ -341,7 +341,7 @@ func (client AIServiceSpeechClient) createTranscriptionJob(ctx context.Context, 
 
 // GetTranscriptionJob Gets a Transcription Job by identifier
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/GetTranscriptionJob.go.html to see an example of how to use GetTranscriptionJob API.
 func (client AIServiceSpeechClient) GetTranscriptionJob(ctx context.Context, request GetTranscriptionJobRequest) (response GetTranscriptionJobResponse, err error) {
@@ -398,7 +398,7 @@ func (client AIServiceSpeechClient) getTranscriptionJob(ctx context.Context, req
 
 // GetTranscriptionTask Gets a Transcription Task by identifier
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/GetTranscriptionTask.go.html to see an example of how to use GetTranscriptionTask API.
 func (client AIServiceSpeechClient) GetTranscriptionTask(ctx context.Context, request GetTranscriptionTaskRequest) (response GetTranscriptionTaskResponse, err error) {
@@ -455,7 +455,7 @@ func (client AIServiceSpeechClient) getTranscriptionTask(ctx context.Context, re
 
 // ListTranscriptionJobs Returns a list of Transcription Jobs.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ListTranscriptionJobs.go.html to see an example of how to use ListTranscriptionJobs API.
 func (client AIServiceSpeechClient) ListTranscriptionJobs(ctx context.Context, request ListTranscriptionJobsRequest) (response ListTranscriptionJobsResponse, err error) {
@@ -512,7 +512,7 @@ func (client AIServiceSpeechClient) listTranscriptionJobs(ctx context.Context, r
 
 // ListTranscriptionTasks Returns a list of Transcription Tasks.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ListTranscriptionTasks.go.html to see an example of how to use ListTranscriptionTasks API.
 func (client AIServiceSpeechClient) ListTranscriptionTasks(ctx context.Context, request ListTranscriptionTasksRequest) (response ListTranscriptionTasksResponse, err error) {
@@ -569,7 +569,7 @@ func (client AIServiceSpeechClient) listTranscriptionTasks(ctx context.Context, 
 
 // UpdateTranscriptionJob Updates the Transcription Job
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/UpdateTranscriptionJob.go.html to see an example of how to use UpdateTranscriptionJob API.
 func (client AIServiceSpeechClient) UpdateTranscriptionJob(ctx context.Context, request UpdateTranscriptionJobRequest) (response UpdateTranscriptionJobResponse, err error) {

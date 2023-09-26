@@ -29,7 +29,7 @@ type DbUniqueNameFilter struct {
 	Mode DbFleetDiscoveryFilterModeEnum `mandatory:"false" json:"mode,omitempty"`
 }
 
-//GetMode returns Mode
+// GetMode returns Mode
 func (m DbUniqueNameFilter) GetMode() DbFleetDiscoveryFilterModeEnum {
 	return m.Mode
 }

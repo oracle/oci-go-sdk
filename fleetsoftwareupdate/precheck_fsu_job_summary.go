@@ -76,72 +76,72 @@ type PrecheckFsuJobSummary struct {
 	LifecycleState JobLifecycleStatesEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 }
 
-//GetId returns Id
+// GetId returns Id
 func (m PrecheckFsuJobSummary) GetId() *string {
 	return m.Id
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m PrecheckFsuJobSummary) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m PrecheckFsuJobSummary) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetFsuActionId returns FsuActionId
+// GetFsuActionId returns FsuActionId
 func (m PrecheckFsuJobSummary) GetFsuActionId() *string {
 	return m.FsuActionId
 }
 
-//GetProgress returns Progress
+// GetProgress returns Progress
 func (m PrecheckFsuJobSummary) GetProgress() *JobProgress {
 	return m.Progress
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m PrecheckFsuJobSummary) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetTimeStarted returns TimeStarted
+// GetTimeStarted returns TimeStarted
 func (m PrecheckFsuJobSummary) GetTimeStarted() *common.SDKTime {
 	return m.TimeStarted
 }
 
-//GetTimeUpdated returns TimeUpdated
+// GetTimeUpdated returns TimeUpdated
 func (m PrecheckFsuJobSummary) GetTimeUpdated() *common.SDKTime {
 	return m.TimeUpdated
 }
 
-//GetTimeFinished returns TimeFinished
+// GetTimeFinished returns TimeFinished
 func (m PrecheckFsuJobSummary) GetTimeFinished() *common.SDKTime {
 	return m.TimeFinished
 }
 
-//GetLifecycleState returns LifecycleState
+// GetLifecycleState returns LifecycleState
 func (m PrecheckFsuJobSummary) GetLifecycleState() JobLifecycleStatesEnum {
 	return m.LifecycleState
 }
 
-//GetLifecycleDetails returns LifecycleDetails
+// GetLifecycleDetails returns LifecycleDetails
 func (m PrecheckFsuJobSummary) GetLifecycleDetails() *string {
 	return m.LifecycleDetails
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m PrecheckFsuJobSummary) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m PrecheckFsuJobSummary) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m PrecheckFsuJobSummary) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
 }

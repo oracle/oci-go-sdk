@@ -93,7 +93,7 @@ func (client *OrganizationClient) ConfigurationProvider() *common.ConfigurationP
 
 // ApproveOrganizationTenancyForTransfer Approve an organization's child tenancy for transfer.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ApproveOrganizationTenancyForTransfer.go.html to see an example of how to use ApproveOrganizationTenancyForTransfer API.
 func (client OrganizationClient) ApproveOrganizationTenancyForTransfer(ctx context.Context, request ApproveOrganizationTenancyForTransferRequest) (response ApproveOrganizationTenancyForTransferResponse, err error) {
@@ -155,7 +155,7 @@ func (client OrganizationClient) approveOrganizationTenancyForTransfer(ctx conte
 
 // CreateChildTenancy Creates a child tenancy asynchronously.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/CreateChildTenancy.go.html to see an example of how to use CreateChildTenancy API.
 func (client OrganizationClient) CreateChildTenancy(ctx context.Context, request CreateChildTenancyRequest) (response CreateChildTenancyResponse, err error) {
@@ -217,7 +217,7 @@ func (client OrganizationClient) createChildTenancy(ctx context.Context, request
 
 // DeleteOrganizationTenancy If certain validations are successful, initiate tenancy termination.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/DeleteOrganizationTenancy.go.html to see an example of how to use DeleteOrganizationTenancy API.
 func (client OrganizationClient) DeleteOrganizationTenancy(ctx context.Context, request DeleteOrganizationTenancyRequest) (response DeleteOrganizationTenancyResponse, err error) {
@@ -279,7 +279,7 @@ func (client OrganizationClient) deleteOrganizationTenancy(ctx context.Context, 
 
 // GetOrganization Gets information about the organization.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/GetOrganization.go.html to see an example of how to use GetOrganization API.
 func (client OrganizationClient) GetOrganization(ctx context.Context, request GetOrganizationRequest) (response GetOrganizationResponse, err error) {
@@ -336,7 +336,7 @@ func (client OrganizationClient) getOrganization(ctx context.Context, request co
 
 // GetOrganizationTenancy Gets information about the organization's tenancy.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/GetOrganizationTenancy.go.html to see an example of how to use GetOrganizationTenancy API.
 func (client OrganizationClient) GetOrganizationTenancy(ctx context.Context, request GetOrganizationTenancyRequest) (response GetOrganizationTenancyResponse, err error) {
@@ -393,7 +393,7 @@ func (client OrganizationClient) getOrganizationTenancy(ctx context.Context, req
 
 // ListOrganizationTenancies Gets a list of tenancies in the organization.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListOrganizationTenancies.go.html to see an example of how to use ListOrganizationTenancies API.
 func (client OrganizationClient) ListOrganizationTenancies(ctx context.Context, request ListOrganizationTenanciesRequest) (response ListOrganizationTenanciesResponse, err error) {
@@ -450,7 +450,7 @@ func (client OrganizationClient) listOrganizationTenancies(ctx context.Context, 
 
 // ListOrganizations Lists organizations associated with the caller.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListOrganizations.go.html to see an example of how to use ListOrganizations API.
 func (client OrganizationClient) ListOrganizations(ctx context.Context, request ListOrganizationsRequest) (response ListOrganizationsResponse, err error) {
@@ -507,7 +507,7 @@ func (client OrganizationClient) listOrganizations(ctx context.Context, request 
 
 // RestoreOrganizationTenancy An asynchronous API to restore a tenancy.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/RestoreOrganizationTenancy.go.html to see an example of how to use RestoreOrganizationTenancy API.
 func (client OrganizationClient) RestoreOrganizationTenancy(ctx context.Context, request RestoreOrganizationTenancyRequest) (response RestoreOrganizationTenancyResponse, err error) {
@@ -564,7 +564,7 @@ func (client OrganizationClient) restoreOrganizationTenancy(ctx context.Context,
 
 // UnapproveOrganizationTenancyForTransfer Cancel an organization's child tenancy for transfer.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/UnapproveOrganizationTenancyForTransfer.go.html to see an example of how to use UnapproveOrganizationTenancyForTransfer API.
 func (client OrganizationClient) UnapproveOrganizationTenancyForTransfer(ctx context.Context, request UnapproveOrganizationTenancyForTransferRequest) (response UnapproveOrganizationTenancyForTransferResponse, err error) {
@@ -626,7 +626,7 @@ func (client OrganizationClient) unapproveOrganizationTenancyForTransfer(ctx con
 
 // UpdateOrganization Map the default subscription to the organization.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/UpdateOrganization.go.html to see an example of how to use UpdateOrganization API.
 func (client OrganizationClient) UpdateOrganization(ctx context.Context, request UpdateOrganizationRequest) (response UpdateOrganizationResponse, err error) {

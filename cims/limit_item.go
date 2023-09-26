@@ -48,27 +48,27 @@ type LimitItem struct {
 	LimitStatus LimitItemLimitStatusEnum `mandatory:"false" json:"limitStatus,omitempty"`
 }
 
-//GetItemKey returns ItemKey
+// GetItemKey returns ItemKey
 func (m LimitItem) GetItemKey() *string {
 	return m.ItemKey
 }
 
-//GetName returns Name
+// GetName returns Name
 func (m LimitItem) GetName() *string {
 	return m.Name
 }
 
-//GetCategory returns Category
+// GetCategory returns Category
 func (m LimitItem) GetCategory() *Category {
 	return m.Category
 }
 
-//GetSubCategory returns SubCategory
+// GetSubCategory returns SubCategory
 func (m LimitItem) GetSubCategory() *SubCategory {
 	return m.SubCategory
 }
 
-//GetIssueType returns IssueType
+// GetIssueType returns IssueType
 func (m LimitItem) GetIssueType() *IssueType {
 	return m.IssueType
 }

@@ -91,97 +91,97 @@ type VersionedCustomSoftwareSource struct {
 	ChecksumType ChecksumTypeEnum `mandatory:"false" json:"checksumType,omitempty"`
 }
 
-//GetId returns Id
+// GetId returns Id
 func (m VersionedCustomSoftwareSource) GetId() *string {
 	return m.Id
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m VersionedCustomSoftwareSource) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m VersionedCustomSoftwareSource) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m VersionedCustomSoftwareSource) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetDescription returns Description
+// GetDescription returns Description
 func (m VersionedCustomSoftwareSource) GetDescription() *string {
 	return m.Description
 }
 
-//GetAvailability returns Availability
+// GetAvailability returns Availability
 func (m VersionedCustomSoftwareSource) GetAvailability() AvailabilityEnum {
 	return m.Availability
 }
 
-//GetRepoId returns RepoId
+// GetRepoId returns RepoId
 func (m VersionedCustomSoftwareSource) GetRepoId() *string {
 	return m.RepoId
 }
 
-//GetOsFamily returns OsFamily
+// GetOsFamily returns OsFamily
 func (m VersionedCustomSoftwareSource) GetOsFamily() OsFamilyEnum {
 	return m.OsFamily
 }
 
-//GetArchType returns ArchType
+// GetArchType returns ArchType
 func (m VersionedCustomSoftwareSource) GetArchType() ArchTypeEnum {
 	return m.ArchType
 }
 
-//GetLifecycleState returns LifecycleState
+// GetLifecycleState returns LifecycleState
 func (m VersionedCustomSoftwareSource) GetLifecycleState() SoftwareSourceLifecycleStateEnum {
 	return m.LifecycleState
 }
 
-//GetPackageCount returns PackageCount
+// GetPackageCount returns PackageCount
 func (m VersionedCustomSoftwareSource) GetPackageCount() *int64 {
 	return m.PackageCount
 }
 
-//GetUrl returns Url
+// GetUrl returns Url
 func (m VersionedCustomSoftwareSource) GetUrl() *string {
 	return m.Url
 }
 
-//GetChecksumType returns ChecksumType
+// GetChecksumType returns ChecksumType
 func (m VersionedCustomSoftwareSource) GetChecksumType() ChecksumTypeEnum {
 	return m.ChecksumType
 }
 
-//GetGpgKeyUrl returns GpgKeyUrl
+// GetGpgKeyUrl returns GpgKeyUrl
 func (m VersionedCustomSoftwareSource) GetGpgKeyUrl() *string {
 	return m.GpgKeyUrl
 }
 
-//GetGpgKeyId returns GpgKeyId
+// GetGpgKeyId returns GpgKeyId
 func (m VersionedCustomSoftwareSource) GetGpgKeyId() *string {
 	return m.GpgKeyId
 }
 
-//GetGpgKeyFingerprint returns GpgKeyFingerprint
+// GetGpgKeyFingerprint returns GpgKeyFingerprint
 func (m VersionedCustomSoftwareSource) GetGpgKeyFingerprint() *string {
 	return m.GpgKeyFingerprint
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m VersionedCustomSoftwareSource) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m VersionedCustomSoftwareSource) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m VersionedCustomSoftwareSource) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
 }

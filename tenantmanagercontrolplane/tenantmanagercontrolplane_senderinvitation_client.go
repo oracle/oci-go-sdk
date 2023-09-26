@@ -93,7 +93,7 @@ func (client *SenderInvitationClient) ConfigurationProvider() *common.Configurat
 
 // CancelSenderInvitation Cancels a sender invitation.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/CancelSenderInvitation.go.html to see an example of how to use CancelSenderInvitation API.
 func (client SenderInvitationClient) CancelSenderInvitation(ctx context.Context, request CancelSenderInvitationRequest) (response CancelSenderInvitationResponse, err error) {
@@ -155,7 +155,7 @@ func (client SenderInvitationClient) cancelSenderInvitation(ctx context.Context,
 
 // CreateSenderInvitation Creates a sender invitation and asynchronously sends the invitation to the recipient.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/CreateSenderInvitation.go.html to see an example of how to use CreateSenderInvitation API.
 func (client SenderInvitationClient) CreateSenderInvitation(ctx context.Context, request CreateSenderInvitationRequest) (response CreateSenderInvitationResponse, err error) {
@@ -217,7 +217,7 @@ func (client SenderInvitationClient) createSenderInvitation(ctx context.Context,
 
 // GetSenderInvitation Gets information about the sender invitation.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/GetSenderInvitation.go.html to see an example of how to use GetSenderInvitation API.
 func (client SenderInvitationClient) GetSenderInvitation(ctx context.Context, request GetSenderInvitationRequest) (response GetSenderInvitationResponse, err error) {
@@ -274,7 +274,7 @@ func (client SenderInvitationClient) getSenderInvitation(ctx context.Context, re
 
 // ListSenderInvitations Return a (paginated) list of sender invitations.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListSenderInvitations.go.html to see an example of how to use ListSenderInvitations API.
 func (client SenderInvitationClient) ListSenderInvitations(ctx context.Context, request ListSenderInvitationsRequest) (response ListSenderInvitationsResponse, err error) {
@@ -331,7 +331,7 @@ func (client SenderInvitationClient) listSenderInvitations(ctx context.Context, 
 
 // UpdateSenderInvitation Updates the sender invitation.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/UpdateSenderInvitation.go.html to see an example of how to use UpdateSenderInvitation API.
 func (client SenderInvitationClient) UpdateSenderInvitation(ctx context.Context, request UpdateSenderInvitationRequest) (response UpdateSenderInvitationResponse, err error) {

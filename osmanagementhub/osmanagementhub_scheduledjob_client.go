@@ -93,7 +93,7 @@ func (client *ScheduledJobClient) ConfigurationProvider() *common.ConfigurationP
 
 // CreateScheduledJob Creates a new scheduled job.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/CreateScheduledJob.go.html to see an example of how to use CreateScheduledJob API.
 // A default retry strategy applies to this operation CreateScheduledJob()
@@ -156,7 +156,7 @@ func (client ScheduledJobClient) createScheduledJob(ctx context.Context, request
 
 // DeleteScheduledJob Deletes the specified scheduled job.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/DeleteScheduledJob.go.html to see an example of how to use DeleteScheduledJob API.
 // A default retry strategy applies to this operation DeleteScheduledJob()
@@ -214,7 +214,7 @@ func (client ScheduledJobClient) deleteScheduledJob(ctx context.Context, request
 
 // GetScheduledJob Gets information about the specified scheduled job.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/GetScheduledJob.go.html to see an example of how to use GetScheduledJob API.
 // A default retry strategy applies to this operation GetScheduledJob()
@@ -274,7 +274,7 @@ func (client ScheduledJobClient) getScheduledJob(ctx context.Context, request co
 // Filter the list against a variety of criteria including but not limited to its display name,
 // lifecycle state, operation type, and schedule type.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/ListScheduledJobs.go.html to see an example of how to use ListScheduledJobs API.
 // A default retry strategy applies to this operation ListScheduledJobs()
@@ -333,7 +333,7 @@ func (client ScheduledJobClient) listScheduledJobs(ctx context.Context, request 
 // RunScheduledJobNow Triggers an already created RECURRING scheduled job to run immediately instead of waiting
 // for its next regularly scheduled time. This operation does not support ONETIME scheduled job.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/RunScheduledJobNow.go.html to see an example of how to use RunScheduledJobNow API.
 // A default retry strategy applies to this operation RunScheduledJobNow()
@@ -396,7 +396,7 @@ func (client ScheduledJobClient) runScheduledJobNow(ctx context.Context, request
 
 // UpdateScheduledJob Updates the specified scheduled job's name, description, and other details, such as next execution and recurrence.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagementhub/UpdateScheduledJob.go.html to see an example of how to use UpdateScheduledJob API.
 // A default retry strategy applies to this operation UpdateScheduledJob()

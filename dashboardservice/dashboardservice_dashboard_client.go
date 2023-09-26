@@ -99,7 +99,7 @@ func (client *DashboardClient) ConfigurationProvider() *common.ConfigurationProv
 
 // ChangeDashboardGroup Moves a Dashboard resource from one dashboardGroup identifier to another. When provided, If-Match is checked against ETag values of the resource.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/ChangeDashboardGroup.go.html to see an example of how to use ChangeDashboardGroup API.
 func (client DashboardClient) ChangeDashboardGroup(ctx context.Context, request ChangeDashboardGroupRequest) (response ChangeDashboardGroupResponse, err error) {
@@ -160,7 +160,7 @@ func (client DashboardClient) changeDashboardGroup(ctx context.Context, request 
 // you won't be able to view those resources in the Console.
 // Therefore, creating resources outside of the home region is not recommended.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/CreateDashboard.go.html to see an example of how to use CreateDashboard API.
 func (client DashboardClient) CreateDashboard(ctx context.Context, request CreateDashboardRequest) (response CreateDashboardResponse, err error) {
@@ -222,7 +222,7 @@ func (client DashboardClient) createDashboard(ctx context.Context, request commo
 
 // DeleteDashboard Deletes the specified dashboard. Uses the dashboard's OCID to determine which dashboard to delete.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/DeleteDashboard.go.html to see an example of how to use DeleteDashboard API.
 func (client DashboardClient) DeleteDashboard(ctx context.Context, request DeleteDashboardRequest) (response DeleteDashboardResponse, err error) {
@@ -279,7 +279,7 @@ func (client DashboardClient) deleteDashboard(ctx context.Context, request commo
 
 // GetDashboard Gets the specified dashboard's information. Uses the dashboard's OCID to determine which dashboard to retrieve.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/GetDashboard.go.html to see an example of how to use GetDashboard API.
 // A default retry strategy applies to this operation GetDashboard()
@@ -337,7 +337,7 @@ func (client DashboardClient) getDashboard(ctx context.Context, request common.O
 
 // ListDashboards Returns a list of dashboards with a specific dashboard group ID.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/ListDashboards.go.html to see an example of how to use ListDashboards API.
 // A default retry strategy applies to this operation ListDashboards()
@@ -395,7 +395,7 @@ func (client DashboardClient) listDashboards(ctx context.Context, request common
 
 // UpdateDashboard Updates the specified dashboard. Uses the dashboard's OCID to determine which dashboard to update.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/UpdateDashboard.go.html to see an example of how to use UpdateDashboard API.
 func (client DashboardClient) UpdateDashboard(ctx context.Context, request UpdateDashboardRequest) (response UpdateDashboardResponse, err error) {

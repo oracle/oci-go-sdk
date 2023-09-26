@@ -34,17 +34,17 @@ type UpdateCleanupActionDetails struct {
 	ScheduleDetails UpdateScheduleDetails `mandatory:"false" json:"scheduleDetails"`
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m UpdateCleanupActionDetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m UpdateCleanupActionDetails) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m UpdateCleanupActionDetails) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }

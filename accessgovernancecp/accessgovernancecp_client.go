@@ -93,7 +93,7 @@ func (client *AccessGovernanceCPClient) ConfigurationProvider() *common.Configur
 
 // ChangeGovernanceInstanceCompartment Moves a GovernanceInstance resource from one compartment identifier to another. When provided, If-Match is checked against ETag values of the resource.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/ChangeGovernanceInstanceCompartment.go.html to see an example of how to use ChangeGovernanceInstanceCompartment API.
 // A default retry strategy applies to this operation ChangeGovernanceInstanceCompartment()
@@ -156,7 +156,7 @@ func (client AccessGovernanceCPClient) changeGovernanceInstanceCompartment(ctx c
 
 // CreateGovernanceInstance Creates a new GovernanceInstance.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/CreateGovernanceInstance.go.html to see an example of how to use CreateGovernanceInstance API.
 // A default retry strategy applies to this operation CreateGovernanceInstance()
@@ -219,7 +219,7 @@ func (client AccessGovernanceCPClient) createGovernanceInstance(ctx context.Cont
 
 // DeleteGovernanceInstance Deletes an existing GovernanceInstance.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/DeleteGovernanceInstance.go.html to see an example of how to use DeleteGovernanceInstance API.
 // A default retry strategy applies to this operation DeleteGovernanceInstance()
@@ -282,7 +282,7 @@ func (client AccessGovernanceCPClient) deleteGovernanceInstance(ctx context.Cont
 
 // GetGovernanceInstance Gets a GovernanceInstance by OCID.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/GetGovernanceInstance.go.html to see an example of how to use GetGovernanceInstance API.
 // A default retry strategy applies to this operation GetGovernanceInstance()
@@ -340,7 +340,7 @@ func (client AccessGovernanceCPClient) getGovernanceInstance(ctx context.Context
 
 // GetGovernanceInstanceConfiguration Gets the tenancy-wide configuration for GovernanceInstances
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/GetGovernanceInstanceConfiguration.go.html to see an example of how to use GetGovernanceInstanceConfiguration API.
 // A default retry strategy applies to this operation GetGovernanceInstanceConfiguration()
@@ -398,7 +398,7 @@ func (client AccessGovernanceCPClient) getGovernanceInstanceConfiguration(ctx co
 
 // ListGovernanceInstances Returns a list of Governance Instances.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/ListGovernanceInstances.go.html to see an example of how to use ListGovernanceInstances API.
 // A default retry strategy applies to this operation ListGovernanceInstances()
@@ -456,7 +456,7 @@ func (client AccessGovernanceCPClient) listGovernanceInstances(ctx context.Conte
 
 // UpdateGovernanceInstance Updates the GovernanceInstance.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/UpdateGovernanceInstance.go.html to see an example of how to use UpdateGovernanceInstance API.
 // A default retry strategy applies to this operation UpdateGovernanceInstance()
@@ -514,7 +514,7 @@ func (client AccessGovernanceCPClient) updateGovernanceInstance(ctx context.Cont
 
 // UpdateGovernanceInstanceConfiguration Updates the tenancy-wide configuration for GovernanceInstances
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/UpdateGovernanceInstanceConfiguration.go.html to see an example of how to use UpdateGovernanceInstanceConfiguration API.
 // A default retry strategy applies to this operation UpdateGovernanceInstanceConfiguration()

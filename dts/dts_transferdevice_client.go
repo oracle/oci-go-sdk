@@ -93,7 +93,7 @@ func (client *TransferDeviceClient) ConfigurationProvider() *common.Configuratio
 
 // CreateTransferDevice Create a new Transfer Device
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/CreateTransferDevice.go.html to see an example of how to use CreateTransferDevice API.
 func (client TransferDeviceClient) CreateTransferDevice(ctx context.Context, request CreateTransferDeviceRequest) (response CreateTransferDeviceResponse, err error) {
@@ -155,7 +155,7 @@ func (client TransferDeviceClient) createTransferDevice(ctx context.Context, req
 
 // DeleteTransferDevice deletes a transfer Device
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DeleteTransferDevice.go.html to see an example of how to use DeleteTransferDevice API.
 func (client TransferDeviceClient) DeleteTransferDevice(ctx context.Context, request DeleteTransferDeviceRequest) (response DeleteTransferDeviceResponse, err error) {
@@ -217,7 +217,7 @@ func (client TransferDeviceClient) deleteTransferDevice(ctx context.Context, req
 
 // GetTransferDevice Describes a transfer package in detail
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferDevice.go.html to see an example of how to use GetTransferDevice API.
 func (client TransferDeviceClient) GetTransferDevice(ctx context.Context, request GetTransferDeviceRequest) (response GetTransferDeviceResponse, err error) {
@@ -274,7 +274,7 @@ func (client TransferDeviceClient) getTransferDevice(ctx context.Context, reques
 
 // ListTransferDevices Lists Transfer Devices associated with a transferJob
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListTransferDevices.go.html to see an example of how to use ListTransferDevices API.
 func (client TransferDeviceClient) ListTransferDevices(ctx context.Context, request ListTransferDevicesRequest) (response ListTransferDevicesResponse, err error) {
@@ -331,7 +331,7 @@ func (client TransferDeviceClient) listTransferDevices(ctx context.Context, requ
 
 // UpdateTransferDevice Updates a Transfer Device
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/UpdateTransferDevice.go.html to see an example of how to use UpdateTransferDevice API.
 func (client TransferDeviceClient) UpdateTransferDevice(ctx context.Context, request UpdateTransferDeviceRequest) (response UpdateTransferDeviceResponse, err error) {

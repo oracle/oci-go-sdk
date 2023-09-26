@@ -93,7 +93,7 @@ func (client *GovernanceRuleClient) ConfigurationProvider() *common.Configuratio
 
 // CreateGovernanceRule Create governance rule in the root compartment only. Either relatedResourceId or template must be supplied.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/CreateGovernanceRule.go.html to see an example of how to use CreateGovernanceRule API.
 func (client GovernanceRuleClient) CreateGovernanceRule(ctx context.Context, request CreateGovernanceRuleRequest) (response CreateGovernanceRuleResponse, err error) {
@@ -155,7 +155,7 @@ func (client GovernanceRuleClient) createGovernanceRule(ctx context.Context, req
 
 // CreateInclusionCriterion Create inclusion criterion of type tenancy or tag for the governance rule.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/CreateInclusionCriterion.go.html to see an example of how to use CreateInclusionCriterion API.
 func (client GovernanceRuleClient) CreateInclusionCriterion(ctx context.Context, request CreateInclusionCriterionRequest) (response CreateInclusionCriterionResponse, err error) {
@@ -217,7 +217,7 @@ func (client GovernanceRuleClient) createInclusionCriterion(ctx context.Context,
 
 // DeleteGovernanceRule Delete the specified governance rule.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/DeleteGovernanceRule.go.html to see an example of how to use DeleteGovernanceRule API.
 func (client GovernanceRuleClient) DeleteGovernanceRule(ctx context.Context, request DeleteGovernanceRuleRequest) (response DeleteGovernanceRuleResponse, err error) {
@@ -274,7 +274,7 @@ func (client GovernanceRuleClient) deleteGovernanceRule(ctx context.Context, req
 
 // DeleteInclusionCriterion Delete the specified inclusion criterion.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/DeleteInclusionCriterion.go.html to see an example of how to use DeleteInclusionCriterion API.
 func (client GovernanceRuleClient) DeleteInclusionCriterion(ctx context.Context, request DeleteInclusionCriterionRequest) (response DeleteInclusionCriterionResponse, err error) {
@@ -331,7 +331,7 @@ func (client GovernanceRuleClient) deleteInclusionCriterion(ctx context.Context,
 
 // GetEnforcedGovernanceRule Get the specified enforced governance rule's information.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetEnforcedGovernanceRule.go.html to see an example of how to use GetEnforcedGovernanceRule API.
 func (client GovernanceRuleClient) GetEnforcedGovernanceRule(ctx context.Context, request GetEnforcedGovernanceRuleRequest) (response GetEnforcedGovernanceRuleResponse, err error) {
@@ -388,7 +388,7 @@ func (client GovernanceRuleClient) getEnforcedGovernanceRule(ctx context.Context
 
 // GetGovernanceRule Get the specified governance rule's information.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetGovernanceRule.go.html to see an example of how to use GetGovernanceRule API.
 func (client GovernanceRuleClient) GetGovernanceRule(ctx context.Context, request GetGovernanceRuleRequest) (response GetGovernanceRuleResponse, err error) {
@@ -445,7 +445,7 @@ func (client GovernanceRuleClient) getGovernanceRule(ctx context.Context, reques
 
 // GetInclusionCriterion Get the specified inclusion criterion's information.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetInclusionCriterion.go.html to see an example of how to use GetInclusionCriterion API.
 func (client GovernanceRuleClient) GetInclusionCriterion(ctx context.Context, request GetInclusionCriterionRequest) (response GetInclusionCriterionResponse, err error) {
@@ -502,7 +502,7 @@ func (client GovernanceRuleClient) getInclusionCriterion(ctx context.Context, re
 
 // GetTenancyAttachment Get the specified tenancy attachment's information.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetTenancyAttachment.go.html to see an example of how to use GetTenancyAttachment API.
 func (client GovernanceRuleClient) GetTenancyAttachment(ctx context.Context, request GetTenancyAttachmentRequest) (response GetTenancyAttachmentResponse, err error) {
@@ -560,7 +560,7 @@ func (client GovernanceRuleClient) getTenancyAttachment(ctx context.Context, req
 // ListEnforcedGovernanceRules List enforced governance rules. Either compartment id or enforced governance rule id must be supplied.
 // An optional governance rule type or a display name can also be supplied.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/ListEnforcedGovernanceRules.go.html to see an example of how to use ListEnforcedGovernanceRules API.
 func (client GovernanceRuleClient) ListEnforcedGovernanceRules(ctx context.Context, request ListEnforcedGovernanceRulesRequest) (response ListEnforcedGovernanceRulesResponse, err error) {
@@ -618,7 +618,7 @@ func (client GovernanceRuleClient) listEnforcedGovernanceRules(ctx context.Conte
 // ListGovernanceRules List governance rules. Either compartment id or governance rule id must be supplied.
 // An optional lifecycle state, display name or a governance rule type can also be supplied.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/ListGovernanceRules.go.html to see an example of how to use ListGovernanceRules API.
 func (client GovernanceRuleClient) ListGovernanceRules(ctx context.Context, request ListGovernanceRulesRequest) (response ListGovernanceRulesResponse, err error) {
@@ -676,7 +676,7 @@ func (client GovernanceRuleClient) listGovernanceRules(ctx context.Context, requ
 // ListInclusionCriteria List inclusion criteria associated with a governance rule. Governance rule id must be supplied.
 // An optional inclusion criterion id or a lifecycle state can also be supplied.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/ListInclusionCriteria.go.html to see an example of how to use ListInclusionCriteria API.
 func (client GovernanceRuleClient) ListInclusionCriteria(ctx context.Context, request ListInclusionCriteriaRequest) (response ListInclusionCriteriaResponse, err error) {
@@ -734,7 +734,7 @@ func (client GovernanceRuleClient) listInclusionCriteria(ctx context.Context, re
 // ListTenancyAttachments List tenancy attachments. Either compartment id, governance rule id or tenancy attachment id must be supplied.
 // An optional lifecycle state or a child tenancy id can also be supplied.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/ListTenancyAttachments.go.html to see an example of how to use ListTenancyAttachments API.
 func (client GovernanceRuleClient) ListTenancyAttachments(ctx context.Context, request ListTenancyAttachmentsRequest) (response ListTenancyAttachmentsResponse, err error) {
@@ -793,7 +793,7 @@ func (client GovernanceRuleClient) listTenancyAttachments(ctx context.Context, r
 // Used by the tenancy admins when all the workflow retries have exhausted.
 // When provided, If-Match is checked against ETag values of the resource.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/RetryGovernanceRule.go.html to see an example of how to use RetryGovernanceRule API.
 func (client GovernanceRuleClient) RetryGovernanceRule(ctx context.Context, request RetryGovernanceRuleRequest) (response RetryGovernanceRuleResponse, err error) {
@@ -856,7 +856,7 @@ func (client GovernanceRuleClient) retryGovernanceRule(ctx context.Context, requ
 // RetryTenancyAttachment Retry governance rule application for the specified tenancy attachment id.
 // Used by the tenancy admins when all the workflow retries have exhausted.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/RetryTenancyAttachment.go.html to see an example of how to use RetryTenancyAttachment API.
 func (client GovernanceRuleClient) RetryTenancyAttachment(ctx context.Context, request RetryTenancyAttachmentRequest) (response RetryTenancyAttachmentResponse, err error) {
@@ -918,7 +918,7 @@ func (client GovernanceRuleClient) retryTenancyAttachment(ctx context.Context, r
 
 // UpdateGovernanceRule Update the specified governance rule.
 //
-// See also
+// # See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/UpdateGovernanceRule.go.html to see an example of how to use UpdateGovernanceRule API.
 func (client GovernanceRuleClient) UpdateGovernanceRule(ctx context.Context, request UpdateGovernanceRuleRequest) (response UpdateGovernanceRuleResponse, err error) {

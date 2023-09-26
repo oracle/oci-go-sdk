@@ -30,7 +30,7 @@ type DbDiscoveryDetails struct {
 	SourceMajorVersion DbSourceMajorVersionsEnum `mandatory:"true" json:"sourceMajorVersion"`
 }
 
-//GetServiceType returns ServiceType
+// GetServiceType returns ServiceType
 func (m DbDiscoveryDetails) GetServiceType() DiscoveryServiceTypesEnum {
 	return m.ServiceType
 }

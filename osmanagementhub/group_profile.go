@@ -66,67 +66,67 @@ type GroupProfile struct {
 	LifecycleState ProfileLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 }
 
-//GetId returns Id
+// GetId returns Id
 func (m GroupProfile) GetId() *string {
 	return m.Id
 }
 
-//GetCompartmentId returns CompartmentId
+// GetCompartmentId returns CompartmentId
 func (m GroupProfile) GetCompartmentId() *string {
 	return m.CompartmentId
 }
 
-//GetDisplayName returns DisplayName
+// GetDisplayName returns DisplayName
 func (m GroupProfile) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetDescription returns Description
+// GetDescription returns Description
 func (m GroupProfile) GetDescription() *string {
 	return m.Description
 }
 
-//GetManagementStationId returns ManagementStationId
+// GetManagementStationId returns ManagementStationId
 func (m GroupProfile) GetManagementStationId() *string {
 	return m.ManagementStationId
 }
 
-//GetVendorName returns VendorName
+// GetVendorName returns VendorName
 func (m GroupProfile) GetVendorName() VendorNameEnum {
 	return m.VendorName
 }
 
-//GetOsFamily returns OsFamily
+// GetOsFamily returns OsFamily
 func (m GroupProfile) GetOsFamily() OsFamilyEnum {
 	return m.OsFamily
 }
 
-//GetArchType returns ArchType
+// GetArchType returns ArchType
 func (m GroupProfile) GetArchType() ArchTypeEnum {
 	return m.ArchType
 }
 
-//GetTimeCreated returns TimeCreated
+// GetTimeCreated returns TimeCreated
 func (m GroupProfile) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetLifecycleState returns LifecycleState
+// GetLifecycleState returns LifecycleState
 func (m GroupProfile) GetLifecycleState() ProfileLifecycleStateEnum {
 	return m.LifecycleState
 }
 
-//GetFreeformTags returns FreeformTags
+// GetFreeformTags returns FreeformTags
 func (m GroupProfile) GetFreeformTags() map[string]string {
 	return m.FreeformTags
 }
 
-//GetDefinedTags returns DefinedTags
+// GetDefinedTags returns DefinedTags
 func (m GroupProfile) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
 }
 
-//GetSystemTags returns SystemTags
+// GetSystemTags returns SystemTags
 func (m GroupProfile) GetSystemTags() map[string]map[string]interface{} {
 	return m.SystemTags
 }
