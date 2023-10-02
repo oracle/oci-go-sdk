@@ -45,6 +45,11 @@ func TestIsErrorAffectedByEventualConsistency(t *testing.T) {
 	assert.True(t, IsErrorAffectedByEventualConsistency(error))
 
 	error = servicefailure{
+		StatusCode: 409,
+		Code:       "ResourceAlreadyExists"}
+	assert.True(t, IsErrorAffectedByEventualConsistency(error))
+
+	error = servicefailure{
 		StatusCode: 400,
 		Code:       "InsufficientServicePermissions"}
 	assert.True(t, IsErrorAffectedByEventualConsistency(error))
