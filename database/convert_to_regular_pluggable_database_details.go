@@ -15,31 +15,27 @@ import (
 	"strings"
 )
 
-// RestoreDatabaseDetails The representation of RestoreDatabaseDetails
-type RestoreDatabaseDetails struct {
+// ConvertToRegularPluggableDatabaseDetails Parameters for converting Refreshable Clone Pluggable Database into Regular Pluggable Database.
+type ConvertToRegularPluggableDatabaseDetails struct {
 
-	// Restores using the backup with the System Change Number (SCN) specified.
-	// This field is applicable for both use cases - Restoring Container Database or Restoring specific Pluggable Database.
-	DatabaseSCN *string `mandatory:"false" json:"databaseSCN"`
+	// Indicates whether to take Pluggable Database Backup after the operation.
+	ShouldCreatePdbBackup *bool `mandatory:"false" json:"shouldCreatePdbBackup"`
 
-	// Restores to the timestamp specified.
-	Timestamp *common.SDKTime `mandatory:"false" json:"timestamp"`
+	// The DB system administrator password of the Container Database.
+	ContainerDatabaseAdminPassword *string `mandatory:"false" json:"containerDatabaseAdminPassword"`
 
-	// Restores to the last known good state with the least possible data loss.
-	Latest *bool `mandatory:"false" json:"latest"`
-
-	// Restores only the Pluggable Database (if specified) using the inputs provided in request.
-	PluggableDatabaseName *string `mandatory:"false" json:"pluggableDatabaseName"`
+	// The existing TDE wallet password of the Container Database.
+	TdeWalletPassword *string `mandatory:"false" json:"tdeWalletPassword"`
 }
 
-func (m RestoreDatabaseDetails) String() string {
+func (m ConvertToRegularPluggableDatabaseDetails) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m RestoreDatabaseDetails) ValidateEnumValue() (bool, error) {
+func (m ConvertToRegularPluggableDatabaseDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {
