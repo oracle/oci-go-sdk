@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.49.4 - 2023-10-10
+n### Added
+- Support for creating flow log type capture filters in the Virtual Cloud Network service
+- Support for importing and exporting metadata in Data Integration service
+- Support for displaying resource usage information on autonomous vm cluster get operations in the Database service
+- Support for displaying resource usage information for the list of autonomous container databases on autonomous vm cluster get operations in the Database service
+- Support for pluggable database with enhanced features in the Database service
+- Support for exporting container and kubernetes app listings in the Marketplace service
+- Support for work request statuses for export container and kubernetes app listings in the Marketplace service
+
+
 ## 65.49.3 - 2023-10-03
 ### Added 
 - Support for elastic resource pools in the Database service

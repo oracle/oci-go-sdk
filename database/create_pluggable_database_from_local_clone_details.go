@@ -10,40 +10,45 @@
 package database
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
-// RestoreDatabaseDetails The representation of RestoreDatabaseDetails
-type RestoreDatabaseDetails struct {
+// CreatePluggableDatabaseFromLocalCloneDetails Specifies the creation type Local Clone.
+type CreatePluggableDatabaseFromLocalCloneDetails struct {
 
-	// Restores using the backup with the System Change Number (SCN) specified.
-	// This field is applicable for both use cases - Restoring Container Database or Restoring specific Pluggable Database.
-	DatabaseSCN *string `mandatory:"false" json:"databaseSCN"`
-
-	// Restores to the timestamp specified.
-	Timestamp *common.SDKTime `mandatory:"false" json:"timestamp"`
-
-	// Restores to the last known good state with the least possible data loss.
-	Latest *bool `mandatory:"false" json:"latest"`
-
-	// Restores only the Pluggable Database (if specified) using the inputs provided in request.
-	PluggableDatabaseName *string `mandatory:"false" json:"pluggableDatabaseName"`
+	// The OCID of the Source Pluggable Database.
+	SourcePluggableDatabaseId *string `mandatory:"true" json:"sourcePluggableDatabaseId"`
 }
 
-func (m RestoreDatabaseDetails) String() string {
+func (m CreatePluggableDatabaseFromLocalCloneDetails) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m RestoreDatabaseDetails) ValidateEnumValue() (bool, error) {
+func (m CreatePluggableDatabaseFromLocalCloneDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
 	return false, nil
+}
+
+// MarshalJSON marshals to json representation
+func (m CreatePluggableDatabaseFromLocalCloneDetails) MarshalJSON() (buff []byte, e error) {
+	type MarshalTypeCreatePluggableDatabaseFromLocalCloneDetails CreatePluggableDatabaseFromLocalCloneDetails
+	s := struct {
+		DiscriminatorParam string `json:"creationType"`
+		MarshalTypeCreatePluggableDatabaseFromLocalCloneDetails
+	}{
+		"LOCAL_CLONE_PDB",
+		(MarshalTypeCreatePluggableDatabaseFromLocalCloneDetails)(m),
+	}
+
+	return json.Marshal(&s)
 }
