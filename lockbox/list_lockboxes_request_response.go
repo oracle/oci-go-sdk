@@ -36,6 +36,9 @@ type ListLockboxesRequest struct {
 	// The name of the lockbox partner.
 	LockboxPartner ListLockboxesLockboxPartnerEnum `mandatory:"false" contributesTo:"query" name:"lockboxPartner" omitEmpty:"true"`
 
+	// The ID of the partner.
+	PartnerId *string `mandatory:"false" contributesTo:"query" name:"partnerId"`
+
 	// The maximum number of items to return.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
 

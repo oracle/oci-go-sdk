@@ -379,7 +379,7 @@ or for all requests made by all clients:
 
     common.GlobalRetry = &defaultRetryPolicy
 
-or setting default retry via environment varaible, which is a global switch for all services:
+or setting default retry via environment variable, which is a global switch for all services:
 
 	export OCI_SDK_DEFAULT_RETRY_ENABLED=TRUE
 
@@ -530,6 +530,23 @@ You can overwrite the target host with client.Host:
 If you are authenticating via instance principals, you can set the authentication endpoint in an environment variable:
 	export OCI_SDK_AUTH_CLIENT_REGION_URL="https://identity.us-gov-phoenix-1.oraclegovcloud.com"
 
+Using custom CA Bundle or custom client certs
+
+In order to use a custom CA bundle, you can set the environment variable OCI_DEFAULT_CERTS_PATH to point to the path of custom CA Bundle you want
+the OCI GO SDK to use while making API calls to the OCI services
+
+If you additionally want to set custom leaf/client certs, then you can use the the environment variables OCI_DEFAULT_CLIENT_CERTS_PATH and OCI_DEFAULT_CLIENT_CERTS_PRIVATE_KEY_PATH
+to set the path of the custom client/leaf cert and the private key respectively.
+
+
+Configuring or disabling the refresh interval for custom CA bundles or client certs
+
+The default refresh interval for custom CA bundle or client certs is 30 minutes. If you want to modify this, then you can configure the refresh interval in minutes
+by using either the Global property OciGlobalRefreshIntervalForCustomCerts defined in the common package or set the environment variable OCI_DEFAULT_REFRESH_INTERVAL_FOR_CUSTOM_CERTS
+to set it instead.
+
+Please note, that the property OciGlobalRefreshIntervalForCustomCerts has a higher precedence than the environment variable OCI_DEFAULT_REFRESH_INTERVAL_FOR_CUSTOM_CERTS.
+If this value is negative, then it would be assumed that it is unset. If it is set to 0, then the SDK would disable the custom ca bundle and client cert refresh
 
 Contributions
 

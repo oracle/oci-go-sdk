@@ -4,7 +4,7 @@
 
 // Managed Access API
 //
-// Use the Managed Access API to approve access requests, create and manage templates, and manage resource approval settings. For more information, see Managed Access Overview (https://docs.oracle.com/en-us/iaas/managed-access/overview.htm).
+// Use the Managed Access API to approve access requests, create and manage templates, and manage resource approval settings. For more information, see Managed Access Overview (https://docs.oracle.com/iaas/Content/managed-access/home.htm).
 // Use the table of contents and search tool to explore the Managed Access API.
 //
 
@@ -25,14 +25,8 @@ type LockboxSummary struct {
 	// Lockbox Identifier, can be renamed
 	DisplayName *string `mandatory:"true" json:"displayName"`
 
-	// The partner using this lockbox to lock a resource.
-	LockboxPartner LockboxPartnerEnum `mandatory:"true" json:"lockboxPartner"`
-
 	// Compartment Identifier
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
-
-	// Compartment Identifier
-	PartnerCompartmentId *string `mandatory:"true" json:"partnerCompartmentId"`
 
 	// The unique identifier (OCID) of associated resource that the lockbox is created for.
 	ResourceId *string `mandatory:"true" json:"resourceId"`
@@ -50,6 +44,15 @@ type LockboxSummary struct {
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
 	// Example: `{"foo-namespace": {"bar-key": "value"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"true" json:"definedTags"`
+
+	// The partner using this lockbox to lock a resource.
+	LockboxPartner LockboxPartnerEnum `mandatory:"false" json:"lockboxPartner,omitempty"`
+
+	// The unique identifier (OCID) of partner resource using this lockbox to lock a resource
+	PartnerId *string `mandatory:"false" json:"partnerId"`
+
+	// Compartment Identifier
+	PartnerCompartmentId *string `mandatory:"false" json:"partnerCompartmentId"`
 
 	// Approval template ID
 	ApprovalTemplateId *string `mandatory:"false" json:"approvalTemplateId"`
@@ -77,13 +80,13 @@ func (m LockboxSummary) String() string {
 // Not recommended for calling this function directly
 func (m LockboxSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := GetMappingLockboxPartnerEnum(string(m.LockboxPartner)); !ok && m.LockboxPartner != "" {
-		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LockboxPartner: %s. Supported values are: %s.", m.LockboxPartner, strings.Join(GetLockboxPartnerEnumStringValues(), ",")))
-	}
 	if _, ok := GetMappingLockboxLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLockboxLifecycleStateEnumStringValues(), ",")))
 	}
 
+	if _, ok := GetMappingLockboxPartnerEnum(string(m.LockboxPartner)); !ok && m.LockboxPartner != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LockboxPartner: %s. Supported values are: %s.", m.LockboxPartner, strings.Join(GetLockboxPartnerEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
