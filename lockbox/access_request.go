@@ -4,7 +4,7 @@
 
 // Managed Access API
 //
-// Use the Managed Access API to approve access requests, create and manage templates, and manage resource approval settings. For more information, see Managed Access Overview (https://docs.oracle.com/en-us/iaas/managed-access/overview.htm).
+// Use the Managed Access API to approve access requests, create and manage templates, and manage resource approval settings. For more information, see Managed Access Overview (https://docs.oracle.com/iaas/Content/managed-access/home.htm).
 // Use the table of contents and search tool to explore the Managed Access API.
 //
 
@@ -58,6 +58,17 @@ type AccessRequest struct {
 	// The time the access request expired. Format is defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
 	// Example: `2020-01-25T21:10:29.600Z`
 	TimeExpired *common.SDKTime `mandatory:"true" json:"timeExpired"`
+
+	// The time the access request was last reminded. Format is defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
+	// Example: `2020-01-25T21:10:29.600Z`
+	TimeReminded *common.SDKTime `mandatory:"true" json:"timeReminded"`
+
+	// The count of times the access request was reminded.
+	ReminderCount *int `mandatory:"true" json:"reminderCount"`
+
+	// The location of the requestor. Format with be two letters indicatiog operator's country code defined by https://jira-sd.mc1.oracleiaas.com/browse/SSD-17880
+	// Example: `US`
+	RequestorLocation *string `mandatory:"true" json:"requestorLocation"`
 
 	// The context object containing the access request specific details.
 	Context map[string]string `mandatory:"false" json:"context"`

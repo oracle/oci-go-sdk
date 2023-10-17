@@ -36,6 +36,9 @@ type ListAccessRequestsRequest struct {
 	// The name of the lockbox partner.
 	LockboxPartner ListAccessRequestsLockboxPartnerEnum `mandatory:"false" contributesTo:"query" name:"lockboxPartner" omitEmpty:"true"`
 
+	// The ID of the partner.
+	PartnerId *string `mandatory:"false" contributesTo:"query" name:"partnerId"`
+
 	// The unique identifier (OCID) of the requestor in which to list resources.
 	RequestorId *string `mandatory:"false" contributesTo:"query" name:"requestorId"`
 
@@ -50,6 +53,12 @@ type ListAccessRequestsRequest struct {
 
 	// The field to sort by. Only one sort order may be provided. Default order for timeCreated is descending. Default order for displayName is ascending.
 	SortBy ListAccessRequestsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
+
+	// Date and time on or after which Access Requests were created, as described in RFC 3339 (https://tools.ietf.org/rfc/rfc3339)
+	TimeCreatedAfter *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeCreatedAfter"`
+
+	// Date and time on or before which Access requests were created, as described in RFC 3339 (https://tools.ietf.org/rfc/rfc3339)
+	TimeCreatedBefore *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeCreatedBefore"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
