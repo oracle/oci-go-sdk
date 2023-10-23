@@ -46,7 +46,7 @@ clean: $(TARGETS_CLEAN)
 
 $(TARGETS_LINT): lint-%:%
 	@echo "linting and formatting: $<"
-	@(cd $< && gofmt -s -w .)
+	@(cd $< && gofmt -s -w . && gofmt -s -w .)
 	@if [ \( $< = common \) -o \( $< = common/auth \) ]; then\
 		(cd $< && $(GOLINT) -set_exit_status .);\
 	else\
@@ -55,7 +55,7 @@ $(TARGETS_LINT): lint-%:%
 
 $(TARGETS_STATIC): staticcheck-%:%
 	@echo "Formating and Static-Checking: $<"
-	@(cd $< && gofmt -s -w .)
+	@(cd $< && gofmt -s -w . && gofmt -s -w .)
 	@(cd $< && $(STATICCHECK) ./...);\
 
 
@@ -111,5 +111,5 @@ release: gen-version build pre-doc
 
 build-autotest:
 	@if [ -d $(AUTOTEST_DIR) ]; then\
-		(cd $(AUTOTEST_DIR) && gofmt -s -w . && go test -c);\
+		(cd $(AUTOTEST_DIR) && gofmt -s -w . && gofmt -s -w . && go test -c);\
 	fi
