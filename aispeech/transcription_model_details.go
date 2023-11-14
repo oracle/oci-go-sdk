@@ -33,6 +33,8 @@ type TranscriptionModelDetails struct {
 	// - de-DE: German - Germany
 	// - it-IT: Italian - Italy
 	LanguageCode TranscriptionModelDetailsLanguageCodeEnum `mandatory:"false" json:"languageCode,omitempty"`
+
+	TranscriptionSettings *TranscriptionSettings `mandatory:"false" json:"transcriptionSettings"`
 }
 
 func (m TranscriptionModelDetails) String() string {

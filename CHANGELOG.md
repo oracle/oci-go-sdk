@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.53.0 - 2023-11-14
+### Added
+- Support for the PostgreSQL service
+- Support for new operations in the Identity Domains service
+- Support for enabling, disabling, and renewing SSL/TLS in the Big Data service
+- Support for diarization in the AI Speech service
+- Support for Capacity Topology API in the Compute service
+ 
+### Breaking Changes
+- The type of property `Status` was changed from `*string` to `MyRequestStatusEnum` in the `MyRequest` model in the Identity Domains service
+
+
 ## 65.52.1 - 2023-11-07
 ### Added
 - Support for Java Management Service Downloads
