@@ -757,6 +757,79 @@ func TestMarshalBinaryRequestWithoutContentLengthSetting(t *testing.T) {
 	assert.Equal(t, data, string(all))
 }
 
+func TestContentLength_NOPCloser_BytesReader(t *testing.T) {
+	data := []byte("wrapping bytes Reader in NOP Closer")
+	r := reqWithBinaryFiledButNoContentLengthField{Content: io.NopCloser(bytes.NewReader(data))}
+	httpRequest, err := MakeDefaultHTTPRequestWithTaggedStruct("PUT", "/obj", r)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(35), httpRequest.ContentLength)
+}
+
+func TestContentLength_NOPCloser_BytesBuffer(t *testing.T) {
+	data := "wrapping bytes buffer in NOP Closer"
+	buffer := bytes.NewBufferString(data)
+	r := reqWithBinaryFiledButNoContentLengthField{Content: io.NopCloser(buffer)}
+	httpRequest, err := MakeDefaultHTTPRequestWithTaggedStruct("PUT", "/obj", r)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(35), httpRequest.ContentLength)
+}
+
+func TestContentLength_NopCloser_StringReader(t *testing.T) {
+	testString := "wrapping strings Reader in NOP Closer"
+	r := reqWithBinaryFiledButNoContentLengthField{Content: io.NopCloser(strings.NewReader(testString))}
+	httpRequest, err := MakeDefaultHTTPRequestWithTaggedStruct("PUT", "/obj", r)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(37), httpRequest.ContentLength)
+}
+
+func TestContentLength_StringsReader_Seeker(t *testing.T) {
+	testString := "Get ContentLength for Strings Reader"
+	r := reqWithBinaryFiledButNoContentLengthField{Content: io.NopCloser(strings.NewReader(testString))}
+	httpRequest, err := MakeDefaultHTTPRequestWithTaggedStruct("PUT", "/obj", r)
+	assert.NoError(t, err)
+	contentLen, err := getNormalBinaryBodyLength(&httpRequest)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(36), contentLen)
+	seeker := getSeeker(httpRequest.Body)
+	// Seek to the 6th byte position from the end and calculate the content length
+	seeker.Seek(-6, io.SeekEnd)
+	contentLen, err = getNormalBinaryBodyLength(&httpRequest)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(6), contentLen)
+	// Read the complete body from the current position till the end
+	contentBody, err := io.ReadAll(httpRequest.Body)
+	assert.NoError(t, err)
+	assert.Equal(t, []byte("Reader"), contentBody)
+	// Calculate the content length
+	contentLen, err = getNormalBinaryBodyLength(&httpRequest)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(0), contentLen)
+}
+
+func TestContentLength_BytesReader_Seeker(t *testing.T) {
+	data := []byte("Get ContentLength for Bytes Reader")
+	r := reqWithBinaryFiledButNoContentLengthField{Content: io.NopCloser(bytes.NewReader(data))}
+	httpRequest, err := MakeDefaultHTTPRequestWithTaggedStruct("PUT", "/obj", r)
+	assert.NoError(t, err)
+	contentLen, err := getNormalBinaryBodyLength(&httpRequest)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(34), contentLen)
+	seeker := getSeeker(httpRequest.Body)
+	// Seek to the 12th byte position from the end and calculate the content length
+	seeker.Seek(-12, io.SeekEnd)
+	contentLen, err = getNormalBinaryBodyLength(&httpRequest)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(12), contentLen)
+	// Read the complete body from the current position till the end
+	contentBody, err := io.ReadAll(httpRequest.Body)
+	assert.NoError(t, err)
+	assert.Equal(t, []byte("Bytes Reader"), contentBody)
+	// Calculate the content length
+	contentLen, err = getNormalBinaryBodyLength(&httpRequest)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(0), contentLen)
+}
+
 func TestMarshalBinaryRequestNonMandatoryBody(t *testing.T) {
 	signer := ociRequestSigner{KeyProvider: testKeyProvider{},
 		ShouldHashBody: defaultBodyHashPredicate,
