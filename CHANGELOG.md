@@ -4,6 +4,33 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.54.0 - 2023-12-04
+### Added
+- Support for calling Oracle Cloud Infrastructure services in the eu-dcc-zurich-1 and the sa-bogota-1 region
+- Support for managing certificates of target Servers in the Golden Gate service
+- Support for AWR Hub Snapshot ingest endpoints in the Operations Insights service
+- Support for reducing false positives in the Application Dependency Management service
+- Support for ARM shapes in the Data Science service
+- Support for new optional parameters in the upload discovery data API in the Usage service
+- Support for multiple clusters in a Software-Defined Data Centers (SDDCs) in the VMWare Solution service
+- Support for No/Zero days backup in Autonomous Container Database in the Database service
+- Support for provisioning a VM Cluster with a choice of Exadata image version in the Database service
+- Support for updating ocpu/ecpu count, local storage, ACD count and Exadata storage on Cloud Autonomous VM Cluster and Autonomous VM Cluster in the Database service
+- Support for serial console history in the Database service
+- Support for Oracle Linux 8 version database system in the Database service
+ 
+### Breaking
+- Parameters `SddcId`, `CurrentSku`, `NextSku`, were renamed to `ClusterId`, `CurrentCommitment`, `NextCommitment` in models `CreateEsxiHostDetails`, `EsxiHost` and `EsxiHostSummary` in the VMWare Solution service
+- Parameter `FailedEsxiHostId` was removed from `CreateEsxiHostDetails` model in the VMWare Solution service
+- Parameter `NonUpgradedEsxiHostId` was renamed to `EsxiSoftwareVersion` in `CreateEsxiHostDetails` model in the VMWare Solution service
+- Parameter `EsxiHostsCount` was removed from `CreateEsxiHostDetails` model in the VMWare Solution service
+- Parameters `ProvisioningSubnetId`, `VsphereVlanId`, `VmotionVlanId`, `VsanVlanId`, `NsxVTepVlanId`, `NsxEdgeVTepVlanId`, `NsxEdgeUplink1VlanId`, `NsxEdgeUplink2VlanId`, `InstanceDisplayNamePrefix`, `InitialSku`, `IsHcxEnabled`, `HcxVlanId`, `IsHcxEnterpriseEnabled` were removed from `CreateSddcDetails` model in the VMWare Solution service
+- Parameters `VsphereVlanId`, `VmotionVlanId`, `VsanVlanId`, `NsxVTepVlanId`, `NsxEdgeVTepVlanId`, `NsxEdgeUplink1VlanId`, `NsxEdgeUplink2VlanId`, `ReplicationVlanId`, `ProvisioningVlanId`, `HcxVlanId` were removed from `UpdateSddcDetails` model in the VMWare Solution service
+- Parameters `SupportedSddcTypes` and `IsSupportMonthlySku` were removed from `SupportedHostShapeSummary` model in the VMWare Solution service
+- Parameter `ComputeAvailabilityDomain` was removed from `Sddc` and `SddcSummary` models in the VMWare Solution service
+- Parameter `SddcType` was removed from `ListSupportedHostShapesRequest` model in the VMWare Solution service
+
+
 ## 65.53.0 - 2023-11-14
 ### Added
 - Support for the PostgreSQL service
