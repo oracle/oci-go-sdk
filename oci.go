@@ -470,6 +470,40 @@ Go SDK enable circuit breaker with default configuration for most of the service
 Go SDK also supports customize Circuit Breaker with specified configurations. You can find the examples here: https://github.com/oracle/oci-go-sdk/blob/master/example/example_circuitbreaker_test.go
 To know which service clients have circuit breakers enabled, look at the service client's description in the SDK - it will say whether that it has circuit breakers enabled by default
 
+
+Handling HTTP 3xx responses
+
+As a result of the SDK treating responses with a non-2xx HTTP status code as an error, the SDK will produce an error on 3xx responses. This can impact operations which support conditional GETs,
+such as GetObject() and HeadObject() methods as these can return responses with an HTTP status code of 304 if passed an 'IfNoneMatch' that corresponds to the current etag of the object / bucket.
+
+In order to account for this, you should check for status code 304 when an error is produced. For example:
+
+	// create object storage client and request
+	c, clerr := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	helpers.FatalIfError(clerr)
+
+	getRequest := objectstorage.GetObjectRequest{
+		NamespaceName: common.String("my_namespace"),
+		BucketName:    common.String("my_bucket"),
+		ObjectName:    common.String("my_object"),
+		IfNoneMatch:   common.String("my_etag_value"),
+	}
+
+	response, err := c.GetObject(context.Background(), getRequest)
+
+	// check response for status code 304
+	if err != nil {
+		if response.HTTPResponse().StatusCode == 304 {
+			// Object exists but has not been modified (based on the etag value)
+			fmt.Println("Handle 304 Status Code")
+		} else {
+			fmt.Println(err)
+		}
+		return
+	}
+	fmt.Println(response)
+
+
 Using the SDK with a Proxy Server
 
 The GO SDK uses the net/http package to make calls to OCI services. If your environment requires you to use a proxy server for outgoing HTTP requests
