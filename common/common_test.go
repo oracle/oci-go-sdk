@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2018, 2023, Oracle and/or its affiliates.  All rights reserved.
+// Copyright (c) 2016, 2018, 2024, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 
 package common
@@ -95,6 +95,11 @@ func TestEndpoint(t *testing.T) {
 	region = StringToRegion("ap-chiyoda-1")
 	endpoint = region.Endpoint("bar")
 	assert.Equal(t, "bar.ap-chiyoda-1.oraclecloud8.com", endpoint)
+
+	//dotted region
+	region = StringToRegion("ap-dcc-canberra-1.oraclecloud10.com")
+	endpoint = region.Endpoint("bar")
+	assert.Equal(t, "bar.ap-dcc-canberra-1.oraclecloud10.com", endpoint)
 }
 
 func TestEndpointForTemplate(t *testing.T) {
