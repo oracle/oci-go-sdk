@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.56.0 - 2024-01-16
+### Added
+- Support for resource id filter on the service work requests in the Container Instances service
+- Support for polyglot vulnerability audit in the Application Dependency Management service
+- Support for create, read, and update operations on peer databases in the Data Safe service
+- Support for dimension specific alarm suppressions in the Monitoring service
+- Support for calculating audit volume in the Data Safe service
+- Support for viewing schema accesses in data safe user assessments in the Data Safe service
+- Support for security feature usage in the Data Safe service
+- Support for viewing the top security findings in data safe security assessments in the Data Safe service
+- Support for additional filters in list findings operation in the Data Safe service
+- Support for updating risk level of the specified finding in the Data Safe service
+ 
+### Breaking Changes
+- The property `OpcWorkRequestId` was removed from the response model `CreateVulnerabilityAuditResponse.cs` in the Application Dependency Management service
+- The property `Gav` was changed from mandatory to optional in `ApplicationDependency` model
+- The property `MaxObservedCvssV2Score`, `MaxObservedCvssV2ScoreWithIgnored` and `MaxObservedCvssV3ScoreWithIgnored` were changed from mandatory to optional in `VulnerabilityAudit` and `VulnerabilityAuditSummary` model
+- The property `CvssV2Score` and `CvssV3Score` were changed from mantory to optional in Vulnerability model
+- The property `OpcWorkRequestId` was changed from mandatory to optional in `CreateVulnerabilityAuditResponse` model
+
+
 ## 65.55.1 - 2024-01-09
 ### Added
 - Support for calling Oracle Cloud Infrastructure services in the sa-valparaiso-1 region
