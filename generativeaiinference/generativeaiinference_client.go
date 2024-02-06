@@ -149,7 +149,7 @@ func (client GenerativeAiInferenceClient) embedText(ctx context.Context, request
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/generative-ai-inference/20231130/EmbedTextResult/EmbedText"
 		err = common.PostProcessServiceError(err, "GenerativeAiInference", "EmbedText", apiReferenceLink)
 		return response, err
 	}
@@ -212,7 +212,7 @@ func (client GenerativeAiInferenceClient) generateText(ctx context.Context, requ
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/generative-ai-inference/20231130/GenerateTextResult/GenerateText"
 		err = common.PostProcessServiceError(err, "GenerativeAiInference", "GenerateText", apiReferenceLink)
 		return response, err
 	}
@@ -275,7 +275,7 @@ func (client GenerativeAiInferenceClient) summarizeText(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/generative-ai-inference/20231130/SummarizeTextResult/SummarizeText"
 		err = common.PostProcessServiceError(err, "GenerativeAiInference", "SummarizeText", apiReferenceLink)
 		return response, err
 	}
