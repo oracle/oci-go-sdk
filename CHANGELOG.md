@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.59.0 - 2024-02-20
+### Added
+- Support for calling Oracle Cloud Infrastructure services in the me-dcc-doha-1 region
+- Support for Secure Desktops service
+- Support for enabling and disabling Simultaneous Multithreading (SMT) for virtual machines in the Compute service
+- Support for Bring Your Own Container Jobs (BYOC v2) in the Data Science service
+- Support for expanded language translation in the AI Language service
+- Support for additional flags for ignoring transliteration and text length to be considered for determining dominant language in the AI Language service
+  
+### Breaking Changes
+- The model `PreTrainedPhiModelDetails` has been removed in the AI Language Service
+- The field `SystemTags` has changed from type `map[string]interface{}` to `map[string]map[string]interface{}` in the models `Endpoint`, `EndpointSummary`, `Model`, `ModelSummary`, `Project`, and `ProjectSummary` in the AI Language Service
+
+
 ## 65.58.1 - 2024-02-13
 ### Added
 - Support for adding automatic backups during cross region operations and disaster recovery in the Autonomous Database service
