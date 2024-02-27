@@ -4,6 +4,31 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.60.0 - 2024-02-27
+### Added
+- Support for specifying dialog version when creating skills entities in the Digital Assistant service
+- Support for bulk creation of skill entities in the Digital Assistant service
+- Support for training skill query entities in the Digital Assistant service
+- Support for cascading delete of skill custom entities in the Digital Assistant service
+- Support for creating autonomous dataguard associations in the Database service
+- Support for auto generation of secrets in the Secret Management service
+- Support for cluster placement groups in Cloud Exadata Infrastructure in the Database service
+- Support for retrieving previous logs of the container in the Container Instances service
+- Support for queue sources in the Connector Hub service
+- Support for automatic key rotation in the Key Management Service
+- Support for downloading operator activity reports and assignment healthchecks in the Operator Access Control service
+- Support for operator requesting access in the future time in the Operator Access Control service
+- Support for forwarding hypervisor logs in the Operator Access Control service
+- Support for asynchronous data asset export in the Data Catalog service
+- Support for launch with multiple volumes for virtual machines in the Compute Service
+- Support for tagging in Database Management service
+  
+### Breaking Changes
+- The property `MaxCpuCoreCount` was removed from the models `AutonomousDatabase`, `AutonomousDatabaseSummary`, `CreateAutonomousDatabaseBase`, `CreateAutonomousDatabaseCloneDetails`, `CreateAutonomousDatabaseDetails`, `CreateAutonomousDatabaseFromBackupDetails`, `CreateAutonomousDatabaseFromBackupTimestampDetails`, `CreateCrossRegionAutonomousDatabaseDataGuardDetails`, `CreateCrossRegionDisasterRecoveryDetails`, `CreateRefreshableAutonomousDatabaseCloneDetails`, and `UpdateAutonomousDatabaseDetails` in the Database service
+- The model `DatabaseConnectionCredentailsByName` was renamed to `DatabaseConnectionCredentialsByName` in the Database service
+- The property `KeyId` was added and made mandatory in the model `CreateSecretDetails` in the Vault service
+
+
 ## 65.59.0 - 2024-02-20
 ### Added
 - Support for calling Oracle Cloud Infrastructure services in the me-dcc-doha-1 region
