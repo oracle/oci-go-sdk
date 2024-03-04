@@ -18,11 +18,18 @@ import (
 // TranscriptionModelDetails Model details.
 type TranscriptionModelDetails struct {
 
+	// Select a model to use for generating transcriptions. Currently supported models are:
+	// - ORACLE
+	// - WHISPER_MEDIUM
+	// - WHISPER_LARGE_V2 (upon service request)
+	ModelType *string `mandatory:"false" json:"modelType"`
+
 	// Domain for input files.
 	Domain TranscriptionModelDetailsDomainEnum `mandatory:"false" json:"domain,omitempty"`
 
-	// Locale value as per given in [https://datatracker.ietf.org/doc/html/rfc5646].
-	// - en-US: English - United States
+	//
+	// Oracle supported language codes are (Oracle models are locale specific).
+	// - en-US: English - United States (default)
 	// - es-ES: Spanish - Spain
 	// - pt-BR: Portuguese - Brazil
 	// - en-GB: English - Great Britain
@@ -32,6 +39,64 @@ type TranscriptionModelDetails struct {
 	// - fr-FR: French - France
 	// - de-DE: German - Germany
 	// - it-IT: Italian - Italy
+	// Whisper supported language codes are (Whisper models are locale agnostic).
+	// - af: Afrikaans
+	// - ar: Arabic
+	// - az: Azerbaijani
+	// - be: Belarusian
+	// - bg: Bulgarian
+	// - bs: Bosnian
+	// - ca: Catalan
+	// - cs: Czech
+	// - cy: Welsh
+	// - da: Danish
+	// - de: German
+	// - el: Greek
+	// - en: English (default)
+	// - es: Spanish
+	// - et: Estonian
+	// - fa: Persian
+	// - fi: Finnish
+	// - fr: French
+	// - gl: Galician
+	// - he: Hebrew
+	// - hi: Hindi
+	// - hr: Croatian
+	// - hu: Hungarian
+	// - hy: Armenian
+	// - id: Indonesian
+	// - is: Icelandic
+	// - it: Italian
+	// - ja: Japanese
+	// - kk: Kazakh
+	// - kn: Kannada
+	// - ko: Korean
+	// - lt: Lithuanian
+	// - lv: Latvian
+	// - mi: Maori
+	// - mk: Macedonian
+	// - mr: Marathi
+	// - ms: Malay
+	// - ne: Nepali
+	// - nl: Dutch
+	// - no: Norwegian
+	// - pl: Polish
+	// - pt: Portuguese
+	// - ro: Romanian
+	// - ru: Russian
+	// - sk: Slovak
+	// - sl: Slovenian
+	// - sr: Serbian
+	// - sv: Swedish
+	// - sw: Swahili
+	// - ta: Tamil
+	// - th: Thai
+	// - tl: Tagalog
+	// - tr: Turkish
+	// - uk: Ukrainian
+	// - ur: Urdu
+	// - vi: Vietnamese
+	// - zh: Chinese
 	LanguageCode TranscriptionModelDetailsLanguageCodeEnum `mandatory:"false" json:"languageCode,omitempty"`
 
 	TranscriptionSettings *TranscriptionSettings `mandatory:"false" json:"transcriptionSettings"`
@@ -112,6 +177,63 @@ const (
 	TranscriptionModelDetailsLanguageCodeFrFr TranscriptionModelDetailsLanguageCodeEnum = "fr-FR"
 	TranscriptionModelDetailsLanguageCodeDeDe TranscriptionModelDetailsLanguageCodeEnum = "de-DE"
 	TranscriptionModelDetailsLanguageCodeItIt TranscriptionModelDetailsLanguageCodeEnum = "it-IT"
+	TranscriptionModelDetailsLanguageCodeAf   TranscriptionModelDetailsLanguageCodeEnum = "af"
+	TranscriptionModelDetailsLanguageCodeAr   TranscriptionModelDetailsLanguageCodeEnum = "ar"
+	TranscriptionModelDetailsLanguageCodeAz   TranscriptionModelDetailsLanguageCodeEnum = "az"
+	TranscriptionModelDetailsLanguageCodeBe   TranscriptionModelDetailsLanguageCodeEnum = "be"
+	TranscriptionModelDetailsLanguageCodeBg   TranscriptionModelDetailsLanguageCodeEnum = "bg"
+	TranscriptionModelDetailsLanguageCodeBs   TranscriptionModelDetailsLanguageCodeEnum = "bs"
+	TranscriptionModelDetailsLanguageCodeCa   TranscriptionModelDetailsLanguageCodeEnum = "ca"
+	TranscriptionModelDetailsLanguageCodeCs   TranscriptionModelDetailsLanguageCodeEnum = "cs"
+	TranscriptionModelDetailsLanguageCodeCy   TranscriptionModelDetailsLanguageCodeEnum = "cy"
+	TranscriptionModelDetailsLanguageCodeDa   TranscriptionModelDetailsLanguageCodeEnum = "da"
+	TranscriptionModelDetailsLanguageCodeDe   TranscriptionModelDetailsLanguageCodeEnum = "de"
+	TranscriptionModelDetailsLanguageCodeEl   TranscriptionModelDetailsLanguageCodeEnum = "el"
+	TranscriptionModelDetailsLanguageCodeEn   TranscriptionModelDetailsLanguageCodeEnum = "en"
+	TranscriptionModelDetailsLanguageCodeEs   TranscriptionModelDetailsLanguageCodeEnum = "es"
+	TranscriptionModelDetailsLanguageCodeEt   TranscriptionModelDetailsLanguageCodeEnum = "et"
+	TranscriptionModelDetailsLanguageCodeFa   TranscriptionModelDetailsLanguageCodeEnum = "fa"
+	TranscriptionModelDetailsLanguageCodeFi   TranscriptionModelDetailsLanguageCodeEnum = "fi"
+	TranscriptionModelDetailsLanguageCodeFr   TranscriptionModelDetailsLanguageCodeEnum = "fr"
+	TranscriptionModelDetailsLanguageCodeGl   TranscriptionModelDetailsLanguageCodeEnum = "gl"
+	TranscriptionModelDetailsLanguageCodeHe   TranscriptionModelDetailsLanguageCodeEnum = "he"
+	TranscriptionModelDetailsLanguageCodeHi   TranscriptionModelDetailsLanguageCodeEnum = "hi"
+	TranscriptionModelDetailsLanguageCodeHr   TranscriptionModelDetailsLanguageCodeEnum = "hr"
+	TranscriptionModelDetailsLanguageCodeHu   TranscriptionModelDetailsLanguageCodeEnum = "hu"
+	TranscriptionModelDetailsLanguageCodeHy   TranscriptionModelDetailsLanguageCodeEnum = "hy"
+	TranscriptionModelDetailsLanguageCodeId   TranscriptionModelDetailsLanguageCodeEnum = "id"
+	TranscriptionModelDetailsLanguageCodeIs   TranscriptionModelDetailsLanguageCodeEnum = "is"
+	TranscriptionModelDetailsLanguageCodeIt   TranscriptionModelDetailsLanguageCodeEnum = "it"
+	TranscriptionModelDetailsLanguageCodeJa   TranscriptionModelDetailsLanguageCodeEnum = "ja"
+	TranscriptionModelDetailsLanguageCodeKk   TranscriptionModelDetailsLanguageCodeEnum = "kk"
+	TranscriptionModelDetailsLanguageCodeKn   TranscriptionModelDetailsLanguageCodeEnum = "kn"
+	TranscriptionModelDetailsLanguageCodeKo   TranscriptionModelDetailsLanguageCodeEnum = "ko"
+	TranscriptionModelDetailsLanguageCodeLt   TranscriptionModelDetailsLanguageCodeEnum = "lt"
+	TranscriptionModelDetailsLanguageCodeLv   TranscriptionModelDetailsLanguageCodeEnum = "lv"
+	TranscriptionModelDetailsLanguageCodeMi   TranscriptionModelDetailsLanguageCodeEnum = "mi"
+	TranscriptionModelDetailsLanguageCodeMk   TranscriptionModelDetailsLanguageCodeEnum = "mk"
+	TranscriptionModelDetailsLanguageCodeMr   TranscriptionModelDetailsLanguageCodeEnum = "mr"
+	TranscriptionModelDetailsLanguageCodeMs   TranscriptionModelDetailsLanguageCodeEnum = "ms"
+	TranscriptionModelDetailsLanguageCodeNe   TranscriptionModelDetailsLanguageCodeEnum = "ne"
+	TranscriptionModelDetailsLanguageCodeNl   TranscriptionModelDetailsLanguageCodeEnum = "nl"
+	TranscriptionModelDetailsLanguageCodeNo   TranscriptionModelDetailsLanguageCodeEnum = "no"
+	TranscriptionModelDetailsLanguageCodePl   TranscriptionModelDetailsLanguageCodeEnum = "pl"
+	TranscriptionModelDetailsLanguageCodePt   TranscriptionModelDetailsLanguageCodeEnum = "pt"
+	TranscriptionModelDetailsLanguageCodeRo   TranscriptionModelDetailsLanguageCodeEnum = "ro"
+	TranscriptionModelDetailsLanguageCodeRu   TranscriptionModelDetailsLanguageCodeEnum = "ru"
+	TranscriptionModelDetailsLanguageCodeSk   TranscriptionModelDetailsLanguageCodeEnum = "sk"
+	TranscriptionModelDetailsLanguageCodeSl   TranscriptionModelDetailsLanguageCodeEnum = "sl"
+	TranscriptionModelDetailsLanguageCodeSr   TranscriptionModelDetailsLanguageCodeEnum = "sr"
+	TranscriptionModelDetailsLanguageCodeSv   TranscriptionModelDetailsLanguageCodeEnum = "sv"
+	TranscriptionModelDetailsLanguageCodeSw   TranscriptionModelDetailsLanguageCodeEnum = "sw"
+	TranscriptionModelDetailsLanguageCodeTa   TranscriptionModelDetailsLanguageCodeEnum = "ta"
+	TranscriptionModelDetailsLanguageCodeTh   TranscriptionModelDetailsLanguageCodeEnum = "th"
+	TranscriptionModelDetailsLanguageCodeTl   TranscriptionModelDetailsLanguageCodeEnum = "tl"
+	TranscriptionModelDetailsLanguageCodeTr   TranscriptionModelDetailsLanguageCodeEnum = "tr"
+	TranscriptionModelDetailsLanguageCodeUk   TranscriptionModelDetailsLanguageCodeEnum = "uk"
+	TranscriptionModelDetailsLanguageCodeUr   TranscriptionModelDetailsLanguageCodeEnum = "ur"
+	TranscriptionModelDetailsLanguageCodeVi   TranscriptionModelDetailsLanguageCodeEnum = "vi"
+	TranscriptionModelDetailsLanguageCodeZh   TranscriptionModelDetailsLanguageCodeEnum = "zh"
 )
 
 var mappingTranscriptionModelDetailsLanguageCodeEnum = map[string]TranscriptionModelDetailsLanguageCodeEnum{
@@ -125,6 +247,63 @@ var mappingTranscriptionModelDetailsLanguageCodeEnum = map[string]TranscriptionM
 	"fr-FR": TranscriptionModelDetailsLanguageCodeFrFr,
 	"de-DE": TranscriptionModelDetailsLanguageCodeDeDe,
 	"it-IT": TranscriptionModelDetailsLanguageCodeItIt,
+	"af":    TranscriptionModelDetailsLanguageCodeAf,
+	"ar":    TranscriptionModelDetailsLanguageCodeAr,
+	"az":    TranscriptionModelDetailsLanguageCodeAz,
+	"be":    TranscriptionModelDetailsLanguageCodeBe,
+	"bg":    TranscriptionModelDetailsLanguageCodeBg,
+	"bs":    TranscriptionModelDetailsLanguageCodeBs,
+	"ca":    TranscriptionModelDetailsLanguageCodeCa,
+	"cs":    TranscriptionModelDetailsLanguageCodeCs,
+	"cy":    TranscriptionModelDetailsLanguageCodeCy,
+	"da":    TranscriptionModelDetailsLanguageCodeDa,
+	"de":    TranscriptionModelDetailsLanguageCodeDe,
+	"el":    TranscriptionModelDetailsLanguageCodeEl,
+	"en":    TranscriptionModelDetailsLanguageCodeEn,
+	"es":    TranscriptionModelDetailsLanguageCodeEs,
+	"et":    TranscriptionModelDetailsLanguageCodeEt,
+	"fa":    TranscriptionModelDetailsLanguageCodeFa,
+	"fi":    TranscriptionModelDetailsLanguageCodeFi,
+	"fr":    TranscriptionModelDetailsLanguageCodeFr,
+	"gl":    TranscriptionModelDetailsLanguageCodeGl,
+	"he":    TranscriptionModelDetailsLanguageCodeHe,
+	"hi":    TranscriptionModelDetailsLanguageCodeHi,
+	"hr":    TranscriptionModelDetailsLanguageCodeHr,
+	"hu":    TranscriptionModelDetailsLanguageCodeHu,
+	"hy":    TranscriptionModelDetailsLanguageCodeHy,
+	"id":    TranscriptionModelDetailsLanguageCodeId,
+	"is":    TranscriptionModelDetailsLanguageCodeIs,
+	"it":    TranscriptionModelDetailsLanguageCodeIt,
+	"ja":    TranscriptionModelDetailsLanguageCodeJa,
+	"kk":    TranscriptionModelDetailsLanguageCodeKk,
+	"kn":    TranscriptionModelDetailsLanguageCodeKn,
+	"ko":    TranscriptionModelDetailsLanguageCodeKo,
+	"lt":    TranscriptionModelDetailsLanguageCodeLt,
+	"lv":    TranscriptionModelDetailsLanguageCodeLv,
+	"mi":    TranscriptionModelDetailsLanguageCodeMi,
+	"mk":    TranscriptionModelDetailsLanguageCodeMk,
+	"mr":    TranscriptionModelDetailsLanguageCodeMr,
+	"ms":    TranscriptionModelDetailsLanguageCodeMs,
+	"ne":    TranscriptionModelDetailsLanguageCodeNe,
+	"nl":    TranscriptionModelDetailsLanguageCodeNl,
+	"no":    TranscriptionModelDetailsLanguageCodeNo,
+	"pl":    TranscriptionModelDetailsLanguageCodePl,
+	"pt":    TranscriptionModelDetailsLanguageCodePt,
+	"ro":    TranscriptionModelDetailsLanguageCodeRo,
+	"ru":    TranscriptionModelDetailsLanguageCodeRu,
+	"sk":    TranscriptionModelDetailsLanguageCodeSk,
+	"sl":    TranscriptionModelDetailsLanguageCodeSl,
+	"sr":    TranscriptionModelDetailsLanguageCodeSr,
+	"sv":    TranscriptionModelDetailsLanguageCodeSv,
+	"sw":    TranscriptionModelDetailsLanguageCodeSw,
+	"ta":    TranscriptionModelDetailsLanguageCodeTa,
+	"th":    TranscriptionModelDetailsLanguageCodeTh,
+	"tl":    TranscriptionModelDetailsLanguageCodeTl,
+	"tr":    TranscriptionModelDetailsLanguageCodeTr,
+	"uk":    TranscriptionModelDetailsLanguageCodeUk,
+	"ur":    TranscriptionModelDetailsLanguageCodeUr,
+	"vi":    TranscriptionModelDetailsLanguageCodeVi,
+	"zh":    TranscriptionModelDetailsLanguageCodeZh,
 }
 
 var mappingTranscriptionModelDetailsLanguageCodeEnumLowerCase = map[string]TranscriptionModelDetailsLanguageCodeEnum{
@@ -138,6 +317,63 @@ var mappingTranscriptionModelDetailsLanguageCodeEnumLowerCase = map[string]Trans
 	"fr-fr": TranscriptionModelDetailsLanguageCodeFrFr,
 	"de-de": TranscriptionModelDetailsLanguageCodeDeDe,
 	"it-it": TranscriptionModelDetailsLanguageCodeItIt,
+	"af":    TranscriptionModelDetailsLanguageCodeAf,
+	"ar":    TranscriptionModelDetailsLanguageCodeAr,
+	"az":    TranscriptionModelDetailsLanguageCodeAz,
+	"be":    TranscriptionModelDetailsLanguageCodeBe,
+	"bg":    TranscriptionModelDetailsLanguageCodeBg,
+	"bs":    TranscriptionModelDetailsLanguageCodeBs,
+	"ca":    TranscriptionModelDetailsLanguageCodeCa,
+	"cs":    TranscriptionModelDetailsLanguageCodeCs,
+	"cy":    TranscriptionModelDetailsLanguageCodeCy,
+	"da":    TranscriptionModelDetailsLanguageCodeDa,
+	"de":    TranscriptionModelDetailsLanguageCodeDe,
+	"el":    TranscriptionModelDetailsLanguageCodeEl,
+	"en":    TranscriptionModelDetailsLanguageCodeEn,
+	"es":    TranscriptionModelDetailsLanguageCodeEs,
+	"et":    TranscriptionModelDetailsLanguageCodeEt,
+	"fa":    TranscriptionModelDetailsLanguageCodeFa,
+	"fi":    TranscriptionModelDetailsLanguageCodeFi,
+	"fr":    TranscriptionModelDetailsLanguageCodeFr,
+	"gl":    TranscriptionModelDetailsLanguageCodeGl,
+	"he":    TranscriptionModelDetailsLanguageCodeHe,
+	"hi":    TranscriptionModelDetailsLanguageCodeHi,
+	"hr":    TranscriptionModelDetailsLanguageCodeHr,
+	"hu":    TranscriptionModelDetailsLanguageCodeHu,
+	"hy":    TranscriptionModelDetailsLanguageCodeHy,
+	"id":    TranscriptionModelDetailsLanguageCodeId,
+	"is":    TranscriptionModelDetailsLanguageCodeIs,
+	"it":    TranscriptionModelDetailsLanguageCodeIt,
+	"ja":    TranscriptionModelDetailsLanguageCodeJa,
+	"kk":    TranscriptionModelDetailsLanguageCodeKk,
+	"kn":    TranscriptionModelDetailsLanguageCodeKn,
+	"ko":    TranscriptionModelDetailsLanguageCodeKo,
+	"lt":    TranscriptionModelDetailsLanguageCodeLt,
+	"lv":    TranscriptionModelDetailsLanguageCodeLv,
+	"mi":    TranscriptionModelDetailsLanguageCodeMi,
+	"mk":    TranscriptionModelDetailsLanguageCodeMk,
+	"mr":    TranscriptionModelDetailsLanguageCodeMr,
+	"ms":    TranscriptionModelDetailsLanguageCodeMs,
+	"ne":    TranscriptionModelDetailsLanguageCodeNe,
+	"nl":    TranscriptionModelDetailsLanguageCodeNl,
+	"no":    TranscriptionModelDetailsLanguageCodeNo,
+	"pl":    TranscriptionModelDetailsLanguageCodePl,
+	"pt":    TranscriptionModelDetailsLanguageCodePt,
+	"ro":    TranscriptionModelDetailsLanguageCodeRo,
+	"ru":    TranscriptionModelDetailsLanguageCodeRu,
+	"sk":    TranscriptionModelDetailsLanguageCodeSk,
+	"sl":    TranscriptionModelDetailsLanguageCodeSl,
+	"sr":    TranscriptionModelDetailsLanguageCodeSr,
+	"sv":    TranscriptionModelDetailsLanguageCodeSv,
+	"sw":    TranscriptionModelDetailsLanguageCodeSw,
+	"ta":    TranscriptionModelDetailsLanguageCodeTa,
+	"th":    TranscriptionModelDetailsLanguageCodeTh,
+	"tl":    TranscriptionModelDetailsLanguageCodeTl,
+	"tr":    TranscriptionModelDetailsLanguageCodeTr,
+	"uk":    TranscriptionModelDetailsLanguageCodeUk,
+	"ur":    TranscriptionModelDetailsLanguageCodeUr,
+	"vi":    TranscriptionModelDetailsLanguageCodeVi,
+	"zh":    TranscriptionModelDetailsLanguageCodeZh,
 }
 
 // GetTranscriptionModelDetailsLanguageCodeEnumValues Enumerates the set of values for TranscriptionModelDetailsLanguageCodeEnum
@@ -162,6 +398,63 @@ func GetTranscriptionModelDetailsLanguageCodeEnumStringValues() []string {
 		"fr-FR",
 		"de-DE",
 		"it-IT",
+		"af",
+		"ar",
+		"az",
+		"be",
+		"bg",
+		"bs",
+		"ca",
+		"cs",
+		"cy",
+		"da",
+		"de",
+		"el",
+		"en",
+		"es",
+		"et",
+		"fa",
+		"fi",
+		"fr",
+		"gl",
+		"he",
+		"hi",
+		"hr",
+		"hu",
+		"hy",
+		"id",
+		"is",
+		"it",
+		"ja",
+		"kk",
+		"kn",
+		"ko",
+		"lt",
+		"lv",
+		"mi",
+		"mk",
+		"mr",
+		"ms",
+		"ne",
+		"nl",
+		"no",
+		"pl",
+		"pt",
+		"ro",
+		"ru",
+		"sk",
+		"sl",
+		"sr",
+		"sv",
+		"sw",
+		"ta",
+		"th",
+		"tl",
+		"tr",
+		"uk",
+		"ur",
+		"vi",
+		"zh",
 	}
 }
 
