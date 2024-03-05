@@ -339,6 +339,68 @@ func (client AIServiceSpeechClient) createTranscriptionJob(ctx context.Context, 
 	return response, err
 }
 
+// DeleteTranscriptionJob Delete API cleans job, tasks and the related metadata. However the generated transcriptions in customer tenancy will not be deleted.
+//
+// # See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/DeleteTranscriptionJob.go.html to see an example of how to use DeleteTranscriptionJob API.
+func (client AIServiceSpeechClient) DeleteTranscriptionJob(ctx context.Context, request DeleteTranscriptionJobRequest) (response DeleteTranscriptionJobResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.deleteTranscriptionJob, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = DeleteTranscriptionJobResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = DeleteTranscriptionJobResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(DeleteTranscriptionJobResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into DeleteTranscriptionJobResponse")
+	}
+	return
+}
+
+// deleteTranscriptionJob implements the OCIOperation interface (enables retrying operations)
+func (client AIServiceSpeechClient) deleteTranscriptionJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/transcriptionJobs/{transcriptionJobId}", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteTranscriptionJobResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/speech/20220101/TranscriptionJob/DeleteTranscriptionJob"
+		err = common.PostProcessServiceError(err, "AIServiceSpeech", "DeleteTranscriptionJob", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // GetTranscriptionJob Gets a Transcription Job by identifier
 //
 // # See also
