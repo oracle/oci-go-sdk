@@ -2,15 +2,13 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Email Delivery API
+// Email Delivery Submission API
 //
-// Use the Email Delivery API to do the necessary set up to send high-volume and application-generated emails through the OCI Email Delivery service.
+// Use the Email Delivery API to send high-volume and application-generated emails.
 // For more information, see Overview of the Email Delivery Service (https://docs.cloud.oracle.com/iaas/Content/Email/Concepts/overview.htm).
-//  **Note:** Write actions (POST, UPDATE, DELETE) may take several minutes to propagate and be reflected by the API.
-//  If a subsequent read request fails to reflect your changes, wait a few minutes and try again.
 //
 
-package email
+package emaildataplane
 
 import (
 	"fmt"
@@ -18,24 +16,24 @@ import (
 	"strings"
 )
 
-// WorkRequestLogEntry A log message from the execution of a work request.
-type WorkRequestLogEntry struct {
+// EmailAddress Email address Object that holds display name and email address.
+type EmailAddress struct {
 
-	// Human-readable log message.
-	Message *string `mandatory:"true" json:"message"`
+	// ASCII only email address.
+	Email *string `mandatory:"true" json:"email"`
 
-	// The time the log message was written. An RFC3339 formatted datetime string
-	Timestamp *common.SDKTime `mandatory:"true" json:"timestamp"`
+	// Display name for the email address. UTF-8 is supported for display name RFC 2047 (https://www.rfc-editor.org/rfc/rfc2047).
+	Name *string `mandatory:"false" json:"name"`
 }
 
-func (m WorkRequestLogEntry) String() string {
+func (m EmailAddress) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m WorkRequestLogEntry) ValidateEnumValue() (bool, error) {
+func (m EmailAddress) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {
