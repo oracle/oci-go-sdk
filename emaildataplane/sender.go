@@ -2,15 +2,13 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Email Delivery API
+// Email Delivery Submission API
 //
-// Use the Email Delivery API to do the necessary set up to send high-volume and application-generated emails through the OCI Email Delivery service.
+// Use the Email Delivery API to send high-volume and application-generated emails.
 // For more information, see Overview of the Email Delivery Service (https://docs.cloud.oracle.com/iaas/Content/Email/Concepts/overview.htm).
-//  **Note:** Write actions (POST, UPDATE, DELETE) may take several minutes to propagate and be reflected by the API.
-//  If a subsequent read request fails to reflect your changes, wait a few minutes and try again.
 //
 
-package email
+package emaildataplane
 
 import (
 	"fmt"
@@ -18,23 +16,22 @@ import (
 	"strings"
 )
 
-// ChangeSenderCompartmentDetails The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the compartment
-// into which the resource should be moved.
-type ChangeSenderCompartmentDetails struct {
+// Sender The envelope and the header from email address details, that is sending the email. Email address must be an approved sender.
+type Sender struct {
+	SenderAddress *EmailAddress `mandatory:"true" json:"senderAddress"`
 
-	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the compartment
-	// into which the sender should be moved.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment that contains the approved sender resource.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 }
 
-func (m ChangeSenderCompartmentDetails) String() string {
+func (m Sender) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m ChangeSenderCompartmentDetails) ValidateEnumValue() (bool, error) {
+func (m Sender) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {
