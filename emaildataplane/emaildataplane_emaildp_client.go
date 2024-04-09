@@ -141,7 +141,7 @@ func (client EmailDPClient) submitEmail(ctx context.Context, request common.OCIR
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/emaildeliverysubmission/20220926/EmailSubmittedResponse/SubmitEmail"
 		err = common.PostProcessServiceError(err, "EmailDP", "SubmitEmail", apiReferenceLink)
 		return response, err
 	}
