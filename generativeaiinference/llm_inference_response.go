@@ -90,16 +90,22 @@ type LlmInferenceResponseRuntimeTypeEnum string
 const (
 	LlmInferenceResponseRuntimeTypeCohere LlmInferenceResponseRuntimeTypeEnum = "COHERE"
 	LlmInferenceResponseRuntimeTypeLlama  LlmInferenceResponseRuntimeTypeEnum = "LLAMA"
+	LlmInferenceResponseRuntimeTypeOpenai LlmInferenceResponseRuntimeTypeEnum = "OPENAI"
+	LlmInferenceResponseRuntimeTypeDalle3 LlmInferenceResponseRuntimeTypeEnum = "DALLE3"
 )
 
 var mappingLlmInferenceResponseRuntimeTypeEnum = map[string]LlmInferenceResponseRuntimeTypeEnum{
 	"COHERE": LlmInferenceResponseRuntimeTypeCohere,
 	"LLAMA":  LlmInferenceResponseRuntimeTypeLlama,
+	"OPENAI": LlmInferenceResponseRuntimeTypeOpenai,
+	"DALLE3": LlmInferenceResponseRuntimeTypeDalle3,
 }
 
 var mappingLlmInferenceResponseRuntimeTypeEnumLowerCase = map[string]LlmInferenceResponseRuntimeTypeEnum{
 	"cohere": LlmInferenceResponseRuntimeTypeCohere,
 	"llama":  LlmInferenceResponseRuntimeTypeLlama,
+	"openai": LlmInferenceResponseRuntimeTypeOpenai,
+	"dalle3": LlmInferenceResponseRuntimeTypeDalle3,
 }
 
 // GetLlmInferenceResponseRuntimeTypeEnumValues Enumerates the set of values for LlmInferenceResponseRuntimeTypeEnum
@@ -116,6 +122,8 @@ func GetLlmInferenceResponseRuntimeTypeEnumStringValues() []string {
 	return []string{
 		"COHERE",
 		"LLAMA",
+		"OPENAI",
+		"DALLE3",
 	}
 }
 
