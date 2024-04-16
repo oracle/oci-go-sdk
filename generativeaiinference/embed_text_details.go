@@ -22,7 +22,7 @@ import (
 // EmbedTextDetails Details for the request to embed texts.
 type EmbedTextDetails struct {
 
-	// The list of strings for embeddings.
+	// Provide a list of strings with a maximum number of 96 entries. Each string can be words, a phrase, or a paragraph. The maximum length of each string entry in the list is 512 tokens.
 	Inputs []string `mandatory:"true" json:"inputs"`
 
 	ServingMode ServingMode `mandatory:"true" json:"servingMode"`

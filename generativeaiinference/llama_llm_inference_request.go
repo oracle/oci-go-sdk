@@ -60,7 +60,7 @@ type LlamaLlmInferenceRequest struct {
 	// For example, if the log probability is 5, the API returns a list of the 5 most likely tokens. The API returns the log probability of the sampled token, so there might be up to logprobs+1 elements in the response.
 	LogProbs *int `mandatory:"false" json:"logProbs"`
 
-	// The maximum number of tokens to predict for each response. Includes input plus output tokens.
+	// The maximum number of tokens that can be generated per output sequence. The token count of your prompt plus max_tokens cannot exceed the model's context length.
 	MaxTokens *int `mandatory:"false" json:"maxTokens"`
 }
 
