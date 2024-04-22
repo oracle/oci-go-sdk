@@ -4,6 +4,29 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.64.0 - 2024-04-23
+### Added
+- Support for the Cluster Placement Groups service
+- Support for new optional parameter for managing approval template in the Managed Access service
+- Support for cluster placement groups in the Compute service
+- Support for replacing boot volume for virtual machines in the Compute service
+- Support for assigning a cluster placement group to boot and block volumes in the Block Storage service
+- Support for container workload integration in the Cloud Guard service
+- Support for instances in OCI and 3rd party clouds in the OS Management service
+
+### Breaking Changes
+- The Application Migration service was decommissioned and removed
+- Support for default retries on the operations of the Managed Access service
+- The property `ManagedInstances` was made mandatory in the model `AttachManagedInstancesToManagedInstanceGroupDetails` in the OS Management service
+- The property `SoftwareSources` was made mandatory in the model `AttachSoftwareSourcesToManagedInstanceGroupDetails` in the OS Management service
+- The property `SoftwareSourceAvailabilities` was made mandatory in the model `ChangeAvailabilityOfSoftwareSourcesDetails` in the OS Management service
+- The property `ModuleName` was made mandatory in the models for `ModuleStreamProfileOnManagedInstanceGroupDetails` in the OS Management service
+- The property `InstanceLocation` was renamed to `Location` in the model `GetManagedInstanceAnalyticContentRequest` in the OS Management service
+- The property `PackageNames` was made mandatory in the model `InstallPackagesOnManagedInstanceGroupDetails` and `RemovePackagesFromManagedInstanceGroupDetails` in the OS Management service
+- The property `AdvisoryType` was renamed to `ClassificationType` in the model `ListManagedInstanceErrataRequest` in the OS Management service
+- The type of property `Architecture` was changed from `string` to `SoftwarePackageArchitectureEnum` in the OS Management service
+
+
 ## 65.63.2 - 2024-04-16
 ### Added
 - Support for calling Oracle Cloud Infrastructure services in the me-abudhabi-3 region
