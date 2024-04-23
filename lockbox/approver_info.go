@@ -24,6 +24,9 @@ type ApproverInfo struct {
 
 	// The group or user ocid of the approver for this approver level.
 	ApproverId *string `mandatory:"true" json:"approverId"`
+
+	// The identity domain ocid of the approver.
+	DomainId *string `mandatory:"false" json:"domainId"`
 }
 
 func (m ApproverInfo) String() string {
