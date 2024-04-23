@@ -18,6 +18,8 @@ import (
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ExportAccessRequests.go.html to see an example of how to use ExportAccessRequestsRequest.
 type ExportAccessRequestsRequest struct {
+
+	// Exports the list of access requests for given date range in text format
 	ExportAccessRequestsDetails `contributesTo:"body"`
 
 	// The client request ID for tracing.
@@ -119,6 +121,9 @@ type ExportAccessRequestsResponse struct {
 	// Unique Oracle-assigned identifier for the request. If you need to contact
 	// Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
+
+	// For optimistic concurrency control. See `if-match`.
+	Etag *string `presentIn:"header" name:"etag"`
 }
 
 func (response ExportAccessRequestsResponse) String() string {
