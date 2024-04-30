@@ -4,6 +4,29 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.65.0 - 2024-04-30
+### Added
+- Support for enabling unified auditing for DBHome in the Database service
+- Support for listing minor Grid Infrastructure (GI) versions available for custom GI software image creation in the Database service
+- Support for network security groups in the Recovery Cloud service 
+- Support for lineage metadata import in the Data Catalog service
+- Support for workspace properties in workspace create and update operations in the Data Integration service
+- Support for monitoring ExaCC databases in the Database Management service
+- Support for validations on target and policy before the masking process in the Data Safe service
+  
+### Breaking Changes
+- The type of property `AllSqlStatementsFetched` was changed from string to `SqlTuningSetAllSqlStatementsFetchedEnum` in the model `SqlTuningSet` in the Database Management service
+- The type of property `Reproduced` was changed from string to `SqlPlanBaselineSummaryReproducedEnum` in the model `sql_plan_baseline_summary` in the Database Management service
+- The type of property `Reproduced` was changed from string to `SqlPlanBaselineReproducedEnum` in the model `sql_plan_baseline` in the Database Management service
+- The type of property `AutoPurge` was changed from string to `SqlPlanBaselineSummaryAutoPurgeEnum` in the model `sql_plan_baseline_summary` in the Database Management service
+- The type of property `AutoPurge` was changed from string to `SqlPlanBaselineAutoPurgeEnum` in the model `sql_plan_baseline` in the Database Management service
+- The type of property `Adaptive` was changed from string to `SqlPlanBaselineSummaryAdaptiveEnum` in the model `sql_plan_baseline_summary` in the Database Management service
+- The type of property `Adaptive` was changed from string to `SqlPlanBaselineAdaptiveEnum` in the model `sql_plan_baseline` in the Database Management service
+- The type of property `Adaptive` was changed from string to `SqlPlanBaselineSummaryAdaptiveEnum` in the model `sql_plan_baseline_summary` in the Database Management service
+- The type of property `Adaptive` was changed from string to `SqlPlanBaselineAdaptiveEnum` in the model `sql_plan_baseline` in the Database Management service
+(will return to this)
+
+
 ## 65.64.0 - 2024-04-23
 ### Added
 - Support for the Cluster Placement Groups service
