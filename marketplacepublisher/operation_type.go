@@ -18,6 +18,11 @@ type OperationTypeEnum string
 
 // Set of constants representing the allowable values for OperationTypeEnum
 const (
+	OperationTypeCreateOffer                         OperationTypeEnum = "CREATE_OFFER"
+	OperationTypeUpdateOffer                         OperationTypeEnum = "UPDATE_OFFER"
+	OperationTypeDeleteOffer                         OperationTypeEnum = "DELETE_OFFER"
+	OperationTypeMoveOffer                           OperationTypeEnum = "MOVE_OFFER"
+	OperationTypeDeleteOfferAttachment               OperationTypeEnum = "DELETE_OFFER_ATTACHMENT"
 	OperationTypePublishListingRevisionPackage       OperationTypeEnum = "PUBLISH_LISTING_REVISION_PACKAGE"
 	OperationTypeUnpublishListingRevisionPackage     OperationTypeEnum = "UNPUBLISH_LISTING_REVISION_PACKAGE"
 	OperationTypePublishListingRevision              OperationTypeEnum = "PUBLISH_LISTING_REVISION"
@@ -36,6 +41,11 @@ const (
 )
 
 var mappingOperationTypeEnum = map[string]OperationTypeEnum{
+	"CREATE_OFFER":                             OperationTypeCreateOffer,
+	"UPDATE_OFFER":                             OperationTypeUpdateOffer,
+	"DELETE_OFFER":                             OperationTypeDeleteOffer,
+	"MOVE_OFFER":                               OperationTypeMoveOffer,
+	"DELETE_OFFER_ATTACHMENT":                  OperationTypeDeleteOfferAttachment,
 	"PUBLISH_LISTING_REVISION_PACKAGE":         OperationTypePublishListingRevisionPackage,
 	"UNPUBLISH_LISTING_REVISION_PACKAGE":       OperationTypeUnpublishListingRevisionPackage,
 	"PUBLISH_LISTING_REVISION":                 OperationTypePublishListingRevision,
@@ -54,6 +64,11 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 }
 
 var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
+	"create_offer":                             OperationTypeCreateOffer,
+	"update_offer":                             OperationTypeUpdateOffer,
+	"delete_offer":                             OperationTypeDeleteOffer,
+	"move_offer":                               OperationTypeMoveOffer,
+	"delete_offer_attachment":                  OperationTypeDeleteOfferAttachment,
 	"publish_listing_revision_package":         OperationTypePublishListingRevisionPackage,
 	"unpublish_listing_revision_package":       OperationTypeUnpublishListingRevisionPackage,
 	"publish_listing_revision":                 OperationTypePublishListingRevision,
@@ -83,6 +98,11 @@ func GetOperationTypeEnumValues() []OperationTypeEnum {
 // GetOperationTypeEnumStringValues Enumerates the set of values in String for OperationTypeEnum
 func GetOperationTypeEnumStringValues() []string {
 	return []string{
+		"CREATE_OFFER",
+		"UPDATE_OFFER",
+		"DELETE_OFFER",
+		"MOVE_OFFER",
+		"DELETE_OFFER_ATTACHMENT",
 		"PUBLISH_LISTING_REVISION_PACKAGE",
 		"UNPUBLISH_LISTING_REVISION_PACKAGE",
 		"PUBLISH_LISTING_REVISION",
