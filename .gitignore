@@ -16,3 +16,6 @@ temp/
 .classpath
 *.iml
 .DS_Store
+MakefileDevelopment.mk
+scripts/
+ocibuild.conf
