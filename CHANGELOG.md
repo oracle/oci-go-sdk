@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.66.0 - 2024-05-28
+### Added
+- Support for Demand Signal service
+- Support for external database connectors in the Database service
+- Support for monitoring standby databases in the Database Management service
+- Support for resource overviews in the Capacity Management service
+- Support for optional parameters in the download API in the Java Management Service Downloads service
+  
+### Breaking Changes
+- The return type of property `ResourceType` and `WorkloadType` was changed to `*string` in the models `OccAvailabilitySummary`, `ListOccAvailabilitiesRequest`, and `OccCapacityRequestBaseDetails` in the Capacity Management service
+- The model `OccCapacityRequestComputeDetails` has been removed in the Capacity Management service
+
+
 ## 65.65.3 - 2024-05-21
 ### Added
 - Support for the Resource Scheduler service
