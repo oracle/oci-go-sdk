@@ -1,0 +1,6 @@
+DotNetSDK_path=/path/to/oci-dotnet-sdk
+JavaSDK_path=/path/to/java-sdk
+GoSDK_path=/path/to/go/src/github.com/oracle/oci-go-sdk
+PythonSDK_path=/path/to/python-sdk
+RubySDK_path=/path/to/ruby-sdk
+TypescriptSDK_path=/path/to/oci-typescript-sdk

@@ -1,0 +1,757 @@
+# Configuration for defining supported labels in OCI SDK GitHub Repos.
+
+---
+# Defines the mapping between service labels on GitHub --> Jira Project owned by the respective service team.
+#   Mapping configuration supports defining more than one team teamRoutingInfo mapping, but isn't supported for MVP.
+#   For example, compute has multiple teams for different operations. Allowing the schema to account for this.
+#   However, all service labels will map to the default value for now.
+serviceLabels:
+- label: API Gateway
+  color: e21f29
+  description: Issue pertains to the API Gateway service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: APIGW
+      email: oci_apigw_ww_grp@oracle.com
+      githubUsers:
+        - owainlewis
+        - udhanshu-gargs
+- label: OS Management
+  color: e21f29
+  description: Issue pertains to the OS Management service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: OSMS
+      email: oci_osms_us_grp@oracle.com
+      githubUsers:
+        - wbora
+- label: Analytics
+  color: e21f29
+  description: Issue pertains to the Analytics service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: OAC
+      email: oci_oac_ww_grp@oracle.com
+      githubUsers:
+        - alanwlee
+        - olouchart
+- label: Announcements
+  color: e21f29
+  description: Issue pertains to the Announcements service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: AS
+      email: announcement_service_engg_team_us_grp@oracle.com
+      githubUsers: null
+- label: Archive Storage
+  color: e21f29
+  description: Issue pertains to the Archive Storage service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: CASPER
+      email: opc_casper_us_grp@oracle.com
+      githubUsers:
+        - jfriedly
+        - billywan
+        - skunjuma
+- label: Audit
+  color: e21f29
+  description: Issue pertains to the Audit service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: SHERLOCK
+      email: hydra_dev_us_grp@oracle.com
+      githubUsers: null
+- label: Block Volume
+  color: e21f29
+  description: Issue pertains to the Block Volume service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: BLOCK
+      email: sic_block_storage_us_grp@oracle.com
+      githubUsers:
+        - maxverun-oci
+        - zkkong-oci
+- label: Compute
+  color: e21f29
+  description: Issue pertains to the Compute service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: BMI
+      email: compute_dev_us_grp@oracle.com
+      githubUsers:
+        - olegd
+        - nguynguy
+- label: Container Engine
+  color: e21f29
+  description: Issue pertains to the Container Engine for Kubernetes service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: OKE
+      email: ken.caruso@oracle.com
+      githubUsers: null
+- label: Data Transfer
+  color: e21f29
+  description: Issue pertains to the Data Transfer service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: OTEC
+      email:
+        - data_transfer_platform_dev_ww_grp@oracle.com
+      githubUsers:
+        - abhayap-oci
+- label: Database
+  color: e21f29
+  description: Issue pertains to the Database service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: DBAAS
+      email: sic_dbaas_cp_us_grp@oracle.com
+      githubUsers:
+        - prafullsinghal
+        - ssingla2k
+- label: DNS
+  color: e21f29
+  description: Issue pertains to the DNS and Traffic Management service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: PD
+      email: oci_pubdns_dev_us_grp@oracle.com
+      githubUsers:
+        - marchowes-work
+        - jyoung-work
+- label: Email
+  color: e21f29
+  description: Issue pertains to the Email Delivery service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: ED
+      email: email-dev_us_grp@oracle.com
+      githubUsers:
+        - wallison
+        - pandrusz
+- label: Events
+  color: e21f29
+  description: Issue pertains to the Events service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: CLEV
+      email: oci_events_dev_grp@oracle.com
+      githubUsers:
+        - miahuang
+        - rohabhat
+        - rovashis
+        - dkyes
+        - gkwen
+- label: File Storage
+  color: e21f29
+  description: Issue pertains to the File Storage service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: FFSW
+      email: sic_ffsw_us_grp@oracle.com
+      githubUsers:
+        - jwmcclai
+        - vvoloboi
+- label: Functions
+  color: e21f29
+  description: Issue pertains to the Functions service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: FAAS
+      email: serverless_grp@oracle.com
+      githubUsers:
+        - rikgibson
+        - tteggel
+- label: Health Checks
+  color: e21f29
+  description: Issue pertains to the Health Checks service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: OHC
+      email: groan-chomskies_us_grp@oracle.com
+      githubUsers:
+        - fredtibbitts
+        - ascarb-oci
+        - stewarttfrancis
+- label: IAM
+  color: e21f29
+  description: Issue pertains to the Identity service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: ID
+      email: oci_identity_team_us_grp@oracle.com
+      githubUsers:
+        - etwebste
+        - gpremach
+- label: Key Management
+  color: e21f29
+  description: Issue pertains to the Key Management service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: KMS
+      email: sparta_kms_us_grp@oracle.com
+      githubUsers:
+        - frolinek
+        - asiow
+- label: Load Balancing
+  color: e21f29
+  description: Issue pertains to the Load Balancing service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: LBCP
+      email: oci_lbaas_dev_us_grp@oracle.com
+      githubUsers:
+        - chencche-oci
+        - ajiva-oci
+        - gopigopa-oci
+- label: Marketplace
+  color: e21f29
+  description: Issue pertains to the Marketplace service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: MAR
+      email: oci_marketplace_seattle_us_grp@oracle.com
+      githubUsers:
+        - pnichols9000
+        - acato
+- label: Monitoring
+  color: e21f29
+  description: Issue pertains to the Monitoring service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: TEL
+      email: pic_ion_dev_grp@oracle.com
+      githubUsers:
+        - sudha.raghavan@oracle.com
+        - dana.cozmei@oracle.com
+- label: Networking
+  color: e21f29
+  description: Issue pertains to the Networking service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: VCN
+      email: bmc_vcn_cp_us_grp@oracle.com
+      githubUsers:
+        - aurashb
+        - balasiv
+- label: Notifications
+  color: e21f29
+  description: Issue pertains to the Notifications service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: ONS
+      email: team_oci_ons_us_grp@oracle.com
+      githubUsers:
+        - qllioci
+        - paulkimoracle
+- label: Object Storage
+  color: e21f29
+  description: Issue pertains to the Object Storage service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: CASPER
+      email: opc_casper_us_grp@oracle.com
+      githubUsers:
+        - jfriedly
+        - billywan
+        - skunjuma
+- label: Registry
+  color: e21f29
+  description: Issue pertains to the Registry service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: OCIR
+      email: justin.ko@oracle.com
+      githubUsers: null
+- label: Resource Manager
+  color: e21f29
+  description: Issue pertains to the Resource Manager service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: ORCH
+      email: team_oci_orm_us_grp@oracle.com
+      githubUsers:
+        - sn-narang
+- label: Search
+  color: e21f29
+  description: Issue pertains to the Search service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: RQS
+      email: rqs_engg_team_us_grp@oracle.com
+      githubUsers:
+        - priteshkp
+        - mojiezhong
+- label: SDK
+  color: e21f29
+  description: Issue pertains to the SDK itself and not specific to any service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: DEX
+      email: jalevy_org_ww@oracle.com
+      githubUsers:
+        - jodoglevy
+- label: Streaming
+  color: e21f29
+  description: Issue pertains to the Streaming service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: STREAMSTR
+      email: opc_streaming_us_grp@oracle.com
+      githubUsers:
+        - JulienDollon
+        - tbdSomnath
+- label: WAF
+  color: e21f29
+  description: Issue pertains to the WAF service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: WAAS
+      email: oci_waas_dev_us_grp@oracle.com
+      githubUsers:
+        - admtnnr
+        - gibson042
+- label: Application Migration
+  color: e21f29
+  description: Issue pertains to the Application Migration service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: MIGRATE
+      email: oci-ams-dev_ww_grp@oracle.com
+      githubUsers: null
+- label: Data Flow
+  color: e21f29
+  description: Issue pertains to the Data Flow service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: SSS
+      email: sss_dev_ww_grp@oracle.com
+      githubUsers:
+        - thlau
+        - alexandp
+- label: Data Catalog
+  color: e21f29
+  description: Issue pertains to the Data Catalog service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: DCAT
+      email: datacatalog_ww_grp@oracle.com
+      githubUsers:
+        - rvelisar
+        - tshephar
+        - gseethar
+        - jspeidel
+- label: Data Science
+  color: e21f29
+  description: Issue pertains to the Data Science service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: ODSC
+      email: datascience_grp@oracle.com
+      githubUsers:
+        - jason_slepicka
+        - janie_chen
+        - hcavalle
+        - brandon_ayers
+- label: Limits
+  color: e21f29
+  description: Issue pertains to the Limits service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: LIM
+      email: platform_limits_grp@oracle.com
+      githubUsers:
+        - philneworacle
+        - marekczajka
+- label: Cloud Shell
+  color: e21f29
+  description: Feedback/Issue related to the Cloud Shell service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: CLOUDSH
+      email: oci_cloud_shell_ww_grp@oracle.com
+      githubUsers:
+        - ckasso
+- label: Blockchain
+  color: e21f29
+  description: Issue pertains to the Blockchain service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: OBP
+      email: bcs_devops_ww_grp@oracle.com
+      githubUsers:
+        - maurice.gamanho@oracle.com
+        - carlo.innocenti@oracle.com
+- label: Budget
+  color: e21f29
+  description: Issue pertains to the Budget service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: COMP
+      email: plat_compartments_us_grp@oracle.com
+      githubUsers:
+        - philneworacle
+        - gagankarora
+- label: Content and Experience
+  color: e21f29
+  description: Issue pertains to the Content and Experience service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: CEC
+      email: cec_devops_ww_grp@oracle.com
+      githubUsers:
+        - nbshah
+        - sfrankli
+- label: MySQL Database
+  color: e21f29
+  description: Issue pertains to the MySQL Database service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: MY
+      email: mysqlaas-ops_ww_grp@oracle.com
+      githubUsers:
+        - mark.leith@oracle.com
+        - airton.lastori@oracle.com
+        - josh.sled@oracle.com
+- label: NoSQL Database
+  color: e21f29
+  description: Issue pertains to the NoSQL Database service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: NOSQL
+      email: andc_ops_ww_grp@oracle.com
+      githubUsers:
+        - chlamb
+        - mbrey
+- label: Support Management
+  color: e21f29
+  description: Issue pertains to the Support Management service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: CIMS
+      email: oci_ops_cims_dev_us_grp@oracle.com
+      githubUsers:
+        - jayeshgangadharan
+        - chinmai-padalkar
+        - vaseer45
+- label: VMWare Solution
+  color: e21f29
+  description: Issue pertains to the VMWare Solution service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: OCVP
+      email: sic_ocvp_us_grp@oracle.com
+      githubUsers:
+        - pritams21
+        - paykin
+- label: Data Integration
+  color: e21f29
+  description: Issue pertains to the Data Integration service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: DIS
+      email: dis_ops_alerts_ww_grp@oracle.com
+      githubUsers:
+        - githubUser1
+        - githubUser2
+- label: Data Safe
+  color: e21f29
+  description: Issue pertains to the Data Safe service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: DS
+      email: datasafe_dex_ww_grp@oracle.com
+      githubUsers:
+        - CHLIANG
+        - DGRAJ       
+- label: Digital Assistant
+  color: e21f29
+  description: Issue pertains to the Digital Assistant service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: ODA
+      email: ibcs_infra_ww_grp@oracle.com
+      githubUsers:
+        - cbroadbe
+        - srikantoracle    
+- label: Secret Management
+  color: e21f29
+  description: Issue pertains to the Secret Management service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: SECSVC
+      email: team_oci_vault_us_grp@oracle.com
+      githubUsers:
+        - frolinek
+        - asiow    
+- label: Usage
+  color: e21f29
+  description: Issue pertains to the Usage service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: METER
+      email: oci_metering_team_us_grp@oracle.com
+      githubUsers:
+        - brent.eyler@oracle.com
+        - xingchi.cheng@oracle.com  
+- label: Work Request
+  color: e21f29
+  description: Issue pertains to the Work Request service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: WORKREQ
+      email: kewilke_org_ww@oracle.com
+      githubUsers:
+        - Kenwilk13
+        - josh-potter  
+- label: Big Data
+  color: e21f29
+  description: Issue pertains to the Big Data service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: BDSV2
+      email: obds-devops_ww_grp@oracle.com
+      githubUsers:
+        - vit-kotacka
+        - pblahaorcl         
+- label: Cloud Advisor
+  color: e21f29
+  description: Issue pertains to the Cloud Advisor (Optimizer) service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: OPTIMIZER
+      email: oracle_cloud_optimizer_us_grp@oracle.com
+      githubUsers:
+        - null
+        - null            
+- label: Cloud Guard
+  color: e21f29
+  description: Issue pertains to the Cloud Guard service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: SECCEN
+      email: seccen-engg_ww_grp@oracle.com
+      githubUsers:
+        - prakashyamuna
+        - kmapprity
+- label: GoldenGate
+  color: e21f29
+  description: Issue pertains to the GoldenGate service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: GGS
+      email: ggs_team_ww_grp@oracle.com
+      githubUsers:
+        - sbalousek
+- label: Logging
+  color: e21f29
+  description: Issue pertains to the Logging service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: HYD
+      email: hydra_dev_us_grp@oracle.com
+      githubUsers:
+        - dherasko
+        - sbhaktav
+- label: Management Agent
+  color: e21f29
+  description: Issue pertains to the Management Agent service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: MGMTAGENT
+      email: team_oci_mgmtagent_macs_ww_grp@oracle.com
+      githubUsers:
+        - null
+        - null
+- label: Management Dashboard
+  color: e21f29
+  description: Issue pertains to the Management Dashboard service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: MGMTUI
+      email: em_target_analytics_grp@oracle.com
+      githubUsers:
+        - ora-jerry
+        - fmorshed
+- label: Vulnerability Scanning
+  color: e21f29
+  description: Issue pertains to the Vulnerability Scanning service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: VSS
+      email: team_oci_scanning_us_grp@oracle.com
+      githubUsers:
+        - sanjaychadda
+        - JFairbairnSmith
+- label: Web Application Acceleration and Security
+  color: e21f29
+  description: Issue pertains to the Web Application Acceleration and Security service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: WAAS
+      email: oci_waas_dev_us_grp@oracle.com
+      githubUsers:
+        - admtnnr
+        - gibson042     
+- label: Operations Insights
+  color: e21f29
+  description: Issue pertains to the Operations Insights service
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: DBX
+      email: dbx_dev_ww_grp@oracle.com
+      githubUsers:
+        - girbalac
+        - gurleyc1 
+- label: Service Connector Hub
+  color: e21f29
+  description: Issue pertains to the Service Connector Hub
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: OCH
+      email: och_us-grp@oracle.com
+      githubUsers:
+        - JulienDollon
+- label: Media Services
+  color: e21f29
+  description: Issue pertains to the Media Services
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: DMP
+      email: oci_dig_media_svc_us_grp@oracle.com
+      githubUsers:
+        - null
+- label: Application Dependency Management
+  color: e21f29
+  description: Issue pertains to the Application Dependency Management
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: AMW
+      email: amw-dev_ww_grp@oracle.com
+      githubUsers:
+        - HGuiroux
+        - douglasclarke
+- label: Logging Analytics
+  color: e21f29
+  description: Issue pertains to the Logging Analytics
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: LOGAN
+      email: omc_loganalytics_dev_ww_grp@oracle.com
+      githubUsers:
+        - ora-jerry
+        - nimakaveh
+- label: Tenant Manager
+  color: e21f29
+  description: Issue pertains to the Tenant Manager
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: ACCMGMT
+      email: acc_customer_tools_us_grp@oracle.com
+      githubUsers:
+        - didijain
+        - philneworacle
+- label: Certificates Management
+  color: e21f29
+  description: Issue pertains to the Certificates Management
+  teamRoutingInfo:
+    - name: default
+      jira:
+        project: OCICERT
+      email: team_oci_certificates_us_grp@oracle.com
+      githubUsers:
+        - mmganes
+        - nkelley
+# Project to create a ticket to keep track of unlabeled Github customer issues
+unlabeledRoutingInfo:
+  jira:
+    project: DEX
+
+# Standard GitHub labels that are shared between all of the SDK GitHub repositories.
+standardLabels:
+  - label: bug
+    color: ee0701
+  - label: done pending release
+    color: d5f29b
+  - label: duplicate
+    color: cccccc
+  - label: enhancement
+    color: 84b6eb
+  - label: help wanted
+    color: 128A0C
+  - label: invalid
+    color: e6e6e6
+  - label: pending implementation and release
+    color: fbca04
+  - label: question
+    color: cc317c
+  - label: under consideration for backlog
+    color: bfdadc
+  - label: wontfix
+    color: ffffff

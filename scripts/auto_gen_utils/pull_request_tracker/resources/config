@@ -1,0 +1,6 @@
+[DEFAULT]
+user = ocid1.user.oc1..aaaaaaaa7wzg3q5rbxxvp2qfdkeof7cy3cgymnxxud5up6qgyztiugjerxha
+fingerprint = 5a:3c:61:f0:1c:23:4f:8e:aa:cf:e9:fb:c2:b1:5a:19
+key_file = resources/dexreq_pr_tracker.pem
+tenancy = ocid1.tenancy.oc1..aaaaaaaa3vi3ft3yi3sq4nhiql4nvbzjz6gipbn72h7werl6njs6xsq4wgdq
+region = us-phoenix-1

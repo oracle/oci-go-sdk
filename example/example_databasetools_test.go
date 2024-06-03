@@ -12,6 +12,9 @@
 //   - ExampleCreateMySqlConnectionWithPublicIp
 //   - ExampleCreateMySqlDbSystemConnectionWithPrivateEndpoint
 //
+// Generic JDBC:
+//   - ExampleCreateGenericJdbcConnection
+//
 // Starting the examples:
 //   - First, set environment variables accordingly (see comments below)
 //   - Run with go test
@@ -76,6 +79,58 @@ type config struct {
 	TargetCompartmentId *string
 	EndpointServiceId   *string
 	SubnetId            *string
+}
+
+// Example use case: Create a Generic JDBC connection
+//
+// # This example creates a Generic JDBC Database Tools Connection
+//
+// Prequisites:
+//   - An existing Vault for storage of secrets
+//   - A previously configured .oci/config file with a [DEFAULT] section
+//   - The following environment variable set:
+//   - OCI_VAULT_OCID : The ocid for a vault (to store secrets)
+//
+// High-level Steps:
+//
+//	1- Store the secret in the Vault (as base64 encoded strings)
+//	2- Create the connection
+//	3- Cleanup
+func ExampleCreateGenericJdbcConnection() {
+	cfg := newConfig()
+
+	// Create the secret and validate that it was properly created
+	passwordSecretId, _ := createSecretInVault(common.String("DatabasePassword"), cfg)
+	if passwordSecretId == nil || cfg.getVaultCompartmentId() == nil {
+		log.Printf("There was an error. Either the password couldn't be created or there was no defined compartment id")
+		return
+	}
+
+	// Create a new Generic JDBC connection
+	connectionCreationDetails := databasetools.CreateDatabaseToolsConnectionGenericJdbcDetails{
+		UserName:       common.String("test-user"),
+		UserPassword:   databasetools.DatabaseToolsUserPasswordSecretIdDetails{SecretId: passwordSecretId},
+		CompartmentId:  cfg.getVaultCompartmentId(),
+		Url:            common.String("jdbc:mysql://localhost:3306"),
+		DisplayName:    common.String("dbtools-temp-connection-" + helpers.GetRandomString(10)),
+		RuntimeSupport: databasetools.RuntimeSupportUnsupported,
+	}
+	connectionId, err := createDatabaseToolsConnection(connectionCreationDetails, cfg)
+	if err != nil {
+		log.Printf("error creating the connection: %v\n", err)
+	}
+
+	// Cleanup
+	if err := deleteSecret(passwordSecretId, cfg); err != nil {
+		log.Printf("error deleting secret: %v\n", err)
+	}
+	if err := deleteConnection(connectionId, cfg); err != nil {
+		log.Printf("error deleting connection: %v\n", err)
+	}
+
+	fmt.Println("ExampleCreateGenericJdbcConnection complete")
+	// Output:
+	// ExampleCreateGenericJdbcConnection complete
 }
 
 // Example Use Case: Existing ADB-S with public IP (no ACL)
@@ -714,7 +769,7 @@ func createSecretInVault(secretValue *string, cfg config) (*string, error) {
 	log.Printf("=== Creating secret %s in vault %s\n", toString(displayName), toString(cfg.VaultId))
 	response, err := client.CreateSecret(cfg.Ctx, vault.CreateSecretRequest{
 		CreateSecretDetails: vault.CreateSecretDetails{
-			CompartmentId: cfg.TargetCompartmentId,
+			CompartmentId: cfg.getVaultCompartmentId(),
 			SecretContent: vault.Base64SecretContentDetails{
 				Content: secretValue,
 			},
@@ -955,8 +1010,6 @@ func (cfg config) getConnectionString() (connectionString *string) {
 			connectionString = cfg.getMySqlDbSystemConnectionString()
 		} else if strings.Contains(id, ".autonomousdatabase.") {
 			connectionString = cfg.getADBsConnectionString("low")
-		} else {
-			log.Println("Connection string is not defined")
 		}
 	}
 	return

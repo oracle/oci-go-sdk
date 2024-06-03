@@ -1,0 +1,45 @@
+{# <li>
+    <a href="{{ pull_request.links.self[0].href }}">{{ pull_request.title }}</a>
+    <p>Author: {{ pull_request.author.user.displayName }}</p>
+    <p>Approvers: {{ (pull_request.reviewers | selectattr("status", "equalto", "APPROVED")) | map(attribute='user') | map(attribute='displayName') | join(', ') }}<p>
+#}
+
+ {% set needs_work = (pull_request.reviewers | selectattr('status', 'equalto', 'NEEDS_WORK') | list | length) > 0 %}
+ {% set approved = (pull_request.reviewers | selectattr('status', 'equalto', 'APPROVED') | list | length) > 0 %}
+ {% set build_failure = (pull_request.builds | selectattr('state', 'equalto', 'FAILED') | list | length) > 0 %}
+  <!-- <a href="{{ pull_request.links.self[0].href }}" target="_blank" class="list-group-item list-group-item-action flex-column align-items-start {% if pull_request.state == "MERGED" %}list-group-item-success{% else %}{% if needs_work %}list-group-item-warning{% else %}{% if build_failure %}list-group-item-danger{% else %}{% if approved %}list-group-item-primary{% else %}list-group-item-secondary{% endif %}{% endif %}{% endif %}{% endif %}"> -->
+  <a href="{{ pull_request.links.self[0].href }}" target="_blank" class="list-group-item list-group-item-action flex-column align-items-start pull-request-list-group-item {{ pull_request.dexreq_status_class }}">
+    <div style='float:left;padding-bottom:10'>
+      {% for build in pull_request.builds %}
+        {% if build.state == "SUCCESSFUL" %}
+          <i title="Build Succeeded: {{ build.name }}" class="ml-1 fas fa-check-circle"></i>
+        {% endif %}
+        {% if build.state == "FAILED" %}
+          <i title="Build Failed: {{ build.name }}" class="ml-1 fas fa-exclamation-circle"></i>
+        {% endif %}
+        {% if build.state == "INPROGRESS" %}
+          <i title="Build In Progress: {{ build.name }}" class="ml-1 fas fa-question-circle"></i>
+        {% endif %}
+      {% endfor %}
+      <!-- {% if (pull_request.reviewers | selectattr('status', 'equalto', 'APPROVED') | list | length) %}<i title="Approved" class="ml-1 fas fa-user-check"></i>{% endif %} -->
+      {% if pull_request.has_dex_approver %}<i title="DEX Approved" class="ml-1 fas fa-user-graduate"></i>{% endif %}
+      {% if pull_request.has_non_dex_approver %}<i title="Non DEX Approved" class="ml-1 fas fa-user"></i>{% endif %}
+      {% if (pull_request.reviewers | selectattr('status', 'equalto', 'NEEDS_WORK') | list | length) %}<i title="Needs Work" class="ml-1 fas fa-minus-circle"></i>{% endif %}
+      {% if pull_request.properties.mergeResult and pull_request.properties.mergeResult.outcome == "CONFLICTED" %}<i title="Merge conflict" class="ml-1 fas fa-exclamation-triangle"></i>{% endif %}
+      {% if pull_request.has_samples %}<i title='Has sample' class="ml-1 far fa-file-code"></i>{% endif %}
+      {% if pull_request.has_recordings %}<i title='Has recordings' class="ml-1 fas fa-microphone-alt"></i>{% endif %}
+      {% if pull_request.has_changelog %}<i title='Has changelog' class="ml-1 fas fa-list-ul"></i>{% endif %}
+      {% if pull_request.state == "MERGED" %}<span class="badge list-group-item-dark">MERGED</span>{% endif %}
+    </div>
+    <div class="d-flex w-100 justify-content-between">
+      <h6 class="mb-1" title="{{ pull_request.title }}">{{ pull_request.title | truncate(50) }}</h5>
+    </div>
+    {# <p class="mb-1">{{ pull_request.toRef.repository.name }}</p> #}
+    <small>Author: {{ pull_request.author.user.displayName }} | Approvers: {{ (pull_request.reviewers | selectattr("status", "equalto", "APPROVED")) | map(attribute='user') | map(attribute='displayName') | join(', ') }}</small>
+    <br/>
+    <small>Updated: {{ pull_request.updatedDate | unix_date_format }}</small>
+    <br/>
+    {% if pull_request.missing %}
+    <small>Blockers: {{ (pull_request.missing | join(', ')) }}</small>
+    {% endif %}
+  </a>

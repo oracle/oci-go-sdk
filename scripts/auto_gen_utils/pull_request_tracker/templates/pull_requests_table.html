@@ -1,0 +1,15 @@
+{% if (pull_requests| length) > 1 %}
+    {% set pull_request = pull_requests[0] %}
+    {% include 'pull_request_table.html' %}
+
+    <div id="{{ more_prs_div_id }}-{{ udx_ticket.key }}" class="collapse">
+    {% for pull_request in pull_requests[1:] %}
+        {% include 'pull_request_table.html' %}
+    {% endfor %}
+    </div>
+    <a data-toggle="collapse" href="#{{ more_prs_div_id }}-{{ udx_ticket.key }}" style="text-align: center; ">view more / less</a>
+{% else %}
+    {% for pull_request in pull_requests %}
+        {% include 'pull_request_table.html' %}
+    {% endfor %}
+{% endif %}

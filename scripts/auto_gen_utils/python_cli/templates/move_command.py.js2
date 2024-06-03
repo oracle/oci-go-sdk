@@ -1,0 +1,6 @@
+
+
+# oci {{old_command}} -> oci {{new_command}}
+{{service_cli}}.{{old_parent_group}}.commands.pop({{service_cli}}.{{command_group}}.name)
+{{service_cli}}.{{new_parent_group}}.add_command({{service_cli}}.{{command_group}})
+

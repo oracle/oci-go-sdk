@@ -1,0 +1,6 @@
+
+    {% for rename in rename_parameters -%}
+    if '{{ rename[1] }}' in kwargs:
+        kwargs['{{ rename[0] }}'] = kwargs['{{ rename[1] }}']
+        kwargs.pop('{{ rename[1] }}')
+{% endfor -%}
