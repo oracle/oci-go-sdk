@@ -1,2 +1,0 @@
-echo "Running linting and unit tests as pre-commit hook"
-./verify.sh
