@@ -17,7 +17,7 @@ click==7.1.2
 configparser~=4.0.2
 
 cryptography==3.2.1; python_version < '3'
-cryptography==39.0.2; python_version >= '3'
+cryptography==42.0.4; python_version >= '3'
 
 defusedxml==0.6.0
 dotmap==1.2.20
