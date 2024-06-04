@@ -45,7 +45,7 @@ verlib==0.1
 voluptuous==0.11.5
 flake8==3.7.9
 stashy==0.5
-Jinja2==2.11.2
+Jinja2==3.1.4
 python-dateutil==2.7.3
 vcrpy==1.13.0
 setuptools==44.1.1
