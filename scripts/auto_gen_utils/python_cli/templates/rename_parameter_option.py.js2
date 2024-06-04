@@ -1,0 +1,3 @@
+{% for param in param_dict -%}
+@cli_util.option('--{{param[1]}}',{{param[0][param[0]['name']] or ' '}}help="""{{param[0]['help']}}""")
+{% endfor -%}

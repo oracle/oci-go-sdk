@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.67.0 - 2024-06-04
+### Added
+- Support for creating cross-region autonomous data guards in the Database service
+- Support for listing autonomous database peers in the Database service
+- Support for dedicated AI clusters in the Generative AI service
+- Support for Llama chat and Lora Fine-Tuning method in the Generative AI service
+- Support for adding and removing locks for connections, deployments, and deployment backups in the GoldenGate service
+- Support for additional connection types for deployments and connections in the GoldenGate service
+  
+### Breaking Changes
+- The model `Message` was changed from type struct to type interface, and the property `Role` was removed, in the Generative AI service
+- The model `CohereMessage` was changed from type struct to type interface, and the properties `Role` and `Message` were removed, in the Generative AI service
+- The enum members `OPENAI` and `DALLE3` were removed in the model `LlmInferenceResponseRuntimeTypeEnum`, in the Generative AI service
+- The property `Message` was changed from type `*Message` to type `Message` in the `ChatChoice` model in the Generative AI service
+
+
 ## 65.66.0 - 2024-05-28
 ### Added
 - Support for Demand Signal service

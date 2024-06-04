@@ -1,0 +1,3 @@
+{% for key, value in params_options.items() -%}
+@cli_util.option('--{{key}}', {{", ".join(value)}})
+{% endfor -%}

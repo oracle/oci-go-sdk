@@ -1,0 +1,2 @@
+@cli_util.copy_params_from_generated_command({{service_cli}}.{{command}}, params_to_exclude={{params_to_exclude}})
+

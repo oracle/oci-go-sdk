@@ -1,0 +1,250 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
+        <style>
+            .legend-icon {
+                padding-top: 30px
+            }
+            .legend-form-group {
+                margin-bottom:0px!important
+            }
+            .comments-box {
+                width: 500px
+            }
+            .pull-request-list-group-item {
+                padding: .25rem!important
+            }
+        </style>
+    </head>
+    <!-- zoom out to make everything fit in view, hacky but easier than redesigning -->
+    <body style="zoom: 30%;">
+        <div class="container-fluid">
+            <br/>
+            <h3>{{report_name}}: UDX tickets as of {{ generated_time }}</h3>
+            <div>
+                <span class="badge list-group-item-secondary">Merged</span>
+                <!-- <span class="badge list-group-item-danger">Build Failure</span> -->
+                <span class="badge list-group-item-warning">Missing prerequisites</span>
+                <span class="badge list-group-item-primary">Ready for DEX Review</span>
+                <span class="badge list-group-item-success">Ready for Merge</span>
+
+                <!-- Add a button to pop up a legend -->
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#legendModal">Detailed Legend</button>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="legendModal" role="dialog">
+                <div class="modal-dialog" style='max-width: 1000px'>
+                
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Legend</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group legend-form-group row">
+                                <label  class="col-sm-6 col-form-label">Build Succeeded</label>
+                                <div class="col-sm-6 legend-icon">
+                                    <i title="Build Succeeded" class="ml-1 fas fa-check-circle"></i>
+                                </div>
+                            </div>
+                            <div class="form-group legend-form-group row">
+                                <label  class="col-sm-6 col-form-label">Build Failed</label>
+                                <div class="col-sm-6 legend-icon">
+                                        <i title="Build Failed" class="ml-1 fas fa-exclamation-circle"></i>
+                                </div>
+                            </div>
+                            <div class="form-group legend-form-group row">
+                                <label  class="col-sm-6 col-form-label">Build In Progress</label>
+                                <div class="col-sm-6 legend-icon">
+                                        <i title="Build In Progress" class="ml-1 fas fa-question-circle"></i>
+                                </div>
+                            </div>
+                            <div class="form-group legend-form-group row">
+                                <label  class="col-sm-6 col-form-label">DEX Approved</label>
+                                <div class="col-sm-6 legend-icon">
+                                    <i title="DEX Approved" class="ml-1 fas fa-user-graduate"></i>
+                                </div>
+                            </div>
+                            <div class="form-group legend-form-group row">
+                                <label  class="col-sm-6 col-form-label">Non DEX Approved</label>
+                                <div class="col-sm-6 legend-icon">
+                                    <i title="Non DEX Approved" class="ml-1 fas fa-user"></i>
+                                </div>
+                            </div>
+                            <div class="form-group legend-form-group row">
+                                <label  class="col-sm-6 col-form-label">Marked Needs Work</label>
+                                <div class="col-sm-6 legend-icon">
+                                    <i title="Needs Work" class="ml-1 fas fa-minus-circle"></i>
+                                </div>
+                            </div>
+                            <div class="form-group legend-form-group  row">
+                                <label  class="col-sm-6 col-form-label">Merge conflict</label>
+                                <div class="col-sm-6 legend-icon">
+                                    <i title="Merge conflict" class="ml-1 fas fa-exclamation-triangle"></i>
+                                </div>
+                            </div>
+                            <div class="form-group legend-form-group row">
+                                <label  class="col-sm-6 col-form-label">Has recordings (CLI Only)</label>
+                                <div class="col-sm-6 legend-icon">
+                                    <i title='Has recordings' class="ml-1 fas fa-microphone-alt"></i>
+                                </div>
+                            </div>
+                            <div class="form-group legend-form-group row">
+                                <label  class="col-sm-6 col-form-label">Has changelog (CLI only)</label>
+                                <div class="col-sm-6 legend-icon">
+                                    <i title='Has changelog' class="ml-1 fas fa-list-ul"></i>
+                                </div>
+                            </div>
+                            <div class="form-group legend-form-group row">
+                                <label  class="col-sm-6 col-form-label">Has sample (Java + CLI)</label>
+                                <div class="col-sm-6 legend-icon">
+                                    <i title='Has sample' class="ml-1 far fa-file-code"></i>
+                                </div>
+                            </div>
+                        </form>
+                        <p>Note: Hover over icons in table to get a description</p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            <br/>
+            
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm">
+                <thead>
+                    <tr>
+                    <th scope="col">UDX</th>
+                    <th scope="col">DEXREQ</th>
+                    <th scope="col">Testing Service</th>
+                    <th scope="col">Java</th>
+                    <th scope="col">CLI</th>
+                    <th scope="col">Python</th>
+                    <th scope="col">Ruby</th>
+                    <th scope="col">Go</th>
+                    <th scope="col">Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if tickets %}
+                        {% for udx_ticket in tickets %}
+                            {% include 'issue_table.html' %}
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"  crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            // this script handles loading / saivng comments to and from object storage
+            var saveCurrentComments = function() {
+                console.log('saving all comments')
+
+                var allLocalComments = {}
+                var commentsBoxes = $(".comments-box")
+                if (commentsBoxes) {
+                    for (var i=0; i<commentsBoxes.length; i++) {
+                        var textareaId = commentsBoxes[i].id
+                        var commentText = commentsBoxes[i].value
+                        allLocalComments[textareaId] = commentText
+                    }
+                }
+
+                console.log('saving local comments: ' + JSON.stringify(allLocalComments))
+
+                // fetch current comments from server, overwrite with local values and save back
+                // if our comments are out of date, fail and tell the user to refresh the page
+                $.ajax({
+                    type: 'GET',
+                    headers: {'if-match': LAST_ETAG},
+                    url: dataStorePAR,
+                    success: function(dataStoreFromServer){
+                        console.log("Current state of datastore:")
+                        console.log(dataStoreFromServer)
+
+                        var mergedComments = dataStoreFromServer.comments
+                        if (!mergedComments){
+                            mergedComments = {}
+                        }
+
+                        // go through all local comments and add them mergedComments
+                        // so all local comments will take precedence over server comments
+                        var keys = Object.keys(allLocalComments)
+                        for (var i=0; i<keys.length; i++) {
+                            var key = keys[i]
+                            mergedComments[key] = allLocalComments[key]
+                        }
+
+                        // update dataStoreFromServer with merged comments
+                        dataStoreFromServer.comments = mergedComments
+
+                        $.ajax({
+                            url: dataStorePAR,
+                            contentType: "application/json",
+                            type: "PUT",
+                            data: JSON.stringify(dataStoreFromServer),
+                            success: function(result, textStatus, request){
+                                console.log("Successfully saved comments")
+                                console.log(result)
+
+                                LAST_ETAG = request.getResponseHeader('Etag')
+                                console.log('Updated ETag: ' + LAST_ETAG)
+                            },
+                            error: function(result, textStatus, errorThrown) {
+                                alert('Error saving comments. ' + JSON.stringify(result))
+                            }
+                        });
+                    },
+                    error: function(result, textStatus, errorThrown) {
+                        console.log(JSON.stringify(result))
+
+                        if (result && result.responseJSON && result.responseJSON.code == 'IfMatchFailed') {
+                            alert('Could not update comments because they have been updated by someone else. Please refresh your page.')
+                        }
+                    }
+                });
+            }
+
+            // add blur listeners to comment boxes to save comments every time a comment box loses focus
+            var commentsBoxes = $(".comments-box")
+            if (commentsBoxes) {
+                for (var i=0; i<commentsBoxes.length; i++) {
+                    $(commentsBoxes[i]).blur(saveCurrentComments)
+                }
+            }
+
+            var dataStorePAR = "https://objectstorage.us-phoenix-1.oraclecloud.com/p/Sy7XXIKMDfXao-zvGfqXbMn6E1_xtz1GTCifWx6J8Cc/n/dex-us-phx-cli-1/b/dexreq_reports/o/datastore.json"
+            $.ajax({url: dataStorePAR, success: function(result, textStatus, request){
+                console.log("Downloaded the following comments from data store PAR:")
+                console.log(result)
+
+                LAST_ETAG = request.getResponseHeader('Etag')
+                console.log('ETag: ' + LAST_ETAG)
+
+                var allComments = result.comments
+                if (allComments) {
+                    var keys = Object.keys(allComments)
+                    for (var i=0; i<keys.length; i++) {
+                        var key = keys[i]
+                        var textareaElement = $('#' + key);
+                        if (textareaElement.length > 0) {
+                            textareaElement[0].value = allComments[key]
+                        }
+                    }
+                }
+            }});
+        </script>
+      </div>
+    </body>
+</html>

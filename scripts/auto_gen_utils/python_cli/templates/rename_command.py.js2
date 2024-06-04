@@ -1,0 +1,9 @@
+
+
+{% for command in renamed_commands -%}
+# oci {{command['old_command']}} -> oci {{command['new_command']}}
+{% endfor -%}
+{% for command in renamed_commands -%}
+cli_util.rename_command({{command['service_cli']}}, {{command['service_cli']}}.{{command['command_parent_group']}}, {{command['child_service_cli']}}.{{command['command_group']}}, "{{command['new_name']}}")
+{% endfor -%}
+
