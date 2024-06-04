@@ -26,7 +26,7 @@ funcsigs==1.0.2
 future==0.16.0
 gitdb2==2.0.3
 GitPython==2.1.9
-idna==2.7
+idna==3.7
 ipaddress==1.0.22
 
 jira==1.0.15; python_version < '3.7.0'
