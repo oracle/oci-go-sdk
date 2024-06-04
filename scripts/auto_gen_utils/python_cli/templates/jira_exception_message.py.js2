@@ -1,0 +1,4 @@
+{% for key, value in raised_exceptions.items() %}
+Input line : {{key}}
+Error is : {{value.message}}
+{% endfor %}

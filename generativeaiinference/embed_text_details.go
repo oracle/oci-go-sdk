@@ -5,7 +5,7 @@
 // Generative AI Service Inference API
 //
 // OCI Generative AI is a fully managed service that provides a set of state-of-the-art, customizable large language models (LLMs) that cover a wide range of use cases for text generation, summarization, and text embeddings.
-// Use the Generative AI service inference API to access your custom model endpoints, or to try the out-of-the-box models to GenerateText, SummarizeText, and EmbedText.
+// Use the Generative AI service inference API to access your custom model endpoints, or to try the out-of-the-box models to Chat, GenerateText, SummarizeText, and EmbedText.
 // To use a Generative AI custom model for inference, you must first create an endpoint for that model. Use the Generative AI service management API (https://docs.cloud.oracle.com/#/en/generative-ai/latest/) to Model by fine-tuning an out-of-the-box model, or a previous version of a custom model, using your own data. Fine-tune the custom model on a  DedicatedAiCluster. Then, create a DedicatedAiCluster with an Endpoint to host your custom model. For resource management in the Generative AI service, use the Generative AI service management API (https://docs.cloud.oracle.com/#/en/generative-ai/latest/).
 // To learn more about the service, see the Generative AI documentation (https://docs.cloud.oracle.com/iaas/Content/generative-ai/home.htm).
 //
@@ -22,12 +22,12 @@ import (
 // EmbedTextDetails Details for the request to embed texts.
 type EmbedTextDetails struct {
 
-	// Provide a list of strings with a maximum number of 96 entries. Each string can be words, a phrase, or a paragraph. The maximum length of each string entry in the list is 512 tokens.
+	// Provide a list of strings. Each string can be words, a phrase, or a paragraph. The maximum length of each string entry in the list is 512 tokens.
 	Inputs []string `mandatory:"true" json:"inputs"`
 
 	ServingMode ServingMode `mandatory:"true" json:"servingMode"`
 
-	// The OCID of compartment that the user is authorized to use to call into the Generative AI service.
+	// The OCID of compartment in which to call the Generative AI service to create text embeddings.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// Whether or not to include the original inputs in the response. Results are index-based.

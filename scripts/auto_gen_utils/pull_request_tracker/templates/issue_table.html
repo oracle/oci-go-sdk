@@ -1,0 +1,142 @@
+{% if show_public %}
+<tr>
+    <td {% if show_preview %}rowspan="2"{% endif %}>
+        <h5 title="{{ udx_ticket.summary }}"><a target="_blank" href="https://jira.oci.oraclecorp.com/browse/{{ udx_ticket.key }}">{{ udx_ticket.key }}</a></h5>
+        <h6><span class="badge badge-secondary">{{ udx_ticket.status }}</span></h6>
+        <h6>{{ udx_ticket.summary }}</h6>
+        <h6>Console {{ udx_ticket.console_ga_date }}</h6>
+        <h6>CLI {{ udx_ticket.cli_ga_date }}</h6>
+        <h6>SDK {{ udx_ticket.sdk_ga_date }}</h6>
+    </td>
+    {% if udx_ticket.public_issues %}
+    <td>
+        {% for public_issue in udx_ticket.public_issues %}
+            <a target="_blank" href="https://jira.oci.oraclecorp.com/browse/{{ public_issue.key }}">PUBLIC-{{ public_issue.key }}</a>
+            <br/>
+            {% if public_issue.available_in_prod %}
+            Available in Prod: <i class="fas fa-check" style="color: green"></i>
+            {% else %}
+            Available in Prod: <i class="fas fa-times" style="color: red"></i>
+            {% endif %}
+            {{ "<br/>" if not loop.last }}
+        {% endfor %}
+    </td>
+    <td>
+        <div class="list-group">
+            {% for pull_request in udx_ticket.pull_requests.master.testing %}
+                {% include 'pull_request_table.html' %}
+            {% endfor %}
+        </div>
+    </td>
+    <td>
+        <div class="list-group">
+            {% for pull_request in udx_ticket.pull_requests.master.java %}
+                {% include 'pull_request_table.html' %}
+            {% endfor %}
+        </div>
+    </td>
+    <td>
+        <div class="list-group">
+            {% for pull_request in udx_ticket.pull_requests.master.cli %}
+                {% include 'pull_request_table.html' %}
+            {% endfor %}
+        </div>
+    </td>
+    <td>
+        <div class="list-group">
+            {% for pull_request in udx_ticket.pull_requests.master.python %}
+                {% include 'pull_request_table.html' %}
+            {% endfor %}
+        </div>
+    </td>
+    <td>
+        <div class="list-group">
+            {% for pull_request in udx_ticket.pull_requests.master.ruby %}
+                {% include 'pull_request_table.html' %}
+            {% endfor %}
+        </div>
+    </td>
+    <td>
+        <div class="list-group">
+            {% for pull_request in udx_ticket.pull_requests.master.go %}
+                {% include 'pull_request_table.html' %}
+            {% endfor %}
+        </div>
+    </td>
+    <td>
+        <div class="list-group">
+            <textarea class="form-control comments-box" ticket="{{ udx_ticket.key }}-public" id="{{ udx_ticket.key }}-public" rows="8"></textarea>
+        </div>
+    </td>
+    {% endif %}
+</tr>
+{% endif %}
+{% if show_preview %}
+<tr>
+    {% if not show_public %}
+    <td>
+        <h5 title="{{ udx_ticket.summary }}"><a target="_blank" href="https://jira.oci.oraclecorp.com/browse/{{ udx_ticket.key }}">{{ udx_ticket.key }}</a></h5>
+        <h6><span class="badge badge-secondary">{{ udx_ticket.status }}</span></h6>
+        <h6>{{ udx_ticket.summary }}</h6>
+        <h6>Console {{ udx_ticket.console_ga_date }}</h6>
+        <h6>CLI {{ udx_ticket.cli_ga_date }}</h6>
+        <h6>SDK {{ udx_ticket.sdk_ga_date }}</h6>
+    </td>
+    {% endif %}
+    {% if udx_ticket.preview_issues %}
+    <td>
+        {% for preview_issue in udx_ticket.preview_issues %}
+            <a target="_blank" href="https://jira.oci.oraclecorp.com/browse/{{ preview_issue.key }}">PREVIEW-{{ preview_issue.key }}</a>
+            {{ "<br/>" if not loop.last }}
+        {% endfor %}
+    </td>
+    <td>
+        <div class="list-group">
+            {% set more_prs_div_id = "more-prs-preview-testing" %}
+            {% set pull_requests = udx_ticket.pull_requests.preview.testing %}
+            {% include 'pull_requests_table.html' %}
+        </div>
+    </td>
+    <td>
+        <div class="list-group">
+            {% set more_prs_div_id = "more-prs-preview-java" %}
+            {% set pull_requests = udx_ticket.pull_requests.preview.java %}
+            {% include 'pull_requests_table.html' %}
+        </div>
+    </td>
+    <td>
+        <div class="list-group">
+            {% set more_prs_div_id = "more-prs-preview-cli" %}
+            {% set pull_requests = udx_ticket.pull_requests.preview.cli %}
+            {% include 'pull_requests_table.html' %}
+        </div>
+    </td>
+    <td>
+        <div class="list-group">
+            {% set more_prs_div_id = "more-prs-preview-python" %}
+            {% set pull_requests = udx_ticket.pull_requests.preview.python %}
+            {% include 'pull_requests_table.html' %}
+        </div>
+    </td>
+    <td>
+        <div class="list-group">
+            {% set more_prs_div_id = "more-prs-preview-ruby" %}
+            {% set pull_requests = udx_ticket.pull_requests.preview.ruby %}
+            {% include 'pull_requests_table.html' %}
+        </div>
+    </td>
+    <td>
+        <div class="list-group">
+            {% set more_prs_div_id = "more-prs-preview-go" %}
+            {% set pull_requests = udx_ticket.pull_requests.preview.go %}
+            {% include 'pull_requests_table.html' %}
+        </div>
+    </td>
+    <td>
+        <div class="list-group">
+            <textarea class="form-control comments-box" ticket="{{ udx_ticket.key }}-preview" id="{{ udx_ticket.key }}-preview" rows="8"></textarea>
+        </div>
+    </td>
+    {% endif %}
+</tr>
+{% endif %}

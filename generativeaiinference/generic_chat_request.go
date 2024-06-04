@@ -5,7 +5,7 @@
 // Generative AI Service Inference API
 //
 // OCI Generative AI is a fully managed service that provides a set of state-of-the-art, customizable large language models (LLMs) that cover a wide range of use cases for text generation, summarization, and text embeddings.
-// Use the Generative AI service inference API to access your custom model endpoints, or to try the out-of-the-box models to GenerateText, SummarizeText, and EmbedText.
+// Use the Generative AI service inference API to access your custom model endpoints, or to try the out-of-the-box models to Chat, GenerateText, SummarizeText, and EmbedText.
 // To use a Generative AI custom model for inference, you must first create an endpoint for that model. Use the Generative AI service management API (https://docs.cloud.oracle.com/#/en/generative-ai/latest/) to Model by fine-tuning an out-of-the-box model, or a previous version of a custom model, using your own data. Fine-tune the custom model on a  DedicatedAiCluster. Then, create a DedicatedAiCluster with an Endpoint to host your custom model. For resource management in the Generative AI service, use the Generative AI service management API (https://docs.cloud.oracle.com/#/en/generative-ai/latest/).
 // To learn more about the service, see the Generative AI documentation (https://docs.cloud.oracle.com/iaas/Content/generative-ai/home.htm).
 //
@@ -22,16 +22,16 @@ import (
 // GenericChatRequest Details for the chat request.
 type GenericChatRequest struct {
 
-	// The series of messages associated with this chat completion request. It should include previous messages in the conversation. Each message has a role and content.
+	// The series of messages in a chat request. Includes the previous messages in a conversation. Each message includes a role (`USER` or the `CHATBOT`) and content.
 	Messages []Message `mandatory:"false" json:"messages"`
 
-	// Whether to stream back partial progress. If set, tokens are sent as data-only server-sent events as they become available.
+	// Whether to stream back partial progress. If set to true, as tokens become available, they are sent as data-only server-sent events.
 	IsStream *bool `mandatory:"false" json:"isStream"`
 
 	// The number of of generated texts that will be returned.
 	NumGenerations *int `mandatory:"false" json:"numGenerations"`
 
-	// Whether or not to return the user prompt in the response. Applies only to non-stream results.
+	// Whether to include the user prompt in the response. Applies only to non-stream results.
 	IsEcho *bool `mandatory:"false" json:"isEcho"`
 
 	// An integer that sets up the model to use only the top k most likely tokens in the generated output. A higher k introduces more randomness into the output making the output text sound more natural. Default value is -1 which means to consider all tokens. Setting to 0 disables this method and considers all tokens.
@@ -60,10 +60,12 @@ type GenericChatRequest struct {
 	// For example, if the log probability is 5, the API returns a list of the 5 most likely tokens. The API returns the log probability of the sampled token, so there might be up to logprobs+1 elements in the response.
 	LogProbs *int `mandatory:"false" json:"logProbs"`
 
-	// The maximum number of tokens that can be generated per output sequence. The token count of your prompt plus max_tokens cannot exceed the model's context length.
+	// The maximum number of tokens that can be generated per output sequence. The token count of your prompt plus `maxTokens` must not exceed the model's context length.
+	// Not setting a value for maxTokens results in the possible use of model's full context length.
 	MaxTokens *int `mandatory:"false" json:"maxTokens"`
 
-	// Modify the likelihood of specified tokens appearing in the completion.
+	// Modifies the likelihood of specified tokens that appear in the completion.
+	// Example: '{"6395": 2, "8134": 1, "21943": 0.5, "5923": -100}'
 	LogitBias *interface{} `mandatory:"false" json:"logitBias"`
 }
 
@@ -95,4 +97,66 @@ func (m GenericChatRequest) MarshalJSON() (buff []byte, e error) {
 	}
 
 	return json.Marshal(&s)
+}
+
+// UnmarshalJSON unmarshals from json
+func (m *GenericChatRequest) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		Messages         []message    `json:"messages"`
+		IsStream         *bool        `json:"isStream"`
+		NumGenerations   *int         `json:"numGenerations"`
+		IsEcho           *bool        `json:"isEcho"`
+		TopK             *int         `json:"topK"`
+		TopP             *float64     `json:"topP"`
+		Temperature      *float64     `json:"temperature"`
+		FrequencyPenalty *float64     `json:"frequencyPenalty"`
+		PresencePenalty  *float64     `json:"presencePenalty"`
+		Stop             []string     `json:"stop"`
+		LogProbs         *int         `json:"logProbs"`
+		MaxTokens        *int         `json:"maxTokens"`
+		LogitBias        *interface{} `json:"logitBias"`
+	}{}
+
+	e = json.Unmarshal(data, &model)
+	if e != nil {
+		return
+	}
+	var nn interface{}
+	m.Messages = make([]Message, len(model.Messages))
+	for i, n := range model.Messages {
+		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)
+		if e != nil {
+			return e
+		}
+		if nn != nil {
+			m.Messages[i] = nn.(Message)
+		} else {
+			m.Messages[i] = nil
+		}
+	}
+	m.IsStream = model.IsStream
+
+	m.NumGenerations = model.NumGenerations
+
+	m.IsEcho = model.IsEcho
+
+	m.TopK = model.TopK
+
+	m.TopP = model.TopP
+
+	m.Temperature = model.Temperature
+
+	m.FrequencyPenalty = model.FrequencyPenalty
+
+	m.PresencePenalty = model.PresencePenalty
+
+	m.Stop = make([]string, len(model.Stop))
+	copy(m.Stop, model.Stop)
+	m.LogProbs = model.LogProbs
+
+	m.MaxTokens = model.MaxTokens
+
+	m.LogitBias = model.LogitBias
+
+	return
 }
