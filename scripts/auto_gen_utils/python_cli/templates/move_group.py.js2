@@ -1,8 +1,0 @@
-
-
-# Move commands under 'oci {{old_group}}' -> 'oci {{new_group}}'
-{{new_service_cli}}.{{old_parent_group}}.commands.pop({{service_cli}}.{{old_command_group}}.name)
-{% for command in moved_commands -%}
-{{new_service_cli}}.{{new_parent_group}}.add_command({{service_cli}}.{{command}})
-{% endfor -%}
-
