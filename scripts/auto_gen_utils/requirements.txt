@@ -14,7 +14,7 @@ enum34==1.1.6
 funcsigs==1.0.2
 future==0.16.0
 gitdb2==2.0.3
-GitPython==2.1.9
+GitPython==3.1.41
 idna==2.7
 ipaddress==1.0.22
 jira==1.0.15; python_version < '3.7.0'
