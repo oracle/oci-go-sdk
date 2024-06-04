@@ -40,7 +40,7 @@ simplejson==3.16.0
 six==1.11.0
 smmap2==2.0.3
 uritemplate==0.6
-urllib3==1.26.2
+urllib3==1.26.18
 verlib==0.1
 voluptuous==0.11.5
 flake8==3.7.9
