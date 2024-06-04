@@ -1,9 +1,0 @@
-
-
-{% for command in removed_commands -%}
-# Remove {{command['command']}} from oci {{command['full_command']}}
-{% endfor -%}
-{% for command in removed_commands -%}
-{{command['service_cli']}}.{{command['parent_group']}}.commands.pop({{command['service_cli']}}.{{command['command_group']}}.name)
-{% endfor -%}
-
