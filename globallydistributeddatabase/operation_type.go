@@ -36,6 +36,18 @@ const (
 	OperationTypeUploadSignedCertAndGenerateWallet OperationTypeEnum = "UPLOAD_SIGNED_CERT_AND_GENERATE_WALLET"
 	OperationTypeGenerateGsmCertSigningReq         OperationTypeEnum = "GENERATE_GSM_CERT_SIGNING_REQ"
 	OperationTypeConfigureSharding                 OperationTypeEnum = "CONFIGURE_SHARDING"
+	OperationTypeExecuteValidateNetworkTests       OperationTypeEnum = "EXECUTE_VALIDATE_NETWORK_TESTS"
+	OperationTypeUpdateShard                       OperationTypeEnum = "UPDATE_SHARD"
+	OperationTypePrivateDeleteSdb                  OperationTypeEnum = "PRIVATE_DELETE_SDB"
+	OperationTypeProcessShardedDatabase            OperationTypeEnum = "PROCESS_SHARDED_DATABASE"
+	OperationTypeCreateCatalogs                    OperationTypeEnum = "CREATE_CATALOGS"
+	OperationTypeCreateShards                      OperationTypeEnum = "CREATE_SHARDS"
+	OperationTypeCreateGsmNodes                    OperationTypeEnum = "CREATE_GSM_NODES"
+	OperationTypeAddGsmNodes                       OperationTypeEnum = "ADD_GSM_NODES"
+	OperationTypePrivateDeleteAtpdCatalog          OperationTypeEnum = "PRIVATE_DELETE_ATPD_CATALOG"
+	OperationTypePrivateDeleteAtpdShard            OperationTypeEnum = "PRIVATE_DELETE_ATPD_SHARD"
+	OperationTypePrivateDeleteGsm                  OperationTypeEnum = "PRIVATE_DELETE_GSM"
+	OperationTypeReinstateProxyInstance            OperationTypeEnum = "REINSTATE_PROXY_INSTANCE"
 )
 
 var mappingOperationTypeEnum = map[string]OperationTypeEnum{
@@ -57,6 +69,18 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"UPLOAD_SIGNED_CERT_AND_GENERATE_WALLET": OperationTypeUploadSignedCertAndGenerateWallet,
 	"GENERATE_GSM_CERT_SIGNING_REQ":          OperationTypeGenerateGsmCertSigningReq,
 	"CONFIGURE_SHARDING":                     OperationTypeConfigureSharding,
+	"EXECUTE_VALIDATE_NETWORK_TESTS":         OperationTypeExecuteValidateNetworkTests,
+	"UPDATE_SHARD":                           OperationTypeUpdateShard,
+	"PRIVATE_DELETE_SDB":                     OperationTypePrivateDeleteSdb,
+	"PROCESS_SHARDED_DATABASE":               OperationTypeProcessShardedDatabase,
+	"CREATE_CATALOGS":                        OperationTypeCreateCatalogs,
+	"CREATE_SHARDS":                          OperationTypeCreateShards,
+	"CREATE_GSM_NODES":                       OperationTypeCreateGsmNodes,
+	"ADD_GSM_NODES":                          OperationTypeAddGsmNodes,
+	"PRIVATE_DELETE_ATPD_CATALOG":            OperationTypePrivateDeleteAtpdCatalog,
+	"PRIVATE_DELETE_ATPD_SHARD":              OperationTypePrivateDeleteAtpdShard,
+	"PRIVATE_DELETE_GSM":                     OperationTypePrivateDeleteGsm,
+	"REINSTATE_PROXY_INSTANCE":               OperationTypeReinstateProxyInstance,
 }
 
 var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
@@ -78,6 +102,18 @@ var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
 	"upload_signed_cert_and_generate_wallet": OperationTypeUploadSignedCertAndGenerateWallet,
 	"generate_gsm_cert_signing_req":          OperationTypeGenerateGsmCertSigningReq,
 	"configure_sharding":                     OperationTypeConfigureSharding,
+	"execute_validate_network_tests":         OperationTypeExecuteValidateNetworkTests,
+	"update_shard":                           OperationTypeUpdateShard,
+	"private_delete_sdb":                     OperationTypePrivateDeleteSdb,
+	"process_sharded_database":               OperationTypeProcessShardedDatabase,
+	"create_catalogs":                        OperationTypeCreateCatalogs,
+	"create_shards":                          OperationTypeCreateShards,
+	"create_gsm_nodes":                       OperationTypeCreateGsmNodes,
+	"add_gsm_nodes":                          OperationTypeAddGsmNodes,
+	"private_delete_atpd_catalog":            OperationTypePrivateDeleteAtpdCatalog,
+	"private_delete_atpd_shard":              OperationTypePrivateDeleteAtpdShard,
+	"private_delete_gsm":                     OperationTypePrivateDeleteGsm,
+	"reinstate_proxy_instance":               OperationTypeReinstateProxyInstance,
 }
 
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum
@@ -110,6 +146,18 @@ func GetOperationTypeEnumStringValues() []string {
 		"UPLOAD_SIGNED_CERT_AND_GENERATE_WALLET",
 		"GENERATE_GSM_CERT_SIGNING_REQ",
 		"CONFIGURE_SHARDING",
+		"EXECUTE_VALIDATE_NETWORK_TESTS",
+		"UPDATE_SHARD",
+		"PRIVATE_DELETE_SDB",
+		"PROCESS_SHARDED_DATABASE",
+		"CREATE_CATALOGS",
+		"CREATE_SHARDS",
+		"CREATE_GSM_NODES",
+		"ADD_GSM_NODES",
+		"PRIVATE_DELETE_ATPD_CATALOG",
+		"PRIVATE_DELETE_ATPD_SHARD",
+		"PRIVATE_DELETE_GSM",
+		"REINSTATE_PROXY_INSTANCE",
 	}
 }
 

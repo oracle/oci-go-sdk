@@ -57,6 +57,9 @@ type PrivateEndpoint struct {
 	// Detailed message for the lifecycle state.
 	LifecycleStateDetails *string `mandatory:"false" json:"lifecycleStateDetails"`
 
+	// The identifier of the proxy compute instance.
+	ProxyComputeInstanceId *string `mandatory:"false" json:"proxyComputeInstanceId"`
+
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`

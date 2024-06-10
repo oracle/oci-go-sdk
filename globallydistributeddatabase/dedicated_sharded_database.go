@@ -61,6 +61,12 @@ type DedicatedShardedDatabase struct {
 	// Example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
 	SystemTags map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 
+	// The Replication factor for RAFT replication based sharded database. Currently supported values are 3, 5 and 7.
+	ReplicationFactor *int `mandatory:"false" json:"replicationFactor"`
+
+	// For RAFT replication based sharded database, the value should be atleast twice the number of shards.
+	ReplicationUnit *int `mandatory:"false" json:"replicationUnit"`
+
 	// The certificate common name used in all cloudAutonomousVmClusters for the sharded database topology. Eg. Production.
 	// All the clusters used in one sharded database topology shall have same CABundle setup. Valid characterset for
 	// clusterCertificateCommonName include uppercase or lowercase letters, numbers, hyphens, underscores, and period.
@@ -98,6 +104,10 @@ type DedicatedShardedDatabase struct {
 
 	// Details of ATP-D based catalogs.
 	CatalogDetails []DedicatedCatalogDetails `mandatory:"false" json:"catalogDetails"`
+
+	// The Replication method for sharded database. Use RAFT for Raft replication, and DG for
+	// DataGuard. If replicationMethod is not provided, it defaults to DG.
+	ReplicationMethod DedicatedShardedDatabaseReplicationMethodEnum `mandatory:"false" json:"replicationMethod,omitempty"`
 
 	// Possible workload types.
 	DbWorkload DedicatedShardedDatabaseDbWorkloadEnum `mandatory:"false" json:"dbWorkload,omitempty"`
@@ -168,6 +178,9 @@ func (m DedicatedShardedDatabase) String() string {
 // Not recommended for calling this function directly
 func (m DedicatedShardedDatabase) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
+	if _, ok := GetMappingDedicatedShardedDatabaseReplicationMethodEnum(string(m.ReplicationMethod)); !ok && m.ReplicationMethod != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ReplicationMethod: %s. Supported values are: %s.", m.ReplicationMethod, strings.Join(GetDedicatedShardedDatabaseReplicationMethodEnumStringValues(), ",")))
+	}
 	if _, ok := GetMappingDedicatedShardedDatabaseDbWorkloadEnum(string(m.DbWorkload)); !ok && m.DbWorkload != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DbWorkload: %s. Supported values are: %s.", m.DbWorkload, strings.Join(GetDedicatedShardedDatabaseDbWorkloadEnumStringValues(), ",")))
 	}
@@ -196,6 +209,48 @@ func (m DedicatedShardedDatabase) MarshalJSON() (buff []byte, e error) {
 	}
 
 	return json.Marshal(&s)
+}
+
+// DedicatedShardedDatabaseReplicationMethodEnum Enum with underlying type: string
+type DedicatedShardedDatabaseReplicationMethodEnum string
+
+// Set of constants representing the allowable values for DedicatedShardedDatabaseReplicationMethodEnum
+const (
+	DedicatedShardedDatabaseReplicationMethodRaft DedicatedShardedDatabaseReplicationMethodEnum = "RAFT"
+	DedicatedShardedDatabaseReplicationMethodDg   DedicatedShardedDatabaseReplicationMethodEnum = "DG"
+)
+
+var mappingDedicatedShardedDatabaseReplicationMethodEnum = map[string]DedicatedShardedDatabaseReplicationMethodEnum{
+	"RAFT": DedicatedShardedDatabaseReplicationMethodRaft,
+	"DG":   DedicatedShardedDatabaseReplicationMethodDg,
+}
+
+var mappingDedicatedShardedDatabaseReplicationMethodEnumLowerCase = map[string]DedicatedShardedDatabaseReplicationMethodEnum{
+	"raft": DedicatedShardedDatabaseReplicationMethodRaft,
+	"dg":   DedicatedShardedDatabaseReplicationMethodDg,
+}
+
+// GetDedicatedShardedDatabaseReplicationMethodEnumValues Enumerates the set of values for DedicatedShardedDatabaseReplicationMethodEnum
+func GetDedicatedShardedDatabaseReplicationMethodEnumValues() []DedicatedShardedDatabaseReplicationMethodEnum {
+	values := make([]DedicatedShardedDatabaseReplicationMethodEnum, 0)
+	for _, v := range mappingDedicatedShardedDatabaseReplicationMethodEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetDedicatedShardedDatabaseReplicationMethodEnumStringValues Enumerates the set of values in String for DedicatedShardedDatabaseReplicationMethodEnum
+func GetDedicatedShardedDatabaseReplicationMethodEnumStringValues() []string {
+	return []string{
+		"RAFT",
+		"DG",
+	}
+}
+
+// GetMappingDedicatedShardedDatabaseReplicationMethodEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDedicatedShardedDatabaseReplicationMethodEnum(val string) (DedicatedShardedDatabaseReplicationMethodEnum, bool) {
+	enum, ok := mappingDedicatedShardedDatabaseReplicationMethodEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // DedicatedShardedDatabaseDbWorkloadEnum Enum with underlying type: string

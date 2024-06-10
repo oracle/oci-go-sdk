@@ -1507,6 +1507,69 @@ func (client ShardedDatabaseServiceClient) prevalidateShardedDatabase(ctx contex
 	return response, err
 }
 
+// ReinstateProxyInstance API to reinstate the proxy instances associated with the private endpoint.
+//
+// # See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/globallydistributeddatabase/ReinstateProxyInstance.go.html to see an example of how to use ReinstateProxyInstance API.
+// A default retry strategy applies to this operation ReinstateProxyInstance()
+func (client ShardedDatabaseServiceClient) ReinstateProxyInstance(ctx context.Context, request ReinstateProxyInstanceRequest) (response ReinstateProxyInstanceResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.reinstateProxyInstance, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ReinstateProxyInstanceResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ReinstateProxyInstanceResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ReinstateProxyInstanceResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ReinstateProxyInstanceResponse")
+	}
+	return
+}
+
+// reinstateProxyInstance implements the OCIOperation interface (enables retrying operations)
+func (client ShardedDatabaseServiceClient) reinstateProxyInstance(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/privateEndpoints/{privateEndpointId}/actions/reinstateProxyInstance", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ReinstateProxyInstanceResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-autonomous-database/20230301/PrivateEndpoint/ReinstateProxyInstance"
+		err = common.PostProcessServiceError(err, "ShardedDatabaseService", "ReinstateProxyInstance", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // StartShardedDatabase Start the shards, catalog and GSMs of Sharded Database.
 //
 // # See also

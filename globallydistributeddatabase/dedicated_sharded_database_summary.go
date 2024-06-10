@@ -55,6 +55,12 @@ type DedicatedShardedDatabaseSummary struct {
 	// Example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
 	SystemTags map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 
+	// The Replication factor for RAFT replication based sharded database. Currently supported values are 3, 5 and 7.
+	ReplicationFactor *int `mandatory:"false" json:"replicationFactor"`
+
+	// For RAFT replication based sharded database, the value should be atleast twice the number of shards.
+	ReplicationUnit *int `mandatory:"false" json:"replicationUnit"`
+
 	// The certificate common name used in all cloudAutonomousVmClusters for the sharded database topology. Eg. Production.
 	// All the clusters used in one sharded database topology shall have same CABundle setup. Valid characterset for
 	// clusterCertificateCommonName include uppercase or lowercase letters, numbers, hyphens, underscores, and period.
@@ -96,6 +102,9 @@ type DedicatedShardedDatabaseSummary struct {
 
 	// Lifecycle state of sharded database.
 	LifecycleState ShardedDatabaseLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
+
+	// The Replication method for sharded database.
+	ReplicationMethod DedicatedShardedDatabaseReplicationMethodEnum `mandatory:"false" json:"replicationMethod,omitempty"`
 }
 
 // GetId returns Id
@@ -166,6 +175,9 @@ func (m DedicatedShardedDatabaseSummary) ValidateEnumValue() (bool, error) {
 
 	if _, ok := GetMappingShardedDatabaseLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetShardedDatabaseLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingDedicatedShardedDatabaseReplicationMethodEnum(string(m.ReplicationMethod)); !ok && m.ReplicationMethod != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ReplicationMethod: %s. Supported values are: %s.", m.ReplicationMethod, strings.Join(GetDedicatedShardedDatabaseReplicationMethodEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
