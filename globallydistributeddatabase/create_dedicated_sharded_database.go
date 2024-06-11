@@ -68,6 +68,12 @@ type CreateDedicatedShardedDatabase struct {
 	// Example: `{"foo-namespace": {"bar-key": "value"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 
+	// The Replication factor for RAFT replication based sharded database. Currently supported values are 3, 5 and 7.
+	ReplicationFactor *int `mandatory:"false" json:"replicationFactor"`
+
+	// For RAFT replication based sharded database, the value should be atleast twice the number of shards.
+	ReplicationUnit *int `mandatory:"false" json:"replicationUnit"`
+
 	// The certificate common name used in all cloudAutonomousVmClusters for the sharded database topology. Eg. Production.
 	// All the clusters used in one sharded database topology shall have same CABundle setup. Valid characterset for
 	// clusterCertificateCommonName include uppercase or lowercase letters, numbers, hyphens, underscores, and period.
@@ -82,6 +88,9 @@ type CreateDedicatedShardedDatabase struct {
 
 	// Sharding Method.
 	ShardingMethod CreateDedicatedShardedDatabaseShardingMethodEnum `mandatory:"true" json:"shardingMethod"`
+
+	// The Replication method for sharded database.
+	ReplicationMethod DedicatedShardedDatabaseReplicationMethodEnum `mandatory:"false" json:"replicationMethod,omitempty"`
 }
 
 // GetCompartmentId returns CompartmentId
@@ -120,6 +129,9 @@ func (m CreateDedicatedShardedDatabase) ValidateEnumValue() (bool, error) {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShardingMethod: %s. Supported values are: %s.", m.ShardingMethod, strings.Join(GetCreateDedicatedShardedDatabaseShardingMethodEnumStringValues(), ",")))
 	}
 
+	if _, ok := GetMappingDedicatedShardedDatabaseReplicationMethodEnum(string(m.ReplicationMethod)); !ok && m.ReplicationMethod != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ReplicationMethod: %s. Supported values are: %s.", m.ReplicationMethod, strings.Join(GetDedicatedShardedDatabaseReplicationMethodEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
