@@ -209,7 +209,7 @@ go install github.com/golang/lint/golint
 ```
 - Install [staticcheck](https://github.com/dominikh/go-tools) with the command:
 ```
-go install honnef.co/go/tools/cmd/staticcheck@2023.1.3
+go install honnef.co/go/tools/cmd/staticcheck@2023.1.7
 ```
 
 ### Linting and Staticcheck
