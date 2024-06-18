@@ -17,6 +17,5 @@ temp/
 *.iml
 .DS_Store
 MakefileDevelopment.mk
-scripts/
 ocibuild.conf
 shared-build-service-scripts/
