@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.69.2 - 2024-07-16
+### Added
+- Support for calling Oracle Cloud Infrastructure services in the `me-abudhabi-2` region
+
+
 ## 65.69.1 - 2024-07-09
 ### Added
 - Support for cost management of shared resources in the Usage service
