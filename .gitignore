@@ -16,3 +16,16 @@ temp/
 .classpath
 *.iml
 .DS_Store
+build_driver.log
+go_sdk_generation_success.txt
+go_sdk_build_success.txt
+real-time-logs/
+sbom_metadata_codegenMavenFindRepository.json
+scripts/reports/
+scripts/temp/
+scripts/settings.xml
+specs-without-any-changes/
+specs-without-conditional-groups/
+Test_Coverage.tar
+specs/
+dexreq_parent/
