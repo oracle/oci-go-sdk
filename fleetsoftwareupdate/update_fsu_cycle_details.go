@@ -27,6 +27,8 @@ type UpdateFsuCycleDetails interface {
 
 	GetBatchingStrategy() UpdateBatchingStrategyDetails
 
+	GetDiagnosticsCollection() *DiagnosticsCollectionDetails
+
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
 	GetFreeformTags() map[string]string
@@ -37,13 +39,14 @@ type UpdateFsuCycleDetails interface {
 }
 
 type updatefsucycledetails struct {
-	JsonData           []byte
-	DisplayName        *string                           `mandatory:"false" json:"displayName"`
-	GoalVersionDetails fsugoalversiondetails             `mandatory:"false" json:"goalVersionDetails"`
-	BatchingStrategy   updatebatchingstrategydetails     `mandatory:"false" json:"batchingStrategy"`
-	FreeformTags       map[string]string                 `mandatory:"false" json:"freeformTags"`
-	DefinedTags        map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
-	Type               string                            `json:"type"`
+	JsonData              []byte
+	DisplayName           *string                           `mandatory:"false" json:"displayName"`
+	GoalVersionDetails    fsugoalversiondetails             `mandatory:"false" json:"goalVersionDetails"`
+	BatchingStrategy      updatebatchingstrategydetails     `mandatory:"false" json:"batchingStrategy"`
+	DiagnosticsCollection *DiagnosticsCollectionDetails     `mandatory:"false" json:"diagnosticsCollection"`
+	FreeformTags          map[string]string                 `mandatory:"false" json:"freeformTags"`
+	DefinedTags           map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+	Type                  string                            `json:"type"`
 }
 
 // UnmarshalJSON unmarshals json
@@ -60,6 +63,7 @@ func (m *updatefsucycledetails) UnmarshalJSON(data []byte) error {
 	m.DisplayName = s.Model.DisplayName
 	m.GoalVersionDetails = s.Model.GoalVersionDetails
 	m.BatchingStrategy = s.Model.BatchingStrategy
+	m.DiagnosticsCollection = s.Model.DiagnosticsCollection
 	m.FreeformTags = s.Model.FreeformTags
 	m.DefinedTags = s.Model.DefinedTags
 	m.Type = s.Model.Type
@@ -99,6 +103,11 @@ func (m updatefsucycledetails) GetGoalVersionDetails() fsugoalversiondetails {
 // GetBatchingStrategy returns BatchingStrategy
 func (m updatefsucycledetails) GetBatchingStrategy() updatebatchingstrategydetails {
 	return m.BatchingStrategy
+}
+
+// GetDiagnosticsCollection returns DiagnosticsCollection
+func (m updatefsucycledetails) GetDiagnosticsCollection() *DiagnosticsCollectionDetails {
+	return m.DiagnosticsCollection
 }
 
 // GetFreeformTags returns FreeformTags

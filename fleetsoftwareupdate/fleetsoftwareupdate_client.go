@@ -971,6 +971,66 @@ func (client FleetSoftwareUpdateClient) deleteFsuCollection(ctx context.Context,
 	return response, err
 }
 
+// DeleteFsuCollectionTarget Removes a target from an existing Exadata Fleet Update Collection.
+// This operation can only be performed on Collections that do not have an Action executing under an active Fleet Software Update Cycle.
+// Additionally, during an active Fleet Software Update Cycle, a target can be removed only prior to executing an Apply Action.
+//
+// # See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/fleetsoftwareupdate/DeleteFsuCollectionTarget.go.html to see an example of how to use DeleteFsuCollectionTarget API.
+// A default retry strategy applies to this operation DeleteFsuCollectionTarget()
+func (client FleetSoftwareUpdateClient) DeleteFsuCollectionTarget(ctx context.Context, request DeleteFsuCollectionTargetRequest) (response DeleteFsuCollectionTargetResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.deleteFsuCollectionTarget, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = DeleteFsuCollectionTargetResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = DeleteFsuCollectionTargetResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(DeleteFsuCollectionTargetResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into DeleteFsuCollectionTargetResponse")
+	}
+	return
+}
+
+// deleteFsuCollectionTarget implements the OCIOperation interface (enables retrying operations)
+func (client FleetSoftwareUpdateClient) deleteFsuCollectionTarget(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/fsuCollections/{fsuCollectionId}/targets/{targetId}", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteFsuCollectionTargetResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/edsfu/20220528/FsuCollection/DeleteFsuCollectionTarget"
+		err = common.PostProcessServiceError(err, "FleetSoftwareUpdate", "DeleteFsuCollectionTarget", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // DeleteFsuCycle Deletes a Exadata Fleet Update Cycle resource by identifier.
 //
 // # See also
@@ -1316,6 +1376,64 @@ func (client FleetSoftwareUpdateClient) getFsuCollection(ctx context.Context, re
 	}
 
 	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &fsucollection{})
+	return response, err
+}
+
+// GetFsuCollectionTarget Gets a Exadata Fleet Update Collection Target by identifier.
+//
+// # See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/fleetsoftwareupdate/GetFsuCollectionTarget.go.html to see an example of how to use GetFsuCollectionTarget API.
+// A default retry strategy applies to this operation GetFsuCollectionTarget()
+func (client FleetSoftwareUpdateClient) GetFsuCollectionTarget(ctx context.Context, request GetFsuCollectionTargetRequest) (response GetFsuCollectionTargetResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getFsuCollectionTarget, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetFsuCollectionTargetResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetFsuCollectionTargetResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetFsuCollectionTargetResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetFsuCollectionTargetResponse")
+	}
+	return
+}
+
+// getFsuCollectionTarget implements the OCIOperation interface (enables retrying operations)
+func (client FleetSoftwareUpdateClient) getFsuCollectionTarget(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/fsuCollections/{fsuCollectionId}/targets/{targetId}", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetFsuCollectionTargetResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/edsfu/20220528/FsuCollectionTarget/GetFsuCollectionTarget"
+		err = common.PostProcessServiceError(err, "FleetSoftwareUpdate", "GetFsuCollectionTarget", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return response, err
 }
 

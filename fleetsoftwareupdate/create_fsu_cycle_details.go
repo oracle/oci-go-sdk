@@ -37,6 +37,8 @@ type CreateFsuCycleDetails interface {
 
 	GetApplyActionSchedule() CreateScheduleDetails
 
+	GetDiagnosticsCollection() *DiagnosticsCollectionDetails
+
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
 	GetFreeformTags() map[string]string
@@ -47,17 +49,18 @@ type CreateFsuCycleDetails interface {
 }
 
 type createfsucycledetails struct {
-	JsonData            []byte
-	DisplayName         *string                           `mandatory:"false" json:"displayName"`
-	BatchingStrategy    createbatchingstrategydetails     `mandatory:"false" json:"batchingStrategy"`
-	StageActionSchedule createscheduledetails             `mandatory:"false" json:"stageActionSchedule"`
-	ApplyActionSchedule createscheduledetails             `mandatory:"false" json:"applyActionSchedule"`
-	FreeformTags        map[string]string                 `mandatory:"false" json:"freeformTags"`
-	DefinedTags         map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
-	CompartmentId       *string                           `mandatory:"true" json:"compartmentId"`
-	FsuCollectionId     *string                           `mandatory:"true" json:"fsuCollectionId"`
-	GoalVersionDetails  fsugoalversiondetails             `mandatory:"true" json:"goalVersionDetails"`
-	Type                string                            `json:"type"`
+	JsonData              []byte
+	DisplayName           *string                           `mandatory:"false" json:"displayName"`
+	BatchingStrategy      createbatchingstrategydetails     `mandatory:"false" json:"batchingStrategy"`
+	StageActionSchedule   createscheduledetails             `mandatory:"false" json:"stageActionSchedule"`
+	ApplyActionSchedule   createscheduledetails             `mandatory:"false" json:"applyActionSchedule"`
+	DiagnosticsCollection *DiagnosticsCollectionDetails     `mandatory:"false" json:"diagnosticsCollection"`
+	FreeformTags          map[string]string                 `mandatory:"false" json:"freeformTags"`
+	DefinedTags           map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+	CompartmentId         *string                           `mandatory:"true" json:"compartmentId"`
+	FsuCollectionId       *string                           `mandatory:"true" json:"fsuCollectionId"`
+	GoalVersionDetails    fsugoalversiondetails             `mandatory:"true" json:"goalVersionDetails"`
+	Type                  string                            `json:"type"`
 }
 
 // UnmarshalJSON unmarshals json
@@ -78,6 +81,7 @@ func (m *createfsucycledetails) UnmarshalJSON(data []byte) error {
 	m.BatchingStrategy = s.Model.BatchingStrategy
 	m.StageActionSchedule = s.Model.StageActionSchedule
 	m.ApplyActionSchedule = s.Model.ApplyActionSchedule
+	m.DiagnosticsCollection = s.Model.DiagnosticsCollection
 	m.FreeformTags = s.Model.FreeformTags
 	m.DefinedTags = s.Model.DefinedTags
 	m.Type = s.Model.Type
@@ -122,6 +126,11 @@ func (m createfsucycledetails) GetStageActionSchedule() createscheduledetails {
 // GetApplyActionSchedule returns ApplyActionSchedule
 func (m createfsucycledetails) GetApplyActionSchedule() createscheduledetails {
 	return m.ApplyActionSchedule
+}
+
+// GetDiagnosticsCollection returns DiagnosticsCollection
+func (m createfsucycledetails) GetDiagnosticsCollection() *DiagnosticsCollectionDetails {
+	return m.DiagnosticsCollection
 }
 
 // GetFreeformTags returns FreeformTags

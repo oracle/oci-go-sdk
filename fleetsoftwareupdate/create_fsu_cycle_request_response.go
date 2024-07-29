@@ -18,7 +18,8 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/fleetsoftwareupdate/CreateFsuCycle.go.html to see an example of how to use CreateFsuCycleRequest.
 type CreateFsuCycleRequest struct {
 
-	// Details for the new Exadata Fleet Update Cycle.
+	// Details for the new Exadata Fleet Update Maintenance Cycle.
+	// Targets can only exist in one active Fleet Software Update Maintenance Cycle.
 	CreateFsuCycleDetails `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

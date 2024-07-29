@@ -27,6 +27,8 @@ type UpdatePatchFsuCycle struct {
 
 	BatchingStrategy UpdateBatchingStrategyDetails `mandatory:"false" json:"batchingStrategy"`
 
+	DiagnosticsCollection *DiagnosticsCollectionDetails `mandatory:"false" json:"diagnosticsCollection"`
+
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
@@ -63,6 +65,11 @@ func (m UpdatePatchFsuCycle) GetGoalVersionDetails() FsuGoalVersionDetails {
 // GetBatchingStrategy returns BatchingStrategy
 func (m UpdatePatchFsuCycle) GetBatchingStrategy() UpdateBatchingStrategyDetails {
 	return m.BatchingStrategy
+}
+
+// GetDiagnosticsCollection returns DiagnosticsCollection
+func (m UpdatePatchFsuCycle) GetDiagnosticsCollection() *DiagnosticsCollectionDetails {
+	return m.DiagnosticsCollection
 }
 
 // GetFreeformTags returns FreeformTags
@@ -111,6 +118,7 @@ func (m *UpdatePatchFsuCycle) UnmarshalJSON(data []byte) (e error) {
 		DisplayName              *string                           `json:"displayName"`
 		GoalVersionDetails       fsugoalversiondetails             `json:"goalVersionDetails"`
 		BatchingStrategy         updatebatchingstrategydetails     `json:"batchingStrategy"`
+		DiagnosticsCollection    *DiagnosticsCollectionDetails     `json:"diagnosticsCollection"`
 		FreeformTags             map[string]string                 `json:"freeformTags"`
 		DefinedTags              map[string]map[string]interface{} `json:"definedTags"`
 		IsIgnorePatches          *bool                             `json:"isIgnorePatches"`
@@ -145,6 +153,8 @@ func (m *UpdatePatchFsuCycle) UnmarshalJSON(data []byte) (e error) {
 	} else {
 		m.BatchingStrategy = nil
 	}
+
+	m.DiagnosticsCollection = model.DiagnosticsCollection
 
 	m.FreeformTags = model.FreeformTags
 
