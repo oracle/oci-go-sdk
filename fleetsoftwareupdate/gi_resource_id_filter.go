@@ -84,6 +84,7 @@ type GiResourceIdFilterEntityTypeEnum string
 
 // Set of constants representing the allowable values for GiResourceIdFilterEntityTypeEnum
 const (
+	GiResourceIdFilterEntityTypeDatabasesoftwareimage      GiResourceIdFilterEntityTypeEnum = "DATABASESOFTWAREIMAGE"
 	GiResourceIdFilterEntityTypeExadatainfrastructure      GiResourceIdFilterEntityTypeEnum = "EXADATAINFRASTRUCTURE"
 	GiResourceIdFilterEntityTypeCloudexadatainfrastructure GiResourceIdFilterEntityTypeEnum = "CLOUDEXADATAINFRASTRUCTURE"
 	GiResourceIdFilterEntityTypeVmcluster                  GiResourceIdFilterEntityTypeEnum = "VMCLUSTER"
@@ -92,6 +93,7 @@ const (
 )
 
 var mappingGiResourceIdFilterEntityTypeEnum = map[string]GiResourceIdFilterEntityTypeEnum{
+	"DATABASESOFTWAREIMAGE":      GiResourceIdFilterEntityTypeDatabasesoftwareimage,
 	"EXADATAINFRASTRUCTURE":      GiResourceIdFilterEntityTypeExadatainfrastructure,
 	"CLOUDEXADATAINFRASTRUCTURE": GiResourceIdFilterEntityTypeCloudexadatainfrastructure,
 	"VMCLUSTER":                  GiResourceIdFilterEntityTypeVmcluster,
@@ -100,6 +102,7 @@ var mappingGiResourceIdFilterEntityTypeEnum = map[string]GiResourceIdFilterEntit
 }
 
 var mappingGiResourceIdFilterEntityTypeEnumLowerCase = map[string]GiResourceIdFilterEntityTypeEnum{
+	"databasesoftwareimage":      GiResourceIdFilterEntityTypeDatabasesoftwareimage,
 	"exadatainfrastructure":      GiResourceIdFilterEntityTypeExadatainfrastructure,
 	"cloudexadatainfrastructure": GiResourceIdFilterEntityTypeCloudexadatainfrastructure,
 	"vmcluster":                  GiResourceIdFilterEntityTypeVmcluster,
@@ -119,6 +122,7 @@ func GetGiResourceIdFilterEntityTypeEnumValues() []GiResourceIdFilterEntityTypeE
 // GetGiResourceIdFilterEntityTypeEnumStringValues Enumerates the set of values in String for GiResourceIdFilterEntityTypeEnum
 func GetGiResourceIdFilterEntityTypeEnumStringValues() []string {
 	return []string{
+		"DATABASESOFTWAREIMAGE",
 		"EXADATAINFRASTRUCTURE",
 		"CLOUDEXADATAINFRASTRUCTURE",
 		"VMCLUSTER",
