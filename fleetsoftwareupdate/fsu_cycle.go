@@ -60,6 +60,8 @@ type FsuCycle interface {
 
 	GetApplyActionSchedule() ScheduleDetails
 
+	GetDiagnosticsCollection() *DiagnosticsCollectionDetails
+
 	// The date and time the Exadata Fleet Update Cycle was updated,
 	// as described in RFC 3339 (https://tools.ietf.org/rfc/rfc3339),
 	// section 14.29.
@@ -87,28 +89,29 @@ type FsuCycle interface {
 }
 
 type fsucycle struct {
-	JsonData             []byte
-	DisplayName          *string                           `mandatory:"false" json:"displayName"`
-	CollectionType       CollectionTypesEnum               `mandatory:"false" json:"collectionType,omitempty"`
-	ExecutingFsuActionId *string                           `mandatory:"false" json:"executingFsuActionId"`
-	NextActionToExecute  []NextActionToExecuteDetails      `mandatory:"false" json:"nextActionToExecute"`
-	LastCompletedAction  DetailedActionTypesEnum           `mandatory:"false" json:"lastCompletedAction,omitempty"`
-	GoalVersionDetails   fsugoalversiondetails             `mandatory:"false" json:"goalVersionDetails"`
-	BatchingStrategy     batchingstrategydetails           `mandatory:"false" json:"batchingStrategy"`
-	StageActionSchedule  scheduledetails                   `mandatory:"false" json:"stageActionSchedule"`
-	ApplyActionSchedule  scheduledetails                   `mandatory:"false" json:"applyActionSchedule"`
-	TimeUpdated          *common.SDKTime                   `mandatory:"false" json:"timeUpdated"`
-	TimeFinished         *common.SDKTime                   `mandatory:"false" json:"timeFinished"`
-	LifecycleDetails     *string                           `mandatory:"false" json:"lifecycleDetails"`
-	FreeformTags         map[string]string                 `mandatory:"false" json:"freeformTags"`
-	DefinedTags          map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
-	SystemTags           map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
-	Id                   *string                           `mandatory:"true" json:"id"`
-	CompartmentId        *string                           `mandatory:"true" json:"compartmentId"`
-	FsuCollectionId      *string                           `mandatory:"true" json:"fsuCollectionId"`
-	TimeCreated          *common.SDKTime                   `mandatory:"true" json:"timeCreated"`
-	LifecycleState       CycleLifecycleStatesEnum          `mandatory:"true" json:"lifecycleState"`
-	Type                 string                            `json:"type"`
+	JsonData              []byte
+	DisplayName           *string                           `mandatory:"false" json:"displayName"`
+	CollectionType        CollectionTypesEnum               `mandatory:"false" json:"collectionType,omitempty"`
+	ExecutingFsuActionId  *string                           `mandatory:"false" json:"executingFsuActionId"`
+	NextActionToExecute   []NextActionToExecuteDetails      `mandatory:"false" json:"nextActionToExecute"`
+	LastCompletedAction   DetailedActionTypesEnum           `mandatory:"false" json:"lastCompletedAction,omitempty"`
+	GoalVersionDetails    fsugoalversiondetails             `mandatory:"false" json:"goalVersionDetails"`
+	BatchingStrategy      batchingstrategydetails           `mandatory:"false" json:"batchingStrategy"`
+	StageActionSchedule   scheduledetails                   `mandatory:"false" json:"stageActionSchedule"`
+	ApplyActionSchedule   scheduledetails                   `mandatory:"false" json:"applyActionSchedule"`
+	DiagnosticsCollection *DiagnosticsCollectionDetails     `mandatory:"false" json:"diagnosticsCollection"`
+	TimeUpdated           *common.SDKTime                   `mandatory:"false" json:"timeUpdated"`
+	TimeFinished          *common.SDKTime                   `mandatory:"false" json:"timeFinished"`
+	LifecycleDetails      *string                           `mandatory:"false" json:"lifecycleDetails"`
+	FreeformTags          map[string]string                 `mandatory:"false" json:"freeformTags"`
+	DefinedTags           map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+	SystemTags            map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
+	Id                    *string                           `mandatory:"true" json:"id"`
+	CompartmentId         *string                           `mandatory:"true" json:"compartmentId"`
+	FsuCollectionId       *string                           `mandatory:"true" json:"fsuCollectionId"`
+	TimeCreated           *common.SDKTime                   `mandatory:"true" json:"timeCreated"`
+	LifecycleState        CycleLifecycleStatesEnum          `mandatory:"true" json:"lifecycleState"`
+	Type                  string                            `json:"type"`
 }
 
 // UnmarshalJSON unmarshals json
@@ -136,6 +139,7 @@ func (m *fsucycle) UnmarshalJSON(data []byte) error {
 	m.BatchingStrategy = s.Model.BatchingStrategy
 	m.StageActionSchedule = s.Model.StageActionSchedule
 	m.ApplyActionSchedule = s.Model.ApplyActionSchedule
+	m.DiagnosticsCollection = s.Model.DiagnosticsCollection
 	m.TimeUpdated = s.Model.TimeUpdated
 	m.TimeFinished = s.Model.TimeFinished
 	m.LifecycleDetails = s.Model.LifecycleDetails
@@ -209,6 +213,11 @@ func (m fsucycle) GetStageActionSchedule() scheduledetails {
 // GetApplyActionSchedule returns ApplyActionSchedule
 func (m fsucycle) GetApplyActionSchedule() scheduledetails {
 	return m.ApplyActionSchedule
+}
+
+// GetDiagnosticsCollection returns DiagnosticsCollection
+func (m fsucycle) GetDiagnosticsCollection() *DiagnosticsCollectionDetails {
+	return m.DiagnosticsCollection
 }
 
 // GetTimeUpdated returns TimeUpdated

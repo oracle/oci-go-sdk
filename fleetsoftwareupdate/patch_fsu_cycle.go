@@ -50,6 +50,8 @@ type PatchFsuCycle struct {
 
 	ApplyActionSchedule ScheduleDetails `mandatory:"false" json:"applyActionSchedule"`
 
+	DiagnosticsCollection *DiagnosticsCollectionDetails `mandatory:"false" json:"diagnosticsCollection"`
+
 	// The date and time the Exadata Fleet Update Cycle was updated,
 	// as described in RFC 3339 (https://tools.ietf.org/rfc/rfc3339),
 	// section 14.29.
@@ -159,6 +161,11 @@ func (m PatchFsuCycle) GetApplyActionSchedule() ScheduleDetails {
 	return m.ApplyActionSchedule
 }
 
+// GetDiagnosticsCollection returns DiagnosticsCollection
+func (m PatchFsuCycle) GetDiagnosticsCollection() *DiagnosticsCollectionDetails {
+	return m.DiagnosticsCollection
+}
+
 // GetTimeCreated returns TimeCreated
 func (m PatchFsuCycle) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
@@ -250,6 +257,7 @@ func (m *PatchFsuCycle) UnmarshalJSON(data []byte) (e error) {
 		BatchingStrategy         batchingstrategydetails           `json:"batchingStrategy"`
 		StageActionSchedule      scheduledetails                   `json:"stageActionSchedule"`
 		ApplyActionSchedule      scheduledetails                   `json:"applyActionSchedule"`
+		DiagnosticsCollection    *DiagnosticsCollectionDetails     `json:"diagnosticsCollection"`
 		TimeUpdated              *common.SDKTime                   `json:"timeUpdated"`
 		TimeFinished             *common.SDKTime                   `json:"timeFinished"`
 		LifecycleDetails         *string                           `json:"lifecycleDetails"`
@@ -321,6 +329,8 @@ func (m *PatchFsuCycle) UnmarshalJSON(data []byte) (e error) {
 	} else {
 		m.ApplyActionSchedule = nil
 	}
+
+	m.DiagnosticsCollection = model.DiagnosticsCollection
 
 	m.TimeUpdated = model.TimeUpdated
 

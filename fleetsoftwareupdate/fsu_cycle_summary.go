@@ -57,6 +57,8 @@ type FsuCycleSummary struct {
 	// No value would indicate that the Cycle has not completed any Action yet.
 	LastCompletedAction DetailedActionTypesEnum `mandatory:"false" json:"lastCompletedAction,omitempty"`
 
+	DiagnosticsCollection *DiagnosticsCollectionDetails `mandatory:"false" json:"diagnosticsCollection"`
+
 	// The date and time the Exadata Fleet Update Cycle was updated,
 	// as described in RFC 3339 (https://tools.ietf.org/rfc/rfc3339),
 	// section 14.29.
@@ -114,24 +116,25 @@ func (m FsuCycleSummary) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *FsuCycleSummary) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		DisplayName          *string                           `json:"displayName"`
-		ExecutingFsuActionId *string                           `json:"executingFsuActionId"`
-		NextActionToExecute  []NextActionToExecuteDetails      `json:"nextActionToExecute"`
-		LastCompletedAction  DetailedActionTypesEnum           `json:"lastCompletedAction"`
-		TimeUpdated          *common.SDKTime                   `json:"timeUpdated"`
-		TimeFinished         *common.SDKTime                   `json:"timeFinished"`
-		LifecycleDetails     *string                           `json:"lifecycleDetails"`
-		FreeformTags         map[string]string                 `json:"freeformTags"`
-		DefinedTags          map[string]map[string]interface{} `json:"definedTags"`
-		SystemTags           map[string]map[string]interface{} `json:"systemTags"`
-		Id                   *string                           `json:"id"`
-		CompartmentId        *string                           `json:"compartmentId"`
-		Type                 CycleTypesEnum                    `json:"type"`
-		FsuCollectionId      *string                           `json:"fsuCollectionId"`
-		CollectionType       CollectionTypesEnum               `json:"collectionType"`
-		GoalVersionDetails   fsugoalversiondetails             `json:"goalVersionDetails"`
-		TimeCreated          *common.SDKTime                   `json:"timeCreated"`
-		LifecycleState       CycleLifecycleStatesEnum          `json:"lifecycleState"`
+		DisplayName           *string                           `json:"displayName"`
+		ExecutingFsuActionId  *string                           `json:"executingFsuActionId"`
+		NextActionToExecute   []NextActionToExecuteDetails      `json:"nextActionToExecute"`
+		LastCompletedAction   DetailedActionTypesEnum           `json:"lastCompletedAction"`
+		DiagnosticsCollection *DiagnosticsCollectionDetails     `json:"diagnosticsCollection"`
+		TimeUpdated           *common.SDKTime                   `json:"timeUpdated"`
+		TimeFinished          *common.SDKTime                   `json:"timeFinished"`
+		LifecycleDetails      *string                           `json:"lifecycleDetails"`
+		FreeformTags          map[string]string                 `json:"freeformTags"`
+		DefinedTags           map[string]map[string]interface{} `json:"definedTags"`
+		SystemTags            map[string]map[string]interface{} `json:"systemTags"`
+		Id                    *string                           `json:"id"`
+		CompartmentId         *string                           `json:"compartmentId"`
+		Type                  CycleTypesEnum                    `json:"type"`
+		FsuCollectionId       *string                           `json:"fsuCollectionId"`
+		CollectionType        CollectionTypesEnum               `json:"collectionType"`
+		GoalVersionDetails    fsugoalversiondetails             `json:"goalVersionDetails"`
+		TimeCreated           *common.SDKTime                   `json:"timeCreated"`
+		LifecycleState        CycleLifecycleStatesEnum          `json:"lifecycleState"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -146,6 +149,8 @@ func (m *FsuCycleSummary) UnmarshalJSON(data []byte) (e error) {
 	m.NextActionToExecute = make([]NextActionToExecuteDetails, len(model.NextActionToExecute))
 	copy(m.NextActionToExecute, model.NextActionToExecute)
 	m.LastCompletedAction = model.LastCompletedAction
+
+	m.DiagnosticsCollection = model.DiagnosticsCollection
 
 	m.TimeUpdated = model.TimeUpdated
 

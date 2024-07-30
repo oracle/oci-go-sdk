@@ -37,6 +37,8 @@ type CreatePatchFsuCycle struct {
 
 	ApplyActionSchedule CreateScheduleDetails `mandatory:"false" json:"applyActionSchedule"`
 
+	DiagnosticsCollection *DiagnosticsCollectionDetails `mandatory:"false" json:"diagnosticsCollection"`
+
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
@@ -94,6 +96,11 @@ func (m CreatePatchFsuCycle) GetApplyActionSchedule() CreateScheduleDetails {
 	return m.ApplyActionSchedule
 }
 
+// GetDiagnosticsCollection returns DiagnosticsCollection
+func (m CreatePatchFsuCycle) GetDiagnosticsCollection() *DiagnosticsCollectionDetails {
+	return m.DiagnosticsCollection
+}
+
 // GetFreeformTags returns FreeformTags
 func (m CreatePatchFsuCycle) GetFreeformTags() map[string]string {
 	return m.FreeformTags
@@ -141,6 +148,7 @@ func (m *CreatePatchFsuCycle) UnmarshalJSON(data []byte) (e error) {
 		BatchingStrategy         createbatchingstrategydetails     `json:"batchingStrategy"`
 		StageActionSchedule      createscheduledetails             `json:"stageActionSchedule"`
 		ApplyActionSchedule      createscheduledetails             `json:"applyActionSchedule"`
+		DiagnosticsCollection    *DiagnosticsCollectionDetails     `json:"diagnosticsCollection"`
 		FreeformTags             map[string]string                 `json:"freeformTags"`
 		DefinedTags              map[string]map[string]interface{} `json:"definedTags"`
 		IsIgnorePatches          *bool                             `json:"isIgnorePatches"`
@@ -188,6 +196,8 @@ func (m *CreatePatchFsuCycle) UnmarshalJSON(data []byte) (e error) {
 	} else {
 		m.ApplyActionSchedule = nil
 	}
+
+	m.DiagnosticsCollection = model.DiagnosticsCollection
 
 	m.FreeformTags = model.FreeformTags
 

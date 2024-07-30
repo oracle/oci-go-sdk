@@ -31,6 +31,9 @@ type CloudVmClusterTargetSummary struct {
 
 	// OCID of the related Exadata Infrastructure or Cloud Exadata Infrastructure resource.
 	InfrastructureId *string `mandatory:"false" json:"infrastructureId"`
+
+	// OCID of the Grid Infrastructure software image.
+	SoftwareImageId *string `mandatory:"false" json:"softwareImageId"`
 }
 
 // GetId returns Id
