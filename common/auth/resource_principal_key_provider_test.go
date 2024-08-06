@@ -77,6 +77,42 @@ BjYWARWBrZbkAz3+8y9EIHV9aRmnX1jGOVUJ0MhaYyZ18KTzi32gAG8s7V7r57Sv
 
 	// Generated RPST duplicates the Java SDK test resources
 	rpst = `eyJraWQiOiJhc3ciLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJvY2lkMS5kYXRhd2FyZWhvdXNlLmN1c3RvbWVyLWJpZy1kYi0xIiwiaXNzIjoiYXV0aFNlcnZpY2Uub3JhY2xlLmNvbSIsInJlc190ZW5hbnQiOiJjdXN0b21lci10ZW5hbnQtMSIsInB0eXBlIjoicmVzb3VyY2UiLCJyZXNfdHlwZSI6ImRhdGF3YXJlaG91c2UiLCJhdWQiOiJvY2kiLCJvcGMtdGFnIjoiVjEsb2NpZDEuZHluYW1pY2dyb3VwLmRldi4uYWFhYWFhYWEsb28ycHA2M3Y3NTMyNXpiNnJuNHYzYWgzYnRlam5ubTJvdDN1NWJyZnd1Y2VvczRpZDZ0YSIsIm9wYy1idW1wIjoiSDRzSUFBQUFBQUFBQUUyUHpRcUNRQlNGTTExTVJSQXRLbHBHYlFRSE1sSm8xVVAwQXVQTWJSeHJISnVmMHA0LUF4SFA5bjczTzV6bFRWSEJqcGcxSlpHQ2NxMWNoUm04TVNaZDVGM3cwMHZGejhaQnduaVpTZjA0eDBWaThuZGVrSlJMY0o4NnF3cWFmRTJkMGx3bE5RbFQ1Qy04N1ZxRFVVNVR3RlRKaW1ncm9iUllzTjJLT21PVkJCME5EdEh4T2dvbktGaE1ROThiLS1FZWpWdkh2SGZZcG9MZG5CRkxQa1JEcnB5Qjl1R0N2SmFhOVZSclAzU1RoaVR1R3pQQkk1Yjl5LUlBZVp2Z0IxX2paUVFDQVFBQSIsInR0eXBlIjoicmVzIiwicmVzX2lkIjoib2NpZDEuZGF0YXdhcmVob3VzZS5jdXN0b21lci1iaWctZGItMSIsIm9wYy1pbnN0YW5jZSI6Im9jaWQxLmluc3RhbmNlLmpveWZ1bC5kYm5vZGUuMSIsInJlc190YWciOiIiLCJyZXNfY29tcGFydG1lbnQiOiJjdXN0b21lci1jb21wYXJ0bWVudC0xIiwiZXhwIjoxNTUyNjgxMTY4LCJvcGMtY29tcGFydG1lbnQiOiJkYmFhcy1jb21wYXJ0bWVudC0xIiwiaWF0IjoxNTUyNjc5OTY4LCJqdGkiOiIzZDQxNDNlOC01ZTMyLTRlMTItYTM4Yy01OTc0NjUwMTA3MDMiLCJ0ZW5hbnQiOiJjdXN0b21lci10ZW5hbnQtMSIsImp3ayI6IntcImtpZFwiOlwiY3VzdG9tZXItZGJub2RlLTFcIixcIm5cIjpcImxzLUFDNGhpS0stMTFVdTFEZ3VLTFE1VGFhZGpNR1hCcDRhMFVFS2w0dnJjcmF3b2V6X3BuUS1pNS1nNV9XTU5xVXdrdUtBcXVTZnlVS25yZEhhV3d4b2RWcmRleTk1T3R4ckIySzNRdzgzaURkcUltSkhfWFp1cERfRHR0SzduS3N6Qy01TFI1Ums3SHF5Y094eEZVNzBNcGduQW9IaVNUM2V0VjJVZlJkNXRtb0dOaTdOSURORWJnSVpmcnczYUVYbHBzaGM2ckpVdUEyOG55ZUNjOVFtOHllMHUwN0UzamlCYmp5RjNFVWhTelNxblFsUlVNVEdaR1ZSZGpfRG9tcEhUVkFPNEJqUnVIZURWWGtWNjh1TzNrSEdTZUVPc2xsZmJZTkpaYUtCQTB3aUxrZkViWVBEWDFwbTM4UFAzcnJFbWhxeElObzdoYVFWakRXRDNKUVwiLFwiZVwiOlwiQVFBQlwiLFwia3R5XCI6XCJSU0FcIixcImFsZ1wiOlwiUlMyNTZcIixcInVzZVwiOlwic2lnXCJ9Iiwib3BjLXRlbmFudCI6ImRiYWFzLXRlbmFudCJ9.LqRt9JXSdcLahdwACjw_p_KHQhKde-NaVZG3zMjzWX6bVad-SRZYWKQSlk6Tq4f1ZNN0uxlP-d2snQAp3Kw-cQRrdCDOmD_0CDgR-yre-YbJDsJbEncczUIbe-ASeq_Sh9zDROVuD_7NdrmUCiVH2g-UYpYkuKKqu_tVjL2uy77W5_DGobPArEFvZ2GnyHT7gVVv12RnINtgr2jJULhegPBfvnp9-fhhZ7_PcsJ7Z5FkPzLtLOwEm3Lbm3veyUVUviu1CSjXnK67KzjS18TVGi723bkxYBf9lYDHfaXh9EEHzPtxeLAl3VrGjwZUv_ih0FRmoM7wgq8HMRjNACMo6g`
+
+	cert = `-----BEGIN CERTIFICATE-----
+MIIFUzCCBDugAwIBAgIUTr334xlYa/kjII5Ika7FWmR1Xw8wDQYJKoZIhvcNAQEL
+BQAwFjEUMBIGA1UEAwwLdGVzdC1uaWMtY2EwHhcNMjQwNzAyMTI0MjQyWhcNMzQw
+NzAxMDAwMDAwWjAWMRQwEgYDVQQDDAt0ZXN0LW5pYy1jYTCCASIwDQYJKoZIhvcN
+AQEBBQADggEPADCCAQoCggEBALfLvWLqu/3xTDJL2L/x97UD6BK2Jx+tlfNsWXiI
+eYUmhkL4i1QiV+7ufjPV0AhAUNygVi7IgKYmTMsuHk9iyZn50ZqoTudkIrQoJBFX
+GhUlwjIyPZ6xbKJYewCtBPRbRWAt1SFLUqkJdElBSMhS3kDBGmYRj6Z5tDVFoHm+
+srI54WAVb8OVuUYsx0YvGSVUProe5hw6/13q56fIXeORu3zm2YQ/fdoViscDy9tV
+wt8LrC79sZaUqF7rG40AlnacymGupFyOlrSSMJ3zD3CqGG0tJ8PfOHcRHX8gSyqF
+NUOJslywkF0SPjZDJk3tJ8vpJYCCG4aN+vVDwmqFrfopwIsCAwEAAaOCApcwggKT
+MA4GA1UdDwEB/wQEAwICBDAPBgNVHRMBAf8EBTADAQH/MIIBMwYDVR0OBIIBKgSC
+ASYwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC3y71i6rv98UwyS9i/
+8fe1A+gSticfrZXzbFl4iHmFJoZC+ItUIlfu7n4z1dAIQFDcoFYuyICmJkzLLh5P
+YsmZ+dGaqE7nZCK0KCQRVxoVJcIyMj2esWyiWHsArQT0W0VgLdUhS1KpCXRJQUjI
+Ut5AwRpmEY+mebQ1RaB5vrKyOeFgFW/DlblGLMdGLxklVD66HuYcOv9d6uenyF3j
+kbt85tmEP33aFYrHA8vbVcLfC6wu/bGWlKhe6xuNAJZ2nMphrqRcjpa0kjCd8w9w
+qhhtLSfD3zh3ER1/IEsqhTVDibJcsJBdEj42QyZN7SfL6SWAghuGjfr1Q8Jqha36
+KcCLAgMBAAEwggE3BgNVHSMEggEuMIIBKoCCASYwggEiMA0GCSqGSIb3DQEBAQUA
+A4IBDwAwggEKAoIBAQC3y71i6rv98UwyS9i/8fe1A+gSticfrZXzbFl4iHmFJoZC
++ItUIlfu7n4z1dAIQFDcoFYuyICmJkzLLh5PYsmZ+dGaqE7nZCK0KCQRVxoVJcIy
+Mj2esWyiWHsArQT0W0VgLdUhS1KpCXRJQUjIUt5AwRpmEY+mebQ1RaB5vrKyOeFg
+FW/DlblGLMdGLxklVD66HuYcOv9d6uenyF3jkbt85tmEP33aFYrHA8vbVcLfC6wu
+/bGWlKhe6xuNAJZ2nMphrqRcjpa0kjCd8w9wqhhtLSfD3zh3ER1/IEsqhTVDibJc
+sJBdEj42QyZN7SfL6SWAghuGjfr1Q8Jqha36KcCLAgMBAAEwDQYJKoZIhvcNAQEL
+BQADggEBAKtWwRbJuPGjT5YN+FockOrgzm33fGAu9gItXrFmwfgLgDO4jFlZXKL3
+OtS0Z3j53IL8DYrnByRboQiBCd4D27zDD4ai+9IEliCmNcUBFeTnO07sNVwoqu+C
+S3nCd24xKFDIb3uByLNNn4sbMHsGS+YVwqpCQRUuG2+IcsS9XcjyLmHEN7FcOh0F
+o13kIfjs8fC8ojka0akodkyz1VlfJ+C4SlyHJtFvqh3eWlRmdVAhNYp6NKG4LrHe
+Zj5mDDkUDDyQVVCvZbt8q1cAPCGtb2QDoAQItiyCa0COvZC0iGZU54QUiLuyVXHV
+Jx53Hf7QYUu35G/4dVgdwi2ZohedyO8=
+-----END CERTIFICATE-----
+`
+
+	rptUrl       = "https://sample.test/101010/resource/resourceId/actions/rptUrl"
+	rpstEndpoint = "https://identity/101010/v1/rpstEndpoint"
 )
 
 var ppEnvVars = map[string]string{
@@ -92,6 +128,16 @@ var envVars = map[string]string{
 	ResourcePrincipalRegionEnvVar:     string(common.RegionPHX),
 	ResourcePrincipalRPSTEnvVar:       rpst,
 	ResourcePrincipalPrivatePEMEnvVar: testPrivateKey,
+}
+
+var rpv3EnvVars = map[string]string{
+	ResourcePrincipalVersionEnvVar:         ResourcePrincipalVersion3_0,
+	ResourcePrincipalRegionForLeaf:         string(common.RegionPHX),
+	ResourcePrincipalVersionForLeaf:        ResourcePrincipalVersion2_2,
+	ResourcePrincipalPrivatePemForLeaf:     testPrivateKey,
+	ResourcePrincipalRpstForLeaf:           rpst,
+	ResourcePrincipalRptURLForParent:       rptUrl,
+	ResourcePrincipalRpstEndpointForParent: rpstEndpoint,
 }
 
 func writeTempFile(data string) (filename string) {
@@ -220,4 +266,35 @@ func TestResourcePrincipalConfigurationProviderForResource(t *testing.T) {
 	region, e := provider.Region()
 	assert.NoError(t, e)
 	assert.Equal(t, string(common.RegionLHR), region)
+}
+
+func TestOkeWorkloadIdentityConfigurationProviderWithServiceAccountTokenProviderK8sService(t *testing.T) {
+	unsetAllVars()
+	k8sApiServer := "apiserver"
+	tokenProvider := &fakeSaTokenProvider{}
+	var tokenPath = testTokenPathPrefix + uuid()
+	createSaToken(tokenPath, tokenPath)
+	t.Setenv(OciKubernetesServiceAccountCertPath, tokenPath)
+	t.Setenv(ResourcePrincipalRegionEnvVar, string(common.RegionFRA))
+	caBytes := []byte(cert)
+	provider, e := OkeWorkloadIdentityConfigurationProviderWithServiceAccountTokenProviderK8sService(&k8sApiServer, tokenProvider, caBytes)
+	print(provider)
+	assert.NoError(t, e)
+	deleteSaToken(tokenPath)
+}
+
+func TestResourcePrincipalConfigurationProviderV30(t *testing.T) {
+	unsetAllVars()
+	setupResourcePrincipalsEnvsWithValues(rpv3EnvVars)
+
+	provider, err := ResourcePrincipalConfigurationProvider()
+	assert.NoError(t, err)
+	assert.NotNil(t, provider)
+}
+
+type fakeSaTokenProvider struct {
+}
+
+func (f *fakeSaTokenProvider) ServiceAccountToken() (string, error) {
+	return rpst, nil
 }
