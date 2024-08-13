@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.71.1 - 2024-08-13
+### Added 
+- Support for calling Oracle Cloud Infrastructure services in the `me-abudhabi-4` region 
+- Support for viewing subscription limits in the Limits service 
+- Support for TCP idle timeout on network load balancer create and update operations in the Network Load Balancing service 
+- Support for creating integration instances of type Healthcare in the Integration Cloud service
+
 ## 65.71.0 - 2024-08-06
 ### Added 
 - Support for Nested Resource Principals (RPv3.0) 
