@@ -146,7 +146,7 @@ func (client FleetAppsManagementAdminClient) createOnboarding(ctx context.Contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fleet-management/20230831/Onboarding/CreateOnboarding"
 		err = common.PostProcessServiceError(err, "FleetAppsManagementAdmin", "CreateOnboarding", apiReferenceLink)
 		return response, err
 	}
@@ -209,7 +209,7 @@ func (client FleetAppsManagementAdminClient) createProperty(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fleet-management/20230831/Property/CreateProperty"
 		err = common.PostProcessServiceError(err, "FleetAppsManagementAdmin", "CreateProperty", apiReferenceLink)
 		return response, err
 	}
@@ -267,7 +267,7 @@ func (client FleetAppsManagementAdminClient) deleteProperty(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fleet-management/20230831/Property/DeleteProperty"
 		err = common.PostProcessServiceError(err, "FleetAppsManagementAdmin", "DeleteProperty", apiReferenceLink)
 		return response, err
 	}
@@ -325,7 +325,7 @@ func (client FleetAppsManagementAdminClient) getProperty(ctx context.Context, re
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fleet-management/20230831/Property/GetProperty"
 		err = common.PostProcessServiceError(err, "FleetAppsManagementAdmin", "GetProperty", apiReferenceLink)
 		return response, err
 	}
@@ -383,7 +383,7 @@ func (client FleetAppsManagementAdminClient) listOnboardingPolicies(ctx context.
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fleet-management/20230831/OnboardingPolicyCollection/ListOnboardingPolicies"
 		err = common.PostProcessServiceError(err, "FleetAppsManagementAdmin", "ListOnboardingPolicies", apiReferenceLink)
 		return response, err
 	}
@@ -441,7 +441,7 @@ func (client FleetAppsManagementAdminClient) listOnboardings(ctx context.Context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fleet-management/20230831/OnboardingCollection/ListOnboardings"
 		err = common.PostProcessServiceError(err, "FleetAppsManagementAdmin", "ListOnboardings", apiReferenceLink)
 		return response, err
 	}
@@ -499,7 +499,7 @@ func (client FleetAppsManagementAdminClient) listProperties(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fleet-management/20230831/PropertyCollection/ListProperties"
 		err = common.PostProcessServiceError(err, "FleetAppsManagementAdmin", "ListProperties", apiReferenceLink)
 		return response, err
 	}
@@ -557,7 +557,7 @@ func (client FleetAppsManagementAdminClient) updateProperty(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/fleet-management/20230831/Property/UpdateProperty"
 		err = common.PostProcessServiceError(err, "FleetAppsManagementAdmin", "UpdateProperty", apiReferenceLink)
 		return response, err
 	}

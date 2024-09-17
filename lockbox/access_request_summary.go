@@ -56,6 +56,10 @@ type AccessRequestSummary struct {
 	// The maximum amount of time operator has access to associated resources.
 	AccessDuration *string `mandatory:"false" json:"accessDuration"`
 
+	// The ticket number raised by external customers
+	// Example: `3-37509643121`
+	TicketNumber *string `mandatory:"false" json:"ticketNumber"`
+
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
