@@ -72,6 +72,10 @@ type AccessRequest struct {
 
 	// The context object containing the access request specific details.
 	Context map[string]string `mandatory:"false" json:"context"`
+
+	// The ticket number raised by external customers
+	// Example: `3-37509643121`
+	TicketNumber *string `mandatory:"false" json:"ticketNumber"`
 }
 
 func (m AccessRequest) String() string {

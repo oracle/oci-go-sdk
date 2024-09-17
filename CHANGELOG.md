@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.74.0 - 2024-09-17
+### Added 
+- Support for calling Oracle Cloud Infrastructure services in the eu-crissier-1 region 
+- Support for dedicated AI cluster unit shapes in the Generative AI service 
+- Support for ticket numbers when creating access requests in the Managed Access service 
+- Support for 23ai database, cloud VM clusters and VM cluster patching in the Exadata Fleet Update service 
+- Support for text to speech feature in the AI Speech service 
+- Support for notifications and transfer of capacity requests in the OCI Control Center service    
+
+### Breaking Changes 
+- The field `OccCustomerGroupId` was made mandatory in the models  `ListOccAvailabilityCatalogsInternalRequest`, `ListOccCapacityRequestsInternalRequest`, and `ListInternalNamespaceOccOverviewsRequest` in the OCI Control Center service
+
 ## 65.73.0 - 2024-08-27
 ### Added 
 - Support for Delegate Access Control service 

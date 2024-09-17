@@ -991,6 +991,119 @@ func (client AIServiceSpeechClient) listTranscriptionTasks(ctx context.Context, 
 	return response, err
 }
 
+// ListVoices Returns a list of speakers available to the user to choose from based on language code and voice type provided.
+//
+// # See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ListVoices.go.html to see an example of how to use ListVoices API.
+func (client AIServiceSpeechClient) ListVoices(ctx context.Context, request ListVoicesRequest) (response ListVoicesResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listVoices, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListVoicesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListVoicesResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListVoicesResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListVoicesResponse")
+	}
+	return
+}
+
+// listVoices implements the OCIOperation interface (enables retrying operations)
+func (client AIServiceSpeechClient) listVoices(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/voices", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListVoicesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/speech/20220101/Voice/ListVoices"
+		err = common.PostProcessServiceError(err, "AIServiceSpeech", "ListVoices", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// SynthesizeSpeech Creates an audio for the given input text based on other input parameters like language, voice type, etc.
+//
+// # See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/SynthesizeSpeech.go.html to see an example of how to use SynthesizeSpeech API.
+func (client AIServiceSpeechClient) SynthesizeSpeech(ctx context.Context, request SynthesizeSpeechRequest) (response SynthesizeSpeechResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.synthesizeSpeech, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = SynthesizeSpeechResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = SynthesizeSpeechResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(SynthesizeSpeechResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into SynthesizeSpeechResponse")
+	}
+	return
+}
+
+// synthesizeSpeech implements the OCIOperation interface (enables retrying operations)
+func (client AIServiceSpeechClient) synthesizeSpeech(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/synthesizeSpeech", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response SynthesizeSpeechResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/speech/20220101/SynthesizeSpeech/SynthesizeSpeech"
+		err = common.PostProcessServiceError(err, "AIServiceSpeech", "SynthesizeSpeech", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // UpdateCustomization Updates a Customization by identifier
 //
 // # See also
