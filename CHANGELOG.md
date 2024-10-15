@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.76.0 - 2024-10-15
+### Added 
+- Support for open id connect discovery in the Oracle Kubernetes Engine service 
+- Support for DNS security extensions (DNSSEC) in the DNS service 
+- Support for restoring delta between backups to a new volume in the Block Volume service 
+- Support for cross region backup copy and replication for volumes encrypted with customer keys in the Block Volume service 
+- Support for list operation on deployment environments in the GoldenGate service 
+- Support for defining environment types for deployments in the GoldenGate service    
+
+### Breaking Changes 
+- The type of property `Category` was changed from `DeploymentTypeSummaryCategoryEnum` to `DeploymentCategoryEnum` in the model `DeploymentTypeSummary` in the GoldenGate service
+
 ## 65.75.2 - 2024-10-08
 ### Added 
 - Support for OCI Secure Desktops service 
