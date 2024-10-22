@@ -4,6 +4,28 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.77.0 - 2024-10-22
+### Added 
+- Support for resource locking in the File storage service 
+- Support for customer managed keys via Azure key vault and Amazon Web Services key vault in the Database service 
+- Support for generated tokens on create secret operations in the Identity Domains service 
+- Support for creating and updating Amazon Web Services asset-sources, EC2 and EBS assets in the Cloud Bridge service 
+- Support for listing Amazon Web Services regions which are available for discovery and migration in the Cloud Bridge service 
+- Support for model backup retention and restore in the Datascience service 
+- Support for host capacity planning for host IO metrics in the Operations Insight service 
+- Support for FastConnect redundancy in the Compute service 
+- Support for create, publish, clone and delete operations on runbooks in the Fleet Application Management service 
+- Support for platform configurations and metadata management in the Fleet Application Management service 
+- Support for management of compliance policy rules in the Fleet Application Management service 
+- Support for compliance report details based on compliance policy in the Fleet Application Management service 
+- Support for administrative settings like auto discovery frequency in the Fleet Application Management service       
+
+### Breaking Changes 
+- The operation `UpdatePlugin` was removed from the `OcbAgentSvcClient` client in the Cloud Bridge service 
+- The properties `Compute`, `VmwareVM`, and `VmwareVCenter` were made mandatory in the request model `CreateVmwareVmAssetDetails` in the Cloud Bridge service 
+- The property `Data` was made mandatory in the request model `ImportInventoryViaAssetsDetail` in the Cloud Bridge service 
+- The enum `HOST_CONTAINERS` was removed from the enum `MetricNameEnum` in the model `HostPerformanceMetricGroup` in the Operations Insight service
+
 ## 65.76.0 - 2024-10-15
 ### Added 
 - Support for open id connect discovery in the Oracle Kubernetes Engine service 
