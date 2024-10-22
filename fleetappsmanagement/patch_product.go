@@ -2,12 +2,12 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Oracle Cloud Bridge API
+// Fleet Application Management Service API
 //
-// API for Oracle Cloud Bridge service.
+// Fleet Application Management provides a centralized platform to help you automate resource management tasks, validate patch compliance, and enhance operational efficiency across an enterprise.
 //
 
-package cloudbridge
+package fleetappsmanagement
 
 import (
 	"fmt"
@@ -15,26 +15,26 @@ import (
 	"strings"
 )
 
-// UpdatePluginDetails The information to be updated.
-type UpdatePluginDetails struct {
+// PatchProduct Product
+type PatchProduct struct {
 
-	// State to which the customer wants the plugin to move to.
-	DesiredState PluginDesiredStateEnum `mandatory:"false" json:"desiredState,omitempty"`
+	// PlatformConfiguration Id corresponding to the Product
+	PlatformConfigurationId *string `mandatory:"true" json:"platformConfigurationId"`
+
+	// product version.
+	Version *string `mandatory:"false" json:"version"`
 }
 
-func (m UpdatePluginDetails) String() string {
+func (m PatchProduct) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m UpdatePluginDetails) ValidateEnumValue() (bool, error) {
+func (m PatchProduct) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := GetMappingPluginDesiredStateEnum(string(m.DesiredState)); !ok && m.DesiredState != "" {
-		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DesiredState: %s. Supported values are: %s.", m.DesiredState, strings.Join(GetPluginDesiredStateEnumStringValues(), ",")))
-	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
