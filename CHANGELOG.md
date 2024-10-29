@@ -4,13 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.77.1 - 2024-10-29
+### Added 
+- Support for L3IP (Layer 3 IP) listeners in the Network Load Balancing service 
+- Support for overriding an existing add-on installation in the Kubernetes Engine service
+
 ## 65.77.0 - 2024-10-22
 ### Added 
 - Support for resource locking in the File storage service 
 - Support for customer managed keys via Azure key vault and Amazon Web Services key vault in the Database service 
 - Support for generated tokens on create secret operations in the Identity Domains service 
-- Support for creating and updating Amazon Web Services asset-sources, EC2 and EBS assets in the Cloud Bridge service 
-- Support for listing Amazon Web Services regions which are available for discovery and migration in the Cloud Bridge service 
 - Support for model backup retention and restore in the Datascience service 
 - Support for host capacity planning for host IO metrics in the Operations Insight service 
 - Support for FastConnect redundancy in the Compute service 
