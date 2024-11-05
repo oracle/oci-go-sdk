@@ -95,7 +95,8 @@ func (client *IncidentClient) ConfigurationProvider() *common.ConfigurationProvi
 	return client.config
 }
 
-// CreateIncident Operation to create a support ticket.
+// CreateIncident Creates a support ticket in the specified tenancy.
+// For more information, see Creating Support Requests (https://docs.cloud.oracle.com/iaas/Content/GSG/support/create-incident.htm).
 //
 // # See also
 //
@@ -152,64 +153,8 @@ func (client IncidentClient) createIncident(ctx context.Context, request common.
 	return response, err
 }
 
-// GetCsiNumber Fetches csi number of the user.
-//
-// # See also
-//
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/GetCsiNumber.go.html to see an example of how to use GetCsiNumber API.
-func (client IncidentClient) GetCsiNumber(ctx context.Context, request GetCsiNumberRequest) (response GetCsiNumberResponse, err error) {
-	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
-	if client.RetryPolicy() != nil {
-		policy = *client.RetryPolicy()
-	}
-	if request.RetryPolicy() != nil {
-		policy = *request.RetryPolicy()
-	}
-	ociResponse, err = common.Retry(ctx, request, client.getCsiNumber, policy)
-	if err != nil {
-		if ociResponse != nil {
-			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
-				opcRequestId := httpResponse.Header.Get("opc-request-id")
-				response = GetCsiNumberResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
-			} else {
-				response = GetCsiNumberResponse{}
-			}
-		}
-		return
-	}
-	if convertedResponse, ok := ociResponse.(GetCsiNumberResponse); ok {
-		response = convertedResponse
-	} else {
-		err = fmt.Errorf("failed to convert OCIResponse into GetCsiNumberResponse")
-	}
-	return
-}
-
-// getCsiNumber implements the OCIOperation interface (enables retrying operations)
-func (client IncidentClient) getCsiNumber(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
-
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/v2/incidents/getCsiNumber", binaryReqBody, extraHeaders)
-	if err != nil {
-		return nil, err
-	}
-
-	var response GetCsiNumberResponse
-	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		apiReferenceLink := ""
-		err = common.PostProcessServiceError(err, "Incident", "GetCsiNumber", apiReferenceLink)
-		return response, err
-	}
-
-	err = common.UnmarshalResponse(httpResponse, &response)
-	return response, err
-}
-
-// GetIncident Gets details about the specified support ticket.
+// GetIncident Gets the specified support ticket.
+// For more information, see Getting Details for a Support Request (https://docs.cloud.oracle.com/iaas/Content/GSG/support/get-incident.htm).
 //
 // # See also
 //
@@ -266,64 +211,14 @@ func (client IncidentClient) getIncident(ctx context.Context, request common.OCI
 	return response, err
 }
 
-// GetStatus Gets the status of the service.
-//
-// # See also
-//
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/GetStatus.go.html to see an example of how to use GetStatus API.
-func (client IncidentClient) GetStatus(ctx context.Context, request GetStatusRequest) (response GetStatusResponse, err error) {
-	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
-	if client.RetryPolicy() != nil {
-		policy = *client.RetryPolicy()
-	}
-	if request.RetryPolicy() != nil {
-		policy = *request.RetryPolicy()
-	}
-	ociResponse, err = common.Retry(ctx, request, client.getStatus, policy)
-	if err != nil {
-		if ociResponse != nil {
-			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
-				opcRequestId := httpResponse.Header.Get("opc-request-id")
-				response = GetStatusResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
-			} else {
-				response = GetStatusResponse{}
-			}
-		}
-		return
-	}
-	if convertedResponse, ok := ociResponse.(GetStatusResponse); ok {
-		response = convertedResponse
-	} else {
-		err = fmt.Errorf("failed to convert OCIResponse into GetStatusResponse")
-	}
-	return
-}
-
-// getStatus implements the OCIOperation interface (enables retrying operations)
-func (client IncidentClient) getStatus(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
-
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/v2/incidents/status", binaryReqBody, extraHeaders)
-	if err != nil {
-		return nil, err
-	}
-
-	var response GetStatusResponse
-	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/incidentmanagement/20181231/Status/GetStatus"
-		err = common.PostProcessServiceError(err, "Incident", "GetStatus", apiReferenceLink)
-		return response, err
-	}
-
-	err = common.UnmarshalResponse(httpResponse, &response)
-	return response, err
-}
-
-// ListIncidentResourceTypes During support ticket creation, returns the list of all possible products that Oracle Cloud Infrastructure supports.
+// ListIncidentResourceTypes Depending on the selected `productType`, either
+// lists available products (service groups, services, service categories, and subcategories) for technical support tickets or
+// lists limits and current usage for limit increase tickets.
+// This operation is called during creation of technical support and limit increase tickets.
+// For more information about listing products, see
+// Listing Products for Support Requests (https://docs.cloud.oracle.com/iaas/Content/GSG/support/list-incident-resource-types-taxonomy.htm).
+// For more information about listing limits, see
+// Listing Limits for Service Limit Increase Requests (https://docs.cloud.oracle.com/iaas/Content/GSG/support/list-incident-resource-types-limit.htm).
 //
 // # See also
 //
@@ -380,7 +275,8 @@ func (client IncidentClient) listIncidentResourceTypes(ctx context.Context, requ
 	return response, err
 }
 
-// ListIncidents Returns the list of support tickets raised by the tenancy.
+// ListIncidents Lists support tickets for the specified tenancy.
+// For more information, see Listing Support Requests (https://docs.cloud.oracle.com/iaas/Content/GSG/support/list-incidents.htm).
 //
 // # See also
 //
@@ -437,7 +333,8 @@ func (client IncidentClient) listIncidents(ctx context.Context, request common.O
 	return response, err
 }
 
-// UpdateIncident Updates the specified support ticket's information.
+// UpdateIncident Updates the specified support ticket.
+// For more information, see Updating Support Requests (https://docs.cloud.oracle.com/iaas/Content/GSG/support/update-incident.htm).
 //
 // # See also
 //
@@ -495,6 +392,7 @@ func (client IncidentClient) updateIncident(ctx context.Context, request common.
 }
 
 // ValidateUser Checks whether the requested user is valid.
+// For more information, see Validating a User (https://docs.cloud.oracle.com/iaas/Content/GSG/support/validate-user.htm).
 //
 // # See also
 //

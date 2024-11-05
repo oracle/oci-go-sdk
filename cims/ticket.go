@@ -37,10 +37,10 @@ type Ticket struct {
 	// The list of resources associated with the ticket.
 	ResourceList []Resource `mandatory:"false" json:"resourceList"`
 
-	// The time when the ticket was created, in milliseconds since epoch time.
+	// The time when the ticket was created, in seconds since epoch time.
 	TimeCreated *int `mandatory:"false" json:"timeCreated"`
 
-	// The time when the ticket was updated, in milliseconds since epoch time.
+	// The time when the ticket was updated, in seconds since epoch time.
 	TimeUpdated *int `mandatory:"false" json:"timeUpdated"`
 
 	// The current state of the ticket.

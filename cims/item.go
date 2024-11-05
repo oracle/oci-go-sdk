@@ -38,11 +38,11 @@ type Item interface {
 
 type item struct {
 	JsonData    []byte
+	ItemKey     *string      `mandatory:"false" json:"itemKey"`
 	Name        *string      `mandatory:"false" json:"name"`
 	Category    *Category    `mandatory:"false" json:"category"`
 	SubCategory *SubCategory `mandatory:"false" json:"subCategory"`
 	IssueType   *IssueType   `mandatory:"false" json:"issueType"`
-	ItemKey     *string      `mandatory:"true" json:"itemKey"`
 	Type        string       `json:"type"`
 }
 
@@ -98,6 +98,11 @@ func (m *item) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	}
 }
 
+// GetItemKey returns ItemKey
+func (m item) GetItemKey() *string {
+	return m.ItemKey
+}
+
 // GetName returns Name
 func (m item) GetName() *string {
 	return m.Name
@@ -116,11 +121,6 @@ func (m item) GetSubCategory() *SubCategory {
 // GetIssueType returns IssueType
 func (m item) GetIssueType() *IssueType {
 	return m.IssueType
-}
-
-// GetItemKey returns ItemKey
-func (m item) GetItemKey() *string {
-	return m.ItemKey
 }
 
 func (m item) String() string {

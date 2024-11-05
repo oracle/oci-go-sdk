@@ -24,7 +24,7 @@ import (
 type TechSupportItem struct {
 
 	// Unique identifier for the item.
-	ItemKey *string `mandatory:"true" json:"itemKey"`
+	ItemKey *string `mandatory:"false" json:"itemKey"`
 
 	// The display name of the item. Avoid entering confidential information.
 	Name *string `mandatory:"false" json:"name"`

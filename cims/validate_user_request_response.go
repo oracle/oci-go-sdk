@@ -18,7 +18,8 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ValidateUser.go.html to see an example of how to use ValidateUserRequest.
 type ValidateUserRequest struct {
 
-	// The Customer Support Identifier (CSI) associated with the support account.
+	// The Customer Support Identifier (CSI) number associated with the support account.
+	// The CSI is required for technical support tickets and optional for limits and billing tickets.
 	Csi *string `mandatory:"false" contributesTo:"header" name:"csi"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular request, please provide the request ID.
@@ -28,6 +29,7 @@ type ValidateUserRequest struct {
 	ProblemType ValidateUserProblemTypeEnum `mandatory:"false" contributesTo:"query" name:"problemType" omitEmpty:"true"`
 
 	// User OCID for Oracle Identity Cloud Service (IDCS) users who also have a federated Oracle Cloud Infrastructure account.
+	// User OCID is mandatory for OCI Users and optional for Multicloud users.
 	Ocid *string `mandatory:"false" contributesTo:"header" name:"ocid"`
 
 	// The region of the tenancy.
@@ -43,6 +45,7 @@ type ValidateUserRequest struct {
 	Idtoken *string `mandatory:"false" contributesTo:"header" name:"idtoken"`
 
 	// The OCID of identity domain.
+	// DomainID is mandatory if the user is part of Non Default Identity domain.
 	Domainid *string `mandatory:"false" contributesTo:"header" name:"domainid"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
