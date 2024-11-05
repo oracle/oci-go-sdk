@@ -21,20 +21,22 @@ type GetIncidentRequest struct {
 	// Unique identifier for the support ticket.
 	IncidentKey *string `mandatory:"true" contributesTo:"path" name:"incidentKey"`
 
+	// The OCID of the tenancy.
+	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
-	// The Customer Support Identifier (CSI) associated with the support account.
+	// The Customer Support Identifier (CSI) number associated with the support account.
+	// The CSI is required for technical support tickets and optional for limits and billing tickets.
 	Csi *string `mandatory:"false" contributesTo:"header" name:"csi"`
 
 	// User OCID for Oracle Identity Cloud Service (IDCS) users who also have a federated Oracle Cloud Infrastructure account.
+	// User OCID is mandatory for OCI Users and optional for Multicloud users.
 	Ocid *string `mandatory:"false" contributesTo:"header" name:"ocid"`
 
 	// The region of the tenancy.
 	Homeregion *string `mandatory:"false" contributesTo:"header" name:"homeregion"`
-
-	// The OCID of the tenancy.
-	CompartmentId *string `mandatory:"false" contributesTo:"query" name:"compartmentId"`
 
 	// The kind of support request.
 	Problemtype *string `mandatory:"false" contributesTo:"header" name:"problemtype"`
@@ -49,6 +51,7 @@ type GetIncidentRequest struct {
 	Idtoken *string `mandatory:"false" contributesTo:"header" name:"idtoken"`
 
 	// The OCID of identity domain.
+	// DomainID is mandatory if the user is part of Non Default Identity domain.
 	Domainid *string `mandatory:"false" contributesTo:"header" name:"domainid"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but

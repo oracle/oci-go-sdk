@@ -130,7 +130,7 @@ func TestX509FederationClient_RenewSecurityTokenFailedOnFirstTimeAndRetry(t *tes
 	responses := []func(w http.ResponseWriter, r *http.Request){
 		func(w http.ResponseWriter, r *http.Request) {
 			// Return response
-			w.WriteHeader(http.StatusNotFound)
+			w.WriteHeader(http.StatusBadGateway)
 		},
 		func(w http.ResponseWriter, r *http.Request) {
 			// Verify request
@@ -184,6 +184,61 @@ func TestX509FederationClient_RenewSecurityTokenFailedOnFirstTimeAndRetry(t *tes
 
 	assert.NoError(t, err)
 	assert.Equal(t, expectedSecurityToken, actualSecurityToken)
+	mockSessionKeySupplier.AssertExpectations(t)
+	mockLeafCertificateRetriever.AssertExpectations(t)
+	mockIntermediateCertificateRetriever.AssertExpectations(t)
+}
+
+func TestX509FederationClient_RenewSecurityTokenFailedSecondTimeOn4XX(t *testing.T) {
+	responseCounter := 0
+	responses := []func(w http.ResponseWriter, r *http.Request){
+		func(w http.ResponseWriter, r *http.Request) {
+			// Return response
+			w.WriteHeader(http.StatusBadGateway)
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			// Return response
+			w.WriteHeader(http.StatusUnauthorized)
+		},
+	}
+	authServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		responses[responseCounter](w, r)
+		responseCounter++
+	}))
+	defer authServer.Close()
+
+	mockSessionKeySupplier := new(mockSessionKeySupplier)
+	mockSessionKeySupplier.On("Refresh").Return(nil).Once()
+	mockSessionKeySupplier.On("PublicKeyPemRaw").Return([]byte(sessionPublicKeyPem))
+
+	mockLeafCertificateRetriever := new(mockCertificateRetriever)
+	mockLeafCertificateRetriever.On("Refresh").Return(nil).Once()
+	mockLeafCertificateRetriever.On("CertificatePemRaw").Return([]byte(leafCertPem))
+	mockLeafCertificateRetriever.On("Certificate").Return(parseCertificate(leafCertPem))
+	mockLeafCertificateRetriever.On("PrivateKey").Return(parsePrivateKey(leafCertPrivateKeyPem))
+
+	mockIntermediateCertificateRetriever := new(mockCertificateRetriever)
+	mockIntermediateCertificateRetriever.On("Refresh").Return(nil).Once()
+	mockIntermediateCertificateRetriever.On("CertificatePemRaw").Return([]byte(intermediateCertPem))
+
+	mockSecurityToken := new(mockSecurityToken)
+	mockSecurityToken.On("Valid").Return(false)
+
+	federationClient := &x509FederationClient{
+		tenancyID:                         tenancyID,
+		sessionKeySupplier:                mockSessionKeySupplier,
+		leafCertificateRetriever:          mockLeafCertificateRetriever,
+		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
+	}
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	// Overwrite with the authServer's URL
+	federationClient.authClient.Host = authServer.URL
+	federationClient.authClient.BasePath = ""
+	federationClient.securityToken = mockSecurityToken
+
+	_, err := federationClient.SecurityToken()
+
+	assert.Error(t, err)
 	mockSessionKeySupplier.AssertExpectations(t)
 	mockLeafCertificateRetriever.AssertExpectations(t)
 	mockIntermediateCertificateRetriever.AssertExpectations(t)
@@ -393,6 +448,21 @@ func TestX509FederationClient_ClientHost(t *testing.T) {
 		federationClient.authClient = newAuthClient(testData.region, federationClient)
 		assert.Equal(t, testData.expected, federationClient.authClient.Host)
 	}
+}
+
+func TestFederationAuthClientCircuitBreaker(t *testing.T) {
+	t.Setenv("OCI_SDK_AUTH_CLIENT_CIRCUIT_BREAKER_ENABLED", "True")
+	federationClient := &x509FederationClient{}
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	authCB := federationClient.authClient.Configuration.CircuitBreaker
+	assert.Equal(t, authCB.Cb.Name(), common.AuthClientCircuitBreakerName)
+}
+
+func TestFederationAuthClientCircuitBreakerDisabled(t *testing.T) {
+	t.Setenv("OCI_SDK_AUTH_CLIENT_CIRCUIT_BREAKER_ENABLED", "False")
+	federationClient := &x509FederationClient{}
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	assert.Nil(t, federationClient.authClient.Configuration.CircuitBreaker)
 }
 
 func parseCertificate(certPem string) *x509.Certificate {

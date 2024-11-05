@@ -19,42 +19,24 @@ import (
 	"strings"
 )
 
-// IncidentResourceType Details about the resource associated with the support request.
-type IncidentResourceType struct {
+// SubscriptionInfo The representation of SubscriptionInfo
+type SubscriptionInfo struct {
 
-	// The label associated with the resource.
-	Label *string `mandatory:"true" json:"label"`
+	// customer support identifier issued for a subscription
+	Csi *string `mandatory:"false" json:"csi"`
 
-	// A unique identifier for the resource.
-	ResourceTypeKey *string `mandatory:"false" json:"resourceTypeKey"`
-
-	// The display name of the resource.
-	Name *string `mandatory:"false" json:"name"`
-
-	// The description of the resource.
-	Description *string `mandatory:"false" json:"description"`
-
-	// Indicates whether multi-subscription is supported
-	IsSubscriptionsSupported *bool `mandatory:"false" json:"isSubscriptionsSupported"`
-
-	// The service category list.
-	ServiceCategoryList []ServiceCategory `mandatory:"false" json:"serviceCategoryList"`
-
-	// The map of services for MOS Taxonomy.
-	Service map[string]string `mandatory:"false" json:"service"`
-
-	// The service categories list for MOS Taxonomy.
-	Services []ServiceCategories `mandatory:"false" json:"services"`
+	// subscription type of customer which determines payment profile
+	SubscriptionType *string `mandatory:"false" json:"subscriptionType"`
 }
 
-func (m IncidentResourceType) String() string {
+func (m SubscriptionInfo) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m IncidentResourceType) ValidateEnumValue() (bool, error) {
+func (m SubscriptionInfo) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {

@@ -23,13 +23,13 @@ import (
 type ServiceCategories struct {
 
 	// Service Category list.
-	ServiceCategory map[string]string `mandatory:"false" json:"serviceCategory"`
+	Service map[string]string `mandatory:"false" json:"service"`
 
 	// Schema of a Service Category.
 	Schema *string `mandatory:"false" json:"schema"`
 
-	// Issue type list.
-	IssueType map[string]string `mandatory:"false" json:"issueType"`
+	// The service categories list for MOS Taxonomy.
+	SubCategories []SubCategories `mandatory:"false" json:"subCategories"`
 }
 
 func (m ServiceCategories) String() string {

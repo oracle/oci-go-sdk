@@ -19,42 +19,30 @@ import (
 	"strings"
 )
 
-// IncidentResourceType Details about the resource associated with the support request.
-type IncidentResourceType struct {
+// SubCategories List of subcategories under a service.
+type SubCategories struct {
 
-	// The label associated with the resource.
-	Label *string `mandatory:"true" json:"label"`
+	// Subcategory list.
+	ServiceCategory map[string]string `mandatory:"false" json:"serviceCategory"`
 
-	// A unique identifier for the resource.
-	ResourceTypeKey *string `mandatory:"false" json:"resourceTypeKey"`
+	// Schema of a subcategory.
+	Schema *string `mandatory:"false" json:"schema"`
 
-	// The display name of the resource.
-	Name *string `mandatory:"false" json:"name"`
+	// Flag to identify if subComponent is present
+	HasSubCategory *string `mandatory:"false" json:"hasSubCategory"`
 
-	// The description of the resource.
-	Description *string `mandatory:"false" json:"description"`
-
-	// Indicates whether multi-subscription is supported
-	IsSubscriptionsSupported *bool `mandatory:"false" json:"isSubscriptionsSupported"`
-
-	// The service category list.
-	ServiceCategoryList []ServiceCategory `mandatory:"false" json:"serviceCategoryList"`
-
-	// The map of services for MOS Taxonomy.
-	Service map[string]string `mandatory:"false" json:"service"`
-
-	// The service categories list for MOS Taxonomy.
-	Services []ServiceCategories `mandatory:"false" json:"services"`
+	// The sub component list for MOS Taxonomy.
+	SubComponents []SubComponents `mandatory:"false" json:"subComponents"`
 }
 
-func (m IncidentResourceType) String() string {
+func (m SubCategories) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m IncidentResourceType) ValidateEnumValue() (bool, error) {
+func (m SubCategories) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {

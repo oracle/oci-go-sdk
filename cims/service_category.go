@@ -37,6 +37,9 @@ type ServiceCategory struct {
 	// The list of issues.
 	IssueTypeList []IssueType `mandatory:"false" json:"issueTypeList"`
 
+	// List of supported subscriptions
+	SupportedSubscriptions []string `mandatory:"false" json:"supportedSubscriptions"`
+
 	// The scope of the incident.
 	Scope ScopeEnum `mandatory:"false" json:"scope,omitempty"`
 
