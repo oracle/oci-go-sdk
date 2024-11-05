@@ -21,6 +21,7 @@ import (
 )
 
 // CreateLimitItemDetails Details about the service limit increase request. Avoid entering confidential information.
+// For information about `LIMIT` support tickets, see Creating a Service Limit Increase Request (https://docs.cloud.oracle.com/iaas/Content/GSG/support/create-incident-limit.htm).
 type CreateLimitItemDetails struct {
 	Category *CreateCategoryDetails `mandatory:"false" json:"category"`
 
@@ -105,18 +106,21 @@ const (
 	CreateLimitItemDetailsLimitStatusApproved          CreateLimitItemDetailsLimitStatusEnum = "APPROVED"
 	CreateLimitItemDetailsLimitStatusPartiallyApproved CreateLimitItemDetailsLimitStatusEnum = "PARTIALLY_APPROVED"
 	CreateLimitItemDetailsLimitStatusNotApproved       CreateLimitItemDetailsLimitStatusEnum = "NOT_APPROVED"
+	CreateLimitItemDetailsLimitStatusRejected          CreateLimitItemDetailsLimitStatusEnum = "REJECTED"
 )
 
 var mappingCreateLimitItemDetailsLimitStatusEnum = map[string]CreateLimitItemDetailsLimitStatusEnum{
 	"APPROVED":           CreateLimitItemDetailsLimitStatusApproved,
 	"PARTIALLY_APPROVED": CreateLimitItemDetailsLimitStatusPartiallyApproved,
 	"NOT_APPROVED":       CreateLimitItemDetailsLimitStatusNotApproved,
+	"REJECTED":           CreateLimitItemDetailsLimitStatusRejected,
 }
 
 var mappingCreateLimitItemDetailsLimitStatusEnumLowerCase = map[string]CreateLimitItemDetailsLimitStatusEnum{
 	"approved":           CreateLimitItemDetailsLimitStatusApproved,
 	"partially_approved": CreateLimitItemDetailsLimitStatusPartiallyApproved,
 	"not_approved":       CreateLimitItemDetailsLimitStatusNotApproved,
+	"rejected":           CreateLimitItemDetailsLimitStatusRejected,
 }
 
 // GetCreateLimitItemDetailsLimitStatusEnumValues Enumerates the set of values for CreateLimitItemDetailsLimitStatusEnum
@@ -134,6 +138,7 @@ func GetCreateLimitItemDetailsLimitStatusEnumStringValues() []string {
 		"APPROVED",
 		"PARTIALLY_APPROVED",
 		"NOT_APPROVED",
+		"REJECTED",
 	}
 }
 

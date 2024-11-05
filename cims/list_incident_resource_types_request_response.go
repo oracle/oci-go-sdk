@@ -42,16 +42,19 @@ type ListIncidentResourceTypesRequest struct {
 	// The user-friendly name of the support ticket type.
 	Name *string `mandatory:"false" contributesTo:"query" name:"name"`
 
-	// The Customer Support Identifier (CSI) associated with the support account.
+	// The Customer Support Identifier (CSI) number associated with the support account.
+	// The CSI is required for technical support tickets and optional for limits and billing tickets.
 	Csi *string `mandatory:"false" contributesTo:"header" name:"csi"`
 
 	// User OCID for Oracle Identity Cloud Service (IDCS) users who also have a federated Oracle Cloud Infrastructure account.
+	// User OCID is mandatory for OCI Users and optional for Multicloud users.
 	Ocid *string `mandatory:"false" contributesTo:"header" name:"ocid"`
 
 	// The region of the tenancy.
 	Homeregion *string `mandatory:"false" contributesTo:"header" name:"homeregion"`
 
 	// The OCID of identity domain.
+	// DomainID is mandatory if the user is part of Non Default Identity domain.
 	Domainid *string `mandatory:"false" contributesTo:"header" name:"domainid"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but

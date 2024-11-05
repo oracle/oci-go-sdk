@@ -5,6 +5,7 @@ package common
 
 import (
 	"testing"
+	"time"
 
 	"github.com/sony/gobreaker"
 	"github.com/stretchr/testify/assert"
@@ -130,6 +131,80 @@ func TestCircuitBreaker_CustomizeGoBreakerSetting(t *testing.T) {
 		TotalFailures:        10,
 		ConsecutiveSuccesses: 1,
 		ConsecutiveFailures:  6,
+	}
+	assert.True(t, st.ReadyToTrip(counts))
+
+	type testData struct {
+		err      servicefailure
+		expected bool
+	}
+	testDataSet := []testData{
+		{
+			err: servicefailure{
+				StatusCode: 400,
+				Code:       "InvalidParameter"},
+			expected: true,
+		},
+		{
+			err: servicefailure{
+				StatusCode: 409,
+				Code:       "IncorrectState"},
+			expected: false,
+		},
+		{
+			err: servicefailure{
+				StatusCode: 429,
+				Code:       "TooManyRequests"},
+			expected: false,
+		},
+		{
+			err: servicefailure{
+				StatusCode: 504,
+				Code:       "whatever"},
+			expected: false,
+		},
+	}
+
+	for _, testData := range testDataSet {
+		assert.Equal(t, testData.expected, st.IsSuccessful(testData.err))
+	}
+}
+
+func TestAuthClient_CircuitBreaker_ReadyToTrip(t *testing.T) {
+	cbSetting := DefaultAuthClientCircuitBreakerSetting()
+	assert.True(t, cbSetting.isEnabled)
+	st := gobreaker.Settings{}
+
+	customizeGoBreakerSetting(&st, cbSetting)
+	assert.Equal(t, st.Name, AuthClientCircuitBreakerName)
+	assert.True(t, st.Timeout >= time.Duration(MinAuthClientCircuitBreakerResetTimeout)*time.Second && st.Timeout <= time.Duration(MaxAuthClientCircuitBreakerResetTimeout)*time.Second)
+	assert.Equal(t, st.Interval, CircuitBreakerDefaultClosedWindow)
+	assert.Equal(t, cbSetting.failureRateThreshold, AuthClientCircuitBreakerDefaultFailureThreshold)
+
+	counts := gobreaker.Counts{
+		Requests:             1,
+		TotalSuccesses:       0,
+		TotalFailures:        1,
+		ConsecutiveSuccesses: 0,
+		ConsecutiveFailures:  1,
+	}
+	assert.False(t, st.ReadyToTrip(counts))
+
+	counts = gobreaker.Counts{
+		Requests:             2,
+		TotalSuccesses:       0,
+		TotalFailures:        2,
+		ConsecutiveSuccesses: 0,
+		ConsecutiveFailures:  2,
+	}
+	assert.False(t, st.ReadyToTrip(counts))
+
+	counts = gobreaker.Counts{
+		Requests:             3,
+		TotalSuccesses:       0,
+		TotalFailures:        3,
+		ConsecutiveSuccesses: 0,
+		ConsecutiveFailures:  3,
 	}
 	assert.True(t, st.ReadyToTrip(counts))
 

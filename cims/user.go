@@ -52,7 +52,13 @@ type User struct {
 	// The email of the contact person.
 	ContactEmail *string `mandatory:"false" json:"contactEmail"`
 
-	// The kind of support ticket, such as a technical support request or a limit increase request.
+	// The kind of support ticket (type of support request).
+	// For information about `ACCOUNT` support tickets, see
+	// Creating a Billing Support Request (https://docs.cloud.oracle.com/iaas/Content/GSG/support/create-incident-billing.htm).
+	// For information about `LIMIT` support tickets, see
+	// Creating a Service Limit Increase Request (https://docs.cloud.oracle.com/iaas/Content/GSG/support/create-incident-limit.htm).
+	// For information about `TECH` support tickets, see
+	// Creating a Technical Support Request (https://docs.cloud.oracle.com/iaas/Content/GSG/support/create-incident-technical.htm).
 	ProblemType ProblemTypeEnum `mandatory:"false" json:"problemType,omitempty"`
 }
 

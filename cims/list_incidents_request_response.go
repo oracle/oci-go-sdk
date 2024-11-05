@@ -21,7 +21,8 @@ type ListIncidentsRequest struct {
 	// The OCID of the tenancy.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
-	// The Customer Support Identifier (CSI) associated with the support account.
+	// The Customer Support Identifier (CSI) number associated with the support account.
+	// The CSI is required for technical support tickets and optional for limits and billing tickets.
 	Csi *string `mandatory:"false" contributesTo:"header" name:"csi"`
 
 	// For list pagination. The maximum number of results per page, or items to return in a paginated "List" call. For important details about how pagination works, see List Pagination (https://docs.cloud.oracle.com/iaas/Content/API/Concepts/usingapi.htm#nine).
@@ -43,6 +44,7 @@ type ListIncidentsRequest struct {
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
 	// User OCID for Oracle Identity Cloud Service (IDCS) users who also have a federated Oracle Cloud Infrastructure account.
+	// User OCID is mandatory for OCI Users and optional for Multicloud users.
 	Ocid *string `mandatory:"false" contributesTo:"header" name:"ocid"`
 
 	// The region of the tenancy.
@@ -61,6 +63,7 @@ type ListIncidentsRequest struct {
 	Idtoken *string `mandatory:"false" contributesTo:"header" name:"idtoken"`
 
 	// The OCID of identity domain.
+	// DomainID is mandatory if the user is part of Non Default Identity domain.
 	Domainid *string `mandatory:"false" contributesTo:"header" name:"domainid"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but

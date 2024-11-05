@@ -24,7 +24,7 @@ import (
 type LimitItem struct {
 
 	// Unique identifier for the item.
-	ItemKey *string `mandatory:"true" json:"itemKey"`
+	ItemKey *string `mandatory:"false" json:"itemKey"`
 
 	// The display name of the item. Avoid entering confidential information.
 	Name *string `mandatory:"false" json:"name"`
@@ -43,6 +43,9 @@ type LimitItem struct {
 
 	// The new service limit being requested for the resource.
 	RequestedLimit *int `mandatory:"false" json:"requestedLimit"`
+
+	// Message to customer for partial approval and rejected limit requests
+	CustomerMessage *string `mandatory:"false" json:"customerMessage"`
 
 	// The status of the request.
 	LimitStatus LimitItemLimitStatusEnum `mandatory:"false" json:"limitStatus,omitempty"`
@@ -114,18 +117,21 @@ const (
 	LimitItemLimitStatusApproved          LimitItemLimitStatusEnum = "APPROVED"
 	LimitItemLimitStatusPartiallyApproved LimitItemLimitStatusEnum = "PARTIALLY_APPROVED"
 	LimitItemLimitStatusNotApproved       LimitItemLimitStatusEnum = "NOT_APPROVED"
+	LimitItemLimitStatusRejected          LimitItemLimitStatusEnum = "REJECTED"
 )
 
 var mappingLimitItemLimitStatusEnum = map[string]LimitItemLimitStatusEnum{
 	"APPROVED":           LimitItemLimitStatusApproved,
 	"PARTIALLY_APPROVED": LimitItemLimitStatusPartiallyApproved,
 	"NOT_APPROVED":       LimitItemLimitStatusNotApproved,
+	"REJECTED":           LimitItemLimitStatusRejected,
 }
 
 var mappingLimitItemLimitStatusEnumLowerCase = map[string]LimitItemLimitStatusEnum{
 	"approved":           LimitItemLimitStatusApproved,
 	"partially_approved": LimitItemLimitStatusPartiallyApproved,
 	"not_approved":       LimitItemLimitStatusNotApproved,
+	"rejected":           LimitItemLimitStatusRejected,
 }
 
 // GetLimitItemLimitStatusEnumValues Enumerates the set of values for LimitItemLimitStatusEnum
@@ -143,6 +149,7 @@ func GetLimitItemLimitStatusEnumStringValues() []string {
 		"APPROVED",
 		"PARTIALLY_APPROVED",
 		"NOT_APPROVED",
+		"REJECTED",
 	}
 }
 

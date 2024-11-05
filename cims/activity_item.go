@@ -23,17 +23,17 @@ import (
 // ActivityItem Details about the ActivityItem object.
 type ActivityItem struct {
 
-	// Unique identifier for the item.
-	ItemKey *string `mandatory:"true" json:"itemKey"`
-
 	// Comments added with the activity on the support ticket.
 	Comments *string `mandatory:"true" json:"comments"`
 
-	// The time when the activity was created, in milliseconds since epoch time.
+	// The time when the activity was created, in seconds since epoch time.
 	TimeCreated *int `mandatory:"true" json:"timeCreated"`
 
-	// The time when the activity was updated, in milliseconds since epoch time.
+	// The time when the activity was updated, in seconds since epoch time.
 	TimeUpdated *int `mandatory:"true" json:"timeUpdated"`
+
+	// Unique identifier for the item.
+	ItemKey *string `mandatory:"false" json:"itemKey"`
 
 	// The display name of the item. Avoid entering confidential information.
 	Name *string `mandatory:"false" json:"name"`
@@ -43,6 +43,9 @@ type ActivityItem struct {
 	SubCategory *SubCategory `mandatory:"false" json:"subCategory"`
 
 	IssueType *IssueType `mandatory:"false" json:"issueType"`
+
+	// attachmentID for the ItemType Attachments only for Alloy realm.
+	AttachmentID *string `mandatory:"false" json:"attachmentID"`
 
 	// The type of activity occuring on the support ticket.
 	ActivityType ActivityItemActivityTypeEnum `mandatory:"true" json:"activityType"`
