@@ -5,8 +5,8 @@
 // Generative AI Service Inference API
 //
 // OCI Generative AI is a fully managed service that provides a set of state-of-the-art, customizable large language models (LLMs) that cover a wide range of use cases for text generation, summarization, and text embeddings.
-// Use the Generative AI service inference API to access your custom model endpoints, or to try the out-of-the-box models to Chat, GenerateText, SummarizeText, and EmbedText.
-// To use a Generative AI custom model for inference, you must first create an endpoint for that model. Use the Generative AI service management API (https://docs.cloud.oracle.com/#/en/generative-ai/latest/) to Model by fine-tuning an out-of-the-box model, or a previous version of a custom model, using your own data. Fine-tune the custom model on a  DedicatedAiCluster. Then, create a DedicatedAiCluster with an Endpoint to host your custom model. For resource management in the Generative AI service, use the Generative AI service management API (https://docs.cloud.oracle.com/#/en/generative-ai/latest/).
+// Use the Generative AI service inference API to access your custom model endpoints, or to try the out-of-the-box models to /EN/generative-ai-inference/latest/ChatResult/Chat, /EN/generative-ai-inference/latest/GenerateTextResult/GenerateText, /EN/generative-ai-inference/latest/SummarizeTextResult/SummarizeText, and /EN/generative-ai-inference/latest/EmbedTextResult/EmbedText.
+// To use a Generative AI custom model for inference, you must first create an endpoint for that model. Use the /EN/generative-ai/latest/ to /EN/generative-ai/latest/Model/ by fine-tuning an out-of-the-box model, or a previous version of a custom model, using your own data. Fine-tune the custom model on a /EN/generative-ai/latest/DedicatedAiCluster/. Then, create a /EN/generative-ai/latest/DedicatedAiCluster/ with an Endpoint to host your custom model. For resource management in the Generative AI service, use the /EN/generative-ai/latest/.
 // To learn more about the service, see the Generative AI documentation (https://docs.cloud.oracle.com/iaas/Content/generative-ai/home.htm).
 //
 
@@ -37,6 +37,8 @@ type CohereChatRequest struct {
 	// ]`
 	Documents []interface{} `mandatory:"false" json:"documents"`
 
+	ResponseFormat CohereResponseFormat `mandatory:"false" json:"responseFormat"`
+
 	// When set to true, the response contains only a list of generated search queries without the search results and the model will not respond to the user's message.
 	IsSearchQueriesOnly *bool `mandatory:"false" json:"isSearchQueriesOnly"`
 
@@ -49,6 +51,9 @@ type CohereChatRequest struct {
 
 	// The maximum number of output tokens that the model will generate for the response.
 	MaxTokens *int `mandatory:"false" json:"maxTokens"`
+
+	// The maximum number of input tokens to send to the model. If not specified, max_input_tokens is the model's context length limit minus a small buffer.
+	MaxInputTokens *int `mandatory:"false" json:"maxInputTokens"`
 
 	// A number that sets the randomness of the generated output. A lower temperature means less random generations.
 	// Use lower numbers for tasks such as question answering or summarizing. High temperatures can generate hallucinations or factually incorrect information. Start with temperatures lower than 1.0 and increase the temperature for more creative outputs, as you regenerate the prompts to refine the outputs.
@@ -90,7 +95,7 @@ type CohereChatRequest struct {
 	// When enabled, the user’s `message` will be sent to the model without any preprocessing.
 	IsRawPrompting *bool `mandatory:"false" json:"isRawPrompting"`
 
-	// Defaults to OFF. Dictates how the prompt will be constructed. With `prompt_truncation` set to AUTO_PRESERVE_ORDER, some elements from `chat_history` and `documents` will be dropped to construct a prompt that fits within the model's context length limit. During this process the order of the documents and chat history will be preserved. With `prompt_truncation` set to OFF, no elements will be dropped.
+	// Defaults to OFF. Dictates how the prompt will be constructed. With `promptTruncation` set to AUTO_PRESERVE_ORDER, some elements from `chatHistory` and `documents` will be dropped to construct a prompt that fits within the model's context length limit. During this process the order of the documents and chat history will be preserved. With `prompt_truncation` set to OFF, no elements will be dropped.
 	PromptTruncation CohereChatRequestPromptTruncationEnum `mandatory:"false" json:"promptTruncation,omitempty"`
 
 	// When FAST is selected, citations are generated at the same time as the text output and the request will be completed sooner. May result in less accurate citations.
@@ -138,10 +143,12 @@ func (m *CohereChatRequest) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
 		ChatHistory         []coheremessage                       `json:"chatHistory"`
 		Documents           []interface{}                         `json:"documents"`
+		ResponseFormat      cohereresponseformat                  `json:"responseFormat"`
 		IsSearchQueriesOnly *bool                                 `json:"isSearchQueriesOnly"`
 		PreambleOverride    *string                               `json:"preambleOverride"`
 		IsStream            *bool                                 `json:"isStream"`
 		MaxTokens           *int                                  `json:"maxTokens"`
+		MaxInputTokens      *int                                  `json:"maxInputTokens"`
 		Temperature         *float64                              `json:"temperature"`
 		TopK                *int                                  `json:"topK"`
 		TopP                *float64                              `json:"topP"`
@@ -178,6 +185,16 @@ func (m *CohereChatRequest) UnmarshalJSON(data []byte) (e error) {
 	}
 	m.Documents = make([]interface{}, len(model.Documents))
 	copy(m.Documents, model.Documents)
+	nn, e = model.ResponseFormat.UnmarshalPolymorphicJSON(model.ResponseFormat.JsonData)
+	if e != nil {
+		return
+	}
+	if nn != nil {
+		m.ResponseFormat = nn.(CohereResponseFormat)
+	} else {
+		m.ResponseFormat = nil
+	}
+
 	m.IsSearchQueriesOnly = model.IsSearchQueriesOnly
 
 	m.PreambleOverride = model.PreambleOverride
@@ -185,6 +202,8 @@ func (m *CohereChatRequest) UnmarshalJSON(data []byte) (e error) {
 	m.IsStream = model.IsStream
 
 	m.MaxTokens = model.MaxTokens
+
+	m.MaxInputTokens = model.MaxInputTokens
 
 	m.Temperature = model.Temperature
 
