@@ -5,8 +5,8 @@
 // Generative AI Service Inference API
 //
 // OCI Generative AI is a fully managed service that provides a set of state-of-the-art, customizable large language models (LLMs) that cover a wide range of use cases for text generation, summarization, and text embeddings.
-// Use the Generative AI service inference API to access your custom model endpoints, or to try the out-of-the-box models to Chat, GenerateText, SummarizeText, and EmbedText.
-// To use a Generative AI custom model for inference, you must first create an endpoint for that model. Use the Generative AI service management API (https://docs.cloud.oracle.com/#/en/generative-ai/latest/) to Model by fine-tuning an out-of-the-box model, or a previous version of a custom model, using your own data. Fine-tune the custom model on a  DedicatedAiCluster. Then, create a DedicatedAiCluster with an Endpoint to host your custom model. For resource management in the Generative AI service, use the Generative AI service management API (https://docs.cloud.oracle.com/#/en/generative-ai/latest/).
+// Use the Generative AI service inference API to access your custom model endpoints, or to try the out-of-the-box models to /EN/generative-ai-inference/latest/ChatResult/Chat, /EN/generative-ai-inference/latest/GenerateTextResult/GenerateText, /EN/generative-ai-inference/latest/SummarizeTextResult/SummarizeText, and /EN/generative-ai-inference/latest/EmbedTextResult/EmbedText.
+// To use a Generative AI custom model for inference, you must first create an endpoint for that model. Use the /EN/generative-ai/latest/ to /EN/generative-ai/latest/Model/ by fine-tuning an out-of-the-box model, or a previous version of a custom model, using your own data. Fine-tune the custom model on a /EN/generative-ai/latest/DedicatedAiCluster/. Then, create a /EN/generative-ai/latest/DedicatedAiCluster/ with an Endpoint to host your custom model. For resource management in the Generative AI service, use the /EN/generative-ai/latest/.
 // To learn more about the service, see the Generative AI documentation (https://docs.cloud.oracle.com/iaas/Content/generative-ai/home.htm).
 //
 
@@ -53,6 +53,10 @@ func (m *chatcontent) UnmarshalPolymorphicJSON(data []byte) (interface{}, error)
 
 	var err error
 	switch m.Type {
+	case "IMAGE":
+		mm := ImageContent{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "TEXT":
 		mm := TextContent{}
 		err = json.Unmarshal(data, &mm)
@@ -84,15 +88,18 @@ type ChatContentTypeEnum string
 
 // Set of constants representing the allowable values for ChatContentTypeEnum
 const (
-	ChatContentTypeText ChatContentTypeEnum = "TEXT"
+	ChatContentTypeText  ChatContentTypeEnum = "TEXT"
+	ChatContentTypeImage ChatContentTypeEnum = "IMAGE"
 )
 
 var mappingChatContentTypeEnum = map[string]ChatContentTypeEnum{
-	"TEXT": ChatContentTypeText,
+	"TEXT":  ChatContentTypeText,
+	"IMAGE": ChatContentTypeImage,
 }
 
 var mappingChatContentTypeEnumLowerCase = map[string]ChatContentTypeEnum{
-	"text": ChatContentTypeText,
+	"text":  ChatContentTypeText,
+	"image": ChatContentTypeImage,
 }
 
 // GetChatContentTypeEnumValues Enumerates the set of values for ChatContentTypeEnum
@@ -108,6 +115,7 @@ func GetChatContentTypeEnumValues() []ChatContentTypeEnum {
 func GetChatContentTypeEnumStringValues() []string {
 	return []string{
 		"TEXT",
+		"IMAGE",
 	}
 }
 
