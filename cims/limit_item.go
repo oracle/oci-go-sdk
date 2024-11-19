@@ -7,8 +7,8 @@
 // Use the Support Management API to manage support requests.
 // For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
 // **Note**: Before you can create service requests with this API,
-// you need to have an Oracle Single Sign On (SSO) account,
-// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// complete user registration at My Oracle Cloud Support
+// and then ask your tenancy administrator to provide you authorization for the related user groups.
 //
 
 package cims
@@ -44,7 +44,7 @@ type LimitItem struct {
 	// The new service limit being requested for the resource.
 	RequestedLimit *int `mandatory:"false" json:"requestedLimit"`
 
-	// Message to customer for partial approval and rejected limit requests
+	// The message to customer for partially approved and rejected limit requests
 	CustomerMessage *string `mandatory:"false" json:"customerMessage"`
 
 	// The status of the request.

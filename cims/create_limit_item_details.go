@@ -7,8 +7,8 @@
 // Use the Support Management API to manage support requests.
 // For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
 // **Note**: Before you can create service requests with this API,
-// you need to have an Oracle Single Sign On (SSO) account,
-// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// complete user registration at My Oracle Cloud Support
+// and then ask your tenancy administrator to provide you authorization for the related user groups.
 //
 
 package cims
@@ -40,9 +40,6 @@ type CreateLimitItemDetails struct {
 
 	// The new service limit being requested.
 	RequestedLimit *int `mandatory:"false" json:"requestedLimit"`
-
-	// The current status of the request.
-	LimitStatus CreateLimitItemDetailsLimitStatusEnum `mandatory:"false" json:"limitStatus,omitempty"`
 }
 
 // GetCategory returns Category
@@ -74,9 +71,6 @@ func (m CreateLimitItemDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateLimitItemDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := GetMappingCreateLimitItemDetailsLimitStatusEnum(string(m.LimitStatus)); !ok && m.LimitStatus != "" {
-		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LimitStatus: %s. Supported values are: %s.", m.LimitStatus, strings.Join(GetCreateLimitItemDetailsLimitStatusEnumStringValues(), ",")))
-	}
 
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
@@ -96,54 +90,4 @@ func (m CreateLimitItemDetails) MarshalJSON() (buff []byte, e error) {
 	}
 
 	return json.Marshal(&s)
-}
-
-// CreateLimitItemDetailsLimitStatusEnum Enum with underlying type: string
-type CreateLimitItemDetailsLimitStatusEnum string
-
-// Set of constants representing the allowable values for CreateLimitItemDetailsLimitStatusEnum
-const (
-	CreateLimitItemDetailsLimitStatusApproved          CreateLimitItemDetailsLimitStatusEnum = "APPROVED"
-	CreateLimitItemDetailsLimitStatusPartiallyApproved CreateLimitItemDetailsLimitStatusEnum = "PARTIALLY_APPROVED"
-	CreateLimitItemDetailsLimitStatusNotApproved       CreateLimitItemDetailsLimitStatusEnum = "NOT_APPROVED"
-	CreateLimitItemDetailsLimitStatusRejected          CreateLimitItemDetailsLimitStatusEnum = "REJECTED"
-)
-
-var mappingCreateLimitItemDetailsLimitStatusEnum = map[string]CreateLimitItemDetailsLimitStatusEnum{
-	"APPROVED":           CreateLimitItemDetailsLimitStatusApproved,
-	"PARTIALLY_APPROVED": CreateLimitItemDetailsLimitStatusPartiallyApproved,
-	"NOT_APPROVED":       CreateLimitItemDetailsLimitStatusNotApproved,
-	"REJECTED":           CreateLimitItemDetailsLimitStatusRejected,
-}
-
-var mappingCreateLimitItemDetailsLimitStatusEnumLowerCase = map[string]CreateLimitItemDetailsLimitStatusEnum{
-	"approved":           CreateLimitItemDetailsLimitStatusApproved,
-	"partially_approved": CreateLimitItemDetailsLimitStatusPartiallyApproved,
-	"not_approved":       CreateLimitItemDetailsLimitStatusNotApproved,
-	"rejected":           CreateLimitItemDetailsLimitStatusRejected,
-}
-
-// GetCreateLimitItemDetailsLimitStatusEnumValues Enumerates the set of values for CreateLimitItemDetailsLimitStatusEnum
-func GetCreateLimitItemDetailsLimitStatusEnumValues() []CreateLimitItemDetailsLimitStatusEnum {
-	values := make([]CreateLimitItemDetailsLimitStatusEnum, 0)
-	for _, v := range mappingCreateLimitItemDetailsLimitStatusEnum {
-		values = append(values, v)
-	}
-	return values
-}
-
-// GetCreateLimitItemDetailsLimitStatusEnumStringValues Enumerates the set of values in String for CreateLimitItemDetailsLimitStatusEnum
-func GetCreateLimitItemDetailsLimitStatusEnumStringValues() []string {
-	return []string{
-		"APPROVED",
-		"PARTIALLY_APPROVED",
-		"NOT_APPROVED",
-		"REJECTED",
-	}
-}
-
-// GetMappingCreateLimitItemDetailsLimitStatusEnum performs case Insensitive comparison on enum value and return the desired enum
-func GetMappingCreateLimitItemDetailsLimitStatusEnum(val string) (CreateLimitItemDetailsLimitStatusEnum, bool) {
-	enum, ok := mappingCreateLimitItemDetailsLimitStatusEnumLowerCase[strings.ToLower(val)]
-	return enum, ok
 }

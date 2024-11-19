@@ -7,8 +7,8 @@
 // Use the Support Management API to manage support requests.
 // For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
 // **Note**: Before you can create service requests with this API,
-// you need to have an Oracle Single Sign On (SSO) account,
-// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// complete user registration at My Oracle Cloud Support
+// and then ask your tenancy administrator to provide you authorization for the related user groups.
 //
 
 package cims
@@ -24,6 +24,7 @@ type LifecycleDetailsEnum string
 const (
 	LifecycleDetailsPendingWithOracle   LifecycleDetailsEnum = "PENDING_WITH_ORACLE"
 	LifecycleDetailsPendingWithCustomer LifecycleDetailsEnum = "PENDING_WITH_CUSTOMER"
+	LifecycleDetailsPendingWithSupport  LifecycleDetailsEnum = "PENDING_WITH_SUPPORT"
 	LifecycleDetailsCloseRequested      LifecycleDetailsEnum = "CLOSE_REQUESTED"
 	LifecycleDetailsClosed              LifecycleDetailsEnum = "CLOSED"
 )
@@ -31,6 +32,7 @@ const (
 var mappingLifecycleDetailsEnum = map[string]LifecycleDetailsEnum{
 	"PENDING_WITH_ORACLE":   LifecycleDetailsPendingWithOracle,
 	"PENDING_WITH_CUSTOMER": LifecycleDetailsPendingWithCustomer,
+	"PENDING_WITH_SUPPORT":  LifecycleDetailsPendingWithSupport,
 	"CLOSE_REQUESTED":       LifecycleDetailsCloseRequested,
 	"CLOSED":                LifecycleDetailsClosed,
 }
@@ -38,6 +40,7 @@ var mappingLifecycleDetailsEnum = map[string]LifecycleDetailsEnum{
 var mappingLifecycleDetailsEnumLowerCase = map[string]LifecycleDetailsEnum{
 	"pending_with_oracle":   LifecycleDetailsPendingWithOracle,
 	"pending_with_customer": LifecycleDetailsPendingWithCustomer,
+	"pending_with_support":  LifecycleDetailsPendingWithSupport,
 	"close_requested":       LifecycleDetailsCloseRequested,
 	"closed":                LifecycleDetailsClosed,
 }
@@ -56,6 +59,7 @@ func GetLifecycleDetailsEnumStringValues() []string {
 	return []string{
 		"PENDING_WITH_ORACLE",
 		"PENDING_WITH_CUSTOMER",
+		"PENDING_WITH_SUPPORT",
 		"CLOSE_REQUESTED",
 		"CLOSED",
 	}
