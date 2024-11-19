@@ -7,8 +7,8 @@
 // Use the Support Management API to manage support requests.
 // For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
 // **Note**: Before you can create service requests with this API,
-// you need to have an Oracle Single Sign On (SSO) account,
-// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// complete user registration at My Oracle Cloud Support
+// and then ask your tenancy administrator to provide you authorization for the related user groups.
 //
 
 package cims
@@ -19,27 +19,24 @@ import (
 	"strings"
 )
 
-// ServiceCategories List of Service Categories of a Service for MOS Taxonomy.
-type ServiceCategories struct {
+// CmosUserGroupInfo Identifier and name of the technical support request's user group (`userGroupId` and `userGroupName`).
+type CmosUserGroupInfo struct {
 
-	// Service Category list.
-	Service map[string]string `mandatory:"false" json:"service"`
+	// Technical support type (`TECH`) only: The identifier of the support request's user group in My Oracle Cloud Support portal.
+	UserGroupId *string `mandatory:"false" json:"userGroupId"`
 
-	// Schema of a Service Category.
-	Schema *string `mandatory:"false" json:"schema"`
-
-	// The service categories list for MOS Taxonomy.
-	SubCategories []SubCategories `mandatory:"false" json:"subCategories"`
+	// Technical support type (`TECH`) only: Name of the support request's user group in My Oracle Cloud Support portal.
+	UserGroupName *string `mandatory:"false" json:"userGroupName"`
 }
 
-func (m ServiceCategories) String() string {
+func (m CmosUserGroupInfo) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m ServiceCategories) ValidateEnumValue() (bool, error) {
+func (m CmosUserGroupInfo) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {

@@ -22,11 +22,11 @@ type Endpoint struct {
 	// The FQDN of the endpoint.
 	Fqdn *string `mandatory:"true" json:"fqdn"`
 
-	// The IP address of the endpoint.
-	IpAddress *string `mandatory:"true" json:"ipAddress"`
-
 	// The port address of the endpoint.
 	Port *int `mandatory:"true" json:"port"`
+
+	// The IP address of the endpoint.
+	IpAddress *string `mandatory:"false" json:"ipAddress"`
 }
 
 func (m Endpoint) String() string {

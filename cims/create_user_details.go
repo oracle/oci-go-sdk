@@ -7,8 +7,8 @@
 // Use the Support Management API to manage support requests.
 // For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
 // **Note**: Before you can create service requests with this API,
-// you need to have an Oracle Single Sign On (SSO) account,
-// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// complete user registration at My Oracle Cloud Support
+// and then ask your tenancy administrator to provide you authorization for the related user groups.
 //
 
 package cims
@@ -31,18 +31,6 @@ type CreateUserDetails struct {
 	// Last name of the user.
 	LastName *string `mandatory:"true" json:"lastName"`
 
-	// CSI associated with the user.
-	Csi *string `mandatory:"true" json:"csi"`
-
-	// Contact number of the user.
-	Phone *string `mandatory:"true" json:"phone"`
-
-	// Timezone of the user.
-	Timezone *string `mandatory:"true" json:"timezone"`
-
-	// Organization of the user.
-	OrganizationName *string `mandatory:"true" json:"organizationName"`
-
 	// The kind of support ticket (type of support request).
 	// For information about `ACCOUNT` support tickets, see
 	// Creating a Billing Support Request (https://docs.cloud.oracle.com/iaas/Content/GSG/support/create-incident-billing.htm).
@@ -51,6 +39,18 @@ type CreateUserDetails struct {
 	// For information about `TECH` support tickets, see
 	// Creating a Technical Support Request (https://docs.cloud.oracle.com/iaas/Content/GSG/support/create-incident-technical.htm).
 	ProblemType ProblemTypeEnum `mandatory:"true" json:"problemType"`
+
+	// CSI associated with the user.
+	Csi *string `mandatory:"false" json:"csi"`
+
+	// Contact number of the user.
+	Phone *string `mandatory:"false" json:"phone"`
+
+	// Timezone of the user.
+	Timezone *string `mandatory:"false" json:"timezone"`
+
+	// Organization of the user.
+	OrganizationName *string `mandatory:"false" json:"organizationName"`
 }
 
 func (m CreateUserDetails) String() string {

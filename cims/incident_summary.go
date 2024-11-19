@@ -7,8 +7,8 @@
 // Use the Support Management API to manage support requests.
 // For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
 // **Note**: Before you can create service requests with this API,
-// you need to have an Oracle Single Sign On (SSO) account,
-// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// complete user registration at My Oracle Cloud Support
+// and then ask your tenancy administrator to provide you authorization for the related user groups.
 //
 
 package cims
@@ -44,6 +44,25 @@ type IncidentSummary struct {
 	Ticket *Ticket `mandatory:"false" json:"ticket"`
 
 	IncidentType *IncidentResourceType `mandatory:"false" json:"incidentType"`
+
+	// Technical support type (`TECH`) only: The identifier of the support request's user group in My Oracle Cloud Support portal.
+	UserGroupId *string `mandatory:"false" json:"userGroupId"`
+
+	// Technical support type (`TECH`) only: Name of the support request's user group in My Oracle Cloud Support portal.
+	UserGroupName *string `mandatory:"false" json:"userGroupName"`
+
+	// Technical support type (`TECH`) only: The identifier of the support request's primary contact (`primaryContactPartyName`) in My Oracle Cloud Support portal.
+	PrimaryContactPartyId *string `mandatory:"false" json:"primaryContactPartyId"`
+
+	// Technical support type (`TECH`) only: The name of the support request's primary contact in My Oracle Cloud Support portal.
+	PrimaryContactPartyName *string `mandatory:"false" json:"primaryContactPartyName"`
+
+	// Technical support type (`TECH`) only: Allows update of the support request in My Oracle Cloud Support portal,
+	// when the user has write permission to the support request's user group.
+	IsWritePermitted *bool `mandatory:"false" json:"isWritePermitted"`
+
+	// Technical support type (`TECH`) only: Message indicating the user group (`userGroupId`) that was auto-selected for a new support request. This message appears when no user group was specified in the create request for a new technical support request.
+	WarnMessage *string `mandatory:"false" json:"warnMessage"`
 }
 
 func (m IncidentSummary) String() string {
