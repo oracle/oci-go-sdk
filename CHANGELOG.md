@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.79.0 - 2024-11-19
+### Added 
+- Support for optional parameters for unified auditing in the Database service 
+- Support for user groups for creating technical requests in the Support Management service 
+- Support for additional checksum algorithms (SHA-256, SHA-384, CRC32C) in the Object Storage service 
+- Support for single Read Only (RO) endpoint for the read replicas in the PostgreSQL service 
+- Support for exascale database vaults in the Database service 
+- Support for virtual machine clusters with database vaults in the Database service 
+- Support for N3-Gi version in the Database service    
+
+### Breaking Changes 
+- The model `ServiceCategories` was renamed to `Services` in the Customer Incident Management Service 
+- The property `SubComponents` was renamed to `SubCategories` in the `SubCategories` model in the Customer Incident Management Service 
+- The property `LimitStatus` and the enum `LimitStatusEnum` were removed from the model `CreateLimitItemDetails` in the Customer Incident Management Service 
+- The property `IpAddress` was made non-mandatory in the return model `endpoint` in the PostgreSQL service
+
 ## 65.78.1 - 2024-11-12
 ### Added 
 - Support for calling Oracle Cloud Infrastructure services in the `me-alain-1` region 

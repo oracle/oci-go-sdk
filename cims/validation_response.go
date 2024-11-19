@@ -7,8 +7,8 @@
 // Use the Support Management API to manage support requests.
 // For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
 // **Note**: Before you can create service requests with this API,
-// you need to have an Oracle Single Sign On (SSO) account,
-// and you need to register your Customer Support Identifier (CSI) with My Oracle Support.
+// complete user registration at My Oracle Cloud Support
+// and then ask your tenancy administrator to provide you authorization for the related user groups.
 //
 
 package cims
@@ -24,6 +24,9 @@ type ValidationResponse struct {
 
 	// Boolean value that indicates whether the requested user is valid.
 	IsValidUser *bool `mandatory:"false" json:"isValidUser"`
+
+	// Technical support type (`TECH`) only: Identifier and name of the support request's user group (`userGroupId` and `userGroupName`).
+	WritePermittedUserGroupInfos []CmosUserGroupInfo `mandatory:"false" json:"writePermittedUserGroupInfos"`
 }
 
 func (m ValidationResponse) String() string {
