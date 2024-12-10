@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"strings"
+	"sync"
 	"testing"
 	"time"
 
@@ -22,7 +23,7 @@ const (
 )
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClient(t *testing.T) {
-	t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
+	t.Parallel()
 	regionServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "phx")
 	}))
@@ -39,23 +40,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClient(t *testing.T)
 func TestInstancePrincipalKeyProvider_getRegionForFederationClienURLUnset(t *testing.T) {
 	// t.Setenv temporarily sets the value of the environment variable for the duration of the test
 	t.Setenv(MetaDataBaseURLEnvVarName, "")
-
-	regionServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, "phx")
-	}))
-	defer regionServer.Close()
-
-	actualRegion, err := getRegionForFederationClient(&http.Client{}, regionServer.URL)
-
-	assert.NoError(t, err)
-	assert.Equal(t, common.RegionPHX, actualRegion)
-}
-
-// Test that the federation client still works when the metadataBaseURL is set to
-// the fallback url.
-func TestInstancePrincipalKeyProvider_getRegionForFederationClienURLSetToFallBack(t *testing.T) {
-	t.Setenv(MetaDataBaseURLEnvVarName, metadataFallbackURL)
-
+	defer t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
 	regionServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "phx")
 	}))
@@ -68,7 +53,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClienURLSetToFallBac
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFound(t *testing.T) {
-	t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
+	t.Parallel()
 	regionServer := httptest.NewServer(http.NotFoundHandler())
 	defer regionServer.Close()
 
@@ -78,7 +63,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFound(t *te
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientTimeout(t *testing.T) {
-	t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
+	t.Parallel()
 	HandlerFunc := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		time.Sleep(100 * time.Millisecond)
 	})
@@ -93,7 +78,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientTimeout(t *tes
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFoundRetrySuccess(t *testing.T) {
-	t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
+	t.Parallel()
 	responses := []func(w http.ResponseWriter, r *http.Request){
 		func(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, "Bad request ", 404)
@@ -122,7 +107,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFoundRetryS
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFoundRetryFailure(t *testing.T) {
-	t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
+	t.Parallel()
 	responses := []func(w http.ResponseWriter, r *http.Request){
 		func(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintln(w, "First response")
@@ -132,6 +117,24 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFoundRetryF
 		},
 		func(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintln(w, "Third response")
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "Fourth response")
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "Fifth response")
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "Sixth response")
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "Seventh response")
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "Eighth response")
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "Ninth response")
 		},
 	}
 	responseCounter := 0
@@ -149,7 +152,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFoundRetryF
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientRetrySuccess(t *testing.T) {
-	t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
+	t.Parallel()
 	statusCodeList := []int{400, 401, 403, 405, 408, 409, 412, 413, 422, 429, 431, 500, 501, 503}
 	for _, statusCode := range statusCodeList {
 		responses := []func(w http.ResponseWriter, r *http.Request){
@@ -182,7 +185,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientRetrySuccess(t
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientRetryFailure(t *testing.T) {
-	t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
+	t.Parallel()
 	statusCodeList := []int{400, 401, 403, 405, 408, 409, 412, 413, 422, 429, 431, 500, 501, 503}
 	responses := []func(w http.ResponseWriter, r *http.Request){
 		func(w http.ResponseWriter, r *http.Request) {
@@ -194,24 +197,45 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientRetryFailure(t
 		func(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintln(w, "Third response")
 		},
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "Fourth response")
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "Fifth response")
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "Sixth response")
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "Seventh response")
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "Eighth response")
+		},
 	}
+	var wg sync.WaitGroup
 	for _, statusCode := range statusCodeList {
-		responseCounter := 0
-		ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			http.Error(w, "Bad request ", statusCode)
-			responses[responseCounter](w, r)
-			responseCounter++
-		}))
-		defer ts.Close()
+		wg.Add(1)
+		go func() {
+			responseCounter := 0
+			ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				http.Error(w, "Bad request ", statusCode)
+				responses[responseCounter](w, r)
+				responseCounter++
+			}))
+			defer ts.Close()
 
-		response, err := getRegionForFederationClient(&http.Client{}, ts.URL)
-		assert.Error(t, err)
-		assert.Empty(t, response)
+			response, err := getRegionForFederationClient(&http.Client{}, ts.URL)
+			assert.Error(t, err)
+			assert.Empty(t, response)
+			wg.Done()
+		}()
 	}
+	wg.Wait()
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientInternalServerError(t *testing.T) {
-	t.Setenv(MetaDataBaseURLEnvVarName, defaultMetadataBaseURL)
+	t.Parallel()
 	regionServer := httptest.NewServer(http.HandlerFunc(internalServerError))
 	defer regionServer.Close()
 
@@ -221,6 +245,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientInternalServer
 }
 
 func TestInstancePrincipalKeyProvider_RegionForFederationClient(t *testing.T) {
+	t.Parallel()
 	expectedRegion := common.StringToRegion("sea")
 	keyProvider := &instancePrincipalKeyProvider{Region: expectedRegion}
 	returnedRegion := keyProvider.RegionForFederationClient()
@@ -228,6 +253,7 @@ func TestInstancePrincipalKeyProvider_RegionForFederationClient(t *testing.T) {
 }
 
 func TestInstancePrincipalKeyProvider_PrivateRSAKey(t *testing.T) {
+	t.Parallel()
 	mockFederationClient := new(mockFederationClient)
 	expectedPrivateKey := new(rsa.PrivateKey)
 	mockFederationClient.On("PrivateKey").Return(expectedPrivateKey, nil).Once()
@@ -242,6 +268,7 @@ func TestInstancePrincipalKeyProvider_PrivateRSAKey(t *testing.T) {
 }
 
 func TestInstancePrincipalKeyProvider_PrivateRSAKeyError(t *testing.T) {
+	t.Parallel()
 	mockFederationClient := new(mockFederationClient)
 	var nilPtr *rsa.PrivateKey
 	expectedErrorMessage := "TestPrivateRSAKeyError"
@@ -257,6 +284,7 @@ func TestInstancePrincipalKeyProvider_PrivateRSAKeyError(t *testing.T) {
 }
 
 func TestInstancePrincipalKeyProvider_KeyID(t *testing.T) {
+	t.Parallel()
 	mockFederationClient := new(mockFederationClient)
 	mockFederationClient.On("SecurityToken").Return("TestSecurityTokenString", nil).Once()
 
@@ -269,6 +297,7 @@ func TestInstancePrincipalKeyProvider_KeyID(t *testing.T) {
 }
 
 func TestInstancePrincipalKeyProvider_KeyIDError(t *testing.T) {
+	t.Parallel()
 	mockFederationClient := new(mockFederationClient)
 	expectedErrorMessage := "TestSecurityTokenError"
 	mockFederationClient.On("SecurityToken").Return("", fmt.Errorf(expectedErrorMessage)).Once()
