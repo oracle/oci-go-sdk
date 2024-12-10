@@ -63,20 +63,20 @@ $(TARGETS_STATIC): staticcheck-%:%
 $(TARGETS_BUILD): build-%:%
 	@echo "building: $<"
 	@if [ \( $< = example \) ]; then\
-		(cd $< && go test -c);\
+		(cd $< && go test -parallel 5 -timeout 1200s -c);\
 	else\
 		(cd $< && find . -name '*_integ_test.go' | xargs -I{} mv {} ../integtest);\
 		(cd $< && go build -v);\
 	fi
 
 $(TARGETS_TEST): test-%:%
-	@(cd $< && go test -v)
+	@(cd $< && go test -parallel 5 -timeout 1200s -v)
 
 $(TARGETS_TESTFILTERED): testfiltered-%:%
-	@(cd $< && go test -v -run $(TEST_NAME))
+	@(cd $< && go test -parallel 5 -timeout 1200s -v -run $(TEST_NAME))
 
 $(TARGETS_INTEG_TEST): test-%:%
-	@(cd $< && go test -v)
+	@(cd $< && go test -parallel 5 -timeout 1200s -v)
 
 $(TARGETS_CLEAN): clean-%:%
 	@echo "cleaning $<"
@@ -111,5 +111,5 @@ release: gen-version build pre-doc
 
 build-autotest:
 	@if [ -d $(AUTOTEST_DIR) ]; then\
-		(cd $(AUTOTEST_DIR) && gofmt -s -w . && gofmt -s -w . && go test -c);\
+		(cd $(AUTOTEST_DIR) && gofmt -s -w . && gofmt -s -w . && go test -parallel 5 -timeout 1200s -c);\
 	fi
