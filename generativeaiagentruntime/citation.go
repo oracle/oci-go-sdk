@@ -27,6 +27,15 @@ type Citation struct {
 	SourceText *string `mandatory:"false" json:"sourceText"`
 
 	SourceLocation SourceLocation `mandatory:"false" json:"sourceLocation"`
+
+	// The title of the source text, if available.
+	Title *string `mandatory:"false" json:"title"`
+
+	// The id of the retrieved document, if available.
+	DocId *string `mandatory:"false" json:"docId"`
+
+	// The page numbers on the retrieved document, if available.
+	PageNumbers []int `mandatory:"false" json:"pageNumbers"`
 }
 
 func (m Citation) String() string {
@@ -50,6 +59,9 @@ func (m *Citation) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
 		SourceText     *string        `json:"sourceText"`
 		SourceLocation sourcelocation `json:"sourceLocation"`
+		Title          *string        `json:"title"`
+		DocId          *string        `json:"docId"`
+		PageNumbers    []int          `json:"pageNumbers"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -69,5 +81,11 @@ func (m *Citation) UnmarshalJSON(data []byte) (e error) {
 		m.SourceLocation = nil
 	}
 
+	m.Title = model.Title
+
+	m.DocId = model.DocId
+
+	m.PageNumbers = make([]int, len(model.PageNumbers))
+	copy(m.PageNumbers, model.PageNumbers)
 	return
 }
