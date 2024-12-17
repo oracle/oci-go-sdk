@@ -149,7 +149,7 @@ func (client GenerativeAiAgentRuntimeClient) chat(ctx context.Context, request c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/generative-ai-agents-client/20240531/Session/Chat"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/generative-ai-agents-client/20240531/AgentEndpoint/Chat"
 		err = common.PostProcessServiceError(err, "GenerativeAiAgentRuntime", "Chat", apiReferenceLink)
 		return response, err
 	}

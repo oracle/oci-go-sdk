@@ -19,7 +19,7 @@ import (
 	"strings"
 )
 
-// ChatDetails Chat details.
+// ChatDetails Chat details for managing user interactions and tool executions.
 type ChatDetails struct {
 
 	// The input user message content for the chat.
