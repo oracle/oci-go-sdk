@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.81.1 - 2024-12-18
+### Reverted 
+- Revert changes in CloudBridge service to 65.80.0
+
 ## 65.81.0 - 2024-12-17
 ### Added 
 - Support for backup retention locks on autonomous database create and update operations in the Database service 
