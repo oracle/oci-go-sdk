@@ -1,13 +1,13 @@
-// Copyright (c) 2016, 2018, 2024, Oracle and/or its affiliates.  All rights reserved.
+// Copyright (c) 2016, 2018, 2025, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Oracle Cloud Bridge API
+// OpenSearch Service API
 //
-// API for Oracle Cloud Bridge service.
+// The OpenSearch service API provides access to OCI Search Service with OpenSearch.
 //
 
-package cloudbridge
+package opensearch
 
 import (
 	"fmt"
@@ -15,21 +15,24 @@ import (
 	"strings"
 )
 
-// SupportedCloudRegionCollection Collection of supported cloud regions.
-type SupportedCloudRegionCollection struct {
+// DeleteBlockVolumesForNamespaceDetails delete block volumes for namespace
+type DeleteBlockVolumesForNamespaceDetails struct {
 
-	// List of supported cloud regions.
-	Items []SupportedCloudRegionSummary `mandatory:"true" json:"items"`
+	// OCID of the Opensearch Cluster.
+	ClusterId *string `mandatory:"true" json:"clusterId"`
+
+	// Namespace of the Opensearch Cluster.
+	Namespace *string `mandatory:"true" json:"namespace"`
 }
 
-func (m SupportedCloudRegionCollection) String() string {
+func (m DeleteBlockVolumesForNamespaceDetails) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m SupportedCloudRegionCollection) ValidateEnumValue() (bool, error) {
+func (m DeleteBlockVolumesForNamespaceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {
