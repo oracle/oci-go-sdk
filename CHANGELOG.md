@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.81.2 - 2025-01-14
+### Added 
+- Support for attaching route tables to VNICs and private IPs in the Networking service 
+- Support for Cross Cluster Search(CCS) for an opensearch cluster in the OpenSearch service 
+- Support for patch-level updates of the autonomous databases after provisioning in the Database service
+
 ## 65.81.1 - 2024-12-18
 ### Reverted 
 - Revert changes in CloudBridge service to 65.80.0
