@@ -45,6 +45,10 @@ type ClassicAssignedSubscriptionSummary struct {
 	// Subscription ID.
 	ClassicSubscriptionId *string `mandatory:"true" json:"classicSubscriptionId"`
 
+	// Usage of system tag keys. These predefined keys are scoped to namespaces.
+	// Example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
+	SystemTags map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
+
 	// Specifies whether or not the subscription is legacy.
 	IsClassicSubscription *bool `mandatory:"false" json:"isClassicSubscription"`
 
@@ -62,6 +66,9 @@ type ClassicAssignedSubscriptionSummary struct {
 
 	// Lifecycle state of the subscription.
 	LifecycleState ClassicSubscriptionLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
+
+	// Service or component which is used to provision and manage the subscription.
+	ManagedBy ClassicSubscriptionManagedByEnum `mandatory:"false" json:"managedBy,omitempty"`
 }
 
 // GetId returns Id
@@ -99,6 +106,11 @@ func (m ClassicAssignedSubscriptionSummary) GetDefinedTags() map[string]map[stri
 	return m.DefinedTags
 }
 
+// GetSystemTags returns SystemTags
+func (m ClassicAssignedSubscriptionSummary) GetSystemTags() map[string]map[string]interface{} {
+	return m.SystemTags
+}
+
 func (m ClassicAssignedSubscriptionSummary) String() string {
 	return common.PointerString(m)
 }
@@ -111,6 +123,9 @@ func (m ClassicAssignedSubscriptionSummary) ValidateEnumValue() (bool, error) {
 
 	if _, ok := GetMappingClassicSubscriptionLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetClassicSubscriptionLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingClassicSubscriptionManagedByEnum(string(m.ManagedBy)); !ok && m.ManagedBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ManagedBy: %s. Supported values are: %s.", m.ManagedBy, strings.Join(GetClassicSubscriptionManagedByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))

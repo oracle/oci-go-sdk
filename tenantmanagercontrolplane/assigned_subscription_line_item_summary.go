@@ -35,6 +35,10 @@ type AssignedSubscriptionLineItemSummary struct {
 
 	// The time the subscription item and associated products should end. An RFC 3339 formatted date and time string.
 	TimeEnded *common.SDKTime `mandatory:"true" json:"timeEnded"`
+
+	// Usage of system tag keys. These predefined keys are scoped to namespaces.
+	// Example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
+	SystemTags map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 }
 
 func (m AssignedSubscriptionLineItemSummary) String() string {
