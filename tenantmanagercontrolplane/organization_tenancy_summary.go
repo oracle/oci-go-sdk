@@ -41,6 +41,10 @@ type OrganizationTenancySummary struct {
 
 	// Parameter to indicate the tenancy is approved for transfer to another organization.
 	IsApprovedForTransfer *bool `mandatory:"false" json:"isApprovedForTransfer"`
+
+	// Usage of system tag keys. These predefined keys are scoped to namespaces.
+	// Example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
+	SystemTags map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 }
 
 func (m OrganizationTenancySummary) String() string {

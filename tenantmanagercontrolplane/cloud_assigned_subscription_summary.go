@@ -48,6 +48,10 @@ type CloudAssignedSubscriptionSummary struct {
 	// Currency code. For example USD, MXN.
 	CurrencyCode *string `mandatory:"true" json:"currencyCode"`
 
+	// Usage of system tag keys. These predefined keys are scoped to namespaces.
+	// Example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
+	SystemTags map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
+
 	// Lifecycle state of the subscription.
 	LifecycleState SubscriptionLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 }
@@ -85,6 +89,11 @@ func (m CloudAssignedSubscriptionSummary) GetFreeformTags() map[string]string {
 // GetDefinedTags returns DefinedTags
 func (m CloudAssignedSubscriptionSummary) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
+}
+
+// GetSystemTags returns SystemTags
+func (m CloudAssignedSubscriptionSummary) GetSystemTags() map[string]map[string]interface{} {
+	return m.SystemTags
 }
 
 func (m CloudAssignedSubscriptionSummary) String() string {

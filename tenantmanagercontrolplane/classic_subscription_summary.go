@@ -25,7 +25,7 @@ type ClassicSubscriptionSummary struct {
 	// The Oracle ID (OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)) of the owning compartment. Always a tenancy OCID.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// The type of subscription, such as 'UCM', 'SAAS', 'ERP', 'CRM'.
+	// The type of subscription, such as 'CLOUDCM', 'AUTOANALYTICS', 'ERP', 'CRM'.
 	ServiceName *string `mandatory:"true" json:"serviceName"`
 
 	// The date and time of creation, as described in RFC 3339 (https://tools.ietf.org/rfc/rfc3339), section 14.29.
@@ -44,6 +44,10 @@ type ClassicSubscriptionSummary struct {
 
 	// Classic subscription ID.
 	ClassicSubscriptionId *string `mandatory:"true" json:"classicSubscriptionId"`
+
+	// Usage of system tag keys. These predefined keys are scoped to namespaces.
+	// Example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
+	SystemTags map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 
 	// Specifies whether or not the subscription is from classic systems.
 	IsClassicSubscription *bool `mandatory:"false" json:"isClassicSubscription"`
@@ -97,6 +101,11 @@ func (m ClassicSubscriptionSummary) GetFreeformTags() map[string]string {
 // GetDefinedTags returns DefinedTags
 func (m ClassicSubscriptionSummary) GetDefinedTags() map[string]map[string]interface{} {
 	return m.DefinedTags
+}
+
+// GetSystemTags returns SystemTags
+func (m ClassicSubscriptionSummary) GetSystemTags() map[string]map[string]interface{} {
+	return m.SystemTags
 }
 
 func (m ClassicSubscriptionSummary) String() string {

@@ -25,7 +25,7 @@ type SubscriptionSummary interface {
 	// The Oracle ID (OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)) of the owning compartment. Always a tenancy OCID.
 	GetCompartmentId() *string
 
-	// The type of subscription, such as 'UCM', 'SAAS', 'ERP', 'CRM'.
+	// The type of subscription, such as 'CLOUDCM', 'AUTOANALYTICS', 'ERP', 'CRM'.
 	GetServiceName() *string
 
 	// The date and time of creation, as described in RFC 3339 (https://tools.ietf.org/rfc/rfc3339), section 14.29.
@@ -41,10 +41,15 @@ type SubscriptionSummary interface {
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
 	// Example: `{"foo-namespace": {"bar-key": "value"}}`
 	GetDefinedTags() map[string]map[string]interface{}
+
+	// Usage of system tag keys. These predefined keys are scoped to namespaces.
+	// Example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
+	GetSystemTags() map[string]map[string]interface{}
 }
 
 type subscriptionsummary struct {
 	JsonData      []byte
+	SystemTags    map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 	Id            *string                           `mandatory:"true" json:"id"`
 	CompartmentId *string                           `mandatory:"true" json:"compartmentId"`
 	ServiceName   *string                           `mandatory:"true" json:"serviceName"`
@@ -73,6 +78,7 @@ func (m *subscriptionsummary) UnmarshalJSON(data []byte) error {
 	m.TimeUpdated = s.Model.TimeUpdated
 	m.FreeformTags = s.Model.FreeformTags
 	m.DefinedTags = s.Model.DefinedTags
+	m.SystemTags = s.Model.SystemTags
 	m.EntityVersion = s.Model.EntityVersion
 
 	return err
@@ -99,6 +105,11 @@ func (m *subscriptionsummary) UnmarshalPolymorphicJSON(data []byte) (interface{}
 		common.Logf("Recieved unsupported enum value for SubscriptionSummary: %s.", m.EntityVersion)
 		return *m, nil
 	}
+}
+
+// GetSystemTags returns SystemTags
+func (m subscriptionsummary) GetSystemTags() map[string]map[string]interface{} {
+	return m.SystemTags
 }
 
 // GetId returns Id

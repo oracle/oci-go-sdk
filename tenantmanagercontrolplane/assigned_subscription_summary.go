@@ -41,10 +41,15 @@ type AssignedSubscriptionSummary interface {
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
 	// Example: `{"foo-namespace": {"bar-key": "value"}}`
 	GetDefinedTags() map[string]map[string]interface{}
+
+	// Usage of system tag keys. These predefined keys are scoped to namespaces.
+	// Example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
+	GetSystemTags() map[string]map[string]interface{}
 }
 
 type assignedsubscriptionsummary struct {
 	JsonData      []byte
+	SystemTags    map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 	Id            *string                           `mandatory:"true" json:"id"`
 	CompartmentId *string                           `mandatory:"true" json:"compartmentId"`
 	ServiceName   *string                           `mandatory:"true" json:"serviceName"`
@@ -73,6 +78,7 @@ func (m *assignedsubscriptionsummary) UnmarshalJSON(data []byte) error {
 	m.TimeUpdated = s.Model.TimeUpdated
 	m.FreeformTags = s.Model.FreeformTags
 	m.DefinedTags = s.Model.DefinedTags
+	m.SystemTags = s.Model.SystemTags
 	m.EntityVersion = s.Model.EntityVersion
 
 	return err
@@ -99,6 +105,11 @@ func (m *assignedsubscriptionsummary) UnmarshalPolymorphicJSON(data []byte) (int
 		common.Logf("Recieved unsupported enum value for AssignedSubscriptionSummary: %s.", m.EntityVersion)
 		return *m, nil
 	}
+}
+
+// GetSystemTags returns SystemTags
+func (m assignedsubscriptionsummary) GetSystemTags() map[string]map[string]interface{} {
+	return m.SystemTags
 }
 
 // GetId returns Id

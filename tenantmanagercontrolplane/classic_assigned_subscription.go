@@ -89,6 +89,9 @@ type ClassicAssignedSubscription struct {
 
 	// Lifecycle state of the subscription.
 	LifecycleState ClassicSubscriptionLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
+
+	// Service or component which is used to provision and manage the subscription.
+	ManagedBy ClassicSubscriptionManagedByEnum `mandatory:"false" json:"managedBy,omitempty"`
 }
 
 // GetId returns Id
@@ -138,6 +141,9 @@ func (m ClassicAssignedSubscription) ValidateEnumValue() (bool, error) {
 
 	if _, ok := GetMappingClassicSubscriptionLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetClassicSubscriptionLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingClassicSubscriptionManagedByEnum(string(m.ManagedBy)); !ok && m.ManagedBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ManagedBy: %s. Supported values are: %s.", m.ManagedBy, strings.Join(GetClassicSubscriptionManagedByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))

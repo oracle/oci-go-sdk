@@ -901,6 +901,10 @@ type structWithHeaderCollections struct {
 	Meta map[string]string `contributesTo:"header-collection" prefix:"meta-prefix-"`
 }
 
+type structWithHeaderArray struct {
+	Recipients []string `contributesTo:"header" name:"recipients" collectionFormat:"csv"`
+}
+
 func TestMarshalWithHeaderCollections(t *testing.T) {
 	vals := make(map[string]string)
 	vals["key1"] = "val1"
@@ -911,6 +915,17 @@ func TestMarshalWithHeaderCollections(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, s.Meta["key1"], request.Header.Get("meta-prefix-key1"))
 	assert.Equal(t, s.Meta["key2"], request.Header.Get("Meta-prefix-key2"))
+}
+
+func TestMarshalWithHeaderArray(t *testing.T) {
+	vals := make([]string, 3)
+	vals[0] = "bob"
+	vals[1] = "rachel"
+	vals[2] = "alex"
+	s := structWithHeaderArray{Recipients: vals}
+	request, err := MakeDefaultHTTPRequestWithTaggedStruct("GET", "/", s)
+	assert.NoError(t, err)
+	assert.Equal(t, "bob,rachel,alex", request.Header.Get("recipients"))
 }
 
 func TestMarshalWithHeaderCollections_BadCollectionType(t *testing.T) {
