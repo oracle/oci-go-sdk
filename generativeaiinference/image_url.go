@@ -18,13 +18,20 @@ import (
 	"strings"
 )
 
-// ImageUrl Represents a single instance of chat image url.
+// ImageUrl Provide a base64 encoded image.
 type ImageUrl struct {
 
-	// The URL of the image.
+	// The base64 encoded image data.
+	// Example for a png image:
+	//   `{
+	//     "type": "IMAGE",
+	//     "imageUrl": {
+	//       "url": "data:image/png;base64,<base64 encoded image content>"
+	//     }
+	//   }`
 	Url *string `mandatory:"true" json:"url"`
 
-	// The level of the detail.
+	// The default value is AUTO and only AUTO is supported. This option controls how to convert the base64 encoded image to tokens.
 	Detail ImageUrlDetailEnum `mandatory:"false" json:"detail,omitempty"`
 }
 

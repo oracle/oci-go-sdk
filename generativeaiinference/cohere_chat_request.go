@@ -74,7 +74,7 @@ type CohereChatRequest struct {
 	// Similar to frequency penalty, a penalty is applied to previously present tokens, except that this penalty is applied equally to all tokens that have already appeared, regardless of how many times they've appeared. Set to 0 to disable.
 	PresencePenalty *float64 `mandatory:"false" json:"presencePenalty"`
 
-	// If specified, the backend will make a best effort to sample tokens deterministically, such that repeated requests with the same seed and parameters should return the same result. However, determinism cannot be totally guaranteed.
+	// If specified, the backend will make a best effort to sample tokens deterministically, so that repeated requests with the same seed and parameters yield the same result. However, determinism cannot be fully guaranteed.
 	Seed *int `mandatory:"false" json:"seed"`
 
 	// Returns the full prompt that was sent to the model when True.
