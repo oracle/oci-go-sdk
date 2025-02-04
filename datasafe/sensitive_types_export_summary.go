@@ -15,25 +15,29 @@ import (
 	"strings"
 )
 
-// CreateAuditProfileDetails The details used to create a new audit profile.
-type CreateAuditProfileDetails struct {
+// SensitiveTypesExportSummary The resource represents collection of sensitive types needed to be exported.
+type SensitiveTypesExportSummary struct {
 
-	// The OCID of the compartment where you want to create the audit profile.
+	// The OCID of the sensitive types export.
+	Id *string `mandatory:"true" json:"id"`
+
+	// The display name of the sensitive types export.
+	DisplayName *string `mandatory:"true" json:"displayName"`
+
+	// The OCID of the compartment that contains sensitive types export.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// The OCID of the Data Safe target for which the audit profile is created.
-	TargetId *string `mandatory:"true" json:"targetId"`
+	// The date and time the sensitive types export was created, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
-	// The display name of the audit profile. The name does not have to be unique, and it's changeable.
-	DisplayName *string `mandatory:"false" json:"displayName"`
+	// The current state of the sensitive types export.
+	LifecycleState SensitiveTypesExportLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
-	// The description of the audit profile.
+	// The date and time the sensitive types export was last updated, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
+	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
+
+	// The description of the sensitive types export.
 	Description *string `mandatory:"false" json:"description"`
-
-	// Indicates if you want to continue collecting audit records beyond the free limit of one million audit records per month per target database,
-	// potentially incurring additional charges. The default value is inherited from the global settings.
-	// You can change at the global level or at the target level.
-	IsPaidUsageEnabled *bool `mandatory:"false" json:"isPaidUsageEnabled"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcetags.htm)
 	// Example: `{"Department": "Finance"}`
@@ -44,15 +48,18 @@ type CreateAuditProfileDetails struct {
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 }
 
-func (m CreateAuditProfileDetails) String() string {
+func (m SensitiveTypesExportSummary) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m CreateAuditProfileDetails) ValidateEnumValue() (bool, error) {
+func (m SensitiveTypesExportSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
+	if _, ok := GetMappingSensitiveTypesExportLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSensitiveTypesExportLifecycleStateEnumStringValues(), ",")))
+	}
 
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))

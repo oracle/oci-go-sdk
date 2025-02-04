@@ -70,6 +70,10 @@ func (m *message) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 		mm := UserMessage{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
+	case "TOOL":
+		mm := ToolMessage{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	default:
 		common.Logf("Recieved unsupported enum value for Message: %s.", m.Role)
 		return *m, nil
@@ -105,18 +109,21 @@ const (
 	MessageRoleSystem    MessageRoleEnum = "SYSTEM"
 	MessageRoleUser      MessageRoleEnum = "USER"
 	MessageRoleAssistant MessageRoleEnum = "ASSISTANT"
+	MessageRoleTool      MessageRoleEnum = "TOOL"
 )
 
 var mappingMessageRoleEnum = map[string]MessageRoleEnum{
 	"SYSTEM":    MessageRoleSystem,
 	"USER":      MessageRoleUser,
 	"ASSISTANT": MessageRoleAssistant,
+	"TOOL":      MessageRoleTool,
 }
 
 var mappingMessageRoleEnumLowerCase = map[string]MessageRoleEnum{
 	"system":    MessageRoleSystem,
 	"user":      MessageRoleUser,
 	"assistant": MessageRoleAssistant,
+	"tool":      MessageRoleTool,
 }
 
 // GetMessageRoleEnumValues Enumerates the set of values for MessageRoleEnum
@@ -134,6 +141,7 @@ func GetMessageRoleEnumStringValues() []string {
 		"SYSTEM",
 		"USER",
 		"ASSISTANT",
+		"TOOL",
 	}
 }
 

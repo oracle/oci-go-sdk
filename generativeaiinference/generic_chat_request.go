@@ -31,6 +31,9 @@ type GenericChatRequest struct {
 	// The number of of generated texts that will be returned.
 	NumGenerations *int `mandatory:"false" json:"numGenerations"`
 
+	// If specified, the backend will make a best effort to sample tokens deterministically, so that repeated requests with the same seed and parameters yield the same result. However, determinism cannot be fully guaranteed.
+	Seed *int `mandatory:"false" json:"seed"`
+
 	// Whether to include the user prompt in the response. Applies only to non-stream results.
 	IsEcho *bool `mandatory:"false" json:"isEcho"`
 
@@ -67,6 +70,11 @@ type GenericChatRequest struct {
 	// Modifies the likelihood of specified tokens that appear in the completion.
 	// Example: '{"6395": 2, "8134": 1, "21943": 0.5, "5923": -100}'
 	LogitBias *interface{} `mandatory:"false" json:"logitBias"`
+
+	ToolChoice ToolChoice `mandatory:"false" json:"toolChoice"`
+
+	// A list of tools the model may call. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
+	Tools []ToolDefinition `mandatory:"false" json:"tools"`
 }
 
 func (m GenericChatRequest) String() string {
@@ -102,19 +110,22 @@ func (m GenericChatRequest) MarshalJSON() (buff []byte, e error) {
 // UnmarshalJSON unmarshals from json
 func (m *GenericChatRequest) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		Messages         []message    `json:"messages"`
-		IsStream         *bool        `json:"isStream"`
-		NumGenerations   *int         `json:"numGenerations"`
-		IsEcho           *bool        `json:"isEcho"`
-		TopK             *int         `json:"topK"`
-		TopP             *float64     `json:"topP"`
-		Temperature      *float64     `json:"temperature"`
-		FrequencyPenalty *float64     `json:"frequencyPenalty"`
-		PresencePenalty  *float64     `json:"presencePenalty"`
-		Stop             []string     `json:"stop"`
-		LogProbs         *int         `json:"logProbs"`
-		MaxTokens        *int         `json:"maxTokens"`
-		LogitBias        *interface{} `json:"logitBias"`
+		Messages         []message        `json:"messages"`
+		IsStream         *bool            `json:"isStream"`
+		NumGenerations   *int             `json:"numGenerations"`
+		Seed             *int             `json:"seed"`
+		IsEcho           *bool            `json:"isEcho"`
+		TopK             *int             `json:"topK"`
+		TopP             *float64         `json:"topP"`
+		Temperature      *float64         `json:"temperature"`
+		FrequencyPenalty *float64         `json:"frequencyPenalty"`
+		PresencePenalty  *float64         `json:"presencePenalty"`
+		Stop             []string         `json:"stop"`
+		LogProbs         *int             `json:"logProbs"`
+		MaxTokens        *int             `json:"maxTokens"`
+		LogitBias        *interface{}     `json:"logitBias"`
+		ToolChoice       toolchoice       `json:"toolChoice"`
+		Tools            []tooldefinition `json:"tools"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -138,6 +149,8 @@ func (m *GenericChatRequest) UnmarshalJSON(data []byte) (e error) {
 
 	m.NumGenerations = model.NumGenerations
 
+	m.Seed = model.Seed
+
 	m.IsEcho = model.IsEcho
 
 	m.TopK = model.TopK
@@ -158,5 +171,27 @@ func (m *GenericChatRequest) UnmarshalJSON(data []byte) (e error) {
 
 	m.LogitBias = model.LogitBias
 
+	nn, e = model.ToolChoice.UnmarshalPolymorphicJSON(model.ToolChoice.JsonData)
+	if e != nil {
+		return
+	}
+	if nn != nil {
+		m.ToolChoice = nn.(ToolChoice)
+	} else {
+		m.ToolChoice = nil
+	}
+
+	m.Tools = make([]ToolDefinition, len(model.Tools))
+	for i, n := range model.Tools {
+		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)
+		if e != nil {
+			return e
+		}
+		if nn != nil {
+			m.Tools[i] = nn.(ToolDefinition)
+		} else {
+			m.Tools[i] = nil
+		}
+	}
 	return
 }
