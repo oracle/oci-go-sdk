@@ -22,7 +22,7 @@ import (
 // EmbedTextDetails Details for the request to embed texts.
 type EmbedTextDetails struct {
 
-	// Provide a list of strings. Each string can be words, a phrase, or a paragraph. The maximum length of each string entry in the list is 512 tokens.
+	// Provide a list of strings or one base64 encoded image with `input_type` setting to `IMAGE`. If text embedding, each string can be words, a phrase, or a paragraph. The maximum length of each string entry in the list is 512 tokens.
 	Inputs []string `mandatory:"true" json:"inputs"`
 
 	ServingMode ServingMode `mandatory:"true" json:"servingMode"`
@@ -156,6 +156,7 @@ const (
 	EmbedTextDetailsInputTypeSearchQuery    EmbedTextDetailsInputTypeEnum = "SEARCH_QUERY"
 	EmbedTextDetailsInputTypeClassification EmbedTextDetailsInputTypeEnum = "CLASSIFICATION"
 	EmbedTextDetailsInputTypeClustering     EmbedTextDetailsInputTypeEnum = "CLUSTERING"
+	EmbedTextDetailsInputTypeImage          EmbedTextDetailsInputTypeEnum = "IMAGE"
 )
 
 var mappingEmbedTextDetailsInputTypeEnum = map[string]EmbedTextDetailsInputTypeEnum{
@@ -163,6 +164,7 @@ var mappingEmbedTextDetailsInputTypeEnum = map[string]EmbedTextDetailsInputTypeE
 	"SEARCH_QUERY":    EmbedTextDetailsInputTypeSearchQuery,
 	"CLASSIFICATION":  EmbedTextDetailsInputTypeClassification,
 	"CLUSTERING":      EmbedTextDetailsInputTypeClustering,
+	"IMAGE":           EmbedTextDetailsInputTypeImage,
 }
 
 var mappingEmbedTextDetailsInputTypeEnumLowerCase = map[string]EmbedTextDetailsInputTypeEnum{
@@ -170,6 +172,7 @@ var mappingEmbedTextDetailsInputTypeEnumLowerCase = map[string]EmbedTextDetailsI
 	"search_query":    EmbedTextDetailsInputTypeSearchQuery,
 	"classification":  EmbedTextDetailsInputTypeClassification,
 	"clustering":      EmbedTextDetailsInputTypeClustering,
+	"image":           EmbedTextDetailsInputTypeImage,
 }
 
 // GetEmbedTextDetailsInputTypeEnumValues Enumerates the set of values for EmbedTextDetailsInputTypeEnum
@@ -188,6 +191,7 @@ func GetEmbedTextDetailsInputTypeEnumStringValues() []string {
 		"SEARCH_QUERY",
 		"CLASSIFICATION",
 		"CLUSTERING",
+		"IMAGE",
 	}
 }
 

@@ -284,6 +284,70 @@ func (client GenerativeAiInferenceClient) generateText(ctx context.Context, requ
 	return response, err
 }
 
+// RerankText Reranks the text responses based on the input documents and a prompt.
+// Rerank assigns an index and a relevance score to each document, indicating which document is most related to the prompt.
+//
+// # See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/RerankText.go.html to see an example of how to use RerankText API.
+// A default retry strategy applies to this operation RerankText()
+func (client GenerativeAiInferenceClient) RerankText(ctx context.Context, request RerankTextRequest) (response RerankTextResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.rerankText, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = RerankTextResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = RerankTextResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(RerankTextResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into RerankTextResponse")
+	}
+	return
+}
+
+// rerankText implements the OCIOperation interface (enables retrying operations)
+func (client GenerativeAiInferenceClient) rerankText(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/rerankText", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response RerankTextResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/generative-ai-inference/20231130/RerankTextResult/RerankText"
+		err = common.PostProcessServiceError(err, "GenerativeAiInference", "RerankText", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // SummarizeText Summarizes the input text.
 //
 // # See also
