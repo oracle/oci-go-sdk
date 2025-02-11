@@ -54,11 +54,17 @@ type RealtimeParameters struct {
 	LanguageCode *string `mandatory:"false" json:"languageCode"`
 
 	// If set to true, the service will not fail connection attempt if it encounters any issues that prevent the loading of all specified user customizations. Any invalid customizations will simply be ignored and connection will continue being established with the default base model and any remaining valid customizations.
-	// If set to false,  if the service is unable to load any of the specified customizations, an error detailing why will be returned and the session will end.
+	// If set to false, if the service is unable to load any of the specified customizations, an error detailing why will be returned and the session will end.
 	ShouldIgnoreInvalidCustomizations *bool `mandatory:"false" json:"shouldIgnoreInvalidCustomizations"`
 
 	// Array of customization objects.
 	Customizations []CustomizationInference `mandatory:"false" json:"customizations"`
+
+	// Configure punctuations in the generated transcriptions. Disabled by default.
+	// - NONE: No punctuation in the transcription response
+	// - SPOKEN: Punctuations in response only when verbally spoken
+	// - AUTO: Automatic punctuation in the response, spoken punctuations are disabled
+	Punctuation RealtimeParametersPunctuationEnum `mandatory:"false" json:"punctuation,omitempty"`
 }
 
 func (m RealtimeParameters) String() string {
@@ -76,6 +82,9 @@ func (m RealtimeParameters) ValidateEnumValue() (bool, error) {
 	}
 	if _, ok := GetMappingRealtimeParametersModelDomainEnum(string(m.ModelDomain)); !ok && m.ModelDomain != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ModelDomain: %s. Supported values are: %s.", m.ModelDomain, strings.Join(GetRealtimeParametersModelDomainEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingRealtimeParametersPunctuationEnum(string(m.Punctuation)); !ok && m.Punctuation != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Punctuation: %s. Supported values are: %s.", m.Punctuation, strings.Join(GetRealtimeParametersPunctuationEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
@@ -172,5 +181,51 @@ func GetRealtimeParametersModelDomainEnumStringValues() []string {
 // GetMappingRealtimeParametersModelDomainEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingRealtimeParametersModelDomainEnum(val string) (RealtimeParametersModelDomainEnum, bool) {
 	enum, ok := mappingRealtimeParametersModelDomainEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
+}
+
+// RealtimeParametersPunctuationEnum Enum with underlying type: string
+type RealtimeParametersPunctuationEnum string
+
+// Set of constants representing the allowable values for RealtimeParametersPunctuationEnum
+const (
+	RealtimeParametersPunctuationNone   RealtimeParametersPunctuationEnum = "NONE"
+	RealtimeParametersPunctuationSpoken RealtimeParametersPunctuationEnum = "SPOKEN"
+	RealtimeParametersPunctuationAuto   RealtimeParametersPunctuationEnum = "AUTO"
+)
+
+var mappingRealtimeParametersPunctuationEnum = map[string]RealtimeParametersPunctuationEnum{
+	"NONE":   RealtimeParametersPunctuationNone,
+	"SPOKEN": RealtimeParametersPunctuationSpoken,
+	"AUTO":   RealtimeParametersPunctuationAuto,
+}
+
+var mappingRealtimeParametersPunctuationEnumLowerCase = map[string]RealtimeParametersPunctuationEnum{
+	"none":   RealtimeParametersPunctuationNone,
+	"spoken": RealtimeParametersPunctuationSpoken,
+	"auto":   RealtimeParametersPunctuationAuto,
+}
+
+// GetRealtimeParametersPunctuationEnumValues Enumerates the set of values for RealtimeParametersPunctuationEnum
+func GetRealtimeParametersPunctuationEnumValues() []RealtimeParametersPunctuationEnum {
+	values := make([]RealtimeParametersPunctuationEnum, 0)
+	for _, v := range mappingRealtimeParametersPunctuationEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetRealtimeParametersPunctuationEnumStringValues Enumerates the set of values in String for RealtimeParametersPunctuationEnum
+func GetRealtimeParametersPunctuationEnumStringValues() []string {
+	return []string{
+		"NONE",
+		"SPOKEN",
+		"AUTO",
+	}
+}
+
+// GetMappingRealtimeParametersPunctuationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRealtimeParametersPunctuationEnum(val string) (RealtimeParametersPunctuationEnum, bool) {
+	enum, ok := mappingRealtimeParametersPunctuationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
