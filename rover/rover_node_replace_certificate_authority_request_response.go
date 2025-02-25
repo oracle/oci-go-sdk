@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeReplaceCertificateAuthority.go.html to see an example of how to use RoverNodeReplaceCertificateAuthorityRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeReplaceCertificateAuthority.go.html to see an example of how to use RoverNodeReplaceCertificateAuthorityRequest.
 type RoverNodeReplaceCertificateAuthorityRequest struct {
 
 	// The information provided to replace certificate authority.

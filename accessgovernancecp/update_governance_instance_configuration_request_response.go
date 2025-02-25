@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/UpdateGovernanceInstanceConfiguration.go.html to see an example of how to use UpdateGovernanceInstanceConfigurationRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/UpdateGovernanceInstanceConfiguration.go.html to see an example of how to use UpdateGovernanceInstanceConfigurationRequest.
 type UpdateGovernanceInstanceConfigurationRequest struct {
 
 	// The details of the tenancy-wide configuration to be updated.

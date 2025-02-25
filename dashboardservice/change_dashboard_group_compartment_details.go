@@ -6,7 +6,7 @@
 //
 // Use the Oracle Cloud Infrastructure Dashboards service API to manage dashboards in the Console.
 // Dashboards provide an organized and customizable view of resources and their metrics in the Console.
-// For more information, see Dashboards (https://docs.cloud.oracle.com/Content/Dashboards/home.htm).
+// For more information, see Dashboards (https://docs.oracle.com/iaas/Content/Dashboards/home.htm).
 // **Important:** Resources for the Dashboards service are created in the tenacy's home region.
 // Although it is possible to create dashboard and dashboard group resources in regions other than the home region,
 // you won't be able to view those resources in the Console.
@@ -24,7 +24,7 @@ import (
 // ChangeDashboardGroupCompartmentDetails The information to be updated.
 type ChangeDashboardGroupCompartmentDetails struct {
 
-	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the compartment
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment
 	// into which the resource should be moved.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 }

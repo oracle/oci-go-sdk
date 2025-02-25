@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ListRoverEntitlements.go.html to see an example of how to use ListRoverEntitlementsRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ListRoverEntitlements.go.html to see an example of how to use ListRoverEntitlementsRequest.
 type ListRoverEntitlementsRequest struct {
 
 	// The OCID of the compartment in which to list resources.

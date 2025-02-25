@@ -96,7 +96,7 @@ func (client *LoggingClient) ConfigurationProvider() *common.ConfigurationProvid
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loggingingestion/PutLogs.go.html to see an example of how to use PutLogs API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loggingingestion/PutLogs.go.html to see an example of how to use PutLogs API.
 func (client LoggingClient) PutLogs(ctx context.Context, request PutLogsRequest) (response PutLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

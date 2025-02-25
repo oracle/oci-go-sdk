@@ -5,7 +5,7 @@
 // ExampleInstancePrincipals lists the availability domains in your tenancy.
 // Make sure you run this example from a instance with the right permissions. In this example
 // the root compartment is read from the OCI_ROOT_COMPARTMENT_ID environment variable.
-// More information on instance principals can be found here: https://docs.cloud.oracle.com/Content/Identity/Tasks/callingservicesfrominstances.htm
+// More information on instance principals can be found here: https://docs.oracle.com/iaas/Content/Identity/Tasks/callingservicesfrominstances.htm
 
 package example
 

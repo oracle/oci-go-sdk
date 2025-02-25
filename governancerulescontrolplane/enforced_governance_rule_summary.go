@@ -18,10 +18,10 @@ import (
 // EnforcedGovernanceRuleSummary A summary of the enforced governance rule.
 type EnforcedGovernanceRuleSummary struct {
 
-	// The Oracle ID (OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)) of the enforced governance rule.
+	// The Oracle ID (OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm)) of the enforced governance rule.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The Oracle ID (OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)) of the child's root compartment to which the governance rule is attached.
+	// The Oracle ID (OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm)) of the child's root compartment to which the governance rule is attached.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// Display name of the governance rule.

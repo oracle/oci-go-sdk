@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/CreateAccessRequest.go.html to see an example of how to use CreateAccessRequestRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/CreateAccessRequest.go.html to see an example of how to use CreateAccessRequestRequest.
 type CreateAccessRequestRequest struct {
 
 	// Details for the new access request.

@@ -95,7 +95,7 @@ func (client *RoverClusterClient) ConfigurationProvider() *common.ConfigurationP
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ChangeRoverClusterCompartment.go.html to see an example of how to use ChangeRoverClusterCompartment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ChangeRoverClusterCompartment.go.html to see an example of how to use ChangeRoverClusterCompartment API.
 // A default retry strategy applies to this operation ChangeRoverClusterCompartment()
 func (client RoverClusterClient) ChangeRoverClusterCompartment(ctx context.Context, request ChangeRoverClusterCompartmentRequest) (response ChangeRoverClusterCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -158,7 +158,7 @@ func (client RoverClusterClient) changeRoverClusterCompartment(ctx context.Conte
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/CreateRoverCluster.go.html to see an example of how to use CreateRoverCluster API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/CreateRoverCluster.go.html to see an example of how to use CreateRoverCluster API.
 // A default retry strategy applies to this operation CreateRoverCluster()
 func (client RoverClusterClient) CreateRoverCluster(ctx context.Context, request CreateRoverClusterRequest) (response CreateRoverClusterResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -221,7 +221,7 @@ func (client RoverClusterClient) createRoverCluster(ctx context.Context, request
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/DeleteRoverCluster.go.html to see an example of how to use DeleteRoverCluster API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/DeleteRoverCluster.go.html to see an example of how to use DeleteRoverCluster API.
 // A default retry strategy applies to this operation DeleteRoverCluster()
 func (client RoverClusterClient) DeleteRoverCluster(ctx context.Context, request DeleteRoverClusterRequest) (response DeleteRoverClusterResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -284,7 +284,7 @@ func (client RoverClusterClient) deleteRoverCluster(ctx context.Context, request
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverCluster.go.html to see an example of how to use GetRoverCluster API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverCluster.go.html to see an example of how to use GetRoverCluster API.
 // A default retry strategy applies to this operation GetRoverCluster()
 func (client RoverClusterClient) GetRoverCluster(ctx context.Context, request GetRoverClusterRequest) (response GetRoverClusterResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -342,7 +342,7 @@ func (client RoverClusterClient) getRoverCluster(ctx context.Context, request co
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverClusterCertificate.go.html to see an example of how to use GetRoverClusterCertificate API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverClusterCertificate.go.html to see an example of how to use GetRoverClusterCertificate API.
 // A default retry strategy applies to this operation GetRoverClusterCertificate()
 func (client RoverClusterClient) GetRoverClusterCertificate(ctx context.Context, request GetRoverClusterCertificateRequest) (response GetRoverClusterCertificateResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -400,7 +400,7 @@ func (client RoverClusterClient) getRoverClusterCertificate(ctx context.Context,
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ListRoverClusters.go.html to see an example of how to use ListRoverClusters API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ListRoverClusters.go.html to see an example of how to use ListRoverClusters API.
 // A default retry strategy applies to this operation ListRoverClusters()
 func (client RoverClusterClient) ListRoverClusters(ctx context.Context, request ListRoverClustersRequest) (response ListRoverClustersResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -458,7 +458,7 @@ func (client RoverClusterClient) listRoverClusters(ctx context.Context, request 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RequestAdditionalNodes.go.html to see an example of how to use RequestAdditionalNodes API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RequestAdditionalNodes.go.html to see an example of how to use RequestAdditionalNodes API.
 // A default retry strategy applies to this operation RequestAdditionalNodes()
 func (client RoverClusterClient) RequestAdditionalNodes(ctx context.Context, request RequestAdditionalNodesRequest) (response RequestAdditionalNodesResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -521,7 +521,7 @@ func (client RoverClusterClient) requestAdditionalNodes(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/UpdateRoverCluster.go.html to see an example of how to use UpdateRoverCluster API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/UpdateRoverCluster.go.html to see an example of how to use UpdateRoverCluster API.
 // A default retry strategy applies to this operation UpdateRoverCluster()
 func (client RoverClusterClient) UpdateRoverCluster(ctx context.Context, request UpdateRoverClusterRequest) (response UpdateRoverClusterResponse, err error) {
 	var ociResponse common.OCIResponse

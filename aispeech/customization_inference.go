@@ -18,13 +18,13 @@ import (
 // CustomizationInference Inference payload for using Customization in Realtime Speech or Async Speech
 type CustomizationInference struct {
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the customization to use.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the customization to use.
 	CustomizationId *string `mandatory:"false" json:"customizationId"`
 
 	// Alias of the customization
 	CustomizationAlias *string `mandatory:"false" json:"customizationAlias"`
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment where customization is present
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment where customization is present
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
 	// Entities present in the customization

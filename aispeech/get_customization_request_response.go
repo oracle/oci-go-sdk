@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/GetCustomization.go.html to see an example of how to use GetCustomizationRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/GetCustomization.go.html to see an example of how to use GetCustomizationRequest.
 type GetCustomizationRequest struct {
 
 	// Unique Customization training Job identifier.

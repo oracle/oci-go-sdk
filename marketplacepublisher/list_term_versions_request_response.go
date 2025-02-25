@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListTermVersions.go.html to see an example of how to use ListTermVersionsRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListTermVersions.go.html to see an example of how to use ListTermVersionsRequest.
 type ListTermVersionsRequest struct {
 
 	// term OCID

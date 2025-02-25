@@ -55,7 +55,7 @@ func (m *ttsconfiguration) UnmarshalPolymorphicJSON(data []byte) (interface{}, e
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:
-		common.Logf("Recieved unsupported enum value for TtsConfiguration: %s.", m.ModelFamily)
+		common.Logf("Received unsupported enum value for TtsConfiguration: %s.", m.ModelFamily)
 		return *m, nil
 	}
 }

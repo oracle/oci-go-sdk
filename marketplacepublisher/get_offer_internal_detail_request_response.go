@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetOfferInternalDetail.go.html to see an example of how to use GetOfferInternalDetailRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetOfferInternalDetail.go.html to see an example of how to use GetOfferInternalDetailRequest.
 type GetOfferInternalDetailRequest struct {
 
 	// unique Offer identifier

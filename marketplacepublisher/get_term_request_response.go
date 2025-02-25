@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetTerm.go.html to see an example of how to use GetTermRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetTerm.go.html to see an example of how to use GetTermRequest.
 type GetTermRequest struct {
 
 	// term OCID

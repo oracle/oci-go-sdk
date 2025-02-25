@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateListingRevisionNote.go.html to see an example of how to use CreateListingRevisionNoteRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateListingRevisionNote.go.html to see an example of how to use CreateListingRevisionNoteRequest.
 type CreateListingRevisionNoteRequest struct {
 
 	// Details for the new Listing Revision Note.

@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateListingRevisionAttachment.go.html to see an example of how to use CreateListingRevisionAttachmentRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateListingRevisionAttachment.go.html to see an example of how to use CreateListingRevisionAttachmentRequest.
 type CreateListingRevisionAttachmentRequest struct {
 
 	// Details for the new Listing Revision Attachment.

@@ -27,5 +27,5 @@ The function may then be deployed and invoked as usual.
 
 References:
 
-- [General overview of OCI Functions](https://docs.cloud.oracle.com/iaas/Content/Functions/Concepts/functionsoverview.htm)
-- [Using Resource Principals from within OCI Functions](https://docs.cloud.oracle.com/iaas/Content/Functions/Tasks/functionsaccessingociresources.htm)
+- [General overview of OCI Functions](https://docs.oracle.com/iaas/Content/Functions/Concepts/functionsoverview.htm)
+- [Using Resource Principals from within OCI Functions](https://docs.oracle.com/iaas/Content/Functions/Tasks/functionsaccessingociresources.htm)

@@ -95,7 +95,7 @@ func (client *CertificatesClient) ConfigurationProvider() *common.ConfigurationP
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/GetCaBundle.go.html to see an example of how to use GetCaBundle API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/GetCaBundle.go.html to see an example of how to use GetCaBundle API.
 func (client CertificatesClient) GetCaBundle(ctx context.Context, request GetCaBundleRequest) (response GetCaBundleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -153,7 +153,7 @@ func (client CertificatesClient) getCaBundle(ctx context.Context, request common
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/GetCertificateAuthorityBundle.go.html to see an example of how to use GetCertificateAuthorityBundle API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/GetCertificateAuthorityBundle.go.html to see an example of how to use GetCertificateAuthorityBundle API.
 func (client CertificatesClient) GetCertificateAuthorityBundle(ctx context.Context, request GetCertificateAuthorityBundleRequest) (response GetCertificateAuthorityBundleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -213,7 +213,7 @@ func (client CertificatesClient) getCertificateAuthorityBundle(ctx context.Conte
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/GetCertificateBundle.go.html to see an example of how to use GetCertificateBundle API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/GetCertificateBundle.go.html to see an example of how to use GetCertificateBundle API.
 func (client CertificatesClient) GetCertificateBundle(ctx context.Context, request GetCertificateBundleRequest) (response GetCertificateBundleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -270,7 +270,7 @@ func (client CertificatesClient) getCertificateBundle(ctx context.Context, reque
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/ListCertificateAuthorityBundleVersions.go.html to see an example of how to use ListCertificateAuthorityBundleVersions API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/ListCertificateAuthorityBundleVersions.go.html to see an example of how to use ListCertificateAuthorityBundleVersions API.
 func (client CertificatesClient) ListCertificateAuthorityBundleVersions(ctx context.Context, request ListCertificateAuthorityBundleVersionsRequest) (response ListCertificateAuthorityBundleVersionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -327,7 +327,7 @@ func (client CertificatesClient) listCertificateAuthorityBundleVersions(ctx cont
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/ListCertificateBundleVersions.go.html to see an example of how to use ListCertificateBundleVersions API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/ListCertificateBundleVersions.go.html to see an example of how to use ListCertificateBundleVersions API.
 func (client CertificatesClient) ListCertificateBundleVersions(ctx context.Context, request ListCertificateBundleVersionsRequest) (response ListCertificateBundleVersionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

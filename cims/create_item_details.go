@@ -5,7 +5,7 @@
 // Support Management API
 //
 // Use the Support Management API to manage support requests.
-// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// For more information, see Getting Help and Contacting Support (https://docs.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
 // **Note**: Before you can create service requests with this API,
 // complete user registration at My Oracle Cloud Support
 // and then ask your tenancy administrator to provide you authorization for the related user groups.
@@ -83,7 +83,7 @@ func (m *createitemdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, 
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:
-		common.Logf("Recieved unsupported enum value for CreateItemDetails: %s.", m.Type)
+		common.Logf("Received unsupported enum value for CreateItemDetails: %s.", m.Type)
 		return *m, nil
 	}
 }

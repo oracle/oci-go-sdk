@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListPublishers.go.html to see an example of how to use ListPublishersRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListPublishers.go.html to see an example of how to use ListPublishersRequest.
 type ListPublishersRequest struct {
 
 	// The ID of the compartment in which to list resources.

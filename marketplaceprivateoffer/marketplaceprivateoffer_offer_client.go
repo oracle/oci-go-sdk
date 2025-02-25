@@ -95,7 +95,7 @@ func (client *OfferClient) ConfigurationProvider() *common.ConfigurationProvider
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/CreateOffer.go.html to see an example of how to use CreateOffer API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/CreateOffer.go.html to see an example of how to use CreateOffer API.
 // A default retry strategy applies to this operation CreateOffer()
 func (client OfferClient) CreateOffer(ctx context.Context, request CreateOfferRequest) (response CreateOfferResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -158,7 +158,7 @@ func (client OfferClient) createOffer(ctx context.Context, request common.OCIReq
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/DeleteOffer.go.html to see an example of how to use DeleteOffer API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/DeleteOffer.go.html to see an example of how to use DeleteOffer API.
 // A default retry strategy applies to this operation DeleteOffer()
 func (client OfferClient) DeleteOffer(ctx context.Context, request DeleteOfferRequest) (response DeleteOfferResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -216,7 +216,7 @@ func (client OfferClient) deleteOffer(ctx context.Context, request common.OCIReq
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/GetOffer.go.html to see an example of how to use GetOffer API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/GetOffer.go.html to see an example of how to use GetOffer API.
 // A default retry strategy applies to this operation GetOffer()
 func (client OfferClient) GetOffer(ctx context.Context, request GetOfferRequest) (response GetOfferResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -274,7 +274,7 @@ func (client OfferClient) getOffer(ctx context.Context, request common.OCIReques
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/GetOfferInternalDetail.go.html to see an example of how to use GetOfferInternalDetail API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/GetOfferInternalDetail.go.html to see an example of how to use GetOfferInternalDetail API.
 // A default retry strategy applies to this operation GetOfferInternalDetail()
 func (client OfferClient) GetOfferInternalDetail(ctx context.Context, request GetOfferInternalDetailRequest) (response GetOfferInternalDetailResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -332,7 +332,7 @@ func (client OfferClient) getOfferInternalDetail(ctx context.Context, request co
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/ListOffers.go.html to see an example of how to use ListOffers API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/ListOffers.go.html to see an example of how to use ListOffers API.
 // A default retry strategy applies to this operation ListOffers()
 func (client OfferClient) ListOffers(ctx context.Context, request ListOffersRequest) (response ListOffersResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -390,7 +390,7 @@ func (client OfferClient) listOffers(ctx context.Context, request common.OCIRequ
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/UpdateOffer.go.html to see an example of how to use UpdateOffer API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/UpdateOffer.go.html to see an example of how to use UpdateOffer API.
 // A default retry strategy applies to this operation UpdateOffer()
 func (client OfferClient) UpdateOffer(ctx context.Context, request UpdateOfferRequest) (response UpdateOfferResponse, err error) {
 	var ociResponse common.OCIResponse

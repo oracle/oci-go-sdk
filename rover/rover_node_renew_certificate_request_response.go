@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeRenewCertificate.go.html to see an example of how to use RoverNodeRenewCertificateRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeRenewCertificate.go.html to see an example of how to use RoverNodeRenewCertificateRequest.
 type RoverNodeRenewCertificateRequest struct {
 
 	// The information provided to renew certificate.

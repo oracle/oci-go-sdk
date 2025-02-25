@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/GetGovernanceInstanceConfiguration.go.html to see an example of how to use GetGovernanceInstanceConfigurationRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/GetGovernanceInstanceConfiguration.go.html to see an example of how to use GetGovernanceInstanceConfigurationRequest.
 type GetGovernanceInstanceConfigurationRequest struct {
 
 	// The OCID of the compartment in which resources are listed.

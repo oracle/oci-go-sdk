@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/CreateGovernanceRule.go.html to see an example of how to use CreateGovernanceRuleRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/CreateGovernanceRule.go.html to see an example of how to use CreateGovernanceRuleRequest.
 type CreateGovernanceRuleRequest struct {
 
 	// Details to create a new governance rule.

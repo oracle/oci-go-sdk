@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateArtifact.go.html to see an example of how to use UpdateArtifactRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateArtifact.go.html to see an example of how to use UpdateArtifactRequest.
 type UpdateArtifactRequest struct {
 
 	// artifact OCID

@@ -95,7 +95,7 @@ func (client *AIServiceSpeechClient) ConfigurationProvider() *common.Configurati
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/CancelTranscriptionJob.go.html to see an example of how to use CancelTranscriptionJob API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/CancelTranscriptionJob.go.html to see an example of how to use CancelTranscriptionJob API.
 func (client AIServiceSpeechClient) CancelTranscriptionJob(ctx context.Context, request CancelTranscriptionJobRequest) (response CancelTranscriptionJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -157,7 +157,7 @@ func (client AIServiceSpeechClient) cancelTranscriptionJob(ctx context.Context, 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/CancelTranscriptionTask.go.html to see an example of how to use CancelTranscriptionTask API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/CancelTranscriptionTask.go.html to see an example of how to use CancelTranscriptionTask API.
 func (client AIServiceSpeechClient) CancelTranscriptionTask(ctx context.Context, request CancelTranscriptionTaskRequest) (response CancelTranscriptionTaskResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -219,7 +219,7 @@ func (client AIServiceSpeechClient) cancelTranscriptionTask(ctx context.Context,
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ChangeCustomizationCompartment.go.html to see an example of how to use ChangeCustomizationCompartment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ChangeCustomizationCompartment.go.html to see an example of how to use ChangeCustomizationCompartment API.
 func (client AIServiceSpeechClient) ChangeCustomizationCompartment(ctx context.Context, request ChangeCustomizationCompartmentRequest) (response ChangeCustomizationCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -281,7 +281,7 @@ func (client AIServiceSpeechClient) changeCustomizationCompartment(ctx context.C
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ChangeTranscriptionJobCompartment.go.html to see an example of how to use ChangeTranscriptionJobCompartment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ChangeTranscriptionJobCompartment.go.html to see an example of how to use ChangeTranscriptionJobCompartment API.
 func (client AIServiceSpeechClient) ChangeTranscriptionJobCompartment(ctx context.Context, request ChangeTranscriptionJobCompartmentRequest) (response ChangeTranscriptionJobCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -343,7 +343,7 @@ func (client AIServiceSpeechClient) changeTranscriptionJobCompartment(ctx contex
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/CreateCustomization.go.html to see an example of how to use CreateCustomization API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/CreateCustomization.go.html to see an example of how to use CreateCustomization API.
 func (client AIServiceSpeechClient) CreateCustomization(ctx context.Context, request CreateCustomizationRequest) (response CreateCustomizationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -405,7 +405,7 @@ func (client AIServiceSpeechClient) createCustomization(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/CreateRealtimeSessionToken.go.html to see an example of how to use CreateRealtimeSessionToken API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/CreateRealtimeSessionToken.go.html to see an example of how to use CreateRealtimeSessionToken API.
 func (client AIServiceSpeechClient) CreateRealtimeSessionToken(ctx context.Context, request CreateRealtimeSessionTokenRequest) (response CreateRealtimeSessionTokenResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -467,7 +467,7 @@ func (client AIServiceSpeechClient) createRealtimeSessionToken(ctx context.Conte
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/CreateTranscriptionJob.go.html to see an example of how to use CreateTranscriptionJob API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/CreateTranscriptionJob.go.html to see an example of how to use CreateTranscriptionJob API.
 func (client AIServiceSpeechClient) CreateTranscriptionJob(ctx context.Context, request CreateTranscriptionJobRequest) (response CreateTranscriptionJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -529,7 +529,7 @@ func (client AIServiceSpeechClient) createTranscriptionJob(ctx context.Context, 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/DeleteCustomization.go.html to see an example of how to use DeleteCustomization API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/DeleteCustomization.go.html to see an example of how to use DeleteCustomization API.
 func (client AIServiceSpeechClient) DeleteCustomization(ctx context.Context, request DeleteCustomizationRequest) (response DeleteCustomizationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -591,7 +591,7 @@ func (client AIServiceSpeechClient) deleteCustomization(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/DeleteTranscriptionJob.go.html to see an example of how to use DeleteTranscriptionJob API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/DeleteTranscriptionJob.go.html to see an example of how to use DeleteTranscriptionJob API.
 func (client AIServiceSpeechClient) DeleteTranscriptionJob(ctx context.Context, request DeleteTranscriptionJobRequest) (response DeleteTranscriptionJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -653,7 +653,7 @@ func (client AIServiceSpeechClient) deleteTranscriptionJob(ctx context.Context, 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/GetCustomization.go.html to see an example of how to use GetCustomization API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/GetCustomization.go.html to see an example of how to use GetCustomization API.
 func (client AIServiceSpeechClient) GetCustomization(ctx context.Context, request GetCustomizationRequest) (response GetCustomizationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -710,7 +710,7 @@ func (client AIServiceSpeechClient) getCustomization(ctx context.Context, reques
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/GetTranscriptionJob.go.html to see an example of how to use GetTranscriptionJob API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/GetTranscriptionJob.go.html to see an example of how to use GetTranscriptionJob API.
 func (client AIServiceSpeechClient) GetTranscriptionJob(ctx context.Context, request GetTranscriptionJobRequest) (response GetTranscriptionJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -767,7 +767,7 @@ func (client AIServiceSpeechClient) getTranscriptionJob(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/GetTranscriptionTask.go.html to see an example of how to use GetTranscriptionTask API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/GetTranscriptionTask.go.html to see an example of how to use GetTranscriptionTask API.
 func (client AIServiceSpeechClient) GetTranscriptionTask(ctx context.Context, request GetTranscriptionTaskRequest) (response GetTranscriptionTaskResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -824,7 +824,7 @@ func (client AIServiceSpeechClient) getTranscriptionTask(ctx context.Context, re
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ListCustomizations.go.html to see an example of how to use ListCustomizations API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ListCustomizations.go.html to see an example of how to use ListCustomizations API.
 func (client AIServiceSpeechClient) ListCustomizations(ctx context.Context, request ListCustomizationsRequest) (response ListCustomizationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -881,7 +881,7 @@ func (client AIServiceSpeechClient) listCustomizations(ctx context.Context, requ
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ListTranscriptionJobs.go.html to see an example of how to use ListTranscriptionJobs API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ListTranscriptionJobs.go.html to see an example of how to use ListTranscriptionJobs API.
 func (client AIServiceSpeechClient) ListTranscriptionJobs(ctx context.Context, request ListTranscriptionJobsRequest) (response ListTranscriptionJobsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -938,7 +938,7 @@ func (client AIServiceSpeechClient) listTranscriptionJobs(ctx context.Context, r
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ListTranscriptionTasks.go.html to see an example of how to use ListTranscriptionTasks API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ListTranscriptionTasks.go.html to see an example of how to use ListTranscriptionTasks API.
 func (client AIServiceSpeechClient) ListTranscriptionTasks(ctx context.Context, request ListTranscriptionTasksRequest) (response ListTranscriptionTasksResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -995,7 +995,7 @@ func (client AIServiceSpeechClient) listTranscriptionTasks(ctx context.Context, 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ListVoices.go.html to see an example of how to use ListVoices API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ListVoices.go.html to see an example of how to use ListVoices API.
 func (client AIServiceSpeechClient) ListVoices(ctx context.Context, request ListVoicesRequest) (response ListVoicesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -1052,7 +1052,7 @@ func (client AIServiceSpeechClient) listVoices(ctx context.Context, request comm
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/SynthesizeSpeech.go.html to see an example of how to use SynthesizeSpeech API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/SynthesizeSpeech.go.html to see an example of how to use SynthesizeSpeech API.
 func (client AIServiceSpeechClient) SynthesizeSpeech(ctx context.Context, request SynthesizeSpeechRequest) (response SynthesizeSpeechResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -1108,7 +1108,7 @@ func (client AIServiceSpeechClient) synthesizeSpeech(ctx context.Context, reques
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/UpdateCustomization.go.html to see an example of how to use UpdateCustomization API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/UpdateCustomization.go.html to see an example of how to use UpdateCustomization API.
 func (client AIServiceSpeechClient) UpdateCustomization(ctx context.Context, request UpdateCustomizationRequest) (response UpdateCustomizationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -1165,7 +1165,7 @@ func (client AIServiceSpeechClient) updateCustomization(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/UpdateTranscriptionJob.go.html to see an example of how to use UpdateTranscriptionJob API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/UpdateTranscriptionJob.go.html to see an example of how to use UpdateTranscriptionJob API.
 func (client AIServiceSpeechClient) UpdateTranscriptionJob(ctx context.Context, request UpdateTranscriptionJobRequest) (response UpdateTranscriptionJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

@@ -4,7 +4,7 @@
 
 // OCI Control Center API
 //
-// OCI Control Center (OCC) service enables you to monitor the region-level cloud consumption and provides the region-level capacity data, in realms where OCC is available. Use the OCI Control Center (OCC) API to explore region-level capacity and utilization information about core services. For more information, see OCI Control Center (https://docs.cloud.oracle.com/iaas/Content/control-center/home.htm).
+// OCI Control Center (OCC) service enables you to monitor the region-level cloud consumption and provides the region-level capacity data, in realms where OCC is available. Use the OCI Control Center (OCC) API to explore region-level capacity and utilization information about core services. For more information, see OCI Control Center (https://docs.oracle.com/iaas/Content/control-center/home.htm).
 //
 
 package ocicontrolcenter
@@ -95,7 +95,7 @@ func (client *OccMetricsClient) ConfigurationProvider() *common.ConfigurationPro
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ocicontrolcenter/ListMetricProperties.go.html to see an example of how to use ListMetricProperties API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ocicontrolcenter/ListMetricProperties.go.html to see an example of how to use ListMetricProperties API.
 // A default retry strategy applies to this operation ListMetricProperties()
 func (client OccMetricsClient) ListMetricProperties(ctx context.Context, request ListMetricPropertiesRequest) (response ListMetricPropertiesResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -153,7 +153,7 @@ func (client OccMetricsClient) listMetricProperties(ctx context.Context, request
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ocicontrolcenter/ListNamespaces.go.html to see an example of how to use ListNamespaces API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ocicontrolcenter/ListNamespaces.go.html to see an example of how to use ListNamespaces API.
 // A default retry strategy applies to this operation ListNamespaces()
 func (client OccMetricsClient) ListNamespaces(ctx context.Context, request ListNamespacesRequest) (response ListNamespacesResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -213,7 +213,7 @@ func (client OccMetricsClient) listNamespaces(ctx context.Context, request commo
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ocicontrolcenter/RequestSummarizedMetricData.go.html to see an example of how to use RequestSummarizedMetricData API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ocicontrolcenter/RequestSummarizedMetricData.go.html to see an example of how to use RequestSummarizedMetricData API.
 // A default retry strategy applies to this operation RequestSummarizedMetricData()
 func (client OccMetricsClient) RequestSummarizedMetricData(ctx context.Context, request RequestSummarizedMetricDataRequest) (response RequestSummarizedMetricDataResponse, err error) {
 	var ociResponse common.OCIResponse

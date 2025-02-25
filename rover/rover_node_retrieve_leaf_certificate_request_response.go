@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeRetrieveLeafCertificate.go.html to see an example of how to use RoverNodeRetrieveLeafCertificateRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeRetrieveLeafCertificate.go.html to see an example of how to use RoverNodeRetrieveLeafCertificateRequest.
 type RoverNodeRetrieveLeafCertificateRequest struct {
 
 	// Unique RoverNode identifier

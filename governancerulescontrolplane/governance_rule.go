@@ -19,10 +19,10 @@ import (
 // GovernanceRule Represents a rule in parent tenancy which governs resources in child tenancies.
 type GovernanceRule struct {
 
-	// The Oracle ID (OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)) of the governance rule.
+	// The Oracle ID (OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm)) of the governance rule.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The Oracle ID (OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)) of the root compartment containing the governance rule.
+	// The Oracle ID (OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm)) of the root compartment containing the governance rule.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// Display name of the governance rule.
@@ -60,7 +60,7 @@ type GovernanceRule struct {
 	// Description of the governance rule.
 	Description *string `mandatory:"false" json:"description"`
 
-	// The Oracle ID (OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)) of the resource, which was used as a template to create this governance rule.
+	// The Oracle ID (OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm)) of the resource, which was used as a template to create this governance rule.
 	RelatedResourceId *string `mandatory:"false" json:"relatedResourceId"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.

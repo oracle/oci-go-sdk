@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeActionRetrieveCaBundle.go.html to see an example of how to use RoverNodeActionRetrieveCaBundleRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeActionRetrieveCaBundle.go.html to see an example of how to use RoverNodeActionRetrieveCaBundleRequest.
 type RoverNodeActionRetrieveCaBundleRequest struct {
 
 	// Unique RoverNode identifier

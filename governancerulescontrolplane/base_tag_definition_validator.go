@@ -18,13 +18,13 @@ import (
 
 // BaseTagDefinitionValidator Validates a definedTag value. Each validator performs validation steps in addition to the standard
 // validation for definedTag values. For more information, see
-// Limits on Tags (https://docs.cloud.oracle.com/Content/Tagging/Concepts/taggingoverview.htm#limits).
+// Limits on Tags (https://docs.oracle.com/iaas/Content/Tagging/Concepts/taggingoverview.htm#limits).
 // If you define a validator after a value has been set for a defined tag, then any updates that
 // attempt to change the value must pass the additional validation defined by the current rule.
 // Previously set values (even those that would fail the current validation) are not updated. You can
 // still update other attributes to resources that contain a non-valid defined tag.
 // To clear the validator call UpdateTag with
-// DefaultTagDefinitionValidator (https://docs.cloud.oracle.com/api/#/en/identity/latest/datatypes/DefaultTagDefinitionValidator).
+// DefaultTagDefinitionValidator (https://docs.oracle.com/iaas/api/#/en/identity/latest/datatypes/DefaultTagDefinitionValidator).
 type BaseTagDefinitionValidator interface {
 }
 
@@ -67,7 +67,7 @@ func (m *basetagdefinitionvalidator) UnmarshalPolymorphicJSON(data []byte) (inte
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:
-		common.Logf("Recieved unsupported enum value for BaseTagDefinitionValidator: %s.", m.ValidatorType)
+		common.Logf("Received unsupported enum value for BaseTagDefinitionValidator: %s.", m.ValidatorType)
 		return *m, nil
 	}
 }

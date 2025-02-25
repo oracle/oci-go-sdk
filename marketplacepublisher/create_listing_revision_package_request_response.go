@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateListingRevisionPackage.go.html to see an example of how to use CreateListingRevisionPackageRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateListingRevisionPackage.go.html to see an example of how to use CreateListingRevisionPackageRequest.
 type CreateListingRevisionPackageRequest struct {
 
 	// Details for the new Listing Revision Package.

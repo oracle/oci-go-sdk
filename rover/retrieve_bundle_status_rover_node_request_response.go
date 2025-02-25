@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RetrieveBundleStatusRoverNode.go.html to see an example of how to use RetrieveBundleStatusRoverNodeRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RetrieveBundleStatusRoverNode.go.html to see an example of how to use RetrieveBundleStatusRoverNodeRequest.
 type RetrieveBundleStatusRoverNodeRequest struct {
 
 	// Provide the rover bundle details that requires to retrieve its status.

@@ -16,7 +16,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ExportAccessRequests.go.html to see an example of how to use ExportAccessRequestsRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ExportAccessRequests.go.html to see an example of how to use ExportAccessRequestsRequest.
 type ExportAccessRequestsRequest struct {
 
 	// Exports the list of access requests for given date range in text format

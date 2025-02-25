@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/CreateOffer.go.html to see an example of how to use CreateOfferRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/CreateOffer.go.html to see an example of how to use CreateOfferRequest.
 type CreateOfferRequest struct {
 
 	// Details for the new Offer.

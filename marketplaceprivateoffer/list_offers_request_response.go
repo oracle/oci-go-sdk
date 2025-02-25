@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/ListOffers.go.html to see an example of how to use ListOffersRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/ListOffers.go.html to see an example of how to use ListOffersRequest.
 type ListOffersRequest struct {
 
 	// The ID of the buyer compartment this offer is associated with.

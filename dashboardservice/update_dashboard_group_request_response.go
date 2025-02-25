@@ -15,10 +15,10 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/UpdateDashboardGroup.go.html to see an example of how to use UpdateDashboardGroupRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/UpdateDashboardGroup.go.html to see an example of how to use UpdateDashboardGroupRequest.
 type UpdateDashboardGroupRequest struct {
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the dashboard group.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the dashboard group.
 	DashboardGroupId *string `mandatory:"true" contributesTo:"path" name:"dashboardGroupId"`
 
 	// The dashboard group details to be updated.

@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteListingRevisionAttachment.go.html to see an example of how to use DeleteListingRevisionAttachmentRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteListingRevisionAttachment.go.html to see an example of how to use DeleteListingRevisionAttachmentRequest.
 type DeleteListingRevisionAttachmentRequest struct {
 
 	// attachment OCID

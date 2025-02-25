@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetListingRevisionNote.go.html to see an example of how to use GetListingRevisionNoteRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetListingRevisionNote.go.html to see an example of how to use GetListingRevisionNoteRequest.
 type GetListingRevisionNoteRequest struct {
 
 	// Unique listing revision note identifier.

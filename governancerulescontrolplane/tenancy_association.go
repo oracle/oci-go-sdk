@@ -19,7 +19,7 @@ import (
 // TenancyAssociation Tenancy association represents the tenancy id to which the governance rule will be applied.
 type TenancyAssociation struct {
 
-	// The Oracle ID (OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)) of the tenancy to which the governance rule will be applied as part of this tenancy inclusion criterion.
+	// The Oracle ID (OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm)) of the tenancy to which the governance rule will be applied as part of this tenancy inclusion criterion.
 	TenancyId *string `mandatory:"true" json:"tenancyId"`
 }
 

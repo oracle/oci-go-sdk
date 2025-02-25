@@ -95,7 +95,7 @@ func (client *AccessGovernanceCPClient) ConfigurationProvider() *common.Configur
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/ChangeGovernanceInstanceCompartment.go.html to see an example of how to use ChangeGovernanceInstanceCompartment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/ChangeGovernanceInstanceCompartment.go.html to see an example of how to use ChangeGovernanceInstanceCompartment API.
 // A default retry strategy applies to this operation ChangeGovernanceInstanceCompartment()
 func (client AccessGovernanceCPClient) ChangeGovernanceInstanceCompartment(ctx context.Context, request ChangeGovernanceInstanceCompartmentRequest) (response ChangeGovernanceInstanceCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -158,7 +158,7 @@ func (client AccessGovernanceCPClient) changeGovernanceInstanceCompartment(ctx c
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/CreateGovernanceInstance.go.html to see an example of how to use CreateGovernanceInstance API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/CreateGovernanceInstance.go.html to see an example of how to use CreateGovernanceInstance API.
 // A default retry strategy applies to this operation CreateGovernanceInstance()
 func (client AccessGovernanceCPClient) CreateGovernanceInstance(ctx context.Context, request CreateGovernanceInstanceRequest) (response CreateGovernanceInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -221,7 +221,7 @@ func (client AccessGovernanceCPClient) createGovernanceInstance(ctx context.Cont
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/DeleteGovernanceInstance.go.html to see an example of how to use DeleteGovernanceInstance API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/DeleteGovernanceInstance.go.html to see an example of how to use DeleteGovernanceInstance API.
 // A default retry strategy applies to this operation DeleteGovernanceInstance()
 func (client AccessGovernanceCPClient) DeleteGovernanceInstance(ctx context.Context, request DeleteGovernanceInstanceRequest) (response DeleteGovernanceInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -284,7 +284,7 @@ func (client AccessGovernanceCPClient) deleteGovernanceInstance(ctx context.Cont
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/GetGovernanceInstance.go.html to see an example of how to use GetGovernanceInstance API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/GetGovernanceInstance.go.html to see an example of how to use GetGovernanceInstance API.
 // A default retry strategy applies to this operation GetGovernanceInstance()
 func (client AccessGovernanceCPClient) GetGovernanceInstance(ctx context.Context, request GetGovernanceInstanceRequest) (response GetGovernanceInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -342,7 +342,7 @@ func (client AccessGovernanceCPClient) getGovernanceInstance(ctx context.Context
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/GetGovernanceInstanceConfiguration.go.html to see an example of how to use GetGovernanceInstanceConfiguration API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/GetGovernanceInstanceConfiguration.go.html to see an example of how to use GetGovernanceInstanceConfiguration API.
 // A default retry strategy applies to this operation GetGovernanceInstanceConfiguration()
 func (client AccessGovernanceCPClient) GetGovernanceInstanceConfiguration(ctx context.Context, request GetGovernanceInstanceConfigurationRequest) (response GetGovernanceInstanceConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -400,7 +400,7 @@ func (client AccessGovernanceCPClient) getGovernanceInstanceConfiguration(ctx co
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/ListGovernanceInstances.go.html to see an example of how to use ListGovernanceInstances API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/ListGovernanceInstances.go.html to see an example of how to use ListGovernanceInstances API.
 // A default retry strategy applies to this operation ListGovernanceInstances()
 func (client AccessGovernanceCPClient) ListGovernanceInstances(ctx context.Context, request ListGovernanceInstancesRequest) (response ListGovernanceInstancesResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -458,7 +458,7 @@ func (client AccessGovernanceCPClient) listGovernanceInstances(ctx context.Conte
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/UpdateGovernanceInstance.go.html to see an example of how to use UpdateGovernanceInstance API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/UpdateGovernanceInstance.go.html to see an example of how to use UpdateGovernanceInstance API.
 // A default retry strategy applies to this operation UpdateGovernanceInstance()
 func (client AccessGovernanceCPClient) UpdateGovernanceInstance(ctx context.Context, request UpdateGovernanceInstanceRequest) (response UpdateGovernanceInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -516,7 +516,7 @@ func (client AccessGovernanceCPClient) updateGovernanceInstance(ctx context.Cont
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/UpdateGovernanceInstanceConfiguration.go.html to see an example of how to use UpdateGovernanceInstanceConfiguration API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/UpdateGovernanceInstanceConfiguration.go.html to see an example of how to use UpdateGovernanceInstanceConfiguration API.
 // A default retry strategy applies to this operation UpdateGovernanceInstanceConfiguration()
 func (client AccessGovernanceCPClient) UpdateGovernanceInstanceConfiguration(ctx context.Context, request UpdateGovernanceInstanceConfigurationRequest) (response UpdateGovernanceInstanceConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse

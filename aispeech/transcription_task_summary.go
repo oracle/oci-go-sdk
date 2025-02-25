@@ -18,7 +18,7 @@ import (
 // TranscriptionTaskSummary Summary of the Transcription Task.
 type TranscriptionTaskSummary struct {
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the task.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the task.
 	Id *string `mandatory:"true" json:"id"`
 
 	// A user-friendly display name for the task.

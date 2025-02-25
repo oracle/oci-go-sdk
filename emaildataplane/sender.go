@@ -5,7 +5,7 @@
 // Email Delivery Submission API
 //
 // Use the Email Delivery API to send high-volume and application-generated emails.
-// For more information, see Overview of the Email Delivery Service (https://docs.cloud.oracle.com/iaas/Content/Email/Concepts/overview.htm).
+// For more information, see Overview of the Email Delivery Service (https://docs.oracle.com/iaas/Content/Email/Concepts/overview.htm).
 //
 
 package emaildataplane
@@ -20,7 +20,7 @@ import (
 type Sender struct {
 	SenderAddress *EmailAddress `mandatory:"true" json:"senderAddress"`
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment that contains the approved sender resource.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment that contains the approved sender resource.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 }
 

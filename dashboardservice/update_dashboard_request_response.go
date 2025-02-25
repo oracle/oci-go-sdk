@@ -15,10 +15,10 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/UpdateDashboard.go.html to see an example of how to use UpdateDashboardRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/UpdateDashboard.go.html to see an example of how to use UpdateDashboardRequest.
 type UpdateDashboardRequest struct {
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the dashboard.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the dashboard.
 	DashboardId *string `mandatory:"true" contributesTo:"path" name:"dashboardId"`
 
 	// The dashboard details to be updated.

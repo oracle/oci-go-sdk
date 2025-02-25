@@ -96,7 +96,7 @@ func (client *LockboxClient) ConfigurationProvider() *common.ConfigurationProvid
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/CancelWorkRequest.go.html to see an example of how to use CancelWorkRequest API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/CancelWorkRequest.go.html to see an example of how to use CancelWorkRequest API.
 // A default retry strategy applies to this operation CancelWorkRequest()
 func (client LockboxClient) CancelWorkRequest(ctx context.Context, request CancelWorkRequestRequest) (response CancelWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -154,7 +154,7 @@ func (client LockboxClient) cancelWorkRequest(ctx context.Context, request commo
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ChangeApprovalTemplateCompartment.go.html to see an example of how to use ChangeApprovalTemplateCompartment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ChangeApprovalTemplateCompartment.go.html to see an example of how to use ChangeApprovalTemplateCompartment API.
 // A default retry strategy applies to this operation ChangeApprovalTemplateCompartment()
 func (client LockboxClient) ChangeApprovalTemplateCompartment(ctx context.Context, request ChangeApprovalTemplateCompartmentRequest) (response ChangeApprovalTemplateCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -217,7 +217,7 @@ func (client LockboxClient) changeApprovalTemplateCompartment(ctx context.Contex
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ChangeLockboxCompartment.go.html to see an example of how to use ChangeLockboxCompartment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ChangeLockboxCompartment.go.html to see an example of how to use ChangeLockboxCompartment API.
 // A default retry strategy applies to this operation ChangeLockboxCompartment()
 func (client LockboxClient) ChangeLockboxCompartment(ctx context.Context, request ChangeLockboxCompartmentRequest) (response ChangeLockboxCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -280,7 +280,7 @@ func (client LockboxClient) changeLockboxCompartment(ctx context.Context, reques
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/CreateAccessRequest.go.html to see an example of how to use CreateAccessRequest API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/CreateAccessRequest.go.html to see an example of how to use CreateAccessRequest API.
 // A default retry strategy applies to this operation CreateAccessRequest()
 func (client LockboxClient) CreateAccessRequest(ctx context.Context, request CreateAccessRequestRequest) (response CreateAccessRequestResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -343,7 +343,7 @@ func (client LockboxClient) createAccessRequest(ctx context.Context, request com
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/CreateApprovalTemplate.go.html to see an example of how to use CreateApprovalTemplate API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/CreateApprovalTemplate.go.html to see an example of how to use CreateApprovalTemplate API.
 // A default retry strategy applies to this operation CreateApprovalTemplate()
 func (client LockboxClient) CreateApprovalTemplate(ctx context.Context, request CreateApprovalTemplateRequest) (response CreateApprovalTemplateResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -406,7 +406,7 @@ func (client LockboxClient) createApprovalTemplate(ctx context.Context, request 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/CreateLockbox.go.html to see an example of how to use CreateLockbox API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/CreateLockbox.go.html to see an example of how to use CreateLockbox API.
 // A default retry strategy applies to this operation CreateLockbox()
 func (client LockboxClient) CreateLockbox(ctx context.Context, request CreateLockboxRequest) (response CreateLockboxResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -469,7 +469,7 @@ func (client LockboxClient) createLockbox(ctx context.Context, request common.OC
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/DeleteApprovalTemplate.go.html to see an example of how to use DeleteApprovalTemplate API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/DeleteApprovalTemplate.go.html to see an example of how to use DeleteApprovalTemplate API.
 // A default retry strategy applies to this operation DeleteApprovalTemplate()
 func (client LockboxClient) DeleteApprovalTemplate(ctx context.Context, request DeleteApprovalTemplateRequest) (response DeleteApprovalTemplateResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -527,7 +527,7 @@ func (client LockboxClient) deleteApprovalTemplate(ctx context.Context, request 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/DeleteLockbox.go.html to see an example of how to use DeleteLockbox API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/DeleteLockbox.go.html to see an example of how to use DeleteLockbox API.
 // A default retry strategy applies to this operation DeleteLockbox()
 func (client LockboxClient) DeleteLockbox(ctx context.Context, request DeleteLockboxRequest) (response DeleteLockboxResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -590,7 +590,7 @@ func (client LockboxClient) deleteLockbox(ctx context.Context, request common.OC
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ExportAccessRequests.go.html to see an example of how to use ExportAccessRequests API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ExportAccessRequests.go.html to see an example of how to use ExportAccessRequests API.
 // A default retry strategy applies to this operation ExportAccessRequests()
 func (client LockboxClient) ExportAccessRequests(ctx context.Context, request ExportAccessRequestsRequest) (response ExportAccessRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -647,7 +647,7 @@ func (client LockboxClient) exportAccessRequests(ctx context.Context, request co
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetAccessMaterials.go.html to see an example of how to use GetAccessMaterials API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetAccessMaterials.go.html to see an example of how to use GetAccessMaterials API.
 // A default retry strategy applies to this operation GetAccessMaterials()
 func (client LockboxClient) GetAccessMaterials(ctx context.Context, request GetAccessMaterialsRequest) (response GetAccessMaterialsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -705,7 +705,7 @@ func (client LockboxClient) getAccessMaterials(ctx context.Context, request comm
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetAccessRequest.go.html to see an example of how to use GetAccessRequest API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetAccessRequest.go.html to see an example of how to use GetAccessRequest API.
 // A default retry strategy applies to this operation GetAccessRequest()
 func (client LockboxClient) GetAccessRequest(ctx context.Context, request GetAccessRequestRequest) (response GetAccessRequestResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -763,7 +763,7 @@ func (client LockboxClient) getAccessRequest(ctx context.Context, request common
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetAccessRequestInternal.go.html to see an example of how to use GetAccessRequestInternal API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetAccessRequestInternal.go.html to see an example of how to use GetAccessRequestInternal API.
 // A default retry strategy applies to this operation GetAccessRequestInternal()
 func (client LockboxClient) GetAccessRequestInternal(ctx context.Context, request GetAccessRequestInternalRequest) (response GetAccessRequestInternalResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -821,7 +821,7 @@ func (client LockboxClient) getAccessRequestInternal(ctx context.Context, reques
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetApprovalTemplate.go.html to see an example of how to use GetApprovalTemplate API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetApprovalTemplate.go.html to see an example of how to use GetApprovalTemplate API.
 // A default retry strategy applies to this operation GetApprovalTemplate()
 func (client LockboxClient) GetApprovalTemplate(ctx context.Context, request GetApprovalTemplateRequest) (response GetApprovalTemplateResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -879,7 +879,7 @@ func (client LockboxClient) getApprovalTemplate(ctx context.Context, request com
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetLockbox.go.html to see an example of how to use GetLockbox API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetLockbox.go.html to see an example of how to use GetLockbox API.
 // A default retry strategy applies to this operation GetLockbox()
 func (client LockboxClient) GetLockbox(ctx context.Context, request GetLockboxRequest) (response GetLockboxResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -937,7 +937,7 @@ func (client LockboxClient) getLockbox(ctx context.Context, request common.OCIRe
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetWorkRequest.go.html to see an example of how to use GetWorkRequest API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetWorkRequest.go.html to see an example of how to use GetWorkRequest API.
 // A default retry strategy applies to this operation GetWorkRequest()
 func (client LockboxClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -995,7 +995,7 @@ func (client LockboxClient) getWorkRequest(ctx context.Context, request common.O
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/HandleAccessRequest.go.html to see an example of how to use HandleAccessRequest API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/HandleAccessRequest.go.html to see an example of how to use HandleAccessRequest API.
 // A default retry strategy applies to this operation HandleAccessRequest()
 func (client LockboxClient) HandleAccessRequest(ctx context.Context, request HandleAccessRequestRequest) (response HandleAccessRequestResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1058,7 +1058,7 @@ func (client LockboxClient) handleAccessRequest(ctx context.Context, request com
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListAccessRequests.go.html to see an example of how to use ListAccessRequests API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListAccessRequests.go.html to see an example of how to use ListAccessRequests API.
 // A default retry strategy applies to this operation ListAccessRequests()
 func (client LockboxClient) ListAccessRequests(ctx context.Context, request ListAccessRequestsRequest) (response ListAccessRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1116,7 +1116,7 @@ func (client LockboxClient) listAccessRequests(ctx context.Context, request comm
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListApprovalTemplates.go.html to see an example of how to use ListApprovalTemplates API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListApprovalTemplates.go.html to see an example of how to use ListApprovalTemplates API.
 // A default retry strategy applies to this operation ListApprovalTemplates()
 func (client LockboxClient) ListApprovalTemplates(ctx context.Context, request ListApprovalTemplatesRequest) (response ListApprovalTemplatesResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1174,7 +1174,7 @@ func (client LockboxClient) listApprovalTemplates(ctx context.Context, request c
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListLockboxes.go.html to see an example of how to use ListLockboxes API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListLockboxes.go.html to see an example of how to use ListLockboxes API.
 // A default retry strategy applies to this operation ListLockboxes()
 func (client LockboxClient) ListLockboxes(ctx context.Context, request ListLockboxesRequest) (response ListLockboxesResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1232,7 +1232,7 @@ func (client LockboxClient) listLockboxes(ctx context.Context, request common.OC
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListWorkRequestErrors.go.html to see an example of how to use ListWorkRequestErrors API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListWorkRequestErrors.go.html to see an example of how to use ListWorkRequestErrors API.
 // A default retry strategy applies to this operation ListWorkRequestErrors()
 func (client LockboxClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1290,7 +1290,7 @@ func (client LockboxClient) listWorkRequestErrors(ctx context.Context, request c
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListWorkRequestLogs.go.html to see an example of how to use ListWorkRequestLogs API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListWorkRequestLogs.go.html to see an example of how to use ListWorkRequestLogs API.
 // A default retry strategy applies to this operation ListWorkRequestLogs()
 func (client LockboxClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1348,7 +1348,7 @@ func (client LockboxClient) listWorkRequestLogs(ctx context.Context, request com
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListWorkRequests.go.html to see an example of how to use ListWorkRequests API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListWorkRequests.go.html to see an example of how to use ListWorkRequests API.
 // A default retry strategy applies to this operation ListWorkRequests()
 func (client LockboxClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1406,7 +1406,7 @@ func (client LockboxClient) listWorkRequests(ctx context.Context, request common
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/UpdateApprovalTemplate.go.html to see an example of how to use UpdateApprovalTemplate API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/UpdateApprovalTemplate.go.html to see an example of how to use UpdateApprovalTemplate API.
 // A default retry strategy applies to this operation UpdateApprovalTemplate()
 func (client LockboxClient) UpdateApprovalTemplate(ctx context.Context, request UpdateApprovalTemplateRequest) (response UpdateApprovalTemplateResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1464,7 +1464,7 @@ func (client LockboxClient) updateApprovalTemplate(ctx context.Context, request 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/UpdateLockbox.go.html to see an example of how to use UpdateLockbox API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/UpdateLockbox.go.html to see an example of how to use UpdateLockbox API.
 // A default retry strategy applies to this operation UpdateLockbox()
 func (client LockboxClient) UpdateLockbox(ctx context.Context, request UpdateLockboxRequest) (response UpdateLockboxResponse, err error) {
 	var ociResponse common.OCIResponse

@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateArtifact.go.html to see an example of how to use CreateArtifactRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateArtifact.go.html to see an example of how to use CreateArtifactRequest.
 type CreateArtifactRequest struct {
 
 	// Request object for creating a new artifact.

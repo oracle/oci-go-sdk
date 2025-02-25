@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeGenerateCertificate.go.html to see an example of how to use RoverNodeGenerateCertificateRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeGenerateCertificate.go.html to see an example of how to use RoverNodeGenerateCertificateRequest.
 type RoverNodeGenerateCertificateRequest struct {
 
 	// The information provided to generate certificate.

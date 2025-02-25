@@ -16,7 +16,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetRecordPreviewContent.go.html to see an example of how to use GetRecordPreviewContentRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetRecordPreviewContent.go.html to see an example of how to use GetRecordPreviewContentRequest.
 type GetRecordPreviewContentRequest struct {
 
 	// The OCID of the record annotated.

@@ -19,10 +19,10 @@ import (
 // TranscriptionJob Description of Transcription Job.
 type TranscriptionJob struct {
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the job.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the job.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment where you want to create the job.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment where you want to create the job.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	ModelDetails *TranscriptionModelDetails `mandatory:"true" json:"modelDetails"`
@@ -63,7 +63,7 @@ type TranscriptionJob struct {
 	// How much progress the operation has made, vs the total amount of work that must be performed.
 	PercentComplete *int `mandatory:"false" json:"percentComplete"`
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the user who created the job.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the user who created the job.
 	CreatedBy *string `mandatory:"false" json:"createdBy"`
 
 	// Transcription format. JSON format will always be provided in addition to any formats in this list.

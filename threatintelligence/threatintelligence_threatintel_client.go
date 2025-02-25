@@ -4,7 +4,7 @@
 
 // Threat Intelligence API
 //
-// Use the Threat Intelligence API to search for information about known threat indicators, including suspicious IP addresses, domain names, and other digital fingerprints. Threat Intelligence is a managed database of curated threat intelligence that comes from first party Oracle security insights, open source feeds, and vendor-procured data. For more information, see the Threat Intelligence documentation (https://docs.cloud.oracle.com/iaas/Content/threat-intel/home.htm).
+// Use the Threat Intelligence API to search for information about known threat indicators, including suspicious IP addresses, domain names, and other digital fingerprints. Threat Intelligence is a managed database of curated threat intelligence that comes from first party Oracle security insights, open source feeds, and vendor-procured data. For more information, see the Threat Intelligence documentation (https://docs.oracle.com/iaas/Content/threat-intel/home.htm).
 //
 
 package threatintelligence
@@ -95,7 +95,7 @@ func (client *ThreatintelClient) ConfigurationProvider() *common.ConfigurationPr
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/GetIndicator.go.html to see an example of how to use GetIndicator API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/GetIndicator.go.html to see an example of how to use GetIndicator API.
 // A default retry strategy applies to this operation GetIndicator()
 func (client ThreatintelClient) GetIndicator(ctx context.Context, request GetIndicatorRequest) (response GetIndicatorResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -153,7 +153,7 @@ func (client ThreatintelClient) getIndicator(ctx context.Context, request common
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/ListIndicatorCounts.go.html to see an example of how to use ListIndicatorCounts API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/ListIndicatorCounts.go.html to see an example of how to use ListIndicatorCounts API.
 // A default retry strategy applies to this operation ListIndicatorCounts()
 func (client ThreatintelClient) ListIndicatorCounts(ctx context.Context, request ListIndicatorCountsRequest) (response ListIndicatorCountsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -211,7 +211,7 @@ func (client ThreatintelClient) listIndicatorCounts(ctx context.Context, request
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/ListIndicators.go.html to see an example of how to use ListIndicators API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/ListIndicators.go.html to see an example of how to use ListIndicators API.
 // A default retry strategy applies to this operation ListIndicators()
 func (client ThreatintelClient) ListIndicators(ctx context.Context, request ListIndicatorsRequest) (response ListIndicatorsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -270,7 +270,7 @@ func (client ThreatintelClient) listIndicators(ctx context.Context, request comm
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/ListThreatTypes.go.html to see an example of how to use ListThreatTypes API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/ListThreatTypes.go.html to see an example of how to use ListThreatTypes API.
 // A default retry strategy applies to this operation ListThreatTypes()
 func (client ThreatintelClient) ListThreatTypes(ctx context.Context, request ListThreatTypesRequest) (response ListThreatTypesResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -328,7 +328,7 @@ func (client ThreatintelClient) listThreatTypes(ctx context.Context, request com
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/SummarizeIndicators.go.html to see an example of how to use SummarizeIndicators API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/threatintelligence/SummarizeIndicators.go.html to see an example of how to use SummarizeIndicators API.
 // A default retry strategy applies to this operation SummarizeIndicators()
 func (client ThreatintelClient) SummarizeIndicators(ctx context.Context, request SummarizeIndicatorsRequest) (response SummarizeIndicatorsResponse, err error) {
 	var ociResponse common.OCIResponse

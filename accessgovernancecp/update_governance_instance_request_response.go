@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/UpdateGovernanceInstance.go.html to see an example of how to use UpdateGovernanceInstanceRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/UpdateGovernanceInstance.go.html to see an example of how to use UpdateGovernanceInstanceRequest.
 type UpdateGovernanceInstanceRequest struct {
 
 	// The details of the GovernanceInstance to be updated.
