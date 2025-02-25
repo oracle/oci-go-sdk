@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/DeleteRoverEntitlement.go.html to see an example of how to use DeleteRoverEntitlementRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/DeleteRoverEntitlement.go.html to see an example of how to use DeleteRoverEntitlementRequest.
 type DeleteRoverEntitlementRequest struct {
 
 	// ID of the rover node or cluster entitlement

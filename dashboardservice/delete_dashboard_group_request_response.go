@@ -15,10 +15,10 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/DeleteDashboardGroup.go.html to see an example of how to use DeleteDashboardGroupRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/DeleteDashboardGroup.go.html to see an example of how to use DeleteDashboardGroupRequest.
 type DeleteDashboardGroupRequest struct {
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the dashboard group.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the dashboard group.
 	DashboardGroupId *string `mandatory:"true" contributesTo:"path" name:"dashboardGroupId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call

@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ChangeCustomizationCompartment.go.html to see an example of how to use ChangeCustomizationCompartmentRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/ChangeCustomizationCompartment.go.html to see an example of how to use ChangeCustomizationCompartmentRequest.
 type ChangeCustomizationCompartmentRequest struct {
 
 	// Unique Customization training Job identifier.

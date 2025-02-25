@@ -6,7 +6,7 @@
 //
 // Use the Oracle Cloud Infrastructure Dashboards service API to manage dashboards in the Console.
 // Dashboards provide an organized and customizable view of resources and their metrics in the Console.
-// For more information, see Dashboards (https://docs.cloud.oracle.com/Content/Dashboards/home.htm).
+// For more information, see Dashboards (https://docs.oracle.com/iaas/Content/Dashboards/home.htm).
 // **Important:** Resources for the Dashboards service are created in the tenacy's home region.
 // Although it is possible to create dashboard and dashboard group resources in regions other than the home region,
 // you won't be able to view those resources in the Console.
@@ -27,10 +27,10 @@ import (
 // The sum of the `config` and `widget` fields JSON text representation cannot exceed 200 KB.
 type V1Dashboard struct {
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the dashboard resource.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the dashboard resource.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the dashboard group that the dashboard belongs to.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the dashboard group that the dashboard belongs to.
 	DashboardGroupId *string `mandatory:"true" json:"dashboardGroupId"`
 
 	// A user-friendly name for the dashboard. Does not have to be unique, and it can be changed. Avoid entering confidential information.
@@ -41,7 +41,7 @@ type V1Dashboard struct {
 	// The following special characters are not allowed: <>()=/'"&\
 	Description *string `mandatory:"true" json:"description"`
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment containing the dashboard. A dashboard is always in the same compartment as its dashboard group.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment containing the dashboard. A dashboard is always in the same compartment as its dashboard group.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The date and time the dashboard was created, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).

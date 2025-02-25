@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/ListAnnotations.go.html to see an example of how to use ListAnnotationsRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/ListAnnotations.go.html to see an example of how to use ListAnnotationsRequest.
 type ListAnnotationsRequest struct {
 
 	// The ID of the compartment in which to list resources.

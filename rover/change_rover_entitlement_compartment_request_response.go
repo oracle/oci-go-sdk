@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ChangeRoverEntitlementCompartment.go.html to see an example of how to use ChangeRoverEntitlementCompartmentRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ChangeRoverEntitlementCompartment.go.html to see an example of how to use ChangeRoverEntitlementCompartmentRequest.
 type ChangeRoverEntitlementCompartmentRequest struct {
 
 	// ID of the rover node or cluster entitlement

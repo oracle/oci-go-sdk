@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListShippingVendors.go.html to see an example of how to use ListShippingVendorsRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListShippingVendors.go.html to see an example of how to use ListShippingVendorsRequest.
 type ListShippingVendorsRequest struct {
 
 	// Unique Oracle-assigned identifier for the request.

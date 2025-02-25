@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/ListCertificateBundleVersions.go.html to see an example of how to use ListCertificateBundleVersionsRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/certificates/ListCertificateBundleVersions.go.html to see an example of how to use ListCertificateBundleVersionsRequest.
 type ListCertificateBundleVersionsRequest struct {
 
 	// The OCID of the certificate.

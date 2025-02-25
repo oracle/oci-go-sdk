@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/CreateDashboardGroup.go.html to see an example of how to use CreateDashboardGroupRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/CreateDashboardGroup.go.html to see an example of how to use CreateDashboardGroupRequest.
 type CreateDashboardGroupRequest struct {
 
 	// Details about the dashboard group being created.

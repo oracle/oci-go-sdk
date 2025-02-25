@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/CreateAnnotation.go.html to see an example of how to use CreateAnnotationRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/CreateAnnotation.go.html to see an example of how to use CreateAnnotationRequest.
 type CreateAnnotationRequest struct {
 
 	// Details for the new CreateAnnotation.

@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CascadingDeleteListingRevision.go.html to see an example of how to use CascadingDeleteListingRevisionRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CascadingDeleteListingRevision.go.html to see an example of how to use CascadingDeleteListingRevisionRequest.
 type CascadingDeleteListingRevisionRequest struct {
 
 	// listing revision

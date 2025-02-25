@@ -5,7 +5,7 @@
 // Support Management API
 //
 // Use the Support Management API to manage support requests.
-// For more information, see Getting Help and Contacting Support (https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
+// For more information, see Getting Help and Contacting Support (https://docs.oracle.com/iaas/Content/GSG/Tasks/contactingsupport.htm).
 // **Note**: Before you can create service requests with this API,
 // complete user registration at My Oracle Cloud Support
 // and then ask your tenancy administrator to provide you authorization for the related user groups.
@@ -96,11 +96,11 @@ func (client *IncidentClient) ConfigurationProvider() *common.ConfigurationProvi
 }
 
 // CreateIncident Creates a support ticket in the specified tenancy.
-// For more information, see Creating Support Requests (https://docs.cloud.oracle.com/iaas/Content/GSG/support/create-incident.htm).
+// For more information, see Creating Support Requests (https://docs.oracle.com/iaas/Content/GSG/support/create-incident.htm).
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/CreateIncident.go.html to see an example of how to use CreateIncident API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/CreateIncident.go.html to see an example of how to use CreateIncident API.
 func (client IncidentClient) CreateIncident(ctx context.Context, request CreateIncidentRequest) (response CreateIncidentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -154,11 +154,11 @@ func (client IncidentClient) createIncident(ctx context.Context, request common.
 }
 
 // GetIncident Gets the specified support ticket.
-// For more information, see Getting Details for a Support Request (https://docs.cloud.oracle.com/iaas/Content/GSG/support/get-incident.htm).
+// For more information, see Getting Details for a Support Request (https://docs.oracle.com/iaas/Content/GSG/support/get-incident.htm).
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/GetIncident.go.html to see an example of how to use GetIncident API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/GetIncident.go.html to see an example of how to use GetIncident API.
 func (client IncidentClient) GetIncident(ctx context.Context, request GetIncidentRequest) (response GetIncidentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -216,13 +216,13 @@ func (client IncidentClient) getIncident(ctx context.Context, request common.OCI
 // lists limits and current usage for limit increase tickets.
 // This operation is called during creation of technical support and limit increase tickets.
 // For more information about listing products, see
-// Listing Products for Support Requests (https://docs.cloud.oracle.com/iaas/Content/GSG/support/list-incident-resource-types-taxonomy.htm).
+// Listing Products for Support Requests (https://docs.oracle.com/iaas/Content/GSG/support/list-incident-resource-types-taxonomy.htm).
 // For more information about listing limits, see
-// Listing Limits for Service Limit Increase Requests (https://docs.cloud.oracle.com/iaas/Content/GSG/support/list-incident-resource-types-limit.htm).
+// Listing Limits for Service Limit Increase Requests (https://docs.oracle.com/iaas/Content/GSG/support/list-incident-resource-types-limit.htm).
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ListIncidentResourceTypes.go.html to see an example of how to use ListIncidentResourceTypes API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ListIncidentResourceTypes.go.html to see an example of how to use ListIncidentResourceTypes API.
 func (client IncidentClient) ListIncidentResourceTypes(ctx context.Context, request ListIncidentResourceTypesRequest) (response ListIncidentResourceTypesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -276,11 +276,11 @@ func (client IncidentClient) listIncidentResourceTypes(ctx context.Context, requ
 }
 
 // ListIncidents Lists support tickets for the specified tenancy.
-// For more information, see Listing Support Requests (https://docs.cloud.oracle.com/iaas/Content/GSG/support/list-incidents.htm).
+// For more information, see Listing Support Requests (https://docs.oracle.com/iaas/Content/GSG/support/list-incidents.htm).
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ListIncidents.go.html to see an example of how to use ListIncidents API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ListIncidents.go.html to see an example of how to use ListIncidents API.
 func (client IncidentClient) ListIncidents(ctx context.Context, request ListIncidentsRequest) (response ListIncidentsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -334,11 +334,11 @@ func (client IncidentClient) listIncidents(ctx context.Context, request common.O
 }
 
 // UpdateIncident Updates the specified support ticket.
-// For more information, see Updating Support Requests (https://docs.cloud.oracle.com/iaas/Content/GSG/support/update-incident.htm).
+// For more information, see Updating Support Requests (https://docs.oracle.com/iaas/Content/GSG/support/update-incident.htm).
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/UpdateIncident.go.html to see an example of how to use UpdateIncident API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/UpdateIncident.go.html to see an example of how to use UpdateIncident API.
 func (client IncidentClient) UpdateIncident(ctx context.Context, request UpdateIncidentRequest) (response UpdateIncidentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -392,11 +392,11 @@ func (client IncidentClient) updateIncident(ctx context.Context, request common.
 }
 
 // ValidateUser Checks whether the requested user is valid.
-// For more information, see Validating a User (https://docs.cloud.oracle.com/iaas/Content/GSG/support/validate-user.htm).
+// For more information, see Validating a User (https://docs.oracle.com/iaas/Content/GSG/support/validate-user.htm).
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ValidateUser.go.html to see an example of how to use ValidateUser API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ValidateUser.go.html to see an example of how to use ValidateUser API.
 func (client IncidentClient) ValidateUser(ctx context.Context, request ValidateUserRequest) (response ValidateUserResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

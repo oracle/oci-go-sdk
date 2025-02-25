@@ -213,7 +213,7 @@ Therefore, adding an arbitrary header can result in authentications errors.
 To see a runnable example, see https://github.com/oracle/oci-go-sdk/blob/master/example/example_identity_test.go
 
 
-For more information on the signing algorithm refer to: https://docs.cloud.oracle.com/Content/API/Concepts/signingrequests.htm
+For more information on the signing algorithm refer to: https://docs.oracle.com/iaas/Content/API/Concepts/signingrequests.htm
 
 Polymorphic JSON Requests and Responses
 
@@ -529,7 +529,7 @@ In order to modify the underlying Transport struct in HttpClient, you can do som
 
 Uploading Large Objects
 
-The Object Storage service supports multipart uploads to make large object uploads easier by splitting the large object into parts. The Go SDK supports raw multipart upload operations for advanced use cases, as well as a higher level upload class that uses the multipart upload APIs. For links to the APIs used for multipart upload operations, see Managing Multipart Uploads (https://docs.cloud.oracle.com/iaas/Content/Object/Tasks/usingmultipartuploads.htm). Higher level multipart uploads are implemented using the UploadManager, which will: split a large object into parts for you, upload the parts in parallel, and then recombine and commit the parts as a single object in storage.
+The Object Storage service supports multipart uploads to make large object uploads easier by splitting the large object into parts. The Go SDK supports raw multipart upload operations for advanced use cases, as well as a higher level upload class that uses the multipart upload APIs. For links to the APIs used for multipart upload operations, see Managing Multipart Uploads (https://docs.oracle.com/iaas/iaas/Content/Object/Tasks/usingmultipartuploads.htm). Higher level multipart uploads are implemented using the UploadManager, which will: split a large object into parts for you, upload the parts in parallel, and then recombine and commit the parts as a single object in storage.
 
 This code sample shows how to use the UploadManager to automatically split an object into parts for upload to simplify interaction with the Object Storage service: https://github.com/oracle/oci-go-sdk/blob/master/example/example_objectstorage_test.go
 
@@ -548,7 +548,7 @@ New Region Support
 
 If you are using a version of the SDK released prior to the announcement of a new region, you may need to use a workaround to reach it, depending on whether the region is in the oraclecloud.com realm.
 
-A region is a localized geographic area. For more information on regions and how to identify them, see Regions and Availability Domains(https://docs.cloud.oracle.com/iaas/Content/General/Concepts/regions.htm).
+A region is a localized geographic area. For more information on regions and how to identify them, see Regions and Availability Domains(https://docs.oracle.com/iaas/iaas/Content/General/Concepts/regions.htm).
 
 A realm is a set of regions that share entities. You can identify your realm by looking at the domain name at the end of the network address. For example, the realm for xyz.abc.123.oraclecloud.com is oraclecloud.com.
 

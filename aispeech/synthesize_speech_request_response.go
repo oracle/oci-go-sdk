@@ -16,7 +16,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/SynthesizeSpeech.go.html to see an example of how to use SynthesizeSpeechRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/SynthesizeSpeech.go.html to see an example of how to use SynthesizeSpeechRequest.
 type SynthesizeSpeechRequest struct {
 
 	// The request to be sent to the TTS service to get required inference audio.

@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/DeleteAnnotation.go.html to see an example of how to use DeleteAnnotationRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/DeleteAnnotation.go.html to see an example of how to use DeleteAnnotationRequest.
 type DeleteAnnotationRequest struct {
 
 	// A unique annotation identifier.

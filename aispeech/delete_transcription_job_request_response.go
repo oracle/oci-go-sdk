@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/DeleteTranscriptionJob.go.html to see an example of how to use DeleteTranscriptionJobRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/DeleteTranscriptionJob.go.html to see an example of how to use DeleteTranscriptionJobRequest.
 type DeleteTranscriptionJobRequest struct {
 
 	// Unique Transcription Job identifier.

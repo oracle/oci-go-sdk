@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteOffer.go.html to see an example of how to use DeleteOfferRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteOffer.go.html to see an example of how to use DeleteOfferRequest.
 type DeleteOfferRequest struct {
 
 	// unique Offer identifier

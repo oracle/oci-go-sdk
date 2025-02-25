@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetOffer.go.html to see an example of how to use GetOfferRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetOffer.go.html to see an example of how to use GetOfferRequest.
 type GetOfferRequest struct {
 
 	// unique Offer identifier

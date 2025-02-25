@@ -92,11 +92,11 @@ func (client *LogSearchClient) ConfigurationProvider() *common.ConfigurationProv
 }
 
 // SearchLogs Submit a query to search logs.
-// See Using the API (https://docs.cloud.oracle.com/Content/Logging/Concepts/using_the_api_searchlogs.htm) for SDK examples.
+// See Using the API (https://docs.oracle.com/iaas/Content/Logging/Concepts/using_the_api_searchlogs.htm) for SDK examples.
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loggingsearch/SearchLogs.go.html to see an example of how to use SearchLogs API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loggingsearch/SearchLogs.go.html to see an example of how to use SearchLogs API.
 func (client LogSearchClient) SearchLogs(ctx context.Context, request SearchLogsRequest) (response SearchLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

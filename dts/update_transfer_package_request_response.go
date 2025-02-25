@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/UpdateTransferPackage.go.html to see an example of how to use UpdateTransferPackageRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/UpdateTransferPackage.go.html to see an example of how to use UpdateTransferPackageRequest.
 type UpdateTransferPackageRequest struct {
 
 	// ID of the Transfer Job

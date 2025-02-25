@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/WithdrawListingRevision.go.html to see an example of how to use WithdrawListingRevisionRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/WithdrawListingRevision.go.html to see an example of how to use WithdrawListingRevisionRequest.
 type WithdrawListingRevisionRequest struct {
 
 	// listing revision

@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/CreateIncident.go.html to see an example of how to use CreateIncidentRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/CreateIncident.go.html to see an example of how to use CreateIncidentRequest.
 type CreateIncidentRequest struct {
 
 	// Incident information

@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListListingRevisions.go.html to see an example of how to use ListListingRevisionsRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListListingRevisions.go.html to see an example of how to use ListListingRevisionsRequest.
 type ListListingRevisionsRequest struct {
 
 	// listing OCID

@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListTransferApplianceEntitlement.go.html to see an example of how to use ListTransferApplianceEntitlementRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListTransferApplianceEntitlement.go.html to see an example of how to use ListTransferApplianceEntitlementRequest.
 type ListTransferApplianceEntitlementRequest struct {
 
 	// compartment id

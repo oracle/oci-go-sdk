@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/RerankText.go.html to see an example of how to use RerankTextRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/RerankText.go.html to see an example of how to use RerankTextRequest.
 type RerankTextRequest struct {
 
 	// Details required for the rerank request.

@@ -275,7 +275,7 @@ func ExampleEventuallyConsistentRetryBehavior_RetryIfEventuallyConsistentChangeM
 func createGroup(ctx context.Context, compartmentID string) string {
 	// Create a default authentication provider that uses the DEFAULT
 	// profile in the configuration file.
-	// Refer to <see href="https://docs.cloud.oracle.com/en-us/iaas/Content/API/Concepts/sdkconfig.htm#SDK_and_CLI_Configuration_File>the public documentation</see> on how to prepare a configuration file.
+	// Refer to <see href="https://docs.oracle.com/iaas/en-us/iaas/Content/API/Concepts/sdkconfig.htm#SDK_and_CLI_Configuration_File>the public documentation</see> on how to prepare a configuration file.
 	client, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(err)
 
@@ -299,7 +299,7 @@ func createGroup(ctx context.Context, compartmentID string) string {
 func deleteGroup(ctx context.Context, groupId string) {
 	// Create a default authentication provider that uses the DEFAULT
 	// profile in the configuration file.
-	// Refer to <see href="https://docs.cloud.oracle.com/en-us/iaas/Content/API/Concepts/sdkconfig.htm#SDK_and_CLI_Configuration_File>the public documentation</see> on how to prepare a configuration file.
+	// Refer to <see href="https://docs.oracle.com/iaas/en-us/iaas/Content/API/Concepts/sdkconfig.htm#SDK_and_CLI_Configuration_File>the public documentation</see> on how to prepare a configuration file.
 	client, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(err)
 

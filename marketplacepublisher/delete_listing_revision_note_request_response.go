@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteListingRevisionNote.go.html to see an example of how to use DeleteListingRevisionNoteRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteListingRevisionNote.go.html to see an example of how to use DeleteListingRevisionNoteRequest.
 type DeleteListingRevisionNoteRequest struct {
 
 	// Unique listing revision note identifier.

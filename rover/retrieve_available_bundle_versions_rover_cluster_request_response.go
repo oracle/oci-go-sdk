@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RetrieveAvailableBundleVersionsRoverCluster.go.html to see an example of how to use RetrieveAvailableBundleVersionsRoverClusterRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RetrieveAvailableBundleVersionsRoverCluster.go.html to see an example of how to use RetrieveAvailableBundleVersionsRoverClusterRequest.
 type RetrieveAvailableBundleVersionsRoverClusterRequest struct {
 
 	// Provide the current rover bundle details.

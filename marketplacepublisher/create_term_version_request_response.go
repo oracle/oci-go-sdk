@@ -16,7 +16,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateTermVersion.go.html to see an example of how to use CreateTermVersionRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateTermVersion.go.html to see an example of how to use CreateTermVersionRequest.
 type CreateTermVersionRequest struct {
 
 	// The term version file to upload.

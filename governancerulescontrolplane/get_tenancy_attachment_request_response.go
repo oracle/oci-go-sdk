@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetTenancyAttachment.go.html to see an example of how to use GetTenancyAttachmentRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetTenancyAttachment.go.html to see an example of how to use GetTenancyAttachmentRequest.
 type GetTenancyAttachmentRequest struct {
 
 	// Unique tenancy attachment identifier.

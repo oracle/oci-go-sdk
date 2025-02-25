@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/CreateTransferDevice.go.html to see an example of how to use CreateTransferDeviceRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/CreateTransferDevice.go.html to see an example of how to use CreateTransferDeviceRequest.
 type CreateTransferDeviceRequest struct {
 
 	// ID of the Transfer Job

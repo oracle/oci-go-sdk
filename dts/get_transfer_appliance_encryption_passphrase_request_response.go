@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferApplianceEncryptionPassphrase.go.html to see an example of how to use GetTransferApplianceEncryptionPassphraseRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferApplianceEncryptionPassphrase.go.html to see an example of how to use GetTransferApplianceEncryptionPassphraseRequest.
 type GetTransferApplianceEncryptionPassphraseRequest struct {
 
 	// ID of the Transfer Job

@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/UpdateApprovalTemplate.go.html to see an example of how to use UpdateApprovalTemplateRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/UpdateApprovalTemplate.go.html to see an example of how to use UpdateApprovalTemplateRequest.
 type UpdateApprovalTemplateRequest struct {
 
 	// The unique identifier (OCID) of the approval template.

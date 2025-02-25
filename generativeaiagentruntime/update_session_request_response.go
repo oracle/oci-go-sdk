@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiagentruntime/UpdateSession.go.html to see an example of how to use UpdateSessionRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiagentruntime/UpdateSession.go.html to see an example of how to use UpdateSessionRequest.
 type UpdateSessionRequest struct {
 
 	// A unique ID for the endpoint.

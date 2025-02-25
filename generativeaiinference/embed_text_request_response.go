@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/EmbedText.go.html to see an example of how to use EmbedTextRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/EmbedText.go.html to see an example of how to use EmbedTextRequest.
 type EmbedTextRequest struct {
 
 	// Details for generating the embed response.

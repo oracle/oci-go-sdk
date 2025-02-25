@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/resourcesearch/SearchResources.go.html to see an example of how to use SearchResourcesRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/resourcesearch/SearchResources.go.html to see an example of how to use SearchResourcesRequest.
 type SearchResourcesRequest struct {
 
 	// Request parameters that describe query criteria. For more information, see SearchDetails.

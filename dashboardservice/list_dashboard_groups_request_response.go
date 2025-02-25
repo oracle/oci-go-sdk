@@ -15,10 +15,10 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/ListDashboardGroups.go.html to see an example of how to use ListDashboardGroupsRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/ListDashboardGroups.go.html to see an example of how to use ListDashboardGroupsRequest.
 type ListDashboardGroupsRequest struct {
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment in which to list resources.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// A filter that returns dashboard groups that match the lifecycle state specified.
@@ -27,7 +27,7 @@ type ListDashboardGroupsRequest struct {
 	// A case-sensitive filter that returns resources that match the entire display name specified.
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the dashboard group.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the dashboard group.
 	Id *string `mandatory:"false" contributesTo:"query" name:"id"`
 
 	// The maximum number of items to return.

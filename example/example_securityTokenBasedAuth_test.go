@@ -19,7 +19,7 @@ import (
 )
 
 // This test requires that you have a specified profile setup for security-token based authentication, for the detail
-// how to set up the configuration, please refer https://docs.cloud.oracle.com/en-us/iaas/Content/API/SDKDocs/clitoken.htm?Highlight=security_token_file
+// how to set up the configuration, please refer https://docs.oracle.com/iaas/en-us/iaas/Content/API/SDKDocs/clitoken.htm?Highlight=security_token_file
 // In this example the [security_token_based_auth] is created and lists Lists the Availability Domains in current tenancy.
 // The token will expire in 1 hour, user needs to check if the token is valid and then decide refresh steps via OCI CLI command.
 

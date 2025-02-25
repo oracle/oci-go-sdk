@@ -95,7 +95,7 @@ func (client *MarketplacePublisherClient) ConfigurationProvider() *common.Config
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ActivateTermVersion.go.html to see an example of how to use ActivateTermVersion API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ActivateTermVersion.go.html to see an example of how to use ActivateTermVersion API.
 // A default retry strategy applies to this operation ActivateTermVersion()
 func (client MarketplacePublisherClient) ActivateTermVersion(ctx context.Context, request ActivateTermVersionRequest) (response ActivateTermVersionResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -153,7 +153,7 @@ func (client MarketplacePublisherClient) activateTermVersion(ctx context.Context
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CancelWorkRequest.go.html to see an example of how to use CancelWorkRequest API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CancelWorkRequest.go.html to see an example of how to use CancelWorkRequest API.
 // A default retry strategy applies to this operation CancelWorkRequest()
 func (client MarketplacePublisherClient) CancelWorkRequest(ctx context.Context, request CancelWorkRequestRequest) (response CancelWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -211,7 +211,7 @@ func (client MarketplacePublisherClient) cancelWorkRequest(ctx context.Context, 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CascadingDeleteListing.go.html to see an example of how to use CascadingDeleteListing API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CascadingDeleteListing.go.html to see an example of how to use CascadingDeleteListing API.
 // A default retry strategy applies to this operation CascadingDeleteListing()
 func (client MarketplacePublisherClient) CascadingDeleteListing(ctx context.Context, request CascadingDeleteListingRequest) (response CascadingDeleteListingResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -274,7 +274,7 @@ func (client MarketplacePublisherClient) cascadingDeleteListing(ctx context.Cont
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CascadingDeleteListingRevision.go.html to see an example of how to use CascadingDeleteListingRevision API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CascadingDeleteListingRevision.go.html to see an example of how to use CascadingDeleteListingRevision API.
 // A default retry strategy applies to this operation CascadingDeleteListingRevision()
 func (client MarketplacePublisherClient) CascadingDeleteListingRevision(ctx context.Context, request CascadingDeleteListingRevisionRequest) (response CascadingDeleteListingRevisionResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -337,7 +337,7 @@ func (client MarketplacePublisherClient) cascadingDeleteListingRevision(ctx cont
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ChangeArtifactCompartment.go.html to see an example of how to use ChangeArtifactCompartment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ChangeArtifactCompartment.go.html to see an example of how to use ChangeArtifactCompartment API.
 // A default retry strategy applies to this operation ChangeArtifactCompartment()
 func (client MarketplacePublisherClient) ChangeArtifactCompartment(ctx context.Context, request ChangeArtifactCompartmentRequest) (response ChangeArtifactCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -400,7 +400,7 @@ func (client MarketplacePublisherClient) changeArtifactCompartment(ctx context.C
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ChangeListingCompartment.go.html to see an example of how to use ChangeListingCompartment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ChangeListingCompartment.go.html to see an example of how to use ChangeListingCompartment API.
 // A default retry strategy applies to this operation ChangeListingCompartment()
 func (client MarketplacePublisherClient) ChangeListingCompartment(ctx context.Context, request ChangeListingCompartmentRequest) (response ChangeListingCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -463,7 +463,7 @@ func (client MarketplacePublisherClient) changeListingCompartment(ctx context.Co
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ChangeListingRevisionToNewStatus.go.html to see an example of how to use ChangeListingRevisionToNewStatus API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ChangeListingRevisionToNewStatus.go.html to see an example of how to use ChangeListingRevisionToNewStatus API.
 // A default retry strategy applies to this operation ChangeListingRevisionToNewStatus()
 func (client MarketplacePublisherClient) ChangeListingRevisionToNewStatus(ctx context.Context, request ChangeListingRevisionToNewStatusRequest) (response ChangeListingRevisionToNewStatusResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -521,7 +521,7 @@ func (client MarketplacePublisherClient) changeListingRevisionToNewStatus(ctx co
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ChangeTermCompartment.go.html to see an example of how to use ChangeTermCompartment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ChangeTermCompartment.go.html to see an example of how to use ChangeTermCompartment API.
 // A default retry strategy applies to this operation ChangeTermCompartment()
 func (client MarketplacePublisherClient) ChangeTermCompartment(ctx context.Context, request ChangeTermCompartmentRequest) (response ChangeTermCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -584,7 +584,7 @@ func (client MarketplacePublisherClient) changeTermCompartment(ctx context.Conte
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CloneListingRevision.go.html to see an example of how to use CloneListingRevision API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CloneListingRevision.go.html to see an example of how to use CloneListingRevision API.
 // A default retry strategy applies to this operation CloneListingRevision()
 func (client MarketplacePublisherClient) CloneListingRevision(ctx context.Context, request CloneListingRevisionRequest) (response CloneListingRevisionResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -655,7 +655,7 @@ func (client MarketplacePublisherClient) cloneListingRevision(ctx context.Contex
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateArtifact.go.html to see an example of how to use CreateArtifact API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateArtifact.go.html to see an example of how to use CreateArtifact API.
 // A default retry strategy applies to this operation CreateArtifact()
 func (client MarketplacePublisherClient) CreateArtifact(ctx context.Context, request CreateArtifactRequest) (response CreateArtifactResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -723,7 +723,7 @@ func (client MarketplacePublisherClient) createArtifact(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateListing.go.html to see an example of how to use CreateListing API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateListing.go.html to see an example of how to use CreateListing API.
 // A default retry strategy applies to this operation CreateListing()
 func (client MarketplacePublisherClient) CreateListing(ctx context.Context, request CreateListingRequest) (response CreateListingResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -786,7 +786,7 @@ func (client MarketplacePublisherClient) createListing(ctx context.Context, requ
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateListingRevision.go.html to see an example of how to use CreateListingRevision API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateListingRevision.go.html to see an example of how to use CreateListingRevision API.
 // A default retry strategy applies to this operation CreateListingRevision()
 func (client MarketplacePublisherClient) CreateListingRevision(ctx context.Context, request CreateListingRevisionRequest) (response CreateListingRevisionResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -849,7 +849,7 @@ func (client MarketplacePublisherClient) createListingRevision(ctx context.Conte
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateListingRevisionAttachment.go.html to see an example of how to use CreateListingRevisionAttachment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateListingRevisionAttachment.go.html to see an example of how to use CreateListingRevisionAttachment API.
 // A default retry strategy applies to this operation CreateListingRevisionAttachment()
 func (client MarketplacePublisherClient) CreateListingRevisionAttachment(ctx context.Context, request CreateListingRevisionAttachmentRequest) (response CreateListingRevisionAttachmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -912,7 +912,7 @@ func (client MarketplacePublisherClient) createListingRevisionAttachment(ctx con
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateListingRevisionNote.go.html to see an example of how to use CreateListingRevisionNote API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateListingRevisionNote.go.html to see an example of how to use CreateListingRevisionNote API.
 // A default retry strategy applies to this operation CreateListingRevisionNote()
 func (client MarketplacePublisherClient) CreateListingRevisionNote(ctx context.Context, request CreateListingRevisionNoteRequest) (response CreateListingRevisionNoteResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -975,7 +975,7 @@ func (client MarketplacePublisherClient) createListingRevisionNote(ctx context.C
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateListingRevisionPackage.go.html to see an example of how to use CreateListingRevisionPackage API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateListingRevisionPackage.go.html to see an example of how to use CreateListingRevisionPackage API.
 // A default retry strategy applies to this operation CreateListingRevisionPackage()
 func (client MarketplacePublisherClient) CreateListingRevisionPackage(ctx context.Context, request CreateListingRevisionPackageRequest) (response CreateListingRevisionPackageResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1038,7 +1038,7 @@ func (client MarketplacePublisherClient) createListingRevisionPackage(ctx contex
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateTerm.go.html to see an example of how to use CreateTerm API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateTerm.go.html to see an example of how to use CreateTerm API.
 // A default retry strategy applies to this operation CreateTerm()
 func (client MarketplacePublisherClient) CreateTerm(ctx context.Context, request CreateTermRequest) (response CreateTermResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1101,7 +1101,7 @@ func (client MarketplacePublisherClient) createTerm(ctx context.Context, request
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateTermVersion.go.html to see an example of how to use CreateTermVersion API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateTermVersion.go.html to see an example of how to use CreateTermVersion API.
 // A default retry strategy applies to this operation CreateTermVersion()
 func (client MarketplacePublisherClient) CreateTermVersion(ctx context.Context, request CreateTermVersionRequest) (response CreateTermVersionResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1164,7 +1164,7 @@ func (client MarketplacePublisherClient) createTermVersion(ctx context.Context, 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteArtifact.go.html to see an example of how to use DeleteArtifact API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteArtifact.go.html to see an example of how to use DeleteArtifact API.
 // A default retry strategy applies to this operation DeleteArtifact()
 func (client MarketplacePublisherClient) DeleteArtifact(ctx context.Context, request DeleteArtifactRequest) (response DeleteArtifactResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1227,7 +1227,7 @@ func (client MarketplacePublisherClient) deleteArtifact(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteListing.go.html to see an example of how to use DeleteListing API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteListing.go.html to see an example of how to use DeleteListing API.
 // A default retry strategy applies to this operation DeleteListing()
 func (client MarketplacePublisherClient) DeleteListing(ctx context.Context, request DeleteListingRequest) (response DeleteListingResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1285,7 +1285,7 @@ func (client MarketplacePublisherClient) deleteListing(ctx context.Context, requ
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteListingRevision.go.html to see an example of how to use DeleteListingRevision API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteListingRevision.go.html to see an example of how to use DeleteListingRevision API.
 // A default retry strategy applies to this operation DeleteListingRevision()
 func (client MarketplacePublisherClient) DeleteListingRevision(ctx context.Context, request DeleteListingRevisionRequest) (response DeleteListingRevisionResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1343,7 +1343,7 @@ func (client MarketplacePublisherClient) deleteListingRevision(ctx context.Conte
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteListingRevisionAttachment.go.html to see an example of how to use DeleteListingRevisionAttachment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteListingRevisionAttachment.go.html to see an example of how to use DeleteListingRevisionAttachment API.
 // A default retry strategy applies to this operation DeleteListingRevisionAttachment()
 func (client MarketplacePublisherClient) DeleteListingRevisionAttachment(ctx context.Context, request DeleteListingRevisionAttachmentRequest) (response DeleteListingRevisionAttachmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1401,7 +1401,7 @@ func (client MarketplacePublisherClient) deleteListingRevisionAttachment(ctx con
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteListingRevisionNote.go.html to see an example of how to use DeleteListingRevisionNote API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteListingRevisionNote.go.html to see an example of how to use DeleteListingRevisionNote API.
 // A default retry strategy applies to this operation DeleteListingRevisionNote()
 func (client MarketplacePublisherClient) DeleteListingRevisionNote(ctx context.Context, request DeleteListingRevisionNoteRequest) (response DeleteListingRevisionNoteResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1459,7 +1459,7 @@ func (client MarketplacePublisherClient) deleteListingRevisionNote(ctx context.C
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteListingRevisionPackage.go.html to see an example of how to use DeleteListingRevisionPackage API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteListingRevisionPackage.go.html to see an example of how to use DeleteListingRevisionPackage API.
 // A default retry strategy applies to this operation DeleteListingRevisionPackage()
 func (client MarketplacePublisherClient) DeleteListingRevisionPackage(ctx context.Context, request DeleteListingRevisionPackageRequest) (response DeleteListingRevisionPackageResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1517,7 +1517,7 @@ func (client MarketplacePublisherClient) deleteListingRevisionPackage(ctx contex
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteTerm.go.html to see an example of how to use DeleteTerm API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteTerm.go.html to see an example of how to use DeleteTerm API.
 // A default retry strategy applies to this operation DeleteTerm()
 func (client MarketplacePublisherClient) DeleteTerm(ctx context.Context, request DeleteTermRequest) (response DeleteTermResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1575,7 +1575,7 @@ func (client MarketplacePublisherClient) deleteTerm(ctx context.Context, request
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteTermVersion.go.html to see an example of how to use DeleteTermVersion API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteTermVersion.go.html to see an example of how to use DeleteTermVersion API.
 // A default retry strategy applies to this operation DeleteTermVersion()
 func (client MarketplacePublisherClient) DeleteTermVersion(ctx context.Context, request DeleteTermVersionRequest) (response DeleteTermVersionResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1633,7 +1633,7 @@ func (client MarketplacePublisherClient) deleteTermVersion(ctx context.Context, 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetArtifact.go.html to see an example of how to use GetArtifact API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetArtifact.go.html to see an example of how to use GetArtifact API.
 // A default retry strategy applies to this operation GetArtifact()
 func (client MarketplacePublisherClient) GetArtifact(ctx context.Context, request GetArtifactRequest) (response GetArtifactResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1691,7 +1691,7 @@ func (client MarketplacePublisherClient) getArtifact(ctx context.Context, reques
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetCategory.go.html to see an example of how to use GetCategory API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetCategory.go.html to see an example of how to use GetCategory API.
 // A default retry strategy applies to this operation GetCategory()
 func (client MarketplacePublisherClient) GetCategory(ctx context.Context, request GetCategoryRequest) (response GetCategoryResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1749,7 +1749,7 @@ func (client MarketplacePublisherClient) getCategory(ctx context.Context, reques
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetListing.go.html to see an example of how to use GetListing API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetListing.go.html to see an example of how to use GetListing API.
 // A default retry strategy applies to this operation GetListing()
 func (client MarketplacePublisherClient) GetListing(ctx context.Context, request GetListingRequest) (response GetListingResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1807,7 +1807,7 @@ func (client MarketplacePublisherClient) getListing(ctx context.Context, request
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetListingRevision.go.html to see an example of how to use GetListingRevision API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetListingRevision.go.html to see an example of how to use GetListingRevision API.
 // A default retry strategy applies to this operation GetListingRevision()
 func (client MarketplacePublisherClient) GetListingRevision(ctx context.Context, request GetListingRevisionRequest) (response GetListingRevisionResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1865,7 +1865,7 @@ func (client MarketplacePublisherClient) getListingRevision(ctx context.Context,
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetListingRevisionAttachment.go.html to see an example of how to use GetListingRevisionAttachment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetListingRevisionAttachment.go.html to see an example of how to use GetListingRevisionAttachment API.
 // A default retry strategy applies to this operation GetListingRevisionAttachment()
 func (client MarketplacePublisherClient) GetListingRevisionAttachment(ctx context.Context, request GetListingRevisionAttachmentRequest) (response GetListingRevisionAttachmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1923,7 +1923,7 @@ func (client MarketplacePublisherClient) getListingRevisionAttachment(ctx contex
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetListingRevisionNote.go.html to see an example of how to use GetListingRevisionNote API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetListingRevisionNote.go.html to see an example of how to use GetListingRevisionNote API.
 // A default retry strategy applies to this operation GetListingRevisionNote()
 func (client MarketplacePublisherClient) GetListingRevisionNote(ctx context.Context, request GetListingRevisionNoteRequest) (response GetListingRevisionNoteResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -1981,7 +1981,7 @@ func (client MarketplacePublisherClient) getListingRevisionNote(ctx context.Cont
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetListingRevisionPackage.go.html to see an example of how to use GetListingRevisionPackage API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetListingRevisionPackage.go.html to see an example of how to use GetListingRevisionPackage API.
 // A default retry strategy applies to this operation GetListingRevisionPackage()
 func (client MarketplacePublisherClient) GetListingRevisionPackage(ctx context.Context, request GetListingRevisionPackageRequest) (response GetListingRevisionPackageResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2039,7 +2039,7 @@ func (client MarketplacePublisherClient) getListingRevisionPackage(ctx context.C
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetMarket.go.html to see an example of how to use GetMarket API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetMarket.go.html to see an example of how to use GetMarket API.
 // A default retry strategy applies to this operation GetMarket()
 func (client MarketplacePublisherClient) GetMarket(ctx context.Context, request GetMarketRequest) (response GetMarketResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2097,7 +2097,7 @@ func (client MarketplacePublisherClient) getMarket(ctx context.Context, request 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetProduct.go.html to see an example of how to use GetProduct API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetProduct.go.html to see an example of how to use GetProduct API.
 // A default retry strategy applies to this operation GetProduct()
 func (client MarketplacePublisherClient) GetProduct(ctx context.Context, request GetProductRequest) (response GetProductResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2155,7 +2155,7 @@ func (client MarketplacePublisherClient) getProduct(ctx context.Context, request
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetPublisher.go.html to see an example of how to use GetPublisher API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetPublisher.go.html to see an example of how to use GetPublisher API.
 // A default retry strategy applies to this operation GetPublisher()
 func (client MarketplacePublisherClient) GetPublisher(ctx context.Context, request GetPublisherRequest) (response GetPublisherResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2213,7 +2213,7 @@ func (client MarketplacePublisherClient) getPublisher(ctx context.Context, reque
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetTerm.go.html to see an example of how to use GetTerm API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetTerm.go.html to see an example of how to use GetTerm API.
 // A default retry strategy applies to this operation GetTerm()
 func (client MarketplacePublisherClient) GetTerm(ctx context.Context, request GetTermRequest) (response GetTermResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2271,7 +2271,7 @@ func (client MarketplacePublisherClient) getTerm(ctx context.Context, request co
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetTermVersion.go.html to see an example of how to use GetTermVersion API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetTermVersion.go.html to see an example of how to use GetTermVersion API.
 // A default retry strategy applies to this operation GetTermVersion()
 func (client MarketplacePublisherClient) GetTermVersion(ctx context.Context, request GetTermVersionRequest) (response GetTermVersionResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2329,7 +2329,7 @@ func (client MarketplacePublisherClient) getTermVersion(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetWorkRequest.go.html to see an example of how to use GetWorkRequest API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetWorkRequest.go.html to see an example of how to use GetWorkRequest API.
 // A default retry strategy applies to this operation GetWorkRequest()
 func (client MarketplacePublisherClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2389,7 +2389,7 @@ func (client MarketplacePublisherClient) getWorkRequest(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListArtifacts.go.html to see an example of how to use ListArtifacts API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListArtifacts.go.html to see an example of how to use ListArtifacts API.
 // A default retry strategy applies to this operation ListArtifacts()
 func (client MarketplacePublisherClient) ListArtifacts(ctx context.Context, request ListArtifactsRequest) (response ListArtifactsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2449,7 +2449,7 @@ func (client MarketplacePublisherClient) listArtifacts(ctx context.Context, requ
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListCategories.go.html to see an example of how to use ListCategories API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListCategories.go.html to see an example of how to use ListCategories API.
 // A default retry strategy applies to this operation ListCategories()
 func (client MarketplacePublisherClient) ListCategories(ctx context.Context, request ListCategoriesRequest) (response ListCategoriesResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2507,7 +2507,7 @@ func (client MarketplacePublisherClient) listCategories(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListListingRevisionAttachments.go.html to see an example of how to use ListListingRevisionAttachments API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListListingRevisionAttachments.go.html to see an example of how to use ListListingRevisionAttachments API.
 // A default retry strategy applies to this operation ListListingRevisionAttachments()
 func (client MarketplacePublisherClient) ListListingRevisionAttachments(ctx context.Context, request ListListingRevisionAttachmentsRequest) (response ListListingRevisionAttachmentsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2565,7 +2565,7 @@ func (client MarketplacePublisherClient) listListingRevisionAttachments(ctx cont
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListListingRevisionNotes.go.html to see an example of how to use ListListingRevisionNotes API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListListingRevisionNotes.go.html to see an example of how to use ListListingRevisionNotes API.
 // A default retry strategy applies to this operation ListListingRevisionNotes()
 func (client MarketplacePublisherClient) ListListingRevisionNotes(ctx context.Context, request ListListingRevisionNotesRequest) (response ListListingRevisionNotesResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2623,7 +2623,7 @@ func (client MarketplacePublisherClient) listListingRevisionNotes(ctx context.Co
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListListingRevisionPackages.go.html to see an example of how to use ListListingRevisionPackages API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListListingRevisionPackages.go.html to see an example of how to use ListListingRevisionPackages API.
 // A default retry strategy applies to this operation ListListingRevisionPackages()
 func (client MarketplacePublisherClient) ListListingRevisionPackages(ctx context.Context, request ListListingRevisionPackagesRequest) (response ListListingRevisionPackagesResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2683,7 +2683,7 @@ func (client MarketplacePublisherClient) listListingRevisionPackages(ctx context
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListListingRevisions.go.html to see an example of how to use ListListingRevisions API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListListingRevisions.go.html to see an example of how to use ListListingRevisions API.
 // A default retry strategy applies to this operation ListListingRevisions()
 func (client MarketplacePublisherClient) ListListingRevisions(ctx context.Context, request ListListingRevisionsRequest) (response ListListingRevisionsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2743,7 +2743,7 @@ func (client MarketplacePublisherClient) listListingRevisions(ctx context.Contex
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListListings.go.html to see an example of how to use ListListings API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListListings.go.html to see an example of how to use ListListings API.
 // A default retry strategy applies to this operation ListListings()
 func (client MarketplacePublisherClient) ListListings(ctx context.Context, request ListListingsRequest) (response ListListingsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2803,7 +2803,7 @@ func (client MarketplacePublisherClient) listListings(ctx context.Context, reque
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListMarkets.go.html to see an example of how to use ListMarkets API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListMarkets.go.html to see an example of how to use ListMarkets API.
 // A default retry strategy applies to this operation ListMarkets()
 func (client MarketplacePublisherClient) ListMarkets(ctx context.Context, request ListMarketsRequest) (response ListMarketsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2863,7 +2863,7 @@ func (client MarketplacePublisherClient) listMarkets(ctx context.Context, reques
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListProducts.go.html to see an example of how to use ListProducts API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListProducts.go.html to see an example of how to use ListProducts API.
 // A default retry strategy applies to this operation ListProducts()
 func (client MarketplacePublisherClient) ListProducts(ctx context.Context, request ListProductsRequest) (response ListProductsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2921,7 +2921,7 @@ func (client MarketplacePublisherClient) listProducts(ctx context.Context, reque
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListPublishers.go.html to see an example of how to use ListPublishers API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListPublishers.go.html to see an example of how to use ListPublishers API.
 // A default retry strategy applies to this operation ListPublishers()
 func (client MarketplacePublisherClient) ListPublishers(ctx context.Context, request ListPublishersRequest) (response ListPublishersResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2979,7 +2979,7 @@ func (client MarketplacePublisherClient) listPublishers(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListTermVersions.go.html to see an example of how to use ListTermVersions API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListTermVersions.go.html to see an example of how to use ListTermVersions API.
 // A default retry strategy applies to this operation ListTermVersions()
 func (client MarketplacePublisherClient) ListTermVersions(ctx context.Context, request ListTermVersionsRequest) (response ListTermVersionsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3037,7 +3037,7 @@ func (client MarketplacePublisherClient) listTermVersions(ctx context.Context, r
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListTerms.go.html to see an example of how to use ListTerms API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListTerms.go.html to see an example of how to use ListTerms API.
 // A default retry strategy applies to this operation ListTerms()
 func (client MarketplacePublisherClient) ListTerms(ctx context.Context, request ListTermsRequest) (response ListTermsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3095,7 +3095,7 @@ func (client MarketplacePublisherClient) listTerms(ctx context.Context, request 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListWorkRequestErrors.go.html to see an example of how to use ListWorkRequestErrors API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListWorkRequestErrors.go.html to see an example of how to use ListWorkRequestErrors API.
 // A default retry strategy applies to this operation ListWorkRequestErrors()
 func (client MarketplacePublisherClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3153,7 +3153,7 @@ func (client MarketplacePublisherClient) listWorkRequestErrors(ctx context.Conte
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListWorkRequestLogs.go.html to see an example of how to use ListWorkRequestLogs API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListWorkRequestLogs.go.html to see an example of how to use ListWorkRequestLogs API.
 // A default retry strategy applies to this operation ListWorkRequestLogs()
 func (client MarketplacePublisherClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3211,7 +3211,7 @@ func (client MarketplacePublisherClient) listWorkRequestLogs(ctx context.Context
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListWorkRequests.go.html to see an example of how to use ListWorkRequests API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListWorkRequests.go.html to see an example of how to use ListWorkRequests API.
 // A default retry strategy applies to this operation ListWorkRequests()
 func (client MarketplacePublisherClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3269,7 +3269,7 @@ func (client MarketplacePublisherClient) listWorkRequests(ctx context.Context, r
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/MarkListingRevisionPackageAsDefault.go.html to see an example of how to use MarkListingRevisionPackageAsDefault API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/MarkListingRevisionPackageAsDefault.go.html to see an example of how to use MarkListingRevisionPackageAsDefault API.
 // A default retry strategy applies to this operation MarkListingRevisionPackageAsDefault()
 func (client MarketplacePublisherClient) MarkListingRevisionPackageAsDefault(ctx context.Context, request MarkListingRevisionPackageAsDefaultRequest) (response MarkListingRevisionPackageAsDefaultResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3332,7 +3332,7 @@ func (client MarketplacePublisherClient) markListingRevisionPackageAsDefault(ctx
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/PublishListingRevision.go.html to see an example of how to use PublishListingRevision API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/PublishListingRevision.go.html to see an example of how to use PublishListingRevision API.
 // A default retry strategy applies to this operation PublishListingRevision()
 func (client MarketplacePublisherClient) PublishListingRevision(ctx context.Context, request PublishListingRevisionRequest) (response PublishListingRevisionResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3395,7 +3395,7 @@ func (client MarketplacePublisherClient) publishListingRevision(ctx context.Cont
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/PublishListingRevisionAsPrivate.go.html to see an example of how to use PublishListingRevisionAsPrivate API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/PublishListingRevisionAsPrivate.go.html to see an example of how to use PublishListingRevisionAsPrivate API.
 // A default retry strategy applies to this operation PublishListingRevisionAsPrivate()
 func (client MarketplacePublisherClient) PublishListingRevisionAsPrivate(ctx context.Context, request PublishListingRevisionAsPrivateRequest) (response PublishListingRevisionAsPrivateResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3458,7 +3458,7 @@ func (client MarketplacePublisherClient) publishListingRevisionAsPrivate(ctx con
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/PublishListingRevisionPackage.go.html to see an example of how to use PublishListingRevisionPackage API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/PublishListingRevisionPackage.go.html to see an example of how to use PublishListingRevisionPackage API.
 // A default retry strategy applies to this operation PublishListingRevisionPackage()
 func (client MarketplacePublisherClient) PublishListingRevisionPackage(ctx context.Context, request PublishListingRevisionPackageRequest) (response PublishListingRevisionPackageResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3521,7 +3521,7 @@ func (client MarketplacePublisherClient) publishListingRevisionPackage(ctx conte
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/SubmitListingRevisionForReview.go.html to see an example of how to use SubmitListingRevisionForReview API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/SubmitListingRevisionForReview.go.html to see an example of how to use SubmitListingRevisionForReview API.
 // A default retry strategy applies to this operation SubmitListingRevisionForReview()
 func (client MarketplacePublisherClient) SubmitListingRevisionForReview(ctx context.Context, request SubmitListingRevisionForReviewRequest) (response SubmitListingRevisionForReviewResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3584,7 +3584,7 @@ func (client MarketplacePublisherClient) submitListingRevisionForReview(ctx cont
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UnPublishListingRevisionPackage.go.html to see an example of how to use UnPublishListingRevisionPackage API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UnPublishListingRevisionPackage.go.html to see an example of how to use UnPublishListingRevisionPackage API.
 // A default retry strategy applies to this operation UnPublishListingRevisionPackage()
 func (client MarketplacePublisherClient) UnPublishListingRevisionPackage(ctx context.Context, request UnPublishListingRevisionPackageRequest) (response UnPublishListingRevisionPackageResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3647,7 +3647,7 @@ func (client MarketplacePublisherClient) unPublishListingRevisionPackage(ctx con
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateArtifact.go.html to see an example of how to use UpdateArtifact API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateArtifact.go.html to see an example of how to use UpdateArtifact API.
 // A default retry strategy applies to this operation UpdateArtifact()
 func (client MarketplacePublisherClient) UpdateArtifact(ctx context.Context, request UpdateArtifactRequest) (response UpdateArtifactResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3705,7 +3705,7 @@ func (client MarketplacePublisherClient) updateArtifact(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateListing.go.html to see an example of how to use UpdateListing API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateListing.go.html to see an example of how to use UpdateListing API.
 // A default retry strategy applies to this operation UpdateListing()
 func (client MarketplacePublisherClient) UpdateListing(ctx context.Context, request UpdateListingRequest) (response UpdateListingResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3763,7 +3763,7 @@ func (client MarketplacePublisherClient) updateListing(ctx context.Context, requ
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateListingRevision.go.html to see an example of how to use UpdateListingRevision API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateListingRevision.go.html to see an example of how to use UpdateListingRevision API.
 // A default retry strategy applies to this operation UpdateListingRevision()
 func (client MarketplacePublisherClient) UpdateListingRevision(ctx context.Context, request UpdateListingRevisionRequest) (response UpdateListingRevisionResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3821,7 +3821,7 @@ func (client MarketplacePublisherClient) updateListingRevision(ctx context.Conte
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateListingRevisionAttachment.go.html to see an example of how to use UpdateListingRevisionAttachment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateListingRevisionAttachment.go.html to see an example of how to use UpdateListingRevisionAttachment API.
 // A default retry strategy applies to this operation UpdateListingRevisionAttachment()
 func (client MarketplacePublisherClient) UpdateListingRevisionAttachment(ctx context.Context, request UpdateListingRevisionAttachmentRequest) (response UpdateListingRevisionAttachmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3879,7 +3879,7 @@ func (client MarketplacePublisherClient) updateListingRevisionAttachment(ctx con
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateListingRevisionAttachmentContent.go.html to see an example of how to use UpdateListingRevisionAttachmentContent API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateListingRevisionAttachmentContent.go.html to see an example of how to use UpdateListingRevisionAttachmentContent API.
 // A default retry strategy applies to this operation UpdateListingRevisionAttachmentContent()
 func (client MarketplacePublisherClient) UpdateListingRevisionAttachmentContent(ctx context.Context, request UpdateListingRevisionAttachmentContentRequest) (response UpdateListingRevisionAttachmentContentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3937,7 +3937,7 @@ func (client MarketplacePublisherClient) updateListingRevisionAttachmentContent(
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateListingRevisionIconContent.go.html to see an example of how to use UpdateListingRevisionIconContent API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateListingRevisionIconContent.go.html to see an example of how to use UpdateListingRevisionIconContent API.
 // A default retry strategy applies to this operation UpdateListingRevisionIconContent()
 func (client MarketplacePublisherClient) UpdateListingRevisionIconContent(ctx context.Context, request UpdateListingRevisionIconContentRequest) (response UpdateListingRevisionIconContentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3995,7 +3995,7 @@ func (client MarketplacePublisherClient) updateListingRevisionIconContent(ctx co
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateListingRevisionPackage.go.html to see an example of how to use UpdateListingRevisionPackage API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateListingRevisionPackage.go.html to see an example of how to use UpdateListingRevisionPackage API.
 // A default retry strategy applies to this operation UpdateListingRevisionPackage()
 func (client MarketplacePublisherClient) UpdateListingRevisionPackage(ctx context.Context, request UpdateListingRevisionPackageRequest) (response UpdateListingRevisionPackageResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -4053,7 +4053,7 @@ func (client MarketplacePublisherClient) updateListingRevisionPackage(ctx contex
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateTerm.go.html to see an example of how to use UpdateTerm API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateTerm.go.html to see an example of how to use UpdateTerm API.
 // A default retry strategy applies to this operation UpdateTerm()
 func (client MarketplacePublisherClient) UpdateTerm(ctx context.Context, request UpdateTermRequest) (response UpdateTermResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -4111,7 +4111,7 @@ func (client MarketplacePublisherClient) updateTerm(ctx context.Context, request
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateTermVersion.go.html to see an example of how to use UpdateTermVersion API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateTermVersion.go.html to see an example of how to use UpdateTermVersion API.
 // A default retry strategy applies to this operation UpdateTermVersion()
 func (client MarketplacePublisherClient) UpdateTermVersion(ctx context.Context, request UpdateTermVersionRequest) (response UpdateTermVersionResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -4169,7 +4169,7 @@ func (client MarketplacePublisherClient) updateTermVersion(ctx context.Context, 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateTermVersionContent.go.html to see an example of how to use UpdateTermVersionContent API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateTermVersionContent.go.html to see an example of how to use UpdateTermVersionContent API.
 // A default retry strategy applies to this operation UpdateTermVersionContent()
 func (client MarketplacePublisherClient) UpdateTermVersionContent(ctx context.Context, request UpdateTermVersionContentRequest) (response UpdateTermVersionContentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -4227,7 +4227,7 @@ func (client MarketplacePublisherClient) updateTermVersionContent(ctx context.Co
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ValidateAndPublishArtifact.go.html to see an example of how to use ValidateAndPublishArtifact API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ValidateAndPublishArtifact.go.html to see an example of how to use ValidateAndPublishArtifact API.
 // A default retry strategy applies to this operation ValidateAndPublishArtifact()
 func (client MarketplacePublisherClient) ValidateAndPublishArtifact(ctx context.Context, request ValidateAndPublishArtifactRequest) (response ValidateAndPublishArtifactResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -4290,7 +4290,7 @@ func (client MarketplacePublisherClient) validateAndPublishArtifact(ctx context.
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/WithdrawListingRevision.go.html to see an example of how to use WithdrawListingRevision API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/WithdrawListingRevision.go.html to see an example of how to use WithdrawListingRevision API.
 // A default retry strategy applies to this operation WithdrawListingRevision()
 func (client MarketplacePublisherClient) WithdrawListingRevision(ctx context.Context, request WithdrawListingRevisionRequest) (response WithdrawListingRevisionResponse, err error) {
 	var ociResponse common.OCIResponse

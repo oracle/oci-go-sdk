@@ -6,7 +6,7 @@
 //
 // Use the Oracle Cloud Infrastructure Dashboards service API to manage dashboards in the Console.
 // Dashboards provide an organized and customizable view of resources and their metrics in the Console.
-// For more information, see Dashboards (https://docs.cloud.oracle.com/Content/Dashboards/home.htm).
+// For more information, see Dashboards (https://docs.oracle.com/iaas/Content/Dashboards/home.htm).
 // **Important:** Resources for the Dashboards service are created in the tenacy's home region.
 // Although it is possible to create dashboard and dashboard group resources in regions other than the home region,
 // you won't be able to view those resources in the Console.
@@ -101,7 +101,7 @@ func (client *DashboardClient) ConfigurationProvider() *common.ConfigurationProv
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/ChangeDashboardGroup.go.html to see an example of how to use ChangeDashboardGroup API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/ChangeDashboardGroup.go.html to see an example of how to use ChangeDashboardGroup API.
 func (client DashboardClient) ChangeDashboardGroup(ctx context.Context, request ChangeDashboardGroupRequest) (response ChangeDashboardGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -162,7 +162,7 @@ func (client DashboardClient) changeDashboardGroup(ctx context.Context, request 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/CreateDashboard.go.html to see an example of how to use CreateDashboard API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/CreateDashboard.go.html to see an example of how to use CreateDashboard API.
 func (client DashboardClient) CreateDashboard(ctx context.Context, request CreateDashboardRequest) (response CreateDashboardResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -224,7 +224,7 @@ func (client DashboardClient) createDashboard(ctx context.Context, request commo
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/DeleteDashboard.go.html to see an example of how to use DeleteDashboard API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/DeleteDashboard.go.html to see an example of how to use DeleteDashboard API.
 func (client DashboardClient) DeleteDashboard(ctx context.Context, request DeleteDashboardRequest) (response DeleteDashboardResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -281,7 +281,7 @@ func (client DashboardClient) deleteDashboard(ctx context.Context, request commo
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/GetDashboard.go.html to see an example of how to use GetDashboard API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/GetDashboard.go.html to see an example of how to use GetDashboard API.
 // A default retry strategy applies to this operation GetDashboard()
 func (client DashboardClient) GetDashboard(ctx context.Context, request GetDashboardRequest) (response GetDashboardResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -339,7 +339,7 @@ func (client DashboardClient) getDashboard(ctx context.Context, request common.O
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/ListDashboards.go.html to see an example of how to use ListDashboards API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/ListDashboards.go.html to see an example of how to use ListDashboards API.
 // A default retry strategy applies to this operation ListDashboards()
 func (client DashboardClient) ListDashboards(ctx context.Context, request ListDashboardsRequest) (response ListDashboardsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -397,7 +397,7 @@ func (client DashboardClient) listDashboards(ctx context.Context, request common
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/UpdateDashboard.go.html to see an example of how to use UpdateDashboard API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dashboardservice/UpdateDashboard.go.html to see an example of how to use UpdateDashboard API.
 func (client DashboardClient) UpdateDashboard(ctx context.Context, request UpdateDashboardRequest) (response UpdateDashboardResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

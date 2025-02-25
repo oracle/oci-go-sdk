@@ -19,10 +19,10 @@ import (
 // InclusionCriterion Represents the criterion for the inclusion of the child tenancies under a governance rule. This can be either TENANCY or TAG.
 type InclusionCriterion struct {
 
-	// The Oracle ID (OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)) of the inclusion criterion.
+	// The Oracle ID (OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm)) of the inclusion criterion.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The Oracle ID (OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)) of the governance rule. Every inclusion criterion is associated with a governance rule.
+	// The Oracle ID (OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm)) of the governance rule. Every inclusion criterion is associated with a governance rule.
 	GovernanceRuleId *string `mandatory:"true" json:"governanceRuleId"`
 
 	// Type of inclusion criterion - TENANCY, ALL or TAG. We support TENANCY and ALL for now.

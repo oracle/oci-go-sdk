@@ -8,7 +8,7 @@
 // OCI Generative AI Agents supports several ways to onboard your data and then allows you and your customers to interact with your data using a chat interface or API.
 // Use the Generative AI Agents Client API to create and manage client chat sessions. A session represents an interactive conversation initiated by a user through an API to engage with an agent. It involves a series of exchanges where the user sends queries or prompts, and the agent responds with relevant information, actions, or assistance based on the user's input. The session persists for the duration of the interaction, maintaining context and continuity to provide coherent and meaningful responses throughout the conversation.
 // For creating and managing agents, knowledge bases, data sources, endpoints, and data ingestion jobs see the /EN/generative-ai-agents/latest/.
-// To learn more about the service, see the Generative AI Agents documentation (https://docs.cloud.oracle.com/iaas/Content/generative-ai-agents/home.htm).
+// To learn more about the service, see the Generative AI Agents documentation (https://docs.oracle.com/iaas/Content/generative-ai-agents/home.htm).
 //
 
 package generativeaiagentruntime
@@ -99,7 +99,7 @@ func (client *GenerativeAiAgentRuntimeClient) ConfigurationProvider() *common.Co
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiagentruntime/Chat.go.html to see an example of how to use Chat API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiagentruntime/Chat.go.html to see an example of how to use Chat API.
 // A default retry strategy applies to this operation Chat()
 func (client GenerativeAiAgentRuntimeClient) Chat(ctx context.Context, request ChatRequest) (response ChatResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -163,7 +163,7 @@ func (client GenerativeAiAgentRuntimeClient) chat(ctx context.Context, request c
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiagentruntime/CreateSession.go.html to see an example of how to use CreateSession API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiagentruntime/CreateSession.go.html to see an example of how to use CreateSession API.
 // A default retry strategy applies to this operation CreateSession()
 func (client GenerativeAiAgentRuntimeClient) CreateSession(ctx context.Context, request CreateSessionRequest) (response CreateSessionResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -226,7 +226,7 @@ func (client GenerativeAiAgentRuntimeClient) createSession(ctx context.Context, 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiagentruntime/DeleteSession.go.html to see an example of how to use DeleteSession API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiagentruntime/DeleteSession.go.html to see an example of how to use DeleteSession API.
 // A default retry strategy applies to this operation DeleteSession()
 func (client GenerativeAiAgentRuntimeClient) DeleteSession(ctx context.Context, request DeleteSessionRequest) (response DeleteSessionResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -284,7 +284,7 @@ func (client GenerativeAiAgentRuntimeClient) deleteSession(ctx context.Context, 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiagentruntime/GetSession.go.html to see an example of how to use GetSession API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiagentruntime/GetSession.go.html to see an example of how to use GetSession API.
 // A default retry strategy applies to this operation GetSession()
 func (client GenerativeAiAgentRuntimeClient) GetSession(ctx context.Context, request GetSessionRequest) (response GetSessionResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -342,7 +342,7 @@ func (client GenerativeAiAgentRuntimeClient) getSession(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiagentruntime/UpdateSession.go.html to see an example of how to use UpdateSession API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiagentruntime/UpdateSession.go.html to see an example of how to use UpdateSession API.
 // A default retry strategy applies to this operation UpdateSession()
 func (client GenerativeAiAgentRuntimeClient) UpdateSession(ctx context.Context, request UpdateSessionRequest) (response UpdateSessionResponse, err error) {
 	var ociResponse common.OCIResponse

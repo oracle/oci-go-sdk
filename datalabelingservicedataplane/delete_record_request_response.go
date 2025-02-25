@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/DeleteRecord.go.html to see an example of how to use DeleteRecordRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/DeleteRecord.go.html to see an example of how to use DeleteRecordRequest.
 type DeleteRecordRequest struct {
 
 	// The OCID of the record annotated.

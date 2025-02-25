@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RequestBundleRoverCluster.go.html to see an example of how to use RequestBundleRoverClusterRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RequestBundleRoverCluster.go.html to see an example of how to use RequestBundleRoverClusterRequest.
 type RequestBundleRoverClusterRequest struct {
 
 	// Request the rover bundle details.

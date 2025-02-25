@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/Chat.go.html to see an example of how to use ChatRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/Chat.go.html to see an example of how to use ChatRequest.
 type ChatRequest struct {
 
 	// Details of the conversation for the model to respond.

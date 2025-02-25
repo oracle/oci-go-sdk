@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ChangeTransferJobCompartment.go.html to see an example of how to use ChangeTransferJobCompartmentRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ChangeTransferJobCompartment.go.html to see an example of how to use ChangeTransferJobCompartmentRequest.
 type ChangeTransferJobCompartmentRequest struct {
 
 	// ID of the Transfer Job

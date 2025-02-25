@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ValidateUser.go.html to see an example of how to use ValidateUserRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ValidateUser.go.html to see an example of how to use ValidateUserRequest.
 type ValidateUserRequest struct {
 
 	// The Customer Support Identifier (CSI) number associated with the support account.

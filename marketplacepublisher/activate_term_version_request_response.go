@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ActivateTermVersion.go.html to see an example of how to use ActivateTermVersionRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ActivateTermVersion.go.html to see an example of how to use ActivateTermVersionRequest.
 type ActivateTermVersionRequest struct {
 
 	// term version OCID

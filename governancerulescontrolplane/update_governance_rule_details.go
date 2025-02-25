@@ -27,7 +27,7 @@ type UpdateGovernanceRuleDetails struct {
 
 	Template Template `mandatory:"false" json:"template"`
 
-	// The Oracle ID (OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)) of the resource, which was used as a template to create this governance rule.
+	// The Oracle ID (OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm)) of the resource, which was used as a template to create this governance rule.
 	RelatedResourceId *string `mandatory:"false" json:"relatedResourceId"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.

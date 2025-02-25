@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/UpdateOffer.go.html to see an example of how to use UpdateOfferRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/UpdateOffer.go.html to see an example of how to use UpdateOfferRequest.
 type UpdateOfferRequest struct {
 
 	// unique Offer identifier

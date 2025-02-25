@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/RetryGovernanceRule.go.html to see an example of how to use RetryGovernanceRuleRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/RetryGovernanceRule.go.html to see an example of how to use RetryGovernanceRuleRequest.
 type RetryGovernanceRuleRequest struct {
 
 	// Unique governance rule identifier.

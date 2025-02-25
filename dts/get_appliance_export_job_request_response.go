@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetApplianceExportJob.go.html to see an example of how to use GetApplianceExportJobRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetApplianceExportJob.go.html to see an example of how to use GetApplianceExportJobRequest.
 type GetApplianceExportJobRequest struct {
 
 	// OCID of the Appliance Export Job

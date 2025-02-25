@@ -7,7 +7,7 @@
 // OCI Generative AI is a fully managed service that provides a set of state-of-the-art, customizable large language models (LLMs) that cover a wide range of use cases for text generation, summarization, and text embeddings.
 // Use the Generative AI service inference API to access your custom model endpoints, or to try the out-of-the-box models to /EN/generative-ai-inference/latest/ChatResult/Chat, /EN/generative-ai-inference/latest/GenerateTextResult/GenerateText, /EN/generative-ai-inference/latest/SummarizeTextResult/SummarizeText, and /EN/generative-ai-inference/latest/EmbedTextResult/EmbedText.
 // To use a Generative AI custom model for inference, you must first create an endpoint for that model. Use the /EN/generative-ai/latest/ to /EN/generative-ai/latest/Model/ by fine-tuning an out-of-the-box model, or a previous version of a custom model, using your own data. Fine-tune the custom model on a /EN/generative-ai/latest/DedicatedAiCluster/. Then, create a /EN/generative-ai/latest/DedicatedAiCluster/ with an Endpoint to host your custom model. For resource management in the Generative AI service, use the /EN/generative-ai/latest/.
-// To learn more about the service, see the Generative AI documentation (https://docs.cloud.oracle.com/iaas/Content/generative-ai/home.htm).
+// To learn more about the service, see the Generative AI documentation (https://docs.oracle.com/iaas/Content/generative-ai/home.htm).
 //
 
 package generativeaiinference
@@ -98,7 +98,7 @@ func (client *GenerativeAiInferenceClient) ConfigurationProvider() *common.Confi
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/Chat.go.html to see an example of how to use Chat API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/Chat.go.html to see an example of how to use Chat API.
 // A default retry strategy applies to this operation Chat()
 func (client GenerativeAiInferenceClient) Chat(ctx context.Context, request ChatRequest) (response ChatResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -162,7 +162,7 @@ func (client GenerativeAiInferenceClient) chat(ctx context.Context, request comm
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/EmbedText.go.html to see an example of how to use EmbedText API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/EmbedText.go.html to see an example of how to use EmbedText API.
 // A default retry strategy applies to this operation EmbedText()
 func (client GenerativeAiInferenceClient) EmbedText(ctx context.Context, request EmbedTextRequest) (response EmbedTextResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -225,7 +225,7 @@ func (client GenerativeAiInferenceClient) embedText(ctx context.Context, request
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/GenerateText.go.html to see an example of how to use GenerateText API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/GenerateText.go.html to see an example of how to use GenerateText API.
 // A default retry strategy applies to this operation GenerateText()
 func (client GenerativeAiInferenceClient) GenerateText(ctx context.Context, request GenerateTextRequest) (response GenerateTextResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -289,7 +289,7 @@ func (client GenerativeAiInferenceClient) generateText(ctx context.Context, requ
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/RerankText.go.html to see an example of how to use RerankText API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/RerankText.go.html to see an example of how to use RerankText API.
 // A default retry strategy applies to this operation RerankText()
 func (client GenerativeAiInferenceClient) RerankText(ctx context.Context, request RerankTextRequest) (response RerankTextResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -352,7 +352,7 @@ func (client GenerativeAiInferenceClient) rerankText(ctx context.Context, reques
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/SummarizeText.go.html to see an example of how to use SummarizeText API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/SummarizeText.go.html to see an example of how to use SummarizeText API.
 // A default retry strategy applies to this operation SummarizeText()
 func (client GenerativeAiInferenceClient) SummarizeText(ctx context.Context, request SummarizeTextRequest) (response SummarizeTextResponse, err error) {
 	var ociResponse common.OCIResponse

@@ -95,7 +95,7 @@ func (client *GovernanceRuleClient) ConfigurationProvider() *common.Configuratio
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/CreateGovernanceRule.go.html to see an example of how to use CreateGovernanceRule API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/CreateGovernanceRule.go.html to see an example of how to use CreateGovernanceRule API.
 func (client GovernanceRuleClient) CreateGovernanceRule(ctx context.Context, request CreateGovernanceRuleRequest) (response CreateGovernanceRuleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -157,7 +157,7 @@ func (client GovernanceRuleClient) createGovernanceRule(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/CreateInclusionCriterion.go.html to see an example of how to use CreateInclusionCriterion API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/CreateInclusionCriterion.go.html to see an example of how to use CreateInclusionCriterion API.
 func (client GovernanceRuleClient) CreateInclusionCriterion(ctx context.Context, request CreateInclusionCriterionRequest) (response CreateInclusionCriterionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -219,7 +219,7 @@ func (client GovernanceRuleClient) createInclusionCriterion(ctx context.Context,
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/DeleteGovernanceRule.go.html to see an example of how to use DeleteGovernanceRule API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/DeleteGovernanceRule.go.html to see an example of how to use DeleteGovernanceRule API.
 func (client GovernanceRuleClient) DeleteGovernanceRule(ctx context.Context, request DeleteGovernanceRuleRequest) (response DeleteGovernanceRuleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -276,7 +276,7 @@ func (client GovernanceRuleClient) deleteGovernanceRule(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/DeleteInclusionCriterion.go.html to see an example of how to use DeleteInclusionCriterion API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/DeleteInclusionCriterion.go.html to see an example of how to use DeleteInclusionCriterion API.
 func (client GovernanceRuleClient) DeleteInclusionCriterion(ctx context.Context, request DeleteInclusionCriterionRequest) (response DeleteInclusionCriterionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -333,7 +333,7 @@ func (client GovernanceRuleClient) deleteInclusionCriterion(ctx context.Context,
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetEnforcedGovernanceRule.go.html to see an example of how to use GetEnforcedGovernanceRule API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetEnforcedGovernanceRule.go.html to see an example of how to use GetEnforcedGovernanceRule API.
 func (client GovernanceRuleClient) GetEnforcedGovernanceRule(ctx context.Context, request GetEnforcedGovernanceRuleRequest) (response GetEnforcedGovernanceRuleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -390,7 +390,7 @@ func (client GovernanceRuleClient) getEnforcedGovernanceRule(ctx context.Context
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetGovernanceRule.go.html to see an example of how to use GetGovernanceRule API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetGovernanceRule.go.html to see an example of how to use GetGovernanceRule API.
 func (client GovernanceRuleClient) GetGovernanceRule(ctx context.Context, request GetGovernanceRuleRequest) (response GetGovernanceRuleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -447,7 +447,7 @@ func (client GovernanceRuleClient) getGovernanceRule(ctx context.Context, reques
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetInclusionCriterion.go.html to see an example of how to use GetInclusionCriterion API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetInclusionCriterion.go.html to see an example of how to use GetInclusionCriterion API.
 func (client GovernanceRuleClient) GetInclusionCriterion(ctx context.Context, request GetInclusionCriterionRequest) (response GetInclusionCriterionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -504,7 +504,7 @@ func (client GovernanceRuleClient) getInclusionCriterion(ctx context.Context, re
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetTenancyAttachment.go.html to see an example of how to use GetTenancyAttachment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetTenancyAttachment.go.html to see an example of how to use GetTenancyAttachment API.
 func (client GovernanceRuleClient) GetTenancyAttachment(ctx context.Context, request GetTenancyAttachmentRequest) (response GetTenancyAttachmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -562,7 +562,7 @@ func (client GovernanceRuleClient) getTenancyAttachment(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/ListEnforcedGovernanceRules.go.html to see an example of how to use ListEnforcedGovernanceRules API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/ListEnforcedGovernanceRules.go.html to see an example of how to use ListEnforcedGovernanceRules API.
 func (client GovernanceRuleClient) ListEnforcedGovernanceRules(ctx context.Context, request ListEnforcedGovernanceRulesRequest) (response ListEnforcedGovernanceRulesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -620,7 +620,7 @@ func (client GovernanceRuleClient) listEnforcedGovernanceRules(ctx context.Conte
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/ListGovernanceRules.go.html to see an example of how to use ListGovernanceRules API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/ListGovernanceRules.go.html to see an example of how to use ListGovernanceRules API.
 func (client GovernanceRuleClient) ListGovernanceRules(ctx context.Context, request ListGovernanceRulesRequest) (response ListGovernanceRulesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -678,7 +678,7 @@ func (client GovernanceRuleClient) listGovernanceRules(ctx context.Context, requ
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/ListInclusionCriteria.go.html to see an example of how to use ListInclusionCriteria API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/ListInclusionCriteria.go.html to see an example of how to use ListInclusionCriteria API.
 func (client GovernanceRuleClient) ListInclusionCriteria(ctx context.Context, request ListInclusionCriteriaRequest) (response ListInclusionCriteriaResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -736,7 +736,7 @@ func (client GovernanceRuleClient) listInclusionCriteria(ctx context.Context, re
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/ListTenancyAttachments.go.html to see an example of how to use ListTenancyAttachments API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/ListTenancyAttachments.go.html to see an example of how to use ListTenancyAttachments API.
 func (client GovernanceRuleClient) ListTenancyAttachments(ctx context.Context, request ListTenancyAttachmentsRequest) (response ListTenancyAttachmentsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -795,7 +795,7 @@ func (client GovernanceRuleClient) listTenancyAttachments(ctx context.Context, r
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/RetryGovernanceRule.go.html to see an example of how to use RetryGovernanceRule API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/RetryGovernanceRule.go.html to see an example of how to use RetryGovernanceRule API.
 func (client GovernanceRuleClient) RetryGovernanceRule(ctx context.Context, request RetryGovernanceRuleRequest) (response RetryGovernanceRuleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -858,7 +858,7 @@ func (client GovernanceRuleClient) retryGovernanceRule(ctx context.Context, requ
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/RetryTenancyAttachment.go.html to see an example of how to use RetryTenancyAttachment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/RetryTenancyAttachment.go.html to see an example of how to use RetryTenancyAttachment API.
 func (client GovernanceRuleClient) RetryTenancyAttachment(ctx context.Context, request RetryTenancyAttachmentRequest) (response RetryTenancyAttachmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -920,7 +920,7 @@ func (client GovernanceRuleClient) retryTenancyAttachment(ctx context.Context, r
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/UpdateGovernanceRule.go.html to see an example of how to use UpdateGovernanceRule API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/UpdateGovernanceRule.go.html to see an example of how to use UpdateGovernanceRule API.
 func (client GovernanceRuleClient) UpdateGovernanceRule(ctx context.Context, request UpdateGovernanceRuleRequest) (response UpdateGovernanceRuleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

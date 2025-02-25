@@ -95,7 +95,7 @@ func (client *RoverNodeClient) ConfigurationProvider() *common.ConfigurationProv
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ChangeRoverNodeCompartment.go.html to see an example of how to use ChangeRoverNodeCompartment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ChangeRoverNodeCompartment.go.html to see an example of how to use ChangeRoverNodeCompartment API.
 // A default retry strategy applies to this operation ChangeRoverNodeCompartment()
 func (client RoverNodeClient) ChangeRoverNodeCompartment(ctx context.Context, request ChangeRoverNodeCompartmentRequest) (response ChangeRoverNodeCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -158,7 +158,7 @@ func (client RoverNodeClient) changeRoverNodeCompartment(ctx context.Context, re
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/CreateRoverNode.go.html to see an example of how to use CreateRoverNode API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/CreateRoverNode.go.html to see an example of how to use CreateRoverNode API.
 // A default retry strategy applies to this operation CreateRoverNode()
 func (client RoverNodeClient) CreateRoverNode(ctx context.Context, request CreateRoverNodeRequest) (response CreateRoverNodeResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -221,7 +221,7 @@ func (client RoverNodeClient) createRoverNode(ctx context.Context, request commo
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/DeleteRoverNode.go.html to see an example of how to use DeleteRoverNode API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/DeleteRoverNode.go.html to see an example of how to use DeleteRoverNode API.
 // A default retry strategy applies to this operation DeleteRoverNode()
 func (client RoverNodeClient) DeleteRoverNode(ctx context.Context, request DeleteRoverNodeRequest) (response DeleteRoverNodeResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -284,7 +284,7 @@ func (client RoverNodeClient) deleteRoverNode(ctx context.Context, request commo
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverNode.go.html to see an example of how to use GetRoverNode API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverNode.go.html to see an example of how to use GetRoverNode API.
 // A default retry strategy applies to this operation GetRoverNode()
 func (client RoverNodeClient) GetRoverNode(ctx context.Context, request GetRoverNodeRequest) (response GetRoverNodeResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -342,7 +342,7 @@ func (client RoverNodeClient) getRoverNode(ctx context.Context, request common.O
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverNodeCertificate.go.html to see an example of how to use GetRoverNodeCertificate API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverNodeCertificate.go.html to see an example of how to use GetRoverNodeCertificate API.
 // A default retry strategy applies to this operation GetRoverNodeCertificate()
 func (client RoverNodeClient) GetRoverNodeCertificate(ctx context.Context, request GetRoverNodeCertificateRequest) (response GetRoverNodeCertificateResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -400,7 +400,7 @@ func (client RoverNodeClient) getRoverNodeCertificate(ctx context.Context, reque
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverNodeEncryptionKey.go.html to see an example of how to use GetRoverNodeEncryptionKey API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverNodeEncryptionKey.go.html to see an example of how to use GetRoverNodeEncryptionKey API.
 // A default retry strategy applies to this operation GetRoverNodeEncryptionKey()
 func (client RoverNodeClient) GetRoverNodeEncryptionKey(ctx context.Context, request GetRoverNodeEncryptionKeyRequest) (response GetRoverNodeEncryptionKeyResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -458,7 +458,7 @@ func (client RoverNodeClient) getRoverNodeEncryptionKey(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverNodeGetRpt.go.html to see an example of how to use GetRoverNodeGetRpt API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverNodeGetRpt.go.html to see an example of how to use GetRoverNodeGetRpt API.
 // A default retry strategy applies to this operation GetRoverNodeGetRpt()
 func (client RoverNodeClient) GetRoverNodeGetRpt(ctx context.Context, request GetRoverNodeGetRptRequest) (response GetRoverNodeGetRptResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -516,7 +516,7 @@ func (client RoverNodeClient) getRoverNodeGetRpt(ctx context.Context, request co
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ListRoverNodes.go.html to see an example of how to use ListRoverNodes API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ListRoverNodes.go.html to see an example of how to use ListRoverNodes API.
 // A default retry strategy applies to this operation ListRoverNodes()
 func (client RoverNodeClient) ListRoverNodes(ctx context.Context, request ListRoverNodesRequest) (response ListRoverNodesResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -574,7 +574,7 @@ func (client RoverNodeClient) listRoverNodes(ctx context.Context, request common
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeActionRetrieveCaBundle.go.html to see an example of how to use RoverNodeActionRetrieveCaBundle API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeActionRetrieveCaBundle.go.html to see an example of how to use RoverNodeActionRetrieveCaBundle API.
 // A default retry strategy applies to this operation RoverNodeActionRetrieveCaBundle()
 func (client RoverNodeClient) RoverNodeActionRetrieveCaBundle(ctx context.Context, request RoverNodeActionRetrieveCaBundleRequest) (response RoverNodeActionRetrieveCaBundleResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -637,7 +637,7 @@ func (client RoverNodeClient) roverNodeActionRetrieveCaBundle(ctx context.Contex
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeActionSetKey.go.html to see an example of how to use RoverNodeActionSetKey API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeActionSetKey.go.html to see an example of how to use RoverNodeActionSetKey API.
 // A default retry strategy applies to this operation RoverNodeActionSetKey()
 func (client RoverNodeClient) RoverNodeActionSetKey(ctx context.Context, request RoverNodeActionSetKeyRequest) (response RoverNodeActionSetKeyResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -700,7 +700,7 @@ func (client RoverNodeClient) roverNodeActionSetKey(ctx context.Context, request
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeGenerateCertificate.go.html to see an example of how to use RoverNodeGenerateCertificate API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeGenerateCertificate.go.html to see an example of how to use RoverNodeGenerateCertificate API.
 // A default retry strategy applies to this operation RoverNodeGenerateCertificate()
 func (client RoverNodeClient) RoverNodeGenerateCertificate(ctx context.Context, request RoverNodeGenerateCertificateRequest) (response RoverNodeGenerateCertificateResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -763,7 +763,7 @@ func (client RoverNodeClient) roverNodeGenerateCertificate(ctx context.Context, 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeRenewCertificate.go.html to see an example of how to use RoverNodeRenewCertificate API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeRenewCertificate.go.html to see an example of how to use RoverNodeRenewCertificate API.
 // A default retry strategy applies to this operation RoverNodeRenewCertificate()
 func (client RoverNodeClient) RoverNodeRenewCertificate(ctx context.Context, request RoverNodeRenewCertificateRequest) (response RoverNodeRenewCertificateResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -826,7 +826,7 @@ func (client RoverNodeClient) roverNodeRenewCertificate(ctx context.Context, req
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeReplaceCertificateAuthority.go.html to see an example of how to use RoverNodeReplaceCertificateAuthority API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeReplaceCertificateAuthority.go.html to see an example of how to use RoverNodeReplaceCertificateAuthority API.
 // A default retry strategy applies to this operation RoverNodeReplaceCertificateAuthority()
 func (client RoverNodeClient) RoverNodeReplaceCertificateAuthority(ctx context.Context, request RoverNodeReplaceCertificateAuthorityRequest) (response RoverNodeReplaceCertificateAuthorityResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -889,7 +889,7 @@ func (client RoverNodeClient) roverNodeReplaceCertificateAuthority(ctx context.C
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeRetrieveLeafCertificate.go.html to see an example of how to use RoverNodeRetrieveLeafCertificate API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeRetrieveLeafCertificate.go.html to see an example of how to use RoverNodeRetrieveLeafCertificate API.
 // A default retry strategy applies to this operation RoverNodeRetrieveLeafCertificate()
 func (client RoverNodeClient) RoverNodeRetrieveLeafCertificate(ctx context.Context, request RoverNodeRetrieveLeafCertificateRequest) (response RoverNodeRetrieveLeafCertificateResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -952,7 +952,7 @@ func (client RoverNodeClient) roverNodeRetrieveLeafCertificate(ctx context.Conte
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/UpdateRoverNode.go.html to see an example of how to use UpdateRoverNode API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/UpdateRoverNode.go.html to see an example of how to use UpdateRoverNode API.
 // A default retry strategy applies to this operation UpdateRoverNode()
 func (client RoverNodeClient) UpdateRoverNode(ctx context.Context, request UpdateRoverNodeRequest) (response UpdateRoverNodeResponse, err error) {
 	var ociResponse common.OCIResponse

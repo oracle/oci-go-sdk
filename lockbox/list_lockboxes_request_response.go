@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListLockboxes.go.html to see an example of how to use ListLockboxesRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListLockboxes.go.html to see an example of how to use ListLockboxesRequest.
 type ListLockboxesRequest struct {
 
 	// The ID of the compartment in which to list resources.

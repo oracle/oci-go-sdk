@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/CreateTranscriptionJob.go.html to see an example of how to use CreateTranscriptionJobRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/aispeech/CreateTranscriptionJob.go.html to see an example of how to use CreateTranscriptionJobRequest.
 type CreateTranscriptionJobRequest struct {
 
 	// Details for the new Transcription Job.
