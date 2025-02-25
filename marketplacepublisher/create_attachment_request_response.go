@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateAttachment.go.html to see an example of how to use CreateAttachmentRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateAttachment.go.html to see an example of how to use CreateAttachmentRequest.
 type CreateAttachmentRequest struct {
 
 	// Details for the new Attachment.

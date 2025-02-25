@@ -21,7 +21,7 @@ type CustomizationInferenceEntity struct {
 	// Entity type
 	EntityType *string `mandatory:"false" json:"entityType"`
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the customization to use.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the customization to use.
 	CustomizationId *string `mandatory:"false" json:"customizationId"`
 
 	// Alias of the customization

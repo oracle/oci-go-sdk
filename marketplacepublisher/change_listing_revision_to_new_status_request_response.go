@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ChangeListingRevisionToNewStatus.go.html to see an example of how to use ChangeListingRevisionToNewStatusRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ChangeListingRevisionToNewStatus.go.html to see an example of how to use ChangeListingRevisionToNewStatusRequest.
 type ChangeListingRevisionToNewStatusRequest struct {
 
 	// listing revision

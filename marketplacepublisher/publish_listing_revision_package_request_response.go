@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/PublishListingRevisionPackage.go.html to see an example of how to use PublishListingRevisionPackageRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/PublishListingRevisionPackage.go.html to see an example of how to use PublishListingRevisionPackageRequest.
 type PublishListingRevisionPackageRequest struct {
 
 	// Unique listing revision package identifier.

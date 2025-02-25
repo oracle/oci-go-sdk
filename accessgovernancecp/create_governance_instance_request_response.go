@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/CreateGovernanceInstance.go.html to see an example of how to use CreateGovernanceInstanceRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/CreateGovernanceInstance.go.html to see an example of how to use CreateGovernanceInstanceRequest.
 type CreateGovernanceInstanceRequest struct {
 
 	// The details of a new GovernanceInstance.

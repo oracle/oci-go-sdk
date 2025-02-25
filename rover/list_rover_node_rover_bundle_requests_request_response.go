@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ListRoverNodeRoverBundleRequests.go.html to see an example of how to use ListRoverNodeRoverBundleRequestsRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ListRoverNodeRoverBundleRequests.go.html to see an example of how to use ListRoverNodeRoverBundleRequestsRequest.
 type ListRoverNodeRoverBundleRequestsRequest struct {
 
 	// Unique RoverNode identifier

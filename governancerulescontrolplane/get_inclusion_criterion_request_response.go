@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetInclusionCriterion.go.html to see an example of how to use GetInclusionCriterionRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetInclusionCriterion.go.html to see an example of how to use GetInclusionCriterionRequest.
 type GetInclusionCriterionRequest struct {
 
 	// Unique inclusion criterion identifier.

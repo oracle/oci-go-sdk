@@ -95,7 +95,7 @@ func (client *RoverEntitlementClient) ConfigurationProvider() *common.Configurat
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ChangeRoverEntitlementCompartment.go.html to see an example of how to use ChangeRoverEntitlementCompartment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ChangeRoverEntitlementCompartment.go.html to see an example of how to use ChangeRoverEntitlementCompartment API.
 // A default retry strategy applies to this operation ChangeRoverEntitlementCompartment()
 func (client RoverEntitlementClient) ChangeRoverEntitlementCompartment(ctx context.Context, request ChangeRoverEntitlementCompartmentRequest) (response ChangeRoverEntitlementCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -158,7 +158,7 @@ func (client RoverEntitlementClient) changeRoverEntitlementCompartment(ctx conte
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/CreateRoverEntitlement.go.html to see an example of how to use CreateRoverEntitlement API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/CreateRoverEntitlement.go.html to see an example of how to use CreateRoverEntitlement API.
 // A default retry strategy applies to this operation CreateRoverEntitlement()
 func (client RoverEntitlementClient) CreateRoverEntitlement(ctx context.Context, request CreateRoverEntitlementRequest) (response CreateRoverEntitlementResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -221,7 +221,7 @@ func (client RoverEntitlementClient) createRoverEntitlement(ctx context.Context,
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/DeleteRoverEntitlement.go.html to see an example of how to use DeleteRoverEntitlement API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/DeleteRoverEntitlement.go.html to see an example of how to use DeleteRoverEntitlement API.
 // A default retry strategy applies to this operation DeleteRoverEntitlement()
 func (client RoverEntitlementClient) DeleteRoverEntitlement(ctx context.Context, request DeleteRoverEntitlementRequest) (response DeleteRoverEntitlementResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -284,7 +284,7 @@ func (client RoverEntitlementClient) deleteRoverEntitlement(ctx context.Context,
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverEntitlement.go.html to see an example of how to use GetRoverEntitlement API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverEntitlement.go.html to see an example of how to use GetRoverEntitlement API.
 // A default retry strategy applies to this operation GetRoverEntitlement()
 func (client RoverEntitlementClient) GetRoverEntitlement(ctx context.Context, request GetRoverEntitlementRequest) (response GetRoverEntitlementResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -347,7 +347,7 @@ func (client RoverEntitlementClient) getRoverEntitlement(ctx context.Context, re
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ListRoverEntitlements.go.html to see an example of how to use ListRoverEntitlements API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ListRoverEntitlements.go.html to see an example of how to use ListRoverEntitlements API.
 // A default retry strategy applies to this operation ListRoverEntitlements()
 func (client RoverEntitlementClient) ListRoverEntitlements(ctx context.Context, request ListRoverEntitlementsRequest) (response ListRoverEntitlementsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -405,7 +405,7 @@ func (client RoverEntitlementClient) listRoverEntitlements(ctx context.Context, 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/UpdateRoverEntitlement.go.html to see an example of how to use UpdateRoverEntitlement API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/UpdateRoverEntitlement.go.html to see an example of how to use UpdateRoverEntitlement API.
 // A default retry strategy applies to this operation UpdateRoverEntitlement()
 func (client RoverEntitlementClient) UpdateRoverEntitlement(ctx context.Context, request UpdateRoverEntitlementRequest) (response UpdateRoverEntitlementResponse, err error) {
 	var ociResponse common.OCIResponse

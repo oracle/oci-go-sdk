@@ -8,7 +8,7 @@
 // OCI Generative AI Agents supports several ways to onboard your data and then allows you and your customers to interact with your data using a chat interface or API.
 // Use the Generative AI Agents Client API to create and manage client chat sessions. A session represents an interactive conversation initiated by a user through an API to engage with an agent. It involves a series of exchanges where the user sends queries or prompts, and the agent responds with relevant information, actions, or assistance based on the user's input. The session persists for the duration of the interaction, maintaining context and continuity to provide coherent and meaningful responses throughout the conversation.
 // For creating and managing agents, knowledge bases, data sources, endpoints, and data ingestion jobs see the /EN/generative-ai-agents/latest/.
-// To learn more about the service, see the Generative AI Agents documentation (https://docs.cloud.oracle.com/iaas/Content/generative-ai-agents/home.htm).
+// To learn more about the service, see the Generative AI Agents documentation (https://docs.oracle.com/iaas/Content/generative-ai-agents/home.htm).
 //
 
 package generativeaiagentruntime
@@ -23,7 +23,7 @@ import (
 // OciDatabaseSourceLocation The location of the OCI Database that the agent will use.
 type OciDatabaseSourceLocation struct {
 
-	// The OCID of the OCI Database Tools Connection (https://docs.cloud.oracle.com/iaas/database-tools/home.htm).
+	// The OCID of the OCI Database Tools Connection (https://docs.oracle.com/iaas/database-tools/home.htm).
 	Id *string `mandatory:"false" json:"id"`
 
 	// The name of the function that returns source text.

@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UnPublishListingRevisionPackage.go.html to see an example of how to use UnPublishListingRevisionPackageRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UnPublishListingRevisionPackage.go.html to see an example of how to use UnPublishListingRevisionPackageRequest.
 type UnPublishListingRevisionPackageRequest struct {
 
 	// Unique listing revision package identifier.

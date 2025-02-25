@@ -28,7 +28,7 @@ func ExampleClusterCRUD() {
 	// create network resources for cluster.
 	// this sample is to demonstrate how to use cluster APIs
 	// for more configuration setup, please refer to the link here:
-	// https://docs.cloud.oracle.com/Content/ContEng/Concepts/contengnetworkconfig.htm
+	// https://docs.oracle.com/iaas/Content/ContEng/Concepts/contengnetworkconfig.htm
 	vcnID, subnet1ID, _ := createVCNWithSubnets(ctx)
 
 	defaulKubetVersion := getDefaultKubernetesVersion(c)
@@ -42,7 +42,7 @@ func ExampleClusterCRUD() {
 	updateReq := containerengine.UpdateClusterRequest{}
 
 	// please see the document here for actionType values:
-	// https://docs.cloud.oracle.com/api/#/en/containerengine/20180222/datatypes/WorkRequestResource
+	// https://docs.oracle.com/iaas/api/#/en/containerengine/20180222/datatypes/WorkRequestResource
 	clusterID := getResourceID(workReqResp.Resources, containerengine.WorkRequestResourceActionTypeCreated, "CLUSTER")
 	updateReq.ClusterId = clusterID
 	defer deleteCluster(ctx, c, clusterID)

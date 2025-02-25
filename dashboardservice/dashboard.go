@@ -6,7 +6,7 @@
 //
 // Use the Oracle Cloud Infrastructure Dashboards service API to manage dashboards in the Console.
 // Dashboards provide an organized and customizable view of resources and their metrics in the Console.
-// For more information, see Dashboards (https://docs.cloud.oracle.com/Content/Dashboards/home.htm).
+// For more information, see Dashboards (https://docs.oracle.com/iaas/Content/Dashboards/home.htm).
 // **Important:** Resources for the Dashboards service are created in the tenacy's home region.
 // Although it is possible to create dashboard and dashboard group resources in regions other than the home region,
 // you won't be able to view those resources in the Console.
@@ -26,10 +26,10 @@ import (
 // Derived schemas have configurations and widgets specific to the  `schemaVersion`.
 type Dashboard interface {
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the dashboard resource.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the dashboard resource.
 	GetId() *string
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the dashboard group that the dashboard belongs to.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the dashboard group that the dashboard belongs to.
 	GetDashboardGroupId() *string
 
 	// A user-friendly name for the dashboard. Does not have to be unique, and it can be changed. Avoid entering confidential information.
@@ -40,7 +40,7 @@ type Dashboard interface {
 	// The following special characters are not allowed: <>()=/'"&\
 	GetDescription() *string
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment containing the dashboard. A dashboard is always in the same compartment as its dashboard group.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment containing the dashboard. A dashboard is always in the same compartment as its dashboard group.
 	GetCompartmentId() *string
 
 	// The date and time the dashboard was created, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
@@ -124,7 +124,7 @@ func (m *dashboard) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:
-		common.Logf("Recieved unsupported enum value for Dashboard: %s.", m.SchemaVersion)
+		common.Logf("Received unsupported enum value for Dashboard: %s.", m.SchemaVersion)
 		return *m, nil
 	}
 }

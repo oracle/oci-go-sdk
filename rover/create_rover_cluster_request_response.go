@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/CreateRoverCluster.go.html to see an example of how to use CreateRoverClusterRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/CreateRoverCluster.go.html to see an example of how to use CreateRoverClusterRequest.
 type CreateRoverClusterRequest struct {
 
 	// Details for the new RoverCluster.

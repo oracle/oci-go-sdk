@@ -95,7 +95,7 @@ func (client *AttachmentClient) ConfigurationProvider() *common.ConfigurationPro
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateAttachment.go.html to see an example of how to use CreateAttachment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreateAttachment.go.html to see an example of how to use CreateAttachment API.
 // A default retry strategy applies to this operation CreateAttachment()
 func (client AttachmentClient) CreateAttachment(ctx context.Context, request CreateAttachmentRequest) (response CreateAttachmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -158,7 +158,7 @@ func (client AttachmentClient) createAttachment(ctx context.Context, request com
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteAttachment.go.html to see an example of how to use DeleteAttachment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteAttachment.go.html to see an example of how to use DeleteAttachment API.
 // A default retry strategy applies to this operation DeleteAttachment()
 func (client AttachmentClient) DeleteAttachment(ctx context.Context, request DeleteAttachmentRequest) (response DeleteAttachmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -216,7 +216,7 @@ func (client AttachmentClient) deleteAttachment(ctx context.Context, request com
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetAttachment.go.html to see an example of how to use GetAttachment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetAttachment.go.html to see an example of how to use GetAttachment API.
 // A default retry strategy applies to this operation GetAttachment()
 func (client AttachmentClient) GetAttachment(ctx context.Context, request GetAttachmentRequest) (response GetAttachmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -274,7 +274,7 @@ func (client AttachmentClient) getAttachment(ctx context.Context, request common
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetAttachmentContent.go.html to see an example of how to use GetAttachmentContent API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetAttachmentContent.go.html to see an example of how to use GetAttachmentContent API.
 // A default retry strategy applies to this operation GetAttachmentContent()
 func (client AttachmentClient) GetAttachmentContent(ctx context.Context, request GetAttachmentContentRequest) (response GetAttachmentContentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -331,7 +331,7 @@ func (client AttachmentClient) getAttachmentContent(ctx context.Context, request
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListAttachments.go.html to see an example of how to use ListAttachments API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListAttachments.go.html to see an example of how to use ListAttachments API.
 // A default retry strategy applies to this operation ListAttachments()
 func (client AttachmentClient) ListAttachments(ctx context.Context, request ListAttachmentsRequest) (response ListAttachmentsResponse, err error) {
 	var ociResponse common.OCIResponse

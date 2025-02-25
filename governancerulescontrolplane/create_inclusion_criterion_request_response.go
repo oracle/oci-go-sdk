@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/CreateInclusionCriterion.go.html to see an example of how to use CreateInclusionCriterionRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/CreateInclusionCriterion.go.html to see an example of how to use CreateInclusionCriterionRequest.
 type CreateInclusionCriterionRequest struct {
 
 	// Details to create a new inclusion criterion.

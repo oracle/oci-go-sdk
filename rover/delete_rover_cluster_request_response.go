@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/DeleteRoverCluster.go.html to see an example of how to use DeleteRoverClusterRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/DeleteRoverCluster.go.html to see an example of how to use DeleteRoverClusterRequest.
 type DeleteRoverClusterRequest struct {
 
 	// Unique RoverCluster identifier

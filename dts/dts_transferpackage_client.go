@@ -95,7 +95,7 @@ func (client *TransferPackageClient) ConfigurationProvider() *common.Configurati
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/AttachDevicesToTransferPackage.go.html to see an example of how to use AttachDevicesToTransferPackage API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/AttachDevicesToTransferPackage.go.html to see an example of how to use AttachDevicesToTransferPackage API.
 func (client TransferPackageClient) AttachDevicesToTransferPackage(ctx context.Context, request AttachDevicesToTransferPackageRequest) (response AttachDevicesToTransferPackageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -157,7 +157,7 @@ func (client TransferPackageClient) attachDevicesToTransferPackage(ctx context.C
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/CreateTransferPackage.go.html to see an example of how to use CreateTransferPackage API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/CreateTransferPackage.go.html to see an example of how to use CreateTransferPackage API.
 func (client TransferPackageClient) CreateTransferPackage(ctx context.Context, request CreateTransferPackageRequest) (response CreateTransferPackageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -219,7 +219,7 @@ func (client TransferPackageClient) createTransferPackage(ctx context.Context, r
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DeleteTransferPackage.go.html to see an example of how to use DeleteTransferPackage API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DeleteTransferPackage.go.html to see an example of how to use DeleteTransferPackage API.
 func (client TransferPackageClient) DeleteTransferPackage(ctx context.Context, request DeleteTransferPackageRequest) (response DeleteTransferPackageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -281,7 +281,7 @@ func (client TransferPackageClient) deleteTransferPackage(ctx context.Context, r
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DetachDevicesFromTransferPackage.go.html to see an example of how to use DetachDevicesFromTransferPackage API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DetachDevicesFromTransferPackage.go.html to see an example of how to use DetachDevicesFromTransferPackage API.
 func (client TransferPackageClient) DetachDevicesFromTransferPackage(ctx context.Context, request DetachDevicesFromTransferPackageRequest) (response DetachDevicesFromTransferPackageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -343,7 +343,7 @@ func (client TransferPackageClient) detachDevicesFromTransferPackage(ctx context
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferPackage.go.html to see an example of how to use GetTransferPackage API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferPackage.go.html to see an example of how to use GetTransferPackage API.
 func (client TransferPackageClient) GetTransferPackage(ctx context.Context, request GetTransferPackageRequest) (response GetTransferPackageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -400,7 +400,7 @@ func (client TransferPackageClient) getTransferPackage(ctx context.Context, requ
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListTransferPackages.go.html to see an example of how to use ListTransferPackages API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListTransferPackages.go.html to see an example of how to use ListTransferPackages API.
 func (client TransferPackageClient) ListTransferPackages(ctx context.Context, request ListTransferPackagesRequest) (response ListTransferPackagesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -457,7 +457,7 @@ func (client TransferPackageClient) listTransferPackages(ctx context.Context, re
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/UpdateTransferPackage.go.html to see an example of how to use UpdateTransferPackage API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/UpdateTransferPackage.go.html to see an example of how to use UpdateTransferPackage API.
 func (client TransferPackageClient) UpdateTransferPackage(ctx context.Context, request UpdateTransferPackageRequest) (response UpdateTransferPackageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiagentruntime/GetSession.go.html to see an example of how to use GetSessionRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiagentruntime/GetSession.go.html to see an example of how to use GetSessionRequest.
 type GetSessionRequest struct {
 
 	// A unique ID for the endpoint.

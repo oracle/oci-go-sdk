@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/emaildataplane/SubmitEmail.go.html to see an example of how to use SubmitEmailRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/emaildataplane/SubmitEmail.go.html to see an example of how to use SubmitEmailRequest.
 type SubmitEmailRequest struct {
 
 	// Parameters for submitEmail API.

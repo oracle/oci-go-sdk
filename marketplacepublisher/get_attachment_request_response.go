@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetAttachment.go.html to see an example of how to use GetAttachmentRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetAttachment.go.html to see an example of how to use GetAttachmentRequest.
 type GetAttachmentRequest struct {
 
 	// unique Offer identifier

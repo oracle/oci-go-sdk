@@ -95,7 +95,7 @@ func (client *ApplianceExportJobClient) ConfigurationProvider() *common.Configur
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ChangeApplianceExportJobCompartment.go.html to see an example of how to use ChangeApplianceExportJobCompartment API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ChangeApplianceExportJobCompartment.go.html to see an example of how to use ChangeApplianceExportJobCompartment API.
 func (client ApplianceExportJobClient) ChangeApplianceExportJobCompartment(ctx context.Context, request ChangeApplianceExportJobCompartmentRequest) (response ChangeApplianceExportJobCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -157,7 +157,7 @@ func (client ApplianceExportJobClient) changeApplianceExportJobCompartment(ctx c
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/CreateApplianceExportJob.go.html to see an example of how to use CreateApplianceExportJob API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/CreateApplianceExportJob.go.html to see an example of how to use CreateApplianceExportJob API.
 func (client ApplianceExportJobClient) CreateApplianceExportJob(ctx context.Context, request CreateApplianceExportJobRequest) (response CreateApplianceExportJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -219,7 +219,7 @@ func (client ApplianceExportJobClient) createApplianceExportJob(ctx context.Cont
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DeleteApplianceExportJob.go.html to see an example of how to use DeleteApplianceExportJob API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DeleteApplianceExportJob.go.html to see an example of how to use DeleteApplianceExportJob API.
 func (client ApplianceExportJobClient) DeleteApplianceExportJob(ctx context.Context, request DeleteApplianceExportJobRequest) (response DeleteApplianceExportJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -281,7 +281,7 @@ func (client ApplianceExportJobClient) deleteApplianceExportJob(ctx context.Cont
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetApplianceExportJob.go.html to see an example of how to use GetApplianceExportJob API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetApplianceExportJob.go.html to see an example of how to use GetApplianceExportJob API.
 func (client ApplianceExportJobClient) GetApplianceExportJob(ctx context.Context, request GetApplianceExportJobRequest) (response GetApplianceExportJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -338,7 +338,7 @@ func (client ApplianceExportJobClient) getApplianceExportJob(ctx context.Context
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListApplianceExportJobs.go.html to see an example of how to use ListApplianceExportJobs API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListApplianceExportJobs.go.html to see an example of how to use ListApplianceExportJobs API.
 func (client ApplianceExportJobClient) ListApplianceExportJobs(ctx context.Context, request ListApplianceExportJobsRequest) (response ListApplianceExportJobsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -395,7 +395,7 @@ func (client ApplianceExportJobClient) listApplianceExportJobs(ctx context.Conte
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/UpdateApplianceExportJob.go.html to see an example of how to use UpdateApplianceExportJob API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/UpdateApplianceExportJob.go.html to see an example of how to use UpdateApplianceExportJob API.
 func (client ApplianceExportJobClient) UpdateApplianceExportJob(ctx context.Context, request UpdateApplianceExportJobRequest) (response UpdateApplianceExportJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

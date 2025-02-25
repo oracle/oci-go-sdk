@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverEntitlement.go.html to see an example of how to use GetRoverEntitlementRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverEntitlement.go.html to see an example of how to use GetRoverEntitlementRequest.
 type GetRoverEntitlementRequest struct {
 
 	// ID of the rover node or cluster entitlement

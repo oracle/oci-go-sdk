@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ChangeRoverNodeCompartment.go.html to see an example of how to use ChangeRoverNodeCompartmentRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ChangeRoverNodeCompartment.go.html to see an example of how to use ChangeRoverNodeCompartmentRequest.
 type ChangeRoverNodeCompartmentRequest struct {
 
 	// Unique RoverNode identifier

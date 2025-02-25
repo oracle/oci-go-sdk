@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/GetGovernanceInstance.go.html to see an example of how to use GetGovernanceInstanceRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/GetGovernanceInstance.go.html to see an example of how to use GetGovernanceInstanceRequest.
 type GetGovernanceInstanceRequest struct {
 
 	// The OCID of the GovernanceInstance

@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeActionSetKey.go.html to see an example of how to use RoverNodeActionSetKeyRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeActionSetKey.go.html to see an example of how to use RoverNodeActionSetKeyRequest.
 type RoverNodeActionSetKeyRequest struct {
 
 	// Unique RoverNode identifier

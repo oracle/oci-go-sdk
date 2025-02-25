@@ -27,7 +27,7 @@ type SynthesizeSpeechDetails struct {
 	// the entire audio is generated.
 	IsStreamEnabled *bool `mandatory:"false" json:"isStreamEnabled"`
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment where the user has access to call `SpeechSynthesize` api. But default user access will be checked at tenancy level.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment where the user has access to call `SpeechSynthesize` api. But default user access will be checked at tenancy level.
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
 	Configuration TtsConfiguration `mandatory:"false" json:"configuration"`

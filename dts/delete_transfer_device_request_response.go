@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DeleteTransferDevice.go.html to see an example of how to use DeleteTransferDeviceRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DeleteTransferDevice.go.html to see an example of how to use DeleteTransferDeviceRequest.
 type DeleteTransferDeviceRequest struct {
 
 	// ID of the Transfer Job

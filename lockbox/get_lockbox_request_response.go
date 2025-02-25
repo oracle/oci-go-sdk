@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetLockbox.go.html to see an example of how to use GetLockboxRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/GetLockbox.go.html to see an example of how to use GetLockboxRequest.
 type GetLockboxRequest struct {
 
 	// unique Lockbox identifier

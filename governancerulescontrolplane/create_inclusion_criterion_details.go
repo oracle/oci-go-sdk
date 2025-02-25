@@ -19,7 +19,7 @@ import (
 // CreateInclusionCriterionDetails Request object for Createinclusion criterion operation.
 type CreateInclusionCriterionDetails struct {
 
-	// The Oracle ID (OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)) of the governance rule. Every inclusion criterion is associated with a governance rule.
+	// The Oracle ID (OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm)) of the governance rule. Every inclusion criterion is associated with a governance rule.
 	GovernanceRuleId *string `mandatory:"true" json:"governanceRuleId"`
 
 	// Type of inclusion criterion - TENANCY, ALL or TAG. We support TENANCY and ALL for now.

@@ -44,7 +44,7 @@ import "github.com/oracle/oci-go-sdk/v49/common"  // or whatever major version y
 To start working with the Go SDK, you import the service package, create a client, and then use that client to make calls.
 
 ### Configuring 
-Before using the SDK, set up a config file with the required credentials. See [SDK and Tool Configuration](https://docs.cloud.oracle.com/Content/API/Concepts/sdkconfig.htm) for instructions.
+Before using the SDK, set up a config file with the required credentials. See [SDK and Tool Configuration](https://docs.oracle.com/iaas/Content/API/Concepts/sdkconfig.htm) for instructions.
 
 Note that the Go SDK does not support profile inheritance or defining custom values in the configuration file.
 

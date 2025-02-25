@@ -63,7 +63,7 @@ func (m *recordmetadata) UnmarshalPolymorphicJSON(data []byte) (interface{}, err
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:
-		common.Logf("Recieved unsupported enum value for RecordMetadata: %s.", m.RecordType)
+		common.Logf("Received unsupported enum value for RecordMetadata: %s.", m.RecordType)
 		return *m, nil
 	}
 }

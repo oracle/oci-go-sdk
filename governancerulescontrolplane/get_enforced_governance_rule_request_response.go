@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetEnforcedGovernanceRule.go.html to see an example of how to use GetEnforcedGovernanceRuleRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/GetEnforcedGovernanceRule.go.html to see an example of how to use GetEnforcedGovernanceRuleRequest.
 type GetEnforcedGovernanceRuleRequest struct {
 
 	// Unique enforced governance rule identifier.

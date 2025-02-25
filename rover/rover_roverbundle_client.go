@@ -95,7 +95,7 @@ func (client *RoverBundleClient) ConfigurationProvider() *common.ConfigurationPr
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ListRoverClusterRoverBundleRequests.go.html to see an example of how to use ListRoverClusterRoverBundleRequests API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ListRoverClusterRoverBundleRequests.go.html to see an example of how to use ListRoverClusterRoverBundleRequests API.
 // A default retry strategy applies to this operation ListRoverClusterRoverBundleRequests()
 func (client RoverBundleClient) ListRoverClusterRoverBundleRequests(ctx context.Context, request ListRoverClusterRoverBundleRequestsRequest) (response ListRoverClusterRoverBundleRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -153,7 +153,7 @@ func (client RoverBundleClient) listRoverClusterRoverBundleRequests(ctx context.
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ListRoverNodeRoverBundleRequests.go.html to see an example of how to use ListRoverNodeRoverBundleRequests API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ListRoverNodeRoverBundleRequests.go.html to see an example of how to use ListRoverNodeRoverBundleRequests API.
 // A default retry strategy applies to this operation ListRoverNodeRoverBundleRequests()
 func (client RoverBundleClient) ListRoverNodeRoverBundleRequests(ctx context.Context, request ListRoverNodeRoverBundleRequestsRequest) (response ListRoverNodeRoverBundleRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -211,7 +211,7 @@ func (client RoverBundleClient) listRoverNodeRoverBundleRequests(ctx context.Con
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RequestBundleRoverCluster.go.html to see an example of how to use RequestBundleRoverCluster API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RequestBundleRoverCluster.go.html to see an example of how to use RequestBundleRoverCluster API.
 // A default retry strategy applies to this operation RequestBundleRoverCluster()
 func (client RoverBundleClient) RequestBundleRoverCluster(ctx context.Context, request RequestBundleRoverClusterRequest) (response RequestBundleRoverClusterResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -269,7 +269,7 @@ func (client RoverBundleClient) requestBundleRoverCluster(ctx context.Context, r
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RequestBundleRoverNode.go.html to see an example of how to use RequestBundleRoverNode API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RequestBundleRoverNode.go.html to see an example of how to use RequestBundleRoverNode API.
 // A default retry strategy applies to this operation RequestBundleRoverNode()
 func (client RoverBundleClient) RequestBundleRoverNode(ctx context.Context, request RequestBundleRoverNodeRequest) (response RequestBundleRoverNodeResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -327,7 +327,7 @@ func (client RoverBundleClient) requestBundleRoverNode(ctx context.Context, requ
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RetrieveAvailableBundleVersionsRoverCluster.go.html to see an example of how to use RetrieveAvailableBundleVersionsRoverCluster API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RetrieveAvailableBundleVersionsRoverCluster.go.html to see an example of how to use RetrieveAvailableBundleVersionsRoverCluster API.
 // A default retry strategy applies to this operation RetrieveAvailableBundleVersionsRoverCluster()
 func (client RoverBundleClient) RetrieveAvailableBundleVersionsRoverCluster(ctx context.Context, request RetrieveAvailableBundleVersionsRoverClusterRequest) (response RetrieveAvailableBundleVersionsRoverClusterResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -385,7 +385,7 @@ func (client RoverBundleClient) retrieveAvailableBundleVersionsRoverCluster(ctx 
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RetrieveAvailableBundleVersionsRoverNode.go.html to see an example of how to use RetrieveAvailableBundleVersionsRoverNode API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RetrieveAvailableBundleVersionsRoverNode.go.html to see an example of how to use RetrieveAvailableBundleVersionsRoverNode API.
 // A default retry strategy applies to this operation RetrieveAvailableBundleVersionsRoverNode()
 func (client RoverBundleClient) RetrieveAvailableBundleVersionsRoverNode(ctx context.Context, request RetrieveAvailableBundleVersionsRoverNodeRequest) (response RetrieveAvailableBundleVersionsRoverNodeResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -443,7 +443,7 @@ func (client RoverBundleClient) retrieveAvailableBundleVersionsRoverNode(ctx con
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RetrieveBundleStatusRoverCluster.go.html to see an example of how to use RetrieveBundleStatusRoverCluster API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RetrieveBundleStatusRoverCluster.go.html to see an example of how to use RetrieveBundleStatusRoverCluster API.
 // A default retry strategy applies to this operation RetrieveBundleStatusRoverCluster()
 func (client RoverBundleClient) RetrieveBundleStatusRoverCluster(ctx context.Context, request RetrieveBundleStatusRoverClusterRequest) (response RetrieveBundleStatusRoverClusterResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -501,7 +501,7 @@ func (client RoverBundleClient) retrieveBundleStatusRoverCluster(ctx context.Con
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RetrieveBundleStatusRoverNode.go.html to see an example of how to use RetrieveBundleStatusRoverNode API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RetrieveBundleStatusRoverNode.go.html to see an example of how to use RetrieveBundleStatusRoverNode API.
 // A default retry strategy applies to this operation RetrieveBundleStatusRoverNode()
 func (client RoverBundleClient) RetrieveBundleStatusRoverNode(ctx context.Context, request RetrieveBundleStatusRoverNodeRequest) (response RetrieveBundleStatusRoverNodeResponse, err error) {
 	var ociResponse common.OCIResponse

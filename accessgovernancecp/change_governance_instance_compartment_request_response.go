@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/ChangeGovernanceInstanceCompartment.go.html to see an example of how to use ChangeGovernanceInstanceCompartmentRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/accessgovernancecp/ChangeGovernanceInstanceCompartment.go.html to see an example of how to use ChangeGovernanceInstanceCompartmentRequest.
 type ChangeGovernanceInstanceCompartmentRequest struct {
 
 	// The OCID of the GovernanceInstance

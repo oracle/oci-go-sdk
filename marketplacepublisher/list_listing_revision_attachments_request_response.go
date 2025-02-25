@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListListingRevisionAttachments.go.html to see an example of how to use ListListingRevisionAttachmentsRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListListingRevisionAttachments.go.html to see an example of how to use ListListingRevisionAttachmentsRequest.
 type ListListingRevisionAttachmentsRequest struct {
 
 	// OCID of the listing revision.

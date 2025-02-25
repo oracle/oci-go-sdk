@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/PublishListingRevisionAsPrivate.go.html to see an example of how to use PublishListingRevisionAsPrivateRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/PublishListingRevisionAsPrivate.go.html to see an example of how to use PublishListingRevisionAsPrivateRequest.
 type PublishListingRevisionAsPrivateRequest struct {
 
 	// The listing revision publish as private information to be updated.

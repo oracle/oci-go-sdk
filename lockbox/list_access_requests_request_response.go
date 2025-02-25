@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListAccessRequests.go.html to see an example of how to use ListAccessRequestsRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/lockbox/ListAccessRequests.go.html to see an example of how to use ListAccessRequestsRequest.
 type ListAccessRequestsRequest struct {
 
 	// The client request ID for tracing.

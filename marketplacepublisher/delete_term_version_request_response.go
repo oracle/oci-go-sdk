@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteTermVersion.go.html to see an example of how to use DeleteTermVersionRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteTermVersion.go.html to see an example of how to use DeleteTermVersionRequest.
 type DeleteTermVersionRequest struct {
 
 	// term version OCID

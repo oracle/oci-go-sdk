@@ -19,7 +19,7 @@ import (
 // CreateCustomizationDetails The information about the new Customization.
 type CreateCustomizationDetails struct {
 
-	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment where you want to create the job.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment where you want to create the job.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	ModelDetails *CustomizationModelDetails `mandatory:"true" json:"modelDetails"`

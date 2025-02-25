@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RequestAdditionalNodes.go.html to see an example of how to use RequestAdditionalNodesRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RequestAdditionalNodes.go.html to see an example of how to use RequestAdditionalNodesRequest.
 type RequestAdditionalNodesRequest struct {
 
 	// Unique RoverCluster identifier

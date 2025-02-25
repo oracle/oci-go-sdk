@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/SummarizeText.go.html to see an example of how to use SummarizeTextRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/SummarizeText.go.html to see an example of how to use SummarizeTextRequest.
 type SummarizeTextRequest struct {
 
 	// Details for summarizing the text.

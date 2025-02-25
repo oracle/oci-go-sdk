@@ -16,7 +16,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateListingRevisionIconContent.go.html to see an example of how to use UpdateListingRevisionIconContentRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateListingRevisionIconContent.go.html to see an example of how to use UpdateListingRevisionIconContentRequest.
 type UpdateListingRevisionIconContentRequest struct {
 
 	// listing revision

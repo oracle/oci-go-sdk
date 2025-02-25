@@ -15,7 +15,7 @@ import (
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/ListInclusionCriteria.go.html to see an example of how to use ListInclusionCriteriaRequest.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/governancerulescontrolplane/ListInclusionCriteria.go.html to see an example of how to use ListInclusionCriteriaRequest.
 type ListInclusionCriteriaRequest struct {
 
 	// Unique governance rule identifier.

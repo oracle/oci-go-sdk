@@ -5,7 +5,7 @@
 // Email Delivery Submission API
 //
 // Use the Email Delivery API to send high-volume and application-generated emails.
-// For more information, see Overview of the Email Delivery Service (https://docs.cloud.oracle.com/iaas/Content/Email/Concepts/overview.htm).
+// For more information, see Overview of the Email Delivery Service (https://docs.oracle.com/iaas/Content/Email/Concepts/overview.htm).
 //
 
 package emaildataplane
@@ -96,7 +96,7 @@ func (client *EmailDPClient) ConfigurationProvider() *common.ConfigurationProvid
 //
 // # See also
 //
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/emaildataplane/SubmitEmail.go.html to see an example of how to use SubmitEmail API.
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/emaildataplane/SubmitEmail.go.html to see an example of how to use SubmitEmail API.
 // A default retry strategy applies to this operation SubmitEmail()
 func (client EmailDPClient) SubmitEmail(ctx context.Context, request SubmitEmailRequest) (response SubmitEmailResponse, err error) {
 	var ociResponse common.OCIResponse
