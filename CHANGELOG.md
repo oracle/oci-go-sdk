@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.87.0 - 2025-03-18
+### Added 
+- Support for Managed Services for Mac service 
+- Support for scheduling customer-initiated backups in the GoldenGate service 
+- Support for GPU memory clusters and fabrics in the Compute service 
+- Support for creating and updating AWS EC2 and EBS assets in the Cloud Bridge service 
+- Support for listing AWS regions available for discovery and migration in the Cloud Bridge service    
+
+### Breaking Changes 
+- The properties `IpAnycastId` and `MonitorIp` were removed from the models `UpdateByoipRangeDetails` and `CreateByoipRangeDetails` in the Core service 
+- The property `Plugin` and `Etag` were removed from the model `UpdatePluginResponse` in the Cloud Bridge service 
+- The mandatory property `Data` was added to the request model `ImportInventoryViaAssetsDetails` in the Cloud Bridge service 
+- The properties `Compute`, `Vm`, `VmwareVm`, and `VmwareVCenter` were made mandatory in the request model `CreateVmwareVmAssetDetails` in the Cloud Bridge service
+
 ## 65.86.0 - 2025-03-11
 ### Added 
 - Support for pipelines in the OpenSearch service 
