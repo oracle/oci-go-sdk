@@ -14,6 +14,7 @@
 package generativeaiagentruntime
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
@@ -23,13 +24,19 @@ import (
 type ChatDetails struct {
 
 	// The input user message content for the chat.
-	UserMessage *string `mandatory:"true" json:"userMessage"`
+	UserMessage *string `mandatory:"false" json:"userMessage"`
 
 	// Whether to stream the response.
 	ShouldStream *bool `mandatory:"false" json:"shouldStream"`
 
 	// Optional sessionId. If not provided, will chat without any prior context.
 	SessionId *string `mandatory:"false" json:"sessionId"`
+
+	// A map where each key is a toolId and the value contains tool type and additional dynamic parameters.
+	ToolParameters map[string]string `mandatory:"false" json:"toolParameters"`
+
+	// A list of actions that have been performed based on prior required actions.
+	PerformedActions []PerformedAction `mandatory:"false" json:"performedActions"`
 }
 
 func (m ChatDetails) String() string {
@@ -46,4 +53,42 @@ func (m ChatDetails) ValidateEnumValue() (bool, error) {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
 	return false, nil
+}
+
+// UnmarshalJSON unmarshals from json
+func (m *ChatDetails) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		UserMessage      *string           `json:"userMessage"`
+		ShouldStream     *bool             `json:"shouldStream"`
+		SessionId        *string           `json:"sessionId"`
+		ToolParameters   map[string]string `json:"toolParameters"`
+		PerformedActions []performedaction `json:"performedActions"`
+	}{}
+
+	e = json.Unmarshal(data, &model)
+	if e != nil {
+		return
+	}
+	var nn interface{}
+	m.UserMessage = model.UserMessage
+
+	m.ShouldStream = model.ShouldStream
+
+	m.SessionId = model.SessionId
+
+	m.ToolParameters = model.ToolParameters
+
+	m.PerformedActions = make([]PerformedAction, len(model.PerformedActions))
+	for i, n := range model.PerformedActions {
+		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)
+		if e != nil {
+			return e
+		}
+		if nn != nil {
+			m.PerformedActions[i] = nn.(PerformedAction)
+		} else {
+			m.PerformedActions[i] = nil
+		}
+	}
+	return
 }

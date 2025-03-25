@@ -145,7 +145,7 @@ func (client MacOrderClient) cancelMacOrder(ctx context.Context, request common.
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/mngdmac/20250320/MacOrder/CancelMacOrder"
 		err = common.PostProcessServiceError(err, "MacOrder", "CancelMacOrder", apiReferenceLink)
 		return response, err
 	}
@@ -203,7 +203,7 @@ func (client MacOrderClient) cancelWorkRequest(ctx context.Context, request comm
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/mngdmac/20250320/WorkRequest/CancelWorkRequest"
 		err = common.PostProcessServiceError(err, "MacOrder", "CancelWorkRequest", apiReferenceLink)
 		return response, err
 	}
@@ -262,7 +262,7 @@ func (client MacOrderClient) changeMacOrderCompartment(ctx context.Context, requ
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/mngdmac/20250320/MacOrder/ChangeMacOrderCompartment"
 		err = common.PostProcessServiceError(err, "MacOrder", "ChangeMacOrderCompartment", apiReferenceLink)
 		return response, err
 	}
@@ -325,7 +325,7 @@ func (client MacOrderClient) createMacOrder(ctx context.Context, request common.
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/mngdmac/20250320/MacOrder/CreateMacOrder"
 		err = common.PostProcessServiceError(err, "MacOrder", "CreateMacOrder", apiReferenceLink)
 		return response, err
 	}
@@ -383,7 +383,7 @@ func (client MacOrderClient) getMacOrder(ctx context.Context, request common.OCI
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/mngdmac/20250320/MacOrder/GetMacOrder"
 		err = common.PostProcessServiceError(err, "MacOrder", "GetMacOrder", apiReferenceLink)
 		return response, err
 	}
@@ -441,7 +441,7 @@ func (client MacOrderClient) getWorkRequest(ctx context.Context, request common.
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/mngdmac/20250320/WorkRequest/GetWorkRequest"
 		err = common.PostProcessServiceError(err, "MacOrder", "GetWorkRequest", apiReferenceLink)
 		return response, err
 	}
@@ -499,7 +499,7 @@ func (client MacOrderClient) listMacOrders(ctx context.Context, request common.O
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/mngdmac/20250320/MacOrderCollection/ListMacOrders"
 		err = common.PostProcessServiceError(err, "MacOrder", "ListMacOrders", apiReferenceLink)
 		return response, err
 	}
@@ -557,7 +557,7 @@ func (client MacOrderClient) listWorkRequestErrors(ctx context.Context, request 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/mngdmac/20250320/WorkRequestError/ListWorkRequestErrors"
 		err = common.PostProcessServiceError(err, "MacOrder", "ListWorkRequestErrors", apiReferenceLink)
 		return response, err
 	}
@@ -615,7 +615,7 @@ func (client MacOrderClient) listWorkRequestLogs(ctx context.Context, request co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/mngdmac/20250320/WorkRequestLogEntry/ListWorkRequestLogs"
 		err = common.PostProcessServiceError(err, "MacOrder", "ListWorkRequestLogs", apiReferenceLink)
 		return response, err
 	}
@@ -673,7 +673,7 @@ func (client MacOrderClient) listWorkRequests(ctx context.Context, request commo
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/mngdmac/20250320/WorkRequest/ListWorkRequests"
 		err = common.PostProcessServiceError(err, "MacOrder", "ListWorkRequests", apiReferenceLink)
 		return response, err
 	}
@@ -731,7 +731,7 @@ func (client MacOrderClient) updateMacOrder(ctx context.Context, request common.
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/mngdmac/20250320/MacOrder/UpdateMacOrder"
 		err = common.PostProcessServiceError(err, "MacOrder", "UpdateMacOrder", apiReferenceLink)
 		return response, err
 	}

@@ -27,6 +27,9 @@ type MessageContent struct {
 
 	// Citations to data sources used for generating an agent's message.
 	Citations []Citation `mandatory:"false" json:"citations"`
+
+	// A list of citations used to generate the paragraphs of the agent message.
+	ParagraphCitations []ParagraphCitation `mandatory:"false" json:"paragraphCitations"`
 }
 
 func (m MessageContent) String() string {
