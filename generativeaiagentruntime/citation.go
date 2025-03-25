@@ -20,7 +20,7 @@ import (
 	"strings"
 )
 
-// Citation The citation displays the location of source text that is the agent uses to create the responses.
+// Citation The source of information for the agent's response.
 type Citation struct {
 
 	// The text that's the source for the agent's response.
@@ -36,6 +36,9 @@ type Citation struct {
 
 	// The page numbers on the retrieved document, if available.
 	PageNumbers []int `mandatory:"false" json:"pageNumbers"`
+
+	// The metadata of the retrieved document, if available.
+	Metadata map[string]interface{} `mandatory:"false" json:"metadata"`
 }
 
 func (m Citation) String() string {
@@ -57,11 +60,12 @@ func (m Citation) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *Citation) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		SourceText     *string        `json:"sourceText"`
-		SourceLocation sourcelocation `json:"sourceLocation"`
-		Title          *string        `json:"title"`
-		DocId          *string        `json:"docId"`
-		PageNumbers    []int          `json:"pageNumbers"`
+		SourceText     *string                `json:"sourceText"`
+		SourceLocation sourcelocation         `json:"sourceLocation"`
+		Title          *string                `json:"title"`
+		DocId          *string                `json:"docId"`
+		PageNumbers    []int                  `json:"pageNumbers"`
+		Metadata       map[string]interface{} `json:"metadata"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -87,5 +91,7 @@ func (m *Citation) UnmarshalJSON(data []byte) (e error) {
 
 	m.PageNumbers = make([]int, len(model.PageNumbers))
 	copy(m.PageNumbers, model.PageNumbers)
+	m.Metadata = model.Metadata
+
 	return
 }

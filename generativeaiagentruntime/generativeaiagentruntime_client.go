@@ -71,7 +71,7 @@ func newGenerativeAiAgentRuntimeClientFromBaseClient(baseClient common.BaseClien
 
 // SetRegion overrides the region of this client.
 func (client *GenerativeAiAgentRuntimeClient) SetRegion(region string) {
-	client.Host = common.StringToRegion(region).EndpointForTemplate("generativeaiagentruntime", "https://genai-agent-service.{region}.oci.{secondLevelDomain}")
+	client.Host = common.StringToRegion(region).EndpointForTemplate("generativeaiagentruntime", "https://agent-runtime.generativeai.{region}.oci.{secondLevelDomain}")
 }
 
 // SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
@@ -331,6 +331,69 @@ func (client GenerativeAiAgentRuntimeClient) getSession(ctx context.Context, req
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/generative-ai-agents-client/20240531/Session/GetSession"
 		err = common.PostProcessServiceError(err, "GenerativeAiAgentRuntime", "GetSession", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// RetrieveMetadata Returns metadata of provided knowledgeBase. Return available metadata with information of field names, their types, supported operations, and possible values.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiagentruntime/RetrieveMetadata.go.html to see an example of how to use RetrieveMetadata API.
+// A default retry strategy applies to this operation RetrieveMetadata()
+func (client GenerativeAiAgentRuntimeClient) RetrieveMetadata(ctx context.Context, request RetrieveMetadataRequest) (response RetrieveMetadataResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.retrieveMetadata, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = RetrieveMetadataResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = RetrieveMetadataResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(RetrieveMetadataResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into RetrieveMetadataResponse")
+	}
+	return
+}
+
+// retrieveMetadata implements the OCIOperation interface (enables retrying operations)
+func (client GenerativeAiAgentRuntimeClient) retrieveMetadata(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/knowledgeBases/{knowledgeBaseId}/actions/retrieveMetadata", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response RetrieveMetadataResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/generative-ai-agents-client/20240531/KnowledgeBaseMetadataSummary/RetrieveMetadata"
+		err = common.PostProcessServiceError(err, "GenerativeAiAgentRuntime", "RetrieveMetadata", apiReferenceLink)
 		return response, err
 	}
 
