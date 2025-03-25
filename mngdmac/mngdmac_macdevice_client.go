@@ -140,7 +140,7 @@ func (client MacDeviceClient) getMacDevice(ctx context.Context, request common.O
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/mngdmac/20250320/MacDevice/GetMacDevice"
 		err = common.PostProcessServiceError(err, "MacDevice", "GetMacDevice", apiReferenceLink)
 		return response, err
 	}
@@ -198,7 +198,7 @@ func (client MacDeviceClient) listMacDevices(ctx context.Context, request common
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/mngdmac/20250320/MacDeviceCollection/ListMacDevices"
 		err = common.PostProcessServiceError(err, "MacDevice", "ListMacDevices", apiReferenceLink)
 		return response, err
 	}
@@ -261,7 +261,7 @@ func (client MacDeviceClient) terminateMacDevice(ctx context.Context, request co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/mngdmac/20250320/MacDevice/TerminateMacDevice"
 		err = common.PostProcessServiceError(err, "MacDevice", "TerminateMacDevice", apiReferenceLink)
 		return response, err
 	}
