@@ -779,7 +779,7 @@ n### Added
 - The property `OpcWorkRequestId` was removed from the response model `CreateVulnerabilityAuditResponse.cs` in the Application Dependency Management service
 - The property `Gav` was changed from mandatory to optional in `ApplicationDependency` model
 - The property `MaxObservedCvssV2Score`, `MaxObservedCvssV2ScoreWithIgnored` and `MaxObservedCvssV3ScoreWithIgnored` were changed from mandatory to optional in `VulnerabilityAudit` and `VulnerabilityAuditSummary` model
-- The property `CvssV2Score` and `CvssV3Score` were changed from mantory to optional in Vulnerability model
+- The property `CvssV2Score` and `CvssV3Score` were changed from mandatory to optional in Vulnerability model
 - The property `OpcWorkRequestId` was changed from mandatory to optional in `CreateVulnerabilityAuditResponse` model
 
 
@@ -910,7 +910,7 @@ n### Added
 
 ### Breaking Changes
 - The properties `DisplayName` and `RqsType` were removed in the `Parameter` model in the Logging Management service
-- The enum members `EnumString` and `RqsFilter` were remoeved from the `mappingParameterTypeEnum` in the `Parameter` model in the Logging Management service
+- The enum members `EnumString` and `RqsFilter` were removed from the `mappingParameterTypeEnum` in the `Parameter` model in the Logging Management service
 - The property `ServiceStage` was removed in the `ListServicesRequest` model in the Logging Management service
 - The models `TcpApplication` and `UdpApplication` were removed in the Network Firewall service
 - The type `DecryptionProfileTypeEnum` was removed in the model `DecryptionProfile` in the Network Firewall service
@@ -1528,7 +1528,7 @@ n### Added
 - Support for language custom models and language translation in the AI Language service
 
 ### Breaking Changes
-- `TextClassificationDocument` and `KeyPhraseDocument` modles are removed from  ailanguage service
+- `TextClassificationDocument` and `KeyPhraseDocument` models are removed from  ailanguage service
 - Document parameter in `BatchDetectLanguage` related models changed to `TextDocument` type
 
 ## 65.23.0 - 2022-10-04
@@ -2345,7 +2345,7 @@ n### Added
 - Support for getting the spark version of applications, and filtering applications by spark version, in the Data Flow service
 
 ### Breaking
-- Propertry `FreeformTags` and `DefinedTags` were removed from the management_dashboard_export_details model in the Management Dashboard service
+- Property `FreeformTags` and `DefinedTags` were removed from the management_dashboard_export_details model in the Management Dashboard service
 
 ## 41.2.0 - 2021-06-08
 ### Added
@@ -3726,7 +3726,7 @@ were changed to `CLUSTER_SPLIT` and `AbstractCommandDescriptorNameClusterSplit` 
 - Support for retrieving compartment name and user name as part of events in the Audit service
 
 ### Fixed
-- CreateKubeconfig function should not close http reponse body [Github Issue 116](https://github.com/oracle/oci-go-sdk/issues/116)
+- CreateKubeconfig function should not close http response body [Github Issue 116](https://github.com/oracle/oci-go-sdk/issues/116)
 
 ### Breaking changes
 - Datatype changed from *int to *int64 for several request/response structs. Here is sample code that shows how to update your code to incorporate this change. 
