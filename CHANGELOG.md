@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.89.0 - 2025-04-08
+### Added 
+- Support for connector source and targets with private endpoints in the Resource Scheduler service 
+- Support for Cross Region Replication(XRR) for external key managers in the Key Management service 
+- Support for dry run of function invocation in the Functions service 
+- Support for collecting diagnostics for ZeroETL pipelines in the GoldenGate service 
+- Support for adding, removing and switchover to local peers of deployment in different availability and fault domains within in the same region in the GoldenGate service 
+- Support for creating standby deployments in the GoldenGate service   
+
+### Breaking Changes 
+- The type of properties `Tasks`, `Target`, and `Source` were changed to `TaskDetailsResponse`, `TargetDetailsResponse`, and `SourceDetailsResponse` respectively in the model `ServiceConnector` in the Resource Scheduler service
+
 ## 65.88.1 - 2025-04-01
 ### Added 
 - Support for the Lustre File service 
