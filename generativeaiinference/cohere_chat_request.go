@@ -100,6 +100,9 @@ type CohereChatRequest struct {
 
 	// When FAST is selected, citations are generated at the same time as the text output and the request will be completed sooner. May result in less accurate citations.
 	CitationQuality CohereChatRequestCitationQualityEnum `mandatory:"false" json:"citationQuality,omitempty"`
+
+	// Used to select the safety instruction inserted into the prompt. When selected CONTEXTUAL mode, It is appropriate for wide-ranging interactions with fewer constraints on output while maintaining core protections by rejecting harmful or illegal suggestions. When selected STRICT mode, it aims to avoid all sensitive topics, such as violent or sexual acts and profanity. When selected OFF, the safety instruction will be omitted. Note: This parameter is only compatible with models Command R 08-2024, Command R+ 08-2024 and newer. Also, command-r7b-12-2024 only supports "CONTEXTUAL" and "STRICT" modes.
+	SafetyMode CohereChatRequestSafetyModeEnum `mandatory:"false" json:"safetyMode,omitempty"`
 }
 
 func (m CohereChatRequest) String() string {
@@ -116,6 +119,9 @@ func (m CohereChatRequest) ValidateEnumValue() (bool, error) {
 	}
 	if _, ok := GetMappingCohereChatRequestCitationQualityEnum(string(m.CitationQuality)); !ok && m.CitationQuality != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CitationQuality: %s. Supported values are: %s.", m.CitationQuality, strings.Join(GetCohereChatRequestCitationQualityEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingCohereChatRequestSafetyModeEnum(string(m.SafetyMode)); !ok && m.SafetyMode != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SafetyMode: %s. Supported values are: %s.", m.SafetyMode, strings.Join(GetCohereChatRequestSafetyModeEnumStringValues(), ",")))
 	}
 
 	if len(errMessage) > 0 {
@@ -163,6 +169,7 @@ func (m *CohereChatRequest) UnmarshalJSON(data []byte) (e error) {
 		StopSequences       []string                              `json:"stopSequences"`
 		IsRawPrompting      *bool                                 `json:"isRawPrompting"`
 		CitationQuality     CohereChatRequestCitationQualityEnum  `json:"citationQuality"`
+		SafetyMode          CohereChatRequestSafetyModeEnum       `json:"safetyMode"`
 		Message             *string                               `json:"message"`
 	}{}
 
@@ -232,6 +239,8 @@ func (m *CohereChatRequest) UnmarshalJSON(data []byte) (e error) {
 	m.IsRawPrompting = model.IsRawPrompting
 
 	m.CitationQuality = model.CitationQuality
+
+	m.SafetyMode = model.SafetyMode
 
 	m.Message = model.Message
 
@@ -319,5 +328,51 @@ func GetCohereChatRequestCitationQualityEnumStringValues() []string {
 // GetMappingCohereChatRequestCitationQualityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingCohereChatRequestCitationQualityEnum(val string) (CohereChatRequestCitationQualityEnum, bool) {
 	enum, ok := mappingCohereChatRequestCitationQualityEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
+}
+
+// CohereChatRequestSafetyModeEnum Enum with underlying type: string
+type CohereChatRequestSafetyModeEnum string
+
+// Set of constants representing the allowable values for CohereChatRequestSafetyModeEnum
+const (
+	CohereChatRequestSafetyModeContextual CohereChatRequestSafetyModeEnum = "CONTEXTUAL"
+	CohereChatRequestSafetyModeStrict     CohereChatRequestSafetyModeEnum = "STRICT"
+	CohereChatRequestSafetyModeOff        CohereChatRequestSafetyModeEnum = "OFF"
+)
+
+var mappingCohereChatRequestSafetyModeEnum = map[string]CohereChatRequestSafetyModeEnum{
+	"CONTEXTUAL": CohereChatRequestSafetyModeContextual,
+	"STRICT":     CohereChatRequestSafetyModeStrict,
+	"OFF":        CohereChatRequestSafetyModeOff,
+}
+
+var mappingCohereChatRequestSafetyModeEnumLowerCase = map[string]CohereChatRequestSafetyModeEnum{
+	"contextual": CohereChatRequestSafetyModeContextual,
+	"strict":     CohereChatRequestSafetyModeStrict,
+	"off":        CohereChatRequestSafetyModeOff,
+}
+
+// GetCohereChatRequestSafetyModeEnumValues Enumerates the set of values for CohereChatRequestSafetyModeEnum
+func GetCohereChatRequestSafetyModeEnumValues() []CohereChatRequestSafetyModeEnum {
+	values := make([]CohereChatRequestSafetyModeEnum, 0)
+	for _, v := range mappingCohereChatRequestSafetyModeEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetCohereChatRequestSafetyModeEnumStringValues Enumerates the set of values in String for CohereChatRequestSafetyModeEnum
+func GetCohereChatRequestSafetyModeEnumStringValues() []string {
+	return []string{
+		"CONTEXTUAL",
+		"STRICT",
+		"OFF",
+	}
+}
+
+// GetMappingCohereChatRequestSafetyModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCohereChatRequestSafetyModeEnum(val string) (CohereChatRequestSafetyModeEnum, bool) {
+	enum, ok := mappingCohereChatRequestSafetyModeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
