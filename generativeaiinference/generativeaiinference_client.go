@@ -94,6 +94,69 @@ func (client *GenerativeAiInferenceClient) ConfigurationProvider() *common.Confi
 	return client.config
 }
 
+// ApplyGuardrails Applies guardrails to the input text, including content moderation, PII detection, and prompt injection protection.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/ApplyGuardrails.go.html to see an example of how to use ApplyGuardrails API.
+// A default retry strategy applies to this operation ApplyGuardrails()
+func (client GenerativeAiInferenceClient) ApplyGuardrails(ctx context.Context, request ApplyGuardrailsRequest) (response ApplyGuardrailsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.applyGuardrails, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ApplyGuardrailsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ApplyGuardrailsResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ApplyGuardrailsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ApplyGuardrailsResponse")
+	}
+	return
+}
+
+// applyGuardrails implements the OCIOperation interface (enables retrying operations)
+func (client GenerativeAiInferenceClient) applyGuardrails(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/applyGuardrails", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ApplyGuardrailsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/generative-ai-inference/20231130/ApplyGuardrailsResult/ApplyGuardrails"
+		err = common.PostProcessServiceError(err, "GenerativeAiInference", "ApplyGuardrails", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // Chat Creates a response for the given conversation.
 //
 // # See also
