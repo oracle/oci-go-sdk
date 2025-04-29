@@ -62,6 +62,8 @@ type CohereChatResponse struct {
 	// The full prompt that was sent to the model if isEcho is true when request.
 	Prompt *string `mandatory:"false" json:"prompt"`
 
+	Usage *Usage `mandatory:"false" json:"usage"`
+
 	// Why the generation stopped.
 	FinishReason CohereChatResponseFinishReasonEnum `mandatory:"true" json:"finishReason"`
 }
@@ -110,6 +112,7 @@ func (m *CohereChatResponse) UnmarshalJSON(data []byte) (e error) {
 		Documents        []interface{}                      `json:"documents"`
 		ToolCalls        []CohereToolCall                   `json:"toolCalls"`
 		Prompt           *string                            `json:"prompt"`
+		Usage            *Usage                             `json:"usage"`
 		Text             *string                            `json:"text"`
 		FinishReason     CohereChatResponseFinishReasonEnum `json:"finishReason"`
 	}{}
@@ -144,6 +147,8 @@ func (m *CohereChatResponse) UnmarshalJSON(data []byte) (e error) {
 	m.ToolCalls = make([]CohereToolCall, len(model.ToolCalls))
 	copy(m.ToolCalls, model.ToolCalls)
 	m.Prompt = model.Prompt
+
+	m.Usage = model.Usage
 
 	m.Text = model.Text
 
