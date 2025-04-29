@@ -49,6 +49,8 @@ type CohereChatRequest struct {
 	// Whether to stream the partial progress of the model's response. When set to true, as tokens become available, they are sent as data-only server-sent events.
 	IsStream *bool `mandatory:"false" json:"isStream"`
 
+	StreamOptions *StreamOptions `mandatory:"false" json:"streamOptions"`
+
 	// The maximum number of output tokens that the model will generate for the response.
 	MaxTokens *int `mandatory:"false" json:"maxTokens"`
 
@@ -101,7 +103,11 @@ type CohereChatRequest struct {
 	// When FAST is selected, citations are generated at the same time as the text output and the request will be completed sooner. May result in less accurate citations.
 	CitationQuality CohereChatRequestCitationQualityEnum `mandatory:"false" json:"citationQuality,omitempty"`
 
-	// Used to select the safety instruction inserted into the prompt. When selected CONTEXTUAL mode, It is appropriate for wide-ranging interactions with fewer constraints on output while maintaining core protections by rejecting harmful or illegal suggestions. When selected STRICT mode, it aims to avoid all sensitive topics, such as violent or sexual acts and profanity. When selected OFF, the safety instruction will be omitted. Note: This parameter is only compatible with models Command R 08-2024, Command R+ 08-2024 and newer. Also, command-r7b-12-2024 only supports "CONTEXTUAL" and "STRICT" modes.
+	// Safety mode: Adds a safety instruction for the model to use when generating responses.
+	// Contextual: (Default) Puts fewer constraints on the output. It maintains core protections by aiming to reject harmful or illegal suggestions, but it allows profanity and some toxic content, sexually explicit and violent content, and content that contains medical, financial, or legal information. Contextual mode is suited for entertainment, creative, or academic use.
+	// Strict: Aims to avoid sensitive topics, such as violent or sexual acts and profanity. This mode aims to provide a safer experience by prohibiting responses or recommendations that it finds inappropriate. Strict mode is suited for corporate use, such as for corporate communications and customer service.
+	// Off: No safety mode is applied.
+	// Note: This parameter is only compatible with models cohere.command-r-08-2024, cohere.command-r-plus-08-2024 and Cohere models released after these models. See release dates (https://docs.oracle.com/iaas/Content/generative-ai/deprecating.htm).
 	SafetyMode CohereChatRequestSafetyModeEnum `mandatory:"false" json:"safetyMode,omitempty"`
 }
 
@@ -153,6 +159,7 @@ func (m *CohereChatRequest) UnmarshalJSON(data []byte) (e error) {
 		IsSearchQueriesOnly *bool                                 `json:"isSearchQueriesOnly"`
 		PreambleOverride    *string                               `json:"preambleOverride"`
 		IsStream            *bool                                 `json:"isStream"`
+		StreamOptions       *StreamOptions                        `json:"streamOptions"`
 		MaxTokens           *int                                  `json:"maxTokens"`
 		MaxInputTokens      *int                                  `json:"maxInputTokens"`
 		Temperature         *float64                              `json:"temperature"`
@@ -207,6 +214,8 @@ func (m *CohereChatRequest) UnmarshalJSON(data []byte) (e error) {
 	m.PreambleOverride = model.PreambleOverride
 
 	m.IsStream = model.IsStream
+
+	m.StreamOptions = model.StreamOptions
 
 	m.MaxTokens = model.MaxTokens
 
