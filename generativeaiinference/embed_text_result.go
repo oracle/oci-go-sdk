@@ -35,6 +35,8 @@ type EmbedTextResult struct {
 
 	// The version of the model.
 	ModelVersion *string `mandatory:"false" json:"modelVersion"`
+
+	Usage *Usage `mandatory:"false" json:"usage"`
 }
 
 func (m EmbedTextResult) String() string {
