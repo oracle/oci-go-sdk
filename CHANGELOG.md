@@ -4,6 +4,41 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.90.0 - 2025-05-06
+### Added 
+- Support for dry run while creating cloud exadata Infrastructure and VM clusters in the Database service 
+- Support for filters to get latest versions on list system versions API in the Database service 
+- Support for generic fleets without fleet type in the Fleet Application Management service 
+- Support for creating resources and changing compartment in the Fleet Application Management service 
+- Support for infrastructure management via provisioning with terraform based catalog items and deployments in the Fleet Application Management service 
+- Support for platform configuration metadata management in the Fleet Application Management service 
+- Support for managing runbook versions in the Fleet Application Management service 
+- Support for provisioning runbooks in the Fleet Application Management service 
+- Support for resource inventory in the Fleet Application Management service  
+- Support for changing compartment for fleets, platforms configurations, properties, patches, runbooks and task resources in the Fleet Application Management service 
+- Support for new migration phase in the Database migration service   
+
+### Breaking Changes 
+- The fields `ApplicationType`, `FleetType`, `GroupType`, `RuleSelectionCriteria`, and `ResourceSelectionType` have been removed from the models `CreateFleetDetails`, `Fleet`, `CreateFleetDetails` in the Fleet Application Management service 
+- The type of `ActionGroup` has been changed from `struct` to `interface`, and all existing fields have been removed except for `DisplayName` in the Fleet Application Management service 
+- The type of `ActionGroupDetails` has been changed from `struct` to `interface`, and all fields have been replaced with getter methods in the Fleet Application Management service 
+- The field `TenancyId` has been removed from the model `AssociatedSchedulerDefinition` in the Fleet Application Management service 
+- The models `LifeCycleActionGroupTypeEnum` and `MaintenanceWindowTypeEnum` have been removed in the Fleet Application Management service 
+- The fields `MaintenanceWindowType` and `TaskInitiationCutoff` have been removed from the models `MaintenanceWindow` and `CreateMaintenanceWindowDetails` in the Fleet Application Management service 
+- The fields `Associations` and `RunbookRelevance` have been removed from the models `CreateRunbookDetails` and `Runbook` in the Fleet Application Management service 
+- The field `PatchType` has been removed from the models `CompliancePolicyRule` and `CompliancePolicyRuleSummary` in the Fleet Application Management service 
+- The fields `Condition` and `RunOn` have been removed from the model `ComponentProperties` in the Fleet Application Management service 
+- The fields `PatchType` and `CompartmentId` have been removed from the model `CreateCompliancePolicyRuleDetails` in the Fleet Application Management service 
+- The field `Compartmentid` has been removed from the models `CreateFleetCredentialDetails`, `CreateFleetPropertyDetails`, `ListScheduledFleetsRequest`, `ListFleetPropertiesRequest, `ListFleetCredentialsRequest`, `UpdatePatchDetails` in the Fleet Application Management service 
+- The field `ActivityInitiationCutOff` has been removed from the model `CreateSchedulerDefinitionDetails` in the Fleet Application Management service 
+- The field `ApplicationType` has been removed from the models `FleetResource` and `FleetResourceSummary` in the Fleet Application Management service 
+- The field `FleetType` has been removed from the model `FleetSummary` in the Fleet Application Management service 
+- The field `Content` has been removed from the model `GenericArtifact` in the Fleet Application Management service 
+- The field `Id` has been removed from the model `OperationRunbook` in the Fleet Application Management service 
+- The field `OnUpcomingSchedule` has been removed from the model `Preferences` in the Fleet Application Management service 
+- The field `Substate` has been removed from the model `ListSchedulerJobsRequest` in the Fleet Application Management service 
+- The field `AssociatedType` has been removed from the model `Task` in the Fleet Application Management service
+
 ## 65.89.3 - 2025-04-29
 ### Added 
 - Support for custom headers for model retirement in the Generative AI service 
