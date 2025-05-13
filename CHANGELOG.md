@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.91.0 - 2025-05-13
+### Added 
+- Support for the Model Deployment service 
+- Support for enabling and monitoring Pluggable Databases(PDB) in the Database Management service 
+- Support for additional unit shapes in AI clusters in the Generative AI service 
+- Support for node search details and node shape details on create and update cluster operations in the OpenSearch service   
+
+### Breaking Changes 
+- The operations `DisableExternalMysqlAssociatedService` and `EnableExternalMysqlAssociatedService` were removed from the model `ManagedMySqlDatabasesClient` in the Database Management service 
+- The property `LifecycleState` was renamed to `State` and it's type changed to `ExadataInfrastructureLifecycleStateValuesStateEnum` in the model `ExadataInfrastructureLifecycleStateValues` in the Database Management service 
+- The models `DisableExternalMysqlAssociatedServiceDetails`, `EnableExternalMysqlAssociatedServiceDetails`, `DisableExternalMysqlAssociatedServiceRequest`, `EnableExternalMysqlAssociatedServiceRequest`, `DisableExternalMysqlAssociatedServiceResponse`, `EnableExternalMysqlAssociatedServiceResponse`,  and `ExternalMysqlAssociatedServiceNameEnum` were removed in the Database Management service
+
 ## 65.90.0 - 2025-05-06
 ### Added 
 - Support for dry run while creating cloud exadata Infrastructure and VM clusters in the Database service 
