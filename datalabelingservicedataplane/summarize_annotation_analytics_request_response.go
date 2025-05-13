@@ -97,7 +97,7 @@ func (request SummarizeAnnotationAnalyticsRequest) ValidateEnumValue() (bool, er
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AnnotationGroupBy: %s. Supported values are: %s.", request.AnnotationGroupBy, strings.Join(GetSummarizeAnnotationAnalyticsAnnotationGroupByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
-		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
 	return false, nil
 }
