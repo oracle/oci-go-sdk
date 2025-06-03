@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.93.0 - 2025-06-03
+### Added 
+- Support for creating auto Autonomous Container Database backups in a remote region in the Database service 
+- Support for creating new Autonomous Container Databases from a backup in the remote region in the Database service 
+- Support for input/output token usage information in the Generative AI Agent service 
+- Support for standby connection in the Database Management service 
+- Support for additional metrics, including replication metrics, in the Database Management service 
+- Support for replication dashboard in the Database Management service 
+- Support for soft-deleting backups in the HeatWave service 
+- Support for additional connections types for Oracle Rest Data Services (ORDS), Apache Iceberg, and IBM Db2 for i in the Golden Gate service    
+
+### Breaking Changes 
+- Type of field `PatchModel` was changed to `CreateAutonomousContainerDatabaseDetailsPatchModelEnum` in the model `createAutonomousContainerDatabaseDetails` in the Database service 
+- Type of field `ServiceLevelAgreementType` was changed to `CreateAutonomousContainerDatabaseDetailsServiceLevelAgreementTypeEnum` in the model `createAutonomousContainerDatabaseDetails` in the Database service 
+- Type of field `ProtectionMode` was changed to `CreateAutonomousContainerDatabaseDetailsProtectionModeEnum` in the model `CreateAutonomousContainerDatabaseDetails` in the Database service 
+- Type of field `VersionPreference` was changed to `CreateAutonomousContainerDatabaseDetailsVersionPreferenceEnum` in the model `createAutonomousContainerDatabaseDetails` in the Database service 
+- Type of field `DistributionAffinity` was changed to `CreateAutonomousContainerDatabaseBaseDistributionAffinityEnum` in the model `createAutonomousContainerDatabaseDetails` in the Database service 
+- Type of field `NetServicesArchitecture` was changed to `CreateAutonomousContainerDatabaseBaseNetServicesArchitectureEnum` in the model `createAutonomousContainerDatabaseDetails` in the Database service 
+- Type of field `CreateAutonomousContainerDatabaseDetails` was changed to `CreateAutonomousContainerDatabaseBase` in the model `createAutonomousContainerDatabaseRequest` in the Database service 
+- Field `Username` was made mandatory in request model `CreateSnowflakeConnectionDetails` in the Golden Gate service
+
 ## 65.92.0 - 2025-05-27
 ### Added 
 - Support for List and Get APIs for out-of-box management dashboard resources in Management Dashboard service 
