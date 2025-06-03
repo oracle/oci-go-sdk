@@ -23,16 +23,50 @@ import (
 // ErrorTrace The trace information about the error.
 type ErrorTrace struct {
 
+	// Unique identifier for the event (UUID).
+	Key *string `mandatory:"false" json:"key"`
+
+	// Identifier of the parent event, if applicable (UUID).
+	ParentKey *string `mandatory:"false" json:"parentKey"`
+
+	Source *SourceDetails `mandatory:"false" json:"source"`
+
 	// The date and time that the trace was created in the format of an RFC3339 datetime string.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
+	// Timestamp for when the event ended (In RFC 3339).
+	TimeFinished *common.SDKTime `mandatory:"false" json:"timeFinished"`
+
 	// The error message in this trace.
 	ErrorMessage *string `mandatory:"false" json:"errorMessage"`
+
+	// Error code.
+	Code *string `mandatory:"false" json:"code"`
+}
+
+// GetKey returns Key
+func (m ErrorTrace) GetKey() *string {
+	return m.Key
+}
+
+// GetParentKey returns ParentKey
+func (m ErrorTrace) GetParentKey() *string {
+	return m.ParentKey
+}
+
+// GetSource returns Source
+func (m ErrorTrace) GetSource() *SourceDetails {
+	return m.Source
 }
 
 // GetTimeCreated returns TimeCreated
 func (m ErrorTrace) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
+}
+
+// GetTimeFinished returns TimeFinished
+func (m ErrorTrace) GetTimeFinished() *common.SDKTime {
+	return m.TimeFinished
 }
 
 func (m ErrorTrace) String() string {

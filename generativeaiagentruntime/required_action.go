@@ -59,6 +59,10 @@ func (m *requiredaction) UnmarshalPolymorphicJSON(data []byte) (interface{}, err
 
 	var err error
 	switch m.RequiredActionType {
+	case "HUMAN_APPROVAL_REQUIRED_ACTION":
+		mm := HumanApprovalRequiredAction{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "FUNCTION_CALLING_REQUIRED_ACTION":
 		mm := FunctionCallingRequiredAction{}
 		err = json.Unmarshal(data, &mm)

@@ -23,19 +23,53 @@ import (
 // RetrievalTrace The trace that displays the retrieval information.
 type RetrievalTrace struct {
 
+	// Unique identifier for the event (UUID).
+	Key *string `mandatory:"false" json:"key"`
+
+	// Identifier of the parent event, if applicable (UUID).
+	ParentKey *string `mandatory:"false" json:"parentKey"`
+
+	Source *SourceDetails `mandatory:"false" json:"source"`
+
 	// The date and time that the trace was created in the format of an RFC3339 datetime string.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
+
+	// Timestamp for when the event ended (In RFC 3339).
+	TimeFinished *common.SDKTime `mandatory:"false" json:"timeFinished"`
 
 	// The agent's search string for getting the displayed information.
 	RetrievalInput *string `mandatory:"false" json:"retrievalInput"`
 
 	// A list of citations retrieved from data sources.
 	Citations []Citation `mandatory:"false" json:"citations"`
+
+	// Details of model and its usage.
+	Usage []Usage `mandatory:"false" json:"usage"`
+}
+
+// GetKey returns Key
+func (m RetrievalTrace) GetKey() *string {
+	return m.Key
+}
+
+// GetParentKey returns ParentKey
+func (m RetrievalTrace) GetParentKey() *string {
+	return m.ParentKey
+}
+
+// GetSource returns Source
+func (m RetrievalTrace) GetSource() *SourceDetails {
+	return m.Source
 }
 
 // GetTimeCreated returns TimeCreated
 func (m RetrievalTrace) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
+}
+
+// GetTimeFinished returns TimeFinished
+func (m RetrievalTrace) GetTimeFinished() *common.SDKTime {
+	return m.TimeFinished
 }
 
 func (m RetrievalTrace) String() string {

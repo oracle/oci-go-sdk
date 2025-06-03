@@ -23,16 +23,53 @@ import (
 // GenerationTrace The trace information about the generated response.
 type GenerationTrace struct {
 
+	// Unique identifier for the event (UUID).
+	Key *string `mandatory:"false" json:"key"`
+
+	// Identifier of the parent event, if applicable (UUID).
+	ParentKey *string `mandatory:"false" json:"parentKey"`
+
+	Source *SourceDetails `mandatory:"false" json:"source"`
+
 	// The date and time that the trace was created in the format of an RFC3339 datetime string.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
+	// Timestamp for when the event ended (In RFC 3339).
+	TimeFinished *common.SDKTime `mandatory:"false" json:"timeFinished"`
+
 	// The generated response that's returned to the user.
 	Generation *string `mandatory:"false" json:"generation"`
+
+	// The input to the generation operation.
+	Input *string `mandatory:"false" json:"input"`
+
+	// Details of model and its usage.
+	Usage []Usage `mandatory:"false" json:"usage"`
+}
+
+// GetKey returns Key
+func (m GenerationTrace) GetKey() *string {
+	return m.Key
+}
+
+// GetParentKey returns ParentKey
+func (m GenerationTrace) GetParentKey() *string {
+	return m.ParentKey
+}
+
+// GetSource returns Source
+func (m GenerationTrace) GetSource() *SourceDetails {
+	return m.Source
 }
 
 // GetTimeCreated returns TimeCreated
 func (m GenerationTrace) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
+}
+
+// GetTimeFinished returns TimeFinished
+func (m GenerationTrace) GetTimeFinished() *common.SDKTime {
+	return m.TimeFinished
 }
 
 func (m GenerationTrace) String() string {
