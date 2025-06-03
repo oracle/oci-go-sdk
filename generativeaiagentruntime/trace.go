@@ -23,14 +23,29 @@ import (
 // Trace The trace that displays the internal progression, such as reasoning and actions during an execution.
 type Trace interface {
 
+	// Unique identifier for the event (UUID).
+	GetKey() *string
+
+	// Identifier of the parent event, if applicable (UUID).
+	GetParentKey() *string
+
+	GetSource() *SourceDetails
+
 	// The date and time that the trace was created in the format of an RFC3339 datetime string.
 	GetTimeCreated() *common.SDKTime
+
+	// Timestamp for when the event ended (In RFC 3339).
+	GetTimeFinished() *common.SDKTime
 }
 
 type trace struct {
-	JsonData    []byte
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
-	TraceType   string          `json:"traceType"`
+	JsonData     []byte
+	Key          *string         `mandatory:"false" json:"key"`
+	ParentKey    *string         `mandatory:"false" json:"parentKey"`
+	Source       *SourceDetails  `mandatory:"false" json:"source"`
+	TimeCreated  *common.SDKTime `mandatory:"false" json:"timeCreated"`
+	TimeFinished *common.SDKTime `mandatory:"false" json:"timeFinished"`
+	TraceType    string          `json:"traceType"`
 }
 
 // UnmarshalJSON unmarshals json
@@ -44,7 +59,11 @@ func (m *trace) UnmarshalJSON(data []byte) error {
 	if err != nil {
 		return err
 	}
+	m.Key = s.Model.Key
+	m.ParentKey = s.Model.ParentKey
+	m.Source = s.Model.Source
 	m.TimeCreated = s.Model.TimeCreated
+	m.TimeFinished = s.Model.TimeFinished
 	m.TraceType = s.Model.TraceType
 
 	return err
@@ -67,8 +86,20 @@ func (m *trace) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 		mm := RetrievalTrace{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
+	case "EXECUTION_TRACE":
+		mm := ExecutionTrace{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "GENERATION_TRACE":
 		mm := GenerationTrace{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "TOOL_INVOCATION_TRACE":
+		mm := ToolInvocationTrace{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "PLANNING_TRACE":
+		mm := PlanningTrace{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:
@@ -77,9 +108,29 @@ func (m *trace) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	}
 }
 
+// GetKey returns Key
+func (m trace) GetKey() *string {
+	return m.Key
+}
+
+// GetParentKey returns ParentKey
+func (m trace) GetParentKey() *string {
+	return m.ParentKey
+}
+
+// GetSource returns Source
+func (m trace) GetSource() *SourceDetails {
+	return m.Source
+}
+
 // GetTimeCreated returns TimeCreated
 func (m trace) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
+}
+
+// GetTimeFinished returns TimeFinished
+func (m trace) GetTimeFinished() *common.SDKTime {
+	return m.TimeFinished
 }
 
 func (m trace) String() string {
@@ -103,21 +154,30 @@ type TraceTraceTypeEnum string
 
 // Set of constants representing the allowable values for TraceTraceTypeEnum
 const (
-	TraceTraceTypeErrorTrace      TraceTraceTypeEnum = "ERROR_TRACE"
-	TraceTraceTypeRetrievalTrace  TraceTraceTypeEnum = "RETRIEVAL_TRACE"
-	TraceTraceTypeGenerationTrace TraceTraceTypeEnum = "GENERATION_TRACE"
+	TraceTraceTypeErrorTrace          TraceTraceTypeEnum = "ERROR_TRACE"
+	TraceTraceTypeRetrievalTrace      TraceTraceTypeEnum = "RETRIEVAL_TRACE"
+	TraceTraceTypeGenerationTrace     TraceTraceTypeEnum = "GENERATION_TRACE"
+	TraceTraceTypeToolInvocationTrace TraceTraceTypeEnum = "TOOL_INVOCATION_TRACE"
+	TraceTraceTypePlanningTrace       TraceTraceTypeEnum = "PLANNING_TRACE"
+	TraceTraceTypeExecutionTrace      TraceTraceTypeEnum = "EXECUTION_TRACE"
 )
 
 var mappingTraceTraceTypeEnum = map[string]TraceTraceTypeEnum{
-	"ERROR_TRACE":      TraceTraceTypeErrorTrace,
-	"RETRIEVAL_TRACE":  TraceTraceTypeRetrievalTrace,
-	"GENERATION_TRACE": TraceTraceTypeGenerationTrace,
+	"ERROR_TRACE":           TraceTraceTypeErrorTrace,
+	"RETRIEVAL_TRACE":       TraceTraceTypeRetrievalTrace,
+	"GENERATION_TRACE":      TraceTraceTypeGenerationTrace,
+	"TOOL_INVOCATION_TRACE": TraceTraceTypeToolInvocationTrace,
+	"PLANNING_TRACE":        TraceTraceTypePlanningTrace,
+	"EXECUTION_TRACE":       TraceTraceTypeExecutionTrace,
 }
 
 var mappingTraceTraceTypeEnumLowerCase = map[string]TraceTraceTypeEnum{
-	"error_trace":      TraceTraceTypeErrorTrace,
-	"retrieval_trace":  TraceTraceTypeRetrievalTrace,
-	"generation_trace": TraceTraceTypeGenerationTrace,
+	"error_trace":           TraceTraceTypeErrorTrace,
+	"retrieval_trace":       TraceTraceTypeRetrievalTrace,
+	"generation_trace":      TraceTraceTypeGenerationTrace,
+	"tool_invocation_trace": TraceTraceTypeToolInvocationTrace,
+	"planning_trace":        TraceTraceTypePlanningTrace,
+	"execution_trace":       TraceTraceTypeExecutionTrace,
 }
 
 // GetTraceTraceTypeEnumValues Enumerates the set of values for TraceTraceTypeEnum
@@ -135,6 +195,9 @@ func GetTraceTraceTypeEnumStringValues() []string {
 		"ERROR_TRACE",
 		"RETRIEVAL_TRACE",
 		"GENERATION_TRACE",
+		"TOOL_INVOCATION_TRACE",
+		"PLANNING_TRACE",
+		"EXECUTION_TRACE",
 	}
 }
 
