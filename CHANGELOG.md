@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.93.1 - 2025-06-10
+### Added 
+- Support for performing an explicit Data Guard pre-check by setting new optional dry-run parameter when creating a database in the Database service
+
 ## 65.93.0 - 2025-06-03
 ### Added 
 - Support for creating auto Autonomous Container Database backups in a remote region in the Database service 
