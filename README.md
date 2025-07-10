@@ -15,7 +15,7 @@ Are you a Developer using the OCI SDK? If so, please fill out our survey to help
 ## Versioning
 - The breaking changes in service client APIs will no longer result in a major version bump (x+1.y.z relative to the last published version). Instead, we will bump the minor version of the SDK (x.y+1.z relative to the last published version).
 - If there are no breaking changes in a release, we will bump the patch version of the SDK (x.y.z+1 relative to the last published version).
-We will continue to announce any breaking changes in a new version under the Breaking Changes section in the release changelog and on the Github release page [https://github.com/oracle/oci-go-sdk/releases].
+We will continue to announce any breaking changes in a new version under the Breaking Changes section in the release changelog and on the GitHub release page [https://github.com/oracle/oci-go-sdk/releases].
 - However, breaking changes in the SDK's common module will continue to result in a major version bump (x+1.y.z relative to the last published version). That said, we'll continue to maintain backward compatibility as much as possible to minimize the effort involved in upgrading the SDK version used by your code.
 
 ## Installing
@@ -27,7 +27,7 @@ If you are using Go modules, you can install by running the following command wi
 ```
 go get -d github.com/oracle/oci-go-sdk/v49@latest
 ```
-The latest major version (for example `v49`) can be identified on the [Github releases page](https://github.com/oracle/oci-go-sdk/releases).
+The latest major version (for example `v49`) can be identified on the [GitHub releases page](https://github.com/oracle/oci-go-sdk/releases).
 
 Alternatively, you can install a specific version (supported from `v25.0.0` on):
 ```
@@ -118,7 +118,7 @@ export OCI_GOSDK_USING_EXPECT_HEADER=FALSE
 ```sh
 export OCI_SDK_DEFAULT_CIRCUITBREAKER_ENABLED=FALSE
 ```
-- *Cicuit Breaker*: Circuit Breaker error message includes a set of previous failed responses. By default, the number of the failed responses is set to 5. It can be explicitly set using the env var:
+- *Circuit Breaker*: Circuit Breaker error message includes a set of previous failed responses. By default, the number of the failed responses is set to 5. It can be explicitly set using the env var:
 ```sh
 export OCI_SDK_CIRCUITBREAKER_NUM_HISTORY_RESPONSE=<int value>
 ``` 
