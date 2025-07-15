@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.95.2 - 2025-07-15
+### Added 
+- Support for calling Oracle Cloud Infrastructure services in the ap-delhi-1 region
+
 ## 65.95.1 - 2025-07-08
 ### Added 
 - Support for insight of Autonomous Database on Exadata Cloud@Customer (ADB on ExaC@C) in the Operations Insights service 
