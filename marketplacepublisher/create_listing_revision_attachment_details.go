@@ -77,8 +77,20 @@ func (m *createlistingrevisionattachmentdetails) UnmarshalPolymorphicJSON(data [
 
 	var err error
 	switch m.AttachmentType {
+	case "SUPPORTED_SERVICES":
+		mm := CreateSupportedServiceAttachment{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "SCREENSHOT":
 		mm := CreateScreenShotAttachmentDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "CUSTOMER_SUCCESS":
+		mm := CreateCustomerSuccessAttachment{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "REVIEW_SUPPORT_DOCUMENT":
+		mm := CreateReviewSupportDocumentAttachment{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	case "VIDEO":

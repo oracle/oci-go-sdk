@@ -149,8 +149,16 @@ func (m *listingrevisionpackage) UnmarshalPolymorphicJSON(data []byte) (interfac
 
 	var err error
 	switch m.PackageType {
+	case "STACK":
+		mm := StackPackage{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "HELM_CHART":
 		mm := HelmChartPackage{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "MACHINE_IMAGE":
+		mm := MachineImagePackage{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	case "CONTAINER_IMAGE":

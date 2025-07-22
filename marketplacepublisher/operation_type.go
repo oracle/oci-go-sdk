@@ -38,6 +38,7 @@ const (
 	OperationTypeChangeArtifactCompartment           OperationTypeEnum = "CHANGE_ARTIFACT_COMPARTMENT"
 	OperationTypeChangeTermCompartment               OperationTypeEnum = "CHANGE_TERM_COMPARTMENT"
 	OperationTypeDeleteArtifact                      OperationTypeEnum = "DELETE_ARTIFACT"
+	OperationTypeUpdateArtifact                      OperationTypeEnum = "UPDATE_ARTIFACT"
 )
 
 var mappingOperationTypeEnum = map[string]OperationTypeEnum{
@@ -61,6 +62,7 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"CHANGE_ARTIFACT_COMPARTMENT":              OperationTypeChangeArtifactCompartment,
 	"CHANGE_TERM_COMPARTMENT":                  OperationTypeChangeTermCompartment,
 	"DELETE_ARTIFACT":                          OperationTypeDeleteArtifact,
+	"UPDATE_ARTIFACT":                          OperationTypeUpdateArtifact,
 }
 
 var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
@@ -84,6 +86,7 @@ var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
 	"change_artifact_compartment":              OperationTypeChangeArtifactCompartment,
 	"change_term_compartment":                  OperationTypeChangeTermCompartment,
 	"delete_artifact":                          OperationTypeDeleteArtifact,
+	"update_artifact":                          OperationTypeUpdateArtifact,
 }
 
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum
@@ -118,6 +121,7 @@ func GetOperationTypeEnumStringValues() []string {
 		"CHANGE_ARTIFACT_COMPARTMENT",
 		"CHANGE_TERM_COMPARTMENT",
 		"DELETE_ARTIFACT",
+		"UPDATE_ARTIFACT",
 	}
 }
 

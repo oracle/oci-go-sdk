@@ -10,122 +10,333 @@
 package marketplacepublisher
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
 // ListingRevision The model for an Oracle Cloud Infrastructure Marketplace Publisher listing revision.
-type ListingRevision struct {
+type ListingRevision interface {
 
 	// Unique OCID identifier for the listing revision in Marketplace Publisher.
-	Id *string `mandatory:"true" json:"id"`
+	GetId() *string
 
 	// The unique identifier for the listing this revision belongs to.
-	ListingId *string `mandatory:"true" json:"listingId"`
+	GetListingId() *string
 
 	// The name for the listing revision.
-	DisplayName *string `mandatory:"true" json:"displayName"`
+	GetDisplayName() *string
 
 	// Single line introduction for the listing revision.
-	Headline *string `mandatory:"true" json:"headline"`
+	GetHeadline() *string
 
 	// The time the listing revision was created. An RFC3339 formatted datetime string.
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
+	GetTimeCreated() *common.SDKTime
 
 	// The time the listing revision was updated. An RFC3339 formatted datetime string.
-	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
-
-	// The categories for the listing revsion.
-	Categories []string `mandatory:"true" json:"categories"`
+	GetTimeUpdated() *common.SDKTime
 
 	// The current status for the Listing revision.
-	Status ListingRevisionStatusEnum `mandatory:"true" json:"status"`
+	GetStatus() ListingRevisionStatusEnum
 
 	// The current state of the listing revision.
-	LifecycleState ListingRevisionLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
-
-	// The listing's package type. Populated from the listing.
-	PackageType PackageTypeEnum `mandatory:"true" json:"packageType"`
-
-	// The pricing model for the listing revision.
-	PricingType ListingRevisionPricingTypeEnum `mandatory:"true" json:"pricingType"`
+	GetLifecycleState() ListingRevisionLifecycleStateEnum
 
 	// The unique identifier for the compartment.
-	CompartmentId *string `mandatory:"false" json:"compartmentId"`
+	GetCompartmentId() *string
 
 	// The revision number for the listing revision. This is an internal attribute
-	RevisionNumber *string `mandatory:"false" json:"revisionNumber"`
-
-	VersionDetails *VersionDetails `mandatory:"false" json:"versionDetails"`
+	GetRevisionNumber() *string
 
 	// The tagline of the listing revision.
-	Tagline *string `mandatory:"false" json:"tagline"`
+	GetTagline() *string
 
 	// Keywords associated with the listing revision.
-	Keywords *string `mandatory:"false" json:"keywords"`
+	GetKeywords() *string
 
 	// A short description for the listing revision.
-	ShortDescription *string `mandatory:"false" json:"shortDescription"`
+	GetShortDescription() *string
 
 	// Usage information for the listing revision.
-	UsageInformation *string `mandatory:"false" json:"usageInformation"`
+	GetUsageInformation() *string
 
 	// A long description for the listing revision.
-	LongDescription *string `mandatory:"false" json:"longDescription"`
+	GetLongDescription() *string
 
-	// System requirements for the listing revision.
-	SystemRequirements *string `mandatory:"false" json:"systemRequirements"`
-
-	// The markets supported by the listing revision.
-	Markets []string `mandatory:"false" json:"markets"`
-
-	ContentLanguage *LanguageItem `mandatory:"false" json:"contentLanguage"`
+	GetContentLanguage() *LanguageItem
 
 	// Languages supported by the publisher for the listing revision.
-	Supportedlanguages []LanguageItem `mandatory:"false" json:"supportedlanguages"`
+	GetSupportedlanguages() []LanguageItem
 
 	// Contact information to use to get support from the publisher for the listing revision.
-	SupportContacts []SupportContact `mandatory:"false" json:"supportContacts"`
+	GetSupportContacts() []SupportContact
 
 	// Links to support resources for the listing revision.
-	SupportLinks []NamedLink `mandatory:"false" json:"supportLinks"`
+	GetSupportLinks() []NamedLink
 
-	Icon *ListingRevisionIconAttachment `mandatory:"false" json:"icon"`
+	GetIcon() *ListingRevisionIconAttachment
 
 	// Status notes for the listing revision.
-	StatusNotes *string `mandatory:"false" json:"statusNotes"`
+	GetStatusNotes() *string
 
-	// Allowed tenancies provided when a listing revision is published as private.
-	AllowedTenancies []string `mandatory:"false" json:"allowedTenancies"`
-
-	// Identifies whether publisher allows internal tenancy launches for the listing revision.
-	AreInternalTenancyLaunchAllowed *bool `mandatory:"false" json:"areInternalTenancyLaunchAllowed"`
+	// The listing's package type. Populated from the listing.
+	GetPackageType() PackageTypeEnum
 
 	// Additional metadata key/value pairs for the listing revision summary.
-	ExtendedMetadata map[string]string `mandatory:"false" json:"extendedMetadata"`
+	GetExtendedMetadata() map[string]string
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
-	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
+	GetFreeformTags() map[string]string
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
 	// Example: `{"foo-namespace": {"bar-key": "value"}}`
-	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+	GetDefinedTags() map[string]map[string]interface{}
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.
 	// Example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
-	SystemTags map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
+	GetSystemTags() map[string]map[string]interface{}
 }
 
-func (m ListingRevision) String() string {
+type listingrevision struct {
+	JsonData           []byte
+	CompartmentId      *string                           `mandatory:"false" json:"compartmentId"`
+	RevisionNumber     *string                           `mandatory:"false" json:"revisionNumber"`
+	Tagline            *string                           `mandatory:"false" json:"tagline"`
+	Keywords           *string                           `mandatory:"false" json:"keywords"`
+	ShortDescription   *string                           `mandatory:"false" json:"shortDescription"`
+	UsageInformation   *string                           `mandatory:"false" json:"usageInformation"`
+	LongDescription    *string                           `mandatory:"false" json:"longDescription"`
+	ContentLanguage    *LanguageItem                     `mandatory:"false" json:"contentLanguage"`
+	Supportedlanguages []LanguageItem                    `mandatory:"false" json:"supportedlanguages"`
+	SupportContacts    []SupportContact                  `mandatory:"false" json:"supportContacts"`
+	SupportLinks       []NamedLink                       `mandatory:"false" json:"supportLinks"`
+	Icon               *ListingRevisionIconAttachment    `mandatory:"false" json:"icon"`
+	StatusNotes        *string                           `mandatory:"false" json:"statusNotes"`
+	PackageType        PackageTypeEnum                   `mandatory:"false" json:"packageType,omitempty"`
+	ExtendedMetadata   map[string]string                 `mandatory:"false" json:"extendedMetadata"`
+	FreeformTags       map[string]string                 `mandatory:"false" json:"freeformTags"`
+	DefinedTags        map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+	SystemTags         map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
+	Id                 *string                           `mandatory:"true" json:"id"`
+	ListingId          *string                           `mandatory:"true" json:"listingId"`
+	DisplayName        *string                           `mandatory:"true" json:"displayName"`
+	Headline           *string                           `mandatory:"true" json:"headline"`
+	TimeCreated        *common.SDKTime                   `mandatory:"true" json:"timeCreated"`
+	TimeUpdated        *common.SDKTime                   `mandatory:"true" json:"timeUpdated"`
+	Status             ListingRevisionStatusEnum         `mandatory:"true" json:"status"`
+	LifecycleState     ListingRevisionLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
+	ListingType        string                            `json:"listingType"`
+}
+
+// UnmarshalJSON unmarshals json
+func (m *listingrevision) UnmarshalJSON(data []byte) error {
+	m.JsonData = data
+	type Unmarshalerlistingrevision listingrevision
+	s := struct {
+		Model Unmarshalerlistingrevision
+	}{}
+	err := json.Unmarshal(data, &s.Model)
+	if err != nil {
+		return err
+	}
+	m.Id = s.Model.Id
+	m.ListingId = s.Model.ListingId
+	m.DisplayName = s.Model.DisplayName
+	m.Headline = s.Model.Headline
+	m.TimeCreated = s.Model.TimeCreated
+	m.TimeUpdated = s.Model.TimeUpdated
+	m.Status = s.Model.Status
+	m.LifecycleState = s.Model.LifecycleState
+	m.CompartmentId = s.Model.CompartmentId
+	m.RevisionNumber = s.Model.RevisionNumber
+	m.Tagline = s.Model.Tagline
+	m.Keywords = s.Model.Keywords
+	m.ShortDescription = s.Model.ShortDescription
+	m.UsageInformation = s.Model.UsageInformation
+	m.LongDescription = s.Model.LongDescription
+	m.ContentLanguage = s.Model.ContentLanguage
+	m.Supportedlanguages = s.Model.Supportedlanguages
+	m.SupportContacts = s.Model.SupportContacts
+	m.SupportLinks = s.Model.SupportLinks
+	m.Icon = s.Model.Icon
+	m.StatusNotes = s.Model.StatusNotes
+	m.PackageType = s.Model.PackageType
+	m.ExtendedMetadata = s.Model.ExtendedMetadata
+	m.FreeformTags = s.Model.FreeformTags
+	m.DefinedTags = s.Model.DefinedTags
+	m.SystemTags = s.Model.SystemTags
+	m.ListingType = s.Model.ListingType
+
+	return err
+}
+
+// UnmarshalPolymorphicJSON unmarshals polymorphic json
+func (m *listingrevision) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+
+	if data == nil || string(data) == "null" {
+		return nil, nil
+	}
+
+	var err error
+	switch m.ListingType {
+	case "SERVICE":
+		mm := ServiceListingRevision{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "LEAD_GENERATION":
+		mm := LeadGenListingRevision{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "OCI_APPLICATION":
+		mm := OciListingRevision{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	default:
+		common.Logf("Received unsupported enum value for ListingRevision: %s.", m.ListingType)
+		return *m, nil
+	}
+}
+
+// GetCompartmentId returns CompartmentId
+func (m listingrevision) GetCompartmentId() *string {
+	return m.CompartmentId
+}
+
+// GetRevisionNumber returns RevisionNumber
+func (m listingrevision) GetRevisionNumber() *string {
+	return m.RevisionNumber
+}
+
+// GetTagline returns Tagline
+func (m listingrevision) GetTagline() *string {
+	return m.Tagline
+}
+
+// GetKeywords returns Keywords
+func (m listingrevision) GetKeywords() *string {
+	return m.Keywords
+}
+
+// GetShortDescription returns ShortDescription
+func (m listingrevision) GetShortDescription() *string {
+	return m.ShortDescription
+}
+
+// GetUsageInformation returns UsageInformation
+func (m listingrevision) GetUsageInformation() *string {
+	return m.UsageInformation
+}
+
+// GetLongDescription returns LongDescription
+func (m listingrevision) GetLongDescription() *string {
+	return m.LongDescription
+}
+
+// GetContentLanguage returns ContentLanguage
+func (m listingrevision) GetContentLanguage() *LanguageItem {
+	return m.ContentLanguage
+}
+
+// GetSupportedlanguages returns Supportedlanguages
+func (m listingrevision) GetSupportedlanguages() []LanguageItem {
+	return m.Supportedlanguages
+}
+
+// GetSupportContacts returns SupportContacts
+func (m listingrevision) GetSupportContacts() []SupportContact {
+	return m.SupportContacts
+}
+
+// GetSupportLinks returns SupportLinks
+func (m listingrevision) GetSupportLinks() []NamedLink {
+	return m.SupportLinks
+}
+
+// GetIcon returns Icon
+func (m listingrevision) GetIcon() *ListingRevisionIconAttachment {
+	return m.Icon
+}
+
+// GetStatusNotes returns StatusNotes
+func (m listingrevision) GetStatusNotes() *string {
+	return m.StatusNotes
+}
+
+// GetPackageType returns PackageType
+func (m listingrevision) GetPackageType() PackageTypeEnum {
+	return m.PackageType
+}
+
+// GetExtendedMetadata returns ExtendedMetadata
+func (m listingrevision) GetExtendedMetadata() map[string]string {
+	return m.ExtendedMetadata
+}
+
+// GetFreeformTags returns FreeformTags
+func (m listingrevision) GetFreeformTags() map[string]string {
+	return m.FreeformTags
+}
+
+// GetDefinedTags returns DefinedTags
+func (m listingrevision) GetDefinedTags() map[string]map[string]interface{} {
+	return m.DefinedTags
+}
+
+// GetSystemTags returns SystemTags
+func (m listingrevision) GetSystemTags() map[string]map[string]interface{} {
+	return m.SystemTags
+}
+
+// GetId returns Id
+func (m listingrevision) GetId() *string {
+	return m.Id
+}
+
+// GetListingId returns ListingId
+func (m listingrevision) GetListingId() *string {
+	return m.ListingId
+}
+
+// GetDisplayName returns DisplayName
+func (m listingrevision) GetDisplayName() *string {
+	return m.DisplayName
+}
+
+// GetHeadline returns Headline
+func (m listingrevision) GetHeadline() *string {
+	return m.Headline
+}
+
+// GetTimeCreated returns TimeCreated
+func (m listingrevision) GetTimeCreated() *common.SDKTime {
+	return m.TimeCreated
+}
+
+// GetTimeUpdated returns TimeUpdated
+func (m listingrevision) GetTimeUpdated() *common.SDKTime {
+	return m.TimeUpdated
+}
+
+// GetStatus returns Status
+func (m listingrevision) GetStatus() ListingRevisionStatusEnum {
+	return m.Status
+}
+
+// GetLifecycleState returns LifecycleState
+func (m listingrevision) GetLifecycleState() ListingRevisionLifecycleStateEnum {
+	return m.LifecycleState
+}
+
+func (m listingrevision) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m ListingRevision) ValidateEnumValue() (bool, error) {
+func (m listingrevision) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	if _, ok := GetMappingListingRevisionStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetListingRevisionStatusEnumStringValues(), ",")))
@@ -133,13 +344,10 @@ func (m ListingRevision) ValidateEnumValue() (bool, error) {
 	if _, ok := GetMappingListingRevisionLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetListingRevisionLifecycleStateEnumStringValues(), ",")))
 	}
+
 	if _, ok := GetMappingPackageTypeEnum(string(m.PackageType)); !ok && m.PackageType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PackageType: %s. Supported values are: %s.", m.PackageType, strings.Join(GetPackageTypeEnumStringValues(), ",")))
 	}
-	if _, ok := GetMappingListingRevisionPricingTypeEnum(string(m.PricingType)); !ok && m.PricingType != "" {
-		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PricingType: %s. Supported values are: %s.", m.PricingType, strings.Join(GetListingRevisionPricingTypeEnumStringValues(), ",")))
-	}
-
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
@@ -287,51 +495,5 @@ func GetListingRevisionLifecycleStateEnumStringValues() []string {
 // GetMappingListingRevisionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingListingRevisionLifecycleStateEnum(val string) (ListingRevisionLifecycleStateEnum, bool) {
 	enum, ok := mappingListingRevisionLifecycleStateEnumLowerCase[strings.ToLower(val)]
-	return enum, ok
-}
-
-// ListingRevisionPricingTypeEnum Enum with underlying type: string
-type ListingRevisionPricingTypeEnum string
-
-// Set of constants representing the allowable values for ListingRevisionPricingTypeEnum
-const (
-	ListingRevisionPricingTypeFree  ListingRevisionPricingTypeEnum = "FREE"
-	ListingRevisionPricingTypeByol  ListingRevisionPricingTypeEnum = "BYOL"
-	ListingRevisionPricingTypePaygo ListingRevisionPricingTypeEnum = "PAYGO"
-)
-
-var mappingListingRevisionPricingTypeEnum = map[string]ListingRevisionPricingTypeEnum{
-	"FREE":  ListingRevisionPricingTypeFree,
-	"BYOL":  ListingRevisionPricingTypeByol,
-	"PAYGO": ListingRevisionPricingTypePaygo,
-}
-
-var mappingListingRevisionPricingTypeEnumLowerCase = map[string]ListingRevisionPricingTypeEnum{
-	"free":  ListingRevisionPricingTypeFree,
-	"byol":  ListingRevisionPricingTypeByol,
-	"paygo": ListingRevisionPricingTypePaygo,
-}
-
-// GetListingRevisionPricingTypeEnumValues Enumerates the set of values for ListingRevisionPricingTypeEnum
-func GetListingRevisionPricingTypeEnumValues() []ListingRevisionPricingTypeEnum {
-	values := make([]ListingRevisionPricingTypeEnum, 0)
-	for _, v := range mappingListingRevisionPricingTypeEnum {
-		values = append(values, v)
-	}
-	return values
-}
-
-// GetListingRevisionPricingTypeEnumStringValues Enumerates the set of values in String for ListingRevisionPricingTypeEnum
-func GetListingRevisionPricingTypeEnumStringValues() []string {
-	return []string{
-		"FREE",
-		"BYOL",
-		"PAYGO",
-	}
-}
-
-// GetMappingListingRevisionPricingTypeEnum performs case Insensitive comparison on enum value and return the desired enum
-func GetMappingListingRevisionPricingTypeEnum(val string) (ListingRevisionPricingTypeEnum, bool) {
-	enum, ok := mappingListingRevisionPricingTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

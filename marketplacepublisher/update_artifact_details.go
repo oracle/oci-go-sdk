@@ -76,8 +76,16 @@ func (m *updateartifactdetails) UnmarshalPolymorphicJSON(data []byte) (interface
 		mm := UpdateKubernetesImageArtifactDetails{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
+	case "STACK":
+		mm := UpdateStackArtifactDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "CONTAINER_IMAGE":
 		mm := UpdateContainerImageArtifactDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "MACHINE_IMAGE":
+		mm := UpdateMachineImageArtifactDetails{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:

@@ -23,6 +23,9 @@ type SubmitListingRevisionForReviewDetails struct {
 
 	// Identifies whether publisher allows internal tenancy launches for the listing revision.
 	AreInternalTenancyLaunchAllowed *bool `mandatory:"false" json:"areInternalTenancyLaunchAllowed"`
+
+	// Identifies whether publisher intends to publish the listing automatically upon approval.
+	ShouldAutoPublishOnApproval *bool `mandatory:"false" json:"shouldAutoPublishOnApproval"`
 }
 
 func (m SubmitListingRevisionForReviewDetails) String() string {
