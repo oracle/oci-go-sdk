@@ -32,8 +32,11 @@ type ChatDetails struct {
 	// Optional sessionId. If not provided, will chat without any prior context.
 	SessionId *string `mandatory:"false" json:"sessionId"`
 
-	// A map where each key is a toolId and the value contains tool type and additional dynamic parameters.
+	// A map where each key is a toolId and the value contains tool type and additional dynamic parameters. This field is deprecated and will be removed after July 02 2026.
 	ToolParameters map[string]string `mandatory:"false" json:"toolParameters"`
+
+	// Array of tool input objects, each specifying a tool's ID, type, and corresponding input parameters required for execution.
+	ToolInputs []ToolInput `mandatory:"false" json:"toolInputs"`
 
 	// A list of actions that have been performed based on prior required actions.
 	PerformedActions []PerformedAction `mandatory:"false" json:"performedActions"`
@@ -62,6 +65,7 @@ func (m *ChatDetails) UnmarshalJSON(data []byte) (e error) {
 		ShouldStream     *bool             `json:"shouldStream"`
 		SessionId        *string           `json:"sessionId"`
 		ToolParameters   map[string]string `json:"toolParameters"`
+		ToolInputs       []toolinput       `json:"toolInputs"`
 		PerformedActions []performedaction `json:"performedActions"`
 	}{}
 
@@ -78,6 +82,18 @@ func (m *ChatDetails) UnmarshalJSON(data []byte) (e error) {
 
 	m.ToolParameters = model.ToolParameters
 
+	m.ToolInputs = make([]ToolInput, len(model.ToolInputs))
+	for i, n := range model.ToolInputs {
+		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)
+		if e != nil {
+			return e
+		}
+		if nn != nil {
+			m.ToolInputs[i] = nn.(ToolInput)
+		} else {
+			m.ToolInputs[i] = nil
+		}
+	}
 	m.PerformedActions = make([]PerformedAction, len(model.PerformedActions))
 	for i, n := range model.PerformedActions {
 		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)

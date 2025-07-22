@@ -19,14 +19,20 @@ type ListingTypeEnum string
 // Set of constants representing the allowable values for ListingTypeEnum
 const (
 	ListingTypeOciApplication ListingTypeEnum = "OCI_APPLICATION"
+	ListingTypeLeadGeneration ListingTypeEnum = "LEAD_GENERATION"
+	ListingTypeService        ListingTypeEnum = "SERVICE"
 )
 
 var mappingListingTypeEnum = map[string]ListingTypeEnum{
 	"OCI_APPLICATION": ListingTypeOciApplication,
+	"LEAD_GENERATION": ListingTypeLeadGeneration,
+	"SERVICE":         ListingTypeService,
 }
 
 var mappingListingTypeEnumLowerCase = map[string]ListingTypeEnum{
 	"oci_application": ListingTypeOciApplication,
+	"lead_generation": ListingTypeLeadGeneration,
+	"service":         ListingTypeService,
 }
 
 // GetListingTypeEnumValues Enumerates the set of values for ListingTypeEnum
@@ -42,6 +48,8 @@ func GetListingTypeEnumValues() []ListingTypeEnum {
 func GetListingTypeEnumStringValues() []string {
 	return []string{
 		"OCI_APPLICATION",
+		"LEAD_GENERATION",
+		"SERVICE",
 	}
 }
 

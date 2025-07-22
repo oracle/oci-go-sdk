@@ -37,6 +37,9 @@ type ProductSummary struct {
 
 	// The product group for the product.
 	ProductGroup *string `mandatory:"false" json:"productGroup"`
+
+	// Additional filter properties for product
+	AdditionalFilters []AdditionalFilter `mandatory:"false" json:"additionalFilters"`
 }
 
 func (m ProductSummary) String() string {

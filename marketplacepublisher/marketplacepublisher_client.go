@@ -60,7 +60,7 @@ func newMarketplacePublisherClientFromBaseClient(baseClient common.BaseClient, c
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 
 	client = MarketplacePublisherClient{BaseClient: baseClient}
-	client.BasePath = "20220901"
+	client.BasePath = "20241201"
 	err = client.setConfigurationProvider(configProvider)
 	return
 }
@@ -140,7 +140,7 @@ func (client MarketplacePublisherClient) activateTermVersion(ctx context.Context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/TermVersion/ActivateTermVersion"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/TermVersion/ActivateTermVersion"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ActivateTermVersion", apiReferenceLink)
 		return response, err
 	}
@@ -198,7 +198,7 @@ func (client MarketplacePublisherClient) cancelWorkRequest(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/WorkRequest/CancelWorkRequest"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/WorkRequest/CancelWorkRequest"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "CancelWorkRequest", apiReferenceLink)
 		return response, err
 	}
@@ -261,7 +261,7 @@ func (client MarketplacePublisherClient) cascadingDeleteListing(ctx context.Cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Listing/CascadingDeleteListing"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Listing/CascadingDeleteListing"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "CascadingDeleteListing", apiReferenceLink)
 		return response, err
 	}
@@ -324,7 +324,7 @@ func (client MarketplacePublisherClient) cascadingDeleteListingRevision(ctx cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevision/CascadingDeleteListingRevision"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevision/CascadingDeleteListingRevision"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "CascadingDeleteListingRevision", apiReferenceLink)
 		return response, err
 	}
@@ -387,7 +387,7 @@ func (client MarketplacePublisherClient) changeArtifactCompartment(ctx context.C
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Artifact/ChangeArtifactCompartment"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Artifact/ChangeArtifactCompartment"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ChangeArtifactCompartment", apiReferenceLink)
 		return response, err
 	}
@@ -450,7 +450,7 @@ func (client MarketplacePublisherClient) changeListingCompartment(ctx context.Co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Listing/ChangeListingCompartment"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Listing/ChangeListingCompartment"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ChangeListingCompartment", apiReferenceLink)
 		return response, err
 	}
@@ -508,12 +508,12 @@ func (client MarketplacePublisherClient) changeListingRevisionToNewStatus(ctx co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevision/ChangeListingRevisionToNewStatus"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevision/ChangeListingRevisionToNewStatus"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ChangeListingRevisionToNewStatus", apiReferenceLink)
 		return response, err
 	}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &listingrevision{})
 	return response, err
 }
 
@@ -571,7 +571,7 @@ func (client MarketplacePublisherClient) changeTermCompartment(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Term/ChangeTermCompartment"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Term/ChangeTermCompartment"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ChangeTermCompartment", apiReferenceLink)
 		return response, err
 	}
@@ -634,7 +634,7 @@ func (client MarketplacePublisherClient) cloneListingRevision(ctx context.Contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevision/CloneListingRevision"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevision/CloneListingRevision"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "CloneListingRevision", apiReferenceLink)
 		return response, err
 	}
@@ -705,7 +705,7 @@ func (client MarketplacePublisherClient) createArtifact(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Artifact/CreateArtifact"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Artifact/CreateArtifact"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "CreateArtifact", apiReferenceLink)
 		return response, err
 	}
@@ -773,7 +773,7 @@ func (client MarketplacePublisherClient) createListing(ctx context.Context, requ
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Listing/CreateListing"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Listing/CreateListing"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "CreateListing", apiReferenceLink)
 		return response, err
 	}
@@ -836,12 +836,12 @@ func (client MarketplacePublisherClient) createListingRevision(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevision/CreateListingRevision"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevision/CreateListingRevision"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "CreateListingRevision", apiReferenceLink)
 		return response, err
 	}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &listingrevision{})
 	return response, err
 }
 
@@ -899,7 +899,7 @@ func (client MarketplacePublisherClient) createListingRevisionAttachment(ctx con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionAttachment/CreateListingRevisionAttachment"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionAttachment/CreateListingRevisionAttachment"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "CreateListingRevisionAttachment", apiReferenceLink)
 		return response, err
 	}
@@ -962,7 +962,7 @@ func (client MarketplacePublisherClient) createListingRevisionNote(ctx context.C
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionNote/CreateListingRevisionNote"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionNote/CreateListingRevisionNote"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "CreateListingRevisionNote", apiReferenceLink)
 		return response, err
 	}
@@ -1025,7 +1025,7 @@ func (client MarketplacePublisherClient) createListingRevisionPackage(ctx contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionPackage/CreateListingRevisionPackage"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionPackage/CreateListingRevisionPackage"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "CreateListingRevisionPackage", apiReferenceLink)
 		return response, err
 	}
@@ -1088,7 +1088,7 @@ func (client MarketplacePublisherClient) createTerm(ctx context.Context, request
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Term/CreateTerm"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Term/CreateTerm"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "CreateTerm", apiReferenceLink)
 		return response, err
 	}
@@ -1151,7 +1151,7 @@ func (client MarketplacePublisherClient) createTermVersion(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/TermVersion/CreateTermVersion"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/TermVersion/CreateTermVersion"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "CreateTermVersion", apiReferenceLink)
 		return response, err
 	}
@@ -1214,7 +1214,7 @@ func (client MarketplacePublisherClient) deleteArtifact(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Artifact/DeleteArtifact"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Artifact/DeleteArtifact"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "DeleteArtifact", apiReferenceLink)
 		return response, err
 	}
@@ -1272,7 +1272,7 @@ func (client MarketplacePublisherClient) deleteListing(ctx context.Context, requ
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Listing/DeleteListing"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Listing/DeleteListing"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "DeleteListing", apiReferenceLink)
 		return response, err
 	}
@@ -1330,7 +1330,7 @@ func (client MarketplacePublisherClient) deleteListingRevision(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevision/DeleteListingRevision"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevision/DeleteListingRevision"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "DeleteListingRevision", apiReferenceLink)
 		return response, err
 	}
@@ -1388,7 +1388,7 @@ func (client MarketplacePublisherClient) deleteListingRevisionAttachment(ctx con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionAttachment/DeleteListingRevisionAttachment"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionAttachment/DeleteListingRevisionAttachment"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "DeleteListingRevisionAttachment", apiReferenceLink)
 		return response, err
 	}
@@ -1446,7 +1446,7 @@ func (client MarketplacePublisherClient) deleteListingRevisionNote(ctx context.C
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionNote/DeleteListingRevisionNote"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionNote/DeleteListingRevisionNote"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "DeleteListingRevisionNote", apiReferenceLink)
 		return response, err
 	}
@@ -1504,7 +1504,7 @@ func (client MarketplacePublisherClient) deleteListingRevisionPackage(ctx contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionPackage/DeleteListingRevisionPackage"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionPackage/DeleteListingRevisionPackage"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "DeleteListingRevisionPackage", apiReferenceLink)
 		return response, err
 	}
@@ -1562,7 +1562,7 @@ func (client MarketplacePublisherClient) deleteTerm(ctx context.Context, request
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Term/DeleteTerm"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Term/DeleteTerm"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "DeleteTerm", apiReferenceLink)
 		return response, err
 	}
@@ -1620,7 +1620,7 @@ func (client MarketplacePublisherClient) deleteTermVersion(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/TermVersion/DeleteTermVersion"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/TermVersion/DeleteTermVersion"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "DeleteTermVersion", apiReferenceLink)
 		return response, err
 	}
@@ -1678,7 +1678,7 @@ func (client MarketplacePublisherClient) getArtifact(ctx context.Context, reques
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Artifact/GetArtifact"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Artifact/GetArtifact"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetArtifact", apiReferenceLink)
 		return response, err
 	}
@@ -1736,8 +1736,66 @@ func (client MarketplacePublisherClient) getCategory(ctx context.Context, reques
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Category/GetCategory"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Category/GetCategory"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetCategory", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// GetLead Gets the details for a lead.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetLead.go.html to see an example of how to use GetLead API.
+// A default retry strategy applies to this operation GetLead()
+func (client MarketplacePublisherClient) GetLead(ctx context.Context, request GetLeadRequest) (response GetLeadResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getLead, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetLeadResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetLeadResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetLeadResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetLeadResponse")
+	}
+	return
+}
+
+// getLead implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) getLead(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/leads/{leadId}", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetLeadResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Lead/GetLead"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetLead", apiReferenceLink)
 		return response, err
 	}
 
@@ -1794,7 +1852,7 @@ func (client MarketplacePublisherClient) getListing(ctx context.Context, request
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Listing/GetListing"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Listing/GetListing"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetListing", apiReferenceLink)
 		return response, err
 	}
@@ -1852,12 +1910,12 @@ func (client MarketplacePublisherClient) getListingRevision(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevision/GetListingRevision"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevision/GetListingRevision"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetListingRevision", apiReferenceLink)
 		return response, err
 	}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &listingrevision{})
 	return response, err
 }
 
@@ -1910,12 +1968,126 @@ func (client MarketplacePublisherClient) getListingRevisionAttachment(ctx contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionAttachment/GetListingRevisionAttachment"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionAttachment/GetListingRevisionAttachment"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetListingRevisionAttachment", apiReferenceLink)
 		return response, err
 	}
 
 	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &listingrevisionattachment{})
+	return response, err
+}
+
+// GetListingRevisionAttachmentContent Get the attachment content by identifier.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetListingRevisionAttachmentContent.go.html to see an example of how to use GetListingRevisionAttachmentContent API.
+// A default retry strategy applies to this operation GetListingRevisionAttachmentContent()
+func (client MarketplacePublisherClient) GetListingRevisionAttachmentContent(ctx context.Context, request GetListingRevisionAttachmentContentRequest) (response GetListingRevisionAttachmentContentResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getListingRevisionAttachmentContent, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetListingRevisionAttachmentContentResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetListingRevisionAttachmentContentResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetListingRevisionAttachmentContentResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetListingRevisionAttachmentContentResponse")
+	}
+	return
+}
+
+// getListingRevisionAttachmentContent implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) getListingRevisionAttachmentContent(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/listingRevisionAttachments/{listingRevisionAttachmentId}/content", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetListingRevisionAttachmentContentResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionAttachment/GetListingRevisionAttachmentContent"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetListingRevisionAttachmentContent", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// GetListingRevisionIconContent Gets the content for a listing revision icon.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetListingRevisionIconContent.go.html to see an example of how to use GetListingRevisionIconContent API.
+// A default retry strategy applies to this operation GetListingRevisionIconContent()
+func (client MarketplacePublisherClient) GetListingRevisionIconContent(ctx context.Context, request GetListingRevisionIconContentRequest) (response GetListingRevisionIconContentResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getListingRevisionIconContent, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetListingRevisionIconContentResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetListingRevisionIconContentResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetListingRevisionIconContentResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetListingRevisionIconContentResponse")
+	}
+	return
+}
+
+// getListingRevisionIconContent implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) getListingRevisionIconContent(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/listingRevisions/{listingRevisionId}/icon/content", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetListingRevisionIconContentResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevision/GetListingRevisionIconContent"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetListingRevisionIconContent", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return response, err
 }
 
@@ -1968,7 +2140,7 @@ func (client MarketplacePublisherClient) getListingRevisionNote(ctx context.Cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionNote/GetListingRevisionNote"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionNote/GetListingRevisionNote"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetListingRevisionNote", apiReferenceLink)
 		return response, err
 	}
@@ -2026,7 +2198,7 @@ func (client MarketplacePublisherClient) getListingRevisionPackage(ctx context.C
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionPackage/GetListingRevisionPackage"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionPackage/GetListingRevisionPackage"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetListingRevisionPackage", apiReferenceLink)
 		return response, err
 	}
@@ -2084,7 +2256,7 @@ func (client MarketplacePublisherClient) getMarket(ctx context.Context, request 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Market/GetMarket"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Market/GetMarket"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetMarket", apiReferenceLink)
 		return response, err
 	}
@@ -2142,7 +2314,7 @@ func (client MarketplacePublisherClient) getProduct(ctx context.Context, request
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Product/GetProduct"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Product/GetProduct"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetProduct", apiReferenceLink)
 		return response, err
 	}
@@ -2200,8 +2372,123 @@ func (client MarketplacePublisherClient) getPublisher(ctx context.Context, reque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Publisher/GetPublisher"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Publisher/GetPublisher"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetPublisher", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// GetSupportDoc Gets a SupportDoc by code identifier
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetSupportDoc.go.html to see an example of how to use GetSupportDoc API.
+// A default retry strategy applies to this operation GetSupportDoc()
+func (client MarketplacePublisherClient) GetSupportDoc(ctx context.Context, request GetSupportDocRequest) (response GetSupportDocResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getSupportDoc, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetSupportDocResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetSupportDocResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetSupportDocResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetSupportDocResponse")
+	}
+	return
+}
+
+// getSupportDoc implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) getSupportDoc(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/supportDocs/{supportDocCode}", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetSupportDocResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/SupportDoc/GetSupportDoc"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetSupportDoc", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// GetSupportDocContent Gets a Support Doc content by supportDocCode
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetSupportDocContent.go.html to see an example of how to use GetSupportDocContent API.
+// A default retry strategy applies to this operation GetSupportDocContent()
+func (client MarketplacePublisherClient) GetSupportDocContent(ctx context.Context, request GetSupportDocContentRequest) (response GetSupportDocContentResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getSupportDocContent, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetSupportDocContentResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetSupportDocContentResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetSupportDocContentResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetSupportDocContentResponse")
+	}
+	return
+}
+
+// getSupportDocContent implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) getSupportDocContent(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/supportDocs/{supportDocCode}/content", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetSupportDocContentResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/SupportDoc/GetSupportDocContent"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetSupportDocContent", apiReferenceLink)
 		return response, err
 	}
 
@@ -2258,7 +2545,7 @@ func (client MarketplacePublisherClient) getTerm(ctx context.Context, request co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Term/GetTerm"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Term/GetTerm"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetTerm", apiReferenceLink)
 		return response, err
 	}
@@ -2316,8 +2603,65 @@ func (client MarketplacePublisherClient) getTermVersion(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/TermVersion/GetTermVersion"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/TermVersion/GetTermVersion"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetTermVersion", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// GetTermVersionContent Gets a Term Version content by the identifier.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetTermVersionContent.go.html to see an example of how to use GetTermVersionContent API.
+// A default retry strategy applies to this operation GetTermVersionContent()
+func (client MarketplacePublisherClient) GetTermVersionContent(ctx context.Context, request GetTermVersionContentRequest) (response GetTermVersionContentResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getTermVersionContent, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetTermVersionContentResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetTermVersionContentResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetTermVersionContentResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetTermVersionContentResponse")
+	}
+	return
+}
+
+// getTermVersionContent implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) getTermVersionContent(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/termVersions/{termVersionId}/content", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetTermVersionContentResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/TermVersion/GetTermVersionContent"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetTermVersionContent", apiReferenceLink)
 		return response, err
 	}
 
@@ -2374,7 +2718,7 @@ func (client MarketplacePublisherClient) getWorkRequest(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/WorkRequest/GetWorkRequest"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/WorkRequest/GetWorkRequest"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetWorkRequest", apiReferenceLink)
 		return response, err
 	}
@@ -2434,8 +2778,66 @@ func (client MarketplacePublisherClient) listArtifacts(ctx context.Context, requ
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ArtifactCollection/ListArtifacts"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ArtifactCollection/ListArtifacts"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListArtifacts", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ListAvailableServices List all published service listing revisions
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListAvailableServices.go.html to see an example of how to use ListAvailableServices API.
+// A default retry strategy applies to this operation ListAvailableServices()
+func (client MarketplacePublisherClient) ListAvailableServices(ctx context.Context, request ListAvailableServicesRequest) (response ListAvailableServicesResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listAvailableServices, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListAvailableServicesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListAvailableServicesResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListAvailableServicesResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListAvailableServicesResponse")
+	}
+	return
+}
+
+// listAvailableServices implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) listAvailableServices(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/availableServices", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListAvailableServicesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/AvailableServiceCollection/ListAvailableServices"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListAvailableServices", apiReferenceLink)
 		return response, err
 	}
 
@@ -2494,8 +2896,184 @@ func (client MarketplacePublisherClient) listCategories(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/CategoryCollection/ListCategories"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/CategoryCollection/ListCategories"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListCategories", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ListCustomerInstanceReportRecords List customer instance report records
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListCustomerInstanceReportRecords.go.html to see an example of how to use ListCustomerInstanceReportRecords API.
+// A default retry strategy applies to this operation ListCustomerInstanceReportRecords()
+func (client MarketplacePublisherClient) ListCustomerInstanceReportRecords(ctx context.Context, request ListCustomerInstanceReportRecordsRequest) (response ListCustomerInstanceReportRecordsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listCustomerInstanceReportRecords, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListCustomerInstanceReportRecordsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListCustomerInstanceReportRecordsResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListCustomerInstanceReportRecordsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListCustomerInstanceReportRecordsResponse")
+	}
+	return
+}
+
+// listCustomerInstanceReportRecords implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) listCustomerInstanceReportRecords(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/customerInstanceReportRecords", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListCustomerInstanceReportRecordsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/CustomerInstanceReportRecordCollection/ListCustomerInstanceReportRecords"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListCustomerInstanceReportRecords", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ListDisbursementReportRecords List disbursement report records
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListDisbursementReportRecords.go.html to see an example of how to use ListDisbursementReportRecords API.
+// A default retry strategy applies to this operation ListDisbursementReportRecords()
+func (client MarketplacePublisherClient) ListDisbursementReportRecords(ctx context.Context, request ListDisbursementReportRecordsRequest) (response ListDisbursementReportRecordsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listDisbursementReportRecords, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListDisbursementReportRecordsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListDisbursementReportRecordsResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListDisbursementReportRecordsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListDisbursementReportRecordsResponse")
+	}
+	return
+}
+
+// listDisbursementReportRecords implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) listDisbursementReportRecords(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/disbursementReportRecords", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListDisbursementReportRecordsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/DisbursementReportRecordCollection/ListDisbursementReportRecords"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListDisbursementReportRecords", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ListLeads Lists the leads in your compartment that belong to a listing. You must specify your listing's OCID as the value for
+// the listing ID.
+// For information about OCIDs, see Resource Identifiers (Content/General/Concepts/identifiers.htm).
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListLeads.go.html to see an example of how to use ListLeads API.
+// A default retry strategy applies to this operation ListLeads()
+func (client MarketplacePublisherClient) ListLeads(ctx context.Context, request ListLeadsRequest) (response ListLeadsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listLeads, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListLeadsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListLeadsResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListLeadsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListLeadsResponse")
+	}
+	return
+}
+
+// listLeads implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) listLeads(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/leads", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListLeadsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/LeadCollection/ListLeads"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListLeads", apiReferenceLink)
 		return response, err
 	}
 
@@ -2552,7 +3130,7 @@ func (client MarketplacePublisherClient) listListingRevisionAttachments(ctx cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionAttachmentCollection/ListListingRevisionAttachments"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionAttachmentCollection/ListListingRevisionAttachments"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListListingRevisionAttachments", apiReferenceLink)
 		return response, err
 	}
@@ -2610,7 +3188,7 @@ func (client MarketplacePublisherClient) listListingRevisionNotes(ctx context.Co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionNoteCollection/ListListingRevisionNotes"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionNoteCollection/ListListingRevisionNotes"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListListingRevisionNotes", apiReferenceLink)
 		return response, err
 	}
@@ -2668,7 +3246,7 @@ func (client MarketplacePublisherClient) listListingRevisionPackages(ctx context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionPackageCollection/ListListingRevisionPackages"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionPackageCollection/ListListingRevisionPackages"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListListingRevisionPackages", apiReferenceLink)
 		return response, err
 	}
@@ -2728,7 +3306,7 @@ func (client MarketplacePublisherClient) listListingRevisions(ctx context.Contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionCollection/ListListingRevisions"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionCollection/ListListingRevisions"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListListingRevisions", apiReferenceLink)
 		return response, err
 	}
@@ -2788,7 +3366,7 @@ func (client MarketplacePublisherClient) listListings(ctx context.Context, reque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingCollection/ListListings"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingCollection/ListListings"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListListings", apiReferenceLink)
 		return response, err
 	}
@@ -2848,7 +3426,7 @@ func (client MarketplacePublisherClient) listMarkets(ctx context.Context, reques
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/MarketCollection/ListMarkets"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/MarketCollection/ListMarkets"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListMarkets", apiReferenceLink)
 		return response, err
 	}
@@ -2908,7 +3486,7 @@ func (client MarketplacePublisherClient) listProducts(ctx context.Context, reque
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ProductCollection/ListProducts"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ProductCollection/ListProducts"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListProducts", apiReferenceLink)
 		return response, err
 	}
@@ -2966,8 +3544,186 @@ func (client MarketplacePublisherClient) listPublishers(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/PublisherCollection/ListPublishers"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/PublisherCollection/ListPublishers"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListPublishers", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ListSupportDocs Lists the supportDocs in your compartment. You must specify your compartment's OCID as the value for
+// the compartment ID.
+// For information about OCIDs, see Resource Identifiers (Content/General/Concepts/identifiers.htm).
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListSupportDocs.go.html to see an example of how to use ListSupportDocs API.
+// A default retry strategy applies to this operation ListSupportDocs()
+func (client MarketplacePublisherClient) ListSupportDocs(ctx context.Context, request ListSupportDocsRequest) (response ListSupportDocsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listSupportDocs, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListSupportDocsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListSupportDocsResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListSupportDocsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListSupportDocsResponse")
+	}
+	return
+}
+
+// listSupportDocs implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) listSupportDocs(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/supportDocs", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListSupportDocsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/SupportDocCollection/ListSupportDocs"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListSupportDocs", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ListSupportedCurrencies Lists the currencies supported by the Marketplace Publisher Service. You must specify your compartment's OCID as the value for
+// the compartment ID.
+// For information about OCIDs, see Resource Identifiers (Content/General/Concepts/identifiers.htm).
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListSupportedCurrencies.go.html to see an example of how to use ListSupportedCurrencies API.
+// A default retry strategy applies to this operation ListSupportedCurrencies()
+func (client MarketplacePublisherClient) ListSupportedCurrencies(ctx context.Context, request ListSupportedCurrenciesRequest) (response ListSupportedCurrenciesResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listSupportedCurrencies, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListSupportedCurrenciesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListSupportedCurrenciesResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListSupportedCurrenciesResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListSupportedCurrenciesResponse")
+	}
+	return
+}
+
+// listSupportedCurrencies implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) listSupportedCurrencies(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/supportedCurrencies", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListSupportedCurrenciesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/SupportedCurrencyCollection/ListSupportedCurrencies"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListSupportedCurrencies", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ListSupportedShapes Lists the shapes available to select from.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListSupportedShapes.go.html to see an example of how to use ListSupportedShapes API.
+// A default retry strategy applies to this operation ListSupportedShapes()
+func (client MarketplacePublisherClient) ListSupportedShapes(ctx context.Context, request ListSupportedShapesRequest) (response ListSupportedShapesResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listSupportedShapes, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListSupportedShapesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListSupportedShapesResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListSupportedShapesResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListSupportedShapesResponse")
+	}
+	return
+}
+
+// listSupportedShapes implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) listSupportedShapes(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/supportedShapes", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListSupportedShapesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/SupportedShapeCollection/ListSupportedShapes"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListSupportedShapes", apiReferenceLink)
 		return response, err
 	}
 
@@ -3024,7 +3780,7 @@ func (client MarketplacePublisherClient) listTermVersions(ctx context.Context, r
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/TermVersionCollection/ListTermVersions"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/TermVersionCollection/ListTermVersions"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListTermVersions", apiReferenceLink)
 		return response, err
 	}
@@ -3082,7 +3838,7 @@ func (client MarketplacePublisherClient) listTerms(ctx context.Context, request 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/TermCollection/ListTerms"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/TermCollection/ListTerms"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListTerms", apiReferenceLink)
 		return response, err
 	}
@@ -3140,7 +3896,7 @@ func (client MarketplacePublisherClient) listWorkRequestErrors(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/WorkRequestError/ListWorkRequestErrors"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/WorkRequestError/ListWorkRequestErrors"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListWorkRequestErrors", apiReferenceLink)
 		return response, err
 	}
@@ -3198,7 +3954,7 @@ func (client MarketplacePublisherClient) listWorkRequestLogs(ctx context.Context
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/WorkRequestLogEntry/ListWorkRequestLogs"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/WorkRequestLogEntry/ListWorkRequestLogs"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListWorkRequestLogs", apiReferenceLink)
 		return response, err
 	}
@@ -3256,7 +4012,7 @@ func (client MarketplacePublisherClient) listWorkRequests(ctx context.Context, r
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/WorkRequest/ListWorkRequests"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/WorkRequest/ListWorkRequests"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListWorkRequests", apiReferenceLink)
 		return response, err
 	}
@@ -3319,7 +4075,7 @@ func (client MarketplacePublisherClient) markListingRevisionPackageAsDefault(ctx
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionPackage/MarkListingRevisionPackageAsDefault"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionPackage/MarkListingRevisionPackageAsDefault"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "MarkListingRevisionPackageAsDefault", apiReferenceLink)
 		return response, err
 	}
@@ -3382,7 +4138,7 @@ func (client MarketplacePublisherClient) publishListingRevision(ctx context.Cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevision/PublishListingRevision"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevision/PublishListingRevision"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "PublishListingRevision", apiReferenceLink)
 		return response, err
 	}
@@ -3445,7 +4201,7 @@ func (client MarketplacePublisherClient) publishListingRevisionAsPrivate(ctx con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevision/PublishListingRevisionAsPrivate"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevision/PublishListingRevisionAsPrivate"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "PublishListingRevisionAsPrivate", apiReferenceLink)
 		return response, err
 	}
@@ -3508,7 +4264,7 @@ func (client MarketplacePublisherClient) publishListingRevisionPackage(ctx conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionPackage/PublishListingRevisionPackage"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionPackage/PublishListingRevisionPackage"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "PublishListingRevisionPackage", apiReferenceLink)
 		return response, err
 	}
@@ -3571,12 +4327,12 @@ func (client MarketplacePublisherClient) submitListingRevisionForReview(ctx cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevision/SubmitListingRevisionForReview"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevision/SubmitListingRevisionForReview"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "SubmitListingRevisionForReview", apiReferenceLink)
 		return response, err
 	}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &listingrevision{})
 	return response, err
 }
 
@@ -3634,7 +4390,7 @@ func (client MarketplacePublisherClient) unPublishListingRevisionPackage(ctx con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionPackage/UnPublishListingRevisionPackage"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionPackage/UnPublishListingRevisionPackage"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "UnPublishListingRevisionPackage", apiReferenceLink)
 		return response, err
 	}
@@ -3692,7 +4448,7 @@ func (client MarketplacePublisherClient) updateArtifact(ctx context.Context, req
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Artifact/UpdateArtifact"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Artifact/UpdateArtifact"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "UpdateArtifact", apiReferenceLink)
 		return response, err
 	}
@@ -3750,7 +4506,7 @@ func (client MarketplacePublisherClient) updateListing(ctx context.Context, requ
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Listing/UpdateListing"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Listing/UpdateListing"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "UpdateListing", apiReferenceLink)
 		return response, err
 	}
@@ -3808,12 +4564,12 @@ func (client MarketplacePublisherClient) updateListingRevision(ctx context.Conte
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevision/UpdateListingRevision"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevision/UpdateListingRevision"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "UpdateListingRevision", apiReferenceLink)
 		return response, err
 	}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &listingrevision{})
 	return response, err
 }
 
@@ -3866,7 +4622,7 @@ func (client MarketplacePublisherClient) updateListingRevisionAttachment(ctx con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionAttachment/UpdateListingRevisionAttachment"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionAttachment/UpdateListingRevisionAttachment"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "UpdateListingRevisionAttachment", apiReferenceLink)
 		return response, err
 	}
@@ -3924,7 +4680,7 @@ func (client MarketplacePublisherClient) updateListingRevisionAttachmentContent(
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionAttachment/UpdateListingRevisionAttachmentContent"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionAttachment/UpdateListingRevisionAttachmentContent"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "UpdateListingRevisionAttachmentContent", apiReferenceLink)
 		return response, err
 	}
@@ -3982,8 +4738,66 @@ func (client MarketplacePublisherClient) updateListingRevisionIconContent(ctx co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevision/UpdateListingRevisionIconContent"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevision/UpdateListingRevisionIconContent"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "UpdateListingRevisionIconContent", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &listingrevision{})
+	return response, err
+}
+
+// UpdateListingRevisionNote Updates the Listing Revision Note tag data
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateListingRevisionNote.go.html to see an example of how to use UpdateListingRevisionNote API.
+// A default retry strategy applies to this operation UpdateListingRevisionNote()
+func (client MarketplacePublisherClient) UpdateListingRevisionNote(ctx context.Context, request UpdateListingRevisionNoteRequest) (response UpdateListingRevisionNoteResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.updateListingRevisionNote, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = UpdateListingRevisionNoteResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = UpdateListingRevisionNoteResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(UpdateListingRevisionNoteResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into UpdateListingRevisionNoteResponse")
+	}
+	return
+}
+
+// updateListingRevisionNote implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) updateListingRevisionNote(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/listingRevisionNotes/{listingRevisionNoteId}", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateListingRevisionNoteResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionNote/UpdateListingRevisionNote"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "UpdateListingRevisionNote", apiReferenceLink)
 		return response, err
 	}
 
@@ -4040,7 +4854,7 @@ func (client MarketplacePublisherClient) updateListingRevisionPackage(ctx contex
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevisionPackage/UpdateListingRevisionPackage"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionPackage/UpdateListingRevisionPackage"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "UpdateListingRevisionPackage", apiReferenceLink)
 		return response, err
 	}
@@ -4098,7 +4912,7 @@ func (client MarketplacePublisherClient) updateTerm(ctx context.Context, request
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Term/UpdateTerm"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Term/UpdateTerm"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "UpdateTerm", apiReferenceLink)
 		return response, err
 	}
@@ -4156,7 +4970,7 @@ func (client MarketplacePublisherClient) updateTermVersion(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/TermVersion/UpdateTermVersion"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/TermVersion/UpdateTermVersion"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "UpdateTermVersion", apiReferenceLink)
 		return response, err
 	}
@@ -4214,7 +5028,7 @@ func (client MarketplacePublisherClient) updateTermVersionContent(ctx context.Co
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/TermVersion/UpdateTermVersionContent"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/TermVersion/UpdateTermVersionContent"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "UpdateTermVersionContent", apiReferenceLink)
 		return response, err
 	}
@@ -4277,7 +5091,7 @@ func (client MarketplacePublisherClient) validateAndPublishArtifact(ctx context.
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/Artifact/ValidateAndPublishArtifact"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Artifact/ValidateAndPublishArtifact"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ValidateAndPublishArtifact", apiReferenceLink)
 		return response, err
 	}
@@ -4340,7 +5154,7 @@ func (client MarketplacePublisherClient) withdrawListingRevision(ctx context.Con
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20220901/ListingRevision/WithdrawListingRevision"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevision/WithdrawListingRevision"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "WithdrawListingRevision", apiReferenceLink)
 		return response, err
 	}

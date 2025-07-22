@@ -46,6 +46,9 @@ type ListingRevisionAttachmentSummary struct {
 	// Example: `2022-09-24T21:10:29.600Z`
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
 
+	// Possible lifecycle states.
+	DocumentCategory ListingRevisionAttachmentSummaryDocumentCategoryEnum `mandatory:"false" json:"documentCategory,omitempty"`
+
 	// The MIME type of the screenshot.
 	MimeType *string `mandatory:"false" json:"mimeType"`
 
@@ -78,6 +81,9 @@ func (m ListingRevisionAttachmentSummary) ValidateEnumValue() (bool, error) {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AttachmentType: %s. Supported values are: %s.", m.AttachmentType, strings.Join(GetListingRevisionAttachmentAttachmentTypeEnumStringValues(), ",")))
 	}
 
+	if _, ok := GetMappingListingRevisionAttachmentSummaryDocumentCategoryEnum(string(m.DocumentCategory)); !ok && m.DocumentCategory != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DocumentCategory: %s. Supported values are: %s.", m.DocumentCategory, strings.Join(GetListingRevisionAttachmentSummaryDocumentCategoryEnumStringValues(), ",")))
+	}
 	if _, ok := GetMappingListingRevisionAttachmentLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetListingRevisionAttachmentLifecycleStateEnumStringValues(), ",")))
 	}
@@ -85,4 +91,70 @@ func (m ListingRevisionAttachmentSummary) ValidateEnumValue() (bool, error) {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
 	return false, nil
+}
+
+// ListingRevisionAttachmentSummaryDocumentCategoryEnum Enum with underlying type: string
+type ListingRevisionAttachmentSummaryDocumentCategoryEnum string
+
+// Set of constants representing the allowable values for ListingRevisionAttachmentSummaryDocumentCategoryEnum
+const (
+	ListingRevisionAttachmentSummaryDocumentCategoryCaseStudies          ListingRevisionAttachmentSummaryDocumentCategoryEnum = "CASE_STUDIES"
+	ListingRevisionAttachmentSummaryDocumentCategoryCustomizationGuides  ListingRevisionAttachmentSummaryDocumentCategoryEnum = "CUSTOMIZATION_GUIDES"
+	ListingRevisionAttachmentSummaryDocumentCategoryDataSheets           ListingRevisionAttachmentSummaryDocumentCategoryEnum = "DATA_SHEETS"
+	ListingRevisionAttachmentSummaryDocumentCategoryPressRelease         ListingRevisionAttachmentSummaryDocumentCategoryEnum = "PRESS_RELEASE"
+	ListingRevisionAttachmentSummaryDocumentCategoryProductDocumentation ListingRevisionAttachmentSummaryDocumentCategoryEnum = "PRODUCT_DOCUMENTATION"
+	ListingRevisionAttachmentSummaryDocumentCategoryUserGuides           ListingRevisionAttachmentSummaryDocumentCategoryEnum = "USER_GUIDES"
+	ListingRevisionAttachmentSummaryDocumentCategoryWebinars             ListingRevisionAttachmentSummaryDocumentCategoryEnum = "WEBINARS"
+	ListingRevisionAttachmentSummaryDocumentCategoryWhitepapers          ListingRevisionAttachmentSummaryDocumentCategoryEnum = "WHITEPAPERS"
+)
+
+var mappingListingRevisionAttachmentSummaryDocumentCategoryEnum = map[string]ListingRevisionAttachmentSummaryDocumentCategoryEnum{
+	"CASE_STUDIES":          ListingRevisionAttachmentSummaryDocumentCategoryCaseStudies,
+	"CUSTOMIZATION_GUIDES":  ListingRevisionAttachmentSummaryDocumentCategoryCustomizationGuides,
+	"DATA_SHEETS":           ListingRevisionAttachmentSummaryDocumentCategoryDataSheets,
+	"PRESS_RELEASE":         ListingRevisionAttachmentSummaryDocumentCategoryPressRelease,
+	"PRODUCT_DOCUMENTATION": ListingRevisionAttachmentSummaryDocumentCategoryProductDocumentation,
+	"USER_GUIDES":           ListingRevisionAttachmentSummaryDocumentCategoryUserGuides,
+	"WEBINARS":              ListingRevisionAttachmentSummaryDocumentCategoryWebinars,
+	"WHITEPAPERS":           ListingRevisionAttachmentSummaryDocumentCategoryWhitepapers,
+}
+
+var mappingListingRevisionAttachmentSummaryDocumentCategoryEnumLowerCase = map[string]ListingRevisionAttachmentSummaryDocumentCategoryEnum{
+	"case_studies":          ListingRevisionAttachmentSummaryDocumentCategoryCaseStudies,
+	"customization_guides":  ListingRevisionAttachmentSummaryDocumentCategoryCustomizationGuides,
+	"data_sheets":           ListingRevisionAttachmentSummaryDocumentCategoryDataSheets,
+	"press_release":         ListingRevisionAttachmentSummaryDocumentCategoryPressRelease,
+	"product_documentation": ListingRevisionAttachmentSummaryDocumentCategoryProductDocumentation,
+	"user_guides":           ListingRevisionAttachmentSummaryDocumentCategoryUserGuides,
+	"webinars":              ListingRevisionAttachmentSummaryDocumentCategoryWebinars,
+	"whitepapers":           ListingRevisionAttachmentSummaryDocumentCategoryWhitepapers,
+}
+
+// GetListingRevisionAttachmentSummaryDocumentCategoryEnumValues Enumerates the set of values for ListingRevisionAttachmentSummaryDocumentCategoryEnum
+func GetListingRevisionAttachmentSummaryDocumentCategoryEnumValues() []ListingRevisionAttachmentSummaryDocumentCategoryEnum {
+	values := make([]ListingRevisionAttachmentSummaryDocumentCategoryEnum, 0)
+	for _, v := range mappingListingRevisionAttachmentSummaryDocumentCategoryEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetListingRevisionAttachmentSummaryDocumentCategoryEnumStringValues Enumerates the set of values in String for ListingRevisionAttachmentSummaryDocumentCategoryEnum
+func GetListingRevisionAttachmentSummaryDocumentCategoryEnumStringValues() []string {
+	return []string{
+		"CASE_STUDIES",
+		"CUSTOMIZATION_GUIDES",
+		"DATA_SHEETS",
+		"PRESS_RELEASE",
+		"PRODUCT_DOCUMENTATION",
+		"USER_GUIDES",
+		"WEBINARS",
+		"WHITEPAPERS",
+	}
+}
+
+// GetMappingListingRevisionAttachmentSummaryDocumentCategoryEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListingRevisionAttachmentSummaryDocumentCategoryEnum(val string) (ListingRevisionAttachmentSummaryDocumentCategoryEnum, bool) {
+	enum, ok := mappingListingRevisionAttachmentSummaryDocumentCategoryEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
 }

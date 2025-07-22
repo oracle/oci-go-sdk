@@ -20,16 +20,22 @@ type ArtifactTypeEnumEnum string
 const (
 	ArtifactTypeEnumContainerImage ArtifactTypeEnumEnum = "CONTAINER_IMAGE"
 	ArtifactTypeEnumHelmChart      ArtifactTypeEnumEnum = "HELM_CHART"
+	ArtifactTypeEnumMachineImage   ArtifactTypeEnumEnum = "MACHINE_IMAGE"
+	ArtifactTypeEnumStack          ArtifactTypeEnumEnum = "STACK"
 )
 
 var mappingArtifactTypeEnumEnum = map[string]ArtifactTypeEnumEnum{
 	"CONTAINER_IMAGE": ArtifactTypeEnumContainerImage,
 	"HELM_CHART":      ArtifactTypeEnumHelmChart,
+	"MACHINE_IMAGE":   ArtifactTypeEnumMachineImage,
+	"STACK":           ArtifactTypeEnumStack,
 }
 
 var mappingArtifactTypeEnumEnumLowerCase = map[string]ArtifactTypeEnumEnum{
 	"container_image": ArtifactTypeEnumContainerImage,
 	"helm_chart":      ArtifactTypeEnumHelmChart,
+	"machine_image":   ArtifactTypeEnumMachineImage,
+	"stack":           ArtifactTypeEnumStack,
 }
 
 // GetArtifactTypeEnumEnumValues Enumerates the set of values for ArtifactTypeEnumEnum
@@ -46,6 +52,8 @@ func GetArtifactTypeEnumEnumStringValues() []string {
 	return []string{
 		"CONTAINER_IMAGE",
 		"HELM_CHART",
+		"MACHINE_IMAGE",
+		"STACK",
 	}
 }
 

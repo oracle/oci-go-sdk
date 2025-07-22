@@ -76,8 +76,20 @@ func (m *updatelistingrevisionattachmentdetails) UnmarshalPolymorphicJSON(data [
 		mm := UpdateScreenShotAttachmentDetails{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
+	case "CUSTOMER_SUCCESS":
+		mm := UpdateCustomerSuccessAttachment{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "REVIEW_SUPPORT_DOCUMENT":
+		mm := UpdateReviewSupportDocumentAttachment{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "RELATED_DOCUMENT":
 		mm := UpdateRelatedDocumentAttachmentDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "SUPPORTED_SERVICES":
+		mm := UpdateSupportedServiceAttachment{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	case "VIDEO":
