@@ -33,6 +33,9 @@ type ListProductsRequest struct {
 	// The field to sort by. Only one sort order may be provided. Default order for timeCreated is descending. Default order for displayName is ascending.
 	SortBy ListProductsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
+	// Product Group
+	ProductGroup *string `mandatory:"false" contributesTo:"query" name:"productGroup"`
+
 	// The client request ID for tracing.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 

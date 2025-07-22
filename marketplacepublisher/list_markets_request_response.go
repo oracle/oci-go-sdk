@@ -39,6 +39,9 @@ type ListMarketsRequest struct {
 	// A filter to return only resources that match the entire name given.
 	Name *string `mandatory:"false" contributesTo:"query" name:"name"`
 
+	// Listing OCID to query resource against.
+	ListingId *string `mandatory:"false" contributesTo:"query" name:"listingId"`
+
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
 	RequestMetadata common.RequestMetadata

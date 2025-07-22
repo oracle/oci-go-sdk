@@ -27,8 +27,12 @@ type ChatResult struct {
 	// The trace that displays the internal progression, such as reasoning and actions during an execution.
 	Traces []Trace `mandatory:"false" json:"traces"`
 
-	// A map where each key is a toolId and the value contains tool type and additional dynamic results.
+	// A map where each key is a toolId and the value contains tool type and additional dynamic results. This field is deprecated and will be removed after July 02 2026.
 	ToolResults map[string]string `mandatory:"false" json:"toolResults"`
+
+	// Array of tool outputs in execution order. Each item includes the tool OCID, output type,
+	// and corresponding content. The result structure is defined by the `toolOutputType` discriminator.
+	ToolOutputs []ToolOutput `mandatory:"false" json:"toolOutputs"`
 
 	// A list of actions the agent requires the user or agent client to perform.
 	RequiredActions []RequiredAction `mandatory:"false" json:"requiredActions"`
@@ -59,6 +63,7 @@ func (m *ChatResult) UnmarshalJSON(data []byte) (e error) {
 		Message         *Message          `json:"message"`
 		Traces          []trace           `json:"traces"`
 		ToolResults     map[string]string `json:"toolResults"`
+		ToolOutputs     []tooloutput      `json:"toolOutputs"`
 		RequiredActions []requiredaction  `json:"requiredActions"`
 		GuardrailResult *string           `json:"guardrailResult"`
 	}{}
@@ -84,6 +89,18 @@ func (m *ChatResult) UnmarshalJSON(data []byte) (e error) {
 	}
 	m.ToolResults = model.ToolResults
 
+	m.ToolOutputs = make([]ToolOutput, len(model.ToolOutputs))
+	for i, n := range model.ToolOutputs {
+		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)
+		if e != nil {
+			return e
+		}
+		if nn != nil {
+			m.ToolOutputs[i] = nn.(ToolOutput)
+		} else {
+			m.ToolOutputs[i] = nil
+		}
+	}
 	m.RequiredActions = make([]RequiredAction, len(model.RequiredActions))
 	for i, n := range model.RequiredActions {
 		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)

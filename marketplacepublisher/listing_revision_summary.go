@@ -27,6 +27,9 @@ type ListingRevisionSummary struct {
 	// The unique identifier for the compartment.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
+	// The listing's type. Populated from the listing.
+	ListingType ListingTypeEnum `mandatory:"true" json:"listingType"`
+
 	// The name of the listing revision.
 	DisplayName *string `mandatory:"true" json:"displayName"`
 
@@ -38,12 +41,6 @@ type ListingRevisionSummary struct {
 
 	// The listing's package type.
 	PackageType PackageTypeEnum `mandatory:"true" json:"packageType"`
-
-	// Pricing type of the listing.
-	PricingType ListingRevisionPricingTypeEnum `mandatory:"true" json:"pricingType"`
-
-	// Categories that the listing revision belongs to.
-	Categories []string `mandatory:"true" json:"categories"`
 
 	// The date and time the listing revision was created, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
 	// Example: `2022-09-15T21:10:29.600Z`
@@ -60,9 +57,6 @@ type ListingRevisionSummary struct {
 	Tagline *string `mandatory:"false" json:"tagline"`
 
 	Icon *ListingRevisionIconAttachment `mandatory:"false" json:"icon"`
-
-	// The markets where you can deploy the listing.
-	Markets []string `mandatory:"false" json:"markets"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
@@ -86,6 +80,9 @@ func (m ListingRevisionSummary) String() string {
 // Not recommended for calling this function directly
 func (m ListingRevisionSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
+	if _, ok := GetMappingListingTypeEnum(string(m.ListingType)); !ok && m.ListingType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ListingType: %s. Supported values are: %s.", m.ListingType, strings.Join(GetListingTypeEnumStringValues(), ",")))
+	}
 	if _, ok := GetMappingListingRevisionStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetListingRevisionStatusEnumStringValues(), ",")))
 	}
@@ -94,9 +91,6 @@ func (m ListingRevisionSummary) ValidateEnumValue() (bool, error) {
 	}
 	if _, ok := GetMappingPackageTypeEnum(string(m.PackageType)); !ok && m.PackageType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PackageType: %s. Supported values are: %s.", m.PackageType, strings.Join(GetPackageTypeEnumStringValues(), ",")))
-	}
-	if _, ok := GetMappingListingRevisionPricingTypeEnum(string(m.PricingType)); !ok && m.PricingType != "" {
-		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PricingType: %s. Supported values are: %s.", m.PricingType, strings.Join(GetListingRevisionPricingTypeEnumStringValues(), ",")))
 	}
 
 	if len(errMessage) > 0 {

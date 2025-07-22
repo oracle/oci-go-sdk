@@ -27,7 +27,7 @@ type MarketSummary struct {
 	// The category code for the market.
 	CategoryCode *string `mandatory:"true" json:"categoryCode"`
 
-	// Bill to countries for the market.
+	// bill to countries for the market.
 	BillToCountries []string `mandatory:"true" json:"billToCountries"`
 
 	// The current state for the market.

@@ -116,8 +116,20 @@ func (m *listingrevisionattachment) UnmarshalPolymorphicJSON(data []byte) (inter
 		mm := ScreenShotAttachment{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
+	case "REVIEW_SUPPORT_DOCUMENT":
+		mm := ReviewSupportDocumentAttachment{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "SUPPORTED_SERVICES":
+		mm := SupportedServiceAttachment{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "VIDEO":
 		mm := VideoAttachment{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "CUSTOMER_SUCCESS":
+		mm := CustomerSuccessAttachment{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:
@@ -251,21 +263,30 @@ type ListingRevisionAttachmentAttachmentTypeEnum string
 
 // Set of constants representing the allowable values for ListingRevisionAttachmentAttachmentTypeEnum
 const (
-	ListingRevisionAttachmentAttachmentTypeRelatedDocument ListingRevisionAttachmentAttachmentTypeEnum = "RELATED_DOCUMENT"
-	ListingRevisionAttachmentAttachmentTypeScreenshot      ListingRevisionAttachmentAttachmentTypeEnum = "SCREENSHOT"
-	ListingRevisionAttachmentAttachmentTypeVideo           ListingRevisionAttachmentAttachmentTypeEnum = "VIDEO"
+	ListingRevisionAttachmentAttachmentTypeRelatedDocument       ListingRevisionAttachmentAttachmentTypeEnum = "RELATED_DOCUMENT"
+	ListingRevisionAttachmentAttachmentTypeScreenshot            ListingRevisionAttachmentAttachmentTypeEnum = "SCREENSHOT"
+	ListingRevisionAttachmentAttachmentTypeVideo                 ListingRevisionAttachmentAttachmentTypeEnum = "VIDEO"
+	ListingRevisionAttachmentAttachmentTypeReviewSupportDocument ListingRevisionAttachmentAttachmentTypeEnum = "REVIEW_SUPPORT_DOCUMENT"
+	ListingRevisionAttachmentAttachmentTypeCustomerSuccess       ListingRevisionAttachmentAttachmentTypeEnum = "CUSTOMER_SUCCESS"
+	ListingRevisionAttachmentAttachmentTypeSupportedServices     ListingRevisionAttachmentAttachmentTypeEnum = "SUPPORTED_SERVICES"
 )
 
 var mappingListingRevisionAttachmentAttachmentTypeEnum = map[string]ListingRevisionAttachmentAttachmentTypeEnum{
-	"RELATED_DOCUMENT": ListingRevisionAttachmentAttachmentTypeRelatedDocument,
-	"SCREENSHOT":       ListingRevisionAttachmentAttachmentTypeScreenshot,
-	"VIDEO":            ListingRevisionAttachmentAttachmentTypeVideo,
+	"RELATED_DOCUMENT":        ListingRevisionAttachmentAttachmentTypeRelatedDocument,
+	"SCREENSHOT":              ListingRevisionAttachmentAttachmentTypeScreenshot,
+	"VIDEO":                   ListingRevisionAttachmentAttachmentTypeVideo,
+	"REVIEW_SUPPORT_DOCUMENT": ListingRevisionAttachmentAttachmentTypeReviewSupportDocument,
+	"CUSTOMER_SUCCESS":        ListingRevisionAttachmentAttachmentTypeCustomerSuccess,
+	"SUPPORTED_SERVICES":      ListingRevisionAttachmentAttachmentTypeSupportedServices,
 }
 
 var mappingListingRevisionAttachmentAttachmentTypeEnumLowerCase = map[string]ListingRevisionAttachmentAttachmentTypeEnum{
-	"related_document": ListingRevisionAttachmentAttachmentTypeRelatedDocument,
-	"screenshot":       ListingRevisionAttachmentAttachmentTypeScreenshot,
-	"video":            ListingRevisionAttachmentAttachmentTypeVideo,
+	"related_document":        ListingRevisionAttachmentAttachmentTypeRelatedDocument,
+	"screenshot":              ListingRevisionAttachmentAttachmentTypeScreenshot,
+	"video":                   ListingRevisionAttachmentAttachmentTypeVideo,
+	"review_support_document": ListingRevisionAttachmentAttachmentTypeReviewSupportDocument,
+	"customer_success":        ListingRevisionAttachmentAttachmentTypeCustomerSuccess,
+	"supported_services":      ListingRevisionAttachmentAttachmentTypeSupportedServices,
 }
 
 // GetListingRevisionAttachmentAttachmentTypeEnumValues Enumerates the set of values for ListingRevisionAttachmentAttachmentTypeEnum
@@ -283,6 +304,9 @@ func GetListingRevisionAttachmentAttachmentTypeEnumStringValues() []string {
 		"RELATED_DOCUMENT",
 		"SCREENSHOT",
 		"VIDEO",
+		"REVIEW_SUPPORT_DOCUMENT",
+		"CUSTOMER_SUCCESS",
+		"SUPPORTED_SERVICES",
 	}
 }
 

@@ -20,16 +20,25 @@ type PackageTypeEnum string
 const (
 	PackageTypeContainerImage PackageTypeEnum = "CONTAINER_IMAGE"
 	PackageTypeHelmChart      PackageTypeEnum = "HELM_CHART"
+	PackageTypeMachineImage   PackageTypeEnum = "MACHINE_IMAGE"
+	PackageTypeStack          PackageTypeEnum = "STACK"
+	PackageTypeNone           PackageTypeEnum = "NONE"
 )
 
 var mappingPackageTypeEnum = map[string]PackageTypeEnum{
 	"CONTAINER_IMAGE": PackageTypeContainerImage,
 	"HELM_CHART":      PackageTypeHelmChart,
+	"MACHINE_IMAGE":   PackageTypeMachineImage,
+	"STACK":           PackageTypeStack,
+	"NONE":            PackageTypeNone,
 }
 
 var mappingPackageTypeEnumLowerCase = map[string]PackageTypeEnum{
 	"container_image": PackageTypeContainerImage,
 	"helm_chart":      PackageTypeHelmChart,
+	"machine_image":   PackageTypeMachineImage,
+	"stack":           PackageTypeStack,
+	"none":            PackageTypeNone,
 }
 
 // GetPackageTypeEnumValues Enumerates the set of values for PackageTypeEnum
@@ -46,6 +55,9 @@ func GetPackageTypeEnumStringValues() []string {
 	return []string{
 		"CONTAINER_IMAGE",
 		"HELM_CHART",
+		"MACHINE_IMAGE",
+		"STACK",
+		"NONE",
 	}
 }
 

@@ -37,6 +37,9 @@ type Product struct {
 	// The date and time the product was updated, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
 	// Example: `2022-09-15T21:10:29.600Z`
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
+
+	// Additional filter properties for product
+	AdditionalFilters []AdditionalFilter `mandatory:"false" json:"additionalFilters"`
 }
 
 func (m Product) String() string {

@@ -115,6 +115,14 @@ func (m *artifact) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 
 	var err error
 	switch m.ArtifactType {
+	case "MACHINE_IMAGE":
+		mm := MachineImageArtifact{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "STACK":
+		mm := StackArtifact{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "CONTAINER_IMAGE":
 		mm := ContainerImageArtifact{}
 		err = json.Unmarshal(data, &mm)

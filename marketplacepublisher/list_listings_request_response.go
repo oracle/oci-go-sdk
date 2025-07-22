@@ -24,6 +24,9 @@ type ListListingsRequest struct {
 	// A filter to return only listings their lifecycleState matches the given lifecycleState.
 	LifecycleState ListingLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
+	// A filter to return listings based on their type
+	ListingType ListListingsListingTypeEnum `mandatory:"false" contributesTo:"query" name:"listingType" omitEmpty:"true"`
+
 	// A filter to return only resources that match the entire name given.
 	Name *string `mandatory:"false" contributesTo:"query" name:"name"`
 
@@ -81,6 +84,9 @@ func (request ListListingsRequest) ValidateEnumValue() (bool, error) {
 	if _, ok := GetMappingListingLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListingLifecycleStateEnumStringValues(), ",")))
 	}
+	if _, ok := GetMappingListListingsListingTypeEnum(string(request.ListingType)); !ok && request.ListingType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ListingType: %s. Supported values are: %s.", request.ListingType, strings.Join(GetListListingsListingTypeEnumStringValues(), ",")))
+	}
 	if _, ok := GetMappingListListingsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListListingsSortOrderEnumStringValues(), ",")))
 	}
@@ -119,6 +125,52 @@ func (response ListListingsResponse) String() string {
 // HTTPResponse implements the OCIResponse interface
 func (response ListListingsResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
+}
+
+// ListListingsListingTypeEnum Enum with underlying type: string
+type ListListingsListingTypeEnum string
+
+// Set of constants representing the allowable values for ListListingsListingTypeEnum
+const (
+	ListListingsListingTypeOciApplication ListListingsListingTypeEnum = "OCI_APPLICATION"
+	ListListingsListingTypeLeadGeneration ListListingsListingTypeEnum = "LEAD_GENERATION"
+	ListListingsListingTypeService        ListListingsListingTypeEnum = "SERVICE"
+)
+
+var mappingListListingsListingTypeEnum = map[string]ListListingsListingTypeEnum{
+	"OCI_APPLICATION": ListListingsListingTypeOciApplication,
+	"LEAD_GENERATION": ListListingsListingTypeLeadGeneration,
+	"SERVICE":         ListListingsListingTypeService,
+}
+
+var mappingListListingsListingTypeEnumLowerCase = map[string]ListListingsListingTypeEnum{
+	"oci_application": ListListingsListingTypeOciApplication,
+	"lead_generation": ListListingsListingTypeLeadGeneration,
+	"service":         ListListingsListingTypeService,
+}
+
+// GetListListingsListingTypeEnumValues Enumerates the set of values for ListListingsListingTypeEnum
+func GetListListingsListingTypeEnumValues() []ListListingsListingTypeEnum {
+	values := make([]ListListingsListingTypeEnum, 0)
+	for _, v := range mappingListListingsListingTypeEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetListListingsListingTypeEnumStringValues Enumerates the set of values in String for ListListingsListingTypeEnum
+func GetListListingsListingTypeEnumStringValues() []string {
+	return []string{
+		"OCI_APPLICATION",
+		"LEAD_GENERATION",
+		"SERVICE",
+	}
+}
+
+// GetMappingListListingsListingTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListListingsListingTypeEnum(val string) (ListListingsListingTypeEnum, bool) {
+	enum, ok := mappingListListingsListingTypeEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListListingsSortOrderEnum Enum with underlying type: string
