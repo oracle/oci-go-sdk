@@ -20,7 +20,7 @@ type TtsOracleSpeechSettings struct {
 
 	// The format in which the input text has been supplied i.e., Text or SSML. The supported text types are:
 	// - TEXT
-	// - SSML
+	// - SSML : This is only supported for en-US language.
 	TextType TtsOracleSpeechSettingsTextTypeEnum `mandatory:"false" json:"textType,omitempty"`
 
 	// The sample rate of the generated audio. By default, the audio will be generated with speaker voice sample rate.

@@ -40,7 +40,7 @@ type VoiceSummary struct {
 	SupportedModels []string `mandatory:"false" json:"supportedModels"`
 
 	// An abbreviated notation of region to which the language and accent of the speaker belongs to.
-	LanguageCode VoiceSummaryLanguageCodeEnum `mandatory:"false" json:"languageCode,omitempty"`
+	LanguageCode *string `mandatory:"false" json:"languageCode"`
 
 	// A description of region to which the language and accent of the speaker belongs to.
 	LanguageDescription *string `mandatory:"false" json:"languageDescription"`
@@ -62,9 +62,6 @@ func (m VoiceSummary) ValidateEnumValue() (bool, error) {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Gender: %s. Supported values are: %s.", m.Gender, strings.Join(GetVoiceSummaryGenderEnumStringValues(), ",")))
 	}
 
-	if _, ok := GetMappingVoiceSummaryLanguageCodeEnum(string(m.LanguageCode)); !ok && m.LanguageCode != "" {
-		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LanguageCode: %s. Supported values are: %s.", m.LanguageCode, strings.Join(GetVoiceSummaryLanguageCodeEnumStringValues(), ",")))
-	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
@@ -110,43 +107,5 @@ func GetVoiceSummaryGenderEnumStringValues() []string {
 // GetMappingVoiceSummaryGenderEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingVoiceSummaryGenderEnum(val string) (VoiceSummaryGenderEnum, bool) {
 	enum, ok := mappingVoiceSummaryGenderEnumLowerCase[strings.ToLower(val)]
-	return enum, ok
-}
-
-// VoiceSummaryLanguageCodeEnum Enum with underlying type: string
-type VoiceSummaryLanguageCodeEnum string
-
-// Set of constants representing the allowable values for VoiceSummaryLanguageCodeEnum
-const (
-	VoiceSummaryLanguageCodeEnUs VoiceSummaryLanguageCodeEnum = "en-US"
-)
-
-var mappingVoiceSummaryLanguageCodeEnum = map[string]VoiceSummaryLanguageCodeEnum{
-	"en-US": VoiceSummaryLanguageCodeEnUs,
-}
-
-var mappingVoiceSummaryLanguageCodeEnumLowerCase = map[string]VoiceSummaryLanguageCodeEnum{
-	"en-us": VoiceSummaryLanguageCodeEnUs,
-}
-
-// GetVoiceSummaryLanguageCodeEnumValues Enumerates the set of values for VoiceSummaryLanguageCodeEnum
-func GetVoiceSummaryLanguageCodeEnumValues() []VoiceSummaryLanguageCodeEnum {
-	values := make([]VoiceSummaryLanguageCodeEnum, 0)
-	for _, v := range mappingVoiceSummaryLanguageCodeEnum {
-		values = append(values, v)
-	}
-	return values
-}
-
-// GetVoiceSummaryLanguageCodeEnumStringValues Enumerates the set of values in String for VoiceSummaryLanguageCodeEnum
-func GetVoiceSummaryLanguageCodeEnumStringValues() []string {
-	return []string{
-		"en-US",
-	}
-}
-
-// GetMappingVoiceSummaryLanguageCodeEnum performs case Insensitive comparison on enum value and return the desired enum
-func GetMappingVoiceSummaryLanguageCodeEnum(val string) (VoiceSummaryLanguageCodeEnum, bool) {
-	enum, ok := mappingVoiceSummaryLanguageCodeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
