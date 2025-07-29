@@ -423,6 +423,19 @@ func TestHttpMarshallerEmbeddedBytes(t *testing.T) {
 	assert.Equal(t, `{"kvs":[{"value":"AQIDBA=="},{"key":"BgcICQ==","value":"AQIDBA=="},{"value":""}]}`, st)
 }
 
+func TestHttpMarshallerEncodePathParams(t *testing.T) {
+	s := uploadAPIKeyRequest{UserID: "#special?User/I/D", OpcRetryToken: "token", TestcreateAPIKeyDetails: TestcreateAPIKeyDetails{Key: "thekey"}}
+	request := MakeDefaultHTTPRequest(http.MethodPost, "/random")
+	HTTPRequestMarshaller(s, &request)
+	// User has not opted in to encoding, leave special characters as-is
+	assert.True(t, strings.Contains(request.URL.Path, "#special?User/I/D"))
+	request = MakeDefaultHTTPRequest(http.MethodPost, "/random")
+	os.Setenv(EncodePathParamsEnvVar, "TRUE")
+	HTTPRequestMarshaller(s, &request)
+	// User has opted into encoding, encode special characters in path parameters
+	assert.True(t, strings.Contains(request.URL.Path, "%23special%3FUser%2FI%2FD"))
+}
+
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Response Unmarshaling
