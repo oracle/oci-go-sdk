@@ -22,6 +22,18 @@ type TtsOracleTts2NaturalModelDetails struct {
 	// Speaker in whose voice the user wants the output speech to be in.
 	// The possible values for `voiceId` can be obtained by calling ListVoices api.
 	VoiceId *string `mandatory:"false" json:"voiceId"`
+
+	// Locale value as per given in [https://datatracker.ietf.org/doc/html/rfc5646]. Default en-US
+	// - en-US: English - United States
+	// - en-GB: English - Great Britain
+	// - es-ES: Spanish - Spain
+	// - pt-BR: Portuguese - Brazil
+	// - hi-IN: Hindi - India
+	// - fr-FR: French - France
+	// - it-IT: Italian - Italy
+	// - ja-JP: Japanese - Japan
+	// - zh-CN: Mandarin - China
+	LanguageCode *string `mandatory:"false" json:"languageCode"`
 }
 
 func (m TtsOracleTts2NaturalModelDetails) String() string {

@@ -21,8 +21,11 @@ type ListVoicesRequest struct {
 	// The ID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"false" contributesTo:"query" name:"compartmentId"`
 
-	// The model the user wants to run the inference on.
+	// The model name to filter voices for given model name.
 	ModelName TtsOracleModelDetailsModelNameEnum `mandatory:"false" contributesTo:"query" name:"modelName" omitEmpty:"true"`
+
+	// The Code or Id of the language to filter voices for given language code.
+	LanguageCode *string `mandatory:"false" contributesTo:"query" name:"languageCode"`
 
 	// The name of the speaker voice in which the user wants tts inference to be.
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
