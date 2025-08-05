@@ -149,3 +149,61 @@ func (client EmailDPClient) submitEmail(ctx context.Context, request common.OCIR
 	err = common.UnmarshalResponse(httpResponse, &response)
 	return response, err
 }
+
+// SubmitRawEmail Submits a raw email.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/emaildataplane/SubmitRawEmail.go.html to see an example of how to use SubmitRawEmail API.
+// A default retry strategy applies to this operation SubmitRawEmail()
+func (client EmailDPClient) SubmitRawEmail(ctx context.Context, request SubmitRawEmailRequest) (response SubmitRawEmailResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.submitRawEmail, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = SubmitRawEmailResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = SubmitRawEmailResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(SubmitRawEmailResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into SubmitRawEmailResponse")
+	}
+	return
+}
+
+// submitRawEmail implements the OCIOperation interface (enables retrying operations)
+func (client EmailDPClient) submitRawEmail(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/submitRawEmail", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response SubmitRawEmailResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/emaildeliverysubmission/20220926/EmailRawSubmittedResponse/SubmitRawEmail"
+		err = common.PostProcessServiceError(err, "EmailDP", "SubmitRawEmail", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}

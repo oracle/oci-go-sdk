@@ -2,12 +2,12 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Speech API
+// Oracle Multicloud API
 //
-// The OCI Speech Service harnesses the power of spoken language by allowing developers to easily convert file-based data containing human speech into highly accurate text transcriptions.
+// Use the Oracle Multicloud API to retrieve resource anchors and network anchors, and the metadata mappings related a Cloud Service Provider. For more information, see <link to docs>.
 //
 
-package aispeech
+package multicloud
 
 import (
 	"fmt"
@@ -15,22 +15,21 @@ import (
 	"strings"
 )
 
-// TranscriptionSettings Processes to perform on the generated transcription.
-type TranscriptionSettings struct {
-	Diarization *Diarization `mandatory:"false" json:"diarization"`
+// MultiCloudMetadataCollection Multicloud metadata information across clouds.
+type MultiCloudMetadataCollection struct {
 
-	// Simple key-value pair for setting model specific properties. For more details, refer the documentation.
-	AdditionalSettings map[string]string `mandatory:"false" json:"additionalSettings"`
+	// List of MultiCloudMetadata.
+	Items []MultiCloudMetadataSummary `mandatory:"true" json:"items"`
 }
 
-func (m TranscriptionSettings) String() string {
+func (m MultiCloudMetadataCollection) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m TranscriptionSettings) ValidateEnumValue() (bool, error) {
+func (m MultiCloudMetadataCollection) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {
