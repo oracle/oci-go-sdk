@@ -40,6 +40,7 @@ type TranscriptionModelDetails struct {
 	// - de-DE: German - Germany
 	// - it-IT: Italian - Italy
 	// Whisper supported language codes are (Whisper models are locale agnostic).
+	// - auto: Auto-detect language
 	// - af: Afrikaans
 	// - ar: Arabic
 	// - az: Azerbaijani
@@ -177,6 +178,7 @@ const (
 	TranscriptionModelDetailsLanguageCodeFrFr TranscriptionModelDetailsLanguageCodeEnum = "fr-FR"
 	TranscriptionModelDetailsLanguageCodeDeDe TranscriptionModelDetailsLanguageCodeEnum = "de-DE"
 	TranscriptionModelDetailsLanguageCodeItIt TranscriptionModelDetailsLanguageCodeEnum = "it-IT"
+	TranscriptionModelDetailsLanguageCodeAuto TranscriptionModelDetailsLanguageCodeEnum = "auto"
 	TranscriptionModelDetailsLanguageCodeAf   TranscriptionModelDetailsLanguageCodeEnum = "af"
 	TranscriptionModelDetailsLanguageCodeAr   TranscriptionModelDetailsLanguageCodeEnum = "ar"
 	TranscriptionModelDetailsLanguageCodeAz   TranscriptionModelDetailsLanguageCodeEnum = "az"
@@ -247,6 +249,7 @@ var mappingTranscriptionModelDetailsLanguageCodeEnum = map[string]TranscriptionM
 	"fr-FR": TranscriptionModelDetailsLanguageCodeFrFr,
 	"de-DE": TranscriptionModelDetailsLanguageCodeDeDe,
 	"it-IT": TranscriptionModelDetailsLanguageCodeItIt,
+	"auto":  TranscriptionModelDetailsLanguageCodeAuto,
 	"af":    TranscriptionModelDetailsLanguageCodeAf,
 	"ar":    TranscriptionModelDetailsLanguageCodeAr,
 	"az":    TranscriptionModelDetailsLanguageCodeAz,
@@ -317,6 +320,7 @@ var mappingTranscriptionModelDetailsLanguageCodeEnumLowerCase = map[string]Trans
 	"fr-fr": TranscriptionModelDetailsLanguageCodeFrFr,
 	"de-de": TranscriptionModelDetailsLanguageCodeDeDe,
 	"it-it": TranscriptionModelDetailsLanguageCodeItIt,
+	"auto":  TranscriptionModelDetailsLanguageCodeAuto,
 	"af":    TranscriptionModelDetailsLanguageCodeAf,
 	"ar":    TranscriptionModelDetailsLanguageCodeAr,
 	"az":    TranscriptionModelDetailsLanguageCodeAz,
@@ -398,6 +402,7 @@ func GetTranscriptionModelDetailsLanguageCodeEnumStringValues() []string {
 		"fr-FR",
 		"de-DE",
 		"it-IT",
+		"auto",
 		"af",
 		"ar",
 		"az",

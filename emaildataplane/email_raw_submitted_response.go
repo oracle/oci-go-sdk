@@ -16,28 +16,28 @@ import (
 	"strings"
 )
 
-// EmailSubmittedResponse Response object that is returned to sender upon successfully submitting the email request.
-type EmailSubmittedResponse struct {
-
-	// The unique ID for the email's Message-ID header used for service log correlation.
-	// Example: sdiofu234qwermls24fd@mail.example.com
-	MessageId *string `mandatory:"true" json:"messageId"`
+// EmailRawSubmittedResponse Response object that is returned to sender upon successfully submitting the email request.
+type EmailRawSubmittedResponse struct {
 
 	// Email Delivery generated unique Envelope ID of the email submission. If you need to contact Email Delivery about a particular request, please provide the Envelope ID.
 	EnvelopeId *string `mandatory:"true" json:"envelopeId"`
 
 	// Return list of suppressed email addresses.
-	SuppressedRecipients []EmailAddress `mandatory:"true" json:"suppressedRecipients"`
+	SuppressedRecipients []string `mandatory:"true" json:"suppressedRecipients"`
+
+	// The unique ID for the email's Message-ID header used for service log correlation.
+	// Example: sdiofu234qwermls24fd@mail.example.com
+	MessageId *string `mandatory:"false" json:"messageId"`
 }
 
-func (m EmailSubmittedResponse) String() string {
+func (m EmailRawSubmittedResponse) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m EmailSubmittedResponse) ValidateEnumValue() (bool, error) {
+func (m EmailRawSubmittedResponse) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {

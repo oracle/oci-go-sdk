@@ -7,4 +7,5 @@ require (
 	github.com/sony/gobreaker v0.5.0
 	github.com/stretchr/testify v1.8.4
 	github.com/youmark/pkcs8 v0.0.0-20240726163527-a2c0da244d78
+	golang.org/x/crypto v0.33.0 // indirect
 )
