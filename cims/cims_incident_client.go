@@ -95,7 +95,7 @@ func (client *IncidentClient) ConfigurationProvider() *common.ConfigurationProvi
 	return client.config
 }
 
-// CreateIncident Creates a support ticket in the specified tenancy.
+// CreateIncident Creates a support request in the specified tenancy.
 // For more information, see Creating Support Requests (https://docs.oracle.com/iaas/Content/GSG/support/create-incident.htm).
 //
 // # See also
@@ -153,7 +153,7 @@ func (client IncidentClient) createIncident(ctx context.Context, request common.
 	return response, err
 }
 
-// GetIncident Gets the specified support ticket.
+// GetIncident Gets the specified support request.
 // For more information, see Getting Details for a Support Request (https://docs.oracle.com/iaas/Content/GSG/support/get-incident.htm).
 //
 // # See also
@@ -212,7 +212,7 @@ func (client IncidentClient) getIncident(ctx context.Context, request common.OCI
 }
 
 // ListIncidentResourceTypes Depending on the selected `productType`, either
-// lists available products (service groups, services, service categories, and subcategories) for technical support tickets or
+// lists available products (service groups, services, service categories, and subcategories) for technical support requests or
 // lists limits and current usage for limit increase tickets.
 // This operation is called during creation of technical support and limit increase tickets.
 // For more information about listing products, see
@@ -275,7 +275,7 @@ func (client IncidentClient) listIncidentResourceTypes(ctx context.Context, requ
 	return response, err
 }
 
-// ListIncidents Lists support tickets for the specified tenancy.
+// ListIncidents Lists support requests for the specified tenancy.
 // For more information, see Listing Support Requests (https://docs.oracle.com/iaas/Content/GSG/support/list-incidents.htm).
 //
 // # See also
@@ -333,7 +333,64 @@ func (client IncidentClient) listIncidents(ctx context.Context, request common.O
 	return response, err
 }
 
-// UpdateIncident Updates the specified support ticket.
+// PutAttachment Uploads the file and attaches it to the support request.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/PutAttachment.go.html to see an example of how to use PutAttachment API.
+func (client IncidentClient) PutAttachment(ctx context.Context, request PutAttachmentRequest) (response PutAttachmentResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.putAttachment, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = PutAttachmentResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = PutAttachmentResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(PutAttachmentResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into PutAttachmentResponse")
+	}
+	return
+}
+
+// putAttachment implements the OCIOperation interface (enables retrying operations)
+func (client IncidentClient) putAttachment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/v2/incidents/{incidentKey}/attachment", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response PutAttachmentResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/incidentmanagement/20181231/Incident/PutAttachment"
+		err = common.PostProcessServiceError(err, "Incident", "PutAttachment", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// UpdateIncident Updates the specified support request.
 // For more information, see Updating Support Requests (https://docs.oracle.com/iaas/Content/GSG/support/update-incident.htm).
 //
 // # See also

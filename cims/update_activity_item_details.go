@@ -20,13 +20,19 @@ import (
 	"strings"
 )
 
-// UpdateActivityItemDetails Details for updating the support ticket activity.
+// UpdateActivityItemDetails Details for updating the support request activity.
 type UpdateActivityItemDetails struct {
 
 	// Comments updated at the time that the activity occurs.
 	Comments *string `mandatory:"false" json:"comments"`
 
 	// The type of activity occurring.
+	// `NOTES` is the activity associated to attachments.
+	// `PROBLEM_DESCRIPTION` is the activity associated to customer problem description.
+	// `UPDATE` is the activity associated to adding comments.
+	// `CLOSE` is the activity associated to closing the support request.
+	// `REOPEN` is the activity associated to reopening the support request.
+	// `ADD_CONTACT` is the activity associated to adding additional contact to the support request.
 	ActivityType UpdateActivityItemDetailsActivityTypeEnum `mandatory:"false" json:"activityType,omitempty"`
 }
 
@@ -73,6 +79,7 @@ const (
 	UpdateActivityItemDetailsActivityTypeUpdate             UpdateActivityItemDetailsActivityTypeEnum = "UPDATE"
 	UpdateActivityItemDetailsActivityTypeClose              UpdateActivityItemDetailsActivityTypeEnum = "CLOSE"
 	UpdateActivityItemDetailsActivityTypeReopen             UpdateActivityItemDetailsActivityTypeEnum = "REOPEN"
+	UpdateActivityItemDetailsActivityTypeAddContact         UpdateActivityItemDetailsActivityTypeEnum = "ADD_CONTACT"
 )
 
 var mappingUpdateActivityItemDetailsActivityTypeEnum = map[string]UpdateActivityItemDetailsActivityTypeEnum{
@@ -81,6 +88,7 @@ var mappingUpdateActivityItemDetailsActivityTypeEnum = map[string]UpdateActivity
 	"UPDATE":              UpdateActivityItemDetailsActivityTypeUpdate,
 	"CLOSE":               UpdateActivityItemDetailsActivityTypeClose,
 	"REOPEN":              UpdateActivityItemDetailsActivityTypeReopen,
+	"ADD_CONTACT":         UpdateActivityItemDetailsActivityTypeAddContact,
 }
 
 var mappingUpdateActivityItemDetailsActivityTypeEnumLowerCase = map[string]UpdateActivityItemDetailsActivityTypeEnum{
@@ -89,6 +97,7 @@ var mappingUpdateActivityItemDetailsActivityTypeEnumLowerCase = map[string]Updat
 	"update":              UpdateActivityItemDetailsActivityTypeUpdate,
 	"close":               UpdateActivityItemDetailsActivityTypeClose,
 	"reopen":              UpdateActivityItemDetailsActivityTypeReopen,
+	"add_contact":         UpdateActivityItemDetailsActivityTypeAddContact,
 }
 
 // GetUpdateActivityItemDetailsActivityTypeEnumValues Enumerates the set of values for UpdateActivityItemDetailsActivityTypeEnum
@@ -108,6 +117,7 @@ func GetUpdateActivityItemDetailsActivityTypeEnumStringValues() []string {
 		"UPDATE",
 		"CLOSE",
 		"REOPEN",
+		"ADD_CONTACT",
 	}
 }
 

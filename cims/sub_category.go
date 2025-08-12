@@ -19,7 +19,7 @@ import (
 	"strings"
 )
 
-// SubCategory Details about the service subcategory associated with the support ticket.
+// SubCategory Details about the service subcategory associated with the support request.
 type SubCategory struct {
 
 	// Unique identifier for the service subcategory.

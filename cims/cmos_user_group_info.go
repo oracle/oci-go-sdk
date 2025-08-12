@@ -19,13 +19,15 @@ import (
 	"strings"
 )
 
-// CmosUserGroupInfo Identifier and name of the technical support request's user group (`userGroupId` and `userGroupName`).
+// CmosUserGroupInfo Identifier and name of a user group (`userGroupId` and `userGroupName`) that the current user has access to.
+// Note: The Customer User Administrator (CUA) can manage user groups by name using
+// My Oracle Cloud Support portal (https://support.oracle.com).
 type CmosUserGroupInfo struct {
 
-	// Technical support type (`TECH`) only: The identifier of the support request's user group in My Oracle Cloud Support portal.
+	// Technical support type (`TECH`) only: The identifier of a user group in My Oracle Cloud Support portal.
 	UserGroupId *string `mandatory:"false" json:"userGroupId"`
 
-	// Technical support type (`TECH`) only: Name of the support request's user group in My Oracle Cloud Support portal.
+	// Technical support type (`TECH`) only: Name of a user group in My Oracle Cloud Support portal.
 	UserGroupName *string `mandatory:"false" json:"userGroupName"`
 }
 

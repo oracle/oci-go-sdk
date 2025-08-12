@@ -19,10 +19,10 @@ import (
 	"strings"
 )
 
-// Incident Details about the support ticket.
+// Incident Details about the support request.
 type Incident struct {
 
-	// Unique identifier for the support ticket.
+	// Unique identifier for the support request.
 	Key *string `mandatory:"true" json:"key"`
 
 	// The OCID of the tenancy.
@@ -35,6 +35,9 @@ type Incident struct {
 	Ticket *Ticket `mandatory:"false" json:"ticket"`
 
 	IncidentType *IncidentType `mandatory:"false" json:"incidentType"`
+
+	// Technical support type (`TECH`) only: The pre-migration identifier of the support request in My Oracle Support (MOS).
+	MigratedSrNumber *string `mandatory:"false" json:"migratedSrNumber"`
 
 	// Technical support type (`TECH`) only: The identifier of the support request's user group in My Oracle Cloud Support portal.
 	UserGroupId *string `mandatory:"false" json:"userGroupId"`
@@ -55,16 +58,16 @@ type Incident struct {
 	// Technical support type (`TECH`) only: Message indicating the user group (`userGroupId`) that was auto-selected for a new support request. This message appears when no user group was specified in the create request for a new technical support request.
 	WarnMessage *string `mandatory:"false" json:"warnMessage"`
 
-	// The kind of support ticket (type of support request).
-	// For information about `ACCOUNT` support tickets, see
+	// The kind of support request (type of support request).
+	// For information about `ACCOUNT` support requests, see
 	// Creating a Billing Support Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-billing.htm).
-	// For information about `LIMIT` support tickets, see
+	// For information about `LIMIT` support requests, see
 	// Creating a Service Limit Increase Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-limit.htm).
-	// For information about `TECH` support tickets, see
+	// For information about `TECH` support requests, see
 	// Creating a Technical Support Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-technical.htm).
 	ProblemType ProblemTypeEnum `mandatory:"false" json:"problemType,omitempty"`
 
-	// The incident referrer. This value is often the URL that the customer used when creating the support ticket.
+	// The incident referrer. This value is often the URL that the customer used when creating the support request.
 	Referrer *string `mandatory:"false" json:"referrer"`
 }
 

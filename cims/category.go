@@ -19,7 +19,7 @@ import (
 	"strings"
 )
 
-// Category Details about the service category associated with the support ticket.
+// Category Details about the service category associated with the support request.
 type Category struct {
 
 	// Unique identifier for the service category.

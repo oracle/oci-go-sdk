@@ -39,7 +39,7 @@ type ListIncidentResourceTypesRequest struct {
 	// The order to sort the results in.
 	SortOrder ListIncidentResourceTypesSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
-	// The user-friendly name of the support ticket type.
+	// The user-friendly name of the support request type.
 	Name *string `mandatory:"false" contributesTo:"query" name:"name"`
 
 	// The Customer Support Identifier (CSI) number associated with the support account.
