@@ -31,12 +31,12 @@ type CreateUserDetails struct {
 	// Last name of the user.
 	LastName *string `mandatory:"true" json:"lastName"`
 
-	// The kind of support ticket (type of support request).
-	// For information about `ACCOUNT` support tickets, see
+	// The kind of support request (type of support request).
+	// For information about `ACCOUNT` support requests, see
 	// Creating a Billing Support Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-billing.htm).
-	// For information about `LIMIT` support tickets, see
+	// For information about `LIMIT` support requests, see
 	// Creating a Service Limit Increase Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-limit.htm).
-	// For information about `TECH` support tickets, see
+	// For information about `TECH` support requests, see
 	// Creating a Technical Support Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-technical.htm).
 	ProblemType ProblemTypeEnum `mandatory:"true" json:"problemType"`
 

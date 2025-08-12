@@ -20,8 +20,8 @@ import (
 	"strings"
 )
 
-// CreateAccountItemDetails Details about the issue that the account support ticket relates to. Avoid entering confidential information.
-// For information about `ACCOUNT` support tickets, see Creating a Billing Support Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-billing.htm).
+// CreateAccountItemDetails Details about the issue that the account support request relates to. Avoid entering confidential information.
+// For information about `ACCOUNT` support requests, see Creating a Billing Support Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-billing.htm).
 type CreateAccountItemDetails struct {
 	Category *CreateCategoryDetails `mandatory:"false" json:"category"`
 

@@ -19,7 +19,7 @@ import (
 	"strings"
 )
 
-// IssueType Details about the issue type associated with the support ticket.
+// IssueType Details about the issue type associated with the support request.
 type IssueType struct {
 
 	// Unique identifier for the issue type.

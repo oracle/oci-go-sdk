@@ -58,6 +58,10 @@ func (m *updateitemdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, 
 		mm := UpdateActivityItemDetails{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
+	case "contact":
+		mm := UpdateContactItemDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	default:
 		common.Logf("Received unsupported enum value for UpdateItemDetails: %s.", m.Type)
 		return *m, nil

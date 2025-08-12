@@ -20,8 +20,8 @@ import (
 	"strings"
 )
 
-// CreateTechSupportItemDetails Details about the issue that the technical support ticket relates to. Avoid entering confidential information.
-// For information about `TECH` support tickets, see Creating a Technical Support Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-technical.htm).
+// CreateTechSupportItemDetails Details about the issue that the technical support request relates to. Avoid entering confidential information.
+// For information about `TECH` support requests, see Creating a Technical Support Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-technical.htm).
 type CreateTechSupportItemDetails struct {
 	Category *CreateCategoryDetails `mandatory:"false" json:"category"`
 

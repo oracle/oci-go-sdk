@@ -334,7 +334,7 @@ func listShapes(ctx context.Context, c core.ComputeClient, imageID *string) []co
 	r, err := c.ListShapes(ctx, request)
 	helpers.FatalIfError(err)
 
-	if r.Items == nil || len(r.Items) == 0 {
+	if len(r.Items) == 0 {
 		log.Fatalln("Invalid response from ListShapes")
 	}
 

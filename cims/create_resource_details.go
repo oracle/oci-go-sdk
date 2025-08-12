@@ -20,7 +20,7 @@ import (
 	"strings"
 )
 
-// CreateResourceDetails Details about the resource that the support ticket relates to.
+// CreateResourceDetails Details about the resource that the support request relates to.
 type CreateResourceDetails struct {
 	Item CreateItemDetails `mandatory:"false" json:"item"`
 

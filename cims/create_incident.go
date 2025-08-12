@@ -19,7 +19,7 @@ import (
 	"strings"
 )
 
-// CreateIncident Details gathered during the creation of the support ticket.
+// CreateIncident Details gathered during the creation of the support request.
 type CreateIncident struct {
 
 	// The OCID of the tenancy.
@@ -27,26 +27,30 @@ type CreateIncident struct {
 
 	Ticket *CreateTicketDetails `mandatory:"true" json:"ticket"`
 
-	// The kind of support ticket (type of support request).
-	// For information about `ACCOUNT` support tickets, see
+	// The kind of support request (type of support request).
+	// For information about `ACCOUNT` support requests, see
 	// Creating a Billing Support Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-billing.htm).
-	// For information about `LIMIT` support tickets, see
+	// For information about `LIMIT` support requests, see
 	// Creating a Service Limit Increase Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-limit.htm).
-	// For information about `TECH` support tickets, see
+	// For information about `TECH` support requests, see
 	// Creating a Technical Support Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-technical.htm).
 	ProblemType ProblemTypeEnum `mandatory:"true" json:"problemType"`
 
-	// The Customer Support Identifier (CSI) number associated with the support account.
+	// Deprecated. The Customer Support Identifier (CSI) number associated with the support account.
 	// The CSI is optional for all support request types.
 	Csi *string `mandatory:"false" json:"csi"`
 
-	// Technical support type (`TECH`) only: The identifier of the support request's user group in My Oracle Cloud Support portal.
+	// Technical support type (`TECH`) only: Identifier of the user group to assign the new support request to.
+	// To find identifiers of user groups that you have access to, run the
+	// ValidateUser operation.
+	// Note: The Customer User Administrator (CUA) can manage user groups by name using
+	// My Oracle Cloud Support portal (https://support.oracle.com).
 	UserGroupId *string `mandatory:"false" json:"userGroupId"`
 
 	// The list of contacts.
 	Contacts []Contact `mandatory:"false" json:"contacts"`
 
-	// The incident referrer. This value is often the URL that the customer used when creating the support ticket.
+	// The incident referrer. This value is often the URL that the customer used when creating the support request.
 	Referrer *string `mandatory:"false" json:"referrer"`
 }
 
