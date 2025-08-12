@@ -25,7 +25,10 @@ type ValidationResponse struct {
 	// Boolean value that indicates whether the requested user is valid.
 	IsValidUser *bool `mandatory:"false" json:"isValidUser"`
 
-	// Technical support type (`TECH`) only: Identifier and name of the support request's user group (`userGroupId` and `userGroupName`).
+	// Array of user groups that the user has access to for creating technical support type (`TECH`) support requests.
+	// Each user group is indicated by its identifier and name (`userGroupId` and `userGroupName`).
+	// Note: The Customer User Administrator (CUA) can manage user groups by name using
+	// My Oracle Cloud Support portal (https://support.oracle.com).
 	WritePermittedUserGroupInfos []CmosUserGroupInfo `mandatory:"false" json:"writePermittedUserGroupInfos"`
 }
 

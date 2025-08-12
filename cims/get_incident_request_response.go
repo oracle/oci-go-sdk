@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/GetIncident.go.html to see an example of how to use GetIncidentRequest.
 type GetIncidentRequest struct {
 
-	// Unique identifier for the support ticket.
+	// Unique identifier for the support request.
 	IncidentKey *string `mandatory:"true" contributesTo:"path" name:"incidentKey"`
 
 	// The OCID of the tenancy.

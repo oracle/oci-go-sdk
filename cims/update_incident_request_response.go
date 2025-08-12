@@ -18,10 +18,10 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/UpdateIncident.go.html to see an example of how to use UpdateIncidentRequest.
 type UpdateIncidentRequest struct {
 
-	// Unique identifier for the support ticket.
+	// Unique identifier for the support request.
 	IncidentKey *string `mandatory:"true" contributesTo:"path" name:"incidentKey"`
 
-	// Details about the support ticket being updated.
+	// Details about the support request being updated.
 	UpdateIncidentDetails UpdateIncident `contributesTo:"body"`
 
 	// The OCID of the tenancy.

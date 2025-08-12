@@ -19,18 +19,18 @@ import (
 	"strings"
 )
 
-// IncidentSummary Details about the support ticket.
+// IncidentSummary Details about the support request.
 type IncidentSummary struct {
 
 	// Unique identifier of the incident.
 	Key *string `mandatory:"true" json:"key"`
 
-	// The kind of support ticket (type of support request).
-	// For information about `ACCOUNT` support tickets, see
+	// The kind of support request (type of support request).
+	// For information about `ACCOUNT` support requests, see
 	// Creating a Billing Support Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-billing.htm).
-	// For information about `LIMIT` support tickets, see
+	// For information about `LIMIT` support requests, see
 	// Creating a Service Limit Increase Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-limit.htm).
-	// For information about `TECH` support tickets, see
+	// For information about `TECH` support requests, see
 	// Creating a Technical Support Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-technical.htm).
 	ProblemType ProblemTypeEnum `mandatory:"true" json:"problemType"`
 
@@ -44,6 +44,9 @@ type IncidentSummary struct {
 	Ticket *Ticket `mandatory:"false" json:"ticket"`
 
 	IncidentType *IncidentResourceType `mandatory:"false" json:"incidentType"`
+
+	// Technical support type (`TECH`) only: The pre-migration identifier of the support request in My Oracle Support (MOS).
+	MigratedSrNumber *string `mandatory:"false" json:"migratedSrNumber"`
 
 	// Technical support type (`TECH`) only: The identifier of the support request's user group in My Oracle Cloud Support portal.
 	UserGroupId *string `mandatory:"false" json:"userGroupId"`

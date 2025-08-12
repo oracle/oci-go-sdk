@@ -19,16 +19,17 @@ import (
 	"strings"
 )
 
-// CreateTicketDetails Details relevant to the support ticket.
+// CreateTicketDetails Details relevant to the support request.
 type CreateTicketDetails struct {
 
-	// The severity of the support ticket.
+	// The severity of the support request.
 	Severity CreateTicketDetailsSeverityEnum `mandatory:"true" json:"severity"`
 
-	// The title of the support ticket. Avoid entering confidential information.
+	// The title of the support request. Avoid entering confidential information.
 	Title *string `mandatory:"true" json:"title"`
 
-	// The description of the support ticket. Avoid entering confidential information.
+	// <b>Important</b>: On January 27, 2026, the <b>Max Length</b> value will change to 1500.
+	// The description of the support request. Avoid entering confidential information.
 	Description *string `mandatory:"true" json:"description"`
 
 	// The list of resources.

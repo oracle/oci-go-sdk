@@ -21,7 +21,7 @@ import (
 )
 
 // CreateLimitItemDetails Details about the service limit increase request. Avoid entering confidential information.
-// For information about `LIMIT` support tickets, see Creating a Service Limit Increase Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-limit.htm).
+// For information about `LIMIT` support requests, see Creating a Service Limit Increase Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-limit.htm).
 type CreateLimitItemDetails struct {
 	Category *CreateCategoryDetails `mandatory:"false" json:"category"`
 

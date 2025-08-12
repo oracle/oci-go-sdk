@@ -29,12 +29,10 @@ const (
 	ErrorCodeSslAuthorization                     ErrorCodeEnum = "SSL_AUTHORIZATION"
 	ErrorCodeAuthFailed                           ErrorCodeEnum = "AUTH_FAILED"
 	ErrorCodeAuthzFailed                          ErrorCodeEnum = "AUTHZ_FAILED"
-	ErrorCodeCsiNotAuthorized                     ErrorCodeEnum = "CSI_NOT_AUTHORIZED"
 	ErrorCodeUserPolicyNotAuthorized              ErrorCodeEnum = "USER_POLICY_NOT_AUTHORIZED"
 	ErrorCodeEmailNotVerified                     ErrorCodeEnum = "EMAIL_NOT_VERIFIED"
 	ErrorCodeEmailNotFound                        ErrorCodeEnum = "EMAIL_NOT_FOUND"
 	ErrorCodeOciEmailNotFound                     ErrorCodeEnum = "OCI_EMAIL_NOT_FOUND"
-	ErrorCodeMosEmailNotFound                     ErrorCodeEnum = "MOS_EMAIL_NOT_FOUND"
 	ErrorCodeIdcsEmailNotValid                    ErrorCodeEnum = "IDCS_EMAIL_NOT_VALID"
 	ErrorCodeInvalidPath                          ErrorCodeEnum = "INVALID_PATH"
 	ErrorCodeMethodNotAllowed                     ErrorCodeEnum = "METHOD_NOT_ALLOWED"
@@ -45,7 +43,6 @@ const (
 	ErrorCodeTooManyRequests                      ErrorCodeEnum = "TOO_MANY_REQUESTS"
 	ErrorCodeIdpScimNotSetup                      ErrorCodeEnum = "IDP_SCIM_NOT_SETUP"
 	ErrorCodeIncidentNotFound                     ErrorCodeEnum = "INCIDENT_NOT_FOUND"
-	ErrorCodeInvalidUserCsi                       ErrorCodeEnum = "INVALID_USER_CSI"
 	ErrorCodeDataAlreadyExists                    ErrorCodeEnum = "DATA_ALREADY_EXISTS"
 	ErrorCodeAuthUserNotMatching                  ErrorCodeEnum = "AUTH_USER_NOT_MATCHING"
 	ErrorCodeContactNotApproved                   ErrorCodeEnum = "CONTACT_NOT_APPROVED"
@@ -55,13 +52,17 @@ const (
 	ErrorCodeCreateProfileVerifyOssoFailure       ErrorCodeEnum = "CREATE_PROFILE_VERIFY_OSSO_FAILURE"
 	ErrorCodeProfileAccountNotVerified            ErrorCodeEnum = "PROFILE_ACCOUNT_NOT_VERIFIED"
 	ErrorCodeSupportAccountNotFound               ErrorCodeEnum = "SUPPORT_ACCOUNT_NOT_FOUND"
-	ErrorCodeSupportAccountPendingCsiApproval     ErrorCodeEnum = "SUPPORT_ACCOUNT_PENDING_CSI_APPROVAL"
 	ErrorCodeFreeTierCustomerSliUnsupported       ErrorCodeEnum = "FREE_TIER_CUSTOMER_SLI_UNSUPPORTED"
 	ErrorCodeProfileAccountVerified               ErrorCodeEnum = "PROFILE_ACCOUNT_VERIFIED"
-	ErrorCodeProfileVerifiedCsiRequestPending     ErrorCodeEnum = "PROFILE_VERIFIED_CSI_REQUEST_PENDING"
-	ErrorCodeProfileVerifiedCsiRequestNotFound    ErrorCodeEnum = "PROFILE_VERIFIED_CSI_REQUEST_NOT_FOUND"
 	ErrorCodeCreateProfileOrganizationNameInvalid ErrorCodeEnum = "CREATE_PROFILE_ORGANIZATION_NAME_INVALID"
 	ErrorCodeCreateProfileEmailInvalid            ErrorCodeEnum = "CREATE_PROFILE_EMAIL_INVALID"
+	ErrorCodeNotauthenticated                     ErrorCodeEnum = "NOTAUTHENTICATED"
+	ErrorCodeCmosUnauthorizedPermission           ErrorCodeEnum = "CMOS_UNAUTHORIZED_PERMISSION"
+	ErrorCodeCmosSupportAccountExists             ErrorCodeEnum = "CMOS_SUPPORT_ACCOUNT_EXISTS"
+	ErrorCodeCmosInvalidUserGroupId               ErrorCodeEnum = "CMOS_INVALID_USER_GROUP_ID"
+	ErrorCodeUnsupportedOperation                 ErrorCodeEnum = "UNSUPPORTED_OPERATION"
+	ErrorCodeNotauthorizedornotfound              ErrorCodeEnum = "NOTAUTHORIZEDORNOTFOUND"
+	ErrorCodeListSubscriptionFailure              ErrorCodeEnum = "LIST_SUBSCRIPTION_FAILURE"
 )
 
 var mappingErrorCodeEnum = map[string]ErrorCodeEnum{
@@ -72,12 +73,10 @@ var mappingErrorCodeEnum = map[string]ErrorCodeEnum{
 	"SSL_AUTHORIZATION":                        ErrorCodeSslAuthorization,
 	"AUTH_FAILED":                              ErrorCodeAuthFailed,
 	"AUTHZ_FAILED":                             ErrorCodeAuthzFailed,
-	"CSI_NOT_AUTHORIZED":                       ErrorCodeCsiNotAuthorized,
 	"USER_POLICY_NOT_AUTHORIZED":               ErrorCodeUserPolicyNotAuthorized,
 	"EMAIL_NOT_VERIFIED":                       ErrorCodeEmailNotVerified,
 	"EMAIL_NOT_FOUND":                          ErrorCodeEmailNotFound,
 	"OCI_EMAIL_NOT_FOUND":                      ErrorCodeOciEmailNotFound,
-	"MOS_EMAIL_NOT_FOUND":                      ErrorCodeMosEmailNotFound,
 	"IDCS_EMAIL_NOT_VALID":                     ErrorCodeIdcsEmailNotValid,
 	"INVALID_PATH":                             ErrorCodeInvalidPath,
 	"METHOD_NOT_ALLOWED":                       ErrorCodeMethodNotAllowed,
@@ -88,7 +87,6 @@ var mappingErrorCodeEnum = map[string]ErrorCodeEnum{
 	"TOO_MANY_REQUESTS":                        ErrorCodeTooManyRequests,
 	"IDP_SCIM_NOT_SETUP":                       ErrorCodeIdpScimNotSetup,
 	"INCIDENT_NOT_FOUND":                       ErrorCodeIncidentNotFound,
-	"INVALID_USER_CSI":                         ErrorCodeInvalidUserCsi,
 	"DATA_ALREADY_EXISTS":                      ErrorCodeDataAlreadyExists,
 	"AUTH_USER_NOT_MATCHING":                   ErrorCodeAuthUserNotMatching,
 	"CONTACT_NOT_APPROVED":                     ErrorCodeContactNotApproved,
@@ -98,13 +96,17 @@ var mappingErrorCodeEnum = map[string]ErrorCodeEnum{
 	"CREATE_PROFILE_VERIFY_OSSO_FAILURE":       ErrorCodeCreateProfileVerifyOssoFailure,
 	"PROFILE_ACCOUNT_NOT_VERIFIED":             ErrorCodeProfileAccountNotVerified,
 	"SUPPORT_ACCOUNT_NOT_FOUND":                ErrorCodeSupportAccountNotFound,
-	"SUPPORT_ACCOUNT_PENDING_CSI_APPROVAL":     ErrorCodeSupportAccountPendingCsiApproval,
 	"FREE_TIER_CUSTOMER_SLI_UNSUPPORTED":       ErrorCodeFreeTierCustomerSliUnsupported,
 	"PROFILE_ACCOUNT_VERIFIED":                 ErrorCodeProfileAccountVerified,
-	"PROFILE_VERIFIED_CSI_REQUEST_PENDING":     ErrorCodeProfileVerifiedCsiRequestPending,
-	"PROFILE_VERIFIED_CSI_REQUEST_NOT_FOUND":   ErrorCodeProfileVerifiedCsiRequestNotFound,
 	"CREATE_PROFILE_ORGANIZATION_NAME_INVALID": ErrorCodeCreateProfileOrganizationNameInvalid,
 	"CREATE_PROFILE_EMAIL_INVALID":             ErrorCodeCreateProfileEmailInvalid,
+	"NOTAUTHENTICATED":                         ErrorCodeNotauthenticated,
+	"CMOS_UNAUTHORIZED_PERMISSION":             ErrorCodeCmosUnauthorizedPermission,
+	"CMOS_SUPPORT_ACCOUNT_EXISTS":              ErrorCodeCmosSupportAccountExists,
+	"CMOS_INVALID_USER_GROUP_ID":               ErrorCodeCmosInvalidUserGroupId,
+	"UNSUPPORTED_OPERATION":                    ErrorCodeUnsupportedOperation,
+	"NOTAUTHORIZEDORNOTFOUND":                  ErrorCodeNotauthorizedornotfound,
+	"LIST_SUBSCRIPTION_FAILURE":                ErrorCodeListSubscriptionFailure,
 }
 
 var mappingErrorCodeEnumLowerCase = map[string]ErrorCodeEnum{
@@ -115,12 +117,10 @@ var mappingErrorCodeEnumLowerCase = map[string]ErrorCodeEnum{
 	"ssl_authorization":                        ErrorCodeSslAuthorization,
 	"auth_failed":                              ErrorCodeAuthFailed,
 	"authz_failed":                             ErrorCodeAuthzFailed,
-	"csi_not_authorized":                       ErrorCodeCsiNotAuthorized,
 	"user_policy_not_authorized":               ErrorCodeUserPolicyNotAuthorized,
 	"email_not_verified":                       ErrorCodeEmailNotVerified,
 	"email_not_found":                          ErrorCodeEmailNotFound,
 	"oci_email_not_found":                      ErrorCodeOciEmailNotFound,
-	"mos_email_not_found":                      ErrorCodeMosEmailNotFound,
 	"idcs_email_not_valid":                     ErrorCodeIdcsEmailNotValid,
 	"invalid_path":                             ErrorCodeInvalidPath,
 	"method_not_allowed":                       ErrorCodeMethodNotAllowed,
@@ -131,7 +131,6 @@ var mappingErrorCodeEnumLowerCase = map[string]ErrorCodeEnum{
 	"too_many_requests":                        ErrorCodeTooManyRequests,
 	"idp_scim_not_setup":                       ErrorCodeIdpScimNotSetup,
 	"incident_not_found":                       ErrorCodeIncidentNotFound,
-	"invalid_user_csi":                         ErrorCodeInvalidUserCsi,
 	"data_already_exists":                      ErrorCodeDataAlreadyExists,
 	"auth_user_not_matching":                   ErrorCodeAuthUserNotMatching,
 	"contact_not_approved":                     ErrorCodeContactNotApproved,
@@ -141,13 +140,17 @@ var mappingErrorCodeEnumLowerCase = map[string]ErrorCodeEnum{
 	"create_profile_verify_osso_failure":       ErrorCodeCreateProfileVerifyOssoFailure,
 	"profile_account_not_verified":             ErrorCodeProfileAccountNotVerified,
 	"support_account_not_found":                ErrorCodeSupportAccountNotFound,
-	"support_account_pending_csi_approval":     ErrorCodeSupportAccountPendingCsiApproval,
 	"free_tier_customer_sli_unsupported":       ErrorCodeFreeTierCustomerSliUnsupported,
 	"profile_account_verified":                 ErrorCodeProfileAccountVerified,
-	"profile_verified_csi_request_pending":     ErrorCodeProfileVerifiedCsiRequestPending,
-	"profile_verified_csi_request_not_found":   ErrorCodeProfileVerifiedCsiRequestNotFound,
 	"create_profile_organization_name_invalid": ErrorCodeCreateProfileOrganizationNameInvalid,
 	"create_profile_email_invalid":             ErrorCodeCreateProfileEmailInvalid,
+	"notauthenticated":                         ErrorCodeNotauthenticated,
+	"cmos_unauthorized_permission":             ErrorCodeCmosUnauthorizedPermission,
+	"cmos_support_account_exists":              ErrorCodeCmosSupportAccountExists,
+	"cmos_invalid_user_group_id":               ErrorCodeCmosInvalidUserGroupId,
+	"unsupported_operation":                    ErrorCodeUnsupportedOperation,
+	"notauthorizedornotfound":                  ErrorCodeNotauthorizedornotfound,
+	"list_subscription_failure":                ErrorCodeListSubscriptionFailure,
 }
 
 // GetErrorCodeEnumValues Enumerates the set of values for ErrorCodeEnum
@@ -169,12 +172,10 @@ func GetErrorCodeEnumStringValues() []string {
 		"SSL_AUTHORIZATION",
 		"AUTH_FAILED",
 		"AUTHZ_FAILED",
-		"CSI_NOT_AUTHORIZED",
 		"USER_POLICY_NOT_AUTHORIZED",
 		"EMAIL_NOT_VERIFIED",
 		"EMAIL_NOT_FOUND",
 		"OCI_EMAIL_NOT_FOUND",
-		"MOS_EMAIL_NOT_FOUND",
 		"IDCS_EMAIL_NOT_VALID",
 		"INVALID_PATH",
 		"METHOD_NOT_ALLOWED",
@@ -185,7 +186,6 @@ func GetErrorCodeEnumStringValues() []string {
 		"TOO_MANY_REQUESTS",
 		"IDP_SCIM_NOT_SETUP",
 		"INCIDENT_NOT_FOUND",
-		"INVALID_USER_CSI",
 		"DATA_ALREADY_EXISTS",
 		"AUTH_USER_NOT_MATCHING",
 		"CONTACT_NOT_APPROVED",
@@ -195,13 +195,17 @@ func GetErrorCodeEnumStringValues() []string {
 		"CREATE_PROFILE_VERIFY_OSSO_FAILURE",
 		"PROFILE_ACCOUNT_NOT_VERIFIED",
 		"SUPPORT_ACCOUNT_NOT_FOUND",
-		"SUPPORT_ACCOUNT_PENDING_CSI_APPROVAL",
 		"FREE_TIER_CUSTOMER_SLI_UNSUPPORTED",
 		"PROFILE_ACCOUNT_VERIFIED",
-		"PROFILE_VERIFIED_CSI_REQUEST_PENDING",
-		"PROFILE_VERIFIED_CSI_REQUEST_NOT_FOUND",
 		"CREATE_PROFILE_ORGANIZATION_NAME_INVALID",
 		"CREATE_PROFILE_EMAIL_INVALID",
+		"NOTAUTHENTICATED",
+		"CMOS_UNAUTHORIZED_PERMISSION",
+		"CMOS_SUPPORT_ACCOUNT_EXISTS",
+		"CMOS_INVALID_USER_GROUP_ID",
+		"UNSUPPORTED_OPERATION",
+		"NOTAUTHORIZEDORNOTFOUND",
+		"LIST_SUBSCRIPTION_FAILURE",
 	}
 }
 
