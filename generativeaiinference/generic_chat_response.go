@@ -27,6 +27,8 @@ type GenericChatResponse struct {
 
 	// A list of generated texts. Can be more than one if n is greater than 1.
 	Choices []ChatChoice `mandatory:"true" json:"choices"`
+
+	Usage *Usage `mandatory:"false" json:"usage"`
 }
 
 func (m GenericChatResponse) String() string {

@@ -25,8 +25,14 @@ type GenericChatRequest struct {
 	// The series of messages in a chat request. Includes the previous messages in a conversation. Each message includes a role (`USER` or the `CHATBOT`) and content.
 	Messages []Message `mandatory:"false" json:"messages"`
 
+	// Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format, and querying for objects via API or the dashboard.
+	// Keys are strings with a maximum length of 64 characters. Values are strings with a maximum length of 512 characters.
+	Metadata *interface{} `mandatory:"false" json:"metadata"`
+
 	// Whether to stream back partial progress. If set to true, as tokens become available, they are sent as data-only server-sent events.
 	IsStream *bool `mandatory:"false" json:"isStream"`
+
+	StreamOptions *StreamOptions `mandatory:"false" json:"streamOptions"`
 
 	// The number of of generated texts that will be returned.
 	NumGenerations *int `mandatory:"false" json:"numGenerations"`
@@ -63,18 +69,33 @@ type GenericChatRequest struct {
 	// For example, if the log probability is 5, the API returns a list of the 5 most likely tokens. The API returns the log probability of the sampled token, so there might be up to logprobs+1 elements in the response.
 	LogProbs *int `mandatory:"false" json:"logProbs"`
 
-	// The maximum number of tokens that can be generated per output sequence. The token count of your prompt plus `maxTokens` must not exceed the model's context length.
-	// Not setting a value for maxTokens results in the possible use of model's full context length.
+	// The maximum number of tokens that can be generated per output sequence. The token count of your prompt plus maxTokens must not exceed the model's context length. For on-demand inferencing, the response length is capped at 4,000 tokens for each run.
 	MaxTokens *int `mandatory:"false" json:"maxTokens"`
+
+	// An upper bound for the number of tokens that can be generated for a completion, including visible output tokens and reasoning tokens.
+	MaxCompletionTokens *int `mandatory:"false" json:"maxCompletionTokens"`
 
 	// Modifies the likelihood of specified tokens that appear in the completion.
 	// Example: '{"6395": 2, "8134": 1, "21943": 0.5, "5923": -100}'
 	LogitBias *interface{} `mandatory:"false" json:"logitBias"`
 
+	Prediction Prediction `mandatory:"false" json:"prediction"`
+
+	ResponseFormat ResponseFormat `mandatory:"false" json:"responseFormat"`
+
 	ToolChoice ToolChoice `mandatory:"false" json:"toolChoice"`
+
+	// Whether to enable parallel function calling during tool use.
+	IsParallelToolCalls *bool `mandatory:"false" json:"isParallelToolCalls"`
 
 	// A list of tools the model may call. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
 	Tools []ToolDefinition `mandatory:"false" json:"tools"`
+
+	// Constrains effort on reasoning for reasoning models. Currently supported values are minimal, low, medium, and high. Reducing reasoning effort can result in faster responses and fewer tokens used on reasoning in a response.
+	ReasoningEffort GenericChatRequestReasoningEffortEnum `mandatory:"false" json:"reasoningEffort,omitempty"`
+
+	// Constrains the verbosity of the model's response. Lower values will result in more concise responses, while higher values will result in more verbose responses.
+	Verbosity GenericChatRequestVerbosityEnum `mandatory:"false" json:"verbosity,omitempty"`
 }
 
 func (m GenericChatRequest) String() string {
@@ -86,6 +107,12 @@ func (m GenericChatRequest) String() string {
 // Not recommended for calling this function directly
 func (m GenericChatRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
+	if _, ok := GetMappingGenericChatRequestReasoningEffortEnum(string(m.ReasoningEffort)); !ok && m.ReasoningEffort != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ReasoningEffort: %s. Supported values are: %s.", m.ReasoningEffort, strings.Join(GetGenericChatRequestReasoningEffortEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingGenericChatRequestVerbosityEnum(string(m.Verbosity)); !ok && m.Verbosity != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Verbosity: %s. Supported values are: %s.", m.Verbosity, strings.Join(GetGenericChatRequestVerbosityEnumStringValues(), ",")))
+	}
 
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
@@ -110,22 +137,30 @@ func (m GenericChatRequest) MarshalJSON() (buff []byte, e error) {
 // UnmarshalJSON unmarshals from json
 func (m *GenericChatRequest) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		Messages         []message        `json:"messages"`
-		IsStream         *bool            `json:"isStream"`
-		NumGenerations   *int             `json:"numGenerations"`
-		Seed             *int             `json:"seed"`
-		IsEcho           *bool            `json:"isEcho"`
-		TopK             *int             `json:"topK"`
-		TopP             *float64         `json:"topP"`
-		Temperature      *float64         `json:"temperature"`
-		FrequencyPenalty *float64         `json:"frequencyPenalty"`
-		PresencePenalty  *float64         `json:"presencePenalty"`
-		Stop             []string         `json:"stop"`
-		LogProbs         *int             `json:"logProbs"`
-		MaxTokens        *int             `json:"maxTokens"`
-		LogitBias        *interface{}     `json:"logitBias"`
-		ToolChoice       toolchoice       `json:"toolChoice"`
-		Tools            []tooldefinition `json:"tools"`
+		Messages            []message                             `json:"messages"`
+		ReasoningEffort     GenericChatRequestReasoningEffortEnum `json:"reasoningEffort"`
+		Verbosity           GenericChatRequestVerbosityEnum       `json:"verbosity"`
+		Metadata            *interface{}                          `json:"metadata"`
+		IsStream            *bool                                 `json:"isStream"`
+		StreamOptions       *StreamOptions                        `json:"streamOptions"`
+		NumGenerations      *int                                  `json:"numGenerations"`
+		Seed                *int                                  `json:"seed"`
+		IsEcho              *bool                                 `json:"isEcho"`
+		TopK                *int                                  `json:"topK"`
+		TopP                *float64                              `json:"topP"`
+		Temperature         *float64                              `json:"temperature"`
+		FrequencyPenalty    *float64                              `json:"frequencyPenalty"`
+		PresencePenalty     *float64                              `json:"presencePenalty"`
+		Stop                []string                              `json:"stop"`
+		LogProbs            *int                                  `json:"logProbs"`
+		MaxTokens           *int                                  `json:"maxTokens"`
+		MaxCompletionTokens *int                                  `json:"maxCompletionTokens"`
+		LogitBias           *interface{}                          `json:"logitBias"`
+		Prediction          prediction                            `json:"prediction"`
+		ResponseFormat      responseformat                        `json:"responseFormat"`
+		ToolChoice          toolchoice                            `json:"toolChoice"`
+		IsParallelToolCalls *bool                                 `json:"isParallelToolCalls"`
+		Tools               []tooldefinition                      `json:"tools"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -145,7 +180,15 @@ func (m *GenericChatRequest) UnmarshalJSON(data []byte) (e error) {
 			m.Messages[i] = nil
 		}
 	}
+	m.ReasoningEffort = model.ReasoningEffort
+
+	m.Verbosity = model.Verbosity
+
+	m.Metadata = model.Metadata
+
 	m.IsStream = model.IsStream
+
+	m.StreamOptions = model.StreamOptions
 
 	m.NumGenerations = model.NumGenerations
 
@@ -169,7 +212,29 @@ func (m *GenericChatRequest) UnmarshalJSON(data []byte) (e error) {
 
 	m.MaxTokens = model.MaxTokens
 
+	m.MaxCompletionTokens = model.MaxCompletionTokens
+
 	m.LogitBias = model.LogitBias
+
+	nn, e = model.Prediction.UnmarshalPolymorphicJSON(model.Prediction.JsonData)
+	if e != nil {
+		return
+	}
+	if nn != nil {
+		m.Prediction = nn.(Prediction)
+	} else {
+		m.Prediction = nil
+	}
+
+	nn, e = model.ResponseFormat.UnmarshalPolymorphicJSON(model.ResponseFormat.JsonData)
+	if e != nil {
+		return
+	}
+	if nn != nil {
+		m.ResponseFormat = nn.(ResponseFormat)
+	} else {
+		m.ResponseFormat = nil
+	}
 
 	nn, e = model.ToolChoice.UnmarshalPolymorphicJSON(model.ToolChoice.JsonData)
 	if e != nil {
@@ -180,6 +245,8 @@ func (m *GenericChatRequest) UnmarshalJSON(data []byte) (e error) {
 	} else {
 		m.ToolChoice = nil
 	}
+
+	m.IsParallelToolCalls = model.IsParallelToolCalls
 
 	m.Tools = make([]ToolDefinition, len(model.Tools))
 	for i, n := range model.Tools {
@@ -194,4 +261,100 @@ func (m *GenericChatRequest) UnmarshalJSON(data []byte) (e error) {
 		}
 	}
 	return
+}
+
+// GenericChatRequestReasoningEffortEnum Enum with underlying type: string
+type GenericChatRequestReasoningEffortEnum string
+
+// Set of constants representing the allowable values for GenericChatRequestReasoningEffortEnum
+const (
+	GenericChatRequestReasoningEffortMinimal GenericChatRequestReasoningEffortEnum = "MINIMAL"
+	GenericChatRequestReasoningEffortLow     GenericChatRequestReasoningEffortEnum = "LOW"
+	GenericChatRequestReasoningEffortMedium  GenericChatRequestReasoningEffortEnum = "MEDIUM"
+	GenericChatRequestReasoningEffortHigh    GenericChatRequestReasoningEffortEnum = "HIGH"
+)
+
+var mappingGenericChatRequestReasoningEffortEnum = map[string]GenericChatRequestReasoningEffortEnum{
+	"MINIMAL": GenericChatRequestReasoningEffortMinimal,
+	"LOW":     GenericChatRequestReasoningEffortLow,
+	"MEDIUM":  GenericChatRequestReasoningEffortMedium,
+	"HIGH":    GenericChatRequestReasoningEffortHigh,
+}
+
+var mappingGenericChatRequestReasoningEffortEnumLowerCase = map[string]GenericChatRequestReasoningEffortEnum{
+	"minimal": GenericChatRequestReasoningEffortMinimal,
+	"low":     GenericChatRequestReasoningEffortLow,
+	"medium":  GenericChatRequestReasoningEffortMedium,
+	"high":    GenericChatRequestReasoningEffortHigh,
+}
+
+// GetGenericChatRequestReasoningEffortEnumValues Enumerates the set of values for GenericChatRequestReasoningEffortEnum
+func GetGenericChatRequestReasoningEffortEnumValues() []GenericChatRequestReasoningEffortEnum {
+	values := make([]GenericChatRequestReasoningEffortEnum, 0)
+	for _, v := range mappingGenericChatRequestReasoningEffortEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetGenericChatRequestReasoningEffortEnumStringValues Enumerates the set of values in String for GenericChatRequestReasoningEffortEnum
+func GetGenericChatRequestReasoningEffortEnumStringValues() []string {
+	return []string{
+		"MINIMAL",
+		"LOW",
+		"MEDIUM",
+		"HIGH",
+	}
+}
+
+// GetMappingGenericChatRequestReasoningEffortEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGenericChatRequestReasoningEffortEnum(val string) (GenericChatRequestReasoningEffortEnum, bool) {
+	enum, ok := mappingGenericChatRequestReasoningEffortEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
+}
+
+// GenericChatRequestVerbosityEnum Enum with underlying type: string
+type GenericChatRequestVerbosityEnum string
+
+// Set of constants representing the allowable values for GenericChatRequestVerbosityEnum
+const (
+	GenericChatRequestVerbosityLow    GenericChatRequestVerbosityEnum = "LOW"
+	GenericChatRequestVerbosityMedium GenericChatRequestVerbosityEnum = "MEDIUM"
+	GenericChatRequestVerbosityHigh   GenericChatRequestVerbosityEnum = "HIGH"
+)
+
+var mappingGenericChatRequestVerbosityEnum = map[string]GenericChatRequestVerbosityEnum{
+	"LOW":    GenericChatRequestVerbosityLow,
+	"MEDIUM": GenericChatRequestVerbosityMedium,
+	"HIGH":   GenericChatRequestVerbosityHigh,
+}
+
+var mappingGenericChatRequestVerbosityEnumLowerCase = map[string]GenericChatRequestVerbosityEnum{
+	"low":    GenericChatRequestVerbosityLow,
+	"medium": GenericChatRequestVerbosityMedium,
+	"high":   GenericChatRequestVerbosityHigh,
+}
+
+// GetGenericChatRequestVerbosityEnumValues Enumerates the set of values for GenericChatRequestVerbosityEnum
+func GetGenericChatRequestVerbosityEnumValues() []GenericChatRequestVerbosityEnum {
+	values := make([]GenericChatRequestVerbosityEnum, 0)
+	for _, v := range mappingGenericChatRequestVerbosityEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetGenericChatRequestVerbosityEnumStringValues Enumerates the set of values in String for GenericChatRequestVerbosityEnum
+func GetGenericChatRequestVerbosityEnumStringValues() []string {
+	return []string{
+		"LOW",
+		"MEDIUM",
+		"HIGH",
+	}
+}
+
+// GetMappingGenericChatRequestVerbosityEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGenericChatRequestVerbosityEnum(val string) (GenericChatRequestVerbosityEnum, bool) {
+	enum, ok := mappingGenericChatRequestVerbosityEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
 }

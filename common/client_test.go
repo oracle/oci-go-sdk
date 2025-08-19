@@ -678,6 +678,18 @@ key_file=%s
 	assert.Error(t, err)
 }
 
+func TestBaseClient_withCustomTimeout(t *testing.T) {
+	os.Setenv(CustomClientTimeoutEnvVar, "20")
+	c := defaultHTTPDispatcher()
+	assert.Equal(t, 20*time.Second, c.Timeout)
+	os.Setenv(CustomClientTimeoutEnvVar, "abc")
+	c = defaultHTTPDispatcher()
+	assert.Equal(t, defaultTimeout, c.Timeout) // waring thrown, fallback to default
+	os.Unsetenv(CustomClientTimeoutEnvVar)
+	c = defaultHTTPDispatcher()
+	assert.Equal(t, defaultTimeout, c.Timeout)
+}
+
 func TestHomeDir(t *testing.T) {
 	h := getHomeFolder()
 	_, e := os.Stat(h)
