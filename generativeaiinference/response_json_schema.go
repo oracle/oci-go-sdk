@@ -13,45 +13,39 @@
 package generativeaiinference
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
-// ToolChoiceFunction The tool choice for a function. The model will generate the parameters for user to call the function.
-type ToolChoiceFunction struct {
+// ResponseJsonSchema The JSON schema definition to be used in JSON_SCHEMA response format.
+type ResponseJsonSchema struct {
 
-	// The function name.
-	Name *string `mandatory:"false" json:"name"`
+	// The name of the response format. Must be a-z, A-Z, 0-9, or contain underscores and dashes.
+	Name *string `mandatory:"true" json:"name"`
+
+	// A description of what the response format is for, used by the model to determine how to respond in the format.
+	Description *string `mandatory:"false" json:"description"`
+
+	// The schema used by the structured output, described as a JSON Schema object.
+	Schema *interface{} `mandatory:"false" json:"schema"`
+
+	// Whether to enable strict schema adherence when generating the output. If set to true, the model will always follow the exact schema defined in the schema field. Only a subset of JSON Schema is supported when strict is true.
+	IsStrict *bool `mandatory:"false" json:"isStrict"`
 }
 
-func (m ToolChoiceFunction) String() string {
+func (m ResponseJsonSchema) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m ToolChoiceFunction) ValidateEnumValue() (bool, error) {
+func (m ResponseJsonSchema) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
 	}
 	return false, nil
-}
-
-// MarshalJSON marshals to json representation
-func (m ToolChoiceFunction) MarshalJSON() (buff []byte, e error) {
-	type MarshalTypeToolChoiceFunction ToolChoiceFunction
-	s := struct {
-		DiscriminatorParam string `json:"type"`
-		MarshalTypeToolChoiceFunction
-	}{
-		"FUNCTION",
-		(MarshalTypeToolChoiceFunction)(m),
-	}
-
-	return json.Marshal(&s)
 }

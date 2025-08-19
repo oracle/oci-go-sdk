@@ -51,7 +51,7 @@ type CohereChatRequest struct {
 
 	StreamOptions *StreamOptions `mandatory:"false" json:"streamOptions"`
 
-	// The maximum number of output tokens that the model will generate for the response.
+	// The maximum number of output tokens that the model will generate for the response. The token count of your prompt plus maxTokens must not exceed the model's context length. For on-demand inferencing, the response length is capped at 4,000 tokens for each run.
 	MaxTokens *int `mandatory:"false" json:"maxTokens"`
 
 	// The maximum number of input tokens to send to the model. If not specified, max_input_tokens is the model's context length limit minus a small buffer.

@@ -19,84 +19,66 @@ import (
 	"strings"
 )
 
-// Message A message that represents a single chat dialog.
-type Message interface {
-
-	// Contents of the chat message.
-	GetContent() []ChatContent
+// ResponseFormat An object specifying the format that the model must output.
+type ResponseFormat interface {
 }
 
-type message struct {
+type responseformat struct {
 	JsonData []byte
-	Content  json.RawMessage `mandatory:"false" json:"content"`
-	Role     string          `json:"role"`
+	Type     string `json:"type"`
 }
 
 // UnmarshalJSON unmarshals json
-func (m *message) UnmarshalJSON(data []byte) error {
+func (m *responseformat) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
-	type Unmarshalermessage message
+	type Unmarshalerresponseformat responseformat
 	s := struct {
-		Model Unmarshalermessage
+		Model Unmarshalerresponseformat
 	}{}
 	err := json.Unmarshal(data, &s.Model)
 	if err != nil {
 		return err
 	}
-	m.Content = s.Model.Content
-	m.Role = s.Model.Role
+	m.Type = s.Model.Type
 
 	return err
 }
 
 // UnmarshalPolymorphicJSON unmarshals polymorphic json
-func (m *message) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+func (m *responseformat) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 
 	if data == nil || string(data) == "null" {
 		return nil, nil
 	}
 
 	var err error
-	switch m.Role {
-	case "SYSTEM":
-		mm := SystemMessage{}
+	switch m.Type {
+	case "TEXT":
+		mm := TextResponseFormat{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
-	case "ASSISTANT":
-		mm := AssistantMessage{}
+	case "JSON_OBJECT":
+		mm := JsonObjectResponseFormat{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
-	case "USER":
-		mm := UserMessage{}
-		err = json.Unmarshal(data, &mm)
-		return mm, err
-	case "TOOL":
-		mm := ToolMessage{}
-		err = json.Unmarshal(data, &mm)
-		return mm, err
-	case "DEVELOPER":
-		mm := DeveloperMessage{}
+	case "JSON_SCHEMA":
+		mm := JsonSchemaResponseFormat{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:
-		common.Logf("Received unsupported enum value for Message: %s.", m.Role)
+		common.Logf("Received unsupported enum value for ResponseFormat: %s.", m.Type)
 		return *m, nil
 	}
 }
 
-// GetContent returns Content
-func (m message) GetContent() json.RawMessage {
-	return m.Content
-}
-
-func (m message) String() string {
+func (m responseformat) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m message) ValidateEnumValue() (bool, error) {
+func (m responseformat) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {
@@ -105,56 +87,48 @@ func (m message) ValidateEnumValue() (bool, error) {
 	return false, nil
 }
 
-// MessageRoleEnum Enum with underlying type: string
-type MessageRoleEnum string
+// ResponseFormatTypeEnum Enum with underlying type: string
+type ResponseFormatTypeEnum string
 
-// Set of constants representing the allowable values for MessageRoleEnum
+// Set of constants representing the allowable values for ResponseFormatTypeEnum
 const (
-	MessageRoleSystem    MessageRoleEnum = "SYSTEM"
-	MessageRoleAssistant MessageRoleEnum = "ASSISTANT"
-	MessageRoleUser      MessageRoleEnum = "USER"
-	MessageRoleTool      MessageRoleEnum = "TOOL"
-	MessageRoleDeveloper MessageRoleEnum = "DEVELOPER"
+	ResponseFormatTypeText       ResponseFormatTypeEnum = "TEXT"
+	ResponseFormatTypeJsonObject ResponseFormatTypeEnum = "JSON_OBJECT"
+	ResponseFormatTypeJsonSchema ResponseFormatTypeEnum = "JSON_SCHEMA"
 )
 
-var mappingMessageRoleEnum = map[string]MessageRoleEnum{
-	"SYSTEM":    MessageRoleSystem,
-	"ASSISTANT": MessageRoleAssistant,
-	"USER":      MessageRoleUser,
-	"TOOL":      MessageRoleTool,
-	"DEVELOPER": MessageRoleDeveloper,
+var mappingResponseFormatTypeEnum = map[string]ResponseFormatTypeEnum{
+	"TEXT":        ResponseFormatTypeText,
+	"JSON_OBJECT": ResponseFormatTypeJsonObject,
+	"JSON_SCHEMA": ResponseFormatTypeJsonSchema,
 }
 
-var mappingMessageRoleEnumLowerCase = map[string]MessageRoleEnum{
-	"system":    MessageRoleSystem,
-	"assistant": MessageRoleAssistant,
-	"user":      MessageRoleUser,
-	"tool":      MessageRoleTool,
-	"developer": MessageRoleDeveloper,
+var mappingResponseFormatTypeEnumLowerCase = map[string]ResponseFormatTypeEnum{
+	"text":        ResponseFormatTypeText,
+	"json_object": ResponseFormatTypeJsonObject,
+	"json_schema": ResponseFormatTypeJsonSchema,
 }
 
-// GetMessageRoleEnumValues Enumerates the set of values for MessageRoleEnum
-func GetMessageRoleEnumValues() []MessageRoleEnum {
-	values := make([]MessageRoleEnum, 0)
-	for _, v := range mappingMessageRoleEnum {
+// GetResponseFormatTypeEnumValues Enumerates the set of values for ResponseFormatTypeEnum
+func GetResponseFormatTypeEnumValues() []ResponseFormatTypeEnum {
+	values := make([]ResponseFormatTypeEnum, 0)
+	for _, v := range mappingResponseFormatTypeEnum {
 		values = append(values, v)
 	}
 	return values
 }
 
-// GetMessageRoleEnumStringValues Enumerates the set of values in String for MessageRoleEnum
-func GetMessageRoleEnumStringValues() []string {
+// GetResponseFormatTypeEnumStringValues Enumerates the set of values in String for ResponseFormatTypeEnum
+func GetResponseFormatTypeEnumStringValues() []string {
 	return []string{
-		"SYSTEM",
-		"ASSISTANT",
-		"USER",
-		"TOOL",
-		"DEVELOPER",
+		"TEXT",
+		"JSON_OBJECT",
+		"JSON_SCHEMA",
 	}
 }
 
-// GetMappingMessageRoleEnum performs case Insensitive comparison on enum value and return the desired enum
-func GetMappingMessageRoleEnum(val string) (MessageRoleEnum, bool) {
-	enum, ok := mappingMessageRoleEnumLowerCase[strings.ToLower(val)]
+// GetMappingResponseFormatTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResponseFormatTypeEnum(val string) (ResponseFormatTypeEnum, bool) {
+	enum, ok := mappingResponseFormatTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
