@@ -272,7 +272,7 @@ func TestInstancePrincipalKeyProvider_PrivateRSAKeyError(t *testing.T) {
 	mockFederationClient := new(mockFederationClient)
 	var nilPtr *rsa.PrivateKey
 	expectedErrorMessage := "TestPrivateRSAKeyError"
-	mockFederationClient.On("PrivateKey").Return(nilPtr, fmt.Errorf(expectedErrorMessage)).Once()
+	mockFederationClient.On("PrivateKey").Return(nilPtr, fmt.Errorf("%s", expectedErrorMessage)).Once()
 
 	keyProvider := &instancePrincipalKeyProvider{FederationClient: mockFederationClient}
 
@@ -300,7 +300,7 @@ func TestInstancePrincipalKeyProvider_KeyIDError(t *testing.T) {
 	t.Parallel()
 	mockFederationClient := new(mockFederationClient)
 	expectedErrorMessage := "TestSecurityTokenError"
-	mockFederationClient.On("SecurityToken").Return("", fmt.Errorf(expectedErrorMessage)).Once()
+	mockFederationClient.On("SecurityToken").Return("", fmt.Errorf("%s", expectedErrorMessage)).Once()
 
 	keyProvider := &instancePrincipalKeyProvider{FederationClient: mockFederationClient}
 
