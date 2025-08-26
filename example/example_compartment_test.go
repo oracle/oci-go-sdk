@@ -21,8 +21,8 @@ import (
 	"github.com/oracle/oci-go-sdk/v65/identity"
 )
 
-// ExampleMoveCompartment Moves an active compartment under a different parent
-func ExampleMoveCompartment() {
+// Example_moveCompartment Moves an active compartment under a different parent
+func Example_moveCompartment() {
 	c, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(err)
 

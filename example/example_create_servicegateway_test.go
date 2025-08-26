@@ -15,7 +15,7 @@ import (
 	"github.com/oracle/oci-go-sdk/v65/example/helpers"
 )
 
-func ExampleCreateServiceGateway() {
+func Example_createServiceGateway() {
 	displayName := "OCI-GOSDK-CreateServiceGateway-Example" // displayName for created VCN and ServiceGateway
 	compartmentID := os.Getenv("OCI_COMPARTMENT_ID")        // OCI_COMPARTMENT_ID env variable must be defined
 

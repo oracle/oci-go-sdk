@@ -17,7 +17,7 @@ import (
 
 // Copies a volume backup to another region.
 // Polls the copied volume backup in the destination region until it's lifecycle is Available.
-func ExampleCopyVolumeBackup() {
+func Example_copyVolumeBackup() {
 	sourceBackupId := "REPLACE_WITH_VOLUME_BACKUP_OCID"
 	destinationRegion := "REPLACE_WITH_DESTINATION_REGION_NAME"
 	// displayName can be empty, in which case the copied backup will have the same display name as the original backup

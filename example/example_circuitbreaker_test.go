@@ -14,7 +14,7 @@ import (
 )
 
 // Example shows how to configure circuit breaker
-func ExampleConfigureCircuitBreaker() {
+func Example_configureCircuitBreaker() {
 	// If need to disable all service default circuit breaker, there are two ways: set circuit breaker environment variable to false
 	// or use global variable.
 	// common.GlobalCircuitBreakerSetting = common.NoCircuitBreaker()

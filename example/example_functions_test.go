@@ -42,9 +42,9 @@ var (
 
 		RUN:
 		To run this test/example run:
-		go test github.com/oracle/oci-go-sdk/example -run ExampleFunctionInvoke
+		go test github.com/oracle/oci-go-sdk/example -run Example_functionInvoke
 */
-func ExampleFunctionInvoke() {
+func Example_functionInvoke() {
 	managementClient, err := functions.NewFunctionsManagementClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(err)
 	fnImage = os.Getenv("OCI_FN_IMAGE")

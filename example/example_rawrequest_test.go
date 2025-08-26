@@ -17,7 +17,7 @@ import (
 )
 
 // ExampleRawRequest compose a request, sign it and send to server
-func ExampleListUsers_RawRequest() {
+func Example_listUsers_RawRequest() {
 	// build the url
 	url := "https://identity.us-phoenix-1.oraclecloud.com/20160918/users/?compartmentId=" + *helpers.RootCompartmentID()
 

@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.99.1 - 2025-08-26
+### Added 
+- Support for Oracle 19C databases on exascale infrastructure in the Database Service 
+- Support for VM.Standard.x86 shape for base databases in the Database Service 
+- Support for disaster recovery for MySQL database systems in the Disaster Recovery Service 
+- Support for additional languages using whisper model in the AI Speech Service 
+- Support for additional host count properties in the GPU memory fabric resource in the Compute Service 
+- Support for additional parameters on deployment create and update operations in the GoldenGate Service
+
 ## 65.99.0 - 2025-08-19
 ### Added 
 - Support for calling Oracle Cloud Infrastructure services in the eu-budapest-1 region 

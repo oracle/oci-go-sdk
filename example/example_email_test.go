@@ -20,7 +20,7 @@ const (
 	senderEmailAddress = "sample@sample.com"
 )
 
-func ExampleEmailSender() {
+func Example_emailSender() {
 	client, err := email.NewEmailClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(err)
 
