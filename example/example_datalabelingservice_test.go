@@ -12,8 +12,8 @@ import (
 	"github.com/oracle/oci-go-sdk/v65/example/helpers"
 )
 
-// ExampleCreateDataset to create a dataset in a given compartment Id.
-func ExampleCreateDataset() {
+// Example_createDataset to create a dataset in a given compartment Id.
+func Example_createDataset() {
 	compartment := "REPLACE_WITH_COMPARTMENT_OCID"
 	annotationFormat := "REPLACE_WITH_ANNOTATION_FORMAT"
 	datasetFormat := "REPLACE_WITH_DATASET_FORMAT"
@@ -57,8 +57,8 @@ func ExampleCreateDataset() {
 	fmt.Println("Done")
 }
 
-// ExampleGetDataset to get dataset details from a given dataset Id.
-func ExampleGetDataset() {
+// Example_getDataset to get dataset details from a given dataset Id.
+func Example_getDataset() {
 	datasetId := "REPLACE_WITH_DATASET_OCID"
 
 	client, err := datalabelingservice.NewDataLabelingManagementClientWithConfigurationProvider(common.DefaultConfigProvider())
@@ -78,8 +78,8 @@ func ExampleGetDataset() {
 	fmt.Println("Done.")
 }
 
-// ExampleListDataset is to list all dataset in a given compartment Id.
-func ExampleListDataset() {
+// Example_listDataset is to list all dataset in a given compartment Id.
+func Example_listDataset() {
 	compartment := "REPLACE_WITH_COMPARTMENT_OCID"
 
 	client, err := datalabelingservice.NewDataLabelingManagementClientWithConfigurationProvider(common.DefaultConfigProvider())
@@ -101,8 +101,8 @@ func ExampleListDataset() {
 	fmt.Println("Listing datasets completed")
 }
 
-// ExampleDeleteDataset to  delete a existing dataset.
-func ExampleDeleteDataset() {
+// Example_deleteDataset to  delete a existing dataset.
+func Example_deleteDataset() {
 	datasetId := "REPLACE_WITH_DATASET_OCID"
 
 	client, err := datalabelingservice.NewDataLabelingManagementClientWithConfigurationProvider(common.DefaultConfigProvider())

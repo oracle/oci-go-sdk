@@ -37,7 +37,7 @@ const (
     -----END RSA PRIVATE KEY-----`
 )
 
-func ExampleCreateLoadbalancer() {
+func Example_createLoadbalancer() {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	ctx := context.Background()
 	helpers.FatalIfError(clerr)

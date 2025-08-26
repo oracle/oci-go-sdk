@@ -30,7 +30,7 @@ func ListPreviewDBVersion() {
 	// List Preview Versions successful
 }
 
-func ExampleCreateAdb() {
+func Example_createAdb() {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 
@@ -56,7 +56,7 @@ func ExampleCreateAdb() {
 	// create adb successful
 }
 
-func ExampleCreateFreeAdb() {
+func Example_createFreeAdb() {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 
@@ -82,7 +82,7 @@ func ExampleCreateFreeAdb() {
 	// create free adb successful
 }
 
-func ExampleCreateAdbPreview() {
+func Example_createAdbPreview() {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 
@@ -109,7 +109,7 @@ func ExampleCreateAdbPreview() {
 	// create adb successful
 }
 
-func ExampleUpdateAdb() {
+func Example_updateAdb() {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 
@@ -132,7 +132,7 @@ func ExampleUpdateAdb() {
 	// update adb successful
 }
 
-func ExampleUpdateAdbAcl() {
+func Example_updateAdbAcl() {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 
@@ -153,7 +153,7 @@ func ExampleUpdateAdbAcl() {
 	// update adb acl successful
 }
 
-func ExampleUpdateAdbLisenceType() {
+func Example_updateAdbLisenceType() {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 

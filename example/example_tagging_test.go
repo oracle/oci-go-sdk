@@ -16,8 +16,8 @@ import (
 	"github.com/oracle/oci-go-sdk/v65/identity"
 )
 
-// ExampleTagging shows the sample for tag and tagNamespace operations: create, update, get, list etc...
-func ExampleTagging() {
+// Example_tagging shows the sample for tag and tagNamespace operations: create, update, get, list etc...
+func Example_tagging() {
 	c, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(err)
 
@@ -113,8 +113,8 @@ func ExampleTagging() {
 	// tag namespace reactivated
 }
 
-// ExampleFreeformAndDefinedTag shows how to use freeform and defined tags
-func ExampleFreeformAndDefinedTag() {
+// Example_freeformAndDefinedTag shows how to use freeform and defined tags
+func Example_freeformAndDefinedTag() {
 	// create a tag namespace and two tags
 	identityClient, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(err)

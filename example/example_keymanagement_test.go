@@ -18,7 +18,7 @@ import (
 
 // ExampleKeyManagement_VaultOperations shows how to create, schedule deletion
 // and cancel a scheduled deletion of a KMS vault
-func ExampleVaultOperations() {
+func Example_vaultOperations() {
 	vaultClient, clientError := keymanagement.NewKmsVaultClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clientError)
 
@@ -55,7 +55,7 @@ func ExampleVaultOperations() {
 }
 
 // ExampleKeyManagement_KeyOperations shows how to create, enable and disable a KMS key
-func ExampleKeyOperations() {
+func Example_keyOperations() {
 	vaultClient, clientError := keymanagement.NewKmsVaultClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clientError)
 
@@ -159,7 +159,7 @@ func ExampleKeyOperations() {
 	// schedule vault deletion
 }
 
-func ExampleCryptoOperations() {
+func Example_cryptoOperations() {
 	vaultClient, clientError := keymanagement.NewKmsVaultClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clientError)
 

@@ -41,7 +41,7 @@ var (
 	sourceCompartmentId, destinationCompartmentId string
 )
 
-func ExampleChangeNatGatewayCompartment() {
+func Example_changeNatGatewayCompartment() {
 
 	// Parse environment variables to get sourceCompartmentId and destinationCompartmentId
 	parseArgs()

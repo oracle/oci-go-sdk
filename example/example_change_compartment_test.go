@@ -45,7 +45,7 @@ var (
 	retryPolicy                                             common.RetryPolicy
 )
 
-func ExampleChangeCompartment() {
+func Example_changeCompartment() {
 
 	// Parse environment variables to get instanceId, targetCompartmentId, ifMatch and opcRetryToken
 	parseEnvironmentVariables()

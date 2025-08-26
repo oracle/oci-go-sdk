@@ -20,8 +20,8 @@ import (
 	"github.com/oracle/oci-go-sdk/v65/objectstorage/transfer"
 )
 
-// ExampleObjectStorage_UploadFile shows how to create a bucket and upload a file
-func ExampleObjectStorage_UploadFile() {
+// Example_objectStorage_UploadFile shows how to create a bucket and upload a file
+func Example_objectStorage_UploadFile() {
 	c, clerr := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 
@@ -60,7 +60,7 @@ func ExampleObjectStorage_UploadFile() {
 	// delete bucket
 }
 
-func ExampleObjectStorage_UploadManager_UploadFile() {
+func Example_objectStorage_UploadManager_UploadFile() {
 	c, clerr := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 	// Disable timeout to support big file upload(Once need to specify the os client for Upload Manager)
@@ -130,7 +130,7 @@ func callBack(multiPartUploadPart transfer.MultiPartUploadPart) {
 	}
 }
 
-func ExampleObjectStorage_UploadManager_Stream() {
+func Example_objectStorage_UploadManager_Stream() {
 	c, clerr := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 
@@ -203,8 +203,8 @@ func ExampleObjectStorage_UploadManager_Stream() {
 // This example covers only GetNamespace operation across tenants. Additional permissions
 // will be required to perform more Object Storage operations.
 //
-// ExampleObjectStorage_GetNamespace shows how to get namespace providing compartmentId.
-func ExampleObjectStorage_GetNamespace() {
+// Example_objectStorage_GetNamespace shows how to get namespace providing compartmentId.
+func Example_objectStorage_GetNamespace() {
 	c, clerr := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 
@@ -224,7 +224,7 @@ func ExampleObjectStorage_GetNamespace() {
 	// Namespace retrieved
 }
 
-func ExampleObjectStorage_GetObjectUsingRealmSpecificEndpoint() {
+func Example_objectStorage_GetObjectUsingRealmSpecificEndpoint() {
 	// This example shows how to use realm specific endpoint to get object.
 	// You can select either this environment variable or the customClientConfiguration to enable realm specific endpoint.
 	os.Setenv("OCI_REALM_SPECIFIC_SERVICE_ENDPOINT_TEMPLATE_ENABLED", "true")
@@ -242,7 +242,7 @@ func ExampleObjectStorage_GetObjectUsingRealmSpecificEndpoint() {
 	getRequest := objectstorage.GetObjectRequest{
 		NamespaceName: common.String(namespace),
 		BucketName:    common.String(bname),
-		ObjectName:    common.String("ExampleObjectStorage_GetObjectUsingRealmSpecificEndpoint"),
+		ObjectName:    common.String("Example_objectStorage_GetObjectUsingRealmSpecificEndpoint"),
 	}
 
 	response, err := c.GetObject(context.Background(), getRequest)

@@ -22,7 +22,7 @@ var (
 	displayNameBackupDestination, localMountPath string
 )
 
-func ExampleCreateNFSBackupDestination() {
+func Example_createNFSBackupDestination() {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 	displayNameBackupDestination := helpers.GetRandomString(32)
@@ -47,7 +47,7 @@ func ExampleCreateNFSBackupDestination() {
 	// create backup destination is successful
 }
 
-func ExampleGetBackupDestination() {
+func Example_getBackupDestination() {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 
@@ -64,7 +64,7 @@ func ExampleGetBackupDestination() {
 	// get backup destination is successful
 }
 
-func ExampleUpdateBackupDestination() {
+func Example_updateBackupDestination() {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 
@@ -86,7 +86,7 @@ func ExampleUpdateBackupDestination() {
 	// update backup destination is successful
 }
 
-func ExampleUpdateDbBackupBackupDestination() {
+func Example_updateDbBackupBackupDestination() {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 
@@ -117,7 +117,7 @@ func ExampleUpdateDbBackupBackupDestination() {
 	// update backup destination is successful
 }
 
-func ExampleCreateDbHomeBackupDestination() {
+func Example_createDbHomeBackupDestination() {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 
@@ -165,7 +165,7 @@ func ExampleCreateDbHomeBackupDestination() {
 	// Create DB Home with backupDestination completed
 }
 
-func ExampleDeleteBackupDestination() {
+func Example_deleteBackupDestination() {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 

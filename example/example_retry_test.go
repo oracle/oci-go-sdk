@@ -17,7 +17,7 @@ import (
 )
 
 // ExampleRetry shows how to use default retry for Create and Delete groups, please
-// refer to example_core_test.go->ExampleLaunchInstance for more examples
+// refer to example_core_test.go->Example_launchInstance for more examples
 // The Retry behavior Precedence (Highest to lowest) is defined as below:
 //   Operation level retry policy - setting request.RequestMetadata
 //   Client level retry policy - setting client.SetCustomClientConfiguration
@@ -124,9 +124,9 @@ func ExampleRetry() {
 	// Group Deleted
 }
 
-// ExampleCustomRetry shows how to use retry for Create and Delete groups, please
-// refer to example_core_test.go->ExampleLaunchInstance for more examples
-func ExampleCustomRetry() {
+// Example_customRetry shows how to use retry for Create and Delete groups, please
+// refer to example_core_test.go->Example_launchInstance for more examples
+func Example_customRetry() {
 	// create and delete group with retry
 	client, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	ctx := context.Background()
@@ -215,9 +215,9 @@ func ExampleCustomRetry() {
 	// Group Deleted
 }
 
-// ExampleUnlimitedAttemptsRetry shows how to use retry with unlimited retries, only limited by time,
-// for Create and Delete groups, please refer to example_core_test.go->ExampleLaunchInstance for more examples
-func ExampleUnlimitedAttemptsRetry() {
+// Example_unlimitedAttemptsRetry shows how to use retry with unlimited retries, only limited by time,
+// for Create and Delete groups, please refer to example_core_test.go->Example_launchInstance for more examples
+func Example_unlimitedAttemptsRetry() {
 	// create and delete group with retry
 	client, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	ctx := context.Background()

@@ -79,7 +79,7 @@ func (m CreateRelatedDocumentAttachmentDetails) ValidateEnumValue() (bool, error
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DocumentCategory: %s. Supported values are: %s.", m.DocumentCategory, strings.Join(GetRelatedDocumentAttachmentDocumentCategoryEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
-		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
 	return false, nil
 }

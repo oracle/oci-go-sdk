@@ -24,14 +24,14 @@ const (
 	instanceShape      = "VM.Standard2.1"
 
 	// replace following variables with your instance info
-	// this is used by ExampleCreateImageDetails_Polymorphic
+	// this is used by Example_createImageDetails_Polymorphic
 	objectStorageURIWtihImage = "[The Object Storage URL for the image which will be used to create an image.]"
 )
 
-// ExampleLaunchInstance does create an instance
+// Example_launchInstance does create an instance
 // NOTE: launch instance will create a new instance and VCN. please make sure delete the instance
 // after execute this sample code, otherwise, you will be charged for the running instance
-func ExampleLaunchInstance() {
+func Example_launchInstance() {
 	c, err := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(err)
 	ctx := context.Background()
@@ -141,9 +141,9 @@ func ExampleLaunchInstance() {
 	// VCN deleted
 }
 
-// ExampleCreateImageDetails_Polymorphic creates a boot disk image for the specified instance or
+// Example_createImageDetails_Polymorphic creates a boot disk image for the specified instance or
 // imports an exported image from the Oracle Cloud Infrastructure Object Storage service.
-func ExampleCreateImageDetails_Polymorphic() {
+func Example_createImageDetails_Polymorphic() {
 	request := core.CreateImageRequest{}
 	request.CompartmentId = helpers.CompartmentID()
 

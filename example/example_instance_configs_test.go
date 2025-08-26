@@ -23,7 +23,7 @@ import (
 )
 
 // Example to showcase instance configuration create and operations, and eventual teardown
-func ExampleCreateAndUseInstanceConfiguration() {
+func Example_createAndUseInstanceConfiguration() {
 	InstanceConfigsParseEnvironmentVariables()
 
 	ctx := context.Background()
