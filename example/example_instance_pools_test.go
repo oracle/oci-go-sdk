@@ -31,7 +31,7 @@ var (
 )
 
 // Example to showcase instance pool create and operations, and eventual teardown
-func ExampleCreateAndWaitForRunningInstancePool() {
+func Example_createAndWaitForRunningInstancePool() {
 	InstancePoolsParseEnvironmentVariables()
 
 	ctx := context.Background()

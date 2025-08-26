@@ -41,7 +41,7 @@ var (
 	srcCompartmentId, destCompartmentId string
 )
 
-func ExampleChangeServiceGatewayCompartment() {
+func Example_changeServiceGatewayCompartment() {
 
 	// Parse environment variables to get srcCompartmentId, destCompartmentId
 	parseEnvVariables()

@@ -5,20 +5,20 @@
 // Database Tools Private Endpoint Reverse Connections. Examples include:
 //
 // Oracle:
-//   - ExampleCreateADBsConnectionWithPublicIp
-//   - ExampleCreateADBsConnectionWithPrivateEndpoint
+//   - Example_createADBsConnectionWithPublicIp
+//   - Example_createADBsConnectionWithPrivateEndpoint
 //
 // MySQL:
-//   - ExampleCreateMySqlConnectionWithPublicIp
-//   - ExampleCreateMySqlDbSystemConnectionWithPrivateEndpoint
+//   - Example_createMySqlConnectionWithPublicIp
+//   - Example_createMySqlDbSystemConnectionWithPrivateEndpoint
 //
 // Generic JDBC:
-//   - ExampleCreateGenericJdbcConnection
+//   - Example_createGenericJdbcConnection
 //
 // Starting the examples:
 //   - First, set environment variables accordingly (see comments below)
 //   - Run with go test
-//     go test ./example -run ^ExampleCreateADBsConnectionWithPublicIp$ -v
+//     go test ./example -run ^Example_createADBsConnectionWithPublicIp$ -v
 //
 // Prerequisites and environment variables are noted in the comment preceding
 // each Example*. All examples assume an OCI config with a [DEFAULT] profile
@@ -96,7 +96,7 @@ type config struct {
 //	1- Store the secret in the Vault (as base64 encoded strings)
 //	2- Create the connection
 //	3- Cleanup
-func ExampleCreateGenericJdbcConnection() {
+func Example_createGenericJdbcConnection() {
 	cfg := newConfig()
 
 	// Create the secret and validate that it was properly created
@@ -128,9 +128,9 @@ func ExampleCreateGenericJdbcConnection() {
 		log.Printf("error deleting connection: %v\n", err)
 	}
 
-	fmt.Println("ExampleCreateGenericJdbcConnection complete")
+	fmt.Println("Example_createGenericJdbcConnection complete")
 	// Output:
-	// ExampleCreateGenericJdbcConnection complete
+	// Example_createGenericJdbcConnection complete
 }
 
 // Example Use Case: Existing ADB-S with public IP (no ACL)
@@ -195,7 +195,7 @@ func ExampleCreateGenericJdbcConnection() {
 //	| Shared                          |
 //	| VCN                             |
 //	+---------------------------------+
-func ExampleCreateADBsConnectionWithPublicIp() {
+func Example_createADBsConnectionWithPublicIp() {
 	// Parses environment variables, .oci/config, and sets up the SDK clients
 	cfg := newConfig()
 
@@ -220,9 +220,9 @@ func ExampleCreateADBsConnectionWithPublicIp() {
 		log.Printf("error deleting secret: %v\n", err)
 	}
 
-	fmt.Println("ExampleCreateADBsConnectionWithPublicIp complete")
+	fmt.Println("Example_createADBsConnectionWithPublicIp complete")
 	// Output:
-	// ExampleCreateADBsConnectionWithPublicIp complete
+	// Example_createADBsConnectionWithPublicIp complete
 }
 
 // Example Use Case: Existing ADB-S with Private Endpoint
@@ -308,7 +308,7 @@ func ExampleCreateADBsConnectionWithPublicIp() {
 //	| Shared                          |
 //	| VCN                             |
 //	+---------------------------------+
-func ExampleCreateADBsConnectionWithPrivateEndpoint() {
+func Example_createADBsConnectionWithPrivateEndpoint() {
 	// Parses environment variables, .oci/config, and sets up the SDK clients
 	cfg := newConfig()
 
@@ -337,9 +337,9 @@ func ExampleCreateADBsConnectionWithPrivateEndpoint() {
 		log.Printf("error deleting private endpoint: %v\n", err)
 	}
 
-	fmt.Println("ExampleCreateADBsConnectionWithPrivateEndpoint complete")
+	fmt.Println("Example_createADBsConnectionWithPrivateEndpoint complete")
 	// Output:
-	// ExampleCreateADBsConnectionWithPrivateEndpoint complete
+	// Example_createADBsConnectionWithPrivateEndpoint complete
 }
 
 // Example Use Case: Existing MySQL database with public IP (customer-managed)
@@ -399,7 +399,7 @@ func ExampleCreateADBsConnectionWithPrivateEndpoint() {
 //	|                  ---------      |
 //	|                                 |
 //	+---------------------------------+
-func ExampleCreateMySqlConnectionWithPublicIp() {
+func Example_createMySqlConnectionWithPublicIp() {
 	// Parses environment variables, .oci/config, and sets up the SDK clients
 	cfg := newConfig()
 
@@ -420,9 +420,9 @@ func ExampleCreateMySqlConnectionWithPublicIp() {
 		log.Printf("error deleting secret: %v\n", err)
 	}
 
-	fmt.Println("ExampleCreateMySqlConnectionWithPublicIp complete")
+	fmt.Println("Example_createMySqlConnectionWithPublicIp complete")
 	// Output:
-	// ExampleCreateMySqlConnectionWithPublicIp complete
+	// Example_createMySqlConnectionWithPublicIp complete
 }
 
 // Example Use Case: MySQL DB System with Database Tools Private Endpoint
@@ -491,7 +491,7 @@ func ExampleCreateMySqlConnectionWithPublicIp() {
 //	| Customer                        |
 //	| VCN (jump host not required)    |
 //	+---------------------------------+
-func ExampleCreateMySqlDbSystemConnectionWithPrivateEndpoint() {
+func Example_createMySqlDbSystemConnectionWithPrivateEndpoint() {
 	// Parses environment variables, .oci/config, and sets up the SDK clients
 	cfg := newConfig()
 
@@ -516,9 +516,9 @@ func ExampleCreateMySqlDbSystemConnectionWithPrivateEndpoint() {
 		log.Printf("error deleting private endpoint: %v\n", err)
 	}
 
-	fmt.Println("ExampleCreateMySqlDbSystemConnectionWithPrivateEndpoint complete")
+	fmt.Println("Example_createMySqlDbSystemConnectionWithPrivateEndpoint complete")
 	// Output:
-	// ExampleCreateMySqlDbSystemConnectionWithPrivateEndpoint complete
+	// Example_createMySqlDbSystemConnectionWithPrivateEndpoint complete
 }
 
 func deletePrivateEndpoint(id *string, cfg config) error {

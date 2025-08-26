@@ -29,7 +29,7 @@ const (
 	cfgFileName = "config"
 )
 
-func ExampleCreateAndUseSecurityTokenBasedConfiguration() {
+func Example_createAndUseSecurityTokenBasedConfiguration() {
 	homeFolder := getHomeFolder()
 	configFilePath := filepath.Join(homeFolder, cfgDirName, cfgFileName)
 	securityTokenBasedAuthConfigProvider := common.CustomProfileConfigProvider(configFilePath, profileName)

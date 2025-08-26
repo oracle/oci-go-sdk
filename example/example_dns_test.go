@@ -17,9 +17,9 @@ import (
 	"github.com/oracle/oci-go-sdk/v65/example/helpers"
 )
 
-// ExampleDnsZone creates, gets, lists, and deletes a DNS Zone.
+// Example_dnsZone creates, gets, lists, and deletes a DNS Zone.
 // If optional TARGET_COMPARTMENT_ID env var is set, it will also move the DNS Zone to the compartment.
-func ExampleDnsZone() {
+func Example_dnsZone() {
 	client, err := dns.NewDnsClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(err)
 
@@ -98,7 +98,7 @@ func ExampleDnsZone() {
 
 // ExampleSteeringPolicy creates, gets, lists, and deletes a DNS Steering Policy.
 // If optional TARGET_COMPARTMENT_ID env var is set, it will also move the DNS Steering Policy to the compartment.
-func ExampleDnsSteeringPolicy() {
+func Example_dnsSteeringPolicy() {
 	client, err := dns.NewDnsClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(err)
 

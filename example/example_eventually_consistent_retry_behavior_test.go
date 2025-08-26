@@ -31,7 +31,7 @@ const missingInstanceOcid = "ocid1.instance.oc1.phx.<uniqueId>"
 //
 // Note: This is a long running example, it takes over 4 minutes. That's why the "Output:" line has
 // been changed to prevent the example from automatically running as a test.
-func ExampleEventuallyConsistentRetryBehavior_Default() {
+func Example_eventuallyConsistentRetryBehavior_Default() {
 	// setup
 	ctx := context.Background()
 
@@ -116,7 +116,7 @@ func ExampleEventuallyConsistentRetryBehavior_Default() {
 //
 // Note: This is a long running example, it takes over 4 minutes. That's why the "Output:" line has
 // been changed to prevent the example from automatically running as a test.
-func ExampleEventuallyConsistentRetryBehavior_UnlimitedAttempts() {
+func Example_eventuallyConsistentRetryBehavior_UnlimitedAttempts() {
 	// setup
 	ctx := context.Background()
 
@@ -206,11 +206,11 @@ func ExampleEventuallyConsistentRetryBehavior_UnlimitedAttempts() {
 
 // This example lets you test the behavior of eventual consistency across processes.
 // This test makes an eventually consistent change, and
-// ExampleEventuallyConsistentRetryBehavior_RetryIfEventuallyConsistentChangeMade
+// Example_eventuallyConsistentRetryBehavior_RetryIfEventuallyConsistentChangeMade
 // should retry if an eventually consistent change had been made.
 // Note that this only works if the EC communication mode is set to 'file'
 // by setting the OCI_GO_SDK_EC_CONFIG environment variable to "file,<timestampFile>"
-func ExampleEventuallyConsistentRetryBehavior_MakeEventuallyConsistentChange() {
+func Example_eventuallyConsistentRetryBehavior_MakeEventuallyConsistentChange() {
 	// setup
 	ctx := context.Background()
 
@@ -229,17 +229,17 @@ func ExampleEventuallyConsistentRetryBehavior_MakeEventuallyConsistentChange() {
 // This example lets you test the behavior of eventual consistency across processes.
 // This test makes an operation that should be retried only if there was an eventually
 // consistent change made, which can be done using
-// ExampleEventuallyConsistentRetryBehavior_MakeEventuallyConsistentChange
+// Example_eventuallyConsistentRetryBehavior_MakeEventuallyConsistentChange
 // should retry if an eventually consistent change had been made.
 // Note that this only works if the EC communication mode is set to 'file'
 // by setting the OCI_GO_SDK_EC_CONFIG environment variable to "file,<timestampFile>"
-// You should start this example within 30 seconds of running ExampleEventuallyConsistentRetryBehavior_MakeEventuallyConsistentChange.
+// You should start this example within 30 seconds of running Example_eventuallyConsistentRetryBehavior_MakeEventuallyConsistentChange.
 //
 // Since this test ONLY works if the EC communication mode is set to 'file',
 // this test has been commented out. It is also a long-running test, typically taking about 4 minutes,
-// and it needs to be run in coordination with ExampleEventuallyConsistentRetryBehavior_MakeEventuallyConsistentChange.
+// and it needs to be run in coordination with Example_eventuallyConsistentRetryBehavior_MakeEventuallyConsistentChange.
 // That's why the "Output:" line has been changed to prevent the example from automatically running as a test.
-func ExampleEventuallyConsistentRetryBehavior_RetryIfEventuallyConsistentChangeMade() {
+func Example_eventuallyConsistentRetryBehavior_RetryIfEventuallyConsistentChangeMade() {
 	// setup
 	ctx := context.Background()
 

@@ -27,7 +27,7 @@ var (
 )
 
 // Example to showcase cluster network creation, and eventual teardown
-func ExampleCreateAndWaitForRunningClusterNetwork() {
+func Example_createAndWaitForRunningClusterNetwork() {
 	ClusterNetworkParseEnvironmentVariables()
 
 	ctx := context.Background()

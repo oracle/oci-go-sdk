@@ -29,7 +29,7 @@ import (
 	"github.com/oracle/oci-go-sdk/v65/workrequests"
 )
 
-func ExampleWorkRequests() {
+func Example_workRequests() {
 	client, err := workrequests.NewWorkRequestClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(err)
 

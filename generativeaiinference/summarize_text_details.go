@@ -70,7 +70,7 @@ func (m SummarizeTextDetails) ValidateEnumValue() (bool, error) {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Extractiveness: %s. Supported values are: %s.", m.Extractiveness, strings.Join(GetSummarizeTextDetailsExtractivenessEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
-		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
 	return false, nil
 }

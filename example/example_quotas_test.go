@@ -80,8 +80,8 @@ func deleteQuota(client limits.QuotasClient, quotaId string) limits.DeleteQuotaR
 	return response
 }
 
-// ExampleQuotas runs an example demonstrating the use of OCI Golang SDK for managing Quotas
-func ExampleQuotas() {
+// Example_quotas runs an example demonstrating the use of OCI Golang SDK for managing Quotas
+func Example_quotas() {
 
 	// Initialize default config provider
 	configProvider := common.DefaultConfigProvider()
@@ -125,7 +125,7 @@ func ExampleQuotas() {
 	fmt.Println("Deleting Quota")
 	deleteQuota(client, quotaId)
 
-	fmt.Println("ExampleQuotas completed")
+	fmt.Println("Example_quotas completed")
 
 	// Output:
 	// Creating Quota
@@ -133,5 +133,5 @@ func ExampleQuotas() {
 	// Listing Quotas
 	// Updating Quota
 	// Deleting Quota
-	// ExampleQuotas completed
+	// Example_quotas completed
 }

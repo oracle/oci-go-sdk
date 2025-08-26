@@ -2,7 +2,7 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 
 // Example code for instance principle auth
-// ExampleInstancePrincipals lists the availability domains in your tenancy.
+// Example_instancePrincipals lists the availability domains in your tenancy.
 // Make sure you run this example from a instance with the right permissions. In this example
 // the root compartment is read from the OCI_ROOT_COMPARTMENT_ID environment variable.
 // More information on instance principals can be found here: https://docs.oracle.com/iaas/Content/Identity/Tasks/callingservicesfrominstances.htm
@@ -23,7 +23,7 @@ import (
 	"github.com/oracle/oci-go-sdk/v65/identity"
 )
 
-func ExampleInstancePrincipals() {
+func Example_instancePrincipals() {
 
 	provider, err := auth.InstancePrincipalConfigurationProvider()
 	helpers.FatalIfError(err)
@@ -49,9 +49,9 @@ func ExampleInstancePrincipals() {
 	// Done
 }
 
-// ExampleInstancePrincipalsWithCustomClient lists the availability domains in your tenancy.
+// Example_instancePrincipalsWithCustomClient lists the availability domains in your tenancy.
 // Similar to the example above, this example shows how to customize the client.
-func ExampleInstancePrincipalsWithCustomClient() {
+func Example_instancePrincipalsWithCustomClient() {
 
 	// Just load the system cert pool for demonstration purposes.
 	rootCaPool, err := x509.SystemCertPool()

@@ -14,7 +14,7 @@ import (
 	"github.com/oracle/oci-go-sdk/v65/example/helpers"
 )
 
-func ExampleCreateRecord() {
+func Example_createRecord() {
 	datasetId := "REPLACE_WITH_DATASET_OCID"
 	compartment := "REPLACE_WITH_COMPARTMENT_OCID"
 	namespace := "REPLACE_WITH_OBJECT_STORAGE_NAMESPACE"
@@ -60,7 +60,7 @@ func ExampleCreateRecord() {
 	// Record creation succeeded.
 }
 
-func ExampleGetRecords() {
+func Example_getRecords() {
 	recordId := "REPLACE_WITH_RECORD_OCID"
 
 	client, err := datalabelingservicedataplane.NewDataLabelingClientWithConfigurationProvider(common.DefaultConfigProvider())
@@ -89,7 +89,7 @@ func ExampleGetRecords() {
 	// Done
 }
 
-func ExampleListRecords() {
+func Example_listRecords() {
 	datasetId := "REPLACE_WITH_DATASET_OCID"
 	compartment := "REPLACE_WITH_COMPARTMENT_OCID"
 
@@ -120,7 +120,7 @@ func ExampleListRecords() {
 	// Done
 }
 
-func ExampleDeleteRecord() {
+func Example_deleteRecord() {
 	recordId := "REPLACE_WITH_RECORD_OCID"
 
 	client, err := datalabelingservicedataplane.NewDataLabelingClientWithConfigurationProvider(common.DefaultConfigProvider())

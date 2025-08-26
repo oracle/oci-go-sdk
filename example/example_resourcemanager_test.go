@@ -14,9 +14,9 @@ import (
 	"github.com/oracle/oci-go-sdk/v65/resourcemanager"
 )
 
-// ExampleResourceManager for how to do CRUD for Resource Manager Stack
+// Example_resourceManager for how to do CRUD for Resource Manager Stack
 // The comparement id is read from the environment variable OCI_COMPARTMENT_ID
-func ExampleResourceManager() {
+func Example_resourceManager() {
 	provider := common.DefaultConfigProvider()
 	client, err := resourcemanager.NewResourceManagerClientWithConfigurationProvider(provider)
 	helpers.FatalIfError(err)

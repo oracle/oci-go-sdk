@@ -32,7 +32,7 @@ type TtsOracleTts2NaturalModelDetails struct {
 	// - fr-FR: French - France
 	// - it-IT: Italian - Italy
 	// - ja-JP: Japanese - Japan
-	// - zh-CN: Mandarin - China
+	// - cmn-CN: Mandarin - China
 	LanguageCode *string `mandatory:"false" json:"languageCode"`
 }
 
@@ -47,7 +47,7 @@ func (m TtsOracleTts2NaturalModelDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {
-		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
 	return false, nil
 }
