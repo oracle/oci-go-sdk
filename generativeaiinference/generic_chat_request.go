@@ -91,6 +91,8 @@ type GenericChatRequest struct {
 	// A list of tools the model may call. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
 	Tools []ToolDefinition `mandatory:"false" json:"tools"`
 
+	WebSearchOptions *WebSearchOptions `mandatory:"false" json:"webSearchOptions"`
+
 	// Constrains effort on reasoning for reasoning models. Currently supported values are minimal, low, medium, and high. Reducing reasoning effort can result in faster responses and fewer tokens used on reasoning in a response.
 	ReasoningEffort GenericChatRequestReasoningEffortEnum `mandatory:"false" json:"reasoningEffort,omitempty"`
 
@@ -161,6 +163,7 @@ func (m *GenericChatRequest) UnmarshalJSON(data []byte) (e error) {
 		ToolChoice          toolchoice                            `json:"toolChoice"`
 		IsParallelToolCalls *bool                                 `json:"isParallelToolCalls"`
 		Tools               []tooldefinition                      `json:"tools"`
+		WebSearchOptions    *WebSearchOptions                     `json:"webSearchOptions"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -260,6 +263,8 @@ func (m *GenericChatRequest) UnmarshalJSON(data []byte) (e error) {
 			m.Tools[i] = nil
 		}
 	}
+	m.WebSearchOptions = model.WebSearchOptions
+
 	return
 }
 
