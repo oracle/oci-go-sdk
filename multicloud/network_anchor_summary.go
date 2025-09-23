@@ -50,6 +50,9 @@ type NetworkAnchorSummary struct {
 	// OCI resource Id of VCN.
 	VcnId *string `mandatory:"false" json:"vcnId"`
 
+	// The CPG ID in which Network Anchor will be created.
+	ClusterPlacementGroupId *string `mandatory:"false" json:"clusterPlacementGroupId"`
+
 	// The date and time the NetworkAnchor was updated, in the format defined by RFC 3339 (https://tools.ietf.org/html/rfc3339).
 	// Example: `2016-08-25T21:10:29.600Z`
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
