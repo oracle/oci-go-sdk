@@ -1622,3 +1622,76 @@ func TestRemoveNilWithInt64Values(t *testing.T) {
 	assert.True(t, strings.Contains(string(jsonRet), "9223372036854775807"))
 	assert.Equal(t, int64(9223372036854775807), *ss.Data)
 }
+
+func TestEscapeJSONToASCII_Strings(t *testing.T) {
+	tests := []struct {
+		name     string
+		input    string
+		expected string
+	}{
+		{
+			name:     "Strings",
+			input:    `"hello, 世界"`,
+			expected: `"hello, \u4e16\u754c"`,
+		},
+		{
+			name:     "String Array",
+			input:    `["こんにちは", "hello, world", "hola, señor"]`,
+			expected: `["\u3053\u3093\u306b\u3061\u306f","hello, world","hola, se\u00f1or"]`,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			result, err := escapeJSONToASCII([]byte(tc.input))
+			assert.NoError(t, err)
+			assert.Equal(t, tc.expected, string(result))
+		})
+	}
+}
+func TestEscapeJSONToASCII_Interfaces(t *testing.T) {
+	tests := []struct {
+		name     string
+		input    string
+		expected string
+	}{
+		{
+			name:     "String Map Interface",
+			input:    `{"greeting": "bonjour, ça va?", "farewell": "adiós", "welcome": "ようこそ"}`,
+			expected: `{"welcome":"\u3088\u3046\u3053\u305d","greeting":"bonjour, \u00e7a va?","farewell":"adi\u00f3s"}`,
+		},
+		{
+			name: "Deep Nested Interface",
+			input: `{
+						  "a": {
+							  "b": [null, {
+								  "c": ["cómo estás", {"d": "ハッピー"}],
+								  "n": 42,
+								  "ok": true
+							  }],
+						  	  "jp": "良い一日を"
+						  },
+						  "keep": "okay"
+					  }`,
+			expected: `{
+						"keep": "okay",
+						"a": {
+							"jp": "\u826f\u3044\u4e00\u65e5\u3092",
+							"b": [null, {
+								"c": ["c\u00f3mo est\u00e1s", {"d": "\u30cf\u30c3\u30d4\u30fc"}],
+									"n": 42,
+									"ok": true
+								}]
+						}
+					}`,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			result, err := escapeJSONToASCII([]byte(tc.input))
+			assert.NoError(t, err)
+			assert.JSONEq(t, tc.expected, string(result))
+		})
+	}
+}

@@ -11,6 +11,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -648,4 +649,52 @@ func TestGetRealmIDFromRegion(t *testing.T) {
 	realmID, err = region.RealmID()
 	assert.NoError(t, err)
 	assert.Equal(t, "oc0", realmID)
+}
+
+// TestCheckForEnabledServices_Race tests the CheckForEnabledServices function for race conditions.
+// Relies on -race flag to fail:
+//
+//	go test -race ./common -run TestCheckForEnabledServices_Race
+func TestCheckForEnabledServices_Race(t *testing.T) {
+	OciSdkEnabledServicesOnce = sync.Once{}
+	OciSdkEnabledServicesMap = nil
+
+	const goroutines = 200
+	var wg sync.WaitGroup
+	wg.Add(goroutines)
+
+	for i := 0; i < goroutines; i++ {
+		go func() {
+			defer wg.Done()
+			_ = CheckForEnabledServices("objectstorage")
+		}()
+	}
+
+	wg.Wait()
+}
+
+// TestAddAndCheckEnabledServices_Concurrent tests concurrent reads & writes on the same map.
+// Test with -race flag:
+//
+//	go test -race ./common -run TestAddAndCheckEnabledServices_Concurrent
+func TestAddAndCheckEnabledServices_Concurrent(t *testing.T) {
+	OciSdkEnabledServicesOnce = sync.Once{}
+	OciSdkEnabledServicesMap = nil
+
+	const pairs = 100
+	var wg sync.WaitGroup
+	wg.Add(pairs * 2) // two goroutines per pair
+
+	for i := 0; i < pairs; i++ {
+		go func() {
+			defer wg.Done()
+			AddServiceToEnabledServicesMap("objectstorage")
+		}()
+		go func() {
+			defer wg.Done()
+			_ = CheckForEnabledServices("objectstorage")
+		}()
+	}
+
+	wg.Wait()
 }
