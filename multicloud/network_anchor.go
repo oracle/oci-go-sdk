@@ -67,6 +67,9 @@ type NetworkAnchor struct {
 	// to this resource anchor. This is for future use only
 	SetupMode NetworkAnchorSetupModeEnum `mandatory:"false" json:"setupMode,omitempty"`
 
+	// The CPG ID in which Network Anchor will be created.
+	ClusterPlacementGroupId *string `mandatory:"false" json:"clusterPlacementGroupId"`
+
 	OciMetadataItem *OciNetworkMetadata `mandatory:"false" json:"ociMetadataItem"`
 
 	CloudServiceProviderMetadataItem *CloudServiceProviderNetworkMetadataItem `mandatory:"false" json:"cloudServiceProviderMetadataItem"`
