@@ -34,6 +34,8 @@ type ChatChoice struct {
 	Logprobs *Logprobs `mandatory:"false" json:"logprobs"`
 
 	Usage *Usage `mandatory:"false" json:"usage"`
+
+	GroundingMetadata *GroundingMetadata `mandatory:"false" json:"groundingMetadata"`
 }
 
 func (m ChatChoice) String() string {
@@ -55,11 +57,12 @@ func (m ChatChoice) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *ChatChoice) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		Logprobs     *Logprobs `json:"logprobs"`
-		Usage        *Usage    `json:"usage"`
-		Index        *int      `json:"index"`
-		Message      message   `json:"message"`
-		FinishReason *string   `json:"finishReason"`
+		Logprobs          *Logprobs          `json:"logprobs"`
+		Usage             *Usage             `json:"usage"`
+		GroundingMetadata *GroundingMetadata `json:"groundingMetadata"`
+		Index             *int               `json:"index"`
+		Message           message            `json:"message"`
+		FinishReason      *string            `json:"finishReason"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -70,6 +73,8 @@ func (m *ChatChoice) UnmarshalJSON(data []byte) (e error) {
 	m.Logprobs = model.Logprobs
 
 	m.Usage = model.Usage
+
+	m.GroundingMetadata = model.GroundingMetadata
 
 	m.Index = model.Index
 
