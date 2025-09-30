@@ -18,15 +18,22 @@ import (
 	"strings"
 )
 
-// ImageUrl Provide a base64 encoded image.
+// ImageUrl Provide a base64 encoded image or an image uri if it's supported.
 type ImageUrl struct {
 
-	// The base64 encoded image data.
+	// The base64 encoded image data or an image uri if it's supported.
 	// Example for a png image:
 	//   `{
 	//     "type": "IMAGE",
 	//     "imageUrl": {
 	//       "url": "data:image/png;base64,<base64 encoded image content>"
+	//     }
+	//   }`
+	// Example with an image uri:
+	//   `{
+	//     "type": "IMAGE",
+	//     "imageUrl": {
+	//       "url": "data:image/png;uri,<image uri>"
 	//     }
 	//   }`
 	Url *string `mandatory:"true" json:"url"`
