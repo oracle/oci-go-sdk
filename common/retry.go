@@ -862,6 +862,16 @@ func Retry(ctx context.Context, request OCIRetryableRequest, operation OCIOperat
 
 		// use a one-based counter because it's easier to think about operation retry in terms of attempt numbering
 		for currentOperationAttempt := uint(1); shouldContinueIssuingRequests(currentOperationAttempt, policyToUse.MaximumNumberAttempts); currentOperationAttempt++ {
+			// Check if context was cancelled before starting this attempt
+			select {
+			case <-ctx.Done():
+				// Context cancelled: return whatever response we have so far
+				retrierChannel <- retrierResult{response, ctx.Err()}
+				return
+			default:
+				// Continue with the attempt
+			}
+
 			Debugln(fmt.Sprintf("operation attempt #%v", currentOperationAttempt))
 			// rewind body once needed
 			if isSeekable {
@@ -894,18 +904,24 @@ func Retry(ctx context.Context, request OCIRetryableRequest, operation OCIOperat
 				return
 			}
 			Debugln(fmt.Sprintf("waiting %v before retrying operation", duration))
-			// sleep before retrying the operation
-			<-time.After(duration)
+			// sleep before retrying the operation, but respect context cancellation
+			select {
+			case <-ctx.Done():
+				// Context cancelled during sleep: return current response
+				retrierChannel <- retrierResult{response, ctx.Err()}
+				return
+			case <-time.After(duration):
+				// Sleep completed, continue to next retry attempt
+			}
 		}
 		retryEndTime := time.Now()
 		Debugln(fmt.Sprintf("Total Latency for this API call is: %v ms", retryEndTime.Sub(retryStartTime).Milliseconds()))
 		retrierChannel <- retrierResult{response, err}
 	}()
 
-	select {
-	case <-ctx.Done():
-		return response, ctx.Err()
-	case result := <-retrierChannel:
-		return result.response, result.err
-	}
+	// Wait for the goroutine to complete and send result through channel.
+	// The goroutine now checks ctx.Done() internally and will exit promptly
+	// when context is cancelled, so we don't need to race here.
+	result := <-retrierChannel
+	return result.response, result.err
 }
