@@ -76,9 +76,7 @@ $(TARGETS_TESTFILTERED): testfiltered-%:%
 	@(cd $< && go test -parallel 5 -timeout 1200s -v -run $(TEST_NAME))
 
 $(TARGETS_INTEG_TEST): test-%:%
-	@(cd $< && go test -parallel 5 -timeout 1200s -v)
-	@echo "cleaning up tests"
-	@(cd $< && GO_INTEGRATION_CLEANUP=true go test -run ^TestComputeClient_CleanupResources -v)
+	@(./scripts/run-integ-and-cleanup.sh)
 
 $(TARGETS_CLEAN): clean-%:%
 	@echo "cleaning $<"
