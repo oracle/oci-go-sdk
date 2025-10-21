@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.102.1 - 2025-10-21
+### Added 
+- Support for LDAP schema version RFC2307bis when creating and updating mount targets in the File Storage service 
+- Support for Helm Critical Resource Protection (HCRP) in the DevOps Deploy service 
+- Support for parameterized pipelines in the Data Science service 
+- Support for Zero Trust Packet Routing (ZPR) security attributes in the Streaming service 
+- Support for configurable version upgrade policies in the MySQL HeatWave service 
+- Support for 26ai version in the Exadata Fleet Update service
+
 ## 65.102.0 - 2025-10-07
 ### Added 
 - Support for OCI Internet of Things (OCI IoT) service  

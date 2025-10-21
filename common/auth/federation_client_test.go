@@ -13,11 +13,14 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )
+
+// x509 Federation Client Tests
 
 func TestX509FederationClient_VeryFirstSecurityToken(t *testing.T) {
 	authServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -56,7 +59,7 @@ func TestX509FederationClient_VeryFirstSecurityToken(t *testing.T) {
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/x509")
 	// Overwrite with the authServer's URL
 	federationClient.authClient.Host = authServer.URL
 	federationClient.authClient.BasePath = ""
@@ -110,7 +113,7 @@ func TestX509FederationClient_RenewSecurityToken(t *testing.T) {
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/x509")
 	// Overwrite with the authServer's URL
 	federationClient.authClient.Host = authServer.URL
 	federationClient.authClient.BasePath = ""
@@ -174,7 +177,7 @@ func TestX509FederationClient_RenewSecurityTokenFailedOnFirstTimeAndRetry(t *tes
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/x509")
 	// Overwrite with the authServer's URL
 	federationClient.authClient.Host = authServer.URL
 	federationClient.authClient.BasePath = ""
@@ -230,7 +233,7 @@ func TestX509FederationClient_RenewSecurityTokenFailedSecondTimeOn4XX(t *testing
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/x509")
 	// Overwrite with the authServer's URL
 	federationClient.authClient.Host = authServer.URL
 	federationClient.authClient.BasePath = ""
@@ -259,7 +262,7 @@ func TestX509FederationClient_GetCachedSecurityToken(t *testing.T) {
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/x509")
 	federationClient.securityToken = mockSecurityToken
 
 	actualSecurityToken, err := federationClient.SecurityToken()
@@ -294,7 +297,7 @@ func TestX509FederationClient_RenewSecurityTokenSessionKeySupplierError(t *testi
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/x509")
 	federationClient.securityToken = mockSecurityToken
 
 	actualSecurityToken, actualError := federationClient.SecurityToken()
@@ -322,7 +325,7 @@ func TestX509FederationClient_RenewSecurityTokenLeafCertificateRetrieverError(t 
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/x509")
 	federationClient.securityToken = mockSecurityToken
 
 	actualSecurityToken, actualError := federationClient.SecurityToken()
@@ -352,7 +355,7 @@ func TestX509FederationClient_RenewSecurityTokenIntermediateCertificateRetriever
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/x509")
 	federationClient.securityToken = mockSecurityToken
 
 	actualSecurityToken, actualError := federationClient.SecurityToken()
@@ -382,7 +385,7 @@ func TestX509FederationClient_RenewSecurityTokenUnexpectedTenancyIdUpdateError(t
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/x509")
 	federationClient.securityToken = mockSecurityToken
 
 	actualSecurityToken, actualError := federationClient.SecurityToken()
@@ -415,7 +418,7 @@ func TestX509FederationClient_AuthServerInternalError(t *testing.T) {
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/x509")
 	// Overwrite with the authServer's URL
 	federationClient.authClient.Host = authServer.URL
 	federationClient.authClient.BasePath = ""
@@ -445,7 +448,7 @@ func TestX509FederationClient_ClientHost(t *testing.T) {
 
 	for _, testData := range testDataSet {
 		federationClient := &x509FederationClient{}
-		federationClient.authClient = newAuthClient(testData.region, federationClient)
+		federationClient.authClient = newAuthClient(testData.region, federationClient, "v1/x509")
 		assert.Equal(t, testData.expected, federationClient.authClient.Host)
 	}
 }
@@ -453,7 +456,7 @@ func TestX509FederationClient_ClientHost(t *testing.T) {
 func TestFederationAuthClientCircuitBreaker(t *testing.T) {
 	t.Setenv("OCI_SDK_AUTH_CLIENT_CIRCUIT_BREAKER_ENABLED", "True")
 	federationClient := &x509FederationClient{}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/x509")
 	authCB := federationClient.authClient.Configuration.CircuitBreaker
 	assert.Equal(t, authCB.Cb.Name(), common.AuthClientCircuitBreakerName)
 }
@@ -461,8 +464,223 @@ func TestFederationAuthClientCircuitBreaker(t *testing.T) {
 func TestFederationAuthClientCircuitBreakerDisabled(t *testing.T) {
 	t.Setenv("OCI_SDK_AUTH_CLIENT_CIRCUIT_BREAKER_ENABLED", "False")
 	federationClient := &x509FederationClient{}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/x509")
 	assert.Nil(t, federationClient.authClient.Configuration.CircuitBreaker)
+}
+
+// Oauth Federation Client Tests
+
+func TestOAuthFederationClient_RenewSecurityToken(t *testing.T) {
+	authServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Verify request
+		expectedKeyID := fmt.Sprintf("ST$%s", expectedSecurityToken)
+		assert.True(t, strings.HasPrefix(r.Header.Get("Authorization"), fmt.Sprintf(`Signature version="1",headers="date (request-target) content-length content-type x-content-sha256",keyId="%s",algorithm="rsa-sha256",signature=`, expectedKeyID)))
+
+		expectedBody := fmt.Sprintf(`{"public_key":"%s","scope":"%s","target_compartment":"%s"}`,
+			sessionPublicKeyBodyNoNewLine, scope, targetCompartment)
+		var buf bytes.Buffer
+		buf.ReadFrom(r.Body)
+		assert.Equal(t, expectedBody, buf.String())
+
+		// Return response
+		fmt.Fprintf(w, "\n{\n  \"token\" : \"%s\"\n}\n", expectedSecurityToken)
+	}))
+	defer authServer.Close()
+
+	mockSessionKeySupplier := new(mockSessionKeySupplier)
+	mockSessionKeySupplier.On("Refresh").Return(nil).Once()
+	mockSessionKeySupplier.On("PublicKeyPemRaw").Return([]byte(sessionPublicKeyPem))
+
+	instanceProvider, e := fakeInstanceProvider(whateverRegion, tenancyID)
+	assert.NoError(t, e)
+
+	mockSecurityToken := new(mockSecurityToken)
+	mockSecurityToken.On("Valid").Return(false)
+
+	federationClient := &oAuth2FederationClient{
+		sessionKeySupplier:    mockSessionKeySupplier,
+		authClientKeyProvider: instanceProvider,
+		scope:                 scope,
+		targetCompartment:     targetCompartment,
+	}
+
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/oauth2/scoped")
+	// Overwrite with the authServer's URL
+	federationClient.authClient.Host = authServer.URL
+	federationClient.authClient.BasePath = ""
+	federationClient.securityToken = mockSecurityToken
+
+	actualSecurityToken, err := federationClient.SecurityToken()
+
+	assert.NoError(t, err)
+	assert.Equal(t, expectedSecurityToken, actualSecurityToken)
+	mockSessionKeySupplier.AssertExpectations(t)
+
+}
+
+func TestOAuthFederationClient_RenewSecurityTokenFailedOnFirstTimeAndRetry(t *testing.T) {
+
+	responseCounter := 0
+	responses := []func(w http.ResponseWriter, r *http.Request){
+		func(w http.ResponseWriter, r *http.Request) {
+			// Return response
+			w.WriteHeader(http.StatusBadGateway)
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			// Verify request
+			expectedKeyID := fmt.Sprintf("ST$%s", expectedSecurityToken)
+			assert.True(t, strings.HasPrefix(r.Header.Get("Authorization"), fmt.Sprintf(`Signature version="1",headers="date (request-target) content-length content-type x-content-sha256",keyId="%s",algorithm="rsa-sha256",signature=`, expectedKeyID)))
+
+			expectedBody := fmt.Sprintf(`{"public_key":"%s","scope":"%s","target_compartment":"%s"}`,
+				sessionPublicKeyBodyNoNewLine, scope, targetCompartment)
+			var buf bytes.Buffer
+			buf.ReadFrom(r.Body)
+			assert.Equal(t, expectedBody, buf.String())
+
+			// Return response
+			fmt.Fprintf(w, "\n{\n  \"token\" : \"%s\"\n}\n", expectedSecurityToken)
+		},
+	}
+
+	authServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		responses[responseCounter](w, r)
+		responseCounter++
+	}))
+	defer authServer.Close()
+
+	mockSessionKeySupplier := new(mockSessionKeySupplier)
+	mockSessionKeySupplier.On("Refresh").Return(nil).Once()
+	mockSessionKeySupplier.On("PublicKeyPemRaw").Return([]byte(sessionPublicKeyPem))
+
+	instanceProvider, e := fakeInstanceProvider(whateverRegion, tenancyID)
+	assert.NoError(t, e)
+
+	mockSecurityToken := new(mockSecurityToken)
+	mockSecurityToken.On("Valid").Return(false)
+
+	federationClient := &oAuth2FederationClient{
+		sessionKeySupplier:    mockSessionKeySupplier,
+		authClientKeyProvider: instanceProvider,
+		scope:                 scope,
+		targetCompartment:     targetCompartment,
+	}
+
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/oauth2/scoped")
+	// Overwrite with the authServer's URL
+	federationClient.authClient.Host = authServer.URL
+	federationClient.authClient.BasePath = ""
+	federationClient.securityToken = mockSecurityToken
+
+	actualSecurityToken, err := federationClient.SecurityToken()
+
+	assert.NoError(t, err)
+	assert.Equal(t, expectedSecurityToken, actualSecurityToken)
+	mockSessionKeySupplier.AssertExpectations(t)
+
+}
+
+func TestOAuthFederationClient_AuthServerInternalError(t *testing.T) {
+	authServer := httptest.NewServer(http.HandlerFunc(internalServerError))
+	defer authServer.Close()
+
+	mockSessionKeySupplier := new(mockSessionKeySupplier)
+	mockSessionKeySupplier.On("Refresh").Return(nil).Once()
+	mockSessionKeySupplier.On("PublicKeyPemRaw").Return([]byte(sessionPublicKeyPem))
+
+	instanceProvider, e := fakeInstanceProvider(whateverRegion, tenancyID)
+	assert.NoError(t, e)
+
+	mockSecurityToken := new(mockSecurityToken)
+	mockSecurityToken.On("Valid").Return(false)
+
+	federationClient := &oAuth2FederationClient{
+		sessionKeySupplier:    mockSessionKeySupplier,
+		authClientKeyProvider: instanceProvider,
+		scope:                 scope,
+		targetCompartment:     targetCompartment,
+	}
+
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/oauth2/scoped")
+	// Overwrite with the authServer's URL
+	federationClient.authClient.Host = authServer.URL
+	federationClient.authClient.BasePath = ""
+	federationClient.securityToken = mockSecurityToken
+
+	_, err := federationClient.SecurityToken()
+
+	assert.Error(t, err)
+
+}
+
+func TestOauthFederationClient_refreshesWhenStale(t *testing.T) {
+	responseCounter := 0
+	responses := []func(w http.ResponseWriter, r *http.Request){
+		func(w http.ResponseWriter, r *http.Request) {
+			// Return response
+			fmt.Fprintf(w, "\n{\n  \"token\" : \"%s\"\n}\n", expectedSecurityToken)
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			// Return response
+			fmt.Fprintf(w, "\n{\n  \"token\" : \"%s\"\n}\n", secondExpectedSecurityToken)
+		},
+		internalServerError,
+		internalServerError,
+		internalServerError,
+	}
+
+	authServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		responses[responseCounter](w, r)
+		responseCounter++
+	}))
+	defer authServer.Close()
+
+	mockSessionKeySupplier := new(mockSessionKeySupplier)
+	mockSessionKeySupplier.On("Refresh").Return(nil).Times(3)
+	mockSessionKeySupplier.On("PublicKeyPemRaw").Return([]byte(sessionPublicKeyPem))
+
+	instanceProvider, e := fakeInstanceProvider(whateverRegion, tenancyID)
+	assert.NoError(t, e)
+
+	federationClient := &oAuth2FederationClient{
+		sessionKeySupplier:    mockSessionKeySupplier,
+		authClientKeyProvider: instanceProvider,
+		scope:                 scope,
+		targetCompartment:     targetCompartment,
+	}
+
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/oauth2/scoped")
+	// Overwrite with the authServer's URL
+	federationClient.authClient.Host = authServer.URL
+	federationClient.authClient.BasePath = ""
+
+	// First token retrieved
+	actualSecurityToken, err := federationClient.SecurityToken()
+	assert.NoError(t, err)
+	assert.Equal(t, expectedSecurityToken, actualSecurityToken)
+
+	// First token is not stale, so use it
+	actualSecurityToken, err = federationClient.SecurityToken()
+	assert.NoError(t, err)
+	assert.Equal(t, expectedSecurityToken, actualSecurityToken)
+
+	OAuthTokenStaleWindow = 1 * time.Millisecond
+	time.Sleep(1 * time.Second)
+
+	// Token is stale, retrieve second token value
+	actualSecurityToken, err = federationClient.SecurityToken()
+	assert.NoError(t, err)
+	assert.Equal(t, secondExpectedSecurityToken, actualSecurityToken)
+
+	time.Sleep(1 * time.Second)
+
+	// token is stale, but we fail to retrieve a new token
+	// cached token is used
+	actualSecurityToken, err = federationClient.SecurityToken()
+	assert.NoError(t, err)
+	assert.Equal(t, secondExpectedSecurityToken, actualSecurityToken)
+
+	OAuthTokenStaleWindow = 20 * time.Minute
+	mockSessionKeySupplier.AssertExpectations(t)
 }
 
 func parseCertificate(certPem string) *x509.Certificate {
@@ -617,8 +835,13 @@ tPcwQqt7CYTxL77YFy0Z+s9WUmZaOJakgrCLSokeQBWdi0JibYp1mZPZv6pqsIm9
 X86ef1hXyNjvEQRxuf1Bx96Y32m7FjsD251XeOEzzdESCa90Z+bHN6k7wsTRrU79
 dYZF0puZUEmHID4xIF5AprOHVarrhawiddwayMQWH7GZuVzhJ2Z/Q4CK2DneR8Lr
 fwIDAQAB`
-	tenancyID             = `ocidv1:tenancy:oc1:phx:1234567890:bluhbluhbluh`
-	expectedSecurityToken = `eyJhbGciOiJSUzI1NiIsImtpZCI6ImFzdyIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJvcGMub3JhY2xlLmNvbSIsImV4cCI6MTUxMTgzODc5MywiaWF0IjoxNTExODE3MTkzLCJpc3MiOiJhdXRoU2VydmljZS5vcmFjbGUuY29tIiwib3BjLWNlcnR0eXBlIjoiaW5zdGFuY2UiLCJvcGMtY29tcGFydG1lbnQiOiJvY2lkMS5jb21wYXJ0bWVudC5vYzEuLmJsdWhibHVoYmx1aCIsIm9wYy1pbnN0YW5jZSI6Im9jaWQxLmluc3RhbmNlLm9jMS5waHguYmx1aGJsdWhibHVoIiwib3BjLXRlbmFudCI6Im9jaWR2MTp0ZW5hbmN5Om9jMTpwaHg6MTIzNDU2Nzg5MDpibHVoYmx1aGJsdWgiLCJwdHlwZSI6Imluc3RhbmNlIiwic3ViIjoib2NpZDEuaW5zdGFuY2Uub2MxLnBoeC5ibHVoYmx1aGJsdWgiLCJ0ZW5hbnQiOiJvY2lkdjE6dGVuYW5jeTpvYzE6cGh4OjEyMzQ1Njc4OTA6Ymx1aGJsdWhibHVoIiwidHR5cGUiOiJ4NTA5In0.zen7q2yJSpMjzH4ym_H7VEwZA0-vTT4Wcild-HRfLxX6A1ej4tlpACa7A24j5JoZYI4mHooZVJ8e7ZezFenK0zZx5j8RbIjsqJKwroYXExOiBXLCUwMWOLXIndEsUzzGLqnPfKHXd80vrhMLmtkVTCJqBMzvPUSYkH_ciWgmjP9m0YETdQ9ifghkADhZGt9IlnOswg0s3Bx9ASwxFZEtom0BmU9GwEuITTTZfKvndk785BlNeZMOjhovaD97-LYpv5B_PiWEz8zialK5zxjijLCw06zyA8CQRQqmVCagNUPilfz_BcPyImzvFDuzQcPyDkTcsB7weX35tafHmA_Ulg`
+	tenancyID                   = `ocidv1:tenancy:oc1:phx:1234567890:bluhbluhbluh`
+	expectedSecurityToken       = `eyJhbGciOiJSUzI1NiIsImtpZCI6ImFzdyIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJvcGMub3JhY2xlLmNvbSIsImV4cCI6MTUxMTgzODc5MywiaWF0IjoxNTExODE3MTkzLCJpc3MiOiJhdXRoU2VydmljZS5vcmFjbGUuY29tIiwib3BjLWNlcnR0eXBlIjoiaW5zdGFuY2UiLCJvcGMtY29tcGFydG1lbnQiOiJvY2lkMS5jb21wYXJ0bWVudC5vYzEuLmJsdWhibHVoYmx1aCIsIm9wYy1pbnN0YW5jZSI6Im9jaWQxLmluc3RhbmNlLm9jMS5waHguYmx1aGJsdWhibHVoIiwib3BjLXRlbmFudCI6Im9jaWR2MTp0ZW5hbmN5Om9jMTpwaHg6MTIzNDU2Nzg5MDpibHVoYmx1aGJsdWgiLCJwdHlwZSI6Imluc3RhbmNlIiwic3ViIjoib2NpZDEuaW5zdGFuY2Uub2MxLnBoeC5ibHVoYmx1aGJsdWgiLCJ0ZW5hbnQiOiJvY2lkdjE6dGVuYW5jeTpvYzE6cGh4OjEyMzQ1Njc4OTA6Ymx1aGJsdWhibHVoIiwidHR5cGUiOiJ4NTA5In0.zen7q2yJSpMjzH4ym_H7VEwZA0-vTT4Wcild-HRfLxX6A1ej4tlpACa7A24j5JoZYI4mHooZVJ8e7ZezFenK0zZx5j8RbIjsqJKwroYXExOiBXLCUwMWOLXIndEsUzzGLqnPfKHXd80vrhMLmtkVTCJqBMzvPUSYkH_ciWgmjP9m0YETdQ9ifghkADhZGt9IlnOswg0s3Bx9ASwxFZEtom0BmU9GwEuITTTZfKvndk785BlNeZMOjhovaD97-LYpv5B_PiWEz8zialK5zxjijLCw06zyA8CQRQqmVCagNUPilfz_BcPyImzvFDuzQcPyDkTcsB7weX35tafHmA_Ulg`
+	secondExpectedSecurityToken = `eyJhbGciOiJSUzI1NiIsImtpZCI6ImFzdyIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJvcGMub3JhY2xlLmNvbSIsImV4cCI6MzI0OTE1NjUwMTIsImlhdCI6MTUxMTgxNzE5MywiaXNzIjoiYXV0aFNlcnZpY2Uub3JhY2xlLmNvbSIsIm9wYy1jZXJ0dHlwZSI6Imluc3RhbmNlIiwib3BjLWNvbXBhcnRtZW50Ijoib2NpZDEuY29tcGFydG1lbnQub2MxLi5ibHVoYmx1aGJsdWgiLCJvcGMtaW5zdGFuY2UiOiJvY2lkMS5pbnN0YW5jZS5vYzEucGh4LmJsdWhibHVoYmx1aCIsIm9wYy10ZW5hbnQiOiJvY2lkdjE6dGVuYW5jeTpvYzE6cGh4OjEyMzQ1Njc4OTA6Ymx1aGJsdWhibHVoIiwicHR5cGUiOiJpbnN0YW5jZSIsInN1YiI6Im9jaWQxLmluc3RhbmNlLm9jMS5waHguYmx1aGJsdWhibHVoIiwidGVuYW50Ijoib2NpZHYxOnRlbmFuY3k6b2MxOnBoeDoxMjM0NTY3ODkwOmJsdWhibHVoYmx1aCIsInR0eXBlIjoieDUwOSJ9.zen7q2yJSpMjzH4ym_H7VEwZA0-vTT4Wcild-HRfLxX6A1ej4tlpACa7A24j5JoZYI4mHooZVJ8e7ZezKenK0zZx5j8RbIjsqJKwroYXExOiBXLCUwMWOLXIndEsUzzGLqnPfKHXd80vrhMLmtkVTCJqBMzvPUSYkH_ciWgmjP9m0YETdQ9ifghkADhZGt9IlnOswg0s3Bx9ASwxFZEtom0BmU9GwEuITTTZfKvndk785BlNeZMOjhovaD97-LYpv5B_PiWEz8zialK5zxjijLCw06zyA8CQRQqmVCagNUPilfz_BcPyImzvFDuzQcPyDkTcsB7weX35tafHmA_Ulg`
+
+	// Oauth Test Parameters
+	targetCompartment = `ocid1.compartment.oc1..aaabluhbluhbluh`
+	scope             = `monitoring_write_urn-ocid1.compartment.oc1..aaabluhbluhbluh:instance`
 )
 
 var (
