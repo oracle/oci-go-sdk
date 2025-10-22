@@ -6,9 +6,10 @@ package apmconfig
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v65/common"
 	"net/http"
 	"strings"
+
+	"github.com/oracle/oci-go-sdk/v65/common"
 )
 
 // ListConfigsRequest wrapper for the ListConfigs operation
@@ -62,12 +63,6 @@ type ListConfigsRequest struct {
 	// Multiple values for the same tag name are interpreted as "OR".  Values for different tag names are interpreted as "AND".
 	FreeformTagEquals []string `contributesTo:"query" name:"freeformTagEquals" collectionFormat:"multi"`
 
-	// A list of tag existence filters to apply.  Only resources for which the specified defined tags exist will be returned.
-	// Each item in the list has the format "{namespace}.{tagName}.true" (for checking existence of a defined tag)
-	// or "{namespace}.true".  All inputs are case-insensitive.
-	// Currently, only existence ("true" at the end) is supported. Absence ("false" at the end) is not supported.
-	// Multiple values for the same key (i.e. same namespace and tag name) are interpreted as "OR".
-	// Values for different keys (i.e. different namespaces, different tag names, or both) are interpreted as "AND".
 	DefinedTagExists []string `contributesTo:"query" name:"definedTagExists" collectionFormat:"multi"`
 
 	// A list of tag existence filters to apply.  Only resources for which the specified freeform tags exist the value will be returned.
