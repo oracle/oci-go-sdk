@@ -10,12 +10,58 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"sync"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
+
+type testServiceClient struct {
+	BaseClient
+	config                   *ConfigurationProvider
+	requiredParamsInEndpoint map[string][]TemplateParamForPerRealmEndpoint
+}
+
+type testRequest struct {
+	NamespaceName *string
+}
+
+func (request testRequest) ReplaceMandatoryParamInPath(client *BaseClient, mandatoryParamMap map[string][]TemplateParamForPerRealmEndpoint) {
+	if mandatoryParamMap["namespaceName"] != nil {
+		templateParam := mandatoryParamMap["namespaceName"]
+		for _, template := range templateParam {
+			replacementParam := *request.NamespaceName
+			if template.EndsWithDot {
+				replacementParam = replacementParam + "."
+			}
+			client.Host = strings.Replace(client.Host, template.Template, replacementParam, -1)
+		}
+	}
+}
+
+func (client *testServiceClient) parseEndpointTemplatePerRealm() {
+	client.requiredParamsInEndpoint = make(map[string][]TemplateParamForPerRealmEndpoint)
+	templateRegex := regexp.MustCompile(`{.*?}`)
+	templateSubRegex := regexp.MustCompile(`{(.+)\+Dot}`)
+	templates := templateRegex.FindAllString(client.Host, -1)
+	for _, template := range templates {
+		templateParam := templateSubRegex.FindStringSubmatch(template)
+		if len(templateParam) > 1 {
+			client.requiredParamsInEndpoint[templateParam[1]] = append(client.requiredParamsInEndpoint[templateParam[1]], TemplateParamForPerRealmEndpoint{
+				Template:    templateParam[0],
+				EndsWithDot: true,
+			})
+		} else {
+			templateParam := template[1 : len(template)-1]
+			client.requiredParamsInEndpoint[templateParam] = append(client.requiredParamsInEndpoint[templateParam], TemplateParamForPerRealmEndpoint{
+				Template:    template,
+				EndsWithDot: false,
+			})
+		}
+	}
+}
 
 func TestAllRegions(t *testing.T) {
 	fileName := "regions.json"
@@ -697,4 +743,94 @@ func TestAddAndCheckEnabledServices_Concurrent(t *testing.T) {
 	}
 
 	wg.Wait()
+}
+
+func TestUpdateEndpointTemplateForOptions(t *testing.T) {
+	// Example Endpoint Template
+	templateWithDualStack := "https://{dualStack?ds.:}objectstorage.us-phoenix-1.oci.customer-oci.com"
+	templateMultipleParams := "https://random.{namespaceName+Dot}stuff.{dualStack?ds.:}objectstorage.{region}.oci.{secondLevelDomain}"
+	templateNonEmptyDisabled := "https://{dualStack?ds.:nonds.}objectstorage.us-phoenix-1.oci.customer-oci.com"
+	endpointDisabled := "https://objectstorage.us-phoenix-1.oci.customer-oci.com"
+	endpointDisabledNonEmpty := "https://nonds.objectstorage.us-phoenix-1.oci.customer-oci.com"
+	endpointEnabled := "https://ds.objectstorage.us-phoenix-1.oci.customer-oci.com"
+	noDualStackNonParamEndpoint := "https://random.stuff.objectstorage.us-langley-1.oci.oraclegovcloud.com"
+	noDualStackParamEndpoint := "https://random.myNamespace.stuff.objectstorage.us-langley-1.oci.oraclegovcloud.com"
+	dualStackNonParamEndpoint := "https://random.stuff.ds.objectstorage.us-langley-1.oci.oraclegovcloud.com"
+	dualStackParamEndpoint := "https://random.myNamespace.stuff.ds.objectstorage.us-langley-1.oci.oraclegovcloud.com"
+
+	// Create base client with given endpoint template
+	c := BaseClient{}
+	c.UseDualStackEndpointsByDefault(false)
+	c.Host = templateWithDualStack
+
+	// Default case, dual stack option should be disabled
+	UpdateEndpointTemplateForOptions(&c)
+	assert.Equal(t, c.Host, endpointDisabled)
+	c.Host = templateWithDualStack
+
+	// Dual stack enabled on client
+	c.EnableDualStackEndpoints(true)
+	UpdateEndpointTemplateForOptions(&c)
+	assert.Equal(t, c.Host, endpointEnabled)
+	c.Host = templateWithDualStack
+
+	// Dual stack enabled via environment variable
+	c.EnableDualStackEndpoints(false)
+	os.Setenv(ociDualStackEndpointEnabledEnvVar, "true")
+	UpdateEndpointTemplateForOptions(&c)
+	assert.Equal(t, c.Host, endpointEnabled)
+	c.Host = templateWithDualStack
+	os.Setenv(ociDualStackEndpointEnabledEnvVar, "")
+
+	// Dual stack enabled by default, overwritten by client
+	c.UseDualStackEndpointsByDefault(true)
+	c.EnableDualStackEndpoints(false)
+	UpdateEndpointTemplateForOptions(&c)
+	assert.Equal(t, c.Host, endpointDisabled)
+
+	// Dual stack disabled with non-empty disabled parameter {dualStack?ds.:nonds.}
+	c.Host = templateNonEmptyDisabled
+	UpdateEndpointTemplateForOptions(&c)
+	assert.Equal(t, c.Host, endpointDisabledNonEmpty)
+
+	// Dual stack enabled with non-empty disabled parameter {dualStack?ds.:nonds.}
+	c.EnableDualStackEndpoints(true)
+	c.Host = templateNonEmptyDisabled
+	UpdateEndpointTemplateForOptions(&c)
+	assert.Equal(t, c.Host, endpointEnabled)
+
+	// Parse template with multiple params
+	testClient := testServiceClient{BaseClient: c}
+	testRequest := testRequest{NamespaceName: String("myNamespace")}
+	region := "us-langley-1"
+	testClient.Host, _ = StringToRegion(region).EndpointForTemplateDottedRegion("test", templateMultipleParams, "test")
+	testClient.parseEndpointTemplatePerRealm()
+	templateWithRegion := testClient.Host
+
+	// Namespace agnostic, dualstack disabled
+	testClient.BaseClient.EnableDualStackEndpoints(false)
+	UpdateEndpointTemplateForOptions(&testClient.BaseClient)
+	SetMissingTemplateParams(&testClient.BaseClient)
+	assert.Equal(t, testClient.Host, noDualStackNonParamEndpoint)
+	testClient.Host = templateWithRegion
+
+	// Namespace gnostic, dualstack disabled
+	testRequest.ReplaceMandatoryParamInPath(&testClient.BaseClient, testClient.requiredParamsInEndpoint)
+	UpdateEndpointTemplateForOptions(&testClient.BaseClient)
+	SetMissingTemplateParams(&testClient.BaseClient)
+	assert.Equal(t, testClient.Host, noDualStackParamEndpoint)
+	testClient.Host = templateWithRegion
+
+	// Namespace agnostic, dualstack enabled
+	testClient.BaseClient.EnableDualStackEndpoints(true)
+	UpdateEndpointTemplateForOptions(&testClient.BaseClient)
+	SetMissingTemplateParams(&testClient.BaseClient)
+	assert.Equal(t, testClient.Host, dualStackNonParamEndpoint)
+	testClient.Host = templateWithRegion
+
+	// Namespace gnostic, dualstack enabled
+	testRequest.ReplaceMandatoryParamInPath(&testClient.BaseClient, testClient.requiredParamsInEndpoint)
+	UpdateEndpointTemplateForOptions(&testClient.BaseClient)
+	SetMissingTemplateParams(&testClient.BaseClient)
+	assert.Equal(t, testClient.Host, dualStackParamEndpoint)
 }

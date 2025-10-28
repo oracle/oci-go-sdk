@@ -255,6 +255,28 @@ func Example_objectStorage_GetObjectUsingRealmSpecificEndpoint() {
 	// 404
 }
 
+func Example_objectStorage_EnableDualStackEndpoints() {
+
+	c, clerr := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	helpers.FatalIfError(clerr)
+
+	// Dual stack endpoints can be enabled at the client level as shown, or through the
+	// environment variable OCI_DUAL_STACK_ENDPOINT_ENABLED
+	c.EnableDualStackEndpoints(true)
+
+	ctx := context.Background()
+	bname := helpers.GetRandomString(8)
+	namespace := getNamespace(ctx, c)
+
+	createBucket(ctx, c, namespace, bname)
+
+	defer deleteBucket(ctx, c, namespace, bname)
+
+	// Output:
+	// create bucket
+	// delete bucket
+}
+
 func getNamespace(ctx context.Context, c objectstorage.ObjectStorageClient) string {
 	request := objectstorage.GetNamespaceRequest{}
 	r, err := c.GetNamespace(ctx, request)
