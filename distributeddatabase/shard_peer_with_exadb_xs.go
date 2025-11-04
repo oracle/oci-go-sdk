@@ -24,7 +24,7 @@ type ShardPeerWithExadbXs struct {
 	// The name of the shardGroup for the peer.
 	ShardGroup *string `mandatory:"true" json:"shardGroup"`
 
-	// Status of catalog with VmCluster for the Globally ditributed database.
+	// Status of EXADB_XS based shard peer.
 	Status ShardPeerWithExadbXsStatusEnum `mandatory:"true" json:"status"`
 
 	// The time the shard peer was created. An RFC3339 formatted datetime string
@@ -38,6 +38,12 @@ type ShardPeerWithExadbXs struct {
 
 	// the identifier of the container database for underlying supporting resource.
 	ContainerDatabaseId *string `mandatory:"false" json:"containerDatabaseId"`
+
+	// The protectionMode for the shard peer.
+	ProtectionMode DistributedDbProtectionModeEnum `mandatory:"false" json:"protectionMode,omitempty"`
+
+	// The redo transport type to use for this Data Guard association.
+	TransportType DistributedDbTransportTypeEnum `mandatory:"false" json:"transportType,omitempty"`
 
 	Metadata *DistributedDbMetadata `mandatory:"false" json:"metadata"`
 }
@@ -55,6 +61,12 @@ func (m ShardPeerWithExadbXs) ValidateEnumValue() (bool, error) {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetShardPeerWithExadbXsStatusEnumStringValues(), ",")))
 	}
 
+	if _, ok := GetMappingDistributedDbProtectionModeEnum(string(m.ProtectionMode)); !ok && m.ProtectionMode != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProtectionMode: %s. Supported values are: %s.", m.ProtectionMode, strings.Join(GetDistributedDbProtectionModeEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingDistributedDbTransportTypeEnum(string(m.TransportType)); !ok && m.TransportType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TransportType: %s. Supported values are: %s.", m.TransportType, strings.Join(GetDistributedDbTransportTypeEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}

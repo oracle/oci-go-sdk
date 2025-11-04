@@ -43,7 +43,7 @@ type DistributedAutonomousDatabaseShardWithDedicatedInfra struct {
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the cloudAutonomousVmCluster.
 	CloudAutonomousVmClusterId *string `mandatory:"true" json:"cloudAutonomousVmClusterId"`
 
-	// The collection of OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the peer cloudAutonomousVmClusters.
+	// This field is deprecated. For shard peer details please refer peerDetails attribute.
 	PeerCloudAutonomousVmClusterIds []string `mandatory:"false" json:"peerCloudAutonomousVmClusterIds"`
 
 	// The shard space name for the Globally distributed autonomous database. Shard space for existing shard cannot be changed, once shard is created.

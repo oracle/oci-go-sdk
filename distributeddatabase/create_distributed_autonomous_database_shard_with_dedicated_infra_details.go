@@ -39,8 +39,12 @@ type CreateDistributedAutonomousDatabaseShardWithDedicatedInfraDetails struct {
 	// shard space name. For system defined sharding, shard space name is not required.
 	ShardSpace *string `mandatory:"false" json:"shardSpace"`
 
-	// The collection of OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the peer cloudAutonomousExadataVMClusters.
+	// This field is deprecated. This should not be used while creation of new distributed autonomous database. To set the peers
+	// on new shards of distributed autonomous database please use peerDetails.
 	PeerCloudAutonomousVmClusterIds []string `mandatory:"false" json:"peerCloudAutonomousVmClusterIds"`
+
+	// The details required for creation of the peer for the autonomous dedicated infrastructure based shard.
+	PeerDetails []CreateShardPeerWithDedicatedInfraDetails `mandatory:"false" json:"peerDetails"`
 
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the Oracle Cloud Infrastructure vault (https://docs.oracle.com/iaas/Content/KeyManagement/Concepts/keyoverview.htm#concepts). This parameter and `kmsKeyId` are required for Customer Managed Keys.
 	VaultId *string `mandatory:"false" json:"vaultId"`

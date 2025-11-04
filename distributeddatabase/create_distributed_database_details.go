@@ -44,13 +44,19 @@ type CreateDistributedDatabaseDetails struct {
 	// The national character set for the database.
 	NcharacterSet *string `mandatory:"true" json:"ncharacterSet"`
 
-	// The listener port number for the Globally distributed database.
+	// The listener port number for the Globally distributed database. The listener port number
+	// has to be unique for a customer tenancy across all distributed databases. Same port number should
+	// not be re-used for any other distributed database.
 	ListenerPort *int `mandatory:"true" json:"listenerPort"`
 
-	// Ons local port number.
+	// The ons local port number for the Globally distributed database. The onsPortLocal has to be
+	// unique for a customer tenancy across all distributed databases. Same port number should not be
+	// re-used for any other distributed database.
 	OnsPortLocal *int `mandatory:"true" json:"onsPortLocal"`
 
-	// Ons remote port number.
+	// The ons remote port number for the Globally distributed database. The onsPortRemote has to be
+	// unique for a customer tenancy across all distributed databases. Same port number should not be
+	// re-used for any other distributed database.
 	OnsPortRemote *int `mandatory:"true" json:"onsPortRemote"`
 
 	// The distributed database deployment type.
@@ -62,21 +68,29 @@ type CreateDistributedDatabaseDetails struct {
 	// Collection of catalog for the Globally distributed database.
 	CatalogDetails []CreateDistributedDatabaseCatalogDetails `mandatory:"true" json:"catalogDetails"`
 
-	// The default number of unique chunks in a shardspace. The value of chunks must be
-	// greater than 2 times the size of the largest shardgroup in any shardspace.
+	// Number of chunks in a shardspace. The value of chunks must be
+	// greater than 2 times the size of the largest shardgroup in any shardspace. Chunks is
+	// required to be provided for distributed databases being created with
+	// SYSTEM shardingMethod. For USER shardingMethod, chunks should not be set in create payload.
 	Chunks *int `mandatory:"false" json:"chunks"`
 
-	// The TLS listener port number for Globally distributed database.
+	// The TLS listener port number for the Globally distributed database. The TLS listener port number
+	// has to be unique for a customer tenancy across all distributed databases. Same port number should
+	// not be re-used for any other distributed database. For BASE_DB and EXADB_XS based distributed databases,
+	// tls is not supported hence the listenerPortTls is not needed to be provided in create payload.
 	ListenerPortTls *int `mandatory:"false" json:"listenerPortTls"`
 
-	// The Replication method for Globally distributed database. Use RAFT for Raft replication, and DG for
-	// DataGuard. If replicationMethod is not provided, it defaults to DG.
+	// The Replication method for Globally distributed database. Use RAFT for Raft based replication.
+	// With RAFT replication, shards cannot have peers details set on them. In case shards need to
+	// have peers, please do not set RAFT replicationMethod. For all non RAFT replication cases (with or
+	// without peers), please set replicationMethod as DG or do not set any value for replicationMethod.
 	ReplicationMethod CreateDistributedDatabaseDetailsReplicationMethodEnum `mandatory:"false" json:"replicationMethod,omitempty"`
 
 	// The Replication factor for RAFT replication based Globally distributed database. Currently supported values are 3, 5 and 7.
 	ReplicationFactor *int `mandatory:"false" json:"replicationFactor"`
 
-	// For RAFT replication based Globally distributed database, the value should be atleast twice the number of shards.
+	// The replication unit count for RAFT based distributed database. For RAFT replication based
+	// Globally distributed database, the value should be at least twice the number of shards.
 	ReplicationUnit *int `mandatory:"false" json:"replicationUnit"`
 
 	// The SSH public key for Global service manager instances.

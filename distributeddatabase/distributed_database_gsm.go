@@ -33,7 +33,7 @@ type DistributedDatabaseGsm struct {
 	// The time the Global service manager instance was last updated. An RFC3339 formatted datetime string
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
 
-	// Status of the gsm for the Globally ditributed database.
+	// Status of the gsm.
 	Status DistributedDatabaseGsmStatusEnum `mandatory:"true" json:"status"`
 
 	// The time the ssl certificate associated with Global service manager expires. An RFC3339 formatted datetime string
