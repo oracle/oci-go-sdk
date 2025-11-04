@@ -89,7 +89,8 @@ type DistributedAutonomousDatabaseSummary struct {
 	// The Replication factor for RAFT replication based Globally distributed autonomous database. Currently supported values are 3, 5 and 7.
 	ReplicationFactor *int `mandatory:"false" json:"replicationFactor"`
 
-	// For RAFT replication based Globally distributed autonomous database, the value should be atleast twice the number of shards.
+	// The replication unit count for RAFT based distributed autonomous database. For RAFT replication based
+	// Globally distributed autonomous database, the value should be at least twice the number of shards.
 	ReplicationUnit *int `mandatory:"false" json:"replicationUnit"`
 
 	Metadata *DistributedAutonomousDbMetadata `mandatory:"false" json:"metadata"`

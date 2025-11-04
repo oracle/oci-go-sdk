@@ -89,7 +89,8 @@ type DistributedDatabase struct {
 	// The Replication factor for RAFT replication based Globally distributed database. Currently supported values are 3, 5 and 7.
 	ReplicationFactor *int `mandatory:"false" json:"replicationFactor"`
 
-	// For RAFT replication based Globally distributed database, the value should be atleast twice the number of shards.
+	// The replication unit count for RAFT based distributed database. For RAFT replication based
+	// Globally distributed database, the value should be at least twice the number of shards.
 	ReplicationUnit *int `mandatory:"false" json:"replicationUnit"`
 
 	// Collection of shards associated with the Globally distributed database.

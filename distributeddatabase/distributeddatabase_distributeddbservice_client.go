@@ -909,7 +909,7 @@ func (client DistributedDbServiceClient) patchDistributedDatabase(ctx context.Co
 	return response, err
 }
 
-// RotateDistributedDatabasePasswords Rotate passwords for different components of the Globally distributed database.
+// RotateDistributedDatabasePasswords Rotate the gsmuser and gsmcatuser passwords for shards and catalog of the Globally distributed database.  This operation will also remove GdsCtlNodes if present.
 //
 // # See also
 //

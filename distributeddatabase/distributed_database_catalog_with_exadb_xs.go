@@ -57,7 +57,7 @@ type DistributedDatabaseCatalogWithExadbXs struct {
 
 	Metadata *DistributedDbMetadata `mandatory:"false" json:"metadata"`
 
-	// Status of catalog with VmCluster for the Globally ditributed database.
+	// Status of EXADB_XS based catalog.
 	Status DistributedDatabaseCatalogWithExadbXsStatusEnum `mandatory:"true" json:"status"`
 }
 
