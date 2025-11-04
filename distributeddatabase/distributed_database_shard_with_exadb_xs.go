@@ -61,7 +61,7 @@ type DistributedDatabaseShardWithExadbXs struct {
 
 	Metadata *DistributedDbMetadata `mandatory:"false" json:"metadata"`
 
-	// Status of shard based on exadbxs for the Globally ditributed database.
+	// Status of EXADB_XS based shard.
 	Status DistributedDatabaseShardWithExadbXsStatusEnum `mandatory:"true" json:"status"`
 }
 

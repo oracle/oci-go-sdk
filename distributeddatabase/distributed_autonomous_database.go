@@ -53,7 +53,7 @@ type DistributedAutonomousDatabase struct {
 	// Sharding Methods for the Globally distributed autonomous database.
 	ShardingMethod DistributedAutonomousDatabaseShardingMethodEnum `mandatory:"true" json:"shardingMethod"`
 
-	// Possible workload types.
+	// Possible workload types. Currently only OLTP workload type is supported.
 	DbWorkload DistributedAutonomousDatabaseDbWorkloadEnum `mandatory:"true" json:"dbWorkload"`
 
 	// The character set for the database.
@@ -90,7 +90,8 @@ type DistributedAutonomousDatabase struct {
 	// The Replication factor for RAFT replication based Globally distributed autonomous database. Currently supported values are 3, 5 and 7.
 	ReplicationFactor *int `mandatory:"false" json:"replicationFactor"`
 
-	// For RAFT replication based Globally distributed autonomous database, the value should be atleast twice the number of shards.
+	// The replication unit count for RAFT based distributed autonomous database. For RAFT replication based
+	// Globally distributed autonomous database, the value should be at least twice the number of shards.
 	ReplicationUnit *int `mandatory:"false" json:"replicationUnit"`
 
 	LatestGsmImage *DistributedAutonomousDatabaseGsmImage `mandatory:"false" json:"latestGsmImage"`
@@ -103,6 +104,8 @@ type DistributedAutonomousDatabase struct {
 
 	// Collection of catalogs associated with the Globally distributed autonomous database.
 	GsmDetails []DistributedAutonomousDatabaseGsm `mandatory:"false" json:"gsmDetails"`
+
+	DbBackupConfig *DistributedAutonomousDbBackupConfig `mandatory:"false" json:"dbBackupConfig"`
 
 	Metadata *DistributedAutonomousDbMetadata `mandatory:"false" json:"metadata"`
 
@@ -163,6 +166,7 @@ func (m *DistributedAutonomousDatabase) UnmarshalJSON(data []byte) (e error) {
 		ShardDetails       []distributedautonomousdatabaseshard               `json:"shardDetails"`
 		CatalogDetails     []distributedautonomousdatabasecatalog             `json:"catalogDetails"`
 		GsmDetails         []DistributedAutonomousDatabaseGsm                 `json:"gsmDetails"`
+		DbBackupConfig     *DistributedAutonomousDbBackupConfig               `json:"dbBackupConfig"`
 		Metadata           *DistributedAutonomousDbMetadata                   `json:"metadata"`
 		FreeformTags       map[string]string                                  `json:"freeformTags"`
 		DefinedTags        map[string]map[string]interface{}                  `json:"definedTags"`
@@ -232,6 +236,8 @@ func (m *DistributedAutonomousDatabase) UnmarshalJSON(data []byte) (e error) {
 	}
 	m.GsmDetails = make([]DistributedAutonomousDatabaseGsm, len(model.GsmDetails))
 	copy(m.GsmDetails, model.GsmDetails)
+	m.DbBackupConfig = model.DbBackupConfig
+
 	m.Metadata = model.Metadata
 
 	m.FreeformTags = model.FreeformTags

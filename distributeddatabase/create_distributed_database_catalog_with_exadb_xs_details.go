@@ -25,8 +25,12 @@ type CreateDistributedDatabaseCatalogWithExadbXsDetails struct {
 	// The admin password for the cataog associated with Globally distributed database.
 	AdminPassword *string `mandatory:"true" json:"adminPassword"`
 
-	// The collection of OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the peer VmClusterIds.
+	// This field is deprecated. This should not be used while creation of new distributed database. To set the peers
+	// on catalog of distributed database please use peerDetails.
 	PeerVmClusterIds []string `mandatory:"false" json:"peerVmClusterIds"`
+
+	// The details required for creation of the peer for the ExadbXs infrastructure based catalog.
+	PeerDetails []CreateCatalogPeerWithExadbXsDetails `mandatory:"false" json:"peerDetails"`
 
 	// The shard space name for the Globally distributed database. Shard space for existing shard cannot be changed, once shard is created.
 	// Shard space name shall be used while creation of new shards.

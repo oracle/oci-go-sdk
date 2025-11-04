@@ -34,8 +34,12 @@ type CreateDistributedAutonomousDatabaseCatalogWithDedicatedInfraDetails struct 
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the cloud Autonomous VM Cluster.
 	CloudAutonomousVmClusterId *string `mandatory:"true" json:"cloudAutonomousVmClusterId"`
 
-	// The collection of OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the peer cloud Autonomous VM Clusters.
+	// This field is deprecated. This should not be used while creation of new distributed autonomous database. To set the peers
+	// on catalog of distributed autonomous database please use peerDetails.
 	PeerCloudAutonomousVmClusterIds []string `mandatory:"false" json:"peerCloudAutonomousVmClusterIds"`
+
+	// The details required for creation of the peer for the autonomous dedicated infrastructure based catalog.
+	PeerDetails []CreateCatalogPeerWithDedicatedInfraDetails `mandatory:"false" json:"peerDetails"`
 
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the Oracle Cloud Infrastructure vault (https://docs.oracle.com/iaas/Content/KeyManagement/Concepts/keyoverview.htm#concepts). This parameter and `kmsKeyId` are required for Customer Managed Keys.
 	VaultId *string `mandatory:"false" json:"vaultId"`

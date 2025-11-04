@@ -38,7 +38,7 @@ type CreateDistributedAutonomousDatabaseDetails struct {
 	// Sharding Methods for the Globally distributed autonomous database.
 	ShardingMethod CreateDistributedAutonomousDatabaseDetailsShardingMethodEnum `mandatory:"true" json:"shardingMethod"`
 
-	// Possible workload types.
+	// Possible workload types. Currently only OLTP workload type is supported.
 	DbWorkload CreateDistributedAutonomousDatabaseDetailsDbWorkloadEnum `mandatory:"true" json:"dbWorkload"`
 
 	// The character set for the database.
@@ -47,13 +47,19 @@ type CreateDistributedAutonomousDatabaseDetails struct {
 	// The national character set for the database.
 	NcharacterSet *string `mandatory:"true" json:"ncharacterSet"`
 
-	// The listener port number for the Globally distributed autonomous database.
+	// The listener port number for the Globally distributed autonomous database. The listener port number
+	// has to be unique for a customer tenancy across all distributed autonomous databases. Same port number
+	// should not be re-used for any other distributed autonomous database.
 	ListenerPort *int `mandatory:"true" json:"listenerPort"`
 
-	// Ons local port number.
+	// Ons local port number for Globally distributed autonomous database. The onsPortLocal has to be unique for
+	// a customer tenancy across all distributed autonomous databases. Same port number should not be re-used for
+	// any other distributed autonomous database.
 	OnsPortLocal *int `mandatory:"true" json:"onsPortLocal"`
 
-	// Ons remote port number.
+	// Ons remote port number for Globally distributed autonomous database. The onsPortRemote has to be unique for
+	// a customer tenancy across all distributed autonomous databases. Same port number should not be re-used for
+	// any other distributed autonomous database.
 	OnsPortRemote *int `mandatory:"true" json:"onsPortRemote"`
 
 	// The distributed autonomous database deployment type.
@@ -65,22 +71,32 @@ type CreateDistributedAutonomousDatabaseDetails struct {
 	// Collection of catalog for the Globally distributed autonomous database.
 	CatalogDetails []CreateDistributedAutonomousDatabaseCatalogDetails `mandatory:"true" json:"catalogDetails"`
 
-	// The default number of unique chunks in a shardspace. The value of chunks must be
-	// greater than 2 times the size of the largest shardgroup in any shardspace.
+	// Number of chunks in a shardspace. The value of chunks must be
+	// greater than 2 times the size of the largest shardgroup in any shardspace. Chunks is
+	// required to be provided for distributed autonomous databases being created with
+	// SYSTEM shardingMethod. For USER shardingMethod, chunks should not be set in create payload.
 	Chunks *int `mandatory:"false" json:"chunks"`
 
-	// The TLS listener port number for Globally distributed autonomous database.
+	// The TLS listener port number for Globally distributed autonomous database. The TLS listener port number
+	// has to be unique for a customer tenancy across all distributed autonomous databases. Same port number
+	// should not be re-used for any other distributed autonomous database. The listenerPortTls is mandatory
+	// for dedicated infrastructure based distributed autonomous databases.
 	ListenerPortTls *int `mandatory:"false" json:"listenerPortTls"`
 
-	// The Replication method for Globally distributed autonomous database. Use RAFT for Raft replication, and DG for
-	// DataGuard. If replicationMethod is not provided, it defaults to DG.
+	// The Replication method for Globally distributed autonomous database. Use RAFT for Raft based replication.
+	// With RAFT replication, shards cannot have peers details set on them. In case shards need to
+	// have peers, please do not set RAFT replicationMethod. For all non RAFT replication cases (with or
+	// without peers), please set replicationMethod as DG or do not set any value for replicationMethod.
 	ReplicationMethod CreateDistributedAutonomousDatabaseDetailsReplicationMethodEnum `mandatory:"false" json:"replicationMethod,omitempty"`
 
 	// The Replication factor for RAFT replication based Globally distributed autonomous database. Currently supported values are 3, 5 and 7.
 	ReplicationFactor *int `mandatory:"false" json:"replicationFactor"`
 
-	// For RAFT replication based Globally distributed autonomous database, the value should be atleast twice the number of shards.
+	// The replication unit count for RAFT based distributed autonomous database. For RAFT replication based
+	// Globally distributed autonomous database, the value should be at least twice the number of shards.
 	ReplicationUnit *int `mandatory:"false" json:"replicationUnit"`
+
+	DbBackupConfig *DistributedAutonomousDbBackupConfig `mandatory:"false" json:"dbBackupConfig"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
@@ -127,6 +143,7 @@ func (m *CreateDistributedAutonomousDatabaseDetails) UnmarshalJSON(data []byte) 
 		ReplicationMethod  CreateDistributedAutonomousDatabaseDetailsReplicationMethodEnum `json:"replicationMethod"`
 		ReplicationFactor  *int                                                            `json:"replicationFactor"`
 		ReplicationUnit    *int                                                            `json:"replicationUnit"`
+		DbBackupConfig     *DistributedAutonomousDbBackupConfig                            `json:"dbBackupConfig"`
 		FreeformTags       map[string]string                                               `json:"freeformTags"`
 		DefinedTags        map[string]map[string]interface{}                               `json:"definedTags"`
 		CompartmentId      *string                                                         `json:"compartmentId"`
@@ -160,6 +177,8 @@ func (m *CreateDistributedAutonomousDatabaseDetails) UnmarshalJSON(data []byte) 
 	m.ReplicationFactor = model.ReplicationFactor
 
 	m.ReplicationUnit = model.ReplicationUnit
+
+	m.DbBackupConfig = model.DbBackupConfig
 
 	m.FreeformTags = model.FreeformTags
 

@@ -50,6 +50,8 @@ const (
 	OperationTypeDeleteDistributedDbGsm                         OperationTypeEnum = "DELETE_DISTRIBUTED_DB_GSM"
 	OperationTypeAddGdscontrolNode                              OperationTypeEnum = "ADD_GDSCONTROL_NODE"
 	OperationTypeChangeDistributedDbBackupConfig                OperationTypeEnum = "CHANGE_DISTRIBUTED_DB_BACKUP_CONFIG"
+	OperationTypeAddDistributedDbDg                             OperationTypeEnum = "ADD_DISTRIBUTED_DB_DG"
+	OperationTypeRemoveDistributedDbDg                          OperationTypeEnum = "REMOVE_DISTRIBUTED_DB_DG"
 )
 
 var mappingOperationTypeEnum = map[string]OperationTypeEnum{
@@ -85,6 +87,8 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"DELETE_DISTRIBUTED_DB_GSM":                             OperationTypeDeleteDistributedDbGsm,
 	"ADD_GDSCONTROL_NODE":                                   OperationTypeAddGdscontrolNode,
 	"CHANGE_DISTRIBUTED_DB_BACKUP_CONFIG":                   OperationTypeChangeDistributedDbBackupConfig,
+	"ADD_DISTRIBUTED_DB_DG":                                 OperationTypeAddDistributedDbDg,
+	"REMOVE_DISTRIBUTED_DB_DG":                              OperationTypeRemoveDistributedDbDg,
 }
 
 var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
@@ -120,6 +124,8 @@ var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
 	"delete_distributed_db_gsm":                             OperationTypeDeleteDistributedDbGsm,
 	"add_gdscontrol_node":                                   OperationTypeAddGdscontrolNode,
 	"change_distributed_db_backup_config":                   OperationTypeChangeDistributedDbBackupConfig,
+	"add_distributed_db_dg":                                 OperationTypeAddDistributedDbDg,
+	"remove_distributed_db_dg":                              OperationTypeRemoveDistributedDbDg,
 }
 
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum
@@ -166,6 +172,8 @@ func GetOperationTypeEnumStringValues() []string {
 		"DELETE_DISTRIBUTED_DB_GSM",
 		"ADD_GDSCONTROL_NODE",
 		"CHANGE_DISTRIBUTED_DB_BACKUP_CONFIG",
+		"ADD_DISTRIBUTED_DB_DG",
+		"REMOVE_DISTRIBUTED_DB_DG",
 	}
 }
 
