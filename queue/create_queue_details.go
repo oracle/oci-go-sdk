@@ -11,8 +11,9 @@ package queue
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
+
+	"github.com/oracle/oci-go-sdk/v65/common"
 )
 
 // CreateQueueDetails The information about a new queue.
@@ -49,6 +50,10 @@ type CreateQueueDetails struct {
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
 	// Example: `{"foo-namespace": {"bar-key": "value"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+
+	// The capabilities configuration for the queue.
+	// Example: `[{"type": "CONSUMER_GROUPS", "isPrimaryConsumerGroupEnabled": false}]`
+	Capabilities []QueueCapability `mandatory:"false" json:"capabilities"`
 }
 
 func (m CreateQueueDetails) String() string {
