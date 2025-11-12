@@ -11,8 +11,9 @@ package queue
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
+
+	"github.com/oracle/oci-go-sdk/v65/common"
 )
 
 // Queue A detailed representation of a queue and its configuration.
@@ -73,6 +74,10 @@ type Queue struct {
 
 	// The percentage of allocated queue resources that can be consumed by a single channel. For example, if a queue has a storage limit of 2Gb, and a single channel consumption limit is 0.1 (10%), that means data size of a single channel  can't exceed 200Mb. Consumption limit of 100% (default) means that a single channel can consume up-to all allocated queue's resources.
 	ChannelConsumptionLimit *int `mandatory:"false" json:"channelConsumptionLimit"`
+
+	// The capabilities configuration for the queue.
+	// Example: `[{"type": "CONSUMER_GROUPS", "isPrimaryConsumerGroupEnabled": false}]`
+	Capabilities []QueueCapability `mandatory:"false" json:"capabilities"`
 }
 
 func (m Queue) String() string {
