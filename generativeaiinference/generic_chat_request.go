@@ -98,6 +98,9 @@ type GenericChatRequest struct {
 
 	// Constrains the verbosity of the model's response. Lower values will result in more concise responses, while higher values will result in more verbose responses.
 	Verbosity GenericChatRequestVerbosityEnum `mandatory:"false" json:"verbosity,omitempty"`
+
+	// Specifies the processing type used for serving the request.
+	ServiceTier GenericChatRequestServiceTierEnum `mandatory:"false" json:"serviceTier,omitempty"`
 }
 
 func (m GenericChatRequest) String() string {
@@ -114,6 +117,9 @@ func (m GenericChatRequest) ValidateEnumValue() (bool, error) {
 	}
 	if _, ok := GetMappingGenericChatRequestVerbosityEnum(string(m.Verbosity)); !ok && m.Verbosity != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Verbosity: %s. Supported values are: %s.", m.Verbosity, strings.Join(GetGenericChatRequestVerbosityEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingGenericChatRequestServiceTierEnum(string(m.ServiceTier)); !ok && m.ServiceTier != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ServiceTier: %s. Supported values are: %s.", m.ServiceTier, strings.Join(GetGenericChatRequestServiceTierEnumStringValues(), ",")))
 	}
 
 	if len(errMessage) > 0 {
@@ -164,6 +170,7 @@ func (m *GenericChatRequest) UnmarshalJSON(data []byte) (e error) {
 		IsParallelToolCalls *bool                                 `json:"isParallelToolCalls"`
 		Tools               []tooldefinition                      `json:"tools"`
 		WebSearchOptions    *WebSearchOptions                     `json:"webSearchOptions"`
+		ServiceTier         GenericChatRequestServiceTierEnum     `json:"serviceTier"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -265,6 +272,8 @@ func (m *GenericChatRequest) UnmarshalJSON(data []byte) (e error) {
 	}
 	m.WebSearchOptions = model.WebSearchOptions
 
+	m.ServiceTier = model.ServiceTier
+
 	return
 }
 
@@ -361,5 +370,51 @@ func GetGenericChatRequestVerbosityEnumStringValues() []string {
 // GetMappingGenericChatRequestVerbosityEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingGenericChatRequestVerbosityEnum(val string) (GenericChatRequestVerbosityEnum, bool) {
 	enum, ok := mappingGenericChatRequestVerbosityEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
+}
+
+// GenericChatRequestServiceTierEnum Enum with underlying type: string
+type GenericChatRequestServiceTierEnum string
+
+// Set of constants representing the allowable values for GenericChatRequestServiceTierEnum
+const (
+	GenericChatRequestServiceTierAuto     GenericChatRequestServiceTierEnum = "AUTO"
+	GenericChatRequestServiceTierDefault  GenericChatRequestServiceTierEnum = "DEFAULT"
+	GenericChatRequestServiceTierPriority GenericChatRequestServiceTierEnum = "PRIORITY"
+)
+
+var mappingGenericChatRequestServiceTierEnum = map[string]GenericChatRequestServiceTierEnum{
+	"AUTO":     GenericChatRequestServiceTierAuto,
+	"DEFAULT":  GenericChatRequestServiceTierDefault,
+	"PRIORITY": GenericChatRequestServiceTierPriority,
+}
+
+var mappingGenericChatRequestServiceTierEnumLowerCase = map[string]GenericChatRequestServiceTierEnum{
+	"auto":     GenericChatRequestServiceTierAuto,
+	"default":  GenericChatRequestServiceTierDefault,
+	"priority": GenericChatRequestServiceTierPriority,
+}
+
+// GetGenericChatRequestServiceTierEnumValues Enumerates the set of values for GenericChatRequestServiceTierEnum
+func GetGenericChatRequestServiceTierEnumValues() []GenericChatRequestServiceTierEnum {
+	values := make([]GenericChatRequestServiceTierEnum, 0)
+	for _, v := range mappingGenericChatRequestServiceTierEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetGenericChatRequestServiceTierEnumStringValues Enumerates the set of values in String for GenericChatRequestServiceTierEnum
+func GetGenericChatRequestServiceTierEnumStringValues() []string {
+	return []string{
+		"AUTO",
+		"DEFAULT",
+		"PRIORITY",
+	}
+}
+
+// GetMappingGenericChatRequestServiceTierEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGenericChatRequestServiceTierEnum(val string) (GenericChatRequestServiceTierEnum, bool) {
+	enum, ok := mappingGenericChatRequestServiceTierEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
