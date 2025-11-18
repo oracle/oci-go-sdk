@@ -4,6 +4,38 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.105.0 - 2025-11-18
+### Added 
+- Support for calling Oracle Cloud Infrastructure services in the eu-turin-1 region 
+- Support for security attributes in the Bastion service 
+- Support for DataGuard Health Status check in the Database service 
+- Support for DataGuard creation with AWS in the Database service 
+- Support for changing encryption key location to AWS in the Database service 
+- Support for registering and unregistering PKCS for AWS in the Database service 
+- Support for new service catalog access control on marketplace in the Service Catalog service 
+- Support for bring-your-own-certificate in the OpenSearch service 
+- Support for AWS KMS integration for DB@AWS in the Database MultiCloud service 
+- Support for multi-cloud subscriptions and multi-cloud resource management in the MultiCloud service 
+- Support for new GenericChatRequest parameters in the Generative AI Inference service 
+- Support for Self-Serve IP Pool API in the Email Delivery service 
+- Support for Object Batch Delete in the Object Storage service 
+- Support for IPv6 and Reserved IPs in the API Gateway service 
+- Support for Zero Trust Packet Routing (ZPR) security attributes in the Data Catalog service 
+- Support for pinning the firmware of a Compute GPU Memory Fabric in the Compute service 
+- Support for pausing ZeroETL pipelines in the GoldenGate service 
+- Support for shared connections for ZeroETL pipelines in the GoldenGate service 
+- Support for migrating digital twin instances from non-ingestible to ingestible in the IoT Service  
+
+### Fixed 
+- Fixed InvokeRawCommand API by changing response header from "Content-Location" to "Location" in the OCI Internet of Things (OCI IoT) service 
+- Fixed UpdateDigitalTwinInstance API by adding missing model id and spec URI properties in the OCI Internet of Things (OCI IoT) service  
+
+### Breaking Changes 
+- Support for default retries on the operations of the Service Catalog service 
+- The field `ContentLocation` was changed to `Location` in the model `InvokeRawCommandResponse` in the OCI Internet of Things (OCI IoT) service 
+- The field `LifecycleState` was changed to `NetworkAnchorLifecycleState` and its type was changed to `NetworkAnchorNetworkAnchorLifecycleStateEnum` in the models `NetworkAnchor` and `NetworkAnchorSummary` in the MultiCloud service 
+- The type of field `NetworkAnchorConnectionStatus` has been changed to `NetworkAnchorConnectionStatusEnum` in the model `OciNetworkMetadata` in the MultiCloud service 
+
 ## 65.104.1 - 2025-11-10
 ### Added 
 - Support for image lookup by URI in OCI Registry in the Generic Artifacts service 

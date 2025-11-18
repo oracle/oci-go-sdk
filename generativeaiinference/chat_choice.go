@@ -36,6 +36,9 @@ type ChatChoice struct {
 	Usage *Usage `mandatory:"false" json:"usage"`
 
 	GroundingMetadata *GroundingMetadata `mandatory:"false" json:"groundingMetadata"`
+
+	// Specifies the processing type used for serving the request.
+	ServiceTier *string `mandatory:"false" json:"serviceTier"`
 }
 
 func (m ChatChoice) String() string {
@@ -60,6 +63,7 @@ func (m *ChatChoice) UnmarshalJSON(data []byte) (e error) {
 		Logprobs          *Logprobs          `json:"logprobs"`
 		Usage             *Usage             `json:"usage"`
 		GroundingMetadata *GroundingMetadata `json:"groundingMetadata"`
+		ServiceTier       *string            `json:"serviceTier"`
 		Index             *int               `json:"index"`
 		Message           message            `json:"message"`
 		FinishReason      *string            `json:"finishReason"`
@@ -75,6 +79,8 @@ func (m *ChatChoice) UnmarshalJSON(data []byte) (e error) {
 	m.Usage = model.Usage
 
 	m.GroundingMetadata = model.GroundingMetadata
+
+	m.ServiceTier = model.ServiceTier
 
 	m.Index = model.Index
 

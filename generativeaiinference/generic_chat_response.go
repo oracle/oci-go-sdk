@@ -29,6 +29,9 @@ type GenericChatResponse struct {
 	Choices []ChatChoice `mandatory:"true" json:"choices"`
 
 	Usage *Usage `mandatory:"false" json:"usage"`
+
+	// Specifies the processing type used for serving the request.
+	ServiceTier *string `mandatory:"false" json:"serviceTier"`
 }
 
 func (m GenericChatResponse) String() string {
