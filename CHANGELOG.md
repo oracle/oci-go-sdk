@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.105.1 - 2025-12-09
+### Added 
+- Support for listing elastic pool cost savings in the Database service 
+- Support for OpenAI GPT-OSS model in the Generative AI Inference service
+
 ## 65.105.0 - 2025-11-18
 ### Added 
 - Support for calling Oracle Cloud Infrastructure services in the eu-turin-1 region 
