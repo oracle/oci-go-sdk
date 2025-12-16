@@ -170,27 +170,6 @@ You can find information on any known issues with the SDK here and under the [Is
 
 ## Building and Testing
 ### Dev Dependencies
-For Go versions below 1.17
-
-- Install [Testify](https://github.com/stretchr/testify) with the command:
-```sh
-go get github.com/stretchr/testify
-```
-- Install [gobreaker](https://github.com/sony/gobreaker) with the command:
-```sh
-go get github.com/sony/gobreaker
-```
-- Install [flock](https://github.com/gofrs/flock) with the command:
-```sh
-go get github.com/gofrs/flock
-```
-- Install [go lint](https://github.com/golang/lint) with the command:
-```
-go get -u golang.org/x/lint/golint
-```
-
-For Go versions 1.17 and above
-
 - Install [Testify](https://github.com/stretchr/testify) with the command:
 ```sh
 go install github.com/stretchr/testify
@@ -209,7 +188,7 @@ go install github.com/golang/lint/golint
 ```
 - Install [staticcheck](https://github.com/dominikh/go-tools) with the command:
 ```
-go install honnef.co/go/tools/cmd/staticcheck@2023.1.7
+go install honnef.co/go/tools/cmd/staticcheck
 ```
 
 ### Linting and Staticcheck
