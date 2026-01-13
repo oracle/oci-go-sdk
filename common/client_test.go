@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2018, 2025, Oracle and/or its affiliates.  All rights reserved.
+// Copyright (c) 2016, 2018, 2026, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 
 package common
@@ -126,6 +126,34 @@ func TestClient_prepareRequestSetScheme(t *testing.T) {
 	c.prepareRequest(&request)
 	assert.Equal(t, "http", request.URL.Scheme)
 	assert.Equal(t, "somehost:9000", request.URL.Host)
+}
+
+func TestClient_prepareRequestBasePathPrefix(t *testing.T) {
+	c := BaseClient{
+		UserAgent: "ua",
+		BasePath:  "v1",
+	}
+
+	// Case 1: Path contains "v1"; should still prefix with "/v1"
+	req1 := http.Request{}
+	req1.URL = &url.URL{Path: "log/lsid/v1wXTv00yV2GHC9aplEPlQaIYP3GcyEf1WvYw5CmNV8"}
+	err := c.prepareRequest(&req1)
+	assert.NoError(t, err)
+	assert.Equal(t, "/v1/log/lsid/v1wXTv00yV2GHC9aplEPlQaIYP3GcyEf1WvYw5CmNV8", req1.URL.Path)
+
+	// Case 2: Path does not contain "v1"; should prefix with "/v1"
+	req2 := http.Request{}
+	req2.URL = &url.URL{Path: "log/lsid/e2wXTv34yV2LKC9bnlYPlRaIYP3GczDd1WvYw4QmNV8"}
+	err = c.prepareRequest(&req2)
+	assert.NoError(t, err)
+	assert.Equal(t, "/v1/log/lsid/e2wXTv34yV2LKC9bnlYPlRaIYP3GczDd1WvYw4QmNV8", req2.URL.Path)
+
+	// Case 3: Path already starts with "/v1"; should not double-prefix
+	req3 := http.Request{}
+	req3.URL = &url.URL{Path: "/v1/log/lsid/abc123"}
+	err = c.prepareRequest(&req3)
+	assert.NoError(t, err)
+	assert.Equal(t, "/v1/log/lsid/abc123", req3.URL.Path)
 }
 
 func TestClient_containsUserAgent(t *testing.T) {
