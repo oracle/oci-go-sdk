@@ -33,6 +33,12 @@ type EmbedTextDetails struct {
 	// Whether or not to include the original inputs in the response. Results are index-based.
 	IsEcho *bool `mandatory:"false" json:"isEcho"`
 
+	// Specifies the types of embeddings you want to get back. Supports list of enums. Supported values :float, int8, uint8, binary, ubinary, base64. If nothing is passed default will be considered as float.
+	EmbeddingTypes []EmbedTextDetailsEmbeddingTypesEnum `mandatory:"false" json:"embeddingTypes,omitempty"`
+
+	// The number of dimensions of the output embedding. This is only available for embed-v4 and newer models. Possible values are 256, 512, 1024, and 1536.
+	OutputDimensions *int `mandatory:"false" json:"outputDimensions"`
+
 	// For an input that's longer than the maximum token length, specifies which part of the input text will be truncated.
 	Truncate EmbedTextDetailsTruncateEnum `mandatory:"false" json:"truncate,omitempty"`
 
@@ -50,6 +56,12 @@ func (m EmbedTextDetails) String() string {
 func (m EmbedTextDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
+	for _, val := range m.EmbeddingTypes {
+		if _, ok := GetMappingEmbedTextDetailsEmbeddingTypesEnum(string(val)); !ok && val != "" {
+			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EmbeddingTypes: %s. Supported values are: %s.", val, strings.Join(GetEmbedTextDetailsEmbeddingTypesEnumStringValues(), ",")))
+		}
+	}
+
 	if _, ok := GetMappingEmbedTextDetailsTruncateEnum(string(m.Truncate)); !ok && m.Truncate != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Truncate: %s. Supported values are: %s.", m.Truncate, strings.Join(GetEmbedTextDetailsTruncateEnumStringValues(), ",")))
 	}
@@ -65,12 +77,14 @@ func (m EmbedTextDetails) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *EmbedTextDetails) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		IsEcho        *bool                         `json:"isEcho"`
-		Truncate      EmbedTextDetailsTruncateEnum  `json:"truncate"`
-		InputType     EmbedTextDetailsInputTypeEnum `json:"inputType"`
-		Inputs        []string                      `json:"inputs"`
-		ServingMode   servingmode                   `json:"servingMode"`
-		CompartmentId *string                       `json:"compartmentId"`
+		IsEcho           *bool                                `json:"isEcho"`
+		EmbeddingTypes   []EmbedTextDetailsEmbeddingTypesEnum `json:"embeddingTypes"`
+		OutputDimensions *int                                 `json:"outputDimensions"`
+		Truncate         EmbedTextDetailsTruncateEnum         `json:"truncate"`
+		InputType        EmbedTextDetailsInputTypeEnum        `json:"inputType"`
+		Inputs           []string                             `json:"inputs"`
+		ServingMode      servingmode                          `json:"servingMode"`
+		CompartmentId    *string                              `json:"compartmentId"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -79,6 +93,10 @@ func (m *EmbedTextDetails) UnmarshalJSON(data []byte) (e error) {
 	}
 	var nn interface{}
 	m.IsEcho = model.IsEcho
+
+	m.EmbeddingTypes = make([]EmbedTextDetailsEmbeddingTypesEnum, len(model.EmbeddingTypes))
+	copy(m.EmbeddingTypes, model.EmbeddingTypes)
+	m.OutputDimensions = model.OutputDimensions
 
 	m.Truncate = model.Truncate
 
@@ -99,6 +117,64 @@ func (m *EmbedTextDetails) UnmarshalJSON(data []byte) (e error) {
 	m.CompartmentId = model.CompartmentId
 
 	return
+}
+
+// EmbedTextDetailsEmbeddingTypesEnum Enum with underlying type: string
+type EmbedTextDetailsEmbeddingTypesEnum string
+
+// Set of constants representing the allowable values for EmbedTextDetailsEmbeddingTypesEnum
+const (
+	EmbedTextDetailsEmbeddingTypesFloat   EmbedTextDetailsEmbeddingTypesEnum = "float"
+	EmbedTextDetailsEmbeddingTypesInt8    EmbedTextDetailsEmbeddingTypesEnum = "int8"
+	EmbedTextDetailsEmbeddingTypesUint8   EmbedTextDetailsEmbeddingTypesEnum = "uint8"
+	EmbedTextDetailsEmbeddingTypesBinary  EmbedTextDetailsEmbeddingTypesEnum = "binary"
+	EmbedTextDetailsEmbeddingTypesUbinary EmbedTextDetailsEmbeddingTypesEnum = "ubinary"
+	EmbedTextDetailsEmbeddingTypesBase64  EmbedTextDetailsEmbeddingTypesEnum = "base64"
+)
+
+var mappingEmbedTextDetailsEmbeddingTypesEnum = map[string]EmbedTextDetailsEmbeddingTypesEnum{
+	"float":   EmbedTextDetailsEmbeddingTypesFloat,
+	"int8":    EmbedTextDetailsEmbeddingTypesInt8,
+	"uint8":   EmbedTextDetailsEmbeddingTypesUint8,
+	"binary":  EmbedTextDetailsEmbeddingTypesBinary,
+	"ubinary": EmbedTextDetailsEmbeddingTypesUbinary,
+	"base64":  EmbedTextDetailsEmbeddingTypesBase64,
+}
+
+var mappingEmbedTextDetailsEmbeddingTypesEnumLowerCase = map[string]EmbedTextDetailsEmbeddingTypesEnum{
+	"float":   EmbedTextDetailsEmbeddingTypesFloat,
+	"int8":    EmbedTextDetailsEmbeddingTypesInt8,
+	"uint8":   EmbedTextDetailsEmbeddingTypesUint8,
+	"binary":  EmbedTextDetailsEmbeddingTypesBinary,
+	"ubinary": EmbedTextDetailsEmbeddingTypesUbinary,
+	"base64":  EmbedTextDetailsEmbeddingTypesBase64,
+}
+
+// GetEmbedTextDetailsEmbeddingTypesEnumValues Enumerates the set of values for EmbedTextDetailsEmbeddingTypesEnum
+func GetEmbedTextDetailsEmbeddingTypesEnumValues() []EmbedTextDetailsEmbeddingTypesEnum {
+	values := make([]EmbedTextDetailsEmbeddingTypesEnum, 0)
+	for _, v := range mappingEmbedTextDetailsEmbeddingTypesEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetEmbedTextDetailsEmbeddingTypesEnumStringValues Enumerates the set of values in String for EmbedTextDetailsEmbeddingTypesEnum
+func GetEmbedTextDetailsEmbeddingTypesEnumStringValues() []string {
+	return []string{
+		"float",
+		"int8",
+		"uint8",
+		"binary",
+		"ubinary",
+		"base64",
+	}
+}
+
+// GetMappingEmbedTextDetailsEmbeddingTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEmbedTextDetailsEmbeddingTypesEnum(val string) (EmbedTextDetailsEmbeddingTypesEnum, bool) {
+	enum, ok := mappingEmbedTextDetailsEmbeddingTypesEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // EmbedTextDetailsTruncateEnum Enum with underlying type: string
