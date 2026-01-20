@@ -61,6 +61,10 @@ func (m *chatcontent) UnmarshalPolymorphicJSON(data []byte) (interface{}, error)
 		mm := ImageContent{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
+	case "DOCUMENT":
+		mm := DocumentContent{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "AUDIO":
 		mm := AudioContent{}
 		err = json.Unmarshal(data, &mm)
