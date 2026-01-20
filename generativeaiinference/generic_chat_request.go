@@ -282,6 +282,7 @@ type GenericChatRequestReasoningEffortEnum string
 
 // Set of constants representing the allowable values for GenericChatRequestReasoningEffortEnum
 const (
+	GenericChatRequestReasoningEffortNone    GenericChatRequestReasoningEffortEnum = "NONE"
 	GenericChatRequestReasoningEffortMinimal GenericChatRequestReasoningEffortEnum = "MINIMAL"
 	GenericChatRequestReasoningEffortLow     GenericChatRequestReasoningEffortEnum = "LOW"
 	GenericChatRequestReasoningEffortMedium  GenericChatRequestReasoningEffortEnum = "MEDIUM"
@@ -289,6 +290,7 @@ const (
 )
 
 var mappingGenericChatRequestReasoningEffortEnum = map[string]GenericChatRequestReasoningEffortEnum{
+	"NONE":    GenericChatRequestReasoningEffortNone,
 	"MINIMAL": GenericChatRequestReasoningEffortMinimal,
 	"LOW":     GenericChatRequestReasoningEffortLow,
 	"MEDIUM":  GenericChatRequestReasoningEffortMedium,
@@ -296,6 +298,7 @@ var mappingGenericChatRequestReasoningEffortEnum = map[string]GenericChatRequest
 }
 
 var mappingGenericChatRequestReasoningEffortEnumLowerCase = map[string]GenericChatRequestReasoningEffortEnum{
+	"none":    GenericChatRequestReasoningEffortNone,
 	"minimal": GenericChatRequestReasoningEffortMinimal,
 	"low":     GenericChatRequestReasoningEffortLow,
 	"medium":  GenericChatRequestReasoningEffortMedium,
@@ -314,6 +317,7 @@ func GetGenericChatRequestReasoningEffortEnumValues() []GenericChatRequestReason
 // GetGenericChatRequestReasoningEffortEnumStringValues Enumerates the set of values in String for GenericChatRequestReasoningEffortEnum
 func GetGenericChatRequestReasoningEffortEnumStringValues() []string {
 	return []string{
+		"NONE",
 		"MINIMAL",
 		"LOW",
 		"MEDIUM",

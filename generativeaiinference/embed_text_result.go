@@ -24,11 +24,14 @@ type EmbedTextResult struct {
 	// A unique identifier for the generated result.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The embeddings corresponding to inputs.
+	// The embeddings corresponding to float.
 	Embeddings [][]float32 `mandatory:"true" json:"embeddings"`
 
 	// The original inputs. Only present if "isEcho" is set to true.
 	Inputs []string `mandatory:"false" json:"inputs"`
+
+	// The embeddings corresponding to embedding types input.
+	EmbeddingsByType *interface{} `mandatory:"false" json:"embeddingsByType"`
 
 	// The OCID of the model used in this inference request.
 	ModelId *string `mandatory:"false" json:"modelId"`
