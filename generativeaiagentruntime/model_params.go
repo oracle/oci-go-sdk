@@ -39,6 +39,15 @@ type ModelParams struct {
 
 	// Presence penalty to encourage new topics.
 	PresencePenalty *float32 `mandatory:"false" json:"presencePenalty"`
+
+	// Seed makes best effort to sample tokens deterministically.
+	Seed *int `mandatory:"false" json:"seed"`
+
+	// Constrains effort on reasoning for reasoning models.
+	ReasoningEffort *string `mandatory:"false" json:"reasoningEffort"`
+
+	// Constrains the verbosity of the model's response.
+	Verbosity *string `mandatory:"false" json:"verbosity"`
 }
 
 func (m ModelParams) String() string {
