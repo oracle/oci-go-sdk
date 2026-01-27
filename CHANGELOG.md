@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.107.0 - 2026-01-27
+### Added 
+- Support for message fanout with filtering using Consumer Groups in the Queue service 
+- Support for model selection on Agent and RAG/SQL Tool in the OCI Generative AI Agent service 
+- Support for new rolling restart option for autonomous databases in the Database service 
+- Support for importing external Certificate Authority hierarchies with two new Certificate Authority types in the Certificates service 
+- Support for specifying Certificate Authority name and path constraints with new Issuance Rules in the Certificates service 
+- Support for Management Appliance in the Oracle Cloud VMware Provisioning service 
+- Support for creating and updating load balancer configuration for a cluster in the OpenSearch service  
+- Support for more processor families when selecting clusters in the OCI Streaming with Apache Kafka service 
+- Support for compute cluster in instance pool and instance configuration in the Compute Service 
+- Support for AI Data Platform, Oracle Managed Kubernetes, and Oracle Kubernetes Engine in the Data Intelligence Foundation service 
+- Support for exporting backup images to customer Object Storage buckets and for canceling ongoing export operations in the MySQL HeatWave service   
+
+### Breaking Changes 
+- The model `UpdateComputeHostRequest` has been renamed to `UpdateComputeHostsRequest`in the Compute service 
+- The model `GetComputeHostRequest` has been renamed to `GetComputeHostsRequest`in the Compute service 
+- The model `UpdateComputeHostDetails` has been renamed to `UpdateComputeHostsDetails`in the Compute service
+
 ## 65.106.1 - 2026-01-20
 ### Added 
 - Support for the Private Service Access (PSA) service 
