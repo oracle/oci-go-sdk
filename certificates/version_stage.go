@@ -18,30 +18,33 @@ type VersionStageEnum string
 
 // Set of constants representing the allowable values for VersionStageEnum
 const (
-	VersionStageCurrent    VersionStageEnum = "CURRENT"
-	VersionStagePending    VersionStageEnum = "PENDING"
-	VersionStageLatest     VersionStageEnum = "LATEST"
-	VersionStagePrevious   VersionStageEnum = "PREVIOUS"
-	VersionStageDeprecated VersionStageEnum = "DEPRECATED"
-	VersionStageFailed     VersionStageEnum = "FAILED"
+	VersionStageCurrent           VersionStageEnum = "CURRENT"
+	VersionStagePending           VersionStageEnum = "PENDING"
+	VersionStagePendingActivation VersionStageEnum = "PENDING_ACTIVATION"
+	VersionStageLatest            VersionStageEnum = "LATEST"
+	VersionStagePrevious          VersionStageEnum = "PREVIOUS"
+	VersionStageDeprecated        VersionStageEnum = "DEPRECATED"
+	VersionStageFailed            VersionStageEnum = "FAILED"
 )
 
 var mappingVersionStageEnum = map[string]VersionStageEnum{
-	"CURRENT":    VersionStageCurrent,
-	"PENDING":    VersionStagePending,
-	"LATEST":     VersionStageLatest,
-	"PREVIOUS":   VersionStagePrevious,
-	"DEPRECATED": VersionStageDeprecated,
-	"FAILED":     VersionStageFailed,
+	"CURRENT":            VersionStageCurrent,
+	"PENDING":            VersionStagePending,
+	"PENDING_ACTIVATION": VersionStagePendingActivation,
+	"LATEST":             VersionStageLatest,
+	"PREVIOUS":           VersionStagePrevious,
+	"DEPRECATED":         VersionStageDeprecated,
+	"FAILED":             VersionStageFailed,
 }
 
 var mappingVersionStageEnumLowerCase = map[string]VersionStageEnum{
-	"current":    VersionStageCurrent,
-	"pending":    VersionStagePending,
-	"latest":     VersionStageLatest,
-	"previous":   VersionStagePrevious,
-	"deprecated": VersionStageDeprecated,
-	"failed":     VersionStageFailed,
+	"current":            VersionStageCurrent,
+	"pending":            VersionStagePending,
+	"pending_activation": VersionStagePendingActivation,
+	"latest":             VersionStageLatest,
+	"previous":           VersionStagePrevious,
+	"deprecated":         VersionStageDeprecated,
+	"failed":             VersionStageFailed,
 }
 
 // GetVersionStageEnumValues Enumerates the set of values for VersionStageEnum
@@ -58,6 +61,7 @@ func GetVersionStageEnumStringValues() []string {
 	return []string{
 		"CURRENT",
 		"PENDING",
+		"PENDING_ACTIVATION",
 		"LATEST",
 		"PREVIOUS",
 		"DEPRECATED",

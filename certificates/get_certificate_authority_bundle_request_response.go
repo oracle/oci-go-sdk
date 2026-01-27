@@ -109,27 +109,30 @@ type GetCertificateAuthorityBundleStageEnum string
 
 // Set of constants representing the allowable values for GetCertificateAuthorityBundleStageEnum
 const (
-	GetCertificateAuthorityBundleStageCurrent    GetCertificateAuthorityBundleStageEnum = "CURRENT"
-	GetCertificateAuthorityBundleStagePending    GetCertificateAuthorityBundleStageEnum = "PENDING"
-	GetCertificateAuthorityBundleStageLatest     GetCertificateAuthorityBundleStageEnum = "LATEST"
-	GetCertificateAuthorityBundleStagePrevious   GetCertificateAuthorityBundleStageEnum = "PREVIOUS"
-	GetCertificateAuthorityBundleStageDeprecated GetCertificateAuthorityBundleStageEnum = "DEPRECATED"
+	GetCertificateAuthorityBundleStageCurrent           GetCertificateAuthorityBundleStageEnum = "CURRENT"
+	GetCertificateAuthorityBundleStagePending           GetCertificateAuthorityBundleStageEnum = "PENDING"
+	GetCertificateAuthorityBundleStagePendingActivation GetCertificateAuthorityBundleStageEnum = "PENDING_ACTIVATION"
+	GetCertificateAuthorityBundleStageLatest            GetCertificateAuthorityBundleStageEnum = "LATEST"
+	GetCertificateAuthorityBundleStagePrevious          GetCertificateAuthorityBundleStageEnum = "PREVIOUS"
+	GetCertificateAuthorityBundleStageDeprecated        GetCertificateAuthorityBundleStageEnum = "DEPRECATED"
 )
 
 var mappingGetCertificateAuthorityBundleStageEnum = map[string]GetCertificateAuthorityBundleStageEnum{
-	"CURRENT":    GetCertificateAuthorityBundleStageCurrent,
-	"PENDING":    GetCertificateAuthorityBundleStagePending,
-	"LATEST":     GetCertificateAuthorityBundleStageLatest,
-	"PREVIOUS":   GetCertificateAuthorityBundleStagePrevious,
-	"DEPRECATED": GetCertificateAuthorityBundleStageDeprecated,
+	"CURRENT":            GetCertificateAuthorityBundleStageCurrent,
+	"PENDING":            GetCertificateAuthorityBundleStagePending,
+	"PENDING_ACTIVATION": GetCertificateAuthorityBundleStagePendingActivation,
+	"LATEST":             GetCertificateAuthorityBundleStageLatest,
+	"PREVIOUS":           GetCertificateAuthorityBundleStagePrevious,
+	"DEPRECATED":         GetCertificateAuthorityBundleStageDeprecated,
 }
 
 var mappingGetCertificateAuthorityBundleStageEnumLowerCase = map[string]GetCertificateAuthorityBundleStageEnum{
-	"current":    GetCertificateAuthorityBundleStageCurrent,
-	"pending":    GetCertificateAuthorityBundleStagePending,
-	"latest":     GetCertificateAuthorityBundleStageLatest,
-	"previous":   GetCertificateAuthorityBundleStagePrevious,
-	"deprecated": GetCertificateAuthorityBundleStageDeprecated,
+	"current":            GetCertificateAuthorityBundleStageCurrent,
+	"pending":            GetCertificateAuthorityBundleStagePending,
+	"pending_activation": GetCertificateAuthorityBundleStagePendingActivation,
+	"latest":             GetCertificateAuthorityBundleStageLatest,
+	"previous":           GetCertificateAuthorityBundleStagePrevious,
+	"deprecated":         GetCertificateAuthorityBundleStageDeprecated,
 }
 
 // GetGetCertificateAuthorityBundleStageEnumValues Enumerates the set of values for GetCertificateAuthorityBundleStageEnum
@@ -146,6 +149,7 @@ func GetGetCertificateAuthorityBundleStageEnumStringValues() []string {
 	return []string{
 		"CURRENT",
 		"PENDING",
+		"PENDING_ACTIVATION",
 		"LATEST",
 		"PREVIOUS",
 		"DEPRECATED",

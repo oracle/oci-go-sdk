@@ -91,7 +91,7 @@ func (client *CertificatesClient) ConfigurationProvider() *common.ConfigurationP
 	return client.config
 }
 
-// GetCaBundle Gets a ca-bundle bundle.
+// GetCaBundle Gets the bundle for the specified CA bundle.
 //
 // # See also
 //
@@ -148,8 +148,8 @@ func (client CertificatesClient) getCaBundle(ctx context.Context, request common
 	return response, err
 }
 
-// GetCertificateAuthorityBundle Gets a certificate authority bundle that matches either the specified `stage`, `name`, or `versionNumber` parameter.
-// If none of these parameters are provided, the bundle for the certificate authority version marked as `CURRENT` will be returned.
+// GetCertificateAuthorityBundle Gets a bundle for a certificate authority (CA) that matches either the specified `stage`, `name`, or `versionNumber` parameter.
+// If none of these parameters are provided, the bundle for the CA version marked as `CURRENT` is returned.
 //
 // # See also
 //
@@ -207,9 +207,9 @@ func (client CertificatesClient) getCertificateAuthorityBundle(ctx context.Conte
 }
 
 // GetCertificateBundle Gets a certificate bundle that matches either the specified `stage`, `versionName`, or `versionNumber` parameter.
-// If none of these parameters are provided, the bundle for the certificate version marked as `CURRENT` will be returned.
-// By default, the private key is not included in the query result, and a CertificateBundlePublicOnly is returned.
-// If the private key is needed, use the CertificateBundleTypeQueryParam parameter to get a CertificateBundleWithPrivateKey response.
+// If none of these parameters are provided, the bundle for the certificate version marked as `CURRENT` is returned.
+// By default, the private key is not included in the query result, and only the certificate bundle is returned.
+// If you also need the private key, you can use the parameter `CertificateBundleTypeQueryParam` to indicate that you want a certificate bundle along with its private key as a response to your request.
 //
 // # See also
 //
@@ -266,7 +266,7 @@ func (client CertificatesClient) getCertificateBundle(ctx context.Context, reque
 	return response, err
 }
 
-// ListCertificateAuthorityBundleVersions Lists all certificate authority bundle versions for the specified certificate authority.
+// ListCertificateAuthorityBundleVersions Lists all versions of bundles for a given certificate authority (CA).
 //
 // # See also
 //
