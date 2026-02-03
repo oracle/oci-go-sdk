@@ -4,6 +4,28 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.108.0 - 2026-02-03
+### Added 
+- Support for calling Oracle Cloud Infrastructure services in the ap-kulai-2 region 
+- Support for calling Oracle Cloud Infrastructure services in the sa-riodejaneiro-1 region 
+- Support for new model capability in the Generative AI service 
+- Support for DAC Endpoint Inference Protection with additional configurations like Prompt Injection (PI) and Personally Identifiable Information (PII) along with existing Content Moderation (CM) Configuration in the Generative AI service 
+- Support for VM backup storage on Exascale in the Database service 
+- Support for allowing name search in entity associations and source associations in the Log Analytics service 
+- Support for allowing user to update cloud resource id and OMDS OCID when updating entity in the Log Analytics service 
+- Support for passing Search variable values as arguments in the query API in the Log Analytics service 
+- Support for returning task status description in listRules API for saved search detection rules in the Log Analytics service 
+- Support for adding recall data size and release data size in the Log Analytics service 
+- Support for connection status and pool image update in the Secure Desktops service  
+- Support for non persistent desktops and boot volume sizing in the Secure Desktops service 
+- Support for Video Input in the Secure Desktops service 
+- Support for customers to view host correlation ID in compute host API list response in the Core service 
+- Support for compartmentIdInSubtree in List APIs in the Management Dashboard service 
+- Support smaller firewall and metadata description in the Network Firewall service   
+
+### Breaking Changes 
+- Removed support for the Globally Distributed Database ("globallydistributeddatabase") service, use "distributeddatabase" instead
+
 ## 65.107.0 - 2026-01-27
 ### Added 
 - Support for message fanout with filtering using Consumer Groups in the Queue service 
