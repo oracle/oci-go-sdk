@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.108.1 - 2026-02-10
+### Added 
+- Support for assessments in the Database Migration Service 
+- Support for managing fleet updates for collections of Databases and VM Clusters in the Oracle Exadata Database Service (ExaDB-XS) 
+- Support for audit vulnerabilities in the Application Dependency Management service 
+- Support for new fields DeviceName and InterfaceName for CreateCrossConnect in the Networking service 
+- Support for bulk CRUD operation for Private IP and IPv6 in the Virtual Networking service 
+- Support for burstable capacity coverage in Compute Capacity Report API in the Virtual Networking service 
+- Support for flexible MySQL Configurations in the MySQL HeatWave service
+
 ## 65.108.0 - 2026-02-03
 ### Added 
 - Support for calling Oracle Cloud Infrastructure services in the ap-kulai-2 region 
