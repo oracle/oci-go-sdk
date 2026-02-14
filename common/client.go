@@ -413,11 +413,11 @@ func getHomeFolder() string {
 }
 
 // DefaultConfigProvider returns the default config provider. The default config provider
-// will look for configurations in 3 places: file in $HOME/.oci/config, HOME/.obmcs/config and
-// variables names starting with the string TF_VAR. If the same configuration is found in multiple
-// places the provider will prefer the first one.
-// If the config file is not placed in the default location, the environment variable
-// OCI_CONFIG_FILE can provide the config file location.
+// will look for configurations in 3 places: file in $HOME/.oci/config, HOME/.obmcs/config,
+// and variables names starting with the string OCI_. If the same configuration is found in
+// multiple places the provider will prefer the first one. If the config file is not placed
+// in the default location, the environment variable OCI_CONFIG_FILE can provide the config
+// file location.
 func DefaultConfigProvider() ConfigurationProvider {
 	defaultConfigFile := getDefaultConfigFilePath()
 	homeFolder := getHomeFolder()
@@ -425,7 +425,7 @@ func DefaultConfigProvider() ConfigurationProvider {
 
 	defaultFileProvider, _ := ConfigurationProviderFromFile(defaultConfigFile, "")
 	secondaryFileProvider, _ := ConfigurationProviderFromFile(secondaryConfigFile, "")
-	environmentProvider := environmentConfigurationProvider{EnvironmentVariablePrefix: "TF_VAR"}
+	environmentProvider := environmentConfigurationProvider{EnvironmentVariablePrefix: "OCI"}
 
 	provider, _ := ComposingConfigurationProvider([]ConfigurationProvider{defaultFileProvider, secondaryFileProvider, environmentProvider})
 	Debugf("Configuration provided by: %s", provider)
@@ -487,8 +487,8 @@ func setRawPath(u *url.URL) error {
 }
 
 // CustomProfileConfigProvider returns the config provider of given profile. The custom profile config provider
-// will look for configurations in 2 places: file in $HOME/.oci/config,  and variables names starting with the
-// string TF_VAR. If the same configuration is found in multiple places the provider will prefer the first one.
+// will look for configurations in 2 places: file in $HOME/.oci/config and variables names starting with the
+// string OCI. If the same configuration is found in multiple places the provider will prefer the first one.
 func CustomProfileConfigProvider(customConfigPath string, profile string) ConfigurationProvider {
 	homeFolder := getHomeFolder()
 	if customConfigPath == "" {
@@ -496,7 +496,7 @@ func CustomProfileConfigProvider(customConfigPath string, profile string) Config
 	}
 	customFileProvider, _ := ConfigurationProviderFromFileWithProfile(customConfigPath, profile, "")
 	defaultFileProvider, _ := ConfigurationProviderFromFileWithProfile(customConfigPath, "DEFAULT", "")
-	environmentProvider := environmentConfigurationProvider{EnvironmentVariablePrefix: "TF_VAR"}
+	environmentProvider := environmentConfigurationProvider{EnvironmentVariablePrefix: "OCI"}
 	provider, _ := ComposingConfigurationProvider([]ConfigurationProvider{customFileProvider, defaultFileProvider, environmentProvider})
 	Debugf("Configuration provided by: %s", provider)
 	return provider
