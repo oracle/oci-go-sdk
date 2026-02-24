@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.108.3 - 2026-02-24
+### Added 
+- Support for calling Oracle Cloud Infrastructure services in the af-casablanca-1 region 
+- Support for specifying TCP and SSL scan listener ports for Disaster Recovery Networks in the Database service 
+- Support for readiness check in the Exadata Fleet Update service 
+- Support for zone transparency in the DNS service 
+- Support for retrieving DB system and channel status (information about availability and operational indicators) in the MySQL HeatWave service 
+- Support for configuring telemetry (exporting logs to Log Analytics) in the MySQL HeatWave Service 
+- Support for enabling and disabling the logging feature in Dataflow SQL endpoints in the Data Flow service
+
 ## 65.108.2 - 2026-02-17
 ### Added 
 - Support for customer-controlled public IP decommissioning in the Kubernetes Engine service 
