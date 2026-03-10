@@ -15,7 +15,7 @@ import (
 	"strings"
 )
 
-// DistributedDatabaseAssociatedWithPrivateEndpoint The details of distributed database associated with the private endpoint.
+// DistributedDatabaseAssociatedWithPrivateEndpoint This field is deprecated. Support for this field will be removed after Mon, 1 Mar 2027 00:00:00 GMT.
 type DistributedDatabaseAssociatedWithPrivateEndpoint struct {
 
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the distributed database.

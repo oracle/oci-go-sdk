@@ -50,6 +50,10 @@ func (m *createdistributeddatabasecatalogdetails) UnmarshalPolymorphicJSON(data 
 
 	var err error
 	switch m.Source {
+	case "NEW_VAULT_AND_CLUSTER":
+		mm := CreateDistributedDatabaseCatalogWithExadbXsNewVaultAndClusterDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "EXADB_XS":
 		mm := CreateDistributedDatabaseCatalogWithExadbXsDetails{}
 		err = json.Unmarshal(data, &mm)
@@ -81,15 +85,21 @@ type CreateDistributedDatabaseCatalogDetailsSourceEnum string
 
 // Set of constants representing the allowable values for CreateDistributedDatabaseCatalogDetailsSourceEnum
 const (
-	CreateDistributedDatabaseCatalogDetailsSourceExadbXs CreateDistributedDatabaseCatalogDetailsSourceEnum = "EXADB_XS"
+	CreateDistributedDatabaseCatalogDetailsSourceExadbXs            CreateDistributedDatabaseCatalogDetailsSourceEnum = "EXADB_XS"
+	CreateDistributedDatabaseCatalogDetailsSourceNewVaultAndCluster CreateDistributedDatabaseCatalogDetailsSourceEnum = "NEW_VAULT_AND_CLUSTER"
+	CreateDistributedDatabaseCatalogDetailsSourceExistingCluster    CreateDistributedDatabaseCatalogDetailsSourceEnum = "EXISTING_CLUSTER"
 )
 
 var mappingCreateDistributedDatabaseCatalogDetailsSourceEnum = map[string]CreateDistributedDatabaseCatalogDetailsSourceEnum{
-	"EXADB_XS": CreateDistributedDatabaseCatalogDetailsSourceExadbXs,
+	"EXADB_XS":              CreateDistributedDatabaseCatalogDetailsSourceExadbXs,
+	"NEW_VAULT_AND_CLUSTER": CreateDistributedDatabaseCatalogDetailsSourceNewVaultAndCluster,
+	"EXISTING_CLUSTER":      CreateDistributedDatabaseCatalogDetailsSourceExistingCluster,
 }
 
 var mappingCreateDistributedDatabaseCatalogDetailsSourceEnumLowerCase = map[string]CreateDistributedDatabaseCatalogDetailsSourceEnum{
-	"exadb_xs": CreateDistributedDatabaseCatalogDetailsSourceExadbXs,
+	"exadb_xs":              CreateDistributedDatabaseCatalogDetailsSourceExadbXs,
+	"new_vault_and_cluster": CreateDistributedDatabaseCatalogDetailsSourceNewVaultAndCluster,
+	"existing_cluster":      CreateDistributedDatabaseCatalogDetailsSourceExistingCluster,
 }
 
 // GetCreateDistributedDatabaseCatalogDetailsSourceEnumValues Enumerates the set of values for CreateDistributedDatabaseCatalogDetailsSourceEnum
@@ -105,6 +115,8 @@ func GetCreateDistributedDatabaseCatalogDetailsSourceEnumValues() []CreateDistri
 func GetCreateDistributedDatabaseCatalogDetailsSourceEnumStringValues() []string {
 	return []string{
 		"EXADB_XS",
+		"NEW_VAULT_AND_CLUSTER",
+		"EXISTING_CLUSTER",
 	}
 }
 

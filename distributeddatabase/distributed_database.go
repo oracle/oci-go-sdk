@@ -82,6 +82,9 @@ type DistributedDatabase struct {
 	// The TLS listener port number for Globally distributed database.
 	ListenerPortTls *int `mandatory:"false" json:"listenerPortTls"`
 
+	// The TCP Single Client Access Name (SCAN) port for Globally distributed database clusters.
+	ScanListenerPort *int `mandatory:"false" json:"scanListenerPort"`
+
 	// The Replication method for Globally distributed database. Use RAFT for Raft replication, and DG for
 	// DataGuard. If replicationMethod is not provided, it defaults to DG.
 	ReplicationMethod DistributedDatabaseReplicationMethodEnum `mandatory:"false" json:"replicationMethod,omitempty"`
@@ -157,6 +160,7 @@ func (m *DistributedDatabase) UnmarshalJSON(data []byte) (e error) {
 		LatestGsmImageDetails *DistributedDbGsmImage                   `json:"latestGsmImageDetails"`
 		Chunks                *int                                     `json:"chunks"`
 		ListenerPortTls       *int                                     `json:"listenerPortTls"`
+		ScanListenerPort      *int                                     `json:"scanListenerPort"`
 		ReplicationMethod     DistributedDatabaseReplicationMethodEnum `json:"replicationMethod"`
 		ReplicationFactor     *int                                     `json:"replicationFactor"`
 		ReplicationUnit       *int                                     `json:"replicationUnit"`
@@ -200,6 +204,8 @@ func (m *DistributedDatabase) UnmarshalJSON(data []byte) (e error) {
 	m.Chunks = model.Chunks
 
 	m.ListenerPortTls = model.ListenerPortTls
+
+	m.ScanListenerPort = model.ScanListenerPort
 
 	m.ReplicationMethod = model.ReplicationMethod
 

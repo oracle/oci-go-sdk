@@ -474,6 +474,8 @@ func (client DistributedDbServiceClient) createDistributedDatabase(ctx context.C
 }
 
 // DeleteDistributedDatabase Terminate the given Globally distributed databases.
+// For an EXADB_XS based distributed database, if the parameter mustDeleteInfra is set to true,
+// then the VmCluster and DbStorageVault associated with each shard and catalog will also be deleted.
 //
 // # See also
 //
@@ -786,6 +788,65 @@ func (client DistributedDbServiceClient) getDistributedDatabase(ctx context.Cont
 	return response, err
 }
 
+// GetDistributedDatabaseRaftMetric Operation to retrieve RAFT metrics for the Globally distributed database. If the Globally distributed database is not
+// RAFT based then empty response is returned from the API.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/GetDistributedDatabaseRaftMetric.go.html to see an example of how to use GetDistributedDatabaseRaftMetric API.
+// A default retry strategy applies to this operation GetDistributedDatabaseRaftMetric()
+func (client DistributedDbServiceClient) GetDistributedDatabaseRaftMetric(ctx context.Context, request GetDistributedDatabaseRaftMetricRequest) (response GetDistributedDatabaseRaftMetricResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getDistributedDatabaseRaftMetric, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetDistributedDatabaseRaftMetricResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetDistributedDatabaseRaftMetricResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetDistributedDatabaseRaftMetricResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetDistributedDatabaseRaftMetricResponse")
+	}
+	return
+}
+
+// getDistributedDatabaseRaftMetric implements the OCIOperation interface (enables retrying operations)
+func (client DistributedDbServiceClient) getDistributedDatabaseRaftMetric(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/distributedDatabases/{distributedDatabaseId}/raftMetrics", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetDistributedDatabaseRaftMetricResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedDatabase/GetDistributedDatabaseRaftMetric"
+		err = common.PostProcessServiceError(err, "DistributedDbService", "GetDistributedDatabaseRaftMetric", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // ListDistributedDatabases List of Globally distributed databases.
 //
 // # See also
@@ -844,9 +905,74 @@ func (client DistributedDbServiceClient) listDistributedDatabases(ctx context.Co
 	return response, err
 }
 
+// MoveDistributedDatabaseReplicationUnit Move the replication units for RAFT based globally distributed database from source shard to destination shard.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/MoveDistributedDatabaseReplicationUnit.go.html to see an example of how to use MoveDistributedDatabaseReplicationUnit API.
+// A default retry strategy applies to this operation MoveDistributedDatabaseReplicationUnit()
+func (client DistributedDbServiceClient) MoveDistributedDatabaseReplicationUnit(ctx context.Context, request MoveDistributedDatabaseReplicationUnitRequest) (response MoveDistributedDatabaseReplicationUnitResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.moveDistributedDatabaseReplicationUnit, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = MoveDistributedDatabaseReplicationUnitResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = MoveDistributedDatabaseReplicationUnitResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(MoveDistributedDatabaseReplicationUnitResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into MoveDistributedDatabaseReplicationUnitResponse")
+	}
+	return
+}
+
+// moveDistributedDatabaseReplicationUnit implements the OCIOperation interface (enables retrying operations)
+func (client DistributedDbServiceClient) moveDistributedDatabaseReplicationUnit(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/distributedDatabases/{distributedDatabaseId}/actions/moveReplicationUnit", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response MoveDistributedDatabaseReplicationUnitResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedDatabase/MoveDistributedDatabaseReplicationUnit"
+		err = common.PostProcessServiceError(err, "DistributedDbService", "MoveDistributedDatabaseReplicationUnit", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // PatchDistributedDatabase Patch operation to add, remove or update shards to the Globally distributed database topology. In single patch
 // operation, multiple shards can be either added, or removed or updated. Combination of inserts, update
 // and remove in single operation is not allowed.
+// For an EXADB_XS based distributed database, removing a shard with the parameter mustDeleteInfra set to true
+// will also delete the associated VmCluster and DbStorageVault.
 //
 // # See also
 //
@@ -902,6 +1028,69 @@ func (client DistributedDbServiceClient) patchDistributedDatabase(ctx context.Co
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedDatabase/PatchDistributedDatabase"
 		err = common.PostProcessServiceError(err, "DistributedDbService", "PatchDistributedDatabase", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// RecreateFailedDistributedDatabaseResource Recreate the failed resource for the Globally Distributed Database.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/RecreateFailedDistributedDatabaseResource.go.html to see an example of how to use RecreateFailedDistributedDatabaseResource API.
+// A default retry strategy applies to this operation RecreateFailedDistributedDatabaseResource()
+func (client DistributedDbServiceClient) RecreateFailedDistributedDatabaseResource(ctx context.Context, request RecreateFailedDistributedDatabaseResourceRequest) (response RecreateFailedDistributedDatabaseResourceResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.recreateFailedDistributedDatabaseResource, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = RecreateFailedDistributedDatabaseResourceResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = RecreateFailedDistributedDatabaseResourceResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(RecreateFailedDistributedDatabaseResourceResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into RecreateFailedDistributedDatabaseResourceResponse")
+	}
+	return
+}
+
+// recreateFailedDistributedDatabaseResource implements the OCIOperation interface (enables retrying operations)
+func (client DistributedDbServiceClient) recreateFailedDistributedDatabaseResource(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/distributedDatabases/{distributedDatabaseId}/actions/recreateFailedResource", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response RecreateFailedDistributedDatabaseResourceResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedDatabase/RecreateFailedDistributedDatabaseResource"
+		err = common.PostProcessServiceError(err, "DistributedDbService", "RecreateFailedDistributedDatabaseResource", apiReferenceLink)
 		return response, err
 	}
 

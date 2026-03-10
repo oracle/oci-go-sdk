@@ -21,9 +21,6 @@ type GenerateDistributedAutonomousDatabaseGsmCertificateSigningRequestRequest st
 	// Globally distributed autonomous database identifier
 	DistributedAutonomousDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedAutonomousDatabaseId"`
 
-	// The ID of the Ca Bundle.
-	CaBundleId *string `mandatory:"true" contributesTo:"query" name:"caBundleId"`
-
 	// The client request ID for tracing.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
@@ -40,6 +37,9 @@ type GenerateDistributedAutonomousDatabaseGsmCertificateSigningRequestRequest st
 	// has been deleted and purged from the system, then a retry of the original creation request
 	// might be rejected.
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
+
+	// The ID of the Ca Bundle.
+	CaBundleId *string `mandatory:"false" contributesTo:"query" name:"caBundleId"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.

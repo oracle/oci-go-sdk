@@ -1,0 +1,103 @@
+// Copyright (c) 2016, 2018, 2026, Oracle and/or its affiliates.  All rights reserved.
+// This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
+// Code generated. DO NOT EDIT.
+
+package limitsincrease
+
+import (
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v65/common"
+	"net/http"
+	"strings"
+)
+
+// CancelLimitsIncreaseRequestRequest wrapper for the CancelLimitsIncreaseRequest operation
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/limitsincrease/CancelLimitsIncreaseRequest.go.html to see an example of how to use CancelLimitsIncreaseRequestRequest.
+type CancelLimitsIncreaseRequestRequest struct {
+
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the limit increase request.
+	LimitsIncreaseRequestId *string `mandatory:"true" contributesTo:"path" name:"limitsIncreaseRequestId"`
+
+	// Override request id for request tracking purposes.
+	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
+
+	// This value (etag) should be passed when you want to ensure that no-one else has changed the value while you're making
+	// an update. To get the current etag, make a GET call and read the current etag header.
+	// If GET returns 404, and you still want to ensure that noone else has executed a SET operation, pass the following
+	// header instead: `if-none-match: *`
+	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
+
+	// Idempotency token to make sure that a second create operation won't fail if the first one succeeded.
+	// This can be any random string.
+	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
+}
+
+func (request CancelLimitsIncreaseRequestRequest) String() string {
+	return common.PointerString(request)
+}
+
+// HTTPRequest implements the OCIRequest interface
+func (request CancelLimitsIncreaseRequestRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
+
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
+	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
+}
+
+// BinaryRequestBody implements the OCIRequest interface
+func (request CancelLimitsIncreaseRequestRequest) BinaryRequestBody() (*common.OCIReadSeekCloser, bool) {
+
+	return nil, false
+
+}
+
+// RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
+func (request CancelLimitsIncreaseRequestRequest) RetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request CancelLimitsIncreaseRequestRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
+// CancelLimitsIncreaseRequestResponse wrapper for the CancelLimitsIncreaseRequest operation
+type CancelLimitsIncreaseRequestResponse struct {
+
+	// The underlying http response
+	RawResponse *http.Response
+
+	// The LimitsIncreaseRequest instance
+	LimitsIncreaseRequest `presentIn:"body"`
+
+	// For optimistic concurrency control. See `if-match`.
+	Etag *string `presentIn:"header" name:"etag"`
+
+	// Unique Oracle-assigned identifier for the request. If you need to contact
+	// Oracle about a particular request, please provide the request ID.
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
+}
+
+func (response CancelLimitsIncreaseRequestResponse) String() string {
+	return common.PointerString(response)
+}
+
+// HTTPResponse implements the OCIResponse interface
+func (response CancelLimitsIncreaseRequestResponse) HTTPResponse() *http.Response {
+	return response.RawResponse
+}

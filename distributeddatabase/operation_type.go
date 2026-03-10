@@ -52,6 +52,10 @@ const (
 	OperationTypeChangeDistributedDbBackupConfig                OperationTypeEnum = "CHANGE_DISTRIBUTED_DB_BACKUP_CONFIG"
 	OperationTypeAddDistributedDbDg                             OperationTypeEnum = "ADD_DISTRIBUTED_DB_DG"
 	OperationTypeRemoveDistributedDbDg                          OperationTypeEnum = "REMOVE_DISTRIBUTED_DB_DG"
+	OperationTypeConfigureDistributedDbGsmsWallet               OperationTypeEnum = "CONFIGURE_DISTRIBUTED_DB_GSMS_WALLET"
+	OperationTypeValidateCaBundle                               OperationTypeEnum = "VALIDATE_CA_BUNDLE"
+	OperationTypeRecreateFailedResource                         OperationTypeEnum = "RECREATE_FAILED_RESOURCE"
+	OperationTypeMoveReplicationUnits                           OperationTypeEnum = "MOVE_REPLICATION_UNITS"
 )
 
 var mappingOperationTypeEnum = map[string]OperationTypeEnum{
@@ -89,6 +93,10 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"CHANGE_DISTRIBUTED_DB_BACKUP_CONFIG":                   OperationTypeChangeDistributedDbBackupConfig,
 	"ADD_DISTRIBUTED_DB_DG":                                 OperationTypeAddDistributedDbDg,
 	"REMOVE_DISTRIBUTED_DB_DG":                              OperationTypeRemoveDistributedDbDg,
+	"CONFIGURE_DISTRIBUTED_DB_GSMS_WALLET":                  OperationTypeConfigureDistributedDbGsmsWallet,
+	"VALIDATE_CA_BUNDLE":                                    OperationTypeValidateCaBundle,
+	"RECREATE_FAILED_RESOURCE":                              OperationTypeRecreateFailedResource,
+	"MOVE_REPLICATION_UNITS":                                OperationTypeMoveReplicationUnits,
 }
 
 var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
@@ -126,6 +134,10 @@ var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
 	"change_distributed_db_backup_config":                   OperationTypeChangeDistributedDbBackupConfig,
 	"add_distributed_db_dg":                                 OperationTypeAddDistributedDbDg,
 	"remove_distributed_db_dg":                              OperationTypeRemoveDistributedDbDg,
+	"configure_distributed_db_gsms_wallet":                  OperationTypeConfigureDistributedDbGsmsWallet,
+	"validate_ca_bundle":                                    OperationTypeValidateCaBundle,
+	"recreate_failed_resource":                              OperationTypeRecreateFailedResource,
+	"move_replication_units":                                OperationTypeMoveReplicationUnits,
 }
 
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum
@@ -174,6 +186,10 @@ func GetOperationTypeEnumStringValues() []string {
 		"CHANGE_DISTRIBUTED_DB_BACKUP_CONFIG",
 		"ADD_DISTRIBUTED_DB_DG",
 		"REMOVE_DISTRIBUTED_DB_DG",
+		"CONFIGURE_DISTRIBUTED_DB_GSMS_WALLET",
+		"VALIDATE_CA_BUNDLE",
+		"RECREATE_FAILED_RESOURCE",
+		"MOVE_REPLICATION_UNITS",
 	}
 }
 

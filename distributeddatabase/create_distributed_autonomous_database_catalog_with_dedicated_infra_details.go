@@ -49,6 +49,12 @@ type CreateDistributedAutonomousDatabaseCatalogWithDedicatedInfraDetails struct 
 
 	// The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions.
 	KmsKeyVersionId *string `mandatory:"false" json:"kmsKeyVersionId"`
+
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the key store used to create the catalog.
+	OkvKeyStoreId *string `mandatory:"false" json:"okvKeyStoreId"`
+
+	// The OKV endpoint name.
+	OkvEndPointGroup *string `mandatory:"false" json:"okvEndPointGroup"`
 }
 
 func (m CreateDistributedAutonomousDatabaseCatalogWithDedicatedInfraDetails) String() string {

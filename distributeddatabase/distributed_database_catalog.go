@@ -69,6 +69,10 @@ func (m *distributeddatabasecatalog) UnmarshalPolymorphicJSON(data []byte) (inte
 		mm := DistributedDatabaseCatalogWithExadbXs{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
+	case "NEW_VAULT_AND_CLUSTER":
+		mm := DistributedDatabaseCatalogWithExadbXsNewVaultAndCluster{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	default:
 		common.Logf("Received unsupported enum value for DistributedDatabaseCatalog: %s.", m.Source)
 		return *m, nil
@@ -111,15 +115,21 @@ type DistributedDatabaseCatalogSourceEnum string
 
 // Set of constants representing the allowable values for DistributedDatabaseCatalogSourceEnum
 const (
-	DistributedDatabaseCatalogSourceExadbXs DistributedDatabaseCatalogSourceEnum = "EXADB_XS"
+	DistributedDatabaseCatalogSourceExadbXs            DistributedDatabaseCatalogSourceEnum = "EXADB_XS"
+	DistributedDatabaseCatalogSourceNewVaultAndCluster DistributedDatabaseCatalogSourceEnum = "NEW_VAULT_AND_CLUSTER"
+	DistributedDatabaseCatalogSourceExistingCluster    DistributedDatabaseCatalogSourceEnum = "EXISTING_CLUSTER"
 )
 
 var mappingDistributedDatabaseCatalogSourceEnum = map[string]DistributedDatabaseCatalogSourceEnum{
-	"EXADB_XS": DistributedDatabaseCatalogSourceExadbXs,
+	"EXADB_XS":              DistributedDatabaseCatalogSourceExadbXs,
+	"NEW_VAULT_AND_CLUSTER": DistributedDatabaseCatalogSourceNewVaultAndCluster,
+	"EXISTING_CLUSTER":      DistributedDatabaseCatalogSourceExistingCluster,
 }
 
 var mappingDistributedDatabaseCatalogSourceEnumLowerCase = map[string]DistributedDatabaseCatalogSourceEnum{
-	"exadb_xs": DistributedDatabaseCatalogSourceExadbXs,
+	"exadb_xs":              DistributedDatabaseCatalogSourceExadbXs,
+	"new_vault_and_cluster": DistributedDatabaseCatalogSourceNewVaultAndCluster,
+	"existing_cluster":      DistributedDatabaseCatalogSourceExistingCluster,
 }
 
 // GetDistributedDatabaseCatalogSourceEnumValues Enumerates the set of values for DistributedDatabaseCatalogSourceEnum
@@ -135,6 +145,8 @@ func GetDistributedDatabaseCatalogSourceEnumValues() []DistributedDatabaseCatalo
 func GetDistributedDatabaseCatalogSourceEnumStringValues() []string {
 	return []string{
 		"EXADB_XS",
+		"NEW_VAULT_AND_CLUSTER",
+		"EXISTING_CLUSTER",
 	}
 }
 

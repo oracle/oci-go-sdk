@@ -27,7 +27,7 @@ type ValidateDistributedAutonomousDatabaseNetworkRequest struct {
 	// Specify the name of shard or catalog.
 	ResourceName *string `mandatory:"false" contributesTo:"query" name:"resourceName"`
 
-	// The shardGroup name example ShardGroupA, ShardGroupB.
+	// The shardGroup name example Shardgroupa, Shardgroupb.
 	ShardGroup *string `mandatory:"false" contributesTo:"query" name:"shardGroup"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call

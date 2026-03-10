@@ -27,7 +27,7 @@ type CreateCatalogPeerWithDedicatedInfraDetails struct {
 	// The lag time preference based on data loss tolerance in seconds.
 	FastStartFailOverLagLimitInSeconds *int `mandatory:"false" json:"fastStartFailOverLagLimitInSeconds"`
 
-	// Indicates whether Automatic Failover is enabled for Autonomous Container Database Dataguard Association
+	// This field is deprecated. Support for this field will be removed after one year of deprecation cycle.
 	IsAutomaticFailoverEnabled *bool `mandatory:"false" json:"isAutomaticFailoverEnabled"`
 
 	// The scheduling detail for the quarterly maintenance window of the standby Autonomous Container Database.
