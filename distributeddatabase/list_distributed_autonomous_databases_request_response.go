@@ -21,6 +21,9 @@ type ListDistributedAutonomousDatabasesRequest struct {
 	// The ID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
+	// A filter to return only resources that are associated with the given privateEndpointId.
+	PrivateEndpointId *string `mandatory:"false" contributesTo:"query" name:"privateEndpointId"`
+
 	// A filter to return only resources their lifecycleState matches the given lifecycleState.
 	LifecycleState DistributedAutonomousDatabaseLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 

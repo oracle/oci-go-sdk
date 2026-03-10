@@ -80,6 +80,12 @@ type CreateDistributedDatabaseDetails struct {
 	// tls is not supported hence the listenerPortTls is not needed to be provided in create payload.
 	ListenerPortTls *int `mandatory:"false" json:"listenerPortTls"`
 
+	// The TCP Single Client Access Name (SCAN) port for clusters created for Globally distributed database.
+	// The scanListenerPort number should only be provided if shard and catalog have source type NEW_VAULT_AND_CLUSTER.
+	// If shard and catalog have source type NEW_VAULT_AND_CLUSTER and scanListenerPort is not provided then the
+	// scanListenerPort will default to value 1521.
+	ScanListenerPort *int `mandatory:"false" json:"scanListenerPort"`
+
 	// The Replication method for Globally distributed database. Use RAFT for Raft based replication.
 	// With RAFT replication, shards cannot have peers details set on them. In case shards need to
 	// have peers, please do not set RAFT replicationMethod. For all non RAFT replication cases (with or
@@ -137,6 +143,7 @@ func (m *CreateDistributedDatabaseDetails) UnmarshalJSON(data []byte) (e error) 
 	model := struct {
 		Chunks             *int                                                  `json:"chunks"`
 		ListenerPortTls    *int                                                  `json:"listenerPortTls"`
+		ScanListenerPort   *int                                                  `json:"scanListenerPort"`
 		ReplicationMethod  CreateDistributedDatabaseDetailsReplicationMethodEnum `json:"replicationMethod"`
 		ReplicationFactor  *int                                                  `json:"replicationFactor"`
 		ReplicationUnit    *int                                                  `json:"replicationUnit"`
@@ -168,6 +175,8 @@ func (m *CreateDistributedDatabaseDetails) UnmarshalJSON(data []byte) (e error) 
 	m.Chunks = model.Chunks
 
 	m.ListenerPortTls = model.ListenerPortTls
+
+	m.ScanListenerPort = model.ScanListenerPort
 
 	m.ReplicationMethod = model.ReplicationMethod
 

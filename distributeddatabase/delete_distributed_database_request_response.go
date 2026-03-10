@@ -21,6 +21,9 @@ type DeleteDistributedDatabaseRequest struct {
 	// Globally distributed database identifier
 	DistributedDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedDatabaseId"`
 
+	// The flag to indicate if infra like VmCluster & DbStorageVault associated with the resource should be deleted.
+	MustDeleteInfra *bool `mandatory:"false" contributesTo:"query" name:"mustDeleteInfra"`
+
 	// The client request ID for tracing.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 

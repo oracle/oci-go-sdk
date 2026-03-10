@@ -25,6 +25,12 @@ type ConfigureDistributedAutonomousDatabaseShardingRequest struct {
 	// sharding type.
 	IsRebalanceRequired *bool `mandatory:"false" contributesTo:"query" name:"isRebalanceRequired"`
 
+	// The ID of the cluster certificate.
+	CertificateId *string `mandatory:"false" contributesTo:"query" name:"certificateId"`
+
+	// The ID of the Ca Bundle.
+	CaBundleId *string `mandatory:"false" contributesTo:"query" name:"caBundleId"`
+
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24
 	// hours, but can be invalidated before then due to conflicting operations. For example, if a resource

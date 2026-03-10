@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.109.1 - 2026-03-10
+### Added 
+- Support for the Guarded Data Pipelines (GDP) service 
+- Support for the Limits Increase service 
+- Support for VMware Bring-Your-Own-License with VCF5.2 in the Oracle Cloud VMware Provisioning service 
+- Support for Identity Verification in the Identity Domains service 
+- Support for OKV-based keys, moving replication units and recreating failed resources based on Exascale and Autonomous infrastructure in the Globally Distributed Database service 
+- Support for setting the last IP drain period for email IP pools in the Email Delivery service. 
+- Support for additional filters when listing work requests in the Email Delivery service 
+- Support for the VCNIP IP Lifetime feature in the Compute service
+
 ## 65.109.0 - 2026-03-03
 ### Added  
 - Support for the User Managed Maintenance Window Feature in the Lustre File service 

@@ -51,10 +51,10 @@ type DistributedDatabasePrivateEndpoint struct {
 	// The OCIDs of the network security groups that the private endpoint belongs to.
 	NsgIds []string `mandatory:"false" json:"nsgIds"`
 
-	// The details of the non-deleted Globally distributed databases that consumes the given private endpoint.
+	// This field is deprecated. Support for this field will be removed after Mon, 1 Mar 2027 00:00:00 GMT.
 	GloballyDistributedDatabases []DistributedDatabaseAssociatedWithPrivateEndpoint `mandatory:"false" json:"globallyDistributedDatabases"`
 
-	// The details of the non-deleted Globally distributed autonomous databases that consumes the given private endpoint.
+	// This field is deprecated. Support for this field will be removed after Mon, 1 Mar 2027 00:00:00 GMT.
 	GloballyDistributedAutonomousDatabases []DistributedAutonomousDatabaseAssociatedWithPrivateEndpoint `mandatory:"false" json:"globallyDistributedAutonomousDatabases"`
 
 	// Detailed message for the lifecycle state.
