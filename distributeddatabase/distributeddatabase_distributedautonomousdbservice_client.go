@@ -280,6 +280,69 @@ func (client DistributedAutonomousDbServiceClient) changeDistributedAutonomousDb
 	return response, err
 }
 
+// ConfigureDistributedAutonomousDatabaseGsmWallet Configure wallets on Global Service Manager(GSM) instances for a Globally distributed autonomous database.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/ConfigureDistributedAutonomousDatabaseGsmWallet.go.html to see an example of how to use ConfigureDistributedAutonomousDatabaseGsmWallet API.
+// A default retry strategy applies to this operation ConfigureDistributedAutonomousDatabaseGsmWallet()
+func (client DistributedAutonomousDbServiceClient) ConfigureDistributedAutonomousDatabaseGsmWallet(ctx context.Context, request ConfigureDistributedAutonomousDatabaseGsmWalletRequest) (response ConfigureDistributedAutonomousDatabaseGsmWalletResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.configureDistributedAutonomousDatabaseGsmWallet, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ConfigureDistributedAutonomousDatabaseGsmWalletResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ConfigureDistributedAutonomousDatabaseGsmWalletResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ConfigureDistributedAutonomousDatabaseGsmWalletResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ConfigureDistributedAutonomousDatabaseGsmWalletResponse")
+	}
+	return
+}
+
+// configureDistributedAutonomousDatabaseGsmWallet implements the OCIOperation interface (enables retrying operations)
+func (client DistributedAutonomousDbServiceClient) configureDistributedAutonomousDatabaseGsmWallet(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/distributedAutonomousDatabases/{distributedAutonomousDatabaseId}/actions/configureGsmWallet", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ConfigureDistributedAutonomousDatabaseGsmWalletResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedAutonomousDatabase/ConfigureDistributedAutonomousDatabaseGsmWallet"
+		err = common.PostProcessServiceError(err, "DistributedAutonomousDbService", "ConfigureDistributedAutonomousDatabaseGsmWallet", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // ConfigureDistributedAutonomousDatabaseGsms Configure new Global Service Manager(GSM aka shard manager) instances for the Globally distributed autonomous database.
 //
 // # See also
@@ -343,7 +406,7 @@ func (client DistributedAutonomousDbServiceClient) configureDistributedAutonomou
 	return response, err
 }
 
-// ConfigureDistributedAutonomousDatabaseSharding Once all components of Globally distributed autonomous database are provisioned, and signed GSM certificates are successfully uploaded, this
+// ConfigureDistributedAutonomousDatabaseSharding Once all components of Globally distributed autonomous database are provisioned, this
 // api shall be invoked to configure sharding on the Globally distributed autonomous database. Note that this 'ConfigureSharding' API also needs to be
 // invoked after successfully adding a new shard to the Globally distributed autonomous database using PATCH api. If this API is not
 // invoked after successfully adding a new shard, then that new shard will not be a participant in sharding topology of
@@ -786,6 +849,65 @@ func (client DistributedAutonomousDbServiceClient) getDistributedAutonomousDatab
 	return response, err
 }
 
+// GetDistributedAutonomousDatabaseRaftMetric Operation to retrieve RAFT metrics for the Globally distributed autonomous database. If the Globally distributed
+// autonomous database is not RAFT based then empty response is returned from the API.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/GetDistributedAutonomousDatabaseRaftMetric.go.html to see an example of how to use GetDistributedAutonomousDatabaseRaftMetric API.
+// A default retry strategy applies to this operation GetDistributedAutonomousDatabaseRaftMetric()
+func (client DistributedAutonomousDbServiceClient) GetDistributedAutonomousDatabaseRaftMetric(ctx context.Context, request GetDistributedAutonomousDatabaseRaftMetricRequest) (response GetDistributedAutonomousDatabaseRaftMetricResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getDistributedAutonomousDatabaseRaftMetric, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetDistributedAutonomousDatabaseRaftMetricResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetDistributedAutonomousDatabaseRaftMetricResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetDistributedAutonomousDatabaseRaftMetricResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetDistributedAutonomousDatabaseRaftMetricResponse")
+	}
+	return
+}
+
+// getDistributedAutonomousDatabaseRaftMetric implements the OCIOperation interface (enables retrying operations)
+func (client DistributedAutonomousDbServiceClient) getDistributedAutonomousDatabaseRaftMetric(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/distributedAutonomousDatabases/{distributedAutonomousDatabaseId}/raftMetrics", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetDistributedAutonomousDatabaseRaftMetricResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedDatabase/GetDistributedAutonomousDatabaseRaftMetric"
+		err = common.PostProcessServiceError(err, "DistributedAutonomousDbService", "GetDistributedAutonomousDatabaseRaftMetric", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // ListDistributedAutonomousDatabases List of Globally distributed autonomous databases.
 //
 // # See also
@@ -837,6 +959,69 @@ func (client DistributedAutonomousDbServiceClient) listDistributedAutonomousData
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedAutonomousDatabaseCollection/ListDistributedAutonomousDatabases"
 		err = common.PostProcessServiceError(err, "DistributedAutonomousDbService", "ListDistributedAutonomousDatabases", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// MoveDistributedAutonomousDatabaseReplicationUnit Move the replication units for RAFT based globally distributed autonomous database from source shard to destination shard.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/MoveDistributedAutonomousDatabaseReplicationUnit.go.html to see an example of how to use MoveDistributedAutonomousDatabaseReplicationUnit API.
+// A default retry strategy applies to this operation MoveDistributedAutonomousDatabaseReplicationUnit()
+func (client DistributedAutonomousDbServiceClient) MoveDistributedAutonomousDatabaseReplicationUnit(ctx context.Context, request MoveDistributedAutonomousDatabaseReplicationUnitRequest) (response MoveDistributedAutonomousDatabaseReplicationUnitResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.moveDistributedAutonomousDatabaseReplicationUnit, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = MoveDistributedAutonomousDatabaseReplicationUnitResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = MoveDistributedAutonomousDatabaseReplicationUnitResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(MoveDistributedAutonomousDatabaseReplicationUnitResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into MoveDistributedAutonomousDatabaseReplicationUnitResponse")
+	}
+	return
+}
+
+// moveDistributedAutonomousDatabaseReplicationUnit implements the OCIOperation interface (enables retrying operations)
+func (client DistributedAutonomousDbServiceClient) moveDistributedAutonomousDatabaseReplicationUnit(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/distributedAutonomousDatabases/{distributedAutonomousDatabaseId}/actions/moveReplicationUnit", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response MoveDistributedAutonomousDatabaseReplicationUnitResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedAutonomousDatabase/MoveDistributedAutonomousDatabaseReplicationUnit"
+		err = common.PostProcessServiceError(err, "DistributedAutonomousDbService", "MoveDistributedAutonomousDatabaseReplicationUnit", apiReferenceLink)
 		return response, err
 	}
 
@@ -902,6 +1087,69 @@ func (client DistributedAutonomousDbServiceClient) patchDistributedAutonomousDat
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedAutonomousDatabase/PatchDistributedAutonomousDatabase"
 		err = common.PostProcessServiceError(err, "DistributedAutonomousDbService", "PatchDistributedAutonomousDatabase", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// RecreateFailedDistributedAutonomousDatabaseResource Recreate the failed resource for the Globally Distributed Autonomous Database.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/RecreateFailedDistributedAutonomousDatabaseResource.go.html to see an example of how to use RecreateFailedDistributedAutonomousDatabaseResource API.
+// A default retry strategy applies to this operation RecreateFailedDistributedAutonomousDatabaseResource()
+func (client DistributedAutonomousDbServiceClient) RecreateFailedDistributedAutonomousDatabaseResource(ctx context.Context, request RecreateFailedDistributedAutonomousDatabaseResourceRequest) (response RecreateFailedDistributedAutonomousDatabaseResourceResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.recreateFailedDistributedAutonomousDatabaseResource, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = RecreateFailedDistributedAutonomousDatabaseResourceResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = RecreateFailedDistributedAutonomousDatabaseResourceResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(RecreateFailedDistributedAutonomousDatabaseResourceResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into RecreateFailedDistributedAutonomousDatabaseResourceResponse")
+	}
+	return
+}
+
+// recreateFailedDistributedAutonomousDatabaseResource implements the OCIOperation interface (enables retrying operations)
+func (client DistributedAutonomousDbServiceClient) recreateFailedDistributedAutonomousDatabaseResource(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/distributedAutonomousDatabases/{distributedAutonomousDatabaseId}/actions/recreateFailedResource", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response RecreateFailedDistributedAutonomousDatabaseResourceResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedAutonomousDatabase/RecreateFailedDistributedAutonomousDatabaseResource"
+		err = common.PostProcessServiceError(err, "DistributedAutonomousDbService", "RecreateFailedDistributedAutonomousDatabaseResource", apiReferenceLink)
 		return response, err
 	}
 
@@ -1214,6 +1462,69 @@ func (client DistributedAutonomousDbServiceClient) uploadDistributedAutonomousDa
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedAutonomousDatabase/UploadDistributedAutonomousDatabaseSignedCertificateAndGenerateWallet"
 		err = common.PostProcessServiceError(err, "DistributedAutonomousDbService", "UploadDistributedAutonomousDatabaseSignedCertificateAndGenerateWallet", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ValidateDistributedAutonomousDatabaseCaBundle Validate the CA Bundles consistency of the globally distributed autonomous database.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/ValidateDistributedAutonomousDatabaseCaBundle.go.html to see an example of how to use ValidateDistributedAutonomousDatabaseCaBundle API.
+// A default retry strategy applies to this operation ValidateDistributedAutonomousDatabaseCaBundle()
+func (client DistributedAutonomousDbServiceClient) ValidateDistributedAutonomousDatabaseCaBundle(ctx context.Context, request ValidateDistributedAutonomousDatabaseCaBundleRequest) (response ValidateDistributedAutonomousDatabaseCaBundleResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.validateDistributedAutonomousDatabaseCaBundle, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ValidateDistributedAutonomousDatabaseCaBundleResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ValidateDistributedAutonomousDatabaseCaBundleResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ValidateDistributedAutonomousDatabaseCaBundleResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ValidateDistributedAutonomousDatabaseCaBundleResponse")
+	}
+	return
+}
+
+// validateDistributedAutonomousDatabaseCaBundle implements the OCIOperation interface (enables retrying operations)
+func (client DistributedAutonomousDbServiceClient) validateDistributedAutonomousDatabaseCaBundle(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/distributedAutonomousDatabases/{distributedAutonomousDatabaseId}/actions/validateCaBundle", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ValidateDistributedAutonomousDatabaseCaBundleResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedAutonomousDatabase/ValidateDistributedAutonomousDatabaseCaBundle"
+		err = common.PostProcessServiceError(err, "DistributedAutonomousDbService", "ValidateDistributedAutonomousDatabaseCaBundle", apiReferenceLink)
 		return response, err
 	}
 

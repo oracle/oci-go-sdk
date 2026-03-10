@@ -68,6 +68,12 @@ type DistributedAutonomousDatabaseShardWithDedicatedInfra struct {
 	// Peer details for the shard with dedicated infrastructure.
 	PeerDetails []ShardPeerWithDedicatedInfra `mandatory:"false" json:"peerDetails"`
 
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the key store used to create the shard.
+	OkvKeyStoreId *string `mandatory:"false" json:"okvKeyStoreId"`
+
+	// The OKV endpoint name.
+	OkvEndPointGroup *string `mandatory:"false" json:"okvEndPointGroup"`
+
 	Metadata *DistributedAutonomousDbMetadata `mandatory:"false" json:"metadata"`
 
 	// Status of shard with dedicated infrastructure for the Globally distributed autonomous database.
