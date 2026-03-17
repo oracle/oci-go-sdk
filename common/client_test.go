@@ -14,6 +14,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"strconv"
 	"testing"
 
 	"time"
@@ -784,4 +785,101 @@ func TestSeek(t *testing.T) {
 	curPos, e = ocirsc.Seek(offset, io.SeekStart)
 	assert.Nil(t, e)
 	assert.Equal(t, curPos, offset)
+}
+
+type dummySigner struct{}
+
+func (d dummySigner) Sign(req *http.Request) error { return nil }
+
+// TestRefreshableTokenWrappedCallWithDetails_SeekableBodies verifies that on retry the request body is rewound (via seek) and that ContentLength remains correct across retries
+func TestRefreshableTokenWrappedCallWithDetails_SeekableBodies(t *testing.T) {
+	signer := dummySigner{}
+	client := BaseClient{Signer: signer, UserAgent: "ua", Host: "http://somehost:9000"}
+
+	payload := []byte(`{"foo":"bar"}`)
+	expectedLen := int64(len(payload))
+
+	callCount := 0
+	var capturedBodies []string
+	var capturedLengths []int64
+	var capturedHdrCL []string
+
+	client.HTTPClient = fakeCaller{
+		Customcall: func(r *http.Request) (*http.Response, error) {
+			callCount++
+			b, _ := io.ReadAll(r.Body)
+
+			capturedBodies = append(capturedBodies, string(b))
+			capturedLengths = append(capturedLengths, r.ContentLength)
+			capturedHdrCL = append(capturedHdrCL, r.Header.Get(requestHeaderContentLength))
+
+			resp := &http.Response{StatusCode: http.StatusUnauthorized, Body: http.NoBody, Request: r}
+			if callCount == 3 {
+				resp.StatusCode = http.StatusOK
+			}
+			return resp, nil
+		},
+	}
+
+	req, err := http.NewRequest("POST", "http://example.com", bytes.NewReader(payload)) // seekable
+	assert.NoError(t, err)
+
+	resp, err := client.RefreshableTokenWrappedCallWithDetails(context.Background(), req, ClientCallDetails{Signer: signer})
+	assert.NoError(t, err)
+	if assert.NotNil(t, resp) {
+		assert.Equal(t, http.StatusOK, resp.StatusCode)
+	}
+	assert.Equal(t, 3, callCount)
+
+	// All attempts should have received the same body content
+	assert.Equal(t, string(payload), capturedBodies[0])
+	assert.Equal(t, string(payload), capturedBodies[1])
+	assert.Equal(t, string(payload), capturedBodies[2])
+
+	// ContentLength should be correctly set for each attempt
+	assert.Equal(t, expectedLen, capturedLengths[0])
+	assert.Equal(t, expectedLen, capturedLengths[1])
+	assert.Equal(t, expectedLen, capturedLengths[2])
+	assert.Equal(t, strconv.FormatInt(expectedLen, 10), capturedHdrCL[1])
+	assert.Equal(t, strconv.FormatInt(expectedLen, 10), capturedHdrCL[2])
+}
+
+// TestRefreshableTokenWrappedCallWithDetails_NonSeekableBodies verifies that retries fail when the request body cannot be rewound (is not seekable)
+func TestRefreshableTokenWrappedCallWithDetails_NonSeekableBodies(t *testing.T) {
+	signer := dummySigner{}
+	client := BaseClient{Signer: signer, UserAgent: "ua", Host: "http://somehost:9000"}
+
+	// bytes.Buffer is non-seekable
+	body := bytes.NewBufferString("non-seekable")
+	req := &http.Request{
+		Method:        "POST",
+		URL:           &url.URL{Path: "/somepath"},
+		Body:          io.NopCloser(body),
+		ContentLength: int64(body.Len()),
+		Header:        http.Header{},
+	}
+	req.Header.Set(requestHeaderContentLength, strconv.Itoa(body.Len()))
+
+	callCount := 0
+	client.HTTPClient = fakeCaller{
+		Customcall: func(r *http.Request) (*http.Response, error) {
+			callCount++
+			return &http.Response{StatusCode: http.StatusUnauthorized, Body: http.NoBody, Request: r}, nil
+		},
+	}
+
+	resp, err := client.RefreshableTokenWrappedCallWithDetails(context.Background(), req, ClientCallDetails{Signer: signer})
+
+	assert.Error(t, err)
+	_, ok := err.(NonSeekableRequestRetryFailure)
+	assert.True(t, ok, "expected NonSeekableRequestRetryFailure")
+
+	// One HTTP call is made, then the wrapper realizes it can't rewind and exits before attempt #2
+	assert.Equal(t, 1, callCount)
+
+	// Returns the last response seen (the 401 from the first attempt)
+	assert.NotNil(t, resp)
+	if resp != nil {
+		assert.Equal(t, http.StatusUnauthorized, resp.StatusCode)
+	}
 }
