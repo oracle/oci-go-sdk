@@ -195,6 +195,7 @@ func buildResponsesNoRetry(endOfWindowTime *time.Time, backoffScalingFactor floa
 func buildResponsesWantRetry(endOfWindowTime *time.Time, backoffScalingFactor float64) []OCIOperationResponse {
 	responses := []OCIOperationResponse{
 		getMockedOCIOperationResponseWithErrorFull(409, "IncorrectState", endOfWindowTime, backoffScalingFactor),
+		getMockedOCIOperationResponseWithErrorFull(409, "LockConflict", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(429, "TooManyRequests", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(500, "InternalServerError", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(500, "OutOfCapacity", endOfWindowTime, backoffScalingFactor),
@@ -234,6 +235,7 @@ func buildEcResponsesWantRetry(endOfWindowTime *time.Time, backoffScalingFactor 
 		getMockedOCIOperationResponseWithErrorFull(400, "RelatedResourceNotAuthorizedOrNotFound", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(404, "NotAuthorizedOrNotFound", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(409, "IncorrectState", endOfWindowTime, backoffScalingFactor),
+		getMockedOCIOperationResponseWithErrorFull(409, "LockConflict", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(409, "NotAuthorizedOrResourceAlreadyExists", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(429, "TooManyRequests", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(500, "InternalServerError", endOfWindowTime, backoffScalingFactor),
