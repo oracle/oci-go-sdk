@@ -327,6 +327,7 @@ The following errors should be retried (with backoff).
 HTTP Code       Customer-facing Error Code
 
  409	 		IncorrectState
+ 409			LockConflict
  429			Any Response Body
  500			Any Response Body
  502			Any Response Body
@@ -453,6 +454,7 @@ Default Circuit Breaker Configuration
 HTTP Code       Customer-facing Error Code
 
  409	 		IncorrectState
+ 409 			LockConflict
  429			Any Response Body
  500			Any Response Body
  502			Any Response Body

@@ -75,6 +75,13 @@ func TestCircuitBreaker_IsSuccessful(t *testing.T) {
 		{
 			err: servicefailure{
 				StatusCode: 409,
+				Code:       "LockConflict",
+			},
+			expected: false,
+		},
+		{
+			err: servicefailure{
+				StatusCode: 409,
 				Code:       "otherErrorCode",
 			},
 			expected: true,
@@ -90,6 +97,7 @@ func TestCircuitBreaker_IsSuccessful(t *testing.T) {
 	st := gobreaker.Settings{}
 	successStatErrCodeMap := map[StatErrCode]bool{
 		{409, "IncorrectState"}: false,
+		{409, "LockConflict"}: false,
 	}
 	successStatCodeMap := map[int]bool{
 		429: false,
@@ -149,6 +157,12 @@ func TestCircuitBreaker_CustomizeGoBreakerSetting(t *testing.T) {
 			err: servicefailure{
 				StatusCode: 409,
 				Code:       "IncorrectState"},
+			expected: false,
+		},
+		{
+			err: servicefailure{
+				StatusCode: 409,
+				Code:       "LockConflict"},
 			expected: false,
 		},
 		{
@@ -223,6 +237,12 @@ func TestAuthClient_CircuitBreaker_ReadyToTrip(t *testing.T) {
 			err: servicefailure{
 				StatusCode: 409,
 				Code:       "IncorrectState"},
+			expected: false,
+		},
+		{
+			err: servicefailure{
+				StatusCode: 409,
+				Code:       "LockConflict"},
 			expected: false,
 		},
 		{
