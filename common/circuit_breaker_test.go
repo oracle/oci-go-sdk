@@ -97,7 +97,7 @@ func TestCircuitBreaker_IsSuccessful(t *testing.T) {
 	st := gobreaker.Settings{}
 	successStatErrCodeMap := map[StatErrCode]bool{
 		{409, "IncorrectState"}: false,
-		{409, "LockConflict"}: false,
+		{409, "LockConflict"}:   false,
 	}
 	successStatCodeMap := map[int]bool{
 		429: false,

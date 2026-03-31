@@ -2,7 +2,7 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Generative AI Service Nl2sql API
+// Generative AI Service NL2SQL API
 //
 // A description of the ReferenceService API. in progress
 //
@@ -134,7 +134,7 @@ func (client GenerateSqlFromNlJobClient) GenerateSqlFromNl(ctx context.Context, 
 // generateSqlFromNl implements the OCIOperation interface (enables retrying operations)
 func (client GenerateSqlFromNlJobClient) generateSqlFromNl(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
 
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/20260325/semanticStores/{semanticStoreId}/actions/generateSqlFromNl", binaryReqBody, extraHeaders)
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/semanticStores/{semanticStoreId}/actions/generateSqlFromNl", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

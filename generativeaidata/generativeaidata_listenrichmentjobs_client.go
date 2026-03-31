@@ -2,7 +2,7 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Generative AI Service Nl2sql API
+// Generative AI Service NL2SQL API
 //
 // A description of the ReferenceService API. in progress
 //
@@ -129,7 +129,7 @@ func (client ListEnrichmentJobsClient) ListEnrichmentJobs(ctx context.Context, r
 // listEnrichmentJobs implements the OCIOperation interface (enables retrying operations)
 func (client ListEnrichmentJobsClient) listEnrichmentJobs(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
 
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/20260325/semanticStores/{semanticStoreId}/enrichmentJobs", binaryReqBody, extraHeaders)
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/semanticStores/{semanticStoreId}/enrichmentJobs", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

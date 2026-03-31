@@ -34,9 +34,6 @@ type GenerateSqlFromNlRequest struct {
 	// The client request ID for tracing.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
-	// The ID of the compartment.
-	OpcCompartmentId *string `mandatory:"false" contributesTo:"header" name:"opc-compartment-id"`
-
 	// For optimistic concurrency control. In the PUT or DELETE call
 	// for a resource, set the `if-match` parameter to the value of the
 	// etag from a previous GET or POST response for that resource.

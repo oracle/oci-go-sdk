@@ -101,6 +101,27 @@ The value set at client level takes precedence over the value set at the applica
 For reference, please refer https://github.com/oracle/oci-go-sdk/blob/master/example/example_objectstorage_test.go#L222-L251
 
 
+Dual-stack Endpoints
+
+Some Oracle Cloud Infrastructure (OCI) services are designed to support connectivity using both Internet Protocol version 6 (IPv6) 
+and Internet Protocol version 4 (IPv4). This means that users can access OCI resources over either protocol, ensuring compatibility 
+with modern and legacy network environments. OCI services that support dual-stack endpoints facilitate seamless communication and 
+accessibility for clients utilizing IPv6, IPv4, or both.
+
+OCI Go SDK allows you to enable the use of these dual-stack endpoints application level and at client level. The value set at client level 
+takes precedence over the value set at the application level. This feature is disabled by default.
+
+ 1. To disable the realm-specific endpoint templates feature at application level, set the environment variable
+    OCI_DUAL_STACK_ENDPOINT_ENABLED  to false. The boolean value is case insensitive
+
+ 2. To disable the realm-specific endpoint templates feature at client level, set the flag in code as shown below
+    c, clerr := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+    c.EnableDualStackEndpoints(true)
+    })
+	
+For reference, please refer https://github.com/oracle/oci-go-sdk/blob/master/example/example_objectstorage_test.go#L258
+
+
 Customizing Requests
 
 The SDK exposes functionality that allows the user to customize any http request before is sent to the service.
