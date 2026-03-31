@@ -487,7 +487,7 @@ func TestOAuthFederationClient_RenewSecurityToken(t *testing.T) {
 	}))
 	defer authServer.Close()
 
-	mockSessionKeySupplier := new(mockSessionKeySupplier)
+	mockSessionKeySupplier := new(mockCacheableSessionKeySupplier)
 	mockSessionKeySupplier.On("Refresh").Return(nil).Once()
 	mockSessionKeySupplier.On("PublicKeyPemRaw").Return([]byte(sessionPublicKeyPem))
 
@@ -548,7 +548,7 @@ func TestOAuthFederationClient_RenewSecurityTokenFailedOnFirstTimeAndRetry(t *te
 	}))
 	defer authServer.Close()
 
-	mockSessionKeySupplier := new(mockSessionKeySupplier)
+	mockSessionKeySupplier := new(mockCacheableSessionKeySupplier)
 	mockSessionKeySupplier.On("Refresh").Return(nil).Once()
 	mockSessionKeySupplier.On("PublicKeyPemRaw").Return([]byte(sessionPublicKeyPem))
 
@@ -583,7 +583,7 @@ func TestOAuthFederationClient_AuthServerInternalError(t *testing.T) {
 	authServer := httptest.NewServer(http.HandlerFunc(internalServerError))
 	defer authServer.Close()
 
-	mockSessionKeySupplier := new(mockSessionKeySupplier)
+	mockSessionKeySupplier := new(mockCacheableSessionKeySupplier)
 	mockSessionKeySupplier.On("Refresh").Return(nil).Once()
 	mockSessionKeySupplier.On("PublicKeyPemRaw").Return([]byte(sessionPublicKeyPem))
 
@@ -634,8 +634,9 @@ func TestOauthFederationClient_refreshesWhenStale(t *testing.T) {
 	}))
 	defer authServer.Close()
 
-	mockSessionKeySupplier := new(mockSessionKeySupplier)
+	mockSessionKeySupplier := new(mockCacheableSessionKeySupplier)
 	mockSessionKeySupplier.On("Refresh").Return(nil).Times(3)
+	mockSessionKeySupplier.On("Revert")
 	mockSessionKeySupplier.On("PublicKeyPemRaw").Return([]byte(sessionPublicKeyPem))
 
 	instanceProvider, e := fakeInstanceProvider(whateverRegion, tenancyID)
@@ -681,6 +682,263 @@ func TestOauthFederationClient_refreshesWhenStale(t *testing.T) {
 
 	OAuthTokenStaleWindow = 20 * time.Minute
 	mockSessionKeySupplier.AssertExpectations(t)
+}
+
+// This test reproduces a bug/behavior in the SDK's OAuth2 federation client
+// (oAuth2FederationClient): when the cached token enters the "stale" refresh window
+// (OAuthTokenStaleWindow, default 20 minutes since last successful refresh), it rotates
+// its session keypair BEFORE it knows whether it can successfully fetch a new token.
+//
+// If the refresh call to Auth fails, the client falls back to the cached token
+// (if still Valid()) but continues signing with the *new* rotated private key.
+// Services will then reject the request signature because the token was minted
+// for the previous public key.
+func TestOauthFederationClient_useCachedSessionkey(t *testing.T) {
+	responseCounter := 0
+	responses := []func(w http.ResponseWriter, r *http.Request){
+		func(w http.ResponseWriter, r *http.Request) {
+			// First call returns a token.
+			fmt.Fprintf(w, "\n{\n  \"token\" : \"%s\"\n}\n", secondExpectedSecurityToken) // use second token, which is not expired
+		},
+		internalServerError,
+		internalServerError,
+		internalServerError,
+	}
+	authServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		responses[responseCounter](w, r)
+		responseCounter++
+	}))
+	defer authServer.Close()
+	// Use a real in-memory key supplier so we can observe key rotation.
+	supplier := newCacheableSessionKeySupplier()
+	instanceProvider, e := fakeInstanceProvider(whateverRegion, tenancyID)
+	assert.NoError(t, e)
+	federationClient := &oAuth2FederationClient{
+		sessionKeySupplier:    supplier,
+		authClientKeyProvider: instanceProvider,
+		scope:                 scope,
+		targetCompartment:     targetCompartment,
+	}
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient, "v1/oauth2/scoped")
+	// Overwrite with the authServer's URL
+	federationClient.authClient.Host = authServer.URL
+	federationClient.authClient.BasePath = ""
+	// First token retrieved successfully.
+	token1, err := federationClient.SecurityToken()
+	assert.NoError(t, err)
+	assert.Equal(t, secondExpectedSecurityToken, token1)
+	// Capture the current public key (keypair #1).
+	pub1 := supplier.PublicKeyPemRaw()
+	assert.NotEmpty(t, pub1)
+	// Force token to be considered stale.
+	oldWindow := OAuthTokenStaleWindow
+	OAuthTokenStaleWindow = 1 * time.Millisecond
+	defer func() { OAuthTokenStaleWindow = oldWindow }()
+	time.Sleep(10 * time.Millisecond)
+	// This call will attempt refresh:
+	// - rotate session key
+	// - call Auth (which fails)
+	// - fall back to cached token
+	token2, err := federationClient.SecurityToken()
+	assert.NoError(t, err)
+	assert.Equal(t, secondExpectedSecurityToken, token2)
+	// Ensure the session key supplier reverted to the older keypair after the failed refresh, otherwise the cached token cannot be used successfully.
+	pub2 := supplier.PublicKeyPemRaw()
+	assert.NotEmpty(t, pub2)
+	assert.Equal(t, string(pub1), string(pub2), "expected session keypair to revert to old keypair after failed refresh")
+	OAuthTokenStaleWindow = 20 * time.Minute
+}
+
+// Token exchange federation client tests
+func TestTokenExchangeFederationClient_RenewSecurityToken(t *testing.T) {
+	testAuthCode := "basicAuthCode"
+	authServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Verify request
+		assert.True(t, strings.HasPrefix(r.Header.Get("Authorization"), fmt.Sprintf("Basic %s", testAuthCode)))
+		var buf bytes.Buffer
+		buf.ReadFrom(r.Body)
+		body := buf.String()
+		assert.Contains(t, body, "grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange")
+		assert.Contains(t, body, "requested_token_type=urn%3Aoci%3Atoken-type%3Aoci-upst")
+		assert.Contains(t, body, "subject_token=token")
+		assert.Contains(t, body, "subject_token_type=")
+		assert.Contains(t, body, "public_key=")
+		// Return response
+		fmt.Fprintf(w, "\n{\n  \"token\" : \"%s\"\n}\n", expectedSecurityToken)
+	}))
+	defer authServer.Close()
+	testStaticIssuer := StaticTokenIssuer{token: "token"}
+	mockSecurityToken := new(mockSecurityToken)
+	mockSecurityToken.On("Valid").Return(false)
+	federationClient := newTokenExchangeFederationClient(testStaticIssuer, authServer.URL, testAuthCode,
+		map[string][]string{
+			"requested_token_type": {"urn:oci:token-type:oci-upst"},
+			"grant_type":           {"urn:ietf:params:oauth:grant-type:token-exchange"},
+			"subject_token_type":   {"jwt"},
+			"public_key": {`MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEA2jdLOFZo/xuXQ3TE7lKQ
+fH9fQPjlEZANbsQBs52vwWE5WgogilQG/X9/pJkV+XkCTxhwPG/suH4x5NnY17P9
+Gcrh6t1ZcWocAxrFPdETUNDo5oH/sdF7hNPmQxMmvNU7UtZ+PY+MtEMGyOEN1Xyv
+Dcqu3sCrA3QPWaycJ+gtoHbM4F/7O/Yph7cfhddE566Pai7M4uSsVng5QEFwSl+u
+9FxrgM52UWeb+XqP1kGWRiyH+ySFpJDg/B/tYocDitIDRg9lo2oEMX8aLP/1VEOj
+CC+YtdYdXL0qzH3uNI67bW4l2HjxD0i9M4Yl0aYprQKBLh4vtm2IlqqXGJu3DZvu
+uX20VXbSgkZA2wuH7WgfCS4G3vCqSzOU1wp6bPcHae159G0pnzOqx5z1fiRnW+tJ
+OKsjtcPIH+fvLN5QclSbRc3ldorCEchpfR4ZW8EGFhr/PQY452hG3yB9y/UbdHij
+xeYlL5imKNXXwR86quSFTJ/L1p1RFG1niSBtmpMiy9wnAgMBAAE=`},
+		}, nil)
+	federationClient.securityToken = mockSecurityToken
+	actualSecurityToken, err := federationClient.SecurityToken()
+	assert.NoError(t, err)
+	assert.Equal(t, fmt.Sprintf("ST$%s", expectedSecurityToken), actualSecurityToken)
+}
+
+func TestTokenExchangeFederationClient_RenewSecurityTokenFailedOnFirstTimeAndRetry(t *testing.T) {
+	testAuthCode := "basicAuthCode"
+	responseCounter := 0
+	responses := []func(w http.ResponseWriter, r *http.Request){
+		func(w http.ResponseWriter, r *http.Request) {
+			// Return response
+			w.WriteHeader(http.StatusBadGateway)
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			// Verify request
+			assert.True(t, strings.HasPrefix(r.Header.Get("Authorization"), fmt.Sprintf("Basic %s", testAuthCode)))
+			var buf bytes.Buffer
+			buf.ReadFrom(r.Body)
+			body := buf.String()
+			assert.Contains(t, body, "grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Atoken-exchange")
+			assert.Contains(t, body, "requested_token_type=urn%3Aoci%3Atoken-type%3Aoci-upst")
+			assert.Contains(t, body, "subject_token=token")
+			assert.Contains(t, body, "subject_token_type=")
+			assert.Contains(t, body, "public_key=")
+			// Return response
+			fmt.Fprintf(w, "\n{\n  \"token\" : \"%s\"\n}\n", expectedSecurityToken)
+		},
+	}
+	authServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		responses[responseCounter](w, r)
+		responseCounter++
+	}))
+	defer authServer.Close()
+	testStaticIssuer := StaticTokenIssuer{token: "token"}
+	mockSecurityToken := new(mockSecurityToken)
+	mockSecurityToken.On("Valid").Return(false)
+	federationClient := newTokenExchangeFederationClient(testStaticIssuer, authServer.URL, testAuthCode,
+		map[string][]string{
+			"requested_token_type": {"urn:oci:token-type:oci-upst"},
+			"grant_type":           {"urn:ietf:params:oauth:grant-type:token-exchange"},
+			"subject_token_type":   {"jwt"},
+			"public_key": {`MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEA2jdLOFZo/xuXQ3TE7lKQ
+fH9fQPjlEZANbsQBs52vwWE5WgogilQG/X9/pJkV+XkCTxhwPG/suH4x5NnY17P9
+Gcrh6t1ZcWocAxrFPdETUNDo5oH/sdF7hNPmQxMmvNU7UtZ+PY+MtEMGyOEN1Xyv
+Dcqu3sCrA3QPWaycJ+gtoHbM4F/7O/Yph7cfhddE566Pai7M4uSsVng5QEFwSl+u
+9FxrgM52UWeb+XqP1kGWRiyH+ySFpJDg/B/tYocDitIDRg9lo2oEMX8aLP/1VEOj
+CC+YtdYdXL0qzH3uNI67bW4l2HjxD0i9M4Yl0aYprQKBLh4vtm2IlqqXGJu3DZvu
+uX20VXbSgkZA2wuH7WgfCS4G3vCqSzOU1wp6bPcHae159G0pnzOqx5z1fiRnW+tJ
+OKsjtcPIH+fvLN5QclSbRc3ldorCEchpfR4ZW8EGFhr/PQY452hG3yB9y/UbdHij
+xeYlL5imKNXXwR86quSFTJ/L1p1RFG1niSBtmpMiy9wnAgMBAAE=`},
+		}, nil)
+	federationClient.securityToken = mockSecurityToken
+	actualSecurityToken, err := federationClient.SecurityToken()
+	assert.NoError(t, err)
+	assert.Equal(t, fmt.Sprintf("ST$%s", expectedSecurityToken), actualSecurityToken)
+}
+
+func TestTokenExchangeFederationClient_AuthServerInternalError(t *testing.T) {
+	authServer := httptest.NewServer(http.HandlerFunc(internalServerError))
+	defer authServer.Close()
+	testStaticIssuer := StaticTokenIssuer{token: "token"}
+	mockSecurityToken := new(mockSecurityToken)
+	mockSecurityToken.On("Valid").Return(false)
+	federationClient := newTokenExchangeFederationClient(testStaticIssuer, authServer.URL, "",
+		map[string][]string{
+			"public_key": {`MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEA2jdLOFZo/xuXQ3TE7lKQ
+fH9fQPjlEZANbsQBs52vwWE5WgogilQG/X9/pJkV+XkCTxhwPG/suH4x5NnY17P9
+Gcrh6t1ZcWocAxrFPdETUNDo5oH/sdF7hNPmQxMmvNU7UtZ+PY+MtEMGyOEN1Xyv
+Dcqu3sCrA3QPWaycJ+gtoHbM4F/7O/Yph7cfhddE566Pai7M4uSsVng5QEFwSl+u
+9FxrgM52UWeb+XqP1kGWRiyH+ySFpJDg/B/tYocDitIDRg9lo2oEMX8aLP/1VEOj
+CC+YtdYdXL0qzH3uNI67bW4l2HjxD0i9M4Yl0aYprQKBLh4vtm2IlqqXGJu3DZvu
+uX20VXbSgkZA2wuH7WgfCS4G3vCqSzOU1wp6bPcHae159G0pnzOqx5z1fiRnW+tJ
+OKsjtcPIH+fvLN5QclSbRc3ldorCEchpfR4ZW8EGFhr/PQY452hG3yB9y/UbdHij
+xeYlL5imKNXXwR86quSFTJ/L1p1RFG1niSBtmpMiy9wnAgMBAAE=`}}, nil)
+	federationClient.securityToken = mockSecurityToken
+	_, err := federationClient.SecurityToken()
+	assert.Error(t, err)
+}
+
+func TestTokenExchangeFederationClient_RefreshesWhenStale(t *testing.T) {
+	authServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Return response
+		fmt.Fprintf(w, "\n{\n  \"token\" : \"%s\"\n}\n", secondExpectedSecurityToken)
+	}))
+	defer authServer.Close()
+	testStaticIssuer := StaticTokenIssuer{token: "token"}
+	federationClient := newTokenExchangeFederationClient(testStaticIssuer, authServer.URL, "",
+		map[string][]string{
+			"public_key": {`MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEA2jdLOFZo/xuXQ3TE7lKQ
+fH9fQPjlEZANbsQBs52vwWE5WgogilQG/X9/pJkV+XkCTxhwPG/suH4x5NnY17P9
+Gcrh6t1ZcWocAxrFPdETUNDo5oH/sdF7hNPmQxMmvNU7UtZ+PY+MtEMGyOEN1Xyv
+Dcqu3sCrA3QPWaycJ+gtoHbM4F/7O/Yph7cfhddE566Pai7M4uSsVng5QEFwSl+u
+9FxrgM52UWeb+XqP1kGWRiyH+ySFpJDg/B/tYocDitIDRg9lo2oEMX8aLP/1VEOj
+CC+YtdYdXL0qzH3uNI67bW4l2HjxD0i9M4Yl0aYprQKBLh4vtm2IlqqXGJu3DZvu
+uX20VXbSgkZA2wuH7WgfCS4G3vCqSzOU1wp6bPcHae159G0pnzOqx5z1fiRnW+tJ
+OKsjtcPIH+fvLN5QclSbRc3ldorCEchpfR4ZW8EGFhr/PQY452hG3yB9y/UbdHij
+xeYlL5imKNXXwR86quSFTJ/L1p1RFG1niSBtmpMiy9wnAgMBAAE=`}}, nil)
+	// Expired 1511838793
+	jwt, _ := parseJwt(expectedSecurityToken)
+	federationClient.securityToken = tokenExchangeToken{
+		token: *jwt,
+	}
+	// Token refresh called
+	actualSecurityToken, err := federationClient.SecurityToken()
+	assert.NoError(t, err)
+	assert.Equal(t, fmt.Sprintf("ST$%s", secondExpectedSecurityToken), actualSecurityToken)
+}
+
+type panicTokenIssuer struct{}
+
+func (p panicTokenIssuer) GetToken() (string, error) {
+	panic("panic msg")
+}
+
+func TestTokenExchangeFederationClient_RecoverFromIssuerPanic(t *testing.T) {
+	authServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Return response
+		fmt.Fprintf(w, "\n{\n  \"token\" : \"%s\"\n}\n", expectedSecurityToken)
+	}))
+	defer authServer.Close()
+	issuer := panicTokenIssuer{}
+	assert.Panics(t, func() { issuer.GetToken() })
+	federationClient := newTokenExchangeFederationClient(issuer, authServer.URL, "",
+		map[string][]string{
+			"public_key": {`MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEA2jdLOFZo/xuXQ3TE7lKQ
+fH9fQPjlEZANbsQBs52vwWE5WgogilQG/X9/pJkV+XkCTxhwPG/suH4x5NnY17P9
+Gcrh6t1ZcWocAxrFPdETUNDo5oH/sdF7hNPmQxMmvNU7UtZ+PY+MtEMGyOEN1Xyv
+Dcqu3sCrA3QPWaycJ+gtoHbM4F/7O/Yph7cfhddE566Pai7M4uSsVng5QEFwSl+u
+9FxrgM52UWeb+XqP1kGWRiyH+ySFpJDg/B/tYocDitIDRg9lo2oEMX8aLP/1VEOj
+CC+YtdYdXL0qzH3uNI67bW4l2HjxD0i9M4Yl0aYprQKBLh4vtm2IlqqXGJu3DZvu
+uX20VXbSgkZA2wuH7WgfCS4G3vCqSzOU1wp6bPcHae159G0pnzOqx5z1fiRnW+tJ
+OKsjtcPIH+fvLN5QclSbRc3ldorCEchpfR4ZW8EGFhr/PQY452hG3yB9y/UbdHij
+xeYlL5imKNXXwR86quSFTJ/L1p1RFG1niSBtmpMiy9wnAgMBAAE=`}}, nil)
+	actualSecurityToken, err := federationClient.SecurityToken()
+	assert.Error(t, err, "panic msg")
+	assert.Empty(t, actualSecurityToken)
+}
+type nilResponseRoundTripper struct{}
+
+func (nilResponseRoundTripper) RoundTrip(req *http.Request) (*http.Response, error) {
+	return nil, fmt.Errorf("transport failure")
+}
+
+func TestTokenExchangeFederationClient_NilDomainResponse(t *testing.T) {
+	fc := tokenExchangeFederationClient{
+		client:      newIDAuthClient("http://localhost", "/token"),
+		requestData: make(map[string][]string),
+	}
+	fc.client.HTTPClient = &http.Client{Transport: nilResponseRoundTripper{}}
+	assert.NotPanics(t, func() {
+		_, err := fc.newTokenExchangeToken("", "")
+		assert.Error(t, err)
+	})
 }
 
 func parseCertificate(certPem string) *x509.Certificate {
@@ -873,6 +1131,14 @@ func (m *mockSessionKeySupplier) PrivateKey() *rsa.PrivateKey {
 func (m *mockSessionKeySupplier) PublicKeyPemRaw() []byte {
 	args := m.Called()
 	return args.Get(0).([]byte)
+}
+
+type mockCacheableSessionKeySupplier struct {
+	mockSessionKeySupplier
+}
+
+func (m *mockCacheableSessionKeySupplier) Revert() {
+	m.Called()
 }
 
 type mockCertificateRetriever struct {
