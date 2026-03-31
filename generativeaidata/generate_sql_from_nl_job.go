@@ -2,7 +2,7 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Generative AI Service Nl2sql API
+// Generative AI Service NL2SQL API
 //
 // A description of the ReferenceService API. in progress
 //
@@ -35,9 +35,6 @@ type GenerateSqlFromNlJob struct {
 
 	// A message describing the current state in more detail that can provide actionable information.
 	LifecycleDetails *string `mandatory:"true" json:"lifecycleDetails"`
-
-	// Owning compartmentId OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) for a GenerateSqlFromNlJob.
-	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
 	// An optional description of the GenerateSqlFromNlJob.
 	Description *string `mandatory:"false" json:"description"`
@@ -93,7 +90,6 @@ func (m GenerateSqlFromNlJob) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *GenerateSqlFromNlJob) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		CompartmentId             *string                           `json:"compartmentId"`
 		Description               *string                           `json:"description"`
 		DisplayName               *string                           `json:"displayName"`
 		TimeStarted               *common.SDKTime                   `json:"timeStarted"`
@@ -115,8 +111,6 @@ func (m *GenerateSqlFromNlJob) UnmarshalJSON(data []byte) (e error) {
 		return
 	}
 	var nn interface{}
-	m.CompartmentId = model.CompartmentId
-
 	m.Description = model.Description
 
 	m.DisplayName = model.DisplayName
