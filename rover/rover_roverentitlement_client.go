@@ -141,7 +141,7 @@ func (client RoverEntitlementClient) changeRoverEntitlementCompartment(ctx conte
 
 	var response ChangeRoverEntitlementCompartmentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverEntitlement", "ChangeRoverEntitlementCompartment")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -204,7 +204,7 @@ func (client RoverEntitlementClient) createRoverEntitlement(ctx context.Context,
 
 	var response CreateRoverEntitlementResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverEntitlement", "CreateRoverEntitlement")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -267,7 +267,7 @@ func (client RoverEntitlementClient) deleteRoverEntitlement(ctx context.Context,
 
 	var response DeleteRoverEntitlementResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverEntitlement", "DeleteRoverEntitlement")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -330,7 +330,7 @@ func (client RoverEntitlementClient) getRoverEntitlement(ctx context.Context, re
 
 	var response GetRoverEntitlementResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverEntitlement", "GetRoverEntitlement")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -388,7 +388,7 @@ func (client RoverEntitlementClient) listRoverEntitlements(ctx context.Context, 
 
 	var response ListRoverEntitlementsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverEntitlement", "ListRoverEntitlements")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -446,7 +446,7 @@ func (client RoverEntitlementClient) updateRoverEntitlement(ctx context.Context,
 
 	var response UpdateRoverEntitlementResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverEntitlement", "UpdateRoverEntitlement")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

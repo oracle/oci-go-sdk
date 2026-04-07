@@ -144,7 +144,7 @@ func (client GenerativeAiInferenceClient) applyGuardrails(ctx context.Context, r
 
 	var response ApplyGuardrailsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "generativeAiInference", "ApplyGuardrails")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -207,7 +207,7 @@ func (client GenerativeAiInferenceClient) chat(ctx context.Context, request comm
 
 	var response ChatResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "generativeAiInference", "Chat")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -271,7 +271,7 @@ func (client GenerativeAiInferenceClient) embedText(ctx context.Context, request
 
 	var response EmbedTextResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "generativeAiInference", "EmbedText")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -334,7 +334,7 @@ func (client GenerativeAiInferenceClient) generateText(ctx context.Context, requ
 
 	var response GenerateTextResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "generativeAiInference", "GenerateText")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -398,7 +398,7 @@ func (client GenerativeAiInferenceClient) rerankText(ctx context.Context, reques
 
 	var response RerankTextResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "generativeAiInference", "RerankText")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -461,7 +461,7 @@ func (client GenerativeAiInferenceClient) summarizeText(ctx context.Context, req
 
 	var response SummarizeTextResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "generativeAiInference", "SummarizeText")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

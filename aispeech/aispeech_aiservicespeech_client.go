@@ -140,7 +140,7 @@ func (client AIServiceSpeechClient) cancelTranscriptionJob(ctx context.Context, 
 
 	var response CancelTranscriptionJobResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "CancelTranscriptionJob")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -202,7 +202,7 @@ func (client AIServiceSpeechClient) cancelTranscriptionTask(ctx context.Context,
 
 	var response CancelTranscriptionTaskResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "CancelTranscriptionTask")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -264,7 +264,7 @@ func (client AIServiceSpeechClient) changeCustomizationCompartment(ctx context.C
 
 	var response ChangeCustomizationCompartmentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "ChangeCustomizationCompartment")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -326,7 +326,7 @@ func (client AIServiceSpeechClient) changeTranscriptionJobCompartment(ctx contex
 
 	var response ChangeTranscriptionJobCompartmentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "ChangeTranscriptionJobCompartment")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -388,7 +388,7 @@ func (client AIServiceSpeechClient) createCustomization(ctx context.Context, req
 
 	var response CreateCustomizationResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "CreateCustomization")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -450,7 +450,7 @@ func (client AIServiceSpeechClient) createRealtimeSessionToken(ctx context.Conte
 
 	var response CreateRealtimeSessionTokenResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "CreateRealtimeSessionToken")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -512,7 +512,7 @@ func (client AIServiceSpeechClient) createTranscriptionJob(ctx context.Context, 
 
 	var response CreateTranscriptionJobResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "CreateTranscriptionJob")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -574,7 +574,7 @@ func (client AIServiceSpeechClient) deleteCustomization(ctx context.Context, req
 
 	var response DeleteCustomizationResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "DeleteCustomization")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -636,7 +636,7 @@ func (client AIServiceSpeechClient) deleteTranscriptionJob(ctx context.Context, 
 
 	var response DeleteTranscriptionJobResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "DeleteTranscriptionJob")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -693,7 +693,7 @@ func (client AIServiceSpeechClient) getCustomization(ctx context.Context, reques
 
 	var response GetCustomizationResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "GetCustomization")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -750,7 +750,7 @@ func (client AIServiceSpeechClient) getTranscriptionJob(ctx context.Context, req
 
 	var response GetTranscriptionJobResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "GetTranscriptionJob")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -807,7 +807,7 @@ func (client AIServiceSpeechClient) getTranscriptionTask(ctx context.Context, re
 
 	var response GetTranscriptionTaskResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "GetTranscriptionTask")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -864,7 +864,7 @@ func (client AIServiceSpeechClient) listCustomizations(ctx context.Context, requ
 
 	var response ListCustomizationsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "ListCustomizations")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -921,7 +921,7 @@ func (client AIServiceSpeechClient) listTranscriptionJobs(ctx context.Context, r
 
 	var response ListTranscriptionJobsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "ListTranscriptionJobs")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -978,7 +978,7 @@ func (client AIServiceSpeechClient) listTranscriptionTasks(ctx context.Context, 
 
 	var response ListTranscriptionTasksResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "ListTranscriptionTasks")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1035,7 +1035,7 @@ func (client AIServiceSpeechClient) listVoices(ctx context.Context, request comm
 
 	var response ListVoicesResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "ListVoices")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1092,7 +1092,7 @@ func (client AIServiceSpeechClient) synthesizeSpeech(ctx context.Context, reques
 
 	var response SynthesizeSpeechResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "SynthesizeSpeech")
 	response.RawResponse = httpResponse
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/speech/20220101/SynthesizeSpeech/SynthesizeSpeech"
@@ -1148,7 +1148,7 @@ func (client AIServiceSpeechClient) updateCustomization(ctx context.Context, req
 
 	var response UpdateCustomizationResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "UpdateCustomization")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1205,7 +1205,7 @@ func (client AIServiceSpeechClient) updateTranscriptionJob(ctx context.Context, 
 
 	var response UpdateTranscriptionJobResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "aIServiceSpeech", "UpdateTranscriptionJob")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

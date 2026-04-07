@@ -136,7 +136,7 @@ func (client ListEnrichmentJobsClient) listEnrichmentJobs(ctx context.Context, r
 
 	var response ListEnrichmentJobsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "listEnrichmentJobs", "ListEnrichmentJobs")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

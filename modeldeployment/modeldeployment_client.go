@@ -200,7 +200,7 @@ func (client ModelDeploymentClient) predict(ctx context.Context, request common.
 
 	var response PredictResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "modelDeployment", "Predict")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -266,7 +266,7 @@ func (client ModelDeploymentClient) predictWithResponseStream(ctx context.Contex
 
 	var response PredictWithResponseStreamResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "modelDeployment", "PredictWithResponseStream")
 	response.RawResponse = httpResponse
 	if err != nil {
 		apiReferenceLink := ""

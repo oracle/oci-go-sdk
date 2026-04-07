@@ -105,6 +105,14 @@ pre-doc-local:
 	find . -name \*.go |xargs sed -i 's/https:\/\/docs.cloud.oracle.com/${DOC_SERVER_URL}\/iaas/g'
 	find . -name \*.go |xargs sed -i 's/https:\/\/docs.us-phoenix-1.oraclecloud.com/${DOC_SERVER_URL}\/iaas/g'
 
+pre-doc-local-gsed:
+	@echo "Rendering doc server to ${DOC_SERVER_URL}"
+	find . -name \*.go |xargs gsed -i 's/{{DOC_SERVER_URL}}\/iaas/${DOC_SERVER_URL}\/iaas/g'
+	find . -name \*.go |xargs gsed -i 's/{{DOC_SERVER_URL}}/${DOC_SERVER_URL}\/iaas/g'
+	find . -name \*.go |xargs gsed -i 's/https:\/\/docs.cloud.oracle.com\/iaas/${DOC_SERVER_URL}\/iaas/g'
+	find . -name \*.go |xargs gsed -i 's/https:\/\/docs.cloud.oracle.com/${DOC_SERVER_URL}\/iaas/g'
+	find . -name \*.go |xargs gsed -i 's/https:\/\/docs.us-phoenix-1.oraclecloud.com/${DOC_SERVER_URL}\/iaas/g'
+
 gen-version:
 	go generate -x
 

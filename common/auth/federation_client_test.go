@@ -923,6 +923,7 @@ xeYlL5imKNXXwR86quSFTJ/L1p1RFG1niSBtmpMiy9wnAgMBAAE=`}}, nil)
 	assert.Error(t, err, "panic msg")
 	assert.Empty(t, actualSecurityToken)
 }
+
 type nilResponseRoundTripper struct{}
 
 func (nilResponseRoundTripper) RoundTrip(req *http.Request) (*http.Response, error) {
