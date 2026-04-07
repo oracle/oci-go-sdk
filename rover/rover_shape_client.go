@@ -136,7 +136,7 @@ func (client ShapeClient) listShapes(ctx context.Context, request common.OCIRequ
 
 	var response ListShapesResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "shape", "ListShapes")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

@@ -136,7 +136,7 @@ func (client ContainerRegistryClient) getAccessToken(ctx context.Context, reques
 
 	var response GetAccessTokenResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "containerRegistry", "GetAccessToken")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

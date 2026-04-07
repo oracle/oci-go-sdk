@@ -141,7 +141,7 @@ func (client RoverNodeClient) changeRoverNodeCompartment(ctx context.Context, re
 
 	var response ChangeRoverNodeCompartmentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverNode", "ChangeRoverNodeCompartment")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -204,7 +204,7 @@ func (client RoverNodeClient) createRoverNode(ctx context.Context, request commo
 
 	var response CreateRoverNodeResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverNode", "CreateRoverNode")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -267,7 +267,7 @@ func (client RoverNodeClient) deleteRoverNode(ctx context.Context, request commo
 
 	var response DeleteRoverNodeResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverNode", "DeleteRoverNode")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -325,7 +325,7 @@ func (client RoverNodeClient) getRoverNode(ctx context.Context, request common.O
 
 	var response GetRoverNodeResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverNode", "GetRoverNode")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -383,7 +383,7 @@ func (client RoverNodeClient) getRoverNodeCertificate(ctx context.Context, reque
 
 	var response GetRoverNodeCertificateResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverNode", "GetRoverNodeCertificate")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -441,7 +441,7 @@ func (client RoverNodeClient) getRoverNodeEncryptionKey(ctx context.Context, req
 
 	var response GetRoverNodeEncryptionKeyResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverNode", "GetRoverNodeEncryptionKey")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -499,7 +499,7 @@ func (client RoverNodeClient) getRoverNodeGetRpt(ctx context.Context, request co
 
 	var response GetRoverNodeGetRptResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverNode", "GetRoverNodeGetRpt")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -557,7 +557,7 @@ func (client RoverNodeClient) listRoverNodes(ctx context.Context, request common
 
 	var response ListRoverNodesResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverNode", "ListRoverNodes")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -620,7 +620,7 @@ func (client RoverNodeClient) roverNodeActionRetrieveCaBundle(ctx context.Contex
 
 	var response RoverNodeActionRetrieveCaBundleResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverNode", "RoverNodeActionRetrieveCaBundle")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -683,7 +683,7 @@ func (client RoverNodeClient) roverNodeActionSetKey(ctx context.Context, request
 
 	var response RoverNodeActionSetKeyResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverNode", "RoverNodeActionSetKey")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -746,7 +746,7 @@ func (client RoverNodeClient) roverNodeGenerateCertificate(ctx context.Context, 
 
 	var response RoverNodeGenerateCertificateResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverNode", "RoverNodeGenerateCertificate")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -809,7 +809,7 @@ func (client RoverNodeClient) roverNodeRenewCertificate(ctx context.Context, req
 
 	var response RoverNodeRenewCertificateResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverNode", "RoverNodeRenewCertificate")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -872,7 +872,7 @@ func (client RoverNodeClient) roverNodeReplaceCertificateAuthority(ctx context.C
 
 	var response RoverNodeReplaceCertificateAuthorityResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverNode", "RoverNodeReplaceCertificateAuthority")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -935,7 +935,7 @@ func (client RoverNodeClient) roverNodeRetrieveLeafCertificate(ctx context.Conte
 
 	var response RoverNodeRetrieveLeafCertificateResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverNode", "RoverNodeRetrieveLeafCertificate")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -993,7 +993,7 @@ func (client RoverNodeClient) updateRoverNode(ctx context.Context, request commo
 
 	var response UpdateRoverNodeResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverNode", "UpdateRoverNode")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

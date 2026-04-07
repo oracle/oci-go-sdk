@@ -207,7 +207,7 @@ func ExampleTokenExchangeConfigurationProviderFromToken_toRPST() {
 		ResType:            os.Getenv("RES_TYPE"),
 		SubjectTokenType:   "jwt",
 		PublicKey:          os.Getenv("PUBLIC_KEY"),
-		RpstExp:			os.Getenv("RPST_EXP"),
+		RpstExp:            os.Getenv("RPST_EXP"),
 	}
 	provider, err := auth.TokenExchangeConfigurationProviderFromToken(token, builder)
 	log.Printf("Provider details: %v", provider)

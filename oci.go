@@ -1,15 +1,15 @@
 /*
 This is the official Go SDK for Oracle Cloud Infrastructure
 
-Installation
+# Installation
 
 Refer to https://github.com/oracle/oci-go-sdk/blob/master/README.md#installing for installation instructions.
 
-Configuration
+# Configuration
 
 Refer to https://github.com/oracle/oci-go-sdk/blob/master/README.md#configuring for configuration instructions.
 
-Quickstart
+# Quickstart
 
 The following example shows how to get started with the SDK. The example belows creates an identityClient
 struct with the default configuration. It then utilizes the identityClient to list availability domains and prints
@@ -53,12 +53,12 @@ them out to stdout
 
 More examples can be found in the SDK Github repo: https://github.com/oracle/oci-go-sdk/tree/master/example
 
-Optional Fields in the SDK
+# Optional Fields in the SDK
 
 Optional fields are represented with the `mandatory:"false"` tag on input structs. The SDK will omit all optional fields that are nil when making requests.
 In the case of enum-type fields, the SDK will omit fields whose value is an empty string.
 
-Helper Functions
+# Helper Functions
 
 The SDK uses pointers for primitive types in many input structs. To aid in the construction of such structs, the SDK provides
 functions that return a pointer for a given value. For example:
@@ -82,33 +82,31 @@ functions that return a pointer for a given value. For example:
 		DisplayName:   common.String("myVcn"),
 	}
 
-
-Dedicated Endpoints
+# Dedicated Endpoints
 
 Dedicated endpoints are the endpoint templates defined by the service for a specific realm at client level. OCI Go SDK
 allows you to enable the use of these realm-specific endpoint templates feature at application level and at client level.
 The value set at client level takes precedence over the value set at the application level. This feature is disabled by default.
 
-1. To opt-in the realm-specific endpoint templates feature at application level, set the environment variable
-   OCI_REALM_SPECIFIC_SERVICE_ENDPOINT_TEMPLATE_ENABLED  to true. The boolean value is case insensitive
+ 1. To opt-in the realm-specific endpoint templates feature at application level, set the environment variable
+    OCI_REALM_SPECIFIC_SERVICE_ENDPOINT_TEMPLATE_ENABLED  to true. The boolean value is case insensitive
 
-2. To opt-in the realm-specific endpoint templates feature at client level, set the flag in code as shown below
+ 2. To opt-in the realm-specific endpoint templates feature at client level, set the flag in code as shown below
     c, clerr := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
     c.SetCustomClientConfiguration(common.CustomClientConfiguration{
-            RealmSpecificServiceEndpointTemplateEnabled: common.Bool(true),
-        })
+    RealmSpecificServiceEndpointTemplateEnabled: common.Bool(true),
+    })
 
 For reference, please refer https://github.com/oracle/oci-go-sdk/blob/master/example/example_objectstorage_test.go#L222-L251
 
+# Dual-stack Endpoints
 
-Dual-stack Endpoints
-
-Some Oracle Cloud Infrastructure (OCI) services are designed to support connectivity using both Internet Protocol version 6 (IPv6) 
-and Internet Protocol version 4 (IPv4). This means that users can access OCI resources over either protocol, ensuring compatibility 
-with modern and legacy network environments. OCI services that support dual-stack endpoints facilitate seamless communication and 
+Some Oracle Cloud Infrastructure (OCI) services are designed to support connectivity using both Internet Protocol version 6 (IPv6)
+and Internet Protocol version 4 (IPv4). This means that users can access OCI resources over either protocol, ensuring compatibility
+with modern and legacy network environments. OCI services that support dual-stack endpoints facilitate seamless communication and
 accessibility for clients utilizing IPv6, IPv4, or both.
 
-OCI Go SDK allows you to enable the use of these dual-stack endpoints application level and at client level. The value set at client level 
+OCI Go SDK allows you to enable the use of these dual-stack endpoints application level and at client level. The value set at client level
 takes precedence over the value set at the application level. This feature is disabled by default.
 
  1. To disable the realm-specific endpoint templates feature at application level, set the environment variable
@@ -118,11 +116,10 @@ takes precedence over the value set at the application level. This feature is di
     c, clerr := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
     c.EnableDualStackEndpoints(true)
     })
-	
+
 For reference, please refer https://github.com/oracle/oci-go-sdk/blob/master/example/example_objectstorage_test.go#L258
 
-
-Customizing Requests
+# Customizing Requests
 
 The SDK exposes functionality that allows the user to customize any http request before is sent to the service.
 
@@ -143,8 +140,7 @@ You can do so by setting the `Interceptor` field in any of the `Client` structs.
 The Interceptor closure gets called before the signing process, thus any changes done to the request will be properly
 signed and submitted to the service.
 
-
-Signing Custom Requests
+# Signing Custom Requests
 
 The SDK exposes a stand-alone signer that can be used to signing custom requests. Related code can be found here:
 https://github.com/oracle/oci-go-sdk/blob/master/common/http_signer.go.
@@ -169,8 +165,6 @@ The example below shows how to create a default signer.
 
 	// Execute the request
 	client.Do(&request)
-
-
 
 The signer also allows more granular control on the headers used for signing. For example:
 
@@ -233,10 +227,9 @@ Bear in mind that some services have a white list of headers that it expects to 
 Therefore, adding an arbitrary header can result in authentications errors.
 To see a runnable example, see https://github.com/oracle/oci-go-sdk/blob/master/example/example_identity_test.go
 
-
 For more information on the signing algorithm refer to: https://docs.oracle.com/iaas/Content/API/Concepts/signingrequests.htm
 
-Polymorphic JSON Requests and Responses
+# Polymorphic JSON Requests and Responses
 
 Some operations accept or return polymorphic JSON objects. The SDK models such objects as interfaces. Further the SDK provides
 structs that implement such interfaces. Thus, for all operations that expect interfaces as input, pass the struct in the SDK that satisfies
@@ -271,14 +264,13 @@ In the case of a polymorphic response you can type assert the interface to the e
 
 An example of polymorphic JSON request handling can be found here: https://github.com/oracle/oci-go-sdk/blob/master/example/example_core_test.go#L63
 
-
-Pagination
+# Pagination
 
 When calling a list operation, the operation will retrieve a page of results. To retrieve more data, call the list operation again,
 passing in the value of the most recent response's OpcNextPage as the value of Page in the next list operation call.
 When there is no more data the OpcNextPage field will be nil. An example of pagination using this logic can be found here: https://github.com/oracle/oci-go-sdk/blob/master/example/example_core_pagination_test.go
 
-Logging and Debugging
+# Logging and Debugging
 
 The SDK has a built-in logging mechanism used internally. The internal logging logic is used to record the raw http
 requests, responses and potential errors when (un)marshalling request and responses.
@@ -311,12 +303,12 @@ The default destination for logging is Stderr and if you want to output log to a
 
 2. "combine" or "c" enables all logging output to both stderr and file
 
-If the value does not match any of the above or does not exist then default logging output will be set to Stderr
+# If the value does not match any of the above or does not exist then default logging output will be set to Stderr
 
 You can also customize the log file location and name via "OCI_GO_SDK_LOG_FILE" environment variable, the value should be the path to a specific file
 If this environment variable is not present, the default location will be the project root path
 
-Retry
+# Retry
 
 Sometimes you may need to wait until an attribute of a resource, such as an instance or a VCN, reaches a certain state.
 An example of this would be launching an instance and then waiting for the instance to become available, or waiting until a subnet in a VCN has been terminated.
@@ -328,13 +320,13 @@ If you are trying to make a PUT/POST API call with binary request body, please m
 
 The Retry behavior Precedence (Highest to lowest) is defined as below:-
 
-   Operation level retry policy
-   Client level retry policy
-   Global level retry policy
-   Environment level default retry policy for default retry
-   Service level default retry policy
+	Operation level retry policy
+	Client level retry policy
+	Global level retry policy
+	Environment level default retry policy for default retry
+	Service level default retry policy
 
-Default Retry Policy
+# Default Retry Policy
 
 The OCI Go SDK defines a default retry policy that retries on the errors suitable for retries (see https://docs.oracle.com/en-us/iaas/Content/API/References/apierrors.htm),
 for a recommended period of time (up to 7 attempts spread out over at most approximately 1.5 minutes). The default retry policy is defined by :
@@ -344,16 +336,15 @@ Below is the list of default retry-able errors for which retry attempts should b
 
 The following errors should be retried (with backoff).
 
-
 HTTP Code       Customer-facing Error Code
 
- 409	 		IncorrectState
- 409			LockConflict
- 429			Any Response Body
- 500			Any Response Body
- 502			Any Response Body
- 503			Any Response Body
- 504			Any Response Body
+	409	 		IncorrectState
+	409			LockConflict
+	429			Any Response Body
+	500			Any Response Body
+	502			Any Response Body
+	503			Any Response Body
+	504			Any Response Body
 
 Apart from the above errors, retries should also be attempted in the following Client Side errors :
 
@@ -399,7 +390,7 @@ or for all requests made by a client:
 
 or for all requests made by all clients:
 
-    common.GlobalRetry = &defaultRetryPolicy
+	common.GlobalRetry = &defaultRetryPolicy
 
 or setting default retry via environment variable, which is a global switch for all services:
 
@@ -408,7 +399,7 @@ or setting default retry via environment variable, which is a global switch for 
 Some services enable retry for operations by default, this can be overridden using any alternatives mentioned above.  To know which service operations have retries enabled by default,
 look at the operation's description in the SDK - it will say whether that it has retries enabled by default
 
-Eventual Consistency
+# Eventual Consistency
 
 Some resources may have to be replicated across regions and are only eventually consistent. That means the request to create, update, or delete the resource succeeded,
 but the resource is not available everywhere immediately. Creating, updating, or deleting any resource in the Identity service is affected by eventual consistency, and
@@ -450,14 +441,14 @@ DefaultRetryPolicyWithoutEventualConsistency or NewRetryPolicyWithOptions with t
 
 The NewRetryPolicy function also creates a retry policy without eventual consistency.
 
-Circuit Breaker
+# Circuit Breaker
 
 Circuit Breaker can prevent an application repeatedly trying to execute an operation that is likely to fail, allowing it to continue without waiting for the fault to be rectified or wasting CPU cycles,
 of course, it also enables an application to detect whether the fault has been resolved. If the problem appears to have been rectified, the application can attempt to invoke the operation.
 Go SDK intergrates sony/gobreaker solution, wraps in a circuit breaker object, which monitors for failures. Once the failures reach a certain threshold, the circuit breaker trips,
 and all further calls to the circuit breaker return with an error, this also saves the service from being overwhelmed with network calls in case of an outage.
 
-Circuit Breaker Configuration definitions
+# Circuit Breaker Configuration definitions
 
 Circuit Breaker Configuration Definitions
 1. Failure Rate Threshold - The state of the CircuitBreaker changes from CLOSED to OPEN when the failure rate is equal or greater than a configurable threshold. For example when more than 50% of the recorded calls have failed.
@@ -465,7 +456,7 @@ Circuit Breaker Configuration Definitions
 3. Failure Exceptions - The list of Exceptions that will be regarded as failures for the circuit.
 4. Minimum number of calls/ Volume threshold - Configures the minimum number of calls which are required (per sliding window period) before the CircuitBreaker can calculate the error rate.
 
-Default Circuit Breaker Configuration
+# Default Circuit Breaker Configuration
 
 1. Failure Rate Threshold - 80% - This means when 80% of the requests calculated for a time window of 120 seconds have failed then the circuit will transition from closed to open.
 2. Minimum number of calls/ Volume threshold - A value of 10, for the above defined time window of 120 seconds.
@@ -474,13 +465,13 @@ Default Circuit Breaker Configuration
 
 HTTP Code       Customer-facing Error Code
 
- 409	 		IncorrectState
- 409 			LockConflict
- 429			Any Response Body
- 500			Any Response Body
- 502			Any Response Body
- 503			Any Response Body
- 504			Any Response Body
+	409	 		IncorrectState
+	409 			LockConflict
+	429			Any Response Body
+	500			Any Response Body
+	502			Any Response Body
+	503			Any Response Body
+	504			Any Response Body
 
 Apart from the above, the following client side exceptions will also be treated as a failure for the circuit :
 
@@ -493,8 +484,7 @@ Go SDK enable circuit breaker with default configuration for most of the service
 Go SDK also supports customize Circuit Breaker with specified configurations. You can find the examples here: https://github.com/oracle/oci-go-sdk/blob/master/example/example_circuitbreaker_test.go
 To know which service clients have circuit breakers enabled, look at the service client's description in the SDK - it will say whether that it has circuit breakers enabled by default
 
-
-Handling HTTP 3xx responses
+# Handling HTTP 3xx responses
 
 As a result of the SDK treating responses with a non-2xx HTTP status code as an error, the SDK will produce an error on 3xx responses. This can impact operations which support conditional GETs,
 such as GetObject() and HeadObject() methods as these can return responses with an HTTP status code of 304 if passed an 'IfNoneMatch' that corresponds to the current etag of the object / bucket.
@@ -526,8 +516,7 @@ In order to account for this, you should check for status code 304 when an error
 	}
 	fmt.Println(response)
 
-
-Using the SDK with a Proxy Server
+# Using the SDK with a Proxy Server
 
 The GO SDK uses the net/http package to make calls to OCI services. If your environment requires you to use a proxy server for outgoing HTTP requests
 then you can set this up in the following ways:
@@ -536,6 +525,7 @@ then you can set this up in the following ways:
 2. Modifying the underlying Transport struct for a service client
 
 In order to modify the underlying Transport struct in HttpClient, you can do something similar to (sample code for audit service client):
+
 	// create audit service client
 	client, clerr := audit.NewAuditClientWithConfigurationProvider(common.DefaultConfigProvider())
 
@@ -549,15 +539,13 @@ In order to modify the underlying Transport struct in HttpClient, you can do som
 		},
 	}
 
-
-Uploading Large Objects
+# Uploading Large Objects
 
 The Object Storage service supports multipart uploads to make large object uploads easier by splitting the large object into parts. The Go SDK supports raw multipart upload operations for advanced use cases, as well as a higher level upload class that uses the multipart upload APIs. For links to the APIs used for multipart upload operations, see Managing Multipart Uploads (https://docs.oracle.com/iaas/iaas/Content/Object/Tasks/usingmultipartuploads.htm). Higher level multipart uploads are implemented using the UploadManager, which will: split a large object into parts for you, upload the parts in parallel, and then recombine and commit the parts as a single object in storage.
 
 This code sample shows how to use the UploadManager to automatically split an object into parts for upload to simplify interaction with the Object Storage service: https://github.com/oracle/oci-go-sdk/blob/master/example/example_objectstorage_test.go
 
-
-Forward Compatibility
+# Forward Compatibility
 
 Some response fields are enum-typed. In the future, individual services may return values not covered by existing enums
 for that field. To address this possibility, every enum-type response field is a modeled as a type that supports any string.
@@ -566,8 +554,7 @@ Thus if a service returns a value that is not recognized by your version of the 
 When individual services return a polymorphic JSON response not available as a concrete struct, the SDK will return an implementation that only satisfies
 the interface modeling the polymorphic JSON response.
 
-
-New Region Support
+# New Region Support
 
 If you are using a version of the SDK released prior to the announcement of a new region, you may need to use a workaround to reach it, depending on whether the region is in the oraclecloud.com realm.
 
@@ -582,12 +569,14 @@ Other Realms: For regions in realms other than oraclecloud.com, you can use the 
 NOTE: Be sure to supply the appropriate endpoints for your region.
 
 You can overwrite the target host with client.Host:
+
 	client.Host = 'https://identity.us-gov-phoenix-1.oraclegovcloud.com'
 
 If you are authenticating via instance principals, you can set the authentication endpoint in an environment variable:
+
 	export OCI_SDK_AUTH_CLIENT_REGION_URL="https://identity.us-gov-phoenix-1.oraclegovcloud.com"
 
-Using custom CA Bundle or custom client certs
+# Using custom CA Bundle or custom client certs
 
 In order to use a custom CA bundle, you can set the environment variable OCI_DEFAULT_CERTS_PATH to point to the path of custom CA Bundle you want
 the OCI GO SDK to use while making API calls to the OCI services
@@ -595,8 +584,7 @@ the OCI GO SDK to use while making API calls to the OCI services
 If you additionally want to set custom leaf/client certs, then you can use the the environment variables OCI_DEFAULT_CLIENT_CERTS_PATH and OCI_DEFAULT_CLIENT_CERTS_PRIVATE_KEY_PATH
 to set the path of the custom client/leaf cert and the private key respectively.
 
-
-Configuring or disabling the refresh interval for custom CA bundles or client certs
+# Configuring or disabling the refresh interval for custom CA bundles or client certs
 
 The default refresh interval for custom CA bundle or client certs is 30 minutes. If you want to modify this, then you can configure the refresh interval in minutes
 by using either the Global property OciGlobalRefreshIntervalForCustomCerts defined in the common package or set the environment variable OCI_DEFAULT_REFRESH_INTERVAL_FOR_CUSTOM_CERTS
@@ -605,26 +593,22 @@ to set it instead.
 Please note, that the property OciGlobalRefreshIntervalForCustomCerts has a higher precedence than the environment variable OCI_DEFAULT_REFRESH_INTERVAL_FOR_CUSTOM_CERTS.
 If this value is negative, then it would be assumed that it is unset. If it is set to 0, then the SDK would disable the custom ca bundle and client cert refresh
 
-Contributions
+# Contributions
 
 Got a fix for a bug, or a new feature you'd like to contribute? The SDK is open source and accepting pull requests on GitHub
 https://github.com/oracle/oci-go-sdk
 
-License
+# License
 
 Licensing information available at: https://github.com/oracle/oci-go-sdk/blob/master/LICENSE.txt
 
-Notifications
+# Notifications
 
 To be notified when a new version of the Go SDK is released, subscribe to the following feed: https://github.com/oracle/oci-go-sdk/releases.atom
 
-Questions or Feedback
+# Questions or Feedback
 
 Please refer to this link: https://github.com/oracle/oci-go-sdk#help
-
-
-
-
 */
 package oci
 

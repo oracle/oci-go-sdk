@@ -136,7 +136,7 @@ func (client MarketplacePublisherClient) activateTermVersion(ctx context.Context
 
 	var response ActivateTermVersionResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ActivateTermVersion")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -194,7 +194,7 @@ func (client MarketplacePublisherClient) cancelWorkRequest(ctx context.Context, 
 
 	var response CancelWorkRequestResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "CancelWorkRequest")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -257,7 +257,7 @@ func (client MarketplacePublisherClient) cascadingDeleteListing(ctx context.Cont
 
 	var response CascadingDeleteListingResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "CascadingDeleteListing")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -320,7 +320,7 @@ func (client MarketplacePublisherClient) cascadingDeleteListingRevision(ctx cont
 
 	var response CascadingDeleteListingRevisionResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "CascadingDeleteListingRevision")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -383,7 +383,7 @@ func (client MarketplacePublisherClient) changeArtifactCompartment(ctx context.C
 
 	var response ChangeArtifactCompartmentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ChangeArtifactCompartment")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -446,7 +446,7 @@ func (client MarketplacePublisherClient) changeListingCompartment(ctx context.Co
 
 	var response ChangeListingCompartmentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ChangeListingCompartment")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -504,7 +504,7 @@ func (client MarketplacePublisherClient) changeListingRevisionToNewStatus(ctx co
 
 	var response ChangeListingRevisionToNewStatusResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ChangeListingRevisionToNewStatus")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -567,7 +567,7 @@ func (client MarketplacePublisherClient) changeTermCompartment(ctx context.Conte
 
 	var response ChangeTermCompartmentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ChangeTermCompartment")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -630,7 +630,7 @@ func (client MarketplacePublisherClient) cloneListingRevision(ctx context.Contex
 
 	var response CloneListingRevisionResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "CloneListingRevision")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -701,7 +701,7 @@ func (client MarketplacePublisherClient) createArtifact(ctx context.Context, req
 
 	var response CreateArtifactResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "CreateArtifact")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -769,7 +769,7 @@ func (client MarketplacePublisherClient) createListing(ctx context.Context, requ
 
 	var response CreateListingResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "CreateListing")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -832,7 +832,7 @@ func (client MarketplacePublisherClient) createListingRevision(ctx context.Conte
 
 	var response CreateListingRevisionResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "CreateListingRevision")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -895,7 +895,7 @@ func (client MarketplacePublisherClient) createListingRevisionAttachment(ctx con
 
 	var response CreateListingRevisionAttachmentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "CreateListingRevisionAttachment")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -958,7 +958,7 @@ func (client MarketplacePublisherClient) createListingRevisionNote(ctx context.C
 
 	var response CreateListingRevisionNoteResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "CreateListingRevisionNote")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1021,7 +1021,7 @@ func (client MarketplacePublisherClient) createListingRevisionPackage(ctx contex
 
 	var response CreateListingRevisionPackageResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "CreateListingRevisionPackage")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1084,7 +1084,7 @@ func (client MarketplacePublisherClient) createTerm(ctx context.Context, request
 
 	var response CreateTermResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "CreateTerm")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1147,7 +1147,7 @@ func (client MarketplacePublisherClient) createTermVersion(ctx context.Context, 
 
 	var response CreateTermVersionResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "CreateTermVersion")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1210,7 +1210,7 @@ func (client MarketplacePublisherClient) deleteArtifact(ctx context.Context, req
 
 	var response DeleteArtifactResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "DeleteArtifact")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1268,7 +1268,7 @@ func (client MarketplacePublisherClient) deleteListing(ctx context.Context, requ
 
 	var response DeleteListingResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "DeleteListing")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1326,7 +1326,7 @@ func (client MarketplacePublisherClient) deleteListingRevision(ctx context.Conte
 
 	var response DeleteListingRevisionResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "DeleteListingRevision")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1384,7 +1384,7 @@ func (client MarketplacePublisherClient) deleteListingRevisionAttachment(ctx con
 
 	var response DeleteListingRevisionAttachmentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "DeleteListingRevisionAttachment")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1442,7 +1442,7 @@ func (client MarketplacePublisherClient) deleteListingRevisionNote(ctx context.C
 
 	var response DeleteListingRevisionNoteResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "DeleteListingRevisionNote")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1500,7 +1500,7 @@ func (client MarketplacePublisherClient) deleteListingRevisionPackage(ctx contex
 
 	var response DeleteListingRevisionPackageResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "DeleteListingRevisionPackage")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1558,7 +1558,7 @@ func (client MarketplacePublisherClient) deleteTerm(ctx context.Context, request
 
 	var response DeleteTermResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "DeleteTerm")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1616,7 +1616,7 @@ func (client MarketplacePublisherClient) deleteTermVersion(ctx context.Context, 
 
 	var response DeleteTermVersionResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "DeleteTermVersion")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1674,7 +1674,7 @@ func (client MarketplacePublisherClient) getArtifact(ctx context.Context, reques
 
 	var response GetArtifactResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetArtifact")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1732,7 +1732,7 @@ func (client MarketplacePublisherClient) getCategory(ctx context.Context, reques
 
 	var response GetCategoryResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetCategory")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1790,7 +1790,7 @@ func (client MarketplacePublisherClient) getLead(ctx context.Context, request co
 
 	var response GetLeadResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetLead")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1848,7 +1848,7 @@ func (client MarketplacePublisherClient) getListing(ctx context.Context, request
 
 	var response GetListingResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetListing")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1906,7 +1906,7 @@ func (client MarketplacePublisherClient) getListingRevision(ctx context.Context,
 
 	var response GetListingRevisionResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetListingRevision")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1964,7 +1964,7 @@ func (client MarketplacePublisherClient) getListingRevisionAttachment(ctx contex
 
 	var response GetListingRevisionAttachmentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetListingRevisionAttachment")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -2022,7 +2022,7 @@ func (client MarketplacePublisherClient) getListingRevisionAttachmentContent(ctx
 
 	var response GetListingRevisionAttachmentContentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetListingRevisionAttachmentContent")
 	response.RawResponse = httpResponse
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevisionAttachment/GetListingRevisionAttachmentContent"
@@ -2079,7 +2079,7 @@ func (client MarketplacePublisherClient) getListingRevisionIconContent(ctx conte
 
 	var response GetListingRevisionIconContentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetListingRevisionIconContent")
 	response.RawResponse = httpResponse
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevision/GetListingRevisionIconContent"
@@ -2136,7 +2136,7 @@ func (client MarketplacePublisherClient) getListingRevisionNote(ctx context.Cont
 
 	var response GetListingRevisionNoteResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetListingRevisionNote")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -2194,7 +2194,7 @@ func (client MarketplacePublisherClient) getListingRevisionPackage(ctx context.C
 
 	var response GetListingRevisionPackageResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetListingRevisionPackage")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -2252,7 +2252,7 @@ func (client MarketplacePublisherClient) getMarket(ctx context.Context, request 
 
 	var response GetMarketResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetMarket")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -2310,7 +2310,7 @@ func (client MarketplacePublisherClient) getProduct(ctx context.Context, request
 
 	var response GetProductResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetProduct")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -2368,7 +2368,7 @@ func (client MarketplacePublisherClient) getPublisher(ctx context.Context, reque
 
 	var response GetPublisherResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetPublisher")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -2426,7 +2426,7 @@ func (client MarketplacePublisherClient) getSupportDoc(ctx context.Context, requ
 
 	var response GetSupportDocResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetSupportDoc")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -2484,7 +2484,7 @@ func (client MarketplacePublisherClient) getSupportDocContent(ctx context.Contex
 
 	var response GetSupportDocContentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetSupportDocContent")
 	response.RawResponse = httpResponse
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/SupportDoc/GetSupportDocContent"
@@ -2541,7 +2541,7 @@ func (client MarketplacePublisherClient) getTerm(ctx context.Context, request co
 
 	var response GetTermResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetTerm")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -2599,7 +2599,7 @@ func (client MarketplacePublisherClient) getTermVersion(ctx context.Context, req
 
 	var response GetTermVersionResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetTermVersion")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -2657,7 +2657,7 @@ func (client MarketplacePublisherClient) getTermVersionContent(ctx context.Conte
 
 	var response GetTermVersionContentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetTermVersionContent")
 	response.RawResponse = httpResponse
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/TermVersion/GetTermVersionContent"
@@ -2714,7 +2714,7 @@ func (client MarketplacePublisherClient) getWorkRequest(ctx context.Context, req
 
 	var response GetWorkRequestResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetWorkRequest")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -2774,7 +2774,7 @@ func (client MarketplacePublisherClient) listArtifacts(ctx context.Context, requ
 
 	var response ListArtifactsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListArtifacts")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -2832,7 +2832,7 @@ func (client MarketplacePublisherClient) listAvailableServices(ctx context.Conte
 
 	var response ListAvailableServicesResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListAvailableServices")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -2892,7 +2892,7 @@ func (client MarketplacePublisherClient) listCategories(ctx context.Context, req
 
 	var response ListCategoriesResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListCategories")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -2950,7 +2950,7 @@ func (client MarketplacePublisherClient) listCustomerInstanceReportRecords(ctx c
 
 	var response ListCustomerInstanceReportRecordsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListCustomerInstanceReportRecords")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3008,7 +3008,7 @@ func (client MarketplacePublisherClient) listDisbursementReportRecords(ctx conte
 
 	var response ListDisbursementReportRecordsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListDisbursementReportRecords")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3068,7 +3068,7 @@ func (client MarketplacePublisherClient) listLeads(ctx context.Context, request 
 
 	var response ListLeadsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListLeads")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3126,7 +3126,7 @@ func (client MarketplacePublisherClient) listListingRevisionAttachments(ctx cont
 
 	var response ListListingRevisionAttachmentsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListListingRevisionAttachments")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3184,7 +3184,7 @@ func (client MarketplacePublisherClient) listListingRevisionNotes(ctx context.Co
 
 	var response ListListingRevisionNotesResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListListingRevisionNotes")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3242,7 +3242,7 @@ func (client MarketplacePublisherClient) listListingRevisionPackages(ctx context
 
 	var response ListListingRevisionPackagesResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListListingRevisionPackages")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3302,7 +3302,7 @@ func (client MarketplacePublisherClient) listListingRevisions(ctx context.Contex
 
 	var response ListListingRevisionsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListListingRevisions")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3362,7 +3362,7 @@ func (client MarketplacePublisherClient) listListings(ctx context.Context, reque
 
 	var response ListListingsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListListings")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3422,7 +3422,7 @@ func (client MarketplacePublisherClient) listMarkets(ctx context.Context, reques
 
 	var response ListMarketsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListMarkets")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3482,7 +3482,7 @@ func (client MarketplacePublisherClient) listProducts(ctx context.Context, reque
 
 	var response ListProductsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListProducts")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3540,7 +3540,7 @@ func (client MarketplacePublisherClient) listPublishers(ctx context.Context, req
 
 	var response ListPublishersResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListPublishers")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3600,7 +3600,7 @@ func (client MarketplacePublisherClient) listSupportDocs(ctx context.Context, re
 
 	var response ListSupportDocsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListSupportDocs")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3660,7 +3660,7 @@ func (client MarketplacePublisherClient) listSupportedCurrencies(ctx context.Con
 
 	var response ListSupportedCurrenciesResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListSupportedCurrencies")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3718,7 +3718,7 @@ func (client MarketplacePublisherClient) listSupportedShapes(ctx context.Context
 
 	var response ListSupportedShapesResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListSupportedShapes")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3776,7 +3776,7 @@ func (client MarketplacePublisherClient) listTermVersions(ctx context.Context, r
 
 	var response ListTermVersionsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListTermVersions")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3834,7 +3834,7 @@ func (client MarketplacePublisherClient) listTerms(ctx context.Context, request 
 
 	var response ListTermsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListTerms")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3892,7 +3892,7 @@ func (client MarketplacePublisherClient) listWorkRequestErrors(ctx context.Conte
 
 	var response ListWorkRequestErrorsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListWorkRequestErrors")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -3950,7 +3950,7 @@ func (client MarketplacePublisherClient) listWorkRequestLogs(ctx context.Context
 
 	var response ListWorkRequestLogsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListWorkRequestLogs")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4008,7 +4008,7 @@ func (client MarketplacePublisherClient) listWorkRequests(ctx context.Context, r
 
 	var response ListWorkRequestsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListWorkRequests")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4071,7 +4071,7 @@ func (client MarketplacePublisherClient) markListingRevisionPackageAsDefault(ctx
 
 	var response MarkListingRevisionPackageAsDefaultResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "MarkListingRevisionPackageAsDefault")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4134,7 +4134,7 @@ func (client MarketplacePublisherClient) publishListingRevision(ctx context.Cont
 
 	var response PublishListingRevisionResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "PublishListingRevision")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4197,7 +4197,7 @@ func (client MarketplacePublisherClient) publishListingRevisionAsPrivate(ctx con
 
 	var response PublishListingRevisionAsPrivateResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "PublishListingRevisionAsPrivate")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4260,7 +4260,7 @@ func (client MarketplacePublisherClient) publishListingRevisionPackage(ctx conte
 
 	var response PublishListingRevisionPackageResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "PublishListingRevisionPackage")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4323,7 +4323,7 @@ func (client MarketplacePublisherClient) submitListingRevisionForReview(ctx cont
 
 	var response SubmitListingRevisionForReviewResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "SubmitListingRevisionForReview")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4386,7 +4386,7 @@ func (client MarketplacePublisherClient) unPublishListingRevisionPackage(ctx con
 
 	var response UnPublishListingRevisionPackageResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "UnPublishListingRevisionPackage")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4444,7 +4444,7 @@ func (client MarketplacePublisherClient) updateArtifact(ctx context.Context, req
 
 	var response UpdateArtifactResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "UpdateArtifact")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4502,7 +4502,7 @@ func (client MarketplacePublisherClient) updateListing(ctx context.Context, requ
 
 	var response UpdateListingResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "UpdateListing")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4560,7 +4560,7 @@ func (client MarketplacePublisherClient) updateListingRevision(ctx context.Conte
 
 	var response UpdateListingRevisionResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "UpdateListingRevision")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4618,7 +4618,7 @@ func (client MarketplacePublisherClient) updateListingRevisionAttachment(ctx con
 
 	var response UpdateListingRevisionAttachmentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "UpdateListingRevisionAttachment")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4676,7 +4676,7 @@ func (client MarketplacePublisherClient) updateListingRevisionAttachmentContent(
 
 	var response UpdateListingRevisionAttachmentContentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "UpdateListingRevisionAttachmentContent")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4734,7 +4734,7 @@ func (client MarketplacePublisherClient) updateListingRevisionIconContent(ctx co
 
 	var response UpdateListingRevisionIconContentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "UpdateListingRevisionIconContent")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4792,7 +4792,7 @@ func (client MarketplacePublisherClient) updateListingRevisionNote(ctx context.C
 
 	var response UpdateListingRevisionNoteResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "UpdateListingRevisionNote")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4850,7 +4850,7 @@ func (client MarketplacePublisherClient) updateListingRevisionPackage(ctx contex
 
 	var response UpdateListingRevisionPackageResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "UpdateListingRevisionPackage")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4908,7 +4908,7 @@ func (client MarketplacePublisherClient) updateTerm(ctx context.Context, request
 
 	var response UpdateTermResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "UpdateTerm")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -4966,7 +4966,7 @@ func (client MarketplacePublisherClient) updateTermVersion(ctx context.Context, 
 
 	var response UpdateTermVersionResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "UpdateTermVersion")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -5024,7 +5024,7 @@ func (client MarketplacePublisherClient) updateTermVersionContent(ctx context.Co
 
 	var response UpdateTermVersionContentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "UpdateTermVersionContent")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -5087,7 +5087,7 @@ func (client MarketplacePublisherClient) validateAndPublishArtifact(ctx context.
 
 	var response ValidateAndPublishArtifactResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ValidateAndPublishArtifact")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -5150,7 +5150,7 @@ func (client MarketplacePublisherClient) withdrawListingRevision(ctx context.Con
 
 	var response WithdrawListingRevisionResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "WithdrawListingRevision")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
