@@ -141,7 +141,7 @@ func (client GenerateEnrichmentJobClient) generateEnrichmentJob(ctx context.Cont
 
 	var response GenerateEnrichmentJobResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "generateEnrichmentJob", "GenerateEnrichmentJob")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

@@ -136,7 +136,7 @@ func (client OccMetricsClient) listMetricProperties(ctx context.Context, request
 
 	var response ListMetricPropertiesResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "occMetrics", "ListMetricProperties")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -194,7 +194,7 @@ func (client OccMetricsClient) listNamespaces(ctx context.Context, request commo
 
 	var response ListNamespacesResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "occMetrics", "ListNamespaces")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -254,7 +254,7 @@ func (client OccMetricsClient) requestSummarizedMetricData(ctx context.Context, 
 
 	var response RequestSummarizedMetricDataResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "occMetrics", "RequestSummarizedMetricData")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

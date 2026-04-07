@@ -145,7 +145,7 @@ func (client LimitsIncreaseClient) cancelLimitsIncreaseItemRequest(ctx context.C
 
 	var response CancelLimitsIncreaseItemRequestResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "limitsIncrease", "CancelLimitsIncreaseItemRequest")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -210,7 +210,7 @@ func (client LimitsIncreaseClient) cancelLimitsIncreaseRequest(ctx context.Conte
 
 	var response CancelLimitsIncreaseRequestResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "limitsIncrease", "CancelLimitsIncreaseRequest")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -275,7 +275,7 @@ func (client LimitsIncreaseClient) createLimitsIncreaseRequest(ctx context.Conte
 
 	var response CreateLimitsIncreaseRequestResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "limitsIncrease", "CreateLimitsIncreaseRequest")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -335,7 +335,7 @@ func (client LimitsIncreaseClient) deleteLimitsIncreaseRequest(ctx context.Conte
 
 	var response DeleteLimitsIncreaseRequestResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "limitsIncrease", "DeleteLimitsIncreaseRequest")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -395,7 +395,7 @@ func (client LimitsIncreaseClient) getLimitsIncreaseItemRequest(ctx context.Cont
 
 	var response GetLimitsIncreaseItemRequestResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "limitsIncrease", "GetLimitsIncreaseItemRequest")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -455,7 +455,7 @@ func (client LimitsIncreaseClient) getLimitsIncreaseRequest(ctx context.Context,
 
 	var response GetLimitsIncreaseRequestResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "limitsIncrease", "GetLimitsIncreaseRequest")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -515,7 +515,7 @@ func (client LimitsIncreaseClient) listLimitsIncreaseItemRequests(ctx context.Co
 
 	var response ListLimitsIncreaseItemRequestsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "limitsIncrease", "ListLimitsIncreaseItemRequests")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -578,7 +578,7 @@ func (client LimitsIncreaseClient) listLimitsIncreaseQuestions(ctx context.Conte
 
 	var response ListLimitsIncreaseQuestionsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "limitsIncrease", "ListLimitsIncreaseQuestions")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -638,7 +638,7 @@ func (client LimitsIncreaseClient) listLimitsIncreaseRequests(ctx context.Contex
 
 	var response ListLimitsIncreaseRequestsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "limitsIncrease", "ListLimitsIncreaseRequests")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -698,7 +698,7 @@ func (client LimitsIncreaseClient) patchLimitsIncreaseRequest(ctx context.Contex
 
 	var response PatchLimitsIncreaseRequestResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "limitsIncrease", "PatchLimitsIncreaseRequest")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -758,7 +758,7 @@ func (client LimitsIncreaseClient) updateLimitsIncreaseRequest(ctx context.Conte
 
 	var response UpdateLimitsIncreaseRequestResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "limitsIncrease", "UpdateLimitsIncreaseRequest")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

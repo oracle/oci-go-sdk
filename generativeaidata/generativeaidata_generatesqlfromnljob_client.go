@@ -141,7 +141,7 @@ func (client GenerateSqlFromNlJobClient) generateSqlFromNl(ctx context.Context, 
 
 	var response GenerateSqlFromNlResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "generateSqlFromNlJob", "GenerateSqlFromNl")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

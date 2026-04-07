@@ -136,7 +136,7 @@ func (client LogSearchClient) searchLogs(ctx context.Context, request common.OCI
 
 	var response SearchLogsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "logSearch", "SearchLogs")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

@@ -137,7 +137,7 @@ func (client LockboxClient) cancelWorkRequest(ctx context.Context, request commo
 
 	var response CancelWorkRequestResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "CancelWorkRequest")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -200,7 +200,7 @@ func (client LockboxClient) changeApprovalTemplateCompartment(ctx context.Contex
 
 	var response ChangeApprovalTemplateCompartmentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "ChangeApprovalTemplateCompartment")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -263,7 +263,7 @@ func (client LockboxClient) changeLockboxCompartment(ctx context.Context, reques
 
 	var response ChangeLockboxCompartmentResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "ChangeLockboxCompartment")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -326,7 +326,7 @@ func (client LockboxClient) createAccessRequest(ctx context.Context, request com
 
 	var response CreateAccessRequestResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "CreateAccessRequest")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -389,7 +389,7 @@ func (client LockboxClient) createApprovalTemplate(ctx context.Context, request 
 
 	var response CreateApprovalTemplateResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "CreateApprovalTemplate")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -452,7 +452,7 @@ func (client LockboxClient) createLockbox(ctx context.Context, request common.OC
 
 	var response CreateLockboxResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "CreateLockbox")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -510,7 +510,7 @@ func (client LockboxClient) deleteApprovalTemplate(ctx context.Context, request 
 
 	var response DeleteApprovalTemplateResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "DeleteApprovalTemplate")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -573,7 +573,7 @@ func (client LockboxClient) deleteLockbox(ctx context.Context, request common.OC
 
 	var response DeleteLockboxResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "DeleteLockbox")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -631,7 +631,7 @@ func (client LockboxClient) exportAccessRequests(ctx context.Context, request co
 
 	var response ExportAccessRequestsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "ExportAccessRequests")
 	response.RawResponse = httpResponse
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/managed-access/20220126/AccessRequestCollection/ExportAccessRequests"
@@ -688,7 +688,7 @@ func (client LockboxClient) getAccessMaterials(ctx context.Context, request comm
 
 	var response GetAccessMaterialsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "GetAccessMaterials")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -746,7 +746,7 @@ func (client LockboxClient) getAccessRequest(ctx context.Context, request common
 
 	var response GetAccessRequestResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "GetAccessRequest")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -804,7 +804,7 @@ func (client LockboxClient) getAccessRequestInternal(ctx context.Context, reques
 
 	var response GetAccessRequestInternalResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "GetAccessRequestInternal")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -862,7 +862,7 @@ func (client LockboxClient) getApprovalTemplate(ctx context.Context, request com
 
 	var response GetApprovalTemplateResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "GetApprovalTemplate")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -920,7 +920,7 @@ func (client LockboxClient) getLockbox(ctx context.Context, request common.OCIRe
 
 	var response GetLockboxResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "GetLockbox")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -978,7 +978,7 @@ func (client LockboxClient) getWorkRequest(ctx context.Context, request common.O
 
 	var response GetWorkRequestResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "GetWorkRequest")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1041,7 +1041,7 @@ func (client LockboxClient) handleAccessRequest(ctx context.Context, request com
 
 	var response HandleAccessRequestResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "HandleAccessRequest")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1099,7 +1099,7 @@ func (client LockboxClient) listAccessRequests(ctx context.Context, request comm
 
 	var response ListAccessRequestsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "ListAccessRequests")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1157,7 +1157,7 @@ func (client LockboxClient) listApprovalTemplates(ctx context.Context, request c
 
 	var response ListApprovalTemplatesResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "ListApprovalTemplates")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1215,7 +1215,7 @@ func (client LockboxClient) listLockboxes(ctx context.Context, request common.OC
 
 	var response ListLockboxesResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "ListLockboxes")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1273,7 +1273,7 @@ func (client LockboxClient) listWorkRequestErrors(ctx context.Context, request c
 
 	var response ListWorkRequestErrorsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "ListWorkRequestErrors")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1331,7 +1331,7 @@ func (client LockboxClient) listWorkRequestLogs(ctx context.Context, request com
 
 	var response ListWorkRequestLogsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "ListWorkRequestLogs")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1389,7 +1389,7 @@ func (client LockboxClient) listWorkRequests(ctx context.Context, request common
 
 	var response ListWorkRequestsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "ListWorkRequests")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1447,7 +1447,7 @@ func (client LockboxClient) updateApprovalTemplate(ctx context.Context, request 
 
 	var response UpdateApprovalTemplateResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "UpdateApprovalTemplate")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1505,7 +1505,7 @@ func (client LockboxClient) updateLockbox(ctx context.Context, request common.OC
 
 	var response UpdateLockboxResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "lockbox", "UpdateLockbox")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

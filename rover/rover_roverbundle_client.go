@@ -136,7 +136,7 @@ func (client RoverBundleClient) listRoverClusterRoverBundleRequests(ctx context.
 
 	var response ListRoverClusterRoverBundleRequestsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverBundle", "ListRoverClusterRoverBundleRequests")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -194,7 +194,7 @@ func (client RoverBundleClient) listRoverNodeRoverBundleRequests(ctx context.Con
 
 	var response ListRoverNodeRoverBundleRequestsResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverBundle", "ListRoverNodeRoverBundleRequests")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -252,7 +252,7 @@ func (client RoverBundleClient) requestBundleRoverCluster(ctx context.Context, r
 
 	var response RequestBundleRoverClusterResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverBundle", "RequestBundleRoverCluster")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -310,7 +310,7 @@ func (client RoverBundleClient) requestBundleRoverNode(ctx context.Context, requ
 
 	var response RequestBundleRoverNodeResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverBundle", "RequestBundleRoverNode")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -368,7 +368,7 @@ func (client RoverBundleClient) retrieveAvailableBundleVersionsRoverCluster(ctx 
 
 	var response RetrieveAvailableBundleVersionsRoverClusterResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverBundle", "RetrieveAvailableBundleVersionsRoverCluster")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -426,7 +426,7 @@ func (client RoverBundleClient) retrieveAvailableBundleVersionsRoverNode(ctx con
 
 	var response RetrieveAvailableBundleVersionsRoverNodeResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverBundle", "RetrieveAvailableBundleVersionsRoverNode")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -484,7 +484,7 @@ func (client RoverBundleClient) retrieveBundleStatusRoverCluster(ctx context.Con
 
 	var response RetrieveBundleStatusRoverClusterResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverBundle", "RetrieveBundleStatusRoverCluster")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -542,7 +542,7 @@ func (client RoverBundleClient) retrieveBundleStatusRoverNode(ctx context.Contex
 
 	var response RetrieveBundleStatusRoverNodeResponse
 	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "roverBundle", "RetrieveBundleStatusRoverNode")
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
