@@ -286,6 +286,29 @@ func TestDefaultRetryPolicy(t *testing.T) {
 	}
 }
 
+func TestRetryPolicyString_NilPointerDoesNotPanic(t *testing.T) {
+	var policy *RetryPolicy = nil
+
+	assert.Equal(t, "<nil>", policy.String())
+}
+
+func TestRetryPolicyString_NilNonECPolicyDoesNotPanic(t *testing.T) {
+	policy := DefaultRetryPolicyWithoutEventualConsistency()
+	policyString := policy.String()
+
+	assert.Contains(t, policyString, "MaximumNumberAttempts=8")
+	assert.Contains(t, policyString, "MinSleepBetween=0")
+	assert.Contains(t, policyString, "MaxSleepBetween=30")
+	assert.Contains(t, policyString, "ExponentialBackoffBase=2")
+	assert.Contains(t, policyString, "NonEventuallyConsistentPolicy=<nil>")
+}
+
+func TestRetryPolicyString_WithNonECPolicy(t *testing.T) {
+	policy := DefaultRetryPolicy()
+
+	assert.Contains(t, policy.String(), "NonEventuallyConsistentPolicy={MaximumNumberAttempts=")
+}
+
 func TestRetryEOF(t *testing.T) {
 	policy := DefaultRetryPolicy()
 	// unroll an exponential retry policy with a specified maximum

@@ -7,6 +7,8 @@ import (
 	"bytes"
 	"crypto/rsa"
 	"crypto/x509"
+	"encoding/base64"
+	"encoding/json"
 	"encoding/pem"
 	"fmt"
 	"net/http"
@@ -451,6 +453,41 @@ func TestX509FederationClient_ClientHost(t *testing.T) {
 		federationClient.authClient = newAuthClient(testData.region, federationClient, "v1/x509")
 		assert.Equal(t, testData.expected, federationClient.authClient.Host)
 	}
+}
+
+func TestX509FederationClientForOkeWorkloadIdentity_ReusesHTTPClient(t *testing.T) {
+	proxymuxServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		encodedToken, err := json.Marshal(token{Token: "ST$" + expectedSecurityToken})
+		assert.NoError(t, err)
+		fmt.Fprintf(w, "%q", base64.StdEncoding.EncodeToString(encodedToken))
+	}))
+	defer proxymuxServer.Close()
+
+	federationClient, err := newX509FederationClientForOkeWorkloadIdentity(proxymuxServer.URL, &fakeSaTokenProvider{}, nil)
+	assert.NoError(t, err)
+
+	okeFederationClient, ok := federationClient.(*x509FederationClientForOkeWorkloadIdentity)
+	if !assert.True(t, ok) {
+		return
+	}
+
+	okeFederationClient.httpClient = proxymuxServer.Client()
+
+	mockSessionKeySupplier := new(mockSessionKeySupplier)
+	mockSessionKeySupplier.On("PublicKeyPemRaw").Return([]byte(sessionPublicKeyPem)).Twice()
+	okeFederationClient.sessionKeySupplier = mockSessionKeySupplier
+
+	sharedClient := okeFederationClient.httpClient
+
+	_, err = okeFederationClient.getSecurityToken()
+	assert.NoError(t, err)
+	assert.Same(t, sharedClient, okeFederationClient.httpClient)
+
+	_, err = okeFederationClient.getSecurityToken()
+	assert.NoError(t, err)
+	assert.Same(t, sharedClient, okeFederationClient.httpClient)
+
+	mockSessionKeySupplier.AssertExpectations(t)
 }
 
 func TestFederationAuthClientCircuitBreaker(t *testing.T) {
