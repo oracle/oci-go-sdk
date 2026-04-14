@@ -145,7 +145,7 @@ func (client GenerateEnrichmentJobClient) generateEnrichmentJob(ctx context.Cont
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/generative-ai-nl2sql/20260325/EnrichmentJob/GenerateEnrichmentJob"
 		err = common.PostProcessServiceError(err, "GenerateEnrichmentJob", "GenerateEnrichmentJob", apiReferenceLink)
 		return response, err
 	}
