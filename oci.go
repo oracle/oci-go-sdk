@@ -24,7 +24,7 @@ them out to stdout
 	)
 
 	func main() {
-		c, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+		client, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 		if err != nil {
 			fmt.Println("Error:", err)
 			return
