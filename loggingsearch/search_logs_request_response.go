@@ -21,14 +21,15 @@ type SearchLogsRequest struct {
 	// Search request.
 	SearchLogsDetails `contributesTo:"body"`
 
-	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
-	// a particular request, please provide the request ID.
+	// Unique Oracle-assigned identifier for the request. The input value can be null but an empty string will return an error.
+	// If you need to contact Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
-	// The maximum number of items to return in a response. Pagination is not supported in this API.
+	// The maximum number of items to return in a response.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
 
 	// For list pagination. The value of the opc-next-page response header from the previous "Search" call.
+	// The input value can be null but an empty string will return an error.
 	// For important details about how pagination works, see List Pagination (https://docs.oracle.com/iaas/Content/API/Concepts/usingapi.htm#nine).
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 

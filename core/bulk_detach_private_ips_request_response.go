@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/BulkDetachPrivateIps.go.html to see an example of how to use BulkDetachPrivateIpsRequest.
 type BulkDetachPrivateIpsRequest struct {
 
-	// Secondary IPv4 addresses to detach.
+	// The secondary IPv4 addresses to detach.
 	BulkDetachPrivateIpsDetails `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

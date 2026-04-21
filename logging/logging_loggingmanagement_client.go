@@ -69,7 +69,7 @@ func newLoggingManagementClientFromBaseClient(baseClient common.BaseClient, conf
 
 // SetRegion overrides the region of this client.
 func (client *LoggingManagementClient) SetRegion(region string) {
-	client.Host = common.StringToRegion(region).EndpointForTemplate("logging", "https://logging.{region}.oci.{secondLevelDomain}")
+	client.Host, _ = common.StringToRegion(region).EndpointForTemplateDottedRegion("logging", "https://logging.{region}.{dualStack?ds.:}oci.{secondLevelDomain}", "logging")
 }
 
 // SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
@@ -91,6 +91,12 @@ func (client *LoggingManagementClient) setConfigurationProvider(configProvider c
 // ConfigurationProvider the ConfigurationProvider used in this client, or null if none set
 func (client *LoggingManagementClient) ConfigurationProvider() *common.ConfigurationProvider {
 	return client.config
+}
+
+// EnableDualStackEndpoints Determines whether dual stack endpoint should be used or not.
+// Default value is false
+func (client *LoggingManagementClient) EnableDualStackEndpoints(enableDualStack bool) {
+	client.BaseClient.EnableDualStackEndpoints(enableDualStack)
 }
 
 // ChangeLogGroupCompartment Moves a log group into a different compartment within the same tenancy.  When provided, the If-Match is checked against the resource ETag values.
@@ -135,6 +141,13 @@ func (client LoggingManagementClient) changeLogGroupCompartment(ctx context.Cont
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response ChangeLogGroupCompartmentResponse
 	var httpResponse *http.Response
@@ -192,6 +205,13 @@ func (client LoggingManagementClient) changeLogLogGroup(ctx context.Context, req
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response ChangeLogLogGroupResponse
 	var httpResponse *http.Response
@@ -256,6 +276,13 @@ func (client LoggingManagementClient) changeLogSavedSearchCompartment(ctx contex
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response ChangeLogSavedSearchCompartmentResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "loggingManagement", "ChangeLogSavedSearchCompartment")
@@ -318,6 +345,13 @@ func (client LoggingManagementClient) changeUnifiedAgentConfigurationCompartment
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response ChangeUnifiedAgentConfigurationCompartmentResponse
 	var httpResponse *http.Response
@@ -382,6 +416,13 @@ func (client LoggingManagementClient) createLog(ctx context.Context, request com
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response CreateLogResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "loggingManagement", "CreateLog")
@@ -445,6 +486,13 @@ func (client LoggingManagementClient) createLogGroup(ctx context.Context, reques
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response CreateLogGroupResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "loggingManagement", "CreateLogGroup")
@@ -506,6 +554,13 @@ func (client LoggingManagementClient) createLogSavedSearch(ctx context.Context, 
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response CreateLogSavedSearchResponse
 	var httpResponse *http.Response
@@ -569,6 +624,13 @@ func (client LoggingManagementClient) createUnifiedAgentConfiguration(ctx contex
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response CreateUnifiedAgentConfigurationResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "loggingManagement", "CreateUnifiedAgentConfiguration")
@@ -625,6 +687,13 @@ func (client LoggingManagementClient) deleteLog(ctx context.Context, request com
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response DeleteLogResponse
 	var httpResponse *http.Response
@@ -683,6 +752,13 @@ func (client LoggingManagementClient) deleteLogGroup(ctx context.Context, reques
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response DeleteLogGroupResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "loggingManagement", "DeleteLogGroup")
@@ -739,6 +815,13 @@ func (client LoggingManagementClient) deleteLogSavedSearch(ctx context.Context, 
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response DeleteLogSavedSearchResponse
 	var httpResponse *http.Response
@@ -797,6 +880,13 @@ func (client LoggingManagementClient) deleteUnifiedAgentConfiguration(ctx contex
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response DeleteUnifiedAgentConfigurationResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "loggingManagement", "DeleteUnifiedAgentConfiguration")
@@ -853,6 +943,13 @@ func (client LoggingManagementClient) deleteWorkRequest(ctx context.Context, req
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response DeleteWorkRequestResponse
 	var httpResponse *http.Response
@@ -911,6 +1008,13 @@ func (client LoggingManagementClient) getLog(ctx context.Context, request common
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response GetLogResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "loggingManagement", "GetLog")
@@ -967,6 +1071,13 @@ func (client LoggingManagementClient) getLogGroup(ctx context.Context, request c
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response GetLogGroupResponse
 	var httpResponse *http.Response
@@ -1025,6 +1136,13 @@ func (client LoggingManagementClient) getLogSavedSearch(ctx context.Context, req
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response GetLogSavedSearchResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "loggingManagement", "GetLogSavedSearch")
@@ -1081,6 +1199,13 @@ func (client LoggingManagementClient) getUnifiedAgentConfiguration(ctx context.C
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response GetUnifiedAgentConfigurationResponse
 	var httpResponse *http.Response
@@ -1139,6 +1264,13 @@ func (client LoggingManagementClient) getWorkRequest(ctx context.Context, reques
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response GetWorkRequestResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "loggingManagement", "GetWorkRequest")
@@ -1195,6 +1327,13 @@ func (client LoggingManagementClient) listLogGroups(ctx context.Context, request
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response ListLogGroupsResponse
 	var httpResponse *http.Response
@@ -1253,6 +1392,13 @@ func (client LoggingManagementClient) listLogSavedSearches(ctx context.Context, 
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response ListLogSavedSearchesResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "loggingManagement", "ListLogSavedSearches")
@@ -1309,6 +1455,13 @@ func (client LoggingManagementClient) listLogs(ctx context.Context, request comm
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response ListLogsResponse
 	var httpResponse *http.Response
@@ -1367,6 +1520,13 @@ func (client LoggingManagementClient) listServices(ctx context.Context, request 
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response ListServicesResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "loggingManagement", "ListServices")
@@ -1423,6 +1583,13 @@ func (client LoggingManagementClient) listUnifiedAgentConfigurations(ctx context
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response ListUnifiedAgentConfigurationsResponse
 	var httpResponse *http.Response
@@ -1481,6 +1648,13 @@ func (client LoggingManagementClient) listWorkRequestErrors(ctx context.Context,
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response ListWorkRequestErrorsResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "loggingManagement", "ListWorkRequestErrors")
@@ -1538,6 +1712,13 @@ func (client LoggingManagementClient) listWorkRequestLogs(ctx context.Context, r
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response ListWorkRequestLogsResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "loggingManagement", "ListWorkRequestLogs")
@@ -1594,6 +1775,13 @@ func (client LoggingManagementClient) listWorkRequests(ctx context.Context, requ
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response ListWorkRequestsResponse
 	var httpResponse *http.Response
@@ -1654,6 +1842,13 @@ func (client LoggingManagementClient) updateLog(ctx context.Context, request com
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response UpdateLogResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "loggingManagement", "UpdateLog")
@@ -1713,6 +1908,13 @@ func (client LoggingManagementClient) updateLogGroup(ctx context.Context, reques
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response UpdateLogGroupResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "loggingManagement", "UpdateLogGroup")
@@ -1769,6 +1971,13 @@ func (client LoggingManagementClient) updateLogSavedSearch(ctx context.Context, 
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response UpdateLogSavedSearchResponse
 	var httpResponse *http.Response
@@ -1828,6 +2037,13 @@ func (client LoggingManagementClient) updateUnifiedAgentConfiguration(ctx contex
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response UpdateUnifiedAgentConfigurationResponse
 	var httpResponse *http.Response

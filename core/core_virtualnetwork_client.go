@@ -769,7 +769,7 @@ func (client VirtualNetworkClient) bulkAddVirtualCircuitPublicPrefixes(ctx conte
 	return response, err
 }
 
-// BulkCreateIpv6s Create new IPv6s for a VNIC or Subnet.
+// BulkCreateIpv6s Create new IPv6s in bulk for a VNIC or subnet.
 //
 // # See also
 //
@@ -895,7 +895,7 @@ func (client VirtualNetworkClient) bulkCreatePrivateIps(ctx context.Context, req
 	return response, err
 }
 
-// BulkDeleteIpv6s Unassigns and deletes IPv6s for a VNIC.
+// BulkDeleteIpv6s Unassign and delete IPv6s for a VNIC in bulk.
 //
 // # See also
 //
@@ -958,7 +958,7 @@ func (client VirtualNetworkClient) bulkDeleteIpv6s(ctx context.Context, request 
 	return response, err
 }
 
-// BulkDeletePrivateIps Unassigns and deletes secondary private IPv4s for a VNIC.
+// BulkDeletePrivateIps Unassign and delete secondary private IPv4s for a VNIC.
 //
 // # See also
 //
@@ -1077,7 +1077,7 @@ func (client VirtualNetworkClient) bulkDeleteVirtualCircuitPublicPrefixes(ctx co
 	return response, err
 }
 
-// BulkDetachIpv6s detach the specified IPv6s.
+// BulkDetachIpv6s Detach the specified IPv6s.
 //
 // # See also
 //
@@ -1140,7 +1140,7 @@ func (client VirtualNetworkClient) bulkDetachIpv6s(ctx context.Context, request 
 	return response, err
 }
 
-// BulkDetachPrivateIps Unassign the specified PrivateIP address from Virtual Network Interface Card (VNIC). You must specify the PrivateIP OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
+// BulkDetachPrivateIps Unassign the specified private IP addresses from the Virtual Network Interface Card (VNIC). You must specify the PrivateIP object's OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
 //
 // # See also
 //
@@ -1203,7 +1203,7 @@ func (client VirtualNetworkClient) bulkDetachPrivateIps(ctx context.Context, req
 	return response, err
 }
 
-// BulkUpdateIpv6s Updates the specified IPv6s.
+// BulkUpdateIpv6s Updates the specified IPv6s in bulk.
 //
 // # See also
 //
@@ -1266,7 +1266,7 @@ func (client VirtualNetworkClient) bulkUpdateIpv6s(ctx context.Context, request 
 	return response, err
 }
 
-// BulkUpdatePrivateIps Updates existing secondary Private IPv4s for a VNIC.
+// BulkUpdatePrivateIps Update existing secondary private IPv4s for a VNIC.
 //
 // # See also
 //

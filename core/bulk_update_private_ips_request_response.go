@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/BulkUpdatePrivateIps.go.html to see an example of how to use BulkUpdatePrivateIpsRequest.
 type BulkUpdatePrivateIpsRequest struct {
 
-	// Details of secondary IPv4 addresses to be updated.
+	// Details of the secondary IPv4 addresses to update.
 	BulkUpdatePrivateIpsDetails `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

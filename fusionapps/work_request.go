@@ -107,6 +107,8 @@ const (
 	WorkRequestOperationTypeSubscriptionUpdate                       WorkRequestOperationTypeEnum = "SUBSCRIPTION_UPDATE"
 	WorkRequestOperationTypeSubscriptionResume                       WorkRequestOperationTypeEnum = "SUBSCRIPTION_RESUME"
 	WorkRequestOperationTypeSubscriptionTerminate                    WorkRequestOperationTypeEnum = "SUBSCRIPTION_TERMINATE"
+	WorkRequestOperationTypeConfigureEmailSubdomain                  WorkRequestOperationTypeEnum = "CONFIGURE_EMAIL_SUBDOMAIN"
+	WorkRequestOperationTypeConfigureMicrosite                       WorkRequestOperationTypeEnum = "CONFIGURE_MICROSITE"
 )
 
 var mappingWorkRequestOperationTypeEnum = map[string]WorkRequestOperationTypeEnum{
@@ -139,6 +141,8 @@ var mappingWorkRequestOperationTypeEnum = map[string]WorkRequestOperationTypeEnu
 	"SUBSCRIPTION_UPDATE":                          WorkRequestOperationTypeSubscriptionUpdate,
 	"SUBSCRIPTION_RESUME":                          WorkRequestOperationTypeSubscriptionResume,
 	"SUBSCRIPTION_TERMINATE":                       WorkRequestOperationTypeSubscriptionTerminate,
+	"CONFIGURE_EMAIL_SUBDOMAIN":                    WorkRequestOperationTypeConfigureEmailSubdomain,
+	"CONFIGURE_MICROSITE":                          WorkRequestOperationTypeConfigureMicrosite,
 }
 
 var mappingWorkRequestOperationTypeEnumLowerCase = map[string]WorkRequestOperationTypeEnum{
@@ -171,6 +175,8 @@ var mappingWorkRequestOperationTypeEnumLowerCase = map[string]WorkRequestOperati
 	"subscription_update":                          WorkRequestOperationTypeSubscriptionUpdate,
 	"subscription_resume":                          WorkRequestOperationTypeSubscriptionResume,
 	"subscription_terminate":                       WorkRequestOperationTypeSubscriptionTerminate,
+	"configure_email_subdomain":                    WorkRequestOperationTypeConfigureEmailSubdomain,
+	"configure_microsite":                          WorkRequestOperationTypeConfigureMicrosite,
 }
 
 // GetWorkRequestOperationTypeEnumValues Enumerates the set of values for WorkRequestOperationTypeEnum
@@ -214,6 +220,8 @@ func GetWorkRequestOperationTypeEnumStringValues() []string {
 		"SUBSCRIPTION_UPDATE",
 		"SUBSCRIPTION_RESUME",
 		"SUBSCRIPTION_TERMINATE",
+		"CONFIGURE_EMAIL_SUBDOMAIN",
+		"CONFIGURE_MICROSITE",
 	}
 }
 

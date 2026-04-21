@@ -90,7 +90,6 @@ type DedicatedVmHost struct {
 	// The remaining memory of the dedicated VM host, in GBs.
 	RemainingMemoryInGBs *float32 `mandatory:"false" json:"remainingMemoryInGBs"`
 
-	// A list of total and remaining CPU and memory per capacity bucket.
 	CapacityBins []CapacityBin `mandatory:"false" json:"capacityBins"`
 
 	// The compute bare metal host OCID of the dedicated virtual machine host.

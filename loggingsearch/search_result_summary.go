@@ -4,7 +4,7 @@
 
 // Logging Search API
 //
-// Search for logs in your compartments, log groups, and log objects.
+// Use the Logging Search API to search for logs in your compartments, log groups, and log objects. For more information, see Logging Overview (https://docs.oracle.com/iaas/Content/Logging/Concepts/loggingoverview.htm).
 //
 
 package loggingsearch

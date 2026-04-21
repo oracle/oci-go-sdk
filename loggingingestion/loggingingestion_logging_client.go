@@ -4,7 +4,7 @@
 
 // Logging Ingestion API
 //
-// Use the Logging Ingestion API to ingest your application logs.
+// Use the Logging Ingestion API to ingest your application logs. For more information, see Logging Overview (https://docs.oracle.com/iaas/Content/Logging/Concepts/loggingoverview.htm).
 //
 
 package loggingingestion
@@ -67,7 +67,7 @@ func newLoggingClientFromBaseClient(baseClient common.BaseClient, configProvider
 
 // SetRegion overrides the region of this client.
 func (client *LoggingClient) SetRegion(region string) {
-	client.Host = common.StringToRegion(region).EndpointForTemplate("loggingingestion", "https://ingestion.logging.{region}.oci.{secondLevelDomain}")
+	client.Host = common.StringToRegion(region).EndpointForTemplate("loggingingestion", "https://ingestion.logging.{region}.{dualStack?ds.:}oci.{secondLevelDomain}")
 }
 
 // SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
@@ -89,6 +89,12 @@ func (client *LoggingClient) setConfigurationProvider(configProvider common.Conf
 // ConfigurationProvider the ConfigurationProvider used in this client, or null if none set
 func (client *LoggingClient) ConfigurationProvider() *common.ConfigurationProvider {
 	return client.config
+}
+
+// EnableDualStackEndpoints Determines whether dual stack endpoint should be used or not.
+// Default value is false
+func (client *LoggingClient) EnableDualStackEndpoints(enableDualStack bool) {
+	client.BaseClient.EnableDualStackEndpoints(enableDualStack)
 }
 
 // PutLogs This API allows ingesting logs associated with a logId. A success
@@ -133,6 +139,13 @@ func (client LoggingClient) putLogs(ctx context.Context, request common.OCIReque
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response PutLogsResponse
 	var httpResponse *http.Response

@@ -21,13 +21,13 @@ import (
 	"strings"
 )
 
-// UpdateComputeGpuMemoryClusterDetails Updates compute GPU memory cluster details.
+// UpdateComputeGpuMemoryClusterDetails Updates compute GPU Memory Cluster details.
 type UpdateComputeGpuMemoryClusterDetails struct {
 
 	// Instance Configuration to be used for this GPU Memory Cluster
 	InstanceConfigurationId *string `mandatory:"false" json:"instanceConfigurationId"`
 
-	// The number of instances currently running in the GpuMemoryCluster
+	// The desired number of instances for the GPU Memory Cluster.
 	Size *int64 `mandatory:"false" json:"size"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a
@@ -45,6 +45,9 @@ type UpdateComputeGpuMemoryClusterDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	GpuMemoryClusterScaleConfig *UpdateComputeGpuMemoryClusterScaleConfig `mandatory:"false" json:"gpuMemoryClusterScaleConfig"`
+
+	// Unique list of OCIDs for private IPs (IPv4/IPv6) associated with the GPU Memory Cluster
+	PrivateIpIds []string `mandatory:"false" json:"privateIpIds"`
 }
 
 func (m UpdateComputeGpuMemoryClusterDetails) String() string {

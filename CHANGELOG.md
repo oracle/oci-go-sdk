@@ -4,6 +4,33 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.113.0 - 2026-04-21
+### Added 
+- Support for Azure AD, Avro Metadata, and Microsoft Fabric Eventstream (Kafka-like) data sources in the GoldenGate service 
+- Support for creating branded email subdomains without delegating DNS subzone in the Fusion Apps as a Service 
+- Support for IPv6 endpoints in the Events service  
+- Support for IPv6 endpoints in the Logging service  
+- Support for IPv6 endpoints in the Logging Search service  
+- Support for IPv6 endpoints in the Logging Ingestion service 
+- Support for reserved private IP IDs in the Compute service 
+- Support for USAGE_ONLY query type in the Usage Api service 
+- Support for resizing Data, Reco, and Sparse disk groups in the Database service 
+- Support for logging line format in the Functions service   
+
+### Breaking Changes 
+- Enum value `OperationTypeGoldengateConnectionAssigmnentDelete` was removed from model `OperationTypeEnum` in the GoldenGate service 
+- The field `TimeUpgradeRequired` was removed in the model Deployment in the GoldenGate service 
+- The model `DeploymentUpgradeLifecycleStateEnum` was removed in the GoldenGate service 
+- Type of field `LifecycleState` was changed to `DeploymentBackupLifecycleStateEnum` in the models `DeploymentBackupSummary`, `DeploymentBackup`, `DeploymentSummary`, `DeploymentUpgradeSummary`, `DeploymentUpgrade`, `Deployment`, `ListDeploymentBackupsRequest`, `ListDeploymentPeersRequest`, `ListDeploymentUpgradesRequest`, and `ListDeploymentsRequest` in the GoldenGate service 
+- Type of field `BootstrapServers` was changed from `[]KafkaBootstrapServer` to `[]CreateKafkaBootstrapServer` in the model `CreateKafkaConnectionDetails` in the GoldenGate service 
+- The field `PrivateIp` was removed from the models `CreateGoldenGateConnectionDetails`, `CreateJavaMessageServiceConnectionDetails`, `CreateMicrosoftSqlserverConnectionDetails`, `CreateKafkaSchemaRegistryConnectionDetails`, `CreateMysqlConnectionDetails`, and `CreatePostgresqlConnectionDetails` in the GoldenGate service 
+- The model `UpdateComputeHostsRequest` renamed to `UpdateComputeHostRequest` in the Compute service 
+- The model `UpdateComputeHostsDetails` was renamed to `UpdateComputeHostDetails` in the Compute service 
+- The model `GetComputeHostsRequest` renamed to `GetComputeHostRequest` in the Compute service 
+- Methods `getComputeHosts(GetComputeHostsRequest)` and `updateComputeHosts(UpdateComputeHostsRequest)` have been removed from `Compute` in the Compute service. 
+- Methods `forUpdateComputeHosts(UpdateComputeHostsRequest)` and `forUpdateComputeHosts(UpdateComputeHostsRequest, TerminationStrategy, DelayStrategy)` have been removed from `ComputeWaiters` in the Compute service. 
+- Classes `UpdateComputeHostsDetails`, `GetComputeHostsRequest`, `UpdateComputeHostsRequest`, `GetComputeHostsResponse`, and `UpdateComputeHostsResponse` have been removed in the Compute service.
+
 ## 65.112.0 - 2026-04-14
 ### Added 
 - Support for filesystem snapshot locking for ransomware protection in the File Storage service 
