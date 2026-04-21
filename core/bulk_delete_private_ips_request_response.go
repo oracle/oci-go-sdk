@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/BulkDeletePrivateIps.go.html to see an example of how to use BulkDeletePrivateIpsRequest.
 type BulkDeletePrivateIpsRequest struct {
 
-	// Details of secondary IPv4 addresses to deleted.
+	// Details of the secondary IPv4 addresses to delete.
 	BulkDeletePrivateIpsDetails `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

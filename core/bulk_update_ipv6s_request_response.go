@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/BulkUpdateIpv6s.go.html to see an example of how to use BulkUpdateIpv6sRequest.
 type BulkUpdateIpv6sRequest struct {
 
-	// Update IPv6s details.
+	// Details of the IPv6s to update.
 	BulkUpdateIpv6sDetails `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
