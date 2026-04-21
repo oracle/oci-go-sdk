@@ -4,7 +4,7 @@
 
 // Logging Search API
 //
-// Search for logs in your compartments, log groups, and log objects.
+// Use the Logging Search API to search for logs in your compartments, log groups, and log objects. For more information, see Logging Overview (https://docs.oracle.com/iaas/Content/Logging/Concepts/loggingoverview.htm).
 //
 
 package loggingsearch
@@ -18,10 +18,10 @@ import (
 // SearchLogsDetails Search request object.
 type SearchLogsDetails struct {
 
-	// Start filter log's date and time, in the format defined by RFC3339.
+	// Start filter log's date and time, in the format defined by RFC 3339.
 	TimeStart *common.SDKTime `mandatory:"true" json:"timeStart"`
 
-	// End filter log's date and time, in the format defined by RFC3339.
+	// End filter log's date and time, in the format defined by RFC 3339.
 	TimeEnd *common.SDKTime `mandatory:"true" json:"timeEnd"`
 
 	// Query corresponding to the search operation. This query is parsed and validated before execution and

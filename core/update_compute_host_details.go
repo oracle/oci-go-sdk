@@ -21,8 +21,8 @@ import (
 	"strings"
 )
 
-// UpdateComputeHostsDetails The details for updating the compute host.
-type UpdateComputeHostsDetails struct {
+// UpdateComputeHostDetails The details for updating the compute host.
+type UpdateComputeHostDetails struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a
 	// namespace. For more information, see Resource Tags (https://docs.oracle.com/iaas/Content/General/Concepts/resourcetags.htm).
@@ -39,14 +39,14 @@ type UpdateComputeHostsDetails struct {
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
 }
 
-func (m UpdateComputeHostsDetails) String() string {
+func (m UpdateComputeHostDetails) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m UpdateComputeHostsDetails) ValidateEnumValue() (bool, error) {
+func (m UpdateComputeHostDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {

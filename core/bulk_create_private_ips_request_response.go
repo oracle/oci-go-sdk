@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/BulkCreatePrivateIps.go.html to see an example of how to use BulkCreatePrivateIpsRequest.
 type BulkCreatePrivateIpsRequest struct {
 
-	// Create private IPs details.
+	// Details used to create secondary private IPs.
 	BulkCreatePrivateIpsDetails `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

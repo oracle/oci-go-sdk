@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/BulkDetachIpv6s.go.html to see an example of how to use BulkDetachIpv6sRequest.
 type BulkDetachIpv6sRequest struct {
 
-	// detach IPv6s details.
+	// Details needed to detach IPv6s in bulk.
 	BulkDetachIpv6sDetails `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

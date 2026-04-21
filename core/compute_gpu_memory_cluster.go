@@ -21,13 +21,13 @@ import (
 	"strings"
 )
 
-// ComputeGpuMemoryCluster The customer facing object includes GPU memory cluster details.
+// ComputeGpuMemoryCluster The customer facing object includes GPU Memory Cluster details.
 type ComputeGpuMemoryCluster struct {
 
-	// The availability domain of the GPU memory cluster.
+	// The availability domain of the GPU Memory Cluster.
 	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
 
-	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) for the Customer-unique GPU memory cluster
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) for the Customer-unique GPU Memory Cluster
 	Id *string `mandatory:"true" json:"id"`
 
 	// The OCID of the Instance Configuration used to source launch details for this instance.
@@ -37,16 +37,16 @@ type ComputeGpuMemoryCluster struct {
 	// memory cluster.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// The lifecycle state of the GPU memory cluster
+	// The lifecycle state of the GPU Memory Cluster
 	LifecycleState ComputeGpuMemoryClusterLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compute cluster.
 	ComputeClusterId *string `mandatory:"true" json:"computeClusterId"`
 
-	// The number of instances currently running in the GpuMemoryCluster
+	// The size represents the total number of instances in the GPU Memory Cluster, including both running instances and those still in the process of launching.
 	Size *int64 `mandatory:"true" json:"size"`
 
-	// The date and time the GPU memory cluster was created.
+	// The date and time the GPU Memory Cluster was created.
 	// Example: `2016-09-15T21:10:29.600Z`
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
@@ -54,6 +54,9 @@ type ComputeGpuMemoryCluster struct {
 	GpuMemoryFabricId *string `mandatory:"false" json:"gpuMemoryFabricId"`
 
 	GpuMemoryClusterScaleConfig *ComputeGpuMemoryClusterScaleConfig `mandatory:"false" json:"gpuMemoryClusterScaleConfig"`
+
+	// Unique list of OCIDs for private IPs (IPv4/IPv6) associated with the GPU Memory Cluster
+	PrivateIpIds []string `mandatory:"false" json:"privateIpIds"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a
 	// namespace. For more information, see Resource Tags (https://docs.oracle.com/iaas/Content/General/Concepts/resourcetags.htm).

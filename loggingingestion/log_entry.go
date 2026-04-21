@@ -4,7 +4,7 @@
 
 // Logging Ingestion API
 //
-// Use the Logging Ingestion API to ingest your application logs.
+// Use the Logging Ingestion API to ingest your application logs. For more information, see Logging Overview (https://docs.oracle.com/iaas/Content/Logging/Concepts/loggingoverview.htm).
 //
 
 package loggingingestion
@@ -16,7 +16,7 @@ import (
 )
 
 // LogEntry Contains the log content with the associated timestamp and ID. Each
-// entry should be less than 1 MB size.
+// entry should be less than 1 MB size. Any log data field cannot be more than 10,000 characters. If your data exceeds this limit, the field is truncated during ingestion.
 type LogEntry struct {
 
 	// The log entry content.
