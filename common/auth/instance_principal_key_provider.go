@@ -5,7 +5,7 @@ package auth
 
 import (
 	"bytes"
-	"crypto/rsa"
+	"crypto"
 	"fmt"
 	"math/rand"
 	"net/http"
@@ -133,7 +133,7 @@ func (p *instancePrincipalKeyProvider) RegionForFederationClient() common.Region
 	return p.Region
 }
 
-func (p *instancePrincipalKeyProvider) PrivateRSAKey() (privateKey *rsa.PrivateKey, err error) {
+func (p *instancePrincipalKeyProvider) PrivateRSAKey() (privateKey crypto.Signer, err error) {
 	if privateKey, err = p.FederationClient.PrivateKey(); err != nil {
 		err = fmt.Errorf("failed to get private key: %s", err.Error())
 		return nil, instancePrincipalError{err: err}

@@ -4,7 +4,7 @@
 package auth
 
 import (
-	"crypto/rsa"
+	"crypto"
 	"crypto/x509"
 	"errors"
 	"fmt"
@@ -413,7 +413,7 @@ func newOkeWorkloadIdentityProvider(proxymuxEndpoint string, saTokenProvider Ser
 	return &rs, nil
 }
 
-func (p *resourcePrincipalKeyProvider) PrivateRSAKey() (privateKey *rsa.PrivateKey, err error) {
+func (p *resourcePrincipalKeyProvider) PrivateRSAKey() (privateKey crypto.Signer, err error) {
 	if privateKey, err = p.FederationClient.PrivateKey(); err != nil {
 		err = fmt.Errorf("failed to get private key: %s", err.Error())
 		return nil, resourcePrincipalError{err: err}

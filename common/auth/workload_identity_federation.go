@@ -4,8 +4,8 @@
 package auth
 
 import (
+	"crypto"
 	"crypto/md5"
-	"crypto/rsa"
 	"crypto/x509"
 	"encoding/base64"
 	"encoding/hex"
@@ -129,7 +129,7 @@ func (c TokenExchangeConfigurationProvider) KeyID() (string, error) {
 	return c.federationClient.SecurityToken()
 }
 
-func (c TokenExchangeConfigurationProvider) PrivateRSAKey() (*rsa.PrivateKey, error) {
+func (c TokenExchangeConfigurationProvider) PrivateRSAKey() (crypto.Signer, error) {
 	return c.federationClient.PrivateKey()
 }
 

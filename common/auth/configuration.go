@@ -4,7 +4,7 @@
 package auth
 
 import (
-	"crypto/rsa"
+	"crypto"
 	"fmt"
 
 	"github.com/oracle/oci-go-sdk/v65/common"
@@ -77,7 +77,7 @@ func InstancePrincipalConfigurationWithCerts(region common.Region, leafCertifica
 
 }
 
-func (p instancePrincipalConfigurationProvider) PrivateRSAKey() (*rsa.PrivateKey, error) {
+func (p instancePrincipalConfigurationProvider) PrivateRSAKey() (crypto.Signer, error) {
 	return p.keyProvider.PrivateRSAKey()
 }
 

@@ -6,6 +6,7 @@ package auth
 
 import (
 	"context"
+	"crypto"
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/x509"
@@ -171,7 +172,7 @@ func (c *oAuth2FederationClient) KeyID() (string, error) {
 }
 
 // PrivateRSAKey calls the PrivateRSAKey method of the auth provider given to the federation client
-func (c *oAuth2FederationClient) PrivateRSAKey() (*rsa.PrivateKey, error) {
+func (c *oAuth2FederationClient) PrivateRSAKey() (crypto.Signer, error) {
 	return c.authClientKeyProvider.PrivateRSAKey()
 }
 
@@ -407,7 +408,7 @@ func (c *x509FederationClient) KeyID() (string, error) {
 }
 
 // For authClient to sign requests to X509 Federation Endpoint
-func (c *x509FederationClient) PrivateRSAKey() (*rsa.PrivateKey, error) {
+func (c *x509FederationClient) PrivateRSAKey() (crypto.Signer, error) {
 	key := c.leafCertificateRetriever.PrivateKey()
 	if key == nil {
 		return nil, fmt.Errorf("can not read private key from leaf certificate. Likely an error in the metadata service")

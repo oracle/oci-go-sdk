@@ -4,7 +4,7 @@
 package auth
 
 import (
-	"crypto/rsa"
+	"crypto"
 	"fmt"
 
 	"github.com/oracle/oci-go-sdk/v65/common"
@@ -16,7 +16,7 @@ type resourcePrincipalDelegationTokenConfigurationProvider struct {
 	region                       *common.Region
 }
 
-func (r resourcePrincipalDelegationTokenConfigurationProvider) PrivateRSAKey() (*rsa.PrivateKey, error) {
+func (r resourcePrincipalDelegationTokenConfigurationProvider) PrivateRSAKey() (crypto.Signer, error) {
 	return r.resourcePrincipalKeyProvider.PrivateRSAKey()
 }
 

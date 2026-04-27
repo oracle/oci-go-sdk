@@ -4,7 +4,7 @@
 package auth
 
 import (
-	"crypto/rsa"
+	"crypto"
 	"fmt"
 
 	"github.com/oracle/oci-go-sdk/v65/common"
@@ -56,7 +56,7 @@ func (p instancePrincipalDelegationTokenConfigurationProvider) getInstancePrinci
 	return p, nil
 }
 
-func (p instancePrincipalDelegationTokenConfigurationProvider) PrivateRSAKey() (*rsa.PrivateKey, error) {
+func (p instancePrincipalDelegationTokenConfigurationProvider) PrivateRSAKey() (crypto.Signer, error) {
 	return p.instancePrincipalKeyProvider.PrivateRSAKey()
 }
 

@@ -6,7 +6,7 @@ package common
 import (
 	"bytes"
 	"context"
-	"crypto/rsa"
+	"crypto"
 	"errors"
 	"fmt"
 	"io"
@@ -39,7 +39,7 @@ func (c customConfig) UserOCID() (string, error) {
 func (c customConfig) TenancyOCID() (string, error) {
 	return "ocid1", nil
 }
-func (c customConfig) PrivateRSAKey() (*rsa.PrivateKey, error) {
+func (c customConfig) PrivateRSAKey() (crypto.Signer, error) {
 	key, _ := PrivateKeyFromBytes([]byte(testPrivateKeyConf), nil)
 	return key, nil
 }

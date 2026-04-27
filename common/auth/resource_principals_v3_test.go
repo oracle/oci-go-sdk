@@ -4,7 +4,7 @@
 package auth
 
 import (
-	"crypto/rsa"
+	"crypto"
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
@@ -131,7 +131,7 @@ func (f *fakeConfigProviderWithClaimAccess) KeyID() (string, error) {
 	return "keyId", nil
 }
 
-func (f *fakeConfigProviderWithClaimAccess) PrivateRSAKey() (*rsa.PrivateKey, error) {
+func (f *fakeConfigProviderWithClaimAccess) PrivateRSAKey() (crypto.Signer, error) {
 	block, _ := pem.Decode([]byte(testPrivateKey))
 	key, _ := x509.ParsePKCS1PrivateKey(block.Bytes)
 	return key, nil

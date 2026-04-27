@@ -4,7 +4,7 @@
 package common
 
 import (
-	"crypto/rsa"
+	"crypto"
 	"errors"
 	"fmt"
 	"io/ioutil"
@@ -116,7 +116,7 @@ func NewRawConfigurationProvider(tenancy, user, region, fingerprint, privateKey 
 	return rawConfigurationProvider{tenancy, user, region, fingerprint, privateKey, privateKeyPassphrase}
 }
 
-func (p rawConfigurationProvider) PrivateRSAKey() (key *rsa.PrivateKey, err error) {
+func (p rawConfigurationProvider) PrivateRSAKey() (key crypto.Signer, err error) {
 	return PrivateKeyFromBytes([]byte(p.privateKey), p.privateKeyPassphrase)
 }
 
@@ -186,7 +186,7 @@ func (p environmentConfigurationProvider) String() string {
 	return fmt.Sprintf("Configuration provided by environment variables prefixed with: %s", p.EnvironmentVariablePrefix)
 }
 
-func (p environmentConfigurationProvider) PrivateRSAKey() (key *rsa.PrivateKey, err error) {
+func (p environmentConfigurationProvider) PrivateRSAKey() (key crypto.Signer, err error) {
 	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "private_key_path")
 	var ok bool
 	var value string
@@ -550,7 +550,7 @@ func (p fileConfigurationProvider) KeyID() (keyID string, err error) {
 	return
 }
 
-func (p fileConfigurationProvider) PrivateRSAKey() (key *rsa.PrivateKey, err error) {
+func (p fileConfigurationProvider) PrivateRSAKey() (key crypto.Signer, err error) {
 	info, err := p.readAndParseConfigFile()
 	if err != nil {
 		err = fileConfigurationProviderError{err: fmt.Errorf("can not read tenancy configuration due to: %s", err.Error())}
@@ -709,7 +709,7 @@ func (c composingConfigurationProvider) KeyID() (string, error) {
 	return "", fmt.Errorf("did not find a proper configuration for key id")
 }
 
-func (c composingConfigurationProvider) PrivateRSAKey() (*rsa.PrivateKey, error) {
+func (c composingConfigurationProvider) PrivateRSAKey() (crypto.Signer, error) {
 	for _, p := range c.Providers {
 		val, err := p.PrivateRSAKey()
 		if err == nil {

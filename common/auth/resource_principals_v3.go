@@ -5,6 +5,7 @@ package auth
 
 import (
 	"context"
+	"crypto"
 	"crypto/rsa"
 	"fmt"
 	"net/http"
@@ -243,7 +244,7 @@ func (r *resourcePrincipalV30ConfigurationProvider) Refreshable() bool {
 	return true
 }
 
-func (r *resourcePrincipalV30ConfigurationProvider) PrivateRSAKey() (*rsa.PrivateKey, error) {
+func (r *resourcePrincipalV30ConfigurationProvider) PrivateRSAKey() (crypto.Signer, error) {
 	privateKey, err := r.keyProvider.resourcePrincipalClient.PrivateKey()
 	if err != nil {
 		err = fmt.Errorf("failed to get resource principal private key: %s", err.Error())

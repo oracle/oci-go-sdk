@@ -7,7 +7,6 @@ import (
 	"bytes"
 	"crypto"
 	"crypto/rand"
-	"crypto/rsa"
 	"crypto/sha256"
 	"encoding/base64"
 	"fmt"
@@ -24,7 +23,7 @@ type HTTPRequestSigner interface {
 
 // KeyProvider interface that wraps information about the key's account owner
 type KeyProvider interface {
-	PrivateRSAKey() (*rsa.PrivateKey, error)
+	PrivateRSAKey() (crypto.Signer, error)
 	KeyID() (string, error)
 }
 
@@ -228,7 +227,7 @@ func (signer ociRequestSigner) computeSignature(request *http.Request) (signatur
 	}
 
 	var unencodedSig []byte
-	unencodedSig, e := rsa.SignPKCS1v15(rand.Reader, privateKey, crypto.SHA256, hashed)
+	unencodedSig, e := privateKey.Sign(rand.Reader, hashed, crypto.SHA256)
 	if e != nil {
 		err = fmt.Errorf("can not compute signature while signing the request %s: ", e.Error())
 		return

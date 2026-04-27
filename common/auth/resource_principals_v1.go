@@ -5,6 +5,7 @@ package auth
 
 import (
 	"context"
+	"crypto"
 	"crypto/rsa"
 	"fmt"
 
@@ -203,7 +204,7 @@ func (c *resourcePrincipalFederationClient) SecurityToken() (token string, err e
 	return c.securityToken.String(), nil
 }
 
-func (p *resourcePrincipalConfigurationProvider) PrivateRSAKey() (privateKey *rsa.PrivateKey, err error) {
+func (p *resourcePrincipalConfigurationProvider) PrivateRSAKey() (privateKey crypto.Signer, err error) {
 	if privateKey, err = p.keyProvider.ResourcePrincipalClient.PrivateKey(); err != nil {
 		err = fmt.Errorf("failed to get resource principal private key: %s", err.Error())
 		return nil, err

@@ -5,7 +5,7 @@ package common
 
 import (
 	"bytes"
-	"crypto/rsa"
+	"crypto"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -71,7 +71,7 @@ x-content-sha256: V9Z20UJTvkvpJ50flBzKE32+6m2zJjweHpDMX/U4Uy0=`
 
 type testKeyProvider struct{}
 
-func (kp testKeyProvider) PrivateRSAKey() (*rsa.PrivateKey, error) {
+func (kp testKeyProvider) PrivateRSAKey() (crypto.Signer, error) {
 	pass := ""
 	key, e := PrivateKeyFromBytes([]byte(testPrivateKey), &pass)
 	return key, e

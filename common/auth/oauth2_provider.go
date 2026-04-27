@@ -4,7 +4,7 @@
 package auth
 
 import (
-	"crypto/rsa"
+	"crypto"
 	"fmt"
 
 	"github.com/oracle/oci-go-sdk/v65/common"
@@ -49,7 +49,7 @@ func (p OAuth2ConfigurationProvider) KeyID() (string, error) {
 }
 
 // PrivateRSAKey returns the private key of the session key supplier created for the OAuth Provider
-func (p OAuth2ConfigurationProvider) PrivateRSAKey() (privateKey *rsa.PrivateKey, err error) {
+func (p OAuth2ConfigurationProvider) PrivateRSAKey() (privateKey crypto.Signer, err error) {
 	if privateKey, err = p.federationClient.PrivateKey(); err != nil {
 		err = fmt.Errorf("failed to get private key: %s", err.Error())
 		return nil, err
