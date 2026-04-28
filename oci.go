@@ -445,7 +445,7 @@ The NewRetryPolicy function also creates a retry policy without eventual consist
 
 Circuit Breaker can prevent an application repeatedly trying to execute an operation that is likely to fail, allowing it to continue without waiting for the fault to be rectified or wasting CPU cycles,
 of course, it also enables an application to detect whether the fault has been resolved. If the problem appears to have been rectified, the application can attempt to invoke the operation.
-Go SDK intergrates sony/gobreaker solution, wraps in a circuit breaker object, which monitors for failures. Once the failures reach a certain threshold, the circuit breaker trips,
+Go SDK integrates sony/gobreaker/v2 solution, wraps in a circuit breaker object, which monitors for failures. Once the failures reach a certain threshold, the circuit breaker trips,
 and all further calls to the circuit breaker return with an error, this also saves the service from being overwhelmed with network calls in case of an outage.
 
 # Circuit Breaker Configuration definitions

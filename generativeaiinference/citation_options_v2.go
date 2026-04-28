@@ -18,10 +18,10 @@ import (
 	"strings"
 )
 
-// CitationOptionsV2 Options for controlling citation generation in RAG flows.
+// CitationOptionsV2 Options for controlling citation generation.
 type CitationOptionsV2 struct {
 
-	// Dictates the approach taken to generating citations as part of the RAG flow. Defaults to "accurate".   - "ACCURATE": More precise citation generation.   - "FAST": Faster but may be less precise.   - "OFF": Disables citation generation.   Note: `command-r7b-12-2024` and `command-a-03-2025` only support "FAST" and "OFF".
+	// Dictates the approach taken to generating citations.   - "ACCURATE": More precise citation generation.   - "FAST": Faster but may be less precise.   - "OFF": Disables citation generation.
 	Mode CitationOptionsV2ModeEnum `mandatory:"false" json:"mode,omitempty"`
 }
 
