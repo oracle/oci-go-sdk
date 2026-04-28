@@ -13,6 +13,7 @@
 package generativeaiinference
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
@@ -29,6 +30,9 @@ type EmbedTextResult struct {
 
 	// The original inputs. Only present if "isEcho" is set to true.
 	Inputs []string `mandatory:"false" json:"inputs"`
+
+	// The original inputs. Only present if "isEcho" is set to true.
+	EmbedContents []EmbedContent `mandatory:"false" json:"embedContents"`
 
 	// The embeddings corresponding to embedding types input.
 	EmbeddingsByType *interface{} `mandatory:"false" json:"embeddingsByType"`
@@ -56,4 +60,56 @@ func (m EmbedTextResult) ValidateEnumValue() (bool, error) {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
 	return false, nil
+}
+
+// UnmarshalJSON unmarshals from json
+func (m *EmbedTextResult) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		Inputs           []string       `json:"inputs"`
+		EmbedContents    []embedcontent `json:"embedContents"`
+		EmbeddingsByType *interface{}   `json:"embeddingsByType"`
+		ModelId          *string        `json:"modelId"`
+		ModelVersion     *string        `json:"modelVersion"`
+		Usage            *Usage         `json:"usage"`
+		Id               *string        `json:"id"`
+		Embeddings       [][]float32    `json:"embeddings"`
+	}{}
+
+	e = json.Unmarshal(data, &model)
+	if e != nil {
+		return
+	}
+	var nn interface{}
+	m.Inputs = make([]string, len(model.Inputs))
+	copy(m.Inputs, model.Inputs)
+	m.EmbedContents = make([]EmbedContent, len(model.EmbedContents))
+	for i, n := range model.EmbedContents {
+		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)
+		if e != nil {
+			return e
+		}
+		if nn != nil {
+			m.EmbedContents[i] = nn.(EmbedContent)
+		} else {
+			m.EmbedContents[i] = nil
+		}
+	}
+	m.EmbeddingsByType = model.EmbeddingsByType
+
+	m.ModelId = model.ModelId
+
+	m.ModelVersion = model.ModelVersion
+
+	m.Usage = model.Usage
+
+	m.Id = model.Id
+
+	m.Embeddings = make([][]float32, len(model.Embeddings))
+	for i := range model.Embeddings {
+		if model.Embeddings[i] != nil {
+			m.Embeddings[i] = make([]float32, len(model.Embeddings[i]))
+			copy(m.Embeddings[i], model.Embeddings[i])
+		}
+	}
+	return
 }
