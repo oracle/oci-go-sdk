@@ -21,14 +21,16 @@ import (
 
 // EmbedTextDetails Details for the request to embed texts.
 type EmbedTextDetails struct {
-
-	// Provide a list of strings or one base64 encoded image with `input_type` setting to `IMAGE`. If text embedding, each string can be words, a phrase, or a paragraph. The maximum length of each string entry in the list is 512 tokens.
-	Inputs []string `mandatory:"true" json:"inputs"`
-
 	ServingMode ServingMode `mandatory:"true" json:"servingMode"`
 
 	// The OCID of compartment in which to call the Generative AI service to create text embeddings.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
+
+	// Provide a list of strings or one base64 encoded image with `input_type` setting to `IMAGE`. If text embedding, each string can be words, a phrase, or a paragraph. The maximum length of each string entry in the list is 512 tokens.
+	Inputs []string `mandatory:"false" json:"inputs"`
+
+	// An array of text/image inputs to be embedded. Supported for Embed v4 models.
+	EmbedContents []EmbedContent `mandatory:"false" json:"embedContents"`
 
 	// Whether or not to include the original inputs in the response. Results are index-based.
 	IsEcho *bool `mandatory:"false" json:"isEcho"`
@@ -77,12 +79,13 @@ func (m EmbedTextDetails) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *EmbedTextDetails) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
+		Inputs           []string                             `json:"inputs"`
+		EmbedContents    []embedcontent                       `json:"embedContents"`
 		IsEcho           *bool                                `json:"isEcho"`
 		EmbeddingTypes   []EmbedTextDetailsEmbeddingTypesEnum `json:"embeddingTypes"`
 		OutputDimensions *int                                 `json:"outputDimensions"`
 		Truncate         EmbedTextDetailsTruncateEnum         `json:"truncate"`
 		InputType        EmbedTextDetailsInputTypeEnum        `json:"inputType"`
-		Inputs           []string                             `json:"inputs"`
 		ServingMode      servingmode                          `json:"servingMode"`
 		CompartmentId    *string                              `json:"compartmentId"`
 	}{}
@@ -92,6 +95,20 @@ func (m *EmbedTextDetails) UnmarshalJSON(data []byte) (e error) {
 		return
 	}
 	var nn interface{}
+	m.Inputs = make([]string, len(model.Inputs))
+	copy(m.Inputs, model.Inputs)
+	m.EmbedContents = make([]EmbedContent, len(model.EmbedContents))
+	for i, n := range model.EmbedContents {
+		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)
+		if e != nil {
+			return e
+		}
+		if nn != nil {
+			m.EmbedContents[i] = nn.(EmbedContent)
+		} else {
+			m.EmbedContents[i] = nil
+		}
+	}
 	m.IsEcho = model.IsEcho
 
 	m.EmbeddingTypes = make([]EmbedTextDetailsEmbeddingTypesEnum, len(model.EmbeddingTypes))
@@ -102,8 +119,6 @@ func (m *EmbedTextDetails) UnmarshalJSON(data []byte) (e error) {
 
 	m.InputType = model.InputType
 
-	m.Inputs = make([]string, len(model.Inputs))
-	copy(m.Inputs, model.Inputs)
 	nn, e = model.ServingMode.UnmarshalPolymorphicJSON(model.ServingMode.JsonData)
 	if e != nil {
 		return

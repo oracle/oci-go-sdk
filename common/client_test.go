@@ -883,3 +883,31 @@ func TestRefreshableTokenWrappedCallWithDetails_NonSeekableBodies(t *testing.T) 
 		assert.Equal(t, http.StatusUnauthorized, resp.StatusCode)
 	}
 }
+
+// TestRefreshableTokenWrappedCallWithDetails_NoRetryOnNilResponse verifies that there are no retries if the response is nil (network related issues have a nil response and should not be retried)
+func TestRefreshableTokenWrappedCallWithDetails_NoRetryOnNilResponse(t *testing.T) {
+	signer := dummySigner{}
+	client := BaseClient{Signer: signer, UserAgent: "ua", Host: "http://somehost:9000"}
+
+	callCount := 0
+	expectedErr := fmt.Errorf("network error")
+
+	client.HTTPClient = fakeCaller{
+		Customcall: func(r *http.Request) (*http.Response, error) {
+			callCount++
+			return nil, expectedErr
+		},
+	}
+
+	req, err := http.NewRequest("GET", "http://example.com", nil)
+	assert.NoError(t, err)
+
+	resp, err := client.RefreshableTokenWrappedCallWithDetails(context.Background(), req, ClientCallDetails{Signer: signer})
+
+	// Should return immediately
+	assert.Nil(t, resp)
+	assert.Equal(t, expectedErr, err)
+
+	// No retry happened
+	assert.Equal(t, 1, callCount)
+}

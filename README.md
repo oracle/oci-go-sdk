@@ -176,7 +176,7 @@ go install github.com/stretchr/testify
 ```
 - Install [gobreaker](https://github.com/sony/gobreaker) with the command:
 ```sh
-go install github.com/sony/gobreaker
+go install github.com/sony/gobreaker/v2
 ```
 - Install [flock](https://github.com/gofrs/flock) with the command:
 ```sh
