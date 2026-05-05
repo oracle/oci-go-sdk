@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.114.1 - 2026-05-05
+### Added 
+- Support for large generic v4 and v5 unit shapes in the Generative AI service
+
 ## 65.114.0 - 2026-04-28
 ### Added 
 - Support for OCI cache backup/restore and export/import in the Redis service 
