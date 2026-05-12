@@ -22,6 +22,40 @@ import (
 	"github.com/stretchr/testify/mock"
 )
 
+type captureSDKLogger struct {
+	level   int
+	entries []string
+}
+
+func (l *captureSDKLogger) LogLevel() int {
+	return l.level
+}
+
+func (l *captureSDKLogger) Log(logLevel int, format string, v ...interface{}) error {
+	if logLevel <= l.level {
+		l.entries = append(l.entries, fmt.Sprintf(format, v...))
+	}
+	return nil
+}
+
+func (l *captureSDKLogger) String() string {
+	return strings.Join(l.entries, "\n")
+}
+
+func useCaptureLogger(t *testing.T, level int) *captureSDKLogger {
+	t.Helper()
+
+	logger := &captureSDKLogger{level: level}
+	common.SetSDKLogger(logger)
+	t.Cleanup(func() {
+		resetLogger, err := common.NewSDKLogger()
+		assert.NoError(t, err)
+		common.SetSDKLogger(resetLogger)
+	})
+
+	return logger
+}
+
 // x509 Federation Client Tests
 
 func TestX509FederationClient_VeryFirstSecurityToken(t *testing.T) {
@@ -486,6 +520,43 @@ func TestX509FederationClientForOkeWorkloadIdentity_ReusesHTTPClient(t *testing.
 	_, err = okeFederationClient.getSecurityToken()
 	assert.NoError(t, err)
 	assert.Same(t, sharedClient, okeFederationClient.httpClient)
+
+	mockSessionKeySupplier.AssertExpectations(t)
+}
+
+func TestX509FederationClientForOkeWorkloadIdentity_DoesNotLogSensitiveMaterial(t *testing.T) {
+	logger := useCaptureLogger(t, 2)
+
+	proxymuxServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		encodedToken, err := json.Marshal(token{Token: "ST$" + expectedSecurityToken})
+		assert.NoError(t, err)
+		fmt.Fprintf(w, "%q", base64.StdEncoding.EncodeToString(encodedToken))
+	}))
+	defer proxymuxServer.Close()
+
+	federationClient, err := newX509FederationClientForOkeWorkloadIdentity(proxymuxServer.URL, &fakeSaTokenProvider{}, nil)
+	assert.NoError(t, err)
+
+	okeFederationClient, ok := federationClient.(*x509FederationClientForOkeWorkloadIdentity)
+	if !assert.True(t, ok) {
+		return
+	}
+
+	okeFederationClient.httpClient = proxymuxServer.Client()
+
+	mockSessionKeySupplier := new(mockSessionKeySupplier)
+	mockSessionKeySupplier.On("PublicKeyPemRaw").Return([]byte(sessionPublicKeyPem)).Once()
+	okeFederationClient.sessionKeySupplier = mockSessionKeySupplier
+
+	_, err = okeFederationClient.getSecurityToken()
+	assert.NoError(t, err)
+
+	logs := logger.String()
+	assert.NotContains(t, logs, sessionPublicKeyPem)
+	assert.NotContains(t, logs, sessionPublicKeyBodyNoNewLine)
+	assert.NotContains(t, logs, rpst)
+	assert.NotContains(t, logs, "\"sub\"")
+	assert.NotContains(t, logs, "\"res_id\"")
 
 	mockSessionKeySupplier.AssertExpectations(t)
 }
