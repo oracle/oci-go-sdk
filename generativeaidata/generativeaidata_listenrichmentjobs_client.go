@@ -140,7 +140,7 @@ func (client ListEnrichmentJobsClient) listEnrichmentJobs(ctx context.Context, r
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/generative-ai-nl2sql/20260325/EnrichmentJobCollection/ListEnrichmentJobs"
 		err = common.PostProcessServiceError(err, "ListEnrichmentJobs", "ListEnrichmentJobs", apiReferenceLink)
 		return response, err
 	}
