@@ -15,6 +15,7 @@ import (
 	"net/url"
 	"os"
 	"strconv"
+	"strings"
 	"testing"
 
 	"time"
@@ -55,6 +56,39 @@ func testClientWithRegion(r Region) BaseClient {
 	p := customConfig{Reg: r}
 	c, _ := NewClientWithConfig(p)
 	return c
+}
+
+type captureSDKLogger struct {
+	level   int
+	entries []string
+}
+
+func (l *captureSDKLogger) LogLevel() int {
+	return l.level
+}
+
+func (l *captureSDKLogger) Log(logLevel int, format string, v ...interface{}) error {
+	if logLevel <= l.level {
+		l.entries = append(l.entries, fmt.Sprintf(format, v...))
+	}
+	return nil
+}
+
+func (l *captureSDKLogger) String() string {
+	return strings.Join(l.entries, "\n")
+}
+
+func useCaptureLogger(t *testing.T, level int) *captureSDKLogger {
+	t.Helper()
+
+	previousLogger := defaultLogger
+	logger := &captureSDKLogger{level: level}
+	SetSDKLogger(logger)
+	t.Cleanup(func() {
+		SetSDKLogger(previousLogger)
+	})
+
+	return logger
 }
 
 func TestClient_prepareRequestDefScheme(t *testing.T) {
@@ -127,6 +161,59 @@ func TestClient_prepareRequestSetScheme(t *testing.T) {
 	c.prepareRequest(&request)
 	assert.Equal(t, "http", request.URL.Scheme)
 	assert.Equal(t, "somehost:9000", request.URL.Host)
+}
+
+func TestLogRequest_RedactsSensitiveHeadersAndBody(t *testing.T) {
+	logger := useCaptureLogger(t, verboseLogging)
+
+	request, err := http.NewRequest(http.MethodPost, "https://example.com", strings.NewReader(`{"token":"top-secret","publicKey":"session-public-key","safe":"ok"}`))
+	assert.NoError(t, err)
+	request.Header.Set(requestHeaderAuthorization, "Bearer top-secret")
+	request.Header.Set(requestHeaderOpcOboToken, "delegation-secret")
+
+	logRequest(request, Logf, verboseLogging)
+
+	logs := logger.String()
+	assert.NotContains(t, logs, "top-secret")
+	assert.NotContains(t, logs, "session-public-key")
+	assert.NotContains(t, logs, "delegation-secret")
+	assert.Contains(t, logs, "Authorization: <redacted>")
+	assert.Contains(t, logs, `"token":"<redacted>"`)
+	assert.Contains(t, logs, `"safe":"ok"`)
+}
+
+func TestCheckForSuccessfulResponse_RedactsSensitiveRequestDetails(t *testing.T) {
+	logger := useCaptureLogger(t, infoLogging)
+
+	request, err := http.NewRequest(http.MethodPost, "https://example.com", nil)
+	assert.NoError(t, err)
+	request.Header.Set(requestHeaderAuthorization, "Bearer top-secret")
+
+	form := url.Values{}
+	form.Set("subject_token", "top-secret")
+	form.Set("client_secret", "client-secret")
+	form.Set("grant_type", "urn:ietf:params:oauth:grant-type:token-exchange")
+	form.Set("safe", "ok")
+
+	requestBody := ioutil.NopCloser(strings.NewReader(form.Encode()))
+	response := &http.Response{
+		StatusCode: http.StatusUnauthorized,
+		Status:     "401 Unauthorized",
+		Request:    request,
+		Body:       ioutil.NopCloser(strings.NewReader(`{"code":"NotAuthorizedOrNotFound"}`)),
+		Header:     http.Header{},
+	}
+
+	err = checkForSuccessfulResponse(response, &requestBody)
+	assert.Error(t, err)
+
+	logs := logger.String()
+	assert.NotContains(t, logs, "top-secret")
+	assert.NotContains(t, logs, "client-secret")
+	assert.Contains(t, logs, "Authorization: <redacted>")
+	assert.Contains(t, logs, "subject_token=<redacted>")
+	assert.Contains(t, logs, "client_secret=<redacted>")
+	assert.Contains(t, logs, "safe=ok")
 }
 
 func TestClient_prepareRequestBasePathPrefix(t *testing.T) {

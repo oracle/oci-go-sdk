@@ -145,7 +145,7 @@ func (client CancelEnrichmentJobClient) cancelEnrichmentJob(ctx context.Context,
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/generative-ai-nl2sql/20260325/EnrichmentJob/CancelEnrichmentJob"
 		err = common.PostProcessServiceError(err, "CancelEnrichmentJob", "CancelEnrichmentJob", apiReferenceLink)
 		return response, err
 	}
