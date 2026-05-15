@@ -40,6 +40,18 @@ func NewQueueClientWithConfigurationProvider(configProvider common.Configuration
 	return newQueueClientFromBaseClient(baseClient, provider)
 }
 
+// NewQueueClientWithConfigurationProviderWithEndpoint Creates a new default Queue client with the given configuration provider and the Queue endpoint.
+// the configuration provider will be used for the default signer as well as reading the region
+func NewQueueClientWithConfigurationProviderWithEndpoint(configProvider common.ConfigurationProvider, endpoint string) (client QueueClient, err error) {
+	client, err = NewQueueClientWithConfigurationProvider(configProvider)
+	if err != nil {
+		return client, err
+	}
+
+	client.SetEndpoint(endpoint)
+	return client, nil
+}
+
 // NewQueueClientWithOboToken Creates a new default Queue client with the given configuration provider.
 // The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
 //
@@ -51,6 +63,20 @@ func NewQueueClientWithOboToken(configProvider common.ConfigurationProvider, obo
 	}
 
 	return newQueueClientFromBaseClient(baseClient, configProvider)
+}
+
+// NewQueueClientWithOboTokenWithEndpoint Creates a new default Queue client with the given configuration provider and endpoint.
+// The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
+//
+//	as well as reading the region
+func NewQueueClientWithOboTokenWithEndpoint(configProvider common.ConfigurationProvider, oboToken, endpoint string) (client QueueClient, err error) {
+	client, err = NewQueueClientWithOboToken(configProvider, oboToken)
+	if err != nil {
+		return client, err
+	}
+
+	client.SetEndpoint(endpoint)
+	return client, nil
 }
 
 func newQueueClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client QueueClient, err error) {
@@ -66,8 +92,14 @@ func newQueueClientFromBaseClient(baseClient common.BaseClient, configProvider c
 }
 
 // SetRegion overrides the region of this client.
+// Deprecated: SetReion is deprecated because each Queue's endpoint is different
 func (client *QueueClient) SetRegion(region string) {
 	client.Host = common.StringToRegion(region).EndpointForTemplate("queue", "https://messaging.{region}.oci.{secondLevelDomain}")
+}
+
+// SetEndpoint overrides the endpoint of this client.
+func (client *QueueClient) SetEndpoint(endpoint string) {
+	client.Host = endpoint
 }
 
 // SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
