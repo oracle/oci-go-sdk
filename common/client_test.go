@@ -163,6 +163,28 @@ func TestClient_prepareRequestSetScheme(t *testing.T) {
 	assert.Equal(t, "somehost:9000", request.URL.Host)
 }
 
+func TestClient_prepareRequestRejectsInvalidHostComponents(t *testing.T) {
+	invalidHosts := []string{
+		"https://foo/bar.objectstorage.us-phoenix-1.oci.customer-oci.com",
+		"https://foo?bar.objectstorage.us-phoenix-1.oci.customer-oci.com",
+		"https://foo#bar.objectstorage.us-phoenix-1.oci.customer-oci.com",
+		"https://foo@objectstorage.us-phoenix-1.oci.customer-oci.com",
+		"file://https-objectstorage.us-phoenix-1.oci.customer-oci.com",
+	}
+
+	for _, host := range invalidHosts {
+		c := BaseClient{
+			Host:      host,
+			UserAgent: "asdf",
+		}
+
+		request := http.Request{}
+		request.URL = &url.URL{Path: "somepath"}
+		err := c.prepareRequest(&request)
+		assert.Error(t, err, host)
+	}
+}
+
 func TestLogRequest_RedactsSensitiveHeadersAndBody(t *testing.T) {
 	logger := useCaptureLogger(t, verboseLogging)
 
