@@ -27,6 +27,8 @@ type ApplyGuardrailsDetails struct {
 
 	// The OCID of the compartment to apply guardrails.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
+
+	GuardrailVersionConfig *GuardrailVersionConfig `mandatory:"false" json:"guardrailVersionConfig"`
 }
 
 func (m ApplyGuardrailsDetails) String() string {
@@ -48,9 +50,10 @@ func (m ApplyGuardrailsDetails) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *ApplyGuardrailsDetails) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		Input            guardrailsinput   `json:"input"`
-		GuardrailConfigs *GuardrailConfigs `json:"guardrailConfigs"`
-		CompartmentId    *string           `json:"compartmentId"`
+		GuardrailVersionConfig *GuardrailVersionConfig `json:"guardrailVersionConfig"`
+		Input                  guardrailsinput         `json:"input"`
+		GuardrailConfigs       *GuardrailConfigs       `json:"guardrailConfigs"`
+		CompartmentId          *string                 `json:"compartmentId"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -58,6 +61,8 @@ func (m *ApplyGuardrailsDetails) UnmarshalJSON(data []byte) (e error) {
 		return
 	}
 	var nn interface{}
+	m.GuardrailVersionConfig = model.GuardrailVersionConfig
+
 	nn, e = model.Input.UnmarshalPolymorphicJSON(model.Input.JsonData)
 	if e != nil {
 		return

@@ -21,6 +21,8 @@ import (
 // ApplyGuardrailsResult The result of applying guardrails to the input text.
 type ApplyGuardrailsResult struct {
 	Results *GuardrailsResults `mandatory:"true" json:"results"`
+
+	GuardrailVersion *GuardrailVersionResponse `mandatory:"false" json:"guardrailVersion"`
 }
 
 func (m ApplyGuardrailsResult) String() string {
