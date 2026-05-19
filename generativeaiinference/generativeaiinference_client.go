@@ -70,7 +70,7 @@ func newGenerativeAiInferenceClientFromBaseClient(baseClient common.BaseClient, 
 
 // SetRegion overrides the region of this client.
 func (client *GenerativeAiInferenceClient) SetRegion(region string) {
-	client.Host = common.StringToRegion(region).EndpointForTemplate("generativeaiinference", "https://inference.generativeai.{region}.oci.{secondLevelDomain}")
+	client.Host, _ = common.StringToRegion(region).EndpointForTemplateDottedRegion("generativeaiinference", "https://inference.generativeai.{region}.{dualStack?ds.:}oci.{secondLevelDomain}", "inference.generativeai")
 }
 
 // SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
@@ -92,6 +92,12 @@ func (client *GenerativeAiInferenceClient) setConfigurationProvider(configProvid
 // ConfigurationProvider the ConfigurationProvider used in this client, or null if none set
 func (client *GenerativeAiInferenceClient) ConfigurationProvider() *common.ConfigurationProvider {
 	return client.config
+}
+
+// EnableDualStackEndpoints Determines whether dual stack endpoint should be used or not.
+// Default value is false
+func (client *GenerativeAiInferenceClient) EnableDualStackEndpoints(enableDualStack bool) {
+	client.BaseClient.EnableDualStackEndpoints(enableDualStack)
 }
 
 // ApplyGuardrails Applies guardrails to the input text, including content moderation, PII detection, and prompt injection protection.
@@ -141,6 +147,13 @@ func (client GenerativeAiInferenceClient) applyGuardrails(ctx context.Context, r
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response ApplyGuardrailsResponse
 	var httpResponse *http.Response
@@ -204,6 +217,13 @@ func (client GenerativeAiInferenceClient) chat(ctx context.Context, request comm
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response ChatResponse
 	var httpResponse *http.Response
@@ -269,6 +289,13 @@ func (client GenerativeAiInferenceClient) embedText(ctx context.Context, request
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response EmbedTextResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "generativeAiInference", "EmbedText")
@@ -332,6 +359,13 @@ func (client GenerativeAiInferenceClient) generateText(ctx context.Context, requ
 		return nil, err
 	}
 
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
 	var response GenerateTextResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "generativeAiInference", "GenerateText")
@@ -340,6 +374,71 @@ func (client GenerativeAiInferenceClient) generateText(ctx context.Context, requ
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/generative-ai-inference/20231130/GenerateTextResult/GenerateText"
 		err = common.PostProcessServiceError(err, "GenerativeAiInference", "GenerateText", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ListGuardrailVersions List the available guardrail system versions.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/ListGuardrailVersions.go.html to see an example of how to use ListGuardrailVersions API.
+// A default retry strategy applies to this operation ListGuardrailVersions()
+func (client GenerativeAiInferenceClient) ListGuardrailVersions(ctx context.Context, request ListGuardrailVersionsRequest) (response ListGuardrailVersionsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listGuardrailVersions, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListGuardrailVersionsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListGuardrailVersionsResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListGuardrailVersionsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListGuardrailVersionsResponse")
+	}
+	return
+}
+
+// listGuardrailVersions implements the OCIOperation interface (enables retrying operations)
+func (client GenerativeAiInferenceClient) listGuardrailVersions(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/guardrailVersions", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
+
+	var response ListGuardrailVersionsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "generativeAiInference", "ListGuardrailVersions")
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/generative-ai-inference/20231130/GuardrailVersionCollection/ListGuardrailVersions"
+		err = common.PostProcessServiceError(err, "GenerativeAiInference", "ListGuardrailVersions", apiReferenceLink)
 		return response, err
 	}
 
@@ -395,6 +494,13 @@ func (client GenerativeAiInferenceClient) rerankText(ctx context.Context, reques
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response RerankTextResponse
 	var httpResponse *http.Response
@@ -458,6 +564,13 @@ func (client GenerativeAiInferenceClient) summarizeText(ctx context.Context, req
 	if err != nil {
 		return nil, err
 	}
+
+	host := client.Host
+	common.UpdateEndpointTemplateForOptions(&client.BaseClient)
+	common.SetMissingTemplateParams(&client.BaseClient)
+	defer func() {
+		client.Host = host
+	}()
 
 	var response SummarizeTextResponse
 	var httpResponse *http.Response
