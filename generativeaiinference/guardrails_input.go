@@ -8,6 +8,7 @@
 // Use the Generative AI service inference API to access your custom model endpoints, or to try the out-of-the-box models to /EN/generative-ai-inference/latest/ChatResult/Chat, /EN/generative-ai-inference/latest/GenerateTextResult/GenerateText, /EN/generative-ai-inference/latest/SummarizeTextResult/SummarizeText, and /EN/generative-ai-inference/latest/EmbedTextResult/EmbedText.
 // To use a Generative AI custom model for inference, you must first create an endpoint for that model. Use the /EN/generative-ai/latest/ to /EN/generative-ai/latest/Model/ by fine-tuning an out-of-the-box model, or a previous version of a custom model, using your own data. Fine-tune the custom model on a /EN/generative-ai/latest/DedicatedAiCluster/. Then, create a /EN/generative-ai/latest/DedicatedAiCluster/ with an Endpoint to host your custom model. For resource management in the Generative AI service, use the /EN/generative-ai/latest/.
 // To learn more about the service, see the Generative AI documentation (https://docs.oracle.com/iaas/Content/generative-ai/home.htm).
+// **Important:** The IP addresses behind each DNS endpoint might change over time. Always use the DNS hostname listed under the following **API Endpoints** section and avoid using hard-coded fixed IP addresses.
 //
 
 package generativeaiinference
@@ -57,6 +58,10 @@ func (m *guardrailsinput) UnmarshalPolymorphicJSON(data []byte) (interface{}, er
 		mm := GuardrailsTextInput{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
+	case "IMAGE":
+		mm := GuardrailsImageInput{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	default:
 		common.Logf("Received unsupported enum value for GuardrailsInput: %s.", m.Type)
 		return *m, nil
@@ -84,15 +89,18 @@ type GuardrailsInputTypeEnum string
 
 // Set of constants representing the allowable values for GuardrailsInputTypeEnum
 const (
-	GuardrailsInputTypeText GuardrailsInputTypeEnum = "TEXT"
+	GuardrailsInputTypeText  GuardrailsInputTypeEnum = "TEXT"
+	GuardrailsInputTypeImage GuardrailsInputTypeEnum = "IMAGE"
 )
 
 var mappingGuardrailsInputTypeEnum = map[string]GuardrailsInputTypeEnum{
-	"TEXT": GuardrailsInputTypeText,
+	"TEXT":  GuardrailsInputTypeText,
+	"IMAGE": GuardrailsInputTypeImage,
 }
 
 var mappingGuardrailsInputTypeEnumLowerCase = map[string]GuardrailsInputTypeEnum{
-	"text": GuardrailsInputTypeText,
+	"text":  GuardrailsInputTypeText,
+	"image": GuardrailsInputTypeImage,
 }
 
 // GetGuardrailsInputTypeEnumValues Enumerates the set of values for GuardrailsInputTypeEnum
@@ -108,6 +116,7 @@ func GetGuardrailsInputTypeEnumValues() []GuardrailsInputTypeEnum {
 func GetGuardrailsInputTypeEnumStringValues() []string {
 	return []string{
 		"TEXT",
+		"IMAGE",
 	}
 }
 

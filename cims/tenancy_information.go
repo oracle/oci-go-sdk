@@ -22,9 +22,6 @@ import (
 // TenancyInformation Details about the tenancy.
 type TenancyInformation struct {
 
-	// The Customer Support Identifier (CSI) number associated with the tenancy.
-	CustomerSupportKey *string `mandatory:"true" json:"customerSupportKey"`
-
 	// The OCID of the tenancy.
 	TenancyId *string `mandatory:"true" json:"tenancyId"`
 }

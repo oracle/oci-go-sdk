@@ -14,53 +14,30 @@
 package generativeaiinference
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
-// GenericChatResponse The response for a chat conversation.
-type GenericChatResponse struct {
+// GuardrailsImageUrl Provide a base64 encoded image or an image uri if it's supported.
+type GuardrailsImageUrl struct {
 
-	// The Unix timestamp (in seconds) of when the response text was generated.
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
-
-	// A list of generated texts. Can be more than one if n is greater than 1.
-	Choices []ChatChoice `mandatory:"true" json:"choices"`
-
-	Usage *Usage `mandatory:"false" json:"usage"`
-
-	// Specifies the processing type used for serving the request.
-	ServiceTier *string `mandatory:"false" json:"serviceTier"`
+	// The base64 encoded image data or an image URI, if supported.
+	Url *string `mandatory:"true" json:"url"`
 }
 
-func (m GenericChatResponse) String() string {
+func (m GuardrailsImageUrl) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m GenericChatResponse) ValidateEnumValue() (bool, error) {
+func (m GuardrailsImageUrl) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
 	return false, nil
-}
-
-// MarshalJSON marshals to json representation
-func (m GenericChatResponse) MarshalJSON() (buff []byte, e error) {
-	type MarshalTypeGenericChatResponse GenericChatResponse
-	s := struct {
-		DiscriminatorParam string `json:"apiFormat"`
-		MarshalTypeGenericChatResponse
-	}{
-		"GENERIC",
-		(MarshalTypeGenericChatResponse)(m),
-	}
-
-	return json.Marshal(&s)
 }

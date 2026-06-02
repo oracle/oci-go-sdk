@@ -8,6 +8,7 @@
 // Use the Generative AI service inference API to access your custom model endpoints, or to try the out-of-the-box models to /EN/generative-ai-inference/latest/ChatResult/Chat, /EN/generative-ai-inference/latest/GenerateTextResult/GenerateText, /EN/generative-ai-inference/latest/SummarizeTextResult/SummarizeText, and /EN/generative-ai-inference/latest/EmbedTextResult/EmbedText.
 // To use a Generative AI custom model for inference, you must first create an endpoint for that model. Use the /EN/generative-ai/latest/ to /EN/generative-ai/latest/Model/ by fine-tuning an out-of-the-box model, or a previous version of a custom model, using your own data. Fine-tune the custom model on a /EN/generative-ai/latest/DedicatedAiCluster/. Then, create a /EN/generative-ai/latest/DedicatedAiCluster/ with an Endpoint to host your custom model. For resource management in the Generative AI service, use the /EN/generative-ai/latest/.
 // To learn more about the service, see the Generative AI documentation (https://docs.oracle.com/iaas/Content/generative-ai/home.htm).
+// **Important:** The IP addresses behind each DNS endpoint might change over time. Always use the DNS hostname listed under the following **API Endpoints** section and avoid using hard-coded fixed IP addresses.
 //
 
 package generativeaiinference
@@ -23,6 +24,10 @@ type PromptInjectionProtectionResult struct {
 
 	// The score indicating the likelihood of a prompt injection attack.
 	Score *float64 `mandatory:"true" json:"score"`
+
+	// The input modalities flagged by the prompt injection result. Present only when the request
+	// is processed using a non-empty `multimodalInput`.
+	FlaggedModalities []PromptInjectionProtectionResultFlaggedModalitiesEnum `mandatory:"false" json:"flaggedModalities,omitempty"`
 }
 
 func (m PromptInjectionProtectionResult) String() string {
@@ -35,8 +40,56 @@ func (m PromptInjectionProtectionResult) String() string {
 func (m PromptInjectionProtectionResult) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
+	for _, val := range m.FlaggedModalities {
+		if _, ok := GetMappingPromptInjectionProtectionResultFlaggedModalitiesEnum(string(val)); !ok && val != "" {
+			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FlaggedModalities: %s. Supported values are: %s.", val, strings.Join(GetPromptInjectionProtectionResultFlaggedModalitiesEnumStringValues(), ",")))
+		}
+	}
+
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
 	return false, nil
+}
+
+// PromptInjectionProtectionResultFlaggedModalitiesEnum Enum with underlying type: string
+type PromptInjectionProtectionResultFlaggedModalitiesEnum string
+
+// Set of constants representing the allowable values for PromptInjectionProtectionResultFlaggedModalitiesEnum
+const (
+	PromptInjectionProtectionResultFlaggedModalitiesText  PromptInjectionProtectionResultFlaggedModalitiesEnum = "TEXT"
+	PromptInjectionProtectionResultFlaggedModalitiesImage PromptInjectionProtectionResultFlaggedModalitiesEnum = "IMAGE"
+)
+
+var mappingPromptInjectionProtectionResultFlaggedModalitiesEnum = map[string]PromptInjectionProtectionResultFlaggedModalitiesEnum{
+	"TEXT":  PromptInjectionProtectionResultFlaggedModalitiesText,
+	"IMAGE": PromptInjectionProtectionResultFlaggedModalitiesImage,
+}
+
+var mappingPromptInjectionProtectionResultFlaggedModalitiesEnumLowerCase = map[string]PromptInjectionProtectionResultFlaggedModalitiesEnum{
+	"text":  PromptInjectionProtectionResultFlaggedModalitiesText,
+	"image": PromptInjectionProtectionResultFlaggedModalitiesImage,
+}
+
+// GetPromptInjectionProtectionResultFlaggedModalitiesEnumValues Enumerates the set of values for PromptInjectionProtectionResultFlaggedModalitiesEnum
+func GetPromptInjectionProtectionResultFlaggedModalitiesEnumValues() []PromptInjectionProtectionResultFlaggedModalitiesEnum {
+	values := make([]PromptInjectionProtectionResultFlaggedModalitiesEnum, 0)
+	for _, v := range mappingPromptInjectionProtectionResultFlaggedModalitiesEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetPromptInjectionProtectionResultFlaggedModalitiesEnumStringValues Enumerates the set of values in String for PromptInjectionProtectionResultFlaggedModalitiesEnum
+func GetPromptInjectionProtectionResultFlaggedModalitiesEnumStringValues() []string {
+	return []string{
+		"TEXT",
+		"IMAGE",
+	}
+}
+
+// GetMappingPromptInjectionProtectionResultFlaggedModalitiesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPromptInjectionProtectionResultFlaggedModalitiesEnum(val string) (PromptInjectionProtectionResultFlaggedModalitiesEnum, bool) {
+	enum, ok := mappingPromptInjectionProtectionResultFlaggedModalitiesEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
 }

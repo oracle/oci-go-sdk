@@ -27,10 +27,6 @@ type GetIncidentRequest struct {
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
-	// The Customer Support Identifier (CSI) number associated with the support account.
-	// The CSI is optional for all support request types.
-	Csi *string `mandatory:"false" contributesTo:"header" name:"csi"`
-
 	// User OCID for Oracle Identity Cloud Service (IDCS) users who also have a federated Oracle Cloud Infrastructure account.
 	// User OCID is mandatory for OCI Users and optional for Multicloud users.
 	Ocid *string `mandatory:"false" contributesTo:"header" name:"ocid"`
