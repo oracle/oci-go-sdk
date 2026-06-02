@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.117.0 - 2026-06-02
+### Added 
+- Support for Zero Trust Packet Routing (ZPR) security attributes for private endpoints in the Operations Insights service 
+- Support for Zero Trust Packet Routing (ZPR) security attributes for private endpoints in the Database Management service 
+- Support for multimodal image input and flagged modalities when applying guardrails in the Generative AI service 
+- Support for filtering incidents by last update time in the Cloud Incident Management service 
+- Support for Cloud Incident Management APIs without Customer Support Identifier (CSI) parameters in the Cloud Incident Management service 
+- Support for site IDs when creating and updating VMware BYOL registrations in the Oracle Cloud VMware Provisioning service 
+- Support for VMware Cloud Foundation (VCF) BYOL allocation IDs during ESXi host replacement and in-place upgrades in the Oracle Cloud VMware Provisioning service   
+
+### Breaking Changes 
+- The field `Csi` has been removed from the models `CreateUserDetails`, `User`, `ListIncidentResourceTypesRequest`, `PutAttachmentRequest`, `ValidateUserRequest`, `CreateIncident`, `GetIncidentRequest`, `UpdateIncidentRequest`, and `ListIncidentRequest` in the Customer Incident Management service  
+- The field `CustomerSupportKey` has been removed from the model `TenancyInformation` in the Customer Incident Management service
+
 ## 65.116.0 - 2026-05-26
 ### Added 
 - Support for calling Oracle Cloud Infrastructure services in the me-alrayyan-1 region 
@@ -15,8 +29,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 - Support for switchover and failover mode selection in disaster recovery peer switchovers in the GoldenGate service 
 - Support for generating and retrieving disaster recovery precheck reports for standby peers in the GoldenGate service 
 - Support for scheduling policies and scheduling windows as part of granular maintenance scheduling of Exadata Infrastructure components in the Database service 
-- Support for specifying SGA memory percentage and distributed algorithm configuration in Autonomous VM Clusters and Cloud Autonomous VM Clusters in the Database service 
-- Support for DRCP in Autonomous Container Databases in the Database service 
+- Support for specifying System Global Area (SGA) memory percentage and distributed algorithm configuration in Autonomous VM Clusters and Cloud Autonomous VM Clusters in the Database service 
+- Support for Database Resident Connection Pooling (DRCP) in Autonomous Container Databases in the Database service 
 - Support for creating additional VMs in Exadata Cloud Service and Exadata Cloud@Customer in the Database service 
 - Support for selecting specific compute shapes during cluster placement group creation in the Cluster Placement Groups service 
 - Support for compute target resource when creating and managing reusable managed compute capacity for workload deployments in the Data Science service 
@@ -25,8 +39,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 - Support for multi-inference endpoints in model deployments in the Data Science service 
 - Support for flexible dense virtual machine shapes in the Compute service 
 - Support for network firewall health status APIs in the Network Firewall service 
-- Support for security attributes on network firewall create and update operations in the Network Firewall service 
-- Support for mapped secrets on decryption rule create and update operations in the Network Firewall service 
+- Support for security attributes when creating or updating network firewalls in the Network Firewall service
+- Support for mapped secrets when creating or updating decryption rules in the Network Firewall service
 - Support for Zero Trust Packet Routing (ZPR) security attributes in the Kubernetes Engine service   
 
 ### Breaking Changes 

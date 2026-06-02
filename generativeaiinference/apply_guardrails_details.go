@@ -8,6 +8,7 @@
 // Use the Generative AI service inference API to access your custom model endpoints, or to try the out-of-the-box models to /EN/generative-ai-inference/latest/ChatResult/Chat, /EN/generative-ai-inference/latest/GenerateTextResult/GenerateText, /EN/generative-ai-inference/latest/SummarizeTextResult/SummarizeText, and /EN/generative-ai-inference/latest/EmbedTextResult/EmbedText.
 // To use a Generative AI custom model for inference, you must first create an endpoint for that model. Use the /EN/generative-ai/latest/ to /EN/generative-ai/latest/Model/ by fine-tuning an out-of-the-box model, or a previous version of a custom model, using your own data. Fine-tune the custom model on a /EN/generative-ai/latest/DedicatedAiCluster/. Then, create a /EN/generative-ai/latest/DedicatedAiCluster/ with an Endpoint to host your custom model. For resource management in the Generative AI service, use the /EN/generative-ai/latest/.
 // To learn more about the service, see the Generative AI documentation (https://docs.oracle.com/iaas/Content/generative-ai/home.htm).
+// **Important:** The IP addresses behind each DNS endpoint might change over time. Always use the DNS hostname listed under the following **API Endpoints** section and avoid using hard-coded fixed IP addresses.
 //
 
 package generativeaiinference
@@ -19,14 +20,25 @@ import (
 	"strings"
 )
 
-// ApplyGuardrailsDetails Details for applying guardrails to the input text.
+// ApplyGuardrailsDetails Details for applying guardrails to the input content.
+// Case 1: Use `input` for simple single-text moderation. Existing customers can continue to
+// use this field for the current text-only flow.
+// Case 2: Use `multimodalInput` for moderation over text, image, or a combination of both.
+// `multimodalInput` supports a single text item, an array of text items only, an array of
+// images only, or a mixed ordered combination of text and image items.
+// Clients may provide `input`, `multimodalInput`, or both. At least one of these fields must
+// be provided. If both `input` and `multimodalInput` are provided, the service will process
+// `input` and discard `multimodalInput`.
 type ApplyGuardrailsDetails struct {
-	Input GuardrailsInput `mandatory:"true" json:"input"`
-
 	GuardrailConfigs *GuardrailConfigs `mandatory:"true" json:"guardrailConfigs"`
 
 	// The OCID of the compartment to apply guardrails.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
+
+	Input GuardrailsInput `mandatory:"false" json:"input"`
+
+	// An ordered list of text and image inputs for multimodal guardrail evaluation. This field supports a single text item, an array of text items only, an array of images only, or a mixed ordered combination of text and image items. If both `input` and `multimodalInput` are provided, this field is ignored.
+	MultimodalInput []GuardrailsInput `mandatory:"false" json:"multimodalInput"`
 
 	GuardrailVersionConfig *GuardrailVersionConfig `mandatory:"false" json:"guardrailVersionConfig"`
 }
@@ -50,8 +62,9 @@ func (m ApplyGuardrailsDetails) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *ApplyGuardrailsDetails) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		GuardrailVersionConfig *GuardrailVersionConfig `json:"guardrailVersionConfig"`
 		Input                  guardrailsinput         `json:"input"`
+		MultimodalInput        []guardrailsinput       `json:"multimodalInput"`
+		GuardrailVersionConfig *GuardrailVersionConfig `json:"guardrailVersionConfig"`
 		GuardrailConfigs       *GuardrailConfigs       `json:"guardrailConfigs"`
 		CompartmentId          *string                 `json:"compartmentId"`
 	}{}
@@ -61,8 +74,6 @@ func (m *ApplyGuardrailsDetails) UnmarshalJSON(data []byte) (e error) {
 		return
 	}
 	var nn interface{}
-	m.GuardrailVersionConfig = model.GuardrailVersionConfig
-
 	nn, e = model.Input.UnmarshalPolymorphicJSON(model.Input.JsonData)
 	if e != nil {
 		return
@@ -72,6 +83,20 @@ func (m *ApplyGuardrailsDetails) UnmarshalJSON(data []byte) (e error) {
 	} else {
 		m.Input = nil
 	}
+
+	m.MultimodalInput = make([]GuardrailsInput, len(model.MultimodalInput))
+	for i, n := range model.MultimodalInput {
+		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)
+		if e != nil {
+			return e
+		}
+		if nn != nil {
+			m.MultimodalInput[i] = nn.(GuardrailsInput)
+		} else {
+			m.MultimodalInput[i] = nil
+		}
+	}
+	m.GuardrailVersionConfig = model.GuardrailVersionConfig
 
 	m.GuardrailConfigs = model.GuardrailConfigs
 

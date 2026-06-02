@@ -36,10 +36,6 @@ type CreateIncident struct {
 	// Creating a Technical Support Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-technical.htm).
 	ProblemType ProblemTypeEnum `mandatory:"true" json:"problemType"`
 
-	// Deprecated. The Customer Support Identifier (CSI) number associated with the support account.
-	// The CSI is optional for all support request types.
-	Csi *string `mandatory:"false" json:"csi"`
-
 	// Technical support type (`TECH`) only: Identifier of the user group to assign the new support request to.
 	// To find identifiers of user groups that you have access to, run the
 	// ValidateUser operation.

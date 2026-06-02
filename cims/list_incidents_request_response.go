@@ -21,10 +21,6 @@ type ListIncidentsRequest struct {
 	// The OCID of the tenancy.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
-	// The Customer Support Identifier (CSI) number associated with the support account.
-	// The CSI is optional for all support request types.
-	Csi *string `mandatory:"false" contributesTo:"header" name:"csi"`
-
 	// For list pagination. The maximum number of results per page, or items to return in a paginated "List" call. For important details about how pagination works, see List Pagination (https://docs.oracle.com/iaas/Content/API/Concepts/usingapi.htm#nine).
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
 
@@ -33,6 +29,9 @@ type ListIncidentsRequest struct {
 
 	// The order to sort the results in.
 	SortOrder ListIncidentsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
+
+	// Filter to return results updated only after the specified timestamp. Must be an RFC 3339 timestamp (e.g. 2025-12-07T17:42:54Z).
+	TimeUpdatedGreaterThanOrEqualTo *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeUpdatedGreaterThanOrEqualTo"`
 
 	// The current state of the ticket.
 	LifecycleState ListIncidentsLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`

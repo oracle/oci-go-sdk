@@ -8,6 +8,7 @@
 // Use the Generative AI service inference API to access your custom model endpoints, or to try the out-of-the-box models to /EN/generative-ai-inference/latest/ChatResult/Chat, /EN/generative-ai-inference/latest/GenerateTextResult/GenerateText, /EN/generative-ai-inference/latest/SummarizeTextResult/SummarizeText, and /EN/generative-ai-inference/latest/EmbedTextResult/EmbedText.
 // To use a Generative AI custom model for inference, you must first create an endpoint for that model. Use the /EN/generative-ai/latest/ to /EN/generative-ai/latest/Model/ by fine-tuning an out-of-the-box model, or a previous version of a custom model, using your own data. Fine-tune the custom model on a /EN/generative-ai/latest/DedicatedAiCluster/. Then, create a /EN/generative-ai/latest/DedicatedAiCluster/ with an Endpoint to host your custom model. For resource management in the Generative AI service, use the /EN/generative-ai/latest/.
 // To learn more about the service, see the Generative AI documentation (https://docs.oracle.com/iaas/Content/generative-ai/home.htm).
+// **Important:** The IP addresses behind each DNS endpoint might change over time. Always use the DNS hostname listed under the following **API Endpoints** section and avoid using hard-coded fixed IP addresses.
 //
 
 package generativeaiinference
@@ -26,6 +27,10 @@ type CategoryScore struct {
 
 	// The score of the category.
 	Score *float64 `mandatory:"true" json:"score"`
+
+	// The input modalities flagged by this category score. Present only when the request is
+	// processed using a non-empty `multimodalInput`.
+	FlaggedModalities []CategoryScoreFlaggedModalitiesEnum `mandatory:"false" json:"flaggedModalities,omitempty"`
 }
 
 func (m CategoryScore) String() string {
@@ -38,8 +43,56 @@ func (m CategoryScore) String() string {
 func (m CategoryScore) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
+	for _, val := range m.FlaggedModalities {
+		if _, ok := GetMappingCategoryScoreFlaggedModalitiesEnum(string(val)); !ok && val != "" {
+			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FlaggedModalities: %s. Supported values are: %s.", val, strings.Join(GetCategoryScoreFlaggedModalitiesEnumStringValues(), ",")))
+		}
+	}
+
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
 	return false, nil
+}
+
+// CategoryScoreFlaggedModalitiesEnum Enum with underlying type: string
+type CategoryScoreFlaggedModalitiesEnum string
+
+// Set of constants representing the allowable values for CategoryScoreFlaggedModalitiesEnum
+const (
+	CategoryScoreFlaggedModalitiesText  CategoryScoreFlaggedModalitiesEnum = "TEXT"
+	CategoryScoreFlaggedModalitiesImage CategoryScoreFlaggedModalitiesEnum = "IMAGE"
+)
+
+var mappingCategoryScoreFlaggedModalitiesEnum = map[string]CategoryScoreFlaggedModalitiesEnum{
+	"TEXT":  CategoryScoreFlaggedModalitiesText,
+	"IMAGE": CategoryScoreFlaggedModalitiesImage,
+}
+
+var mappingCategoryScoreFlaggedModalitiesEnumLowerCase = map[string]CategoryScoreFlaggedModalitiesEnum{
+	"text":  CategoryScoreFlaggedModalitiesText,
+	"image": CategoryScoreFlaggedModalitiesImage,
+}
+
+// GetCategoryScoreFlaggedModalitiesEnumValues Enumerates the set of values for CategoryScoreFlaggedModalitiesEnum
+func GetCategoryScoreFlaggedModalitiesEnumValues() []CategoryScoreFlaggedModalitiesEnum {
+	values := make([]CategoryScoreFlaggedModalitiesEnum, 0)
+	for _, v := range mappingCategoryScoreFlaggedModalitiesEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetCategoryScoreFlaggedModalitiesEnumStringValues Enumerates the set of values in String for CategoryScoreFlaggedModalitiesEnum
+func GetCategoryScoreFlaggedModalitiesEnumStringValues() []string {
+	return []string{
+		"TEXT",
+		"IMAGE",
+	}
+}
+
+// GetMappingCategoryScoreFlaggedModalitiesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCategoryScoreFlaggedModalitiesEnum(val string) (CategoryScoreFlaggedModalitiesEnum, bool) {
+	enum, ok := mappingCategoryScoreFlaggedModalitiesEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
 }

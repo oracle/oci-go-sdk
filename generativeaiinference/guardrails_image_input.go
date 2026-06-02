@@ -20,29 +20,19 @@ import (
 	"strings"
 )
 
-// GenericChatResponse The response for a chat conversation.
-type GenericChatResponse struct {
-
-	// The Unix timestamp (in seconds) of when the response text was generated.
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
-
-	// A list of generated texts. Can be more than one if n is greater than 1.
-	Choices []ChatChoice `mandatory:"true" json:"choices"`
-
-	Usage *Usage `mandatory:"false" json:"usage"`
-
-	// Specifies the processing type used for serving the request.
-	ServiceTier *string `mandatory:"false" json:"serviceTier"`
+// GuardrailsImageInput Represents a array of image in the guardrails input.
+type GuardrailsImageInput struct {
+	ImageUrl *GuardrailsImageUrl `mandatory:"false" json:"imageUrl"`
 }
 
-func (m GenericChatResponse) String() string {
+func (m GuardrailsImageInput) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m GenericChatResponse) ValidateEnumValue() (bool, error) {
+func (m GuardrailsImageInput) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {
@@ -52,14 +42,14 @@ func (m GenericChatResponse) ValidateEnumValue() (bool, error) {
 }
 
 // MarshalJSON marshals to json representation
-func (m GenericChatResponse) MarshalJSON() (buff []byte, e error) {
-	type MarshalTypeGenericChatResponse GenericChatResponse
+func (m GuardrailsImageInput) MarshalJSON() (buff []byte, e error) {
+	type MarshalTypeGuardrailsImageInput GuardrailsImageInput
 	s := struct {
-		DiscriminatorParam string `json:"apiFormat"`
-		MarshalTypeGenericChatResponse
+		DiscriminatorParam string `json:"type"`
+		MarshalTypeGuardrailsImageInput
 	}{
-		"GENERIC",
-		(MarshalTypeGenericChatResponse)(m),
+		"IMAGE",
+		(MarshalTypeGuardrailsImageInput)(m),
 	}
 
 	return json.Marshal(&s)
