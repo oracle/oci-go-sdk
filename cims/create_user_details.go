@@ -40,9 +40,6 @@ type CreateUserDetails struct {
 	// Creating a Technical Support Request (https://docs.oracle.com/iaas/Content/GSG/support/create-incident-technical.htm).
 	ProblemType ProblemTypeEnum `mandatory:"true" json:"problemType"`
 
-	// CSI associated with the user.
-	Csi *string `mandatory:"false" json:"csi"`
-
 	// Contact number of the user.
 	Phone *string `mandatory:"false" json:"phone"`
 

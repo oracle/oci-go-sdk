@@ -34,9 +34,6 @@ type User struct {
 	// The country of the user.
 	Country *string `mandatory:"false" json:"country"`
 
-	// The CSI associated with the user.
-	Csi *string `mandatory:"false" json:"csi"`
-
 	// The user's contact phone number.
 	Phone *string `mandatory:"false" json:"phone"`
 

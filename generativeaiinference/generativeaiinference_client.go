@@ -8,6 +8,7 @@
 // Use the Generative AI service inference API to access your custom model endpoints, or to try the out-of-the-box models to /EN/generative-ai-inference/latest/ChatResult/Chat, /EN/generative-ai-inference/latest/GenerateTextResult/GenerateText, /EN/generative-ai-inference/latest/SummarizeTextResult/SummarizeText, and /EN/generative-ai-inference/latest/EmbedTextResult/EmbedText.
 // To use a Generative AI custom model for inference, you must first create an endpoint for that model. Use the /EN/generative-ai/latest/ to /EN/generative-ai/latest/Model/ by fine-tuning an out-of-the-box model, or a previous version of a custom model, using your own data. Fine-tune the custom model on a /EN/generative-ai/latest/DedicatedAiCluster/. Then, create a /EN/generative-ai/latest/DedicatedAiCluster/ with an Endpoint to host your custom model. For resource management in the Generative AI service, use the /EN/generative-ai/latest/.
 // To learn more about the service, see the Generative AI documentation (https://docs.oracle.com/iaas/Content/generative-ai/home.htm).
+// **Important:** The IP addresses behind each DNS endpoint might change over time. Always use the DNS hostname listed under the following **API Endpoints** section and avoid using hard-coded fixed IP addresses.
 //
 
 package generativeaiinference
@@ -100,7 +101,16 @@ func (client *GenerativeAiInferenceClient) EnableDualStackEndpoints(enableDualSt
 	client.BaseClient.EnableDualStackEndpoints(enableDualStack)
 }
 
-// ApplyGuardrails Applies guardrails to the input text, including content moderation, PII detection, and prompt injection protection.
+// ApplyGuardrails Applies guardrails to the input content, including content moderation, PII detection, and prompt injection protection.
+// Case 1: Use `input` when the customer wants simple single-text moderation. Existing
+// customers can continue to use this field without changing their current integration.
+// Case 2: Use `multimodalInput` when the customer wants moderation over text, image, or a
+// combination of both.
+// `multimodalInput` supports a single text item, an array of text items only, an array of
+// images only, or a mixed ordered combination of text and image items.
+// Clients may provide `input`, `multimodalInput`, or both. At least one of these fields must
+// be provided. If both `input` and `multimodalInput` are provided, the service will process
+// `input` and discard `multimodalInput`.
 //
 // # See also
 //

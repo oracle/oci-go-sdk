@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/generativeaiinference/ApplyGuardrails.go.html to see an example of how to use ApplyGuardrailsRequest.
 type ApplyGuardrailsRequest struct {
 
-	// Details for applying guardrails to the input text.
+	// Details for applying guardrails to the input content.
 	ApplyGuardrailsDetails `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
