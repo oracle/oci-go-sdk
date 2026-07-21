@@ -4,6 +4,8 @@
 package auth
 
 import (
+	"encoding/base64"
+	"encoding/json"
 	"io/ioutil"
 	"os"
 	"testing"
@@ -75,8 +77,7 @@ BjYWARWBrZbkAz3+8y9EIHV9aRmnX1jGOVUJ0MhaYyZ18KTzi32gAG8s7V7r57Sv
 1D6imvCUmX3q5d1QuikaFw0VBX6S/FPFLneJXybW+GHwsgcGToxU
 -----END RSA PRIVATE KEY-----`
 
-	// Generated RPST duplicates the Java SDK test resources
-	rpst = `eyJraWQiOiJhc3ciLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJvY2lkMS5kYXRhd2FyZWhvdXNlLmN1c3RvbWVyLWJpZy1kYi0xIiwiaXNzIjoiYXV0aFNlcnZpY2Uub3JhY2xlLmNvbSIsInJlc190ZW5hbnQiOiJjdXN0b21lci10ZW5hbnQtMSIsInB0eXBlIjoicmVzb3VyY2UiLCJyZXNfdHlwZSI6ImRhdGF3YXJlaG91c2UiLCJhdWQiOiJvY2kiLCJvcGMtdGFnIjoiVjEsb2NpZDEuZHluYW1pY2dyb3VwLmRldi4uYWFhYWFhYWEsb28ycHA2M3Y3NTMyNXpiNnJuNHYzYWgzYnRlam5ubTJvdDN1NWJyZnd1Y2VvczRpZDZ0YSIsIm9wYy1idW1wIjoiSDRzSUFBQUFBQUFBQUUyUHpRcUNRQlNGTTExTVJSQXRLbHBHYlFRSE1sSm8xVVAwQXVQTWJSeHJISnVmMHA0LUF4SFA5bjczTzV6bFRWSEJqcGcxSlpHQ2NxMWNoUm04TVNaZDVGM3cwMHZGejhaQnduaVpTZjA0eDBWaThuZGVrSlJMY0o4NnF3cWFmRTJkMGx3bE5RbFQ1Qy04N1ZxRFVVNVR3RlRKaW1ncm9iUllzTjJLT21PVkJCME5EdEh4T2dvbktGaE1ROThiLS1FZWpWdkh2SGZZcG9MZG5CRkxQa1JEcnB5Qjl1R0N2SmFhOVZSclAzU1RoaVR1R3pQQkk1Yjl5LUlBZVp2Z0IxX2paUVFDQVFBQSIsInR0eXBlIjoicmVzIiwicmVzX2lkIjoib2NpZDEuZGF0YXdhcmVob3VzZS5jdXN0b21lci1iaWctZGItMSIsIm9wYy1pbnN0YW5jZSI6Im9jaWQxLmluc3RhbmNlLmpveWZ1bC5kYm5vZGUuMSIsInJlc190YWciOiIiLCJyZXNfY29tcGFydG1lbnQiOiJjdXN0b21lci1jb21wYXJ0bWVudC0xIiwiZXhwIjoxNTUyNjgxMTY4LCJvcGMtY29tcGFydG1lbnQiOiJkYmFhcy1jb21wYXJ0bWVudC0xIiwiaWF0IjoxNTUyNjc5OTY4LCJqdGkiOiIzZDQxNDNlOC01ZTMyLTRlMTItYTM4Yy01OTc0NjUwMTA3MDMiLCJ0ZW5hbnQiOiJjdXN0b21lci10ZW5hbnQtMSIsImp3ayI6IntcImtpZFwiOlwiY3VzdG9tZXItZGJub2RlLTFcIixcIm5cIjpcImxzLUFDNGhpS0stMTFVdTFEZ3VLTFE1VGFhZGpNR1hCcDRhMFVFS2w0dnJjcmF3b2V6X3BuUS1pNS1nNV9XTU5xVXdrdUtBcXVTZnlVS25yZEhhV3d4b2RWcmRleTk1T3R4ckIySzNRdzgzaURkcUltSkhfWFp1cERfRHR0SzduS3N6Qy01TFI1Ums3SHF5Y094eEZVNzBNcGduQW9IaVNUM2V0VjJVZlJkNXRtb0dOaTdOSURORWJnSVpmcnczYUVYbHBzaGM2ckpVdUEyOG55ZUNjOVFtOHllMHUwN0UzamlCYmp5RjNFVWhTelNxblFsUlVNVEdaR1ZSZGpfRG9tcEhUVkFPNEJqUnVIZURWWGtWNjh1TzNrSEdTZUVPc2xsZmJZTkpaYUtCQTB3aUxrZkViWVBEWDFwbTM4UFAzcnJFbWhxeElObzdoYVFWakRXRDNKUVwiLFwiZVwiOlwiQVFBQlwiLFwia3R5XCI6XCJSU0FcIixcImFsZ1wiOlwiUlMyNTZcIixcInVzZVwiOlwic2lnXCJ9Iiwib3BjLXRlbmFudCI6ImRiYWFzLXRlbmFudCJ9.LqRt9JXSdcLahdwACjw_p_KHQhKde-NaVZG3zMjzWX6bVad-SRZYWKQSlk6Tq4f1ZNN0uxlP-d2snQAp3Kw-cQRrdCDOmD_0CDgR-yre-YbJDsJbEncczUIbe-ASeq_Sh9zDROVuD_7NdrmUCiVH2g-UYpYkuKKqu_tVjL2uy77W5_DGobPArEFvZ2GnyHT7gVVv12RnINtgr2jJULhegPBfvnp9-fhhZ7_PcsJ7Z5FkPzLtLOwEm3Lbm3veyUVUviu1CSjXnK67KzjS18TVGi723bkxYBf9lYDHfaXh9EEHzPtxeLAl3VrGjwZUv_ih0FRmoM7wgq8HMRjNACMo6g`
+	rpst = testResourcePrincipalSessionToken()
 
 	cert = `-----BEGIN CERTIFICATE-----
 MIIFUzCCBDugAwIBAgIUTr334xlYa/kjII5Ika7FWmR1Xw8wDQYJKoZIhvcNAQEL
@@ -114,6 +115,41 @@ Jx53Hf7QYUu35G/4dVgdwi2ZohedyO8=
 	rptUrl       = "https://sample.test/101010/resource/resourceId/actions/rptUrl"
 	rpstEndpoint = "https://identity/101010/v1/rpstEndpoint"
 )
+
+func testResourcePrincipalJwtHeader() map[string]interface{} {
+	return map[string]interface{}{
+		"alg": "RS256",
+		"kid": "resource-principal-test-key",
+		"typ": "JWT",
+	}
+}
+
+func testResourcePrincipalJwtPayload() map[string]interface{} {
+	return map[string]interface{}{
+		"aud":                   "oci",
+		CompartmentOCIDClaimKey: "customer-compartment-1",
+		"exp":                   float64(4102444800),
+		"iat":                   float64(4102441200),
+		"iss":                   "authService.oracle.com",
+		"ptype":                 "resource",
+		"sub":                   "ocid1.datawarehouse.oc1..resource-principal-test",
+		TenancyOCIDClaimKey:     "customer-tenant-1",
+	}
+}
+
+func encodeJwtPartOrPanic(value map[string]interface{}) string {
+	bytes, err := json.Marshal(value)
+	if err != nil {
+		panic(err)
+	}
+	return base64.RawURLEncoding.EncodeToString(bytes)
+}
+
+func testResourcePrincipalSessionToken() string {
+	return encodeJwtPartOrPanic(testResourcePrincipalJwtHeader()) + "." +
+		encodeJwtPartOrPanic(testResourcePrincipalJwtPayload()) + "." +
+		syntheticJwtSignature
+}
 
 var ppEnvVars = map[string]string{
 	ResourcePrincipalVersionEnvVar:              ResourcePrincipalVersion2_2,
