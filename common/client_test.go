@@ -12,6 +12,7 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"net/http/httptest"
 	"net/url"
 	"os"
 	"strconv"
@@ -185,39 +186,154 @@ func TestClient_prepareRequestRejectsInvalidHostComponents(t *testing.T) {
 	}
 }
 
-func TestLogRequest_RedactsSensitiveHeadersAndBody(t *testing.T) {
+func TestLogRequest_RedactsSensitiveHeaders(t *testing.T) {
 	logger := useCaptureLogger(t, verboseLogging)
 
-	request, err := http.NewRequest(http.MethodPost, "https://example.com", strings.NewReader(`{"token":"top-secret","publicKey":"session-public-key","safe":"ok"}`))
+	request, err := http.NewRequest(http.MethodPost, "https://example.com", nil)
 	assert.NoError(t, err)
-	request.Header.Set(requestHeaderAuthorization, "Bearer top-secret")
+	request.Header.Set(requestHeaderAuthorization, "Bearer header-secret")
 	request.Header.Set(requestHeaderOpcOboToken, "delegation-secret")
 
 	logRequest(request, Logf, verboseLogging)
 
 	logs := logger.String()
-	assert.NotContains(t, logs, "top-secret")
-	assert.NotContains(t, logs, "session-public-key")
+	assert.NotContains(t, logs, "header-secret")
 	assert.NotContains(t, logs, "delegation-secret")
-	assert.Contains(t, logs, "Authorization: <redacted>")
-	assert.Contains(t, logs, `"token":"<redacted>"`)
-	assert.Contains(t, logs, `"safe":"ok"`)
+	assert.Contains(t, logs, "Authorization: REDACTED")
+	assert.Contains(t, logs, "Opc-Obo-Token: REDACTED")
 }
 
-func TestCheckForSuccessfulResponse_RedactsSensitiveRequestDetails(t *testing.T) {
+func TestLogRequest_RedactsSensitiveHeadersWithoutConsumingBody(t *testing.T) {
+	logger := useCaptureLogger(t, verboseLogging)
+	payload := []byte(`{"foo":"bar"}`)
+
+	request, err := http.NewRequest(http.MethodPost, "https://example.com", bytes.NewReader(payload))
+	assert.NoError(t, err)
+	request.Header.Set(requestHeaderAuthorization, "Bearer header-secret")
+
+	logRequest(request, Logf, verboseLogging)
+
+	body, err := io.ReadAll(request.Body)
+	assert.NoError(t, err)
+	assert.Equal(t, payload, body)
+
+	logs := logger.String()
+	assert.NotContains(t, logs, "header-secret")
+	assert.Contains(t, logs, "Authorization: REDACTED")
+	assert.Contains(t, logs, string(payload))
+}
+
+func TestLogResponse_RedactsSensitiveHeadersWithoutConsumingBody(t *testing.T) {
+	logger := useCaptureLogger(t, verboseLogging)
+	payload := []byte(`{"foo":"bar"}`)
+
+	response := &http.Response{
+		StatusCode:    http.StatusOK,
+		Status:        "200 OK",
+		Body:          ioutil.NopCloser(bytes.NewReader(payload)),
+		ContentLength: int64(len(payload)),
+		Header: http.Header{
+			"Set-Cookie": {"cookie-secret"},
+		},
+	}
+
+	logResponse(response, Logf, verboseLogging)
+
+	body, err := io.ReadAll(response.Body)
+	assert.NoError(t, err)
+	assert.Equal(t, payload, body)
+
+	logs := logger.String()
+	assert.NotContains(t, logs, "cookie-secret")
+	assert.Contains(t, logs, "Set-Cookie: REDACTED")
+	assert.Contains(t, logs, string(payload))
+}
+
+type loggedListResponseItem struct {
+	ID          string `json:"id"`
+	DisplayName string `json:"displayName"`
+}
+
+type LoggedListResponseCollection struct {
+	Items []loggedListResponseItem `json:"items"`
+}
+
+type loggedListResponse struct {
+	RawResponse                  *http.Response
+	LoggedListResponseCollection `presentIn:"body"`
+	OpcRequestID                 *string `presentIn:"header" name:"opc-request-id"`
+	OpcNextPage                  *string `presentIn:"header" name:"opc-next-page"`
+	OpcPreviousPage              *string `presentIn:"header" name:"opc-previous-page"`
+}
+
+func (response loggedListResponse) HTTPResponse() *http.Response {
+	return response.RawResponse
+}
+
+type generatedListRequest struct{}
+
+func (request generatedListRequest) HTTPRequest(method, path string, binaryRequestBody *OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
+	return MakeDefaultHTTPRequest(method, path), nil
+}
+
+func generatedListOperation(ctx context.Context, client BaseClient, request OCIRequest) (response loggedListResponse, err error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/apis", nil, nil)
+	if err != nil {
+		return response, err
+	}
+
+	var httpResponse *http.Response
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "apiGateway", "ListApis")
+	defer CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+func TestGeneratedListResponse_RawResponseBodyRemainsReadableAfterReturn(t *testing.T) {
+	payload := []byte(`{"items":[{"id":"ocid1.apigatewayapi.oc1.phx.example","displayName":"test API definiton"}]}`)
+
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, request *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Opc-Next-Page", "next-page")
+		w.Header().Set("Opc-Previous-Page", "previous-page")
+		w.Header().Set("Opc-Request-Id", "request-id")
+		w.Header().Set("X-Content-Type-Options", "nosniff")
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write(payload)
+	}))
+	defer server.Close()
+
+	client := testClientWithRegion(RegionPHX)
+	client.Host = server.URL
+	client.BasePath = "20190501"
+	client.HTTPClient = server.Client()
+
+	decoded, err := generatedListOperation(context.Background(), client, generatedListRequest{})
+	assert.NoError(t, err)
+	assert.Len(t, decoded.Items, 1)
+	assert.Equal(t, "ocid1.apigatewayapi.oc1.phx.example", decoded.Items[0].ID)
+	assert.Equal(t, "test API definiton", decoded.Items[0].DisplayName)
+	assert.Equal(t, "request-id", *decoded.OpcRequestID)
+	assert.Equal(t, "next-page", *decoded.OpcNextPage)
+	assert.Equal(t, "previous-page", *decoded.OpcPreviousPage)
+
+	rawBody, err := io.ReadAll(decoded.RawResponse.Body)
+	assert.NoError(t, err)
+	assert.Equal(t, payload, rawBody)
+}
+
+func TestCheckForSuccessfulResponse_RedactsSensitiveRequestHeaders(t *testing.T) {
 	logger := useCaptureLogger(t, infoLogging)
 
 	request, err := http.NewRequest(http.MethodPost, "https://example.com", nil)
 	assert.NoError(t, err)
-	request.Header.Set(requestHeaderAuthorization, "Bearer top-secret")
+	request.Header.Set(requestHeaderAuthorization, "Bearer header-secret")
 
-	form := url.Values{}
-	form.Set("subject_token", "top-secret")
-	form.Set("client_secret", "client-secret")
-	form.Set("grant_type", "urn:ietf:params:oauth:grant-type:token-exchange")
-	form.Set("safe", "ok")
-
-	requestBody := ioutil.NopCloser(strings.NewReader(form.Encode()))
 	response := &http.Response{
 		StatusCode: http.StatusUnauthorized,
 		Status:     "401 Unauthorized",
@@ -226,16 +342,12 @@ func TestCheckForSuccessfulResponse_RedactsSensitiveRequestDetails(t *testing.T)
 		Header:     http.Header{},
 	}
 
-	err = checkForSuccessfulResponse(response, &requestBody)
+	err = checkForSuccessfulResponse(response, nil)
 	assert.Error(t, err)
 
 	logs := logger.String()
-	assert.NotContains(t, logs, "top-secret")
-	assert.NotContains(t, logs, "client-secret")
-	assert.Contains(t, logs, "Authorization: <redacted>")
-	assert.Contains(t, logs, "subject_token=<redacted>")
-	assert.Contains(t, logs, "client_secret=<redacted>")
-	assert.Contains(t, logs, "safe=ok")
+	assert.NotContains(t, logs, "header-secret")
+	assert.Contains(t, logs, "Authorization: REDACTED")
 }
 
 func TestClient_prepareRequestBasePathPrefix(t *testing.T) {

@@ -34,6 +34,28 @@ func TestUrlBasedX509CertificateRetriever_BadCertificate(t *testing.T) {
 
 	assert.Error(t, err)
 }
+
+func TestHttpGet_RedactsSensitiveResponseHeadersWithoutConsumingBody(t *testing.T) {
+	logger := useCaptureLogger(t, 2)
+	expectedBody := "certificate-body"
+	certServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Set-Cookie", "cookie-secret")
+		fmt.Fprint(w, expectedBody)
+	}))
+	defer certServer.Close()
+
+	body, statusCode, err := httpGet(&http.Client{}, certServer.URL)
+
+	assert.NoError(t, err)
+	assert.Equal(t, http.StatusOK, statusCode)
+	assert.Equal(t, expectedBody, body.String())
+
+	logs := logger.String()
+	assert.NotContains(t, logs, "cookie-secret")
+	assert.Contains(t, logs, "Set-Cookie: REDACTED")
+	assert.Contains(t, logs, expectedBody)
+}
+
 func TestUrlBasedX509CertificateRetriever_RefreshWithoutPrivateKeyUrl(t *testing.T) {
 	_, expectedCert := generateRandomCertificate()
 	certServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
