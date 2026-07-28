@@ -4,20 +4,23 @@
 package auth
 
 import (
+	"encoding/base64"
+	"encoding/json"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"log"
 	"os"
 	"strconv"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 const testTokenPathPrefix = "/tmp/temp-test-golang-sdk-kubernetesio-sa-token-"
 
 func TestDefaultServiceAccountTokenProviderCanReadByPath(t *testing.T) {
 	var tokenPath = testTokenPathPrefix + uuid()
-	tokenString := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJrdWJlcm5ldGVzLmRlZmF1bHQiLCJleHAiOjQ4NDEwMTAwNTQsImlhdCI6MTY4NzQxMDA1NCwiaXNzIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Om15LW5hbWVzcGFjZTpteS1zYSIsInN1YiI6dHJ1ZX0.lOCsshvqcfX6I-FQcxAigrD7-KGhsKXuk97mmak5FFQ"
+	tokenString := testServiceAccountToken(t, time.Now().Add(time.Hour))
 	createSaToken(tokenPath, tokenString)
 	provider := NewDefaultServiceAccountTokenProvider().WithSaTokenPath(tokenPath)
 	fmt.Println(provider.tokenPath)
@@ -51,7 +54,7 @@ func TestDefaultServiceAccountTokenProviderCanDetectMalformedSaToken(t *testing.
 
 func TestDefaultServiceAccountTokenProviderCanDetectExpiredSaToken(t *testing.T) {
 	var tokenPath = testTokenPathPrefix + uuid()
-	tokenString := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJrdWJlcm5ldGVzLmRlZmF1bHQiLCJleHAiOjE2ODc0MDAwNTQsImlhdCI6MTY4NzQxMDA1NCwiaXNzIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Om15LW5hbWVzcGFjZTpteS1zYSIsInN1YiI6dHJ1ZX0.UpnEGk95K9TQaem9u-uz8-uMl3lF1Yd0rgHwT6p0A6w"
+	tokenString := testServiceAccountToken(t, time.Now().Add(-time.Hour))
 	createSaToken(tokenPath, tokenString)
 	provider := NewDefaultServiceAccountTokenProvider().WithSaTokenPath(tokenPath)
 	fmt.Println(provider.tokenPath)
@@ -63,7 +66,7 @@ func TestDefaultServiceAccountTokenProviderCanDetectExpiredSaToken(t *testing.T)
 }
 
 func TestSuppliedServiceAccountTokenProviderCanDetectExpiredSaToken(t *testing.T) {
-	tokenString := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJrdWJlcm5ldGVzLmRlZmF1bHQiLCJleHAiOjE2ODc0MDAwNTQsImlhdCI6MTY4NzQxMDA1NCwiaXNzIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Om15LW5hbWVzcGFjZTpteS1zYSIsInN1YiI6dHJ1ZX0.UpnEGk95K9TQaem9u-uz8-uMl3lF1Yd0rgHwT6p0A6w"
+	tokenString := testServiceAccountToken(t, time.Now().Add(-time.Hour))
 	provider := NewSuppliedServiceAccountTokenProvider(tokenString)
 	assert.NotNil(t, provider)
 	_, err := provider.ServiceAccountToken()
@@ -75,6 +78,27 @@ func TestSuppliedServiceAccountTokenProviderCanDetectMalformedSaToken(t *testing
 	assert.NotNil(t, provider)
 	_, err := provider.ServiceAccountToken()
 	assert.Error(t, err)
+}
+
+func testServiceAccountToken(t *testing.T, expiration time.Time) string {
+	t.Helper()
+
+	header, err := json.Marshal(map[string]string{
+		"alg": "none",
+		"typ": "JWT",
+	})
+	if err != nil {
+		t.Fatalf("failed to marshal service account token header: %v", err)
+	}
+	payload, err := json.Marshal(map[string]interface{}{
+		"exp": expiration.Unix(),
+	})
+	if err != nil {
+		t.Fatalf("failed to marshal service account token payload: %v", err)
+	}
+
+	return base64.RawURLEncoding.EncodeToString(header) + "." +
+		base64.RawURLEncoding.EncodeToString(payload) + ".synthetic-signature"
 }
 
 func createSaToken(filePath string, content string) {

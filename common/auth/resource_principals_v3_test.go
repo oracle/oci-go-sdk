@@ -6,20 +6,43 @@ package auth
 import (
 	"crypto/rsa"
 	"crypto/x509"
+	"encoding/base64"
+	"encoding/json"
 	"encoding/pem"
 	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"time"
 
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"github.com/stretchr/testify/assert"
 )
 
 var (
-	test_token      = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJrdWJlcm5ldGVzLmRlZmF1bHQiLCJleHAiOjQ4NDEwMTAwNTQsImlhdCI6MTY4NzQxMDA1NCwiaXNzIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Om15LW5hbWVzcGFjZTpteS1zYSIsInN1YiI6dHJ1ZSwicmVzX3RlbmFudCI6InJhbmRvbSJ9._YXkRQbCxdnFfXYYHbLpi6lryxpHPXqGTxWhDTeB0_g"
+	test_token = testResourcePrincipalV3Token(
+		map[string]string{"alg": "HS256", "typ": "JWT"},
+		map[string]interface{}{
+			"aud":        "kubernetes.default",
+			"exp":        time.Now().Add(time.Hour).Unix(),
+			"iss":        "system:serviceaccount:test-namespace:test-service-account",
+			"res_tenant": "test-tenant",
+			"sub":        true,
+		},
+	)
 	rptUrlForParent = "https://sample.test/101010/resource/resourceId/actions/rptUrl"
-	rpstLeaf        = "eyJraWQiOiJhc3ciLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJvY2lkMS5kYXRhd2FyZWhvdXNlLmN1c3RvbWVyLWJpZy1kYi0xIiwiaXNzIjoiYXV0aFNlcnZpY2Uub3JhY2xlLmNvbSIsInJlc190ZW5hbnQiOiJjdXN0b21lci10ZW5hbnQtMSIsInB0eXBlIjoicmVzb3VyY2UiLCJyZXNfdHlwZSI6ImRhdGF3YXJlaG91c2UiLCJhdWQiOiJvY2kiLCJvcGMtdGFnIjoiVjEsb2NpZDEuZHluYW1pY2dyb3VwLmRldi4uYWFhYWFhYWEsb28ycHA2M3Y3NTMyNXpiNnJuNHYzYWgzYnRlam5ubTJvdDN1NWJyZnd1Y2VvczRpZDZ0YSIsIm9wYy1idW1wIjoiSDRzSUFBQUFBQUFBQUUyUHpRcUNRQlNGTTExTVJSQXRLbHBHYlFRSE1sSm8xVVAwQXVQTWJSeHJISnVmMHA0LUF4SFA5bjczTzV6bFRWSEJqcGcxSlpHQ2NxMWNoUm04TVNaZDVGM3cwMHZGejhaQnduaVpTZjA0eDBWaThuZGVrSlJMY0o4NnF3cWFmRTJkMGx3bE5RbFQ1Qy04N1ZxRFVVNVR3RlRKaW1ncm9iUllzTjJLT21PVkJCME5EdEh4T2dvbktGaE1ROThiLS1FZWpWdkh2SGZZcG9MZG5CRkxQa1JEcnB5Qjl1R0N2SmFhOVZSclAzU1RoaVR1R3pQQkk1Yjl5LUlBZVp2Z0IxX2paUVFDQVFBQSIsInR0eXBlIjoicmVzIiwicmVzX2lkIjoib2NpZDEuZGF0YXdhcmVob3VzZS5jdXN0b21lci1iaWctZGItMSIsIm9wYy1pbnN0YW5jZSI6Im9jaWQxLmluc3RhbmNlLmpveWZ1bC5kYm5vZGUuMSIsInJlc190YWciOiIiLCJyZXNfY29tcGFydG1lbnQiOiJjdXN0b21lci1jb21wYXJ0bWVudC0xIiwiZXhwIjoxNTUyNjgxMTY4LCJvcGMtY29tcGFydG1lbnQiOiJkYmFhcy1jb21wYXJ0bWVudC0xIiwiaWF0IjoxNTUyNjc5OTY4LCJqdGkiOiIzZDQxNDNlOC01ZTMyLTRlMTItYTM4Yy01OTc0NjUwMTA3MDMiLCJ0ZW5hbnQiOiJjdXN0b21lci10ZW5hbnQtMSIsImp3ayI6IntcImtpZFwiOlwiY3VzdG9tZXItZGJub2RlLTFcIixcIm5cIjpcImxzLUFDNGhpS0stMTFVdTFEZ3VLTFE1VGFhZGpNR1hCcDRhMFVFS2w0dnJjcmF3b2V6X3BuUS1pNS1nNV9XTU5xVXdrdUtBcXVTZnlVS25yZEhhV3d4b2RWcmRleTk1T3R4ckIySzNRdzgzaURkcUltSkhfWFp1cERfRHR0SzduS3N6Qy01TFI1Ums3SHF5Y094eEZVNzBNcGduQW9IaVNUM2V0VjJVZlJkNXRtb0dOaTdOSURORWJnSVpmcnczYUVYbHBzaGM2ckpVdUEyOG55ZUNjOVFtOHllMHUwN0UzamlCYmp5RjNFVWhTelNxblFsUlVNVEdaR1ZSZGpfRG9tcEhUVkFPNEJqUnVIZURWWGtWNjh1TzNrSEdTZUVPc2xsZmJZTkpaYUtCQTB3aUxrZkViWVBEWDFwbTM4UFAzcnJFbWhxeElObzdoYVFWakRXRDNKUVwiLFwiZVwiOlwiQVFBQlwiLFwia3R5XCI6XCJSU0FcIixcImFsZ1wiOlwiUlMyNTZcIixcInVzZVwiOlwic2lnXCJ9Iiwib3BjLXRlbmFudCI6ImRiYWFzLXRlbmFudCJ9.LqRt9JXSdcLahdwACjw_p_KHQhKde-NaVZG3zMjzWX6bVad-SRZYWKQSlk6Tq4f1ZNN0uxlP-d2snQAp3Kw-cQRrdCDOmD_0CDgR-yre-YbJDsJbEncczUIbe-ASeq_Sh9zDROVuD_7NdrmUCiVH2g-UYpYkuKKqu_tVjL2uy77W5_DGobPArEFvZ2GnyHT7gVVv12RnINtgr2jJULhegPBfvnp9-fhhZ7_PcsJ7Z5FkPzLtLOwEm3Lbm3veyUVUviu1CSjXnK67KzjS18TVGi723bkxYBf9lYDHfaXh9EEHzPtxeLAl3VrGjwZUv_ih0FRmoM7wgq8HMRjNACMo6g"
+	rpstLeaf        = testResourcePrincipalV3Token(
+		map[string]string{"alg": "RS256", "kid": "test-key", "typ": "JWT"},
+		map[string]interface{}{
+			"aud":        "oci",
+			"exp":        time.Now().Add(time.Hour).Unix(),
+			"iss":        "test-auth-service",
+			"ptype":      "resource",
+			"res_tenant": "test-tenant",
+			"res_type":   "database",
+			"sub":        "ocid1.datawarehouse.oc1..test-resource",
+		},
+	)
 )
 
 var envVarsrpt3 = map[string]string{
@@ -30,8 +53,30 @@ var envVarsrpt3 = map[string]string{
 	ResourcePrincipalRpstForLeaf:           rpstLeaf,
 }
 
-func TestNewResourcePrinicipalV3ConfigurationProviderLeaf(t *testing.T) {
+func TestResourcePrincipalV3TestTokensAreParseable(t *testing.T) {
+	for _, tokenString := range []string{test_token, rpstLeaf} {
+		token, err := parseJwt(tokenString)
+		if assert.NoError(t, err) {
+			assert.False(t, token.expired())
+		}
+	}
+}
 
+func testResourcePrincipalV3Token(header map[string]string, payload map[string]interface{}) string {
+	headerBytes, err := json.Marshal(header)
+	if err != nil {
+		panic(fmt.Sprintf("failed to marshal resource principal V3 token header: %v", err))
+	}
+	payloadBytes, err := json.Marshal(payload)
+	if err != nil {
+		panic(fmt.Sprintf("failed to marshal resource principal V3 token payload: %v", err))
+	}
+
+	return base64.RawURLEncoding.EncodeToString(headerBytes) + "." +
+		base64.RawURLEncoding.EncodeToString(payloadBytes) + ".synthetic-signature"
+}
+
+func TestNewResourcePrinicipalV3ConfigurationProviderLeaf(t *testing.T) {
 	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte(fmt.Sprintf(`{"fake": "data","resourcePrincipalToken": "%s","servicePrincipalSessionToken": "%s","token":"%s"}`, test_token, test_token, test_token)))
@@ -56,7 +101,6 @@ func TestNewResourcePrinicipalV3ConfigurationProviderLeaf(t *testing.T) {
 	valid, err := common.IsConfigurationProviderValid(provider)
 	assert.NoError(t, err)
 	assert.True(t, valid)
-
 }
 
 func TestNewResourcePrinicipalV3ConfigurationProviderWithDepth(t *testing.T) {
@@ -109,7 +153,6 @@ func TestNewResourcePrinicipalV3ConfigurationProviderWithDepth(t *testing.T) {
 	assert.True(t, valid)
 
 	assert.Equal(t, 4, serverCalls)
-
 }
 
 type fakeConfigProviderWithClaimAccess struct {
