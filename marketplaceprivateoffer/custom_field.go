@@ -15,13 +15,13 @@ import (
 	"strings"
 )
 
-// CustomField A key value pair specified by the seller of the offer
+// CustomField A key value pair specified by the seller of the offer.
 type CustomField struct {
 
-	// the key of the custom field
+	// The key of the custom field.
 	Key *string `mandatory:"false" json:"key"`
 
-	// the value of the custom field
+	// The value of the custom field.
 	Value *string `mandatory:"false" json:"value"`
 }
 

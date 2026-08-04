@@ -23,6 +23,9 @@ type OfferInternalDetail struct {
 
 	// Internal notes only intended for the Publisher of the Offer
 	InternalNotes *string `mandatory:"true" json:"internalNotes"`
+
+	// A list of associated offer quotes.
+	OfferQuoteIds []string `mandatory:"false" json:"offerQuoteIds"`
 }
 
 func (m OfferInternalDetail) String() string {

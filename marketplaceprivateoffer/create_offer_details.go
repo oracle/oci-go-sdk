@@ -54,6 +54,12 @@ type CreateOfferDetails struct {
 	// A list of key value pairs specified by the seller
 	CustomFields []CustomField `mandatory:"false" json:"customFields"`
 
+	// The type of the offer.
+	OfferType OfferOfferTypeEnum `mandatory:"false" json:"offerType,omitempty"`
+
+	// A list of associated offer quotes.
+	OfferQuoteIds []string `mandatory:"false" json:"offerQuoteIds"`
+
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
@@ -73,6 +79,9 @@ func (m CreateOfferDetails) String() string {
 func (m CreateOfferDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
+	if _, ok := GetMappingOfferOfferTypeEnum(string(m.OfferType)); !ok && m.OfferType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OfferType: %s. Supported values are: %s.", m.OfferType, strings.Join(GetOfferOfferTypeEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}

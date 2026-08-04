@@ -81,6 +81,13 @@ type Offer struct {
 
 	// A list of Resource Bundles associated with an Offer.
 	ResourceBundles []ResourceBundle `mandatory:"false" json:"resourceBundles"`
+
+	// The type of the offer.
+	OfferType OfferOfferTypeEnum `mandatory:"false" json:"offerType,omitempty"`
+
+	// System tags for this resource. Each key is predefined and scoped to a namespace.
+	// Example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
+	SystemTags map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 }
 
 func (m Offer) String() string {
@@ -98,6 +105,9 @@ func (m Offer) ValidateEnumValue() (bool, error) {
 
 	if _, ok := GetMappingOfferOfferStatusEnum(string(m.OfferStatus)); !ok && m.OfferStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OfferStatus: %s. Supported values are: %s.", m.OfferStatus, strings.Join(GetOfferOfferStatusEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingOfferOfferTypeEnum(string(m.OfferType)); !ok && m.OfferType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OfferType: %s. Supported values are: %s.", m.OfferType, strings.Join(GetOfferOfferTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
@@ -230,5 +240,47 @@ func GetOfferOfferStatusEnumStringValues() []string {
 // GetMappingOfferOfferStatusEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingOfferOfferStatusEnum(val string) (OfferOfferStatusEnum, bool) {
 	enum, ok := mappingOfferOfferStatusEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
+}
+
+// OfferOfferTypeEnum Enum with underlying type: string
+type OfferOfferTypeEnum string
+
+// Set of constants representing the allowable values for OfferOfferTypeEnum
+const (
+	OfferOfferTypeDirect     OfferOfferTypeEnum = "DIRECT"
+	OfferOfferTypeMultiParty OfferOfferTypeEnum = "MULTI_PARTY"
+)
+
+var mappingOfferOfferTypeEnum = map[string]OfferOfferTypeEnum{
+	"DIRECT":      OfferOfferTypeDirect,
+	"MULTI_PARTY": OfferOfferTypeMultiParty,
+}
+
+var mappingOfferOfferTypeEnumLowerCase = map[string]OfferOfferTypeEnum{
+	"direct":      OfferOfferTypeDirect,
+	"multi_party": OfferOfferTypeMultiParty,
+}
+
+// GetOfferOfferTypeEnumValues Enumerates the set of values for OfferOfferTypeEnum
+func GetOfferOfferTypeEnumValues() []OfferOfferTypeEnum {
+	values := make([]OfferOfferTypeEnum, 0)
+	for _, v := range mappingOfferOfferTypeEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetOfferOfferTypeEnumStringValues Enumerates the set of values in String for OfferOfferTypeEnum
+func GetOfferOfferTypeEnumStringValues() []string {
+	return []string{
+		"DIRECT",
+		"MULTI_PARTY",
+	}
+}
+
+// GetMappingOfferOfferTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOfferOfferTypeEnum(val string) (OfferOfferTypeEnum, bool) {
+	enum, ok := mappingOfferOfferTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

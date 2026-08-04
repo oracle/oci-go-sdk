@@ -15,16 +15,16 @@ import (
 	"strings"
 )
 
-// Pricing the pricing information for the offer
+// Pricing The pricing information for the offer.
 type Pricing struct {
 
-	// The currency supported for a given Offer, in the format specified by ISO-4217
+	// The currency supported for a given Offer, in the format specified by ISO-4217.
 	CurrencyType *string `mandatory:"false" json:"currencyType"`
 
-	// The total amount an Offer costs
+	// The total amount an offer costs.
 	TotalAmount *int64 `mandatory:"false" json:"totalAmount"`
 
-	// The frequency at which the customer is billed for the Offer
+	// The frequency at which the customer is billed for the offer.
 	BillingCycle PricingBillingCycleEnum `mandatory:"false" json:"billingCycle,omitempty"`
 }
 
