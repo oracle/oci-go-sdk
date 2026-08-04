@@ -128,6 +128,21 @@ func TestClient_prepareRequestCanBeCalledMultipleTimes(t *testing.T) {
 	assert.Equal(t, "/basePath/somepath", request.URL.Path)
 }
 
+func TestClient_prepareRequestCanBeCalledMultipleTimesWithSlashPrefixedBasePath(t *testing.T) {
+	c := BaseClient{
+		Host:      "somehost:9000",
+		BasePath:  "/v1/resourcePrincipalSessionToken",
+		UserAgent: "asdf",
+	}
+
+	request := http.Request{URL: &url.URL{}}
+	assert.NoError(t, c.prepareRequest(&request))
+	assert.Equal(t, "/v1/resourcePrincipalSessionToken", request.URL.Path)
+
+	assert.NoError(t, c.prepareRequest(&request))
+	assert.Equal(t, "/v1/resourcePrincipalSessionToken", request.URL.Path)
+}
+
 func TestClient_prepareRequestUpdatesDateHeader(t *testing.T) {
 	host := "somehost:9000"
 	basePath := "basePath"

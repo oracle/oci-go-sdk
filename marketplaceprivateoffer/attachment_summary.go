@@ -43,6 +43,13 @@ type AttachmentSummary struct {
 
 	// The MIME type of the uploaded data.
 	MimeType *string `mandatory:"false" json:"mimeType"`
+
+	// The type of the offer.
+	OfferType OfferOfferTypeEnum `mandatory:"false" json:"offerType,omitempty"`
+
+	// System tags for this resource. Each key is predefined and scoped to a namespace.
+	// Example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
+	SystemTags map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 }
 
 func (m AttachmentSummary) String() string {
@@ -61,6 +68,9 @@ func (m AttachmentSummary) ValidateEnumValue() (bool, error) {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAttachmentLifecycleStateEnumStringValues(), ",")))
 	}
 
+	if _, ok := GetMappingOfferOfferTypeEnum(string(m.OfferType)); !ok && m.OfferType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OfferType: %s. Supported values are: %s.", m.OfferType, strings.Join(GetOfferOfferTypeEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}

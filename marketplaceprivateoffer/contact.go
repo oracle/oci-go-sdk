@@ -15,16 +15,16 @@ import (
 	"strings"
 )
 
-// Contact The contact information of an individual
+// Contact The contact information of an individual.
 type Contact struct {
 
-	// The first name of the contact
+	// The first name of the contact.
 	FirstName *string `mandatory:"false" json:"firstName"`
 
-	// The last name of the contact
+	// The last name of the contact.
 	LastName *string `mandatory:"false" json:"lastName"`
 
-	// The email of the contact
+	// The email of the contact.
 	Email *string `mandatory:"false" json:"email"`
 }
 

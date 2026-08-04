@@ -386,6 +386,64 @@ func (client OfferClient) listOffers(ctx context.Context, request common.OCIRequ
 	return response, err
 }
 
+// SendOffer Sends an Offer to be reviewed and accepted by the buyer. Validation will be run on the offer first to verify the offer is valid and contains all required fields.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/SendOffer.go.html to see an example of how to use SendOffer API.
+// A default retry strategy applies to this operation SendOffer()
+func (client OfferClient) SendOffer(ctx context.Context, request SendOfferRequest) (response SendOfferResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.sendOffer, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = SendOfferResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = SendOfferResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(SendOfferResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into SendOfferResponse")
+	}
+	return
+}
+
+// sendOffer implements the OCIOperation interface (enables retrying operations)
+func (client OfferClient) sendOffer(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/offers/{offerId}/actions/sendOffer", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response SendOfferResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "offer", "SendOffer")
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "Offer", "SendOffer", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // UpdateOffer Updates the Offer
 //
 // # See also
@@ -437,6 +495,64 @@ func (client OfferClient) updateOffer(ctx context.Context, request common.OCIReq
 	if err != nil {
 		apiReferenceLink := ""
 		err = common.PostProcessServiceError(err, "Offer", "UpdateOffer", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// WithdrawOffer Withdraws an Offer and sends it back into DRAFT state. Offers can only be withdrawn before they are accepted by the buyer.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplaceprivateoffer/WithdrawOffer.go.html to see an example of how to use WithdrawOffer API.
+// A default retry strategy applies to this operation WithdrawOffer()
+func (client OfferClient) WithdrawOffer(ctx context.Context, request WithdrawOfferRequest) (response WithdrawOfferResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.withdrawOffer, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = WithdrawOfferResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = WithdrawOfferResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(WithdrawOfferResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into WithdrawOfferResponse")
+	}
+	return
+}
+
+// withdrawOffer implements the OCIOperation interface (enables retrying operations)
+func (client OfferClient) withdrawOffer(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/offers/{offerId}/actions/withdrawOffer", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response WithdrawOfferResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "offer", "WithdrawOffer")
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := ""
+		err = common.PostProcessServiceError(err, "Offer", "WithdrawOffer", apiReferenceLink)
 		return response, err
 	}
 
