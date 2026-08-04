@@ -15,19 +15,19 @@ import (
 	"strings"
 )
 
-// ResourceBundle Resource Bundle associated with an Offer
+// ResourceBundle Resource bundle associated with an offer.
 type ResourceBundle struct {
 
-	// The type of resources in the bundle
+	// The type of resources in the bundle.
 	Type ResourceBundleTypeEnum `mandatory:"false" json:"type,omitempty"`
 
-	// The quantity of a resources associated with the bundle
+	// The quantity of a resources associated with the bundle.
 	Quantity *int64 `mandatory:"false" json:"quantity"`
 
-	// The unit of measurement for the resource bundle
+	// The unit of measurement for the resource bundle.
 	UnitOfMeasurement ResourceBundleUnitOfMeasurementEnum `mandatory:"false" json:"unitOfMeasurement,omitempty"`
 
-	// the ids of the resources in the Offer
+	// The IDs of the resources in the offer.
 	ResourceIds []string `mandatory:"false" json:"resourceIds"`
 }
 

@@ -32,6 +32,25 @@ func (f fakeHTTPCaller) Do(req *http.Request) (*http.Response, error) {
 	return &response, nil
 }
 
+type scriptedHTTPCaller struct {
+	calls  int
+	script func(request *http.Request, call int) (*http.Response, error)
+}
+
+func (f *scriptedHTTPCaller) Do(request *http.Request) (*http.Response, error) {
+	f.calls++
+	return f.script(request, f.calls)
+}
+
+func fakeHTTPResponse(request *http.Request, statusCode int, body string) *http.Response {
+	return &http.Response{
+		StatusCode: statusCode,
+		Body:       ioutil.NopCloser(bytes.NewBufferString(body)),
+		Header:     make(http.Header),
+		Request:    request,
+	}
+}
+
 func fakeInstanceProvider(region common.Region, tenancyID string) (*instancePrincipalConfigurationProvider, error) {
 
 	modifier := func(dispatcher common.HTTPRequestDispatcher) (common.HTTPRequestDispatcher, error) {
@@ -97,6 +116,55 @@ func TestNewResourcePrincipalConfigurationProvider(t *testing.T) {
 	s, e := provider.KeyID()
 	assert.NoError(t, e)
 	assert.Equal(t, "ST$"+expectedSecurityToken, s)
+}
+
+func TestResourcePrincipalSessionTokenRetryKeepsSinglePath(t *testing.T) {
+	testRegion := common.RegionFRA
+	validSessionToken := secondExpectedSecurityToken
+	instanceProvider, err := fakeInstanceProvider(testRegion, tenancyID)
+	assert.NoError(t, err)
+
+	rpTokenClient, err := common.NewClientWithConfig(instanceProvider)
+	assert.NoError(t, err)
+	rpTokenClient.Host = "https://goldengate-dev32.eu-frankfurt-1.oci.oraclecloud.com"
+	rpTokenClient.HTTPClient = fakeHTTPCaller{
+		Body: `{"resourcePrincipalToken":"resource-principal-token","servicePrincipalSessionToken":"service-principal-session-token"}`,
+	}
+
+	rpSessionClient, err := common.NewClientWithConfig(instanceProvider)
+	assert.NoError(t, err)
+	rpSessionClient.Host = "https://auth.eu-frankfurt-1.oraclecloud.com"
+	rpSessionClient.BasePath = identityResourcePrincipalSessionTokenPath
+	sessionTokenCaller := &scriptedHTTPCaller{
+		script: func(request *http.Request, call int) (*http.Response, error) {
+			switch call {
+			case 1:
+				assert.Equal(t, identityResourcePrincipalSessionTokenPath, request.URL.Path)
+				return fakeHTTPResponse(request, http.StatusUnauthorized, `{"code":"NotAuthenticated","message":"Not authenticated"}`), nil
+			case 2:
+				if assert.Equal(t, identityResourcePrincipalSessionTokenPath, request.URL.Path) {
+					return fakeHTTPResponse(request, http.StatusOK, fmt.Sprintf(`{"token":"%s"}`, validSessionToken)), nil
+				}
+				return fakeHTTPResponse(request, http.StatusNotFound, `{"code":"NotFound","message":"Not Found"}`), nil
+			default:
+				return nil, fmt.Errorf("unexpected session token request %d", call)
+			}
+		},
+	}
+	rpSessionClient.HTTPClient = sessionTokenCaller
+
+	provider, err := resourcePrincipalConfigurationProviderForInstanceWithClients(
+		*instanceProvider,
+		rpTokenClient,
+		rpSessionClient,
+		"ocid1.goldengatedeployment.oc1..example",
+		"/20200407/resourcePrincipalToken",
+	)
+	assert.NoError(t, err)
+
+	_, err = common.NewClientWithConfig(provider)
+	assert.NoError(t, err)
+	assert.Equal(t, 2, sessionTokenCaller.calls)
 }
 
 func TestNewServicePrincipalConfigurationProvider(t *testing.T) {
