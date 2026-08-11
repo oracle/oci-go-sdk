@@ -145,7 +145,7 @@ func (client GenerateSqlFromNlJobClient) generateSqlFromNl(ctx context.Context, 
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/generative-ai-nl2sql/20260325/GenerateSqlFromNlJob/GenerateSqlFromNl"
+		apiReferenceLink := ""
 		err = common.PostProcessServiceError(err, "GenerateSqlFromNlJob", "GenerateSqlFromNl", apiReferenceLink)
 		return response, err
 	}
