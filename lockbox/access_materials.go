@@ -20,7 +20,7 @@ import (
 type AccessMaterials struct {
 
 	// The contents of the material. This is a map that contains the various fields needed for access.
-	Details map[string]string `mandatory:"true" json:"details"`
+	Details map[string]string `mandatory:"true" json:"details" sensitive:"true"`
 }
 
 func (m AccessMaterials) String() string {

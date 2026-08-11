@@ -5,7 +5,9 @@ package common
 
 import (
 	"encoding/json"
+	"io"
 	"reflect"
+	"strings"
 	"testing"
 	"time"
 
@@ -76,6 +78,59 @@ func TestStructToString_Nested(t *testing.T) {
 	assert.Contains(t, str, "1")
 	assert.Contains(t, str, "somestring")
 	assert.Contains(t, str, "<nil>")
+}
+
+type sensitiveTestPayload struct {
+	Password       *string           `json:"password" sensitive:"true"`
+	Nested         sensitiveTestItem `json:"nested"`
+	Passwords      []string          `json:"passwords" sensitive:"true"`
+	PasswordByName map[string]string `json:"passwordByName" sensitive:"true"`
+}
+
+func (p sensitiveTestPayload) String() string {
+	return PointerString(p)
+}
+
+type sensitiveTestItem struct {
+	Password *string `json:"password" sensitive:"true"`
+}
+
+func (i sensitiveTestItem) String() string {
+	return PointerString(i)
+}
+
+type sensitiveTestRequest struct {
+	Details sensitiveTestPayload `contributesTo:"body"`
+}
+
+func (r sensitiveTestRequest) String() string {
+	return PointerString(r)
+}
+
+func TestPointerStringRedactsSensitiveValuesWhileRequestSerializationPreservesThem(t *testing.T) {
+	const canary = "go-sdk-password-canary"
+
+	payload := sensitiveTestPayload{
+		Password:  String(canary),
+		Nested:    sensitiveTestItem{Password: String(canary)},
+		Passwords: []string{canary},
+		PasswordByName: map[string]string{
+			"primary": canary,
+		},
+	}
+
+	diagnosticOutput := sensitiveTestRequest{Details: payload}.String()
+	assert.NotContains(t, diagnosticOutput, canary)
+	assert.Contains(t, diagnosticOutput, "Password=<redacted>")
+	assert.Contains(t, diagnosticOutput, "Passwords=<redacted>")
+	assert.Contains(t, diagnosticOutput, "PasswordByName=<redacted>")
+
+	httpRequest, err := MakeDefaultHTTPRequestWithTaggedStruct("POST", "/", sensitiveTestRequest{Details: payload})
+	assert.NoError(t, err)
+
+	requestBody, err := io.ReadAll(httpRequest.Body)
+	assert.NoError(t, err)
+	assert.Equal(t, 4, strings.Count(string(requestBody), canary))
 }
 
 func TestDateParsing_LastModifiedHeaderDate(t *testing.T) {
