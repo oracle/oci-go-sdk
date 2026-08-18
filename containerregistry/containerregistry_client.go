@@ -140,7 +140,7 @@ func (client ContainerRegistryClient) getAccessToken(ctx context.Context, reques
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/container-registry/20180419/AccessToken/GetAccessToken"
 		err = common.PostProcessServiceError(err, "ContainerRegistry", "GetAccessToken", apiReferenceLink)
 		return response, err
 	}
