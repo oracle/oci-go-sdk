@@ -22,7 +22,7 @@ type RotateDistributedDatabaseDetails struct {
 	Name *string `mandatory:"true" json:"name"`
 
 	// The admin password for the shard or catalog.
-	AdminPassword *string `mandatory:"true" json:"adminPassword"`
+	AdminPassword *string `mandatory:"true" json:"adminPassword" sensitive:"true"`
 }
 
 func (m RotateDistributedDatabaseDetails) String() string {
