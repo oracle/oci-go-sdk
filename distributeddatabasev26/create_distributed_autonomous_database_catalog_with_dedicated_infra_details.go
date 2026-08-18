@@ -20,7 +20,7 @@ import (
 type CreateDistributedAutonomousDatabaseCatalogWithDedicatedInfraDetails struct {
 
 	// The admin password for the catalog associated with the distributed autonomous database.
-	AdminPassword *string `mandatory:"true" json:"adminPassword"`
+	AdminPassword *string `mandatory:"true" json:"adminPassword" sensitive:"true"`
 
 	// The compute count for the catalog database. It has to be in multiples of 2.
 	ComputeCount *float32 `mandatory:"true" json:"computeCount"`

@@ -20,7 +20,7 @@ import (
 type CreateDistributedAutonomousDatabaseShardWithDedicatedInfraDetails struct {
 
 	// Admin password for shard database.
-	AdminPassword *string `mandatory:"true" json:"adminPassword"`
+	AdminPassword *string `mandatory:"true" json:"adminPassword" sensitive:"true"`
 
 	// The compute count for the shard database. It has to be in multiples of 2.
 	ComputeCount *float32 `mandatory:"true" json:"computeCount"`
