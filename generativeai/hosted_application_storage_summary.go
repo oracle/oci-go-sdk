@@ -36,7 +36,7 @@ type HostedApplicationStorageSummary struct {
 	// The compartment OCID to create the hosted application in.
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
-	// type like Cache, Postgresql and ADB.
+	// The managed storage type for the application.
 	StorageType HostedApplicationStorageSummaryStorageTypeEnum `mandatory:"false" json:"storageType,omitempty"`
 
 	// The date and time the hosted application was created, in the format defined by RFC 3339.

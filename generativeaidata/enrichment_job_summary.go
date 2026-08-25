@@ -18,19 +18,22 @@ import (
 // EnrichmentJobSummary Object representing EnrichmentJobSummary resource.
 type EnrichmentJobSummary struct {
 
-	// Unique identifier that is immutable on creation.
+	// The OCID of the Semantic Store job.
 	Id *string `mandatory:"true" json:"id"`
 
-	// Owning SemanticStore OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) for a GenerateSqlJob.
+	// Owning SemanticStore OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) for the EnrichmentJob.
 	SemanticStoreId *string `mandatory:"true" json:"semanticStoreId"`
 
-	// Enrichment job type. Currently supported Full Build (All supported objects in a given schema) and Partial Build (Selected tables and/or supported objects in a given schema).
+	// Enrichment job type. Supported values are Full Build (all supported objects in a given schema), Partial Build (selected tables and/or supported objects in a given schema), and Delta Refresh (objects in a given schema that have changed since the previous enrichment job).
 	EnrichmentJobType EnrichmentJobTypeEnum `mandatory:"true" json:"enrichmentJobType"`
+
+	// The generative AI modelId used for Enrichment. You can use the ListModels API to list the available models. https://docs.oracle.com/en-us/iaas/api/#/en/generative-ai/20231130/ModelCollection/ListModels
+	ModelId *string `mandatory:"true" json:"modelId"`
 
 	// The date and time that the enrichment job was accepted in the format of an RFC3339 datetime string.
 	TimeAccepted *common.SDKTime `mandatory:"true" json:"timeAccepted"`
 
-	// The lifecycleState of GenerateSqlJob.
+	// The lifecycle state of the EnrichmentJob.
 	LifecycleState LifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// A user-friendly display name. It does not have to be unique and can be modified. Avoid entering confidential information.

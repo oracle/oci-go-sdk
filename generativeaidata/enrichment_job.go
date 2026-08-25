@@ -17,20 +17,23 @@ import (
 )
 
 // EnrichmentJob Object representing to EnrichmentJob.
-// ocidEntityType: generativeaiEnrichmentJob
+// ocidEntityType: generativeaisemanticstorejob
 // adLocality: regional
 type EnrichmentJob struct {
 
-	// Unique identifier that is immutable on creation.
+	// The OCID of the Semantic Store job.
 	Id *string `mandatory:"true" json:"id"`
 
 	// Owning SemanticStore OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) for an EnrichmentJob.
 	SemanticStoreId *string `mandatory:"true" json:"semanticStoreId"`
 
-	// Enrichment job type. Currently supported Full Build (All supported objects in a given schema) and Partial Build (Selected tables and/or supported objects in a given schema).
+	// Enrichment job type. Supported values are Full Build (all supported objects in a given schema), Partial Build (selected tables and/or supported objects in a given schema), and Delta Refresh (objects in a given schema that have changed since the previous enrichment job).
 	EnrichmentJobType EnrichmentJobTypeEnum `mandatory:"true" json:"enrichmentJobType"`
 
 	EnrichmentJobConfiguration EnrichmentJobConfiguration `mandatory:"true" json:"enrichmentJobConfiguration"`
+
+	// The generative AI modelId used for Enrichment. You can use the ListModels API to list the available models. https://docs.oracle.com/en-us/iaas/api/#/en/generative-ai/20231130/ModelCollection/ListModels
+	ModelId *string `mandatory:"true" json:"modelId"`
 
 	// The date and time that the enrichment job was accepted in the format of an RFC3339 datetime string.
 	TimeAccepted *common.SDKTime `mandatory:"true" json:"timeAccepted"`
@@ -38,7 +41,7 @@ type EnrichmentJob struct {
 	// A message describing the current state in more detail that can provide actionable information.
 	LifecycleDetails *string `mandatory:"true" json:"lifecycleDetails"`
 
-	// The lifecycleState of GenerateSqlJob.
+	// The lifecycle state of the EnrichmentJob.
 	LifecycleState LifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// An optional description of the EnrichmentJob.
@@ -106,6 +109,7 @@ func (m *EnrichmentJob) UnmarshalJSON(data []byte) (e error) {
 		SemanticStoreId            *string                           `json:"semanticStoreId"`
 		EnrichmentJobType          EnrichmentJobTypeEnum             `json:"enrichmentJobType"`
 		EnrichmentJobConfiguration enrichmentjobconfiguration        `json:"enrichmentJobConfiguration"`
+		ModelId                    *string                           `json:"modelId"`
 		TimeAccepted               *common.SDKTime                   `json:"timeAccepted"`
 		LifecycleDetails           *string                           `json:"lifecycleDetails"`
 		LifecycleState             LifecycleStateEnum                `json:"lifecycleState"`
@@ -147,6 +151,8 @@ func (m *EnrichmentJob) UnmarshalJSON(data []byte) (e error) {
 	} else {
 		m.EnrichmentJobConfiguration = nil
 	}
+
+	m.ModelId = model.ModelId
 
 	m.TimeAccepted = model.TimeAccepted
 

@@ -17,14 +17,15 @@ import (
 )
 
 // DeltaRefreshEnrichmentJobConfiguration A DeltaRefreshEnrichmentJobConfiguration is an EnrichmentJobConfiguration [indicated by the first item under `allOf`, which is a reference to EnrichmentJobConfiguration]
-// that describes the database schema that will be the scope of the enrichment job and the schedule on which the job will run. As distinguished by enrichmentJobType [with specific characteristics defined by the second item under `allOf`].
+// that describes the database schema that will be the scope of the delta refresh enrichment job. As distinguished by enrichmentJobType [with specific characteristics defined by the second item under `allOf`].
+// deltaRefreshSchedule is optional, is not used by the service, and is retained only for backward compatibility. It should be treated as deprecated.
 type DeltaRefreshEnrichmentJobConfiguration struct {
 
 	// Name of the DB Schema to be enriched
 	SchemaName *string `mandatory:"true" json:"schemaName"`
 
-	// Schedule for occurrences of Delta Refresh jobs
-	DeltaRefreshSchedule *interface{} `mandatory:"true" json:"deltaRefreshSchedule"`
+	// Deprecated schedule for occurrences of Delta Refresh jobs. This value is not used by the service.
+	DeltaRefreshSchedule *interface{} `mandatory:"false" json:"deltaRefreshSchedule"`
 }
 
 func (m DeltaRefreshEnrichmentJobConfiguration) String() string {

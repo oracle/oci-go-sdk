@@ -46,6 +46,11 @@ const (
 	WorkRequestOperationTypeDeleteBackup                          WorkRequestOperationTypeEnum = "DELETE_BACKUP"
 	WorkRequestOperationTypeUpdateBackup                          WorkRequestOperationTypeEnum = "UPDATE_BACKUP"
 	WorkRequestOperationTypeExportBackup                          WorkRequestOperationTypeEnum = "EXPORT_BACKUP"
+	WorkRequestOperationTypeCreateBlueGreenDeployment             WorkRequestOperationTypeEnum = "CREATE_BLUE_GREEN_DEPLOYMENT"
+	WorkRequestOperationTypeUpdateBlueGreenDeployment             WorkRequestOperationTypeEnum = "UPDATE_BLUE_GREEN_DEPLOYMENT"
+	WorkRequestOperationTypeDeleteBlueGreenDeployment             WorkRequestOperationTypeEnum = "DELETE_BLUE_GREEN_DEPLOYMENT"
+	WorkRequestOperationTypeChangeBlueGreenDeploymentCompartment  WorkRequestOperationTypeEnum = "CHANGE_BLUE_GREEN_DEPLOYMENT_COMPARTMENT"
+	WorkRequestOperationTypeSwitchoverBlueGreenDeployment         WorkRequestOperationTypeEnum = "SWITCHOVER_BLUE_GREEN_DEPLOYMENT"
 )
 
 var mappingWorkRequestOperationTypeEnum = map[string]WorkRequestOperationTypeEnum{
@@ -77,6 +82,11 @@ var mappingWorkRequestOperationTypeEnum = map[string]WorkRequestOperationTypeEnu
 	"DELETE_BACKUP":                             WorkRequestOperationTypeDeleteBackup,
 	"UPDATE_BACKUP":                             WorkRequestOperationTypeUpdateBackup,
 	"EXPORT_BACKUP":                             WorkRequestOperationTypeExportBackup,
+	"CREATE_BLUE_GREEN_DEPLOYMENT":              WorkRequestOperationTypeCreateBlueGreenDeployment,
+	"UPDATE_BLUE_GREEN_DEPLOYMENT":              WorkRequestOperationTypeUpdateBlueGreenDeployment,
+	"DELETE_BLUE_GREEN_DEPLOYMENT":              WorkRequestOperationTypeDeleteBlueGreenDeployment,
+	"CHANGE_BLUE_GREEN_DEPLOYMENT_COMPARTMENT":  WorkRequestOperationTypeChangeBlueGreenDeploymentCompartment,
+	"SWITCHOVER_BLUE_GREEN_DEPLOYMENT":          WorkRequestOperationTypeSwitchoverBlueGreenDeployment,
 }
 
 var mappingWorkRequestOperationTypeEnumLowerCase = map[string]WorkRequestOperationTypeEnum{
@@ -108,6 +118,11 @@ var mappingWorkRequestOperationTypeEnumLowerCase = map[string]WorkRequestOperati
 	"delete_backup":                             WorkRequestOperationTypeDeleteBackup,
 	"update_backup":                             WorkRequestOperationTypeUpdateBackup,
 	"export_backup":                             WorkRequestOperationTypeExportBackup,
+	"create_blue_green_deployment":              WorkRequestOperationTypeCreateBlueGreenDeployment,
+	"update_blue_green_deployment":              WorkRequestOperationTypeUpdateBlueGreenDeployment,
+	"delete_blue_green_deployment":              WorkRequestOperationTypeDeleteBlueGreenDeployment,
+	"change_blue_green_deployment_compartment":  WorkRequestOperationTypeChangeBlueGreenDeploymentCompartment,
+	"switchover_blue_green_deployment":          WorkRequestOperationTypeSwitchoverBlueGreenDeployment,
 }
 
 // GetWorkRequestOperationTypeEnumValues Enumerates the set of values for WorkRequestOperationTypeEnum
@@ -150,6 +165,11 @@ func GetWorkRequestOperationTypeEnumStringValues() []string {
 		"DELETE_BACKUP",
 		"UPDATE_BACKUP",
 		"EXPORT_BACKUP",
+		"CREATE_BLUE_GREEN_DEPLOYMENT",
+		"UPDATE_BLUE_GREEN_DEPLOYMENT",
+		"DELETE_BLUE_GREEN_DEPLOYMENT",
+		"CHANGE_BLUE_GREEN_DEPLOYMENT_COMPARTMENT",
+		"SWITCHOVER_BLUE_GREEN_DEPLOYMENT",
 	}
 }
 

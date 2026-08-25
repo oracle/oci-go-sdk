@@ -21,7 +21,7 @@ import (
 // StorageConfig The type of service-managed storage.
 type StorageConfig struct {
 
-	// The key of environment variable to store the database connection.
+	// The environment variable key for accessing the managed storage.
 	EnvironmentVariableKey *string `mandatory:"true" json:"environmentVariableKey"`
 
 	// The [OCID] of ApplicationStorage.

@@ -42,7 +42,7 @@ type DedicatedAiCluster struct {
 	// The number of dedicated units in this AI cluster.
 	UnitCount *int `mandatory:"true" json:"unitCount"`
 
-	// The shape of dedicated unit in this AI cluster. The underlying hardware configuration is hidden from customers.
+	// The shape of dedicated unit in this AI cluster.
 	UnitShape DedicatedAiClusterUnitShapeEnum `mandatory:"true" json:"unitShape"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
@@ -382,6 +382,26 @@ const (
 	DedicatedAiClusterUnitShapeOaiB200X4       DedicatedAiClusterUnitShapeEnum = "OAI_B200_X4"
 	DedicatedAiClusterUnitShapeOaiB200X8       DedicatedAiClusterUnitShapeEnum = "OAI_B200_X8"
 	DedicatedAiClusterUnitShapeSbB200X1        DedicatedAiClusterUnitShapeEnum = "SB_B200_X1"
+	DedicatedAiClusterUnitShapeB200X16         DedicatedAiClusterUnitShapeEnum = "B200_X16"
+	DedicatedAiClusterUnitShapeB200X32         DedicatedAiClusterUnitShapeEnum = "B200_X32"
+	DedicatedAiClusterUnitShapeB300X1          DedicatedAiClusterUnitShapeEnum = "B300_X1"
+	DedicatedAiClusterUnitShapeB300X2          DedicatedAiClusterUnitShapeEnum = "B300_X2"
+	DedicatedAiClusterUnitShapeB300X4          DedicatedAiClusterUnitShapeEnum = "B300_X4"
+	DedicatedAiClusterUnitShapeB300X8          DedicatedAiClusterUnitShapeEnum = "B300_X8"
+	DedicatedAiClusterUnitShapeB300X16         DedicatedAiClusterUnitShapeEnum = "B300_X16"
+	DedicatedAiClusterUnitShapeB300X32         DedicatedAiClusterUnitShapeEnum = "B300_X32"
+	DedicatedAiClusterUnitShapeL40sX1          DedicatedAiClusterUnitShapeEnum = "L40S_X1"
+	DedicatedAiClusterUnitShapeL40sX2          DedicatedAiClusterUnitShapeEnum = "L40S_X2"
+	DedicatedAiClusterUnitShapeL40sX4          DedicatedAiClusterUnitShapeEnum = "L40S_X4"
+	DedicatedAiClusterUnitShapeL40sX8          DedicatedAiClusterUnitShapeEnum = "L40S_X8"
+	DedicatedAiClusterUnitShapeL40sX16         DedicatedAiClusterUnitShapeEnum = "L40S_X16"
+	DedicatedAiClusterUnitShapeL40sX32         DedicatedAiClusterUnitShapeEnum = "L40S_X32"
+	DedicatedAiClusterUnitShapeMi300xX1        DedicatedAiClusterUnitShapeEnum = "MI300X_X1"
+	DedicatedAiClusterUnitShapeMi300xX2        DedicatedAiClusterUnitShapeEnum = "MI300X_X2"
+	DedicatedAiClusterUnitShapeMi300xX4        DedicatedAiClusterUnitShapeEnum = "MI300X_X4"
+	DedicatedAiClusterUnitShapeMi300xX8        DedicatedAiClusterUnitShapeEnum = "MI300X_X8"
+	DedicatedAiClusterUnitShapeMi300xX16       DedicatedAiClusterUnitShapeEnum = "MI300X_X16"
+	DedicatedAiClusterUnitShapeMi300xX32       DedicatedAiClusterUnitShapeEnum = "MI300X_X32"
 )
 
 var mappingDedicatedAiClusterUnitShapeEnum = map[string]DedicatedAiClusterUnitShapeEnum{
@@ -488,6 +508,26 @@ var mappingDedicatedAiClusterUnitShapeEnum = map[string]DedicatedAiClusterUnitSh
 	"OAI_B200_X4":        DedicatedAiClusterUnitShapeOaiB200X4,
 	"OAI_B200_X8":        DedicatedAiClusterUnitShapeOaiB200X8,
 	"SB_B200_X1":         DedicatedAiClusterUnitShapeSbB200X1,
+	"B200_X16":           DedicatedAiClusterUnitShapeB200X16,
+	"B200_X32":           DedicatedAiClusterUnitShapeB200X32,
+	"B300_X1":            DedicatedAiClusterUnitShapeB300X1,
+	"B300_X2":            DedicatedAiClusterUnitShapeB300X2,
+	"B300_X4":            DedicatedAiClusterUnitShapeB300X4,
+	"B300_X8":            DedicatedAiClusterUnitShapeB300X8,
+	"B300_X16":           DedicatedAiClusterUnitShapeB300X16,
+	"B300_X32":           DedicatedAiClusterUnitShapeB300X32,
+	"L40S_X1":            DedicatedAiClusterUnitShapeL40sX1,
+	"L40S_X2":            DedicatedAiClusterUnitShapeL40sX2,
+	"L40S_X4":            DedicatedAiClusterUnitShapeL40sX4,
+	"L40S_X8":            DedicatedAiClusterUnitShapeL40sX8,
+	"L40S_X16":           DedicatedAiClusterUnitShapeL40sX16,
+	"L40S_X32":           DedicatedAiClusterUnitShapeL40sX32,
+	"MI300X_X1":          DedicatedAiClusterUnitShapeMi300xX1,
+	"MI300X_X2":          DedicatedAiClusterUnitShapeMi300xX2,
+	"MI300X_X4":          DedicatedAiClusterUnitShapeMi300xX4,
+	"MI300X_X8":          DedicatedAiClusterUnitShapeMi300xX8,
+	"MI300X_X16":         DedicatedAiClusterUnitShapeMi300xX16,
+	"MI300X_X32":         DedicatedAiClusterUnitShapeMi300xX32,
 }
 
 var mappingDedicatedAiClusterUnitShapeEnumLowerCase = map[string]DedicatedAiClusterUnitShapeEnum{
@@ -594,6 +634,26 @@ var mappingDedicatedAiClusterUnitShapeEnumLowerCase = map[string]DedicatedAiClus
 	"oai_b200_x4":        DedicatedAiClusterUnitShapeOaiB200X4,
 	"oai_b200_x8":        DedicatedAiClusterUnitShapeOaiB200X8,
 	"sb_b200_x1":         DedicatedAiClusterUnitShapeSbB200X1,
+	"b200_x16":           DedicatedAiClusterUnitShapeB200X16,
+	"b200_x32":           DedicatedAiClusterUnitShapeB200X32,
+	"b300_x1":            DedicatedAiClusterUnitShapeB300X1,
+	"b300_x2":            DedicatedAiClusterUnitShapeB300X2,
+	"b300_x4":            DedicatedAiClusterUnitShapeB300X4,
+	"b300_x8":            DedicatedAiClusterUnitShapeB300X8,
+	"b300_x16":           DedicatedAiClusterUnitShapeB300X16,
+	"b300_x32":           DedicatedAiClusterUnitShapeB300X32,
+	"l40s_x1":            DedicatedAiClusterUnitShapeL40sX1,
+	"l40s_x2":            DedicatedAiClusterUnitShapeL40sX2,
+	"l40s_x4":            DedicatedAiClusterUnitShapeL40sX4,
+	"l40s_x8":            DedicatedAiClusterUnitShapeL40sX8,
+	"l40s_x16":           DedicatedAiClusterUnitShapeL40sX16,
+	"l40s_x32":           DedicatedAiClusterUnitShapeL40sX32,
+	"mi300x_x1":          DedicatedAiClusterUnitShapeMi300xX1,
+	"mi300x_x2":          DedicatedAiClusterUnitShapeMi300xX2,
+	"mi300x_x4":          DedicatedAiClusterUnitShapeMi300xX4,
+	"mi300x_x8":          DedicatedAiClusterUnitShapeMi300xX8,
+	"mi300x_x16":         DedicatedAiClusterUnitShapeMi300xX16,
+	"mi300x_x32":         DedicatedAiClusterUnitShapeMi300xX32,
 }
 
 // GetDedicatedAiClusterUnitShapeEnumValues Enumerates the set of values for DedicatedAiClusterUnitShapeEnum
@@ -711,6 +771,26 @@ func GetDedicatedAiClusterUnitShapeEnumStringValues() []string {
 		"OAI_B200_X4",
 		"OAI_B200_X8",
 		"SB_B200_X1",
+		"B200_X16",
+		"B200_X32",
+		"B300_X1",
+		"B300_X2",
+		"B300_X4",
+		"B300_X8",
+		"B300_X16",
+		"B300_X32",
+		"L40S_X1",
+		"L40S_X2",
+		"L40S_X4",
+		"L40S_X8",
+		"L40S_X16",
+		"L40S_X32",
+		"MI300X_X1",
+		"MI300X_X2",
+		"MI300X_X4",
+		"MI300X_X8",
+		"MI300X_X16",
+		"MI300X_X32",
 	}
 }
 
