@@ -27,7 +27,7 @@ type CreateHostedApplicationStorageDetails struct {
 	// The compartment OCID to create the hosted application in.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// type like Cache, Postgresql and ADB.
+	// The managed storage type for the application.
 	StorageType HostedApplicationStorageStorageTypeEnum `mandatory:"true" json:"storageType"`
 
 	// An optional description of the hosted application.

@@ -35,6 +35,14 @@ type CreateSemanticStoreDetails struct {
 	// An optional description of the SemanticStore.
 	Description *string `mandatory:"false" json:"description"`
 
+	// Whether to include user-defined semantic inputs, such as annotations, comments, and synonyms, during semantic-store enrichment.
+	// When true, enrichment uses both metadata and user-defined semantics.
+	// When false, enrichment uses metadata only.
+	// When omitted, this value defaults to true.
+	IsUserDefinedSemanticsEnabled *bool `mandatory:"false" json:"isUserDefinedSemanticsEnabled"`
+
+	ModelSelection SemanticStoreModelSelection `mandatory:"false" json:"modelSelection"`
+
 	RefreshSchedule RefreshScheduleDetails `mandatory:"false" json:"refreshSchedule"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.
@@ -67,14 +75,16 @@ func (m CreateSemanticStoreDetails) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *CreateSemanticStoreDetails) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		Description     *string                           `json:"description"`
-		RefreshSchedule refreshscheduledetails            `json:"refreshSchedule"`
-		FreeformTags    map[string]string                 `json:"freeformTags"`
-		DefinedTags     map[string]map[string]interface{} `json:"definedTags"`
-		CompartmentId   *string                           `json:"compartmentId"`
-		DisplayName     *string                           `json:"displayName"`
-		DataSource      createdatasourcedetails           `json:"dataSource"`
-		Schemas         createschemasdetails              `json:"schemas"`
+		Description                   *string                           `json:"description"`
+		IsUserDefinedSemanticsEnabled *bool                             `json:"isUserDefinedSemanticsEnabled"`
+		ModelSelection                semanticstoremodelselection       `json:"modelSelection"`
+		RefreshSchedule               refreshscheduledetails            `json:"refreshSchedule"`
+		FreeformTags                  map[string]string                 `json:"freeformTags"`
+		DefinedTags                   map[string]map[string]interface{} `json:"definedTags"`
+		CompartmentId                 *string                           `json:"compartmentId"`
+		DisplayName                   *string                           `json:"displayName"`
+		DataSource                    createdatasourcedetails           `json:"dataSource"`
+		Schemas                       createschemasdetails              `json:"schemas"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -83,6 +93,18 @@ func (m *CreateSemanticStoreDetails) UnmarshalJSON(data []byte) (e error) {
 	}
 	var nn interface{}
 	m.Description = model.Description
+
+	m.IsUserDefinedSemanticsEnabled = model.IsUserDefinedSemanticsEnabled
+
+	nn, e = model.ModelSelection.UnmarshalPolymorphicJSON(model.ModelSelection.JsonData)
+	if e != nil {
+		return
+	}
+	if nn != nil {
+		m.ModelSelection = nn.(SemanticStoreModelSelection)
+	} else {
+		m.ModelSelection = nil
+	}
 
 	nn, e = model.RefreshSchedule.UnmarshalPolymorphicJSON(model.RefreshSchedule.JsonData)
 	if e != nil {

@@ -47,7 +47,7 @@ type HostedApplicationBase struct {
 
 	ScalingConfig *ScalingConfig `mandatory:"false" json:"scalingConfig"`
 
-	// A list of storageConfigs managed by the OCI GenAI Platform and attached to the application.
+	// A list of managed storage configurations for the application.
 	StorageConfigs []StorageConfig `mandatory:"false" json:"storageConfigs"`
 
 	NetworkingConfig *NetworkingConfig `mandatory:"false" json:"networkingConfig"`

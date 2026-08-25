@@ -17,24 +17,31 @@ import (
 )
 
 // GenerateSqlFromNlJob Object representing to GenerateSqlFromNlJob.
-// ocidEntityType: generativeaiGenerateSqlFromNlJob
+// ocidEntityType: generativeaisemanticstorejob
 // adLocality: regional
 type GenerateSqlFromNlJob struct {
 
-	// Unique identifier that is immutable on creation.
+	// The OCID of the Semantic Store job.
 	Id *string `mandatory:"true" json:"id"`
 
 	// Owning SemanticStore OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) for a GenerateSqlFromNlJob.
 	SemanticStoreId *string `mandatory:"true" json:"semanticStoreId"`
 
-	// The date and time that the enrichment job was accepted in the format of an RFC3339 datetime string.
+	// The date and time that the GenerateSqlFromNlJob was accepted in the format of an RFC3339 datetime string.
 	TimeAccepted *common.SDKTime `mandatory:"true" json:"timeAccepted"`
 
-	// The lifecycleState of GenerateSqlFromNlJob.
+	// The current state of GenerateSqlFromNlJob.
+	// - ACCEPTED: Job has been created but not yet started.
+	// - IN_PROGRESS: Job is currently running.
+	// - SUCCEEDED: Job completed successfully. The result is available in jobOutput.
+	// - FAILED: Job failed. See lifecycleDetails for error information.
 	LifecycleState LifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// A message describing the current state in more detail that can provide actionable information.
 	LifecycleDetails *string `mandatory:"true" json:"lifecycleDetails"`
+
+	// The generative AI modelId used for Generate SQL. You can use the ListModels API to list the available models. https://docs.oracle.com/en-us/iaas/api/#/en/generative-ai/20231130/ModelCollection/ListModels
+	ModelId *string `mandatory:"true" json:"modelId"`
 
 	// An optional description of the GenerateSqlFromNlJob.
 	Description *string `mandatory:"false" json:"description"`
@@ -42,10 +49,10 @@ type GenerateSqlFromNlJob struct {
 	// A user-friendly display name. It does not have to be unique and can be modified. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// The date and time that the enrichment job was started in the format of an RFC3339 datetime string.
+	// The date and time that the GenerateSqlFromNlJob was started in the format of an RFC3339 datetime string.
 	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted"`
 
-	// The date and time that the enrichment job was finished in the format of an RFC3339 datetime string.
+	// The date and time that the GenerateSqlFromNlJob was finished in the format of an RFC3339 datetime string.
 	TimeFinished *common.SDKTime `mandatory:"false" json:"timeFinished"`
 
 	// A user-provided query or instruction written in plain, conversational language.
@@ -104,6 +111,7 @@ func (m *GenerateSqlFromNlJob) UnmarshalJSON(data []byte) (e error) {
 		TimeAccepted              *common.SDKTime                   `json:"timeAccepted"`
 		LifecycleState            LifecycleStateEnum                `json:"lifecycleState"`
 		LifecycleDetails          *string                           `json:"lifecycleDetails"`
+		ModelId                   *string                           `json:"modelId"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -146,6 +154,8 @@ func (m *GenerateSqlFromNlJob) UnmarshalJSON(data []byte) (e error) {
 	m.LifecycleState = model.LifecycleState
 
 	m.LifecycleDetails = model.LifecycleDetails
+
+	m.ModelId = model.ModelId
 
 	return
 }

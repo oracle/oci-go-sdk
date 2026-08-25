@@ -66,6 +66,14 @@ type SemanticStore struct {
 	// A message describing the current state in more detail that can provide actionable information.
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
+	// Whether user-defined semantic inputs, such as annotations, comments, and synonyms, are enabled for semantic-store enrichment.
+	// When true, enrichment uses both metadata and user-defined semantics.
+	// When false, enrichment uses metadata only.
+	// If not specified when the semantic store is created, this value defaults to true.
+	IsUserDefinedSemanticsEnabled *bool `mandatory:"false" json:"isUserDefinedSemanticsEnabled"`
+
+	ModelSelection SemanticStoreModelSelection `mandatory:"false" json:"modelSelection"`
+
 	RefreshSchedule RefreshScheduleDetails `mandatory:"false" json:"refreshSchedule"`
 }
 
@@ -91,20 +99,22 @@ func (m SemanticStore) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *SemanticStore) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		Description      *string                           `json:"description"`
-		LifecycleDetails *string                           `json:"lifecycleDetails"`
-		RefreshSchedule  refreshscheduledetails            `json:"refreshSchedule"`
-		Id               *string                           `json:"id"`
-		DisplayName      *string                           `json:"displayName"`
-		CompartmentId    *string                           `json:"compartmentId"`
-		TimeCreated      *common.SDKTime                   `json:"timeCreated"`
-		TimeUpdated      *common.SDKTime                   `json:"timeUpdated"`
-		LifecycleState   SemanticStoreLifecycleStateEnum   `json:"lifecycleState"`
-		DataSource       datasourcedetails                 `json:"dataSource"`
-		Schemas          schemasdetails                    `json:"schemas"`
-		FreeformTags     map[string]string                 `json:"freeformTags"`
-		DefinedTags      map[string]map[string]interface{} `json:"definedTags"`
-		SystemTags       map[string]map[string]interface{} `json:"systemTags"`
+		Description                   *string                           `json:"description"`
+		LifecycleDetails              *string                           `json:"lifecycleDetails"`
+		IsUserDefinedSemanticsEnabled *bool                             `json:"isUserDefinedSemanticsEnabled"`
+		ModelSelection                semanticstoremodelselection       `json:"modelSelection"`
+		RefreshSchedule               refreshscheduledetails            `json:"refreshSchedule"`
+		Id                            *string                           `json:"id"`
+		DisplayName                   *string                           `json:"displayName"`
+		CompartmentId                 *string                           `json:"compartmentId"`
+		TimeCreated                   *common.SDKTime                   `json:"timeCreated"`
+		TimeUpdated                   *common.SDKTime                   `json:"timeUpdated"`
+		LifecycleState                SemanticStoreLifecycleStateEnum   `json:"lifecycleState"`
+		DataSource                    datasourcedetails                 `json:"dataSource"`
+		Schemas                       schemasdetails                    `json:"schemas"`
+		FreeformTags                  map[string]string                 `json:"freeformTags"`
+		DefinedTags                   map[string]map[string]interface{} `json:"definedTags"`
+		SystemTags                    map[string]map[string]interface{} `json:"systemTags"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -115,6 +125,18 @@ func (m *SemanticStore) UnmarshalJSON(data []byte) (e error) {
 	m.Description = model.Description
 
 	m.LifecycleDetails = model.LifecycleDetails
+
+	m.IsUserDefinedSemanticsEnabled = model.IsUserDefinedSemanticsEnabled
+
+	nn, e = model.ModelSelection.UnmarshalPolymorphicJSON(model.ModelSelection.JsonData)
+	if e != nil {
+		return
+	}
+	if nn != nil {
+		m.ModelSelection = nn.(SemanticStoreModelSelection)
+	} else {
+		m.ModelSelection = nil
+	}
 
 	nn, e = model.RefreshSchedule.UnmarshalPolymorphicJSON(model.RefreshSchedule.JsonData)
 	if e != nil {
