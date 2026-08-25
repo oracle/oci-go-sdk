@@ -68,10 +68,18 @@ type SemanticStoreSummary struct {
 	// An optional description of the SemanticStore.
 	Description *string `mandatory:"false" json:"description"`
 
+	ModelSelection SemanticStoreModelSelection `mandatory:"false" json:"modelSelection"`
+
 	RefreshSchedule RefreshScheduleDetails `mandatory:"false" json:"refreshSchedule"`
 
 	// A message describing the current state in more detail that can provide actionable information.
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
+
+	// Whether user-defined semantic inputs, such as annotations, comments, and synonyms, are enabled for semantic-store enrichment.
+	// When true, enrichment uses both metadata and user-defined semantics.
+	// When false, enrichment uses metadata only.
+	// If not specified when the semantic store is created, this value defaults to true.
+	IsUserDefinedSemanticsEnabled *bool `mandatory:"false" json:"isUserDefinedSemanticsEnabled"`
 }
 
 func (m SemanticStoreSummary) String() string {
@@ -96,20 +104,22 @@ func (m SemanticStoreSummary) ValidateEnumValue() (bool, error) {
 // UnmarshalJSON unmarshals from json
 func (m *SemanticStoreSummary) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		Description      *string                           `json:"description"`
-		RefreshSchedule  refreshscheduledetails            `json:"refreshSchedule"`
-		LifecycleDetails *string                           `json:"lifecycleDetails"`
-		Id               *string                           `json:"id"`
-		DisplayName      *string                           `json:"displayName"`
-		CompartmentId    *string                           `json:"compartmentId"`
-		DataSource       datasourcedetails                 `json:"dataSource"`
-		Schemas          schemasdetails                    `json:"schemas"`
-		TimeCreated      *common.SDKTime                   `json:"timeCreated"`
-		TimeUpdated      *common.SDKTime                   `json:"timeUpdated"`
-		LifecycleState   SemanticStoreLifecycleStateEnum   `json:"lifecycleState"`
-		FreeformTags     map[string]string                 `json:"freeformTags"`
-		DefinedTags      map[string]map[string]interface{} `json:"definedTags"`
-		SystemTags       map[string]map[string]interface{} `json:"systemTags"`
+		Description                   *string                           `json:"description"`
+		ModelSelection                semanticstoremodelselection       `json:"modelSelection"`
+		RefreshSchedule               refreshscheduledetails            `json:"refreshSchedule"`
+		LifecycleDetails              *string                           `json:"lifecycleDetails"`
+		IsUserDefinedSemanticsEnabled *bool                             `json:"isUserDefinedSemanticsEnabled"`
+		Id                            *string                           `json:"id"`
+		DisplayName                   *string                           `json:"displayName"`
+		CompartmentId                 *string                           `json:"compartmentId"`
+		DataSource                    datasourcedetails                 `json:"dataSource"`
+		Schemas                       schemasdetails                    `json:"schemas"`
+		TimeCreated                   *common.SDKTime                   `json:"timeCreated"`
+		TimeUpdated                   *common.SDKTime                   `json:"timeUpdated"`
+		LifecycleState                SemanticStoreLifecycleStateEnum   `json:"lifecycleState"`
+		FreeformTags                  map[string]string                 `json:"freeformTags"`
+		DefinedTags                   map[string]map[string]interface{} `json:"definedTags"`
+		SystemTags                    map[string]map[string]interface{} `json:"systemTags"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -118,6 +128,16 @@ func (m *SemanticStoreSummary) UnmarshalJSON(data []byte) (e error) {
 	}
 	var nn interface{}
 	m.Description = model.Description
+
+	nn, e = model.ModelSelection.UnmarshalPolymorphicJSON(model.ModelSelection.JsonData)
+	if e != nil {
+		return
+	}
+	if nn != nil {
+		m.ModelSelection = nn.(SemanticStoreModelSelection)
+	} else {
+		m.ModelSelection = nil
+	}
 
 	nn, e = model.RefreshSchedule.UnmarshalPolymorphicJSON(model.RefreshSchedule.JsonData)
 	if e != nil {
@@ -130,6 +150,8 @@ func (m *SemanticStoreSummary) UnmarshalJSON(data []byte) (e error) {
 	}
 
 	m.LifecycleDetails = model.LifecycleDetails
+
+	m.IsUserDefinedSemanticsEnabled = model.IsUserDefinedSemanticsEnabled
 
 	m.Id = model.Id
 

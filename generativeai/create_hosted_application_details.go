@@ -37,8 +37,7 @@ type CreateHostedApplicationDetails struct {
 
 	NetworkingConfig *NetworkingConfig `mandatory:"false" json:"networkingConfig"`
 
-	// The list of storage configuration for the Hosted Application.
-	// Defines a list of service-managed storage back-ends.
+	// A list of managed storage configurations for the application.
 	StorageConfigs []StorageConfig `mandatory:"false" json:"storageConfigs"`
 
 	// The list of environment variables for the Hosted Application.

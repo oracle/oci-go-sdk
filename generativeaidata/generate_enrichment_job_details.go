@@ -18,10 +18,6 @@ import (
 
 // GenerateEnrichmentJobDetails The details required to create an EnrichmentJob.
 type GenerateEnrichmentJobDetails struct {
-
-	// Enrichment job type. Currently supported Full Build (All supported objects in a given schema) and Partial Build (Selected tables and/or supported objects in a given schema).
-	EnrichmentJobType EnrichmentJobTypeEnum `mandatory:"true" json:"enrichmentJobType"`
-
 	EnrichmentJobConfiguration EnrichmentJobConfiguration `mandatory:"true" json:"enrichmentJobConfiguration"`
 
 	// An optional description of the EnrichmentJob.
@@ -29,6 +25,9 @@ type GenerateEnrichmentJobDetails struct {
 
 	// A user-friendly display name. It does not have to be unique and can be modified. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
+
+	// Deprecated. Use EnrichmentJobConfiguration.enrichmentJobType instead.
+	EnrichmentJobType EnrichmentJobTypeEnum `mandatory:"false" json:"enrichmentJobType,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
@@ -48,10 +47,10 @@ func (m GenerateEnrichmentJobDetails) String() string {
 // Not recommended for calling this function directly
 func (m GenerateEnrichmentJobDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
+
 	if _, ok := GetMappingEnrichmentJobTypeEnum(string(m.EnrichmentJobType)); !ok && m.EnrichmentJobType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EnrichmentJobType: %s. Supported values are: %s.", m.EnrichmentJobType, strings.Join(GetEnrichmentJobTypeEnumStringValues(), ",")))
 	}
-
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
@@ -63,9 +62,9 @@ func (m *GenerateEnrichmentJobDetails) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
 		Description                *string                           `json:"description"`
 		DisplayName                *string                           `json:"displayName"`
+		EnrichmentJobType          EnrichmentJobTypeEnum             `json:"enrichmentJobType"`
 		FreeformTags               map[string]string                 `json:"freeformTags"`
 		DefinedTags                map[string]map[string]interface{} `json:"definedTags"`
-		EnrichmentJobType          EnrichmentJobTypeEnum             `json:"enrichmentJobType"`
 		EnrichmentJobConfiguration enrichmentjobconfiguration        `json:"enrichmentJobConfiguration"`
 	}{}
 
@@ -78,11 +77,11 @@ func (m *GenerateEnrichmentJobDetails) UnmarshalJSON(data []byte) (e error) {
 
 	m.DisplayName = model.DisplayName
 
+	m.EnrichmentJobType = model.EnrichmentJobType
+
 	m.FreeformTags = model.FreeformTags
 
 	m.DefinedTags = model.DefinedTags
-
-	m.EnrichmentJobType = model.EnrichmentJobType
 
 	nn, e = model.EnrichmentJobConfiguration.UnmarshalPolymorphicJSON(model.EnrichmentJobConfiguration.JsonData)
 	if e != nil {

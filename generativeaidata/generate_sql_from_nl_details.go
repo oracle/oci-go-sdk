@@ -29,6 +29,14 @@ type GenerateSqlFromNlDetails struct {
 	// A user-friendly display name. It does not have to be unique and can be modified. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
+	// The generative AI modelId to use for Generate SQL. You can use the ListModels API to list the available models. https://docs.oracle.com/en-us/iaas/api/#/en/generative-ai/20231130/ModelCollection/ListModels
+	ModelId *string `mandatory:"false" json:"modelId"`
+
+	// Controls whether GenerateSqlFromNl should be accepted as a background job or wait for completion.
+	// BACKGROUND_JOB accepts the request for background processing and returns a pollable job.
+	// WAIT_FOR_COMPLETION waits for completion within the service-defined timeout.
+	CompletionMode CompletionModeEnum `mandatory:"false" json:"completionMode,omitempty"`
+
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
@@ -48,6 +56,9 @@ func (m GenerateSqlFromNlDetails) String() string {
 func (m GenerateSqlFromNlDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
+	if _, ok := GetMappingCompletionModeEnum(string(m.CompletionMode)); !ok && m.CompletionMode != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CompletionMode: %s. Supported values are: %s.", m.CompletionMode, strings.Join(GetCompletionModeEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
