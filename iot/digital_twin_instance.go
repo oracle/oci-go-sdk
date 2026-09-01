@@ -28,7 +28,7 @@ type DigitalTwinInstance struct {
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the IoT domain.
 	IotDomainId *string `mandatory:"true" json:"iotDomainId"`
 
-	// Connectivity type of the digital twin instance
+	// Connectivity type of the digital twin instance.
 	ConnectivityType DigitalTwinInstanceConnectivityTypeEnum `mandatory:"true" json:"connectivityType"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.

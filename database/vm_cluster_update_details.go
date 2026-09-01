@@ -21,6 +21,11 @@ type VmClusterUpdateDetails struct {
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the maintenance update.
 	UpdateId *string `mandatory:"false" json:"updateId"`
 
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the Grid Infrastructure Home.
+	// Specify this field for out of place Grid Infrastructure Home patching and upgrade of the VM Cluster.
+	// This is mutually exclusive option to `updateId` and `giSoftwareImageId` which are used for in place patching and upgrade using Oracle supplied and custom images respectively.
+	GiHomeId *string `mandatory:"false" json:"giHomeId"`
+
 	// The update mode to perform for OS Update.
 	UpdateMode VmClusterUpdateDetailsUpdateModeEnum `mandatory:"false" json:"updateMode,omitempty"`
 
