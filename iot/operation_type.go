@@ -30,6 +30,12 @@ const (
 	OperationTypeConfigureDomainDataAccess      OperationTypeEnum = "CONFIGURE_DOMAIN_DATA_ACCESS"
 	OperationTypeConfigureDomainGroupDataAccess OperationTypeEnum = "CONFIGURE_DOMAIN_GROUP_DATA_ACCESS"
 	OperationTypeChangeIotDomainDataRetention   OperationTypeEnum = "CHANGE_IOT_DOMAIN_DATA_RETENTION"
+	OperationTypeCreateIotFlowRuntime           OperationTypeEnum = "CREATE_IOT_FLOW_RUNTIME"
+	OperationTypeUpdateIotFlowRuntime           OperationTypeEnum = "UPDATE_IOT_FLOW_RUNTIME"
+	OperationTypeDeleteIotFlowRuntime           OperationTypeEnum = "DELETE_IOT_FLOW_RUNTIME"
+	OperationTypeMoveIotFlowRuntime             OperationTypeEnum = "MOVE_IOT_FLOW_RUNTIME"
+	OperationTypeActivateIotFlowRuntime         OperationTypeEnum = "ACTIVATE_IOT_FLOW_RUNTIME"
+	OperationTypeDeactivateIotFlowRuntime       OperationTypeEnum = "DEACTIVATE_IOT_FLOW_RUNTIME"
 )
 
 var mappingOperationTypeEnum = map[string]OperationTypeEnum{
@@ -44,6 +50,12 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"CONFIGURE_DOMAIN_DATA_ACCESS":       OperationTypeConfigureDomainDataAccess,
 	"CONFIGURE_DOMAIN_GROUP_DATA_ACCESS": OperationTypeConfigureDomainGroupDataAccess,
 	"CHANGE_IOT_DOMAIN_DATA_RETENTION":   OperationTypeChangeIotDomainDataRetention,
+	"CREATE_IOT_FLOW_RUNTIME":            OperationTypeCreateIotFlowRuntime,
+	"UPDATE_IOT_FLOW_RUNTIME":            OperationTypeUpdateIotFlowRuntime,
+	"DELETE_IOT_FLOW_RUNTIME":            OperationTypeDeleteIotFlowRuntime,
+	"MOVE_IOT_FLOW_RUNTIME":              OperationTypeMoveIotFlowRuntime,
+	"ACTIVATE_IOT_FLOW_RUNTIME":          OperationTypeActivateIotFlowRuntime,
+	"DEACTIVATE_IOT_FLOW_RUNTIME":        OperationTypeDeactivateIotFlowRuntime,
 }
 
 var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
@@ -58,6 +70,12 @@ var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
 	"configure_domain_data_access":       OperationTypeConfigureDomainDataAccess,
 	"configure_domain_group_data_access": OperationTypeConfigureDomainGroupDataAccess,
 	"change_iot_domain_data_retention":   OperationTypeChangeIotDomainDataRetention,
+	"create_iot_flow_runtime":            OperationTypeCreateIotFlowRuntime,
+	"update_iot_flow_runtime":            OperationTypeUpdateIotFlowRuntime,
+	"delete_iot_flow_runtime":            OperationTypeDeleteIotFlowRuntime,
+	"move_iot_flow_runtime":              OperationTypeMoveIotFlowRuntime,
+	"activate_iot_flow_runtime":          OperationTypeActivateIotFlowRuntime,
+	"deactivate_iot_flow_runtime":        OperationTypeDeactivateIotFlowRuntime,
 }
 
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum
@@ -83,6 +101,12 @@ func GetOperationTypeEnumStringValues() []string {
 		"CONFIGURE_DOMAIN_DATA_ACCESS",
 		"CONFIGURE_DOMAIN_GROUP_DATA_ACCESS",
 		"CHANGE_IOT_DOMAIN_DATA_RETENTION",
+		"CREATE_IOT_FLOW_RUNTIME",
+		"UPDATE_IOT_FLOW_RUNTIME",
+		"DELETE_IOT_FLOW_RUNTIME",
+		"MOVE_IOT_FLOW_RUNTIME",
+		"ACTIVATE_IOT_FLOW_RUNTIME",
+		"DEACTIVATE_IOT_FLOW_RUNTIME",
 	}
 }
 

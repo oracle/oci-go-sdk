@@ -30,7 +30,7 @@ type ListIotDomainGroupsRequest struct {
 	// Filter resources whose lifecycleState matches the specified value.
 	LifecycleState IotDomainGroupLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
-	// Filter resources by type. Valid values are LIGHTWEIGHT or STANDARD.
+	// Filter resources by type. Valid values are DEVELOPMENT or PRODUCTION. LIGHTWEIGHT and STANDARD are deprecated aliases for DEVELOPMENT and PRODUCTION, respectively.
 	Type IotDomainGroupTypeEnum `mandatory:"false" contributesTo:"query" name:"type" omitEmpty:"true"`
 
 	// For list pagination. The maximum number of results per page, or items to return in a
