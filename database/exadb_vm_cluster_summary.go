@@ -287,16 +287,19 @@ type ExadbVmClusterSummaryGridImageTypeEnum string
 const (
 	ExadbVmClusterSummaryGridImageTypeReleaseUpdate ExadbVmClusterSummaryGridImageTypeEnum = "RELEASE_UPDATE"
 	ExadbVmClusterSummaryGridImageTypeCustomImage   ExadbVmClusterSummaryGridImageTypeEnum = "CUSTOM_IMAGE"
+	ExadbVmClusterSummaryGridImageTypeGridHome      ExadbVmClusterSummaryGridImageTypeEnum = "GRID_HOME"
 )
 
 var mappingExadbVmClusterSummaryGridImageTypeEnum = map[string]ExadbVmClusterSummaryGridImageTypeEnum{
 	"RELEASE_UPDATE": ExadbVmClusterSummaryGridImageTypeReleaseUpdate,
 	"CUSTOM_IMAGE":   ExadbVmClusterSummaryGridImageTypeCustomImage,
+	"GRID_HOME":      ExadbVmClusterSummaryGridImageTypeGridHome,
 }
 
 var mappingExadbVmClusterSummaryGridImageTypeEnumLowerCase = map[string]ExadbVmClusterSummaryGridImageTypeEnum{
 	"release_update": ExadbVmClusterSummaryGridImageTypeReleaseUpdate,
 	"custom_image":   ExadbVmClusterSummaryGridImageTypeCustomImage,
+	"grid_home":      ExadbVmClusterSummaryGridImageTypeGridHome,
 }
 
 // GetExadbVmClusterSummaryGridImageTypeEnumValues Enumerates the set of values for ExadbVmClusterSummaryGridImageTypeEnum
@@ -313,6 +316,7 @@ func GetExadbVmClusterSummaryGridImageTypeEnumStringValues() []string {
 	return []string{
 		"RELEASE_UPDATE",
 		"CUSTOM_IMAGE",
+		"GRID_HOME",
 	}
 }
 

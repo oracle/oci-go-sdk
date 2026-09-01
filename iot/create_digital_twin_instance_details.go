@@ -22,7 +22,7 @@ type CreateDigitalTwinInstanceDetails struct {
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the IoT domain.
 	IotDomainId *string `mandatory:"true" json:"iotDomainId"`
 
-	// Connectivity type of the digital twin instance
+	// Connectivity type of the digital twin instance.
 	ConnectivityType DigitalTwinInstanceConnectivityTypeEnum `mandatory:"false" json:"connectivityType,omitempty"`
 
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the resource (like VaultSecret, ClientCertificate etc.,) used to authenticate the digital twin instance.

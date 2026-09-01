@@ -30,6 +30,12 @@ type DigitalTwinAdapterInboundRoute struct {
 
 	ReferencePayload DigitalTwinAdapterPayload `mandatory:"false" json:"referencePayload"`
 
+	// Optional. JQ expression to map the target resource, which is externalKey of digital twin instance, the incoming data belongs to.
+	Target *string `mandatory:"false" json:"target"`
+
+	// JSON Path string to override the context root before delegating to the adapter of the target digital twin instance.
+	ContentRoot *string `mandatory:"false" json:"contentRoot"`
+
 	// A set of key-value JQ expressions used to transform the incoming payload into a shape
 	// compatible with the digital twin model's context or schema.
 	// The keys are target fields (in the digital twin model), and values are JQ expressions
@@ -79,6 +85,8 @@ func (m DigitalTwinAdapterInboundRoute) ValidateEnumValue() (bool, error) {
 func (m *DigitalTwinAdapterInboundRoute) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
 		ReferencePayload digitaltwinadapterpayload `json:"referencePayload"`
+		Target           *string                   `json:"target"`
+		ContentRoot      *string                   `json:"contentRoot"`
 		PayloadMapping   map[string]string         `json:"payloadMapping"`
 		Description      *string                   `json:"description"`
 		Condition        *string                   `json:"condition"`
@@ -98,6 +106,10 @@ func (m *DigitalTwinAdapterInboundRoute) UnmarshalJSON(data []byte) (e error) {
 	} else {
 		m.ReferencePayload = nil
 	}
+
+	m.Target = model.Target
+
+	m.ContentRoot = model.ContentRoot
 
 	m.PayloadMapping = model.PayloadMapping
 

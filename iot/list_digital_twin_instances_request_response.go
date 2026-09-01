@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/iot/ListDigitalTwinInstances.go.html to see an example of how to use ListDigitalTwinInstancesRequest.
 type ListDigitalTwinInstancesRequest struct {
 
-	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the IoT domain in which to list digital twin resources.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the IoT domain in which to list IoT resources.
 	IotDomainId *string `mandatory:"true" contributesTo:"query" name:"iotDomainId"`
 
 	// Filter resources whose display name matches the specified value.
