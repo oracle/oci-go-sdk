@@ -79,7 +79,8 @@ func (client *FunctionsInvokeClient) ConfigurationProvider() *common.Configurati
 	return client.config
 }
 
-// InvokeFunction Invokes a function
+// InvokeFunction Note: Deprecated. Use the new operation instead.
+// "Invokes a function"
 //
 // # See also
 //
