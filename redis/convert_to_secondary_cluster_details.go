@@ -2,52 +2,38 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Functions Service API
+// OCI Cache API
 //
-// API for the Functions service.
+// Use the OCI Cache API to create and manage clusters. A cluster is a memory-based storage solution. For more information, see OCI Cache (https://docs.oracle.com/iaas/Content/ocicache/home.htm).
 //
 
-package functions
+package redis
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
 )
 
-// NoneSuccessDestinationDetails Note: Deprecated. Use the new resource model APIs instead.
-// Specifies no success destination
-// Example: `{"kind": "NONE"}`
-type NoneSuccessDestinationDetails struct {
+// ConvertToSecondaryClusterDetails The information required to convert a cluster into a secondary cluster.
+type ConvertToSecondaryClusterDetails struct {
+
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm#Oracle) of the primary cluster.
+	PrimaryClusterId *string `mandatory:"true" json:"primaryClusterId"`
 }
 
-func (m NoneSuccessDestinationDetails) String() string {
+func (m ConvertToSecondaryClusterDetails) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m NoneSuccessDestinationDetails) ValidateEnumValue() (bool, error) {
+func (m ConvertToSecondaryClusterDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
 	return false, nil
-}
-
-// MarshalJSON marshals to json representation
-func (m NoneSuccessDestinationDetails) MarshalJSON() (buff []byte, e error) {
-	type MarshalTypeNoneSuccessDestinationDetails NoneSuccessDestinationDetails
-	s := struct {
-		DiscriminatorParam string `json:"kind"`
-		MarshalTypeNoneSuccessDestinationDetails
-	}{
-		"NONE",
-		(MarshalTypeNoneSuccessDestinationDetails)(m),
-	}
-
-	return json.Marshal(&s)
 }

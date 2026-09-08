@@ -91,7 +91,8 @@ func (client *FunctionsManagementClient) ConfigurationProvider() *common.Configu
 	return client.config
 }
 
-// ChangeApplicationCompartment Moves an application into a different compartment within the same tenancy.
+// ChangeApplicationCompartment Note: Deprecated. Use the new operation instead.
+// Moves an application into a different compartment within the same tenancy.
 // For information about moving resources between compartments, see Moving Resources Between Compartments (https://docs.oracle.com/iaas/Content/Identity/Tasks/managingcompartments.htm#moveRes).
 //
 // # See also
@@ -150,7 +151,8 @@ func (client FunctionsManagementClient) changeApplicationCompartment(ctx context
 	return response, err
 }
 
-// CreateApplication Creates a new application.
+// CreateApplication Note: Deprecated. Use the new operation instead.
+// "Creates a new application."
 //
 // # See also
 //
@@ -208,7 +210,8 @@ func (client FunctionsManagementClient) createApplication(ctx context.Context, r
 	return response, err
 }
 
-// CreateFunction Creates a new function.
+// CreateFunction Note: Deprecated. Use the new operation instead.
+// "Creates a new function."
 //
 // # See also
 //
@@ -266,7 +269,8 @@ func (client FunctionsManagementClient) createFunction(ctx context.Context, requ
 	return response, err
 }
 
-// DeleteApplication Deletes an application.
+// DeleteApplication Note: Deprecated. Use the new operation instead.
+// Deletes an application.
 //
 // # See also
 //
@@ -324,7 +328,8 @@ func (client FunctionsManagementClient) deleteApplication(ctx context.Context, r
 	return response, err
 }
 
-// DeleteFunction Deletes a function.
+// DeleteFunction Note: Deprecated. Use the new operation instead.
+// Deletes a function.
 //
 // # See also
 //
@@ -382,7 +387,8 @@ func (client FunctionsManagementClient) deleteFunction(ctx context.Context, requ
 	return response, err
 }
 
-// GetApplication Retrieves an application.
+// GetApplication Note: Deprecated. Use the new operation instead.
+// "Retrieves an application."
 //
 // # See also
 //
@@ -440,7 +446,8 @@ func (client FunctionsManagementClient) getApplication(ctx context.Context, requ
 	return response, err
 }
 
-// GetFunction Retrieves a function.
+// GetFunction Note: Deprecated. Use the new operation instead.
+// "Retrieves a function."
 //
 // # See also
 //
@@ -498,7 +505,8 @@ func (client FunctionsManagementClient) getFunction(ctx context.Context, request
 	return response, err
 }
 
-// GetPbfListing Fetches a Pre-built Function(PBF) Listing. Returns a PbfListing response model.
+// GetPbfListing Note: Deprecated. Use the new operation instead.
+// Fetches a Pre-built Function(PBF) Listing. Returns a PbfListing response model.
 //
 // # See also
 //
@@ -556,7 +564,8 @@ func (client FunctionsManagementClient) getPbfListing(ctx context.Context, reque
 	return response, err
 }
 
-// GetPbfListingVersion Gets a PbfListingVersion by identifier for a PbfListing.
+// GetPbfListingVersion Note: Deprecated. Use the new operation instead.
+// Gets a PbfListingVersion by identifier for a PbfListing.
 //
 // # See also
 //
@@ -614,7 +623,8 @@ func (client FunctionsManagementClient) getPbfListingVersion(ctx context.Context
 	return response, err
 }
 
-// ListApplications Lists applications for a compartment.
+// ListApplications Note: Deprecated. Use the new operation instead.
+// "Lists applications for a compartment."
 //
 // # See also
 //
@@ -672,7 +682,8 @@ func (client FunctionsManagementClient) listApplications(ctx context.Context, re
 	return response, err
 }
 
-// ListFunctions Lists functions for an application.
+// ListFunctions Note: Deprecated. Use the new operation instead.
+// "Lists functions for an application."
 //
 // # See also
 //
@@ -730,7 +741,8 @@ func (client FunctionsManagementClient) listFunctions(ctx context.Context, reque
 	return response, err
 }
 
-// ListPbfListingVersions Fetches a wrapped list of all Pre-built Function(PBF) Listing versions. Returns a PbfListingVersionCollection
+// ListPbfListingVersions Note: Deprecated. Use the new operation instead.
+// Fetches a wrapped list of all Pre-built Function(PBF) Listing versions. Returns a PbfListingVersionCollection
 // containing an array of PbfListingVersionSummary response models.
 // Note that the PbfListingIdentifier must be provided as a query parameter, otherwise an exception shall
 // be thrown.
@@ -791,7 +803,8 @@ func (client FunctionsManagementClient) listPbfListingVersions(ctx context.Conte
 	return response, err
 }
 
-// ListPbfListings Fetches a wrapped list of all Pre-built Function(PBF) Listings. Returns a PbfListingCollection containing
+// ListPbfListings Note: Deprecated. Use the new operation instead.
+// Fetches a wrapped list of all Pre-built Function(PBF) Listings. Returns a PbfListingCollection containing
 // an array of PbfListingSummary response models.
 //
 // # See also
@@ -850,7 +863,8 @@ func (client FunctionsManagementClient) listPbfListings(ctx context.Context, req
 	return response, err
 }
 
-// ListTriggers Returns a list of Triggers.
+// ListTriggers Note: Deprecated. Use the new operation instead.
+// Returns a list of Triggers.
 //
 // # See also
 //
@@ -908,7 +922,8 @@ func (client FunctionsManagementClient) listTriggers(ctx context.Context, reques
 	return response, err
 }
 
-// UpdateApplication Modifies an application
+// UpdateApplication Note: Deprecated. Use the new operation instead.
+// "Modifies an application"
 //
 // # See also
 //
@@ -966,7 +981,8 @@ func (client FunctionsManagementClient) updateApplication(ctx context.Context, r
 	return response, err
 }
 
-// UpdateFunction Modifies a function
+// UpdateFunction Note: Deprecated. Use the new operation instead.
+// "Modifies a function"
 //
 // # See also
 //
