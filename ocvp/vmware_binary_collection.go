@@ -2,12 +2,13 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// SELF Service API
+// Oracle Cloud VMware Solution API
 //
-// Use the SELF Service API to manage Subscriptions in Oracle Cloud Infrastructure Marketplace. For more information, see Overview of Marketplace (https://docs.oracle.com/iaas/Content/Marketplace/Concepts/marketoverview.htm)
+// Use the Oracle Cloud VMware API to create SDDCs and manage ESXi hosts and software.
+// For more information, see Oracle Cloud VMware Solution (https://docs.oracle.com/iaas/Content/VMware/Concepts/ocvsoverview.htm).
 //
 
-package self
+package ocvp
 
 import (
 	"fmt"
@@ -15,21 +16,21 @@ import (
 	"strings"
 )
 
-// SubmitSubscriptionUsageRecordsDetails Request payload to submit one or more usage records for marketplace offers.
-type SubmitSubscriptionUsageRecordsDetails struct {
+// VmwareBinaryCollection A list of third party VMware binary files.
+type VmwareBinaryCollection struct {
 
-	// The usage records to submit. The array must contain at least one record and no more than 1,000 records.
-	SubscriptionUsageRecords []CreateSubscriptionUsageRecordDetails `mandatory:"true" json:"subscriptionUsageRecords"`
+	// A list of third party VMware binary files.
+	Items []VmwareBinary `mandatory:"true" json:"items"`
 }
 
-func (m SubmitSubscriptionUsageRecordsDetails) String() string {
+func (m VmwareBinaryCollection) String() string {
 	return common.PointerString(m)
 }
 
 // ValidateEnumValue returns an error when providing an unsupported enum value
 // This function is being called during constructing API request process
 // Not recommended for calling this function directly
-func (m SubmitSubscriptionUsageRecordsDetails) ValidateEnumValue() (bool, error) {
+func (m VmwareBinaryCollection) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	if len(errMessage) > 0 {

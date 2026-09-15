@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.125.0 - 2026-09-15
+### Added 
+- Support for higher usage submission limits for metered SaaS listings and legacy subscription endpoints in the Service Enablement Lifecycle Framework service 
+- Support for customer-managed encryption keys for database systems and cross-region backup copies in the PostgreSQL service 
+- Support for listing available VMware binaries and generating download links in the Oracle Cloud VMware Solution service 
+- Support for data verification using database object counts, object statuses, and estimated table row counts in the Database Migration service 
+- Support for settings specific to online logical, offline logical, and online standby Oracle migrations in the Database Migration service   
+
+### Breaking Changes 
+- The field `UsageRecordId` was removed from the model `CreateSubscriptionUsageRecordDetails` in the Service Enablement Lifecycle Framework service
+
 ## 65.124.2 - 2026-09-08
 ### Added 
 - Support for configurable fault-domain preferences during provisioning in the Oracle Cloud VMware Solution service 
