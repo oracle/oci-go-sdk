@@ -60,7 +60,7 @@ func newDistributedDbPrivateEndpointServiceClientFromBaseClient(baseClient commo
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 
 	client = DistributedDbPrivateEndpointServiceClient{BaseClient: baseClient}
-	client.BasePath = "20250101"
+	client.BasePath = "20260101"
 	err = client.setConfigurationProvider(configProvider)
 	return
 }
@@ -145,7 +145,7 @@ func (client DistributedDbPrivateEndpointServiceClient) changeDistributedDatabas
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedDatabasePrivateEndpoint/ChangeDistributedDatabasePrivateEndpointCompartment"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20260101/DistributedDatabasePrivateEndpoint/ChangeDistributedDatabasePrivateEndpointCompartment"
 		err = common.PostProcessServiceError(err, "DistributedDbPrivateEndpointService", "ChangeDistributedDatabasePrivateEndpointCompartment", apiReferenceLink)
 		return response, err
 	}
@@ -271,7 +271,7 @@ func (client DistributedDbPrivateEndpointServiceClient) deleteDistributedDatabas
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedDatabasePrivateEndpoint/DeleteDistributedDatabasePrivateEndpoint"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20260101/DistributedDatabasePrivateEndpoint/DeleteDistributedDatabasePrivateEndpoint"
 		err = common.PostProcessServiceError(err, "DistributedDbPrivateEndpointService", "DeleteDistributedDatabasePrivateEndpoint", apiReferenceLink)
 		return response, err
 	}
@@ -329,7 +329,7 @@ func (client DistributedDbPrivateEndpointServiceClient) getDistributedDatabasePr
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedDatabasePrivateEndpoint/GetDistributedDatabasePrivateEndpoint"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20260101/DistributedDatabasePrivateEndpoint/GetDistributedDatabasePrivateEndpoint"
 		err = common.PostProcessServiceError(err, "DistributedDbPrivateEndpointService", "GetDistributedDatabasePrivateEndpoint", apiReferenceLink)
 		return response, err
 	}
@@ -387,8 +387,71 @@ func (client DistributedDbPrivateEndpointServiceClient) listDistributedDatabaseP
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedDatabasePrivateEndpointCollection/ListDistributedDatabasePrivateEndpoints"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20260101/DistributedDatabasePrivateEndpointCollection/ListDistributedDatabasePrivateEndpoints"
 		err = common.PostProcessServiceError(err, "DistributedDbPrivateEndpointService", "ListDistributedDatabasePrivateEndpoints", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// PatchDistributedDatabasePrivateEndpoint Patch operation to update VCN network security group (NSG) IDs associated with the DistributedDatabasePrivateEndpoint.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/PatchDistributedDatabasePrivateEndpoint.go.html to see an example of how to use PatchDistributedDatabasePrivateEndpoint API.
+// A default retry strategy applies to this operation PatchDistributedDatabasePrivateEndpoint()
+func (client DistributedDbPrivateEndpointServiceClient) PatchDistributedDatabasePrivateEndpoint(ctx context.Context, request PatchDistributedDatabasePrivateEndpointRequest) (response PatchDistributedDatabasePrivateEndpointResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.patchDistributedDatabasePrivateEndpoint, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = PatchDistributedDatabasePrivateEndpointResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = PatchDistributedDatabasePrivateEndpointResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(PatchDistributedDatabasePrivateEndpointResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into PatchDistributedDatabasePrivateEndpointResponse")
+	}
+	return
+}
+
+// patchDistributedDatabasePrivateEndpoint implements the OCIOperation interface (enables retrying operations)
+func (client DistributedDbPrivateEndpointServiceClient) patchDistributedDatabasePrivateEndpoint(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPatch, "/distributedDatabasePrivateEndpoints/{distributedDatabasePrivateEndpointId}", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response PatchDistributedDatabasePrivateEndpointResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "distributedDbPrivateEndpointService", "PatchDistributedDatabasePrivateEndpoint")
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20260101/DistributedDatabasePrivateEndpoint/PatchDistributedDatabasePrivateEndpoint"
+		err = common.PostProcessServiceError(err, "DistributedDbPrivateEndpointService", "PatchDistributedDatabasePrivateEndpoint", apiReferenceLink)
 		return response, err
 	}
 
@@ -450,7 +513,7 @@ func (client DistributedDbPrivateEndpointServiceClient) reinstateProxyInstance(c
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedDatabasePrivateEndpoint/ReinstateProxyInstance"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20260101/DistributedDatabasePrivateEndpoint/ReinstateProxyInstance"
 		err = common.PostProcessServiceError(err, "DistributedDbPrivateEndpointService", "ReinstateProxyInstance", apiReferenceLink)
 		return response, err
 	}
@@ -513,7 +576,7 @@ func (client DistributedDbPrivateEndpointServiceClient) updateDistributedDatabas
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20250101/DistributedDatabasePrivateEndpoint/UpdateDistributedDatabasePrivateEndpoint"
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/globally-distributed-database/20260101/DistributedDatabasePrivateEndpoint/UpdateDistributedDatabasePrivateEndpoint"
 		err = common.PostProcessServiceError(err, "DistributedDbPrivateEndpointService", "UpdateDistributedDatabasePrivateEndpoint", apiReferenceLink)
 		return response, err
 	}

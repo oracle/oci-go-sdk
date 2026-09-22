@@ -20,6 +20,9 @@ type CreateVideoDetails struct {
 
 	// The URL of the video.
 	ContentUrl *string `mandatory:"true" json:"contentUrl"`
+
+	// The specified attachment type is Internal or External.
+	SourceType ListingRevisionAttachmentSourceTypeEnum `mandatory:"false" json:"sourceType,omitempty"`
 }
 
 func (m CreateVideoDetails) String() string {
@@ -32,6 +35,9 @@ func (m CreateVideoDetails) String() string {
 func (m CreateVideoDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
+	if _, ok := GetMappingListingRevisionAttachmentSourceTypeEnum(string(m.SourceType)); !ok && m.SourceType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SourceType: %s. Supported values are: %s.", m.SourceType, strings.Join(GetListingRevisionAttachmentSourceTypeEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}

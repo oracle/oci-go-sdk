@@ -18,7 +18,7 @@ import (
 // DistributedAutonomousDatabaseGsm Details of global service manager(GSM also known as shard director) instances for the Globally distributed autonomous database.
 type DistributedAutonomousDatabaseGsm struct {
 
-	// Name of the Global service manager instance
+	// Name of the Global service manager instance.
 	Name *string `mandatory:"true" json:"name"`
 
 	// The compute count for the Global service manager instance.
@@ -27,16 +27,16 @@ type DistributedAutonomousDatabaseGsm struct {
 	// The data disk group size to be allocated in GBs for the Global service manager instance.
 	DataStorageSizeInGbs *float64 `mandatory:"true" json:"dataStorageSizeInGbs"`
 
-	// The time the Global service manager instance was created. An RFC3339 formatted datetime string
+	// The time the Global service manager instance was created. An RFC3339 formatted datetime string.
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
-	// The time the Global service manager instance was last updated. An RFC3339 formatted datetime string
+	// The time the Global service manager instance was last updated. An RFC3339 formatted datetime string.
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
 
 	// Status of the gsm for the Globally distributed autonomous database.
 	Status DistributedAutonomousDatabaseGsmStatusEnum `mandatory:"true" json:"status"`
 
-	// The time the ssl certificate associated with Global service manager expires. An RFC3339 formatted datetime string
+	// The time the ssl certificate associated with Global service manager expires. An RFC3339 formatted datetime string.
 	TimeSslCertificateExpires *common.SDKTime `mandatory:"false" json:"timeSslCertificateExpires"`
 
 	// the identifier of the underlying supporting resource.

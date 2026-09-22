@@ -27,10 +27,10 @@ type DistributedDatabaseGsm struct {
 	// The data disk group size to be allocated in GBs for the Global service manager instance.
 	DataStorageSizeInGbs *float64 `mandatory:"true" json:"dataStorageSizeInGbs"`
 
-	// The time the Global service manager instance was created. An RFC3339 formatted datetime string
+	// The time the Global service manager instance was created. An RFC3339 formatted datetime string.
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
-	// The time the Global service manager instance was last updated. An RFC3339 formatted datetime string
+	// The time the Global service manager instance was last updated. An RFC3339 formatted datetime string.
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
 
 	// Status of the gsm.

@@ -23,6 +23,10 @@ const (
 	OperationTypeDeleteOffer                         OperationTypeEnum = "DELETE_OFFER"
 	OperationTypeMoveOffer                           OperationTypeEnum = "MOVE_OFFER"
 	OperationTypeDeleteOfferAttachment               OperationTypeEnum = "DELETE_OFFER_ATTACHMENT"
+	OperationTypeUpdateOfferQuote                    OperationTypeEnum = "UPDATE_OFFER_QUOTE"
+	OperationTypeCreateOfferQuote                    OperationTypeEnum = "CREATE_OFFER_QUOTE"
+	OperationTypeCreateOfferQuoteAttachment          OperationTypeEnum = "CREATE_OFFER_QUOTE_ATTACHMENT"
+	OperationTypeCreateCustomerInstanceReportExport  OperationTypeEnum = "CREATE_CUSTOMER_INSTANCE_REPORT_EXPORT"
 	OperationTypePublishListingRevisionPackage       OperationTypeEnum = "PUBLISH_LISTING_REVISION_PACKAGE"
 	OperationTypeUnpublishListingRevisionPackage     OperationTypeEnum = "UNPUBLISH_LISTING_REVISION_PACKAGE"
 	OperationTypePublishListingRevision              OperationTypeEnum = "PUBLISH_LISTING_REVISION"
@@ -39,6 +43,8 @@ const (
 	OperationTypeChangeTermCompartment               OperationTypeEnum = "CHANGE_TERM_COMPARTMENT"
 	OperationTypeDeleteArtifact                      OperationTypeEnum = "DELETE_ARTIFACT"
 	OperationTypeUpdateArtifact                      OperationTypeEnum = "UPDATE_ARTIFACT"
+	OperationTypeRealmBuild                          OperationTypeEnum = "REALM_BUILD"
+	OperationTypeUpdateListingRevisionMetadata       OperationTypeEnum = "UPDATE_LISTING_REVISION_METADATA"
 )
 
 var mappingOperationTypeEnum = map[string]OperationTypeEnum{
@@ -47,6 +53,10 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"DELETE_OFFER":                             OperationTypeDeleteOffer,
 	"MOVE_OFFER":                               OperationTypeMoveOffer,
 	"DELETE_OFFER_ATTACHMENT":                  OperationTypeDeleteOfferAttachment,
+	"UPDATE_OFFER_QUOTE":                       OperationTypeUpdateOfferQuote,
+	"CREATE_OFFER_QUOTE":                       OperationTypeCreateOfferQuote,
+	"CREATE_OFFER_QUOTE_ATTACHMENT":            OperationTypeCreateOfferQuoteAttachment,
+	"CREATE_CUSTOMER_INSTANCE_REPORT_EXPORT":   OperationTypeCreateCustomerInstanceReportExport,
 	"PUBLISH_LISTING_REVISION_PACKAGE":         OperationTypePublishListingRevisionPackage,
 	"UNPUBLISH_LISTING_REVISION_PACKAGE":       OperationTypeUnpublishListingRevisionPackage,
 	"PUBLISH_LISTING_REVISION":                 OperationTypePublishListingRevision,
@@ -63,6 +73,8 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"CHANGE_TERM_COMPARTMENT":                  OperationTypeChangeTermCompartment,
 	"DELETE_ARTIFACT":                          OperationTypeDeleteArtifact,
 	"UPDATE_ARTIFACT":                          OperationTypeUpdateArtifact,
+	"REALM_BUILD":                              OperationTypeRealmBuild,
+	"UPDATE_LISTING_REVISION_METADATA":         OperationTypeUpdateListingRevisionMetadata,
 }
 
 var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
@@ -71,6 +83,10 @@ var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
 	"delete_offer":                             OperationTypeDeleteOffer,
 	"move_offer":                               OperationTypeMoveOffer,
 	"delete_offer_attachment":                  OperationTypeDeleteOfferAttachment,
+	"update_offer_quote":                       OperationTypeUpdateOfferQuote,
+	"create_offer_quote":                       OperationTypeCreateOfferQuote,
+	"create_offer_quote_attachment":            OperationTypeCreateOfferQuoteAttachment,
+	"create_customer_instance_report_export":   OperationTypeCreateCustomerInstanceReportExport,
 	"publish_listing_revision_package":         OperationTypePublishListingRevisionPackage,
 	"unpublish_listing_revision_package":       OperationTypeUnpublishListingRevisionPackage,
 	"publish_listing_revision":                 OperationTypePublishListingRevision,
@@ -87,6 +103,8 @@ var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
 	"change_term_compartment":                  OperationTypeChangeTermCompartment,
 	"delete_artifact":                          OperationTypeDeleteArtifact,
 	"update_artifact":                          OperationTypeUpdateArtifact,
+	"realm_build":                              OperationTypeRealmBuild,
+	"update_listing_revision_metadata":         OperationTypeUpdateListingRevisionMetadata,
 }
 
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum
@@ -106,6 +124,10 @@ func GetOperationTypeEnumStringValues() []string {
 		"DELETE_OFFER",
 		"MOVE_OFFER",
 		"DELETE_OFFER_ATTACHMENT",
+		"UPDATE_OFFER_QUOTE",
+		"CREATE_OFFER_QUOTE",
+		"CREATE_OFFER_QUOTE_ATTACHMENT",
+		"CREATE_CUSTOMER_INSTANCE_REPORT_EXPORT",
 		"PUBLISH_LISTING_REVISION_PACKAGE",
 		"UNPUBLISH_LISTING_REVISION_PACKAGE",
 		"PUBLISH_LISTING_REVISION",
@@ -122,6 +144,8 @@ func GetOperationTypeEnumStringValues() []string {
 		"CHANGE_TERM_COMPARTMENT",
 		"DELETE_ARTIFACT",
 		"UPDATE_ARTIFACT",
+		"REALM_BUILD",
+		"UPDATE_LISTING_REVISION_METADATA",
 	}
 }
 

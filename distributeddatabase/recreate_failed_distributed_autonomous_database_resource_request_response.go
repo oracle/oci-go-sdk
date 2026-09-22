@@ -18,14 +18,11 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/RecreateFailedDistributedAutonomousDatabaseResource.go.html to see an example of how to use RecreateFailedDistributedAutonomousDatabaseResourceRequest.
 type RecreateFailedDistributedAutonomousDatabaseResourceRequest struct {
 
-	// Globally distributed autonomous database identifier
+	// Globally distributed autonomous database identifier.
 	DistributedAutonomousDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedAutonomousDatabaseId"`
 
-	// Specify the name of Shard, Catalog or GSM.
+	// Specify the name of the shard, catalog, or GSM.
 	ResourceName *string `mandatory:"true" contributesTo:"query" name:"resourceName"`
-
-	// The shardGroup name example Shardgroupa, Shardgroupb.
-	ShardGroup *string `mandatory:"false" contributesTo:"query" name:"shardGroup"`
 
 	// The client request ID for tracing.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`

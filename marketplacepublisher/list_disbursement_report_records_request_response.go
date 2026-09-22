@@ -126,18 +126,30 @@ type ListDisbursementReportRecordsDateRangeEnum string
 
 // Set of constants representing the allowable values for ListDisbursementReportRecordsDateRangeEnum
 const (
-	ListDisbursementReportRecordsDateRangeMonth       ListDisbursementReportRecordsDateRangeEnum = "LAST_MONTH"
-	ListDisbursementReportRecordsDateRangeThreeMonths ListDisbursementReportRecordsDateRangeEnum = "LAST_THREE_MONTHS"
+	ListDisbursementReportRecordsDateRangeLastMonth          ListDisbursementReportRecordsDateRangeEnum = "LAST_MONTH"
+	ListDisbursementReportRecordsDateRangeLastThreeMonths    ListDisbursementReportRecordsDateRangeEnum = "LAST_THREE_MONTHS"
+	ListDisbursementReportRecordsDateRangeLastSixMonths      ListDisbursementReportRecordsDateRangeEnum = "LAST_SIX_MONTHS"
+	ListDisbursementReportRecordsDateRangeLastTwelveMonths   ListDisbursementReportRecordsDateRangeEnum = "LAST_TWELVE_MONTHS"
+	ListDisbursementReportRecordsDateRangeLastEighteenMonths ListDisbursementReportRecordsDateRangeEnum = "LAST_EIGHTEEN_MONTHS"
+	ListDisbursementReportRecordsDateRangeAllTime            ListDisbursementReportRecordsDateRangeEnum = "ALL_TIME"
 )
 
 var mappingListDisbursementReportRecordsDateRangeEnum = map[string]ListDisbursementReportRecordsDateRangeEnum{
-	"LAST_MONTH":        ListDisbursementReportRecordsDateRangeMonth,
-	"LAST_THREE_MONTHS": ListDisbursementReportRecordsDateRangeThreeMonths,
+	"LAST_MONTH":           ListDisbursementReportRecordsDateRangeLastMonth,
+	"LAST_THREE_MONTHS":    ListDisbursementReportRecordsDateRangeLastThreeMonths,
+	"LAST_SIX_MONTHS":      ListDisbursementReportRecordsDateRangeLastSixMonths,
+	"LAST_TWELVE_MONTHS":   ListDisbursementReportRecordsDateRangeLastTwelveMonths,
+	"LAST_EIGHTEEN_MONTHS": ListDisbursementReportRecordsDateRangeLastEighteenMonths,
+	"ALL_TIME":             ListDisbursementReportRecordsDateRangeAllTime,
 }
 
 var mappingListDisbursementReportRecordsDateRangeEnumLowerCase = map[string]ListDisbursementReportRecordsDateRangeEnum{
-	"last_month":        ListDisbursementReportRecordsDateRangeMonth,
-	"last_three_months": ListDisbursementReportRecordsDateRangeThreeMonths,
+	"last_month":           ListDisbursementReportRecordsDateRangeLastMonth,
+	"last_three_months":    ListDisbursementReportRecordsDateRangeLastThreeMonths,
+	"last_six_months":      ListDisbursementReportRecordsDateRangeLastSixMonths,
+	"last_twelve_months":   ListDisbursementReportRecordsDateRangeLastTwelveMonths,
+	"last_eighteen_months": ListDisbursementReportRecordsDateRangeLastEighteenMonths,
+	"all_time":             ListDisbursementReportRecordsDateRangeAllTime,
 }
 
 // GetListDisbursementReportRecordsDateRangeEnumValues Enumerates the set of values for ListDisbursementReportRecordsDateRangeEnum
@@ -154,6 +166,10 @@ func GetListDisbursementReportRecordsDateRangeEnumStringValues() []string {
 	return []string{
 		"LAST_MONTH",
 		"LAST_THREE_MONTHS",
+		"LAST_SIX_MONTHS",
+		"LAST_TWELVE_MONTHS",
+		"LAST_EIGHTEEN_MONTHS",
+		"ALL_TIME",
 	}
 }
 

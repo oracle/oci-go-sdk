@@ -21,7 +21,7 @@ type ConfigureDistributedAutonomousDatabaseGsmsRequest struct {
 	// Details to configure the new GSM instances for the distributed autonomous database.
 	ConfigureDistributedAutonomousDatabaseGsmsDetails `contributesTo:"body"`
 
-	// Globally distributed autonomous database identifier
+	// Globally distributed autonomous database identifier.
 	DistributedAutonomousDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedAutonomousDatabaseId"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

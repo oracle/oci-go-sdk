@@ -21,6 +21,9 @@ type ListDistributedDatabasePrivateEndpointsRequest struct {
 	// The ID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
+	// When set to true, returns resources in the specified compartment and in all of its child compartments recursively. Defaults to false.
+	CompartmentIdInSubtree *bool `mandatory:"false" contributesTo:"query" name:"compartmentIdInSubtree"`
+
 	// A filter to return only resources their lifecycleState matches the given lifecycleState.
 	LifecycleState DistributedDatabasePrivateEndpointLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 

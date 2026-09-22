@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/MoveDistributedDatabaseReplicationUnit.go.html to see an example of how to use MoveDistributedDatabaseReplicationUnitRequest.
 type MoveDistributedDatabaseReplicationUnitRequest struct {
 
-	// Globally distributed database identifier
+	// Globally distributed database identifier.
 	DistributedDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedDatabaseId"`
 
 	// Details required to move the replication units from source shard to destination shard.

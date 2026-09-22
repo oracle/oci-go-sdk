@@ -21,6 +21,10 @@ type UpdateDistributedDatabaseDetails struct {
 	// Display name of the Globally distributed database.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
+	// The collection of OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) for the notification topics associated with the globally distributed database.
+	// Pass an empty list (`[]`) to remove existing notification topics (set `notificationTopicIds` to empty).
+	NotificationTopicIds []string `mandatory:"false" json:"notificationTopicIds"`
+
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`

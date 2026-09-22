@@ -28,11 +28,17 @@ type SaaSPricingPlan struct {
 	// The plan description.
 	PlanDescription *string `mandatory:"true" json:"planDescription"`
 
+	// Unique identifier of the pricing plan.
+	PricingPlanKey *string `mandatory:"false" json:"pricingPlanKey"`
+
 	// Additional metadata key/value pairs for the saas pricing.
 	ExtendedMetadata map[string]string `mandatory:"false" json:"extendedMetadata"`
 
 	// The plan billing frequency.
 	BillingFrequency SaaSPricingPlanBillingFrequencyEnum `mandatory:"true" json:"billingFrequency"`
+
+	// The plan duration.
+	PlanDuration SaaSPricingPlanPlanDurationEnum `mandatory:"false" json:"planDuration,omitempty"`
 }
 
 // GetRates returns Rates
@@ -51,6 +57,9 @@ func (m SaaSPricingPlan) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	if _, ok := GetMappingSaaSPricingPlanBillingFrequencyEnum(string(m.BillingFrequency)); !ok && m.BillingFrequency != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BillingFrequency: %s. Supported values are: %s.", m.BillingFrequency, strings.Join(GetSaaSPricingPlanBillingFrequencyEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingSaaSPricingPlanPlanDurationEnum(string(m.PlanDuration)); !ok && m.PlanDuration != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlanDuration: %s. Supported values are: %s.", m.PlanDuration, strings.Join(GetSaaSPricingPlanPlanDurationEnumStringValues(), ",")))
 	}
 
 	if len(errMessage) > 0 {
@@ -78,21 +87,30 @@ type SaaSPricingPlanBillingFrequencyEnum string
 
 // Set of constants representing the allowable values for SaaSPricingPlanBillingFrequencyEnum
 const (
-	SaaSPricingPlanBillingFrequencyMonthly   SaaSPricingPlanBillingFrequencyEnum = "MONTHLY"
-	SaaSPricingPlanBillingFrequencyQuarterly SaaSPricingPlanBillingFrequencyEnum = "QUARTERLY"
-	SaaSPricingPlanBillingFrequencyYearly    SaaSPricingPlanBillingFrequencyEnum = "YEARLY"
+	SaaSPricingPlanBillingFrequencyMonthly    SaaSPricingPlanBillingFrequencyEnum = "MONTHLY"
+	SaaSPricingPlanBillingFrequencyQuarterly  SaaSPricingPlanBillingFrequencyEnum = "QUARTERLY"
+	SaaSPricingPlanBillingFrequencySemiAnnual SaaSPricingPlanBillingFrequencyEnum = "SEMI_ANNUAL"
+	SaaSPricingPlanBillingFrequencyAnnual     SaaSPricingPlanBillingFrequencyEnum = "ANNUAL"
+	SaaSPricingPlanBillingFrequencyBiennial   SaaSPricingPlanBillingFrequencyEnum = "BIENNIAL"
+	SaaSPricingPlanBillingFrequencyTriennial  SaaSPricingPlanBillingFrequencyEnum = "TRIENNIAL"
 )
 
 var mappingSaaSPricingPlanBillingFrequencyEnum = map[string]SaaSPricingPlanBillingFrequencyEnum{
-	"MONTHLY":   SaaSPricingPlanBillingFrequencyMonthly,
-	"QUARTERLY": SaaSPricingPlanBillingFrequencyQuarterly,
-	"YEARLY":    SaaSPricingPlanBillingFrequencyYearly,
+	"MONTHLY":     SaaSPricingPlanBillingFrequencyMonthly,
+	"QUARTERLY":   SaaSPricingPlanBillingFrequencyQuarterly,
+	"SEMI_ANNUAL": SaaSPricingPlanBillingFrequencySemiAnnual,
+	"ANNUAL":      SaaSPricingPlanBillingFrequencyAnnual,
+	"BIENNIAL":    SaaSPricingPlanBillingFrequencyBiennial,
+	"TRIENNIAL":   SaaSPricingPlanBillingFrequencyTriennial,
 }
 
 var mappingSaaSPricingPlanBillingFrequencyEnumLowerCase = map[string]SaaSPricingPlanBillingFrequencyEnum{
-	"monthly":   SaaSPricingPlanBillingFrequencyMonthly,
-	"quarterly": SaaSPricingPlanBillingFrequencyQuarterly,
-	"yearly":    SaaSPricingPlanBillingFrequencyYearly,
+	"monthly":     SaaSPricingPlanBillingFrequencyMonthly,
+	"quarterly":   SaaSPricingPlanBillingFrequencyQuarterly,
+	"semi_annual": SaaSPricingPlanBillingFrequencySemiAnnual,
+	"annual":      SaaSPricingPlanBillingFrequencyAnnual,
+	"biennial":    SaaSPricingPlanBillingFrequencyBiennial,
+	"triennial":   SaaSPricingPlanBillingFrequencyTriennial,
 }
 
 // GetSaaSPricingPlanBillingFrequencyEnumValues Enumerates the set of values for SaaSPricingPlanBillingFrequencyEnum
@@ -109,12 +127,73 @@ func GetSaaSPricingPlanBillingFrequencyEnumStringValues() []string {
 	return []string{
 		"MONTHLY",
 		"QUARTERLY",
-		"YEARLY",
+		"SEMI_ANNUAL",
+		"ANNUAL",
+		"BIENNIAL",
+		"TRIENNIAL",
 	}
 }
 
 // GetMappingSaaSPricingPlanBillingFrequencyEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingSaaSPricingPlanBillingFrequencyEnum(val string) (SaaSPricingPlanBillingFrequencyEnum, bool) {
 	enum, ok := mappingSaaSPricingPlanBillingFrequencyEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
+}
+
+// SaaSPricingPlanPlanDurationEnum Enum with underlying type: string
+type SaaSPricingPlanPlanDurationEnum string
+
+// Set of constants representing the allowable values for SaaSPricingPlanPlanDurationEnum
+const (
+	SaaSPricingPlanPlanDurationMonthly    SaaSPricingPlanPlanDurationEnum = "MONTHLY"
+	SaaSPricingPlanPlanDurationQuarterly  SaaSPricingPlanPlanDurationEnum = "QUARTERLY"
+	SaaSPricingPlanPlanDurationSemiAnnual SaaSPricingPlanPlanDurationEnum = "SEMI_ANNUAL"
+	SaaSPricingPlanPlanDurationAnnual     SaaSPricingPlanPlanDurationEnum = "ANNUAL"
+	SaaSPricingPlanPlanDurationBiennial   SaaSPricingPlanPlanDurationEnum = "BIENNIAL"
+	SaaSPricingPlanPlanDurationTriennial  SaaSPricingPlanPlanDurationEnum = "TRIENNIAL"
+)
+
+var mappingSaaSPricingPlanPlanDurationEnum = map[string]SaaSPricingPlanPlanDurationEnum{
+	"MONTHLY":     SaaSPricingPlanPlanDurationMonthly,
+	"QUARTERLY":   SaaSPricingPlanPlanDurationQuarterly,
+	"SEMI_ANNUAL": SaaSPricingPlanPlanDurationSemiAnnual,
+	"ANNUAL":      SaaSPricingPlanPlanDurationAnnual,
+	"BIENNIAL":    SaaSPricingPlanPlanDurationBiennial,
+	"TRIENNIAL":   SaaSPricingPlanPlanDurationTriennial,
+}
+
+var mappingSaaSPricingPlanPlanDurationEnumLowerCase = map[string]SaaSPricingPlanPlanDurationEnum{
+	"monthly":     SaaSPricingPlanPlanDurationMonthly,
+	"quarterly":   SaaSPricingPlanPlanDurationQuarterly,
+	"semi_annual": SaaSPricingPlanPlanDurationSemiAnnual,
+	"annual":      SaaSPricingPlanPlanDurationAnnual,
+	"biennial":    SaaSPricingPlanPlanDurationBiennial,
+	"triennial":   SaaSPricingPlanPlanDurationTriennial,
+}
+
+// GetSaaSPricingPlanPlanDurationEnumValues Enumerates the set of values for SaaSPricingPlanPlanDurationEnum
+func GetSaaSPricingPlanPlanDurationEnumValues() []SaaSPricingPlanPlanDurationEnum {
+	values := make([]SaaSPricingPlanPlanDurationEnum, 0)
+	for _, v := range mappingSaaSPricingPlanPlanDurationEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetSaaSPricingPlanPlanDurationEnumStringValues Enumerates the set of values in String for SaaSPricingPlanPlanDurationEnum
+func GetSaaSPricingPlanPlanDurationEnumStringValues() []string {
+	return []string{
+		"MONTHLY",
+		"QUARTERLY",
+		"SEMI_ANNUAL",
+		"ANNUAL",
+		"BIENNIAL",
+		"TRIENNIAL",
+	}
+}
+
+// GetMappingSaaSPricingPlanPlanDurationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSaaSPricingPlanPlanDurationEnum(val string) (SaaSPricingPlanPlanDurationEnum, bool) {
+	enum, ok := mappingSaaSPricingPlanPlanDurationEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

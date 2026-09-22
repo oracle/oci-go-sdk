@@ -25,7 +25,7 @@ type OpnMembership struct {
 	TimeEnd *common.SDKTime `mandatory:"false" json:"timeEnd"`
 
 	// OPN status
-	OpnStatus OpnMembershipOpnStatusEnum `mandatory:"false" json:"opnStatus,omitempty"`
+	OpnStatus AdminOpnPartnerSummaryMembershipStatusEnum `mandatory:"false" json:"opnStatus,omitempty"`
 
 	// OPN Number number
 	OpnNumber *string `mandatory:"false" json:"opnNumber"`
@@ -44,57 +44,11 @@ func (m OpnMembership) String() string {
 func (m OpnMembership) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := GetMappingOpnMembershipOpnStatusEnum(string(m.OpnStatus)); !ok && m.OpnStatus != "" {
-		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OpnStatus: %s. Supported values are: %s.", m.OpnStatus, strings.Join(GetOpnMembershipOpnStatusEnumStringValues(), ",")))
+	if _, ok := GetMappingAdminOpnPartnerSummaryMembershipStatusEnum(string(m.OpnStatus)); !ok && m.OpnStatus != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OpnStatus: %s. Supported values are: %s.", m.OpnStatus, strings.Join(GetAdminOpnPartnerSummaryMembershipStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
 	return false, nil
-}
-
-// OpnMembershipOpnStatusEnum Enum with underlying type: string
-type OpnMembershipOpnStatusEnum string
-
-// Set of constants representing the allowable values for OpnMembershipOpnStatusEnum
-const (
-	OpnMembershipOpnStatusActive            OpnMembershipOpnStatusEnum = "ACTIVE"
-	OpnMembershipOpnStatusInactive          OpnMembershipOpnStatusEnum = "INACTIVE"
-	OpnMembershipOpnStatusRenewalInProgress OpnMembershipOpnStatusEnum = "RENEWAL_IN_PROGRESS"
-)
-
-var mappingOpnMembershipOpnStatusEnum = map[string]OpnMembershipOpnStatusEnum{
-	"ACTIVE":              OpnMembershipOpnStatusActive,
-	"INACTIVE":            OpnMembershipOpnStatusInactive,
-	"RENEWAL_IN_PROGRESS": OpnMembershipOpnStatusRenewalInProgress,
-}
-
-var mappingOpnMembershipOpnStatusEnumLowerCase = map[string]OpnMembershipOpnStatusEnum{
-	"active":              OpnMembershipOpnStatusActive,
-	"inactive":            OpnMembershipOpnStatusInactive,
-	"renewal_in_progress": OpnMembershipOpnStatusRenewalInProgress,
-}
-
-// GetOpnMembershipOpnStatusEnumValues Enumerates the set of values for OpnMembershipOpnStatusEnum
-func GetOpnMembershipOpnStatusEnumValues() []OpnMembershipOpnStatusEnum {
-	values := make([]OpnMembershipOpnStatusEnum, 0)
-	for _, v := range mappingOpnMembershipOpnStatusEnum {
-		values = append(values, v)
-	}
-	return values
-}
-
-// GetOpnMembershipOpnStatusEnumStringValues Enumerates the set of values in String for OpnMembershipOpnStatusEnum
-func GetOpnMembershipOpnStatusEnumStringValues() []string {
-	return []string{
-		"ACTIVE",
-		"INACTIVE",
-		"RENEWAL_IN_PROGRESS",
-	}
-}
-
-// GetMappingOpnMembershipOpnStatusEnum performs case Insensitive comparison on enum value and return the desired enum
-func GetMappingOpnMembershipOpnStatusEnum(val string) (OpnMembershipOpnStatusEnum, bool) {
-	enum, ok := mappingOpnMembershipOpnStatusEnumLowerCase[strings.ToLower(val)]
-	return enum, ok
 }

@@ -21,7 +21,7 @@ type ChangeDistributedAutonomousDatabaseCompartmentRequest struct {
 	// Request to move the Globally distributed autonomous database to a different compartment.
 	ChangeDistributedAutonomousDatabaseCompartmentDetails `contributesTo:"body"`
 
-	// Globally distributed autonomous database identifier
+	// Globally distributed autonomous database identifier.
 	DistributedAutonomousDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedAutonomousDatabaseId"`
 
 	// The client request ID for tracing.

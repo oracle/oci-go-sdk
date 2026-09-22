@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 65.126.0 - 2026-09-22
+### Added 
+- Support for recurring maintenance windows in the Application Performance Monitoring Synthetics service 
+- Support for crypto posture assessments in the Data Safe service 
+- Support for customer-managed compute capacity reservations for model deployments, notebook sessions, jobs, and pipelines in the Data Science service 
+- Support for code-only functions with managed runtimes and automated image builds in the Functions service 
+- Support for routing profiles and model discovery in the Generative AI service 
+- Support for generating, filtering, and downloading Customer Instance Report exports in the Marketplace Publisher service   
+
+### Breaking Changes 
+- The `distributeddatabasev26` package was renamed to `distributeddatabase` in the Globally Distributed Database service 
+- The fields `Image` and `ImageDigest` were removed from the models `CreateFunctionDetails`, `UpdateFunctionDetails`, `Function`, and `FunctionSummary` in the Functions service 
+- The fields `TenantAdminName` and `TenantAdminEmail` were removed from the model `CustomerInstanceReportRecord` in the Marketplace Publisher service 
+- The field `DateRange` was removed from the request model `ListCustomerInstanceReportRecordsRequest` in the Marketplace Publisher service 
+- The enum values `ListCustomerInstanceReportRecordsSortByTimecreated` and `ListCustomerInstanceReportRecordsSortByDisplayname` were removed from the enum `ListCustomerInstanceReportRecordsSortByEnum` in the Marketplace Publisher service 
+- The enum values `ListDisbursementReportRecordsDateRangeMonth` and `ListDisbursementReportRecordsDateRangeThreeMonths` were renamed to `ListDisbursementReportRecordsDateRangeLastMonth` and `ListDisbursementReportRecordsDateRangeLastThreeMonths` in the enum `ListDisbursementReportRecordsDateRangeEnum` in the Marketplace Publisher service 
+- The type of the field `MetricType` was changed to `MetricTypeEnum` in the model `ListingPart` in the Marketplace Publisher service 
+- The type of the field `OpnStatus` was changed to `AdminOpnPartnerSummaryMembershipStatusEnum` in the model `OpnMembership` in the Marketplace Publisher service 
+- The type of the field `PublisherStatus` was changed to `PublisherStatusEnum` in the model `Publisher` in the Marketplace Publisher service 
+- The enum value `SaaSPricingPlanBillingFrequencyYearly` was removed from the enum `SaaSPricingPlanBillingFrequencyEnum` in the Marketplace Publisher service
+
 ## 65.125.0 - 2026-09-15
 ### Added 
 - Support for higher usage submission limits for metered SaaS listings and legacy subscription endpoints in the Service Enablement Lifecycle Framework service 

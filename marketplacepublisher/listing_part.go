@@ -22,7 +22,7 @@ type ListingPart struct {
 	Sku *string `mandatory:"true" json:"sku"`
 
 	// The part's metric.
-	MetricType ListingPartMetricTypeEnum `mandatory:"true" json:"metricType"`
+	MetricType MetricTypeEnum `mandatory:"true" json:"metricType"`
 
 	// rate allocation, these are calculated based on rate information at listing revision.
 	RateAllocation *float32 `mandatory:"true" json:"rateAllocation"`
@@ -32,6 +32,12 @@ type ListingPart struct {
 
 	// List of meters associated with the part.
 	Meters []ListingMeter `mandatory:"true" json:"meters"`
+
+	// Unique identifier of the pricing plan.
+	PricingPlanKey *string `mandatory:"false" json:"pricingPlanKey"`
+
+	// The billing model for SaaS paid listing parts.
+	BillingModel ListingPartBillingModelEnum `mandatory:"false" json:"billingModel,omitempty"`
 }
 
 func (m ListingPart) String() string {
@@ -43,58 +49,57 @@ func (m ListingPart) String() string {
 // Not recommended for calling this function directly
 func (m ListingPart) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := GetMappingListingPartMetricTypeEnum(string(m.MetricType)); !ok && m.MetricType != "" {
-		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MetricType: %s. Supported values are: %s.", m.MetricType, strings.Join(GetListingPartMetricTypeEnumStringValues(), ",")))
+	if _, ok := GetMappingMetricTypeEnum(string(m.MetricType)); !ok && m.MetricType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MetricType: %s. Supported values are: %s.", m.MetricType, strings.Join(GetMetricTypeEnumStringValues(), ",")))
 	}
 
+	if _, ok := GetMappingListingPartBillingModelEnum(string(m.BillingModel)); !ok && m.BillingModel != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BillingModel: %s. Supported values are: %s.", m.BillingModel, strings.Join(GetListingPartBillingModelEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
 	return false, nil
 }
 
-// ListingPartMetricTypeEnum Enum with underlying type: string
-type ListingPartMetricTypeEnum string
+// ListingPartBillingModelEnum Enum with underlying type: string
+type ListingPartBillingModelEnum string
 
-// Set of constants representing the allowable values for ListingPartMetricTypeEnum
+// Set of constants representing the allowable values for ListingPartBillingModelEnum
 const (
-	ListingPartMetricTypeOcpuHours     ListingPartMetricTypeEnum = "OCPU_HOURS"
-	ListingPartMetricTypeInstanceHours ListingPartMetricTypeEnum = "INSTANCE_HOURS"
-	ListingPartMetricTypeCoreHours     ListingPartMetricTypeEnum = "CORE_HOURS"
+	ListingPartBillingModelFlatRate   ListingPartBillingModelEnum = "FLAT_RATE"
+	ListingPartBillingModelUsageBased ListingPartBillingModelEnum = "USAGE_BASED"
 )
 
-var mappingListingPartMetricTypeEnum = map[string]ListingPartMetricTypeEnum{
-	"OCPU_HOURS":     ListingPartMetricTypeOcpuHours,
-	"INSTANCE_HOURS": ListingPartMetricTypeInstanceHours,
-	"CORE_HOURS":     ListingPartMetricTypeCoreHours,
+var mappingListingPartBillingModelEnum = map[string]ListingPartBillingModelEnum{
+	"FLAT_RATE":   ListingPartBillingModelFlatRate,
+	"USAGE_BASED": ListingPartBillingModelUsageBased,
 }
 
-var mappingListingPartMetricTypeEnumLowerCase = map[string]ListingPartMetricTypeEnum{
-	"ocpu_hours":     ListingPartMetricTypeOcpuHours,
-	"instance_hours": ListingPartMetricTypeInstanceHours,
-	"core_hours":     ListingPartMetricTypeCoreHours,
+var mappingListingPartBillingModelEnumLowerCase = map[string]ListingPartBillingModelEnum{
+	"flat_rate":   ListingPartBillingModelFlatRate,
+	"usage_based": ListingPartBillingModelUsageBased,
 }
 
-// GetListingPartMetricTypeEnumValues Enumerates the set of values for ListingPartMetricTypeEnum
-func GetListingPartMetricTypeEnumValues() []ListingPartMetricTypeEnum {
-	values := make([]ListingPartMetricTypeEnum, 0)
-	for _, v := range mappingListingPartMetricTypeEnum {
+// GetListingPartBillingModelEnumValues Enumerates the set of values for ListingPartBillingModelEnum
+func GetListingPartBillingModelEnumValues() []ListingPartBillingModelEnum {
+	values := make([]ListingPartBillingModelEnum, 0)
+	for _, v := range mappingListingPartBillingModelEnum {
 		values = append(values, v)
 	}
 	return values
 }
 
-// GetListingPartMetricTypeEnumStringValues Enumerates the set of values in String for ListingPartMetricTypeEnum
-func GetListingPartMetricTypeEnumStringValues() []string {
+// GetListingPartBillingModelEnumStringValues Enumerates the set of values in String for ListingPartBillingModelEnum
+func GetListingPartBillingModelEnumStringValues() []string {
 	return []string{
-		"OCPU_HOURS",
-		"INSTANCE_HOURS",
-		"CORE_HOURS",
+		"FLAT_RATE",
+		"USAGE_BASED",
 	}
 }
 
-// GetMappingListingPartMetricTypeEnum performs case Insensitive comparison on enum value and return the desired enum
-func GetMappingListingPartMetricTypeEnum(val string) (ListingPartMetricTypeEnum, bool) {
-	enum, ok := mappingListingPartMetricTypeEnumLowerCase[strings.ToLower(val)]
+// GetMappingListingPartBillingModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListingPartBillingModelEnum(val string) (ListingPartBillingModelEnum, bool) {
+	enum, ok := mappingListingPartBillingModelEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
