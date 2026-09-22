@@ -18,14 +18,11 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/RecreateFailedDistributedDatabaseResource.go.html to see an example of how to use RecreateFailedDistributedDatabaseResourceRequest.
 type RecreateFailedDistributedDatabaseResourceRequest struct {
 
-	// Globally distributed database identifier
+	// Globally distributed database identifier.
 	DistributedDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedDatabaseId"`
 
-	// Specify the name of Shard, Catalog or GSM.
+	// Specify the name of the shard, catalog, or GSM.
 	ResourceName *string `mandatory:"true" contributesTo:"query" name:"resourceName"`
-
-	// The shardGroup name example Shardgroupa, Shardgroupb.
-	ShardGroup *string `mandatory:"false" contributesTo:"query" name:"shardGroup"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call
 	// for a resource, set the `if-match` parameter to the value of the

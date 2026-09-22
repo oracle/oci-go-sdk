@@ -30,7 +30,7 @@ type ListWorkRequestErrorsRequest struct {
 	// The maximum number of items to return.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
 
-	// The field to sort by. Only one sort order may be provided. Default order for timeAccepted is descending.
+	// The field to sort by. Only one sort order may be provided. Default order for timestamp is descending.
 	SortBy ListWorkRequestErrorsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
 	// The sort order to use, either 'ASC' or 'DESC'.
@@ -117,15 +117,15 @@ type ListWorkRequestErrorsSortByEnum string
 
 // Set of constants representing the allowable values for ListWorkRequestErrorsSortByEnum
 const (
-	ListWorkRequestErrorsSortByTimeaccepted ListWorkRequestErrorsSortByEnum = "timeAccepted"
+	ListWorkRequestErrorsSortByTimestamp ListWorkRequestErrorsSortByEnum = "timestamp"
 )
 
 var mappingListWorkRequestErrorsSortByEnum = map[string]ListWorkRequestErrorsSortByEnum{
-	"timeAccepted": ListWorkRequestErrorsSortByTimeaccepted,
+	"timestamp": ListWorkRequestErrorsSortByTimestamp,
 }
 
 var mappingListWorkRequestErrorsSortByEnumLowerCase = map[string]ListWorkRequestErrorsSortByEnum{
-	"timeaccepted": ListWorkRequestErrorsSortByTimeaccepted,
+	"timestamp": ListWorkRequestErrorsSortByTimestamp,
 }
 
 // GetListWorkRequestErrorsSortByEnumValues Enumerates the set of values for ListWorkRequestErrorsSortByEnum
@@ -140,7 +140,7 @@ func GetListWorkRequestErrorsSortByEnumValues() []ListWorkRequestErrorsSortByEnu
 // GetListWorkRequestErrorsSortByEnumStringValues Enumerates the set of values in String for ListWorkRequestErrorsSortByEnum
 func GetListWorkRequestErrorsSortByEnumStringValues() []string {
 	return []string{
-		"timeAccepted",
+		"timestamp",
 	}
 }
 

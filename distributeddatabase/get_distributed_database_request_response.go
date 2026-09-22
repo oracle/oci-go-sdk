@@ -18,10 +18,10 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/GetDistributedDatabase.go.html to see an example of how to use GetDistributedDatabaseRequest.
 type GetDistributedDatabaseRequest struct {
 
-	// Globally distributed database identifier
+	// Globally distributed database identifier.
 	DistributedDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedDatabaseId"`
 
-	// Comma separated names of argument corresponding to which metadata need to be retrived.
+	// Comma-separated argument names for which metadata should be retrieved.
 	Metadata *string `mandatory:"false" contributesTo:"query" name:"metadata"`
 
 	// For conditional requests. In the GET call for a resource, set the

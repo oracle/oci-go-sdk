@@ -10,7 +10,6 @@
 package distributeddatabase
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
@@ -28,10 +27,10 @@ type DistributedAutonomousDatabase struct {
 	// The display name of the Globally distributed autonomous database.
 	DisplayName *string `mandatory:"true" json:"displayName"`
 
-	// The time the Globally distributed autonomous database was created. An RFC3339 formatted datetime string
+	// The time the Globally distributed autonomous database was created. An RFC3339 formatted datetime string.
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
-	// The time the Globally distributed autonomous database was last updated. An RFC3339 formatted datetime string
+	// The time the Globally distributed autonomous database was last updated. An RFC3339 formatted datetime string.
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
 
 	// Oracle Database version for the shards and catalog used in Globally distributed autonomous database.
@@ -39,6 +38,12 @@ type DistributedAutonomousDatabase struct {
 
 	// Lifecycle states for the Globally distributed autonomous database.
 	LifecycleState DistributedAutonomousDatabaseLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
+
+	// Sharding methods for the Globally distributed autonomous database.
+	ShardingMethod DistributedAutonomousDatabaseShardingMethodEnum `mandatory:"true" json:"shardingMethod"`
+
+	// The distributed autonomous database deployment type.
+	DbDeploymentType DistributedAutonomousDatabaseDbDeploymentTypeEnum `mandatory:"true" json:"dbDeploymentType"`
 
 	// The lifecycleDetails for the Globally distributed autonomous database.
 	LifecycleDetails *string `mandatory:"true" json:"lifecycleDetails"`
@@ -50,11 +55,8 @@ type DistributedAutonomousDatabase struct {
 	// The collection of OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the private endpoint associated with Globally distributed autonomous database.
 	PrivateEndpointIds []string `mandatory:"true" json:"privateEndpointIds"`
 
-	// Sharding Methods for the Globally distributed autonomous database.
-	ShardingMethod DistributedAutonomousDatabaseShardingMethodEnum `mandatory:"true" json:"shardingMethod"`
-
 	// Possible workload types. Currently only OLTP workload type is supported.
-	DbWorkload DistributedAutonomousDatabaseDbWorkloadEnum `mandatory:"true" json:"dbWorkload"`
+	DbWorkloadType DistributedAutonomousDatabaseDbWorkloadTypeEnum `mandatory:"true" json:"dbWorkloadType"`
 
 	// The character set for the database.
 	CharacterSet *string `mandatory:"true" json:"characterSet"`
@@ -71,41 +73,57 @@ type DistributedAutonomousDatabase struct {
 	// Ons remote port number for Globally distributed autonomous database.
 	OnsPortRemote *int `mandatory:"true" json:"onsPortRemote"`
 
-	// The distributed autonomous database deployment type.
-	DbDeploymentType DistributedAutonomousDatabaseDbDeploymentTypeEnum `mandatory:"true" json:"dbDeploymentType"`
+	// The Replication method for Globally distributed Autonomous database. Use RAFT for Raft based replication.
+	// With RAFT replication, shards cannot have peers details set on them. In case shards need to
+	// have peers, please do not set RAFT replicationMethod. For all non RAFT replication cases (with or
+	// without peers), please set replicationMethod as DG or do not set any value for replicationMethod.
+	ReplicationMethod DistributedAutonomousDatabaseReplicationMethodEnum `mandatory:"false" json:"replicationMethod,omitempty"`
 
 	ConnectionStrings *DistributedAutonomousDatabaseConnectionString `mandatory:"false" json:"connectionStrings"`
 
-	// The default number of unique chunks in a shardspace. The value of chunks must be
-	// greater than 2 times the size of the largest shardgroup in any shardspace.
-	Chunks *int `mandatory:"false" json:"chunks"`
+	// The collection of OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) for the notification topics associated with the globally distributed autonomous database.
+	NotificationTopicIds []string `mandatory:"false" json:"notificationTopicIds"`
 
 	// The TLS listener port number for Globally distributed autonomous database.
 	ListenerPortTls *int `mandatory:"false" json:"listenerPortTls"`
 
-	// The Replication method for Globally distributed autonomous database. Use RAFT for Raft replication, and DG for
-	// DataGuard. If replicationMethod is not provided, it defaults to DG.
-	ReplicationMethod DistributedAutonomousDatabaseReplicationMethodEnum `mandatory:"false" json:"replicationMethod,omitempty"`
+	// Count of chunks associated with system raft clusters or system data guard databases.
+	SystemChunkCount *int `mandatory:"false" json:"systemChunkCount"`
 
-	// The Replication factor for RAFT replication based Globally distributed autonomous database. Currently supported values are 3, 5 and 7.
-	ReplicationFactor *int `mandatory:"false" json:"replicationFactor"`
-
-	// The replication unit count for RAFT based distributed autonomous database. For RAFT replication based
-	// Globally distributed autonomous database, the value should be at least twice the number of shards.
-	ReplicationUnit *int `mandatory:"false" json:"replicationUnit"`
+	// Number of replication units associated with system raft clusters.
+	SystemRaftReplicationUnitCount *int `mandatory:"false" json:"systemRaftReplicationUnitCount"`
 
 	LatestGsmImage *DistributedAutonomousDatabaseGsmImage `mandatory:"false" json:"latestGsmImage"`
 
-	// Collection of shards associated with the Globally distributed autonomous database.
-	ShardDetails []DistributedAutonomousDatabaseShard `mandatory:"false" json:"shardDetails"`
+	// Collection of composite raft shards.
+	CompositeRaftShardSpaces []AutonomousCompositeRaftShardSpace `mandatory:"false" json:"compositeRaftShardSpaces"`
 
-	// Collection of catalogs associated with the Globally distributed autonomous database.
+	// Collection of composite data guard shard spaces.
+	CompositeDataGuardShardSpaces []AutonomousCompositeDataGuardShardSpace `mandatory:"false" json:"compositeDataGuardShardSpaces"`
+
+	// Collection of system raft clusters.
+	SystemRaftClusters []AutonomousSystemRaftCluster `mandatory:"false" json:"systemRaftClusters"`
+
+	SystemDataGuardDatabases *AutonomousSystemDataGuardDatabase `mandatory:"false" json:"systemDataGuardDatabases"`
+
+	// Collection of user defined shard spaces.
+	UserShardSpaces []AutonomousUserShardSpace `mandatory:"false" json:"userShardSpaces"`
+
+	// Catalog details associated with the distributed autonomous database.
 	CatalogDetails []DistributedAutonomousDatabaseCatalog `mandatory:"false" json:"catalogDetails"`
 
-	// Collection of catalogs associated with the Globally distributed autonomous database.
+	// Global Service Manager (GSM) instances associated with the distributed autonomous database.
 	GsmDetails []DistributedAutonomousDatabaseGsm `mandatory:"false" json:"gsmDetails"`
 
+	// Global Database Services Control(GDS CTL) instances associated with the distributed autonomous database.
+	GdsControlNodeDetails []DistributedAutonomousDatabaseGdsControlNode `mandatory:"false" json:"gdsControlNodeDetails"`
+
 	DbBackupConfig *DistributedAutonomousDbBackupConfig `mandatory:"false" json:"dbBackupConfig"`
+
+	AutoResourceManagementConfig *AutoResourceManagementConfigurationDetails `mandatory:"false" json:"autoResourceManagementConfig"`
+
+	// The list of network security group (NSG) details associated with the distributed autonomous database.
+	VcnNsgIds []VcnNsgIdsDetails `mandatory:"false" json:"vcnNsgIds"`
 
 	Metadata *DistributedAutonomousDbMetadata `mandatory:"false" json:"metadata"`
 
@@ -137,11 +155,11 @@ func (m DistributedAutonomousDatabase) ValidateEnumValue() (bool, error) {
 	if _, ok := GetMappingDistributedAutonomousDatabaseShardingMethodEnum(string(m.ShardingMethod)); !ok && m.ShardingMethod != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShardingMethod: %s. Supported values are: %s.", m.ShardingMethod, strings.Join(GetDistributedAutonomousDatabaseShardingMethodEnumStringValues(), ",")))
 	}
-	if _, ok := GetMappingDistributedAutonomousDatabaseDbWorkloadEnum(string(m.DbWorkload)); !ok && m.DbWorkload != "" {
-		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DbWorkload: %s. Supported values are: %s.", m.DbWorkload, strings.Join(GetDistributedAutonomousDatabaseDbWorkloadEnumStringValues(), ",")))
-	}
 	if _, ok := GetMappingDistributedAutonomousDatabaseDbDeploymentTypeEnum(string(m.DbDeploymentType)); !ok && m.DbDeploymentType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DbDeploymentType: %s. Supported values are: %s.", m.DbDeploymentType, strings.Join(GetDistributedAutonomousDatabaseDbDeploymentTypeEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingDistributedAutonomousDatabaseDbWorkloadTypeEnum(string(m.DbWorkloadType)); !ok && m.DbWorkloadType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DbWorkloadType: %s. Supported values are: %s.", m.DbWorkloadType, strings.Join(GetDistributedAutonomousDatabaseDbWorkloadTypeEnumStringValues(), ",")))
 	}
 
 	if _, ok := GetMappingDistributedAutonomousDatabaseReplicationMethodEnum(string(m.ReplicationMethod)); !ok && m.ReplicationMethod != "" {
@@ -151,138 +169,6 @@ func (m DistributedAutonomousDatabase) ValidateEnumValue() (bool, error) {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
 	return false, nil
-}
-
-// UnmarshalJSON unmarshals from json
-func (m *DistributedAutonomousDatabase) UnmarshalJSON(data []byte) (e error) {
-	model := struct {
-		ConnectionStrings  *DistributedAutonomousDatabaseConnectionString     `json:"connectionStrings"`
-		Chunks             *int                                               `json:"chunks"`
-		ListenerPortTls    *int                                               `json:"listenerPortTls"`
-		ReplicationMethod  DistributedAutonomousDatabaseReplicationMethodEnum `json:"replicationMethod"`
-		ReplicationFactor  *int                                               `json:"replicationFactor"`
-		ReplicationUnit    *int                                               `json:"replicationUnit"`
-		LatestGsmImage     *DistributedAutonomousDatabaseGsmImage             `json:"latestGsmImage"`
-		ShardDetails       []distributedautonomousdatabaseshard               `json:"shardDetails"`
-		CatalogDetails     []distributedautonomousdatabasecatalog             `json:"catalogDetails"`
-		GsmDetails         []DistributedAutonomousDatabaseGsm                 `json:"gsmDetails"`
-		DbBackupConfig     *DistributedAutonomousDbBackupConfig               `json:"dbBackupConfig"`
-		Metadata           *DistributedAutonomousDbMetadata                   `json:"metadata"`
-		FreeformTags       map[string]string                                  `json:"freeformTags"`
-		DefinedTags        map[string]map[string]interface{}                  `json:"definedTags"`
-		SystemTags         map[string]map[string]interface{}                  `json:"systemTags"`
-		Id                 *string                                            `json:"id"`
-		CompartmentId      *string                                            `json:"compartmentId"`
-		DisplayName        *string                                            `json:"displayName"`
-		TimeCreated        *common.SDKTime                                    `json:"timeCreated"`
-		TimeUpdated        *common.SDKTime                                    `json:"timeUpdated"`
-		DatabaseVersion    *string                                            `json:"databaseVersion"`
-		LifecycleState     DistributedAutonomousDatabaseLifecycleStateEnum    `json:"lifecycleState"`
-		LifecycleDetails   *string                                            `json:"lifecycleDetails"`
-		Prefix             *string                                            `json:"prefix"`
-		PrivateEndpointIds []string                                           `json:"privateEndpointIds"`
-		ShardingMethod     DistributedAutonomousDatabaseShardingMethodEnum    `json:"shardingMethod"`
-		DbWorkload         DistributedAutonomousDatabaseDbWorkloadEnum        `json:"dbWorkload"`
-		CharacterSet       *string                                            `json:"characterSet"`
-		NcharacterSet      *string                                            `json:"ncharacterSet"`
-		ListenerPort       *int                                               `json:"listenerPort"`
-		OnsPortLocal       *int                                               `json:"onsPortLocal"`
-		OnsPortRemote      *int                                               `json:"onsPortRemote"`
-		DbDeploymentType   DistributedAutonomousDatabaseDbDeploymentTypeEnum  `json:"dbDeploymentType"`
-	}{}
-
-	e = json.Unmarshal(data, &model)
-	if e != nil {
-		return
-	}
-	var nn interface{}
-	m.ConnectionStrings = model.ConnectionStrings
-
-	m.Chunks = model.Chunks
-
-	m.ListenerPortTls = model.ListenerPortTls
-
-	m.ReplicationMethod = model.ReplicationMethod
-
-	m.ReplicationFactor = model.ReplicationFactor
-
-	m.ReplicationUnit = model.ReplicationUnit
-
-	m.LatestGsmImage = model.LatestGsmImage
-
-	m.ShardDetails = make([]DistributedAutonomousDatabaseShard, len(model.ShardDetails))
-	for i, n := range model.ShardDetails {
-		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)
-		if e != nil {
-			return e
-		}
-		if nn != nil {
-			m.ShardDetails[i] = nn.(DistributedAutonomousDatabaseShard)
-		} else {
-			m.ShardDetails[i] = nil
-		}
-	}
-	m.CatalogDetails = make([]DistributedAutonomousDatabaseCatalog, len(model.CatalogDetails))
-	for i, n := range model.CatalogDetails {
-		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)
-		if e != nil {
-			return e
-		}
-		if nn != nil {
-			m.CatalogDetails[i] = nn.(DistributedAutonomousDatabaseCatalog)
-		} else {
-			m.CatalogDetails[i] = nil
-		}
-	}
-	m.GsmDetails = make([]DistributedAutonomousDatabaseGsm, len(model.GsmDetails))
-	copy(m.GsmDetails, model.GsmDetails)
-	m.DbBackupConfig = model.DbBackupConfig
-
-	m.Metadata = model.Metadata
-
-	m.FreeformTags = model.FreeformTags
-
-	m.DefinedTags = model.DefinedTags
-
-	m.SystemTags = model.SystemTags
-
-	m.Id = model.Id
-
-	m.CompartmentId = model.CompartmentId
-
-	m.DisplayName = model.DisplayName
-
-	m.TimeCreated = model.TimeCreated
-
-	m.TimeUpdated = model.TimeUpdated
-
-	m.DatabaseVersion = model.DatabaseVersion
-
-	m.LifecycleState = model.LifecycleState
-
-	m.LifecycleDetails = model.LifecycleDetails
-
-	m.Prefix = model.Prefix
-
-	m.PrivateEndpointIds = make([]string, len(model.PrivateEndpointIds))
-	copy(m.PrivateEndpointIds, model.PrivateEndpointIds)
-	m.ShardingMethod = model.ShardingMethod
-
-	m.DbWorkload = model.DbWorkload
-
-	m.CharacterSet = model.CharacterSet
-
-	m.NcharacterSet = model.NcharacterSet
-
-	m.ListenerPort = model.ListenerPort
-
-	m.OnsPortLocal = model.OnsPortLocal
-
-	m.OnsPortRemote = model.OnsPortRemote
-
-	m.DbDeploymentType = model.DbDeploymentType
-
-	return
 }
 
 // DistributedAutonomousDatabaseLifecycleStateEnum Enum with underlying type: string
@@ -356,18 +242,21 @@ type DistributedAutonomousDatabaseShardingMethodEnum string
 
 // Set of constants representing the allowable values for DistributedAutonomousDatabaseShardingMethodEnum
 const (
-	DistributedAutonomousDatabaseShardingMethodUser   DistributedAutonomousDatabaseShardingMethodEnum = "USER"
-	DistributedAutonomousDatabaseShardingMethodSystem DistributedAutonomousDatabaseShardingMethodEnum = "SYSTEM"
+	DistributedAutonomousDatabaseShardingMethodUser      DistributedAutonomousDatabaseShardingMethodEnum = "USER"
+	DistributedAutonomousDatabaseShardingMethodSystem    DistributedAutonomousDatabaseShardingMethodEnum = "SYSTEM"
+	DistributedAutonomousDatabaseShardingMethodComposite DistributedAutonomousDatabaseShardingMethodEnum = "COMPOSITE"
 )
 
 var mappingDistributedAutonomousDatabaseShardingMethodEnum = map[string]DistributedAutonomousDatabaseShardingMethodEnum{
-	"USER":   DistributedAutonomousDatabaseShardingMethodUser,
-	"SYSTEM": DistributedAutonomousDatabaseShardingMethodSystem,
+	"USER":      DistributedAutonomousDatabaseShardingMethodUser,
+	"SYSTEM":    DistributedAutonomousDatabaseShardingMethodSystem,
+	"COMPOSITE": DistributedAutonomousDatabaseShardingMethodComposite,
 }
 
 var mappingDistributedAutonomousDatabaseShardingMethodEnumLowerCase = map[string]DistributedAutonomousDatabaseShardingMethodEnum{
-	"user":   DistributedAutonomousDatabaseShardingMethodUser,
-	"system": DistributedAutonomousDatabaseShardingMethodSystem,
+	"user":      DistributedAutonomousDatabaseShardingMethodUser,
+	"system":    DistributedAutonomousDatabaseShardingMethodSystem,
+	"composite": DistributedAutonomousDatabaseShardingMethodComposite,
 }
 
 // GetDistributedAutonomousDatabaseShardingMethodEnumValues Enumerates the set of values for DistributedAutonomousDatabaseShardingMethodEnum
@@ -384,54 +273,13 @@ func GetDistributedAutonomousDatabaseShardingMethodEnumStringValues() []string {
 	return []string{
 		"USER",
 		"SYSTEM",
+		"COMPOSITE",
 	}
 }
 
 // GetMappingDistributedAutonomousDatabaseShardingMethodEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDistributedAutonomousDatabaseShardingMethodEnum(val string) (DistributedAutonomousDatabaseShardingMethodEnum, bool) {
 	enum, ok := mappingDistributedAutonomousDatabaseShardingMethodEnumLowerCase[strings.ToLower(val)]
-	return enum, ok
-}
-
-// DistributedAutonomousDatabaseDbWorkloadEnum Enum with underlying type: string
-type DistributedAutonomousDatabaseDbWorkloadEnum string
-
-// Set of constants representing the allowable values for DistributedAutonomousDatabaseDbWorkloadEnum
-const (
-	DistributedAutonomousDatabaseDbWorkloadOltp DistributedAutonomousDatabaseDbWorkloadEnum = "OLTP"
-	DistributedAutonomousDatabaseDbWorkloadDw   DistributedAutonomousDatabaseDbWorkloadEnum = "DW"
-)
-
-var mappingDistributedAutonomousDatabaseDbWorkloadEnum = map[string]DistributedAutonomousDatabaseDbWorkloadEnum{
-	"OLTP": DistributedAutonomousDatabaseDbWorkloadOltp,
-	"DW":   DistributedAutonomousDatabaseDbWorkloadDw,
-}
-
-var mappingDistributedAutonomousDatabaseDbWorkloadEnumLowerCase = map[string]DistributedAutonomousDatabaseDbWorkloadEnum{
-	"oltp": DistributedAutonomousDatabaseDbWorkloadOltp,
-	"dw":   DistributedAutonomousDatabaseDbWorkloadDw,
-}
-
-// GetDistributedAutonomousDatabaseDbWorkloadEnumValues Enumerates the set of values for DistributedAutonomousDatabaseDbWorkloadEnum
-func GetDistributedAutonomousDatabaseDbWorkloadEnumValues() []DistributedAutonomousDatabaseDbWorkloadEnum {
-	values := make([]DistributedAutonomousDatabaseDbWorkloadEnum, 0)
-	for _, v := range mappingDistributedAutonomousDatabaseDbWorkloadEnum {
-		values = append(values, v)
-	}
-	return values
-}
-
-// GetDistributedAutonomousDatabaseDbWorkloadEnumStringValues Enumerates the set of values in String for DistributedAutonomousDatabaseDbWorkloadEnum
-func GetDistributedAutonomousDatabaseDbWorkloadEnumStringValues() []string {
-	return []string{
-		"OLTP",
-		"DW",
-	}
-}
-
-// GetMappingDistributedAutonomousDatabaseDbWorkloadEnum performs case Insensitive comparison on enum value and return the desired enum
-func GetMappingDistributedAutonomousDatabaseDbWorkloadEnum(val string) (DistributedAutonomousDatabaseDbWorkloadEnum, bool) {
-	enum, ok := mappingDistributedAutonomousDatabaseDbWorkloadEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }
 
@@ -512,5 +360,47 @@ func GetDistributedAutonomousDatabaseDbDeploymentTypeEnumStringValues() []string
 // GetMappingDistributedAutonomousDatabaseDbDeploymentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingDistributedAutonomousDatabaseDbDeploymentTypeEnum(val string) (DistributedAutonomousDatabaseDbDeploymentTypeEnum, bool) {
 	enum, ok := mappingDistributedAutonomousDatabaseDbDeploymentTypeEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
+}
+
+// DistributedAutonomousDatabaseDbWorkloadTypeEnum Enum with underlying type: string
+type DistributedAutonomousDatabaseDbWorkloadTypeEnum string
+
+// Set of constants representing the allowable values for DistributedAutonomousDatabaseDbWorkloadTypeEnum
+const (
+	DistributedAutonomousDatabaseDbWorkloadTypeOltp DistributedAutonomousDatabaseDbWorkloadTypeEnum = "OLTP"
+	DistributedAutonomousDatabaseDbWorkloadTypeDw   DistributedAutonomousDatabaseDbWorkloadTypeEnum = "DW"
+)
+
+var mappingDistributedAutonomousDatabaseDbWorkloadTypeEnum = map[string]DistributedAutonomousDatabaseDbWorkloadTypeEnum{
+	"OLTP": DistributedAutonomousDatabaseDbWorkloadTypeOltp,
+	"DW":   DistributedAutonomousDatabaseDbWorkloadTypeDw,
+}
+
+var mappingDistributedAutonomousDatabaseDbWorkloadTypeEnumLowerCase = map[string]DistributedAutonomousDatabaseDbWorkloadTypeEnum{
+	"oltp": DistributedAutonomousDatabaseDbWorkloadTypeOltp,
+	"dw":   DistributedAutonomousDatabaseDbWorkloadTypeDw,
+}
+
+// GetDistributedAutonomousDatabaseDbWorkloadTypeEnumValues Enumerates the set of values for DistributedAutonomousDatabaseDbWorkloadTypeEnum
+func GetDistributedAutonomousDatabaseDbWorkloadTypeEnumValues() []DistributedAutonomousDatabaseDbWorkloadTypeEnum {
+	values := make([]DistributedAutonomousDatabaseDbWorkloadTypeEnum, 0)
+	for _, v := range mappingDistributedAutonomousDatabaseDbWorkloadTypeEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetDistributedAutonomousDatabaseDbWorkloadTypeEnumStringValues Enumerates the set of values in String for DistributedAutonomousDatabaseDbWorkloadTypeEnum
+func GetDistributedAutonomousDatabaseDbWorkloadTypeEnumStringValues() []string {
+	return []string{
+		"OLTP",
+		"DW",
+	}
+}
+
+// GetMappingDistributedAutonomousDatabaseDbWorkloadTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDistributedAutonomousDatabaseDbWorkloadTypeEnum(val string) (DistributedAutonomousDatabaseDbWorkloadTypeEnum, bool) {
+	enum, ok := mappingDistributedAutonomousDatabaseDbWorkloadTypeEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

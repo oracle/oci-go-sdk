@@ -43,6 +43,9 @@ type ListingRevisionNote struct {
 	// Example: `2022-09-24T21:10:29.600Z`
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
 
+	// Email address of the administrator who created the note, if available.
+	AdminEmail *string `mandatory:"false" json:"adminEmail"`
+
 	// The current state of the listing revision note.
 	LifecycleState ListingRevisionNoteLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 

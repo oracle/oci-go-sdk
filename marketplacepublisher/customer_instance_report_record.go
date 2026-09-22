@@ -64,11 +64,11 @@ type CustomerInstanceReportRecord struct {
 	// The tenancy of the instance
 	OciTenancy *string `mandatory:"false" json:"ociTenancy"`
 
-	// The name of the tenant adminstrator
-	TenantAdminName *string `mandatory:"false" json:"tenantAdminName"`
+	// The domain of the tenant administrator email address
+	TenantAdminDomain *string `mandatory:"false" json:"tenantAdminDomain"`
 
-	// The email of the tenant adminstrator
-	TenantAdminEmail *string `mandatory:"false" json:"tenantAdminEmail"`
+	// The legacy listing id of the listing
+	LegacyListingId *string `mandatory:"false" json:"legacyListingId"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`

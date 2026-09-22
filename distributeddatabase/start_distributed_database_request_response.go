@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/StartDistributedDatabase.go.html to see an example of how to use StartDistributedDatabaseRequest.
 type StartDistributedDatabaseRequest struct {
 
-	// Globally distributed database identifier
+	// Globally distributed database identifier.
 	DistributedDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedDatabaseId"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

@@ -18,6 +18,9 @@ import (
 // VmClusterDetails Details of the request to create exadb vm cluster for shard or catalog of the distributed database.
 type VmClusterDetails struct {
 
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment for VM Cluster.
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
+
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the subnet associated with the Exadata VM cluster on Exascale Infrastructure.
 	SubnetId *string `mandatory:"true" json:"subnetId"`
 
@@ -74,6 +77,9 @@ type VmClusterDetails struct {
 	// Setting this to an empty array after the list is created removes the resource from all NSGs.
 	// For more information about NSGs, see Security Rules (https://docs.oracle.com/iaas/Content/Network/Concepts/securityrules.htm). Applicable only to Exadata systems.
 	BackupNetworkNsgIds []string `mandatory:"false" json:"backupNetworkNsgIds"`
+
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the subscription with which resource needs to be associated with.
+	SubscriptionId *string `mandatory:"false" json:"subscriptionId"`
 }
 
 func (m VmClusterDetails) String() string {

@@ -46,6 +46,9 @@ type ListingRevisionAttachmentSummary struct {
 	// Example: `2022-09-24T21:10:29.600Z`
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
 
+	// The specified attachment type is Internal or External.
+	SourceType ListingRevisionAttachmentSourceTypeEnum `mandatory:"false" json:"sourceType,omitempty"`
+
 	// Possible lifecycle states.
 	DocumentCategory ListingRevisionAttachmentSummaryDocumentCategoryEnum `mandatory:"false" json:"documentCategory,omitempty"`
 
@@ -81,6 +84,9 @@ func (m ListingRevisionAttachmentSummary) ValidateEnumValue() (bool, error) {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AttachmentType: %s. Supported values are: %s.", m.AttachmentType, strings.Join(GetListingRevisionAttachmentAttachmentTypeEnumStringValues(), ",")))
 	}
 
+	if _, ok := GetMappingListingRevisionAttachmentSourceTypeEnum(string(m.SourceType)); !ok && m.SourceType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SourceType: %s. Supported values are: %s.", m.SourceType, strings.Join(GetListingRevisionAttachmentSourceTypeEnumStringValues(), ",")))
+	}
 	if _, ok := GetMappingListingRevisionAttachmentSummaryDocumentCategoryEnum(string(m.DocumentCategory)); !ok && m.DocumentCategory != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DocumentCategory: %s. Supported values are: %s.", m.DocumentCategory, strings.Join(GetListingRevisionAttachmentSummaryDocumentCategoryEnumStringValues(), ",")))
 	}

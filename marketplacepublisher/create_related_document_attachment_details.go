@@ -36,8 +36,17 @@ type CreateRelatedDocumentAttachmentDetails struct {
 	// Example: `{"foo-namespace": {"bar-key": "value"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 
+	// The document URL of the listing revision attachment.
+	SourceUrl *string `mandatory:"false" json:"sourceUrl"`
+
+	// Identifies whether the attachment is for Internal Oracle Users or external users as well.
+	IsOracleUsersOnly *bool `mandatory:"false" json:"isOracleUsersOnly"`
+
 	// The document category of the listing revision attachment.
 	DocumentCategory RelatedDocumentAttachmentDocumentCategoryEnum `mandatory:"true" json:"documentCategory"`
+
+	// The specified attachment type is Internal or External.
+	SourceType ListingRevisionAttachmentSourceTypeEnum `mandatory:"false" json:"sourceType,omitempty"`
 }
 
 // GetListingRevisionId returns ListingRevisionId
@@ -77,6 +86,9 @@ func (m CreateRelatedDocumentAttachmentDetails) ValidateEnumValue() (bool, error
 
 	if _, ok := GetMappingRelatedDocumentAttachmentDocumentCategoryEnum(string(m.DocumentCategory)); !ok && m.DocumentCategory != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DocumentCategory: %s. Supported values are: %s.", m.DocumentCategory, strings.Join(GetRelatedDocumentAttachmentDocumentCategoryEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingListingRevisionAttachmentSourceTypeEnum(string(m.SourceType)); !ok && m.SourceType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SourceType: %s. Supported values are: %s.", m.SourceType, strings.Join(GetListingRevisionAttachmentSourceTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))

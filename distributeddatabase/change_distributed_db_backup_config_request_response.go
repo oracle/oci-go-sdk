@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/ChangeDistributedDbBackupConfig.go.html to see an example of how to use ChangeDistributedDbBackupConfigRequest.
 type ChangeDistributedDbBackupConfigRequest struct {
 
-	// Globally distributed database identifier
+	// Globally distributed database identifier.
 	DistributedDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedDatabaseId"`
 
 	// Details of the DistributedDbBackupConfig for the Globally distributed database.

@@ -30,8 +30,8 @@ type CreateDistributedDatabasePrivateEndpointDetails struct {
 	// DistributedDatabasePrivateEndpoint description.
 	Description *string `mandatory:"false" json:"description"`
 
-	// The OCIDs of the network security groups that the private endpoint belongs to.
-	NsgIds []string `mandatory:"false" json:"nsgIds"`
+	// The list of network security group (NSG) details to be associated with the private endpoint.
+	VcnNsgIds []VcnNsgIdsDetails `mandatory:"false" json:"vcnNsgIds"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`

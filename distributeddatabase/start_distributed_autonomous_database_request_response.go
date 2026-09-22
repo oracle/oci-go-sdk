@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/StartDistributedAutonomousDatabase.go.html to see an example of how to use StartDistributedAutonomousDatabaseRequest.
 type StartDistributedAutonomousDatabaseRequest struct {
 
-	// Globally distributed autonomous database identifier
+	// Globally distributed autonomous database identifier.
 	DistributedAutonomousDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedAutonomousDatabaseId"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

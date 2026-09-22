@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/AddDistributedDatabaseGdsControlNode.go.html to see an example of how to use AddDistributedDatabaseGdsControlNodeRequest.
 type AddDistributedDatabaseGdsControlNodeRequest struct {
 
-	// Globally distributed database identifier
+	// Globally distributed database identifier.
 	DistributedDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedDatabaseId"`
 
 	// Details required to provision the new Global database services control(GDS CTL) node for the Distributed database.

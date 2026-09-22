@@ -24,6 +24,10 @@ type AdditionalFilter struct {
 	// Filter code
 	Code *string `mandatory:"false" json:"code"`
 
+	// The date and time the additional filter was created, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
+	// Example: `2022-09-15T21:10:29.600Z`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
+
 	// Usage instructions for the properties
 	UsageInstructions *string `mandatory:"false" json:"usageInstructions"`
 

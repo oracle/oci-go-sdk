@@ -61,6 +61,9 @@ type RelatedDocumentAttachment struct {
 	// Possible lifecycle states.
 	DocumentCategory RelatedDocumentAttachmentDocumentCategoryEnum `mandatory:"false" json:"documentCategory,omitempty"`
 
+	// Possible values for the publisher listing revision attachments. The source type informs whether the type of attachment for the listing revision is external or internal.
+	SourceType ListingRevisionAttachmentSourceTypeEnum `mandatory:"false" json:"sourceType,omitempty"`
+
 	// The current state of the attachment.
 	LifecycleState ListingRevisionAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 }
@@ -88,6 +91,11 @@ func (m RelatedDocumentAttachment) GetDisplayName() *string {
 // GetDescription returns Description
 func (m RelatedDocumentAttachment) GetDescription() *string {
 	return m.Description
+}
+
+// GetSourceType returns SourceType
+func (m RelatedDocumentAttachment) GetSourceType() ListingRevisionAttachmentSourceTypeEnum {
+	return m.SourceType
 }
 
 // GetLifecycleState returns LifecycleState
@@ -133,6 +141,9 @@ func (m RelatedDocumentAttachment) ValidateEnumValue() (bool, error) {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DocumentCategory: %s. Supported values are: %s.", m.DocumentCategory, strings.Join(GetRelatedDocumentAttachmentDocumentCategoryEnumStringValues(), ",")))
 	}
 
+	if _, ok := GetMappingListingRevisionAttachmentSourceTypeEnum(string(m.SourceType)); !ok && m.SourceType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SourceType: %s. Supported values are: %s.", m.SourceType, strings.Join(GetListingRevisionAttachmentSourceTypeEnumStringValues(), ",")))
+	}
 	if _, ok := GetMappingListingRevisionAttachmentLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetListingRevisionAttachmentLifecycleStateEnumStringValues(), ",")))
 	}

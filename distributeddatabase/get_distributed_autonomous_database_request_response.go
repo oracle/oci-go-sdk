@@ -18,10 +18,10 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/GetDistributedAutonomousDatabase.go.html to see an example of how to use GetDistributedAutonomousDatabaseRequest.
 type GetDistributedAutonomousDatabaseRequest struct {
 
-	// Globally distributed autonomous database identifier
+	// Globally distributed autonomous database identifier.
 	DistributedAutonomousDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedAutonomousDatabaseId"`
 
-	// Comma separated names of argument corresponding to which metadata need to be retrived.
+	// Comma-separated argument names for which metadata should be retrieved.
 	Metadata *string `mandatory:"false" contributesTo:"query" name:"metadata"`
 
 	// For conditional requests. In the GET call for a resource, set the

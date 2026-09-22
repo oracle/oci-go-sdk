@@ -24,12 +24,6 @@ type DistributedAutonomousDbBackupDestination struct {
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the backup destination.
 	Id *string `mandatory:"false" json:"id"`
 
-	// For a RECOVERY_APPLIANCE backup destination, the Virtual Private Catalog (VPC) user that is used to access the Recovery Appliance.
-	VpcUser *string `mandatory:"false" json:"vpcUser"`
-
-	// For a RECOVERY_APPLIANCE backup destination, the password for the VPC user that is used to access the Recovery Appliance.
-	VpcPassword *string `mandatory:"false" json:"vpcPassword"`
-
 	// Proxy URL to connect to object store.
 	InternetProxy *string `mandatory:"false" json:"internetProxy"`
 
@@ -69,27 +63,24 @@ type DistributedAutonomousDbBackupDestinationTypeEnum string
 
 // Set of constants representing the allowable values for DistributedAutonomousDbBackupDestinationTypeEnum
 const (
-	DistributedAutonomousDbBackupDestinationTypeNfs               DistributedAutonomousDbBackupDestinationTypeEnum = "NFS"
-	DistributedAutonomousDbBackupDestinationTypeRecoveryAppliance DistributedAutonomousDbBackupDestinationTypeEnum = "RECOVERY_APPLIANCE"
-	DistributedAutonomousDbBackupDestinationTypeObjectStore       DistributedAutonomousDbBackupDestinationTypeEnum = "OBJECT_STORE"
-	DistributedAutonomousDbBackupDestinationTypeLocal             DistributedAutonomousDbBackupDestinationTypeEnum = "LOCAL"
-	DistributedAutonomousDbBackupDestinationTypeDbrs              DistributedAutonomousDbBackupDestinationTypeEnum = "DBRS"
+	DistributedAutonomousDbBackupDestinationTypeNfs         DistributedAutonomousDbBackupDestinationTypeEnum = "NFS"
+	DistributedAutonomousDbBackupDestinationTypeObjectStore DistributedAutonomousDbBackupDestinationTypeEnum = "OBJECT_STORE"
+	DistributedAutonomousDbBackupDestinationTypeLocal       DistributedAutonomousDbBackupDestinationTypeEnum = "LOCAL"
+	DistributedAutonomousDbBackupDestinationTypeDbrs        DistributedAutonomousDbBackupDestinationTypeEnum = "DBRS"
 )
 
 var mappingDistributedAutonomousDbBackupDestinationTypeEnum = map[string]DistributedAutonomousDbBackupDestinationTypeEnum{
-	"NFS":                DistributedAutonomousDbBackupDestinationTypeNfs,
-	"RECOVERY_APPLIANCE": DistributedAutonomousDbBackupDestinationTypeRecoveryAppliance,
-	"OBJECT_STORE":       DistributedAutonomousDbBackupDestinationTypeObjectStore,
-	"LOCAL":              DistributedAutonomousDbBackupDestinationTypeLocal,
-	"DBRS":               DistributedAutonomousDbBackupDestinationTypeDbrs,
+	"NFS":          DistributedAutonomousDbBackupDestinationTypeNfs,
+	"OBJECT_STORE": DistributedAutonomousDbBackupDestinationTypeObjectStore,
+	"LOCAL":        DistributedAutonomousDbBackupDestinationTypeLocal,
+	"DBRS":         DistributedAutonomousDbBackupDestinationTypeDbrs,
 }
 
 var mappingDistributedAutonomousDbBackupDestinationTypeEnumLowerCase = map[string]DistributedAutonomousDbBackupDestinationTypeEnum{
-	"nfs":                DistributedAutonomousDbBackupDestinationTypeNfs,
-	"recovery_appliance": DistributedAutonomousDbBackupDestinationTypeRecoveryAppliance,
-	"object_store":       DistributedAutonomousDbBackupDestinationTypeObjectStore,
-	"local":              DistributedAutonomousDbBackupDestinationTypeLocal,
-	"dbrs":               DistributedAutonomousDbBackupDestinationTypeDbrs,
+	"nfs":          DistributedAutonomousDbBackupDestinationTypeNfs,
+	"object_store": DistributedAutonomousDbBackupDestinationTypeObjectStore,
+	"local":        DistributedAutonomousDbBackupDestinationTypeLocal,
+	"dbrs":         DistributedAutonomousDbBackupDestinationTypeDbrs,
 }
 
 // GetDistributedAutonomousDbBackupDestinationTypeEnumValues Enumerates the set of values for DistributedAutonomousDbBackupDestinationTypeEnum
@@ -105,7 +96,6 @@ func GetDistributedAutonomousDbBackupDestinationTypeEnumValues() []DistributedAu
 func GetDistributedAutonomousDbBackupDestinationTypeEnumStringValues() []string {
 	return []string{
 		"NFS",
-		"RECOVERY_APPLIANCE",
 		"OBJECT_STORE",
 		"LOCAL",
 		"DBRS",

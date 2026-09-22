@@ -77,6 +77,8 @@ type ListingRevision interface {
 
 	GetIcon() *ListingRevisionIconAttachment
 
+	GetBanner() *ListingRevisionBannerAttachment
+
 	// Status notes for the listing revision.
 	GetStatusNotes() *string
 
@@ -113,6 +115,7 @@ type listingrevision struct {
 	SupportContacts    []SupportContact                  `mandatory:"false" json:"supportContacts"`
 	SupportLinks       []NamedLink                       `mandatory:"false" json:"supportLinks"`
 	Icon               *ListingRevisionIconAttachment    `mandatory:"false" json:"icon"`
+	Banner             *ListingRevisionBannerAttachment  `mandatory:"false" json:"banner"`
 	StatusNotes        *string                           `mandatory:"false" json:"statusNotes"`
 	PackageType        PackageTypeEnum                   `mandatory:"false" json:"packageType,omitempty"`
 	ExtendedMetadata   map[string]string                 `mandatory:"false" json:"extendedMetadata"`
@@ -161,6 +164,7 @@ func (m *listingrevision) UnmarshalJSON(data []byte) error {
 	m.SupportContacts = s.Model.SupportContacts
 	m.SupportLinks = s.Model.SupportLinks
 	m.Icon = s.Model.Icon
+	m.Banner = s.Model.Banner
 	m.StatusNotes = s.Model.StatusNotes
 	m.PackageType = s.Model.PackageType
 	m.ExtendedMetadata = s.Model.ExtendedMetadata
@@ -257,6 +261,11 @@ func (m listingrevision) GetSupportLinks() []NamedLink {
 // GetIcon returns Icon
 func (m listingrevision) GetIcon() *ListingRevisionIconAttachment {
 	return m.Icon
+}
+
+// GetBanner returns Banner
+func (m listingrevision) GetBanner() *ListingRevisionBannerAttachment {
+	return m.Banner
 }
 
 // GetStatusNotes returns StatusNotes

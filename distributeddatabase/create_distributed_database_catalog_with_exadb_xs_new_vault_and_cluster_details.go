@@ -16,34 +16,66 @@ import (
 	"strings"
 )
 
-// CreateDistributedDatabaseCatalogWithExadbXsNewVaultAndClusterDetails Globally distributed database catalog based on ExaDbXs.
+// CreateDistributedDatabaseCatalogWithExadbXsNewVaultAndClusterDetails Configuration for creating a distributed database catalog on a new ExaDB-XS VM cluster and storage vault.
 type CreateDistributedDatabaseCatalogWithExadbXsNewVaultAndClusterDetails struct {
 
-	// The admin password for the catalog associated with Globally distributed database.
-	AdminPassword *string `mandatory:"true" json:"adminPassword" sensitive:"true"`
-
-	// The name of the availability domain that the distributed database shard will be located in.
+	// The name of the availability domain that the distributed database catalog will be located in.
 	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
 
 	DbStorageVaultDetails *DbStorageVaultDetails `mandatory:"true" json:"dbStorageVaultDetails"`
 
 	VmClusterDetails *VmClusterDetails `mandatory:"true" json:"vmClusterDetails"`
 
-	// The details required for creation of the peer for the ExadbXs infrastructure based catalog.
-	PeerDetails []CreateCatalogPeerWithExadbXsNewVaultAndClusterDetails `mandatory:"false" json:"peerDetails"`
+	// The password to open the TDE wallet.
+	// The password must be 9 to 255 characters and contain at least two uppercase letters, two lowercase letters, two numeric characters, and two special characters.
+	// The allowed special characters are _, \#, and -.
+	TdeWalletPassword *string `mandatory:"false" json:"tdeWalletPassword" sensitive:"true"`
 
-	// The shard space name for the Globally distributed database. Shard space for existing shard cannot be changed, once shard is created.
-	// Shard space name shall be used while creation of new shards.
-	ShardSpace *string `mandatory:"false" json:"shardSpace"`
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the OCI vault secret. This cannot be used in conjunction with tdeWalletPassword.
+	TdeWalletPasswordSecretId *string `mandatory:"false" json:"tdeWalletPasswordSecretId"`
 
-	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the Oracle Cloud Infrastructure vault (https://docs.oracle.com/iaas/Content/KeyManagement/Concepts/keyoverview.htm#concepts). This parameter and `kmsKeyId` are required for Customer Managed Keys.
+	// The version of the vault secret. If no version is specified, the latest version will be used.
+	TdeWalletPasswordSecretVersionNumber *int `mandatory:"false" json:"tdeWalletPasswordSecretVersionNumber"`
+
+	// The admin password for the catalog associated with Globally distributed database.
+	AdminPassword *string `mandatory:"false" json:"adminPassword" sensitive:"true"`
+
+	// The OCI vault secret [/Content/General/Concepts/identifiers.htm]OCID. This cannot be used in conjunction with adminPassword.
+	AdminPasswordSecretId *string `mandatory:"false" json:"adminPasswordSecretId"`
+
+	// The version of the vault secret. If no version is specified, the latest version will be used.
+	AdminPasswordSecretVersionNumber *int `mandatory:"false" json:"adminPasswordSecretVersionNumber"`
+
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the Oracle Cloud Infrastructure vault (https://docs.oracle.com/iaas/Content/KeyManagement/Concepts/keyoverview.htm#concepts).
+	// This parameter and `kmsKeyId` are required for Customer Managed Keys.
 	VaultId *string `mandatory:"false" json:"vaultId"`
 
-	// The OCID of the key container that is used as the master encryption key in database transparent data encryption (TDE) operations.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the key container that is used as the master encryption key in database transparent data encryption (TDE) operations.
 	KmsKeyId *string `mandatory:"false" json:"kmsKeyId"`
 
-	// The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions.
 	KmsKeyVersionId *string `mandatory:"false" json:"kmsKeyVersionId"`
+
+	// The protection mode used for the Data Guard association.
+	ProtectionMode DistributedDbProtectionModeEnum `mandatory:"false" json:"protectionMode,omitempty"`
+
+	// The transport type used for the Data Guard association.
+	TransportType DistributedDbTransportTypeEnum `mandatory:"false" json:"transportType,omitempty"`
+}
+
+// GetTdeWalletPassword returns TdeWalletPassword
+func (m CreateDistributedDatabaseCatalogWithExadbXsNewVaultAndClusterDetails) GetTdeWalletPassword() *string {
+	return m.TdeWalletPassword
+}
+
+// GetTdeWalletPasswordSecretId returns TdeWalletPasswordSecretId
+func (m CreateDistributedDatabaseCatalogWithExadbXsNewVaultAndClusterDetails) GetTdeWalletPasswordSecretId() *string {
+	return m.TdeWalletPasswordSecretId
+}
+
+// GetTdeWalletPasswordSecretVersionNumber returns TdeWalletPasswordSecretVersionNumber
+func (m CreateDistributedDatabaseCatalogWithExadbXsNewVaultAndClusterDetails) GetTdeWalletPasswordSecretVersionNumber() *int {
+	return m.TdeWalletPasswordSecretVersionNumber
 }
 
 func (m CreateDistributedDatabaseCatalogWithExadbXsNewVaultAndClusterDetails) String() string {
@@ -56,6 +88,12 @@ func (m CreateDistributedDatabaseCatalogWithExadbXsNewVaultAndClusterDetails) St
 func (m CreateDistributedDatabaseCatalogWithExadbXsNewVaultAndClusterDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
+	if _, ok := GetMappingDistributedDbProtectionModeEnum(string(m.ProtectionMode)); !ok && m.ProtectionMode != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProtectionMode: %s. Supported values are: %s.", m.ProtectionMode, strings.Join(GetDistributedDbProtectionModeEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingDistributedDbTransportTypeEnum(string(m.TransportType)); !ok && m.TransportType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TransportType: %s. Supported values are: %s.", m.TransportType, strings.Join(GetDistributedDbTransportTypeEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
@@ -69,7 +107,7 @@ func (m CreateDistributedDatabaseCatalogWithExadbXsNewVaultAndClusterDetails) Ma
 		DiscriminatorParam string `json:"source"`
 		MarshalTypeCreateDistributedDatabaseCatalogWithExadbXsNewVaultAndClusterDetails
 	}{
-		"NEW_VAULT_AND_CLUSTER",
+		"XS_NEW_VAULT_AND_CLUSTER",
 		(MarshalTypeCreateDistributedDatabaseCatalogWithExadbXsNewVaultAndClusterDetails)(m),
 	}
 

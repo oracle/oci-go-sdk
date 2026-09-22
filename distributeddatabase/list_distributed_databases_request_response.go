@@ -21,10 +21,13 @@ type ListDistributedDatabasesRequest struct {
 	// The ID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
+	// When set to true, returns resources in the specified compartment and in all of its child compartments recursively. Defaults to false.
+	CompartmentIdInSubtree *bool `mandatory:"false" contributesTo:"query" name:"compartmentIdInSubtree"`
+
 	// A filter to return only resources that are associated with the given privateEndpointId.
 	PrivateEndpointId *string `mandatory:"false" contributesTo:"query" name:"privateEndpointId"`
 
-	// A filter to return only resources their lifecycleState matches the given lifecycleState.
+	// A filter to return only resources whose lifecycleState matches the specified value.
 	LifecycleState DistributedDatabaseLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
 	// The maximum number of items to return.
@@ -42,13 +45,16 @@ type ListDistributedDatabasesRequest struct {
 	// The client request ID for tracing.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
+	// A filter to return only resources where autoResourceManagement is enabled when set to `true`, or disabled when set to `false`. If omitted, no autoResourceManagement-based filtering is applied.
+	IsAutoResourceManagementEnabled *bool `mandatory:"false" contributesTo:"query" name:"isAutoResourceManagementEnabled"`
+
 	// A filter to return only Globally distributed databases that match the entire name given. The match is not case sensitive.
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
 
-	// A filter to return only resources their dbDeploymentType matches the given dbDeploymentType.
-	DbDeploymentType DistributedDatabaseDbDeploymentTypeEnum `mandatory:"false" contributesTo:"query" name:"dbDeploymentType" omitEmpty:"true"`
+	// A filter to return only resources whose dbDeploymentType matches the specified value.
+	DbDeploymentType *string `mandatory:"false" contributesTo:"query" name:"dbDeploymentType"`
 
-	// Comma separated names of argument corresponding to which metadata need to be retrived.
+	// Comma-separated argument names for which metadata should be retrieved.
 	Metadata *string `mandatory:"false" contributesTo:"query" name:"metadata"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
@@ -95,9 +101,6 @@ func (request ListDistributedDatabasesRequest) ValidateEnumValue() (bool, error)
 	}
 	if _, ok := GetMappingListDistributedDatabasesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDistributedDatabasesSortByEnumStringValues(), ",")))
-	}
-	if _, ok := GetMappingDistributedDatabaseDbDeploymentTypeEnum(string(request.DbDeploymentType)); !ok && request.DbDeploymentType != "" {
-		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DbDeploymentType: %s. Supported values are: %s.", request.DbDeploymentType, strings.Join(GetDistributedDatabaseDbDeploymentTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))

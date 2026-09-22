@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/ValidateDistributedAutonomousDatabaseCaBundle.go.html to see an example of how to use ValidateDistributedAutonomousDatabaseCaBundleRequest.
 type ValidateDistributedAutonomousDatabaseCaBundleRequest struct {
 
-	// Globally distributed autonomous database identifier
+	// Globally distributed autonomous database identifier.
 	DistributedAutonomousDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedAutonomousDatabaseId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call

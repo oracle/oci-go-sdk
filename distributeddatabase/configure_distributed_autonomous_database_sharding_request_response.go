@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/ConfigureDistributedAutonomousDatabaseSharding.go.html to see an example of how to use ConfigureDistributedAutonomousDatabaseShardingRequest.
 type ConfigureDistributedAutonomousDatabaseShardingRequest struct {
 
-	// Globally distributed autonomous database identifier
+	// Globally distributed autonomous database identifier.
 	DistributedAutonomousDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedAutonomousDatabaseId"`
 
 	// The flag to indicate whether chunks need to be re-balanced. This flag is not applicable for USER-defined

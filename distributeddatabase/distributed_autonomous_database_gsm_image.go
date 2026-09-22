@@ -21,8 +21,8 @@ type DistributedAutonomousDatabaseGsmImage struct {
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the Global service manager software image.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The version number associated with the image identified by id.
-	VersionNumber *int `mandatory:"true" json:"versionNumber"`
+	// The version associated with the image identified by id.
+	Version *string `mandatory:"true" json:"version"`
 }
 
 func (m DistributedAutonomousDatabaseGsmImage) String() string {

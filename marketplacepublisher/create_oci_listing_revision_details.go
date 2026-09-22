@@ -73,6 +73,12 @@ type CreateOciListingRevisionDetails struct {
 	// List of Pricing Plans provider by publisher.
 	PricingPlans []PricingPlan `mandatory:"false" json:"pricingPlans"`
 
+	// The url provided by partner for the registration of subscription.
+	PartnerRegistrationUrl *string `mandatory:"false" json:"partnerRegistrationUrl"`
+
+	// The unique id of the term attached to the listing.
+	TermId *string `mandatory:"false" json:"termId"`
+
 	// Custom link to the listing
 	VanityUrl *string `mandatory:"false" json:"vanityUrl"`
 
@@ -84,6 +90,12 @@ type CreateOciListingRevisionDetails struct {
 
 	// Is this listing rover exportable
 	IsRoverExportable *bool `mandatory:"false" json:"isRoverExportable"`
+
+	// Url to demo of the listing
+	DemoUrl *string `mandatory:"false" json:"demoUrl"`
+
+	// Url to training resources of the listing
+	SelfPacedTrainingUrl *string `mandatory:"false" json:"selfPacedTrainingUrl"`
 
 	// The current status of the Listing revision.
 	Status ListingRevisionStatusEnum `mandatory:"false" json:"status,omitempty"`
@@ -222,10 +234,14 @@ func (m *CreateOciListingRevisionDetails) UnmarshalJSON(data []byte) (e error) {
 		VersionDetails                       *VersionDetails                   `json:"versionDetails"`
 		SystemRequirements                   *string                           `json:"systemRequirements"`
 		PricingPlans                         []pricingplan                     `json:"pricingPlans"`
+		PartnerRegistrationUrl               *string                           `json:"partnerRegistrationUrl"`
+		TermId                               *string                           `json:"termId"`
 		VanityUrl                            *string                           `json:"vanityUrl"`
 		RecommendedServiceProviderListingIds []string                          `json:"recommendedServiceProviderListingIds"`
 		AvailabilityAndPricingPolicy         *string                           `json:"availabilityAndPricingPolicy"`
 		IsRoverExportable                    *bool                             `json:"isRoverExportable"`
+		DemoUrl                              *string                           `json:"demoUrl"`
+		SelfPacedTrainingUrl                 *string                           `json:"selfPacedTrainingUrl"`
 		ListingId                            *string                           `json:"listingId"`
 		Headline                             *string                           `json:"headline"`
 		PricingType                          OciListingRevisionPricingTypeEnum `json:"pricingType"`
@@ -279,6 +295,10 @@ func (m *CreateOciListingRevisionDetails) UnmarshalJSON(data []byte) (e error) {
 			m.PricingPlans[i] = nil
 		}
 	}
+	m.PartnerRegistrationUrl = model.PartnerRegistrationUrl
+
+	m.TermId = model.TermId
+
 	m.VanityUrl = model.VanityUrl
 
 	m.RecommendedServiceProviderListingIds = make([]string, len(model.RecommendedServiceProviderListingIds))
@@ -286,6 +306,10 @@ func (m *CreateOciListingRevisionDetails) UnmarshalJSON(data []byte) (e error) {
 	m.AvailabilityAndPricingPolicy = model.AvailabilityAndPricingPolicy
 
 	m.IsRoverExportable = model.IsRoverExportable
+
+	m.DemoUrl = model.DemoUrl
+
+	m.SelfPacedTrainingUrl = model.SelfPacedTrainingUrl
 
 	m.ListingId = model.ListingId
 

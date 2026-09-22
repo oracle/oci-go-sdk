@@ -16,16 +16,16 @@ import (
 	"strings"
 )
 
-// DistributedAutonomousDatabaseShardWithDedicatedInfra Globally distributed autonomous database shard with dedicated autonomous infrastructure.
+// DistributedAutonomousDatabaseShardWithDedicatedInfra Details of a distributed autonomous database shard on dedicated infrastructure.
 type DistributedAutonomousDatabaseShardWithDedicatedInfra struct {
 
 	// Name of the shard.
 	Name *string `mandatory:"true" json:"name"`
 
-	// The time the shard was created. An RFC3339 formatted datetime string
+	// The time the shard was created. An RFC3339 formatted datetime string.
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
-	// The time the shard was last updated. An RFC3339 formatted datetime string
+	// The time the shard was last updated. An RFC3339 formatted datetime string.
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
 
 	// The compute count for the shard database. It has to be in multiples of 2.
@@ -34,30 +34,35 @@ type DistributedAutonomousDatabaseShardWithDedicatedInfra struct {
 	// The data disk group size to be allocated in GBs for the shard database.
 	DataStorageSizeInGbs *float64 `mandatory:"true" json:"dataStorageSizeInGbs"`
 
-	// Determines the auto-scaling mode for the shard database.
-	IsAutoScalingEnabled *bool `mandatory:"true" json:"isAutoScalingEnabled"`
-
-	// The name of the shardGroup for the shard.
-	ShardGroup *string `mandatory:"true" json:"shardGroup"`
-
-	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the cloudAutonomousVmCluster.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the cloud Autonomous Exadata VM Cluster.
 	CloudAutonomousVmClusterId *string `mandatory:"true" json:"cloudAutonomousVmClusterId"`
 
-	// This field is deprecated. For shard peer details please refer peerDetails attribute.
-	PeerCloudAutonomousVmClusterIds []string `mandatory:"false" json:"peerCloudAutonomousVmClusterIds"`
+	Metadata *DistributedAutonomousDbMetadata `mandatory:"false" json:"metadata"`
 
-	// The shard space name for the Globally distributed autonomous database. Shard space for existing shard cannot be changed, once shard is created.
-	// Shard space name shall be used while creation of new shards.
-	ShardSpace *string `mandatory:"false" json:"shardSpace"`
+	// Indicates if vertical auto scaling is enabled for the Autonomous AI Database CPU core count.
+	// The default value is `FALSE`.
+	IsAutoScalingEnabled *bool `mandatory:"false" json:"isAutoScalingEnabled"`
 
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the Oracle Cloud Infrastructure vault (https://docs.oracle.com/iaas/Content/KeyManagement/Concepts/keyoverview.htm#concepts). This parameter and `kmsKeyId` are required for Customer Managed Keys.
 	VaultId *string `mandatory:"false" json:"vaultId"`
 
-	// The OCID of the key container that is used as the master encryption key in database transparent data encryption (TDE) operations.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the key container that is used as the master encryption key in database transparent data encryption (TDE) operations.
 	KmsKeyId *string `mandatory:"false" json:"kmsKeyId"`
 
-	// The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions.
 	KmsKeyVersionId *string `mandatory:"false" json:"kmsKeyVersionId"`
+
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the key store used to create the shard.
+	OkvKeyStoreId *string `mandatory:"false" json:"okvKeyStoreId"`
+
+	// The OKV endpoint name.
+	OkvEndPointGroupName *string `mandatory:"false" json:"okvEndPointGroupName"`
+
+	// The lag time preference based on data loss tolerance in seconds.
+	FastStartFailOverLagLimitInSeconds *int `mandatory:"false" json:"fastStartFailOverLagLimitInSeconds"`
+
+	// The scheduling detail for the quarterly maintenance window of the standby Autonomous Container Database.
+	StandbyMaintenanceBufferInDays *int `mandatory:"false" json:"standbyMaintenanceBufferInDays"`
 
 	// the identifier of the underlying supporting resource.
 	SupportingResourceId *string `mandatory:"false" json:"supportingResourceId"`
@@ -65,19 +70,11 @@ type DistributedAutonomousDatabaseShardWithDedicatedInfra struct {
 	// the identifier of the container database for underlying supporting resource.
 	ContainerDatabaseId *string `mandatory:"false" json:"containerDatabaseId"`
 
-	// Peer details for the shard with dedicated infrastructure.
-	PeerDetails []ShardPeerWithDedicatedInfra `mandatory:"false" json:"peerDetails"`
-
-	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the key store used to create the shard.
-	OkvKeyStoreId *string `mandatory:"false" json:"okvKeyStoreId"`
-
-	// The OKV endpoint name.
-	OkvEndPointGroup *string `mandatory:"false" json:"okvEndPointGroup"`
-
-	Metadata *DistributedAutonomousDbMetadata `mandatory:"false" json:"metadata"`
-
-	// Status of shard with dedicated infrastructure for the Globally distributed autonomous database.
+	// Status of the distributed autonomous database shard.
 	Status DistributedAutonomousDatabaseShardWithDedicatedInfraStatusEnum `mandatory:"true" json:"status"`
+
+	// The protection mode for the shard peer.
+	ProtectionMode DistributedAutonomousDbProtectionModeEnum `mandatory:"false" json:"protectionMode,omitempty"`
 }
 
 // GetName returns Name
@@ -95,6 +92,11 @@ func (m DistributedAutonomousDatabaseShardWithDedicatedInfra) GetTimeUpdated() *
 	return m.TimeUpdated
 }
 
+// GetMetadata returns Metadata
+func (m DistributedAutonomousDatabaseShardWithDedicatedInfra) GetMetadata() *DistributedAutonomousDbMetadata {
+	return m.Metadata
+}
+
 func (m DistributedAutonomousDatabaseShardWithDedicatedInfra) String() string {
 	return common.PointerString(m)
 }
@@ -108,6 +110,9 @@ func (m DistributedAutonomousDatabaseShardWithDedicatedInfra) ValidateEnumValue(
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetDistributedAutonomousDatabaseShardWithDedicatedInfraStatusEnumStringValues(), ",")))
 	}
 
+	if _, ok := GetMappingDistributedAutonomousDbProtectionModeEnum(string(m.ProtectionMode)); !ok && m.ProtectionMode != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProtectionMode: %s. Supported values are: %s.", m.ProtectionMode, strings.Join(GetDistributedAutonomousDbProtectionModeEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
@@ -121,7 +126,7 @@ func (m DistributedAutonomousDatabaseShardWithDedicatedInfra) MarshalJSON() (buf
 		DiscriminatorParam string `json:"source"`
 		MarshalTypeDistributedAutonomousDatabaseShardWithDedicatedInfra
 	}{
-		"ADB_D",
+		"ADBD_EXISTING_CLUSTER",
 		(MarshalTypeDistributedAutonomousDatabaseShardWithDedicatedInfra)(m),
 	}
 

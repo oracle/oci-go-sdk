@@ -21,7 +21,7 @@ type ChangeDistributedDatabaseCompartmentRequest struct {
 	// Request to move the Globally distributed database to a different compartment.
 	ChangeDistributedDatabaseCompartmentDetails `contributesTo:"body"`
 
-	// Globally distributed database identifier
+	// Globally distributed database identifier.
 	DistributedDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedDatabaseId"`
 
 	// The client request ID for tracing.
