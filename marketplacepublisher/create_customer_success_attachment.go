@@ -44,6 +44,9 @@ type CreateCustomerSuccessAttachment struct {
 
 	// List of product codes for success story
 	ProductCodes []string `mandatory:"false" json:"productCodes"`
+
+	// The specified attachment type is Internal or External.
+	SourceType ListingRevisionAttachmentSourceTypeEnum `mandatory:"false" json:"sourceType,omitempty"`
 }
 
 // GetListingRevisionId returns ListingRevisionId
@@ -81,6 +84,9 @@ func (m CreateCustomerSuccessAttachment) String() string {
 func (m CreateCustomerSuccessAttachment) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
+	if _, ok := GetMappingListingRevisionAttachmentSourceTypeEnum(string(m.SourceType)); !ok && m.SourceType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SourceType: %s. Supported values are: %s.", m.SourceType, strings.Join(GetListingRevisionAttachmentSourceTypeEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}

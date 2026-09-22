@@ -41,6 +41,9 @@ type UpdateSupportedServiceAttachment struct {
 
 	// Type of service
 	Type SupportedServiceAttachmentTypeEnum `mandatory:"true" json:"type"`
+
+	// The specified attachment type is Internal or External.
+	SourceType ListingRevisionAttachmentSourceTypeEnum `mandatory:"false" json:"sourceType,omitempty"`
 }
 
 // GetDisplayName returns DisplayName
@@ -75,6 +78,9 @@ func (m UpdateSupportedServiceAttachment) ValidateEnumValue() (bool, error) {
 
 	if _, ok := GetMappingSupportedServiceAttachmentTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetSupportedServiceAttachmentTypeEnumStringValues(), ",")))
+	}
+	if _, ok := GetMappingListingRevisionAttachmentSourceTypeEnum(string(m.SourceType)); !ok && m.SourceType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SourceType: %s. Supported values are: %s.", m.SourceType, strings.Join(GetListingRevisionAttachmentSourceTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))

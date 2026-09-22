@@ -18,17 +18,11 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/ValidateDistributedAutonomousDatabaseNetwork.go.html to see an example of how to use ValidateDistributedAutonomousDatabaseNetworkRequest.
 type ValidateDistributedAutonomousDatabaseNetworkRequest struct {
 
-	// Globally distributed autonomous database identifier
+	// Globally distributed autonomous database identifier.
 	DistributedAutonomousDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedAutonomousDatabaseId"`
 
 	// Determines the surrogates check. Default is true.
 	IsSurrogate *bool `mandatory:"false" contributesTo:"query" name:"isSurrogate"`
-
-	// Specify the name of shard or catalog.
-	ResourceName *string `mandatory:"false" contributesTo:"query" name:"resourceName"`
-
-	// The shardGroup name example Shardgroupa, Shardgroupb.
-	ShardGroup *string `mandatory:"false" contributesTo:"query" name:"shardGroup"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call
 	// for a resource, set the `if-match` parameter to the value of the

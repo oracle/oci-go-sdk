@@ -30,7 +30,7 @@ type ListWorkRequestLogsRequest struct {
 	// The maximum number of items to return.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
 
-	// The field to sort by. Only one sort order may be provided. Default order for timeAccepted is descending.
+	// The field to sort by. Only one sort order may be provided. Default order for timestamp is descending.
 	SortBy ListWorkRequestLogsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
 	// The sort order to use, either 'ASC' or 'DESC'.
@@ -117,15 +117,15 @@ type ListWorkRequestLogsSortByEnum string
 
 // Set of constants representing the allowable values for ListWorkRequestLogsSortByEnum
 const (
-	ListWorkRequestLogsSortByTimeaccepted ListWorkRequestLogsSortByEnum = "timeAccepted"
+	ListWorkRequestLogsSortByTimestamp ListWorkRequestLogsSortByEnum = "timestamp"
 )
 
 var mappingListWorkRequestLogsSortByEnum = map[string]ListWorkRequestLogsSortByEnum{
-	"timeAccepted": ListWorkRequestLogsSortByTimeaccepted,
+	"timestamp": ListWorkRequestLogsSortByTimestamp,
 }
 
 var mappingListWorkRequestLogsSortByEnumLowerCase = map[string]ListWorkRequestLogsSortByEnum{
-	"timeaccepted": ListWorkRequestLogsSortByTimeaccepted,
+	"timestamp": ListWorkRequestLogsSortByTimestamp,
 }
 
 // GetListWorkRequestLogsSortByEnumValues Enumerates the set of values for ListWorkRequestLogsSortByEnum
@@ -140,7 +140,7 @@ func GetListWorkRequestLogsSortByEnumValues() []ListWorkRequestLogsSortByEnum {
 // GetListWorkRequestLogsSortByEnumStringValues Enumerates the set of values in String for ListWorkRequestLogsSortByEnum
 func GetListWorkRequestLogsSortByEnumStringValues() []string {
 	return []string{
-		"timeAccepted",
+		"timestamp",
 	}
 }
 

@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/UpdateDistributedAutonomousDatabase.go.html to see an example of how to use UpdateDistributedAutonomousDatabaseRequest.
 type UpdateDistributedAutonomousDatabaseRequest struct {
 
-	// Globally distributed autonomous database identifier
+	// Globally distributed autonomous database identifier.
 	DistributedAutonomousDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedAutonomousDatabaseId"`
 
 	// The configuration of the Globally distributed autonomous database to be updated.

@@ -33,6 +33,9 @@ type UpdateRelatedDocumentAttachmentDetails struct {
 	// Example: `{"foo-namespace": {"bar-key": "value"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 
+	// The document URL of the listing revision attachment.
+	SourceUrl *string `mandatory:"false" json:"sourceUrl"`
+
 	// The document category of the listing revision attachment.
 	DocumentCategory RelatedDocumentAttachmentDocumentCategoryEnum `mandatory:"false" json:"documentCategory,omitempty"`
 }

@@ -16,7 +16,7 @@ import (
 	"strings"
 )
 
-// PatchDistributedAutonomousDatabaseDetails Provide PatchInstuction(s) in items array. All instructions in items have to be of same type.
+// PatchDistributedAutonomousDatabaseDetails Provide PatchInstruction(s) in items array. All instructions in items have to be of same type.
 // All instructions in items have to either PatchInsertInstruction type, PatchRemoveInstruction or
 // PatchMergeInstruction. Multiple instructions of different types is not allowed to be performed in
 // single operation.

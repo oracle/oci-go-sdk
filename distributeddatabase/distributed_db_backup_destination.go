@@ -24,15 +24,6 @@ type DistributedDbBackupDestination struct {
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the backup destination.
 	Id *string `mandatory:"false" json:"id"`
 
-	// For a RECOVERY_APPLIANCE backup destination, the Virtual Private Catalog (VPC) user that is used to access the Recovery Appliance.
-	VpcUser *string `mandatory:"false" json:"vpcUser"`
-
-	// For a RECOVERY_APPLIANCE backup destination, the password for the VPC user that is used to access the Recovery Appliance.
-	VpcPassword *string `mandatory:"false" json:"vpcPassword"`
-
-	// Indicates whether Zero Data Loss functionality is enabled for a Recovery Appliance backup destination in an Autonomous Container Database. When enabled, the database automatically ships all redo logs in real-time to the Recovery Appliance for a Zero Data Loss recovery setup (sub-second RPO). Defaults to `TRUE` if no value is given.
-	IsZeroDataLossEnabled *bool `mandatory:"false" json:"isZeroDataLossEnabled"`
-
 	// Proxy URL to connect to object store.
 	InternetProxy *string `mandatory:"false" json:"internetProxy"`
 
@@ -72,27 +63,24 @@ type DistributedDbBackupDestinationTypeEnum string
 
 // Set of constants representing the allowable values for DistributedDbBackupDestinationTypeEnum
 const (
-	DistributedDbBackupDestinationTypeNfs               DistributedDbBackupDestinationTypeEnum = "NFS"
-	DistributedDbBackupDestinationTypeRecoveryAppliance DistributedDbBackupDestinationTypeEnum = "RECOVERY_APPLIANCE"
-	DistributedDbBackupDestinationTypeObjectStore       DistributedDbBackupDestinationTypeEnum = "OBJECT_STORE"
-	DistributedDbBackupDestinationTypeLocal             DistributedDbBackupDestinationTypeEnum = "LOCAL"
-	DistributedDbBackupDestinationTypeDbrs              DistributedDbBackupDestinationTypeEnum = "DBRS"
+	DistributedDbBackupDestinationTypeNfs         DistributedDbBackupDestinationTypeEnum = "NFS"
+	DistributedDbBackupDestinationTypeObjectStore DistributedDbBackupDestinationTypeEnum = "OBJECT_STORE"
+	DistributedDbBackupDestinationTypeLocal       DistributedDbBackupDestinationTypeEnum = "LOCAL"
+	DistributedDbBackupDestinationTypeDbrs        DistributedDbBackupDestinationTypeEnum = "DBRS"
 )
 
 var mappingDistributedDbBackupDestinationTypeEnum = map[string]DistributedDbBackupDestinationTypeEnum{
-	"NFS":                DistributedDbBackupDestinationTypeNfs,
-	"RECOVERY_APPLIANCE": DistributedDbBackupDestinationTypeRecoveryAppliance,
-	"OBJECT_STORE":       DistributedDbBackupDestinationTypeObjectStore,
-	"LOCAL":              DistributedDbBackupDestinationTypeLocal,
-	"DBRS":               DistributedDbBackupDestinationTypeDbrs,
+	"NFS":          DistributedDbBackupDestinationTypeNfs,
+	"OBJECT_STORE": DistributedDbBackupDestinationTypeObjectStore,
+	"LOCAL":        DistributedDbBackupDestinationTypeLocal,
+	"DBRS":         DistributedDbBackupDestinationTypeDbrs,
 }
 
 var mappingDistributedDbBackupDestinationTypeEnumLowerCase = map[string]DistributedDbBackupDestinationTypeEnum{
-	"nfs":                DistributedDbBackupDestinationTypeNfs,
-	"recovery_appliance": DistributedDbBackupDestinationTypeRecoveryAppliance,
-	"object_store":       DistributedDbBackupDestinationTypeObjectStore,
-	"local":              DistributedDbBackupDestinationTypeLocal,
-	"dbrs":               DistributedDbBackupDestinationTypeDbrs,
+	"nfs":          DistributedDbBackupDestinationTypeNfs,
+	"object_store": DistributedDbBackupDestinationTypeObjectStore,
+	"local":        DistributedDbBackupDestinationTypeLocal,
+	"dbrs":         DistributedDbBackupDestinationTypeDbrs,
 }
 
 // GetDistributedDbBackupDestinationTypeEnumValues Enumerates the set of values for DistributedDbBackupDestinationTypeEnum
@@ -108,7 +96,6 @@ func GetDistributedDbBackupDestinationTypeEnumValues() []DistributedDbBackupDest
 func GetDistributedDbBackupDestinationTypeEnumStringValues() []string {
 	return []string{
 		"NFS",
-		"RECOVERY_APPLIANCE",
 		"OBJECT_STORE",
 		"LOCAL",
 		"DBRS",

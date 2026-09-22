@@ -10,7 +10,6 @@
 package distributeddatabase
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/oracle/oci-go-sdk/v65/common"
 	"strings"
@@ -28,10 +27,10 @@ type DistributedDatabase struct {
 	// The display name of the Globally distributed database.
 	DisplayName *string `mandatory:"true" json:"displayName"`
 
-	// The time the Globally distributed database was created. An RFC3339 formatted datetime string
+	// The time the Globally distributed database was created. An RFC3339 formatted datetime string.
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
-	// The time the Globally distributed database was last updated. An RFC3339 formatted datetime string
+	// The time the Globally distributed database was last updated. An RFC3339 formatted datetime string.
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
 
 	// Oracle Database version for the shards and catalog used in Globally distributed database.
@@ -39,6 +38,12 @@ type DistributedDatabase struct {
 
 	// Lifecycle states for the Globally distributed database.
 	LifecycleState DistributedDatabaseLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
+
+	// Sharding methods for the Globally distributed database.
+	ShardingMethod DistributedDatabaseShardingMethodEnum `mandatory:"true" json:"shardingMethod"`
+
+	// The distributed database deployment type.
+	DbDeploymentType DistributedDatabaseDbDeploymentTypeEnum `mandatory:"true" json:"dbDeploymentType"`
 
 	// The lifecycleDetails for the Globally distributed database.
 	LifecycleDetails *string `mandatory:"true" json:"lifecycleDetails"`
@@ -49,9 +54,6 @@ type DistributedDatabase struct {
 
 	// The collection of OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the private endpoint associated with Globally distributed autonomous database.
 	PrivateEndpointIds []string `mandatory:"true" json:"privateEndpointIds"`
-
-	// Sharding Methods for the Globally distributed database.
-	ShardingMethod DistributedDatabaseShardingMethodEnum `mandatory:"true" json:"shardingMethod"`
 
 	// The character set for the database.
 	CharacterSet *string `mandatory:"true" json:"characterSet"`
@@ -68,47 +70,63 @@ type DistributedDatabase struct {
 	// Ons remote port number.
 	OnsPortRemote *int `mandatory:"true" json:"onsPortRemote"`
 
-	// The distributed database deployment type.
-	DbDeploymentType DistributedDatabaseDbDeploymentTypeEnum `mandatory:"true" json:"dbDeploymentType"`
+	// The Replication method for Globally distributed database. Use RAFT for Raft based replication.
+	// With RAFT replication, shards cannot have peers details set on them. In case shards need to
+	// have peers, please do not set RAFT replicationMethod. For all non RAFT replication cases (with or
+	// without peers), please set replicationMethod as DG or do not set any value for replicationMethod.
+	ReplicationMethod DistributedDatabaseReplicationMethodEnum `mandatory:"false" json:"replicationMethod,omitempty"`
 
 	ConnectionStrings *DistributedDbConnectionString `mandatory:"false" json:"connectionStrings"`
 
-	LatestGsmImageDetails *DistributedDbGsmImage `mandatory:"false" json:"latestGsmImageDetails"`
+	// The collection of OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) for the notification topics associated with the globally distributed database.
+	NotificationTopicIds []string `mandatory:"false" json:"notificationTopicIds"`
 
-	// The default number of unique chunks in a shardspace. The value of chunks must be
-	// greater than 2 times the size of the largest shardgroup in any shardspace.
-	Chunks *int `mandatory:"false" json:"chunks"`
+	LatestGsmImageDetails *DistributedDbGsmImage `mandatory:"false" json:"latestGsmImageDetails"`
 
 	// The TLS listener port number for Globally distributed database.
 	ListenerPortTls *int `mandatory:"false" json:"listenerPortTls"`
 
-	// The TCP Single Client Access Name (SCAN) port for Globally distributed database clusters.
+	// The TCP SCAN listener port for database clusters with source type XS_NEW_VAULT_AND_CLUSTER or XS_NEW_CLUSTER.
 	ScanListenerPort *int `mandatory:"false" json:"scanListenerPort"`
 
-	// The Replication method for Globally distributed database. Use RAFT for Raft replication, and DG for
-	// DataGuard. If replicationMethod is not provided, it defaults to DG.
-	ReplicationMethod DistributedDatabaseReplicationMethodEnum `mandatory:"false" json:"replicationMethod,omitempty"`
+	// Count of chunks associated with system raft clusters or system data guard databases.
+	SystemChunkCount *int `mandatory:"false" json:"systemChunkCount"`
 
-	// The Replication factor for RAFT replication based Globally distributed database. Currently supported values are 3, 5 and 7.
-	ReplicationFactor *int `mandatory:"false" json:"replicationFactor"`
+	// Number of replication units associated with system raft clusters.
+	SystemRaftReplicationUnitCount *int `mandatory:"false" json:"systemRaftReplicationUnitCount"`
 
-	// The replication unit count for RAFT based distributed database. For RAFT replication based
-	// Globally distributed database, the value should be at least twice the number of shards.
-	ReplicationUnit *int `mandatory:"false" json:"replicationUnit"`
+	// Collection of composite raft shards.
+	CompositeRaftShardSpaces []CompositeRaftShardSpace `mandatory:"false" json:"compositeRaftShardSpaces"`
 
-	// Collection of shards associated with the Globally distributed database.
-	ShardDetails []DistributedDatabaseShard `mandatory:"false" json:"shardDetails"`
+	// Collection of composite data guard shard spaces.
+	CompositeDataGuardShardSpaces []CompositeDataGuardShardSpace `mandatory:"false" json:"compositeDataGuardShardSpaces"`
 
-	// Collection of catalogs associated with the Globally distributed database.
+	// Collection of system raft clusters.
+	SystemRaftClusters []SystemRaftCluster `mandatory:"false" json:"systemRaftClusters"`
+
+	SystemDataGuardDatabases *SystemDataGuardDatabase `mandatory:"false" json:"systemDataGuardDatabases"`
+
+	// Collection of user defined shard spaces.
+	UserShardSpaces []UserShardSpace `mandatory:"false" json:"userShardSpaces"`
+
+	// Catalog details associated with the distributed database.
 	CatalogDetails []DistributedDatabaseCatalog `mandatory:"false" json:"catalogDetails"`
 
-	// Collection of catalogs associated with the Globally distributed database.
+	// Global Service Manager (GSM) instances associated with the distributed database.
 	GsmDetails []DistributedDatabaseGsm `mandatory:"false" json:"gsmDetails"`
+
+	// Global Database Services Control(GDS CTL) instances associated with the distributed database.
+	GdsControlNodeDetails []DistributedDatabaseGdsControlNode `mandatory:"false" json:"gdsControlNodeDetails"`
 
 	DbBackupConfig *DistributedDbBackupConfig `mandatory:"false" json:"dbBackupConfig"`
 
+	AutoResourceManagementConfig *AutoResourceManagementConfigurationDetails `mandatory:"false" json:"autoResourceManagementConfig"`
+
 	// The SSH public key for Global service manager instances.
 	GsmSshPublicKey *string `mandatory:"false" json:"gsmSshPublicKey"`
+
+	// The list of network security group (NSG) details associated with the distributed database.
+	VcnNsgIds []VcnNsgIdsDetails `mandatory:"false" json:"vcnNsgIds"`
 
 	Metadata *DistributedDbMetadata `mandatory:"false" json:"metadata"`
 
@@ -151,141 +169,6 @@ func (m DistributedDatabase) ValidateEnumValue() (bool, error) {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
 	return false, nil
-}
-
-// UnmarshalJSON unmarshals from json
-func (m *DistributedDatabase) UnmarshalJSON(data []byte) (e error) {
-	model := struct {
-		ConnectionStrings     *DistributedDbConnectionString           `json:"connectionStrings"`
-		LatestGsmImageDetails *DistributedDbGsmImage                   `json:"latestGsmImageDetails"`
-		Chunks                *int                                     `json:"chunks"`
-		ListenerPortTls       *int                                     `json:"listenerPortTls"`
-		ScanListenerPort      *int                                     `json:"scanListenerPort"`
-		ReplicationMethod     DistributedDatabaseReplicationMethodEnum `json:"replicationMethod"`
-		ReplicationFactor     *int                                     `json:"replicationFactor"`
-		ReplicationUnit       *int                                     `json:"replicationUnit"`
-		ShardDetails          []distributeddatabaseshard               `json:"shardDetails"`
-		CatalogDetails        []distributeddatabasecatalog             `json:"catalogDetails"`
-		GsmDetails            []DistributedDatabaseGsm                 `json:"gsmDetails"`
-		DbBackupConfig        *DistributedDbBackupConfig               `json:"dbBackupConfig"`
-		GsmSshPublicKey       *string                                  `json:"gsmSshPublicKey"`
-		Metadata              *DistributedDbMetadata                   `json:"metadata"`
-		FreeformTags          map[string]string                        `json:"freeformTags"`
-		DefinedTags           map[string]map[string]interface{}        `json:"definedTags"`
-		SystemTags            map[string]map[string]interface{}        `json:"systemTags"`
-		Id                    *string                                  `json:"id"`
-		CompartmentId         *string                                  `json:"compartmentId"`
-		DisplayName           *string                                  `json:"displayName"`
-		TimeCreated           *common.SDKTime                          `json:"timeCreated"`
-		TimeUpdated           *common.SDKTime                          `json:"timeUpdated"`
-		DatabaseVersion       *string                                  `json:"databaseVersion"`
-		LifecycleState        DistributedDatabaseLifecycleStateEnum    `json:"lifecycleState"`
-		LifecycleDetails      *string                                  `json:"lifecycleDetails"`
-		Prefix                *string                                  `json:"prefix"`
-		PrivateEndpointIds    []string                                 `json:"privateEndpointIds"`
-		ShardingMethod        DistributedDatabaseShardingMethodEnum    `json:"shardingMethod"`
-		CharacterSet          *string                                  `json:"characterSet"`
-		NcharacterSet         *string                                  `json:"ncharacterSet"`
-		ListenerPort          *int                                     `json:"listenerPort"`
-		OnsPortLocal          *int                                     `json:"onsPortLocal"`
-		OnsPortRemote         *int                                     `json:"onsPortRemote"`
-		DbDeploymentType      DistributedDatabaseDbDeploymentTypeEnum  `json:"dbDeploymentType"`
-	}{}
-
-	e = json.Unmarshal(data, &model)
-	if e != nil {
-		return
-	}
-	var nn interface{}
-	m.ConnectionStrings = model.ConnectionStrings
-
-	m.LatestGsmImageDetails = model.LatestGsmImageDetails
-
-	m.Chunks = model.Chunks
-
-	m.ListenerPortTls = model.ListenerPortTls
-
-	m.ScanListenerPort = model.ScanListenerPort
-
-	m.ReplicationMethod = model.ReplicationMethod
-
-	m.ReplicationFactor = model.ReplicationFactor
-
-	m.ReplicationUnit = model.ReplicationUnit
-
-	m.ShardDetails = make([]DistributedDatabaseShard, len(model.ShardDetails))
-	for i, n := range model.ShardDetails {
-		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)
-		if e != nil {
-			return e
-		}
-		if nn != nil {
-			m.ShardDetails[i] = nn.(DistributedDatabaseShard)
-		} else {
-			m.ShardDetails[i] = nil
-		}
-	}
-	m.CatalogDetails = make([]DistributedDatabaseCatalog, len(model.CatalogDetails))
-	for i, n := range model.CatalogDetails {
-		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)
-		if e != nil {
-			return e
-		}
-		if nn != nil {
-			m.CatalogDetails[i] = nn.(DistributedDatabaseCatalog)
-		} else {
-			m.CatalogDetails[i] = nil
-		}
-	}
-	m.GsmDetails = make([]DistributedDatabaseGsm, len(model.GsmDetails))
-	copy(m.GsmDetails, model.GsmDetails)
-	m.DbBackupConfig = model.DbBackupConfig
-
-	m.GsmSshPublicKey = model.GsmSshPublicKey
-
-	m.Metadata = model.Metadata
-
-	m.FreeformTags = model.FreeformTags
-
-	m.DefinedTags = model.DefinedTags
-
-	m.SystemTags = model.SystemTags
-
-	m.Id = model.Id
-
-	m.CompartmentId = model.CompartmentId
-
-	m.DisplayName = model.DisplayName
-
-	m.TimeCreated = model.TimeCreated
-
-	m.TimeUpdated = model.TimeUpdated
-
-	m.DatabaseVersion = model.DatabaseVersion
-
-	m.LifecycleState = model.LifecycleState
-
-	m.LifecycleDetails = model.LifecycleDetails
-
-	m.Prefix = model.Prefix
-
-	m.PrivateEndpointIds = make([]string, len(model.PrivateEndpointIds))
-	copy(m.PrivateEndpointIds, model.PrivateEndpointIds)
-	m.ShardingMethod = model.ShardingMethod
-
-	m.CharacterSet = model.CharacterSet
-
-	m.NcharacterSet = model.NcharacterSet
-
-	m.ListenerPort = model.ListenerPort
-
-	m.OnsPortLocal = model.OnsPortLocal
-
-	m.OnsPortRemote = model.OnsPortRemote
-
-	m.DbDeploymentType = model.DbDeploymentType
-
-	return
 }
 
 // DistributedDatabaseLifecycleStateEnum Enum with underlying type: string
@@ -359,18 +242,21 @@ type DistributedDatabaseShardingMethodEnum string
 
 // Set of constants representing the allowable values for DistributedDatabaseShardingMethodEnum
 const (
-	DistributedDatabaseShardingMethodUser   DistributedDatabaseShardingMethodEnum = "USER"
-	DistributedDatabaseShardingMethodSystem DistributedDatabaseShardingMethodEnum = "SYSTEM"
+	DistributedDatabaseShardingMethodUser      DistributedDatabaseShardingMethodEnum = "USER"
+	DistributedDatabaseShardingMethodSystem    DistributedDatabaseShardingMethodEnum = "SYSTEM"
+	DistributedDatabaseShardingMethodComposite DistributedDatabaseShardingMethodEnum = "COMPOSITE"
 )
 
 var mappingDistributedDatabaseShardingMethodEnum = map[string]DistributedDatabaseShardingMethodEnum{
-	"USER":   DistributedDatabaseShardingMethodUser,
-	"SYSTEM": DistributedDatabaseShardingMethodSystem,
+	"USER":      DistributedDatabaseShardingMethodUser,
+	"SYSTEM":    DistributedDatabaseShardingMethodSystem,
+	"COMPOSITE": DistributedDatabaseShardingMethodComposite,
 }
 
 var mappingDistributedDatabaseShardingMethodEnumLowerCase = map[string]DistributedDatabaseShardingMethodEnum{
-	"user":   DistributedDatabaseShardingMethodUser,
-	"system": DistributedDatabaseShardingMethodSystem,
+	"user":      DistributedDatabaseShardingMethodUser,
+	"system":    DistributedDatabaseShardingMethodSystem,
+	"composite": DistributedDatabaseShardingMethodComposite,
 }
 
 // GetDistributedDatabaseShardingMethodEnumValues Enumerates the set of values for DistributedDatabaseShardingMethodEnum
@@ -387,6 +273,7 @@ func GetDistributedDatabaseShardingMethodEnumStringValues() []string {
 	return []string{
 		"USER",
 		"SYSTEM",
+		"COMPOSITE",
 	}
 }
 
@@ -443,15 +330,15 @@ type DistributedDatabaseDbDeploymentTypeEnum string
 
 // Set of constants representing the allowable values for DistributedDatabaseDbDeploymentTypeEnum
 const (
-	DistributedDatabaseDbDeploymentTypeExadbXs DistributedDatabaseDbDeploymentTypeEnum = "EXADB_XS"
+	DistributedDatabaseDbDeploymentTypeExadb DistributedDatabaseDbDeploymentTypeEnum = "EXADB"
 )
 
 var mappingDistributedDatabaseDbDeploymentTypeEnum = map[string]DistributedDatabaseDbDeploymentTypeEnum{
-	"EXADB_XS": DistributedDatabaseDbDeploymentTypeExadbXs,
+	"EXADB": DistributedDatabaseDbDeploymentTypeExadb,
 }
 
 var mappingDistributedDatabaseDbDeploymentTypeEnumLowerCase = map[string]DistributedDatabaseDbDeploymentTypeEnum{
-	"exadb_xs": DistributedDatabaseDbDeploymentTypeExadbXs,
+	"exadb": DistributedDatabaseDbDeploymentTypeExadb,
 }
 
 // GetDistributedDatabaseDbDeploymentTypeEnumValues Enumerates the set of values for DistributedDatabaseDbDeploymentTypeEnum
@@ -466,7 +353,7 @@ func GetDistributedDatabaseDbDeploymentTypeEnumValues() []DistributedDatabaseDbD
 // GetDistributedDatabaseDbDeploymentTypeEnumStringValues Enumerates the set of values in String for DistributedDatabaseDbDeploymentTypeEnum
 func GetDistributedDatabaseDbDeploymentTypeEnumStringValues() []string {
 	return []string{
-		"EXADB_XS",
+		"EXADB",
 	}
 }
 

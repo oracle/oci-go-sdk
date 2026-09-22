@@ -21,7 +21,7 @@ type ConfigureDistributedDatabaseGsmsRequest struct {
 	// Details to configure the new GSM instances for the distributed database.
 	ConfigureDistributedDatabaseGsmsDetails `contributesTo:"body"`
 
-	// Globally distributed database identifier
+	// Globally distributed database identifier.
 	DistributedDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedDatabaseId"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

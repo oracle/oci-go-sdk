@@ -48,14 +48,8 @@ type DistributedDatabasePrivateEndpoint struct {
 	// IP address of the Private Endpoint.
 	PrivateIp *string `mandatory:"false" json:"privateIp"`
 
-	// The OCIDs of the network security groups that the private endpoint belongs to.
-	NsgIds []string `mandatory:"false" json:"nsgIds"`
-
-	// This field is deprecated. Support for this field will be removed after Mon, 1 Mar 2027 00:00:00 GMT.
-	GloballyDistributedDatabases []DistributedDatabaseAssociatedWithPrivateEndpoint `mandatory:"false" json:"globallyDistributedDatabases"`
-
-	// This field is deprecated. Support for this field will be removed after Mon, 1 Mar 2027 00:00:00 GMT.
-	GloballyDistributedAutonomousDatabases []DistributedAutonomousDatabaseAssociatedWithPrivateEndpoint `mandatory:"false" json:"globallyDistributedAutonomousDatabases"`
+	// The list of network security group (NSG) details associated with the private endpoint.
+	VcnNsgIds []VcnNsgIdsDetails `mandatory:"false" json:"vcnNsgIds"`
 
 	// Detailed message for the lifecycle state.
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`

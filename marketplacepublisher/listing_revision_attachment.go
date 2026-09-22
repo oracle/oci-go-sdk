@@ -43,6 +43,9 @@ type ListingRevisionAttachment interface {
 	// Description of the listing revision attachment.
 	GetDescription() *string
 
+	// Possible values for the publisher listing revision attachments. The source type informs whether the type of attachment for the listing revision is external or internal.
+	GetSourceType() ListingRevisionAttachmentSourceTypeEnum
+
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
 	GetFreeformTags() map[string]string
@@ -59,6 +62,7 @@ type ListingRevisionAttachment interface {
 type listingrevisionattachment struct {
 	JsonData          []byte
 	Description       *string                                     `mandatory:"false" json:"description"`
+	SourceType        ListingRevisionAttachmentSourceTypeEnum     `mandatory:"false" json:"sourceType,omitempty"`
 	FreeformTags      map[string]string                           `mandatory:"false" json:"freeformTags"`
 	DefinedTags       map[string]map[string]interface{}           `mandatory:"false" json:"definedTags"`
 	SystemTags        map[string]map[string]interface{}           `mandatory:"false" json:"systemTags"`
@@ -91,6 +95,7 @@ func (m *listingrevisionattachment) UnmarshalJSON(data []byte) error {
 	m.TimeCreated = s.Model.TimeCreated
 	m.TimeUpdated = s.Model.TimeUpdated
 	m.Description = s.Model.Description
+	m.SourceType = s.Model.SourceType
 	m.FreeformTags = s.Model.FreeformTags
 	m.DefinedTags = s.Model.DefinedTags
 	m.SystemTags = s.Model.SystemTags
@@ -141,6 +146,11 @@ func (m *listingrevisionattachment) UnmarshalPolymorphicJSON(data []byte) (inter
 // GetDescription returns Description
 func (m listingrevisionattachment) GetDescription() *string {
 	return m.Description
+}
+
+// GetSourceType returns SourceType
+func (m listingrevisionattachment) GetSourceType() ListingRevisionAttachmentSourceTypeEnum {
+	return m.SourceType
 }
 
 // GetFreeformTags returns FreeformTags
@@ -206,10 +216,55 @@ func (m listingrevisionattachment) ValidateEnumValue() (bool, error) {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetListingRevisionAttachmentLifecycleStateEnumStringValues(), ",")))
 	}
 
+	if _, ok := GetMappingListingRevisionAttachmentSourceTypeEnum(string(m.SourceType)); !ok && m.SourceType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SourceType: %s. Supported values are: %s.", m.SourceType, strings.Join(GetListingRevisionAttachmentSourceTypeEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
 	return false, nil
+}
+
+// ListingRevisionAttachmentSourceTypeEnum Enum with underlying type: string
+type ListingRevisionAttachmentSourceTypeEnum string
+
+// Set of constants representing the allowable values for ListingRevisionAttachmentSourceTypeEnum
+const (
+	ListingRevisionAttachmentSourceTypeExternal ListingRevisionAttachmentSourceTypeEnum = "EXTERNAL"
+	ListingRevisionAttachmentSourceTypeInternal ListingRevisionAttachmentSourceTypeEnum = "INTERNAL"
+)
+
+var mappingListingRevisionAttachmentSourceTypeEnum = map[string]ListingRevisionAttachmentSourceTypeEnum{
+	"EXTERNAL": ListingRevisionAttachmentSourceTypeExternal,
+	"INTERNAL": ListingRevisionAttachmentSourceTypeInternal,
+}
+
+var mappingListingRevisionAttachmentSourceTypeEnumLowerCase = map[string]ListingRevisionAttachmentSourceTypeEnum{
+	"external": ListingRevisionAttachmentSourceTypeExternal,
+	"internal": ListingRevisionAttachmentSourceTypeInternal,
+}
+
+// GetListingRevisionAttachmentSourceTypeEnumValues Enumerates the set of values for ListingRevisionAttachmentSourceTypeEnum
+func GetListingRevisionAttachmentSourceTypeEnumValues() []ListingRevisionAttachmentSourceTypeEnum {
+	values := make([]ListingRevisionAttachmentSourceTypeEnum, 0)
+	for _, v := range mappingListingRevisionAttachmentSourceTypeEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetListingRevisionAttachmentSourceTypeEnumStringValues Enumerates the set of values in String for ListingRevisionAttachmentSourceTypeEnum
+func GetListingRevisionAttachmentSourceTypeEnumStringValues() []string {
+	return []string{
+		"EXTERNAL",
+		"INTERNAL",
+	}
+}
+
+// GetMappingListingRevisionAttachmentSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListingRevisionAttachmentSourceTypeEnum(val string) (ListingRevisionAttachmentSourceTypeEnum, bool) {
+	enum, ok := mappingListingRevisionAttachmentSourceTypeEnumLowerCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListingRevisionAttachmentLifecycleStateEnum Enum with underlying type: string

@@ -117,6 +117,9 @@ type DisbursementReportRecord struct {
 	// Partner OCID
 	PartnerId *string `mandatory:"false" json:"partnerId"`
 
+	// The listing ocid of the listing
+	PublisherServiceListingId *string `mandatory:"false" json:"publisherServiceListingId"`
+
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`

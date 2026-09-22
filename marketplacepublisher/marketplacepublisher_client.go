@@ -717,7 +717,7 @@ func (client MarketplacePublisherClient) createArtifact(ctx context.Context, req
 // CreateListing Creates a new listing in your compartment.
 // You must specify your compartment ID in the request object.
 // You must also specify a *name* for the listing and cannot be updated later.
-// You must also specify a *packageType* for the listing. Allowed values are CONTAINER_IMAGE and HELM_CHART
+// You must also specify a *packageType* for the listing. Allowed values are CONTAINER_IMAGE, HELM_CHART, COMPUTE_IMAGE, TERRAFORM_STACK and SAAS
 // After you send your request, the new object's `lifecycleState` will be CREATING.
 // Before using the object, first make sure its `lifecycleState` has changed to ACTIVE.
 //
@@ -1034,6 +1034,69 @@ func (client MarketplacePublisherClient) createListingRevisionPackage(ctx contex
 	return response, err
 }
 
+// CreatePublisher Creates a new publisher
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/CreatePublisher.go.html to see an example of how to use CreatePublisher API.
+// A default retry strategy applies to this operation CreatePublisher()
+func (client MarketplacePublisherClient) CreatePublisher(ctx context.Context, request CreatePublisherRequest) (response CreatePublisherResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.createPublisher, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = CreatePublisherResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = CreatePublisherResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(CreatePublisherResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into CreatePublisherResponse")
+	}
+	return
+}
+
+// createPublisher implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) createPublisher(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/publishers", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreatePublisherResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "CreatePublisher")
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Publisher/CreatePublisher"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "CreatePublisher", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // CreateTerm Creates a new Term.
 //
 // # See also
@@ -1216,6 +1279,64 @@ func (client MarketplacePublisherClient) deleteArtifact(ctx context.Context, req
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Artifact/DeleteArtifact"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "DeleteArtifact", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// DeleteCustomerInstanceReportExport Deletes a generated Customer Instance Report export.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/DeleteCustomerInstanceReportExport.go.html to see an example of how to use DeleteCustomerInstanceReportExport API.
+// A default retry strategy applies to this operation DeleteCustomerInstanceReportExport()
+func (client MarketplacePublisherClient) DeleteCustomerInstanceReportExport(ctx context.Context, request DeleteCustomerInstanceReportExportRequest) (response DeleteCustomerInstanceReportExportResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.deleteCustomerInstanceReportExport, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = DeleteCustomerInstanceReportExportResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = DeleteCustomerInstanceReportExportResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(DeleteCustomerInstanceReportExportResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into DeleteCustomerInstanceReportExportResponse")
+	}
+	return
+}
+
+// deleteCustomerInstanceReportExport implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) deleteCustomerInstanceReportExport(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/customerInstanceReportExports/{customerInstanceReportExportId}", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteCustomerInstanceReportExportResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "DeleteCustomerInstanceReportExport")
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/CustomerInstanceReportExport/DeleteCustomerInstanceReportExport"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "DeleteCustomerInstanceReportExport", apiReferenceLink)
 		return response, err
 	}
 
@@ -1629,6 +1750,69 @@ func (client MarketplacePublisherClient) deleteTermVersion(ctx context.Context, 
 	return response, err
 }
 
+// GenerateCustomerInstanceReportExport Generates a new asynchronous Customer Instance Report export for the selected filters.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GenerateCustomerInstanceReportExport.go.html to see an example of how to use GenerateCustomerInstanceReportExport API.
+// A default retry strategy applies to this operation GenerateCustomerInstanceReportExport()
+func (client MarketplacePublisherClient) GenerateCustomerInstanceReportExport(ctx context.Context, request GenerateCustomerInstanceReportExportRequest) (response GenerateCustomerInstanceReportExportResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.generateCustomerInstanceReportExport, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GenerateCustomerInstanceReportExportResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GenerateCustomerInstanceReportExportResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GenerateCustomerInstanceReportExportResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GenerateCustomerInstanceReportExportResponse")
+	}
+	return
+}
+
+// generateCustomerInstanceReportExport implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) generateCustomerInstanceReportExport(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/customerInstanceReportExports/actions/generate", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GenerateCustomerInstanceReportExportResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GenerateCustomerInstanceReportExport")
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/CustomerInstanceReportExport/GenerateCustomerInstanceReportExport"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GenerateCustomerInstanceReportExport", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // GetArtifact Gets the specified artifact's information.
 //
 // # See also
@@ -1738,6 +1922,122 @@ func (client MarketplacePublisherClient) getCategory(ctx context.Context, reques
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/Category/GetCategory"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetCategory", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// GetCustomerInstanceReportExport Gets details for a specific Customer Instance Report export.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetCustomerInstanceReportExport.go.html to see an example of how to use GetCustomerInstanceReportExport API.
+// A default retry strategy applies to this operation GetCustomerInstanceReportExport()
+func (client MarketplacePublisherClient) GetCustomerInstanceReportExport(ctx context.Context, request GetCustomerInstanceReportExportRequest) (response GetCustomerInstanceReportExportResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getCustomerInstanceReportExport, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetCustomerInstanceReportExportResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetCustomerInstanceReportExportResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetCustomerInstanceReportExportResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetCustomerInstanceReportExportResponse")
+	}
+	return
+}
+
+// getCustomerInstanceReportExport implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) getCustomerInstanceReportExport(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/customerInstanceReportExports/{customerInstanceReportExportId}", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetCustomerInstanceReportExportResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetCustomerInstanceReportExport")
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/CustomerInstanceReportExport/GetCustomerInstanceReportExport"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetCustomerInstanceReportExport", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// GetCustomerInstanceReportExportContent Downloads the generated Customer Instance Report CSV for the specified export.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/GetCustomerInstanceReportExportContent.go.html to see an example of how to use GetCustomerInstanceReportExportContent API.
+// A default retry strategy applies to this operation GetCustomerInstanceReportExportContent()
+func (client MarketplacePublisherClient) GetCustomerInstanceReportExportContent(ctx context.Context, request GetCustomerInstanceReportExportContentRequest) (response GetCustomerInstanceReportExportContentResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getCustomerInstanceReportExportContent, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetCustomerInstanceReportExportContentResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetCustomerInstanceReportExportContentResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetCustomerInstanceReportExportContentResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetCustomerInstanceReportExportContentResponse")
+	}
+	return
+}
+
+// getCustomerInstanceReportExportContent implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) getCustomerInstanceReportExportContent(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/customerInstanceReportExports/{customerInstanceReportExportId}/content", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetCustomerInstanceReportExportContentResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "GetCustomerInstanceReportExportContent")
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/CustomerInstanceReportExport/GetCustomerInstanceReportExportContent"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "GetCustomerInstanceReportExportContent", apiReferenceLink)
 		return response, err
 	}
 
@@ -2898,6 +3198,64 @@ func (client MarketplacePublisherClient) listCategories(ctx context.Context, req
 	if err != nil {
 		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/CategoryCollection/ListCategories"
 		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListCategories", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ListCustomerInstanceReportExports Lists existing Customer Instance Report exports for the caller.
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/ListCustomerInstanceReportExports.go.html to see an example of how to use ListCustomerInstanceReportExports API.
+// A default retry strategy applies to this operation ListCustomerInstanceReportExports()
+func (client MarketplacePublisherClient) ListCustomerInstanceReportExports(ctx context.Context, request ListCustomerInstanceReportExportsRequest) (response ListCustomerInstanceReportExportsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listCustomerInstanceReportExports, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListCustomerInstanceReportExportsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListCustomerInstanceReportExportsResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListCustomerInstanceReportExportsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListCustomerInstanceReportExportsResponse")
+	}
+	return
+}
+
+// listCustomerInstanceReportExports implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) listCustomerInstanceReportExports(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/customerInstanceReportExports", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListCustomerInstanceReportExportsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "ListCustomerInstanceReportExports")
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/CustomerInstanceReportExportCollection/ListCustomerInstanceReportExports"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "ListCustomerInstanceReportExports", apiReferenceLink)
 		return response, err
 	}
 
@@ -4686,6 +5044,64 @@ func (client MarketplacePublisherClient) updateListingRevisionAttachmentContent(
 	}
 
 	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &listingrevisionattachment{})
+	return response, err
+}
+
+// UpdateListingRevisionBannerContent Updates the Listing Revision
+//
+// # See also
+//
+// Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplacepublisher/UpdateListingRevisionBannerContent.go.html to see an example of how to use UpdateListingRevisionBannerContent API.
+// A default retry strategy applies to this operation UpdateListingRevisionBannerContent()
+func (client MarketplacePublisherClient) UpdateListingRevisionBannerContent(ctx context.Context, request UpdateListingRevisionBannerContentRequest) (response UpdateListingRevisionBannerContentResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.DefaultRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.updateListingRevisionBannerContent, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = UpdateListingRevisionBannerContentResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = UpdateListingRevisionBannerContentResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(UpdateListingRevisionBannerContentResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into UpdateListingRevisionBannerContentResponse")
+	}
+	return
+}
+
+// updateListingRevisionBannerContent implements the OCIOperation interface (enables retrying operations)
+func (client MarketplacePublisherClient) updateListingRevisionBannerContent(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/listingRevisions/{listingRevisionId}/banner/content", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateListingRevisionBannerContentResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.CallWithServiceAndOperationName(ctx, &httpRequest, "marketplacePublisher", "UpdateListingRevisionBannerContent")
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/publisher/20241201/ListingRevision/UpdateListingRevisionBannerContent"
+		err = common.PostProcessServiceError(err, "MarketplacePublisher", "UpdateListingRevisionBannerContent", apiReferenceLink)
+		return response, err
+	}
+
+	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &listingrevision{})
 	return response, err
 }
 

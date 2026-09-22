@@ -15,8 +15,11 @@ import (
 	"strings"
 )
 
-// DistributedDbStorageVault The Storage Vault for Distributed Database Resource
+// DistributedDbStorageVault The Storage Vault for Distributed Database Resource.
 type DistributedDbStorageVault struct {
+
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment for Db Storage Vault.
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// Total storage capacity in GB for vault storage.
 	HighCapacityDatabaseStorage *int `mandatory:"true" json:"highCapacityDatabaseStorage"`
@@ -24,11 +27,20 @@ type DistributedDbStorageVault struct {
 	// The user-friendly name for the Exadata Database Storage Vault. The name does not need to be unique.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the Database Vault Storage.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the Exadata Database Storage Vault.
 	DbStorageVaultId *string `mandatory:"false" json:"dbStorageVaultId"`
 
 	// The size of additional Flash Cache in percentage of High Capacity database storage.
 	AdditionalFlashCacheInPercent *int `mandatory:"false" json:"additionalFlashCacheInPercent"`
+
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the subscription with which resource needs to be associated with.
+	SubscriptionId *string `mandatory:"false" json:"subscriptionId"`
+
+	// Indicates if autoscale feature is enabled for the Database Storage Vault. The default value is `FALSE`.
+	IsAutoscaleEnabled *bool `mandatory:"false" json:"isAutoscaleEnabled"`
+
+	// The maximum limit, in gigabytes, to which the Vault storage size can automatically scale when auto scaling is enabled for the Database Storage Vault.
+	AutoscaleLimitInGBs *int `mandatory:"false" json:"autoscaleLimitInGBs"`
 }
 
 func (m DistributedDbStorageVault) String() string {

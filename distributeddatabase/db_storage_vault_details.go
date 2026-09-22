@@ -18,11 +18,23 @@ import (
 // DbStorageVaultDetails Details of the request to create exascale db vault storage for shard or catalog of the distributed database.
 type DbStorageVaultDetails struct {
 
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment for Db Storage Vault.
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
+
 	// Total storage capacity in GB for vault storage.
 	HighCapacityDatabaseStorage *int `mandatory:"true" json:"highCapacityDatabaseStorage"`
 
 	// The size of additional Flash Cache in percentage of High Capacity database storage.
 	AdditionalFlashCacheInPercent *int `mandatory:"false" json:"additionalFlashCacheInPercent"`
+
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the subscription with which resource needs to be associated with.
+	SubscriptionId *string `mandatory:"false" json:"subscriptionId"`
+
+	// Indicates if autoscale feature is enabled for the Database Storage Vault. The default value is `FALSE`.
+	IsAutoscaleEnabled *bool `mandatory:"false" json:"isAutoscaleEnabled"`
+
+	// The maximum limit, in gigabytes, to which the Vault storage size can automatically scale when auto scaling is enabled for the Database Storage Vault.
+	AutoscaleLimitInGBs *int `mandatory:"false" json:"autoscaleLimitInGBs"`
 }
 
 func (m DbStorageVaultDetails) String() string {

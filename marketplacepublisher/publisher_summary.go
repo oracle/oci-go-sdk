@@ -71,6 +71,30 @@ type PublisherSummary struct {
 	// Publisher's LinkedIn URL
 	LinkedinUrl *string `mandatory:"false" json:"linkedinUrl"`
 
+	// Email address of the publisher.
+	Email *string `mandatory:"false" json:"email"`
+
+	// The business phone number of the publisher.
+	BusinessPhoneNumber *string `mandatory:"false" json:"businessPhoneNumber"`
+
+	// Count of employees in publisher's company
+	EmployeeCount *int64 `mandatory:"false" json:"employeeCount"`
+
+	// A description of the publisher solutions.
+	SolutionDescription *string `mandatory:"false" json:"solutionDescription"`
+
+	// OPN membership number of the publisher
+	OpnNumber *string `mandatory:"false" json:"opnNumber"`
+
+	// Country in which partner company resides
+	Country *string `mandatory:"false" json:"country"`
+
+	// City in which partner company resides
+	City *string `mandatory:"false" json:"city"`
+
+	// State in which partner company resides
+	State *string `mandatory:"false" json:"state"`
+
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`

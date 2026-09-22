@@ -46,7 +46,7 @@ type Publisher struct {
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
 
 	// publisher status.
-	PublisherStatus PublisherPublisherStatusEnum `mandatory:"true" json:"publisherStatus"`
+	PublisherStatus PublisherStatusEnum `mandatory:"true" json:"publisherStatus"`
 
 	// Unique legacy service identifier for the publisher.
 	LegacyId *string `mandatory:"false" json:"legacyId"`
@@ -74,6 +74,30 @@ type Publisher struct {
 	// Publisher's LinkedIn URL
 	LinkedinUrl *string `mandatory:"false" json:"linkedinUrl"`
 
+	// Email address of the publisher.
+	Email *string `mandatory:"false" json:"email"`
+
+	// The business phone number of the publisher.
+	BusinessPhoneNumber *string `mandatory:"false" json:"businessPhoneNumber"`
+
+	// Count of employees in publisher's company
+	EmployeeCount *int64 `mandatory:"false" json:"employeeCount"`
+
+	// A description of the publisher solutions.
+	SolutionDescription *string `mandatory:"false" json:"solutionDescription"`
+
+	// OPN membership number of the publisher
+	OpnNumber *string `mandatory:"false" json:"opnNumber"`
+
+	// Country in which partner company resides
+	Country *string `mandatory:"false" json:"country"`
+
+	// City in which partner company resides
+	City *string `mandatory:"false" json:"city"`
+
+	// State in which partner company resides
+	State *string `mandatory:"false" json:"state"`
+
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
@@ -89,9 +113,15 @@ type Publisher struct {
 	// The private email address of the publisher product team.
 	NotificationEmail *string `mandatory:"false" json:"notificationEmail"`
 
+	// Oracle Cloud Marketplace agreement status
+	EnrollmentStatus *string `mandatory:"false" json:"enrollmentStatus"`
+
 	OpnMembership *OpnMembership `mandatory:"false" json:"opnMembership"`
 
 	PrivateOfferAccountDetails *PrivateOfferAccountDetails `mandatory:"false" json:"privateOfferAccountDetails"`
+
+	// Whether automatic FX conversion is enabled for the publisher.
+	IsFxEnabled *bool `mandatory:"false" json:"isFxEnabled"`
 }
 
 func (m Publisher) String() string {
@@ -106,8 +136,8 @@ func (m Publisher) ValidateEnumValue() (bool, error) {
 	if _, ok := GetMappingPublisherPublisherTypeEnum(string(m.PublisherType)); !ok && m.PublisherType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PublisherType: %s. Supported values are: %s.", m.PublisherType, strings.Join(GetPublisherPublisherTypeEnumStringValues(), ",")))
 	}
-	if _, ok := GetMappingPublisherPublisherStatusEnum(string(m.PublisherStatus)); !ok && m.PublisherStatus != "" {
-		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PublisherStatus: %s. Supported values are: %s.", m.PublisherStatus, strings.Join(GetPublisherPublisherStatusEnumStringValues(), ",")))
+	if _, ok := GetMappingPublisherStatusEnum(string(m.PublisherStatus)); !ok && m.PublisherStatus != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PublisherStatus: %s. Supported values are: %s.", m.PublisherStatus, strings.Join(GetPublisherStatusEnumStringValues(), ",")))
 	}
 
 	if len(errMessage) > 0 {
@@ -155,63 +185,5 @@ func GetPublisherPublisherTypeEnumStringValues() []string {
 // GetMappingPublisherPublisherTypeEnum performs case Insensitive comparison on enum value and return the desired enum
 func GetMappingPublisherPublisherTypeEnum(val string) (PublisherPublisherTypeEnum, bool) {
 	enum, ok := mappingPublisherPublisherTypeEnumLowerCase[strings.ToLower(val)]
-	return enum, ok
-}
-
-// PublisherPublisherStatusEnum Enum with underlying type: string
-type PublisherPublisherStatusEnum string
-
-// Set of constants representing the allowable values for PublisherPublisherStatusEnum
-const (
-	PublisherPublisherStatusNew       PublisherPublisherStatusEnum = "NEW"
-	PublisherPublisherStatusApproved  PublisherPublisherStatusEnum = "APPROVED"
-	PublisherPublisherStatusSuspended PublisherPublisherStatusEnum = "SUSPENDED"
-	PublisherPublisherStatusRemoved   PublisherPublisherStatusEnum = "REMOVED"
-	PublisherPublisherStatusRejected  PublisherPublisherStatusEnum = "REJECTED"
-	PublisherPublisherStatusContacted PublisherPublisherStatusEnum = "CONTACTED"
-)
-
-var mappingPublisherPublisherStatusEnum = map[string]PublisherPublisherStatusEnum{
-	"NEW":       PublisherPublisherStatusNew,
-	"APPROVED":  PublisherPublisherStatusApproved,
-	"SUSPENDED": PublisherPublisherStatusSuspended,
-	"REMOVED":   PublisherPublisherStatusRemoved,
-	"REJECTED":  PublisherPublisherStatusRejected,
-	"CONTACTED": PublisherPublisherStatusContacted,
-}
-
-var mappingPublisherPublisherStatusEnumLowerCase = map[string]PublisherPublisherStatusEnum{
-	"new":       PublisherPublisherStatusNew,
-	"approved":  PublisherPublisherStatusApproved,
-	"suspended": PublisherPublisherStatusSuspended,
-	"removed":   PublisherPublisherStatusRemoved,
-	"rejected":  PublisherPublisherStatusRejected,
-	"contacted": PublisherPublisherStatusContacted,
-}
-
-// GetPublisherPublisherStatusEnumValues Enumerates the set of values for PublisherPublisherStatusEnum
-func GetPublisherPublisherStatusEnumValues() []PublisherPublisherStatusEnum {
-	values := make([]PublisherPublisherStatusEnum, 0)
-	for _, v := range mappingPublisherPublisherStatusEnum {
-		values = append(values, v)
-	}
-	return values
-}
-
-// GetPublisherPublisherStatusEnumStringValues Enumerates the set of values in String for PublisherPublisherStatusEnum
-func GetPublisherPublisherStatusEnumStringValues() []string {
-	return []string{
-		"NEW",
-		"APPROVED",
-		"SUSPENDED",
-		"REMOVED",
-		"REJECTED",
-		"CONTACTED",
-	}
-}
-
-// GetMappingPublisherPublisherStatusEnum performs case Insensitive comparison on enum value and return the desired enum
-func GetMappingPublisherPublisherStatusEnum(val string) (PublisherPublisherStatusEnum, bool) {
-	enum, ok := mappingPublisherPublisherStatusEnumLowerCase[strings.ToLower(val)]
 	return enum, ok
 }

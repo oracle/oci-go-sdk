@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/MoveDistributedAutonomousDatabaseReplicationUnit.go.html to see an example of how to use MoveDistributedAutonomousDatabaseReplicationUnitRequest.
 type MoveDistributedAutonomousDatabaseReplicationUnitRequest struct {
 
-	// Globally distributed autonomous database identifier
+	// Globally distributed autonomous database identifier.
 	DistributedAutonomousDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedAutonomousDatabaseId"`
 
 	// Details required to move the replication units from the source shard to destination shard.

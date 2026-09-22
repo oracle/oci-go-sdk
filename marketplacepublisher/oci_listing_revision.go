@@ -74,6 +74,8 @@ type OciListingRevision struct {
 
 	Icon *ListingRevisionIconAttachment `mandatory:"false" json:"icon"`
 
+	Banner *ListingRevisionBannerAttachment `mandatory:"false" json:"banner"`
+
 	// Status notes for the listing revision.
 	StatusNotes *string `mandatory:"false" json:"statusNotes"`
 
@@ -97,6 +99,12 @@ type OciListingRevision struct {
 	// System requirements for the listing revision.
 	SystemRequirements *string `mandatory:"false" json:"systemRequirements"`
 
+	// The url provided by partner for the registration of subscription.
+	PartnerRegistrationUrl *string `mandatory:"false" json:"partnerRegistrationUrl"`
+
+	// The unique id of the term attached to the listing.
+	TermId *string `mandatory:"false" json:"termId"`
+
 	// List of Pricing Plans provided by publisher.
 	PricingPlans []PricingPlan `mandatory:"false" json:"pricingPlans"`
 
@@ -117,6 +125,12 @@ type OciListingRevision struct {
 
 	// Is this listing rover exportable
 	IsRoverExportable *bool `mandatory:"false" json:"isRoverExportable"`
+
+	// Url to demo of the listing
+	DemoUrl *string `mandatory:"false" json:"demoUrl"`
+
+	// Url to training resources of the listing
+	SelfPacedTrainingUrl *string `mandatory:"false" json:"selfPacedTrainingUrl"`
 
 	// The pricing model for the listing revision.
 	PricingType OciListingRevisionPricingTypeEnum `mandatory:"true" json:"pricingType"`
@@ -221,6 +235,11 @@ func (m OciListingRevision) GetIcon() *ListingRevisionIconAttachment {
 	return m.Icon
 }
 
+// GetBanner returns Banner
+func (m OciListingRevision) GetBanner() *ListingRevisionBannerAttachment {
+	return m.Banner
+}
+
 // GetStatus returns Status
 func (m OciListingRevision) GetStatus() ListingRevisionStatusEnum {
 	return m.Status
@@ -318,6 +337,7 @@ func (m *OciListingRevision) UnmarshalJSON(data []byte) (e error) {
 		SupportContacts                      []SupportContact                  `json:"supportContacts"`
 		SupportLinks                         []NamedLink                       `json:"supportLinks"`
 		Icon                                 *ListingRevisionIconAttachment    `json:"icon"`
+		Banner                               *ListingRevisionBannerAttachment  `json:"banner"`
 		StatusNotes                          *string                           `json:"statusNotes"`
 		PackageType                          PackageTypeEnum                   `json:"packageType"`
 		ExtendedMetadata                     map[string]string                 `json:"extendedMetadata"`
@@ -326,6 +346,8 @@ func (m *OciListingRevision) UnmarshalJSON(data []byte) (e error) {
 		SystemTags                           map[string]map[string]interface{} `json:"systemTags"`
 		VersionDetails                       *VersionDetails                   `json:"versionDetails"`
 		SystemRequirements                   *string                           `json:"systemRequirements"`
+		PartnerRegistrationUrl               *string                           `json:"partnerRegistrationUrl"`
+		TermId                               *string                           `json:"termId"`
 		PricingPlans                         []pricingplan                     `json:"pricingPlans"`
 		AvailabilityAndPricingPolicy         *string                           `json:"availabilityAndPricingPolicy"`
 		AllowedTenancies                     []string                          `json:"allowedTenancies"`
@@ -333,6 +355,8 @@ func (m *OciListingRevision) UnmarshalJSON(data []byte) (e error) {
 		RecommendedServiceProviderListingIds []string                          `json:"recommendedServiceProviderListingIds"`
 		AreInternalTenancyLaunchAllowed      *bool                             `json:"areInternalTenancyLaunchAllowed"`
 		IsRoverExportable                    *bool                             `json:"isRoverExportable"`
+		DemoUrl                              *string                           `json:"demoUrl"`
+		SelfPacedTrainingUrl                 *string                           `json:"selfPacedTrainingUrl"`
 		Id                                   *string                           `json:"id"`
 		ListingId                            *string                           `json:"listingId"`
 		DisplayName                          *string                           `json:"displayName"`
@@ -374,6 +398,8 @@ func (m *OciListingRevision) UnmarshalJSON(data []byte) (e error) {
 	copy(m.SupportLinks, model.SupportLinks)
 	m.Icon = model.Icon
 
+	m.Banner = model.Banner
+
 	m.StatusNotes = model.StatusNotes
 
 	m.PackageType = model.PackageType
@@ -389,6 +415,10 @@ func (m *OciListingRevision) UnmarshalJSON(data []byte) (e error) {
 	m.VersionDetails = model.VersionDetails
 
 	m.SystemRequirements = model.SystemRequirements
+
+	m.PartnerRegistrationUrl = model.PartnerRegistrationUrl
+
+	m.TermId = model.TermId
 
 	m.PricingPlans = make([]PricingPlan, len(model.PricingPlans))
 	for i, n := range model.PricingPlans {
@@ -413,6 +443,10 @@ func (m *OciListingRevision) UnmarshalJSON(data []byte) (e error) {
 	m.AreInternalTenancyLaunchAllowed = model.AreInternalTenancyLaunchAllowed
 
 	m.IsRoverExportable = model.IsRoverExportable
+
+	m.DemoUrl = model.DemoUrl
+
+	m.SelfPacedTrainingUrl = model.SelfPacedTrainingUrl
 
 	m.Id = model.Id
 

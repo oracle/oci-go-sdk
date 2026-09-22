@@ -19,7 +19,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/GenerateDistributedDatabaseWallet.go.html to see an example of how to use GenerateDistributedDatabaseWalletRequest.
 type GenerateDistributedDatabaseWalletRequest struct {
 
-	// Globally distributed database identifier
+	// Globally distributed database identifier.
 	DistributedDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedDatabaseId"`
 
 	// Details for generating Globally distributed database wallet.

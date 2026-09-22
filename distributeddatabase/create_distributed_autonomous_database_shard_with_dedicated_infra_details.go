@@ -16,11 +16,8 @@ import (
 	"strings"
 )
 
-// CreateDistributedAutonomousDatabaseShardWithDedicatedInfraDetails Globally distributed autonomous database shard with dedicated autonomous infrastructure.
+// CreateDistributedAutonomousDatabaseShardWithDedicatedInfraDetails Configuration for creating a distributed autonomous database shard using an existing ADB-D VM cluster.
 type CreateDistributedAutonomousDatabaseShardWithDedicatedInfraDetails struct {
-
-	// Admin password for shard database.
-	AdminPassword *string `mandatory:"true" json:"adminPassword"`
 
 	// The compute count for the shard database. It has to be in multiples of 2.
 	ComputeCount *float32 `mandatory:"true" json:"computeCount"`
@@ -28,38 +25,50 @@ type CreateDistributedAutonomousDatabaseShardWithDedicatedInfraDetails struct {
 	// The data disk group size to be allocated in GBs for the shard database.
 	DataStorageSizeInGbs *float64 `mandatory:"true" json:"dataStorageSizeInGbs"`
 
-	// Determines the auto-scaling mode for the shard database.
-	IsAutoScalingEnabled *bool `mandatory:"true" json:"isAutoScalingEnabled"`
-
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the cloud Autonomous Exadata VM Cluster.
 	CloudAutonomousVmClusterId *string `mandatory:"true" json:"cloudAutonomousVmClusterId"`
 
-	// The shard space name for the shard database. Shard space for existing shard cannot be changed, once shard is created.
-	// Shard space name shall be used while creation of new shards. For User defined sharding, every shard must have a unique
-	// shard space name. For system defined sharding, shard space name is not required.
-	ShardSpace *string `mandatory:"false" json:"shardSpace"`
+	// Admin password for shard database.
+	AdminPassword *string `mandatory:"false" json:"adminPassword" sensitive:"true"`
 
-	// This field is deprecated. This should not be used while creation of new distributed autonomous database. To set the peers
-	// on new shards of distributed autonomous database please use peerDetails.
-	PeerCloudAutonomousVmClusterIds []string `mandatory:"false" json:"peerCloudAutonomousVmClusterIds"`
+	// The OCI vault secret [/Content/General/Concepts/identifiers.htm]OCID. This cannot be used in conjunction with adminPassword.
+	AdminPasswordSecretId *string `mandatory:"false" json:"adminPasswordSecretId"`
 
-	// The details required for creation of the peer for the autonomous dedicated infrastructure based shard.
-	PeerDetails []CreateShardPeerWithDedicatedInfraDetails `mandatory:"false" json:"peerDetails"`
+	// The version of the vault secret. If no version is specified, the latest version will be used.
+	AdminPasswordSecretVersionNumber *int `mandatory:"false" json:"adminPasswordSecretVersionNumber"`
+
+	// The shard space name for the shard database. Shard space for an existing shard cannot be changed once the shard is created.
+	// The shard space name is used when creating new shards. For user-defined sharding, every shard must have a unique
+	// shard space name. For system-defined sharding, a shard space name is not required.
+	ShardSpaceName *string `mandatory:"false" json:"shardSpaceName"`
+
+	// Indicates if vertical auto scaling is enabled for the Autonomous AI Database CPU core count.
+	// The default value is `FALSE`.
+	IsAutoScalingEnabled *bool `mandatory:"false" json:"isAutoScalingEnabled"`
 
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the Oracle Cloud Infrastructure vault (https://docs.oracle.com/iaas/Content/KeyManagement/Concepts/keyoverview.htm#concepts). This parameter and `kmsKeyId` are required for Customer Managed Keys.
 	VaultId *string `mandatory:"false" json:"vaultId"`
 
-	// The OCID of the key container that is used as the master encryption key in database transparent data encryption (TDE) operations.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the key container that is used as the master encryption key in database transparent data encryption (TDE) operations.
 	KmsKeyId *string `mandatory:"false" json:"kmsKeyId"`
 
-	// The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions.
+	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions.
 	KmsKeyVersionId *string `mandatory:"false" json:"kmsKeyVersionId"`
 
 	// The OCID (https://docs.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the key store used to create the shard.
 	OkvKeyStoreId *string `mandatory:"false" json:"okvKeyStoreId"`
 
 	// The OKV endpoint name.
-	OkvEndPointGroup *string `mandatory:"false" json:"okvEndPointGroup"`
+	OkvEndPointGroupName *string `mandatory:"false" json:"okvEndPointGroupName"`
+
+	// The lag time preference based on data loss tolerance in seconds.
+	FastStartFailOverLagLimitInSeconds *int `mandatory:"false" json:"fastStartFailOverLagLimitInSeconds"`
+
+	// The scheduling detail for the quarterly maintenance window of the standby Autonomous Container Database.
+	StandbyMaintenanceBufferInDays *int `mandatory:"false" json:"standbyMaintenanceBufferInDays"`
+
+	// The protection mode for the shard peer.
+	ProtectionMode DistributedAutonomousDbProtectionModeEnum `mandatory:"false" json:"protectionMode,omitempty"`
 }
 
 func (m CreateDistributedAutonomousDatabaseShardWithDedicatedInfraDetails) String() string {
@@ -72,6 +81,9 @@ func (m CreateDistributedAutonomousDatabaseShardWithDedicatedInfraDetails) Strin
 func (m CreateDistributedAutonomousDatabaseShardWithDedicatedInfraDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
+	if _, ok := GetMappingDistributedAutonomousDbProtectionModeEnum(string(m.ProtectionMode)); !ok && m.ProtectionMode != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProtectionMode: %s. Supported values are: %s.", m.ProtectionMode, strings.Join(GetDistributedAutonomousDbProtectionModeEnumStringValues(), ",")))
+	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf("%s", strings.Join(errMessage, "\n"))
 	}
@@ -85,7 +97,7 @@ func (m CreateDistributedAutonomousDatabaseShardWithDedicatedInfraDetails) Marsh
 		DiscriminatorParam string `json:"source"`
 		MarshalTypeCreateDistributedAutonomousDatabaseShardWithDedicatedInfraDetails
 	}{
-		"ADB_D",
+		"ADBD_EXISTING_CLUSTER",
 		(MarshalTypeCreateDistributedAutonomousDatabaseShardWithDedicatedInfraDetails)(m),
 	}
 

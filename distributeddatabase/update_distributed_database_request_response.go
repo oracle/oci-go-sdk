@@ -18,7 +18,7 @@ import (
 // Click https://docs.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/distributeddatabase/UpdateDistributedDatabase.go.html to see an example of how to use UpdateDistributedDatabaseRequest.
 type UpdateDistributedDatabaseRequest struct {
 
-	// Globally distributed database identifier
+	// Globally distributed database identifier.
 	DistributedDatabaseId *string `mandatory:"true" contributesTo:"path" name:"distributedDatabaseId"`
 
 	// The configuration of the Globally distributed database to be updated.
