@@ -140,7 +140,7 @@ func (client CcdOffersClient) getCcdOffer(ctx context.Context, request common.OC
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/ccd-offers/20240601/CcdOffer/GetCcdOffer"
 		err = common.PostProcessServiceError(err, "CcdOffers", "GetCcdOffer", apiReferenceLink)
 		return response, err
 	}
@@ -199,7 +199,7 @@ func (client CcdOffersClient) listCcdOffers(ctx context.Context, request common.
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		apiReferenceLink := ""
+		apiReferenceLink := "https://docs.oracle.com/iaas/api/#/en/ccd-offers/20240601/CcdOfferCollection/ListCcdOffers"
 		err = common.PostProcessServiceError(err, "CcdOffers", "ListCcdOffers", apiReferenceLink)
 		return response, err
 	}
