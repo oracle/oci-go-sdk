@@ -114,9 +114,6 @@ type OciListingRevision struct {
 	// Allowed tenancies provided when a listing revision is published as private.
 	AllowedTenancies []string `mandatory:"false" json:"allowedTenancies"`
 
-	// Custom link to the listing
-	VanityUrl *string `mandatory:"false" json:"vanityUrl"`
-
 	// OCIDs of service listings attached to lead gen listing
 	RecommendedServiceProviderListingIds []string `mandatory:"false" json:"recommendedServiceProviderListingIds"`
 
@@ -125,6 +122,9 @@ type OciListingRevision struct {
 
 	// Is this listing rover exportable
 	IsRoverExportable *bool `mandatory:"false" json:"isRoverExportable"`
+
+	// Custom link to the listing
+	VanityUrl *string `mandatory:"false" json:"vanityUrl"`
 
 	// Url to demo of the listing
 	DemoUrl *string `mandatory:"false" json:"demoUrl"`
@@ -351,10 +351,10 @@ func (m *OciListingRevision) UnmarshalJSON(data []byte) (e error) {
 		PricingPlans                         []pricingplan                     `json:"pricingPlans"`
 		AvailabilityAndPricingPolicy         *string                           `json:"availabilityAndPricingPolicy"`
 		AllowedTenancies                     []string                          `json:"allowedTenancies"`
-		VanityUrl                            *string                           `json:"vanityUrl"`
 		RecommendedServiceProviderListingIds []string                          `json:"recommendedServiceProviderListingIds"`
 		AreInternalTenancyLaunchAllowed      *bool                             `json:"areInternalTenancyLaunchAllowed"`
 		IsRoverExportable                    *bool                             `json:"isRoverExportable"`
+		VanityUrl                            *string                           `json:"vanityUrl"`
 		DemoUrl                              *string                           `json:"demoUrl"`
 		SelfPacedTrainingUrl                 *string                           `json:"selfPacedTrainingUrl"`
 		Id                                   *string                           `json:"id"`
@@ -436,13 +436,13 @@ func (m *OciListingRevision) UnmarshalJSON(data []byte) (e error) {
 
 	m.AllowedTenancies = make([]string, len(model.AllowedTenancies))
 	copy(m.AllowedTenancies, model.AllowedTenancies)
-	m.VanityUrl = model.VanityUrl
-
 	m.RecommendedServiceProviderListingIds = make([]string, len(model.RecommendedServiceProviderListingIds))
 	copy(m.RecommendedServiceProviderListingIds, model.RecommendedServiceProviderListingIds)
 	m.AreInternalTenancyLaunchAllowed = model.AreInternalTenancyLaunchAllowed
 
 	m.IsRoverExportable = model.IsRoverExportable
+
+	m.VanityUrl = model.VanityUrl
 
 	m.DemoUrl = model.DemoUrl
 

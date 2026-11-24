@@ -26,6 +26,7 @@ const (
 	OperationTypeDeleteDistributedDb                  OperationTypeEnum = "DELETE_DISTRIBUTED_DB"
 	OperationTypeChangeDistributedDbCompartment       OperationTypeEnum = "CHANGE_DISTRIBUTED_DB_COMPARTMENT"
 	OperationTypeConfigureDistributedDbGsms           OperationTypeEnum = "CONFIGURE_DISTRIBUTED_DB_GSMS"
+	OperationTypeScaleDistributedDbGsms               OperationTypeEnum = "SCALE_DISTRIBUTED_DB_GSMS"
 	OperationTypeConfigureDistributedDbSharding       OperationTypeEnum = "CONFIGURE_DISTRIBUTED_DB_SHARDING"
 	OperationTypeRotateDistributedDbPasswords         OperationTypeEnum = "ROTATE_DISTRIBUTED_DB_PASSWORDS"
 	OperationTypeStartDistributedDb                   OperationTypeEnum = "START_DISTRIBUTED_DB"
@@ -69,6 +70,7 @@ var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"DELETE_DISTRIBUTED_DB":                     OperationTypeDeleteDistributedDb,
 	"CHANGE_DISTRIBUTED_DB_COMPARTMENT":         OperationTypeChangeDistributedDbCompartment,
 	"CONFIGURE_DISTRIBUTED_DB_GSMS":             OperationTypeConfigureDistributedDbGsms,
+	"SCALE_DISTRIBUTED_DB_GSMS":                 OperationTypeScaleDistributedDbGsms,
 	"CONFIGURE_DISTRIBUTED_DB_SHARDING":         OperationTypeConfigureDistributedDbSharding,
 	"ROTATE_DISTRIBUTED_DB_PASSWORDS":           OperationTypeRotateDistributedDbPasswords,
 	"START_DISTRIBUTED_DB":                      OperationTypeStartDistributedDb,
@@ -112,6 +114,7 @@ var mappingOperationTypeEnumLowerCase = map[string]OperationTypeEnum{
 	"delete_distributed_db":                     OperationTypeDeleteDistributedDb,
 	"change_distributed_db_compartment":         OperationTypeChangeDistributedDbCompartment,
 	"configure_distributed_db_gsms":             OperationTypeConfigureDistributedDbGsms,
+	"scale_distributed_db_gsms":                 OperationTypeScaleDistributedDbGsms,
 	"configure_distributed_db_sharding":         OperationTypeConfigureDistributedDbSharding,
 	"rotate_distributed_db_passwords":           OperationTypeRotateDistributedDbPasswords,
 	"start_distributed_db":                      OperationTypeStartDistributedDb,
@@ -166,6 +169,7 @@ func GetOperationTypeEnumStringValues() []string {
 		"DELETE_DISTRIBUTED_DB",
 		"CHANGE_DISTRIBUTED_DB_COMPARTMENT",
 		"CONFIGURE_DISTRIBUTED_DB_GSMS",
+		"SCALE_DISTRIBUTED_DB_GSMS",
 		"CONFIGURE_DISTRIBUTED_DB_SHARDING",
 		"ROTATE_DISTRIBUTED_DB_PASSWORDS",
 		"START_DISTRIBUTED_DB",
