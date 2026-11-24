@@ -12,6 +12,7 @@ import (
 	"math/rand"
 	"runtime"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -815,8 +816,10 @@ func Retry(ctx context.Context, request OCIRetryableRequest, operation OCIOperat
 		err      error
 	}
 
-	var response OCIResponse
-	var err error
+	// last is the most recently completed attempt; the ctx.Done branch below
+	// returns it while the retry goroutine may still be running.
+	var lastMu sync.Mutex
+	var last retrierResult
 	retrierChannel := make(chan retrierResult, 1)
 
 	validated, validateError := policy.validate()
@@ -827,6 +830,8 @@ func Retry(ctx context.Context, request OCIRetryableRequest, operation OCIOperat
 	initialAttemptTime := time.Now()
 
 	go func() {
+		var response OCIResponse
+		var err error
 		// Deal with panics more graciously
 		defer func() {
 			if r := recover(); r != nil {
@@ -880,6 +885,9 @@ func Retry(ctx context.Context, request OCIRetryableRequest, operation OCIOperat
 				rsc.Seek(curPos, io.SeekStart)
 			}
 			response, err = operation(ctx, request, rsc, extraHeaders)
+			lastMu.Lock()
+			last = retrierResult{response, err}
+			lastMu.Unlock()
 
 			operationResponse := NewOCIOperationResponseExtended(response, err, currentOperationAttempt, endOfWindowTime, backoffScalingFactor, initialAttemptTime)
 
@@ -915,7 +923,10 @@ func Retry(ctx context.Context, request OCIRetryableRequest, operation OCIOperat
 
 	select {
 	case <-ctx.Done():
-		return response, ctx.Err()
+		lastMu.Lock()
+		result := last
+		lastMu.Unlock()
+		return result.response, ctx.Err()
 	case result := <-retrierChannel:
 		return result.response, result.err
 	}

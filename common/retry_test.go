@@ -391,6 +391,71 @@ func TestRetryWithPanicInOperation(t *testing.T) {
 	assert.Error(t, err)
 }
 
+// Issue #676: the context is cancelled while an attempt is in flight.
+func TestRetry_ContextDoneWhileOperationInFlight(t *testing.T) {
+	req, _ := http.NewRequest("GET", "/some", nil)
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	// Hold the retry goroutine once the attempt has returned, so that it
+	// stores the result while Retry is returning on ctx.Done.
+	release := make(chan struct{})
+	done := make(chan struct{})
+	policy := NewRetryPolicy(uint(1),
+		func(OCIOperationResponse) bool {
+			defer close(done)
+			<-release
+			return false
+		},
+		func(OCIOperationResponse) time.Duration { return 0 })
+	r := mockedRequest{Request: *req, Policy: &policy}
+	operation := func(context.Context, OCIRequest, *OCIReadSeekCloser, map[string]string) (OCIResponse, error) {
+		cancel()
+		return mockedResponse{RawResponse: &http.Response{Header: http.Header{}, StatusCode: 200}}, nil
+	}
+
+	_, err := Retry(ctx, r, operation, policy)
+	close(release)
+	<-done
+	assert.Equal(t, context.Canceled, err)
+}
+
+// Cancelled during the second attempt: the caller gets the first attempt's
+// response, as it does when cancelled during the backoff sleep.
+func TestRetry_ContextDoneWhileRetryInFlight(t *testing.T) {
+	req, _ := http.NewRequest("GET", "/some", nil)
+	policy := NewRetryPolicy(uint(2),
+		func(OCIOperationResponse) bool { return true },
+		func(OCIOperationResponse) time.Duration { return 0 })
+	r := mockedRequest{Request: *req, Policy: &policy}
+
+	first := mockedResponse{RawResponse: &http.Response{Header: http.Header{}, StatusCode: 500}}
+	second := mockedResponse{RawResponse: &http.Response{Header: http.Header{}, StatusCode: 200}}
+
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	release := make(chan struct{})
+	finished := make(chan struct{})
+	attempt := 0
+	operation := func(context.Context, OCIRequest, *OCIReadSeekCloser, map[string]string) (OCIResponse, error) {
+		attempt++
+		if attempt == 1 {
+			return first, nil
+		}
+		cancel()
+		<-release
+		defer close(finished)
+		return second, nil
+	}
+
+	resp, err := Retry(ctx, r, operation, policy)
+	close(release)
+	<-finished
+	assert.Equal(t, first, resp)
+	assert.Equal(t, context.Canceled, err)
+}
+
 const (
 	eventuallyConsistentWindowSize = time.Duration(4 * time.Minute)
 )
